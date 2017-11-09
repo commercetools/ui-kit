@@ -4,6 +4,7 @@ import SortableHeader from '../sortable-header';
 import BaseTable from './base-table';
 
 jest.mock('dom-helpers/util/scrollbarSize', () => () => 20);
+jest.mock('react-virtualized');
 
 const createTestProps = custom => ({
   columns: Array.from({ length: 10 }).map(() => ({
