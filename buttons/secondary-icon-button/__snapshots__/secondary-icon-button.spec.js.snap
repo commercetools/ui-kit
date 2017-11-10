@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering outputs correct tree 1`] = `
+<div
+  className="button"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <AccessibleButton
+    buttonAttributes={Object {}}
+    isDisabled={false}
+    isToggleButton={false}
+    label="Accessible button"
+    onClick={[Function]}
+  >
+    <div
+      className="icon-container"
+    >
+      <FilterIcon
+        theme="black"
+      />
+    </div>
+  </AccessibleButton>
+</div>
+`;

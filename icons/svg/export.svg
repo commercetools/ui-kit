@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>export</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-240.000000, -648.000000)" fill="#000000">
+            <g id="Actions" transform="translate(24.000000, 648.000000)">
+                <g id="Export" transform="translate(216.000000, 0.000000)">
+                    <path d="M9.9541,14 C9.4271,14 9,13.543 9,13 C9,12.458 9.4271,12 9.9541,12 L17,12 L17,11 L17,9 L21,13 L17,17 L17,16 L17,14 L9.9541,14 Z M7.41421356,3 L16,3 C16.5522847,3 17,3.44771525 17,4 L17,7 C17,7.55228475 16.5522847,8 16,8 C15.4477153,8 15,7.55228475 15,7 L15,5 L10,5 L10,10 L9,10 L8,10 L5,10 L5,19 L15,19 C15,18.4477153 15.4477153,18 16,18 C16.5522847,18 17,18.4477153 17,19 L17,20 C17,20.5522847 16.5522847,21 16,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,7.41421356 L3,7.41421356 C3,7.14899707 3.10535684,6.89464316 3.29289322,6.70710678 L6.70710678,3.29289322 C6.89464316,3.10535684 7.14899707,3 7.41421356,3 L7.41421356,3 Z M5,8 L8,8 L8,5 L7.828,5 L5,7.828 L5,8 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

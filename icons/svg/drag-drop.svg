@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>drag-drop</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-240.000000, -792.000000)" fill="#000000">
+            <g id="Actions" transform="translate(24.000000, 648.000000)">
+                <g id="Drag-Drop" transform="translate(216.000000, 144.000000)">
+                    <path d="M12.9819293,9.87722023 L12.9819293,7.29292929 L14.3990834,7.29292929 L16.0757133,7.29292929 L12.03716,3 L8.07571326,7.29292929 L9.67523658,7.29292929 L11.0923906,7.29292929 L11.0923906,14.0460157 C11.0923906,14.0635479 11.092859,14.0809696 11.0937839,14.0982688 L11.0937839,16.6825597 L9.67662989,16.6825597 L8,16.6825597 L12.0385533,20.975489 L16,16.6825597 L14.4004767,16.6825597 L12.9833226,16.6825597 L12.9833226,9.92947333 C12.9833226,9.91194118 12.9828542,9.89451946 12.9819293,9.87722023 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

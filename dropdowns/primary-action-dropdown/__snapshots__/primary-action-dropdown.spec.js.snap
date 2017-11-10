@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Option /> rendering should output correct tree 1`] = `
+<AccessibleButton
+  buttonAttributes={Object {}}
+  className="optionWrapper"
+  isDisabled={false}
+  isToggleButton={false}
+  label="Icecream we scream!"
+  onClick={[Function]}
+>
+  Icecream we scream!
+</AccessibleButton>
+`;
+
+exports[`<PrimaryActionDropdown /> rendering should output correct tree 1`] = `
+<div
+  className="wrapper"
+>
+  <DropdownHead
+    chevron={
+      <DropdownChevron
+        buttonRef={[Function]}
+        className="primaryOptionChevron defaultPrimaryAction"
+        isDisabled={false}
+        isOpen={false}
+        onClick={[Function]}
+      />
+    }
+    iconLeft={<CloseBoldIcon />}
+    isDisabled={false}
+    onClick={[Function]}
+  >
+    Option 1
+  </DropdownHead>
+</div>
+`;

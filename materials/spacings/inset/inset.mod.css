@@ -1,0 +1,17 @@
+@import 'ui-kit/materials/spacings.mod.css';
+
+.xs {
+  padding: var(--spacing-4);
+}
+.s {
+  padding: var(--spacing-8);
+}
+.m {
+  padding: var(--spacing-16);
+}
+.l {
+  padding: var(--spacing-24);
+}
+.xl {
+  padding: var(--spacing-32);
+}

@@ -1,0 +1,135 @@
+@import 'ui-kit/materials/colors.mod.css';
+@import 'ui-kit/materials/shadows.mod.css';
+@import 'ui-kit/materials/spacings.mod.css';
+@import 'ui-kit/materials/transitions.mod.css';
+@import 'ui-kit/materials/borders.mod.css';
+@import 'ui-kit/materials/colors.mod.css';
+
+:root {
+  --size-container-small: 16px;
+  --size-container-big: 32px;
+}
+
+/*
+* === BUTTON ELEMENT ===
+*/
+
+.button-appearance {
+  display: inline-block;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  color: var(--color-greyDark);
+  font-size: 1rem;
+  transition: background-color var(--transition-linear-80ms),
+    box-shadow var(--transition-easeinout-150ms);
+}
+
+/*
+* === ICON CONTAINER ===
+*/
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+* === CONTAINER ===
+*/
+
+.container {
+  border-radius: var(--border-radius-6);
+}
+
+/* The actual button element */
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-16);
+  height: var(--size-container-big);
+}
+
+/*
+* === THEMES ===
+*/
+
+/*
+* — Default —
+*/
+
+/* Toggled button */
+
+.active {
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+  background-color: var(--color-greyAlabaster);
+}
+
+.active:hover {
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+  background-color: var(--color-greyLight);
+}
+
+/* Disabled button */
+
+.active.disabled,
+.disabled {
+  background-color: var(--color-whiteCatskill);
+  color: var(--color-greyNevada);
+  box-shadow: var(--shadow-10-first);
+}
+
+/* Default button */
+
+.default:hover {
+  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+}
+
+.default:active {
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+  background-color: var(--color-greyAlabaster);
+}
+
+/*
+* — Blue Theme —
+*/
+
+.theme-blue:hover {
+  color: var(--color-blue);
+}
+
+/* Toggled button */
+
+.theme-blue.active,
+.theme-blue.active.disabled,
+.theme-blue:active {
+  color: var(--color-blue);
+}
+
+.theme-blue.disabled {
+  color: var(--color-greyNevada);
+}
+
+/*
+* — Apple-Green Theme —
+*/
+
+.theme-apple-green:hover {
+  color: var(--color-green);
+}
+
+/* Toggled button */
+
+.theme-apple-green.active,
+.theme-apple-green.active.disabled,
+.theme-apple-green:active {
+  color: var(--color-green);
+}
+
+.theme-apple-green.disabled {
+  color: var(--color-greyNevada);
+}

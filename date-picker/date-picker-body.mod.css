@@ -1,0 +1,71 @@
+@import 'ui-kit/materials/borders.mod.css';
+@import 'ui-kit/materials/colors.mod.css';
+@import 'ui-kit/materials/spacings.mod.css';
+@import 'ui-kit/materials/transitions.mod.css';
+@import 'ui-kit/materials/sizes.mod.css';
+
+.date-input-container {
+  align-items: center;
+  display: flex;
+}
+
+.scale {
+  flex-grow: 1;
+}
+
+.date-input {
+  appearance: none;
+  border-radius: var(--border-radius-6) 0 0 var(--border-radius-6);
+  border-bottom: 1px solid var(--color-primaryGrey);
+  border-left: 1px solid var(--color-primaryGrey);
+  border-right: none;
+  border-top: 1px solid var(--color-primaryGrey);
+  cursor: pointer;
+  flex-grow: 1;
+  font: inherit;
+  height: var(--standard-input-height);
+  margin-right: 0; /* stop that jumping */
+  padding: var(--spacing-8);
+}
+
+.date-input:focus {
+  border: 1px solid var(--color-primaryGreen);
+  transition: var(--transition-standard);
+}
+
+.date-input:disabled {
+  background-color: var(--color-greyAlabaster);
+  cursor: not-allowed;
+  color: var(--color-greyDove);
+  opacity: 1; /* fix for mobile safari */
+}
+
+.icon-container {
+  align-items: center;
+  border-bottom: 1px solid var(--color-primaryGrey);
+  border-right: 1px solid var(--color-primaryGrey);
+  border-top: 1px solid var(--color-primaryGrey);
+  cursor: pointer;
+  display: flex;
+  height: var(--standard-input-height);
+  padding: var(--spacing-4);
+}
+
+.clear-icon-container {
+  composes: icon-container;
+}
+
+.calendar-icon-container {
+  composes: icon-container;
+  border-top-right-radius: var(--border-radius-6);
+  border-bottom-right-radius: var(--border-radius-6);
+}
+
+.icon-container-disabled {
+  cursor: not-allowed;
+  background-color: var(--color-greyAlabaster);
+}
+
+.invalid {
+  border-color: var(--color-CTOrange) !important;
+}

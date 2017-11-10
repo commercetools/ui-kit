@@ -1,0 +1,21 @@
+:root {
+  --shadow-1-first: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-1-second: 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-2-first: 0 3px 6px rgba(0, 0, 0, 0.16);
+  --shadow-2-second: 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow-3-first: 0 10px 20px rgba(0, 0, 0, 0.19);
+  --shadow-3-second: 0 6px 6px rgba(0, 0, 0, 0.23);
+  --shadow-4-first: 0 14px 28px rgba(0, 0, 0, 0.25);
+  --shadow-4-second: 0 10px 10px rgba(0, 0, 0, 0.22);
+  --shadow-5-first: 0 19px 38px rgba(0, 0, 0, 0.3);
+  --shadow-5-second: 0 15px 12px rgba(0, 0, 0, 0.22);
+  --shadow-6-first: 0 -1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-7-first: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12);
+  --shadow-7-second: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  --shadow-8-first: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12);
+  --shadow-8-second: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  --shadow-9-first: inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-9-second: inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2);
+  --shadow-9-third: inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25);
+  --shadow-10-first: 0 0 0 1px rgba(224, 230, 237, 0.5);
+}

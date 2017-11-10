@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+.container:hover {
+  cursor: pointer;
+}
+
+.label {
+  flex: 1 0 auto;
+}

@@ -1,0 +1,183 @@
+@import 'ui-kit/materials/borders.mod.css';
+@import 'ui-kit/materials/colors.mod.css';
+@import 'ui-kit/materials/shadows.mod.css';
+@import 'ui-kit/materials/spacings.mod.css';
+@import 'ui-kit/materials/transitions.mod.css';
+
+:root {
+  --size-small-button: 16px;
+  --size-medium-button: 24px;
+  --size-big-button: 32px;
+}
+
+/*
+* === BUTTON ELEMENT ===
+*/
+
+.button-appearance {
+  display: inline-block;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  color: var(--color-greyDark);
+  transition: background-color var(--transition-linear-80ms),
+    box-shadow 150ms ease-in-out;
+}
+
+.button-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-layout > * + * {
+  margin: 0 0 0 6px;
+}
+
+/*
+* === CONTAINER ===
+*/
+
+/*
+* — Shapes —
+*/
+
+.round {
+  border-radius: 50%;
+}
+
+.square.container-small {
+  border-radius: var(--border-radius-2);
+}
+.square.container-medium {
+  border-radius: var(--border-radius-4);
+}
+.square.container-big {
+  border-radius: var(--border-radius-6);
+}
+
+/*
+* — Sizes —
+*/
+
+.container-small {
+  height: var(--size-small-button);
+  width: var(--size-small-button);
+}
+
+.container-medium {
+  height: var(--size-medium-button);
+  width: var(--size-medium-button);
+}
+
+.container-big {
+  height: var(--size-big-button);
+  width: var(--size-big-button);
+}
+
+/*
+* === THEMES ===
+*/
+
+/*
+* — Default —
+*/
+
+/* Disabled button */
+
+.disabled {
+  background-color: var(--color-greyZircon);
+  color: var(--color-greyNevada);
+  box-shadow: none;
+}
+
+/* Default button */
+
+.default:hover {
+  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+}
+
+.default:active {
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+  background-color: var(--color-greyAlabaster);
+}
+
+/* Toggled button */
+
+.active {
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+  background-color: var(--color-greyAlabaster);
+}
+
+.active:hover {
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+  background-color: var(--color-greyLight);
+}
+
+/*
+* — Blue Theme —
+*/
+
+/* Disabled-Active button */
+
+.disabled.theme-blue:hover {
+  background-color: var(--color-greyZircon);
+}
+
+/* When the button is active (isToggled: true) and somehow is disabled
+  it should have a different color to indicate that it's active but can't
+  receive any actions */
+
+.active.disabled.theme-blue {
+  background-color: color(var(--color-blue) lightness(74%));
+  color: var(--color-white);
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+}
+
+/* Toggled button */
+
+.theme-blue.active,
+.theme-blue:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.active.theme-blue:hover {
+  background-color: color(var(--color-blue) lightness(74%));
+}
+
+/*
+* — Green Theme —
+*/
+
+/* Disabled-Active button */
+
+/* When the button is active (isToggled: true) and somehow is disabled
+  it should have a different color to indicate that it's active but can't
+  receive any actions */
+
+.disabled.theme-green:hover {
+  background-color: var(--color-greyZircon);
+}
+
+.active.disabled.theme-green {
+  background-color: var(--color-greenSulu);
+  color: var(--color-white);
+  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
+    var(--shadow-9-third);
+}
+
+/* Toggled button */
+
+.theme-green.active,
+.theme-green:hover {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.active.theme-green:hover {
+  background-color: var(--color-greenSulu);
+}

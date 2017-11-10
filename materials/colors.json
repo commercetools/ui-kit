@@ -1,0 +1,284 @@
+[
+  [
+    {
+      "key": "--color-blue",
+      "name": "blue",
+      "value": "#0679d1"
+    },
+    {
+      "key": "--color-bluePelorous",
+      "name": "bluePelorous",
+      "value": "#1e82a4"
+    },
+    {
+      "key": "--color-blueNavy",
+      "name": "blueNavy",
+      "value": "#213e48"
+    },
+    {
+      "key": "--color-blueDodger",
+      "name": "blueDodger",
+      "value": "#0d9df8"
+    },
+    {
+      "key": "--color-blueSolitude",
+      "name": "blueSolitude",
+      "value": "#eaf7fe"
+    },
+    {
+      "key": "--color-purple",
+      "name": "purple",
+      "value": "#bd72ff"
+    }
+  ],
+  [
+    {
+      "key": "--color-red",
+      "name": "red",
+      "value": "#e60050"
+    },
+    {
+      "key": "--color-redCream",
+      "name": "redCream",
+      "value": "#fdf2f4"
+    },
+    {
+      "key": "--color-CTOrange",
+      "name": "CTOrange",
+      "value": "#f27923"
+    },
+    {
+      "key": "--color-CTYellow",
+      "name": "CTYellow",
+      "value": "#f5a730"
+    },
+    {
+      "key": "--color-bananaMania",
+      "name": "bananaMania",
+      "value": "#fce4c2"
+    }
+  ],
+  [
+    {
+      "key": "--color-yellowMayo",
+      "name": "yellowMayo",
+      "value": "#fff9ed"
+    },
+    {
+      "key": "--color-green",
+      "name": "green",
+      "value": "#4e8410"
+    },
+    {
+      "key": "--color-darkGreen",
+      "name": "darkGreen",
+      "value": "#215457"
+    },
+    {
+      "key": "--color-primaryGreen",
+      "name": "primaryGreen",
+      "value": "#20ad92"
+    },
+    {
+      "key": "--color-greenLight",
+      "name": "greenLight",
+      "value": "#87d8c8"
+    },
+    {
+      "key": "--color-buttonPrimary",
+      "name": "buttonPrimary",
+      "value": "#00b6a1"
+    },
+    {
+      "key": "--color-buttonHover",
+      "name": "buttonHover",
+      "value": "#03c8b2"
+    },
+    {
+      "key": "--color-primaryCell",
+      "name": "primaryCell",
+      "value": "#00b6a1"
+    },
+    {
+      "key": "--color-greenDowny",
+      "name": "greenDowny",
+      "value": "#52cebf"
+    },
+    {
+      "key": "--color-greenSnow",
+      "name": "greenSnow",
+      "value": "#f3fffd"
+    },
+    {
+      "key": "--color-greenTapa",
+      "name": "greenTapa",
+      "value": "#1c3239"
+    },
+    {
+      "key": "--color-greenCaper",
+      "name": "greenCaper",
+      "value": "#c4e5a1"
+    },
+    {
+      "key": "--color-greenSulu",
+      "name": "greenSulu",
+      "value": "#bee990"
+    }
+  ],
+  [
+    {
+      "key": "--color-white",
+      "name": "white",
+      "value": "#fff"
+    },
+    {
+      "key": "--color-whiteAlabaster",
+      "name": "whiteAlabaster",
+      "value": "#fafafa"
+    },
+    {
+      "key": "--color-whiteCatskill",
+      "name": "whiteCatskill",
+      "value": "#f9fafc"
+    },
+    {
+      "key": "--color-whitePorcelain",
+      "name": "whitePorcelain",
+      "value": "#ecf0f1"
+    },
+    {
+      "key": "--color-whiteSnow",
+      "name": "whiteSnow",
+      "value": "#f2f2f2"
+    }
+  ],
+  [
+    {
+      "key": "--color-black",
+      "name": "black",
+      "value": "#000"
+    },
+    {
+      "key": "--color-grey",
+      "name": "grey",
+      "value": "#aeaeae"
+    },
+    {
+      "key": "--color-greyDove",
+      "name": "greyDove",
+      "value": "#666"
+    },
+    {
+      "key": "--color-greyDusty",
+      "name": "greyDusty",
+      "value": "#979797"
+    },
+    {
+      "key": "--color-greyMischka",
+      "name": "greyMischka",
+      "value": "#e5e4e9"
+    },
+    {
+      "key": "--color-greyTundora",
+      "name": "greyTundora",
+      "value": "#484848"
+    },
+    {
+      "key": "--color-greyAlabaster",
+      "name": "greyAlabaster",
+      "value": "#f9f9f9"
+    },
+    {
+      "key": "--color-greyLight",
+      "name": "greyLight",
+      "value": "#f4f4f4"
+    },
+    {
+      "key": "--color-greyDark",
+      "name": "greyDark",
+      "value": "#333"
+    },
+    {
+      "key": "--color-primaryGrey",
+      "name": "primaryGrey",
+      "value": "#ccc"
+    },
+    {
+      "key": "--color-secondaryGrey",
+      "name": "secondaryGrey",
+      "value": "#848484"
+    },
+    {
+      "key": "--color-coolGrey",
+      "name": "coolGrey",
+      "value": "#f6f6f6"
+    },
+    {
+      "key": "--color-greyGallery",
+      "name": "greyGallery",
+      "value": "#eee"
+    },
+    {
+      "key": "--color-codeGrey",
+      "name": "codeGrey",
+      "value": "#0f0f0f"
+    },
+    {
+      "key": "--color-greyGallery",
+      "name": "greyGallery",
+      "value": "#eaeaea"
+    },
+    {
+      "key": "--color-greyAlto",
+      "name": "greyAlto",
+      "value": "#d8d8d8"
+    },
+    {
+      "key": "--color-greyZircon",
+      "name": "greyZircon",
+      "value": "#dde1e2"
+    },
+    {
+      "key": "--color-greyNevada",
+      "name": "greyNevada",
+      "value": "#657479"
+    },
+    {
+      "key": "--color-greySolid",
+      "name": "greySolid",
+      "value": "#afafaf"
+    }
+  ],
+  [
+    {
+      "key": "--color-blackFade25",
+      "name": "blackFade25",
+      "value": "color(var(--color-black) alpha(25%))"
+    },
+    {
+      "key": "--color-fadedBlueNavy",
+      "name": "fadedBlueNavy",
+      "value": "color(var(--color-blueNavy) alpha(30%))"
+    },
+    {
+      "key": "--color-fadedbluePelorous20",
+      "name": "fadedbluePelorous20",
+      "value": "color(var(--color-bluePelorous) alpha(20%))"
+    },
+    {
+      "key": "--color-fadedbluePelorous90",
+      "name": "fadedbluePelorous90",
+      "value": "color(var(--color-bluePelorous) alpha(10%))"
+    },
+    {
+      "key": "--color-fadedGreenLight10",
+      "name": "fadedGreenLight10",
+      "value": "color(var(--color-greenLight) alpha(10%))"
+    },
+    {
+      "key": "--color-fadedGreenLight20",
+      "name": "fadedGreenLight20",
+      "value": "color(var(--color-greenLight) alpha(20%))"
+    }
+  ]
+]

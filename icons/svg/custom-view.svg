@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>custom-view</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-96.000000, -552.000000)" fill="#000000">
+            <g id="Views" transform="translate(24.000000, 552.000000)">
+                <g id="Custom-View" transform="translate(72.000000, 0.000000)">
+                    <path d="M16.5,6.6 L5.7,6.6 L5.7,5.7 L16.5,5.7 L16.5,6.6 Z M3.9,14.7 L6.6,14.7 L6.6,15.6 L3.9,15.6 C3.402975,15.6 3,15.197025 3,14.7 L3,3.9 C3,3.402975 3.402975,3 3.9,3 L18.3,3 C18.797025,3 19.2,3.402975 19.2,3.9 L19.2,7.5 L18.3,7.5 L18.3,3.9 L3.9,3.9 L3.9,14.7 Z M9.3,8.4 L5.7,8.4 L5.7,7.5 L9.3,7.5 L9.3,8.4 Z M14.25,7.5 C16.1175,7.5 17.625,9.0075 17.625,10.875 C17.625,12.7425 16.1175,14.25 14.25,14.25 C12.3825,14.25 10.875,12.7425 10.875,10.875 C10.875,9.0075 12.3825,7.5 14.25,7.5 Z M21,21 L7.5,21 L7.5,19.875 C7.5,17.625 12,16.3875 14.25,16.3875 C16.5,16.3875 21,17.625 21,19.875 L21,21 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

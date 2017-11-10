@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DatePicker /> rendering should match snapshot 1`] = `
+<div
+  className=""
+  onMouseOver={[Function]}
+>
+  <DatePickerBody
+    formattedValue={null}
+    isDisabled={false}
+    isInvalid={false}
+    onClearPicker={[Function]}
+    placeholder="test"
+    size="static"
+    timeScale="date"
+  />
+</div>
+`;

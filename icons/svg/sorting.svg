@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>sorting</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-24.000000, -840.000000)" fill="#000000">
+            <g id="Actions" transform="translate(24.000000, 648.000000)">
+                <g id="Sorting" transform="translate(0.000000, 192.000000)">
+                    <path d="M12.9942828,17.3181818 L9.5546875,21 L6.04814305,17.3181818 L7.50390625,17.3181818 L8.734375,17.3181818 L8.734375,11.8181818 C8.734375,11.3663273 9.10165625,11 9.5546875,11 C10.0077187,11 10.375,11.3663273 10.375,11.8181818 L10.375,17.3181818 L11.6054688,17.3181818 L12.9942828,17.3181818 Z M11.0057172,6.68181818 L14.4453125,3 L17.9518569,6.68181818 L16.4960937,6.68181818 L15.265625,6.68181818 L15.265625,12.1818182 C15.265625,12.6336727 14.8983437,13 14.4453125,13 C13.9922812,13 13.625,12.6336727 13.625,12.1818182 L13.625,6.68181818 L12.3945312,6.68181818 L11.0057172,6.68181818 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

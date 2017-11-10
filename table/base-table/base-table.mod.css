@@ -1,0 +1,84 @@
+@import 'ui-kit/materials/colors.mod.css';
+@import 'ui-kit/materials/transitions.mod.css';
+
+:root {
+  --shadow-fixed-column: 4px -2px 4px -4px rgba(0, 0, 0, 0.3);
+}
+
+.fixed-static {
+  background: var(--color-whitePorcelain);
+}
+
+.fixed-column {
+  box-shadow: var(--shadow-fixed-column);
+}
+
+.header-cell {
+  background: var(--color-coolGrey);
+}
+
+.wrapper {
+  outline: 1px solid var(--color-greyAlto);
+}
+
+.hovered-row {
+  cursor: pointer;
+  transition: var(--transition-standard);
+}
+
+div:hover .hovered-row {
+  background: var(--color-whitePorcelain);
+}
+
+.align-left {
+  text-align: left;
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+
+/* Structure */
+
+.autosized-container {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.container {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.footer {
+  flex-grow: 1;
+  flex-shrink: 0;
+  display: flex;
+}
+
+/* RV */
+
+:global(.ReactVirtualized__Grid) {
+  /* Removes :focus ring from table */
+
+  outline-width: 0;
+}
+
+/* Storybook */
+
+.checkbox-cell {
+  background-color: #f2f2f2;
+  border-left: 2px solid var(--color-blue);
+}
+
+.checkbox-cell:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.checkbox-cell-special {
+  composes: checkbox-cell;
+  border-left: 2px solid red;
+}

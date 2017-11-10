@@ -1,0 +1,69 @@
+@import 'ui-kit/materials/colors.mod.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  color: var(--color-blueNavy);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-primaryGreen);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease-in;
+}
+
+h1 {
+  color: var(--color-blueNavy);
+  font-size: 1.538rem;
+  font-weight: 100;
+}
+
+h2 {
+  color: var(--color-primaryGreen);
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+p {
+  color: var(--color-blueNavy);
+  margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem !important;
+  }
+}

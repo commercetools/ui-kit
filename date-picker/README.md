@@ -1,0 +1,40 @@
+# Dates: DatePicker
+
+## Usage
+
+```js
+import DatePicker from 'ui-kit/date-picker';
+```
+
+#### Description
+
+The `DatePicker` component allows the user to select a date or a datetime
+depending on the defined configuration. This component also supports the
+multiple date selection. It formats the selected date depending on the current
+locale.
+
+#### Usage
+
+```js
+import DatePicker from 'ui-kit/date-picker';
+
+<DatePicker
+  placeholder="Select a date..."
+  timeScale="date"
+  value="2017-12-31T16:02:50.000Z"
+  onChange={() => {}}
+/>;
+```
+
+#### Properties
+
+| Props         | Type                                 | Required | Values                        | Default  | Description                                                                                                                                                                                                                                                                                                               |
+| ------------- | ------------------------------------ | :------: | ----------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `onChange`    | `func(undefined, Date, Array<Date>)` |    ✅    | -                             | -        | onChange triggered when selection changed.<br /><br />- `undefined` when mode is single and value was cleared<br />- `Date` when mode is single and value changed<br />- `[]` when mode is multiple or range and value was cleared<br />- `Array<Date>` when mode is multiple or range and at least one date was selected |
+| `mode`        | `oneOf`                              |    -     | `range`, `multiple`, `single` | `single` | Indicates the mode we can select dates                                                                                                                                                                                                                                                                                    |
+| `timeScale`   | `oneOf`                              |    -     | `time`, `date`, `datetime`    | `date`   | Indicates the time scale for the picker                                                                                                                                                                                                                                                                                   |
+| `value`       | `string`                             |    -     | -                             |          | The date value                                                                                                                                                                                                                                                                                                            |
+| `placeholder` | `string`                             |    -     | -                             | -        | Placeholder value to show in the input field                                                                                                                                                                                                                                                                              |
+| `isDisabled`  | `bool`                               |    -     | -                             | `false`  | Disables the date picker                                                                                                                                                                                                                                                                                                  |
+| `size`        | `oneOf`                              |    -     | `static`, `scale`             | `static` | Switches between standard-size and full-width of the container (must be a flex-context)                                                                                                                                                                                                                                   |
+| `isInvalid`   | `bool`                               |    -     | -                             | `false`  | Switches to invalid-state                                                                                                                                                                                                                                                                                                 |

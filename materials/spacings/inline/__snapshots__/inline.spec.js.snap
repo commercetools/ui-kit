@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering by default should output correc tree 1`] = `
+<div
+  className="s flexStart"
+>
+  <div />
+</div>
+`;
+
+exports[`rendering with \`alignItems\` should output correc tree 1`] = `
+<div
+  className="s flexEnd"
+>
+  <div />
+</div>
+`;
+
+exports[`rendering with \`scale\` should output correc tree 1`] = `
+<div
+  className="xl flexStart"
+>
+  <div />
+</div>
+`;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>flag-fullfiled</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-168.000000, -408.000000)" fill="#000000">
+            <g id="Switch-states" transform="translate(24.000000, 408.000000)">
+                <g id="Flag-Fulflilled" transform="translate(144.000000, 0.000000)">
+                    <path d="M4 3v18h1.838v-8.4513H20l-4.5262-4.3353L20 3.878H5.838V3" />
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

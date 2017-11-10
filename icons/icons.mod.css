@@ -1,0 +1,38 @@
+@import 'ui-kit/materials/colors.mod.css';
+
+.theme-black {
+  fill: var(--color-black);
+}
+
+.theme-grey {
+  fill: var(--color-greyNevada);
+}
+
+.theme-white {
+  fill: var(--color-white);
+}
+
+.theme-blue {
+  fill: var(--color-blue);
+}
+
+.theme-green {
+  fill: var(--color-primaryGreen);
+}
+
+.theme-apple-green {
+  fill: var(--color-green);
+}
+
+.theme-orange {
+  fill: var(--color-CTOrange);
+}
+
+.theme-red {
+  fill: var(--color-red);
+}
+
+svg.scale:not(:root) {
+  width: 100%;
+  height: auto;
+}

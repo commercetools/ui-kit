@@ -1,0 +1,65 @@
+@import 'ui-kit/materials/borders.mod.css';
+@import 'ui-kit/materials/colors.mod.css';
+@import 'ui-kit/materials/shadows.mod.css';
+@import 'ui-kit/materials/spacings.mod.css';
+@import 'ui-kit/materials/transitions.mod.css';
+
+.button {
+  /*
+    we need to add a custom class to the button in order to change
+    the looks of the button when the actual <button> is
+    hovered / focused / active
+  */
+}
+
+.button-layout {
+  font-size: 1rem;
+  transition: background-color var(--transition-linear-80ms);
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius-6);
+  color: var(--color-buttonPrimary);
+  padding: var(--spacing-8);
+  border: 1px solid var(--color-buttonPrimary);
+}
+
+.button-layout > * + * {
+  margin: 0 0 0 6px;
+}
+
+.default,
+.active {
+  composes: button-layout;
+}
+
+.button:hover .default,
+.button:hover .active,
+.button:focus .default,
+.button:focus .active {
+  border-color: var(--color-buttonHover);
+  color: var(--color-buttonHover);
+}
+
+.button:active .default,
+.button:active .active,
+.active {
+  border-color: var(--color-buttonPrimary);
+  color: var(--color-buttonPrimary);
+  box-shadow: inset var(--shadow-1-first), inset var(--shadow-1-second);
+}
+
+.disabled {
+  composes: button-layout;
+  border-color: var(--color-coolGrey);
+  color: var(--color-primaryGrey);
+}
+
+.button:hover .disabled {
+  border-color: var(--color-coolGrey);
+  color: var(--color-primaryGrey);
+}
+
+.button:active .disabled {
+  border-color: var(--color-coolGrey);
+  color: var(--color-primaryGrey);
+}

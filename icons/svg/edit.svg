@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>edit</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-24.000000, -120.000000)" fill="#000000">
+            <g id="CRUD" transform="translate(24.000000, 120.000000)">
+                <g id="Edit">
+                    <path d="M16.8828118,10.8544563 L8.8544563,18.8828118 L6,16.0282293 L14.0283555,8 L16.8828118,10.8544563 Z M5,19.8545825 L5,17 L7.85458246,19.8545825 L5,19.8545825 Z M18.9620767,6.35737112 C19.4834656,6.87876007 19.4834656,7.72410907 18.9620767,8.24549802 L17.8544563,9.3531184 L15,6.4986621 L16.1076204,5.39104172 C16.6290093,4.86965276 17.4743583,4.86965276 17.9957473,5.39104172 L18.9620767,6.35737112 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

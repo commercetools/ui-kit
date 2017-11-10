@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>delete</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-96.000000, -120.000000)" fill="#000000">
+            <g id="CRUD" transform="translate(24.000000, 120.000000)">
+                <g id="Delete" transform="translate(72.000000, 0.000000)">
+                    <path d="M20.2,6.91876875 L20.2,7.5 L4,7.5 L4,6.91876875 L4,5.45626875 L4,4.8 L8.5,4.8 L8.5,3 L8.95,3 L15.7001125,3 L15.7001125,3.9 L15.7,4.8 L20.2,4.8 L20.2,5.45626875 L20.2,6.91876875 Z M19.3,6.6 L19.3,5.7 L4.9,5.7 L4.9,6.6 L19.3,6.6 Z M9.4,4.8 L14.8,4.8 L14.8,3.9 L9.4,3.9 L9.4,4.8 Z M17.5,7.5 L18.4,7.5 L17.61205,19.3197 C17.5489375,20.2659375 16.7661625,21 15.8177875,21 L8.3822125,21 C7.4353,21 6.65095,20.264475 6.58795,19.3197 L5.8,7.5 L6.7,7.5 L7.51045,18.8461875 C7.56085,19.5526875 8.148775,20.1 8.8569625,20.1 L15.3430375,20.1 C16.051225,20.1 16.63915,19.5526875 16.68955,18.8461875 L17.5,7.5 Z M12.55,16.5 L11.65,16.5 L11.65,9.3 L12.55,9.3 L12.55,16.5 Z M10.3,16.5 L9.4,16.5 L9.4,9.3 L10.3,9.3 L10.3,16.5 Z M14.8,16.5 L13.9,16.5 L13.9,9.3 L14.8,9.3 L14.8,16.5 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

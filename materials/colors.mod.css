@@ -1,0 +1,72 @@
+/* Note: This file is transformed to JSON version in order to list the colors in
+the UIKit. It is thus essential that no all colors are listed under the `:root`
+selector. Color groups are indicated by a comment preceeding the group of
+colors. */
+
+:root {
+  /* Blues */
+  --color-blue: #0679d1;
+  --color-bluePelorous: #1e82a4;
+  --color-blueNavy: #213e48;
+  --color-blueDodger: #0d9df8;
+  --color-blueSolitude: #eaf7fe;
+  --color-purple: #bd72ff;
+
+  /* Reds */
+  --color-red: #e60050;
+  --color-redCream: #fdf2f4;
+  --color-CTOrange: #f27923;
+  --color-CTYellow: #f5a730;
+  --color-bananaMania: #fce4c2;
+
+  /* Greens */
+  --color-yellowMayo: #fff9ed;
+  --color-green: #4e8410;
+  --color-darkGreen: #215457;
+  --color-primaryGreen: #20ad92;
+  --color-greenLight: #87d8c8;
+  --color-buttonPrimary: #00b6a1;
+  --color-buttonHover: #03c8b2;
+  --color-primaryCell: #00b6a1;
+  --color-greenDowny: #52cebf;
+  --color-greenSnow: #f3fffd;
+  --color-greenTapa: #1c3239;
+  --color-greenCaper: #c4e5a1;
+  --color-greenSulu: #bee990;
+
+  /* Whites */
+  --color-white: #fff;
+  --color-whiteAlabaster: #fafafa;
+  --color-whiteCatskill: #f9fafc;
+  --color-whitePorcelain: #ecf0f1;
+  --color-whiteSnow: #f2f2f2;
+
+  /* Grays */
+  --color-black: #000;
+  --color-grey: #aeaeae;
+  --color-greyDove: #666;
+  --color-greyDusty: #979797;
+  --color-greyMischka: #e5e4e9;
+  --color-greyTundora: #484848;
+  --color-greyAlabaster: #f9f9f9;
+  --color-greyLight: #f4f4f4;
+  --color-greyDark: #333;
+  --color-primaryGrey: #ccc;
+  --color-secondaryGrey: #848484;
+  --color-coolGrey: #f6f6f6;
+  --color-greyGallery: #eee;
+  --color-codeGrey: #0f0f0f;
+  --color-greyGallery: #eaeaea;
+  --color-greyAlto: #d8d8d8;
+  --color-greyZircon: #dde1e2;
+  --color-greyNevada: #657479;
+  --color-greySolid: #afafaf;
+
+  /* Faded version of main colors */
+  --color-blackFade25: color(var(--color-black) alpha(25%));
+  --color-fadedBlueNavy: color(var(--color-blueNavy) alpha(30%));
+  --color-fadedbluePelorous20: color(var(--color-bluePelorous) alpha(20%));
+  --color-fadedbluePelorous90: color(var(--color-bluePelorous) alpha(10%));
+  --color-fadedGreenLight10: color(var(--color-greenLight) alpha(10%));
+  --color-fadedGreenLight20: color(var(--color-greenLight) alpha(20%));
+}

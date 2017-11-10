@@ -1,0 +1,15 @@
+@import 'ui-kit/materials/colors.mod.css';
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  white-space: pre;
+  border-bottom: 1px solid var(--color-greyAlto);
+  border-right: 1px solid var(--color-greyAlto);
+}
+
+.container > * {
+  flex: 1 0 100%;
+  min-width: 0;
+}

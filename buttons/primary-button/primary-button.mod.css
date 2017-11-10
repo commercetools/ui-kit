@@ -1,0 +1,101 @@
+@import 'ui-kit/materials/colors.mod.css';
+@import 'ui-kit/materials/shadows.mod.css';
+@import 'ui-kit/materials/spacings.mod.css';
+@import 'ui-kit/materials/transitions.mod.css';
+
+/** Button wrapper */
+.button-layout {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-white);
+  transition: background-color var(--transition-linear-80ms);
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+}
+
+.button-layout-big {
+  composes: button-layout;
+  composes: button-big-wrapper from '../shared.mod.css';
+}
+
+.button-layout-small {
+  composes: button-layout;
+  composes: button-small-wrapper from '../shared.mod.css';
+}
+
+/** Button element */
+.active,
+.disabled,
+.button {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.active:hover,
+.active:focus,
+.button:hover,
+.button:focus {
+  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+}
+
+.active,
+.button:active {
+  box-shadow: inset var(--shadow-7-first), inset var(--shadow-7-second);
+}
+
+/**
+ * Button wrapper (tones)
+ */
+
+/** primary tone */
+.button-tone-primary .button {
+  background-color: var(--color-buttonPrimary);
+}
+
+.button-tone-primary .active:hover,
+.button-tone-primary .button:hover {
+  background-color: var(--color-greenDowny);
+}
+
+.button-tone-primary .active,
+.button-tone-primary .button:active {
+  background-color: var(--color-buttonPrimary);
+}
+
+/** urgent tone */
+.button-tone-urgent .button {
+  background-color: var(--color-CTOrange);
+}
+
+.button-tone-urgent .active:hover,
+.button-tone-urgent .button:hover {
+  background-color: var(--color-greenDowny);
+}
+
+.button-tone-urgent .active,
+.button-tone-urgent .button:active {
+  background-color: var(--color-CTOrange);
+}
+
+/**
+ * .disabled button mode, this applies to all tones.
+ */
+.button-layout .disabled {
+  box-shadow: none;
+  background-color: var(--color-greyZircon);
+  color: var(--color-greyNevada);
+}
+
+.button-layout .disabled:active,
+.button-layout .disabled:hover {
+  background-color: var(--color-greyZircon);
+  color: var(--color-greyNevada);
+}
+
+/** Icon container */
+.icon-container {
+  margin: 0 var(--spacing-4) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

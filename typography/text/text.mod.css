@@ -1,0 +1,88 @@
+@import 'ui-kit/materials/colors.mod.css';
+
+:root {
+  /* Sizes */
+  --font-h1: 32px;
+  --font-h2: 24px;
+  --font-h3: 20px;
+  --font-h4: 16px;
+  --font-h5: 14px;
+  --font-body: 13px;
+  --font-detail: 12px;
+
+  /* Colors */
+  --font-color: var(--color-greyTundora);
+}
+
+h1 {
+  font-size: var(--font-h1);
+}
+
+h2 {
+  font-size: var(--font-h2);
+}
+
+h3 {
+  font-size: var(--font-h3);
+}
+
+h4 {
+  font-size: var(--font-h4);
+  font-weight: normal;
+}
+
+h5 {
+  font-size: var(--font-h5);
+  font-weight: normal;
+}
+
+.body-text {
+  font-size: var(--font-body);
+}
+
+small {
+  font-size: var(--font-detail);
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.body-text,
+small {
+  color: var(--font-color);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.secondary {
+  color: var(--color-secondaryGrey);
+}
+
+.positive {
+  color: var(--color-green);
+}
+
+.negative {
+  color: var(--color-red);
+}

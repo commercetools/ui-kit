@@ -1,0 +1,40 @@
+@import 'ui-kit/materials/colors.mod.css';
+@import 'ui-kit/materials/spacings.mod.css';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  padding: 0;
+  min-height: initial;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button > * + * {
+  margin: 0 0 0 var(--spacing-4);
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+/* Set the colors for the different interactions by selecting the `p` element, rendered by `<Text.Body>` */
+
+.button p {
+  color: var(--color-primaryGreen);
+}
+
+.button:hover p {
+  color: var(--color-greenDowny);
+}
+
+.disabled p {
+  color: var(--color-primaryGrey);
+}
+
+.button:hover.disabled p {
+  color: var(--color-primaryGrey);
+}

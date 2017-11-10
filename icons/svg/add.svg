@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>add</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-168.000000, -120.000000)" fill="#000000">
+            <g id="CRUD" transform="translate(24.000000, 120.000000)">
+                <g id="Add" transform="translate(144.000000, 0.000000)">
+                    <path d="M12.5,11.5 L12.5,3.5 C12.5,3.22385763 12.2761424,3 12,3 C11.7238576,3 11.5,3.22385763 11.5,3.5 L11.5,11.5 L3.5,11.5 C3.22385763,11.5 3,11.7238576 3,12 C3,12.2761424 3.22385763,12.5 3.5,12.5 L11.5,12.5 L11.5,20.5 C11.5,20.7761424 11.7238576,21 12,21 C12.2761424,21 12.5,20.7761424 12.5,20.5 L12.5,12.5 L19.0798295,12.5 C20.1873998,12.5 20.1873998,12.5 20.5,12.5 C20.7761424,12.5 21,12.2761424 21,12 C21,11.7238576 20.7761424,11.5 20.5,11.5 C20.1873998,11.5 20.1873998,11.5 19.0798295,11.5 L12.5,11.5 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

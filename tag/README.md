@@ -1,0 +1,46 @@
+# Tags
+
+## Usage
+
+```js
+import Tag from 'ui-kit/tag';
+```
+
+#### Description
+
+A tag is often part of a list of items visualizing what has applied to some
+other element. This might apply to search terms or categories of a product.
+
+#### Usage
+
+```js
+<Tag
+  type="normal"
+  isDisabled={false}
+  to="/project-key/products/foo"
+  onRemove={() => {}}
+>
+  Icecream
+</Tag>;
+```
+
+#### Properties
+
+| Props        | Type     | Required | Values              | Default  | Description                                                        |
+| ------------ | -------- | :------: | ------------------- | -------- | ------------------------------------------------------------------ |
+| `type`       | `string` |    -     | `normal`, `warning` | `normal` | Indicates color scheme of the tag                                  |
+| `linkTo`     | `string` |    -     | -                   | -        | Location the tag links to when enabled                             |
+| `isDisabled` | `bool`   |    -     | -                   | `false`  | Disables the tag and the option to remove                          |
+| `onClick`    | `func`   |    -     | -                   | -        | Called when tag is clicked (but not when remove button is clicked) |
+| `onRemove`   | `func`   |    -     | -                   | -        | Called when remove is clicked                                      |
+| `children`   | `node`   |    ✅    | -                   | -        | Content rendered within the tag                                    |
+
+#### Where to use
+
+Main Functions and use cases are:
+
+* Adding something to a set _example: Adding products to categories_
+
+* Remove from a set _example: Removing products from categories_
+
+* Showing a set _example: List of categories a product is in_

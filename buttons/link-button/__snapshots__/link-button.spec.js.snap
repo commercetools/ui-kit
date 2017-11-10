@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering outputs correct tree 1`] = `
+<Link
+  className="button"
+  onlyActiveOnIndex={false}
+  style={Object {}}
+  to="/foo/bar"
+>
+  <AddIcon
+    size="small"
+    theme="green"
+  />
+  <TextBody>
+    Accessibility text
+  </TextBody>
+</Link>
+`;

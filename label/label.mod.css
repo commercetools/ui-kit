@@ -1,0 +1,37 @@
+@import 'ui-kit/materials/colors.mod.css';
+
+.tone-critical {
+  background-color: color(var(--color-red) alpha(15%));
+  border: 1px solid var(--color-red);
+  border-radius: 2px;
+}
+
+.tone-warning {
+  background-color: color(var(--color-CTOrange) alpha(15%));
+  border: 1px solid var(--color-CTOrange);
+  border-radius: 2px;
+}
+
+.tone-positive {
+  background-color: color(var(--color-green) alpha(15%));
+  border: 1px solid var(--color-green);
+  border-radius: 2px;
+}
+
+.tone-information {
+  background-color: color(var(--color-blue) alpha(15%));
+  border: 1px solid var(--color-blue);
+  border-radius: 2px;
+}
+
+.tone-primary {
+  background-color: color(var(--color-primaryGreen) alpha(15%));
+  border: 1px solid var(--color-primaryGreen);
+  border-radius: 2px;
+}
+
+.tone-secondary {
+  background-color: color(var(--color-greyNevada) alpha(15%));
+  border: 1px solid var(--color-greyNevada);
+  border-radius: 2px;
+}

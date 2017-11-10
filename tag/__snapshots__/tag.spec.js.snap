@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tag /> rendering when \`linkTo\` is not set should output correct tree 1`] = `
+<div
+  className="wrapper wrapperTypeNormal"
+>
+  <TagNormalBody
+    isDisabled={false}
+    onClick={[Function]}
+    onRemove={[Function]}
+    type="normal"
+  >
+    Icecream we scream!
+  </TagNormalBody>
+  <AccessibleButton
+    buttonAttributes={Object {}}
+    className="removeWrapper removeWrapperTypeNormal"
+    isDisabled={false}
+    isToggleButton={false}
+    label="Remove"
+    onClick={[Function]}
+  >
+    <CloseBoldIcon
+      size="small"
+    />
+  </AccessibleButton>
+</div>
+`;
+
+exports[`<Tag /> rendering when \`linkTo\` is set should output correct tree 1`] = `
+<div
+  className="wrapper wrapperTypeNormal"
+>
+  <TagLinkBody
+    isDisabled={false}
+    linkTo="/foo"
+    onClick={[Function]}
+    type="normal"
+  >
+    Icecream we scream!
+  </TagLinkBody>
+</div>
+`;
+
+exports[`<Tag /> rendering when disabled should output correct tree 1`] = `
+<div
+  className="wrapper wrapperTypeNormal disabledWrapper"
+>
+  <TagNormalBody
+    isDisabled={true}
+    type="normal"
+  >
+    Icecream we scream!
+  </TagNormalBody>
+</div>
+`;
+
+exports[`<Tag /> rendering when of type \`normal\` (default) should output correct tree 1`] = `
+<div
+  className="wrapper wrapperTypeNormal"
+>
+  <TagNormalBody
+    isDisabled={false}
+    type="normal"
+  >
+    Icecream we scream!
+  </TagNormalBody>
+</div>
+`;
+
+exports[`<Tag /> rendering when of type \`warning\` should output correct tree 1`] = `
+<div
+  className="wrapper wrapperTypeWarning"
+>
+  <TagNormalBody
+    isDisabled={false}
+    type="warning"
+  >
+    Icecream we scream!
+  </TagNormalBody>
+</div>
+`;
+
+exports[`<Tag /> rendering when removable (\`onRemove\`) should output correct tree 1`] = `
+<div
+  className="wrapper wrapperTypeNormal"
+>
+  <TagNormalBody
+    isDisabled={false}
+    onRemove={[Function]}
+    type="normal"
+  >
+    Icecream we scream!
+  </TagNormalBody>
+  <AccessibleButton
+    buttonAttributes={Object {}}
+    className="removeWrapper removeWrapperTypeNormal"
+    isDisabled={false}
+    isToggleButton={false}
+    label="Remove"
+    onClick={[Function]}
+  >
+    <CloseBoldIcon
+      size="small"
+    />
+  </AccessibleButton>
+</div>
+`;
+
+exports[`\`<TagLinkBody />\` rendering should output correct tree 1`] = `
+<Link
+  className="contentWrapper contentWrapperNormal clickableContentWrapperNormal clickableContentWrapper plainLink"
+  onClick={[Function]}
+  onlyActiveOnIndex={false}
+  style={Object {}}
+  to="foo-too"
+>
+  <TextDetail>
+    Icecream we scream!
+  </TextDetail>
+</Link>
+`;
+
+exports[`\`<TagNormalBody />\` rendering should output correct tree 1`] = `
+<AccessibleButton
+  buttonAttributes={Object {}}
+  className="contentWrapper contentWrapperNormal clickableContentWrapperNormal clickableContentWrapper"
+  isDisabled={false}
+  isToggleButton={false}
+  label="Click"
+  onClick={[Function]}
+>
+  <TextDetail>
+    Icecream we scream!
+  </TextDetail>
+</AccessibleButton>
+`;

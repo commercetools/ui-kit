@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering structure should output correct tree 1`] = `
+<Div
+  className="container button-appearance default theme-default"
+  onMouseDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  onMouseUp={[Function]}
+>
+  <AccessibleButton
+    buttonAttributes={
+      Object {
+        "data-track-component": "SecondaryButton",
+      }
+    }
+    className="button"
+    isToggleButton={false}
+    label=""
+    onClick={[Function]}
+  >
+    <Inline
+      alignItems="center"
+      scale="xs"
+    >
+      <span />
+    </Inline>
+  </AccessibleButton>
+</Div>
+`;
+
+exports[`rendering with icon should output correct tree 1`] = `
+<Div
+  className="container button-appearance default theme-default"
+  onMouseDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  onMouseUp={[Function]}
+>
+  <AccessibleButton
+    buttonAttributes={
+      Object {
+        "data-track-component": "SecondaryButton",
+      }
+    }
+    className="button"
+    isToggleButton={false}
+    label=""
+    onClick={[Function]}
+  >
+    <Inline
+      alignItems="center"
+      scale="xs"
+    >
+      <span
+        className="icon-container"
+      >
+        <FilterIcon />
+      </span>
+      <span />
+    </Inline>
+  </AccessibleButton>
+</Div>
+`;

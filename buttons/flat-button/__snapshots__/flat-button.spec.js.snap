@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering outputs correct tree 1`] = `
+<div
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <AccessibleButton
+    buttonAttributes={
+      Object {
+        "data-track-component": "LinkButton",
+      }
+    }
+    className="button primary"
+    isDisabled={false}
+    isToggleButton={false}
+    label="Accessibility text"
+    onClick={[Function]}
+  >
+    <AddIcon
+      size="small"
+      theme="green"
+    />
+    <TextBody>
+      Accessibility text
+    </TextBody>
+  </AccessibleButton>
+</div>
+`;
