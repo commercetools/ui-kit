@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import Tag from 'ui-kit/tag';
+import Tag from '@commercetools-local/ui-kit/tag';
 ```
 
 #### Description

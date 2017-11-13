@@ -1,4 +1,4 @@
-@import 'ui-kit/materials/colors.mod.css';
+@import '../materials/colors.mod.css';
 
 :global(.flatpickr-day.selected),
 :global(.flatpickr-day.startRange),

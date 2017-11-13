@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import DatePicker from 'ui-kit/date-picker';
+import DatePicker from '@commercetools-local/ui-kit/date-picker';
 ```
 
 #### Description
@@ -16,7 +16,7 @@ locale.
 #### Usage
 
 ```js
-import DatePicker from 'ui-kit/date-picker';
+import DatePicker from '@commercetools-local/ui-kit/date-picker';
 
 <DatePicker
   placeholder="Select a date..."

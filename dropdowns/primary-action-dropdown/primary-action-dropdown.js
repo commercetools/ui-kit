@@ -169,7 +169,7 @@ export class PrimaryActionDropdown extends React.PureComponent {
 
     invariant(
       childrenAsArray.length > 1,
-      'ui-kit/dropdowns/primary-action-dropdown: must contain at least two options'
+      '@commercetools-local/ui-kit/dropdowns/primary-action-dropdown: must contain at least two options'
     );
 
     return (

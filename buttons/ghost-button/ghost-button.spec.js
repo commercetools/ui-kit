@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddBoldIcon } from 'ui-kit/icons';
+import { AddBoldIcon } from '../../icons';
 import GhostButton from './ghost-button';
 
 const createProps = custom => ({

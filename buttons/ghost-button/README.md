@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import GhostButton from 'ui-kit/buttons/ghost-button';
+import GhostButton from '@commercetools-local/ui-kit/buttons/ghost-button';
 ```
 
 #### Description

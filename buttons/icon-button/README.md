@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import IconButton from 'ui-kit/buttons/icon-button';
+import IconButton from '@commercetools-local/ui-kit/buttons/icon-button';
 ```
 
 #### Description

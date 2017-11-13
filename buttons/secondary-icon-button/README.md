@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import SecondaryIconButton from 'ui-kit/buttons/secondary-icon-button';
+import SecondaryIconButton from '@commercetools-local/ui-kit/buttons/secondary-icon-button';
 ```
 
 #### Description

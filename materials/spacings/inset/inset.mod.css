@@ -1,4 +1,4 @@
-@import 'ui-kit/materials/spacings.mod.css';
+@import '../../spacings.mod.css';
 
 .xs {
   padding: var(--spacing-4);

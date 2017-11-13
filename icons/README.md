@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { ExportIcon } from 'ui-kit/icons';
+import { ExportIcon } from '@commercetools-local/ui-kit/icons';
 
 <ExportIcon />;
 ```
@@ -14,7 +14,7 @@ You can find a list of all available icons in the UIKit.
 
 #### How to add new icons
 
-1. add the SVG file you got from the designer to `ui-kit/icons/svg`
+1. add the SVG file you got from the designer to `@commercetools-local/ui-kit/icons/svg`
 2. restart webpack (`npm start` in development)
 
 #### Properties

@@ -1,7 +1,7 @@
-@import 'ui-kit/materials/colors.mod.css';
-@import 'ui-kit/materials/shadows.mod.css';
-@import 'ui-kit/materials/spacings.mod.css';
-@import 'ui-kit/materials/transitions.mod.css';
+@import '../../materials/colors.mod.css';
+@import '../../materials/shadows.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/transitions.mod.css';
 
 /** Button wrapper */
 .button-layout {

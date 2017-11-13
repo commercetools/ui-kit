@@ -1,5 +1,5 @@
-@import 'ui-kit/materials/colors.mod.css';
-@import 'ui-kit/materials/spacings.mod.css';
+@import '../../materials/colors.mod.css';
+@import '../../materials/spacings.mod.css';
 
 .button {
   display: inline-flex;
