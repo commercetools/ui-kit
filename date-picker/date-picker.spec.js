@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import Flatpickr from 'flatpickr';
 import isTouchDevice from 'is-touch-device';
 import { de } from 'flatpickr/dist/l10n/de';
-import { intlMock } from 'core/utils/test';
 import { DatePicker, createFormatter } from './date-picker';
 
 jest.mock('flatpickr', () => jest.fn());
@@ -14,7 +13,6 @@ const createTestProps = custom => ({
   value: null,
   placeholder: 'test',
   locale: 'en',
-  intl: intlMock,
   ...custom,
 });
 
