@@ -293,6 +293,58 @@ describe('<DatePicker />', () => {
         expect(wrapper.find('DatePickerBody')).toHaveProp('size', 'scale');
       });
     });
+
+    describe('formattedValue', () => {
+      let datePickerBody;
+      describe('with ranged values', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            value: ['2017-11-13T17:36:02.655Z', '2018-11-13T17:36:02.655Z'],
+            mode: 'range',
+            timeScale: 'date',
+          });
+          wrapper = shallow(<DatePicker {...props} />);
+          datePickerBody = wrapper.find('DatePickerBody');
+        });
+        it('propagate formattedValue to `DatePickerBody`', () => {
+          expect(datePickerBody).toHaveProp(
+            'formattedValue',
+            '11/13/2017 to 11/13/2018'
+          );
+        });
+      });
+      describe('with multiple values', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            value: ['2017-11-13T17:36:02.655Z', '2018-11-13T17:36:02.655Z'],
+            mode: 'multiple',
+            timeScale: 'date',
+          });
+          wrapper = shallow(<DatePicker {...props} />);
+          datePickerBody = wrapper.find('DatePickerBody');
+        });
+        it('propagate formattedValue to `DatePickerBody`', () => {
+          expect(datePickerBody).toHaveProp(
+            'formattedValue',
+            '11/13/2017 to 11/13/2018'
+          );
+        });
+      });
+      describe('with single value', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            value: '2017-11-13T17:36:02.655Z',
+            mode: 'range',
+            timeScale: 'date',
+          });
+          wrapper = shallow(<DatePicker {...props} />);
+          datePickerBody = wrapper.find('DatePickerBody');
+        });
+        it('propagate formattedValue to `DatePickerBody`', () => {
+          expect(datePickerBody).toHaveProp('formattedValue', '11/13/2017');
+        });
+      });
+    });
   });
 
   describe('callbacks', () => {

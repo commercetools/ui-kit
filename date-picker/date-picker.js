@@ -42,7 +42,10 @@ export class DatePicker extends React.PureComponent {
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['scale', 'static']),
     timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
   };
 
   static defaultProps = {
@@ -151,6 +154,15 @@ export class DatePicker extends React.PureComponent {
     this.pickerElem = ref;
   };
 
+  getFormattedValue = value => {
+    if (this.props.mode === 'single') return this.formatter(value);
+    // `value` are expected to be an array
+    // when managing `range` and `multiple` modes
+    return Array.isArray(value)
+      ? value.map(v => this.formatter(v)).join(' to ')
+      : this.formatter(value);
+  };
+
   render() {
     return (
       <div
@@ -161,7 +173,9 @@ export class DatePicker extends React.PureComponent {
         ref={this.getRef}
       >
         <DatePickerBody
-          formattedValue={this.props.value && this.formatter(this.props.value)}
+          formattedValue={
+            this.props.value && this.getFormattedValue(this.props.value)
+          }
           isDisabled={this.props.isDisabled}
           isInvalid={this.props.isInvalid}
           onClearPicker={this.handleClearPicker}
