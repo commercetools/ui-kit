@@ -318,9 +318,9 @@ export default class BaseTable extends React.Component {
     );
 
   itemRenderer = renderParams => {
-    // `column` is the original column-definition from where you defined the table
+    // `columnDefinition` is the original column-definition from where you defined the table
     // `renderParams` holds similar looking-information but is the data provided by "react-virtualized"
-    const column = this.columns[renderParams.columnIndex];
+    const columnDefinition = this.columns[renderParams.columnIndex];
     return (
       <CellMeasurer
         cache={this.cellMeasurerCache}
@@ -334,41 +334,41 @@ export default class BaseTable extends React.Component {
             style={renderParams.style}
             className={classnames(
               styles['header-cell'],
-              column.headerClassName,
-              styles[`align-${column.align || 'left'}`]
+              columnDefinition.headerClassName,
+              styles[`align-${columnDefinition.align || 'left'}`]
             )}
           >
-            {this.headerRenderer(column)}
+            {this.headerRenderer(columnDefinition)}
           </div>
         ) : (
           <div
             // TODO: move the className and handlers into Cell
             style={renderParams.style}
             className={classnames(
-              styles[`align-${column.align || 'left'}`],
+              styles[`align-${columnDefinition.align || 'left'}`],
               {
                 [styles['hovered-row']]:
                   renderParams.rowIndex === this.state.hoveredRowIndex &&
                   renderParams.rowIndex !== 0 &&
                   this.props.onRowClick,
               },
-              column.className,
-              column.classNameGetter
-                ? column.classNameGetter({
+              columnDefinition.className,
+              columnDefinition.classNameGetter
+                ? columnDefinition.classNameGetter({
                     rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
-                    columnKey: column.key,
+                    columnKey: columnDefinition.key,
                     height: renderParams.height,
                     width: renderParams.width,
                   })
                 : undefined
             )}
-            data-test={`cell-${renderParams.rowIndex}-${column.key}`}
+            data-test={`cell-${renderParams.rowIndex}-${columnDefinition.key}`}
             onClick={event => {
-              if (column.onClick) {
-                column.onClick({
+              if (columnDefinition.onClick) {
+                columnDefinition.onClick({
                   event,
                   rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
-                  columnKey: column.key,
+                  columnKey: columnDefinition.key,
                 });
               } else if (this.props.onRowClick)
                 this.props.onRowClick(
@@ -397,13 +397,13 @@ export default class BaseTable extends React.Component {
           >
             <Cell>
               {renderParams.rowIndex === 0 ? (
-                this.headerRenderer(column)
+                this.headerRenderer(columnDefinition)
               ) : (
                 <Spacings.Inset scale="m">
                   {this.props.itemRenderer({
                     ...renderParams,
                     rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
-                    columnKey: column.key,
+                    columnKey: columnDefinition.key,
                   })}
                 </Spacings.Inset>
               )}
