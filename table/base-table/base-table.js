@@ -318,6 +318,8 @@ export default class BaseTable extends React.Component {
     );
 
   itemRenderer = renderParams => {
+    // `column` is the original column-definition from where you defined the table
+    // `renderParams` holds similar looking-information but is the data provided by "react-virtualized"
     const column = this.columns[renderParams.columnIndex];
     return (
       <CellMeasurer
@@ -360,12 +362,13 @@ export default class BaseTable extends React.Component {
                   })
                 : undefined
             )}
+            data-test={`cell-${renderParams.rowIndex}-${column.key}`}
             onClick={event => {
               if (column.onClick) {
                 column.onClick({
                   event,
                   rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
-                  columnKey: renderParams.columnKey,
+                  columnKey: column.key,
                 });
               } else if (this.props.onRowClick)
                 this.props.onRowClick(
