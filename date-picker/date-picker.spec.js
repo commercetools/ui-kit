@@ -311,7 +311,7 @@ describe('<DatePicker />', () => {
         it('propagate formattedValue to `DatePickerBody`', () => {
           expect(datePickerBody).toHaveProp(
             'formattedValue',
-            '11/13/2017 DatePicker.labelRange 11/13/2018'
+            '11/13/2017 UIKit.DatePicker.labelRange 11/13/2018'
           );
         });
       });
