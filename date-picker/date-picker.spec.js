@@ -326,7 +326,7 @@ describe('<DatePicker />', () => {
         it('propagate formattedValue to `DatePickerBody`', () => {
           expect(datePickerBody).toHaveProp(
             'formattedValue',
-            '11/13/2017 to 11/13/2018'
+            '11/13/2017, 11/13/2018'
           );
         });
       });
@@ -334,7 +334,7 @@ describe('<DatePicker />', () => {
         beforeEach(() => {
           props = createTestProps({
             value: '2017-11-13T17:36:02.655Z',
-            mode: 'range',
+            mode: 'single',
             timeScale: 'date',
           });
           wrapper = shallow(<DatePicker {...props} />);

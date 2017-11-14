@@ -155,12 +155,14 @@ export class DatePicker extends React.PureComponent {
   };
 
   getFormattedValue = value => {
-    if (this.props.mode === 'single') return this.formatter(value);
     // `value` are expected to be an array
     // when managing `range` and `multiple` modes
-    return Array.isArray(value)
-      ? value.map(v => this.formatter(v)).join(' to ')
-      : this.formatter(value);
+    if (this.props.mode === 'multiple')
+      return value.map(v => this.formatter(v)).join(', ');
+    if (this.props.mode === 'range')
+      return value.map(v => this.formatter(v)).join(' to ');
+
+    return this.formatter(value);
   };
 
   render() {
