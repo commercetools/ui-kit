@@ -5,11 +5,14 @@ import Flatpickr from 'flatpickr';
 import isTouchDevice from 'is-touch-device';
 import { de } from 'flatpickr/dist/l10n/de';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import { injectIntl, intlShape } from 'react-intl';
 import moment from 'moment';
 import classnames from 'classnames';
 import { DatePickerBody } from './date-picker-body';
 import './date-picker-ct-theme.mod.css';
 import styles from './date-picker.mod.css';
+import messages from './messages';
 
 export const createFormatter = (timeScale, locale) => value => {
   switch (timeScale) {
@@ -46,6 +49,9 @@ export class DatePicker extends React.PureComponent {
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
     ]),
+
+    // HoC
+    intl: intlShape.isRequired,
   };
 
   static defaultProps = {
@@ -160,7 +166,9 @@ export class DatePicker extends React.PureComponent {
     if (this.props.mode === 'multiple')
       return value.map(v => this.formatter(v)).join(', ');
     if (this.props.mode === 'range')
-      return value.map(v => this.formatter(v)).join(' to ');
+      return value
+        .map(v => this.formatter(v))
+        .join(` ${this.props.intl.formatMessage(messages.labelRange)} `);
 
     return this.formatter(value);
   };
@@ -195,4 +203,4 @@ const mapStateToProps = state => ({
   locale: state.globalAppState.locale.substring(0, 2),
 });
 
-export default connect(mapStateToProps)(DatePicker);
+export default compose(injectIntl, connect(mapStateToProps))(DatePicker);
