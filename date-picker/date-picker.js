@@ -160,17 +160,21 @@ export class DatePicker extends React.PureComponent {
     this.pickerElem = ref;
   };
 
-  getFormattedValue = value => {
-    // `value` are expected to be an array
+  /**
+   * @param  {String} selectedDate This can be `date`, `datetime`, or `time`
+   * @return {String} the formatted `selectedDate` based on `timeScale`
+   */
+  getFormattedValue = selectedDate => {
+    // `selectedDate` is expected to be an array
     // when managing `range` and `multiple` modes
     if (this.props.mode === 'multiple')
-      return value.map(v => this.formatter(v)).join(', ');
+      return selectedDate.map(v => this.formatter(v)).join(', ');
     if (this.props.mode === 'range')
-      return value
+      return selectedDate
         .map(v => this.formatter(v))
         .join(` ${this.props.intl.formatMessage(messages.labelRange)} `);
 
-    return this.formatter(value);
+    return this.formatter(selectedDate);
   };
 
   render() {
