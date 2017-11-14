@@ -1,0 +1,45 @@
+/*
+  Global styles for the responsive grid layout.
+  TODO: implement a proper layout system with components, or simply use css-grid.
+ */
+
+:global(.row) {
+  clear: both;
+  float: left;
+  width: 100%;
+}
+
+:global(.col-3) {
+  float: left;
+  width: 25%;
+}
+
+:global(.col-4) {
+  float: left;
+  width: 33.333%;
+}
+
+:global(.col-5) {
+  float: left;
+  width: 41.666%;
+}
+
+:global(.col-6) {
+  float: left;
+  width: 50%;
+}
+
+:global(.col-7) {
+  float: left;
+  width: 58.333%;
+}
+
+:global(.col-8) {
+  float: left;
+  width: 66.666%;
+}
+
+:global(.col-12) {
+  float: left;
+  width: 100%;
+}
