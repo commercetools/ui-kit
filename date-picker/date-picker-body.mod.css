@@ -26,6 +26,14 @@
   height: var(--standard-input-height);
   margin-right: 0; /* stop that jumping */
   padding: var(--spacing-8);
+
+  /* Html input elements have a browser-given width based on the size attribute,
+  which has a default value of 20—meaning 20 chars should fit in the input.
+  Flexbox respects that width as the input's minimum width. We need to explicitly
+  set the width to allow the input to shrink to 75px which is the minimum width
+  at which a time value is still visible
+  */
+  width: 75px;
 }
 
 .date-input:focus {

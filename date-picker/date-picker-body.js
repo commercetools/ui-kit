@@ -83,6 +83,7 @@ export class DatePickerBody extends React.PureComponent {
             placeholder={this.props.placeholder}
             disabled={this.props.isDisabled}
             defaultValue={this.props.formattedValue}
+            title={this.props.formattedValue}
             data-input
           />
           <ClearSectionWithMouseOverState
