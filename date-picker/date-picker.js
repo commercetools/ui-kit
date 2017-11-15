@@ -6,7 +6,7 @@ import isTouchDevice from 'is-touch-device';
 import { de } from 'flatpickr/dist/l10n/de';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import moment from 'moment';
 import classnames from 'classnames';
 import { DatePickerBody } from './date-picker-body';
@@ -51,7 +51,9 @@ export class DatePicker extends React.PureComponent {
     ]),
 
     // HoC
-    intl: intlShape.isRequired,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
