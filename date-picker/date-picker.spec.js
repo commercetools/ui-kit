@@ -13,7 +13,7 @@ const createTestProps = custom => ({
   value: null,
   placeholder: 'test',
   locale: 'en',
-  intl: { formatMessage: jest.fn() },
+  intl: { formatMessage: jest.fn(message => message.id) },
   ...custom,
 });
 
