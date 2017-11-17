@@ -107,6 +107,10 @@ export default function cellRangeRenderer({
         style,
       };
 
+      // This is the main difference to the default cellRangeRenderer:
+      // Don't re-render the cells when the table is being scrolled. Otherwise
+      // this will harm performance since we are rendering all the cells of the
+      // table and not only the ones that are visible.
       if (!cellCache[key] || !isScrolling) {
         // eslint-disable-next-line no-param-reassign
         cellCache[key] = cellRenderer(cellRendererParams);
