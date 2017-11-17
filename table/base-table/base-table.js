@@ -286,14 +286,7 @@ export default class BaseTable extends React.Component {
         this.state.remainingWidth / numberOfFlexColumns;
       return getColumnWidthFromCache({ index }) + widthPerFlexColumn;
     }
-    // in case the column is fixed we limit the width of that column to 400 in
-    // order to prevent a fixed column from overflowing the overall width of
-    // the table, which would result in the user not being able to see any
-    // of the non-fixed scrollable columns. This is not perfect but gets us most
-    // of the way there because most users don't have many fixed columns.
-    return this.columns[index].isFixed
-      ? Math.min(getColumnWidthFromCache({ index }), 400)
-      : getColumnWidthFromCache({ index });
+    return getColumnWidthFromCache({ index });
   };
   headerRenderer = column =>
     column.getLabel ? (
@@ -428,9 +421,6 @@ export default class BaseTable extends React.Component {
           className={styles.table}
           deferredMeasurementCache={this.cellMeasurerCache}
           cellRangeRenderer={cellRangeRenderer}
-          fixedColumnCount={
-            this.props.columns.filter(col => col.isFixed).length
-          }
           fixedRowCount={1}
           cellRenderer={this.itemRenderer}
           columnWidth={this.getColumnWidth(this.cellMeasurerCache.columnWidth)}
