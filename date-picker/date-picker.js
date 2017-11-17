@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import 'flatpickr/dist/themes/airbnb.css';
 import Flatpickr from 'flatpickr';
 import isTouchDevice from 'is-touch-device';
-import { de } from 'flatpickr/dist/l10n/de';
+import { German } from 'flatpickr/dist/l10n/de';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { injectIntl } from 'react-intl';
@@ -76,7 +76,7 @@ export class DatePicker extends React.PureComponent {
       formatDate: isTouchDevice() ? undefined : this.formatter,
       // Gets the corresponding locale. For English we must set it as null.
       // TODO make this asynchronous when more languages available
-      locale: this.props.locale === 'de' ? de : null,
+      locale: this.props.locale === 'de' ? German : null,
       mode: this.props.mode,
       noCalendar: this.props.timeScale === 'time',
       onChange: this.handleChange,

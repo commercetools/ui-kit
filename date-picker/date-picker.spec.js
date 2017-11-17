@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Flatpickr from 'flatpickr';
 import isTouchDevice from 'is-touch-device';
-import { de } from 'flatpickr/dist/l10n/de';
+import { German } from 'flatpickr/dist/l10n/de';
 import { DatePicker, createFormatter } from './date-picker';
 
 jest.mock('flatpickr', () => jest.fn());
@@ -86,7 +86,7 @@ describe('<DatePicker />', () => {
 
         it('should create options object with the appropriate localization', () => {
           expect(wrapper.instance().options).toEqual(
-            expect.objectContaining({ locale: de, time_24hr: true })
+            expect.objectContaining({ locale: German, time_24hr: true })
           );
         });
       });
