@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import SortableHeader from '../sortable-header';
 import BaseTable from './base-table';
+import cellRangeRenderer from './cell-range-renderer';
 
 jest.mock('dom-helpers/util/scrollbarSize', () => () => 20);
 jest.mock('react-virtualized');
@@ -35,6 +36,12 @@ describe('BaseTable', () => {
         wrapper.instance().cellMeasurerCache
       );
     });
+    it('should pass cellRangeRender prop to <MultiGrid>', () => {
+      expect(wrapper.find('MultiGrid')).toHaveProp(
+        'cellRangeRenderer',
+        cellRangeRenderer
+      );
+    });
     describe('when there are fixed columns', () => {
       beforeEach(() => {
         props = createTestProps({
@@ -42,8 +49,8 @@ describe('BaseTable', () => {
         });
         wrapper = shallow(<BaseTable {...props} />);
       });
-      it('should pass fixedColumnCount prop to <MultiGrid>', () => {
-        expect(wrapper.find('MultiGrid')).toHaveProp('fixedColumnCount', 1);
+      it('should not pass fixedColumnCount prop to <MultiGrid>', () => {
+        expect(wrapper.find('MultiGrid')).toHaveProp('fixedColumnCount', 0);
       });
     });
     it('should pass fixedRowCount prop as 1 to <MultiGrid>', () => {
