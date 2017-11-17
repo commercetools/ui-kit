@@ -16,8 +16,6 @@ locale.
 #### Usage
 
 ```js
-import DatePicker from '@commercetools-local/ui-kit/date-picker';
-
 <DatePicker
   placeholder="Select a date..."
   timeScale="date"
