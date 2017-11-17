@@ -85,6 +85,9 @@ export default class BaseTable extends React.Component {
     sortDirection: PropTypes.oneOf(['ASC', 'DESC']),
     sortBy: PropTypes.string,
     tableClassName: PropTypes.string,
+    // The keyMapper is only used in the storybook to make the table update
+    // measurements when the cells contents change on the fly
+    keyMapper: PropTypes.func,
   };
 
   // The table might not need to take up the full height/width it has
@@ -102,6 +105,7 @@ export default class BaseTable extends React.Component {
   cellMeasurerCache = new CellMeasurerCache({
     defaultWidth: 400,
     defaultHeight: 100,
+    keyMapper: this.props.keyMapper,
   });
 
   // fixed columns are rendered at the beginning of the table by convention

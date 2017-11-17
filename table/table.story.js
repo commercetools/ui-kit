@@ -98,6 +98,7 @@ storiesOf('Table', module)
           sortDir,
           width,
           registerMeasurementCache,
+          keyMapper,
         } = props;
 
         if (!cols) return null;
@@ -119,6 +120,7 @@ storiesOf('Table', module)
             sortDirection={sortDir}
             width={width}
             registerMeasurementCache={registerMeasurementCache}
+            keyMapper={keyMapper}
           />
         );
       }}
@@ -494,6 +496,20 @@ class Wrapper extends React.PureComponent {
             sortDir: this.state.sortDirection,
             width: this.state.width,
             registerMeasurementCache: this.registerMeasurementCache,
+            keyMapper: (rowIndex, columnIndex) => {
+              const column = this.state.cols[columnIndex];
+              // apparently it can happen that cell measurer calls this function with
+              // an index that is out of bounds
+              if (!column) return undefined;
+
+              if (rowIndex === 0) {
+                return column.key;
+              }
+              const row = this.state.sortedItems[rowIndex - 1];
+              if (!row) return undefined;
+              const value = row[column.key];
+              return `${row.id}-${column.key}-${value}`;
+            },
           })}
         </div>
       </div>
