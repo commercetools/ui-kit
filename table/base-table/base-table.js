@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import Spacings from '../../materials/spacings';
 import SortableHeader from '../sortable-header';
 import Cell from '../cell';
+import cellRangeRenderer from './cell-range-renderer';
 import styles from './base-table.mod.css';
 
 export default class BaseTable extends React.Component {
@@ -426,6 +427,7 @@ export default class BaseTable extends React.Component {
           classNameBottomRightGrid={styles['table-body']}
           className={styles.table}
           deferredMeasurementCache={this.cellMeasurerCache}
+          cellRangeRenderer={cellRangeRenderer}
           fixedColumnCount={
             this.props.columns.filter(col => col.isFixed).length
           }
