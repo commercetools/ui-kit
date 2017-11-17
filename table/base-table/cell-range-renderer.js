@@ -107,7 +107,7 @@ export default function cellRangeRenderer({
         style,
       };
 
-      if (!cellCache[key]) {
+      if (!cellCache[key] || !isScrolling) {
         // eslint-disable-next-line no-param-reassign
         cellCache[key] = cellRenderer(cellRendererParams);
       }
