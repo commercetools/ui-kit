@@ -18,7 +18,7 @@ storiesOf('Dates', module)
         timeScale={select('timeScale', ['date', 'datetime', 'time'], 'time')}
         isDisabled={boolean('isDisabled?', false)}
         value={text('Time (UTC)', '16:02:50.000')}
-        onChange={action}
+        onChange={action('on change')}
         isInvalid={boolean('isInvalid?', false)}
         /* Note that when you switch the locale in the interface it will not update completely,
          * because the locale of flatpickr cannot be updated dynamically, you need to change the default (3rd parameter)
