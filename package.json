@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "license": "Proprietary",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@commercetools-local/utils": "*"
+  }
 }
