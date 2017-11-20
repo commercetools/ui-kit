@@ -372,6 +372,10 @@ describe('<DatePicker />', () => {
       it('should call picker.jumpToDate', () => {
         expect(flatPickrMock.jumpToDate).toHaveBeenCalledTimes(1);
       });
+      it('should call onChange without a value', () => {
+        expect(props.onChange).toHaveBeenCalledTimes(1);
+        expect(props.onChange).toHaveBeenLastCalledWith();
+      });
     });
   });
 

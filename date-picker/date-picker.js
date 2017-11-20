@@ -117,6 +117,7 @@ export class DatePicker extends React.PureComponent {
     if (!this.flatpickr) return;
     this.flatpickr.clear();
     this.flatpickr.jumpToDate();
+    this.props.onChange();
   };
 
   handleChange = selectedDates => {
