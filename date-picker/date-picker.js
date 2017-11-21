@@ -37,6 +37,7 @@ export class DatePicker extends React.PureComponent {
   static displayName = 'DatePicker';
 
   static propTypes = {
+    initializeOnMount: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isInvalid: PropTypes.bool,
     locale: PropTypes.string.isRequired,
@@ -58,6 +59,7 @@ export class DatePicker extends React.PureComponent {
   };
 
   static defaultProps = {
+    initializeOnMount: false,
     isDisabled: false,
     isInvalid: false,
     mode: 'single',
@@ -89,7 +91,7 @@ export class DatePicker extends React.PureComponent {
   // initializing on hove is not feasible for touch-devices, so we init-right away
   // flatpickr does not do its expensive initialization on mobile, so this is safe
   state = {
-    initialize: isTouchDevice(),
+    initialize: this.props.initializeOnMount || isTouchDevice(),
   };
 
   componentDidMount() {

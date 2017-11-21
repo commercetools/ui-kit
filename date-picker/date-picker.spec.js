@@ -45,10 +45,30 @@ describe('<DatePicker />', () => {
   });
 
   describe('lifecycle', () => {
-    describe('componentWillMount', () => {
-      let wrapper;
-      let props;
+    let wrapper;
+    let props;
 
+    describe('when initializeOnMount is true', () => {
+      beforeEach(() => {
+        props = createTestProps({ initializeOnMount: true });
+        wrapper = shallow(<DatePicker {...props} />);
+      });
+      it('should have initial state with "initialize" set to true', () => {
+        expect(wrapper).toHaveState('initialize', true);
+      });
+    });
+
+    describe('when initializeOnMount is false', () => {
+      beforeEach(() => {
+        props = createTestProps({ initializeOnMount: false });
+        wrapper = shallow(<DatePicker {...props} />);
+      });
+      it('should have initial state with "initialize" set to false', () => {
+        expect(wrapper).toHaveState('initialize', false);
+      });
+    });
+
+    describe('componentWillMount', () => {
       describe('without locale', () => {
         beforeEach(() => {
           props = createTestProps();
@@ -161,8 +181,6 @@ describe('<DatePicker />', () => {
     });
 
     describe('componentDidMount', () => {
-      let props;
-      let wrapper;
       beforeEach(() => {
         Flatpickr.mockClear();
         isTouchDevice.mockClear();
@@ -183,9 +201,6 @@ describe('<DatePicker />', () => {
     });
 
     describe('componentWillUpdate', () => {
-      let props;
-      let wrapper;
-
       describe('when "value"-prop changes on an initialized flatpickr', () => {
         beforeEach(() => {
           props = createTestProps();
@@ -245,9 +260,6 @@ describe('<DatePicker />', () => {
     });
 
     describe('componentWillUnmount', () => {
-      let props;
-      let wrapper;
-
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<DatePicker {...props} />);
