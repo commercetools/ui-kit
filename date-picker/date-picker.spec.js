@@ -404,7 +404,10 @@ describe('<DatePicker />', () => {
         });
 
         describe('with `selectedDates`', () => {
-          const selectedDates = ['foo-date', 'bar-date'];
+          const selectedDates = [
+            new Date('2017-01-01'),
+            new Date('2017-02-01'),
+          ];
           beforeEach(() => {
             wrapper.instance().handleChange(selectedDates);
           });
@@ -414,7 +417,7 @@ describe('<DatePicker />', () => {
           });
 
           it('should invoke `onChange` with the first date', () => {
-            expect(props.onChange).toHaveBeenCalledWith(selectedDates[0]);
+            expect(props.onChange).toHaveBeenCalledWith('2017-01-01');
           });
         });
 
@@ -440,7 +443,10 @@ describe('<DatePicker />', () => {
         });
 
         describe('with filled `selectedDates`', () => {
-          const selectedDates = ['foo-date', 'bar-date'];
+          const selectedDates = [
+            new Date('2017-01-01'),
+            new Date('2017-02-01'),
+          ];
           beforeEach(() => {
             wrapper.instance().handleChange(selectedDates);
           });
@@ -450,7 +456,10 @@ describe('<DatePicker />', () => {
           });
 
           it('should invoke `onChange` with all dates', () => {
-            expect(props.onChange).toHaveBeenCalledWith(selectedDates);
+            expect(props.onChange).toHaveBeenCalledWith([
+              '2017-01-01',
+              '2017-02-01',
+            ]);
           });
         });
 
@@ -475,7 +484,10 @@ describe('<DatePicker />', () => {
           });
 
           describe('with filled `selectedDates`', () => {
-            const selectedDates = ['foo-date', 'bar-date'];
+            const selectedDates = [
+              new Date('2017-01-01'),
+              new Date('2017-02-01'),
+            ];
             beforeEach(() => {
               wrapper.instance().handleChange(selectedDates);
             });
@@ -485,7 +497,10 @@ describe('<DatePicker />', () => {
             });
 
             it('should invoke `onChange` with all dates', () => {
-              expect(props.onChange).toHaveBeenCalledWith(selectedDates);
+              expect(props.onChange).toHaveBeenCalledWith([
+                '2017-01-01',
+                '2017-02-01',
+              ]);
             });
           });
 

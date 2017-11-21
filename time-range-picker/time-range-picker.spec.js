@@ -38,7 +38,7 @@ describe('TimeRangePicker', () => {
         wrapper
           .find(DatePicker)
           .at(0)
-          .prop('onChange')('10:13:00.000Z');
+          .prop('onChange')('10:13:00.000');
       });
       it('should call onChange with the changed from time', () => {
         expect(props.onChange).toHaveBeenLastCalledWith({
@@ -54,7 +54,7 @@ describe('TimeRangePicker', () => {
         wrapper
           .find(DatePicker)
           .at(0)
-          .prop('onChange')('');
+          .prop('onChange')();
       });
       it('should call onChange with undefined as from time', () => {
         expect(props.onChange).toHaveBeenLastCalledWith({

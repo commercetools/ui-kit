@@ -9,6 +9,7 @@ import { compose } from 'recompose';
 import { injectIntl } from 'react-intl';
 import moment from 'moment';
 import classnames from 'classnames';
+import { parseDateTime } from '@commercetools-local/utils/datetime';
 import { DatePickerBody } from './date-picker-body';
 import './date-picker-ct-theme.mod.css';
 import styles from './date-picker.mod.css';
@@ -158,14 +159,22 @@ export class DatePicker extends React.PureComponent {
 
   handleChange = selectedDates => {
     switch (this.props.mode) {
-      case 'single':
+      case 'single': {
+        const selectedDate =
+          selectedDates.length === 0 ? undefined : selectedDates[0];
         this.props.onChange(
-          selectedDates.length === 0 ? undefined : selectedDates[0]
+          selectedDate && parseDateTime(this.props.timeScale, selectedDate)
         );
         break;
+      }
       case 'range':
       case 'multiple':
-        this.props.onChange(selectedDates);
+        this.props.onChange(
+          selectedDates.map(
+            selectedDate =>
+              selectedDate && parseDateTime(this.props.timeScale, selectedDate)
+          )
+        );
         break;
       default:
         throw new Error(

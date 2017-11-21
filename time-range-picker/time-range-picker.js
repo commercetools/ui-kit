@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { parseDateTime } from '@commercetools-local/utils/datetime';
 import Text from '../typography/text';
 import DatePicker from '../date-picker';
 import Spacings from '../materials/spacings';
@@ -13,7 +12,7 @@ const TimeRangePicker = props => {
     props.onChange({
       ...props.value,
       // avoid parsing when the value has been reset
-      [rangeKey]: value ? parseDateTime('time', value) : undefined,
+      [rangeKey]: value,
     });
   };
   return (

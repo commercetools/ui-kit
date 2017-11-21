@@ -28,7 +28,7 @@ locale.
 
 | Props | Type | Required | Values | Default  | Description |
 | --- | --- | :---: | --- | --- | --- |
-| `onChange` | `func` | ✅ | - | - | onChange triggered when selection changed.<br /><br />- `undefined` when mode is single and value was cleared<br />- `Date` when mode is single and value changed<br />- `[]` when mode is multiple or range and value was cleared<br />- `Array<Date>` when mode is multiple or range and at least one date was selected |
+| `onChange` | `func` | ✅ | - | - | a function called whenever the value changes.<br /><br />- `undefined` when mode is single and value was cleared<br />- `String` (`ISO` _date/time/datetime_) when mode is single and value changed<br />- `[]` when mode is multiple or range and value was cleared<br />- `Array<String>` (`ISO` _date/time/datetime_) when mode is multiple or range and at least one date was selected |
 | `onClose` | `func` | - | - | a function called whenever the picker closes. The function accepts an argument with the picker `value`
 | `mode` | `oneOf` | - | `range`, `multiple`, `single` | `single` | Indicates the mode we can select dates |
 | `timeScale` | `oneOf` | - | `time`, `date`, `datetime` | `date` | Indicates the time scale for the picker |
