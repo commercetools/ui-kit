@@ -48,9 +48,9 @@ describe('<DatePicker />', () => {
     let wrapper;
     let props;
 
-    describe('when initializeOnMount is true', () => {
+    describe('when shouldInitializeOnMount is true', () => {
       beforeEach(() => {
-        props = createTestProps({ initializeOnMount: true });
+        props = createTestProps({ shouldInitializeOnMount: true });
         wrapper = shallow(<DatePicker {...props} />);
       });
       it('should have initial state with "initialize" set to true', () => {
@@ -58,9 +58,9 @@ describe('<DatePicker />', () => {
       });
     });
 
-    describe('when initializeOnMount is false', () => {
+    describe('when shouldInitializeOnMount is false', () => {
       beforeEach(() => {
-        props = createTestProps({ initializeOnMount: false });
+        props = createTestProps({ shouldInitializeOnMount: false });
         wrapper = shallow(<DatePicker {...props} />);
       });
       it('should have initial state with "initialize" set to false', () => {

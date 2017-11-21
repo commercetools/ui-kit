@@ -37,4 +37,4 @@ locale.
 | `isDisabled` | `bool` | - | - | `false` | Disables the date picker |
 | `size` | `oneOf` | - | `static`, `scale` | `static` | Switches between standard-size and full-width of the container (must be a flex-context) |
 | `isInvalid` | `bool` | - | - | `false` | Switches to invalid-state |
-| `initializeOnMount` | `bool` | - | - | `false` | In case the picker plugin should be initialized when the component mounts (by default it will be initialized first when the user hovers with the mouse) |
+| `shouldInitializeOnMount` | `bool` | - | - | `false` | In case the picker plugin should be initialized when the component mounts (by default it will be initialized first when the user hovers with the mouse) |
