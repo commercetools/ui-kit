@@ -42,6 +42,7 @@ export class DatePicker extends React.PureComponent {
     locale: PropTypes.string.isRequired,
     mode: PropTypes.oneOf(['range', 'multiple', 'single']),
     onChange: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['scale', 'static']),
     timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
@@ -150,6 +151,9 @@ export class DatePicker extends React.PureComponent {
         onClose: () => {
           if (this.pickerElem) {
             this.pickerElem.blur();
+            // NOTE: we need to pass the `value` to enable validations
+            // when the picker closes.
+            if (this.props.onClose) this.props.onClose(this.props.value);
           }
         },
         ...this.options,
