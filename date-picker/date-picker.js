@@ -14,6 +14,35 @@ import './date-picker-ct-theme.mod.css';
 import styles from './date-picker.mod.css';
 import messages from './messages';
 
+const getNumberOfFormattedDateChars = (timeScale, locale) => {
+  // moment gives us access to its underlying formats for individual locales
+  // http://momentjs.com/docs/#/i18n/instance-locale/
+  // this allows us to count the number of chars that will be displayed in the
+  // formatted date and adjust the input element accordingly
+  // Using this technique we can ensure that at least one value is displayed
+  switch (timeScale) {
+    case 'time':
+      return moment()
+        .locale(locale)
+        .localeData()._longDateFormat.LT.length;
+    case 'datetime':
+      return (
+        moment()
+          .locale(locale)
+          .localeData()._longDateFormat.L.length +
+        moment()
+          .locale(locale)
+          .localeData()._longDateFormat.LT.length
+      );
+    case 'date':
+      return moment()
+        .locale(locale)
+        .localeData()._longDateFormat.L.length;
+    default:
+      return 0;
+  }
+};
+
 export const createFormatter = (timeScale, locale) => value => {
   switch (timeScale) {
     case 'time':
@@ -69,6 +98,10 @@ export class DatePicker extends React.PureComponent {
 
   componentWillMount = () => {
     this.formatter = createFormatter(this.props.timeScale, this.props.locale);
+    this.numberOfFormattedValueChars = getNumberOfFormattedDateChars(
+      this.props.timeScale,
+      this.props.locale
+    );
     this.options = {
       defaultDate: this.props.value,
       enableTime:
@@ -205,6 +238,7 @@ export class DatePicker extends React.PureComponent {
           placeholder={this.props.placeholder}
           size={this.props.size}
           timeScale={this.props.timeScale}
+          numberOfFormattedValueChars={this.numberOfFormattedValueChars}
         />
       </div>
     );

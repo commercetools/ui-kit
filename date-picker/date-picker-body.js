@@ -59,6 +59,7 @@ export class DatePickerBody extends React.PureComponent {
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['scale', 'static']),
     timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
+    numberOfFormattedValueChars: PropTypes.number,
   };
 
   static defaultProps = {
@@ -85,6 +86,7 @@ export class DatePickerBody extends React.PureComponent {
             defaultValue={this.props.formattedValue}
             title={this.props.formattedValue}
             data-input
+            size={this.props.numberOfFormattedValueChars}
           />
           <ClearSectionWithMouseOverState
             isDisabled={this.props.isDisabled}
