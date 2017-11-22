@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import Flatpickr from 'flatpickr';
 import isTouchDevice from 'is-touch-device';
 import { German } from 'flatpickr/dist/l10n/de';
+import moment from 'moment';
 import { DatePicker, createFormatter } from './date-picker';
 
 jest.mock('flatpickr', () => jest.fn());
@@ -592,6 +593,25 @@ describe('createFormatter', () => {
       it('should format the datetime', () => {
         expect(formatter('23:22:12.811')).toEqual('11:22 PM');
       });
+    });
+  });
+});
+
+describe('moment integration', () => {
+  describe('when accessing localeData', () => {
+    it('should have a format for LT', () => {
+      expect(
+        moment()
+          .locale('de')
+          .localeData()._longDateFormat.LT
+      ).toBeDefined();
+    });
+    it('should have a format for L', () => {
+      expect(
+        moment()
+          .locale('de')
+          .localeData()._longDateFormat.L
+      ).toBeDefined();
     });
   });
 });
