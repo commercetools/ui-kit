@@ -9,6 +9,7 @@ exports[`<DatePicker /> rendering should match snapshot 1`] = `
     formattedValue={null}
     isDisabled={false}
     isInvalid={false}
+    numberOfFormattedValueChars={10}
     onClearPicker={[Function]}
     placeholder="test"
     size="static"
