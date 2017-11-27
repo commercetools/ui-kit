@@ -11,6 +11,17 @@ You can find the _living styleguide_ [here](https://mc.escemo.com/styleguide).
 * Used across different apps consumed by different teams
 * Shared language between developers and designers
 
+## Ownership
+
+The UIKit is owned **by all developers** working on the MC, meaning that there
+isn't a single person or a single team responsible for it.
+
+There might be some assigned person(s) driving its development but eventually
+decisions are made together (see Contributing section below).
+
+This implies that everyone should and is welcomed to contribute to it, just like
+an OSS library.
+
 ## Contributing
 
 Please _read_ before contributing to UIKIt as we settled on some informal
