@@ -18,7 +18,7 @@ processes to keep components in UIKit of a _high standard_ with _coherent_ APIs.
 
 ### Criteria for components in UIKit
 
-These are general and loose rules components in UIKIt should strive to fullfil.
+These are general and loose rules components in UIKIt should strive to fulfill.
 
 * General purpose and a core building block (of an application)
 * Isolated behaviour agnostic to its environment (not easy to reach into
@@ -62,5 +62,5 @@ These are informal steps we suggest you to follow when adding a new component.
 * `Table`: contains the table
 * `Tags`: contains tag components of different styles (warning, removable, etc)
 * `Materials`: contains the base for composition (colors, spacings, etc)
-* `HoCs`: contains Higher Order Components (e.g. for mouse over and out state
+* `HoCs`: contains Higher Order Components (e.g. for mouse over and -out state
   injection)
