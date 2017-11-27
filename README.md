@@ -6,10 +6,10 @@ You can find the _living styleguide_ [here](https://mc.escemo.com/styleguide).
 
 ## Why UIKit
 
-* Declarative component serving as a design guide
+* Declarative components serving as a design guide
 * Shared independently from the application's code base
 * Used across different apps consumed by different teams
-* Shared language, shared between developers and designers
+* Shared language between developers and designers
 
 ## Contributing
 
@@ -28,6 +28,7 @@ These are general and loose rules components in UIKIt should strive to fullfil.
 * Easy to compose (components should be combinable)
 * Visual representation (a storybook serves as shared visual of different
   states)
+* Documentation of prop-types and usage patterns
 
 ### How to add to UIKit
 
@@ -53,13 +54,12 @@ These are informal steps we suggest you to follow when adding a new component.
 * `DatePicker`: contains date picker components for different time scales
 * `TimeRangePicker`: contains a time range picker (from and to time)
 * `Dropdowns`: contains dropdown components (e.g. primary action dropdown)
-* `Icons`: contains svg icons (auto generated from `.svg`-files)
+* `Icons`: contains SVG icons (auto generated from `.svg`-files)
 * `Label`: contains label components (e.g. for indicating something critical or
   a warning)
 * `Typography`: contains basic components to be used for typography elements
   (e.g. text, titles)
 * `Table`: contains the table
-* `Tags`: contains tag components of different styles (warning, removable, etc)
 * `Tags`: contains tag components of different styles (warning, removable, etc)
 * `Materials`: contains the base for composition (colors, spacings, etc)
 * `HoCs`: contains Higher Order Components (e.g. for mouse over and out state
