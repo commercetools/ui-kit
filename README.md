@@ -29,6 +29,7 @@ These are general and loose rules components in UIKIt should strive to fulfill.
 * Visual representation (a storybook serves as shared visual of different
   states)
 * Documentation of prop-types and usage patterns
+* Sensible defaults for props which are not a hard requirement
 
 ### How to add to UIKit
 
@@ -47,6 +48,34 @@ These are informal steps we suggest you to follow when adding a new component.
   the process of API specification (most are on GitHub)
 * Develop the component(s) and put them up for code review
 * Only later migrate the application to use the newly developed component
+
+### When/How to change an existing UIKit-Component
+
+* Changing an existing component should be done with a certain degree of care.
+  Assume that the current API has been wrestled over.
+* If you want to add some functionality, consider if it should really be a
+  concern of the component you want to enhance. For this:
+  * The functionality should applicable for a wide range of current and future
+    requested features. What is in UIKit should be basic building blocks that in
+    theory can be used in a wide range of applications, even outside of
+    Commercetools.
+  * When in doubt orient yourself more towards the functionalities of the
+    original html-tags than towards anything more complex.
+* Always remove unneeded functionality as soon as you spot it
+* Avoid breaking changes to the API of the component, make sure you have checked
+  all usages of the component you change for potential problems. Be aware that
+  UIKit is an individually published package and might be used in a wide-range
+  of applications
+* Before you implement your changes, create a Github issue stating your need for
+  the required functionality, describe your proposed changes and also give an
+  indication of the scope and implications of that change.
+* Make sure you also ping the design team about your changes to get their
+  feedback
+* Implement your changes and put them up for code review
+* Update Storybook, all documentation and usage examples
+* Migrate all code that will immediately be affected by your changes
+* Make sure that your changes are released under proper semver-rules so others
+  know when to update their code in accordance to your changes
 
 ## Structure
 
