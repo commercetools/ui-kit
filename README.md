@@ -13,7 +13,7 @@ You can find the _living styleguide_ [here](https://mc.escemo.com/styleguide).
 
 ## Ownership
 
-The UIKit is owned **by all developers and developers** working on the MC,
+The UIKit is owned **by all developers and designers** working on the MC,
 meaning that there it not a single person or a single team responsible for it.
 
 There might be some assigned person(s) driving and coordinating its development
