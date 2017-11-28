@@ -17,7 +17,7 @@ be selected. As a result the named `Radio` export exposes a `Group` and an
 ```js
 import { Radio } from '@commercetools-local/ui-kit/switches';
 
-<Radio.Group onChange={...} selectedValue="foo-radio-value">
+<Radio.Group onChange={...} value="foo-radio-value">
    <Radio.Option value="foo-radio-value">
       What ever option
    </Radio.Option>
@@ -31,11 +31,11 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 
 ##### Radio.Group
 
-| Props           | Type     | Required | Values | Default | Description                                             |
-| --------------- | -------- | :------: | ------ | ------- | ------------------------------------------------------- |
-| `children`      | `node`   |    ✅    | -      | -       | The `Radio.Option` or an intermediary node              |
-| `selectedValue` | `string` |    -     | -      | -       | The initially selected value of the of a `Radio.Option` |
-| `onChange`      | `func`   |    ✅    | -      | -       | What will trigger whenever an `Radio.Option` is clicked |
+| Props      | Type     | Required | Values | Default | Description                                             |
+| ---------- | -------- | :------: | ------ | ------- | ------------------------------------------------------- |
+| `children` | `node`   |    ✅    | -      | -       | The `Radio.Option` or an intermediary node              |
+| `value`    | `string` |    -     | -      | -       | The initially selected value of the of a `Radio.Option` |
+| `onChange` | `func`   |    ✅    | -      | -       | What will trigger whenever an `Radio.Option` is clicked |
 
 ##### Radio.Option
 

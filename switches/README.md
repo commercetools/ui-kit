@@ -8,7 +8,7 @@ sub modules.
 ```js
 import { Radio } from '@commercetools-local/ui-kit/switches';
 
-<Radio.Group onChange={...} selectedValue="foo-radio-value">
+<Radio.Group onChange={...} value="foo-radio-value">
    <Radio.Option value="foo-radio-value">
       What ever option
    </Radio.Option>

@@ -55,7 +55,7 @@ class Group extends React.PureComponent {
   static displayName = 'RadioGroup';
   static propTypes = {
     className: PropTypes.string,
-    selectedValue: PropTypes.string,
+    value: PropTypes.string,
     direction: PropTypes.oneOf(['stack', 'inline']),
     onChange: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
@@ -66,17 +66,17 @@ class Group extends React.PureComponent {
   };
 
   state = {
-    selectedValue: this.props.selectedValue,
+    value: this.props.value,
   };
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.selectedValue !== nextProps.selectedValue)
-      this.handleChange(nextProps.selectedValue);
+    if (this.props.value !== nextProps.value)
+      this.handleChange(nextProps.value);
   }
 
   handleChange = nextValue =>
     this.setState({
-      selectedValue: nextValue,
+      value: nextValue,
     });
 
   render() {
@@ -94,7 +94,7 @@ class Group extends React.PureComponent {
             if (child.type === Option)
               return React.cloneElement(child, {
                 key: child.props.value,
-                isChecked: this.state.selectedValue === child.props.value,
+                isChecked: this.state.value === child.props.value,
                 name: this.props.name,
                 onClick: this.handleChange,
               });
