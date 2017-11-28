@@ -8,15 +8,14 @@ import styles from './radio.mod.css';
 class Option extends React.PureComponent {
   static displayName = 'RadioOption';
   static propTypes = {
-    // Defaulted
-    isDisabled: PropTypes.booleean,
-    isChecked: PropTypes.booleean,
-    // Injected through as compond component
+    isDisabled: PropTypes.boolean,
+    value: PropTypes.PropTypes.isRequired,
+    children: PropTypes.string,
+    // Injected through as compound component
     // not required as `createElement` is used.
+    isChecked: PropTypes.boolean,
     name: PropTypes.string,
     onClick: PropTypes.func,
-    value: PropTypes.oneOf(PropTypes.string, PropTypes.object).isRequired,
-    children: PropTypes.node,
   };
   static defaultProps = {
     isChecked: false,
@@ -42,7 +41,9 @@ class Option extends React.PureComponent {
               checked={this.props.isChecked}
               type="radio"
             />
-            <Text.Detail>{this.props.children}</Text.Detail>
+            {this.props.children && (
+              <Text.Detail>{this.props.children}</Text.Detail>
+            )}
           </Spacings.Inline>
         </label>
       </div>
@@ -53,7 +54,7 @@ class Option extends React.PureComponent {
 class Group extends React.PureComponent {
   static displayName = 'RadioGroup';
   static propTypes = {
-    wrapperClassname: PropTypes.string,
+    className: PropTypes.string,
     selectedValue: PropTypes.string,
     direction: PropTypes.oneOf(['stack', 'inline']),
     onChange: PropTypes.func.isRequired,
@@ -83,10 +84,7 @@ class Group extends React.PureComponent {
       this.props.direction === 'stack' ? Spacings.Stack : Spacings.Inline;
     return (
       <div
-        className={classnames(
-          this.props.wrapperClassname,
-          styles.wrapperClassname
-        )}
+        className={classnames(this.props.className, styles.wrapperClassname)}
       >
         <DirectionWrapper>
           {React.Children.map(this.props.children, child => {

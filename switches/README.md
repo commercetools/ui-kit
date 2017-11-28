@@ -6,12 +6,15 @@ sub modules.
 ## Usage
 
 ```js
-import Radio from '@commercetools-local/ui-kit/switches';
+import { Radio } from '@commercetools-local/ui-kit/switches';
 
 <Radio.Group onChange={...} selectedValue="bleah">
-   <Radio.Button value="foo-radio-value">
-      <Text.Detail>I am some text</Text.Detail>
-   </Radio.Button>
+   <Radio.Option value="foo-radio-value">
+      What ever option
+   </Radio.Option>
+   <Radio.Option value="bar-radio-value">
+      Another option
+   </Radio.Option>
 </Radio.Group>
 ```
 
