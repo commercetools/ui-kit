@@ -66,7 +66,7 @@ These are informal steps we suggest you to follow when adding a new component.
   Please assume that the current API has been wrestled over.
 * If you want to add some functionality, consider if it should really be a
   concern of the component you want to enhance. For this:
-  * The functionality should applicable for a wide range of current and future
+  * The functionality should be applicable for a wide range of current and future
     requested features. What is in _UIKit should be basic building blocks_ that
     in theory can be used in a wide range of applications, even outside of
     commercetools.
