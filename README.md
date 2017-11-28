@@ -29,7 +29,7 @@ processes to keep components in UIKit of a _high standard_ with _coherent_ APIs.
 
 ### Criteria for components in UIKit
 
-These are general and loose rules components in UIKIt should strive to fulfill.
+These are general and loose rules components in UIKit should strive to fulfill.
 
 * General purpose and a core building block (of an application)
 * Isolated behaviour agnostic to its environment (not easy to reach into
@@ -48,7 +48,7 @@ These are informal steps we suggest you to follow when adding a new component.
 
 * Extract development of the component into a separate user story
   * Recommended if possible - often times alternative components can be used
-    until the new component has been added to UIKIt
+    until the new component has been added to UIKit
 * Try to map out usages in applications and try to anticipate additions to the
   component
   * E.g. when developing radio buttons, checkboxes might be next
