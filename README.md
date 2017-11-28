@@ -13,11 +13,11 @@ You can find the _living styleguide_ [here](https://mc.escemo.com/styleguide).
 
 ## Ownership
 
-The UIKit is owned **by all developers** working on the MC, meaning that there
-isn't a single person or a single team responsible for it.
+The UIKit is owned **by all developers and developers** working on the MC,
+meaning that there it not a single person or a single team responsible for it.
 
-There might be some assigned person(s) driving its development but eventually
-decisions are made together (see Contributing section below).
+There might be some assigned person(s) driving and coordinating its development
+but eventually decisions are made together (see Contributing section below).
 
 This implies that everyone should and is welcomed to contribute to it, just like
 an OSS library.
@@ -60,33 +60,38 @@ These are informal steps we suggest you to follow when adding a new component.
 * Develop the component(s) and put them up for code review
 * Only later migrate the application to use the newly developed component
 
-### When/How to change an existing UIKit-Component
+### When and how to change an existing component in UIKit
 
-* Changing an existing component should be done with a certain degree of care.
-  Assume that the current API has been wrestled over.
+* Changing an existing component should be done with a _certain degree_ of care.
+  Please assume that the current API has been wrestled over.
 * If you want to add some functionality, consider if it should really be a
   concern of the component you want to enhance. For this:
   * The functionality should applicable for a wide range of current and future
-    requested features. What is in UIKit should be basic building blocks that in
-    theory can be used in a wide range of applications, even outside of
-    Commercetools.
-  * When in doubt orient yourself more towards the functionalities of the
-    original html-tags than towards anything more complex.
-* Always remove unneeded functionality as soon as you spot it
-* Avoid breaking changes to the API of the component, make sure you have checked
-  all usages of the component you change for potential problems. Be aware that
-  UIKit is an individually published package and might be used in a wide-range
-  of applications
-* Before you implement your changes, create a Github issue stating your need for
-  the required functionality, describe your proposed changes and also give an
-  indication of the scope and implications of that change.
-* Make sure you also ping the design team about your changes to get their
+    requested features. What is in _UIKit should be basic building blocks_ that
+    in theory can be used in a wide range of applications, even outside of
+    commercetools.
+  * When in doubt take inspiration from functionalities of the original
+    HTML-tags than towards anything more complex.
+* Always _remove unneeded functionality_ as soon as you spot it
+  * This helps us to get components simple, consistent and easy to use
+* _Avoid breaking changes_ to the API of the component. If you need to create
+  breaking changes follow these steps
+  * Make sure you have checked all usages of the component you change for
+    potential problems
+  * Inform all developers about the plan in the chats as pull requests might be
+    open and other features already planned
+  * Start with creating a deprecation notice on the component's functionality
+    using the `warning` package (examples exist)
+  * Ensuring that no consumer still uses the deprecated API after some time
+  * Remove the deprecated feature
+* Before you implement your changes, _create a Github issue_ stating your need
+  for the required functionality, describe your proposed changes and also give
+  an indication of the scope and implications of that change.
+* Make sure you also _ping the design team_ about your changes to get their
   feedback
-* Implement your changes and put them up for code review
+* Implement your changes and put them _up for code review_
 * Update Storybook, all documentation and usage examples
 * Migrate all code that will immediately be affected by your changes
-* Make sure that your changes are released under proper semver-rules so others
-  know when to update their code in accordance to your changes
 
 ## Structure
 
