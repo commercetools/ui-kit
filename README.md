@@ -24,7 +24,7 @@ an OSS library.
 
 ## Contributing
 
-Please _read_ before contributing to UIKIt as we settled on some informal
+Please _read_ before contributing to UIKit as we settled on some informal
 processes to keep components in UIKit of a _high standard_ with _coherent_ APIs.
 
 ### Criteria for components in UIKit
