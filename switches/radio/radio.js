@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import invariant from 'invariant';
 import classnames from 'classnames';
 import Spacings from '../../materials/spacings';
-import Text from '../../typography/text';
+import Icons from './icons';
 import styles from './radio.mod.css';
 
 class Option extends React.PureComponent {
@@ -30,10 +30,7 @@ class Option extends React.PureComponent {
         <label>
           <Spacings.Inline>
             <input
-              className={classnames(styles.inputWrapper, {
-                [styles.inputDisabled]: this.props.isDisabled,
-                [styles.inputChecked]: this.props.isChecked,
-              })}
+              className={styles.inputWrapper}
               name={this.props.name}
               value={this.props.value}
               onClick={this.handleChange}
@@ -41,9 +38,21 @@ class Option extends React.PureComponent {
               checked={this.props.isChecked}
               type="radio"
             />
+            {(() => {
+              if (this.props.isChecked && this.props.isDisabled)
+                return <Icons.CheckedDisabled />;
+              else if (this.props.isChecked) return <Icons.Checked />;
+              else if (this.props.isDisabled) return <Icons.Disabled />;
+
+              return <Icons.Default />;
+            })()}
             {this.props.children && (
-              <span className={styles.optionTextWrapper}>
-                <Text.Detail>{this.props.children}</Text.Detail>
+              <span
+                className={classnames(styles.option, {
+                  [styles.optionDisabled]: this.props.isDisabled,
+                })}
+              >
+                {this.props.children}
               </span>
             )}
           </Spacings.Inline>
@@ -81,19 +90,16 @@ class Group extends React.PureComponent {
     );
   }
 
-  handleChange = nextValue => this.onChange(nextValue);
+  handleChange = nextValue => this.props.onChange(nextValue);
 
   render() {
     const DirectionWrapper =
       this.props.direction === 'stack' ? Spacings.Stack : Spacings.Inline;
     return (
-      <div
-        className={classnames(this.props.className, styles.wrapperClassname)}
-      >
+      <div className={this.props.className}>
         <DirectionWrapper>
           {React.Children.map(this.props.children, child => {
-            // NOTE:
-            //    Allowing to intersperse other elements than `Option`.
+            // NOTE: Allowing to intersperse other elements than `Option`.
             if (child.type === Option)
               return React.cloneElement(child, {
                 isChecked: this.props.value === child.props.value,

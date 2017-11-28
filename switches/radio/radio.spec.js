@@ -75,10 +75,6 @@ describe('<Radio.Option>', () => {
       it('should match snapshot', () => {
         expect(wrapper).toMatchSnapshot();
       });
-
-      it('should render `Text.Detail`', () => {
-        expect(wrapper).toRender('TextDetail');
-      });
     });
   });
 
@@ -216,6 +212,35 @@ describe('<Radio.Group>', () => {
         it('should invoke `invariant`', () => {
           expect(invariant).toHaveBeenCalled();
         });
+      });
+    });
+  });
+
+  describe('interacting', () => {
+    const nextValue = 'baz-value';
+    let props;
+    let wrapper;
+
+    beforeEach(() => {
+      props = createGroupTestProps();
+      const optionProps = createOptionTestProps();
+
+      wrapper = shallow(
+        <Radio.Group {...props}>
+          <Radio.Option {...optionProps}>{'foo'}</Radio.Option>
+        </Radio.Group>
+      );
+
+      wrapper.instance().handleChange(nextValue);
+    });
+
+    describe('handleChange', () => {
+      it('should invoke `onChange`', () => {
+        expect(props.onChange).toHaveBeenCalled();
+      });
+
+      it('should invoke `onChange` with the next value', () => {
+        expect(props.onChange).toHaveBeenCalledWith(nextValue);
       });
     });
   });

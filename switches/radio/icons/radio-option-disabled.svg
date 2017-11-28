@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>radiobt-disabled-default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="410" cy="917" r="8"></circle>
+    </defs>
+    <g id="ATOM---Checkboxes-and-Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ATOM---Checkboxes-radio-buttons" transform="translate(-402.000000, -909.000000)">
+            <g id="radiobt-disabled-default">
+                <use fill="#F9FAFC" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <circle stroke="#EFF2F6" stroke-width="1" cx="410" cy="917" r="7.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -3,3 +3,16 @@
 @import '../../materials/shadows.mod.css';
 @import '../../materials/sizes.mod.css';
 @import '../../materials/spacings.mod.css';
+
+.inputWrapper {
+  display: none;
+}
+
+.option {
+  cursor: pointer;
+}
+
+.optionDisabled {
+  color: var(--color-primaryGrey);
+  cursor: not-allowed;
+}

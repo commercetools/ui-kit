@@ -14,25 +14,31 @@ storiesOf('Switches', module)
     <Section>
       <Radio.Group
         name="uikit-group"
+        onChange={action('onChange')}
+        value={select(
+          'value',
+          ['foo-value', 'bar-value', 'baz-value'],
+          'foo-value'
+        )}
         direction={select('direction', ['stack', 'inline'], 'stack')}
       >
         <Radio.Option
           isDisabled={boolean('isFirstOptionDisabled', false)}
-          onClick={action('onClick first option')}
+          onClick={action('onClick: first')}
           value="foo-value"
         >
           {text('Label of primary action', 'Primary option')}
         </Radio.Option>
         <Radio.Option
           isDisabled={boolean('isSecondOptionDisabled', false)}
-          onClick={action('onClick second option')}
-          value={{ value: 'bar-value', label: 'bar-label' }}
+          onClick={action('onClick: second')}
+          value="bar-value"
         >
           {text('Label of second action', 'Second option')}
         </Radio.Option>
         <Radio.Option
           isDisabled={boolean('isThirdOptionDisabled', true)}
-          onClick={action('onClick third option')}
+          onClick={action('onClick: third')}
           value="baz-value"
         >
           {text('Label of third action', 'Third option')}
