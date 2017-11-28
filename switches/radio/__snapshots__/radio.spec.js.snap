@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Radio.Group> rendering should match snapshot 1`] = `
+<div
+  className="wrapperClassname"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <RadioOption
+      isChecked={true}
+      isDisabled={false}
+      key=".0"
+      name="bar"
+      onClick={[Function]}
+      value="bar"
+    >
+      foo
+    </RadioOption>
+    <RadioOption
+      isChecked={false}
+      isDisabled={false}
+      key=".1"
+      name="bar"
+      onClick={[Function]}
+      value="foo!"
+    >
+      bar
+    </RadioOption>
+  </Stack>
+</div>
+`;
+
+exports[`<Radio.Option> rendering with children should match snapshot 1`] = `
+<div
+  className="optionsWrapper"
+>
+  <label>
+    <Inline
+      alignItems="flexStart"
+      scale="s"
+    >
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onClick={[Function]}
+        type="radio"
+        value="foo!"
+      />
+      <TextDetail>
+        Some label
+      </TextDetail>
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Radio.Option> rendering without children should match snapshot 1`] = `
+<div
+  className="optionsWrapper"
+>
+  <label>
+    <Inline
+      alignItems="flexStart"
+      scale="s"
+    >
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onClick={[Function]}
+        type="radio"
+        value="foo!"
+      />
+    </Inline>
+  </label>
+</div>
+`;

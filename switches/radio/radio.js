@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant';
 import classnames from 'classnames';
 import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
@@ -13,7 +14,7 @@ class Option extends React.PureComponent {
     children: PropTypes.string,
     // Injected through as compound component
     // not required as `createElement` is used.
-    isChecked: PropTypes.boolean,
+    isChecked: PropTypes.bool,
     name: PropTypes.string,
     onClick: PropTypes.func,
   };
@@ -69,6 +70,20 @@ class Group extends React.PureComponent {
     value: this.props.value,
   };
 
+  componentWillMount() {
+    // NOTE: We allow intermediate nodes rendered as children (e.g. spacers)
+    // as a result we need to filter out children of the correct type.
+    const childrenAsArray = React.Children.toArray(this.props.children);
+    const optionChildrenAsArray = childrenAsArray.filter(
+      child => child.type === Option
+    );
+
+    invariant(
+      optionChildrenAsArray.length > 0,
+      '@commercetools-local/ui-kit/switches/radio: must contain at least one Radio.Option'
+    );
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.value !== nextProps.value)
       this.handleChange(nextProps.value);
@@ -93,7 +108,6 @@ class Group extends React.PureComponent {
             //    than `Option`.
             if (child.type === Option)
               return React.cloneElement(child, {
-                key: child.props.value,
                 isChecked: this.state.value === child.props.value,
                 name: this.props.name,
                 onClick: this.handleChange,
