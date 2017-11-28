@@ -9,12 +9,12 @@ exports[`<Radio.Group> rendering should match snapshot 1`] = `
     scale="s"
   >
     <RadioOption
-      isChecked={true}
+      isChecked={false}
       isDisabled={false}
       key=".0"
       name="bar"
       onClick={[Function]}
-      value="bar"
+      value="foo"
     >
       foo
     </RadioOption>
@@ -24,7 +24,7 @@ exports[`<Radio.Group> rendering should match snapshot 1`] = `
       key=".1"
       name="bar"
       onClick={[Function]}
-      value="foo!"
+      value="foo"
     >
       bar
     </RadioOption>
@@ -48,11 +48,15 @@ exports[`<Radio.Option> rendering with children should match snapshot 1`] = `
         name="bar"
         onClick={[Function]}
         type="radio"
-        value="foo!"
+        value="foo"
       />
-      <TextDetail>
-        Some label
-      </TextDetail>
+      <span
+        className="optionTextWrapper"
+      >
+        <TextDetail>
+          Some label
+        </TextDetail>
+      </span>
     </Inline>
   </label>
 </div>
@@ -74,7 +78,7 @@ exports[`<Radio.Option> rendering without children should match snapshot 1`] = `
         name="bar"
         onClick={[Function]}
         type="radio"
-        value="foo!"
+        value="foo"
       />
     </Inline>
   </label>

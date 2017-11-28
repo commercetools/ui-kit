@@ -12,7 +12,7 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
    <Radio.Option value="foo-radio-value">
       What ever option
    </Radio.Option>
-   <Radio.Option value="bar-radio-value">
+   <Radio.Option value="bar-radio-value" isDisabled={true}>
       Another option
    </Radio.Option>
 </Radio.Group>

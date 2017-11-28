@@ -6,7 +6,7 @@ import Radio from './radio';
 jest.mock('invariant');
 
 const createOptionTestProps = custom => ({
-  value: 'foo!',
+  value: 'foo',
   isDisabled: false,
   isChecked: false,
   name: 'bar',
@@ -14,8 +14,8 @@ const createOptionTestProps = custom => ({
   ...custom,
 });
 const createGroupTestProps = custom => ({
-  value: 'bar',
   name: 'bar',
+  value: 'bar',
   onChange: jest.fn(),
   ...custom,
 });
@@ -33,6 +33,33 @@ describe('<Radio.Option>', () => {
 
       it('should match snapshot', () => {
         expect(wrapper).toMatchSnapshot();
+      });
+
+      describe('when disabled', () => {
+        beforeEach(() => {
+          props = createOptionTestProps({ isDisabled: true });
+
+          wrapper = shallow(<Radio.Option {...props} />);
+        });
+
+        it('should disable the `input`', () => {
+          expect(wrapper.find('input')).toHaveProp(
+            'disabled',
+            props.isDisabled
+          );
+        });
+      });
+
+      describe('when checked', () => {
+        beforeEach(() => {
+          props = createOptionTestProps({ isDisabled: true });
+
+          wrapper = shallow(<Radio.Option {...props} />);
+        });
+
+        it('should check the `input`', () => {
+          expect(wrapper.find('input')).toHaveProp('checked', props.isChecked);
+        });
       });
     });
 
@@ -91,9 +118,7 @@ describe('<Radio.Group>', () => {
 
       wrapper = shallow(
         <Radio.Group {...props}>
-          <Radio.Option {...optionProps} value="bar">
-            {'foo'}
-          </Radio.Option>
+          <Radio.Option {...optionProps}>{'foo'}</Radio.Option>
           <Radio.Option {...optionProps}>{'bar'}</Radio.Option>
         </Radio.Group>
       );
@@ -110,9 +135,7 @@ describe('<Radio.Group>', () => {
 
         wrapper = shallow(
           <Radio.Group {...props}>
-            <Radio.Option {...optionProps} value="bar">
-              {'foo'}
-            </Radio.Option>
+            <Radio.Option {...optionProps}>{'foo'}</Radio.Option>
             <Radio.Option {...optionProps}>{'bar'}</Radio.Option>
           </Radio.Group>
         );
@@ -127,10 +150,23 @@ describe('<Radio.Group>', () => {
       expect(wrapper).toRenderElementTimes(Radio.Option, 2);
     });
 
-    describe('<Radio.Option', () => {
+    describe('<Radio.Option>', () => {
+      let firstOptionProps;
+      let secondOptionProps;
       let optionWrapper;
 
       beforeEach(() => {
+        props = createGroupTestProps();
+        firstOptionProps = createOptionTestProps();
+        secondOptionProps = createOptionTestProps({ value: 'bar' });
+
+        wrapper = shallow(
+          <Radio.Group {...props}>
+            <Radio.Option {...firstOptionProps}>{'foo'}</Radio.Option>
+            <Radio.Option {...secondOptionProps}>{'bar'}</Radio.Option>
+          </Radio.Group>
+        );
+
         optionWrapper = wrapper.find(Radio.Option).at(0);
       });
 
@@ -145,80 +181,24 @@ describe('<Radio.Group>', () => {
         );
       });
 
-      describe('when value is selected', () => {
+      describe('when checked', () => {
+        it('should receive `isChecked` as `false`', () => {
+          expect(optionWrapper).toHaveProp('isChecked', false);
+        });
+      });
+
+      describe('when unchecked', () => {
         it('should receive `isChecked` as `true`', () => {
-          expect(wrapper.find(Radio.Option).at(0)).toHaveProp(
+          expect(wrapper.find(Radio.Option).at(1)).toHaveProp(
             'isChecked',
             true
           );
         });
       });
-
-      describe('when value is not selected', () => {
-        it('should receive `isChecked` as `false`', () => {
-          expect(wrapper.find(Radio.Option).at(1)).toHaveProp(
-            'isChecked',
-            false
-          );
-        });
-      });
-    });
-  });
-
-  describe('interacting', () => {
-    describe('handleChange', () => {
-      const nextValue = 'baz';
-      let props;
-      let optionProps;
-      let wrapper;
-
-      beforeEach(() => {
-        props = createGroupTestProps();
-        optionProps = createOptionTestProps();
-
-        wrapper = shallow(
-          <Radio.Group {...props}>
-            <Radio.Option {...optionProps}>{'bar'}</Radio.Option>
-          </Radio.Group>
-        );
-
-        wrapper.instance().handleChange(nextValue);
-      });
-
-      it('should update the state of `value`', () => {
-        expect(wrapper).toHaveState('value', nextValue);
-      });
     });
   });
 
   describe('lifecycle', () => {
-    describe('componentWillReceiveProps', () => {
-      describe('when value changes', () => {
-        let props;
-        let nextProps;
-        let optionProps;
-        let wrapper;
-
-        beforeEach(() => {
-          props = createGroupTestProps();
-          nextProps = createGroupTestProps({ value: 'barrr' });
-          optionProps = createOptionTestProps();
-
-          wrapper = shallow(
-            <Radio.Group {...props}>
-              <Radio.Option {...optionProps}>{'bar'}</Radio.Option>
-            </Radio.Group>
-          );
-
-          wrapper.instance().componentWillReceiveProps(nextProps);
-        });
-
-        it('should update the state of `value`', () => {
-          expect(wrapper).toHaveState('value', nextProps.value);
-        });
-      });
-    });
-
     describe('componentWillMount', () => {
       describe('without any `<Radio.Option>`', () => {
         let props;

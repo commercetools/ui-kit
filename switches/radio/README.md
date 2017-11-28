@@ -31,18 +31,18 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 
 ##### Radio.Group
 
-| Props      | Type     | Required | Values | Default | Description                                             |
-| ---------- | -------- | :------: | ------ | ------- | ------------------------------------------------------- |
-| `children` | `node`   |    ✅    | -      | -       | The `Radio.Option` or an intermediary node              |
-| `value`    | `string` |    -     | -      | -       | The initially selected value of the of a `Radio.Option` |
-| `onChange` | `func`   |    ✅    | -      | -       | What will trigger whenever an `Radio.Option` is clicked |
+| Props      | Type     | Required | Values | Default | Description                                                                  |
+| ---------- | -------- | :------: | ------ | ------- | ---------------------------------------------------------------------------- |
+| `children` | `node`   |    ✅    | -      | -       | The `Radio.Option` or an intermediary node                                   |
+| `value`    | `string` |    -     | -      | -       | The selected value of the of a `Radio.Option` determining its checked status |
+| `onChange` | `func`   |    ✅    | -      | -       | What will trigger whenever an `Radio.Option` is clicked                      |
 
 ##### Radio.Option
 
 | Props        | Type     | Required | Values | Default | Description                                                   |
 | ------------ | -------- | :------: | ------ | ------- | ------------------------------------------------------------- |
-| `children`   | `string` |    -     | -      | -       | The descriptive text of the option                            |
-| `isDisabled` | `bool`   |    -     | -      | `false` | Disables the option within the Radio.Group                    |
+| `children`   | `string` |    -     | -      | -       | The descriptive text of the Radio.Option                      |
+| `isDisabled` | `bool`   |    -     | -      | `false` | Disables the Radio.Option within the Radio.Group              |
 | `value`      | `string` |    ✅    | -      | -       | The value of the option passed to `onChange` in `Radio.Group` |
 | `children`   | `string` |    ✅    | -      | -       | The label of the option                                       |
 

@@ -9,17 +9,16 @@ import styles from './radio.mod.css';
 class Option extends React.PureComponent {
   static displayName = 'RadioOption';
   static propTypes = {
-    isDisabled: PropTypes.boolean,
-    value: PropTypes.PropTypes.isRequired,
+    value: PropTypes.string.isRequired,
+    isDisabled: PropTypes.bool,
+    isChecked: PropTypes.bool,
     children: PropTypes.string,
     // Injected through as compound component
     // not required as `createElement` is used.
-    isChecked: PropTypes.bool,
     name: PropTypes.string,
     onClick: PropTypes.func,
   };
   static defaultProps = {
-    isChecked: false,
     isDisabled: false,
   };
 
@@ -43,7 +42,9 @@ class Option extends React.PureComponent {
               type="radio"
             />
             {this.props.children && (
-              <Text.Detail>{this.props.children}</Text.Detail>
+              <span className={styles.optionTextWrapper}>
+                <Text.Detail>{this.props.children}</Text.Detail>
+              </span>
             )}
           </Spacings.Inline>
         </label>
@@ -56,22 +57,18 @@ class Group extends React.PureComponent {
   static displayName = 'RadioGroup';
   static propTypes = {
     className: PropTypes.string,
-    value: PropTypes.string,
     direction: PropTypes.oneOf(['stack', 'inline']),
     onChange: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
   };
   static defaultProps = {
     direction: 'stack',
   };
 
-  state = {
-    value: this.props.value,
-  };
-
   componentWillMount() {
-    // NOTE: We allow intermediate nodes rendered as children (e.g. spacers)
+    // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
     const childrenAsArray = React.Children.toArray(this.props.children);
     const optionChildrenAsArray = childrenAsArray.filter(
@@ -84,15 +81,7 @@ class Group extends React.PureComponent {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.value !== nextProps.value)
-      this.handleChange(nextProps.value);
-  }
-
-  handleChange = nextValue =>
-    this.setState({
-      value: nextValue,
-    });
+  handleChange = nextValue => this.onChange(nextValue);
 
   render() {
     const DirectionWrapper =
@@ -104,11 +93,10 @@ class Group extends React.PureComponent {
         <DirectionWrapper>
           {React.Children.map(this.props.children, child => {
             // NOTE:
-            //    Allowing to intersperse other elements
-            //    than `Option`.
+            //    Allowing to intersperse other elements than `Option`.
             if (child.type === Option)
               return React.cloneElement(child, {
-                isChecked: this.state.value === child.props.value,
+                isChecked: this.props.value === child.props.value,
                 name: this.props.name,
                 onClick: this.handleChange,
               });
