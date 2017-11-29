@@ -1,4 +1,4 @@
-# Swtiches: Radio
+# Switches: Radio
 
 ## Usage
 
