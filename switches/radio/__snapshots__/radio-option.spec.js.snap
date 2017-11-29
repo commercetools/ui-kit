@@ -2,11 +2,12 @@
 
 exports[`<Option> rendering with children should match snapshot 1`] = `
 <div
-  className="optionsWrapper"
   onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
-  <label>
+  <label
+    className="labelWrapper"
+  >
     <Inline
       alignItems="center"
       scale="s"
@@ -22,7 +23,7 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
       />
       <test-file-stub />
       <span
-        className="option"
+        className=""
       >
         Some label
       </span>
@@ -33,11 +34,12 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
 
 exports[`<Option> rendering without children should match snapshot 1`] = `
 <div
-  className="optionsWrapper"
   onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
-  <label>
+  <label
+    className="labelWrapper"
+  >
     <Inline
       alignItems="center"
       scale="s"

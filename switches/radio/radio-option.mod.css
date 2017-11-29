@@ -5,11 +5,14 @@
   display: none;
 }
 
-.option {
+.labelWrapper {
   cursor: pointer;
 }
 
-.optionDisabled {
-  color: var(--color-primaryGrey);
+.labelWrapperDisabled {
   cursor: not-allowed;
+}
+
+.textDisabled {
+  color: var(--color-primaryGrey);
 }

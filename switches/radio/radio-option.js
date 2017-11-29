@@ -29,11 +29,14 @@ export class Option extends React.PureComponent {
   render() {
     return (
       <div
-        className={styles.optionsWrapper}
         onMouseOver={this.props.handleMouseOver}
         onMouseOut={this.props.handleMouseOut}
       >
-        <label>
+        <label
+          className={classnames(styles.labelWrapper, {
+            [styles.labelWrapperDisabled]: this.props.isDisabled,
+          })}
+        >
           <Spacings.Inline alignItems="center">
             <input
               className={styles.inputWrapper}
@@ -57,8 +60,8 @@ export class Option extends React.PureComponent {
             })()}
             {this.props.children && (
               <span
-                className={classnames(styles.option, {
-                  [styles.optionDisabled]: this.props.isDisabled,
+                className={classnames({
+                  [styles.textDisabled]: this.props.isDisabled,
                 })}
               >
                 {this.props.children}
