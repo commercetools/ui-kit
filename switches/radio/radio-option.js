@@ -34,7 +34,7 @@ export class Option extends React.PureComponent {
         onMouseOut={this.props.handleMouseOut}
       >
         <label>
-          <Spacings.Inline>
+          <Spacings.Inline alignItems="center">
             <input
               className={styles.inputWrapper}
               name={this.props.name}

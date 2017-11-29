@@ -8,7 +8,7 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
 >
   <label>
     <Inline
-      alignItems="flexStart"
+      alignItems="center"
       scale="s"
     >
       <input
@@ -39,7 +39,7 @@ exports[`<Option> rendering without children should match snapshot 1`] = `
 >
   <label>
     <Inline
-      alignItems="flexStart"
+      alignItems="center"
       scale="s"
     >
       <input
