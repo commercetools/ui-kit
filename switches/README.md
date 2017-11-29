@@ -18,4 +18,16 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 </Radio.Group>
 ```
 
+```js
+import { Checkbox } from '@commercetools-local/ui-kit/switches';
+
+<Checkbox value="foo-radio-value" onChange={..}>
+  What ever option
+</Checkbox>
+<Checkbox value="bar-radio-value" isDisabled={true} onChange={..}>
+  Another option
+</Checkbox>
+```
+
 * [`Radio`](radio/README.md)
+* [`Checkbox`](checkbox/README.md)
