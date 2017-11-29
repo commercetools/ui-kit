@@ -33,7 +33,7 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 
 | Props      | Type     | Required | Values | Default | Description                                                                  |
 | ---------- | -------- | :------: | ------ | ------- | ---------------------------------------------------------------------------- |
-| `children` | `node`   |    ✅    | -      | -       | The `Radio.Option` or an intermediary node                                   |
+| `children` | `node`   |    ✅    | -      | -       | The `Radio.Option` or another node (mixed children are allowed)              |
 | `value`    | `string` |    -     | -      | -       | The selected value of the of a `Radio.Option` determining its checked status |
 | `onChange` | `func`   |    ✅    | -      | -       | What will trigger whenever an `Radio.Option` is clicked                      |
 
@@ -44,10 +44,8 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 | `children`   | `string` |    -     | -      | -       | The descriptive text of the Radio.Option                      |
 | `isDisabled` | `bool`   |    -     | -      | `false` | Disables the Radio.Option within the Radio.Group              |
 | `value`      | `string` |    ✅    | -      | -       | The value of the option passed to `onChange` in `Radio.Group` |
-| `children`   | `string` |    ✅    | -      | -       | The label of the option                                       |
 
 #### Invariants
 
 1. The `Radio.Option` must have at least one `Radio.Option` element as
    `children`
-2. The `selectedValue` must be one of the `Radio.Option`'s values

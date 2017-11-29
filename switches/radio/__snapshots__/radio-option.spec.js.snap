@@ -1,38 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Radio.Group> rendering should match snapshot 1`] = `
-<div>
-  <Stack
-    alignItems="stretch"
-    scale="s"
-  >
-    <RadioOption
-      isChecked={false}
-      isDisabled={false}
-      key=".0"
-      name="bar"
-      onClick={[Function]}
-      value="foo"
-    >
-      foo
-    </RadioOption>
-    <RadioOption
-      isChecked={false}
-      isDisabled={false}
-      key=".1"
-      name="bar"
-      onClick={[Function]}
-      value="foo"
-    >
-      bar
-    </RadioOption>
-  </Stack>
-</div>
-`;
-
-exports[`<Radio.Option> rendering with children should match snapshot 1`] = `
+exports[`<Option> rendering with children should match snapshot 1`] = `
 <div
   className="optionsWrapper"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
 >
   <label>
     <Inline
@@ -44,7 +16,7 @@ exports[`<Radio.Option> rendering with children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="bar"
-        onClick={[Function]}
+        onChange={[Function]}
         type="radio"
         value="foo"
       />
@@ -59,9 +31,11 @@ exports[`<Radio.Option> rendering with children should match snapshot 1`] = `
 </div>
 `;
 
-exports[`<Radio.Option> rendering without children should match snapshot 1`] = `
+exports[`<Option> rendering without children should match snapshot 1`] = `
 <div
   className="optionsWrapper"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
 >
   <label>
     <Inline
@@ -73,7 +47,7 @@ exports[`<Radio.Option> rendering without children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="bar"
-        onClick={[Function]}
+        onChange={[Function]}
         type="radio"
         value="foo"
       />

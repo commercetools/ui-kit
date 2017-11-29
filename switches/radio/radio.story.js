@@ -5,7 +5,7 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
-import Radio from './radio';
+import Radio from './';
 
 storiesOf('Switches', module)
   .addDecorator(withKnobs)
@@ -24,21 +24,18 @@ storiesOf('Switches', module)
       >
         <Radio.Option
           isDisabled={boolean('isFirstOptionDisabled', false)}
-          onClick={action('onClick: first')}
           value="foo-value"
         >
           {text('Label of primary action', 'Primary option')}
         </Radio.Option>
         <Radio.Option
           isDisabled={boolean('isSecondOptionDisabled', false)}
-          onClick={action('onClick: second')}
           value="bar-value"
         >
           {text('Label of second action', 'Second option')}
         </Radio.Option>
         <Radio.Option
           isDisabled={boolean('isThirdOptionDisabled', true)}
-          onClick={action('onClick: third')}
           value="baz-value"
         >
           {text('Label of third action', 'Third option')}

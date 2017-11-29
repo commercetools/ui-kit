@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Group> rendering should match snapshot 1`] = `
+<div>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <WithMouseOverState(RadioOption)
+      isChecked={false}
+      isDisabled={false}
+      key=".0"
+      name="bar"
+      onChange={[Function]}
+      value="foo"
+    >
+      foo
+    </WithMouseOverState(RadioOption)>
+    <WithMouseOverState(RadioOption)
+      isChecked={false}
+      isDisabled={false}
+      key=".1"
+      name="bar"
+      onChange={[Function]}
+      value="foo"
+    >
+      bar
+    </WithMouseOverState(RadioOption)>
+  </Stack>
+</div>
+`;
