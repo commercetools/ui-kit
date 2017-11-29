@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>checkbox-default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="16" height="16" rx="4"></rect>
+    </defs>
+    <g id="ATOM---Checkboxes-and-Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ATOM---Checkboxes-radio-buttons" transform="translate(-146.000000, -789.000000)">
+            <g id="checkbox-default" transform="translate(146.000000, 789.000000)">
+                <g>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#AFAFAF" stroke-width="1" x="0.5" y="0.5" width="15" height="15" rx="4"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
