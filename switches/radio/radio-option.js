@@ -12,7 +12,7 @@ export class Option extends React.PureComponent {
     value: PropTypes.string.isRequired,
     isDisabled: PropTypes.bool,
     isChecked: PropTypes.bool,
-    children: PropTypes.string,
+    children: PropTypes.node,
     // Injected through as compound component
     // not required as `createElement` is used.
     name: PropTypes.string,
