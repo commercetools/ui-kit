@@ -8,7 +8,8 @@ import { Checkbox } from '@commercetools-local/ui-kit/switches';
 
 #### Description
 
-A `Checkbox` is is an element which indicates an checked or non checked status.
+A `Checkbox` is an element which indicates an checked or non checked status and
+notifies with a value accordingly.
 
 #### Usage
 
