@@ -12,6 +12,12 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
       alignItems="center"
       scale="s"
     >
+      <test-file-stub />
+      <span
+        className=""
+      >
+        Some label
+      </span>
       <input
         checked={false}
         className="inputWrapper"
@@ -21,12 +27,6 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
         type="radio"
         value="foo"
       />
-      <test-file-stub />
-      <span
-        className=""
-      >
-        Some label
-      </span>
     </Inline>
   </label>
 </div>
@@ -44,6 +44,7 @@ exports[`<Option> rendering without children should match snapshot 1`] = `
       alignItems="center"
       scale="s"
     >
+      <test-file-stub />
       <input
         checked={false}
         className="inputWrapper"
@@ -53,7 +54,6 @@ exports[`<Option> rendering without children should match snapshot 1`] = `
         type="radio"
         value="foo"
       />
-      <test-file-stub />
     </Inline>
   </label>
 </div>

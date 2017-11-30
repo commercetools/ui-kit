@@ -38,15 +38,6 @@ export class Option extends React.PureComponent {
           })}
         >
           <Spacings.Inline alignItems="center">
-            <input
-              className={styles.inputWrapper}
-              name={this.props.name}
-              value={this.props.value}
-              onChange={this.props.onChange}
-              disabled={this.props.isDisabled}
-              checked={this.props.isChecked}
-              type="radio"
-            />
             {(() => {
               if (this.props.isChecked && this.props.isDisabled)
                 return <Icons.CheckedDisabled />;
@@ -67,6 +58,15 @@ export class Option extends React.PureComponent {
                 {this.props.children}
               </span>
             )}
+            <input
+              className={styles.inputWrapper}
+              name={this.props.name}
+              value={this.props.value}
+              onChange={this.props.onChange}
+              disabled={this.props.isDisabled}
+              checked={this.props.isChecked}
+              type="radio"
+            />
           </Spacings.Inline>
         </label>
       </div>
