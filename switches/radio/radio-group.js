@@ -23,7 +23,7 @@ class Group extends React.PureComponent {
     // as a result we need to filter out children of the correct type.
     const childrenAsArray = React.Children.toArray(this.props.children);
     const optionChildrenAsArray = childrenAsArray.filter(
-      child => child.type === Option
+      child => child.type.displayName === Option.displayName
     );
 
     invariant(
@@ -42,7 +42,7 @@ class Group extends React.PureComponent {
         <DirectionWrapper>
           {React.Children.map(this.props.children, child => {
             // NOTE: Allowing to intersperse other elements than `Option`.
-            if (child.type === Option)
+            if (child.type.displayName === Option.displayName)
               return React.cloneElement(child, {
                 isChecked: this.props.value === child.props.value,
                 name: this.props.name,
