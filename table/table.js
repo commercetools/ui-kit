@@ -67,7 +67,7 @@ export class Table extends React.PureComponent {
   render() {
     return (
       <div className={styles.container}>
-        <AutoSizer disableHeight={true}>
+        <AutoSizer disableHeight={!this.props.shouldFillRemainingVerticalSpace}>
           {/*
               NOTE: because `AutoSizer` implements `PureComponent`, if we pass
               a reference to a function that does not change, the children will
