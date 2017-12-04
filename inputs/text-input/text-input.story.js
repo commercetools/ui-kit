@@ -1,0 +1,24 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import withReadme from 'storybook-readme/with-readme';
+import Section from '../../.storybook/decorators/section';
+import Readme from './README.md';
+import TextInput from './text-input';
+
+storiesOf('Forms', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
+  .add('TextInput', () => (
+    <Section>
+      <TextInput
+        name={text('name', '')}
+        value={text('value', '')}
+        onChange={action('onChange')}
+        isDisabled={boolean('isDisabled', false)}
+        placeholder={text('placeholder', 'Placeholder')}
+        hasError={boolean('hasError', false)}
+      />
+    </Section>
+  ));
