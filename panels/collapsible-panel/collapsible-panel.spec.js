@@ -78,7 +78,7 @@ describe('ControlledCollapsiblePanel', () => {
       it('should render tracking info', () => {
         expect(
           wrapper
-            .find('Title')
+            .find('TextHeadline')
             .map(node => node.props()['data-track-component'])
         ).toEqual(['CollapsiblePanel']);
       });
@@ -88,7 +88,9 @@ describe('ControlledCollapsiblePanel', () => {
       });
 
       it('should render header title', () => {
-        expect(wrapper.find('Title').contains('Header Title')).toBe(true);
+        expect(wrapper.find('TextHeadline').contains('Header Title')).toBe(
+          true
+        );
       });
 
       it('should render children', () => {
