@@ -129,6 +129,7 @@ storiesOf('Table', module)
 
 // Basic example
 class BaseTable extends React.PureComponent {
+  static displayName = 'BaseTable';
   state = {
     rows: [
       {
@@ -272,6 +273,7 @@ const defaultColProps = {
 };
 
 class Wrapper extends React.PureComponent {
+  static displayName = 'Wrapper';
   static propTypes = {
     children: PropTypes.func.isRequired,
   };
