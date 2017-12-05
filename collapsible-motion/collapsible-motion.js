@@ -70,15 +70,6 @@ class CollapsibleMotion extends React.PureComponent {
     this.node = node;
   };
 
-  componentDidMount() {
-    console.log(
-      'heights',
-      this.node.clientHeight,
-      this.node.scrollHeight,
-      this.node.offsetHeight
-    );
-  }
-
   render() {
     return (
       <Collapsible>

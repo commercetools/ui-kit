@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>checkbox-active</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="16" height="16" rx="4"></rect>
+    </defs>
+    <g id="ATOM---Checkboxes-and-Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ATOM---Checkboxes-radio-buttons" transform="translate(-146.000000, -869.000000)">
+            <g id="checkbox-active" transform="translate(146.000000, 869.000000)">
+                <g>
+                    <g id="Rectangle-Copy-2">
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <rect stroke="#AFAFAF" stroke-width="1" x="0.5" y="0.5" width="15" height="15" rx="4"></rect>
+                    </g>
+                    <g id="success" transform="translate(2.000000, 2.500000)" fill="#20AD92" fill-rule="nonzero">
+                        <path d="M10.9179452,0.758507397 C10.7257192,0.566156027 10.4104384,0.566156027 10.218087,0.758507397 L4.01058872,6.96638159 C3.81823735,7.15873296 3.50308185,7.15873296 3.31073048,6.96638159 L1.78181904,5.43759545 C1.58946767,5.24524408 1.27431216,5.24524408 1.08196079,5.43759545 L0.144263528,6.37579396 C-0.0480878425,6.56814533 -0.0480878425,6.88330083 0.144263528,7.0756522 L3.31073048,10.2414926 C3.50308185,10.433844 3.81823735,10.433844 4.01058872,10.2414926 L11.8556425,2.39606291 C12.0481192,2.20358623 12.0481192,1.88855603 11.8556425,1.69607935 L10.9179452,0.758507397 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

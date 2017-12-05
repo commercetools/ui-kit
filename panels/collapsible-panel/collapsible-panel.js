@@ -67,7 +67,14 @@ export class ControlledCollapsiblePanel extends React.PureComponent {
                   tone={this.props.tone}
                 />
               )}
-              <Text.Headline elementType="h1">{this.props.label}</Text.Headline>
+              <Text.Headline
+                elementType="h2"
+                data-track-component="CollapsiblePanel"
+                data-track-event="click"
+                data-track-label={this.props.isClosed ? 'open' : 'close'}
+              >
+                {this.props.label}
+              </Text.Headline>
               {this.props.headerControls}
             </div>
           </Spacings.InsetSquish>

@@ -1,0 +1,18 @@
+@import '../../materials/colors.mod.css';
+@import '../../materials/spacings.mod.css';
+
+.inputWrapper {
+  display: none;
+}
+
+.labelWrapper {
+  cursor: pointer;
+}
+
+.labelWrapperDisabled {
+  cursor: not-allowed;
+}
+
+.textDisabled {
+  color: var(--color-primaryGrey);
+}

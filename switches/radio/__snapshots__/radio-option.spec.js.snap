@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Option> rendering with children should match snapshot 1`] = `
+<div
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <test-file-stub />
+      <span
+        className=""
+      >
+        Some label
+      </span>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[Function]}
+        type="radio"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Option> rendering without children should match snapshot 1`] = `
+<div
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <test-file-stub />
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[Function]}
+        type="radio"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
