@@ -13,9 +13,8 @@
 }
 
 .footer {
-  flex-grow: 1;
-  flex-shrink: 0;
   display: flex;
+  flex-direction: column;
 }
 
 /* Storybook */

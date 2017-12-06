@@ -15,7 +15,7 @@ Wraps the given text in the given HTML header `size`.
 #### Usage
 
 ```js
-<Text.Headline elementType="h1">{'The title'}</Text.Headline>;
+<Text.Headline elementType="h1">{'The title'}</Text.Headline>
 ```
 
 #### Properties
@@ -36,7 +36,7 @@ Wraps the given text in the given HTML header `size`.
 #### Usage
 
 ```js
-<Text.Subheadline elementType="h4">{'The subtitle'}</Text.Subheadline>;
+<Text.Subheadline elementType="h4">{'The subtitle'}</Text.Subheadline>
 ```
 
 #### Properties
@@ -58,7 +58,7 @@ Wraps the given text in a `<p>` element, for normal content.
 #### Usage
 
 ```js
-<Text.Body>{'This is a content'}</Text.Body>;
+<Text.Body>{'This is a content'}</Text.Body>
 ```
 
 #### Properties
