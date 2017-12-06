@@ -29,7 +29,7 @@ Button.propTypes = {
   /* set to true or false to indicate a toggle button */
   isToggled: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 Button.displayName = 'Button';
