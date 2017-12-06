@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import CollapsiblePanel from './collapsible-panel';
@@ -13,15 +13,14 @@ storiesOf('Panels', module)
     <Section>
       <CollapsiblePanel
         label={text('Label', 'Title')}
-        isClosed={true}
+        description={text('Description', 'Description')}
+        isSticky={boolean('isSticky', false)}
+        isDisabled={boolean('isDisabled', false)}
+        tone={select('tone', ['primary', 'urgent'], 'primary')}
+        isClosed={boolean('isClosed', false)}
         // onToggle={'onToggle', () => alert('onToggle')}
       >
-        <div>
-          {text(
-            'Text',
-            'Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>Sample text <Headline>'
-          )}
-        </div>
+        <div>{text('Text', 'Sample text')}</div>
       </CollapsiblePanel>
     </Section>
   ));

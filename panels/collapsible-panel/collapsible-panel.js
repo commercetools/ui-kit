@@ -80,14 +80,13 @@ export class ControlledCollapsiblePanel extends React.PureComponent {
           </Spacings.InsetSquish>
         </div>
 
-        {this.props.description &&
-          !this.props.isClosed && (
-            <Spacings.Inset scale="m">
-              <Text.Detail>{this.props.description}</Text.Detail>
-            </Spacings.Inset>
-          )}
         <div style={this.props.style}>
           <div ref={this.props.registerContentNode}>
+            {this.props.description && (
+              <Spacings.Inset scale="m">
+                <Text.Detail>{this.props.description}</Text.Detail>
+              </Spacings.Inset>
+            )}
             <Spacings.Inset scale="m">{this.props.children}</Spacings.Inset>
           </div>
         </div>
