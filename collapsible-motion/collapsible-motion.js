@@ -61,9 +61,9 @@ class CollapsibleMotion extends React.PureComponent {
   };
 
   calcFullHeight = state =>
-    state.fullHeight === this.node.scrollHeight
+    state.fullHeight === this.node.clientHeight
       ? state.fullHeight
-      : this.node.scrollHeight;
+      : this.node.clientHeight;
 
   registerContentNode = node => {
     if (!node) return;

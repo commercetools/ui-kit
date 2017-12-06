@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import CollapsibleMotion from '../collapsible-motion';
 
 const createMockNode = custom => ({
-  scrollHeight: 200,
+  clientHeight: 200,
   addEventListener: () => {},
   removeEventListener: () => {},
   ...custom,
@@ -110,7 +110,6 @@ describe('toggle', () => {
     });
 
     it('should set the full height to 200', () => {
-      console.log('wrapper.state()', wrapper.state());
       expect(wrapper.state()).toEqual({ fullHeight: 200 });
     });
   });
