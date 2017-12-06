@@ -4,7 +4,7 @@
 
 ```js
 import PrimaryActionDropdown, {
-  Option,
+  Option
 } from '@commercetools-local/ui-kit/dropdowns/primary-action-dropdown';
 ```
 

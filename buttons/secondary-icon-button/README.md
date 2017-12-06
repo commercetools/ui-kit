@@ -19,7 +19,7 @@ also pass a label for accessibility reasons.
   icon={<ArrowRightIcon />}
   label="Next"
   onClick={() => alert('Button clicked')}
-/>;
+/>
 ```
 
 #### Properties
