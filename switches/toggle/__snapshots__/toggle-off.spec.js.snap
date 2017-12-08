@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ToggleOff> rendering outputs correct tree 1`] = `undefined`;
+exports[`<ToggleOff> rendering outputs correct tree 1`] = `
+<span
+  className="toggleLabel"
+/>
+`;

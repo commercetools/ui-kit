@@ -14,6 +14,9 @@ describe('<ToggleOff>', () => {
     let wrapper;
 
     it('outputs correct tree', () => {
+      props = createTestProps();
+      wrapper = shallow(<ToggleOff {...props} />);
+
       expect(wrapper).toMatchSnapshot();
     });
 

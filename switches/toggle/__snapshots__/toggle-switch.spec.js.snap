@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToggleSwitch> rendering outputs correct tree 1`] = `
+<div
+  className="toggleSwitch"
+>
+  <test-file-stub
+    className="toggleButton"
+  />
+  <test-file-stub
+    className="toggleBar"
+  />
+</div>
+`;
