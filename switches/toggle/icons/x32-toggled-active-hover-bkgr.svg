@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="24px" viewBox="0 0 64 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>x32-toggled-active-hover-bkgr</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="MOLECULES---Toggle-/-change-view" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.802026721">
+        <g id="toggle-/-change-view" transform="translate(-562.000000, -895.000000)" fill="#87D8C8">
+            <g id="x32-toggled-active-hover" transform="translate(562.000000, 890.000000)">
+                <rect id="x32-toggled-active-hover-bkgr" x="0" y="5" width="64" height="24" rx="12"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
