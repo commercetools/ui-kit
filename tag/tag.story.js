@@ -21,6 +21,7 @@ const Story = () => (
     </Tag>
   </Section>
 );
+Story.displayName = 'Story';
 
 storiesOf('Tags', module)
   .addDecorator(withKnobs)
