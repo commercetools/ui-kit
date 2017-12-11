@@ -48,7 +48,7 @@ export default class CollapsiblePanel extends React.PureComponent {
       //  -> `onToggle` is required
       const isControlledComponent = !isNil(props.isClosed);
 
-      //uncontrolled
+      // uncontrolled
       if (!isControlledComponent) {
         const hasOnToggle = !isNil(props.onToggle);
         if (hasOnToggle)
