@@ -14,6 +14,7 @@ const createOpeningAnimation = height => keyframes`
     overflow: hidden;
   }
   100% {
+    height: auto;
     overflow: visible;
   }
 `;
