@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toggle> rendering with children should match snapshot 1`] = `
+<div>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <ToggleOn
+        isChecked={false}
+        isDisabled={false}
+        key=".0"
+      >
+        On
+      </ToggleOn>
+      <ToggleOff
+        isChecked={false}
+        isDisabled={false}
+        key=".1"
+      >
+        Off
+      </ToggleOff>
+      <ToggleSwitch
+        className="toggleSwitch"
+        isChecked={false}
+        isDisabled={false}
+      />
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        type="checkbox"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Toggle> rendering without children should match snapshot 1`] = `
+<div
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <ToggleSwitch
+        className="toggleSwitch"
+        isChecked={false}
+        isDisabled={false}
+        isMouseOver={false}
+      />
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="toggle"
+        onChange={[Function]}
+        type="checkbox"
+      />
+    </Inline>
+  </label>
+</div>
+`;

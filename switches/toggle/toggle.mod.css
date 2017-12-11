@@ -1,0 +1,81 @@
+@import '../../materials/spacings.mod.css';
+@import '../../materials/colors.mod.css';
+@import '../../materials/sizes.mod.css';
+
+:root {
+  --large-toggle-height: var(--big-button-height);
+  --large-toggle-width: calc(var(--big-button-height) * 2);
+  --large-button-height: var(--big-button-height);
+  --large-button-width: var(--big-button-height);
+  --large-hover-button-height: 52px;
+  --large-hover-button-width: 52px;
+  --large-bar-height: 24px;
+  --large-bar-width: 64px;
+}
+
+.inputWrapper {
+  display: none;
+}
+
+.labelWrapper {
+  cursor: pointer;
+}
+
+.labelWrapperDisabled {
+  cursor: not-allowed;
+}
+
+.textWrapperDisabled {
+  color: var(--color-primaryGrey);
+}
+
+/* LARGE TOGGLE */
+.toggleLabel {
+  width: calc(var(--large-bar-width) * 2);
+}
+
+.toggleSwitch {
+  position: relative;
+  width: var(--large-toggle-width);
+  height: var(--large-toggle-height);
+}
+
+.toggleBar {
+  position: absolute;
+  left: 0;
+  top: var(--spacing-4);
+  width: var(--large-bar-width);
+  height: var(--large-bar-height);
+}
+
+.toggleButton {
+  top: -1px; /* The position of the button was off for some reason */
+  left: -1px;
+  width: var(--large-button-height);
+  height: var(--large-button-height);
+  position: absolute;
+  z-index: 1;
+}
+
+.toggleButtonChecked {
+  composes: toggleButton;
+  left: var(--spacing-32);
+}
+
+.toggleButtonHover {
+  top: calc(
+    (var(--large-hover-button-height) - var(--large-button-height)) / -2
+  );
+  left: calc(
+    (var(--large-hover-button-width) - var(--large-button-width)) / -2
+  );
+  width: var(--large-hover-button-width);
+  height: var(--large-hover-button-height);
+  position: absolute;
+  z-index: 1;
+}
+
+.toggleButtonCheckedHover {
+  composes: toggleButtonHover;
+  left: 22px;
+}
