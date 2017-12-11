@@ -65,7 +65,7 @@ describe('<Toggle>', () => {
 
     describe('with children', () => {
       beforeEach(() => {
-        props = createTestProps();
+        props = createTestProps({ isChecked: false });
 
         wrapper = shallow(
           <Toggle {...props}>
