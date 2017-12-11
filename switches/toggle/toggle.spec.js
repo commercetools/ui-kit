@@ -69,8 +69,8 @@ describe('<Toggle>', () => {
 
         wrapper = shallow(
           <Toggle {...props}>
-            <ToggleOn>{'On'}</ToggleOn>
-            <ToggleOff>{'Off'}</ToggleOff>
+            <ToggleOn {...props}>{'On'}</ToggleOn>
+            <ToggleOff {...props}>{'Off'}</ToggleOff>
           </Toggle>
         );
       });

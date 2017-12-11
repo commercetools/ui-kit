@@ -13,16 +13,26 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
       scale="s"
     >
       <ToggleOn
+        handleMouseOut={[Function]}
+        handleMouseOver={[Function]}
         isChecked={false}
         isDisabled={false}
+        isMouseOver={false}
         key=".0"
+        name="toggle"
+        onChange={[Function]}
       >
         On
       </ToggleOn>
       <ToggleOff
+        handleMouseOut={[Function]}
+        handleMouseOver={[Function]}
         isChecked={false}
         isDisabled={false}
+        isMouseOver={false}
         key=".1"
+        name="toggle"
+        onChange={[Function]}
       >
         Off
       </ToggleOff>
