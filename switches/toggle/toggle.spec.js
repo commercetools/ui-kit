@@ -68,7 +68,7 @@ describe('<Toggle>', () => {
         props = createTestProps();
 
         wrapper = shallow(
-          <Toggle>
+          <Toggle {...props}>
             <ToggleOn>{'On'}</ToggleOn>
             <ToggleOff>{'Off'}</ToggleOff>
           </Toggle>
