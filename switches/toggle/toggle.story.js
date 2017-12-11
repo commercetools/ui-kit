@@ -19,30 +19,26 @@ storiesOf('Switches', module)
           isChecked={boolean('isFirstToggleChecked', false)}
           onChange={action('onChange: first')}
         >
-          <Toggle.On>
-            {text('Label of first toggle', 'Simple Toggled')}
-          </Toggle.On>
-          <Toggle.Off>{text('Label of first toggle', 'Simple')}</Toggle.Off>
+          <Toggle.On>{'Simple Toggled'}</Toggle.On>
+          <Toggle.Off>{'Simple'}</Toggle.Off>
         </Toggle.Toggle>
         <Toggle.Toggle
           isDisabled={boolean('isSecondToggleDisabled', true)}
           isChecked={false}
           onChange={action('onChange: second')}
         >
-          <Toggle.On>
-            {text('Label of second toggle', 'Simple Disabled Toggled')}
-          </Toggle.On>
-          <Toggle.Off>
-            {text('Label of second toggle', 'Simple Disabled')}
-          </Toggle.Off>
+          <Toggle.On>{'Simple Disabled Toggled'}</Toggle.On>
+          <Toggle.Off>{'Simple Disabled'}</Toggle.Off>
         </Toggle.Toggle>
         <Toggle.Toggle
           isDisabled={false}
           isChecked={boolean('isThirdToggleChecked', true)}
           onChange={action('onChange: third')}
         >
-          <Toggle.On>{text('Label of third toggle', 'Toggled')}</Toggle.On>
-          <Toggle.Off>{text('Label of third toggle', 'Toggle off')}</Toggle.Off>
+          <Toggle.On>{text('Label of third toggle on', 'Toggled')}</Toggle.On>
+          <Toggle.Off>
+            {text('Label of third toggle off', 'Toggle off')}
+          </Toggle.Off>
         </Toggle.Toggle>
         <Toggle.Toggle
           isDisabled={true}
@@ -50,10 +46,10 @@ storiesOf('Switches', module)
           onChange={action('onChange: fourth')}
         >
           <Toggle.On>
-            {text('Label of fourth toggle', 'Toggled && Disabled')}
+            {text('Label of fourth toggle on', 'Toggled && Disabled')}
           </Toggle.On>
           <Toggle.Off>
-            {text('Label of fourth toggle', 'Toggled && Disabled')}
+            {text('Label of fourth toggle off', 'Toggled && Disabled')}
           </Toggle.Off>
         </Toggle.Toggle>
       </Spacings.Stack>
