@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import isNil from 'lodash.isnil';
 
 class Collapsible extends React.PureComponent {
   static displayName = 'Collapsible';
@@ -10,6 +11,14 @@ class Collapsible extends React.PureComponent {
     // an external source.
     isDefaultClosed: PropTypes.bool,
     children: PropTypes.func.isRequired,
+
+    // The component can be controlled or uncontrolled.
+    // when uncontrolled (no isClosed passed)
+    //  -> There may not be `onToggle`
+    // when controlled (isClosed passed)
+    //  -> `onToggle` is required
+    isClosed: PropTypes.bool,
+    onToggle: PropTypes.func,
   };
 
   static defaultProps = { isDefaultClosed: false };
@@ -20,9 +29,11 @@ class Collapsible extends React.PureComponent {
   };
 
   render() {
+    const isControlledComponent = !isNil(this.props.isClosed);
+
     return this.props.children({
-      isOpen: this.state.isOpen,
-      toggle: this.toggle,
+      isOpen: isControlledComponent ? !this.props.isClosed : this.state.isOpen,
+      toggle: isControlledComponent ? this.props.onToggle : this.toggle,
     });
   }
 }

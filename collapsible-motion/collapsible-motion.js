@@ -38,6 +38,8 @@ class CollapsibleMotion extends React.PureComponent {
   static displayName = 'CollapsibleMotion';
   static propTypes = {
     children: PropTypes.func.isRequired,
+    isClosed: PropTypes.bool,
+    onToggle: PropTypes.func,
   };
 
   state = { fullHeight: null };
@@ -73,7 +75,10 @@ class CollapsibleMotion extends React.PureComponent {
 
   render() {
     return (
-      <Collapsible>
+      <Collapsible
+        isClosed={this.props.isClosed}
+        onToggle={this.props.onToggle}
+      >
         {({ isOpen, toggle }) => {
           const animationName = getAnimationName({
             isOpen,

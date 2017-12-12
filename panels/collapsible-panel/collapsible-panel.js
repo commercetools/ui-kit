@@ -41,11 +41,6 @@ export default class CollapsiblePanel extends React.PureComponent {
     // props when controlled
     isClosed: PropTypes.bool,
     onToggle(props, propName, componentName, ...rest) {
-      // The component can be controlled or uncontrolled.
-      // when uncontrolled (no isClosed passed)
-      //  -> There may not be `onToggle`
-      // when controlled (isClosed passed)
-      //  -> `onToggle` is required
       const isControlledComponent = !isNil(props.isClosed);
 
       // uncontrolled
@@ -73,44 +68,34 @@ export default class CollapsiblePanel extends React.PureComponent {
   }
 
   render() {
-    const isControlledComponent = !isNil(this.props.isClosed);
     // Pass only `data-*` props
     const headerProps = filterDataAttributes(this.props);
 
     return (
       <CollapsibleMotion
-        isDefaultClosed={!isControlledComponent && this.props.isDefaultClosed}
+        isClosed={this.props.isClosed}
+        onToggle={this.props.onToggle}
+        isDefaultClosed={this.props.isDefaultClosed}
       >
         {({ isOpen, toggle, containerStyles, registerContentNode }) => (
           <div
             className={classnames(this.props.className, styles.container, {
-              [styles['container-open']]: isControlledComponent
-                ? !this.props.isClosed
-                : isOpen,
+              [styles['container-open']]: isOpen,
             })}
           >
             <div
               className={classnames(styles['header-container'], {
-                [styles.sticky]: this.props.isSticky && !this.props.isClosed,
+                [styles.sticky]: this.props.isSticky && isOpen,
               })}
             >
               <Spacings.InsetSquish>
                 <div
                   {...headerProps}
-                  onClick={() =>
-                    this.handleToggle(
-                      isControlledComponent ? this.props.onToggle : toggle
-                    )
-                  }
+                  onClick={() => this.handleToggle(toggle)}
                   className={styles.header}
                 >
                   {!this.props.isDisabled && (
-                    <HeaderIcon
-                      isClosed={
-                        isControlledComponent ? this.props.isClosed : !isOpen
-                      }
-                      tone={this.props.tone}
-                    />
+                    <HeaderIcon isClosed={!isOpen} tone={this.props.tone} />
                   )}
                   <Text.Headline elementType="h2">
                     {this.props.label}
