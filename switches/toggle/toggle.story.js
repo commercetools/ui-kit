@@ -14,23 +14,23 @@ storiesOf('Switches', module)
   .add('Toggle', () => (
     <Section>
       <Spacings.Stack>
-        <Toggle.Toggle
+        <Toggle
           isDisabled={false}
           isChecked={boolean('isFirstToggleChecked', false)}
           onChange={action('onChange: first')}
         >
-          <Toggle.On>{'Simple Toggled'}</Toggle.On>
-          <Toggle.Off>{'Simple'}</Toggle.Off>
-        </Toggle.Toggle>
-        <Toggle.Toggle
+          <Toggle.On>Simple Toggled</Toggle.On>
+          <Toggle.Off>Simple</Toggle.Off>
+        </Toggle>
+        <Toggle
           isDisabled={boolean('isSecondToggleDisabled', true)}
           isChecked={false}
           onChange={action('onChange: second')}
         >
-          <Toggle.On>{'Simple Disabled Toggled'}</Toggle.On>
-          <Toggle.Off>{'Simple Disabled'}</Toggle.Off>
-        </Toggle.Toggle>
-        <Toggle.Toggle
+          <Toggle.On>Simple Disabled Toggled</Toggle.On>
+          <Toggle.Off>Simple Disabled</Toggle.Off>
+        </Toggle>
+        <Toggle
           isDisabled={false}
           isChecked={boolean('isThirdToggleChecked', true)}
           onChange={action('onChange: third')}
@@ -39,8 +39,8 @@ storiesOf('Switches', module)
           <Toggle.Off>
             {text('Label of third toggle off', 'Toggle off')}
           </Toggle.Off>
-        </Toggle.Toggle>
-        <Toggle.Toggle
+        </Toggle>
+        <Toggle
           isDisabled={true}
           isChecked={true}
           onChange={action('onChange: fourth')}
@@ -51,7 +51,7 @@ storiesOf('Switches', module)
           <Toggle.Off>
             {text('Label of fourth toggle off', 'Toggled && Disabled')}
           </Toggle.Off>
-        </Toggle.Toggle>
+        </Toggle>
       </Spacings.Stack>
     </Section>
   ));

@@ -2,8 +2,7 @@ import Toggle from './toggle';
 import ToggleOn from './toggle-on';
 import ToggleOff from './toggle-off';
 
-export default {
-  Toggle,
-  On: ToggleOn,
-  Off: ToggleOff,
-};
+Toggle.On = ToggleOn;
+Toggle.Off = ToggleOff;
+
+export default Toggle;
