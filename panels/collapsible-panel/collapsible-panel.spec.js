@@ -140,7 +140,6 @@ describe('CollapsiblePanel', () => {
       beforeEach(() => {
         props = createTestProps({
           isDisabled: false,
-          onToggle: jest.fn(),
         });
         collapsibleInternalToggleFunc = jest.fn();
         wrapper = shallow(
@@ -160,10 +159,6 @@ describe('CollapsiblePanel', () => {
 
       it('should invoke `onToggle` from Collapsible', () => {
         expect(collapsibleInternalToggleFunc).toHaveBeenCalled();
-      });
-
-      it('should not invoke `onToggle` from Collapsiblepanel props', () => {
-        expect(props.onToggle).not.toHaveBeenCalled();
       });
     });
 
