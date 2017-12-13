@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import styles from './text-input.mod.css';
+import styles from './numeric-input.mod.css';
 
 const TextInput = props => (
   <input
@@ -12,7 +12,7 @@ const TextInput = props => (
     onBlur={props.onBlur}
     disabled={props.isDisabled}
     placeholder={props.placeholder}
-    className={classnames(styles['input-secondary'], {
+    className={classnames(styles.input, {
       [styles.invalid]: props.hasError,
       [styles.disabled]: props.isDisabled,
     })}

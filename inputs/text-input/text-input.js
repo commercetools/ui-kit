@@ -12,7 +12,7 @@ const TextInput = props => (
     onBlur={props.onBlur}
     disabled={props.isDisabled}
     placeholder={props.placeholder}
-    className={classnames(styles['input-secondary'], {
+    className={classnames(styles.input, {
       [styles.invalid]: props.hasError,
       [styles.disabled]: props.isDisabled,
     })}
