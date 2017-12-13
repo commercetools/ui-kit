@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextInput from './text-input';
+import NumericInput from './numeric-input';
 
 const createTestProps = customProps => ({
   value: '',
@@ -13,10 +13,10 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       const props = createTestProps({
-        name: 'field1',
-        value: 'foo',
+        name: 'numeric-field1',
+        value: '1',
       });
-      wrapper = shallow(<TextInput {...props} />);
+      wrapper = shallow(<NumericInput {...props} />);
     });
 
     it('should have class for a default tone', () => {
@@ -28,11 +28,11 @@ describe('rendering', () => {
     });
 
     it('input have name', () => {
-      expect(wrapper).toHaveProp('name', 'field1');
+      expect(wrapper).toHaveProp('name', 'numeric-field1');
     });
 
     it('should have passed value', () => {
-      expect(wrapper).toHaveProp('value', 'foo');
+      expect(wrapper).toHaveProp('value', '1');
     });
 
     describe('with tones', () => {
@@ -41,7 +41,7 @@ describe('rendering', () => {
           const props = createTestProps({
             tone: 'warning',
           });
-          wrapper = shallow(<TextInput {...props} />);
+          wrapper = shallow(<NumericInput {...props} />);
         });
 
         it('should have warning tone styles', () => {
@@ -53,7 +53,7 @@ describe('rendering', () => {
           const props = createTestProps({
             tone: 'error',
           });
-          wrapper = shallow(<TextInput {...props} />);
+          wrapper = shallow(<NumericInput {...props} />);
         });
 
         it('should have error tone styles', () => {
@@ -65,7 +65,7 @@ describe('rendering', () => {
           const props = createTestProps({
             tone: 'info',
           });
-          wrapper = shallow(<TextInput {...props} />);
+          wrapper = shallow(<NumericInput {...props} />);
         });
 
         it('should have info tone styles', () => {
@@ -81,7 +81,7 @@ describe('rendering', () => {
       const props = createTestProps({
         isDisabled: true,
       });
-      wrapper = shallow(<TextInput {...props} />);
+      wrapper = shallow(<NumericInput {...props} />);
     });
 
     it('should have class for the disabled state', () => {
@@ -95,7 +95,7 @@ describe('rendering', () => {
       const props = createTestProps({
         isInactive: true,
       });
-      wrapper = shallow(<TextInput {...props} />);
+      wrapper = shallow(<NumericInput {...props} />);
     });
 
     it('should have class for the inactive state', () => {
@@ -111,11 +111,11 @@ describe('callbacks', () => {
     beforeEach(() => {
       onChangeFunc = jest.fn();
       const props = createTestProps({
-        value: 'foo',
+        value: '1',
         onChange: onChangeFunc,
       });
-      wrapper = shallow(<TextInput {...props} />);
-      wrapper.simulate('change', { target: { value: 'bar' } });
+      wrapper = shallow(<NumericInput {...props} />);
+      wrapper.simulate('change', { target: { value: '2' } });
     });
 
     it('should call onChange', () => {
@@ -128,10 +128,10 @@ describe('callbacks', () => {
     beforeEach(() => {
       onBlurFun = jest.fn();
       const props = createTestProps({
-        value: 'foo',
+        value: '1',
         onBlur: onBlurFun,
       });
-      wrapper = shallow(<TextInput {...props} />);
+      wrapper = shallow(<NumericInput {...props} />);
       wrapper.simulate('blur');
     });
 
