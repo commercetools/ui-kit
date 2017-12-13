@@ -21,9 +21,10 @@ import TextInput from '@commercetools-local/ui-kit/inputs/text-input';
 | `value`       | `string` |    ✅    | -      | -       | Value of the input                                               |
 | `onChange`    | `func`   |    ✅    | -      | -       | Called with the new value. Parent should pass it back as `value` |
 | `onBlur`      | `func`   |    -     | -      | -       | Called when field is blurred                                     |
-| `isDisabled`  | `bool`   |    -     | -      | `false` | Controls disabled state of input                                 |
-| `placeholder` | `string` |    -     | -      | -       | Placeholder for the input                                        |
-| `hasError`    | `bool`   |    -     | -      | -       | Turns on the "error" state of the input (shows a red border)     |
+| `isDisabled`  | `bool`   |    -     | -      | `false` | Controls disabled state of input |
+| `isInactive`  | `bool`   |    -     | -      | `false` | Applies the inactive style. (e.G a fetch is being executed in a search input field) |
+| `placeholder` | `string` |    -     | -      | -       | Placeholder text for the input                                                                          |
+| `tone`    | `oneOf`   |    -     | ['default', 'warning', 'error', 'info']      | `default` | applies the styles regarding the received tone |
 
 Main Functions and use cases are:
 
