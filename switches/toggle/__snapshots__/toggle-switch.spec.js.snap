@@ -4,11 +4,15 @@ exports[`<ToggleSwitch> rendering outputs correct tree 1`] = `
 <div
   className="toggleSwitch"
 >
-  <test-file-stub
-    className="toggleButton"
+  <ToggleButton
+    isChecked={false}
+    isDisabled={false}
+    isMouseOver={false}
   />
-  <test-file-stub
-    className="toggleBar"
+  <ToggleBar
+    isChecked={false}
+    isDisabled={false}
+    isMouseOver={false}
   />
 </div>
 `;
