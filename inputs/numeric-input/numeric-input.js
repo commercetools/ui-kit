@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './numeric-input.mod.css';
 
-const TextInput = props => (
+const NumericInput = props => (
   <input
     name={props.name}
     type="text"
@@ -13,22 +13,28 @@ const TextInput = props => (
     disabled={props.isDisabled}
     placeholder={props.placeholder}
     className={classnames(styles.input, {
-      [styles.invalid]: props.hasError,
       [styles.disabled]: props.isDisabled,
+      [styles.inactive]: props.isInactive,
+      [styles[props.tone]]: props.tone,
     })}
   />
 );
 
-TextInput.displayName = 'TextInput';
+NumericInput.displayName = 'NumericInput';
 
-TextInput.propTypes = {
+NumericInput.defaultProps = {
+  tone: 'default',
+};
+
+NumericInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   isDisabled: PropTypes.bool,
+  isInactive: PropTypes.bool,
   placeholder: PropTypes.string,
-  hasError: PropTypes.bool,
+  tone: PropTypes.oneOf(['default', 'warning', 'error', 'info']),
 };
 
-export default TextInput;
+export default NumericInput;

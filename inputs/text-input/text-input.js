@@ -13,13 +13,18 @@ const TextInput = props => (
     disabled={props.isDisabled}
     placeholder={props.placeholder}
     className={classnames(styles.input, {
-      [styles.invalid]: props.hasError,
       [styles.disabled]: props.isDisabled,
+      [styles.inactive]: props.isInactive,
+      [styles[props.tone]]: props.tone,
     })}
   />
 );
 
 TextInput.displayName = 'TextInput';
+
+TextInput.defaultProps = {
+  tone: 'default',
+};
 
 TextInput.propTypes = {
   name: PropTypes.string,
@@ -27,8 +32,9 @@ TextInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   isDisabled: PropTypes.bool,
+  isInactive: PropTypes.bool,
   placeholder: PropTypes.string,
-  hasError: PropTypes.bool,
+  tone: PropTypes.oneOf(['default', 'warning', 'error', 'info']),
 };
 
 export default TextInput;

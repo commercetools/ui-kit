@@ -9,11 +9,9 @@
 .input {
   width: 100%;
   height: inherit;
-  color: var(--color-greyDark);
   border-radius: 6px;
   border-style: solid;
   border-width: 1px;
-  border-color: var(--color-greySolid);
   font-weight: 500;
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif !important;
@@ -23,25 +21,46 @@
   appearance: none;
 }
 
+/* Tones */
+
+.default {
+  border-color: var(--color-greySolid);
+  color: var(--color-greyDark);
+}
+
+.warning {
+  color: var(--color-CTOrange);
+  border-color: var(--color-CTOrange);
+}
+
+.error {
+  color: var(--color-red);
+  border-color: var(--color-red);
+}
+
+.info {
+  color: var(--color-bluePelorous);
+  border-color: var(--color-blueDodger);
+}
+
 /* States */
 
 .input:active,
 .input:focus {
   border-color: var(--color-greenDowny);
-}
-
-.invalid {
-  color: var(--color-CTOrange);
-  border-color: var(--color-CTOrange);
+  color: var(--color-greyDark);
 }
 
 .disabled {
   cursor: not-allowed;
   background-color: var(--color-whiteCatskill);
-  border: none;
+  border-color: var(--color-greyMischka);
   color: var(--color-greyNevada);
   opacity: 1; /* fix for mobile safari */
+}
 
-  /* FIXME: add a color var */
-  box-shadow: var(--shadow-10-first);
+.inactive {
+  color: var(--color-primaryGrey);
+  border-color: var(--color-primaryGrey);
+  background-color: var(--color-white);
 }

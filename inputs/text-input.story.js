@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../.storybook/decorators/section';
 import TextInputReadme from './text-input/README.md';
@@ -19,8 +19,9 @@ storiesOf('Forms/Inputs', module)
         value={text('value', '')}
         onChange={action('onChange')}
         isDisabled={boolean('isDisabled', false)}
+        isInactive={boolean('isInactive', false)}
         placeholder={text('placeholder', 'Placeholder')}
-        hasError={boolean('hasError', false)}
+        tone={select('tone', ['default', 'warning', 'error', 'info'])}
       />
     </Section>
   ))
@@ -32,8 +33,9 @@ storiesOf('Forms/Inputs', module)
         value={text('value', '')}
         onChange={action('onChange')}
         isDisabled={boolean('isDisabled', false)}
+        isInactive={boolean('isInactive', false)}
         placeholder={text('placeholder', 'Placeholder')}
-        hasError={boolean('hasError', false)}
+        tone={select('tone', ['default', 'warning', 'error', 'info'])}
       />
     </Section>
   ));
