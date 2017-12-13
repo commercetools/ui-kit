@@ -48,7 +48,6 @@ ToggleSwitch.displayName = 'ToggleSwitch';
 ToggleSwitch.propTypes = {
   isChecked: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-  // HoC
   isMouseOver: PropTypes.bool.isRequired,
 };
 
