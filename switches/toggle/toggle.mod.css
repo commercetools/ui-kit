@@ -3,14 +3,22 @@
 @import '../../materials/sizes.mod.css';
 
 :root {
-  --large-toggle-height: var(--big-button-height);
-  --large-toggle-width: calc(var(--big-button-height) * 2);
-  --large-button-height: var(--big-button-height);
-  --large-button-width: var(--big-button-height);
-  --large-hover-button-height: 52px;
-  --large-hover-button-width: 52px;
-  --large-bar-height: 24px;
-  --large-bar-width: 64px;
+  --big-toggle-height: var(--standard-input-height);
+  --big-toggle-width: calc(var(--big-toggle-height) * 2);
+  --big-button-height: var(--big-toggle-height);
+  --big-button-width: var(--big-toggle-height);
+  --big-hover-button-height: 52px;
+  --big-hover-button-width: 52px;
+  --big-bar-height: 24px;
+  --big-bar-width: 64px;
+  --small-toggle-height: 16px;
+  --small-toggle-width: calc(var(--small-toggle-height) * 2);
+  --small-button-height: var(--small-toggle-height);
+  --small-button-width: var(--small-toggle-height);
+  --small-hover-button-height: 26px;
+  --small-hover-button-width: 26px;
+  --small-bar-height: 12px;
+  --small-bar-width: 32px;
 }
 
 .inputWrapper {
@@ -29,53 +37,98 @@
   color: var(--color-primaryGrey);
 }
 
-/* LARGE TOGGLE */
-.toggleLabel {
-  width: calc(var(--large-bar-width) * 2);
+.label {
+  width: calc(var(--big-bar-width) * 2);
 }
 
-.toggleSwitch {
-  position: relative;
-  width: var(--large-toggle-width);
-  height: var(--large-toggle-height);
-}
-
-.toggleBar {
-  position: absolute;
-  left: 0;
-  top: var(--spacing-4);
-  width: var(--large-bar-width);
-  height: var(--large-bar-height);
-}
-
-.toggleButton {
+.button {
   top: -1px; /* The position of the button was off for some reason */
   left: -1px;
-  width: var(--large-button-height);
-  height: var(--large-button-height);
   position: absolute;
   z-index: 1;
 }
 
-.toggleButtonChecked {
-  composes: toggleButton;
+.bar {
+  position: absolute;
+  left: 0;
+}
+
+/* LARGE TOGGLE */
+.container-big {
+  position: relative;
+  width: var(--big-toggle-width);
+  height: var(--big-toggle-height);
+}
+
+.bar-big {
+  composes: bar;
+  top: var(--spacing-4);
+  width: var(--big-bar-width);
+  height: var(--big-bar-height);
+}
+
+.button-big {
+  composes: button;
+  width: var(--big-button-height);
+  height: var(--big-button-height);
+}
+
+.button-checked-big {
+  composes: button-big;
   left: var(--spacing-32);
 }
 
-.toggleButtonHover {
+.button-hover-big {
+  composes: button-big;
   top: calc(
-    (var(--large-hover-button-height) - var(--large-button-height)) / -2
+    (var(--big-hover-button-height) - var(--big-button-height)) / -2
   );
   left: calc(
-    (var(--large-hover-button-width) - var(--large-button-width)) / -2
+    (var(--big-hover-button-width) - var(--big-button-width)) / -2
   );
-  width: var(--large-hover-button-width);
-  height: var(--large-hover-button-height);
-  position: absolute;
-  z-index: 1;
+  width: var(--big-hover-button-width);
+  height: var(--big-hover-button-height);
 }
 
-.toggleButtonCheckedHover {
-  composes: toggleButtonHover;
+.button-hover-checked-big {
+  composes: button-hover-big;
   left: 22px;
+}
+
+/* SMALL TOGGLE */
+.container-small {
+  position: relative;
+  width: var(--small-toggle-width);
+  height: var(--small-toggle-height);
+}
+
+.bar-small {
+  composes: bar;
+  top: calc(var(--spacing-4) / 2);
+  width: var(--small-bar-width);
+  height: var(--small-bar-height);
+}
+
+.button-small {
+  composes: button;
+}
+
+.button-checked-small {
+  composes: button-small;
+  left: var(--spacing-16);
+}
+
+.button-hover-small {
+  composes: button-small;
+  top: calc(
+    (var(--small-hover-button-height) - var(--small-button-height)) / -2
+  );
+  left: calc(
+    (var(--small-hover-button-width) - var(--small-button-width)) / -2
+  );
+}
+
+.button-hover-checked-small {
+  composes: button-hover-small;
+  left: 11px;
 }

@@ -6,7 +6,7 @@ import styles from './toggle.mod.css';
 const ToggleOff = props =>
   props.isChecked ? null : (
     <span
-      className={classnames(styles.toggleLabel, {
+      className={classnames(styles.label, {
         [styles.textWrapperDisabled]: props.isDisabled,
       })}
     >
