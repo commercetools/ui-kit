@@ -6,7 +6,7 @@ import styles from './numeric-input.mod.css';
 const NumericInput = props => (
   <input
     name={props.name}
-    type="text"
+    type="number"
     value={props.value}
     onChange={props.onChange}
     onBlur={props.onBlur}
@@ -22,10 +22,6 @@ const NumericInput = props => (
 
 NumericInput.displayName = 'NumericInput';
 
-NumericInput.defaultProps = {
-  tone: 'default',
-};
-
 NumericInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -34,7 +30,7 @@ NumericInput.propTypes = {
   isDisabled: PropTypes.bool,
   isInactive: PropTypes.bool,
   placeholder: PropTypes.string,
-  tone: PropTypes.oneOf(['default', 'warning', 'error', 'info']),
+  tone: PropTypes.oneOf(['warning', 'error', 'info']),
 };
 
 export default NumericInput;
