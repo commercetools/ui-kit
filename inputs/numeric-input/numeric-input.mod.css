@@ -7,8 +7,6 @@
 .input {
   width: 100%;
   height: inherit;
-  border-color: var(--color-greySolid);
-  color: var(--color-greyDark);
   border-radius: var(--border-radius-6);
   border-style: solid;
   border-width: 1px;
@@ -23,6 +21,11 @@
 }
 
 /* Tones */
+
+.plain {
+  border-color: var(--color-greySolid);
+  color: var(--color-greyDark);
+}
 
 .warning {
   color: var(--color-CTOrange);

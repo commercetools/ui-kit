@@ -30,7 +30,11 @@ NumericInput.propTypes = {
   isDisabled: PropTypes.bool,
   isInactive: PropTypes.bool,
   placeholder: PropTypes.string,
-  tone: PropTypes.oneOf(['warning', 'error', 'info']),
+  tone: PropTypes.oneOf(['plain', 'warning', 'error', 'info']),
+};
+
+NumericInput.defaultProps = {
+  tone: 'plain',
 };
 
 export default NumericInput;

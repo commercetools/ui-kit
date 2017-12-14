@@ -20,7 +20,7 @@ describe('rendering', () => {
     });
 
     it('should have class for default styles', () => {
-      expect(wrapper).toHaveClassName('input');
+      expect(wrapper).toHaveClassName('plain');
     });
 
     it('input should have type text', () => {

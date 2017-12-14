@@ -30,7 +30,11 @@ TextInput.propTypes = {
   isDisabled: PropTypes.bool,
   isInactive: PropTypes.bool,
   placeholder: PropTypes.string,
-  tone: PropTypes.oneOf(['default', 'warning', 'error', 'info']),
+  tone: PropTypes.oneOf(['plain', 'warning', 'error', 'info']),
+};
+
+TextInput.defaultProps = {
+  tone: 'plain',
 };
 
 export default TextInput;
