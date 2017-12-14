@@ -12,6 +12,7 @@ export class Toggle extends React.PureComponent {
   static displayName = 'Toggle';
   static propTypes = {
     name: PropTypes.string,
+    size: PropTypes.string.isRequired,
     isDisabled: PropTypes.bool,
     isChecked: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -24,6 +25,7 @@ export class Toggle extends React.PureComponent {
   static defaultProps = {
     isDisabled: false,
     isChecked: false,
+    size: 'big',
   };
 
   render() {
@@ -52,6 +54,7 @@ export class Toggle extends React.PureComponent {
               return child;
             })}
             <ToggleSwitch
+              size={this.props.size}
               isMouseOver={this.props.isMouseOver}
               isChecked={this.props.isChecked}
               isDisabled={this.props.isDisabled}

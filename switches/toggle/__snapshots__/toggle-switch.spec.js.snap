@@ -2,17 +2,19 @@
 
 exports[`<ToggleSwitch> rendering outputs correct tree 1`] = `
 <div
-  className="toggleSwitch"
+  className="container-big"
 >
   <ToggleButton
     isChecked={false}
     isDisabled={false}
     isMouseOver={false}
+    size="big"
   />
   <ToggleBar
     isChecked={false}
     isDisabled={false}
     isMouseOver={false}
+    size="big"
   />
 </div>
 `;

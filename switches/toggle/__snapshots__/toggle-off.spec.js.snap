@@ -2,6 +2,6 @@
 
 exports[`<ToggleOff> rendering outputs correct tree 1`] = `
 <span
-  className="toggleLabel"
+  className="label"
 />
 `;

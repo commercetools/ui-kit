@@ -21,6 +21,7 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
         key=".0"
         name="toggle"
         onChange={[Function]}
+        size="big"
       >
         On
       </ToggleOn>
@@ -33,6 +34,7 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
         key=".1"
         name="toggle"
         onChange={[Function]}
+        size="big"
       >
         Off
       </ToggleOff>
@@ -41,6 +43,7 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
         isChecked={false}
         isDisabled={false}
         isMouseOver={false}
+        size="big"
       />
       <input
         checked={false}
@@ -72,6 +75,7 @@ exports[`<Toggle> rendering without children should match snapshot 1`] = `
         isChecked={false}
         isDisabled={false}
         isMouseOver={false}
+        size="big"
       />
       <input
         checked={false}

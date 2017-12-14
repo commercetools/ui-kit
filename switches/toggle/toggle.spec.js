@@ -8,6 +8,7 @@ const onChangeCallback = jest.fn();
 
 const createTestProps = custom => ({
   name: 'toggle',
+  size: 'big',
   isDisabled: false,
   isChecked: false,
   onChange: onChangeCallback,

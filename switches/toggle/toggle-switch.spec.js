@@ -6,6 +6,7 @@ const createTestProps = custom => ({
   isDisabled: false,
   isChecked: false,
   isMouseOver: false,
+  size: 'big',
   ...custom,
 });
 
