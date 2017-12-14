@@ -1,3 +1,4 @@
+import withSizeProp from '../with-size-prop';
 import ToggleBackgroundDefaultIcon from './toggle-normal-bkgr.svg';
 import ToggleBackgroundHoverIcon from './toggle-active-hover-bkgr.svg';
 import ToggleBackgroundDisabledIcon from './toggle-disable-bkgr.svg';
@@ -18,10 +19,10 @@ export default {
   BackgroundChecked: ToggleBackgroundCheckedIcon,
   BackgroundCheckedHover: ToggleBackgroundCheckedHoverIcon,
   BackgroundCheckedDisabled: ToggleBackgroundCheckedDisabledIcon,
-  ButtonDefault: ToggleButtonDefaultIcon,
-  ButtonHover: ToggleButtonHoverIcon,
-  ButtonDisabled: ToggleButtonDisabledIcon,
-  ButtonChecked: ToggleButtonCheckedIcon,
-  ButtonCheckedHover: ToggleButtonCheckedHoverIcon,
-  ButtonCheckedDisabled: ToggleButtonCheckedDisabledIcon,
+  ButtonDefault: withSizeProp(ToggleButtonDefaultIcon),
+  ButtonHover: withSizeProp(ToggleButtonHoverIcon),
+  ButtonDisabled: withSizeProp(ToggleButtonDisabledIcon),
+  ButtonChecked: withSizeProp(ToggleButtonCheckedIcon),
+  ButtonCheckedHover: withSizeProp(ToggleButtonCheckedHoverIcon),
+  ButtonCheckedDisabled: withSizeProp(ToggleButtonCheckedDisabledIcon),
 };
