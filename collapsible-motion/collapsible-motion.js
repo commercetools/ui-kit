@@ -29,10 +29,78 @@ const createClosingAnimation = height => keyframes`
   }
 `;
 
-const getAnimationName = props =>
-  props.isOpen
-    ? createOpeningAnimation(props.height)
-    : createClosingAnimation(props.height);
+export class ToggleAnimation extends React.Component {
+  static displayName = 'ToggleAnimation';
+  static propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    toggle: PropTypes.func.isRequired,
+    children: PropTypes.func.isRequired,
+  };
+  animation = '';
+  fullHeight = null;
+
+  componentWillMount() {
+    this.calcAnimation(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isOpen !== this.props.isOpen) {
+      this.calcAnimation(nextProps);
+    } else {
+      this.animation = '';
+    }
+  }
+
+  calcAnimation = props => {
+    const animationName = this.getAnimationName({
+      isOpen: props.isOpen,
+      height: this.fullHeight,
+    });
+    this.animation = `${animationName} 200ms forwards`;
+  };
+
+  getAnimationName = props => {
+    // in case the render callback was called without the isOpen value actually
+    // having changed we need to avoid to replay the last animation.
+    if (props.isOpen === this.prevIsOpen) return '';
+    this.prevIsOpen = props.isOpen;
+    return props.isOpen
+      ? createOpeningAnimation(props.height)
+      : createClosingAnimation(props.height);
+  };
+
+  handleToggle = () => {
+    if (process.env.NODE_ENV !== 'production')
+      if (!this.node)
+        // eslint-disable-next-line no-console
+        console.warn(
+          'You need to call `registerContentNode` in order to use this ' +
+            'component'
+        );
+    // set panel height to the height of the content,
+    // so we can animate between the height and 0
+    this.fullHeight = this.calcFullHeight();
+    this.props.toggle();
+  };
+
+  calcFullHeight = () =>
+    this.fullHeight === this.node.clientHeight
+      ? this.fullHeight
+      : this.node.clientHeight;
+
+  registerContentNode = node => {
+    if (!node) return;
+    this.node = node;
+  };
+
+  render() {
+    return this.props.children({
+      animation: this.animation,
+      toggle: this.handleToggle,
+      registerContentNode: this.registerContentNode,
+    });
+  }
+}
 
 class CollapsibleMotion extends React.PureComponent {
   static displayName = 'CollapsibleMotion';
@@ -42,58 +110,26 @@ class CollapsibleMotion extends React.PureComponent {
     onToggle: PropTypes.func,
   };
 
-  state = { fullHeight: null };
-
-  handleToggle = ({ isOpen: prevIsOpen, toggle }) => {
-    this.setState(prevState => {
-      this.isOpen = !prevIsOpen;
-      const newState = {};
-      if (process.env.NODE_ENV !== 'production')
-        if (!this.node)
-          // eslint-disable-next-line no-console
-          console.warn(
-            'You need to call `registerContentNode` in order to use this ' +
-              'component'
-          );
-      // set panel height to the height of the content,
-      // so we can animate between the height and 0
-      newState.fullHeight = this.calcFullHeight(prevState);
-      return newState;
-    });
-    toggle();
-  };
-
-  calcFullHeight = state =>
-    state.fullHeight === this.node.clientHeight
-      ? state.fullHeight
-      : this.node.clientHeight;
-
-  registerContentNode = node => {
-    if (!node) return;
-    this.node = node;
-  };
-
   render() {
     return (
       <Collapsible
         isClosed={this.props.isClosed}
         onToggle={this.props.onToggle}
       >
-        {({ isOpen, toggle }) => {
-          const animationName = getAnimationName({
-            isOpen,
-            height: this.state.fullHeight,
-          });
-          const animation = `${animationName} 200ms forwards`;
-          return this.props.children({
-            isOpen,
-            toggle: () => this.handleToggle({ isOpen, toggle }),
-            containerStyles: {
-              animation,
-            },
-            registerContentNode: this.registerContentNode,
-          });
-        }}
+        {({ isOpen, toggle }) => (
+          <ToggleAnimation isOpen={isOpen} toggle={toggle}>
+            {({ animation, toggle: animationToggle, registerContentNode }) =>
+              this.props.children({
+                isOpen,
+                toggle: animationToggle,
+                containerStyles: {
+                  animation,
+                },
+                registerContentNode,
+              })
+            }
+          </ToggleAnimation>
+        )}
       </Collapsible>
     );
   }
