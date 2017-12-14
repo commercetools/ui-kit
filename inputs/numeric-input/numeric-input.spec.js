@@ -19,15 +19,15 @@ describe('rendering', () => {
       wrapper = shallow(<NumericInput {...props} />);
     });
 
-    it('should have class for a default tone', () => {
-      expect(wrapper).toHaveClassName('default');
+    it('should have class for default styles', () => {
+      expect(wrapper).toHaveClassName('input');
     });
 
-    it('input should have type text', () => {
-      expect(wrapper).toHaveProp('type', 'text');
+    it('input should have type number', () => {
+      expect(wrapper).toHaveProp('type', 'number');
     });
 
-    it('input have name', () => {
+    it('input have a HTML name', () => {
       expect(wrapper).toHaveProp('name', 'numeric-field1');
     });
 
@@ -121,6 +121,14 @@ describe('callbacks', () => {
     it('should call onChange', () => {
       expect(onChangeFunc).toHaveBeenCalled();
     });
+
+    it('should update with new value', () => {
+      expect(onChangeFunc).toHaveBeenCalledWith({
+        target: {
+          value: '2',
+        },
+      });
+    });
   });
   describe('when clicking outside field', () => {
     let wrapper;
@@ -137,6 +145,10 @@ describe('callbacks', () => {
 
     it('should call onBlur', () => {
       expect(onBlurFun).toHaveBeenCalled();
+    });
+
+    it('value should remain the same', () => {
+      expect(wrapper).toHaveProp('value', '1');
     });
   });
 });
