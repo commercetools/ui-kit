@@ -22,10 +22,6 @@ const TextInput = props => (
 
 TextInput.displayName = 'TextInput';
 
-TextInput.defaultProps = {
-  tone: 'default',
-};
-
 TextInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,

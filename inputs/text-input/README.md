@@ -25,6 +25,7 @@ import TextInput from '@commercetools-local/ui-kit/inputs/text-input';
 | `isInactive`  | `bool`   |    -     | -      | `false` | Applies the inactive style. (e.G a fetch is being executed in a search input field) |
 | `placeholder` | `string` |    -     | -      | -       | Placeholder text for the input                                                                          |
 | `tone`    | `oneOf`   |    -     | ['default', 'warning', 'error', 'info']      | `default` | applies the styles regarding the received tone |
+| `tone`    | `oneOf`   |    -     | ['warning', 'error', 'info']      | `default` | applies the styles regarding the received tone |
 
 Main Functions and use cases are:
 

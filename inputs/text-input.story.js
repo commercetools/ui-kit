@@ -21,7 +21,7 @@ storiesOf('Forms/Inputs', module)
         isDisabled={boolean('isDisabled', false)}
         isInactive={boolean('isInactive', false)}
         placeholder={text('placeholder', 'Placeholder')}
-        tone={select('tone', ['default', 'warning', 'error', 'info'])}
+        tone={select('tone', ['none', 'warning', 'error', 'info'])}
       />
     </Section>
   ))
@@ -35,7 +35,7 @@ storiesOf('Forms/Inputs', module)
         isDisabled={boolean('isDisabled', false)}
         isInactive={boolean('isInactive', false)}
         placeholder={text('placeholder', 'Placeholder')}
-        tone={select('tone', ['default', 'warning', 'error', 'info'])}
+        tone={select('tone', ['none', 'warning', 'error', 'info'])}
       />
     </Section>
   ));
