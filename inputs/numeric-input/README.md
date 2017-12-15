@@ -18,6 +18,9 @@ import NumericInput from '@commercetools-local/ui-kit/inputs/numeric-input';
 | ------------- | -------- | :------: | ------ | ------- | -------------------------------------------------------------------------------------------------- |
 | `name`        | `string` |    ✅    | -      | -       | Used as HTML `name` property                                                                       |
 | `value`       | `string` |    ✅    | -      | -       | Value of the input. This is a string as the parent is responsible for converting it into a number. |
+| `minValue`    | `string` |    ✅    | -      | -       | Specifies a minimum value that the field can have |
+| `maxValue`    | `string` |    ✅    | -      | -       | Specifies a maximum value that the field can have |
+| `stepValue`    | `string` |    ✅    | -      | -       | Displays up and down step arrows which will increase and decrease the value by the provided `stepValue` amount each time |
 | `onChange`    | `func`   |    ✅    | -      | -       | Called with the new value. Parent should pass it back as `value`                                   |
 | `onBlur`      | `func`   |    -     | -      | -       | Called when field is blurred                                                                       |
 | `isDisabled`  | `bool`   |    -     | -      | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved) |

@@ -8,6 +8,9 @@ const NumericInput = props => (
     name={props.name}
     type="number"
     value={props.value}
+    min={props.minValue}
+    max={props.maxValue}
+    step={props.stepValue}
     onChange={props.onChange}
     onBlur={props.onBlur}
     disabled={props.isDisabled}
@@ -31,6 +34,9 @@ NumericInput.displayName = 'NumericInput';
 NumericInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
+  minValue: PropTypes.string,
+  maxValue: PropTypes.string,
+  stepValue: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   isDisabled: PropTypes.bool,
