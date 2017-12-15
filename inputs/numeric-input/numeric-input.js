@@ -3,11 +3,23 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './numeric-input.mod.css';
 
+function calculateValue(props) {
+  if (props.maxValue || props.minValue) {
+    if (parseInt(props.value, 10) > props.maxValue) {
+      return props.maxValue;
+    }
+    if (parseInt(props.value, 10) < props.minValue) {
+      return props.minValue;
+    }
+  }
+  return props.value;
+}
+
 const NumericInput = props => (
   <input
     name={props.name}
     type="number"
-    value={props.value}
+    value={calculateValue(props)}
     min={props.minValue}
     max={props.maxValue}
     step={props.stepValue}
