@@ -23,6 +23,10 @@ describe('rendering', () => {
       expect(wrapper).toHaveClassName('plain');
     });
 
+    it('should have ARIA role', () => {
+      expect(wrapper).toHaveProp('role', 'textbox');
+    });
+
     it('input should have type number', () => {
       expect(wrapper).toHaveProp('type', 'number');
     });
@@ -100,6 +104,24 @@ describe('rendering', () => {
 
     it('should have class for the inactive state', () => {
       expect(wrapper).toHaveClassName('inactive');
+    });
+  });
+
+  describe('when readonly', () => {
+    let wrapper;
+    beforeEach(() => {
+      const props = createTestProps({
+        readOnly: true,
+      });
+      wrapper = shallow(<NumericInput {...props} />);
+    });
+
+    it('should have class for the readonly state', () => {
+      expect(wrapper).toHaveClassName('readonly');
+    });
+
+    it('should have ARIA properties for the readonly state', () => {
+      expect(wrapper).toHaveClassName('aria-readonly', 'true');
     });
   });
 });

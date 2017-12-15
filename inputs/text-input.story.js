@@ -20,6 +20,7 @@ storiesOf('Forms/Inputs', module)
         onChange={action('onChange')}
         isDisabled={boolean('isDisabled', false)}
         isInactive={boolean('isInactive', false)}
+        isReadOnly={boolean('isReadOnly', false)}
         placeholder={text('placeholder', 'Placeholder')}
         tone={select('tone', ['none', 'warning', 'error', 'info'])}
       />
@@ -33,6 +34,7 @@ storiesOf('Forms/Inputs', module)
         value={text('value', '')}
         onChange={action('onChange')}
         isDisabled={boolean('isDisabled', false)}
+        isReadOnly={boolean('isReadOnly', false)}
         isInactive={boolean('isInactive', false)}
         placeholder={text('placeholder', 'Placeholder')}
         tone={select('tone', ['none', 'warning', 'error', 'info'])}

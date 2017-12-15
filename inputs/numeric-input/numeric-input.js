@@ -15,8 +15,14 @@ const NumericInput = props => (
     className={classnames(styles.input, {
       [styles.disabled]: props.isDisabled,
       [styles.inactive]: props.isInactive,
+      [styles.readonly]: props.isReadOnly,
       [styles[props.tone]]: props.tone,
     })}
+    readOnly={props.isReadOnly}
+    /* ARIA */
+    aria-readonly={props.isReadOnly}
+    role="textbox"
+    contentEditable={!props.isReadOnly}
   />
 );
 
@@ -29,6 +35,7 @@ NumericInput.propTypes = {
   onBlur: PropTypes.func,
   isDisabled: PropTypes.bool,
   isInactive: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   placeholder: PropTypes.string,
   tone: PropTypes.oneOf(['plain', 'warning', 'error', 'info']),
 };

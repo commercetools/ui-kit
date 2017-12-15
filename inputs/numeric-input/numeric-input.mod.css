@@ -63,3 +63,10 @@
   border-color: var(--color-primaryGrey);
   background-color: var(--color-white);
 }
+
+.readonly,
+.readonly:focus {
+  color: var(--color-greyNevada);
+  border-color: var(--color-primaryGrey);
+  cursor: default;
+}
