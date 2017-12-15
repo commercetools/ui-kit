@@ -50,7 +50,8 @@
   color: var(--color-greyDark);
 }
 
-.disabled {
+.disabled,
+.disabled:active {
   cursor: not-allowed;
   background-color: var(--color-whiteCatskill);
   border-color: var(--color-greyMischka);
