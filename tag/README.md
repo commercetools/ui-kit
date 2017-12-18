@@ -21,7 +21,7 @@ other element. This might apply to search terms or categories of a product.
   onRemove={() => {}}
 >
   Icecream
-</Tag>;
+</Tag>
 ```
 
 #### Properties

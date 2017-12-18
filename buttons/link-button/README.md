@@ -21,7 +21,7 @@ Link buttons are similar to Flat buttons, however they are constructed as a
   iconLeft={<AddIcon />}
   label="A label text"
   isDisabled={false}
-/>;
+/>
 ```
 
 #### Properties

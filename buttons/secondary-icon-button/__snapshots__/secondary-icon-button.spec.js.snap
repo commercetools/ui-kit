@@ -3,15 +3,15 @@
 exports[`rendering outputs correct tree 1`] = `
 <div
   className="button"
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <AccessibleButton
     buttonAttributes={Object {}}
     isDisabled={false}
     isToggleButton={false}
     label="Accessible button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <div
       className="icon-container"

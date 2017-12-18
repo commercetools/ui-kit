@@ -6,8 +6,8 @@ exports[`<Tag /> rendering when \`linkTo\` is not set should output correct tree
 >
   <TagNormalBody
     isDisabled={false}
-    onClick={[Function]}
-    onRemove={[Function]}
+    onClick={[MockFunction]}
+    onRemove={[MockFunction]}
     type="normal"
   >
     Icecream we scream!
@@ -18,7 +18,7 @@ exports[`<Tag /> rendering when \`linkTo\` is not set should output correct tree
     isDisabled={false}
     isToggleButton={false}
     label="Remove"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <CloseBoldIcon
       size="small"
@@ -34,7 +34,7 @@ exports[`<Tag /> rendering when \`linkTo\` is set should output correct tree 1`]
   <TagLinkBody
     isDisabled={false}
     linkTo="/foo"
-    onClick={[Function]}
+    onClick={[MockFunction]}
     type="normal"
   >
     Icecream we scream!
@@ -87,7 +87,7 @@ exports[`<Tag /> rendering when removable (\`onRemove\`) should output correct t
 >
   <TagNormalBody
     isDisabled={false}
-    onRemove={[Function]}
+    onRemove={[MockFunction]}
     type="normal"
   >
     Icecream we scream!
@@ -98,7 +98,7 @@ exports[`<Tag /> rendering when removable (\`onRemove\`) should output correct t
     isDisabled={false}
     isToggleButton={false}
     label="Remove"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <CloseBoldIcon
       size="small"
@@ -110,7 +110,7 @@ exports[`<Tag /> rendering when removable (\`onRemove\`) should output correct t
 exports[`\`<TagLinkBody />\` rendering should output correct tree 1`] = `
 <Link
   className="contentWrapper contentWrapperNormal clickableContentWrapperNormal clickableContentWrapper plainLink"
-  onClick={[Function]}
+  onClick={[MockFunction]}
   onlyActiveOnIndex={false}
   style={Object {}}
   to="foo-too"
@@ -128,7 +128,7 @@ exports[`\`<TagNormalBody />\` rendering should output correct tree 1`] = `
   isDisabled={false}
   isToggleButton={false}
   label="Click"
-  onClick={[Function]}
+  onClick={[MockFunction]}
 >
   <TextDetail>
     Icecream we scream!

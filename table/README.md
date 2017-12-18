@@ -20,7 +20,7 @@ Shows tabular data
   onRowClick={this.handleRowClick}
   shouldFillRemainingVerticalSpace={true}
   items={this.state.rows}
-/>;
+/>
 ```
 
 #### Props

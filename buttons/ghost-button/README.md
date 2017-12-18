@@ -18,7 +18,7 @@ action. You must also pass a label for accessibility reasons.
   icon={<InformationIcon />}
   label="Alerts a message"
   onClick={() => alert('Button clicked')}
-/>;
+/>
 ```
 
 #### Properties

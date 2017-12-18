@@ -2,8 +2,8 @@
 
 exports[`<Option> rendering with children should match snapshot 1`] = `
 <div
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <label
     className="labelWrapper"
@@ -23,7 +23,7 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="bar"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         type="radio"
         value="foo"
       />
@@ -34,8 +34,8 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
 
 exports[`<Option> rendering without children should match snapshot 1`] = `
 <div
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <label
     className="labelWrapper"
@@ -50,7 +50,7 @@ exports[`<Option> rendering without children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="bar"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         type="radio"
         value="foo"
       />
