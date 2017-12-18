@@ -111,7 +111,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       const props = createTestProps({
-        readOnly: true,
+        isReadOnly: true,
       });
       wrapper = shallow(<TextInput {...props} />);
     });
@@ -121,7 +121,7 @@ describe('rendering', () => {
     });
 
     it('should have ARIA properties for the readonly state', () => {
-      expect(wrapper).toHaveClassName('aria-readonly', 'true');
+      expect(wrapper).toHaveProp('aria-readonly', true);
     });
   });
 });
@@ -129,23 +129,22 @@ describe('rendering', () => {
 describe('callbacks', () => {
   describe('when changing value', () => {
     let wrapper;
-    let onChangeFunc;
+    let props;
     beforeEach(() => {
-      onChangeFunc = jest.fn();
-      const props = createTestProps({
+      props = createTestProps({
         value: 'foo',
-        onChange: onChangeFunc,
+        onChange: jest.fn(),
       });
       wrapper = shallow(<TextInput {...props} />);
       wrapper.simulate('change', { target: { value: 'bar' } });
     });
 
     it('should call onChange', () => {
-      expect(onChangeFunc).toHaveBeenCalled();
+      expect(props.onChange).toHaveBeenCalled();
     });
 
     it('should update with new value', () => {
-      expect(onChangeFunc).toHaveBeenCalledWith({
+      expect(props.onChange).toHaveBeenCalledWith({
         target: {
           value: 'bar',
         },
