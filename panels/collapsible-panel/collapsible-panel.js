@@ -140,9 +140,7 @@ export default class CollapsiblePanel extends React.PureComponent {
     isDefaultClosed(props, propName, componentName, ...rest) {
       if (!isNil(props.isClosed) && !isNil(props.isDefaultClosed)) {
         return new Error(
-          `Invalid prop \`${propName}\` supplied to \`${
-            componentName
-          }\`. Component must either be controlled or uncontrolled. Pass either \`isClosed\` or \`isDefaultClosed\` but not both.`
+          `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Component must either be controlled or uncontrolled. Pass either \`isClosed\` or \`isDefaultClosed\` but not both.`
         );
       }
 
@@ -165,9 +163,7 @@ export default class CollapsiblePanel extends React.PureComponent {
         const hasOnToggle = !isNil(props.onToggle);
         if (hasOnToggle)
           return new Error(
-            `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${
-              propName
-            }\` does not have any effect when the component is uncontrolled.`
+            `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
           );
 
         // uncontrolled component does not have `onToggle` so no validation
