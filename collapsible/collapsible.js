@@ -20,21 +20,24 @@ class Collapsible extends React.PureComponent {
     isClosed: PropTypes.bool,
     onToggle(props, propName, componentName, ...rest) {
       const isControlledComponent = !isNil(props.isClosed);
+      const hasOnToggle = !isNil(props.onToggle);
 
-      // uncontrolled
-      if (!isControlledComponent) {
-        const hasOnToggle = !isNil(props.onToggle);
-        if (hasOnToggle)
-          return new Error(
-            `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
-          );
+      // controlled
+      if (isControlledComponent)
+        return PropTypes.func.isRequired(
+          props,
+          propName,
+          componentName,
+          ...rest
+        );
 
-        // uncontrolled component does not have `onToggle` so no validation
-        // needed.
-        return null;
-      }
+      if (hasOnToggle)
+        return new Error(
+          `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
+        );
 
-      return PropTypes.bool.isRequired(props, propName, componentName, ...rest);
+      // uncontrolled component does not have `onToggle` so no validation needed.
+      return null;
     },
   };
 
