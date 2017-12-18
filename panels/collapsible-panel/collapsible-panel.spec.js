@@ -32,7 +32,7 @@ describe('CollapsiblePanel', () => {
       });
 
       it('should apply custom container class name', () => {
-        expect(collapsibleMotionWrapper).toHaveClassName('custom-container');
+        expect(collapsibleMotionWrapper).toHaveClassName(props.className);
       });
 
       it('should render title in header container', () => {
@@ -63,13 +63,13 @@ describe('CollapsiblePanel', () => {
         expect(collapsibleMotionWrapper).toRender('HeaderIcon');
       });
 
-      it('should render header title', () => {
+      it('should contain header title', () => {
         expect(
           collapsibleMotionWrapper.find('TextHeadline').contains('Header Title')
         ).toBe(true);
       });
 
-      it('should render children', () => {
+      it('children should contain text', () => {
         expect(collapsibleMotionWrapper.find('#foo').text()).toBe('Foo');
       });
     });
@@ -100,7 +100,6 @@ describe('CollapsiblePanel', () => {
       let props;
       let wrapper;
       let collapsibleMotionWrapper;
-      let collapsibleInternalToggleFunc;
       beforeEach(() => {
         props = createTestProps({
           isDisabled: false,
@@ -112,7 +111,6 @@ describe('CollapsiblePanel', () => {
             <span id="foo">{'Foo'}</span>
           </CollapsiblePanel>
         );
-        collapsibleInternalToggleFunc = jest.fn();
         collapsibleMotionWrapper = shallow(
           wrapper.find('CollapsibleMotion').prop('children')({
             toggle: props.onToggle,
@@ -121,10 +119,6 @@ describe('CollapsiblePanel', () => {
         collapsibleMotionWrapper
           .find({ className: 'header' })
           .simulate('click');
-      });
-
-      it('should not invoke `onToggle` from Collapsible', () => {
-        expect(collapsibleInternalToggleFunc).not.toHaveBeenCalled();
       });
 
       it('should invoke `onToggle` from Collapsiblepanel props', () => {
