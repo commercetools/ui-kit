@@ -2,8 +2,8 @@
 
 exports[`<Checkbox> rendering with children should match snapshot 1`] = `
 <div
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <label
     className="labelWrapper"
@@ -34,8 +34,8 @@ exports[`<Checkbox> rendering with children should match snapshot 1`] = `
 
 exports[`<Checkbox> rendering without children should match snapshot 1`] = `
 <div
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <label
     className="labelWrapper"

@@ -3,10 +3,10 @@
 exports[`rendering icon should output correct tree 1`] = `
 <div
   className="button-appearance default round container-big theme-default"
-  onMouseDown={[Function]}
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
-  onMouseUp={[Function]}
+  onMouseDown={[MockFunction]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+  onMouseUp={[MockFunction]}
 >
   <AccessibleButton
     buttonAttributes={
@@ -33,10 +33,10 @@ exports[`rendering icon should output correct tree 1`] = `
 exports[`rendering structure should output correct tree 1`] = `
 <div
   className="button-appearance default round container-big theme-default"
-  onMouseDown={[Function]}
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
-  onMouseUp={[Function]}
+  onMouseDown={[MockFunction]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+  onMouseUp={[MockFunction]}
 >
   <AccessibleButton
     buttonAttributes={

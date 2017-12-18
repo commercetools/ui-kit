@@ -2,8 +2,8 @@
 
 exports[`rendering outputs correct tree 1`] = `
 <div
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <AccessibleButton
     buttonAttributes={
@@ -15,7 +15,7 @@ exports[`rendering outputs correct tree 1`] = `
     isDisabled={false}
     isToggleButton={false}
     label="Accessibility text"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <AddIcon
       size="small"
