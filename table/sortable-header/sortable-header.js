@@ -27,6 +27,8 @@ const SortableHeader = props => {
   );
 };
 
+SortableHeader.displayName = 'SortableHeader';
+
 SortableHeader.propTypes = {
   children: PropTypes.node.isRequired,
   sortBy: PropTypes.string,

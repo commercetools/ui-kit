@@ -18,7 +18,7 @@ Icon Buttons are "icon-only" buttons. They trigger an action when clicked
   icon={<InformationIcon />}
   label="Alerts a message"
   onClick={() => alert('Button clicked')}
-/>;
+/>
 ```
 
 #### Properties

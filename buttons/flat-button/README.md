@@ -19,7 +19,7 @@ Flat buttons are minimal and a flat variation of primary and secondary buttons.
   label="A label text"
   onClick={() => alert('Button clicked')}
   isDisabled={false}
-/>;
+/>
 ```
 
 iconClass label url onClick

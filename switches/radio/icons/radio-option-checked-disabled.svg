@@ -7,16 +7,14 @@
         <circle id="path-1" cx="8" cy="8" r="8"></circle>
     </defs>
     <g id="ATOM---Checkboxes-and-Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ATOM---Checkboxes-radio-buttons" transform="translate(-402.000000, -1005.000000)">
-            <g id="radio-button-disabled-active" transform="translate(402.000000, 1005.000000)">
-                <g id="radiobt-disabled-active">
-                    <g id="Group-2">
-                        <g id="Oval-Copy-8">
-                            <use fill="#F9FAFC" fill-rule="evenodd" xlink:href="#path-1"></use>
-                            <circle stroke="#EFF2F6" stroke-width="1" cx="8" cy="8" r="7.5"></circle>
-                        </g>
-                        <circle id="Oval" fill="#657479" cx="8" cy="8" r="4"></circle>
+        <g id="Checkboxes-radio-buttons" transform="translate(-402.000000, -949.000000)">
+            <g id="radiobt-disabled-active" transform="translate(402.000000, 949.000000)">
+                <g id="Group-2">
+                    <g id="Oval-Copy-8">
+                        <use fill="#F9FAFC" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <circle stroke="#EFF2F6" stroke-width="1" cx="8" cy="8" r="7.5"></circle>
                     </g>
+                    <circle id="Oval" fill="#657479" cx="8" cy="8" r="4"></circle>
                 </g>
             </g>
         </g>

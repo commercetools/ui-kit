@@ -35,7 +35,7 @@ Main use cases are:
     onClick={() => {}}
     iconLeft={<ExportIcon />}
     label={this.props.intl.formatMessage(messages.exportList)}
-  />;
+  />
   ```
 
 * Icon Buttons
@@ -44,5 +44,5 @@ Main use cases are:
     onClick={() => {}}
     icon={<ExportIcon />}
     label={this.props.intl.formatMessage(messages.exportList)}
-  />;
+  />
   ```
