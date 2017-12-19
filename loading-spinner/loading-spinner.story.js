@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select, text } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../.storybook/decorators/section';
 import Readme from './README.md';
@@ -11,6 +11,8 @@ storiesOf('Loading', module)
   .addDecorator(withReadme(Readme))
   .add('LoadingSpinner', () => (
     <Section>
-      <LoadingSpinner size={select('size', ['l', 's'])} />
+      <LoadingSpinner scale={select('scale', ['l', 's'])}>
+        {text('children', 'Loading text')}
+      </LoadingSpinner>
     </Section>
   ));

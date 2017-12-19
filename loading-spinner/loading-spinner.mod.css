@@ -1,29 +1,24 @@
 @import '../materials/colors.mod.css';
 @import '../materials/spacings.mod.css';
 
+:root {
+  --size-large-svg: 40px;
+  --size-small-svg: 20px;
+  --position-origin: 20px;
+}
+
 /* Base */
 
-.container {
-  display: flex;
-  align-items: center;
-  transform-origin: 0;
-  margin-left: var(--spacing-16);
+.container-large,
+.svg-large {
+  width: var(--size-large-svg);
+  height: var(--size-large-svg);
 }
 
-.container-large {
-  composes: container;
-  transform: scale(1);
-}
-
-.container-small {
-  composes: container;
-  transform: scale(0.5);
-}
-
-.svg {
-  width: 40px;
-  height: 40px;
-  float: left;
+.container-small,
+.svg-small {
+  width: var(--size-small-svg);
+  height: var(--size-small-svg);
 }
 
 /* Elements */
@@ -45,22 +40,12 @@
 
 @keyframes spin {
   from {
-    transform-origin: 20px 20px 0;
+    transform-origin: var(--position-origin) var(--position-origin) 0;
     transform: rotate(0deg);
   }
 
   to {
-    transform-origin: 20px 20px 0;
+    transform-origin: var(--position-origin) var(--position-origin) 0;
     transform: rotate(360deg);
   }
-}
-
-/* Text */
-
-.text {
-  font-weight: 200;
-  color: var(--color-blueNavy);
-  float: right;
-  margin-left: var(--spacing-4);
-  font-size: 0.9rem;
 }
