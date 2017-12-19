@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import warning from 'warning';
 import { keyframes } from 'styled-components';
 import Collapsible from '../collapsible';
 
@@ -70,13 +71,10 @@ export class ToggleAnimation extends React.Component {
   };
 
   handleToggle = () => {
-    if (process.env.NODE_ENV !== 'production')
-      if (!this.node)
-        // eslint-disable-next-line no-console
-        console.warn(
-          'You need to call `registerContentNode` in order to use this ' +
-            'component'
-        );
+    warning(
+      this.node,
+      'You need to call `registerContentNode` in order to use this component'
+    );
     // set panel height to the height of the content,
     // so we can animate between the height and 0
     this.fullHeight = this.calcFullHeight();
