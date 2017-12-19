@@ -2,7 +2,7 @@
 
 exports[`<ToggleSwitch> rendering outputs correct tree 1`] = `
 <div
-  className="container-big"
+  className="toggle-container-big"
 >
   <ToggleButton
     isChecked={false}
