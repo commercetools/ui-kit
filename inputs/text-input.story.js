@@ -20,10 +20,11 @@ storiesOf('Forms/Inputs', module)
         value={text('value', '')}
         onChange={action('onChange')}
         isDisabled={boolean('isDisabled', false)}
-        isInactive={boolean('isInactive', false)}
+        isLoading={boolean('isLoading', false)}
         isReadOnly={boolean('isReadOnly', false)}
+        hasError={boolean('hasError', false)}
+        hasWarning={boolean('hasWarning', false)}
         placeholder={text('placeholder', 'Placeholder')}
-        tone={select('tone', ['plain', 'warning', 'error', 'info'])}
       />
     </Section>
   ))

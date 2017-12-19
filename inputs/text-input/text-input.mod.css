@@ -4,6 +4,13 @@
 @import '../../materials/borders.mod.css';
 @import '../../materials/transitions.mod.css';
 
+/* Base */
+
+.container {
+  width: 100%;
+  position: relative;
+}
+
 .input {
   width: 100%;
   height: inherit;
@@ -20,38 +27,38 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Spinner */
+
+.spinner {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 /* Tones */
 
-.plain {
+.pristine {
+  composes: input;
   border-color: var(--color-greySolid);
   color: var(--color-greyDark);
 }
 
 .warning {
+  composes: input;
   color: var(--color-CTOrange);
   border-color: var(--color-CTOrange);
 }
 
 .error {
+  composes: input;
   color: var(--color-red);
   border-color: var(--color-red);
 }
 
-.info {
-  color: var(--color-bluePelorous);
-  border-color: var(--color-blueDodger);
-}
-
-/* States */
-
-.input:active,
-.input:focus {
-  border-color: var(--color-greenDowny);
-  color: var(--color-greyDark);
-}
-
-.disabled,
-.disabled:active {
+.disabled {
+  composes: input;
   cursor: not-allowed;
   background-color: var(--color-whiteCatskill);
   border-color: var(--color-greyMischka);
@@ -59,16 +66,25 @@
   opacity: 1; /* fix for mobile safari */
 }
 
-.inactive {
+.loading {
+  composes: input;
   color: var(--color-primaryGrey);
   border-color: var(--color-primaryGrey);
   background-color: var(--color-white);
   pointer-events: none;
 }
 
-.readonly,
-.readonly:focus {
+.readonly {
+  composes: input;
   color: var(--color-greyNevada);
   border-color: var(--color-primaryGrey);
   cursor: default;
+}
+
+/* States */
+
+.pristine:active,
+.pristine:focus {
+  border-color: var(--color-greenDowny);
+  color: var(--color-greyDark);
 }
