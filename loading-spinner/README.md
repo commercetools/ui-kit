@@ -17,7 +17,7 @@ import LoadingSpinner from '@commercetools-local/ui-kit/loading-spinner';
 | Props      | Type     | Required | Values     | Default | Description                                         |
 | ---------- | -------- | :------: | ---------- | ------- | --------------------------------------------------- |
 | `children` | `string` |          | -          | -       | Used as the text for the loader                     |
-| `size`     | `string` |          | ['l', 's'] | `l`     | Defines the size of the loading spinner's container |
+| `scale`     | `string` |          | ['l', 's'] | `l`     | Defines the size of the loading spinner's container |
 
 Main Functions and use cases are:
 
