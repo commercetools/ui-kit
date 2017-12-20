@@ -94,6 +94,9 @@ export class ToggleAnimation extends React.Component {
   render() {
     return this.props.children({
       animation: this.animation,
+      containerStyles: this.props.isOpen
+        ? { height: 'auto' }
+        : { height: 0, overflow: 'hidden' },
       toggle: this.handleToggle,
       registerContentNode: this.registerContentNode,
     });
@@ -116,12 +119,18 @@ class CollapsibleMotion extends React.PureComponent {
       >
         {({ isOpen, toggle }) => (
           <ToggleAnimation isOpen={isOpen} toggle={toggle}>
-            {({ animation, toggle: animationToggle, registerContentNode }) =>
+            {({
+              animation,
+              containerStyles,
+              toggle: animationToggle,
+              registerContentNode,
+            }) =>
               this.props.children({
                 isOpen,
                 toggle: animationToggle,
                 containerStyles: {
                   animation,
+                  ...containerStyles,
                 },
                 registerContentNode,
               })
