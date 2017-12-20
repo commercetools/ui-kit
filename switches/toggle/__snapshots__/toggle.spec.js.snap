@@ -2,8 +2,8 @@
 
 exports[`<Toggle> rendering with children should match snapshot 1`] = `
 <div
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <label
     className="labelWrapper"
@@ -12,34 +12,7 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
       alignItems="center"
       scale="s"
     >
-      <ToggleOn
-        handleMouseOut={[Function]}
-        handleMouseOver={[Function]}
-        isChecked={false}
-        isDisabled={false}
-        isMouseOver={false}
-        key=".0"
-        name="toggle"
-        onChange={[Function]}
-        size="big"
-      >
-        On
-      </ToggleOn>
-      <ToggleOff
-        handleMouseOut={[Function]}
-        handleMouseOver={[Function]}
-        isChecked={false}
-        isDisabled={false}
-        isMouseOver={false}
-        key=".1"
-        name="toggle"
-        onChange={[Function]}
-        size="big"
-      >
-        Off
-      </ToggleOff>
       <ToggleSwitch
-        className="toggleSwitch"
         isChecked={false}
         isDisabled={false}
         isMouseOver={false}
@@ -50,7 +23,7 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="toggle"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         type="checkbox"
       />
     </Inline>
@@ -60,8 +33,8 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
 
 exports[`<Toggle> rendering without children should match snapshot 1`] = `
 <div
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
 >
   <label
     className="labelWrapper"
@@ -71,7 +44,6 @@ exports[`<Toggle> rendering without children should match snapshot 1`] = `
       scale="s"
     >
       <ToggleSwitch
-        className="toggleSwitch"
         isChecked={false}
         isDisabled={false}
         isMouseOver={false}
@@ -82,7 +54,7 @@ exports[`<Toggle> rendering without children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="toggle"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         type="checkbox"
       />
     </Inline>
