@@ -14,30 +14,42 @@ storiesOf('Switches', module)
   .add('Toggle', () => (
     <Section>
       <Spacings.Stack>
-        <Toggle
-          size={select('size', ['small', 'big'], 'big')}
-          isDisabled={false}
-          isChecked={boolean('isFirstToggleChecked', false)}
-          onChange={action('onChange: first')}
-        />
-        <Toggle
-          size={select('size', ['small', 'big'], 'big')}
-          isDisabled={boolean('isSecondToggleDisabled', true)}
-          isChecked={false}
-          onChange={action('onChange: second')}
-        />
-        <Toggle
-          size={select('size', ['small', 'big'], 'big')}
-          isDisabled={false}
-          isChecked={boolean('isThirdToggleChecked', true)}
-          onChange={action('onChange: third')}
-        />
-        <Toggle
-          size={select('size', ['small', 'big'], 'big')}
-          isDisabled={true}
-          isChecked={true}
-          onChange={action('onChange: fourth')}
-        />
+        <Spacings.Inline alignItems="center">
+          <Toggle
+            size={select('size', ['small', 'big'], 'big')}
+            isDisabled={false}
+            isChecked={boolean('isFirstToggleChecked', false)}
+            onChange={action('onChange: first')}
+          />
+          <label>Default</label>
+        </Spacings.Inline>
+        <Spacings.Inline alignItems="center">
+          <Toggle
+            size={select('size', ['small', 'big'], 'big')}
+            isDisabled={boolean('isSecondToggleDisabled', true)}
+            isChecked={false}
+            onChange={action('onChange: second')}
+          />
+          <label>Default Disabled</label>
+        </Spacings.Inline>
+        <Spacings.Inline alignItems="center">
+          <Toggle
+            size={select('size', ['small', 'big'], 'big')}
+            isDisabled={false}
+            isChecked={boolean('isThirdToggleChecked', true)}
+            onChange={action('onChange: third')}
+          />
+          <label>Checked</label>
+        </Spacings.Inline>
+        <Spacings.Inline alignItems="center">
+          <Toggle
+            size={select('size', ['small', 'big'], 'big')}
+            isDisabled={boolean('isFourthToggleDisabled', true)}
+            isChecked={true}
+            onChange={action('onChange: fourth')}
+          />
+          <label>Checked Disabled</label>
+        </Spacings.Inline>
       </Spacings.Stack>
     </Section>
   ));
