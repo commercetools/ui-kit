@@ -2,9 +2,9 @@
 
 #### Description
 
-A `Toggle` is an element which indicates an checked or non checked business logic status and
-notifies with a value accordingly. It is similar to the `Checkbox` but is styled
-like a switch.
+The `Toggle` switch allows a single settings option to be turned on or off.
+
+**The current version of the `Toggle` is not designed for use as a form control.**
 
 #### Usage
 
@@ -22,6 +22,16 @@ import { Toggle } from '@commercetools-local/ui-kit/switches';
 </Toggle.Toggle>
 ```
 
+#### Use case
+
+The table below describes the use of the `Toggle` compared with the other switches.
+
+| Switch type | Number of options | Selection |
+| ----------- | ----------------- | --------- |
+| `Checkbox`  | Multiple          | Multiple  |
+| `Radio`     | Multiple          | Single    |
+| `Toggle`    | Two               | Single    |
+
 #### Properties
 
 | Props        | Type     | Required | Values | Default | Description                                         |
@@ -34,4 +44,4 @@ import { Toggle } from '@commercetools-local/ui-kit/switches';
 
 #### Invariants
 
-1. The `Toggle.Toggle` must have one each of the `Toggle.On` and `Toggle.Off` components.
+1. The `Toggle.Toggle` must have one each of the `Toggle.On` and `Toggle.Off` labels.
