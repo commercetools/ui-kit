@@ -77,16 +77,16 @@
 
 /* bar - active */
 .toggle-bar.active rect {
-  fill: #87d8c8;
+  fill: var(--color-greenLight);
 }
 
 /* bar - disabled */
 .toggle-bar.disabled rect {
-  fill: #eaeaea;
+  fill: var(--color-greyGallery);
 }
 
 .toggle-bar.active.disabled rect {
-  fill: #87d8c8;
+  fill: var(--color-greenLight);
   opacity: 0.5;
 }
 
@@ -127,7 +127,7 @@
 }
 
 .toggle-button.active :global(.bt-fill) {
-  fill: #00b6a1;
+  fill: var(--color-buttonPrimary);
 }
 
 /* button - disabled */
@@ -136,7 +136,7 @@
 }
 
 .toggle-button.disabled :global(.bt-fill) {
-  fill: #f9fafc;
+  fill: var(--color-coolGrey);
 }
 
 .toggle-button.disabled.active {
@@ -144,7 +144,7 @@
 }
 
 .toggle-button.disabled.active :global(.bt-fill) {
-  fill: #87d8c8;
+  fill: var(--color-greenLight);
 }
 
 /* button - hover */
