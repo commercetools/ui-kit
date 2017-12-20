@@ -77,7 +77,9 @@ export default class BaseTable extends React.Component {
     itemRenderer: PropTypes.func.isRequired,
     registerMeasurementCache: PropTypes.func,
     rowCount: PropTypes.number.isRequired,
-    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+    ).isRequired,
     maxHeight: PropTypes.number.isRequired,
     maxWidth: PropTypes.number.isRequired,
     onSortChange: PropTypes.func,
