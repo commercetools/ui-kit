@@ -28,6 +28,7 @@
 }
 
 .pointer {
+  transform-origin: var(--position-origin) var(--position-origin) 0;
   animation: spin 0.5s infinite linear;
 }
 
@@ -40,12 +41,10 @@
 
 @keyframes spin {
   from {
-    transform-origin: var(--position-origin) var(--position-origin) 0;
     transform: rotate(0deg);
   }
 
   to {
-    transform-origin: var(--position-origin) var(--position-origin) 0;
     transform: rotate(360deg);
   }
 }
