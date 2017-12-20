@@ -1,8 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Toggle } from './toggle';
-import ToggleOn from './toggle-on';
-import ToggleOff from './toggle-off';
 
 const onChangeCallback = jest.fn();
 
@@ -68,12 +66,7 @@ describe('<Toggle>', () => {
       beforeEach(() => {
         props = createTestProps({ isChecked: false });
 
-        wrapper = shallow(
-          <Toggle {...props}>
-            <ToggleOn {...props}>On</ToggleOn>
-            <ToggleOff {...props}>Off</ToggleOff>
-          </Toggle>
-        );
+        wrapper = shallow(<Toggle {...props} />);
       });
 
       it('should match snapshot', () => {

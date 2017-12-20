@@ -16,10 +16,7 @@ import { Toggle } from '@commercetools-local/ui-kit/switches';
   isChecked={false}
   onChange={..}
   size='small'
->
-  <Toggle.On>On</Toggle.On>
-  <Toggle.Off>Off</Toggle.Off>
-</Toggle.Toggle>
+/>
 ```
 
 #### Use case
@@ -41,7 +38,3 @@ The table below describes the use of the `Toggle` compared with the other switch
 | `isChecked`  | `bool`   |    -     | -      | `false` | Checks the Toggle                                   |
 | `onChange`   | `func`   |    ✅    | -      | -       | What will trigger whenever the `Toggle` is clicked. |
 | `size`       | `string` |    ✅    | -      | `big`   | The size of the Toggle component.                   |
-
-#### Invariants
-
-1. The `Toggle.Toggle` must have one each of the `Toggle.On` and `Toggle.Off` labels.

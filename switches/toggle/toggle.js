@@ -5,8 +5,6 @@ import Spacings from '../../materials/spacings';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import styles from './toggle.mod.css';
 import ToggleSwitch from './toggle-switch';
-import ToggleOn from './toggle-on';
-import ToggleOff from './toggle-off';
 
 export class Toggle extends React.PureComponent {
   static displayName = 'Toggle';
@@ -40,25 +38,11 @@ export class Toggle extends React.PureComponent {
           })}
         >
           <Spacings.Inline alignItems="center">
-            {React.Children.map(this.props.children, child => {
-              if (child.type.displayName === ToggleOn.displayName)
-                return React.cloneElement(child, {
-                  isChecked: this.props.isChecked,
-                  isDisabled: this.props.isDisabled,
-                });
-              else if (child.type.displayName === ToggleOff.displayName)
-                return React.cloneElement(child, {
-                  isChecked: this.props.isChecked,
-                  isDisabled: this.props.isDisabled,
-                });
-              return child;
-            })}
             <ToggleSwitch
               size={this.props.size}
               isMouseOver={this.props.isMouseOver}
               isChecked={this.props.isChecked}
               isDisabled={this.props.isDisabled}
-              className={styles.toggleSwitch}
             />
             <input
               className={styles.inputWrapper}
