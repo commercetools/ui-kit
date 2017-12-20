@@ -2,8 +2,8 @@
 @import '../materials/spacings.mod.css';
 
 :root {
-  --size-large-svg: 40px;
-  --size-small-svg: 20px;
+  --size-large-svg: 32px;
+  --size-small-svg: 18px;
   --position-origin: 20px;
 }
 
