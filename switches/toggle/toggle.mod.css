@@ -23,6 +23,14 @@
   display: none;
 }
 
+.labelWrapper {
+  cursor: pointer;
+}
+
+.labelWrapperDisabled {
+  cursor: not-allowed;
+}
+
 /* --- CONTAINER --- */
 .toggle-container {
   position: relative;

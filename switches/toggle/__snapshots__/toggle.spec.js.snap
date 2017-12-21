@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Toggle> rendering with children should match snapshot 1`] = `
-<div
+<label
+  className="labelWrapper"
   onMouseOut={[MockFunction]}
   onMouseOver={[MockFunction]}
 >
@@ -16,14 +17,15 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
     className="inputWrapper"
     disabled={false}
     name="toggle"
-    onChange={[MockFunction]}
+    onChange={[Function]}
     type="checkbox"
   />
-</div>
+</label>
 `;
 
 exports[`<Toggle> rendering without children should match snapshot 1`] = `
-<div
+<label
+  className="labelWrapper"
   onMouseOut={[MockFunction]}
   onMouseOver={[MockFunction]}
 >
@@ -38,8 +40,8 @@ exports[`<Toggle> rendering without children should match snapshot 1`] = `
     className="inputWrapper"
     disabled={false}
     name="toggle"
-    onChange={[MockFunction]}
+    onChange={[Function]}
     type="checkbox"
   />
-</div>
+</label>
 `;

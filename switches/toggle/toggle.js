@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import styles from './toggle.mod.css';
 import ToggleSwitch from './toggle-switch';
@@ -26,9 +27,12 @@ export class Toggle extends React.PureComponent {
 
   render() {
     return (
-      <div
+      <label
         onMouseOver={this.props.handleMouseOver}
         onMouseOut={this.props.handleMouseOut}
+        className={classnames(styles.labelWrapper, {
+          [styles.labelWrapperDisabled]: this.props.isDisabled,
+        })}
       >
         <ToggleSwitch
           size={this.props.size}
@@ -39,12 +43,12 @@ export class Toggle extends React.PureComponent {
         <input
           className={styles.inputWrapper}
           name={this.props.name}
-          onChange={this.props.onChange}
+          onChange={() => this.props.onChange(!this.props.isChecked)}
           disabled={this.props.isDisabled}
           checked={this.props.isChecked}
           type="checkbox"
         />
-      </div>
+      </label>
     );
   }
 }
