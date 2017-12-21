@@ -18,6 +18,7 @@ storiesOf('Panels/CollapsiblePanel', module)
         isSticky={boolean('isSticky', false)}
         isDisabled={boolean('isDisabled', false)}
         tone={select('tone', ['primary', 'urgent'], 'primary')}
+        headerControls={text('headerControls', 'headerControl')}
       >
         <div>{text('Text', 'Sample text')}</div>
       </CollapsiblePanel>
@@ -35,6 +36,7 @@ storiesOf('Panels/CollapsiblePanel', module)
             tone={select('tone', ['primary', 'urgent'], 'primary')}
             isClosed={!isOpen}
             onToggle={toggle}
+            headerControls={text('headerControls', 'headerControl')}
           >
             <div>{text('Text', 'Sample text')}</div>
           </CollapsiblePanel>
