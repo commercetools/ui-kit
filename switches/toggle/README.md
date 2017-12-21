@@ -11,7 +11,7 @@ The `Toggle` switch allows a single settings option to be turned on or off.
 ```js
 import { Toggle } from '@commercetools-local/ui-kit/switches';
 
-<Toggle.Toggle
+<Toggle
   isDisabled={false}
   isChecked={false}
   onChange={..}
@@ -31,10 +31,9 @@ The table below describes the use of the `Toggle` compared with the other switch
 
 #### Properties
 
-| Props        | Type     | Required | Values | Default | Description                                         |
-| ------------ | -------- | :------: | ------ | ------- | --------------------------------------------------- |
-| `children`   | `node`   |    ✅    | -      | -       | The `Toggle.On` and `Toggle.Off` components         |
-| `isDisabled` | `bool`   |    -     | -      | `false` | Disables the Toggle                                 |
-| `isChecked`  | `bool`   |    -     | -      | `false` | Checks the Toggle                                   |
-| `onChange`   | `func`   |    ✅    | -      | -       | What will trigger whenever the `Toggle` is clicked. |
-| `size`       | `string` |    ✅    | -      | `big`   | The size of the Toggle component.                   |
+| Props        | Type     | Required | Values                  | Default | Description                                         |
+| ------------ | -------- | :------: | ----------------------- | ------- | --------------------------------------------------- |
+| `isDisabled` | `bool`   |    -     | -                       | `false` | Disables the Toggle                                 |
+| `isChecked`  | `bool`   |    -     | -                       | `false` | Checks the Toggle                                   |
+| `onChange`   | `func`   |    ✅    | -                       | -       | What will trigger whenever the `Toggle` is clicked. |
+| `size`       | `string` |    ✅    | oneOf(['small', 'big']) | `big`   | The size of the Toggle component.                   |
