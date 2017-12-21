@@ -5,12 +5,10 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="ATOM---Checkboxes-and-Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ATOM---Checkboxes-radio-buttons" transform="translate(-401.000000, -868.000000)">
-            <g id="radio-button-active" transform="translate(402.000000, 869.000000)">
-                <g id="radiobt-active">
-                    <circle id="Oval-Copy-6" stroke="#AFAFAF" fill="#FFFFFF" cx="8" cy="8" r="8"></circle>
-                    <circle id="Oval" fill="#20AD92" cx="8" cy="8" r="4"></circle>
-                </g>
+        <g id="Checkboxes-radio-buttons" transform="translate(-401.000000, -868.000000)">
+            <g id="radiobt-active" transform="translate(402.000000, 869.000000)">
+                <circle id="Oval-Copy-6" stroke="#AFAFAF" fill="#FFFFFF" cx="8" cy="8" r="8"></circle>
+                <circle id="Oval" fill="#00B6A1" cx="8" cy="8" r="4"></circle>
             </g>
         </g>
     </g>

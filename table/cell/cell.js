@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './cell.mod.css';
 
 const Cell = props => <div className={styles.container}>{props.children}</div>;
+Cell.displayName = 'Cell';
 
 Cell.propTypes = {
   children: PropTypes.node.isRequired,

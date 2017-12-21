@@ -49,9 +49,7 @@ GhostButton.propTypes = {
     }
     if (!isNil(props[propName]))
       return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${
-          propName
-        }\` does not have any effect when the button is not a toggle button.`
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the button is not a toggle button.`
       );
     return PropTypes.bool(props, propName, componentName, ...rest);
   },

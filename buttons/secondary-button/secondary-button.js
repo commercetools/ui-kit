@@ -46,9 +46,7 @@ const getThemeClassName = theme => {
   // be available except for the default theme.
   invariant(
     themeClassName || theme === 'default',
-    `ui-kit/icons/buttons/secondary-button: the specified theme '${
-      theme
-    }' is not supported.`
+    `ui-kit/icons/buttons/secondary-button: the specified theme '${theme}' is not supported.`
   );
 
   return themeClassName;
@@ -107,18 +105,14 @@ SecondaryButton.propTypes = {
     }
     if (!isNil(props[propName]))
       return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${
-          propName
-        }\` does not have any effect when the button is not a toggle button.`
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the button is not a toggle button.`
       );
     return PropTypes.bool(props, propName, componentName, ...rest);
   },
   theme(props, propName, componentName, ...rest) {
     if (props[propName] !== 'default' && !props.isToggleButton) {
       return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${
-          componentName
-        }\`. Only toggle buttons may have a theme.`
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Only toggle buttons may have a theme.`
       );
     }
     return PropTypes.oneOf(['default', 'apple-green', 'blue'])(

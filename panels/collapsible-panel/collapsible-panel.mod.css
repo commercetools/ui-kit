@@ -1,0 +1,101 @@
+@import '../../materials/colors.mod.css';
+@import '../../materials/shadows.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/borders.mod.css';
+
+:root {
+  --size-icon-container: 24px;
+}
+
+.container {
+  box-shadow: var(--shadow-8-second);
+  background-color: var(--color-whiteAlabaster);
+  border-radius: var(--border-radius-6);
+  margin: 0 0 var(--spacing-16);
+  position: relative;
+  min-width: 550px;
+  padding: 0;
+}
+
+.header-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--color-whiteAlabaster);
+  border-top-right-radius: var(--border-radius-6);
+  border-top-left-radius: var(--border-radius-6);
+}
+
+.container-open .header-container {
+  border-bottom: 1px var(--color-primaryGrey) solid;
+}
+
+.header {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  list-style-type: none;
+  border-bottom: 1px var(--color-whiteAlabaster) solid;
+
+  /*
+  Two resource that explain why we need the min-width: 0; here
+  By default, min-width is set to `auto`. That means that this flex-child is not
+  allowed to grow any smaller than the longest text inside. So it will stretch
+  no matter how you set the flex-grow property
+  To fix this you need to set min-width to 0. This tells the flex-child that
+  it is ok to be narrower than the longest word inside
+  https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b
+  https://css-tricks.com/flexbox-truncated-text/
+  */
+  min-width: 0;
+}
+
+.header > * + * {
+  /* would have loved to use Spacings.Inline here but that would require a
+  complete overhaul of this components' structure */
+  margin: 0 0 0 var(--spacing-16);
+}
+
+.header-title {
+  cursor: pointer;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+.header-title-disabled {
+  composes: header-title;
+  cursor: default;
+}
+
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--size-icon-container);
+  width: var(--size-icon-container);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.header-icon-primary {
+  background-color: var(--color-greenLight);
+}
+
+.header-icon-urgent {
+  background-color: var(--color-CTOrange);
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}

@@ -4,7 +4,7 @@ exports[`<Group> rendering should match snapshot 1`] = `
 <div>
   <Stack
     alignItems="stretch"
-    scale="s"
+    scale="m"
   >
     <WithMouseOverState(RadioOption)
       isChecked={false}

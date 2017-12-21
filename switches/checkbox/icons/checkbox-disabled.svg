@@ -4,15 +4,13 @@
     <title>checkbox-disabled-default</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="0" y="0" width="16" height="16" rx="4"></rect>
+        <rect id="path-1" x="146" y="910" width="16" height="16" rx="4"></rect>
     </defs>
     <g id="ATOM---Checkboxes-and-Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ATOM---Checkboxes-radio-buttons" transform="translate(-146.000000, -965.000000)">
-            <g id="checkbox-disabled-default" transform="translate(146.000000, 965.000000)">
-                <g>
-                    <use fill="#F9FAFC" fill-rule="evenodd" xlink:href="#path-1"></use>
-                    <rect stroke="#EFF2F6" stroke-width="1" x="0.5" y="0.5" width="15" height="15" rx="4"></rect>
-                </g>
+        <g id="Checkboxes-radio-buttons" transform="translate(-146.000000, -910.000000)">
+            <g id="checkbox-disabled-default">
+                <use fill="#F9FAFC" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#EFF2F6" stroke-width="1" x="146.5" y="910.5" width="15" height="15" rx="4"></rect>
             </g>
         </g>
     </g>
