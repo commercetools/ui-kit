@@ -37,6 +37,7 @@ const NumericInput = props => (
       step={props.stepValue}
       onChange={props.onChange}
       onBlur={props.onBlur}
+      onFocus={props.onFocus}
       disabled={props.isDisabled}
       placeholder={props.placeholder}
       className={getStyles(props)}

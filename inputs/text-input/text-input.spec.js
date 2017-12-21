@@ -10,118 +10,113 @@ const createTestProps = customProps => ({
 
 describe('rendering', () => {
   describe('default', () => {
-    let wrapper;
+    let input;
     beforeEach(() => {
       const props = createTestProps({
         name: 'field1',
         value: 'foo',
       });
-      wrapper = shallow(<TextInput {...props} />);
+      const wrapper = shallow(<TextInput {...props} />);
+      input = wrapper.children().at(0);
     });
 
     it('should have class for default styles', () => {
-      expect(wrapper).toHaveClassName('plain');
+      expect(input).toHaveClassName('pristine');
     });
 
     it('should have ARIA role', () => {
-      expect(wrapper).toHaveProp('role', 'textbox');
+      expect(input).toHaveProp('role', 'textbox');
     });
 
     it('input should have type text', () => {
-      expect(wrapper).toHaveProp('type', 'text');
+      expect(input).toHaveProp('type', 'text');
     });
 
     it('input have a HTML name', () => {
-      expect(wrapper).toHaveProp('name', 'field1');
+      expect(input).toHaveProp('name', 'field1');
     });
 
     it('should have passed value', () => {
-      expect(wrapper).toHaveProp('value', 'foo');
+      expect(input).toHaveProp('value', 'foo');
     });
 
-    describe('with tones', () => {
+    describe('with states', () => {
       describe('warning', () => {
         beforeEach(() => {
           const props = createTestProps({
-            tone: 'warning',
+            hasWarning: true,
           });
-          wrapper = shallow(<TextInput {...props} />);
+          const wrapper = shallow(<TextInput {...props} />);
+          input = wrapper.children().at(0);
         });
 
-        it('should have warning tone styles', () => {
-          expect(wrapper).toHaveClassName('warning');
+        it('should have warning styles', () => {
+          expect(input).toHaveClassName('warning');
         });
       });
       describe('error', () => {
         beforeEach(() => {
           const props = createTestProps({
-            tone: 'error',
+            hasError: true,
           });
-          wrapper = shallow(<TextInput {...props} />);
+          const wrapper = shallow(<TextInput {...props} />);
+          input = wrapper.children().at(0);
         });
 
-        it('should have error tone styles', () => {
-          expect(wrapper).toHaveClassName('error');
+        it('should have error styles', () => {
+          expect(input).toHaveClassName('error');
         });
       });
-      describe('info', () => {
+      describe('disabled', () => {
         beforeEach(() => {
           const props = createTestProps({
-            tone: 'info',
+            isDisabled: true,
+          });
+          const wrapper = shallow(<TextInput {...props} />);
+          input = wrapper.children().at(0);
+        });
+
+        it('should have class for the disabled state', () => {
+          expect(input).toHaveClassName('disabled');
+        });
+      });
+      describe('loading', () => {
+        let wrapper;
+        beforeEach(() => {
+          const props = createTestProps({
+            isLoading: true,
           });
           wrapper = shallow(<TextInput {...props} />);
+          input = wrapper.children().at(0);
         });
 
-        it('should have info tone styles', () => {
-          expect(wrapper).toHaveClassName('info');
+        it('should have class for the loading state', () => {
+          expect(input).toHaveClassName('loading');
+        });
+
+        it('should render loading spinner', () => {
+          expect(wrapper).toRender('LoadingSpinner');
         });
       });
-    });
-  });
+      describe('readonly', () => {
+        let wrapper;
+        beforeEach(() => {
+          const props = createTestProps({
+            isReadOnly: true,
+          });
+          wrapper = shallow(<TextInput {...props} />)
+            .children()
+            .at(0);
+        });
 
-  describe('when disabled', () => {
-    let wrapper;
-    beforeEach(() => {
-      const props = createTestProps({
-        isDisabled: true,
+        it('should have class for the readonly state', () => {
+          expect(wrapper).toHaveClassName('readonly');
+        });
+
+        it('should have ARIA properties for the readonly state', () => {
+          expect(wrapper).toHaveProp('aria-readonly', true);
+        });
       });
-      wrapper = shallow(<TextInput {...props} />);
-    });
-
-    it('should have class for the disabled state', () => {
-      expect(wrapper).toHaveClassName('disabled');
-    });
-  });
-
-  describe('when inactive', () => {
-    let wrapper;
-    beforeEach(() => {
-      const props = createTestProps({
-        isInactive: true,
-      });
-      wrapper = shallow(<TextInput {...props} />);
-    });
-
-    it('should have class for the inactive state', () => {
-      expect(wrapper).toHaveClassName('inactive');
-    });
-  });
-
-  describe('when readonly', () => {
-    let wrapper;
-    beforeEach(() => {
-      const props = createTestProps({
-        isReadOnly: true,
-      });
-      wrapper = shallow(<TextInput {...props} />);
-    });
-
-    it('should have class for the readonly state', () => {
-      expect(wrapper).toHaveClassName('readonly');
-    });
-
-    it('should have ARIA properties for the readonly state', () => {
-      expect(wrapper).toHaveProp('aria-readonly', true);
     });
   });
 });
@@ -130,13 +125,15 @@ describe('callbacks', () => {
   describe('when changing value', () => {
     let wrapper;
     let props;
+    let input;
     beforeEach(() => {
       props = createTestProps({
         value: 'foo',
         onChange: jest.fn(),
       });
       wrapper = shallow(<TextInput {...props} />);
-      wrapper.simulate('change', { target: { value: 'bar' } });
+      input = wrapper.children().at(0);
+      input.simulate('change', { target: { value: 'bar' } });
     });
 
     it('should call onChange', () => {
@@ -153,23 +150,47 @@ describe('callbacks', () => {
   });
   describe('when clicking outside field', () => {
     let wrapper;
-    let onBlurFun;
+    let props;
+    let input;
     beforeEach(() => {
-      onBlurFun = jest.fn();
-      const props = createTestProps({
+      props = createTestProps({
         value: 'foo',
-        onBlur: onBlurFun,
+        onBlur: jest.fn(),
       });
       wrapper = shallow(<TextInput {...props} />);
-      wrapper.simulate('blur');
+      input = wrapper.children().at(0);
+      input.simulate('focus');
+      input.simulate('blur');
     });
 
     it('should call onBlur', () => {
-      expect(onBlurFun).toHaveBeenCalled();
+      expect(props.onBlur).toHaveBeenCalled();
     });
 
     it('value should remain the same', () => {
-      expect(wrapper).toHaveProp('value', 'foo');
+      expect(input).toHaveProp('value', 'foo');
+    });
+  });
+  describe('should call onFocus if isAutofocussed is passed', () => {
+    let wrapper;
+    let props;
+    let input;
+    beforeEach(() => {
+      props = createTestProps({
+        isAutofocussed: true,
+        onFocus: jest.fn(),
+      });
+      wrapper = shallow(<TextInput {...props} />);
+      input = wrapper.children().at(0);
+      input.simulate('focus');
+      input.simulate('blur');
+    });
+
+    it('should autofocus prop be true', () => {
+      expect(input.prop('autoFocus')).toBe(true);
+    });
+    it('should call onFocus', () => {
+      expect(props.onFocus).toHaveBeenCalled();
     });
   });
 });
