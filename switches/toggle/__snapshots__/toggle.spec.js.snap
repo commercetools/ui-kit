@@ -5,29 +5,20 @@ exports[`<Toggle> rendering with children should match snapshot 1`] = `
   onMouseOut={[MockFunction]}
   onMouseOver={[MockFunction]}
 >
-  <label
-    className="labelWrapper"
-  >
-    <Inline
-      alignItems="center"
-      scale="s"
-    >
-      <ToggleSwitch
-        isChecked={false}
-        isDisabled={false}
-        isMouseOver={false}
-        size="big"
-      />
-      <input
-        checked={false}
-        className="inputWrapper"
-        disabled={false}
-        name="toggle"
-        onChange={[MockFunction]}
-        type="checkbox"
-      />
-    </Inline>
-  </label>
+  <ToggleSwitch
+    isChecked={false}
+    isDisabled={false}
+    isMouseOver={false}
+    size="big"
+  />
+  <input
+    checked={false}
+    className="inputWrapper"
+    disabled={false}
+    name="toggle"
+    onChange={[MockFunction]}
+    type="checkbox"
+  />
 </div>
 `;
 
@@ -36,28 +27,19 @@ exports[`<Toggle> rendering without children should match snapshot 1`] = `
   onMouseOut={[MockFunction]}
   onMouseOver={[MockFunction]}
 >
-  <label
-    className="labelWrapper"
-  >
-    <Inline
-      alignItems="center"
-      scale="s"
-    >
-      <ToggleSwitch
-        isChecked={false}
-        isDisabled={false}
-        isMouseOver={false}
-        size="big"
-      />
-      <input
-        checked={false}
-        className="inputWrapper"
-        disabled={false}
-        name="toggle"
-        onChange={[MockFunction]}
-        type="checkbox"
-      />
-    </Inline>
-  </label>
+  <ToggleSwitch
+    isChecked={false}
+    isDisabled={false}
+    isMouseOver={false}
+    size="big"
+  />
+  <input
+    checked={false}
+    className="inputWrapper"
+    disabled={false}
+    name="toggle"
+    onChange={[MockFunction]}
+    type="checkbox"
+  />
 </div>
 `;
