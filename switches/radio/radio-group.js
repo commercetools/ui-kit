@@ -39,10 +39,10 @@ class Group extends React.PureComponent {
       this.props.direction === 'stack' ? Spacings.Stack : Spacings.Inline;
     return (
       <div className={this.props.className}>
-        <DirectionWrapper>
+        <DirectionWrapper scale="m">
           {React.Children.map(this.props.children, child => {
             // NOTE: Allowing to intersperse other elements than `Option`.
-            if (child.type.displayName === Option.displayName)
+            if (child && child.type.displayName === Option.displayName)
               return React.cloneElement(child, {
                 isChecked: this.props.value === child.props.value,
                 name: this.props.name,
