@@ -137,7 +137,7 @@ describe('<ToggleButton>', () => {
           wrapper = shallow(<ToggleButton {...props} />);
         });
 
-        it('should render <ToggleButton> with the checked state', () => {
+        it('should apply the `active` class to <ToggleButton>', () => {
           expect(wrapper).toHaveClassName('toggle-button-big active');
         });
       });
@@ -150,7 +150,7 @@ describe('<ToggleButton>', () => {
           wrapper = shallow(<ToggleButton {...props} />);
         });
 
-        it('should not render <ToggleButton> with the checked state', () => {
+        it('should not apply the `active` class to <ToggleButton>', () => {
           expect(wrapper).not.toHaveClassName('active');
         });
       });
@@ -163,7 +163,7 @@ describe('<ToggleButton>', () => {
           wrapper = shallow(<ToggleButton {...props} />);
         });
 
-        it('should render <ToggleButton> with the disabled state', () => {
+        it('should apply the `disabled` class to <ToggleButton>', () => {
           expect(wrapper).toHaveClassName('toggle-button-big disabled');
         });
       });
@@ -176,7 +176,7 @@ describe('<ToggleButton>', () => {
           wrapper = shallow(<ToggleButton {...props} />);
         });
 
-        it('should not render <ToggleButton> with the disabled state', () => {
+        it('should not apply the `disabled` class to <ToggleButton>', () => {
           expect(wrapper).not.toHaveClassName('disabled');
         });
       });
@@ -190,7 +190,7 @@ describe('<ToggleButton>', () => {
           wrapper = shallow(<ToggleButton {...props} />);
         });
 
-        it('should add the small class to the container', () => {
+        it('should add the `small` suffix to the base class', () => {
           expect(wrapper).toHaveClassName('toggle-button-small');
         });
       });
@@ -202,7 +202,7 @@ describe('<ToggleButton>', () => {
           wrapper = shallow(<ToggleButton {...props} />);
         });
 
-        it('should add the big class to the container', () => {
+        it('should add the `big` suffix to the base class', () => {
           expect(wrapper).toHaveClassName('toggle-button-big');
         });
       });
@@ -235,7 +235,7 @@ describe('<ToggleBar>', () => {
           wrapper = shallow(<ToggleBar {...props} />);
         });
 
-        it('should render <ToggleBar> with the checked state', () => {
+        it('should apply the `active` class to the <ToggleBar>', () => {
           expect(wrapper).toHaveClassName('toggle-bar-big active');
         });
       });
@@ -248,7 +248,7 @@ describe('<ToggleBar>', () => {
           wrapper = shallow(<ToggleBar {...props} />);
         });
 
-        it('should not render <ToggleBar> with the checked state', () => {
+        it('should not apply the `active` class to <ToggleBar>', () => {
           expect(wrapper).not.toHaveClassName('active');
         });
       });
@@ -261,7 +261,7 @@ describe('<ToggleBar>', () => {
           wrapper = shallow(<ToggleBar {...props} />);
         });
 
-        it('should render <ToggleBar> with the disabled state', () => {
+        it('should apply the `disabled` class to <ToggleBar>', () => {
           expect(wrapper).toHaveClassName('toggle-bar-big disabled');
         });
       });
@@ -274,7 +274,7 @@ describe('<ToggleBar>', () => {
           wrapper = shallow(<ToggleBar {...props} />);
         });
 
-        it('should not render <ToggleBar> with the disabled state', () => {
+        it('should not apply the `disabled` class to <ToggleBar>', () => {
           expect(wrapper).not.toHaveClassName('disabled');
         });
       });
@@ -288,7 +288,7 @@ describe('<ToggleBar>', () => {
           wrapper = shallow(<ToggleBar {...props} />);
         });
 
-        it('should add the small class to the container', () => {
+        it('should add the `small` suffix to the base class', () => {
           expect(wrapper).toHaveClassName('toggle-bar-small');
         });
       });
@@ -300,7 +300,7 @@ describe('<ToggleBar>', () => {
           wrapper = shallow(<ToggleBar {...props} />);
         });
 
-        it('should add the big class to the container', () => {
+        it('should add the `big` suffix to the base class', () => {
           expect(wrapper).toHaveClassName('toggle-bar-big');
         });
       });
