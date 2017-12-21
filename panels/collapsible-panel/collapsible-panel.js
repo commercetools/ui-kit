@@ -84,6 +84,7 @@ export default class CollapsiblePanel extends React.PureComponent {
           >
             <div
               className={classnames(styles['header-container'], {
+                [styles.disabled]: this.props.isDisabled,
                 [styles.sticky]: this.props.isSticky && isOpen,
               })}
             >
@@ -101,7 +102,9 @@ export default class CollapsiblePanel extends React.PureComponent {
                       {this.props.label}
                     </Text.Headline>
                   </Spacings.Inline>
-                  {this.props.headerControls}
+                  <div onClick={event => event.stopPropagation()}>
+                    {this.props.headerControls}
+                  </div>
                 </div>
               </Spacings.InsetSquish>
             </div>
