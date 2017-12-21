@@ -21,8 +21,11 @@ import TextInput from '@commercetools-local/ui-kit/inputs/text-input';
 | `value`       | `string` |    ✅    | -      | -       | Value of the input                                               |
 | `onChange`    | `func`   |    ✅    | -      | -       | Called with the new value. Parent should pass it back as `value` |
 | `onBlur`      | `func`   |    -     | -      | -       | Called when field is blurred                                     |
+| `onFocus`      | `func`   |    -     | -      | -      | Called when field is focused                                     |
+| `hasWarning` | `bool` |    -     | -      | -       | Indicates the input field has a warning                     |
+| `hasError` | `bool` |    -     | -      | -       | Indicates the input field has an error                      |
 | `isDisabled`  | `bool`   |    -     | -      | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved) |
-| `isInactive`  | `bool`   |    -     | -      | `false` | Applies the inactive style. Indicate that a service (unit) is currently not "running", but may get started - i.e become active (e.G when a fetch is being executed in a search input field the user should have a feedback that while the search is being made, the field is currently inactive) |
+| `isLoading`  | `bool`   |    -     | -      | `false` | Shows a loading spinner.                                  |
 | `isReadOnly`  | `bool`   |    -     | -      | `false` | Indicates that the field is displaying read-only content |
 | `placeholder` | `string` |    -     | -      | -       | Placeholder text for the input                                                                          |
 | `tone`    | `oneOf`   |    -     | ['plain', 'warning', 'error', 'info']      | `plain` | applies the styles regarding the received tone |

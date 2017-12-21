@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Spacings from '../../materials/spacings';
 import LoadingSpinner from '../../loading-spinner';
 import styles from './text-input.mod.css';
 
@@ -21,6 +22,7 @@ const TextInput = props => (
       value={props.value}
       onChange={props.onChange}
       onBlur={props.onBlur}
+      onFocus={props.onFocus}
       disabled={props.isDisabled}
       placeholder={props.placeholder}
       className={getStyles(props)}
@@ -32,7 +34,9 @@ const TextInput = props => (
     />
     {props.isLoading && (
       <div className={styles.spinner}>
-        <LoadingSpinner size="s" />
+        <Spacings.InsetSquish>
+          <LoadingSpinner scale="s" />
+        </Spacings.InsetSquish>
       </div>
     )}
   </div>
@@ -52,10 +56,6 @@ TextInput.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
-};
-
-TextInput.defaultProps = {
-  tone: 'plain',
 };
 
 export default TextInput;
