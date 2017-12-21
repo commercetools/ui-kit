@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Spacings from '../../materials/spacings';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import styles from './toggle.mod.css';
 import ToggleSwitch from './toggle-switch';
@@ -32,28 +30,20 @@ export class Toggle extends React.PureComponent {
         onMouseOver={this.props.handleMouseOver}
         onMouseOut={this.props.handleMouseOut}
       >
-        <label
-          className={classnames(styles.labelWrapper, {
-            [styles.labelWrapperDisabled]: this.props.isDisabled,
-          })}
-        >
-          <Spacings.Inline alignItems="center">
-            <ToggleSwitch
-              size={this.props.size}
-              isMouseOver={this.props.isMouseOver}
-              isChecked={this.props.isChecked}
-              isDisabled={this.props.isDisabled}
-            />
-            <input
-              className={styles.inputWrapper}
-              name={this.props.name}
-              onChange={this.props.onChange}
-              disabled={this.props.isDisabled}
-              checked={this.props.isChecked}
-              type="checkbox"
-            />
-          </Spacings.Inline>
-        </label>
+        <ToggleSwitch
+          size={this.props.size}
+          isMouseOver={this.props.isMouseOver}
+          isChecked={this.props.isChecked}
+          isDisabled={this.props.isDisabled}
+        />
+        <input
+          className={styles.inputWrapper}
+          name={this.props.name}
+          onChange={this.props.onChange}
+          disabled={this.props.isDisabled}
+          checked={this.props.isChecked}
+          type="checkbox"
+        />
       </div>
     );
   }

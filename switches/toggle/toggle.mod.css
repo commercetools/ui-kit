@@ -22,22 +22,6 @@
   display: none;
 }
 
-.labelWrapper {
-  cursor: pointer;
-}
-
-.labelWrapperDisabled {
-  cursor: not-allowed;
-}
-
-.textWrapperDisabled {
-  color: var(--color-primaryGrey);
-}
-
-.label {
-  width: calc(var(--big-bar-width) * 2);
-}
-
 /* --- CONTAINER --- */
 .toggle-container {
   position: relative;
