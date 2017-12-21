@@ -27,6 +27,7 @@ const TextInput = props => (
       placeholder={props.placeholder}
       className={getStyles(props)}
       readOnly={props.isReadOnly}
+      autoFocus={props.isAutofocussed}
       /* ARIA */
       aria-readonly={props.isReadOnly}
       role="textbox"
@@ -50,6 +51,7 @@ TextInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
+  isAutofocussed: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   isLoading: PropTypes.bool,

@@ -41,6 +41,7 @@ const NumericInput = props => (
       placeholder={props.placeholder}
       className={getStyles(props)}
       readOnly={props.isReadOnly}
+      autoFocus={props.isAutofocussed}
       /* ARIA */
       aria-readonly={props.isReadOnly}
       role="textbox"
@@ -70,6 +71,7 @@ NumericInput.propTypes = {
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   isLoading: PropTypes.bool,
+  isAutofocussed: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,

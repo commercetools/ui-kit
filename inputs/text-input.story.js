@@ -19,6 +19,7 @@ storiesOf('Forms/Inputs', module)
         name={text('name', '')}
         value={text('value', '')}
         onChange={action('onChange')}
+        isAutofocussed={boolean('isAutofocussed', false)}
         isDisabled={boolean('isDisabled', false)}
         isLoading={boolean('isLoading', false)}
         isReadOnly={boolean('isReadOnly', false)}
@@ -41,6 +42,7 @@ storiesOf('Forms/Inputs', module)
             minValue={text('minValue', '')}
             maxValue={text('maxValue', '')}
             stepValue={text('stepValue', '')}
+            isAutofocussed={boolean('isAutofocussed', false)}
             isDisabled={boolean('isDisabled', false)}
             isLoading={boolean('isLoading', false)}
             isReadOnly={boolean('isReadOnly', false)}
