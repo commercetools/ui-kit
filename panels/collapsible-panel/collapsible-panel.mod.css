@@ -40,6 +40,7 @@
   align-items: center;
   list-style-type: none;
   border-bottom: 1px var(--color-whiteAlabaster) solid;
+  justify-content: space-between;
 
   /*
   Two resource that explain why we need the min-width: 0; here
@@ -52,6 +53,12 @@
   https://css-tricks.com/flexbox-truncated-text/
   */
   min-width: 0;
+}
+
+.header-left {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
 }
 
 .header > * + * {

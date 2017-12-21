@@ -93,12 +93,14 @@ export default class CollapsiblePanel extends React.PureComponent {
                   onClick={() => this.handleToggle(toggle)}
                   className={styles.header}
                 >
-                  {!this.props.isDisabled && (
-                    <HeaderIcon isClosed={!isOpen} tone={this.props.tone} />
-                  )}
-                  <Text.Headline elementType="h2">
-                    {this.props.label}
-                  </Text.Headline>
+                  <Spacings.Inline alignItems="center">
+                    {!this.props.isDisabled && (
+                      <HeaderIcon isClosed={!isOpen} tone={this.props.tone} />
+                    )}
+                    <Text.Headline elementType="h2">
+                      {this.props.label}
+                    </Text.Headline>
+                  </Spacings.Inline>
                   {this.props.headerControls}
                 </div>
               </Spacings.InsetSquish>
@@ -111,7 +113,9 @@ export default class CollapsiblePanel extends React.PureComponent {
                     <Text.Detail>{this.props.description}</Text.Detail>
                   </Spacings.Inset>
                 )}
-                <Spacings.Inset scale="m">{this.props.children}</Spacings.Inset>
+                <Spacings.Inset scale="m">
+                  <div className={styles.content}>{this.props.children}</div>
+                </Spacings.Inset>
               </div>
             </div>
           </div>
