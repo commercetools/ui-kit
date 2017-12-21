@@ -1,6 +1,6 @@
 import React from 'react';
+import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../materials/spacings';
@@ -14,42 +14,34 @@ storiesOf('Switches', module)
   .add('Toggle', () => (
     <Section>
       <Spacings.Stack>
-        <Spacings.Inline alignItems="center">
-          <Toggle
-            size={select('size', ['small', 'big'], 'big')}
-            isDisabled={false}
-            isChecked={boolean('isFirstToggleChecked', false)}
-            onChange={action('onChange: first')}
-          />
-          <label>Default</label>
-        </Spacings.Inline>
-        <Spacings.Inline alignItems="center">
-          <Toggle
-            size={select('size', ['small', 'big'], 'big')}
-            isDisabled={boolean('isSecondToggleDisabled', true)}
-            isChecked={false}
-            onChange={action('onChange: second')}
-          />
-          <label>Default Disabled</label>
-        </Spacings.Inline>
-        <Spacings.Inline alignItems="center">
-          <Toggle
-            size={select('size', ['small', 'big'], 'big')}
-            isDisabled={false}
-            isChecked={boolean('isThirdToggleChecked', true)}
-            onChange={action('onChange: third')}
-          />
-          <label>Checked</label>
-        </Spacings.Inline>
-        <Spacings.Inline alignItems="center">
-          <Toggle
-            size={select('size', ['small', 'big'], 'big')}
-            isDisabled={boolean('isFourthToggleDisabled', true)}
-            isChecked={true}
-            onChange={action('onChange: fourth')}
-          />
-          <label>Checked Disabled</label>
-        </Spacings.Inline>
+        <Value
+          defaultValue={false}
+          render={(value, onChange) => (
+            <Spacings.Inline alignItems="center">
+              <Toggle
+                size={select('size', ['small', 'big'], 'big')}
+                isDisabled={false}
+                isChecked={value}
+                onChange={onChange}
+              />
+              <label>Default</label>
+            </Spacings.Inline>
+          )}
+        />
+        <Value
+          defaultValue={true}
+          render={(value, onChange) => (
+            <Spacings.Inline alignItems="center">
+              <Toggle
+                size={select('size', ['small', 'big'], 'big')}
+                isDisabled={boolean('isSecondToggleDisabled', true)}
+                isChecked={value}
+                onChange={onChange}
+              />
+              <label>Default Disabled</label>
+            </Spacings.Inline>
+          )}
+        />
       </Spacings.Stack>
     </Section>
   ));
