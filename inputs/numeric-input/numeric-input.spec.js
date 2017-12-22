@@ -9,7 +9,7 @@ const createTestProps = customProps => ({
 });
 
 describe('rendering', () => {
-  describe('default', () => {
+  describe('pristine', () => {
     let input;
     beforeEach(() => {
       const props = createTestProps({
@@ -20,7 +20,7 @@ describe('rendering', () => {
       input = wrapper.children().at(0);
     });
 
-    it('should have class for default styles', () => {
+    it('should have class for pristine styles', () => {
       expect(input).toHaveClassName('pristine');
     });
 
