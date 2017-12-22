@@ -148,7 +148,29 @@ describe('callbacks', () => {
       });
     });
   });
-  describe('when clicking outside field', () => {
+  describe('when input gains focus', () => {
+    let wrapper;
+    let props;
+    let input;
+    beforeEach(() => {
+      props = createTestProps({
+        value: '1',
+        onFocus: jest.fn(),
+      });
+      wrapper = shallow(<NumericInput {...props} />);
+      input = wrapper.children().at(0);
+      input.simulate('focus');
+    });
+
+    it('should call onFocus', () => {
+      expect(props.onFocus).toHaveBeenCalled();
+    });
+
+    it('value should remain the same', () => {
+      expect(input).toHaveProp('value', '1');
+    });
+  });
+  describe('when input loses focus', () => {
     let wrapper;
     let props;
     let input;
@@ -159,7 +181,6 @@ describe('callbacks', () => {
       });
       wrapper = shallow(<NumericInput {...props} />);
       input = wrapper.children().at(0);
-      input.simulate('focus');
       input.simulate('blur');
     });
 
@@ -171,7 +192,7 @@ describe('callbacks', () => {
       expect(input).toHaveProp('value', '1');
     });
   });
-  describe('should call onFocus if isAutofocussed is passed', () => {
+  describe('when `isAutofocussed` is passed', () => {
     let wrapper;
     let props;
     let input;
@@ -182,15 +203,10 @@ describe('callbacks', () => {
       });
       wrapper = shallow(<NumericInput {...props} />);
       input = wrapper.children().at(0);
-      input.simulate('focus');
-      input.simulate('blur');
     });
 
     it('should autofocus prop be true', () => {
       expect(input.prop('autoFocus')).toBe(true);
-    });
-    it('should call onFocus', () => {
-      expect(props.onFocus).toHaveBeenCalled();
     });
   });
 });
