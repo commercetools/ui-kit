@@ -11,8 +11,6 @@
 }
 
 .toggle-button {
-  top: -1px; /* The position of the button was off for some reason */
-  left: -1px;
   position: absolute;
   z-index: 1;
   filter: drop-shadow(var(--drop-shadow-1-first))
