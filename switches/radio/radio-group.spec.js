@@ -90,10 +90,7 @@ describe('<Group>', () => {
       });
 
       it('should receive `onChange`', () => {
-        expect(optionWrapper).toHaveProp(
-          'onChange',
-          wrapper.instance().handleChange
-        );
+        expect(optionWrapper).toHaveProp('onChange', props.onChange);
       });
 
       describe('when checked', () => {
@@ -132,11 +129,11 @@ describe('<Group>', () => {
     });
   });
 
-  describe('interacting', () => {
-    const createEvent = value => ({
+  describe('callbacks', () => {
+    const createEvent = ({ value }) => ({
       target: { value },
     });
-    const event = createEvent('baz-value');
+    const event = createEvent({ value: 'baz-value' });
     let props;
     let wrapper;
 
@@ -150,16 +147,16 @@ describe('<Group>', () => {
         </Group>
       );
 
-      wrapper.instance().handleChange(event);
+      wrapper.find(Option).prop('onChange')(event);
     });
 
-    describe('handleChange', () => {
+    describe('handling change', () => {
       it('should invoke `onChange`', () => {
         expect(props.onChange).toHaveBeenCalled();
       });
 
-      it('should invoke `onChange` with the value of the event', () => {
-        expect(props.onChange).toHaveBeenCalledWith(event.target.value);
+      it('should invoke `onChange` with the event', () => {
+        expect(props.onChange).toHaveBeenCalledWith(event);
       });
     });
   });
