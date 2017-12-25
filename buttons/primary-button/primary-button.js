@@ -50,7 +50,7 @@ const PrimaryButton = props => {
 };
 
 PrimaryButton.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   buttonAttributes: PropTypes.object,
   iconLeft: PropTypes.node,
   isToggleButton: PropTypes.bool.isRequired,
