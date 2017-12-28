@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import React from 'react';
 import { shallow } from 'enzyme';
-import CollapsibleMotion from '../collapsible-motion';
+import CollapsibleMotion, { ToggleAnimation } from './collapsible-motion';
 
 const createMockNode = custom => ({
   clientHeight: 200,
@@ -11,106 +11,130 @@ const createMockNode = custom => ({
 });
 
 describe('rendering', () => {
-  const renderCallback = jest.fn(() => <div />);
-  const wrapper = shallow(
-    <CollapsibleMotion>{renderCallback}</CollapsibleMotion>
-  );
+  let wrapper;
+  let renderCallback;
+  let toggle;
+  let toggleAnimationWrapper;
+  beforeEach(() => {
+    renderCallback = jest.fn(() => <div />);
+    wrapper = shallow(<CollapsibleMotion>{renderCallback}</CollapsibleMotion>);
+    toggle = jest.fn();
+    toggleAnimationWrapper = shallow(
+      <div>
+        {wrapper.find('Collapsible').prop('children')({
+          isOpen: true,
+          toggle,
+        })}
+      </div>
+    );
+    shallow(
+      <div>
+        {toggleAnimationWrapper.find('ToggleAnimation').prop('children')({
+          isOpen: true,
+          toggle,
+          registerContentNode: jest.fn(),
+        })}
+      </div>
+    );
+  });
 
   it('should render a Collapsible component', () => {
-    expect(wrapper.find('Collapsible')).toHaveLength(1);
+    expect(wrapper).toRender('Collapsible');
   });
 
-  const toggle = jest.fn();
-  shallow(
-    wrapper.find('Collapsible').prop('children')({
-      isOpen: true,
-      toggle,
-    })
-  );
-
-  it('should call the render callback', () => {
-    expect(renderCallback).toHaveBeenCalled();
+  describe('Collapsible render callback', () => {
+    it('should render a ToggleAnimation component', () => {
+      expect(toggleAnimationWrapper).toRender('ToggleAnimation');
+    });
   });
 
-  it('should propagate the isOpen state', () => {
-    expect(renderCallback.mock.calls[0][0].isOpen).toBe(true);
-  });
+  describe('ToggleAnimation render callback', () => {
+    it('should call the render callback', () => {
+      expect(renderCallback).toHaveBeenCalled();
+    });
 
-  it('should provide a callback to register the content node', () => {
-    expect(typeof renderCallback.mock.calls[0][0].registerContentNode).toBe(
-      'function'
-    );
-  });
+    it('should propagate the isOpen state', () => {
+      expect(renderCallback.mock.calls[0][0].isOpen).toBe(true);
+    });
 
-  it('should propagate the toggle callback', () => {
-    renderCallback.mock.calls[0][0].registerContentNode(createMockNode());
-    renderCallback.mock.calls[0][0].toggle({});
+    it('should provide a callback to register the content node', () => {
+      expect(typeof renderCallback.mock.calls[0][0].registerContentNode).toBe(
+        'function'
+      );
+    });
 
-    expect(toggle).toHaveBeenCalled();
-  });
-
-  it('should provide the container styles', () => {
-    expect(typeof renderCallback.mock.calls[0][0].containerStyles).toBe(
-      'object'
-    );
+    it('should provide the container styles', () => {
+      expect(typeof renderCallback.mock.calls[0][0].containerStyles).toBe(
+        'object'
+      );
+    });
   });
 });
 
-describe('toggle', () => {
-  describe('is open', () => {
-    const renderCallback = jest.fn(() => <div />);
-    const wrapper = shallow(
-      <CollapsibleMotion>{renderCallback}</CollapsibleMotion>
+describe('ToggleAnimation', () => {
+  let renderCallback;
+  let props;
+  let wrapper;
+  const createTestProps = custom => ({
+    toggle: jest.fn(),
+    isOpen: true,
+    ...custom,
+  });
+  beforeEach(() => {
+    renderCallback = jest.fn();
+    props = createTestProps();
+    wrapper = shallow(
+      <ToggleAnimation {...props}>{renderCallback}</ToggleAnimation>
     );
-    const toggle = jest.fn();
-    const mockNode = createMockNode();
-
-    shallow(
-      wrapper.find('Collapsible').prop('children')({
-        isOpen: true,
-        toggle,
-      })
-    );
-
-    // simulate ref callback calling
-    renderCallback.mock.calls[0][0].registerContentNode(mockNode);
-    // simulate triggering the toggle
-    renderCallback.mock.calls[0][0].toggle();
-
-    it('should store (predict) that the panel is closed', () => {
-      expect(wrapper.instance().isOpen).toBe(false);
+  });
+  describe('when toggled', () => {
+    beforeEach(() => {
+      renderCallback.mock.calls[0][0].registerContentNode(createMockNode());
+      wrapper.instance().handleToggle();
+    });
+    it('should propagate the toggle callback', () => {
+      expect(props.toggle).toHaveBeenCalled();
     });
 
-    it('should set the full height', () => {
-      expect(wrapper.state()).toEqual({ fullHeight: 200 });
+    describe('is open', () => {
+      it('should set the full height', () => {
+        expect(wrapper.instance().fullHeight).toBe(200);
+      });
+    });
+
+    describe('is not open', () => {
+      beforeEach(() => {
+        renderCallback = jest.fn();
+        props = createTestProps({ isOpen: false });
+        wrapper = shallow(
+          <ToggleAnimation {...props}>{renderCallback}</ToggleAnimation>
+        );
+        renderCallback.mock.calls[0][0].registerContentNode(createMockNode());
+        wrapper.instance().handleToggle();
+      });
+
+      it('should set the full height to 200', () => {
+        expect(wrapper.instance().fullHeight).toBe(200);
+      });
     });
   });
 
-  describe('is not open', () => {
-    const renderCallback = jest.fn(() => <div />);
-    const wrapper = shallow(
-      <CollapsibleMotion>{renderCallback}</CollapsibleMotion>
-    );
-    const toggle = jest.fn();
-    const mockNode = createMockNode();
-    shallow(
-      wrapper.find('Collapsible').prop('children')({
-        isOpen: false,
-        toggle,
-      })
-    );
-
-    // simulate ref callback calling
-    renderCallback.mock.calls[0][0].registerContentNode(mockNode);
-    // simulate triggering the toggle
-    renderCallback.mock.calls[0][0].toggle();
-
-    it('should store (predict) that the panel is opened', () => {
-      expect(wrapper.instance().isOpen).toBe(true);
+  describe('componentWillReceiveProps', () => {
+    describe("when isOpen wasn't changed", () => {
+      beforeEach(() => {
+        wrapper.setProps({ foo: 'bar' });
+      });
+      it('should set no animation', () => {
+        expect(wrapper.instance().animation).toBe('');
+      });
     });
-
-    it('should set the full height to 200', () => {
-      expect(wrapper.state()).toEqual({ fullHeight: 200 });
+    describe('when isOpen was changed', () => {
+      beforeEach(() => {
+        wrapper.setProps({ isOpen: false });
+      });
+      it('should set no animation', () => {
+        expect(wrapper.instance().animation).not.toBe('');
+      });
     });
   });
 });
