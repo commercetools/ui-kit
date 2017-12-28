@@ -1,0 +1,43 @@
+@import '../../materials/spacings.mod.css';
+@import '../../materials/colors.mod.css';
+@import '../../materials/sizes.mod.css';
+@import '../../materials/transitions.mod.css';
+@import '../../materials/shadows.mod.css';
+@import './toggle-bar.mod.css';
+@import './toggle-button.mod.css';
+
+:root {
+  --big-toggle-height: var(--standard-input-height);
+  --big-toggle-width: calc(var(--big-toggle-height) * 2);
+  --small-toggle-height: calc(var(--big-toggle-height) / 2);
+  --small-toggle-width: calc(var(--small-toggle-height) * 2);
+}
+
+.inputWrapper {
+  display: none;
+}
+
+.labelWrapper {
+  cursor: pointer;
+}
+
+.labelWrapperDisabled {
+  cursor: not-allowed;
+}
+
+/* --- CONTAINER --- */
+.toggle-container {
+  position: relative;
+}
+
+.toggle-container-small {
+  composes: toggle-container;
+  width: var(--small-toggle-width);
+  height: var(--small-toggle-height);
+}
+
+.toggle-container-big {
+  composes: toggle-container;
+  width: var(--big-toggle-width);
+  height: var(--big-toggle-height);
+}

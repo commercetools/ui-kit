@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToggleBar> rendering structure outputs correct tree 1`] = `
+<test-file-stub
+  className="toggle-bar-big"
+  isChecked={false}
+  isDisabled={false}
+  isMouseOver={false}
+  size="big"
+/>
+`;
+
+exports[`<ToggleButton> rendering structure outputs correct tree 1`] = `
+<test-file-stub
+  className="toggle-button-big"
+  isChecked={false}
+  isDisabled={false}
+  isMouseOver={false}
+  size="big"
+/>
+`;
+
+exports[`<ToggleSwitch> rendering structure outputs correct tree 1`] = `
+<div
+  className="toggle-container-big"
+>
+  <ToggleButton
+    isChecked={false}
+    isDisabled={false}
+    isMouseOver={false}
+    size="big"
+  />
+  <ToggleBar
+    isChecked={false}
+    isDisabled={false}
+    isMouseOver={false}
+    size="big"
+  />
+</div>
+`;

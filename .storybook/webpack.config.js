@@ -19,7 +19,7 @@ module.exports = {
         use: [
           'babel-loader',
           {
-            loader: 'svgr/lib/webpack',
+            loader: 'svgr/webpack',
             options: {
               icon: true,
             },

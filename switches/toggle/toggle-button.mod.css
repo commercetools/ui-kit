@@ -1,0 +1,70 @@
+@import '../../materials/colors.mod.css';
+@import '../../materials/sizes.mod.css';
+@import '../../materials/transitions.mod.css';
+@import '../../materials/shadows.mod.css';
+
+:root {
+  --big-button-height: var(--standard-input-height);
+  --big-button-width: var(--big-button-height);
+  --small-button-height: calc(var(--big-button-height) / 2);
+  --small-button-width: var(--small-button-height);
+}
+
+.toggle-button {
+  position: absolute;
+  z-index: 1;
+  filter: drop-shadow(var(--drop-shadow-1-first))
+    drop-shadow(var(--drop-shadow-1-second));
+  transition: var(--transition-standard);
+}
+
+.toggle-button :global(.bt-fill) {
+  transition: var(--transition-standard);
+}
+
+.toggle-button-small {
+  composes: toggle-button;
+  width: var(--small-button-width);
+  height: var(--small-button-height);
+}
+
+.toggle-button-big {
+  composes: toggle-button;
+  width: var(--big-button-width);
+  height: var(--big-button-height);
+}
+
+.toggle-button.active {
+  /* The extra 7% shifts the button to the right by about 2px for big and 1px for small */
+  transform: translateX(107%);
+  filter: drop-shadow(var(--drop-shadow-2));
+}
+
+.toggle-button.active :global(.bt-fill) {
+  fill: var(--color-buttonPrimary);
+}
+
+.toggle-button.disabled {
+  filter: drop-shadow(var(--drop-shadow-3));
+}
+
+.toggle-button.disabled :global(.bt-fill) {
+  fill: var(--color-coolGrey);
+}
+
+.toggle-button.disabled.active {
+  filter: drop-shadow(var(--drop-shadow-4));
+}
+
+.toggle-button.disabled.active :global(.bt-fill) {
+  fill: var(--color-greenLight);
+}
+
+.toggle-button:hover {
+  filter: drop-shadow(var(--drop-shadow-5-first))
+    drop-shadow(var(--drop-shadow-5-second));
+}
+
+.toggle-button:hover.disabled {
+  filter: none;
+}
