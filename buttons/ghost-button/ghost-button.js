@@ -40,7 +40,7 @@ const GhostButton = props => {
 };
 
 GhostButton.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  label: PropTypes.string.isRequired,
   iconLeft: PropTypes.node,
   isToggleButton: PropTypes.bool.isRequired,
   isToggled(props, propName, componentName, ...rest) {
