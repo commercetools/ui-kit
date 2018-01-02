@@ -12,7 +12,6 @@ const getStateClassNames = (baseClass, size, isDisabled, isChecked) =>
 
 export const ToggleButton = props => (
   <Icons.ButtonDefault
-    {...props}
     className={getStateClassNames(
       'toggle-button',
       props.size,
@@ -24,7 +23,6 @@ export const ToggleButton = props => (
 
 export const ToggleBar = props => (
   <Icons.BarDefault
-    {...props}
     className={getStateClassNames(
       'toggle-bar',
       props.size,
