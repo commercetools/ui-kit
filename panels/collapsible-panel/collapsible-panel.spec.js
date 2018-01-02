@@ -1,100 +1,76 @@
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
-import Collapsible from '../../collapsible';
-import CollapsiblePanel, {
-  ControlledCollapsiblePanel,
-  UncontrolledCollapsiblePanel,
-} from './collapsible-panel';
+import CollapsiblePanel from './collapsible-panel';
 
 describe('CollapsiblePanel', () => {
-  describe('when used as a controlled component', () => {
-    it('should render ControlledCollapsiblePanel', () => {
-      const wrapper = shallow(
-        <CollapsiblePanel label="hi" onToggle={() => {}} isClosed={true}>
-          foo
-        </CollapsiblePanel>
-      );
-      expect(wrapper).toRender(ControlledCollapsiblePanel);
-    });
-  });
-  describe('when used as an uncontrolled component', () => {
-    it('should render UncontrolledCollapsiblePanel', () => {
-      const wrapper = shallow(
-        <CollapsiblePanel label="hi" isDefaultClosed={false}>
-          foo
-        </CollapsiblePanel>
-      );
-      expect(wrapper).toRender(UncontrolledCollapsiblePanel);
-    });
-  });
-});
-
-describe('ControlledCollapsiblePanel', () => {
   const createTestProps = props => ({
     className: 'custom-container',
     label: 'Header Title',
-    isClosed: false,
     isDisabled: false,
-    onToggle: jest.fn(),
     ...props,
   });
 
   describe('rendering', () => {
     let props;
     let wrapper;
+    let collapsibleMotionWrapper;
     describe('base elements', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(
-          <ControlledCollapsiblePanel {...props}>
+          <CollapsiblePanel {...props}>
             <span id="foo">{'Foo'}</span>
-          </ControlledCollapsiblePanel>
+          </CollapsiblePanel>
+        );
+        collapsibleMotionWrapper = shallow(
+          wrapper.find('CollapsibleMotion').prop('children')({})
         );
       });
 
+      it('should render CollapsibleMotion', () => {
+        expect(wrapper).toRender('CollapsibleMotion');
+      });
+
       it('should apply custom container class name', () => {
-        expect(wrapper).toHaveClassName('custom-container');
+        expect(collapsibleMotionWrapper).toHaveClassName(props.className);
       });
 
       it('should render title in header container', () => {
-        expect(wrapper).toRender('TextHeadline');
+        expect(collapsibleMotionWrapper).toRender('TextHeadline');
       });
 
       describe('when sticky mode is enabled', () => {
         beforeEach(() => {
           props = createTestProps({ isSticky: true });
           wrapper = shallow(
-            <ControlledCollapsiblePanel {...props}>
+            <CollapsiblePanel {...props}>
               <span id="foo">{'Foo'}</span>
-            </ControlledCollapsiblePanel>
+            </CollapsiblePanel>
+          );
+          collapsibleMotionWrapper = shallow(
+            wrapper.find('CollapsibleMotion').prop('children')({
+              isOpen: true,
+            })
           );
         });
 
         it('should apply a sticky class name to the header container', () => {
-          expect(wrapper).toRender('.sticky');
+          expect(collapsibleMotionWrapper).toRender('.sticky');
         });
       });
 
-      it('should render tracking info', () => {
-        expect(
-          wrapper
-            .find('TextHeadline')
-            .map(node => node.props()['data-track-component'])
-        ).toEqual(['CollapsiblePanel']);
-      });
-
       it('should render `HeaderIcon`', () => {
-        expect(wrapper).toRender('HeaderIcon');
+        expect(collapsibleMotionWrapper).toRender('HeaderIcon');
       });
 
-      it('should render header title', () => {
-        expect(wrapper.find('TextHeadline').contains('Header Title')).toBe(
-          true
-        );
+      it('should contain header title', () => {
+        expect(
+          collapsibleMotionWrapper.find('TextHeadline').contains('Header Title')
+        ).toBe(true);
       });
 
-      it('should render children', () => {
-        expect(wrapper.find('#foo').text()).toBe('Foo');
+      it('children should contain text', () => {
+        expect(collapsibleMotionWrapper.find('#foo').text()).toBe('Foo');
       });
     });
 
@@ -104,38 +80,79 @@ describe('ControlledCollapsiblePanel', () => {
           headerControls: <span id="controls" />,
         });
         wrapper = shallow(
-          <ControlledCollapsiblePanel {...props}>
+          <CollapsiblePanel {...props}>
             <span id="foo">{'Foo'}</span>
-          </ControlledCollapsiblePanel>
+          </CollapsiblePanel>
+        );
+        collapsibleMotionWrapper = shallow(
+          wrapper.find('CollapsibleMotion').prop('children')({})
         );
       });
 
       it('should render controls container', () => {
-        expect(wrapper.find('#controls')).toHaveLength(1);
+        expect(collapsibleMotionWrapper).toRender('#controls');
       });
     });
   });
 
   describe('interacting', () => {
-    describe('when enabled', () => {
+    describe('when controlled', () => {
       let props;
       let wrapper;
+      let collapsibleMotionWrapper;
       beforeEach(() => {
         props = createTestProps({
           isDisabled: false,
+          isClosed: true,
           onToggle: jest.fn(),
         });
         wrapper = shallow(
-          <ControlledCollapsiblePanel {...props}>
+          <CollapsiblePanel {...props}>
             <span id="foo">{'Foo'}</span>
-          </ControlledCollapsiblePanel>
+          </CollapsiblePanel>
         );
-
-        wrapper.instance().handleToggle();
+        collapsibleMotionWrapper = shallow(
+          wrapper.find('CollapsibleMotion').prop('children')({
+            toggle: props.onToggle,
+          })
+        );
+        collapsibleMotionWrapper
+          .find({ className: 'header' })
+          .simulate('click');
       });
 
-      it('should invoke `onToggle`', () => {
+      it('should invoke `onToggle` from Collapsiblepanel props', () => {
         expect(props.onToggle).toHaveBeenCalled();
+      });
+    });
+
+    describe('when uncontrolled', () => {
+      let props;
+      let wrapper;
+      let collapsibleMotionWrapper;
+      let collapsibleInternalToggleFunc;
+      beforeEach(() => {
+        props = createTestProps({
+          isDisabled: false,
+        });
+        collapsibleInternalToggleFunc = jest.fn();
+        wrapper = shallow(
+          <CollapsiblePanel {...props}>
+            <span id="foo">{'Foo'}</span>
+          </CollapsiblePanel>
+        );
+        collapsibleMotionWrapper = shallow(
+          wrapper.find('CollapsibleMotion').prop('children')({
+            toggle: collapsibleInternalToggleFunc,
+          })
+        );
+        collapsibleMotionWrapper
+          .find({ className: 'header' })
+          .simulate('click');
+      });
+
+      it('should invoke `onToggle` from Collapsible', () => {
+        expect(collapsibleInternalToggleFunc).toHaveBeenCalled();
       });
     });
 
@@ -145,12 +162,13 @@ describe('ControlledCollapsiblePanel', () => {
       beforeEach(() => {
         props = createTestProps({
           isDisabled: true,
+          isClosed: false,
           onToggle: jest.fn(),
         });
         wrapper = shallow(
-          <ControlledCollapsiblePanel {...props}>
+          <CollapsiblePanel {...props}>
             <span id="foo">{'Foo'}</span>
-          </ControlledCollapsiblePanel>
+          </CollapsiblePanel>
         );
 
         wrapper.instance().handleToggle();
@@ -159,87 +177,6 @@ describe('ControlledCollapsiblePanel', () => {
       it('should not invoke `onToggle`', () => {
         expect(props.onToggle).not.toHaveBeenCalled();
       });
-    });
-  });
-
-  describe('callbacks', () => {
-    describe('when toggling', () => {
-      describe('when enabled', () => {
-        let props;
-        let wrapper;
-        beforeEach(() => {
-          props = createTestProps({ onToggle: jest.fn() });
-          wrapper = shallow(
-            <ControlledCollapsiblePanel {...props}>
-              <span id="foo">{'Foo'}</span>
-            </ControlledCollapsiblePanel>
-          );
-          wrapper.find('.header').simulate('click');
-        });
-
-        it('should invoke `onToggle`', () => {
-          expect(props.onToggle).toHaveBeenCalledTimes(1);
-        });
-      });
-    });
-
-    describe('when disabled', () => {
-      describe('toggle panel (disabled)', () => {
-        let props;
-        let wrapper;
-        beforeEach(() => {
-          props = createTestProps({ isDisabled: true });
-          wrapper = shallow(
-            <ControlledCollapsiblePanel {...props}>
-              <span id="foo">{'Foo'}</span>
-            </ControlledCollapsiblePanel>
-          );
-
-          wrapper.find('.header').prop('onClick')();
-        });
-
-        it('should not invoke `onToggle`', () => {
-          expect(props.onToggle).not.toHaveBeenCalled();
-        });
-      });
-    });
-  });
-});
-
-describe('UncontrolledCollapsiblePanel', () => {
-  describe('rendering', () => {
-    const wrapper = mount(
-      <UncontrolledCollapsiblePanel label="foo">
-        <div id="child" />
-      </UncontrolledCollapsiblePanel>
-    );
-
-    it('should render Collapsible', () => {
-      expect(wrapper).toRender(Collapsible);
-    });
-
-    it('should render ControlledCollapsiblePanel', () => {
-      expect(wrapper).toRender(ControlledCollapsiblePanel);
-    });
-
-    it('should render children', () => {
-      expect(wrapper).toRender('#child');
-    });
-  });
-
-  describe('when closed by default', () => {
-    const wrapper = shallow(
-      <UncontrolledCollapsiblePanel label="foo" isDefaultClosed={true}>
-        <div />
-      </UncontrolledCollapsiblePanel>
-    );
-
-    it('should render a closed `Collapsible`', () => {
-      expect(wrapper).toRender(Collapsible);
-    });
-
-    it('should pass through `isDefaultClosed` prop``', () => {
-      expect(wrapper.find(Collapsible)).toHaveProp('isDefaultClosed', true);
     });
   });
 });
