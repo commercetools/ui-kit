@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { FilterIcon } from '../../icons';
-import { SecondaryButton } from './secondary-button';
+import { SecondaryButton, getIconThemeColor } from './secondary-button';
 
 const createProps = custom => ({
   label: '',
@@ -142,6 +142,10 @@ describe('rendering', () => {
         it('should overwrite the Icon theme to be the same color as button', () => {
           expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'blue');
         });
+
+        it('should return `blue` color as a theme class', () => {
+          expect(getIconThemeColor(props)).toBe('blue');
+        });
       });
       describe('when mouse down', () => {
         beforeEach(() => {
@@ -262,8 +266,9 @@ describe('rendering', () => {
     });
     describe('when is disabled', () => {
       let wrapper;
+      let props;
       beforeEach(() => {
-        const props = createProps({ isDisabled: true });
+        props = createProps({ isDisabled: true });
         wrapper = shallow(<SecondaryButton {...props} />);
       });
       it('should render the button in the disabled state', () => {
@@ -271,6 +276,9 @@ describe('rendering', () => {
       });
       it('should pass the isToggled prop to AccessibleButton', () => {
         expect(wrapper.find('AccessibleButton').prop('isDisabled')).toBe(true);
+      });
+      it('should return `grey` color as a theme class', () => {
+        expect(getIconThemeColor(props)).toBe('grey');
       });
     });
     describe('when is toggle', () => {
