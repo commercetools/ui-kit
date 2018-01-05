@@ -142,10 +142,6 @@ describe('rendering', () => {
         it('should overwrite the Icon theme to be the same color as button', () => {
           expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'blue');
         });
-
-        it('should return `blue` color as a theme class', () => {
-          expect(getIconThemeColor(props)).toBe('blue');
-        });
       });
       describe('when mouse down', () => {
         beforeEach(() => {
@@ -277,9 +273,6 @@ describe('rendering', () => {
       it('should pass the isToggled prop to AccessibleButton', () => {
         expect(wrapper.find('AccessibleButton').prop('isDisabled')).toBe(true);
       });
-      it('should return `grey` color as a theme class', () => {
-        expect(getIconThemeColor(props)).toBe('grey');
-      });
     });
     describe('when is toggle', () => {
       let wrapper;
@@ -341,6 +334,34 @@ describe('interaction', () => {
     });
     it('should propagate `linkTo` to the `Link`', () => {
       expect(wrapper.find('Link')).toHaveProp('to', '/foo/bar');
+    });
+  });
+});
+
+describe('utils', () => {
+  describe('getIconThemeColor', () => {
+    describe('when is toggled', () => {
+      let props;
+      beforeEach(() => {
+        props = createProps({
+          theme: 'blue',
+          isToggled: true,
+          isToggleButton: true,
+          iconLeft: <FilterIcon theme="red" />,
+        });
+      });
+      it('should return `blue` color as a theme class', () => {
+        expect(getIconThemeColor(props)).toBe('blue');
+      });
+    });
+    describe('when is disabled', () => {
+      let props;
+      beforeEach(() => {
+        props = createProps({ isDisabled: true });
+      });
+      it('should return `grey` color as a theme class', () => {
+        expect(getIconThemeColor(props)).toBe('grey');
+      });
     });
   });
 });
