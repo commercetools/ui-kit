@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { FilterIcon } from '../../icons';
-import { SecondaryButton } from './secondary-button';
+import { SecondaryButton, getIconThemeColor } from './secondary-button';
 
 const createProps = custom => ({
   label: '',
@@ -262,8 +262,9 @@ describe('rendering', () => {
     });
     describe('when is disabled', () => {
       let wrapper;
+      let props;
       beforeEach(() => {
-        const props = createProps({ isDisabled: true });
+        props = createProps({ isDisabled: true });
         wrapper = shallow(<SecondaryButton {...props} />);
       });
       it('should render the button in the disabled state', () => {
@@ -333,6 +334,34 @@ describe('interaction', () => {
     });
     it('should propagate `linkTo` to the `Link`', () => {
       expect(wrapper.find('Link')).toHaveProp('to', '/foo/bar');
+    });
+  });
+});
+
+describe('utils', () => {
+  describe('getIconThemeColor', () => {
+    describe('when is toggled', () => {
+      let props;
+      beforeEach(() => {
+        props = createProps({
+          theme: 'blue',
+          isToggled: true,
+          isToggleButton: true,
+          iconLeft: <FilterIcon theme="red" />,
+        });
+      });
+      it('should return `blue` color as a theme class', () => {
+        expect(getIconThemeColor(props)).toBe('blue');
+      });
+    });
+    describe('when is disabled', () => {
+      let props;
+      beforeEach(() => {
+        props = createProps({ isDisabled: true });
+      });
+      it('should return `grey` color as a theme class', () => {
+        expect(getIconThemeColor(props)).toBe('grey');
+      });
     });
   });
 });
