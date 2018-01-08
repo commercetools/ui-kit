@@ -25,11 +25,6 @@ export class Checkbox extends React.PureComponent {
     isChecked: false,
   };
 
-  handleChange = () => {
-    if (this.props.isChecked) this.props.onChange();
-    else this.props.onChange(this.props.value);
-  };
-
   render() {
     return (
       <div
@@ -66,7 +61,7 @@ export class Checkbox extends React.PureComponent {
               className={styles.inputWrapper}
               name={this.props.name}
               value={this.props.value}
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               disabled={this.props.isDisabled}
               checked={this.props.isChecked}
               type="checkbox"
