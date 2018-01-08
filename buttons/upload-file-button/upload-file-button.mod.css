@@ -1,0 +1,37 @@
+@import '../../materials/borders.mod.css';
+@import '../../materials/colors.mod.css';
+@import '../../materials/shadows.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/sizes.mod.css';
+@import '../../materials/transitions.mod.css';
+
+/** Button */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-white);
+  background-color: var(--color-buttonPrimary);
+  transition: background-color var(--transition-linear-80ms);
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  padding: 0 var(--spacing-16);
+  height: var(--big-button-height);
+  border-radius: var(--border-radius-6);
+}
+
+.button:hover,
+.button:focus {
+  cursor: pointer;
+  background-color: var(--color-greenDowny);
+  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+}
+
+.button:active {
+  box-shadow: inset var(--shadow-7-first), inset var(--shadow-7-second);
+}
+
+.input {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
