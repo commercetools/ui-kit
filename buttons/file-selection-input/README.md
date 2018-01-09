@@ -20,13 +20,13 @@ File selection buttons are similar to primary action buttons, but they are essen
 
 #### Properties
 
-| Props        | Type      | Required | Values | Default | Description                               |
-| ------------ | --------- | :------: | ------ | ------- | ----------------------------------------- |
-| `onChange`   | `func`    |    ✅    | -      | -       | What the button will trigger when clicked |
-| `children`   | `node`    |    ✅    | -      | -       | Renders as button's text                  |
-| `acceptTypes` | `string` |    ✅    | -      | `image/png,image/jpeg,image/gif` | Renders as HTML `accept` property |
-| `name`       | `string`  |    -     | -      |         | Used as HTML `name` property              |
-| `allowMultiple` | `boolean` |    -     | -      | `false` | Allows multiple files upload              |
+| Props           | Type      | Required | Values | Default                          | Description                                             |
+| --------------- | --------- | :------: | ------ | -------------------------------- | ------------------------------------------------------- |
+| `onChange`      | `func`    |    ✅    | -      | -                                | What the button will trigger after user selects file(s) |
+| `children`      | `node`    |    ✅    | -      | -                                | Renders as button's text                                |
+| `acceptTypes`   | `string`  |    ✅    | -      | `image/png,image/jpeg,image/gif` | Renders as HTML `accept` property                       |
+| `name`          | `string`  |    -     | -      |                                  | Used as HTML `name` property                            |
+| `allowMultiple` | `boolean` |    -     | -      | `false`                          | Allows multiple files upload                            |
 
 #### Where to use
 

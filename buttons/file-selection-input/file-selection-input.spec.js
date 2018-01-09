@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import FileSelectionInput from './file-selection-input';
 
 const createProps = custom => ({
-  onChange: () => {},
+  onChange: jest.fn(),
   children: '',
   ...custom,
 });
@@ -68,6 +68,10 @@ describe('callbacks', () => {
 
       it('should call the onChange callback', () => {
         expect(props.onChange).toHaveBeenCalledTimes(1);
+      });
+
+      it('should call the onChange callback with event', () => {
+        expect(props.onChange).toHaveBeenCalledWith({ target: { files: ['bar'] } });
       });
     });
   });
