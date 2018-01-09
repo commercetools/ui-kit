@@ -2,18 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './numeric-input.mod.css';
 
-function calculateValue(props) {
-  if (props.maxValue || props.minValue) {
-    if (parseInt(props.value, 10) > props.maxValue) {
-      return props.maxValue;
-    }
-    if (parseInt(props.value, 10) < props.minValue) {
-      return props.minValue;
-    }
-  }
-  return props.value;
-}
-
 const getStyles = props => {
   if (props.isReadOnly) return styles.readonly;
   if (props.isDisabled) return styles.disabled;
@@ -28,10 +16,10 @@ const NumericInput = props => (
     <input
       name={props.name}
       type="number"
-      value={calculateValue(props)}
-      min={props.minValue}
-      max={props.maxValue}
-      step={props.stepValue}
+      value={props.value}
+      min={props.min}
+      max={props.max}
+      step={props.step}
       onChange={props.onChange}
       onBlur={props.onBlur}
       onFocus={props.onFocus}
@@ -53,9 +41,9 @@ NumericInput.displayName = 'NumericInput';
 NumericInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
-  minValue: PropTypes.string,
-  maxValue: PropTypes.string,
-  stepValue: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,

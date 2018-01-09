@@ -18,9 +18,9 @@ import NumericInput from '@commercetools-local/ui-kit/inputs/numeric-input';
 | ---------------- | -------- | :------: | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `name`           | `string` |    ✅    | -      | -       | Used as HTML `name` property                                                                                             |
 | `value`          | `string` |    ✅    | -      | -       | Value of the input. This is a string as the parent is responsible for converting it into a number.                       |
-| `minValue`       | `string` |    ✅    | -      | -       | Specifies a minimum value that the field can have                                                                        |
-| `maxValue`       | `string` |    ✅    | -      | -       | Specifies a maximum value that the field can have                                                                        |
-| `stepValue`      | `string` |    ✅    | -      | -       | Displays up and down step arrows which will increase and decrease the value by the provided `stepValue` amount each time |
+| `min`            | `number` |          | -      | -       | Value is used as `min` property on input field |
+| `max`            | `number` |          | -      | -       | Value is used as `max` property on input field |
+| `step`           | `number` |          | -      | -       | Value is used as `step` property on input field |
 | `onChange`       | `func`   |    ✅    | -      | -       | Called with the new value. Parent should pass it back as `value`                                                         |
 | `onBlur`         | `func`   |    -     | -      | -       | Called when field is blurred                                                                                             |
 | `onFocus`        | `func`   |    -     | -      | -       | Called when field is focused                                                                                             |
