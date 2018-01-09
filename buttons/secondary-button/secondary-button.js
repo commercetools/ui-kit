@@ -24,7 +24,7 @@ const getStateClassNames = (isDisabled, isToggled) =>
   });
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
-const getIconThemeColor = props => {
+export const getIconThemeColor = props => {
   // if button has a theme, icon should be the same color as the theme on hover/active states
   if (
     props.theme !== 'default' &&
@@ -32,7 +32,7 @@ const getIconThemeColor = props => {
   )
     return props.theme; // returns the passed in theme without overwriting
   // if button is disabled, icon should be grey
-  if (props.isDisabled && !props.isToggled) return 'grey';
+  if (props.isDisabled) return 'grey';
   // if button is not disabled nor has a theme, return icon's default color
   return props.iconLeft.props.theme;
 };

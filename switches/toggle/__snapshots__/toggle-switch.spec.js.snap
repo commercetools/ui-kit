@@ -3,20 +3,12 @@
 exports[`<ToggleBar> rendering structure outputs correct tree 1`] = `
 <test-file-stub
   className="toggle-bar-big"
-  isChecked={false}
-  isDisabled={false}
-  isMouseOver={false}
-  size="big"
 />
 `;
 
 exports[`<ToggleButton> rendering structure outputs correct tree 1`] = `
 <test-file-stub
   className="toggle-button-big"
-  isChecked={false}
-  isDisabled={false}
-  isMouseOver={false}
-  size="big"
 />
 `;
 
