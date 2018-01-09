@@ -67,14 +67,6 @@
   opacity: 1; /* fix for mobile safari */
 }
 
-.loading {
-  composes: input;
-  color: var(--color-primaryGrey);
-  border-color: var(--color-primaryGrey);
-  background-color: var(--color-white);
-  pointer-events: none;
-}
-
 .readonly {
   composes: input;
   color: var(--color-greyNevada);

@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Spacings from '../../materials/spacings';
-import LoadingSpinner from '../../loading-spinner';
 import styles from './numeric-input.mod.css';
 
 function calculateValue(props) {
@@ -19,7 +17,6 @@ function calculateValue(props) {
 const getStyles = props => {
   if (props.isReadOnly) return styles.readonly;
   if (props.isDisabled) return styles.disabled;
-  if (props.isLoading) return styles.loading;
   if (props.hasError) return styles.error;
   if (props.hasWarning) return styles.warning;
 
@@ -48,13 +45,6 @@ const NumericInput = props => (
       role="textbox"
       contentEditable={!props.isReadOnly}
     />
-    {props.isLoading && (
-      <div className={styles.spinner}>
-        <Spacings.InsetSquish>
-          <LoadingSpinner scale="s" />
-        </Spacings.InsetSquish>
-      </div>
-    )}
   </div>
 );
 
@@ -71,7 +61,6 @@ NumericInput.propTypes = {
   onFocus: PropTypes.func,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
-  isLoading: PropTypes.bool,
   isAutofocussed: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,

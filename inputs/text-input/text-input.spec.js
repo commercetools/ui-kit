@@ -80,24 +80,6 @@ describe('rendering', () => {
           expect(input).toHaveClassName('disabled');
         });
       });
-      describe('loading', () => {
-        let wrapper;
-        beforeEach(() => {
-          const props = createTestProps({
-            isLoading: true,
-          });
-          wrapper = shallow(<TextInput {...props} />);
-          input = wrapper.children().at(0);
-        });
-
-        it('should have class for the loading state', () => {
-          expect(input).toHaveClassName('loading');
-        });
-
-        it('should render loading spinner', () => {
-          expect(wrapper).toRender('LoadingSpinner');
-        });
-      });
       describe('readonly', () => {
         let wrapper;
         beforeEach(() => {

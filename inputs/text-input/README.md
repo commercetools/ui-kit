@@ -26,7 +26,6 @@ import TextInput from '@commercetools-local/ui-kit/inputs/text-input';
 | `hasError`       | `bool`   |    -     | -      | -       | Indicates the input field has an error                                             |
 | `isAutofocussed` | `bool`   |    -     | -      | -       | Focus the input field on initial render                                            |
 | `isDisabled`     | `bool`   |    -     | -      | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved) |
-| `isLoading`      | `bool`   |    -     | -      | `false` | Shows a loading spinner.                                                           |
 | `isReadOnly`     | `bool`   |    -     | -      | `false` | Indicates that the field is displaying read-only content                           |
 | `placeholder`    | `string` |    -     | -      | -       | Placeholder text for the input                                                     |
 

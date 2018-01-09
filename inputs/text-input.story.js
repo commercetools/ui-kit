@@ -21,7 +21,6 @@ storiesOf('Forms/Inputs', module)
         onChange={action('onChange')}
         isAutofocussed={boolean('isAutofocussed', false)}
         isDisabled={boolean('isDisabled', false)}
-        isLoading={boolean('isLoading', false)}
         isReadOnly={boolean('isReadOnly', false)}
         hasError={boolean('hasError', false)}
         hasWarning={boolean('hasWarning', false)}
@@ -44,7 +43,6 @@ storiesOf('Forms/Inputs', module)
             stepValue={text('stepValue', '')}
             isAutofocussed={boolean('isAutofocussed', false)}
             isDisabled={boolean('isDisabled', false)}
-            isLoading={boolean('isLoading', false)}
             isReadOnly={boolean('isReadOnly', false)}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}

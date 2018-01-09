@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Spacings from '../../materials/spacings';
-import LoadingSpinner from '../../loading-spinner';
 import styles from './text-input.mod.css';
 
 const getStyles = props => {
   if (props.isReadOnly) return styles.readonly;
   if (props.isDisabled) return styles.disabled;
-  if (props.isLoading) return styles.loading;
   if (props.hasError) return styles.error;
   if (props.hasWarning) return styles.warning;
 
@@ -33,13 +30,6 @@ const TextInput = props => (
       role="textbox"
       contentEditable={!props.isReadOnly}
     />
-    {props.isLoading && (
-      <div className={styles.spinner}>
-        <Spacings.InsetSquish>
-          <LoadingSpinner scale="s" />
-        </Spacings.InsetSquish>
-      </div>
-    )}
   </div>
 );
 
@@ -54,7 +44,6 @@ TextInput.propTypes = {
   isAutofocussed: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
-  isLoading: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
