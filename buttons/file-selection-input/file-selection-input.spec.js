@@ -14,7 +14,7 @@ describe('rendering', () => {
     let wrapper;
     let wrapperFileSelectionInput;
     beforeEach(() => {
-      props = createProps({ children: 'foo' });
+      props = createProps({ children: 'foo', name: 'bar' });
       wrapperFileSelectionInput = shallow(
         <div>
           <FileSelectionInput {...props} />
@@ -25,6 +25,10 @@ describe('rendering', () => {
 
     it('should render label wrapper', () => {
       expect(wrapper).toRender('label');
+    });
+
+    it('input should have correct `name` prop', () => {
+      expect(wrapper.find('input')).toHaveProp('name', 'bar');
     });
 
     it('should have correct text', () => {
