@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import UploadFileButton from './upload-file-button';
+import FileSelectionInput from './file-selection-input';
 
 const createProps = custom => ({
   onChange: () => {},
@@ -12,15 +12,15 @@ describe('rendering', () => {
   describe('structure', () => {
     let props;
     let wrapper;
-    let wrapperUploadFileButton;
+    let wrapperFileSelectionInput;
     beforeEach(() => {
       props = createProps({ children: 'foo' });
-      wrapperUploadFileButton = shallow(
+      wrapperFileSelectionInput = shallow(
         <div>
-          <UploadFileButton {...props} />
+          <FileSelectionInput {...props} />
         </div>
       );
-      wrapper = shallow(<UploadFileButton {...props} />);
+      wrapper = shallow(<FileSelectionInput {...props} />);
     });
 
     it('should render label wrapper', () => {
@@ -32,7 +32,7 @@ describe('rendering', () => {
     });
 
     it('should have `isMultiple` prop defined as false', () => {
-      expect(wrapperUploadFileButton.find('UploadFileButton')).toHaveProp(
+      expect(wrapperFileSelectionInput.find('FileSelectionInput')).toHaveProp(
         'isMultiple',
         false
       );
@@ -41,14 +41,14 @@ describe('rendering', () => {
 });
 
 describe('callbacks', () => {
-  describe('of `<UploadFileButton />`', () => {
+  describe('of `<FileSelectionInput />`', () => {
     describe('onChange', () => {
       let props;
       let wrapper;
 
       beforeEach(() => {
         props = createProps({ onChange: jest.fn() });
-        wrapper = shallow(<UploadFileButton {...props} />);
+        wrapper = shallow(<FileSelectionInput {...props} />);
 
         wrapper
           .find('input')

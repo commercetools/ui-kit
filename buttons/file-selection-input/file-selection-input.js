@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './upload-file-button.mod.css';
+import styles from './file-selection-input.mod.css';
 
-const UploadFileButton = props => (
+const FileSelectionInput = props => (
   <label>
     <span className={styles.button}>
       <input
@@ -17,13 +17,13 @@ const UploadFileButton = props => (
   </label>
 );
 
-UploadFileButton.displayName = 'UploadFileButton';
-UploadFileButton.propTypes = {
+FileSelectionInput.displayName = 'FileSelectionInput';
+FileSelectionInput.propTypes = {
   children: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   isMultiple: PropTypes.bool,
 };
-UploadFileButton.defaultProps = {
+FileSelectionInput.defaultProps = {
   isMultiple: false,
 };
-export default UploadFileButton;
+export default FileSelectionInput;
