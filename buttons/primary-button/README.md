@@ -1,4 +1,4 @@
-# Buttons: Ghost Button
+# Buttons: Primary Button
 
 ## Usage
 

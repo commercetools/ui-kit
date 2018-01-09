@@ -60,11 +60,11 @@
   fill: var(--color-greenLight);
 }
 
-.toggle-button:hover {
+.toggle-container:hover .toggle-button {
   filter: drop-shadow(var(--drop-shadow-5-first))
     drop-shadow(var(--drop-shadow-5-second));
 }
 
-.toggle-button:hover.disabled {
+.toggle-container:hover.disabled .toggle-button {
   filter: none;
 }
