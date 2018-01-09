@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './file-selection-input.mod.css';
+import styles from './file-input.mod.css';
 
-const FileSelectionInput = props => (
+const FileInput = props => (
   <label>
     <span className={styles.button}>
       <input
@@ -18,16 +18,16 @@ const FileSelectionInput = props => (
   </label>
 );
 
-FileSelectionInput.displayName = 'FileSelectionInput';
-FileSelectionInput.propTypes = {
+FileInput.displayName = 'FileInput';
+FileInput.propTypes = {
   children: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   acceptTypes: PropTypes.string.isRequired,
   name: PropTypes.string,
   allowMultiple: PropTypes.bool,
 };
-FileSelectionInput.defaultProps = {
+FileInput.defaultProps = {
   allowMultiple: false,
   acceptTypes: 'image/png,image/jpeg,image/gif',
 };
-export default FileSelectionInput;
+export default FileInput;

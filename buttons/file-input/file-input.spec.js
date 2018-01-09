@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FileSelectionInput from './file-selection-input';
+import FileInput from './file-input';
 
 const createProps = custom => ({
   onChange: jest.fn(),
@@ -12,15 +12,15 @@ describe('rendering', () => {
   describe('structure', () => {
     let props;
     let wrapper;
-    let wrapperFileSelectionInput;
+    let wrapperFileInput;
     beforeEach(() => {
       props = createProps({ children: 'foo', name: 'bar' });
-      wrapperFileSelectionInput = shallow(
+      wrapperFileInput = shallow(
         <div>
-          <FileSelectionInput {...props} />
+          <FileInput {...props} />
         </div>
       );
-      wrapper = shallow(<FileSelectionInput {...props} />);
+      wrapper = shallow(<FileInput {...props} />);
     });
 
     it('should render label wrapper', () => {
@@ -34,7 +34,7 @@ describe('rendering', () => {
     it('should default `acceptTypes`', () => {
       expect(wrapper.find('input')).toHaveProp(
         'accept',
-        FileSelectionInput.defaultProps.acceptTypes
+        FileInput.defaultProps.acceptTypes
       );
     });
 
@@ -47,7 +47,7 @@ describe('rendering', () => {
     });
 
     it('should have `allowMultiple` prop defined as false', () => {
-      expect(wrapperFileSelectionInput.find('FileSelectionInput')).toHaveProp(
+      expect(wrapperFileInput.find('FileInput')).toHaveProp(
         'allowMultiple',
         false
       );
@@ -58,7 +58,7 @@ describe('rendering', () => {
       let wrapper;
       beforeEach(() => {
         const props = createProps({ children: 'foo', name: 'bar' });
-        wrapper = shallow(<FileSelectionInput {...props} />);
+        wrapper = shallow(<FileInput {...props} />);
       });
       it('should default `acceptTypes`', () => {
         expect(wrapper.find('input')).toHaveProp(
@@ -70,14 +70,14 @@ describe('rendering', () => {
   });
 });
 describe('callbacks', () => {
-  describe('of `<FileSelectionInput />`', () => {
+  describe('of `<FileInput />`', () => {
     describe('onChange', () => {
       let props;
       let wrapper;
 
       beforeEach(() => {
         props = createProps({ onChange: jest.fn() });
-        wrapper = shallow(<FileSelectionInput {...props} />);
+        wrapper = shallow(<FileInput {...props} />);
 
         wrapper
           .find('input')

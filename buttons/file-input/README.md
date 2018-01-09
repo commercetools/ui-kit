@@ -1,21 +1,21 @@
-# Inputs: File Selection Input
+# Inputs: File Input
 
 ## Usage
 
 ```js
-import FileSelectionInput from '@commercetools-local/ui-kit/buttons/file-selection-input';
+import FileInput from '@commercetools-local/ui-kit/buttons/file-input';
 ```
 
 #### Description
 
-File selection buttons are similar to primary action buttons, but they are essentially an input used to select files to be uploaded from the user's local machine.
+File selection inputs are similar to primary action buttons, but they are essentially an input used to select files to be uploaded from the user's local machine.
 
 #### Usage
 
 ```js
-<FileSelectionInput allowMultiple={true} onChange={this.handleChange}>
+<FileInput allowMultiple={true} onChange={this.handleChange}>
   <FormattedMessage {...messages.uploadImageText} />
-</FileSelectionInput>
+</FileInput>
 ```
 
 #### Properties
