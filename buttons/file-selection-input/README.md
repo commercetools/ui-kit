@@ -13,7 +13,7 @@ File selection buttons are similar to primary action buttons, but they are essen
 #### Usage
 
 ```js
-<FileSelectionInput isMultiple={true} onChange={this.handleChange}>
+<FileSelectionInput allowMultiple={true} onChange={this.handleChange}>
   <FormattedMessage {...messages.uploadImageText} />
 </FileSelectionInput>
 ```
@@ -24,7 +24,7 @@ File selection buttons are similar to primary action buttons, but they are essen
 | ------------ | --------- | :------: | ------ | ------- | ----------------------------------------- |
 | `onChange`   | `func`    |    ✅    | -      | -       | What the button will trigger when clicked |
 | `children`   | `node`    |    ✅    | -      | -       | Renders as button's text                  |
-| `isMultiple` | `boolean` |    -     | -      | `false` | Allows multiple files upload              |
+| `allowMultiple` | `boolean` |    -     | -      | `false` | Allows multiple files upload              |
 
 #### Where to use
 

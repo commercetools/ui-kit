@@ -31,9 +31,9 @@ describe('rendering', () => {
       expect(wrapper).toHaveText('foo');
     });
 
-    it('should have `isMultiple` prop defined as false', () => {
+    it('should have `allowMultiple` prop defined as false', () => {
       expect(wrapperFileSelectionInput.find('FileSelectionInput')).toHaveProp(
-        'isMultiple',
+        'allowMultiple',
         false
       );
     });

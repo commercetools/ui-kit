@@ -10,7 +10,7 @@ const FileSelectionInput = props => (
         type="file"
         accept="image/png,image/jpeg,image/gif"
         onChange={props.onChange}
-        multiple={props.isMultiple}
+        multiple={props.allowMultiple}
       />
       {props.children}
     </span>
@@ -21,9 +21,9 @@ FileSelectionInput.displayName = 'FileSelectionInput';
 FileSelectionInput.propTypes = {
   children: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
-  isMultiple: PropTypes.bool,
+  allowMultiple: PropTypes.bool,
 };
 FileSelectionInput.defaultProps = {
-  isMultiple: false,
+  allowMultiple: false,
 };
 export default FileSelectionInput;

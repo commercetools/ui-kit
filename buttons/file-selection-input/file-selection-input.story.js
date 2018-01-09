@@ -13,7 +13,7 @@ storiesOf('Inputs', module)
   .add('FileSelectionInput', () => (
     <Section>
       <FileSelectionInput
-        isMultiple={boolean('isMultiple', 'false')}
+        allowMultiple={boolean('allowMultiple', 'false')}
         onChange={action('onChange triggered')}
       >
         {text('children', 'Choose file...')}
