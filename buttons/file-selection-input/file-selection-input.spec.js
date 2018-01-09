@@ -31,11 +31,15 @@ describe('rendering', () => {
       expect(wrapper.find('input')).toHaveProp('name', 'bar');
     });
 
-    it('input should have correct `accept` prop value', () => {
+    it('should default `acceptTypes`', () => {
       expect(wrapper.find('input')).toHaveProp(
         'accept',
-        'image/png,image/jpeg,image/gif'
+        FileSelectionInput.defaultProps.acceptTypes
       );
+    });
+
+    it('should default `allowMultiple` as false', () => {
+      expect(wrapper.find('input')).toHaveProp('multiple', false);
     });
 
     it('should have correct text', () => {
@@ -49,8 +53,22 @@ describe('rendering', () => {
       );
     });
   });
+  describe('statics', () => {
+    describe('defaultProps', () => {
+      let wrapper;
+      beforeEach(() => {
+        const props = createProps({ children: 'foo', name: 'bar' });
+        wrapper = shallow(<FileSelectionInput {...props} />);
+      });
+      it('should default `acceptTypes`', () => {
+        expect(wrapper.find('input')).toHaveProp(
+          'accept',
+          'image/png,image/jpeg,image/gif'
+        );
+      });
+    });
+  });
 });
-
 describe('callbacks', () => {
   describe('of `<FileSelectionInput />`', () => {
     describe('onChange', () => {
@@ -71,7 +89,9 @@ describe('callbacks', () => {
       });
 
       it('should call the onChange callback with event', () => {
-        expect(props.onChange).toHaveBeenCalledWith({ target: { files: ['bar'] } });
+        expect(props.onChange).toHaveBeenCalledWith({
+          target: { files: ['bar'] },
+        });
       });
     });
   });
