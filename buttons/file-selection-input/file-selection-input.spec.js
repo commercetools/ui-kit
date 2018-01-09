@@ -27,8 +27,15 @@ describe('rendering', () => {
       expect(wrapper).toRender('label');
     });
 
-    it('input should have correct `name` prop', () => {
+    it('input should have correct `name` prop value', () => {
       expect(wrapper.find('input')).toHaveProp('name', 'bar');
+    });
+
+    it('input should have correct `accept` prop value', () => {
+      expect(wrapper.find('input')).toHaveProp(
+        'accept',
+        'image/png,image/jpeg,image/gif'
+      );
     });
 
     it('should have correct text', () => {
