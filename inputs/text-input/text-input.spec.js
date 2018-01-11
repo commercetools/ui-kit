@@ -148,7 +148,7 @@ describe('callbacks', () => {
       expect(props.onFocus).toHaveBeenCalled();
     });
 
-    it('value should remain the same', () => {
+    it('should keep the same value', () => {
       expect(input).toHaveProp('value', 'foo');
     });
   });
@@ -170,7 +170,7 @@ describe('callbacks', () => {
       expect(props.onBlur).toHaveBeenCalled();
     });
 
-    it('value should remain the same', () => {
+    it('should keep the same value', () => {
       expect(input).toHaveProp('value', 'foo');
     });
   });
