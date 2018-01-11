@@ -55,9 +55,7 @@ exports[`rendering with icon should output correct tree 1`] = `
       <span
         className="icon-container"
       >
-        <FilterIcon
-          size="small"
-        />
+        <FilterIcon />
       </span>
       <span />
     </Inline>
