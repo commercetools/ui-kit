@@ -37,10 +37,10 @@ storiesOf('Forms/Inputs', module)
           <NumericInput
             name={text('name', '')}
             value={value}
-            onChange={input => onChange(input.target.value)}
-            minValue={text('minValue', '')}
-            maxValue={text('maxValue', '')}
-            stepValue={text('stepValue', '')}
+            onChange={event => onChange(event.target.value)}
+            min={text('min', '')}
+            max={text('max', '')}
+            step={text('step', '')}
             isAutofocussed={boolean('isAutofocussed', false)}
             isDisabled={boolean('isDisabled', false)}
             isReadOnly={boolean('isReadOnly', false)}
