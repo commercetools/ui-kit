@@ -27,6 +27,6 @@ import NumericInput from '@commercetools-local/ui-kit/inputs/numeric-input';
 | `hasWarning`     | `bool`   |    -     | -      | -       | Indicates the input field has a warning                                                                                  |
 | `hasError`       | `bool`   |    -     | -      | -       | Indicates the input field has an error                                                                                   |
 | `isAutofocussed` | `bool`   |    -     | -      | -       | Focus the input field on initial render                                                                                  |
-| `isDisabled`     | `bool`   |    -     | -      | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                                       |
+| `isDisabled`     | `bool`   |    -     | -      | `false` | Indicates that the field cannot be used (e.g not authorised)                                       |
 | `isReadOnly`     | `bool`   |    -     | -      | `false` | Indicates that the field is displaying read-only content                                                                 |
 | `placeholder`    | `string` |    -     | -      | -       | Placeholder text for the input                                                                                           |
