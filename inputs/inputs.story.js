@@ -6,9 +6,9 @@ import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import Section from '../.storybook/decorators/section';
 import TextInputReadme from './text-input/README.md';
-import NumericInputReadme from './numeric-input/README.md';
+import NumberInputReadme from './number-input/README.md';
 import TextInput from './text-input';
-import NumericInput from './numeric-input';
+import NumberInput from './number-input';
 
 storiesOf('Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -28,13 +28,13 @@ storiesOf('Forms/Inputs', module)
       />
     </Section>
   ))
-  .addDecorator(withReadme(NumericInputReadme))
-  .add('NumericInput', () => (
+  .addDecorator(withReadme(NumberInputReadme))
+  .add('NumberInput', () => (
     <Section>
       <Value
         defaultValue={undefined}
         render={(value, onChange) => (
-          <NumericInput
+          <NumberInput
             name={text('name', '')}
             value={value}
             onChange={event => onChange(event.target.value)}

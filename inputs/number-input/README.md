@@ -1,4 +1,4 @@
-# NumericInput
+# NumberInput
 
 #### Description
 
@@ -7,9 +7,9 @@ A controlled input component for numbers with validation states.
 ## Usage
 
 ```js
-import NumericInput from '@commercetools-local/ui-kit/inputs/numeric-input';
+import NumberInput from '@commercetools-local/ui-kit/inputs/number-input';
 
-<NumericInput value="2.5" onChange={value => alert(value)} />;
+<NumberInput value="2.5" onChange={value => alert(value)} />;
 ```
 
 #### Properties

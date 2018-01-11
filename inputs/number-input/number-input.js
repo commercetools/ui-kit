@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './numeric-input.mod.css';
+import styles from './number-input.mod.css';
 
 const getStyles = props => {
   if (props.isReadOnly) return styles.readonly;
@@ -11,7 +11,7 @@ const getStyles = props => {
   return styles.pristine;
 };
 
-const NumericInput = props => (
+const NumberInput = props => (
   <div className={styles.container}>
     <input
       name={props.name}
@@ -36,9 +36,9 @@ const NumericInput = props => (
   </div>
 );
 
-NumericInput.displayName = 'NumericInput';
+NumberInput.displayName = 'NumberInput';
 
-NumericInput.propTypes = {
+NumberInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
   min: PropTypes.number,
@@ -55,4 +55,4 @@ NumericInput.propTypes = {
   placeholder: PropTypes.string,
 };
 
-export default NumericInput;
+export default NumberInput;

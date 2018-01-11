@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import NumericInput from './numeric-input';
+import NumberInput from './number-input';
 
 const createTestProps = customProps => ({
   value: '',
@@ -16,7 +16,7 @@ describe('rendering', () => {
         name: 'numeric-field1',
         value: '1',
       });
-      const wrapper = shallow(<NumericInput {...props} />);
+      const wrapper = shallow(<NumberInput {...props} />);
       input = wrapper.children().at(0);
     });
 
@@ -46,7 +46,7 @@ describe('rendering', () => {
           const props = createTestProps({
             hasWarning: true,
           });
-          const wrapper = shallow(<NumericInput {...props} />);
+          const wrapper = shallow(<NumberInput {...props} />);
           input = wrapper.children().at(0);
         });
 
@@ -59,7 +59,7 @@ describe('rendering', () => {
           const props = createTestProps({
             hasError: true,
           });
-          const wrapper = shallow(<NumericInput {...props} />);
+          const wrapper = shallow(<NumberInput {...props} />);
           input = wrapper.children().at(0);
         });
 
@@ -72,7 +72,7 @@ describe('rendering', () => {
           const props = createTestProps({
             isDisabled: true,
           });
-          const wrapper = shallow(<NumericInput {...props} />);
+          const wrapper = shallow(<NumberInput {...props} />);
           input = wrapper.children().at(0);
         });
 
@@ -86,7 +86,7 @@ describe('rendering', () => {
           const props = createTestProps({
             isReadOnly: true,
           });
-          wrapper = shallow(<NumericInput {...props} />)
+          wrapper = shallow(<NumberInput {...props} />)
             .children()
             .at(0);
         });
@@ -113,7 +113,7 @@ describe('callbacks', () => {
         value: '1',
         onChange: jest.fn(),
       });
-      wrapper = shallow(<NumericInput {...props} />);
+      wrapper = shallow(<NumberInput {...props} />);
       input = wrapper.children().at(0);
       input.simulate('change', { target: { value: '2' } });
     });
@@ -139,7 +139,7 @@ describe('callbacks', () => {
         value: '1',
         onFocus: jest.fn(),
       });
-      wrapper = shallow(<NumericInput {...props} />);
+      wrapper = shallow(<NumberInput {...props} />);
       input = wrapper.children().at(0);
       input.simulate('focus');
     });
@@ -161,7 +161,7 @@ describe('callbacks', () => {
         value: '1',
         onBlur: jest.fn(),
       });
-      wrapper = shallow(<NumericInput {...props} />);
+      wrapper = shallow(<NumberInput {...props} />);
       input = wrapper.children().at(0);
       input.simulate('blur');
     });
@@ -183,7 +183,7 @@ describe('callbacks', () => {
         isAutofocussed: true,
         onFocus: jest.fn(),
       });
-      wrapper = shallow(<NumericInput {...props} />);
+      wrapper = shallow(<NumberInput {...props} />);
       input = wrapper.children().at(0);
     });
 
