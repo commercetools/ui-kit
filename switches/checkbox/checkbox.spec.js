@@ -34,10 +34,7 @@ describe('<Checkbox>', () => {
       });
 
       it('should supply `onChange` to the `input`', () => {
-        expect(wrapper.find('input')).toHaveProp(
-          'onChange',
-          wrapper.instance().handleChange
-        );
+        expect(wrapper.find('input')).toHaveProp('onChange', props.onChange);
       });
 
       describe('when disabled', () => {
@@ -82,24 +79,45 @@ describe('<Checkbox>', () => {
   });
 });
 
-describe('interacting', () => {
-  describe('handleChange', () => {
+describe('callbacks', () => {
+  const createEvent = ({ isChecked = true } = {}) => ({
+    target: {
+      checked: isChecked,
+    },
+  });
+
+  describe('when changing', () => {
     let props;
     describe('when checked', () => {
       beforeEach(() => {
         props = createTestProps({ isChecked: true });
 
         const wrapper = shallow(<Checkbox {...props} />);
-
-        wrapper.instance().handleChange();
+        wrapper
+          .find('input')
+          .simulate('change', createEvent({ isChecked: props.isChecked }));
       });
 
       it('should invoke `onChange`', () => {
         expect(props.onChange).toHaveBeenCalled();
       });
 
-      it('should invoke `onChange` with `undefined`', () => {
-        expect(props.onChange).not.toHaveBeenCalledWith(props.value);
+      it('should invoke `onChange` with `checked`', () => {
+        expect(props.onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            target: expect.objectContaining({
+              checked: props.isChecked,
+            }),
+          })
+        );
+      });
+
+      it('should invoke `onChange` with `event`', () => {
+        expect(props.onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            target: expect.any(Object),
+          })
+        );
       });
     });
 
@@ -109,15 +127,31 @@ describe('interacting', () => {
 
         const wrapper = shallow(<Checkbox {...props} />);
 
-        wrapper.instance().handleChange();
+        wrapper
+          .find('input')
+          .simulate('change', createEvent({ isChecked: props.isChecked }));
       });
 
       it('should invoke `onChange`', () => {
         expect(props.onChange).toHaveBeenCalled();
       });
 
-      it('should invoke `onChange` with `value`', () => {
-        expect(props.onChange).toHaveBeenCalledWith(props.value);
+      it('should invoke `onChange` with `checked`', () => {
+        expect(props.onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            target: expect.objectContaining({
+              checked: props.isChecked,
+            }),
+          })
+        );
+      });
+
+      it('should invoke `onChange` with `event`', () => {
+        expect(props.onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            target: expect.any(Object),
+          })
+        );
       });
     });
   });

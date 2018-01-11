@@ -11,7 +11,7 @@ exports[`<Group> rendering should match snapshot 1`] = `
       isDisabled={false}
       key=".0"
       name="bar"
-      onChange={[Function]}
+      onChange={[MockFunction]}
       value="foo"
     >
       foo
@@ -21,7 +21,7 @@ exports[`<Group> rendering should match snapshot 1`] = `
       isDisabled={false}
       key=".1"
       name="bar"
-      onChange={[Function]}
+      onChange={[MockFunction]}
       value="foo"
     >
       bar

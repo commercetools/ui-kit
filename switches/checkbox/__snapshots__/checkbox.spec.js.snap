@@ -23,7 +23,7 @@ exports[`<Checkbox> rendering with children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="bar"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         type="checkbox"
         value="foo"
       />
@@ -50,7 +50,7 @@ exports[`<Checkbox> rendering without children should match snapshot 1`] = `
         className="inputWrapper"
         disabled={false}
         name="bar"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         type="checkbox"
         value="foo"
       />

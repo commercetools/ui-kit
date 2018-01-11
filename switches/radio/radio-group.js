@@ -32,8 +32,6 @@ class Group extends React.PureComponent {
     );
   }
 
-  handleChange = event => this.props.onChange(event.target.value);
-
   render() {
     const DirectionWrapper =
       this.props.direction === 'stack' ? Spacings.Stack : Spacings.Inline;
@@ -46,7 +44,7 @@ class Group extends React.PureComponent {
               return React.cloneElement(child, {
                 isChecked: this.props.value === child.props.value,
                 name: this.props.name,
-                onChange: this.handleChange,
+                onChange: this.props.onChange,
               });
             return child;
           })}
