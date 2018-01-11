@@ -84,7 +84,6 @@ export const SecondaryButton = props => {
           {Boolean(props.iconLeft) && (
             <span className={styles['icon-container']}>
               {React.cloneElement(props.iconLeft, {
-                size: 'small',
                 theme: getIconThemeColor(props),
               })}
             </span>
