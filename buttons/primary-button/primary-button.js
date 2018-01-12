@@ -38,7 +38,6 @@ const PrimaryButton = props => {
         {Boolean(props.iconLeft) && (
           <span className={styles['icon-container']}>
             {React.cloneElement(props.iconLeft, {
-              size: 'small',
               theme: props.isDisabled ? 'grey' : 'white',
             })}
           </span>
