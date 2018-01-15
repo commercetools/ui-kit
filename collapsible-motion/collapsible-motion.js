@@ -109,12 +109,14 @@ class CollapsibleMotion extends React.PureComponent {
     children: PropTypes.func.isRequired,
     isClosed: PropTypes.bool,
     onToggle: PropTypes.func,
+    isDefaultClosed: PropTypes.bool,
   };
 
   render() {
     return (
       <Collapsible
         isClosed={this.props.isClosed}
+        isDefaultClosed={this.props.isDefaultClosed}
         onToggle={this.props.onToggle}
       >
         {({ isOpen, toggle }) => (
