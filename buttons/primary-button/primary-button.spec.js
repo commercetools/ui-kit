@@ -142,8 +142,8 @@ describe('rendering', () => {
         wrapper = shallow(<PrimaryButton {...props} />);
       });
 
-      it('should overwrite the Icon size to be small', () => {
-        expect(wrapper.find(AddBoldIcon)).toHaveProp('size', 'small');
+      it('should not overwrite the Icon size', () => {
+        expect(wrapper.find(AddBoldIcon)).toHaveProp('size', 'big');
       });
     });
 
