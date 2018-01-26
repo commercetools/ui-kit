@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Link } from 'react-router';
-import AccessibleButton from '../buttons/accessible-button';
 import { CloseBoldIcon } from '../icons';
 import Tag, { TagNormalBody, TagLinkBody } from './tag';
 
@@ -117,15 +116,8 @@ describe('`<TagNormalBody />`', () => {
     });
 
     describe('when enabled (`isDisabled`)', () => {
-      it('should render an `AccessibleButton`', () => {
-        expect(wrapper).toRender('AccessibleButton');
-      });
-
-      it('should supply `onClick` to `AccessibleButton`', () => {
-        expect(wrapper.find('AccessibleButton')).toHaveProp(
-          'onClick',
-          props.onClick
-        );
+      it('should supply `onClick` to the main div', () => {
+        expect(wrapper.find('div')).toHaveProp('onClick', props.onClick);
       });
 
       describe('when clickable (`onClick`)', () => {
@@ -136,7 +128,7 @@ describe('`<TagNormalBody />`', () => {
         });
 
         it('should apply clickable class name', () => {
-          expect(wrapper.find(AccessibleButton)).toHaveClassName(
+          expect(wrapper.find('div')).toHaveClassName(
             'clickableContentWrapper'
           );
         });
@@ -151,9 +143,7 @@ describe('`<TagNormalBody />`', () => {
       });
 
       it('should apply disabled class name', () => {
-        expect(wrapper.find('AccessibleButton')).toHaveClassName(
-          'disabledContent'
-        );
+        expect(wrapper.find('div')).toHaveClassName('disabledContent');
       });
     });
 
@@ -165,9 +155,7 @@ describe('`<TagNormalBody />`', () => {
       });
 
       it('should apply removable class name', () => {
-        expect(wrapper.find(AccessibleButton)).toHaveClassName(
-          'removableContent'
-        );
+        expect(wrapper.find('div')).toHaveClassName('removableContent');
       });
     });
   });
@@ -180,10 +168,10 @@ describe('`<TagNormalBody />`', () => {
     });
 
     describe('when enabled (`isDisabled`)', () => {
-      describe('of `<AccessibleButton />`', () => {
+      describe('of `<div />`', () => {
         describe('`onClick`', () => {
           beforeEach(() => {
-            wrapper.find('AccessibleButton').prop('onClick')();
+            wrapper.find('div').prop('onClick')();
           });
 
           it('should invoke `onClick`', () => {
@@ -369,7 +357,7 @@ describe('<Tag />', () => {
 
             wrapper = shallow(<Tag {...props} />);
 
-            wrapper.find(AccessibleButton).prop('onClick')();
+            wrapper.find('AccessibleButton').prop('onClick')();
           });
 
           it('should invoke `onRemove`', () => {

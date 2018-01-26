@@ -59,8 +59,7 @@ TagLinkBody.propTypes = {
 };
 
 export const TagNormalBody = props => (
-  <AccessibleButton
-    isDisabled={props.isDisabled}
+  <div
     className={classnames(
       styles.contentWrapper,
       getContentWrapperTypeClassName(props.type),
@@ -76,11 +75,10 @@ export const TagNormalBody = props => (
         [styles.removableContent]: Boolean(props.onRemove),
       }
     )}
-    label="Click"
-    onClick={props.onClick}
+    onClick={!props.isDisabled && props.onClick}
   >
     <Text.Detail>{props.children}</Text.Detail>
-  </AccessibleButton>
+  </div>
 );
 TagNormalBody.displayName = 'TagNormalBody';
 TagNormalBody.propTypes = {

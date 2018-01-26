@@ -122,16 +122,12 @@ exports[`\`<TagLinkBody />\` rendering should output correct tree 1`] = `
 `;
 
 exports[`\`<TagNormalBody />\` rendering should output correct tree 1`] = `
-<AccessibleButton
-  buttonAttributes={Object {}}
+<div
   className="contentWrapper contentWrapperNormal clickableContentWrapperNormal clickableContentWrapper"
-  isDisabled={false}
-  isToggleButton={false}
-  label="Click"
   onClick={[MockFunction]}
 >
   <TextDetail>
     Icecream we scream!
   </TextDetail>
-</AccessibleButton>
+</div>
 `;
