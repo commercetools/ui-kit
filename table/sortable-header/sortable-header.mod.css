@@ -2,8 +2,20 @@
   display: flex;
 }
 
+.arrow {
+  display: none;
+}
+
+.active .arrow {
+  display: inherit;
+}
+
 .container:hover {
   cursor: pointer;
+}
+
+.container:hover .arrow {
+  display: inherit;
 }
 
 .label {
