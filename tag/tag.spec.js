@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { shallow } from 'enzyme';
-import { Link } from 'react-router';
 import { CloseBoldIcon } from '../icons';
 import Tag, { TagNormalBody, TagLinkBody } from './tag';
 

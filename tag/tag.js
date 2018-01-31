@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import classnames from 'classnames';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';

@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { compose } from 'recompose';
 import invariant from 'invariant';
 import isNil from 'lodash.isnil';
 import pick from 'lodash.pick';
-import { Link } from 'react-router';
 import Spacings from '../../materials/spacings';
 import AccessibleButton from '../accessible-button';
 import TRACKING_ATTRIBUTES from '../tracking-attributes';
