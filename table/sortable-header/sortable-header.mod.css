@@ -1,3 +1,5 @@
+@import '../../materials/spacings.mod.css';
+
 .container {
   display: flex;
 }
@@ -5,6 +7,7 @@
 .arrow {
   visibility: hidden; /* use visibility so react-virtualized can account for arrow-width on calcs */
   pointer-events: none; /* Do not unhover when on the icon */
+  padding-left: var(--spacing-4);
 }
 
 .active .arrow {
