@@ -3,12 +3,12 @@
 }
 
 .arrow {
-  display: none;
+  visibility: hidden; /* use visibility so react-virtualized can account for arrow-width on calcs */
   pointer-events: none; /* Do not unhover when on the icon */
 }
 
 .active .arrow {
-  display: inherit;
+  visibility: visible;
 }
 
 .container:hover {
@@ -16,7 +16,7 @@
 }
 
 .container:hover .arrow {
-  display: inherit;
+  visibility: visible;
 }
 
 .label {

@@ -44,7 +44,7 @@ const SortableHeader = props => {
       })}
     >
       <div className={styles.label}>
-        <Text.Body isBold={isActive}>{props.children}</Text.Body>
+        <Text.Body>{props.children}</Text.Body>
       </div>
       <span className={styles.arrow}>
         {isArrowDown ? (
