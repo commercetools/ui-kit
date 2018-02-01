@@ -4,6 +4,7 @@
 
 .arrow {
   display: none;
+  pointer-events: none; /* Do not unhover when on the icon */
 }
 
 .active .arrow {
