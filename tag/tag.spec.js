@@ -23,21 +23,21 @@ describe('`<TagLinkBody />`', () => {
       wrapper = shallow(<TagLinkBody {...props} />);
     });
 
-    it('should output correct tree', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-
     describe('when enabled (`isDisabled`)', () => {
+      it('should match the recoreded snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+
       it('should supply `to` to `Link`', () => {
         expect(wrapper.find(Link)).toHaveProp('to', props.linkTo);
       });
 
       it('should apply clickable class name', () => {
-        expect(wrapper.find(Link)).toHaveClassName('clickableContentWrapper');
+        expect(wrapper.find('div')).toHaveClassName('clickableContentWrapper');
       });
 
       it('should apply link class name', () => {
-        expect(wrapper.find(Link)).toHaveClassName('plainLink');
+        expect(wrapper.find('div')).toHaveClassName('plainLink');
       });
     });
 
@@ -48,12 +48,12 @@ describe('`<TagLinkBody />`', () => {
         wrapper = shallow(<TagLinkBody {...props} />);
       });
 
-      it('should not supply `to` to `Link`', () => {
-        expect(wrapper.find(Link)).toHaveProp('to', undefined);
+      it('should match the recoreded snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
       });
 
-      it('should apply disabled class name', () => {
-        expect(wrapper.find(Link)).toHaveClassName('disabledContent');
+      it('should render a `Link`', () => {
+        expect(wrapper).not.toRender('Link');
       });
     });
 
@@ -65,7 +65,7 @@ describe('`<TagLinkBody />`', () => {
       });
 
       it('should apply removeable class name', () => {
-        expect(wrapper.find(Link)).toHaveClassName('removableContent');
+        expect(wrapper.find('div')).toHaveClassName('removableContent');
       });
     });
   });

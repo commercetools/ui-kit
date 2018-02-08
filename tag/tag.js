@@ -27,9 +27,7 @@ const getRemoveWrapperTypeClassName = type =>
     : styles.removeWrapperTypeNormal;
 
 export const TagLinkBody = props => (
-  <Link
-    onClick={props.isDisabled ? undefined : props.onClick}
-    to={props.isDisabled ? undefined : props.linkTo}
+  <div
     className={classnames(
       styles.contentWrapper,
       getContentWrapperTypeClassName(props.type),
@@ -45,8 +43,14 @@ export const TagLinkBody = props => (
       }
     )}
   >
-    <Text.Detail>{props.children}</Text.Detail>
-  </Link>
+    {!props.isDisabled ? (
+      <Link onClick={props.onClick} to={props.linkTo}>
+        <Text.Detail>{props.children}</Text.Detail>
+      </Link>
+    ) : (
+      <Text.Detail>{props.children}</Text.Detail>
+    )}
+  </div>
 );
 TagLinkBody.displayName = 'TagLinkBody';
 TagLinkBody.propTypes = {

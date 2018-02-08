@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import StoryRouter from 'storybook-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../.storybook/decorators/section';
@@ -26,6 +26,9 @@ Story.displayName = 'Story';
 storiesOf('Tags', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .addDecorator(StoryRouter())
   // Router is required to support the Link component used by Tag
-  .add('Tag', () => <Story />);
+  .add('Tag', () => (
+    <Router>
+      <Story />
+    </Router>
+  ));

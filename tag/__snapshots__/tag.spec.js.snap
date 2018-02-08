@@ -107,18 +107,30 @@ exports[`<Tag /> rendering when removable (\`onRemove\`) should output correct t
 </div>
 `;
 
-exports[`\`<TagLinkBody />\` rendering should output correct tree 1`] = `
-<Link
-  className="contentWrapper contentWrapperNormal clickableContentWrapperNormal clickableContentWrapper plainLink"
-  onClick={[MockFunction]}
-  onlyActiveOnIndex={false}
-  style={Object {}}
-  to="foo-too"
+exports[`\`<TagLinkBody />\` rendering when disabled (\`isDisabled\`) should match the recoreded snapshot 1`] = `
+<div
+  className="contentWrapper contentWrapperNormal disabledContent"
 >
   <TextDetail>
     Icecream we scream!
   </TextDetail>
-</Link>
+</div>
+`;
+
+exports[`\`<TagLinkBody />\` rendering when enabled (\`isDisabled\`) should match the recoreded snapshot 1`] = `
+<div
+  className="contentWrapper contentWrapperNormal clickableContentWrapperNormal clickableContentWrapper plainLink"
+>
+  <Link
+    onClick={[MockFunction]}
+    replace={false}
+    to="foo-too"
+  >
+    <TextDetail>
+      Icecream we scream!
+    </TextDetail>
+  </Link>
+</div>
 `;
 
 exports[`\`<TagNormalBody />\` rendering should output correct tree 1`] = `
