@@ -3,8 +3,7 @@
 exports[`rendering outputs correct tree 1`] = `
 <Link
   className="button"
-  onlyActiveOnIndex={false}
-  style={Object {}}
+  replace={false}
   to="/foo/bar"
 >
   <AddIcon
