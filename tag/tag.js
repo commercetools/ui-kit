@@ -75,7 +75,7 @@ export const TagNormalBody = props => (
         [styles.removableContent]: Boolean(props.onRemove),
       }
     )}
-    onClick={!props.isDisabled && props.onClick}
+    onClick={props.isDisabled ? undefined : props.onClick}
   >
     <Text.Detail>{props.children}</Text.Detail>
   </div>
@@ -119,7 +119,7 @@ const Tag = props => (
       <AccessibleButton
         label="Remove"
         isDisabled={props.isDisabled}
-        onClick={props.isDisabled ? null : props.onRemove}
+        onClick={props.isDisabled ? undefined : props.onRemove}
         className={classnames(
           styles.removeWrapper,
           getRemoveWrapperTypeClassName(props.type),
