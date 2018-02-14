@@ -4,6 +4,10 @@
 @import '../../materials/borders.mod.css';
 @import '../../materials/transitions.mod.css';
 
+:root {
+  --height-input: 32px;
+}
+
 /* Base */
 
 .container {
@@ -13,7 +17,7 @@
 
 .input {
   width: 100%;
-  height: inherit;
+  height: var(--height-input);
   border-radius: var(--border-radius-6);
   border-style: solid;
   border-width: 1px;
