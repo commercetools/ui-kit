@@ -90,6 +90,10 @@ export default class BaseTable extends React.Component {
     // The keyMapper is only used in the storybook to make the table update
     // measurements when the cells contents change on the fly
     keyMapper: PropTypes.func,
+    // registerMultiGrid allows the parent component to access the MultiGrid.
+    // Calling directly to the MultiGrid functions is only recommended for small
+    // tables, as it would cause performance issues otherwise
+    registerMultiGrid: PropTypes.func,
   };
 
   // The table might not need to take up the full height/width it has
@@ -116,6 +120,9 @@ export default class BaseTable extends React.Component {
   componentDidMount() {
     if (this.props.registerMeasurementCache) {
       this.props.registerMeasurementCache(this.cellMeasurerCache);
+    }
+    if (this.props.registerMultiGrid) {
+      this.props.registerMultiGrid(this.multiGrid);
     }
   }
   componentWillReceiveProps(nextProps) {

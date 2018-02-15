@@ -611,7 +611,22 @@ describe('BaseTable', () => {
           );
         });
       });
+      describe('when registerMultiGrid is defined', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            registerMultiGrid: jest.fn(),
+          });
+          wrapper = shallow(<BaseTable {...props} />);
+          wrapper.instance().componentDidMount();
+        });
+        it('should call registerMultiGrid with MultiGrid reference', () => {
+          expect(props.registerMultiGrid).toHaveBeenCalledWith(
+            wrapper.instance().multiGrid
+          );
+        });
+      });
     });
+
     describe('componentWillReceiveProps', () => {
       beforeEach(() => {
         props = createTestProps({
