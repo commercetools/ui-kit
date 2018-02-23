@@ -1,19 +1,12 @@
 const path = require('path');
+const paths = require('../../../config/paths');
 
-const rootPath = path.resolve(__dirname, '../../../');
-const sourceFolders = [
-  path.join(rootPath, 'packages-application'),
-  path.join(rootPath, 'packages-shared'),
-  path.join(rootPath, 'test'),
-  path.join(rootPath, 'assets'),
-];
-
-// Extends the default storybook webpack (CRA) with the miminal configuration
-// necessary to run the stories in the Ui-Kit.
 module.exports = {
   module: {
     rules: [
       {
+        // For svg icons, we want to get them transformed into React components
+        // when we import them.
         test: /\.svg$/,
         exclude: /node_modules/,
         use: [
@@ -25,10 +18,6 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)(\?(.*))?$/,
-        use: 'file-loader',
       },
       {
         // Do not transform vendor's CSS with CSS-modules
@@ -45,7 +34,7 @@ module.exports = {
           return fileName.endsWith('.css') && !fileName.endsWith('.mod.css');
         },
         use: ['style-loader', 'css-loader', 'postcss-loader'],
-        include: [...sourceFolders, path.join(rootPath, 'assets')],
+        include: [...paths.sourceFolders, path.join(paths.rootPath, 'assets')],
       },
       {
         test: /\.mod\.css$/,
@@ -64,12 +53,13 @@ module.exports = {
             options: {
               config: {
                 ctx: {
-                  sourceFolders,
+                  sourceFolders: paths.sourceFolders,
                 },
               },
             },
           },
         ],
+        include: paths.sourceFolders,
       },
     ],
   },
