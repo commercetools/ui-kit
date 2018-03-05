@@ -23,7 +23,7 @@ const LinkButton = props => (
 
 LinkButton.displayName = 'LinkButton';
 LinkButton.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
   iconLeft: PropTypes.element,
   isDisabled: PropTypes.bool,
