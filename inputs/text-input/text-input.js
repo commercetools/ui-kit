@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import requiredIf from 'react-required-if';
 import styles from './text-input.mod.css';
 
 const getStyles = props => {
@@ -38,7 +39,7 @@ TextInput.displayName = 'TextInput';
 TextInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   isAutofocussed: PropTypes.bool,

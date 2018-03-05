@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import requiredIf from 'react-required-if';
 import styles from './number-input.mod.css';
 
 const getStyles = props => {
@@ -44,7 +45,7 @@ NumberInput.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,
-  onChange: PropTypes.func.isRequired,
+  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   isDisabled: PropTypes.bool,
