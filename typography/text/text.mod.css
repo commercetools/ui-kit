@@ -86,9 +86,3 @@ small {
 .negative {
   color: var(--color-red);
 }
-
-@media only screen and (max-width: 768px) {
-  h1 {
-    font-size: 1.5rem !important;
-  }
-}
