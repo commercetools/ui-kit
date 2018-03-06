@@ -44,26 +44,7 @@ a {
   transition: color 0.2s ease-in;
 }
 
-h1 {
-  color: var(--color-blueNavy);
-  font-size: 1.538rem;
-  font-weight: 100;
-}
-
-h2 {
-  color: var(--color-primaryGreen);
-  display: inline-block;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
 p {
   color: var(--color-blueNavy);
   margin: 0;
-}
-
-@media only screen and (max-width: 768px) {
-  h1 {
-    font-size: 1.5rem !important;
-  }
 }
