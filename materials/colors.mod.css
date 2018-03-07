@@ -11,7 +11,6 @@ colors. */
   --color-blueDodger: #0d9df8;
   --color-blueSolitude: #eaf7fe;
   --color-purple: #bd72ff;
-  --color-bluePolice: #285a6b;
 
   /* Reds */
   --color-red: #e60050;
@@ -67,6 +66,7 @@ colors. */
   --color-blackFade25: color(var(--color-black) alpha(25%));
   --color-fadedBlueNavy: color(var(--color-blueNavy) alpha(30%));
   --color-fadedbluePelorous20: color(var(--color-bluePelorous) alpha(20%));
+  --color-fadedbluePelorous40: color(var(--color-bluePelorous) alpha(40%));
   --color-fadedbluePelorous90: color(var(--color-bluePelorous) alpha(10%));
   --color-fadedGreenLight10: color(var(--color-greenLight) alpha(10%));
   --color-fadedGreenLight20: color(var(--color-greenLight) alpha(20%));
