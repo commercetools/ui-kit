@@ -56,6 +56,7 @@ export const SecondaryButton = props => {
   const dataProps = {
     'data-track-component': 'SecondaryButton',
     ...pick(props, TRACKING_ATTRIBUTES),
+    ...pick(props, 'data-test'),
   };
   const WrapperComponent = props.linkTo ? Link : Div;
   return (
