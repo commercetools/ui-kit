@@ -86,3 +86,7 @@ small {
 .negative {
   color: var(--color-red);
 }
+
+.inline {
+  display: inline-block;
+}

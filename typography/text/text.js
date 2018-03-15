@@ -26,7 +26,10 @@ Subheadline.propTypes = {
 
 const Body = props => (
   <p
-    className={classnames(styles['body-text'], { [styles.bold]: props.isBold })}
+    className={classnames(styles['body-text'], {
+      [styles.bold]: props.isBold,
+      [styles.inline]: props.isInline,
+    })}
   >
     {props.children}
   </p>
@@ -34,15 +37,17 @@ const Body = props => (
 Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
+  isInline: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
 const Detail = props => (
   <small
-    className={classnames(
-      { [styles.bold]: props.isBold },
-      { [styles[`${props.tone}`]]: props.tone }
-    )}
+    className={classnames({
+      [styles.bold]: props.isBold,
+      [styles.inline]: props.isInline,
+      [styles[`${props.tone}`]]: props.tone,
+    })}
   >
     {props.children}
   </small>
@@ -50,6 +55,7 @@ const Detail = props => (
 Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,
+  isInline: PropTypes.bool,
   tone: PropTypes.oneOf(['secondary', 'positive', 'negative']),
   children: PropTypes.node.isRequired,
 };
