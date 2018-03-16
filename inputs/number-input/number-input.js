@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import styles from './number-input.mod.css';
 
 const getStyles = props => {
@@ -29,6 +30,7 @@ const NumberInput = props => (
       className={getStyles(props)}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
+      {...filterDataAttributes(props)}
       /* ARIA */
       aria-readonly={props.isReadOnly}
       role="textbox"
