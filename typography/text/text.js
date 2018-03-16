@@ -24,16 +24,24 @@ Subheadline.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const Body = props => (
-  <p
-    className={classnames(styles['body-text'], {
-      [styles.bold]: props.isBold,
-      [styles.inline]: props.isInline,
-    })}
-  >
-    {props.children}
-  </p>
-);
+const Body = props =>
+  props.isInline ? (
+    <span
+      className={classnames(styles['body-text'], {
+        [styles.bold]: props.isBold,
+      })}
+    >
+      {props.children}
+    </span>
+  ) : (
+    <p
+      className={classnames(styles['body-text'], {
+        [styles.bold]: props.isBold,
+      })}
+    >
+      {props.children}
+    </p>
+  );
 Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
