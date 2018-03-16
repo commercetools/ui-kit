@@ -1,0 +1,117 @@
+@import '../../materials/colors.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/shadows.mod.css';
+@import '../../materials/borders.mod.css';
+@import '../../materials/transitions.mod.css';
+
+:root {
+  --height-input: 32px;
+}
+
+/* Base */
+
+.fullWidth {
+  width: 100%;
+}
+
+.mediumWidth {
+  width: 727px;
+}
+
+.smallWidth {
+  width: 338px;
+}
+
+.fieldContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.languageLabel {
+  height: var(--height-input);
+  line-height: var(--height-input);
+  background-color: #f9f9f9;
+  border-radius: var(--border-radius-6);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 1px solid #ccc;
+  border-right: 0;
+  padding: 0 var(--spacing-8);
+  transition: var(--transition-standard);
+  box-shadow: none;
+  appearance: none;
+}
+
+.input {
+  width: 100%;
+  height: var(--height-input);
+  border-radius: var(--border-radius-6);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-style: solid;
+  border-width: 1px;
+  padding: 0 var(--spacing-8);
+  transition: var(--transition-standard);
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Spinner */
+
+.spinner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Tones */
+
+.pristine {
+  composes: input;
+  border-color: var(--color-greySolid);
+  color: var(--color-greyDark);
+}
+
+.warning {
+  composes: input;
+  color: var(--color-CTOrange);
+  border-color: var(--color-CTOrange);
+}
+
+.error {
+  composes: input;
+  color: var(--color-red);
+  border-color: var(--color-red);
+}
+
+.disabled {
+  composes: input;
+  cursor: not-allowed;
+  background-color: var(--color-whiteCatskill);
+  border-color: var(--color-greyMischka);
+  color: var(--color-greyNevada);
+  opacity: 1; /* fix for mobile safari */
+}
+
+.readonly {
+  composes: input;
+  color: var(--color-greyNevada);
+  border-color: var(--color-primaryGrey);
+  cursor: default;
+}
+
+/* States */
+
+.pristine:active,
+.pristine:focus {
+  border-color: var(--color-greenDowny);
+  color: var(--color-greyDark);
+}
