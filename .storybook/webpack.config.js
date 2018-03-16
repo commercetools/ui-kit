@@ -34,7 +34,7 @@ module.exports = {
           return fileName.endsWith('.css') && !fileName.endsWith('.mod.css');
         },
         use: ['style-loader', 'css-loader', 'postcss-loader'],
-        include: [...paths.sourceFolders, path.join(paths.rootPath, 'assets')],
+        include: paths.sourceFolders,
       },
       {
         test: /\.mod\.css$/,
