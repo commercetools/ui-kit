@@ -29,6 +29,8 @@ import TextInput from '@commercetools-local/ui-kit/inputs/text-input';
 | `isReadOnly`     | `bool`   |    -     | -      | `false` | Indicates that the field is displaying read-only content                                               |
 | `placeholder`    | `string` |    -     | -      | -       | Placeholder text for the input                                                                         |
 
+The component further forwards all `data-` attributes to the underlying `input` component.
+
 Main Functions and use cases are:
 
 * Input field for single-line strings
