@@ -9,6 +9,23 @@ const createTestProps = customProps => ({
 });
 
 describe('rendering', () => {
+  describe('data attributes', () => {
+    let input;
+    beforeEach(() => {
+      const props = createTestProps({
+        name: 'numeric-field1',
+        value: '1',
+        'data-foo': 'bar',
+        'data-test': 'baz',
+      });
+      const wrapper = shallow(<NumberInput {...props} />);
+      input = wrapper.children().at(0);
+    });
+    it('should forward the attributes', () => {
+      expect(input).toHaveProp('data-foo', 'bar');
+      expect(input).toHaveProp('data-test', 'baz');
+    });
+  });
   describe('pristine', () => {
     let input;
     beforeEach(() => {

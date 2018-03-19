@@ -30,3 +30,5 @@ import NumberInput from '@commercetools-local/ui-kit/inputs/number-input';
 | `isDisabled`     | `bool`   |    -     | -      | `false` | Indicates that the field cannot be used (e.g not authorised)                                           |
 | `isReadOnly`     | `bool`   |    -     | -      | `false` | Indicates that the field is displaying read-only content                                               |
 | `placeholder`    | `string` |    -     | -      | -       | Placeholder text for the input                                                                         |
+
+The component further forwards all `data-` attributes to the underlying `input` component.
