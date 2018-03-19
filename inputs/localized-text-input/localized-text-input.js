@@ -7,6 +7,7 @@ import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
+import ErrorMessage from '../../error-message';
 import styles from './localized-text-input.mod.css';
 
 const getId = (() => {
@@ -16,17 +17,6 @@ const getId = (() => {
     return `${prefix}-${id}`;
   };
 })();
-
-// NOTE this is a duplicate of ErrorMessage from core and should be reused
-// It can't be used as of now, since LocalizedTextInput is in ui-kit and
-// ErrorMessage still is in core
-const ErrorMessage = props => (
-  <Text.Detail tone="negative">{props.children}</Text.Detail>
-);
-ErrorMessage.displayName = 'ErrorMessage';
-ErrorMessage.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 const ExpandControl = ({ expandMessage, collapseMessage, onClick, isOpen }) =>
   isOpen ? (
@@ -124,7 +114,7 @@ export default class LocalizedTextInput extends React.Component {
     isAutofocussed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
-    placeholder: PropTypes.string,
+    placeholder: PropTypes.objectOf(PropTypes.string),
     horizontalSize: PropTypes.oneOf(['small', 'medium', 'full']),
     error: PropTypes.shape({
       missing: PropTypes.bool,
@@ -160,6 +150,11 @@ export default class LocalizedTextInput extends React.Component {
                 })
               }
               language={this.props.selectedLanguage}
+              placeholder={
+                this.props.placeholder
+                  ? this.props.placeholder[this.props.selectedLanguage]
+                  : undefined
+              }
               onBlur={this.props.onBlur}
               onFocus={this.props.onFocus}
               isAutofocussed={this.props.isAutofocussed}
@@ -192,6 +187,11 @@ export default class LocalizedTextInput extends React.Component {
                         })
                       }
                       language={language}
+                      placeholder={
+                        this.props.placeholder
+                          ? this.props.placeholder[language]
+                          : undefined
+                      }
                       onBlur={this.props.onBlur}
                       onFocus={this.props.onFocus}
                       isAutofocussed={false}

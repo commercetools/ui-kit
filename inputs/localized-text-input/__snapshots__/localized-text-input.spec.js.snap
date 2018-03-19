@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering when autofocus is activated should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        isAutofocussed={true}
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering when disabled should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        isDisabled={true}
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering when expanded by default should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={false}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering when expansion toggle feature is disabled should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering when horizontal size is set should match snapshot 1`] = `
+<div
+  className="smallWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="small"
+        id="localized-text-input-1-en"
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering when in read-only mode should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        isReadOnly={true}
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering when placeholders are provided should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        key="en"
+        language="en"
+        onChange={[Function]}
+        placeholder="Value"
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering when there is an error should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={true}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+      <ErrorMessage>
+        This field is requried
+      </ErrorMessage>
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
+
+exports[`rendering with minimal props should match snapshot 1`] = `
+<div
+  className="fullWidth"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <LocalizedInput
+        hasError={false}
+        horizontalSize="full"
+        id="localized-text-input-1-en"
+        key="en"
+        language="en"
+        onChange={[Function]}
+        value="Horse"
+      />
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</div>
+`;
