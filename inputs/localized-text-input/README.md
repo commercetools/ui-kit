@@ -35,6 +35,8 @@ import LocalizedTextInput from '@commercetools-local/ui-kit/inputs/localized-tex
 | `horizontalSize`        | `object`   |          | `small`, `medium`, `full` | `full`  | Horizontal size limit of the input fields.                                                                                |
 | `error`                 | `object`   |          |                           |         | Error message of the input field. Object supporting `{ missing: Boolean }`                                                |
 
+The component forwards all `data` attribute props. It further adds a `-${language}` suffix to the values of the `data-test` and `data-track-component` attributes, e.g `data-test="foo"` will get added to the input for `en` as `data-test="foo-en"`.
+
 Main Functions and use cases are:
 
 * Receiving localized input from user

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import classnames from 'classnames';
 import oneLine from 'common-tags/lib/oneLine';
+import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
@@ -18,6 +19,19 @@ const getId = (() => {
     return `${prefix}-${id}`;
   };
 })();
+
+const createDataAttributes = (props, language) =>
+  Object.entries(filterDataAttributes(props)).reduce((acc, [key, value]) => {
+    switch (key) {
+      case 'data-track-component':
+      case 'data-test':
+        acc[key] = `${value}-${language}`;
+        break;
+      default:
+        acc[key] = value;
+    }
+    return acc;
+  }, {});
 
 const ExpandControl = ({ expandMessage, collapseMessage, onClick, isOpen }) =>
   isOpen ? (
@@ -91,6 +105,7 @@ class LocalizedInput extends React.Component {
           aria-readonly={this.props.isReadOnly}
           role="textbox"
           contentEditable={!this.props.isReadOnly}
+          {...filterDataAttributes(this.props)}
         />
       </div>
     );
@@ -175,6 +190,7 @@ export default class LocalizedTextInput extends React.Component {
                 this.props.error && Object.keys(this.props.error).length > 0
               )}
               horizontalSize={this.props.horizontalSize}
+              {...createDataAttributes(this.props, this.props.selectedLanguage)}
             />
             {this.props.error &&
               this.props.error.missing && (
@@ -209,6 +225,7 @@ export default class LocalizedTextInput extends React.Component {
                       isDisabled={this.props.isDisabled}
                       isReadOnly={this.props.isReadOnly}
                       horizontalSize={this.props.horizontalSize}
+                      {...createDataAttributes(this.props, language)}
                     />
                   ))}
                 {!this.props.hideExpansionControls &&

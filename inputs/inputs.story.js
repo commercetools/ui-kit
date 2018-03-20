@@ -97,6 +97,7 @@ storiesOf('Forms/Inputs', module)
               ? { missing: true }
               : undefined
           }
+          data-test="foo"
         />
       </Section>
     );
