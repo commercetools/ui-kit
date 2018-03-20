@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering pristine horizontalConstraint with constraint input should match snapshot 1`] = `
+exports[
+  `rendering pristine horizontalConstraint with constraint input should match snapshot 1`
+] = `
 <TextInput
   horizontalConstraint="s"
   onChange={[Function]}
@@ -8,7 +10,9 @@ exports[`rendering pristine horizontalConstraint with constraint input should ma
 />
 `;
 
-exports[`rendering pristine horizontalConstraint with constraint should match snapshot 1`] = `
+exports[
+  `rendering pristine horizontalConstraint with constraint should match snapshot 1`
+] = `
 <TextInput
   horizontalConstraint="s"
   onChange={[Function]}
@@ -16,7 +20,9 @@ exports[`rendering pristine horizontalConstraint with constraint should match sn
 />
 `;
 
-exports[`rendering pristine horizontalConstraint without constraint input should match snapshot 1`] = `
+exports[
+  `rendering pristine horizontalConstraint without constraint input should match snapshot 1`
+] = `
 <TextInput
   horizontalConstraint="scale"
   onChange={[Function]}
@@ -24,7 +30,9 @@ exports[`rendering pristine horizontalConstraint without constraint input should
 />
 `;
 
-exports[`rendering pristine horizontalConstraint without constraint should match snapshot 1`] = `
+exports[
+  `rendering pristine horizontalConstraint without constraint should match snapshot 1`
+] = `
 <TextInput
   horizontalConstraint="scale"
   onChange={[Function]}
