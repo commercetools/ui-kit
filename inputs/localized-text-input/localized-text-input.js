@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import classnames from 'classnames';
+import sortBy from 'lodash.sortby';
 import oneLine from 'common-tags/lib/oneLine';
 import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Collapsible from '../../collapsible';
@@ -151,8 +152,11 @@ export default class LocalizedTextInput extends React.Component {
     horizontalConstraint: 'scale',
   };
   render() {
-    const otherLanguages = Object.keys(this.props.value).filter(
-      language => language !== this.props.selectedLanguage
+    const otherLanguages = sortBy(
+      Object.keys(this.props.value).filter(
+        language => language !== this.props.selectedLanguage
+      ),
+      language => language.length
     );
     return (
       <div

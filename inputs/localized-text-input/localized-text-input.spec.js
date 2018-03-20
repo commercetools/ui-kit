@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Collapsible from '../../collapsible';
 import LocalizedTextInput from './localized-text-input';
 
 const createTestProps = custom => ({
@@ -121,6 +122,31 @@ describe('rendering', () => {
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe('other languages', () => {
+    let languagesWrapper;
+    beforeEach(() => {
+      props = createTestProps({
+        value: {
+          en: 'en',
+          de: 'de',
+          'nan-Hant-TW': 'nan-Hant-TW',
+          fr: 'fr',
+          'pt-BR': 'pt-BR',
+        },
+        isDefaultExpanded: true,
+      });
+      wrapper = shallow(<LocalizedTextInput {...props} />);
+      languagesWrapper = wrapper.find(Collapsible).prop('children')({
+        toggle: jest.fn(),
+        isOpen: true,
+      });
+    });
+
+    it('should sort them by the length', () => {
+      expect(languagesWrapper).toMatchSnapshot();
     });
   });
 });

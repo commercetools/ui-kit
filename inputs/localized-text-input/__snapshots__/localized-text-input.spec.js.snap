@@ -1,5 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`rendering other languages should sort them by the length 1`] = `
+<UNDEFINED>
+  <LocalizedInput
+    horizontalConstraint="scale"
+    id="localized-text-input-1-de"
+    isAutofocussed={false}
+    isDisabled={undefined}
+    isReadOnly={undefined}
+    language="de"
+    name={undefined}
+    onBlur={undefined}
+    onChange={[Function]}
+    onFocus={undefined}
+    placeholder={undefined}
+    value="de"
+  />
+  <LocalizedInput
+    horizontalConstraint="scale"
+    id="localized-text-input-1-fr"
+    isAutofocussed={false}
+    isDisabled={undefined}
+    isReadOnly={undefined}
+    language="fr"
+    name={undefined}
+    onBlur={undefined}
+    onChange={[Function]}
+    onFocus={undefined}
+    placeholder={undefined}
+    value="fr"
+  />
+  <LocalizedInput
+    horizontalConstraint="scale"
+    id="localized-text-input-1-pt-BR"
+    isAutofocussed={false}
+    isDisabled={undefined}
+    isReadOnly={undefined}
+    language="pt-BR"
+    name={undefined}
+    onBlur={undefined}
+    onChange={[Function]}
+    onFocus={undefined}
+    placeholder={undefined}
+    value="pt-BR"
+  />
+  <LocalizedInput
+    horizontalConstraint="scale"
+    id="localized-text-input-1-nan-Hant-TW"
+    isAutofocussed={false}
+    isDisabled={undefined}
+    isReadOnly={undefined}
+    language="nan-Hant-TW"
+    name={undefined}
+    onBlur={undefined}
+    onChange={[Function]}
+    onFocus={undefined}
+    placeholder={undefined}
+    value="nan-Hant-TW"
+  />
+  <ExpandControl
+    collapseMessage="Collapse"
+    expandMessage="Expand all languages (4)"
+    isOpen={true}
+    onClick={[MockFunction]}
+  />
+</UNDEFINED>
+`;
+
 exports[`rendering when autofocus is activated should match snapshot 1`] = `
 <div
   className="constraintScale"
