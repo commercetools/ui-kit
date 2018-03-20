@@ -42,6 +42,8 @@
 }
 
 .languageLabel {
+  /* avid wrapping label onto new lines */
+  flex: 1 0 auto;
   height: var(--height-input);
   line-height: var(--height-input);
   background-color: #f9f9f9;

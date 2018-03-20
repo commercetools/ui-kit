@@ -22,7 +22,11 @@ storiesOf('Forms/Inputs', module)
           key={key}
           id={text('id', undefined)}
           name={text('name', undefined)}
-          value={{ en: text('value(en)', ''), de: text('value(de)', '') }}
+          value={{
+            en: text('value(en)', ''),
+            de: text('value(de)', ''),
+            'nan-Hant-TW': text('value(nan-Hant-TW)', ''),
+          }}
           onChange={action('onChange')}
           selectedLanguage={select('selectedLanguage', ['en', 'de'], 'en')}
           onBlur={action('onBlur')}
