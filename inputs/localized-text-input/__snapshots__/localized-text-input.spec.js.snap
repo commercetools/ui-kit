@@ -2,7 +2,7 @@
 
 exports[`rendering when autofocus is activated should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -11,7 +11,7 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         isAutofocussed={true}
         key="en"
@@ -29,7 +29,7 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
 
 exports[`rendering when disabled should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -38,7 +38,7 @@ exports[`rendering when disabled should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         isDisabled={true}
         key="en"
@@ -56,7 +56,7 @@ exports[`rendering when disabled should match snapshot 1`] = `
 
 exports[`rendering when expanded by default should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -65,7 +65,7 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -82,7 +82,7 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
 
 exports[`rendering when expansion toggle feature is disabled should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -91,7 +91,7 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -108,7 +108,7 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
 
 exports[`rendering when horizontal size is set should match snapshot 1`] = `
 <div
-  className="smallWidth"
+  className="constraintS"
 >
   <Stack
     alignItems="stretch"
@@ -117,7 +117,7 @@ exports[`rendering when horizontal size is set should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="small"
+        horizontalConstraint="s"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -134,7 +134,7 @@ exports[`rendering when horizontal size is set should match snapshot 1`] = `
 
 exports[`rendering when in read-only mode should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -143,7 +143,7 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         isReadOnly={true}
         key="en"
@@ -161,7 +161,7 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
 
 exports[`rendering when placeholders are provided should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -170,7 +170,7 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -188,7 +188,7 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
 
 exports[`rendering when there is an error should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -197,7 +197,7 @@ exports[`rendering when there is an error should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={true}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -217,7 +217,7 @@ exports[`rendering when there is an error should match snapshot 1`] = `
 
 exports[`rendering with minimal props should match snapshot 1`] = `
 <div
-  className="fullWidth"
+  className="constraintScale"
 >
   <Stack
     alignItems="stretch"
@@ -226,7 +226,7 @@ exports[`rendering with minimal props should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="full"
+        horizontalConstraint="scale"
         id="localized-text-input-1-en"
         key="en"
         language="en"
