@@ -20,7 +20,7 @@ const createTestProps = custom => ({
 //   selectedLanguage: PropTypes.string.isRequired,
 //   onBlur: PropTypes.func,
 //   onFocus: PropTypes.func,
-//   isAlwaysExpanded: PropTypes.bool,
+//   hideExpansionControls: PropTypes.bool,
 //   isDefaultExpanded: PropTypes.bool,
 //   isAutofocussed: PropTypes.bool,
 //   isDisabled: PropTypes.bool,
@@ -80,7 +80,7 @@ describe('rendering', () => {
 
   describe('when expansion toggle feature is disabled', () => {
     beforeEach(() => {
-      props = createTestProps({ isAlwaysExpanded: true });
+      props = createTestProps({ hideExpansionControls: true });
       wrapper = shallow(<LocalizedTextInput {...props} />);
     });
     it('should match snapshot', () => {

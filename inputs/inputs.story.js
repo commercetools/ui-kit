@@ -72,8 +72,14 @@ storiesOf('Forms/Inputs', module)
           selectedLanguage={select('selectedLanguage', ['en', 'de'], 'en')}
           onBlur={action('onBlur')}
           onFocus={action('onFocus')}
-          isAlwaysExpanded={boolean('isAlwaysExpanded', false)}
-          isDefaultExpanded={isDefaultExpanded}
+          hideExpansionControls={boolean('hideExpansionControls', false)}
+          isDefaultExpanded={
+            isDefaultExpanded
+              ? true
+              : // we need to set undefined instead of false to avoid prop-type
+                // warnings in case hideExpansionControls is true
+                undefined
+          }
           isAutofocussed={boolean('isAutofocussed', false)}
           isDisabled={boolean('isDisabled', false)}
           isReadOnly={boolean('isReadOnly', false)}

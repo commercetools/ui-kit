@@ -266,6 +266,11 @@
       "value": "color(var(--color-bluePelorous) alpha(20%))"
     },
     {
+      "key": "--color-fadedbluePelorous40",
+      "name": "fadedbluePelorous40",
+      "value": "color(var(--color-bluePelorous) alpha(40%))"
+    },
+    {
       "key": "--color-fadedbluePelorous90",
       "name": "fadedbluePelorous90",
       "value": "color(var(--color-bluePelorous) alpha(10%))"

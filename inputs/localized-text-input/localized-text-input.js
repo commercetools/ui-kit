@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import classnames from 'classnames';
+import oneLine from 'common-tags/lib/oneLine';
 import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
@@ -109,8 +110,18 @@ export default class LocalizedTextInput extends React.Component {
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    isAlwaysExpanded: PropTypes.bool,
-    isDefaultExpanded: PropTypes.bool,
+    hideExpansionControls: PropTypes.bool,
+    isDefaultExpanded: (props, propName, componentName, ...rest) => {
+      if (props.hideExpansionControls && typeof props[propName] === 'boolean') {
+        throw new Error(
+          oneLine`
+            ${componentName}: "${propName}" does not have any effect when
+            "hideExpansionControls" is set.
+          `
+        );
+      }
+      return PropTypes.bool(props, propName, componentName, ...rest);
+    },
     isAutofocussed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
@@ -173,7 +184,7 @@ export default class LocalizedTextInput extends React.Component {
           <Collapsible isDefaultClosed={!this.props.isDefaultExpanded}>
             {({ toggle, isOpen }) => (
               <React.Fragment>
-                {(isOpen || this.props.isAlwaysExpanded) &&
+                {(isOpen || this.props.hideExpansionControls) &&
                   otherLanguages.map(language => (
                     <LocalizedInput
                       key={language}
@@ -200,7 +211,7 @@ export default class LocalizedTextInput extends React.Component {
                       horizontalSize={this.props.horizontalSize}
                     />
                   ))}
-                {!this.props.isAlwaysExpanded &&
+                {!this.props.hideExpansionControls &&
                   otherLanguages.length > 0 && (
                     <ExpandControl
                       onClick={toggle}
