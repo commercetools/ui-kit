@@ -9,30 +9,6 @@ const createTestProps = custom => ({
   ...custom,
 });
 
-// const createTestProps = custom => ({
-//   id: PropTypes.string,
-//   name: PropTypes.string,
-//   // then input doesn't accept a "languages" prop, instead all possible
-//   // languages have to exist (with empty or filled strings) on the value:
-//   //   { en: 'foo', de: '', es: '' }
-//   value: PropTypes.objectOf(PropTypes.string).isRequired,
-//   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-//   selectedLanguage: PropTypes.string.isRequired,
-//   onBlur: PropTypes.func,
-//   onFocus: PropTypes.func,
-//   hideExpansionControls: PropTypes.bool,
-//   isDefaultExpanded: PropTypes.bool,
-//   isAutofocussed: PropTypes.bool,
-//   isDisabled: PropTypes.bool,
-//   isReadOnly: PropTypes.bool,
-//   placeholder: PropTypes.string,
-//   horizontalConstraint: PropTypes.oneOf(['small', 'medium', 'full']),
-//   error: PropTypes.shape({
-//     missing: PropTypes.bool,
-//   }),
-//   ...custom,
-// });
-
 describe('rendering', () => {
   let wrapper;
   let props;
@@ -130,7 +106,7 @@ describe('rendering', () => {
 
   describe('when horizontal size is set', () => {
     beforeEach(() => {
-      props = createTestProps({ horizontalConstraint: 'small' });
+      props = createTestProps({ horizontalConstraint: 's' });
       wrapper = shallow(<LocalizedTextInput {...props} />);
     });
     it('should match snapshot', () => {
