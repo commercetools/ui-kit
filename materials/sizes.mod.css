@@ -2,4 +2,12 @@
   --big-button-height: 32px;
   --small-button-height: 24px;
   --standard-input-height: 32px;
+
+  /* constraints */
+  --constraint-scale: 100%;
+  --constraint-xs: 50px;
+  --constraint-s: 132px;
+  --constraint-m: 355px;
+  --constraint-l: 400px;
+  --constraint-xl: 768px;
 }
