@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import classnames from 'classnames';
 import styles from './text-input.mod.css';
 
 const getStyles = props => {
@@ -14,7 +15,16 @@ const getStyles = props => {
 };
 
 const TextInput = props => (
-  <div className={styles.container}>
+  <div
+    className={classnames(styles.container, {
+      [styles.constraintXs]: props.horizontalConstraint === 'xs',
+      [styles.constraintS]: props.horizontalConstraint === 's',
+      [styles.constraintM]: props.horizontalConstraint === 'm',
+      [styles.constraintL]: props.horizontalConstraint === 'l',
+      [styles.constraintXl]: props.horizontalConstraint === 'xl',
+      [styles.constraintScale]: props.horizontalConstraint === 'scale',
+    })}
+  >
     <input
       name={props.name}
       type="text"
@@ -50,6 +60,11 @@ TextInput.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+};
+
+TextInput.defaultProps = {
+  horizontalConstraint: 'scale',
 };
 
 export default TextInput;

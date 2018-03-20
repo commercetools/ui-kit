@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import Section from '../.storybook/decorators/section';
@@ -25,6 +25,11 @@ storiesOf('Forms/Inputs', module)
         hasError={boolean('hasError', false)}
         hasWarning={boolean('hasWarning', false)}
         placeholder={text('placeholder', 'Placeholder')}
+        horizontalConstraint={select(
+          'horizontalConstraint',
+          ['xs', 's', 'm', 'l', 'xl', 'scale'],
+          'm'
+        )}
       />
     </Section>
   ))

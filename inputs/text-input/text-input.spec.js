@@ -57,6 +57,17 @@ describe('rendering', () => {
       expect(input).toHaveProp('value', 'foo');
     });
 
+    describe('when horizontal size is set', () => {
+      beforeEach(() => {
+        const props = createTestProps({ horizontalConstraint: 's' });
+        const wrapper = shallow(<TextInput {...props} />);
+        input = wrapper.children().at(0);
+      });
+      it('should match snapshot', () => {
+        expect(input).toMatchSnapshot();
+      });
+    });
+
     describe('with states', () => {
       describe('warning', () => {
         beforeEach(() => {

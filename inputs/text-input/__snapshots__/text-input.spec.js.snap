@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering pristine when horizontal size is set should match snapshot 1`] = `
+<input
+  className="pristine"
+  contentEditable={true}
+  onChange={[Function]}
+  role="textbox"
+  type="text"
+  value=""
+/>
+`;
