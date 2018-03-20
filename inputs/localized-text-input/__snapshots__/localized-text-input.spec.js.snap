@@ -11,7 +11,7 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         isAutofocussed={true}
         key="en"
@@ -38,7 +38,7 @@ exports[`rendering when disabled should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         isDisabled={true}
         key="en"
@@ -65,7 +65,7 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -91,7 +91,7 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -117,7 +117,7 @@ exports[`rendering when horizontal size is set should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="small"
+        horizontalConstraint="small"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -143,7 +143,7 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         isReadOnly={true}
         key="en"
@@ -170,7 +170,7 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -197,7 +197,7 @@ exports[`rendering when there is an error should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={true}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         key="en"
         language="en"
@@ -226,7 +226,7 @@ exports[`rendering with minimal props should match snapshot 1`] = `
     <div>
       <LocalizedInput
         hasError={false}
-        horizontalSize="full"
+        horizontalConstraint="full"
         id="localized-text-input-1-en"
         key="en"
         language="en"

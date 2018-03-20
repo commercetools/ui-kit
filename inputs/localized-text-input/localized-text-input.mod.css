@@ -3,6 +3,7 @@
 @import '../../materials/shadows.mod.css';
 @import '../../materials/borders.mod.css';
 @import '../../materials/transitions.mod.css';
+@import '../../materials/sizes.mod.css';
 
 :root {
   --height-input: 32px;
@@ -10,16 +11,28 @@
 
 /* Base */
 
-.fullWidth {
-  width: 100%;
+.constraintScale {
+  width: var(--constraint-scale);
 }
 
-.mediumWidth {
-  width: 727px;
+.constraintXs {
+  max-width: var(--constraint-xs);
 }
 
-.smallWidth {
-  width: 338px;
+.constraintS {
+  max-width: var(--constraint-s);
+}
+
+.constraintM {
+  max-width: var(--constraint-m);
+}
+
+.constraintL {
+  max-width: var(--constraint-l);
+}
+
+.constraintXl {
+  max-width: var(--constraint-xl);
 }
 
 .fieldContainer {

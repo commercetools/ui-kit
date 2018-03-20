@@ -26,7 +26,7 @@ const createTestProps = custom => ({
 //   isDisabled: PropTypes.bool,
 //   isReadOnly: PropTypes.bool,
 //   placeholder: PropTypes.string,
-//   horizontalSize: PropTypes.oneOf(['small', 'medium', 'full']),
+//   horizontalConstraint: PropTypes.oneOf(['small', 'medium', 'full']),
 //   error: PropTypes.shape({
 //     missing: PropTypes.bool,
 //   }),
@@ -130,7 +130,7 @@ describe('rendering', () => {
 
   describe('when horizontal size is set', () => {
     beforeEach(() => {
-      props = createTestProps({ horizontalSize: 'small' });
+      props = createTestProps({ horizontalConstraint: 'small' });
       wrapper = shallow(<LocalizedTextInput {...props} />);
     });
     it('should match snapshot', () => {

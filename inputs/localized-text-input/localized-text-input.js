@@ -80,7 +80,7 @@ class LocalizedInput extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     placeholder: PropTypes.string,
-    horizontalSize: PropTypes.oneOf(['small', 'medium', 'full']),
+    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   };
   render() {
     return (
@@ -141,14 +141,14 @@ export default class LocalizedTextInput extends React.Component {
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     placeholder: PropTypes.objectOf(PropTypes.string),
-    horizontalSize: PropTypes.oneOf(['small', 'medium', 'full']),
+    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     error: PropTypes.shape({
       missing: PropTypes.bool,
     }),
   };
   static defaultProps = {
     id: getId('localized-text-input'),
-    horizontalSize: 'full',
+    horizontalConstraint: 'scale',
   };
   render() {
     const otherLanguages = Object.keys(this.props.value).filter(
@@ -157,9 +157,12 @@ export default class LocalizedTextInput extends React.Component {
     return (
       <div
         className={classnames({
-          [styles.smallWidth]: this.props.horizontalSize === 'small',
-          [styles.mediumWidth]: this.props.horizontalSize === 'medium',
-          [styles.fullWidth]: this.props.horizontalSize === 'full',
+          [styles.constraintXs]: this.props.horizontalConstraint === 'xs',
+          [styles.constraintS]: this.props.horizontalConstraint === 's',
+          [styles.constraintM]: this.props.horizontalConstraint === 'm',
+          [styles.constraintL]: this.props.horizontalConstraint === 'l',
+          [styles.constraintXl]: this.props.horizontalConstraint === 'xl',
+          [styles.constraintScale]: this.props.horizontalConstraint === 'scale',
         })}
       >
         <Spacings.Stack>
@@ -189,7 +192,7 @@ export default class LocalizedTextInput extends React.Component {
               hasError={Boolean(
                 this.props.error && Object.keys(this.props.error).length > 0
               )}
-              horizontalSize={this.props.horizontalSize}
+              horizontalConstraint={this.props.horizontalConstraint}
               {...createDataAttributes(this.props, this.props.selectedLanguage)}
             />
             {this.props.error &&
@@ -224,7 +227,7 @@ export default class LocalizedTextInput extends React.Component {
                       isAutofocussed={false}
                       isDisabled={this.props.isDisabled}
                       isReadOnly={this.props.isReadOnly}
-                      horizontalSize={this.props.horizontalSize}
+                      horizontalConstraint={this.props.horizontalConstraint}
                       {...createDataAttributes(this.props, language)}
                     />
                   ))}

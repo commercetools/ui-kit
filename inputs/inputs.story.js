@@ -87,10 +87,10 @@ storiesOf('Forms/Inputs', module)
             en: text('placeholder(en)', ''),
             de: text('placeholder(de)', ''),
           }}
-          horizontalSize={select(
-            'horizontalSize',
-            ['small', 'medium', 'full'],
-            'full'
+          horizontalConstraint={select(
+            'horizontalConstraint',
+            ['xs', 's', 'm', 'l', 'xl', 'scale'],
+            'm'
           )}
           error={
             boolean('has missing value error', false)
