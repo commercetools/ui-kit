@@ -74,6 +74,9 @@ describe('rendering', () => {
           expect(inputWrapper).toMatchSnapshot();
         });
         describe('input', () => {
+          it('should match snapshot', () => {
+            expect(inputWrapper).toMatchSnapshot();
+          });
           it('should have `constraintS` className', () => {
             expect(input).toHaveClassName('constraintS');
           });
@@ -94,6 +97,9 @@ describe('rendering', () => {
           expect(inputWrapper).toMatchSnapshot();
         });
         describe('input', () => {
+          it('should match snapshot', () => {
+            expect(inputWrapper).toMatchSnapshot();
+          });
           it('should have `constraintScale` className', () => {
             expect(input).toHaveClassName('constraintScale');
           });
