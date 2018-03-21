@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering pristine horizontalConstraint with constraint should match snapshot 1`] = `
+<NumberInput
+  horizontalConstraint="xs"
+  name="numeric-field1"
+  onChange={[Function]}
+  value="1"
+/>
+`;
+
+exports[`rendering pristine horizontalConstraint without constraint should match snapshot 1`] = `
+<NumberInput
+  horizontalConstraint="scale"
+  name="numeric-field1"
+  onChange={[Function]}
+  value="1"
+/>
+`;

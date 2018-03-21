@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-local/utils/dataset';
@@ -13,8 +14,32 @@ const getStyles = props => {
   return styles.pristine;
 };
 
+const getConstraintSyle = horizontalConstraint => {
+  switch (horizontalConstraint) {
+    case 'xs':
+      return styles.constraintXs;
+    case 's':
+      return styles.constraintS;
+    case 'm':
+      return styles.constraintM;
+    case 'l':
+      return styles.constraintL;
+    case 'xl':
+      return styles.constraintXl;
+    case 'scale':
+      return styles.constraintScale;
+    default:
+      return undefined;
+  }
+};
+
 const NumberInput = props => (
-  <div className={styles.container}>
+  <div
+    className={classnames(
+      styles.container,
+      getConstraintSyle(props.horizontalConstraint)
+    )}
+  >
     <input
       name={props.name}
       type="number"
@@ -56,6 +81,11 @@ NumberInput.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+};
+
+NumberInput.defaultProps = {
+  horizontalConstraint: 'scale',
 };
 
 export default NumberInput;

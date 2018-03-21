@@ -117,6 +117,57 @@ describe('rendering', () => {
         });
       });
     });
+
+    describe('horizontalConstraint', () => {
+      let inputWrapper;
+      describe('with constraint', () => {
+        beforeEach(() => {
+          const props = createTestProps({
+            name: 'numeric-field1',
+            value: '1',
+            horizontalConstraint: 'xs',
+          });
+          const wrapper = shallow(
+            <div>
+              <NumberInput {...props} />
+            </div>
+          );
+          inputWrapper = wrapper.children().at(0);
+          input = shallow(<NumberInput {...props} />);
+        });
+        it('should match snapshot', () => {
+          expect(inputWrapper).toMatchSnapshot();
+        });
+        describe('input', () => {
+          it('should have `constraintXs` className', () => {
+            expect(input).toHaveClassName('constraintXs');
+          });
+        });
+      });
+      describe('without constraint', () => {
+        beforeEach(() => {
+          const props = createTestProps({
+            name: 'numeric-field1',
+            value: '1',
+          });
+          const wrapper = shallow(
+            <div>
+              <NumberInput {...props} />
+            </div>
+          );
+          inputWrapper = wrapper.children().at(0);
+          input = shallow(<NumberInput {...props} />);
+        });
+        it('should match snapshot', () => {
+          expect(inputWrapper).toMatchSnapshot();
+        });
+        describe('input', () => {
+          it('should have `constraintScale` className', () => {
+            expect(input).toHaveClassName('constraintScale');
+          });
+        });
+      });
+    });
   });
 });
 

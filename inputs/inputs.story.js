@@ -52,6 +52,11 @@ storiesOf('Forms/Inputs', module)
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}
             placeholder={text('placeholder', 'Placeholder')}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              ['xs', 's', 'm', 'l', 'xl', 'scale'],
+              'm'
+            )}
           />
         )}
       />
