@@ -10,7 +10,7 @@ import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
-import ErrorMessage from '../../error-message';
+import ErrorMessage from '../../messages/error-message';
 import styles from './localized-text-input.mod.css';
 
 const getId = (() => {
