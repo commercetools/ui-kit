@@ -57,17 +57,49 @@ describe('rendering', () => {
       expect(input).toHaveProp('value', 'foo');
     });
 
-    describe('when horizontal size is set', () => {
-      beforeEach(() => {
-        const props = createTestProps({ horizontalConstraint: 's' });
-        const wrapper = shallow(<TextInput {...props} />);
-        input = wrapper.children().at(0);
+    describe('horizontalConstraint', () => {
+      let inputWrapper;
+      describe('with constraint', () => {
+        beforeEach(() => {
+          const props = createTestProps({ horizontalConstraint: 's' });
+          const wrapper = shallow(
+            <div>
+              <TextInput {...props} />
+            </div>
+          );
+          inputWrapper = wrapper.children().at(0);
+          input = shallow(<TextInput {...props} />);
+        });
+        it('should match snapshot', () => {
+          expect(inputWrapper).toMatchSnapshot();
+        });
+        describe('input', () => {
+          it('should have `constraintS` className', () => {
+            expect(input).toHaveClassName('constraintS');
+          });
+        });
       });
-      it('should match snapshot', () => {
-        expect(input).toMatchSnapshot();
+      describe('without constraint', () => {
+        beforeEach(() => {
+          const props = createTestProps();
+          const wrapper = shallow(
+            <div>
+              <TextInput {...props} />
+            </div>
+          );
+          inputWrapper = wrapper.children().at(0);
+          input = shallow(<TextInput {...props} />);
+        });
+        it('should match snapshot', () => {
+          expect(inputWrapper).toMatchSnapshot();
+        });
+        describe('input', () => {
+          it('should have `constraintScale` className', () => {
+            expect(input).toHaveClassName('constraintScale');
+          });
+        });
       });
     });
-
     describe('with states', () => {
       describe('warning', () => {
         beforeEach(() => {

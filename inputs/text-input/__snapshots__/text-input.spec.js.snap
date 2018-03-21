@@ -1,12 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering pristine when horizontal size is set should match snapshot 1`] = `
-<input
-  className="pristine"
-  contentEditable={true}
+exports[`rendering pristine horizontalConstraint with constraint should match snapshot 1`] = `
+<TextInput
+  horizontalConstraint="s"
   onChange={[Function]}
-  role="textbox"
-  type="text"
+  value=""
+/>
+`;
+
+exports[`rendering pristine horizontalConstraint without constraint should match snapshot 1`] = `
+<TextInput
+  horizontalConstraint="scale"
+  onChange={[Function]}
   value=""
 />
 `;
