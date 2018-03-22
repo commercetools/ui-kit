@@ -135,10 +135,10 @@ describe('rendering', () => {
           inputWrapper = wrapper.children().at(0);
           input = shallow(<NumberInput {...props} />);
         });
-        it('should match snapshot', () => {
-          expect(inputWrapper).toMatchSnapshot();
-        });
         describe('input', () => {
+          it('should match snapshot', () => {
+            expect(input).toMatchSnapshot();
+          });
           it('should have `constraintXs` className', () => {
             expect(input).toHaveClassName('constraintXs');
           });
@@ -162,6 +162,9 @@ describe('rendering', () => {
           expect(inputWrapper).toMatchSnapshot();
         });
         describe('input', () => {
+          it('should match snapshot', () => {
+            expect(input).toMatchSnapshot();
+          });
           it('should have `constraintScale` className', () => {
             expect(input).toHaveClassName('constraintScale');
           });
