@@ -14,8 +14,8 @@ You can find a list of all available icons in the UIKit.
 
 #### How to add new icons
 
-1. add the SVG file you got from the designer to `@commercetools-local/ui-kit/icons/svg`
-2. restart webpack (`npm start` in development)
+1.  add the SVG file you got from the designer to `@commercetools-local/ui-kit/icons/svg`
+2.  restart webpack (`npm start` in development)
 
 #### Properties
 

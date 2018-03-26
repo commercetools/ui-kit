@@ -47,5 +47,5 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 
 #### Invariants
 
-1. The `Radio.Option` must have at least one `Radio.Option` element as
-   `children`
+1.  The `Radio.Option` must have at least one `Radio.Option` element as
+    `children`

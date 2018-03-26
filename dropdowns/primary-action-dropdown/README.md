@@ -49,8 +49,8 @@ import PrimaryActionDropdown, { Option } from '@commercetools-local/ui-kit/dropd
 
 #### Invariants
 
-1. The `PrimaryActionDropdown` must have at least two `Option` elements as
-   `children`
+1.  The `PrimaryActionDropdown` must have at least two `Option` elements as
+    `children`
 
 * Use a `PrimaryButton` otherwise
 
