@@ -56,11 +56,15 @@ ExpandControl.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
+// NOTE: order is important here
+// * a disabled-field does not have validation-states, its existence is treated as inconsequential to other form-fields
+// * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning go first
+// how you can interact with the field is controlled separately by the props, this only influences visuals
 const getStyles = props => {
-  if (props.isReadOnly) return styles.readonly;
   if (props.isDisabled) return styles.disabled;
   if (props.hasError) return styles.error;
   if (props.hasWarning) return styles.warning;
+  if (props.isReadOnly) return styles.readonly;
 
   return styles.pristine;
 };
