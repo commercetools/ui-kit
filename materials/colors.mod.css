@@ -7,7 +7,6 @@ colors. */
   /* Blues */
   --color-blue: #0679d1;
   --color-blueNavy: #213e48;
-  --color-blueSolitude: #eaf7fe;
   --color-purple: #bd72ff;
 
   /* Reds */
@@ -66,6 +65,7 @@ colors. */
   --color-fadedbluePelorous20: color(var(--color-blueNavy) alpha(20%));
   --color-fadedbluePelorous40: color(var(--color-darkGreen) alpha(40%));
   --color-fadedbluePelorous90: color(var(--color-whiteCatskill) alpha(10%));
+  --color-fadedBlue20: color(var(--color-blue) alpha(20%));
   --color-fadedGreenLight10: color(var(--color-greenLight) alpha(10%));
   --color-fadedGreenLight20: color(var(--color-greenLight) alpha(20%));
 }

@@ -11,11 +11,6 @@
       "value": "#213e48"
     },
     {
-      "key": "--color-blueSolitude",
-      "name": "blueSolitude",
-      "value": "#eaf7fe"
-    },
-    {
       "key": "--color-purple",
       "name": "purple",
       "value": "#bd72ff"
