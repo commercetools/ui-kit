@@ -49,7 +49,7 @@
 .disabledPrimaryAction,
 .disabledDropdownHeadChevron {
   box-shadow: none;
-  background-color: var(--color-greyZircon);
+  background-color: var(--color-whitePorcelain);
   color: var(--color-primaryGrey);
 }
 

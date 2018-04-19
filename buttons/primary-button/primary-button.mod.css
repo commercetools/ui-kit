@@ -82,13 +82,13 @@
  */
 .button-layout .disabled {
   box-shadow: none;
-  background-color: var(--color-greyZircon);
+  background-color: var(--color-whitePorcelain);
   color: var(--color-greyNevada);
 }
 
 .button-layout .disabled:active,
 .button-layout .disabled:hover {
-  background-color: var(--color-greyZircon);
+  background-color: var(--color-whitePorcelain);
   color: var(--color-greyNevada);
 }
 
