@@ -32,12 +32,12 @@
 }
 
 :global(.flatpickr-day.today) {
-  border-color: var(--color-CTOrange);
+  border-color: var(--color-orange);
 }
 :global(.flatpickr-day.today:hover),
 :global(.flatpickr-day.today:focus) {
-  border-color: var(--color-CTOrange);
-  background: var(--color-CTOrange);
+  border-color: var(--color-orange);
+  background: var(--color-orange);
 }
 
 :global(span.flatpickr-day.today:not(.selected)),
@@ -46,13 +46,13 @@
   border-color: none;
   border-right-color: transparent;
   border-top-color: transparent;
-  border-bottom-color: var(--color-CTOrange);
+  border-bottom-color: var(--color-orange);
 }
 
 :global(span.flatpickr-day.today:not(.selected):hover),
 :global(span.flatpickr-day.prevMonthDay.today:not(.selected):hover),
 :global(span.flatpickr-day.nextMonthDay.today:not(.selected):hover) {
-  border: 1px solid var(--color-CTOrange);
+  border: 1px solid var(--color-orange);
 }
 
 :global(.flatpickr-input[disabled]) {

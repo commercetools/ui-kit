@@ -23,7 +23,7 @@
       "value": "#e60050"
     },
     {
-      "key": "--color-CTOrange",
+      "key": "--color-orange",
       "name": "CTOrange",
       "value": "#f27923"
     },
@@ -183,7 +183,7 @@
     {
       "key": "--color-fadedOrange20",
       "name": "fadedOrange20",
-      "value": "color(var(--color-CTOrange) alpha(20%))"
+      "value": "color(var(--color-orange) alpha(20%))"
     },
     {
       "key": "--color-fadedBlue20",

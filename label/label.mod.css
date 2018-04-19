@@ -7,8 +7,8 @@
 }
 
 .tone-warning {
-  background-color: color(var(--color-CTOrange) alpha(15%));
-  border: 1px solid var(--color-CTOrange);
+  background-color: color(var(--color-orange) alpha(15%));
+  border: 1px solid var(--color-orange);
   border-radius: 2px;
 }
 

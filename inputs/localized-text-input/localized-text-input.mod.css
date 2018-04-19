@@ -95,8 +95,8 @@
 
 .warning {
   composes: input;
-  color: var(--color-CTOrange);
-  border-color: var(--color-CTOrange);
+  color: var(--color-orange);
+  border-color: var(--color-orange);
 }
 
 .error {
