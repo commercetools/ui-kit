@@ -49,7 +49,6 @@ colors. */
   --color-greySolid: #afafaf;
 
   /* Faded version of main colors */
-  --color-blackFade25: color(var(--color-black) alpha(25%));
   --color-fadedOrange20: color(var(--color-CTOrange) alpha(20%));
   --color-fadedBlue20: color(var(--color-blue) alpha(20%));
   --color-fadedBlueNavy: color(var(--color-blueNavy) alpha(30%));
