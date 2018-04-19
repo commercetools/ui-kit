@@ -119,7 +119,7 @@
 }
 
 .removeWrapper svg {
-  fill: var(--color-greyDark);
+  fill: var(--color-black);
 }
 
 .disabledRemove svg {

@@ -72,7 +72,7 @@
 .pristine {
   composes: input;
   border-color: var(--color-greySolid);
-  color: var(--color-greyDark);
+  color: var(--color-black);
 }
 
 .warning {
@@ -108,5 +108,5 @@
 .pristine:active,
 .pristine:focus {
   border-color: var(--color-greenDowny);
-  color: var(--color-greyDark);
+  color: var(--color-black);
 }

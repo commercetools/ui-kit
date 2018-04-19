@@ -32,14 +32,13 @@ colors. */
   --color-whiteSnow: #f2f2f2;
 
   /* Grays */
-  --color-black: #000;
+  --color-black: #333;
   --color-grey: #aeaeae;
   --color-greyDove: #666;
   --color-greyDusty: #979797;
   --color-greyMischka: #e5e4e9;
   --color-greyTundora: #484848;
   --color-greyAlabaster: #f9f9f9;
-  --color-greyDark: #333;
   --color-primaryGrey: #ccc;
   --color-secondaryGrey: #848484;
   --color-coolGrey: #f6f6f6;
