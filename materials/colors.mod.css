@@ -55,7 +55,6 @@ colors. */
   --color-fadedBlack25: color(var(--color-black) alpha(25%));
   --color-fadedBlueNavy20: color(var(--color-blueNavy) alpha(20%));
   --color-fadedbluePelorous90: color(var(--color-whiteCatskill) alpha(10%));
+  --color-fadedPrimaryGreen20: color(var(--color-primaryGreen) alpha(20%));
   --color-fadedGreen30: color(var(--color-green) alpha(30%));
-  --color-fadedGreenLight10: color(var(--color-greenLight) alpha(10%));
-  --color-fadedGreenLight20: color(var(--color-greenLight) alpha(20%));
 }
