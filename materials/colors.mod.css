@@ -23,7 +23,6 @@ colors. */
   --color-buttonPrimary: #00b6a1;
   --color-buttonHover: #03c8b2;
   --color-greenDowny: #52cebf;
-  --color-greenSulu: #bee990;
 
   /* Whites */
   --color-white: #fff;
@@ -61,6 +60,7 @@ colors. */
   --color-fadedbluePelorous20: color(var(--color-blueNavy) alpha(20%));
   --color-fadedbluePelorous40: color(var(--color-darkGreen) alpha(40%));
   --color-fadedbluePelorous90: color(var(--color-whiteCatskill) alpha(10%));
+  --color-fadedGreen30: color(var(--color-green) alpha(30%));
   --color-fadedGreenLight10: color(var(--color-greenLight) alpha(10%));
   --color-fadedGreenLight20: color(var(--color-greenLight) alpha(20%));
 }
