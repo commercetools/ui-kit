@@ -14,7 +14,6 @@ colors. */
   --color-redCream: #fdf2f4;
   --color-CTOrange: #f27923;
   --color-CTYellow: #f5a730;
-  --color-bananaMania: #fce4c2;
 
   /* Greens */
   --color-yellowMayo: #fff9ed;
@@ -61,11 +60,12 @@ colors. */
 
   /* Faded version of main colors */
   --color-blackFade25: color(var(--color-black) alpha(25%));
+  --color-fadedOrange20: color(var(--color-CTOrange) alpha(20%));
+  --color-fadedBlue20: color(var(--color-blue) alpha(20%));
   --color-fadedBlueNavy: color(var(--color-blueNavy) alpha(30%));
   --color-fadedbluePelorous20: color(var(--color-blueNavy) alpha(20%));
   --color-fadedbluePelorous40: color(var(--color-darkGreen) alpha(40%));
   --color-fadedbluePelorous90: color(var(--color-whiteCatskill) alpha(10%));
-  --color-fadedBlue20: color(var(--color-blue) alpha(20%));
   --color-fadedGreenLight10: color(var(--color-greenLight) alpha(10%));
   --color-fadedGreenLight20: color(var(--color-greenLight) alpha(20%));
 }
