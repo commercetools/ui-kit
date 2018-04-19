@@ -43,7 +43,7 @@
 .defaultPrimaryAction:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyLight);
+  background-color: var(--color-whiteSnow);
 }
 
 .disabledPrimaryAction,
@@ -96,7 +96,7 @@
 }
 
 .optionWrapper:hover {
-  background-color: var(--color-greyLight);
+  background-color: var(--color-whiteSnow);
 }
 
 .disabledOption {
