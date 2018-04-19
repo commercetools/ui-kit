@@ -23,11 +23,6 @@
       "value": "#e60050"
     },
     {
-      "key": "--color-redCream",
-      "name": "redCream",
-      "value": "#fdf2f4"
-    },
-    {
       "key": "--color-CTOrange",
       "name": "CTOrange",
       "value": "#f27923"
@@ -75,34 +70,9 @@
       "value": "#03c8b2"
     },
     {
-      "key": "--color-primaryCell",
-      "name": "primaryCell",
-      "value": "#00b6a1"
-    },
-    {
       "key": "--color-greenDowny",
       "name": "greenDowny",
       "value": "#52cebf"
-    },
-    {
-      "key": "--color-greenSnow",
-      "name": "greenSnow",
-      "value": "#f3fffd"
-    },
-    {
-      "key": "--color-greenTapa",
-      "name": "greenTapa",
-      "value": "#1c3239"
-    },
-    {
-      "key": "--color-greenCaper",
-      "name": "greenCaper",
-      "value": "#c4e5a1"
-    },
-    {
-      "key": "--color-greenSulu",
-      "name": "greenSulu",
-      "value": "#bee990"
     }
   ],
   [
@@ -124,7 +94,7 @@
     {
       "key": "--color-whitePorcelain",
       "name": "whitePorcelain",
-      "value": "#ecf0f1"
+      "value": "#eff2f6"
     },
     {
       "key": "--color-whiteSnow",
@@ -136,7 +106,7 @@
     {
       "key": "--color-black",
       "name": "black",
-      "value": "#000"
+      "value": "#333"
     },
     {
       "key": "--color-grey",
@@ -169,16 +139,6 @@
       "value": "#f9f9f9"
     },
     {
-      "key": "--color-greyLight",
-      "name": "greyLight",
-      "value": "#f4f4f4"
-    },
-    {
-      "key": "--color-greyDark",
-      "name": "greyDark",
-      "value": "#333"
-    },
-    {
       "key": "--color-primaryGrey",
       "name": "primaryGrey",
       "value": "#ccc"
@@ -199,11 +159,6 @@
       "value": "#eee"
     },
     {
-      "key": "--color-codeGrey",
-      "name": "codeGrey",
-      "value": "#0f0f0f"
-    },
-    {
       "key": "--color-greyGallery",
       "name": "greyGallery",
       "value": "#eaeaea"
@@ -212,11 +167,6 @@
       "key": "--color-greyAlto",
       "name": "greyAlto",
       "value": "#d8d8d8"
-    },
-    {
-      "key": "--color-greyZircon",
-      "name": "greyZircon",
-      "value": "#dde1e2"
     },
     {
       "key": "--color-greyNevada",
@@ -231,39 +181,44 @@
   ],
   [
     {
-      "key": "--color-blackFade25",
-      "name": "blackFade25",
-      "value": "color(var(--color-black) alpha(25%))"
+      "key": "--color-fadedOrange20",
+      "name": "fadedOrange20",
+      "value": "color(var(--color-CTOrange) alpha(20%))"
     },
     {
-      "key": "--color-fadedBlueNavy",
-      "name": "fadedBlueNavy",
-      "value": "color(var(--color-blueNavy) alpha(30%))"
+      "key": "--color-fadedBlue20",
+      "name": "fadedBlue20",
+      "value": "color(var(--color-blue) alpha(20%))"
     },
     {
-      "key": "--color-fadedbluePelorous20",
-      "name": "fadedbluePelorous20",
-      "value": "color(var(--color-blueNavy) alpha(20%))"
-    },
-    {
-      "key": "--color-fadedbluePelorous40",
-      "name": "fadedbluePelorous40",
+      "key": "--color-fadedDarkGreen40",
+      "name": "fadedDarkGreen40",
       "value": "color(var(--color-darkGreen) alpha(40%))"
     },
     {
-      "key": "--color-fadedbluePelorous90",
-      "name": "fadedbluePelorous90",
-      "value": "color(var(--color-whiteCatskill) alpha(10%))"
+      "key": "--color-fadedBlack25",
+      "name": "fadedBlack25",
+      "value": "color(var(--color-black) alpha(25%))"
     },
     {
-      "key": "--color-fadedGreenLight10",
-      "name": "fadedGreenLight10",
-      "value": "color(var(--color-greenLight) alpha(10%))"
+      "key": "--color-fadedBlueNavy20",
+      "name": "fadedBlueNavy20",
+      "value": "color(var(--color-blueNavy) alpha(20%))"
     },
     {
-      "key": "--color-fadedGreenLight20",
-      "name": "fadedGreenLight20",
-      "value": "color(var(--color-greenLight) alpha(20%))"
+      "key": "--color-fadedWhiteCatskill90",
+      "name": "fadedWhiteCatskill90",
+      "value": "color(var(--color-whiteCatskill) alpha(90%))"
+    },
+    {
+      "key": "--color-fadedPrimaryGreen20",
+      "name": "fadedPrimaryGreen20",
+      "value": "color(var(--color-primaryGreen) alpha(20%))"
+    },
+    {
+      "key": "--color-fadedGreen30",
+      "name": "fadedGreen30",
+      "value": "color(var(--color-green) alpha(30%))"
     }
   ]
 ]
