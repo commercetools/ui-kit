@@ -24,21 +24,11 @@
     },
     {
       "key": "--color-orange",
-      "name": "CTOrange",
+      "name": "orange",
       "value": "#f27923"
-    },
-    {
-      "key": "--color-CTYellow",
-      "name": "CTYellow",
-      "value": "#f5a730"
     }
   ],
   [
-    {
-      "key": "--color-yellowMayo",
-      "name": "yellowMayo",
-      "value": "#fff9ed"
-    },
     {
       "key": "--color-green",
       "name": "green",
