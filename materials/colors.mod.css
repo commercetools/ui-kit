@@ -6,7 +6,6 @@ colors. */
 :root {
   /* Blues */
   --color-blue: #0679d1;
-  --color-bluePelorous: #1e82a4;
   --color-blueNavy: #213e48;
   --color-blueDodger: #0d9df8;
   --color-blueSolitude: #eaf7fe;
@@ -65,9 +64,9 @@ colors. */
   /* Faded version of main colors */
   --color-blackFade25: color(var(--color-black) alpha(25%));
   --color-fadedBlueNavy: color(var(--color-blueNavy) alpha(30%));
-  --color-fadedbluePelorous20: color(var(--color-bluePelorous) alpha(20%));
-  --color-fadedbluePelorous40: color(var(--color-bluePelorous) alpha(40%));
-  --color-fadedbluePelorous90: color(var(--color-bluePelorous) alpha(10%));
+  --color-fadedbluePelorous20: color(var(--color-blueNavy) alpha(20%));
+  --color-fadedbluePelorous40: color(var(--color-darkGreen) alpha(40%));
+  --color-fadedbluePelorous90: color(var(--color-whiteCatskill) alpha(10%));
   --color-fadedGreenLight10: color(var(--color-greenLight) alpha(10%));
   --color-fadedGreenLight20: color(var(--color-greenLight) alpha(20%));
 }

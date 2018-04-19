@@ -6,11 +6,6 @@
       "value": "#0679d1"
     },
     {
-      "key": "--color-bluePelorous",
-      "name": "bluePelorous",
-      "value": "#1e82a4"
-    },
-    {
       "key": "--color-blueNavy",
       "name": "blueNavy",
       "value": "#213e48"
@@ -263,17 +258,17 @@
     {
       "key": "--color-fadedbluePelorous20",
       "name": "fadedbluePelorous20",
-      "value": "color(var(--color-bluePelorous) alpha(20%))"
+      "value": "color(var(--color-blueNavy) alpha(20%))"
     },
     {
       "key": "--color-fadedbluePelorous40",
       "name": "fadedbluePelorous40",
-      "value": "color(var(--color-bluePelorous) alpha(40%))"
+      "value": "color(var(--color-darkGreen) alpha(40%))"
     },
     {
       "key": "--color-fadedbluePelorous90",
       "name": "fadedbluePelorous90",
-      "value": "color(var(--color-bluePelorous) alpha(10%))"
+      "value": "color(var(--color-whiteCatskill) alpha(10%))"
     },
     {
       "key": "--color-fadedGreenLight10",
