@@ -191,6 +191,11 @@
       "value": "color(var(--color-blueNavy) alpha(20%))"
     },
     {
+      "key": "--color-fadedWhite20",
+      "name": "fadedWhite20",
+      "value": "color(var(--color-white) alpha(20%))"
+    },
+    {
       "key": "--color-fadedWhiteCatskill90",
       "name": "fadedWhiteCatskill90",
       "value": "color(var(--color-whiteCatskill) alpha(90%))"
