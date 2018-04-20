@@ -11,7 +11,6 @@ const createDatePickerBodyProps = (props = {}) => ({
   mode: 'single',
   timeScale: 'date',
   placeholder: 'Please select a date',
-  size: 'scale',
   isInvalid: false,
   isDisabled: false,
   formattedValue: '20.08.2017',
@@ -99,16 +98,18 @@ describe('<DatePickerBody>', () => {
       });
     });
 
-    describe('when is scaling', () => {
+    describe('with `horizontalConstraint`', () => {
       beforeEach(() => {
         props = createDatePickerBodyProps({
-          size: 'scale',
+          horizontalConstraint: 'xl',
         });
         wrapper = shallow(<DatePickerBody {...props} />);
       });
 
       it('should add a scale class to the `input`', () => {
-        expect(wrapper.find('.date-input-container')).toHaveClassName('scale');
+        expect(wrapper.find('.date-input-container')).toHaveClassName(
+          'constraintXl'
+        );
       });
     });
 

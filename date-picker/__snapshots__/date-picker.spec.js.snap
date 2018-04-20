@@ -12,7 +12,6 @@ exports[`<DatePicker /> rendering should match snapshot 1`] = `
     numberOfFormattedValueChars={10}
     onClearPicker={[Function]}
     placeholder="test"
-    size="static"
     timeScale="date"
   />
 </div>

@@ -12,6 +12,25 @@ const getIconTheme = (isDisabled, isMouseOver) => {
   return 'black';
 };
 
+const getConstraintSyle = horizontalConstraint => {
+  switch (horizontalConstraint) {
+    case 'xs':
+      return styles.constraintXs;
+    case 's':
+      return styles.constraintS;
+    case 'm':
+      return styles.constraintM;
+    case 'l':
+      return styles.constraintL;
+    case 'xl':
+      return styles.constraintXl;
+    case 'scale':
+      return styles.constraintScale;
+    default:
+      return undefined;
+  }
+};
+
 export const ClearSection = props => (
   <div
     onClick={props.isDisabled ? undefined : props.onClear}
@@ -57,14 +76,13 @@ export class DatePickerBody extends React.PureComponent {
     isInvalid: PropTypes.bool,
     onClearPicker: PropTypes.func,
     placeholder: PropTypes.string,
-    size: PropTypes.oneOf(['scale', 'static']),
+    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
     numberOfFormattedValueChars: PropTypes.number,
   };
 
   static defaultProps = {
     timeScale: 'date',
-    size: 'static',
     isInvalid: false,
     isDisabled: false,
   };
@@ -73,9 +91,10 @@ export class DatePickerBody extends React.PureComponent {
     return (
       <Spacings.Inline alignItems="center">
         <div
-          className={classnames(styles['date-input-container'], {
-            [styles.scale]: this.props.size === 'scale',
-          })}
+          className={classnames(
+            styles['date-input-container'],
+            getConstraintSyle(this.props.horizontalConstraint)
+          )}
         >
           <input
             className={classnames(styles['date-input'], {

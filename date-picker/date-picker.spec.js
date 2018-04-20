@@ -39,10 +39,6 @@ describe('<DatePicker />', () => {
     it('should have "false" as `isInvalid`-prop', () => {
       expect(DatePicker.defaultProps.isInvalid).toBe(false);
     });
-
-    it('should have "static" as `size`-prop', () => {
-      expect(DatePicker.defaultProps.size).toBe('static');
-    });
   });
 
   describe('lifecycle', () => {
@@ -291,20 +287,23 @@ describe('<DatePicker />', () => {
       expect(wrapper).toRender('DatePickerBody');
     });
 
-    describe('when scaling', () => {
+    describe('with `horizontalConstraint`', () => {
       beforeEach(() => {
         props = createTestProps({
-          size: 'scale',
+          horizontalConstraint: 'xl',
         });
         wrapper = shallow(<DatePicker {...props} />);
       });
 
-      it('should set "scale"-class on wrapper-div', () => {
-        expect(wrapper.find('div')).toHaveClassName('scale');
+      it('should set a constraint class on the wrapper-div', () => {
+        expect(wrapper.find('div')).toHaveClassName('constraintXl');
       });
 
-      it('should pass size "scale" to DatePickerBody', () => {
-        expect(wrapper.find('DatePickerBody')).toHaveProp('size', 'scale');
+      it('should pass size `horizontalConstraint` to DatePickerBody', () => {
+        expect(wrapper.find('DatePickerBody')).toHaveProp(
+          'horizontalConstraint',
+          props.horizontalConstraint
+        );
       });
     });
 
