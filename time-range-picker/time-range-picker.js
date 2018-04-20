@@ -27,7 +27,6 @@ const TimeRangePicker = props => {
             onChange={handleChangeValue('from')}
             mode="single"
             timeScale="time"
-            size="scale"
           />
         </Spacings.Inline>
       </div>
@@ -41,7 +40,6 @@ const TimeRangePicker = props => {
             onChange={handleChangeValue('to')}
             mode="single"
             timeScale="time"
-            size="scale"
           />
         </Spacings.Inline>
       </div>
