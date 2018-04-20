@@ -181,11 +181,6 @@
       "value": "color(var(--color-blue) alpha(20%))"
     },
     {
-      "key": "--color-fadedDarkGreen40",
-      "name": "fadedDarkGreen40",
-      "value": "color(var(--color-darkGreen) alpha(40%))"
-    },
-    {
       "key": "--color-fadedBlack25",
       "name": "fadedBlack25",
       "value": "color(var(--color-black) alpha(25%))"
