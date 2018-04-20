@@ -39,6 +39,10 @@ describe('<DatePicker />', () => {
     it('should have "false" as `isInvalid`-prop', () => {
       expect(DatePicker.defaultProps.isInvalid).toBe(false);
     });
+
+    it('should have "scale" as `horizontalConstraint`-prop', () => {
+      expect(DatePicker.defaultProps.horizontalConstraint).toBe('scale');
+    });
   });
 
   describe('lifecycle', () => {

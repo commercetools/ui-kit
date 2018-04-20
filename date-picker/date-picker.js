@@ -113,6 +113,7 @@ export class DatePicker extends React.PureComponent {
     isInvalid: false,
     mode: 'single',
     timeScale: 'date',
+    horizontalConstraint: 'scale',
   };
 
   componentWillMount = () => {
