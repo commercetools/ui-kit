@@ -1,14 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  number,
+} from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import Section from '../.storybook/decorators/section';
 import TextInputReadme from './text-input/README.md';
 import NumberInputReadme from './number-input/README.md';
+import MoneyInputReadme from './money-input/README.md';
 import TextInput from './text-input';
 import NumberInput from './number-input';
+import MoneyInput from './money-input';
 
 storiesOf('Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -58,6 +66,26 @@ storiesOf('Forms/Inputs', module)
               'm'
             )}
           />
+        )}
+      />
+    </Section>
+  ))
+  .addDecorator(withReadme(MoneyInputReadme))
+  .add('MoneyInput', () => (
+    <Section>
+      <MoneyInput
+        name={text('name', '')}
+        value={number('value', undefined)}
+        language={text('language', '')}
+        onChange={action('onChange')}
+        onBlur={action('onBlur')}
+        isDisabled={boolean('isDisabled', false)}
+        hasError={boolean('hasError', false)}
+        hasWarning={boolean('hasWarning', false)}
+        horizontalConstraint={select(
+          'horizontalConstraint',
+          ['xs', 's', 'm', 'l', 'xl', 'scale'],
+          'm'
         )}
       />
     </Section>
