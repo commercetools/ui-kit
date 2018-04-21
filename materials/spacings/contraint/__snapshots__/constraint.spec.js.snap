@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering by default should match snapshot 1`] = `
+<div
+  className="container constraintScale"
+>
+  <div />
+</div>
+`;
+
+exports[`rendering with \`horizontalConstraint\` should match snapshot 1`] = `
+<div
+  className="container constraintXl"
+>
+  <div />
+</div>
+`;
