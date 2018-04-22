@@ -33,6 +33,11 @@ storiesOf('Dates', module)
           { scale: 'Full-Width', static: 'Static' },
           'static'
         )}
+        horizontalConstraint={select(
+          'horizontalConstraint',
+          ['xs', 's', 'm', 'l', 'xl', 'scale'],
+          'm'
+        )}
       />
     </Section>
   ));
