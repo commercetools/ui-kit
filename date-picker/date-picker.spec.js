@@ -291,26 +291,6 @@ describe('<DatePicker />', () => {
       expect(wrapper).toRender('DatePickerBody');
     });
 
-    describe('with `horizontalConstraint`', () => {
-      beforeEach(() => {
-        props = createTestProps({
-          horizontalConstraint: 'xl',
-        });
-        wrapper = shallow(<DatePicker {...props} />);
-      });
-
-      it('should set a constraint class on the wrapper-div', () => {
-        expect(wrapper.find('div')).toHaveClassName('constraintXl');
-      });
-
-      it('should pass size `horizontalConstraint` to DatePickerBody', () => {
-        expect(wrapper.find('DatePickerBody')).toHaveProp(
-          'horizontalConstraint',
-          props.horizontalConstraint
-        );
-      });
-    });
-
     describe('formattedValue', () => {
       let datePickerBody;
       describe('with ranged values', () => {

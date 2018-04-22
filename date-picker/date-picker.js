@@ -8,8 +8,8 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { injectIntl } from 'react-intl';
 import moment from 'moment';
-import classnames from 'classnames';
 import { parseDateTime } from '@commercetools-local/utils/datetime';
+import Constraints from '../materials/constraints';
 import { DatePickerBody } from './date-picker-body';
 import './date-picker-ct-theme.mod.css';
 import styles from './date-picker.mod.css';
@@ -60,25 +60,6 @@ export const createFormatter = (timeScale, locale) => value => {
         .format('L');
     default:
       return value;
-  }
-};
-
-const getConstraintSyle = horizontalConstraint => {
-  switch (horizontalConstraint) {
-    case 'xs':
-      return styles.constraintXs;
-    case 's':
-      return styles.constraintS;
-    case 'm':
-      return styles.constraintM;
-    case 'l':
-      return styles.constraintL;
-    case 'xl':
-      return styles.constraintXl;
-    case 'scale':
-      return styles.constraintScale;
-    default:
-      return undefined;
   }
 };
 
@@ -249,27 +230,26 @@ export class DatePicker extends React.PureComponent {
 
   render() {
     return (
-      <div
-        className={classnames(
-          styles.container,
-          getConstraintSyle(this.props.horizontalConstraint)
-        )}
-        onMouseOver={this.handleMouseOver}
-        ref={this.getRef}
-      >
-        <DatePickerBody
-          formattedValue={
-            this.props.value && this.getFormattedValue(this.props.value)
-          }
-          isDisabled={this.props.isDisabled}
-          isInvalid={this.props.isInvalid}
-          onClearPicker={this.handleClearPicker}
-          placeholder={this.props.placeholder}
-          horizontalConstraint={this.props.horizontalConstraint}
-          timeScale={this.props.timeScale}
-          numberOfFormattedValueChars={this.numberOfFormattedValueChars}
-        />
-      </div>
+      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+        <div
+          className={styles.container}
+          onMouseOver={this.handleMouseOver}
+          ref={this.getRef}
+        >
+          <DatePickerBody
+            formattedValue={
+              this.props.value && this.getFormattedValue(this.props.value)
+            }
+            isDisabled={this.props.isDisabled}
+            isInvalid={this.props.isInvalid}
+            onClearPicker={this.handleClearPicker}
+            placeholder={this.props.placeholder}
+            horizontalConstraint={this.props.horizontalConstraint}
+            timeScale={this.props.timeScale}
+            numberOfFormattedValueChars={this.numberOfFormattedValueChars}
+          />
+        </div>
+      </Constraints.Horizontal>
     );
   }
 }

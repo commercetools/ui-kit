@@ -1,19 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<DatePicker /> rendering should match snapshot 1`] = `
-<div
-  className="container constraintScale"
-  onMouseOver={[Function]}
+<Horizontal
+  constraint="scale"
 >
-  <DatePickerBody
-    formattedValue={null}
-    horizontalConstraint="scale"
-    isDisabled={false}
-    isInvalid={false}
-    numberOfFormattedValueChars={10}
-    onClearPicker={[Function]}
-    placeholder="test"
-    timeScale="date"
-  />
-</div>
+  <div
+    className="container"
+    onMouseOver={[Function]}
+  >
+    <DatePickerBody
+      formattedValue={null}
+      horizontalConstraint="scale"
+      isDisabled={false}
+      isInvalid={false}
+      numberOfFormattedValueChars={10}
+      onClearPicker={[Function]}
+      placeholder="test"
+      timeScale="date"
+    />
+  </div>
+</Horizontal>
 `;
