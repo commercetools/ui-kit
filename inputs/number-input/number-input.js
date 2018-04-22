@@ -1,8 +1,8 @@
 import React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import Constraints from '../../materials/constraints';
 import styles from './number-input.mod.css';
 
 // NOTE: order is important here
@@ -18,54 +18,32 @@ const getStyles = props => {
   return styles.pristine;
 };
 
-const getConstraintSyle = horizontalConstraint => {
-  switch (horizontalConstraint) {
-    case 'xs':
-      return styles.constraintXs;
-    case 's':
-      return styles.constraintS;
-    case 'm':
-      return styles.constraintM;
-    case 'l':
-      return styles.constraintL;
-    case 'xl':
-      return styles.constraintXl;
-    case 'scale':
-      return styles.constraintScale;
-    default:
-      return undefined;
-  }
-};
-
 const NumberInput = props => (
-  <div
-    className={classnames(
-      styles.container,
-      getConstraintSyle(props.horizontalConstraint)
-    )}
-  >
-    <input
-      name={props.name}
-      type="number"
-      value={props.value}
-      min={props.min}
-      max={props.max}
-      step={props.step}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      disabled={props.isDisabled}
-      placeholder={props.placeholder}
-      className={getStyles(props)}
-      readOnly={props.isReadOnly}
-      autoFocus={props.isAutofocussed}
-      {...filterDataAttributes(props)}
-      /* ARIA */
-      aria-readonly={props.isReadOnly}
-      role="textbox"
-      contentEditable={!props.isReadOnly}
-    />
-  </div>
+  <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <div className={styles.container}>
+      <input
+        name={props.name}
+        type="number"
+        value={props.value}
+        min={props.min}
+        max={props.max}
+        step={props.step}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
+        disabled={props.isDisabled}
+        placeholder={props.placeholder}
+        className={getStyles(props)}
+        readOnly={props.isReadOnly}
+        autoFocus={props.isAutofocussed}
+        {...filterDataAttributes(props)}
+        /* ARIA */
+        aria-readonly={props.isReadOnly}
+        role="textbox"
+        contentEditable={!props.isReadOnly}
+      />
+    </div>
+  </Constraints.Horizontal>
 );
 
 NumberInput.displayName = 'NumberInput';
