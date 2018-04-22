@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import styled from 'styled-components';
-import Constraint from './constraint';
+import Horizontal from './horizontal';
 import Readme from './README.md';
 
 const Stack = styled.div`
@@ -32,17 +32,17 @@ const sizes = [
   { name: 'xl', width: '100%' },
 ];
 
-storiesOf('Spacings', module)
+storiesOf('Constraints', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('Constarint', () => {
-    const horizontalConstraint = select(
-      'horizontalConstraint',
+  .add('Horizontal', () => {
+    const constraint = select(
+      'constraint',
       ['xs', 's', 'm', 'l', 'xl', 'scale'],
       'scale'
     );
     return (
-      <Constraint horizontalConstraint={horizontalConstraint}>
+      <Horizontal constraint={constraint}>
         <Stack>
           {sizes.map(size => (
             <Row key={size.name}>
@@ -50,6 +50,6 @@ storiesOf('Spacings', module)
             </Row>
           ))}
         </Stack>
-      </Constraint>
+      </Horizontal>
     );
   });

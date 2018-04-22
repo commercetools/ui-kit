@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Constraint from './constraint';
+import Horizontal from './horizontal';
 
 describe('rendering', () => {
   describe('by default', () => {
@@ -8,9 +8,9 @@ describe('rendering', () => {
 
     beforeEach(() => {
       wrapper = shallow(
-        <Constraint>
+        <Horizontal>
           <div />
-        </Constraint>
+        </Horizontal>
       );
     });
 
@@ -27,16 +27,16 @@ describe('rendering', () => {
     });
   });
 
-  describe('with `horizontalConstraint`', () => {
+  describe('with `constraint`', () => {
     let wrapper;
     let props;
 
     beforeEach(() => {
-      props = { horizontalConstraint: 'xl' };
+      props = { constraint: 'xl' };
       wrapper = shallow(
-        <Constraint {...props}>
+        <Horizontal {...props}>
           <div />
-        </Constraint>
+        </Horizontal>
       );
     });
 

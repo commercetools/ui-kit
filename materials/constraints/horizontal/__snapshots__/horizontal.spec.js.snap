@@ -8,7 +8,7 @@ exports[`rendering by default should match snapshot 1`] = `
 </div>
 `;
 
-exports[`rendering with \`horizontalConstraint\` should match snapshot 1`] = `
+exports[`rendering with \`constraint\` should match snapshot 1`] = `
 <div
   className="container constraintXl"
 >
