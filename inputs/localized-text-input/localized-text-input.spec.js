@@ -105,16 +105,6 @@ describe('rendering', () => {
     });
   });
 
-  describe('when horizontal size is set', () => {
-    beforeEach(() => {
-      props = createTestProps({ horizontalConstraint: 's' });
-      wrapper = shallow(<LocalizedTextInput {...props} />);
-    });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-
   describe('when there is an error', () => {
     beforeEach(() => {
       props = createTestProps({ error: { missing: true } });

@@ -68,8 +68,8 @@ exports[`rendering other languages should sort them by the length 1`] = `
 `;
 
 exports[`rendering when autofocus is activated should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -91,12 +91,12 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
       isDefaultClosed={true}
     />
   </Stack>
-</div>
+</Horizontal>
 `;
 
 exports[`rendering when disabled should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -118,12 +118,12 @@ exports[`rendering when disabled should match snapshot 1`] = `
       isDefaultClosed={true}
     />
   </Stack>
-</div>
+</Horizontal>
 `;
 
 exports[`rendering when expanded by default should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -144,12 +144,12 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
       isDefaultClosed={false}
     />
   </Stack>
-</div>
+</Horizontal>
 `;
 
 exports[`rendering when expansion toggle feature is disabled should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -170,38 +170,12 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
       isDefaultClosed={true}
     />
   </Stack>
-</div>
-`;
-
-exports[`rendering when horizontal size is set should match snapshot 1`] = `
-<div
-  className="constraintS"
->
-  <Stack
-    alignItems="stretch"
-    scale="s"
-  >
-    <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="s"
-        id="localized-text-input-1-en"
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
-    />
-  </Stack>
-</div>
+</Horizontal>
 `;
 
 exports[`rendering when in read-only mode should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -223,12 +197,12 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
       isDefaultClosed={true}
     />
   </Stack>
-</div>
+</Horizontal>
 `;
 
 exports[`rendering when placeholders are provided should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -250,12 +224,12 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
       isDefaultClosed={true}
     />
   </Stack>
-</div>
+</Horizontal>
 `;
 
 exports[`rendering when there is an error should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -279,12 +253,12 @@ exports[`rendering when there is an error should match snapshot 1`] = `
       isDefaultClosed={true}
     />
   </Stack>
-</div>
+</Horizontal>
 `;
 
 exports[`rendering with minimal props should match snapshot 1`] = `
-<div
-  className="constraintScale"
+<Horizontal
+  constraint="scale"
 >
   <Stack
     alignItems="stretch"
@@ -305,5 +279,5 @@ exports[`rendering with minimal props should match snapshot 1`] = `
       isDefaultClosed={true}
     />
   </Stack>
-</div>
+</Horizontal>
 `;

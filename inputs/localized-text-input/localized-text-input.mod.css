@@ -11,30 +11,6 @@
 
 /* Base */
 
-.constraintScale {
-  width: var(--constraint-scale);
-}
-
-.constraintXs {
-  max-width: var(--constraint-xs);
-}
-
-.constraintS {
-  max-width: var(--constraint-s);
-}
-
-.constraintM {
-  max-width: var(--constraint-m);
-}
-
-.constraintL {
-  max-width: var(--constraint-l);
-}
-
-.constraintXl {
-  max-width: var(--constraint-xl);
-}
-
 .fieldContainer {
   width: 100%;
   position: relative;

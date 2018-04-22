@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import classnames from 'classnames';
 import sortBy from 'lodash.sortby';
 import oneLine from 'common-tags/lib/oneLine';
 import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
+import Constraints from '../../materials/constraints';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
@@ -163,16 +163,7 @@ export default class LocalizedTextInput extends React.Component {
       language => language.length
     );
     return (
-      <div
-        className={classnames({
-          [styles.constraintXs]: this.props.horizontalConstraint === 'xs',
-          [styles.constraintS]: this.props.horizontalConstraint === 's',
-          [styles.constraintM]: this.props.horizontalConstraint === 'm',
-          [styles.constraintL]: this.props.horizontalConstraint === 'l',
-          [styles.constraintXl]: this.props.horizontalConstraint === 'xl',
-          [styles.constraintScale]: this.props.horizontalConstraint === 'scale',
-        })}
-      >
+      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack>
           <div>
             <LocalizedInput
@@ -254,7 +245,7 @@ export default class LocalizedTextInput extends React.Component {
             )}
           </Collapsible>
         </Spacings.Stack>
-      </div>
+      </Constraints.Horizontal>
     );
   }
 }
