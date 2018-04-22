@@ -19,7 +19,7 @@ describe('rendering', () => {
         'data-test': 'baz',
       });
       const wrapper = shallow(<TextInput {...props} />);
-      input = wrapper.children().at(0);
+      input = wrapper.find('input');
     });
     it('should forward the attributes', () => {
       expect(input).toHaveProp('data-foo', 'bar');
@@ -34,7 +34,7 @@ describe('rendering', () => {
         value: 'foo',
       });
       const wrapper = shallow(<TextInput {...props} />);
-      input = wrapper.children().at(0);
+      input = wrapper.find('input');
     });
 
     it('should have class for pristine styles', () => {
@@ -56,56 +56,6 @@ describe('rendering', () => {
     it('should have passed value', () => {
       expect(input).toHaveProp('value', 'foo');
     });
-
-    describe('horizontalConstraint', () => {
-      let inputWrapper;
-      describe('with constraint', () => {
-        beforeEach(() => {
-          const props = createTestProps({ horizontalConstraint: 's' });
-          const wrapper = shallow(
-            <div>
-              <TextInput {...props} />
-            </div>
-          );
-          inputWrapper = wrapper.children().at(0);
-          input = shallow(<TextInput {...props} />);
-        });
-        it('should match snapshot', () => {
-          expect(inputWrapper).toMatchSnapshot();
-        });
-        describe('input', () => {
-          it('should match snapshot', () => {
-            expect(inputWrapper).toMatchSnapshot();
-          });
-          it('should have `constraintS` className', () => {
-            expect(input).toHaveClassName('constraintS');
-          });
-        });
-      });
-      describe('without constraint', () => {
-        beforeEach(() => {
-          const props = createTestProps();
-          const wrapper = shallow(
-            <div>
-              <TextInput {...props} />
-            </div>
-          );
-          inputWrapper = wrapper.children().at(0);
-          input = shallow(<TextInput {...props} />);
-        });
-        it('should match snapshot', () => {
-          expect(inputWrapper).toMatchSnapshot();
-        });
-        describe('input', () => {
-          it('should match snapshot', () => {
-            expect(inputWrapper).toMatchSnapshot();
-          });
-          it('should have `constraintScale` className', () => {
-            expect(input).toHaveClassName('constraintScale');
-          });
-        });
-      });
-    });
     describe('with states', () => {
       describe('warning', () => {
         beforeEach(() => {
@@ -113,7 +63,7 @@ describe('rendering', () => {
             hasWarning: true,
           });
           const wrapper = shallow(<TextInput {...props} />);
-          input = wrapper.children().at(0);
+          input = wrapper.find('input');
         });
 
         it('should have warning styles', () => {
@@ -126,7 +76,7 @@ describe('rendering', () => {
             hasError: true,
           });
           const wrapper = shallow(<TextInput {...props} />);
-          input = wrapper.children().at(0);
+          input = wrapper.find('input');
         });
 
         it('should have error styles', () => {
@@ -139,7 +89,7 @@ describe('rendering', () => {
             isDisabled: true,
           });
           const wrapper = shallow(<TextInput {...props} />);
-          input = wrapper.children().at(0);
+          input = wrapper.find('input');
         });
 
         it('should have class for the disabled state', () => {
@@ -152,17 +102,16 @@ describe('rendering', () => {
           const props = createTestProps({
             isReadOnly: true,
           });
-          wrapper = shallow(<TextInput {...props} />)
-            .children()
-            .at(0);
+          wrapper = shallow(<TextInput {...props} />);
+          input = wrapper.find('input');
         });
 
         it('should have class for the readonly state', () => {
-          expect(wrapper).toHaveClassName('readonly');
+          expect(input).toHaveClassName('readonly');
         });
 
         it('should have ARIA properties for the readonly state', () => {
-          expect(wrapper).toHaveProp('aria-readonly', true);
+          expect(input).toHaveProp('aria-readonly', true);
         });
       });
     });
@@ -180,7 +129,7 @@ describe('callbacks', () => {
         onChange: jest.fn(),
       });
       wrapper = shallow(<TextInput {...props} />);
-      input = wrapper.children().at(0);
+      input = wrapper.find('input');
       input.simulate('change', { target: { value: 'bar' } });
     });
 
@@ -206,7 +155,7 @@ describe('callbacks', () => {
         onFocus: jest.fn(),
       });
       wrapper = shallow(<TextInput {...props} />);
-      input = wrapper.children().at(0);
+      input = wrapper.find('input');
       input.simulate('focus');
     });
 
@@ -228,7 +177,7 @@ describe('callbacks', () => {
         onBlur: jest.fn(),
       });
       wrapper = shallow(<TextInput {...props} />);
-      input = wrapper.children().at(0);
+      input = wrapper.find('input');
       input.simulate('blur');
     });
 
@@ -250,7 +199,7 @@ describe('callbacks', () => {
         onFocus: jest.fn(),
       });
       wrapper = shallow(<TextInput {...props} />);
-      input = wrapper.children().at(0);
+      input = wrapper.find('input');
     });
 
     it('should autofocus prop be true', () => {

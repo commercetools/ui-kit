@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-local/utils/dataset';
-import classnames from 'classnames';
+import Constraints from '../../materials/constraints';
 import styles from './text-input.mod.css';
 
 // NOTE: order is important here
@@ -19,35 +19,28 @@ const getStyles = props => {
 };
 
 const TextInput = props => (
-  <div
-    className={classnames(styles.container, {
-      [styles.constraintXs]: props.horizontalConstraint === 'xs',
-      [styles.constraintS]: props.horizontalConstraint === 's',
-      [styles.constraintM]: props.horizontalConstraint === 'm',
-      [styles.constraintL]: props.horizontalConstraint === 'l',
-      [styles.constraintXl]: props.horizontalConstraint === 'xl',
-      [styles.constraintScale]: props.horizontalConstraint === 'scale',
-    })}
-  >
-    <input
-      name={props.name}
-      type="text"
-      value={props.value}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      disabled={props.isDisabled}
-      placeholder={props.placeholder}
-      className={getStyles(props)}
-      readOnly={props.isReadOnly}
-      autoFocus={props.isAutofocussed}
-      {...filterDataAttributes(props)}
-      /* ARIA */
-      aria-readonly={props.isReadOnly}
-      role="textbox"
-      contentEditable={!props.isReadOnly}
-    />
-  </div>
+  <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <div className={styles.container}>
+      <input
+        name={props.name}
+        type="text"
+        value={props.value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
+        disabled={props.isDisabled}
+        placeholder={props.placeholder}
+        className={getStyles(props)}
+        readOnly={props.isReadOnly}
+        autoFocus={props.isAutofocussed}
+        {...filterDataAttributes(props)}
+        /* ARIA */
+        aria-readonly={props.isReadOnly}
+        role="textbox"
+        contentEditable={!props.isReadOnly}
+      />
+    </div>
+  </Constraints.Horizontal>
 );
 
 TextInput.displayName = 'TextInput';
