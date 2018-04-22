@@ -26,14 +26,15 @@ other element. This might apply to search terms or categories of a product.
 
 #### Properties
 
-| Props        | Type     | Required | Values              | Default  | Description                                                        |
-| ------------ | -------- | :------: | ------------------- | -------- | ------------------------------------------------------------------ |
-| `type`       | `string` |    -     | `normal`, `warning` | `normal` | Indicates color scheme of the tag                                  |
-| `linkTo`     | `string` |    -     | -                   | -        | Location the tag links to when enabled                             |
-| `isDisabled` | `bool`   |    -     | -                   | `false`  | Disables the tag and the option to remove                          |
-| `onClick`    | `func`   |    -     | -                   | -        | Called when tag is clicked (but not when remove button is clicked) |
-| `onRemove`   | `func`   |    -     | -                   | -        | Called when remove is clicked                                      |
-| `children`   | `node`   |    ✅    | -                   | -        | Content rendered within the tag                                    |
+| Props                  | Type     | Required | Values                             | Default  | Description                                                        |
+| ---------------------- | -------- | :------: | ---------------------------------- | -------- | ------------------------------------------------------------------ |
+| `type`                 | `string` |    -     | `normal`, `warning`                | `normal` | Indicates color scheme of the tag                                  |
+| `linkTo`               | `string` |    -     | -                                  | -        | Location the tag links to when enabled                             |
+| `isDisabled`           | `bool`   |    -     | -                                  | `false`  | Disables the tag and the option to remove                          |
+| `onClick`              | `func`   |    -     | -                                  | -        | Called when tag is clicked (but not when remove button is clicked) |
+| `onRemove`             | `func`   |    -     | -                                  | -        | Called when remove is clicked                                      |
+| `children`             | `node`   |    ✅    | -                                  | -        | Content rendered within the tag                                    |
+| `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale`  | Horizontal size limit of the input field.                          |
 
 #### Where to use
 

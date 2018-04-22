@@ -15,6 +15,11 @@ const Story = () => (
       linkTo={select('linkTo', ['/foo', undefined], undefined)}
       isDisabled={boolean('isDisabled', false)}
       onClick={boolean('onClick', false) ? action('onClick') : undefined}
+      horizontalConstraint={select(
+        'horizontalConstraint',
+        ['xs', 's', 'm', 'l', 'xl', 'scale'],
+        'm'
+      )}
       onRemove={boolean('onRemove', false) ? action('onRemove') : undefined}
     >
       {text('Children', 'Icecream')}

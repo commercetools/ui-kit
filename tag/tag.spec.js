@@ -192,12 +192,14 @@ describe('<Tag />', () => {
   describe('rendering', () => {
     let props;
     let wrapper;
+    let tagWrapper;
 
     describe('when of type `normal` (default)', () => {
       beforeEach(() => {
         props = createTestProps();
 
         wrapper = shallow(<Tag {...props} />);
+        tagWrapper = wrapper.find('.wrapper');
       });
 
       it('should output correct tree', () => {
@@ -205,7 +207,7 @@ describe('<Tag />', () => {
       });
 
       it('should apply `wrapperTypeNormal` class name', () => {
-        expect(wrapper).toHaveClassName('wrapperTypeNormal');
+        expect(tagWrapper).toHaveClassName('wrapperTypeNormal');
       });
     });
 
@@ -214,6 +216,7 @@ describe('<Tag />', () => {
         props = createTestProps({ type: 'warning' });
 
         wrapper = shallow(<Tag {...props} />);
+        tagWrapper = wrapper.find('.wrapper');
       });
 
       it('should output correct tree', () => {
@@ -221,7 +224,7 @@ describe('<Tag />', () => {
       });
 
       it('should apply `wrapperTypeWarning` class name', () => {
-        expect(wrapper).toHaveClassName('wrapperTypeWarning');
+        expect(tagWrapper).toHaveClassName('wrapperTypeWarning');
       });
     });
 
@@ -232,6 +235,7 @@ describe('<Tag />', () => {
         });
 
         wrapper = shallow(<Tag {...props} />);
+        tagWrapper = wrapper.find('.wrapper');
       });
 
       it('should output correct tree', () => {
@@ -239,7 +243,7 @@ describe('<Tag />', () => {
       });
 
       it('should apply `disabledWrapper` class name', () => {
-        expect(wrapper).toHaveClassName('disabledWrapper');
+        expect(tagWrapper).toHaveClassName('disabledWrapper');
       });
     });
 

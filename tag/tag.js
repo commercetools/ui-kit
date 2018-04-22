@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Constraints from '../materials/constraints';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
@@ -94,48 +95,54 @@ TagNormalBody.propTypes = {
 };
 
 const Tag = props => (
-  <div
-    className={classnames(styles.wrapper, getWrapperTypeClassName(props.type), {
-      [styles.disabledWrapper]: props.isDisabled,
-    })}
-  >
-    {props.linkTo ? (
-      <TagLinkBody
-        type={props.type}
-        onClick={props.onClick}
-        onRemove={props.onRemove}
-        linkTo={props.linkTo}
-        isDisabled={props.isDisabled}
-      >
-        {props.children}
-      </TagLinkBody>
-    ) : (
-      <TagNormalBody
-        type={props.type}
-        onClick={props.onClick}
-        onRemove={props.onRemove}
-        isDisabled={props.isDisabled}
-      >
-        {props.children}
-      </TagNormalBody>
-    )}
-    {Boolean(props.onRemove) && (
-      <AccessibleButton
-        label="Remove"
-        isDisabled={props.isDisabled}
-        onClick={props.isDisabled ? undefined : props.onRemove}
-        className={classnames(
-          styles.removeWrapper,
-          getRemoveWrapperTypeClassName(props.type),
-          {
-            [styles.disabledRemove]: props.isDisabled,
-          }
-        )}
-      >
-        <CloseBoldIcon size="small" />
-      </AccessibleButton>
-    )}
-  </div>
+  <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <div
+      className={classnames(
+        styles.wrapper,
+        getWrapperTypeClassName(props.type),
+        {
+          [styles.disabledWrapper]: props.isDisabled,
+        }
+      )}
+    >
+      {props.linkTo ? (
+        <TagLinkBody
+          type={props.type}
+          onClick={props.onClick}
+          onRemove={props.onRemove}
+          linkTo={props.linkTo}
+          isDisabled={props.isDisabled}
+        >
+          {props.children}
+        </TagLinkBody>
+      ) : (
+        <TagNormalBody
+          type={props.type}
+          onClick={props.onClick}
+          onRemove={props.onRemove}
+          isDisabled={props.isDisabled}
+        >
+          {props.children}
+        </TagNormalBody>
+      )}
+      {Boolean(props.onRemove) && (
+        <AccessibleButton
+          label="Remove"
+          isDisabled={props.isDisabled}
+          onClick={props.isDisabled ? undefined : props.onRemove}
+          className={classnames(
+            styles.removeWrapper,
+            getRemoveWrapperTypeClassName(props.type),
+            {
+              [styles.disabledRemove]: props.isDisabled,
+            }
+          )}
+        >
+          <CloseBoldIcon size="small" />
+        </AccessibleButton>
+      )}
+    </div>
+  </Constraints.Horizontal>
 );
 
 Tag.propTypes = {
@@ -144,11 +151,13 @@ Tag.propTypes = {
   isDisabled: PropTypes.bool,
   onRemove: PropTypes.func,
   onClick: PropTypes.func,
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   children: PropTypes.node.isRequired,
 };
 Tag.defaultProps = {
   type: 'normal',
   isDisabled: false,
+  horizontalConstraint: 'scale',
 };
 Tag.displayName = 'Tag';
 
