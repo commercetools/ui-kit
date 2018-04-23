@@ -63,6 +63,25 @@ export const createFormatter = (timeScale, locale) => value => {
   }
 };
 
+const getConstraintSyle = horizontalConstraint => {
+  switch (horizontalConstraint) {
+    case 'xs':
+      return styles.constraintXs;
+    case 's':
+      return styles.constraintS;
+    case 'm':
+      return styles.constraintM;
+    case 'l':
+      return styles.constraintL;
+    case 'xl':
+      return styles.constraintXl;
+    case 'scale':
+      return styles.constraintScale;
+    default:
+      return undefined;
+  }
+};
+
 export class DatePicker extends React.PureComponent {
   static displayName = 'DatePicker';
 
@@ -75,7 +94,7 @@ export class DatePicker extends React.PureComponent {
     onChange: PropTypes.func.isRequired,
     onClose: PropTypes.func,
     placeholder: PropTypes.string,
-    size: PropTypes.oneOf(['scale', 'static']),
+    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
     value: PropTypes.oneOfType([
       PropTypes.string,
@@ -93,8 +112,8 @@ export class DatePicker extends React.PureComponent {
     isDisabled: false,
     isInvalid: false,
     mode: 'single',
-    size: 'static',
     timeScale: 'date',
+    horizontalConstraint: 'scale',
   };
 
   componentWillMount = () => {
@@ -231,9 +250,10 @@ export class DatePicker extends React.PureComponent {
   render() {
     return (
       <div
-        className={classnames({
-          [styles.scale]: this.props.size === 'scale',
-        })}
+        className={classnames(
+          styles.container,
+          getConstraintSyle(this.props.horizontalConstraint)
+        )}
         onMouseOver={this.handleMouseOver}
         ref={this.getRef}
       >
@@ -245,7 +265,7 @@ export class DatePicker extends React.PureComponent {
           isInvalid={this.props.isInvalid}
           onClearPicker={this.handleClearPicker}
           placeholder={this.props.placeholder}
-          size={this.props.size}
+          horizontalConstraint={this.props.horizontalConstraint}
           timeScale={this.props.timeScale}
           numberOfFormattedValueChars={this.numberOfFormattedValueChars}
         />

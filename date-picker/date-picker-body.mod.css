@@ -5,15 +5,32 @@
 @import '../materials/sizes.mod.css';
 
 .date-input-container {
+  width: 100%;
   align-items: center;
   display: flex;
 }
 
-.scale {
-  flex-grow: 1;
+.constraintScale {
+  width: var(--constraint-scale);
+}
+.constraintXs {
+  max-width: var(--constraint-xs);
+}
+.constraintS {
+  max-width: var(--constraint-s);
+}
+.constraintM {
+  max-width: var(--constraint-m);
+}
+.constraintL {
+  max-width: var(--constraint-l);
+}
+.constraintXl {
+  max-width: var(--constraint-xl);
 }
 
 .date-input {
+  width: 100%;
   appearance: none;
   border-radius: var(--border-radius-6) 0 0 var(--border-radius-6);
   border-bottom: 1px solid var(--color-primaryGrey);

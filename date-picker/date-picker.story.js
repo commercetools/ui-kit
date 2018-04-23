@@ -24,10 +24,10 @@ storiesOf('Dates', module)
          * because the locale of flatpickr cannot be updated dynamically, you need to change the default (3rd parameter)
          * below */
         locale={select('locale', ['de', 'en'], 'en')}
-        size={select(
-          'size',
-          { scale: 'Full-Width', static: 'Static' },
-          'static'
+        horizontalConstraint={select(
+          'horizontalConstraint',
+          ['xs', 's', 'm', 'l', 'xl', 'scale'],
+          'm'
         )}
       />
     </Section>

@@ -13,9 +13,11 @@ class Group extends React.PureComponent {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
+    scale: PropTypes.string,
   };
   static defaultProps = {
     direction: 'stack',
+    scale: 'm',
   };
 
   componentWillMount() {
@@ -37,7 +39,7 @@ class Group extends React.PureComponent {
       this.props.direction === 'stack' ? Spacings.Stack : Spacings.Inline;
     return (
       <div className={this.props.className}>
-        <DirectionWrapper scale="m">
+        <DirectionWrapper scale={this.props.scale}>
           {React.Children.map(this.props.children, child => {
             // NOTE: Allowing to intersperse other elements than `Option`.
             if (child && child.type.displayName === Option.displayName)

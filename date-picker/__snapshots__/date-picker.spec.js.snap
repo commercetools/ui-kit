@@ -2,17 +2,17 @@
 
 exports[`<DatePicker /> rendering should match snapshot 1`] = `
 <div
-  className=""
+  className="container constraintScale"
   onMouseOver={[Function]}
 >
   <DatePickerBody
     formattedValue={null}
+    horizontalConstraint="scale"
     isDisabled={false}
     isInvalid={false}
     numberOfFormattedValueChars={10}
     onClearPicker={[Function]}
     placeholder="test"
-    size="static"
     timeScale="date"
   />
 </div>

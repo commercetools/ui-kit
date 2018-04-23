@@ -31,11 +31,12 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 
 ##### Radio.Group
 
-| Props      | Type     | Required | Values | Default | Description                                                                  |
-| ---------- | -------- | :------: | ------ | ------- | ---------------------------------------------------------------------------- |
-| `children` | `node`   |    ✅    | -      | -       | The `Radio.Option` or another node (mixed children are allowed)              |
-| `value`    | `string` |    -     | -      | -       | The selected value of the of a `Radio.Option` determining its checked status |
-| `onChange` | `func`   |    ✅    | -      | -       | What will trigger whenever an `Radio.Option` is clicked                      |
+| Props      | Type     | Required | Values                      | Default | Description                                                                  |
+| ---------- | -------- | :------: | --------------------------- | ------- | ---------------------------------------------------------------------------- |
+| `children` | `node`   |    ✅    | -                           | -       | The `Radio.Option` or another node (mixed children are allowed)              |
+| `value`    | `string` |    -     | -                           | -       | The selected value of the of a `Radio.Option` determining its checked status |
+| `onChange` | `func`   |    ✅    | -                           | -       | What will trigger whenever an `Radio.Option` is clicked                      |
+| `scale`    | `string` |    -     | ['xs', 's', 'm', 'l', 'xl'] | `m`     | Spacing between options                                                      |
 
 ##### Radio.Option
 

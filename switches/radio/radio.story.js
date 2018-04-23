@@ -21,6 +21,7 @@ storiesOf('Switches', module)
           'foo-value'
         )}
         direction={select('direction', ['stack', 'inline'], 'stack')}
+        scale={select('scale', ['xs', 's', 'm', 'l', 'xl'], 'm')}
       >
         <Radio.Option
           isDisabled={boolean('isFirstOptionDisabled', false)}
