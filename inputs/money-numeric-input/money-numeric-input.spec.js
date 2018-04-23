@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MoneyInput from './money-input';
+import MoneyNumericInput from './money-numeric-input';
 
 const createTestProps = customProps => ({
   language: 'en',
@@ -16,7 +16,7 @@ describe('rendering', () => {
       name: 'money-field1',
       value: 1,
     });
-    wrapper = shallow(<MoneyInput {...props} />);
+    wrapper = shallow(<MoneyNumericInput {...props} />);
     input = wrapper.children().at(0);
   });
 
@@ -28,21 +28,13 @@ describe('rendering', () => {
     expect(input).toHaveProp('name', 'money-field1');
   });
 
-  it('input should have a numberFormatType money', () => {
-    expect(input).toHaveProp('numberFormatType', 'money');
-  });
-
-  it('input should have passed language', () => {
-    expect(input).toHaveProp('numberFormat', 'en');
-  });
-
   describe('with states', () => {
     describe('disabled', () => {
       beforeEach(() => {
         props = createTestProps({
           isDisabled: true,
         });
-        wrapper = shallow(<MoneyInput {...props} />);
+        wrapper = shallow(<MoneyNumericInput {...props} />);
         input = wrapper.children().at(0);
       });
 
@@ -56,7 +48,7 @@ describe('rendering', () => {
         props = createTestProps({
           hasError: true,
         });
-        wrapper = shallow(<MoneyInput {...props} />);
+        wrapper = shallow(<MoneyNumericInput {...props} />);
         input = wrapper.children().at(0);
       });
 
@@ -70,7 +62,7 @@ describe('rendering', () => {
         props = createTestProps({
           hasWarning: true,
         });
-        wrapper = shallow(<MoneyInput {...props} />);
+        wrapper = shallow(<MoneyNumericInput {...props} />);
         input = wrapper.children().at(0);
       });
 
@@ -85,7 +77,7 @@ describe('rendering', () => {
       props = createTestProps({
         horizontalConstraint: 'xs',
       });
-      wrapper = shallow(<MoneyInput {...props} />);
+      wrapper = shallow(<MoneyNumericInput {...props} />);
     });
 
     it('should have `constraintXs` className', () => {
@@ -103,9 +95,13 @@ describe('callbacks', () => {
       props = createTestProps({
         onChange: jest.fn(),
       });
-      wrapper = shallow(<MoneyInput {...props} />);
+      wrapper = shallow(<MoneyNumericInput {...props} />);
       input = wrapper.children().at(0);
-      input.prop('onChangeValue')(10);
+      input.prop('onChange')({
+        target: {
+          rawValue: '10',
+        },
+      });
     });
 
     it('should call onChange', () => {
@@ -113,27 +109,32 @@ describe('callbacks', () => {
     });
 
     it('should call onChange with the new value', () => {
-      expect(props.onChange).toHaveBeenCalledWith(10);
+      expect(props.onChange).toHaveBeenCalledWith(1000);
     });
   });
 
   describe('when input loses focus', () => {
+    let owner;
     beforeEach(() => {
+      owner = {
+        setRawValue: jest.fn(),
+      };
       props = createTestProps({
         value: 10,
         onBlur: jest.fn(),
       });
-      wrapper = shallow(<MoneyInput {...props} />);
+      wrapper = shallow(<MoneyNumericInput {...props} />);
+      wrapper.instance().owner = owner;
       input = wrapper.children().at(0);
-      input.prop('onBlurValue')();
+      input.prop('onBlur')();
     });
 
     it('should call onBlur', () => {
       expect(props.onBlur).toHaveBeenCalled();
     });
 
-    it('should keep the same value', () => {
-      expect(input).toHaveProp('value', 10);
+    it('should call onBlur with the current value', () => {
+      expect(props.onBlur).toHaveBeenCalledWith(10);
     });
   });
 });

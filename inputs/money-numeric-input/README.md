@@ -1,4 +1,4 @@
-# MoneyInput
+# MoneyNumericInput
 
 #### Description
 
@@ -7,9 +7,9 @@ A controlled input component for money values with validation states.
 ## Usage
 
 ```js
-import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
+import MoneyNumericInput from '@commercetools-local/ui-kit/inputs/money-numeric-input';
 
-<MoneyInput language="en" value={10} />;
+<MoneyNumericInput language="en" value={10} />;
 ```
 
 #### Properties
@@ -19,6 +19,7 @@ import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
 | `name`                 | `string` |    -     | -                                  | -       | Used as HTML `name` property                                                                                                                   |
 | `value`                | `string` |    -     | -                                  | -       | Value of the input. This is a string as the parent is responsible for converting it into a number.                                             |
 | `language`             | `string` |    ✅    | -                                  | -       | Language of the input. This is a string as the parent is responsible for converting it into a money value according to format of the language. |
+| `placeholder`          | `string` |    -     | -                                  | -       | Placeholders for each language. Object of the same shape as `value`.                                                                           |
 | `onChange`             | `func`   |    -     | -                                  | -       | Called with the new value. Parent should pass it back as `value`                                                                               |
 | `onBlur`               | `func`   |    -     | -                                  | -       | Called when field is blurred                                                                                                                   |
 | `hasError`             | `bool`   |    -     | -                                  | -       | Indicates the input field has an error                                                                                                         |

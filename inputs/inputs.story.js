@@ -13,10 +13,10 @@ import { Value } from 'react-value';
 import Section from '../.storybook/decorators/section';
 import TextInputReadme from './text-input/README.md';
 import NumberInputReadme from './number-input/README.md';
-import MoneyInputReadme from './money-input/README.md';
+import MoneyNumericInputReadme from './money-numeric-input/README.md';
 import TextInput from './text-input';
 import NumberInput from './number-input';
-import MoneyInput from './money-input';
+import MoneyNumericInput from './money-numeric-input';
 
 storiesOf('Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -70,13 +70,14 @@ storiesOf('Forms/Inputs', module)
       />
     </Section>
   ))
-  .addDecorator(withReadme(MoneyInputReadme))
-  .add('MoneyInput', () => (
+  .addDecorator(withReadme(MoneyNumericInputReadme))
+  .add('MoneyNumericInput', () => (
     <Section>
-      <MoneyInput
+      <MoneyNumericInput
         name={text('name', '')}
         value={number('value', undefined)}
         language={text('language', '')}
+        placeholder={text('placeholder', '')}
         onChange={action('onChange')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}
