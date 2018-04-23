@@ -81,8 +81,7 @@ export class MoneyNumericInput extends React.PureComponent {
   };
 
   handleChange = event => {
-    const value = event.target.rawValue;
-    const parsedNumber = parseNumber(value);
+    const parsedNumber = parseNumber(event.target.rawValue);
 
     if (this.parsedValue === parsedNumber) return;
 
