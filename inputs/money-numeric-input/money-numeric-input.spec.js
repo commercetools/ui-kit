@@ -71,19 +71,6 @@ describe('rendering', () => {
       });
     });
   });
-
-  describe('horizontalConstraint', () => {
-    beforeEach(() => {
-      props = createTestProps({
-        horizontalConstraint: 'xs',
-      });
-      wrapper = shallow(<MoneyNumericInput {...props} />);
-    });
-
-    it('should have `constraintXs` className', () => {
-      expect(wrapper).toHaveClassName('constraintXs');
-    });
-  });
 });
 
 describe('callbacks', () => {
