@@ -1,36 +1,4 @@
 @import '../../materials/colors.mod.css';
-@import '../../materials/sizes.mod.css';
-
-/* Base */
-
-.constraintScale {
-  width: var(--constraint-scale);
-}
-
-.constraintXs {
-  max-width: var(--constraint-xs);
-}
-
-.constraintS {
-  max-width: var(--constraint-s);
-}
-
-.constraintM {
-  max-width: var(--constraint-m);
-}
-
-.constraintL {
-  max-width: var(--constraint-l);
-}
-
-.constraintXl {
-  max-width: var(--constraint-xl);
-}
-
-.container {
-  width: 100%;
-  position: relative;
-}
 
 .input-text {
   transition: all 0.2s ease;
@@ -71,8 +39,8 @@
 
 .warning {
   composes: input;
-  color: var(--color-CTOrange);
-  border-color: var(--color-CTOrange);
+  color: var(--color-orange);
+  border-color: var(--color-orange);
 }
 
 .error {

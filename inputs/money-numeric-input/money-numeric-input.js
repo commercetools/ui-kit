@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import isNil from 'lodash.isnil';
 import isUndefined from 'lodash.isundefined';
@@ -9,6 +8,7 @@ import {
   getSeparatorsForLocale,
   isNumberish,
 } from '@commercetools-local/utils/numbers';
+import Contraints from '../../materials/constraints';
 import styles from './money-numeric-input.mod.css';
 
 const getStyles = props => {
@@ -35,25 +35,6 @@ const parseNumber = number => {
   if (number === '' || !isNumberish(number)) return undefined;
 
   return Math.trunc(Math.round(number * 100));
-};
-
-const getConstraintSyle = horizontalConstraint => {
-  switch (horizontalConstraint) {
-    case 'xs':
-      return styles.constraintXs;
-    case 's':
-      return styles.constraintS;
-    case 'm':
-      return styles.constraintM;
-    case 'l':
-      return styles.constraintL;
-    case 'xl':
-      return styles.constraintXl;
-    case 'scale':
-      return styles.constraintScale;
-    default:
-      return undefined;
-  }
 };
 
 export class MoneyNumericInput extends React.PureComponent {
@@ -91,7 +72,6 @@ export class MoneyNumericInput extends React.PureComponent {
   setValue = value => {
     if (!isValidValue(value)) return;
     const newValue = !isUndefined(value) ? formatNumber(value) : undefined;
-
     this.owner.setRawValue(newValue);
   };
 
@@ -122,12 +102,7 @@ export class MoneyNumericInput extends React.PureComponent {
   render() {
     const separators = getSeparatorsForLocale(this.props.language);
     return (
-      <div
-        className={classnames(
-          styles.container,
-          getConstraintSyle(this.props.horizontalConstraint)
-        )}
-      >
+      <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Cleave
           placeholder={this.props.placeholder}
           htmlRef={this.registerInputRef}
@@ -151,7 +126,7 @@ export class MoneyNumericInput extends React.PureComponent {
           onBlur={this.handleBlur}
           disabled={this.props.isDisabled}
         />
-      </div>
+      </Contraints.Horizontal>
     );
   }
 }
