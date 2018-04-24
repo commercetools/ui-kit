@@ -72,11 +72,11 @@ export class MoneyNumericInput extends React.PureComponent {
   setValue = value => {
     if (!isValidValue(value)) return;
     const newValue = !isUndefined(value) ? formatNumber(value) : undefined;
-    this.owner.setRawValue(newValue);
+    this.cleaveComponentReference.setRawValue(newValue);
   };
 
-  handleInit = owner => {
-    this.owner = owner;
+  handleInit = cleaveComponentReference => {
+    this.cleaveComponentReference = cleaveComponentReference;
     this.setValue(this.props.value);
   };
 
@@ -100,7 +100,7 @@ export class MoneyNumericInput extends React.PureComponent {
     if (this.props.onBlur) this.props.onBlur(this.props.value);
   };
 
-  registerInputRef = ref => {
+  registerTextInputRef = ref => {
     this.textInput = ref;
   };
 
@@ -110,7 +110,7 @@ export class MoneyNumericInput extends React.PureComponent {
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Cleave
           placeholder={this.props.placeholder}
-          htmlRef={this.registerInputRef}
+          htmlRef={this.registerTextInputRef}
           options={{
             numeral: true,
             numeralThousandsGroupStyle: 'thousand',

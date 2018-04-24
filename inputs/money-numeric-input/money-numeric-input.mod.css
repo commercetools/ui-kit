@@ -1,8 +1,10 @@
 @import '../../materials/colors.mod.css';
+@import '../../materials/borders.mod.css';
+@import '../../materials/transitions.mod.css';
 
 .input-text {
-  transition: all 0.2s ease;
-  border-radius: 6px;
+  transition: var(--transition-standard);
+  border-radius: var(--border-radius-6);
   border-style: solid;
   border-width: 1px;
   color: var(--color-greyTundora);

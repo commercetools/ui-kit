@@ -103,9 +103,9 @@ describe('callbacks', () => {
   });
 
   describe('when input loses focus', () => {
-    let owner;
+    let cleaveComponentReference;
     beforeEach(() => {
-      owner = {
+      cleaveComponentReference = {
         setRawValue: jest.fn(),
       };
       props = createTestProps({
@@ -113,7 +113,7 @@ describe('callbacks', () => {
         onBlur: jest.fn(),
       });
       wrapper = shallow(<MoneyNumericInput {...props} />);
-      wrapper.instance().owner = owner;
+      wrapper.instance().cleaveComponentReference = cleaveComponentReference;
       input = wrapper.children().at(0);
       input.prop('onBlur')();
     });
