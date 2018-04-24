@@ -96,7 +96,9 @@ describe('callbacks', () => {
     });
 
     it('should call onChange with the new value', () => {
-      expect(props.onChange).toHaveBeenCalledWith(1000);
+      expect(props.onChange).toHaveBeenCalledWith({
+        target: { rawValue: '10', value: 1000 },
+      });
     });
   });
 

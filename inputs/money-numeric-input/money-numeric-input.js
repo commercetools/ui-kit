@@ -60,7 +60,7 @@ export class MoneyNumericInput extends React.PureComponent {
 
   parsedNumber = this.props.value;
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     if (
       this.props.value !== nextProps.value &&
       nextProps.value !== this.parsedValue
@@ -86,7 +86,13 @@ export class MoneyNumericInput extends React.PureComponent {
     if (this.parsedValue === parsedNumber) return;
 
     this.parsedValue = parsedNumber;
-    this.props.onChange(parsedNumber);
+    this.props.onChange({
+      ...event,
+      target: {
+        ...event.target,
+        value: parsedNumber,
+      },
+    });
   };
 
   handleBlur = () => {
