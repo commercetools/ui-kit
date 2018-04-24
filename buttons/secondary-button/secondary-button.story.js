@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
@@ -15,17 +16,19 @@ storiesOf('Buttons', module)
   .addDecorator(withReadme(Readme))
   .add('SecondaryButton', () => (
     <Section>
-      <SecondaryButton
-        theme={select('theme', ['apple-green', 'blue', 'default'], 'default')}
-        iconLeft={React.createElement(
-          icons[select('icon', iconNames, iconNames[0])]
-        )}
-        onClick={action('onClick')}
-        label={text('label', 'Accessibility text')}
-        isToggleButton={boolean('isToggleButton', false)}
-        isToggled={boolean('isToggled', false)}
-        isDisabled={boolean('isDisabled', false)}
-        linkTo={text('to')}
-      />
+      <MemoryRouter>
+        <SecondaryButton
+          theme={select('theme', ['apple-green', 'blue', 'default'], 'default')}
+          iconLeft={React.createElement(
+            icons[select('icon', iconNames, iconNames[0])]
+          )}
+          onClick={action('onClick')}
+          label={text('label', 'Accessibility text')}
+          isToggleButton={boolean('isToggleButton', false)}
+          isToggled={boolean('isToggled', false)}
+          isDisabled={boolean('isDisabled', false)}
+          linkTo={text('to')}
+        />
+      </MemoryRouter>
     </Section>
   ));

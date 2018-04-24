@@ -15,6 +15,7 @@ exports[`rendering structure should output correct tree 1`] = `
       }
     }
     className="button"
+    isDisabled={false}
     isToggleButton={false}
     label=""
     onClick={[Function]}
@@ -44,6 +45,7 @@ exports[`rendering with icon should output correct tree 1`] = `
       }
     }
     className="button"
+    isDisabled={false}
     isToggleButton={false}
     label=""
     onClick={[Function]}

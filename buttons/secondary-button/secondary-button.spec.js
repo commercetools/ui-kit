@@ -1,12 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { FilterIcon } from '../../icons';
+import AccessibleButton from '../accessible-button';
 import { SecondaryButton, getIconThemeColor } from './secondary-button';
 
 const createProps = custom => ({
   label: '',
   onClick: () => {},
   iconLeft: '',
+  isDisabled: false,
 
   // HoC
   isMouseDown: false,
@@ -325,15 +327,45 @@ describe('interaction', () => {
   describe('with `linkTo` prop', () => {
     let props;
     let wrapper;
-    beforeEach(() => {
-      props = createProps({ linkTo: '/foo/bar' });
-      wrapper = shallow(<SecondaryButton {...props} />);
+    describe('when not disabled', () => {
+      beforeEach(() => {
+        props = createProps({ linkTo: '/foo/bar' });
+        wrapper = shallow(<SecondaryButton {...props} />);
+      });
+      it('should render a `Link` component', () => {
+        expect(wrapper).toRender('Link');
+      });
+      it('should propagate `linkTo` to the `Link`', () => {
+        expect(wrapper.find('Link')).toHaveProp('to', '/foo/bar');
+      });
     });
-    it('should render a `Link` component', () => {
-      expect(wrapper).toRender('Link');
-    });
-    it('should propagate `linkTo` to the `Link`', () => {
-      expect(wrapper.find('Link')).toHaveProp('to', '/foo/bar');
+    describe('when disabled', () => {
+      beforeEach(() => {
+        props = createProps({
+          linkTo: '/foo/bar',
+          isDisabled: true,
+          onClick: jest.fn(),
+        });
+        wrapper = shallow(<SecondaryButton {...props} />);
+      });
+      it('should not render a `Link` component', () => {
+        expect(wrapper).not.toRender('Link');
+      });
+      it('should render <Div>', () => {
+        expect(wrapper).toRender('Div');
+      });
+      it('should not propagate `linkTo`', () => {
+        expect(wrapper.find('Div')).not.toHaveProp('to');
+      });
+
+      describe('when clicking <AccessibleButton>', () => {
+        beforeEach(() => {
+          wrapper.find(AccessibleButton).prop('onClick')();
+        });
+        it('should call `onClick`', () => {
+          expect(props.onClick).toHaveBeenCalledTimes(1);
+        });
+      });
     });
   });
 });
