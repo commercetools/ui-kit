@@ -52,7 +52,7 @@ const getThemeClassName = theme => {
   return themeClassName;
 };
 
-const getShouldLink = ({ isDisabled, linkTo }) => {
+export const getShouldLink = ({ isDisabled, linkTo }) => {
   if (isDisabled) return false;
   return linkTo !== undefined;
 };

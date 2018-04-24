@@ -2,7 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FilterIcon } from '../../icons';
 import AccessibleButton from '../accessible-button';
-import { SecondaryButton, getIconThemeColor } from './secondary-button';
+import {
+  SecondaryButton,
+  getIconThemeColor,
+  getShouldLink,
+} from './secondary-button';
 
 const createProps = custom => ({
   label: '',
@@ -371,9 +375,9 @@ describe('interaction', () => {
 });
 
 describe('utils', () => {
+  let props;
   describe('getIconThemeColor', () => {
     describe('when is toggled', () => {
-      let props;
       beforeEach(() => {
         props = createProps({
           theme: 'blue',
@@ -387,12 +391,54 @@ describe('utils', () => {
       });
     });
     describe('when is disabled', () => {
-      let props;
       beforeEach(() => {
         props = createProps({ isDisabled: true });
       });
       it('should return `grey` color as a theme class', () => {
         expect(getIconThemeColor(props)).toBe('grey');
+      });
+    });
+  });
+  describe('getShouldLink', () => {
+    let shouldLink;
+    describe('when disabled', () => {
+      describe('with linkTo', () => {
+        beforeEach(() => {
+          props = createProps({
+            linkTo: '/foo/bar',
+            isDisabled: true,
+          });
+          shouldLink = getShouldLink(props);
+        });
+        it('should return `false`', () => {
+          expect(shouldLink).toBe(false);
+        });
+      });
+    });
+    describe('when not disabled', () => {
+      describe('with linkTo', () => {
+        beforeEach(() => {
+          props = createProps({
+            linkTo: '/foo/bar',
+            isDisabled: false,
+          });
+          shouldLink = getShouldLink(props);
+        });
+        it('should return `true`', () => {
+          expect(shouldLink).toBe(true);
+        });
+      });
+      describe('without linkTo', () => {
+        beforeEach(() => {
+          props = createProps({
+            linkTo: undefined,
+            isDisabled: false,
+          });
+          shouldLink = getShouldLink(props);
+        });
+        it('should return `false`', () => {
+          expect(shouldLink).toBe(false);
+        });
       });
     });
   });
