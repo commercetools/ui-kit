@@ -77,7 +77,7 @@ storiesOf('Forms/Inputs', module)
         name={text('name', '')}
         value={number('value', undefined)}
         language={text('language', '')}
-        placeholder={text('placeholder', '')}
+        placeholder={text('placeholder', 'Placeholder')}
         onChange={action('onChange')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}

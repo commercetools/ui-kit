@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash.isnil';
-import isUndefined from 'lodash.isundefined';
-import isFinite from 'lodash.isfinite';
 import Cleave from 'cleave.js/react';
 import {
   getSeparatorsForLocale,
@@ -16,14 +14,8 @@ const getStyles = props => {
   if (props.hasError) return styles.error;
   if (props.hasWarning) return styles.warning;
 
-  return styles.input;
+  return styles.pristine;
 };
-
-// only allow values of type Number or values that are nil (null or undefined)
-// use isFinite to exclude Infitinty, -Inifinity and NaN
-const isValidValue = value => isFinite(value) || isNil(value);
-
-const formatNumber = number => (isNil(number) ? number : number.toFixed(2));
 
 // Since the Cleave component might call the onChange handler with a string
 // we need to cast the string back to a number.
@@ -31,10 +23,10 @@ const formatNumber = number => (isNil(number) ? number : number.toFixed(2));
 // - null
 // - undefined
 // - JavaScript number
-const parseNumber = number => {
+const parseMoney = number => {
   if (number === '' || !isNumberish(number)) return undefined;
 
-  return Math.trunc(Math.round(number * 100));
+  return parseFloat(number * 0.01).toFixed(2);
 };
 
 export class MoneyNumericInput extends React.PureComponent {
@@ -58,39 +50,47 @@ export class MoneyNumericInput extends React.PureComponent {
     isDisabled: false,
   };
 
-  parsedNumber = this.props.value;
-
-  componentDidUpdate(nextProps) {
-    if (
-      this.props.value !== nextProps.value &&
-      nextProps.value !== this.parsedValue
-    ) {
-      this.setValue(nextProps.value);
-    }
-  }
-
-  setValue = value => {
-    if (!isValidValue(value)) return;
-    const newValue = !isUndefined(value) ? formatNumber(value) : undefined;
-    this.cleaveComponentReference.setRawValue(newValue);
+  state = {
+    moneyValue: parseMoney(this.props.value),
+    centAmountValue: this.props.value,
+    cleaveComponentReference: null,
   };
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (
+      prevState.cleaveComponentReference &&
+      prevState.centAmountValue !== nextProps.value
+    ) {
+      prevState.cleaveComponentReference.setRawValue(
+        !isNil(nextProps.value) ? parseMoney(nextProps.value) : ''
+      );
+      return {
+        ...prevState,
+        moneyValue: parseMoney(nextProps.value),
+      };
+    }
+    return null;
+  }
+
   handleInit = cleaveComponentReference => {
-    this.cleaveComponentReference = cleaveComponentReference;
-    this.setValue(this.props.value);
+    this.setState({ cleaveComponentReference });
+    if (!isNil(this.state.moneyValue)) {
+      cleaveComponentReference.setRawValue(this.state.moneyValue);
+    } else {
+      cleaveComponentReference.setRawValue('');
+    }
   };
 
   handleChange = event => {
-    const parsedNumber = parseNumber(event.target.rawValue);
-
-    if (this.parsedValue === parsedNumber) return;
-
-    this.parsedValue = parsedNumber;
+    const nextValue = event.target.rawValue;
+    if (this.state.moneyValue === nextValue) return;
+    const centAmountValue = Math.trunc(Math.round(event.target.rawValue * 100));
+    this.setState({ moneyValue: nextValue, centAmountValue });
     this.props.onChange({
       ...event,
       target: {
         ...event.target,
-        value: parsedNumber,
+        value: centAmountValue,
       },
     });
   };
@@ -128,7 +128,7 @@ export class MoneyNumericInput extends React.PureComponent {
           className={getStyles(this.props)}
           onChange={this.handleChange}
           onInit={this.handleInit}
-          onBlur={this.handleBlur}
+          onBlur={this.props.onBlur}
           disabled={this.props.isDisabled}
         />
       </Contraints.Horizontal>
