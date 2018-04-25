@@ -359,7 +359,7 @@ describe('interaction', () => {
         expect(wrapper).toRender('Div');
       });
       it('should not propagate `linkTo`', () => {
-        expect(wrapper.find('Div')).not.toHaveProp('to');
+        expect(wrapper.find('Div')).toHaveProp('to', undefined);
       });
 
       describe('when clicking <AccessibleButton>', () => {

@@ -56,12 +56,6 @@ export const getShouldLink = ({ isDisabled, linkTo }) => {
   if (isDisabled) return false;
   return linkTo !== undefined;
 };
-const getLink = props =>
-  getShouldLink(props)
-    ? {
-        to: props.linkTo,
-      }
-    : {};
 
 export const SecondaryButton = props => {
   const dataProps = {
@@ -83,7 +77,7 @@ export const SecondaryButton = props => {
         getStateClassNames(props.isDisabled, props.isToggled),
         getThemeClassName(props.theme)
       )}
-      {...getLink(props)}
+      to={getShouldLink(props) ? props.linkTo : undefined}
     >
       <AccessibleButton
         buttonAttributes={dataProps}
