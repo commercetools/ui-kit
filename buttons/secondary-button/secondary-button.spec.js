@@ -318,7 +318,7 @@ describe('interaction', () => {
     beforeEach(() => {
       props = createProps({ onClick: jest.fn() });
       wrapper = shallow(<SecondaryButton {...props} />);
-      wrapper.find('AccessibleButton').prop('onClick')();
+      wrapper.find(AccessibleButton).simulate('click');
     });
     it('should call the onClick callback', () => {
       expect(props.onClick).toHaveBeenCalledTimes(1);
@@ -356,15 +356,6 @@ describe('interaction', () => {
       });
       it('should not propagate `linkTo`', () => {
         expect(wrapper.find('Div')).toHaveProp('to', undefined);
-      });
-
-      describe('when clicking <AccessibleButton>', () => {
-        beforeEach(() => {
-          wrapper.find(AccessibleButton).prop('onClick')();
-        });
-        it('should call `onClick`', () => {
-          expect(props.onClick).toHaveBeenCalledTimes(1);
-        });
       });
     });
   });

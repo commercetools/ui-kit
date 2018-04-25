@@ -27,7 +27,7 @@ storiesOf('Buttons', module)
           isToggleButton={boolean('isToggleButton', false)}
           isToggled={boolean('isToggled', false)}
           isDisabled={boolean('isDisabled', false)}
-          linkTo={text('to')}
+          linkTo={text('linkTo')}
         />
       </MemoryRouter>
     </Section>
