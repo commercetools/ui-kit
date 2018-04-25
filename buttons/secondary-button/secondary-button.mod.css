@@ -81,6 +81,7 @@
   background-color: var(--color-whiteCatskill);
   color: var(--color-greyNevada);
   box-shadow: var(--shadow-10-first);
+  pointer-events: none;
 }
 
 /* Default button */

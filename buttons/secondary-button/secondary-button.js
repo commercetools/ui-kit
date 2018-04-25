@@ -59,7 +59,7 @@ export const SecondaryButton = props => {
     ...pick(props, [...TRACKING_ATTRIBUTES, 'data-test']),
   };
 
-  const shouldLink = !props.isDisabled && !isNil(props.linkTo);
+  const shouldLink = !props.isDisabled && Boolean(props.linkTo);
   const WrapperComponent = shouldLink ? Link : Div;
 
   return (
