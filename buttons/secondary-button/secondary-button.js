@@ -6,6 +6,7 @@ import { compose } from 'recompose';
 import invariant from 'invariant';
 import isNil from 'lodash.isnil';
 import pick from 'lodash.pick';
+import requiredIf from 'react-required-if';
 import Spacings from '../../materials/spacings';
 import AccessibleButton from '../accessible-button';
 import TRACKING_ATTRIBUTES from '../tracking-attributes';
@@ -131,8 +132,9 @@ SecondaryButton.propTypes = {
     );
   },
   isDisabled: PropTypes.bool,
-  onClick: PropTypes.func,
   buttonAttributes: PropTypes.object,
+  onClick: requiredIf(PropTypes.func, props => !props.linkTo),
+  linkTo: requiredIf(PropTypes.string, props => !props.onClick),
 
   // HoC
   isMouseDown: PropTypes.bool.isRequired,
@@ -141,7 +143,6 @@ SecondaryButton.propTypes = {
   handleMouseOut: PropTypes.func.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
   handleMouseUp: PropTypes.func.isRequired,
-  linkTo: PropTypes.string,
 };
 
 SecondaryButton.defaultProps = {
