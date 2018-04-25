@@ -53,18 +53,13 @@ const getThemeClassName = theme => {
   return themeClassName;
 };
 
-const getShouldLink = (isDisabled, linkTo) => {
-  if (isDisabled) return false;
-  return linkTo !== undefined;
-};
-
 export const SecondaryButton = props => {
   const dataProps = {
     'data-track-component': 'SecondaryButton',
     ...pick(props, [...TRACKING_ATTRIBUTES, 'data-test']),
   };
 
-  const shouldLink = getShouldLink(props.isDisabled, props.linkTo);
+  const shouldLink = !props.isDisabled && props.linkTo !== undefined;
   const WrapperComponent = shouldLink ? Link : Div;
 
   return (
