@@ -52,7 +52,7 @@ const getThemeClassName = theme => {
   return themeClassName;
 };
 
-export const getShouldLink = ({ isDisabled, linkTo }) => {
+const getShouldLink = (isDisabled, linkTo) => {
   if (isDisabled) return false;
   return linkTo !== undefined;
 };
@@ -63,7 +63,8 @@ export const SecondaryButton = props => {
     ...pick(props, [...TRACKING_ATTRIBUTES, 'data-test']),
   };
 
-  const WrapperComponent = getShouldLink(props) ? Link : Div;
+  const shouldLink = getShouldLink(props.isDisabled, props.linkTo);
+  const WrapperComponent = shouldLink ? Link : Div;
 
   return (
     <WrapperComponent
@@ -77,7 +78,7 @@ export const SecondaryButton = props => {
         getStateClassNames(props.isDisabled, props.isToggled),
         getThemeClassName(props.theme)
       )}
-      to={getShouldLink(props) ? props.linkTo : undefined}
+      to={shouldLink ? props.linkTo : undefined}
     >
       <AccessibleButton
         buttonAttributes={dataProps}
