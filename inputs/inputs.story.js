@@ -75,14 +75,24 @@ storiesOf('Forms/Inputs', module)
     <Section>
       <MoneyNumericInput
         name={text('name', '')}
-        value={number('value', undefined)}
+        value={number('value', 10)}
+        fractionDigit={number('fractionDigit', 2)}
         language={text('language', '')}
+        selectedCurrency={{ value: 'EUR', label: '€' }}
+        currencies={[
+          { value: 'EUR', label: '€' },
+          { value: 'USD', label: '$' },
+        ]}
         placeholder={text('placeholder', 'Placeholder')}
-        onChange={action('onChange')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}
-        hasError={boolean('hasError', false)}
-        hasWarning={boolean('hasWarning', false)}
+        isCurrencySelectable={boolean('isCurrencySelectable', false)}
+        onCurrencyChange={action('onChange')}
+        hasCurrencyError={boolean('hasCurrencyError', false)}
+        hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
+        onAmountChange={action('onChange')}
+        hasAmountError={boolean('hasAmountError', false)}
+        hasAmountWarning={boolean('hasAmountWarning', false)}
         horizontalConstraint={select(
           'horizontalConstraint',
           ['xs', 's', 'm', 'l', 'xl', 'scale'],
