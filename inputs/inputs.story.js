@@ -74,7 +74,8 @@ storiesOf('Forms/Inputs', module)
   .add('MoneyNumericInput', () => (
     <Section>
       <MoneyNumericInput
-        name={text('name', '')}
+        currencyName={text('currencyName', '')}
+        amountName={text('amountName', '')}
         value={number('value', 10)}
         fractionDigit={number('fractionDigit', 2)}
         language={text('language', '')}
@@ -86,7 +87,7 @@ storiesOf('Forms/Inputs', module)
         placeholder={text('placeholder', 'Placeholder')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}
-        isCurrencySelectable={boolean('isCurrencySelectable', false)}
+        isCurrencySelectable={boolean('isCurrencySelectable', true)}
         onCurrencyChange={action('onChange')}
         hasCurrencyError={boolean('hasCurrencyError', false)}
         hasCurrencyWarning={boolean('hasCurrencyWarning', false)}

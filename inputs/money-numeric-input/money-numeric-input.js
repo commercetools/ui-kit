@@ -118,8 +118,8 @@ export class MoneyNumericInput extends React.PureComponent {
   static displayName = 'MoneyNumericInput';
 
   static propTypes = {
-    amountName: PropTypes.string,
     currencyName: PropTypes.string,
+    amountName: PropTypes.string,
     value: PropTypes.number,
     /* to fix amount depending on Money type fractionDigit prop */
     fractionDigit: PropTypes.number,
@@ -134,9 +134,9 @@ export class MoneyNumericInput extends React.PureComponent {
         value: PropTypes.string.isRequired,
       })
     ),
+    placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
-    placeholder: PropTypes.string,
     isCurrencySelectable: PropTypes.bool,
 
     onCurrencyChange: PropTypes.func,
@@ -153,6 +153,7 @@ export class MoneyNumericInput extends React.PureComponent {
   static defaultProps = {
     fractionDigit: 2,
     isDisabled: false,
+    isCurrencySelectable: true,
   };
 
   state = {
@@ -272,7 +273,7 @@ export class MoneyNumericInput extends React.PureComponent {
               }
               isDisabled={this.props.isDisabled}
               chevron={
-                !this.props.isCurrencySelectable && (
+                this.props.isCurrencySelectable ? (
                   <DropdownChevron
                     buttonRef={this.setDropdownButtonReference}
                     onClick={
@@ -292,6 +293,8 @@ export class MoneyNumericInput extends React.PureComponent {
                       }
                     )}
                   />
+                ) : (
+                  undefined
                 )
               }
             >
@@ -312,6 +315,7 @@ export class MoneyNumericInput extends React.PureComponent {
                           target: {
                             ...event.target,
                             value: currency.value,
+                            label: currency.label,
                           },
                         })
                       }
