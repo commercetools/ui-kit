@@ -13,8 +13,8 @@ const createTestProps = custom => ({
   onChange: jest.fn(),
   value: null,
   placeholder: 'test',
-  locale: 'en',
-  intl: { formatMessage: jest.fn(message => message.id) },
+  intl: { formatMessage: jest.fn(message => message.id), locale: 'en' },
+  timeZone: 'Europe/Madrid',
   ...custom,
 });
 
@@ -99,7 +99,10 @@ describe('<DatePicker />', () => {
       describe('with locale de', () => {
         beforeEach(() => {
           props = createTestProps({
-            locale: 'de',
+            intl: {
+              formatMessage: jest.fn(message => message.id),
+              locale: 'de',
+            },
           });
           wrapper = shallow(<DatePicker {...props} />);
           wrapper.instance().componentWillMount();
@@ -525,11 +528,12 @@ describe('<DatePicker />', () => {
 
 describe('createFormatter', () => {
   let formatter;
+  const timeZone = 'Europe/Madrid';
 
   describe('with locale de', () => {
     describe('with date', () => {
       beforeEach(() => {
-        formatter = createFormatter('date', 'de');
+        formatter = createFormatter('date', 'de', timeZone);
       });
 
       it('should format the date', () => {
@@ -539,7 +543,7 @@ describe('createFormatter', () => {
 
     describe('with datetime', () => {
       beforeEach(() => {
-        formatter = createFormatter('datetime', 'de');
+        formatter = createFormatter('datetime', 'de', timeZone);
       });
 
       it('should format the datetime', () => {
@@ -551,7 +555,7 @@ describe('createFormatter', () => {
 
     describe('with time', () => {
       beforeEach(() => {
-        formatter = createFormatter('time', 'de');
+        formatter = createFormatter('time', 'de', timeZone);
       });
 
       it('should format the datetime', () => {
@@ -563,7 +567,7 @@ describe('createFormatter', () => {
   describe('with locale en', () => {
     describe('with date', () => {
       beforeEach(() => {
-        formatter = createFormatter('date', 'en');
+        formatter = createFormatter('date', 'en', timeZone);
       });
 
       it('should format the date', () => {
@@ -573,7 +577,7 @@ describe('createFormatter', () => {
 
     describe('with datetime', () => {
       beforeEach(() => {
-        formatter = createFormatter('datetime', 'en');
+        formatter = createFormatter('datetime', 'en', timeZone);
       });
 
       it('should format the datetime', () => {
@@ -585,7 +589,7 @@ describe('createFormatter', () => {
 
     describe('with time', () => {
       beforeEach(() => {
-        formatter = createFormatter('time', 'en');
+        formatter = createFormatter('time', 'en', timeZone);
       });
 
       it('should format the datetime', () => {
