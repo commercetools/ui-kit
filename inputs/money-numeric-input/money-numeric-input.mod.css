@@ -162,7 +162,7 @@
   border-top-right-radius: 0;
 
   /* to fit width + borders */
-  width: calc(100% + 2px);
+  width: calc(100% + 3px);
 
   /* to center the options under the header */
   left: -1px;

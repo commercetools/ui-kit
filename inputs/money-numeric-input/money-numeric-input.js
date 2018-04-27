@@ -30,10 +30,9 @@ const getAmountStyles = props => {
 // Since the Cleave component might call the onChange handler with a string
 // we need to cast the string back to a number.
 // This function ensures that the value is always either
-// - null
 // - undefined
 // - JavaScript number
-const parseNumberToMoney = (number, fractionDigit) => {
+export const parseNumberToMoney = (number, fractionDigit) => {
   if (!isNumberish(number)) return undefined;
   return parseFloat(number * 0.1 ** fractionDigit).toFixed(fractionDigit);
 };
@@ -67,7 +66,7 @@ DropdownChevron.propTypes = {
   buttonRef: PropTypes.func.isRequired,
 };
 
-const CurrencyDropdownHead = props => (
+export const CurrencyDropdownHead = props => (
   <div className={styles['selected-option-wrapper']}>
     <AccessibleButton
       label={props.children}
@@ -281,9 +280,7 @@ export class MoneyNumericInput extends React.PureComponent {
                         ? this.handleCloseDropdown
                         : this.handleOpenDropdown
                     }
-                    isDisabled={
-                      this.props.isCurrencySelectable || this.props.isDisabled
-                    }
+                    isDisabled={this.props.isDisabled}
                     isOpen={this.state.isDropdownOpen}
                     className={classnames(
                       styles['chevron-icon'],
@@ -303,7 +300,7 @@ export class MoneyNumericInput extends React.PureComponent {
                 : ''}
             </CurrencyDropdownHead>
             {this.state.isDropdownOpen &&
-              !this.props.isCurrencySelectable && (
+              this.props.isCurrencySelectable && (
                 <Options>
                   {this.props.currencies.map(currency => (
                     <Option
