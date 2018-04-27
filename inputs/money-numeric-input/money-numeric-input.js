@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import isNil from 'lodash.isnil';
 import Cleave from 'cleave.js/react';
 import classnames from 'classnames';
+import Downshift from 'downshift';
 import {
   getSeparatorsForLocale,
   isNumberish,
@@ -159,7 +160,6 @@ export class MoneyNumericInput extends React.PureComponent {
     centAmountValue: this.props.value,
     cleaveComponentReference: null,
     dropdownButtonReference: null,
-    isDropdownOpen: false,
     fractionDigit: this.props.fractionDigit,
   };
 
@@ -188,9 +188,6 @@ export class MoneyNumericInput extends React.PureComponent {
 
   setDropdownButtonReference = dropdownButtonReference =>
     this.setState({ dropdownButtonReference });
-
-  handleOpenDropdown = () => this.setState({ isDropdownOpen: true });
-  handleCloseDropdown = () => this.setState({ isDropdownOpen: false });
 
   handleInit = cleaveComponentReference => {
     this.setState({ cleaveComponentReference });
@@ -226,105 +223,80 @@ export class MoneyNumericInput extends React.PureComponent {
     this.textInput = ref;
   };
 
-  // close the dropdown when anything but the dropdown trigger is clicked,
-  // including when the dropdown content itself is clicked.
-  handleGlobalClick = event => {
-    const dropdownButton = this.state.dropdownButtonReference;
-    if (
-      dropdownButton &&
-      event.target !== dropdownButton &&
-      !dropdownButton.contains(event.target)
-    ) {
-      this.setState({ isDropdownOpen: false });
-    }
-  };
-
-  componentDidMount() {
-    window.addEventListener('click', this.handleGlobalClick);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('click', this.handleGlobalClick);
-  }
-
   render() {
     const separators = getSeparatorsForLocale(this.props.language);
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div key={this.props.language} className={styles.fieldContainer}>
-          <div
-            className={classnames(
-              styles['currency-dropdown-container'],
-              getCurrencyStyles(this.props),
-              {
-                [styles['disabled-currency-dropdown-container']]: this.props
-                  .isDisabled,
-                [styles['currency-dropdown-open-container']]: this.state
-                  .isDropdownOpen,
-              }
+          <Downshift
+            render={({ isOpen, toggleMenu }) => (
+              <div
+                className={classnames(
+                  styles['currency-dropdown-container'],
+                  getCurrencyStyles(this.props),
+                  {
+                    [styles['disabled-currency-dropdown-container']]: this.props
+                      .isDisabled,
+                    [styles['currency-dropdown-open-container']]: isOpen,
+                  }
+                )}
+              >
+                <CurrencyDropdownHead
+                  onClick={toggleMenu}
+                  isDisabled={
+                    this.props.currencies.length === 0 || this.props.isDisabled
+                  }
+                  chevron={
+                    this.props.currencies.length > 0 ? (
+                      <DropdownChevron
+                        buttonRef={this.setDropdownButtonReference}
+                        onClick={toggleMenu}
+                        isDisabled={this.props.isDisabled}
+                        isOpen={isOpen}
+                        className={classnames(
+                          styles['chevron-icon'],
+                          getCurrencyStyles(this.props),
+                          {
+                            [styles['currency-disabled']]: this.props
+                              .isDisabled,
+                          }
+                        )}
+                      />
+                    ) : (
+                      undefined
+                    )
+                  }
+                >
+                  {this.props.selectedCurrency
+                    ? this.props.selectedCurrency.label
+                    : ''}
+                </CurrencyDropdownHead>
+                {isOpen &&
+                  this.props.currencies.length > 0 && (
+                    <Options>
+                      {this.props.currencies.map(currency => (
+                        <Option
+                          key={currency.value}
+                          name={this.props.currencyInputName}
+                          onClick={event =>
+                            this.props.onCurrencyChange({
+                              ...event,
+                              target: {
+                                ...event.target,
+                                value: currency.value,
+                                label: currency.label,
+                              },
+                            })
+                          }
+                        >
+                          {currency.label}
+                        </Option>
+                      ))}
+                    </Options>
+                  )}
+              </div>
             )}
-          >
-            <CurrencyDropdownHead
-              onClick={
-                this.state.isDropdownOpen
-                  ? this.handleCloseDropdown
-                  : this.handleOpenDropdown
-              }
-              isDisabled={
-                this.props.currencies.length === 0 || this.props.isDisabled
-              }
-              chevron={
-                this.props.currencies.length > 0 ? (
-                  <DropdownChevron
-                    buttonRef={this.setDropdownButtonReference}
-                    onClick={
-                      this.state.isDropdownOpen
-                        ? this.handleCloseDropdown
-                        : this.handleOpenDropdown
-                    }
-                    isDisabled={this.props.isDisabled}
-                    isOpen={this.state.isDropdownOpen}
-                    className={classnames(
-                      styles['chevron-icon'],
-                      getCurrencyStyles(this.props),
-                      {
-                        [styles['currency-disabled']]: this.props.isDisabled,
-                      }
-                    )}
-                  />
-                ) : (
-                  undefined
-                )
-              }
-            >
-              {this.props.selectedCurrency
-                ? this.props.selectedCurrency.label
-                : ''}
-            </CurrencyDropdownHead>
-            {this.state.isDropdownOpen &&
-              this.props.currencies.length > 0 && (
-                <Options>
-                  {this.props.currencies.map(currency => (
-                    <Option
-                      key={currency.value}
-                      name={this.props.currencyInputName}
-                      onClick={event =>
-                        this.props.onCurrencyChange({
-                          ...event,
-                          target: {
-                            ...event.target,
-                            value: currency.value,
-                            label: currency.label,
-                          },
-                        })
-                      }
-                    >
-                      {currency.label}
-                    </Option>
-                  ))}
-                </Options>
-              )}
-          </div>
+          />
           <Cleave
             placeholder={this.props.placeholder}
             htmlRef={this.registerTextInputRef}
