@@ -82,7 +82,7 @@ describe('rendering', () => {
           expect(chevron).toRender(AccessibleButton);
         });
 
-        describe('when dropdown is close', () => {
+        describe('when dropdown is closed', () => {
           it('should render a `CaretDownIcon`', () => {
             expect(iconWrapper).toRender('CaretDownIcon');
           });
@@ -320,7 +320,7 @@ describe('callbacks', () => {
         wrapper.instance().handleGlobalClick(event);
       });
 
-      it('dropdown should be close', () => {
+      it('dropdown should be closed', () => {
         expect(wrapper).toHaveState({ isDropdownOpen: false });
       });
     });
