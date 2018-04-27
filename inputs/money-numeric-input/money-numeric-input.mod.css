@@ -78,6 +78,7 @@
   border-bottom-left-radius: var(--border-radius-6);
   border: var(--border-radius-1) solid var(--color-greySolid);
   border-right-color: var(--color-white);
+  background-color: var(--color-white);
   position: relative;
 }
 

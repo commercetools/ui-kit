@@ -124,8 +124,8 @@ export class MoneyNumericInput extends React.PureComponent {
     fractionDigit: PropTypes.number,
     language: PropTypes.string.isRequired,
     selectedCurrency: PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
+      label: PropTypes.string,
+      value: PropTypes.string,
     }),
     currencies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -232,6 +232,7 @@ export class MoneyNumericInput extends React.PureComponent {
   handleGlobalClick = event => {
     const dropdownButton = this.state.dropdownButtonReference;
     if (
+      dropdownButton &&
       event.target !== dropdownButton &&
       !dropdownButton.contains(event.target)
     ) {
@@ -270,7 +271,9 @@ export class MoneyNumericInput extends React.PureComponent {
                   ? this.handleCloseDropdown
                   : this.handleOpenDropdown
               }
-              isDisabled={this.props.isDisabled}
+              isDisabled={
+                !this.props.isCurrencySelectable || this.props.isDisabled
+              }
               chevron={
                 this.props.isCurrencySelectable ? (
                   <DropdownChevron
