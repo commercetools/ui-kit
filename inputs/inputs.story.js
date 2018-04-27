@@ -80,14 +80,14 @@ storiesOf('Forms/Inputs', module)
         fractionDigit={number('fractionDigit', 2)}
         language={text('language', '')}
         selectedCurrency={{ value: 'EUR', label: '€' }}
-        currencies={[
-          { value: 'EUR', label: '€' },
-          { value: 'USD', label: '$' },
-        ]}
+        currencies={
+          boolean('With currencies', true)
+            ? [{ value: 'EUR', label: '€' }, { value: 'USD', label: '$' }]
+            : undefined
+        }
         placeholder={text('placeholder', 'Placeholder')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}
-        isCurrencySelectable={boolean('isCurrencySelectable', true)}
         onCurrencyChange={action('onChange')}
         hasCurrencyError={boolean('hasCurrencyError', false)}
         hasCurrencyWarning={boolean('hasCurrencyWarning', false)}

@@ -8,8 +8,8 @@ import MoneyNumericInput, {
 
 const createTestProps = customProps => ({
   language: 'en',
-  currencyName: 'currency-field',
-  amountName: 'amount-field',
+  currencyInputName: 'currency-field',
+  amountInputName: 'amount-field',
   selectedCurrency: { value: 'EUR', label: '€' },
   currencies: [{ value: 'EUR', label: '€' }, { value: 'USD', label: '$' }],
   onCurrencyChange: jest.fn(),
@@ -107,7 +107,7 @@ describe('rendering', () => {
 
       describe('when currency is not selectable', () => {
         beforeEach(() => {
-          props = createTestProps({ isCurrencySelectable: false });
+          props = createTestProps({ currencies: undefined });
           wrapper = shallow(<MoneyNumericInput {...props} />);
           currencyField = wrapper.find(CurrencyDropdownHead);
         });
@@ -205,11 +205,11 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<MoneyNumericInput {...props} />);
-      amountField = wrapper.find({ name: props.amountName });
+      amountField = wrapper.find({ name: props.amountInputName });
     });
 
     it('should render a `Cleave`', () => {
-      expect(wrapper).toRender({ name: props.amountName });
+      expect(wrapper).toRender({ name: props.amountInputName });
     });
 
     it('input have a HTML name', () => {
@@ -223,7 +223,7 @@ describe('rendering', () => {
             isDisabled: true,
           });
           wrapper = shallow(<MoneyNumericInput {...props} />);
-          amountField = wrapper.find({ name: props.amountName });
+          amountField = wrapper.find({ name: props.amountInputName });
         });
 
         it('should have disabled styles', () => {
@@ -237,7 +237,7 @@ describe('rendering', () => {
             hasAmountError: true,
           });
           wrapper = shallow(<MoneyNumericInput {...props} />);
-          amountField = wrapper.find({ name: props.amountName });
+          amountField = wrapper.find({ name: props.amountInputName });
         });
 
         it('should have error styles', () => {
@@ -251,7 +251,7 @@ describe('rendering', () => {
             hasAmountWarning: true,
           });
           wrapper = shallow(<MoneyNumericInput {...props} />);
-          amountField = wrapper.find({ name: props.amountName });
+          amountField = wrapper.find({ name: props.amountInputName });
         });
 
         it('should have error styles', () => {
@@ -340,7 +340,7 @@ describe('callbacks', () => {
         wrapper = shallow(<MoneyNumericInput {...props} />);
         wrapper.instance().cleaveComponentReference = cleaveComponentReference;
         wrapper
-          .find({ name: props.amountName })
+          .find({ name: props.amountInputName })
           .at(0)
           .prop('onBlur')();
       });

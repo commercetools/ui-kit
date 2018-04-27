@@ -40,7 +40,7 @@ export const parseNumberToMoney = (number, fractionDigit) => {
 const DropdownChevron = props => (
   <AccessibleButton
     buttonRef={props.buttonRef}
-    label="Open Dropdown"
+    label="Open/Close Dropdown"
     onClick={props.onClick}
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
@@ -117,8 +117,8 @@ export class MoneyNumericInput extends React.PureComponent {
   static displayName = 'MoneyNumericInput';
 
   static propTypes = {
-    currencyName: PropTypes.string,
-    amountName: PropTypes.string,
+    currencyInputName: PropTypes.string,
+    amountInputName: PropTypes.string,
     value: PropTypes.number,
     /* to fix amount depending on Money type fractionDigit prop */
     fractionDigit: PropTypes.number,
@@ -136,7 +136,6 @@ export class MoneyNumericInput extends React.PureComponent {
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
-    isCurrencySelectable: PropTypes.bool,
 
     onCurrencyChange: PropTypes.func,
     hasCurrencyError: PropTypes.bool,
@@ -152,7 +151,7 @@ export class MoneyNumericInput extends React.PureComponent {
   static defaultProps = {
     fractionDigit: 2,
     isDisabled: false,
-    isCurrencySelectable: true,
+    currencies: [],
   };
 
   state = {
@@ -272,10 +271,10 @@ export class MoneyNumericInput extends React.PureComponent {
                   : this.handleOpenDropdown
               }
               isDisabled={
-                !this.props.isCurrencySelectable || this.props.isDisabled
+                this.props.currencies.length === 0 || this.props.isDisabled
               }
               chevron={
-                this.props.isCurrencySelectable ? (
+                this.props.currencies.length > 0 ? (
                   <DropdownChevron
                     buttonRef={this.setDropdownButtonReference}
                     onClick={
@@ -303,12 +302,12 @@ export class MoneyNumericInput extends React.PureComponent {
                 : ''}
             </CurrencyDropdownHead>
             {this.state.isDropdownOpen &&
-              this.props.isCurrencySelectable && (
+              this.props.currencies.length > 0 && (
                 <Options>
                   {this.props.currencies.map(currency => (
                     <Option
                       key={currency.value}
-                      name={this.props.currencyName}
+                      name={this.props.currencyInputName}
                       onClick={event =>
                         this.props.onCurrencyChange({
                           ...event,
@@ -342,7 +341,7 @@ export class MoneyNumericInput extends React.PureComponent {
               // We provide `0` to disable this feature.
               numeralIntegerScale: 0,
             }}
-            name={this.props.amountName}
+            name={this.props.amountInputName}
             className={getAmountStyles(this.props)}
             onChange={this.handleAmountChange}
             onInit={this.handleInit}
