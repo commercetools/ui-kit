@@ -2,15 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import AccessibleButton from '../../buttons/accessible-button';
 import MoneyNumericInput, {
-  CurrencyDropdownHead,
   parseNumberToMoney,
+  DropdownChevron,
 } from './money-numeric-input';
 
 const createTestProps = customProps => ({
   language: 'en',
   currencyInputName: 'currency-field',
   amountInputName: 'amount-field',
-  selectedCurrency: { value: 'EUR', label: '€' },
+  currency: { value: 'EUR', label: '€' },
   currencies: [{ value: 'EUR', label: '€' }, { value: 'USD', label: '$' }],
   onCurrencyChange: jest.fn(),
   onAmountChange: jest.fn(),
@@ -18,15 +18,24 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
+const createDropdownProps = customProps => ({
+  onClick: jest.fn(),
+  isDisabled: false,
+  isOpen: false,
+  className: 'chevron-icon',
+  buttonRef: jest.fn(),
+  ...customProps,
+});
+
 describe('utils', () => {
   describe('parseNumberToMoney', () => {
-    const fractionDigit = 2;
+    const fractionDigits = 2;
     describe('when number has value', () => {
       const number = 1000;
       let result;
 
       beforeEach(() => {
-        result = parseNumberToMoney(number, fractionDigit);
+        result = parseNumberToMoney(number, fractionDigits);
       });
 
       it('should return money value with the number of decimal digits', () => {
@@ -39,7 +48,7 @@ describe('utils', () => {
       let result;
 
       beforeEach(() => {
-        result = parseNumberToMoney(number, fractionDigit);
+        result = parseNumberToMoney(number, fractionDigits);
       });
 
       it('should return `undefined`', () => {
@@ -55,13 +64,50 @@ describe('rendering', () => {
   let downshiftProps;
   let dowshiftRenderWrapper;
 
+  describe('`DropdownChevron` component', () => {
+    let dropdownChevron;
+    let iconWrapper;
+    let dropdownProps;
+    beforeEach(() => {
+      dropdownProps = createDropdownProps();
+      dropdownChevron = shallow(<DropdownChevron {...dropdownProps} />);
+    });
+
+    it('should render a `AccessibleButton`', () => {
+      expect(dropdownChevron).toRender(AccessibleButton);
+    });
+
+    describe('when is closed', () => {
+      beforeEach(() => {
+        iconWrapper = shallow(
+          dropdownChevron.find(AccessibleButton).prop('children')
+        );
+      });
+
+      it('should render a `CaretDownIcon`', () => {
+        expect(iconWrapper).toRender('CaretDownIcon');
+      });
+    });
+
+    describe('when is open', () => {
+      beforeEach(() => {
+        dropdownProps = createDropdownProps({ isOpen: true });
+        dropdownChevron = shallow(<DropdownChevron {...dropdownProps} />);
+        iconWrapper = shallow(
+          dropdownChevron.find(AccessibleButton).prop('children')
+        );
+      });
+
+      it('should render a `CaretUpIcon`', () => {
+        expect(iconWrapper).toRender('CaretUpIcon');
+      });
+    });
+  });
+
   describe('currency field', () => {
     describe('dropdown head', () => {
       let currencyFieldWrapper;
       let currencyField;
-      let currencyFieldChildren;
-      let chevron;
-      let iconWrapper;
 
       beforeEach(() => {
         props = createTestProps();
@@ -70,64 +116,20 @@ describe('rendering', () => {
         dowshiftRenderWrapper = shallow(
           wrapper.find('Downshift').prop('render')(downshiftProps)
         );
-        currencyField = dowshiftRenderWrapper.find(CurrencyDropdownHead);
-        currencyFieldChildren = currencyField.prop('children');
-        chevron = shallow(currencyField.prop('chevron'));
-        iconWrapper = shallow(chevron.prop('children'));
+        currencyField = dowshiftRenderWrapper.find(AccessibleButton);
       });
 
-      it('should render a `CurrencyDropdownHead`', () => {
-        expect(dowshiftRenderWrapper).toRender(CurrencyDropdownHead);
+      it('should render a `AccessibleButton`', () => {
+        expect(dowshiftRenderWrapper).toRender(AccessibleButton);
       });
 
       it('should render selected currency symbol', () => {
-        expect(currencyFieldChildren).toEqual('€');
+        expect(currencyField.prop('children')).toEqual('€');
       });
 
       describe('when currency is selectable', () => {
         it('should render a chevron', () => {
-          expect(chevron).toRender(AccessibleButton);
-        });
-
-        describe('when dropdown is closed', () => {
-          it('should render a `CaretDownIcon`', () => {
-            expect(iconWrapper).toRender('CaretDownIcon');
-          });
-        });
-
-        describe('when dropdown is open', () => {
-          beforeEach(() => {
-            props = createTestProps();
-            wrapper = shallow(<MoneyNumericInput {...props} />);
-            downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = shallow(
-              wrapper.find('Downshift').prop('render')(downshiftProps)
-            );
-            currencyField = dowshiftRenderWrapper.find(CurrencyDropdownHead);
-            currencyFieldChildren = currencyField.prop('children');
-            chevron = shallow(currencyField.prop('chevron'));
-            iconWrapper = shallow(chevron.prop('children'));
-          });
-
-          it('should render a `CaretUpIcon`', () => {
-            expect(iconWrapper).toRender('CaretUpIcon');
-          });
-        });
-      });
-
-      describe('when currency is not selectable', () => {
-        beforeEach(() => {
-          props = createTestProps({ currencies: undefined });
-          wrapper = shallow(<MoneyNumericInput {...props} />);
-          downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
-          dowshiftRenderWrapper = shallow(
-            wrapper.find('Downshift').prop('render')(downshiftProps)
-          );
-          currencyField = dowshiftRenderWrapper.find(CurrencyDropdownHead);
-        });
-
-        it('should render a chevron', () => {
-          expect(currencyField.prop('chevron')).toEqual(undefined);
+          expect(dowshiftRenderWrapper).toRender('DropdownChevron');
         });
       });
 

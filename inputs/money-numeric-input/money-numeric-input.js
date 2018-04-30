@@ -13,10 +13,21 @@ import AccessibleButton from '../../buttons/accessible-button';
 import Contraints from '../../materials/constraints';
 import styles from './money-numeric-input.mod.css';
 
-const getCurrencyStyles = props => {
+const getCurrencyDropdownContainerStyles = (props, isOpen) => {
+  if (props.isDisabled) return styles['disabled-currency-dropdown-container'];
+  if (isOpen) return styles['currency-dropdown-open-container'];
   if (props.hasCurrencyError) return styles['currency-error'];
   if (props.hasCurrencyWarning) return styles['currency-warning'];
 
+  return null;
+};
+
+const getCurrencyStyles = (props, isOpen) => {
+  if (props.isDisabled) return styles['currency-disabled'];
+  if (!isOpen) {
+    if (props.hasCurrencyError) return styles['currency-error'];
+    if (props.hasCurrencyWarning) return styles['currency-warning'];
+  }
   return null;
 };
 
@@ -33,12 +44,12 @@ const getAmountStyles = props => {
 // This function ensures that the value is always either
 // - undefined
 // - JavaScript number
-export const parseNumberToMoney = (number, fractionDigit) => {
+export const parseNumberToMoney = (number, fractionDigits) => {
   if (!isNumberish(number)) return undefined;
-  return parseFloat(number * 0.1 ** fractionDigit).toFixed(fractionDigit);
+  return parseFloat(number * 0.1 ** fractionDigits).toFixed(fractionDigits);
 };
 
-const DropdownChevron = props => (
+export const DropdownChevron = props => (
   <AccessibleButton
     buttonRef={props.buttonRef}
     label="Open/Close Dropdown"
@@ -47,7 +58,7 @@ const DropdownChevron = props => (
     isOpen={props.isOpen}
     className={props.className}
   >
-    <div className={styles.iconWrapper}>
+    <div className={styles['icon-wrapper']}>
       {React.cloneElement(
         props.isOpen && !props.isDisabled ? <CaretUpIcon /> : <CaretDownIcon />,
         {
@@ -65,30 +76,6 @@ DropdownChevron.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string.isRequired,
   buttonRef: PropTypes.func.isRequired,
-};
-
-export const CurrencyDropdownHead = props => (
-  <div className={styles['selected-option-wrapper']}>
-    <AccessibleButton
-      label={props.children}
-      onClick={props.onClick}
-      isDisabled={props.isDisabled}
-      className={classnames(styles['selected-option'], {
-        [styles['currency-disabled']]: props.isDisabled,
-      })}
-    >
-      {props.children}
-    </AccessibleButton>
-    {props.chevron}
-  </div>
-);
-
-CurrencyDropdownHead.displayName = 'CurrencyDropdownHead';
-CurrencyDropdownHead.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
-  chevron: PropTypes.element,
 };
 
 const Options = props => (
@@ -121,10 +108,10 @@ export class MoneyNumericInput extends React.PureComponent {
     currencyInputName: PropTypes.string,
     amountInputName: PropTypes.string,
     value: PropTypes.number,
-    /* to fix amount depending on Money type fractionDigit prop */
-    fractionDigit: PropTypes.number,
+    /* to fix amount depending on Money type fractionDigits prop */
+    fractionDigits: PropTypes.number,
     language: PropTypes.string.isRequired,
-    selectedCurrency: PropTypes.shape({
+    currency: PropTypes.shape({
       label: PropTypes.string,
       value: PropTypes.string,
     }),
@@ -150,36 +137,36 @@ export class MoneyNumericInput extends React.PureComponent {
   };
 
   static defaultProps = {
-    fractionDigit: 2,
+    fractionDigits: 2,
     isDisabled: false,
     currencies: [],
   };
 
   state = {
-    moneyValue: parseNumberToMoney(this.props.value, this.props.fractionDigit),
+    moneyValue: parseNumberToMoney(this.props.value, this.props.fractionDigits),
     centAmountValue: this.props.value,
     cleaveComponentReference: null,
     dropdownButtonReference: null,
-    fractionDigit: this.props.fractionDigit,
+    fractionDigits: this.props.fractionDigits,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
       prevState.cleaveComponentReference &&
       (prevState.centAmountValue !== nextProps.value ||
-        prevState.fractionDigit !== nextProps.fractionDigit)
+        prevState.fractionDigits !== nextProps.fractionDigits)
     ) {
       prevState.cleaveComponentReference.setRawValue(
         !isNil(nextProps.value)
-          ? parseNumberToMoney(nextProps.value, nextProps.fractionDigit)
+          ? parseNumberToMoney(nextProps.value, nextProps.fractionDigits)
           : ''
       );
       return {
         ...prevState,
-        fractionDigit: nextProps.fractionDigit,
+        fractionDigits: nextProps.fractionDigits,
         moneyValue: parseNumberToMoney(
           nextProps.value,
-          nextProps.fractionDigit
+          nextProps.fractionDigits
         ),
       };
     }
@@ -202,7 +189,7 @@ export class MoneyNumericInput extends React.PureComponent {
     const nextValue = event.target.rawValue;
     if (this.state.moneyValue === nextValue) return;
     const centAmountValue = Math.trunc(
-      Math.round(event.target.rawValue * 10 ** this.props.fractionDigit)
+      Math.round(event.target.rawValue * 10 ** this.props.fractionDigits)
     );
     this.setState({ moneyValue: nextValue, centAmountValue });
     this.props.onAmountChange({
@@ -223,54 +210,74 @@ export class MoneyNumericInput extends React.PureComponent {
     this.textInput = ref;
   };
 
-  render() {
+  getCleaveOptions = () => {
     const separators = getSeparatorsForLocale(this.props.language);
+    return {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand',
+      numeralDecimalMark: separators.decSeparator,
+      delimiter: separators.thoSeparator,
+      numeralDecimalScale: this.state.fractionDigits,
+      // This option is provided to help Cleave slice the numerical values
+      // according to a certain "scale". The default value is `10` which
+      // effectively affects all numerical values (including AttributeMoney)
+      // in MC where the value exceeds the length of `10`
+      // We provide `0` to disable this feature.
+      numeralIntegerScale: 0,
+    };
+  };
+
+  handleCurrencyChange = (event, currency) =>
+    this.props.onCurrencyChange({
+      ...event,
+      target: {
+        ...event.target,
+        value: currency.value,
+        label: currency.label,
+      },
+    });
+
+  render() {
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div key={this.props.language} className={styles.fieldContainer}>
+        <div key={this.props.language} className={styles['field-container']}>
           <Downshift
             render={({ isOpen, toggleMenu }) => (
               <div
                 className={classnames(
                   styles['currency-dropdown-container'],
-                  getCurrencyStyles(this.props),
-                  {
-                    [styles['disabled-currency-dropdown-container']]: this.props
-                      .isDisabled,
-                    [styles['currency-dropdown-open-container']]: isOpen,
-                  }
+                  getCurrencyDropdownContainerStyles(this.props, isOpen)
                 )}
               >
-                <CurrencyDropdownHead
-                  onClick={toggleMenu}
-                  isDisabled={
-                    this.props.currencies.length === 0 || this.props.isDisabled
-                  }
-                  chevron={
-                    this.props.currencies.length > 0 ? (
-                      <DropdownChevron
-                        buttonRef={this.setDropdownButtonReference}
-                        onClick={toggleMenu}
-                        isDisabled={this.props.isDisabled}
-                        isOpen={isOpen}
-                        className={classnames(
-                          styles['chevron-icon'],
-                          getCurrencyStyles(this.props),
-                          {
-                            [styles['currency-disabled']]: this.props
-                              .isDisabled,
-                          }
-                        )}
-                      />
-                    ) : (
-                      undefined
-                    )
-                  }
-                >
-                  {this.props.selectedCurrency
-                    ? this.props.selectedCurrency.label
-                    : ''}
-                </CurrencyDropdownHead>
+                <div className={styles['selected-option-wrapper']}>
+                  <AccessibleButton
+                    label={this.props.currency ? this.props.currency.label : ''}
+                    onClick={toggleMenu}
+                    isDisabled={
+                      this.props.currencies.length === 0 ||
+                      this.props.isDisabled
+                    }
+                    className={classnames(styles['selected-option'], {
+                      [styles['currency-disabled']]:
+                        this.props.currencies.length === 0 ||
+                        this.props.isDisabled,
+                    })}
+                  >
+                    {this.props.currency ? this.props.currency.label : ''}
+                  </AccessibleButton>
+                  {this.props.currencies.length > 0 && (
+                    <DropdownChevron
+                      buttonRef={this.setDropdownButtonReference}
+                      onClick={toggleMenu}
+                      isDisabled={this.props.isDisabled}
+                      isOpen={isOpen}
+                      className={classnames(
+                        styles['chevron-icon'],
+                        getCurrencyStyles(this.props, isOpen)
+                      )}
+                    />
+                  )}
+                </div>
                 {isOpen &&
                   this.props.currencies.length > 0 && (
                     <Options>
@@ -279,14 +286,7 @@ export class MoneyNumericInput extends React.PureComponent {
                           key={currency.value}
                           name={this.props.currencyInputName}
                           onClick={event =>
-                            this.props.onCurrencyChange({
-                              ...event,
-                              target: {
-                                ...event.target,
-                                value: currency.value,
-                                label: currency.label,
-                              },
-                            })
+                            this.handleCurrencyChange(event, currency)
                           }
                         >
                           {currency.label}
@@ -300,19 +300,7 @@ export class MoneyNumericInput extends React.PureComponent {
           <Cleave
             placeholder={this.props.placeholder}
             htmlRef={this.registerTextInputRef}
-            options={{
-              numeral: true,
-              numeralThousandsGroupStyle: 'thousand',
-              numeralDecimalMark: separators.decSeparator,
-              delimiter: separators.thoSeparator,
-              numeralDecimalScale: this.state.fractionDigit,
-              // This option is provided to help Cleave slice the numerical values
-              // according to a certain "scale". The default value is `10` which
-              // effectively affects all numerical values (including AttributeMoney)
-              // in MC where the value exceeds the length of `10`
-              // We provide `0` to disable this feature.
-              numeralIntegerScale: 0,
-            }}
+            options={this.getCleaveOptions}
             name={this.props.amountInputName}
             className={getAmountStyles(this.props)}
             onChange={this.handleAmountChange}
