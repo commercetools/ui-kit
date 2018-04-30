@@ -74,12 +74,12 @@ storiesOf('Forms/Inputs', module)
   .add('MoneyNumericInput', () => (
     <Section>
       <MoneyNumericInput
-        currencyName={text('currencyName', '')}
-        amountName={text('amountName', '')}
+        currencyInputName={text('currencyInputName', '')}
+        amountInputName={text('amountInputName', '')}
         value={number('value', 10)}
-        fractionDigit={number('fractionDigit', 2)}
+        fractionDigits={number('fractionDigits', 2)}
         language={text('language', '')}
-        selectedCurrency={{ value: 'EUR', label: '€' }}
+        currency={{ value: 'EUR', label: '€' }}
         currencies={
           boolean('With currencies', true)
             ? [{ value: 'EUR', label: '€' }, { value: 'USD', label: '$' }]

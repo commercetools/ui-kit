@@ -11,9 +11,9 @@ import MoneyNumericInput from '@commercetools-local/ui-kit/inputs/money-numeric-
 
 <MoneyNumericInput
   value={10}
-  fractionDigit={2}
+  fractionDigits={2}
   language="en"
-  selectedCurrency={{ value: 'EUR', label: '€' }}
+  currency={{ value: 'EUR', label: '€' }}
   currencies={[{ value: 'EUR', label: '€' }, { value: 'USD', label: '$' }]}
 />;
 ```
@@ -25,12 +25,12 @@ import MoneyNumericInput from '@commercetools-local/ui-kit/inputs/money-numeric-
 | `currencyInputName`    | `string`                                                  |    -     | -                                  | -       | Used as HTML `name` property for the currency value                                                                                            |
 | `amountInputName`      | `string`                                                  |    -     | -                                  | -       | Used as HTML `name` property for the amount value                                                                                              |
 | `value`                | `number`                                                  |    -     | -                                  | -       | Value of the input. This is a number as the parent is responsible for formatting the value as money.                                           |
-| `fractionDigit`        | `number`                                                  |    -     | -                                  | 2       | Number of decimal digits in the fractional part of the value.                                                                                  |
+| `fractionDigits`       | `number`                                                  |    -     | -                                  | 2       | Number of decimal digits in the fractional part of the value.                                                                                  |
 | `language`             | `string`                                                  |    ✅    | -                                  | -       | Language of the input. This is a string as the parent is responsible for converting it into a money value according to format of the language. |
-| `selectedCurrency`     | `{ label: string, value: string }`                        |    -     | -                                  | -       | Selected currency with label and value.                                                                                                        |
+| `currency`             | `{ label: string, value: string }`                        |    -     | -                                  | -       | Selected currency with label and value.                                                                                                        |
 | `currencies`           | array of `{ label: string, value: string }`               |    -     | -                                  | -       | List of possible currencies with value and label.                                                                                              |
-| `placeholder`          | `string`                                                  |    -     |                                    | -       | Placeholders text for the input.                                                                                                               |
-| `onBlur`               | `func`                                                    |    -     | -                                  | -       | Called when the input field is blurred.                                                                                                        |
+| `placeholder`          | `string`                                                  |    -     |                                    | -       | Placeholder text for the input.                                                                                                                |
+| `onBlur`               | `func`                                                    |    -     | -                                  | -       | Called when the amount field is blurred.                                                                                                       |
 | `isDisabled`           | `bool`                                                    |    -     | -                                  | `false` | Indicates that the field cannot be used (e.g not authorised)                                                                                   |
 | `onCurrencyChange`     | `function(newCurrency: { value: string, label: string })` |    -     | -                                  | -       | Called with the event including the new currency value and label.                                                                              |
 | `hasCurrencyError`     | `bool`                                                    |    -     | -                                  | -       | Indicates if the currency field has an error                                                                                                   |
