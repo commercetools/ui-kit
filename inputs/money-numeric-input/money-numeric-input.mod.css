@@ -119,7 +119,7 @@
   border-bottom-left-radius: 0;
 }
 
-.selected-option-wrapper {
+.currency-selected-wrapper {
   display: flex;
   align-items: center;
 
@@ -127,7 +127,7 @@
   margin-top: 3px;
 }
 
-.selected-option {
+.currency-selected {
   display: flex;
   align-items: center;
   padding: 0 var(--spacing-8);

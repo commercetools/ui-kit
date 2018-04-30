@@ -249,7 +249,7 @@ export class MoneyNumericInput extends React.PureComponent {
                   getCurrencyDropdownContainerStyles(this.props, isOpen)
                 )}
               >
-                <div className={styles['selected-option-wrapper']}>
+                <div className={styles['currency-selected-wrapper']}>
                   <AccessibleButton
                     label={this.props.currency ? this.props.currency.label : ''}
                     onClick={toggleMenu}
@@ -257,7 +257,7 @@ export class MoneyNumericInput extends React.PureComponent {
                       this.props.currencies.length === 0 ||
                       this.props.isDisabled
                     }
-                    className={classnames(styles['selected-option'], {
+                    className={classnames(styles['currency-selected'], {
                       [styles['currency-disabled']]:
                         this.props.currencies.length === 0 ||
                         this.props.isDisabled,
