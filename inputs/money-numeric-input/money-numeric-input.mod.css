@@ -12,7 +12,7 @@
   --options-top-position: 30px;
 }
 
-.fieldContainer {
+.field-container {
   width: 100%;
   position: relative;
   display: flex;
@@ -144,7 +144,7 @@
   height: var(--small-button-height);
 }
 
-.iconWrapper {
+.icon-wrapper {
   pointer-events: none;
   width: var(--chevron-width);
 
