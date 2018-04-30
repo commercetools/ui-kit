@@ -300,7 +300,7 @@ export class MoneyNumericInput extends React.PureComponent {
           <Cleave
             placeholder={this.props.placeholder}
             htmlRef={this.registerTextInputRef}
-            options={this.getCleaveOptions}
+            options={this.getCleaveOptions()}
             name={this.props.amountInputName}
             className={getAmountStyles(this.props)}
             onChange={this.handleAmountChange}
