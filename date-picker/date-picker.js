@@ -4,10 +4,8 @@ import 'flatpickr/dist/themes/airbnb.css';
 import Flatpickr from 'flatpickr';
 import isTouchDevice from 'is-touch-device';
 import { German } from 'flatpickr/dist/l10n/de';
-import { compose } from 'recompose';
 import { injectIntl } from 'react-intl';
 import moment from 'moment-timezone';
-import { withUserTimeZone } from '@commercetools-local/application-shell-connectors';
 import { parseDateTime } from '@commercetools-local/utils/datetime';
 import Constraints from '../materials/constraints';
 import { DatePickerBody } from './date-picker-body';
@@ -277,4 +275,4 @@ export class DatePicker extends React.PureComponent {
   }
 }
 
-export default compose(injectIntl, withUserTimeZone())(DatePicker);
+export default injectIntl(DatePicker);
