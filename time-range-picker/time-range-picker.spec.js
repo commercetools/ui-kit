@@ -6,6 +6,7 @@ import TimeRangePicker from './time-range-picker';
 const createTestProps = custom => ({
   value: { from: '10:00:00.000', to: '15:30:00.000' },
   onChange: jest.fn(),
+  timeZone: 'Europe/Madrid',
   ...custom,
 });
 

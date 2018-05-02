@@ -27,6 +27,7 @@ const TimeRangePicker = props => {
             onChange={handleChangeValue('from')}
             mode="single"
             timeScale="time"
+            timeZone={props.timeZone}
           />
         </Spacings.Inline>
       </div>
@@ -40,6 +41,7 @@ const TimeRangePicker = props => {
             onChange={handleChangeValue('to')}
             mode="single"
             timeScale="time"
+            timeZone={props.timeZone}
           />
         </Spacings.Inline>
       </div>
@@ -54,6 +56,7 @@ TimeRangePicker.propTypes = {
     to: PropTypes.string,
   }).isRequired,
   onChange: PropTypes.func.isRequired,
+  timeZone: PropTypes.string.isRequired,
 };
 
 export default TimeRangePicker;
