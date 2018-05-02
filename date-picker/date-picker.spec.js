@@ -3,11 +3,14 @@ import { shallow } from 'enzyme';
 import Flatpickr from 'flatpickr';
 import isTouchDevice from 'is-touch-device';
 import { German } from 'flatpickr/dist/l10n/de';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { DatePicker, createFormatter } from './date-picker';
 
 jest.mock('flatpickr', () => jest.fn());
 jest.mock('is-touch-device', () => jest.fn());
+jest.mock('moment-timezone');
+// let tzMock = jest.fn();
+// moment.mockImplementation(() => ({ tz: tzMock }));
 
 const createTestProps = custom => ({
   onChange: jest.fn(),
@@ -48,6 +51,22 @@ describe('<DatePicker />', () => {
   describe('lifecycle', () => {
     let wrapper;
     let props;
+
+    beforeEach(() => {
+      moment.mockImplementation(() => ({
+        tz: jest.fn(() => ({
+          locale: jest.fn(() => ({
+            format: jest.fn(() => '10:00:00.000'),
+            localeData: jest.fn(() => ({
+              _longDateFormat: {
+                LT: ['foo', 'bar'],
+                L: ['foo', 'bar'],
+              },
+            })),
+          })),
+        })),
+      }));
+    });
 
     describe('when shouldInitializeOnMount is true', () => {
       beforeEach(() => {
@@ -281,6 +300,19 @@ describe('<DatePicker />', () => {
     let wrapper;
     let props;
 
+    moment.mockImplementation(() => ({
+      tz: jest.fn(() => ({
+        locale: jest.fn(() => ({
+          format: jest.fn(() => 'some-date'),
+          localeData: jest.fn(() => ({
+            _longDateFormat: {
+              LT: ['foo', 'bar'],
+              L: ['foo', 'bar'],
+            },
+          })),
+        })),
+      })),
+    }));
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<DatePicker {...props} />);
@@ -298,6 +330,21 @@ describe('<DatePicker />', () => {
       let datePickerBody;
       describe('with ranged values', () => {
         beforeEach(() => {
+          moment.mockImplementation(date => ({
+            tz: jest.fn(() => ({
+              locale: jest.fn(() => ({
+                format: jest.fn(
+                  () => (date.startsWith('2017') ? '11/13/2017' : '11/13/2018')
+                ),
+                localeData: jest.fn(() => ({
+                  _longDateFormat: {
+                    LT: ['foo', 'bar'],
+                    L: ['foo', 'bar'],
+                  },
+                })),
+              })),
+            })),
+          }));
           props = createTestProps({
             value: ['2017-11-13T17:36:02.655Z', '2018-11-13T17:36:02.655Z'],
             mode: 'range',
@@ -385,6 +432,19 @@ describe('<DatePicker />', () => {
 
       describe('when in `single` mode', () => {
         beforeEach(() => {
+          moment.mockImplementation(() => ({
+            tz: jest.fn(() => ({
+              locale: jest.fn(() => ({
+                format: jest.fn(() => '2017-01-01'),
+                localeData: jest.fn(() => ({
+                  _longDateFormat: {
+                    LT: ['foo', 'bar'],
+                    L: ['foo', 'bar'],
+                  },
+                })),
+              })),
+            })),
+          }));
           props = createTestProps();
           wrapper = shallow(<DatePicker {...props} />);
         });
@@ -424,15 +484,25 @@ describe('<DatePicker />', () => {
 
       describe('when in `multiple` mode', () => {
         beforeEach(() => {
+          moment.mockImplementation(date => ({
+            tz: jest.fn(() => ({
+              locale: jest.fn(() => ({
+                format: jest.fn(() => date),
+                localeData: jest.fn(() => ({
+                  _longDateFormat: {
+                    LT: ['foo', 'bar'],
+                    L: ['foo', 'bar'],
+                  },
+                })),
+              })),
+            })),
+          }));
           props = createTestProps({ mode: 'multiple' });
           wrapper = shallow(<DatePicker {...props} />);
         });
 
         describe('with filled `selectedDates`', () => {
-          const selectedDates = [
-            new Date('2017-01-01'),
-            new Date('2017-02-01'),
-          ];
+          const selectedDates = ['2017-01-01', '2017-02-01'];
           beforeEach(() => {
             wrapper.instance().handleChange(selectedDates);
           });
@@ -465,15 +535,25 @@ describe('<DatePicker />', () => {
 
         describe('when in `range` mode', () => {
           beforeEach(() => {
+            moment.mockImplementation(date => ({
+              tz: jest.fn(() => ({
+                locale: jest.fn(() => ({
+                  format: jest.fn(() => date),
+                  localeData: jest.fn(() => ({
+                    _longDateFormat: {
+                      LT: ['foo', 'bar'],
+                      L: ['foo', 'bar'],
+                    },
+                  })),
+                })),
+              })),
+            }));
             props = createTestProps({ mode: 'range' });
             wrapper = shallow(<DatePicker {...props} />);
           });
 
           describe('with filled `selectedDates`', () => {
-            const selectedDates = [
-              new Date('2017-01-01'),
-              new Date('2017-02-01'),
-            ];
+            const selectedDates = ['2017-01-01', '2017-02-01'];
             beforeEach(() => {
               wrapper.instance().handleChange(selectedDates);
             });
@@ -533,6 +613,19 @@ describe('createFormatter', () => {
   describe('with locale de', () => {
     describe('with date', () => {
       beforeEach(() => {
+        moment.mockImplementation(() => ({
+          tz: jest.fn(() => ({
+            locale: jest.fn(() => ({
+              format: jest.fn(() => '31.08.2017'),
+              localeData: jest.fn(() => ({
+                _longDateFormat: {
+                  LT: ['foo', 'bar'],
+                  L: ['foo', 'bar'],
+                },
+              })),
+            })),
+          })),
+        }));
         formatter = createFormatter('date', 'de', timeZone);
       });
 
@@ -543,6 +636,19 @@ describe('createFormatter', () => {
 
     describe('with datetime', () => {
       beforeEach(() => {
+        moment.mockImplementation(() => ({
+          tz: jest.fn(() => ({
+            locale: jest.fn(() => ({
+              format: jest.fn(() => '31.08.2017 23:22'),
+              localeData: jest.fn(() => ({
+                _longDateFormat: {
+                  LT: ['foo', 'bar'],
+                  L: ['foo', 'bar'],
+                },
+              })),
+            })),
+          })),
+        }));
         formatter = createFormatter('datetime', 'de', timeZone);
       });
 
@@ -555,6 +661,19 @@ describe('createFormatter', () => {
 
     describe('with time', () => {
       beforeEach(() => {
+        moment.mockImplementation(() => ({
+          tz: jest.fn(() => ({
+            locale: jest.fn(() => ({
+              format: jest.fn(() => '23:22'),
+              localeData: jest.fn(() => ({
+                _longDateFormat: {
+                  LT: ['foo', 'bar'],
+                  L: ['foo', 'bar'],
+                },
+              })),
+            })),
+          })),
+        }));
         formatter = createFormatter('time', 'de', timeZone);
       });
 
@@ -567,6 +686,19 @@ describe('createFormatter', () => {
   describe('with locale en', () => {
     describe('with date', () => {
       beforeEach(() => {
+        moment.mockImplementation(() => ({
+          tz: jest.fn(() => ({
+            locale: jest.fn(() => ({
+              format: jest.fn(() => '08/31/2017'),
+              localeData: jest.fn(() => ({
+                _longDateFormat: {
+                  LT: ['foo', 'bar'],
+                  L: ['foo', 'bar'],
+                },
+              })),
+            })),
+          })),
+        }));
         formatter = createFormatter('date', 'en', timeZone);
       });
 
@@ -577,6 +709,19 @@ describe('createFormatter', () => {
 
     describe('with datetime', () => {
       beforeEach(() => {
+        moment.mockImplementation(() => ({
+          tz: jest.fn(() => ({
+            locale: jest.fn(() => ({
+              format: jest.fn(() => '08/31/2017 11:22 PM'),
+              localeData: jest.fn(() => ({
+                _longDateFormat: {
+                  LT: ['foo', 'bar'],
+                  L: ['foo', 'bar'],
+                },
+              })),
+            })),
+          })),
+        }));
         formatter = createFormatter('datetime', 'en', timeZone);
       });
 
@@ -589,6 +734,19 @@ describe('createFormatter', () => {
 
     describe('with time', () => {
       beforeEach(() => {
+        moment.mockImplementation(() => ({
+          tz: jest.fn(() => ({
+            locale: jest.fn(() => ({
+              format: jest.fn(() => '11:22 PM'),
+              localeData: jest.fn(() => ({
+                _longDateFormat: {
+                  LT: ['foo', 'bar'],
+                  L: ['foo', 'bar'],
+                },
+              })),
+            })),
+          })),
+        }));
         formatter = createFormatter('time', 'en', timeZone);
       });
 
@@ -601,9 +759,25 @@ describe('createFormatter', () => {
 
 describe('moment integration', () => {
   describe('when accessing localeData', () => {
+    beforeEach(() => {
+      moment.mockImplementation(() => ({
+        tz: jest.fn(() => ({
+          locale: jest.fn(() => ({
+            format: jest.fn(() => '08/31/2017 11:22 PM'),
+            localeData: jest.fn(() => ({
+              _longDateFormat: {
+                LT: ['foo', 'bar'],
+                L: ['foo', 'bar'],
+              },
+            })),
+          })),
+        })),
+      }));
+    });
     it('should have a format for LT', () => {
       expect(
         moment()
+          .tz('Europe/Madrid')
           .locale('de')
           .localeData()._longDateFormat.LT
       ).toBeDefined();
@@ -611,6 +785,7 @@ describe('moment integration', () => {
     it('should have a format for L', () => {
       expect(
         moment()
+          .tz('Europe/Madrid')
           .locale('de')
           .localeData()._longDateFormat.L
       ).toBeDefined();
