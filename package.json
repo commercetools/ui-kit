@@ -5,7 +5,6 @@
   "license": "Proprietary",
   "private": true,
   "dependencies": {
-    "@commercetools-local/application-shell-connectors": "*",
     "@commercetools-local/utils": "*"
   }
 }
