@@ -285,9 +285,10 @@ export class MoneyNumericInput extends React.PureComponent {
                         <Option
                           key={currency.value}
                           name={this.props.currencyInputName}
-                          onClick={event =>
-                            this.handleCurrencyChange(event, currency)
-                          }
+                          onClick={event => {
+                            this.handleCurrencyChange(event, currency);
+                            toggleMenu();
+                          }}
                         >
                           {currency.label}
                         </Option>
