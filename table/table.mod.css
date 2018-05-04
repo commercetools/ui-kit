@@ -1,9 +1,5 @@
 @import '../materials/colors.mod.css';
 
-:root {
-  --default-table-cell-width: 300px;
-}
-
 /* Structure */
 
 .autosized-container {
@@ -36,10 +32,4 @@
 .checkbox-cell-special {
   composes: checkbox-cell;
   border-left: 2px solid red;
-}
-
-.cell-wrapper {
-  display: inline-block;
-  max-width: var(--default-table-cell-width);
-  white-space: initial;
 }
