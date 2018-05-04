@@ -103,6 +103,21 @@ describe('<Body>', () => {
         expect(wrapper.text()).toMatch('Body');
       });
     });
+
+    describe('with wrap text', () => {
+      beforeEach(() => {
+        wrapper = shallow(<Text.Body isWrap={true}>{'Body'}</Text.Body>);
+      });
+      it('should render element tag p', () => {
+        expect(wrapper.type()).toBe('p');
+      });
+      it('should have "wrap" class', () => {
+        expect(wrapper).toContainClass('wrap');
+      });
+      it('should render given text', () => {
+        expect(wrapper.text()).toMatch('Body');
+      });
+    });
   });
 
   describe('when used as inline text', () => {
@@ -132,6 +147,25 @@ describe('<Body>', () => {
       });
       it('should have "bold" class', () => {
         expect(wrapper).toContainClass('bold');
+      });
+      it('should render given text', () => {
+        expect(wrapper.text()).toMatch('Body');
+      });
+    });
+
+    describe('with wrap text', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Body isInline={true} isWrap={true}>
+            {'Body'}
+          </Text.Body>
+        );
+      });
+      it('should render element tag span', () => {
+        expect(wrapper.type()).toBe('span');
+      });
+      it('should have "wrap" class', () => {
+        expect(wrapper).toContainClass('wrap');
       });
       it('should render given text', () => {
         expect(wrapper.text()).toMatch('Body');

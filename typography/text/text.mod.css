@@ -90,3 +90,7 @@ small {
 .inline {
   display: inline-block;
 }
+
+.wrap {
+  white-space: pre-wrap;
+}

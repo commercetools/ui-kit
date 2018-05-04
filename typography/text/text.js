@@ -29,6 +29,7 @@ const Body = props =>
     <span
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles.wrap]: props.isWrap,
       })}
     >
       {props.children}
@@ -37,6 +38,7 @@ const Body = props =>
     <p
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles.wrap]: props.isWrap,
       })}
     >
       {props.children}
@@ -45,6 +47,7 @@ const Body = props =>
 Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
+  isWrap: PropTypes.bool,
   isInline: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
