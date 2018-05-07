@@ -80,11 +80,15 @@ storiesOf('Forms/Inputs', module)
         }}
         fractionDigits={number('fractionDigits', 2)}
         language={text('language', '')}
-        currencies={[
-          { value: 'EUR', label: '€' },
-          { value: 'USD', label: '$' },
-          { value: 'AED', label: 'د.إ.‏' },
-        ]}
+        currencies={
+          boolean('dropdown', true)
+            ? [
+                { value: 'EUR', label: '€' },
+                { value: 'USD', label: '$' },
+                { value: 'AED', label: 'د.إ.‏' },
+              ]
+            : [{ value: 'EUR', label: '€' }]
+        }
         placeholder={text('placeholder', 'Placeholder')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}

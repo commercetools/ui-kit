@@ -140,6 +140,12 @@
   background-color: var(--color-whiteCatskill);
 }
 
+.disabled-currency-label {
+  background-color: var(--color-whiteCatskill);
+  border-color: var(--color-greyMischka);
+  color: var(--color-greyNevada);
+}
+
 .currency {
   display: flex;
   align-items: center;

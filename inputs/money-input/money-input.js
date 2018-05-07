@@ -328,12 +328,14 @@ export class MoneyInput extends React.PureComponent {
               )}
             />
           ) : (
-            <div className={styles['currency-label']}>
+            <div
+              className={classnames(styles['currency-label'], {
+                [styles['disabled-currency-label']]: this.props.isDisabled,
+              })}
+            >
               <div className={styles['currency-wrapper']}>
                 <Currency
-                  isDisabled={
-                    this.props.currencies.length > 1 || this.props.isDisabled
-                  }
+                  isDisabled={this.props.isDisabled}
                   currency={currencyLabel || ''}
                 />
               </div>
