@@ -7,9 +7,10 @@
 
 :root {
   --height-input: 32px;
-  --currency-min-width: 24px;
+  --currency-min-width: 26px;
   --chevron-width: 12px;
-  --options-top-position: 30px;
+  --options-top-position: 3px;
+  --dropdown-width: 50px;
 }
 
 .field-container {
@@ -73,13 +74,19 @@
 }
 
 /* Currency dropdown */
-.currency-dropdown-container {
+.currency-container {
   border-top-left-radius: var(--border-radius-6);
   border-bottom-left-radius: var(--border-radius-6);
   border: var(--border-radius-1) solid var(--color-greySolid);
   border-right-color: var(--color-white);
   background-color: var(--color-white);
   position: relative;
+  height: var(--height-input);
+}
+
+.currency-dropdown {
+  composes: currency-container;
+  width: var(--dropdown-width);
 }
 
 .disabled-currency-dropdown-container {
@@ -119,7 +126,7 @@
   border-bottom-left-radius: 0;
 }
 
-.currency-selected-wrapper {
+.currency-wrapper {
   display: flex;
   align-items: center;
 
@@ -127,7 +134,13 @@
   margin-top: 3px;
 }
 
-.currency-selected {
+.currency-label {
+  composes: currency-container;
+  color: var(--color-greyNevada);
+  background-color: var(--color-whiteCatskill);
+}
+
+.currency {
   display: flex;
   align-items: center;
   padding: 0 var(--spacing-8);
@@ -153,8 +166,8 @@
 }
 
 .options-wrapper {
-  position: absolute;
-  z-index: 5;
+  position: relative;
+  z-index: 999;
   top: var(--options-top-position);
   border: 1px solid var(--color-greySolid);
   border-radius: var(--border-radius-6);
@@ -163,7 +176,7 @@
   border-top-right-radius: 0;
 
   /* to fit width + borders */
-  width: calc(100% + 3px);
+  width: calc(var(--dropdown-width) - 1px);
 
   /* to center the options under the header */
   left: -1px;

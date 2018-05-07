@@ -13,10 +13,10 @@ import { Value } from 'react-value';
 import Section from '../.storybook/decorators/section';
 import TextInputReadme from './text-input/README.md';
 import NumberInputReadme from './number-input/README.md';
-import MoneyNumericInputReadme from './money-numeric-input/README.md';
+import MoneyInputReadme from './money-input/README.md';
 import TextInput from './text-input';
 import NumberInput from './number-input';
-import MoneyNumericInput from './money-numeric-input';
+import MoneyInput from './money-input';
 
 storiesOf('Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -70,28 +70,27 @@ storiesOf('Forms/Inputs', module)
       />
     </Section>
   ))
-  .addDecorator(withReadme(MoneyNumericInputReadme))
-  .add('MoneyNumericInput', () => (
+  .addDecorator(withReadme(MoneyInputReadme))
+  .add('MoneyInput', () => (
     <Section>
-      <MoneyNumericInput
-        currencyInputName={text('currencyInputName', '')}
-        amountInputName={text('amountInputName', '')}
-        value={number('value', 10)}
+      <MoneyInput
+        value={{
+          amount: number('amount', 10),
+          currencyCode: select('currencyCode', ['EUR', 'USD', 'AED'], 'EUR'),
+        }}
         fractionDigits={number('fractionDigits', 2)}
         language={text('language', '')}
-        currency={{ value: 'EUR', label: '€' }}
-        currencies={
-          boolean('With currencies', true)
-            ? [{ value: 'EUR', label: '€' }, { value: 'USD', label: '$' }]
-            : undefined
-        }
+        currencies={[
+          { value: 'EUR', label: '€' },
+          { value: 'USD', label: '$' },
+          { value: 'AED', label: 'د.إ.‏' },
+        ]}
         placeholder={text('placeholder', 'Placeholder')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}
-        onCurrencyChange={action('onChange')}
+        onChange={action('onChange')}
         hasCurrencyError={boolean('hasCurrencyError', false)}
         hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-        onAmountChange={action('onChange')}
         hasAmountError={boolean('hasAmountError', false)}
         hasAmountWarning={boolean('hasAmountWarning', false)}
         horizontalConstraint={select(
