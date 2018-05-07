@@ -168,43 +168,42 @@ export class MoneyInput extends React.PureComponent {
   };
 
   state = {
-    moneyValue: parseNumberToMoney(
-      this.props.value.amount,
-      this.props.fractionDigits
-    ),
     centAmountValue: this.props.value.amount,
     cleaveComponentReference: null,
     dropdownButtonReference: null,
     fractionDigits: this.props.fractionDigits,
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (
       prevState.cleaveComponentReference &&
-      (prevState.centAmountValue !== nextProps.value.amount ||
-        prevState.fractionDigits !== nextProps.fractionDigits)
+      (prevState.centAmountValue !== this.props.value.amount ||
+        prevState.fractionDigits !== this.props.fractionDigits)
     ) {
       prevState.cleaveComponentReference.setRawValue(
-        !isNil(nextProps.value.amount)
-          ? parseNumberToMoney(nextProps.value.amount, nextProps.fractionDigits)
+        !isNil(this.props.value.amount)
+          ? parseNumberToMoney(
+              this.props.value.amount,
+              this.props.fractionDigits
+            )
           : ''
       );
-      return {
+      this.setState({
         ...prevState,
-        fractionDigits: nextProps.fractionDigits,
-        moneyValue: parseNumberToMoney(
-          nextProps.value.amount,
-          nextProps.fractionDigits
-        ),
-      };
+        centAmountValue: this.props.value.amount,
+        fractionDigits: this.props.fractionDigits,
+      });
     }
-    return null;
   }
 
   handleInit = cleaveComponentReference => {
     this.setState({ cleaveComponentReference });
-    if (!isNil(this.state.moneyValue)) {
-      cleaveComponentReference.setRawValue(this.state.moneyValue);
+    const initialMoneyValue = parseNumberToMoney(
+      this.props.value.amount,
+      this.props.fractionDigits
+    );
+    if (!isNil(initialMoneyValue)) {
+      cleaveComponentReference.setRawValue(initialMoneyValue);
     } else {
       cleaveComponentReference.setRawValue('');
     }
@@ -223,11 +222,10 @@ export class MoneyInput extends React.PureComponent {
 
   handleAmountChange = event => {
     const nextValue = event.target.rawValue;
-    if (this.state.moneyValue === nextValue) return;
+    if (this.props.value.amount === nextValue) return;
     const centAmountValue = nextValue
       ? Math.trunc(Math.round(nextValue * 10 ** this.props.fractionDigits))
       : undefined;
-    this.setState({ moneyValue: nextValue, centAmountValue });
     this.props.onChange({
       ...this.props.value,
       amount: centAmountValue,
@@ -243,13 +241,16 @@ export class MoneyInput extends React.PureComponent {
   };
 
   render() {
-    const currencyLabel = this.props.currencies.find(
+    const selectedCurrency = this.props.currencies.find(
       currency => currency.value === this.props.value.currencyCode
     );
+    const currencyLabel = selectedCurrency
+      ? selectedCurrency.label
+      : this.props.value.currencyCode;
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div key={this.props.language} className={styles['field-container']}>
-          {this.props.currencies.length > 0 ? (
+          {this.props.currencies.length > 1 ? (
             <Downshift
               render={({ isOpen, toggleMenu }) => (
                 <div
@@ -281,7 +282,7 @@ export class MoneyInput extends React.PureComponent {
                       <Currency
                         isDisabled={this.props.isDisabled}
                         onClick={toggleMenu}
-                        currency={currencyLabel ? currencyLabel.label : ''}
+                        currency={currencyLabel || ''}
                       />
                       {this.props.currencies.length > 1 && (
                         <DropdownChevron
@@ -333,7 +334,7 @@ export class MoneyInput extends React.PureComponent {
                   isDisabled={
                     this.props.currencies.length > 1 || this.props.isDisabled
                   }
-                  currency={currencyLabel ? currencyLabel.label : ''}
+                  currency={currencyLabel || ''}
                 />
               </div>
             </div>
