@@ -22,7 +22,6 @@ const getNumberOfFormattedDateChars = (timeScale, locale, timeZone) => {
   switch (timeScale) {
     case 'time':
       return moment()
-        .tz(timeZone)
         .locale(locale)
         .localeData()._longDateFormat.LT.length;
     case 'datetime':
@@ -38,7 +37,6 @@ const getNumberOfFormattedDateChars = (timeScale, locale, timeZone) => {
       );
     case 'date':
       return moment()
-        .tz(timeZone)
         .locale(locale)
         .localeData()._longDateFormat.L.length;
     default:
@@ -50,7 +48,6 @@ export const createFormatter = (timeScale, locale, timeZone) => value => {
   switch (timeScale) {
     case 'time':
       return moment(value, 'HH:mm:ss.SSS')
-        .tz(timeZone)
         .locale(locale)
         .format('LT');
     case 'datetime':
@@ -60,7 +57,6 @@ export const createFormatter = (timeScale, locale, timeZone) => value => {
         .format('L LT');
     case 'date':
       return moment(value)
-        .tz(timeZone)
         .locale(locale)
         .format('L');
     default:
