@@ -24,12 +24,17 @@ Subheadline.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const Wrap = props => <div className={styles.wrap}>{props.children}</div>;
+Wrap.displayName = 'TextWrap';
+Wrap.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const Body = props =>
   props.isInline ? (
     <span
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
-        [styles.wrap]: props.isWrap,
       })}
     >
       {props.children}
@@ -38,7 +43,6 @@ const Body = props =>
     <p
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
-        [styles.wrap]: props.isWrap,
       })}
     >
       {props.children}
@@ -47,7 +51,6 @@ const Body = props =>
 Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
-  isWrap: PropTypes.bool,
   isInline: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
@@ -73,6 +76,7 @@ Detail.propTypes = {
 
 export default {
   Headline,
+  Wrap,
   Subheadline,
   Body,
   Detail,

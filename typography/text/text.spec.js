@@ -3,14 +3,17 @@ import { shallow } from 'enzyme';
 import Text from './text';
 
 describe('exports', () => {
-  it('should export 4 components', () => {
-    expect(Object.keys(Text)).toHaveLength(4);
+  it('should export 5 components', () => {
+    expect(Object.keys(Text)).toHaveLength(5);
   });
   it('should export <Headline> component', () => {
     expect(Text).toHaveProperty('Headline');
   });
   it('should export <Subheadline> component', () => {
     expect(Text).toHaveProperty('Subheadline');
+  });
+  it('should export <Wrap> component', () => {
+    expect(Text).toHaveProperty('Wrap');
   });
   it('should export <Body> component', () => {
     expect(Text).toHaveProperty('Body');
@@ -74,6 +77,19 @@ describe('<Subheadline>', () => {
   });
 });
 
+describe('<Wrap>', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<Text.Wrap>{'Title'}</Text.Wrap>);
+  });
+  it('should have "wrap" class', () => {
+    expect(wrapper).toContainClass('wrap');
+  });
+  it('should render given text', () => {
+    expect(wrapper.text()).toMatch('Title');
+  });
+});
+
 describe('<Body>', () => {
   describe('when used as block text', () => {
     let wrapper;
@@ -98,21 +114,6 @@ describe('<Body>', () => {
       });
       it('should have "bold" class', () => {
         expect(wrapper).toContainClass('bold');
-      });
-      it('should render given text', () => {
-        expect(wrapper.text()).toMatch('Body');
-      });
-    });
-
-    describe('with wrap text', () => {
-      beforeEach(() => {
-        wrapper = shallow(<Text.Body isWrap={true}>{'Body'}</Text.Body>);
-      });
-      it('should render element tag p', () => {
-        expect(wrapper.type()).toBe('p');
-      });
-      it('should have "wrap" class', () => {
-        expect(wrapper).toContainClass('wrap');
       });
       it('should render given text', () => {
         expect(wrapper.text()).toMatch('Body');
@@ -147,25 +148,6 @@ describe('<Body>', () => {
       });
       it('should have "bold" class', () => {
         expect(wrapper).toContainClass('bold');
-      });
-      it('should render given text', () => {
-        expect(wrapper.text()).toMatch('Body');
-      });
-    });
-
-    describe('with wrap text', () => {
-      beforeEach(() => {
-        wrapper = shallow(
-          <Text.Body isInline={true} isWrap={true}>
-            {'Body'}
-          </Text.Body>
-        );
-      });
-      it('should render element tag span', () => {
-        expect(wrapper.type()).toBe('span');
-      });
-      it('should have "wrap" class', () => {
-        expect(wrapper).toContainClass('wrap');
       });
       it('should render given text', () => {
         expect(wrapper.text()).toMatch('Body');
