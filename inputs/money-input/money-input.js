@@ -146,7 +146,7 @@ export class MoneyInput extends React.PureComponent {
         label: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
       })
-    ),
+    ).isRequired,
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -163,7 +163,6 @@ export class MoneyInput extends React.PureComponent {
   static defaultProps = {
     fractionDigits: 2,
     isDisabled: false,
-    currencies: [],
   };
 
   state = {
