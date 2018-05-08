@@ -68,6 +68,8 @@ describe('utils', () => {
 describe('rendering', () => {
   let wrapper;
   let props;
+  let downshiftProps;
+  let dowshiftRenderWrapper;
 
   describe('`DropdownChevron` component', () => {
     let dropdownChevron;
@@ -127,17 +129,20 @@ describe('rendering', () => {
 
   describe('currency field', () => {
     describe('dropdown head', () => {
-      let dropdownWrapper;
       let tetherWrapper;
 
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        tetherWrapper = wrapper.find(TetherComponent);
+        downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
+        dowshiftRenderWrapper = shallow(
+          wrapper.find('Downshift').prop('render')(downshiftProps)
+        );
+        tetherWrapper = dowshiftRenderWrapper.find(TetherComponent);
       });
 
       it('should render a `TetherComponent`', () => {
-        expect(wrapper).toRender(TetherComponent);
+        expect(dowshiftRenderWrapper).toRender(TetherComponent);
       });
 
       it('should render an `Currency`', () => {
@@ -146,7 +151,7 @@ describe('rendering', () => {
 
       describe('when currency is selectable', () => {
         it('should render a chevron', () => {
-          expect(wrapper).toRender('DropdownChevron');
+          expect(dowshiftRenderWrapper).toRender('DropdownChevron');
         });
       });
 
@@ -155,12 +160,14 @@ describe('rendering', () => {
           beforeEach(() => {
             props = createTestProps();
             wrapper = shallow(<MoneyInput {...props} />);
-            wrapper.setState({ isOpen: true });
-            dropdownWrapper = wrapper.find('.currency-dropdown');
+            downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
+            dowshiftRenderWrapper = shallow(
+              wrapper.find('Downshift').prop('render')(downshiftProps)
+            );
           });
 
           it('should have opened styles', () => {
-            expect(dropdownWrapper).toHaveClassName(
+            expect(dowshiftRenderWrapper).toHaveClassName(
               'currency-dropdown-open-container'
             );
           });
@@ -172,11 +179,14 @@ describe('rendering', () => {
               isDisabled: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
-            dropdownWrapper = wrapper.find('.currency-dropdown');
+            downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
+            dowshiftRenderWrapper = shallow(
+              wrapper.find('Downshift').prop('render')(downshiftProps)
+            );
           });
 
           it('should have disabled styles', () => {
-            expect(dropdownWrapper).toHaveClassName(
+            expect(dowshiftRenderWrapper).toHaveClassName(
               'disabled-currency-dropdown-container'
             );
           });
@@ -188,11 +198,14 @@ describe('rendering', () => {
               hasCurrencyError: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
-            dropdownWrapper = wrapper.find('.currency-dropdown');
+            downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
+            dowshiftRenderWrapper = shallow(
+              wrapper.find('Downshift').prop('render')(downshiftProps)
+            );
           });
 
           it('should have error styles', () => {
-            expect(dropdownWrapper).toHaveClassName('currency-error');
+            expect(dowshiftRenderWrapper).toHaveClassName('currency-error');
           });
         });
 
@@ -202,11 +215,14 @@ describe('rendering', () => {
               hasCurrencyWarning: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
-            dropdownWrapper = wrapper.find('.currency-dropdown');
+            downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
+            dowshiftRenderWrapper = shallow(
+              wrapper.find('Downshift').prop('render')(downshiftProps)
+            );
           });
 
           it('should have error styles', () => {
-            expect(dropdownWrapper).toHaveClassName('currency-warning');
+            expect(dowshiftRenderWrapper).toHaveClassName('currency-warning');
           });
         });
       });
@@ -217,12 +233,15 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        wrapper.setState({ isOpen: true });
-        options = wrapper.find('Option');
+        downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
+        dowshiftRenderWrapper = shallow(
+          wrapper.find('Downshift').prop('render')(downshiftProps)
+        );
+        options = dowshiftRenderWrapper.find('Option');
       });
 
       it('should render options', () => {
-        expect(wrapper).toRender('.options-wrapper');
+        expect(dowshiftRenderWrapper).toRender('.options-wrapper');
       });
 
       it('should render as many options as currencies', () => {
@@ -292,13 +311,18 @@ describe('rendering', () => {
 describe('callbacks', () => {
   let wrapper;
   let props;
+  let downshiftProps;
+  let dowshiftRenderWrapper;
   describe('currency field', () => {
-    describe('when changing currency', () => {
+    describe('when changing amount', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        wrapper.setState({ isOpen: true });
-        wrapper
+        downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
+        dowshiftRenderWrapper = shallow(
+          wrapper.find('Downshift').prop('render')(downshiftProps)
+        );
+        dowshiftRenderWrapper
           .find('Option')
           .at(0)
           .prop('onClick')({
