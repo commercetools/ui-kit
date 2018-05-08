@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash.isnil';
 import Cleave from 'cleave.js/react';
-import TetherComponent from 'react-tether';
 import classnames from 'classnames';
 import Downshift from 'downshift';
 import {
@@ -266,64 +265,50 @@ export class MoneyInput extends React.PureComponent {
                     )
                   )}
                 >
-                  <TetherComponent
-                    attachment="top left"
-                    targetAttachment="top left"
-                    constraints={[
-                      {
-                        to: 'scrollParent',
-                        attachment: 'target',
-                      },
-                    ]}
-                    // this is the height of the dropdown header
-                    offset="-24px 0"
-                  >
-                    <div className={styles['currency-wrapper']}>
-                      <Currency
-                        isDisabled={this.props.isDisabled}
+                  <div className={styles['currency-wrapper']}>
+                    <Currency
+                      isDisabled={this.props.isDisabled}
+                      onClick={toggleMenu}
+                      currency={currencyLabel || ''}
+                    />
+                    {this.props.currencies.length > 1 && (
+                      <DropdownChevron
+                        buttonRef={this.setDropdownButtonReference}
                         onClick={toggleMenu}
-                        currency={currencyLabel || ''}
+                        isDisabled={this.props.isDisabled}
+                        isOpen={isOpen}
+                        className={classnames(
+                          styles['chevron-icon'],
+                          getCurrencyStyles(
+                            {
+                              isDisabled: this.props.isDisabled,
+                              hasCurrencyError: this.props.hasCurrencyError,
+                              hasCurrencyWarning: this.props.hasCurrencyWarning,
+                            },
+                            isOpen
+                          )
+                        )}
                       />
-                      {this.props.currencies.length > 1 && (
-                        <DropdownChevron
-                          buttonRef={this.setDropdownButtonReference}
-                          onClick={toggleMenu}
-                          isDisabled={this.props.isDisabled}
-                          isOpen={isOpen}
-                          className={classnames(
-                            styles['chevron-icon'],
-                            getCurrencyStyles(
-                              {
-                                isDisabled: this.props.isDisabled,
-                                hasCurrencyError: this.props.hasCurrencyError,
-                                hasCurrencyWarning: this.props
-                                  .hasCurrencyWarning,
-                              },
-                              isOpen
-                            )
-                          )}
-                        />
-                      )}
-                    </div>
-                    {isOpen &&
-                      this.props.currencies.length > 1 && (
-                        <div className={styles['options-wrapper']}>
-                          {this.props.currencies.map(currency => (
-                            <Option
-                              key={currency.value}
-                              onClick={() => {
-                                this.handleCurrencyChange(
-                                  currency.value,
-                                  toggleMenu
-                                );
-                              }}
-                            >
-                              {currency.label}
-                            </Option>
-                          ))}
-                        </div>
-                      )}
-                  </TetherComponent>
+                    )}
+                  </div>
+                  {isOpen &&
+                    this.props.currencies.length > 1 && (
+                      <div className={styles['options-wrapper']}>
+                        {this.props.currencies.map(currency => (
+                          <Option
+                            key={currency.value}
+                            onClick={() => {
+                              this.handleCurrencyChange(
+                                currency.value,
+                                toggleMenu
+                              );
+                            }}
+                          >
+                            {currency.label}
+                          </Option>
+                        ))}
+                      </div>
+                    )}
                 </div>
               )}
             />

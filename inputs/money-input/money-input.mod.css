@@ -86,7 +86,7 @@
 
 .currency-dropdown {
   composes: currency-container;
-  width: var(--dropdown-width);
+  min-width: var(--dropdown-width);
 }
 
 .disabled-currency-dropdown-container {
@@ -182,7 +182,7 @@
   border-top-right-radius: 0;
 
   /* to fit width + borders */
-  width: calc(var(--dropdown-width) - 1px);
+  width: calc(var(--dropdown-width) + 1px);
 
   /* to center the options under the header */
   left: -1px;

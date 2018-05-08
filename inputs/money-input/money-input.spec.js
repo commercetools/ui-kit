@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TetherComponent from 'react-tether';
 import Cleave from 'cleave.js/react';
 import AccessibleButton from '../../buttons/accessible-button';
 import MoneyInput, {
@@ -129,8 +128,6 @@ describe('rendering', () => {
 
   describe('currency field', () => {
     describe('dropdown head', () => {
-      let tetherWrapper;
-
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
@@ -138,15 +135,10 @@ describe('rendering', () => {
         dowshiftRenderWrapper = shallow(
           wrapper.find('Downshift').prop('render')(downshiftProps)
         );
-        tetherWrapper = dowshiftRenderWrapper.find(TetherComponent);
-      });
-
-      it('should render a `TetherComponent`', () => {
-        expect(dowshiftRenderWrapper).toRender(TetherComponent);
       });
 
       it('should render an `Currency`', () => {
-        expect(tetherWrapper).toRender(Currency);
+        expect(dowshiftRenderWrapper).toRender(Currency);
       });
 
       describe('when currency is selectable', () => {
