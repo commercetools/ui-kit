@@ -1,0 +1,72 @@
+@import '../../materials/tokens/borders.mod.css';
+@import '../../materials/tokens/backgrounds.mod.css';
+@import '../../materials/tokens/fonts.mod.css';
+@import '../../materials/transitions.mod.css';
+@import '../../materials/spacings.mod.css';
+
+/******** States ********/
+
+/* Default */
+
+.textarea {
+  width: 100%;
+  overflow: hidden;
+  color: var(--token-font-color-default);
+  font-family: var(--token-font-family-default);
+  font-size: var(--token-font-size-body);
+  padding: var(--spacing-4) var(--spacing-8);
+  border-radius: var(--token-border-radius-input);
+  transition: var(--transition-standard);
+  word-break: break-all;
+  white-space: pre-wrap;
+  line-height: 22px;
+  outline: 0;
+}
+
+.pristine {
+  composes: textarea;
+  border: 1px solid var(--token-border-color-input-pristine);
+  background: var(--token-color-background-input-pristine);
+}
+
+/* Focused */
+.pristine:focus {
+  border: 1px solid var(--token-border-color-input-focus);
+}
+
+/* Disabled */
+.disabled {
+  composes: textarea;
+  color: var(--token-font-color-disabled);
+  border: 1px solid var(--token-border-color-input-disabled);
+  background: var(--token-color-background-input-disabled);
+  resize: none;
+}
+
+/* Read only */
+
+.readonly {
+  composes: textarea;
+  border: 1px solid var(--token-border-color-input-readonly);
+  color: var(--token-font-color-readonly);
+}
+
+/******** Form validation ********/
+
+/* hasError */
+
+.error {
+  composes: textarea;
+  color: var(--token-font-color-error);
+  border: 1px solid var(--token-border-color-input-error);
+}
+
+/* hasWarning */
+
+.warning {
+  composes: textarea;
+  color: var(--token-font-color-warning);
+  border: 1px solid var(--token-border-color-input-warning);
+}
+
+/******** Variations ********/

@@ -1,0 +1,24 @@
+@import '../colors.mod.css';
+@import '../borders.mod.css';
+
+/* TBD: In order to name the token variable, use the following naming standard:
+-- + token + color + part (border || background || ) */
+
+:root {
+  /* Borders */
+
+  /***** Inputs *****/
+
+  /* Text fields (text, password, number, textarea) */
+
+  /* Colors */
+  --token-border-color-input-pristine: var(--color-greySolid);
+  --token-border-color-input-focus: var(--color-buttonHover);
+  --token-border-color-input-disabled: var(--color-whitePorcelain);
+  --token-border-color-input-readonly: var(--color-primaryGrey);
+  --token-border-color-input-error: var(--color-red);
+  --token-border-color-input-warning: var(--color-orange);
+
+  /* Radius */
+  --token-border-radius-input: var(--border-radius-6);
+}

@@ -5,6 +5,8 @@
   "license": "Proprietary",
   "private": true,
   "dependencies": {
-    "@commercetools-local/utils": "*"
+    "@commercetools-local/utils": "*",
+    "react-autosize-textarea": "^3.0.3",
+    "react-textarea-autosize": "^6.1.0"
   }
 }

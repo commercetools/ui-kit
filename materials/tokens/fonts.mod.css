@@ -1,0 +1,18 @@
+@import '../colors.mod.css';
+
+:root {
+  /* Fonts */
+
+  /***** Families *****/
+  --token-font-family-default: 'Open Sans', sans-serif;
+
+  /***** Colors *****/
+  --token-font-color-default: var(--color-default);
+  --token-font-color-disabled: var(--color-greyNevada);
+  --token-font-color-error: var(--color-red);
+  --token-font-color-warning: var(--color-orange);
+  --token-font-color-readonly: var(--color-greySolid);
+
+  /***** Sizes *****/
+  --token-font-size-body: 13px;
+}

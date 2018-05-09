@@ -1,0 +1,13 @@
+@import '../colors.mod.css';
+
+:root {
+  /* Backgrounds */
+
+  /***** Inputs *****/
+
+  /* Text fields (text, password, number, textarea) */
+
+  /* Colors */
+  --token-color-background-input-pristine: var(--color-white);
+  --token-color-background-input-disabled: var(--color-whiteCatskill);
+}
