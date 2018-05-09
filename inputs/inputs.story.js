@@ -80,15 +80,7 @@ storiesOf('Forms/Inputs', module)
         }}
         fractionDigits={number('fractionDigits', 2)}
         language={text('language', '')}
-        currencies={
-          boolean('dropdown', true)
-            ? [
-                { value: 'EUR', label: '€' },
-                { value: 'USD', label: '$' },
-                { value: 'AED', label: 'د.إ.‏' },
-              ]
-            : [{ value: 'EUR', label: '€' }]
-        }
+        currencies={boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : ['EUR']}
         placeholder={text('placeholder', 'Placeholder')}
         onBlur={action('onBlur')}
         isDisabled={boolean('isDisabled', false)}
@@ -99,7 +91,7 @@ storiesOf('Forms/Inputs', module)
         hasAmountWarning={boolean('hasAmountWarning', false)}
         horizontalConstraint={select(
           'horizontalConstraint',
-          ['xs', 's', 'm', 'l', 'xl', 'scale'],
+          ['s', 'm', 'l', 'xl', 'scale'],
           'm'
         )}
       />

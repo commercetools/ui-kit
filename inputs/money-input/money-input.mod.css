@@ -6,11 +6,13 @@
 @import '../../materials/transitions.mod.css';
 
 :root {
-  --height-input: 32px;
   --currency-min-width: 26px;
   --chevron-width: 12px;
+  --currency-font-size: 12px;
+  --currency-margin-top: 10px;
   --options-top-position: 3px;
-  --dropdown-width: 50px;
+  --currency-width: 56px;
+  --currency-right-padding: 7px;
 }
 
 .field-container {
@@ -21,7 +23,7 @@
 
 .input {
   width: 100%;
-  height: var(--height-input);
+  height: var(--spacing-32);
   border-top-right-radius: var(--border-radius-6);
   border-bottom-right-radius: var(--border-radius-6);
   border-style: solid;
@@ -78,15 +80,11 @@
   border-top-left-radius: var(--border-radius-6);
   border-bottom-left-radius: var(--border-radius-6);
   border: var(--border-radius-1) solid var(--color-greySolid);
-  border-right-color: var(--color-white);
+  border-right: 0;
   background-color: var(--color-white);
   position: relative;
-  height: var(--height-input);
-}
-
-.currency-dropdown {
-  composes: currency-container;
-  min-width: var(--dropdown-width);
+  height: var(--spacing-32);
+  min-width: var(--currency-width);
 }
 
 .disabled-currency-dropdown-container {
@@ -127,11 +125,11 @@
 }
 
 .currency-wrapper {
+  height: var(--currency-font-size);
   display: flex;
   align-items: center;
-
-  /* this is to center the selected value */
-  margin-top: 3px;
+  margin-top: var(--currency-margin-top);
+  padding: 0 var(--currency-right-padding);
 }
 
 .currency-label {
@@ -147,19 +145,16 @@
 }
 
 .currency {
-  display: flex;
-  align-items: center;
-  padding: 0 var(--spacing-8);
   height: var(--small-button-height);
-
-  /* this is to mantain dimensions after selecting an option over empty value */
-  min-width: var(--currency-min-width);
+  font-size: var(--currency-font-size);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .chevron-icon {
   display: flex;
   align-items: center;
-  padding: 0 var(--spacing-4);
+  padding-left: var(--spacing-4);
   height: var(--small-button-height);
 }
 
@@ -174,7 +169,7 @@
 .options-wrapper {
   position: relative;
   z-index: 999;
-  top: var(--options-top-position);
+  top: var(--spacing-8);
   border: 1px solid var(--color-greySolid);
   border-radius: var(--border-radius-6);
   border-top-color: var(--color-primaryGrey);
@@ -182,7 +177,7 @@
   border-top-right-radius: 0;
 
   /* to fit width + borders */
-  width: calc(var(--dropdown-width) + 1px);
+  width: calc(var(--currency-width) + 1px);
 
   /* to center the options under the header */
   left: -1px;

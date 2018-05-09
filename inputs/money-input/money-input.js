@@ -141,12 +141,7 @@ export class MoneyInput extends React.PureComponent {
     /* to fix amount depending on Money type fractionDigits prop */
     fractionDigits: PropTypes.number,
     language: PropTypes.string.isRequired,
-    currencies: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired,
-      })
-    ).isRequired,
+    currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -157,7 +152,7 @@ export class MoneyInput extends React.PureComponent {
     hasAmountError: PropTypes.bool,
     hasAmountWarning: PropTypes.bool,
 
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   };
 
   static defaultProps = {
@@ -239,12 +234,6 @@ export class MoneyInput extends React.PureComponent {
   };
 
   render() {
-    const selectedCurrency = this.props.currencies.find(
-      currency => currency.value === this.props.value.currencyCode
-    );
-    const currencyLabel = selectedCurrency
-      ? selectedCurrency.label
-      : this.props.value.currencyCode;
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div key={this.props.language} className={styles['field-container']}>
@@ -253,7 +242,7 @@ export class MoneyInput extends React.PureComponent {
               render={({ isOpen, toggleMenu }) => (
                 <div
                   className={classnames(
-                    styles['currency-dropdown'],
+                    styles['currency-container'],
                     getCurrencyDropdownContainerStyles(
                       {
                         isDisabled: this.props.isDisabled,
@@ -268,7 +257,7 @@ export class MoneyInput extends React.PureComponent {
                     <Currency
                       isDisabled={this.props.isDisabled}
                       onClick={toggleMenu}
-                      currency={currencyLabel || ''}
+                      currency={this.props.value.currencyCode}
                     />
                     {this.props.currencies.length > 1 && (
                       <DropdownChevron
@@ -295,15 +284,12 @@ export class MoneyInput extends React.PureComponent {
                       <div className={styles['options-wrapper']}>
                         {this.props.currencies.map(currency => (
                           <Option
-                            key={currency.value}
+                            key={currency}
                             onClick={() => {
-                              this.handleCurrencyChange(
-                                currency.value,
-                                toggleMenu
-                              );
+                              this.handleCurrencyChange(currency, toggleMenu);
                             }}
                           >
-                            {currency.label}
+                            {currency}
                           </Option>
                         ))}
                       </div>
@@ -320,7 +306,7 @@ export class MoneyInput extends React.PureComponent {
               <div className={styles['currency-wrapper']}>
                 <Currency
                   isDisabled={this.props.isDisabled}
-                  currency={currencyLabel || ''}
+                  currency={this.props.value.currencyCode}
                 />
               </div>
             </div>
