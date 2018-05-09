@@ -53,7 +53,7 @@ Subtitle of pages.
 
 ### `<Text.Wrap>`
 
-Wraps the given text in it's container. And for long text, text will be wrapped to new line.
+Wraps the given text in its container. And for long text, text will be wrapped to new line.
 
 #### Usage
 
@@ -63,7 +63,7 @@ Wraps the given text in it's container. And for long text, text will be wrapped 
 
 #### Where to use
 
-When we render value that may be vey long, and we prefer to wrap text to new line after it exceeds it's wrapper width.
+When we render value that may be vey long, and we prefer to wrap text to new line after it exceeds its wrapper's width.
 
 ### `<Text.Body>`
 
