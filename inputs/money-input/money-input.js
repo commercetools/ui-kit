@@ -308,23 +308,28 @@ export class MoneyInput extends React.PureComponent {
               </div>
             </div>
           )}
-          <Cleave
-            placeholder={this.props.placeholder}
-            htmlRef={this.registerTextInputRef}
-            options={getCleaveOptions(
-              this.props.language,
-              this.props.fractionDigits
-            )}
-            className={getAmountStyles({
-              isDisabled: this.props.isDisabled,
-              hasAmountError: this.props.hasAmountError,
-              hasAmountWarning: this.props.hasAmountWarning,
-            })}
-            onChange={this.handleAmountChange}
-            onInit={this.handleInit}
-            onBlur={this.props.onBlur}
-            disabled={this.props.isDisabled}
-          />
+          {/*
+          turning the fractionDigits into an array is only to force the Cleave
+          to rerender when the prop changes, as the options object cannot be
+          updated dynamically
+          */}
+          {[this.props.fractionDigits].map(fractionDigits => (
+            <Cleave
+              key="money-amount-input"
+              placeholder={this.props.placeholder}
+              htmlRef={this.registerTextInputRef}
+              options={getCleaveOptions(this.props.language, fractionDigits)}
+              className={getAmountStyles({
+                isDisabled: this.props.isDisabled,
+                hasAmountError: this.props.hasAmountError,
+                hasAmountWarning: this.props.hasAmountWarning,
+              })}
+              onChange={this.handleAmountChange}
+              onInit={this.handleInit}
+              onBlur={this.props.onBlur}
+              disabled={this.props.isDisabled}
+            />
+          ))}
         </div>
       </Contraints.Horizontal>
     );
