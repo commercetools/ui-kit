@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import styles from './text.mod.css';
 import Text from './text';
 
 describe('exports', () => {
@@ -34,7 +35,7 @@ describe('<Headline>', () => {
     expect(wrapper.type()).toBe('h1');
   });
   it('should not have "bold" class', () => {
-    expect(wrapper).not.toContainClass('bold');
+    expect(wrapper).not.toContainClass(styles.bold);
   });
   it('should render given text', () => {
     expect(wrapper.text()).toMatch('Title');
@@ -52,7 +53,7 @@ describe('<Subheadline>', () => {
     expect(wrapper.type()).toBe('h4');
   });
   it('should not have "bold" class', () => {
-    expect(wrapper).not.toContainClass('bold');
+    expect(wrapper).not.toContainClass(styles.bold);
   });
   it('should render given text', () => {
     expect(wrapper.text()).toMatch('Subtitle');
@@ -69,7 +70,7 @@ describe('<Subheadline>', () => {
       expect(wrapper.type()).toBe('h4');
     });
     it('should have "bold" class', () => {
-      expect(wrapper).toContainClass('bold');
+      expect(wrapper).toContainClass(styles.bold);
     });
     it('should render given text', () => {
       expect(wrapper.text()).toMatch('Subtitle');
@@ -83,7 +84,7 @@ describe('<Wrap>', () => {
     wrapper = shallow(<Text.Wrap>{'Title'}</Text.Wrap>);
   });
   it('should have "wrap" class', () => {
-    expect(wrapper).toContainClass('wrap');
+    expect(wrapper).toContainClass(styles.wrap);
   });
   it('should render given text', () => {
     expect(wrapper.text()).toMatch('Title');
@@ -100,7 +101,7 @@ describe('<Body>', () => {
       expect(wrapper.type()).toBe('p');
     });
     it('should not have "bold" class', () => {
-      expect(wrapper).not.toContainClass('bold');
+      expect(wrapper).not.toContainClass(styles.bold);
     });
     it('should render given text', () => {
       expect(wrapper.text()).toMatch('Body');
@@ -113,7 +114,7 @@ describe('<Body>', () => {
         expect(wrapper.type()).toBe('p');
       });
       it('should have "bold" class', () => {
-        expect(wrapper).toContainClass('bold');
+        expect(wrapper).toContainClass(styles.bold);
       });
       it('should render given text', () => {
         expect(wrapper.text()).toMatch('Body');
@@ -130,7 +131,7 @@ describe('<Body>', () => {
       expect(wrapper.type()).toBe('span');
     });
     it('should not have "bold" class', () => {
-      expect(wrapper).not.toContainClass('bold');
+      expect(wrapper).not.toContainClass(styles.bold);
     });
     it('should render given text', () => {
       expect(wrapper.text()).toMatch('Body');
@@ -147,7 +148,7 @@ describe('<Body>', () => {
         expect(wrapper.type()).toBe('span');
       });
       it('should have "bold" class', () => {
-        expect(wrapper).toContainClass('bold');
+        expect(wrapper).toContainClass(styles.bold);
       });
       it('should render given text', () => {
         expect(wrapper.text()).toMatch('Body');
@@ -166,7 +167,7 @@ describe('<Detail>', () => {
       expect(wrapper.type()).toBe('small');
     });
     it('should not have "bold" class', () => {
-      expect(wrapper).not.toContainClass('bold');
+      expect(wrapper).not.toContainClass(styles.bold);
     });
     it('should render given text', () => {
       expect(wrapper.text()).toMatch('Detail');
@@ -179,7 +180,7 @@ describe('<Detail>', () => {
         expect(wrapper.type()).toBe('small');
       });
       it('should have "bold" class', () => {
-        expect(wrapper).toContainClass('bold');
+        expect(wrapper).toContainClass(styles.bold);
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
@@ -196,7 +197,7 @@ describe('<Detail>', () => {
         expect(wrapper.type()).toBe('small');
       });
       it('should have "bold" class', () => {
-        expect(wrapper).toContainClass('secondary');
+        expect(wrapper).toContainClass(styles.secondary);
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
@@ -212,10 +213,10 @@ describe('<Detail>', () => {
       expect(wrapper.type()).toBe('small');
     });
     it('should not have "bold" class', () => {
-      expect(wrapper).not.toContainClass('bold');
+      expect(wrapper).not.toContainClass(styles.bold);
     });
     it('should have "inline" class', () => {
-      expect(wrapper).toContainClass('inline');
+      expect(wrapper).toContainClass(styles.inline);
     });
     it('should render given text', () => {
       expect(wrapper.text()).toMatch('Detail');
@@ -232,10 +233,10 @@ describe('<Detail>', () => {
         expect(wrapper.type()).toBe('small');
       });
       it('should have "bold" class', () => {
-        expect(wrapper).toContainClass('bold');
+        expect(wrapper).toContainClass(styles.bold);
       });
       it('should have "inline" class', () => {
-        expect(wrapper).toContainClass('inline');
+        expect(wrapper).toContainClass(styles.inline);
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
@@ -254,10 +255,10 @@ describe('<Detail>', () => {
         expect(wrapper.type()).toBe('small');
       });
       it('should have "secondary" class', () => {
-        expect(wrapper).toContainClass('secondary');
+        expect(wrapper).toContainClass(styles.secondary);
       });
       it('should have "inline" class', () => {
-        expect(wrapper).toContainClass('inline');
+        expect(wrapper).toContainClass(styles.inline);
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
