@@ -24,6 +24,12 @@ Subheadline.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const Wrap = props => <div className={styles.wrap}>{props.children}</div>;
+Wrap.displayName = 'TextWrap';
+Wrap.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const Body = props =>
   props.isInline ? (
     <span
@@ -70,6 +76,7 @@ Detail.propTypes = {
 
 export default {
   Headline,
+  Wrap,
   Subheadline,
   Body,
   Detail,
