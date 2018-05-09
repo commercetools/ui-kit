@@ -15,20 +15,23 @@ import styles from './money-input.mod.css';
 
 const getCurrencyDropdownContainerStyles = (props, isOpen) => {
   if (props.isDisabled) return styles['disabled-currency-dropdown-container'];
-  if (isOpen) return styles['currency-dropdown-open-container'];
   if (props.hasCurrencyError) return styles['currency-error'];
   if (props.hasCurrencyWarning) return styles['currency-warning'];
+  if (isOpen) return styles['currency-dropdown-open-container'];
 
-  return null;
+  return styles['currency-container'];
 };
 
-const getCurrencyStyles = (props, isOpen) => {
-  if (props.isDisabled) return styles['currency-disabled'];
-  if (!isOpen) {
-    if (props.hasCurrencyError) return styles['currency-error'];
-    if (props.hasCurrencyWarning) return styles['currency-warning'];
-  }
-  return null;
+const getCurrencyDropdownOptionsStyles = props => {
+  if (props.hasCurrencyError) return styles['options-wrapper-error'];
+  if (props.hasCurrencyWarning) return styles['options-wrapper-warning'];
+
+  return styles['options-wrapper-active'];
+};
+
+const getCurrencyStyles = isDisabled => {
+  if (isDisabled) return styles['chevron-icon-disabled'];
+  return styles['chevron-icon'];
 };
 
 const getAmountStyles = props => {
@@ -158,6 +161,7 @@ export class MoneyInput extends React.PureComponent {
   static defaultProps = {
     fractionDigits: 2,
     isDisabled: false,
+    currencies: [],
   };
 
   state = {
@@ -181,6 +185,7 @@ export class MoneyInput extends React.PureComponent {
             )
           : ''
       );
+
       this.setState({
         ...prevState,
         centAmountValue: this.props.value.amount,
@@ -217,7 +222,7 @@ export class MoneyInput extends React.PureComponent {
     const nextValue = event.target.rawValue;
     if (this.props.value.amount === nextValue) return;
     const centAmountValue = nextValue
-      ? Math.trunc(Math.round(nextValue * 10 ** this.props.fractionDigits))
+      ? Math.trunc(Math.round(nextValue * 10 ** this.state.fractionDigits))
       : undefined;
     this.props.onChange({
       ...this.props.value,
@@ -237,20 +242,17 @@ export class MoneyInput extends React.PureComponent {
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div key={this.props.language} className={styles['field-container']}>
-          {this.props.currencies.length > 1 ? (
+          {this.props.currencies.length > 0 ? (
             <Downshift
               render={({ isOpen, toggleMenu }) => (
                 <div
-                  className={classnames(
-                    styles['currency-container'],
-                    getCurrencyDropdownContainerStyles(
-                      {
-                        isDisabled: this.props.isDisabled,
-                        hasCurrencyError: this.props.hasCurrencyError,
-                        hasCurrencyWarning: this.props.hasCurrencyWarning,
-                      },
-                      isOpen
-                    )
+                  className={getCurrencyDropdownContainerStyles(
+                    {
+                      isDisabled: this.props.isDisabled,
+                      hasCurrencyError: this.props.hasCurrencyError,
+                      hasCurrencyWarning: this.props.hasCurrencyWarning,
+                    },
+                    isOpen
                   )}
                 >
                   <div className={styles['currency-wrapper']}>
@@ -259,29 +261,24 @@ export class MoneyInput extends React.PureComponent {
                       onClick={toggleMenu}
                       currency={this.props.value.currencyCode}
                     />
-                    {this.props.currencies.length > 1 && (
+                    {this.props.currencies.length > 0 && (
                       <DropdownChevron
                         buttonRef={this.setDropdownButtonReference}
                         onClick={toggleMenu}
                         isDisabled={this.props.isDisabled}
                         isOpen={isOpen}
-                        className={classnames(
-                          styles['chevron-icon'],
-                          getCurrencyStyles(
-                            {
-                              isDisabled: this.props.isDisabled,
-                              hasCurrencyError: this.props.hasCurrencyError,
-                              hasCurrencyWarning: this.props.hasCurrencyWarning,
-                            },
-                            isOpen
-                          )
-                        )}
+                        className={getCurrencyStyles(this.props.isDisabled)}
                       />
                     )}
                   </div>
                   {isOpen &&
-                    this.props.currencies.length > 1 && (
-                      <div className={styles['options-wrapper']}>
+                    this.props.currencies.length > 0 && (
+                      <div
+                        className={getCurrencyDropdownOptionsStyles({
+                          hasCurrencyError: this.props.hasCurrencyError,
+                          hasCurrencyWarning: this.props.hasCurrencyWarning,
+                        })}
+                      >
                         {this.props.currencies.map(currency => (
                           <Option
                             key={currency}
@@ -316,7 +313,7 @@ export class MoneyInput extends React.PureComponent {
             htmlRef={this.registerTextInputRef}
             options={getCleaveOptions(
               this.props.language,
-              this.state.fractionDigits
+              this.props.fractionDigits
             )}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,

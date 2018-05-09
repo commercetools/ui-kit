@@ -6,13 +6,11 @@
 @import '../../materials/transitions.mod.css';
 
 :root {
-  --currency-min-width: 26px;
   --chevron-width: 12px;
+  --options-top-margin: 12px;
   --currency-font-size: 12px;
   --currency-margin-top: 10px;
-  --options-top-position: 3px;
   --currency-width: 56px;
-  --currency-right-padding: 7px;
 }
 
 .field-container {
@@ -88,6 +86,7 @@
 }
 
 .disabled-currency-dropdown-container {
+  composes: currency-container;
   background-color: var(--color-whiteCatskill);
   border-color: var(--color-greyMischka);
   color: var(--color-greyNevada);
@@ -98,30 +97,21 @@
   background-color: var(--color-whiteCatskill);
 }
 
-.currency-disabled svg {
-  fill: var(--color-greyAlto);
-}
-
 .currency-warning {
-  color: var(--color-orange);
+  composes: currency-container;
   border-color: var(--color-orange);
-}
-
-.currency-warning svg {
-  fill: var(--color-orange);
+  color: var(--color-orange);
 }
 
 .currency-error {
-  color: var(--color-red);
+  composes: currency-container;
   border-color: var(--color-red);
-}
-
-.currency-error svg {
-  fill: var(--color-red);
+  color: var(--color-red);
 }
 
 .currency-dropdown-open-container {
-  border-bottom-left-radius: 0;
+  composes: currency-container;
+  border-color: var(--color-greenDowny);
 }
 
 .currency-wrapper {
@@ -129,7 +119,7 @@
   display: flex;
   align-items: center;
   margin-top: var(--currency-margin-top);
-  padding: 0 var(--currency-right-padding);
+  padding: 0 var(--spacing-8);
 }
 
 .currency-label {
@@ -158,6 +148,10 @@
   height: var(--small-button-height);
 }
 
+.chevron-icon-disabled svg {
+  fill: var(--color-greyAlto);
+}
+
 .icon-wrapper {
   pointer-events: none;
   width: var(--chevron-width);
@@ -169,18 +163,30 @@
 .options-wrapper {
   position: relative;
   z-index: 999;
-  top: var(--spacing-8);
-  border: 1px solid var(--color-greySolid);
+  top: var(--options-top-margin);
   border-radius: var(--border-radius-6);
-  border-top-color: var(--color-primaryGrey);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  color: var(--color-black);
 
   /* to fit width + borders */
   width: calc(var(--currency-width) + 1px);
 
   /* to center the options under the header */
   left: -1px;
+}
+
+.options-wrapper-active {
+  composes: options-wrapper;
+  border: 1px solid var(--color-greenDowny);
+}
+
+.options-wrapper-error {
+  composes: options-wrapper;
+  border: 1px solid var(--color-red);
+}
+
+.options-wrapper-warning {
+  composes: options-wrapper;
+  border: 1px solid var(--color-orange);
 }
 
 .option-wrapper {
@@ -191,6 +197,9 @@
   background-color: var(--color-white);
 }
 
+.option-wrapper:first-child {
+  border-radius: var(--border-radius-6) var(--border-radius-6) 0 0;
+}
 .option-wrapper:last-child {
   border-radius: 0 0 var(--border-radius-6) var(--border-radius-6);
 }

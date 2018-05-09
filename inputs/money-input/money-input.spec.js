@@ -11,7 +11,7 @@ import MoneyInput, {
 const createTestProps = customProps => ({
   language: 'en',
   value: { currencyCode: 'EUR' },
-  currencies: [{ value: 'EUR', label: '€' }, { value: 'USD', label: '$' }],
+  currencies: ['EUR', 'USD'],
   onChange: jest.fn(),
   onBlur: jest.fn(),
   ...customProps,
@@ -233,7 +233,9 @@ describe('rendering', () => {
       });
 
       it('should render options', () => {
-        expect(dowshiftRenderWrapper).toRender('.options-wrapper');
+        expect(dowshiftRenderWrapper).toRender(
+          '.currency-dropdown-open-container'
+        );
       });
 
       it('should render as many options as currencies', () => {
