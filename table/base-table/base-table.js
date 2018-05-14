@@ -84,6 +84,7 @@ export default class BaseTable extends React.Component {
     maxWidth: PropTypes.number.isRequired,
     onSortChange: PropTypes.func,
     onRowClick: PropTypes.func,
+    scrollToRow: PropTypes.number,
     sortDirection: PropTypes.oneOf(['ASC', 'DESC']),
     sortBy: PropTypes.string,
     tableClassName: PropTypes.string,
@@ -441,6 +442,7 @@ export default class BaseTable extends React.Component {
           height={this.state.height}
           rowHeight={this.cellMeasurerCache.rowHeight}
           rowCount={this.props.rowCount + 1}
+          scrollToRow={this.props.scrollToRow}
           width={this.state.width}
           // The three props below are only passed down in order to make the component rerender
           hoveredRowIndex={this.state.hoveredRowIndex}

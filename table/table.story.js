@@ -94,6 +94,7 @@ storiesOf('Table', module)
           items,
           onSortChange,
           onRowClick,
+          scrollToRow,
           sortKey,
           sortDir,
           width,
@@ -116,6 +117,7 @@ storiesOf('Table', module)
             }}
             onRowClick={onRowClick}
             onSortChange={onSortChange}
+            scrollToRow={scrollToRow}
             sortBy={sortKey}
             sortDirection={sortDir}
             width={width}
@@ -494,6 +496,7 @@ class Wrapper extends React.PureComponent {
             cols: this.state.cols,
             items: this.state.sortedItems,
             onSortChange: this.onSortChange,
+            scrollToRow: number('scrollToRow', undefined),
             sortKey: this.state.sortKey,
             sortDir: this.state.sortDirection,
             width: this.state.width,
