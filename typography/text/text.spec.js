@@ -228,7 +228,7 @@ describe('<Detail>', () => {
       it('should render element tag small', () => {
         expect(wrapper.type()).toBe('small');
       });
-      it('should have "tone" class', () => {
+      it('should have "secondary" class', () => {
         expect(wrapper).toContainClass(styles.secondary);
       });
       it('should render given text', () => {
