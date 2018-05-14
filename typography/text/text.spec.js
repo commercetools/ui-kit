@@ -124,7 +124,7 @@ describe('<Body>', () => {
       beforeEach(() => {
         wrapper = shallow(<Text.Body tone="secondary">{'Detail'}</Text.Body>);
       });
-      it('should render element tag small', () => {
+      it('should render element tag p', () => {
         expect(wrapper.type()).toBe('p');
       });
       it('should have "secondary" class', () => {
@@ -176,7 +176,7 @@ describe('<Body>', () => {
           </Text.Body>
         );
       });
-      it('should render element tag small', () => {
+      it('should render element tag span', () => {
         expect(wrapper.type()).toBe('span');
       });
       it('should have "secondary" class', () => {
