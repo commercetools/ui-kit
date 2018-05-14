@@ -16,7 +16,7 @@ accessibility reasons.
 
 ```js
 <SecondaryButton
-  icon={<InformationIcon />}
+  iconLeft={<InformationIcon />}
   label="Alerts a message"
   onClick={() => alert('Button clicked')}
 />

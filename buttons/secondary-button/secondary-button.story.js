@@ -20,7 +20,7 @@ storiesOf('Buttons', module)
         <SecondaryButton
           theme={select('theme', ['apple-green', 'blue', 'default'], 'default')}
           iconLeft={React.createElement(
-            icons[select('icon', iconNames, iconNames[0])]
+            icons[select('iconLeft', iconNames, iconNames[0])]
           )}
           onClick={action('onClick')}
           label={text('label', 'Accessibility text')}
