@@ -35,6 +35,7 @@ const Body = props =>
     <span
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles[`${props.tone}`]]: props.tone,
       })}
     >
       {props.children}
@@ -43,6 +44,7 @@ const Body = props =>
     <p
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles[`${props.tone}`]]: props.tone,
       })}
     >
       {props.children}
@@ -52,6 +54,7 @@ Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
   isInline: PropTypes.bool,
+  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
   children: PropTypes.node.isRequired,
 };
 

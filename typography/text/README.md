@@ -77,10 +77,11 @@ Wraps the given text in a `<p>` element, for normal content.
 
 #### Properties
 
-| Props      | Type             | Required | Values | Default |
-| ---------- | ---------------- | :------: | ------ | ------- |
-| `isBold`   | `Boolean`        |    ✅    |        | `false` |
-| `children` | `PropTypes.node` |    ✅    |        |         |
+| Props      | Type             | Required | Values                                               | Default |
+| ---------- | ---------------- | :------: | ---------------------------------------------------- | ------- |
+| `isBold`   | `Boolean`        |    ✅    |                                                      | `false` |
+| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative'']` |         |
+| `children` | `PropTypes.node` |    ✅    |                                                      |         |
 
 #### Where to use
 

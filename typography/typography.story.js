@@ -48,7 +48,16 @@ storiesOf('Typography/Text', module)
   ))
   .add('Body', () => (
     <Section>
-      <Text.Body isBold={boolean('bold', false)}>
+      <Text.Body
+        isBold={boolean('bold', false)}
+        tone={select('Text tone', [
+          'none',
+          'primary',
+          'secondary',
+          'positive',
+          'negative',
+        ])}
+      >
         {text('Text', 'Sample text <Body>')}
       </Text.Body>
     </Section>
