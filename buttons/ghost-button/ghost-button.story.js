@@ -17,7 +17,7 @@ storiesOf('Buttons', module)
     <Section>
       <GhostButton
         iconLeft={React.createElement(
-          icons[select('icon', iconNames, iconNames[0])]
+          icons[select('iconLeft', iconNames, iconNames[0])]
         )}
         label={text('label', 'Accessibility text')}
         isToggleButton={boolean('isToggleButton', false)}

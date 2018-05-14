@@ -20,7 +20,7 @@ storiesOf('Buttons', module)
           to={text('to', '/foo/bar')}
           label={text('label', 'Accessibility text')}
           iconLeft={React.createElement(
-            icons[select('icon', iconNames, iconNames[0])]
+            icons[select('iconLeft', iconNames, iconNames[0])]
           )}
           isDisabled={boolean('isDisabled', false)}
         />
