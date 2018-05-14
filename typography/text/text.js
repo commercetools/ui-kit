@@ -70,7 +70,7 @@ Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,
   isInline: PropTypes.bool,
-  tone: PropTypes.oneOf(['secondary', 'positive', 'negative']),
+  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
   children: PropTypes.node.isRequired,
 };
 

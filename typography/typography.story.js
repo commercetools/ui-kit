@@ -57,7 +57,13 @@ storiesOf('Typography/Text', module)
     <Section>
       <Text.Detail
         isBold={boolean('bold', false)}
-        tone={select('Text tone', ['none', 'secondary'])}
+        tone={select('Text tone', [
+          'none',
+          'primary',
+          'secondary',
+          'positive',
+          'negative',
+        ])}
       >
         {text('Text', 'Sample text')}
       </Text.Detail>

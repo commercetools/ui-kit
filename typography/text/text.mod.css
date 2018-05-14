@@ -75,6 +75,10 @@ small {
   font-weight: bold;
 }
 
+.primary {
+  color: var(--color-primaryGreen);
+}
+
 .secondary {
   color: var(--color-secondaryGrey);
 }

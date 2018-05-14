@@ -100,11 +100,11 @@ properly style the text.
 
 #### Properties
 
-| Props      | Type             | Required | Values          | Default |
-| ---------- | ---------------- | :------: | --------------- | ------- |
-| `isBold`   | `Boolean`        |    ✅    |                 | `false` |
-| `tone`     | `String`         |          | `['secondary']` |         |
-| `children` | `PropTypes.node` |    ✅    |                 |         |
+| Props      | Type             | Required | Values                                               | Default |
+| ---------- | ---------------- | :------: | ---------------------------------------------------- | ------- |
+| `isBold`   | `Boolean`        |    ✅    |                                                      | `false` |
+| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative'']` |         |
+| `children` | `PropTypes.node` |    ✅    |                                                      |         |
 
 #### Where to use
 
