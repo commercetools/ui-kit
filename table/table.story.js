@@ -298,6 +298,7 @@ class Wrapper extends React.PureComponent {
     };
   })();
 
+  // eslint-disable-next-line camelcase
   UNSAFE_componentWillReceiveProps() {
     this.handleApplyCols(this.state.cols);
   }

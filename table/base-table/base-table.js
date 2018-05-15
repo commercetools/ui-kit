@@ -126,6 +126,7 @@ export default class BaseTable extends React.Component {
       this.props.registerMultiGrid(this.multiGrid);
     }
   }
+  // eslint-disable-next-line camelcase
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.columns !== this.props.columns) {
       this.columns = sortBy(nextProps.columns, col => !col.isFixed);

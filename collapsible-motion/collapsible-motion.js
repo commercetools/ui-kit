@@ -40,10 +40,12 @@ export class ToggleAnimation extends React.Component {
   animation = '';
   fullHeight = null;
 
+  // eslint-disable-next-line camelcase
   UNSAFE_componentWillMount() {
     this.calcAnimation(this.props);
   }
 
+  // eslint-disable-next-line camelcase
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.isOpen !== this.props.isOpen) {
       this.calcAnimation(nextProps);

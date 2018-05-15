@@ -207,7 +207,9 @@ describe('<DatePicker />', () => {
           props = createTestProps();
           wrapper = shallow(<DatePicker {...props} />);
           wrapper.instance().flatpickr = { setDate: jest.fn() };
-          wrapper.instance().UNSAFE_componentWillUpdate({ value: '20.10.2018' });
+          wrapper
+            .instance()
+            .UNSAFE_componentWillUpdate({ value: '20.10.2018' });
         });
 
         it('should update the date in flatpickr', () => {
@@ -223,7 +225,9 @@ describe('<DatePicker />', () => {
           beforeEach(() => {
             props = createTestProps();
             wrapper = shallow(<DatePicker {...props} />);
-            wrapper.instance().UNSAFE_componentWillUpdate({}, { initialize: true });
+            wrapper
+              .instance()
+              .UNSAFE_componentWillUpdate({}, { initialize: true });
           });
 
           afterEach(() => {
@@ -246,7 +250,10 @@ describe('<DatePicker />', () => {
             wrapper = shallow(<DatePicker {...props} />);
             wrapper
               .instance()
-              .UNSAFE_componentWillUpdate({ isDisabled: true }, { initialize: true });
+              .UNSAFE_componentWillUpdate(
+                { isDisabled: true },
+                { initialize: true }
+              );
           });
 
           afterEach(() => {

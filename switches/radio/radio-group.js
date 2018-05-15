@@ -20,6 +20,7 @@ class Group extends React.PureComponent {
     scale: 'm',
   };
 
+  // eslint-disable-next-line camelcase
   UNSAFE_componentWillMount() {
     // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
