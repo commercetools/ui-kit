@@ -126,7 +126,7 @@ export default class BaseTable extends React.Component {
       this.props.registerMultiGrid(this.multiGrid);
     }
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.columns !== this.props.columns) {
       this.columns = sortBy(nextProps.columns, col => !col.isFixed);
     }

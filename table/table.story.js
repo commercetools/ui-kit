@@ -298,7 +298,7 @@ class Wrapper extends React.PureComponent {
     };
   })();
 
-  componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps() {
     this.handleApplyCols(this.state.cols);
   }
 

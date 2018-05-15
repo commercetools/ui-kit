@@ -136,7 +136,7 @@ export class DatePicker extends React.PureComponent {
 
   shouldInitializeFlatpickr = state => !this.flatpickr && state.initialize;
 
-  componentWillUpdate(nextProps, nextState) {
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (this.flatpickr && this.props.value !== nextProps.value) {
       this.flatpickr.setDate(nextProps.value, false);
     } else if (this.shouldInitializeFlatpickr(nextState)) {

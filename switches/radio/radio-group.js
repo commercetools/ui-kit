@@ -20,7 +20,7 @@ class Group extends React.PureComponent {
     scale: 'm',
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
     const childrenAsArray = React.Children.toArray(this.props.children);
