@@ -4,22 +4,28 @@
 @import '../../materials/transitions.mod.css';
 @import '../../materials/spacings.mod.css';
 
+:root {
+  /* FIXME: As our input component is not built properly (following the spacing system)
+            we need this hacky line-height to achieve 32px height */
+  --size-input-line-height: 22px;
+}
+
 /******** States ********/
 
 /* Default */
 
 .textarea {
-  width: 100%;
-  overflow: hidden;
   color: var(--token-font-color-default);
   font-family: var(--token-font-family-default);
   font-size: var(--token-font-size-body);
   padding: var(--spacing-4) var(--spacing-8);
   border-radius: var(--token-border-radius-input);
   transition: var(--transition-standard);
+  line-height: var(--size-input-line-height);
+  width: 100%;
+  overflow: hidden;
   word-break: break-all;
   white-space: pre-wrap;
-  line-height: 22px;
   outline: 0;
 }
 
