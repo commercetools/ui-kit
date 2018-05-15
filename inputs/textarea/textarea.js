@@ -13,8 +13,6 @@ class TextArea extends React.Component {
   state = {
     isCollapsed: false,
     rows: this.DEFAULT_ROWS_NUMBER,
-    value:
-      'The wild fox jumps into the next fence once its done in a very rThe wild fox jumps into the next fence once its done in a very rThe wild fox jumps into the next fence once its done in a very r',
   };
 
   propTypes = {
@@ -45,10 +43,6 @@ class TextArea extends React.Component {
     return styles.pristine;
   };
 
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
   toggleCollapse = () => {
     this.setState(prevState => ({
       isCollapsed: !prevState.isCollapsed,
@@ -65,7 +59,6 @@ class TextArea extends React.Component {
   handleOnHeightChange = newRows => {
     // The proxy component considers the padding style as an extra row
     const newRowsCount = newRows - 1;
-    console.log('handleOnHeightChange', newRowsCount);
     this.setState({
       rows: newRowsCount,
     });
@@ -77,11 +70,8 @@ class TextArea extends React.Component {
         <div>
           <TextareaAutosize
             name={this.props.name}
-            onChange={() => {
-              console.log('change!');
-            }}
+            onChange={this.props.onChange}
             onHeightChange={(_, innerComponent) => {
-              console.log(innerComponent);
               this.handleOnHeightChange(innerComponent.rowCount);
             }}
             onBlur={this.props.onBlur}
