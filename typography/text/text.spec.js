@@ -76,6 +76,27 @@ describe('<Subheadline>', () => {
       expect(wrapper.text()).toMatch('Subtitle');
     });
   });
+  describe('with tone', () => {
+    beforeEach(() => {
+      wrapper = shallow(
+        <Text.Subheadline elementType="h4" isBold={true} tone="primary">
+          {'Subtitle'}
+        </Text.Subheadline>
+      );
+    });
+    it('should render element tag h4', () => {
+      expect(wrapper.type()).toBe('h4');
+    });
+    it('should have "bold" class', () => {
+      expect(wrapper).toContainClass(styles.bold);
+    });
+    it('should render given text', () => {
+      expect(wrapper.text()).toMatch('Subtitle');
+    });
+    it('should have "primary" class', () => {
+      expect(wrapper).toContainClass(styles.primary);
+    });
+  });
 });
 
 describe('<Wrap>', () => {

@@ -13,7 +13,12 @@ Headline.propTypes = {
 };
 
 const Subheadline = props => (
-  <props.elementType className={classnames({ [styles.bold]: props.isBold })}>
+  <props.elementType
+    className={classnames({
+      [styles.bold]: props.isBold,
+      [styles[`${props.tone}`]]: props.tone,
+    })}
+  >
     {props.children}
   </props.elementType>
 );
@@ -21,6 +26,7 @@ Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
   elementType: PropTypes.oneOf(['h4', 'h5']).isRequired,
   isBold: PropTypes.bool,
+  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
   children: PropTypes.node.isRequired,
 };
 
