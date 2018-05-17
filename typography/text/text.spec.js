@@ -76,6 +76,27 @@ describe('<Subheadline>', () => {
       expect(wrapper.text()).toMatch('Subtitle');
     });
   });
+  describe('with tone', () => {
+    beforeEach(() => {
+      wrapper = shallow(
+        <Text.Subheadline elementType="h4" isBold={true} tone="primary">
+          {'Subtitle'}
+        </Text.Subheadline>
+      );
+    });
+    it('should render element tag h4', () => {
+      expect(wrapper.type()).toBe('h4');
+    });
+    it('should have "bold" class', () => {
+      expect(wrapper).toContainClass(styles.bold);
+    });
+    it('should render given text', () => {
+      expect(wrapper.text()).toMatch('Subtitle');
+    });
+    it('should have "primary" class', () => {
+      expect(wrapper).toContainClass(styles.primary);
+    });
+  });
 });
 
 describe('<Wrap>', () => {
@@ -120,6 +141,20 @@ describe('<Body>', () => {
         expect(wrapper.text()).toMatch('Body');
       });
     });
+    describe('with tone', () => {
+      beforeEach(() => {
+        wrapper = shallow(<Text.Body tone="secondary">{'Detail'}</Text.Body>);
+      });
+      it('should render element tag p', () => {
+        expect(wrapper.type()).toBe('p');
+      });
+      it('should have "secondary" class', () => {
+        expect(wrapper).toContainClass(styles.secondary);
+      });
+      it('should render given text', () => {
+        expect(wrapper).toHaveText('Detail');
+      });
+    });
   });
 
   describe('when used as inline text', () => {
@@ -152,6 +187,24 @@ describe('<Body>', () => {
       });
       it('should render given text', () => {
         expect(wrapper.text()).toMatch('Body');
+      });
+    });
+    describe('with tone', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Body isInline={true} tone="secondary">
+            {'Detail'}
+          </Text.Body>
+        );
+      });
+      it('should render element tag span', () => {
+        expect(wrapper.type()).toBe('span');
+      });
+      it('should have "secondary" class', () => {
+        expect(wrapper).toContainClass(styles.secondary);
+      });
+      it('should render given text', () => {
+        expect(wrapper).toHaveText('Detail');
       });
     });
   });
@@ -196,7 +249,7 @@ describe('<Detail>', () => {
       it('should render element tag small', () => {
         expect(wrapper.type()).toBe('small');
       });
-      it('should have "bold" class', () => {
+      it('should have "secondary" class', () => {
         expect(wrapper).toContainClass(styles.secondary);
       });
       it('should render given text', () => {

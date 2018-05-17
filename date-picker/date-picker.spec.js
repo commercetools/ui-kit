@@ -96,7 +96,7 @@ describe('<DatePicker />', () => {
         beforeEach(() => {
           props = createTestProps();
           wrapper = shallow(<DatePicker {...props} />);
-          wrapper.instance().componentWillMount();
+          wrapper.instance().UNSAFE_componentWillMount();
         });
 
         it('should create formatter', () => {
@@ -127,7 +127,7 @@ describe('<DatePicker />', () => {
             },
           });
           wrapper = shallow(<DatePicker {...props} />);
-          wrapper.instance().componentWillMount();
+          wrapper.instance().UNSAFE_componentWillMount();
         });
 
         it('should create options object with the appropriate localization', () => {
@@ -143,7 +143,7 @@ describe('<DatePicker />', () => {
           isTouchDevice.mockReturnValue(true);
           props = createTestProps();
           wrapper = shallow(<DatePicker {...props} />);
-          wrapper.instance().componentWillMount();
+          wrapper.instance().UNSAFE_componentWillMount();
         });
 
         it('should not set a "formatDate"-function', () => {
@@ -157,7 +157,7 @@ describe('<DatePicker />', () => {
             timeScale: 'date',
           });
           wrapper = shallow(<DatePicker {...props} />);
-          wrapper.instance().componentWillMount();
+          wrapper.instance().UNSAFE_componentWillMount();
         });
 
         it('should not enable the time picker', () => {
@@ -175,7 +175,7 @@ describe('<DatePicker />', () => {
             timeScale: 'datetime',
           });
           wrapper = shallow(<DatePicker {...props} />);
-          wrapper.instance().componentWillMount();
+          wrapper.instance().UNSAFE_componentWillMount();
         });
 
         it('should enable the time picker', () => {
@@ -192,7 +192,7 @@ describe('<DatePicker />', () => {
               timeScale: 'time',
             });
             wrapper = shallow(<DatePicker {...props} />);
-            wrapper.instance().componentWillMount();
+            wrapper.instance().UNSAFE_componentWillMount();
           });
 
           it('should enable the time picker', () => {
@@ -226,13 +226,15 @@ describe('<DatePicker />', () => {
       });
     });
 
-    describe('componentWillUpdate', () => {
+    describe('UNSAFE_componentWillUpdate(', () => {
       describe('when "value"-prop changes on an initialized flatpickr', () => {
         beforeEach(() => {
           props = createTestProps();
           wrapper = shallow(<DatePicker {...props} />);
           wrapper.instance().flatpickr = { setDate: jest.fn() };
-          wrapper.instance().componentWillUpdate({ value: '20.10.2018' });
+          wrapper
+            .instance()
+            .UNSAFE_componentWillUpdate({ value: '20.10.2018' });
         });
 
         it('should update the date in flatpickr', () => {
@@ -248,7 +250,9 @@ describe('<DatePicker />', () => {
           beforeEach(() => {
             props = createTestProps();
             wrapper = shallow(<DatePicker {...props} />);
-            wrapper.instance().componentWillUpdate({}, { initialize: true });
+            wrapper
+              .instance()
+              .UNSAFE_componentWillUpdate({}, { initialize: true });
           });
 
           afterEach(() => {
@@ -271,7 +275,10 @@ describe('<DatePicker />', () => {
             wrapper = shallow(<DatePicker {...props} />);
             wrapper
               .instance()
-              .componentWillUpdate({ isDisabled: true }, { initialize: true });
+              .UNSAFE_componentWillUpdate(
+                { isDisabled: true },
+                { initialize: true }
+              );
           });
 
           afterEach(() => {

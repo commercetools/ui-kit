@@ -101,7 +101,8 @@ export class DatePicker extends React.PureComponent {
     horizontalConstraint: 'scale',
   };
 
-  componentWillMount = () => {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillMount() {
     this.formatter = createFormatter(
       this.props.timeScale,
       this.props.intl.locale,
@@ -129,7 +130,7 @@ export class DatePicker extends React.PureComponent {
       time_24hr: this.props.intl.locale.startsWith('de'),
       wrap: true,
     };
-  };
+  }
 
   // initializing on hove is not feasible for touch-devices, so we init-right away
   // flatpickr does not do its expensive initialization on mobile, so this is safe
@@ -145,7 +146,8 @@ export class DatePicker extends React.PureComponent {
 
   shouldInitializeFlatpickr = state => !this.flatpickr && state.initialize;
 
-  componentWillUpdate(nextProps, nextState) {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (this.flatpickr && this.props.value !== nextProps.value) {
       this.flatpickr.setDate(nextProps.value, false);
     } else if (this.shouldInitializeFlatpickr(nextState)) {

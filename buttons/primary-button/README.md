@@ -15,7 +15,7 @@ label for accessibility reasons.
 
 ```js
 <PrimaryButton
-  icon={<InformationIcon />}
+  iconLeft={<InformationIcon />}
   label="Alerts a message"
   onClick={() => alert('Button clicked')}
 />

@@ -647,7 +647,7 @@ describe('BaseTable', () => {
       });
       describe('when columns prop changes', () => {
         beforeEach(() => {
-          wrapper.instance().componentWillReceiveProps({
+          wrapper.instance().UNSAFE_componentWillReceiveProps({
             columns: [
               { key: '1' },
               { key: '2', isFixed: false },
@@ -669,7 +669,7 @@ describe('BaseTable', () => {
       });
       describe('when maxWidth prop changes', () => {
         beforeEach(() => {
-          wrapper.instance().componentWillReceiveProps({
+          wrapper.instance().UNSAFE_componentWillReceiveProps({
             maxWidth: 999,
           });
         });
@@ -692,7 +692,7 @@ describe('BaseTable', () => {
       });
       describe('when maxHeight prop changes', () => {
         beforeEach(() => {
-          wrapper.instance().componentWillReceiveProps({
+          wrapper.instance().UNSAFE_componentWillReceiveProps({
             maxHeight: 999,
           });
         });

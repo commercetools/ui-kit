@@ -29,6 +29,13 @@ storiesOf('Typography/Text', module)
       <Text.Subheadline
         elementType={select('Element type', ['h4', 'h5'], 'h4')}
         isBold={boolean('bold', false)}
+        tone={select('Text tone', [
+          'none',
+          'primary',
+          'secondary',
+          'positive',
+          'negative',
+        ])}
       >
         {text('Text', 'Sample text <Subheadline>')}
       </Text.Subheadline>
@@ -48,7 +55,16 @@ storiesOf('Typography/Text', module)
   ))
   .add('Body', () => (
     <Section>
-      <Text.Body isBold={boolean('bold', false)}>
+      <Text.Body
+        isBold={boolean('bold', false)}
+        tone={select('Text tone', [
+          'none',
+          'primary',
+          'secondary',
+          'positive',
+          'negative',
+        ])}
+      >
         {text('Text', 'Sample text <Body>')}
       </Text.Body>
     </Section>
@@ -57,7 +73,13 @@ storiesOf('Typography/Text', module)
     <Section>
       <Text.Detail
         isBold={boolean('bold', false)}
-        tone={select('Text tone', ['none', 'secondary'])}
+        tone={select('Text tone', [
+          'none',
+          'primary',
+          'secondary',
+          'positive',
+          'negative',
+        ])}
       >
         {text('Text', 'Sample text')}
       </Text.Detail>
