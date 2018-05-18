@@ -159,9 +159,7 @@ describe('rendering', () => {
           });
 
           it('should have opened styles', () => {
-            expect(dowshiftRenderWrapper).toHaveClassName(
-              'currency-dropdown-open-container'
-            );
+            expect(dowshiftRenderWrapper).toHaveClassName('currency-active');
           });
         });
 
@@ -178,9 +176,7 @@ describe('rendering', () => {
           });
 
           it('should have disabled styles', () => {
-            expect(dowshiftRenderWrapper).toHaveClassName(
-              'disabled-currency-dropdown-container'
-            );
+            expect(dowshiftRenderWrapper).toHaveClassName('currency-disabled');
           });
         });
 
@@ -233,9 +229,7 @@ describe('rendering', () => {
       });
 
       it('should render options', () => {
-        expect(dowshiftRenderWrapper).toRender(
-          '.currency-dropdown-open-container'
-        );
+        expect(dowshiftRenderWrapper).toRender('.currency-active');
       });
 
       it('should render as many options as currencies', () => {
@@ -244,12 +238,12 @@ describe('rendering', () => {
     });
   });
 
-  describe('amount field', () => {
-    let amountField;
+  describe('centAmount field', () => {
+    let centAmountField;
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<MoneyInput {...props} />);
-      amountField = wrapper.find(Cleave);
+      centAmountField = wrapper.find(Cleave);
     });
 
     it('should render a `Cleave`', () => {
@@ -263,11 +257,11 @@ describe('rendering', () => {
             isDisabled: true,
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          amountField = wrapper.find(Cleave);
+          centAmountField = wrapper.find(Cleave);
         });
 
         it('should have disabled styles', () => {
-          expect(amountField).toHaveClassName('disabled');
+          expect(centAmountField).toHaveClassName('amount-disabled');
         });
       });
 
@@ -277,11 +271,11 @@ describe('rendering', () => {
             hasAmountError: true,
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          amountField = wrapper.find(Cleave);
+          centAmountField = wrapper.find(Cleave);
         });
 
         it('should have error styles', () => {
-          expect(amountField).toHaveClassName('error');
+          expect(centAmountField).toHaveClassName('amount-error');
         });
       });
 
@@ -291,11 +285,11 @@ describe('rendering', () => {
             hasAmountWarning: true,
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          amountField = wrapper.find(Cleave);
+          centAmountField = wrapper.find(Cleave);
         });
 
-        it('should have error styles', () => {
-          expect(amountField).toHaveClassName('warning');
+        it('should have warning styles', () => {
+          expect(centAmountField).toHaveClassName('amount-warning');
         });
       });
     });
@@ -308,7 +302,7 @@ describe('callbacks', () => {
   let downshiftProps;
   let dowshiftRenderWrapper;
   describe('currency field', () => {
-    describe('when changing amount', () => {
+    describe('when changing centAmount', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
@@ -336,7 +330,7 @@ describe('callbacks', () => {
     });
   });
 
-  describe('amount field', () => {
+  describe('centAmount field', () => {
     describe('when input loses focus', () => {
       let cleaveComponentReference;
       beforeEach(() => {
@@ -346,7 +340,7 @@ describe('callbacks', () => {
         props = createTestProps({
           value: {
             currencyCode: 'EUR',
-            amount: 10,
+            centAmount: 10,
           },
           onBlur: jest.fn(),
         });

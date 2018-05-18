@@ -132,9 +132,9 @@ export class MoneyInput extends React.PureComponent {
   static propTypes = {
     value: PropTypes.shape({
       currencyCode: PropTypes.string,
-      amount: PropTypes.number,
+      centAmount: PropTypes.number,
     }).isRequired,
-    /* to fix amount depending on Money type fractionDigits prop */
+    /* to fix centAmount depending on Money type fractionDigits prop */
     fractionDigits: PropTypes.number,
     language: PropTypes.string.isRequired,
     currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -158,7 +158,7 @@ export class MoneyInput extends React.PureComponent {
   };
 
   state = {
-    centAmountValue: this.props.value.amount,
+    centAmountValue: this.props.value.centAmount,
     cleaveComponentReference: null,
     dropdownButtonReference: null,
     fractionDigits: this.props.fractionDigits,
@@ -167,13 +167,13 @@ export class MoneyInput extends React.PureComponent {
   componentDidUpdate(prevProps, prevState) {
     if (
       prevState.cleaveComponentReference &&
-      (prevState.centAmountValue !== this.props.value.amount ||
+      (prevState.centAmountValue !== this.props.value.centAmount ||
         prevState.fractionDigits !== this.props.fractionDigits)
     ) {
       prevState.cleaveComponentReference.setRawValue(
-        !isNil(this.props.value.amount)
+        !isNil(this.props.value.centAmount)
           ? parseNumberToMoney(
-              this.props.value.amount,
+              this.props.value.centAmount,
               this.props.fractionDigits
             )
           : ''
@@ -181,7 +181,7 @@ export class MoneyInput extends React.PureComponent {
 
       this.setState({
         ...prevState,
-        centAmountValue: this.props.value.amount,
+        centAmountValue: this.props.value.centAmount,
         fractionDigits: this.props.fractionDigits,
       });
     }
@@ -190,7 +190,7 @@ export class MoneyInput extends React.PureComponent {
   handleInit = cleaveComponentReference => {
     this.setState({ cleaveComponentReference });
     const initialMoneyValue = parseNumberToMoney(
-      this.props.value.amount,
+      this.props.value.centAmount,
       this.props.fractionDigits
     );
     if (!isNil(initialMoneyValue)) {
@@ -213,13 +213,13 @@ export class MoneyInput extends React.PureComponent {
 
   handleAmountChange = event => {
     const nextValue = event.target.rawValue;
-    if (this.props.value.amount === nextValue) return;
+    if (this.props.value.centAmount === nextValue) return;
     const centAmountValue = nextValue
       ? Math.trunc(Math.round(nextValue * 10 ** this.state.fractionDigits))
       : undefined;
     this.props.onChange({
       ...this.props.value,
-      amount: centAmountValue,
+      centAmount: centAmountValue,
     });
   };
 

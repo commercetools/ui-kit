@@ -162,7 +162,7 @@
 
 .options-wrapper {
   position: relative;
-  z-index: 999;
+  z-index: 5px;
   top: var(--options-top-margin);
   border-radius: var(--border-radius-6);
   color: var(--color-black);

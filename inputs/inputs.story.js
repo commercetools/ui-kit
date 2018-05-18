@@ -75,7 +75,7 @@ storiesOf('Forms/Inputs', module)
     <Section>
       <MoneyInput
         value={{
-          amount: number('amount', 10),
+          centAmount: number('centAmount', 10),
           currencyCode: select('currencyCode', ['EUR', 'USD', 'AED'], 'EUR'),
         }}
         fractionDigits={number('fractionDigits', 2)}
