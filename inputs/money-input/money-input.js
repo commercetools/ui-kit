@@ -14,12 +14,12 @@ import Contraints from '../../materials/constraints';
 import styles from './money-input.mod.css';
 
 const getCurrencyDropdownContainerStyles = (props, isOpen) => {
-  if (props.isDisabled) return styles['disabled-currency-dropdown-container'];
+  if (props.isDisabled) return styles['currency-disabled'];
   if (props.hasCurrencyError) return styles['currency-error'];
   if (props.hasCurrencyWarning) return styles['currency-warning'];
-  if (isOpen) return styles['currency-dropdown-open-container'];
+  if (isOpen) return styles['currency-active'];
 
-  return styles['currency-container'];
+  return styles['currency-default'];
 };
 
 const getCurrencyDropdownOptionsStyles = props => {
@@ -35,11 +35,11 @@ const getCurrencyStyles = isDisabled => {
 };
 
 const getAmountStyles = props => {
-  if (props.isDisabled) return styles.disabled;
-  if (props.hasAmountError) return styles.error;
-  if (props.hasAmountWarning) return styles.warning;
+  if (props.isDisabled) return styles['amount-disabled'];
+  if (props.hasAmountError) return styles['amount-error'];
+  if (props.hasAmountWarning) return styles['amount-warning'];
 
-  return styles.pristine;
+  return styles['amount-default'];
 };
 
 // Since the Cleave component might call the onChange handler with a string
@@ -74,8 +74,8 @@ export const Currency = props => (
     label={props.currency}
     onClick={props.onClick}
     isDisabled={props.isDisabled}
-    className={classnames(styles.currency, {
-      [styles['currency-disabled']]: props.isDisabled,
+    className={classnames(styles['currency-button'], {
+      [styles['currency-button-disabled']]: props.isDisabled,
     })}
   >
     {props.currency}
@@ -297,7 +297,7 @@ export class MoneyInput extends React.PureComponent {
           ) : (
             <div
               className={classnames(styles['currency-label'], {
-                [styles['disabled-currency-label']]: this.props.isDisabled,
+                [styles['currency-label-disabled']]: this.props.isDisabled,
               })}
             >
               <div className={styles['currency-wrapper']}>

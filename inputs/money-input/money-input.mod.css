@@ -1,6 +1,5 @@
 @import '../../materials/borders.mod.css';
 @import '../../materials/colors.mod.css';
-@import '../../materials/shadows.mod.css';
 @import '../../materials/sizes.mod.css';
 @import '../../materials/spacings.mod.css';
 @import '../../materials/transitions.mod.css';
@@ -11,6 +10,7 @@
   --currency-font-size: 12px;
   --currency-margin-top: 10px;
   --currency-width: 56px;
+  --height-input: 32px;
 }
 
 .field-container {
@@ -21,7 +21,7 @@
 
 .input {
   width: 100%;
-  height: var(--spacing-32);
+  height: var(--height-input);
   border-top-right-radius: var(--border-radius-6);
   border-bottom-right-radius: var(--border-radius-6);
   border-style: solid;
@@ -38,13 +38,13 @@
 
 /* Tones */
 
-.pristine {
+.amount-default {
   composes: input;
   border-color: var(--color-greySolid);
   color: var(--color-black);
 }
 
-.disabled {
+.amount-disabled {
   composes: input;
   cursor: not-allowed;
   background-color: var(--color-whiteCatskill);
@@ -53,13 +53,13 @@
   opacity: 1; /* fix for mobile safari */
 }
 
-.warning {
+.amount-warning {
   composes: input;
   color: var(--color-orange);
   border-color: var(--color-orange);
 }
 
-.error {
+.amount-error {
   composes: input;
   color: var(--color-red);
   border-color: var(--color-red);
@@ -67,14 +67,14 @@
 
 /* States */
 
-.pristine:active,
-.pristine:focus {
+.amount-default:active,
+.amount-default:focus {
   border-color: var(--color-greenDowny);
   color: var(--color-black);
 }
 
 /* Currency dropdown */
-.currency-container {
+.currency-default {
   border-top-left-radius: var(--border-radius-6);
   border-bottom-left-radius: var(--border-radius-6);
   border: var(--border-radius-1) solid var(--color-greySolid);
@@ -85,33 +85,28 @@
   min-width: var(--currency-width);
 }
 
-.disabled-currency-dropdown-container {
-  composes: currency-container;
+.currency-active {
+  composes: currency-default;
+  border-color: var(--color-greenDowny);
+}
+
+.currency-disabled {
+  composes: currency-default;
   background-color: var(--color-whiteCatskill);
   border-color: var(--color-greyMischka);
   color: var(--color-greyNevada);
 }
 
-.currency-disabled {
-  color: var(--color-greyNevada);
-  background-color: var(--color-whiteCatskill);
-}
-
 .currency-warning {
-  composes: currency-container;
+  composes: currency-default;
   border-color: var(--color-orange);
   color: var(--color-orange);
 }
 
 .currency-error {
-  composes: currency-container;
+  composes: currency-default;
   border-color: var(--color-red);
   color: var(--color-red);
-}
-
-.currency-dropdown-open-container {
-  composes: currency-container;
-  border-color: var(--color-greenDowny);
 }
 
 .currency-wrapper {
@@ -123,22 +118,27 @@
 }
 
 .currency-label {
-  composes: currency-container;
+  composes: currency-default;
   color: var(--color-greyNevada);
   background-color: var(--color-whiteCatskill);
 }
 
-.disabled-currency-label {
+.currency-label-disabled {
   background-color: var(--color-whiteCatskill);
   border-color: var(--color-greyMischka);
   color: var(--color-greyNevada);
 }
 
-.currency {
+.currency-button {
   height: var(--small-button-height);
   font-size: var(--currency-font-size);
   margin-left: auto;
   margin-right: auto;
+}
+
+.currency-button-disabled {
+  color: var(--color-greyNevada);
+  background-color: var(--color-whiteCatskill);
 }
 
 .chevron-icon {
@@ -200,6 +200,7 @@
 .option-wrapper:first-child {
   border-radius: var(--border-radius-6) var(--border-radius-6) 0 0;
 }
+
 .option-wrapper:last-child {
   border-radius: 0 0 var(--border-radius-6) var(--border-radius-6);
 }
