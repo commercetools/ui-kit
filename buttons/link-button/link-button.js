@@ -24,7 +24,14 @@ const LinkButton = props => (
 LinkButton.displayName = 'LinkButton';
 LinkButton.propTypes = {
   label: PropTypes.node.isRequired,
-  to: PropTypes.string.isRequired,
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string,
+      query: PropTypes.objectOf(PropTypes.string),
+    }),
+  ]).isRequired,
   iconLeft: PropTypes.element,
   isDisabled: PropTypes.bool,
 };
