@@ -13,7 +13,7 @@ import AccessibleButton from '../../buttons/accessible-button';
 import Contraints from '../../materials/constraints';
 import styles from './money-input.mod.css';
 
-const getCurrencyDropdownContainerStyles = (props, isOpen) => {
+const getCurrencyDropdownSelectStyles = (props, isOpen) => {
   if (props.isDisabled) return styles['currency-disabled'];
   if (props.hasCurrencyError) return styles['currency-error'];
   if (props.hasCurrencyWarning) return styles['currency-warning'];
@@ -27,11 +27,6 @@ const getCurrencyDropdownOptionsStyles = props => {
   if (props.hasCurrencyWarning) return styles['options-wrapper-warning'];
 
   return styles['options-wrapper-active'];
-};
-
-const getCurrencyStyles = isDisabled => {
-  if (isDisabled) return styles['chevron-icon-disabled'];
-  return styles['chevron-icon'];
 };
 
 const getAmountStyles = props => {
@@ -96,15 +91,14 @@ export const DropdownChevron = props => (
     onClick={props.onClick}
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
-    className={props.className}
+    className={classnames(styles['chevron-icon'], {
+      [styles['chevron-icon-disabled']]: props.isDisabled,
+    })}
   >
     <div className={styles['icon-wrapper']}>
-      {React.cloneElement(
-        props.isOpen && !props.isDisabled ? <CaretUpIcon /> : <CaretDownIcon />,
-        {
-          size: 'scale',
-        }
-      )}
+      {React.cloneElement(props.isOpen ? <CaretUpIcon /> : <CaretDownIcon />, {
+        size: 'scale',
+      })}
     </div>
   </AccessibleButton>
 );
@@ -114,7 +108,6 @@ DropdownChevron.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  className: PropTypes.string.isRequired,
   buttonRef: PropTypes.func.isRequired,
 };
 
@@ -246,7 +239,7 @@ export class MoneyInput extends React.PureComponent {
             <Downshift
               render={({ isOpen, toggleMenu }) => (
                 <div
-                  className={getCurrencyDropdownContainerStyles(
+                  className={getCurrencyDropdownSelectStyles(
                     {
                       isDisabled: this.props.isDisabled,
                       hasCurrencyError: this.props.hasCurrencyError,
@@ -267,7 +260,6 @@ export class MoneyInput extends React.PureComponent {
                         onClick={toggleMenu}
                         isDisabled={this.props.isDisabled}
                         isOpen={isOpen}
-                        className={getCurrencyStyles(this.props.isDisabled)}
                       />
                     )}
                   </div>
