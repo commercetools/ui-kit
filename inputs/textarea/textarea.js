@@ -81,12 +81,6 @@ class TextArea extends React.Component {
             className={this.getStyles(this.props)}
             readOnly={this.props.isReadOnly}
             autoFocus={this.props.isAutofocussed}
-            style={{
-              resize:
-                this.state.isCollapsed || this.props.isDisabled
-                  ? 'none'
-                  : 'vertical',
-            }}
             /* ARIA */
             aria-readonly={this.props.isReadOnly}
             role="textbox"
