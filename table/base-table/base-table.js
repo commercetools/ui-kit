@@ -315,6 +315,7 @@ export default class BaseTable extends React.Component {
                 columnKey={column.key}
                 sortBy={this.props.sortBy}
                 sortDirection={this.props.sortDirection}
+                alignRight={column.align === 'right'}
               >
                 {column.label}
               </SortableHeader>

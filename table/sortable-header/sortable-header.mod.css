@@ -2,6 +2,7 @@
 
 .container {
   display: flex;
+  justify-content: space-between;
 }
 
 .arrow {
@@ -22,6 +23,6 @@
   visibility: visible;
 }
 
-.label {
-  flex: 1 0 auto;
+.right-label {
+  order: 1;
 }

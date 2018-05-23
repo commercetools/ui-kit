@@ -43,7 +43,11 @@ const SortableHeader = props => {
         [styles.active]: isActive,
       })}
     >
-      <div className={styles.label}>
+      <div
+        className={classnames({
+          [styles['right-label']]: props.alignRight,
+        })}
+      >
         <Text.Body>{props.children}</Text.Body>
       </div>
       <span className={styles.arrow}>
@@ -64,6 +68,7 @@ SortableHeader.propTypes = {
   sortBy: PropTypes.string,
   sortDirection: PropTypes.oneOf(['DESC', 'ASC']),
   columnKey: PropTypes.string.isRequired,
+  alignRight: PropTypes.bool,
 
   // withMouseOverState HoC
   isMouseOver: PropTypes.bool.isRequired,
