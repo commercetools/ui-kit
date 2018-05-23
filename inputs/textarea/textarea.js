@@ -56,7 +56,7 @@ class TextArea extends React.Component {
     if (this.props.onBlur) this.props.onBlur();
   };
 
-  handleOnHeightChange = newRows => {
+  handleHeightChange = newRows => {
     // The proxy component considers the padding style as an extra row
     const newRowsCount = newRows - 1;
     this.setState({
@@ -72,7 +72,7 @@ class TextArea extends React.Component {
             name={this.props.name}
             onChange={this.props.onChange}
             onHeightChange={(_, innerComponent) => {
-              this.handleOnHeightChange(innerComponent.rowCount);
+              this.handleHeightChange(innerComponent.rowCount);
             }}
             onBlur={this.props.onBlur}
             onFocus={this.handleFocus}
