@@ -8,6 +8,7 @@
   /* FIXME: As our input component is not built properly (following the spacing system)
             we need this hacky line-height to achieve 32px height */
   --size-input-line-height: 22px;
+  --size-input-min-height: 32px;
 }
 
 /******** States ********/
@@ -22,6 +23,8 @@
   border-radius: var(--token-border-radius-input);
   transition: var(--transition-standard);
   line-height: var(--size-input-line-height);
+  min-height: var(--size-input-min-height);
+  resize: vertical;
   width: 100%;
   overflow: hidden;
   word-break: break-all;

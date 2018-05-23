@@ -58,10 +58,8 @@ class TextArea extends React.Component {
   };
 
   handleHeightChange = newRows => {
-    // The proxy component considers the padding style as an extra row
-    const newRowsCount = newRows - 1;
     this.setState({
-      rows: newRowsCount,
+      rows: newRows,
     });
   };
 
