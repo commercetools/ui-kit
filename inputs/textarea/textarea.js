@@ -57,9 +57,9 @@ class TextArea extends React.Component {
     if (this.props.onBlur) this.props.onBlur();
   };
 
-  handleHeightChange = newRows => {
+  handleHeightChange = (_, innerComponent) => {
     this.setState({
-      rows: newRows,
+      rows: innerComponent.rowCount,
     });
   };
 
@@ -70,9 +70,7 @@ class TextArea extends React.Component {
           <TextareaAutosize
             name={this.props.name}
             onChange={this.props.onChange}
-            onHeightChange={(_, innerComponent) => {
-              this.handleHeightChange(innerComponent.rowCount);
-            }}
+            onHeightChange={this.handleHeightChange}
             id={this.props.id}
             onBlur={this.props.onBlur}
             onFocus={this.handleFocus}
