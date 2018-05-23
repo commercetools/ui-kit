@@ -1,13 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
-// import withReadme from 'storybook-readme/with-readme';
+import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
-// import Readme from './README.md';
+import Readme from './README.md';
 import TextArea from './textarea';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
   .add('TextArea', () => (
     <Section>
       <TextArea
@@ -18,5 +19,3 @@ storiesOf('Inputs', module)
       />
     </Section>
   ));
-
-// .addDecorator(withReadme(Readme))
