@@ -9,10 +9,10 @@ import styles from './textarea.mod.css';
 
 class TextArea extends React.Component {
   static displayName = 'TextArea';
-  DEFAULT_ROWS_NUMBER = 1;
+  static DEFAULT_ROWS_NUMBER = 1;
   state = {
     isCollapsed: false,
-    rows: this.DEFAULT_ROWS_NUMBER,
+    rows: TextArea.DEFAULT_ROWS_NUMBER,
   };
 
   propTypes = {
@@ -85,13 +85,13 @@ class TextArea extends React.Component {
             aria-readonly={this.props.isReadOnly}
             role="textbox"
             contentEditable={!this.props.isReadOnly}
-            minRows={this.DEFAULT_ROWS_NUMBER}
+            minRows={TextArea.DEFAULT_ROWS_NUMBER}
             maxRows={
-              this.state.isCollapsed ? this.DEFAULT_ROWS_NUMBER : undefined
+              this.state.isCollapsed ? TextArea.DEFAULT_ROWS_NUMBER : undefined
             }
           />
 
-          {(this.state.rows > this.DEFAULT_ROWS_NUMBER ||
+          {(this.state.rows > TextArea.DEFAULT_ROWS_NUMBER ||
             this.state.isCollapsed) && (
             <FlatButton
               onClick={this.toggleCollapse}
