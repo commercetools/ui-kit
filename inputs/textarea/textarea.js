@@ -17,6 +17,7 @@ class TextArea extends React.Component {
 
   propTypes = {
     name: PropTypes.string,
+    id: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     onBlur: PropTypes.func,
@@ -74,6 +75,7 @@ class TextArea extends React.Component {
             onHeightChange={(_, innerComponent) => {
               this.handleHeightChange(innerComponent.rowCount);
             }}
+            id={this.props.id}
             onBlur={this.props.onBlur}
             onFocus={this.handleFocus}
             disabled={this.props.isDisabled}
