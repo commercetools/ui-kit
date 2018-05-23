@@ -41,15 +41,10 @@ const SortableHeader = props => {
       onMouseOut={props.handleMouseOut}
       className={classnames(styles.container, {
         [styles.active]: isActive,
+        [styles.reversed]: props.alignRight,
       })}
     >
-      <div
-        className={classnames({
-          [styles['right-label']]: props.alignRight,
-        })}
-      >
-        <Text.Body>{props.children}</Text.Body>
-      </div>
+      <Text.Body>{props.children}</Text.Body>
       <span className={styles.arrow}>
         {isArrowDown ? (
           <AngleDownIcon size="small" theme={theme} />

@@ -23,6 +23,6 @@
   visibility: visible;
 }
 
-.right-label {
-  order: 1;
+.reversed {
+  flex-direction: row-reverse;
 }
