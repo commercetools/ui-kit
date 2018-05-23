@@ -49,7 +49,7 @@ class TextArea extends React.Component {
     }));
   };
 
-  handleOnFocus = () => {
+  handleFocus = () => {
     if (this.state.isCollapsed) {
       this.toggleCollapse();
     }
@@ -75,7 +75,7 @@ class TextArea extends React.Component {
               this.handleOnHeightChange(innerComponent.rowCount);
             }}
             onBlur={this.props.onBlur}
-            onFocus={this.handleOnFocus}
+            onFocus={this.handleFocus}
             disabled={this.props.isDisabled}
             placeholder={this.props.placeholder}
             className={this.getStyles(this.props)}
