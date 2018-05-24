@@ -1,10 +1,10 @@
+import 'flatpickr/dist/themes/airbnb.css';
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'flatpickr/dist/themes/airbnb.css';
-import Flatpickr from 'flatpickr';
-import isTouchDevice from 'is-touch-device';
-import { German } from 'flatpickr/dist/l10n/de';
 import { injectIntl } from 'react-intl';
+import Flatpickr from 'flatpickr';
+import { German } from 'flatpickr/dist/l10n/de';
+import isTouchDevice from 'is-touch-device';
 import moment from 'moment-timezone';
 import { parseDateTime } from '@commercetools-local/utils/datetime';
 import Constraints from '../materials/constraints';
