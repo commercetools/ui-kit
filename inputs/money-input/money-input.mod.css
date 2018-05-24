@@ -5,11 +5,12 @@
 @import '../../materials/transitions.mod.css';
 
 :root {
-  --chevron-width: 12px;
+  --chevron-width: 11px;
   --options-top-margin: 12px;
   --currency-font-size: 12px;
   --currency-margin-top: 10px;
   --currency-width: 56px;
+  --options-wrapper-width: 57px;
   --height-input: 32px;
 }
 
@@ -155,20 +156,15 @@
 .icon-wrapper {
   pointer-events: none;
   width: var(--chevron-width);
-
-  /* This is to center the icon as the caret visually looks too high otherwise */
-  margin-top: 3px;
 }
 
 .options-wrapper {
   position: relative;
-  z-index: 5px;
+  z-index: 5;
   top: var(--options-top-margin);
   border-radius: var(--border-radius-6);
   color: var(--color-black);
-
-  /* to fit width + borders */
-  width: calc(var(--currency-width) + 1px);
+  width: var(--options-wrapper-width);
 
   /* to center the options under the header */
   left: -1px;
