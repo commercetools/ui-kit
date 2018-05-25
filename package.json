@@ -22,7 +22,7 @@
     "moment": "2.22.1",
     "moment-timezone": "0.5.17",
     "prop-types": "15.6.1",
-    "react": "16.3.2",
+    "react": "16.4.0",
     "react-intl": "2.4.0",
     "react-required-if": "1.0.3",
     "react-router-dom": "4.2.2",
