@@ -6,9 +6,7 @@
 
 :root {
   --chevron-width: 11px;
-  --options-top-margin: 12px;
   --currency-font-size: 12px;
-  --currency-margin-top: 10px;
   --currency-width: 56px;
   --options-wrapper-width: 57px;
   --height-input: 32px;
@@ -114,8 +112,7 @@
   height: var(--currency-font-size);
   display: flex;
   align-items: center;
-  margin-top: var(--currency-margin-top);
-  padding: 0 var(--spacing-8);
+  padding: var(--spacing-16) var(--spacing-8);
 }
 
 .currency-label {
@@ -161,7 +158,7 @@
 .options-wrapper {
   position: relative;
   z-index: 5;
-  top: var(--options-top-margin);
+  top: var(--spacing-4);
   border-radius: var(--border-radius-6);
   color: var(--color-black);
   width: var(--options-wrapper-width);
