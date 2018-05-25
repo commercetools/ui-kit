@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Collapsible from '@commercetools-local/ui-kit/collapsible';
 import requiredIf from 'react-required-if';
 import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '@commercetools-local/ui-kit/buttons/flat-button';
@@ -10,12 +11,12 @@ import styles from './textarea.mod.css';
 class TextArea extends React.Component {
   static displayName = 'TextArea';
   static DEFAULT_ROWS_NUMBER = 1;
+
   state = {
-    isCollapsed: false,
     rows: TextArea.DEFAULT_ROWS_NUMBER,
   };
 
-  propTypes = {
+  static propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
     value: PropTypes.string.isRequired,
@@ -44,17 +45,15 @@ class TextArea extends React.Component {
     return styles.pristine;
   };
 
-  toggleCollapse = () => {
-    this.setState(prevState => ({
-      isCollapsed: !prevState.isCollapsed,
-    }));
+  toggleCollapse = toggle => {
+    toggle();
   };
 
-  handleFocus = () => {
-    if (this.state.isCollapsed) {
-      this.toggleCollapse();
+  handleFocus = (isOpen, toggle) => {
+    if (!isOpen) {
+      this.toggleCollapse(toggle);
     }
-    if (this.props.onBlur) this.props.onBlur();
+    if (this.props.onFocus) this.props.onFocus();
   };
 
   handleHeightChange = (_, innerComponent) => {
@@ -66,46 +65,46 @@ class TextArea extends React.Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div>
-          <TextareaAutosize
-            name={this.props.name}
-            onChange={this.props.onChange}
-            onHeightChange={this.handleHeightChange}
-            id={this.props.id}
-            onBlur={this.props.onBlur}
-            onFocus={this.handleFocus}
-            disabled={this.props.isDisabled}
-            placeholder={this.props.placeholder}
-            className={this.getStyles(this.props)}
-            readOnly={this.props.isReadOnly}
-            autoFocus={this.props.isAutofocussed}
-            /* ARIA */
-            aria-readonly={this.props.isReadOnly}
-            role="textbox"
-            contentEditable={!this.props.isReadOnly}
-            minRows={TextArea.DEFAULT_ROWS_NUMBER}
-            maxRows={
-              this.state.isCollapsed ? TextArea.DEFAULT_ROWS_NUMBER : undefined
-            }
-          />
-
-          {(this.state.rows > TextArea.DEFAULT_ROWS_NUMBER ||
-            this.state.isCollapsed) && (
-            <FlatButton
-              onClick={this.toggleCollapse}
-              type="primary"
-              isDisabled={this.props.isDisabled}
-              label={this.state.isCollapsed ? 'Expand' : 'Collapse'}
-              icon={
-                this.state.isCollapsed ? (
-                  <AngleDownIcon size="small" />
-                ) : (
-                  <AngleUpIcon size="small" />
-                )
-              }
-            />
+        <Collapsible>
+          {({ isOpen, toggle }) => (
+            <div>
+              <TextareaAutosize
+                name={this.props.name}
+                onChange={this.props.onChange}
+                onHeightChange={this.handleHeightChange}
+                id={this.props.id}
+                onBlur={this.props.onBlur}
+                onFocus={() => this.handleFocus(isOpen, toggle)}
+                disabled={this.props.isDisabled}
+                placeholder={this.props.placeholder}
+                className={this.getStyles(this.props)}
+                readOnly={this.props.isReadOnly}
+                autoFocus={this.props.isAutofocussed}
+                /* ARIA */
+                aria-readonly={this.props.isReadOnly}
+                role="textbox"
+                minRows={TextArea.DEFAULT_ROWS_NUMBER}
+                maxRows={!isOpen ? TextArea.DEFAULT_ROWS_NUMBER : undefined}
+                useCacheForDOMMeasurements={true}
+              />
+              {(this.state.rows > TextArea.DEFAULT_ROWS_NUMBER || !isOpen) && (
+                <FlatButton
+                  onClick={() => this.toggleCollapse(toggle)}
+                  type="primary"
+                  isDisabled={this.props.isDisabled}
+                  label={!isOpen ? 'Expand' : 'Collapse'}
+                  icon={
+                    !isOpen ? (
+                      <AngleDownIcon size="small" />
+                    ) : (
+                      <AngleUpIcon size="small" />
+                    )
+                  }
+                />
+              )}
+            </div>
           )}
-        </div>
+        </Collapsible>
       </Constraints.Horizontal>
     );
   }
