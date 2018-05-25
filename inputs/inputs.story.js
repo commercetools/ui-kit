@@ -73,28 +73,33 @@ storiesOf('Forms/Inputs', module)
   .addDecorator(withReadme(MoneyInputReadme))
   .add('MoneyInput', () => (
     <Section>
-      <MoneyInput
-        value={{
+      <Value
+        defaultValue={{
           centAmount: number('centAmount', 10),
           currencyCode: select('currencyCode', ['EUR', 'USD', 'AED'], 'EUR'),
         }}
-        fractionDigits={number('fractionDigits', 2)}
-        language={text('language', '')}
-        currencies={
-          boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
-        }
-        placeholder={text('placeholder', 'Placeholder')}
-        onBlur={action('onBlur')}
-        isDisabled={boolean('isDisabled', false)}
-        onChange={action('onChange')}
-        hasCurrencyError={boolean('hasCurrencyError', false)}
-        hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-        hasAmountError={boolean('hasAmountError', false)}
-        hasAmountWarning={boolean('hasAmountWarning', false)}
-        horizontalConstraint={select(
-          'horizontalConstraint',
-          ['s', 'm', 'l', 'xl', 'scale'],
-          'm'
+        render={(value, onChange) => (
+          <MoneyInput
+            value={value}
+            fractionDigits={number('fractionDigits', 2)}
+            language={text('language', '')}
+            currencies={
+              boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
+            }
+            placeholder={text('placeholder', 'Placeholder')}
+            onBlur={action('onBlur')}
+            isDisabled={boolean('isDisabled', false)}
+            onChange={onChange}
+            hasCurrencyError={boolean('hasCurrencyError', false)}
+            hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
+            hasAmountError={boolean('hasAmountError', false)}
+            hasAmountWarning={boolean('hasAmountWarning', false)}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              ['s', 'm', 'l', 'xl', 'scale'],
+              'm'
+            )}
+          />
         )}
       />
     </Section>
