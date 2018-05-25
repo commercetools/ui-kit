@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Collapsible from '@commercetools-local/ui-kit/collapsible';
 import requiredIf from 'react-required-if';
+import { injectIntl, intlShape } from 'react-intl';
+import Collapsible from '@commercetools-local/ui-kit/collapsible';
 import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '@commercetools-local/ui-kit/buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-local/ui-kit/icons';
 import Constraints from '../../materials/constraints';
 import styles from './textarea.mod.css';
+import messages from './messages';
 
 class TextArea extends React.Component {
   static displayName = 'TextArea';
@@ -30,6 +32,9 @@ class TextArea extends React.Component {
     hasWarning: PropTypes.bool,
     placeholder: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+
+    // HoC
+    intl: intlShape.isRequired,
   };
 
   // NOTE: order is important here
@@ -67,7 +72,7 @@ class TextArea extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Collapsible>
           {({ isOpen, toggle }) => (
-            <div>
+            <React.Fragment>
               <TextareaAutosize
                 name={this.props.name}
                 onChange={this.props.onChange}
@@ -92,7 +97,9 @@ class TextArea extends React.Component {
                   onClick={() => this.toggleCollapse(toggle)}
                   type="primary"
                   isDisabled={this.props.isDisabled}
-                  label={!isOpen ? 'Expand' : 'Collapse'}
+                  label={this.props.intl.formatMessage(
+                    messages[isOpen ? 'collapse' : 'expand']
+                  )}
                   icon={
                     !isOpen ? (
                       <AngleDownIcon size="small" />
@@ -102,7 +109,7 @@ class TextArea extends React.Component {
                   }
                 />
               )}
-            </div>
+            </React.Fragment>
           )}
         </Collapsible>
       </Constraints.Horizontal>
@@ -110,4 +117,4 @@ class TextArea extends React.Component {
   }
 }
 
-export default TextArea;
+export default injectIntl(TextArea);
