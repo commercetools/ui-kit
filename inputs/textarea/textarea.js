@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { injectIntl, intlShape } from 'react-intl';
+import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Collapsible from '@commercetools-local/ui-kit/collapsible';
 import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '@commercetools-local/ui-kit/buttons/flat-button';
@@ -10,7 +11,7 @@ import Constraints from '../../materials/constraints';
 import styles from './textarea.mod.css';
 import messages from './messages';
 
-class TextArea extends React.Component {
+export class TextArea extends React.Component {
   static displayName = 'TextArea';
 
   static DEFAULT_ROWS_NUMBER = 1;
@@ -53,25 +54,26 @@ class TextArea extends React.Component {
 
   handleHeightChange = (_, innerComponent) => {
     this.setState({
-      rows: innerComponent.rowCount,
+      numOfRows: innerComponent.rowCount,
     });
   };
 
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Collapsible>
+        <Collapsible isDefaultClosed={false}>
           {({ isOpen, toggle }) => (
-            <React.Fragment>
+            <div>
               <TextareaAutosize
                 name={this.props.name}
+                value={this.props.value}
                 onChange={this.props.onChange}
                 onHeightChange={this.handleHeightChange}
                 id={this.props.id}
                 onBlur={this.props.onBlur}
                 onFocus={() => {
                   if (!isOpen) toggle();
-                  if (this.props.onFocus) this.props.onFocus();
+                  this.props.onFocus();
                 }}
                 disabled={this.props.isDisabled}
                 placeholder={this.props.placeholder}
@@ -80,9 +82,11 @@ class TextArea extends React.Component {
                 autoFocus={this.props.isAutofocussed}
                 /* ARIA */
                 aria-readonly={this.props.isReadOnly}
+                aria-multiline="true"
                 role="textbox"
                 minRows={TextArea.DEFAULT_ROWS_NUMBER}
                 maxRows={!isOpen ? TextArea.DEFAULT_ROWS_NUMBER : undefined}
+                {...filterDataAttributes(this.props)}
                 useCacheForDOMMeasurements={true}
               />
               {(this.state.numOfRows > TextArea.DEFAULT_ROWS_NUMBER ||
@@ -103,7 +107,7 @@ class TextArea extends React.Component {
                   }
                 />
               )}
-            </React.Fragment>
+            </div>
           )}
         </Collapsible>
       </Constraints.Horizontal>
