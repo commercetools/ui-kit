@@ -12,11 +12,8 @@ import messages from './messages';
 
 class TextArea extends React.Component {
   static displayName = 'TextArea';
-  static DEFAULT_ROWS_NUMBER = 1;
 
-  state = {
-    rows: TextArea.DEFAULT_ROWS_NUMBER,
-  };
+  static DEFAULT_ROWS_NUMBER = 1;
 
   static propTypes = {
     name: PropTypes.string,
@@ -37,6 +34,10 @@ class TextArea extends React.Component {
     intl: intlShape.isRequired,
   };
 
+  state = {
+    numOfRows: TextArea.DEFAULT_ROWS_NUMBER,
+  };
+
   // NOTE: order is important here
   // * a disabled-field currently does not display warning/error-states so it takes precedence
   // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
@@ -48,17 +49,6 @@ class TextArea extends React.Component {
     if (props.isReadOnly) return styles.readonly;
 
     return styles.pristine;
-  };
-
-  toggleCollapse = toggle => {
-    toggle();
-  };
-
-  handleFocus = (isOpen, toggle) => {
-    if (!isOpen) {
-      this.toggleCollapse(toggle);
-    }
-    if (this.props.onFocus) this.props.onFocus();
   };
 
   handleHeightChange = (_, innerComponent) => {
@@ -79,7 +69,10 @@ class TextArea extends React.Component {
                 onHeightChange={this.handleHeightChange}
                 id={this.props.id}
                 onBlur={this.props.onBlur}
-                onFocus={() => this.handleFocus(isOpen, toggle)}
+                onFocus={() => {
+                  if (!isOpen) toggle();
+                  if (this.props.onFocus) this.props.onFocus();
+                }}
                 disabled={this.props.isDisabled}
                 placeholder={this.props.placeholder}
                 className={this.getStyles(this.props)}
@@ -92,9 +85,10 @@ class TextArea extends React.Component {
                 maxRows={!isOpen ? TextArea.DEFAULT_ROWS_NUMBER : undefined}
                 useCacheForDOMMeasurements={true}
               />
-              {(this.state.rows > TextArea.DEFAULT_ROWS_NUMBER || !isOpen) && (
+              {(this.state.numOfRows > TextArea.DEFAULT_ROWS_NUMBER ||
+                !isOpen) && (
                 <FlatButton
-                  onClick={() => this.toggleCollapse(toggle)}
+                  onClick={toggle}
                   type="primary"
                   isDisabled={this.props.isDisabled}
                   label={this.props.intl.formatMessage(
