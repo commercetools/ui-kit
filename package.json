@@ -26,7 +26,7 @@
     "react-intl": "2.4.0",
     "react-required-if": "1.0.3",
     "react-router-dom": "4.2.2",
-    "react-virtualized": "9.18.5",
+    "react-virtualized": "9.19.1",
     "recompose": "0.26.0",
     "styled-components": "3.2.6",
     "warning": "3.0.0"
