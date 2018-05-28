@@ -52,9 +52,9 @@ import PrimaryActionDropdown, { Option } from '@commercetools-local/ui-kit/dropd
 1.  The `PrimaryActionDropdown` must have at least two `Option` elements as
     `children`
 
-* Use a `PrimaryButton` otherwise
+- Use a `PrimaryButton` otherwise
 
 Main Functions and use cases are:
 
-* Export button _example: Default to export all but offer selected to be
+- Export button _example: Default to export all but offer selected to be
   exported_

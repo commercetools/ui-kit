@@ -37,6 +37,6 @@ accessibility reasons.
 
 Main Functions and use cases are:
 
-* Secondary action _example: Discard changes_
+- Secondary action _example: Discard changes_
 
-* Restoring state _example: Canceling a form_
+- Restoring state _example: Canceling a form_

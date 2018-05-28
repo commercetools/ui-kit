@@ -28,7 +28,7 @@ You can find a list of all available icons in the UIKit.
 
 Main use cases are:
 
-* Buttons
+- Buttons
 
   ```jsx
   <SecondaryButton
@@ -38,7 +38,7 @@ Main use cases are:
   />
   ```
 
-* Icon Buttons
+- Icon Buttons
   ```jsx
   <IconButton
     onClick={() => {}}

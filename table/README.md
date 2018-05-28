@@ -62,14 +62,14 @@ Shows tabular data
 
 #### Ideas for improvements
 
-* don't render padding inside cells in the table to enable places like the
+- don't render padding inside cells in the table to enable places like the
   master variant cell to have a custom cell rendering without needing to pass
   custom classes to the table
-* ensure unique column keys
-* use the items prop to calculate the rowCount
-* rename `ASC` and `DESC` to `asc` and `desc` to be consistent with the SDK
-* validate that sortBy is one of the column keys
-* make `shouldFillRemainingVerticalSpace` the default and replace it with
+- ensure unique column keys
+- use the items prop to calculate the rowCount
+- rename `ASC` and `DESC` to `asc` and `desc` to be consistent with the SDK
+- validate that sortBy is one of the column keys
+- make `shouldFillRemainingVerticalSpace` the default and replace it with
   `shouldAvoidFillingRemainingSpace`
-* introduce a declarative way of stretching the table to fit its container width
+- introduce a declarative way of stretching the table to fit its container width
   like a `shouldFillRemainingHorizontalSpace` prop.

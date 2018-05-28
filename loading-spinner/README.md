@@ -21,4 +21,4 @@ import LoadingSpinner from '@commercetools-local/ui-kit/loading-spinner';
 
 Main Functions and use cases are:
 
-* When fetching requests or processing data
+- When fetching requests or processing data
