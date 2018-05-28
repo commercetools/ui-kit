@@ -29,5 +29,5 @@ Moreover, the handlers injected must be used to update the state in the HoC.
 
 Main Functions and use cases are:
 
-* Buttons and icons _example: icon needs change in theme whenever button is
+- Buttons and icons _example: icon needs change in theme whenever button is
   hovered_

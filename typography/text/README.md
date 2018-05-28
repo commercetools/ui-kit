@@ -51,6 +51,20 @@ Wraps the given text in the given HTML header `size`.
 
 Subtitle of pages.
 
+### `<Text.Wrap>`
+
+Wraps the given text in its container. And for long text, text will be wrapped to new line.
+
+#### Usage
+
+```js
+<Text.Wrap>{'Sooo long text'}</Text.Wrap>
+```
+
+#### Where to use
+
+When we render value that may be vey long, and we prefer to wrap text to new line after it exceeds its wrapper's width.
+
 ### `<Text.Body>`
 
 Wraps the given text in a `<p>` element, for normal content.
@@ -63,10 +77,11 @@ Wraps the given text in a `<p>` element, for normal content.
 
 #### Properties
 
-| Props      | Type             | Required | Values | Default |
-| ---------- | ---------------- | :------: | ------ | ------- |
-| `isBold`   | `Boolean`        |    ✅    |        | `false` |
-| `children` | `PropTypes.node` |    ✅    |        |         |
+| Props      | Type             | Required | Values                                               | Default |
+| ---------- | ---------------- | :------: | ---------------------------------------------------- | ------- |
+| `isBold`   | `Boolean`        |    ✅    |                                                      | `false` |
+| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative'']` |         |
+| `children` | `PropTypes.node` |    ✅    |                                                      |         |
 
 #### Where to use
 
@@ -86,11 +101,11 @@ properly style the text.
 
 #### Properties
 
-| Props      | Type             | Required | Values          | Default |
-| ---------- | ---------------- | :------: | --------------- | ------- |
-| `isBold`   | `Boolean`        |    ✅    |                 | `false` |
-| `tone`     | `String`         |          | `['secondary']` |         |
-| `children` | `PropTypes.node` |    ✅    |                 |         |
+| Props      | Type             | Required | Values                                               | Default |
+| ---------- | ---------------- | :------: | ---------------------------------------------------- | ------- |
+| `isBold`   | `Boolean`        |    ✅    |                                                      | `false` |
+| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative'']` |         |
+| `children` | `PropTypes.node` |    ✅    |                                                      |         |
 
 #### Where to use
 

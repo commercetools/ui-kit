@@ -29,4 +29,4 @@ Moreover, the handlers injected must be used to update the state in the HoC.
 
 Main Functions and use cases are:
 
-* Icon buttons _example: icon needs change the theme whenever mouse is down_
+- Icon buttons _example: icon needs change the theme whenever mouse is down_

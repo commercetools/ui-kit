@@ -13,7 +13,12 @@ Headline.propTypes = {
 };
 
 const Subheadline = props => (
-  <props.elementType className={classnames({ [styles.bold]: props.isBold })}>
+  <props.elementType
+    className={classnames({
+      [styles.bold]: props.isBold,
+      [styles[`${props.tone}`]]: props.tone,
+    })}
+  >
     {props.children}
   </props.elementType>
 );
@@ -21,6 +26,13 @@ Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
   elementType: PropTypes.oneOf(['h4', 'h5']).isRequired,
   isBold: PropTypes.bool,
+  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
+  children: PropTypes.node.isRequired,
+};
+
+const Wrap = props => <div className={styles.wrap}>{props.children}</div>;
+Wrap.displayName = 'TextWrap';
+Wrap.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
@@ -29,6 +41,7 @@ const Body = props =>
     <span
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles[`${props.tone}`]]: props.tone,
       })}
     >
       {props.children}
@@ -37,6 +50,7 @@ const Body = props =>
     <p
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles[`${props.tone}`]]: props.tone,
       })}
     >
       {props.children}
@@ -46,6 +60,7 @@ Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
   isInline: PropTypes.bool,
+  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
   children: PropTypes.node.isRequired,
 };
 
@@ -64,12 +79,13 @@ Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,
   isInline: PropTypes.bool,
-  tone: PropTypes.oneOf(['secondary', 'positive', 'negative']),
+  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
   children: PropTypes.node.isRequired,
 };
 
 export default {
   Headline,
+  Wrap,
   Subheadline,
   Body,
   Detail,

@@ -34,4 +34,4 @@ The component further forwards all `data-` attributes to the underlying `input` 
 
 Main Functions and use cases are:
 
-* Input field for single-line strings
+- Input field for single-line strings

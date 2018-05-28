@@ -41,11 +41,10 @@ const SortableHeader = props => {
       onMouseOut={props.handleMouseOut}
       className={classnames(styles.container, {
         [styles.active]: isActive,
+        [styles.reversed]: props.alignRight,
       })}
     >
-      <div className={styles.label}>
-        <Text.Body>{props.children}</Text.Body>
-      </div>
+      <Text.Body>{props.children}</Text.Body>
       <span className={styles.arrow}>
         {isArrowDown ? (
           <AngleDownIcon size="small" theme={theme} />
@@ -64,6 +63,7 @@ SortableHeader.propTypes = {
   sortBy: PropTypes.string,
   sortDirection: PropTypes.oneOf(['DESC', 'ASC']),
   columnKey: PropTypes.string.isRequired,
+  alignRight: PropTypes.bool,
 
   // withMouseOverState HoC
   isMouseOver: PropTypes.bool.isRequired,

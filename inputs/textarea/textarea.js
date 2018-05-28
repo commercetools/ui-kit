@@ -37,6 +37,10 @@ export class TextArea extends React.Component {
     }).isRequired,
   };
 
+  static defaultProps = {
+    onFocus: () => {},
+  };
+
   state = {
     numOfRows: TextArea.DEFAULT_ROWS_NUMBER,
   };

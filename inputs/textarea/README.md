@@ -32,8 +32,8 @@ import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
 
 # Do's and don't's
 
-* Whenever the content is expected to be displayed in more than one line (e.g TextInput component) a TextArea component is recommended.
+- Whenever the content is expected to be displayed in more than one line (e.g TextInput component) a TextArea component is recommended.
 
-* Not recommended to be used when to content fits into one line (e.g email, password etc.)
+- Not recommended to be used when to content fits into one line (e.g email, password etc.)
 
-* Constraints are not recommended to have scale smaller than `s`
+- Constraints are not recommended to have scale smaller than `s`

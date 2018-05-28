@@ -29,5 +29,5 @@ import { Checkbox } from '@commercetools-local/ui-kit/switches';
 </Checkbox>
 ```
 
-* [`Radio`](radio/README.md)
-* [`Checkbox`](checkbox/README.md)
+- [`Radio`](radio/README.md)
+- [`Checkbox`](checkbox/README.md)

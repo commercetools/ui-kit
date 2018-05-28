@@ -39,7 +39,7 @@ describe('rendering', () => {
       );
     });
   });
-  describe('default', () => {
+  describe('component by default', () => {
     let textarea;
     let textAreaWrapper;
     let wrapper;

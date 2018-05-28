@@ -35,4 +35,4 @@ Link buttons are similar to Flat buttons, however they are constructed as a
 
 Main Functions and use cases are:
 
-* Back to list _example: a link to going back to another page_
+- Back to list _example: a link to going back to another page_

@@ -1,13 +1,11 @@
+import 'flatpickr/dist/themes/airbnb.css';
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'flatpickr/dist/themes/airbnb.css';
-import Flatpickr from 'flatpickr';
-import isTouchDevice from 'is-touch-device';
-import { German } from 'flatpickr/dist/l10n/de';
-import { connect } from 'react-redux';
-import { compose } from 'recompose';
 import { injectIntl } from 'react-intl';
-import moment from 'moment';
+import Flatpickr from 'flatpickr';
+import { German } from 'flatpickr/dist/l10n/de';
+import isTouchDevice from 'is-touch-device';
+import moment from 'moment-timezone';
 import { parseDateTime } from '@commercetools-local/utils/datetime';
 import Constraints from '../materials/constraints';
 import { DatePickerBody } from './date-picker-body';
@@ -15,7 +13,7 @@ import './date-picker-ct-theme.mod.css';
 import styles from './date-picker.mod.css';
 import messages from './messages';
 
-const getNumberOfFormattedDateChars = (timeScale, locale) => {
+const getNumberOfFormattedDateChars = (timeScale, locale, timeZone) => {
   // moment gives us access to its underlying formats for individual locales
   // http://momentjs.com/docs/#/i18n/instance-locale/
   // this allows us to count the number of chars that will be displayed in the
@@ -29,9 +27,11 @@ const getNumberOfFormattedDateChars = (timeScale, locale) => {
     case 'datetime':
       return (
         moment()
+          .tz(timeZone)
           .locale(locale)
           .localeData()._longDateFormat.L.length +
         moment()
+          .tz(timeZone)
           .locale(locale)
           .localeData()._longDateFormat.LT.length
       );
@@ -44,7 +44,7 @@ const getNumberOfFormattedDateChars = (timeScale, locale) => {
   }
 };
 
-export const createFormatter = (timeScale, locale) => value => {
+export const createFormatter = (timeScale, locale, timeZone) => value => {
   switch (timeScale) {
     case 'time':
       return moment(value, 'HH:mm:ss.SSS')
@@ -52,6 +52,7 @@ export const createFormatter = (timeScale, locale) => value => {
         .format('LT');
     case 'datetime':
       return moment(value)
+        .tz(timeZone)
         .locale(locale)
         .format('L LT');
     case 'date':
@@ -70,7 +71,6 @@ export class DatePicker extends React.PureComponent {
     shouldInitializeOnMount: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isInvalid: PropTypes.bool,
-    locale: PropTypes.string.isRequired,
     mode: PropTypes.oneOf(['range', 'multiple', 'single']),
     onChange: PropTypes.func.isRequired,
     onClose: PropTypes.func,
@@ -85,7 +85,11 @@ export class DatePicker extends React.PureComponent {
     // HoC
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
+      locale: PropTypes.string.isRequired,
     }).isRequired,
+
+    // withUserTimeZone
+    timeZone: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -97,11 +101,17 @@ export class DatePicker extends React.PureComponent {
     horizontalConstraint: 'scale',
   };
 
-  componentWillMount = () => {
-    this.formatter = createFormatter(this.props.timeScale, this.props.locale);
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillMount() {
+    this.formatter = createFormatter(
+      this.props.timeScale,
+      this.props.intl.locale,
+      this.props.timeZone
+    );
     this.numberOfFormattedValueChars = getNumberOfFormattedDateChars(
       this.props.timeScale,
-      this.props.locale
+      this.props.intl.locale,
+      this.props.timeZone
     );
     this.options = {
       defaultDate: this.props.value,
@@ -113,14 +123,14 @@ export class DatePicker extends React.PureComponent {
       formatDate: isTouchDevice() ? undefined : this.formatter,
       // Gets the corresponding locale. For English we must set it as null.
       // TODO make this asynchronous when more languages available
-      locale: this.props.locale === 'de' ? German : null,
+      locale: this.props.intl.locale.startsWith('de') ? German : null,
       mode: this.props.mode,
       noCalendar: this.props.timeScale === 'time',
       onChange: this.handleChange,
-      time_24hr: this.props.locale === 'de',
+      time_24hr: this.props.intl.locale.startsWith('de'),
       wrap: true,
     };
-  };
+  }
 
   // initializing on hove is not feasible for touch-devices, so we init-right away
   // flatpickr does not do its expensive initialization on mobile, so this is safe
@@ -136,7 +146,8 @@ export class DatePicker extends React.PureComponent {
 
   shouldInitializeFlatpickr = state => !this.flatpickr && state.initialize;
 
-  componentWillUpdate(nextProps, nextState) {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (this.flatpickr && this.props.value !== nextProps.value) {
       this.flatpickr.setDate(nextProps.value, false);
     } else if (this.shouldInitializeFlatpickr(nextState)) {
@@ -163,7 +174,11 @@ export class DatePicker extends React.PureComponent {
         const selectedDate =
           selectedDates.length === 0 ? undefined : selectedDates[0];
         this.props.onChange(
-          selectedDate && parseDateTime(this.props.timeScale, selectedDate)
+          selectedDate &&
+            parseDateTime(this.props.timeScale, selectedDate, {
+              locale: this.props.intl.locale,
+              timeZone: this.props.timeZone,
+            })
         );
         break;
       }
@@ -172,7 +187,11 @@ export class DatePicker extends React.PureComponent {
         this.props.onChange(
           selectedDates.map(
             selectedDate =>
-              selectedDate && parseDateTime(this.props.timeScale, selectedDate)
+              selectedDate &&
+              parseDateTime(this.props.timeScale, selectedDate, {
+                locale: this.props.intl.locale,
+                timeZone: this.props.timeZone,
+              })
           )
         );
         break;
@@ -254,9 +273,4 @@ export class DatePicker extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  // covers the case when the locale contains the region (i.e. "en-US")
-  locale: state.globalAppState.locale.substring(0, 2),
-});
-
-export default compose(injectIntl, connect(mapStateToProps))(DatePicker);
+export default injectIntl(DatePicker);
