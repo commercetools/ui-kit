@@ -6,7 +6,10 @@ import { TextArea } from './textarea';
 
 const createTestProps = customProps => ({
   value: '',
-  intl: intlMock,
+  intl: {
+    ...intlMock,
+    formatMessage: jest.fn(message => message.id),
+  },
   onChange: jest.fn(),
   ...customProps,
 });
@@ -73,10 +76,6 @@ describe('rendering', () => {
 
     it('should render textarea', () => {
       expect(textAreaWrapper).toRender('TextareaAutosize');
-    });
-
-    it('should not render FlatButton', () => {
-      expect(textAreaWrapper).not.toRender(FlatButton);
     });
   });
   describe('with validation', () => {
@@ -279,9 +278,53 @@ describe('callbacks', () => {
     });
   });
   describe('when TextArea has only 1 row', () => {
-    // TBD
+    let textAreaWrapper;
+    let wrapper;
+    beforeEach(() => {
+      const props = createTestProps({
+        name: 'field1',
+        value: 'foo',
+      });
+      wrapper = shallow(<TextArea {...props} />);
+      wrapper.setState({ numOfRows: 1 });
+      textAreaWrapper = shallow(
+        wrapper.find('Collapsible').prop('children')({
+          isOpen: true,
+          toggle: jest.fn(),
+        })
+      );
+    });
+    it('should not render FlatButton', () => {
+      expect(textAreaWrapper).not.toRender(FlatButton);
+    });
   });
   describe('when TextArea has more than 1 row', () => {
-    // TBD
+    let flatbutton;
+    let textAreaWrapper;
+    let wrapper;
+    beforeEach(() => {
+      const props = createTestProps({
+        name: 'field1',
+        value: 'foo',
+      });
+      wrapper = shallow(<TextArea {...props} />);
+      wrapper.setState({ numOfRows: 2 });
+      textAreaWrapper = shallow(
+        <div>
+          {wrapper.find('Collapsible').prop('children')({
+            isOpen: true,
+            toggle: jest.fn(),
+          })}
+        </div>
+      );
+      flatbutton = textAreaWrapper.find(FlatButton);
+      textAreaWrapper.find(FlatButton).simulate('click');
+    });
+    it('should render FlatButton', () => {
+      expect(textAreaWrapper).toRender(FlatButton);
+    });
+    it('should have correct message (collapse)', () => {
+      expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.collapse');
+    });
   });
 });

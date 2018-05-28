@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Collapsible from '@commercetools-local/ui-kit/collapsible';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -32,7 +32,9 @@ export class TextArea extends React.Component {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
 
     // HoC
-    intl: intlShape.isRequired,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   state = {
