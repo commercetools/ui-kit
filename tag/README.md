@@ -40,8 +40,8 @@ other element. This might apply to search terms or categories of a product.
 
 Main Functions and use cases are:
 
-* Adding something to a set _example: Adding products to categories_
+- Adding something to a set _example: Adding products to categories_
 
-* Remove from a set _example: Removing products from categories_
+- Remove from a set _example: Removing products from categories_
 
-* Showing a set _example: List of categories a product is in_
+- Showing a set _example: List of categories a product is in_

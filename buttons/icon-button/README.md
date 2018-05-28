@@ -39,11 +39,11 @@ Icon Buttons are "icon-only" buttons. They trigger an action when clicked
 
 Main Functions and use cases are:
 
-* Secondary action _example: Delete product_
+- Secondary action _example: Delete product_
 
-* Minimize effect _example: Reordering table_
+- Minimize effect _example: Reordering table_
 
-* Highlight actions _example: Master variant, set default Shipping billing
+- Highlight actions _example: Master variant, set default Shipping billing
   address_
 
-* Save space _example: Manage custom views_
+- Save space _example: Manage custom views_

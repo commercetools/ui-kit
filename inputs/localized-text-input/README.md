@@ -39,4 +39,4 @@ The component forwards all `data` attribute props. It further adds a `-${languag
 
 Main Functions and use cases are:
 
-* Receiving localized input from user
+- Receiving localized input from user

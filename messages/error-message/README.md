@@ -20,4 +20,4 @@ import ErrorMessage from '@commercetools-local/ui-kit/messages/error-message';
 
 Main functions and use cases are:
 
-* Display validation errors of input fields
+- Display validation errors of input fields

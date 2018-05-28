@@ -36,4 +36,4 @@ also pass a label for accessibility reasons.
 Mostly in all places where you just need a "clickable" icon, without the complex
 behaviours of the `IconButton`
 
-* Pagination list _example: Go to next page_
+- Pagination list _example: Go to next page_

@@ -98,10 +98,10 @@ if you set the `isDisabled` prop to true.
 
 ## References
 
-* [Rules for using ARIA in
+- [Rules for using ARIA in
   HTML](https://bitsofco.de/rules-for-using-aria-in-html/) by Ire Aderinokun
-* [Using the button
+- [Using the button
   role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role)
   by MDN
-* [Flexbugs](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers)
+- [Flexbugs](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers)
   by Philip Walton

@@ -148,4 +148,7 @@ SecondaryButton.defaultProps = {
 
 SecondaryButton.displayName = 'SecondaryButton';
 
-export default compose(withMouseOverState, withMouseDownState)(SecondaryButton);
+export default compose(
+  withMouseOverState,
+  withMouseDownState
+)(SecondaryButton);

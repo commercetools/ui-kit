@@ -148,4 +148,7 @@ IconButton.defaultProps = {
 
 IconButton.displayName = 'IconButton';
 
-export default compose(withMouseOverState, withMouseDownState)(IconButton);
+export default compose(
+  withMouseOverState,
+  withMouseDownState
+)(IconButton);

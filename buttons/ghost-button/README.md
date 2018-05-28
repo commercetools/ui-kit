@@ -35,4 +35,4 @@ action. You must also pass a label for accessibility reasons.
 
 Main Functions and use cases are:
 
-* General action _example: Filter by attributes_
+- General action _example: Filter by attributes_

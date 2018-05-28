@@ -35,8 +35,8 @@ label for accessibility reasons.
 
 Main Functions and use cases are:
 
-* Primary action _example: Save changes_
+- Primary action _example: Save changes_
 
-* Affirming affects _example: Submit a form_
+- Affirming affects _example: Submit a form_
 
-* Attracting attention _example: Add a discount rule_
+- Attracting attention _example: Add a discount rule_
