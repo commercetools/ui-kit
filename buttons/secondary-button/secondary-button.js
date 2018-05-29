@@ -62,8 +62,6 @@ export const SecondaryButton = props => {
   const shouldLink = !props.isDisabled && Boolean(props.linkTo);
   const WrapperComponent = shouldLink ? Link : Div;
 
-  console.log(props.linkTo);
-
   return (
     <WrapperComponent
       onMouseDown={props.handleMouseDown}
@@ -131,14 +129,18 @@ SecondaryButton.propTypes = {
   isDisabled: PropTypes.bool,
   buttonAttributes: PropTypes.object,
   onClick: requiredIf(PropTypes.func, props => !props.linkTo),
-  linkTo: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    search: PropTypes.string,
-    // Would like to use objectOf(PropTypes.string), but there is a bug
-    // preventing us from doing that at the momemnt
-    // https://github.com/facebook/prop-types/issues/183#issuecomment-392545102
-    query: PropTypes.object,
-  }),
+  linkTo: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string,
+      // Would like to use objectOf(PropTypes.string), but there is a bug
+      // preventing us from doing that at the momemnt
+      // https://github.com/facebook/prop-types/issues/183#issuecomment-392545102
+      query: PropTypes.object,
+    }),
+  ]),
+
   // HoC
   isMouseDown: PropTypes.bool.isRequired,
   isMouseOver: PropTypes.bool.isRequired,
