@@ -155,6 +155,7 @@ export class MoneyInput extends React.PureComponent {
     fractionDigits: 2,
     isDisabled: false,
     currencies: [],
+    horizontalConstraint: 'm',
   };
 
   state = {
@@ -205,7 +206,7 @@ export class MoneyInput extends React.PureComponent {
 
   handleCurrencyChange = (currency, toggleMenu) => {
     this.props.onChange({
-      ...this.props.value,
+      centAmount: this.props.value.centAmount,
       currencyCode: currency,
     });
     toggleMenu();
@@ -218,7 +219,7 @@ export class MoneyInput extends React.PureComponent {
       ? Math.trunc(Math.round(nextValue * 10 ** this.state.fractionDigits))
       : undefined;
     this.props.onChange({
-      ...this.props.value,
+      currencyCode: this.props.value.currencyCode,
       centAmount: centAmountValue,
     });
   };
