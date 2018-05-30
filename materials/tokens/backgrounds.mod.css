@@ -1,11 +1,24 @@
 @import '../colors.mod.css';
 
 :root {
-  /* Backgrounds */
+  /**
+    * Backgrounds
+    *
+    * Use these tokens for background related properties only.
+    * Do not use these for borders colors or text colors.
+    *
+    * Index
+    * • Inputs
+    *  ◦ Text fields
+    *   ▪ Background Colors
+    */
 
-  /***** Inputs *****/
+  /* ==========================================================================
+   Inputs
+   ========================================================================== */
 
-  /* Text fields (text, password, number, textarea) */
+  /* Text fields (text, password, number, textarea)
+   ========================================================================== */
 
   /* Colors */
   --token-color-background-input-pristine: var(--color-white);

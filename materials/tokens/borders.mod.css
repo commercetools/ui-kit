@@ -1,15 +1,26 @@
 @import '../colors.mod.css';
 @import '../borders.mod.css';
 
-/* TBD: In order to name the token variable, use the following naming standard:
--- + token + color + part (border || background || ) */
-
 :root {
-  /* Borders */
+  /**
+    * Borders
+    *
+    * Use these tokens for border related properties only.
+    * Do not use these for background colors or text colors.
+    *
+    * Index
+    * • Inputs
+    *  ◦ Text fields
+    *   ▪ Border Colors
+    *   ▪ Border Radius
+    */
 
-  /***** Inputs *****/
+  /* ==========================================================================
+   Inputs
+   ========================================================================== */
 
-  /* Text fields (text, password, number, textarea) */
+  /* Text fields (text, password, number, textarea)
+   ========================================================================== */
 
   /* Colors */
   --token-border-color-input-pristine: var(--color-greySolid);

@@ -1,18 +1,37 @@
 @import '../colors.mod.css';
 
 :root {
-  /* Fonts */
+  /**
+    * Fonts
+    *
+    * Use these tokens for text related properties only.
+    * Do not use these for background colors or borders colors.
+    *
+    * Index
+    * • Families
+    * • Colors
+    * • Sizes
+    */
 
-  /***** Families *****/
+  /* ==========================================================================
+   Families
+   ========================================================================== */
+
   --token-font-family-default: 'Open Sans', sans-serif;
 
-  /***** Colors *****/
+  /* ==========================================================================
+   Colors
+   ========================================================================== */
+
   --token-font-color-default: var(--color-default);
   --token-font-color-disabled: var(--color-greyNevada);
   --token-font-color-error: var(--color-red);
   --token-font-color-warning: var(--color-orange);
   --token-font-color-readonly: var(--color-greySolid);
 
-  /***** Sizes *****/
+  /* ==========================================================================
+   Sizes
+   ========================================================================== */
+
   --token-font-size-body: 13px;
 }
