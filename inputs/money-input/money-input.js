@@ -4,6 +4,7 @@ import isNil from 'lodash.isnil';
 import Cleave from 'cleave.js/react';
 import classnames from 'classnames';
 import Downshift from 'downshift';
+import { defaultMemoize } from 'reselect';
 import {
   getSeparatorsForLocale,
   isNumberish,
@@ -315,7 +316,7 @@ export class MoneyInput extends React.PureComponent {
           )}
           <Cleave
             placeholder={this.props.placeholder}
-            options={getCleaveOptions(this.props.language)}
+            options={defaultMemoize(getCleaveOptions(this.props.language))}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
               hasAmountError: this.props.hasAmountError,
