@@ -8,6 +8,7 @@ import MoneyInput, {
   CurrencyDropdown,
   DropdownChevron,
 } from './money-input';
+import styles from './money-input.mod.css';
 
 const createTestProps = customProps => ({
   language: 'en',
@@ -163,7 +164,9 @@ describe('rendering', () => {
           });
 
           it('should have opened styles', () => {
-            expect(dowshiftRenderWrapper).toHaveClassName('currency-active');
+            expect(dowshiftRenderWrapper).toRender({
+              className: styles['currency-active'],
+            });
           });
         });
 
@@ -181,7 +184,9 @@ describe('rendering', () => {
           });
 
           it('should have disabled styles', () => {
-            expect(dowshiftRenderWrapper).toHaveClassName('currency-disabled');
+            expect(dowshiftRenderWrapper).toRender({
+              className: styles['currency-disabled'],
+            });
           });
         });
 
@@ -199,7 +204,9 @@ describe('rendering', () => {
           });
 
           it('should have error styles', () => {
-            expect(dowshiftRenderWrapper).toHaveClassName('currency-error');
+            expect(dowshiftRenderWrapper).toRender({
+              className: styles['currency-error'],
+            });
           });
         });
 
@@ -217,7 +224,9 @@ describe('rendering', () => {
           });
 
           it('should have error styles', () => {
-            expect(dowshiftRenderWrapper).toHaveClassName('currency-warning');
+            expect(dowshiftRenderWrapper).toRender({
+              className: styles['currency-warning'],
+            });
           });
         });
       });
@@ -269,7 +278,9 @@ describe('rendering', () => {
         });
 
         it('should have disabled styles', () => {
-          expect(centAmountField).toHaveClassName('amount-disabled');
+          expect(centAmountField).toRender({
+            className: styles['amount-disabled'],
+          });
         });
       });
 
@@ -283,7 +294,9 @@ describe('rendering', () => {
         });
 
         it('should have error styles', () => {
-          expect(centAmountField).toHaveClassName('amount-error');
+          expect(centAmountField).toRender({
+            className: styles['amount-error'],
+          });
         });
       });
 
@@ -297,7 +310,9 @@ describe('rendering', () => {
         });
 
         it('should have warning styles', () => {
-          expect(centAmountField).toHaveClassName('amount-warning');
+          expect(centAmountField).toRender({
+            className: styles['amount-warning'],
+          });
         });
       });
     });

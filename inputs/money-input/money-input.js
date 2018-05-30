@@ -199,7 +199,7 @@ export class MoneyInput extends React.PureComponent {
 
   static propTypes = {
     value: PropTypes.shape({
-      currencyCode: PropTypes.string,
+      currencyCode: PropTypes.string.isRequired,
       centAmount: PropTypes.number,
     }).isRequired,
 
