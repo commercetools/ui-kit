@@ -5,8 +5,7 @@
 @import '../../materials/spacings.mod.css';
 
 :root {
-  /* FIXME: As our input component is not built properly (following the spacing system)
-            we need this hacky line-height to achieve 32px height */
+  /* we need this line-height to achieve 32px height when the component has only one row */
   --size-input-line-height: 22px;
   --size-input-min-height: 32px;
 }
