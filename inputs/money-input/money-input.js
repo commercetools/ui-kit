@@ -13,6 +13,8 @@ import AccessibleButton from '../../buttons/accessible-button';
 import Contraints from '../../materials/constraints';
 import styles from './money-input.mod.css';
 
+const MAXIMUM_PRECISION = 20;
+
 const getCurrencyDropdownSelectStyles = (props, isOpen) => {
   if (props.isDisabled) return styles['currency-disabled'];
   if (props.hasCurrencyError) return styles['currency-error'];
@@ -47,17 +49,20 @@ export const parseNumberToMoney = (number, fractionDigits) => {
   return parseFloat(number * 0.1 ** fractionDigits).toFixed(fractionDigits);
 };
 
-const getCleaveOptions = (language, fractionDigits) => {
+const getCleaveOptions = language => {
   const separators = getSeparatorsForLocale(language);
   return {
     numeral: true,
     numeralThousandsGroupStyle: 'thousand',
     numeralDecimalMark: separators.decSeparator,
     delimiter: separators.thoSeparator,
-    numeralDecimalScale: fractionDigits,
+    // As this value can't be set dynamically, setting the maximum value
+    // supported by the `fractionDigits` prop on `HighPrecisionMoney` allows
+    // the value to be shown with any precision set from 0 to 20
+    numeralDecimalScale: MAXIMUM_PRECISION,
     // This option is provided to help Cleave slice the numerical values
     // according to a certain "scale". The default value is `10` which
-    // effectively affects all numerical values (including AttributeMoney)
+    // effectively affects all numerical values
     // in MC where the value exceeds the length of `10`
     // We provide `0` to disable this feature.
     numeralIntegerScale: 0,
@@ -126,6 +131,69 @@ Option.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
+export const CurrencyDropdown = props => (
+  <Downshift
+    render={({ isOpen, toggleMenu }) => (
+      <div
+        className={getCurrencyDropdownSelectStyles(
+          {
+            isDisabled: props.isDisabled,
+            hasCurrencyError: props.hasCurrencyError,
+            hasCurrencyWarning: props.hasCurrencyWarning,
+          },
+          isOpen
+        )}
+      >
+        <div className={styles['currency-wrapper']}>
+          <Currency
+            isDisabled={props.isDisabled}
+            onClick={toggleMenu}
+            currency={props.currencyCode}
+          />
+          {props.currencies.length > 0 && (
+            <DropdownChevron
+              buttonRef={props.setButtonReference}
+              onClick={toggleMenu}
+              isDisabled={props.isDisabled}
+              isOpen={isOpen}
+            />
+          )}
+        </div>
+        {isOpen &&
+          props.currencies.length > 0 && (
+            <div
+              className={getCurrencyDropdownOptionsStyles({
+                hasCurrencyError: props.hasCurrencyError,
+                hasCurrencyWarning: props.hasCurrencyWarning,
+              })}
+            >
+              {props.currencies.map(currency => (
+                <Option
+                  key={currency}
+                  onClick={() => {
+                    props.handleChange(currency, toggleMenu);
+                  }}
+                >
+                  {currency}
+                </Option>
+              ))}
+            </div>
+          )}
+      </div>
+    )}
+  />
+);
+
+CurrencyDropdown.displayName = 'CurrencyDropdown';
+CurrencyDropdown.propTypes = {
+  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currencyCode: PropTypes.string,
+  isDisabled: PropTypes.bool,
+  hasCurrencyError: PropTypes.bool,
+  hasCurrencyWarning: PropTypes.bool,
+  setButtonReference: PropTypes.func,
+};
+
 export class MoneyInput extends React.PureComponent {
   static displayName = 'MoneyInput';
 
@@ -134,6 +202,7 @@ export class MoneyInput extends React.PureComponent {
       currencyCode: PropTypes.string,
       centAmount: PropTypes.number,
     }).isRequired,
+
     /* to fix centAmount depending on Money type fractionDigits prop */
     fractionDigits: PropTypes.number,
     language: PropTypes.string.isRequired,
@@ -159,19 +228,17 @@ export class MoneyInput extends React.PureComponent {
   };
 
   state = {
-    centAmountValue: this.props.value.centAmount,
     cleaveComponentReference: null,
     dropdownButtonReference: null,
-    fractionDigits: this.props.fractionDigits,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (
-      prevState.cleaveComponentReference &&
-      (prevState.centAmountValue !== this.props.value.centAmount ||
-        prevState.fractionDigits !== this.props.fractionDigits)
+      this.state.cleaveComponentReference &&
+      (prevProps.value.centAmount !== this.props.value.centAmount ||
+        prevProps.fractionDigits !== this.props.fractionDigits)
     ) {
-      prevState.cleaveComponentReference.setRawValue(
+      this.state.cleaveComponentReference.setRawValue(
         !isNil(this.props.value.centAmount)
           ? parseNumberToMoney(
               this.props.value.centAmount,
@@ -179,12 +246,6 @@ export class MoneyInput extends React.PureComponent {
             )
           : ''
       );
-
-      this.setState({
-        ...prevState,
-        centAmountValue: this.props.value.centAmount,
-        fractionDigits: this.props.fractionDigits,
-      });
     }
   }
 
@@ -216,7 +277,7 @@ export class MoneyInput extends React.PureComponent {
     const nextValue = event.target.rawValue;
     if (this.props.value.centAmount === nextValue) return;
     const centAmountValue = nextValue
-      ? Math.trunc(Math.round(nextValue * 10 ** this.state.fractionDigits))
+      ? Math.trunc(Math.round(nextValue * 10 ** this.props.fractionDigits))
       : undefined;
     this.props.onChange({
       currencyCode: this.props.value.currencyCode,
@@ -224,68 +285,19 @@ export class MoneyInput extends React.PureComponent {
     });
   };
 
-  handleBlur = () => {
-    if (this.props.onBlur) this.props.onBlur(this.props.value);
-  };
-
-  registerTextInputRef = ref => {
-    this.textInput = ref;
-  };
-
   render() {
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div key={this.props.language} className={styles['field-container']}>
+        <div className={styles['field-container']}>
           {this.props.currencies.length > 0 ? (
-            <Downshift
-              render={({ isOpen, toggleMenu }) => (
-                <div
-                  className={getCurrencyDropdownSelectStyles(
-                    {
-                      isDisabled: this.props.isDisabled,
-                      hasCurrencyError: this.props.hasCurrencyError,
-                      hasCurrencyWarning: this.props.hasCurrencyWarning,
-                    },
-                    isOpen
-                  )}
-                >
-                  <div className={styles['currency-wrapper']}>
-                    <Currency
-                      isDisabled={this.props.isDisabled}
-                      onClick={toggleMenu}
-                      currency={this.props.value.currencyCode}
-                    />
-                    {this.props.currencies.length > 0 && (
-                      <DropdownChevron
-                        buttonRef={this.setDropdownButtonReference}
-                        onClick={toggleMenu}
-                        isDisabled={this.props.isDisabled}
-                        isOpen={isOpen}
-                      />
-                    )}
-                  </div>
-                  {isOpen &&
-                    this.props.currencies.length > 0 && (
-                      <div
-                        className={getCurrencyDropdownOptionsStyles({
-                          hasCurrencyError: this.props.hasCurrencyError,
-                          hasCurrencyWarning: this.props.hasCurrencyWarning,
-                        })}
-                      >
-                        {this.props.currencies.map(currency => (
-                          <Option
-                            key={currency}
-                            onClick={() => {
-                              this.handleCurrencyChange(currency, toggleMenu);
-                            }}
-                          >
-                            {currency}
-                          </Option>
-                        ))}
-                      </div>
-                    )}
-                </div>
-              )}
+            <CurrencyDropdown
+              currencies={this.props.currencies}
+              currencyCode={this.props.value.currencyCode}
+              handleChange={this.handleCurrencyChange}
+              isDisabled={this.props.isDisabled}
+              hasCurrencyError={this.props.hasCurrencyError}
+              hasCurrencyWarning={this.props.hasCurrencyWarning}
+              setButtonReference={this.setDropdownButtonReference}
             />
           ) : (
             <div
@@ -301,28 +313,19 @@ export class MoneyInput extends React.PureComponent {
               </div>
             </div>
           )}
-          {/*
-          turning the fractionDigits into an array is only to force the Cleave
-          to rerender when the prop changes, as the options object cannot be
-          updated dynamically
-          */}
-          {[this.props.fractionDigits].map(fractionDigits => (
-            <Cleave
-              key="money-amount-input"
-              placeholder={this.props.placeholder}
-              htmlRef={this.registerTextInputRef}
-              options={getCleaveOptions(this.props.language, fractionDigits)}
-              className={getAmountStyles({
-                isDisabled: this.props.isDisabled,
-                hasAmountError: this.props.hasAmountError,
-                hasAmountWarning: this.props.hasAmountWarning,
-              })}
-              onChange={this.handleAmountChange}
-              onInit={this.handleInit}
-              onBlur={this.props.onBlur}
-              disabled={this.props.isDisabled}
-            />
-          ))}
+          <Cleave
+            placeholder={this.props.placeholder}
+            options={getCleaveOptions(this.props.language)}
+            className={getAmountStyles({
+              isDisabled: this.props.isDisabled,
+              hasAmountError: this.props.hasAmountError,
+              hasAmountWarning: this.props.hasAmountWarning,
+            })}
+            onChange={this.handleAmountChange}
+            onInit={this.handleInit}
+            onBlur={this.props.onBlur}
+            disabled={this.props.isDisabled}
+          />
         </div>
       </Contraints.Horizontal>
     );

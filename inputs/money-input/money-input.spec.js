@@ -5,6 +5,7 @@ import AccessibleButton from '../../buttons/accessible-button';
 import MoneyInput, {
   parseNumberToMoney,
   Currency,
+  CurrencyDropdown,
   DropdownChevron,
 } from './money-input';
 
@@ -67,6 +68,7 @@ describe('utils', () => {
 describe('rendering', () => {
   let wrapper;
   let props;
+  let dropdown;
   let downshiftProps;
   let dowshiftRenderWrapper;
 
@@ -131,9 +133,10 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
+        dropdown = wrapper.find(CurrencyDropdown).shallow();
         downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
         dowshiftRenderWrapper = shallow(
-          wrapper.find('Downshift').prop('render')(downshiftProps)
+          dropdown.find('Downshift').prop('render')(downshiftProps)
         );
       });
 
@@ -152,9 +155,10 @@ describe('rendering', () => {
           beforeEach(() => {
             props = createTestProps();
             wrapper = shallow(<MoneyInput {...props} />);
+            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
             dowshiftRenderWrapper = shallow(
-              wrapper.find('Downshift').prop('render')(downshiftProps)
+              dropdown.find('Downshift').prop('render')(downshiftProps)
             );
           });
 
@@ -169,9 +173,10 @@ describe('rendering', () => {
               isDisabled: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
+            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
             dowshiftRenderWrapper = shallow(
-              wrapper.find('Downshift').prop('render')(downshiftProps)
+              dropdown.find('Downshift').prop('render')(downshiftProps)
             );
           });
 
@@ -186,9 +191,10 @@ describe('rendering', () => {
               hasCurrencyError: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
+            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
             dowshiftRenderWrapper = shallow(
-              wrapper.find('Downshift').prop('render')(downshiftProps)
+              dropdown.find('Downshift').prop('render')(downshiftProps)
             );
           });
 
@@ -203,9 +209,10 @@ describe('rendering', () => {
               hasCurrencyWarning: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
+            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
             dowshiftRenderWrapper = shallow(
-              wrapper.find('Downshift').prop('render')(downshiftProps)
+              dropdown.find('Downshift').prop('render')(downshiftProps)
             );
           });
 
@@ -221,9 +228,10 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
+        dropdown = wrapper.find(CurrencyDropdown).shallow();
         downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
         dowshiftRenderWrapper = shallow(
-          wrapper.find('Downshift').prop('render')(downshiftProps)
+          dropdown.find('Downshift').prop('render')(downshiftProps)
         );
         options = dowshiftRenderWrapper.find('Option');
       });
@@ -299,6 +307,7 @@ describe('rendering', () => {
 describe('callbacks', () => {
   let wrapper;
   let props;
+  let dropdown;
   let downshiftProps;
   let dowshiftRenderWrapper;
   describe('currency field', () => {
@@ -306,9 +315,10 @@ describe('callbacks', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
+        dropdown = wrapper.find(CurrencyDropdown).shallow();
         downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
         dowshiftRenderWrapper = shallow(
-          wrapper.find('Downshift').prop('render')(downshiftProps)
+          dropdown.find('Downshift').prop('render')(downshiftProps)
         );
         dowshiftRenderWrapper
           .find('Option')
