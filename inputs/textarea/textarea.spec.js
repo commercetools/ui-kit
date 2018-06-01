@@ -142,24 +142,18 @@ describe('rendering', () => {
 
 describe('callbacks', () => {
   describe('when changing value', () => {
-    let wrapper;
-    let props;
-    let textarea;
-    beforeEach(() => {
-      props = createTestProps({
-        value: 'foo',
-        onChange: jest.fn(),
-      });
-      wrapper = shallow(<TextArea {...props} />);
-      const textAreaWrapper = shallow(
-        wrapper.find('Collapsible').prop('children')({
-          isOpen: true,
-          toggle: jest.fn(),
-        })
-      );
-      textarea = textAreaWrapper.find('TextareaAutosize');
-      textarea.simulate('change', { target: { value: 'bar' } });
+    const props = createTestProps({
+      value: 'foo',
+      onChange: jest.fn(),
     });
+    const wrapper = shallow(<TextArea {...props} />)
+      .find('Collapsible')
+      .renderProp('children', {
+        isOpen: true,
+        toggle: jest.fn(),
+      });
+    const textarea = wrapper.find('TextareaAutosize');
+    textarea.simulate('change', { target: { value: 'bar' } });
 
     it('should call onChange', () => {
       expect(props.onChange).toHaveBeenCalled();

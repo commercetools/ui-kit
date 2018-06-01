@@ -19,7 +19,7 @@ export class TextArea extends React.Component {
   static propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
@@ -39,6 +39,8 @@ export class TextArea extends React.Component {
 
   static defaultProps = {
     onFocus: () => {},
+    hasError: false,
+    hasWarning: false,
   };
 
   state = {

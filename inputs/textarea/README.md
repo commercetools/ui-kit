@@ -7,7 +7,7 @@ Used for displaying multiple-line form’s fields text content.
 ## Usage
 
 ```js
-import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
+import TextArea from '@commercetools-local/ui-kit/inputs/textarea';
 
 <TextArea value="foo" onChange={value => alert(value)} />;
 ```
