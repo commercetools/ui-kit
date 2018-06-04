@@ -34,7 +34,7 @@
   border-top-left-radius: var(--border-radius-6);
 }
 
-/* FIXME: this is supposed to fix a bug in Chrome with position: sticky and
+/* FIXME: this is supposed to fix a bug in Chrome with position: sticky in
        low-DPI screens. Once the bug is fixed, please remove this. */
 @media only screen and (-webkit-max-device-pixel-ratio: 1) {
   .sticky {
