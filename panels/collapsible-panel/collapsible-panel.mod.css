@@ -34,6 +34,14 @@
   border-top-left-radius: var(--border-radius-6);
 }
 
+/* FIXME: this is supposed to fix a bug in Chrome with position: sticky and
+       low-DPI screens. Once the bug is fixed, please remove this. */
+@media only screen and (-webkit-max-device-pixel-ratio: 1) {
+  .sticky {
+    top: calc(var(--spacing-16) * -1);
+  }
+}
+
 .container-open .header-container {
   border-bottom: 1px var(--color-primaryGrey) solid;
 }
