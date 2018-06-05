@@ -1,12 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Cleave from 'cleave.js/react';
+import { intlMock } from '@commercetools-local/test-utils';
 import AccessibleButton from '../../buttons/accessible-button';
 import MoneyInput, {
   parseNumberToMoney,
   Currency,
   CurrencyDropdown,
   DropdownChevron,
+  DropdownChevronWithIntl,
 } from './money-input';
 import styles from './money-input.mod.css';
 
@@ -25,6 +27,7 @@ const createDropdownProps = customProps => ({
   isOpen: false,
   className: 'chevron-icon',
   buttonRef: jest.fn(),
+  intl: intlMock,
   ...customProps,
 });
 
@@ -69,7 +72,6 @@ describe('utils', () => {
 describe('rendering', () => {
   let wrapper;
   let props;
-  let dropdown;
   let downshiftProps;
   let dowshiftRenderWrapper;
 
@@ -133,11 +135,12 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        dropdown = wrapper.find(CurrencyDropdown).shallow();
         downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-        dowshiftRenderWrapper = shallow(
-          dropdown.find('Downshift').prop('render')(downshiftProps)
-        );
+        dowshiftRenderWrapper = wrapper
+          .find(CurrencyDropdown)
+          .shallow()
+          .find('Downshift')
+          .renderProp('render', downshiftProps);
       });
 
       it('should render an `Currency`', () => {
@@ -146,7 +149,7 @@ describe('rendering', () => {
 
       describe('when currency is selectable', () => {
         it('should render a chevron', () => {
-          expect(dowshiftRenderWrapper).toRender('DropdownChevron');
+          expect(dowshiftRenderWrapper).toRender(DropdownChevronWithIntl);
         });
       });
 
@@ -155,11 +158,12 @@ describe('rendering', () => {
           beforeEach(() => {
             props = createTestProps();
             wrapper = shallow(<MoneyInput {...props} />);
-            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = shallow(
-              dropdown.find('Downshift').prop('render')(downshiftProps)
-            );
+            dowshiftRenderWrapper = wrapper
+              .find(CurrencyDropdown)
+              .shallow()
+              .find('Downshift')
+              .renderProp('render', downshiftProps);
           });
 
           it('should have opened styles', () => {
@@ -175,11 +179,12 @@ describe('rendering', () => {
               isDisabled: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
-            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = shallow(
-              dropdown.find('Downshift').prop('render')(downshiftProps)
-            );
+            dowshiftRenderWrapper = wrapper
+              .find(CurrencyDropdown)
+              .shallow()
+              .find('Downshift')
+              .renderProp('render', downshiftProps);
           });
 
           it('should have disabled styles', () => {
@@ -195,11 +200,12 @@ describe('rendering', () => {
               hasCurrencyError: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
-            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = shallow(
-              dropdown.find('Downshift').prop('render')(downshiftProps)
-            );
+            dowshiftRenderWrapper = wrapper
+              .find(CurrencyDropdown)
+              .shallow()
+              .find('Downshift')
+              .renderProp('render', downshiftProps);
           });
 
           it('should have error styles', () => {
@@ -215,11 +221,12 @@ describe('rendering', () => {
               hasCurrencyWarning: true,
             });
             wrapper = shallow(<MoneyInput {...props} />);
-            dropdown = wrapper.find(CurrencyDropdown).shallow();
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = shallow(
-              dropdown.find('Downshift').prop('render')(downshiftProps)
-            );
+            dowshiftRenderWrapper = wrapper
+              .find(CurrencyDropdown)
+              .shallow()
+              .find('Downshift')
+              .renderProp('render', downshiftProps);
           });
 
           it('should have error styles', () => {
@@ -236,11 +243,12 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        dropdown = wrapper.find(CurrencyDropdown).shallow();
-        downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
-        dowshiftRenderWrapper = shallow(
-          dropdown.find('Downshift').prop('render')(downshiftProps)
-        );
+        downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
+        dowshiftRenderWrapper = wrapper
+          .find(CurrencyDropdown)
+          .shallow()
+          .find('Downshift')
+          .renderProp('render', downshiftProps);
         options = dowshiftRenderWrapper.find('Option');
       });
 

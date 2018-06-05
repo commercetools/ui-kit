@@ -92,7 +92,7 @@ Currency.propTypes = {
   currency: PropTypes.string.isRequired,
 };
 
-export const DropdownChevron = injectIntl(props => (
+export const DropdownChevron = props => (
   <AccessibleButton
     buttonRef={props.buttonRef}
     label={props.intl.formatMessage(messages.chevronLabel)}
@@ -111,7 +111,7 @@ export const DropdownChevron = injectIntl(props => (
       )}
     </div>
   </AccessibleButton>
-));
+);
 
 DropdownChevron.displayName = 'DropdownChevron';
 DropdownChevron.propTypes = {
@@ -121,8 +121,10 @@ DropdownChevron.propTypes = {
   buttonRef: PropTypes.func.isRequired,
 
   // Intl
-  intl: intlShape.isRequired,
+  intl: intlShape,
 };
+
+export const DropdownChevronWithIntl = injectIntl(DropdownChevron);
 
 export const Option = props => (
   <AccessibleButton
@@ -157,7 +159,7 @@ export const CurrencyDropdown = props => (
             currency={props.currencyCode}
           />
           {props.currencies.length > 0 && (
-            <DropdownChevron
+            <DropdownChevronWithIntl
               buttonRef={props.setButtonReference}
               onClick={toggleMenu}
               isDisabled={props.isDisabled}
