@@ -16,11 +16,11 @@ import styles from './money-input.mod.css';
 
 const MAXIMUM_PRECISION = 20;
 
-const getCurrencyDropdownSelectStyles = (props, isOpen) => {
+const getCurrencyDropdownSelectStyles = props => {
   if (props.isDisabled) return styles['currency-disabled'];
   if (props.hasCurrencyError) return styles['currency-error'];
   if (props.hasCurrencyWarning) return styles['currency-warning'];
-  if (isOpen) return styles['currency-active'];
+  if (props.isOpen) return styles['currency-active'];
 
   return styles['currency-default'];
 };
@@ -102,9 +102,11 @@ export const DropdownChevron = props => (
     })}
   >
     <div className={styles['icon-wrapper']}>
-      {React.cloneElement(props.isOpen ? <CaretUpIcon /> : <CaretDownIcon />, {
-        size: 'scale',
-      })}
+      {props.isOpen ? (
+        <CaretUpIcon size="scale" />
+      ) : (
+        <CaretDownIcon size="scale" />
+      )}
     </div>
   </AccessibleButton>
 );
@@ -136,14 +138,12 @@ export const CurrencyDropdown = props => (
   <Downshift
     render={({ isOpen, toggleMenu }) => (
       <div
-        className={getCurrencyDropdownSelectStyles(
-          {
-            isDisabled: props.isDisabled,
-            hasCurrencyError: props.hasCurrencyError,
-            hasCurrencyWarning: props.hasCurrencyWarning,
-          },
-          isOpen
-        )}
+        className={getCurrencyDropdownSelectStyles({
+          isDisabled: props.isDisabled,
+          hasCurrencyError: props.hasCurrencyError,
+          hasCurrencyWarning: props.hasCurrencyWarning,
+          isOpen,
+        })}
       >
         <div className={styles['currency-wrapper']}>
           <Currency
@@ -277,9 +277,11 @@ export class MoneyInput extends React.PureComponent {
   handleAmountChange = event => {
     const nextValue = event.target.rawValue;
     if (this.props.value.centAmount === nextValue) return;
-    const centAmountValue = nextValue
-      ? Math.trunc(Math.round(nextValue * 10 ** this.props.fractionDigits))
-      : undefined;
+    const centAmountValue =
+      nextValue.length > 0
+        ? Math.trunc(Math.round(nextValue * 10 ** this.props.fractionDigits))
+        : undefined;
+
     this.props.onChange({
       currencyCode: this.props.value.currencyCode,
       centAmount: centAmountValue,

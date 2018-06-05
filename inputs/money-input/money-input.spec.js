@@ -114,18 +114,17 @@ describe('rendering', () => {
   });
 
   describe('`Currency` component', () => {
-    let currency;
     const currencyProps = createCurrencyProps();
     beforeEach(() => {
-      currency = shallow(<Currency {...currencyProps} />);
+      wrapper = shallow(<Currency {...currencyProps} />);
     });
 
     it('should render an `AccessibleButton`', () => {
-      expect(currency).toRender(AccessibleButton);
+      expect(wrapper).toRender(AccessibleButton);
     });
 
     it('should render selected currency symbol', () => {
-      expect(currency.prop('children')).toEqual('€');
+      expect(wrapper.prop('children')).toEqual('€');
     });
   });
 
