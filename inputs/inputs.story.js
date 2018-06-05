@@ -73,51 +73,52 @@ storiesOf('Forms/Inputs', module)
   ))
   .addDecorator(withReadme(MoneyInputReadme))
   .add('MoneyInput', () => {
-    const centAmount = number('centAmount', 10);
-    const options = {
-      range: true,
+    const fractionDigits = number('fractionDigits', 2, {
       min: 0,
       max: 20,
       step: 1,
-    };
-    const fractionDigits = number('fractionDigits', 2, options);
+    });
 
     return (
       <Section>
-        <Value
-          defaultValue={{
-            centAmount,
-            currencyCode: 'EUR',
-          }}
-          render={(value, onChange) => (
-            <IntlProvider locale="en">
-              <MoneyInput
-                value={{
-                  centAmount,
-                  currencyCode: value.currencyCode,
-                }}
-                fractionDigits={fractionDigits}
-                language={text('language', '')}
-                currencies={
-                  boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
-                }
-                placeholder={text('placeholder', 'Placeholder')}
-                onBlur={action('onBlur')}
-                isDisabled={boolean('isDisabled', false)}
-                onChange={onChange}
-                hasCurrencyError={boolean('hasCurrencyError', false)}
-                hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-                hasAmountError={boolean('hasAmountError', false)}
-                hasAmountWarning={boolean('hasAmountWarning', false)}
-                horizontalConstraint={select(
-                  'horizontalConstraint',
-                  ['s', 'm', 'l', 'xl', 'scale'],
-                  'm'
-                )}
-              />
-            </IntlProvider>
-          )}
-        />
+        <IntlProvider locale="en">
+          <Value
+            defaultValue={{
+              centAmount: undefined,
+              currencyCode: 'EUR',
+            }}
+            render={(value, onChange) =>
+              console.log(value) || (
+                <MoneyInput
+                  value={value}
+                  fractionDigits={fractionDigits}
+                  language={text('language', '')}
+                  currencies={
+                    boolean('dropdown', true)
+                      ? ['EUR', 'USD', 'AED']
+                      : undefined
+                  }
+                  placeholder={text('placeholder', 'Placeholder')}
+                  onBlur={action('onBlur')}
+                  isDisabled={boolean('isDisabled', false)}
+                  onChange={(...args) => {
+                    action('onChange')(...args);
+                    onChange(...args);
+                  }}
+                  hasCurrencyError={boolean('hasCurrencyError', false)}
+                  hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
+                  hasAmountError={boolean('hasAmountError', false)}
+                  hasAmountWarning={boolean('hasAmountWarning', false)}
+                  horizontalConstraint={select(
+                    'horizontalConstraint',
+                    ['s', 'm', 'l', 'xl', 'scale'],
+                    'm'
+                  )}
+                />
+              )
+            }
+          />
+        </IntlProvider>
       </Section>
     );
   });
