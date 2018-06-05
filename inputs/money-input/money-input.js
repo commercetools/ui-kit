@@ -225,7 +225,7 @@ export class MoneyInput extends React.PureComponent {
     fractionDigits: 2,
     isDisabled: false,
     currencies: [],
-    horizontalConstraint: 'm',
+    horizontalConstraint: 'scale',
   };
 
   state = {
