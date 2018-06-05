@@ -4,6 +4,7 @@ import isNil from 'lodash.isnil';
 import Cleave from 'cleave.js/react';
 import classnames from 'classnames';
 import Downshift from 'downshift';
+import { injectIntl, intlShape } from 'react-intl';
 import { defaultMemoize } from 'reselect';
 import {
   getSeparatorsForLocale,
@@ -12,6 +13,7 @@ import {
 import { CaretDownIcon, CaretUpIcon } from '../../icons';
 import AccessibleButton from '../../buttons/accessible-button';
 import Contraints from '../../materials/constraints';
+import messages from './messages';
 import styles from './money-input.mod.css';
 
 const MAXIMUM_PRECISION = 20;
@@ -90,10 +92,10 @@ Currency.propTypes = {
   currency: PropTypes.string.isRequired,
 };
 
-export const DropdownChevron = props => (
+export const DropdownChevron = injectIntl(props => (
   <AccessibleButton
     buttonRef={props.buttonRef}
-    label="Open/Close Dropdown"
+    label={props.intl.formatMessage(messages.chevronLabel)}
     onClick={props.onClick}
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
@@ -109,7 +111,7 @@ export const DropdownChevron = props => (
       )}
     </div>
   </AccessibleButton>
-);
+));
 
 DropdownChevron.displayName = 'DropdownChevron';
 DropdownChevron.propTypes = {
@@ -117,6 +119,9 @@ DropdownChevron.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   buttonRef: PropTypes.func.isRequired,
+
+  // Intl
+  intl: intlShape.isRequired,
 };
 
 export const Option = props => (

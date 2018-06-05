@@ -1,4 +1,5 @@
 import React from 'react';
+import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import {
@@ -89,30 +90,32 @@ storiesOf('Forms/Inputs', module)
             currencyCode: 'EUR',
           }}
           render={(value, onChange) => (
-            <MoneyInput
-              value={{
-                centAmount,
-                currencyCode: value.currencyCode,
-              }}
-              fractionDigits={fractionDigits}
-              language={text('language', '')}
-              currencies={
-                boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
-              }
-              placeholder={text('placeholder', 'Placeholder')}
-              onBlur={action('onBlur')}
-              isDisabled={boolean('isDisabled', false)}
-              onChange={onChange}
-              hasCurrencyError={boolean('hasCurrencyError', false)}
-              hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-              hasAmountError={boolean('hasAmountError', false)}
-              hasAmountWarning={boolean('hasAmountWarning', false)}
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                ['s', 'm', 'l', 'xl', 'scale'],
-                'm'
-              )}
-            />
+            <IntlProvider locale="en">
+              <MoneyInput
+                value={{
+                  centAmount,
+                  currencyCode: value.currencyCode,
+                }}
+                fractionDigits={fractionDigits}
+                language={text('language', '')}
+                currencies={
+                  boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
+                }
+                placeholder={text('placeholder', 'Placeholder')}
+                onBlur={action('onBlur')}
+                isDisabled={boolean('isDisabled', false)}
+                onChange={onChange}
+                hasCurrencyError={boolean('hasCurrencyError', false)}
+                hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
+                hasAmountError={boolean('hasAmountError', false)}
+                hasAmountWarning={boolean('hasAmountWarning', false)}
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['s', 'm', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+              />
+            </IntlProvider>
           )}
         />
       </Section>
