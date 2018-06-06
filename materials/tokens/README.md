@@ -22,7 +22,7 @@ for more info: https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd8
 Having no structure or naming conventions, can easily lead to an unmaintainable codebase in the long term.
 This naming approach ensures that everyone who participates in the development of the application "speaks the same language". Using proper naming will prepare us for the changes in design of the application.
 
-A design token variable is composed by two dashes plus the word `token` plus dash plus type plus dash plus element name plus element state: `--token-type-component-state`
+A design token variable is composed by two dashes plus the word `token` plus dash plus type plus dash plus element name plus element state: `--token-type-element-state`
 
 ###### Good
 
@@ -76,13 +76,13 @@ and then:
   composes: textarea;
   color: var(--token-font-color-disabled);
   border: 1px solid var(--token-border-color-input-disabled);
-  background: var(--token-color-background-input-disabled);
+  background: var(--token-background-color-input-disabled);
 }
 ```
 
 ### The file
 
-Understanding how your code is organized allows anybody to jump straight into the action. Therefore its important to organize our files into sections
+Understanding how your code is organized allows anybody to jump straight into the action. Therefore it's important to organize our files into sections
 
 Here's an example of what a design token file should look like
 

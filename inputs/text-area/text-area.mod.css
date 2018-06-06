@@ -34,7 +34,7 @@
 .pristine {
   composes: textarea;
   border: 1px solid var(--token-border-color-input-pristine);
-  background: var(--token-color-background-input-pristine);
+  background: var(--token-background-color-input-pristine);
 }
 
 /* Focused */
@@ -47,7 +47,7 @@
   composes: textarea;
   color: var(--token-font-color-disabled);
   border: 1px solid var(--token-border-color-input-disabled);
-  background: var(--token-color-background-input-disabled);
+  background: var(--token-background-color-input-disabled);
   resize: none;
 }
 

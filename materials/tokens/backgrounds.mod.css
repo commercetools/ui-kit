@@ -21,6 +21,6 @@
    ========================================================================== */
 
   /* Colors */
-  --token-color-background-input-pristine: var(--color-white);
-  --token-color-background-input-disabled: var(--color-whiteCatskill);
+  --token-background-color-input-pristine: var(--color-white);
+  --token-background-color-input-disabled: var(--color-whiteCatskill);
 }
