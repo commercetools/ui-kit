@@ -26,7 +26,13 @@ Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
   elementType: PropTypes.oneOf(['h4', 'h5']).isRequired,
   isBold: PropTypes.bool,
-  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
+  tone: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'information',
+    'positive',
+    'negative',
+  ]),
   children: PropTypes.node.isRequired,
 };
 
@@ -60,7 +66,13 @@ Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
   isInline: PropTypes.bool,
-  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
+  tone: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'information',
+    'positive',
+    'negative',
+  ]),
   children: PropTypes.node.isRequired,
 };
 
@@ -79,7 +91,13 @@ Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,
   isInline: PropTypes.bool,
-  tone: PropTypes.oneOf(['primary', 'secondary', 'positive', 'negative']),
+  tone: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'information',
+    'positive',
+    'negative',
+  ]),
   children: PropTypes.node.isRequired,
 };
 

@@ -6,6 +6,11 @@
       "value": "#0679d1"
     },
     {
+      "key": "--color-dodgerBlue",
+      "name": "dodgerBlue",
+      "value": "#0d9df8"
+    },
+    {
       "key": "--color-blueNavy",
       "name": "blueNavy",
       "value": "#213e48"

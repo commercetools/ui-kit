@@ -32,6 +32,7 @@ storiesOf('Typography/Text', module)
         tone={select('Text tone', [
           'none',
           'primary',
+          'information',
           'secondary',
           'positive',
           'negative',
@@ -60,6 +61,7 @@ storiesOf('Typography/Text', module)
         tone={select('Text tone', [
           'none',
           'primary',
+          'information',
           'secondary',
           'positive',
           'negative',
@@ -76,6 +78,7 @@ storiesOf('Typography/Text', module)
         tone={select('Text tone', [
           'none',
           'primary',
+          'information',
           'secondary',
           'positive',
           'negative',
