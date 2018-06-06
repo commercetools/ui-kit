@@ -87,36 +87,32 @@ storiesOf('Forms/Inputs', module)
               centAmount: undefined,
               currencyCode: 'EUR',
             }}
-            render={(value, onChange) =>
-              console.log(value) || (
-                <MoneyInput
-                  value={value}
-                  fractionDigits={fractionDigits}
-                  language={text('language', '')}
-                  currencies={
-                    boolean('dropdown', true)
-                      ? ['EUR', 'USD', 'AED']
-                      : undefined
-                  }
-                  placeholder={text('placeholder', 'Placeholder')}
-                  onBlur={action('onBlur')}
-                  isDisabled={boolean('isDisabled', false)}
-                  onChange={(...args) => {
-                    action('onChange')(...args);
-                    onChange(...args);
-                  }}
-                  hasCurrencyError={boolean('hasCurrencyError', false)}
-                  hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-                  hasAmountError={boolean('hasAmountError', false)}
-                  hasAmountWarning={boolean('hasAmountWarning', false)}
-                  horizontalConstraint={select(
-                    'horizontalConstraint',
-                    ['s', 'm', 'l', 'xl', 'scale'],
-                    'm'
-                  )}
-                />
-              )
-            }
+            render={(value, onChange) => (
+              <MoneyInput
+                value={value}
+                fractionDigits={fractionDigits}
+                language={text('language', '')}
+                currencies={
+                  boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
+                }
+                placeholder={text('placeholder', 'Placeholder')}
+                onBlur={action('onBlur')}
+                isDisabled={boolean('isDisabled', false)}
+                onChange={(...args) => {
+                  action('onChange')(...args);
+                  onChange(...args);
+                }}
+                hasCurrencyError={boolean('hasCurrencyError', false)}
+                hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
+                hasAmountError={boolean('hasAmountError', false)}
+                hasAmountWarning={boolean('hasAmountWarning', false)}
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['s', 'm', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+              />
+            )}
           />
         </IntlProvider>
       </Section>
