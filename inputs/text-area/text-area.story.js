@@ -5,7 +5,7 @@ import withReadme from 'storybook-readme/with-readme';
 import { IntlProvider } from 'react-intl';
 import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
-import TextArea from './textarea';
+import TextArea from './text-area';
 
 storiesOf('Forms/Inputs', module)
   .addDecorator(withKnobs)

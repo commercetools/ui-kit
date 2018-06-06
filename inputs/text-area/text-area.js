@@ -8,8 +8,21 @@ import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '@commercetools-local/ui-kit/buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-local/ui-kit/icons';
 import Constraints from '../../materials/constraints';
-import styles from './textarea.mod.css';
+import styles from './text-area.mod.css';
 import messages from './messages';
+
+// NOTE: order is important here
+// * a disabled-field currently does not display warning/error-states so it takes precedence
+// * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
+// how you can interact with the field is controlled separately by the props, this only influences visuals
+const getStyles = props => {
+  if (props.isDisabled) return styles.disabled;
+  if (props.hasError) return styles.error;
+  if (props.hasWarning) return styles.warning;
+  if (props.isReadOnly) return styles.readonly;
+
+  return styles.pristine;
+};
 
 export class TextArea extends React.Component {
   static displayName = 'TextArea';
@@ -19,7 +32,7 @@ export class TextArea extends React.Component {
   static propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
@@ -29,7 +42,7 @@ export class TextArea extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     placeholder: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
 
     // HoC
     intl: PropTypes.shape({
@@ -45,19 +58,6 @@ export class TextArea extends React.Component {
 
   state = {
     numOfRows: TextArea.DEFAULT_ROWS_NUMBER,
-  };
-
-  // NOTE: order is important here
-  // * a disabled-field currently does not display warning/error-states so it takes precedence
-  // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
-  // how you can interact with the field is controlled separately by the props, this only influences visuals
-  getStyles = props => {
-    if (props.isDisabled) return styles.disabled;
-    if (props.hasError) return styles.error;
-    if (props.hasWarning) return styles.warning;
-    if (props.isReadOnly) return styles.readonly;
-
-    return styles.pristine;
   };
 
   handleHeightChange = (_, innerComponent) => {
@@ -85,7 +85,7 @@ export class TextArea extends React.Component {
                 }}
                 disabled={this.props.isDisabled}
                 placeholder={this.props.placeholder}
-                className={this.getStyles(this.props)}
+                className={getStyles(this.props)}
                 readOnly={this.props.isReadOnly}
                 autoFocus={this.props.isAutofocussed}
                 /* ARIA */

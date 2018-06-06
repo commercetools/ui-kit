@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { intlMock } from '@commercetools-local/test-utils';
 import FlatButton from '@commercetools-local/ui-kit/buttons/flat-button';
-import { TextArea } from './textarea';
+import { TextArea } from './text-area';
 
 const createTestProps = customProps => ({
   value: '',
