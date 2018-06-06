@@ -240,23 +240,6 @@ export class MoneyInput extends React.PureComponent {
     dropdownButtonReference: null,
   };
 
-  componentDidUpdate(prevProps) {
-    if (
-      this.state.cleaveComponentReference &&
-      (prevProps.value.centAmount !== this.props.value.centAmount ||
-        prevProps.fractionDigits !== this.props.fractionDigits)
-    ) {
-      this.state.cleaveComponentReference.setRawValue(
-        !isNil(this.props.value.centAmount)
-          ? parseNumberToMoney(
-              this.props.value.centAmount,
-              this.props.fractionDigits
-            )
-          : ''
-      );
-    }
-  }
-
   handleInit = cleaveComponentReference => {
     this.setState({ cleaveComponentReference });
     const initialMoneyValue = parseNumberToMoney(
@@ -293,6 +276,19 @@ export class MoneyInput extends React.PureComponent {
       currencyCode: this.props.value.currencyCode,
       centAmount: centAmountValue,
     });
+  };
+
+  handleBlur = () => {
+    if (this.state.cleaveComponentReference)
+      this.state.cleaveComponentReference.setRawValue(
+        !isNil(this.props.value.centAmount)
+          ? parseNumberToMoney(
+              this.props.value.centAmount,
+              this.props.fractionDigits
+            )
+          : ''
+      );
+    if (this.props.onBlur) this.props.onBlur(this.props.value);
   };
 
   render() {
@@ -333,7 +329,7 @@ export class MoneyInput extends React.PureComponent {
             })}
             onChange={this.handleAmountChange}
             onInit={this.handleInit}
-            onBlur={this.props.onBlur}
+            onBlur={this.handleBlur}
             disabled={this.props.isDisabled}
           />
         </div>

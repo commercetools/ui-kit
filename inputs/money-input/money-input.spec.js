@@ -243,7 +243,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
+        downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
         dowshiftRenderWrapper = wrapper
           .find(CurrencyDropdown)
           .shallow()
