@@ -50,16 +50,16 @@
 
 .disabled {
   composes: button-layout;
-  border-color: var(--color-coolGrey);
-  color: var(--color-primaryGrey);
+  border-color: var(--new-color-gray);
+  color: var(--new-color-gray);
 }
 
 .button:hover .disabled {
-  border-color: var(--color-coolGrey);
-  color: var(--color-primaryGrey);
+  border-color: var(--new-color-gray);
+  color: var(--new-color-gray);
 }
 
 .button:active .disabled {
-  border-color: var(--color-coolGrey);
-  color: var(--color-primaryGrey);
+  border-color: var(--new-color-gray);
+  color: var(--new-color-gray);
 }

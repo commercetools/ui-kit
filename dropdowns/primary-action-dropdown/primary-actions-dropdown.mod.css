@@ -50,7 +50,7 @@
 .disabledDropdownHeadChevron {
   box-shadow: none;
   background-color: var(--new-color-navy-98);
-  color: var(--color-primaryGrey);
+  color: var(--new-color-gray);
 }
 
 .primaryOptionChevron {
@@ -58,7 +58,7 @@
   align-items: center;
   padding: 0 var(--spacing-4);
   border-radius: 0 var(--border-radius-6) var(--border-radius-6) 0;
-  border-left: 1px solid var(--color-primaryGrey);
+  border-left: 1px solid var(--new-color-gray);
   height: var(--big-button-height);
 }
 
@@ -75,7 +75,7 @@
   width: 100%;
   top: calc(var(--spacing-8) + var(--big-button-height));
   left: 0;
-  border: 1px solid var(--color-primaryGrey);
+  border: 1px solid var(--new-color-gray);
   border-radius: var(--border-radius-6);
   box-shadow: var(--shadow-1-first), var(--shadow-1-second);
 }
@@ -100,5 +100,5 @@
 }
 
 .disabledOption {
-  color: var(--color-primaryGrey);
+  color: var(--new-color-gray);
 }

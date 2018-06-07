@@ -11,7 +11,7 @@
   --font-detail: 12px;
 
   /* Colors */
-  --font-color: var(--color-greyTundora);
+  --font-color: var(--new-color-black);
 }
 
 h1 {
@@ -80,7 +80,7 @@ small {
 }
 
 .secondary {
-  color: var(--color-secondaryGrey);
+  color: var(--new-color-gray-60);
 }
 
 .positive {

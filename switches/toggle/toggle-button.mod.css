@@ -49,7 +49,7 @@
 }
 
 .toggle-button.disabled :global(.bt-fill) {
-  fill: var(--color-coolGrey);
+  fill: var(--new-color-gray-90);
 }
 
 .toggle-button.disabled.active {

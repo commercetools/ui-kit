@@ -53,37 +53,37 @@
       "value": "#f9f9f9"
     },
     {
-      "key": "--color-primaryGrey",
+      "key": "--new-color-gray",
       "name": "primaryGrey",
       "value": "#ccc"
     },
     {
-      "key": "--color-secondaryGrey",
+      "key": "--new-color-gray-60",
       "name": "secondaryGrey",
       "value": "#848484"
     },
     {
-      "key": "--color-coolGrey",
+      "key": "--new-color-gray-95",
       "name": "coolGrey",
       "value": "#f6f6f6"
     },
     {
-      "key": "--color-greyGallery",
+      "key": "--new-color-gray-90",
       "name": "greyGallery",
       "value": "#eee"
     },
     {
-      "key": "--color-greyGallery",
+      "key": "--new-color-gray-90",
       "name": "greyGallery",
       "value": "#eaeaea"
     },
     {
-      "key": "--color-greyAlto",
+      "key": "--new-color-gray-90",
       "name": "greyAlto",
       "value": "#d8d8d8"
     },
     {
-      "key": "--color-greyNevada",
+      "key": "--new-color-gray-60",
       "name": "greyNevada",
       "value": "#65747d"
     },

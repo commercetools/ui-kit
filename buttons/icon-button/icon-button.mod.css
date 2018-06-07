@@ -86,7 +86,7 @@
 
 .disabled {
   background-color: var(--new-color-navy-98);
-  color: var(--color-greyNevada);
+  color: var(--new-color-gray-60);
   box-shadow: none;
 }
 
@@ -99,7 +99,7 @@
 .default:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--new-color-white);
 }
 
 /* Toggled button */
@@ -107,7 +107,7 @@
 .active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--new-color-white);
 }
 
 .active:hover {

@@ -47,7 +47,7 @@
 
 .pristine {
   composes: input;
-  border-color: var(--color-greySolid);
+  border-color: var(--new-color-gray-60);
   color: var(--new-color-black);
 }
 
@@ -67,15 +67,15 @@
   composes: input;
   cursor: not-allowed;
   background-color: var(--new-color-navy-98);
-  border-color: var(--color-greyMischka);
-  color: var(--color-greyNevada);
+  border-color: var(--new-color-gray);
+  color: var(--new-color-gray-60);
   opacity: 1; /* fix for mobile safari */
 }
 
 .readonly {
   composes: input;
-  color: var(--color-greyNevada);
-  border-color: var(--color-primaryGrey);
+  color: var(--new-color-gray-60);
+  border-color: var(--new-color-gray);
   cursor: default;
 }
 

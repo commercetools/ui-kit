@@ -27,12 +27,16 @@
   height: var(--big-bar-height);
 }
 
+.toggle-bar rect {
+  fill: var(--new-color-gray-60);
+}
+
 .toggle-bar.active rect {
   fill: var(--new-color-green-40);
 }
 
 .toggle-bar.disabled rect {
-  fill: var(--color-greyGallery);
+  fill: var(--new-color-gray);
 }
 
 .toggle-bar.active.disabled rect {

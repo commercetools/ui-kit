@@ -32,9 +32,9 @@
 }
 
 .disabled p {
-  color: var(--color-primaryGrey);
+  color: var(--new-color-gray);
 }
 
 .button:hover.disabled p {
-  color: var(--color-primaryGrey);
+  color: var(--new-color-gray);
 }

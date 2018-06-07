@@ -33,10 +33,10 @@
   width: 100%;
   appearance: none;
   border-radius: var(--border-radius-6) 0 0 var(--border-radius-6);
-  border-bottom: 1px solid var(--color-primaryGrey);
-  border-left: 1px solid var(--color-primaryGrey);
+  border-bottom: 1px solid var(--new-color-gray);
+  border-left: 1px solid var(--new-color-gray);
   border-right: none;
-  border-top: 1px solid var(--color-primaryGrey);
+  border-top: 1px solid var(--new-color-gray);
   cursor: pointer;
   flex-grow: 1;
   font: inherit;
@@ -51,17 +51,17 @@
 }
 
 .date-input:disabled {
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--new-color-navy-98);
   cursor: not-allowed;
-  color: var(--color-greyDove);
+  color: var(--new-color-gray-60);
   opacity: 1; /* fix for mobile safari */
 }
 
 .icon-container {
   align-items: center;
-  border-bottom: 1px solid var(--color-primaryGrey);
-  border-right: 1px solid var(--color-primaryGrey);
-  border-top: 1px solid var(--color-primaryGrey);
+  border-bottom: 1px solid var(--new-color-gray);
+  border-right: 1px solid var(--new-color-gray);
+  border-top: 1px solid var(--new-color-gray);
   cursor: pointer;
   display: flex;
   height: var(--standard-input-height);
@@ -80,7 +80,7 @@
 
 .icon-container-disabled {
   cursor: not-allowed;
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--new-color-navy-98);
 }
 
 .invalid {

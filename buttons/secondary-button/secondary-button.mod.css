@@ -7,7 +7,7 @@
 
 :root {
   --size-container-small: 16px;
-  --size-container-big: 32px;
+  --size-container-big: 30px;
 }
 
 /*
@@ -22,6 +22,7 @@
   font-size: 1rem;
   transition: background-color var(--transition-linear-80ms),
     box-shadow var(--transition-easeinout-150ms);
+  border: 1px transparent solid;
 }
 
 /*
@@ -65,7 +66,7 @@
 .active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--new-color-white);
 }
 
 .active:hover {
@@ -79,8 +80,8 @@
 .active.disabled,
 .disabled {
   background-color: var(--new-color-navy-98);
-  color: var(--color-greyNevada);
-  box-shadow: var(--shadow-10-first);
+  color: var(--new-color-gray-60);
+  border-color: var(--new-color-gray);
   pointer-events: none;
 }
 
@@ -93,7 +94,7 @@
 .default:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--new-color-white);
 }
 
 /*
@@ -113,7 +114,7 @@
 }
 
 .theme-blue.disabled {
-  color: var(--color-greyNevada);
+  color: var(--new-color-gray-60);
 }
 
 /*
@@ -133,5 +134,5 @@
 }
 
 .theme-apple-green.disabled {
-  color: var(--color-greyNevada);
+  color: var(--new-color-gray-60);
 }

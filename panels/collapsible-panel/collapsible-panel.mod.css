@@ -43,7 +43,7 @@
 }
 
 .container-open .header-container {
-  border-bottom: 1px var(--color-primaryGrey) solid;
+  border-bottom: 1px var(--new-color-gray) solid;
 }
 
 .header {

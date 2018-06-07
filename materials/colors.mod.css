@@ -4,22 +4,6 @@ selector. Color groups are indicated by a comment preceeding the group of
 colors. */
 
 :root {
-  /* Grays */
-  --color-grey: #aeaeae;
-  --color-greyDove: #666;
-  --color-greyDusty: #979797;
-  --color-greyMischka: #e5e4e9;
-  --color-greyTundora: #484848;
-  --color-greyAlabaster: #f9f9f9;
-  --color-primaryGrey: #ccc;
-  --color-secondaryGrey: #848484;
-  --color-coolGrey: #f6f6f6;
-  --color-greyGallery: #eee;
-  --color-greyGallery: #eaeaea;
-  --color-greyAlto: #d8d8d8;
-  --color-greyNevada: #65747d;
-  --color-greySolid: #afafaf;
-
   /* new colors */
 
   --new-color-green: #00b39e;

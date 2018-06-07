@@ -14,11 +14,11 @@
 }
 
 .header-cell {
-  background: var(--color-coolGrey);
+  background: var(--new-color-gray-95);
 }
 
 .wrapper {
-  outline: 1px solid var(--color-greyAlto);
+  outline: 1px solid var(--new-color-gray-90);
 }
 
 .hovered-row {
