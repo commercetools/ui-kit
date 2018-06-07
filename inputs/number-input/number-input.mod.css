@@ -66,7 +66,7 @@
 .disabled {
   composes: input;
   cursor: not-allowed;
-  background-color: var(--color-whiteCatskill);
+  background-color: var(--new-color-navy-98);
   border-color: var(--color-greyMischka);
   color: var(--color-greyNevada);
   opacity: 1; /* fix for mobile safari */

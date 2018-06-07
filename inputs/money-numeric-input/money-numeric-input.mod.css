@@ -21,7 +21,7 @@
 .input {
   composes: input-text;
   background-color: var(--color-coolGrey);
-  border-color: var(--color-white);
+  border-color: var(--new-color-white);
   width: 100%;
 }
 

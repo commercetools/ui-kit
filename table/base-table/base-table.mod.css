@@ -6,7 +6,7 @@
 }
 
 .fixed-static {
-  background: var(--color-whitePorcelain);
+  background: var(--new-color-gray-90);
 }
 
 .fixed-column {
@@ -27,7 +27,7 @@
 }
 
 div:hover .hovered-row {
-  background: var(--color-whitePorcelain);
+  background: var(--new-color-blue-95);
 }
 
 .align-left {

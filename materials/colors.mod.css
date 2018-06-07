@@ -4,13 +4,6 @@ selector. Color groups are indicated by a comment preceeding the group of
 colors. */
 
 :root {
-  /* Whites */
-  --color-white: #fff;
-  --color-whiteAlabaster: #fafafa;
-  --color-whiteCatskill: #f9fafc;
-  --color-whitePorcelain: #eff2f6;
-  --color-whiteSnow: #f2f2f2;
-
   /* Grays */
   --color-black: #333;
   --color-grey: #aeaeae;
@@ -31,8 +24,6 @@ colors. */
   /* Faded version of main colors */
   --color-fadedOrange20: color(var(--new-color-orange) alpha(20%));
   --color-fadedBlack25: color(var(--color-black) alpha(25%));
-  --color-fadedWhite20: color(var(--color-white) alpha(20%));
-  --color-fadedWhiteCatskill90: color(var(--color-whiteCatskill) alpha(90%));
 
   /* new colors */
 

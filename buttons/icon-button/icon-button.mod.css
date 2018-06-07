@@ -16,7 +16,7 @@
 
 .button-appearance {
   display: inline-block;
-  background-color: var(--color-white);
+  background-color: var(--new-color-white);
   box-shadow: var(--shadow-7-first), var(--shadow-7-second);
   color: var(--color-black);
   transition: background-color var(--transition-linear-80ms),
@@ -85,7 +85,7 @@
 /* Disabled button */
 
 .disabled {
-  background-color: var(--color-whitePorcelain);
+  background-color: var(--new-color-navy-98);
   color: var(--color-greyNevada);
   box-shadow: none;
 }
@@ -113,7 +113,7 @@
 .active:hover {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-whiteSnow);
+  background-color: var(--new-color-gray-95);
 }
 
 /*
@@ -123,7 +123,7 @@
 /* Disabled-Active button */
 
 .disabled.theme-blue:hover {
-  background-color: var(--color-whitePorcelain);
+  background-color: var(--new-color-navy-98);
 }
 
 /* When the button is active (isToggled: true) and somehow is disabled
@@ -132,7 +132,7 @@
 
 .active.disabled.theme-blue {
   background-color: var(--new-color-blue-95);
-  color: var(--color-white);
+  color: var(--new-color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
 }
@@ -142,7 +142,7 @@
 .theme-blue.active,
 .theme-blue:hover {
   background-color: var(--new-color-blue);
-  color: var(--color-white);
+  color: var(--new-color-white);
 }
 
 .active.theme-blue:hover {
@@ -160,12 +160,12 @@
   receive any actions */
 
 .disabled.theme-green:hover {
-  background-color: var(--color-whitePorcelain);
+  background-color: var(--new-color-navy-98);
 }
 
 .active.disabled.theme-green {
   background-color: var(--new-color-green-85);
-  color: var(--color-white);
+  color: var(--new-color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
 }
@@ -175,7 +175,7 @@
 .theme-green.active,
 .theme-green:hover {
   background-color: var(--new-color-green);
-  color: var(--color-white);
+  color: var(--new-color-white);
 }
 
 .active.theme-green:hover {

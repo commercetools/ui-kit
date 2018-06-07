@@ -7,7 +7,7 @@
 .button-layout {
   display: inline-flex;
   align-items: center;
-  color: var(--color-white);
+  color: var(--new-color-white);
   transition: background-color var(--transition-linear-80ms);
   box-shadow: var(--shadow-7-first), var(--shadow-7-second);
 }
@@ -80,16 +80,12 @@
 /**
  * .disabled button mode, this applies to all tones.
  */
-.button-layout .disabled {
-  box-shadow: none;
-  background-color: var(--color-whitePorcelain);
-  color: var(--color-greyNevada);
-}
-
+.button-layout .disabled,
 .button-layout .disabled:active,
 .button-layout .disabled:hover {
-  background-color: var(--color-whitePorcelain);
-  color: var(--color-greyNevada);
+  box-shadow: none;
+  background-color: var(--new-color-navy-98);
+  color: var(--new-color-gray-60);
 }
 
 /** Icon container */
