@@ -18,26 +18,26 @@
 :global(.flatpickr-day.selected.nextMonthDay),
 :global(.flatpickr-day.startRange.nextMonthDay),
 :global(.flatpickr-day.endRange.nextMonthDay) {
-  background: var(--new-color-green);
-  border-color: var(--new-color-green);
+  background: var(--color-green);
+  border-color: var(--color-green);
 }
 
 :global(.flatpickr-prev-month:hover),
 :global(.flatpickr-next-month:hover) {
-  color: var(--new-color-green);
+  color: var(--color-green);
 }
 :global(.flatpickr-prev-month:hover svg),
 :global(.flatpickr-next-month:hover svg) {
-  fill: var(--new-color-green);
+  fill: var(--color-green);
 }
 
 :global(.flatpickr-day.today) {
-  border-color: var(--new-color-orange);
+  border-color: var(--color-orange);
 }
 :global(.flatpickr-day.today:hover),
 :global(.flatpickr-day.today:focus) {
-  border-color: var(--new-color-orange);
-  background: var(--new-color-orange);
+  border-color: var(--color-orange);
+  background: var(--color-orange);
 }
 
 :global(span.flatpickr-day.today:not(.selected)),
@@ -46,13 +46,13 @@
   border-color: none;
   border-right-color: transparent;
   border-top-color: transparent;
-  border-bottom-color: var(--new-color-orange);
+  border-bottom-color: var(--color-orange);
 }
 
 :global(span.flatpickr-day.today:not(.selected):hover),
 :global(span.flatpickr-day.prevMonthDay.today:not(.selected):hover),
 :global(span.flatpickr-day.nextMonthDay.today:not(.selected):hover) {
-  border: 1px solid var(--new-color-orange);
+  border: 1px solid var(--color-orange);
 }
 
 :global(.flatpickr-input[disabled]) {

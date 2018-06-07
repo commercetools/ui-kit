@@ -47,35 +47,35 @@
 
 .pristine {
   composes: input;
-  border-color: var(--new-color-gray-60);
-  color: var(--new-color-black);
+  border-color: var(--color-gray-60);
+  color: var(--color-black);
 }
 
 .warning {
   composes: input;
-  color: var(--new-color-orange);
-  border-color: var(--new-color-orange);
+  color: var(--color-orange);
+  border-color: var(--color-orange);
 }
 
 .error {
   composes: input;
-  color: var(--new-color-red);
-  border-color: var(--new-color-red);
+  color: var(--color-red);
+  border-color: var(--color-red);
 }
 
 .disabled {
   composes: input;
   cursor: not-allowed;
-  background-color: var(--new-color-navy-98);
-  border-color: var(--new-color-gray);
-  color: var(--new-color-gray-60);
+  background-color: var(--color-navy-98);
+  border-color: var(--color-gray);
+  color: var(--color-gray-60);
   opacity: 1; /* fix for mobile safari */
 }
 
 .readonly {
   composes: input;
-  color: var(--new-color-gray-60);
-  border-color: var(--new-color-gray);
+  color: var(--color-gray-60);
+  border-color: var(--color-gray);
   cursor: default;
 }
 
@@ -83,6 +83,6 @@
 
 .pristine:active,
 .pristine:focus {
-  border-color: var(--new-color-green-25);
-  color: var(--new-color-black);
+  border-color: var(--color-green-25);
+  color: var(--color-black);
 }

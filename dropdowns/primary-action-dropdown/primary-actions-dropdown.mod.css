@@ -32,7 +32,7 @@
 }
 
 .defaultPrimaryAction {
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
   box-shadow: var(--shadow-7-first), var(--shadow-7-second);
 }
 
@@ -43,14 +43,14 @@
 .defaultPrimaryAction:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--new-color-gray-95);
+  background-color: var(--color-gray-95);
 }
 
 .disabledPrimaryAction,
 .disabledDropdownHeadChevron {
   box-shadow: none;
-  background-color: var(--new-color-navy-98);
-  color: var(--new-color-gray);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray);
 }
 
 .primaryOptionChevron {
@@ -58,7 +58,7 @@
   align-items: center;
   padding: 0 var(--spacing-4);
   border-radius: 0 var(--border-radius-6) var(--border-radius-6) 0;
-  border-left: 1px solid var(--new-color-gray);
+  border-left: 1px solid var(--color-gray);
   height: var(--big-button-height);
 }
 
@@ -75,7 +75,7 @@
   width: 100%;
   top: calc(var(--spacing-8) + var(--big-button-height));
   left: 0;
-  border: 1px solid var(--new-color-gray);
+  border: 1px solid var(--color-gray);
   border-radius: var(--border-radius-6);
   box-shadow: var(--shadow-1-first), var(--shadow-1-second);
 }
@@ -85,7 +85,7 @@
   text-align: left;
   width: 100%;
   padding: var(--spacing-8);
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
 }
 
 .optionWrapper:first-child {
@@ -96,9 +96,9 @@
 }
 
 .optionWrapper:hover {
-  background-color: var(--new-color-gray-95);
+  background-color: var(--color-gray-95);
 }
 
 .disabledOption {
-  color: var(--new-color-gray);
+  color: var(--color-gray);
 }

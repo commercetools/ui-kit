@@ -6,26 +6,26 @@ colors. */
 :root {
   /* new colors */
 
-  --new-color-green: #00b39e;
-  --new-color-green-25: color(var(--new-color-green) lightness(25%));
-  --new-color-green-40: color(var(--new-color-green) lightness(40%));
-  --new-color-green-85: color(var(--new-color-green) lightness(85%));
-  --new-color-green-95: color(var(--new-color-green) lightness(95%));
-  --new-color-white: #fff;
-  --new-color-navy: #213c45;
-  --new-color-navy-30: color(var(--new-color-navy) lightness(30%));
-  --new-color-navy-40: color(var(--new-color-navy) lightness(40%));
-  --new-color-navy-98: color(var(--new-color-navy) lightness(98%));
-  --new-color-blue: #078cdf;
-  --new-color-blue-95: color(var(--new-color-blue) lightness(95%));
-  --new-color-gray: #ccc;
-  --new-color-gray-60: color(var(--new-color-gray) lightness(60%));
-  --new-color-gray-90: color(var(--new-color-gray) lightness(90%));
-  --new-color-gray-95: color(var(--new-color-gray) lightness(95%));
-  --new-color-orange: #f16d0e;
-  --new-color-orange-95: color(var(--new-color-orange) lightness(95%));
-  --new-color-red: #e60050;
-  --new-color-red-95: color(var(--new-color-red) lightness(95%));
-  --new-color-purple: #b866ff;
-  --new-color-black: #1a1a1a;
+  --color-green: #00b39e;
+  --color-green-25: color(var(--color-green) lightness(25%));
+  --color-green-40: color(var(--color-green) lightness(40%));
+  --color-green-85: color(var(--color-green) lightness(85%));
+  --color-green-95: color(var(--color-green) lightness(95%));
+  --color-white: #fff;
+  --color-navy: #213c45;
+  --color-navy-30: color(var(--color-navy) lightness(30%));
+  --color-navy-40: color(var(--color-navy) lightness(40%));
+  --color-navy-98: color(var(--color-navy) lightness(98%));
+  --color-blue: #078cdf;
+  --color-blue-95: color(var(--color-blue) lightness(95%));
+  --color-gray: #ccc;
+  --color-gray-60: color(var(--color-gray) lightness(60%));
+  --color-gray-90: color(var(--color-gray) lightness(90%));
+  --color-gray-95: color(var(--color-gray) lightness(95%));
+  --color-orange: #f16d0e;
+  --color-orange-95: color(var(--color-orange) lightness(95%));
+  --color-red: #e60050;
+  --color-red-95: color(var(--color-red) lightness(95%));
+  --color-purple: #b866ff;
+  --color-black: #1a1a1a;
 }

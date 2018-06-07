@@ -6,7 +6,7 @@
 }
 
 .fixed-static {
-  background: var(--new-color-gray-90);
+  background: var(--color-gray-90);
 }
 
 .fixed-column {
@@ -14,11 +14,11 @@
 }
 
 .header-cell {
-  background: var(--new-color-gray-95);
+  background: var(--color-gray-95);
 }
 
 .wrapper {
-  outline: 1px solid var(--new-color-gray-90);
+  outline: 1px solid var(--color-gray-90);
 }
 
 .hovered-row {
@@ -27,7 +27,7 @@
 }
 
 div:hover .hovered-row {
-  background: var(--new-color-blue-95);
+  background: var(--color-blue-95);
 }
 
 .align-left {

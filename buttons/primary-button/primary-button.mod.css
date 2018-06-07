@@ -7,7 +7,7 @@
 .button-layout {
   display: inline-flex;
   align-items: center;
-  color: var(--new-color-white);
+  color: var(--color-white);
   transition: background-color var(--transition-linear-80ms);
   box-shadow: var(--shadow-7-first), var(--shadow-7-second);
 }
@@ -49,32 +49,32 @@
 
 /** primary tone */
 .button-tone-primary .button {
-  background-color: var(--new-color-green-25);
+  background-color: var(--color-green-25);
 }
 
 .button-tone-primary .active:hover,
 .button-tone-primary .button:hover {
-  background-color: var(--new-color-green);
+  background-color: var(--color-green);
 }
 
 .button-tone-primary .active,
 .button-tone-primary .button:active {
-  background-color: var(--new-color-green-25);
+  background-color: var(--color-green-25);
 }
 
 /** urgent tone */
 .button-tone-urgent .button {
-  background-color: var(--new-color-orange);
+  background-color: var(--color-orange);
 }
 
 .button-tone-urgent .active:hover,
 .button-tone-urgent .button:hover {
-  background-color: var(--new-color-green);
+  background-color: var(--color-green);
 }
 
 .button-tone-urgent .active,
 .button-tone-urgent .button:active {
-  background-color: var(--new-color-orange);
+  background-color: var(--color-orange);
 }
 
 /**
@@ -84,8 +84,8 @@
 .button-layout .disabled:active,
 .button-layout .disabled:hover {
   box-shadow: none;
-  background-color: var(--new-color-navy-98);
-  color: var(--new-color-gray-60);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray-60);
 }
 
 /** Icon container */

@@ -28,18 +28,18 @@
 }
 
 .toggle-bar rect {
-  fill: var(--new-color-gray-60);
+  fill: var(--color-gray-60);
 }
 
 .toggle-bar.active rect {
-  fill: var(--new-color-green-40);
+  fill: var(--color-green-40);
 }
 
 .toggle-bar.disabled rect {
-  fill: var(--new-color-gray);
+  fill: var(--color-gray);
 }
 
 .toggle-bar.active.disabled rect {
-  fill: var(--new-color-green-85);
+  fill: var(--color-green-85);
   opacity: 0.5;
 }

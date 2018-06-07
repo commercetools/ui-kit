@@ -1,35 +1,35 @@
 @import '../materials/colors.mod.css';
 
 .theme-black {
-  fill: var(--new-color-black);
+  fill: var(--color-black);
 }
 
 .theme-grey {
-  fill: var(--new-color-gray-60);
+  fill: var(--color-gray-60);
 }
 
 .theme-white {
-  fill: var(--new-color-white);
+  fill: var(--color-white);
 }
 
 .theme-blue {
-  fill: var(--new-color-blue);
+  fill: var(--color-blue);
 }
 
 .theme-green {
-  fill: var(--new-color-green-25);
+  fill: var(--color-green-25);
 }
 
 .theme-apple-green {
-  fill: var(--new-color-green);
+  fill: var(--color-green);
 }
 
 .theme-orange {
-  fill: var(--new-color-orange);
+  fill: var(--color-orange);
 }
 
 .theme-red {
-  fill: var(--new-color-red);
+  fill: var(--color-red);
 }
 
 svg.scale:not(:root) {

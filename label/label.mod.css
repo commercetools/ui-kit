@@ -1,37 +1,37 @@
 @import '../materials/colors.mod.css';
 
 .tone-critical {
-  background-color: var(--new-color-red-95);
-  border: 1px solid var(--new-color-red);
+  background-color: var(--color-red-95);
+  border: 1px solid var(--color-red);
   border-radius: 2px;
 }
 
 .tone-warning {
-  background-color: var(--new-color-orange-95);
-  border: 1px solid var(--new-color-orange);
+  background-color: var(--color-orange-95);
+  border: 1px solid var(--color-orange);
   border-radius: 2px;
 }
 
 .tone-positive {
-  background-color: var(--new-color-green-95);
-  border: 1px solid var(--new-color-green);
+  background-color: var(--color-green-95);
+  border: 1px solid var(--color-green);
   border-radius: 2px;
 }
 
 .tone-information {
-  background-color: var(--new-color-blue-95);
-  border: 1px solid var(--new-color-blue);
+  background-color: var(--color-blue-95);
+  border: 1px solid var(--color-blue);
   border-radius: 2px;
 }
 
 .tone-primary {
-  background-color: var(--new-color-green-95);
-  border: 1px solid var(--new-color-green);
+  background-color: var(--color-green-95);
+  border: 1px solid var(--color-green);
   border-radius: 2px;
 }
 
 .tone-secondary {
-  background-color: var(--new-color-gray-90);
-  border: 1px solid var(--new-color-gray-60);
+  background-color: var(--color-gray-90);
+  border: 1px solid var(--color-gray-60);
   border-radius: 2px;
 }

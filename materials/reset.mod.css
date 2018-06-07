@@ -8,7 +8,7 @@
 
 html,
 body {
-  color: var(--new-color-navy);
+  color: var(--color-navy);
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   margin: 0;
@@ -38,13 +38,13 @@ button {
 }
 
 a {
-  color: var(--new-color-green-25);
+  color: var(--color-green-25);
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease-in;
 }
 
 p {
-  color: var(--new-color-navy);
+  color: var(--color-navy);
   margin: 0;
 }

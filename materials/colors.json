@@ -53,37 +53,37 @@
       "value": "#f9f9f9"
     },
     {
-      "key": "--new-color-gray",
+      "key": "--color-gray",
       "name": "primaryGrey",
       "value": "#ccc"
     },
     {
-      "key": "--new-color-gray-60",
+      "key": "--color-gray-60",
       "name": "secondaryGrey",
       "value": "#848484"
     },
     {
-      "key": "--new-color-gray-95",
+      "key": "--color-gray-95",
       "name": "coolGrey",
       "value": "#f6f6f6"
     },
     {
-      "key": "--new-color-gray-90",
+      "key": "--color-gray-90",
       "name": "greyGallery",
       "value": "#eee"
     },
     {
-      "key": "--new-color-gray-90",
+      "key": "--color-gray-90",
       "name": "greyGallery",
       "value": "#eaeaea"
     },
     {
-      "key": "--new-color-gray-90",
+      "key": "--color-gray-90",
       "name": "greyAlto",
       "value": "#d8d8d8"
     },
     {
-      "key": "--new-color-gray-60",
+      "key": "--color-gray-60",
       "name": "greyNevada",
       "value": "#65747d"
     },
@@ -97,7 +97,7 @@
     {
       "key": "--color-fadedOrange20",
       "name": "fadedOrange20",
-      "value": "color(var(--new-color-orange) alpha(20%))"
+      "value": "color(var(--color-orange) alpha(20%))"
     },
     {
       "key": "--color-fadedBlack25",
@@ -112,113 +112,113 @@
   ],
   [
     {
-      "key": "--new-color-green",
-      "name": "--new-color-green",
+      "key": "--color-green",
+      "name": "--color-green",
       "value": "#00b39e"
     },
     {
-      "key": "--new-color-green-25",
-      "name": "--new-color-green-25",
-      "value": "color(var(--new-color-green) lightness(25%))"
+      "key": "--color-green-25",
+      "name": "--color-green-25",
+      "value": "color(var(--color-green) lightness(25%))"
     },
     {
-      "key": "--new-color-green-40",
-      "name": "--new-color-green-40",
-      "value": "color(var(--new-color-green) lightness(40%))"
+      "key": "--color-green-40",
+      "name": "--color-green-40",
+      "value": "color(var(--color-green) lightness(40%))"
     },
     {
-      "key": "--new-color-green-85",
-      "name": "--new-color-green-85",
-      "value": "color(var(--new-color-green) lightness(85%))"
+      "key": "--color-green-85",
+      "name": "--color-green-85",
+      "value": "color(var(--color-green) lightness(85%))"
     },
     {
-      "key": "--new-color-green-95",
-      "name": "--new-color-green-95",
-      "value": "color(var(--new-color-green) lightness(95%))"
+      "key": "--color-green-95",
+      "name": "--color-green-95",
+      "value": "color(var(--color-green) lightness(95%))"
     },
     {
-      "key": "--new-color-white",
-      "name": "--new-color-white",
+      "key": "--color-white",
+      "name": "--color-white",
       "value": "#fff"
     },
     {
-      "key": "--new-color-navy",
-      "name": "--new-color-navy",
+      "key": "--color-navy",
+      "name": "--color-navy",
       "value": "#213c45"
     },
     {
-      "key": "--new-color-navy-30",
-      "name": "--new-color-navy-30",
-      "value": "color(var(--new-color-navy) lightness(30%))"
+      "key": "--color-navy-30",
+      "name": "--color-navy-30",
+      "value": "color(var(--color-navy) lightness(30%))"
     },
     {
-      "key": "--new-color-navy-40",
-      "name": "--new-color-navy-40",
-      "value": "color(var(--new-color-navy) lightness(40%))"
+      "key": "--color-navy-40",
+      "name": "--color-navy-40",
+      "value": "color(var(--color-navy) lightness(40%))"
     },
     {
-      "key": "--new-color-navy-98",
-      "name": "--new-color-navy-98",
-      "value": "color(var(--new-color-navy) lightness(98%))"
+      "key": "--color-navy-98",
+      "name": "--color-navy-98",
+      "value": "color(var(--color-navy) lightness(98%))"
     },
     {
-      "key": "--new-color-blue",
-      "name": "--new-color-blue",
+      "key": "--color-blue",
+      "name": "--color-blue",
       "value": "#078cdf"
     },
     {
-      "key": "--new-color-blue-95",
-      "name": "--new-color-blue-95",
-      "value": "color(var(--new-color-blue) lightness(95%))"
+      "key": "--color-blue-95",
+      "name": "--color-blue-95",
+      "value": "color(var(--color-blue) lightness(95%))"
     },
     {
-      "key": "--new-color-gray",
-      "name": "--new-color-gray",
+      "key": "--color-gray",
+      "name": "--color-gray",
       "value": "#ccc"
     },
     {
-      "key": "--new-color-gray-60",
-      "name": "--new-color-gray-60",
-      "value": "color(var(--new-color-gray) lightness(60%))"
+      "key": "--color-gray-60",
+      "name": "--color-gray-60",
+      "value": "color(var(--color-gray) lightness(60%))"
     },
     {
-      "key": "--new-color-gray-90",
-      "name": "--new-color-gray-90",
-      "value": "color(var(--new-color-gray) lightness(90%))"
+      "key": "--color-gray-90",
+      "name": "--color-gray-90",
+      "value": "color(var(--color-gray) lightness(90%))"
     },
     {
-      "key": "--new-color-gray-95",
-      "name": "--new-color-gray-95",
-      "value": "color(var(--new-color-gray) lightness(95%))"
+      "key": "--color-gray-95",
+      "name": "--color-gray-95",
+      "value": "color(var(--color-gray) lightness(95%))"
     },
     {
-      "key": "--new-color-orange",
-      "name": "--new-color-orange",
+      "key": "--color-orange",
+      "name": "--color-orange",
       "value": "#f16d0e"
     },
     {
-      "key": "--new-color-orange-95",
-      "name": "--new-color-orange-95",
-      "value": "color(var(--new-color-orange) lightness(95%))"
+      "key": "--color-orange-95",
+      "name": "--color-orange-95",
+      "value": "color(var(--color-orange) lightness(95%))"
     },
     {
-      "key": "--new-color-red",
-      "name": "--new-color-red",
+      "key": "--color-red",
+      "name": "--color-red",
       "value": "#e60050"
     },
     {
-      "key": "--new-color-red-95",
-      "name": "--new-color-red-95",
-      "value": "color(var(--new-color-red) lightness(95%))"
+      "key": "--color-red-95",
+      "name": "--color-red-95",
+      "value": "color(var(--color-red) lightness(95%))"
     },
     {
-      "key": "--new-color-purple",
-      "name": "--new-color-purple",
+      "key": "--color-purple",
+      "name": "--color-purple",
       "value": "#b866ff"
     },
     {
-      "key": "--new-color-black",
-      "name": "--new-color-black",
+      "key": "--color-black",
+      "name": "--color-black",
       "value": "#1a1a1a"
     }
   ]

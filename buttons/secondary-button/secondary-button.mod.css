@@ -16,9 +16,9 @@
 
 .button-appearance {
   display: inline-block;
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
   box-shadow: var(--shadow-7-first), var(--shadow-7-second);
-  color: var(--new-color-black);
+  color: var(--color-black);
   font-size: 1rem;
   transition: background-color var(--transition-linear-80ms),
     box-shadow var(--transition-easeinout-150ms);
@@ -66,22 +66,22 @@
 .active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
 }
 
 .active:hover {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--new-color-gray-95);
+  background-color: var(--color-gray-95);
 }
 
 /* Disabled button */
 
 .active.disabled,
 .disabled {
-  background-color: var(--new-color-navy-98);
-  color: var(--new-color-gray-60);
-  border-color: var(--new-color-gray);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray-60);
+  border-color: var(--color-gray);
   pointer-events: none;
 }
 
@@ -94,7 +94,7 @@
 .default:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
 }
 
 /*
@@ -102,7 +102,7 @@
 */
 
 .theme-blue:hover {
-  color: var(--new-color-blue);
+  color: var(--color-blue);
 }
 
 /* Toggled button */
@@ -110,11 +110,11 @@
 .theme-blue.active,
 .theme-blue.active.disabled,
 .theme-blue:active {
-  color: var(--new-color-blue);
+  color: var(--color-blue);
 }
 
 .theme-blue.disabled {
-  color: var(--new-color-gray-60);
+  color: var(--color-gray-60);
 }
 
 /*
@@ -122,7 +122,7 @@
 */
 
 .theme-apple-green:hover {
-  color: var(--new-color-green);
+  color: var(--color-green);
 }
 
 /* Toggled button */
@@ -130,9 +130,9 @@
 .theme-apple-green.active,
 .theme-apple-green.active.disabled,
 .theme-apple-green:active {
-  color: var(--new-color-green);
+  color: var(--color-green);
 }
 
 .theme-apple-green.disabled {
-  color: var(--new-color-gray-60);
+  color: var(--color-gray-60);
 }

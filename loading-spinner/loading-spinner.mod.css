@@ -34,7 +34,7 @@
 
 .circle,
 .pointer {
-  fill: var(--new-color-navy);
+  fill: var(--color-navy);
 }
 
 /* Animation */

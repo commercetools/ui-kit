@@ -16,15 +16,15 @@
 }
 
 .wrapperTypeNormal {
-  background: var(--new-color-gray-95);
+  background: var(--color-gray-95);
 }
 
 .wrapperTypeWarning {
-  background: var(--new-color-orange-95);
+  background: var(--color-orange-95);
 }
 
 .disabledWrapper {
-  background: var(--new-color-gray-95);
+  background: var(--color-gray-95);
 }
 
 .contentWrapper {
@@ -49,11 +49,11 @@
 }
 
 .contentWrapperNormal {
-  border-color: var(--new-color-gray-60);
+  border-color: var(--color-gray-60);
 }
 
 .contentWrapperWarning {
-  border-color: var(--new-color-orange);
+  border-color: var(--color-orange);
 }
 
 .clickableContentWrapper {
@@ -65,24 +65,24 @@
 }
 
 .clickableContentWrapperNormal:hover {
-  border-color: var(--new-color-green);
+  border-color: var(--color-green);
 }
 
 .clickableContentWrapperWarning:hover {
-  border-color: var(--new-color-orange);
-  border-right: 1px solid var(--new-color-gray-60);
+  border-color: var(--color-orange);
+  border-right: 1px solid var(--color-gray-60);
 }
 
 .clickableRemovableContentWrapperNormal:hover {
-  border-right: 1px solid var(--new-color-gray-60);
+  border-right: 1px solid var(--color-gray-60);
 }
 
 .clickableRemovableContentWrapperWarning {
-  border-right: 1px solid var(--new-color-orange);
+  border-right: 1px solid var(--color-orange);
 }
 
 .disabledContent {
-  color: var(--new-color-black);
+  color: var(--color-black);
 }
 
 .removableContent {
@@ -94,23 +94,23 @@
   align-items: center;
   padding: 0 var(--spacing-4);
   background: inherit;
-  border-color: var(--new-color-gray-60);
+  border-color: var(--color-gray-60);
   border-style: solid;
   border-width: 1px 1px 1px 0;
   border-radius: 0 var(--border-radius-2) var(--border-radius-2) 0;
 }
 
 .removeWrapper:hover {
-  background: var(--new-color-green);
+  background: var(--color-green);
   box-shadow: var(--shadow-1-first), var(--shadow-1-second);
 }
 
 .removeWrapperTypeWarning {
-  border-color: var(--new-color-orange);
+  border-color: var(--color-orange);
 }
 
 .removeWrapperTypeWarning:hover {
-  background: var(--new-color-orange);
+  background: var(--color-orange);
 }
 
 .disabledRemove:hover {
@@ -119,9 +119,9 @@
 }
 
 .removeWrapper svg {
-  fill: var(--new-color-black);
+  fill: var(--color-black);
 }
 
 .disabledRemove svg {
-  fill: var(--new-color-black);
+  fill: var(--color-black);
 }

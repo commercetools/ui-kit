@@ -18,9 +18,9 @@
   display: flex;
   align-items: center;
   border-radius: var(--border-radius-6);
-  color: var(--new-color-green-25);
+  color: var(--color-green-25);
   padding: var(--spacing-8);
-  border: 1px solid var(--new-color-green-25);
+  border: 1px solid var(--color-green-25);
 }
 
 .button-layout > * + * {
@@ -36,30 +36,30 @@
 .button:hover .active,
 .button:focus .default,
 .button:focus .active {
-  border-color: var(--new-color-green);
-  color: var(--new-color-green);
+  border-color: var(--color-green);
+  color: var(--color-green);
 }
 
 .button:active .default,
 .button:active .active,
 .active {
-  border-color: var(--new-color-green-25);
-  color: var(--new-color-green-25);
+  border-color: var(--color-green-25);
+  color: var(--color-green-25);
   box-shadow: inset var(--shadow-1-first), inset var(--shadow-1-second);
 }
 
 .disabled {
   composes: button-layout;
-  border-color: var(--new-color-gray);
-  color: var(--new-color-gray);
+  border-color: var(--color-gray);
+  color: var(--color-gray);
 }
 
 .button:hover .disabled {
-  border-color: var(--new-color-gray);
-  color: var(--new-color-gray);
+  border-color: var(--color-gray);
+  color: var(--color-gray);
 }
 
 .button:active .disabled {
-  border-color: var(--new-color-gray);
-  color: var(--new-color-gray);
+  border-color: var(--color-gray);
+  color: var(--color-gray);
 }

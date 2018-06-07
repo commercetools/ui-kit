@@ -16,9 +16,9 @@
 
 .button-appearance {
   display: inline-block;
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
   box-shadow: var(--shadow-7-first), var(--shadow-7-second);
-  color: var(--new-color-black);
+  color: var(--color-black);
   transition: background-color var(--transition-linear-80ms),
     box-shadow 150ms ease-in-out;
 }
@@ -85,8 +85,8 @@
 /* Disabled button */
 
 .disabled {
-  background-color: var(--new-color-navy-98);
-  color: var(--new-color-gray-60);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray-60);
   box-shadow: none;
 }
 
@@ -99,7 +99,7 @@
 .default:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
 }
 
 /* Toggled button */
@@ -107,13 +107,13 @@
 .active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--new-color-white);
+  background-color: var(--color-white);
 }
 
 .active:hover {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--new-color-gray-95);
+  background-color: var(--color-gray-95);
 }
 
 /*
@@ -123,7 +123,7 @@
 /* Disabled-Active button */
 
 .disabled.theme-blue:hover {
-  background-color: var(--new-color-navy-98);
+  background-color: var(--color-navy-98);
 }
 
 /* When the button is active (isToggled: true) and somehow is disabled
@@ -131,8 +131,8 @@
   receive any actions */
 
 .active.disabled.theme-blue {
-  background-color: var(--new-color-blue-95);
-  color: var(--new-color-white);
+  background-color: var(--color-blue-95);
+  color: var(--color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
 }
@@ -141,12 +141,12 @@
 
 .theme-blue.active,
 .theme-blue:hover {
-  background-color: var(--new-color-blue);
-  color: var(--new-color-white);
+  background-color: var(--color-blue);
+  color: var(--color-white);
 }
 
 .active.theme-blue:hover {
-  background-color: var(--new-color-blue-95);
+  background-color: var(--color-blue-95);
 }
 
 /*
@@ -160,12 +160,12 @@
   receive any actions */
 
 .disabled.theme-green:hover {
-  background-color: var(--new-color-navy-98);
+  background-color: var(--color-navy-98);
 }
 
 .active.disabled.theme-green {
-  background-color: var(--new-color-green-85);
-  color: var(--new-color-white);
+  background-color: var(--color-green-85);
+  color: var(--color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
 }
@@ -174,10 +174,10 @@
 
 .theme-green.active,
 .theme-green:hover {
-  background-color: var(--new-color-green);
-  color: var(--new-color-white);
+  background-color: var(--color-green);
+  color: var(--color-white);
 }
 
 .active.theme-green:hover {
-  background-color: var(--new-color-green-85);
+  background-color: var(--color-green-85);
 }

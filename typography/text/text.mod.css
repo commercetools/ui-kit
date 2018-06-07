@@ -11,7 +11,7 @@
   --font-detail: 12px;
 
   /* Colors */
-  --font-color: var(--new-color-black);
+  --font-color: var(--color-black);
 }
 
 h1 {
@@ -76,19 +76,19 @@ small {
 }
 
 .primary {
-  color: var(--new-color-green);
+  color: var(--color-green);
 }
 
 .secondary {
-  color: var(--new-color-gray-60);
+  color: var(--color-gray-60);
 }
 
 .positive {
-  color: var(--new-color-green);
+  color: var(--color-green);
 }
 
 .negative {
-  color: var(--new-color-red);
+  color: var(--color-red);
 }
 
 .inline {
