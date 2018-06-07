@@ -16,7 +16,7 @@ import Contraints from '../../materials/constraints';
 import messages from './messages';
 import styles from './money-input.mod.css';
 
-const MAXIMUM_PRECISION = 20;
+export const MAXIMUM_PRECISION = 20;
 
 const getCurrencyDropdownSelectStyles = props => {
   if (props.isDisabled) return styles['currency-disabled'];
@@ -266,7 +266,8 @@ export class MoneyInput extends React.PureComponent {
 
   handleAmountChange = event => {
     const nextValue = event.target.rawValue;
-    if (this.props.value.centAmount === nextValue) return;
+    if (this.props.value.centAmount === nextValue || !isNumberish(nextValue))
+      return;
     const centAmountValue =
       nextValue.length > 0
         ? Math.trunc(Math.round(nextValue * 10 ** this.props.fractionDigits))

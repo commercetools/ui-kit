@@ -17,7 +17,7 @@ import NumberInputReadme from './number-input/README.md';
 import MoneyInputReadme from './money-input/README.md';
 import TextInput from './text-input';
 import NumberInput from './number-input';
-import MoneyInput from './money-input';
+import MoneyInput, { MAXIMUM_PRECISION } from './money-input';
 
 storiesOf('Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -75,7 +75,7 @@ storiesOf('Forms/Inputs', module)
   .add('MoneyInput', () => {
     const fractionDigits = number('fractionDigits', 2, {
       min: 0,
-      max: 20,
+      max: MAXIMUM_PRECISION,
       step: 1,
     });
 
