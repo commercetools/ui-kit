@@ -5,7 +5,6 @@ colors. */
 
 :root {
   /* Grays */
-  --color-black: #333;
   --color-grey: #aeaeae;
   --color-greyDove: #666;
   --color-greyDusty: #979797;
@@ -20,10 +19,6 @@ colors. */
   --color-greyAlto: #d8d8d8;
   --color-greyNevada: #65747d;
   --color-greySolid: #afafaf;
-
-  /* Faded version of main colors */
-  --color-fadedOrange20: color(var(--new-color-orange) alpha(20%));
-  --color-fadedBlack25: color(var(--color-black) alpha(25%));
 
   /* new colors */
 

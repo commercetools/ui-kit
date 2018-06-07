@@ -1,7 +1,7 @@
 @import '../materials/colors.mod.css';
 
 .theme-black {
-  fill: var(--color-black);
+  fill: var(--new-color-black);
 }
 
 .theme-grey {

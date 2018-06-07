@@ -20,7 +20,7 @@
 }
 
 .wrapperTypeWarning {
-  background: var(--color-fadedOrange20);
+  background: var(--new-color-orange-95);
 }
 
 .disabledWrapper {
@@ -119,7 +119,7 @@
 }
 
 .removeWrapper svg {
-  fill: var(--color-black);
+  fill: var(--new-color-black);
 }
 
 .disabledRemove svg {

@@ -18,7 +18,7 @@
   display: inline-block;
   background-color: var(--new-color-white);
   box-shadow: var(--shadow-7-first), var(--shadow-7-second);
-  color: var(--color-black);
+  color: var(--new-color-black);
   transition: background-color var(--transition-linear-80ms),
     box-shadow 150ms ease-in-out;
 }
