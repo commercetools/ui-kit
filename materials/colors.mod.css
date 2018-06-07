@@ -4,18 +4,6 @@ selector. Color groups are indicated by a comment preceeding the group of
 colors. */
 
 :root {
-  /* Reds */
-  --new-color-orange: #f27923;
-
-  /* Greens */
-  --color-green: #4e8410;
-  --color-darkGreen: #215457;
-  --color-primaryGreen: #20ad92;
-  --color-greenLight: #87d8c8;
-  --color-buttonPrimary: #00b6a1;
-  --color-buttonHover: #03c8b2;
-  --color-greenDowny: #52cebf;
-
   /* Whites */
   --color-white: #fff;
   --color-whiteAlabaster: #fafafa;
@@ -42,20 +30,17 @@ colors. */
 
   /* Faded version of main colors */
   --color-fadedOrange20: color(var(--new-color-orange) alpha(20%));
-  --color-fadedBlue20: color(var(--color-blue) alpha(20%));
   --color-fadedBlack25: color(var(--color-black) alpha(25%));
-  --color-fadedBlueNavy20: color(var(--color-blueNavy) alpha(20%));
   --color-fadedWhite20: color(var(--color-white) alpha(20%));
   --color-fadedWhiteCatskill90: color(var(--color-whiteCatskill) alpha(90%));
-  --color-fadedPrimaryGreen20: color(var(--color-primaryGreen) alpha(20%));
-  --color-fadedGreen30: color(var(--color-green) alpha(30%));
 
   /* new colors */
 
   --new-color-green: #00b39e;
-  --new-color-green-85: color(var(--new-color-green) lightness(85%));
-  --new-color-green-40: color(var(--new-color-green) lightness(40%));
   --new-color-green-25: color(var(--new-color-green) lightness(25%));
+  --new-color-green-40: color(var(--new-color-green) lightness(40%));
+  --new-color-green-85: color(var(--new-color-green) lightness(85%));
+  --new-color-green-95: color(var(--new-color-green) lightness(95%));
   --new-color-white: #fff;
   --new-color-navy: #213c45;
   --new-color-navy-30: color(var(--new-color-navy) lightness(30%));

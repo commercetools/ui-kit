@@ -7,14 +7,14 @@
 }
 
 .tone-warning {
-  background-color: color(var(--new-color-orange) alpha(15%));
+  background-color: var(--new-color-orange-95);
   border: 1px solid var(--new-color-orange);
   border-radius: 2px;
 }
 
 .tone-positive {
-  background-color: color(var(--color-green) alpha(15%));
-  border: 1px solid var(--color-green);
+  background-color: var(--new-color-green-95);
+  border: 1px solid var(--new-color-green);
   border-radius: 2px;
 }
 
@@ -25,8 +25,8 @@
 }
 
 .tone-primary {
-  background-color: color(var(--color-primaryGreen) alpha(15%));
-  border: 1px solid var(--color-primaryGreen);
+  background-color: var(--new-color-green-95);
+  border: 1px solid var(--new-color-green);
   border-radius: 2px;
 }
 

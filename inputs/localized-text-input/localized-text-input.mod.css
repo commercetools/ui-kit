@@ -101,6 +101,6 @@
 
 .pristine:active,
 .pristine:focus {
-  border-color: var(--color-greenDowny);
+  border-color: var(--new-color-green-25);
   color: var(--color-black);
 }

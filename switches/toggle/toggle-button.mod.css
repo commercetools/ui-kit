@@ -41,7 +41,7 @@
 }
 
 .toggle-button.active :global(.bt-fill) {
-  fill: var(--color-buttonPrimary);
+  fill: var(--new-color-green-25);
 }
 
 .toggle-button.disabled {
@@ -57,7 +57,7 @@
 }
 
 .toggle-button.disabled.active :global(.bt-fill) {
-  fill: var(--color-greenLight);
+  fill: var(--new-color-green-40);
 }
 
 .toggle-container:hover .toggle-button {

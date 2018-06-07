@@ -121,7 +121,7 @@
 */
 
 .theme-apple-green:hover {
-  color: var(--color-green);
+  color: var(--new-color-green);
 }
 
 /* Toggled button */
@@ -129,7 +129,7 @@
 .theme-apple-green.active,
 .theme-apple-green.active.disabled,
 .theme-apple-green:active {
-  color: var(--color-green);
+  color: var(--new-color-green);
 }
 
 .theme-apple-green.disabled {

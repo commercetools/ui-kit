@@ -4,8 +4,6 @@ import classnames from 'classnames';
 import { AngleDownIcon, AngleRightIcon } from '../../icons';
 import styles from './collapsible-panel.mod.css';
 
-const getArrowTheme = tone => (tone === 'urgent' ? 'white' : 'green');
-
 const HeaderIcon = props => (
   <div
     className={classnames(
@@ -14,9 +12,9 @@ const HeaderIcon = props => (
     )}
   >
     {props.isClosed ? (
-      <AngleRightIcon theme={getArrowTheme(props.tone)} size="small" />
+      <AngleRightIcon theme="white" size="small" />
     ) : (
-      <AngleDownIcon theme={getArrowTheme(props.tone)} size="small" />
+      <AngleDownIcon theme="white" size="small" />
     )}
   </div>
 );

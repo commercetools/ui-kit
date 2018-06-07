@@ -164,7 +164,7 @@
 }
 
 .active.disabled.theme-green {
-  background-color: var(--color-fadedGreen30);
+  background-color: var(--new-color-green-85);
   color: var(--color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
@@ -174,10 +174,10 @@
 
 .theme-green.active,
 .theme-green:hover {
-  background-color: var(--color-green);
+  background-color: var(--new-color-green);
   color: var(--color-white);
 }
 
 .active.theme-green:hover {
-  background-color: var(--color-fadedGreen30);
+  background-color: var(--new-color-green-85);
 }

@@ -65,7 +65,7 @@
 }
 
 .clickableContentWrapperNormal:hover {
-  border-color: var(--color-buttonHover);
+  border-color: var(--new-color-green);
 }
 
 .clickableContentWrapperWarning:hover {
@@ -101,7 +101,7 @@
 }
 
 .removeWrapper:hover {
-  background: var(--color-greenLight);
+  background: var(--new-color-green);
   box-shadow: var(--shadow-1-first), var(--shadow-1-second);
 }
 

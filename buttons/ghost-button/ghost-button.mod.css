@@ -18,9 +18,9 @@
   display: flex;
   align-items: center;
   border-radius: var(--border-radius-6);
-  color: var(--color-buttonPrimary);
+  color: var(--new-color-green-25);
   padding: var(--spacing-8);
-  border: 1px solid var(--color-buttonPrimary);
+  border: 1px solid var(--new-color-green-25);
 }
 
 .button-layout > * + * {
@@ -36,15 +36,15 @@
 .button:hover .active,
 .button:focus .default,
 .button:focus .active {
-  border-color: var(--color-buttonHover);
-  color: var(--color-buttonHover);
+  border-color: var(--new-color-green);
+  color: var(--new-color-green);
 }
 
 .button:active .default,
 .button:active .active,
 .active {
-  border-color: var(--color-buttonPrimary);
-  color: var(--color-buttonPrimary);
+  border-color: var(--new-color-green-25);
+  color: var(--new-color-green-25);
   box-shadow: inset var(--shadow-1-first), inset var(--shadow-1-second);
 }
 

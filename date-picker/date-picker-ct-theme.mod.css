@@ -18,17 +18,17 @@
 :global(.flatpickr-day.selected.nextMonthDay),
 :global(.flatpickr-day.startRange.nextMonthDay),
 :global(.flatpickr-day.endRange.nextMonthDay) {
-  background: var(--color-primaryGreen);
-  border-color: var(--color-primaryGreen);
+  background: var(--new-color-green);
+  border-color: var(--new-color-green);
 }
 
 :global(.flatpickr-prev-month:hover),
 :global(.flatpickr-next-month:hover) {
-  color: var(--color-primaryGreen);
+  color: var(--new-color-green);
 }
 :global(.flatpickr-prev-month:hover svg),
 :global(.flatpickr-next-month:hover svg) {
-  fill: var(--color-primaryGreen);
+  fill: var(--new-color-green);
 }
 
 :global(.flatpickr-day.today) {

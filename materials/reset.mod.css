@@ -38,7 +38,7 @@ button {
 }
 
 a {
-  color: var(--color-primaryGreen);
+  color: var(--new-color-green);
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease-in;

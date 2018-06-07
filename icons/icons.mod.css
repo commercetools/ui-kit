@@ -17,11 +17,11 @@
 }
 
 .theme-green {
-  fill: var(--color-primaryGreen);
+  fill: var(--new-color-green-25);
 }
 
 .theme-apple-green {
-  fill: var(--color-green);
+  fill: var(--new-color-green);
 }
 
 .theme-orange {
