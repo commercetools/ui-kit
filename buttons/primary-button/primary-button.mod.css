@@ -64,7 +64,7 @@
 
 /** urgent tone */
 .button-tone-urgent .button {
-  background-color: var(--color-orange);
+  background-color: var(--new-color-orange);
 }
 
 .button-tone-urgent .active:hover,
@@ -74,7 +74,7 @@
 
 .button-tone-urgent .active,
 .button-tone-urgent .button:active {
-  background-color: var(--color-orange);
+  background-color: var(--new-color-orange);
 }
 
 /**

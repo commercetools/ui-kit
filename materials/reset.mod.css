@@ -8,7 +8,7 @@
 
 html,
 body {
-  color: var(--color-blueNavy);
+  color: var(--new-color-navy);
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   margin: 0;
@@ -45,6 +45,6 @@ a {
 }
 
 p {
-  color: var(--color-blueNavy);
+  color: var(--new-color-navy);
   margin: 0;
 }

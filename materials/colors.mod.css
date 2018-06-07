@@ -4,15 +4,8 @@ selector. Color groups are indicated by a comment preceeding the group of
 colors. */
 
 :root {
-  /* Blues */
-  --color-blue: #0679d1;
-  --color-dodgerBlue: #0d9df8;
-  --color-blueNavy: #213e48;
-  --color-purple: #bd72ff;
-
   /* Reds */
-  --color-red: #e60050;
-  --color-orange: #f27923;
+  --new-color-orange: #f27923;
 
   /* Greens */
   --color-green: #4e8410;
@@ -48,7 +41,7 @@ colors. */
   --color-greySolid: #afafaf;
 
   /* Faded version of main colors */
-  --color-fadedOrange20: color(var(--color-orange) alpha(20%));
+  --color-fadedOrange20: color(var(--new-color-orange) alpha(20%));
   --color-fadedBlue20: color(var(--color-blue) alpha(20%));
   --color-fadedBlack25: color(var(--color-black) alpha(25%));
   --color-fadedBlueNavy20: color(var(--color-blueNavy) alpha(20%));
@@ -56,4 +49,28 @@ colors. */
   --color-fadedWhiteCatskill90: color(var(--color-whiteCatskill) alpha(90%));
   --color-fadedPrimaryGreen20: color(var(--color-primaryGreen) alpha(20%));
   --color-fadedGreen30: color(var(--color-green) alpha(30%));
+
+  /* new colors */
+
+  --new-color-green: #00b39e;
+  --new-color-green-85: color(var(--new-color-green) lightness(85%));
+  --new-color-green-40: color(var(--new-color-green) lightness(40%));
+  --new-color-green-25: color(var(--new-color-green) lightness(25%));
+  --new-color-white: #fff;
+  --new-color-navy: #213c45;
+  --new-color-navy-30: color(var(--new-color-navy) lightness(30%));
+  --new-color-navy-40: color(var(--new-color-navy) lightness(40%));
+  --new-color-navy-98: color(var(--new-color-navy) lightness(98%));
+  --new-color-blue: #078cdf;
+  --new-color-blue-95: color(var(--new-color-blue) lightness(95%));
+  --new-color-gray: #ccc;
+  --new-color-gray-60: color(var(--new-color-gray) lightness(60%));
+  --new-color-gray-90: color(var(--new-color-gray) lightness(90%));
+  --new-color-gray-95: color(var(--new-color-gray) lightness(95%));
+  --new-color-orange: #f16d0e;
+  --new-color-orange-95: color(var(--new-color-orange) lightness(95%));
+  --new-color-red: #e60050;
+  --new-color-red-95: color(var(--new-color-red) lightness(95%));
+  --new-color-purple: #b866ff;
+  --new-color-black: #1a1a1a;
 }

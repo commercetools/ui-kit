@@ -88,7 +88,7 @@ small {
 }
 
 .negative {
-  color: var(--color-red);
+  color: var(--new-color-red);
 }
 
 .inline {

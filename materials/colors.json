@@ -6,6 +6,11 @@
       "value": "#0679d1"
     },
     {
+      "key": "--color-dodgerBlue",
+      "name": "dodgerBlue",
+      "value": "#0d9df8"
+    },
+    {
       "key": "--color-blueNavy",
       "name": "blueNavy",
       "value": "#213e48"
@@ -209,6 +214,18 @@
       "key": "--color-fadedGreen30",
       "name": "fadedGreen30",
       "value": "color(var(--color-green) alpha(30%))"
+    }
+  ],
+  [
+    {
+      "key": "--color-green-new",
+      "name": "green-new",
+      "value": "#00b39e"
+    },
+    {
+      "key": "--color-green-new-40",
+      "name": "green-new-40",
+      "value": "color(var(--color-green-new) lightness(40%))"
     }
   ]
 ]

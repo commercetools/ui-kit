@@ -101,7 +101,7 @@
 */
 
 .theme-blue:hover {
-  color: var(--color-blue);
+  color: var(--new-color-blue);
 }
 
 /* Toggled button */
@@ -109,7 +109,7 @@
 .theme-blue.active,
 .theme-blue.active.disabled,
 .theme-blue:active {
-  color: var(--color-blue);
+  color: var(--new-color-blue);
 }
 
 .theme-blue.disabled {

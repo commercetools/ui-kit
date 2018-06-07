@@ -13,7 +13,7 @@
 }
 
 .theme-blue {
-  fill: var(--color-blue);
+  fill: var(--new-color-blue);
 }
 
 .theme-green {
@@ -25,11 +25,11 @@
 }
 
 .theme-orange {
-  fill: var(--color-orange);
+  fill: var(--new-color-orange);
 }
 
 .theme-red {
-  fill: var(--color-red);
+  fill: var(--new-color-red);
 }
 
 svg.scale:not(:root) {

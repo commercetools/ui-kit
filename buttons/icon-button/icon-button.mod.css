@@ -131,7 +131,7 @@
   receive any actions */
 
 .active.disabled.theme-blue {
-  background-color: color(var(--color-blue) lightness(74%));
+  background-color: var(--new-color-blue-95);
   color: var(--color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
@@ -141,12 +141,12 @@
 
 .theme-blue.active,
 .theme-blue:hover {
-  background-color: var(--color-blue);
+  background-color: var(--new-color-blue);
   color: var(--color-white);
 }
 
 .active.theme-blue:hover {
-  background-color: color(var(--color-blue) lightness(74%));
+  background-color: var(--new-color-blue-95);
 }
 
 /*

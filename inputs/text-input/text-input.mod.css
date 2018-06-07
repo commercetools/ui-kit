@@ -53,14 +53,14 @@
 
 .warning {
   composes: input;
-  color: var(--color-orange);
-  border-color: var(--color-orange);
+  color: var(--new-color-orange);
+  border-color: var(--new-color-orange);
 }
 
 .error {
   composes: input;
-  color: var(--color-red);
-  border-color: var(--color-red);
+  color: var(--new-color-red);
+  border-color: var(--new-color-red);
 }
 
 .disabled {

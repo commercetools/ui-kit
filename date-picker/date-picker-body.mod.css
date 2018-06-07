@@ -84,5 +84,5 @@
 }
 
 .invalid {
-  border-color: var(--color-orange) !important;
+  border-color: var(--new-color-orange) !important;
 }
