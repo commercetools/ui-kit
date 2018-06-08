@@ -75,6 +75,10 @@ small {
   font-weight: bold;
 }
 
+.information {
+  color: var(--color-dodgerBlue);
+}
+
 .primary {
   color: var(--color-green);
 }

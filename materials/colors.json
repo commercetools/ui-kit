@@ -1,6 +1,87 @@
 [
   [
     {
+      "key": "--color-blue",
+      "name": "blue",
+      "value": "#0679d1"
+    },
+    {
+      "key": "--color-dodgerBlue",
+      "name": "dodgerBlue",
+      "value": "#0d9df8"
+    },
+    {
+      "key": "--color-blueNavy",
+      "name": "blueNavy",
+      "value": "#213e48"
+    },
+    {
+      "key": "--color-purple",
+      "name": "purple",
+      "value": "#bd72ff"
+    }
+  ],
+  [
+    {
+      "key": "--color-red",
+      "name": "red",
+      "value": "#e60050"
+    },
+    {
+      "key": "--color-orange",
+      "name": "orange",
+      "value": "#f27923"
+    }
+  ],
+  [
+    {
+      "key": "--color-green",
+      "name": "green",
+      "value": "#4e8410"
+    },
+    {
+      "key": "--color-darkGreen",
+      "name": "darkGreen",
+      "value": "#215457"
+    },
+    {
+      "key": "--color-primaryGreen",
+      "name": "primaryGreen",
+      "value": "#20ad92"
+    },
+    {
+      "key": "--color-greenLight",
+      "name": "greenLight",
+      "value": "#87d8c8"
+    },
+    {
+      "key": "--color-buttonPrimary",
+      "name": "buttonPrimary",
+      "value": "#00b6a1"
+    },
+    {
+      "key": "--color-buttonHover",
+      "name": "buttonHover",
+      "value": "#03c8b2"
+    },
+    {
+      "key": "--color-greenDowny",
+      "name": "greenDowny",
+      "value": "#52cebf"
+    }
+  ],
+  [
+    {
+      "key": "--color-white",
+      "name": "white",
+      "value": "#fff"
+    },
+    {
+      "key": "--color-whiteAlabaster",
+      "name": "whiteAlabaster",
+      "value": "#fafafa"
+    },
+    {
       "key": "--color-whiteCatskill",
       "name": "whiteCatskill",
       "value": "#f9fafc"
