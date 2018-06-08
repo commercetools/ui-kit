@@ -15,6 +15,7 @@ colors. */
   --color-navy: #213c45;
   --color-navy-30: color(var(--color-navy) lightness(30%));
   --color-navy-40: color(var(--color-navy) lightness(40%));
+  --color-navy-95: color(var(--color-navy) lightness(95%));
   --color-navy-98: color(var(--color-navy) lightness(98%));
   --color-blue: #078cdf;
   --color-blue-95: color(var(--color-blue) lightness(95%));
