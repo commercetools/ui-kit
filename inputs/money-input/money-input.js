@@ -175,7 +175,9 @@ const significantDigitsRegex = new RegExp(
 const formatNumber = (separators, stringValue) => {
   if (!stringValue.includes(separators.decSeparator))
     return {
-      formattedNumber: stringValue,
+      centAmount: stringValue
+        .match(significantDigitsRegex)
+        .join(separators.thoSeparator),
       fractionDigits: 0,
     };
 
@@ -186,6 +188,13 @@ const formatNumber = (separators, stringValue) => {
   const formattedSignificantDigits = significantDigits
     .match(significantDigitsRegex)
     .join(separators.thoSeparator);
+
+  console.log({
+    separatorIndex,
+    significantDigits,
+    decimalDigits,
+    formattedSignificantDigits,
+  });
 
   return {
     centAmount: `${formattedSignificantDigits}${
@@ -258,11 +267,11 @@ export class MoneyInput extends React.PureComponent {
 
   handleBlur = () => {
     if (this.props.value.centAmount && this.props.value.centAmount.length > 0) {
+      const replaceCommas = RegExp(this.state.separators.thoSeparator, 'gi');
       const centAmountWithoutFormat = this.props.value.centAmount.replace(
-        this.state.separators.thoSeparator,
+        replaceCommas,
         ''
       );
-
       const centAmountAsNumber = parseFloat(centAmountWithoutFormat);
 
       const { centAmount, fractionDigits } = formatNumber(
