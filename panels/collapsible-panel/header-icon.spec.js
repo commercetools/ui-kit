@@ -51,8 +51,8 @@ describe('rendering', () => {
       it('should render with `header-icon-primary` className', () => {
         expect(wrapper).toHaveClassName('header-icon-primary');
       });
-      it('should render `<AngleDownIcon />` with `green` theme', () => {
-        expect(wrapper.find('AngleDownIcon')).toHaveProp('theme', 'green');
+      it('should render `<AngleDownIcon />` with `white` theme', () => {
+        expect(wrapper.find('AngleDownIcon')).toHaveProp('theme', 'white');
       });
     });
   });
