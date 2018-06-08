@@ -169,8 +169,6 @@ CurrencyDropdown.propTypes = {
 
 const parseNumber = (language, stringValue) => {
   const separators = getSeparatorsForLocale(language);
-  console.log(`for ${language}`);
-  console.log(separators);
   if (!stringValue) return undefined;
   const centAmount = parseFloat(
     stringValue.replace(separators.thoSeparator, '')
