@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isNil from 'lodash.isnil';
-import Cleave from 'cleave.js/react';
 import classnames from 'classnames';
 import Downshift from 'downshift';
 import { injectIntl, intlShape } from 'react-intl';
-import { defaultMemoize } from 'reselect';
 import {
   getSeparatorsForLocale,
   isNumberish,
@@ -15,8 +12,6 @@ import AccessibleButton from '../../buttons/accessible-button';
 import Contraints from '../../materials/constraints';
 import messages from './messages';
 import styles from './money-input.mod.css';
-
-export const MAXIMUM_PRECISION = 20;
 
 const getCurrencyDropdownSelectStyles = props => {
   if (props.isDisabled) return styles['currency-disabled'];
@@ -40,36 +35,6 @@ const getAmountStyles = props => {
   if (props.hasAmountWarning) return styles['amount-warning'];
 
   return styles['amount-default'];
-};
-
-// Since the Cleave component might call the onChange handler with a string
-// we need to cast the string back to a number.
-// This function ensures that the value is always either
-// - undefined
-// - JavaScript number
-export const parseNumberToMoney = (number, fractionDigits) => {
-  if (!isNumberish(number)) return undefined;
-  return parseFloat(number * 0.1 ** fractionDigits).toFixed(fractionDigits);
-};
-
-const getCleaveOptions = language => {
-  const separators = getSeparatorsForLocale(language);
-  return {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand',
-    numeralDecimalMark: separators.decSeparator,
-    delimiter: separators.thoSeparator,
-    // As this value can't be set dynamically, setting the maximum value
-    // supported by the `fractionDigits` prop on `HighPrecisionMoney` allows
-    // the value to be shown with any precision set from 0 to 20
-    numeralDecimalScale: MAXIMUM_PRECISION,
-    // This option is provided to help Cleave slice the numerical values
-    // according to a certain "scale". The default value is `10` which
-    // effectively affects all numerical values
-    // in MC where the value exceeds the length of `10`
-    // We provide `0` to disable this feature.
-    numeralIntegerScale: 0,
-  };
 };
 
 export const Currency = props => (
@@ -202,6 +167,19 @@ CurrencyDropdown.propTypes = {
   setButtonReference: PropTypes.func,
 };
 
+const parseNumber = (language, stringValue) => {
+  const separators = getSeparatorsForLocale(language);
+  console.log(`for ${language}`);
+  console.log(separators);
+  if (!stringValue) return undefined;
+  const centAmount = parseFloat(
+    stringValue.replace(separators.thoSeparator, '')
+  );
+  return centAmount;
+};
+
+const formatNumber = (stringValue, intl) => intl.formatNumber(stringValue);
+
 export class MoneyInput extends React.PureComponent {
   static displayName = 'MoneyInput';
 
@@ -209,10 +187,9 @@ export class MoneyInput extends React.PureComponent {
     value: PropTypes.shape({
       currencyCode: PropTypes.string.isRequired,
       centAmount: PropTypes.number,
+      centAmountAsString: PropTypes.string,
     }).isRequired,
 
-    /* to fix centAmount depending on Money type fractionDigits prop */
-    fractionDigits: PropTypes.number,
     language: PropTypes.string.isRequired,
     currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
     placeholder: PropTypes.string,
@@ -226,10 +203,12 @@ export class MoneyInput extends React.PureComponent {
     hasAmountWarning: PropTypes.bool,
 
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+
+    // Intl
+    intl: intlShape,
   };
 
   static defaultProps = {
-    fractionDigits: 2,
     isDisabled: false,
     currencies: [],
     horizontalConstraint: 'scale',
@@ -240,55 +219,43 @@ export class MoneyInput extends React.PureComponent {
     dropdownButtonReference: null,
   };
 
-  handleInit = cleaveComponentReference => {
-    this.setState({ cleaveComponentReference });
-    const initialMoneyValue = parseNumberToMoney(
-      this.props.value.centAmount,
-      this.props.fractionDigits
-    );
-    if (!isNil(initialMoneyValue)) {
-      cleaveComponentReference.setRawValue(initialMoneyValue);
-    } else {
-      cleaveComponentReference.setRawValue('');
-    }
-  };
-
   setDropdownButtonReference = dropdownButtonReference =>
     this.setState({ dropdownButtonReference });
 
   handleCurrencyChange = (currency, toggleMenu) => {
     this.props.onChange({
       centAmount: this.props.value.centAmount,
+      centAmountAsString: this.props.value.centAmountAsString,
       currencyCode: currency,
     });
     toggleMenu();
   };
 
   handleAmountChange = event => {
-    const nextValue = event.target.rawValue;
-    if (this.props.value.centAmount === nextValue || !isNumberish(nextValue))
-      return;
-    const centAmountValue =
-      nextValue.length > 0
-        ? Math.trunc(Math.round(nextValue * 10 ** this.props.fractionDigits))
-        : undefined;
+    const centAmountAsString = event.target.value;
+
+    if (!isNumberish(centAmountAsString)) return;
 
     this.props.onChange({
       currencyCode: this.props.value.currencyCode,
-      centAmount: centAmountValue,
+      centAmount: parseNumber(this.props.language, centAmountAsString),
+      centAmountAsString,
     });
   };
 
   handleBlur = () => {
-    if (this.state.cleaveComponentReference)
-      this.state.cleaveComponentReference.setRawValue(
-        !isNil(this.props.value.centAmount)
-          ? parseNumberToMoney(
-              this.props.value.centAmount,
-              this.props.fractionDigits
-            )
-          : ''
+    if (this.props.value.centAmountAsString.length > 0) {
+      const centAmountAsString = formatNumber(
+        this.props.value.centAmount,
+        this.props.intl
       );
+      this.props.onChange({
+        currencyCode: this.props.value.currencyCode,
+        centAmount: this.props.value.centAmount,
+        centAmountAsString,
+      });
+    }
+
     if (this.props.onBlur) this.props.onBlur(this.props.value);
   };
 
@@ -320,16 +287,15 @@ export class MoneyInput extends React.PureComponent {
               </div>
             </div>
           )}
-          <Cleave
-            placeholder={this.props.placeholder}
-            options={defaultMemoize(getCleaveOptions(this.props.language))}
+          <input
+            value={this.props.value.centAmountAsString}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
               hasAmountError: this.props.hasAmountError,
               hasAmountWarning: this.props.hasAmountWarning,
             })}
+            placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
-            onInit={this.handleInit}
             onBlur={this.handleBlur}
             disabled={this.props.isDisabled}
           />
@@ -339,4 +305,4 @@ export class MoneyInput extends React.PureComponent {
   }
 }
 
-export default MoneyInput;
+export default injectIntl(MoneyInput);

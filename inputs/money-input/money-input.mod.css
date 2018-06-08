@@ -35,6 +35,12 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Tones */
 
 .amount-default {

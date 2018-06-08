@@ -1,10 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Cleave from 'cleave.js/react';
 import { intlMock } from '@commercetools-local/test-utils';
 import AccessibleButton from '../../buttons/accessible-button';
-import MoneyInput, {
-  parseNumberToMoney,
+import {
+  MoneyInput,
   Currency,
   CurrencyDropdown,
   DropdownChevron,
@@ -18,6 +17,7 @@ const createTestProps = customProps => ({
   currencies: ['EUR', 'USD'],
   onChange: jest.fn(),
   onBlur: jest.fn(),
+  intl: intlMock,
   ...customProps,
 });
 
@@ -36,37 +36,6 @@ const createCurrencyProps = customProps => ({
   onClick: jest.fn(),
   currency: '€',
   ...customProps,
-});
-
-describe('utils', () => {
-  describe('parseNumberToMoney', () => {
-    const fractionDigits = 2;
-    describe('when number has value', () => {
-      const number = 1000;
-      let result;
-
-      beforeEach(() => {
-        result = parseNumberToMoney(number, fractionDigits);
-      });
-
-      it('should return money value with the number of decimal digits', () => {
-        expect(result).toEqual('10.00');
-      });
-    });
-
-    describe('when number is null', () => {
-      const number = null;
-      let result;
-
-      beforeEach(() => {
-        result = parseNumberToMoney(number, fractionDigits);
-      });
-
-      it('should return `undefined`', () => {
-        expect(result).toEqual(undefined);
-      });
-    });
-  });
 });
 
 describe('rendering', () => {
@@ -267,11 +236,11 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<MoneyInput {...props} />);
-      centAmountField = wrapper.find(Cleave);
+      centAmountField = wrapper.find('input');
     });
 
-    it('should render a `Cleave`', () => {
-      expect(wrapper).toRender(Cleave);
+    it('should render a `input`', () => {
+      expect(wrapper).toRender('input');
     });
 
     describe('with states', () => {
@@ -281,7 +250,7 @@ describe('rendering', () => {
             isDisabled: true,
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          centAmountField = wrapper.find(Cleave);
+          centAmountField = wrapper.find('input');
         });
 
         it('should have disabled styles', () => {
@@ -297,7 +266,7 @@ describe('rendering', () => {
             hasAmountError: true,
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          centAmountField = wrapper.find(Cleave);
+          centAmountField = wrapper.find('input');
         });
 
         it('should have error styles', () => {
@@ -313,7 +282,7 @@ describe('rendering', () => {
             hasAmountWarning: true,
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          centAmountField = wrapper.find(Cleave);
+          centAmountField = wrapper.find('input');
         });
 
         it('should have warning styles', () => {
@@ -364,22 +333,18 @@ describe('callbacks', () => {
 
   describe('centAmount field', () => {
     describe('when input loses focus', () => {
-      let cleaveComponentReference;
       beforeEach(() => {
-        cleaveComponentReference = {
-          setRawValue: jest.fn(),
-        };
         props = createTestProps({
           value: {
             currencyCode: 'EUR',
             centAmount: 10,
+            centAmountAsString: '10',
           },
           onBlur: jest.fn(),
         });
         wrapper = shallow(<MoneyInput {...props} />);
-        wrapper.instance().cleaveComponentReference = cleaveComponentReference;
         wrapper
-          .find(Cleave)
+          .find('input')
           .at(0)
           .prop('onBlur')();
       });
