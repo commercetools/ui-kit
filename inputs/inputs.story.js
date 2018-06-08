@@ -78,6 +78,7 @@ storiesOf('Forms/Inputs', module)
           render={(value, onChange) => (
             <MoneyInput
               value={value}
+              language="en"
               currencies={
                 boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
               }
