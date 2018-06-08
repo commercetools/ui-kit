@@ -167,16 +167,33 @@ CurrencyDropdown.propTypes = {
   setButtonReference: PropTypes.func,
 };
 
-const parseNumber = (language, stringValue) => {
-  const separators = getSeparatorsForLocale(language);
-  if (!stringValue) return undefined;
-  const centAmount = parseFloat(
-    stringValue.replace(separators.thoSeparator, '')
-  );
-  return centAmount;
-};
+const significantDigitsRegex = new RegExp(
+  '.{1,3}(?=(.{3})+(?!.))|.{1,3}$',
+  'g'
+);
 
-const formatNumber = (stringValue, intl) => intl.formatNumber(stringValue);
+const formatNumber = (separators, stringValue) => {
+  if (!stringValue.includes(separators.decSeparator))
+    return {
+      formattedNumber: stringValue,
+      fractionDigits: 0,
+    };
+
+  const separatorIndex = stringValue.indexOf(separators.decSeparator);
+  const significantDigits = stringValue.substring(0, separatorIndex);
+  const decimalDigits = stringValue.substring(separatorIndex + 1);
+
+  const formattedSignificantDigits = significantDigits
+    .match(significantDigitsRegex)
+    .join(separators.thoSeparator);
+
+  return {
+    centAmount: `${formattedSignificantDigits}${
+      separators.decSeparator
+    }${decimalDigits}`,
+    fractionDigits: decimalDigits.length,
+  };
+};
 
 export class MoneyInput extends React.PureComponent {
   static displayName = 'MoneyInput';
@@ -184,8 +201,7 @@ export class MoneyInput extends React.PureComponent {
   static propTypes = {
     value: PropTypes.shape({
       currencyCode: PropTypes.string.isRequired,
-      centAmount: PropTypes.number,
-      centAmountAsString: PropTypes.string,
+      centAmount: PropTypes.string,
     }).isRequired,
 
     language: PropTypes.string.isRequired,
@@ -213,8 +229,8 @@ export class MoneyInput extends React.PureComponent {
   };
 
   state = {
-    cleaveComponentReference: null,
     dropdownButtonReference: null,
+    separators: getSeparatorsForLocale(this.props.language),
   };
 
   setDropdownButtonReference = dropdownButtonReference =>
@@ -223,38 +239,48 @@ export class MoneyInput extends React.PureComponent {
   handleCurrencyChange = (currency, toggleMenu) => {
     this.props.onChange({
       centAmount: this.props.value.centAmount,
-      centAmountAsString: this.props.value.centAmountAsString,
       currencyCode: currency,
     });
     toggleMenu();
   };
 
   handleAmountChange = event => {
-    const centAmountAsString = event.target.value;
+    const centAmount = event.target.value.trim();
 
-    if (!isNumberish(centAmountAsString)) return;
+    /* if the user enters an invalid character we discard it */
+    if (!isNumberish(centAmount)) return;
 
     this.props.onChange({
       currencyCode: this.props.value.currencyCode,
-      centAmount: parseNumber(this.props.language, centAmountAsString),
-      centAmountAsString,
+      centAmount,
     });
   };
 
   handleBlur = () => {
-    if (this.props.value.centAmountAsString.length > 0) {
-      const centAmountAsString = formatNumber(
-        this.props.value.centAmount,
-        this.props.intl
+    if (this.props.value.centAmount.length > 0) {
+      const centAmountWithoutFormat = this.props.value.centAmount.replace(
+        this.state.separators.thoSeparator,
+        ''
       );
+
+      const centAmountAsNumber = parseFloat(centAmountWithoutFormat);
+
+      const { centAmount, fractionDigits } = formatNumber(
+        this.state.separators,
+        centAmountWithoutFormat
+      );
+
       this.props.onChange({
         currencyCode: this.props.value.currencyCode,
-        centAmount: this.props.value.centAmount,
-        centAmountAsString,
+        centAmount,
       });
-    }
 
-    if (this.props.onBlur) this.props.onBlur(this.props.value);
+      if (this.props.onBlur)
+        this.props.onBlur({
+          centAmountAsNumber,
+          fractionDigits,
+        });
+    }
   };
 
   render() {
@@ -286,7 +312,7 @@ export class MoneyInput extends React.PureComponent {
             </div>
           )}
           <input
-            value={this.props.value.centAmountAsString}
+            value={this.props.value.centAmount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
               hasAmountError: this.props.hasAmountError,

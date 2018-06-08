@@ -337,8 +337,7 @@ describe('callbacks', () => {
         props = createTestProps({
           value: {
             currencyCode: 'EUR',
-            centAmount: 10,
-            centAmountAsString: '10',
+            centAmount: '10.15',
           },
           onBlur: jest.fn(),
         });
@@ -351,6 +350,13 @@ describe('callbacks', () => {
 
       it('should call onBlur', () => {
         expect(props.onBlur).toHaveBeenCalled();
+      });
+
+      it('should call onBlur with parameters', () => {
+        expect(props.onBlur).toHaveBeenCalledWith({
+          centAmountAsNumber: 10.15,
+          fractionDigits: 2,
+        });
       });
     });
   });

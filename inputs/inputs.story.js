@@ -71,7 +71,6 @@ storiesOf('Forms/Inputs', module)
       <IntlProvider locale="en">
         <Value
           defaultValue={{
-            centAmount: 1234.56,
             centAmountAsString: '1234.56',
             currencyCode: 'EUR',
           }}
@@ -83,7 +82,10 @@ storiesOf('Forms/Inputs', module)
                 boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
               }
               placeholder={text('placeholder', 'Placeholder')}
-              onBlur={action('onBlur')}
+              onBlur={(...args) => {
+                action('onBlur');
+                console.log(...args);
+              }}
               isDisabled={boolean('isDisabled', false)}
               onChange={(...args) => {
                 action('onChange')(...args);
