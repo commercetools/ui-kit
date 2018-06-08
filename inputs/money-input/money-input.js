@@ -257,7 +257,7 @@ export class MoneyInput extends React.PureComponent {
   };
 
   handleBlur = () => {
-    if (this.props.value.centAmount.length > 0) {
+    if (this.props.value.centAmount && this.props.value.centAmount.length > 0) {
       const centAmountWithoutFormat = this.props.value.centAmount.replace(
         this.state.separators.thoSeparator,
         ''
