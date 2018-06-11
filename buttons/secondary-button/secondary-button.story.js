@@ -18,7 +18,7 @@ storiesOf('Buttons', module)
     <Section>
       <MemoryRouter>
         <SecondaryButton
-          theme={select('theme', ['apple-green', 'blue', 'default'], 'default')}
+          theme={select('theme', ['blue', 'default'], 'default')}
           iconLeft={React.createElement(
             icons[select('iconLeft', iconNames, iconNames[0])]
           )}

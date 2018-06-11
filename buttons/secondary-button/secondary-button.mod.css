@@ -116,23 +116,3 @@
 .theme-blue.disabled {
   color: var(--color-gray-60);
 }
-
-/*
-* — Apple-Green Theme —
-*/
-
-.theme-apple-green:hover {
-  color: var(--color-green);
-}
-
-/* Toggled button */
-
-.theme-apple-green.active,
-.theme-apple-green.active.disabled,
-.theme-apple-green:active {
-  color: var(--color-green);
-}
-
-.theme-apple-green.disabled {
-  color: var(--color-gray-60);
-}
