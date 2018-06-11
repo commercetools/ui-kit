@@ -354,7 +354,7 @@ describe('callbacks', () => {
 
       it('should call onBlur with parameters', () => {
         expect(props.onBlur).toHaveBeenCalledWith({
-          centAmountAsNumber: 10.15,
+          centAmountAsNumber: 1015,
           fractionDigits: 2,
         });
       });
