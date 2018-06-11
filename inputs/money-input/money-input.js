@@ -13,6 +13,53 @@ import Contraints from '../../materials/constraints';
 import messages from './messages';
 import styles from './money-input.mod.css';
 
+const significantDigitsRegex = new RegExp(
+  '.{1,3}(?=(.{3})+(?!.))|.{1,3}$',
+  'g'
+);
+
+const formatNumber = (separators, stringValue) => {
+  if (!stringValue.includes(separators.decSeparator))
+    return {
+      centAmount: stringValue
+        .match(significantDigitsRegex)
+        .join(separators.thoSeparator),
+      fractionDigits: 0,
+    };
+
+  const separatorIndex = stringValue.indexOf(separators.decSeparator);
+  const significantDigits = stringValue.substring(0, separatorIndex);
+  const decimalDigits = stringValue.substring(separatorIndex + 1);
+
+  const formattedSignificantDigits = significantDigits
+    .match(significantDigitsRegex)
+    .join(separators.thoSeparator);
+
+  return {
+    centAmount: `${formattedSignificantDigits}${
+      separators.decSeparator
+    }${decimalDigits}`,
+    fractionDigits: decimalDigits.length,
+  };
+};
+
+export const formatNumberAsMoney = (value, fractionDigits, language) => {
+  const stringValue = (value * 0.1 ** fractionDigits).toFixed(fractionDigits);
+  const separators = getSeparatorsForLocale(language);
+  const { centAmount } = formatNumber(separators, stringValue);
+  return centAmount;
+};
+
+export const parseNumberFromMoney = (stringValue, language) => {
+  const separators = getSeparatorsForLocale(language);
+  const replaceCommas = RegExp(separators.thoSeparator, 'gi');
+  const centAmountWithoutFormat = stringValue.replace(replaceCommas, '');
+
+  const { fractionDigits } = formatNumber(separators, stringValue);
+
+  return parseFloat(centAmountWithoutFormat) * 10 ** fractionDigits;
+};
+
 const getCurrencyDropdownSelectStyles = props => {
   if (props.isDisabled) return styles['currency-disabled'];
   if (props.hasCurrencyError) return styles['currency-error'];
@@ -167,43 +214,6 @@ CurrencyDropdown.propTypes = {
   setButtonReference: PropTypes.func,
 };
 
-const significantDigitsRegex = new RegExp(
-  '.{1,3}(?=(.{3})+(?!.))|.{1,3}$',
-  'g'
-);
-
-const formatNumber = (separators, stringValue) => {
-  if (!stringValue.includes(separators.decSeparator))
-    return {
-      centAmount: stringValue
-        .match(significantDigitsRegex)
-        .join(separators.thoSeparator),
-      fractionDigits: 0,
-    };
-
-  const separatorIndex = stringValue.indexOf(separators.decSeparator);
-  const significantDigits = stringValue.substring(0, separatorIndex);
-  const decimalDigits = stringValue.substring(separatorIndex + 1);
-
-  const formattedSignificantDigits = significantDigits
-    .match(significantDigitsRegex)
-    .join(separators.thoSeparator);
-
-  console.log({
-    separatorIndex,
-    significantDigits,
-    decimalDigits,
-    formattedSignificantDigits,
-  });
-
-  return {
-    centAmount: `${formattedSignificantDigits}${
-      separators.decSeparator
-    }${decimalDigits}`,
-    fractionDigits: decimalDigits.length,
-  };
-};
-
 export class MoneyInput extends React.PureComponent {
   static displayName = 'MoneyInput';
 
@@ -266,13 +276,17 @@ export class MoneyInput extends React.PureComponent {
   };
 
   handleBlur = () => {
-    if (this.props.value.centAmount && this.props.value.centAmount.length > 0) {
+    const onBlurValue = {
+      centAmountAsNumber: undefined,
+      fractionDigits: 0,
+    };
+
+    if (this.props.value.centAmount.length > 0) {
       const replaceCommas = RegExp(this.state.separators.thoSeparator, 'gi');
       const centAmountWithoutFormat = this.props.value.centAmount.replace(
         replaceCommas,
         ''
       );
-      const centAmountAsNumber = parseFloat(centAmountWithoutFormat);
 
       const { centAmount, fractionDigits } = formatNumber(
         this.state.separators,
@@ -284,12 +298,12 @@ export class MoneyInput extends React.PureComponent {
         centAmount,
       });
 
-      if (this.props.onBlur)
-        this.props.onBlur({
-          centAmountAsNumber,
-          fractionDigits,
-        });
+      onBlurValue.centAmountAsNumber =
+        parseFloat(centAmountWithoutFormat) * 10 ** fractionDigits;
+      onBlurValue.fractionDigits = fractionDigits;
     }
+
+    if (this.props.onBlur) this.props.onBlur(onBlurValue);
   };
 
   render() {
