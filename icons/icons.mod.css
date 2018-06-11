@@ -20,6 +20,10 @@
   fill: var(--color-green-25);
 }
 
+.theme-navbar-green {
+  fill: var(--color-green-40);
+}
+
 .theme-orange {
   fill: var(--color-orange);
 }
