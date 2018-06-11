@@ -82,10 +82,7 @@ storiesOf('Forms/Inputs', module)
                 boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
               }
               placeholder={text('placeholder', 'Placeholder')}
-              onBlur={(...args) => {
-                action('onBlur');
-                console.log(...args);
-              }}
+              onBlur={(...args) => action('onBlur')(...args)}
               isDisabled={boolean('isDisabled', false)}
               onChange={(...args) => {
                 action('onChange')(...args);
