@@ -2,11 +2,7 @@ const path = require('path');
 
 const rootPath = path.resolve(__dirname, '../../..');
 
-const sourceFolders = [
-  // path.join(rootPath, 'packages-application'),
-  path.join(rootPath, 'packages-shared'),
-  // path.join(rootPath, 'test'),
-];
+const sourceFolders = [path.join(rootPath, 'packages-shared')];
 
 module.exports = {
   devtool: 'source-map',

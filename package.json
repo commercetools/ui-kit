@@ -4,6 +4,9 @@
   "description": "",
   "license": "Proprietary",
   "private": true,
+  "scripts": {
+    "postinstall": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-colors.js"
+  },
   "dependencies": {
     "@commercetools-local/utils": "*",
     "classnames": "2.2.5",
@@ -32,14 +35,28 @@
     "warning": "3.0.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "3.4.6",
+    "@storybook/addon-info": "3.4.6",
+    "@storybook/addon-knobs": "3.4.6",
+    "@storybook/addon-options": "3.4.6",
+    "@storybook/react": "3.4.6",
+    "common-tags": "1.8.0",
+    "css": "2.2.3",
     "css-loader": "0.28.11",
     "file-loader": "1.1.11",
+    "glob": "7.1.2",
     "json-loader": "0.5.7",
+    "lodash.camelcase": "4.3.0",
+    "lodash.upperfirst": "4.3.1",
+    "null-loader": "0.1.1",
     "postcss": "6.0.22",
     "postcss-cssnext": "3.1.0",
     "postcss-import": "11.1.0",
     "postcss-loader": "2.1.5",
     "postcss-reporter": "5.0.0",
+    "prettier": "1.13.5",
+    "rcfile": "1.0.3",
+    "storybook-readme": "3.3.0",
     "style-loader": "0.21.0",
     "svg-url-loader": "2.3.2",
     "svgr": "1.8.1",
