@@ -1,5 +1,12 @@
 const path = require('path');
-const paths = require('../../../config/paths');
+
+const rootPath = path.resolve(__dirname, '../../..');
+
+const sourceFolders = [
+  // path.join(rootPath, 'packages-application'),
+  path.join(rootPath, 'packages-shared'),
+  // path.join(rootPath, 'test'),
+];
 
 module.exports = {
   devtool: 'source-map',
@@ -35,7 +42,7 @@ module.exports = {
           return fileName.endsWith('.css') && !fileName.endsWith('.mod.css');
         },
         use: ['style-loader', 'css-loader', 'postcss-loader'],
-        include: paths.sourceFolders,
+        include: sourceFolders,
       },
       {
         test: /\.mod\.css$/,
@@ -54,13 +61,13 @@ module.exports = {
             options: {
               config: {
                 ctx: {
-                  sourceFolders: paths.sourceFolders,
+                  sourceFolders,
                 },
               },
             },
           },
         ],
-        include: paths.sourceFolders,
+        include: sourceFolders,
       },
     ],
   },
