@@ -4,11 +4,10 @@ import classnames from 'classnames';
 import { compose } from 'recompose';
 import invariant from 'invariant';
 import isNil from 'lodash.isnil';
-import pick from 'lodash.pick';
-import TRACKING_ATTRIBUTES from '../tracking-attributes';
 import withMouseDownState from '../../hocs/with-mouse-down-state';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import AccessibleButton from '../accessible-button';
+import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './icon-button.mod.css';
 
 const getStateClassNames = (isDisabled, isToggled) =>
@@ -53,7 +52,7 @@ const getThemeClassName = theme => {
 export const IconButton = props => {
   const dataProps = {
     'data-track-component': 'IconButton',
-    ...pick(props, TRACKING_ATTRIBUTES),
+    ...filterDataAttributes(props),
   };
   return (
     <div

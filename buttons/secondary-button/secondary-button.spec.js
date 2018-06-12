@@ -67,6 +67,7 @@ describe('rendering', () => {
           'data-track-component': 'SecondaryButton',
           'data-track-label': 'SecondaryButton',
           'data-track-event': 'click',
+          'data-test': 'data-test-secondary',
         });
         wrapper = shallow(<SecondaryButton {...props} />);
       });
@@ -91,6 +92,14 @@ describe('rendering', () => {
           'buttonAttributes',
           expect.objectContaining({
             'data-track-label': 'SecondaryButton',
+          })
+        );
+      });
+      it('should apply given `data-test` to AccessibleButton', () => {
+        expect(wrapper.find('AccessibleButton')).toHaveProp(
+          'buttonAttributes',
+          expect.objectContaining({
+            'data-test': 'data-test-secondary',
           })
         );
       });

@@ -62,6 +62,64 @@ describe('rendering', () => {
       expect(wrapper.find('FilterIcon')).toHaveProp('theme', 'grey');
     });
   });
+
+  describe('with data-* props', () => {
+    beforeEach(() => {
+      props = createTestProps({
+        'data-track-component': 'SecondaryIconButton',
+        'data-track-label': 'SecondaryIconButton',
+        'data-track-event': 'click',
+        'data-test': 'secondary-icon-button',
+      });
+      wrapper = shallow(<SecondaryIconButton {...props} />);
+    });
+    it('should apply given `data-track-component` to AccessibleButton', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp(
+        'buttonAttributes',
+        expect.objectContaining({
+          'data-track-component': 'SecondaryIconButton',
+        })
+      );
+    });
+    it('should apply given `data-track-event` to AccessibleButton', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp(
+        'buttonAttributes',
+        expect.objectContaining({
+          'data-track-event': 'click',
+        })
+      );
+    });
+    it('should apply given `data-track-label` to AccessibleButton', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp(
+        'buttonAttributes',
+        expect.objectContaining({
+          'data-track-label': 'SecondaryIconButton',
+        })
+      );
+    });
+    it('should apply given `data-test` to AccessibleButton', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp(
+        'buttonAttributes',
+        expect.objectContaining({
+          'data-test': 'secondary-icon-button',
+        })
+      );
+    });
+  });
+  describe('without data-* props', () => {
+    beforeEach(() => {
+      props = createTestProps();
+      wrapper = shallow(<SecondaryIconButton {...props} />);
+    });
+    it('should apply default `data-track-component` to AccessibleButton', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp(
+        'buttonAttributes',
+        expect.objectContaining({
+          'data-track-component': 'SecondaryIconButton',
+        })
+      );
+    });
+  });
 });
 
 describe('callbacks', () => {

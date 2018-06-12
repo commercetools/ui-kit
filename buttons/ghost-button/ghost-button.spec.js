@@ -55,6 +55,7 @@ describe('rendering', () => {
           'data-track-component': 'GhostButton',
           'data-track-label': 'GhostButton',
           'data-track-event': 'click',
+          'data-test': 'data-test-ghost',
         });
         wrapper = shallow(<GhostButton {...props} />);
       });
@@ -79,6 +80,14 @@ describe('rendering', () => {
           'buttonAttributes',
           expect.objectContaining({
             'data-track-label': 'GhostButton',
+          })
+        );
+      });
+      it('should apply given `data-track-test` to `AccessibleButton`', () => {
+        expect(wrapper).toHaveProp(
+          'buttonAttributes',
+          expect.objectContaining({
+            'data-test': 'data-test-ghost',
           })
         );
       });

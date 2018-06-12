@@ -2,15 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import isNil from 'lodash.isnil';
-import pick from 'lodash.pick';
 import AccessibleButton from '../accessible-button';
-import TRACKING_ATTRIBUTES from '../tracking-attributes';
+import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './ghost-button.mod.css';
 
 const GhostButton = props => {
   const dataProps = {
     'data-track-component': 'GhostButton',
-    ...pick(props, TRACKING_ATTRIBUTES),
+    ...filterDataAttributes(props),
   };
   return (
     <AccessibleButton

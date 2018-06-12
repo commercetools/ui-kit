@@ -7,7 +7,11 @@ exports[`rendering outputs correct tree 1`] = `
   onMouseOver={[MockFunction]}
 >
   <AccessibleButton
-    buttonAttributes={Object {}}
+    buttonAttributes={
+      Object {
+        "data-track-component": "SecondaryIconButton",
+      }
+    }
     isDisabled={false}
     isToggleButton={false}
     label="Accessible button"
