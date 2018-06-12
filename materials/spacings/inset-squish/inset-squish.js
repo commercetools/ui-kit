@@ -8,7 +8,7 @@ const InsetSquish = ({ children, scale }) => (
 InsetSquish.displayName = 'InsetSquish';
 InsetSquish.propTypes = {
   scale: PropTypes.oneOf(['s', 'm', 'l']),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 InsetSquish.defaultProps = {

@@ -22,7 +22,7 @@ import Spacings from '@commercetools-local/ui-kit/materials/spacings';
 | Props      | Type             | Required | Values            | Default |
 | ---------- | ---------------- | :------: | ----------------- | ------- |
 | `scale`    | `String`         |    -     | `['s', 'm', 'l']` | `m`     |
-| `children` | `PropTypes.node` |    ✅    | -                 | -       |
+| `children` | `PropTypes.node` |    -     | -                 | -       |
 
 ## Scales
 
