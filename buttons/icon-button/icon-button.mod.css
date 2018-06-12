@@ -123,7 +123,7 @@
 /* Disabled-Active button */
 
 .disabled.theme-blue:hover {
-  background-color: var(--color-navy-98);
+  background-color: var(--color-blue-85);
 }
 
 /* When the button is active (isToggled: true) and somehow is disabled
@@ -131,7 +131,7 @@
   receive any actions */
 
 .active.disabled.theme-blue {
-  background-color: var(--color-blue-95);
+  background-color: var(--color-blue-85);
   color: var(--color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
@@ -146,7 +146,7 @@
 }
 
 .active.theme-blue:hover {
-  background-color: var(--color-blue-95);
+  background-color: var(--color-blue-85);
 }
 
 /*
@@ -160,7 +160,7 @@
   receive any actions */
 
 .disabled.theme-green:hover {
-  background-color: var(--color-navy-98);
+  background-color: var(--color-green-85);
 }
 
 .active.disabled.theme-green {
