@@ -7,7 +7,7 @@
 
 :root {
   --size-container-small: 16px;
-  --size-container-big: 30px;
+  --size-container-big: 32px;
 }
 
 /*
@@ -22,7 +22,6 @@
   font-size: 1rem;
   transition: background-color var(--transition-linear-80ms),
     box-shadow var(--transition-easeinout-150ms);
-  border: 1px transparent solid;
 }
 
 /*
@@ -81,8 +80,10 @@
 .disabled {
   background-color: var(--color-navy-98);
   color: var(--color-gray-60);
-  border-color: var(--color-gray);
   pointer-events: none;
+
+  /* Simulates the border inside */
+  box-shadow: 0 0 0 1px var(--color-gray) inset;
 }
 
 /* Default button */

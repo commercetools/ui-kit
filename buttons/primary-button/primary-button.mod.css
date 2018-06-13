@@ -9,7 +9,6 @@
   align-items: center;
   color: var(--color-white);
   transition: background-color var(--transition-linear-80ms);
-  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
 }
 
 .button-layout-big {
@@ -29,6 +28,10 @@
   display: flex;
   align-items: center;
   font-size: 1rem;
+}
+
+.button {
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
 }
 
 .active:hover,
@@ -83,9 +86,11 @@
 .button-layout .disabled,
 .button-layout .disabled:active,
 .button-layout .disabled:hover {
-  box-shadow: none;
   background-color: var(--color-navy-98);
   color: var(--color-gray-60);
+
+  /* Simulates the border inside */
+  box-shadow: 0 0 0 1px var(--color-gray) inset;
 }
 
 /** Icon container */
