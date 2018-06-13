@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import AccessibleButton from '../accessible-button';
+import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './secondary-icon-button.mod.css';
 
 export const SecondaryIconButton = props => {
+  const buttonAttributes = {
+    'data-track-component': 'SecondaryIconButton',
+    ...filterDataAttributes(props),
+  };
   let iconTheme = 'black';
   if (props.isDisabled) iconTheme = 'grey';
   else if (props.isMouseOver) iconTheme = 'green';
@@ -15,6 +20,7 @@ export const SecondaryIconButton = props => {
       className={styles.button}
     >
       <AccessibleButton
+        buttonAttributes={buttonAttributes}
         label={props.label}
         onClick={props.onClick}
         isDisabled={props.isDisabled}

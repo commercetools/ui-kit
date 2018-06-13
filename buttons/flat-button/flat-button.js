@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import pick from 'lodash.pick';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import Text from '../../typography/text';
 import AccessibleButton from '../accessible-button';
-import TRACKING_ATTRIBUTES from '../tracking-attributes';
+import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './flat-button.mod.css';
 
 export const FlatButton = props => {
   const dataProps = {
     'data-track-component': 'LinkButton',
-    ...pick(props, TRACKING_ATTRIBUTES),
+    ...filterDataAttributes(props),
   };
 
   let iconTheme = 'black';

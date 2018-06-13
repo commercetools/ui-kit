@@ -44,6 +44,55 @@ describe('rendering', () => {
     expect(wrapper).toRender('AddIcon');
   });
 
+  describe('with data-* props', () => {
+    beforeEach(() => {
+      props = createTestProps({
+        'data-track-component': 'LinkButton',
+        'data-track-label': 'LinkButton',
+        'data-track-event': 'click',
+        'data-test': 'link-button',
+      });
+      wrapper = shallow(<LinkButton {...props} />);
+    });
+    it('should apply given `data-track-component` to LinkButton', () => {
+      expect(wrapper.find('Link')).toHaveProp(
+        'data-track-component',
+        expect.stringMatching('LinkButton')
+      );
+    });
+    it('should apply given `data-track-event` to AccessibleButton', () => {
+      expect(wrapper.find('Link')).toHaveProp(
+        'data-track-event',
+        expect.stringMatching('click')
+      );
+    });
+    it('should apply given `data-track-label` to AccessibleButton', () => {
+      expect(wrapper.find('Link')).toHaveProp(
+        'data-track-label',
+        expect.stringMatching('LinkButton')
+      );
+    });
+    it('should apply given `data-test` to AccessibleButton', () => {
+      expect(wrapper.find('Link')).toHaveProp(
+        'data-test',
+        expect.stringMatching('link-button')
+      );
+    });
+  });
+
+  describe('without data-* props', () => {
+    beforeEach(() => {
+      props = createTestProps();
+      wrapper = shallow(<LinkButton {...props} />);
+    });
+    it('should apply default `data-track-component` to LinkButton', () => {
+      expect(wrapper.find('Link')).toHaveProp(
+        'data-track-component',
+        expect.stringMatching('LinkButton')
+      );
+    });
+  });
+
   describe('if disabled', () => {
     beforeEach(() => {
       props = createTestProps({ isDisabled: true });
