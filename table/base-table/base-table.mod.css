@@ -14,7 +14,8 @@
 }
 
 .header-cell {
-  background: var(--color-gray-95);
+  background: var(--color-navy);
+  color: var(--color-white);
 }
 
 .wrapper {
@@ -43,7 +44,8 @@ div:hover .hovered-row {
 /* RV */
 
 :global(.ReactVirtualized__Grid) {
-  /* Removes :focus ring from table */
+  background: var(--color-white);
 
+  /* Removes :focus ring from table */
   outline-width: 0;
 }
