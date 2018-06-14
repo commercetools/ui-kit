@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styles from './icons.mod.css';
 
 const ICON_SIZES = {
-  SMALL: 8,
+  SMALL: 12,
   MEDIUM: 16,
   BIG: 24,
 };
