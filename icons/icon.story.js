@@ -41,7 +41,11 @@ storiesOf('Icons', module)
   .add('All Icons', () => (
     <IconList>
       {Object.values(icons).map((Icon, index) => {
-        const sizeValue = select('size', ['small', 'big', 'scale'], 'big');
+        const sizeValue = select(
+          'size',
+          ['small', 'medium', 'big', 'scale'],
+          'big'
+        );
         const containerWidth =
           sizeValue === 'scale'
             ? {
