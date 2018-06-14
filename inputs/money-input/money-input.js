@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Downshift from 'downshift';
-import { injectIntl, intlShape } from 'react-intl';
 import invariant from 'invariant';
-import {
-  getSeparatorsForLocale,
-  isNumberish,
-} from '@commercetools-local/utils/numbers';
-import { CaretDownIcon, CaretUpIcon } from '../../icons';
-import AccessibleButton from '../../buttons/accessible-button';
+import { isNumberish } from '@commercetools-local/utils/numbers';
 import Contraints from '../../materials/constraints';
-import messages from './messages';
 import styles from './money-input.mod.css';
 import currencies from './currencies.json';
+import Currency from './currency';
+import CurrencyDropdown from './currency-dropdown';
 
 // The first time the component renders, we want to try to show the centAmount
 // as a formatted number
@@ -57,163 +51,12 @@ import currencies from './currencies.json';
 // to add a validation error itself.
 
 // TODO implement proper parsing, dependent on locale
-const parseAmount = ({ amount }) => parseFloat(amount, 10);
-
-const getCurrencyDropdownSelectStyles = props => {
-  if (props.isDisabled) return styles['currency-disabled'];
-  if (props.hasCurrencyError) return styles['currency-error'];
-  if (props.hasCurrencyWarning) return styles['currency-warning'];
-  if (props.isOpen) return styles['currency-active'];
-
-  return styles['currency-default'];
-};
-
-const getCurrencyDropdownOptionsStyles = props => {
-  if (props.hasCurrencyError) return styles['options-wrapper-error'];
-  if (props.hasCurrencyWarning) return styles['options-wrapper-warning'];
-
-  return styles['options-wrapper-active'];
-};
-
-const getAmountStyles = props => {
-  if (props.isDisabled) return styles['amount-disabled'];
-  if (props.hasAmountError) return styles['amount-error'];
-  if (props.hasAmountWarning) return styles['amount-warning'];
-
-  return styles['amount-default'];
-};
-
-export const Currency = props => (
-  <AccessibleButton
-    label={props.currency}
-    onClick={props.onClick}
-    isDisabled={props.isDisabled}
-    className={classnames(styles['currency-button'], {
-      [styles['currency-button-disabled']]: props.isDisabled,
-    })}
-  >
-    {props.currency}
-  </AccessibleButton>
-);
-
-Currency.displayName = 'Currency';
-Currency.propTypes = {
-  isDisabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  currency: PropTypes.string.isRequired,
-};
-
-export const DropdownChevron = props => (
-  <AccessibleButton
-    label={props.intl.formatMessage(messages.chevronLabel)}
-    onClick={props.onClick}
-    isDisabled={props.isDisabled}
-    isOpen={props.isOpen}
-    className={classnames(styles['chevron-icon'], {
-      [styles['chevron-icon-disabled']]: props.isDisabled,
-    })}
-  >
-    <div className={styles['icon-wrapper']}>
-      {props.isOpen ? (
-        <CaretUpIcon size="scale" />
-      ) : (
-        <CaretDownIcon size="scale" />
-      )}
-    </div>
-  </AccessibleButton>
-);
-
-DropdownChevron.displayName = 'DropdownChevron';
-DropdownChevron.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool,
-  isOpen: PropTypes.bool.isRequired,
-
-  // Intl
-  intl: intlShape,
-};
-
-export const DropdownChevronWithIntl = injectIntl(DropdownChevron);
-
-export const Option = props => (
-  <AccessibleButton
-    label={props.children}
-    onClick={props.onClick}
-    className={styles['option-wrapper']}
-  >
-    {props.children}
-  </AccessibleButton>
-);
-Option.displayName = 'Option';
-Option.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
-};
-
-export const CurrencyDropdown = props => (
-  <Downshift
-    render={({ isOpen, toggleMenu }) => (
-      <div
-        className={getCurrencyDropdownSelectStyles({
-          isDisabled: props.isDisabled,
-          hasCurrencyError: props.hasCurrencyError,
-          hasCurrencyWarning: props.hasCurrencyWarning,
-          isOpen,
-        })}
-      >
-        <div className={styles['currency-wrapper']}>
-          <Currency
-            isDisabled={props.isDisabled}
-            onClick={toggleMenu}
-            currency={props.currencyCode}
-          />
-          {props.currencies.length > 0 && (
-            <DropdownChevronWithIntl
-              onClick={toggleMenu}
-              isDisabled={props.isDisabled}
-              isOpen={isOpen}
-            />
-          )}
-        </div>
-        {isOpen &&
-          props.currencies.length > 0 && (
-            <div
-              className={getCurrencyDropdownOptionsStyles({
-                hasCurrencyError: props.hasCurrencyError,
-                hasCurrencyWarning: props.hasCurrencyWarning,
-              })}
-            >
-              {props.currencies.map(currency => (
-                <Option
-                  key={currency}
-                  onClick={() => {
-                    props.handleChange(currency, toggleMenu);
-                  }}
-                >
-                  {currency}
-                </Option>
-              ))}
-            </div>
-          )}
-      </div>
-    )}
-  />
-);
-
-CurrencyDropdown.displayName = 'CurrencyDropdown';
-CurrencyDropdown.propTypes = {
-  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currencyCode: PropTypes.string,
-  isDisabled: PropTypes.bool,
-  hasCurrencyError: PropTypes.bool,
-  hasCurrencyWarning: PropTypes.bool,
-};
+const parseAmount = ({ amount /* , language */ }) => parseFloat(amount, 10);
 
 // Turns the user input into a value the MoneyInput can pass up
 // This converts the value into a highPrecision when HPP is enabled and the
 // user value can not be stored as a centPrecision price
 const createMoneyValue = (currencyCode, amount, language) => {
-  const separators = getSeparatorsForLocale(language);
   if (!currencyCode) {
     return {
       type: 'centPrecision',
@@ -247,7 +90,7 @@ const createMoneyValue = (currencyCode, amount, language) => {
     };
   }
 
-  const amountAsNumber = parseAmount({ amount, separators });
+  const amountAsNumber = parseAmount({ amount, language });
   const centAmount = amountAsNumber * 10 ** currency.fractionDigits;
   const fractionDigitsOfAmount =
     String(amountAsNumber).indexOf('.') === -1
@@ -280,14 +123,20 @@ const createMoneyValue = (currencyCode, amount, language) => {
 };
 
 // TODO implement proper formatting, depending on locale
-const formatAmount = (amount /* , currencyCode, language */) => String(amount);
+const formatAmount = (amount /* , currencyCode, language */) => amount;
 
-const getAmountFromMoneyValue = money =>
-  String(
-    money.type === 'highPrecision'
-      ? money.preciseAmount / 10 ** money.fractionDigits
-      : money.centAmount
-  );
+const getAmountAsNumberFromMoneyValue = money =>
+  money.type === 'highPrecision'
+    ? money.preciseAmount / 10 ** money.fractionDigits
+    : money.centAmount;
+
+const getAmountStyles = props => {
+  if (props.isDisabled) return styles['amount-disabled'];
+  if (props.hasAmountError) return styles['amount-error'];
+  if (props.hasAmountWarning) return styles['amount-warning'];
+
+  return styles['amount-default'];
+};
 
 export default class MoneyInput extends React.Component {
   static displayName = 'MoneyInput';
@@ -310,7 +159,7 @@ export default class MoneyInput extends React.Component {
     );
 
     const amount = formatAmount(
-      getAmountFromMoneyValue(moneyValue, language),
+      String(getAmountAsNumberFromMoneyValue(moneyValue, language)),
       moneyValue.currencyCode,
       this.props.language
     );
