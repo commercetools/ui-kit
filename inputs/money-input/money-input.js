@@ -123,7 +123,15 @@ const createMoneyValue = (currencyCode, amount, language) => {
 };
 
 // TODO implement proper formatting, depending on locale
-const formatAmount = (amount /* , currencyCode, language */) => amount;
+const formatAmount = (amount, currencyCode, language) => {
+  const moneyValue = createMoneyValue(currencyCode, amount, language);
+  if (moneyValue.type === 'centPrecision') {
+    return (moneyValue.centAmount / 10 ** moneyValue.fractionDigits).toFixed(
+      moneyValue.fractionDigits
+    );
+  }
+  return amount;
+};
 
 const getAmountAsNumberFromMoneyValue = money =>
   money.type === 'highPrecision'
@@ -258,6 +266,7 @@ export default class MoneyInput extends React.Component {
             </div>
           )}
           <input
+            type="text"
             value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
