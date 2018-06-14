@@ -21,7 +21,7 @@ const LinkButton = props => {
     >
       {Boolean(props.iconLeft) &&
         React.cloneElement(props.iconLeft, {
-          size: 'small',
+          size: 'medium',
           theme: props.isDisabled ? 'grey' : 'green',
         })}
       <Text.Body>{props.label}</Text.Body>

@@ -8,7 +8,7 @@ exports[`rendering outputs correct tree 1`] = `
   to="/foo/bar"
 >
   <AddIcon
-    size="small"
+    size="medium"
     theme="green"
   />
   <TextBody>

@@ -146,8 +146,8 @@ describe('rendering', () => {
           wrapper = shallow(<IconButton {...props} />);
         });
 
-        it('should overwrite the Icon size to be small', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('size', 'small');
+        it('should overwrite the Icon size to be medium', () => {
+          expect(wrapper.find(FilterIcon)).toHaveProp('size', 'medium');
         });
       });
     });

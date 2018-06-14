@@ -25,7 +25,7 @@ storiesOf('Labels', module)
             <Spacings.Inline key={tone} alignItems="center">
               <Label tone={tone}>
                 <Spacings.Inline alignItems="center">
-                  <Icon size="small" />
+                  <Icon size="medium" />
                   <Text.Detail>{'Hello'}</Text.Detail>
                 </Spacings.Inline>
               </Label>

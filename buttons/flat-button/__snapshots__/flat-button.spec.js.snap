@@ -18,7 +18,7 @@ exports[`rendering outputs correct tree 1`] = `
     onClick={[MockFunction]}
   >
     <AddIcon
-      size="small"
+      size="medium"
       theme="green"
     />
     <TextBody>

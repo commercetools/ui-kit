@@ -138,7 +138,7 @@ const Tag = props => (
             }
           )}
         >
-          <CloseBoldIcon size="small" />
+          <CloseBoldIcon size="medium" />
         </AccessibleButton>
       )}
     </div>

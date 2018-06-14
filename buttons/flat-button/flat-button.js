@@ -22,7 +22,7 @@ export const FlatButton = props => {
   const iconElement =
     props.icon &&
     React.cloneElement(props.icon, {
-      size: 'small',
+      size: 'medium',
       theme: iconTheme,
     });
 
