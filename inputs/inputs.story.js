@@ -67,10 +67,11 @@ storiesOf('Forms/Inputs', module)
   ))
   .addDecorator(withReadme(MoneyInputReadme))
   .add('MoneyInput', () => {
+    const currencies = ['EUR', 'USD', 'AED', 'KWD'];
     const language = select('language', ['en', 'de'], 'en');
     const defaultCurrencyCode = select(
       'default value currencyCode',
-      ['EUR', 'USD', 'AED'],
+      currencies,
       'EUR'
     );
     const defaultAmount = text('default value amount', '');
@@ -87,9 +88,7 @@ storiesOf('Forms/Inputs', module)
               <MoneyInput
                 value={value}
                 language={language}
-                currencies={
-                  boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
-                }
+                currencies={boolean('dropdown', true) ? currencies : undefined}
                 placeholder={text('placeholder', 'Placeholder')}
                 onBlur={(...args) => action('onBlur')(...args)}
                 isDisabled={boolean('isDisabled', false)}

@@ -202,7 +202,18 @@ export default class MoneyInput extends React.Component {
 
   handleCurrencyChange = (currencyCode, toggleMenu) => {
     if (this.props.value.currencyCode !== currencyCode) {
-      this.props.onChange({ currencyCode, amount: this.props.value.amount });
+      // When the user changes from a currency with 3 fraction digits to
+      // a value with 2 fraction digits, and when the input value was
+      // "9.000" (9), then it should change to "9.00" to reflect the new
+      // currency's fraction digits.
+      // When the currency was a high-precision price, then no digits should
+      // be lost
+      const formattedAmount = formatAmount(
+        this.props.value.amount.trim(),
+        currencyCode,
+        this.props.language
+      );
+      this.props.onChange({ currencyCode, amount: formattedAmount });
     }
     toggleMenu();
   };
