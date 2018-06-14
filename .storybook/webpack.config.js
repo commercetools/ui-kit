@@ -2,6 +2,7 @@ const path = require('path');
 const paths = require('../../../config/paths');
 
 module.exports = {
+  devtool: 'source-map',
   module: {
     rules: [
       {
