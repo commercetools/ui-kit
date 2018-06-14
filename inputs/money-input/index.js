@@ -1,5 +1,1 @@
-export {
-  default,
-  formatNumberAsMoney,
-  parseNumberFromMoney,
-} from './money-input';
+export { default } from './money-input';

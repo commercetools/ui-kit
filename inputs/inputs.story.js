@@ -70,10 +70,10 @@ storiesOf('Forms/Inputs', module)
     <Section>
       <IntlProvider locale="en">
         <Value
-          defaultValue={{
-            centAmountAsString: '1234.56',
+          defaultValue={MoneyInput.getInputValueFromMoneyValue({
+            centAmount: 20,
             currencyCode: 'EUR',
-          }}
+          })}
           render={(value, onChange) => (
             <MoneyInput
               value={value}
@@ -81,6 +81,7 @@ storiesOf('Forms/Inputs', module)
               currencies={
                 boolean('dropdown', true) ? ['EUR', 'USD', 'AED'] : undefined
               }
+              enableHpp={boolean('enableHpp', false)}
               placeholder={text('placeholder', 'Placeholder')}
               onBlur={(...args) => action('onBlur')(...args)}
               isDisabled={boolean('isDisabled', false)}

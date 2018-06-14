@@ -12,52 +12,53 @@ import AccessibleButton from '../../buttons/accessible-button';
 import Contraints from '../../materials/constraints';
 import messages from './messages';
 import styles from './money-input.mod.css';
+import currencies from './currencies.json';
 
-const significantDigitsRegex = new RegExp(
-  '.{1,3}(?=(.{3})+(?!.))|.{1,3}$',
-  'g'
-);
+// The first time the component renders, we want to try to show the centAmount
+// as a formatted number
+// When the user changes the value, we don't want to format again.. only when
+// the user blurs the field.
+//
+// When the user types in 22.1, we want the centAmount to be 2210, not 221.
+// This needs to happen for all currencies, but only for centPrecision.
+//
+// The input can operate with two precisions: centPrecision and highPrecision
+//   - centPrecision means the input will use NaN for centAmountAsNumberwhen the
+//     fractionDigits of the currency are exceeded
+//   - highPrecision will allow up to 20 fractionDigits and use NaN otherwise
+//
+// A full example of an Money value (centPrecision) would be
+// {
+//   "type": "centPrecision",
+//   "currencyCode": "EUR",
+//   "centAmount": 4200,
+//   "fractionDigits": 2
+// }
+// which equals 42.00 €
+//
+// A full example of an HighPrecisionMoney value (highPrecision) would be
+// {
+//  "type": "highPrecision",
+//  "currencyCode": "EUR",
+//  "centAmount": 1,
+//  "preciseAmount": 123456,
+//  "fractionDigits": 7
+// }
+// which equals 0.0123456 €
+//
+// When enableHpp is true, the input will call onChange with either
+// a HighPrecisionMoney or a regular Money value, depending on the currency
+// and the number of provided fraction digits. It will be called with a
+// HighPrecisionMoney value when the number of fraction digits exceeds the
+// default number of fraction digits of that currency.
 
-const formatNumber = (separators, stringValue) => {
-  if (!stringValue.includes(separators.decSeparator))
-    return {
-      centAmount: stringValue
-        .match(significantDigitsRegex)
-        .join(separators.thoSeparator),
-      fractionDigits: 0,
-    };
-
-  const separatorIndex = stringValue.indexOf(separators.decSeparator);
-  const significantDigits = stringValue.substring(0, separatorIndex);
-  const decimalDigits = stringValue.substring(separatorIndex + 1);
-
-  const formattedSignificantDigits = significantDigits
-    .match(significantDigitsRegex)
-    .join(separators.thoSeparator);
-
-  return {
-    centAmount: `${formattedSignificantDigits}${
-      separators.decSeparator
-    }${decimalDigits}`,
-    fractionDigits: decimalDigits.length,
-  };
-};
-
-export const formatNumberAsMoney = (value, fractionDigits, language) => {
-  const stringValue = (value * 0.1 ** fractionDigits).toFixed(fractionDigits);
-  const separators = getSeparatorsForLocale(language);
-  const { centAmount } = formatNumber(separators, stringValue);
-  return centAmount;
-};
-
-export const parseNumberFromMoney = (stringValue, language) => {
-  const separators = getSeparatorsForLocale(language);
+const parseAmount = ({ amount, separators }) => {
   const replaceCommas = RegExp(separators.thoSeparator, 'gi');
-  const centAmountWithoutFormat = stringValue.replace(replaceCommas, '');
+  const centAmountWithoutFormat = amount.replace(replaceCommas, '');
 
-  const { fractionDigits } = formatNumber(separators, stringValue);
-
-  return parseFloat(centAmountWithoutFormat) * 10 ** fractionDigits;
+  const parsedAmount = parseFloat(centAmountWithoutFormat, 10);
+  if (isNaN(parsedAmount)) return NaN;
+  return parsedAmount;
 };
 
 const getCurrencyDropdownSelectStyles = props => {
@@ -106,7 +107,6 @@ Currency.propTypes = {
 
 export const DropdownChevron = props => (
   <AccessibleButton
-    buttonRef={props.buttonRef}
     label={props.intl.formatMessage(messages.chevronLabel)}
     onClick={props.onClick}
     isDisabled={props.isDisabled}
@@ -128,9 +128,8 @@ export const DropdownChevron = props => (
 DropdownChevron.displayName = 'DropdownChevron';
 DropdownChevron.propTypes = {
   onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
   isOpen: PropTypes.bool.isRequired,
-  buttonRef: PropTypes.func.isRequired,
 
   // Intl
   intl: intlShape,
@@ -172,7 +171,6 @@ export const CurrencyDropdown = props => (
           />
           {props.currencies.length > 0 && (
             <DropdownChevronWithIntl
-              buttonRef={props.setButtonReference}
               onClick={toggleMenu}
               isDisabled={props.isDisabled}
               isOpen={isOpen}
@@ -211,23 +209,137 @@ CurrencyDropdown.propTypes = {
   isDisabled: PropTypes.bool,
   hasCurrencyError: PropTypes.bool,
   hasCurrencyWarning: PropTypes.bool,
-  setButtonReference: PropTypes.func,
 };
 
-export class MoneyInput extends React.PureComponent {
+// Turns the user input into a value the MoneyInput can pass up
+// This converts the value into a highPrecision when HPP is enabled and the
+// user value can not be stored as a centPrecision price
+const createMoneyValue = (currencyCode, amount, enableHpp, separators) => {
+  if (!currencyCode) {
+    return {
+      type: 'centPrecision',
+      currencyCode: null,
+      centAmount: NaN,
+      amount,
+      fractionDigits: null,
+    };
+  }
+
+  const currency = currencies[currencyCode];
+  if (!currency) {
+    return {
+      type: 'centPrecision',
+      currencyCode,
+      centAmount: NaN,
+      amount,
+      fractionDigits: null,
+    };
+  }
+
+  const expectedFractionDigits = currency.fractionDigits;
+
+  if (amount.length === 0) {
+    return {
+      type: 'centPrecision',
+      currencyCode,
+      centAmount: NaN,
+      amount: '',
+      fractionDigits: expectedFractionDigits,
+    };
+  }
+
+  const amountAsNumber = parseAmount({ amount, separators });
+  const centAmount = amountAsNumber * 10 ** currency.fractionDigits;
+  const fractionDigitsOfAmount =
+    String(amountAsNumber).indexOf('.') === -1
+      ? 0
+      : String(amountAsNumber).length - String(amountAsNumber).indexOf('.') - 1;
+
+  if (fractionDigitsOfAmount > currency.fractionDigits) {
+    if (!enableHpp) {
+      return {
+        type: 'centPrecision',
+        currencyCode,
+        centAmount: NaN,
+        amount,
+        fractionDigits: null,
+      };
+    }
+
+    return {
+      type: 'highPrecision',
+      currencyCode,
+      // For prices with high precision, the cent amount is rounded to the
+      // currencies default number of fraction digits
+      centAmount: parseFloat(centAmount.toFixed(0), 10),
+      amount,
+      preciseAmount: parseInt(
+        amountAsNumber * 10 ** fractionDigitsOfAmount,
+        10
+      ),
+      fractionDigits: fractionDigitsOfAmount,
+    };
+  }
+
+  return {
+    type: 'centPrecision',
+    currencyCode,
+    centAmount,
+    amount,
+    fractionDigits: currency.fractionDigits,
+  };
+};
+
+const centAmountToFormattedAmount = (centAmount, fractionDigits) =>
+  (centAmount / 10 ** fractionDigits).toFixed(fractionDigits);
+
+const getAmountFromMoneyValue = money => {
+  // when no value exists
+  if (!money) return '';
+
+  if (money.type === 'highPrecision') {
+    return String(money.preciseAmount / 10 ** money.fractionDigits);
+  }
+  const fractionDigits = currencies[money.currencyCode].fractionDigits;
+  // format the initial value
+  return centAmountToFormattedAmount(money.centAmount, fractionDigits);
+};
+
+export default class MoneyInput extends React.PureComponent {
   static displayName = 'MoneyInput';
 
-  static propTypes = {
-    value: PropTypes.shape({
-      currencyCode: PropTypes.string.isRequired,
-      centAmount: PropTypes.string,
-    }).isRequired,
+  static getInputValueFromMoneyValue = money =>
+    money
+      ? {
+          ...money,
+          amount: getAmountFromMoneyValue(money),
+        }
+      : money;
 
+  static propTypes = {
+    value: PropTypes.oneOfType([
+      PropTypes.shape({
+        type: PropTypes.oneOf(['highPrecision']).isRequired,
+        currencyCode: PropTypes.string.isRequired,
+        centAmount: PropTypes.number,
+        amount: PropTypes.string.isRequired,
+        preciseAmount: PropTypes.number,
+        fractionDigits: PropTypes.number,
+      }),
+      PropTypes.shape({
+        type: PropTypes.oneOf(['centPrecision']),
+        currencyCode: PropTypes.string.isRequired,
+        centAmount: PropTypes.number,
+        amount: PropTypes.string.isRequired,
+        fractionDigits: PropTypes.number,
+      }).isRequired,
+    ]),
     language: PropTypes.string.isRequired,
     currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
+    enableHpp: PropTypes.bool,
     onChange: PropTypes.func,
 
     hasCurrencyError: PropTypes.bool,
@@ -242,68 +354,76 @@ export class MoneyInput extends React.PureComponent {
   };
 
   static defaultProps = {
-    isDisabled: false,
     currencies: [],
     horizontalConstraint: 'scale',
   };
 
   state = {
-    dropdownButtonReference: null,
     separators: getSeparatorsForLocale(this.props.language),
   };
 
-  setDropdownButtonReference = dropdownButtonReference =>
-    this.setState({ dropdownButtonReference });
-
-  handleCurrencyChange = (currency, toggleMenu) => {
-    this.props.onChange({
-      centAmount: this.props.value.centAmount,
-      currencyCode: currency,
-    });
+  handleCurrencyChange = (currencyCode, toggleMenu) => {
+    if (this.props.value.currencyCode !== currencyCode) {
+      this.props.onChange(
+        createMoneyValue(
+          currencyCode,
+          this.props.value.amount.trim(),
+          this.props.enableHpp,
+          this.state.separators
+        )
+      );
+    }
     toggleMenu();
   };
 
   handleAmountChange = event => {
-    const centAmount = event.target.value.trim();
+    const amount = event.target.value.trim();
 
     /* if the user enters an invalid character we discard it */
-    if (!isNumberish(centAmount)) return;
+    if (!isNumberish(amount)) return;
 
-    this.props.onChange({
-      currencyCode: this.props.value.currencyCode,
-      centAmount,
-    });
+    this.props.onChange(
+      createMoneyValue(
+        this.props.value.currencyCode,
+        amount,
+        this.props.enableHpp,
+        this.state.separators
+      )
+    );
   };
 
   handleBlur = () => {
-    const onBlurValue = {
-      centAmountAsNumber: undefined,
-      fractionDigits: 0,
-    };
-
-    if (this.props.value.centAmount.length > 0) {
-      const replaceCommas = RegExp(this.state.separators.thoSeparator, 'gi');
-      const centAmountWithoutFormat = this.props.value.centAmount.replace(
-        replaceCommas,
-        ''
+    if (this.props.value.amount.trim().length > 0) {
+      const moneyValue = createMoneyValue(
+        this.props.value.currencyCode,
+        this.props.value.amount.trim(),
+        this.props.enableHpp,
+        this.state.separators
       );
 
-      const { centAmount, fractionDigits } = formatNumber(
-        this.state.separators,
-        centAmountWithoutFormat
-      );
+      if (moneyValue.type === 'centPrecision') {
+        const fractionDigits =
+          currencies[moneyValue.currencyCode].fractionDigits;
+        const formattedAmount = centAmountToFormattedAmount(
+          moneyValue.centAmount,
+          fractionDigits
+        );
 
-      this.props.onChange({
-        currencyCode: this.props.value.currencyCode,
-        centAmount,
-      });
-
-      onBlurValue.centAmountAsNumber =
-        parseFloat(centAmountWithoutFormat) * 10 ** fractionDigits;
-      onBlurValue.fractionDigits = fractionDigits;
+        // when the user entered a value with centPrecision, we can format
+        // the resulting value to that currency, e.g. 20.1 to 20.10
+        if (String(formattedAmount) !== moneyValue.amount) {
+          this.props.onChange(
+            createMoneyValue(
+              this.props.value.currencyCode,
+              formattedAmount,
+              this.props.enableHpp,
+              this.state.separators
+            )
+          );
+        }
+      }
     }
-
-    if (this.props.onBlur) this.props.onBlur(onBlurValue);
+    if (this.props.onBlur) this.props.onBlur();
   };
 
   render() {
@@ -318,7 +438,6 @@ export class MoneyInput extends React.PureComponent {
               isDisabled={this.props.isDisabled}
               hasCurrencyError={this.props.hasCurrencyError}
               hasCurrencyWarning={this.props.hasCurrencyWarning}
-              setButtonReference={this.setDropdownButtonReference}
             />
           ) : (
             <div
@@ -335,7 +454,7 @@ export class MoneyInput extends React.PureComponent {
             </div>
           )}
           <input
-            value={this.props.value.centAmount}
+            value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
               hasAmountError: this.props.hasAmountError,
@@ -351,5 +470,3 @@ export class MoneyInput extends React.PureComponent {
     );
   }
 }
-
-export default injectIntl(MoneyInput);
