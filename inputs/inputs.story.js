@@ -37,34 +37,43 @@ storiesOf('Forms/Inputs', module)
     </Section>
   ))
   .addDecorator(withReadme(NumberInputReadme))
-  .add('NumberInput', () => (
-    <Section>
-      <Value
-        defaultValue={undefined}
-        render={(value, onChange) => (
-          <NumberInput
-            name={text('name', '')}
-            value={value}
-            onChange={event => onChange(event.target.value)}
-            min={text('min', '')}
-            max={text('max', '')}
-            step={text('step', '')}
-            isAutofocussed={boolean('isAutofocussed', false)}
-            isDisabled={boolean('isDisabled', false)}
-            isReadOnly={boolean('isReadOnly', false)}
-            hasError={boolean('hasError', false)}
-            hasWarning={boolean('hasWarning', false)}
-            placeholder={text('placeholder', 'Placeholder')}
-            horizontalConstraint={select(
-              'horizontalConstraint',
-              ['xs', 's', 'm', 'l', 'xl', 'scale'],
-              'm'
-            )}
-          />
-        )}
-      />
-    </Section>
-  ))
+  .add('NumberInput', () => {
+    const min = text('min', '');
+    const max = text('max', '');
+    const step = text('step', '');
+    return (
+      <Section>
+        <Value
+          defaultValue={''}
+          render={(value, onChange) => (
+            <NumberInput
+              name={text('name', '')}
+              value={value}
+              onChange={(event, ...args) => {
+                action('onChange')(event, ...args);
+                onChange(event.target.value);
+              }}
+              onBlur={action('onBlur')}
+              min={min.trim() === '' ? undefined : parseInt(min, 10)}
+              max={max.trim() === '' ? undefined : parseInt(max, 10)}
+              step={step.trim() === '' ? undefined : parseFloat(step, 10)}
+              isAutofocussed={boolean('isAutofocussed', false)}
+              isDisabled={boolean('isDisabled', false)}
+              isReadOnly={boolean('isReadOnly', false)}
+              hasError={boolean('hasError', false)}
+              hasWarning={boolean('hasWarning', false)}
+              placeholder={text('placeholder', 'Placeholder')}
+              horizontalConstraint={select(
+                'horizontalConstraint',
+                ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                'm'
+              )}
+            />
+          )}
+        />
+      </Section>
+    );
+  })
   .addDecorator(withReadme(MoneyInputReadme))
   .add('MoneyInput', () => {
     const currencies = ['EUR', 'USD', 'AED', 'KWD'];
