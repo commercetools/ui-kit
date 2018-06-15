@@ -77,7 +77,6 @@ storiesOf('Forms/Inputs', module)
   .addDecorator(withReadme(MoneyInputReadme))
   .add('MoneyInput', () => {
     const currencies = ['EUR', 'USD', 'AED', 'KWD'];
-    const language = select('language', ['en', 'de'], 'en');
     const defaultCurrencyCode = select(
       'default value currencyCode',
       currencies,
@@ -96,7 +95,6 @@ storiesOf('Forms/Inputs', module)
             render={(value, onChange) => (
               <MoneyInput
                 value={value}
-                language={language}
                 currencies={boolean('dropdown', true) ? currencies : undefined}
                 placeholder={text('placeholder', 'Placeholder')}
                 onBlur={(...args) => action('onBlur')(...args)}
@@ -107,7 +105,7 @@ storiesOf('Forms/Inputs', module)
                   // eslint-disable-next-line no-console
                   console.log(
                     'parsed',
-                    MoneyInput.convertToMoneyValue(args[0], { language })
+                    MoneyInput.convertToMoneyValue(args[0])
                   );
                 }}
                 hasCurrencyError={boolean('hasCurrencyError', false)}

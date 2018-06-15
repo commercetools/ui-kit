@@ -15,7 +15,6 @@ import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
     currencyCode: 'EUR',
   }}
   fractionDigits={2}
-  language="en"
   currencies={['EUR', 'USD']}
 />;
 ```
@@ -26,7 +25,6 @@ import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
 | ---------------------- | ------------------------------------------------------------------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `value`                | `{ currencyCode: string, centAmount: number }`                      |    ✅    | -                            | -       | Value of the input, composed by currency code and cent amount. `centAmount` is a number as the parent is responsible for formatting the value as money. Currency symbol is mapped using `currencyCode` and currencies array. If no match is found the currency code is shown instead. |
 | `fractionDigits`       | `number`                                                            |    -     | -                            | 2       | Number of decimal digits in the fractional part of the value.                                                                                                                                                                                                                         |
-| `language`             | `string`                                                            |    ✅    | -                            | -       | Language of the input. This is a string as the parent is responsible for converting it into a money value according to format of the language.                                                                                                                                        |  |
 | `currencies`           | array of `string`                                                   |    -     | -                            | []      | List of possible currencies. When not provided or doesn't have at least one element the component renders a label with the currency instead of a dropdown.                                                                                                                            |
 | `placeholder`          | `string`                                                            |    -     |                              | -       | Placeholder text for the input.                                                                                                                                                                                                                                                       |
 | `onBlur`               | `func`                                                              |    -     | -                            | -       | Called when the `centAmount` field is blurred.                                                                                                                                                                                                                                        |
@@ -61,19 +59,14 @@ const doc = {
 const docToFormValues = aDoc => ({
   somePrice: MoneyInput.parseMoneyValue(aDoc.somePrice, {
     defaultCurrencyCode: currencies[0],
-    language: 'en',
   }),
 });
 const formValuesToDoc = formValues => ({
-  somePrice: MoneyInput.convertToMoneyValue(formValues.somePrice, {
-    language: 'en',
-  }),
+  somePrice: MoneyInput.convertToMoneyValue(formValues.somePrice),
 });
 const validate = formValues => {
   const errors = {};
-  const moneyValue = MoneyInput.convertToMoneyValue(formValues.somePrice, {
-    language: 'en',
-  });
+  const moneyValue = MoneyInput.convertToMoneyValue(formValues.somePrice);
   if (moneyValue.type === 'highPrecision') {
     errors.somePrice = 'high-precision not allowed';
   }
@@ -100,7 +93,6 @@ return (
       <form onSubmit={handleSubmit}>
         <MoneyInput
           value={values.somePrice}
-          language="en"
           currencies={currencies}
           onBlur={() => setFieldTouched('somePrice')}
           isDisabled={isSubmitting}
