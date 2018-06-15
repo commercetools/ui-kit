@@ -149,10 +149,26 @@ const getAmountStyles = props => {
 export default class MoneyInput extends React.Component {
   static displayName = 'MoneyInput';
 
-  static convertToMoneyValue = (value, { language }) =>
-    createMoneyValue(value.currencyCode, value.amount.trim(), language);
+  static convertToMoneyValue = (value, { language } = {}) => {
+    invariant(
+      language,
+      'MoneyInput: convertToMoneyValue requires options.language'
+    );
+    return createMoneyValue(value.currencyCode, value.amount.trim(), language);
+  };
 
-  static parseMoneyValue = (moneyValue, { defaultCurrencyCode, language }) => {
+  static parseMoneyValue = (
+    moneyValue,
+    { defaultCurrencyCode, language } = {}
+  ) => {
+    invariant(
+      defaultCurrencyCode,
+      'MoneyInput: parseMoneyValue requires options.defaultCurrencyCode'
+    );
+    invariant(
+      language,
+      'MoneyInput: parseMoneyValue requires options.language'
+    );
     // when no value exists
     if (!moneyValue) return { amount: '', currencyCode: defaultCurrencyCode };
 
@@ -162,14 +178,17 @@ export default class MoneyInput extends React.Component {
     );
 
     invariant(
-      typeof moneyValue.amount === 'string',
+      // highPrecision or centPrecision values must be set
+      typeof moneyValue.centAmount === 'number' ||
+        (typeof moneyValue.preciseAmount === 'number' &&
+          typeof moneyValue.fractionDigits === 'number'),
       'MoneyInput: Value must contain "amount"'
     );
 
     const amount = formatAmount(
       String(getAmountAsNumberFromMoneyValue(moneyValue, language)),
       moneyValue.currencyCode,
-      this.props.language
+      language
     );
 
     return { amount, currencyCode: moneyValue.currencyCode };
