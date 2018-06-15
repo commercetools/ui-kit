@@ -213,7 +213,12 @@ export default class MoneyInput extends React.Component {
         currencyCode,
         this.props.language
       );
-      this.props.onChange({ currencyCode, amount: formattedAmount });
+      this.props.onChange({
+        currencyCode,
+        amount: isNaN(formattedAmount)
+          ? this.props.value.amount
+          : formattedAmount,
+      });
     }
     toggleMenu();
   };
