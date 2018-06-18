@@ -28,24 +28,14 @@ const createCurrencyProps = customProps => ({
 describe('MoneyInput.convertToMoneyValue', () => {
   describe('when there is no currency code', () => {
     it('should return an invalid object', () => {
-      expect(MoneyInput.convertToMoneyValue({ amount: '1' })).toEqual({
-        type: 'centPrecision',
-        currencyCode: null,
-        centAmount: NaN,
-        fractionDigits: null,
-      });
+      expect(MoneyInput.convertToMoneyValue({ amount: '1' })).toEqual(null);
     });
   });
   describe('when an unknown currency is used', () => {
     it('should return an invalid object', () => {
       expect(
         MoneyInput.convertToMoneyValue({ currencyCode: 'foo', amount: '1' })
-      ).toEqual({
-        type: 'centPrecision',
-        currencyCode: 'foo',
-        centAmount: NaN,
-        fractionDigits: null,
-      });
+      ).toEqual(null);
     });
   });
 
@@ -53,18 +43,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
     it('should return an invalid object', () => {
       expect(
         MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '' })
-      ).toEqual({
-        type: 'centPrecision',
-        currencyCode: 'EUR',
-        centAmount: NaN,
-        fractionDigits: 2,
-      });
-      expect(MoneyInput.convertToMoneyValue({ currencyCode: 'EUR' })).toEqual({
-        type: 'centPrecision',
-        currencyCode: 'EUR',
-        centAmount: NaN,
-        fractionDigits: 2,
-      });
+      ).toEqual(null);
+      expect(MoneyInput.convertToMoneyValue({ currencyCode: 'EUR' })).toEqual(
+        null
+      );
     });
   });
 
@@ -83,12 +65,7 @@ describe('MoneyInput.convertToMoneyValue', () => {
 
       expect(
         MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: 'foo' })
-      ).toEqual({
-        type: 'centPrecision',
-        currencyCode: 'EUR',
-        centAmount: NaN,
-        fractionDigits: 2,
-      });
+      ).toEqual(null);
     });
   });
 

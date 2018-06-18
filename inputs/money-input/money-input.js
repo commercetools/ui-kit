@@ -56,35 +56,12 @@ export const parseAmount = amount => parseFloat(amount, 10);
 // This converts the value into a highPrecision when HPP is enabled and the
 // user value can not be stored as a centPrecision price
 export const createMoneyValue = (currencyCode, amount) => {
-  if (!currencyCode) {
-    return {
-      type: 'centPrecision',
-      currencyCode: null,
-      centAmount: NaN,
-      fractionDigits: null,
-    };
-  }
+  if (!currencyCode) return null;
 
   const currency = currencies[currencyCode];
-  if (!currency) {
-    return {
-      type: 'centPrecision',
-      currencyCode,
-      centAmount: NaN,
-      fractionDigits: null,
-    };
-  }
+  if (!currency) return null;
 
-  const expectedFractionDigits = currency.fractionDigits;
-
-  if (amount.length === 0 || !isNumberish(amount)) {
-    return {
-      type: 'centPrecision',
-      currencyCode,
-      centAmount: NaN,
-      fractionDigits: expectedFractionDigits,
-    };
-  }
+  if (amount.length === 0 || !isNumberish(amount)) return null;
 
   const amountAsNumber = parseAmount(amount);
   const centAmount = amountAsNumber * 10 ** currency.fractionDigits;
@@ -117,7 +94,11 @@ export const createMoneyValue = (currencyCode, amount) => {
 };
 
 const formatAmount = (amount, currencyCode) => {
-  const moneyValue = createMoneyValue(currencyCode, amount);
+  // fallback in case the user didn't enter an amount yet (or it's invalid)
+  const moneyValue = createMoneyValue(currencyCode, amount) || {
+    currencyCode,
+    centAmount: NaN,
+  };
   // format highPrecision so that . gets replaced by, and vice versa.
   if (moneyValue.type === 'highPrecision') {
     return (moneyValue.preciseAmount / 10 ** moneyValue.fractionDigits).toFixed(
