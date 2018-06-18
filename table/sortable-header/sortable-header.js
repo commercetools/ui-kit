@@ -47,7 +47,7 @@ const SortableHeader = props => {
       <Text.Body>{props.children}</Text.Body>
       <span className={styles.arrow}>
         {isArrowDown ? (
-          <AngleDownIcon size="small" theme={theme} />
+          <AngleDownIcon size="medium" theme={theme} />
         ) : (
           <AngleUpIcon className={styles.arrow} size="small" theme={theme} />
         )}

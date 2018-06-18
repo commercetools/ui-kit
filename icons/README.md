@@ -21,7 +21,7 @@ You can find a list of all available icons in the UIKit.
 
 | Props   | Type     | Required | Values                                            | Default | Description                                                                                            |
 | ------- | -------- | :------: | ------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| `size`  | `string` |          | 'small', 'big', 'scale'                           | 'big'   | Specifies the icon size (if `scale` is selected, the dimensions will scale according with the parents) |
+| `size`  | `string` |          | 'small', 'medium', 'big', 'scale'                 | 'big'   | Specifies the icon size (if `scale` is selected, the dimensions will scale according with the parents) |
 | `theme` | `string` |          | 'black', 'grey', 'blue', 'green', 'orange', 'red' | 'black' | Specifies the icon theme                                                                               |
 
 #### Where to use

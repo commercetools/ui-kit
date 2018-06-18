@@ -8,7 +8,7 @@ const createTestProps = props => ({
   type: 'primary',
   label: 'Accessibility text',
   onClick: jest.fn(),
-  icon: <AddIcon size="small" />,
+  icon: <AddIcon size="medium" />,
   isDisabled: false,
 
   isMouseOver: false,
@@ -56,7 +56,7 @@ describe('rendering', () => {
         /* eslint-disable react/jsx-key */
         expect(
           wrapper.containsMatchingElement([
-            <AddIcon size="small" />,
+            <AddIcon size="medium" />,
             <Text.Body>{'Accessibility text'}</Text.Body>,
           ])
         ).toBe(true);
@@ -73,7 +73,7 @@ describe('rendering', () => {
         expect(
           wrapper.containsMatchingElement([
             <Text.Body>{'Accessibility text'}</Text.Body>,
-            <AddIcon size="small" />,
+            <AddIcon size="medium" />,
           ])
         ).toBe(true);
         /* eslint-enable react/jsx-key */

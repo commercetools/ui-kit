@@ -7,7 +7,7 @@ import LinkButton from './link-button';
 const createTestProps = props => ({
   label: 'Accessibility text',
   to: '/foo/bar',
-  iconLeft: <AddIcon size="small" />,
+  iconLeft: <AddIcon size="medium" />,
   isDisabled: false,
   ...props,
 });
