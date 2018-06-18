@@ -3,11 +3,12 @@
 exports[`rendering outputs correct tree 1`] = `
 <Link
   className="button"
+  data-track-component="LinkButton"
   replace={false}
   to="/foo/bar"
 >
   <AddIcon
-    size="small"
+    size="medium"
     theme="green"
   />
   <TextBody>

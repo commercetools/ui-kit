@@ -49,6 +49,7 @@ describe('rendering', () => {
           'data-track-component': 'PrimaryButton',
           'data-track-label': 'PrimaryButton',
           'data-track-event': 'click',
+          'data-test': 'data-test-primary',
         });
         wrapper = shallow(<PrimaryButton {...props} />);
       });
@@ -73,6 +74,14 @@ describe('rendering', () => {
           'buttonAttributes',
           expect.objectContaining({
             'data-track-label': 'PrimaryButton',
+          })
+        );
+      });
+      it('should apply given `data-test` to AccessibleButton', () => {
+        expect(wrapper.find('AccessibleButton')).toHaveProp(
+          'buttonAttributes',
+          expect.objectContaining({
+            'data-test': 'data-test-primary',
           })
         );
       });

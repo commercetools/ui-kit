@@ -24,7 +24,7 @@ exports[`<Tag /> rendering when \`linkTo\` is not set should output correct tree
       onClick={[MockFunction]}
     >
       <CloseBoldIcon
-        size="small"
+        size="medium"
       />
     </AccessibleButton>
   </div>
@@ -124,7 +124,7 @@ exports[`<Tag /> rendering when removable (\`onRemove\`) should output correct t
       onClick={[MockFunction]}
     >
       <CloseBoldIcon
-        size="small"
+        size="medium"
       />
     </AccessibleButton>
   </div>

@@ -5,13 +5,12 @@ import classnames from 'classnames';
 import { compose } from 'recompose';
 import invariant from 'invariant';
 import isNil from 'lodash.isnil';
-import pick from 'lodash.pick';
 import requiredIf from 'react-required-if';
 import Spacings from '../../materials/spacings';
 import AccessibleButton from '../accessible-button';
-import TRACKING_ATTRIBUTES from '../tracking-attributes';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import withMouseDownState from '../../hocs/with-mouse-down-state';
+import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './secondary-button.mod.css';
 
 const Div = props => <div {...props} />;
@@ -56,7 +55,7 @@ const getThemeClassName = theme => {
 export const SecondaryButton = props => {
   const dataProps = {
     'data-track-component': 'SecondaryButton',
-    ...pick(props, [...TRACKING_ATTRIBUTES, 'data-test']),
+    ...filterDataAttributes(props),
   };
 
   const shouldLink = !props.isDisabled && Boolean(props.linkTo);

@@ -65,6 +65,7 @@ describe('rendering', () => {
           'data-track-component': 'IconButton',
           'data-track-label': 'IconButton',
           'data-track-event': 'click',
+          'data-test': 'icon-button',
         });
         wrapper = shallow(<IconButton {...props} />);
       });
@@ -89,6 +90,14 @@ describe('rendering', () => {
           'buttonAttributes',
           expect.objectContaining({
             'data-track-label': 'IconButton',
+          })
+        );
+      });
+      it('should apply given `data-test` to AccessibleButton', () => {
+        expect(wrapper.find('AccessibleButton')).toHaveProp(
+          'buttonAttributes',
+          expect.objectContaining({
+            'data-test': 'icon-button',
           })
         );
       });
@@ -137,8 +146,8 @@ describe('rendering', () => {
           wrapper = shallow(<IconButton {...props} />);
         });
 
-        it('should overwrite the Icon size to be small', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('size', 'small');
+        it('should overwrite the Icon size to be medium', () => {
+          expect(wrapper.find(FilterIcon)).toHaveProp('size', 'medium');
         });
       });
     });

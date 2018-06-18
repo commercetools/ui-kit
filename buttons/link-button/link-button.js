@@ -3,23 +3,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import Text from '../../typography/text';
+import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './link-button.mod.css';
 
-const LinkButton = props => (
-  <Link
-    to={props.to}
-    className={classnames(styles.button, {
-      [styles.disabled]: props.isDisabled,
-    })}
-  >
-    {Boolean(props.iconLeft) &&
-      React.cloneElement(props.iconLeft, {
-        size: 'small',
-        theme: props.isDisabled ? 'grey' : 'green',
+const LinkButton = props => {
+  const dataAttributes = {
+    'data-track-component': 'LinkButton',
+    ...filterDataAttributes(props),
+  };
+  return (
+    <Link
+      to={props.to}
+      className={classnames(styles.button, {
+        [styles.disabled]: props.isDisabled,
       })}
-    <Text.Body>{props.label}</Text.Body>
-  </Link>
-);
+      {...dataAttributes}
+    >
+      {Boolean(props.iconLeft) &&
+        React.cloneElement(props.iconLeft, {
+          size: 'medium',
+          theme: props.isDisabled ? 'grey' : 'green',
+        })}
+      <Text.Body>{props.label}</Text.Body>
+    </Link>
+  );
+};
 
 LinkButton.displayName = 'LinkButton';
 LinkButton.propTypes = {
