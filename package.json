@@ -42,6 +42,7 @@
     "@storybook/addon-knobs": "3.4.7",
     "@storybook/addon-options": "3.4.7",
     "@storybook/react": "3.4.7",
+    "@svgr/webpack": "2.0.0",
     "babel-loader": "8.0.0-beta.3",
     "common-tags": "1.8.0",
     "css": "2.2.3",
@@ -62,7 +63,6 @@
     "storybook-readme": "3.3.0",
     "style-loader": "0.21.0",
     "svg-url-loader": "2.3.2",
-    "svgr": "1.8.1",
     "url-loader": "1.0.1"
   }
 }

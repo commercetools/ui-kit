@@ -38,7 +38,7 @@ module.exports = {
             },
           },
           {
-            loader: require.resolve('svgr/webpack'),
+            loader: require.resolve('@svgr/webpack'),
             options: {
               icon: true,
             },
