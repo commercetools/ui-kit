@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Constraints from '../../materials/constraints';
 import styles from './number-input.mod.css';
 

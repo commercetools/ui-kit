@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash.isnil';
 import classnames from 'classnames';
-import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
 import CollapsibleMotion from '../../collapsible-motion';
