@@ -291,8 +291,8 @@ describe('callbacks', () => {
     let wrapper;
     beforeEach(() => {
       const props = createTestProps({
-        name: 'field1',
-        value: 'foo',
+        name: 'field2',
+        value: 'foo2',
       });
       wrapper = shallow(<TextArea {...props} />);
       wrapper.setState({ numOfRows: 2 });
