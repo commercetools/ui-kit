@@ -79,8 +79,8 @@ storiesOf('Forms/Inputs', module)
     const currencies = ['EUR', 'USD', 'AED', 'KWD'];
     const defaultCurrencyCode = select(
       'default value currencyCode',
-      currencies,
-      'EUR'
+      ['', ...currencies],
+      ''
     );
     const defaultAmount = text('default value amount', '');
     return (
