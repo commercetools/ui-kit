@@ -58,9 +58,7 @@ Project Root
 #### Usage
 
 ```
-@import '../../materials/tokens/borders.mod.css';
-@import '../../materials/tokens/backgrounds.mod.css';
-@import '../../materials/tokens/fonts.mod.css';
+@import '../../materials/tokens';
 ```
 
 and then:

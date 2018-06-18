@@ -15,11 +15,11 @@ import messages from './messages';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getStyles = props => {
-  if (props.isDisabled) return styles.disabled;
-  if (props.hasError) return styles.error;
-  if (props.hasWarning) return styles.warning;
-  if (props.isReadOnly) return styles.readonly;
+const getStyles = ({ isDisabled, hasError, hasWarning, isReadOnly }) => {
+  if (isDisabled) return styles.disabled;
+  if (hasError) return styles.error;
+  if (hasWarning) return styles.warning;
+  if (isReadOnly) return styles.readonly;
 
   return styles.pristine;
 };
@@ -85,7 +85,12 @@ export class TextArea extends React.Component {
                 }}
                 disabled={this.props.isDisabled}
                 placeholder={this.props.placeholder}
-                className={getStyles(this.props)}
+                className={getStyles({
+                  isDisabled: this.props.isDisabled,
+                  hasError: this.props.hasError,
+                  hasWarning: this.props.hasWarning,
+                  isReadOnly: this.props.isReadOnly,
+                })}
                 readOnly={this.props.isReadOnly}
                 autoFocus={this.props.isAutofocussed}
                 /* ARIA */

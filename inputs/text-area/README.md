@@ -18,6 +18,7 @@ import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
 | ---------------------- | -------- | :------: | ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `name`                 | `string` |    -     | -                       | -       | Used as HTML `name` property                                                                                               |
 | `value`                | `string` |    ✅    | -                       | -       | Value of the input                                                                                                         |
+| `onChange`             | `func`   |    ✅    | -                       | -       | Called with an event containing the new value. Required when input is not read only. Parent should pass it back as `value` |
 | `id`                   | `string` |    -     | -                       | -       | Passed from a wrapping form component for identification purposes                                                          |
 | `placeholder`          | `string` |    -     | -                       | -       | Placeholder text for the input                                                                                             |
 | `isAutofocussed`       | `bool`   |    -     | -                       | -       | Focus the input field on initial render                                                                                    |
@@ -25,7 +26,6 @@ import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
 | `isReadOnly`           | `bool`   |    -     | -                       | `false` | Indicates that the field is displaying read-only content                                                                   |
 | `hasError`             | `bool`   |    -     | -                       | `false` | Indicates the input field has an error                                                                                     |
 | `hasWarning`           | `bool`   |    -     | -                       | `false` | Indicates the input field has a warning                                                                                    |
-| `onChange`             | `func`   |    -     | -                       | -       | Called with an event containing the new value. Required when input is not read only. Parent should pass it back as `value` |
 | `onBlur`               | `func`   |    -     | -                       | -       | Called when field is blurred                                                                                               |
 | `onFocus`              | `func`   |    -     | -                       | -       | Called when field is focused                                                                                               |
 | `horizontalConstraint` | `object` |    -     | `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                 |
