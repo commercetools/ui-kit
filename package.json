@@ -5,12 +5,14 @@
   "license": "Proprietary",
   "private": true,
   "scripts": {
-    "postinstall": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-colors.js"
+    "postinstall": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-colors.js",
+    "build": "build-storybook -s . -o .storybook/dist",
+    "start": "start-storybook -s . -p 9002"
   },
   "dependencies": {
     "classnames": "2.2.6",
     "cleave.js": "1.3.3",
-    "common-tags": "1.7.2",
+    "common-tags": "1.8.0",
     "dom-helpers": "3.3.1",
     "flatpickr": "4.5.0",
     "is-touch-device": "1.0.1",
@@ -35,11 +37,11 @@
   },
   "devDependencies": {
     "@commercetools-frontend/babel-preset-mc-app": "1.0.0",
-    "@storybook/addon-actions": "3.4.6",
-    "@storybook/addon-info": "3.4.6",
-    "@storybook/addon-knobs": "3.4.6",
-    "@storybook/addon-options": "3.4.6",
-    "@storybook/react": "3.4.6",
+    "@storybook/addon-actions": "3.4.7",
+    "@storybook/addon-info": "3.4.7",
+    "@storybook/addon-knobs": "3.4.7",
+    "@storybook/addon-options": "3.4.7",
+    "@storybook/react": "3.4.7",
     "babel-loader": "8.0.0-beta.3",
     "common-tags": "1.8.0",
     "css": "2.2.3",
