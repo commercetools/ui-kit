@@ -7,7 +7,7 @@ import { CaretDownIcon, CaretUpIcon } from '../../icons';
 import styles from './money-input.mod.css';
 import messages from './messages';
 
-const DropdownChevron = props => (
+export const DropdownChevron = props => (
   <AccessibleButton
     label={props.intl.formatMessage(messages.chevronLabel)}
     onClick={props.onClick}

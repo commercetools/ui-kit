@@ -10,11 +10,10 @@ A controlled input component for money values with validation states.
 import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
 
 <MoneyInput
-  value={{
-    centAmount: 10,
-    currencyCode: 'EUR',
+  value={{ amount: '1.00', currencyCode: 'EUR' }}
+  onChange={({ amount, currencyCode }) => {
+    /* .. */
   }}
-  fractionDigits={2}
   currencies={['EUR', 'USD']}
 />;
 ```

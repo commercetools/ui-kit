@@ -2,31 +2,18 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { intlMock } from '@commercetools-local/test-utils';
 import AccessibleButton from '../../buttons/accessible-button';
-import {
-  MoneyInput,
-  Currency,
-  CurrencyDropdown,
-  DropdownChevron,
-  DropdownChevronWithIntl,
-} from './money-input';
+import MoneyInput from './money-input';
+import Currency from './currency';
+import Option from './option';
+import CurrencyDropdown from './currency-dropdown';
+import DropdownChevron from './dropdown-chevron';
 import styles from './money-input.mod.css';
 
 const createTestProps = customProps => ({
-  language: 'en',
-  value: { currencyCode: 'EUR' },
+  value: { currencyCode: 'EUR', amount: '' },
   currencies: ['EUR', 'USD'],
   onChange: jest.fn(),
   onBlur: jest.fn(),
-  intl: intlMock,
-  ...customProps,
-});
-
-const createDropdownProps = customProps => ({
-  onClick: jest.fn(),
-  isDisabled: false,
-  isOpen: false,
-  className: 'chevron-icon',
-  buttonRef: jest.fn(),
   intl: intlMock,
   ...customProps,
 });
@@ -38,51 +25,228 @@ const createCurrencyProps = customProps => ({
   ...customProps,
 });
 
+describe('MoneyInput.convertToMoneyValue', () => {
+  describe('when there is no currency code', () => {
+    it('should return an invalid object', () => {
+      expect(MoneyInput.convertToMoneyValue({ amount: '1' })).toEqual({
+        type: 'centPrecision',
+        currencyCode: null,
+        centAmount: NaN,
+        fractionDigits: null,
+      });
+    });
+  });
+  describe('when an unknown currency is used', () => {
+    it('should return an invalid object', () => {
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'foo', amount: '1' })
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'foo',
+        centAmount: NaN,
+        fractionDigits: null,
+      });
+    });
+  });
+
+  describe('when no amount is present', () => {
+    it('should return an invalid object', () => {
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '' })
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'EUR',
+        centAmount: NaN,
+        fractionDigits: 2,
+      });
+      expect(MoneyInput.convertToMoneyValue({ currencyCode: 'EUR' })).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'EUR',
+        centAmount: NaN,
+        fractionDigits: 2,
+      });
+    });
+  });
+
+  describe('when amount can not be parsed', () => {
+    it('should return an error object', () => {
+      // The function generally only needs to handle values
+      // which the input[type=number] emits
+      // All those are guaranteed to be parseable by the browsers anyways.
+      // So the case described here can only happen when the function is called
+      // with an amount not obtained through the browser.
+      //
+      // Examples for such non-input values would be '1.2.3' and '1,2.3'
+      //
+      // In case we ever switch the input to type="text", we should add more
+      // tests here.
+
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: 'foo' })
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'EUR',
+        centAmount: NaN,
+        fractionDigits: 2,
+      });
+    });
+  });
+
+  // The browser always transforms "1,2" to "1.2" on the event
+  // so we don't need to handle the comma case.
+  describe('when called with a centPrecision price', () => {
+    it('should treat it as a decimal separator', () => {
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '1.2' })
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'EUR',
+        centAmount: 120,
+        fractionDigits: 2,
+      });
+
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'KWD', amount: '1.234' })
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'KWD',
+        centAmount: 1234,
+        fractionDigits: 3,
+      });
+    });
+  });
+
+  describe('when called with a high precision price', () => {
+    it('should return a money value of type "highPrecision"', () => {
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '1.234' })
+      ).toEqual({
+        type: 'highPrecision',
+        currencyCode: 'EUR',
+        centAmount: 123,
+        fractionDigits: 3,
+        preciseAmount: 1234,
+      });
+    });
+  });
+});
+
+describe('MoneyInput.parseMoneyValue', () => {
+  describe('when called without a value', () => {
+    it('should throw', () => {
+      expect(() => MoneyInput.parseMoneyValue()).toThrow(
+        'MoneyInput.parseMoneyValue: Value must be passed as an object'
+      );
+    });
+  });
+  describe('when called with a value missing currencyCode', () => {
+    it('should throw', () => {
+      expect(() => MoneyInput.parseMoneyValue({ centAmount: 10 })).toThrow(
+        'MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
+      );
+    });
+  });
+  describe('when called with a centPrecision money missing centAmount', () => {
+    it('should throw', () => {
+      expect(() =>
+        MoneyInput.parseMoneyValue({
+          type: 'centPrecision',
+          currencyCode: 'EUR',
+        })
+      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    });
+  });
+  describe('when called with a centPrecision money using an unknown currenyCode', () => {
+    it('should throw', () => {
+      expect(() =>
+        MoneyInput.parseMoneyValue({
+          type: 'centPrecision',
+          currencyCode: 'FOO',
+        })
+      ).toThrow(
+        'MoneyInput.parseMoneyValue: Value must use known currency code'
+      );
+    });
+  });
+  describe('when called with a highPrecision money missing fractionDigits', () => {
+    it('should throw', () => {
+      expect(() =>
+        MoneyInput.parseMoneyValue({
+          type: 'highPrecision',
+          currencyCode: 'EUR',
+          preciseAmount: 3,
+        })
+      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    });
+  });
+  describe('when called with a highPrecision money missing preciseAmount', () => {
+    it('should throw', () => {
+      expect(() =>
+        MoneyInput.parseMoneyValue({
+          type: 'highPrecision',
+          currencyCode: 'EUR',
+          fractionDigits: 2,
+        })
+      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    });
+  });
+
+  describe('when called with a minimal, valid centPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        MoneyInput.parseMoneyValue({
+          centAmount: 1234,
+          currencyCode: 'EUR',
+        })
+      ).toEqual({ amount: '12.34', currencyCode: 'EUR' });
+    });
+  });
+  describe('when called with a full, valid centPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        MoneyInput.parseMoneyValue({
+          type: 'centPrecision',
+          centAmount: 1234,
+          currencyCode: 'EUR',
+          fractionDigits: 2,
+        })
+      ).toEqual({ amount: '12.34', currencyCode: 'EUR' });
+    });
+  });
+  describe('when called with a minimal highPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        MoneyInput.parseMoneyValue({
+          type: 'highPrecision',
+          currencyCode: 'EUR',
+          fractionDigits: 3,
+          preciseAmount: 12345,
+        })
+      ).toEqual({ amount: '12.345', currencyCode: 'EUR' });
+    });
+  });
+  describe('when called with a full highPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        MoneyInput.parseMoneyValue({
+          type: 'highPrecision',
+          centAmount: 1234,
+          currencyCode: 'EUR',
+          fractionDigits: 3,
+          preciseAmount: 12345,
+        })
+      ).toEqual({ amount: '12.345', currencyCode: 'EUR' });
+    });
+  });
+});
+
+// -----------------------------------------------------------------------------
+
 describe('rendering', () => {
   let wrapper;
   let props;
   let downshiftProps;
   let dowshiftRenderWrapper;
-
-  describe('`DropdownChevron` component', () => {
-    let dropdownChevron;
-    let iconWrapper;
-    let dropdownProps;
-    beforeEach(() => {
-      dropdownProps = createDropdownProps();
-      dropdownChevron = shallow(<DropdownChevron {...dropdownProps} />);
-    });
-
-    it('should render an `AccessibleButton`', () => {
-      expect(dropdownChevron).toRender(AccessibleButton);
-    });
-
-    describe('when is closed', () => {
-      beforeEach(() => {
-        iconWrapper = shallow(
-          dropdownChevron.find(AccessibleButton).prop('children')
-        );
-      });
-
-      it('should render a `CaretDownIcon`', () => {
-        expect(iconWrapper).toRender('CaretDownIcon');
-      });
-    });
-
-    describe('when is open', () => {
-      beforeEach(() => {
-        dropdownProps = createDropdownProps({ isOpen: true });
-        dropdownChevron = shallow(<DropdownChevron {...dropdownProps} />);
-        iconWrapper = shallow(
-          dropdownChevron.find(AccessibleButton).prop('children')
-        );
-      });
-
-      it('should render a `CaretUpIcon`', () => {
-        expect(iconWrapper).toRender('CaretUpIcon');
-      });
-    });
-  });
 
   describe('`Currency` component', () => {
     const currencyProps = createCurrencyProps();
@@ -112,13 +276,13 @@ describe('rendering', () => {
           .renderProp('render', downshiftProps);
       });
 
-      it('should render an `Currency`', () => {
+      it('should render `Currency`', () => {
         expect(dowshiftRenderWrapper).toRender(Currency);
       });
 
       describe('when currency is selectable', () => {
         it('should render a chevron', () => {
-          expect(dowshiftRenderWrapper).toRender(DropdownChevronWithIntl);
+          expect(dowshiftRenderWrapper).toRender(DropdownChevron);
         });
       });
 
@@ -298,25 +462,46 @@ describe('rendering', () => {
 describe('callbacks', () => {
   let wrapper;
   let props;
-  let dropdown;
-  let downshiftProps;
   let dowshiftRenderWrapper;
+  let inputWrapper;
   describe('currency field', () => {
-    describe('when changing centAmount', () => {
+    describe('when selecting the already used currency', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        dropdown = wrapper.find(CurrencyDropdown).shallow();
-        downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
-        dowshiftRenderWrapper = shallow(
-          dropdown.find('Downshift').prop('render')(downshiftProps)
-        );
+
+        dowshiftRenderWrapper = wrapper
+          .find(CurrencyDropdown)
+          .dive()
+          .renderProp('render', { isOpen: true, toggleMenu: jest.fn() });
+
         dowshiftRenderWrapper
-          .find('Option')
-          .at(0)
-          .prop('onClick')({
-          target: {},
-        });
+          .find(Option)
+          // click the currency which is already selected
+          .findWhere(item => item.prop('children') === props.value.currencyCode)
+          .prop('onClick')({ target: { value: '12' } });
+      });
+
+      it('should not call onChange', () => {
+        expect(props.onChange).not.toHaveBeenCalled();
+      });
+    });
+    describe('when changing currency', () => {
+      beforeEach(() => {
+        props = createTestProps();
+        wrapper = shallow(<MoneyInput {...props} />);
+
+        dowshiftRenderWrapper = wrapper
+          .find(CurrencyDropdown)
+          .dive()
+          .renderProp('render', { isOpen: true, toggleMenu: jest.fn() });
+
+        dowshiftRenderWrapper
+          .find(Option)
+          // clicking the already selected one (EUR) won't trigger an action,
+          // so we click the second one (USD)
+          .findWhere(item => item.prop('children') === 'USD')
+          .prop('onClick')({ target: { value: '12' } });
       });
 
       it('should call onChange', () => {
@@ -325,37 +510,66 @@ describe('callbacks', () => {
 
       it('should call onChange with the new value', () => {
         expect(props.onChange).toHaveBeenCalledWith({
-          currencyCode: 'EUR',
+          currencyCode: 'USD',
+          amount: '',
         });
       });
     });
   });
 
-  describe('centAmount field', () => {
-    describe('when input loses focus', () => {
+  describe('amount field', () => {
+    describe('when changing amount', () => {
       beforeEach(() => {
-        props = createTestProps({
-          value: {
-            currencyCode: 'EUR',
-            centAmount: '10.15',
-          },
-          onBlur: jest.fn(),
-        });
+        props = createTestProps();
         wrapper = shallow(<MoneyInput {...props} />);
-        wrapper
-          .find('input')
-          .at(0)
-          .prop('onBlur')();
-      });
 
-      it('should call onBlur', () => {
-        expect(props.onBlur).toHaveBeenCalled();
+        inputWrapper = wrapper.find('input');
+        inputWrapper.simulate('change', { target: { value: '1.3' } });
       });
+      it('should call onChange', () => {
+        expect(props.onChange).toHaveBeenCalledWith({
+          amount: '1.3',
+          currencyCode: 'EUR',
+        });
+      });
+    });
+    describe('when input loses focus', () => {
+      describe('when value is not formatted', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            value: { currencyCode: 'EUR', amount: '10.3' },
+            onBlur: jest.fn(),
+          });
+          wrapper = shallow(<MoneyInput {...props} />);
+          wrapper.find('input').prop('onBlur')();
+        });
 
-      it('should call onBlur with parameters', () => {
-        expect(props.onBlur).toHaveBeenCalledWith({
-          centAmountAsNumber: 1015,
-          fractionDigits: 2,
+        it('should call onChange with the formatted value', () => {
+          expect(props.onChange).toHaveBeenCalledWith({
+            currencyCode: 'EUR',
+            amount: '10.30',
+          });
+        });
+
+        it('should call onBlur without arguments', () => {
+          expect(props.onBlur).toHaveBeenCalledWith();
+        });
+      });
+      describe('when value is already formatted', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            value: { currencyCode: 'EUR', amount: '10.15' },
+            onBlur: jest.fn(),
+          });
+          wrapper = shallow(<MoneyInput {...props} />);
+          wrapper.find('input').prop('onBlur')();
+        });
+
+        it('should call onBlur without arguments', () => {
+          expect(props.onBlur).toHaveBeenCalledWith();
+        });
+        it('should not call onChange', () => {
+          expect(props.onChange).not.toHaveBeenCalled();
         });
       });
     });

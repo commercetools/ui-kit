@@ -50,18 +50,17 @@ import CurrencyDropdown from './currency-dropdown';
 // needs can detect this by checking `value.type === 'highPrecision'` and it needs
 // to add a validation error itself.
 
-const parseAmount = amount => parseFloat(amount, 10);
+export const parseAmount = amount => parseFloat(amount, 10);
 
 // Turns the user input into a value the MoneyInput can pass up
 // This converts the value into a highPrecision when HPP is enabled and the
 // user value can not be stored as a centPrecision price
-const createMoneyValue = (currencyCode, amount) => {
+export const createMoneyValue = (currencyCode, amount) => {
   if (!currencyCode) {
     return {
       type: 'centPrecision',
       currencyCode: null,
       centAmount: NaN,
-      amount,
       fractionDigits: null,
     };
   }
@@ -72,19 +71,17 @@ const createMoneyValue = (currencyCode, amount) => {
       type: 'centPrecision',
       currencyCode,
       centAmount: NaN,
-      amount,
       fractionDigits: null,
     };
   }
 
   const expectedFractionDigits = currency.fractionDigits;
 
-  if (amount.length === 0) {
+  if (amount.length === 0 || !isNumberish(amount)) {
     return {
       type: 'centPrecision',
       currencyCode,
       centAmount: NaN,
-      amount: '',
       fractionDigits: expectedFractionDigits,
     };
   }
@@ -103,7 +100,6 @@ const createMoneyValue = (currencyCode, amount) => {
       // For prices with high precision, the cent amount is rounded to the
       // currencies default number of fraction digits
       centAmount: parseFloat(centAmount.toFixed(0), 10),
-      amount,
       preciseAmount: parseInt(
         amountAsNumber * 10 ** fractionDigitsOfAmount,
         10
@@ -116,7 +112,6 @@ const createMoneyValue = (currencyCode, amount) => {
     type: 'centPrecision',
     currencyCode,
     centAmount,
-    amount,
     fractionDigits: currency.fractionDigits,
   };
 };
@@ -137,7 +132,7 @@ const formatAmount = (amount, currencyCode) => {
 const getAmountAsNumberFromMoneyValue = money =>
   money.type === 'highPrecision'
     ? money.preciseAmount / 10 ** money.fractionDigits
-    : money.centAmount;
+    : money.centAmount / 10 ** currencies[money.currencyCode].fractionDigits;
 
 const getAmountStyles = props => {
   if (props.isDisabled) return styles['amount-disabled'];
@@ -151,19 +146,25 @@ export default class MoneyInput extends React.Component {
   static displayName = 'MoneyInput';
 
   static convertToMoneyValue = value =>
-    createMoneyValue(value.currencyCode, value.amount.trim());
-
-  static parseMoneyValue = (moneyValue, { defaultCurrencyCode } = {}) => {
-    invariant(
-      defaultCurrencyCode,
-      'MoneyInput: parseMoneyValue requires options.defaultCurrencyCode'
+    createMoneyValue(
+      value.currencyCode,
+      typeof value.amount === 'string' ? value.amount.trim() : ''
     );
-    // when no value exists
-    if (!moneyValue) return { amount: '', currencyCode: defaultCurrencyCode };
+
+  static parseMoneyValue = moneyValue => {
+    invariant(
+      typeof moneyValue === 'object',
+      'MoneyInput.parseMoneyValue: Value must be passed as an object'
+    );
 
     invariant(
       typeof moneyValue.currencyCode === 'string',
-      'MoneyInput: Value must contain "currencyCode"'
+      'MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
+    );
+
+    invariant(
+      Object.hasOwnProperty.call(currencies, moneyValue.currencyCode),
+      'MoneyInput.parseMoneyValue: Value must use known currency code'
     );
 
     invariant(
@@ -171,7 +172,7 @@ export default class MoneyInput extends React.Component {
       typeof moneyValue.centAmount === 'number' ||
         (typeof moneyValue.preciseAmount === 'number' &&
           typeof moneyValue.fractionDigits === 'number'),
-      'MoneyInput: Value must contain "amount"'
+      'MoneyInput.parseMoneyValue: Value must contain "amount"'
     );
 
     const amount = formatAmount(
