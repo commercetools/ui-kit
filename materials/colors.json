@@ -1,305 +1,123 @@
 [
   [
     {
-      "key": "--color-blue",
-      "name": "blue",
-      "value": "#0679d1"
-    },
-    {
-      "key": "--color-dodgerBlue",
-      "name": "dodgerBlue",
-      "value": "#0d9df8"
-    },
-    {
-      "key": "--color-blueNavy",
-      "name": "blueNavy",
-      "value": "#213e48"
-    },
-    {
-      "key": "--color-purple",
-      "name": "purple",
-      "value": "#bd72ff"
-    }
-  ],
-  [
-    {
-      "key": "--color-red",
-      "name": "red",
-      "value": "#e60050"
-    },
-    {
-      "key": "--color-orange",
-      "name": "orange",
-      "value": "#f27923"
-    }
-  ],
-  [
-    {
       "key": "--color-green",
       "name": "green",
-      "value": "#4e8410"
+      "value": "#00b39e"
     },
     {
-      "key": "--color-darkGreen",
-      "name": "darkGreen",
-      "value": "#215457"
+      "key": "--color-green-25",
+      "name": "green-25",
+      "value": "color(var(--color-green) lightness(25%))"
     },
     {
-      "key": "--color-primaryGreen",
-      "name": "primaryGreen",
-      "value": "#20ad92"
+      "key": "--color-green-40",
+      "name": "green-40",
+      "value": "color(var(--color-green) lightness(40%))"
     },
     {
-      "key": "--color-greenLight",
-      "name": "greenLight",
-      "value": "#87d8c8"
+      "key": "--color-green-85",
+      "name": "green-85",
+      "value": "color(var(--color-green) lightness(85%))"
     },
     {
-      "key": "--color-buttonPrimary",
-      "name": "buttonPrimary",
-      "value": "#00b6a1"
+      "key": "--color-green-95",
+      "name": "green-95",
+      "value": "color(var(--color-green) lightness(95%))"
     },
-    {
-      "key": "--color-buttonHover",
-      "name": "buttonHover",
-      "value": "#03c8b2"
-    },
-    {
-      "key": "--color-greenDowny",
-      "name": "greenDowny",
-      "value": "#52cebf"
-    }
-  ],
-  [
     {
       "key": "--color-white",
       "name": "white",
       "value": "#fff"
     },
     {
-      "key": "--color-whiteAlabaster",
-      "name": "whiteAlabaster",
-      "value": "#fafafa"
-    },
-    {
-      "key": "--color-whiteCatskill",
-      "name": "whiteCatskill",
-      "value": "#f9fafc"
-    },
-    {
-      "key": "--color-whitePorcelain",
-      "name": "whitePorcelain",
-      "value": "#eff2f6"
-    },
-    {
-      "key": "--color-whiteSnow",
-      "name": "whiteSnow",
-      "value": "#f2f2f2"
-    }
-  ],
-  [
-    {
-      "key": "--color-black",
-      "name": "black",
-      "value": "#333"
-    },
-    {
-      "key": "--color-grey",
-      "name": "grey",
-      "value": "#aeaeae"
-    },
-    {
-      "key": "--color-greyDove",
-      "name": "greyDove",
-      "value": "#666"
-    },
-    {
-      "key": "--color-greyDusty",
-      "name": "greyDusty",
-      "value": "#979797"
-    },
-    {
-      "key": "--color-greyMischka",
-      "name": "greyMischka",
-      "value": "#e5e4e9"
-    },
-    {
-      "key": "--color-greyTundora",
-      "name": "greyTundora",
-      "value": "#484848"
-    },
-    {
-      "key": "--color-greyAlabaster",
-      "name": "greyAlabaster",
-      "value": "#f9f9f9"
-    },
-    {
-      "key": "--color-gray",
-      "name": "primaryGrey",
-      "value": "#ccc"
-    },
-    {
-      "key": "--color-gray-60",
-      "name": "secondaryGrey",
-      "value": "#848484"
-    },
-    {
-      "key": "--color-gray-95",
-      "name": "coolGrey",
-      "value": "#f6f6f6"
-    },
-    {
-      "key": "--color-gray-90",
-      "name": "greyGallery",
-      "value": "#eee"
-    },
-    {
-      "key": "--color-gray-90",
-      "name": "greyGallery",
-      "value": "#eaeaea"
-    },
-    {
-      "key": "--color-gray-90",
-      "name": "greyAlto",
-      "value": "#d8d8d8"
-    },
-    {
-      "key": "--color-gray-60",
-      "name": "greyNevada",
-      "value": "#65747d"
-    },
-    {
-      "key": "--color-greySolid",
-      "name": "greySolid",
-      "value": "#afafaf"
-    }
-  ],
-  [
-    {
-      "key": "--color-fadedOrange20",
-      "name": "fadedOrange20",
-      "value": "color(var(--color-orange) alpha(20%))"
-    },
-    {
-      "key": "--color-fadedBlack25",
-      "name": "fadedBlack25",
-      "value": "color(var(--color-black) alpha(25%))"
-    },
-    {
-      "key": "--color-fadedWhiteCatskill90",
-      "name": "fadedWhiteCatskill90",
-      "value": "color(var(--color-whiteCatskill) alpha(90%))"
-    }
-  ],
-  [
-    {
-      "key": "--color-green",
-      "name": "--color-green",
-      "value": "#00b39e"
-    },
-    {
-      "key": "--color-green-25",
-      "name": "--color-green-25",
-      "value": "color(var(--color-green) lightness(25%))"
-    },
-    {
-      "key": "--color-green-40",
-      "name": "--color-green-40",
-      "value": "color(var(--color-green) lightness(40%))"
-    },
-    {
-      "key": "--color-green-85",
-      "name": "--color-green-85",
-      "value": "color(var(--color-green) lightness(85%))"
-    },
-    {
-      "key": "--color-green-95",
-      "name": "--color-green-95",
-      "value": "color(var(--color-green) lightness(95%))"
-    },
-    {
-      "key": "--color-white",
-      "name": "--color-white",
-      "value": "#fff"
-    },
-    {
       "key": "--color-navy",
-      "name": "--color-navy",
+      "name": "navy",
       "value": "#213c45"
     },
     {
       "key": "--color-navy-30",
-      "name": "--color-navy-30",
+      "name": "navy-30",
       "value": "color(var(--color-navy) lightness(30%))"
     },
     {
       "key": "--color-navy-40",
-      "name": "--color-navy-40",
+      "name": "navy-40",
       "value": "color(var(--color-navy) lightness(40%))"
     },
     {
+      "key": "--color-navy-95",
+      "name": "navy-95",
+      "value": "color(var(--color-navy) lightness(95%))"
+    },
+    {
       "key": "--color-navy-98",
-      "name": "--color-navy-98",
+      "name": "navy-98",
       "value": "color(var(--color-navy) lightness(98%))"
     },
     {
       "key": "--color-blue",
-      "name": "--color-blue",
+      "name": "blue",
       "value": "#078cdf"
     },
     {
+      "key": "--color-blue-85",
+      "name": "blue-85",
+      "value": "color(var(--color-blue) lightness(85%))"
+    },
+    {
       "key": "--color-blue-95",
-      "name": "--color-blue-95",
+      "name": "blue-95",
       "value": "color(var(--color-blue) lightness(95%))"
     },
     {
       "key": "--color-gray",
-      "name": "--color-gray",
+      "name": "gray",
       "value": "#ccc"
     },
     {
       "key": "--color-gray-60",
-      "name": "--color-gray-60",
+      "name": "gray-60",
       "value": "color(var(--color-gray) lightness(60%))"
     },
     {
       "key": "--color-gray-90",
-      "name": "--color-gray-90",
+      "name": "gray-90",
       "value": "color(var(--color-gray) lightness(90%))"
     },
     {
       "key": "--color-gray-95",
-      "name": "--color-gray-95",
+      "name": "gray-95",
       "value": "color(var(--color-gray) lightness(95%))"
     },
     {
       "key": "--color-orange",
-      "name": "--color-orange",
+      "name": "orange",
       "value": "#f16d0e"
     },
     {
       "key": "--color-orange-95",
-      "name": "--color-orange-95",
+      "name": "orange-95",
       "value": "color(var(--color-orange) lightness(95%))"
     },
     {
       "key": "--color-red",
-      "name": "--color-red",
+      "name": "red",
       "value": "#e60050"
     },
     {
       "key": "--color-red-95",
-      "name": "--color-red-95",
+      "name": "red-95",
       "value": "color(var(--color-red) lightness(95%))"
     },
     {
       "key": "--color-purple",
-      "name": "--color-purple",
+      "name": "purple",
       "value": "#b866ff"
     },
     {
       "key": "--color-black",
-      "name": "--color-black",
+      "name": "black",
       "value": "#1a1a1a"
     }
   ]

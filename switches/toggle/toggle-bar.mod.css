@@ -32,14 +32,9 @@
 }
 
 .toggle-bar.active rect {
-  fill: var(--color-green-40);
+  fill: var(--color-green-25);
 }
 
 .toggle-bar.disabled rect {
   fill: var(--color-gray);
-}
-
-.toggle-bar.active.disabled rect {
-  fill: var(--color-green-85);
-  opacity: 0.5;
 }

@@ -18,11 +18,11 @@
 /* Set the colors for the different interactions by selecting the `p` element, rendered by `<Text.Body>` */
 
 .primary p {
-  color: var(--color-green-25);
+  color: var(--color-green);
 }
 
 .primary:hover p {
-  color: var(--color-green);
+  color: var(--color-green-25);
 }
 
 .secondary p {

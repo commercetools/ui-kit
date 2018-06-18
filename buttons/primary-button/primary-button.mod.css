@@ -52,17 +52,17 @@
 
 /** primary tone */
 .button-tone-primary .button {
-  background-color: var(--color-green-25);
+  background-color: var(--color-green);
 }
 
 .button-tone-primary .active:hover,
 .button-tone-primary .button:hover {
-  background-color: var(--color-green);
+  background-color: var(--color-green-25);
 }
 
 .button-tone-primary .active,
 .button-tone-primary .button:active {
-  background-color: var(--color-green-25);
+  background-color: var(--color-green);
 }
 
 /** urgent tone */
@@ -72,7 +72,7 @@
 
 .button-tone-urgent .active:hover,
 .button-tone-urgent .button:hover {
-  background-color: var(--color-green);
+  background-color: var(--color-green-25);
 }
 
 .button-tone-urgent .active,
