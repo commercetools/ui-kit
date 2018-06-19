@@ -253,12 +253,15 @@ export default class MoneyInput extends React.Component {
 
   handleBlur = () => {
     const amount = this.props.value.amount.trim();
-    if (amount.length > 0) {
+    // Skip formatting for empty value or when the input is used with an
+    // unknown currency.
+    if (amount.length > 0 && currencies[this.props.value.currencyCode]) {
       const formattedAmount = formatAmount(
         amount,
         this.props.value.currencyCode
       );
-      // when the user entered a value with centPrecision, we can format
+
+      // When the user entered a value with centPrecision, we can format
       // the resulting value to that currency, e.g. 20.1 to 20.10
       if (String(formattedAmount) !== amount) {
         this.props.onChange({
