@@ -41,7 +41,7 @@ describe('<Headline>', () => {
     expect(wrapper.text()).toMatch('Title');
   });
 
-  describe('with truncate text', () => {
+  describe('with truncated text', () => {
     beforeEach(() => {
       wrapper = shallow(
         <Text.Headline elementType="h1" truncate={true}>
@@ -49,7 +49,7 @@ describe('<Headline>', () => {
         </Text.Headline>
       );
     });
-    it('should contain `truncated` class', () => {
+    it('should contain `truncate` class', () => {
       expect(wrapper).toContainClass(styles.truncate);
     });
   });
@@ -110,7 +110,7 @@ describe('<Subheadline>', () => {
       expect(wrapper).toContainClass(styles.primary);
     });
   });
-  describe('with truncate text', () => {
+  describe('with truncated text', () => {
     beforeEach(() => {
       wrapper = shallow(
         <Text.Subheadline
@@ -123,7 +123,7 @@ describe('<Subheadline>', () => {
         </Text.Subheadline>
       );
     });
-    it('should contain `truncated` class', () => {
+    it('should contain `truncate` class', () => {
       expect(wrapper).toContainClass(styles.truncate);
     });
   });
@@ -185,7 +185,7 @@ describe('<Body>', () => {
         expect(wrapper).toHaveText('Detail');
       });
     });
-    describe('with truncate text', () => {
+    describe('with truncated text', () => {
       beforeEach(() => {
         wrapper = shallow(
           <Text.Body tone="secondary" truncate={true}>
@@ -193,7 +193,7 @@ describe('<Body>', () => {
           </Text.Body>
         );
       });
-      it('should contain `truncated` class', () => {
+      it('should contain `truncate` class', () => {
         expect(wrapper).toContainClass(styles.truncate);
       });
     });
@@ -360,7 +360,7 @@ describe('<Detail>', () => {
       });
     });
 
-    describe('with truncate text', () => {
+    describe('with truncated text', () => {
       beforeEach(() => {
         wrapper = shallow(
           <Text.Detail isInline={true} tone="secondary" truncate={true}>
@@ -368,7 +368,7 @@ describe('<Detail>', () => {
           </Text.Detail>
         );
       });
-      it('should contain `truncated` class', () => {
+      it('should contain `truncate` class', () => {
         expect(wrapper).toContainClass(styles.truncate);
       });
     });
