@@ -243,6 +243,7 @@ export default class MoneyInput extends React.Component {
       });
     }
     toggleMenu();
+    if (this.props.onBlur) this.props.onBlur();
   };
 
   handleAmountChange = event =>
