@@ -5,6 +5,7 @@ import HeaderIcon from './header-icon';
 const createTestProps = custom => ({
   isClosed: false,
   tone: 'primary',
+  size: 'small',
   ...custom,
 });
 
@@ -51,8 +52,35 @@ describe('rendering', () => {
       it('should render with `header-icon-primary` className', () => {
         expect(wrapper).toHaveClassName('header-icon-primary');
       });
-      it('should render `<AngleDownIcon />` with `green` theme', () => {
-        expect(wrapper.find('AngleDownIcon')).toHaveProp('theme', 'green');
+      it('should render `<AngleDownIcon />` with `black` theme', () => {
+        expect(wrapper.find('AngleDownIcon')).toHaveProp('theme', 'black');
+      });
+    });
+  });
+
+  describe('size', () => {
+    describe('when is `small`', () => {
+      beforeEach(() => {
+        props = createTestProps({ size: 'small' });
+        wrapper = shallow(<HeaderIcon {...props} />);
+      });
+      it('should render with `header-icon-small` className', () => {
+        expect(wrapper).toHaveClassName('header-icon-small');
+      });
+      it('should render `<AngleDownIcon />` with `small` size', () => {
+        expect(wrapper.find('AngleDownIcon')).toHaveProp('size', 'small');
+      });
+    });
+    describe('when is `medium`', () => {
+      beforeEach(() => {
+        props = createTestProps({ size: 'medium' });
+        wrapper = shallow(<HeaderIcon {...props} />);
+      });
+      it('should not render with `header-icon-small` className', () => {
+        expect(wrapper).not.toHaveClassName('header-icon-small');
+      });
+      it('should render `<AngleDownIcon />` with `medium` size', () => {
+        expect(wrapper.find('AngleDownIcon')).toHaveProp('size', 'medium');
       });
     });
   });
