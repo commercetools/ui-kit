@@ -102,3 +102,9 @@ small {
 .wrap {
   white-space: pre-wrap;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
