@@ -9,20 +9,43 @@ import currencies from './currencies.json';
 import Currency from './currency';
 import CurrencyDropdown from './currency-dropdown';
 
+// The MoneyInput component always operates on a value consisting of:
+//   { amount: String, currencyCode: String }
+//
+// The amount may only use a dot as the decimal separator.
+// The currencyCode must be supported by the API.
+//
+// The MoneyInput does not do any validation on its own. It only serves as a way
+// to get the amount and currencyCode input from the user. Validation is always
+// up to the parent.
+//
+// The CTP API supports prices two types of prices: centPrecision and
+// highPrecision. The MoneyInput itself does not know about these. However,
+// it has two static methods defined (convertToMoneyValue and parseMoneyValue),
+// which can be used to convert between MoneyInput value and the MoneyValue
+// supported by the API.
+// Some places in the API do not support highPrecision prices, but the
+// convertToMoneyValue will always return either a centPrecision or a
+// highPrecision price. It's up the MoneyInput's parent to show a validation
+// error in case a highPrecision price is used.
+//
+// A value is considered as to have highPrecision when the number of supplied
+// fraction digits exceed the number of fraction digits the currency uses. For
+// example, 42.00 € is always a centPrecision price, while 42.001 € is always a
+// highPrecision price. It is not possible to hae 42.00 € as a highPrecision
+// price.
+//
 // The first time the component renders, we want to try to show the centAmount
-// as a formatted number
-// When the user changes the value, we don't want to format again.. only when
-// the user blurs the field.
+// as a formatted number. To achieve this, the parseMoneyValue function can
+// be used to turn the API value into a value the MoneyInput understands.
+// During this transformation, the money value will get formatted into "amount".
 //
-// When the user types in 22.1, we want the centAmount to be 2210, not 221.
-// This needs to happen for all currencies, but only for centPrecision.
+// When the user changes the value, we don't want to format again. We only format
+// in case the user blurs the field. This avoids many edge cases where the
+// formatting would mess with the user's input.
 //
-// The input can operate with two precisions: centPrecision and highPrecision
-//   - centPrecision means the input will use NaN for centAmountAsNumberwhen the
-//     fractionDigits of the currency are exceeded
-//   - highPrecision will allow up to 20 fractionDigits and use NaN otherwise
 //
-// A full example of an Money value (centPrecision) would be
+// A full example of an MoneyValue with centPrecision would be
 // {
 //   "type": "centPrecision",
 //   "currencyCode": "EUR",
@@ -31,7 +54,7 @@ import CurrencyDropdown from './currency-dropdown';
 // }
 // which equals 42.00 €
 //
-// A full example of an HighPrecisionMoney value (highPrecision) would be
+// A full example of an MoneyValue with highPrecision would be
 // {
 //  "type": "highPrecision",
 //  "currencyCode": "EUR",
@@ -40,21 +63,23 @@ import CurrencyDropdown from './currency-dropdown';
 //  "fractionDigits": 7
 // }
 // which equals 0.0123456 €
-//
-// The input will call onChange with either a HighPrecisionMoney or a regular
-// Money value, depending on the currency and the number of provided fraction
-// digits. It will be called with a HighPrecisionMoney value when the number of
-// fraction digits exceeds the default number of fraction digits of that currency.
-//
-// In case high precision prices should not be supported, the parent form
-// needs can detect this by checking `value.type === 'highPrecision'` and it needs
-// to add a validation error itself.
 
+// Parses the value returned from <input type="number" />'s onChange function
+// The input will only call us with parseable values, or an empty string
+// The function will return NaN for the empty string.
 export const parseAmount = amount => parseFloat(amount, 10);
 
-// Turns the user input into a value the MoneyInput can pass up
-// This converts the value into a highPrecision when HPP is enabled and the
-// user value can not be stored as a centPrecision price
+// Turns the user input into a value the MoneyInput can pass up through onChange
+// In case the number of fraction digits contained in "amount" exceeds the
+// number of fraction digits the currency uses, it will emit a price of
+// type "highPrecision" instead of the regular "centPrecision".
+// It will return "null" in case an invalid value is entered.
+// The value is invalid when
+//  - no amount was entered
+//  - an invalid amount was entered
+//  - no currency was selected
+//
+// This function expects the "amount" to be a trimmed value.
 export const createMoneyValue = (currencyCode, amount) => {
   if (!currencyCode) return null;
 
@@ -64,8 +89,12 @@ export const createMoneyValue = (currencyCode, amount) => {
   if (amount.length === 0 || !isNumberish(amount)) return null;
 
   const amountAsNumber = parseAmount(amount);
+  if (isNaN(amountAsNumber)) return null;
+
   const centAmount = amountAsNumber * 10 ** currency.fractionDigits;
   const fractionDigitsOfAmount =
+    // The input will always use a dot as the separator.
+    // That means we don't have to handle a comma.
     String(amountAsNumber).indexOf('.') === -1
       ? 0
       : String(amountAsNumber).length - String(amountAsNumber).indexOf('.') - 1;
@@ -191,9 +220,9 @@ export default class MoneyInput extends React.Component {
   handleCurrencyChange = (currencyCode, toggleMenu) => {
     if (this.props.value.currencyCode !== currencyCode) {
       // When the user changes from a currency with 3 fraction digits to
-      // a value with 2 fraction digits, and when the input value was
+      // a currency with 2 fraction digits, and when the input value was
       // "9.000" (9), then it should change to "9.00" to reflect the new
-      // currency's fraction digits.
+      // currency's number of fraction digits.
       // When the currency was a high-precision price, then no digits should
       // be lost
       const formattedAmount = formatAmount(
@@ -202,6 +231,9 @@ export default class MoneyInput extends React.Component {
       );
       this.props.onChange({
         currencyCode,
+        // The user could be changing the currency before entering any amount,
+        // or while the amount is invalid. In these cases, we don't attempt to
+        // format the amount.
         amount: isNaN(formattedAmount)
           ? this.props.value.amount
           : formattedAmount,
@@ -210,27 +242,22 @@ export default class MoneyInput extends React.Component {
     toggleMenu();
   };
 
-  handleAmountChange = event => {
-    const amount = event.target.value.trim();
-
-    /* if the user enters an invalid character we discard it */
-    if (!isNumberish(amount)) return;
-
+  handleAmountChange = event =>
     this.props.onChange({
       currencyCode: this.props.value.currencyCode,
-      amount,
+      amount: event.target.value.trim(),
     });
-  };
 
   handleBlur = () => {
-    if (this.props.value.amount.trim().length > 0) {
+    const amount = this.props.value.amount.trim();
+    if (amount.length > 0) {
       const formattedAmount = formatAmount(
-        this.props.value.amount.trim(),
+        amount,
         this.props.value.currencyCode
       );
       // when the user entered a value with centPrecision, we can format
       // the resulting value to that currency, e.g. 20.1 to 20.10
-      if (String(formattedAmount) !== this.props.value.amount.trim()) {
+      if (String(formattedAmount) !== amount) {
         this.props.onChange({
           currencyCode: this.props.value.currencyCode,
           amount: formattedAmount,

@@ -43,6 +43,29 @@ import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
 The convertToMoneyValue function will turn a MoneyInput value into a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
 If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
 
+Here are examples of `centPrecision` and `highPrecision` prices.
+
+```js
+// 42.00 €
+{
+  "type": "centPrecision",
+  "currencyCode": "EUR",
+  "centAmount": 4200,
+  "fractionDigits": 2
+}
+```
+
+```js
+// 0.0123456 €
+{
+ "type": "highPrecision",
+ "currencyCode": "EUR",
+ "centAmount": 1,
+ "preciseAmount": 123456,
+ "fractionDigits": 7
+}
+```
+
 #### `MoneyInput.parseMoneyValue`
 
 The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the MoneyInput component can handle `({ amount, currencyCode })`.
