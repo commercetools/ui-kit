@@ -13,12 +13,15 @@ storiesOf('Panels/CollapsiblePanel', module)
   .add('Uncontrolled', () => (
     <Section>
       <CollapsiblePanel
-        label={text('Label', 'Title')}
+        header={text('Header', 'Title')}
         description={text('Description', 'Uncontrolled component example')}
         isSticky={boolean('isSticky', false)}
         isDisabled={boolean('isDisabled', false)}
         tone={select('tone', ['primary', 'urgent'], 'primary')}
         headerControls={text('headerControls', 'headerControl')}
+        theme={select('theme', ['dark', 'light'])}
+        condensed={boolean('condensed', false)}
+        secondaryLabel={text('SecondaryLabel', 'Subtitle')}
       >
         <div>{text('Text', 'Sample text')}</div>
       </CollapsiblePanel>
@@ -29,7 +32,7 @@ storiesOf('Panels/CollapsiblePanel', module)
       <Collapsible>
         {({ isOpen, toggle }) => (
           <CollapsiblePanel
-            label={text('Label', 'Title')}
+            header={text('Header', 'Title')}
             description={text('Description', 'Controlled component example')}
             isSticky={boolean('isSticky', false)}
             isDisabled={boolean('isDisabled', false)}
@@ -37,6 +40,9 @@ storiesOf('Panels/CollapsiblePanel', module)
             isClosed={!isOpen}
             onToggle={toggle}
             headerControls={text('headerControls', 'headerControl')}
+            theme={select('theme', ['dark', 'light'])}
+            condensed={boolean('condensed', false)}
+            secondaryLabel={text('SecondaryLabel', 'Subtitle')}
           >
             <div>{text('Text', 'Sample text')}</div>
           </CollapsiblePanel>

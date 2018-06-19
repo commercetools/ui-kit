@@ -1,11 +1,13 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import Text from '../../typography/text';
+import CollapsiblePanelHeader from './collapsible-panel-header';
 import CollapsiblePanel from './collapsible-panel';
 
 describe('CollapsiblePanel', () => {
   const createTestProps = props => ({
     className: 'custom-container',
-    label: 'Header Title',
+    header: 'Header Title',
     isDisabled: false,
     ...props,
   });
@@ -36,7 +38,7 @@ describe('CollapsiblePanel', () => {
       });
 
       it('should render title in header container', () => {
-        expect(collapsibleMotionWrapper).toRender('TextHeadline');
+        expect(collapsibleMotionWrapper).toRender(CollapsiblePanelHeader);
       });
 
       describe('when sticky mode is enabled', () => {
@@ -65,12 +67,86 @@ describe('CollapsiblePanel', () => {
 
       it('should contain header title', () => {
         expect(
-          collapsibleMotionWrapper.find('TextHeadline').contains('Header Title')
+          collapsibleMotionWrapper
+            .find(CollapsiblePanelHeader)
+            .contains('Header Title')
         ).toBe(true);
       });
 
       it('children should contain text', () => {
         expect(collapsibleMotionWrapper.find('#foo').text()).toBe('Foo');
+      });
+
+      describe('when has dark `theme`', () => {
+        beforeEach(() => {
+          props = createTestProps({ theme: 'dark' });
+          wrapper = shallow(
+            <CollapsiblePanel {...props}>
+              <span id="foo">{'Foo'}</span>
+            </CollapsiblePanel>
+          );
+          collapsibleMotionWrapper = shallow(
+            wrapper.find('CollapsibleMotion').prop('children')({
+              isOpen: true,
+            })
+          );
+        });
+
+        it('should apply a dark class name to the container', () => {
+          expect(collapsibleMotionWrapper).toRender('.container-theme-dark');
+        });
+
+        it('should apply a dark class name to the header container', () => {
+          expect(collapsibleMotionWrapper).toRender(
+            '.header-container-theme-dark'
+          );
+        });
+      });
+
+      describe('when has light `theme`', () => {
+        beforeEach(() => {
+          props = createTestProps({ theme: 'light' });
+          wrapper = shallow(
+            <CollapsiblePanel {...props}>
+              <span id="foo">{'Foo'}</span>
+            </CollapsiblePanel>
+          );
+          collapsibleMotionWrapper = shallow(
+            wrapper.find('CollapsibleMotion').prop('children')({
+              isOpen: true,
+            })
+          );
+        });
+
+        it('should apply a light class name to the container', () => {
+          expect(collapsibleMotionWrapper).toRender('.container-theme-light');
+        });
+
+        it('should apply a light class name to the header container', () => {
+          expect(collapsibleMotionWrapper).toRender(
+            '.header-container-theme-light'
+          );
+        });
+      });
+
+      describe('when is condensed', () => {
+        beforeEach(() => {
+          props = createTestProps({ condensed: true });
+          wrapper = shallow(
+            <CollapsiblePanel {...props}>
+              <span id="foo">{'Foo'}</span>
+            </CollapsiblePanel>
+          );
+          collapsibleMotionWrapper = shallow(
+            wrapper.find('CollapsibleMotion').prop('children')({
+              isOpen: true,
+            })
+          );
+        });
+
+        it('should render <Text.Detail /> for the header', () => {
+          expect(collapsibleMotionWrapper).toRender(Text.Detail);
+        });
       });
     });
 
