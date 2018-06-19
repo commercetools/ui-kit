@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './text.mod.css';
 
-const Headline = props => (
-  <props.elementType className={props.truncate ? styles.truncate : undefined}>
-    {props.children}
-  </props.elementType>
-);
+const Headline = props => {
+  const HeadlineElement = props.elementType;
+  return (
+    <HeadlineElement
+      className={classnames({
+        [styles.truncate]: props.truncate,
+      })}
+    >
+      {props.children}
+    </HeadlineElement>
+  );
+};
 Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   elementType: PropTypes.oneOf(['h1', 'h2', 'h3']).isRequired,
@@ -15,17 +22,20 @@ Headline.propTypes = {
   truncate: PropTypes.bool,
 };
 
-const Subheadline = props => (
-  <props.elementType
-    className={classnames({
-      [styles.bold]: props.isBold,
-      [styles[`${props.tone}`]]: props.tone,
-      [styles.truncate]: props.truncate,
-    })}
-  >
-    {props.children}
-  </props.elementType>
-);
+const Subheadline = props => {
+  const SubheadlineElement = props.elementType;
+  return (
+    <SubheadlineElement
+      className={classnames({
+        [styles.bold]: props.isBold,
+        [styles[`${props.tone}`]]: props.tone,
+        [styles.truncate]: props.truncate,
+      })}
+    >
+      {props.children}
+    </SubheadlineElement>
+  );
+};
 Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
   elementType: PropTypes.oneOf(['h4', 'h5']).isRequired,
