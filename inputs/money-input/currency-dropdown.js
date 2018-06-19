@@ -6,11 +6,16 @@ import Currency from './currency';
 import Option from './option';
 import DropdownChevron from './dropdown-chevron';
 
-const getCurrencyDropdownSelectStyles = props => {
-  if (props.isDisabled) return styles['currency-disabled'];
-  if (props.hasCurrencyError) return styles['currency-error'];
-  if (props.hasCurrencyWarning) return styles['currency-warning'];
-  if (props.isOpen) return styles['currency-active'];
+const getCurrencyDropdownSelectStyles = ({
+  isDisabled,
+  hasCurrencyError,
+  hasCurrencyWarning,
+  isOpen,
+}) => {
+  if (isDisabled) return styles['currency-disabled'];
+  if (hasCurrencyError) return styles['currency-error'];
+  if (hasCurrencyWarning) return styles['currency-warning'];
+  if (isOpen) return styles['currency-active'];
 
   return styles['currency-default'];
 };
