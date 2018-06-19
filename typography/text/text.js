@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import styles from './text.mod.css';
 
 const Headline = props => (
-  <props.elementType className={props.truncate && styles.truncate}>
+  <props.elementType className={props.truncate ? styles.truncate : undefined}>
     {props.children}
   </props.elementType>
 );
