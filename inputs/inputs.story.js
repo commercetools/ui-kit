@@ -89,7 +89,10 @@ storiesOf('Forms/Inputs', module)
           <IntlProvider locale="en">
             <Value
               key={`${defaultCurrencyCode}-${defaultAmount}`}
-              defaultValue={MoneyInput.parseMoneyValue(undefined)}
+              defaultValue={{
+                amount: defaultAmount,
+                currencyCode: defaultCurrencyCode,
+              }}
               render={(value, onChange) => (
                 <MoneyInput
                   value={value}
