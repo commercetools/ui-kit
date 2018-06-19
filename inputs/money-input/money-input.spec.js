@@ -110,10 +110,11 @@ describe('MoneyInput.convertToMoneyValue', () => {
 
 describe('MoneyInput.parseMoneyValue', () => {
   describe('when called without a value', () => {
-    it('should throw', () => {
-      expect(() => MoneyInput.parseMoneyValue()).toThrow(
-        'MoneyInput.parseMoneyValue: Value must be passed as an object'
-      );
+    it('should return a default value', () => {
+      expect(MoneyInput.parseMoneyValue()).toEqual({
+        currencyCode: '',
+        amount: '',
+      });
     });
   });
   describe('when called with a value missing currencyCode', () => {

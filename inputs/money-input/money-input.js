@@ -162,9 +162,11 @@ export default class MoneyInput extends React.Component {
     );
 
   static parseMoneyValue = moneyValue => {
+    if (!moneyValue) return { currencyCode: '', amount: '' };
+
     invariant(
       typeof moneyValue === 'object',
-      'MoneyInput.parseMoneyValue: Value must be passed as an object'
+      'MoneyInput.parseMoneyValue: Value must be passed as an object or be undefined'
     );
 
     invariant(

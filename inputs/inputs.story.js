@@ -84,43 +84,52 @@ storiesOf('Forms/Inputs', module)
     );
     const defaultAmount = text('default value amount', '');
     return (
-      <Section>
-        <IntlProvider locale="en">
-          <Value
-            key={`${defaultCurrencyCode}-${defaultAmount}`}
-            defaultValue={{
-              currencyCode: defaultCurrencyCode,
-              amount: defaultAmount,
-            }}
-            render={(value, onChange) => (
-              <MoneyInput
-                value={value}
-                currencies={boolean('dropdown', true) ? currencies : undefined}
-                placeholder={text('placeholder', 'Placeholder')}
-                onBlur={(...args) => action('onBlur')(...args)}
-                isDisabled={boolean('isDisabled', false)}
-                onChange={(...args) => {
-                  action('onChange')(...args);
-                  onChange(...args);
-                  // eslint-disable-next-line no-console
-                  console.log(
-                    'parsed',
-                    MoneyInput.convertToMoneyValue(args[0])
-                  );
-                }}
-                hasCurrencyError={boolean('hasCurrencyError', false)}
-                hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-                hasAmountError={boolean('hasAmountError', false)}
-                hasAmountWarning={boolean('hasAmountWarning', false)}
-                horizontalConstraint={select(
-                  'horizontalConstraint',
-                  ['s', 'm', 'l', 'xl', 'scale'],
-                  'm'
-                )}
-              />
-            )}
-          />
-        </IntlProvider>
-      </Section>
+      <div>
+        <Section>
+          <IntlProvider locale="en">
+            <Value
+              key={`${defaultCurrencyCode}-${defaultAmount}`}
+              defaultValue={MoneyInput.parseMoneyValue(undefined)}
+              render={(value, onChange) => (
+                <MoneyInput
+                  value={value}
+                  currencies={
+                    boolean('dropdown', true) ? currencies : undefined
+                  }
+                  placeholder={text('placeholder', 'Placeholder')}
+                  onBlur={(...args) => action('onBlur')(...args)}
+                  isDisabled={boolean('isDisabled', false)}
+                  onChange={(...args) => {
+                    action('onChange')(...args);
+                    onChange(...args);
+                    // eslint-disable-next-line no-console
+                    console.log(
+                      'parsed',
+                      MoneyInput.convertToMoneyValue(args[0])
+                    );
+                  }}
+                  hasCurrencyError={boolean('hasCurrencyError', false)}
+                  hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
+                  hasAmountError={boolean('hasAmountError', false)}
+                  hasAmountWarning={boolean('hasAmountWarning', false)}
+                  horizontalConstraint={select(
+                    'horizontalConstraint',
+                    ['s', 'm', 'l', 'xl', 'scale'],
+                    'm'
+                  )}
+                />
+              )}
+            />
+          </IntlProvider>
+        </Section>
+        <Section>
+          <p>
+            <i>
+              Check the console to see the result of{' '}
+              <code>MoneyInput.convertToMoneyValue</code>.
+            </i>
+          </p>
+        </Section>
+      </div>
     );
   });
