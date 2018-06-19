@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import invariant from 'invariant';
 import { isNumberish } from '@commercetools-local/utils/numbers';
+import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Contraints from '../../materials/constraints';
 import styles from './money-input.mod.css';
 import currencies from './currencies.json';
@@ -308,6 +309,7 @@ export default class MoneyInput extends React.Component {
             onChange={this.handleAmountChange}
             onBlur={this.handleBlur}
             disabled={this.props.isDisabled}
+            {...filterDataAttributes(this.props)}
           />
         </div>
       </Contraints.Horizontal>
