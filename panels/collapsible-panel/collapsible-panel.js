@@ -79,6 +79,7 @@ export default class CollapsiblePanel extends React.PureComponent {
     // Pass only `data-*` props
     const headerProps = filterDataAttributes(this.props);
     const isStringHeader = typeof this.props.header === 'string';
+    const scale = this.props.condensed ? 's' : 'm';
 
     return (
       <CollapsibleMotion
@@ -104,17 +105,14 @@ export default class CollapsiblePanel extends React.PureComponent {
                 [styles.sticky]: this.props.isSticky && isOpen,
               })}
             >
-              <Spacings.InsetSquish scale={this.props.condensed ? 's' : 'm'}>
+              <Spacings.InsetSquish scale={scale}>
                 <div
                   {...headerProps}
                   onClick={() => this.handleToggle(toggle)}
                   className={styles.header}
                 >
                   <div className={styles['truncate-header']}>
-                    <Spacings.Inline
-                      alignItems="center"
-                      scale={this.props.condensed ? 's' : 'm'}
-                    >
+                    <Spacings.Inline alignItems="center" scale={scale}>
                       {!this.props.isDisabled && (
                         <HeaderIcon
                           isClosed={!isOpen}
@@ -157,11 +155,11 @@ export default class CollapsiblePanel extends React.PureComponent {
             <div style={containerStyles}>
               <div ref={registerContentNode}>
                 {this.props.description && (
-                  <Spacings.Inset scale={this.props.condensed ? 's' : 'm'}>
+                  <Spacings.Inset scale={scale}>
                     <Text.Detail>{this.props.description}</Text.Detail>
                   </Spacings.Inset>
                 )}
-                <Spacings.Inset scale={this.props.condensed ? 's' : 'm'}>
+                <Spacings.Inset scale={scale}>
                   <div className={styles.content}>{this.props.children}</div>
                 </Spacings.Inset>
               </div>
