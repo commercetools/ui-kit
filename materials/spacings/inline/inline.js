@@ -18,7 +18,7 @@ Inline.propTypes = {
     'center',
     'baseline',
   ]),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 Inline.defaultProps = {

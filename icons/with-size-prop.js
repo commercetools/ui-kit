@@ -17,7 +17,7 @@ const getIconSize = size => {
     case 'big':
       return ICON_SIZES.BIG;
     default:
-      return ICON_SIZES.MEDIUM;
+      return ICON_SIZES.BIG;
   }
 };
 

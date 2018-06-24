@@ -40,6 +40,19 @@ describe('<Headline>', () => {
   it('should render given text', () => {
     expect(wrapper.text()).toMatch('Title');
   });
+
+  describe('with truncated text', () => {
+    beforeEach(() => {
+      wrapper = shallow(
+        <Text.Headline elementType="h1" truncate={true}>
+          {'Title'}
+        </Text.Headline>
+      );
+    });
+    it('should contain `truncate` class', () => {
+      expect(wrapper).toContainClass(styles.truncate);
+    });
+  });
 });
 
 describe('<Subheadline>', () => {
@@ -95,6 +108,23 @@ describe('<Subheadline>', () => {
     });
     it('should have "primary" class', () => {
       expect(wrapper).toContainClass(styles.primary);
+    });
+  });
+  describe('with truncated text', () => {
+    beforeEach(() => {
+      wrapper = shallow(
+        <Text.Subheadline
+          elementType="h4"
+          isBold={true}
+          tone="primary"
+          truncate={true}
+        >
+          {'Subtitle'}
+        </Text.Subheadline>
+      );
+    });
+    it('should contain `truncate` class', () => {
+      expect(wrapper).toContainClass(styles.truncate);
     });
   });
 });
@@ -153,6 +183,18 @@ describe('<Body>', () => {
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
+      });
+    });
+    describe('with truncated text', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Body tone="secondary" truncate={true}>
+            {'Detail'}
+          </Text.Body>
+        );
+      });
+      it('should contain `truncate` class', () => {
+        expect(wrapper).toContainClass(styles.truncate);
       });
     });
   });
@@ -315,6 +357,19 @@ describe('<Detail>', () => {
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
+      });
+    });
+
+    describe('with truncated text', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Detail isInline={true} tone="secondary" truncate={true}>
+            {'Detail'}
+          </Text.Detail>
+        );
+      });
+      it('should contain `truncate` class', () => {
+        expect(wrapper).toContainClass(styles.truncate);
       });
     });
   });
