@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import FlatButton from '@commercetools-local/ui-kit/buttons/flat-button';
+import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
 ```
 
 #### Description

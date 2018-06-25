@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import Table from '@commercetools-local/ui-kit/table';
+import Table from '@commercetools-frontend/ui-kit/table';
 ```
 
 ### `<Table />`

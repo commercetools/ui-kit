@@ -11,10 +11,10 @@ setOptions({
   name: 'MC Styleguide',
   url: 'https://mc.escemo.com/styleguide',
   goFullScreen: false,
-  showLeftPanel: true,
-  showDownPanel: true,
+  showStoriesPanel: true,
+  showAddonPanel: true,
   showSearchBox: false,
-  downPanelInRight: true,
+  addonPanelInRight: true,
   sortStoriesByKind: false,
   hierarchySeparator: '/',
 

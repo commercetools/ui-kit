@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import LocalizedTextInput from '@commercetools-local/ui-kit/inputs/localized-text-input';
+import LocalizedTextInput from '@commercetools-frontend/ui-kit/inputs/localized-text-input';
 
 <LocalizedTextInput
   value={{ en: 'House', de: 'House' }}
