@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-frontend/ui-kit",
   "version": "1.0.0",
-  "description": "",
+  "description": "UI component library to build MC applications",
   "license": "Proprietary",
   "private": true,
   "scripts": {
