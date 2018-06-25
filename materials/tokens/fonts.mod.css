@@ -23,7 +23,7 @@
    Colors
    ========================================================================== */
 
-  --token-font-color-default: var(--color-default);
+  --token-font-color-default: var(--color-black);
   --token-font-color-disabled: var(--color-greyNevada);
   --token-font-color-error: var(--color-red);
   --token-font-color-warning: var(--color-orange);

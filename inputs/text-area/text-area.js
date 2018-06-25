@@ -55,9 +55,10 @@ export class TextArea extends React.Component {
   };
 
   static defaultProps = {
-    onFocus: () => {},
     hasError: false,
     hasWarning: false,
+    isAutofocussed: false,
+    isDefaultClosed: false,
   };
 
   state = {
@@ -85,7 +86,7 @@ export class TextArea extends React.Component {
                 onBlur={this.props.onBlur}
                 onFocus={() => {
                   if (!isOpen) toggle();
-                  this.props.onFocus();
+                  if (this.props.onFocus) this.props.onFocus();
                 }}
                 disabled={this.props.isDisabled}
                 placeholder={this.props.placeholder}
