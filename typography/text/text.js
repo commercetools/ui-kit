@@ -3,25 +3,39 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './text.mod.css';
 
-const Headline = props => (
-  <props.elementType>{props.children}</props.elementType>
-);
+const Headline = props => {
+  const HeadlineElement = props.elementType;
+  return (
+    <HeadlineElement
+      className={classnames({
+        [styles.truncate]: props.truncate,
+      })}
+    >
+      {props.children}
+    </HeadlineElement>
+  );
+};
 Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   elementType: PropTypes.oneOf(['h1', 'h2', 'h3']).isRequired,
   children: PropTypes.node.isRequired,
+  truncate: PropTypes.bool,
 };
 
-const Subheadline = props => (
-  <props.elementType
-    className={classnames({
-      [styles.bold]: props.isBold,
-      [styles[`${props.tone}`]]: props.tone,
-    })}
-  >
-    {props.children}
-  </props.elementType>
-);
+const Subheadline = props => {
+  const SubheadlineElement = props.elementType;
+  return (
+    <SubheadlineElement
+      className={classnames({
+        [styles.bold]: props.isBold,
+        [styles[`${props.tone}`]]: props.tone,
+        [styles.truncate]: props.truncate,
+      })}
+    >
+      {props.children}
+    </SubheadlineElement>
+  );
+};
 Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
   elementType: PropTypes.oneOf(['h4', 'h5']).isRequired,
@@ -34,6 +48,7 @@ Subheadline.propTypes = {
     'negative',
   ]),
   children: PropTypes.node.isRequired,
+  truncate: PropTypes.bool,
 };
 
 const Wrap = props => <div className={styles.wrap}>{props.children}</div>;
@@ -48,6 +63,7 @@ const Body = props =>
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
         [styles[`${props.tone}`]]: props.tone,
+        [styles.truncate]: props.truncate,
       })}
     >
       {props.children}
@@ -57,6 +73,7 @@ const Body = props =>
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
         [styles[`${props.tone}`]]: props.tone,
+        [styles.truncate]: props.truncate,
       })}
     >
       {props.children}
@@ -74,6 +91,7 @@ Body.propTypes = {
     'negative',
   ]),
   children: PropTypes.node.isRequired,
+  truncate: PropTypes.bool,
 };
 
 const Detail = props => (
@@ -82,6 +100,7 @@ const Detail = props => (
       [styles.bold]: props.isBold,
       [styles.inline]: props.isInline,
       [styles[`${props.tone}`]]: props.tone,
+      [styles.truncate]: props.truncate,
     })}
   >
     {props.children}
@@ -99,6 +118,7 @@ Detail.propTypes = {
     'negative',
   ]),
   children: PropTypes.node.isRequired,
+  truncate: PropTypes.bool,
 };
 
 export default {

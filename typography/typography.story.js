@@ -19,6 +19,7 @@ storiesOf('Typography/Text', module)
     <Section>
       <Text.Headline
         elementType={select('Element type', ['h1', 'h2', 'h3'], 'h1')}
+        truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text <Headline>')}
       </Text.Headline>
@@ -37,6 +38,7 @@ storiesOf('Typography/Text', module)
           'positive',
           'negative',
         ])}
+        truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text <Subheadline>')}
       </Text.Subheadline>
@@ -66,6 +68,7 @@ storiesOf('Typography/Text', module)
           'positive',
           'negative',
         ])}
+        truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text <Body>')}
       </Text.Body>
@@ -83,6 +86,7 @@ storiesOf('Typography/Text', module)
           'positive',
           'negative',
         ])}
+        truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text')}
       </Text.Detail>

@@ -8,7 +8,7 @@ const Inset = ({ children, scale }) => (
 Inset.displayName = 'Inset';
 Inset.propTypes = {
   scale: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 Inset.defaultProps = {

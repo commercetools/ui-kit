@@ -6,8 +6,8 @@ import invariant from 'invariant';
 import isNil from 'lodash.isnil';
 import withMouseDownState from '../../hocs/with-mouse-down-state';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
-import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './icon-button.mod.css';
 
 const getStateClassNames = (isDisabled, isToggled) =>

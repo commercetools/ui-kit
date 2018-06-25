@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import sortBy from 'lodash.sortby';
 import oneLine from 'common-tags/lib/oneLine';
-import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';

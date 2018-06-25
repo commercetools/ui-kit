@@ -11,7 +11,7 @@ const Stack = ({ children, scale, alignItems }) => (
 Stack.displayName = 'Stack';
 Stack.propTypes = {
   scale: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   alignItems: PropTypes.oneOf(['stretch', 'flexStart', 'flexEnd', 'center']),
 };
 
