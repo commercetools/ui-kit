@@ -5,6 +5,7 @@ import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import Collapsible from '../../collapsible';
 import CollapsiblePanel from './collapsible-panel';
+import CollapsiblePanelHeader from './collapsible-panel-header';
 import Readme from './README.md';
 
 storiesOf('Panels/CollapsiblePanel', module)
@@ -13,7 +14,10 @@ storiesOf('Panels/CollapsiblePanel', module)
   .add('Uncontrolled', () => (
     <Section>
       <CollapsiblePanel
-        header={text('Header', 'Title')}
+        header={text(
+          'Header',
+          <CollapsiblePanelHeader>Title</CollapsiblePanelHeader>
+        )}
         description={text('Description', 'Uncontrolled component example')}
         isSticky={boolean('isSticky', false)}
         isDisabled={boolean('isDisabled', false)}
@@ -32,7 +36,10 @@ storiesOf('Panels/CollapsiblePanel', module)
       <Collapsible>
         {({ isOpen, toggle }) => (
           <CollapsiblePanel
-            header={text('Header', 'Title')}
+            header={text(
+              'Header',
+              <CollapsiblePanelHeader>Title</CollapsiblePanelHeader>
+            )}
             description={text('Description', 'Controlled component example')}
             isSticky={boolean('isSticky', false)}
             isDisabled={boolean('isDisabled', false)}
