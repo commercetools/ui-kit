@@ -26,7 +26,8 @@ storiesOf('Forms/Inputs', module)
           }}
         >
           <Value
-            key={defaultValue}
+            // needed to rerender component when value changes
+            key={boolean('isDefaultClosed', false)}
             defaultValue={defaultValue}
             render={(value, onChange) => (
               <TextArea
