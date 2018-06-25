@@ -2,7 +2,7 @@
   "name": "@commercetools-frontend/ui-kit",
   "version": "1.0.0",
   "description": "UI component library to build MC applications",
-  "license": "Proprietary",
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
