@@ -35,6 +35,6 @@ import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
 
 - Whenever a user input can hold multiline strings the TextArea component is recommended
 
-- Not recommended to be used when to content is single-lined (e.g email address, password etc.)
+- Not recommended to be used when the content is single-lined (e.g email address, password etc.)
 
 - Constraints are not recommended to have scale smaller than `s` since content may cut off
