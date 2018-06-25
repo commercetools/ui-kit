@@ -106,8 +106,7 @@ export class TextArea extends React.Component {
                 useCacheForDOMMeasurements={true}
                 {...filterDataAttributes(this.props)}
               />
-              {(this.state.numOfRows > TextArea.MIN_ROW_COUNT ||
-                !isOpen) && (
+              {(this.state.numOfRows > TextArea.MIN_ROW_COUNT || !isOpen) && (
                 <FlatButton
                   onClick={toggle}
                   type="primary"
