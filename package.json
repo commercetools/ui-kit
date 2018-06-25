@@ -4,6 +4,9 @@
   "description": "UI component library to build MC applications",
   "license": "Proprietary",
   "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "postinstall": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-colors.js",
     "build": "build-storybook -s . -o .storybook/dist",
