@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "UI component library to build MC applications",
   "license": "MIT",
   "private": false,
@@ -41,7 +41,7 @@
     "warning": "3.0.0"
   },
   "devDependencies": {
-    "@commercetools-frontend/babel-preset-mc-app": "1.0.0-beta.2",
+    "@commercetools-frontend/babel-preset-mc-app": "1.0.0-beta.3",
     "@storybook/addon-actions": "3.4.7",
     "@storybook/addon-info": "3.4.7",
     "@storybook/addon-knobs": "3.4.7",
