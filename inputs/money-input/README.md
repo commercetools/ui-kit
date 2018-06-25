@@ -1,0 +1,164 @@
+# MoneyInput
+
+#### Description
+
+A controlled input component for money values with validation states.
+
+## Usage
+
+```js
+import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
+
+<MoneyInput
+  value={{ amount: '1.00', currencyCode: 'EUR' }}
+  onChange={({ amount, currencyCode }) => {
+    /* .. */
+  }}
+  currencies={['EUR', 'USD']}
+/>;
+```
+
+#### Properties
+
+| Props                  | Type                                                            | Required | Values                       | Default | Description                                                                                                                                                   |
+| ---------------------- | --------------------------------------------------------------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`                | `{ currencyCode: string, amount: string }`                      |    ✅    | -                            | -       | Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator. |
+| `value.currencyCode`   | `string`                                                        |    ✅    | -                            | -       | The currency code influences the fraction digits when formatting on blur. Can be an empty string.                                                             |
+| `value.amount`         | `string`                                                        |    ✅    | -                            | -       | Amount formatted as a number, e.g. "10.30". Must use a dot as the decimal separator. Can be an empty string.                                                  |
+| `currencies`           | array of `string`                                               |    -     | -                            | []      | List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.                       |
+| `placeholder`          | `string`                                                        |    -     |                              | -       | Placeholder text for the input.                                                                                                                               |
+| `isDisabled`           | `bool`                                                          |    -     | -                            | `false` | Indicates that the field cannot be used.                                                                                                                      |
+| `onBlur`               | `func`                                                          |    -     | -                            | -       | Called when the amount field or the currency code dropdown is blurred.                                                                                        |
+| `onChange`             | `function(nextValue: { currencyCode: string, amount: string })` |    -     | -                            | -       | Called when either the currency or the amount have changed.                                                                                                   |
+| `hasCurrencyError`     | `bool`                                                          |    -     | -                            | -       | Indicates if the currency field has an error                                                                                                                  |
+| `hasCurrencyWarning`   | `bool`                                                          |    -     | -                            | -       | Indicates if the currency field has a warning                                                                                                                 |
+| `hasAmountError`       | `bool`                                                          |    -     | -                            | -       | Indicates if the centAmount field has an error                                                                                                                |
+| `hasAmountWarning`     | `bool`                                                          |    -     | -                            | -       | Indicates if the centAmount field has a warning                                                                                                               |
+| `horizontalConstraint` | `string`                                                        |    -     | `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                                                    |
+
+### Static methods
+
+#### `MoneyInput.convertToMoneyValue`
+
+The `convertToMoneyValue` function will turn a MoneyInput value into a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
+If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
+
+Here are examples of `centPrecision` and `highPrecision` prices.
+
+```js
+// 42.00 €
+{
+  "type": "centPrecision",
+  "currencyCode": "EUR",
+  "centAmount": 4200,
+  "fractionDigits": 2
+}
+```
+
+```js
+// 0.0123456 €
+{
+ "type": "highPrecision",
+ "currencyCode": "EUR",
+ "centAmount": 1,
+ "preciseAmount": 123456,
+ "fractionDigits": 7
+}
+```
+
+#### `MoneyInput.parseMoneyValue`
+
+The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the MoneyInput component can handle `({ amount, currencyCode })`.
+
+### Example
+
+Here's an example of how `MoneyInput` would be used inside a form.
+
+```jsx
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import { Formik } from 'formik';
+import ErrorMessage from '@commercetools-local/ui-kit/messages/error-message';
+import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
+
+const currencies = ['EUR', 'USD', 'AED', 'KWD'];
+
+// the existing document, e.g. from the database
+const doc = {
+  somePrice: {
+    type: 'centPrecision',
+    currencyCode: 'EUR',
+    centAmount: 4200,
+    fractionDigits: 2,
+  },
+};
+
+// A function to convert a document to form values.
+const docToFormValues = aDoc => ({
+  // The parseMoneyValue function will turn a MoneyValue into a
+  // value the MoneyInput component can handle ({ amount, currencyCode })
+  somePrice: MoneyInput.parseMoneyValue(aDoc.somePrice),
+});
+
+// a function to convert form values back to a document
+const formValuesToDoc = formValues => ({
+  // The convertToMoneyValue function will turn a MoneyInput
+  // value into a value the API can handle
+  // It automatically converts to centPrecision or highPrecision
+  // depending on the number of supplied fraction digits and the
+  // used currency code.
+  // If you want to forbid highPrecision, then the form's validation
+  // needs to add an error when it sees a highPrecision price.
+  // See example below
+  somePrice: MoneyInput.convertToMoneyValue(formValues.somePrice),
+});
+
+const validate = formValues => {
+  const errors = {};
+  const moneyValue = MoneyInput.convertToMoneyValue(formValues.somePrice);
+  // convertToMoneyValue returns null whenever the value is invalid
+  if (!moneyValue) {
+    errors.somePrice = 'value required';
+  } else if (moneyValue.type === 'highPrecision') {
+    // This form does not allow highPrecision prices
+    errors.somePrice = 'high-precision not allowed';
+  }
+  return errors;
+};
+const initialValues = docToFormValues(doc);
+
+return (
+  <Formik
+    initialValues={initialValues}
+    validate={validate}
+    onSubmit={formValues => {
+      // doc will contain "somePrice" holding a MoneyValue,
+      // ready to be consumed by the API
+      const doc = formValuesToDoc(formValues);
+    }}
+    render={({
+      values,
+      errors,
+      touched,
+      setFieldValue,
+      setFieldTouched,
+      handleSubmit,
+      isSubmitting,
+    }) => (
+      <form onSubmit={handleSubmit}>
+        <MoneyInput
+          value={values.somePrice}
+          currencies={currencies}
+          onBlur={() => setFieldTouched('somePrice')}
+          isDisabled={isSubmitting}
+          onChange={value => setFieldValue('somePrice', value)}
+          hasAmountError={touched.somePrice && Boolean(errors.somePrice)}
+          horizontalConstraint="l"
+        />
+        {touched.somePrice && <ErrorMessage>{errors.somePrice}</ErrorMessage>}
+        <button type="submit">Submit</button>
+      </form>
+    )}
+  />
+);
+```

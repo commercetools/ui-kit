@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import isNil from 'lodash.isnil';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
-import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './ghost-button.mod.css';
 
 const GhostButton = props => {

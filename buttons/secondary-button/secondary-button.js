@@ -10,7 +10,7 @@ import Spacings from '../../materials/spacings';
 import AccessibleButton from '../accessible-button';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import withMouseDownState from '../../hocs/with-mouse-down-state';
-import { filterDataAttributes } from '../../../utils/dataset';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import styles from './secondary-button.mod.css';
 
 const Div = props => <div {...props} />;

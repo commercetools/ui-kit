@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Text from '../../typography/text';
-import { filterDataAttributes } from '../../../utils/dataset';
 import styles from './link-button.mod.css';
 
 const LinkButton = props => {
