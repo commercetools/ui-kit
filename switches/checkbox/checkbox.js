@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import Icons from './icons';
