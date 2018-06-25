@@ -21,8 +21,8 @@ import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
 | `onChange`             | `func`   |    ✅    | -                       | -       | Called with an event containing the new value. Required, unless input is `read-only. Parent should pass it back as`value` |
 | `id`                   | `string` |    -     | -                       | -       | Passed from a wrapping form component for identification purposes                                                         |
 | `placeholder`          | `string` |    -     | -                       | -       | Placeholder text for the input                                                                                            |
-| `isAutofocussed`       | `bool`   |    -     | -                       | -       | Focus the input field on initial render                                                                                   |
-| `isDefaultClosed`      | `bool`   |    -     | -                       | -       | Close input initially                                                                                                     |
+| `isAutofocussed`       | `bool`   |    -     | -                       | -       | Focuses the input field on initial render                                                                                 |
+| `isDefaultClosed`      | `bool`   |    -     | -                       | -       | Closes input initially                                                                                                    |
 | `isDisabled`           | `bool`   |    -     | -                       | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                                        |
 | `isReadOnly`           | `bool`   |    -     | -                       | `false` | Indicates that the field is displaying read-only content                                                                  |
 | `hasError`             | `bool`   |    -     | -                       | `false` | Indicates the input field has an error                                                                                    |
