@@ -16,20 +16,26 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
+const getWrapper = (
+  customProps,
+  customRenderProps = { isOpen: true, toggle: jest.fn() }
+) => {
+  const props = createTestProps(customProps);
+  return shallow(<TextArea {...props} />)
+    .find(Collapsible)
+    .renderProp('children', customRenderProps);
+};
+
+const getOpenWrapper = customProps =>
+  getWrapper(customProps, { isOpen: true, toggle: jest.fn() });
+const getClosedWrapper = customProps =>
+  getWrapper(customProps, { isOpen: false, toggle: jest.fn() });
+
 describe('rendering', () => {
   describe('data attributes', () => {
     let wrapper;
     beforeEach(() => {
-      const props = createTestProps({
-        name: 'text-field1',
-        'data-foo': 'bar',
-      });
-      wrapper = shallow(<TextArea {...props} />)
-        .find(Collapsible)
-        .renderProp('children', {
-          isOpen: true,
-          toggle: jest.fn(),
-        });
+      wrapper = getOpenWrapper({ name: 'text-field1', 'data-foo': 'bar' });
     });
     it('should forward the attributes', () => {
       expect(wrapper.find(TextareaAutosize)).toHaveProp('data-foo', 'bar');
@@ -39,16 +45,7 @@ describe('rendering', () => {
     let textarea;
     let wrapper;
     beforeEach(() => {
-      const props = createTestProps({
-        name: 'field1',
-        value: 'foo',
-      });
-      wrapper = shallow(<TextArea {...props} />)
-        .find(Collapsible)
-        .renderProp('children', {
-          isOpen: true,
-          toggle: jest.fn(),
-        });
+      wrapper = getOpenWrapper({ name: 'field1', value: 'foo' });
       textarea = wrapper.find(TextareaAutosize);
     });
 
@@ -76,15 +73,7 @@ describe('rendering', () => {
     describe('has warning', () => {
       let textarea;
       beforeEach(() => {
-        const props = createTestProps({
-          hasWarning: true,
-        });
-        const wrapper = shallow(<TextArea {...props} />)
-          .find(Collapsible)
-          .renderProp('children', {
-            isOpen: true,
-            toggle: jest.fn(),
-          });
+        const wrapper = getOpenWrapper({ hasWarning: true });
         textarea = wrapper.find(TextareaAutosize);
       });
       it('should have warning styles', () => {
@@ -94,15 +83,7 @@ describe('rendering', () => {
     describe('error', () => {
       let textarea;
       beforeEach(() => {
-        const props = createTestProps({
-          hasError: true,
-        });
-        const wrapper = shallow(<TextArea {...props} />)
-          .find(Collapsible)
-          .renderProp('children', {
-            isOpen: true,
-            toggle: jest.fn(),
-          });
+        const wrapper = getOpenWrapper({ hasError: true });
         textarea = wrapper.find(TextareaAutosize);
       });
 
@@ -114,15 +95,7 @@ describe('rendering', () => {
       let textarea;
       let flatbutton;
       beforeEach(() => {
-        const props = createTestProps({
-          isDisabled: true,
-        });
-        const wrapper = shallow(<TextArea {...props} />)
-          .find(Collapsible)
-          .renderProp('children', {
-            isOpen: false,
-            toggle: jest.fn(),
-          });
+        const wrapper = getClosedWrapper({ isDisabled: true });
         textarea = wrapper.find(TextareaAutosize);
         flatbutton = wrapper.find(FlatButton);
       });
@@ -137,15 +110,7 @@ describe('rendering', () => {
     describe('readonly', () => {
       let textarea;
       beforeEach(() => {
-        const props = createTestProps({
-          isReadOnly: true,
-        });
-        const wrapper = shallow(<TextArea {...props} />)
-          .find(Collapsible)
-          .renderProp('children', {
-            isOpen: true,
-            toggle: jest.fn(),
-          });
+        const wrapper = getOpenWrapper({ isReadOnly: true });
         textarea = wrapper.find(TextareaAutosize);
       });
 
@@ -163,19 +128,15 @@ describe('rendering', () => {
 describe('callbacks', () => {
   describe('when changing value', () => {
     let props;
+    const event = { target: { value: 'bar' } };
     beforeEach(() => {
       props = createTestProps({
         value: 'foo',
         onChange: jest.fn(),
       });
-      const wrapper = shallow(<TextArea {...props} />)
-        .find(Collapsible)
-        .renderProp('children', {
-          isOpen: true,
-          toggle: jest.fn(),
-        });
+      const wrapper = getOpenWrapper(props);
       const textarea = wrapper.find(TextareaAutosize);
-      textarea.simulate('change', { target: { value: 'bar' } });
+      textarea.simulate('change', event);
     });
 
     it('should call onChange', () => {
@@ -183,11 +144,7 @@ describe('callbacks', () => {
     });
 
     it('should update with new value', () => {
-      expect(props.onChange).toHaveBeenCalledWith({
-        target: {
-          value: 'bar',
-        },
-      });
+      expect(props.onChange).toHaveBeenCalledWith(event);
     });
   });
   describe('when input gains focus', () => {
@@ -198,12 +155,7 @@ describe('callbacks', () => {
         value: 'foo',
         onFocus: jest.fn(),
       });
-      const wrapper = shallow(<TextArea {...props} />)
-        .find(Collapsible)
-        .renderProp('children', {
-          isOpen: true,
-          toggle: jest.fn(),
-        });
+      const wrapper = getOpenWrapper(props);
       textarea = wrapper.find(TextareaAutosize);
       textarea.simulate('focus');
     });
@@ -224,12 +176,7 @@ describe('callbacks', () => {
         value: 'foo',
         onBlur: jest.fn(),
       });
-      const wrapper = shallow(<TextArea {...props} />)
-        .find(Collapsible)
-        .renderProp('children', {
-          isOpen: true,
-          toggle: jest.fn(),
-        });
+      const wrapper = getOpenWrapper(props);
       textarea = wrapper.find(TextareaAutosize);
       textarea.simulate('blur');
     });
@@ -249,17 +196,12 @@ describe('callbacks', () => {
         isAutofocussed: true,
         onFocus: jest.fn(),
       });
-      const wrapper = shallow(<TextArea {...props} />)
-        .find(Collapsible)
-        .renderProp('children', {
-          isOpen: true,
-          toggle: jest.fn(),
-        });
+      const wrapper = getOpenWrapper(props);
       textarea = wrapper.find(TextareaAutosize);
     });
 
     it('should autofocus prop be true', () => {
-      expect(textarea.prop('autoFocus')).toBe(true);
+      expect(textarea).toHaveProp('autoFocus', true);
     });
   });
   describe('when TextArea has only 1 row', () => {
@@ -271,7 +213,7 @@ describe('callbacks', () => {
         value: 'foo',
       });
       wrapper = shallow(<TextArea {...props} />);
-      wrapper.setState({ numOfRows: 1 });
+      wrapper.setState({ rowCount: 1 });
       textAreaWrapper = shallow(
         <div>
           {wrapper.find(Collapsible).renderProp('children', {
@@ -295,7 +237,7 @@ describe('callbacks', () => {
         value: 'foo2',
       });
       wrapper = shallow(<TextArea {...props} />);
-      wrapper.setState({ numOfRows: 2 });
+      wrapper.setState({ rowCount: 2 });
       textAreaWrapper = shallow(
         <div>
           {wrapper.find(Collapsible).renderProp('children', {
@@ -310,7 +252,7 @@ describe('callbacks', () => {
     it('should render FlatButton', () => {
       expect(textAreaWrapper).toRender(FlatButton);
     });
-    it('should have correct message (collapse)', () => {
+    it('should have collapse message', () => {
       expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.collapse');
     });
   });
