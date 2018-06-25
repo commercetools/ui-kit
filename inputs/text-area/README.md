@@ -19,7 +19,7 @@ import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
 | `name`                 | `string` |    -     | -                       | -       | Used as HTML `name` property                                                                                              |
 | `value`                | `string` |    ✅    | -                       | -       | Value of the input                                                                                                        |
 | `onChange`             | `func`   |    ✅    | -                       | -       | Called with an event containing the new value. Required, unless input is `read-only. Parent should pass it back as`value` |
-| `id`                   | `string` |    -     | -                       | -       | Passed from a wrapping form component for identification purposes                                                         |
+| `id`                   | `string` |    -     | -                       | -       | Specifies the id of an element                                                                                            |
 | `placeholder`          | `string` |    -     | -                       | -       | Placeholder text for the input                                                                                            |
 | `isAutofocussed`       | `bool`   |    -     | -                       | -       | Focuses the input field on initial render                                                                                 |
 | `isDefaultClosed`      | `bool`   |    -     | -                       | -       | Closes input initially                                                                                                    |
