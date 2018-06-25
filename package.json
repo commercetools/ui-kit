@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "UI component library to build MC applications",
   "license": "Proprietary",
-  "private": true,
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
