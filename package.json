@@ -8,7 +8,9 @@
     "access": "public"
   },
   "scripts": {
-    "postinstall": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-colors.js",
+    "prepublish": "node ./scripts/generate-icon-exports.js",
+    "prebuild": "node ./scripts/generate-colors.js",
+    "prestart": "node ./scripts/generate-colors.js",
     "build": "build-storybook -s . -o .storybook/dist",
     "start": "start-storybook -s . -p 9002"
   },
