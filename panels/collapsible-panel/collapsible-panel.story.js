@@ -8,11 +8,49 @@ import CollapsiblePanel from './collapsible-panel';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import Readme from './README.md';
 
-const CustomHeader = () => (
-  <CollapsiblePanelHeader>{text('Header', 'Header')}</CollapsiblePanelHeader>
-);
-
-CustomHeader.displayName = 'CustomHeader';
+storiesOf('Panels/Condensed CollapsiblePanel', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
+  .add('Uncontrolled', () => (
+    <Section>
+      <CollapsiblePanel
+        header={text('Header', 'Header')}
+        description={text('Description', 'Uncontrolled component example')}
+        isSticky={boolean('isSticky', false)}
+        isDisabled={boolean('isDisabled', false)}
+        tone={select('tone', ['primary', 'urgent'], 'primary')}
+        headerControls={text('headerControls', 'headerControl')}
+        theme={select('theme', ['dark', 'light'])}
+        condensed={true}
+        secondaryHeader={text('Secondary Header', 'Subtitle')}
+      >
+        <div>{text('Text', 'Sample text')}</div>
+      </CollapsiblePanel>
+    </Section>
+  ))
+  .add('Controlled', () => (
+    <Section>
+      <Collapsible>
+        {({ isOpen, toggle }) => (
+          <CollapsiblePanel
+            header={text('Header', 'Header')}
+            description={text('Description', 'Controlled component example')}
+            isSticky={boolean('isSticky', false)}
+            isDisabled={boolean('isDisabled', false)}
+            tone={select('tone', ['primary', 'urgent'], 'primary')}
+            isClosed={!isOpen}
+            onToggle={toggle}
+            headerControls={text('headerControls', 'headerControl')}
+            theme={select('theme', ['dark', 'light'])}
+            condensed={true}
+            secondaryHeader={text('Secondary Header', 'Subtitle')}
+          >
+            <div>{text('Text', 'Sample text')}</div>
+          </CollapsiblePanel>
+        )}
+      </Collapsible>
+    </Section>
+  ));
 
 storiesOf('Panels/CollapsiblePanel', module)
   .addDecorator(withKnobs)
@@ -31,7 +69,7 @@ storiesOf('Panels/CollapsiblePanel', module)
         tone={select('tone', ['primary', 'urgent'], 'primary')}
         headerControls={text('headerControls', 'headerControl')}
         theme={select('theme', ['dark', 'light'])}
-        condensed={boolean('condensed', false)}
+        condensed={false}
         secondaryHeader={text('Secondary Header', 'Subtitle')}
       >
         <div>{text('Text', 'Sample text')}</div>
@@ -56,7 +94,7 @@ storiesOf('Panels/CollapsiblePanel', module)
             onToggle={toggle}
             headerControls={text('headerControls', 'headerControl')}
             theme={select('theme', ['dark', 'light'])}
-            condensed={boolean('condensed', false)}
+            condensed={false}
             secondaryHeader={text('Secondary Header', 'Subtitle')}
           >
             <div>{text('Text', 'Sample text')}</div>
