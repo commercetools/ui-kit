@@ -21,7 +21,7 @@ storiesOf('Panels/CollapsiblePanel', module)
         headerControls={text('headerControls', 'headerControl')}
         theme={select('theme', ['dark', 'light'])}
         condensed={boolean('condensed', false)}
-        secondaryLabel={text('SecondaryLabel', 'Subtitle')}
+        secondaryHeader={text('Secondary Header', 'Subtitle')}
       >
         <div>{text('Text', 'Sample text')}</div>
       </CollapsiblePanel>
@@ -42,7 +42,7 @@ storiesOf('Panels/CollapsiblePanel', module)
             headerControls={text('headerControls', 'headerControl')}
             theme={select('theme', ['dark', 'light'])}
             condensed={boolean('condensed', false)}
-            secondaryLabel={text('SecondaryLabel', 'Subtitle')}
+            secondaryHeader={text('Secondary Header', 'Subtitle')}
           >
             <div>{text('Text', 'Sample text')}</div>
           </CollapsiblePanel>

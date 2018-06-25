@@ -7,7 +7,7 @@ import CollapsiblePanel from './collapsible-panel';
 describe('CollapsiblePanel', () => {
   const createTestProps = props => ({
     className: 'custom-container',
-    header: 'Header Title',
+    header: <CollapsiblePanelHeader>Header Title</CollapsiblePanelHeader>,
     isDisabled: false,
     ...props,
   });
@@ -74,7 +74,7 @@ describe('CollapsiblePanel', () => {
       });
 
       it('children should contain text', () => {
-        expect(collapsibleMotionWrapper.find('#foo').text()).toBe('Foo');
+        expect(collapsibleMotionWrapper.find('#foo')).toHaveText('Foo');
       });
 
       describe('when has dark `theme`', () => {

@@ -7,7 +7,6 @@ import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
 import CollapsibleMotion from '../../collapsible-motion';
 import HeaderIcon from './header-icon';
-import CollapsiblePanelHeader from './collapsible-panel-header';
 import styles from './collapsible-panel.mod.css';
 
 // When `isClosed` is provided the component behaves as a controlled component,
@@ -78,7 +77,6 @@ export default class CollapsiblePanel extends React.PureComponent {
   render() {
     // Pass only `data-*` props
     const headerProps = filterDataAttributes(this.props);
-    const isStringHeader = typeof this.props.header === 'string';
     const scale = this.props.condensed ? 's' : 'm';
 
     return (
@@ -120,7 +118,7 @@ export default class CollapsiblePanel extends React.PureComponent {
                           size={this.props.condensed ? 'small' : 'medium'}
                         />
                       )}
-                      {this.props.condensed && (
+                      {this.props.condensed ? (
                         <Text.Detail
                           isInline={true}
                           isBold={true}
@@ -128,16 +126,10 @@ export default class CollapsiblePanel extends React.PureComponent {
                         >
                           {this.props.header}
                         </Text.Detail>
+                      ) : (
+                        // NOTE: This should always be used with CollapsiblePanel.Header
+                        this.props.header
                       )}
-                      {!this.props.condensed &&
-                        isStringHeader && (
-                          <CollapsiblePanelHeader>
-                            {this.props.header}
-                          </CollapsiblePanelHeader>
-                        )}
-                      {!this.props.condensed &&
-                        !isStringHeader &&
-                        this.props.header}
                       {this.props.secondaryHeader && (
                         <Text.Detail tone="secondary" truncate={true}>
                           {this.props.secondaryHeader}
