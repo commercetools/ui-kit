@@ -27,7 +27,10 @@ const getStyles = ({ isDisabled, hasError, hasWarning, isReadOnly }) => {
 export class TextArea extends React.Component {
   static displayName = 'TextArea';
 
-  static DEFAULT_ROWS_NUMBER = 1;
+  // The minimum ammount of rows the TextArea will show.
+  // When the input is closed, this is used as the maximum row count as well
+  // so that the input "collapses".
+  static MIN_ROW_COUNT = 1;
 
   static propTypes = {
     name: PropTypes.string,
@@ -37,6 +40,7 @@ export class TextArea extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
+    isDefaultClosed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
@@ -57,7 +61,7 @@ export class TextArea extends React.Component {
   };
 
   state = {
-    numOfRows: TextArea.DEFAULT_ROWS_NUMBER,
+    numOfRows: TextArea.MIN_ROW_COUNT,
   };
 
   handleHeightChange = (_, innerComponent) => {
@@ -69,9 +73,9 @@ export class TextArea extends React.Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Collapsible isDefaultClosed={false}>
+        <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
           {({ isOpen, toggle }) => (
-            <div>
+            <React.Fragment key="textarea-autosize">
               <TextareaAutosize
                 name={this.props.name}
                 value={this.props.value}
@@ -97,12 +101,12 @@ export class TextArea extends React.Component {
                 aria-readonly={this.props.isReadOnly}
                 aria-multiline="true"
                 role="textbox"
-                minRows={TextArea.DEFAULT_ROWS_NUMBER}
-                maxRows={!isOpen ? TextArea.DEFAULT_ROWS_NUMBER : undefined}
-                {...filterDataAttributes(this.props)}
+                minRows={TextArea.MIN_ROW_COUNT}
+                maxRows={!isOpen ? TextArea.MIN_ROW_COUNT : undefined}
                 useCacheForDOMMeasurements={true}
+                {...filterDataAttributes(this.props)}
               />
-              {(this.state.numOfRows > TextArea.DEFAULT_ROWS_NUMBER ||
+              {(this.state.numOfRows > TextArea.MIN_ROW_COUNT ||
                 !isOpen) && (
                 <FlatButton
                   onClick={toggle}
@@ -120,7 +124,7 @@ export class TextArea extends React.Component {
                   }
                 />
               )}
-            </div>
+            </React.Fragment>
           )}
         </Collapsible>
       </Constraints.Horizontal>

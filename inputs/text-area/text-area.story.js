@@ -26,6 +26,7 @@ storiesOf('Forms/Inputs', module)
           isDisabled={boolean('isDisabled', false)}
           isReadOnly={boolean('isReadOnly', false)}
           hasError={boolean('hasError', false)}
+          isDefaultClosed={boolean('isDefaultClosed', false)}
           hasWarning={boolean('hasWarning', false)}
           value={text('value', '')}
           onChange={action('onChange')}
