@@ -213,7 +213,7 @@ describe('callbacks', () => {
         value: 'foo',
       });
       wrapper = shallow(<TextArea {...props} />);
-      wrapper.setState({ rowCount: 1 });
+      wrapper.setState({ numOfRows: 1 });
       textAreaWrapper = shallow(
         <div>
           {wrapper.find(Collapsible).renderProp('children', {
@@ -237,7 +237,7 @@ describe('callbacks', () => {
         value: 'foo2',
       });
       wrapper = shallow(<TextArea {...props} />);
-      wrapper.setState({ rowCount: 2 });
+      wrapper.setState({ numOfRows: 2 });
       textAreaWrapper = shallow(
         <div>
           {wrapper.find(Collapsible).renderProp('children', {
