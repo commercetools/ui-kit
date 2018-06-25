@@ -8,16 +8,23 @@ import CollapsiblePanel from './collapsible-panel';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import Readme from './README.md';
 
+const CustomHeader = () => (
+  <CollapsiblePanelHeader>{text('Header', 'Header')}</CollapsiblePanelHeader>
+);
+
+CustomHeader.displayName = 'CustomHeader';
+
 storiesOf('Panels/CollapsiblePanel', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Uncontrolled', () => (
     <Section>
       <CollapsiblePanel
-        header={text(
-          'Header',
-          <CollapsiblePanelHeader>Title</CollapsiblePanelHeader>
-        )}
+        header={
+          <CollapsiblePanelHeader>
+            {text('Header', 'Header')}
+          </CollapsiblePanelHeader>
+        }
         description={text('Description', 'Uncontrolled component example')}
         isSticky={boolean('isSticky', false)}
         isDisabled={boolean('isDisabled', false)}
@@ -36,10 +43,11 @@ storiesOf('Panels/CollapsiblePanel', module)
       <Collapsible>
         {({ isOpen, toggle }) => (
           <CollapsiblePanel
-            header={text(
-              'Header',
-              <CollapsiblePanelHeader>Title</CollapsiblePanelHeader>
-            )}
+            header={
+              <CollapsiblePanelHeader>
+                {text('Header', 'Header')}
+              </CollapsiblePanelHeader>
+            }
             description={text('Description', 'Controlled component example')}
             isSticky={boolean('isSticky', false)}
             isDisabled={boolean('isDisabled', false)}

@@ -101,6 +101,7 @@ export default class CollapsiblePanel extends React.PureComponent {
                   this.props.theme === 'dark',
                 [styles.disabled]: this.props.isDisabled,
                 [styles.sticky]: this.props.isSticky && isOpen,
+                [styles['closed-header']]: !isOpen,
               })}
             >
               <Spacings.InsetSquish scale={scale}>

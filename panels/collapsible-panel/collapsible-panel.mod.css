@@ -10,7 +10,7 @@
 }
 
 .base-container {
-  box-shadow: var(--shadow-8-second);
+  box-shadow: var(--shadow-1-second);
   border-radius: var(--border-radius-6);
   position: relative;
   min-width: 550px;
@@ -30,6 +30,8 @@
 .base-header-container {
   position: relative;
   cursor: pointer;
+  border-top-left-radius: var(--border-radius-6);
+  border-top-right-radius: var(--border-radius-6);
 }
 
 .header-container-theme-light {
@@ -40,6 +42,11 @@
 .header-container-theme-dark {
   composes: base-header-container;
   background-color: var(--color-greyAlabaster);
+}
+
+.closed-header {
+  border-bottom-left-radius: var(--border-radius-6);
+  border-bottom-right-radius: var(--border-radius-6);
 }
 
 .disabled {
