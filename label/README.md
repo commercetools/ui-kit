@@ -3,13 +3,13 @@
 ## Usage
 
 ```js
-import Label from '@commercetools-local/ui-kit/label';
+import Label from '@commercetools-frontend/ui-kit/label';
 ```
 
 ## Example
 
 ```jsx
-import Label from '@commercetools-local/ui-kit/label';
+import Label from '@commercetools-frontend/ui-kit/label';
 
 <Label tone="primary">
   <Text.Detail>{'Hello'}</Text.Detail>

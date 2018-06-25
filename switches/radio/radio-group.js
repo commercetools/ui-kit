@@ -31,7 +31,7 @@ class Group extends React.PureComponent {
 
     invariant(
       optionChildrenAsArray.length > 0,
-      '@commercetools-local/ui-kit/switches/radio: must contain at least one Radio.Option'
+      '@commercetools-frontend/ui-kit/switches/radio: must contain at least one Radio.Option'
     );
   }
 

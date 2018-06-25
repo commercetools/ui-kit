@@ -6,7 +6,7 @@ sub modules.
 ## Usage
 
 ```js
-import { Radio } from '@commercetools-local/ui-kit/switches';
+import { Radio } from '@commercetools-frontend/ui-kit/switches';
 
 <Radio.Group onChange={...} value="foo-radio-value">
    <Radio.Option value="foo-radio-value">
@@ -19,7 +19,7 @@ import { Radio } from '@commercetools-local/ui-kit/switches';
 ```
 
 ```js
-import { Checkbox } from '@commercetools-local/ui-kit/switches';
+import { Checkbox } from '@commercetools-frontend/ui-kit/switches';
 
 <Checkbox value="foo-radio-value" onChange={..}>
   What ever option

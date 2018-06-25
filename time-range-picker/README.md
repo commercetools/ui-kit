@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import TimeRangePicker from '@commercetools-local/ui-kit/time-range-picker';
+import TimeRangePicker from '@commercetools-frontend/ui-kit/time-range-picker';
 ```
 
 #### Description
