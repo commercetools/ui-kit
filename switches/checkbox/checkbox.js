@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Spacings from '../../materials/spacings';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import Icons from './icons';
@@ -30,6 +31,7 @@ export class Checkbox extends React.PureComponent {
       <div
         onMouseOver={this.props.handleMouseOver}
         onMouseOut={this.props.handleMouseOut}
+        {...filterDataAttributes(this.props)}
       >
         <label
           className={classnames(styles.labelWrapper, {
