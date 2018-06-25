@@ -2,7 +2,8 @@
 
 #### Description
 
-Used for displaying multiple-line form’s fields text content.
+A controlled text input component for multi-line strings with validation
+states.
 
 ## Usage
 
