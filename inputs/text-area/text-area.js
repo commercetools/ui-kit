@@ -102,7 +102,7 @@ export class TextArea extends React.Component {
                 aria-multiline="true"
                 role="textbox"
                 minRows={TextArea.MIN_ROW_COUNT}
-                maxRows={!isOpen ? TextArea.MIN_ROW_COUNT : undefined}
+                maxRows={isOpen ? undefined : TextArea.MIN_ROW_COUNT}
                 useCacheForDOMMeasurements={true}
                 {...filterDataAttributes(this.props)}
               />
@@ -115,10 +115,10 @@ export class TextArea extends React.Component {
                     messages[isOpen ? 'collapse' : 'expand']
                   )}
                   icon={
-                    !isOpen ? (
-                      <AngleDownIcon size="small" />
-                    ) : (
+                    isOpen ? (
                       <AngleUpIcon size="small" />
+                    ) : (
+                      <AngleDownIcon size="small" />
                     )
                   }
                 />
