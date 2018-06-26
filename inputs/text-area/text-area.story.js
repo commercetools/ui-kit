@@ -13,7 +13,8 @@ storiesOf('Forms/Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('TextArea', () => {
-    const defaultValue = text('value', '');
+    const defaultValue = text('default value', '');
+    const isDefaultClosed = boolean('isDefaultClosed', false);
     return (
       <Section>
         <IntlProvider
@@ -26,8 +27,8 @@ storiesOf('Forms/Inputs', module)
           }}
         >
           <Value
-            // needed to rerender component when value changes
-            key={boolean('isDefaultClosed', false)}
+            // remount component when defaults change
+            key={`${defaultValue}-${isDefaultClosed}`}
             defaultValue={defaultValue}
             render={(value, onChange) => (
               <TextArea
