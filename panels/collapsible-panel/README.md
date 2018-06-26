@@ -114,7 +114,7 @@ The component supports themes (dark and light) to enable nesting of collapsible 
 
 There are a some restrictions given using `condensed={true}`
 
-1.  Nothing is passed besides the title.
+1.  Nothing complex is passed as the `header`
 
 - Nor button or inputs or anything that is not within title itself
 

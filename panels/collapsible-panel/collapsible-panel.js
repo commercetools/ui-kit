@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash.isnil';
 import classnames from 'classnames';
+import invariant from 'invariant';
 import { defaultMemoize } from 'reselect';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
@@ -12,6 +13,9 @@ import styles from './collapsible-panel.mod.css';
 
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
+
+const hasControlsWhenCondensed = props =>
+  props.condensed === true && React.isValidElement(props.controls);
 
 export default class CollapsiblePanel extends React.PureComponent {
   static displayName = 'CollapsiblePanel';
@@ -69,6 +73,13 @@ export default class CollapsiblePanel extends React.PureComponent {
     theme: 'dark',
     condensed: false,
   };
+
+  componentDidMount() {
+    invariant(
+      !hasControlsWhenCondensed(this.props),
+      '@commercetools-frontend/ui-kit/panels/collapsible-panel: `controls` should not be passed when panel is `condensed`.'
+    );
+  }
 
   createHandleToggle = defaultMemoize(handleToggle => () => {
     if (this.props.isDisabled) return;

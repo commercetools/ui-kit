@@ -1,8 +1,11 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import invariant from 'invariant';
 import Text from '../../typography/text';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import CollapsiblePanel from './collapsible-panel';
+
+jest.mock('invariant');
 
 describe('CollapsiblePanel', () => {
   const createTestProps = props => ({
@@ -252,6 +255,54 @@ describe('CollapsiblePanel', () => {
 
       it('should not invoke `onToggle`', () => {
         expect(props.onToggle).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('lifecycle', () => {
+    let props;
+    let wrapper;
+    describe('componentDidMount', () => {
+      describe('with `controls`', () => {
+        describe('when `collapsed`', () => {
+          beforeEach(() => {
+            props = createTestProps({
+              controls: <div />,
+              condensed: true,
+            });
+            wrapper = shallow(
+              <CollapsiblePanel {...props}>
+                <span id="foo">{'Foo'}</span>
+              </CollapsiblePanel>
+            );
+
+            wrapper.instance().componentDidMount();
+          });
+
+          it('should invoke `invariant` with `false`', () => {
+            expect(invariant).toHaveBeenCalledWith(false, expect.any(String));
+          });
+        });
+
+        describe('when not `collapsed`', () => {
+          beforeEach(() => {
+            props = createTestProps({
+              controls: <div />,
+              condensed: false,
+            });
+            wrapper = shallow(
+              <CollapsiblePanel {...props}>
+                <span id="foo">{'Foo'}</span>
+              </CollapsiblePanel>
+            );
+
+            wrapper.instance().componentDidMount();
+          });
+
+          it('should invoke `invariant` with `true`', () => {
+            expect(invariant).toHaveBeenCalledWith(true, expect.any(String));
+          });
+        });
       });
     });
   });
