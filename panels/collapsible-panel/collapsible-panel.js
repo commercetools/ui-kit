@@ -70,9 +70,9 @@ export default class CollapsiblePanel extends React.PureComponent {
     condensed: false,
   };
 
-  createHandleToggle = defaultMemoize(toggleFunc => () => {
+  createHandleToggle = defaultMemoize(handleToggle => () => {
     if (this.props.isDisabled) return;
-    toggleFunc();
+    handleToggle();
   });
 
   render() {
