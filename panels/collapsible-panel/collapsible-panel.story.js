@@ -14,17 +14,17 @@ storiesOf('Panels/Condensed CollapsiblePanel', module)
   .add('Uncontrolled', () => (
     <Section>
       <CollapsiblePanel
-        header={text('Header', 'Header')}
-        description={text('Description', 'Uncontrolled component example')}
+        header={text('header', 'Header')}
+        description={text('description', 'Uncontrolled component example')}
         isSticky={boolean('isSticky', false)}
         isDisabled={boolean('isDisabled', false)}
         tone={select('tone', ['primary', 'urgent'], 'primary')}
         headerControls={text('headerControls', 'headerControl')}
         theme={select('theme', ['dark', 'light'])}
         condensed={true}
-        secondaryHeader={text('Secondary Header', 'Subtitle')}
+        secondaryHeader={text('secondaryHeader', 'Subtitle')}
       >
-        <div>{text('Text', 'Sample text')}</div>
+        {text('Text', 'Sample text')}
       </CollapsiblePanel>
     </Section>
   ))
@@ -33,8 +33,8 @@ storiesOf('Panels/Condensed CollapsiblePanel', module)
       <Collapsible>
         {({ isOpen, toggle }) => (
           <CollapsiblePanel
-            header={text('Header', 'Header')}
-            description={text('Description', 'Controlled component example')}
+            header={text('header', 'Header')}
+            description={text('description', 'Controlled component example')}
             isSticky={boolean('isSticky', false)}
             isDisabled={boolean('isDisabled', false)}
             tone={select('tone', ['primary', 'urgent'], 'primary')}
@@ -43,9 +43,9 @@ storiesOf('Panels/Condensed CollapsiblePanel', module)
             headerControls={text('headerControls', 'headerControl')}
             theme={select('theme', ['dark', 'light'])}
             condensed={true}
-            secondaryHeader={text('Secondary Header', 'Subtitle')}
+            secondaryHeader={text('secondaryHeader', 'Subtitle')}
           >
-            <div>{text('Text', 'Sample text')}</div>
+            {text('Text', 'Sample text')}
           </CollapsiblePanel>
         )}
       </Collapsible>
@@ -60,19 +60,19 @@ storiesOf('Panels/CollapsiblePanel', module)
       <CollapsiblePanel
         header={
           <CollapsiblePanelHeader>
-            {text('Header', 'Header')}
+            {text('header', 'Header')}
           </CollapsiblePanelHeader>
         }
-        description={text('Description', 'Uncontrolled component example')}
+        description={text('description', 'Uncontrolled component example')}
         isSticky={boolean('isSticky', false)}
         isDisabled={boolean('isDisabled', false)}
         tone={select('tone', ['primary', 'urgent'], 'primary')}
         headerControls={text('headerControls', 'headerControl')}
         theme={select('theme', ['dark', 'light'])}
         condensed={false}
-        secondaryHeader={text('Secondary Header', 'Subtitle')}
+        secondaryHeader={text('secondaryHeader', 'Subtitle')}
       >
-        <div>{text('Text', 'Sample text')}</div>
+        {text('Text', 'Sample text')}
       </CollapsiblePanel>
     </Section>
   ))
@@ -83,10 +83,10 @@ storiesOf('Panels/CollapsiblePanel', module)
           <CollapsiblePanel
             header={
               <CollapsiblePanelHeader>
-                {text('Header', 'Header')}
+                {text('deader', 'Header')}
               </CollapsiblePanelHeader>
             }
-            description={text('Description', 'Controlled component example')}
+            description={text('description', 'Controlled component example')}
             isSticky={boolean('isSticky', false)}
             isDisabled={boolean('isDisabled', false)}
             tone={select('tone', ['primary', 'urgent'], 'primary')}
@@ -95,9 +95,9 @@ storiesOf('Panels/CollapsiblePanel', module)
             headerControls={text('headerControls', 'headerControl')}
             theme={select('theme', ['dark', 'light'])}
             condensed={false}
-            secondaryHeader={text('Secondary Header', 'Subtitle')}
+            secondaryHeader={text('secondaryHeader', 'Subtitle')}
           >
-            <div>{text('Text', 'Sample text')}</div>
+            {text('Text', 'Sample text')}
           </CollapsiblePanel>
         )}
       </Collapsible>
