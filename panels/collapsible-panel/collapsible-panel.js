@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash.isnil';
 import classnames from 'classnames';
+import { defaultMemoize } from 'reselect';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
@@ -69,14 +70,14 @@ export default class CollapsiblePanel extends React.PureComponent {
     condensed: false,
   };
 
-  handleToggle(toggleFunc) {
+  createHandleToggle = defaultMemoize(toggleFunc => () => {
     if (this.props.isDisabled) return;
     toggleFunc();
-  }
+  });
 
   render() {
     // Pass only `data-*` props
-    const headerProps = filterDataAttributes(this.props);
+    const dataProps = filterDataAttributes(this.props);
     const scale = this.props.condensed ? 's' : 'm';
 
     return (
@@ -101,13 +102,13 @@ export default class CollapsiblePanel extends React.PureComponent {
                   this.props.theme === 'dark',
                 [styles.disabled]: this.props.isDisabled,
                 [styles.sticky]: this.props.isSticky && isOpen,
-                [styles['closed-header']]: !isOpen,
+                [styles['header-closed']]: !isOpen,
               })}
             >
               <Spacings.InsetSquish scale={scale}>
                 <div
-                  {...headerProps}
-                  onClick={() => this.handleToggle(toggle)}
+                  {...dataProps}
+                  onClick={this.createHandleToggle(toggle)}
                   className={styles.header}
                 >
                   <div className={styles['truncate-header']}>

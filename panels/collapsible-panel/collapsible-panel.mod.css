@@ -44,7 +44,7 @@
   background-color: var(--color-greyAlabaster);
 }
 
-.closed-header {
+.header-closed {
   border-bottom-left-radius: var(--border-radius-6);
   border-bottom-right-radius: var(--border-radius-6);
 }

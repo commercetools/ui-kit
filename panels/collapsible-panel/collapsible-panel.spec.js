@@ -247,7 +247,7 @@ describe('CollapsiblePanel', () => {
           </CollapsiblePanel>
         );
 
-        wrapper.instance().handleToggle();
+        wrapper.instance().createHandleToggle(jest.fn());
       });
 
       it('should not invoke `onToggle`', () => {
