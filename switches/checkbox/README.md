@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { Checkbox } from '@commercetools-local/ui-kit/switches';
+import { Checkbox } from '@commercetools-frontend/ui-kit/switches';
 ```
 
 #### Description
@@ -14,7 +14,7 @@ notifies with a value accordingly.
 #### Usage
 
 ```js
-import { Checkbox } from '@commercetools-local/ui-kit/switches';
+import { Checkbox } from '@commercetools-frontend/ui-kit/switches';
 
 <Checkbox value="foo-radio-value" onChange={..}>
   What ever option

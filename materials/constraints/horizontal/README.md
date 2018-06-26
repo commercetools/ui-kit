@@ -3,7 +3,7 @@
 ## Example
 
 ```jsx
-import Constraints from '@commercetools-local/ui-kit/materials/constraints';
+import Constraints from '@commercetools-frontend/ui-kit/materials/constraints';
 
 <Constraints.Horizontal constraint="m">
   <DatePicker />

@@ -37,6 +37,18 @@ describe('<Checkbox>', () => {
         expect(wrapper.find('input')).toHaveProp('onChange', props.onChange);
       });
 
+      describe('with `data-*`', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            'data-test': 'foo-attribute-select-me-from-e2e',
+          });
+          wrapper = shallow(<Checkbox {...props} />);
+        });
+        it('should match snapshot', () => {
+          expect(wrapper).toMatchSnapshot();
+        });
+      });
+
       describe('when disabled', () => {
         beforeEach(() => {
           props = createTestProps({ isDisabled: true });

@@ -5,7 +5,7 @@
 ```js
 import PrimaryActionDropdown, {
   Option,
-} from '@commercetools-local/ui-kit/dropdowns/primary-action-dropdown';
+} from '@commercetools-frontend/ui-kit/dropdowns/primary-action-dropdown';
 ```
 
 #### Description
@@ -21,7 +21,7 @@ dropdown will be disabled.
 #### Usage
 
 ```js
-import PrimaryActionDropdown, { Option } from '@commercetools-local/ui-kit/dropdowns/primary-action-dropdown';
+import PrimaryActionDropdown, { Option } from '@commercetools-frontend/ui-kit/dropdowns/primary-action-dropdown';
 
 <PrimaryActionDropdown>
   <Option icon={<AddBoldIcon />} onClick={alert('primary clicked')}}>Primary option</Option>

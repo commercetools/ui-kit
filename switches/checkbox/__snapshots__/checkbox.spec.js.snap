@@ -58,3 +58,31 @@ exports[`<Checkbox> rendering without children should match snapshot 1`] = `
   </label>
 </div>
 `;
+
+exports[`<Checkbox> rendering without children with \`data-*\` should match snapshot 1`] = `
+<div
+  data-test="foo-attribute-select-me-from-e2e"
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <test-file-stub />
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;

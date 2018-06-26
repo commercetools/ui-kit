@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import CollapsiblePanel from '@commercetools-local/ui-kit/panels/collapsible-panel';
+import CollapsiblePanel from '@commercetools-frontend/ui-kit/panels/collapsible-panel';
 ```
 
 #### Usage
