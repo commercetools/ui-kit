@@ -9,7 +9,7 @@ import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
 import TextArea from './text-area';
 
-storiesOf('Forms/Inputs', module)
+storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('TextArea', () => {

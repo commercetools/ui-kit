@@ -4,10 +4,7 @@ import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
 import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
-import {
-  AngleUpIcon,
-  AngleDownIcon,
-} from '@commercetools-frontend/ui-kit/icons';
+import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Constraints from '../../materials/constraints';
