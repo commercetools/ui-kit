@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { intlMock } from '@commercetools-local/test-utils';
 import AccessibleButton from '../../buttons/accessible-button';
 import MoneyInput from './money-input';
 import Currency from './currency';
@@ -14,7 +13,6 @@ const createTestProps = customProps => ({
   currencies: ['EUR', 'USD'],
   onChange: jest.fn(),
   onBlur: jest.fn(),
-  intl: intlMock,
   ...customProps,
 });
 

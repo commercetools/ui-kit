@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { Radio } from '@commercetools-local/ui-kit/switches';
+import { Radio } from '@commercetools-frontend/ui-kit/switches';
 ```
 
 #### Description
@@ -15,7 +15,7 @@ be selected. As a result the named `Radio` export exposes a `Group` and an
 #### Usage
 
 ```js
-import { Radio } from '@commercetools-local/ui-kit/switches';
+import { Radio } from '@commercetools-frontend/ui-kit/switches';
 
 <Radio.Group onChange={...} value="foo-radio-value">
    <Radio.Option value="foo-radio-value">

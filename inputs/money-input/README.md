@@ -7,7 +7,7 @@ A controlled input component for money values with validation states.
 ## Usage
 
 ```js
-import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
+import MoneyInput from '@commercetools-frontend/ui-kit/inputs/money-input';
 
 <MoneyInput
   value={{ amount: '1.00', currencyCode: 'EUR' }}
@@ -78,8 +78,8 @@ Here's an example of how `MoneyInput` would be used inside a form.
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
-import ErrorMessage from '@commercetools-local/ui-kit/messages/error-message';
-import MoneyInput from '@commercetools-local/ui-kit/inputs/money-input';
+import ErrorMessage from '@commercetools-frontend/ui-kit/messages/error-message';
+import MoneyInput from '@commercetools-frontend/ui-kit/inputs/money-input';
 
 const currencies = ['EUR', 'USD', 'AED', 'KWD'];
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import classnames from 'classnames';
 import AccessibleButton from '../../buttons/accessible-button';
 import { CaretDownIcon, CaretUpIcon } from '../../icons';
@@ -32,9 +32,9 @@ DropdownChevron.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
   isOpen: PropTypes.bool.isRequired,
-
-  // Intl
-  intl: intlShape,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default injectIntl(DropdownChevron);

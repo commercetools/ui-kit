@@ -7,7 +7,7 @@ import Section from '../../.storybook/decorators/section';
 import LocalizedTextInputReadme from './README.md';
 import LocalizedTextInput from './localized-text-input';
 
-storiesOf('Forms/Inputs', module)
+storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedTextInputReadme))
   .add('LocalizedTextInput', () => {

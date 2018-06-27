@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import TextInput from '@commercetools-local/ui-kit/inputs/text-input';
+import TextInput from '@commercetools-frontend/ui-kit/inputs/text-input';
 
 <TextInput value="foo" onChange={value => alert(value)} />;
 ```

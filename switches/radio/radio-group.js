@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
 import Option from './radio-option';
 
@@ -31,7 +32,7 @@ class Group extends React.PureComponent {
 
     invariant(
       optionChildrenAsArray.length > 0,
-      '@commercetools-local/ui-kit/switches/radio: must contain at least one Radio.Option'
+      '@commercetools-frontend/ui-kit/switches/radio: must contain at least one Radio.Option'
     );
   }
 
@@ -39,7 +40,10 @@ class Group extends React.PureComponent {
     const DirectionWrapper =
       this.props.direction === 'stack' ? Spacings.Stack : Spacings.Inline;
     return (
-      <div className={this.props.className}>
+      <div
+        className={this.props.className}
+        {...filterDataAttributes(this.props)}
+      >
         <DirectionWrapper scale={this.props.scale}>
           {React.Children.map(this.props.children, child => {
             // NOTE: Allowing to intersperse other elements than `Option`.
