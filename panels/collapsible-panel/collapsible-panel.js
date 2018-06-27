@@ -100,6 +100,7 @@ export default class CollapsiblePanel extends React.PureComponent {
         {({ isOpen, toggle, containerStyles, registerContentNode }) => (
           <div
             className={classnames(this.props.className, {
+              [styles['container-condensed']]: this.props.condensed,
               [styles['container-open']]: isOpen,
               [styles['container-theme-light']]: this.props.theme === 'light',
               [styles['container-theme-dark']]: this.props.theme === 'dark',

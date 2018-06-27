@@ -17,6 +17,10 @@
   padding: 0;
 }
 
+.container-condensed {
+  min-width: 0;
+}
+
 .container-theme-light {
   composes: base-container;
   background-color: var(--color-white);

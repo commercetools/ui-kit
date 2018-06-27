@@ -147,6 +147,10 @@ describe('CollapsiblePanel', () => {
           );
         });
 
+        it('should apply a condensed class name to the container', () => {
+          expect(collapsibleMotionWrapper).toRender('.container-condensed');
+        });
+
         it('should render <Text.Detail /> for the header', () => {
           expect(collapsibleMotionWrapper).toRender(Text.Detail);
         });
