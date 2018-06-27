@@ -1,15 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { intlMock } from '@commercetools-local/test-utils';
-import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
-import Collapsible from '@commercetools-frontend/ui-kit/collapsible';
 import TextareaAutosize from 'react-textarea-autosize';
+import FlatButton from '../../buttons/flat-button';
+import Collapsible from '../../collapsible';
 import { TextArea } from './text-area';
 
 const createTestProps = customProps => ({
   value: '',
   intl: {
-    ...intlMock,
     formatMessage: jest.fn(message => message.id),
   },
   onChange: jest.fn(),
