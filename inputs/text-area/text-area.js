@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
 import TextareaAutosize from 'react-textarea-autosize';
-import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
+import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
 import filterDataAttributes from '../../utils/filter-data-attributes';
