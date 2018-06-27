@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { intlMock } from '@commercetools-local/test-utils';
-import FlatButton from '@commercetools-local/ui-kit/buttons/flat-button';
-import Collapsible from '@commercetools-local/ui-kit/collapsible';
+import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
+import Collapsible from '@commercetools-frontend/ui-kit/collapsible';
 import TextareaAutosize from 'react-textarea-autosize';
 import { TextArea } from './text-area';
 

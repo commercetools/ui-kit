@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import TextArea from '@commercetools-local/ui-kit/inputs/text-area';
+import TextArea from '@commercetools-frontend/ui-kit/inputs/text-area';
 
 <TextArea value="foo" onChange={event => alert(event.target.value)} />;
 ```
