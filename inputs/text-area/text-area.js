@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
-import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import Collapsible from '@commercetools-frontend/ui-kit/collapsible';
 import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
@@ -10,6 +9,7 @@ import {
   AngleUpIcon,
   AngleDownIcon,
 } from '@commercetools-frontend/ui-kit/icons';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Constraints from '../../materials/constraints';
 import styles from './text-area.mod.css';
 import messages from './messages';
