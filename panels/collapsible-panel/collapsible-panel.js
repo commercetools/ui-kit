@@ -124,7 +124,7 @@ export default class CollapsiblePanel extends React.PureComponent {
                   className={styles.header}
                 >
                   <div className={styles['truncate-header']}>
-                    <Spacings.Inline alignItems="center" scale={scale}>
+                    <Spacings.Inline alignItems="center" scale="s">
                       {!this.props.isDisabled && (
                         <HeaderIcon
                           isClosed={!isOpen}
@@ -132,23 +132,24 @@ export default class CollapsiblePanel extends React.PureComponent {
                           size={this.props.condensed ? 'small' : 'medium'}
                         />
                       )}
-                      {this.props.condensed ? (
-                        <Text.Detail
-                          isInline={true}
-                          isBold={true}
-                          truncate={true}
-                        >
-                          {this.props.header}
-                        </Text.Detail>
-                      ) : (
-                        // NOTE: This should always be used with CollapsiblePanel.Header
-                        this.props.header
-                      )}
-                      {this.props.secondaryHeader && (
-                        <Text.Detail tone="secondary" truncate={true}>
-                          {this.props.secondaryHeader}
-                        </Text.Detail>
-                      )}
+                      <Spacings.Inline alignItems="center" scale={scale}>
+                        {this.props.condensed ? (
+                          <Text.Detail
+                            isInline={true}
+                            isBold={true}
+                            truncate={true}
+                          >
+                            {this.props.header}
+                          </Text.Detail>
+                        ) : (
+                          this.props.header
+                        )}
+                        {this.props.secondaryHeader && (
+                          <Text.Detail tone="secondary" truncate={true}>
+                            {this.props.secondaryHeader}
+                          </Text.Detail>
+                        )}
+                      </Spacings.Inline>
                     </Spacings.Inline>
                   </div>
                   <div onClick={event => event.stopPropagation()}>
