@@ -178,42 +178,42 @@
     {
       "key": "--color-fadedOrange20",
       "name": "fadedOrange20",
-      "value": "color(var(--color-orange) alpha(20%))"
+      "value": "color-mod(var(--color-orange) alpha(20%))"
     },
     {
       "key": "--color-fadedBlue20",
       "name": "fadedBlue20",
-      "value": "color(var(--color-blue) alpha(20%))"
+      "value": "color-mod(var(--color-blue) alpha(20%))"
     },
     {
       "key": "--color-fadedBlack25",
       "name": "fadedBlack25",
-      "value": "color(var(--color-black) alpha(25%))"
+      "value": "color-mod(var(--color-black) alpha(25%))"
     },
     {
       "key": "--color-fadedBlueNavy20",
       "name": "fadedBlueNavy20",
-      "value": "color(var(--color-blueNavy) alpha(20%))"
+      "value": "color-mod(var(--color-blueNavy) alpha(20%))"
     },
     {
       "key": "--color-fadedWhite20",
       "name": "fadedWhite20",
-      "value": "color(var(--color-white) alpha(20%))"
+      "value": "color-mod(var(--color-white) alpha(20%))"
     },
     {
       "key": "--color-fadedWhiteCatskill90",
       "name": "fadedWhiteCatskill90",
-      "value": "color(var(--color-whiteCatskill) alpha(90%))"
+      "value": "color-mod(var(--color-whiteCatskill) alpha(90%))"
     },
     {
       "key": "--color-fadedPrimaryGreen20",
       "name": "fadedPrimaryGreen20",
-      "value": "color(var(--color-primaryGreen) alpha(20%))"
+      "value": "color-mod(var(--color-primaryGreen) alpha(20%))"
     },
     {
       "key": "--color-fadedGreen30",
       "name": "fadedGreen30",
-      "value": "color(var(--color-green) alpha(30%))"
+      "value": "color-mod(var(--color-green) alpha(30%))"
     }
   ]
 ]

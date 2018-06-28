@@ -43,6 +43,30 @@ describe('<Group>', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
+    it('should render two `<Option>s', () => {
+      expect(wrapper).toRenderElementTimes(Option, 2);
+    });
+
+    describe('with `data-test`', () => {
+      beforeEach(() => {
+        props = createGroupTestProps({
+          direction: 'inline',
+          'data-test': 'attribute-definition-constraint',
+        });
+        optionProps = createOptionTestProps();
+
+        wrapper = shallow(
+          <Group {...props}>
+            <Option {...optionProps}>{'foo'}</Option>
+            <Option {...optionProps}>{'bar'}</Option>
+          </Group>
+        );
+      });
+      it('should match snpshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+    });
+
     describe('when `direction is `inline``', () => {
       beforeEach(() => {
         props = createGroupTestProps({ direction: 'inline' });
@@ -54,15 +78,10 @@ describe('<Group>', () => {
             <Option {...optionProps}>{'bar'}</Option>
           </Group>
         );
-
-        it('should match snapshot', () => {
-          expect(wrapper).toMatchSnapshot();
-        });
       });
-    });
-
-    it('should render two `<Option>s', () => {
-      expect(wrapper).toRenderElementTimes(Option, 2);
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
     });
 
     describe('<Option>', () => {

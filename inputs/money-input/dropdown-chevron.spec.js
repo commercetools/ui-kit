@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { intlMock } from '@commercetools-local/test-utils';
 import AccessibleButton from '../../buttons/accessible-button';
 import { DropdownChevron } from './dropdown-chevron';
 
@@ -10,7 +9,9 @@ const createTestProps = customProps => ({
   isOpen: false,
   className: 'chevron-icon',
   buttonRef: jest.fn(),
-  intl: intlMock,
+  intl: {
+    formatMessage: jest.fn(message => message.id),
+  },
   ...customProps,
 });
 
