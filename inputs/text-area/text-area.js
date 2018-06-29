@@ -67,7 +67,7 @@ export class TextArea extends React.Component {
     // This is the displayed textarea element's height in rows
     textareaRowCount: TextArea.MIN_ROW_COUNT,
 
-    // This is the internal virtual DOM rendered textarea element's height in rows
+    // This is the internal "fake" rendered textarea element's height in rows
     contentRowCount: TextArea.MIN_ROW_COUNT,
   };
 
