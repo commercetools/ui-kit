@@ -14,6 +14,7 @@ storiesOf('Inputs', module)
   .addDecorator(withReadme(Readme))
   .add('TextArea', () => {
     const defaultValue = text('default value', '');
+    const isDefaultClosed = boolean('isDefaultClosed', false);
     return (
       <Section>
         <IntlProvider
@@ -27,7 +28,7 @@ storiesOf('Inputs', module)
         >
           <Value
             // remount component when defaults change
-            key={`${defaultValue}`}
+            key={`${defaultValue}-${isDefaultClosed}`}
             defaultValue={defaultValue}
             render={(value, onChange) => (
               <TextArea
@@ -36,6 +37,7 @@ storiesOf('Inputs', module)
                 onBlur={action('onBlur')}
                 onFocus={action('onFocus')}
                 isAutofocussed={boolean('isAutofocussed', false)}
+                isDefaultClosed={isDefaultClosed}
                 placeholder={text('placeholder')}
                 horizontalConstraint={select(
                   'horizontalConstraint',

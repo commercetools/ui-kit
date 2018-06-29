@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
-import TextareaAutosize from 'react-textarea-autosize';
+import TextareaAutosize, { calculateNodeHeight } from 'react-textarea-autosize';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
@@ -42,6 +42,7 @@ export class TextArea extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
+    isDefaultClosed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
@@ -59,22 +60,36 @@ export class TextArea extends React.Component {
     hasError: false,
     hasWarning: false,
     isAutofocussed: false,
+    isDefaultClosed: false,
   };
 
   state = {
-    numOfRows: TextArea.MIN_ROW_COUNT,
+    // This is the displayed textarea element's height in rows
+    textareaRowCount: TextArea.MIN_ROW_COUNT,
+
+    // This is the internal virtual DOM rendered textarea element's height in rows
+    contentRowCount: TextArea.MIN_ROW_COUNT,
   };
 
   handleHeightChange = (_, innerComponent) => {
+    const contentRowCount = calculateNodeHeight(
+      innerComponent._rootDOMNode,
+      innerComponent._uid,
+      innerComponent.props.useCacheForDOMMeasurements,
+      innerComponent.minRows,
+      innerComponent.maxRows
+    ).rowCount;
+
     this.setState({
-      numOfRows: innerComponent.rowCount,
+      textareaRowCount: innerComponent.rowCount,
+      contentRowCount,
     });
   };
 
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Collapsible>
+        <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
           {({ isOpen, toggle }) => (
             <React.Fragment key="textarea-autosize">
               <TextareaAutosize
@@ -107,7 +122,10 @@ export class TextArea extends React.Component {
                 useCacheForDOMMeasurements={true}
                 {...filterDataAttributes(this.props)}
               />
-              {(this.state.numOfRows > TextArea.MIN_ROW_COUNT || !isOpen) && (
+              {((!this.props.isDefaultClosed &&
+                (this.state.textareaRowCount > TextArea.MIN_ROW_COUNT ||
+                  !isOpen)) ||
+                this.state.contentRowCount > TextArea.MIN_ROW_COUNT) && (
                 <FlatButton
                   onClick={toggle}
                   type="primary"
