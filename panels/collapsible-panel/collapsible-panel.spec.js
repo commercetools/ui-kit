@@ -1,11 +1,16 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import invariant from 'invariant';
+import Text from '../../typography/text';
+import CollapsiblePanelHeader from './collapsible-panel-header';
 import CollapsiblePanel from './collapsible-panel';
+
+jest.mock('invariant');
 
 describe('CollapsiblePanel', () => {
   const createTestProps = props => ({
     className: 'custom-container',
-    label: 'Header Title',
+    header: <CollapsiblePanelHeader>Header Title</CollapsiblePanelHeader>,
     isDisabled: false,
     ...props,
   });
@@ -36,7 +41,7 @@ describe('CollapsiblePanel', () => {
       });
 
       it('should render title in header container', () => {
-        expect(collapsibleMotionWrapper).toRender('TextHeadline');
+        expect(collapsibleMotionWrapper).toRender(CollapsiblePanelHeader);
       });
 
       describe('when sticky mode is enabled', () => {
@@ -65,12 +70,90 @@ describe('CollapsiblePanel', () => {
 
       it('should contain header title', () => {
         expect(
-          collapsibleMotionWrapper.find('TextHeadline').contains('Header Title')
+          collapsibleMotionWrapper
+            .find(CollapsiblePanelHeader)
+            .contains('Header Title')
         ).toBe(true);
       });
 
       it('children should contain text', () => {
-        expect(collapsibleMotionWrapper.find('#foo').text()).toBe('Foo');
+        expect(collapsibleMotionWrapper.find('#foo')).toHaveText('Foo');
+      });
+
+      describe('when has dark `theme`', () => {
+        beforeEach(() => {
+          props = createTestProps({ theme: 'dark' });
+          wrapper = shallow(
+            <CollapsiblePanel {...props}>
+              <span id="foo">{'Foo'}</span>
+            </CollapsiblePanel>
+          );
+          collapsibleMotionWrapper = shallow(
+            wrapper.find('CollapsibleMotion').prop('children')({
+              isOpen: true,
+            })
+          );
+        });
+
+        it('should apply a dark class name to the container', () => {
+          expect(collapsibleMotionWrapper).toRender('.container-theme-dark');
+        });
+
+        it('should apply a dark class name to the header container', () => {
+          expect(collapsibleMotionWrapper).toRender(
+            '.header-container-theme-dark'
+          );
+        });
+      });
+
+      describe('when has light `theme`', () => {
+        beforeEach(() => {
+          props = createTestProps({ theme: 'light' });
+          wrapper = shallow(
+            <CollapsiblePanel {...props}>
+              <span id="foo">{'Foo'}</span>
+            </CollapsiblePanel>
+          );
+          collapsibleMotionWrapper = shallow(
+            wrapper.find('CollapsibleMotion').prop('children')({
+              isOpen: true,
+            })
+          );
+        });
+
+        it('should apply a light class name to the container', () => {
+          expect(collapsibleMotionWrapper).toRender('.container-theme-light');
+        });
+
+        it('should apply a light class name to the header container', () => {
+          expect(collapsibleMotionWrapper).toRender(
+            '.header-container-theme-light'
+          );
+        });
+      });
+
+      describe('when is condensed', () => {
+        beforeEach(() => {
+          props = createTestProps({ condensed: true });
+          wrapper = shallow(
+            <CollapsiblePanel {...props}>
+              <span id="foo">{'Foo'}</span>
+            </CollapsiblePanel>
+          );
+          collapsibleMotionWrapper = shallow(
+            wrapper.find('CollapsibleMotion').prop('children')({
+              isOpen: true,
+            })
+          );
+        });
+
+        it('should apply a condensed class name to the container', () => {
+          expect(collapsibleMotionWrapper).toRender('.container-condensed');
+        });
+
+        it('should render <Text.Detail /> for the header', () => {
+          expect(collapsibleMotionWrapper).toRender(Text.Detail);
+        });
       });
     });
 
@@ -171,11 +254,59 @@ describe('CollapsiblePanel', () => {
           </CollapsiblePanel>
         );
 
-        wrapper.instance().handleToggle();
+        wrapper.instance().createHandleToggle(jest.fn());
       });
 
       it('should not invoke `onToggle`', () => {
         expect(props.onToggle).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('lifecycle', () => {
+    let props;
+    let wrapper;
+    describe('componentDidMount', () => {
+      describe('with `controls`', () => {
+        describe('when `collapsed`', () => {
+          beforeEach(() => {
+            props = createTestProps({
+              controls: <div />,
+              condensed: true,
+            });
+            wrapper = shallow(
+              <CollapsiblePanel {...props}>
+                <span id="foo">{'Foo'}</span>
+              </CollapsiblePanel>
+            );
+
+            wrapper.instance().componentDidMount();
+          });
+
+          it('should invoke `invariant` with `false`', () => {
+            expect(invariant).toHaveBeenCalledWith(false, expect.any(String));
+          });
+        });
+
+        describe('when not `collapsed`', () => {
+          beforeEach(() => {
+            props = createTestProps({
+              controls: <div />,
+              condensed: false,
+            });
+            wrapper = shallow(
+              <CollapsiblePanel {...props}>
+                <span id="foo">{'Foo'}</span>
+              </CollapsiblePanel>
+            );
+
+            wrapper.instance().componentDidMount();
+          });
+
+          it('should invoke `invariant` with `true`', () => {
+            expect(invariant).toHaveBeenCalledWith(true, expect.any(String));
+          });
+        });
       });
     });
   });

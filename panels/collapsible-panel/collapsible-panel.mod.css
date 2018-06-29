@@ -2,23 +2,55 @@
 @import '../../materials/shadows.mod.css';
 @import '../../materials/spacings.mod.css';
 @import '../../materials/borders.mod.css';
+@import '../../materials/sizes.mod.css';
 
 :root {
   --size-icon-container: 24px;
+  --size-icon-container-small: 16px;
 }
 
-.container {
-  box-shadow: var(--shadow-8-second);
-  background-color: var(--color-whiteAlabaster);
+.base-container {
+  box-shadow: var(--shadow-1-second);
   border-radius: var(--border-radius-6);
   position: relative;
   min-width: 550px;
   padding: 0;
 }
 
-.header-container {
+.container-condensed {
+  min-width: 0;
+}
+
+.container-theme-light {
+  composes: base-container;
+  background-color: var(--color-white);
+}
+
+.container-theme-dark {
+  composes: base-container;
+  background-color: var(--color-greyAlabaster);
+}
+
+.base-header-container {
   position: relative;
   cursor: pointer;
+  border-top-left-radius: var(--border-radius-6);
+  border-top-right-radius: var(--border-radius-6);
+}
+
+.header-container-theme-light {
+  composes: base-header-container;
+  background-color: var(--color-white);
+}
+
+.header-container-theme-dark {
+  composes: base-header-container;
+  background-color: var(--color-greyAlabaster);
+}
+
+.header-closed {
+  border-bottom-left-radius: var(--border-radius-6);
+  border-bottom-right-radius: var(--border-radius-6);
 }
 
 .disabled {
@@ -29,7 +61,6 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: var(--color-whiteAlabaster);
   border-top-right-radius: var(--border-radius-6);
   border-top-left-radius: var(--border-radius-6);
 }
@@ -42,7 +73,7 @@
   }
 }
 
-.container-open .header-container {
+.container-open .base-header-container {
   border-bottom: 1px var(--color-primaryGrey) solid;
 }
 
@@ -51,7 +82,6 @@
   flex: 1;
   align-items: center;
   list-style-type: none;
-  border-bottom: 1px var(--color-whiteAlabaster) solid;
   justify-content: space-between;
 
   /*
@@ -95,10 +125,16 @@
   width: var(--size-icon-container);
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+}
+
+.header-icon-small {
+  height: var(--size-icon-container-small);
+  width: var(--size-icon-container-small);
 }
 
 .header-icon-primary {
-  background-color: var(--color-greenLight);
+  background-color: var(--color-white);
 }
 
 .header-icon-urgent {
@@ -110,4 +146,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+}
+
+.truncate-header {
+  min-width: 0;
 }

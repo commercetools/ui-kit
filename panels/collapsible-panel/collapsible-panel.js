@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash.isnil';
 import classnames from 'classnames';
+import invariant from 'invariant';
+import { defaultMemoize } from 'reselect';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
 import Text from '../../typography/text';
@@ -12,11 +14,15 @@ import styles from './collapsible-panel.mod.css';
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 
+const hasControlsWhenCondensed = props =>
+  props.condensed === true && React.isValidElement(props.controls);
+
 export default class CollapsiblePanel extends React.PureComponent {
   static displayName = 'CollapsiblePanel';
   static propTypes = {
     // common props
-    label: PropTypes.node.isRequired,
+    header: PropTypes.node.isRequired,
+    secondaryHeader: PropTypes.node,
     description: PropTypes.string,
     className: PropTypes.string,
     isSticky: PropTypes.bool,
@@ -24,6 +30,8 @@ export default class CollapsiblePanel extends React.PureComponent {
     isDisabled: PropTypes.bool,
     children: PropTypes.node,
     tone: PropTypes.oneOf(['urgent', 'primary']),
+    theme: PropTypes.oneOf(['dark', 'light']),
+    condensed: PropTypes.bool,
 
     // props when uncontrolled
     isDefaultClosed(props, propName, componentName, ...rest) {
@@ -61,14 +69,27 @@ export default class CollapsiblePanel extends React.PureComponent {
     },
   };
 
-  handleToggle(toggleFunc) {
-    if (this.props.isDisabled) return;
-    toggleFunc();
+  static defaultProps = {
+    theme: 'dark',
+    condensed: false,
+  };
+
+  componentDidMount() {
+    invariant(
+      !hasControlsWhenCondensed(this.props),
+      '@commercetools-frontend/ui-kit/panels/collapsible-panel: `controls` should not be passed when panel is `condensed`.'
+    );
   }
+
+  createHandleToggle = defaultMemoize(handleToggle => () => {
+    if (this.props.isDisabled) return;
+    handleToggle();
+  });
 
   render() {
     // Pass only `data-*` props
-    const headerProps = filterDataAttributes(this.props);
+    const dataProps = filterDataAttributes(this.props);
+    const scale = this.props.condensed ? 's' : 'm';
 
     return (
       <CollapsibleMotion
@@ -78,30 +99,59 @@ export default class CollapsiblePanel extends React.PureComponent {
       >
         {({ isOpen, toggle, containerStyles, registerContentNode }) => (
           <div
-            className={classnames(this.props.className, styles.container, {
+            className={classnames(this.props.className, {
+              [styles['container-condensed']]: this.props.condensed,
               [styles['container-open']]: isOpen,
+              [styles['container-theme-light']]: this.props.theme === 'light',
+              [styles['container-theme-dark']]: this.props.theme === 'dark',
             })}
           >
             <div
-              className={classnames(styles['header-container'], {
+              className={classnames(styles['base-header-container'], {
+                [styles['header-container-theme-light']]:
+                  this.props.theme === 'light',
+                [styles['header-container-theme-dark']]:
+                  this.props.theme === 'dark',
                 [styles.disabled]: this.props.isDisabled,
                 [styles.sticky]: this.props.isSticky && isOpen,
+                [styles['header-closed']]: !isOpen,
               })}
             >
-              <Spacings.InsetSquish>
+              <Spacings.InsetSquish scale={scale}>
                 <div
-                  {...headerProps}
-                  onClick={() => this.handleToggle(toggle)}
+                  {...dataProps}
+                  onClick={this.createHandleToggle(toggle)}
                   className={styles.header}
                 >
-                  <Spacings.Inline alignItems="center">
-                    {!this.props.isDisabled && (
-                      <HeaderIcon isClosed={!isOpen} tone={this.props.tone} />
-                    )}
-                    <Text.Headline elementType="h2">
-                      {this.props.label}
-                    </Text.Headline>
-                  </Spacings.Inline>
+                  <div className={styles['truncate-header']}>
+                    <Spacings.Inline alignItems="center" scale="s">
+                      {!this.props.isDisabled && (
+                        <HeaderIcon
+                          isClosed={!isOpen}
+                          tone={this.props.tone}
+                          size={this.props.condensed ? 'small' : 'medium'}
+                        />
+                      )}
+                      <Spacings.Inline alignItems="center" scale={scale}>
+                        {this.props.condensed ? (
+                          <Text.Detail
+                            isInline={true}
+                            isBold={true}
+                            truncate={true}
+                          >
+                            {this.props.header}
+                          </Text.Detail>
+                        ) : (
+                          this.props.header
+                        )}
+                        {this.props.secondaryHeader && (
+                          <Text.Detail tone="secondary" truncate={true}>
+                            {this.props.secondaryHeader}
+                          </Text.Detail>
+                        )}
+                      </Spacings.Inline>
+                    </Spacings.Inline>
+                  </div>
                   <div onClick={event => event.stopPropagation()}>
                     {this.props.headerControls}
                   </div>
@@ -112,11 +162,11 @@ export default class CollapsiblePanel extends React.PureComponent {
             <div style={containerStyles}>
               <div ref={registerContentNode}>
                 {this.props.description && (
-                  <Spacings.Inset scale="m">
+                  <Spacings.Inset scale={scale}>
                     <Text.Detail>{this.props.description}</Text.Detail>
                   </Spacings.Inset>
                 )}
-                <Spacings.Inset scale="m">
+                <Spacings.Inset scale={scale}>
                   <div className={styles.content}>{this.props.children}</div>
                 </Spacings.Inset>
               </div>

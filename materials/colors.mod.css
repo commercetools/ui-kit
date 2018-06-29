@@ -48,12 +48,12 @@ colors. */
   --color-greySolid: #afafaf;
 
   /* Faded version of main colors */
-  --color-fadedOrange20: color(var(--color-orange) alpha(20%));
-  --color-fadedBlue20: color(var(--color-blue) alpha(20%));
-  --color-fadedBlack25: color(var(--color-black) alpha(25%));
-  --color-fadedBlueNavy20: color(var(--color-blueNavy) alpha(20%));
-  --color-fadedWhite20: color(var(--color-white) alpha(20%));
-  --color-fadedWhiteCatskill90: color(var(--color-whiteCatskill) alpha(90%));
-  --color-fadedPrimaryGreen20: color(var(--color-primaryGreen) alpha(20%));
-  --color-fadedGreen30: color(var(--color-green) alpha(30%));
+  --color-fadedOrange20: color-mod(var(--color-orange) alpha(20%));
+  --color-fadedBlue20: color-mod(var(--color-blue) alpha(20%));
+  --color-fadedBlack25: color-mod(var(--color-black) alpha(25%));
+  --color-fadedBlueNavy20: color-mod(var(--color-blueNavy) alpha(20%));
+  --color-fadedWhite20: color-mod(var(--color-white) alpha(20%));
+  --color-fadedWhiteCatskill90: color-mod(var(--color-whiteCatskill) alpha(90%));
+  --color-fadedPrimaryGreen20: color-mod(var(--color-primaryGreen) alpha(20%));
+  --color-fadedGreen30: color-mod(var(--color-green) alpha(30%));
 }
