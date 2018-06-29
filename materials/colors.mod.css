@@ -7,27 +7,27 @@ colors. */
   /* new colors */
 
   --color-green: #00b39e;
-  --color-green-25: color(var(--color-green) lightness(25%));
-  --color-green-40: color(var(--color-green) lightness(40%));
-  --color-green-85: color(var(--color-green) lightness(85%));
-  --color-green-95: color(var(--color-green) lightness(95%));
+  --color-green-25: color-mod(var(--color-green) lightness(25%));
+  --color-green-40: color-mod(var(--color-green) lightness(40%));
+  --color-green-85: color-mod(var(--color-green) lightness(85%));
+  --color-green-95: color-mod(var(--color-green) lightness(95%));
   --color-white: #fff;
   --color-navy: #213c45;
-  --color-navy-30: color(var(--color-navy) lightness(30%));
-  --color-navy-40: color(var(--color-navy) lightness(40%));
-  --color-navy-95: color(var(--color-navy) lightness(95%));
-  --color-navy-98: color(var(--color-navy) lightness(98%));
+  --color-navy-30: color-mod(var(--color-navy) lightness(30%));
+  --color-navy-40: color-mod(var(--color-navy) lightness(40%));
+  --color-navy-95: color-mod(var(--color-navy) lightness(95%));
+  --color-navy-98: color-mod(var(--color-navy) lightness(98%));
   --color-blue: #078cdf;
-  --color-blue-85: color(var(--color-blue) lightness(85%));
-  --color-blue-95: color(var(--color-blue) lightness(95%));
+  --color-blue-85: color-mod(var(--color-blue) lightness(85%));
+  --color-blue-95: color-mod(var(--color-blue) lightness(95%));
   --color-gray: #ccc;
-  --color-gray-60: color(var(--color-gray) lightness(60%));
-  --color-gray-90: color(var(--color-gray) lightness(90%));
-  --color-gray-95: color(var(--color-gray) lightness(95%));
+  --color-gray-60: color-mod(var(--color-gray) lightness(60%));
+  --color-gray-90: color-mod(var(--color-gray) lightness(90%));
+  --color-gray-95: color-mod(var(--color-gray) lightness(95%));
   --color-orange: #f16d0e;
-  --color-orange-95: color(var(--color-orange) lightness(95%));
+  --color-orange-95: color-mod(var(--color-orange) lightness(95%));
   --color-red: #e60050;
-  --color-red-95: color(var(--color-red) lightness(95%));
+  --color-red-95: color-mod(var(--color-red) lightness(95%));
   --color-purple: #b866ff;
   --color-black: #1a1a1a;
 }
