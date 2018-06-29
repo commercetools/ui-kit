@@ -1,0 +1,35 @@
+@import '../colors.mod.css';
+@import '../borders.mod.css';
+
+:root {
+  /**
+    * Borders
+    *
+    * Use these tokens for border related properties only.
+    * Do not use these for background colors or text colors.
+    *
+    * Index
+    * • Inputs
+    *  ◦ Text fields
+    *   ▪ Border Colors
+    *   ▪ Border Radius
+    */
+
+  /* ==========================================================================
+   Inputs
+   ========================================================================== */
+
+  /* Text fields (text, password, number, textarea)
+   ========================================================================== */
+
+  /* Colors */
+  --token-border-color-input-pristine: var(--color-greySolid);
+  --token-border-color-input-focus: var(--color-buttonHover);
+  --token-border-color-input-disabled: var(--color-whitePorcelain);
+  --token-border-color-input-readonly: var(--color-primaryGrey);
+  --token-border-color-input-error: var(--color-red);
+  --token-border-color-input-warning: var(--color-orange);
+
+  /* Radius */
+  --token-border-radius-input: var(--border-radius-6);
+}

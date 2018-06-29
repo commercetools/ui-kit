@@ -1,0 +1,78 @@
+@import '../../materials/tokens/tokens.mod.css';
+@import '../../materials/transitions.mod.css';
+@import '../../materials/spacings.mod.css';
+
+:root {
+  /* we need this line-height to achieve 32px height when the component has only one row */
+  --size-input-line-height: 22px;
+  --size-input-min-height: 32px;
+}
+
+/******** States ********/
+
+/* Default */
+
+.textarea {
+  color: var(--token-font-color-default);
+  font-family: var(--token-font-family-default);
+  font-size: var(--token-font-size-body);
+  padding: var(--spacing-4) var(--spacing-8);
+  border-radius: var(--token-border-radius-input);
+  transition: var(--transition-standard);
+  line-height: var(--size-input-line-height);
+  min-height: var(--size-input-min-height);
+  resize: vertical;
+  width: 100%;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: pre-wrap;
+  outline: 0;
+}
+
+.pristine {
+  composes: textarea;
+  border: 1px solid var(--token-border-color-input-pristine);
+  background: var(--token-background-color-input-pristine);
+}
+
+/* Focused */
+.pristine:focus {
+  border: 1px solid var(--token-border-color-input-focus);
+}
+
+/* Disabled */
+.disabled {
+  composes: textarea;
+  color: var(--token-font-color-disabled);
+  border: 1px solid var(--token-border-color-input-disabled);
+  background: var(--token-background-color-input-disabled);
+  resize: none;
+}
+
+/* Read only */
+
+.readonly {
+  composes: textarea;
+  border: 1px solid var(--token-border-color-input-readonly);
+  color: var(--token-font-color-readonly);
+}
+
+/******** Form validation ********/
+
+/* hasError */
+
+.error {
+  composes: textarea;
+  color: var(--token-font-color-error);
+  border: 1px solid var(--token-border-color-input-error);
+}
+
+/* hasWarning */
+
+.warning {
+  composes: textarea;
+  color: var(--token-font-color-warning);
+  border: 1px solid var(--token-border-color-input-warning);
+}
+
+/******** Variations ********/
