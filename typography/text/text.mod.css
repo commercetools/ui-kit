@@ -80,7 +80,7 @@ small {
 }
 
 .primary {
-  color: var(--color-green-25);
+  color: var(--color-green);
 }
 
 .secondary {
@@ -88,7 +88,7 @@ small {
 }
 
 .positive {
-  color: var(--color-green-40);
+  color: var(--color-green-25);
 }
 
 .negative {
