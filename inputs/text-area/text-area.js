@@ -40,7 +40,6 @@ export class TextArea extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
-    isDefaultClosed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
@@ -58,7 +57,6 @@ export class TextArea extends React.Component {
     hasError: false,
     hasWarning: false,
     isAutofocussed: false,
-    isDefaultClosed: false,
   };
 
   state = {
@@ -74,7 +72,7 @@ export class TextArea extends React.Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
+        <Collapsible>
           {({ isOpen, toggle }) => (
             <React.Fragment key="textarea-autosize">
               <TextareaAutosize
