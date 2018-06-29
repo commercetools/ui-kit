@@ -87,6 +87,10 @@ export class TextArea extends React.Component {
   };
 
   render() {
+    const isElementBiggerThanMinRowCount =
+      this.state.textareaRowCount > TextArea.MIN_ROW_COUNT;
+    const isContentBiggerThanMinRowCount =
+      this.state.contentRowCount > TextArea.MIN_ROW_COUNT;
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
@@ -123,9 +127,8 @@ export class TextArea extends React.Component {
                 {...filterDataAttributes(this.props)}
               />
               {((!this.props.isDefaultClosed &&
-                (this.state.textareaRowCount > TextArea.MIN_ROW_COUNT ||
-                  !isOpen)) ||
-                this.state.contentRowCount > TextArea.MIN_ROW_COUNT) && (
+                (isElementBiggerThanMinRowCount || !isOpen)) ||
+                isContentBiggerThanMinRowCount) && (
                 <FlatButton
                   onClick={toggle}
                   type="primary"
