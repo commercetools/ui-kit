@@ -177,6 +177,12 @@ export default class LocalizedTextInput extends React.Component {
     );
   };
 
+  static omitEmptyValues = values =>
+    Object.entries(values).reduce((acc, [language, value]) => {
+      if (value && value.trim().length > 0) acc[language] = value;
+      return acc;
+    }, {});
+
   render() {
     const otherLanguages = sortBy(
       Object.keys(this.props.value).filter(
