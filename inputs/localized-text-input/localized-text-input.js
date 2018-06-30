@@ -119,6 +119,7 @@ class LocalizedInput extends React.Component {
 
 export default class LocalizedTextInput extends React.Component {
   static displayName = 'LocalizedTextInput';
+
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
@@ -151,10 +152,31 @@ export default class LocalizedTextInput extends React.Component {
       missing: PropTypes.bool,
     }),
   };
+
   static defaultProps = {
     id: getId('localized-text-input'),
     horizontalConstraint: 'scale',
   };
+
+  static createLocalizedField = (languages, existingTranslations = {}) =>
+    languages.reduce((acc, language) => {
+      acc[language] =
+        // existingTranslations could be "null", then the {} fallback won't apply,
+        // so we need to check for existence explicitly
+        existingTranslations &&
+        {}.hasOwnProperty.call(existingTranslations, language)
+          ? existingTranslations[language] || ''
+          : '';
+      return acc;
+    }, {});
+
+  static isEmpty = values => {
+    if (!values) return true;
+    return Object.values(values).every(
+      value => !value || value.trim().length === 0
+    );
+  };
+
   render() {
     const otherLanguages = sortBy(
       Object.keys(this.props.value).filter(
