@@ -32,4 +32,3 @@ import messages from './messages';
 | `title`      | `string` |    ✅    | -      | -       | Title of the label                                |
 | `subtitle`   | `string` |    -     | -      |         | Subtitle for the label                            |
 | `isRequired` | `bool`   |    -     | -      | `false` | Indicates the labeled field is required (if true) |
-| `className`  | `string` |    -     | -      | -       | For custom styles                                 |
