@@ -64,7 +64,7 @@
     "postcss-import": "11.1.0",
     "postcss-loader": "2.1.5",
     "postcss-reporter": "5.0.0",
-    "prettier": "1.13.5",
+    "prettier": "1.13.7",
     "rcfile": "1.0.3",
     "storybook-readme": "3.3.0",
     "style-loader": "0.21.0",
