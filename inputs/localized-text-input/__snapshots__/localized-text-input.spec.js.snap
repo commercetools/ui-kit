@@ -20,19 +20,19 @@ exports[`rendering other languages should sort them by the length 1`] = `
   />
   <LocalizedInput
     horizontalConstraint="scale"
-    id="localized-text-input-1-pt-BR"
-    isAutofocussed={false}
-    language="pt-BR"
-    onChange={[Function]}
-    value="pt-BR"
-  />
-  <LocalizedInput
-    horizontalConstraint="scale"
     id="localized-text-input-1-nan-Hant-TW"
     isAutofocussed={false}
     language="nan-Hant-TW"
     onChange={[Function]}
     value="nan-Hant-TW"
+  />
+  <LocalizedInput
+    horizontalConstraint="scale"
+    id="localized-text-input-1-pt-BR"
+    isAutofocussed={false}
+    language="pt-BR"
+    onChange={[Function]}
+    value="pt-BR"
   />
   <ExpandControl
     collapseMessage="Collapse"

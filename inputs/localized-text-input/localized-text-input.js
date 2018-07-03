@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant';
 import requiredIf from 'react-required-if';
-import sortBy from 'lodash.sortby';
 import uniq from 'lodash.uniq';
+import without from 'lodash.without';
 import oneLine from 'common-tags/lib/oneLine';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Collapsible from '../../collapsible';
@@ -22,6 +22,45 @@ const getId = (() => {
     return `${prefix}-${id}`;
   };
 })();
+
+const getLanguageKey = language => language.split('-')[0];
+
+// splits the languages into two groups:
+//  - the first group starts with the same tag as the selected language
+//  - the second group starts with a different tag
+const splitLanguagesByKey = (key, languages) =>
+  languages.reduce(
+    (acc, language) => {
+      if (key === getLanguageKey(language)) {
+        acc[0].push(language);
+      } else {
+        acc[1].push(language);
+      }
+      return acc;
+    },
+    [[], []]
+  );
+// sorts the language with the following priority:
+// - the selected language comes first (e.g pt-BR)
+// - all languages using the same base language follow that one (e.g. pt, pt-PT)
+//   they are sorted alphabetically
+// - all other languages follow, sorted alphabetically
+export const sortLanguages = (selectedLanguage, allLanguages) => {
+  const remainingLanguages = without(allLanguages, selectedLanguage);
+
+  const selectedLanguageKey = getLanguageKey(selectedLanguage);
+
+  const [
+    languagesWithSameKeyAsSelectedLanguage,
+    otherLanguages,
+  ] = splitLanguagesByKey(selectedLanguageKey, remainingLanguages);
+
+  return [
+    selectedLanguage,
+    ...languagesWithSameKeyAsSelectedLanguage.sort(),
+    ...otherLanguages.sort(),
+  ];
+};
 
 const createDataAttributes = (props, language) =>
   Object.entries(filterDataAttributes(props)).reduce((acc, [key, value]) => {
@@ -198,31 +237,29 @@ export default class LocalizedTextInput extends React.Component {
   };
 
   render() {
-    const otherLanguages = sortBy(
-      Object.keys(this.props.value).filter(
-        language => language !== this.props.selectedLanguage
-      ),
-      language => language.length
+    const [mainLanguage, ...remainingLanguages] = sortLanguages(
+      this.props.selectedLanguage,
+      Object.keys(this.props.value)
     );
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack>
           <div>
             <LocalizedInput
-              key={this.props.selectedLanguage}
-              id={`${this.props.id}-${this.props.selectedLanguage}`}
+              key={mainLanguage}
+              id={`${this.props.id}-${mainLanguage}`}
               name={this.props.name}
-              value={this.props.value[this.props.selectedLanguage]}
+              value={this.props.value[mainLanguage]}
               onChange={event =>
                 this.props.onChange({
                   ...this.props.value,
-                  [this.props.selectedLanguage]: event.target.value,
+                  [mainLanguage]: event.target.value,
                 })
               }
-              language={this.props.selectedLanguage}
+              language={mainLanguage}
               placeholder={
                 this.props.placeholder
-                  ? this.props.placeholder[this.props.selectedLanguage]
+                  ? this.props.placeholder[mainLanguage]
                   : undefined
               }
               onBlur={this.props.onBlur}
@@ -234,7 +271,7 @@ export default class LocalizedTextInput extends React.Component {
                 this.props.error && Object.keys(this.props.error).length > 0
               )}
               horizontalConstraint={this.props.horizontalConstraint}
-              {...createDataAttributes(this.props, this.props.selectedLanguage)}
+              {...createDataAttributes(this.props, mainLanguage)}
             />
             {this.props.error &&
               this.props.error.missing && (
@@ -245,7 +282,7 @@ export default class LocalizedTextInput extends React.Component {
             {({ toggle, isOpen }) => (
               <React.Fragment>
                 {(isOpen || this.props.hideExpansionControls) &&
-                  otherLanguages.map(language => (
+                  remainingLanguages.map(language => (
                     <LocalizedInput
                       key={language}
                       id={`${this.props.id}-${language}`}
@@ -273,11 +310,11 @@ export default class LocalizedTextInput extends React.Component {
                     />
                   ))}
                 {!this.props.hideExpansionControls &&
-                  otherLanguages.length > 0 && (
+                  remainingLanguages.length > 0 && (
                     <ExpandControl
                       onClick={toggle}
                       expandMessage={`Expand all languages (${
-                        otherLanguages.length
+                        remainingLanguages.length
                       })`}
                       collapseMessage={'Collapse'}
                       isOpen={isOpen}
