@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant';
 import requiredIf from 'react-required-if';
 import sortBy from 'lodash.sortby';
+import uniq from 'lodash.uniq';
 import oneLine from 'common-tags/lib/oneLine';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Collapsible from '../../collapsible';
@@ -158,8 +160,12 @@ export default class LocalizedTextInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  static createLocalizedField = (languages, existingTranslations = {}) =>
-    languages.reduce((acc, language) => {
+  static createLocalizedString = (languages, existingTranslations = {}) => {
+    const mergedLanguages = existingTranslations
+      ? uniq([...languages, ...Object.keys(existingTranslations)])
+      : languages;
+
+    return mergedLanguages.reduce((acc, language) => {
       acc[language] =
         // existingTranslations could be "null", then the {} fallback won't apply,
         // so we need to check for existence explicitly
@@ -169,19 +175,25 @@ export default class LocalizedTextInput extends React.Component {
           : '';
       return acc;
     }, {});
+  };
 
-  static isEmpty = values => {
-    if (!values) return true;
-    return Object.values(values).every(
+  static isEmpty = localizedString => {
+    if (!localizedString) return true;
+    return Object.values(localizedString).every(
       value => !value || value.trim().length === 0
     );
   };
 
-  static omitEmptyValues = values =>
-    Object.entries(values).reduce((acc, [language, value]) => {
+  static omitEmptyTranslations = localizedString => {
+    invariant(
+      typeof localizedString === 'object',
+      'omitEmptyTranslations must be called with an object'
+    );
+    return Object.entries(localizedString).reduce((acc, [language, value]) => {
       if (value && value.trim().length > 0) acc[language] = value;
       return acc;
     }, {});
+  };
 
   render() {
     const otherLanguages = sortBy(

@@ -10,6 +10,95 @@ const createTestProps = custom => ({
   ...custom,
 });
 
+describe('createLocalizedString', () => {
+  describe('when there are no existing translations', () => {
+    it('should initialize all languages to an empty string', () => {
+      expect(LocalizedTextInput.createLocalizedString(['en', 'de'])).toEqual({
+        en: '',
+        de: '',
+      });
+    });
+  });
+  describe('when there are existing translations', () => {
+    describe('when all existing translations are part of the languages', () => {
+      it('should reuse the existing translations and set the remaining languages to an empty string', () => {
+        expect(
+          LocalizedTextInput.createLocalizedString(['en', 'de'], { de: 'Foo' })
+        ).toEqual({
+          en: '',
+          de: 'Foo',
+        });
+      });
+    });
+    describe('when the existing tranlsations contain translations not part of the languages', () => {
+      it('should unify all translations and set the remaining languages to an empty string', () => {
+        expect(
+          LocalizedTextInput.createLocalizedString(['en', 'de'], {
+            ar: 'مرحبا العالم',
+            de: 'Foo',
+          })
+        ).toEqual({
+          en: '',
+          de: 'Foo',
+          ar: 'مرحبا العالم',
+        });
+      });
+    });
+  });
+});
+
+describe('isEmpty', () => {
+  describe('when called with no value', () => {
+    it('should return true', () => {
+      expect(LocalizedTextInput.isEmpty()).toBe(true);
+    });
+  });
+  describe('when there are no translations', () => {
+    it('should return true', () => {
+      expect(LocalizedTextInput.isEmpty({})).toBe(true);
+      expect(LocalizedTextInput.isEmpty({ en: '', de: '' })).toBe(true);
+      expect(LocalizedTextInput.isEmpty({ de: '  ' })).toBe(true);
+    });
+  });
+  describe('when there are translations', () => {
+    it('should return false', () => {
+      expect(LocalizedTextInput.isEmpty({ de: 'Hi' })).toBe(false);
+      expect(LocalizedTextInput.isEmpty({ de: 'Hi', en: '' })).toBe(false);
+    });
+  });
+});
+
+describe('omitEmptyTranslations', () => {
+  describe('when called with no value', () => {
+    it('should throw an error', () => {
+      expect(() => LocalizedTextInput.omitEmptyTranslations()).toThrow();
+    });
+  });
+  describe('when there are only empty values', () => {
+    it('should return an empty object', () => {
+      expect(LocalizedTextInput.omitEmptyTranslations({})).toEqual({});
+      expect(
+        LocalizedTextInput.omitEmptyTranslations({ en: '', de: '' })
+      ).toEqual({});
+      expect(LocalizedTextInput.omitEmptyTranslations({ de: '  ' })).toEqual(
+        {}
+      );
+    });
+  });
+  describe('when there are translations', () => {
+    it('should return only the translated values', () => {
+      expect(LocalizedTextInput.omitEmptyTranslations({ de: 'Hi' })).toEqual({
+        de: 'Hi',
+      });
+      expect(
+        LocalizedTextInput.omitEmptyTranslations({ de: 'Hi', en: '' })
+      ).toEqual({
+        de: 'Hi',
+      });
+    });
+  });
+});
+
 describe('rendering', () => {
   let wrapper;
   let props;
