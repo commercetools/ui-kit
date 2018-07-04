@@ -167,12 +167,7 @@ export default class LocalizedTextInput extends React.Component {
 
     return mergedLanguages.reduce((acc, language) => {
       acc[language] =
-        // existingTranslations could be "null", then the {} fallback won't apply,
-        // so we need to check for existence explicitly
-        existingTranslations &&
-        {}.hasOwnProperty.call(existingTranslations, language)
-          ? existingTranslations[language] || ''
-          : '';
+        (existingTranslations && existingTranslations[language]) || '';
       return acc;
     }, {});
   };
