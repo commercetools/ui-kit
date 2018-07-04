@@ -44,7 +44,7 @@ const SortableHeader = props => {
         [styles.reversed]: props.alignRight,
       })}
     >
-      <Text.Body tone="onDark">{props.children}</Text.Body>
+      <Text.Body tone="inverted">{props.children}</Text.Body>
       <span className={styles.arrow}>
         {isArrowDown ? (
           <AngleDownIcon size="medium" theme={theme} />

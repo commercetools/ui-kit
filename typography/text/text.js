@@ -89,7 +89,7 @@ Body.propTypes = {
     'information',
     'positive',
     'negative',
-    'onDark',
+    'inverted',
   ]),
   children: PropTypes.node.isRequired,
   truncate: PropTypes.bool,

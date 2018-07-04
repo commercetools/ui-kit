@@ -95,7 +95,7 @@ small {
   color: var(--color-red);
 }
 
-.onDark {
+.inverted {
   color: var(--color-white);
 }
 
