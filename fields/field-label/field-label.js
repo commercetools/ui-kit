@@ -6,16 +6,14 @@ import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-in
 
 export const FieldLabel = props => (
   <Spacings.Stack scale="s">
-    <Spacings.Inline scale="s">
+    <label>
       <Text.Body isBold={true}>
         {props.title}
         {props.isRequired ? <RequiredIndicator /> : null}
       </Text.Body>
-    </Spacings.Inline>
+    </label>
     {props.subtitle && (
-      <Spacings.Inline>
-        <Text.Body tone="secondary">{props.subtitle}</Text.Body>
-      </Spacings.Inline>
+      <Text.Detail tone="secondary">{props.subtitle}</Text.Detail>
     )}
   </Spacings.Stack>
 );

@@ -20,7 +20,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
-        titleComp = wrapper.find(Text.Body).at(0);
+        titleComp = wrapper.find(Text.Body);
       });
 
       it('should contain the label text', () => {
@@ -36,7 +36,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ subtitle: 'Label Subtitle' });
         wrapper = shallow(<FieldLabel {...props} />);
-        subTitleComp = wrapper.find(Text.Body).at(1);
+        subTitleComp = wrapper.find(Text.Detail);
       });
 
       it('should be present', () => {
@@ -56,11 +56,10 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
-        subTitleComp = wrapper.find(Text.Body).get(1);
       });
 
       it('should not be present', () => {
-        expect(subTitleComp).toBeFalsy();
+        expect(wrapper).not.toRender(Text.Detail);
       });
     });
   });
