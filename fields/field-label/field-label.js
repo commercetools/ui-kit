@@ -4,17 +4,17 @@ import Text from '@commercetools-frontend/ui-kit/typography/text';
 import Spacings from '@commercetools-frontend/ui-kit/materials/spacings';
 import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-indicator';
 
-export const FieldLabel = ({ title, subtitle, isRequired }) => (
+export const FieldLabel = props => (
   <Spacings.Stack scale="s">
     <Spacings.Inline scale="s">
       <Text.Body isBold={true}>
-        {title}
-        {isRequired ? <RequiredIndicator /> : null}
+        {props.title}
+        {props.isRequired ? <RequiredIndicator /> : null}
       </Text.Body>
     </Spacings.Inline>
-    {subtitle && (
+    {props.subtitle && (
       <Spacings.Inline>
-        <Text.Body tone="secondary">{subtitle}</Text.Body>
+        <Text.Body tone="secondary">{props.subtitle}</Text.Body>
       </Spacings.Inline>
     )}
   </Spacings.Stack>
@@ -26,7 +26,7 @@ FieldLabel.defaultProps = {
 };
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   isRequired: PropTypes.bool,
 };
 

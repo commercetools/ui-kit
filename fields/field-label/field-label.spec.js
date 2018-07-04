@@ -23,7 +23,7 @@ describe('rendering', () => {
         titleComp = wrapper.find(Text.Body).at(0);
       });
 
-      it('should contain the correct text', () => {
+      it('should contain the label text', () => {
         expect(titleComp.render().text()).toEqual('Label Title');
       });
 
@@ -43,7 +43,7 @@ describe('rendering', () => {
         expect(subTitleComp).toBeTruthy();
       });
 
-      it('should contain the correct text', () => {
+      it('should contain the subtitle text', () => {
         expect(subTitleComp.render().text()).toEqual('Label Subtitle');
       });
 
