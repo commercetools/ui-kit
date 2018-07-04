@@ -40,12 +40,13 @@ const splitLanguagesByKey = (key, languages) =>
     },
     [[], []]
   );
+
 // sorts the languages with the following priority:
-// - the selected language comes first (e.g pt-BR)
-// - all languages using the same base language follow that one (e.g. pt, pt-PT)
-//   they are sorted alphabetically
-// - all other languages follow, sorted alphabetically
-export const sortLanguages = (selectedLanguage, allLanguages) => {
+// - The selected language is excluced (e.g pt-BR)
+// - All languages using the same base language as the selected language follow (e.g. pt, pt-PT).
+//   They are sorted alphabetically
+// - All other languages follow, sorted alphabetically
+export const sortRemainingLanguages = (selectedLanguage, allLanguages) => {
   const remainingLanguages = without(allLanguages, selectedLanguage);
 
   const selectedLanguageKey = getLanguageKey(selectedLanguage);
@@ -56,7 +57,6 @@ export const sortLanguages = (selectedLanguage, allLanguages) => {
   ] = splitLanguagesByKey(selectedLanguageKey, remainingLanguages);
 
   return [
-    selectedLanguage,
     ...languagesWithSameKeyAsSelectedLanguage.sort(),
     ...otherLanguages.sort(),
   ];
@@ -237,7 +237,7 @@ export default class LocalizedTextInput extends React.Component {
   };
 
   render() {
-    const [mainLanguage, ...remainingLanguages] = sortLanguages(
+    const remainingLanguages = sortRemainingLanguages(
       this.props.selectedLanguage,
       Object.keys(this.props.value)
     );
@@ -246,20 +246,20 @@ export default class LocalizedTextInput extends React.Component {
         <Spacings.Stack>
           <div>
             <LocalizedInput
-              key={mainLanguage}
-              id={`${this.props.id}-${mainLanguage}`}
+              key={this.props.selectedLanguage}
+              id={`${this.props.id}-${this.props.selectedLanguage}`}
               name={this.props.name}
-              value={this.props.value[mainLanguage]}
+              value={this.props.value[this.props.selectedLanguage]}
               onChange={event =>
                 this.props.onChange({
                   ...this.props.value,
-                  [mainLanguage]: event.target.value,
+                  [this.props.selectedLanguage]: event.target.value,
                 })
               }
-              language={mainLanguage}
+              language={this.props.selectedLanguage}
               placeholder={
                 this.props.placeholder
-                  ? this.props.placeholder[mainLanguage]
+                  ? this.props.placeholder[this.props.selectedLanguage]
                   : undefined
               }
               onBlur={this.props.onBlur}
@@ -271,7 +271,7 @@ export default class LocalizedTextInput extends React.Component {
                 this.props.error && Object.keys(this.props.error).length > 0
               )}
               horizontalConstraint={this.props.horizontalConstraint}
-              {...createDataAttributes(this.props, mainLanguage)}
+              {...createDataAttributes(this.props, this.props.selectedLanguage)}
             />
             {this.props.error &&
               this.props.error.missing && (
