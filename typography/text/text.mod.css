@@ -95,6 +95,10 @@ small {
   color: var(--color-red);
 }
 
+.inverted {
+  color: var(--color-white);
+}
+
 .inline {
   display: inline-block;
 }
