@@ -30,17 +30,17 @@ const getLanguageKey = language => language.split('-')[0];
 //  - the second group starts with a different tag
 const splitLanguagesByKey = (key, languages) =>
   languages.reduce(
-    (acc, language) => {
+    (groupedLanguages, language) => {
       if (key === getLanguageKey(language)) {
-        acc[0].push(language);
+        groupedLanguages[0].push(language);
       } else {
-        acc[1].push(language);
+        groupedLanguages[1].push(language);
       }
-      return acc;
+      return groupedLanguages;
     },
     [[], []]
   );
-// sorts the language with the following priority:
+// sorts the languages with the following priority:
 // - the selected language comes first (e.g pt-BR)
 // - all languages using the same base language follow that one (e.g. pt, pt-PT)
 //   they are sorted alphabetically
