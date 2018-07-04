@@ -23,7 +23,7 @@
 }
 
 :global(.flatpickr-day:hover) {
-  background-color: var(--color-blue-95);
+  background-color: var(--color-gray-90);
 }
 
 :global(.flatpickr-prev-month:hover),

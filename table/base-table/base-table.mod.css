@@ -28,7 +28,7 @@
 }
 
 div:hover .hovered-row {
-  background: var(--color-navy-95);
+  background: var(--color-gray-90);
 }
 
 .align-left {
