@@ -10,6 +10,6 @@ describe('with default props', () => {
 
 describe('when uncolored', () => {
   it('should match snapshot', () => {
-    expect(shallow(<RequiredIndicator uncolored={true} />)).toMatchSnapshot();
+    expect(shallow(<RequiredIndicator isColored={true} />)).toMatchSnapshot();
   });
 });

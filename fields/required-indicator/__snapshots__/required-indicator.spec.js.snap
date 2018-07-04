@@ -2,7 +2,7 @@
 
 exports[`when uncolored should match snapshot 1`] = `
 <em
-  className=""
+  className="colored"
 >
   *
 </em>

@@ -11,6 +11,6 @@ storiesOf('Fields', module)
   .addDecorator(withReadme(Readme))
   .add('RequiredIndicator', () => (
     <Section>
-      <RequiredIndicator uncolored={boolean('isUnColoured', false)} />
+      <RequiredIndicator isColored={boolean('isColoured', true)} />
     </Section>
   ));
