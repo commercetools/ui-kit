@@ -18,6 +18,7 @@ const mcWebpackConfigProd = createWebpackConfigForProduction({
   sourceFolders,
 });
 const uikitWebpackConfig = {
+  devtool: 'source-map',
   module: {
     rules: [
       // Storybook uses a plugin to load and render markdown files.
@@ -43,6 +44,7 @@ module.exports = (storybookBaseConfig, configType) => {
   // You can change the configuration based on that.
   // 'PRODUCTION' is used when building the static version of storybook.
 
+  storybookBaseConfig.devtool = uikitWebpackConfig.devtool;
   storybookBaseConfig.module.rules = getRulesConfig(configType).concat(
     uikitWebpackConfig.module.rules
   );
