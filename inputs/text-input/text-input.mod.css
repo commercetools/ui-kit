@@ -1,3 +1,4 @@
+@import '../../materials/tokens/tokens.mod.css';
 @import '../../materials/colors.mod.css';
 @import '../../materials/spacings.mod.css';
 @import '../../materials/shadows.mod.css';
@@ -30,6 +31,10 @@
   font-weight: 500;
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
+}
+
+.input::placeholder {
+  color: var(--token-font-color-placeholder);
 }
 
 /* Spinner */
