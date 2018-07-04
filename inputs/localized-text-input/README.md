@@ -40,3 +40,56 @@ The component forwards all `data` attribute props. It further adds a `-${languag
 Main Functions and use cases are:
 
 - Receiving localized input from user
+
+#### Static Properties
+
+##### `createLocalizedString(languages, existingTranslations)`
+
+This function creates a [localized string](https://docs.commercetools.com/http-api-types.html#localizedstring). It merges the `languages` and the language keys of existing translations to form a localized string holding all languages.
+The `existingTranslations` argument is optional. If it is not passed, an empty localized field will be created.
+
+```js
+const languages = ['en', 'de'];
+LocalizedTextInput.createLocalizedString(languages);
+// -> { en: '', de: '' }
+```
+
+```js
+const languages = ['en', 'de'];
+const existingTranslations = { en: 'Tree', ar: 'شجرة' };
+LocalizedTextInput.createLocalizedString(languages, existingTranslations);
+// -> { en: 'Tree', de: '', ar: 'شجرة' }
+```
+
+##### `isEmpty(localizedField)`
+
+Returns `true` when all values in a localized field are empty.
+
+```js
+LocalizedTextInput.isEmpty({});
+// -> true
+```
+
+```js
+LocalizedTextInput.isEmpty({ en: '', de: '  ' });
+// -> true
+```
+
+```js
+LocalizedTextInput.isEmpty({ en: 'Tree', de: '' });
+// -> false
+```
+
+##### `omitEmptyTranslations(localizedField)`
+
+Omits translations with empty values.
+
+```js
+LocalizedTextInput.omitEmptyTranslations({ en: '', de: '  ' });
+// -> {}
+```
+
+```js
+LocalizedTextInput.omitEmptyTranslations({ en: 'Tree', de: '' });
+// -> { en: 'Tree' }
+```

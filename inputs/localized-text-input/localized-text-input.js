@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant';
 import requiredIf from 'react-required-if';
 import sortBy from 'lodash.sortby';
+import uniq from 'lodash.uniq';
 import oneLine from 'common-tags/lib/oneLine';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Collapsible from '../../collapsible';
@@ -119,6 +121,7 @@ class LocalizedInput extends React.Component {
 
 export default class LocalizedTextInput extends React.Component {
   static displayName = 'LocalizedTextInput';
+
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
@@ -151,10 +154,49 @@ export default class LocalizedTextInput extends React.Component {
       missing: PropTypes.bool,
     }),
   };
+
   static defaultProps = {
     id: getId('localized-text-input'),
     horizontalConstraint: 'scale',
   };
+
+  static createLocalizedString = (languages, existingTranslations = {}) => {
+    const mergedLanguages = existingTranslations
+      ? uniq([...languages, ...Object.keys(existingTranslations)])
+      : languages;
+
+    return mergedLanguages.reduce((localizedString, language) => {
+      // eslint-disable-next-line no-param-reassign
+      localizedString[language] =
+        (existingTranslations && existingTranslations[language]) || '';
+      return localizedString;
+    }, {});
+  };
+
+  static isEmpty = localizedString => {
+    if (!localizedString) return true;
+    return Object.values(localizedString).every(
+      value => !value || value.trim().length === 0
+    );
+  };
+
+  static omitEmptyTranslations = localizedString => {
+    invariant(
+      typeof localizedString === 'object',
+      'omitEmptyTranslations must be called with an object'
+    );
+    return Object.entries(localizedString).reduce(
+      (localizedStringWithoutEmptyTranslations, [language, value]) => {
+        if (value && value.trim().length > 0) {
+          // eslint-disable-next-line no-param-reassign
+          localizedStringWithoutEmptyTranslations[language] = value;
+        }
+        return localizedStringWithoutEmptyTranslations;
+      },
+      {}
+    );
+  };
+
   render() {
     const otherLanguages = sortBy(
       Object.keys(this.props.value).filter(
