@@ -95,6 +95,10 @@ small {
   color: var(--color-red);
 }
 
+.onDark {
+  color: var(--color-white);
+}
+
 .inline {
   display: inline-block;
 }
