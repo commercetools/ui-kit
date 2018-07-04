@@ -165,10 +165,11 @@ export default class LocalizedTextInput extends React.Component {
       ? uniq([...languages, ...Object.keys(existingTranslations)])
       : languages;
 
-    return mergedLanguages.reduce((acc, language) => {
-      acc[language] =
+    return mergedLanguages.reduce((localizedString, language) => {
+      // eslint-disable-next-line no-param-reassign
+      localizedString[language] =
         (existingTranslations && existingTranslations[language]) || '';
-      return acc;
+      return localizedString;
     }, {});
   };
 
@@ -184,10 +185,16 @@ export default class LocalizedTextInput extends React.Component {
       typeof localizedString === 'object',
       'omitEmptyTranslations must be called with an object'
     );
-    return Object.entries(localizedString).reduce((acc, [language, value]) => {
-      if (value && value.trim().length > 0) acc[language] = value;
-      return acc;
-    }, {});
+    return Object.entries(localizedString).reduce(
+      (localizedStringWithoutEmptyTranslations, [language, value]) => {
+        if (value && value.trim().length > 0) {
+          // eslint-disable-next-line no-param-reassign
+          localizedStringWithoutEmptyTranslations[language] = value;
+        }
+        return localizedStringWithoutEmptyTranslations;
+      },
+      {}
+    );
   };
 
   render() {
