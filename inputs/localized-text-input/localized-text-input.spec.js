@@ -1,13 +1,50 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Collapsible from '../../collapsible';
-import LocalizedTextInput from './localized-text-input';
+import LocalizedTextInput, {
+  sortRemainingLanguages,
+} from './localized-text-input';
 
 const createTestProps = custom => ({
   value: { en: 'Horse', de: 'Pferd' },
   onChange: jest.fn(),
   selectedLanguage: 'en',
   ...custom,
+});
+
+describe('sortRemainingLanguages', () => {
+  it('should put the selected language first', () => {
+    expect(sortRemainingLanguages('de', ['de', 'ar'])).toEqual(['ar']);
+  });
+  it('should sort the remaining languages alphabetically', () => {
+    expect(
+      sortRemainingLanguages('de', ['en', 'cn', 'es', 'bu', 'de', 'ar', 'ru'])
+    ).toEqual(['ar', 'bu', 'cn', 'en', 'es', 'ru']);
+  });
+  it('should move languages with the same language tag as the selected language to the beginning', () => {
+    expect(
+      sortRemainingLanguages('pt', [
+        'en',
+        'pt-PT',
+        'bu',
+        'pt-BR',
+        'de',
+        'ru',
+        'pt',
+      ])
+    ).toEqual(['pt-BR', 'pt-PT', 'bu', 'de', 'en', 'ru']);
+    expect(
+      sortRemainingLanguages('pt-BR', [
+        'en',
+        'pt-PT',
+        'bu',
+        'pt-BR',
+        'de',
+        'ru',
+        'pt',
+      ])
+    ).toEqual(['pt', 'pt-PT', 'bu', 'de', 'en', 'ru']);
+  });
 });
 
 describe('createLocalizedString', () => {

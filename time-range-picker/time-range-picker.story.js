@@ -27,7 +27,11 @@ storiesOf('Dates', module)
             },
           }}
         >
-          <TimeRangePicker value={{}} onChange={action} />
+          <TimeRangePicker
+            value={{}}
+            onChange={action}
+            timeZone={'Europe/Madrid'}
+          />
         </IntlProvider>
       </Provider>
     </Section>
