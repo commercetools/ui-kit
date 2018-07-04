@@ -1,11 +1,5 @@
 # Fields: FieldLabel
 
-## Usage
-
-```js
-import FieldLabel from '@commercetools-frontend/ui-kit/fields/field-label';
-```
-
 #### Description
 
 The `FieldLabel` component represents the label for a field. It is similar to the `LabelField`
