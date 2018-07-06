@@ -15,23 +15,15 @@ import { AngleDownIcon, AngleUpIcon } from '../../icons';
 import ErrorMessage from '../../messages/error-message';
 import styles from './localized-text-input.mod.css';
 
-const getId = (() => {
-  let id = 0;
-  return prefix => {
-    id += 1;
-    return `${prefix}-${id}`;
-  };
-})();
-
-const getLanguageKey = language => language.split('-')[0];
+const getPrimaryLanguage = language => language.split('-')[0];
 
 // splits the languages into two groups:
 //  - the first group starts with the same tag as the selected language
 //  - the second group starts with a different tag
-const splitLanguagesByKey = (key, languages) =>
+const splitLanguagesByPrimaryLanguage = (key, languages) =>
   languages.reduce(
     (groupedLanguages, language) => {
-      if (key === getLanguageKey(language)) {
+      if (key === getPrimaryLanguage(language)) {
         groupedLanguages[0].push(language);
       } else {
         groupedLanguages[1].push(language);
@@ -43,18 +35,18 @@ const splitLanguagesByKey = (key, languages) =>
 
 // sorts the languages with the following priority:
 // - The selected language is excluced (e.g pt-BR)
-// - All languages using the same base language as the selected language follow (e.g. pt, pt-PT).
+// - All languages using the same primary language as the selected language follow (e.g. pt, pt-PT).
 //   They are sorted alphabetically
 // - All other languages follow, sorted alphabetically
 export const sortRemainingLanguages = (selectedLanguage, allLanguages) => {
   const remainingLanguages = without(allLanguages, selectedLanguage);
 
-  const selectedLanguageKey = getLanguageKey(selectedLanguage);
+  const selectedLanguageKey = getPrimaryLanguage(selectedLanguage);
 
   const [
     languagesWithSameKeyAsSelectedLanguage,
     otherLanguages,
-  ] = splitLanguagesByKey(selectedLanguageKey, remainingLanguages);
+  ] = splitLanguagesByPrimaryLanguage(selectedLanguageKey, remainingLanguages);
 
   return [
     ...languagesWithSameKeyAsSelectedLanguage.sort(),
@@ -113,7 +105,7 @@ const getStyles = props => {
 class LocalizedInput extends React.Component {
   static displayName = 'LocalizedInput';
   static propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
@@ -158,6 +150,11 @@ class LocalizedInput extends React.Component {
   }
 }
 
+const getId = (idPrefix, language) =>
+  idPrefix ? `${idPrefix}.${language}` : undefined;
+const getName = (namePrefix, language) =>
+  namePrefix ? `${namePrefix}.${language}` : undefined;
+
 export default class LocalizedTextInput extends React.Component {
   static displayName = 'LocalizedTextInput';
 
@@ -195,7 +192,6 @@ export default class LocalizedTextInput extends React.Component {
   };
 
   static defaultProps = {
-    id: getId('localized-text-input'),
     horizontalConstraint: 'scale',
   };
 
@@ -236,6 +232,8 @@ export default class LocalizedTextInput extends React.Component {
     );
   };
 
+  static isTouched = touched => touched && Object.values(touched).some(Boolean);
+
   render() {
     const remainingLanguages = sortRemainingLanguages(
       this.props.selectedLanguage,
@@ -247,8 +245,8 @@ export default class LocalizedTextInput extends React.Component {
           <div>
             <LocalizedInput
               key={this.props.selectedLanguage}
-              id={`${this.props.id}-${this.props.selectedLanguage}`}
-              name={this.props.name}
+              id={getId(this.props.id, this.props.selectedLanguage)}
+              name={getName(this.props.name, this.props.selectedLanguage)}
               value={this.props.value[this.props.selectedLanguage]}
               onChange={event =>
                 this.props.onChange({
@@ -285,8 +283,8 @@ export default class LocalizedTextInput extends React.Component {
                   remainingLanguages.map(language => (
                     <LocalizedInput
                       key={language}
-                      id={`${this.props.id}-${language}`}
-                      name={this.props.name}
+                      id={getId(this.props.id, language)}
+                      name={getName(this.props.name, language)}
                       value={this.props.value[language]}
                       onChange={event =>
                         this.props.onChange({
