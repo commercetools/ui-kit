@@ -12,6 +12,7 @@ const createTestProps = customProps => ({
   value: { currencyCode: 'EUR', amount: '' },
   currencies: ['EUR', 'USD'],
   onChange: jest.fn(),
+  onChangeValue: jest.fn(),
   onBlur: jest.fn(),
   ...customProps,
 });
@@ -461,10 +462,13 @@ describe('callbacks', () => {
       it('should not call onChange', () => {
         expect(props.onChange).not.toHaveBeenCalled();
       });
+      it('should not call onChangeValue', () => {
+        expect(props.onChangeValue).not.toHaveBeenCalled();
+      });
     });
     describe('when changing currency', () => {
       beforeEach(() => {
-        props = createTestProps();
+        props = createTestProps({ name: 'foo' });
         wrapper = shallow(<MoneyInput {...props} />);
 
         dowshiftRenderWrapper = wrapper
@@ -480,12 +484,19 @@ describe('callbacks', () => {
           .prop('onClick')({ target: { value: '12' } });
       });
 
-      it('should call onChange', () => {
-        expect(props.onChange).toHaveBeenCalled();
+      it('should call onChange with an event', () => {
+        expect(props.onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            persist: expect.any(Function),
+            target: expect.objectContaining({
+              name: `foo.currencyCode`,
+              value: 'USD',
+            }),
+          })
+        );
       });
-
-      it('should call onChange with the new value', () => {
-        expect(props.onChange).toHaveBeenCalledWith({
+      it('should call onChangeValue with the new value', () => {
+        expect(props.onChangeValue).toHaveBeenCalledWith({
           currencyCode: 'USD',
           amount: '',
         });
@@ -496,14 +507,27 @@ describe('callbacks', () => {
   describe('amount field', () => {
     describe('when changing amount', () => {
       beforeEach(() => {
-        props = createTestProps();
+        props = createTestProps({ name: 'foo' });
         wrapper = shallow(<MoneyInput {...props} />);
 
         inputWrapper = wrapper.find('input');
-        inputWrapper.simulate('change', { target: { value: '1.3' } });
+        inputWrapper.simulate('change', {
+          target: { name: 'foo.amount', value: '1.3' },
+        });
       });
       it('should call onChange', () => {
-        expect(props.onChange).toHaveBeenCalledWith({
+        expect(props.onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            persist: expect.any(Function),
+            target: expect.objectContaining({
+              name: `foo.amount`,
+              value: '1.3',
+            }),
+          })
+        );
+      });
+      it('should call onChangeValue', () => {
+        expect(props.onChangeValue).toHaveBeenCalledWith({
           amount: '1.3',
           currencyCode: 'EUR',
         });
@@ -511,41 +535,52 @@ describe('callbacks', () => {
     });
     describe('when input loses focus', () => {
       describe('when value is not formatted', () => {
+        const event = {};
         beforeEach(() => {
           props = createTestProps({
+            name: 'foo',
             value: { currencyCode: 'EUR', amount: '10.3' },
             onBlur: jest.fn(),
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          wrapper.find('input').prop('onBlur')();
+          wrapper.find('input').prop('onBlur')(event);
         });
 
         it('should call onChange with the formatted value', () => {
-          expect(props.onChange).toHaveBeenCalledWith({
-            currencyCode: 'EUR',
-            amount: '10.30',
-          });
+          expect(props.onChange).toHaveBeenCalledWith(
+            expect.objectContaining({
+              persist: expect.any(Function),
+              target: expect.objectContaining({
+                name: `foo.amount`,
+                value: '10.30',
+              }),
+            })
+          );
         });
 
-        it('should call onBlur without arguments', () => {
-          expect(props.onBlur).toHaveBeenCalledWith();
+        it('should call onBlur with an event', () => {
+          expect(props.onBlur).toHaveBeenCalledWith(event);
         });
       });
       describe('when value is already formatted', () => {
+        const event = {};
         beforeEach(() => {
           props = createTestProps({
             value: { currencyCode: 'EUR', amount: '10.15' },
             onBlur: jest.fn(),
           });
           wrapper = shallow(<MoneyInput {...props} />);
-          wrapper.find('input').prop('onBlur')();
+          wrapper.find('input').prop('onBlur')(event);
         });
 
-        it('should call onBlur without arguments', () => {
-          expect(props.onBlur).toHaveBeenCalledWith();
+        it('should call onBlur with an event', () => {
+          expect(props.onBlur).toHaveBeenCalledWith(event);
         });
         it('should not call onChange', () => {
           expect(props.onChange).not.toHaveBeenCalled();
+        });
+        it('should not call onChangeValue', () => {
+          expect(props.onChangeValue).not.toHaveBeenCalled();
         });
       });
     });
