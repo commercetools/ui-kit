@@ -140,7 +140,7 @@ describe('rendering', () => {
 });
 
 describe('callbacks', () => {
-  describe('when changing value', () => {
+  describe('`onChange`', () => {
     let props;
     const event = { target: { value: 'bar' } };
     beforeEach(() => {
@@ -161,7 +161,7 @@ describe('callbacks', () => {
       expect(props.onChange).toHaveBeenCalledWith(event);
     });
   });
-  describe('when input gains focus', () => {
+  describe('`onFocus`', () => {
     let props;
     let textarea;
     beforeEach(() => {
@@ -182,7 +182,7 @@ describe('callbacks', () => {
       expect(textarea).toHaveProp('value', 'foo');
     });
   });
-  describe('when input loses focus', () => {
+  describe('`onBlur`', () => {
     let props;
     let textarea;
     beforeEach(() => {
@@ -203,7 +203,7 @@ describe('callbacks', () => {
       expect(textarea).toHaveProp('value', 'foo');
     });
   });
-  describe('when `isAutofocussed` is passed', () => {
+  describe('`isAutofocussed`', () => {
     let textarea;
     beforeEach(() => {
       const props = createTestProps({
@@ -218,114 +218,120 @@ describe('callbacks', () => {
       expect(textarea).toHaveProp('autoFocus', true);
     });
   });
-  describe('when `isDefaultClosed` is not passed', () => {
-    describe('when TextArea has only 1 row', () => {
-      let textAreaWrapper;
-      let wrapper;
-      beforeEach(() => {
-        const props = createTestProps({
-          name: 'field1',
-          value: 'foo',
+  describe('`isDefaultClosed`', () => {
+    describe('when false', () => {
+      describe('<TextArea />', () => {
+        describe('has 1 row', () => {
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field1',
+              value: 'foo',
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ textareaRowCount: 1, contentRowCount: 1 });
+            textAreaWrapper = shallow(
+              <div>
+                {wrapper.find(Collapsible).renderProp('children', {
+                  isOpen: true,
+                  toggle: jest.fn(),
+                })}
+              </div>
+            );
+          });
+          it('should not render FlatButton', () => {
+            expect(textAreaWrapper).not.toRender(FlatButton);
+          });
         });
-        wrapper = shallow(<TextArea {...props} />);
-        wrapper.setState({ textareaRowCount: 1 });
-        textAreaWrapper = shallow(
-          <div>
-            {wrapper.find(Collapsible).renderProp('children', {
-              isOpen: true,
-              toggle: jest.fn(),
-            })}
-          </div>
-        );
-      });
-      it('should not render FlatButton', () => {
-        expect(textAreaWrapper).not.toRender(FlatButton);
+        describe('has more than 1 row', () => {
+          let flatbutton;
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field2',
+              value: 'foo2',
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ textareaRowCount: 10, contentRowCount: 10 });
+            textAreaWrapper = shallow(
+              <div>
+                {wrapper.find(Collapsible).renderProp('children', {
+                  isOpen: true,
+                  toggle: jest.fn(),
+                })}
+              </div>
+            );
+            flatbutton = textAreaWrapper.find(FlatButton);
+            // textAreaWrapper.find(FlatButton).simulate('click');
+          });
+          it('should render FlatButton', () => {
+            expect(textAreaWrapper).toRender(FlatButton);
+          });
+          it('should have `Collapse` message', () => {
+            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.collapse');
+          });
+        });
       });
     });
-    describe('when TextArea has more than 1 row', () => {
-      let flatbutton;
-      let textAreaWrapper;
-      let wrapper;
-      beforeEach(() => {
-        const props = createTestProps({
-          name: 'field2',
-          value: 'foo2',
+    describe('when true', () => {
+      describe('<TextArea />', () => {
+        describe('has 1 row', () => {
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field2',
+              value: 'The quick brown fox jumps over the lazy dog',
+              isDefaultClosed: true,
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ textareaRowCount: 1, contentRowCount: 1 });
+            textAreaWrapper = shallow(
+              <div>
+                {wrapper.find(Collapsible).renderProp('children', {
+                  isOpen: false,
+                  toggle: jest.fn(),
+                })}
+              </div>
+            );
+          });
+          it('should not render FlatButton', () => {
+            expect(textAreaWrapper).not.toRender(FlatButton);
+          });
         });
-        wrapper = shallow(<TextArea {...props} />);
-        wrapper.setState({ textareaRowCount: 2 });
-        textAreaWrapper = shallow(
-          <div>
-            {wrapper.find(Collapsible).renderProp('children', {
-              isOpen: true,
-              toggle: jest.fn(),
-            })}
-          </div>
-        );
-        flatbutton = textAreaWrapper.find(FlatButton);
-        // textAreaWrapper.find(FlatButton).simulate('click');
-      });
-      it('should render FlatButton', () => {
-        expect(textAreaWrapper).toRender(FlatButton);
-      });
-      it('should have collapse message', () => {
-        expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.collapse');
-      });
-    });
-  });
-  describe('when `isDefaultClosed` is passed', () => {
-    describe('and content is longer than 1 row', () => {
-      let flatbutton;
-      let textAreaWrapper;
-      let wrapper;
-      beforeEach(() => {
-        const props = createTestProps({
-          name: 'field2',
-          value:
-            'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog',
-          isDefaultClosed: true,
+        describe('has more than 1 row', () => {
+          let flatbutton;
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field2',
+              value:
+                'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog',
+              isDefaultClosed: true,
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ textareaRowCount: 1, contentRowCount: 10 });
+            textAreaWrapper = shallow(
+              <div>
+                {wrapper.find(Collapsible).renderProp('children', {
+                  isOpen: false,
+                  toggle: jest.fn(),
+                })}
+              </div>
+            );
+            flatbutton = textAreaWrapper.find(FlatButton);
+            textAreaWrapper.find(FlatButton).simulate('click');
+          });
+          it('should render FlatButton', () => {
+            expect(textAreaWrapper).toRender(FlatButton);
+          });
+          it('should FlatButton have `Expand` message', () => {
+            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.expand');
+          });
         });
-        wrapper = shallow(<TextArea {...props} />);
-        wrapper.setState({ contentRowCount: 2 });
-        textAreaWrapper = shallow(
-          <div>
-            {wrapper.find(Collapsible).renderProp('children', {
-              isOpen: false,
-              toggle: jest.fn(),
-            })}
-          </div>
-        );
-        flatbutton = textAreaWrapper.find(FlatButton);
-        textAreaWrapper.find(FlatButton).simulate('click');
-      });
-      it('should render FlatButton', () => {
-        expect(textAreaWrapper).toRender(FlatButton);
-      });
-      it('should have expand message', () => {
-        expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.expand');
-      });
-    });
-    describe('and content has 1 row', () => {
-      let textAreaWrapper;
-      let wrapper;
-      beforeEach(() => {
-        const props = createTestProps({
-          name: 'field2',
-          value: 'The quick brown fox jumps over the lazy dog',
-          isDefaultClosed: true,
-        });
-        wrapper = shallow(<TextArea {...props} />);
-        wrapper.setState({ contentRowCount: 1 });
-        textAreaWrapper = shallow(
-          <div>
-            {wrapper.find(Collapsible).renderProp('children', {
-              isOpen: false,
-              toggle: jest.fn(),
-            })}
-          </div>
-        );
-      });
-      it('should not render FlatButton', () => {
-        expect(textAreaWrapper).not.toRender(FlatButton);
       });
     });
   });

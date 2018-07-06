@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
-import TextareaAutosize, { calculateNodeHeight } from 'react-textarea-autosize';
+import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
@@ -72,17 +72,9 @@ export class TextArea extends React.Component {
   };
 
   handleHeightChange = (_, innerComponent) => {
-    const contentRowCount = calculateNodeHeight(
-      innerComponent._rootDOMNode,
-      innerComponent._uid,
-      innerComponent.props.useCacheForDOMMeasurements,
-      innerComponent.minRows,
-      innerComponent.maxRows
-    ).rowCount;
-
     this.setState({
       textareaRowCount: innerComponent.rowCount,
-      contentRowCount,
+      contentRowCount: innerComponent.valueRowCount,
     });
   };
 
