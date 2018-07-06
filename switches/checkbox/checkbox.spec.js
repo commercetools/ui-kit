@@ -64,6 +64,25 @@ describe('<Checkbox>', () => {
         });
       });
 
+      describe('when intermediate', () => {
+        beforeEach(() => {
+          props = createTestProps({ isIndeterminate: true });
+
+          wrapper = shallow(
+            <div>
+              <Checkbox {...props} />
+            </div>
+          );
+        });
+
+        it('should contain ` prop`', () => {
+          expect(wrapper.find(Checkbox)).toHaveProp(
+            'isIndeterminate',
+            props.isIndeterminate
+          );
+        });
+      });
+
       describe('when checked', () => {
         beforeEach(() => {
           props = createTestProps({ isDisabled: true });

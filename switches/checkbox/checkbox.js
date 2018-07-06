@@ -14,6 +14,7 @@ export class Checkbox extends React.PureComponent {
     value: PropTypes.string,
     isDisabled: PropTypes.bool,
     isChecked: PropTypes.bool,
+    isIndeterminate: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     children: PropTypes.node,
     // HoC
@@ -24,6 +25,7 @@ export class Checkbox extends React.PureComponent {
   static defaultProps = {
     isDisabled: false,
     isChecked: false,
+    isIndeterminate: false,
   };
 
   render() {
@@ -40,14 +42,20 @@ export class Checkbox extends React.PureComponent {
         >
           <Spacings.Inline alignItems="center">
             {(() => {
-              if (this.props.isChecked && this.props.isDisabled)
-                return <Icons.CheckedDisabled />;
-              else if (this.props.isChecked && this.props.isMouseOver)
-                return <Icons.CheckedHover />;
-              else if (this.props.isChecked) return <Icons.Checked />;
+              if (this.props.isDisabled) {
+                if (this.props.isChecked) return <Icons.CheckedDisabled />;
+                if (this.props.isIndeterminate)
+                  return <Icons.IndeterminateDisabled />;
+              } else if (this.props.isChecked) return <Icons.Checked />;
+              else if (this.props.isIndeterminate)
+                return <Icons.Indeterminate />;
               else if (this.props.isDisabled) return <Icons.Disabled />;
-              else if (this.props.isMouseOver) return <Icons.Hover />;
-
+              else if (this.props.isMouseOver) {
+                if (this.props.isChecked) return <Icons.CheckedHover />;
+                if (this.props.isIndeterminate)
+                  return <Icons.IndeterminateHover />;
+                return <Icons.Hover />;
+              }
               return <Icons.Default />;
             })()}
             {this.props.children && (

@@ -36,6 +36,15 @@ storiesOf('Switches', module)
         >
           {text('Label of third action', 'Third checkbox')}
         </Checkbox>
+        <Checkbox
+          isDisabled={boolean('isFourthCheckboxDisabled', false)}
+          isChecked={boolean('isFourthCheckboxChecked', false)}
+          onChange={action('onChange: fourth')}
+          value="x-value"
+          isIndeterminate={boolean('isFourthCheckboxIndeterminate', true)}
+        >
+          {text('Label of fourth action', 'Fourth checkbox')}
+        </Checkbox>
       </Spacings.Stack>
     </Section>
   ));
