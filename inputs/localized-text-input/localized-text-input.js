@@ -166,6 +166,7 @@ export default class LocalizedTextInput extends React.Component {
     //   { en: 'foo', de: '', es: '' }
     value: PropTypes.objectOf(PropTypes.string).isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    onChangeValue: PropTypes.func,
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
@@ -234,6 +235,16 @@ export default class LocalizedTextInput extends React.Component {
 
   static isTouched = touched => touched && Object.values(touched).some(Boolean);
 
+  handleChange = event => {
+    if (this.props.onChangeValue) {
+      this.props.onChangeValue({
+        ...this.props.value,
+        [this.props.selectedLanguage]: event.target.value,
+      });
+    }
+    this.props.onChange(event);
+  };
+
   render() {
     const remainingLanguages = sortRemainingLanguages(
       this.props.selectedLanguage,
@@ -248,12 +259,7 @@ export default class LocalizedTextInput extends React.Component {
               id={getId(this.props.id, this.props.selectedLanguage)}
               name={getName(this.props.name, this.props.selectedLanguage)}
               value={this.props.value[this.props.selectedLanguage]}
-              onChange={event =>
-                this.props.onChange({
-                  ...this.props.value,
-                  [this.props.selectedLanguage]: event.target.value,
-                })
-              }
+              onChange={this.handleChange}
               language={this.props.selectedLanguage}
               placeholder={
                 this.props.placeholder
@@ -286,12 +292,7 @@ export default class LocalizedTextInput extends React.Component {
                       id={getId(this.props.id, language)}
                       name={getName(this.props.name, language)}
                       value={this.props.value[language]}
-                      onChange={event =>
-                        this.props.onChange({
-                          ...this.props.value,
-                          [language]: event.target.value,
-                        })
-                      }
+                      onChange={this.handleChange}
                       language={language}
                       placeholder={
                         this.props.placeholder

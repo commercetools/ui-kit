@@ -28,6 +28,7 @@ storiesOf('Inputs', module)
             'nan-Hant-TW': text('value(nan-Hant-TW)', ''),
           }}
           onChange={action('onChange')}
+          onChangeValue={action('onChangeValue')}
           selectedLanguage={select('selectedLanguage', ['en', 'de'], 'en')}
           onBlur={action('onBlur')}
           onFocus={action('onFocus')}
