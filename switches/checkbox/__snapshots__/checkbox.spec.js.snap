@@ -13,7 +13,7 @@ exports[`<Checkbox> rendering with children should match snapshot 1`] = `
       scale="s"
     >
       <div
-        className="hasError"
+        className="checkboxWrapper"
       >
         <test-file-stub />
       </div>
@@ -49,7 +49,7 @@ exports[`<Checkbox> rendering without children should match snapshot 1`] = `
       scale="s"
     >
       <div
-        className="hasError"
+        className="checkboxWrapper"
       >
         <test-file-stub />
       </div>
@@ -81,7 +81,7 @@ exports[`<Checkbox> rendering without children with \`data-*\` should match snap
       scale="s"
     >
       <div
-        className="hasError"
+        className="checkboxWrapper"
       >
         <test-file-stub />
       </div>
