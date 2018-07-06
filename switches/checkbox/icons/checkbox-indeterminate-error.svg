@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>checkbox-empty-hover</title>
+    <title>checkbox-indeterminate-error</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Checkboxes-Radio-Buttons" transform="translate(-177.000000, -685.000000)">
-            <g id="checkbox-empty-hover" transform="translate(177.000000, 684.000000)">
+        <g id="Checkboxes-Radio-Buttons" transform="translate(-177.000000, -1129.000000)">
+            <g id="checkbox-indeterminate-error" transform="translate(177.000000, 1128.000000)">
                 <rect id="background" fill="#FFFFFF" x="0" y="1" width="16" height="16" rx="4"></rect>
-                <g id="borderAndContent" transform="translate(0.000000, 0.500000)" stroke="#00B6A1">
-                    <rect id="border" x="0.5" y="1" width="15" height="15" rx="4"></rect>
+                <g id="borderAndContent" transform="translate(0.000000, 0.500000)">
+                    <rect id="border" stroke="#E60050" x="0.5" y="1" width="15" height="15" rx="4"></rect>
+                    <rect id="shape" fill="#E60050" x="3" y="7.5" width="10" height="2"></rect>
                 </g>
             </g>
         </g>
