@@ -18,6 +18,7 @@ storiesOf('Switches', module)
           isDisabled={boolean('isFirstCheckboxDisabled', false)}
           isChecked={boolean('isFirstCheckboxChecked', true)}
           onChange={action('onChange: first')}
+          hasError={boolean('hasFirstCheckboxError', false)}
           value="foo-value"
         >
           {text('Label of primary action', 'Primary checkbox')}
@@ -26,6 +27,7 @@ storiesOf('Switches', module)
           isDisabled={boolean('isSecondCheckboxDisabled', false)}
           onChange={action('onChange: second')}
           value="bar-value"
+          hasError={boolean('hasSecondCheckboxError', false)}
         >
           {text('Label of second action', 'Second checkbox')}
         </Checkbox>
@@ -42,8 +44,18 @@ storiesOf('Switches', module)
           onChange={action('onChange: fourth')}
           value="x-value"
           isIndeterminate={boolean('isFourthCheckboxIndeterminate', true)}
+          hasError={boolean('hasFourthCheckboxError', false)}
         >
           {text('Label of fourth action', 'Fourth checkbox')}
+        </Checkbox>
+        <Checkbox
+          isDisabled={boolean('isFifthCheckboxDisabled', false)}
+          isChecked={boolean('isFifthCheckboxChecked', true)}
+          onChange={action('onChange: fifth')}
+          value="x-value"
+          hasError={boolean('hasFifthCheckboxError', true)}
+        >
+          {text('Label of fifth action', 'Fifth checkbox')}
         </Checkbox>
       </Spacings.Stack>
     </Section>

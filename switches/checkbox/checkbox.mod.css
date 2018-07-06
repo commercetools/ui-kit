@@ -16,3 +16,7 @@
 .textWrapperDisabled {
   color: var(--color-primaryGrey);
 }
+
+.textWrapperError {
+  color: var(--color-red);
+}

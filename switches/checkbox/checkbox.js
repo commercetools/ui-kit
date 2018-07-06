@@ -16,6 +16,7 @@ export class Checkbox extends React.PureComponent {
     isChecked: PropTypes.bool,
     isIndeterminate: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
+    hasError: PropTypes.bool,
     children: PropTypes.node,
     // HoC
     isMouseOver: PropTypes.bool.isRequired,
@@ -26,6 +27,7 @@ export class Checkbox extends React.PureComponent {
     isDisabled: false,
     isChecked: false,
     isIndeterminate: false,
+    hasError: false,
   };
 
   render() {
@@ -41,27 +43,35 @@ export class Checkbox extends React.PureComponent {
           })}
         >
           <Spacings.Inline alignItems="center">
-            {(() => {
-              if (this.props.isDisabled) {
-                if (this.props.isChecked) return <Icons.CheckedDisabled />;
-                if (this.props.isIndeterminate)
-                  return <Icons.IndeterminateDisabled />;
-              } else if (this.props.isChecked) return <Icons.Checked />;
-              else if (this.props.isIndeterminate)
-                return <Icons.Indeterminate />;
-              else if (this.props.isDisabled) return <Icons.Disabled />;
-              else if (this.props.isMouseOver) {
-                if (this.props.isChecked) return <Icons.CheckedHover />;
-                if (this.props.isIndeterminate)
-                  return <Icons.IndeterminateHover />;
-                return <Icons.Hover />;
-              }
-              return <Icons.Default />;
-            })()}
+            <div className={styles.hasError}>
+              {(() => {
+                if (this.props.hasError) {
+                  if (this.props.isChecked) return <Icons.CheckedError />;
+                  if (this.props.isIndeterminate)
+                    return <Icons.IndeterminateError />;
+                  return <Icons.Error />;
+                } else if (this.props.isDisabled) {
+                  if (this.props.isChecked) return <Icons.CheckedDisabled />;
+                  if (this.props.isIndeterminate)
+                    return <Icons.IndeterminateDisabled />;
+                  return <Icons.Disabled />;
+                } else if (this.props.isChecked) return <Icons.Checked />;
+                else if (this.props.isIndeterminate)
+                  return <Icons.Indeterminate />;
+                else if (this.props.isMouseOver) {
+                  if (this.props.isChecked) return <Icons.CheckedHover />;
+                  if (this.props.isIndeterminate)
+                    return <Icons.IndeterminateHover />;
+                  return <Icons.Hover />;
+                }
+                return <Icons.Default />;
+              })()}
+            </div>
             {this.props.children && (
               <span
                 className={classnames({
                   [styles.textWrapperDisabled]: this.props.isDisabled,
+                  [styles.textWrapperError]: this.props.hasError,
                 })}
               >
                 {this.props.children}
