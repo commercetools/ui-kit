@@ -75,11 +75,28 @@ describe('<Checkbox>', () => {
           );
         });
 
-        it('should contain ` prop`', () => {
+        it('should contain `isIndeterminate` prop', () => {
           expect(wrapper.find(Checkbox)).toHaveProp(
             'isIndeterminate',
             props.isIndeterminate
           );
+        });
+      });
+
+      describe('with error', () => {
+        beforeEach(() => {
+          props = createTestProps({ hasError: true });
+
+          wrapper = shallow(
+            <div>
+              <Checkbox {...props} />
+            </div>
+          );
+        });
+
+        it('should prop `hasError` be true', () => {
+          console.log(wrapper.debug());
+          expect(wrapper.find(Checkbox).prop('hasError')).toBe(true);
         });
       });
 
