@@ -95,7 +95,6 @@ describe('<Checkbox>', () => {
         });
 
         it('should prop `hasError` be true', () => {
-          console.log(wrapper.debug());
           expect(wrapper.find(Checkbox).prop('hasError')).toBe(true);
         });
       });
