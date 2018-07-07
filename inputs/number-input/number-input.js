@@ -50,7 +50,7 @@ NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,
@@ -69,5 +69,13 @@ NumberInput.propTypes = {
 NumberInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
+
+NumberInput.toFormValue = numberOrString =>
+  typeof numberOrString === 'undefined' ? '' : numberOrString;
+
+// NumberInput.toFormValue = number =>
+//   typeof number === 'number' && !isNaN(number) ? String(number) : '';
+// NumberInput.parseFormValueAsFloat = string => parseFloat(string);
+// NumberInput.parseFormValueAsInt = string => parseInt(string, 10);
 
 export default NumberInput;
