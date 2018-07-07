@@ -138,6 +138,9 @@ class ProductForm extends React.Component {
             onChange={this.props.formik.handleChange}
             onBlur={this.props.formik.handleBlur}
             isDisabled={this.props.formik.isSubmitting}
+            hasError={Boolean(
+              this.props.formik.touched.key && this.props.formik.errors.key
+            )}
           />
           {this.props.formik.touched.key &&
             this.props.formik.errors.key &&
@@ -153,6 +156,11 @@ class ProductForm extends React.Component {
             onBlur={this.props.formik.handleBlur}
             currencies={currencies}
             isDisabled={this.props.formik.isSubmitting}
+            hasAmountError={Boolean(
+              this.props.formik.touched.price &&
+                this.props.formik.touched.price.amount &&
+                this.props.formik.errors.price
+            )}
           />
           {MoneyInput.isTouched(this.props.formik.touched.price) &&
             this.props.formik.errors.price &&
