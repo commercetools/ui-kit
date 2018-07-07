@@ -79,6 +79,8 @@ NumberInput.isEmpty = value => {
   return true;
 };
 
+NumberInput.hasFractionDigits = number => number % 1 !== 0;
+
 // NumberInput.toFormValue = number =>
 //   typeof number === 'number' && !isNaN(number) ? String(number) : '';
 // NumberInput.parseFormValueAsFloat = string => parseFloat(string);
