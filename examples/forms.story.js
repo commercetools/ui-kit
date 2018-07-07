@@ -220,8 +220,18 @@ class ProductForm extends React.Component {
   };
   render() {
     return (
-      <Spacings.Stack scale="l">
+      <Spacings.Stack scale="m">
         <div>
+          {/*
+            The Text.Body labels used in this example are temprary as we don't
+            have FieldLabel or any InputField-compoennts in the UI-Kit yet.
+            You would probably use the LabelField component form core instead.
+
+            When adding a label, make sure the label can be clicked to focus
+            the component. This is usually done by associating a "for" property
+            on the label with the id of an input element.
+          */}
+          <Text.Body>Product name*</Text.Body>
           <LocalizedTextInput
             name="name"
             value={this.props.formik.values.name}
@@ -233,6 +243,7 @@ class ProductForm extends React.Component {
           />
         </div>
         <div>
+          <Text.Body>Product key*</Text.Body>
           <TextInput
             name="key"
             value={this.props.formik.values.key}
@@ -264,6 +275,7 @@ class ProductForm extends React.Component {
             )}
         </div>
         <div>
+          <Text.Body>Inventory Quantity*</Text.Body>
           <NumberInput
             name="inventory"
             value={this.props.formik.values.inventory}
@@ -291,6 +303,7 @@ class ProductForm extends React.Component {
             )}
         </div>
         <div>
+          <Text.Body>Price*</Text.Body>
           <MoneyInput
             name="price"
             value={this.props.formik.values.price}
@@ -387,22 +400,28 @@ storiesOf('Examples', module)
                 );
               }}
               render={formik => (
-                <Spacings.Stack scale="xl">
+                <Spacings.Stack scale="l">
+                  <Text.Headline elementType="h2">The form</Text.Headline>
                   <div>
-                    <h3>The form</h3>
                     <ProductForm formik={formik} />
                   </div>
                   <hr />
                   <div>
-                    <h3>formik.values</h3>
+                    <Text.Subheadline elementType="h4">
+                      formik.values
+                    </Text.Subheadline>
                     <pre>{JSON.stringify(formik.values, null, 2)}</pre>
                   </div>
                   <div>
-                    <h3>formik.touched</h3>
+                    <Text.Subheadline elementType="h4">
+                      formik.touched
+                    </Text.Subheadline>
                     <pre>{JSON.stringify(formik.touched, null, 2)}</pre>
                   </div>
                   <div>
-                    <h3>formik.errors</h3>
+                    <Text.Subheadline elementType="h4">
+                      formik.errors
+                    </Text.Subheadline>
                     <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
                   </div>
                 </Spacings.Stack>
