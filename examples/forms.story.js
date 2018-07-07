@@ -131,7 +131,6 @@ class ProductForm extends React.Component {
   render() {
     return (
       <Spacings.Stack scale="l">
-        <h3>The form</h3>
         <div>
           <LocalizedTextInput
             name="name"
@@ -238,26 +237,25 @@ storiesOf('Examples', module)
                 );
               }}
               render={formik => (
-                <div>
-                  <Spacings.Stack scale="xl">
-                    <div>
-                      <ProductForm formik={formik} />
-                    </div>
-                    <hr />
-                    <div>
-                      <h3>formik.values</h3>
-                      <pre>{JSON.stringify(formik.values, null, 2)}</pre>
-                    </div>
-                    <div>
-                      <h3>formik.touched</h3>
-                      <pre>{JSON.stringify(formik.touched, null, 2)}</pre>
-                    </div>
-                    <div>
-                      <h3>formik.errors</h3>
-                      <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
-                    </div>
-                  </Spacings.Stack>
-                </div>
+                <Spacings.Stack scale="xl">
+                  <div>
+                    <h3>The form</h3>
+                    <ProductForm formik={formik} />
+                  </div>
+                  <hr />
+                  <div>
+                    <h3>formik.values</h3>
+                    <pre>{JSON.stringify(formik.values, null, 2)}</pre>
+                  </div>
+                  <div>
+                    <h3>formik.touched</h3>
+                    <pre>{JSON.stringify(formik.touched, null, 2)}</pre>
+                  </div>
+                  <div>
+                    <h3>formik.errors</h3>
+                    <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
+                  </div>
+                </Spacings.Stack>
               )}
             />
           )}
