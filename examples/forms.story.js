@@ -167,6 +167,13 @@ class ProductForm extends React.Component {
               this.props.formik.touched.key && this.props.formik.errors.key
             )}
           />
+          {/*
+            You could also use the ValidationError components from
+            core/components/validation-error to avoid having to write the
+            access manually.
+            They are not used in this example to clearly illustrate how
+            the underlying formik properties should be used.
+          */}
           {this.props.formik.touched.key &&
             this.props.formik.errors.key &&
             this.props.formik.errors.key.missing && (
