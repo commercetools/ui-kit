@@ -44,7 +44,8 @@ class FakeConnector extends React.Component {
     inventory: 30,
     price: { currencyCode: 'EUR', centAmount: 300 },
   };
-  updateProduct = product => {
+  updateProduct = ({ id, version, product }) => {
+    action('updating product', { id, version, product });
     if (product.key === 'taken-key') {
       return delay(200).then(() => {
         const error = new Error('duplicate-key');
@@ -67,14 +68,11 @@ class FakeConnector extends React.Component {
 
 // Beginning of the actual implementation of the form and its helpers
 
-const hasFractionDigits = number => number % 1 !== 0;
-
 // This function is used to transform the document returned by the API to
 // the values the form will deal with.
 // When the form needs to display additional information which is not
 // editable in the form, it has so far proven better to keep this information
 // out of the form values.
-//
 const docToForm = doc => ({
   // Keeping the id in the form values ensures data is not mixed accidentally
   id: doc.id,
@@ -104,9 +102,18 @@ const docToForm = doc => ({
   // This eases validation later on, as we don't have to deal with undefined
   // anymore.
   inventory: NumberInput.toFormValue(doc.inventory),
+  // parseMoneyValue will ensure that the price field will have currencyCode and
+  // amount filled out or set to empty strings. This reduces the cases we
+  // need to deal with (amount, currencyCode or the whole object being undefined).
   price: MoneyInput.parseMoneyValue(doc.price),
 });
 
+// When the form gets submitted, we transform the form values back to a document
+// which can then be used by the rest of the application.
+// The docToForm and formToDoc functions decouple the form implemenation
+// from the rest of the application.
+// When the forms implemenation changes, we only need to adapt docToForm and
+// formToDoc instead of the whole application.
 const formToDoc = formValues => ({
   id: formValues.id,
   version: formValues.version,
@@ -116,34 +123,49 @@ const formToDoc = formValues => ({
   price: MoneyInput.convertToMoneyValue(formValues.price),
 });
 
+// The validate function is responsible for determining the form's validation erros
+// We have decided to use boolean properties to keep track of errors.
+// This has the advantage that it's easy to write PropType validations,
+// multiple errors can be present on a field at the same time, and
+// API-errors can easily be mapped onto any field
+// As we're very strict when initializing the form, we can count on any value
+// either being a string or a number, or an object containing such. We never have
+// to check for undefined values.
 const validate = formValues => {
-  const errors = { price: {}, inventory: {} };
+  // To make it easier to attach errors during validation, we initialize
+  // all form fields to empty objects.
+  const errors = { key: {}, name: {}, price: {}, inventory: {} };
 
   // validate key
-  if (formValues.key.trim().length === 0) errors.key = { missing: true };
+  // Input elements usually provide a way to check whether it's value is empty
+  // This is useful to determine whether a required value was not filled out.
+  if (TextInput.isEmpty(formValues.key)) errors.key.missing = true;
 
   // validate name
-  if (LocalizedTextInput.isEmpty(formValues.name))
-    errors.name = { missing: true };
+  // A localized string is considered empty when no translation is given at all
+  if (LocalizedTextInput.isEmpty(formValues.name)) errors.name.missing = true;
 
   // validate price
-  const price = MoneyInput.convertToMoneyValue(formValues.price);
-  if (!price) {
-    errors.price.invalid = true;
-  } else if (price.type === 'highPrecision') {
+  if (MoneyInput.isEmpty(formValues.price)) {
+    errors.price.missing = true;
+  } else if (MoneyInput.isHighPrecisionPrice(formValues.price)) {
     errors.price.unsupportedHighPrecision = true;
   }
 
   // validate inventory
-  // We don't have to trim. Formik will do this for us.
-  if (formValues.inventory === '') {
+  if (NumberInput.isEmpty(formValues.inventory)) {
     errors.inventory.missing = true;
   } else {
+    // When the value is not empty, we can assume that it is a number
     if (formValues.inventory < 0) errors.inventory.negative = true;
-    if (hasFractionDigits(formValues.inventory))
+    if (NumberInput.hasFractionDigits(formValues.inventory))
       errors.inventory.fractions = true;
   }
 
+  // Formik will think there are errors when the object returned as a
+  // validation result has at least one key. We therefore have to omit
+  // all empty fields inside the error object.
+  // When an empty object is returned, formik will assume there were no errors
   return omitEmpty(errors);
 };
 
@@ -185,7 +207,7 @@ class ProductForm extends React.Component {
           missing: PropTypes.bool,
         }),
         price: PropTypes.shape({
-          invalid: PropTypes.bool,
+          missing: PropTypes.bool,
           unsupportedHighPrecision: PropTypes.bool,
         }),
       }).isRequired,
@@ -284,7 +306,7 @@ class ProductForm extends React.Component {
           />
           {MoneyInput.isTouched(this.props.formik.touched.price) &&
             this.props.formik.errors.price &&
-            this.props.formik.errors.price.invalid && (
+            this.props.formik.errors.price.missing && (
               <ErrorMessage>Missing price</ErrorMessage>
             )}
           {MoneyInput.isTouched(this.props.formik.touched.price) &&
@@ -329,14 +351,37 @@ storiesOf('Examples', module)
               onSubmit={(formValues, formik) => {
                 action('values of form submission')(formValues);
                 const nextProduct = formToDoc(formValues);
-                return updateProduct(nextProduct).then(
+                // Usually, we would compute update actions here by comparing
+                // nextProduct to the product from FakeConnector.
+                // We would then use formValues.id and formValues.version
+                // to send the update action to the server through the connector
+                return updateProduct({
+                  // As explained in the beginning of this document, sending
+                  // the id and version from formValues along prevents
+                  // accidental concurrent modifications and ensures the user
+                  // will run into the ConcurrentModificationError int those
+                  // cases
+                  id: formValues.id,
+                  version: formValues.version,
+                  product: nextProduct,
+                }).then(
                   updatedProduct => {
+                    // Calling resetForm with the updated product will
+                    // update the form values and reset the submission state,
+                    // touched keys and so on.
                     formik.resetForm(docToForm(updatedProduct));
                   },
                   error => {
+                    // This is an example where we have to rely on the API
+                    // on submission time to ensure correct form values.
+                    // The example shows how to map API errors back onto
+                    // specific fields within the form.
                     if (error.code === 'DuplicateKeyError') {
                       formik.setErrors({ key: { duplicate: true } });
                     }
+                    // Since we might do things like retrying a request in case
+                    // there was an error with it, we are responsible for
+                    // resetting the submission state.
                     formik.setSubmitting(false);
                   }
                 );
