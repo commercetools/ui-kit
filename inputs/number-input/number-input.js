@@ -73,6 +73,12 @@ NumberInput.defaultProps = {
 NumberInput.toFormValue = numberOrString =>
   typeof numberOrString === 'undefined' ? '' : numberOrString;
 
+NumberInput.isEmpty = value => {
+  if (typeof value === 'string') return value.trim().length === 0;
+  if (typeof value === 'number') return isNaN(value);
+  return true;
+};
+
 // NumberInput.toFormValue = number =>
 //   typeof number === 'number' && !isNaN(number) ? String(number) : '';
 // NumberInput.parseFormValueAsFloat = string => parseFloat(string);
