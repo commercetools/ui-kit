@@ -16,6 +16,9 @@ import PrimaryButton from '../buttons/primary-button';
 import SecondaryButton from '../buttons/secondary-button';
 import Forms from './forms.md';
 
+// utilities for story
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 // This data would usually be loaded from the project itself.
 // It is defined statically here to keep the example focused on the forms.
 const currencies = ['EUR', 'USD'];
@@ -36,10 +39,16 @@ class FakeConnector extends React.Component {
     name: { en: 'Shoe', de: 'Schuh' },
     price: { currencyCode: 'EUR', centAmount: 300 },
   };
-  updateProduct = product =>
-    new Promise(resolve => {
-      setTimeout(() => resolve(product), 1000);
-    });
+  updateProduct = product => {
+    if (product.key === 'taken-key') {
+      return delay(200).then(() => {
+        const error = new Error('duplicate-key');
+        error.code = 'DuplicateKeyError';
+        throw error;
+      });
+    }
+    return delay(1000).then(() => product);
+  };
   render() {
     return this.props.children({
       product: this.product,
@@ -103,7 +112,10 @@ class ProductForm extends React.Component {
       }),
       errors: PropTypes.shape({
         name: PropTypes.shape({ missing: PropTypes.bool }),
-        key: PropTypes.shape({ missing: PropTypes.bool }),
+        key: PropTypes.shape({
+          missing: PropTypes.bool,
+          duplicate: PropTypes.bool,
+        }),
         price: PropTypes.shape({
           invalid: PropTypes.bool,
           unsupportedHighPrecision: PropTypes.bool,
@@ -146,6 +158,13 @@ class ProductForm extends React.Component {
             this.props.formik.errors.key &&
             this.props.formik.errors.key.missing && (
               <ErrorMessage>Missing key</ErrorMessage>
+            )}
+          {this.props.formik.touched.key &&
+            this.props.formik.errors.key &&
+            this.props.formik.errors.key.duplicate && (
+              <ErrorMessage>
+                This key is already in use. Keys must be unique.
+              </ErrorMessage>
             )}
         </div>
         <div>
@@ -204,11 +223,19 @@ storiesOf('Examples', module)
               initialValues={docToForm(product)}
               validate={validate}
               onSubmit={(formValues, formik) => {
-                action('submitted form with values')(formValues);
+                action('values of form submission')(formValues);
                 const nextProduct = formToDoc(formValues);
-                return updateProduct(nextProduct).then(updatedProduct => {
-                  formik.resetForm(docToForm(updatedProduct));
-                });
+                return updateProduct(nextProduct).then(
+                  updatedProduct => {
+                    formik.resetForm(docToForm(updatedProduct));
+                  },
+                  error => {
+                    if (error.code === 'DuplicateKeyError') {
+                      formik.setErrors({ key: { duplicate: true } });
+                    }
+                    formik.setSubmitting(false);
+                  }
+                );
               }}
               render={formik => (
                 <div>
