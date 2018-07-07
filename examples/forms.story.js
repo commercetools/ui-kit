@@ -63,13 +63,37 @@ class FakeConnector extends React.Component {
   }
 }
 
+// Beginning of the actual implementation of the form and its helpers
+
+// This function is used to transform the document returned by the API to
+// the values the form will deal with.
+// When the form needs to display additional information which is not
+// editable in the form, it has so far proven better to keep this information
+// out of the form values.
+//
 const docToForm = doc => ({
   // Keeping the id in the form values ensures data is not mixed accidentally
   id: doc.id,
-  // Keeping the version as part of the form values prevents accidental concurrent
-  // modifications
+  // Why the version should be part of the form values:
+  // The id and version should be part of the form values. Otherwise it could
+  // could happen that another component caueses a refetch of some data and the
+  // version. This would lead to the version being incremented in the Apollo
+  // cache. The form will not reinitialize with the new data. The form uses the
+  // data provided when first opened. When the user would submit the form,
+  // we would read the version from the cache (where it has increased).
+  // We would thus skip the APIs ConcurrentModificationError, but the user has
+  // never seen the updated version of the data. This is quite bad and can lead
+  // to accidental loss of data. By keeping the version in the form values instead
+  // an update of the version in the Apollo Cache does not affect the form. On
+  // submission the version from the form values will be used, and the user will
+  // see the APIs ConcurrentModificationError as expected!
+  // TL;DR: Keeping the version as part of the form values prevents accidental
+  // concurrent modifications. Keep the id and version in the form values.
   version: doc.version,
   key: doc.key,
+  // The name is initialized with all supported languages set to their value
+  // or an empty string. This circumvents a lot of edge cases where we'd otherwise
+  // have to deal with either undefined or an empty string, or a filled string.
   name: LocalizedTextInput.createLocalizedString(resourceLanguages, doc.name),
   price: MoneyInput.parseMoneyValue(doc.price),
 });
