@@ -16,4 +16,5 @@ Make sure to also check the source-code of the story. It contains code comments 
 - Errors are only shown after the first blur, not while typing
 - Errors clear as the user changes values
 - High precision pricing is disabled on a form-level. The input is not aware of this.
-- After updating the product, the form is reinitialized with the updated product
+- After updating the product, the form is reinitialized with the updated product (version increases)
+- Version is kept in form values to avoid accidental concurrent modifications

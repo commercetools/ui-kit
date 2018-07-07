@@ -8,6 +8,7 @@ import omitEmpty from 'omit-empty';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../.storybook/decorators/section';
 import Spacings from '../materials/spacings';
+import Text from '../typography/text';
 import ErrorMessage from '../messages/error-message';
 import TextInput from '../inputs/text-input';
 import MoneyInput from '../inputs/money-input';
@@ -35,6 +36,8 @@ class FakeConnector extends React.Component {
   static displayName = 'FakeConnector';
   static propTypes = { children: PropTypes.func.isRequired };
   product = {
+    id: 'product-id-1',
+    version: 1,
     key: 'shoe',
     name: { en: 'Shoe', de: 'Schuh' },
     price: { currencyCode: 'EUR', centAmount: 300 },
@@ -47,7 +50,10 @@ class FakeConnector extends React.Component {
         throw error;
       });
     }
-    return delay(1000).then(() => product);
+    return delay(1000).then(() => ({
+      ...product,
+      version: product.version + 1,
+    }));
   };
   render() {
     return this.props.children({
@@ -58,12 +64,19 @@ class FakeConnector extends React.Component {
 }
 
 const docToForm = doc => ({
+  // Keeping the id in the form values ensures data is not mixed accidentally
+  id: doc.id,
+  // Keeping the version as part of the form values prevents accidental concurrent
+  // modifications
+  version: doc.version,
   key: doc.key,
   name: LocalizedTextInput.createLocalizedString(resourceLanguages, doc.name),
   price: MoneyInput.parseMoneyValue(doc.price),
 });
 
 const formToDoc = formValues => ({
+  id: formValues.id,
+  version: formValues.version,
   key: formValues.key,
   name: formValues.name,
   price: MoneyInput.convertToMoneyValue(formValues.price),
@@ -95,6 +108,7 @@ class ProductForm extends React.Component {
   static propTypes = {
     formik: PropTypes.shape({
       values: PropTypes.shape({
+        version: PropTypes.number.isRequired,
         key: PropTypes.string.isRequired,
         name: PropTypes.objectOf(PropTypes.string).isRequired,
         price: PropTypes.shape({
@@ -206,6 +220,9 @@ class ProductForm extends React.Component {
             label="Submit"
           />
         </Spacings.Inline>
+        <Text.Detail>
+          Product is at version {this.props.formik.values.version}.
+        </Text.Detail>
       </Spacings.Stack>
     );
   }
