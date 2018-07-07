@@ -11,6 +11,7 @@ import Spacings from '../materials/spacings';
 import Text from '../typography/text';
 import ErrorMessage from '../messages/error-message';
 import TextInput from '../inputs/text-input';
+import NumberInput from '../inputs/number-input';
 import MoneyInput from '../inputs/money-input';
 import LocalizedTextInput from '../inputs/localized-text-input';
 import PrimaryButton from '../buttons/primary-button';
@@ -40,6 +41,7 @@ class FakeConnector extends React.Component {
     version: 1,
     key: 'shoe',
     name: { en: 'Shoe', de: 'Schuh' },
+    inventory: 30,
     price: { currencyCode: 'EUR', centAmount: 300 },
   };
   updateProduct = product => {
@@ -64,6 +66,8 @@ class FakeConnector extends React.Component {
 }
 
 // Beginning of the actual implementation of the form and its helpers
+
+const hasFractionDigits = number => number % 1 !== 0;
 
 // This function is used to transform the document returned by the API to
 // the values the form will deal with.
@@ -95,6 +99,11 @@ const docToForm = doc => ({
   // or an empty string. This circumvents a lot of edge cases where we'd otherwise
   // have to deal with either undefined or an empty string, or a filled string.
   name: LocalizedTextInput.createLocalizedString(resourceLanguages, doc.name),
+  // The inventory should either an empty string or a number. The inventory could
+  // be undefined, in which case toFormValue will set it to an empty string.
+  // This eases validation later on, as we don't have to deal with undefined
+  // anymore.
+  inventory: NumberInput.toFormValue(doc.inventory),
   price: MoneyInput.parseMoneyValue(doc.price),
 });
 
@@ -103,16 +112,17 @@ const formToDoc = formValues => ({
   version: formValues.version,
   key: formValues.key,
   name: formValues.name,
+  inventory: formValues.inventory,
   price: MoneyInput.convertToMoneyValue(formValues.price),
 });
 
 const validate = formValues => {
-  const errors = { price: {} };
+  const errors = { price: {}, inventory: {} };
 
   // validate key
   if (formValues.key.trim().length === 0) errors.key = { missing: true };
 
-  // vlaidate name
+  // validate name
   if (LocalizedTextInput.isEmpty(formValues.name))
     errors.name = { missing: true };
 
@@ -122,6 +132,16 @@ const validate = formValues => {
     errors.price.invalid = true;
   } else if (price.type === 'highPrecision') {
     errors.price.unsupportedHighPrecision = true;
+  }
+
+  // validate inventory
+  // We don't have to trim. Formik will do this for us.
+  if (formValues.inventory === '') {
+    errors.inventory.missing = true;
+  } else {
+    if (formValues.inventory < 0) errors.inventory.negative = true;
+    if (hasFractionDigits(formValues.inventory))
+      errors.inventory.fractions = true;
   }
 
   return omitEmpty(errors);
@@ -135,6 +155,10 @@ class ProductForm extends React.Component {
         version: PropTypes.number.isRequired,
         key: PropTypes.string.isRequired,
         name: PropTypes.objectOf(PropTypes.string).isRequired,
+        // Formik provides us with either a number or an empty string in case
+        // the value can not be parsed
+        inventory: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
         price: PropTypes.shape({
           amount: PropTypes.string.isRequired,
           currencyCode: PropTypes.string.isRequired,
@@ -143,6 +167,7 @@ class ProductForm extends React.Component {
       touched: PropTypes.shape({
         key: PropTypes.bool,
         name: PropTypes.objectOf(PropTypes.bool),
+        inventory: PropTypes.bool,
         price: PropTypes.shape({
           amount: PropTypes.bool,
           currencyCode: PropTypes.bool,
@@ -153,6 +178,11 @@ class ProductForm extends React.Component {
         key: PropTypes.shape({
           missing: PropTypes.bool,
           duplicate: PropTypes.bool,
+        }),
+        inventory: PropTypes.shape({
+          negative: PropTypes.bool,
+          fractions: PropTypes.bool,
+          missing: PropTypes.bool,
         }),
         price: PropTypes.shape({
           invalid: PropTypes.bool,
@@ -209,6 +239,33 @@ class ProductForm extends React.Component {
               <ErrorMessage>
                 This key is already in use. Keys must be unique.
               </ErrorMessage>
+            )}
+        </div>
+        <div>
+          <NumberInput
+            name="inventory"
+            value={this.props.formik.values.inventory}
+            onChange={this.props.formik.handleChange}
+            onBlur={this.props.formik.handleBlur}
+            hasError={
+              this.props.formik.touched.inventory &&
+              Boolean(this.props.formik.errors.inventory)
+            }
+          />
+          {this.props.formik.touched.inventory &&
+            this.props.formik.errors.inventory &&
+            this.props.formik.errors.inventory.negative && (
+              <ErrorMessage>Negative quantity is not supported</ErrorMessage>
+            )}
+          {this.props.formik.touched.inventory &&
+            this.props.formik.errors.inventory &&
+            this.props.formik.errors.inventory.fractions && (
+              <ErrorMessage>Inventory must be a whole number</ErrorMessage>
+            )}
+          {this.props.formik.touched.inventory &&
+            this.props.formik.errors.inventory &&
+            this.props.formik.errors.inventory.missing && (
+              <ErrorMessage>The inventory information is required</ErrorMessage>
             )}
         </div>
         <div>

@@ -9,6 +9,8 @@ Make sure to also check the source-code of the story. It contains code comments 
 - Clear values of fields and submit
 - Use a key called `taken-key` to see API errors mapped back to form
 - Enter a high-precision price (add more than 2 fraction digits to the price)
+- Enter a negative inventory quantity
+- Enter a inventory quantity with fraction digits
 
 ## Things to notice
 
@@ -18,3 +20,4 @@ Make sure to also check the source-code of the story. It contains code comments 
 - High precision pricing is disabled on a form-level. The input is not aware of this.
 - After updating the product, the form is reinitialized with the updated product (version increases)
 - Version is kept in form values to avoid accidental concurrent modifications
+- Multiple errors can be present on a field at the same time (enter a negative inventory quantity with fraction digits)
