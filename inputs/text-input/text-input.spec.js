@@ -8,6 +8,21 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
+describe('TextInput.isEmpty', () => {
+  describe('when called with an empty value', () => {
+    it('should return true', () => {
+      expect(TextInput.isEmpty('')).toBe(true);
+      expect(TextInput.isEmpty(' ')).toBe(true);
+    });
+  });
+  describe('when called with a filled value', () => {
+    it('should return false', () => {
+      expect(TextInput.isEmpty('a')).toBe(false);
+      expect(TextInput.isEmpty(' a ')).toBe(false);
+    });
+  });
+});
+
 describe('rendering', () => {
   describe('data attributes', () => {
     let input;
