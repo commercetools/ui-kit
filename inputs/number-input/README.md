@@ -31,3 +31,38 @@ import NumberInput from '@commercetools-frontend/ui-kit/inputs/number-input';
 | `isReadOnly`           | `bool`               |    -     | -                                  | `false` | Indicates that the field is displaying read-only content                                               |
 | `placeholder`          | `string`             |    -     | -                                  | -       | Placeholder text for the input                                                                         |
 | `horizontalConstraint` | `object`             |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                             |
+
+### Static methods
+
+#### `NumberInput.toFormValue`
+
+Converts a number, or `undefined` value to a value the input can work with. It replaces non-numbers with an empty string to make sure the underlying input component never turns into an uncontrolled state.
+
+```js
+NumberInput.toFormValue(3); // -> 3
+NumberInput.toFormValue('3'); // -> '3'
+NumberInput.toFormValue(); // -> ''
+NumberInput.toFormValue(undefined); // -> ''
+```
+
+#### `NumberInput.isEmpty`
+
+Returns `true` when `NumberInput` value passed to the function is empty.
+
+```js
+NumberInput.isEmpty(); // -> true
+NumberInput.isEmpty(undefined); // -> true
+NumberInput.isEmpty(NaN); // -> true
+NumberInput.toFormValue(2); // -> false
+NumberInput.toFormValue('2'); // -> false
+```
+
+#### `NumberInput.hasFractionDigits`
+
+```js
+NumberInput.hasFractionDigits(); // -> throws
+NumberInput.hasFractionDigits(2.2); // -> true
+NumberInput.hasFractionDigits('2.2'); // -> true
+NumberInput.hasFractionDigits('2'); // -> false
+NumberInput.hasFractionDigits(2); // -> false
+```

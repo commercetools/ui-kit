@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant';
 import requiredIf from 'react-required-if';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Constraints from '../../materials/constraints';
@@ -79,6 +80,13 @@ NumberInput.isEmpty = value => {
   return true;
 };
 
-NumberInput.hasFractionDigits = number => number % 1 !== 0;
+NumberInput.hasFractionDigits = number => {
+  const fraction = number % 1;
+  invariant(
+    !isNaN(fraction),
+    'NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
+  );
+  return fraction !== 0;
+};
 
 export default NumberInput;
