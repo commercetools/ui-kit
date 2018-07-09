@@ -18,23 +18,65 @@ These are general and loose rules components in UIKit should strive to fulfill.
 - Documentation of prop-types and usage patterns
 - Sensible defaults for props which are not a hard requirement
 
-### How to add to UIKit
+### How to add to UI Kit.
 
 These are informal steps we suggest you to follow when adding a new component.
 
-- Extract development of the component into a separate user story
-  - Recommended if possible - often times alternative components can be used
-    until the new component has been added to UIKit
-- Try to map out usages in applications and try to anticipate additions to the
-  component
-  - E.g. when developing radio buttons, checkboxes might be next
-- Create an GitHub issue with a screenshot of component states and propose an
-  API
-  - Use `PropTypes` and give examples of usages of the component
-- Inform the design team about any inconsistencies in state or design found in
-  the process of API specification (most are on GitHub)
-- Develop the component(s) and put them up for code review
-- Only later migrate the application to use the newly developed component
+1.  Create a new Task to add the component to the UIKit.
+
+    - [ ] Create task.
+    - [ ] Add task to the MCD project.
+    - [ ] Add task to the [UIKit Kanban Board].
+
+2.  Sync with UI Kit leads
+
+    - [ ] Notify Luis or Dominic of the task.
+
+3.  Create documentation for the component
+
+    - [ ] Create copy of [UIKit Component Documentation Template].
+    - [ ] Add copy to the [UIKit Component Documentation List] page.
+    - [ ] `Designer` & `Dev` go through the copy and update it for the new component.
+
+4.  Align design with styleguide
+
+    - [ ] `Designer` checks the styleguide restrictions and makes sure no elements are being duplicated.
+
+5.  Create design for the component (if it hasn't been done already).
+
+    - [ ] `Designer` creates the design for the component.
+
+6.  Review new design
+
+    - [ ] `Designer` & `Dev` review the component's design.
+
+7.  Sync with UI Kit leads
+
+    - [ ] Notify Luis or Dominic of the task.
+
+8.  Open a Github issue with the API proposal for the new component
+
+    - [ ] i. `Dev` opens a Github issue on the MC Frontend repo describing the API proposal for the new component.
+    - [ ] Use PropTypes to describe the component's props.
+    - [ ] Show example usage of the component.
+
+9.  Develop the component and open a PR to add the component to the UI Kit.
+
+    - [ ] Open a PR to add the component to the UI Kit.
+    - [ ] PR is approved by either Luis or Dominic or both.
+
+10. UX Review
+
+    - [ ] `Designer` conducts the UX review on the component.
+
+11. Review with UI Kit leads
+
+12. Component is merged
+
+    - [ ] `Designer` adds component to UI Kit Sketch file.
+
+13. Migrate component to MC.
+    - [ ] Component is used only where needed for the user story.
 
 ### When and how to change an existing component in UIKit
 
@@ -68,3 +110,10 @@ These are informal steps we suggest you to follow when adding a new component.
 - Implement your changes and put them _up for code review_
 - Update Storybook, all documentation and usage examples
 - Migrate all code that will immediately be affected by your changes
+
+### Resources
+
+[uikit process diagram]: https://wiki.commercetools.com/display/DD/MC+UI+KIT+Component+Process
+[uikit kanban board]: https://jira.commercetools.com/secure/RapidBoard.jspa?rapidView=138&view=detail&selectedIssue=MCD-1104
+[uikit component documentation template]: https://wiki.commercetools.com/display/DD/2.+UI+Kit+-+Components+Building+Documentation+Guide
+[uikit component documentation list]: https://wiki.commercetools.com/display/DD/3.+Components+-+Documentations
