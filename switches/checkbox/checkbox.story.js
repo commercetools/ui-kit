@@ -15,47 +15,14 @@ storiesOf('Switches', module)
     <Section>
       <Spacings.Stack>
         <Checkbox
-          isDisabled={boolean('isFirstCheckboxDisabled', false)}
-          isChecked={boolean('isFirstCheckboxChecked', true)}
-          onChange={action('onChange: first')}
-          hasError={boolean('hasFirstCheckboxError', false)}
+          onChange={action('onChange')}
           value="foo-value"
+          isDisabled={boolean('isDisabled', false)}
+          isChecked={boolean('isChecked', false)}
+          isIndeterminate={boolean('isIndeterminate', false)}
+          hasError={boolean('hasError', false)}
         >
-          {text('Label of primary action', 'Primary checkbox')}
-        </Checkbox>
-        <Checkbox
-          isDisabled={boolean('isSecondCheckboxDisabled', false)}
-          onChange={action('onChange: second')}
-          value="bar-value"
-          hasError={boolean('hasSecondCheckboxError', false)}
-        >
-          {text('Label of second action', 'Second checkbox')}
-        </Checkbox>
-        <Checkbox
-          isDisabled={boolean('isThirdCheckboxDisabled', true)}
-          onChange={action('onChange: third')}
-          value="baz-value"
-        >
-          {text('Label of third action', 'Third checkbox')}
-        </Checkbox>
-        <Checkbox
-          isDisabled={boolean('isFourthCheckboxDisabled', false)}
-          isChecked={boolean('isFourthCheckboxChecked', false)}
-          onChange={action('onChange: fourth')}
-          value="x-value"
-          isIndeterminate={boolean('isFourthCheckboxIndeterminate', true)}
-          hasError={boolean('hasFourthCheckboxError', false)}
-        >
-          {text('Label of fourth action', 'Fourth checkbox')}
-        </Checkbox>
-        <Checkbox
-          isDisabled={boolean('isFifthCheckboxDisabled', false)}
-          isChecked={boolean('isFifthCheckboxChecked', true)}
-          onChange={action('onChange: fifth')}
-          value="x-value"
-          hasError={boolean('hasFifthCheckboxError', true)}
-        >
-          {text('Label of fifth action', 'Fifth checkbox')}
+          {text('Label', 'This is a label')}
         </Checkbox>
       </Spacings.Stack>
     </Section>
