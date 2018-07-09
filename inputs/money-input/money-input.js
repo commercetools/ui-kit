@@ -153,6 +153,10 @@ const getAmountStyles = props => {
   return styles['amount-default'];
 };
 
+const getAmountInputName = name => (name ? `${name}.amount` : undefined);
+const getCurrencyDropdownName = name =>
+  name ? `${name}.currencyCode` : undefined;
+
 export default class MoneyInput extends React.Component {
   static displayName = 'MoneyInput';
 
@@ -197,6 +201,7 @@ export default class MoneyInput extends React.Component {
   };
 
   static propTypes = {
+    name: PropTypes.string,
     value: PropTypes.shape({
       amount: PropTypes.string.isRequired,
       currencyCode: PropTypes.string.isRequired,
@@ -205,7 +210,24 @@ export default class MoneyInput extends React.Component {
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
-    onChange: PropTypes.func,
+    // This is optional when isDisabled is set, otherwise either onChange or
+    // onChangeValue have to be passed.
+    onChange(props, propName, componentName, ...rest) {
+      if (props.isDisabled)
+        return PropTypes.func(props, propName, componentName, ...rest);
+
+      const hasAtLeastOneChangeHandler =
+        props.onChange != null || props.onChangeValue != null;
+
+      if (hasAtLeastOneChangeHandler)
+        return PropTypes.func(props, propName, componentName, ...rest);
+
+      return new Error(
+        `MoneyInput requires at least one change handler. Pass either "onChange" or "onChangeValue".`
+      );
+    },
+    // onChange is handling the validation logic for onChangeValue case as well
+    onChangeValue: PropTypes.func,
 
     hasCurrencyError: PropTypes.bool,
     hasCurrencyWarning: PropTypes.bool,
@@ -220,7 +242,10 @@ export default class MoneyInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  handleCurrencyChange = (currencyCode, toggleMenu) => {
+  static isTouched = touched => touched && Object.values(touched).some(Boolean);
+
+  handleCurrencyChange = (event, toggleMenu) => {
+    const currencyCode = event.target.value;
     if (this.props.value.currencyCode !== currencyCode) {
       // When the user changes from a currency with 3 fraction digits to
       // a currency with 2 fraction digits, and when the input value was
@@ -232,27 +257,62 @@ export default class MoneyInput extends React.Component {
         this.props.value.amount.trim(),
         currencyCode
       );
-      this.props.onChange({
-        currencyCode,
-        // The user could be changing the currency before entering any amount,
-        // or while the amount is invalid. In these cases, we don't attempt to
-        // format the amount.
-        amount: isNaN(formattedAmount)
-          ? this.props.value.amount
-          : formattedAmount,
-      });
+      // The user could be changing the currency before entering any amount,
+      // or while the amount is invalid. In these cases, we don't attempt to
+      // format the amount.
+      const nextAmount = isNaN(formattedAmount)
+        ? this.props.value.amount
+        : formattedAmount;
+
+      if (this.props.onChangeValue) {
+        this.props.onChangeValue({ currencyCode, amount: nextAmount });
+      }
+
+      if (this.props.onChange) {
+        // change currency code
+        this.props.onChange(event);
+
+        // change amount if necessary
+        if (this.props.value.amount !== nextAmount) {
+          this.props.onChange({
+            target: {
+              name: getAmountInputName(this.props.name),
+              value: isNaN(formattedAmount)
+                ? this.props.value.amount
+                : formattedAmount,
+            },
+          });
+        }
+      }
     }
     toggleMenu();
-    if (this.props.onBlur) this.props.onBlur();
   };
 
-  handleAmountChange = event =>
-    this.props.onChange({
-      currencyCode: this.props.value.currencyCode,
-      amount: event.target.value.trim(),
-    });
+  handleAmountChange = event => {
+    if (this.props.onChangeValue) {
+      this.props.onChangeValue({
+        currencyCode: this.props.value.currencyCode,
+        amount: event.target.value,
+      });
+    }
 
-  handleBlur = () => {
+    if (this.props.onChange) {
+      // We need to emit a fake event to stop Formik from auto-converting the
+      // value to a number, as we want to keep a string!
+      // The fake event does not contain the input type information, so Formik
+      // will not convert the value to a number.
+      const fakeEvent = {
+        persist: () => {},
+        target: {
+          name: event.target.name,
+          value: event.target.value,
+        },
+      };
+      this.props.onChange(fakeEvent);
+    }
+  };
+
+  handleBlur = event => {
     const amount = this.props.value.amount.trim();
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
@@ -265,13 +325,27 @@ export default class MoneyInput extends React.Component {
       // When the user entered a value with centPrecision, we can format
       // the resulting value to that currency, e.g. 20.1 to 20.10
       if (String(formattedAmount) !== amount) {
-        this.props.onChange({
-          currencyCode: this.props.value.currencyCode,
-          amount: formattedAmount,
-        });
+        if (this.props.onChangeValue) {
+          this.props.onChangeValue({
+            currencyCode: this.props.value.currencyCode,
+            amount: formattedAmount,
+          });
+        }
+        if (this.props.onChange) {
+          // We need to emit a fake event to stop Formik from auto-converting the
+          // value to a number, as we want to keep a string!
+          const fakeEvent = {
+            persist: () => {},
+            target: {
+              name: getAmountInputName(this.props.name),
+              value: formattedAmount,
+            },
+          };
+          this.props.onChange(fakeEvent);
+        }
       }
     }
-    if (this.props.onBlur) this.props.onBlur();
+    if (this.props.onBlur) this.props.onBlur(event);
   };
 
   render() {
@@ -280,9 +354,11 @@ export default class MoneyInput extends React.Component {
         <div className={styles['field-container']}>
           {this.props.currencies.length > 0 ? (
             <CurrencyDropdown
+              name={getCurrencyDropdownName(this.props.name)}
               currencies={this.props.currencies}
               currencyCode={this.props.value.currencyCode}
-              handleChange={this.handleCurrencyChange}
+              onChange={this.handleCurrencyChange}
+              onBlur={this.props.onBlur}
               isDisabled={this.props.isDisabled}
               hasCurrencyError={this.props.hasCurrencyError}
               hasCurrencyWarning={this.props.hasCurrencyWarning}
@@ -302,6 +378,7 @@ export default class MoneyInput extends React.Component {
             </div>
           )}
           <input
+            name={getAmountInputName(this.props.name)}
             type="number"
             value={this.props.value.amount}
             className={getAmountStyles({

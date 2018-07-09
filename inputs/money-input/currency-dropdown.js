@@ -60,14 +60,19 @@ const CurrencyDropdown = props => (
                 hasCurrencyWarning: props.hasCurrencyWarning,
               })}
             >
-              {props.currencies.map(currency => (
+              {props.currencies.map(currencyCode => (
                 <Option
-                  key={currency}
+                  key={currencyCode}
                   onClick={() => {
-                    props.handleChange(currency, toggleMenu);
+                    const event = {
+                      persist: () => {},
+                      target: { name: props.name, value: currencyCode },
+                    };
+                    if (props.onChange) props.onChange(event, toggleMenu);
+                    if (props.onBlur) props.onBlur(event);
                   }}
                 >
-                  {currency}
+                  {currencyCode}
                 </Option>
               ))}
             </div>
@@ -84,6 +89,9 @@ CurrencyDropdown.propTypes = {
   isDisabled: PropTypes.bool,
   hasCurrencyError: PropTypes.bool,
   hasCurrencyWarning: PropTypes.bool,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default CurrencyDropdown;
