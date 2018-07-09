@@ -77,34 +77,38 @@ const docToForm = doc => ({
   // Keeping the id in the form values ensures data is not mixed accidentally
   id: doc.id,
   // Why the version should be part of the form values:
-  // The id and version should be part of the form values. Otherwise it could
-  // could happen that another component caueses a refetch of some data and the
+  //
+  // TL;DR: Keeping the version as part of the form values prevents accidental
+  // concurrent modifications. Keep the id and version in the form values.
+  //
+  // The id and version should be part of the form values, otherwise it could
+  // happen that another component causes a refetch of some data and the
   // version. This would lead to the version being incremented in the Apollo
   // cache. The form will not reinitialize with the new data. The form uses the
   // data provided when first opened. When the user would submit the form,
   // we would read the version from the cache (where it has increased).
   // We would thus skip the APIs ConcurrentModificationError, but the user has
   // never seen the updated version of the data. This is quite bad and can lead
-  // to accidental loss of data. By keeping the version in the form values instead
-  // an update of the version in the Apollo Cache does not affect the form. On
-  // submission the version from the form values will be used, and the user will
-  // see the APIs ConcurrentModificationError as expected!
-  // TL;DR: Keeping the version as part of the form values prevents accidental
-  // concurrent modifications. Keep the id and version in the form values.
+  // to accidental loss of data. By keeping the version in the form values
+  // instead an update of the version in the Apollo Cache does not affect the.
+  // form. On submission the version from the form values will be used, and the
+  // user will see the APIs ConcurrentModificationError as expected!
   version: doc.version,
   key: doc.key,
   // The name is initialized with all supported languages set to their value
-  // or an empty string. This circumvents a lot of edge cases where we'd otherwise
-  // have to deal with either undefined or an empty string, or a filled string.
+  // or an empty string. This circumvents a lot of edge cases where we'd
+  // otherwise have to deal with either undefined or an empty string, or a
+  // filled string.
   name: LocalizedTextInput.createLocalizedString(resourceLanguages, doc.name),
-  // The inventory should either an empty string or a number. The inventory could
-  // be undefined, in which case toFormValue will set it to an empty string.
-  // This eases validation later on, as we don't have to deal with undefined
-  // anymore.
+  // The inventory should either be an empty string or a number. The inventory
+  // could be undefined, in which case toFormValue will set it to an empty
+  // string. This eases validation later on, as we don't have to deal with
+  // undefined anymore.
   inventory: NumberInput.toFormValue(doc.inventory),
   // parseMoneyValue will ensure that the price field will have currencyCode and
   // amount filled out or set to empty strings. This reduces the cases we
-  // need to deal with (amount, currencyCode or the whole object being undefined).
+  // need to deal with (amount, currencyCode or the whole object being
+  // undefined).
   price: MoneyInput.parseMoneyValue(doc.price),
 });
 
@@ -123,14 +127,14 @@ const formToDoc = formValues => ({
   price: MoneyInput.convertToMoneyValue(formValues.price),
 });
 
-// The validate function is responsible for determining the form's validation erros
-// We have decided to use boolean properties to keep track of errors.
+// The validate function is responsible for determining the form's validation
+// erros. We have decided to use boolean properties to keep track of errors.
 // This has the advantage that it's easy to write PropType validations,
 // multiple errors can be present on a field at the same time, and
 // API-errors can easily be mapped onto any field
 // As we're very strict when initializing the form, we can count on any value
-// either being a string or a number, or an object containing such. We never have
-// to check for undefined values.
+// either being a string or a number, or an object containing such. We never
+// have to check for undefined values.
 const validate = formValues => {
   // To make it easier to attach errors during validation, we initialize
   // all form fields to empty objects.

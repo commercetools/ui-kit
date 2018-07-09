@@ -21,3 +21,7 @@ Make sure to also check the source-code of the story. It contains code comments 
 - After updating the product, the form is reinitialized with the updated product (version increases)
 - Version is kept in form values to avoid accidental concurrent modifications
 - Multiple errors can be present on a field at the same time (enter a negative inventory quantity with fraction digits)
+
+## If you're lazy
+
+..you can watch [this screen recording](https://user-images.githubusercontent.com/1765075/42410286-9b1b3322-81e7-11e8-8332-38fa3142f7b8.gif) instead. It will walk you through the form. It probably won't get updated as this story improves though.
