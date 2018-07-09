@@ -8,20 +8,17 @@
 
 html,
 body {
-  color: var(--color-navy);
+  color: var(--color-black);
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 html {
   box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  overflow: hidden;
 }
 
 h1,
@@ -45,6 +42,6 @@ a {
 }
 
 p {
-  color: var(--color-navy);
+  color: var(--color-black);
   margin: 0;
 }
