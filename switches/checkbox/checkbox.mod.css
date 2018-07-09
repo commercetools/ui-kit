@@ -31,6 +31,10 @@
 
 /* isDisabled */
 
+/* The `id` attributes below, comes from the SVG files.
+  Since they are all structured the same, we can target them with CSS
+  to keep they in sync with our design tokens */
+
 .isDisabled svg g[id='borderAndContent'] > :not([id='border']) {
   fill: var(--color-primaryGrey);
 }
