@@ -13,6 +13,7 @@ import ErrorMessage from '../messages/error-message';
 import TextInput from '../inputs/text-input';
 import NumberInput from '../inputs/number-input';
 import MoneyInput from '../inputs/money-input';
+import TextArea from '../inputs/text-area';
 import LocalizedTextInput from '../inputs/localized-text-input';
 import PrimaryButton from '../buttons/primary-button';
 import SecondaryButton from '../buttons/secondary-button';
@@ -100,6 +101,10 @@ const docToForm = doc => ({
   // otherwise have to deal with either undefined or an empty string, or a
   // filled string.
   name: LocalizedTextInput.createLocalizedString(resourceLanguages, doc.name),
+  // The product does not contain a "description" field by default. However,
+  // the form expects description to be a string. Hence, we have to fall back
+  // to a string here!
+  description: doc.description || '',
   // The inventory should either be an empty string or a number. The inventory
   // could be undefined, in which case toFormValue will set it to an empty
   // string. This eases validation later on, as we don't have to deal with
@@ -123,6 +128,7 @@ const formToDoc = formValues => ({
   version: formValues.version,
   key: formValues.key,
   name: formValues.name,
+  description: formValues.description,
   inventory: formValues.inventory,
   price: MoneyInput.convertToMoneyValue(formValues.price),
 });
@@ -138,7 +144,13 @@ const formToDoc = formValues => ({
 const validate = formValues => {
   // To make it easier to attach errors during validation, we initialize
   // all form fields to empty objects.
-  const errors = { key: {}, name: {}, price: {}, inventory: {} };
+  const errors = {
+    key: {},
+    name: {},
+    description: {},
+    price: {},
+    inventory: {},
+  };
 
   // validate key
   // Input elements usually provide a way to check whether it's value is empty
@@ -148,6 +160,10 @@ const validate = formValues => {
   // validate name
   // A localized string is considered empty when no translation is given at all
   if (LocalizedTextInput.isEmpty(formValues.name)) errors.name.missing = true;
+
+  // validate description
+  if (TextArea.isEmpty(formValues.description))
+    errors.description.missing = true;
 
   // validate price
   if (MoneyInput.isEmpty(formValues.price)) {
@@ -181,6 +197,7 @@ class ProductForm extends React.Component {
         version: PropTypes.number.isRequired,
         key: PropTypes.string.isRequired,
         name: PropTypes.objectOf(PropTypes.string).isRequired,
+        description: PropTypes.string.isRequired,
         // Formik provides us with either a number or an empty string in case
         // the value can not be parsed
         inventory: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -193,6 +210,7 @@ class ProductForm extends React.Component {
       touched: PropTypes.shape({
         key: PropTypes.bool,
         name: PropTypes.objectOf(PropTypes.bool),
+        description: PropTypes.bool,
         inventory: PropTypes.bool,
         price: PropTypes.shape({
           amount: PropTypes.bool,
@@ -200,11 +218,12 @@ class ProductForm extends React.Component {
         }),
       }),
       errors: PropTypes.shape({
-        name: PropTypes.shape({ missing: PropTypes.bool }),
         key: PropTypes.shape({
           missing: PropTypes.bool,
           duplicate: PropTypes.bool,
         }),
+        name: PropTypes.shape({ missing: PropTypes.bool }),
+        description: PropTypes.shape({ missing: PropTypes.bool }),
         inventory: PropTypes.shape({
           negative: PropTypes.bool,
           fractions: PropTypes.bool,
@@ -246,6 +265,24 @@ class ProductForm extends React.Component {
             selectedLanguage="en"
             error={this.props.formik.errors.name}
           />
+        </div>
+        <div>
+          <Text.Body>Product Description*</Text.Body>
+          <TextArea
+            name="description"
+            value={this.props.formik.values.description}
+            onChange={this.props.formik.handleChange}
+            onBlur={this.props.formik.handleBlur}
+            hasError={
+              this.props.formik.touched.description &&
+              Boolean(this.props.formik.errors.description)
+            }
+          />
+          {this.props.formik.touched.description &&
+            this.props.formik.errors.description &&
+            this.props.formik.errors.description.missing && (
+              <ErrorMessage>Missing description</ErrorMessage>
+            )}
         </div>
         <div>
           <Text.Body>Product key*</Text.Body>
