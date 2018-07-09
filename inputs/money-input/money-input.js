@@ -203,11 +203,15 @@ export default class MoneyInput extends React.Component {
   static isEmpty = formValue =>
     !formValue ||
     formValue.amount.trim() === '' ||
-    formValue.currencyCode === '';
+    formValue.currencyCode.trim() === '';
 
-  static isHighPrecisionPrice = formValue => {
-    const price = MoneyInput.convertToMoneyValue(formValue);
-    return price && price.type === 'highPrecision';
+  static isHighPrecision = formValue => {
+    invariant(
+      !MoneyInput.isEmpty(formValue),
+      'MoneyValue.isHighPrecision may not be called with an empty money value.'
+    );
+    const moneyValue = MoneyInput.convertToMoneyValue(formValue);
+    return moneyValue && moneyValue.type === 'highPrecision';
   };
 
   static propTypes = {
