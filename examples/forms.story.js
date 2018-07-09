@@ -152,7 +152,7 @@ const validate = formValues => {
   // validate price
   if (MoneyInput.isEmpty(formValues.price)) {
     errors.price.missing = true;
-  } else if (MoneyInput.isHighPrecisionPrice(formValues.price)) {
+  } else if (MoneyInput.isHighPrecision(formValues.price)) {
     errors.price.unsupportedHighPrecision = true;
   }
 
