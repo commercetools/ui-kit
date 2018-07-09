@@ -18,17 +18,17 @@ These are general and loose rules components in UIKit should strive to fulfill.
 - Documentation of prop-types and usage patterns
 - Sensible defaults for props which are not a hard requirement
 
-### How to add to UI Kit.
+### How to add a component to UI Kit.
 
 These are informal steps we suggest you to follow when adding a new component.
 
-1.  Create a new Task to add the component to the UIKit.
+1.  Create a new task to add the component to the UIKit.
 
     - [ ] Create task.
     - [ ] Add task to the MCD project.
     - [ ] Add task to the [UIKit Kanban Board].
 
-2.  Sync with UI Kit leads
+2.  Sync with the UI Kit leads
 
     - [ ] Notify Luis or Dominic of the task.
 
@@ -38,9 +38,9 @@ These are informal steps we suggest you to follow when adding a new component.
     - [ ] Add copy to the [UIKit Component Documentation List] page.
     - [ ] `Designer` & `Dev` go through the copy and update it for the new component.
 
-4.  Align design with styleguide
+4.  Align design with style guide
 
-    - [ ] `Designer` checks the styleguide restrictions and makes sure no elements are being duplicated.
+    - [ ] `Designer` checks the style guide restrictions and makes sure no elements are being duplicated.
 
 5.  Create design for the component (if it hasn't been done already).
 
@@ -50,7 +50,7 @@ These are informal steps we suggest you to follow when adding a new component.
 
     - [ ] `Designer` & `Dev` review the component's design.
 
-7.  Sync with UI Kit leads
+7.  Sync with the UI Kit leads
 
     - [ ] Notify Luis or Dominic of the task.
 
