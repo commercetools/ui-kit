@@ -156,7 +156,7 @@ describe('rendering', () => {
       });
       it('should add a language suffix to the id of each visible input', () => {
         // only the first language input is visible here
-        expect(wrapper).toRender({ id: 'foo-en' });
+        expect(wrapper).toRender({ id: 'foo.en' });
       });
     });
     describe('with name', () => {
@@ -166,7 +166,7 @@ describe('rendering', () => {
       });
       it('should forward the name', () => {
         // only the first language input is visible here
-        expect(wrapper).toRender({ name: 'foo' });
+        expect(wrapper).toRender({ name: 'foo.en' });
       });
     });
   });
