@@ -210,7 +210,23 @@ export default class MoneyInput extends React.Component {
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
-    onChange: PropTypes.func,
+    // This is optional when isDisabled is set, otherwise either onChange or
+    // onChangeValue have to be passed.
+    onChange(props, propName, componentName, ...rest) {
+      if (props.isDisabled)
+        return PropTypes.func(props, propName, componentName, ...rest);
+
+      const hasAtLeastOneChangeHandler =
+        props.onChange != null || props.onChangeValue != null;
+
+      if (hasAtLeastOneChangeHandler)
+        return PropTypes.func(props, propName, componentName, ...rest);
+
+      return new Error(
+        `MoneyInput requires at least one change handler. Pass either "onChange" or "onChangeValue".`
+      );
+    },
+    // onChange is handling the validation logic for onChangeValue case as well
     onChangeValue: PropTypes.func,
 
     hasCurrencyError: PropTypes.bool,
