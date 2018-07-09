@@ -8,7 +8,7 @@ const createTestProps = custom => ({
   name: 'bar',
   value: 'foo',
   isDisabled: false,
-  isChecked: false,
+  checked: false,
   onChange: jest.fn(),
 
   // HoC
@@ -107,7 +107,7 @@ describe('<Checkbox>', () => {
         });
 
         it('should check the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp('checked', props.isChecked);
+          expect(wrapper.find('input')).toHaveProp('checked', props.checked);
         });
       });
     });
@@ -127,9 +127,9 @@ describe('<Checkbox>', () => {
 });
 
 describe('callbacks', () => {
-  const createEvent = ({ isChecked = true } = {}) => ({
+  const createEvent = ({ checked = true } = {}) => ({
     target: {
-      checked: isChecked,
+      checked,
     },
   });
 
@@ -137,12 +137,12 @@ describe('callbacks', () => {
     let props;
     describe('when checked', () => {
       beforeEach(() => {
-        props = createTestProps({ isChecked: true });
+        props = createTestProps({ checked: true });
 
         const wrapper = shallow(<Checkbox {...props} />);
         wrapper
           .find('input')
-          .simulate('change', createEvent({ isChecked: props.isChecked }));
+          .simulate('change', createEvent({ checked: props.checked }));
       });
 
       it('should invoke `onChange`', () => {
@@ -153,7 +153,7 @@ describe('callbacks', () => {
         expect(props.onChange).toHaveBeenCalledWith(
           expect.objectContaining({
             target: expect.objectContaining({
-              checked: props.isChecked,
+              checked: props.checked,
             }),
           })
         );
@@ -170,13 +170,13 @@ describe('callbacks', () => {
 
     describe('when not checked', () => {
       beforeEach(() => {
-        props = createTestProps({ isChecked: false });
+        props = createTestProps({ checked: false });
 
         const wrapper = shallow(<Checkbox {...props} />);
 
         wrapper
           .find('input')
-          .simulate('change', createEvent({ isChecked: props.isChecked }));
+          .simulate('change', createEvent({ checked: props.checked }));
       });
 
       it('should invoke `onChange`', () => {
@@ -187,7 +187,7 @@ describe('callbacks', () => {
         expect(props.onChange).toHaveBeenCalledWith(
           expect.objectContaining({
             target: expect.objectContaining({
-              checked: props.isChecked,
+              checked: props.checked,
             }),
           })
         );

@@ -12,10 +12,9 @@ export class Checkbox extends React.PureComponent {
   static propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
-    isDisabled: PropTypes.bool,
-    isChecked: PropTypes.bool,
-    isIndeterminate: PropTypes.bool,
+    checked: PropTypes.oneOf([true, false, 'indeterminate']).isRequired,
     onChange: PropTypes.func.isRequired,
+    isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
     children: PropTypes.node,
     // HoC
@@ -23,10 +22,10 @@ export class Checkbox extends React.PureComponent {
     handleMouseOver: PropTypes.func.isRequired,
     handleMouseOut: PropTypes.func.isRequired,
   };
+
   static defaultProps = {
+    checked: false,
     isDisabled: false,
-    isChecked: false,
-    isIndeterminate: false,
     hasError: false,
   };
 
@@ -51,10 +50,10 @@ export class Checkbox extends React.PureComponent {
               })}
             >
               {(() => {
-                if (this.props.isChecked) return <Icons.Checked />;
-                else if (this.props.isIndeterminate)
-                  return <Icons.Indeterminate />;
-                return <Icons.Default />;
+                if (this.props.checked === true) return <Icons.Checked />;
+                else if (this.props.checked === 'indeterminate')
+                  return <Icons.indeterminate />;
+                return <Icons.Unchecked />;
               })()}
             </div>
             {this.props.children && (
@@ -73,7 +72,7 @@ export class Checkbox extends React.PureComponent {
               value={this.props.value}
               onChange={this.props.onChange}
               disabled={this.props.isDisabled}
-              checked={this.props.isChecked}
+              checked={this.props.checked === true ? this.props.checked : false}
               type="checkbox"
             />
           </Spacings.Inline>
