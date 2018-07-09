@@ -4,7 +4,7 @@ import CheckboxCheckedIcon from './checkbox-checked.svg';
 import CheckboxIndeterminateIcon from './checkbox-indeterminate.svg';
 
 export default {
-  Default: CheckboxDefaultIcon,
+  Unchecked: CheckboxDefaultIcon,
   Checked: CheckboxCheckedIcon,
   Indeterminate: CheckboxIndeterminateIcon,
 };

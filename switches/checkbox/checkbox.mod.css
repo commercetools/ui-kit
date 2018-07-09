@@ -5,6 +5,8 @@
   display: none;
 }
 
+/* Label */
+
 .labelWrapper {
   cursor: pointer;
 }
@@ -28,6 +30,11 @@
 }
 
 /* Checkbox */
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+}
 
 /* isDisabled */
 

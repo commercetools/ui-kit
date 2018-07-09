@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../materials/spacings';
 import Section from '../../.storybook/decorators/section';
@@ -17,9 +17,8 @@ storiesOf('Switches', module)
         <Checkbox
           onChange={action('onChange')}
           value="foo-value"
+          checked={select('checked', [true, false, 'indeterminate'], false)}
           isDisabled={boolean('isDisabled', false)}
-          isChecked={boolean('isChecked', false)}
-          isIndeterminate={boolean('isIndeterminate', false)}
           hasError={boolean('hasError', false)}
         >
           {text('Label', 'This is a label')}

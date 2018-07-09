@@ -52,7 +52,7 @@ export class Checkbox extends React.PureComponent {
               {(() => {
                 if (this.props.checked === true) return <Icons.Checked />;
                 else if (this.props.checked === 'indeterminate')
-                  return <Icons.indeterminate />;
+                  return <Icons.Indeterminate />;
                 return <Icons.Unchecked />;
               })()}
             </div>
