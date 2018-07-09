@@ -4,7 +4,6 @@ exports[`rendering other languages should sort them by the length 1`] = `
 <React.Fragment>
   <LocalizedInput
     horizontalConstraint="scale"
-    id="localized-text-input-1-de"
     isAutofocussed={false}
     language="de"
     onChange={[Function]}
@@ -12,7 +11,6 @@ exports[`rendering other languages should sort them by the length 1`] = `
   />
   <LocalizedInput
     horizontalConstraint="scale"
-    id="localized-text-input-1-fr"
     isAutofocussed={false}
     language="fr"
     onChange={[Function]}
@@ -20,7 +18,6 @@ exports[`rendering other languages should sort them by the length 1`] = `
   />
   <LocalizedInput
     horizontalConstraint="scale"
-    id="localized-text-input-1-nan-Hant-TW"
     isAutofocussed={false}
     language="nan-Hant-TW"
     onChange={[Function]}
@@ -28,7 +25,6 @@ exports[`rendering other languages should sort them by the length 1`] = `
   />
   <LocalizedInput
     horizontalConstraint="scale"
-    id="localized-text-input-1-pt-BR"
     isAutofocussed={false}
     language="pt-BR"
     onChange={[Function]}
@@ -55,7 +51,6 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
       <LocalizedInput
         hasError={false}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         isAutofocussed={true}
         key="en"
         language="en"
@@ -82,7 +77,6 @@ exports[`rendering when disabled should match snapshot 1`] = `
       <LocalizedInput
         hasError={false}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         isDisabled={true}
         key="en"
         language="en"
@@ -109,7 +103,6 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
       <LocalizedInput
         hasError={false}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         key="en"
         language="en"
         onChange={[Function]}
@@ -135,7 +128,6 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
       <LocalizedInput
         hasError={false}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         key="en"
         language="en"
         onChange={[Function]}
@@ -161,7 +153,6 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
       <LocalizedInput
         hasError={false}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         isReadOnly={true}
         key="en"
         language="en"
@@ -188,7 +179,6 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
       <LocalizedInput
         hasError={false}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         key="en"
         language="en"
         onChange={[Function]}
@@ -215,7 +205,6 @@ exports[`rendering when there is an error should match snapshot 1`] = `
       <LocalizedInput
         hasError={true}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         key="en"
         language="en"
         onChange={[Function]}
@@ -244,7 +233,6 @@ exports[`rendering with minimal props should match snapshot 1`] = `
       <LocalizedInput
         hasError={false}
         horizontalConstraint="scale"
-        id="localized-text-input-1-en"
         key="en"
         language="en"
         onChange={[Function]}
