@@ -241,20 +241,32 @@ export default class MoneyInput extends React.Component {
         this.props.value.amount.trim(),
         currencyCode
       );
+      // The user could be changing the currency before entering any amount,
+      // or while the amount is invalid. In these cases, we don't attempt to
+      // format the amount.
+      const nextAmount = isNaN(formattedAmount)
+        ? this.props.value.amount
+        : formattedAmount;
+
       if (this.props.onChangeValue) {
-        this.props.onChangeValue({
-          currencyCode,
-          // The user could be changing the currency before entering any amount,
-          // or while the amount is invalid. In these cases, we don't attempt to
-          // format the amount.
-          amount: isNaN(formattedAmount)
-            ? this.props.value.amount
-            : formattedAmount,
-        });
+        this.props.onChangeValue({ currencyCode, amount: nextAmount });
       }
 
       if (this.props.onChange) {
+        // change currency code
         this.props.onChange(event);
+
+        // change amount if necessary
+        if (this.props.value.amount !== nextAmount) {
+          this.props.onChange({
+            target: {
+              name: getAmountInputName(this.props.name),
+              value: isNaN(formattedAmount)
+                ? this.props.value.amount
+                : formattedAmount,
+            },
+          });
+        }
       }
     }
     toggleMenu();
