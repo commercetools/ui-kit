@@ -36,5 +36,5 @@
 }
 
 .toggle-bar.disabled rect {
-  fill: var(--color-gray);
+  fill: var(--color-navy-95);
 }
