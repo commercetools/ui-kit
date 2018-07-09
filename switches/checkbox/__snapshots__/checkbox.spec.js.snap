@@ -12,7 +12,11 @@ exports[`<Checkbox> rendering with children should match snapshot 1`] = `
       alignItems="center"
       scale="s"
     >
-      <test-file-stub />
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
       <span
         className=""
       >
@@ -44,7 +48,11 @@ exports[`<Checkbox> rendering without children should match snapshot 1`] = `
       alignItems="center"
       scale="s"
     >
-      <test-file-stub />
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
       <input
         checked={false}
         className="inputWrapper"
@@ -72,7 +80,11 @@ exports[`<Checkbox> rendering without children with \`data-*\` should match snap
       alignItems="center"
       scale="s"
     >
-      <test-file-stub />
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
       <input
         checked={false}
         className="inputWrapper"

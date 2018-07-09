@@ -40,31 +40,23 @@ export class Checkbox extends React.PureComponent {
         <label
           className={classnames(styles.labelWrapper, {
             [styles.labelWrapperDisabled]: this.props.isDisabled,
+            [styles.labelWrapperError]: this.props.hasError,
           })}
         >
           <Spacings.Inline alignItems="center">
-            {(() => {
-              if (this.props.hasError) {
-                if (this.props.isChecked) return <Icons.CheckedError />;
-                if (this.props.isIndeterminate)
-                  return <Icons.IndeterminateError />;
-                return <Icons.Error />;
-              } else if (this.props.isDisabled) {
-                if (this.props.isChecked) return <Icons.CheckedDisabled />;
-                if (this.props.isIndeterminate)
-                  return <Icons.IndeterminateDisabled />;
-                return <Icons.Disabled />;
-              } else if (this.props.isChecked) return <Icons.Checked />;
-              else if (this.props.isIndeterminate)
-                return <Icons.Indeterminate />;
-              else if (this.props.isMouseOver) {
-                if (this.props.isChecked) return <Icons.CheckedHover />;
-                if (this.props.isIndeterminate)
-                  return <Icons.IndeterminateHover />;
-                return <Icons.Hover />;
-              }
-              return <Icons.Default />;
-            })()}
+            <div
+              className={classnames(styles.checkboxWrapper, {
+                [styles.isDisabled]: this.props.isDisabled,
+                [styles.hasError]: this.props.hasError,
+              })}
+            >
+              {(() => {
+                if (this.props.isChecked) return <Icons.Checked />;
+                else if (this.props.isIndeterminate)
+                  return <Icons.Indeterminate />;
+                return <Icons.Default />;
+              })()}
+            </div>
             {this.props.children && (
               <span
                 className={classnames({

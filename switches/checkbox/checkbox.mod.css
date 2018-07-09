@@ -13,10 +13,50 @@
   cursor: not-allowed;
 }
 
+/* Text  */
+
+/* isDisabled */
+
 .textWrapperDisabled {
   color: var(--color-primaryGrey);
 }
 
+/* hasError */
+
 .textWrapperError {
   color: var(--color-red);
+}
+
+/* Checkbox */
+
+/* isDisabled */
+
+/* The `id` attributes below, comes from the SVG files.
+  Since they are all structured the same, we can target them with CSS
+  to keep they in sync with our design tokens */
+
+.isDisabled svg g[id='borderAndContent'] > :not([id='border']) {
+  fill: var(--color-primaryGrey);
+}
+
+.isDisabled svg [id='borderAndContent'] > [id='border'] {
+  stroke: var(--color-primaryGrey);
+}
+
+/* hasError */
+
+.hasError svg g[id='borderAndContent'] > :not([id='border']) {
+  fill: var(--color-red);
+}
+
+.hasError svg [id='borderAndContent'] > [id='border'] {
+  stroke: var(--color-red);
+}
+
+/* Hover */
+
+.labelWrapper:not(.labelWrapperDisabled, .labelWrapperError):hover
+  svg
+  [id='borderAndContent'] > [id='border'] {
+  stroke: var(--color-primaryGreen);
 }
