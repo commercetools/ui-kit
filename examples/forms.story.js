@@ -211,6 +211,7 @@ class ProductForm extends React.Component {
           unsupportedHighPrecision: PropTypes.bool,
         }),
       }).isRequired,
+      dirty: PropTypes.bool.isRequired,
       handleChange: PropTypes.func.isRequired,
       handleBlur: PropTypes.func.isRequired,
       handleSubmit: PropTypes.func.isRequired,
@@ -339,7 +340,9 @@ class ProductForm extends React.Component {
           />
           <PrimaryButton
             onClick={this.props.formik.handleSubmit}
-            isDisabled={this.props.formik.isSubmitting}
+            isDisabled={
+              this.props.formik.isSubmitting || !this.props.formik.dirty
+            }
             label="Submit"
           />
         </Spacings.Inline>
