@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
+import ErrorMessage from '../../messages/error-message';
 import LocalizedTextInputReadme from './README.md';
 import LocalizedTextInput from './localized-text-input';
 
@@ -52,9 +53,10 @@ storiesOf('Inputs', module)
             ['xs', 's', 'm', 'l', 'xl', 'scale'],
             'm'
           )}
-          error={
-            boolean('has missing value error', false)
-              ? { missing: true }
+          hasError={boolean('hasError', false)}
+          errors={
+            boolean('errors', false)
+              ? { de: <ErrorMessage>Custom Error Message</ErrorMessage> }
               : undefined
           }
           data-test="foo"

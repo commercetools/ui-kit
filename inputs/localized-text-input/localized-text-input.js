@@ -12,7 +12,6 @@ import Constraints from '../../materials/constraints';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
-import ErrorMessage from '../../messages/error-message';
 import styles from './localized-text-input.mod.css';
 
 const getPrimaryLanguage = language => language.split('-')[0];
@@ -187,9 +186,8 @@ export default class LocalizedTextInput extends React.Component {
     isReadOnly: PropTypes.bool,
     placeholder: PropTypes.objectOf(PropTypes.string),
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-    error: PropTypes.shape({
-      missing: PropTypes.bool,
-    }),
+    hasError: PropTypes.bool,
+    errors: PropTypes.objectOf(PropTypes.node),
   };
 
   static defaultProps = {
@@ -272,41 +270,47 @@ export default class LocalizedTextInput extends React.Component {
               isDisabled={this.props.isDisabled}
               isReadOnly={this.props.isReadOnly}
               hasError={Boolean(
-                this.props.error && Object.keys(this.props.error).length > 0
+                this.props.hasError ||
+                  (this.props.errors &&
+                    this.props.errors[this.props.selectedLanguage])
               )}
               horizontalConstraint={this.props.horizontalConstraint}
               {...createDataAttributes(this.props, this.props.selectedLanguage)}
             />
-            {this.props.error &&
-              this.props.error.missing && (
-                <ErrorMessage>This field is requried</ErrorMessage>
-              )}
+            {this.props.errors &&
+              this.props.errors[this.props.selectedLanguage]}
           </div>
           <Collapsible isDefaultClosed={!this.props.isDefaultExpanded}>
             {({ toggle, isOpen }) => (
               <React.Fragment>
                 {(isOpen || this.props.hideExpansionControls) &&
                   remainingLanguages.map(language => (
-                    <LocalizedInput
-                      key={language}
-                      id={getId(this.props.id, language)}
-                      name={getName(this.props.name, language)}
-                      value={this.props.value[language]}
-                      onChange={this.handleChange}
-                      language={language}
-                      placeholder={
-                        this.props.placeholder
-                          ? this.props.placeholder[language]
-                          : undefined
-                      }
-                      onBlur={this.props.onBlur}
-                      onFocus={this.props.onFocus}
-                      isAutofocussed={false}
-                      isDisabled={this.props.isDisabled}
-                      isReadOnly={this.props.isReadOnly}
-                      horizontalConstraint={this.props.horizontalConstraint}
-                      {...createDataAttributes(this.props, language)}
-                    />
+                    <div key={language}>
+                      <LocalizedInput
+                        id={getId(this.props.id, language)}
+                        name={getName(this.props.name, language)}
+                        value={this.props.value[language]}
+                        onChange={this.handleChange}
+                        language={language}
+                        placeholder={
+                          this.props.placeholder
+                            ? this.props.placeholder[language]
+                            : undefined
+                        }
+                        onBlur={this.props.onBlur}
+                        onFocus={this.props.onFocus}
+                        isAutofocussed={false}
+                        isDisabled={this.props.isDisabled}
+                        isReadOnly={this.props.isReadOnly}
+                        horizontalConstraint={this.props.horizontalConstraint}
+                        hasError={Boolean(
+                          this.props.hasError ||
+                            (this.props.errors && this.props.errors[language])
+                        )}
+                        {...createDataAttributes(this.props, language)}
+                      />
+                      {this.props.errors && this.props.errors[language]}
+                    </div>
                   ))}
                 {!this.props.hideExpansionControls &&
                   remainingLanguages.length > 0 && (

@@ -231,9 +231,19 @@ describe('rendering', () => {
     });
   });
 
-  describe('when there is an error', () => {
+  describe('when every field should display an error', () => {
     beforeEach(() => {
-      props = createTestProps({ error: { missing: true } });
+      props = createTestProps({ hasError: true });
+      wrapper = shallow(<LocalizedTextInput {...props} />);
+    });
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe('when there is an error on a specific field', () => {
+    beforeEach(() => {
+      props = createTestProps({ errors: { de: <div>Specific Error</div> } });
       wrapper = shallow(<LocalizedTextInput {...props} />);
     });
     it('should match snapshot', () => {
@@ -245,12 +255,14 @@ describe('rendering', () => {
     let languagesWrapper;
     beforeEach(() => {
       props = createTestProps({
+        selectedLanguage: 'en',
         value: {
           en: 'en',
           de: 'de',
           'nan-Hant-TW': 'nan-Hant-TW',
           fr: 'fr',
           'pt-BR': 'pt-BR',
+          'en-GB': 'en-GB',
         },
         isDefaultExpanded: true,
       });
@@ -261,7 +273,7 @@ describe('rendering', () => {
       });
     });
 
-    it('should sort them by the length', () => {
+    it('should sort them by the relevance', () => {
       expect(languagesWrapper).toMatchSnapshot();
     });
   });
