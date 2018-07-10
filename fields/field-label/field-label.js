@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Text from '@commercetools-frontend/ui-kit/typography/text';
 import Spacings from '@commercetools-frontend/ui-kit/materials/spacings';
-import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
-import { InformationIcon } from '@commercetools-frontend/ui-kit/icons';
 import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-indicator';
 import styles from './field-label.mod.css';
 
@@ -16,16 +14,10 @@ export const FieldLabel = props => (
             {props.title}
             {props.isRequired ? <RequiredIndicator /> : null}
           </Text.Body>
-          {props.hasIcon && (
-            <IconButton
-              onClick={props.onIconClick}
-              icon={<InformationIcon />}
-              label={props.iconLabel}
-              size="small"
-              data-track-component="TokenizerHintIcon"
-              data-track-event="click"
-            />
-          )}
+          {props.titleIcon &&
+            React.cloneElement(props.titleIcon, {
+              size: 'small',
+            })}
         </Spacings.Inline>
       </label>
       {props.subtitle && (
@@ -38,15 +30,12 @@ export const FieldLabel = props => (
 FieldLabel.displayName = 'FieldLabel';
 FieldLabel.defaultProps = {
   isRequired: false,
-  hasIcon: false,
 };
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   isRequired: PropTypes.bool,
-  hasIcon: PropTypes.bool,
-  onIconClick: PropTypes.func,
-  iconLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  titleIcon: PropTypes.node,
 };
 
 export default FieldLabel;

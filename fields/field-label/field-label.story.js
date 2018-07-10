@@ -1,8 +1,9 @@
 import React from 'react';
 import TextInput from '@commercetools-frontend/ui-kit/inputs/text-input';
+import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
+import { InformationIcon } from '@commercetools-frontend/ui-kit/icons';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import Spacings from '../../materials/spacings';
@@ -19,8 +20,11 @@ storiesOf('Fields', module)
           title={text('title', 'Label title')}
           subtitle={text('subtitle', null)}
           isRequired={boolean('isRequired', false)}
-          hasIcon={boolean('hasIcon', false)}
-          onIconClick={action('onIconClick')}
+          titleIcon={
+            select('titleIcon', ['', 'IconButton'], '') ? (
+              <IconButton icon={<InformationIcon />} />
+            ) : null
+          }
         />
         <TextInput placeholder="Placeholder" horizontalConstraint="m" />
       </Spacings.Stack>

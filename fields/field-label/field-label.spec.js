@@ -90,32 +90,31 @@ describe('rendering', () => {
     });
   });
 
-  describe('with `InformationIcon`', () => {
-    describe('when label should show icon', () => {
+  describe('with `titleIcon`', () => {
+    describe('when titleIcon is given', () => {
       beforeEach(() => {
-        props = createTestProps({ hasIcon: true });
-        wrapper = shallow(<FieldLabel {...props} />);
-      });
-
-      it('should display an `InformationIcon`', () => {
-        expect(wrapper).toRender(IconButton);
-      });
-    });
-
-    describe('when label icon has action', () => {
-      beforeEach(() => {
-        props = createTestProps({
-          hasIcon: true,
-          onIconClick: jest.fn(() => 'Label icon clicked'),
-        });
+        props = createTestProps({ titleIcon: <IconButton size="big" /> });
         wrapper = shallow(<FieldLabel {...props} />);
         labelIconWrapper = wrapper.find(IconButton);
       });
 
-      it('label icon action should be executed', () => {
-        expect(labelIconWrapper.prop('onClick')()).toEqual(
-          'Label icon clicked'
-        );
+      it('should display the icon', () => {
+        expect(wrapper).toRender(IconButton);
+      });
+
+      it('should set the icon size', () => {
+        expect(labelIconWrapper.prop('size')).toEqual('small');
+      });
+    });
+
+    describe('without titleIcon', () => {
+      beforeEach(() => {
+        props = createTestProps();
+        wrapper = shallow(<FieldLabel {...props} />);
+      });
+
+      it('should not display an icon', () => {
+        expect(wrapper.prop('titleIcon')).toBeUndefined();
       });
     });
   });
