@@ -107,18 +107,13 @@ describe('rendering', () => {
     });
     describe('disabled', () => {
       let textarea;
-      let flatbutton;
       beforeEach(() => {
         const wrapper = getClosedWrapper({ isDisabled: true });
         textarea = wrapper.find(TextareaAutosize);
-        flatbutton = wrapper.find(FlatButton);
       });
 
       it('should TextArea have class for the disabled state', () => {
         expect(textarea).toHaveClassName('disabled');
-      });
-      it('should FlatButton have class for the disabled state', () => {
-        expect(flatbutton).toHaveProp('isDisabled', true);
       });
     });
     describe('readonly', () => {
@@ -230,7 +225,7 @@ describe('callbacks', () => {
               value: 'foo',
             });
             wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ textareaRowCount: 1, contentRowCount: 1 });
+            wrapper.setState({ contentRowCount: 1 });
             textAreaWrapper = shallow(
               <div>
                 {wrapper.find(Collapsible).renderProp('children', {
@@ -254,7 +249,7 @@ describe('callbacks', () => {
               value: 'foo2',
             });
             wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ textareaRowCount: 10, contentRowCount: 10 });
+            wrapper.setState({ contentRowCount: 10 });
             textAreaWrapper = shallow(
               <div>
                 {wrapper.find(Collapsible).renderProp('children', {
@@ -287,7 +282,7 @@ describe('callbacks', () => {
               isDefaultClosed: true,
             });
             wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ textareaRowCount: 1, contentRowCount: 1 });
+            wrapper.setState({ contentRowCount: 1 });
             textAreaWrapper = shallow(
               <div>
                 {wrapper.find(Collapsible).renderProp('children', {
@@ -313,7 +308,7 @@ describe('callbacks', () => {
               isDefaultClosed: true,
             });
             wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ textareaRowCount: 1, contentRowCount: 10 });
+            wrapper.setState({ contentRowCount: 10 });
             textAreaWrapper = shallow(
               <div>
                 {wrapper.find(Collapsible).renderProp('children', {
