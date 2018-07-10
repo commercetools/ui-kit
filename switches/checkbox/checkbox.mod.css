@@ -1,5 +1,29 @@
 @import '../../materials/spacings.mod.css';
 @import '../../materials/colors.mod.css';
+@import '../../materials/tokens/tokens.mod.css';
+
+/* As this relies on SVG files, we need to sync them with our Design tokens colors */
+
+/* The `id` attributes below, comes from the SVG files.
+  Since they are all structured the same, we can target them with CSS
+  to keep they in sync with our design tokens */
+
+/* Checkbox */
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxWrapper svg [id='borderAndContent'] > [id='border'] {
+  stroke: 1px var(--token-border-color-input-pristine) solid;
+}
+
+.checkboxWrapper svg [id='borderAndContent'] > [id='content'] {
+  fill: var(--token-border-color-input-focus);
+}
+
+/* Hidden input */
 
 .inputWrapper {
   display: none;
@@ -15,49 +39,24 @@
   cursor: not-allowed;
 }
 
-/* Text  */
-
-/* isDisabled */
-
-.textWrapperDisabled {
-  color: var(--color-gray);
-}
-
 /* hasError */
 
-.textWrapperError {
-  color: var(--color-red);
-}
-
-/* Checkbox */
-
-.checkboxWrapper {
-  display: flex;
-  align-items: center;
-}
-
-/* isDisabled */
-
-/* The `id` attributes below, comes from the SVG files.
-  Since they are all structured the same, we can target them with CSS
-  to keep they in sync with our design tokens */
-
-.isDisabled svg g[id='borderAndContent'] > :not([id='border']) {
-  fill: var(--color-primaryGrey);
-}
-
-.isDisabled svg [id='borderAndContent'] > [id='border'] {
-  stroke: var(--color-primaryGrey);
-}
-
-/* hasError */
-
-.hasError svg g[id='borderAndContent'] > :not([id='border']) {
-  fill: var(--color-red);
+.hasError svg [id='borderAndContent'] > [id='content'] {
+  fill: var(--token-border-color-input-error);
 }
 
 .hasError svg [id='borderAndContent'] > [id='border'] {
-  stroke: var(--color-red);
+  stroke: var(--token-font-color-error);
+}
+
+/* isDisabled */
+
+.isDisabled svg [id='borderAndContent'] > [id='content'] {
+  fill: var(--token-font-color-disabled);
+}
+
+.isDisabled svg [id='borderAndContent'] > [id='border'] {
+  stroke: var(--token-border-color-input-disabled);
 }
 
 /* Hover */
@@ -65,5 +64,5 @@
 .labelWrapper:not(.labelWrapperDisabled, .labelWrapperError):hover
   svg
   [id='borderAndContent'] > [id='border'] {
-  stroke: var(--color-primaryGreen);
+  stroke: var(--token-border-color-input-focus);
 }

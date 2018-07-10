@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import filterDataAttributes from '../../utils/filter-data-attributes';
+import Text from '../../typography/text';
 import Spacings from '../../materials/spacings';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
 import Icons from './icons';
 import styles from './checkbox.mod.css';
 
+const getTextTone = ({ isDisabled, hasError }) => {
+  if (isDisabled) return 'secondary';
+  if (hasError) return 'negative';
+  return undefined;
+};
 export class Checkbox extends React.PureComponent {
   static displayName = 'Checkbox';
   static propTypes = {
@@ -57,14 +63,14 @@ export class Checkbox extends React.PureComponent {
               })()}
             </div>
             {this.props.children && (
-              <span
-                className={classnames({
-                  [styles.textWrapperDisabled]: this.props.isDisabled,
-                  [styles.textWrapperError]: this.props.hasError,
+              <Text.Body
+                tone={getTextTone({
+                  isDisabled: this.props.isDisabled,
+                  hasError: this.props.hasError,
                 })}
               >
                 {this.props.children}
-              </span>
+              </Text.Body>
             )}
             <input
               className={styles.inputWrapper}
