@@ -20,7 +20,7 @@
 /* isDisabled */
 
 .textWrapperDisabled {
-  color: var(--color-primaryGrey);
+  color: var(--color-gray);
 }
 
 /* hasError */

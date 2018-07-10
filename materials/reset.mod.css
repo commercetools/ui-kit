@@ -8,20 +8,17 @@
 
 html,
 body {
-  color: var(--color-blueNavy);
+  color: var(--color-black);
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 html {
   box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  overflow: hidden;
 }
 
 h1,
@@ -38,13 +35,13 @@ button {
 }
 
 a {
-  color: var(--color-primaryGreen);
+  color: var(--color-green);
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease-in;
 }
 
 p {
-  color: var(--color-blueNavy);
+  color: var(--color-black);
   margin: 0;
 }

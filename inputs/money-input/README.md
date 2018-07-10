@@ -22,6 +22,7 @@ import MoneyInput from '@commercetools-frontend/ui-kit/inputs/money-input';
 
 | Props                  | Type                                                            | Required | Values                       | Default | Description                                                                                                                                                   |
 | ---------------------- | --------------------------------------------------------------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                 | `string`                                                        |          | -                            | -       | The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).            |
 | `value`                | `{ currencyCode: string, amount: string }`                      |    ✅    | -                            | -       | Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator. |
 | `value.currencyCode`   | `string`                                                        |    ✅    | -                            | -       | The currency code influences the fraction digits when formatting on blur. Can be an empty string.                                                             |
 | `value.amount`         | `string`                                                        |    ✅    | -                            | -       | Amount formatted as a number, e.g. "10.30". Must use a dot as the decimal separator. Can be an empty string.                                                  |
@@ -29,7 +30,8 @@ import MoneyInput from '@commercetools-frontend/ui-kit/inputs/money-input';
 | `placeholder`          | `string`                                                        |    -     |                              | -       | Placeholder text for the input.                                                                                                                               |
 | `isDisabled`           | `bool`                                                          |    -     | -                            | `false` | Indicates that the field cannot be used.                                                                                                                      |
 | `onBlur`               | `func`                                                          |    -     | -                            | -       | Called when the amount field or the currency code dropdown is blurred.                                                                                        |
-| `onChange`             | `function(nextValue: { currencyCode: string, amount: string })` |    -     | -                            | -       | Called when either the currency or the amount have changed.                                                                                                   |
+| `onChange`             | `function(event)`                                               |    ✳️    | -                            | -       | Called with the event of the input or dropdown when either the currency or the amount have changed. Either `onChange` or `onChangeValue` must be passed.      |
+| `onChangeValue`        | `function(nextValue: { currencyCode: string, amount: string })` |    ✳️    | -                            | -       | Called with the full value when either the currency or the amount have changed. Either `onChange` or `onChangeValue` must be passed.                          |
 | `hasCurrencyError`     | `bool`                                                          |    -     | -                            | -       | Indicates if the currency field has an error                                                                                                                  |
 | `hasCurrencyWarning`   | `bool`                                                          |    -     | -                            | -       | Indicates if the currency field has a warning                                                                                                                 |
 | `hasAmountError`       | `bool`                                                          |    -     | -                            | -       | Indicates if the centAmount field has an error                                                                                                                |
@@ -69,6 +71,30 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 #### `MoneyInput.parseMoneyValue`
 
 The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the MoneyInput component can handle `({ amount, currencyCode })`.
+
+#### `MoneyInput.isEmpty`
+
+The `isEmpty` function will return `true` when the passed `MoneyInput` value is empty (either has no currency or no amount, or does not exist at all).
+
+```js
+MoneyInput.isEmpty({ amount: '', currencyCode: 'EUR' }); // -> true
+MoneyInput.isEmpty({ amount: '5', currencyCode: '' }); // -> true
+MoneyInput.isEmpty(); // -> true
+
+MoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> false
+```
+
+#### `MoneyInput.isHighPrecision`
+
+The `isHighPrecision` function will return `true` when a `MoneyInput` value is passed for which the number of fraction digits of the amount exceeds the number of fraction digits the supplied currency usually uses.
+
+The function may not be called with empty money values. It will throw in those cases.
+
+```js
+MoneyInput.isHighPrecision({ amount: '2.00', currencyCode: 'EUR' }); // -> false
+MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' }); // -> true
+MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }); // -> throws
+```
 
 ### Example
 

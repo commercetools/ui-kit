@@ -28,7 +28,7 @@
 
 .container-theme-dark {
   composes: base-container;
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--color-gray-95);
 }
 
 .base-header-container {
@@ -45,7 +45,7 @@
 
 .header-container-theme-dark {
   composes: base-header-container;
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--color-gray-95);
 }
 
 .header-closed {
@@ -74,7 +74,7 @@
 }
 
 .container-open .base-header-container {
-  border-bottom: 1px var(--color-primaryGrey) solid;
+  border-bottom: 1px var(--color-gray-60) solid;
 }
 
 .header {

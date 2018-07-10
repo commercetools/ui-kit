@@ -63,7 +63,16 @@ storiesOf('Icons', module)
                 size={sizeValue}
                 theme={select(
                   'them',
-                  ['black', 'grey', 'white', 'blue', 'green', 'orange', 'red'],
+                  [
+                    'black',
+                    'grey',
+                    'white',
+                    'blue',
+                    'green',
+                    'green-light',
+                    'orange',
+                    'red',
+                  ],
                   'black'
                 )}
               />

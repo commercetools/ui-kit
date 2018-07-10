@@ -18,26 +18,30 @@
 :global(.flatpickr-day.selected.nextMonthDay),
 :global(.flatpickr-day.startRange.nextMonthDay),
 :global(.flatpickr-day.endRange.nextMonthDay) {
-  background: var(--color-primaryGreen);
-  border-color: var(--color-primaryGreen);
+  background: var(--color-green);
+  border-color: var(--color-green);
+}
+
+:global(.flatpickr-day:hover) {
+  background-color: var(--color-gray-90);
 }
 
 :global(.flatpickr-prev-month:hover),
 :global(.flatpickr-next-month:hover) {
-  color: var(--color-primaryGreen);
+  color: var(--color-green);
 }
 :global(.flatpickr-prev-month:hover svg),
 :global(.flatpickr-next-month:hover svg) {
-  fill: var(--color-primaryGreen);
+  fill: var(--color-green) !important;
 }
 
 :global(.flatpickr-day.today) {
-  border-color: var(--color-orange);
+  border-color: var(--color-navy-40);
 }
 :global(.flatpickr-day.today:hover),
 :global(.flatpickr-day.today:focus) {
-  border-color: var(--color-orange);
-  background: var(--color-orange);
+  border-color: var(--color-navy-40);
+  background: var(--color-navy-40);
 }
 
 :global(span.flatpickr-day.today:not(.selected)),
@@ -46,13 +50,13 @@
   border-color: none;
   border-right-color: transparent;
   border-top-color: transparent;
-  border-bottom-color: var(--color-orange);
+  border-bottom-color: var(--color-navy-40);
 }
 
 :global(span.flatpickr-day.today:not(.selected):hover),
 :global(span.flatpickr-day.prevMonthDay.today:not(.selected):hover),
 :global(span.flatpickr-day.nextMonthDay.today:not(.selected):hover) {
-  border: 1px solid var(--color-orange);
+  border: 1px solid var(--color-navy-40);
 }
 
 :global(.flatpickr-input[disabled]) {

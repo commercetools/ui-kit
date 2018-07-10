@@ -24,10 +24,11 @@
    ========================================================================== */
 
   --token-font-color-default: var(--color-black);
-  --token-font-color-disabled: var(--color-greyNevada);
+  --token-font-color-disabled: var(--color-gray-60);
   --token-font-color-error: var(--color-red);
   --token-font-color-warning: var(--color-orange);
-  --token-font-color-readonly: var(--color-greySolid);
+  --token-font-color-readonly: var(--color-gray-60);
+  --token-font-color-placeholder: var(--color-gray-60);
 
   /* ==========================================================================
    Sizes

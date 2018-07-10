@@ -1,37 +1,37 @@
 @import '../materials/colors.mod.css';
 
 .tone-critical {
-  background-color: color-mod(var(--color-red) alpha(15%));
+  background-color: var(--color-red-95);
   border: 1px solid var(--color-red);
   border-radius: 2px;
 }
 
 .tone-warning {
-  background-color: color-mod(var(--color-orange) alpha(15%));
+  background-color: var(--color-orange-95);
   border: 1px solid var(--color-orange);
   border-radius: 2px;
 }
 
 .tone-positive {
-  background-color: color-mod(var(--color-green) alpha(15%));
-  border: 1px solid var(--color-green);
+  background-color: var(--color-green-85);
+  border: 1px solid var(--color-green-40);
   border-radius: 2px;
 }
 
 .tone-information {
-  background-color: color-mod(var(--color-blue) alpha(15%));
+  background-color: var(--color-blue-95);
   border: 1px solid var(--color-blue);
   border-radius: 2px;
 }
 
 .tone-primary {
-  background-color: color-mod(var(--color-primaryGreen) alpha(15%));
-  border: 1px solid var(--color-primaryGreen);
+  background-color: var(--color-green-95);
+  border: 1px solid var(--color-green-25);
   border-radius: 2px;
 }
 
 .tone-secondary {
-  background-color: color-mod(var(--color-greyNevada) alpha(15%));
-  border: 1px solid var(--color-greyNevada);
+  background-color: var(--color-gray-90);
+  border: 1px solid var(--color-gray-60);
   border-radius: 2px;
 }

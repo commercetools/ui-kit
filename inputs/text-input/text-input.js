@@ -64,4 +64,6 @@ TextInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
+TextInput.isEmpty = value => !value || value.trim().length === 0;
+
 export default TextInput;

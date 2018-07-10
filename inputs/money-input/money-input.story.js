@@ -32,6 +32,7 @@ storiesOf('Inputs', module)
               }}
               render={(value, onChange) => (
                 <MoneyInput
+                  name={text('name')}
                   value={value}
                   currencies={
                     boolean('dropdown', true) ? currencies : undefined
@@ -39,8 +40,9 @@ storiesOf('Inputs', module)
                   placeholder={text('placeholder', 'Placeholder')}
                   onBlur={(...args) => action('onBlur')(...args)}
                   isDisabled={boolean('isDisabled', false)}
-                  onChange={(...args) => {
-                    action('onChange')(...args);
+                  onChange={action('onChange')}
+                  onChangeValue={(...args) => {
+                    action('onChangeValue')(...args);
                     onChange(...args);
                     // eslint-disable-next-line no-console
                     console.log(

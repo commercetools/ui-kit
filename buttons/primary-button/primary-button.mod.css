@@ -9,7 +9,6 @@
   align-items: center;
   color: var(--color-white);
   transition: background-color var(--transition-linear-80ms);
-  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
 }
 
 .button-layout-big {
@@ -31,6 +30,10 @@
   font-size: 1rem;
 }
 
+.button {
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+}
+
 .active:hover,
 .active:focus,
 .button:hover,
@@ -49,17 +52,17 @@
 
 /** primary tone */
 .button-tone-primary .button {
-  background-color: var(--color-buttonPrimary);
+  background-color: var(--color-green);
 }
 
 .button-tone-primary .active:hover,
 .button-tone-primary .button:hover {
-  background-color: var(--color-greenDowny);
+  background-color: var(--color-green-25);
 }
 
 .button-tone-primary .active,
 .button-tone-primary .button:active {
-  background-color: var(--color-buttonPrimary);
+  background-color: var(--color-green);
 }
 
 /** urgent tone */
@@ -69,7 +72,7 @@
 
 .button-tone-urgent .active:hover,
 .button-tone-urgent .button:hover {
-  background-color: var(--color-greenDowny);
+  background-color: var(--color-green-25);
 }
 
 .button-tone-urgent .active,
@@ -80,16 +83,14 @@
 /**
  * .disabled button mode, this applies to all tones.
  */
-.button-layout .disabled {
-  box-shadow: none;
-  background-color: var(--color-whitePorcelain);
-  color: var(--color-greyNevada);
-}
-
+.button-layout .disabled,
 .button-layout .disabled:active,
 .button-layout .disabled:hover {
-  background-color: var(--color-whitePorcelain);
-  color: var(--color-greyNevada);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray-60);
+
+  /* Simulates the border inside */
+  box-shadow: 0 0 0 1px var(--color-gray) inset;
 }
 
 /** Icon container */

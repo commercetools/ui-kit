@@ -18,21 +18,21 @@
 /* Set the colors for the different interactions by selecting the `p` element, rendered by `<Text.Body>` */
 
 .primary p {
-  color: var(--color-primaryGreen);
+  color: var(--color-green);
 }
 
 .primary:hover p {
-  color: var(--color-greenDowny);
+  color: var(--color-green-25);
 }
 
 .secondary p {
-  color: var(--color-greyTundora);
+  color: var(--color-black);
 }
 
 .disabled p {
-  color: var(--color-primaryGrey);
+  color: var(--color-gray);
 }
 
 .button:hover.disabled p {
-  color: var(--color-primaryGrey);
+  color: var(--color-gray);
 }

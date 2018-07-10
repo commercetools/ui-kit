@@ -11,7 +11,7 @@
   --font-detail: 12px;
 
   /* Colors */
-  --font-color: var(--color-greyTundora);
+  --font-color: var(--color-black);
 }
 
 h1 {
@@ -76,23 +76,27 @@ small {
 }
 
 .information {
-  color: var(--color-dodgerBlue);
+  color: var(--color-blue);
 }
 
 .primary {
-  color: var(--color-primaryGreen);
+  color: var(--color-green);
 }
 
 .secondary {
-  color: var(--color-secondaryGrey);
+  color: var(--color-gray-60);
 }
 
 .positive {
-  color: var(--color-green);
+  color: var(--color-green-25);
 }
 
 .negative {
   color: var(--color-red);
+}
+
+.inverted {
+  color: var(--color-white);
 }
 
 .inline {

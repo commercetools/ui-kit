@@ -1,3 +1,4 @@
+@import '../../materials/tokens/tokens.mod.css';
 @import '../../materials/borders.mod.css';
 @import '../../materials/colors.mod.css';
 @import '../../materials/sizes.mod.css';
@@ -35,20 +36,24 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.input::placeholder {
+  color: var(--token-font-color-placeholder);
+}
+
 /* Tones */
 
 .amount-default {
   composes: input;
-  border-color: var(--color-greySolid);
+  border-color: var(--color-gray-60);
   color: var(--color-black);
 }
 
 .amount-disabled {
   composes: input;
   cursor: not-allowed;
-  background-color: var(--color-whiteCatskill);
-  border-color: var(--color-greyMischka);
-  color: var(--color-greyNevada);
+  background-color: var(--color-navy-98);
+  border-color: var(--color-gray);
+  color: var(--color-gray-60);
   opacity: 1; /* fix for mobile safari */
 }
 
@@ -68,7 +73,7 @@
 
 .amount-default:active,
 .amount-default:focus {
-  border-color: var(--color-greenDowny);
+  border-color: var(--color-green);
   color: var(--color-black);
 }
 
@@ -76,7 +81,7 @@
 .currency-default {
   border-top-left-radius: var(--border-radius-6);
   border-bottom-left-radius: var(--border-radius-6);
-  border: var(--border-radius-1) solid var(--color-greySolid);
+  border: var(--border-radius-1) solid var(--color-gray-60);
   border-right: 0;
   background-color: var(--color-white);
   position: relative;
@@ -86,14 +91,14 @@
 
 .currency-active {
   composes: currency-default;
-  border-color: var(--color-greenDowny);
+  border-color: var(--color-green);
 }
 
 .currency-disabled {
   composes: currency-default;
-  background-color: var(--color-whiteCatskill);
-  border-color: var(--color-greyMischka);
-  color: var(--color-greyNevada);
+  background-color: var(--color-navy-98);
+  border-color: var(--color-gray);
+  color: var(--color-gray-60);
 }
 
 .currency-warning {
@@ -117,14 +122,14 @@
 
 .currency-label {
   composes: currency-default;
-  color: var(--color-greyNevada);
-  background-color: var(--color-whiteCatskill);
+  color: var(--color-gray-60);
+  background-color: var(--color-navy-98);
 }
 
 .currency-label-disabled {
-  background-color: var(--color-whiteCatskill);
-  border-color: var(--color-greyMischka);
-  color: var(--color-greyNevada);
+  background-color: var(--color-navy-98);
+  border-color: var(--color-gray);
+  color: var(--color-gray-60);
 }
 
 .currency-button {
@@ -135,8 +140,8 @@
 }
 
 .currency-button-disabled {
-  color: var(--color-greyNevada);
-  background-color: var(--color-whiteCatskill);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray-60);
 }
 
 .chevron-icon {
@@ -147,7 +152,7 @@
 }
 
 .chevron-icon-disabled svg {
-  fill: var(--color-greyAlto);
+  fill: var(--color-gray-60);
 }
 
 .icon-wrapper {
@@ -169,7 +174,7 @@
 
 .options-wrapper-active {
   composes: options-wrapper;
-  border: 1px solid var(--color-greenDowny);
+  border: 1px solid var(--color-green);
 }
 
 .options-wrapper-error {
@@ -199,5 +204,5 @@
 }
 
 .option-wrapper:hover {
-  background-color: var(--color-whiteSnow);
+  background: var(--color-gray-90);
 }

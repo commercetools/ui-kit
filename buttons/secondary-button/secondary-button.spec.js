@@ -305,14 +305,14 @@ describe('rendering', () => {
             isToggleButton: true,
             isToggled: true,
             isDisabled: true,
-            theme: 'apple-green',
+            theme: 'blue',
           });
           wrapper = shallow(<SecondaryButton {...props} />);
         });
 
         it('should handle both classes', () => {
           expect(wrapper).toHaveClassName(
-            'active disabled container theme-apple-green'
+            'active disabled container theme-blue'
           );
         });
       });

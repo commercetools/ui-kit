@@ -65,23 +65,25 @@
 .active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--color-white);
 }
 
 .active:hover {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-whiteSnow);
+  background-color: var(--color-gray-95);
 }
 
 /* Disabled button */
 
 .active.disabled,
 .disabled {
-  background-color: var(--color-whiteCatskill);
-  color: var(--color-greyNevada);
-  box-shadow: var(--shadow-10-first);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray-60);
   pointer-events: none;
+
+  /* Simulates the border inside */
+  box-shadow: 0 0 0 1px var(--color-gray) inset;
 }
 
 /* Default button */
@@ -93,7 +95,7 @@
 .default:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--color-white);
 }
 
 /*
@@ -113,25 +115,5 @@
 }
 
 .theme-blue.disabled {
-  color: var(--color-greyNevada);
-}
-
-/*
-* — Apple-Green Theme —
-*/
-
-.theme-apple-green:hover {
-  color: var(--color-green);
-}
-
-/* Toggled button */
-
-.theme-apple-green.active,
-.theme-apple-green.active.disabled,
-.theme-apple-green:active {
-  color: var(--color-green);
-}
-
-.theme-apple-green.disabled {
-  color: var(--color-greyNevada);
+  color: var(--color-gray-60);
 }

@@ -118,7 +118,7 @@ SecondaryButton.propTypes = {
         `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Only toggle buttons may have a theme.`
       );
     }
-    return PropTypes.oneOf(['default', 'apple-green', 'blue'])(
+    return PropTypes.oneOf(['default', 'blue'])(
       props,
       propName,
       componentName,

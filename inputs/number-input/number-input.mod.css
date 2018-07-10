@@ -1,3 +1,4 @@
+@import '../../materials/tokens/tokens.mod.css';
 @import '../../materials/colors.mod.css';
 @import '../../materials/spacings.mod.css';
 @import '../../materials/shadows.mod.css';
@@ -32,6 +33,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.input::placeholder {
+  color: var(--token-font-color-placeholder);
+}
+
 /* Spinner */
 
 .spinner {
@@ -47,7 +52,7 @@
 
 .pristine {
   composes: input;
-  border-color: var(--color-greySolid);
+  border-color: var(--color-gray-60);
   color: var(--color-black);
 }
 
@@ -66,16 +71,16 @@
 .disabled {
   composes: input;
   cursor: not-allowed;
-  background-color: var(--color-whiteCatskill);
-  border-color: var(--color-greyMischka);
-  color: var(--color-greyNevada);
+  background-color: var(--color-navy-98);
+  border-color: var(--color-gray);
+  color: var(--color-gray-60);
   opacity: 1; /* fix for mobile safari */
 }
 
 .readonly {
   composes: input;
-  color: var(--color-greyNevada);
-  border-color: var(--color-primaryGrey);
+  color: var(--color-gray-60);
+  border-color: var(--color-gray);
   cursor: default;
 }
 
@@ -83,6 +88,6 @@
 
 .pristine:active,
 .pristine:focus {
-  border-color: var(--color-greenDowny);
+  border-color: var(--color-green);
   color: var(--color-black);
 }

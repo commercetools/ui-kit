@@ -85,8 +85,8 @@
 /* Disabled button */
 
 .disabled {
-  background-color: var(--color-whitePorcelain);
-  color: var(--color-greyNevada);
+  background-color: var(--color-navy-98);
+  color: var(--color-gray-60);
   box-shadow: none;
 }
 
@@ -99,7 +99,7 @@
 .default:active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--color-white);
 }
 
 /* Toggled button */
@@ -107,13 +107,13 @@
 .active {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-greyAlabaster);
+  background-color: var(--color-white);
 }
 
 .active:hover {
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
-  background-color: var(--color-whiteSnow);
+  background-color: var(--color-gray-95);
 }
 
 /*
@@ -123,7 +123,7 @@
 /* Disabled-Active button */
 
 .disabled.theme-blue:hover {
-  background-color: var(--color-whitePorcelain);
+  background-color: var(--color-blue-85);
 }
 
 /* When the button is active (isToggled: true) and somehow is disabled
@@ -131,7 +131,7 @@
   receive any actions */
 
 .active.disabled.theme-blue {
-  background-color: color-mod(var(--color-blue) lightness(74%));
+  background-color: var(--color-blue-85);
   color: var(--color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
@@ -146,7 +146,7 @@
 }
 
 .active.theme-blue:hover {
-  background-color: color-mod(var(--color-blue) lightness(74%));
+  background-color: var(--color-blue-85);
 }
 
 /*
@@ -160,11 +160,11 @@
   receive any actions */
 
 .disabled.theme-green:hover {
-  background-color: var(--color-whitePorcelain);
+  background-color: var(--color-green-85);
 }
 
 .active.disabled.theme-green {
-  background-color: var(--color-fadedGreen30);
+  background-color: var(--color-green-85);
   color: var(--color-white);
   box-shadow: var(--shadow-9-first), var(--shadow-9-second),
     var(--shadow-9-third);
@@ -179,5 +179,5 @@
 }
 
 .active.theme-green:hover {
-  background-color: var(--color-fadedGreen30);
+  background-color: var(--color-green-85);
 }

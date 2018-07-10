@@ -24,17 +24,17 @@
 /* Set the colors for the different interactions by selecting the `p` element, rendered by `<Text.Body>` */
 
 .button p {
-  color: var(--color-primaryGreen);
+  color: var(--color-green);
 }
 
 .button:hover p {
-  color: var(--color-greenDowny);
+  color: var(--color-green-25);
 }
 
 .disabled p {
-  color: var(--color-primaryGrey);
+  color: var(--color-gray);
 }
 
 .button:hover.disabled p {
-  color: var(--color-primaryGrey);
+  color: var(--color-gray);
 }

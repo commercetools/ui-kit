@@ -29,6 +29,10 @@
   outline: 0;
 }
 
+.textarea::placeholder {
+  color: var(--token-font-color-placeholder);
+}
+
 .pristine {
   composes: textarea;
   border: 1px solid var(--token-border-color-input-pristine);
