@@ -1,0 +1,15 @@
+@import '@commercetools-frontend/ui-kit/materials/spacings.mod.css';
+.label-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.label-title {
+  display: flex;
+  align-items: baseline;
+}
+
+.label-title div + div {
+  margin-left: var(--spacing-4);
+}

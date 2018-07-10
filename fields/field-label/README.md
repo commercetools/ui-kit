@@ -16,13 +16,19 @@ import messages from './messages';
   title={<FormattedMessage {...messages.title} />}
   subtitle={<FormattedMessage {...messages.subtitle} />}
   isRequired={true}
+  hasIcon={true}
+  onIconClick={() => {}}
+  iconLabel={<FormattedMessage {...messages.iconLabel} />}
 />;
 ```
 
 #### Properties
 
-| Props        | Type     | Required | Values | Default | Description                                       |
-| ------------ | -------- | :------: | ------ | ------- | ------------------------------------------------- |
-| `title`      | `string` |    ✅    | -      | -       | Title of the label                                |
-| `subtitle`   | `string` |    -     | -      |         | Subtitle for the label                            |
-| `isRequired` | `bool`   |    -     | -      | `false` | Indicates the labeled field is required (if true) |
+| Props         | Type     | Required | Values | Default | Description                                        |
+| ------------- | -------- | :------: | ------ | ------- | -------------------------------------------------- |
+| `title`       | `string` |    ✅    | -      | -       | Title of the label                                 |
+| `subtitle`    | `string` |    -     | -      |         | Subtitle for the label                             |
+| `isRequired`  | `bool`   |    -     | -      | `false` | Indicates the labeled field is required (if true)  |
+| `hasIcon`     | `bool`   |    -     | -      | `false` | Indicates the label should show an InformationIcon |
+| `onIconClick` | `func`   |    -     | -      |         | Called when the label's icon is clicked            |
+| `iconLabel`   | `string` |    -     | -      |         | Text for the label's icon                          |

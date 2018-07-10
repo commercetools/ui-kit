@@ -1,5 +1,7 @@
 import React from 'react';
+import TextInput from '@commercetools-frontend/ui-kit/inputs/text-input';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
@@ -12,19 +14,15 @@ storiesOf('Fields', module)
   .addDecorator(withReadme(Readme))
   .add('FieldLabel', () => (
     <Section>
-      <Spacings.Stack scale="m">
+      <Spacings.Stack>
         <FieldLabel
-          title={text('Title of label with subtitle', 'Label with subtitle')}
-          subtitle={'Subtitle of label'}
-          isRequired={boolean('isFieldRequired', true)}
+          title={text('title', 'Label title')}
+          subtitle={text('subtitle', null)}
+          isRequired={boolean('isRequired', false)}
+          hasIcon={boolean('hasIcon', false)}
+          onIconClick={action('onIconClick')}
         />
-        <FieldLabel
-          title={text(
-            'Title of label without subtitle',
-            'Label without subtitle'
-          )}
-          isRequired={boolean('isFieldRequired', true)}
-        />
+        <TextInput placeholder="Placeholder" horizontalConstraint="m" />
       </Spacings.Stack>
     </Section>
   ));
