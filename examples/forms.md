@@ -11,6 +11,7 @@ Make sure to also check the source-code of the story. It contains code comments 
 - Enter a high-precision price (add more than 2 fraction digits to the price)
 - Enter a negative inventory quantity
 - Enter a inventory quantity with fraction digits
+- Make a slug invalid by adding a space to it
 
 ## Things to notice
 
