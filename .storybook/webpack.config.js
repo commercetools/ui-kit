@@ -16,6 +16,11 @@ const mcWebpackConfigProd = createWebpackConfigForProduction({
   distPath: '', // not important
   entryPoint: '', // not important
   sourceFolders,
+  toggleFlags: {
+    // Disable extract CSS, as building the production bundles for Storybook
+    // fails with that.
+    enableExtractCss: false,
+  },
 });
 const uikitWebpackConfig = {
   devtool: 'source-map',
