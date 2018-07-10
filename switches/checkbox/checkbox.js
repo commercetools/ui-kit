@@ -18,7 +18,8 @@ export class Checkbox extends React.PureComponent {
   static propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
-    checked: PropTypes.oneOf([true, false, 'indeterminate']).isRequired,
+    isChecked: PropTypes.bool,
+    isIndeterminate: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
@@ -56,9 +57,8 @@ export class Checkbox extends React.PureComponent {
               })}
             >
               {(() => {
-                if (this.props.checked === true) return <Icons.Checked />;
-                else if (this.props.checked === 'indeterminate')
-                  return <Icons.Indeterminate />;
+                if (this.props.isIndeterminate) return <Icons.Indeterminate />;
+                else if (this.props.isChecked) return <Icons.Checked />;
                 return <Icons.Unchecked />;
               })()}
             </div>
@@ -78,7 +78,7 @@ export class Checkbox extends React.PureComponent {
               value={this.props.value}
               onChange={this.props.onChange}
               disabled={this.props.isDisabled}
-              checked={this.props.checked === true ? this.props.checked : false}
+              checked={this.props.isChecked && !this.props.isIndeterminate}
               type="checkbox"
             />
           </Spacings.Inline>

@@ -8,7 +8,8 @@ const createTestProps = custom => ({
   name: 'bar',
   value: 'foo',
   isDisabled: false,
-  checked: false,
+  isChecked: false,
+  isIndeterminate: false,
   onChange: jest.fn(),
 
   // HoC
@@ -137,23 +138,23 @@ describe('callbacks', () => {
     let props;
     describe('when checked', () => {
       beforeEach(() => {
-        props = createTestProps({ checked: true });
+        props = createTestProps({ isChecked: true });
 
         const wrapper = shallow(<Checkbox {...props} />);
         wrapper
           .find('input')
-          .simulate('change', createEvent({ checked: props.checked }));
+          .simulate('change', createEvent({ isChecked: props.isChecked }));
       });
 
       it('should invoke `onChange`', () => {
         expect(props.onChange).toHaveBeenCalled();
       });
 
-      it('should invoke `onChange` with `checked`', () => {
+      it('should invoke `onChange` with `isChecked`', () => {
         expect(props.onChange).toHaveBeenCalledWith(
           expect.objectContaining({
             target: expect.objectContaining({
-              checked: props.checked,
+              isChecked: props.isChecked,
             }),
           })
         );
@@ -168,26 +169,26 @@ describe('callbacks', () => {
       });
     });
 
-    describe('when not checked', () => {
+    describe('when not isChecked', () => {
       beforeEach(() => {
-        props = createTestProps({ checked: false });
+        props = createTestProps({ isChecked: false });
 
         const wrapper = shallow(<Checkbox {...props} />);
 
         wrapper
           .find('input')
-          .simulate('change', createEvent({ checked: props.checked }));
+          .simulate('change', createEvent({ isChecked: props.isChecked }));
       });
 
       it('should invoke `onChange`', () => {
         expect(props.onChange).toHaveBeenCalled();
       });
 
-      it('should invoke `onChange` with `checked`', () => {
+      it('should invoke `onChange` with `isChecked`', () => {
         expect(props.onChange).toHaveBeenCalledWith(
           expect.objectContaining({
             target: expect.objectContaining({
-              checked: props.checked,
+              isChecked: props.isChecked,
             }),
           })
         );
