@@ -28,9 +28,9 @@ These are informal steps we suggest you to follow when adding a new component.
     - [ ] Add task to the MCD project.
     - [ ] Add task to the [UIKit Kanban Board].
 
-2.  Sync with the UI Kit leads
+2.  Sync with the UIKit leads
 
-    - [ ] Notify Luis or Dominic of the task.
+    - [ ] Notify @lufego or @dferber90 of the task.
 
 3.  Create documentation for the component
 
@@ -50,9 +50,9 @@ These are informal steps we suggest you to follow when adding a new component.
 
     - [ ] `Designer` & `Dev` review the component's design.
 
-7.  Sync with the UI Kit leads
+7.  Sync with the UIKit leads
 
-    - [ ] Notify Luis or Dominic of the task.
+    - [ ] Notify @lufego or @dferber90 of the new design.
 
 8.  Open a Github issue with the API proposal for the new component
 
@@ -60,20 +60,20 @@ These are informal steps we suggest you to follow when adding a new component.
     - [ ] Use PropTypes to describe the component's props.
     - [ ] Show example usage of the component.
 
-9.  Develop the component and open a PR to add the component to the UI Kit.
+9.  Develop the component and open a PR to add the component to the UIKit.
 
-    - [ ] Open a PR to add the component to the UI Kit.
+    - [ ] Open a PR to add the component to the UIKit.
     - [ ] PR is approved by either Luis or Dominic or both.
 
 10. UX Review
 
     - [ ] `Designer` conducts the UX review on the component.
 
-11. Review with UI Kit leads
+11. Review with UIKit leads
 
 12. Component is merged
 
-    - [ ] `Designer` adds component to UI Kit Sketch file.
+    - [ ] `Designer` adds component to UIKit Sketch file.
 
 13. Migrate component to MC.
     - [ ] Component is used only where needed for the user story.
