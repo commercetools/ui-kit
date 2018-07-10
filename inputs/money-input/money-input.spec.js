@@ -217,6 +217,49 @@ describe('MoneyInput.parseMoneyValue', () => {
   });
 });
 
+describe('MoneyInput.isEmpty', () => {
+  describe('when value is filled out', () => {
+    it('should return false', () => {
+      expect(MoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' })).toBe(
+        false
+      );
+    });
+  });
+  describe('when value is empty', () => {
+    it('should return true', () => {
+      expect(MoneyInput.isEmpty({ amount: '', currencyCode: 'EUR' })).toBe(
+        true
+      );
+      expect(MoneyInput.isEmpty({ amount: '5', currencyCode: '' })).toBe(true);
+      expect(MoneyInput.isEmpty()).toBe(true);
+    });
+  });
+});
+
+describe('MoneyInput.isHighPrecision', () => {
+  describe('when called with a high precision money value', () => {
+    it('should return true', () => {
+      expect(
+        MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' })
+      ).toBe(true);
+    });
+  });
+  describe('when called with a regular precision money value', () => {
+    it('should return false', () => {
+      expect(
+        MoneyInput.isHighPrecision({ amount: '2.00', currencyCode: 'EUR' })
+      ).toBe(false);
+    });
+  });
+  describe('when called with an empty money value', () => {
+    it('should throw', () => {
+      expect(() =>
+        MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' })
+      ).toThrow();
+    });
+  });
+});
+
 // -----------------------------------------------------------------------------
 
 describe('rendering', () => {

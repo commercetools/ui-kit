@@ -32,6 +32,8 @@ export class TextArea extends React.Component {
   // so that the input "collapses".
   static MIN_ROW_COUNT = 1;
 
+  static isEmpty = value => !value || value.trim().length === 0;
+
   static propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
@@ -130,4 +132,7 @@ export class TextArea extends React.Component {
   }
 }
 
-export default injectIntl(TextArea);
+const Enhanced = injectIntl(TextArea);
+// manually hoist public statics
+Enhanced.isEmpty = TextArea.isEmpty;
+export default Enhanced;

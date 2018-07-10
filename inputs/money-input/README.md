@@ -72,6 +72,30 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 
 The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the MoneyInput component can handle `({ amount, currencyCode })`.
 
+#### `MoneyInput.isEmpty`
+
+The `isEmpty` function will return `true` when the passed `MoneyInput` value is empty (either has no currency or no amount, or does not exist at all).
+
+```js
+MoneyInput.isEmpty({ amount: '', currencyCode: 'EUR' }); // -> true
+MoneyInput.isEmpty({ amount: '5', currencyCode: '' }); // -> true
+MoneyInput.isEmpty(); // -> true
+
+MoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> false
+```
+
+#### `MoneyInput.isHighPrecision`
+
+The `isHighPrecision` function will return `true` when a `MoneyInput` value is passed for which the number of fraction digits of the amount exceeds the number of fraction digits the supplied currency usually uses.
+
+The function may not be called with empty money values. It will throw in those cases.
+
+```js
+MoneyInput.isHighPrecision({ amount: '2.00', currencyCode: 'EUR' }); // -> false
+MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' }); // -> true
+MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }); // -> throws
+```
+
 ### Example
 
 Here's an example of how `MoneyInput` would be used inside a form.

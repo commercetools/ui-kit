@@ -29,6 +29,22 @@ const getOpenWrapper = customProps =>
 const getClosedWrapper = customProps =>
   getWrapper(customProps, { isOpen: false, toggle: jest.fn() });
 
+describe('TextArea.isEmpty', () => {
+  describe('when called with an empty value', () => {
+    it('should return true', () => {
+      expect(TextArea.isEmpty('')).toBe(true);
+      expect(TextArea.isEmpty(' ')).toBe(true);
+      expect(TextArea.isEmpty('\n')).toBe(true);
+    });
+  });
+  describe('when called with a filled value', () => {
+    it('should return false', () => {
+      expect(TextArea.isEmpty('a')).toBe(false);
+      expect(TextArea.isEmpty(' a ')).toBe(false);
+    });
+  });
+});
+
 describe('rendering', () => {
   describe('data attributes', () => {
     let wrapper;

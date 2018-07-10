@@ -8,6 +8,66 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
+describe('NumberInput.toFormValue', () => {
+  describe('when called with a number', () => {
+    it('should return that number', () => {
+      expect(NumberInput.toFormValue(3.4)).toEqual(3.4);
+    });
+  });
+  describe('when called with a number stored in a string', () => {
+    it('should forward that string', () => {
+      expect(NumberInput.toFormValue('3.4')).toEqual('3.4');
+      expect(NumberInput.toFormValue('3,4')).toEqual('3,4');
+    });
+  });
+  describe('when called with undefined', () => {
+    it('should return an empty string', () => {
+      expect(NumberInput.toFormValue()).toEqual('');
+      expect(NumberInput.toFormValue(undefined)).toEqual('');
+    });
+  });
+});
+
+describe('NumberInput.isEmpty', () => {
+  describe('when the value is empty', () => {
+    it('should return true', () => {
+      expect(NumberInput.isEmpty()).toBe(true);
+      expect(NumberInput.isEmpty('')).toBe(true);
+      expect(NumberInput.isEmpty('  ')).toBe(true);
+      expect(NumberInput.isEmpty(NaN)).toBe(true);
+    });
+  });
+  describe('when the value is filled', () => {
+    it('should return false', () => {
+      expect(NumberInput.isEmpty(2.3)).toBe(false);
+      expect(NumberInput.isEmpty('2.3')).toBe(false);
+    });
+  });
+});
+
+describe('NumberInput.hasFractionDigits', () => {
+  describe('when called with number without fraction digits', () => {
+    it('should return false', () => {
+      expect(NumberInput.hasFractionDigits(3)).toBe(false);
+      expect(NumberInput.hasFractionDigits('3')).toBe(false);
+    });
+  });
+  describe('when called with number with fraction digits', () => {
+    it('should return true', () => {
+      expect(NumberInput.hasFractionDigits(3.2)).toBe(true);
+      expect(NumberInput.hasFractionDigits('3.2')).toBe(true);
+    });
+  });
+  describe('when called with invalid number', () => {
+    it('should throw', () => {
+      expect(() => NumberInput.hasFractionDigits()).toThrow();
+      expect(() => NumberInput.hasFractionDigits(NaN)).toThrow();
+      expect(() => NumberInput.hasFractionDigits('foo')).toThrow();
+      expect(() => NumberInput.hasFractionDigits('3..')).toThrow();
+    });
+  });
+});
+
 describe('rendering', () => {
   describe('data attributes', () => {
     let input;

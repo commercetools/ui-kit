@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant';
 import requiredIf from 'react-required-if';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Constraints from '../../materials/constraints';
@@ -50,7 +51,7 @@ NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,
@@ -68,6 +69,24 @@ NumberInput.propTypes = {
 
 NumberInput.defaultProps = {
   horizontalConstraint: 'scale',
+};
+
+NumberInput.toFormValue = numberOrString =>
+  typeof numberOrString === 'undefined' ? '' : numberOrString;
+
+NumberInput.isEmpty = value => {
+  if (typeof value === 'string') return value.trim().length === 0;
+  if (typeof value === 'number') return isNaN(value);
+  return true;
+};
+
+NumberInput.hasFractionDigits = number => {
+  const fraction = number % 1;
+  invariant(
+    !isNaN(fraction),
+    'NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
+  );
+  return fraction !== 0;
 };
 
 export default NumberInput;

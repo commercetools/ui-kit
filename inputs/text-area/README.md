@@ -31,6 +31,19 @@ import TextArea from '@commercetools-frontend/ui-kit/inputs/text-area';
 | `onFocus`              | `func`   |    -     | -                       | -       | Called when field is focused                                                                                              |
 | `horizontalConstraint` | `object` |    -     | `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                |
 
+### Static methods
+
+#### `TextArea.isEmpty`
+
+Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces and linebreaks only.
+
+```js
+TextArea.isEmpty(''); // -> true
+TextArea.isEmpty(' '); // -> true
+TextArea.isEmpty('\n'); // -> true
+TextArea.isEmpty('tree'); // -> false
+```
+
 # Do's and don't's
 
 - Whenever a user input can hold multiline strings the TextArea component is recommended
