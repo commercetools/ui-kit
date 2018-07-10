@@ -170,19 +170,22 @@ const validate = formValues => {
   // validate slug
   // A slug must match [a-zA-Z0-9_-]{2,256}
   // The error object of the slug is
-  //  { missing: Boolean, translations: { de: { invalid: Boolean }, ... } }
+  //  {
+  //    missing: Boolean,
+  //    translations: { de: { hasForbiddenChars: Boolean }, ... },
+  //  }
   // The "missing" part is used to highlight all fields, while the
   // "translations" part gets mapped to errors per translation.
   if (LocalizedTextInput.isEmpty(formValues.slug)) {
     errors.slug.missing = true;
   } else {
     const isValidSlug = value => /^[a-zA-Z0-9_-]{2,256}$/.test(value);
-    const translationErrors = Object.entries(
-      LocalizedTextInput.omitEmptyTranslations(formValues.slug)
-    ).reduce((acc, [language, slug]) => {
-      if (!isValidSlug(slug)) acc[language] = { invalid: true };
-      return acc;
-    }, {});
+    const translationErrors = mapValues(
+      LocalizedTextInput.omitEmptyTranslations(formValues.slug),
+      // more validation errors could be added in theory
+      slug => (isValidSlug(slug) ? {} : { hasForbiddenChars: true })
+    );
+
     errors.slug.translations = translationErrors;
   }
 
@@ -252,7 +255,7 @@ class ProductForm extends React.Component {
         name: PropTypes.shape({ missing: PropTypes.bool }),
         slug: PropTypes.shape({
           missing: PropTypes.bool,
-          // For example: { en: { invalid: true } }
+          // For example: { en: { hasForbiddenChars: true } }
           translations: PropTypes.objectOf(PropTypes.objectOf(PropTypes.bool)),
         }),
         description: PropTypes.shape({ missing: PropTypes.bool }),
@@ -351,7 +354,7 @@ class ProductForm extends React.Component {
                     this.props.formik.errors.slug.translations
                   : {},
                 error => {
-                  if (error.invalid) {
+                  if (error.hasForbiddenChars) {
                     return <ErrorMessage>This slug is not valid.</ErrorMessage>;
                   }
                   // we could map other errors here as well
