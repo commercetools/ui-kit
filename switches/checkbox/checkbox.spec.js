@@ -102,13 +102,13 @@ describe('<Checkbox>', () => {
 
       describe('when checked', () => {
         beforeEach(() => {
-          props = createTestProps({ isDisabled: true });
+          props = createTestProps({ isChecked: true, isIndeterminate: false });
 
           wrapper = shallow(<Checkbox {...props} />);
         });
 
         it('should check the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp('checked', props.checked);
+          expect(wrapper.find('input')).toHaveProp('checked', props.isChecked);
         });
       });
     });
@@ -128,15 +128,15 @@ describe('<Checkbox>', () => {
 });
 
 describe('callbacks', () => {
-  const createEvent = ({ checked = true } = {}) => ({
+  const createEvent = ({ isChecked = true } = {}) => ({
     target: {
-      checked,
+      isChecked,
     },
   });
 
   describe('when changing', () => {
     let props;
-    describe('when checked', () => {
+    describe('when isChecked', () => {
       beforeEach(() => {
         props = createTestProps({ isChecked: true });
 

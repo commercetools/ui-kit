@@ -17,11 +17,9 @@ exports[`<Checkbox> rendering with children should match snapshot 1`] = `
       >
         <test-file-stub />
       </div>
-      <span
-        className=""
-      >
+      <TextBody>
         Some label
-      </span>
+      </TextBody>
       <input
         checked={false}
         className="inputWrapper"
