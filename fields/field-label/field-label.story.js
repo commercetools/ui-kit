@@ -1,7 +1,10 @@
 import React from 'react';
 import TextInput from '@commercetools-frontend/ui-kit/inputs/text-input';
 import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
-import { InformationIcon } from '@commercetools-frontend/ui-kit/icons';
+import {
+  InformationIcon,
+  WarningIcon,
+} from '@commercetools-frontend/ui-kit/icons';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
@@ -23,6 +26,11 @@ storiesOf('Fields', module)
           titleIcon={
             select('titleIcon', ['', 'IconButton'], '') ? (
               <IconButton icon={<InformationIcon />} />
+            ) : null
+          }
+          subtitleIcon={
+            select('subtitleIcon', ['', 'WarningIcon'], '') ? (
+              <WarningIcon />
             ) : null
           }
         />

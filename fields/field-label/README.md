@@ -17,14 +17,16 @@ import messages from './messages';
   subtitle={<FormattedMessage {...messages.subtitle} />}
   isRequired={true}
   titleIcon={<IconButton icon={<InformationIcon />} />}
+  subtitleIcon={<WarningIcon />}
 />;
 ```
 
 #### Properties
 
-| Props        | Type     | Required | Values | Default | Description                                       |
-| ------------ | -------- | :------: | ------ | ------- | ------------------------------------------------- |
-| `title`      | `string` |    ✅    | -      | -       | Title of the label                                |
-| `subtitle`   | `string` |    -     | -      |         | Subtitle for the label                            |
-| `isRequired` | `bool`   |    -     | -      | `false` | Indicates the labeled field is required (if true) |  |
-| `titleIcon`  | `node`   |    -     | -      |         | IconButton to be displayed beside the label title |
+| Props          | Type     | Required | Values | Default | Description                                       |
+| -------------- | -------- | :------: | ------ | ------- | ------------------------------------------------- |
+| `title`        | `string` |    ✅    | -      | -       | Title of the label                                |
+| `subtitle`     | `string` |    -     | -      |         | Subtitle for the label                            |
+| `isRequired`   | `bool`   |    -     | -      | `false` | Indicates the labeled field is required (if true) |  |
+| `titleIcon`    | `node`   |    -     | -      |         | IconButton to be displayed beside the label title |
+| `subtitleIcon` | `node`   |    -     | -      |         | Icon to be displayed beside the label subtitle    |

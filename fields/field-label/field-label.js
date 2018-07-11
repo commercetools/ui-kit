@@ -8,7 +8,7 @@ import styles from './field-label.mod.css';
 export const FieldLabel = props => (
   <div className={styles['label-container']}>
     <Spacings.Stack scale="xs">
-      <label className={styles['label-title']}>
+      <label>
         <Spacings.Inline scale="xs">
           <Text.Body isBold={true}>
             {props.title}
@@ -20,9 +20,13 @@ export const FieldLabel = props => (
             })}
         </Spacings.Inline>
       </label>
-      {props.subtitle && (
-        <Text.Detail tone="secondary">{props.subtitle}</Text.Detail>
-      )}
+      <Spacings.Inline scale="xs">
+        {props.subtitleIcon &&
+          React.cloneElement(props.subtitleIcon, {
+            size: 'medium',
+          })}
+        {props.subtitle && <Text.Detail>{props.subtitle}</Text.Detail>}
+      </Spacings.Inline>
     </Spacings.Stack>
   </div>
 );
@@ -36,6 +40,7 @@ FieldLabel.propTypes = {
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   isRequired: PropTypes.bool,
   titleIcon: PropTypes.node,
+  subtitleIcon: PropTypes.node,
 };
 
 export default FieldLabel;

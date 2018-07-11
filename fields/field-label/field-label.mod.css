@@ -4,12 +4,3 @@
   position: relative;
   display: flex;
 }
-
-.label-title {
-  display: flex;
-  align-items: baseline;
-}
-
-.label-title div + div {
-  margin-left: var(--spacing-4);
-}

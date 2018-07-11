@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { WarningIcon } from '@commercetools-frontend/ui-kit/icons';
 import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
 import Text from '@commercetools-frontend/ui-kit/typography/text';
 import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-indicator';
@@ -16,6 +17,7 @@ describe('rendering', () => {
   let titleComp;
   let subTitleComp;
   let labelIconWrapper;
+  let subtitleIconWrapper;
 
   describe('with title', () => {
     beforeEach(() => {
@@ -47,10 +49,6 @@ describe('rendering', () => {
 
       it('should contain the subtitle text', () => {
         expect(subTitleComp.render().text()).toEqual('Label Subtitle');
-      });
-
-      it('should be in `secondary` tone', () => {
-        expect(subTitleComp).toHaveProp('tone', 'secondary');
       });
     });
 
@@ -115,6 +113,35 @@ describe('rendering', () => {
 
       it('should not display an icon', () => {
         expect(wrapper.prop('titleIcon')).toBeUndefined();
+      });
+    });
+  });
+
+  describe('with `subtitleIcon`', () => {
+    describe('when subtitleIcon is given', () => {
+      beforeEach(() => {
+        props = createTestProps({ subtitleIcon: <WarningIcon /> });
+        wrapper = shallow(<FieldLabel {...props} />);
+        subtitleIconWrapper = wrapper.find(WarningIcon);
+      });
+
+      it('should display the icon', () => {
+        expect(wrapper).toRender(WarningIcon);
+      });
+
+      it('should set the icon size', () => {
+        expect(subtitleIconWrapper.prop('size')).toEqual('medium');
+      });
+    });
+
+    describe('without subtitleIcon', () => {
+      beforeEach(() => {
+        props = createTestProps();
+        wrapper = shallow(<FieldLabel {...props} />);
+      });
+
+      it('should not display an icon', () => {
+        expect(wrapper.prop('subtitleIcon')).toBeUndefined();
       });
     });
   });
