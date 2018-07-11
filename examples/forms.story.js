@@ -299,18 +299,20 @@ class ProductForm extends React.Component {
             onBlur={this.props.formik.handleBlur}
             isDisabled={this.props.formik.isSubmitting}
             selectedLanguage={this.props.selectedLanguage}
-            errors={
-              this.props.formik.touched.name &&
+            hasError={
+              LocalizedTextInput.isTouched(this.props.formik.touched.name) &&
               this.props.formik.errors.name &&
               this.props.formik.errors.name.missing
             }
           />
-          {this.props.formik.touched.name &&
+          {LocalizedTextInput.isTouched(this.props.formik.touched.name) &&
             this.props.formik.errors.name &&
             this.props.formik.errors.name.missing && (
-              <ErrorMessage>
-                Missing name. At least one field must be filled.
-              </ErrorMessage>
+              // The LocalizedTextInput provides a generic default message
+              // when it is a required field and values are missing
+              // It is also possible to use a custom, more detailed error
+              // message as shown on the example below (the slug)
+              <LocalizedTextInput.RequiredValueErrorMessage />
             )}
         </div>
         <div>
@@ -365,9 +367,11 @@ class ProductForm extends React.Component {
               )
             }
           />
-          {this.props.formik.touched.slug &&
+          {LocalizedTextInput.isTouched(this.props.formik.touched.slug) &&
             this.props.formik.errors.slug &&
             this.props.formik.errors.slug.missing && (
+              // This shows how a detailed custom error message can be used
+              // for LocalizedTextInput
               <ErrorMessage>
                 Missing slug. At least one field must be filled.
               </ErrorMessage>
