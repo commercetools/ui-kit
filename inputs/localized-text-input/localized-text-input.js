@@ -5,6 +5,8 @@ import requiredIf from 'react-required-if';
 import uniq from 'lodash.uniq';
 import without from 'lodash.without';
 import oneLine from 'common-tags/lib/oneLine';
+import { FormattedMessage } from 'react-intl';
+import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
@@ -12,6 +14,7 @@ import Constraints from '../../materials/constraints';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
+import messages from './messages';
 import styles from './localized-text-input.mod.css';
 
 const getPrimaryLanguage = language => language.split('-')[0];
@@ -154,8 +157,18 @@ const getId = (idPrefix, language) =>
 const getName = (namePrefix, language) =>
   namePrefix ? `${namePrefix}.${language}` : undefined;
 
+const RequiredValueErrorMessage = () => (
+  <ErrorMessage>
+    <FormattedMessage {...messages.missingRequiredField} />
+  </ErrorMessage>
+);
+
+RequiredValueErrorMessage.displayName = 'RequiredValueErrorMessage';
+
 export default class LocalizedTextInput extends React.Component {
   static displayName = 'LocalizedTextInput';
+
+  static RequiredValueErrorMessage = RequiredValueErrorMessage;
 
   static propTypes = {
     id: PropTypes.string,

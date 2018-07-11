@@ -100,3 +100,15 @@ LocalizedTextInput.omitEmptyTranslations({ en: 'Tree', de: '' });
 
 Expects to be called with an object or `undefined`.
 Returns `true` when at least one value is truthy.
+
+##### `RequiredValueErrorMessage`
+
+This field exports a default error message which can be used when the field is
+required, but the user provided no value. You can use it as
+
+```js
+<LocalizedTextInput hasError={isMissing} />;
+{
+  isMissing && <LocalizedTextInput.RequiredValueErrorMessage />;
+}
+```
