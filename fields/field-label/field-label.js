@@ -9,7 +9,7 @@ export const FieldLabel = props => (
   <div className={styles['label-container']}>
     <Spacings.Stack scale="xs">
       <label>
-        <Spacings.Inline scale="xs">
+        <Spacings.Inline alignItems="flexEnd" scale="xs">
           <Text.Body isBold={true}>
             {props.title}
             {props.isRequired ? <RequiredIndicator /> : null}
@@ -20,7 +20,7 @@ export const FieldLabel = props => (
             })}
         </Spacings.Inline>
       </label>
-      <Spacings.Inline scale="xs">
+      <Spacings.Inline alignItems="flexEnd" scale="xs">
         {props.subtitleIcon &&
           React.cloneElement(props.subtitleIcon, {
             size: 'medium',
