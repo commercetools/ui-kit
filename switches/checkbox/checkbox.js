@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Text from '../../typography/text';
 import Spacings from '../../materials/spacings';
-import withMouseOverState from '../../hocs/with-mouse-over-state';
 import Icons from './icons';
 import styles from './checkbox.mod.css';
 
@@ -24,10 +23,6 @@ export class Checkbox extends React.PureComponent {
     isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
     children: PropTypes.node,
-    // HoC
-    isMouseOver: PropTypes.bool.isRequired,
-    handleMouseOver: PropTypes.func.isRequired,
-    handleMouseOut: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -38,11 +33,7 @@ export class Checkbox extends React.PureComponent {
 
   render() {
     return (
-      <div
-        onMouseOver={this.props.handleMouseOver}
-        onMouseOut={this.props.handleMouseOut}
-        {...filterDataAttributes(this.props)}
-      >
+      <div {...filterDataAttributes(this.props)}>
         <label
           className={classnames(styles.labelWrapper, {
             [styles.labelWrapperDisabled]: this.props.isDisabled,
@@ -88,4 +79,4 @@ export class Checkbox extends React.PureComponent {
   }
 }
 
-export default withMouseOverState(Checkbox);
+export default Checkbox;

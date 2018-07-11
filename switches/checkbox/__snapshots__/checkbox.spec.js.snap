@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Checkbox> rendering with children should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -35,10 +32,7 @@ exports[`<Checkbox> rendering with children should match snapshot 1`] = `
 `;
 
 exports[`<Checkbox> rendering without children should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -66,10 +60,7 @@ exports[`<Checkbox> rendering without children should match snapshot 1`] = `
 `;
 
 exports[`<Checkbox> rendering without children when checked is false with \`isIndeterminate\` should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -97,10 +88,7 @@ exports[`<Checkbox> rendering without children when checked is false with \`isIn
 `;
 
 exports[`<Checkbox> rendering without children when checked is false without \`isIndeterminate\` should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -128,10 +116,7 @@ exports[`<Checkbox> rendering without children when checked is false without \`i
 `;
 
 exports[`<Checkbox> rendering without children when checked is true with \`isIndeterminate\` should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -159,10 +144,7 @@ exports[`<Checkbox> rendering without children when checked is true with \`isInd
 `;
 
 exports[`<Checkbox> rendering without children when checked is true without \`isIndeterminate\` should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -190,10 +172,7 @@ exports[`<Checkbox> rendering without children when checked is true without \`is
 `;
 
 exports[`<Checkbox> rendering without children when disabled should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper labelWrapperDisabled"
   >
@@ -257,8 +236,6 @@ exports[`<Checkbox> rendering without children when intermediate is true should 
 exports[`<Checkbox> rendering without children with \`data-*\` should match snapshot 1`] = `
 <div
   data-test="foo-attribute-select-me-from-e2e"
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
 >
   <label
     className="labelWrapper"
