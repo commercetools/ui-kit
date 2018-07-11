@@ -65,6 +65,195 @@ exports[`<Checkbox> rendering without children should match snapshot 1`] = `
 </div>
 `;
 
+exports[`<Checkbox> rendering without children when checked is false with \`isIndeterminate\` should match snapshot 1`] = `
+<div
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Checkbox> rendering without children when checked is false without \`isIndeterminate\` should match snapshot 1`] = `
+<div
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Checkbox> rendering without children when checked is true with \`isIndeterminate\` should match snapshot 1`] = `
+<div
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Checkbox> rendering without children when checked is true without \`isIndeterminate\` should match snapshot 1`] = `
+<div
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={true}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Checkbox> rendering without children when disabled should match snapshot 1`] = `
+<div
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+>
+  <label
+    className="labelWrapper labelWrapperDisabled"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper isDisabled"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={true}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Checkbox> rendering without children when intermediate is false should match snapshot 1`] = `
+<div>
+  <Checkbox
+    handleMouseOut={[MockFunction]}
+    handleMouseOver={[MockFunction]}
+    hasError={false}
+    isChecked={false}
+    isDisabled={false}
+    isIndeterminate={false}
+    isMouseOver={false}
+    name="bar"
+    onChange={[MockFunction]}
+    value="foo"
+  />
+</div>
+`;
+
+exports[`<Checkbox> rendering without children when intermediate is true should match snapshot 1`] = `
+<div>
+  <Checkbox
+    handleMouseOut={[MockFunction]}
+    handleMouseOver={[MockFunction]}
+    hasError={false}
+    isChecked={false}
+    isDisabled={false}
+    isIndeterminate={true}
+    isMouseOver={false}
+    name="bar"
+    onChange={[MockFunction]}
+    value="foo"
+  />
+</div>
+`;
+
 exports[`<Checkbox> rendering without children with \`data-*\` should match snapshot 1`] = `
 <div
   data-test="foo-attribute-select-me-from-e2e"
@@ -94,5 +283,22 @@ exports[`<Checkbox> rendering without children with \`data-*\` should match snap
       />
     </Inline>
   </label>
+</div>
+`;
+
+exports[`<Checkbox> rendering without children with error should match snapshot 1`] = `
+<div>
+  <Checkbox
+    handleMouseOut={[MockFunction]}
+    handleMouseOver={[MockFunction]}
+    hasError={true}
+    isChecked={false}
+    isDisabled={false}
+    isIndeterminate={false}
+    isMouseOver={false}
+    name="bar"
+    onChange={[MockFunction]}
+    value="foo"
+  />
 </div>
 `;

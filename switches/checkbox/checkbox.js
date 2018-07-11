@@ -31,7 +31,7 @@ export class Checkbox extends React.PureComponent {
   };
 
   static defaultProps = {
-    checked: false,
+    isChecked: false,
     isDisabled: false,
     hasError: false,
   };
