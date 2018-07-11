@@ -7,11 +7,6 @@ import Spacings from '../../materials/spacings';
 import Icons from './icons';
 import styles from './checkbox.mod.css';
 
-const getTextTone = ({ isDisabled, hasError }) => {
-  if (isDisabled) return 'secondary';
-  if (hasError) return 'negative';
-  return undefined;
-};
 export class Checkbox extends React.PureComponent {
   static displayName = 'Checkbox';
   static propTypes = {
@@ -55,10 +50,8 @@ export class Checkbox extends React.PureComponent {
             </div>
             {this.props.children && (
               <Text.Body
-                tone={getTextTone({
-                  isDisabled: this.props.isDisabled,
-                  hasError: this.props.hasError,
-                })}
+                // FIXME: add proper tones when we have disabled/primary in tones
+                tone={this.props.isDisabled ? 'secondary' : undefined}
               >
                 {this.props.children}
               </Text.Body>
