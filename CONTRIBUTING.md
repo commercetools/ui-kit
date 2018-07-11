@@ -32,7 +32,7 @@ These are informal steps we suggest you to follow when adding a new component.
 
     - [ ] Notify @lufego or @dferber90 of the task.
 
-3.  Create documentation for the component
+3.  Create documentation for the component **UNDECIDED**
 
     - [ ] Create copy of [UIKit Component Documentation Template].
     - [ ] Add copy to the [UIKit Component Documentation List] page.
@@ -54,7 +54,9 @@ These are informal steps we suggest you to follow when adding a new component.
 
     - [ ] Notify @lufego or @dferber90 of the new design.
 
-8.  Open a Github issue with the API proposal for the new component
+8.  Open a Github issue with the API proposal for the new component **_optional_**
+
+    _When the implementation of a component takes a lot of effort, or when multiple APIs are possible, it might be a good idea to open an issue first to discuss the API or to avoid doing unnecessary work._
 
     - [ ] i. `Dev` opens a Github issue on the MC Frontend repo describing the API proposal for the new component.
     - [ ] Use PropTypes to describe the component's props.
@@ -69,14 +71,13 @@ These are informal steps we suggest you to follow when adding a new component.
 
     - [ ] `Designer` conducts the UX review on the component.
 
-11. Review with UIKit leads
-
-12. Component is merged
+11. Component is merged
 
     - [ ] `Designer` adds component to UIKit Sketch file.
 
-13. Migrate component to MC.
+12. Migrate component to MC.
     - [ ] Component is used only where needed for the user story.
+    - [ ] Update component status on the UIKit Kanban board.
 
 ### When and how to change an existing component in UIKit
 
