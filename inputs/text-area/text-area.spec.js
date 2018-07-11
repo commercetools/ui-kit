@@ -132,6 +132,106 @@ describe('rendering', () => {
       });
     });
   });
+  describe('`isDefaultClosed`', () => {
+    describe('when false', () => {
+      describe('<TextArea />', () => {
+        describe('has 1 row', () => {
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field1',
+              value: 'foo',
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ contentRowCount: 1 });
+            textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
+              isOpen: true,
+              toggle: jest.fn(),
+            });
+          });
+          it('should not render FlatButton', () => {
+            expect(textAreaWrapper).not.toRender(FlatButton);
+          });
+        });
+        describe('has more than 1 row', () => {
+          let flatbutton;
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field2',
+              value: 'foo2',
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ contentRowCount: 10 });
+            textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
+              isOpen: true,
+              toggle: jest.fn(),
+            });
+            flatbutton = textAreaWrapper.find(FlatButton);
+          });
+          it('should render FlatButton', () => {
+            expect(textAreaWrapper).toRender(FlatButton);
+          });
+          it('should have `Collapse` message', () => {
+            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.collapse');
+          });
+        });
+      });
+    });
+    describe('when true', () => {
+      describe('<TextArea />', () => {
+        describe('has 1 row', () => {
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field2',
+              value: 'The quick brown fox jumps over the lazy dog',
+              isDefaultClosed: true,
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ contentRowCount: 1 });
+            textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
+              isOpen: false,
+              toggle: jest.fn(),
+            });
+          });
+          it('should not render FlatButton', () => {
+            expect(textAreaWrapper).not.toRender(FlatButton);
+          });
+        });
+        describe('has more than 1 row', () => {
+          let flatbutton;
+          let textAreaWrapper;
+          let wrapper;
+          beforeEach(() => {
+            const props = createTestProps({
+              name: 'field2',
+              value:
+                'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog',
+              isDefaultClosed: true,
+            });
+            wrapper = shallow(<TextArea {...props} />);
+            wrapper.setState({ contentRowCount: 10 });
+            textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
+              isOpen: false,
+              toggle: jest.fn(),
+            });
+            flatbutton = textAreaWrapper.find(FlatButton);
+            textAreaWrapper.find(FlatButton).simulate('click');
+          });
+          it('should render FlatButton', () => {
+            expect(textAreaWrapper).toRender(FlatButton);
+          });
+          it('should FlatButton have `Expand` message', () => {
+            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.expand');
+          });
+        });
+      });
+    });
+  });
 });
 
 describe('callbacks', () => {
@@ -211,123 +311,6 @@ describe('callbacks', () => {
 
     it('should autofocus prop be true', () => {
       expect(textarea).toHaveProp('autoFocus', true);
-    });
-  });
-  describe('`isDefaultClosed`', () => {
-    describe('when false', () => {
-      describe('<TextArea />', () => {
-        describe('has 1 row', () => {
-          let textAreaWrapper;
-          let wrapper;
-          beforeEach(() => {
-            const props = createTestProps({
-              name: 'field1',
-              value: 'foo',
-            });
-            wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ contentRowCount: 1 });
-            textAreaWrapper = shallow(
-              <div>
-                {wrapper.find(Collapsible).renderProp('children', {
-                  isOpen: true,
-                  toggle: jest.fn(),
-                })}
-              </div>
-            );
-          });
-          it('should not render FlatButton', () => {
-            expect(textAreaWrapper).not.toRender(FlatButton);
-          });
-        });
-        describe('has more than 1 row', () => {
-          let flatbutton;
-          let textAreaWrapper;
-          let wrapper;
-          beforeEach(() => {
-            const props = createTestProps({
-              name: 'field2',
-              value: 'foo2',
-            });
-            wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ contentRowCount: 10 });
-            textAreaWrapper = shallow(
-              <div>
-                {wrapper.find(Collapsible).renderProp('children', {
-                  isOpen: true,
-                  toggle: jest.fn(),
-                })}
-              </div>
-            );
-            flatbutton = textAreaWrapper.find(FlatButton);
-            // textAreaWrapper.find(FlatButton).simulate('click');
-          });
-          it('should render FlatButton', () => {
-            expect(textAreaWrapper).toRender(FlatButton);
-          });
-          it('should have `Collapse` message', () => {
-            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.collapse');
-          });
-        });
-      });
-    });
-    describe('when true', () => {
-      describe('<TextArea />', () => {
-        describe('has 1 row', () => {
-          let textAreaWrapper;
-          let wrapper;
-          beforeEach(() => {
-            const props = createTestProps({
-              name: 'field2',
-              value: 'The quick brown fox jumps over the lazy dog',
-              isDefaultClosed: true,
-            });
-            wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ contentRowCount: 1 });
-            textAreaWrapper = shallow(
-              <div>
-                {wrapper.find(Collapsible).renderProp('children', {
-                  isOpen: false,
-                  toggle: jest.fn(),
-                })}
-              </div>
-            );
-          });
-          it('should not render FlatButton', () => {
-            expect(textAreaWrapper).not.toRender(FlatButton);
-          });
-        });
-        describe('has more than 1 row', () => {
-          let flatbutton;
-          let textAreaWrapper;
-          let wrapper;
-          beforeEach(() => {
-            const props = createTestProps({
-              name: 'field2',
-              value:
-                'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog',
-              isDefaultClosed: true,
-            });
-            wrapper = shallow(<TextArea {...props} />);
-            wrapper.setState({ contentRowCount: 10 });
-            textAreaWrapper = shallow(
-              <div>
-                {wrapper.find(Collapsible).renderProp('children', {
-                  isOpen: false,
-                  toggle: jest.fn(),
-                })}
-              </div>
-            );
-            flatbutton = textAreaWrapper.find(FlatButton);
-            textAreaWrapper.find(FlatButton).simulate('click');
-          });
-          it('should render FlatButton', () => {
-            expect(textAreaWrapper).toRender(FlatButton);
-          });
-          it('should FlatButton have `Expand` message', () => {
-            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.expand');
-          });
-        });
-      });
     });
   });
 });
