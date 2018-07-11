@@ -265,33 +265,38 @@ export default class LocalizedTextInput extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack>
           <div>
-            <LocalizedInput
-              key={this.props.selectedLanguage}
-              id={getId(this.props.id, this.props.selectedLanguage)}
-              name={getName(this.props.name, this.props.selectedLanguage)}
-              value={this.props.value[this.props.selectedLanguage]}
-              onChange={this.handleChange}
-              language={this.props.selectedLanguage}
-              placeholder={
-                this.props.placeholder
-                  ? this.props.placeholder[this.props.selectedLanguage]
-                  : undefined
-              }
-              onBlur={this.props.onBlur}
-              onFocus={this.props.onFocus}
-              isAutofocussed={this.props.isAutofocussed}
-              isDisabled={this.props.isDisabled}
-              isReadOnly={this.props.isReadOnly}
-              hasError={Boolean(
-                this.props.hasError ||
-                  (this.props.errors &&
-                    this.props.errors[this.props.selectedLanguage])
-              )}
-              horizontalConstraint={this.props.horizontalConstraint}
-              {...createDataAttributes(this.props, this.props.selectedLanguage)}
-            />
-            {this.props.errors &&
-              this.props.errors[this.props.selectedLanguage]}
+            <Spacings.Stack scale="xs">
+              <LocalizedInput
+                key={this.props.selectedLanguage}
+                id={getId(this.props.id, this.props.selectedLanguage)}
+                name={getName(this.props.name, this.props.selectedLanguage)}
+                value={this.props.value[this.props.selectedLanguage]}
+                onChange={this.handleChange}
+                language={this.props.selectedLanguage}
+                placeholder={
+                  this.props.placeholder
+                    ? this.props.placeholder[this.props.selectedLanguage]
+                    : undefined
+                }
+                onBlur={this.props.onBlur}
+                onFocus={this.props.onFocus}
+                isAutofocussed={this.props.isAutofocussed}
+                isDisabled={this.props.isDisabled}
+                isReadOnly={this.props.isReadOnly}
+                hasError={Boolean(
+                  this.props.hasError ||
+                    (this.props.errors &&
+                      this.props.errors[this.props.selectedLanguage])
+                )}
+                horizontalConstraint={this.props.horizontalConstraint}
+                {...createDataAttributes(
+                  this.props,
+                  this.props.selectedLanguage
+                )}
+              />
+              {this.props.errors &&
+                this.props.errors[this.props.selectedLanguage]}
+            </Spacings.Stack>
           </div>
           <Collapsible isDefaultClosed={!this.props.isDefaultExpanded}>
             {({ toggle, isOpen }) => (
@@ -299,30 +304,32 @@ export default class LocalizedTextInput extends React.Component {
                 {(isOpen || this.props.hideExpansionControls) &&
                   remainingLanguages.map(language => (
                     <div key={language}>
-                      <LocalizedInput
-                        id={getId(this.props.id, language)}
-                        name={getName(this.props.name, language)}
-                        value={this.props.value[language]}
-                        onChange={this.handleChange}
-                        language={language}
-                        placeholder={
-                          this.props.placeholder
-                            ? this.props.placeholder[language]
-                            : undefined
-                        }
-                        onBlur={this.props.onBlur}
-                        onFocus={this.props.onFocus}
-                        isAutofocussed={false}
-                        isDisabled={this.props.isDisabled}
-                        isReadOnly={this.props.isReadOnly}
-                        horizontalConstraint={this.props.horizontalConstraint}
-                        hasError={Boolean(
-                          this.props.hasError ||
-                            (this.props.errors && this.props.errors[language])
-                        )}
-                        {...createDataAttributes(this.props, language)}
-                      />
-                      {this.props.errors && this.props.errors[language]}
+                      <Spacings.Stack scale="xs">
+                        <LocalizedInput
+                          id={getId(this.props.id, language)}
+                          name={getName(this.props.name, language)}
+                          value={this.props.value[language]}
+                          onChange={this.handleChange}
+                          language={language}
+                          placeholder={
+                            this.props.placeholder
+                              ? this.props.placeholder[language]
+                              : undefined
+                          }
+                          onBlur={this.props.onBlur}
+                          onFocus={this.props.onFocus}
+                          isAutofocussed={false}
+                          isDisabled={this.props.isDisabled}
+                          isReadOnly={this.props.isReadOnly}
+                          horizontalConstraint={this.props.horizontalConstraint}
+                          hasError={Boolean(
+                            this.props.hasError ||
+                              (this.props.errors && this.props.errors[language])
+                          )}
+                          {...createDataAttributes(this.props, language)}
+                        />
+                        {this.props.errors && this.props.errors[language]}
+                      </Spacings.Stack>
                     </div>
                   ))}
                 {!this.props.hideExpansionControls &&
