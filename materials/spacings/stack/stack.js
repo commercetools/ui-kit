@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { filterDataAttributes } from '@commercetools-local/utils/dataset';
 import styles from './stack.mod.css';
 
-const Stack = ({ children, scale, alignItems }) => (
-  <div className={classnames(styles[scale], styles[alignItems])}>
-    {children}
+const Stack = props => (
+  <div
+    className={classnames(styles[props.scale], styles[props.alignItems])}
+    {...filterDataAttributes(props)}
+  >
+    {props.children}
   </div>
 );
+
 Stack.displayName = 'Stack';
 Stack.propTypes = {
   scale: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
