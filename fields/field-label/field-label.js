@@ -9,10 +9,12 @@ export const FieldLabel = props => (
   <div className={styles['label-container']}>
     <Spacings.Stack scale="xs">
       <label>
-        <Spacings.Inline alignItems="flexEnd" scale="xs">
+        <Spacings.Inline alignItems="flexStart" scale="xs">
           <Text.Body isBold={true}>
-            {props.title}
-            {props.isRequired ? <RequiredIndicator /> : null}
+            <Text.Wrap>
+              {props.title}
+              {props.isRequired ? <RequiredIndicator /> : null}
+            </Text.Wrap>
           </Text.Body>
           {props.titleIcon &&
             React.cloneElement(props.titleIcon, {
