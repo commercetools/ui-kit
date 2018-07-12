@@ -10,7 +10,7 @@ export const FieldLabel = props => (
     <Spacings.Stack scale="xs">
       <label>
         <Spacings.Inline alignItems="flexStart" scale="xs">
-          <Text.Body isBold={true}>
+          <Text.Body isBold={true} data-role="title">
             <Text.Wrap>
               {props.title}
               {props.isRequired ? <RequiredIndicator /> : null}
@@ -27,8 +27,15 @@ export const FieldLabel = props => (
           React.cloneElement(props.subtitleIcon, {
             size: 'medium',
           })}
-        {props.subtitle && <Text.Detail>{props.subtitle}</Text.Detail>}
+        {props.subtitle && (
+          <Text.Detail data-role="subtitle">{props.subtitle}</Text.Detail>
+        )}
       </Spacings.Inline>
+      {props.hint && (
+        <Text.Detail data-role="hint">
+          <Text.Wrap>{props.hint}</Text.Wrap>
+        </Text.Detail>
+      )}
     </Spacings.Stack>
   </div>
 );
@@ -40,6 +47,7 @@ FieldLabel.defaultProps = {
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   isRequired: PropTypes.bool,
   titleIcon: PropTypes.node,
   subtitleIcon: PropTypes.node,

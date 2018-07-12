@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { WarningIcon } from '@commercetools-frontend/ui-kit/icons';
 import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
-import Text from '@commercetools-frontend/ui-kit/typography/text';
 import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-indicator';
 import FieldLabel from './field-label';
 
@@ -18,12 +17,13 @@ describe('rendering', () => {
   let subTitleComp;
   let labelIconWrapper;
   let subtitleIconWrapper;
+  let hintComp;
 
   describe('with title', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<FieldLabel {...props} />);
-      titleComp = wrapper.find(Text.Body);
+      titleComp = wrapper.find({ 'data-role': 'title' });
     });
 
     it('should contain the label text', () => {
@@ -40,7 +40,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ subtitle: 'Label Subtitle' });
         wrapper = shallow(<FieldLabel {...props} />);
-        subTitleComp = wrapper.find(Text.Detail);
+        subTitleComp = wrapper.find({ 'data-role': 'subtitle' });
       });
 
       it('should be present', () => {
@@ -59,7 +59,36 @@ describe('rendering', () => {
       });
 
       it('should not be present', () => {
-        expect(wrapper).not.toRender(Text.Detail);
+        expect(wrapper).not.toRender({ 'data-role': 'subtitle' });
+      });
+    });
+  });
+
+  describe('with hint', () => {
+    describe('when hint is given', () => {
+      beforeEach(() => {
+        props = createTestProps({ hint: 'Label hint' });
+        wrapper = shallow(<FieldLabel {...props} />);
+        hintComp = wrapper.find({ 'data-role': 'hint' });
+      });
+
+      it('should be present', () => {
+        expect(hintComp).toBeTruthy();
+      });
+
+      it('should contain the hint text', () => {
+        expect(hintComp.render().text()).toEqual('Label hint');
+      });
+    });
+
+    describe('without hint', () => {
+      beforeEach(() => {
+        props = createTestProps();
+        wrapper = shallow(<FieldLabel {...props} />);
+      });
+
+      it('should not be present', () => {
+        expect(wrapper).not.toRender({ 'data-role': 'hint' });
       });
     });
   });

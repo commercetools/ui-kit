@@ -22,6 +22,7 @@ storiesOf('Fields', module)
         <FieldLabel
           title={text('title', 'Label title')}
           subtitle={text('subtitle', null)}
+          hint={text('hint', null)}
           isRequired={boolean('isRequired', false)}
           titleIcon={
             select('titleIcon', ['', 'IconButton'], '') ? (
