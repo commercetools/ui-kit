@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './inset-squish.mod.css';
 
 const InsetSquish = props => (

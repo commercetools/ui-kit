@@ -1,5 +1,0 @@
----
-plugins:
-- local-rules
-rules:
-  local-rules/no-import-from-local-packages: 0

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { filterDataAttributes } from '@commercetools-local/utils/dataset';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './stack.mod.css';
 
 const Stack = props => (
