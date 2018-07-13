@@ -10,7 +10,11 @@ export const FieldLabel = props => (
     <Spacings.Stack scale="xs">
       <label>
         <Spacings.Inline alignItems="flexStart" scale="xs">
-          <Text.Body isBold={true} data-role="title">
+          <Text.Body
+            tone={props.titleTone}
+            isBold={props.isBold}
+            data-role="title"
+          >
             <Text.Wrap>
               {props.title}
               {props.isRequired ? <RequiredIndicator /> : null}
@@ -43,14 +47,17 @@ export const FieldLabel = props => (
 FieldLabel.displayName = 'FieldLabel';
 FieldLabel.defaultProps = {
   isRequired: false,
+  isBold: true,
 };
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  isRequired: PropTypes.bool,
   titleIcon: PropTypes.node,
   subtitleIcon: PropTypes.node,
+  isRequired: PropTypes.bool,
+  isBold: PropTypes.bool,
+  titleTone: PropTypes.string,
 };
 
 export default FieldLabel;

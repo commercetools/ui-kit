@@ -33,6 +33,34 @@ describe('rendering', () => {
     it('should contain bold text', () => {
       expect(titleComp).toHaveProp('isBold', true);
     });
+
+    it('should contain text with no tone', () => {
+      expect(titleComp).toHaveProp('tone', undefined);
+    });
+
+    describe('without bold text', () => {
+      beforeEach(() => {
+        props = createTestProps({ isBold: false });
+        wrapper = shallow(<FieldLabel {...props} />);
+        titleComp = wrapper.find({ 'data-role': 'title' });
+      });
+
+      it('should contain bold text', () => {
+        expect(titleComp).toHaveProp('isBold', false);
+      });
+    });
+
+    describe('with tone', () => {
+      beforeEach(() => {
+        props = createTestProps({ titleTone: 'inverted' });
+        wrapper = shallow(<FieldLabel {...props} />);
+        titleComp = wrapper.find({ 'data-role': 'title' });
+      });
+
+      it('should set the text tone', () => {
+        expect(titleComp).toHaveProp('tone', 'inverted');
+      });
+    });
   });
 
   describe('with subtitle', () => {
