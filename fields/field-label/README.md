@@ -16,19 +16,23 @@ import messages from './messages';
   title={<FormattedMessage {...messages.title} />}
   subtitle={<FormattedMessage {...messages.subtitle} />}
   hint={<FormattedMessage {...messages.hint} />}
-  isRequired={true}
   titleIcon={<IconButton icon={<InformationIcon />} />}
   subtitleIcon={<WarningIcon />}
+  isRequired={true}
+  isBold={false}
+  titleTone="inverted"
 />;
 ```
 
 #### Properties
 
-| Props          | Type     | Required | Values | Default | Description                                       |
-| -------------- | -------- | :------: | ------ | ------- | ------------------------------------------------- |
-| `title`        | `string` |    ✅    | -      | -       | Title of the label                                |
-| `subtitle`     | `string` |    -     | -      |         | Subtitle for the label                            |
-| `hint`         | `string` |    -     | -      |         | Hint text for the label                           |
-| `isRequired`   | `bool`   |    -     | -      | `false` | Indicates the labeled field is required (if true) |  |
-| `titleIcon`    | `node`   |    -     | -      |         | IconButton to be displayed beside the label title |
-| `subtitleIcon` | `node`   |    -     | -      |         | Icon to be displayed beside the label subtitle    |
+| Props          | Type     | Required | Values                                                                 | Default | Description                                         |
+| -------------- | -------- | :------: | ---------------------------------------------------------------------- | ------- | --------------------------------------------------- |
+| `title`        | `string` |    ✅    | -                                                                      | -       | Title of the label                                  |
+| `subtitle`     | `string` |    -     | -                                                                      |         | Subtitle for the label                              |
+| `hint`         | `string` |    -     | -                                                                      |         | Hint text for the label                             |
+| `titleIcon`    | `node`   |    -     | -                                                                      |         | IconButton to be displayed beside the label title   |
+| `subtitleIcon` | `node`   |    -     | -                                                                      |         | Icon to be displayed beside the label subtitle      |
+| `isRequired`   | `bool`   |    -     | -                                                                      | `false` | Indicates if the labeled field is required          |  |
+| `isBold`       | `bool`   |    -     | -                                                                      | `false` | Indicates if the label title should be in bold text |
+| `titleTone`    | `bool`   |    -     | `['primary', 'secondary', 'positive', 'negative', 'inverted', 'none']` | \_      | Indicates the tone to be applied to the label title |
