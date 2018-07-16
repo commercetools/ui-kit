@@ -24,7 +24,7 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<FieldLabel {...props} />);
-      titleComp = wrapper.find({ 'data-role': 'title' });
+      titleComp = wrapper.find({ 'data-test-role': 'title' });
     });
 
     it('should contain the label text', () => {
@@ -43,7 +43,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ isBold: false });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleComp = wrapper.find({ 'data-role': 'title' });
+        titleComp = wrapper.find({ 'data-test-role': 'title' });
       });
 
       it('should contain bold text', () => {
@@ -55,7 +55,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ titleTone: 'inverted' });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleComp = wrapper.find({ 'data-role': 'title' });
+        titleComp = wrapper.find({ 'data-test-role': 'title' });
       });
 
       it('should set the text tone', () => {
@@ -69,7 +69,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ subtitle: 'Label Subtitle' });
         wrapper = shallow(<FieldLabel {...props} />);
-        subTitleComp = wrapper.find({ 'data-role': 'subtitle' });
+        subTitleComp = wrapper.find({ 'data-test-role': 'subtitle' });
       });
 
       it('should be present', () => {
@@ -88,7 +88,7 @@ describe('rendering', () => {
       });
 
       it('should not be present', () => {
-        expect(wrapper).not.toRender({ 'data-role': 'subtitle' });
+        expect(wrapper).not.toRender({ 'data-test-role': 'subtitle' });
       });
     });
   });
@@ -98,7 +98,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ hint: 'Label hint' });
         wrapper = shallow(<FieldLabel {...props} />);
-        hintComp = wrapper.find({ 'data-role': 'hint' });
+        hintComp = wrapper.find({ 'data-test-role': 'hint' });
       });
 
       it('should be present', () => {
@@ -117,7 +117,7 @@ describe('rendering', () => {
       });
 
       it('should not be present', () => {
-        expect(wrapper).not.toRender({ 'data-role': 'hint' });
+        expect(wrapper).not.toRender({ 'data-test-role': 'hint' });
       });
     });
   });
