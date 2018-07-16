@@ -18,6 +18,18 @@ import MoneyInput from '@commercetools-frontend/ui-kit/inputs/money-input';
 />;
 ```
 
+## High Precision Money Values
+
+The `MoneyInput` component always operates on a value consisting of
+
+```js
+{ amount: String, currencyCode: String }
+```
+
+The amount can have an arbitrary precision. When the precision of the amount exceeds the precision of that currency, then that Money Value is referred to as being "high precision".
+
+> ⚠️ The `MoneyInput` will allow high precision money values by default. If you want to discourage them, you need to add validation as shown in the example below, or the Examples/Forms story.
+
 #### Properties
 
 | Props                  | Type                                                            | Required | Values                       | Default | Description                                                                                                                                                   |
@@ -104,6 +116,7 @@ Here's an example of how `MoneyInput` would be used inside a form.
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
+import omitEmpty from 'omit-empty';
 import ErrorMessage from '@commercetools-frontend/ui-kit/messages/error-message';
 import MoneyInput from '@commercetools-frontend/ui-kit/inputs/money-input';
 
@@ -140,16 +153,16 @@ const formValuesToDoc = formValues => ({
 });
 
 const validate = formValues => {
-  const errors = {};
+  const errors = { somePrice: {} };
   const moneyValue = MoneyInput.convertToMoneyValue(formValues.somePrice);
   // convertToMoneyValue returns null whenever the value is invalid
   if (!moneyValue) {
-    errors.somePrice = 'value required';
+    errors.somePrice.missing = true;
   } else if (moneyValue.type === 'highPrecision') {
     // This form does not allow highPrecision prices
-    errors.somePrice = 'high-precision not allowed';
+    errors.somePrice.highPrecision = true;
   }
-  return errors;
+  return omitEmpty(errors);
 };
 const initialValues = docToFormValues(doc);
 
@@ -160,7 +173,8 @@ return (
     onSubmit={formValues => {
       // doc will contain "somePrice" holding a MoneyValue,
       // ready to be consumed by the API
-      const doc = formValuesToDoc(formValues);
+      const nextDoc = formValuesToDoc(formValues);
+      console.log(nextDoc);
     }}
     render={({
       values,
@@ -181,7 +195,18 @@ return (
           hasAmountError={touched.somePrice && Boolean(errors.somePrice)}
           horizontalConstraint="l"
         />
-        {touched.somePrice && <ErrorMessage>{errors.somePrice}</ErrorMessage>}
+        {touched.somePrice &&
+          errors.somePrice &&
+          errors.somePrice.missing && (
+            <ErrorMessage>This field is required!</ErrorMessage>
+          )}
+        {touched.somePrice &&
+          errors.somePrice &&
+          errors.somePrice.highPrecision && (
+            <ErrorMessage>
+              High precision prices are not supported here!
+            </ErrorMessage>
+          )}
         <button type="submit">Submit</button>
       </form>
     )}
