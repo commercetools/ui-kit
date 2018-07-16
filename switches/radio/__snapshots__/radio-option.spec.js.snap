@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Option> rendering with children should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -12,12 +9,14 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
       alignItems="center"
       scale="s"
     >
-      <test-file-stub />
-      <span
-        className=""
+      <div
+        className="radioWrapper"
       >
+        <test-file-stub />
+      </div>
+      <TextBody>
         Some label
-      </span>
+      </TextBody>
       <input
         checked={false}
         className="inputWrapper"
@@ -33,10 +32,7 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
 `;
 
 exports[`<Option> rendering without children should match snapshot 1`] = `
-<div
-  onMouseOut={[MockFunction]}
-  onMouseOver={[MockFunction]}
->
+<div>
   <label
     className="labelWrapper"
   >
@@ -44,7 +40,11 @@ exports[`<Option> rendering without children should match snapshot 1`] = `
       alignItems="center"
       scale="s"
     >
-      <test-file-stub />
+      <div
+        className="radioWrapper"
+      >
+        <test-file-stub />
+      </div>
       <input
         checked={false}
         className="inputWrapper"

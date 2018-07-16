@@ -6,7 +6,7 @@ exports[`<Group> rendering should match snapshot 1`] = `
     alignItems="stretch"
     scale="m"
   >
-    <WithMouseOverState(RadioOption)
+    <RadioOption
       isChecked={false}
       isDisabled={false}
       key=".0"
@@ -15,8 +15,8 @@ exports[`<Group> rendering should match snapshot 1`] = `
       value="foo"
     >
       foo
-    </WithMouseOverState(RadioOption)>
-    <WithMouseOverState(RadioOption)
+    </RadioOption>
+    <RadioOption
       isChecked={false}
       isDisabled={false}
       key=".1"
@@ -25,7 +25,7 @@ exports[`<Group> rendering should match snapshot 1`] = `
       value="foo"
     >
       bar
-    </WithMouseOverState(RadioOption)>
+    </RadioOption>
   </Stack>
 </div>
 `;
@@ -36,7 +36,7 @@ exports[`<Group> rendering when \`direction is \`inline\`\` should match snapsho
     alignItems="flexStart"
     scale="m"
   >
-    <WithMouseOverState(RadioOption)
+    <RadioOption
       isChecked={false}
       isDisabled={false}
       key=".0"
@@ -45,8 +45,8 @@ exports[`<Group> rendering when \`direction is \`inline\`\` should match snapsho
       value="foo"
     >
       foo
-    </WithMouseOverState(RadioOption)>
-    <WithMouseOverState(RadioOption)
+    </RadioOption>
+    <RadioOption
       isChecked={false}
       isDisabled={false}
       key=".1"
@@ -55,7 +55,7 @@ exports[`<Group> rendering when \`direction is \`inline\`\` should match snapsho
       value="foo"
     >
       bar
-    </WithMouseOverState(RadioOption)>
+    </RadioOption>
   </Inline>
 </div>
 `;
@@ -68,7 +68,7 @@ exports[`<Group> rendering with \`data-test\` should match snpshot 1`] = `
     alignItems="flexStart"
     scale="m"
   >
-    <WithMouseOverState(RadioOption)
+    <RadioOption
       isChecked={false}
       isDisabled={false}
       key=".0"
@@ -77,8 +77,8 @@ exports[`<Group> rendering with \`data-test\` should match snpshot 1`] = `
       value="foo"
     >
       foo
-    </WithMouseOverState(RadioOption)>
-    <WithMouseOverState(RadioOption)
+    </RadioOption>
+    <RadioOption
       isChecked={false}
       isDisabled={false}
       key=".1"
@@ -87,7 +87,7 @@ exports[`<Group> rendering with \`data-test\` should match snpshot 1`] = `
       value="foo"
     >
       bar
-    </WithMouseOverState(RadioOption)>
+    </RadioOption>
   </Inline>
 </div>
 `;
