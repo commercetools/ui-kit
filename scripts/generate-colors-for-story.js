@@ -27,7 +27,7 @@ const colorGroups = rootRule.declarations.reduce((colors, declaration) => {
   ];
 }, []);
 fs.writeFileSync(
-  path.join(__dirname, '../materials/colors.json'),
+  path.join(__dirname, '../colors/colors.json'),
   JSON.stringify(colorGroups, null, 2),
   'utf-8'
 );
