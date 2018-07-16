@@ -1,9 +1,48 @@
+@import '../../materials/tokens/tokens.mod.css';
 @import '../../materials/colors.mod.css';
 @import '../../materials/spacings.mod.css';
+
+/* As this relies on SVG files, we need to sync them with our Design tokens colors */
+
+/* The `id` attributes below, comes from the SVG files.
+  Since they are all structured the same, we can target them with CSS
+  to keep they in sync with our design tokens */
+
+/* Radio input */
+
+.radioWrapper svg [id='borderAndContent'] > [id='border'] {
+  stroke: 1px var(--token-border-color-input-pristine) solid;
+}
+
+.radioWrapper svg [id='borderAndContent'] > [id='content'] {
+  fill: var(--token-border-color-input-focus);
+}
+
+/* isDisabled */
+
+.isDisabled svg [id='borderAndContent'] > [id='content'] {
+  fill: var(--token-font-color-disabled);
+}
+
+.isDisabled svg [id='borderAndContent'] > [id='border'] {
+  stroke: var(--token-border-color-input-disabled);
+}
+
+/* Hover */
+
+.labelWrapper:not(.labelWrapperDisabled):hover
+  svg
+  [id='borderAndContent'] > [id='border'] {
+  stroke: var(--token-border-color-input-focus);
+}
+
+/* Hidden input */
 
 .inputWrapper {
   display: none;
 }
+
+/* Label */
 
 .labelWrapper {
   cursor: pointer;
@@ -11,8 +50,4 @@
 
 .labelWrapperDisabled {
   cursor: not-allowed;
-}
-
-.textDisabled {
-  color: var(--color-gray);
 }
