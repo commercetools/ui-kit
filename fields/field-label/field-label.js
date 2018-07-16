@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Text from '@commercetools-frontend/ui-kit/typography/text';
-import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
-import { InformationIcon } from '@commercetools-frontend/ui-kit/icons';
 import Spacings from '@commercetools-frontend/ui-kit/materials/spacings';
 import Constraints from '@commercetools-frontend/ui-kit/materials/constraints';
 import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-indicator';
@@ -46,9 +44,9 @@ export const FieldLabel = props => (
           </Text.Detail>
         )}
       </div>
-      <div className={styles['label-badge']}>
-        <FlatButton type="primary" icon={<InformationIcon />} label="show" />
-      </div>
+      {props.badge && (
+        <div className={styles['label-badge']}>{props.badge}</div>
+      )}
     </div>
   </Constraints.Horizontal>
 );
@@ -64,6 +62,7 @@ FieldLabel.propTypes = {
   hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   titleIcon: PropTypes.node,
   subtitleIcon: PropTypes.node,
+  badge: PropTypes.node,
   isRequired: PropTypes.bool,
   isBold: PropTypes.bool,
   titleTone: PropTypes.string,

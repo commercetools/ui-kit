@@ -10,6 +10,7 @@ import {
   InformationIcon,
   WarningIcon,
 } from '@commercetools-frontend/ui-kit/icons';
+import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
 import Section from '../../.storybook/decorators/section';
 import Spacings from '../../materials/spacings';
 import Readme from './README.md';
@@ -36,6 +37,15 @@ storiesOf('Fields', module)
             subtitleIcon={
               select('subtitleIcon', ['', 'WarningIcon'], '') ? (
                 <WarningIcon />
+              ) : null
+            }
+            badge={
+              select('badge', ['', 'FlatButton'], '') ? (
+                <FlatButton
+                  tone="primary"
+                  icon={<InformationIcon />}
+                  label="show"
+                />
               ) : null
             }
           />

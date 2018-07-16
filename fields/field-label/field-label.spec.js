@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { WarningIcon } from '@commercetools-frontend/ui-kit/icons';
+import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
 import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
 import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-indicator';
 import FieldLabel from './field-label';
@@ -199,6 +200,19 @@ describe('rendering', () => {
 
       it('should not display an icon', () => {
         expect(wrapper.prop('subtitleIcon')).toBeUndefined();
+      });
+    });
+  });
+
+  describe('with `badge`', () => {
+    describe('when badge is given', () => {
+      beforeEach(() => {
+        props = createTestProps({ badge: <FlatButton /> });
+        wrapper = shallow(<FieldLabel {...props} />);
+      });
+
+      it('should display the badge', () => {
+        expect(wrapper).toRender(FlatButton);
       });
     });
   });
