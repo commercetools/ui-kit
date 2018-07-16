@@ -10,6 +10,11 @@
 
 /* Radio input */
 
+.radioWrapper {
+  display: flex;
+  align-items: center;
+}
+
 .radioWrapper svg [id='borderAndContent'] > [id='border'] {
   stroke: 1px var(--token-border-color-input-pristine) solid;
 }
