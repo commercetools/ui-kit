@@ -42,6 +42,7 @@ export class TextArea extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
+    isDefaultClosed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
@@ -59,22 +60,30 @@ export class TextArea extends React.Component {
     hasError: false,
     hasWarning: false,
     isAutofocussed: false,
+    isDefaultClosed: false,
   };
 
   state = {
-    numOfRows: TextArea.MIN_ROW_COUNT,
+    // This is the internal "fake" rendered textarea element's height in rows
+    contentRowCount: TextArea.MIN_ROW_COUNT,
   };
 
   handleHeightChange = (_, innerComponent) => {
     this.setState({
-      numOfRows: innerComponent.rowCount,
+      contentRowCount: innerComponent.valueRowCount,
     });
   };
 
   render() {
+    // This checks if the content in the textarea overflows the minimum
+    // amount of lines it should have when collapsed
+
+    const shouldRenderToggleButton =
+      this.state.contentRowCount > TextArea.MIN_ROW_COUNT;
+
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Collapsible>
+        <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
           {({ isOpen, toggle }) => (
             <React.Fragment key="textarea-autosize">
               <TextareaAutosize
@@ -107,7 +116,7 @@ export class TextArea extends React.Component {
                 useCacheForDOMMeasurements={true}
                 {...filterDataAttributes(this.props)}
               />
-              {(this.state.numOfRows > TextArea.MIN_ROW_COUNT || !isOpen) && (
+              {shouldRenderToggleButton && (
                 <FlatButton
                   onClick={toggle}
                   type="primary"

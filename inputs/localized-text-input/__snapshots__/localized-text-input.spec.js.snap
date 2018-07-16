@@ -1,38 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering other languages should sort them by the length 1`] = `
+exports[`rendering other languages should sort them by the relevance 1`] = `
 <React.Fragment>
-  <LocalizedInput
-    horizontalConstraint="scale"
-    isAutofocussed={false}
-    language="de"
-    onChange={[Function]}
-    value="de"
-  />
-  <LocalizedInput
-    horizontalConstraint="scale"
-    isAutofocussed={false}
-    language="fr"
-    onChange={[Function]}
-    value="fr"
-  />
-  <LocalizedInput
-    horizontalConstraint="scale"
-    isAutofocussed={false}
-    language="nan-Hant-TW"
-    onChange={[Function]}
-    value="nan-Hant-TW"
-  />
-  <LocalizedInput
-    horizontalConstraint="scale"
-    isAutofocussed={false}
-    language="pt-BR"
-    onChange={[Function]}
-    value="pt-BR"
-  />
+  <div>
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        horizontalConstraint="scale"
+        isAutofocussed={false}
+        language="en-GB"
+        onChange={[Function]}
+        value="en-GB"
+      />
+    </Stack>
+  </div>
+  <div>
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        horizontalConstraint="scale"
+        isAutofocussed={false}
+        language="de"
+        onChange={[Function]}
+        value="de"
+      />
+    </Stack>
+  </div>
+  <div>
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        horizontalConstraint="scale"
+        isAutofocussed={false}
+        language="fr"
+        onChange={[Function]}
+        value="fr"
+      />
+    </Stack>
+  </div>
+  <div>
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        horizontalConstraint="scale"
+        isAutofocussed={false}
+        language="nan-Hant-TW"
+        onChange={[Function]}
+        value="nan-Hant-TW"
+      />
+    </Stack>
+  </div>
+  <div>
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        horizontalConstraint="scale"
+        isAutofocussed={false}
+        language="pt-BR"
+        onChange={[Function]}
+        value="pt-BR"
+      />
+    </Stack>
+  </div>
   <ExpandControl
     collapseMessage="Collapse"
-    expandMessage="Expand all languages (4)"
+    expandMessage="Expand all languages (5)"
     isOpen={true}
     onClick={[MockFunction]}
   />
@@ -48,15 +95,20 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="scale"
-        isAutofocussed={true}
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          isAutofocussed={true}
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={true}
@@ -74,15 +126,50 @@ exports[`rendering when disabled should match snapshot 1`] = `
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="scale"
-        isDisabled={true}
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          isDisabled={true}
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <Collapsible
+      isDefaultClosed={true}
+    />
+  </Stack>
+</Horizontal>
+`;
+
+exports[`rendering when every field should display an error should match snapshot 1`] = `
+<Horizontal
+  constraint="scale"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={true}
+          horizontalConstraint="scale"
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={true}
@@ -100,14 +187,19 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="scale"
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={false}
@@ -125,14 +217,19 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="scale"
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={true}
@@ -150,15 +247,20 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="scale"
-        isReadOnly={true}
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          isReadOnly={true}
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={true}
@@ -176,15 +278,20 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="scale"
-        key="en"
-        language="en"
-        onChange={[Function]}
-        placeholder="Value"
-        value="Horse"
-      />
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          key="en"
+          language="en"
+          onChange={[Function]}
+          placeholder="Value"
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={true}
@@ -193,7 +300,7 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
 </Horizontal>
 `;
 
-exports[`rendering when there is an error should match snapshot 1`] = `
+exports[`rendering when there is an error on a specific field should match snapshot 1`] = `
 <Horizontal
   constraint="scale"
 >
@@ -202,17 +309,19 @@ exports[`rendering when there is an error should match snapshot 1`] = `
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={true}
-        horizontalConstraint="scale"
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
-      <ErrorMessage>
-        This field is requried
-      </ErrorMessage>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={true}
@@ -230,14 +339,19 @@ exports[`rendering with minimal props should match snapshot 1`] = `
     scale="s"
   >
     <div>
-      <LocalizedInput
-        hasError={false}
-        horizontalConstraint="scale"
-        key="en"
-        language="en"
-        onChange={[Function]}
-        value="Horse"
-      />
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <LocalizedInput
+          hasError={false}
+          horizontalConstraint="scale"
+          key="en"
+          language="en"
+          onChange={[Function]}
+          value="Horse"
+        />
+      </Stack>
     </div>
     <Collapsible
       isDefaultClosed={true}

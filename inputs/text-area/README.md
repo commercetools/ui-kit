@@ -22,6 +22,7 @@ import TextArea from '@commercetools-frontend/ui-kit/inputs/text-area';
 | `onChange`             | `func`   |    ✅    | -                       | -       | Called with an event containing the new value. Required, unless input is `read-only. Parent should pass it back as`value` |
 | `id`                   | `string` |    -     | -                       | -       | Specifies the id of an element                                                                                            |
 | `placeholder`          | `string` |    -     | -                       | -       | Placeholder text for the input                                                                                            |
+| `isDefaultClosed`      | `bool`   |    -     | -                       | `false` | Closes input initially                                                                                                    |
 | `isAutofocussed`       | `bool`   |    -     | -                       | -       | Focuses the input field on initial render                                                                                 |
 | `isDisabled`           | `bool`   |    -     | -                       | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                                        |
 | `isReadOnly`           | `bool`   |    -     | -                       | `false` | Indicates that the field is displaying read-only content                                                                  |

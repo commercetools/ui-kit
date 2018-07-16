@@ -6,6 +6,8 @@ import { Formik } from 'formik';
 import { action } from '@storybook/addon-actions';
 import omitEmpty from 'omit-empty';
 import withReadme from 'storybook-readme/with-readme';
+import { withKnobs, select } from '@storybook/addon-knobs';
+import mapValues from 'lodash.mapvalues';
 import Section from '../.storybook/decorators/section';
 import Spacings from '../materials/spacings';
 import Text from '../typography/text';
@@ -42,6 +44,7 @@ class FakeConnector extends React.Component {
     version: 1,
     key: 'shoe',
     name: { en: 'Shoe', de: 'Schuh' },
+    slug: { en: 'shoe', de: 'schuh' },
     inventory: 30,
     price: { currencyCode: 'EUR', centAmount: 300 },
   };
@@ -101,6 +104,7 @@ const docToForm = doc => ({
   // otherwise have to deal with either undefined or an empty string, or a
   // filled string.
   name: LocalizedTextInput.createLocalizedString(resourceLanguages, doc.name),
+  slug: LocalizedTextInput.createLocalizedString(resourceLanguages, doc.slug),
   // The product does not contain a "description" field by default. However,
   // the form expects description to be a string. Hence, we have to fall back
   // to a string here!
@@ -128,6 +132,7 @@ const formToDoc = formValues => ({
   version: formValues.version,
   key: formValues.key,
   name: formValues.name,
+  slug: formValues.slug,
   description: formValues.description,
   inventory: formValues.inventory,
   price: MoneyInput.convertToMoneyValue(formValues.price),
@@ -147,6 +152,7 @@ const validate = formValues => {
   const errors = {
     key: {},
     name: {},
+    slug: {},
     description: {},
     price: {},
     inventory: {},
@@ -160,6 +166,28 @@ const validate = formValues => {
   // validate name
   // A localized string is considered empty when no translation is given at all
   if (LocalizedTextInput.isEmpty(formValues.name)) errors.name.missing = true;
+
+  // validate slug
+  // A slug must match [a-zA-Z0-9_-]{2,256}
+  // The error object of the slug is
+  //  {
+  //    missing: Boolean,
+  //    translations: { de: { hasForbiddenChars: Boolean }, ... },
+  //  }
+  // The "missing" part is used to highlight all fields, while the
+  // "translations" part gets mapped to errors per translation.
+  if (LocalizedTextInput.isEmpty(formValues.slug)) {
+    errors.slug.missing = true;
+  } else {
+    const isValidSlug = value => /^[a-zA-Z0-9_-]{2,256}$/.test(value);
+    const translationErrors = mapValues(
+      LocalizedTextInput.omitEmptyTranslations(formValues.slug),
+      // more validation errors could be added in theory
+      slug => (isValidSlug(slug) ? {} : { hasForbiddenChars: true })
+    );
+
+    errors.slug.translations = translationErrors;
+  }
 
   // validate description
   if (TextArea.isEmpty(formValues.description))
@@ -197,6 +225,7 @@ class ProductForm extends React.Component {
         version: PropTypes.number.isRequired,
         key: PropTypes.string.isRequired,
         name: PropTypes.objectOf(PropTypes.string).isRequired,
+        slug: PropTypes.objectOf(PropTypes.string).isRequired,
         description: PropTypes.string.isRequired,
         // Formik provides us with either a number or an empty string in case
         // the value can not be parsed
@@ -210,6 +239,7 @@ class ProductForm extends React.Component {
       touched: PropTypes.shape({
         key: PropTypes.bool,
         name: PropTypes.objectOf(PropTypes.bool),
+        slug: PropTypes.objectOf(PropTypes.bool),
         description: PropTypes.bool,
         inventory: PropTypes.bool,
         price: PropTypes.shape({
@@ -223,6 +253,11 @@ class ProductForm extends React.Component {
           duplicate: PropTypes.bool,
         }),
         name: PropTypes.shape({ missing: PropTypes.bool }),
+        slug: PropTypes.shape({
+          missing: PropTypes.bool,
+          // For example: { en: { hasForbiddenChars: true } }
+          translations: PropTypes.objectOf(PropTypes.objectOf(PropTypes.bool)),
+        }),
         description: PropTypes.shape({ missing: PropTypes.bool }),
         inventory: PropTypes.shape({
           negative: PropTypes.bool,
@@ -241,6 +276,7 @@ class ProductForm extends React.Component {
       handleReset: PropTypes.func.isRequired,
       isSubmitting: PropTypes.bool.isRequired,
     }).isRequired,
+    selectedLanguage: PropTypes.string.isRequired,
   };
   render() {
     return (
@@ -262,9 +298,84 @@ class ProductForm extends React.Component {
             onChange={this.props.formik.handleChange}
             onBlur={this.props.formik.handleBlur}
             isDisabled={this.props.formik.isSubmitting}
-            selectedLanguage="en"
-            error={this.props.formik.errors.name}
+            selectedLanguage={this.props.selectedLanguage}
+            hasError={
+              LocalizedTextInput.isTouched(this.props.formik.touched.name) &&
+              this.props.formik.errors.name &&
+              this.props.formik.errors.name.missing
+            }
           />
+          {LocalizedTextInput.isTouched(this.props.formik.touched.name) &&
+            this.props.formik.errors.name &&
+            this.props.formik.errors.name.missing && (
+              // The LocalizedTextInput provides a generic default message
+              // when it is a required field and values are missing
+              // It is also possible to use a custom, more detailed error
+              // message as shown on the example below (the slug)
+              <LocalizedTextInput.RequiredValueErrorMessage />
+            )}
+        </div>
+        <div>
+          <Text.Body>Slug*</Text.Body>
+          <Text.Detail>
+            The slug can contain alphanumeric characters (0-9 or A-Z),
+            underscores or hyphens with no spaces, and can be anywhere between 2
+            to 256 characters long.
+          </Text.Detail>
+          <LocalizedTextInput
+            name="slug"
+            value={this.props.formik.values.slug}
+            onChange={this.props.formik.handleChange}
+            onBlur={this.props.formik.handleBlur}
+            isDisabled={this.props.formik.isSubmitting}
+            selectedLanguage={this.props.selectedLanguage}
+            hasError={
+              // When the field is requried but no value is given, then we
+              // highlight every input to indicate the missing value
+              this.props.formik.touched.slug &&
+              this.props.formik.errors.slug &&
+              this.props.formik.errors.slug.missing
+            }
+            errors={
+              // This example shows how to map a specific error back onto
+              // the field. We need to provide an errors prop which
+              // looks like this: { en: Node, de: Node }.
+              // We can provide React elements to display underneath the input
+              // indicated by the key.
+              //
+              // Keeping the errors as simple booleans, whileattaching the
+              // specific messages in code means we can make use of our existing
+              // translation mechanism. We could easily render
+              // <FormattedMessage /> instead of rendering the warning string.
+              mapValues(
+                // We only show errors once the field has been touched
+                LocalizedTextInput.isTouched(this.props.formik.touched.slug) &&
+                this.props.formik.errors.slug
+                  ? // We map on the per-field errors which are present on
+                    // the "translations" field
+                    this.props.formik.errors.slug.translations
+                  : {},
+                error => {
+                  if (error.hasForbiddenChars) {
+                    return <ErrorMessage>This slug is not valid.</ErrorMessage>;
+                  }
+                  // we could map other errors here as well
+
+                  // returning undefined results in no error for that field
+                  return undefined;
+                }
+              )
+            }
+          />
+          {LocalizedTextInput.isTouched(this.props.formik.touched.slug) &&
+            this.props.formik.errors.slug &&
+            this.props.formik.errors.slug.missing && (
+              // This shows how a detailed custom error message can be used
+              // for LocalizedTextInput
+              <ErrorMessage>
+                Missing slug. At least one field must be filled.
+              </ErrorMessage>
+            )}
         </div>
         <div>
           <Text.Body>Product Description*</Text.Body>
@@ -396,83 +507,94 @@ class ProductForm extends React.Component {
 }
 
 storiesOf('Examples', module)
+  .addDecorator(withKnobs)
   .addDecorator(withReadme(Forms))
-  .add('Forms', () => (
-    <IntlProvider locale="en">
-      <Section>
-        <FakeConnector>
-          {({ product, updateProduct }) => (
-            <Formik
-              initialValues={docToForm(product)}
-              validate={validate}
-              onSubmit={(formValues, formik) => {
-                action('values of form submission')(formValues);
-                const nextProduct = formToDoc(formValues);
-                // Usually, we would compute update actions here by comparing
-                // nextProduct to the product from FakeConnector.
-                // We would then use formValues.id and formValues.version
-                // to send the update action to the server through the connector
-                return updateProduct({
-                  // As explained in the beginning of this document, sending
-                  // the id and version from formValues along prevents
-                  // accidental concurrent modifications and ensures the user
-                  // will run into the ConcurrentModificationError int those
-                  // cases
-                  id: formValues.id,
-                  version: formValues.version,
-                  product: nextProduct,
-                }).then(
-                  updatedProduct => {
-                    // Calling resetForm with the updated product will
-                    // update the form values and reset the submission state,
-                    // touched keys and so on.
-                    formik.resetForm(docToForm(updatedProduct));
-                  },
-                  error => {
-                    // This is an example where we have to rely on the API
-                    // on submission time to ensure correct form values.
-                    // The example shows how to map API errors back onto
-                    // specific fields within the form.
-                    if (error.code === 'DuplicateKeyError') {
-                      formik.setErrors({ key: { duplicate: true } });
+  .add('Forms', () => {
+    const selectedLanguage = select(
+      'selectedLanguage',
+      resourceLanguages,
+      resourceLanguages[0]
+    );
+    return (
+      <IntlProvider locale="en">
+        <Section>
+          <FakeConnector>
+            {({ product, updateProduct }) => (
+              <Formik
+                initialValues={docToForm(product)}
+                validate={validate}
+                onSubmit={(formValues, formik) => {
+                  action('values of form submission')(formValues);
+                  const nextProduct = formToDoc(formValues);
+                  // Usually, we would compute update actions here by comparing
+                  // nextProduct to the product from FakeConnector.
+                  // We would then use formValues.id and formValues.version
+                  // to send the update action to the server through the connector
+                  return updateProduct({
+                    // As explained in the beginning of this document, sending
+                    // the id and version from formValues along prevents
+                    // accidental concurrent modifications and ensures the user
+                    // will run into the ConcurrentModificationError int those
+                    // cases
+                    id: formValues.id,
+                    version: formValues.version,
+                    product: nextProduct,
+                  }).then(
+                    updatedProduct => {
+                      // Calling resetForm with the updated product will
+                      // update the form values and reset the submission state,
+                      // touched keys and so on.
+                      formik.resetForm(docToForm(updatedProduct));
+                    },
+                    error => {
+                      // This is an example where we have to rely on the API
+                      // on submission time to ensure correct form values.
+                      // The example shows how to map API errors back onto
+                      // specific fields within the form.
+                      if (error.code === 'DuplicateKeyError') {
+                        formik.setErrors({ key: { duplicate: true } });
+                      }
+                      // Since we might do things like retrying a request in case
+                      // there was an error with it, we are responsible for
+                      // resetting the submission state.
+                      formik.setSubmitting(false);
                     }
-                    // Since we might do things like retrying a request in case
-                    // there was an error with it, we are responsible for
-                    // resetting the submission state.
-                    formik.setSubmitting(false);
-                  }
-                );
-              }}
-              render={formik => (
-                <Spacings.Stack scale="l">
-                  <Text.Headline elementType="h2">The form</Text.Headline>
-                  <div>
-                    <ProductForm formik={formik} />
-                  </div>
-                  <hr />
-                  <div>
-                    <Text.Subheadline elementType="h4">
-                      formik.values
-                    </Text.Subheadline>
-                    <pre>{JSON.stringify(formik.values, null, 2)}</pre>
-                  </div>
-                  <div>
-                    <Text.Subheadline elementType="h4">
-                      formik.touched
-                    </Text.Subheadline>
-                    <pre>{JSON.stringify(formik.touched, null, 2)}</pre>
-                  </div>
-                  <div>
-                    <Text.Subheadline elementType="h4">
-                      formik.errors
-                    </Text.Subheadline>
-                    <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
-                  </div>
-                </Spacings.Stack>
-              )}
-            />
-          )}
-        </FakeConnector>
-      </Section>
-    </IntlProvider>
-  ));
+                  );
+                }}
+                render={formik => (
+                  <Spacings.Stack scale="l">
+                    <Text.Headline elementType="h2">The form</Text.Headline>
+                    <div>
+                      <ProductForm
+                        formik={formik}
+                        selectedLanguage={selectedLanguage}
+                      />
+                    </div>
+                    <hr />
+                    <div>
+                      <Text.Subheadline elementType="h4">
+                        formik.values
+                      </Text.Subheadline>
+                      <pre>{JSON.stringify(formik.values, null, 2)}</pre>
+                    </div>
+                    <div>
+                      <Text.Subheadline elementType="h4">
+                        formik.touched
+                      </Text.Subheadline>
+                      <pre>{JSON.stringify(formik.touched, null, 2)}</pre>
+                    </div>
+                    <div>
+                      <Text.Subheadline elementType="h4">
+                        formik.errors
+                      </Text.Subheadline>
+                      <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
+                    </div>
+                  </Spacings.Stack>
+                )}
+              />
+            )}
+          </FakeConnector>
+        </Section>
+      </IntlProvider>
+    );
+  });

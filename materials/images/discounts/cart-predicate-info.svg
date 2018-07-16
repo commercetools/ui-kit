@@ -143,7 +143,7 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(414.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">The discount applies only to selected carts</tspan>
                     </text>
                 </g>
@@ -152,20 +152,20 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(414.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">If all of the conditions are met (conditions are connected by AND):</tspan>
                     </text>
                 </g>
-                <text id="all" font-family="OpenSans-Bold, Open Sans" font-size="13" font-weight="bold" letter-spacing="-0.400000006" fill="#333333">
+                <text id="all" font-family="Open Sans, sans-serif" font-size="13" font-weight="bold" letter-spacing="-0.400000006" fill="#333333">
                     <tspan x="54" y="97">al</tspan>
-                    <tspan x="65.0193359" y="97">l</tspan>
+                    <tspan x="64" y="97">l</tspan>
                 </text>
                 <g id="Dropdown-normal-Hight-32px" transform="translate(36.000000, 117.000000)">
                     <rect id="BG-Copy" stroke="#AFAFAF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="125" height="31" rx="6"></rect>
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(102.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">Currency</tspan>
                     </text>
                 </g>
@@ -174,7 +174,7 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(102.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">Total Price</tspan>
                     </text>
                 </g>
@@ -183,7 +183,7 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(31.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">is</tspan>
                     </text>
                 </g>
@@ -192,19 +192,19 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(162.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">is equal or greater than</tspan>
                     </text>
                 </g>
                 <g id="Textfield-normal-Hight-36px" transform="translate(233.000000, 117.000000)">
                     <rect id="BG-Copy" stroke="#AFAFAF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="79" height="31" rx="6"></rect>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">EUR</tspan>
                     </text>
                 </g>
                 <g id="Textfield-normal-Hight-36px" transform="translate(364.000000, 453.000000)">
                     <rect id="BG-Copy" stroke="#AFAFAF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="79" height="31" rx="6"></rect>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">50.00 EUR</tspan>
                     </text>
                 </g>
@@ -226,7 +226,7 @@
                             <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
                             <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
                         </g>
-                        <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                        <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                             <tspan x="36" y="21">AND</tspan>
                         </text>
                         <g id="Add-Bold---Icon" transform="translate(8.000000, 4.000000)" fill="#000000">
@@ -237,7 +237,7 @@
                     </g>
                 </g>
                 <rect id="Rectangle-2-Copy-8" fill="#EAEAEA" transform="translate(500.000000, 166.500000) scale(1, -1) translate(-500.000000, -166.500000) " x="68" y="166" width="864" height="1"></rect>
-                <text id="AND" font-family="OpenSans-Bold, Open Sans" font-size="12" font-weight="bold" fill="#333333">
+                <text id="AND" font-family="Open Sans, sans-serif" font-size="12" font-weight="bold" fill="#333333">
                     <tspan x="36" y="170">AND</tspan>
                 </text>
                 <rect id="Rectangle" fill="#D8D8D8" x="36" y="182" width="721" height="44" rx="6"></rect>
@@ -246,11 +246,11 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(109.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">SKU</tspan>
                     </text>
                 </g>
-                <text id="where" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                <text id="where" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                     <tspan x="405" y="209">where</tspan>
                 </text>
                 <g id="Dropdown-normal-Hight-32px" transform="translate(42.000000, 188.000000)">
@@ -258,7 +258,7 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(331.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">At least one Line item exists</tspan>
                     </text>
                 </g>
@@ -267,13 +267,13 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(42.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">is</tspan>
                     </text>
                 </g>
                 <g id="Textfield-normal-Hight-36px" transform="translate(666.000000, 188.000000)">
                     <rect id="BG-Copy" stroke="#AFAFAF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="79" height="31" rx="6"></rect>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">5685</tspan>
                     </text>
                 </g>
@@ -295,7 +295,7 @@
                             <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
                             <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-7"></use>
                         </g>
-                        <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                        <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                             <tspan x="36" y="21">AND</tspan>
                         </text>
                         <g id="Add-Bold---Icon" transform="translate(8.000000, 4.000000)" fill="#000000">
@@ -307,10 +307,10 @@
                 </g>
                 <rect id="Rectangle-2-Copy-8" fill="#EAEAEA" x="67" y="243" width="865" height="1"></rect>
                 <rect id="Rectangle-2-Copy-9" fill="#EAEAEA" x="67" y="437" width="865" height="1"></rect>
-                <text id="AND" font-family="OpenSans-Bold, Open Sans" font-size="12" font-weight="bold" fill="#333333">
+                <text id="AND" font-family="Open Sans, sans-serif" font-size="12" font-weight="bold" fill="#333333">
                     <tspan x="36" y="247">AND</tspan>
                 </text>
-                <text id="AND-Copy-2" font-family="OpenSans-Bold, Open Sans" font-size="12" font-weight="bold" fill="#333333">
+                <text id="AND-Copy-2" font-family="Open Sans, sans-serif" font-size="12" font-weight="bold" fill="#333333">
                     <tspan x="36" y="441">AND</tspan>
                 </text>
                 <g id="Connection2" transform="translate(10.000000, 235.000000)">
@@ -323,7 +323,7 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(349.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">If any of the following conditions are met:</tspan>
                     </text>
                 </g>
@@ -333,11 +333,11 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(109.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">SKU</tspan>
                     </text>
                 </g>
-                <text id="where" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                <text id="where" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                     <tspan x="447" y="326">where</tspan>
                 </text>
                 <g id="Dropdown-normal-Hight-32px" transform="translate(84.000000, 305.000000)">
@@ -345,7 +345,7 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(331.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">At least one Line item exists</tspan>
                     </text>
                 </g>
@@ -354,13 +354,13 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(42.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">is</tspan>
                     </text>
                 </g>
                 <g id="Textfield-normal-Hight-36px" transform="translate(708.000000, 305.000000)">
                     <rect id="BG-Copy" stroke="#AFAFAF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="79" height="31" rx="6"></rect>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20"> 34554</tspan>
                     </text>
                 </g>
@@ -370,11 +370,11 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(109.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">SKU</tspan>
                     </text>
                 </g>
-                <text id="where" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                <text id="where" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                     <tspan x="447" y="403">where</tspan>
                 </text>
                 <g id="Dropdown-normal-Hight-32px" transform="translate(84.000000, 382.000000)">
@@ -382,7 +382,7 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(331.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">At least one Line item exists</tspan>
                     </text>
                 </g>
@@ -391,19 +391,19 @@
                     <g id="Dropdown-Arrow---Down" stroke-width="1" fill-rule="evenodd" transform="translate(42.000000, 8.000000)" fill="#333333">
                         <path d="M11.8514992,6.15718081 C11.7526081,6.05236463 11.6353835,6 11.499935,6 L4.50003762,6 C4.36453438,6 4.24739193,6.05236463 4.14841874,6.15718081 C4.04944555,6.26211291 4,6.386171 4,6.5295869 C4,6.67297382 4.04944555,6.7970319 4.14841874,6.90187707 L7.64838112,10.6084637 C7.74746376,10.7132799 7.86460621,10.7657605 8,10.7657605 C8.13539379,10.7657605 8.25264569,10.7132799 8.35153679,10.6084637 L11.8514992,6.90184809 C11.9503629,6.7970319 12,6.67297382 12,6.52955792 C12,6.386171 11.9503629,6.26211291 11.8514992,6.15718081 L11.8514992,6.15718081 Z" id="Shape" transform="translate(8.000000, 8.382880) rotate(-360.000000) translate(-8.000000, -8.382880) "></path>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20">is</tspan>
                     </text>
                 </g>
                 <g id="Textfield-normal-Hight-36px" transform="translate(708.000000, 382.000000)">
                     <rect id="BG-Copy" stroke="#AFAFAF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="79" height="31" rx="6"></rect>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="7" y="20"> 5655</tspan>
                     </text>
                 </g>
-                <text id="any" font-family="OpenSans-Bold, Open Sans" font-size="13" font-weight="bold" letter-spacing="-0.400000006" fill="#333333">
+                <text id="any" font-family="Open Sans, sans-serif" font-size="13" font-weight="bold" letter-spacing="-0.400000006" fill="#333333">
                     <tspan x="54" y="279">an</tspan>
-                    <tspan x="69.5959961" y="279">y</tspan>
+                    <tspan x="68" y="279">y</tspan>
                 </text>
                 <g id="BTN-/-Circle-/-Icon-/-Big" transform="translate(816.000000, 306.000000)">
                     <g id="Oval-29-Copy">
@@ -423,7 +423,7 @@
                             <use fill="black" fill-opacity="1" filter="url(#filter-12)" xlink:href="#path-11"></use>
                             <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-11"></use>
                         </g>
-                        <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                        <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                             <tspan x="36" y="21">OR</tspan>
                         </text>
                         <g id="Add-Bold---Icon" transform="translate(8.000000, 4.000000)" fill="#000000">
@@ -451,7 +451,7 @@
                             <use fill="black" fill-opacity="1" filter="url(#filter-16)" xlink:href="#path-15"></use>
                             <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-15"></use>
                         </g>
-                        <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                        <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                             <tspan x="36" y="21">OR</tspan>
                         </text>
                         <g id="Add-Bold---Icon" transform="translate(8.000000, 4.000000)" fill="#000000">
@@ -462,7 +462,7 @@
                     </g>
                 </g>
                 <rect id="Rectangle-2-Copy-8" fill="#EAEAEA" x="99" y="360" width="833" height="1"></rect>
-                <text id="OR" font-family="OpenSans-Bold, Open Sans" font-size="12" font-weight="bold" fill="#333333">
+                <text id="OR" font-family="Open Sans, sans-serif" font-size="12" font-weight="bold" fill="#333333">
                     <tspan x="78" y="364">OR</tspan>
                 </text>
                 <g id="Secondary-Button---Normal" transform="translate(643.000000, 453.000000)">
@@ -470,7 +470,7 @@
                         <use fill="black" fill-opacity="1" filter="url(#filter-18)" xlink:href="#path-17"></use>
                         <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-17"></use>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="8" y="21">Add Subgroup for this Rule</tspan>
                     </text>
                 </g>
@@ -479,7 +479,7 @@
                         <use fill="black" fill-opacity="1" filter="url(#filter-20)" xlink:href="#path-19"></use>
                         <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-19"></use>
                     </g>
-                    <text id="Text" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#333333">
+                    <text id="Text" font-family="Open Sans, sans-serif" font-size="13" font-weight="normal" fill="#333333">
                         <tspan x="8" y="21">Add new Rule</tspan>
                     </text>
                 </g>
