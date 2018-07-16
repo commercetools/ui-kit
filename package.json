@@ -48,7 +48,7 @@
     "@storybook/addon-knobs": "4.0.0-alpha.13",
     "@storybook/addon-options": "4.0.0-alpha.13",
     "@storybook/react": "4.0.0-alpha.13",
-    "@svgr/webpack": "2.1.0",
+    "@svgr/webpack": "2.1.1",
     "common-tags": "1.8.0",
     "css": "2.2.3",
     "glob": "7.1.2",
