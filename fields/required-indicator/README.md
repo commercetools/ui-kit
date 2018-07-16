@@ -22,4 +22,4 @@ import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-in
 
 | Props       | Type   | Required | Values | Default | Description                            |
 | ----------- | ------ | :------: | ------ | ------- | -------------------------------------- |
-| `uncolored` | `bool` |          | -      | -       | Sets the \* to the text colour if true |
+| `isColored` | `bool` |          | -      | -       | Sets the \* to the text colour if true |

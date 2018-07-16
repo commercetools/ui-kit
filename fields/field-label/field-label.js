@@ -60,7 +60,14 @@ FieldLabel.propTypes = {
   badge: PropTypes.node,
   isRequired: PropTypes.bool,
   isBold: PropTypes.bool,
-  titleTone: PropTypes.string,
+  titleTone: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'positive',
+    'negative',
+    'inverted',
+    'none',
+  ]),
 };
 
 export default FieldLabel;

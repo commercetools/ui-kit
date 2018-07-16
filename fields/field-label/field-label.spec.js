@@ -14,40 +14,40 @@ const createTestProps = customProps => ({
 describe('rendering', () => {
   let props;
   let wrapper;
-  let titleComp;
-  let subTitleComp;
+  let titleWrapper;
+  let subTitleWrapper;
   let labelIconWrapper;
   let subtitleIconWrapper;
-  let hintComp;
+  let hintWrapper;
 
   describe('with title', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<FieldLabel {...props} />);
-      titleComp = wrapper.find({ 'data-test-role': 'title' });
+      titleWrapper = wrapper.find({ 'data-test-role': 'title' });
     });
 
     it('should contain the label text', () => {
-      expect(titleComp.render().text()).toEqual('Label Title');
+      expect(titleWrapper.render().text()).toEqual('Label Title');
     });
 
     it('should contain bold text', () => {
-      expect(titleComp).toHaveProp('isBold', true);
+      expect(titleWrapper).toHaveProp('isBold', true);
     });
 
     it('should contain text with no tone', () => {
-      expect(titleComp).toHaveProp('tone', undefined);
+      expect(titleWrapper).toHaveProp('tone', undefined);
     });
 
     describe('without bold text', () => {
       beforeEach(() => {
         props = createTestProps({ isBold: false });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleComp = wrapper.find({ 'data-test-role': 'title' });
+        titleWrapper = wrapper.find({ 'data-test-role': 'title' });
       });
 
       it('should contain bold text', () => {
-        expect(titleComp).toHaveProp('isBold', false);
+        expect(titleWrapper).toHaveProp('isBold', false);
       });
     });
 
@@ -55,11 +55,11 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ titleTone: 'inverted' });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleComp = wrapper.find({ 'data-test-role': 'title' });
+        titleWrapper = wrapper.find({ 'data-test-role': 'title' });
       });
 
       it('should set the text tone', () => {
-        expect(titleComp).toHaveProp('tone', 'inverted');
+        expect(titleWrapper).toHaveProp('tone', 'inverted');
       });
     });
   });
@@ -69,15 +69,15 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ subtitle: 'Label Subtitle' });
         wrapper = shallow(<FieldLabel {...props} />);
-        subTitleComp = wrapper.find({ 'data-test-role': 'subtitle' });
+        subTitleWrapper = wrapper.find({ 'data-test-role': 'subtitle' });
       });
 
       it('should be present', () => {
-        expect(subTitleComp).toBeTruthy();
+        expect(subTitleWrapper).toBeTruthy();
       });
 
       it('should contain the subtitle text', () => {
-        expect(subTitleComp.render().text()).toEqual('Label Subtitle');
+        expect(subTitleWrapper.render().text()).toEqual('Label Subtitle');
       });
     });
 
@@ -98,15 +98,15 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ hint: 'Label hint' });
         wrapper = shallow(<FieldLabel {...props} />);
-        hintComp = wrapper.find({ 'data-test-role': 'hint' });
+        hintWrapper = wrapper.find({ 'data-test-role': 'hint' });
       });
 
       it('should be present', () => {
-        expect(hintComp).toBeTruthy();
+        expect(hintWrapper).toBeTruthy();
       });
 
       it('should contain the hint text', () => {
-        expect(hintComp.render().text()).toEqual('Label hint');
+        expect(hintWrapper.render().text()).toEqual('Label hint');
       });
     });
 

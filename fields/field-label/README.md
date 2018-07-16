@@ -27,14 +27,14 @@ import messages from './messages';
 
 #### Properties
 
-| Props          | Type     | Required | Values                                                                 | Default | Description                                         |
-| -------------- | -------- | :------: | ---------------------------------------------------------------------- | ------- | --------------------------------------------------- |
-| `title`        | `string` |    ✅    | -                                                                      | -       | Title of the label                                  |
-| `subtitle`     | `string` |    -     | -                                                                      |         | Subtitle for the label                              |
-| `hint`         | `string` |    -     | -                                                                      |         | Hint text for the label                             |
-| `titleIcon`    | `node`   |    -     | -                                                                      |         | IconButton to be displayed beside the label title   |
-| `subtitleIcon` | `node`   |    -     | -                                                                      |         | Icon to be displayed beside the label subtitle      |
-| `badge`        | `node`   |    -     | -                                                                      |         | Badge to be displayed beside the label.             |
-| `isRequired`   | `bool`   |    -     | -                                                                      | `false` | Indicates if the labeled field is required          |  |
-| `isBold`       | `bool`   |    -     | -                                                                      | `false` | Indicates if the label title should be in bold text |
-| `titleTone`    | `bool`   |    -     | `['primary', 'secondary', 'positive', 'negative', 'inverted', 'none']` | \_      | Indicates the tone to be applied to the label title |
+| Props          | Type               | Required | Values                                                                 | Default | Description                                         |
+| -------------- | ------------------ | :------: | ---------------------------------------------------------------------- | ------- | --------------------------------------------------- |
+| `title`        | `string` or `node` |    ✅    | -                                                                      | -       | Title of the label                                  |
+| `subtitle`     | `string` or `node` |    -     | -                                                                      |         | Subtitle for the label                              |
+| `hint`         | `string` or `node` |    -     | -                                                                      |         | Hint text for the label                             |
+| `titleIcon`    | `node`             |    -     | -                                                                      |         | IconButton to be displayed beside the label title   |
+| `subtitleIcon` | `node`             |    -     | -                                                                      |         | Icon to be displayed beside the label subtitle      |
+| `badge`        | `node`             |    -     | -                                                                      |         | Badge to be displayed beside the label.             |
+| `isRequired`   | `bool`             |    -     | -                                                                      | `false` | Indicates if the labeled field is required          |  |
+| `isBold`       | `bool`             |    -     | -                                                                      | `false` | Indicates if the label title should be in bold text |
+| `titleTone`    | `string`           |    -     | `['primary', 'secondary', 'positive', 'negative', 'inverted', 'none']` | \_      | Indicates the tone to be applied to the label title |
