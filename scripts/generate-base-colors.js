@@ -70,7 +70,6 @@ const commentDoNotModify = {
   of colors. `,
 };
 
-
 // This is necessary since its not possible to generate empty lines with CSS AST stringifier
 const commentDisableStylelintCommentRule = {
   type: 'comment',
@@ -107,8 +106,4 @@ const AST = {
 };
 
 // Generates the file
-fs.writeFileSync(
-  path.join(__dirname, exportPath),
-  css.stringify(AST),
-  'utf-8'
-);
+fs.writeFileSync(path.join(__dirname, exportPath), css.stringify(AST), 'utf-8');

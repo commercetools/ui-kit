@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import Text from '../../typography/text';
+import { isVariation } from '../../scripts/utility';
 import colorGroups from './decisions/base-colors.json';
-import { isVariation } from '../../scripts/utility.js'
 import styles from './colors-for-story.mod.css';
 
 const Background = styled.div`
@@ -59,8 +59,8 @@ const FileName = styled.div`
 storiesOf('Colors', module).add('All Colors', () => (
   <Background>
     {Object.entries(colorGroups).map(([colorName, variations], index) => (
-      <React.Fragment>
-        <ColorTitle>{`${colorName}s`}</ColorTitle>
+      <React.Fragment key={`fragment-${index}`}>
+        <ColorTitle key={`title-${index}`}>{`${colorName}s`}</ColorTitle>
         <ColorGrid key={index}>
           {Object.keys(variations)
             .reverse()
@@ -89,9 +89,9 @@ storiesOf('Colors', module).add('All Colors', () => (
                   </FileName>
                 </ColorDescription>
               </ColorBox>
-              ))}
-          </ColorGrid>
-        </React.Fragment>
+            ))}
+        </ColorGrid>
+      </React.Fragment>
     ))}
   </Background>
 ));

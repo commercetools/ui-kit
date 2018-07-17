@@ -1,65 +1,70 @@
 const fs = require('fs');
-const isVariation = require('./utility.js').isVariation;
 const path = require('path');
 const css = require('css');
+const isVariation = require('./utility.js').isVariation;
+
 const importPath = '../materials/colors.mod.css';
 const exportPath = '../materials/colors/colors-for-story.mod.css';
-const loadedFile = fs.readFileSync(
-  path.join(__dirname, importPath),
-  'utf-8'
-);
+const loadedFile = fs.readFileSync(path.join(__dirname, importPath), 'utf-8');
 const fileToBeTransformed = css.parse(loadedFile);
-// Path where decision file is located, for documentation purposes only
-const originalPath = 'materials/colors/decisions/base-colors.json';
 
+// Path where decision file is located, for documentation purposes only
+
+const originalPath = 'materials/colors/decisions/base-colors.json';
 // Gets all declarations inside the `:root` selector from fileToBeTransformed
 const rootRulesFromFileToBeTransformed = fileToBeTransformed.stylesheet.rules.find(
   rule => rule.type === 'rule' && rule.selectors.includes(':root')
 );
 
 // Creates the css classes declarations based on the variables
-const declarationsBodyObj = rootRulesFromFileToBeTransformed.declarations.reduce((acc, declaration) => {
-  // If its a comment, ignore it
-  if (declaration.type === 'comment') {
+const declarationsBodyObj = rootRulesFromFileToBeTransformed.declarations.reduce(
+  (acc, declaration) => {
+    // If its a comment, ignore it
+    if (declaration.type === 'comment') {
+      return acc;
+    }
+
+    // Adds the variable as a class
+    acc.push({
+      type: 'rule',
+      // Removes the prefix so they can be used as a class
+      selectors: [`.${declaration.property.replace('--color-', '')}`],
+      declarations: [
+        {
+          type: 'declaration',
+          property: 'background-color',
+          // Uses the latest postcss color transformation function
+          value: declaration.value.replace('color', 'color-mod'),
+        },
+      ],
+    });
+
     return acc;
-  }
-
-  // Adds the variable as a class
-  acc.push({
-    type: 'rule',
-    // Removes the prefix so they can be used as a class
-    selectors: [`.${declaration.property.replace('--color-', '')}`],
-    declarations: [
-      {
-        type: 'declaration',
-        property: 'background-color',
-        // Uses the latest postcss color transformation function
-        value: declaration.value.replace('color', 'color-mod'),
-      },
-    ],
-  });
-
-  return acc;
-}, []);
+  },
+  []
+);
 
 // Creates the variables for main colors, so they can be composed to change the lightness channel
-const declarationsRootRule = rootRulesFromFileToBeTransformed.declarations.reduce((acc, declaration) => {
-  // If its a comment, ignores it
-  if (declaration.type === 'comment') {
+const declarationsRootRule = rootRulesFromFileToBeTransformed.declarations.reduce(
+  (acc, declaration) => {
+    // If its a comment, ignores it
+    if (declaration.type === 'comment') {
+      return acc;
+    }
+
+    // Creates the main colors variables
+    if (!isVariation(declaration.property)) {
+      acc.push({
+        type: 'declaration',
+        property: declaration.property,
+        value: declaration.value.replace('color', 'color-mod'),
+      });
+    }
+
     return acc;
-  }
-
-  // Creates the main colors variables
-  if (!isVariation(declaration.property)) {
-    acc.push({
-      type: 'declaration',
-      property: declaration.property,
-      value: declaration.value.replace('color', 'color-mod'),
-    });
-  }
-
-  return acc;
-}, []);
+  },
+  []
+);
 
 const declarationsRootRuleObj = {
   type: 'rule',
@@ -96,10 +101,5 @@ const AST = {
   },
 };
 
-
 // Generates the file
-fs.writeFileSync(
-  path.join(__dirname, exportPath),
-  css.stringify(AST),
-  'utf-8'
-);
+fs.writeFileSync(path.join(__dirname, exportPath), css.stringify(AST), 'utf-8');
