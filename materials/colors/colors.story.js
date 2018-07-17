@@ -2,7 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import Text from '../../typography/text';
-import colorGroups from './colors-for-story.json';
+import colorGroups from './decisions/base-colors.json';
+import styles from './colors-for-story.mod.css';
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
@@ -24,7 +25,6 @@ const ColorGrid = styled.div`
 const ColorSample = styled.div`
   width: 100%;
   height: 150px;
-  background-color: ${props => props.color};
 `;
 
 const ColorBox = styled.div`
@@ -47,21 +47,41 @@ const FileName = styled.div`
   }
 `;
 
+// filters out only variations by detecting a number in the names
+const isVariation = colorName => /[0-9]/.test(colorName);
+
 storiesOf('Colors', module).add('All Colors', () => (
   <Background>
-    {colorGroups.map((colorGroup, index) => (
+    {Object.entries(colorGroups).map(([colorName, variations], index) => (
       <ColorGrid key={index}>
-        {colorGroup.map(color => (
-          <ColorBox key={color.key}>
-            <ColorSample color={color.value} />
-            <ColorDescription>
-              <Text.Subheadline elementType="h4">{color.name}</Text.Subheadline>
-              <FileName>
-                <Text.Detail>{color.value}</Text.Detail>
-              </FileName>
-            </ColorDescription>
-          </ColorBox>
-        ))}
+        {Object.keys(variations)
+          .reverse()
+          .map((variation, variationIndex) => (
+            <ColorBox key={`${variation}-${variationIndex}`}>
+              <ColorSample
+                className={
+                  styles[
+                    isVariation(variation)
+                      ? `${colorName}-${variation}`
+                      : `${colorName}`
+                  ]
+                }
+                variation={`${colorName}`}
+              />
+              <ColorDescription>
+                <Text.Subheadline elementType="h4">
+                  {isVariation(variation)
+                    ? `--color-${colorName}-${variation}`
+                    : `--color-${colorName}`}
+                </Text.Subheadline>
+                <FileName>
+                  <Text.Detail>
+                    {isVariation(variation) ? `${variation}%` : `Main`}
+                  </Text.Detail>
+                </FileName>
+              </ColorDescription>
+            </ColorBox>
+          ))}
       </ColorGrid>
     ))}
   </Background>
