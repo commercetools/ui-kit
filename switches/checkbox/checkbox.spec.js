@@ -50,43 +50,22 @@ describe('<Checkbox>', () => {
         });
       });
 
-      describe('when disabled', () => {
-        beforeEach(() => {
-          props = createTestProps({ isDisabled: true });
-
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-
-        it('should disable the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp(
-            'disabled',
-            props.isDisabled
-          );
-        });
-        it('should match snapshot', () => {
-          expect(wrapper).toMatchSnapshot();
-        });
-      });
-
-      describe('with error', () => {
-        beforeEach(() => {
-          props = createTestProps({ hasError: true });
-
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-
-        it('should `label` have error styles', () => {
-          expect(wrapper.find('label')).toHaveClassName(
-            'labelWrapper labelWrapperError'
-          );
-        });
-        it('should match snapshot', () => {
-          expect(wrapper).toMatchSnapshot();
-        });
-      });
-
       describe('when checked', () => {
-        describe('and is `isIndeterminate`', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            isChecked: true,
+          });
+
+          wrapper = shallow(<Checkbox {...props} />);
+        });
+        it('should match snapshot', () => {
+          expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should check the `input`', () => {
+          expect(wrapper.find('input')).toHaveProp('checked', true);
+        });
+        describe('when indeterminate', () => {
           beforeEach(() => {
             props = createTestProps({
               isChecked: true,
@@ -101,61 +80,41 @@ describe('<Checkbox>', () => {
 
           it('should not check the `input`', () => {
             expect(wrapper.find('input')).toHaveProp('checked', false);
-          });
-        });
-        describe('and is not `isIndeterminate`', () => {
-          beforeEach(() => {
-            props = createTestProps({
-              isChecked: true,
-              isIndeterminate: false,
-            });
-
-            wrapper = shallow(<Checkbox {...props} />);
-          });
-          it('should match snapshot', () => {
-            expect(wrapper).toMatchSnapshot();
-          });
-
-          it('should not check the `input`', () => {
-            expect(wrapper.find('input')).toHaveProp('checked', true);
           });
         });
       });
 
-      describe('when not checked', () => {
-        describe('and is `isIndeterminate`', () => {
-          beforeEach(() => {
-            props = createTestProps({
-              isChecked: false,
-              isIndeterminate: true,
-            });
-
-            wrapper = shallow(<Checkbox {...props} />);
-          });
-          it('should match snapshot', () => {
-            expect(wrapper).toMatchSnapshot();
+      describe('when unchecked', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            isChecked: false,
           });
 
-          it('should not check the `input`', () => {
-            expect(wrapper.find('input')).toHaveProp('checked', false);
-          });
+          wrapper = shallow(<Checkbox {...props} />);
         });
-        describe('and is not `isIndeterminate`', () => {
-          beforeEach(() => {
-            props = createTestProps({
-              isChecked: false,
-              isIndeterminate: false,
-            });
+        it('should match snapshot', () => {
+          expect(wrapper).toMatchSnapshot();
+        });
 
-            wrapper = shallow(<Checkbox {...props} />);
-          });
-          it('should match snapshot', () => {
-            expect(wrapper).toMatchSnapshot();
+        it('should not check the `input`', () => {
+          expect(wrapper.find('input')).toHaveProp('checked', false);
+        });
+      });
+      describe('when indeterminate', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            isChecked: false,
+            isIndeterminate: true,
           });
 
-          it('should not check the `input`', () => {
-            expect(wrapper.find('input')).toHaveProp('checked', false);
-          });
+          wrapper = shallow(<Checkbox {...props} />);
+        });
+        it('should match snapshot', () => {
+          expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should not check the `input`', () => {
+          expect(wrapper.find('input')).toHaveProp('checked', false);
         });
       });
     });

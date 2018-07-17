@@ -59,35 +59,7 @@ exports[`<Checkbox> rendering without children should match snapshot 1`] = `
 </div>
 `;
 
-exports[`<Checkbox> rendering without children when checked and is \`isIndeterminate\` should match snapshot 1`] = `
-<div>
-  <label
-    className="labelWrapper"
-  >
-    <Inline
-      alignItems="center"
-      scale="s"
-    >
-      <div
-        className="checkboxWrapper"
-      >
-        <test-file-stub />
-      </div>
-      <input
-        checked={false}
-        className="inputWrapper"
-        disabled={false}
-        name="bar"
-        onChange={[MockFunction]}
-        type="checkbox"
-        value="foo"
-      />
-    </Inline>
-  </label>
-</div>
-`;
-
-exports[`<Checkbox> rendering without children when checked and is not \`isIndeterminate\` should match snapshot 1`] = `
+exports[`<Checkbox> rendering without children when checked should match snapshot 1`] = `
 <div>
   <label
     className="labelWrapper"
@@ -115,35 +87,7 @@ exports[`<Checkbox> rendering without children when checked and is not \`isIndet
 </div>
 `;
 
-exports[`<Checkbox> rendering without children when disabled should match snapshot 1`] = `
-<div>
-  <label
-    className="labelWrapper labelWrapperDisabled"
-  >
-    <Inline
-      alignItems="center"
-      scale="s"
-    >
-      <div
-        className="checkboxWrapper isDisabled"
-      >
-        <test-file-stub />
-      </div>
-      <input
-        checked={false}
-        className="inputWrapper"
-        disabled={true}
-        name="bar"
-        onChange={[MockFunction]}
-        type="checkbox"
-        value="foo"
-      />
-    </Inline>
-  </label>
-</div>
-`;
-
-exports[`<Checkbox> rendering without children when not checked and is \`isIndeterminate\` should match snapshot 1`] = `
+exports[`<Checkbox> rendering without children when checked when indeterminate should match snapshot 1`] = `
 <div>
   <label
     className="labelWrapper"
@@ -171,7 +115,35 @@ exports[`<Checkbox> rendering without children when not checked and is \`isIndet
 </div>
 `;
 
-exports[`<Checkbox> rendering without children when not checked and is not \`isIndeterminate\` should match snapshot 1`] = `
+exports[`<Checkbox> rendering without children when indeterminate should match snapshot 1`] = `
+<div>
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
+</div>
+`;
+
+exports[`<Checkbox> rendering without children when unchecked should match snapshot 1`] = `
 <div>
   <label
     className="labelWrapper"
@@ -212,34 +184,6 @@ exports[`<Checkbox> rendering without children with \`data-*\` should match snap
     >
       <div
         className="checkboxWrapper"
-      >
-        <test-file-stub />
-      </div>
-      <input
-        checked={false}
-        className="inputWrapper"
-        disabled={false}
-        name="bar"
-        onChange={[MockFunction]}
-        type="checkbox"
-        value="foo"
-      />
-    </Inline>
-  </label>
-</div>
-`;
-
-exports[`<Checkbox> rendering without children with error should match snapshot 1`] = `
-<div>
-  <label
-    className="labelWrapper labelWrapperError"
-  >
-    <Inline
-      alignItems="center"
-      scale="s"
-    >
-      <div
-        className="checkboxWrapper hasError"
       >
         <test-file-stub />
       </div>
