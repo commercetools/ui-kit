@@ -1,9 +1,13 @@
 /* stylelint-disable */
 
-/* Note: Do not modify this file. This is an automatic generated file from `merchant-center-frontend/mc-scripts/token/generate-color-variables` which creates our colors based on a JSON file.Also, This file is transformed to JSON version in order to list the colors inthe UIKit. It is thus essential that no all colors are listed under the `:root`selector. Color groups are indicated by a comment preceeding the group of colors. */
+/*⚠️⚠️⚠️ Note: Do not modify this file. This is an automatic generated
+  file from 'materials/colors/decisions/base-colors.json' which creates
+  our colors based on a JSON file. Also, This file is transformed to JSON version
+  in order to list the colors in the UIKit. Color groups are indicated by a comment
+  preceeding the group of colors.*/
 
 :root {
-  /* Colors */
+  /* Base Colors */
   /* Blacks */
   --color-black: #1a1a1a;
   /* Purples */

@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
-import Text from '../typography/text';
-import colorGroups from './colors.json';
+import Text from '../../typography/text';
+import colorGroups from './colors-for-story.json';
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
