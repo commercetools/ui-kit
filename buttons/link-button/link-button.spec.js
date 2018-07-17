@@ -12,6 +12,11 @@ const createTestProps = props => ({
   ...props,
 });
 
+const createEvent = props => ({
+  preventDefault: jest.fn(),
+  ...props,
+});
+
 describe('rendering', () => {
   let props;
   let wrapper;
@@ -26,6 +31,19 @@ describe('rendering', () => {
 
   it('should render a <Link>', () => {
     expect(wrapper).toRender('Link');
+  });
+
+  describe('onClick', () => {
+    const testEvent = createEvent();
+    beforeEach(() => {
+      wrapper.find('Link').simulate('click', testEvent);
+    });
+    it('should have undefined onClick prop', () => {
+      expect(wrapper.find('Link')).toHaveProp('onClick', undefined);
+    });
+    it('when `onClick` is fired, event default is not prevented', () => {
+      expect(testEvent.preventDefault).not.toHaveBeenCalled();
+    });
   });
 
   it('should pass the url to <Link>', () => {
@@ -60,6 +78,7 @@ describe('rendering', () => {
         expect.stringMatching('LinkButton')
       );
     });
+
     it('should apply given `data-track-event` to AccessibleButton', () => {
       expect(wrapper.find('Link')).toHaveProp(
         'data-track-event',
@@ -101,6 +120,20 @@ describe('rendering', () => {
     it('renders a <Link> with disabled class', () => {
       expect(wrapper.find('Link')).toHaveClassName('disabled');
     });
+
+    describe('onClick', () => {
+      const testEvent = createEvent();
+      beforeEach(() => {
+        wrapper.find('Link').simulate('click', testEvent);
+      });
+      it('renders with a onClick prop', () => {
+        expect(wrapper.find('Link')).toHaveProp('onClick');
+      });
+      it('when `onClick` is fired, event default is prevented', () => {
+        expect(testEvent.preventDefault).toHaveBeenCalled();
+      });
+    });
+
     it('renders the icon with "grey" theme', () => {
       expect(wrapper.find('AddIcon')).toHaveProp('theme', 'grey');
     });

@@ -17,6 +17,7 @@ const LinkButton = props => {
       className={classnames(styles.button, {
         [styles.disabled]: props.isDisabled,
       })}
+      onClick={props.isDisabled ? event => event.preventDefault() : undefined}
       {...dataAttributes}
     >
       {Boolean(props.iconLeft) &&
@@ -43,6 +44,7 @@ LinkButton.propTypes = {
   iconLeft: PropTypes.element,
   isDisabled: PropTypes.bool,
 };
+
 LinkButton.defaultProps = {
   isDisabled: false,
 };
