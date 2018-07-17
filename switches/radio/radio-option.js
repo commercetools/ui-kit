@@ -37,10 +37,8 @@ export class Option extends React.PureComponent {
                 [styles.isDisabled]: this.props.isDisabled,
               })}
             >
-              {(() => {
-                if (this.props.isChecked) return <Icons.Checked />;
-                return <Icons.Default />;
-              })()}
+              {(() =>
+                this.props.isChecked ? <Icons.Checked /> : <Icons.Default />)()}
             </div>
             {this.props.children && (
               <Text.Body
