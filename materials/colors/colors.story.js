@@ -2,9 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import Text from '../../typography/text';
-import { isVariation } from '../../scripts/utility';
-import colorGroups from './decisions/base-colors.json';
-import styles from './colors-for-story.mod.css';
+import colorGroups from './colors-for-story.json';
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
@@ -15,24 +13,18 @@ const Background = styled.div`
 
 const ColorGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row-gap: 8px;
   grid-column-gap: 8px;
   padding: 8px;
   max-width: 800px;
-`;
-
-const ColorTitle = styled.div`
-  display: flex;
-  padding: 8px;
-  flex-grow: 1;
-  font-size: 1.5em;
-  text-transform: capitalize;
+  margin: 0 auto;
 `;
 
 const ColorSample = styled.div`
   width: 100%;
   height: 150px;
+  background-color: ${props => props.color};
 `;
 
 const ColorBox = styled.div`
@@ -57,40 +49,20 @@ const FileName = styled.div`
 
 storiesOf('Colors', module).add('All Colors', () => (
   <Background>
-    {Object.entries(colorGroups).map(([colorName, variations]) => (
-      <React.Fragment key={`fragment-${colorName}`}>
-        <ColorTitle key={`title-${colorName}`}>{`${colorName}s`}</ColorTitle>
-        <ColorGrid key={`grid-${colorName}`}>
-          {Object.keys(variations)
-            .reverse()
-            .map((variation, variationIndex) => (
-              <ColorBox key={`${variation}-${variationIndex}`}>
-                <ColorSample
-                  className={
-                    styles[
-                      isVariation(variation)
-                        ? `${colorName}-${variation}`
-                        : `${colorName}`
-                    ]
-                  }
-                  variation={`${colorName}`}
-                />
-                <ColorDescription>
-                  <Text.Body isBold={true}>
-                    {isVariation(variation)
-                      ? `--color-${colorName}-${variation}`
-                      : `--color-${colorName}`}
-                  </Text.Body>
-                  <FileName>
-                    <Text.Detail>
-                      {isVariation(variation) ? `${variation}%` : `Main`}
-                    </Text.Detail>
-                  </FileName>
-                </ColorDescription>
-              </ColorBox>
-            ))}
-        </ColorGrid>
-      </React.Fragment>
+    {colorGroups.map((colorGroup, index) => (
+      <ColorGrid key={index}>
+        {colorGroup.map(color => (
+          <ColorBox key={color.key}>
+            <ColorSample color={color.value} />
+            <ColorDescription>
+              <Text.Subheadline elementType="h4">{color.name}</Text.Subheadline>
+              <FileName>
+                <Text.Detail>{color.value}</Text.Detail>
+              </FileName>
+            </ColorDescription>
+          </ColorBox>
+        ))}
+      </ColorGrid>
     ))}
   </Background>
 ));
