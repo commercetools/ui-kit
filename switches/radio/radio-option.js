@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
-import withMouseOverState from '../../hocs/with-mouse-over-state';
+import Text from '../../typography/text';
 import Icons from './icons';
 import styles from './radio-option.mod.css';
 
@@ -17,10 +18,6 @@ export class Option extends React.PureComponent {
     // not required as `createElement` is used.
     name: PropTypes.string,
     onChange: PropTypes.func,
-    // HoC
-    isMouseOver: PropTypes.bool.isRequired,
-    handleMouseOver: PropTypes.func.isRequired,
-    handleMouseOut: PropTypes.func.isRequired,
   };
   static defaultProps = {
     isDisabled: false,
@@ -28,35 +25,27 @@ export class Option extends React.PureComponent {
 
   render() {
     return (
-      <div
-        onMouseOver={this.props.handleMouseOver}
-        onMouseOut={this.props.handleMouseOut}
-      >
+      <div {...filterDataAttributes(this.props)}>
         <label
           className={classnames(styles.labelWrapper, {
             [styles.labelWrapperDisabled]: this.props.isDisabled,
           })}
         >
           <Spacings.Inline alignItems="center">
-            {(() => {
-              if (this.props.isChecked && this.props.isDisabled)
-                return <Icons.CheckedDisabled />;
-              else if (this.props.isChecked && this.props.isMouseOver)
-                return <Icons.CheckedHover />;
-              else if (this.props.isChecked) return <Icons.Checked />;
-              else if (this.props.isDisabled) return <Icons.Disabled />;
-              else if (this.props.isMouseOver) return <Icons.Hover />;
-
-              return <Icons.Default />;
-            })()}
+            <div
+              className={classnames(styles.radioWrapper, {
+                [styles.isDisabled]: this.props.isDisabled,
+              })}
+            >
+              {this.props.isChecked ? <Icons.Checked /> : <Icons.Default />}
+            </div>
             {this.props.children && (
-              <span
-                className={classnames({
-                  [styles.textDisabled]: this.props.isDisabled,
-                })}
+              <Text.Body
+                // FIXME: add proper tones when we have disabled/primary in tones
+                tone={this.props.isDisabled ? 'secondary' : undefined}
               >
                 {this.props.children}
-              </span>
+              </Text.Body>
             )}
             <input
               className={styles.inputWrapper}
@@ -74,4 +63,4 @@ export class Option extends React.PureComponent {
   }
 }
 
-export default withMouseOverState(Option);
+export default Option;

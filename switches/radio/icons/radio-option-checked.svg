@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
-    <title>radiobt-active</title>
-    <desc>Created with Sketch.</desc>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>279EAF28-AFF7-41EF-B743-1AE24E30CE84</title>
+    <desc>Created with sketchtool.</desc>
     <defs></defs>
-    <g id="ATOM---Checkboxes-and-Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Checkboxes-radio-buttons" transform="translate(-401.000000, -868.000000)">
-            <g id="radiobt-active" transform="translate(402.000000, 869.000000)">
-                <circle id="Oval-Copy-6" stroke="#AFAFAF" fill="#FFFFFF" cx="8" cy="8" r="8"></circle>
-                <circle id="Oval" fill="#00B6A1" cx="8" cy="8" r="4"></circle>
+    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Checkboxes-Radio-Buttons" transform="translate(-402.000000, -725.000000)">
+            <g id="RadioButton-active-default" transform="translate(402.000000, 725.000000)">
+                <circle id="background" stroke="#AFAFAF" fill="#FFFFFF" cx="8" cy="8" r="7.5"></circle>
+                <g id="borderAndContent">
+                    <circle id="border" stroke="#AFAFAF" fill="#FFFFFF" cx="8" cy="8" r="7.5"></circle>
+                    <circle id="content" fill="#20AD92" cx="8" cy="8" r="4"></circle>
+                </g>
             </g>
         </g>
     </g>
