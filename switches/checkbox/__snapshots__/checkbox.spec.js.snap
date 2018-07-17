@@ -199,37 +199,31 @@ exports[`<Checkbox> rendering without children when disabled should match snapsh
 </div>
 `;
 
-exports[`<Checkbox> rendering without children when intermediate is false should match snapshot 1`] = `
-<div>
-  <Checkbox
-    handleMouseOut={[MockFunction]}
-    handleMouseOver={[MockFunction]}
-    hasError={false}
-    isChecked={false}
-    isDisabled={false}
-    isIndeterminate={false}
-    isMouseOver={false}
-    name="bar"
-    onChange={[MockFunction]}
-    value="foo"
-  />
-</div>
-`;
-
 exports[`<Checkbox> rendering without children when intermediate is true should match snapshot 1`] = `
 <div>
-  <Checkbox
-    handleMouseOut={[MockFunction]}
-    handleMouseOver={[MockFunction]}
-    hasError={false}
-    isChecked={false}
-    isDisabled={false}
-    isIndeterminate={true}
-    isMouseOver={false}
-    name="bar"
-    onChange={[MockFunction]}
-    value="foo"
-  />
+  <label
+    className="labelWrapper"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
 </div>
 `;
 
@@ -265,17 +259,28 @@ exports[`<Checkbox> rendering without children with \`data-*\` should match snap
 
 exports[`<Checkbox> rendering without children with error should match snapshot 1`] = `
 <div>
-  <Checkbox
-    handleMouseOut={[MockFunction]}
-    handleMouseOver={[MockFunction]}
-    hasError={true}
-    isChecked={false}
-    isDisabled={false}
-    isIndeterminate={false}
-    isMouseOver={false}
-    name="bar"
-    onChange={[MockFunction]}
-    value="foo"
-  />
+  <label
+    className="labelWrapper labelWrapperError"
+  >
+    <Inline
+      alignItems="center"
+      scale="s"
+    >
+      <div
+        className="checkboxWrapper hasError"
+      >
+        <test-file-stub />
+      </div>
+      <input
+        checked={false}
+        className="inputWrapper"
+        disabled={false}
+        name="bar"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="foo"
+      />
+    </Inline>
+  </label>
 </div>
 `;

@@ -69,37 +69,14 @@ describe('<Checkbox>', () => {
       });
 
       describe('when intermediate', () => {
-        describe('is false', () => {
-          beforeEach(() => {
-            props = createTestProps({ isIndeterminate: false });
-
-            wrapper = shallow(
-              <div>
-                <Checkbox {...props} />
-              </div>
-            );
-          });
-
-          it('should `isIndeterminate` prop be falsy', () => {
-            expect(wrapper.find(Checkbox)).toHaveProp('isIndeterminate', false);
-          });
-          it('should match snapshot', () => {
-            expect(wrapper).toMatchSnapshot();
-          });
-        });
         describe('is true', () => {
           beforeEach(() => {
-            props = createTestProps({ isIndeterminate: true });
-
-            wrapper = shallow(
-              <div>
-                <Checkbox {...props} />
-              </div>
-            );
+            props = createTestProps({ isChecked: true, isIndeterminate: true });
+            wrapper = shallow(<Checkbox {...props} />);
           });
 
-          it('should `isIndeterminate` prop be truthy', () => {
-            expect(wrapper.find(Checkbox)).toHaveProp('isIndeterminate', true);
+          it('should not check the checkbox', () => {
+            expect(wrapper.find('input')).toHaveProp('checked', false);
           });
           it('should match snapshot', () => {
             expect(wrapper).toMatchSnapshot();
@@ -111,15 +88,14 @@ describe('<Checkbox>', () => {
         beforeEach(() => {
           props = createTestProps({ hasError: true });
 
-          wrapper = shallow(
-            <div>
-              <Checkbox {...props} />
-            </div>
-          );
+          wrapper = shallow(<Checkbox {...props} />);
         });
 
-        it('should prop `hasError` be true', () => {
-          expect(wrapper.find(Checkbox)).toHaveProp('hasError', true);
+        it('should `label` have error styles', () => {
+          expect(wrapper.find('label')).toHaveProp(
+            'className',
+            'labelWrapper labelWrapperError'
+          );
         });
         it('should match snapshot', () => {
           expect(wrapper).toMatchSnapshot();
