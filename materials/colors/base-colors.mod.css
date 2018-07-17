@@ -44,5 +44,3 @@
   --color-green-40: color-mod(var(--color-green) lightness(40%));
   --color-green-25: color-mod(var(--color-green) lightness(25%));
 }
-
-undefined: undefined;
