@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
+import Spacings from '../../materials/spacings';
 import styles from './money-input.mod.css';
 import Currency from './currency';
 import Option from './option';
@@ -38,20 +39,22 @@ const CurrencyDropdown = props => (
           isOpen,
         })}
       >
-        <div className={styles['currency-wrapper']}>
-          <Currency
-            isDropdown={true}
-            isDisabled={props.isDisabled}
-            onClick={toggleMenu}
-            currency={props.currencyCode}
-          />
-          {props.currencies.length > 0 && (
-            <DropdownChevron
-              onClick={toggleMenu}
+        <div className={styles.languagesDropdown}>
+          <Spacings.Inline scale="xs" alignItems="center">
+            <Currency
+              isDropdown={true}
               isDisabled={props.isDisabled}
-              isOpen={isOpen}
+              onClick={toggleMenu}
+              currency={props.currencyCode}
             />
-          )}
+            {props.currencies.length > 0 && (
+              <DropdownChevron
+                onClick={toggleMenu}
+                isDisabled={props.isDisabled}
+                isOpen={isOpen}
+              />
+            )}
+          </Spacings.Inline>
         </div>
         {isOpen &&
           props.currencies.length > 0 && (

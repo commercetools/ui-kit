@@ -12,6 +12,8 @@
 }
 
 .input {
+  display: flex;
+  flex: 1;
   color: var(--token-font-color-default);
   font-family: var(--token-font-family-default);
   font-size: var(--token-font-size-body);
@@ -110,6 +112,12 @@
   padding: var(--spacing-4) var(--spacing-8);
 }
 
+.languagesDropdown {
+  display: flex;
+  flex: 1 0 100%;
+  padding: var(--spacing-4) var(--spacing-8);
+}
+
 /* Currency Label (not dropdown) */
 .currency-label {
   composes: currency-default;
@@ -118,28 +126,12 @@
   background-color: var(--token-background-color-input-disabled);
 }
 
-.currency-label-disabled {
-  background-color: var(--color-navy-98);
-  border-color: var(--color-gray);
-  color: var(--color-gray-60);
-}
-
-.chevron-icon {
-  display: flex;
-  align-items: center;
-  padding-left: var(--spacing-4);
-}
-
-.chevron-icon-disabled svg {
-  fill: var(--color-gray-60);
-}
-
 .options-wrapper {
+  border-radius: var(--token-border-radius-input);
+  color: var(--token-font-color-default);
   position: relative;
   z-index: 5;
   top: var(--spacing-4);
-  border-radius: var(--border-radius-6);
-  color: var(--color-black);
 
   /* to center the options under the header */
   left: -1px;
@@ -147,17 +139,17 @@
 
 .options-wrapper-active {
   composes: options-wrapper;
-  border: 1px solid var(--color-green);
+  border: 1px solid var(--token-border-color-input-focus);
 }
 
 .options-wrapper-error {
   composes: options-wrapper;
-  border: 1px solid var(--color-red);
+  border: 1px solid var(--token-border-color-input-error);
 }
 
 .options-wrapper-warning {
   composes: options-wrapper;
-  border: 1px solid var(--color-orange);
+  border: 1px solid var(--token-border-color-input-waning);
 }
 
 .option-wrapper {
@@ -165,17 +157,20 @@
   text-align: left;
   width: 100%;
   padding: var(--spacing-8);
-  background-color: var(--color-white);
+  background-color: var(--token-background-color-input-pristine);
 }
 
 .option-wrapper:first-child {
-  border-radius: var(--border-radius-6) var(--border-radius-6) 0 0;
+  border-radius: var(--token-border-radius-input)
+    var(--token-border-radius-input) 0 0;
 }
 
 .option-wrapper:last-child {
-  border-radius: 0 0 var(--border-radius-6) var(--border-radius-6);
+  border-radius: 0 0 var(--token-border-radius-input)
+    var(--token-border-radius-input);
 }
 
 .option-wrapper:hover {
+  /* FIXME: apply token for dropdown option hover */
   background: var(--color-gray-90);
 }

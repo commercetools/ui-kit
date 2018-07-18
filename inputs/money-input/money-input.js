@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import invariant from 'invariant';
 import isNumberish from '../../utils/is-numberish';
 import filterDataAttributes from '../../utils/filter-data-attributes';
@@ -378,11 +377,7 @@ export default class MoneyInput extends React.Component {
               hasCurrencyWarning={this.props.hasCurrencyWarning}
             />
           ) : (
-            <div
-              className={classnames(styles['currency-label'], {
-                [styles['currency-label-disabled']]: this.props.isDisabled,
-              })}
-            >
+            <div className={styles['currency-label']}>
               <div className={styles['currency-wrapper']}>
                 <Currency
                   isDisabled={this.props.isDisabled}

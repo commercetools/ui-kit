@@ -10,7 +10,9 @@ const Currency = props => (
     isDisabled={props.isDisabled}
   >
     {/* FIXME: add proper tone for disabled when tones are refactored */}
-    <Text.Detail tone={props.isDropdown ? undefined : 'secondary'}>
+    <Text.Detail
+      tone={!props.isDropdown || props.isDisabled ? 'secondary' : undefined}
+    >
       {props.currency}
     </Text.Detail>
   </AccessibleButton>

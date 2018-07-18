@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import classnames from 'classnames';
 import AccessibleButton from '../../buttons/accessible-button';
 import { CaretDownIcon, CaretUpIcon } from '../../icons';
-import styles from './money-input.mod.css';
 import messages from './messages';
 
 export const DropdownChevron = props => (
@@ -13,14 +11,14 @@ export const DropdownChevron = props => (
     onClick={props.onClick}
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
-    className={classnames(styles['chevron-icon'], {
-      [styles['chevron-icon-disabled']]: props.isDisabled,
-    })}
   >
     {props.isOpen ? (
-      <CaretUpIcon size="small" />
+      <CaretUpIcon size="small" theme={props.isDisabled ? 'grey' : undefined} />
     ) : (
-      <CaretDownIcon size="small" />
+      <CaretDownIcon
+        size="small"
+        theme={props.isDisabled ? 'grey' : undefined}
+      />
     )}
   </AccessibleButton>
 );
