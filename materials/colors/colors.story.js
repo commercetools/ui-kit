@@ -57,10 +57,10 @@ const FileName = styled.div`
 
 storiesOf('Colors', module).add('All Colors', () => (
   <Background>
-    {Object.entries(colorGroups).map(([colorName, variations], index) => (
-      <React.Fragment key={`fragment-${index}`}>
-        <ColorTitle key={`title-${index}`}>{`${colorName}s`}</ColorTitle>
-        <ColorGrid key={`grid-${index}`}>
+    {Object.entries(colorGroups).map(([colorName, variations]) => (
+      <React.Fragment key={`fragment-${colorName}`}>
+        <ColorTitle key={`title-${colorName}`}>{`${colorName}s`}</ColorTitle>
+        <ColorGrid key={`grid-${colorName}`}>
           {Object.keys(variations)
             .reverse()
             .map((variation, variationIndex) => (
