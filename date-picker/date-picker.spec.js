@@ -221,14 +221,31 @@ describe('<DatePicker />', () => {
           props = createTestProps();
           wrapper = shallow(<DatePicker {...props} />);
           wrapper.instance().flatpickr = { setDate: jest.fn() };
-          wrapper
-            .instance()
-            .UNSAFE_componentWillUpdate({ value: '20.10.2018' });
         });
 
         it('should update the date in flatpickr', () => {
+          wrapper.instance().UNSAFE_componentWillUpdate({
+            value: '20.10.2018',
+            timeScale: 'date',
+            mode: 'single',
+          });
+
           expect(wrapper.instance().flatpickr.setDate).toHaveBeenCalledWith(
             '20.10.2018',
+            false
+          );
+        });
+
+        it('should pass empty value to flatpicker when field was cleaned', () => {
+          wrapper.instance().UNSAFE_componentWillUpdate({
+            value: undefined,
+            timeScale: 'datetime',
+            timeZone,
+            mode: 'single',
+          });
+
+          expect(wrapper.instance().flatpickr.setDate).toHaveBeenCalledWith(
+            undefined,
             false
           );
         });

@@ -161,7 +161,14 @@ export class DatePicker extends React.PureComponent {
       this.props.intl.locale
     );
     this.options = {
-      defaultDate: this.props.value && presentInput(this.props),
+      defaultDate:
+        this.props.value &&
+        presentInput({
+          value: this.props.value,
+          timeZone: this.props.timeZone,
+          timeScale: this.props.timeScale,
+          mode: this.props.mode,
+        }),
       enableTime:
         this.props.timeScale === 'time' || this.props.timeScale === 'datetime',
       // flatpickr falls back onto native datetime-inputs on touch-devices
@@ -196,7 +203,16 @@ export class DatePicker extends React.PureComponent {
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (this.flatpickr && this.props.value !== nextProps.value) {
-      this.flatpickr.setDate(presentInput(nextProps), false);
+      this.flatpickr.setDate(
+        nextProps.value &&
+          presentInput({
+            value: nextProps.value,
+            timeZone: nextProps.timeZone,
+            timeScale: nextProps.timeScale,
+            mode: nextProps.mode,
+          }),
+        false
+      );
     } else if (this.shouldInitializeFlatpickr(nextState)) {
       this.initDatepicker();
     }
@@ -306,7 +322,14 @@ export class DatePicker extends React.PureComponent {
           <DatePickerBody
             formattedValue={
               this.props.value &&
-              this.getFormattedValue(presentInput(this.props))
+              this.getFormattedValue(
+                presentInput({
+                  value: this.props.value,
+                  timeZone: this.props.timeZone,
+                  timeScale: this.props.timeScale,
+                  mode: this.props.mode,
+                })
+              )
             }
             isDisabled={this.props.isDisabled}
             isInvalid={this.props.isInvalid}
