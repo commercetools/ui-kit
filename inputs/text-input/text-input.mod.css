@@ -6,10 +6,6 @@
 @import '../../materials/transitions.mod.css';
 @import '../../materials/sizes.mod.css';
 
-:root {
-  --height-input: 32px;
-}
-
 /* Base */
 
 .container {
@@ -18,69 +14,58 @@
 }
 
 .input {
+  color: var(--token-font-color-disabled);
+  height: var(--token-size-height-input);
+  line-height: var(--token-size-height-input);
+  background-color: var(--token-background-color-input-disabled);
+  border-top-left-radius: var(--token-border-radius-input);
+  border-bottom-left-radius: var(--token-border-radius-input);
+  border: 1px var(--token-border-color-input-disabled) solid;
   width: 100%;
-  height: var(--height-input);
-  border-radius: var(--border-radius-6);
-  border-style: solid;
-  border-width: 1px;
   padding: 0 var(--spacing-8);
   transition: var(--transition-standard);
   outline: none;
   box-shadow: none;
   appearance: none;
-  font-weight: 500;
-  font-size: 1rem;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .input::placeholder {
   color: var(--token-font-color-placeholder);
 }
 
-/* Spinner */
-
-.spinner {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-/* Tones */
+/* States */
 
 .pristine {
   composes: input;
-  border-color: var(--color-gray-60);
-  color: var(--color-black);
+  border-color: var(--token-border-color-input-pristine);
+  background-color: var(--token-background-color-input-pristine);
 }
 
 .warning {
   composes: input;
-  color: var(--color-orange);
-  border-color: var(--color-orange);
+  color: var(--token-font-color-warning);
+  border-color: 1px solid var(--token-border-color-input-warning);
 }
 
 .error {
   composes: input;
-  color: var(--color-red);
-  border-color: var(--color-red);
+  color: var(--token-font-color-error);
+  border-color: var(--token-border-color-input-error);
 }
 
 .disabled {
   composes: input;
   cursor: not-allowed;
-  background-color: var(--color-navy-98);
-  border-color: var(--color-gray);
-  color: var(--color-gray-60);
+  color: var(--token-font-color-disabled);
+  border-color: var(--token-border-color-input-disabled);
+  background-color: var(--token-background-color-input-disabled);
   opacity: 1; /* fix for mobile safari */
 }
 
 .readonly {
   composes: input;
-  color: var(--color-gray-60);
-  border-color: var(--color-gray);
+  border-color: var(--token-border-color-input-readonly);
+  color: var(--token-font-color-readonly);
   cursor: default;
 }
 
@@ -88,6 +73,7 @@
 
 .pristine:active,
 .pristine:focus {
-  border-color: var(--color-green);
-  color: var(--color-black);
+  border-color: var(--token-border-color-input-focus);
+  background: var(--token-background-color-input-focus);
+  color: var(--token-font-color-default);
 }
