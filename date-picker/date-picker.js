@@ -7,13 +7,12 @@ import { German } from 'flatpickr/dist/l10n/de';
 import isTouchDevice from 'is-touch-device';
 import moment from 'moment-timezone';
 import Constraints from '../materials/constraints';
-import parseDateTime from './parse-datetime';
 import { DatePickerBody } from './date-picker-body';
 import './date-picker-ct-theme.mod.css';
 import styles from './date-picker.mod.css';
 import messages from './messages';
 
-const getNumberOfFormattedDateChars = (timeScale, locale, timeZone) => {
+const getNumberOfFormattedDateChars = (timeScale, locale) => {
   // moment gives us access to its underlying formats for individual locales
   // http://momentjs.com/docs/#/i18n/instance-locale/
   // this allows us to count the number of chars that will be displayed in the
@@ -27,11 +26,9 @@ const getNumberOfFormattedDateChars = (timeScale, locale, timeZone) => {
     case 'datetime':
       return (
         moment()
-          .tz(timeZone)
           .locale(locale)
           .localeData()._longDateFormat.L.length +
         moment()
-          .tz(timeZone)
           .locale(locale)
           .localeData()._longDateFormat.LT.length
       );
@@ -44,7 +41,60 @@ const getNumberOfFormattedDateChars = (timeScale, locale, timeZone) => {
   }
 };
 
-export const createFormatter = (timeScale, locale, timeZone) => value => {
+// Calculates offset in minutes to add to given date
+// in order to fake timezone information in Flatpickr selector
+const getFlatpickrOffset = (value, timeZone) => {
+  const localTimeOffset = moment(value).utcOffset();
+  const timeZoneOffset = moment()
+    .tz(timeZone)
+    .utcOffset();
+
+  return timeZoneOffset - localTimeOffset;
+};
+
+const addFlatpickrOffset = (value, timeZone) =>
+  moment(value)
+    .add(getFlatpickrOffset(value, timeZone), 'minutes')
+    .toISOString();
+
+/*
+  Flatpickr is totally timezone-agnostic and hence it operates dates in a browser timezone.
+  But we want to show datetimes in a specific timezone. To do that we have to shift provided
+  date so that it will have time digits as if it was in desired timezone, but the date itself
+  will be in user browser timezone.
+*/
+export const presentInput = ({ value, timeZone, timeScale, mode }) => {
+  if (timeScale !== 'datetime') {
+    return value;
+  }
+
+  if (mode !== 'single') {
+    return value.map(v => addFlatpickrOffset(v, timeZone));
+  }
+
+  return addFlatpickrOffset(value, timeZone);
+};
+
+// Converts Date object provided by Flatpickr to formats expected by Datepicker users
+export const presentOutput = ({ value, timeScale, timeZone }) => {
+  switch (timeScale) {
+    case 'time':
+      return moment(value).format('HH:mm:ss.SSS');
+    case 'datetime': {
+      // As we shifted datetime value before passing it to Flatpickr, now we have to
+      // shift it back
+      return moment(value)
+        .subtract(getFlatpickrOffset(value, timeZone), 'minutes')
+        .toISOString();
+    }
+    case 'date':
+      return moment(value).format('YYYY-MM-DD');
+    default:
+      return value;
+  }
+};
+
+export const createFormatter = (timeScale, locale) => value => {
   switch (timeScale) {
     case 'time':
       return moment(value, 'HH:mm:ss.SSS')
@@ -52,7 +102,6 @@ export const createFormatter = (timeScale, locale, timeZone) => value => {
         .format('LT');
     case 'datetime':
       return moment(value)
-        .tz(timeZone)
         .locale(locale)
         .format('L LT');
     case 'date':
@@ -105,16 +154,14 @@ export class DatePicker extends React.PureComponent {
   UNSAFE_componentWillMount() {
     this.formatter = createFormatter(
       this.props.timeScale,
-      this.props.intl.locale,
-      this.props.timeZone
+      this.props.intl.locale
     );
     this.numberOfFormattedValueChars = getNumberOfFormattedDateChars(
       this.props.timeScale,
-      this.props.intl.locale,
-      this.props.timeZone
+      this.props.intl.locale
     );
     this.options = {
-      defaultDate: this.props.value,
+      defaultDate: this.props.value && presentInput(this.props),
       enableTime:
         this.props.timeScale === 'time' || this.props.timeScale === 'datetime',
       // flatpickr falls back onto native datetime-inputs on touch-devices
@@ -149,7 +196,7 @@ export class DatePicker extends React.PureComponent {
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (this.flatpickr && this.props.value !== nextProps.value) {
-      this.flatpickr.setDate(nextProps.value, false);
+      this.flatpickr.setDate(presentInput(nextProps), false);
     } else if (this.shouldInitializeFlatpickr(nextState)) {
       this.initDatepicker();
     }
@@ -171,12 +218,12 @@ export class DatePicker extends React.PureComponent {
   handleChange = selectedDates => {
     switch (this.props.mode) {
       case 'single': {
-        const selectedDate =
-          selectedDates.length === 0 ? undefined : selectedDates[0];
+        const value = selectedDates.length === 0 ? undefined : selectedDates[0];
         this.props.onChange(
-          selectedDate &&
-            parseDateTime(this.props.timeScale, selectedDate, {
-              locale: this.props.intl.locale,
+          value &&
+            presentOutput({
+              value,
+              timeScale: this.props.timeScale,
               timeZone: this.props.timeZone,
             })
         );
@@ -186,10 +233,11 @@ export class DatePicker extends React.PureComponent {
       case 'multiple':
         this.props.onChange(
           selectedDates.map(
-            selectedDate =>
-              selectedDate &&
-              parseDateTime(this.props.timeScale, selectedDate, {
-                locale: this.props.intl.locale,
+            value =>
+              value &&
+              presentOutput({
+                value,
+                timeScale: this.props.timeScale,
                 timeZone: this.props.timeZone,
               })
           )
@@ -257,7 +305,8 @@ export class DatePicker extends React.PureComponent {
         >
           <DatePickerBody
             formattedValue={
-              this.props.value && this.getFormattedValue(this.props.value)
+              this.props.value &&
+              this.getFormattedValue(presentInput(this.props))
             }
             isDisabled={this.props.isDisabled}
             isInvalid={this.props.isInvalid}
