@@ -15,12 +15,11 @@ const Background = styled.div`
 
 const ColorGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-row-gap: 8px;
   grid-column-gap: 8px;
   padding: 8px;
   max-width: 800px;
-  margin: 0 auto;
 `;
 
 const ColorTitle = styled.div`
@@ -61,7 +60,7 @@ storiesOf('Colors', module).add('All Colors', () => (
     {Object.entries(colorGroups).map(([colorName, variations], index) => (
       <React.Fragment key={`fragment-${index}`}>
         <ColorTitle key={`title-${index}`}>{`${colorName}s`}</ColorTitle>
-        <ColorGrid key={index}>
+        <ColorGrid key={`grid-${index}`}>
           {Object.keys(variations)
             .reverse()
             .map((variation, variationIndex) => (
@@ -77,11 +76,11 @@ storiesOf('Colors', module).add('All Colors', () => (
                   variation={`${colorName}`}
                 />
                 <ColorDescription>
-                  <Text.Subheadline elementType="h4">
+                  <Text.Body isBold={true}>
                     {isVariation(variation)
                       ? `--color-${colorName}-${variation}`
                       : `--color-${colorName}`}
-                  </Text.Subheadline>
+                  </Text.Body>
                   <FileName>
                     <Text.Detail>
                       {isVariation(variation) ? `${variation}%` : `Main`}

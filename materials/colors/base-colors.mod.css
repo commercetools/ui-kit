@@ -10,6 +10,8 @@
 /* Base Colors */
 
 :root {
+  /* Whites */
+  --color-white: #fff;
   /* Blacks */
   --color-black: #1a1a1a;
   /* Purples */
@@ -20,23 +22,21 @@
   /* Oranges */
   --color-orange: #f16d0e;
   --color-orange-95: color-mod(var(--color-orange) lightness(95%));
+  /* Blues */
+  --color-blue: #078cdf;
+  --color-blue-95: color-mod(var(--color-blue) lightness(95%));
+  --color-blue-85: color-mod(var(--color-blue) lightness(85%));
   /* Grays */
   --color-gray: #ccc;
   --color-gray-95: color-mod(var(--color-gray) lightness(95%));
   --color-gray-90: color-mod(var(--color-gray) lightness(90%));
   --color-gray-60: color-mod(var(--color-gray) lightness(60%));
-  /* Blues */
-  --color-blue: #078cdf;
-  --color-blue-95: color-mod(var(--color-blue) lightness(95%));
-  --color-blue-85: color-mod(var(--color-blue) lightness(85%));
   /* Navys */
   --color-navy: #213c45;
   --color-navy-98: color-mod(var(--color-navy) lightness(98%));
   --color-navy-95: color-mod(var(--color-navy) lightness(95%));
   --color-navy-40: color-mod(var(--color-navy) lightness(40%));
   --color-navy-30: color-mod(var(--color-navy) lightness(30%));
-  /* Whites */
-  --color-white: #fff;
   /* Greens */
   --color-green: #00b39e;
   --color-green-95: color-mod(var(--color-green) lightness(95%));
