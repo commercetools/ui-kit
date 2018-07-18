@@ -40,6 +40,7 @@ const CurrencyDropdown = props => (
       >
         <div className={styles['currency-wrapper']}>
           <Currency
+            isDropdown={true}
             isDisabled={props.isDisabled}
             onClick={toggleMenu}
             currency={props.currencyCode}

@@ -5,14 +5,6 @@
 @import '../../materials/spacings.mod.css';
 @import '../../materials/transitions.mod.css';
 
-:root {
-  --chevron-width: 11px;
-  --currency-font-size: 12px;
-  --currency-width: 56px;
-  --options-wrapper-width: 57px;
-  --height-input: 32px;
-}
-
 .field-container {
   width: 100%;
   position: relative;
@@ -20,110 +12,110 @@
 }
 
 .input {
-  width: 100%;
-  height: var(--height-input);
-  border-top-right-radius: var(--border-radius-6);
-  border-bottom-right-radius: var(--border-radius-6);
-  border-style: solid;
-  border-width: var(--border-radius-1);
+  color: var(--token-font-color-default);
+  font-family: var(--token-font-family-default);
+  font-size: var(--token-font-size-body);
+  height: var(--token-size-height-input);
+  border-top-right-radius: var(--token-border-radius-input);
+  border-bottom-right-radius: var(--token-border-radius-input);
+  border: 1px var(--token-border-color-input-pristine) solid;
   padding: 0 var(--spacing-8);
   transition: var(--transition-standard);
   outline: none;
   box-shadow: none;
   appearance: none;
-  font-weight: 500;
-  font-size: 1rem;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .input::placeholder {
   color: var(--token-font-color-placeholder);
 }
 
-/* Tones */
+/* States for amount */
 
 .amount-default {
   composes: input;
-  border-color: var(--color-gray-60);
-  color: var(--color-black);
+  border-color: var(--token-border-color-input-pristine);
+  background-color: var(--token-background-color-input-pristine);
 }
 
 .amount-disabled {
   composes: input;
   cursor: not-allowed;
-  background-color: var(--color-navy-98);
-  border-color: var(--color-gray);
-  color: var(--color-gray-60);
+  color: var(--token-font-color-disabled);
+  border-color: var(--token-border-color-input-disabled);
+  background-color: var(--token-background-color-input-disabled);
   opacity: 1; /* fix for mobile safari */
 }
 
 .amount-warning {
   composes: input;
-  color: var(--color-orange);
-  border-color: var(--color-orange);
+  color: var(--token-font-color-warning);
+  border-color: 1px solid var(--token-border-color-input-warning);
 }
 
 .amount-error {
   composes: input;
-  color: var(--color-red);
-  border-color: var(--color-red);
+  color: var(--token-font-color-error);
+  border-color: var(--token-border-color-input-error);
 }
-
-/* States */
 
 .amount-default:active,
 .amount-default:focus {
-  border-color: var(--color-green);
-  color: var(--color-black);
+  border-color: var(--token-border-color-input-focus);
+  background: var(--token-background-color-input-focus);
+  color: var(--token-font-color-default);
 }
 
 /* Currency dropdown */
 .currency-default {
-  border-top-left-radius: var(--border-radius-6);
-  border-bottom-left-radius: var(--border-radius-6);
-  border: var(--border-radius-1) solid var(--color-gray-60);
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: var(--token-border-radius-input);
+  border-bottom-left-radius: var(--token-border-radius-input);
+  height: var(--token-size-height-input);
+  border: 1px var(--token-border-color-input-pristine) solid;
+  background-color: var(--token-background-color-input-pristine);
   border-right: 0;
-  background-color: var(--color-white);
   position: relative;
-  height: var(--spacing-32);
-  min-width: var(--currency-width);
 }
 
 .currency-active {
   composes: currency-default;
-  border-color: var(--color-green);
+  border-color: var(--token-border-color-input-focus);
 }
 
 .currency-disabled {
   composes: currency-default;
-  background-color: var(--color-navy-98);
-  border-color: var(--color-gray);
-  color: var(--color-gray-60);
+  color: var(--token-font-color-disabled);
+  border-color: var(--token-border-color-input-disabled);
+  background-color: var(--token-background-color-input-disabled);
 }
 
 .currency-warning {
   composes: currency-default;
-  border-color: var(--color-orange);
-  color: var(--color-orange);
+  color: var(--token-font-color-warning);
+  border-color: 1px solid var(--token-border-color-input-warning);
 }
 
 .currency-error {
   composes: currency-default;
-  border-color: var(--color-red);
-  color: var(--color-red);
+  color: var(--token-font-color-error);
+  border-color: var(--token-border-color-input-error);
 }
 
 .currency-wrapper {
-  height: var(--currency-font-size);
   display: flex;
+  flex: 1 0 100%;
   align-items: center;
-  padding: var(--spacing-16) var(--spacing-8);
+  padding: var(--spacing-4) var(--spacing-8);
 }
 
+/* Currency Label (not dropdown) */
 .currency-label {
   composes: currency-default;
-  color: var(--color-gray-60);
-  background-color: var(--color-navy-98);
+  border-color: var(--token-border-color-input-disabled);
+  color: var(--token-font-color-disabled);
+  background-color: var(--token-background-color-input-disabled);
 }
 
 .currency-label-disabled {
@@ -132,32 +124,14 @@
   color: var(--color-gray-60);
 }
 
-.currency-button {
-  height: var(--small-button-height);
-  font-size: var(--currency-font-size);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.currency-button-disabled {
-  background-color: var(--color-navy-98);
-  color: var(--color-gray-60);
-}
-
 .chevron-icon {
   display: flex;
   align-items: center;
   padding-left: var(--spacing-4);
-  height: var(--small-button-height);
 }
 
 .chevron-icon-disabled svg {
   fill: var(--color-gray-60);
-}
-
-.icon-wrapper {
-  pointer-events: none;
-  width: var(--chevron-width);
 }
 
 .options-wrapper {
@@ -166,7 +140,6 @@
   top: var(--spacing-4);
   border-radius: var(--border-radius-6);
   color: var(--color-black);
-  width: var(--options-wrapper-width);
 
   /* to center the options under the header */
   left: -1px;

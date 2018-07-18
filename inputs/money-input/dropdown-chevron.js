@@ -17,13 +17,11 @@ export const DropdownChevron = props => (
       [styles['chevron-icon-disabled']]: props.isDisabled,
     })}
   >
-    <div className={styles['icon-wrapper']}>
-      {props.isOpen ? (
-        <CaretUpIcon size="scale" />
-      ) : (
-        <CaretDownIcon size="scale" />
-      )}
-    </div>
+    {props.isOpen ? (
+      <CaretUpIcon size="small" />
+    ) : (
+      <CaretDownIcon size="small" />
+    )}
   </AccessibleButton>
 );
 
