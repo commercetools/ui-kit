@@ -14,7 +14,7 @@
 }
 
 .input {
-  color: var(--token-font-color-disabled);
+  color: var(--token-font-color-default);
   height: var(--token-size-height-input);
   line-height: var(--token-size-height-input);
   background-color: var(--token-background-color-input-disabled);
