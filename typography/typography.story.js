@@ -86,6 +86,7 @@ storiesOf('Typography/Text', module)
           'secondary',
           'positive',
           'negative',
+          'warning',
         ])}
         truncate={boolean('truncate', false)}
       >

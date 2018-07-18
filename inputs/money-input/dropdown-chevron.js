@@ -4,6 +4,7 @@ import { injectIntl } from 'react-intl';
 import AccessibleButton from '../../buttons/accessible-button';
 import { CaretDownIcon, CaretUpIcon } from '../../icons';
 import messages from './messages';
+import styles from './money-input.mod.css';
 
 export const DropdownChevron = props => (
   <AccessibleButton
@@ -12,14 +13,19 @@ export const DropdownChevron = props => (
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
   >
-    {props.isOpen ? (
-      <CaretUpIcon size="small" theme={props.isDisabled ? 'grey' : undefined} />
-    ) : (
-      <CaretDownIcon
-        size="small"
-        theme={props.isDisabled ? 'grey' : undefined}
-      />
-    )}
+    <div className={styles.chevron}>
+      {props.isOpen ? (
+        <CaretUpIcon
+          size="small"
+          theme={props.isDisabled ? 'grey' : undefined}
+        />
+      ) : (
+        <CaretDownIcon
+          size="small"
+          theme={props.isDisabled ? 'grey' : undefined}
+        />
+      )}
+    </div>
   </AccessibleButton>
 );
 

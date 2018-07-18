@@ -117,6 +117,7 @@ Detail.propTypes = {
     'information',
     'positive',
     'negative',
+    'warning',
   ]),
   children: PropTypes.node.isRequired,
   truncate: PropTypes.bool,

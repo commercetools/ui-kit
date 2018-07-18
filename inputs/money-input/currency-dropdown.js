@@ -44,6 +44,8 @@ const CurrencyDropdown = props => (
             <Currency
               isDropdown={true}
               isDisabled={props.isDisabled}
+              hasError={props.hasCurrencyError}
+              hasWarning={props.hasCurrencyWarning}
               onClick={toggleMenu}
               currency={props.currencyCode}
             />

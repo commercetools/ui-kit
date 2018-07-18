@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import Text from '../../typography/text';
 import AccessibleButton from '../../buttons/accessible-button';
 
+/* FIXME: add proper tone for disabled when tones are refactored */
+
+const getTextTone = ({ hasError, hasWarning, isDropdown, isDisabled }) => {
+  if (hasError) return 'negative';
+  else if (hasWarning) return 'warning';
+  else if (isDropdown && !isDisabled) return undefined;
+  return 'secondary';
+};
 const Currency = props => (
   <AccessibleButton
     label={props.currency}
@@ -11,7 +19,12 @@ const Currency = props => (
   >
     {/* FIXME: add proper tone for disabled when tones are refactored */}
     <Text.Detail
-      tone={!props.isDropdown || props.isDisabled ? 'secondary' : undefined}
+      tone={getTextTone({
+        hasError: props.hasError,
+        hasWarning: props.hasWarning,
+        isDropdown: props.isDropdown,
+        isDisabled: props.isDisabled,
+      })}
     >
       {props.currency}
     </Text.Detail>
@@ -22,6 +35,8 @@ Currency.displayName = 'Currency';
 Currency.propTypes = {
   isDropdown: PropTypes.bool,
   isDisabled: PropTypes.bool,
+  hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
   onClick: PropTypes.func,
   currency: PropTypes.string.isRequired,
 };

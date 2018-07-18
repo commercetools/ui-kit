@@ -52,7 +52,7 @@
 .amount-warning {
   composes: input;
   color: var(--token-font-color-warning);
-  border-color: 1px solid var(--token-border-color-input-warning);
+  border-color: var(--token-border-color-input-warning);
 }
 
 .amount-error {
@@ -96,7 +96,7 @@
 .currency-warning {
   composes: currency-default;
   color: var(--token-font-color-warning);
-  border-color: 1px solid var(--token-border-color-input-warning);
+  border-color: var(--token-border-color-input-warning);
 }
 
 .currency-error {
@@ -118,12 +118,19 @@
   padding: var(--spacing-4) var(--spacing-8);
 }
 
+.chevron {
+  display: flex;
+  align-items: center;
+}
+
 /* Currency Label (not dropdown) */
+
 .currency-label {
   composes: currency-default;
   border-color: var(--token-border-color-input-disabled);
   color: var(--token-font-color-disabled);
   background-color: var(--token-background-color-input-disabled);
+  padding: 0 var(--spacing-8);
 }
 
 .options-wrapper {
@@ -149,7 +156,7 @@
 
 .options-wrapper-warning {
   composes: options-wrapper;
-  border: 1px solid var(--token-border-color-input-waning);
+  border: 1px solid var(--token-border-color-input-warning);
 }
 
 .option-wrapper {

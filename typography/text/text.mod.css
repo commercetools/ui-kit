@@ -99,6 +99,10 @@ small {
   color: var(--color-white);
 }
 
+.warning {
+  color: var(--color-orange);
+}
+
 .inline {
   display: inline-block;
 }

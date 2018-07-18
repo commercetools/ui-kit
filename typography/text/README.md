@@ -104,12 +104,12 @@ properly style the text.
 
 #### Properties
 
-| Props      | Type             | Required | Values                                               | Default |
-| ---------- | ---------------- | :------: | ---------------------------------------------------- | ------- |
-| `isBold`   | `Boolean`        |    ✅    |                                                      | `false` |
-| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative'']` |         |
-| `children` | `PropTypes.node` |    ✅    |                                                      |         |
-| `truncate` | `Bool`           |          | -                                                    | `false` |
+| Props      | Type             | Required | Values                                                                      | Default |
+| ---------- | ---------------- | :------: | --------------------------------------------------------------------------- | ------- |
+| `isBold`   | `Boolean`        |    ✅    |                                                                             | `false` |
+| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative', 'inverted', 'warning'']` |         |
+| `children` | `PropTypes.node` |    ✅    |                                                                             |         |
+| `truncate` | `Bool`           |          | -                                                                           | `false` |
 
 #### Where to use
 
