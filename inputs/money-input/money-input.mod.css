@@ -5,6 +5,10 @@
 @import '../../materials/spacings.mod.css';
 @import '../../materials/transitions.mod.css';
 
+:root {
+  --width-currency-label: 60px;
+}
+
 .field-container {
   width: 100%;
   position: relative;
@@ -71,6 +75,7 @@
 /* Currency dropdown */
 .currency-default {
   display: flex;
+  width: var(--width-currency-label);
   flex-direction: column;
   border-top-left-radius: var(--token-border-radius-input);
   border-bottom-left-radius: var(--token-border-radius-input);
@@ -116,6 +121,10 @@
   display: flex;
   flex: 1 0 100%;
   padding: var(--spacing-4) var(--spacing-8);
+}
+
+.languagesDropdown > * {
+  flex: 1;
 }
 
 .chevron {

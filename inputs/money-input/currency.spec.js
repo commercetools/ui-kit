@@ -40,7 +40,7 @@ describe('rendering', () => {
     });
 
     it('should render selected currency symbol', () => {
-      expect(wrapper.prop('children')).toEqual('€');
+      expect(wrapper.find('TextDetail')).toHaveProp('children', '€');
     });
   });
 
