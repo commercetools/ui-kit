@@ -1,0 +1,25 @@
+@import '../colors.mod.css';
+
+:root {
+  /**
+    * Sizes
+    *
+    * Use these tokens for fixed height and width properties only.
+    * Do not use these for background colors or text colors.
+    *
+    * Index
+    * • Inputs
+    *  ◦ Text fields
+    *   ▪ Height
+    */
+
+  /* ==========================================================================
+   Inputs
+   ========================================================================== */
+
+  /* Text fields (text, password, number, textarea)
+   ========================================================================== */
+
+  /* Height */
+  --token-size-height-input: 32px;
+}
