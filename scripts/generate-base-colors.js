@@ -1,8 +1,9 @@
 /* eslint-disable */
 
-/* This file generates the .mod.css file for the MC's base Colors
+/* This file generates the `.mod.css extension file for the MC's base colors.
+   See `exportPath` const to know where to access the generated file.
    Any decisions regarding colors should be made in the decision file.
-   See `importPath` const to know where to access the source file */
+   See `importPath` const to know where to access the decisions file. */
 
 const fs = require('fs');
 const path = require('path');
