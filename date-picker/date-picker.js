@@ -1,6 +1,7 @@
 import 'flatpickr/dist/themes/airbnb.css';
 import React from 'react';
 import PropTypes from 'prop-types';
+import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
 import Flatpickr from 'flatpickr';
 import { German } from 'flatpickr/dist/l10n/de';
@@ -126,7 +127,10 @@ export class DatePicker extends React.PureComponent {
     placeholder: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
-    timeZone: PropTypes.string.isRequired,
+    timeZone: requiredIf(
+      PropTypes.string,
+      props => props.timeScale === 'datetime'
+    ),
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
