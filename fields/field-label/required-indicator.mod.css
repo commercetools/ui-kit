@@ -1,5 +1,5 @@
 @import '@commercetools-frontend/ui-kit/materials/colors.mod.css';
 
-.colored {
+.highlighted {
   color: var(--color-orange);
 }

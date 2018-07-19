@@ -8,8 +8,8 @@ describe('with default props', () => {
   });
 });
 
-describe('when uncolored', () => {
+describe('when muted', () => {
   it('should match snapshot', () => {
-    expect(shallow(<RequiredIndicator isColored={true} />)).toMatchSnapshot();
+    expect(shallow(<RequiredIndicator isMuted={true} />)).toMatchSnapshot();
   });
 });
