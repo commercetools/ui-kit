@@ -1,3 +1,10 @@
+/*
+  TECHDEBT:
+  - Split it up into TimePicker, DatePicker and DateTimePicker.
+    Maybe leave Datepicker as a facade to delegate job to these new components.
+  - Support timeZone in all cases, but only when timeZone is passed.
+*/
+
 import 'flatpickr/dist/themes/airbnb.css';
 import React from 'react';
 import PropTypes from 'prop-types';
