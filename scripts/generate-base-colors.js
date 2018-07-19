@@ -107,4 +107,4 @@ const AST = {
 };
 
 // Generates the file
-fs.writeFileSync(path.join(__dirname, exportPath), css.stringify(AST), 'utf-8');
+fs.writeFileSync(path.join(__dirname, exportPath), css.stringify(AST));
