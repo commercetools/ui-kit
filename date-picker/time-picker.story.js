@@ -11,35 +11,40 @@ import Readme from './README.md';
 storiesOf('Dates', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('TimePicker', () => (
-    <IntlProvider
-      locale="en"
-      messages={{
-        en: {
-          'UIKit.DatePicker.labelRange': 'to',
-        },
-      }}
-    >
-      <Section>
-        <DatePicker
-          placeholder={text('placeholder', 'Select time ...')}
-          mode={select('mode', ['single', 'multiple', 'range'], 'single')}
-          timeScale={select('timeScale', ['date', 'datetime', 'time'], 'time')}
-          isDisabled={boolean('isDisabled?', false)}
-          value={text('Time (UTC)', '16:02:50.000')}
-          onChange={action('on change')}
-          isInvalid={boolean('isInvalid?', false)}
-          timeZone={'Europe/Madrid'}
-          /* Note that when you switch the locale in the interface it will not update completely,
-           * because the locale of flatpickr cannot be updated dynamically, you need to change the default (3rd parameter)
-           * below */
-          locale={select('locale', ['de', 'en'], 'de')}
-          size={select(
-            'size',
-            { scale: 'Full-Width', static: 'Static' },
-            'static'
-          )}
-        />
-      </Section>
-    </IntlProvider>
-  ));
+  .add('TimePicker', () => {
+    const locale = select('locale', ['de', 'en'], 'en');
+    const timeZone = select(
+      'timeZone',
+      ['Europe/Madrid', 'America/Los_Angeles'],
+      'Europe/Madrid'
+    );
+    return (
+      <IntlProvider
+        locale="en"
+        messages={{
+          en: {
+            'UIKit.DatePicker.labelRange': 'to',
+          },
+        }}
+      >
+        <Section>
+          <DatePicker
+            key={`${locale}-${timeZone}`}
+            placeholder={text('placeholder', 'Select time ...')}
+            mode={select('mode', ['single', 'multiple', 'range'], 'single')}
+            timeScale={select(
+              'timeScale',
+              ['date', 'datetime', 'time'],
+              'time'
+            )}
+            isDisabled={boolean('isDisabled?', false)}
+            value={text('Time (UTC)', '16:02:50.000')}
+            onChange={action('on change')}
+            isInvalid={boolean('isInvalid?', false)}
+            timeZone={timeZone}
+            locale={locale}
+          />
+        </Section>
+      </IntlProvider>
+    );
+  });
