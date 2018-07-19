@@ -15,7 +15,7 @@
 .textarea {
   color: var(--token-font-color-default);
   font-family: var(--token-font-family-default);
-  font-size: var(--token-font-size-body);
+  font-size: var(--token-font-size-default);
   padding: var(--spacing-4) var(--spacing-8);
   border-radius: var(--token-border-radius-input);
   transition: var(--transition-standard);

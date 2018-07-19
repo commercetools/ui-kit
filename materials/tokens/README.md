@@ -67,7 +67,7 @@ and then:
 .textarea {
   color: var(--token-font-color-default);
   font-family: var(--token-font-family-default);
-  font-size: var(--token-font-size-body);
+  font-size: var(--token-font-size-default);
 }
 
 .textarea:disabled {
