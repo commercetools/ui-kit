@@ -126,6 +126,7 @@ export class DatePicker extends React.PureComponent {
     placeholder: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
+    timeZone: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
@@ -136,9 +137,6 @@ export class DatePicker extends React.PureComponent {
       formatMessage: PropTypes.func.isRequired,
       locale: PropTypes.string.isRequired,
     }).isRequired,
-
-    // withUserTimeZone
-    timeZone: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
