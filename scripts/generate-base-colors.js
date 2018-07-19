@@ -18,9 +18,9 @@ const variablePrefix = '--color';
 
 const colors = [JSON.parse(file)];
 
-const declarationsBody = colors.reduce((acc, curr) => {
+const declarationsBody = colors.reduce((acc, colorGroup) => {
   //   Transforms the colors object into base colors
-  Object.entries(curr).forEach(([colorName, variations]) => {
+  Object.entries(colorGroup).forEach(([colorName, variations]) => {
     Object.entries(variations).forEach(
       ([variationNumber, lightnessPercentage]) => {
         // defines the main colors variables
