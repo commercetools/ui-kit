@@ -11,7 +11,7 @@ const css = require('css');
 const startCase = require('lodash').startCase;
 const importPath = 'materials/colors/decisions/base-colors.json';
 const exportPath = '../materials/colors/base-colors.mod.css';
-const file = fs.readFileSync(path.join(__dirname, '../', importPath), 'utf-8');
+const file = fs.readFileSync(path.join(__dirname, '../', importPath));
 
 // Prefix identification of variable
 const variablePrefix = '--color';
