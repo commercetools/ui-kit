@@ -5,7 +5,7 @@ const isVariation = require('./utility.js').isVariation;
 
 const importPath = '../materials/colors/base-colors.mod.css';
 const exportPath = '../materials/colors/colors-for-story.mod.css';
-const loadedFile = fs.readFileSync(path.join(__dirname, importPath), 'utf-8');
+const loadedFile = fs.readFileSync(path.join(__dirname, importPath));
 const fileToBeTransformed = css.parse(loadedFile);
 
 // Path where decision file is located, for documentation purposes only
