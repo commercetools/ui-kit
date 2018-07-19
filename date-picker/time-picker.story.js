@@ -1,5 +1,5 @@
 import React from 'react';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, addLocaleData } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
@@ -7,6 +7,10 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import Section from '../.storybook/decorators/section';
 import DatePicker from './date-picker';
 import Readme from './README.md';
+
+addLocaleData({
+  locale: 'de',
+});
 
 storiesOf('Dates', module)
   .addDecorator(withKnobs)
@@ -20,10 +24,13 @@ storiesOf('Dates', module)
     );
     return (
       <IntlProvider
-        locale="en"
+        locale={locale}
         messages={{
           en: {
             'UIKit.DatePicker.labelRange': 'to',
+          },
+          de: {
+            'UIKit.DatePicker.labelRange': 'bis',
           },
         }}
       >
@@ -42,7 +49,6 @@ storiesOf('Dates', module)
             onChange={action('on change')}
             isInvalid={boolean('isInvalid?', false)}
             timeZone={timeZone}
-            locale={locale}
           />
         </Section>
       </IntlProvider>
