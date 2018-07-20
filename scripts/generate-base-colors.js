@@ -39,20 +39,20 @@ const declarationsBody = flatMap(colors, colorGroup =>
             {
               // Adds a comment to categorize base colors in groups
               type: 'comment',
-              comment: ` ${startCase(colorName)}s `
+              comment: ` ${startCase(colorName)}s `,
             },
             {
               type: 'declaration',
               property: cssVariableBaseName,
-              value: variations.default
-            }
+              value: variations.default,
+            },
           ];
         } else {
           // Writes the variations of main colors below them
           return {
             type: 'declaration',
             property: `${cssVariableBaseName}-${variationNumber}`,
-            value: `color-mod(var(${cssVariableBaseName}) lightness(${lightnessPercentage}))`
+            value: `color-mod(var(${cssVariableBaseName}) lightness(${lightnessPercentage}))`,
           };
         }
       }
@@ -68,13 +68,13 @@ const commentDoNotModify = {
   colors's values should be updated in '${importPath}';
   Also, This file is transformed to JSON version in order to list the colors
   in the UIKit. Color groups are indicated by a comment preceeding the group
-  of colors. `
+  of colors. `,
 };
 
 // This is necessary since its not possible to generate empty lines with CSS AST stringifier
 const commentDisableStylelintCommentRule = {
   type: 'comment',
-  comment: ` stylelint-disable comment-empty-line-before, no-missing-end-of-source-newline `
+  comment: ` stylelint-disable comment-empty-line-before, no-missing-end-of-source-newline `,
 };
 
 // Comment to identify file
@@ -83,9 +83,9 @@ const commentTitle = {
   comment: ' Base Colors ',
   position: {
     start: {
-      line: 10
-    }
-  }
+      line: 10,
+    },
+  },
 };
 
 // Defines the CSS AST to be stringified
@@ -99,12 +99,16 @@ const AST = {
       {
         type: 'rule',
         selectors: [':root'],
-        declarations: declarationsBody
-      }
+        declarations: declarationsBody,
+      },
     ],
-    parsingErrors: []
-  }
+    parsingErrors: [],
+  },
 };
 
 // Generates the file
+<<<<<<< HEAD
 fs.writeFileSync(path.join(__dirname, exportPath), css.stringify(AST), 'utf-8');
+=======
+fs.writeFileSync(path.join(__dirname, exportPath), `${css.stringify(AST)}\n`);
+>>>>>>> fix(scripts): prettify and adds empty line to file
