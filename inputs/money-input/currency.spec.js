@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Downshift from 'downshift';
 import AccessibleButton from '../../buttons/accessible-button';
 import MoneyInput from './money-input';
 import CurrencyDropdown from './currency-dropdown';
@@ -49,8 +50,8 @@ describe('rendering', () => {
       shallow(<MoneyInput {...moneyInputProps} />)
         .find(CurrencyDropdown)
         .shallow()
-        .find('Downshift')
-        .renderProp('render', dropdownProps);
+        .find(Downshift)
+        .renderProp('children', dropdownProps);
 
     describe('dropdown head', () => {
       beforeEach(() => {
