@@ -33,8 +33,7 @@ const declarationsBodyObj = rootRulesFromFileToBeTransformed.declarations.reduce
         {
           type: 'declaration',
           property: 'background-color',
-          // Uses the latest postcss color transformation function
-          value: declaration.value.replace('color', 'color-mod'),
+          value: declaration.value,
         },
       ],
     });
@@ -57,7 +56,7 @@ const declarationsRootRule = rootRulesFromFileToBeTransformed.declarations.reduc
       acc.push({
         type: 'declaration',
         property: declaration.property,
-        value: declaration.value.replace('color', 'color-mod'),
+        value: declaration.value,
       });
     }
 
