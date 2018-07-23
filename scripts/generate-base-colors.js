@@ -74,7 +74,7 @@ const commentDoNotModify = {
 // This is necessary since its not possible to generate empty lines with CSS AST stringifier
 const commentDisableStylelintCommentRule = {
   type: 'comment',
-  comment: ` stylelint-disable comment-empty-line-before, no-missing-end-of-source-newline `,
+  comment: ` stylelint-disable comment-empty-line-before `,
 };
 
 // Comment to identify file

@@ -80,18 +80,11 @@ const commentDoNotModify = {
   This file is used to list the colors in the UIKit Color's story purposes only. `,
 };
 
-// This is necessary since its not possible to generate empty lines with CSS AST stringifier
-const commentDisableStylelintCommentRule = {
-  type: 'comment',
-  comment: ` stylelint-disable no-missing-end-of-source-newline `,
-};
-
 // Defines the CSS AST to be stringified
 const AST = {
   type: 'stylesheet',
   stylesheet: {
     rules: [
-      commentDisableStylelintCommentRule,
       commentDoNotModify,
       declarationsRootRuleObj,
       ...declarationsBodyObj,
