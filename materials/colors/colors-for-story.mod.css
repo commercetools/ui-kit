@@ -20,21 +20,6 @@
 }
 
 .green-25 {
-<<<<<<< HEAD
-  background-color: color-mod-mod(var(--color-green) lightness(25%));
-}
-
-.green-40 {
-  background-color: color-mod-mod(var(--color-green) lightness(40%));
-}
-
-.green-85 {
-  background-color: color-mod-mod(var(--color-green) lightness(85%));
-}
-
-.green-95 {
-  background-color: color-mod-mod(var(--color-green) lightness(95%));
-=======
   background-color: color-mod(var(--color-green) lightness(25%));
 }
 
@@ -48,7 +33,6 @@
 
 .green-95 {
   background-color: color-mod(var(--color-green) lightness(95%));
->>>>>>> fix(colors): removes replace function
 }
 
 .navy {
@@ -56,21 +40,6 @@
 }
 
 .navy-30 {
-<<<<<<< HEAD
-  background-color: color-mod-mod(var(--color-navy) lightness(30%));
-}
-
-.navy-40 {
-  background-color: color-mod-mod(var(--color-navy) lightness(40%));
-}
-
-.navy-95 {
-  background-color: color-mod-mod(var(--color-navy) lightness(95%));
-}
-
-.navy-98 {
-  background-color: color-mod-mod(var(--color-navy) lightness(98%));
-=======
   background-color: color-mod(var(--color-navy) lightness(30%));
 }
 
@@ -84,7 +53,6 @@
 
 .navy-98 {
   background-color: color-mod(var(--color-navy) lightness(98%));
->>>>>>> fix(colors): removes replace function
 }
 
 .gray {

@@ -9,8 +9,8 @@
   },
   "scripts": {
     "prepublish": "node ./scripts/generate-icon-exports.js",
-    "prebuild": "node ./scripts/generate-colors-for-story.js && node ./scripts/generate-base-colors.js",
-    "prestart": "node ./scripts/generate-colors-for-story.js && node ./scripts/generate-base-colors.js",
+    "prebuild": "node ./scripts/generate-base-colors.js && node ./scripts/generate-colors-for-story.js",
+    "prestart": "node ./scripts/generate-base-colors.js && node ./scripts/generate-colors-for-story.js",
     "build": "build-storybook -s . -o .storybook/dist",
     "start": "start-storybook -s . -p 9002"
   },

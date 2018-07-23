@@ -107,8 +107,4 @@ const AST = {
 };
 
 // Generates the file
-<<<<<<< HEAD
-fs.writeFileSync(path.join(__dirname, exportPath), css.stringify(AST), 'utf-8');
-=======
 fs.writeFileSync(path.join(__dirname, exportPath), `${css.stringify(AST)}\n`);
->>>>>>> fix(scripts): prettify and adds empty line to file
