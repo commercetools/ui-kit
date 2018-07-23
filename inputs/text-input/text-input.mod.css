@@ -15,11 +15,12 @@
 
 .input {
   color: var(--token-font-color-default);
+  font-family: var(--token-font-family-default);
+  font-size: var(--token-font-size-default);
+  border-radius: var(--token-border-radius-input);
   height: var(--token-size-input-height);
   line-height: var(--token-size-input-height);
   background-color: var(--token-background-color-input-disabled);
-  border-top-left-radius: var(--token-border-radius-input);
-  border-bottom-left-radius: var(--token-border-radius-input);
   border: 1px var(--token-border-color-input-disabled) solid;
   width: 100%;
   padding: 0 var(--spacing-8);
