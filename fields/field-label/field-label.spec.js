@@ -28,7 +28,7 @@ describe('rendering', () => {
     });
 
     it('should contain the label text', () => {
-      expect(titleWrapper.render().text()).toEqual('Label Title');
+      expect(titleWrapper.dive()).toHaveText('Label Title');
     });
 
     it('should not have bold text', () => {
