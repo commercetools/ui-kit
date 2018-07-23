@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Downshift from 'downshift';
 import AccessibleButton from '../../buttons/accessible-button';
 import MoneyInput from './money-input';
 import Currency from './currency';
@@ -292,8 +293,8 @@ describe('rendering', () => {
         dowshiftRenderWrapper = wrapper
           .find(CurrencyDropdown)
           .shallow()
-          .find('Downshift')
-          .renderProp('render', downshiftProps);
+          .find(Downshift)
+          .renderProp('children', downshiftProps);
       });
 
       it('should render `Currency`', () => {
@@ -315,8 +316,8 @@ describe('rendering', () => {
             dowshiftRenderWrapper = wrapper
               .find(CurrencyDropdown)
               .shallow()
-              .find('Downshift')
-              .renderProp('render', downshiftProps);
+              .find(Downshift)
+              .renderProp('children', downshiftProps);
           });
 
           it('should have opened styles', () => {
@@ -336,8 +337,8 @@ describe('rendering', () => {
             dowshiftRenderWrapper = wrapper
               .find(CurrencyDropdown)
               .shallow()
-              .find('Downshift')
-              .renderProp('render', downshiftProps);
+              .find(Downshift)
+              .renderProp('children', downshiftProps);
           });
 
           it('should have disabled styles', () => {
@@ -357,8 +358,8 @@ describe('rendering', () => {
             dowshiftRenderWrapper = wrapper
               .find(CurrencyDropdown)
               .shallow()
-              .find('Downshift')
-              .renderProp('render', downshiftProps);
+              .find(Downshift)
+              .renderProp('children', downshiftProps);
           });
 
           it('should have error styles', () => {
@@ -378,8 +379,8 @@ describe('rendering', () => {
             dowshiftRenderWrapper = wrapper
               .find(CurrencyDropdown)
               .shallow()
-              .find('Downshift')
-              .renderProp('render', downshiftProps);
+              .find(Downshift)
+              .renderProp('children', downshiftProps);
           });
 
           it('should have error styles', () => {
@@ -400,8 +401,8 @@ describe('rendering', () => {
         dowshiftRenderWrapper = wrapper
           .find(CurrencyDropdown)
           .shallow()
-          .find('Downshift')
-          .renderProp('render', downshiftProps);
+          .find(Downshift)
+          .renderProp('children', downshiftProps);
         options = dowshiftRenderWrapper.find('Option');
       });
 
@@ -493,7 +494,7 @@ describe('callbacks', () => {
         dowshiftRenderWrapper = wrapper
           .find(CurrencyDropdown)
           .dive()
-          .renderProp('render', { isOpen: true, toggleMenu: jest.fn() });
+          .renderProp('children', { isOpen: true, toggleMenu: jest.fn() });
 
         dowshiftRenderWrapper
           .find(Option)
@@ -517,7 +518,7 @@ describe('callbacks', () => {
         dowshiftRenderWrapper = wrapper
           .find(CurrencyDropdown)
           .dive()
-          .renderProp('render', { isOpen: true, toggleMenu: jest.fn() });
+          .renderProp('children', { isOpen: true, toggleMenu: jest.fn() });
 
         dowshiftRenderWrapper
           .find(Option)

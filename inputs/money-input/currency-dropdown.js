@@ -29,8 +29,8 @@ const getCurrencyDropdownOptionsStyles = props => {
 };
 
 const CurrencyDropdown = props => (
-  <Downshift
-    render={({ isOpen, toggleMenu }) => (
+  <Downshift>
+    {({ isOpen, toggleMenu }) => (
       <div
         className={getCurrencyDropdownSelectStyles({
           isDisabled: props.isDisabled,
@@ -85,7 +85,7 @@ const CurrencyDropdown = props => (
           )}
       </div>
     )}
-  />
+  </Downshift>
 );
 
 CurrencyDropdown.displayName = 'CurrencyDropdown';
