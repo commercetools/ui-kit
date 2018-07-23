@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Constraints from '@commercetools-frontend/ui-kit/materials/constraints';
@@ -23,8 +24,8 @@ storiesOf('Fields/FieldLabel', module)
         <FieldLabel
           title={text('title', 'Label title')}
           isBold={boolean('isBold', true)}
-          subtitle={text('subtitle', null)}
-          hint={text('hint', null)}
+          subtitle={text('subtitle', '')}
+          hint={text('hint', '')}
           isRequired={boolean('isRequired', false)}
           tone={select('tone', [
             '',
@@ -37,7 +38,7 @@ storiesOf('Fields/FieldLabel', module)
           ])}
           titleIcon={
             select('titleIcon', ['', 'IconButton'], '') ? (
-              <IconButton icon={<InformationIcon />} />
+              <IconButton label="label icon" icon={<InformationIcon />} />
             ) : null
           }
           subtitleIcon={
@@ -51,6 +52,7 @@ storiesOf('Fields/FieldLabel', module)
                 tone="primary"
                 icon={<InformationIcon />}
                 label="show"
+                onClick={action('onClick')}
               />
             ) : null
           }

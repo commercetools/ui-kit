@@ -10,16 +10,16 @@ export const FieldLabel = props => (
     <div>
       <label htmlFor={props.htmlFor}>
         <Spacings.Inline alignItems="flexStart" scale="xs">
-          <Text.Body
-            tone={props.tone}
-            isBold={props.isBold}
-            data-test-role="title"
-          >
-            <Text.Wrap>
+          <Text.Wrap>
+            <Text.Body
+              tone={props.tone}
+              isBold={props.isBold}
+              data-test-role="title"
+            >
               {props.title}
               {props.isRequired ? <RequiredIndicator /> : null}
-            </Text.Wrap>
-          </Text.Body>
+            </Text.Body>
+          </Text.Wrap>
           {props.titleIcon &&
             React.cloneElement(props.titleIcon, {
               size: 'small',
