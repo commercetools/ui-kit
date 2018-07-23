@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { WarningIcon } from '@commercetools-frontend/ui-kit/icons';
 import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
 import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
-import RequiredIndicator from '@commercetools-frontend/ui-kit/fields/required-indicator';
+import RequiredIndicator from './required-indicator';
 import FieldLabel from './field-label';
 
 const createTestProps = customProps => ({
@@ -31,8 +31,8 @@ describe('rendering', () => {
       expect(titleWrapper.render().text()).toEqual('Label Title');
     });
 
-    it('should contain bold text', () => {
-      expect(titleWrapper).toHaveProp('isBold', true);
+    it('should not have bold text', () => {
+      expect(titleWrapper).toHaveProp('isBold', false);
     });
 
     it('should contain text with no tone', () => {
@@ -53,7 +53,7 @@ describe('rendering', () => {
 
     describe('with tone', () => {
       beforeEach(() => {
-        props = createTestProps({ titleTone: 'inverted' });
+        props = createTestProps({ tone: 'inverted' });
         wrapper = shallow(<FieldLabel {...props} />);
         titleWrapper = wrapper.find({ 'data-test-role': 'title' });
       });
@@ -81,7 +81,7 @@ describe('rendering', () => {
       });
     });
 
-    describe('without subtitle', () => {
+    describe('when subtitle is not given', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
@@ -110,7 +110,7 @@ describe('rendering', () => {
       });
     });
 
-    describe('without hint', () => {
+    describe('when hint is not given', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
@@ -134,7 +134,7 @@ describe('rendering', () => {
       });
     });
 
-    describe('when connected input is not required', () => {
+    describe('when labelled input is not required', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
@@ -163,7 +163,7 @@ describe('rendering', () => {
       });
     });
 
-    describe('without titleIcon', () => {
+    describe('when titleIcon is not given', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
@@ -192,7 +192,7 @@ describe('rendering', () => {
       });
     });
 
-    describe('without subtitleIcon', () => {
+    describe('when subtitleIcon is not given', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);

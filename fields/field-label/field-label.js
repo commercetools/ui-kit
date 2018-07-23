@@ -8,10 +8,10 @@ import styles from './field-label.mod.css';
 export const FieldLabel = props => (
   <div className={styles['label-container']}>
     <div>
-      <label>
+      <label htmlFor={props.htmlFor}>
         <Spacings.Inline alignItems="flexStart" scale="xs">
           <Text.Body
-            tone={props.titleTone}
+            tone={props.tone}
             isBold={props.isBold}
             data-test-role="title"
           >
@@ -33,11 +33,13 @@ export const FieldLabel = props => (
             size: 'medium',
           })}
         {props.subtitle && (
-          <Text.Detail data-test-role="subtitle">{props.subtitle}</Text.Detail>
+          <Text.Detail tone={props.tone} data-test-role="subtitle">
+            {props.subtitle}
+          </Text.Detail>
         )}
       </Spacings.Inline>
       {props.hint && (
-        <Text.Detail data-test-role="hint">
+        <Text.Detail tone={props.tone} data-test-role="hint">
           <Text.Wrap>{props.hint}</Text.Wrap>
         </Text.Detail>
       )}
@@ -49,7 +51,7 @@ export const FieldLabel = props => (
 FieldLabel.displayName = 'FieldLabel';
 FieldLabel.defaultProps = {
   isRequired: false,
-  isBold: true,
+  isBold: false,
 };
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -60,14 +62,14 @@ FieldLabel.propTypes = {
   badge: PropTypes.node,
   isRequired: PropTypes.bool,
   isBold: PropTypes.bool,
-  titleTone: PropTypes.oneOf([
+  tone: PropTypes.oneOf([
     'primary',
     'secondary',
     'positive',
     'negative',
     'inverted',
-    'none',
   ]),
+  htmlFor: PropTypes.string,
 };
 
 export default FieldLabel;

@@ -61,7 +61,6 @@ storiesOf('Fields', module)
               label: (
                 <FieldLabel
                   title={text('title-table', 'Table title')}
-                  isBold={false}
                   titleTone={select(
                     'titleTone-table',
                     ['', 'inverted'],
@@ -85,7 +84,6 @@ storiesOf('Fields', module)
         >
           <FieldLabel
             title={text('title-checkbox', 'Checkbox title')}
-            isBold={false}
             isRequired={boolean('isRequired-checkbox', false)}
           />
         </Checkbox>
