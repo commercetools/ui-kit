@@ -127,7 +127,7 @@ class LocalizedInput extends React.Component {
       <div key={this.props.language} className={styles.fieldContainer}>
         <label htmlFor={this.props.id} className={styles.languageLabel}>
           {/* FIXME: add proper tone for disabled when tones are refactored */}
-          <Text.Detail tone={'secondary'}>
+          <Text.Detail tone="secondary">
             {this.props.language.toUpperCase()}
           </Text.Detail>
         </label>
