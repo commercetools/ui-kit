@@ -4,7 +4,6 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Constraints from '@commercetools-frontend/ui-kit/materials/constraints';
 import Table from '@commercetools-frontend/ui-kit/table';
-import Checkbox from '@commercetools-frontend/ui-kit/switches/checkbox';
 import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
 import {
   InformationIcon,
@@ -79,20 +78,5 @@ storiesOf('Fields/FieldLabel', module)
         onRowClick={() => {}}
         items={[]}
       />
-    </Section>
-  ))
-  .add('in checkbox', () => (
-    <Section>
-      <Checkbox
-        isDisabled={false}
-        isChecked={false}
-        onChange={() => {}}
-        value="foo-value"
-      >
-        <FieldLabel
-          title={text('title', 'Checkbox title')}
-          isRequired={boolean('isRequired', false)}
-        />
-      </Checkbox>
     </Section>
   ));
