@@ -18,8 +18,8 @@
   /* avoid wrapping label onto new lines */
   flex: 1 0 auto;
   color: var(--token-font-color-disabled);
-  height: var(--token-size-input-height);
-  line-height: var(--token-size-input-height);
+  height: var(--token-size-height-input);
+  line-height: var(--token-size-height-input);
   background-color: var(--token-background-color-input-disabled);
   border-top-left-radius: var(--token-border-radius-input);
   border-bottom-left-radius: var(--token-border-radius-input);
@@ -35,7 +35,7 @@
   color: var(--token-font-color-default);
   font-family: var(--token-font-family-default);
   font-size: var(--token-font-size-default);
-  height: var(--token-size-input-height);
+  height: var(--token-size-height-input);
   border-top-right-radius: var(--token-border-radius-input);
   border-bottom-right-radius: var(--token-border-radius-input);
   width: 100%;

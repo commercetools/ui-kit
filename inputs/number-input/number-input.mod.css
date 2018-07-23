@@ -17,7 +17,7 @@
   color: var(--token-font-color-default);
   font-family: var(--token-font-family-default);
   font-size: var(--token-font-size-default);
-  height: var(--token-size-input-height);
+  height: var(--token-size-height-input);
   border-radius: var(--token-border-radius-input);
   width: 100%;
   border-style: solid;
