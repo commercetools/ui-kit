@@ -74,7 +74,7 @@
 .warning {
   composes: input;
   color: var(--token-font-color-warning);
-  border-color: 1px solid var(--token-border-color-input-warning);
+  border-color: var(--token-border-color-input-warning);
 }
 
 .error {

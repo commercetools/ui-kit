@@ -20,8 +20,8 @@
   border-radius: var(--token-border-radius-input);
   height: var(--token-size-height-input);
   line-height: var(--token-size-height-input);
-  background-color: var(--token-background-color-input-disabled);
-  border: 1px var(--token-border-color-input-disabled) solid;
+  background-color: var(--token-background-color-input-pristine);
+  border: 1px var(--token-border-color-input-pristine) solid;
   width: 100%;
   padding: 0 var(--spacing-8);
   transition: var(--transition-standard);
@@ -45,7 +45,7 @@
 .warning {
   composes: input;
   color: var(--token-font-color-warning);
-  border-color: 1px solid var(--token-border-color-input-warning);
+  border-color: var(--token-border-color-input-warning);
 }
 
 .error {
