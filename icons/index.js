@@ -12,6 +12,7 @@ import OrigAngleLeftIcon from './svg/angle-left.svg';
 import OrigAngleRightIcon from './svg/angle-right.svg';
 import OrigAngleUpIcon from './svg/angle-up.svg';
 import OrigArrowGraphDownIcon from './svg/arrow-graph-down.svg';
+import OrigArrowGraphLeftIcon from './svg/arrow-graph-left.svg';
 import OrigArrowGraphRightIcon from './svg/arrow-graph-right.svg';
 import OrigArrowGraphUpIcon from './svg/arrow-graph-up.svg';
 import OrigArrowLeftIcon from './svg/arrow-left.svg';
@@ -107,6 +108,7 @@ const AngleLeftIcon = withThemeProp(withSizeProp(OrigAngleLeftIcon));
 const AngleRightIcon = withThemeProp(withSizeProp(OrigAngleRightIcon));
 const AngleUpIcon = withThemeProp(withSizeProp(OrigAngleUpIcon));
 const ArrowGraphDownIcon = withThemeProp(withSizeProp(OrigArrowGraphDownIcon));
+const ArrowGraphLeftIcon = withThemeProp(withSizeProp(OrigArrowGraphLeftIcon));
 const ArrowGraphRightIcon = withThemeProp(
   withSizeProp(OrigArrowGraphRightIcon)
 );
@@ -301,6 +303,7 @@ export { AngleLeftIcon };
 export { AngleRightIcon };
 export { AngleUpIcon };
 export { ArrowGraphDownIcon };
+export { ArrowGraphLeftIcon };
 export { ArrowGraphRightIcon };
 export { ArrowGraphUpIcon };
 export { ArrowLeftIcon };
