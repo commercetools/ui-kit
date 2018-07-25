@@ -9,6 +9,7 @@ import withReadme from 'storybook-readme/with-readme';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import mapValues from 'lodash.mapvalues';
 import Section from '../.storybook/decorators/section';
+import FormikBox from '../.storybook/decorators/formik-box';
 import Spacings from '../materials/spacings';
 import Text from '../typography/text';
 import ErrorMessage from '../messages/error-message';
@@ -571,24 +572,7 @@ storiesOf('Examples', module)
                       />
                     </div>
                     <hr />
-                    <div>
-                      <Text.Subheadline elementType="h4">
-                        formik.values
-                      </Text.Subheadline>
-                      <pre>{JSON.stringify(formik.values, null, 2)}</pre>
-                    </div>
-                    <div>
-                      <Text.Subheadline elementType="h4">
-                        formik.touched
-                      </Text.Subheadline>
-                      <pre>{JSON.stringify(formik.touched, null, 2)}</pre>
-                    </div>
-                    <div>
-                      <Text.Subheadline elementType="h4">
-                        formik.errors
-                      </Text.Subheadline>
-                      <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
-                    </div>
+                    <FormikBox formik={formik} />
                   </Spacings.Stack>
                 )}
               />
