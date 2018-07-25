@@ -507,10 +507,10 @@ class ProductForm extends React.Component {
   }
 }
 
-storiesOf('Examples', module)
+storiesOf('Examples|Forms', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Forms))
-  .add('Forms', () => {
+  .add('Basic Formik Example', () => {
     const selectedLanguage = select(
       'selectedLanguage',
       resourceLanguages,
