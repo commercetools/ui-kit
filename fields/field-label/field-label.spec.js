@@ -16,7 +16,7 @@ describe('rendering', () => {
   let wrapper;
   let titleWrapper;
   let subTitleWrapper;
-  let labelIconWrapper;
+  let titleIconWrapper;
   let subtitleIconWrapper;
   let hintWrapper;
 
@@ -146,12 +146,12 @@ describe('rendering', () => {
     });
   });
 
-  describe('with `titleIcon`', () => {
-    describe('when titleIcon is given', () => {
+  describe('with `titleIconButton`', () => {
+    describe('when titleIconButton is given', () => {
       beforeEach(() => {
-        props = createTestProps({ titleIcon: <IconButton size="big" /> });
+        props = createTestProps({ titleIconButton: <IconButton size="big" /> });
         wrapper = shallow(<FieldLabel {...props} />);
-        labelIconWrapper = wrapper.find(IconButton);
+        titleIconWrapper = wrapper.find(IconButton);
       });
 
       it('should display the icon', () => {
@@ -159,7 +159,7 @@ describe('rendering', () => {
       });
 
       it('should set the icon size', () => {
-        expect(labelIconWrapper.prop('size')).toEqual('small');
+        expect(titleIconWrapper.prop('size')).toEqual('small');
       });
     });
 

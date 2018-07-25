@@ -29,15 +29,15 @@ import FieldLabel from '@commercetools-frontend/ui-kit/fields/field-label';
 
 #### Properties
 
-| Props          | Type               | Required | Values                                                         | Default | Description                                                               |
-| -------------- | ------------------ | :------: | -------------------------------------------------------------- | ------- | ------------------------------------------------------------------------- |
-| `title`        | `string` or `node` |    ✅    | -                                                              | -       | Title of the label                                                        |
-| `subtitle`     | `string` or `node` |    -     | -                                                              |         | Subtitle for the label. Provides supplementary information for the title. |
-| `hint`         | `string` or `node` |    -     | -                                                              |         | Hint text for the label. Provides a description for the title.            |
-| `titleIcon`    | `node`             |    -     | -                                                              |         | IconButton to be displayed beside the label title                         |
-| `subtitleIcon` | `node`             |    -     | -                                                              |         | Icon to be displayed beside the label subtitle                            |
-| `badge`        | `node`             |    -     | -                                                              |         | Badge to be displayed beside the label.                                   |
-| `isRequired`   | `bool`             |    -     | -                                                              | `false` | Indicates if the labeled field is required in a form                      |  |
-| `isBold`       | `bool`             |    -     | -                                                              | `false` | Indicates if the label title should be in bold text                       |
-| `tone`         | `string`           |    -     | `['primary', 'secondary', 'positive', 'negative', 'inverted']` | \_      | Indicates the tone to be applied to the label title                       |
-| `htmlFor`      | `string`           |    -     | -                                                              | -       | ID of the labeled input                                                   |
+| Props          | Type               | Required | Values                    | Default | Description                                                                                                                                 |
+| -------------- | ------------------ | :------: | ------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`        | `string` or `node` |    ✅    | -                         | -       | Title of the label                                                                                                                          |
+| `subtitle`     | `string` or `node` |    -     | -                         | -       | Subtitle for the label. Provides supplementary information for the title.                                                                   |
+| `hint`         | `string` or `node` |    -     | -                         | -       | Hint text for the label. Provides a description for the title.                                                                              |
+| `titleIcon`    | `node`             |    -     | -                         | -       | IconButton to be displayed beside the label title                                                                                           |
+| `subtitleIcon` | `node`             |    -     | -                         | -       | Icon to be displayed beside the label subtitle                                                                                              |
+| `badge`        | `node`             |    -     | -                         | -       | Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email) |
+| `isRequired`   | `bool`             |    -     | -                         | `false` | Indicates if the labeled field is required in a form                                                                                        |  |
+| `isBold`       | `bool`             |    -     | -                         | `false` | Indicates if the label title should be in bold text                                                                                         |
+| `tone`         | `string`           |    -     | `['primary', 'inverted']` | \_      | Indicates the tone to be applied to the label title                                                                                         |
+| `htmlFor`      | `string`           |    -     | -                         | -       | ID of the labeled input                                                                                                                     |

@@ -27,17 +27,9 @@ storiesOf('Fields/FieldLabel', module)
           subtitle={text('subtitle', '')}
           hint={text('hint', '')}
           isRequired={boolean('isRequired', false)}
-          tone={select('tone', [
-            '',
-            'primary',
-            'information',
-            'secondary',
-            'positive',
-            'negative',
-            'inverted',
-          ])}
-          titleIcon={
-            select('titleIcon', ['', 'IconButton'], '') ? (
+          tone={select('tone', ['', 'primary', 'inverted'])}
+          titleIconButton={
+            select('titleIconButton', ['', 'IconButton'], '') ? (
               <IconButton label="label icon" icon={<InformationIcon />} />
             ) : null
           }

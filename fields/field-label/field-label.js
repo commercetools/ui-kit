@@ -20,8 +20,8 @@ export const FieldLabel = props => (
               {props.isRequired ? <RequiredIndicator /> : null}
             </Text.Body>
           </Text.Wrap>
-          {props.titleIcon &&
-            React.cloneElement(props.titleIcon, {
+          {props.titleIconButton &&
+            React.cloneElement(props.titleIconButton, {
               size: 'small',
             })}
         </Spacings.Inline>
@@ -57,18 +57,12 @@ FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  titleIcon: PropTypes.node,
+  titleIconButton: PropTypes.node,
   subtitleIcon: PropTypes.node,
   badge: PropTypes.node,
   isRequired: PropTypes.bool,
   isBold: PropTypes.bool,
-  tone: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'positive',
-    'negative',
-    'inverted',
-  ]),
+  tone: PropTypes.oneOf(['primary', 'inverted']),
   htmlFor: PropTypes.string,
 };
 
