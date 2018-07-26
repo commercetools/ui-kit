@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Label from './label';
+import Stamp from './stamp';
 
 describe('rendering', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <Label tone="positive">
+      <Stamp tone="positive">
         <div>{'Hello'}</div>
-      </Label>
+      </Stamp>
     );
   });
 

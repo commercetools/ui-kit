@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Spacings from '../materials/spacings';
-import styles from './label.mod.css';
+import styles from './stamp.mod.css';
 
 export const availableTones = [
   'critical',

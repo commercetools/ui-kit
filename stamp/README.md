@@ -1,19 +1,23 @@
-# Label
+# Stamp
+
+## Description
+
+Stamps are visual labels which hold small amounts of information regarding an item. (E.g Indicating if a product is published in a list)
 
 ## Usage
 
 ```js
-import Label from '@commercetools-frontend/ui-kit/label';
+import Stamp from '@commercetools-frontend/ui-kit/stamp';
 ```
 
 ## Example
 
 ```jsx
-import Label from '@commercetools-frontend/ui-kit/label';
+import Stamp from '@commercetools-frontend/ui-kit/stamp';
 
-<Label tone="primary">
+<Stamp tone="primary">
   <Text.Detail>{'Hello'}</Text.Detail>
-</Label>;
+</Stamp>;
 ```
 
 ## Properties
