@@ -8,8 +8,7 @@ import Tag from '@commercetools-frontend/ui-kit/tag';
 
 #### Description
 
-A tag is often part of a list of items visualizing what has applied to some
-other element. This might apply to search terms or categories of a product.
+A tag is often used for items that need to be labeled or categorized. This might apply to search terms or categories of a product. Tags can also have a "remove" button.
 
 #### Usage
 
