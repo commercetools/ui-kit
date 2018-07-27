@@ -17,7 +17,7 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<Label {...props} />);
-      valueWrapper = wrapper.find({ 'data-test-role': 'value' });
+      valueWrapper = wrapper.find('TextBody');
     });
 
     it('should contain the label text', () => {
@@ -36,7 +36,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ isBold: false });
         wrapper = shallow(<Label {...props} />);
-        valueWrapper = wrapper.find({ 'data-test-role': 'value' });
+        valueWrapper = wrapper.find('TextBody');
       });
 
       it('should contain bold text', () => {
@@ -48,7 +48,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ tone: 'inverted' });
         wrapper = shallow(<Label {...props} />);
-        valueWrapper = wrapper.find({ 'data-test-role': 'value' });
+        valueWrapper = wrapper.find('TextBody');
       });
 
       it('should set the text tone', () => {

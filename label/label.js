@@ -6,7 +6,7 @@ import styles from './label.mod.css';
 
 const Label = props => (
   <label className={styles.label} htmlFor={props.htmlFor}>
-    <Text.Body tone={props.tone} isBold={props.isBold} data-test-role="value">
+    <Text.Body tone={props.tone} isBold={props.isBold}>
       {props.value}
     </Text.Body>
     {props.isRequired && <RequiredIndicator />}
