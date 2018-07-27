@@ -1,4 +1,4 @@
-# Fields: Label
+# Forms: Label
 
 #### Description
 
@@ -18,18 +18,19 @@ import Label from '@commercetools-frontend/ui-kit/fields/label';
 
 ```js
 <Label
-  value={<FormattedMessage {...messages.title} />}
   isRequired={true}
   isBold={false}
   tone="inverted"
 />
+  <FormattedMessage {...messages.title} />
+</Label>
 ```
 
 #### Properties
 
 | Props        | Type     | Required | Values                    | Default | Description                                          |
 | ------------ | -------- | :------: | ------------------------- | ------- | ---------------------------------------------------- |
-| `value`      | `node`   |    ✅    | -                         | -       | Value of the label                                   |
+| `children`   | `node`   |    ✅    | -                         | -       | Value of the label                                   |
 | `isRequired` | `bool`   |    -     | -                         | `false` | Indicates if the labeled field is required in a form |  |
 | `isBold`     | `bool`   |    -     | -                         | `false` | Indicates if the label title should be in bold text  |
 | `tone`       | `string` |    -     | `['primary', 'inverted']` | \_      | Indicates the tone to be applied to the label        |

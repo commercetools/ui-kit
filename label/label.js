@@ -7,7 +7,7 @@ import styles from './label.mod.css';
 const Label = props => (
   <label className={styles.label} htmlFor={props.htmlFor}>
     <Text.Body tone={props.tone} isBold={props.isBold}>
-      {props.value}
+      {props.children}
     </Text.Body>
     {props.isRequired && <RequiredIndicator />}
   </label>
@@ -16,7 +16,7 @@ const Label = props => (
 Label.propTypes = {
   // FIXME: Add proper tone when tones are refactored
   tone: PropTypes.oneOf(['primary', 'inverted']),
-  value: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   isBold: PropTypes.bool,
   isRequired: PropTypes.bool,
   htmlFor: PropTypes.string,

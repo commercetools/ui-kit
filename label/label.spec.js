@@ -4,43 +4,43 @@ import RequiredIndicator from './required-indicator';
 import Label from './label';
 
 const createTestProps = customProps => ({
-  value: 'Label value',
+  children: 'Label children',
   ...customProps,
 });
 
 describe('rendering', () => {
   let props;
   let wrapper;
-  let valueWrapper;
+  let childrenWrapper;
 
-  describe('with value', () => {
+  describe('with children', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<Label {...props} />);
-      valueWrapper = wrapper.find('TextBody');
+      childrenWrapper = wrapper.find('TextBody');
     });
 
     it('should contain the label text', () => {
-      expect(valueWrapper.dive()).toHaveText('Label value');
+      expect(childrenWrapper.dive()).toHaveText('Label children');
     });
 
     it('should not have bold text', () => {
-      expect(valueWrapper).toHaveProp('isBold', false);
+      expect(childrenWrapper).toHaveProp('isBold', false);
     });
 
     it('should contain text with no tone', () => {
-      expect(valueWrapper).toHaveProp('tone', undefined);
+      expect(childrenWrapper).toHaveProp('tone', undefined);
     });
 
     describe('without bold text', () => {
       beforeEach(() => {
         props = createTestProps({ isBold: false });
         wrapper = shallow(<Label {...props} />);
-        valueWrapper = wrapper.find('TextBody');
+        childrenWrapper = wrapper.find('TextBody');
       });
 
       it('should contain bold text', () => {
-        expect(valueWrapper).toHaveProp('isBold', false);
+        expect(childrenWrapper).toHaveProp('isBold', false);
       });
     });
 
@@ -48,11 +48,11 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ tone: 'inverted' });
         wrapper = shallow(<Label {...props} />);
-        valueWrapper = wrapper.find('TextBody');
+        childrenWrapper = wrapper.find('TextBody');
       });
 
       it('should set the text tone', () => {
-        expect(valueWrapper).toHaveProp('tone', 'inverted');
+        expect(childrenWrapper).toHaveProp('tone', 'inverted');
       });
     });
   });

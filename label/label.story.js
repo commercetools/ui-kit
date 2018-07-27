@@ -8,19 +8,20 @@ import Section from '../.storybook/decorators/section';
 import Readme from './README.md';
 import Label from './label';
 
-storiesOf('Fields/FieldLabel', module)
+storiesOf('Label', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('basic example', () => (
     <Section>
       <Constraints.Horizontal constraint="m">
         <Label
-          value={text('title', 'Label title')}
           isBold={boolean('isBold', true)}
           isRequired={boolean('isRequired', false)}
           tone={select('tone', ['', 'inverted'])}
           htmlFor={text('htmlFor', 'input-field-id')}
-        />
+        >
+          {text('children', 'Label value')}
+        </Label>
       </Constraints.Horizontal>
     </Section>
   ))
@@ -35,7 +36,9 @@ storiesOf('Fields/FieldLabel', module)
                 value={text('value', 'Table label')}
                 tone={select('tone', ['inverted'], 'inverted')}
                 isRequired={boolean('isRequired', true)}
-              />
+              >
+                {text('children', 'Label value')}
+              </Label>
             ),
           },
         ]}
