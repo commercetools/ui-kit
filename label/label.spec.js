@@ -64,7 +64,7 @@ describe('rendering', () => {
         wrapper = shallow(<Label {...props} />);
       });
 
-      it('should display an `*` in the label', () => {
+      it('should display a `*` in the label', () => {
         expect(wrapper).toRender(RequiredIndicator);
       });
     });
@@ -75,7 +75,7 @@ describe('rendering', () => {
         wrapper = shallow(<Label {...props} />);
       });
 
-      it('should display an `*` in the label', () => {
+      it('should display a `*` in the label', () => {
         expect(wrapper).not.toRender(RequiredIndicator);
       });
     });
