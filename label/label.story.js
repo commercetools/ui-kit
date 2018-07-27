@@ -19,6 +19,7 @@ storiesOf('Fields/FieldLabel', module)
           isBold={boolean('isBold', true)}
           isRequired={boolean('isRequired', false)}
           tone={select('tone', ['', 'inverted'])}
+          htmlFor={text('htmlFor', 'input-field-id')}
         />
       </Constraints.Horizontal>
     </Section>
