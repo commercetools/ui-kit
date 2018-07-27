@@ -1,0 +1,6 @@
+@import '../materials/tokens/tokens.mod.css';
+
+/* FIXME: Add proper tone when tones are refactored */
+.highlighted {
+  color: var(--token-font-color-warning);
+}
