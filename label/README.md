@@ -11,14 +11,14 @@ In order to improve readability, using `inverted` tone is recommended on dark ba
 #### Usage
 
 ```js
-import Label from '@commercetools-frontend/ui-kit/fields/label';
+import Label from '@commercetools-frontend/ui-kit/label';
 ```
 
 #### Examples
 
 ```js
 <Label
-  isRequired={true}
+  isRequiredIndicatorVisible={true}
   isBold={false}
   tone="inverted"
 />
@@ -28,10 +28,10 @@ import Label from '@commercetools-frontend/ui-kit/fields/label';
 
 #### Properties
 
-| Props        | Type     | Required | Values                    | Default | Description                                          |
-| ------------ | -------- | :------: | ------------------------- | ------- | ---------------------------------------------------- |
-| `children`   | `node`   |    ✅    | -                         | -       | Value of the label                                   |
-| `isRequired` | `bool`   |    -     | -                         | `false` | Indicates if the labeled field is required in a form |  |
-| `isBold`     | `bool`   |    -     | -                         | `false` | Indicates if the label title should be in bold text  |
-| `tone`       | `string` |    -     | `['primary', 'inverted']` | \_      | Indicates the tone to be applied to the label        |
-| `htmlFor`    | `string` |    -     | -                         | -       | ID of the labeled input                              |
+| Props                        | Type     | Required | Values                    | Default | Description                                          |
+| ---------------------------- | -------- | :------: | ------------------------- | ------- | ---------------------------------------------------- |
+| `children`                   | `node`   |    ✅    | -                         | -       | Value of the label                                   |
+| `isRequiredIndicatorVisible` | `bool`   |    -     | -                         | `false` | Indicates if the labeled field is required in a form |  |
+| `isBold`                     | `bool`   |    -     | -                         | `false` | Indicates if the label title should be in bold text  |
+| `tone`                       | `string` |    -     | `['primary', 'inverted']` | \_      | Indicates the tone to be applied to the label        |
+| `htmlFor`                    | `string` |    -     | -                         | -       | ID of the labeled input                              |

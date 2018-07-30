@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Text from '../typography/text';
 import RequiredIndicator from './required-indicator';
 import Label from './label';
 
@@ -17,7 +18,7 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<Label {...props} />);
-      childrenWrapper = wrapper.find('TextBody');
+      childrenWrapper = wrapper.find(Text.Body);
     });
 
     it('should contain the label text', () => {
@@ -36,7 +37,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ isBold: false });
         wrapper = shallow(<Label {...props} />);
-        childrenWrapper = wrapper.find('TextBody');
+        childrenWrapper = wrapper.find(Text.Body);
       });
 
       it('should contain bold text', () => {
@@ -48,7 +49,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ tone: 'inverted' });
         wrapper = shallow(<Label {...props} />);
-        childrenWrapper = wrapper.find('TextBody');
+        childrenWrapper = wrapper.find(Text.Body);
       });
 
       it('should set the text tone', () => {
@@ -60,7 +61,7 @@ describe('rendering', () => {
   describe('with `required` state', () => {
     describe('when connected input is required', () => {
       beforeEach(() => {
-        props = createTestProps({ isRequired: true });
+        props = createTestProps({ isRequiredIndicatorVisible: true });
         wrapper = shallow(<Label {...props} />);
       });
 

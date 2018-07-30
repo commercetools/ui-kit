@@ -16,7 +16,10 @@ storiesOf('Label', module)
       <Constraints.Horizontal constraint="m">
         <Label
           isBold={boolean('isBold', true)}
-          isRequired={boolean('isRequired', false)}
+          isRequiredIndicatorVisible={boolean(
+            'isRequiredIndicatorVisible',
+            false
+          )}
           tone={select('tone', ['', 'inverted'])}
           htmlFor={text('htmlFor', 'input-field-id')}
         >

@@ -9,7 +9,7 @@ const Label = props => (
     <Text.Body tone={props.tone} isBold={props.isBold}>
       {props.children}
     </Text.Body>
-    {props.isRequired && <RequiredIndicator />}
+    {props.isRequiredIndicatorVisible && <RequiredIndicator />}
   </label>
 );
 
@@ -18,7 +18,7 @@ Label.propTypes = {
   tone: PropTypes.oneOf(['primary', 'inverted']),
   children: PropTypes.node.isRequired,
   isBold: PropTypes.bool,
-  isRequired: PropTypes.bool,
+  isRequiredIndicatorVisible: PropTypes.bool,
   htmlFor: PropTypes.string,
 };
 
