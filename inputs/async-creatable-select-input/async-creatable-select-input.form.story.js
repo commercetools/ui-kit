@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
@@ -67,52 +68,55 @@ storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withReadme(Readme))
   .add('AsyncCreatableSelectInput', () => (
     <Section>
-      {/* <SignIn /> */}
-      <FakeConnector>
-        {({ product }) => (
-          <Formik
-            initialValues={docToForm(product)}
-            validate={
-              // we use this failing validation so that we can see the touched
-              // shape
-              values => (values.state.length > 2 ? { state: true } : {})
-            }
-            onSubmit={(values, formik, ...rest) => {
-              action('onSubmit')(values, formik, ...rest);
-              formik.resetForm(values);
-            }}
-            render={formik => (
-              <Spacings.Stack scale="l">
-                <AsyncCreatableSelectInput
-                  name="state"
-                  isMulti={true}
-                  value={formik.values.state}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  loadOptions={loadOptions}
-                />
-                {AsyncCreatableSelectInput.isTouched(formik.touched.state) &&
-                  formik.errors.state && (
-                    <ErrorMessage>No more than two values allowed</ErrorMessage>
-                  )}
-                <Spacings.Inline>
-                  <SecondaryButton
-                    onClick={formik.handleReset}
-                    isDisabled={formik.isSubmitting}
-                    label="Reset"
+      <IntlProvider locale="en">
+        <FakeConnector>
+          {({ product }) => (
+            <Formik
+              initialValues={docToForm(product)}
+              validate={
+                // we use this failing validation so that we can see the touched
+                // shape
+                values => (values.state.length > 2 ? { state: true } : {})
+              }
+              onSubmit={(values, formik, ...rest) => {
+                action('onSubmit')(values, formik, ...rest);
+                formik.resetForm(values);
+              }}
+              render={formik => (
+                <Spacings.Stack scale="l">
+                  <AsyncCreatableSelectInput
+                    name="state"
+                    isMulti={true}
+                    value={formik.values.state}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    loadOptions={loadOptions}
                   />
-                  <PrimaryButton
-                    onClick={formik.handleSubmit}
-                    isDisabled={formik.isSubmitting || !formik.dirty}
-                    label="Submit"
-                  />
-                </Spacings.Inline>
-                <hr />
-                <FormikBox formik={formik} />
-              </Spacings.Stack>
-            )}
-          />
-        )}
-      </FakeConnector>
+                  {AsyncCreatableSelectInput.isTouched(formik.touched.state) &&
+                    formik.errors.state && (
+                      <ErrorMessage>
+                        No more than two values allowed
+                      </ErrorMessage>
+                    )}
+                  <Spacings.Inline>
+                    <SecondaryButton
+                      onClick={formik.handleReset}
+                      isDisabled={formik.isSubmitting}
+                      label="Reset"
+                    />
+                    <PrimaryButton
+                      onClick={formik.handleSubmit}
+                      isDisabled={formik.isSubmitting || !formik.dirty}
+                      label="Submit"
+                    />
+                  </Spacings.Inline>
+                  <hr />
+                  <FormikBox formik={formik} />
+                </Spacings.Stack>
+              )}
+            />
+          )}
+        </FakeConnector>
+      </IntlProvider>
     </Section>
   ));

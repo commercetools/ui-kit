@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 import omit from 'lodash.omit';
 import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
+import messages from './messages';
 
-export default class AsyncCreatableSelectInput extends React.Component {
+class AsyncCreatableSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
   // deal with an array. The touched state ends up being an empty array in case
   // values were removed only. So we have to treat any array we receive as
@@ -18,6 +20,11 @@ export default class AsyncCreatableSelectInput extends React.Component {
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     isMulti: PropTypes.bool,
+    formatCreateLabel: PropTypes.func,
+    noOptionsMessage: PropTypes.func,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
   };
   render() {
     return (
@@ -55,9 +62,32 @@ export default class AsyncCreatableSelectInput extends React.Component {
                   }
                 : undefined
             }
+            formatCreateLabel={
+              this.props.formatCreateLabel ||
+              (inputValue =>
+                this.props.intl.formatMessage(messages.createLabel, {
+                  inputValue,
+                }))
+            }
+            noOptionsMessage={
+              this.props.noOptionsMessage ||
+              (({ inputValue }) =>
+                inputValue === ''
+                  ? this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithoutInputValue
+                    )
+                  : this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithInputValue,
+                      { inputValue }
+                    ))
+            }
           />
         </div>
       </Constraints.Horizontal>
     );
   }
 }
+
+const Wrapped = injectIntl(AsyncCreatableSelectInput);
+Wrapped.isTouched = AsyncCreatableSelectInput.isTouched;
+export default Wrapped;

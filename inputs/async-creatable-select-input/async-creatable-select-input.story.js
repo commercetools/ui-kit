@@ -1,6 +1,7 @@
 import React from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
+import { IntlProvider } from 'react-intl';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
@@ -41,34 +42,36 @@ storiesOf('Inputs', module)
     return (
       <React.Fragment>
         <Section>
-          <Value
-            key={isMulti}
-            defaultValue={isMulti ? [] : undefined}
-            render={(value, onChange) => (
-              <AsyncCreatableSelectInput
-                cacheOptions
-                defaultOptions
-                loadOptions={promiseOptions}
-                horizontalConstraint={select(
-                  'horizontalConstraint',
-                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                  'scale'
-                )}
-                name={text('name', 'form-field-name')}
-                value={value}
-                onChange={(event, ...args) => {
-                  action('onChange')(event, ...args);
-                  onChange(event.target.value);
-                }}
-                onBlur={action('onBlur')}
-                isMulti={isMulti}
-                placeholder={text('placeholder', 'Select..')}
-                isSearchable={boolean('isSearchable', true)}
-                isDisabled={boolean('isDisabled', false)}
-                isClearable={boolean('isClearable', true)}
-              />
-            )}
-          />
+          <IntlProvider locale="en">
+            <Value
+              key={isMulti}
+              defaultValue={isMulti ? [] : undefined}
+              render={(value, onChange) => (
+                <AsyncCreatableSelectInput
+                  cacheOptions
+                  defaultOptions
+                  loadOptions={promiseOptions}
+                  horizontalConstraint={select(
+                    'horizontalConstraint',
+                    ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                    'scale'
+                  )}
+                  name={text('name', 'form-field-name')}
+                  value={value}
+                  onChange={(event, ...args) => {
+                    action('onChange')(event, ...args);
+                    onChange(event.target.value);
+                  }}
+                  onBlur={action('onBlur')}
+                  isMulti={isMulti}
+                  placeholder={text('placeholder', 'Select..')}
+                  isSearchable={boolean('isSearchable', true)}
+                  isDisabled={boolean('isDisabled', false)}
+                  isClearable={boolean('isClearable', true)}
+                />
+              )}
+            />
+          </IntlProvider>
         </Section>
       </React.Fragment>
     );
