@@ -7,7 +7,7 @@ import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import messages from './messages';
 
-class SelectInput extends React.Component {
+export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
