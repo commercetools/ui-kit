@@ -1,5 +1,6 @@
 import React from 'react';
 import { Value } from 'react-value';
+import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
@@ -21,32 +22,34 @@ storiesOf('Inputs', module)
     return (
       <React.Fragment>
         <Section>
-          <Value
-            key={isMulti}
-            defaultValue={isMulti ? [] : undefined}
-            render={(value, onChange) => (
-              <SelectInput
-                horizontalConstraint={select(
-                  'horizontalConstraint',
-                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                  'scale'
-                )}
-                name={text('name', 'form-field-name')}
-                value={value}
-                onChange={(event, ...args) => {
-                  action('onChange')(event, ...args);
-                  onChange(event.target.value);
-                }}
-                onBlur={action('onBlur')}
-                isMulti={isMulti}
-                placeholder={text('placeholder', 'Select..')}
-                isSearchable={boolean('isSearchable', false)}
-                isDisabled={boolean('isDisabled', false)}
-                isClearable={boolean('isClearable', false)}
-                options={options}
-              />
-            )}
-          />
+          <IntlProvider locale="en">
+            <Value
+              key={isMulti}
+              defaultValue={isMulti ? [] : undefined}
+              render={(value, onChange) => (
+                <SelectInput
+                  horizontalConstraint={select(
+                    'horizontalConstraint',
+                    ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                    'scale'
+                  )}
+                  name={text('name', 'form-field-name')}
+                  value={value}
+                  onChange={(event, ...args) => {
+                    action('onChange')(event, ...args);
+                    onChange(event.target.value);
+                  }}
+                  onBlur={action('onBlur')}
+                  isMulti={isMulti}
+                  placeholder={text('placeholder', 'Select..')}
+                  isSearchable={boolean('isSearchable', false)}
+                  isDisabled={boolean('isDisabled', false)}
+                  isClearable={boolean('isClearable', false)}
+                  options={options}
+                />
+              )}
+            />
+          </IntlProvider>
         </Section>
         <Section>
           <LinkTo kind="Examples|Forms" story="SelectInput">

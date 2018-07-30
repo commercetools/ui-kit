@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
+import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
@@ -81,38 +82,40 @@ storiesOf('Examples|Forms/Inputs', module)
     const isMulti = boolean('Use multi-value select input', false);
     return (
       <Section>
-        <Formik
-          key={isMulti}
-          initialValues={{ state: isMulti ? ['ready'] : 'ready' }}
-          onSubmit={(values, formik, ...rest) => {
-            action('onSubmit')(values, formik, ...rest);
-            formik.resetForm(values);
-          }}
-          render={formik => (
-            <Spacings.Stack scale="l">
-              <StateDropdown
-                name="state"
-                isMulti={isMulti}
-                value={formik.values.state}
-                onChange={formik.handleChange}
-              />
-              <Spacings.Inline>
-                <SecondaryButton
-                  onClick={formik.handleReset}
-                  isDisabled={formik.isSubmitting}
-                  label="Reset"
+        <IntlProvider locale="en">
+          <Formik
+            key={isMulti}
+            initialValues={{ state: isMulti ? ['ready'] : 'ready' }}
+            onSubmit={(values, formik, ...rest) => {
+              action('onSubmit')(values, formik, ...rest);
+              formik.resetForm(values);
+            }}
+            render={formik => (
+              <Spacings.Stack scale="l">
+                <StateDropdown
+                  name="state"
+                  isMulti={isMulti}
+                  value={formik.values.state}
+                  onChange={formik.handleChange}
                 />
-                <PrimaryButton
-                  onClick={formik.handleSubmit}
-                  isDisabled={formik.isSubmitting || !formik.dirty}
-                  label="Submit"
-                />
-              </Spacings.Inline>
-              <hr />
-              <FormikBox formik={formik} />
-            </Spacings.Stack>
-          )}
-        />
+                <Spacings.Inline>
+                  <SecondaryButton
+                    onClick={formik.handleReset}
+                    isDisabled={formik.isSubmitting}
+                    label="Reset"
+                  />
+                  <PrimaryButton
+                    onClick={formik.handleSubmit}
+                    isDisabled={formik.isSubmitting || !formik.dirty}
+                    label="Submit"
+                  />
+                </Spacings.Inline>
+                <hr />
+                <FormikBox formik={formik} />
+              </Spacings.Stack>
+            )}
+          />
+        </IntlProvider>
       </Section>
     );
   });

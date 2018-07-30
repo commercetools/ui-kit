@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 import Select from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
+import messages from './messages';
 
-export default class SelectInput extends React.Component {
+class SelectInput extends React.Component {
   static displayName = 'SelectInput';
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
@@ -18,6 +20,10 @@ export default class SelectInput extends React.Component {
         value: PropTypes.string.isRequired,
       })
     ),
+    noOptionsMessage: PropTypes.func,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
   };
   render() {
     return (
@@ -58,9 +64,23 @@ export default class SelectInput extends React.Component {
                   }
                 : undefined
             }
+            noOptionsMessage={
+              this.props.noOptionsMessage ||
+              (({ inputValue }) =>
+                inputValue === ''
+                  ? this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithoutInputValue
+                    )
+                  : this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithInputValue,
+                      { inputValue }
+                    ))
+            }
           />
         </div>
       </Constraints.Horizontal>
     );
   }
 }
+
+export default injectIntl(SelectInput);
