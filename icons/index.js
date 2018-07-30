@@ -210,6 +210,7 @@ AngleLeftIcon.displayName = 'AngleLeftIcon';
 AngleRightIcon.displayName = 'AngleRightIcon';
 AngleUpIcon.displayName = 'AngleUpIcon';
 ArrowGraphDownIcon.displayName = 'ArrowGraphDownIcon';
+ArrowGraphLeftIcon.displayName = 'ArrowGraphLeftIcon';
 ArrowGraphRightIcon.displayName = 'ArrowGraphRightIcon';
 ArrowGraphUpIcon.displayName = 'ArrowGraphUpIcon';
 ArrowLeftIcon.displayName = 'ArrowLeftIcon';

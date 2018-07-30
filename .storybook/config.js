@@ -16,7 +16,8 @@ setOptions({
   showSearchBox: false,
   addonPanelInRight: true,
   sortStoriesByKind: false,
-  hierarchySeparator: '/',
+  hierarchySeparator: /\//,
+  hierarchyRootSeparator: /\|/,
 
   resolveStoryHierarchy: storyName => storyName.split('/'),
 });
