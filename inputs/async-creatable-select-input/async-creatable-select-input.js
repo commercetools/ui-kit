@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import omit from 'lodash.omit';
 import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
 import Constraints from '../../materials/constraints';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 
 export default class AsyncCreatableSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
@@ -21,39 +22,41 @@ export default class AsyncCreatableSelectInput extends React.Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <AsyncCreatableSelect
-          {...omit(this.props, 'horizontalConstraint')}
-          onChange={value => {
-            const event = {
-              // We do not need to fake the event name for isMulti here, as
-              // the value will hold the full array.
-              target: { name: this.props.name, value },
-              persist: () => {},
-            };
-            this.props.onChange(event);
-          }}
-          onBlur={
-            this.props.onBlur
-              ? () => {
-                  const event = {
-                    target: {
-                      name: (() => {
-                        if (!this.props.name) return undefined;
-                        if (!this.props.isMulti) return this.props.name;
-                        // We append the ".0" to make Formik set the touched
-                        // state as an array instead of a boolean only.
-                        // Otherwise the shapes would clash on submission, as
-                        // Formik will create an array on submission anyways.
-                        return `${this.props.name}.0`;
-                      })(),
-                    },
-                    persist: () => {},
-                  };
-                  this.props.onBlur(event);
-                }
-              : undefined
-          }
-        />
+        <div {...filterDataAttributes(this.props)}>
+          <AsyncCreatableSelect
+            {...omit(this.props, 'horizontalConstraint')}
+            onChange={value => {
+              const event = {
+                // We do not need to fake the event name for isMulti here, as
+                // the value will hold the full array.
+                target: { name: this.props.name, value },
+                persist: () => {},
+              };
+              this.props.onChange(event);
+            }}
+            onBlur={
+              this.props.onBlur
+                ? () => {
+                    const event = {
+                      target: {
+                        name: (() => {
+                          if (!this.props.name) return undefined;
+                          if (!this.props.isMulti) return this.props.name;
+                          // We append the ".0" to make Formik set the touched
+                          // state as an array instead of a boolean only.
+                          // Otherwise the shapes would clash on submission, as
+                          // Formik will create an array on submission anyways.
+                          return `${this.props.name}.0`;
+                        })(),
+                      },
+                      persist: () => {},
+                    };
+                    this.props.onBlur(event);
+                  }
+                : undefined
+            }
+          />
+        </div>
       </Constraints.Horizontal>
     );
   }
