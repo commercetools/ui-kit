@@ -1,6 +1,0 @@
-@import '@commercetools-frontend/ui-kit/materials/colors/base-colors.mod.css';
-@import '@commercetools-frontend/ui-kit/materials/tokens/tokens.mod.css';
-
-.highlighted {
-  color: var(--token-font-color-warning);
-}

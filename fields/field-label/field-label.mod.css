@@ -1,10 +1,32 @@
-.label-badge {
-  align-self: flex-end;
-  margin-left: auto;
+@import '../materials/spacings.mod.css';
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
 }
 
-.label-container {
+.wrapper {
+  flex: 1;
+}
+
+.hint,
+label {
+  float: left;
+  clear: both;
+}
+
+.hintIcon {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.description {
+  float: none;
+  clear: both;
+}
+
+.badge {
+  float: right;
+  margin-left: var(--spacing-8);
 }

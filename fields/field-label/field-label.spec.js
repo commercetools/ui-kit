@@ -1,9 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { WarningIcon } from '@commercetools-frontend/ui-kit/icons';
-import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
-import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
-import RequiredIndicator from './required-indicator';
+import FlatButton from '../../buttons/flat-button';
+import IconButton from '../../buttons/icon-button';
 import FieldLabel from './field-label';
 
 const createTestProps = customProps => ({
@@ -128,20 +127,12 @@ describe('rendering', () => {
         props = createTestProps({ isRequired: true });
         wrapper = shallow(<FieldLabel {...props} />);
       });
-
-      it('should display an `*` in the label', () => {
-        expect(wrapper).toRender(RequiredIndicator);
-      });
     });
 
     describe('when labelled input is not required', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
-      });
-
-      it('should display an `*` in the label', () => {
-        expect(wrapper).not.toRender(RequiredIndicator);
       });
     });
   });

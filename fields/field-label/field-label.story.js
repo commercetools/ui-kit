@@ -24,19 +24,17 @@ storiesOf('Fields/FieldLabel', module)
         <FieldLabel
           title={text('title', 'Label title')}
           isBold={boolean('isBold', true)}
-          subtitle={text('subtitle', '')}
+          description={text('description', '')}
           hint={text('hint', '')}
           isRequired={boolean('isRequired', false)}
-          tone={select('tone', ['', 'primary', 'inverted'])}
-          titleIconButton={
-            select('titleIconButton', ['', 'IconButton'], '') ? (
+          tone={select('tone', ['', 'inverted'])}
+          button={
+            select('button', ['', 'IconButton'], '') ? (
               <IconButton label="label icon" icon={<InformationIcon />} />
             ) : null
           }
-          subtitleIcon={
-            select('subtitleIcon', ['', 'WarningIcon'], '') ? (
-              <WarningIcon />
-            ) : null
+          hintIcon={
+            select('hintIcon', ['', 'WarningIcon'], '') ? <WarningIcon /> : null
           }
           badge={
             select('badge', ['', 'FlatButton'], '') ? (
