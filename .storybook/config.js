@@ -1,5 +1,6 @@
-import { configure, setAddon } from '@storybook/react';
+import { configure, setAddon, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
+import IntlDecorator from './decorators/intl';
 // import infoAddon from '@storybook/addon-info';
 
 // setAddon(infoAddon);
@@ -27,5 +28,7 @@ const req = require.context('../', true, /\.story\.js$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
+
+addDecorator(IntlDecorator);
 
 configure(loadStories, module);
