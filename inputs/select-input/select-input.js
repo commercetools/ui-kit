@@ -5,6 +5,7 @@ import Select from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
+import './select-input.css';
 import messages from './messages';
 
 export class SelectInput extends React.Component {
@@ -31,6 +32,8 @@ export class SelectInput extends React.Component {
         <div {...filterDataAttributes(this.props)}>
           <Select
             {...omit(this.props, 'horizontalConstraint')}
+            className="react-select"
+            classNamePrefix="react-select"
             onChange={
               typeof this.props.onChange === 'function'
                 ? option => {

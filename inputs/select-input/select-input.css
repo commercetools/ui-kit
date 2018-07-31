@@ -1,0 +1,34 @@
+/* @import '../../materials/tokens/tokens.mod.css';
+@import '../../materials/borders.mod.css';
+@import '../../materials/colors/base-colors.mod.css';
+@import '../../materials/sizes.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/transitions.mod.css';
+
+.react-select {
+  height: var(--token-size-height-input);
+}
+
+.react-select__control {
+  background-color: white;
+}
+
+.react-select__value-container {
+  background-color: var(--token-font-color-default);
+}
+
+.react-select__indicators {
+  background-color: red;
+}
+
+.react-select__menu {
+  background-color: green;
+}
+
+.react-select__menu-list {
+  background-color: blue;
+}
+
+.react-select__option {
+  background-color: purple;
+} */
