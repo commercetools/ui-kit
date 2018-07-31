@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Text from '../../typography/text';
+import Label from '../../label';
 import Spacings from '../../materials/spacings';
 import styles from './field-label.mod.css';
 
@@ -9,16 +10,13 @@ export const FieldLabel = props => (
     <label htmlFor={props.htmlFor}>
       <Spacings.Inline alignItems="flexStart" scale="xs">
         <Text.Wrap>
-          {/*
-            <Label
-              tone={props.tone}
-              isBold={props.isBold}
-              isRequired={props.isRequired}
-            >
-              {props.title}
-            </Label>
-          */}
-          {'label*'}
+          <Label
+            tone={props.tone}
+            isBold={props.isBold}
+            isRequiredIndicatorVisible={props.isRequired}
+          >
+            {props.title}
+          </Label>
         </Text.Wrap>
         {props.button &&
           React.cloneElement(props.button, {
