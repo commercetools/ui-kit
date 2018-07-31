@@ -56,7 +56,7 @@
     "lodash.camelcase": "4.3.0",
     "lodash.upperfirst": "4.3.1",
     "markdown-loader": "3.0.0",
-    "prettier": "1.13.7",
+    "prettier": "1.14.0",
     "rcfile": "1.0.3",
     "storybook-readme": "3.3.0"
   }
