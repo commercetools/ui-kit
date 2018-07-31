@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { Formik } from 'formik';
 import { action } from '@storybook/addon-actions';
@@ -517,68 +516,66 @@ storiesOf('Examples|Forms', module)
       resourceLanguages[0]
     );
     return (
-      <IntlProvider locale="en">
-        <Section>
-          <FakeConnector>
-            {({ product, updateProduct }) => (
-              <Formik
-                initialValues={docToForm(product)}
-                validate={validate}
-                onSubmit={(formValues, formik) => {
-                  action('values of form submission')(formValues);
-                  const nextProduct = formToDoc(formValues);
-                  // Usually, we would compute update actions here by comparing
-                  // nextProduct to the product from FakeConnector.
-                  // We would then use formValues.id and formValues.version
-                  // to send the update action to the server through the connector
-                  return updateProduct({
-                    // As explained in the beginning of this document, sending
-                    // the id and version from formValues along prevents
-                    // accidental concurrent modifications and ensures the user
-                    // will run into the ConcurrentModificationError int those
-                    // cases
-                    id: formValues.id,
-                    version: formValues.version,
-                    product: nextProduct,
-                  }).then(
-                    updatedProduct => {
-                      // Calling resetForm with the updated product will
-                      // update the form values and reset the submission state,
-                      // touched keys and so on.
-                      formik.resetForm(docToForm(updatedProduct));
-                    },
-                    error => {
-                      // This is an example where we have to rely on the API
-                      // on submission time to ensure correct form values.
-                      // The example shows how to map API errors back onto
-                      // specific fields within the form.
-                      if (error.code === 'DuplicateKeyError') {
-                        formik.setErrors({ key: { duplicate: true } });
-                      }
-                      // Since we might do things like retrying a request in case
-                      // there was an error with it, we are responsible for
-                      // resetting the submission state.
-                      formik.setSubmitting(false);
+      <Section>
+        <FakeConnector>
+          {({ product, updateProduct }) => (
+            <Formik
+              initialValues={docToForm(product)}
+              validate={validate}
+              onSubmit={(formValues, formik) => {
+                action('values of form submission')(formValues);
+                const nextProduct = formToDoc(formValues);
+                // Usually, we would compute update actions here by comparing
+                // nextProduct to the product from FakeConnector.
+                // We would then use formValues.id and formValues.version
+                // to send the update action to the server through the connector
+                return updateProduct({
+                  // As explained in the beginning of this document, sending
+                  // the id and version from formValues along prevents
+                  // accidental concurrent modifications and ensures the user
+                  // will run into the ConcurrentModificationError int those
+                  // cases
+                  id: formValues.id,
+                  version: formValues.version,
+                  product: nextProduct,
+                }).then(
+                  updatedProduct => {
+                    // Calling resetForm with the updated product will
+                    // update the form values and reset the submission state,
+                    // touched keys and so on.
+                    formik.resetForm(docToForm(updatedProduct));
+                  },
+                  error => {
+                    // This is an example where we have to rely on the API
+                    // on submission time to ensure correct form values.
+                    // The example shows how to map API errors back onto
+                    // specific fields within the form.
+                    if (error.code === 'DuplicateKeyError') {
+                      formik.setErrors({ key: { duplicate: true } });
                     }
-                  );
-                }}
-                render={formik => (
-                  <Spacings.Stack scale="l">
-                    <Text.Headline elementType="h2">The form</Text.Headline>
-                    <div>
-                      <ProductForm
-                        formik={formik}
-                        selectedLanguage={selectedLanguage}
-                      />
-                    </div>
-                    <hr />
-                    <FormikBox formik={formik} />
-                  </Spacings.Stack>
-                )}
-              />
-            )}
-          </FakeConnector>
-        </Section>
-      </IntlProvider>
+                    // Since we might do things like retrying a request in case
+                    // there was an error with it, we are responsible for
+                    // resetting the submission state.
+                    formik.setSubmitting(false);
+                  }
+                );
+              }}
+              render={formik => (
+                <Spacings.Stack scale="l">
+                  <Text.Headline elementType="h2">The form</Text.Headline>
+                  <div>
+                    <ProductForm
+                      formik={formik}
+                      selectedLanguage={selectedLanguage}
+                    />
+                  </div>
+                  <hr />
+                  <FormikBox formik={formik} />
+                </Spacings.Stack>
+              )}
+            />
+          )}
+        </FakeConnector>
+      </Section>
     );
   });
