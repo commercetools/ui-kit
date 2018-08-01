@@ -8,7 +8,7 @@ import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Constraints from '../../materials/constraints';
-import styles from './text-area.mod.css';
+import styles from './multiline-text-input.mod.css';
 import messages from './messages';
 
 // NOTE: order is important here
@@ -24,10 +24,10 @@ const getStyles = ({ isDisabled, hasError, hasWarning, isReadOnly }) => {
   return styles.pristine;
 };
 
-export class TextArea extends React.Component {
-  static displayName = 'TextArea';
+export class MultilineTextInput extends React.Component {
+  static displayName = 'MultilineTextInput';
 
-  // The minimum ammount of rows the TextArea will show.
+  // The minimum ammount of rows the MultilineTextInput will show.
   // When the input is closed, this is used as the maximum row count as well
   // so that the input "collapses".
   static MIN_ROW_COUNT = 1;
@@ -65,7 +65,7 @@ export class TextArea extends React.Component {
 
   state = {
     // This is the internal "fake" rendered textarea element's height in rows
-    contentRowCount: TextArea.MIN_ROW_COUNT,
+    contentRowCount: MultilineTextInput.MIN_ROW_COUNT,
   };
 
   handleHeightChange = (_, innerComponent) => {
@@ -79,7 +79,7 @@ export class TextArea extends React.Component {
     // amount of lines it should have when collapsed
 
     const shouldRenderToggleButton =
-      this.state.contentRowCount > TextArea.MIN_ROW_COUNT;
+      this.state.contentRowCount > MultilineTextInput.MIN_ROW_COUNT;
 
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
@@ -111,8 +111,8 @@ export class TextArea extends React.Component {
                 aria-readonly={this.props.isReadOnly}
                 aria-multiline="true"
                 role="textbox"
-                minRows={TextArea.MIN_ROW_COUNT}
-                maxRows={isOpen ? undefined : TextArea.MIN_ROW_COUNT}
+                minRows={MultilineTextInput.MIN_ROW_COUNT}
+                maxRows={isOpen ? undefined : MultilineTextInput.MIN_ROW_COUNT}
                 useCacheForDOMMeasurements={true}
                 {...filterDataAttributes(this.props)}
               />
@@ -141,7 +141,7 @@ export class TextArea extends React.Component {
   }
 }
 
-const Enhanced = injectIntl(TextArea);
+const Enhanced = injectIntl(MultilineTextInput);
 // manually hoist public statics
-Enhanced.isEmpty = TextArea.isEmpty;
+Enhanced.isEmpty = MultilineTextInput.isEmpty;
 export default Enhanced;

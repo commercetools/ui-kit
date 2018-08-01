@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '../../buttons/flat-button';
 import Collapsible from '../../collapsible';
-import { TextArea } from './text-area';
+import { MultilineTextInput } from './multiline-text-input';
 
 const createTestProps = customProps => ({
   value: '',
@@ -19,7 +19,7 @@ const getWrapper = (
   customRenderProps = { isOpen: true, toggle: jest.fn() }
 ) => {
   const props = createTestProps(customProps);
-  return shallow(<TextArea {...props} />)
+  return shallow(<MultilineTextInput {...props} />)
     .find(Collapsible)
     .renderProp('children', customRenderProps);
 };
@@ -29,18 +29,18 @@ const getOpenWrapper = customProps =>
 const getClosedWrapper = customProps =>
   getWrapper(customProps, { isOpen: false, toggle: jest.fn() });
 
-describe('TextArea.isEmpty', () => {
+describe('MultilineTextInput.isEmpty', () => {
   describe('when called with an empty value', () => {
     it('should return true', () => {
-      expect(TextArea.isEmpty('')).toBe(true);
-      expect(TextArea.isEmpty(' ')).toBe(true);
-      expect(TextArea.isEmpty('\n')).toBe(true);
+      expect(MultilineTextInput.isEmpty('')).toBe(true);
+      expect(MultilineTextInput.isEmpty(' ')).toBe(true);
+      expect(MultilineTextInput.isEmpty('\n')).toBe(true);
     });
   });
   describe('when called with a filled value', () => {
     it('should return false', () => {
-      expect(TextArea.isEmpty('a')).toBe(false);
-      expect(TextArea.isEmpty(' a ')).toBe(false);
+      expect(MultilineTextInput.isEmpty('a')).toBe(false);
+      expect(MultilineTextInput.isEmpty(' a ')).toBe(false);
     });
   });
 });
@@ -112,7 +112,7 @@ describe('rendering', () => {
         textarea = wrapper.find(TextareaAutosize);
       });
 
-      it('should TextArea have class for the disabled state', () => {
+      it('should MultilineTextInput have class for the disabled state', () => {
         expect(textarea).toHaveClassName('disabled');
       });
     });
@@ -134,7 +134,7 @@ describe('rendering', () => {
   });
   describe('`isDefaultClosed`', () => {
     describe('when false', () => {
-      describe('<TextArea />', () => {
+      describe('<MultilineTextInput />', () => {
         describe('has 1 row', () => {
           let textAreaWrapper;
           let wrapper;
@@ -143,7 +143,7 @@ describe('rendering', () => {
               name: 'field1',
               value: 'foo',
             });
-            wrapper = shallow(<TextArea {...props} />);
+            wrapper = shallow(<MultilineTextInput {...props} />);
             wrapper.setState({ contentRowCount: 1 });
             textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
               isOpen: true,
@@ -163,7 +163,7 @@ describe('rendering', () => {
               name: 'field2',
               value: 'foo2',
             });
-            wrapper = shallow(<TextArea {...props} />);
+            wrapper = shallow(<MultilineTextInput {...props} />);
             wrapper.setState({ contentRowCount: 10 });
             textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
               isOpen: true,
@@ -175,13 +175,16 @@ describe('rendering', () => {
             expect(textAreaWrapper).toRender(FlatButton);
           });
           it('should have `Collapse` message', () => {
-            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.collapse');
+            expect(flatbutton).toHaveProp(
+              'label',
+              'UIKit.MultilineTextInput.collapse'
+            );
           });
         });
       });
     });
     describe('when true', () => {
-      describe('<TextArea />', () => {
+      describe('<MultilineTextInput />', () => {
         describe('has 1 row', () => {
           let textAreaWrapper;
           let wrapper;
@@ -191,7 +194,7 @@ describe('rendering', () => {
               value: 'The quick brown fox jumps over the lazy dog',
               isDefaultClosed: true,
             });
-            wrapper = shallow(<TextArea {...props} />);
+            wrapper = shallow(<MultilineTextInput {...props} />);
             wrapper.setState({ contentRowCount: 1 });
             textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
               isOpen: false,
@@ -213,7 +216,7 @@ describe('rendering', () => {
                 'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog',
               isDefaultClosed: true,
             });
-            wrapper = shallow(<TextArea {...props} />);
+            wrapper = shallow(<MultilineTextInput {...props} />);
             wrapper.setState({ contentRowCount: 10 });
             textAreaWrapper = wrapper.find(Collapsible).renderProp('children', {
               isOpen: false,
@@ -226,7 +229,10 @@ describe('rendering', () => {
             expect(textAreaWrapper).toRender(FlatButton);
           });
           it('should FlatButton have `Expand` message', () => {
-            expect(flatbutton).toHaveProp('label', 'UIKit.TextArea.expand');
+            expect(flatbutton).toHaveProp(
+              'label',
+              'UIKit.MultilineTextInput.expand'
+            );
           });
         });
       });

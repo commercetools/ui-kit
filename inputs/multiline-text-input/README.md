@@ -1,4 +1,4 @@
-# TextArea
+# MultilineTextInput
 
 #### Description
 
@@ -8,9 +8,12 @@ states.
 ## Usage
 
 ```js
-import TextArea from '@commercetools-frontend/ui-kit/inputs/text-area';
+import MultilineTextInput from '@commercetools-frontend/ui-kit/inputs/multiline-text-input';
 
-<TextArea value="foo" onChange={event => alert(event.target.value)} />;
+<MultilineTextInput
+  value="foo"
+  onChange={event => alert(event.target.value)}
+/>;
 ```
 
 #### Properties
@@ -34,21 +37,21 @@ import TextArea from '@commercetools-frontend/ui-kit/inputs/text-area';
 
 ### Static methods
 
-#### `TextArea.isEmpty`
+#### `MultilineTextInput.isEmpty`
 
 Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces and linebreaks only.
 
 ```js
-TextArea.isEmpty(''); // -> true
-TextArea.isEmpty(' '); // -> true
-TextArea.isEmpty('\n'); // -> true
-TextArea.isEmpty('tree'); // -> false
+MultilineTextInput.isEmpty(''); // -> true
+MultilineTextInput.isEmpty(' '); // -> true
+MultilineTextInput.isEmpty('\n'); // -> true
+MultilineTextInput.isEmpty('tree'); // -> false
 ```
 
-# Do's and don't's
+# Dos and don'ts
 
-- Whenever a user input can hold multiline strings the TextArea component is recommended
+- Whenever a user input can hold multiline strings this `MultilineTextInput` component is recommended
 
 - Not recommended to be used when the content is single-lined (e.g email address, password etc.)
 
-- Constraints are not recommended to have scale smaller than `s` since content may cut off
+- The horizontal constraint is not recommended to be smaller than `s` since content may cut off

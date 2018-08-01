@@ -15,7 +15,7 @@ import ErrorMessage from '../messages/error-message';
 import TextInput from '../inputs/text-input';
 import NumberInput from '../inputs/number-input';
 import MoneyInput from '../inputs/money-input';
-import TextArea from '../inputs/text-area';
+import MultilineTextInput from '../inputs/multiline-text-input';
 import LocalizedTextInput from '../inputs/localized-text-input';
 import PrimaryButton from '../buttons/primary-button';
 import SecondaryButton from '../buttons/secondary-button';
@@ -190,7 +190,7 @@ const validate = formValues => {
   }
 
   // validate description
-  if (TextArea.isEmpty(formValues.description))
+  if (MultilineTextInput.isEmpty(formValues.description))
     errors.description.missing = true;
 
   // validate price
@@ -379,7 +379,7 @@ class ProductForm extends React.Component {
         </div>
         <div>
           <Text.Body>Product Description*</Text.Body>
-          <TextArea
+          <MultilineTextInput
             name="description"
             value={this.props.formik.values.description}
             onChange={this.props.formik.handleChange}

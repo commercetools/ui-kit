@@ -6,12 +6,12 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
-import TextArea from './text-area';
+import MultilineTextInput from './multiline-text-input';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('TextArea', () => {
+  .add('MultilineTextInput', () => {
     const defaultValue = text('default value', '');
     const isDefaultClosed = boolean('isDefaultClosed', false);
     return (
@@ -21,7 +21,7 @@ storiesOf('Inputs', module)
           key={`${defaultValue}-${isDefaultClosed}`}
           defaultValue={defaultValue}
           render={(value, onChange) => (
-            <TextArea
+            <MultilineTextInput
               name={text('name', undefined)}
               id={text('id', undefined)}
               onBlur={action('onBlur')}
