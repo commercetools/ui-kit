@@ -224,25 +224,7 @@ export default class MoneyInput extends React.Component {
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
-    // This is optional when isDisabled is set, otherwise either onChange or
-    // onChangeValue have to be passed.
-    onChange(props, propName, componentName, ...rest) {
-      if (props.isDisabled)
-        return PropTypes.func(props, propName, componentName, ...rest);
-
-      const hasAtLeastOneChangeHandler =
-        props.onChange != null || props.onChangeValue != null;
-
-      if (hasAtLeastOneChangeHandler)
-        return PropTypes.func(props, propName, componentName, ...rest);
-
-      return new Error(
-        `MoneyInput requires at least one change handler. Pass either "onChange" or "onChangeValue".`
-      );
-    },
-    // onChange is handling the validation logic for onChangeValue case as well
-    onChangeValue: PropTypes.func,
-
+    onChange: PropTypes.func.isRequired,
     hasCurrencyError: PropTypes.bool,
     hasCurrencyWarning: PropTypes.bool,
     hasAmountError: PropTypes.bool,
@@ -278,52 +260,39 @@ export default class MoneyInput extends React.Component {
         ? this.props.value.amount
         : formattedAmount;
 
-      if (this.props.onChangeValue) {
-        this.props.onChangeValue({ currencyCode, amount: nextAmount });
-      }
+      // change currency code
+      this.props.onChange(event);
 
-      if (this.props.onChange) {
-        // change currency code
-        this.props.onChange(event);
-
-        // change amount if necessary
-        if (this.props.value.amount !== nextAmount) {
-          this.props.onChange({
-            target: {
-              name: getAmountInputName(this.props.name),
-              value: isNaN(formattedAmount)
-                ? this.props.value.amount
-                : formattedAmount,
-            },
-          });
-        }
+      // change amount if necessary
+      if (this.props.value.amount !== nextAmount) {
+        const fakeEvent = {
+          persist: () => {},
+          target: {
+            name: getAmountInputName(this.props.name),
+            value: isNaN(formattedAmount)
+              ? this.props.value.amount
+              : formattedAmount,
+          },
+        };
+        this.props.onChange(fakeEvent);
       }
     }
     toggleMenu();
   };
 
   handleAmountChange = event => {
-    if (this.props.onChangeValue) {
-      this.props.onChangeValue({
-        currencyCode: this.props.value.currencyCode,
-        amount: event.target.value,
-      });
-    }
-
-    if (this.props.onChange) {
-      // We need to emit a fake event to stop Formik from auto-converting the
-      // value to a number, as we want to keep a string!
-      // The fake event does not contain the input type information, so Formik
-      // will not convert the value to a number.
-      const fakeEvent = {
-        persist: () => {},
-        target: {
-          name: event.target.name,
-          value: event.target.value,
-        },
-      };
-      this.props.onChange(fakeEvent);
-    }
+    // We need to emit a fake event to stop Formik from auto-converting the
+    // value to a number, as we want to keep a string!
+    // The fake event does not contain the input type information, so Formik
+    // will not convert the value to a number.
+    const fakeEvent = {
+      persist: () => {},
+      target: {
+        name: event.target.name,
+        value: event.target.value,
+      },
+    };
+    this.props.onChange(fakeEvent);
   };
 
   handleBlur = event => {
@@ -339,24 +308,16 @@ export default class MoneyInput extends React.Component {
       // When the user entered a value with centPrecision, we can format
       // the resulting value to that currency, e.g. 20.1 to 20.10
       if (String(formattedAmount) !== amount) {
-        if (this.props.onChangeValue) {
-          this.props.onChangeValue({
-            currencyCode: this.props.value.currencyCode,
-            amount: formattedAmount,
-          });
-        }
-        if (this.props.onChange) {
-          // We need to emit a fake event to stop Formik from auto-converting the
-          // value to a number, as we want to keep a string!
-          const fakeEvent = {
-            persist: () => {},
-            target: {
-              name: getAmountInputName(this.props.name),
-              value: formattedAmount,
-            },
-          };
-          this.props.onChange(fakeEvent);
-        }
+        // We need to emit a fake event to stop Formik from auto-converting the
+        // value to a number, as we want to keep a string!
+        const fakeEvent = {
+          persist: () => {},
+          target: {
+            name: getAmountInputName(this.props.name),
+            value: formattedAmount,
+          },
+        };
+        this.props.onChange(fakeEvent);
       }
     }
     if (this.props.onBlur) this.props.onBlur(event);

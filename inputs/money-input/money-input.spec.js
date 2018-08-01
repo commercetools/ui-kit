@@ -13,7 +13,6 @@ const createTestProps = customProps => ({
   value: { currencyCode: 'EUR', amount: '' },
   currencies: ['EUR', 'USD'],
   onChange: jest.fn(),
-  onChangeValue: jest.fn(),
   onBlur: jest.fn(),
   ...customProps,
 });
@@ -506,9 +505,6 @@ describe('callbacks', () => {
       it('should not call onChange', () => {
         expect(props.onChange).not.toHaveBeenCalled();
       });
-      it('should not call onChangeValue', () => {
-        expect(props.onChangeValue).not.toHaveBeenCalled();
-      });
     });
     describe('when changing currency', () => {
       beforeEach(() => {
@@ -539,12 +535,6 @@ describe('callbacks', () => {
           })
         );
       });
-      it('should call onChangeValue with the new value', () => {
-        expect(props.onChangeValue).toHaveBeenCalledWith({
-          currencyCode: 'USD',
-          amount: '',
-        });
-      });
     });
   });
 
@@ -569,12 +559,6 @@ describe('callbacks', () => {
             }),
           })
         );
-      });
-      it('should call onChangeValue', () => {
-        expect(props.onChangeValue).toHaveBeenCalledWith({
-          amount: '1.3',
-          currencyCode: 'EUR',
-        });
       });
     });
     describe('when input loses focus', () => {
@@ -622,9 +606,6 @@ describe('callbacks', () => {
         });
         it('should not call onChange', () => {
           expect(props.onChange).not.toHaveBeenCalled();
-        });
-        it('should not call onChangeValue', () => {
-          expect(props.onChangeValue).not.toHaveBeenCalled();
         });
       });
     });
