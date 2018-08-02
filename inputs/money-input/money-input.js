@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant';
+import has from 'lodash.has';
 import isNumberish from '../../utils/is-numberish';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import Contraints from '../../materials/constraints';
@@ -179,7 +180,7 @@ export default class MoneyInput extends React.Component {
     );
 
     invariant(
-      Object.hasOwnProperty.call(currencies, moneyValue.currencyCode),
+      has(currencies, moneyValue.currencyCode),
       'MoneyInput.parseMoneyValue: Value must use known currency code'
     );
 
