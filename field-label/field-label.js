@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Text from '../../typography/text';
-import Label from '../../label';
-import Spacings from '../../materials/spacings';
+import Text from '../typography/text';
+import Label from '../label';
+import Spacings from '../materials/spacings';
 import styles from './field-label.mod.css';
 
 export const FieldLabel = props => (
-  <div className={styles.parent}>
+  <React.Fragment>
     <div className={styles.label}>
       <Spacings.Inline alignItems="flexStart" scale="xs">
         <Text.Wrap>
@@ -54,7 +54,7 @@ export const FieldLabel = props => (
         <div className={styles['label-badge']}>{props.badge}</div>
       </div>
     )}
-  </div>
+  </React.Fragment>
 );
 
 FieldLabel.displayName = 'FieldLabel';

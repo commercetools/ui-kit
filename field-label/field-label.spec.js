@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WarningIcon } from '@commercetools-frontend/ui-kit/icons';
-import FlatButton from '../../buttons/flat-button';
-import IconButton from '../../buttons/icon-button';
+import { WarningIcon } from '../icons';
+import FlatButton from '../buttons/flat-button';
+import IconButton from '../buttons/icon-button';
 import FieldLabel from './field-label';
 
 const createTestProps = customProps => ({

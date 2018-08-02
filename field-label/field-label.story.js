@@ -3,21 +3,18 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import Constraints from '@commercetools-frontend/ui-kit/materials/constraints';
-import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
-import {
-  InformationIcon,
-  WarningIcon,
-} from '@commercetools-frontend/ui-kit/icons';
-import FlatButton from '@commercetools-frontend/ui-kit/buttons/flat-button';
-import Section from '../../.storybook/decorators/section';
+import Constraints from '../materials/constraints';
+import IconButton from '../buttons/icon-button';
+import { InformationIcon, WarningIcon } from '../icons';
+import FlatButton from '../buttons/flat-button';
+import Section from '../.storybook/decorators/section';
 import Readme from './README.md';
 import FieldLabel from './field-label';
 
-storiesOf('Fields', module)
+storiesOf('FieldLabel', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('FieldLabel', () => (
+  .add('', () => (
     <Section>
       <Constraints.Horizontal constraint="m">
         <FieldLabel
