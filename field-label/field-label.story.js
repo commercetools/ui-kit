@@ -14,7 +14,7 @@ import FieldLabel from './field-label';
 storiesOf('FieldLabel', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('', () => (
+  .add('FieldLabel', () => (
     <Section>
       <Constraints.Horizontal constraint="m">
         <FieldLabel
