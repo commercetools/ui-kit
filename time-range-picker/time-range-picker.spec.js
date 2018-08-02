@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DatePicker from '../date-picker';
+import TimeInput from '../inputs/time-input';
 import TimeRangePicker from './time-range-picker';
 
 const createTestProps = custom => ({
@@ -18,16 +18,12 @@ describe('TimeRangePicker', () => {
     wrapper = shallow(<TimeRangePicker {...props} />);
   });
   describe('rendering', () => {
-    it('should render two DatePickers', () => {
-      expect(wrapper).toRenderElementTimes(DatePicker, 2);
+    it('should render two TimeInputs', () => {
+      expect(wrapper).toRenderElementTimes(TimeInput, 2);
     });
-    it('should configer the DatePickers as single pickers', () => {
-      expect(wrapper.find(DatePicker).at(0)).toHaveProp('mode', 'single');
-      expect(wrapper.find(DatePicker).at(1)).toHaveProp('mode', 'single');
-    });
-    it('should configer the DatePickers as time pickers', () => {
-      expect(wrapper.find(DatePicker).at(0)).toHaveProp('timeScale', 'time');
-      expect(wrapper.find(DatePicker).at(1)).toHaveProp('timeScale', 'time');
+    it('should configer the TimeInputs as single pickers', () => {
+      expect(wrapper.find(TimeInput).at(0)).toHaveProp('mode', 'single');
+      expect(wrapper.find(TimeInput).at(1)).toHaveProp('mode', 'single');
     });
   });
 
@@ -37,7 +33,7 @@ describe('TimeRangePicker', () => {
         props = createTestProps();
         wrapper = shallow(<TimeRangePicker {...props} />);
         wrapper
-          .find(DatePicker)
+          .find(TimeInput)
           .at(0)
           .prop('onChange')('10:13:00.000');
       });
@@ -53,7 +49,7 @@ describe('TimeRangePicker', () => {
         props = createTestProps();
         wrapper = shallow(<TimeRangePicker {...props} />);
         wrapper
-          .find(DatePicker)
+          .find(TimeInput)
           .at(0)
           .prop('onChange')();
       });
