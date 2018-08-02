@@ -1,23 +1,20 @@
 /*
   TECHDEBT:
-  - Split it up into TimePicker, DatePicker and DateTimePicker.
-    Maybe leave Datepicker as a facade to delegate job to these new components.
   - Support timeZone in all cases, but only when timeZone is passed.
 */
 
 import 'flatpickr/dist/themes/airbnb.css';
 import React from 'react';
 import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
 import Flatpickr from 'flatpickr';
 import { German } from 'flatpickr/dist/l10n/de';
 import isTouchDevice from 'is-touch-device';
 import moment from 'moment-timezone';
-import Constraints from '../materials/constraints';
+import Constraints from '../../materials/constraints';
 import { DatePickerBody } from './date-picker-body';
 import './date-picker-ct-theme.mod.css';
-import styles from './date-picker.mod.css';
+import styles from './date-time-input.mod.css';
 import messages from './messages';
 
 const getNumberOfFormattedDateChars = (timeScale, locale) => {
@@ -121,8 +118,8 @@ export const createFormatter = (timeScale, locale) => value => {
   }
 };
 
-export class DatePicker extends React.PureComponent {
-  static displayName = 'DatePicker';
+export class DateTimeInput extends React.PureComponent {
+  static displayName = 'DateTimeInput';
 
   static propTypes = {
     shouldInitializeOnMount: PropTypes.bool,
@@ -133,11 +130,8 @@ export class DatePicker extends React.PureComponent {
     onClose: PropTypes.func,
     placeholder: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-    timeScale: PropTypes.oneOf(['date', 'time', 'datetime']),
-    timeZone: requiredIf(
-      PropTypes.string,
-      props => props.timeScale === 'datetime'
-    ),
+    timeScale: PropTypes.oneOf(['datetime']),
+    timeZone: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
@@ -155,7 +149,7 @@ export class DatePicker extends React.PureComponent {
     isDisabled: false,
     isInvalid: false,
     mode: 'single',
-    timeScale: 'date',
+    timeScale: 'datetime',
     horizontalConstraint: 'scale',
   };
 
@@ -270,7 +264,7 @@ export class DatePicker extends React.PureComponent {
         break;
       default:
         throw new Error(
-          `ui-kit/date-picker: the specified mode '${
+          `ui-kit/inputs/date-time-input: the specified mode '${
             this.props.mode
           }' is not supported.`
         );
@@ -354,4 +348,4 @@ export class DatePicker extends React.PureComponent {
   }
 }
 
-export default injectIntl(DatePicker);
+export default injectIntl(DateTimeInput);

@@ -11,7 +11,7 @@ import TimeRangePicker from './time-range-picker';
 
 const store = createStore(() => ({ globalAppState: { locale: 'en' } }));
 
-storiesOf('Dates', module)
+storiesOf('TimeRangePicker', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('TimeRangePicker', () => (

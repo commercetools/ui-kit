@@ -1,0 +1,64 @@
+@import '../../materials/colors/base-colors.mod.css';
+
+:global(.flatpickr-day.selected),
+:global(.flatpickr-day.startRange),
+:global(.flatpickr-day.endRange),
+:global(.flatpickr-day.selected.inRange),
+:global(.flatpickr-day.startRange.inRange),
+:global(.flatpickr-day.endRange.inRange),
+:global(.flatpickr-day.selected:focus),
+:global(.flatpickr-day.startRange:focus),
+:global(.flatpickr-day.endRange:focus),
+:global(.flatpickr-day.selected:hover),
+:global(.flatpickr-day.startRange:hover),
+:global(.flatpickr-day.endRange:hover),
+:global(.flatpickr-day.selected.prevMonthDay),
+:global(.flatpickr-day.startRange.prevMonthDay),
+:global(.flatpickr-day.endRange.prevMonthDay),
+:global(.flatpickr-day.selected.nextMonthDay),
+:global(.flatpickr-day.startRange.nextMonthDay),
+:global(.flatpickr-day.endRange.nextMonthDay) {
+  background: var(--color-green);
+  border-color: var(--color-green);
+}
+
+:global(.flatpickr-day:hover) {
+  background-color: var(--color-gray-90);
+}
+
+:global(.flatpickr-prev-month:hover),
+:global(.flatpickr-next-month:hover) {
+  color: var(--color-green);
+}
+:global(.flatpickr-prev-month:hover svg),
+:global(.flatpickr-next-month:hover svg) {
+  fill: var(--color-green) !important;
+}
+
+:global(.flatpickr-day.today) {
+  border-color: var(--color-navy-40);
+}
+:global(.flatpickr-day.today:hover),
+:global(.flatpickr-day.today:focus) {
+  border-color: var(--color-navy-40);
+  background: var(--color-navy-40);
+}
+
+:global(span.flatpickr-day.today:not(.selected)),
+:global(span.flatpickr-day.prevMonthDay.today:not(.selected)),
+:global(span.flatpickr-day.nextMonthDay.today:not(.selected)) {
+  border-color: none;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: var(--color-navy-40);
+}
+
+:global(span.flatpickr-day.today:not(.selected):hover),
+:global(span.flatpickr-day.prevMonthDay.today:not(.selected):hover),
+:global(span.flatpickr-day.nextMonthDay.today:not(.selected):hover) {
+  border: 1px solid var(--color-navy-40);
+}
+
+:global(.flatpickr-input[disabled]) {
+  cursor: not-allowed;
+}

@@ -1,0 +1,88 @@
+@import '../../materials/borders.mod.css';
+@import '../../materials/colors/base-colors.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/transitions.mod.css';
+@import '../../materials/sizes.mod.css';
+
+.date-input-container {
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+
+.constraintScale {
+  width: var(--constraint-scale);
+}
+.constraintXs {
+  max-width: var(--constraint-xs);
+}
+.constraintS {
+  max-width: var(--constraint-s);
+}
+.constraintM {
+  max-width: var(--constraint-m);
+}
+.constraintL {
+  max-width: var(--constraint-l);
+}
+.constraintXl {
+  max-width: var(--constraint-xl);
+}
+
+.date-input {
+  width: 100%;
+  appearance: none;
+  border-radius: var(--border-radius-6) 0 0 var(--border-radius-6);
+  border-bottom: 1px solid var(--color-gray);
+  border-left: 1px solid var(--color-gray);
+  border-right: none;
+  border-top: 1px solid var(--color-gray);
+  cursor: pointer;
+  flex-grow: 1;
+  font: inherit;
+  height: var(--standard-input-height);
+  margin-right: 0; /* stop that jumping */
+  padding: var(--spacing-8);
+}
+
+.date-input:focus {
+  border: 1px solid var(--color-green);
+  transition: var(--transition-standard);
+}
+
+.date-input:disabled {
+  background-color: var(--color-navy-98);
+  cursor: not-allowed;
+  color: var(--color-gray-60);
+  opacity: 1; /* fix for mobile safari */
+}
+
+.icon-container {
+  align-items: center;
+  border-bottom: 1px solid var(--color-gray);
+  border-right: 1px solid var(--color-gray);
+  border-top: 1px solid var(--color-gray);
+  cursor: pointer;
+  display: flex;
+  height: var(--standard-input-height);
+  padding: var(--spacing-4);
+}
+
+.clear-icon-container {
+  composes: icon-container;
+}
+
+.calendar-icon-container {
+  composes: icon-container;
+  border-top-right-radius: var(--border-radius-6);
+  border-bottom-right-radius: var(--border-radius-6);
+}
+
+.icon-container-disabled {
+  cursor: not-allowed;
+  background-color: var(--color-navy-98);
+}
+
+.invalid {
+  border-color: var(--color-orange) !important;
+}

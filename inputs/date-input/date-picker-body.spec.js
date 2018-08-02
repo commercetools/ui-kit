@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CalendarIcon, ClockIcon } from '../icons';
+import { CalendarIcon, ClockIcon } from '../../icons';
 import {
   DatePickerBody,
   ClearSection,

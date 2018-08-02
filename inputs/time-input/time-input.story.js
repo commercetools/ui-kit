@@ -1,21 +1,17 @@
 import React from 'react';
-import { IntlProvider, addLocaleData } from 'react-intl';
 import { storiesOf } from '@storybook/react';
+import { IntlProvider } from 'react-intl';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
-import Section from '../.storybook/decorators/section';
-import DatePicker from './date-picker';
+import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
+import TimeInput from './time-input';
 
-addLocaleData({
-  locale: 'de',
-});
-
-storiesOf('Dates', module)
+storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('DateTimePicker', () => {
+  .add('TimeInput', () => {
     const locale = select('locale', ['de', 'en'], 'en');
     const timeZone = select(
       'timeZone',
@@ -23,27 +19,13 @@ storiesOf('Dates', module)
       'Europe/Madrid'
     );
     return (
-      <IntlProvider
-        locale={locale}
-        messages={{
-          en: {
-            'UIKit.DatePicker.labelRange': 'to',
-          },
-          de: {
-            'UIKit.DatePicker.labelRange': 'bis',
-          },
-        }}
-      >
-        <Section>
-          <DatePicker
+      <Section>
+        <IntlProvider locale={locale}>
+          <TimeInput
             key={`${locale}-${timeZone}`}
             placeholder={text('placeholder', 'Select a date...')}
             mode={select('mode', ['single', 'multiple', 'range'], 'single')}
-            timeScale={select(
-              'timeScale',
-              ['date', 'datetime', 'time'],
-              'datetime'
-            )}
+            timeScale={'time'}
             isDisabled={boolean('isDisabled', false)}
             value={text('Datetime (UTC)', '2017-12-31T16:02:50.000Z')}
             onChange={action('on change')}
@@ -55,7 +37,7 @@ storiesOf('Dates', module)
               'm'
             )}
           />
-        </Section>
-      </IntlProvider>
+        </IntlProvider>
+      </Section>
     );
   });

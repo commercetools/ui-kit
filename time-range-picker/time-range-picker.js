@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import Text from '../typography/text';
-import DatePicker from '../date-picker';
+import TimeInput from '../inputs/time-input';
 import Spacings from '../materials/spacings';
 import styles from './time-range-picker.mod.css';
 import messages from './messages';
@@ -22,11 +22,10 @@ const TimeRangePicker = props => {
           <Text.Body isBold={true}>
             <FormattedMessage {...messages.from} />
           </Text.Body>
-          <DatePicker
+          <TimeInput
             value={props.value.from}
             onChange={handleChangeValue('from')}
             mode="single"
-            timeScale="time"
             timeZone={props.timeZone}
           />
         </Spacings.Inline>
@@ -36,11 +35,10 @@ const TimeRangePicker = props => {
           <Text.Body isBold={true}>
             <FormattedMessage {...messages.to} />
           </Text.Body>
-          <DatePicker
+          <TimeInput
             value={props.value.to}
             onChange={handleChangeValue('to')}
             mode="single"
-            timeScale="time"
             timeZone={props.timeZone}
           />
         </Spacings.Inline>
