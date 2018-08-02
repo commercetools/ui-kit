@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DateInput /> should render 1`] = `
+<Horizontal
+  constraint="scale"
+>
+  <div
+    className="container"
+    onMouseOver={[Function]}
+  >
+    <DatePickerBody
+      formattedValue={null}
+      horizontalConstraint="scale"
+      isDisabled={false}
+      isInvalid={false}
+      numberOfFormattedValueChars={6}
+      onClearPicker={[Function]}
+      placeholder="test"
+      timeScale="time"
+    />
+  </div>
+</Horizontal>
+`;
