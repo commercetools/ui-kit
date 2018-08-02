@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Constraints from '@commercetools-frontend/ui-kit/materials/constraints';
-import Table from '@commercetools-frontend/ui-kit/table';
 import IconButton from '@commercetools-frontend/ui-kit/buttons/icon-button';
 import {
   InformationIcon,
@@ -22,22 +21,24 @@ storiesOf('Fields/FieldLabel', module)
     <Section>
       <Constraints.Horizontal constraint="m">
         <FieldLabel
-          title={text('title', 'Label title')}
+          title={text('title', 'Label title example')}
           isBold={boolean('isBold', true)}
           description={text('description', '')}
-          hint={text('hint', '')}
-          isRequired={boolean('isRequired', false)}
+          hint={text('hint', 'Hint example')}
+          hasRequiredIndicator={boolean('hasRequiredIndicator', true)}
           tone={select('tone', ['', 'inverted'])}
           button={
-            select('button', ['', 'IconButton'], '') ? (
+            select('button', ['', 'IconButton'], 'IconButton') ? (
               <IconButton label="label icon" icon={<InformationIcon />} />
             ) : null
           }
           hintIcon={
-            select('hintIcon', ['', 'WarningIcon'], '') ? <WarningIcon /> : null
+            select('hintIcon', ['', 'WarningIcon'], 'WarningIcon') ? (
+              <WarningIcon />
+            ) : null
           }
           badge={
-            select('badge', ['', 'FlatButton'], '') ? (
+            select('badge', ['', 'FlatButton'], 'FlatButton') ? (
               <FlatButton
                 tone="primary"
                 icon={<InformationIcon />}
@@ -48,27 +49,5 @@ storiesOf('Fields/FieldLabel', module)
           }
         />
       </Constraints.Horizontal>
-    </Section>
-  ))
-  .add('in table', () => (
-    <Section>
-      <Table
-        columns={[
-          {
-            key: 'name',
-            label: (
-              <FieldLabel
-                title={text('title', 'Table title')}
-                tone={select('tone', ['', 'inverted'], 'inverted')}
-                isRequired={boolean('isRequired', false)}
-              />
-            ),
-          },
-        ]}
-        rowCount={0}
-        itemRenderer={() => {}}
-        onRowClick={() => {}}
-        items={[]}
-      />
     </Section>
   ));

@@ -14,27 +14,26 @@ describe('rendering', () => {
   let props;
   let wrapper;
   let titleWrapper;
-  let subTitleWrapper;
-  let titleIconWrapper;
-  let subtitleIconWrapper;
   let hintWrapper;
+  let titleIconWrapper;
+  let hintIconWrapper;
 
   describe('with title', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<FieldLabel {...props} />);
-      titleWrapper = wrapper.find({ 'data-test-role': 'title' });
+      titleWrapper = wrapper.find('Label');
     });
 
-    it('should contain the label text', () => {
-      expect(titleWrapper.dive()).toHaveText('Label Title');
+    it('should pass label text', () => {
+      expect(titleWrapper).toHaveProp('children', 'Label Title');
     });
 
-    it('should not have bold text', () => {
+    it('should pass no bold text', () => {
       expect(titleWrapper).toHaveProp('isBold', false);
     });
 
-    it('should contain text with no tone', () => {
+    it('should pass text with no tone', () => {
       expect(titleWrapper).toHaveProp('tone', undefined);
     });
 
@@ -42,10 +41,10 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ isBold: false });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleWrapper = wrapper.find({ 'data-test-role': 'title' });
+        titleWrapper = wrapper.find('Label');
       });
 
-      it('should contain bold text', () => {
+      it('should not pass bold text', () => {
         expect(titleWrapper).toHaveProp('isBold', false);
       });
     });
@@ -54,40 +53,11 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ tone: 'inverted' });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleWrapper = wrapper.find({ 'data-test-role': 'title' });
+        titleWrapper = wrapper.find('Label');
       });
 
-      it('should set the text tone', () => {
+      it('should pass the correct text tone', () => {
         expect(titleWrapper).toHaveProp('tone', 'inverted');
-      });
-    });
-  });
-
-  describe('with subtitle', () => {
-    describe('when subtitle is given', () => {
-      beforeEach(() => {
-        props = createTestProps({ subtitle: 'Label Subtitle' });
-        wrapper = shallow(<FieldLabel {...props} />);
-        subTitleWrapper = wrapper.find({ 'data-test-role': 'subtitle' });
-      });
-
-      it('should be present', () => {
-        expect(subTitleWrapper).toBeTruthy();
-      });
-
-      it('should contain the subtitle text', () => {
-        expect(subTitleWrapper.render().text()).toEqual('Label Subtitle');
-      });
-    });
-
-    describe('when subtitle is not given', () => {
-      beforeEach(() => {
-        props = createTestProps();
-        wrapper = shallow(<FieldLabel {...props} />);
-      });
-
-      it('should not be present', () => {
-        expect(wrapper).not.toRender({ 'data-test-role': 'subtitle' });
       });
     });
   });
@@ -97,7 +67,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ hint: 'Label hint' });
         wrapper = shallow(<FieldLabel {...props} />);
-        hintWrapper = wrapper.find({ 'data-test-role': 'hint' });
+        hintWrapper = wrapper.find({ className: 'hint' });
       });
 
       it('should be present', () => {
@@ -116,31 +86,41 @@ describe('rendering', () => {
       });
 
       it('should not be present', () => {
-        expect(wrapper).not.toRender({ 'data-test-role': 'hint' });
+        expect(wrapper).not.toRender({ className: 'hint' });
       });
     });
   });
 
-  describe('with `required` status', () => {
-    describe('when connected input is required', () => {
+  describe('with `hasRequiredIndicator`', () => {
+    describe('when connected input has required indicator', () => {
       beforeEach(() => {
-        props = createTestProps({ isRequired: true });
+        props = createTestProps({ hasRequiredIndicator: true });
         wrapper = shallow(<FieldLabel {...props} />);
+        titleWrapper = wrapper.find('Label');
+      });
+
+      it('should pass hasRequiredIndicator', () => {
+        expect(titleWrapper).toHaveProp('isRequiredIndicatorVisible', true);
       });
     });
 
-    describe('when labelled input is not required', () => {
+    describe('when labeled input has not required indicator', () => {
       beforeEach(() => {
-        props = createTestProps();
+        props = createTestProps({ hasRequiredIndicator: false });
         wrapper = shallow(<FieldLabel {...props} />);
+        titleWrapper = wrapper.find('Label');
+      });
+
+      it('should not pass hasRequiredIndicator', () => {
+        expect(titleWrapper).toHaveProp('isRequiredIndicatorVisible', false);
       });
     });
   });
 
-  describe('with `titleIconButton`', () => {
-    describe('when titleIconButton is given', () => {
+  describe('with `button`', () => {
+    describe('when button is given', () => {
       beforeEach(() => {
-        props = createTestProps({ titleIconButton: <IconButton size="big" /> });
+        props = createTestProps({ button: <IconButton size="big" /> });
         wrapper = shallow(<FieldLabel {...props} />);
         titleIconWrapper = wrapper.find(IconButton);
       });
@@ -166,12 +146,12 @@ describe('rendering', () => {
     });
   });
 
-  describe('with `subtitleIcon`', () => {
-    describe('when subtitleIcon is given', () => {
+  describe('with `hintIcon`', () => {
+    describe('when hintIcon is given', () => {
       beforeEach(() => {
-        props = createTestProps({ subtitleIcon: <WarningIcon /> });
+        props = createTestProps({ hintIcon: <WarningIcon /> });
         wrapper = shallow(<FieldLabel {...props} />);
-        subtitleIconWrapper = wrapper.find(WarningIcon);
+        hintIconWrapper = wrapper.find(WarningIcon);
       });
 
       it('should display the icon', () => {
@@ -179,18 +159,18 @@ describe('rendering', () => {
       });
 
       it('should set the icon size', () => {
-        expect(subtitleIconWrapper.prop('size')).toEqual('medium');
+        expect(hintIconWrapper.prop('size')).toEqual('medium');
       });
     });
 
-    describe('when subtitleIcon is not given', () => {
+    describe('when hintIcon is not given', () => {
       beforeEach(() => {
         props = createTestProps();
         wrapper = shallow(<FieldLabel {...props} />);
       });
 
       it('should not display an icon', () => {
-        expect(wrapper.prop('subtitleIcon')).toBeUndefined();
+        expect(wrapper.prop('hintIcon')).toBeUndefined();
       });
     });
   });

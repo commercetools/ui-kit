@@ -7,13 +7,14 @@ import styles from './field-label.mod.css';
 
 export const FieldLabel = props => (
   <div className={styles.parent}>
-    <label htmlFor={props.htmlFor}>
+    <div className={styles.label}>
       <Spacings.Inline alignItems="flexStart" scale="xs">
         <Text.Wrap>
           <Label
             tone={props.tone}
             isBold={props.isBold}
-            isRequiredIndicatorVisible={props.isRequired}
+            isRequiredIndicatorVisible={props.hasRequiredIndicator}
+            htmlFor={props.htmlFor}
           >
             {props.title}
           </Label>
@@ -23,7 +24,7 @@ export const FieldLabel = props => (
             size: 'small',
           })}
       </Spacings.Inline>
-    </label>
+    </div>
 
     {(props.hint || props.hintIcon) && (
       <div className={styles.hint}>
@@ -61,7 +62,7 @@ export const FieldLabel = props => (
 
 FieldLabel.displayName = 'FieldLabel';
 FieldLabel.defaultProps = {
-  isRequired: false,
+  hasRequiredIndicator: false,
   isBold: false,
 };
 FieldLabel.propTypes = {
@@ -71,7 +72,7 @@ FieldLabel.propTypes = {
   button: PropTypes.node,
   hintIcon: PropTypes.node,
   badge: PropTypes.node,
-  isRequired: PropTypes.bool,
+  hasRequiredIndicator: PropTypes.bool,
   isBold: PropTypes.bool,
   tone: PropTypes.oneOf(['primary', 'inverted']),
   htmlFor: PropTypes.string,
