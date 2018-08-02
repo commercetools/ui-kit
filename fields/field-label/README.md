@@ -19,29 +19,25 @@ import FieldLabel from '@commercetools-frontend/ui-kit/forms/field-label';
 ```js
 <FieldLabel
   title={<FormattedMessage {...messages.title} />}
-  hint={<FormattedMessage {...messages.hint} />}
-  description={<FormattedMessage {...messages.description} />}
+  hasRequiredIndicator={true}
   button={<IconButton icon={<InformationIcon />} />}
+  hint={<FormattedMessage {...messages.hint} />}
   hintIcon={<WarningIcon />}
+  description={<FormattedMessage {...messages.description} />}
   badge={<FlatButton tone="primary" label="show" />}
-  isRequired={true}
-  isBold={false}
-  tone="inverted"
   htmlFor="sampleInput"
 />
 ```
 
 #### Properties
 
-| Props                  | Type               | Required | Values                    | Default | Description                                                                                                                                 |
-| ---------------------- | ------------------ | :------: | ------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `title`                | `string` or `node` |    ✅    | -                         | -       | Title of the label                                                                                                                          |
-| `hint`                 | `string` or `node` |    -     | -                         | -       | Hint for the label. Provides supplementary information for the title. Can also receive a `hintIcon`                                         |
-| `description`          | `string` or `node` |    -     | -                         | -       | Provides a description for the title.                                                                                                       |
-| `button`               | `node`             |    -     | -                         | -       | IconButton to be displayed beside the label title                                                                                           |
-| `hintIcon`             | `node`             |    -     | -                         | -       | Icon to be displayed beside the label hint                                                                                                  |
-| `badge`                | `node`             |    -     | -                         | -       | Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email) |
-| `hasRequiredIndicator` | `bool`             |    -     | -                         | `false` | Indicates if the labeled field is required in a form                                                                                        |  |
-| `isBold`               | `bool`             |    -     | -                         | `false` | Indicates if the label title should be in bold text                                                                                         |
-| `tone`                 | `string`           |    -     | `['primary', 'inverted']` | \_      | Indicates the tone to be applied to the label title                                                                                         |
-| `htmlFor`              | `string`           |    -     | -                         | -       | ID of the labeled input                                                                                                                     |
+| Props                  | Type               | Required | Values | Default | Description                                                                                                                                 |
+| ---------------------- | ------------------ | :------: | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`                | `string` or `node` |    ✅    | -      | -       | Title of the label                                                                                                                          |
+| `button`               | `node`             |    -     | -      | -       | IconButton to be displayed beside the label title                                                                                           |
+| `hint`                 | `string` or `node` |    -     | -      | -       | Hint for the label. Provides supplementary information for the title. Can also receive a `hintIcon`                                         |
+| `hintIcon`             | `node`             |    -     | -      | -       | Icon to be displayed beside the label hint                                                                                                  |
+| `description`          | `string` or `node` |    -     | -      | -       | Provides a description for the title.                                                                                                       |
+| `badge`                | `node`             |    -     | -      | -       | Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email) |
+| `hasRequiredIndicator` | `bool`             |    -     | -      | `false` | Indicates if the labeled field is required in a form                                                                                        |  |
+| `htmlFor`              | `string`           |    -     | -      | -       | ID of the labeled input                                                                                                                     |

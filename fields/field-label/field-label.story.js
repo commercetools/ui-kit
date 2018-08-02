@@ -14,29 +14,27 @@ import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
 import FieldLabel from './field-label';
 
-storiesOf('Fields/FieldLabel', module)
+storiesOf('Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('basic example', () => (
+  .add('FieldLabel', () => (
     <Section>
       <Constraints.Horizontal constraint="m">
         <FieldLabel
           title={text('title', 'Label title example')}
-          isBold={boolean('isBold', true)}
-          description={text('description', '')}
-          hint={text('hint', 'Hint example')}
           hasRequiredIndicator={boolean('hasRequiredIndicator', true)}
-          tone={select('tone', ['', 'inverted'])}
           button={
             select('button', ['', 'IconButton'], 'IconButton') ? (
               <IconButton label="label icon" icon={<InformationIcon />} />
             ) : null
           }
+          hint={text('hint', 'Hint example')}
           hintIcon={
             select('hintIcon', ['', 'WarningIcon'], 'WarningIcon') ? (
               <WarningIcon />
             ) : null
           }
+          description={text('description', '')}
           badge={
             select('badge', ['', 'FlatButton'], 'FlatButton') ? (
               <FlatButton

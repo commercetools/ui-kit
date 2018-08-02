@@ -11,8 +11,7 @@ export const FieldLabel = props => (
       <Spacings.Inline alignItems="flexStart" scale="xs">
         <Text.Wrap>
           <Label
-            tone={props.tone}
-            isBold={props.isBold}
+            isBold={true}
             isRequiredIndicatorVisible={props.hasRequiredIndicator}
             htmlFor={props.htmlFor}
           >
@@ -38,15 +37,13 @@ export const FieldLabel = props => (
               })}
             </span>
           )}
-          {props.hint && (
-            <Text.Detail tone={props.tone}>{props.hint}</Text.Detail>
-          )}
+          {props.hint && <Text.Detail>{props.hint}</Text.Detail>}
         </Spacings.Inline>
       </div>
     )}
     {props.description && (
       <div className={styles.description}>
-        <Text.Detail tone={props.tone}>
+        <Text.Detail>
           <Text.Wrap>{props.description}</Text.Wrap>
         </Text.Detail>
       </div>
@@ -73,8 +70,6 @@ FieldLabel.propTypes = {
   hintIcon: PropTypes.node,
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,
-  isBold: PropTypes.bool,
-  tone: PropTypes.oneOf(['primary', 'inverted']),
   htmlFor: PropTypes.string,
 };
 

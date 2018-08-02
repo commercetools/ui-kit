@@ -22,8 +22,12 @@
 }
 
 .description {
-  float: none;
-  clear: both;
+  width: 100%;
+  display: inline-block;
+}
+
+.hint + .description {
+  margin-top: var(--spacing-4);
 }
 
 .badge {

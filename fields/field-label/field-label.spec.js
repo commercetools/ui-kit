@@ -28,38 +28,6 @@ describe('rendering', () => {
     it('should pass label text', () => {
       expect(titleWrapper).toHaveProp('children', 'Label Title');
     });
-
-    it('should pass no bold text', () => {
-      expect(titleWrapper).toHaveProp('isBold', false);
-    });
-
-    it('should pass text with no tone', () => {
-      expect(titleWrapper).toHaveProp('tone', undefined);
-    });
-
-    describe('without bold text', () => {
-      beforeEach(() => {
-        props = createTestProps({ isBold: false });
-        wrapper = shallow(<FieldLabel {...props} />);
-        titleWrapper = wrapper.find('Label');
-      });
-
-      it('should not pass bold text', () => {
-        expect(titleWrapper).toHaveProp('isBold', false);
-      });
-    });
-
-    describe('with tone', () => {
-      beforeEach(() => {
-        props = createTestProps({ tone: 'inverted' });
-        wrapper = shallow(<FieldLabel {...props} />);
-        titleWrapper = wrapper.find('Label');
-      });
-
-      it('should pass the correct text tone', () => {
-        expect(titleWrapper).toHaveProp('tone', 'inverted');
-      });
-    });
   });
 
   describe('with hint', () => {
@@ -104,7 +72,7 @@ describe('rendering', () => {
       });
     });
 
-    describe('when labeled input has not required indicator', () => {
+    describe('when input has not required indicator', () => {
       beforeEach(() => {
         props = createTestProps({ hasRequiredIndicator: false });
         wrapper = shallow(<FieldLabel {...props} />);
