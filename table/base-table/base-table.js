@@ -387,7 +387,7 @@ export default class BaseTable extends React.Component {
                   this.getBodyRowIndex(renderParams.rowIndex)
                 );
             }}
-            onMouseOver={
+            onMouseEnter={
               this.props.onRowClick
                 ? () => {
                     this.setState({
@@ -396,7 +396,7 @@ export default class BaseTable extends React.Component {
                   }
                 : null
             }
-            onMouseOut={
+            onMouseLeave={
               this.props.onRowClick
                 ? () => {
                     this.setState({

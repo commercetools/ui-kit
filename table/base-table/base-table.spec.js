@@ -475,21 +475,21 @@ describe('BaseTable', () => {
               .first()
           ).toHaveProp('onClick', expect.any(Function));
         });
-        it('should pass onMouseOver to inner container', () => {
+        it('should pass onMouseEnter to inner container', () => {
           expect(
             itemWrapper
               .find('CellMeasurer')
               .find('div')
               .first()
-          ).toHaveProp('onMouseOver', expect.any(Function));
+          ).toHaveProp('onMouseEnter', expect.any(Function));
         });
-        it('should pass onMouseOut to inner container', () => {
+        it('should pass onMouseLeave to inner container', () => {
           expect(
             itemWrapper
               .find('CellMeasurer')
               .find('div')
               .first()
-          ).toHaveProp('onMouseOut', expect.any(Function));
+          ).toHaveProp('onMouseLeave', expect.any(Function));
         });
         describe('when clicking on onClick', () => {
           beforeEach(() => {
