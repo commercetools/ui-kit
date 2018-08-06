@@ -29,6 +29,8 @@ ClearIndicator.propTypes = {
   isDisabled: PropTypes.bool,
 };
 
+// TODO: add tokens from <Tag /> to tags
+
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
   static propTypes = {
@@ -77,7 +79,6 @@ export class SelectInput extends React.Component {
                     const event = {
                       target: {
                         name: (() => {
-                          // TODO: add tokens for tag
                           if (!this.props.isMulti) return this.props.name;
                           // We append the ".0" to make Formik set the touched
                           // state as an array instead of a boolean only.
