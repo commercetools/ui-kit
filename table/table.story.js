@@ -18,7 +18,9 @@ const randomName = (val = 'static') => {
   const random = Math.round(Math.random() * 10);
   return (
     <ul>
-      {Array.from({ length: random }).map((_, key) => <li key={key}>{val}</li>)}
+      {Array.from({ length: random }).map((_, key) => (
+        <li key={key}>{val}</li>
+      ))}
     </ul>
   );
 };
