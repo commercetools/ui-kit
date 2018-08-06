@@ -1,12 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
+import { CaretDownIcon, CloseIcon } from '../../icons';
 import './select-input.css';
 import messages from './messages';
+
+const DropdownIndicator = props =>
+  components.DropdownIndicator && (
+    <components.DropdownIndicator {...props}>
+      {/* FIXME: add proper tone when tones are refactored */}
+      <CaretDownIcon theme={props.isDisabled && 'grey'} size="small" />
+    </components.DropdownIndicator>
+  );
+
+const ClearIndicator = props => {
+  const {
+    isDisabled,
+    innerProps: { ref, ...restInnerProps },
+  } = props;
+  return (
+    <div
+      className="react-select__clear-indicator"
+      {...restInnerProps}
+      ref={ref}
+    >
+      {/* FIXME: add proper tone when tones are refactored */}
+      <CloseIcon theme={isDisabled && 'grey'} size="medium" />
+    </div>
+  );
+};
+
+ClearIndicator.propTypes = {
+  innerProps: PropTypes.node,
+  isDisabled: PropTypes.bool,
+};
 
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
@@ -14,6 +45,7 @@ export class SelectInput extends React.Component {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
     onChange: PropTypes.func.isRequired,
+    isDisabled: PropTypes.bool,
     isMulti: PropTypes.bool,
     onBlur: PropTypes.func,
     options: PropTypes.arrayOf(
@@ -33,6 +65,10 @@ export class SelectInput extends React.Component {
           <Select
             {...omit(this.props, 'horizontalConstraint')}
             className="react-select"
+            components={{
+              DropdownIndicator,
+              ClearIndicator,
+            }}
             classNamePrefix="react-select"
             onChange={
               typeof this.props.onChange === 'function'
@@ -51,6 +87,7 @@ export class SelectInput extends React.Component {
                     const event = {
                       target: {
                         name: (() => {
+                          // TODO: add tokens for tag
                           if (!this.props.isMulti) return this.props.name;
                           // We append the ".0" to make Formik set the touched
                           // state as an array instead of a boolean only.

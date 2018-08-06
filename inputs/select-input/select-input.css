@@ -1,34 +1,114 @@
-/* @import '../../materials/tokens/tokens.mod.css';
+@import '../../materials/tokens/tokens.mod.css';
 @import '../../materials/borders.mod.css';
 @import '../../materials/colors/base-colors.mod.css';
 @import '../../materials/sizes.mod.css';
 @import '../../materials/spacings.mod.css';
 @import '../../materials/transitions.mod.css';
 
+/* The most part of styles here contain `!important` since its overwriting the original plugin styles */
+
+/* Base  */
+
 .react-select {
   height: var(--token-size-height-input);
+  border-radius: var(--token-border-radius-input) !important;
+}
+
+/* States  */
+
+.react-select__value-container {
+  background-color: none !important;
 }
 
 .react-select__control {
-  background-color: white;
+  font-size: var(--token-font-size-default);
+  background-color: var(--token-background-color-input-pristine) !important;
+  border-color: var(--token-border-color-input-pristine) !important;
+  border-radius: var(--token-border-radius-input) !important;
+  min-height: var(--token-size-height-input) !important;
+  cursor: pointer !important;
 }
 
-.react-select__value-container {
-  background-color: var(--token-font-color-default);
+/* Active / Hover */
+
+.react-select__control:hover,
+.react-select__control:active,
+.react-select__control:focus,
+.react-select__control--is-focused {
+  border-color: var(--token-border-color-input-focus) !important;
+  box-shadow: none !important;
 }
+
+/* Chevron  */
 
 .react-select__indicators {
-  background-color: red;
+  background: none;
 }
 
+.react-select__indicator-separator {
+  display: none;
+}
+
+.react-select__indicator {
+  padding: 0 !important;
+  margin: 0 var(--spacing-8) 0 0 !important;
+}
+
+.react-select__dropdown-indicator {
+  color: var(--token-font-color-default) !important;
+}
+
+/* Clear indicator  */
+.react-select__clear-indicator {
+  display: flex;
+  margin: 0 var(--spacing-8) 0 0;
+}
+
+/* Menu */
 .react-select__menu {
-  background-color: green;
+  border: 1px var(--token-border-color-input-focus) solid !important;
+  border-radius: var(--token-border-radius-input) !important;
+  background-color: var(--token-background-color-input-pristine) !important;
+  box-shadow: none !important;
+  margin: var(--spacing-4) 0 0 0 !important;
 }
 
 .react-select__menu-list {
-  background-color: blue;
+  padding: 0 !important;
+  border-radius: var(--token-border-radius-input) !important;
+  background-color: var(--token-background-color-input-pristine) !important;
+}
+
+/* Menu Item */
+
+/* Focused */
+
+.react-select__option--is-focused {
+  background-color: var(--token-background-color-input-hover) !important;
+}
+
+/* Selected */
+
+.react-select__option--is-selected {
+  color: var(--token-font-color-default) !important;
+  background-color: var(--token-background-color-input-selected) !important;
 }
 
 .react-select__option {
-  background-color: purple;
-} */
+  transition: var(--transition-standard);
+}
+
+/* Disabled */
+
+.react-select__control--is-disabled {
+  color: var(--token-font-color-disabled) !important;
+  background-color: var(--token-background-color-input-disabled) !important;
+  border-color: var(--token-border-color-input-disabled) !important;
+  cursor: not-allowed;
+}
+
+/* Placeholder  */
+
+.react-select__placeholder {
+  color: var(--token-font-color-placeholder) !important;
+}
