@@ -3,9 +3,6 @@
 .wrapper {
   overflow: hidden;
   width: 100%;
-}
-
-.wrapper {
   flex: 1;
 }
 

@@ -39,8 +39,8 @@ describe('rendering', () => {
         hintWrapper = wrapper.find(Text.Detail);
       });
 
-      it('should be present', () => {
-        expect(hintWrapper).toBeTruthy();
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
       });
 
       it('should contain the hint text', () => {
@@ -123,7 +123,7 @@ describe('rendering', () => {
       });
 
       it('should not display an icon', () => {
-        expect(wrapper.prop('hintIcon')).toBeUndefined();
+        expect(wrapper).not.toHaveProp.prop('hintIcon');
       });
     });
   });
