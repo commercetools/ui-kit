@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import requiredIf from 'react-required-if';
+import IconButton from '../buttons/icon-button';
+import { InformationIcon } from '../icons';
 import Text from '../typography/text';
 import Label from '../label';
 import Spacings from '../materials/spacings';
@@ -19,10 +21,13 @@ export const FieldLabel = props => (
             {props.title}
           </Label>
         </Text.Wrap>
-        {props.button &&
-          React.cloneElement(props.button, {
-            size: 'small',
-          })}
+        {props.onInfoButtonClick && (
+          <IconButton
+            icon={<InformationIcon size="medium" />}
+            size="small"
+            onClick={props.onInfoButtonClick}
+          />
+        )}
       </Spacings.Inline>
     </div>
 
@@ -70,7 +75,7 @@ FieldLabel.propTypes = {
     props => props.hintIcon
   ),
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  button: PropTypes.node,
+  onInfoButtonClick: PropTypes.function,
   hintIcon: PropTypes.node,
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,

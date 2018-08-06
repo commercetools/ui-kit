@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { WarningIcon } from '../icons';
 import Label from '../label';
+import Text from '../typography/text';
 import FlatButton from '../buttons/flat-button';
 import IconButton from '../buttons/icon-button';
 import FieldLabel from './field-label';
@@ -16,7 +17,6 @@ describe('rendering', () => {
   let wrapper;
   let titleWrapper;
   let hintWrapper;
-  let titleIconWrapper;
   let hintIconWrapper;
 
   describe('with title', () => {
@@ -36,7 +36,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ hint: 'Label hint' });
         wrapper = shallow(<FieldLabel {...props} />);
-        hintWrapper = wrapper.find({ className: 'hint' });
+        hintWrapper = wrapper.find(Text.Detail);
       });
 
       it('should be present', () => {
@@ -86,31 +86,15 @@ describe('rendering', () => {
     });
   });
 
-  describe('with `button`', () => {
-    describe('when button is given', () => {
+  describe('with `onInfoButtonClick`', () => {
+    describe('when onInfoButtonClick is given', () => {
       beforeEach(() => {
-        props = createTestProps({ button: <IconButton size="big" /> });
+        props = createTestProps({ onInfoButtonClick: jest.fn() });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleIconWrapper = wrapper.find(IconButton);
       });
 
-      it('should display the icon', () => {
+      it('should render a button', () => {
         expect(wrapper).toRender(IconButton);
-      });
-
-      it('should set the icon size', () => {
-        expect(titleIconWrapper).toHaveProp('size', 'small');
-      });
-    });
-
-    describe('when titleIcon is not given', () => {
-      beforeEach(() => {
-        props = createTestProps();
-        wrapper = shallow(<FieldLabel {...props} />);
-      });
-
-      it('should not display an icon', () => {
-        expect(wrapper.prop('titleIcon')).toBeUndefined();
       });
     });
   });
@@ -154,6 +138,22 @@ describe('rendering', () => {
       it('should display the badge', () => {
         expect(wrapper).toRender(FlatButton);
       });
+    });
+  });
+});
+
+describe('callbacks', () => {
+  describe(`onInfoButtonClick`, () => {
+    let props;
+    let wrapper;
+    beforeEach(() => {
+      props = createTestProps({ onInfoButtonClick: jest.fn() });
+      wrapper = shallow(<FieldLabel {...props} />);
+      wrapper.find(IconButton).simulate('click');
+    });
+
+    it('should call the function', () => {
+      expect(props.onInfoButtonClick).toHaveBeenCalled();
     });
   });
 });

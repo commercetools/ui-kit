@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Constraints from '../materials/constraints';
-import IconButton from '../buttons/icon-button';
 import { InformationIcon, WarningIcon } from '../icons';
 import FlatButton from '../buttons/flat-button';
 import Section from '../.storybook/decorators/section';
@@ -20,11 +19,7 @@ storiesOf('FieldLabel', module)
         <FieldLabel
           title={text('title', 'Label title example')}
           hasRequiredIndicator={boolean('hasRequiredIndicator', true)}
-          button={
-            select('button', ['', 'IconButton'], 'IconButton') ? (
-              <IconButton label="label icon" icon={<InformationIcon />} />
-            ) : null
-          }
+          onInfoButtonClick={action('onInfoButtonClick')}
           hint={text('hint', 'Hint example')}
           hintIcon={
             select('hintIcon', ['', 'WarningIcon'], 'WarningIcon') ? (
