@@ -23,4 +23,6 @@
   /* Colors */
   --token-background-color-input-pristine: var(--color-white);
   --token-background-color-input-disabled: var(--color-navy-98);
+  --token-background-color-input-hover: var(--color-gray-90);
+  --token-background-color-input-selected: var(--color-navy-95);
 }
