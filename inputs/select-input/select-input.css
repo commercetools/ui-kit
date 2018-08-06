@@ -1,9 +1,7 @@
 @import '../../materials/tokens/tokens.mod.css';
-@import '../../materials/borders.mod.css';
-@import '../../materials/colors/base-colors.mod.css';
-@import '../../materials/sizes.mod.css';
-@import '../../materials/spacings.mod.css';
 @import '../../materials/transitions.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/shadows.mod.css';
 
 /* The most part of styles here contain `!important` since its overwriting the original plugin styles */
 
@@ -15,6 +13,8 @@
 }
 
 /* States  */
+
+/* Default */
 
 .react-select__value-container {
   background-color: none !important;
@@ -69,7 +69,7 @@
   border: 1px var(--token-border-color-input-focus) solid !important;
   border-radius: var(--token-border-radius-input) !important;
   background-color: var(--token-background-color-input-pristine) !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second) !important;
   margin: var(--spacing-4) 0 0 0 !important;
 }
 
@@ -81,17 +81,17 @@
 
 /* Menu Item */
 
-/* Focused */
-
-.react-select__option--is-focused {
-  background-color: var(--token-background-color-input-hover) !important;
-}
-
 /* Selected */
 
 .react-select__option--is-selected {
   color: var(--token-font-color-default) !important;
   background-color: var(--token-background-color-input-selected) !important;
+}
+
+/* Focused */
+
+.react-select__option--is-focused {
+  background-color: var(--token-background-color-input-hover) !important;
 }
 
 .react-select__option {
@@ -104,7 +104,18 @@
   color: var(--token-font-color-disabled) !important;
   background-color: var(--token-background-color-input-disabled) !important;
   border-color: var(--token-border-color-input-disabled) !important;
-  cursor: not-allowed;
+}
+
+.react-select__control--is-disabled,
+.react-select--is-disabled {
+  cursor: not-allowed !important;
+}
+
+.react-select__control--is-disabled {
+  pointer-events: none;
+}
+.react-select--is-disabled {
+  pointer-events: initial !important;
 }
 
 /* Placeholder  */
