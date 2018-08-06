@@ -18,11 +18,7 @@ const DropdownIndicator = props =>
   );
 
 const ClearIndicator = props => (
-  <div
-    className="react-select__clear-indicator"
-    ref={props.innerProps.ref}
-    {...props.innerProps}
-  >
+  <div className="react-select__clear-indicator" {...props.innerProps}>
     {/* FIXME: add proper tone when tones are refactored */}
     <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
   </div>
