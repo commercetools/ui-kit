@@ -12,6 +12,8 @@ const Label = props => (
   </label>
 );
 
+Label.displayName = 'Label';
+
 Label.propTypes = {
   // FIXME: Add proper tone when tones are refactored
   tone: PropTypes.oneOf(['primary', 'inverted']),
@@ -19,10 +21,6 @@ Label.propTypes = {
   isBold: PropTypes.bool,
   isRequiredIndicatorVisible: PropTypes.bool,
   htmlFor: PropTypes.string,
-};
-
-Label.defaultProps = {
-  isBold: false,
 };
 
 export default Label;

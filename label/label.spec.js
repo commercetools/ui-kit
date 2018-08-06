@@ -26,7 +26,7 @@ describe('rendering', () => {
     });
 
     it('should not have bold text', () => {
-      expect(childrenWrapper).toHaveProp('isBold', false);
+      expect(childrenWrapper).toHaveProp('isBold', undefined);
     });
 
     it('should contain text with no tone', () => {
