@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { WarningIcon } from '../icons';
+import Label from '../label';
 import FlatButton from '../buttons/flat-button';
 import IconButton from '../buttons/icon-button';
 import FieldLabel from './field-label';
@@ -22,7 +23,7 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<FieldLabel {...props} />);
-      titleWrapper = wrapper.find('Label');
+      titleWrapper = wrapper.find(Label);
     });
 
     it('should pass label text', () => {
@@ -43,7 +44,7 @@ describe('rendering', () => {
       });
 
       it('should contain the hint text', () => {
-        expect(hintWrapper.render().text()).toEqual('Label hint');
+        expect(hintWrapper.dive()).toHaveText('Label hint');
       });
     });
 
@@ -64,7 +65,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ hasRequiredIndicator: true });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleWrapper = wrapper.find('Label');
+        titleWrapper = wrapper.find(Label);
       });
 
       it('should pass hasRequiredIndicator', () => {
@@ -76,7 +77,7 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createTestProps({ hasRequiredIndicator: false });
         wrapper = shallow(<FieldLabel {...props} />);
-        titleWrapper = wrapper.find('Label');
+        titleWrapper = wrapper.find(Label);
       });
 
       it('should not pass hasRequiredIndicator', () => {
@@ -98,7 +99,7 @@ describe('rendering', () => {
       });
 
       it('should set the icon size', () => {
-        expect(titleIconWrapper.prop('size')).toEqual('small');
+        expect(titleIconWrapper).toHaveProp('size', 'small');
       });
     });
 
@@ -127,7 +128,7 @@ describe('rendering', () => {
       });
 
       it('should set the icon size', () => {
-        expect(hintIconWrapper.prop('size')).toEqual('medium');
+        expect(hintIconWrapper).toHaveProp('size', 'medium');
       });
     });
 

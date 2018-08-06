@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import requiredIf from 'react-required-if';
 import Text from '../typography/text';
 import Label from '../label';
 import Spacings from '../materials/spacings';
@@ -64,7 +65,10 @@ FieldLabel.defaultProps = {
 };
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  hint: requiredIf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    props => props.hintIcon
+  ),
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   button: PropTypes.node,
   hintIcon: PropTypes.node,
