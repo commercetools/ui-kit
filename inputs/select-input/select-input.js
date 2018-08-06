@@ -17,25 +17,19 @@ const DropdownIndicator = props =>
     </components.DropdownIndicator>
   );
 
-const ClearIndicator = props => {
-  const {
-    isDisabled,
-    innerProps: { ref, ...restInnerProps },
-  } = props;
-  return (
-    <div
-      className="react-select__clear-indicator"
-      {...restInnerProps}
-      ref={ref}
-    >
-      {/* FIXME: add proper tone when tones are refactored */}
-      <CloseIcon theme={isDisabled && 'grey'} size="medium" />
-    </div>
-  );
-};
+const ClearIndicator = props => (
+  <div
+    className="react-select__clear-indicator"
+    ref={props.innerProps.ref}
+    {...props.innerProps}
+  >
+    {/* FIXME: add proper tone when tones are refactored */}
+    <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
+  </div>
+);
 
 ClearIndicator.propTypes = {
-  innerProps: PropTypes.node,
+  innerProps: PropTypes.Object,
   isDisabled: PropTypes.bool,
 };
 
