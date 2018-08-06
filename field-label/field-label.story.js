@@ -19,7 +19,11 @@ storiesOf('FieldLabel', module)
         <FieldLabel
           title={text('title', 'Label title example')}
           hasRequiredIndicator={boolean('hasRequiredIndicator', true)}
-          onInfoButtonClick={action('onInfoButtonClick')}
+          onInfoButtonClick={
+            boolean('show info button', false)
+              ? action('onInfoButtonClick')
+              : undefined
+          }
           hint={text('hint', 'Hint example')}
           hintIcon={
             select('hintIcon', ['', 'WarningIcon'], 'WarningIcon') ? (

@@ -20,7 +20,7 @@ import FieldLabel from '@commercetools-frontend/ui-kit/field-label';
 <FieldLabel
   title={<FormattedMessage {...messages.title} />}
   hasRequiredIndicator={true}
-  onInfoButtonClick={<IconButton icon={<InformationIcon />} />}
+  onInfoButtonClick={props.showModalContainer} />}
   hint={<FormattedMessage {...messages.hint} />}
   hintIcon={<WarningIcon />}
   description={<FormattedMessage {...messages.description} />}
