@@ -25,7 +25,7 @@ const ClearIndicator = props => (
 );
 
 ClearIndicator.propTypes = {
-  innerProps: PropTypes.Object,
+  innerProps: PropTypes.object,
   isDisabled: PropTypes.bool,
 };
 
