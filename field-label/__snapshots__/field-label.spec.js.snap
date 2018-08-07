@@ -12,7 +12,6 @@ exports[`rendering with hint when hint is given should match snapshot 1`] = `
       <TextWrap>
         <Label
           isBold={true}
-          isRequiredIndicatorVisible={false}
         >
           Label Title
         </Label>
