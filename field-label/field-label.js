@@ -66,7 +66,6 @@ export const FieldLabel = props => (
 FieldLabel.displayName = 'FieldLabel';
 FieldLabel.defaultProps = {
   hasRequiredIndicator: false,
-  isBold: false,
 };
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
