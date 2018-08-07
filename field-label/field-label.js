@@ -74,7 +74,7 @@ FieldLabel.propTypes = {
     props => props.hintIcon
   ),
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  onInfoButtonClick: PropTypes.function,
+  onInfoButtonClick: PropTypes.func,
   hintIcon: PropTypes.node,
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,
