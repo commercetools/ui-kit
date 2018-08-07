@@ -8,7 +8,7 @@
 /* Base  */
 
 .react-select {
-  height: var(--token-size-height-input);
+  min-height: var(--token-size-height-input);
   border-radius: var(--token-border-radius-input) !important;
 }
 
