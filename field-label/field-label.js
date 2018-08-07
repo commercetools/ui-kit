@@ -31,7 +31,7 @@ export const FieldLabel = props => (
       </Spacings.Inline>
     </div>
 
-    {(props.hint || props.hintIcon) && (
+    {props.hint && (
       <div className={styles.hint}>
         <Spacings.Inline alignItems="flexStart" scale="xs">
           {props.hintIcon && (
