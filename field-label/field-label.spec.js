@@ -102,7 +102,7 @@ describe('rendering', () => {
   describe('with `hintIcon`', () => {
     describe('when hintIcon is given', () => {
       beforeEach(() => {
-        props = createTestProps({ hintIcon: <WarningIcon /> });
+        props = createTestProps({ hint: 'foo', hintIcon: <WarningIcon /> });
         wrapper = shallow(<FieldLabel {...props} />);
         hintIconWrapper = wrapper.find(WarningIcon);
       });
@@ -123,7 +123,7 @@ describe('rendering', () => {
       });
 
       it('should not display an icon', () => {
-        expect(wrapper).not.toHaveProp.prop('hintIcon');
+        expect(wrapper).not.toRender('hintIcon');
       });
     });
   });

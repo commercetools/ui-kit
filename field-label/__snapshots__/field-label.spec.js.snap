@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering with hint when hint is given should match snapshot 1`] = `
+<React.Fragment>
+  <div
+    className="label"
+  >
+    <Inline
+      alignItems="flexStart"
+      scale="xs"
+    >
+      <TextWrap>
+        <Label
+          isBold={true}
+          isRequiredIndicatorVisible={false}
+        >
+          Label Title
+        </Label>
+      </TextWrap>
+    </Inline>
+  </div>
+  <div
+    className="hint"
+  >
+    <Inline
+      alignItems="center"
+      scale="xs"
+    >
+      <TextDetail>
+        Label hint
+      </TextDetail>
+    </Inline>
+  </div>
+</React.Fragment>
+`;
