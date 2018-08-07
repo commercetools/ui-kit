@@ -23,7 +23,7 @@ exports[`rendering with hint when hint is given should match snapshot 1`] = `
     className="hint"
   >
     <Inline
-      alignItems="center"
+      alignItems="flexStart"
       scale="xs"
     >
       <TextDetail>
