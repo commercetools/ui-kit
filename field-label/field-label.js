@@ -66,6 +66,7 @@ export const FieldLabel = props => (
 );
 
 FieldLabel.displayName = 'FieldLabel';
+
 FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   hint: requiredIf(
@@ -79,6 +80,10 @@ FieldLabel.propTypes = {
   hasRequiredIndicator: PropTypes.bool,
   htmlFor: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+};
+
+FieldLabel.defaultProps = {
+  horizontalConstraint: 'scale',
 };
 
 export default FieldLabel;
