@@ -43,6 +43,11 @@ export class Option extends React.PureComponent {
               <Text.Body
                 // FIXME: add proper tones when we have disabled/primary in tones
                 tone={this.props.isDisabled ? 'secondary' : undefined}
+                // We need isInline to prevent Text.Body from rendering a p tag.
+                // Otherwise we would get a validateDomNesting warning because
+                // the "children" might contain a div (e.g for a tooltip), so we
+                // would wrongly render a div inside a p tag.
+                isInline={true}
               >
                 {this.props.children}
               </Text.Body>

@@ -14,7 +14,9 @@ exports[`<Option> rendering with children should match snapshot 1`] = `
       >
         <test-file-stub />
       </div>
-      <TextBody>
+      <TextBody
+        isInline={true}
+      >
         Some label
       </TextBody>
       <input
