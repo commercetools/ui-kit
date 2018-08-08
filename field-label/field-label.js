@@ -34,7 +34,7 @@ export const FieldLabel = props => (
 
     {props.hint && (
       <div className={styles.hint}>
-        <Spacings.Inline alignItems="flexStart" scale="xs">
+        <Spacings.Inline alignItems="center" scale="xs">
           {props.hintIcon && (
             <span className={styles.hintIcon}>
               {// FIXME: add proper tone when tones are refactored
