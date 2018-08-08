@@ -3,13 +3,14 @@ import React from 'react';
 import requiredIf from 'react-required-if';
 import IconButton from '../buttons/icon-button';
 import { InformationIcon } from '../icons';
+import Constraints from '../materials/constraints';
 import Text from '../typography/text';
 import Label from '../label';
 import Spacings from '../materials/spacings';
 import styles from './field-label.mod.css';
 
 export const FieldLabel = props => (
-  <React.Fragment>
+  <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <div className={styles.label}>
       <Spacings.Inline alignItems="flexStart" scale="xs">
         <Text.Wrap>
@@ -61,7 +62,7 @@ export const FieldLabel = props => (
         <div className={styles['label-badge']}>{props.badge}</div>
       </div>
     )}
-  </React.Fragment>
+  </Constraints.Horizontal>
 );
 
 FieldLabel.displayName = 'FieldLabel';
@@ -77,6 +78,7 @@ FieldLabel.propTypes = {
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,
   htmlFor: PropTypes.string,
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
 };
 
 export default FieldLabel;

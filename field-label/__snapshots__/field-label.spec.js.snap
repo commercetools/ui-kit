@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering with hint when hint is given should match snapshot 1`] = `
-<React.Fragment>
+<Horizontal
+  constraint="scale"
+>
   <div
     className="label"
   >
@@ -22,7 +24,7 @@ exports[`rendering with hint when hint is given should match snapshot 1`] = `
     className="hint"
   >
     <Inline
-      alignItems="flexStart"
+      alignItems="center"
       scale="xs"
     >
       <TextDetail>
@@ -30,5 +32,5 @@ exports[`rendering with hint when hint is given should match snapshot 1`] = `
       </TextDetail>
     </Inline>
   </div>
-</React.Fragment>
+</Horizontal>
 `;
