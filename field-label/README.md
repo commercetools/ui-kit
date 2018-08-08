@@ -26,6 +26,7 @@ import FieldLabel from '@commercetools-frontend/ui-kit/field-label';
   description={<FormattedMessage {...messages.description} />}
   badge={<FlatButton tone="primary" label="show" />}
   htmlFor="sampleInput"
+  horizontalConstraint="m"
 />
 ```
 
