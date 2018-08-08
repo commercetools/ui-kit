@@ -23,6 +23,7 @@ export const FieldLabel = props => (
         </Text.Wrap>
         {props.onInfoButtonClick && (
           <IconButton
+            label="More Info"
             icon={<InformationIcon size="medium" />}
             size="small"
             onClick={props.onInfoButtonClick}
