@@ -24,6 +24,8 @@ const ClearIndicator = props => (
   </div>
 );
 
+ClearIndicator.displayName = 'ClearIndicator';
+
 ClearIndicator.propTypes = {
   innerProps: PropTypes.object,
   isDisabled: PropTypes.bool,
@@ -37,9 +39,9 @@ export class SelectInput extends React.Component {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
     isMulti: PropTypes.bool,
-    onBlur: PropTypes.func,
     options: PropTypes.arrayOf(
       PropTypes.shape({
         value: PropTypes.string.isRequired,
