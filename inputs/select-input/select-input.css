@@ -31,7 +31,6 @@
 
 /* Active / Hover */
 
-.react-select__control:hover,
 .react-select__control:active,
 .react-select__control:focus,
 .react-select__control--is-focused {
