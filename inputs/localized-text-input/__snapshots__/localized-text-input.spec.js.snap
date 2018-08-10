@@ -77,7 +77,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
       />
     </Stack>
   </div>
-  <InjectIntl(ShowLanguagesControl)
+  <InjectIntl(LanguagesButton)
     isOpen={true}
     onClick={[MockFunction]}
     remainingLanguages={5}

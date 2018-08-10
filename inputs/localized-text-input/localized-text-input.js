@@ -12,7 +12,7 @@ import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';
 import Text from '../../typography/text';
-import ShowLanguagesControl from './show-languages-control';
+import LanguagesButton from './languages-button';
 import messages from './messages';
 import styles from './localized-text-input.mod.css';
 
@@ -314,7 +314,7 @@ export default class LocalizedTextInput extends React.Component {
                   ))}
                 {!this.props.hideExpansionControls &&
                   remainingLanguages.length > 0 && (
-                    <ShowLanguagesControl
+                    <LanguagesButton
                       onClick={toggle}
                       isOpen={isOpen}
                       remainingLanguages={remainingLanguages.length}
