@@ -8,6 +8,10 @@
   --size-input-min-height: 32px;
 }
 
+.expand {
+  float: right;
+}
+
 /******** States ********/
 
 /* Default */

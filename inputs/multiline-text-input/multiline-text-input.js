@@ -77,7 +77,6 @@ export class MultilineTextInput extends React.Component {
   render() {
     // This checks if the content in the textarea overflows the minimum
     // amount of lines it should have when collapsed
-
     const shouldRenderToggleButton =
       this.state.contentRowCount > MultilineTextInput.MIN_ROW_COUNT;
 
@@ -85,7 +84,7 @@ export class MultilineTextInput extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
           {({ isOpen, toggle }) => (
-            <React.Fragment key="textarea-autosize">
+            <React.Fragment>
               <TextareaAutosize
                 name={this.props.name}
                 value={this.props.value}
@@ -117,21 +116,23 @@ export class MultilineTextInput extends React.Component {
                 {...filterDataAttributes(this.props)}
               />
               {shouldRenderToggleButton && (
-                <FlatButton
-                  onClick={toggle}
-                  type="primary"
-                  isDisabled={this.props.isDisabled}
-                  label={this.props.intl.formatMessage(
-                    messages[isOpen ? 'collapse' : 'expand']
-                  )}
-                  icon={
-                    isOpen ? (
-                      <AngleUpIcon size="small" />
-                    ) : (
-                      <AngleDownIcon size="small" />
-                    )
-                  }
-                />
+                <div className={styles.expand}>
+                  <FlatButton
+                    onClick={toggle}
+                    type="primary"
+                    isDisabled={this.props.isDisabled}
+                    label={this.props.intl.formatMessage(
+                      isOpen ? messages.collapse : messages.expand
+                    )}
+                    icon={
+                      isOpen ? (
+                        <AngleUpIcon size="small" />
+                      ) : (
+                        <AngleDownIcon size="small" />
+                      )
+                    }
+                  />
+                </div>
               )}
             </React.Fragment>
           )}
