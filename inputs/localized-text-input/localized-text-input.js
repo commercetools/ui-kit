@@ -12,8 +12,7 @@ import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';
 import Text from '../../typography/text';
-import FlatButton from '../../buttons/flat-button';
-import { AngleDownIcon, AngleUpIcon } from '../../icons';
+import ExpandControl from './expand-control';
 import messages from './messages';
 import styles from './localized-text-input.mod.css';
 
@@ -68,28 +67,6 @@ const createDataAttributes = (props, language) =>
     }
     return acc;
   }, {});
-
-const ExpandControl = ({ expandMessage, collapseMessage, onClick, isOpen }) =>
-  isOpen ? (
-    <FlatButton
-      icon={<AngleUpIcon />}
-      label={collapseMessage}
-      onClick={onClick}
-    />
-  ) : (
-    <FlatButton
-      icon={<AngleDownIcon />}
-      label={expandMessage}
-      onClick={onClick}
-    />
-  );
-ExpandControl.displayName = 'ExpandControl';
-ExpandControl.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  expandMessage: PropTypes.string.isRequired,
-  collapseMessage: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -339,11 +316,8 @@ export default class LocalizedTextInput extends React.Component {
                   remainingLanguages.length > 0 && (
                     <ExpandControl
                       onClick={toggle}
-                      expandMessage={`Expand all languages (${
-                        remainingLanguages.length
-                      })`}
-                      collapseMessage={'Collapse'}
                       isOpen={isOpen}
+                      remainingLanguages={remainingLanguages.length}
                     />
                   )}
               </React.Fragment>

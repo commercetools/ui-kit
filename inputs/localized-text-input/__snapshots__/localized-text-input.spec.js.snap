@@ -77,11 +77,10 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
       />
     </Stack>
   </div>
-  <ExpandControl
-    collapseMessage="Collapse"
-    expandMessage="Expand all languages (5)"
+  <InjectIntl(ExpandControl)
     isOpen={true}
     onClick={[MockFunction]}
+    remainingLanguages={5}
   />
 </React.Fragment>
 `;
