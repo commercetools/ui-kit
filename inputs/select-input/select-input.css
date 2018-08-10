@@ -12,8 +12,6 @@
   border-radius: var(--token-border-radius-input) !important;
 }
 
-/* States  */
-
 /* Default */
 
 .react-select__value-container {
@@ -117,8 +115,24 @@
   pointer-events: initial !important;
 }
 
-/* Placeholder  */
+/* Placeholder */
 
 .react-select__placeholder {
   color: var(--token-font-color-placeholder) !important;
+}
+
+/* States */
+
+/* States need to be at the bottom so they can overwrite the other styles */
+
+.react-select-warning .react-select__menu,
+.react-select-warning .react-select__control {
+  /* --token-border-color-input-warning aka --color-orange */
+  border-color: #f16d0e !important;
+}
+
+.react-select-error .react-select__menu,
+.react-select-error .react-select__control {
+  /* --token-border-color-input-error aka --color-red */
+  border-color: #e60050 !important;
 }

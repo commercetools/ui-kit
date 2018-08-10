@@ -93,6 +93,8 @@ storiesOf('Inputs', module)
                   isSearchable={boolean('isSearchable', false)}
                   isDisabled={boolean('isDisabled', false)}
                   isClearable={boolean('isClearable', false)}
+                  hasError={boolean('hasError', false)}
+                  hasWarning={boolean('hasWarning', false)}
                   options={options}
                 />
               )}
@@ -100,7 +102,7 @@ storiesOf('Inputs', module)
           </IntlProvider>
         </Section>
         <Section>
-          <LinkTo kind="Examples|Forms" story="SelectInput">
+          <LinkTo kind="Examples|Forms/Inputs" story="SelectInput">
             See form example
           </LinkTo>
         </Section>

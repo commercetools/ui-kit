@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
+import classnames from 'classnames';
 import Select, { components } from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../materials/constraints';
@@ -51,14 +52,27 @@ export class SelectInput extends React.Component {
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
   };
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div {...filterDataAttributes(this.props)}>
           <Select
-            {...omit(this.props, 'horizontalConstraint')}
-            className="react-select"
+            {...omit(this.props, [
+              'horizontalConstraint',
+              'hasError',
+              'hasWarning',
+            ])}
+            className={classnames('react-select', {
+              // We use global styles here as the react-select styles are global
+              // as well. This sucks.
+              // The alternative would be to style the components, but this
+              // would mean we'd need to export our design tokens to JS.
+              'react-select-error': this.props.hasError,
+              'react-select-warning': this.props.hasWarning,
+            })}
             components={{
               DropdownIndicator,
               ClearIndicator,
