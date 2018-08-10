@@ -9,11 +9,11 @@ export default defineMessages({
   expand: {
     id: 'UIKit.LocalizedTextInput.expand',
     description: 'Error message for missing required value',
-    defaultMessage: 'Expand all languages ({remainingLanguages})',
+    defaultMessage: 'Show all languages ({remainingLanguages})',
   },
   collapse: {
     id: 'UIKit.LocalizedTextInput.collapse',
     description: 'Error message for missing required value',
-    defaultMessage: 'Collapse',
+    defaultMessage: 'Hide languages',
   },
 });

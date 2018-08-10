@@ -5,7 +5,7 @@ import FlatButton from '../../buttons/flat-button';
 import { WorldIcon } from '../../icons';
 import messages from './messages';
 
-const ExpandControl = ({ remainingLanguages, onClick, isOpen, intl }) =>
+const ShowLanguagesControl = ({ remainingLanguages, onClick, isOpen, intl }) =>
   isOpen ? (
     <FlatButton
       icon={<WorldIcon />}
@@ -19,8 +19,8 @@ const ExpandControl = ({ remainingLanguages, onClick, isOpen, intl }) =>
       onClick={onClick}
     />
   );
-ExpandControl.displayName = 'ExpandControl';
-ExpandControl.propTypes = {
+ShowLanguagesControl.displayName = 'ShowLanguagesControl';
+ShowLanguagesControl.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   remainingLanguages: PropTypes.number.isRequired,
@@ -29,4 +29,4 @@ ExpandControl.propTypes = {
   }).isRequired,
 };
 
-export default injectIntl(ExpandControl);
+export default injectIntl(ShowLanguagesControl);
