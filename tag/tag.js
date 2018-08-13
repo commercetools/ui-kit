@@ -72,8 +72,7 @@ export const TagNormalBody = props => (
         [getClickableContentWrapperTypeClassName({
           type: props.type,
           isRemovable: Boolean(props.onRemove),
-        })]:
-          Boolean(props.onClick) && !props.isDisabled,
+        })]: Boolean(props.onClick) && !props.isDisabled,
         [styles.clickableContentWrapper]:
           !props.isDisabled && Boolean(props.onClick),
         [styles.disabledContent]: props.isDisabled,
