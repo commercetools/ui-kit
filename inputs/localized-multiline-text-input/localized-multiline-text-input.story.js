@@ -54,20 +54,15 @@ storiesOf('Inputs', module)
               onFocus={action('onFocus')}
               hideLanguageControls={boolean('hideLanguageControls', false)}
               areLanguagesDefaultOpened={
-                areLanguagesDefaultOpened
-                  ? true
-                  : // we need to set undefined instead of false to avoid prop-type
-                    // warnings in case hideLanguageControls is true
-                    undefined
+                // we need to set undefined instead of false to avoid prop-type
+                // warnings in case hideLanguageControls is true
+                areLanguagesDefaultOpened || undefined
               }
               isMultilineDefaultExpanded={isMultilineDefaultExpanded}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
-              placeholder={{
-                en: text('placeholder(en)', ''),
-                de: text('placeholder(de)', ''),
-              }}
+              placeholder={object({ en: '', de: '' })}
               horizontalConstraint={select(
                 'horizontalConstraint',
                 ['xs', 's', 'm', 'l', 'xl', 'scale'],
