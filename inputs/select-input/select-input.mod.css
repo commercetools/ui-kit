@@ -1,9 +1,0 @@
-@import '../../materials/tokens/tokens.mod.css';
-
-.warning:global(.react-select) {
-  border-color: var(--token-border-color-input-warning) !important;
-}
-
-.error:global(.react-select) {
-  border-color: var(--token-border-color-input-error) !important;
-}
