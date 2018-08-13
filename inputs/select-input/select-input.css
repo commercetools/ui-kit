@@ -39,14 +39,12 @@
 
 .react-select.react-select-warning .react-select__menu,
 .react-select.react-select-warning .react-select__control {
-  /* --token-border-color-input-warning aka --color-orange */
-  border-color: #f16d0e;
+  border-color: var(--token-border-color-input-warning);
 }
 
 .react-select.react-select-error .react-select__menu,
 .react-select.react-select-error .react-select__control {
-  /* --token-border-color-input-error aka --color-red */
-  border-color: #e60050;
+  border-color: var(--token-border-color-input-error);
 }
 
 /* Active / Hover */
