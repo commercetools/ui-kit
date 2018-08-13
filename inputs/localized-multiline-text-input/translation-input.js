@@ -65,6 +65,23 @@ export default class TranslationInput extends React.Component {
     });
   };
 
+  handleChange = event => {
+    // We manipulate the event to add the language to the target.
+    // That way the users of LocalizedTextInput's onChange can read
+    // event.target.language and event.target.value to determine the next value.
+    //
+    // We only need this information for the story, the MC application code will
+    // never need to access the information in such an inconvenient way, as
+    // Formik can deal with a name like "foo.en" and sets the value correctly.
+    // We can't use this as we aren't guaranteed a name in the story as the user
+    // might clear it using the knob, and then we can't parse the language from
+    // the input name anymore.
+    //
+    // eslint-disable-next-line no-param-reassign
+    event.target.language = this.props.language;
+    this.props.onChange(event);
+  };
+
   render() {
     // This checks if the content in the textarea overflows the minimum
     // amount of lines it should have when collapsed
@@ -97,7 +114,7 @@ export default class TranslationInput extends React.Component {
                         .join('\n')}...`
                     : this.props.value
                 }
-                onChange={this.props.onChange}
+                onChange={this.handleChange}
                 onHeightChange={this.handleHeightChange}
                 onBlur={this.props.onBlur}
                 onFocus={() => {

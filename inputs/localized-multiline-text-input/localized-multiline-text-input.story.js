@@ -2,7 +2,13 @@ import React from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  object,
+} from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import ErrorMessage from '../../messages/error-message';
@@ -21,11 +27,6 @@ storiesOf('Inputs', module)
       'isMultilineDefaultExpanded',
       false
     );
-    const defaultValue = {
-      en: '',
-      de: '',
-      'nan-Hant-TW': '',
-    };
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
@@ -33,19 +34,19 @@ storiesOf('Inputs', module)
     return (
       <Section>
         <Value
-          defaultValue={defaultValue}
+          defaultValue={{ en: '', de: '', 'nan-Hant-TW': '' }}
           render={(value, onChange) => (
             <LocalizedMultilineTextInput
               key={key}
               id={text('id', undefined)}
               name={text('name', 'productName')}
-              value={value}
+              value={object('value', value)}
               onChange={event => {
                 action('onChange')(event);
-                const name = event.target.name;
-                if (!name) return;
-                const language = event.target.name.split('.').pop();
-                onChange({ ...value, [language]: event.target.value });
+                onChange({
+                  ...value,
+                  [event.target.language]: event.target.value,
+                });
               }}
               onChangeValue={action('onChangeValue')}
               selectedLanguage={select('selectedLanguage', ['en', 'de'], 'en')}
