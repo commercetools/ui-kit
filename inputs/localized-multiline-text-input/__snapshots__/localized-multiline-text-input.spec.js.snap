@@ -131,7 +131,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
         isDefaultClosed={true}
         language="pt-BR"
         languagesControl={
-          <InjectIntl(HideLanguagesControl)
+          <InjectIntl(LanguagesControl)
             onClick={[MockFunction]}
             remainingLanguages={5}
           />
@@ -211,7 +211,7 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
         isDefaultClosed={true}
         language="de"
         languagesControl={
-          <InjectIntl(HideLanguagesControl)
+          <InjectIntl(LanguagesControl)
             onClick={[MockFunction]}
             remainingLanguages={1}
           />
@@ -272,7 +272,7 @@ exports[`rendering when disabled should match snapshot 1`] = `
         isDisabled={true}
         language="de"
         languagesControl={
-          <InjectIntl(HideLanguagesControl)
+          <InjectIntl(LanguagesControl)
             onClick={[MockFunction]}
             remainingLanguages={1}
           />
@@ -307,7 +307,8 @@ exports[`rendering when every field should display an error should match snapsho
         key="en"
         language="en"
         languagesControl={
-          <InjectIntl(ShowLanguagesControl)
+          <InjectIntl(LanguagesControl)
+            isClosed={true}
             onClick={[MockFunction]}
             remainingLanguages={1}
           />
@@ -368,7 +369,7 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
         isReadOnly={true}
         language="de"
         languagesControl={
-          <InjectIntl(HideLanguagesControl)
+          <InjectIntl(LanguagesControl)
             onClick={[MockFunction]}
             remainingLanguages={1}
           />
@@ -428,7 +429,7 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
         isDefaultClosed={true}
         language="de"
         languagesControl={
-          <InjectIntl(HideLanguagesControl)
+          <InjectIntl(LanguagesControl)
             onClick={[MockFunction]}
             remainingLanguages={1}
           />
@@ -464,7 +465,8 @@ exports[`rendering when there is an error on a specific field should match snaps
         key="en"
         language="en"
         languagesControl={
-          <InjectIntl(ShowLanguagesControl)
+          <InjectIntl(LanguagesControl)
+            isClosed={true}
             onClick={[MockFunction]}
             remainingLanguages={1}
           />

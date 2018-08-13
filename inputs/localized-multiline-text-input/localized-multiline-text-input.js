@@ -10,8 +10,7 @@ import filterDataAttributes from '../../utils/filter-data-attributes';
 import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';
-import ShowLanguagesControl from './show-languages-control';
-import HideLanguagesControl from './hide-languages-control';
+import LanguagesControl from './languages-control';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
@@ -197,7 +196,8 @@ export class LocalizedMultilineTextInput extends React.Component {
                       !this.props.hideLanguageControls &&
                       !areAllLanguagesVisible &&
                       remainingLanguages.length > 0 && (
-                        <ShowLanguagesControl
+                        <LanguagesControl
+                          isClosed={true}
                           onClick={toggleLanguages}
                           remainingLanguages={remainingLanguages.length}
                         />
@@ -239,7 +239,7 @@ export class LocalizedMultilineTextInput extends React.Component {
                           !this.props.hideLanguageControls &&
                           index === remainingLanguages.length - 1 &&
                           remainingLanguages.length > 0 && (
-                            <HideLanguagesControl
+                            <LanguagesControl
                               onClick={toggleLanguages}
                               remainingLanguages={remainingLanguages.length}
                             />

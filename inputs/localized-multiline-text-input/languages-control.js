@@ -5,21 +5,24 @@ import FlatButton from '../../buttons/flat-button';
 import { WorldIcon } from '../../icons';
 import messages from './messages';
 
-const ShowLanguagesControl = ({ remainingLanguages, onClick, intl }) => (
+const LanguagesControl = ({ remainingLanguages, onClick, intl, isClosed }) => (
   <FlatButton
     icon={<WorldIcon />}
-    label={intl.formatMessage(messages.show, { remainingLanguages })}
+    label={intl.formatMessage(isClosed ? messages.show : messages.hide, {
+      remainingLanguages,
+    })}
     onClick={onClick}
   />
 );
 
-ShowLanguagesControl.displayName = 'ShowLanguagesControl';
-ShowLanguagesControl.propTypes = {
+LanguagesControl.displayName = 'LanguagesControl';
+LanguagesControl.propTypes = {
   onClick: PropTypes.func.isRequired,
+  isClosed: PropTypes.bool,
   remainingLanguages: PropTypes.number.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default injectIntl(ShowLanguagesControl);
+export default injectIntl(LanguagesControl);
