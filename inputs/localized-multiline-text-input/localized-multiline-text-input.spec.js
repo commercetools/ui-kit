@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Collapsible from '../../collapsible';
 import {
   LocalizedMultilineTextInput,
   sortRemainingLanguages,
@@ -157,9 +156,7 @@ describe('rendering', () => {
     describe('with id', () => {
       beforeEach(() => {
         props = createTestProps({ id: 'foo' });
-        wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-          .find(Collapsible)
-          .renderProp('children', { toggle: jest.fn(), isOpen: false });
+        wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
       });
       it('should add a language suffix to the id of each visible input', () => {
         // only the first language input is visible here
@@ -169,9 +166,7 @@ describe('rendering', () => {
     describe('with name', () => {
       beforeEach(() => {
         props = createTestProps({ name: 'foo' });
-        wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-          .find(Collapsible)
-          .renderProp('children', { toggle: jest.fn(), isOpen: false });
+        wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
       });
       it('should forward the name', () => {
         // only the first language input is visible here
@@ -182,7 +177,7 @@ describe('rendering', () => {
 
   describe('when all languages are shown by default', () => {
     beforeEach(() => {
-      props = createTestProps({ areLanguagesDefaultExpanded: true });
+      props = createTestProps({ areLanguagesDefaultOpened: true });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
     it('should match snapshot', () => {
@@ -202,10 +197,11 @@ describe('rendering', () => {
 
   describe('when autofocus is activated', () => {
     beforeEach(() => {
-      props = createTestProps({ isAutofocussed: true });
-      wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-        .find(Collapsible)
-        .renderProp('children', { toggle: jest.fn(), isOpen: true });
+      props = createTestProps({
+        isAutofocussed: true,
+        areLanguagesDefaultOpened: true,
+      });
+      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -214,10 +210,11 @@ describe('rendering', () => {
 
   describe('when disabled', () => {
     beforeEach(() => {
-      props = createTestProps({ isDisabled: true });
-      wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-        .find(Collapsible)
-        .renderProp('children', { toggle: jest.fn(), isOpen: true });
+      props = createTestProps({
+        isDisabled: true,
+        areLanguagesDefaultOpened: true,
+      });
+      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -226,10 +223,11 @@ describe('rendering', () => {
 
   describe('when in read-only mode', () => {
     beforeEach(() => {
-      props = createTestProps({ isReadOnly: true });
-      wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-        .find(Collapsible)
-        .renderProp('children', { toggle: jest.fn(), isOpen: true });
+      props = createTestProps({
+        isReadOnly: true,
+        areLanguagesDefaultOpened: true,
+      });
+      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -238,10 +236,11 @@ describe('rendering', () => {
 
   describe('when placeholders are provided', () => {
     beforeEach(() => {
-      props = createTestProps({ placeholder: { en: 'Value', de: 'Wert' } });
-      wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-        .find(Collapsible)
-        .renderProp('children', { toggle: jest.fn(), isOpen: true });
+      props = createTestProps({
+        placeholder: { en: 'Value', de: 'Wert' },
+        areLanguagesDefaultOpened: true,
+      });
+      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -251,9 +250,7 @@ describe('rendering', () => {
   describe('when every field should display an error', () => {
     beforeEach(() => {
       props = createTestProps({ hasError: true });
-      wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-        .find(Collapsible)
-        .renderProp('children', { toggle: jest.fn(), isOpen: false });
+      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -262,10 +259,11 @@ describe('rendering', () => {
 
   describe('when there is an error on a specific field', () => {
     beforeEach(() => {
-      props = createTestProps({ errors: { de: <div>Specific Error</div> } });
-      wrapper = shallow(<LocalizedMultilineTextInput {...props} />)
-        .find(Collapsible)
-        .renderProp('children', { toggle: jest.fn(), isOpen: false });
+      props = createTestProps({
+        errors: { de: <div>Specific Error</div> },
+        areLanguagesDefaultOpened: true,
+      });
+      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -273,7 +271,6 @@ describe('rendering', () => {
   });
 
   describe('other languages', () => {
-    let languagesWrapper;
     beforeEach(() => {
       props = createTestProps({
         selectedLanguage: 'en',
@@ -285,17 +282,13 @@ describe('rendering', () => {
           'pt-BR': 'pt-BR',
           'en-GB': 'en-GB',
         },
-        areLanguagesDefaultExpanded: true,
+        areLanguagesDefaultOpened: true,
       });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
-      languagesWrapper = wrapper.find(Collapsible).prop('children')({
-        toggle: jest.fn(),
-        isOpen: true,
-      });
     });
 
     it('should sort them by the relevance', () => {
-      expect(languagesWrapper).toMatchSnapshot();
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

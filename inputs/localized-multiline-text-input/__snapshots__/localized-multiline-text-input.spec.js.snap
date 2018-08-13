@@ -1,156 +1,227 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering other languages should sort them by the relevance 1`] = `
-<Stack
-  alignItems="stretch"
-  scale="s"
+<Horizontal
+  constraint="scale"
 >
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isDefaultClosed={true}
-        language="en"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="en"
-      />
-    </Stack>
-  </div>
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
+          isCollapsed={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="en"
+        />
+      </Stack>
+    </div>
+    <div
+      key="en-GB"
     >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        language="en-GB"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="en-GB"
-      />
-    </Stack>
-  </div>
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="en-GB"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="en-GB"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
     >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        language="de"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="de"
-      />
-    </Stack>
-  </div>
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="de"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="de"
+        />
+      </Stack>
+    </div>
+    <div
+      key="fr"
     >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        language="fr"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="fr"
-      />
-    </Stack>
-  </div>
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="fr"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="fr"
+        />
+      </Stack>
+    </div>
+    <div
+      key="nan-Hant-TW"
     >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        language="nan-Hant-TW"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="nan-Hant-TW"
-      />
-    </Stack>
-  </div>
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="nan-Hant-TW"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="nan-Hant-TW"
+        />
+      </Stack>
+    </div>
+    <div
+      key="pt-BR"
     >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        language="pt-BR"
-        languagesControl={
-          <InjectIntl(LanguagesControl)
-            onClick={[MockFunction]}
-            remainingLanguages={5}
-          />
-        }
-        onChange={[MockFunction]}
-        value="pt-BR"
-      />
-    </Stack>
-  </div>
-</Stack>
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="pt-BR"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              onClick={[Function]}
+              remainingLanguages={5}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="pt-BR"
+        />
+      </Stack>
+    </div>
+  </Stack>
+</Horizontal>
 `;
 
 exports[`rendering when "language toggle" feature is disabled should match snapshot 1`] = `
 <Horizontal
   constraint="scale"
 >
-  <Collapsible
-    isDefaultClosed={true}
-  />
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isCollapsed={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
+    >
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="de"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Pferd"
+        />
+      </Stack>
+    </div>
+  </Stack>
 </Horizontal>
 `;
 
@@ -158,323 +229,439 @@ exports[`rendering when all languages are shown by default should match snapshot
 <Horizontal
   constraint="scale"
 >
-  <Collapsible
-    isDefaultClosed={false}
-  />
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isCollapsed={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
+    >
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="de"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              onClick={[Function]}
+              remainingLanguages={1}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Pferd"
+        />
+      </Stack>
+    </div>
+  </Stack>
 </Horizontal>
 `;
 
 exports[`rendering when autofocus is activated should match snapshot 1`] = `
-<Stack
-  alignItems="stretch"
-  scale="s"
+<Horizontal
+  constraint="scale"
 >
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
-          }
-        }
-        isAutofocussed={true}
-        isDefaultClosed={true}
-        key="en"
-        language="en"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="Horse"
-      />
-    </Stack>
-  </div>
-  <div
-    key="de"
+  <Stack
+    alignItems="stretch"
+    scale="s"
   >
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        language="de"
-        languagesControl={
-          <InjectIntl(LanguagesControl)
-            onClick={[MockFunction]}
-            remainingLanguages={1}
-          />
-        }
-        onChange={[MockFunction]}
-        value="Pferd"
-      />
-    </Stack>
-  </div>
-</Stack>
+          isAutofocussed={true}
+          isCollapsed={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
+    >
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="de"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              onClick={[Function]}
+              remainingLanguages={1}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Pferd"
+        />
+      </Stack>
+    </div>
+  </Stack>
+</Horizontal>
 `;
 
 exports[`rendering when disabled should match snapshot 1`] = `
-<Stack
-  alignItems="stretch"
-  scale="s"
+<Horizontal
+  constraint="scale"
 >
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
-          }
-        }
-        isDefaultClosed={true}
-        isDisabled={true}
-        key="en"
-        language="en"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="Horse"
-      />
-    </Stack>
-  </div>
-  <div
-    key="de"
+  <Stack
+    alignItems="stretch"
+    scale="s"
   >
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        isDisabled={true}
-        language="de"
-        languagesControl={
-          <InjectIntl(LanguagesControl)
-            onClick={[MockFunction]}
-            remainingLanguages={1}
-          />
-        }
-        onChange={[MockFunction]}
-        value="Pferd"
-      />
-    </Stack>
-  </div>
-</Stack>
+          isCollapsed={true}
+          isDisabled={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
+    >
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isAutofocussed={false}
+          isCollapsed={true}
+          isDisabled={true}
+          language="de"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              onClick={[Function]}
+              remainingLanguages={1}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Pferd"
+        />
+      </Stack>
+    </div>
+  </Stack>
+</Horizontal>
 `;
 
 exports[`rendering when every field should display an error should match snapshot 1`] = `
-<Stack
-  alignItems="stretch"
-  scale="s"
+<Horizontal
+  constraint="scale"
 >
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={true}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={true}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isDefaultClosed={true}
-        key="en"
-        language="en"
-        languagesControl={
-          <InjectIntl(LanguagesControl)
-            isClosed={true}
-            onClick={[MockFunction]}
-            remainingLanguages={1}
-          />
-        }
-        onChange={[MockFunction]}
-        value="Horse"
-      />
-    </Stack>
-  </div>
-</Stack>
+          isCollapsed={true}
+          key="en"
+          language="en"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              isClosed={true}
+              onClick={[Function]}
+              remainingLanguages={1}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+  </Stack>
+</Horizontal>
 `;
 
 exports[`rendering when in read-only mode should match snapshot 1`] = `
-<Stack
-  alignItems="stretch"
-  scale="s"
+<Horizontal
+  constraint="scale"
 >
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
-          }
-        }
-        isDefaultClosed={true}
-        isReadOnly={true}
-        key="en"
-        language="en"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        value="Horse"
-      />
-    </Stack>
-  </div>
-  <div
-    key="de"
+  <Stack
+    alignItems="stretch"
+    scale="s"
   >
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        isReadOnly={true}
-        language="de"
-        languagesControl={
-          <InjectIntl(LanguagesControl)
-            onClick={[MockFunction]}
-            remainingLanguages={1}
-          />
-        }
-        onChange={[MockFunction]}
-        value="Pferd"
-      />
-    </Stack>
-  </div>
-</Stack>
+          isCollapsed={true}
+          isReadOnly={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
+    >
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isAutofocussed={false}
+          isCollapsed={true}
+          isReadOnly={true}
+          language="de"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              onClick={[Function]}
+              remainingLanguages={1}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Pferd"
+        />
+      </Stack>
+    </div>
+  </Stack>
+</Horizontal>
 `;
 
 exports[`rendering when placeholders are provided should match snapshot 1`] = `
-<Stack
-  alignItems="stretch"
-  scale="s"
+<Horizontal
+  constraint="scale"
 >
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
-          }
-        }
-        isDefaultClosed={true}
-        key="en"
-        language="en"
-        languagesControl={false}
-        onChange={[MockFunction]}
-        placeholder="Value"
-        value="Horse"
-      />
-    </Stack>
-  </div>
-  <div
-    key="de"
+  <Stack
+    alignItems="stretch"
+    scale="s"
   >
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isAutofocussed={false}
-        isDefaultClosed={true}
-        language="de"
-        languagesControl={
-          <InjectIntl(LanguagesControl)
-            onClick={[MockFunction]}
-            remainingLanguages={1}
-          />
-        }
-        onChange={[MockFunction]}
-        placeholder="Wert"
-        value="Pferd"
-      />
-    </Stack>
-  </div>
-</Stack>
+          isCollapsed={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          placeholder="Value"
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
+    >
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="de"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              onClick={[Function]}
+              remainingLanguages={1}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          placeholder="Wert"
+          value="Pferd"
+        />
+      </Stack>
+    </div>
+  </Stack>
+</Horizontal>
 `;
 
 exports[`rendering when there is an error on a specific field should match snapshot 1`] = `
-<Stack
-  alignItems="stretch"
-  scale="s"
+<Horizontal
+  constraint="scale"
 >
-  <div>
-    <Stack
-      alignItems="stretch"
-      scale="xs"
-    >
-      <TranslationInput
-        hasError={false}
-        horizontalConstraint="scale"
-        intl={
-          Object {
-            "formatMessage": [Function],
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <div>
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={false}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
           }
-        }
-        isDefaultClosed={true}
-        key="en"
-        language="en"
-        languagesControl={
-          <InjectIntl(LanguagesControl)
-            isClosed={true}
-            onClick={[MockFunction]}
-            remainingLanguages={1}
-          />
-        }
-        onChange={[MockFunction]}
-        value="Horse"
-      />
-    </Stack>
-  </div>
-</Stack>
+          isCollapsed={true}
+          key="en"
+          language="en"
+          languagesControl={false}
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Horse"
+        />
+      </Stack>
+    </div>
+    <div
+      key="de"
+    >
+      <Stack
+        alignItems="stretch"
+        scale="xs"
+      >
+        <TranslationInput
+          hasError={true}
+          horizontalConstraint="scale"
+          intl={
+            Object {
+              "formatMessage": [Function],
+            }
+          }
+          isAutofocussed={false}
+          isCollapsed={true}
+          language="de"
+          languagesControl={
+            <InjectIntl(LanguagesControl)
+              onClick={[Function]}
+              remainingLanguages={1}
+            />
+          }
+          onChange={[MockFunction]}
+          onToggle={[Function]}
+          value="Pferd"
+        />
+        <div>
+          Specific Error
+        </div>
+      </Stack>
+    </div>
+  </Stack>
+</Horizontal>
 `;

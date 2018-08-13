@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import TextareaAutosize from 'react-textarea-autosize';
 import requiredIf from 'react-required-if';
-import Collapsible from '../../collapsible';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon } from '../../icons';
 import filterDataAttributes from '../../utils/filter-data-attributes';
@@ -35,7 +34,8 @@ export default class TranslationInput extends React.Component {
     language: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    isDefaultClosed: PropTypes.bool,
+    isCollapsed: PropTypes.bool,
+    onToggle: PropTypes.func,
     isAutofocussed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
@@ -89,80 +89,82 @@ export default class TranslationInput extends React.Component {
       this.state.contentRowCount > TranslationInput.MIN_ROW_COUNT;
 
     return (
-      <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
-        {({ isOpen, toggle }) => (
-          <React.Fragment>
-            <div key={this.props.language} className={styles.fieldContainer}>
-              <label htmlFor={this.props.id} className={styles.languageLabel}>
-                {/* FIXME: add proper tone for disabled when tones are refactored */}
-                <Text.Detail tone="secondary">
-                  {this.props.language.toUpperCase()}
-                </Text.Detail>
-              </label>
-              <TextareaAutosize
-                id={this.props.id}
-                name={this.props.name}
-                type="text"
-                value={
-                  // we show "..." to indicate that there is more text, so that
-                  // users can distinguis between single-line text and
-                  // multi-line text easily
-                  !isOpen && this.props.value.trim() !== ''
-                    ? `${this.props.value
-                        .split('\n')
-                        .slice(0, TranslationInput.MIN_ROW_COUNT)
-                        .join('\n')}...`
-                    : this.props.value
-                }
-                onChange={this.handleChange}
-                onHeightChange={this.handleHeightChange}
-                onBlur={this.props.onBlur}
-                onFocus={() => {
-                  // Expand the input on focus
-                  if (!isOpen) toggle();
-                  this.props.onFocus();
-                }}
-                disabled={this.props.isDisabled}
-                placeholder={this.props.placeholder}
-                className={classnames(
-                  getClassNames({
-                    isDisabled: this.props.isDisabled,
-                    hasError: this.props.hasError,
-                    hasWarning: this.props.hasWarning,
-                    isReadOnly: this.props.isReadOnly,
-                  }),
-                  { [styles.inputClosed]: !isOpen }
-                )}
-                readOnly={this.props.isReadOnly}
-                autoFocus={this.props.isAutofocussed}
-                /* ARIA */
-                aria-readonly={this.props.isReadOnly}
-                role="textbox"
-                minRows={TranslationInput.MIN_ROW_COUNT}
-                maxRows={isOpen ? undefined : TranslationInput.MIN_ROW_COUNT}
-                {...filterDataAttributes(this.props)}
-              />
-            </div>
-            <div className={styles.commandsContainer}>
-              <div className={styles.commandsLanguages}>
-                {this.props.languagesControl}
-              </div>
-              <div className={styles.commandsExpand}>
-                {isOpen &&
-                  contentExceedsShownRows && (
-                    <FlatButton
-                      onClick={toggle}
-                      type="primary"
-                      isDisabled={this.props.isDisabled}
-                      label={this.props.intl.formatMessage(messages.collapse)}
-                      icon={<AngleUpIcon size="small" />}
-                    />
-                  )}
-              </div>
-            </div>
-          </React.Fragment>
-        )}
-      </Collapsible>
+      <React.Fragment>
+        <div key={this.props.language} className={styles.fieldContainer}>
+          <label htmlFor={this.props.id} className={styles.languageLabel}>
+            {/* FIXME: add proper tone for disabled when tones are refactored */}
+            <Text.Detail tone="secondary">
+              {this.props.language.toUpperCase()}
+            </Text.Detail>
+          </label>
+          <TextareaAutosize
+            id={this.props.id}
+            name={this.props.name}
+            type="text"
+            value={
+              // We show "..." to indicate that there is more text, so that
+              // users can distinguis between single-line text and
+              // multi-line text easily
+              // We are aware that this approach only works in case the first
+              // line does not overflow.
+              this.props.isCollapsed && this.props.value.trim() !== ''
+                ? `${this.props.value
+                    .split('\n')
+                    .slice(0, TranslationInput.MIN_ROW_COUNT)
+                    .join('\n')}...`
+                : this.props.value
+            }
+            onChange={this.handleChange}
+            onHeightChange={this.handleHeightChange}
+            onBlur={this.props.onBlur}
+            onFocus={() => {
+              // Expand the input on focus
+              if (this.props.isCollapsed) this.props.onToggle();
+              this.props.onFocus();
+            }}
+            disabled={this.props.isDisabled}
+            placeholder={this.props.placeholder}
+            className={classnames(
+              getClassNames({
+                isDisabled: this.props.isDisabled,
+                hasError: this.props.hasError,
+                hasWarning: this.props.hasWarning,
+                isReadOnly: this.props.isReadOnly,
+              }),
+              { [styles.inputClosed]: this.props.isCollapsed }
+            )}
+            readOnly={this.props.isReadOnly}
+            autoFocus={this.props.isAutofocussed}
+            /* ARIA */
+            aria-readonly={this.props.isReadOnly}
+            role="textbox"
+            minRows={TranslationInput.MIN_ROW_COUNT}
+            maxRows={
+              this.props.isCollapsed
+                ? TranslationInput.MIN_ROW_COUNT
+                : undefined
+            }
+            {...filterDataAttributes(this.props)}
+          />
+        </div>
+        <div className={styles.commandsContainer}>
+          <div className={styles.commandsLanguages}>
+            {this.props.languagesControl}
+          </div>
+          <div className={styles.commandsExpand}>
+            {!this.props.isCollapsed &&
+              contentExceedsShownRows && (
+                <FlatButton
+                  onClick={this.props.onToggle}
+                  type="primary"
+                  isDisabled={this.props.isDisabled}
+                  label={this.props.intl.formatMessage(messages.collapse)}
+                  icon={<AngleUpIcon size="small" />}
+                />
+              )}
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

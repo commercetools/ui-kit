@@ -19,8 +19,8 @@ storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedMultilineTextInputReadme))
   .add('LocalizedMultilineTextInput', () => {
-    const areLanguagesDefaultExpanded = boolean(
-      'areLanguagesDefaultExpanded',
+    const areLanguagesDefaultOpened = boolean(
+      'areLanguagesDefaultOpened',
       false
     );
     const isMultilineDefaultExpanded = boolean(
@@ -30,7 +30,7 @@ storiesOf('Inputs', module)
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
-    const key = `${isMultilineDefaultExpanded}-${areLanguagesDefaultExpanded}`;
+    const key = `${isMultilineDefaultExpanded}-${areLanguagesDefaultOpened}`;
     return (
       <Section>
         <Value
@@ -53,8 +53,8 @@ storiesOf('Inputs', module)
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
               hideLanguageControls={boolean('hideLanguageControls', false)}
-              areLanguagesDefaultExpanded={
-                areLanguagesDefaultExpanded
+              areLanguagesDefaultOpened={
+                areLanguagesDefaultOpened
                   ? true
                   : // we need to set undefined instead of false to avoid prop-type
                     // warnings in case hideLanguageControls is true
