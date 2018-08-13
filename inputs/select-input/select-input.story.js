@@ -7,6 +7,7 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import LinkTo from '@storybook/addon-links/react';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
+import Spacings from '../../materials/spacings';
 import Readme from './README.md';
 import SelectInput from './select-input';
 
@@ -68,7 +69,7 @@ storiesOf('Inputs', module)
     ];
     const isMulti = boolean('isMulti', false);
     return (
-      <React.Fragment>
+      <Spacings.Stack scale="xl">
         <Section>
           <IntlProvider locale="en">
             <Value
@@ -106,6 +107,6 @@ storiesOf('Inputs', module)
             See form example
           </LinkTo>
         </Section>
-      </React.Fragment>
+      </Spacings.Stack>
     );
   });
