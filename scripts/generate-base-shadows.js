@@ -57,8 +57,6 @@ const commentTitle = {
   },
 };
 
-console.log('declarationsBody', declarationsBody);
-
 // Defines the CSS AST to be stringified
 const AST = {
   type: 'stylesheet',
