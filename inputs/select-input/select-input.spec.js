@@ -25,7 +25,7 @@ describe('overwritten props', () => {
       props = createTestProps();
       wrapper = shallow(<SelectInput {...props} />);
     });
-    describe('when value is changed fires', () => {
+    describe('when value is changed', () => {
       beforeEach(() => {
         wrapper.find(Select).prop('onChange')(props.options[1]);
       });
