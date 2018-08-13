@@ -12,7 +12,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
         horizontalConstraint="scale"
         isAutofocussed={false}
         language="en-GB"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         value="en-GB"
       />
     </Stack>
@@ -27,7 +27,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
         horizontalConstraint="scale"
         isAutofocussed={false}
         language="de"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         value="de"
       />
     </Stack>
@@ -42,7 +42,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
         horizontalConstraint="scale"
         isAutofocussed={false}
         language="fr"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         value="fr"
       />
     </Stack>
@@ -57,7 +57,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
         horizontalConstraint="scale"
         isAutofocussed={false}
         language="nan-Hant-TW"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         value="nan-Hant-TW"
       />
     </Stack>
@@ -72,7 +72,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
         horizontalConstraint="scale"
         isAutofocussed={false}
         language="pt-BR"
-        onChange={[Function]}
+        onChange={[MockFunction]}
         value="pt-BR"
       />
     </Stack>
@@ -104,7 +104,7 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
           isAutofocussed={true}
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
@@ -135,7 +135,7 @@ exports[`rendering when disabled should match snapshot 1`] = `
           isDisabled={true}
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
@@ -165,7 +165,7 @@ exports[`rendering when every field should display an error should match snapsho
           horizontalConstraint="scale"
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
@@ -195,7 +195,7 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
           horizontalConstraint="scale"
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
@@ -225,7 +225,7 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
           horizontalConstraint="scale"
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
@@ -256,7 +256,7 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
           isReadOnly={true}
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
@@ -286,7 +286,7 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
           horizontalConstraint="scale"
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           placeholder="Value"
           value="Horse"
         />
@@ -317,7 +317,7 @@ exports[`rendering when there is an error on a specific field should match snaps
           horizontalConstraint="scale"
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
@@ -347,7 +347,7 @@ exports[`rendering with minimal props should match snapshot 1`] = `
           horizontalConstraint="scale"
           key="en"
           language="en"
-          onChange={[Function]}
+          onChange={[MockFunction]}
           value="Horse"
         />
       </Stack>
