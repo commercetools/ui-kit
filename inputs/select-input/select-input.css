@@ -1,0 +1,139 @@
+@import '../../materials/tokens/tokens.mod.css';
+@import '../../materials/transitions.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/shadows.mod.css';
+
+/* These styles use selector specificity to determine importance  */
+
+/* Base  */
+
+.react-select {
+  min-height: var(--token-size-height-input);
+  border-radius: var(--token-border-radius-input);
+}
+
+/* Default */
+
+.react-select .react-select__value-container {
+  background-color: none;
+}
+
+.react-select .react-select__control {
+  font-size: var(--token-font-size-default);
+  background-color: var(--token-background-color-input-pristine);
+  border-color: var(--token-border-color-input-pristine);
+  border-radius: var(--token-border-radius-input);
+  min-height: var(--token-size-height-input);
+  cursor: pointer;
+}
+
+/* States */
+
+/*
+  We manually add react-select-warning and react-select-error in the JS code.
+  We can then use these to style components based on state which react-select
+  itself does not know about.
+  We use the SelectInput having both classes an CSS specificity to apply the
+  right styles in the right situation.
+ */
+
+.react-select.react-select-warning .react-select__menu,
+.react-select.react-select-warning .react-select__control {
+  border-color: var(--token-border-color-input-warning);
+}
+
+.react-select.react-select-error .react-select__menu,
+.react-select.react-select-error .react-select__control {
+  border-color: var(--token-border-color-input-error);
+}
+
+/* Active / Hover */
+
+.react-select .react-select__control:hover,
+.react-select .react-select__control:active,
+.react-select .react-select__control:focus,
+.react-select .react-select__control--is-focused {
+  border-color: var(--token-border-color-input-focus);
+  box-shadow: none;
+}
+
+/* Chevron  */
+
+.react-select .react-select__indicators {
+  background: none;
+}
+
+.react-select .react-select__indicator-separator {
+  display: none;
+}
+
+.react-select .react-select__indicator {
+  padding: 0;
+  margin: 0 var(--spacing-8) 0 0;
+}
+
+.react-select .react-select__dropdown-indicator {
+  color: var(--token-font-color-default);
+}
+
+/* Clear indicator  */
+.react-select .react-select__clear-indicator {
+  display: flex;
+  margin: 0 var(--spacing-8) 0 0;
+}
+
+/* Menu */
+
+.react-select .react-select__menu {
+  border: 1px var(--token-border-color-input-focus) solid;
+  border-radius: var(--token-border-radius-input);
+  background-color: var(--token-background-color-input-pristine);
+  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  margin: var(--spacing-4) 0 0 0;
+}
+
+.react-select .react-select__menu-list {
+  padding: 0;
+  border-radius: var(--token-border-radius-input);
+  background-color: var(--token-background-color-input-pristine);
+}
+
+/* Selected */
+
+.react-select .react-select__option--is-selected {
+  color: var(--token-font-color-default);
+  background-color: var(--token-background-color-input-selected);
+}
+
+/* Focused */
+
+.react-select .react-select__option--is-focused {
+  background-color: var(--token-background-color-input-hover);
+}
+
+.react-select .react-select__option {
+  transition: var(--transition-standard);
+}
+
+/* Disabled */
+
+.react-select .react-select__control--is-disabled {
+  color: var(--token-font-color-disabled);
+  background-color: var(--token-background-color-input-disabled);
+  border-color: var(--token-border-color-input-disabled);
+}
+
+.react-select .react-select__control--is-disabled,
+.react-select--is-disabled {
+  cursor: not-allowed;
+}
+
+.react-select .react-select__control--is-disabled {
+  pointer-events: none;
+}
+
+/* Placeholder */
+
+.react-select .react-select__placeholder {
+  color: var(--token-font-color-placeholder);
+}

@@ -99,6 +99,22 @@ class LocalizedInput extends React.Component {
     placeholder: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   };
+  handleChange = event => {
+    // We manipulate the event to add the language to the target.
+    // That way the users of LocalizedTextInput's onChange can read
+    // event.target.language and event.target.value to determine the next value.
+    //
+    // We only need this information for the story, the MC application code will
+    // never need to access the information in such an inconvenient way, as
+    // Formik can deal with a name like "foo.en" and sets the value correctly.
+    // We can't use this as we aren't guaranteed a name in the story as the user
+    // might clear it using the knob, and then we can't parse the language from
+    // the input name anymore.
+    //
+    // eslint-disable-next-line no-param-reassign
+    event.target.language = this.props.language;
+    this.props.onChange(event);
+  };
   render() {
     return (
       <div key={this.props.language} className={styles.fieldContainer}>
@@ -113,12 +129,17 @@ class LocalizedInput extends React.Component {
           name={this.props.name}
           type="text"
           value={this.props.value}
-          onChange={this.props.onChange}
+          onChange={this.handleChange}
           onBlur={this.props.onBlur}
           onFocus={this.props.onFocus}
           disabled={this.props.isDisabled}
           placeholder={this.props.placeholder}
-          className={getStyles(this.props)}
+          className={getStyles({
+            isDisabled: this.props.isDisabled,
+            hasError: this.props.hasError,
+            hasWarning: this.props.hasWarning,
+            isReadOnly: this.props.isReadOnly,
+          })}
           readOnly={this.props.isReadOnly}
           autoFocus={this.props.isAutofocussed}
           /* ARIA */
@@ -158,7 +179,6 @@ export default class LocalizedTextInput extends React.Component {
     //   { en: 'foo', de: '', es: '' }
     value: PropTypes.objectOf(PropTypes.string).isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-    onChangeValue: PropTypes.func,
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
@@ -226,16 +246,6 @@ export default class LocalizedTextInput extends React.Component {
 
   static isTouched = touched => touched && Object.values(touched).some(Boolean);
 
-  handleChange = event => {
-    if (this.props.onChangeValue) {
-      this.props.onChangeValue({
-        ...this.props.value,
-        [this.props.selectedLanguage]: event.target.value,
-      });
-    }
-    this.props.onChange(event);
-  };
-
   render() {
     const remainingLanguages = sortRemainingLanguages(
       this.props.selectedLanguage,
@@ -251,7 +261,7 @@ export default class LocalizedTextInput extends React.Component {
                 id={getId(this.props.id, this.props.selectedLanguage)}
                 name={getName(this.props.name, this.props.selectedLanguage)}
                 value={this.props.value[this.props.selectedLanguage]}
-                onChange={this.handleChange}
+                onChange={this.props.onChange}
                 language={this.props.selectedLanguage}
                 placeholder={
                   this.props.placeholder
@@ -289,7 +299,7 @@ export default class LocalizedTextInput extends React.Component {
                           id={getId(this.props.id, language)}
                           name={getName(this.props.name, language)}
                           value={this.props.value[language]}
-                          onChange={this.handleChange}
+                          onChange={this.props.onChange}
                           language={language}
                           placeholder={
                             this.props.placeholder
