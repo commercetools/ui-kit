@@ -34,7 +34,7 @@ describe('overwritten props', () => {
           persist: expect.any(Function),
           target: {
             name: 'foo',
-            value: { label: 'Shipped', value: 'shipped' },
+            value: 'shipped',
           },
         });
       });
@@ -55,7 +55,7 @@ describe('overwritten props', () => {
     let wrapper;
     let props;
     beforeEach(() => {
-      props = createTestProps({ isMulti: true });
+      props = createTestProps({ isMulti: true, value: [] });
       wrapper = shallow(<SelectInput {...props} />);
     });
     describe('when value is changed', () => {
@@ -70,10 +70,7 @@ describe('overwritten props', () => {
           persist: expect.any(Function),
           target: {
             name: 'foo',
-            value: [
-              { label: 'Ready', value: 'ready' },
-              { label: 'Shipped', value: 'shipped' },
-            ],
+            value: ['ready', 'shipped'],
           },
         });
       });

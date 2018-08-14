@@ -39,6 +39,10 @@ export class SelectInput extends React.Component {
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
+    value: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
+        : PropTypes.string(props, ...rest),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -78,16 +82,25 @@ export class SelectInput extends React.Component {
               ClearIndicator,
             }}
             classNamePrefix="react-select"
-            onChange={
-              typeof this.props.onChange === 'function'
-                ? option => {
-                    const event = {
-                      target: { name: this.props.name, value: option },
-                      persist: () => {},
-                    };
-                    this.props.onChange(event);
-                  }
-                : undefined
+            onChange={value =>
+              this.props.onChange({
+                target: {
+                  name: this.props.name,
+                  value: this.props.isMulti
+                    ? value.map(o => o.value)
+                    : value.value,
+                },
+                persist: () => {},
+              })
+            }
+            value={
+              this.props.isMulti
+                ? this.props.options.filter(option =>
+                    this.props.value.includes(option.value)
+                  )
+                : this.props.options.find(
+                    option => option.value === this.props.value
+                  )
             }
             onBlur={
               typeof this.props.onBlur === 'function'
