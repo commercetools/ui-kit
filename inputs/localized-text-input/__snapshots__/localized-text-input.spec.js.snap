@@ -111,7 +111,9 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -142,7 +144,9 @@ exports[`rendering when disabled should match snapshot 1`] = `
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -172,7 +176,9 @@ exports[`rendering when every field should display an error should match snapsho
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -202,7 +208,9 @@ exports[`rendering when expanded by default should match snapshot 1`] = `
     </div>
     <Collapsible
       isDefaultClosed={false}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -232,7 +240,9 @@ exports[`rendering when expansion toggle feature is disabled should match snapsh
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -263,7 +273,9 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -294,7 +306,9 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -324,7 +338,9 @@ exports[`rendering when there is an error on a specific field should match snaps
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
@@ -354,7 +370,9 @@ exports[`rendering with minimal props should match snapshot 1`] = `
     </div>
     <Collapsible
       isDefaultClosed={true}
-    />
+    >
+      <Component />
+    </Collapsible>
   </Stack>
 </Horizontal>
 `;
