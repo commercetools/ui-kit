@@ -7,7 +7,7 @@ import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../materials/spacings';
 import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
-import Checkbox from './';
+import Checkbox from '.';
 
 storiesOf('Switches', module)
   .addDecorator(withKnobs)

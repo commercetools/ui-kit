@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import kebabCase from 'lodash.kebabcase';
 import Text from '../typography/text';
 import Readme from './README.md';
-import * as icons from './';
+import * as icons from '.';
 
 const IconList = styled.div`
   display: grid;

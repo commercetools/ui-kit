@@ -5,7 +5,7 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
-import Radio from './';
+import Radio from '.';
 
 storiesOf('Switches', module)
   .addDecorator(withKnobs)

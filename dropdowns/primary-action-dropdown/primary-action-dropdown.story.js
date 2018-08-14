@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
-import * as icons from './../../icons';
+import * as icons from '../../icons';
 import Readme from './README.md';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 

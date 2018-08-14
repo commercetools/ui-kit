@@ -7,8 +7,8 @@ import AccessibleButton from '../../buttons/accessible-button';
 
 const getTextTone = ({ hasError, hasWarning, isDropdown, isDisabled }) => {
   if (hasError) return 'negative';
-  else if (hasWarning) return 'warning';
-  else if (isDropdown && !isDisabled) return undefined;
+  if (hasWarning) return 'warning';
+  if (isDropdown && !isDisabled) return undefined;
   return 'secondary';
 };
 const Currency = props => (

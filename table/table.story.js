@@ -10,7 +10,7 @@ import Button from '../buttons/secondary-button';
 import Readme from './README.md';
 import 'react-virtualized/styles.css';
 import styles from './table.mod.css';
-import Table from './';
+import Table from '.';
 
 // Data generator for story
 
@@ -30,8 +30,8 @@ const generateValue = ({ dynamicWidth, dynamicHeight }) => {
     return randomName(
       crypto.randomBytes(Math.round(Math.random() * 30)).toString('base64')
     );
-  else if (dynamicHeight) return randomName('some value');
-  else if (dynamicWidth)
+  if (dynamicHeight) return randomName('some value');
+  if (dynamicWidth)
     return crypto
       .randomBytes(Math.round(Math.random() * 30))
       .toString('base64');
