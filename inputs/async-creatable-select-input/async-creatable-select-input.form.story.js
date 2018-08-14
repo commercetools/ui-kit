@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, boolean, number } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import FormikBox from '../../.storybook/decorators/formik-box';
@@ -18,9 +19,14 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 class FakeConnector extends React.Component {
   static displayName = 'FakeConnector';
-  static propTypes = { children: PropTypes.func.isRequired };
+  static propTypes = {
+    children: PropTypes.func.isRequired,
+    isMulti: PropTypes.bool,
+  };
   product = {
-    state: [{ value: 'shipped', name: 'Shipped' }],
+    category: this.props.isMulti
+      ? [{ id: 'cats', name: 'Cats' }]
+      : { id: 'cats', name: 'Cats' },
   };
   updateProduct = ({ id, version, product }) => {
     action('updating product', { id, version, product });
@@ -44,79 +50,116 @@ class FakeConnector extends React.Component {
   }
 }
 
-const docToForm = product => ({
-  state: product.state.map(state => ({
-    label: state.name,
-    value: state.value,
-  })),
+const docToForm = (product, isMulti) => ({
+  category: isMulti
+    ? product.category.map(category => category.key)
+    : product.category.key,
 });
 
-const stateOptions = [
-  { value: 'ready', label: 'Ready' },
-  { value: 'shipped', label: 'Shipped' },
-  { value: 'delivered', label: 'Delivered' },
-  { value: 'returned', label: 'Returned' },
-];
-const loadOptions = searchText =>
-  Promise.resolve(
-    stateOptions.filter(option =>
-      option.label.toLowerCase().startsWith(searchText.toLowerCase())
-    )
-  );
-
 storiesOf('Examples|Forms/Inputs', module)
+  .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('AsyncCreatableSelectInput', () => (
-    <Section>
-      <IntlProvider locale="en">
-        <FakeConnector>
-          {({ product }) => (
-            <Formik
-              initialValues={docToForm(product)}
-              validate={
-                // we use this failing validation so that we can see the touched
-                // shape
-                values => (values.state.length > 2 ? { state: true } : {})
-              }
-              onSubmit={(values, formik, ...rest) => {
-                action('onSubmit')(values, formik, ...rest);
-                formik.resetForm(values);
-              }}
-              render={formik => (
-                <Spacings.Stack scale="l">
-                  <AsyncCreatableSelectInput
-                    name="state"
-                    isMulti={true}
-                    value={formik.values.state}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    loadOptions={loadOptions}
-                  />
-                  {AsyncCreatableSelectInput.isTouched(formik.touched.state) &&
-                    formik.errors.state && (
-                      <ErrorMessage>
-                        No more than two values allowed
-                      </ErrorMessage>
-                    )}
-                  <Spacings.Inline>
-                    <SecondaryButton
-                      onClick={formik.handleReset}
-                      isDisabled={formik.isSubmitting}
-                      label="Reset"
-                    />
-                    <PrimaryButton
-                      onClick={formik.handleSubmit}
-                      isDisabled={formik.isSubmitting || !formik.dirty}
-                      label="Submit"
-                    />
-                  </Spacings.Inline>
-                  <hr />
-                  <FormikBox formik={formik} />
-                </Spacings.Stack>
-              )}
-            />
-          )}
-        </FakeConnector>
-      </IntlProvider>
-    </Section>
-  ));
+  .add('AsyncCreatableSelectInput', () => {
+    const isMulti = boolean('Use multi-value select input', false);
+    const failValidation = boolean('Fail validation', false);
+    const delayTime = number('Load delay in ms', 250, {
+      range: true,
+      min: 0,
+      max: 5000,
+      step: 50,
+    });
+    let dataStore = {};
+    return (
+      <Section>
+        <IntlProvider locale="en">
+          <FakeConnector key={isMulti} isMulti={isMulti}>
+            {({ product }) => (
+              <Formik
+                initialValues={docToForm(product, isMulti)}
+                validate={
+                  // we use this failing validation so that we can see the touched
+                  // shape
+                  () => (failValidation ? { category: true } : {})
+                }
+                onSubmit={(values, formik, ...rest) => {
+                  action('onSubmit')(values, formik, ...rest);
+                  // Since the AsyncCreatableSelectInput only stores the values
+                  // we need to read the related items from the store
+                  // eslint-disable-next-line no-console
+                  console.log(
+                    isMulti
+                      ? values.category.map(category => dataStore[category])
+                      : dataStore[values.category]
+                  );
+                  formik.resetForm(values);
+                }}
+                render={formik => {
+                  const hasError = failValidation;
+                  const isTouched = AsyncCreatableSelectInput.isTouched(
+                    formik.touched.category
+                  );
+                  return (
+                    <Spacings.Stack scale="l">
+                      <div>
+                        <AsyncCreatableSelectInput
+                          name="category"
+                          isMulti={isMulti}
+                          isClearable={true}
+                          cacheOptions={number('cacheOptions', 2)}
+                          value={formik.values.category}
+                          onChange={formik.handleChange}
+                          onData={data => {
+                            dataStore = data;
+                          }}
+                          onBlur={formik.handleBlur}
+                          hasError={hasError && isTouched}
+                          defaultOptions={[
+                            { value: 'dogs', label: 'Dogs' },
+                            { value: 'whales', label: 'Whales' },
+                          ]}
+                          loadOptions={searchText => {
+                            const items = [
+                              { value: 'dogs', label: 'Dogs' },
+                              { value: 'whales', label: 'Whales' },
+                              { value: 'antilopes', label: 'Antilopes' },
+                              { value: 'snakes', label: 'Snakes' },
+                            ];
+
+                            return delay(delayTime).then(() =>
+                              items.filter(item =>
+                                item.label
+                                  .toLowerCase()
+                                  .startsWith(searchText.toLowerCase())
+                              )
+                            );
+                          }}
+                        />
+                        {hasError &&
+                          isTouched && (
+                            <ErrorMessage>Category is required</ErrorMessage>
+                          )}
+                      </div>
+                      <Spacings.Inline>
+                        <SecondaryButton
+                          onClick={formik.handleReset}
+                          isDisabled={formik.isSubmitting}
+                          label="Reset"
+                        />
+                        <PrimaryButton
+                          onClick={formik.handleSubmit}
+                          isDisabled={formik.isSubmitting || !formik.dirty}
+                          label="Submit"
+                        />
+                      </Spacings.Inline>
+                      <hr />
+                      <FormikBox formik={formik} />
+                    </Spacings.Stack>
+                  );
+                }}
+              />
+            )}
+          </FakeConnector>
+        </IntlProvider>
+      </Section>
+    );
+  });

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import omit from 'lodash.omit';
+import keyBy from 'lodash.keyby';
+import oneLineTrim from 'common-tags/lib/oneLineTrim';
 import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
@@ -12,13 +14,37 @@ class AsyncCreatableSelectInput extends React.Component {
   // deal with an array. The touched state ends up being an empty array in case
   // values were removed only. So we have to treat any array we receive as
   // a signal of the field having been touched.
-  static isTouched = touched => Array.isArray(touched);
+  static isTouched = touched => Boolean(touched);
   static displayName = 'AsyncCreatableSelectInput';
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
+    value: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
+        : PropTypes.string(props, ...rest),
+    defaultOptions: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          value: PropTypes.string.isRequired,
+        })
+      ),
+    ]),
+    onCreateOption: (props, propName, componentName) =>
+      props[propName]
+        ? new Error(
+            oneLineTrim`
+            Invalid prop \`${propName}\` supplied to \`${componentName}\`.
+            This property is not supported yet on \`AsyncCreatableSelectInput\`
+            as its use-cases were unclear. Feel free to add it.
+          `
+          )
+        : undefined,
     onChange: PropTypes.func.isRequired,
+    onData: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
+    loadOptions: PropTypes.func.isRequired,
     isMulti: PropTypes.bool,
     formatCreateLabel: PropTypes.func,
     noOptionsMessage: PropTypes.func,
@@ -26,21 +52,60 @@ class AsyncCreatableSelectInput extends React.Component {
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
   };
+  state = {
+    options: Array.isArray(this.props.defaultOptions)
+      ? keyBy(this.props.defaultOptions, 'value')
+      : {},
+  };
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div {...filterDataAttributes(this.props)}>
           <AsyncCreatableSelect
-            {...omit(this.props, 'horizontalConstraint')}
-            onChange={value => {
-              const event = {
-                // We do not need to fake the event name for isMulti here, as
-                // the value will hold the full array.
-                target: { name: this.props.name, value },
+            {...omit(this.props, ['horizontalConstraint'])}
+            onChange={(value, info) => {
+              if (info.action === 'create-option') {
+                if (this.props.isMulti) {
+                  const addedOption = value.find(option => option.__isNew__);
+                  this.setState(prevState => ({
+                    options: {
+                      ...prevState.options,
+                      [addedOption.value]: addedOption,
+                    },
+                  }));
+                } else {
+                  this.setState({ options: value });
+                }
+              }
+              this.props.onData(
+                keyBy(this.props.isMulti ? value : [value], 'value')
+              );
+              this.props.onChange({
+                target: {
+                  name: this.props.name,
+                  // eslint-disable-next-line no-nested-ternary
+                  value: value
+                    ? this.props.isMulti
+                      ? value.map(o => o.value)
+                      : value.value
+                    : value,
+                },
                 persist: () => {},
-              };
-              this.props.onChange(event);
+              });
             }}
+            value={
+              this.props.isMulti
+                ? this.props.value.map(value => this.state.options[value])
+                : this.state.options[this.props.value]
+            }
+            loadOptions={searchText =>
+              this.props.loadOptions(searchText).then(options => {
+                this.setState(prevState => ({
+                  options: { ...prevState.options, ...keyBy(options, 'value') },
+                }));
+                return options;
+              })
+            }
             onBlur={
               this.props.onBlur
                 ? () => {
