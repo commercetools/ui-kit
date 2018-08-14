@@ -87,11 +87,11 @@ const Wrapper = styled.div`
 
 const variablePrefix = '--shadow';
 
-const getMultipleShadowsValues = ordinals =>
+const getAllShadowsValues = ordinals =>
   // eslint-disable-next-line no-unused-vars
   flatMap(ordinals, ([ordinal, value]) => value);
 
-const getMultipleShadowsNames = (ordinals, shadowGroup) => {
+const getAllShadowsNames = (ordinals, shadowGroup) => {
   const shadowNames = flatMap(
     ordinals,
     ([ordinal]) => `${variablePrefix}-${shadowGroup}-${ordinal}`
@@ -104,19 +104,15 @@ storiesOf('Shadows', module).add('All Shadows', () => (
   <Background>
     {Object.entries(shadowGroups).map(([shadowGroup, ordinals]) => (
       <Wrapper key={shadowGroup}>
-        <ShadowTitle
-          key={`title-${shadowGroup}`}
-        >{`Shadow ${shadowGroup}`}</ShadowTitle>
+        <ShadowTitle>Shadow {shadowGroup}</ShadowTitle>
         <ShadowContainer>
           <ShadowBox key={shadowGroup}>
             <ShadowSample
-              shadow={getMultipleShadowsValues(
-                Object.entries(ordinals)
-              ).toString()}
+              shadow={getAllShadowsValues(Object.entries(ordinals)).toString()}
             />
             <ShadowDescription>
               <Text.Body isBold={true}>
-                {getMultipleShadowsNames(Object.entries(ordinals), shadowGroup)}
+                {getAllShadowsNames(Object.entries(ordinals), shadowGroup)}
               </Text.Body>
             </ShadowDescription>
           </ShadowBox>
