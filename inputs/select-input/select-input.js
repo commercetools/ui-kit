@@ -36,6 +36,11 @@ ClearIndicator.propTypes = {
 
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
+
+  // Both "true" and an empty array [] represent a touched state. The Boolean
+  // conveniently handles both cases
+  static isTouched = touched => Boolean(touched);
+
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
@@ -86,9 +91,14 @@ export class SelectInput extends React.Component {
               this.props.onChange({
                 target: {
                   name: this.props.name,
+                  // eslint-disable-next-line no-nested-ternary
                   value: this.props.isMulti
-                    ? value.map(o => o.value)
-                    : value.value,
+                    ? value
+                      ? value.map(o => o.value)
+                      : value
+                    : value
+                      ? value.value
+                      : value,
                 },
                 persist: () => {},
               })
@@ -143,4 +153,6 @@ export class SelectInput extends React.Component {
   }
 }
 
-export default injectIntl(SelectInput);
+const Enhanced = injectIntl(SelectInput);
+Enhanced.isTouched = SelectInput.isTouched;
+export default Enhanced;

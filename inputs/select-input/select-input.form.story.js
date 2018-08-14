@@ -8,6 +8,7 @@ import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
 import FormikBox from '../../.storybook/decorators/formik-box';
 import PrimaryButton from '../../buttons/primary-button';
+import ErrorMessage from '../../messages/error-message';
 import SecondaryButton from '../../buttons/secondary-button';
 import Spacings from '../../materials/spacings';
 import Readme from './README.md';
@@ -25,6 +26,7 @@ storiesOf('Examples|Forms/Inputs', module)
       if (!isMulti && isPrefilled) return 'ready';
       return undefined;
     })();
+    const failValidation = boolean('Fail validation', false);
     const stateOptions = [
       { value: 'ready', label: 'Ready' },
       { value: 'shipped', label: 'Shipped' },
@@ -37,37 +39,56 @@ storiesOf('Examples|Forms/Inputs', module)
           <Formik
             key={`${isMulti}-${isPrefilled}`}
             initialValues={{ state: initialState }}
+            validate={
+              // we use failing validation so that we can see the touched shape
+              // on form submission
+              () => (failValidation ? { state: true } : {})
+            }
             onSubmit={(values, formik, ...rest) => {
               action('onSubmit')(values, formik, ...rest);
               formik.resetForm(values);
             }}
-            render={formik => (
-              <Spacings.Stack scale="l">
-                <SelectInput
-                  name="state"
-                  isMulti={isMulti}
-                  value={formik.values.state}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  options={stateOptions}
-                  isSearchable={false}
-                />
-                <Spacings.Inline>
-                  <SecondaryButton
-                    onClick={formik.handleReset}
-                    isDisabled={formik.isSubmitting}
-                    label="Reset"
-                  />
-                  <PrimaryButton
-                    onClick={formik.handleSubmit}
-                    isDisabled={formik.isSubmitting || !formik.dirty}
-                    label="Submit"
-                  />
-                </Spacings.Inline>
-                <hr />
-                <FormikBox formik={formik} />
-              </Spacings.Stack>
-            )}
+            render={formik => {
+              const hasError = isMulti
+                ? formik.values.state.length === 0
+                : !formik.values.state;
+              const isTouched = SelectInput.isTouched(formik.touched.state);
+              return (
+                <Spacings.Stack scale="l">
+                  <div>
+                    <SelectInput
+                      name="state"
+                      isMulti={isMulti}
+                      value={formik.values.state}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      options={stateOptions}
+                      hasError={hasError && isTouched}
+                      isSearchable={false}
+                      isClearable={true}
+                    />
+                    {hasError &&
+                      isTouched && (
+                        <ErrorMessage>State is required</ErrorMessage>
+                      )}
+                  </div>
+                  <Spacings.Inline>
+                    <SecondaryButton
+                      onClick={formik.handleReset}
+                      isDisabled={formik.isSubmitting}
+                      label="Reset"
+                    />
+                    <PrimaryButton
+                      onClick={formik.handleSubmit}
+                      isDisabled={formik.isSubmitting || !formik.dirty}
+                      label="Submit"
+                    />
+                  </Spacings.Inline>
+                  <hr />
+                  <FormikBox formik={formik} />
+                </Spacings.Stack>
+              );
+            }}
           />
         </IntlProvider>
       </Section>
