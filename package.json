@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "1.0.0-beta.17",
+  "version": "1.0.0-beta.23",
   "description": "UI component library to build MC applications",
   "license": "MIT",
   "private": false,
@@ -46,7 +46,7 @@
     "warning": "4.0.1"
   },
   "devDependencies": {
-    "@commercetools-frontend/mc-scripts": "1.0.0-beta.17",
+    "@commercetools-frontend/mc-scripts": "1.0.0-beta.23",
     "@storybook/addon-actions": "4.0.0-alpha.10",
     "@storybook/addon-info": "4.0.0-alpha.10",
     "@storybook/addon-knobs": "4.0.0-alpha.10",
