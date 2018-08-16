@@ -11,6 +11,10 @@ const mcWebpackConfigDev = createWebpackConfigForDevelopment({
   distPath: '', // not important
   entryPoint: '', // not important
   sourceFolders,
+  toggleFlags: {
+    // Disable generation of index.html
+    generateIndexHtml: false,
+  },
 });
 const mcWebpackConfigProd = createWebpackConfigForProduction({
   distPath: '', // not important
@@ -20,6 +24,8 @@ const mcWebpackConfigProd = createWebpackConfigForProduction({
     // Disable extract CSS, as building the production bundles for Storybook
     // fails with that.
     enableExtractCss: false,
+    // Disable generation of index.html
+    generateIndexHtml: false,
   },
 });
 const uikitWebpackConfig = {
