@@ -69,6 +69,8 @@ PasswordInput.propTypes = {
 
 PasswordInput.defaultProps = {
   horizontalConstraint: 'scale',
+  isDisabled: false,
+  isReadOnly: false,
   showPassword: false,
 };
 
