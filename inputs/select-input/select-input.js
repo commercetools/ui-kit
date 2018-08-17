@@ -6,7 +6,7 @@ import Select, { components } from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
-import { CaretDownIcon, CloseIcon } from '../../icons';
+import { CaretDownIcon, CloseBoldIcon, CloseIcon } from '../../icons';
 import './select-input.css';
 import messages from './messages';
 
@@ -30,6 +30,18 @@ ClearIndicator.displayName = 'ClearIndicator';
 ClearIndicator.propTypes = {
   innerProps: PropTypes.object,
   isDisabled: PropTypes.bool,
+};
+
+const TagRemove = props => (
+  <div {...props.innerProps}>
+    <CloseBoldIcon size="medium" />
+  </div>
+);
+
+TagRemove.displayName = 'TagRemove';
+
+TagRemove.propTypes = {
+  innerProps: PropTypes.object,
 };
 
 // TODO: add tokens from <Tag /> to tags
@@ -76,6 +88,7 @@ export class SelectInput extends React.Component {
             components={{
               DropdownIndicator,
               ClearIndicator,
+              MultiValueRemove: TagRemove,
             }}
             classNamePrefix="react-select"
             onChange={
