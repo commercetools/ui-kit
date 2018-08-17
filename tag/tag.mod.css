@@ -1,8 +1,6 @@
 @import '../materials/tokens/tokens.mod.css';
 @import '../materials/spacings.mod.css';
 
-/* TODO: add proper tones when tones are refactored */
-
 /* Base */
 
 .contentWrapper {
