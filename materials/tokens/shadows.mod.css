@@ -1,0 +1,22 @@
+@import '../colors/base-colors.mod.css';
+@import '../shadows/base-shadows.mod.css';
+
+:root {
+  /**
+    * Shadows
+    *
+    * Use these tokens for shadow related properties only.
+    * Do not use these for border colors or background colors.
+    *
+    * Index
+    * • Tags
+    *  ◦ Shadows Box
+    */
+
+  /* ==========================================================================
+   Tags (used in Tags and SelectInput)
+   ========================================================================== */
+
+  /* Colors */
+  --token-shadow-box-tags-hover: var(--shadow-1-first), var(--shadow-1-second);
+}

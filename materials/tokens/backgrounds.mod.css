@@ -11,6 +11,8 @@
     * • Inputs
     *  ◦ Text fields
     *   ▪ Background Colors
+    * • Tags
+    *  ◦ Background Colors
     */
 
   /* ==========================================================================
@@ -25,4 +27,15 @@
   --token-background-color-input-disabled: var(--color-navy-98);
   --token-background-color-input-hover: var(--color-gray-90);
   --token-background-color-input-selected: var(--color-navy-95);
+
+  /* ==========================================================================
+   Tags (used in Tags and SelectInput)
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-tags-pristine: var(--color-gray-95);
+  --token-background-color-tags-warning: var(--color-orange-95);
+  --token-background-color-tags-disabled: var(--color-gray-95);
+  --token-background-color-tags-normal-hover: var(--color-gray-60);
+  --token-background-color-tags-warning-hover: var(--color-orange);
 }
