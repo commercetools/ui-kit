@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
+import { defaultMemoize } from 'reselect';
 import classnames from 'classnames';
 import Select, { components } from 'react-select';
 import omit from 'lodash.omit';
@@ -64,6 +65,17 @@ export class SelectInput extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
+
+  // memoizing as this could get slow (~6ms for 1000 checked values)
+  // We can improve the algorithm more in case this becomes an issue, but taking
+  // the hit once and relying on memoization afterwards should be enough for now
+  getSelectedOptions = defaultMemoize(
+    (isMulti, options, value) =>
+      isMulti
+        ? options.filter(option => value.includes(option.value))
+        : options.find(option => option.value === value)
+  );
+
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
@@ -87,31 +99,27 @@ export class SelectInput extends React.Component {
               ClearIndicator,
             }}
             classNamePrefix="react-select"
-            onChange={value =>
+            onChange={selectedOptions =>
+              // selectedOptions is either an array, or a single option
+              // depending on whether we're in multi-mode or not (isMulti)
               this.props.onChange({
                 target: {
                   name: this.props.name,
                   // eslint-disable-next-line no-nested-ternary
-                  value: this.props.isMulti
-                    ? value
-                      ? value.map(o => o.value)
-                      : value
-                    : value
-                      ? value.value
-                      : value,
+                  value: selectedOptions
+                    ? this.props.isMulti
+                      ? selectedOptions.map(option => option.value)
+                      : selectedOptions.value
+                    : selectedOptions,
                 },
                 persist: () => {},
               })
             }
-            value={
-              this.props.isMulti
-                ? this.props.options.filter(option =>
-                    this.props.value.includes(option.value)
-                  )
-                : this.props.options.find(
-                    option => option.value === this.props.value
-                  )
-            }
+            value={this.getSelectedOptions(
+              this.props.isMulti,
+              this.props.options,
+              this.props.value
+            )}
             onBlur={
               typeof this.props.onBlur === 'function'
                 ? () => {
