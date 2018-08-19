@@ -4,6 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
+import { Value } from 'react-value';
 import Section from '../../.storybook/decorators/section';
 import Readme from './README.md';
 import DateTimeInput from './date-time-input';
@@ -21,20 +22,28 @@ storiesOf('Inputs', module)
     return (
       <Section>
         <IntlProvider locale={locale}>
-          <DateTimeInput
+          <Value
             key={`${locale}-${timeZone}`}
-            placeholder={text('placeholder', 'Select a date...')}
-            mode={select('mode', ['single', 'multiple', 'range'], 'single')}
-            timeScale={'datetime'}
-            isDisabled={boolean('isDisabled', false)}
-            value={text('Datetime (UTC)', '2017-12-31T16:02:50.000Z')}
-            onChange={action('on change')}
-            isInvalid={boolean('isInvalid?', false)}
-            timeZone={timeZone}
-            horizontalConstraint={select(
-              'horizontalConstraint',
-              ['xs', 's', 'm', 'l', 'xl', 'scale'],
-              'm'
+            defaultValue="2017-12-31T16:02:50.000Z"
+            render={(value, onChange) => (
+              <DateTimeInput
+                key={`${locale}-${timeZone}`}
+                placeholder={text('placeholder', 'Select a date...')}
+                mode={select('mode', ['single', 'multiple', 'range'], 'single')}
+                isDisabled={boolean('isDisabled', false)}
+                value={text('value (Date in UTC)', value)}
+                onChange={datetime => {
+                  action('onChange')(datetime);
+                  onChange(datetime);
+                }}
+                isInvalid={boolean('isInvalid?', false)}
+                timeZone={timeZone}
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+              />
             )}
           />
         </IntlProvider>
