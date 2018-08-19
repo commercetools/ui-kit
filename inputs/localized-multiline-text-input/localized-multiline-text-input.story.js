@@ -62,7 +62,7 @@ storiesOf('Inputs', module)
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
-              placeholder={object({ en: '', de: '' })}
+              placeholder={object('placeholder', { en: '', de: '' })}
               horizontalConstraint={select(
                 'horizontalConstraint',
                 ['xs', 's', 'm', 'l', 'xl', 'scale'],
@@ -71,7 +71,11 @@ storiesOf('Inputs', module)
               hasError={boolean('hasError', false)}
               errors={
                 boolean('errors', false)
-                  ? { de: <ErrorMessage>Custom Error Message</ErrorMessage> }
+                  ? {
+                      'nan-Hant-TW': (
+                        <ErrorMessage>Custom Error Message</ErrorMessage>
+                      ),
+                    }
                   : undefined
               }
               data-test="foo"
