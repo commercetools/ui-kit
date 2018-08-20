@@ -20,6 +20,7 @@ storiesOf('Inputs', module)
             name={text('name', 'password')}
             value={text('value', value)}
             autoComplete={select('autoComplete', [
+              '',
               'on',
               'off',
               'current-password',
