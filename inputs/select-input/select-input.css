@@ -141,27 +141,27 @@
 
 /* isMulti (a.k.a Tags) */
 
-.react-select__multi-value {
-  background-color: var(--token-background-color-tags-pristine) !important;
+.react-select .react-select__multi-value {
+  background-color: var(--token-background-color-tags-pristine);
   padding: 0;
 }
 
-.react-select__multi-value__label {
-  font-size: var(--token-font-size-small) !important;
-  padding: var(--spacing-4) var(--spacing-8) !important;
+.react-select .react-select__multi-value__label {
+  font-size: var(--token-font-size-small);
+  padding: var(--spacing-4) var(--spacing-8);
   border-radius: var(--token-border-radius-tags);
   border: 1px var(--token-border-color-tags-pristine) solid;
 }
 
-.react-select__multi-value__remove {
-  border-color: var(--token-border-color-tags-pristine) !important;
+.react-select .react-select__multi-value__remove {
+  border-color: var(--token-border-color-tags-pristine);
   padding: 0 var(--spacing-4);
-  border-radius: 0 var(--token-border-radius-tags) var(--token-border-radius-tags) 0 !important;
+  border-radius: 0 var(--token-border-radius-tags) var(--token-border-radius-tags) 0;
   border-style: solid;
   border-width: 1px 1px 1px 0;
 }
 
-.react-select__multi-value__remove:hover {
-  background-color: var(--token-background-color-tags-normal-hover) !important;
+.react-select .react-select__multi-value__remove:hover {
+  background-color: var(--token-background-color-tags-normal-hover);
   box-shadow: var(--token-shadow-box-tags-hover);
 }
