@@ -52,7 +52,7 @@
     "@storybook/addon-knobs": "4.0.0-alpha.10",
     "@storybook/addon-options": "4.0.0-alpha.10",
     "@storybook/react": "4.0.0-alpha.10",
-    "@svgr/webpack": "2.1.1",
+    "@svgr/webpack": "2.2.1",
     "common-tags": "1.8.0",
     "css": "2.2.3",
     "glob": "7.1.2",
