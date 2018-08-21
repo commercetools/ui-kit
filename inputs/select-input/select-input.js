@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
+import { defaultMemoize } from 'reselect';
 import classnames from 'classnames';
 import Select, { components } from 'react-select';
 import omit from 'lodash.omit';
@@ -48,9 +49,18 @@ TagRemove.propTypes = {
 
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
+
+  // Both "true" and an empty array [] represent a touched state. The Boolean
+  // conveniently handles both cases
+  static isTouched = touched => Boolean(touched);
+
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
+    value: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
+        : PropTypes.string(props, ...rest),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -67,6 +77,17 @@ export class SelectInput extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
+
+  // memoizing as this could get slow (~6ms for 1000 checked values)
+  // We can improve the algorithm more in case this becomes an issue, but taking
+  // the hit once and relying on memoization afterwards should be enough for now
+  getSelectedOptions = defaultMemoize(
+    (isMulti, options, value) =>
+      isMulti
+        ? options.filter(option => value.includes(option.value))
+        : options.find(option => option.value === value)
+  );
+
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
@@ -91,17 +112,27 @@ export class SelectInput extends React.Component {
               MultiValueRemove: TagRemove,
             }}
             classNamePrefix="react-select"
-            onChange={
-              typeof this.props.onChange === 'function'
-                ? option => {
-                    const event = {
-                      target: { name: this.props.name, value: option },
-                      persist: () => {},
-                    };
-                    this.props.onChange(event);
-                  }
-                : undefined
+            onChange={selectedOptions =>
+              // selectedOptions is either an array, or a single option
+              // depending on whether we're in multi-mode or not (isMulti)
+              this.props.onChange({
+                target: {
+                  name: this.props.name,
+                  // eslint-disable-next-line no-nested-ternary
+                  value: selectedOptions
+                    ? this.props.isMulti
+                      ? selectedOptions.map(option => option.value)
+                      : selectedOptions.value
+                    : selectedOptions,
+                },
+                persist: () => {},
+              })
             }
+            value={this.getSelectedOptions(
+              this.props.isMulti,
+              this.props.options,
+              this.props.value
+            )}
             onBlur={
               typeof this.props.onBlur === 'function'
                 ? () => {
@@ -143,4 +174,6 @@ export class SelectInput extends React.Component {
   }
 }
 
-export default injectIntl(SelectInput);
+const Enhanced = injectIntl(SelectInput);
+Enhanced.isTouched = SelectInput.isTouched;
+export default Enhanced;
