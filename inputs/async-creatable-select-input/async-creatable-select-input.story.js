@@ -34,7 +34,6 @@ const promiseOptions = inputValue =>
 
 class SelectStory extends React.Component {
   static displayName = 'SelectStory';
-  dataStore = {};
   render() {
     const isMulti = boolean('isMulti', false);
     const defaultOptions = boolean('defaultOptions', true)
@@ -60,16 +59,11 @@ class SelectStory extends React.Component {
                     )}
                     cacheOptions
                     value={value}
-                    onChange={(event, ...args) => {
-                      action('onChange')(event, ...args);
+                    onChange={(event, meta) => {
+                      action('onChange')(event, meta);
+                      console.log('data', meta.options);
                       onChange(event.target.value);
                       console.log('onChange (outer)', event.target.value);
-                    }}
-                    data={this.dataStore}
-                    onData={data => {
-                      console.log('data', data);
-                      action('onData')(data);
-                      this.dataStore = data;
                     }}
                     onBlur={action('onBlur')}
                     loadOptions={promiseOptions}

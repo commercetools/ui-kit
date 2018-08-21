@@ -62,7 +62,7 @@ const docToForm = (product, isMulti) => ({
 
 class AsyncCreatableSelectInputStory extends React.Component {
   static displayName = 'AsyncCreatableSelectInputStory';
-  dataStore = {};
+  state = { dataStore: {} };
   render() {
     const isMulti = boolean('Use multi-value select input', false);
     const failValidation = boolean('Fail validation', false);
@@ -92,9 +92,9 @@ class AsyncCreatableSelectInputStory extends React.Component {
                   console.log(
                     isMulti
                       ? values.category.map(
-                          category => this.dataStore[category]
+                          category => this.state.dataStore[category]
                         )
-                      : this.dataStore[values.category]
+                      : this.state.dataStore[values.category]
                   );
                   formik.resetForm(values);
                 }}
@@ -112,11 +112,11 @@ class AsyncCreatableSelectInputStory extends React.Component {
                           isClearable={true}
                           cacheOptions={number('cacheOptions', 2)}
                           value={formik.values.category}
-                          onChange={formik.handleChange}
-                          data={this.dataStore}
-                          onData={data => {
-                            this.dataStore = data;
+                          onChange={(event, { options }) => {
+                            formik.handleChange(event);
+                            this.setState({ dataStore: options });
                           }}
+                          options={this.state.dataStore}
                           onBlur={formik.handleBlur}
                           hasError={hasError && isTouched}
                           defaultOptions={[
@@ -148,14 +148,11 @@ class AsyncCreatableSelectInputStory extends React.Component {
                       <div>
                         <button
                           onClick={() => {
-                            this.dataStore = {
-                              ...this.dataStore,
-                              cats: {
-                                label: 'Cats',
-                                value: 'cats',
-                                // additional data could be here
-                              },
-                            };
+                            // additional data could be on cats
+                            const cats = { label: 'Cats', value: 'cats' };
+                            this.setState(prevState => ({
+                              dataStore: { ...prevState.dataStore, cats },
+                            }));
                             formik.setFieldValue(
                               'category',
                               isMulti ? ['cats'] : 'cats'
