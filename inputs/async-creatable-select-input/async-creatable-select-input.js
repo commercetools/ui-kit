@@ -34,7 +34,7 @@ ClearIndicator.propTypes = {
   isDisabled: PropTypes.bool,
 };
 
-class AsyncCreatableSelectInput extends React.Component {
+export class AsyncCreatableSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
   // deal with an array. The touched state ends up being an empty array in case
   // values were removed only. So we have to treat any array we receive as
