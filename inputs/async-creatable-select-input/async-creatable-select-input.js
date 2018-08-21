@@ -83,15 +83,6 @@ export class AsyncCreatableSelectInput extends React.Component {
     hasWarning: PropTypes.bool,
   };
 
-  state = {
-    // We store the selected options in the state so that we can map the plain
-    // values, passed in by the parent, back to actual options for react-select.
-    //
-    // The selected options are stored as an objected, keyed by the value of
-    // option, no matter whether it's in isMulti mode or not.
-    selectedOptions: {},
-  };
-
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
