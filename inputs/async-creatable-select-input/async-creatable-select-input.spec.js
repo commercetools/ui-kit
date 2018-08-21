@@ -68,9 +68,11 @@ describe('overwritten props', () => {
     });
     describe('when value is changed', () => {
       const info = {};
+      let selectedOptions;
       beforeEach(() => {
+        selectedOptions = props.defaultOptions.slice(0, 2);
         wrapper.find(AsyncCreatableSelect).prop('onChange')(
-          [props.defaultOptions[0], props.defaultOptions[1]],
+          selectedOptions,
           info
         );
       });
@@ -78,10 +80,7 @@ describe('overwritten props', () => {
         expect(props.onChange).toHaveBeenCalledWith(
           {
             persist: expect.any(Function),
-            target: {
-              name: 'foo',
-              value: [props.defaultOptions[0], props.defaultOptions[1]],
-            },
+            target: { name: 'foo', value: selectedOptions },
           },
           info
         );

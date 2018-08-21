@@ -23,8 +23,8 @@ const colourOptions = [
 ];
 
 const filterColors = inputValue =>
-  colourOptions.filter(i =>
-    i.label.toLowerCase().includes(inputValue.toLowerCase())
+  colourOptions.filter(colourOption =>
+    colourOption.label.toLowerCase().includes(inputValue.toLowerCase())
   );
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));

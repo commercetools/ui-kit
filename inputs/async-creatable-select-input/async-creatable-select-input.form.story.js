@@ -65,7 +65,7 @@ class AsyncCreatableSelectInputStory extends React.Component {
   render() {
     const isMulti = boolean('Use multi-value select input', false);
     const failValidation = boolean('Fail validation', false);
-    const delayTime = number('Load delay in ms', 250, {
+    const delayTimeMs = number('Load delay in ms', 250, {
       range: true,
       min: 0,
       max: 5000,
@@ -116,7 +116,7 @@ class AsyncCreatableSelectInputStory extends React.Component {
                               { value: 'snakes', label: 'Snakes' },
                             ];
 
-                            return delay(delayTime).then(() =>
+                            return delay(delayTimeMs).then(() =>
                               items.filter(item =>
                                 item.label
                                   .toLowerCase()
