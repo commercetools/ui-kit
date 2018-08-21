@@ -19,15 +19,18 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 class FakeConnector extends React.Component {
   static displayName = 'FakeConnector';
+
   static propTypes = {
     children: PropTypes.func.isRequired,
     isMulti: PropTypes.bool,
   };
+
   product = {
     category: this.props.isMulti
       ? [{ id: 'cats', name: 'Cats' }]
       : { id: 'cats', name: 'Cats' },
   };
+
   updateProduct = ({ id, version, product }) => {
     action('updating product', { id, version, product });
     if (product.key === 'taken-key') {
@@ -42,6 +45,7 @@ class FakeConnector extends React.Component {
       version: product.version + 1,
     }));
   };
+
   render() {
     return this.props.children({
       product: this.product,
@@ -56,10 +60,10 @@ const docToForm = (product, isMulti) => ({
     : product.category.key,
 });
 
-storiesOf('Examples|Forms/Inputs', module)
-  .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
-  .add('AsyncCreatableSelectInput', () => {
+class AsyncCreatableSelectInputStory extends React.Component {
+  static displayName = 'AsyncCreatableSelectInputStory';
+  dataStore = {};
+  render() {
     const isMulti = boolean('Use multi-value select input', false);
     const failValidation = boolean('Fail validation', false);
     const delayTime = number('Load delay in ms', 250, {
@@ -68,7 +72,6 @@ storiesOf('Examples|Forms/Inputs', module)
       max: 5000,
       step: 50,
     });
-    let dataStore = {};
     return (
       <Section>
         <IntlProvider locale="en">
@@ -88,8 +91,10 @@ storiesOf('Examples|Forms/Inputs', module)
                   // eslint-disable-next-line no-console
                   console.log(
                     isMulti
-                      ? values.category.map(category => dataStore[category])
-                      : dataStore[values.category]
+                      ? values.category.map(
+                          category => this.dataStore[category]
+                        )
+                      : this.dataStore[values.category]
                   );
                   formik.resetForm(values);
                 }}
@@ -108,8 +113,9 @@ storiesOf('Examples|Forms/Inputs', module)
                           cacheOptions={number('cacheOptions', 2)}
                           value={formik.values.category}
                           onChange={formik.handleChange}
+                          data={this.dataStore}
                           onData={data => {
-                            dataStore = data;
+                            this.dataStore = data;
                           }}
                           onBlur={formik.handleBlur}
                           hasError={hasError && isTouched}
@@ -139,6 +145,27 @@ storiesOf('Examples|Forms/Inputs', module)
                             <ErrorMessage>Category is required</ErrorMessage>
                           )}
                       </div>
+                      <div>
+                        <button
+                          onClick={() => {
+                            this.dataStore = {
+                              ...this.dataStore,
+                              cats: {
+                                label: 'Cats',
+                                value: 'cats',
+                                // additional data could be here
+                              },
+                            };
+                            formik.setFieldValue(
+                              'category',
+                              isMulti ? ['cats'] : 'cats'
+                            );
+                            formik.setFieldTouched('category');
+                          }}
+                        >
+                          Select Cats
+                        </button>
+                      </div>
                       <Spacings.Inline>
                         <SecondaryButton
                           onClick={formik.handleReset}
@@ -162,4 +189,10 @@ storiesOf('Examples|Forms/Inputs', module)
         </IntlProvider>
       </Section>
     );
-  });
+  }
+}
+
+storiesOf('Examples|Forms/Inputs', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
+  .add('AsyncCreatableSelectInput', () => <AsyncCreatableSelectInputStory />);

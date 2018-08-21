@@ -10,16 +10,16 @@ import Readme from './README.md';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 
 const colourOptions = [
-  { label: 'Ocean', value: 'ocean' },
-  { label: 'Blue', value: 'blue' },
-  { label: 'Purple', value: 'purple' },
-  { label: 'Red', value: 'red' },
-  { label: 'Orange', value: 'orange' },
-  { label: 'Yellow', value: 'yellow' },
-  { label: 'Green', value: 'green' },
-  { label: 'Forest', value: 'forest' },
-  { label: 'Slate', value: 'slate' },
-  { label: 'Silver', value: 'silver' },
+  { label: 'Ocean', value: 'ocean', someData: 1 },
+  { label: 'Blue', value: 'blue', someData: 2 },
+  { label: 'Purple', value: 'purple', someData: 3 },
+  { label: 'Red', value: 'red', someData: 4 },
+  { label: 'Orange', value: 'orange', someData: 5 },
+  { label: 'Yellow', value: 'yellow', someData: 6 },
+  { label: 'Green', value: 'green', someData: 7 },
+  { label: 'Forest', value: 'forest', someData: 8 },
+  { label: 'Slate', value: 'slate', someData: 9 },
+  { label: 'Silver', value: 'silver', someData: 10 },
 ];
 
 const filterColors = inputValue =>
@@ -27,52 +27,72 @@ const filterColors = inputValue =>
     i.label.toLowerCase().includes(inputValue.toLowerCase())
   );
 
-const promiseOptions = inputValue =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve(filterColors(inputValue));
-    }, 1000);
-  });
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-storiesOf('Inputs', module)
-  .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
-  .add('AsyncCreatableSelectInput', () => {
+const promiseOptions = inputValue =>
+  delay(500).then(() => filterColors(inputValue));
+
+class SelectStory extends React.Component {
+  static displayName = 'SelectStory';
+  dataStore = {};
+  render() {
     const isMulti = boolean('isMulti', false);
+    const defaultOptions = boolean('defaultOptions', true)
+      ? colourOptions
+      : false;
     return (
       <React.Fragment>
         <Section>
           <IntlProvider locale="en">
             <Value
-              key={isMulti}
+              key={`${isMulti}-${defaultOptions}`}
               defaultValue={isMulti ? [] : undefined}
               render={(value, onChange) => (
-                <AsyncCreatableSelectInput
-                  cacheOptions
-                  defaultOptions
-                  loadOptions={promiseOptions}
-                  horizontalConstraint={select(
-                    'horizontalConstraint',
-                    ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                    'scale'
-                  )}
-                  name={text('name', 'form-field-name')}
-                  value={value}
-                  onChange={(event, ...args) => {
-                    action('onChange')(event, ...args);
-                    onChange(event.target.value);
-                  }}
-                  onBlur={action('onBlur')}
-                  isMulti={isMulti}
-                  placeholder={text('placeholder', 'Select..')}
-                  isSearchable={boolean('isSearchable', true)}
-                  isDisabled={boolean('isDisabled', false)}
-                  isClearable={boolean('isClearable', true)}
-                />
+                <div>
+                  <AsyncCreatableSelectInput
+                    name={text('name', 'form-field-name')}
+                    isMulti={isMulti}
+                    isClearable={boolean('isClearable', true)}
+                    createOptionPosition={select(
+                      'createOptionPosition',
+                      ['first', 'last'],
+                      'last'
+                    )}
+                    cacheOptions
+                    value={value}
+                    onChange={(event, ...args) => {
+                      action('onChange')(event, ...args);
+                      onChange(event.target.value);
+                      console.log('onChange (outer)', event.target.value);
+                    }}
+                    data={this.dataStore}
+                    onData={data => {
+                      console.log('data', data);
+                      action('onData')(data);
+                      this.dataStore = data;
+                    }}
+                    onBlur={action('onBlur')}
+                    loadOptions={promiseOptions}
+                    defaultOptions={defaultOptions}
+                    horizontalConstraint={select(
+                      'horizontalConstraint',
+                      ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                      'scale'
+                    )}
+                    placeholder={text('placeholder', 'Select..')}
+                    isDisabled={boolean('isDisabled', false)}
+                  />
+                </div>
               )}
             />
           </IntlProvider>
         </Section>
       </React.Fragment>
     );
-  });
+  }
+}
+
+storiesOf('Inputs', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
+  .add('AsyncCreatableSelectInput', () => <SelectStory />);
