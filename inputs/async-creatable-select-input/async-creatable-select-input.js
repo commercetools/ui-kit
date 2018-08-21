@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import has from 'lodash.has';
 import omit from 'lodash.omit';
-import isNil from 'lodash.isnil';
-import keyBy from 'lodash.keyby';
-import oneLineTrim from 'common-tags/lib/oneLineTrim';
 import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
 import { components } from 'react-select';
 import classnames from 'classnames';
@@ -47,17 +43,22 @@ class AsyncCreatableSelectInput extends React.Component {
 
   static displayName = 'AsyncCreatableSelectInput';
 
-  static defaultProps = {
-    data: {},
-  };
+  // Using "null" will ensure that the currently selected value disappears in
+  // case "undefined" gets passed as the next value
+  static defaultProps = { value: null };
 
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
     value: (props, ...rest) =>
       props.isMulti
-        ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
-        : PropTypes.string(props, ...rest),
+        ? PropTypes.arrayOf(
+            PropTypes.shape({ value: PropTypes.string.isRequired })
+          ).isRequired(props, ...rest)
+        : PropTypes.shape({ value: PropTypes.string.isRequired })(
+            props,
+            ...rest
+          ),
     options: PropTypes.objectOf(
       PropTypes.shape({ value: PropTypes.string.isRequired })
     ),
@@ -69,18 +70,6 @@ class AsyncCreatableSelectInput extends React.Component {
         })
       ),
     ]),
-
-    onCreateOption: (props, propName, componentName) =>
-      props[propName]
-        ? new Error(
-            oneLineTrim`
-            Invalid prop \`${propName}\` supplied to \`${componentName}\`.
-            This property is not supported yet on \`AsyncCreatableSelectInput\`
-            as its use-cases are unclear so far. Feel free to add it in case you
-            come across an actual use-case.
-          `
-          )
-        : undefined,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     loadOptions: PropTypes.func.isRequired,
@@ -102,32 +91,6 @@ class AsyncCreatableSelectInput extends React.Component {
     // option, no matter whether it's in isMulti mode or not.
     selectedOptions: {},
   };
-
-  static getDerivedStateFromProps = (props, state) => ({
-    selectedOptions: { ...state.selectedOptions, ...props.options },
-  });
-
-  warnOnMissingOptions = () => {
-    if (isNil(this.props.value)) return;
-    const hasOptionsForAllValues = this.props.isMulti
-      ? this.props.value.every(value => has(this.state.selectedOptions, value))
-      : has(this.state.selectedOptions, this.props.value);
-
-    if (process.env.NODE_ENV !== 'production' && !hasOptionsForAllValues) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'AsyncCreatableSelectInput: received value which can not be mapped to an option'
-      );
-    }
-  };
-
-  componentDidMount() {
-    this.warnOnMissingOptions();
-  }
-
-  componentDidUpdate() {
-    this.warnOnMissingOptions();
-  }
 
   render() {
     return (
@@ -153,39 +116,15 @@ class AsyncCreatableSelectInput extends React.Component {
             }}
             classNamePrefix="react-select"
             onChange={(value, info) => {
-              const options = isNil(value)
-                ? {}
-                : keyBy(this.props.isMulti ? value : [value], 'value');
-              this.setState({ selectedOptions: options });
-
               this.props.onChange(
                 {
-                  target: {
-                    name: this.props.name,
-                    // eslint-disable-next-line no-nested-ternary
-                    value: value
-                      ? this.props.isMulti
-                        ? value.map(option => option.value)
-                        : value.value
-                      : value,
-                  },
+                  target: { name: this.props.name, value },
                   persist: () => {},
                 },
-                { info, options }
+                info
               );
             }}
-            value={
-              // eslint-disable-next-line no-nested-ternary
-              isNil(this.props.value)
-                ? // we need an explicit "null", so that the input resets when
-                  // the passed value is "undefined"
-                  null
-                : this.props.isMulti
-                  ? this.props.value.map(
-                      value => this.state.selectedOptions[value]
-                    )
-                  : this.state.selectedOptions[this.props.value]
-            }
+            value={this.props.value}
             loadOptions={this.props.loadOptions}
             onBlur={
               this.props.onBlur

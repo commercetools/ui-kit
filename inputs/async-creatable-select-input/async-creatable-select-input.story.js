@@ -59,11 +59,9 @@ class SelectStory extends React.Component {
                     )}
                     cacheOptions
                     value={value}
-                    onChange={(event, meta) => {
-                      action('onChange')(event, meta);
-                      console.log('data', meta.options);
+                    onChange={(event, info) => {
+                      action('onChange')(event, info);
                       onChange(event.target.value);
-                      console.log('onChange (outer)', event.target.value);
                     }}
                     onBlur={action('onBlur')}
                     loadOptions={promiseOptions}
