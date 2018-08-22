@@ -110,11 +110,11 @@ describe('rendering', () => {
           expect(input).toHaveProp('aria-readonly', true);
         });
       });
-      describe('showPassword', () => {
+      describe('isPasswordVisible', () => {
         let wrapper;
         beforeEach(() => {
           const props = createTestProps({
-            showPassword: true,
+            isPasswordVisible: true,
           });
           wrapper = shallow(<PasswordInput {...props} />);
           input = wrapper.find('input');

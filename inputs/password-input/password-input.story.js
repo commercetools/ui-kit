@@ -30,7 +30,7 @@ storiesOf('Inputs', module)
               action('onChange')(event);
               onChange(event.target.value);
             }}
-            showPassword={boolean('showPassword', false)}
+            isPasswordVisible={boolean('isPasswordVisible', false)}
             isAutofocussed={boolean('isAutofocussed', false)}
             isDisabled={boolean('isDisabled', false)}
             isReadOnly={boolean('isReadOnly', false)}

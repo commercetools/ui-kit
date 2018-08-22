@@ -23,7 +23,7 @@ const PasswordInput = props => (
     <div className={styles.container}>
       <input
         name={props.name}
-        type={props.showPassword ? 'text' : 'password'}
+        type={props.isPasswordVisible ? 'text' : 'password'}
         value={props.value}
         onChange={props.onChange}
         onBlur={props.onBlur}
@@ -56,7 +56,7 @@ PasswordInput.propTypes = {
   isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
-  showPassword: PropTypes.bool,
+  isPasswordVisible: PropTypes.bool,
   placeholder: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   autoComplete: PropTypes.oneOf([
@@ -71,7 +71,7 @@ PasswordInput.defaultProps = {
   horizontalConstraint: 'scale',
   isDisabled: false,
   isReadOnly: false,
-  showPassword: false,
+  isPasswordVisible: false,
 };
 
 export default PasswordInput;
