@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering other languages should sort them by the relevance 1`] = `
-<React.Fragment>
+<Stack
+  alignItems="stretch"
+  scale="s"
+>
   <div>
     <Stack
       alignItems="stretch"
@@ -9,7 +12,19 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
     >
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="scale"
+        language="en"
+        onChange={[MockFunction]}
+        value="en"
+      />
+    </Stack>
+  </div>
+  <div>
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
         isAutofocussed={false}
         language="en-GB"
         onChange={[MockFunction]}
@@ -24,7 +39,6 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
     >
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="scale"
         isAutofocussed={false}
         language="de"
         onChange={[MockFunction]}
@@ -39,7 +53,6 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
     >
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="scale"
         isAutofocussed={false}
         language="fr"
         onChange={[MockFunction]}
@@ -54,7 +67,6 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
     >
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="scale"
         isAutofocussed={false}
         language="nan-Hant-TW"
         onChange={[MockFunction]}
@@ -69,85 +81,75 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
     >
       <LocalizedInput
         hasError={false}
-        horizontalConstraint="scale"
         isAutofocussed={false}
         language="pt-BR"
         onChange={[MockFunction]}
         value="pt-BR"
       />
+      <InjectIntl(LanguagesButton)
+        isOpen={true}
+        onClick={[MockFunction]}
+        remainingLanguages={5}
+      />
     </Stack>
   </div>
-  <InjectIntl(LanguagesButton)
-    isOpen={true}
-    onClick={[MockFunction]}
-    remainingLanguages={5}
-  />
-</React.Fragment>
+</Stack>
 `;
 
 exports[`rendering when autofocus is activated should match snapshot 1`] = `
-<Horizontal
-  constraint="scale"
+<Stack
+  alignItems="stretch"
+  scale="s"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <div
+    key="en"
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          isAutofocussed={true}
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
+    <Stack
+      alignItems="stretch"
+      scale="xs"
     >
-      <Component />
-    </Collapsible>
-  </Stack>
-</Horizontal>
+      <LocalizedInput
+        hasError={false}
+        isAutofocussed={true}
+        language="en"
+        onChange={[MockFunction]}
+        value="Horse"
+      />
+    </Stack>
+  </div>
+  <div
+    key="de"
+  >
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        isAutofocussed={false}
+        language="de"
+        onChange={[MockFunction]}
+        value="Pferd"
+      />
+      <InjectIntl(LanguagesButton)
+        isOpen={true}
+        onClick={[MockFunction]}
+        remainingLanguages={1}
+      />
+    </Stack>
+  </div>
+</Stack>
 `;
 
 exports[`rendering when disabled should match snapshot 1`] = `
 <Horizontal
   constraint="scale"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <Collapsible
+    isDefaultClosed={true}
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          isDisabled={true}
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
-    >
-      <Component />
-    </Collapsible>
-  </Stack>
+    <Component />
+  </Collapsible>
 </Horizontal>
 `;
 
@@ -155,128 +157,106 @@ exports[`rendering when every field should display an error should match snapsho
 <Horizontal
   constraint="scale"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <Collapsible
+    isDefaultClosed={true}
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={true}
-          horizontalConstraint="scale"
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
-    >
-      <Component />
-    </Collapsible>
-  </Stack>
+    <Component />
+  </Collapsible>
 </Horizontal>
 `;
 
 exports[`rendering when expanded by default should match snapshot 1`] = `
-<Horizontal
-  constraint="scale"
+<Stack
+  alignItems="stretch"
+  scale="s"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <div
+    key="en"
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={false}
+    <Stack
+      alignItems="stretch"
+      scale="xs"
     >
-      <Component />
-    </Collapsible>
-  </Stack>
-</Horizontal>
+      <LocalizedInput
+        hasError={false}
+        language="en"
+        onChange={[MockFunction]}
+        value="Horse"
+      />
+    </Stack>
+  </div>
+  <div
+    key="de"
+  >
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        isAutofocussed={false}
+        language="de"
+        onChange={[MockFunction]}
+        value="Pferd"
+      />
+      <InjectIntl(LanguagesButton)
+        isOpen={true}
+        onClick={[MockFunction]}
+        remainingLanguages={1}
+      />
+    </Stack>
+  </div>
+</Stack>
 `;
 
 exports[`rendering when expansion toggle feature is disabled should match snapshot 1`] = `
-<Horizontal
-  constraint="scale"
+<Stack
+  alignItems="stretch"
+  scale="s"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <div
+    key="en"
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
+    <Stack
+      alignItems="stretch"
+      scale="xs"
     >
-      <Component />
-    </Collapsible>
-  </Stack>
-</Horizontal>
+      <LocalizedInput
+        hasError={false}
+        language="en"
+        onChange={[MockFunction]}
+        value="Horse"
+      />
+    </Stack>
+  </div>
+  <div
+    key="de"
+  >
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={false}
+        isAutofocussed={false}
+        language="de"
+        onChange={[MockFunction]}
+        value="Pferd"
+      />
+    </Stack>
+  </div>
+</Stack>
 `;
 
 exports[`rendering when in read-only mode should match snapshot 1`] = `
 <Horizontal
   constraint="scale"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <Collapsible
+    isDefaultClosed={true}
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          isReadOnly={true}
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
-    >
-      <Component />
-    </Collapsible>
-  </Stack>
+    <Component />
+  </Collapsible>
 </Horizontal>
 `;
 
@@ -284,95 +264,85 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
 <Horizontal
   constraint="scale"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <Collapsible
+    isDefaultClosed={true}
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          placeholder="Value"
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
-    >
-      <Component />
-    </Collapsible>
-  </Stack>
+    <Component />
+  </Collapsible>
 </Horizontal>
 `;
 
 exports[`rendering when there is an error on a specific field should match snapshot 1`] = `
-<Horizontal
-  constraint="scale"
+<Stack
+  alignItems="stretch"
+  scale="s"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <div
+    key="en"
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
+    <Stack
+      alignItems="stretch"
+      scale="xs"
     >
-      <Component />
-    </Collapsible>
-  </Stack>
-</Horizontal>
+      <LocalizedInput
+        hasError={false}
+        language="en"
+        onChange={[MockFunction]}
+        value="Horse"
+      />
+    </Stack>
+  </div>
+  <div
+    key="de"
+  >
+    <Stack
+      alignItems="stretch"
+      scale="xs"
+    >
+      <LocalizedInput
+        hasError={true}
+        isAutofocussed={false}
+        language="de"
+        onChange={[MockFunction]}
+        value="Pferd"
+      />
+      <div>
+        Specific Error
+      </div>
+      <InjectIntl(LanguagesButton)
+        isOpen={true}
+        onClick={[MockFunction]}
+        remainingLanguages={1}
+      />
+    </Stack>
+  </div>
+</Stack>
 `;
 
 exports[`rendering with minimal props should match snapshot 1`] = `
-<Horizontal
-  constraint="scale"
+<Stack
+  alignItems="stretch"
+  scale="s"
 >
-  <Stack
-    alignItems="stretch"
-    scale="s"
+  <div
+    key="en"
   >
-    <div>
-      <Stack
-        alignItems="stretch"
-        scale="xs"
-      >
-        <LocalizedInput
-          hasError={false}
-          horizontalConstraint="scale"
-          key="en"
-          language="en"
-          onChange={[MockFunction]}
-          value="Horse"
-        />
-      </Stack>
-    </div>
-    <Collapsible
-      isDefaultClosed={true}
+    <Stack
+      alignItems="stretch"
+      scale="xs"
     >
-      <Component />
-    </Collapsible>
-  </Stack>
-</Horizontal>
+      <LocalizedInput
+        hasError={false}
+        language="en"
+        onChange={[MockFunction]}
+        value="Horse"
+      />
+      <InjectIntl(LanguagesButton)
+        isOpen={false}
+        onClick={[MockFunction]}
+        remainingLanguages={1}
+      />
+    </Stack>
+  </div>
+</Stack>
 `;

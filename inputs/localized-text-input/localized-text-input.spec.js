@@ -142,7 +142,9 @@ describe('rendering', () => {
   describe('with minimal props', () => {
     beforeEach(() => {
       props = createTestProps();
-      wrapper = shallow(<LocalizedTextInput {...props} />);
+      wrapper = shallow(<LocalizedTextInput {...props} />)
+        .find(Collapsible)
+        .renderProp('children', { isOpen: false, toggle: jest.fn() });
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -152,7 +154,9 @@ describe('rendering', () => {
     describe('with id', () => {
       beforeEach(() => {
         props = createTestProps({ id: 'foo' });
-        wrapper = shallow(<LocalizedTextInput {...props} />);
+        wrapper = shallow(<LocalizedTextInput {...props} />)
+          .find(Collapsible)
+          .renderProp('children', { isOpen: false, toggle: jest.fn() });
       });
       it('should add a language suffix to the id of each visible input', () => {
         // only the first language input is visible here
@@ -162,7 +166,9 @@ describe('rendering', () => {
     describe('with name', () => {
       beforeEach(() => {
         props = createTestProps({ name: 'foo' });
-        wrapper = shallow(<LocalizedTextInput {...props} />);
+        wrapper = shallow(<LocalizedTextInput {...props} />)
+          .find(Collapsible)
+          .renderProp('children', { isOpen: false, toggle: jest.fn() });
       });
       it('should forward the name', () => {
         // only the first language input is visible here
@@ -174,7 +180,9 @@ describe('rendering', () => {
   describe('when expanded by default', () => {
     beforeEach(() => {
       props = createTestProps({ isDefaultExpanded: true });
-      wrapper = shallow(<LocalizedTextInput {...props} />);
+      wrapper = shallow(<LocalizedTextInput {...props} />)
+        .find(Collapsible)
+        .renderProp('children', { isOpen: true, toggle: jest.fn() });
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -184,7 +192,9 @@ describe('rendering', () => {
   describe('when expansion toggle feature is disabled', () => {
     beforeEach(() => {
       props = createTestProps({ hideExpansionControls: true });
-      wrapper = shallow(<LocalizedTextInput {...props} />);
+      wrapper = shallow(<LocalizedTextInput {...props} />)
+        .find(Collapsible)
+        .renderProp('children', { isOpen: false, toggle: jest.fn() });
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -194,7 +204,9 @@ describe('rendering', () => {
   describe('when autofocus is activated', () => {
     beforeEach(() => {
       props = createTestProps({ isAutofocussed: true });
-      wrapper = shallow(<LocalizedTextInput {...props} />);
+      wrapper = shallow(<LocalizedTextInput {...props} />)
+        .find(Collapsible)
+        .renderProp('children', { isOpen: true, toggle: jest.fn() });
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -244,7 +256,9 @@ describe('rendering', () => {
   describe('when there is an error on a specific field', () => {
     beforeEach(() => {
       props = createTestProps({ errors: { de: <div>Specific Error</div> } });
-      wrapper = shallow(<LocalizedTextInput {...props} />);
+      wrapper = shallow(<LocalizedTextInput {...props} />)
+        .find(Collapsible)
+        .renderProp('children', { isOpen: true, toggle: jest.fn() });
     });
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
