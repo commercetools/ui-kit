@@ -27,7 +27,7 @@ storiesOf('Inputs', module)
       'isMultilineDefaultExpanded',
       false
     );
-    const errors = object('errors', { en: 'a', de: 'b', 'nan-Hant-TW': 'c' });
+    const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
