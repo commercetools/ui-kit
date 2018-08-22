@@ -197,104 +197,80 @@ export class LocalizedMultilineTextInput extends React.Component {
       this.props.selectedLanguage,
       Object.keys(this.props.value)
     );
+    const languages = [this.props.selectedLanguage, ...remainingLanguages];
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="s">
-          <TranslationInput
-            key={this.props.selectedLanguage}
-            id={getId(this.props.id, this.props.selectedLanguage)}
-            name={getName(this.props.name, this.props.selectedLanguage)}
-            value={this.props.value[this.props.selectedLanguage]}
-            onChange={this.props.onChange}
-            language={this.props.selectedLanguage}
-            isCollapsed={
-              !this.state.expandedTranslations[this.props.selectedLanguage]
-            }
-            onToggle={() => this.toggleLanguage(this.props.selectedLanguage)}
-            placeholder={
-              this.props.placeholder
-                ? this.props.placeholder[this.props.selectedLanguage]
-                : undefined
-            }
-            onBlur={this.props.onBlur}
-            onFocus={this.props.onFocus}
-            isAutofocussed={this.props.isAutofocussed}
-            isDisabled={this.props.isDisabled}
-            isReadOnly={this.props.isReadOnly}
-            hasError={Boolean(
-              this.props.hasError ||
-                (this.props.errors &&
-                  this.props.errors[this.props.selectedLanguage])
-            )}
-            horizontalConstraint={this.props.horizontalConstraint}
-            languagesControl={
-              !this.state.areLanguagesOpened &&
-              remainingLanguages.length > 0 && (
-                <LanguagesControl
-                  isClosed={true}
-                  onClick={() => {
-                    // expand all multiline language inputs in case the
-                    // first one was expanded when all languages
-                    // are shown
+          {languages.map(
+            (language, index) =>
+              (index === 0 ||
+                this.state.areLanguagesOpened ||
+                this.props.hideLanguageControls) && (
+                <TranslationInput
+                  key={language}
+                  id={getId(this.props.id, language)}
+                  name={getName(this.props.name, language)}
+                  value={this.props.value[language]}
+                  onChange={this.props.onChange}
+                  language={language}
+                  isCollapsed={!this.state.expandedTranslations[language]}
+                  onToggle={() => this.toggleLanguage(language)}
+                  placeholder={
+                    this.props.placeholder
+                      ? this.props.placeholder[language]
+                      : undefined
+                  }
+                  onBlur={this.props.onBlur}
+                  onFocus={this.props.onFocus}
+                  isAutofocussed={false}
+                  isDisabled={this.props.isDisabled}
+                  isReadOnly={this.props.isReadOnly}
+                  horizontalConstraint={this.props.horizontalConstraint}
+                  languagesControl={(() => {
                     if (
-                      this.state.expandedTranslations[
-                        this.props.selectedLanguage
-                      ]
+                      index === 0 &&
+                      !this.state.areLanguagesOpened &&
+                      remainingLanguages.length > 0
                     ) {
-                      this.expandAllTranslations();
+                      return (
+                        <LanguagesControl
+                          isClosed={true}
+                          onClick={() => {
+                            // expand all multiline language inputs in case the
+                            // first one was expanded when all languages
+                            // are shown
+                            if (
+                              this.state.expandedTranslations[
+                                this.props.selectedLanguage
+                              ]
+                            ) {
+                              this.expandAllTranslations();
+                            }
+                            this.toggleLanguages();
+                          }}
+                          remainingLanguages={remainingLanguages.length}
+                        />
+                      );
                     }
-                    this.toggleLanguages();
-                  }}
-                  remainingLanguages={remainingLanguages.length}
+                    if (index !== 0 && index === languages.length - 1)
+                      return (
+                        <LanguagesControl
+                          onClick={this.toggleLanguages}
+                          remainingLanguages={remainingLanguages.length}
+                        />
+                      );
+                    return null;
+                  })()}
+                  hasError={Boolean(
+                    this.props.hasError ||
+                      (this.props.errors && this.props.errors[language])
+                  )}
+                  intl={this.props.intl}
+                  error={this.props.errors && this.props.errors[language]}
+                  {...createDataAttributes(this.props, language)}
                 />
               )
-            }
-            intl={this.props.intl}
-            error={
-              this.props.errors &&
-              this.props.errors[this.props.selectedLanguage]
-            }
-            {...createDataAttributes(this.props, this.props.selectedLanguage)}
-          />
-          {(this.state.areLanguagesOpened || this.props.hideLanguageControls) &&
-            remainingLanguages.map((language, index) => (
-              <TranslationInput
-                key={language}
-                id={getId(this.props.id, language)}
-                name={getName(this.props.name, language)}
-                value={this.props.value[language]}
-                onChange={this.props.onChange}
-                language={language}
-                isCollapsed={!this.state.expandedTranslations[language]}
-                onToggle={() => this.toggleLanguage(language)}
-                placeholder={
-                  this.props.placeholder
-                    ? this.props.placeholder[language]
-                    : undefined
-                }
-                onBlur={this.props.onBlur}
-                onFocus={this.props.onFocus}
-                isAutofocussed={false}
-                isDisabled={this.props.isDisabled}
-                isReadOnly={this.props.isReadOnly}
-                horizontalConstraint={this.props.horizontalConstraint}
-                languagesControl={
-                  index === remainingLanguages.length - 1 && (
-                    <LanguagesControl
-                      onClick={this.toggleLanguages}
-                      remainingLanguages={remainingLanguages.length}
-                    />
-                  )
-                }
-                hasError={Boolean(
-                  this.props.hasError ||
-                    (this.props.errors && this.props.errors[language])
-                )}
-                intl={this.props.intl}
-                error={this.props.errors && this.props.errors[language]}
-                {...createDataAttributes(this.props, language)}
-              />
-            ))}
+          )}
         </Spacings.Stack>
       </Constraints.Horizontal>
     );

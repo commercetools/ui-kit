@@ -16,10 +16,11 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       key="en"
       language="en"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="en"
@@ -36,7 +37,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
       isCollapsed={true}
       key="en-GB"
       language="en-GB"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="en-GB"
@@ -53,7 +54,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
       isCollapsed={true}
       key="de"
       language="de"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="de"
@@ -70,7 +71,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
       isCollapsed={true}
       key="fr"
       language="fr"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="fr"
@@ -87,7 +88,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
       isCollapsed={true}
       key="nan-Hant-TW"
       language="nan-Hant-TW"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="nan-Hant-TW"
@@ -134,6 +135,7 @@ exports[`rendering when "language toggle" feature is disabled should match snaps
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       key="en"
       language="en"
@@ -190,10 +192,11 @@ exports[`rendering when all languages are shown by default should match snapshot
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       key="en"
       language="en"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="Horse"
@@ -240,11 +243,11 @@ exports[`rendering when autofocus is activated should match snapshot 1`] = `
           "formatMessage": [Function],
         }
       }
-      isAutofocussed={true}
+      isAutofocussed={false}
       isCollapsed={true}
       key="en"
       language="en"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="Horse"
@@ -291,11 +294,12 @@ exports[`rendering when disabled should match snapshot 1`] = `
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       isDisabled={true}
       key="en"
       language="en"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="Horse"
@@ -343,6 +347,7 @@ exports[`rendering when every field should display an error should match snapsho
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       key="en"
       language="en"
@@ -377,11 +382,12 @@ exports[`rendering when in read-only mode should match snapshot 1`] = `
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       isReadOnly={true}
       key="en"
       language="en"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="Horse"
@@ -429,10 +435,11 @@ exports[`rendering when placeholders are provided should match snapshot 1`] = `
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       key="en"
       language="en"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       placeholder="Value"
@@ -481,10 +488,11 @@ exports[`rendering when there is an error on a specific field should match snaps
           "formatMessage": [Function],
         }
       }
+      isAutofocussed={false}
       isCollapsed={true}
       key="en"
       language="en"
-      languagesControl={false}
+      languagesControl={null}
       onChange={[MockFunction]}
       onToggle={[Function]}
       value="Horse"
