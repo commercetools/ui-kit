@@ -55,7 +55,7 @@ storiesOf('Examples|Forms/Inputs', module)
               const isTouched = SelectInput.isTouched(formik.touched.state);
               return (
                 <Spacings.Stack scale="l">
-                  <div>
+                  <Spacings.Stack scale="xs">
                     <SelectInput
                       name="state"
                       isMulti={isMulti}
@@ -71,7 +71,7 @@ storiesOf('Examples|Forms/Inputs', module)
                       isTouched && (
                         <ErrorMessage>State is required</ErrorMessage>
                       )}
-                  </div>
+                  </Spacings.Stack>
                   <Spacings.Inline>
                     <SecondaryButton
                       onClick={formik.handleReset}
