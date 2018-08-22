@@ -46,9 +46,8 @@
 
 /* Active/Focus */
 
-/* focus-within is not supported by IE */
-.date-input-container:focus-within .date-input,
-.date-input-container:focus-within .clear-icon-container {
+.date-input:focus,
+.date-input:focus + .clear-icon-container {
   border-color: var(--token-border-color-input-focus);
   background: var(--token-background-color-input-focus);
   color: var(--token-font-color-default);
