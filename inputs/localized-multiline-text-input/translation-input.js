@@ -44,7 +44,6 @@ export default class TranslationInput extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     placeholder: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,

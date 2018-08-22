@@ -222,10 +222,9 @@ export class LocalizedMultilineTextInput extends React.Component {
                   }
                   onBlur={this.props.onBlur}
                   onFocus={this.props.onFocus}
-                  isAutofocussed={false}
+                  isAutofocussed={index === 0 && this.props.isAutofocussed}
                   isDisabled={this.props.isDisabled}
                   isReadOnly={this.props.isReadOnly}
-                  horizontalConstraint={this.props.horizontalConstraint}
                   languagesControl={(() => {
                     if (
                       index === 0 &&
