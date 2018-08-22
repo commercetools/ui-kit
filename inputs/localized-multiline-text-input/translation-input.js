@@ -48,7 +48,7 @@ export default class TranslationInput extends React.Component {
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
-    errors: PropTypes.node,
+    error: PropTypes.node,
   };
 
   // The minimum ammount of rows the MultilineTextInput will show.
@@ -106,7 +106,7 @@ export default class TranslationInput extends React.Component {
               type="text"
               value={
                 // We show "..." to indicate that there is more text, so that
-                // users can distinguis between single-line text and
+                // users can distinguish between single-line text and
                 // multi-line text easily
                 // We are aware that this approach only works in case the first
                 // line does not overflow.
@@ -150,29 +150,29 @@ export default class TranslationInput extends React.Component {
               {...filterDataAttributes(this.props)}
             />
           </div>
-          {this.props.errors && <div>{this.props.errors}</div>}
+          <div className={styles.commandsContainer}>
+            <div className={styles.commandsLeft}>
+              {this.props.error ? (
+                <div>{this.props.error}</div>
+              ) : (
+                this.props.languagesControl
+              )}
+            </div>
+            <div className={styles.commandsExpand}>
+              {!this.props.isCollapsed &&
+                contentExceedsShownRows && (
+                  <FlatButton
+                    onClick={this.props.onToggle}
+                    type="primary"
+                    isDisabled={this.props.isDisabled}
+                    label={this.props.intl.formatMessage(messages.collapse)}
+                    icon={<AngleUpIcon size="small" />}
+                  />
+                )}
+            </div>
+          </div>
+          {this.props.error && this.props.languagesControl}
         </Spacings.Stack>
-        {this.props.languagesControl ||
-          (!this.props.isCollapsed &&
-            contentExceedsShownRows && (
-              <div className={styles.commandsContainer}>
-                <div className={styles.commandsLanguages}>
-                  {this.props.languagesControl}
-                </div>
-                <div className={styles.commandsExpand}>
-                  {!this.props.isCollapsed &&
-                    contentExceedsShownRows && (
-                      <FlatButton
-                        onClick={this.props.onToggle}
-                        type="primary"
-                        isDisabled={this.props.isDisabled}
-                        label={this.props.intl.formatMessage(messages.collapse)}
-                        icon={<AngleUpIcon size="small" />}
-                      />
-                    )}
-                </div>
-              </div>
-            ))}
       </React.Fragment>
     );
   }

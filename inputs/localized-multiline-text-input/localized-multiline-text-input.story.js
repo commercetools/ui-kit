@@ -27,6 +27,7 @@ storiesOf('Inputs', module)
       'isMultilineDefaultExpanded',
       false
     );
+    const errors = object('errors', { en: 'a', de: 'b', 'nan-Hant-TW': 'c' });
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
@@ -70,12 +71,12 @@ storiesOf('Inputs', module)
               )}
               hasError={boolean('hasError', false)}
               errors={
-                boolean('errors', false)
-                  ? {
-                      'nan-Hant-TW': (
-                        <ErrorMessage>Custom Error Message</ErrorMessage>
-                      ),
-                    }
+                Object.values(errors).some(error => error.length > 0)
+                  ? Object.entries(errors).reduce((acc, [language, error]) => {
+                      if (error.length === 0) return acc;
+                      acc[language] = <ErrorMessage>{error}</ErrorMessage>;
+                      return acc;
+                    }, {})
                   : undefined
               }
               data-test="foo"

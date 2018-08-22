@@ -184,6 +184,14 @@ export class LocalizedMultilineTextInput extends React.Component {
       areLanguagesOpened: !prevState.areLanguagesOpened,
     }));
 
+  expandAllTranslations = () =>
+    this.setState(prevState => ({
+      expandedTranslations: mapValues(
+        prevState.expandedTranslations,
+        () => true
+      ),
+    }));
+
   render() {
     const remainingLanguages = sortRemainingLanguages(
       this.props.selectedLanguage,
@@ -220,7 +228,6 @@ export class LocalizedMultilineTextInput extends React.Component {
             )}
             horizontalConstraint={this.props.horizontalConstraint}
             languagesControl={
-              !this.props.hideLanguageControls &&
               !this.state.areLanguagesOpened &&
               remainingLanguages.length > 0 && (
                 <LanguagesControl
@@ -234,12 +241,7 @@ export class LocalizedMultilineTextInput extends React.Component {
                         this.props.selectedLanguage
                       ]
                     ) {
-                      this.setState(prevState => ({
-                        expandedTranslations: mapValues(
-                          prevState.expandedTranslations,
-                          () => true
-                        ),
-                      }));
+                      this.expandAllTranslations();
                     }
                     this.toggleLanguages();
                   }}
@@ -247,12 +249,12 @@ export class LocalizedMultilineTextInput extends React.Component {
                 />
               )
             }
-            {...createDataAttributes(this.props, this.props.selectedLanguage)}
             intl={this.props.intl}
-            errors={
+            error={
               this.props.errors &&
               this.props.errors[this.props.selectedLanguage]
             }
+            {...createDataAttributes(this.props, this.props.selectedLanguage)}
           />
           {(this.state.areLanguagesOpened || this.props.hideLanguageControls) &&
             remainingLanguages.map((language, index) => (
@@ -277,9 +279,7 @@ export class LocalizedMultilineTextInput extends React.Component {
                 isReadOnly={this.props.isReadOnly}
                 horizontalConstraint={this.props.horizontalConstraint}
                 languagesControl={
-                  !this.props.hideLanguageControls &&
-                  index === remainingLanguages.length - 1 &&
-                  remainingLanguages.length > 0 && (
+                  index === remainingLanguages.length - 1 && (
                     <LanguagesControl
                       onClick={this.toggleLanguages}
                       remainingLanguages={remainingLanguages.length}
@@ -291,8 +291,8 @@ export class LocalizedMultilineTextInput extends React.Component {
                     (this.props.errors && this.props.errors[language])
                 )}
                 intl={this.props.intl}
+                error={this.props.errors && this.props.errors[language]}
                 {...createDataAttributes(this.props, language)}
-                errors={this.props.errors && this.props.errors[language]}
               />
             ))}
         </Spacings.Stack>

@@ -115,11 +115,10 @@
   display: flex;
 }
 
-.commandsLanguages {
+.commandsLeft {
   flex: 1;
 }
 
 .commandsExpand {
   flex: 0;
-  align-self: flex-end;
 }
