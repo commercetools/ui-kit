@@ -225,7 +225,7 @@ describe('callbacks', () => {
     });
 
     it('should autofocus prop be true', () => {
-      expect(input.prop('autoFocus')).toBe(true);
+      expect(input).toHaveProp('autoFocus', true);
     });
   });
 });
