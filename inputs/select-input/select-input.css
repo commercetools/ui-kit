@@ -1,9 +1,17 @@
+/*
+  ⚠️ These styles are used for SelectInput and AsyncCreatableSelectInput.
+
+  Always check all affected components when making changes here!
+*/
 @import '../../materials/tokens/tokens.mod.css';
 @import '../../materials/transitions.mod.css';
 @import '../../materials/spacings.mod.css';
 @import '../../materials/shadows/base-shadows.mod.css';
 
-/* These styles use selector specificity to determine importance  */
+/*
+  These styles use selector specificity to determine importance, otherwise
+  we'd have to use a bunch of !important statements
+*/
 
 /* Base  */
 
