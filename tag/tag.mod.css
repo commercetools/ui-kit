@@ -1,7 +1,24 @@
-@import '../materials/borders.mod.css';
-@import '../materials/colors/base-colors.mod.css';
-@import '../materials/shadows/base-shadows.mod.css';
+@import '../materials/tokens/tokens.mod.css';
 @import '../materials/spacings.mod.css';
+
+/* Base */
+
+.contentWrapper {
+  border-radius: var(--token-border-radius-tags);
+  padding: var(--spacing-4) var(--spacing-8);
+  cursor: default;
+  font-family: inherit;
+  white-space: normal;
+  text-align: left;
+  min-width: 0;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  border-style: solid;
+  border-width: 1px;
+
+  /* fixing things for IE11 ... */
+  width: 100%;
+}
 
 .wrapper {
   min-width: 0;
@@ -15,102 +32,95 @@
   text-decoration: none;
 }
 
+/* Normal */
+
 .wrapperTypeNormal {
-  background: var(--color-gray-95);
-}
-
-.wrapperTypeWarning {
-  background: var(--color-orange-95);
-}
-
-.disabledWrapper {
-  background: var(--color-gray-95);
-}
-
-.contentWrapper {
-  cursor: default;
-  font-family: inherit;
-  padding: var(--spacing-4) var(--spacing-8);
-  white-space: normal;
-  text-align: left;
-  min-width: 0;
-  overflow-wrap: break-word;
-  hyphens: auto;
-
-  /* fixing things for IE11 ... */
-  width: 100%;
-}
-
-.contentWrapperNormal,
-.contentWrapperWarning {
-  border-style: solid;
-  border-width: 1px;
-  border-radius: var(--border-radius-2);
+  background-color: var(--token-background-color-tags-pristine);
 }
 
 .contentWrapperNormal {
-  border-color: var(--color-gray-60);
+  border-color: var(--token-border-color-tags-pristine);
+}
+
+/* Warning */
+
+.wrapperTypeWarning {
+  background-color: var(--token-background-color-tags-warning);
 }
 
 .contentWrapperWarning {
-  border-color: var(--color-orange);
+  border-color: var(--token-border-color-tags-warning);
 }
+
+/* Clickable */
 
 .clickableContentWrapper {
   cursor: pointer;
 }
 
 .clickableContentWrapper:hover {
-  box-shadow: var(--shadow-1-first), var(--shadow-1-second);
+  box-shadow: var(--token-shadow-box-tags-hover);
 }
 
 .clickableContentWrapperNormal:hover {
-  border-color: var(--color-green);
+  border-color: var(--token-border-color-tags-focus);
 }
 
 .clickableContentWrapperWarning:hover {
-  border-color: var(--color-orange);
-  border-right: 1px solid var(--color-gray-60);
+  border-color: var(--token-border-color-tags-warning-hover);
+  border-right: 1px solid var(--token-border-color-tags-pristine);
 }
 
 .clickableRemovableContentWrapperNormal:hover {
-  border-right: 1px solid var(--color-gray-60);
+  border-right: 1px solid var(--token-border-color-tags-pristine);
 }
 
 .clickableRemovableContentWrapperWarning {
-  border-right: 1px solid var(--color-orange);
+  border-right: 1px solid var(--token-border-color-tags-warning);
 }
 
-.disabledContent {
-  color: var(--color-black);
-}
+/* Removable */
 
 .removableContent {
   padding-right: var(--spacing-8);
 }
 
 .removeWrapper {
+  border-color: var(--token-border-color-tags-pristine);
+  padding: 0 var(--spacing-4);
+  border-radius: 0 var(--token-border-radius-tags) var(--token-border-radius-tags) 0;
   display: flex;
   align-items: center;
-  padding: 0 var(--spacing-4);
   background: inherit;
-  border-color: var(--color-gray-60);
   border-style: solid;
   border-width: 1px 1px 1px 0;
-  border-radius: 0 var(--border-radius-2) var(--border-radius-2) 0;
 }
 
 .removeWrapper:hover {
-  background: var(--color-gray-60);
-  box-shadow: var(--shadow-1-first), var(--shadow-1-second);
+  background-color: var(--token-background-color-tags-normal-hover);
+  box-shadow: var(--token-shadow-box-tags-hover);
 }
 
 .removeWrapperTypeWarning {
-  border-color: var(--color-orange);
+  border-color: var(--token-border-color-tags-warning);
 }
 
 .removeWrapperTypeWarning:hover {
-  background: var(--color-orange);
+  background-color: var(--token-background-color-tags-warning-hover);
+}
+
+.removeWrapper svg {
+  fill: var(--token-font-color-default);
+}
+
+/* Disabled */
+
+.disabledWrapper {
+  background-color: var(--token-background-color-tags-disabled);
+}
+
+.disabledContent {
+  color: var(--token-font-color-disabled);
 }
 
 .disabledRemove:hover {
@@ -118,10 +128,6 @@
   box-shadow: none;
 }
 
-.removeWrapper svg {
-  fill: var(--color-black);
-}
-
 .disabledRemove svg {
-  fill: var(--color-black);
+  fill: var(--token-font-color-disabled);
 }
