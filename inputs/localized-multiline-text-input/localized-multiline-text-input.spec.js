@@ -152,6 +152,15 @@ describe('omitEmptyTranslations', () => {
 describe('rendering', () => {
   let wrapper;
   let props;
+  describe('with minimal props', () => {
+    beforeEach(() => {
+      props = createTestProps();
+      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
+    });
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
   describe('when collapsed', () => {
     describe('with id', () => {
       beforeEach(() => {
@@ -175,62 +184,97 @@ describe('rendering', () => {
     });
   });
 
-  describe('when all languages are shown by default', () => {
+  describe('when expanded by default', () => {
     beforeEach(() => {
-      props = createTestProps({ areLanguagesDefaultOpened: true });
+      props = createTestProps({
+        name: 'foo',
+        value: { en: '', de: '', es: '' },
+        areLanguagesDefaultOpened: true,
+      });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    it('should render one input per language', () => {
+      expect(wrapper).toRender({ name: 'foo.en' });
+      expect(wrapper).toRender({ name: 'foo.de' });
+      expect(wrapper).toRender({ name: 'foo.es' });
     });
   });
 
-  describe('when "language toggle" feature is disabled', () => {
+  describe('when expansion toggle feature is disabled', () => {
     beforeEach(() => {
-      props = createTestProps({ hideLanguageControls: true });
+      props = createTestProps({
+        name: 'foo',
+        value: { en: '', de: '', es: '' },
+        hideLanguageControls: true,
+      });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    it('should open all languages', () => {
+      expect(wrapper).toRender({ name: 'foo.en' });
+      expect(wrapper).toRender({ name: 'foo.de' });
+      expect(wrapper).toRender({ name: 'foo.es' });
     });
   });
 
   describe('when autofocus is activated', () => {
     beforeEach(() => {
       props = createTestProps({
+        name: 'foo',
+        value: { en: '', de: '', es: '' },
         isAutofocussed: true,
         areLanguagesDefaultOpened: true,
       });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    it('should focus the selected languages', () => {
+      expect(wrapper.find({ name: 'foo.en' })).toHaveProp(
+        'isAutofocussed',
+        true
+      );
+    });
+    it('should not focus the remaining languages', () => {
+      expect(wrapper.find({ name: 'foo.de' })).toHaveProp(
+        'isAutofocussed',
+        false
+      );
+      expect(wrapper.find({ name: 'foo.es' })).toHaveProp(
+        'isAutofocussed',
+        false
+      );
     });
   });
 
   describe('when disabled', () => {
     beforeEach(() => {
       props = createTestProps({
+        name: 'foo',
+        value: { en: '', de: '', es: '' },
         isDisabled: true,
         areLanguagesDefaultOpened: true,
       });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    it('should disable all inputs', () => {
+      expect(wrapper.find({ name: 'foo.en' })).toHaveProp('isDisabled', true);
+      expect(wrapper.find({ name: 'foo.de' })).toHaveProp('isDisabled', true);
+      expect(wrapper.find({ name: 'foo.es' })).toHaveProp('isDisabled', true);
     });
   });
 
   describe('when in read-only mode', () => {
     beforeEach(() => {
       props = createTestProps({
+        name: 'foo',
+        value: { en: '', de: '', es: '' },
         isReadOnly: true,
         areLanguagesDefaultOpened: true,
       });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    it('should disable all inputs', () => {
+      expect(wrapper.find({ name: 'foo.en' })).toHaveProp('isReadOnly', true);
+      expect(wrapper.find({ name: 'foo.de' })).toHaveProp('isReadOnly', true);
+      expect(wrapper.find({ name: 'foo.es' })).toHaveProp('isReadOnly', true);
     });
   });
 
@@ -240,33 +284,110 @@ describe('rendering', () => {
         placeholder: { en: 'Value', de: 'Wert' },
         areLanguagesDefaultOpened: true,
       });
+      props = createTestProps({
+        name: 'foo',
+        value: { en: '', de: '', es: '' },
+        placeholder: {
+          en: 'placeholder-en',
+          de: 'placeholder-de',
+          es: 'placeholder-es',
+        },
+        isReadOnly: true,
+        areLanguagesDefaultOpened: true,
+      });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    it('should forward the placeholders', () => {
+      expect(wrapper.find({ name: 'foo.en' })).toHaveProp(
+        'placeholder',
+        'placeholder-en'
+      );
+      expect(wrapper.find({ name: 'foo.de' })).toHaveProp(
+        'placeholder',
+        'placeholder-de'
+      );
+      expect(wrapper.find({ name: 'foo.es' })).toHaveProp(
+        'placeholder',
+        'placeholder-es'
+      );
     });
   });
 
   describe('when every field should display an error', () => {
     beforeEach(() => {
-      props = createTestProps({ hasError: true });
-      wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
-    });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-
-  describe('when there is an error on a specific field', () => {
-    beforeEach(() => {
       props = createTestProps({
-        errors: { de: <div>Specific Error</div> },
-        areLanguagesDefaultOpened: true,
+        name: 'foo',
+        value: { en: '', de: '', es: '' },
+        hasError: true,
       });
       wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
     });
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    it('should open all fields', () => {
+      expect(wrapper).toRender({ name: 'foo.en' });
+      expect(wrapper).toRender({ name: 'foo.de' });
+      expect(wrapper).toRender({ name: 'foo.es' });
+    });
+    it('should render each field with an error', () => {
+      expect(wrapper.find({ name: 'foo.en' })).toHaveProp('hasError', true);
+      expect(wrapper.find({ name: 'foo.de' })).toHaveProp('hasError', true);
+      expect(wrapper.find({ name: 'foo.es' })).toHaveProp('hasError', true);
+    });
+  });
+
+  describe('when there is an error', () => {
+    describe('when the error is not on the selected language', () => {
+      const germanError = <div id="german-error">Specific Error</div>;
+      beforeEach(() => {
+        props = createTestProps({
+          name: 'foo',
+          value: { en: '', de: '', es: '' },
+          errors: { de: germanError },
+          selectedLanguage: 'en',
+        });
+        wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
+      });
+      it('should open all fields', () => {
+        expect(wrapper).toRender({ name: 'foo.en' });
+        expect(wrapper).toRender({ name: 'foo.de' });
+        expect(wrapper).toRender({ name: 'foo.es' });
+      });
+      it('should show an error on the field', () => {
+        expect(wrapper.find({ name: 'foo.de' })).toHaveProp('hasError', true);
+      });
+      it('should render the error', () => {
+        expect(wrapper.find('TranslationInput').at(1)).toHaveProp(
+          'error',
+          germanError
+        );
+      });
+    });
+    describe('when the error is on the selected language', () => {
+      const englishError = <div id="english-error">Specific Error</div>;
+      beforeEach(() => {
+        props = createTestProps({
+          name: 'foo',
+          value: { en: '', de: '', es: '' },
+          errors: { en: englishError },
+          selectedLanguage: 'en',
+        });
+        wrapper = shallow(<LocalizedMultilineTextInput {...props} />);
+      });
+      it('should render the first field', () => {
+        expect(wrapper).toRender({ name: 'foo.en' });
+      });
+      it('should not open all fields', () => {
+        expect(wrapper).not.toRender({ name: 'foo.de' });
+        expect(wrapper).not.toRender({ name: 'foo.es' });
+      });
+      it('should show an error on the field', () => {
+        expect(wrapper.find({ name: 'foo.en' })).toHaveProp('hasError', true);
+      });
+      it('should render the error', () => {
+        expect(wrapper.find('TranslationInput')).toHaveProp(
+          'error',
+          englishError
+        );
+      });
     });
   });
 
