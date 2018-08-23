@@ -71,6 +71,9 @@ const getId = (idPrefix, language) =>
 const getName = (namePrefix, language) =>
   namePrefix ? `${namePrefix}.${language}` : undefined;
 
+const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) =>
+  errors && without(Object.keys(errors), selectedLanguage).length > 0;
+
 // This component supports expanding/collapsing multiline inputs, but it also
 // supports showing/hiding the remaining languages.
 // These two features are both about opening/closing something, and so the code
@@ -192,6 +195,21 @@ export class LocalizedMultilineTextInput extends React.Component {
       ),
     }));
 
+  static getDerivedStateFromProps = (props, state) => {
+    // We want to automatically open the languages when an error is present on a
+    // hidden input, and we want to keep the languages open even after the
+    // error was resolved, so that the user can collapse it manually.
+    // Otherwise it would close as soon as the error disappears.
+    const hasErrorOnRemainingLanguages =
+      props.hasError ||
+      getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
+    const areLanguagesOpened =
+      hasErrorOnRemainingLanguages ||
+      props.hideLanguageControls ||
+      state.areLanguagesOpened;
+    return { areLanguagesOpened };
+  };
+
   render() {
     const remainingLanguages = sortRemainingLanguages(
       this.props.selectedLanguage,
@@ -203,9 +221,7 @@ export class LocalizedMultilineTextInput extends React.Component {
         <Spacings.Stack scale="s">
           {languages.map(
             (language, index) =>
-              (index === 0 ||
-                this.state.areLanguagesOpened ||
-                this.props.hideLanguageControls) && (
+              (index === 0 || this.state.areLanguagesOpened) && (
                 <TranslationInput
                   key={language}
                   id={getId(this.props.id, language)}
@@ -256,6 +272,9 @@ export class LocalizedMultilineTextInput extends React.Component {
                         <LanguagesControl
                           onClick={this.toggleLanguages}
                           remainingLanguages={remainingLanguages.length}
+                          isDisabled={Boolean(
+                            this.props.hasError || this.props.errors
+                          )}
                         />
                       );
                     return null;
