@@ -124,6 +124,9 @@
 
 .react-select .react-select__option {
   transition: var(--transition-standard);
+  padding-left: var(--spacing-8);
+  padding-right: var(--spacing-8);
+  color: var(--token-font-size-default);
 }
 
 /* Disabled */
@@ -174,4 +177,23 @@
 .react-select .react-select__multi-value__remove:hover {
   background-color: var(--token-background-color-tags-normal-hover);
   box-shadow: var(--token-shadow-box-tags-hover);
+}
+
+/* Grouping */
+
+.react-select .react-select__group {
+  padding: 0;
+}
+
+.react-select .react-select__group:not(:first-child) .react-select__group-heading {
+  border-top: 1px var(--token-border-color-separator) solid;
+}
+
+.react-select .react-select__group-heading {
+  color: var(--token-font-color-readonly);
+  font-size: var(--token-font-size-small);
+  text-transform: none;
+  font-weight: bold;
+  margin: 0 var(--spacing-4);
+  padding: var(--spacing-8) var(--spacing-4) var(--spacing-4);
 }
