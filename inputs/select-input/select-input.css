@@ -24,6 +24,7 @@
 
 .react-select .react-select__value-container {
   background-color: none;
+  overflow: hidden;
 }
 
 .react-select .react-select__control {
