@@ -7,7 +7,7 @@ import { components } from 'react-select';
 import classnames from 'classnames';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
-import { CaretDownIcon, CloseIcon } from '../../icons';
+import { CaretDownIcon, CloseBoldIcon, CloseIcon } from '../../icons';
 import '../select-input/select-input.css';
 import LoadingSpinner from '../../loading-spinner';
 import messages from './messages';
@@ -20,6 +20,7 @@ const DropdownIndicator = props =>
       <CaretDownIcon theme={props.isDisabled && 'grey'} size="small" />
     </components.DropdownIndicator>
   );
+DropdownIndicator.displayName = 'DropdownIndicator';
 
 const ClearIndicator = props => (
   <div className="react-select__clear-indicator" {...props.innerProps}>
@@ -27,13 +28,19 @@ const ClearIndicator = props => (
     <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
   </div>
 );
-
 ClearIndicator.displayName = 'ClearIndicator';
-
 ClearIndicator.propTypes = {
   innerProps: PropTypes.object,
   isDisabled: PropTypes.bool,
 };
+
+const TagRemove = props => (
+  <div {...props.innerProps}>
+    <CloseBoldIcon size="medium" />
+  </div>
+);
+TagRemove.displayName = 'TagRemove';
+TagRemove.propTypes = { innerProps: PropTypes.object };
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
 LoadingIndicator.displayName = 'LoadingIndicator';
@@ -109,6 +116,7 @@ export class AsyncCreatableSelectInput extends React.Component {
               DropdownIndicator,
               ClearIndicator,
               LoadingIndicator,
+              MultiValueRemove: TagRemove,
             }}
             classNamePrefix="react-select"
             onChange={(value, info) => {
