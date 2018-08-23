@@ -9,6 +9,7 @@ import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 import { CaretDownIcon, CloseIcon } from '../../icons';
 import '../select-input/select-input.css';
+import LoadingSpinner from '../../loading-spinner';
 import messages from './messages';
 
 // These are duplicated from SelectInput
@@ -33,6 +34,9 @@ ClearIndicator.propTypes = {
   innerProps: PropTypes.object,
   isDisabled: PropTypes.bool,
 };
+
+const LoadingIndicator = () => <LoadingSpinner scale="s" />;
+LoadingIndicator.displayName = 'LoadingIndicator';
 
 export class AsyncCreatableSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
@@ -104,6 +108,7 @@ export class AsyncCreatableSelectInput extends React.Component {
             components={{
               DropdownIndicator,
               ClearIndicator,
+              LoadingIndicator,
             }}
             classNamePrefix="react-select"
             onChange={(value, info) => {
