@@ -94,7 +94,7 @@ class AsyncCreatableSelectInputStory extends React.Component {
                   );
                   return (
                     <Spacings.Stack scale="l">
-                      <div>
+                      <Spacings.Stack scale="xs">
                         <AsyncCreatableSelectInput
                           name="category"
                           isMulti={isMulti}
@@ -129,7 +129,7 @@ class AsyncCreatableSelectInputStory extends React.Component {
                           isTouched && (
                             <ErrorMessage>Category is required</ErrorMessage>
                           )}
-                      </div>
+                      </Spacings.Stack>
                       <div>
                         <button
                           onClick={() => {
