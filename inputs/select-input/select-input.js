@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import { defaultMemoize } from 'reselect';
+import has from 'lodash.has';
+import flatMap from 'lodash.flatmap';
 import classnames from 'classnames';
 import Select, { components } from 'react-select';
 import omit from 'lodash.omit';
@@ -66,9 +67,14 @@ export class SelectInput extends React.Component {
     isDisabled: PropTypes.bool,
     isMulti: PropTypes.bool,
     options: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.string.isRequired,
-      })
+      PropTypes.oneOfType([
+        PropTypes.shape({ value: PropTypes.string.isRequired }),
+        PropTypes.shape({
+          options: PropTypes.arrayOf(
+            PropTypes.shape({ value: PropTypes.string.isRequired })
+          ),
+        }),
+      ])
     ),
     noOptionsMessage: PropTypes.func,
     intl: PropTypes.shape({
@@ -78,15 +84,32 @@ export class SelectInput extends React.Component {
     hasWarning: PropTypes.bool,
   };
 
-  // memoizing as this could get slow (~6ms for 1000 checked values)
-  // We can improve the algorithm more in case this becomes an issue, but taking
-  // the hit once and relying on memoization afterwards should be enough for now
-  getSelectedOptions = defaultMemoize(
-    (isMulti, options, value) =>
-      isMulti
-        ? options.filter(option => value.includes(option.value))
-        : options.find(option => option.value === value)
-  );
+  state = { selectedOptions: [] };
+
+  static getDerivedStateFromProps = props => {
+    // Options can be grouped as
+    //   const colourOptions = [{ value: 'green', label: 'Green' }];
+    //   const flavourOptions = [{ value: 'vanilla', label: 'Vanilla' }];
+    //   const groupedOptions = [
+    //     { label: 'Colours', options: colourOptions },
+    //     { label: 'Flavours', options: flavourOptions },
+    //   ];
+    // So we "ungroup" the options by merging them all into one list first.
+    const optionsWithoutGroups = flatMap(
+      props.options,
+      option => (has(option, 'value') ? option : option.options)
+    );
+
+    return {
+      selectedOptions: props.isMulti
+        ? optionsWithoutGroups.filter(option =>
+            props.value.includes(option.value)
+          )
+        : optionsWithoutGroups.find(
+            option => has(option, 'value') && option.value === props.value
+          ),
+    };
+  };
 
   render() {
     return (
@@ -128,11 +151,7 @@ export class SelectInput extends React.Component {
                 persist: () => {},
               })
             }
-            value={this.getSelectedOptions(
-              this.props.isMulti,
-              this.props.options,
-              this.props.value
-            )}
+            value={this.state.selectedOptions}
             onBlur={
               typeof this.props.onBlur === 'function'
                 ? () => {
