@@ -19,7 +19,7 @@ const hasErrors = errors => Object.values(errors).some(Boolean);
 class TextField extends React.Component {
   static displayName = 'TextField';
 
-  static isEmpty = value => !value || value.trim().length === 0;
+  static isEmpty = TextInput.isEmpty;
 
   static propTypes = {
     // TextField
