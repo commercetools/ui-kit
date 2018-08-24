@@ -16,8 +16,6 @@ const isObject = obj => typeof obj === 'object';
 
 const hasErrors = errors => Object.values(errors).some(Boolean);
 
-const isKnownError = error => error === 'missing';
-
 class TextField extends React.Component {
   static displayName = 'TextField';
 
@@ -75,6 +73,41 @@ class TextField extends React.Component {
     })(),
   });
 
+  renderErrors = () => {
+    if (!this.props.isTouched) return null;
+    if (!isObject(this.props.errors)) return null;
+
+    return (
+      Object.entries(this.props.errors)
+        // Only render errors which have truthy values, to avoid
+        // rendering an error for, e.g. { missing: false }
+        .filter(([, error]) => error)
+        .map(([key, error]) => {
+          // We might not a custom error render, so we fall back to null
+          // to enable the default errors to kick in
+          const errorComponent = this.props.renderError
+            ? this.props.renderError(key, error)
+            : null;
+          // Render a custom error if one was provided.
+          // Custom errors take precedence over the known errors
+          if (errorComponent)
+            return <ErrorMessage key={key}>{errorComponent}</ErrorMessage>;
+          // Try to see if we know this error and render that error instead then
+          if (key === 'missing')
+            return (
+              <ErrorMessage key={key}>
+                <FormattedMessage {...messages.missingRequiredField} />
+              </ErrorMessage>
+            );
+          // Render nothing in case the error is not known and no custom error
+          // was returned
+          // The input element will still have the red border to indicate an
+          // error in this case.
+          return null;
+        })
+    );
+  };
+
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
@@ -105,29 +138,7 @@ class TextField extends React.Component {
               horizontalConstraint="scale"
               {...filterDataAttributes(this.props)}
             />
-            {this.props.isTouched &&
-              isObject(this.props.errors) &&
-              this.props.errors.missing && (
-                <ErrorMessage>
-                  <FormattedMessage {...messages.missingRequiredField} />
-                </ErrorMessage>
-              )}
-            {this.props.isTouched &&
-              this.props.renderError &&
-              isObject(this.props.errors) &&
-              Object.entries(this.props.errors)
-                // Only render errors which have truthy values, to avoid
-                // rendering an error for, e.g. { missing: false }
-                // Also avoid rendering custom messages for known errors.
-                .filter(([key, error]) => !isKnownError(key) && error)
-                .map(([key, error]) => {
-                  const errorComponent = this.props.renderError(key, error);
-                  // Avoid rendering an ErrorMessage with no children as it
-                  // leads to a prop-type warning
-                  return errorComponent ? (
-                    <ErrorMessage key={key}>{errorComponent}</ErrorMessage>
-                  ) : null;
-                })}
+            {this.renderErrors()}
           </Spacings.Stack>
         </Spacings.Stack>
       </Constraints.Horizontal>
