@@ -17,7 +17,8 @@ import TextInput from '@commercetools-frontend/ui-kit/inputs/text-input';
 
 | Props                  | Type     | Required | Values                             | Default | Description                                                                                            |
 | ---------------------- | -------- | :------: | ---------------------------------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| `name`                 | `string` |    ✅    | -                                  | -       | Used as HTML `name` property                                                                           |
+| `id`                   | `string` |    -     | -                                  | -       | Used as HTML `id` property                                                                             |
+| `name`                 | `string` |    -     | -                                  | -       | Used as HTML `name` property                                                                           |
 | `value`                | `string` |    ✅    | -                                  | -       | Value of the input                                                                                     |
 | `onChange`             | `func`   |    -     | -                                  | -       | Called with the new value. Required when input is not read only. Parent should pass it back as `value` |
 | `onBlur`               | `func`   |    -     | -                                  | -       | Called when field is blurred                                                                           |
