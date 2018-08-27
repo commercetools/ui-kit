@@ -123,6 +123,7 @@ export class TimeInput extends React.PureComponent {
   static displayName = 'TimeInput';
 
   static propTypes = {
+    id: PropTypes.string,
     shouldInitializeOnMount: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isInvalid: PropTypes.bool,
@@ -327,6 +328,7 @@ export class TimeInput extends React.PureComponent {
           ref={this.getRef}
         >
           <DatePickerBody
+            id={this.props.id}
             formattedValue={
               this.props.value &&
               this.getFormattedValue(
