@@ -27,6 +27,7 @@ storiesOf('Inputs', module)
             defaultValue="2017-12-31"
             render={(value, onChange) => (
               <DateInput
+                id={text('id', '')}
                 placeholder={text('placeholder', 'Select a date...')}
                 mode={select('mode', ['single', 'multiple', 'range'], 'single')}
                 isDisabled={boolean('isDisabled', false)}
