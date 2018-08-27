@@ -4,6 +4,7 @@ import {
   LocalizedMultilineTextInput,
   sortRemainingLanguages,
 } from './localized-multiline-text-input';
+import TranslationInput from './translation-input';
 
 const createTestProps = custom => ({
   value: { en: 'Horse', de: 'Pferd' },
@@ -213,6 +214,12 @@ describe('rendering', () => {
       expect(wrapper).toRender({ name: 'foo.en' });
       expect(wrapper).toRender({ name: 'foo.de' });
       expect(wrapper).toRender({ name: 'foo.es' });
+    });
+    it('should not render the collapse button', () => {
+      expect(wrapper.find(TranslationInput).last()).toHaveProp(
+        'languagesControl',
+        null
+      );
     });
   });
 

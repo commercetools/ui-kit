@@ -251,7 +251,8 @@ export class LocalizedMultilineTextInput extends React.Component {
                 isDisabled={this.props.isDisabled}
                 isReadOnly={this.props.isReadOnly}
                 languagesControl={(() => {
-                  if (!hasRemainingLanguages) return null;
+                  if (!hasRemainingLanguages || this.props.hideLanguageControls)
+                    return null;
                   if (isFirstLanguage && !this.state.areLanguagesOpened)
                     return (
                       <LanguagesControl
