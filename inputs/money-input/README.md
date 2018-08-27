@@ -96,6 +96,26 @@ MoneyInput.isEmpty(); // -> true
 MoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> false
 ```
 
+#### `MoneyInput.getCurrencyDropdownId`
+
+##### `getCurrencyDropdownId(idPrefix)`
+
+Returns the `id` of the currency dropdown. This is useful in case you want to create a label for the input field. You can use it as
+
+```js
+MoneyInput.getCurrencyDropdownId('price');
+// -> "price.currencyCode"
+```
+
+##### `getAmountInputId(idPrefix)`
+
+Returns the `id` of the amount input. This is useful in case you want to create a label for the input field. You can use it as
+
+```js
+MoneyInput.getAmountInputId('price');
+// -> "price.amount"
+```
+
 #### `MoneyInput.isHighPrecision`
 
 The `isHighPrecision` function will return `true` when a `MoneyInput` value is passed for which the number of fraction digits of the amount exceeds the number of fraction digits the supplied currency usually uses.
