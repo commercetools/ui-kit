@@ -12,6 +12,7 @@ import styles from './accessible-button.mod.css';
 export default class AccessibleButton extends React.PureComponent {
   static displayName = 'AccessibleButton';
   static propTypes = {
+    id: PropTypes.string,
     label: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     // set to true or false to indicate a toggle button
@@ -50,6 +51,7 @@ export default class AccessibleButton extends React.PureComponent {
 
     return (
       <button
+        id={this.props.id}
         ref={this.props.buttonRef}
         type="button"
         aria-label={this.props.label}
