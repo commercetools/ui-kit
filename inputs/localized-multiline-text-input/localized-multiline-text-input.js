@@ -33,7 +33,7 @@ const splitLanguagesByPrimaryLanguage = (key, languages) =>
   );
 
 // sorts the languages with the following priority:
-// - The selected language is excluced (e.g pt-BR)
+// - The selected language is excluded (e.g pt-BR)
 // - All languages using the same primary language as the selected language follow (e.g. pt, pt-PT).
 //   They are sorted alphabetically
 // - All other languages follow, sorted alphabetically

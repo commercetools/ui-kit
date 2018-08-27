@@ -2,7 +2,7 @@
 
 #### Description
 
-A controlled text input component for localized single-line strings with validation
+A controlled text input component for localized multi-line strings with validation
 states.
 
 ## Usage
