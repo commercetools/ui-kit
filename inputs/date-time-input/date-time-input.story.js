@@ -28,6 +28,7 @@ storiesOf('Inputs', module)
             render={(value, onChange) => (
               <DateTimeInput
                 key={`${locale}-${timeZone}`}
+                id={text('id', '')}
                 placeholder={text('placeholder', 'Select a date...')}
                 mode={select('mode', ['single', 'multiple', 'range'], 'single')}
                 isDisabled={boolean('isDisabled', false)}

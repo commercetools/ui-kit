@@ -71,6 +71,7 @@ export class DatePickerBody extends React.PureComponent {
   static displayName = 'DatePickerBody';
 
   static propTypes = {
+    id: PropTypes.string,
     formattedValue: PropTypes.string,
     isDisabled: PropTypes.bool,
     isInvalid: PropTypes.bool,
@@ -97,6 +98,7 @@ export class DatePickerBody extends React.PureComponent {
           )}
         >
           <input
+            id={this.props.id}
             className={classnames(styles['date-input'], {
               [styles.invalid]: this.props.isInvalid,
             })}
