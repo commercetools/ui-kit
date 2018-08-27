@@ -102,19 +102,7 @@ export default class TranslationInput extends React.Component {
             id={this.props.id}
             name={this.props.name}
             type="text"
-            value={
-              // We show "..." to indicate that there is more text, so that
-              // users can distinguish between single-line text and
-              // multi-line text easily
-              // We are aware that this approach only works in case the first
-              // line does not overflow.
-              this.props.isCollapsed && this.props.value.trim() !== ''
-                ? `${this.props.value
-                    .split('\n')
-                    .slice(0, TranslationInput.MIN_ROW_COUNT)
-                    .join('\n')}...`
-                : this.props.value
-            }
+            value={this.props.value}
             onChange={this.handleChange}
             onHeightChange={this.handleHeightChange}
             onBlur={this.props.onBlur}
