@@ -30,7 +30,8 @@ storiesOf('Inputs', module)
             }}
             render={(value, onChange) => (
               <MoneyInput
-                name={text('name')}
+                id={text('id', '')}
+                name={text('name', '')}
                 value={value}
                 currencies={boolean('dropdown', true) ? currencies : undefined}
                 placeholder={text('placeholder', 'Placeholder')}

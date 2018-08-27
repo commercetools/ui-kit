@@ -151,11 +151,6 @@ class LocalizedInput extends React.Component {
   }
 }
 
-const getId = (idPrefix, language) =>
-  idPrefix ? `${idPrefix}.${language}` : undefined;
-const getName = (namePrefix, language) =>
-  namePrefix ? `${namePrefix}.${language}` : undefined;
-
 const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) =>
   errors && without(Object.keys(errors), selectedLanguage).length > 0;
 
@@ -171,6 +166,11 @@ export default class LocalizedTextInput extends React.Component {
   static displayName = 'LocalizedTextInput';
 
   static RequiredValueErrorMessage = RequiredValueErrorMessage;
+
+  static getId = (idPrefix, language) =>
+    idPrefix ? `${idPrefix}.${language}` : undefined;
+  static getName = (namePrefix, language) =>
+    namePrefix ? `${namePrefix}.${language}` : undefined;
 
   static propTypes = {
     id: PropTypes.string,
@@ -297,8 +297,8 @@ export default class LocalizedTextInput extends React.Component {
               <div key={language}>
                 <Spacings.Stack scale="xs">
                   <LocalizedInput
-                    id={getId(this.props.id, language)}
-                    name={getName(this.props.name, language)}
+                    id={LocalizedTextInput.getId(this.props.id, language)}
+                    name={LocalizedTextInput.getName(this.props.name, language)}
                     value={this.props.value[language]}
                     onChange={this.props.onChange}
                     language={language}

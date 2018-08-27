@@ -135,6 +135,34 @@ describe('omitEmptyTranslations', () => {
   });
 });
 
+describe('getId', () => {
+  describe('when a prefix is given', () => {
+    it('should return the joined prefix and language', () => {
+      expect(LocalizedTextInput.getId('foo', 'en')).toEqual('foo.en');
+    });
+  });
+  describe('when no prefix is given', () => {
+    it('should not return an id', () => {
+      expect(LocalizedTextInput.getId(undefined, 'en')).toBe(undefined);
+      expect(LocalizedTextInput.getId()).toBe(undefined);
+    });
+  });
+});
+
+describe('getName', () => {
+  describe('when a prefix is given', () => {
+    it('should return the joined prefix and name', () => {
+      expect(LocalizedTextInput.getName('foo', 'en')).toEqual('foo.en');
+    });
+  });
+  describe('when no prefix is given', () => {
+    it('should not return a name', () => {
+      expect(LocalizedTextInput.getName(undefined, 'en')).toBe(undefined);
+      expect(LocalizedTextInput.getName()).toBe(undefined);
+    });
+  });
+});
+
 describe('rendering', () => {
   let wrapper;
   let props;

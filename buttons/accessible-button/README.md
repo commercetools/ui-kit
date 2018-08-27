@@ -41,12 +41,13 @@ export default Button;
 
 | Property         | Type     | Required? | Description                                                                                                   |
 | :--------------- | :------- | :-------: | :------------------------------------------------------------------------------------------------------------ |
+| id               | String   |     -     | Used as the HTML `id` attribute.                                                                              |
 | label            | String   |     ✓     | The text that should be used as `aria-label`                                                                  |
 | onClick          | Function |     ✓     | Callback that is called when the button is clicked                                                            |
-| isToggled        | Bool     |           | Set this prop to indicate a toggle button and it's state                                                      |
-| isDisabled       | Bool     |           | Set this prop to indicate a disabled button                                                                   |
-| className        | String   |           | Will be applied to the `<button/>` to allow for custom styling                                                |
-| buttonAttributes | Object   |           | Attributes to be applied to the `<button/>` element. Can be use to e.g. add data-\* attributes to the button. |
+| isToggled        | Bool     |     -     | Set this prop to indicate a toggle button and it's state                                                      |
+| isDisabled       | Bool     |     -     | Set this prop to indicate a disabled button                                                                   |
+| className        | String   |     -     | Will be applied to the `<button/>` to allow for custom styling                                                |
+| buttonAttributes | Object   |     -     | Attributes to be applied to the `<button/>` element. Can be use to e.g. add data-\* attributes to the button. |
 
 ## How does it work?
 
