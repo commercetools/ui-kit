@@ -17,6 +17,7 @@ storiesOf('Inputs', module)
         defaultValue=""
         render={(value, onChange) => (
           <PasswordInput
+            id={text('id', '')}
             name={text('name', 'password')}
             value={text('value', value)}
             autoComplete={select('autoComplete', [

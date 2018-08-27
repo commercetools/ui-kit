@@ -22,6 +22,7 @@ const PasswordInput = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <div className={styles.container}>
       <input
+        id={props.id}
         name={props.name}
         type={props.isPasswordVisible ? 'text' : 'password'}
         value={props.value}
@@ -46,6 +47,7 @@ const PasswordInput = props => (
 PasswordInput.displayName = 'PasswordInput';
 
 PasswordInput.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
