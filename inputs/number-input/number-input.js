@@ -23,6 +23,7 @@ const NumberInput = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <div className={styles.container}>
       <input
+        id={props.id}
         name={props.name}
         type="number"
         value={props.value}
@@ -50,6 +51,7 @@ const NumberInput = props => (
 NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   min: PropTypes.number,
