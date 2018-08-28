@@ -4,49 +4,15 @@ import { injectIntl } from 'react-intl';
 import has from 'lodash.has';
 import flatMap from 'lodash.flatmap';
 import classnames from 'classnames';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
-import { CaretDownIcon, CloseBoldIcon, CloseIcon } from '../../icons';
-import './select-input.css';
+import ClearIndicator from '../../internals/clear-indicator';
+import DropdownIndicator from '../../internals/dropdown-indicator';
+import TagRemove from '../../internals/tag-remove';
+import '../../internals/select.css';
 import messages from './messages';
-
-const DropdownIndicator = props =>
-  components.DropdownIndicator && (
-    <components.DropdownIndicator {...props}>
-      {/* FIXME: add proper tone when tones are refactored */}
-      <CaretDownIcon theme={props.isDisabled && 'grey'} size="small" />
-    </components.DropdownIndicator>
-  );
-
-const ClearIndicator = props => (
-  <div className="react-select__clear-indicator" {...props.innerProps}>
-    {/* FIXME: add proper tone when tones are refactored */}
-    <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
-  </div>
-);
-
-ClearIndicator.displayName = 'ClearIndicator';
-
-ClearIndicator.propTypes = {
-  innerProps: PropTypes.object,
-  isDisabled: PropTypes.bool,
-};
-
-const TagRemove = props => (
-  <div {...props.innerProps}>
-    <CloseBoldIcon size="medium" />
-  </div>
-);
-
-TagRemove.displayName = 'TagRemove';
-
-TagRemove.propTypes = {
-  innerProps: PropTypes.object,
-};
-
-// TODO: add tokens from <Tag /> to tags
 
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';

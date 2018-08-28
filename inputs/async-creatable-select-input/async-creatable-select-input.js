@@ -3,47 +3,15 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import omit from 'lodash.omit';
 import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
-import { components } from 'react-select';
 import classnames from 'classnames';
 import Constraints from '../../materials/constraints';
 import filterDataAttributes from '../../utils/filter-data-attributes';
-import { CaretDownIcon, CloseBoldIcon, CloseIcon } from '../../icons';
-import '../select-input/select-input.css';
-import LoadingSpinner from '../../loading-spinner';
+import LoadingIndicator from '../../internals/loading-indicator';
+import ClearIndicator from '../../internals/clear-indicator';
+import DropdownIndicator from '../../internals/dropdown-indicator';
+import TagRemove from '../../internals/tag-remove';
+import '../../internals/select.css';
 import messages from './messages';
-
-// These are duplicated from SelectInput
-const DropdownIndicator = props =>
-  components.DropdownIndicator && (
-    <components.DropdownIndicator {...props}>
-      {/* FIXME: add proper tone when tones are refactored */}
-      <CaretDownIcon theme={props.isDisabled && 'grey'} size="small" />
-    </components.DropdownIndicator>
-  );
-DropdownIndicator.displayName = 'DropdownIndicator';
-
-const ClearIndicator = props => (
-  <div className="react-select__clear-indicator" {...props.innerProps}>
-    {/* FIXME: add proper tone when tones are refactored */}
-    <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
-  </div>
-);
-ClearIndicator.displayName = 'ClearIndicator';
-ClearIndicator.propTypes = {
-  innerProps: PropTypes.object,
-  isDisabled: PropTypes.bool,
-};
-
-const TagRemove = props => (
-  <div {...props.innerProps}>
-    <CloseBoldIcon size="medium" />
-  </div>
-);
-TagRemove.displayName = 'TagRemove';
-TagRemove.propTypes = { innerProps: PropTypes.object };
-
-const LoadingIndicator = () => <LoadingSpinner scale="s" />;
-LoadingIndicator.displayName = 'LoadingIndicator';
 
 export class AsyncCreatableSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
