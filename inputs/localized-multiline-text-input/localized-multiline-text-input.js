@@ -1,78 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'invariant';
 import requiredIf from 'react-required-if';
-import uniq from 'lodash.uniq';
 import mapValues from 'lodash.mapvalues';
-import without from 'lodash.without';
 import oneLine from 'common-tags/lib/oneLine';
 import { injectIntl } from 'react-intl';
-import filterDataAttributes from '../../utils/filter-data-attributes';
 import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';
+import {
+  sortRemainingLanguages,
+  createLocalizedDataAttributes,
+  getHasErrorOnRemainingLanguages,
+  isTouched,
+  omitEmptyTranslations,
+  isEmpty,
+  createLocalizedString,
+  getId,
+  getName,
+} from '../../utils/localized';
 import LanguagesControl from './languages-control';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
-
-const getPrimaryLanguage = language => language.split('-')[0];
-
-// splits the languages into two groups:
-//  - the first group starts with the same tag as the selected language
-//  - the second group starts with a different tag
-const splitLanguagesByPrimaryLanguage = (key, languages) =>
-  languages.reduce(
-    (groupedLanguages, language) => {
-      if (key === getPrimaryLanguage(language)) {
-        groupedLanguages[0].push(language);
-      } else {
-        groupedLanguages[1].push(language);
-      }
-      return groupedLanguages;
-    },
-    [[], []]
-  );
-
-// sorts the languages with the following priority:
-// - The selected language is excluded (e.g pt-BR)
-// - All languages using the same primary language as the selected language follow (e.g. pt, pt-PT).
-//   They are sorted alphabetically
-// - All other languages follow, sorted alphabetically
-export const sortRemainingLanguages = (selectedLanguage, allLanguages) => {
-  const remainingLanguages = without(allLanguages, selectedLanguage);
-
-  const selectedLanguageKey = getPrimaryLanguage(selectedLanguage);
-
-  const [
-    languagesWithSameKeyAsSelectedLanguage,
-    otherLanguages,
-  ] = splitLanguagesByPrimaryLanguage(selectedLanguageKey, remainingLanguages);
-
-  return [
-    ...languagesWithSameKeyAsSelectedLanguage.sort(),
-    ...otherLanguages.sort(),
-  ];
-};
-
-const createDataAttributes = (props, language) =>
-  Object.entries(filterDataAttributes(props)).reduce((acc, [key, value]) => {
-    switch (key) {
-      case 'data-track-component':
-      case 'data-test':
-        acc[key] = `${value}-${language}`;
-        break;
-      default:
-        acc[key] = value;
-    }
-    return acc;
-  }, {});
-
-const getId = (idPrefix, language) =>
-  idPrefix ? `${idPrefix}.${language}` : undefined;
-const getName = (namePrefix, language) =>
-  namePrefix ? `${namePrefix}.${language}` : undefined;
-
-const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) =>
-  errors && without(Object.keys(errors), selectedLanguage).length > 0;
 
 // This component supports expanding/collapsing multiline inputs, but it also
 // supports showing/hiding the remaining languages.
@@ -122,48 +69,21 @@ export class LocalizedMultilineTextInput extends React.Component {
     }).isRequired,
   };
 
+  static getId = getId;
+
+  static getName = getName;
+
   static defaultProps = {
     horizontalConstraint: 'scale',
   };
 
-  static createLocalizedString = (languages, existingTranslations = {}) => {
-    const mergedLanguages = existingTranslations
-      ? uniq([...languages, ...Object.keys(existingTranslations)])
-      : languages;
+  static createLocalizedString = createLocalizedString;
 
-    return mergedLanguages.reduce((localizedString, language) => {
-      // eslint-disable-next-line no-param-reassign
-      localizedString[language] =
-        (existingTranslations && existingTranslations[language]) || '';
-      return localizedString;
-    }, {});
-  };
+  static isEmpty = isEmpty;
 
-  static isEmpty = localizedString => {
-    if (!localizedString) return true;
-    return Object.values(localizedString).every(
-      value => !value || value.trim().length === 0
-    );
-  };
+  static omitEmptyTranslations = omitEmptyTranslations;
 
-  static omitEmptyTranslations = localizedString => {
-    invariant(
-      typeof localizedString === 'object',
-      'omitEmptyTranslations must be called with an object'
-    );
-    return Object.entries(localizedString).reduce(
-      (localizedStringWithoutEmptyTranslations, [language, value]) => {
-        if (value && value.trim().length > 0) {
-          // eslint-disable-next-line no-param-reassign
-          localizedStringWithoutEmptyTranslations[language] = value;
-        }
-        return localizedStringWithoutEmptyTranslations;
-      },
-      {}
-    );
-  };
-
-  static isTouched = touched => touched && Object.values(touched).some(Boolean);
+  static isTouched = isTouched;
 
   state = {
     // This state is used to show/hide the remaining translations
@@ -233,8 +153,11 @@ export class LocalizedMultilineTextInput extends React.Component {
             return (
               <TranslationInput
                 key={language}
-                id={getId(this.props.id, language)}
-                name={getName(this.props.name, language)}
+                id={LocalizedMultilineTextInput.getId(this.props.id, language)}
+                name={LocalizedMultilineTextInput.getName(
+                  this.props.name,
+                  language
+                )}
                 value={this.props.value[language]}
                 onChange={this.props.onChange}
                 language={language}
@@ -291,7 +214,7 @@ export class LocalizedMultilineTextInput extends React.Component {
                 )}
                 intl={this.props.intl}
                 error={this.props.errors && this.props.errors[language]}
-                {...createDataAttributes(this.props, language)}
+                {...createLocalizedDataAttributes(this.props, language)}
               />
             );
           })}
