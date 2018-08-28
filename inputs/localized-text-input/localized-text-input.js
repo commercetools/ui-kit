@@ -239,23 +239,33 @@ export default class LocalizedTextInput extends React.Component {
                     {...createLocalizedDataAttributes(this.props, language)}
                   />
                   {this.props.errors && this.props.errors[language]}
-                  {hasRemainingLanguages &&
-                    isFirstLanguage &&
-                    !this.state.areLanguagesOpened && (
-                      <LanguagesButton
-                        onClick={this.toggleLanguages}
-                        remainingLanguages={languages.length - 1}
-                      />
-                    )}
-                  {hasRemainingLanguages &&
-                    isLastLanguage && (
-                      <LanguagesButton
-                        onClick={this.toggleLanguages}
-                        isOpen={true}
-                        remainingLanguages={languages.length - 1}
-                        isDisabled={hasErrorOnRemainingLanguages}
-                      />
-                    )}
+                  {(() => {
+                    if (
+                      !hasRemainingLanguages ||
+                      this.props.hideExpansionControls
+                    )
+                      return null;
+
+                    if (isFirstLanguage && !this.state.areLanguagesOpened)
+                      return (
+                        <LanguagesButton
+                          onClick={this.toggleLanguages}
+                          remainingLanguages={languages.length - 1}
+                        />
+                      );
+
+                    if (isLastLanguage)
+                      return (
+                        <LanguagesButton
+                          onClick={this.toggleLanguages}
+                          isOpen={true}
+                          remainingLanguages={languages.length - 1}
+                          isDisabled={hasErrorOnRemainingLanguages}
+                        />
+                      );
+
+                    return null;
+                  })()}
                 </Spacings.Stack>
               </div>
             );
