@@ -7,7 +7,7 @@ import { injectIntl } from 'react-intl';
 import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';
 import {
-  sortRemainingLanguages,
+  sortLanguages,
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
   isTouched,
@@ -131,11 +131,10 @@ export class LocalizedMultilineTextInput extends React.Component {
   };
 
   render() {
-    const remainingLanguages = sortRemainingLanguages(
+    const languages = sortLanguages(
       this.props.selectedLanguage,
       Object.keys(this.props.value)
     );
-    const languages = [this.props.selectedLanguage, ...remainingLanguages];
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="s">
@@ -143,7 +142,7 @@ export class LocalizedMultilineTextInput extends React.Component {
             const isFirstLanguage = index === 0;
             if (!isFirstLanguage && !this.state.areLanguagesOpened) return null;
             const isLastLanguage = index === languages.length - 1;
-            const hasRemainingLanguages = remainingLanguages.length > 0;
+            const hasRemainingLanguages = languages.length > 1;
             const hasErrorOnRemainingLanguages =
               this.props.hasError ||
               getHasErrorOnRemainingLanguages(
@@ -193,14 +192,14 @@ export class LocalizedMultilineTextInput extends React.Component {
                           }
                           this.toggleLanguages();
                         }}
-                        remainingLanguages={remainingLanguages.length}
+                        remainingLanguages={languages.length - 1}
                       />
                     );
                   if (isLastLanguage)
                     return (
                       <LanguagesControl
                         onClick={this.toggleLanguages}
-                        remainingLanguages={remainingLanguages.length}
+                        remainingLanguages={languages.length - 1}
                         isDisabled={Boolean(
                           this.props.hasError || hasErrorOnRemainingLanguages
                         )}

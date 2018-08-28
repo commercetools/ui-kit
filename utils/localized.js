@@ -13,38 +13,33 @@ export const getPrimaryLanguage = language => language.split('-')[0];
 // splits the languages into two groups:
 //  - the first group starts with the same tag as the selected language
 //  - the second group starts with a different tag
-export const splitLanguagesByPrimaryLanguage = (key, languages) => {
-  const primaryLanguage = getPrimaryLanguage(key);
+export const splitLanguages = (selectedLanguage, languages) => {
+  const primaryLanguage = getPrimaryLanguage(selectedLanguage);
   return languages.reduce(
-    (groupedLanguages, language) => {
+    (groups, language) => {
       if (primaryLanguage === getPrimaryLanguage(language)) {
-        groupedLanguages[0].push(language);
+        groups.related.push(language);
       } else {
-        groupedLanguages[1].push(language);
+        groups.unrelated.push(language);
       }
-      return groupedLanguages;
+      return groups;
     },
-    [[], []]
+    { related: [], unrelated: [] }
   );
 };
 
 // sorts the languages with the following priority:
-// - The selected language is excluded (e.g pt-BR)
-// - All languages using the same primary language as the selected language follow (e.g. pt, pt-PT).
-//   They are sorted alphabetically
-// - All other languages follow, sorted alphabetically
-export const sortRemainingLanguages = (selectedLanguage, allLanguages) => {
-  const remainingLanguages = without(allLanguages, selectedLanguage);
+// - The selected language is placed first (e.g pt-BR)
+// - All languages using the same primary language as the selected language
+//   follow (e.g. pt, pt-PT). They are sorted alphabetically.
+// - All other languages follow, sorted alphabetically as well
+export const sortLanguages = (selectedLanguage, allLanguages) => {
+  const { related, unrelated } = splitLanguages(
+    selectedLanguage,
+    without(allLanguages, selectedLanguage)
+  );
 
-  const [
-    languagesWithSameKeyAsSelectedLanguage,
-    otherLanguages,
-  ] = splitLanguagesByPrimaryLanguage(selectedLanguage, remainingLanguages);
-
-  return [
-    ...languagesWithSameKeyAsSelectedLanguage.sort(),
-    ...otherLanguages.sort(),
-  ];
+  return [selectedLanguage, ...related.sort(), ...unrelated.sort()];
 };
 
 export const createLocalizedDataAttributes = (props, language) =>

@@ -9,7 +9,7 @@ import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';
 import Text from '../../typography/text';
 import {
-  sortRemainingLanguages,
+  sortLanguages,
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
   isTouched,
@@ -194,18 +194,17 @@ export default class LocalizedTextInput extends React.Component {
     }));
 
   render() {
-    const remainingLanguages = sortRemainingLanguages(
+    const languages = sortLanguages(
       this.props.selectedLanguage,
       Object.keys(this.props.value)
     );
-    const languages = [this.props.selectedLanguage, ...remainingLanguages];
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack>
           {languages.map((language, index) => {
             const isFirstLanguage = index === 0;
             const isLastLanguage = index === languages.length - 1;
-            const hasRemainingLanguages = remainingLanguages.length > 0;
+            const hasRemainingLanguages = languages.length > 1;
             const hasErrorOnRemainingLanguages =
               this.props.hasError ||
               getHasErrorOnRemainingLanguages(
@@ -245,7 +244,7 @@ export default class LocalizedTextInput extends React.Component {
                     !this.state.areLanguagesOpened && (
                       <LanguagesButton
                         onClick={this.toggleLanguages}
-                        remainingLanguages={remainingLanguages.length}
+                        remainingLanguages={languages.length - 1}
                       />
                     )}
                   {hasRemainingLanguages &&
@@ -253,7 +252,7 @@ export default class LocalizedTextInput extends React.Component {
                       <LanguagesButton
                         onClick={this.toggleLanguages}
                         isOpen={true}
-                        remainingLanguages={remainingLanguages.length}
+                        remainingLanguages={languages.length - 1}
                         isDisabled={hasErrorOnRemainingLanguages}
                       />
                     )}

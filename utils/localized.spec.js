@@ -2,8 +2,8 @@ import {
   getId,
   getName,
   getPrimaryLanguage,
-  splitLanguagesByPrimaryLanguage,
-  sortRemainingLanguages,
+  splitLanguages,
+  sortLanguages,
   createLocalizedString,
   omitEmptyTranslations,
   isEmpty,
@@ -55,71 +55,47 @@ describe('getPrimaryLanguage', () => {
   });
 });
 
-describe('splitLanguagesByPrimaryLanguage', () => {
+describe('splitLanguages', () => {
   // the first group contains language tags with the same primary language,
   // the second group contains the remaining languages
   describe('when called with a primary language', () => {
     it('should split the languages into two groups', () => {
       expect(
-        splitLanguagesByPrimaryLanguage('de', [
-          'ar',
-          'de-AT',
-          'es',
-          'de',
-          'de-GB',
-          'en',
-        ])
-      ).toEqual([['de-AT', 'de', 'de-GB'], ['ar', 'es', 'en']]);
+        splitLanguages('de', ['ar', 'de-AT', 'es', 'de', 'de-GB', 'en'])
+      ).toEqual({
+        related: ['de-AT', 'de', 'de-GB'],
+        unrelated: ['ar', 'es', 'en'],
+      });
     });
   });
   describe('when called with a full language tag', () => {
     it('should split the languages into two groups', () => {
       expect(
-        splitLanguagesByPrimaryLanguage('de-AT', [
-          'ar',
-          'de-AT',
-          'es',
-          'de',
-          'de-GB',
-          'en',
-        ])
-      ).toEqual([['de-AT', 'de', 'de-GB'], ['ar', 'es', 'en']]);
+        splitLanguages('de-AT', ['ar', 'de-AT', 'es', 'de', 'de-GB', 'en'])
+      ).toEqual({
+        related: ['de-AT', 'de', 'de-GB'],
+        unrelated: ['ar', 'es', 'en'],
+      });
     });
   });
 });
 
-describe('sortRemainingLanguages', () => {
+describe('sortLanguages', () => {
   it('should put the selected language first', () => {
-    expect(sortRemainingLanguages('de', ['de', 'ar'])).toEqual(['ar']);
+    expect(sortLanguages('de', ['de', 'ar'])).toEqual(['de', 'ar']);
   });
   it('should sort the remaining languages alphabetically', () => {
     expect(
-      sortRemainingLanguages('de', ['en', 'cn', 'es', 'bu', 'de', 'ar', 'ru'])
-    ).toEqual(['ar', 'bu', 'cn', 'en', 'es', 'ru']);
+      sortLanguages('de', ['en', 'cn', 'es', 'bu', 'de', 'ar', 'ru'])
+    ).toEqual(['de', 'ar', 'bu', 'cn', 'en', 'es', 'ru']);
   });
   it('should move languages with the same language tag as the selected language to the beginning', () => {
     expect(
-      sortRemainingLanguages('pt', [
-        'en',
-        'pt-PT',
-        'bu',
-        'pt-BR',
-        'de',
-        'ru',
-        'pt',
-      ])
-    ).toEqual(['pt-BR', 'pt-PT', 'bu', 'de', 'en', 'ru']);
+      sortLanguages('pt', ['en', 'pt-PT', 'bu', 'pt-BR', 'de', 'ru', 'pt'])
+    ).toEqual(['pt', 'pt-BR', 'pt-PT', 'bu', 'de', 'en', 'ru']);
     expect(
-      sortRemainingLanguages('pt-BR', [
-        'en',
-        'pt-PT',
-        'bu',
-        'pt-BR',
-        'de',
-        'ru',
-        'pt',
-      ])
-    ).toEqual(['pt', 'pt-PT', 'bu', 'de', 'en', 'ru']);
+      sortLanguages('pt-BR', ['en', 'pt-PT', 'bu', 'pt-BR', 'de', 'ru', 'pt'])
+    ).toEqual(['pt-BR', 'pt', 'pt-PT', 'bu', 'de', 'en', 'ru']);
   });
 });
 
