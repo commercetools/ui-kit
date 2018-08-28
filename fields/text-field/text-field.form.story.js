@@ -18,8 +18,8 @@ import TextField from './text-field';
 //  - Click the "Username" label and see how the input is focused automatically
 //  - Type a username with a space in it
 //  - Type a username which exceeds ten characters
-//  - Type a which exceeds ten characters and has a space in it
-//  - Play with the horizontalConstraint knob to see it influence the whole field
+//  - Type a username which exceeds ten characters and has a space in it
+//  - Play with the horizontalConstraint knob to see it influence the field
 
 storiesOf('Examples|Forms/Fields', module)
   .addDecorator(withKnobs)
