@@ -1,9 +1,0 @@
-{
-  "UIKit.DatePicker.labelRange": "bis",
-  "UIKit.LocalizedTextInput.missingRequiredField": "",
-  "UIKit.MoneyInput.chevronLabel": "Dropdown öffnen/schliessen",
-  "UIKit.TextArea.collapse": "Ausblenden",
-  "UIKit.TextArea.expand": "Erweitern",
-  "UIKit.TimeRangePicker.from": "Von",
-  "UIKit.TimeRangePicker.to": "Bis",
-}

@@ -12,7 +12,8 @@
     "prebuild": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
     "prestart": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
     "build": "build-storybook -s . -o .storybook/dist",
-    "start": "start-storybook -s . -p 9002"
+    "start": "start-storybook -s . -p 9002",
+    "i18n:build": "mc-scripts extract-intl --build-translations --output-path=$(pwd)/ui-kit-provider/i18n '**/!(*.spec).js'"
   },
   "dependencies": {
     "@storybook/addon-links": "3.4.8",
