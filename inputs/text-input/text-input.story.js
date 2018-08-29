@@ -17,6 +17,7 @@ storiesOf('Inputs', module)
         defaultValue=""
         render={(value, onChange) => (
           <TextInput
+            id={text('id', '')}
             name={text('name', '')}
             value={text('value', value)}
             onChange={event => {

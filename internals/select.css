@@ -1,9 +1,21 @@
-@import '../../materials/tokens/tokens.mod.css';
-@import '../../materials/transitions.mod.css';
-@import '../../materials/spacings.mod.css';
-@import '../../materials/shadows/base-shadows.mod.css';
+/*
+  ⚠️ These styles are used for
+    - SelectInput
+    - AsyncSelectInput
+    - CreatableSelectInput
+    - AsyncCreatableSelectInput
 
-/* These styles use selector specificity to determine importance  */
+  Always check all affected components when making changes here!
+*/
+@import '../materials/tokens/tokens.mod.css';
+@import '../materials/transitions.mod.css';
+@import '../materials/spacings.mod.css';
+@import '../materials/shadows/base-shadows.mod.css';
+
+/*
+  These styles use selector specificity to determine importance, otherwise
+  we'd have to use a bunch of !important statements
+*/
 
 /* Base  */
 
@@ -16,6 +28,7 @@
 
 .react-select .react-select__value-container {
   background-color: none;
+  overflow: hidden;
 }
 
 .react-select .react-select__control {
@@ -63,23 +76,24 @@
   background: none;
 }
 
+.react-select .react-select__indicators > * + * {
+  margin: 0;
+  padding: 0;
+  margin-left: var(--spacing-4);
+}
+
 .react-select .react-select__indicator-separator {
   display: none;
 }
 
-.react-select .react-select__indicator {
-  padding: 0;
-  margin: 0 var(--spacing-8) 0 0;
-}
-
 .react-select .react-select__dropdown-indicator {
   color: var(--token-font-color-default);
+  margin-right: var(--spacing-8);
 }
 
 /* Clear indicator  */
 .react-select .react-select__clear-indicator {
   display: flex;
-  margin: 0 var(--spacing-8) 0 0;
 }
 
 /* Menu */
@@ -114,6 +128,9 @@
 
 .react-select .react-select__option {
   transition: var(--transition-standard);
+  padding-left: var(--spacing-8);
+  padding-right: var(--spacing-8);
+  color: var(--token-font-size-default);
 }
 
 /* Disabled */
@@ -164,4 +181,23 @@
 .react-select .react-select__multi-value__remove:hover {
   background-color: var(--token-background-color-tags-normal-hover);
   box-shadow: var(--token-shadow-box-tags-hover);
+}
+
+/* Grouping */
+
+.react-select .react-select__group {
+  padding: 0;
+}
+
+.react-select .react-select__group:not(:first-child) .react-select__group-heading {
+  border-top: 1px var(--token-border-color-separator) solid;
+}
+
+.react-select .react-select__group-heading {
+  color: var(--token-font-color-readonly);
+  font-size: var(--token-font-size-small);
+  text-transform: none;
+  font-weight: bold;
+  margin: 0 var(--spacing-4);
+  padding: var(--spacing-8) var(--spacing-4) var(--spacing-4);
 }

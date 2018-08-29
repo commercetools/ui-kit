@@ -16,7 +16,8 @@ import NumberInput from '@commercetools-frontend/ui-kit/inputs/number-input';
 
 | Props                  | Type                 | Required | Values                             | Default | Description                                                                                            |
 | ---------------------- | -------------------- | :------: | ---------------------------------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| `name`                 | `string`             |    ✅    | -                                  | -       | Used as HTML `name` property                                                                           |
+| `id`                   | `string`             |    -     | -                                  | -       | Used as HTML `id` property                                                                             |
+| `name`                 | `string`             |    -     | -                                  | -       | Used as HTML `name` property                                                                           |
 | `value`                | `string` or `number` |    ✅    | -                                  | -       | Value of the input                                                                                     |
 | `min`                  | `number`             |          | -                                  | -       | Value is used as `min` property on input field                                                         |
 | `max`                  | `number`             |          | -                                  | -       | Value is used as `max` property on input field                                                         |

@@ -13,6 +13,7 @@ const getTextTone = ({ hasError, hasWarning, isDropdown, isDisabled }) => {
 };
 const Currency = props => (
   <AccessibleButton
+    id={props.id}
     label={props.currency}
     onClick={props.onClick}
     isDisabled={props.isDisabled}
@@ -33,6 +34,7 @@ const Currency = props => (
 
 Currency.displayName = 'Currency';
 Currency.propTypes = {
+  id: PropTypes.string,
   isDropdown: PropTypes.bool,
   isDisabled: PropTypes.bool,
   hasError: PropTypes.bool,

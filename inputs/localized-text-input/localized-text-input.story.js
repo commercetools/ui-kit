@@ -24,6 +24,7 @@ storiesOf('Inputs', module)
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
     const key = isDefaultExpanded ? 'yes' : 'no';
+    const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
     return (
       <Section>
         <Value
@@ -61,8 +62,12 @@ storiesOf('Inputs', module)
               )}
               hasError={boolean('hasError', false)}
               errors={
-                boolean('errors', false)
-                  ? { de: <ErrorMessage>Custom Error Message</ErrorMessage> }
+                Object.values(errors).some(error => error.length > 0)
+                  ? Object.entries(errors).reduce((acc, [language, error]) => {
+                      if (error.length === 0) return acc;
+                      acc[language] = <ErrorMessage>{error}</ErrorMessage>;
+                      return acc;
+                    }, {})
                   : undefined
               }
               data-test="foo"

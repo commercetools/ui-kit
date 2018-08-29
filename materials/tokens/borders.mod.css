@@ -16,6 +16,8 @@
     * • Tags
     *  ◦ Border Colors
     *  ◦ Border Radius
+    * • Separator
+    *  ◦ Border Colors
     */
 
   /* ==========================================================================
@@ -48,4 +50,11 @@
 
   /* Radius */
   --token-border-radius-tags: var(--border-radius-2);
+
+  /* ==========================================================================
+   Separator
+   ========================================================================== */
+
+  /* Colors */
+  --token-border-color-separator: var(--color-gray);
 }

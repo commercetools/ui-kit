@@ -122,6 +122,7 @@ export class DateTimeInput extends React.PureComponent {
   static displayName = 'DateTimeInput';
 
   static propTypes = {
+    id: PropTypes.string,
     shouldInitializeOnMount: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isInvalid: PropTypes.bool,
@@ -323,6 +324,7 @@ export class DateTimeInput extends React.PureComponent {
           ref={this.getRef}
         >
           <DatePickerBody
+            id={this.props.id}
             formattedValue={
               this.props.value &&
               this.getFormattedValue(

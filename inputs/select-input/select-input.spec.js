@@ -87,4 +87,41 @@ describe('overwritten props', () => {
       });
     });
   });
+  describe('when used with option groups', () => {
+    let wrapper;
+    let props;
+    const colourOptions = [
+      { value: 'purple', label: 'Purple', color: '#5243AA' },
+      { value: 'orange', label: 'Orange', color: '#FF8B00' },
+      { value: 'yellow', label: 'Yellow', color: '#FFC400' },
+      { value: 'green', label: 'Green', color: '#36B37E' },
+      { value: 'forest', label: 'Forest', color: '#00875A' },
+      { value: 'slate', label: 'Slate', color: '#253858' },
+      { value: 'silver', label: 'Silver', color: '#666666' },
+    ];
+
+    const flavourOptions = [
+      { value: 'vanilla', label: 'Vanilla', rating: 'safe' },
+      { value: 'chocolate', label: 'Chocolate', rating: 'good' },
+    ];
+
+    const groupedOptions = [
+      { label: 'Colours', options: colourOptions },
+      { label: 'Flavours', options: flavourOptions },
+    ];
+
+    const yellowOption = colourOptions[2];
+
+    beforeEach(() => {
+      props = createTestProps({
+        options: groupedOptions,
+        value: yellowOption.value,
+      });
+      wrapper = shallow(<SelectInput {...props} />);
+    });
+
+    it('should forward the selected option as the value', () => {
+      expect(wrapper.find(Select)).toHaveProp('value', yellowOption);
+    });
+  });
 });

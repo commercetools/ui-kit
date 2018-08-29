@@ -18,24 +18,24 @@ import LocalizedTextInput from '@commercetools-frontend/ui-kit/inputs/localized-
 
 #### Properties
 
-| Props                   | Type             | Required | Values                             | Default | Description                                                                                                                                                                                                       |
-| ----------------------- | ---------------- | :------: | ---------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                    | `string`         |          | -                                  | -       | Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`                                                                               |
-| `name`                  | `string`         |          | -                                  | -       | Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`                                                              |
-| `value`                 | `object`         |    ✅    | -                                  | -       | Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`                                                                                                           |
-| `onChange`              | `function`       |    ✅    | -                                  | -       | Gets called when any input is changed. Is called with the change event of the changed input.                                                                                                                      |
-| `onChangeValue`         | `function`       |          | -                                  | -       | Gets called when any input is changed. Is called with an object of the shape of `value`. The event is not passed along.                                                                                           |
-| `selectedLanguage`      | `string`         |    ✅    | -                                  | -       | Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.                                                                                                                             |
-| `onBlur`                | `function`       |          | -                                  | -       | Called when any field is blurred. Is called with the `event` of that field.                                                                                                                                       |
-| `onFocus`               | `function`       |          | -                                  | -       | Called when any field is focussed. Is called with the `event` of that field.                                                                                                                                      |
-| `hideExpansionControls` | `bool`           |          | -                                  | `false` | Will hide the expansion controls when set to `true`. It always shows all languages instead.                                                                                                                       |
-| `isDefaultExpanded`     | `bool`           |          | -                                  | `false` | Controls whether one or all languages are visible by default                                                                                                                                                      |
-| `isDisabled`            | `bool`           |          | -                                  | `false` | Disables all input fields.                                                                                                                                                                                        |
-| `isReadOnly`            | `bool`           |          | -                                  | `false` | Disables all input fields and shows them in read-only mode.                                                                                                                                                       |
-| `placeholder`           | `object`         |          | -                                  |         | Placeholders for each language. Object of the same shape as `value`.                                                                                                                                              |
-| `horizontalConstraint`  | `object`         |          | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                                                                                                        |
-| `hasError`              | `bool`           |          |                                    |         | Will apply the error state to each input without showing any error message.                                                                                                                                       |
-| `errors`                | `objectOf(node)` |          |                                    |         | Used to show errors underneath the inputs of specific languages. Pass an object holding the language to show the error for as the key, and a value holding a React node which will be shown underneath the input. |
+| Props                   | Type             | Required | Values                             | Default | Description                                                                                                                                                                                                                                           |
+| ----------------------- | ---------------- | :------: | ---------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                    | `string`         |          | -                                  | -       | Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`. You can use the static `LocalizedTextInput.getId(idPrefix, language)` to create this id string, e.g. for labels. |
+| `name`                  | `string`         |          | -                                  | -       | Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`                                                                                                  |
+| `value`                 | `object`         |    ✅    | -                                  | -       | Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`                                                                                                                                               |
+| `onChange`              | `function`       |    ✅    | -                                  | -       | Gets called when any input is changed. Is called with the change event of the changed input.                                                                                                                                                          |
+| `onChangeValue`         | `function`       |          | -                                  | -       | Gets called when any input is changed. Is called with an object of the shape of `value`. The event is not passed along.                                                                                                                               |
+| `selectedLanguage`      | `string`         |    ✅    | -                                  | -       | Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.                                                                                                                                                                 |
+| `onBlur`                | `function`       |          | -                                  | -       | Called when any field is blurred. Is called with the `event` of that field.                                                                                                                                                                           |
+| `onFocus`               | `function`       |          | -                                  | -       | Called when any field is focussed. Is called with the `event` of that field.                                                                                                                                                                          |
+| `hideExpansionControls` | `bool`           |          | -                                  | `false` | Will hide the expansion controls when set to `true`. It always shows all languages instead.                                                                                                                                                           |
+| `isDefaultExpanded`     | `bool`           |          | -                                  | `false` | Controls whether one or all languages are visible by default                                                                                                                                                                                          |
+| `isDisabled`            | `bool`           |          | -                                  | `false` | Disables all input fields.                                                                                                                                                                                                                            |
+| `isReadOnly`            | `bool`           |          | -                                  | `false` | Disables all input fields and shows them in read-only mode.                                                                                                                                                                                           |
+| `placeholder`           | `object`         |          | -                                  |         | Placeholders for each language. Object of the same shape as `value`.                                                                                                                                                                                  |
+| `horizontalConstraint`  | `object`         |          | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                                                                                                                                            |
+| `hasError`              | `bool`           |          |                                    |         | Will apply the error state to each input without showing any error message.                                                                                                                                                                           |
+| `errors`                | `objectOf(node)` |          |                                    |         | Used to show errors underneath the inputs of specific languages. Pass an object holding the language to show the error for as the key, and a value holding a React node which will be shown underneath the input.                                     |
 
 The component forwards all `data` attribute props. It further adds a `-${language}` suffix to the values of the `data-test` and `data-track-component` attributes, e.g `data-test="foo"` will get added to the input for `en` as `data-test="foo-en"`.
 
@@ -111,4 +111,33 @@ required, but the user provided no value. You can use it as
 {
   isMissing && <LocalizedTextInput.RequiredValueErrorMessage />;
 }
+```
+
+##### `getId(idPrefix, language)`
+
+Returns the `id` of the input field of a specific language. This is useful in case you want to create a label for the input field. You can use it as
+
+```js
+LocalizedTextInput.getId('name', 'en');
+// -> "name.en"
+```
+
+Or as a more complete example:
+
+```js
+<label htmlFor={LocalizedTextInput.getId('name', 'en')}>Name</label>
+<LocalizedTextInput
+  id="name"
+  selectedLanguage="en"
+  // ...
+/>
+```
+
+##### `getName(idPrefix, language)`
+
+Returns the `name` of the input field of a specific language. . You can use it as
+
+```js
+LocalizedTextInput.getName('slug', 'en');
+// -> "slug.en"
 ```

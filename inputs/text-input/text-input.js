@@ -22,6 +22,7 @@ const TextInput = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <div className={styles.container}>
       <input
+        id={props.id}
         name={props.name}
         type="text"
         value={props.value}
@@ -46,6 +47,7 @@ const TextInput = props => (
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),

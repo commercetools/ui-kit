@@ -24,6 +24,32 @@ const createCurrencyProps = customProps => ({
   ...customProps,
 });
 
+describe('MoneyInput.getCurrencyDropdownId', () => {
+  describe('when an id is passed', () => {
+    it('should return the created it', () => {
+      expect(MoneyInput.getCurrencyDropdownId('foo')).toBe('foo.currencyCode');
+    });
+  });
+  describe('when no id is passed', () => {
+    it('should return no id', () => {
+      expect(MoneyInput.getCurrencyDropdownId()).toBe(undefined);
+    });
+  });
+});
+
+describe('MoneyInput.getAmountInputId', () => {
+  describe('when an id is passed', () => {
+    it('should return the created it', () => {
+      expect(MoneyInput.getAmountInputId('foo')).toBe('foo.amount');
+    });
+  });
+  describe('when no id is passed', () => {
+    it('should return no id', () => {
+      expect(MoneyInput.getAmountInputId()).toBe(undefined);
+    });
+  });
+});
+
 describe('MoneyInput.convertToMoneyValue', () => {
   describe('when there is no currency code', () => {
     it('should return an invalid object', () => {

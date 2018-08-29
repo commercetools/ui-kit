@@ -42,6 +42,7 @@ const CurrencyDropdown = props => (
         <div className={styles.languagesDropdown}>
           <Spacings.Inline scale="xs" alignItems="center">
             <Currency
+              id={props.id}
               isDropdown={true}
               isDisabled={props.isDisabled}
               hasError={props.hasCurrencyError}
@@ -90,6 +91,7 @@ const CurrencyDropdown = props => (
 
 CurrencyDropdown.displayName = 'CurrencyDropdown';
 CurrencyDropdown.propTypes = {
+  id: PropTypes.string,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   currencyCode: PropTypes.string,
   isDisabled: PropTypes.bool,

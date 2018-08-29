@@ -160,6 +160,10 @@ const getCurrencyDropdownName = name =>
 export default class MoneyInput extends React.Component {
   static displayName = 'MoneyInput';
 
+  static getAmountInputId = getAmountInputName;
+
+  static getCurrencyDropdownId = getCurrencyDropdownName;
+
   static convertToMoneyValue = value =>
     createMoneyValue(
       value.currencyCode,
@@ -215,6 +219,7 @@ export default class MoneyInput extends React.Component {
   };
 
   static propTypes = {
+    id: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.shape({
       amount: PropTypes.string.isRequired,
@@ -329,6 +334,7 @@ export default class MoneyInput extends React.Component {
         <div className={styles['field-container']}>
           {this.props.currencies.length > 0 ? (
             <CurrencyDropdown
+              id={MoneyInput.getCurrencyDropdownId(this.props.id)}
               name={getCurrencyDropdownName(this.props.name)}
               currencies={this.props.currencies}
               currencyCode={this.props.value.currencyCode}
@@ -342,6 +348,7 @@ export default class MoneyInput extends React.Component {
             <div className={styles['currency-label']}>
               <div className={styles['currency-wrapper']}>
                 <Currency
+                  id={MoneyInput.getCurrencyDropdownId(this.props.id)}
                   isDisabled={this.props.isDisabled}
                   currency={this.props.value.currencyCode}
                 />
@@ -349,6 +356,7 @@ export default class MoneyInput extends React.Component {
             </div>
           )}
           <input
+            id={MoneyInput.getAmountInputId(this.props.id)}
             name={getAmountInputName(this.props.name)}
             type="number"
             value={this.props.value.amount}

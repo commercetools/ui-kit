@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering other languages should sort them by the relevance 1`] = `
+<Horizontal
+  constraint="scale"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <TranslationInput
+      hasError={false}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      isCollapsed={true}
+      key="en"
+      language="en"
+      languagesControl={null}
+      onChange={[MockFunction]}
+      onToggle={[Function]}
+      value="en"
+    />
+    <TranslationInput
+      hasError={false}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      isAutofocussed={false}
+      isCollapsed={true}
+      key="en-GB"
+      language="en-GB"
+      languagesControl={null}
+      onChange={[MockFunction]}
+      onToggle={[Function]}
+      value="en-GB"
+    />
+    <TranslationInput
+      hasError={false}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      isAutofocussed={false}
+      isCollapsed={true}
+      key="de"
+      language="de"
+      languagesControl={null}
+      onChange={[MockFunction]}
+      onToggle={[Function]}
+      value="de"
+    />
+    <TranslationInput
+      hasError={false}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      isAutofocussed={false}
+      isCollapsed={true}
+      key="fr"
+      language="fr"
+      languagesControl={null}
+      onChange={[MockFunction]}
+      onToggle={[Function]}
+      value="fr"
+    />
+    <TranslationInput
+      hasError={false}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      isAutofocussed={false}
+      isCollapsed={true}
+      key="nan-Hant-TW"
+      language="nan-Hant-TW"
+      languagesControl={null}
+      onChange={[MockFunction]}
+      onToggle={[Function]}
+      value="nan-Hant-TW"
+    />
+    <TranslationInput
+      hasError={false}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      isAutofocussed={false}
+      isCollapsed={true}
+      key="pt-BR"
+      language="pt-BR"
+      languagesControl={
+        <InjectIntl(LanguagesControl)
+          isDisabled={false}
+          onClick={[Function]}
+          remainingLanguages={5}
+        />
+      }
+      onChange={[MockFunction]}
+      onToggle={[Function]}
+      value="pt-BR"
+    />
+  </Stack>
+</Horizontal>
+`;
+
+exports[`rendering with minimal props should match snapshot 1`] = `
+<Horizontal
+  constraint="scale"
+>
+  <Stack
+    alignItems="stretch"
+    scale="s"
+  >
+    <TranslationInput
+      hasError={false}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      isCollapsed={true}
+      key="en"
+      language="en"
+      languagesControl={
+        <InjectIntl(LanguagesControl)
+          isClosed={true}
+          onClick={[Function]}
+          remainingLanguages={1}
+        />
+      }
+      onChange={[MockFunction]}
+      onToggle={[Function]}
+      value="Horse"
+    />
+  </Stack>
+</Horizontal>
+`;

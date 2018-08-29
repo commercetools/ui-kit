@@ -8,7 +8,6 @@ import oneLine from 'common-tags/lib/oneLine';
 import { FormattedMessage } from 'react-intl';
 import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../utils/filter-data-attributes';
-import Collapsible from '../../collapsible';
 import Spacings from '../../materials/spacings';
 import Constraints from '../../materials/constraints';
 import Text from '../../typography/text';
@@ -97,7 +96,6 @@ class LocalizedInput extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     placeholder: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   };
   handleChange = event => {
     // We manipulate the event to add the language to the target.
@@ -153,10 +151,8 @@ class LocalizedInput extends React.Component {
   }
 }
 
-const getId = (idPrefix, language) =>
-  idPrefix ? `${idPrefix}.${language}` : undefined;
-const getName = (namePrefix, language) =>
-  namePrefix ? `${namePrefix}.${language}` : undefined;
+const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) =>
+  errors && without(Object.keys(errors), selectedLanguage).length > 0;
 
 const RequiredValueErrorMessage = () => (
   <ErrorMessage>
@@ -170,6 +166,11 @@ export default class LocalizedTextInput extends React.Component {
   static displayName = 'LocalizedTextInput';
 
   static RequiredValueErrorMessage = RequiredValueErrorMessage;
+
+  static getId = (idPrefix, language) =>
+    idPrefix ? `${idPrefix}.${language}` : undefined;
+  static getName = (namePrefix, language) =>
+    namePrefix ? `${namePrefix}.${language}` : undefined;
 
   static propTypes = {
     id: PropTypes.string,
@@ -246,93 +247,99 @@ export default class LocalizedTextInput extends React.Component {
 
   static isTouched = touched => touched && Object.values(touched).some(Boolean);
 
+  static getDerivedStateFromProps = (props, state) => {
+    // We want to automatically open the languages when an error is present on a
+    // hidden input, and we want to keep the languages open even after the
+    // error was resolved, so that the user can collapse it manually.
+    // Otherwise it would close as soon as the error disappears.
+    const hasErrorOnRemainingLanguages =
+      props.hasError ||
+      getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
+    const areLanguagesOpened =
+      hasErrorOnRemainingLanguages ||
+      props.hideExpansionControls ||
+      state.areLanguagesOpened;
+    return { areLanguagesOpened };
+  };
+
+  state = {
+    // This state is used to show/hide the remaining translations
+    areLanguagesOpened: this.props.isDefaultExpanded,
+  };
+
+  toggleLanguages = () =>
+    this.setState(prevState => ({
+      areLanguagesOpened: !prevState.areLanguagesOpened,
+    }));
+
   render() {
     const remainingLanguages = sortRemainingLanguages(
       this.props.selectedLanguage,
       Object.keys(this.props.value)
     );
+    const languages = [this.props.selectedLanguage, ...remainingLanguages];
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack>
-          <div>
-            <Spacings.Stack scale="xs">
-              <LocalizedInput
-                key={this.props.selectedLanguage}
-                id={getId(this.props.id, this.props.selectedLanguage)}
-                name={getName(this.props.name, this.props.selectedLanguage)}
-                value={this.props.value[this.props.selectedLanguage]}
-                onChange={this.props.onChange}
-                language={this.props.selectedLanguage}
-                placeholder={
-                  this.props.placeholder
-                    ? this.props.placeholder[this.props.selectedLanguage]
-                    : undefined
-                }
-                onBlur={this.props.onBlur}
-                onFocus={this.props.onFocus}
-                isAutofocussed={this.props.isAutofocussed}
-                isDisabled={this.props.isDisabled}
-                isReadOnly={this.props.isReadOnly}
-                hasError={Boolean(
-                  this.props.hasError ||
-                    (this.props.errors &&
-                      this.props.errors[this.props.selectedLanguage])
-                )}
-                horizontalConstraint={this.props.horizontalConstraint}
-                {...createDataAttributes(
-                  this.props,
-                  this.props.selectedLanguage
-                )}
-              />
-              {this.props.errors &&
-                this.props.errors[this.props.selectedLanguage]}
-            </Spacings.Stack>
-          </div>
-          <Collapsible isDefaultClosed={!this.props.isDefaultExpanded}>
-            {({ toggle, isOpen }) => (
-              <React.Fragment>
-                {(isOpen || this.props.hideExpansionControls) &&
-                  remainingLanguages.map(language => (
-                    <div key={language}>
-                      <Spacings.Stack scale="xs">
-                        <LocalizedInput
-                          id={getId(this.props.id, language)}
-                          name={getName(this.props.name, language)}
-                          value={this.props.value[language]}
-                          onChange={this.props.onChange}
-                          language={language}
-                          placeholder={
-                            this.props.placeholder
-                              ? this.props.placeholder[language]
-                              : undefined
-                          }
-                          onBlur={this.props.onBlur}
-                          onFocus={this.props.onFocus}
-                          isAutofocussed={false}
-                          isDisabled={this.props.isDisabled}
-                          isReadOnly={this.props.isReadOnly}
-                          horizontalConstraint={this.props.horizontalConstraint}
-                          hasError={Boolean(
-                            this.props.hasError ||
-                              (this.props.errors && this.props.errors[language])
-                          )}
-                          {...createDataAttributes(this.props, language)}
-                        />
-                        {this.props.errors && this.props.errors[language]}
-                      </Spacings.Stack>
-                    </div>
-                  ))}
-                {!this.props.hideExpansionControls &&
-                  remainingLanguages.length > 0 && (
-                    <LanguagesButton
-                      onClick={toggle}
-                      isOpen={isOpen}
-                      remainingLanguages={remainingLanguages.length}
-                    />
-                  )}
-              </React.Fragment>
-            )}
-          </Collapsible>
+          {languages.map((language, index) => {
+            const isFirstLanguage = index === 0;
+            const isLastLanguage = index === languages.length - 1;
+            const hasRemainingLanguages = remainingLanguages.length > 0;
+            const hasErrorOnRemainingLanguages =
+              this.props.hasError ||
+              getHasErrorOnRemainingLanguages(
+                this.props.errors,
+                this.props.selectedLanguage
+              );
+            if (!isFirstLanguage && !this.state.areLanguagesOpened) return null;
+
+            return (
+              <div key={language}>
+                <Spacings.Stack scale="xs">
+                  <LocalizedInput
+                    id={LocalizedTextInput.getId(this.props.id, language)}
+                    name={LocalizedTextInput.getName(this.props.name, language)}
+                    value={this.props.value[language]}
+                    onChange={this.props.onChange}
+                    language={language}
+                    placeholder={
+                      this.props.placeholder
+                        ? this.props.placeholder[language]
+                        : undefined
+                    }
+                    onBlur={this.props.onBlur}
+                    onFocus={this.props.onFocus}
+                    isAutofocussed={index === 0 && this.props.isAutofocussed}
+                    isDisabled={this.props.isDisabled}
+                    isReadOnly={this.props.isReadOnly}
+                    hasError={Boolean(
+                      this.props.hasError ||
+                        (this.props.errors && this.props.errors[language])
+                    )}
+                    {...createDataAttributes(this.props, language)}
+                  />
+                  {this.props.errors && this.props.errors[language]}
+                  {hasRemainingLanguages &&
+                    isFirstLanguage &&
+                    !this.state.areLanguagesOpened && (
+                      <LanguagesButton
+                        onClick={this.toggleLanguages}
+                        remainingLanguages={remainingLanguages.length}
+                      />
+                    )}
+                  {hasRemainingLanguages &&
+                    isLastLanguage && (
+                      <LanguagesButton
+                        onClick={this.toggleLanguages}
+                        isOpen={true}
+                        remainingLanguages={remainingLanguages.length}
+                        isDisabled={hasErrorOnRemainingLanguages}
+                      />
+                    )}
+                </Spacings.Stack>
+              </div>
+            );
+          })}
         </Spacings.Stack>
       </Constraints.Horizontal>
     );
