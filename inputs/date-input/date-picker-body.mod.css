@@ -56,9 +56,10 @@
 
 /* Warning */
 
-.invalid {
-  color: var(--token-font-color-warning) !important;
-  border-color: var(--token-border-color-input-warning) !important;
+.date-input.invalid,
+.date-input.invalid + .clear-icon-container {
+  color: var(--token-font-color-warning);
+  border-color: var(--token-border-color-input-warning);
 }
 
 /* Disabled */

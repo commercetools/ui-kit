@@ -50,7 +50,7 @@
 .date-input:focus + .clear-icon-container,
 .date-input:active,
 .date-input:active + .clear-icon-container {
-  border-color: var(--token-border-color-input-focus) !important;
+  border-color: var(--token-border-color-input-focus);
   background: var(--token-background-color-input-focus);
   color: var(--token-font-color-default);
   transition: var(--transition-standard);
@@ -58,9 +58,10 @@
 
 /* Warning */
 
-.invalid {
-  color: var(--token-font-color-warning) !important;
-  border-color: var(--token-border-color-input-warning) !important;
+.date-input.invalid,
+.date-input.invalid + .clear-icon-container {
+  color: var(--token-font-color-warning);
+  border-color: var(--token-border-color-input-warning);
 }
 
 /* Disabled */
