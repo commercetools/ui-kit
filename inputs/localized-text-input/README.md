@@ -56,6 +56,8 @@ LocalizedTextInput.createLocalizedString(languages);
 // -> { en: '', de: '' }
 ```
 
+In case `existingTranslations` is passed, it will merge an empty localized field with exisiting ones.
+
 ```js
 const languages = ['en', 'de'];
 const existingTranslations = { en: 'Tree', ar: 'شجرة' };
