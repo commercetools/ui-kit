@@ -1,9 +1,3 @@
-import en from './en.json';
-import de from './de.json';
-import es from './es.json';
-
-export default {
-  en,
-  de,
-  es,
-};
+export * as en from './en.json';
+export * as de from './de.json';
+export * as es from './es.json';
