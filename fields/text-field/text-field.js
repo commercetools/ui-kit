@@ -111,7 +111,7 @@ class TextField extends React.Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Spacings.Stack>
+        <Spacings.Stack scale="xs">
           <FieldLabel
             title={this.props.title}
             hint={this.props.hint}
@@ -122,24 +122,22 @@ class TextField extends React.Component {
             hasRequiredIndicator={this.props.isRequired}
             htmlFor={this.state.id}
           />
-          <Spacings.Stack scale="xs">
-            <TextInput
-              id={this.state.id}
-              name={this.props.name}
-              value={this.props.value}
-              onChange={this.props.onChange}
-              onBlur={this.props.onBlur}
-              onFocus={this.props.onFocus}
-              isAutofocussed={this.props.isAutofocussed}
-              isDisabled={this.props.isDisabled}
-              isReadOnly={this.props.isReadOnly}
-              hasError={this.props.isTouched && hasErrors(this.props.errors)}
-              placeholder={this.props.placeholder}
-              horizontalConstraint="scale"
-              {...filterDataAttributes(this.props)}
-            />
-            {this.renderErrors()}
-          </Spacings.Stack>
+          <TextInput
+            id={this.state.id}
+            name={this.props.name}
+            value={this.props.value}
+            onChange={this.props.onChange}
+            onBlur={this.props.onBlur}
+            onFocus={this.props.onFocus}
+            isAutofocussed={this.props.isAutofocussed}
+            isDisabled={this.props.isDisabled}
+            isReadOnly={this.props.isReadOnly}
+            hasError={this.props.isTouched && hasErrors(this.props.errors)}
+            placeholder={this.props.placeholder}
+            horizontalConstraint="scale"
+            {...filterDataAttributes(this.props)}
+          />
+          {this.renderErrors()}
         </Spacings.Stack>
       </Constraints.Horizontal>
     );
