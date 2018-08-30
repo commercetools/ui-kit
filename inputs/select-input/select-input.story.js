@@ -3,7 +3,13 @@ import { Value } from 'react-value';
 import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  number,
+} from '@storybook/addon-knobs';
 import LinkTo from '@storybook/addon-links/react';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../.storybook/decorators/section';
@@ -91,6 +97,7 @@ storiesOf('Inputs', module)
                   onBlur={action('onBlur')}
                   isMulti={isMulti}
                   placeholder={text('placeholder', 'Select..')}
+                  maxMenuHeight={number('maxMenuHeight', 100)}
                   isSearchable={boolean('isSearchable', false)}
                   isDisabled={boolean('isDisabled', false)}
                   isClearable={boolean('isClearable', false)}

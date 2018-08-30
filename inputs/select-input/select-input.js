@@ -55,6 +55,9 @@ export class SelectInput extends React.Component {
   // conveniently handles both cases
   static isTouched = touched => Boolean(touched);
 
+  static defaultProps = {
+    maxMenuHeight: 200,
+  };
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
@@ -64,6 +67,7 @@ export class SelectInput extends React.Component {
         : PropTypes.string(props, ...rest),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
+    maxMenuHeight: PropTypes.number,
     isDisabled: PropTypes.bool,
     isMulti: PropTypes.bool,
     options: PropTypes.arrayOf(
@@ -129,6 +133,7 @@ export class SelectInput extends React.Component {
               'react-select-error': this.props.hasError,
               'react-select-warning': this.props.hasWarning,
             })}
+            maxMenuHeight={this.props.maxMenuHeight}
             components={{
               DropdownIndicator,
               ClearIndicator,
