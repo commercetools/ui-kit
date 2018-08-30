@@ -102,6 +102,7 @@ exports[`rendering other languages should sort them by the relevance 1`] = `
           value="pt-BR"
         />
         <InjectIntl(LanguagesButton)
+          isDisabled={false}
           isOpen={true}
           onClick={[Function]}
           remainingLanguages={5}

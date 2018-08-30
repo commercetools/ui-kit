@@ -9,6 +9,7 @@ import SortableHeader from '../sortable-header';
 import Cell from '../cell';
 import cellRangeRenderer from './cell-range-renderer';
 import styles from './base-table.mod.css';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 
 export default class BaseTable extends React.Component {
   static displayName = 'BaseTable';
@@ -429,6 +430,7 @@ export default class BaseTable extends React.Component {
       <div
         className={classnames(styles.wrapper, this.props.tableClassName)}
         style={{ width: this.state.width }}
+        {...filterDataAttributes(this.props)}
       >
         <MultiGrid
           ref={this.registerMultiGrid}
