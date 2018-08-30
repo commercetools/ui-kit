@@ -16,6 +16,17 @@ const createTestProps = custom => ({
   intl: { formatMessage: jest.fn(message => message.id) },
   ...custom,
 });
+describe('defaultProps', () => {
+  let wrapper;
+  let props;
+  beforeEach(() => {
+    props = createTestProps();
+    wrapper = shallow(<SelectInput {...props} />);
+  });
+  it('should default `maxMenuHeight` to `200`', () => {
+    expect(wrapper.find(Select)).toHaveProp('maxMenuHeight', 200);
+  });
+});
 
 describe('overwritten props', () => {
   describe('when in single-value mode', () => {
