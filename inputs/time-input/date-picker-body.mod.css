@@ -78,6 +78,7 @@
 
 .icon-container {
   align-items: center;
+  background-color: var(--token-background-color-input-pristine);
   border-bottom: 1px solid var(--token-border-color-input-pristine);
   border-right: 1px solid var(--token-border-color-input-pristine);
   border-top: 1px solid var(--token-border-color-input-pristine);
