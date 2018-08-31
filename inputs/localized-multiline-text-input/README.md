@@ -57,6 +57,8 @@ LocalizedMultilineTextInput.createLocalizedString(languages);
 // -> { en: '', de: '' }
 ```
 
+In case existingTranslations is passed, it will merge an empty localized field with the exisiting translations. Usually this is used to ensure that a localized string contains at least the project's languages.
+
 ```js
 const languages = ['en', 'de'];
 const existingTranslations = { en: 'Tree', ar: 'شجرة' };

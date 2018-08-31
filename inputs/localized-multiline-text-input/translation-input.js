@@ -109,7 +109,7 @@ export default class TranslationInput extends React.Component {
             onFocus={() => {
               // Expand the input on focus
               if (this.props.isCollapsed) this.props.onToggle();
-              this.props.onFocus();
+              if (this.props.onFocus) this.props.onFocus();
             }}
             disabled={this.props.isDisabled}
             placeholder={this.props.placeholder}

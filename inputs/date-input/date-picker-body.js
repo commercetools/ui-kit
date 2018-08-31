@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import withMouseOverState from '../../hocs/with-mouse-over-state';
-import { CalendarIcon, ClockIcon, CloseBoldIcon } from '../../icons';
+import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
 import Spacings from '../../materials/spacings';
 import styles from './date-picker-body.mod.css';
 
@@ -42,8 +42,8 @@ export const ClearSection = props => (
     onMouseOut={props.handleMouseOut}
   >
     {!props.isDisabled && (
-      <CloseBoldIcon
-        size="small"
+      <CloseIcon
+        size="medium"
         theme={getIconTheme(props.isDisabled, props.isMouseOver)}
       />
     )}

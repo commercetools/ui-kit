@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "1.0.0-beta.28",
+  "version": "1.0.0-beta.29",
   "description": "UI component library to build MC applications",
   "license": "MIT",
   "private": false,
@@ -12,7 +12,8 @@
     "prebuild": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
     "prestart": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
     "build": "build-storybook -s . -o .storybook/dist",
-    "start": "start-storybook -s . -p 9002"
+    "start": "start-storybook -s . -p 9002",
+    "i18n:build": "mc-scripts extract-intl --build-translations --output-path=$(pwd)/ui-kit-provider/i18n '**/!(*.spec).js'"
   },
   "dependencies": {
     "@storybook/addon-links": "3.4.8",
@@ -46,7 +47,7 @@
     "warning": "4.0.2"
   },
   "devDependencies": {
-    "@commercetools-frontend/mc-scripts": "1.0.0-beta.28",
+    "@commercetools-frontend/mc-scripts": "1.0.0-beta.29",
     "@storybook/addon-actions": "4.0.0-alpha.10",
     "@storybook/addon-info": "4.0.0-alpha.10",
     "@storybook/addon-knobs": "4.0.0-alpha.10",

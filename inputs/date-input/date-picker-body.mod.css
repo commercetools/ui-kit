@@ -1,5 +1,4 @@
-@import '../../materials/borders.mod.css';
-@import '../../materials/colors/base-colors.mod.css';
+@import '../../materials/tokens/tokens.mod.css';
 @import '../../materials/spacings.mod.css';
 @import '../../materials/transitions.mod.css';
 @import '../../materials/sizes.mod.css';
@@ -32,39 +31,59 @@
 .date-input {
   width: 100%;
   appearance: none;
-  border-radius: var(--border-radius-6) 0 0 var(--border-radius-6);
-  border-bottom: 1px solid var(--color-gray);
-  border-left: 1px solid var(--color-gray);
+  background: var(--token-background-color-input-pristine);
+  border-radius: var(--token-border-radius-input) 0 0 var(--token-border-radius-input);
+  border-bottom: 1px solid var(--token-border-color-input-pristine);
+  border-left: 1px solid var(--token-border-color-input-pristine);
+  border-top: 1px solid var(--token-border-color-input-pristine);
   border-right: none;
-  border-top: 1px solid var(--color-gray);
+  height: var(--token-size-height-input);
   cursor: pointer;
   flex-grow: 1;
   font: inherit;
-  height: var(--standard-input-height);
   margin-right: 0; /* stop that jumping */
   padding: var(--spacing-8);
 }
 
-.date-input:focus {
-  border: 1px solid var(--color-green);
+/* Active/Focus */
+
+.date-input:focus,
+.date-input:focus + .clear-icon-container {
+  border-color: var(--token-border-color-input-focus);
+  color: var(--token-font-color-default);
   transition: var(--transition-standard);
 }
 
+/* Warning */
+
+.date-input.invalid,
+.date-input.invalid + .clear-icon-container {
+  color: var(--token-font-color-warning);
+  border-color: var(--token-border-color-input-warning);
+}
+
+/* Disabled */
+
 .date-input:disabled {
-  background-color: var(--color-navy-98);
+  background-color: var(--token-background-color-input-disabled);
+  color: var(--token-font-color-disabled);
+  border-color: var(--token-border-color-input-disabled);
   cursor: not-allowed;
-  color: var(--color-gray-60);
   opacity: 1; /* fix for mobile safari */
 }
 
+/* Icon */
+
 .icon-container {
   align-items: center;
-  border-bottom: 1px solid var(--color-gray);
-  border-right: 1px solid var(--color-gray);
-  border-top: 1px solid var(--color-gray);
+  background-color: var(--token-background-color-input-pristine);
+  border-bottom: 1px solid var(--token-border-color-input-pristine);
+  border-right: 1px solid var(--token-border-color-input-pristine);
+  border-top: 1px solid var(--token-border-color-input-pristine);
+  height: var(--token-size-height-input);
+  border-left: none;
   cursor: pointer;
   display: flex;
-  height: var(--standard-input-height);
   padding: var(--spacing-4);
 }
 
@@ -74,15 +93,13 @@
 
 .calendar-icon-container {
   composes: icon-container;
-  border-top-right-radius: var(--border-radius-6);
-  border-bottom-right-radius: var(--border-radius-6);
+  border-top-right-radius: var(--token-border-radius-input);
+  border-bottom-right-radius: var(--token-border-radius-input);
 }
 
 .icon-container-disabled {
   cursor: not-allowed;
-  background-color: var(--color-navy-98);
-}
-
-.invalid {
-  border-color: var(--color-orange) !important;
+  background-color: var(--token-background-color-input-disabled);
+  color: var(--token-font-color-disabled);
+  border-color: var(--token-border-color-input-disabled);
 }

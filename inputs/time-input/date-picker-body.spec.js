@@ -216,7 +216,7 @@ describe('<ClearSection>', () => {
         expect(wrapper.find('div')).toHaveClassName('clear-icon-container');
       });
       it('should apply regular theme (black) for the icon', () => {
-        expect(wrapper.find('CloseBoldIcon')).toHaveProp('theme', 'black');
+        expect(wrapper.find('CloseIcon')).toHaveProp('theme', 'black');
       });
     });
 
@@ -233,10 +233,7 @@ describe('<ClearSection>', () => {
         );
       });
       it('should apply hover theme (orange) for the icon', () => {
-        expect(buttonWrapper.find('CloseBoldIcon')).toHaveProp(
-          'theme',
-          'orange'
-        );
+        expect(buttonWrapper.find('CloseIcon')).toHaveProp('theme', 'orange');
       });
     });
   });
