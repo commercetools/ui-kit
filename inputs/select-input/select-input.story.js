@@ -97,7 +97,7 @@ storiesOf('Inputs', module)
                   onBlur={action('onBlur')}
                   isMulti={isMulti}
                   placeholder={text('placeholder', 'Select..')}
-                  maxMenuHeight={number('maxMenuHeight', 100)}
+                  maxMenuHeight={number('maxMenuHeight', 200)}
                   isSearchable={boolean('isSearchable', false)}
                   isDisabled={boolean('isDisabled', false)}
                   isClearable={boolean('isClearable', false)}
