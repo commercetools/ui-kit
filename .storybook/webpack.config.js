@@ -3,8 +3,9 @@ const createWebpackConfigForDevelopment = require('@commercetools-frontend/mc-sc
 const createWebpackConfigForProduction = require('@commercetools-frontend/mc-scripts/config/create-webpack-config-for-production');
 
 const sourceFolders = [
-  // This points to `packages-shared`
-  path.resolve(__dirname, '../..'),
+  path.resolve(__dirname),
+  path.resolve(__dirname, '../examples'),
+  path.resolve(__dirname, '../src'),
 ];
 
 const mcWebpackConfigDev = createWebpackConfigForDevelopment({

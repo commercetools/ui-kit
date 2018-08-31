@@ -7,7 +7,10 @@ const stripIndents = require('common-tags/lib/stripIndents');
 const prettier = require('prettier');
 const rcfile = require('rcfile');
 
-glob(path.join(__dirname, '../icons/svg/*.svg'), (err, files) => {
+const importPath = path.join(__dirname, '../src/components/icons/svg/*.svg');
+const exportPath = path.join(__dirname, '../src/components/icons/index.js');
+
+glob(importPath, (err, files) => {
   const importStatements = files.reduce((importsString, fileName) => {
     const baseName = path.basename(fileName);
     const componentName = upperFirst(
@@ -56,8 +59,5 @@ glob(path.join(__dirname, '../icons/svg/*.svg'), (err, files) => {
   const iconsFile = `${comment}\n${importStatements}\n\n${delarationStatements}\n\n${displayNameStatements}\n\n${exportStatements}\n`;
   const prettierConfig = rcfile('prettier');
 
-  fs.writeFileSync(
-    path.join(__dirname, '../icons/index.js'),
-    prettier.format(iconsFile, prettierConfig)
-  );
+  fs.writeFileSync(exportPath, prettier.format(iconsFile, prettierConfig));
 });

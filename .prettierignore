@@ -1,0 +1,5 @@
+package.json
+packages-shared/i18n/*.json
+.babelrc
+**/dist/
+**/public/

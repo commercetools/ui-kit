@@ -1,1 +1,3 @@
-!.storybook/config.js
+dist/
+node_modules/*
+**/node_modules/*

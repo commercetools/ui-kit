@@ -5,12 +5,12 @@ import IntlDecorator from './decorators/intl';
 
 // setAddon(infoAddon);
 
-import '../materials/reset.mod.css';
+import '../src/components/materials/reset.mod.css';
 import './main.mod.css';
 
 setOptions({
   name: 'MC Styleguide',
-  url: 'https://mc.escemo.com/styleguide',
+  url: 'https://uikit.commercetools.com',
   goFullScreen: false,
   showStoriesPanel: true,
   showAddonPanel: true,
@@ -23,7 +23,7 @@ setOptions({
   resolveStoryHierarchy: storyName => storyName.split('/'),
 });
 
-const req = require.context('../', true, /\.story\.js$/);
+const req = require.context('../src', true, /\.story\.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));

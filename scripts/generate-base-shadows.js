@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /* This file generates the `.mod.css extension file for the MC's base shadows.
    See `exportPath` const to know where to access the generated file.
    Any decisions regarding shadows should be made in the decision file.
@@ -8,12 +6,17 @@
 const fs = require('fs');
 const path = require('path');
 const css = require('css');
-const startCase = require('lodash').startCase;
 const flatMap = require('lodash').flatMap;
-const sortBy = require('lodash').sortBy;
-const importPath = 'materials/shadows/decisions/base-shadows.json';
-const exportPath = '../materials/shadows/base-shadows.mod.css';
-const file = fs.readFileSync(path.join(__dirname, '../', importPath), 'utf8');
+
+const importPath = path.join(
+  __dirname,
+  '../src/components/materials/shadows/decisions/base-shadows.json'
+);
+const exportPath = path.join(
+  __dirname,
+  '../src/components/materials/shadows/base-shadows.mod.css'
+);
+const file = fs.readFileSync(importPath, 'utf8');
 
 // Prefix identification of variable
 const variablePrefix = '--shadow';
@@ -76,4 +79,4 @@ const AST = {
 };
 
 // Generates the file
-fs.writeFileSync(path.join(__dirname, exportPath), `${css.stringify(AST)}\n`);
+fs.writeFileSync(exportPath, `${css.stringify(AST)}\n`);

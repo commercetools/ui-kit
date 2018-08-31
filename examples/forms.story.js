@@ -9,16 +9,16 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 import mapValues from 'lodash.mapvalues';
 import Section from '../.storybook/decorators/section';
 import FormikBox from '../.storybook/decorators/formik-box';
-import Spacings from '../materials/spacings';
-import Text from '../typography/text';
-import ErrorMessage from '../messages/error-message';
-import TextInput from '../inputs/text-input';
-import NumberInput from '../inputs/number-input';
-import MoneyInput from '../inputs/money-input';
-import MultilineTextInput from '../inputs/multiline-text-input';
-import LocalizedTextInput from '../inputs/localized-text-input';
-import PrimaryButton from '../buttons/primary-button';
-import SecondaryButton from '../buttons/secondary-button';
+import Spacings from '../src/components/materials/spacings';
+import Text from '../src/components/typography/text';
+import ErrorMessage from '../src/components/messages/error-message';
+import TextInput from '../src/components/inputs/text-input';
+import NumberInput from '../src/components/inputs/number-input';
+import MoneyInput from '../src/components/inputs/money-input';
+import MultilineTextInput from '../src/components/inputs/multiline-text-input';
+import LocalizedTextInput from '../src/components/inputs/localized-text-input';
+import PrimaryButton from '../src/components/buttons/primary-button';
+import SecondaryButton from '../src/components/buttons/secondary-button';
 import Forms from './forms.md';
 
 // utilities for story

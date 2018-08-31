@@ -3,9 +3,15 @@ const path = require('path');
 const css = require('css');
 const isVariation = require('./utility.js').isVariation;
 
-const importPath = '../materials/colors/base-colors.mod.css';
-const exportPath = '../materials/colors/colors-for-story.mod.css';
-const loadedFile = fs.readFileSync(path.join(__dirname, importPath), 'utf8');
+const importPath = path.join(
+  __dirname,
+  '../src/components/materials/colors/base-colors.mod.css'
+);
+const exportPath = path.join(
+  __dirname,
+  '../src/components/materials/colors/colors-for-story.mod.css'
+);
+const loadedFile = fs.readFileSync(importPath, 'utf8');
 const fileToBeTransformed = css.parse(loadedFile);
 
 // Path where decision file is located, for documentation purposes only
@@ -94,4 +100,4 @@ const AST = {
 };
 
 // Generates the file
-fs.writeFileSync(path.join(__dirname, exportPath), `${css.stringify(AST)}\n`);
+fs.writeFileSync(exportPath, `${css.stringify(AST)}\n`);

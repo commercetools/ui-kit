@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /* This file generates the `.mod.css extension file for the MC's base colors.
    See `exportPath` const to know where to access the generated file.
    Any decisions regarding colors should be made in the decision file.
@@ -11,9 +9,16 @@ const css = require('css');
 const startCase = require('lodash').startCase;
 const flatMap = require('lodash').flatMap;
 const sortBy = require('lodash').sortBy;
-const importPath = 'materials/colors/decisions/base-colors.json';
-const exportPath = '../materials/colors/base-colors.mod.css';
-const file = fs.readFileSync(path.join(__dirname, '../', importPath), 'utf8');
+
+const importPath = path.join(
+  __dirname,
+  '../src/components/materials/colors/decisions/base-colors.json'
+);
+const exportPath = path.join(
+  __dirname,
+  '../src/components/materials/colors/base-colors.mod.css'
+);
+const file = fs.readFileSync(importPath, 'utf8');
 
 // Prefix identification of variable
 const variablePrefix = '--color';
@@ -47,14 +52,13 @@ const declarationsBody = flatMap(colors, colorGroup =>
               value: variations.default,
             },
           ];
-        } else {
-          // Writes the variations of main colors below them
-          return {
-            type: 'declaration',
-            property: `${cssVariableBaseName}-${variationNumber}`,
-            value: `color-mod(var(${cssVariableBaseName}) lightness(${lightnessPercentage}))`,
-          };
         }
+        // Writes the variations of main colors below them
+        return {
+          type: 'declaration',
+          property: `${cssVariableBaseName}-${variationNumber}`,
+          value: `color-mod(var(${cssVariableBaseName}) lightness(${lightnessPercentage}))`,
+        };
       }
     )
   )
@@ -107,4 +111,4 @@ const AST = {
 };
 
 // Generates the file
-fs.writeFileSync(path.join(__dirname, exportPath), `${css.stringify(AST)}\n`);
+fs.writeFileSync(exportPath, `${css.stringify(AST)}\n`);
