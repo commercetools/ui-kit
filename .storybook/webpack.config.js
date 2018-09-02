@@ -126,7 +126,6 @@ module.exports = (storybookBaseConfig, configType) => {
   // 'PRODUCTION' is used when building the static version of storybook.
 
   storybookBaseConfig.devtool = uikitWebpackConfig.devtool;
-  console.log('rules', getRulesConfig(configType));
   storybookBaseConfig.module.rules = getRulesConfig(configType).concat(
     uikitWebpackConfig.module.rules
   );
