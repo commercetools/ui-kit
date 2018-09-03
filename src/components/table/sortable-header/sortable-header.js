@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Text from '../../typography/text';
-import withMouseOverState from '../../hocs/with-mouse-over-state';
+import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
 import styles from './sortable-header.mod.css';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import withReadme from 'storybook-readme/with-readme';
 import styled from 'styled-components';
-import Text from '../../../components/typography/text';
+import { Text } from '../../../index';
 import Inline from '../inline';
 import Inset from '../inset';
 import InsetSquish from './inset-squish';

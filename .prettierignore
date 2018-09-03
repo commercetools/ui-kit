@@ -1,5 +1,3 @@
 package.json
-packages-shared/i18n/*.json
-.babelrc
-**/dist/
-**/public/
+src/index.js
+src/hocs/index.js
