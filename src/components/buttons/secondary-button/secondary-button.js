@@ -46,7 +46,7 @@ const getThemeClassName = theme => {
   // be available except for the default theme.
   invariant(
     themeClassName || theme === 'default',
-    `ui-kit/icons/buttons/secondary-button: the specified theme '${theme}' is not supported.`
+    `ui-kit/SecondaryButton: the specified theme '${theme}' is not supported.`
   );
 
   return themeClassName;

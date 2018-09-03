@@ -41,59 +41,56 @@ const uikitWebpackConfig = {
           { loader: require.resolve('markdown-loader') },
         ],
       },
+      // For svg icons, we want to get them transformed into React components
+      // when we import them.
       {
-        test: /\.svg$/,
-        oneOf: [
-          // For svg icons, we want to get them transformed into React components
-          // when we import them.
+        test: /\.react\.svg$/,
+        use: [
           {
-            include: [/src\/.*\/icons/],
-            use: [
-              {
-                loader: require.resolve('babel-loader'),
-                options: {
-                  babelrc: false,
-                  presets: [
-                    require.resolve(
-                      '@commercetools-frontend/babel-preset-mc-app'
-                    ),
-                  ],
-                  // This is a feature of `babel-loader` for webpack (not Babel itself).
-                  // It enables caching results in ./node_modules/.cache/babel-loader/
-                  // directory for faster rebuilds.
-                  cacheDirectory: true,
-                  highlightCode: true,
-                },
-              },
-              {
-                loader: require.resolve('@svgr/webpack'),
-                options: {
-                  // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
-                  // See related PR: https://github.com/smooth-code/svgr/pull/137
-                  icon: false,
-                  svgoConfig: {
-                    plugins: [
-                      { removeViewBox: false },
-                      // Keeps ID's of svgs so they can be targeted with CSS
-                      { cleanupIDs: false },
-                    ],
-                  },
-                },
-              },
-            ],
+            loader: require.resolve('babel-loader'),
+            options: {
+              babelrc: false,
+              presets: [
+                require.resolve('@commercetools-frontend/babel-preset-mc-app'),
+              ],
+              // This is a feature of `babel-loader` for webpack (not Babel itself).
+              // It enables caching results in ./node_modules/.cache/babel-loader/
+              // directory for faster rebuilds.
+              cacheDirectory: true,
+              highlightCode: true,
+            },
           },
-          // For normal svg files (not icons) we should load the file normally
-          // and simply use it as a `<img src/>`.
           {
-            // SVG images are included in ui-kit.
-            include: /src/,
-            exclude: [/src\/.*\/icons/],
-            use: [
-              {
-                loader: require.resolve('svg-url-loader'),
-                options: { noquotes: true },
+            loader: require.resolve('@svgr/webpack'),
+            options: {
+              // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
+              // See related PR: https://github.com/smooth-code/svgr/pull/137
+              icon: false,
+              svgoConfig: {
+                plugins: [
+                  { removeViewBox: false },
+                  // Keeps ID's of svgs so they can be targeted with CSS
+                  { cleanupIDs: false },
+                ],
               },
-            ],
+            },
+          },
+        ],
+      },
+      // For normal svg files (not icons) we should load the file normally
+      // and simply use it as a `<img src/>`.
+      {
+        test: function testForNormalSvgFiles(fileName) {
+          return (
+            // Use this only for plain SVG.
+            // For SVG as React components, see loader above.
+            fileName.endsWith('.svg') && !fileName.endsWith('.react.svg')
+          );
+        },
+        use: [
+          {
+            loader: require.resolve('svg-url-loader'),
+            options: { noquotes: true },
           },
         ],
       },
