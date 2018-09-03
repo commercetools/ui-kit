@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import Icons from './icons';
 import styles from './checkbox.mod.css';
 

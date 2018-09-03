@@ -1,5 +1,5 @@
-@import '../../materials/colors/base-colors.mod.css';
-@import '../../materials/spacings.mod.css';
+@import '../../../materials/colors/base-colors.mod.css';
+@import '../../../materials/spacings.mod.css';
 
 .button {
   display: inline-flex;

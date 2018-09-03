@@ -1,0 +1,85 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { withKnobs, select } from '@storybook/addon-knobs';
+import withReadme from 'storybook-readme/with-readme';
+import styled from 'styled-components';
+import Text from '../../../components/typography/text';
+import Inset from '../inset';
+import Inline from './inline';
+import Readme from './README.md';
+
+const Stack = styled.div`
+  > * + * {
+    margin: 8px 0 0;
+  }
+`;
+
+const Row = styled.div`
+  display: block;
+`;
+
+const InlineColorWrapper = styled.div`
+  background-color: #e1ffdd;
+  display: inline-flex;
+  align-items: stretch;
+  height: 100px;
+`;
+
+const InlineItem = styled.div`
+  background-color: #65ff4f;
+  height: ${props =>
+    props.alignItems === 'stretch'
+      ? 'auto'
+      : `${Math.round(Math.random() * 50) + 50}px`};
+  width: 100px;
+`;
+
+const Scale = styled.div`
+  align-self: center;
+  width: 75px;
+  text-align: center;
+`;
+
+const sizes = [
+  { name: 'xs', pixels: '4px' },
+  { name: 's', pixels: '8px' },
+  { name: 'm', pixels: '16px' },
+  { name: 'l', pixels: '24px' },
+  { name: 'xl', pixels: '32px' },
+];
+
+storiesOf('Spacings', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
+  .add('Inline', () => {
+    const alignItems = select(
+      'Align items',
+      ['flexStart', 'center', 'flexEnd', 'stretch', 'baseline'],
+      'stretch'
+    );
+    return (
+      <Stack>
+        {sizes.map(size => (
+          <Row key={size.name}>
+            <InlineColorWrapper>
+              <Scale>
+                <Inset scale="s" alignItems="center">
+                  <Text.Subheadline elementType="h4">
+                    {size.name.toUpperCase()}
+                    <Text.Detail>{size.pixels}</Text.Detail>
+                  </Text.Subheadline>
+                </Inset>
+              </Scale>
+              <Inline scale={size.name} alignItems={alignItems}>
+                <InlineItem alignItems={alignItems} />
+                <InlineItem alignItems={alignItems} />
+                <InlineItem alignItems={alignItems} />
+                <InlineItem alignItems={alignItems} />
+                <InlineItem alignItems={alignItems} />
+              </Inline>
+            </InlineColorWrapper>
+          </Row>
+        ))}
+      </Stack>
+    );
+  });

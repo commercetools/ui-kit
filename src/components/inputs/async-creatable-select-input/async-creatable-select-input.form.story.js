@@ -10,7 +10,7 @@ import Section from '../../../../.storybook/decorators/section';
 import FormikBox from '../../../../.storybook/decorators/formik-box';
 import PrimaryButton from '../../buttons/primary-button';
 import SecondaryButton from '../../buttons/secondary-button';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import ErrorMessage from '../../messages/error-message';
 import Readme from './README.md';
 import AsyncCreatableSelectInput from './async-creatable-select-input';

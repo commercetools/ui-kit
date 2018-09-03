@@ -4,7 +4,7 @@ import invariant from 'invariant';
 import has from 'lodash.has';
 import isNumberish from '../../../utils/is-numberish';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Contraints from '../../materials/constraints';
+import Contraints from '../../../materials/constraints';
 import styles from './money-input.mod.css';
 import currencies from './currencies.json';
 import Currency from './currency';

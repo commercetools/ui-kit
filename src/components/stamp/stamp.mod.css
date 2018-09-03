@@ -1,4 +1,4 @@
-@import '../materials/colors/base-colors.mod.css';
+@import '../../materials/colors/base-colors.mod.css';
 
 .tone-critical {
   background-color: var(--color-red-95);

@@ -4,7 +4,7 @@ import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
 import sortBy from 'lodash.sortby';
 import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
 import classnames from 'classnames';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import SortableHeader from '../sortable-header';
 import Cell from '../cell';
 import cellRangeRenderer from './cell-range-renderer';

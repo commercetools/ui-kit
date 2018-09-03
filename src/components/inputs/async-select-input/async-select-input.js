@@ -4,7 +4,7 @@ import { injectIntl } from 'react-intl';
 import omit from 'lodash.omit';
 import AsyncSelect from 'react-select/lib/Async';
 import classnames from 'classnames';
-import Constraints from '../../materials/constraints';
+import Constraints from '../../../materials/constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';

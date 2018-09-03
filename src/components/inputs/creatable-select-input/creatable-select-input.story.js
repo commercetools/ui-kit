@@ -7,7 +7,7 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import LinkTo from '@storybook/addon-links/react';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import Readme from './README.md';
 import CreatableSelectInput from './creatable-select-input';
 
