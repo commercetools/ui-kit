@@ -12,11 +12,11 @@ const sortBy = require('lodash').sortBy;
 
 const importPath = path.join(
   __dirname,
-  '../src/components/materials/colors/decisions/base-colors.json'
+  '../src/materials/colors/decisions/base-colors.json'
 );
 const exportPath = path.join(
   __dirname,
-  '../src/components/materials/colors/base-colors.mod.css'
+  '../src/materials/colors/base-colors.mod.css'
 );
 const file = fs.readFileSync(importPath, 'utf8');
 

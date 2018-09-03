@@ -6,6 +6,8 @@ module.exports = {
     '<rootDir>/examples/**/*.js',
     '<rootDir>/scripts/**/*.js',
     '<rootDir>/src/**/*.js',
+    '<rootDir>/**/*.js', // for backwards compatible folders
   ],
+  testPathIgnorePatterns: ['<rootDir>/node_modules'],
   watchPlugins: ['jest-plugin-filename'],
 };

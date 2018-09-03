@@ -1,15 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const css = require('css');
-const isVariation = require('./utility.js').isVariation;
+const isVariation = require('../src/utils/is-variation');
 
 const importPath = path.join(
   __dirname,
-  '../src/components/materials/colors/base-colors.mod.css'
+  '../src/materials/colors/base-colors.mod.css'
 );
 const exportPath = path.join(
   __dirname,
-  '../src/components/materials/colors/colors-for-story.mod.css'
+  '../src/materials/colors/colors-for-story.mod.css'
 );
 const loadedFile = fs.readFileSync(importPath, 'utf8');
 const fileToBeTransformed = css.parse(loadedFile);
