@@ -9,12 +9,13 @@ const rcfile = require('rcfile');
 
 const importPath = path.join(__dirname, '../src/components/icons/svg/*.svg');
 const exportPath = path.join(__dirname, '../src/components/icons/index.js');
+const iconFileExt = '.react.svg';
 
 glob(importPath, (err, files) => {
   const importStatements = files.reduce((importsString, fileName) => {
     const baseName = path.basename(fileName);
     const componentName = upperFirst(
-      camelCase(path.basename(fileName, '.svg'))
+      camelCase(path.basename(fileName, iconFileExt))
     );
     return stripIndents`
       ${importsString}
@@ -24,7 +25,7 @@ glob(importPath, (err, files) => {
   const delarationStatements = files.reduce(
     (declarationStatement, fileName) => {
       const componentName = upperFirst(
-        camelCase(path.basename(fileName, '.svg'))
+        camelCase(path.basename(fileName, iconFileExt))
       );
       return stripIndents`
       ${declarationStatement}
@@ -35,7 +36,7 @@ glob(importPath, (err, files) => {
   );
   const displayNameStatements = files.reduce((displayNameString, fileName) => {
     const componentName = upperFirst(
-      camelCase(path.basename(fileName, '.svg'))
+      camelCase(path.basename(fileName, iconFileExt))
     );
     return stripIndents`
       ${displayNameString}
@@ -44,7 +45,7 @@ glob(importPath, (err, files) => {
   }, '');
   const exportStatements = files.reduce((importsString, fileName) => {
     const componentName = upperFirst(
-      camelCase(path.basename(fileName, '.svg'))
+      camelCase(path.basename(fileName, iconFileExt))
     );
     return stripIndents`
       ${importsString}

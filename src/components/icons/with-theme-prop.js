@@ -11,7 +11,7 @@ const getThemeClassName = theme => {
   // be available.
   invariant(
     themeClassName,
-    `ui-kit/icons/icon: the specified theme '${theme}' is not supported.`
+    `ui-kit/Icon: the specified theme '${theme}' is not supported.`
   );
 
   return themeClassName;
