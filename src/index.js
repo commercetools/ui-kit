@@ -52,8 +52,9 @@ export { default as Stamp } from './components/stamp';
 
 export * from './components/switches';
 
-export { default as BaseTable } from './components/table/base-table';
 export { default as Table } from './components/table';
+export { default as BaseTable } from './components/table/base-table';
+export { default as TableCell } from './components/table/cell';
 
 export { default as Tag } from './components/tag';
 
