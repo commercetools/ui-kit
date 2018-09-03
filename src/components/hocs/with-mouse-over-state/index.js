@@ -1,1 +1,1 @@
-export default from './with-mouse-over-state';
+export { default } from './with-mouse-over-state';

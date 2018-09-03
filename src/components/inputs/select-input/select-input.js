@@ -6,7 +6,7 @@ import flatMap from 'lodash.flatmap';
 import classnames from 'classnames';
 import Select from 'react-select';
 import omit from 'lodash.omit';
-import Constraints from '../../materials/constraints';
+import Constraints from '../../../materials/constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';

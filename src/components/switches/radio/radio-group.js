@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import Option from './radio-option';
 
 class Group extends React.PureComponent {

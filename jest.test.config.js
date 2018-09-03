@@ -1,4 +1,4 @@
 module.exports = {
   preset: '@commercetools-frontend/jest-preset-mc-app',
-  moduleDirectories: ['src'],
+  moduleDirectories: ['src', 'node_modules'],
 };

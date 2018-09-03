@@ -3,7 +3,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import Text from '../typography/text';
 import TimeInput from '../inputs/time-input';
-import Spacings from '../materials/spacings';
+import Spacings from '../../materials/spacings';
 import styles from './time-range-picker.mod.css';
 import messages from './messages';
 

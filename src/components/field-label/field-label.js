@@ -3,10 +3,10 @@ import React from 'react';
 import requiredIf from 'react-required-if';
 import IconButton from '../buttons/icon-button';
 import { InformationIcon } from '../icons';
-import Constraints from '../materials/constraints';
+import Constraints from '../../materials/constraints';
 import Text from '../typography/text';
 import Label from '../label';
-import Spacings from '../materials/spacings';
+import Spacings from '../../materials/spacings';
 import styles from './field-label.mod.css';
 
 export const FieldLabel = props => (

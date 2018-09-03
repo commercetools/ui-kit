@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import invariant from 'invariant';
 import requiredIf from 'react-required-if';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Constraints from '../../materials/constraints';
+import Constraints from '../../../materials/constraints';
 import styles from './number-input.mod.css';
 
 // NOTE: order is important here

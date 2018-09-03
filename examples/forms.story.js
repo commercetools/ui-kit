@@ -9,7 +9,7 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 import mapValues from 'lodash.mapvalues';
 import Section from '../.storybook/decorators/section';
 import FormikBox from '../.storybook/decorators/formik-box';
-import Spacings from '../src/components/materials/spacings';
+import Spacings from '../src/materials/spacings';
 import Text from '../src/components/typography/text';
 import ErrorMessage from '../src/components/messages/error-message';
 import TextInput from '../src/components/inputs/text-input';
