@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import withMouseOverState from '../../hocs/with-mouse-over-state';
+import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
 import Spacings from '../../../materials/spacings';
 import styles from './date-picker-body.mod.css';

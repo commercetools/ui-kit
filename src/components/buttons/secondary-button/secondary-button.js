@@ -8,8 +8,8 @@ import isNil from 'lodash.isnil';
 import requiredIf from 'react-required-if';
 import Spacings from '../../../materials/spacings';
 import AccessibleButton from '../accessible-button';
-import withMouseOverState from '../../hocs/with-mouse-over-state';
-import withMouseDownState from '../../hocs/with-mouse-down-state';
+import withMouseOverState from '../../../hocs/with-mouse-over-state';
+import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './secondary-button.mod.css';
 

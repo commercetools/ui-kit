@@ -28,19 +28,20 @@ but eventually decisions are made together (see Contributing section below).
 This implies that everyone should and is welcomed to contribute to it, just like
 an OSS library.
 
-## Structure
+## Export structure
 
-- `Buttons`: contains button components (e.g. primary button, flat button)
-- `DatePicker`: contains date picker components for different time scales
-- `TimeRangePicker`: contains a time range picker (from and to time)
-- `Dropdowns`: contains dropdown components (e.g. primary action dropdown)
-- `Icons`: contains SVG icons (auto generated from `.svg`-files)
-- `Label`: contains label components (e.g. for indicating something critical or
-  a warning)
-- `Typography`: contains basic components to be used for typography elements
-  (e.g. text, titles)
-- `Table`: contains the table
-- `Tags`: contains tag components of different styles (warning, removable, etc)
-- `Materials`: contains the base for composition (colors, spacings, etc)
-- `HoCs`: contains Higher Order Components (e.g. for mouse over and -out state
-  injection)
+The package main exports contains all the UI components.
+
+```js
+import {
+  Text,
+  TextInput,
+  PrimaryButton,
+  // etc.
+} from '@commercetools-frontend/ui-kit';
+```
+
+There are some other exports that are grouped under different subfolders:
+
+- `@commercetools-frontend/ui-kit/hocs`: contains useful Higher Order Components
+- `@commercetools-frontend/ui-kit/materials`: contains low-level styles and components

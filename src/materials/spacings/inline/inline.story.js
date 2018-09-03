@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import styled from 'styled-components';
-import Text from '../../../components/typography/text';
+import { Text } from '../../../index';
 import Inset from '../inset';
 import Inline from './inline';
 import Readme from './README.md';

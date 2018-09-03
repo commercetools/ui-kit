@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
+import { Text } from '../../index';
 import isVariation from '../../utils/is-variation';
-import Text from '../../components/typography/text';
 import colorGroups from './decisions/base-colors.json';
 import styles from './colors-for-story.mod.css';
 
