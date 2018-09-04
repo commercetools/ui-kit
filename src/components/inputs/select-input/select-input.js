@@ -14,6 +14,12 @@ import TagRemove from '../../internals/tag-remove';
 import '../../internals/select.css';
 import messages from './messages';
 
+export const components = {
+  DropdownIndicator,
+  ClearIndicator,
+  MultiValueRemove: TagRemove,
+};
+
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
 
@@ -36,6 +42,30 @@ export class SelectInput extends React.Component {
     maxMenuHeight: PropTypes.number,
     isDisabled: PropTypes.bool,
     isMulti: PropTypes.bool,
+    components: PropTypes.shape({
+      ClearIndicator: PropTypes.func,
+      Control: PropTypes.func,
+      DropdownIndicator: PropTypes.func,
+      Group: PropTypes.func,
+      GroupHeading: PropTypes.func,
+      IndicatorsContainer: PropTypes.func,
+      IndicatorSeparator: PropTypes.func,
+      Input: PropTypes.func,
+      LoadingIndicator: PropTypes.func,
+      Menu: PropTypes.func,
+      MenuList: PropTypes.func,
+      LoadingMessage: PropTypes.func,
+      NoOptionsMessage: PropTypes.func,
+      MultiValue: PropTypes.func,
+      MultiValueContainer: PropTypes.func,
+      MultiValueLabel: PropTypes.func,
+      MultiValueRemove: PropTypes.func,
+      Option: PropTypes.func,
+      Placeholder: PropTypes.func,
+      SelectContainer: PropTypes.func,
+      SingleValue: PropTypes.func,
+      ValueContainer: PropTypes.func,
+    }),
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.shape({ value: PropTypes.string.isRequired }),
@@ -77,7 +107,7 @@ export class SelectInput extends React.Component {
           )
         : optionsWithoutGroups.find(
             option => has(option, 'value') && option.value === props.value
-          ),
+          ) || [],
     };
   };
 
@@ -101,9 +131,8 @@ export class SelectInput extends React.Component {
             })}
             maxMenuHeight={this.props.maxMenuHeight}
             components={{
-              DropdownIndicator,
-              ClearIndicator,
-              MultiValueRemove: TagRemove,
+              ...this.props.components,
+              ...components,
             }}
             classNamePrefix="react-select"
             onChange={selectedOptions =>

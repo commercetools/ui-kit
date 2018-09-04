@@ -13,6 +13,13 @@ import TagRemove from '../../internals/tag-remove';
 import '../../internals/select.css';
 import messages from './messages';
 
+export const components = {
+  DropdownIndicator,
+  ClearIndicator,
+  LoadingIndicator,
+  MultiValueRemove: TagRemove,
+};
+
 export class AsyncCreatableSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
   // deal with an array. The touched state ends up being an empty array in case
@@ -53,6 +60,31 @@ export class AsyncCreatableSelectInput extends React.Component {
     onBlur: PropTypes.func,
     loadOptions: PropTypes.func.isRequired,
     isMulti: PropTypes.bool,
+
+    components: PropTypes.shape({
+      ClearIndicator: PropTypes.func,
+      Control: PropTypes.func,
+      DropdownIndicator: PropTypes.func,
+      Group: PropTypes.func,
+      GroupHeading: PropTypes.func,
+      IndicatorsContainer: PropTypes.func,
+      IndicatorSeparator: PropTypes.func,
+      Input: PropTypes.func,
+      LoadingIndicator: PropTypes.func,
+      Menu: PropTypes.func,
+      MenuList: PropTypes.func,
+      LoadingMessage: PropTypes.func,
+      NoOptionsMessage: PropTypes.func,
+      MultiValue: PropTypes.func,
+      MultiValueContainer: PropTypes.func,
+      MultiValueLabel: PropTypes.func,
+      MultiValueRemove: PropTypes.func,
+      Option: PropTypes.func,
+      Placeholder: PropTypes.func,
+      SelectContainer: PropTypes.func,
+      SingleValue: PropTypes.func,
+      ValueContainer: PropTypes.func,
+    }),
     formatCreateLabel: PropTypes.func,
     noOptionsMessage: PropTypes.func,
     intl: PropTypes.shape({
@@ -81,10 +113,8 @@ export class AsyncCreatableSelectInput extends React.Component {
               'react-select-warning': this.props.hasWarning,
             })}
             components={{
-              DropdownIndicator,
-              ClearIndicator,
-              LoadingIndicator,
-              MultiValueRemove: TagRemove,
+              ...this.props.components,
+              ...components,
             }}
             classNamePrefix="react-select"
             onChange={(value, info) => {
