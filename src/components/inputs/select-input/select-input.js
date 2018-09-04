@@ -70,14 +70,23 @@ export class SelectInput extends React.Component {
       option => (has(option, 'value') ? option : option.options)
     );
 
+    const selectedOptions = optionsWithoutGroups.filter(
+      option =>
+        props.isMulti
+          ? props.value.includes(option.value)
+          : has(option, 'value') && option.value === props.value
+    );
+
+    // We default to null, `type ValueType = OptionType | OptionsType | null | void`
+    /**
+     * we default to null
+     * > type ValueType = OptionType | OptionsType | null | void
+     * https://react-select.com/props#prop-types
+     */
     return {
       selectedOptions: props.isMulti
-        ? optionsWithoutGroups.filter(option =>
-            props.value.includes(option.value)
-          )
-        : optionsWithoutGroups.find(
-            option => has(option, 'value') && option.value === props.value
-          ),
+        ? selectedOptions
+        : selectedOptions[0] || null,
     };
   };
 
