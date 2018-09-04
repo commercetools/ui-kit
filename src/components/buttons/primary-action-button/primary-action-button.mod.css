@@ -1,0 +1,7 @@
+.button {
+  background: red;
+  padding: 16px;
+  color: purple;
+  border: 1px #ccc solid;
+  display: inline-block;
+}
