@@ -15,8 +15,8 @@ const loadedFile = fs.readFileSync(importPath, 'utf8');
 const fileToBeTransformed = css.parse(loadedFile);
 
 // Path where decision file is located, for documentation purposes only
-
 const originalPath = 'materials/colors/decisions/base-colors.json';
+
 // Gets all declarations inside the `:root` selector from fileToBeTransformed
 const rootRulesFromFileToBeTransformed = fileToBeTransformed.stylesheet.rules.find(
   rule => rule.type === 'rule' && rule.selectors.includes(':root')
