@@ -17,7 +17,7 @@
     "build": "build-storybook -o .public",
     "start": "start-storybook -p 9002",
     "i18n:build": "mc-scripts extract-intl --build-translations --output-path=$(pwd)/i18n 'src/components/**/!(*.spec).js'",
-    "lint": "jest --projects jest.*.config.js",
+    "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
     "format": "npm run format:js && npm run format:css & npm run format:md",
