@@ -14,6 +14,11 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
+<!--
+  You can also fork https://codesandbox.io/s/kx4106myn7 to reproduce the bug.
+  Then provide the link of your fork so that we can understand the bug easily.
+-->
+
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 

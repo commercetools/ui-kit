@@ -12,10 +12,6 @@ about: Use this template when adding a new component to the UI-Kit
 
 []()
 
-#### Jira Ticket
-
-[]()
-
 #### UI-Kit Component Checklist
 
 ##### Technical
@@ -24,7 +20,7 @@ about: Use this template when adding a new component to the UI-Kit
   - [ ] Has `README.md` file
   - [ ] Explains use-cases
   - [ ] Explains props
-  - [ ] Added to Storybook
+  - [ ] Has story for Storybook
 - Props
   - [ ] Uses prop names consistent with existing components
   - [ ] Does not use `true` for default-props
@@ -38,6 +34,5 @@ about: Use this template when adding a new component to the UI-Kit
 - Testing
   - [ ] Supports `data` attributes
 
-##### Design
-
-- [ ] Is added to Sketch library
+- Accessibility (optional)
+  - [ ] Supports `aria` attributes
