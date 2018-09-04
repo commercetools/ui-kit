@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import withReadme from 'storybook-readme/with-readme';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Checkbox from '.';

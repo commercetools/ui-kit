@@ -1,22 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 const css = require('css');
-const isVariation = require('./utility.js').isVariation;
+const isVariation = require('../src/utils/is-variation');
 
 const importPath = path.join(
   __dirname,
-  '../src/components/materials/colors/base-colors.mod.css'
+  '../src/materials/colors/base-colors.mod.css'
 );
 const exportPath = path.join(
   __dirname,
-  '../src/components/materials/colors/colors-for-story.mod.css'
+  '../src/materials/colors/colors-for-story.mod.css'
 );
 const loadedFile = fs.readFileSync(importPath, 'utf8');
 const fileToBeTransformed = css.parse(loadedFile);
 
 // Path where decision file is located, for documentation purposes only
-
 const originalPath = 'materials/colors/decisions/base-colors.json';
+
 // Gets all declarations inside the `:root` selector from fileToBeTransformed
 const rootRulesFromFileToBeTransformed = fileToBeTransformed.stylesheet.rules.find(
   rule => rule.type === 'rule' && rule.selectors.includes(':root')

@@ -10,7 +10,7 @@ import FormikBox from '../../../../.storybook/decorators/formik-box';
 import PrimaryButton from '../../buttons/primary-button';
 import ErrorMessage from '../../messages/error-message';
 import SecondaryButton from '../../buttons/secondary-button';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import Readme from './README.md';
 import CreatableSelectInput from './creatable-select-input';
 

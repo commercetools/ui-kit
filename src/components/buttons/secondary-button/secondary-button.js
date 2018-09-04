@@ -6,10 +6,10 @@ import { compose } from 'recompose';
 import invariant from 'invariant';
 import isNil from 'lodash.isnil';
 import requiredIf from 'react-required-if';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import AccessibleButton from '../accessible-button';
-import withMouseOverState from '../../hocs/with-mouse-over-state';
-import withMouseDownState from '../../hocs/with-mouse-down-state';
+import withMouseOverState from '../../../hocs/with-mouse-over-state';
+import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './secondary-button.mod.css';
 
@@ -46,7 +46,7 @@ const getThemeClassName = theme => {
   // be available except for the default theme.
   invariant(
     themeClassName || theme === 'default',
-    `ui-kit/icons/buttons/secondary-button: the specified theme '${theme}' is not supported.`
+    `ui-kit/SecondaryButton: the specified theme '${theme}' is not supported.`
   );
 
   return themeClassName;

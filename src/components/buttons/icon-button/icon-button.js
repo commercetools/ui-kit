@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import { compose } from 'recompose';
 import invariant from 'invariant';
 import isNil from 'lodash.isnil';
-import withMouseDownState from '../../hocs/with-mouse-down-state';
-import withMouseOverState from '../../hocs/with-mouse-over-state';
+import withMouseDownState from '../../../hocs/with-mouse-down-state';
+import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
 import styles from './icon-button.mod.css';
@@ -44,7 +44,7 @@ const getThemeClassName = theme => {
   // be available except for the default theme.
   invariant(
     themeClassName || theme === 'default',
-    `ui-kit/icons/buttons/icon-button: the specified theme '${theme}' is not supported.`
+    `ui-kit/IconButton: the specified theme '${theme}' is not supported.`
   );
 
   return themeClassName;

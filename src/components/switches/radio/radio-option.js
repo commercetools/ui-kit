@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Spacings from '../../materials/spacings';
+import Spacings from '../../../materials/spacings';
 import Text from '../../typography/text';
 import Icons from './icons';
 import styles from './radio-option.mod.css';

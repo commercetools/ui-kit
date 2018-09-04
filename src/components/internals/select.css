@@ -7,10 +7,10 @@
 
   Always check all affected components when making changes here!
 */
-@import '../materials/tokens/tokens.mod.css';
-@import '../materials/transitions.mod.css';
-@import '../materials/spacings.mod.css';
-@import '../materials/shadows/base-shadows.mod.css';
+@import '../../materials/tokens/tokens.mod.css';
+@import '../../materials/transitions.mod.css';
+@import '../../materials/spacings.mod.css';
+@import '../../materials/shadows/base-shadows.mod.css';
 
 /*
   These styles use selector specificity to determine importance, otherwise
