@@ -12,6 +12,5 @@ cache:
     - node_modules
 
 script:
-  - yarn lint
-  - yarn test
+   - yarn run jest --projects jest.*.config.js
 
