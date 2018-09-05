@@ -71,8 +71,9 @@ export class SelectInput extends React.Component {
     );
 
     /**
-     * we default to null
-     * > type ValueType = OptionType | OptionsType | null | void
+     * When user sets new value prop, if it was undfined, and gets passed to Select as undfined
+     * Select will keep previouse state, which will be confusing for the user
+     * This is why we default to null
      * https://react-select.com/props#prop-types
      */
     return {
