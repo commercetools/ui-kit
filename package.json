@@ -63,27 +63,12 @@
     "@commercetools-frontend/jest-preset-mc-app": "1.0.0-beta.30",
     "@commitlint/cli": "7.1.0",
     "@commitlint/config-conventional": "7.1.0",
-<<<<<<< HEAD
-    "@storybook/addon-actions": "4.0.0-alpha.18",
-    "@storybook/addon-info": "4.0.0-alpha.18",
-    "@storybook/addon-knobs": "4.0.0-alpha.18",
-    "@storybook/addon-links": "3.4.8",
-    "@storybook/addon-options": "4.0.0-alpha.18",
-    "@storybook/react": "4.0.0-alpha.18",
-||||||| merged common ancestors
-    "@storybook/addon-actions": "4.0.0-alpha.18",
-    "@storybook/addon-info": "4.0.0-alpha.18",
-    "@storybook/addon-knobs": "4.0.0-alpha.18",
-    "@storybook/addon-options": "4.0.0-alpha.18",
-    "@storybook/react": "4.0.0-alpha.18",
-=======
     "@storybook/addon-actions": "4.0.0-alpha.20",
     "@storybook/addon-info": "4.0.0-alpha.20",
     "@storybook/addon-knobs": "4.0.0-alpha.20",
     "@storybook/addon-links": "4.0.0-alpha.20",
     "@storybook/addon-options": "4.0.0-alpha.20",
     "@storybook/react": "4.0.0-alpha.20",
->>>>>>> refactor(storybook): use own webpack config, explicitly transpile color-mod. Fixes #16
     "@svgr/webpack": "2.2.1",
     "babel-loader": "8.0.2",
     "browserslist": "4.0.2",
