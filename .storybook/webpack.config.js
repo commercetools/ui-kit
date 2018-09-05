@@ -1,6 +1,17 @@
 const path = require('path');
-const createWebpackConfigForDevelopment = require('@commercetools-frontend/mc-scripts/config/create-webpack-config-for-development');
-const createWebpackConfigForProduction = require('@commercetools-frontend/mc-scripts/config/create-webpack-config-for-production');
+const postcssImport = require('postcss-import');
+const postcssPresetEnv = require('postcss-preset-env');
+const postcssReporter = require('postcss-reporter');
+const postcssCustomProperties = require('postcss-custom-properties');
+const postcssCustomMediaQueries = require('postcss-custom-media');
+const postcssPostcssColorModFunction = require('postcss-color-mod-function');
+
+const browserslist = {
+  development: ['chrome', 'firefox'].map(
+    browser => `last 2 ${browser} versions`
+  ),
+  production: ['>1%', 'not op_mini all', 'ie 11'],
+};
 
 const sourceFolders = [
   path.resolve(__dirname),
@@ -8,124 +19,205 @@ const sourceFolders = [
   path.resolve(__dirname, '../src'),
 ];
 
-const mcWebpackConfigDev = createWebpackConfigForDevelopment({
-  distPath: '', // not important
-  entryPoint: '', // not important
-  sourceFolders,
-  toggleFlags: {
-    // Disable generation of index.html
-    generateIndexHtml: false,
-  },
-});
-const mcWebpackConfigProd = createWebpackConfigForProduction({
-  distPath: '', // not important
-  entryPoint: '', // not important
-  sourceFolders,
-  toggleFlags: {
-    // Disable extract CSS, as building the production bundles for Storybook
-    // fails with that.
-    enableExtractCss: false,
-    // Disable generation of index.html
-    generateIndexHtml: false,
-  },
-});
-const uikitWebpackConfig = {
-  devtool: 'source-map',
-  module: {
-    rules: [
-      // Storybook uses a plugin to load and render markdown files.
-      {
-        test: /\.md$/,
-        use: [
-          { loader: require.resolve('html-loader') },
-          { loader: require.resolve('markdown-loader') },
-        ],
-      },
-      // For svg icons, we want to get them transformed into React components
-      // when we import them.
-      {
-        test: /\.react\.svg$/,
-        use: [
+module.exports = (storybookBaseConfig, configType) => {
+  storybookBaseConfig.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
+  storybookBaseConfig.module.rules = [
+    // Disable require.ensure as it's not a standard language feature.
+    { parser: { requireEnsure: false } },
+    // Process JS with Babel.
+    {
+      test: /\.js$/,
+      include: sourceFolders,
+      use: [
+        // This loader parallelizes code compilation, it is optional but
+        // improves compile time on larger projects
+        Object.assign(
+          {},
           {
-            loader: require.resolve('babel-loader'),
-            options: {
-              babelrc: false,
-              presets: [
-                require.resolve('@commercetools-frontend/babel-preset-mc-app'),
+            loader: require.resolve('thread-loader'),
+          },
+          // Keep workers alive only for development mode
+          configType === 'PRODUCTION'
+            ? {}
+            : {
+                options: {
+                  poolTimeout: Infinity, // keep workers alive for more effective watch mode
+                },
+              }
+        ),
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            babelrc: false,
+            compact: false,
+            presets: [
+              require.resolve('@commercetools-frontend/babel-preset-mc-app'),
+            ],
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/
+            // directory for faster rebuilds.
+            cacheDirectory: true,
+            highlightCode: true,
+          },
+        },
+      ],
+    },
+    // For svg icons, we want to get them transformed into React components
+    // when we import them.
+    {
+      test: /\.react\.svg$/,
+      include: sourceFolders,
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            babelrc: false,
+            presets: [
+              require.resolve('@commercetools-frontend/babel-preset-mc-app'),
+            ],
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/
+            // directory for faster rebuilds.
+            cacheDirectory: true,
+            highlightCode: true,
+          },
+        },
+        {
+          loader: require.resolve('@svgr/webpack'),
+          options: {
+            // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
+            // See related PR: https://github.com/smooth-code/svgr/pull/137
+            icon: false,
+            svgoConfig: {
+              plugins: [
+                { removeViewBox: false },
+                // Keeps ID's of svgs so they can be targeted with CSS
+                { cleanupIDs: false },
               ],
-              // This is a feature of `babel-loader` for webpack (not Babel itself).
-              // It enables caching results in ./node_modules/.cache/babel-loader/
-              // directory for faster rebuilds.
-              cacheDirectory: true,
-              highlightCode: true,
             },
           },
-          {
-            loader: require.resolve('@svgr/webpack'),
-            options: {
-              // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
-              // See related PR: https://github.com/smooth-code/svgr/pull/137
-              icon: false,
-              svgoConfig: {
-                plugins: [
-                  { removeViewBox: false },
-                  // Keeps ID's of svgs so they can be targeted with CSS
-                  { cleanupIDs: false },
+        },
+      ],
+    },
+    // For normal svg files (not icons) we should load the file normally
+    // and simply use it as a `<img src/>`.
+    {
+      test: function testForNormalSvgFiles(fileName) {
+        return (
+          // Use this only for plain SVG.
+          // For SVG as React components, see loader above.
+          fileName.endsWith('.svg') && !fileName.endsWith('.react.svg')
+        );
+      },
+      use: [
+        {
+          loader: require.resolve('svg-url-loader'),
+          options: { noquotes: true },
+        },
+      ],
+    },
+    // "url" loader works like "file" loader except that it embeds assets
+    // smaller than specified limit in bytes as data URLs to avoid requests.
+    // A missing `test` is equivalent to a match.
+    {
+      test: /\.png$/,
+      use: [require.resolve('url-loader')],
+    },
+    // "postcss" loader applies autoprefixer to our CSS
+    // "css" loader resolves paths in CSS and adds assets as dependencies.
+    // "style" loader turns CSS into JS modules that inject <style> tags.
+    {
+      test: /\.mod\.css$/,
+      include: sourceFolders,
+      use: [
+        require.resolve('style-loader'),
+        {
+          loader: require.resolve('css-loader'),
+          options: {
+            modules: true,
+            importLoaders: 1,
+            localIdentName: '[name]__[local]___[hash:base64:5]',
+          },
+        },
+        {
+          loader: require.resolve('postcss-loader'),
+          options: {
+            ident: 'postcss',
+            plugins: () => [
+              postcssImport({ path: sourceFolders }),
+              postcssPresetEnv({
+                browsers: browserslist.development,
+                autoprefixer: { grid: true },
+              }),
+              postcssCustomProperties({
+                preserve: false,
+              }),
+              postcssCustomMediaQueries(),
+              postcssPostcssColorModFunction(),
+              postcssReporter(),
+            ],
+          },
+        },
+      ],
+    },
+    {
+      test: function testForNormalCssFiles(fileName) {
+        return (
+          // Use this only for plain CSS.
+          // For css-modules, see loader above.
+          fileName.endsWith('.css') && !fileName.endsWith('.mod.css')
+        );
+      },
+      // "postcss" loader applies autoprefixer to our CSS.
+      // "css" loader resolves paths in CSS and adds assets as dependencies.
+      // "style" loader turns CSS into JS modules that inject <style> tags.
+      oneOf: [
+        {
+          // Use "postcss" for all the included source folders.
+          include: sourceFolders,
+          use: [
+            require.resolve('style-loader'),
+            require.resolve('css-loader'),
+            {
+              loader: require.resolve('postcss-loader'),
+              options: {
+                ident: 'postcss',
+                plugins: () => [
+                  postcssImport(),
+                  postcssPresetEnv({
+                    browsers: browserslist.development,
+                    autoprefixer: { grid: true },
+                  }),
+                  postcssCustomProperties({
+                    preserve: false,
+                  }),
+                  postcssCustomMediaQueries(),
+                  postcssPostcssColorModFunction(),
+                  postcssReporter(),
                 ],
               },
             },
-          },
-        ],
-      },
-      // For normal svg files (not icons) we should load the file normally
-      // and simply use it as a `<img src/>`.
-      {
-        test: function testForNormalSvgFiles(fileName) {
-          return (
-            // Use this only for plain SVG.
-            // For SVG as React components, see loader above.
-            fileName.endsWith('.svg') && !fileName.endsWith('.react.svg')
-          );
+          ],
         },
-        use: [
-          {
-            loader: require.resolve('svg-url-loader'),
-            options: { noquotes: true },
-          },
-        ],
-      },
-      // "url" loader works like "file" loader except that it embeds assets
-      // smaller than specified limit in bytes as data URLs to avoid requests.
-      // A missing `test` is equivalent to a match.
-      {
-        test: /\.png$/,
-        include: /src/,
-        use: [require.resolve('url-loader')],
-      },
-    ],
-  },
-};
-
-const rulesToFilterOut = [/\.svg$/, /\.png$/].map(r => r.toString());
-
-const getRulesConfig = configType => {
-  const config =
-    configType === 'PRODUCTION' ? mcWebpackConfigProd : mcWebpackConfigDev;
-  return config.module.rules.filter(rule => {
-    if (!rule.test) return true;
-    return !rulesToFilterOut.includes(rule.test.toString());
-  });
-};
-
-module.exports = (storybookBaseConfig, configType) => {
-  // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-  // You can change the configuration based on that.
-  // 'PRODUCTION' is used when building the static version of storybook.
-
-  storybookBaseConfig.devtool = uikitWebpackConfig.devtool;
-  storybookBaseConfig.module.rules = getRulesConfig(configType).concat(
-    uikitWebpackConfig.module.rules
-  );
+        {
+          // For all other vendor CSS, do not use "postcss" loader.
+          include: /node_modules/,
+          loaders: [
+            require.resolve('style-loader'),
+            require.resolve('css-loader'),
+          ],
+        },
+      ],
+    },
+    // Storybook uses a plugin to load and render markdown files.
+    {
+      test: /\.md$/,
+      use: [
+        { loader: require.resolve('html-loader') },
+        { loader: require.resolve('markdown-loader') },
+      ],
+    },
+  ];
 
   return storybookBaseConfig;
 };
