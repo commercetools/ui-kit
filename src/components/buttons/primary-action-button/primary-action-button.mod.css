@@ -9,14 +9,18 @@
 .button {
   background-color: var(--token-background-color-button-primary-action-pristine);
   height: var(--token-size-height-button);
-  border-radius: var(--token-border-radius-button);
   box-shadow: var(--token-shadow-box-button-primary-action-pristine);
   transition: var(--transition-standard);
-  padding: 0 16px;
-  color: purple;
+  padding: 0 var(--spacing-16);
+  color: var(--token-font-color-inverted);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.active,
+.disabled {
+  composes: button;
 }
 
 /* Hover */
@@ -28,14 +32,33 @@
 
 /* Active */
 
-.button.active {
+.button:focus,
+.button:active,
+.active {
   background-color: var(--token-background-color-button-primary-action-active);
   box-shadow: var(--token-shadow-box-button-primary-action-active);
 }
 
 /* Disabled */
 
-.button.active {
+.disabled:hover,
+.disabled {
   background-color: var(--token-background-color-button-disabled);
   box-shadow: var(--token-shadow-box-button-disabled);
+  color: var(--token-font-color-disabled);
+  cursor: not-allowed;
+}
+
+/* Sizes  */
+
+.big {
+  border-radius: var(--token-border-radius-button-big);
+  height: var(--token-size-height-button-big);
+  padding: 0 var(--spacing-16);
+}
+
+.small {
+  border-radius: var(--token-border-radius-button-small);
+  height: var(--token-size-height-button-small);
+  padding: 0 var(--spacing-8);
 }

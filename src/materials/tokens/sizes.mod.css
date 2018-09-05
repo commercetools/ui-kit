@@ -30,5 +30,6 @@
    ========================================================================== */
 
   /* Height */
-  --token-size-height-button: 32px;
+  --token-size-height-button-big: 32px;
+  --token-size-height-button-small: 24px;
 }

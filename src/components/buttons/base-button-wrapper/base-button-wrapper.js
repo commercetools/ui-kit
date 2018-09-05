@@ -27,7 +27,6 @@ class BaseButtonWrapper extends React.Component {
     return (
       <button
         id={this.props.id}
-        data={this.props.dataAttr}
         name={this.props.name}
         disabled={this.props.isDisabled}
         onClick={this.props.onClick}
@@ -38,16 +37,12 @@ class BaseButtonWrapper extends React.Component {
         role="button"
         aria-label={this.props.ariaLabel}
         aria-pressed={this.state.isToggled}
+        {...this.props.dataAttr}
       >
         {this.props.children}
       </button>
     );
   }
 }
-
-BaseButtonWrapper.defaultProps = {
-  type: 'button',
-  size: 'big',
-};
 
 export default BaseButtonWrapper;

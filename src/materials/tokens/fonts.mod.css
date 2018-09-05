@@ -30,6 +30,7 @@
   --token-font-color-warning: var(--color-orange);
   --token-font-color-readonly: var(--color-gray-60);
   --token-font-color-placeholder: var(--color-gray-60);
+  --token-font-color-inverted: var(--color-white);
 
   /* ==========================================================================
    Sizes

@@ -56,6 +56,6 @@
     "second": "0 1px 4.75px rgba(0, 0, 0, 0.12)"
   },
   "16": {
-    "first": "inset 0 0 0 1px rgba(0, 0, 0, 0.8)"
+    "first": "inset 0 0 0 1px rgba(0, 0, 0, 0.2)"
   }
 }

@@ -66,7 +66,7 @@
    ========================================================================== */
 
   /* Colors */
-  --token-background-color-button-primary-action-pristine: var(--color-green-25);
+  --token-background-color-button-primary-action-pristine: var(--color-green);
   --token-background-color-button-primary-action-hover: var(--color-green-25);
   --token-background-color-button-primary-action-active: var(--color-green);
 

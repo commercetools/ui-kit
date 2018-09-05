@@ -65,5 +65,6 @@
    ========================================================================== */
 
   /* Radius */
-  --token-border-radius-button: var(--border-radius-6);
+  --token-border-radius-button-big: var(--border-radius-6);
+  --token-border-radius-button-small: var(--border-radius-4);
 }
