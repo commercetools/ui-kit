@@ -1,7 +1,41 @@
+@import '../../../materials/tokens/tokens.mod.css';
+@import '../../../materials/spacings.mod.css';
+@import '../../../materials/transitions.mod.css';
+
+/* States */
+
+/* Default */
+
 .button {
-  background: red;
-  padding: 16px;
+  background-color: var(--token-background-color-button-primary-action-pristine);
+  height: var(--token-size-height-button);
+  border-radius: var(--token-border-radius-button);
+  box-shadow: var(--token-shadow-box-button-primary-action-pristine);
+  transition: var(--transition-standard);
+  padding: 0 16px;
   color: purple;
-  border: 1px #ccc solid;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover */
+
+.button:hover {
+  background-color: var(--token-background-color-button-primary-action-hover);
+  box-shadow: var(--token-shadow-box-button-primary-action-hover);
+}
+
+/* Active */
+
+.button.active {
+  background-color: var(--token-background-color-button-primary-action-active);
+  box-shadow: var(--token-shadow-box-button-primary-action-active);
+}
+
+/* Disabled */
+
+.button.active {
+  background-color: var(--token-background-color-button-disabled);
+  box-shadow: var(--token-shadow-box-button-disabled);
 }

@@ -18,6 +18,8 @@
     *  ◦ Border Radius
     * • Separator
     *  ◦ Border Colors
+    * • Buttons
+    *  ◦ Border Radius
     */
 
   /* ==========================================================================
@@ -57,4 +59,11 @@
 
   /* Colors */
   --token-border-color-separator: var(--color-gray);
+
+  /* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+  /* Radius */
+  --token-border-radius-button: var(--border-radius-6);
 }
