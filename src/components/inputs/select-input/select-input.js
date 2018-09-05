@@ -70,6 +70,10 @@ export class SelectInput extends React.Component {
       option => (has(option, 'value') ? option : option.options)
     );
 
+    /**
+     * Select (from react-select) will not update the selected value when the next value gets passed as undefined.
+     * So we need to pass null instead, so that Select clears the selected value.
+     */
     return {
       selectedOptions: props.isMulti
         ? optionsWithoutGroups.filter(option =>
@@ -77,7 +81,7 @@ export class SelectInput extends React.Component {
           )
         : optionsWithoutGroups.find(
             option => has(option, 'value') && option.value === props.value
-          ),
+          ) || null,
     };
   };
 

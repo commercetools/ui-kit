@@ -61,6 +61,15 @@ describe('overwritten props', () => {
         });
       });
     });
+    describe('when value is `undefined`', () => {
+      beforeEach(() => {
+        props = createTestProps({ value: undefined });
+        wrapper = shallow(<SelectInput {...props} />);
+      });
+      it('should set `Select` value to null', () => {
+        expect(wrapper.find(Select)).toHaveProp('value', null);
+      });
+    });
   });
   describe('when in multi-value mode', () => {
     let wrapper;
