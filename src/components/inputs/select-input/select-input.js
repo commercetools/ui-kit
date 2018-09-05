@@ -109,7 +109,7 @@ export class SelectInput extends React.Component {
           )
         : optionsWithoutGroups.find(
             option => has(option, 'value') && option.value === props.value
-          ) || [],
+          ),
     };
   };
 
