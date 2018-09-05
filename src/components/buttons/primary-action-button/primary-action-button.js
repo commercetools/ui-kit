@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Spacings from '../../../materials/spacings';
 import BaseButtonWrapper from '../base-button-wrapper';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './primary-action-button.mod.css';
 
 const getClassName = ({ isToggled, isDisabled }) => {
@@ -33,11 +34,24 @@ export const ButtonContent = props => (
   </span>
 );
 
-const PrimaryActionButton = props => (
-  <BaseButtonWrapper {...props}>
-    <ButtonContent {...props} />
-  </BaseButtonWrapper>
-);
+const PrimaryActionButton = props => {
+  const dataProps = {
+    'data-track-component': 'PrimaryActionButton',
+    ...filterDataAttributes(props),
+  };
+
+  return (
+    <BaseButtonWrapper
+      dataAttr={{
+        ...dataProps,
+        ...props.dataAttr,
+      }}
+      {...props}
+    >
+      <ButtonContent {...props} />
+    </BaseButtonWrapper>
+  );
+};
 
 PrimaryActionButton.displayName = 'PrimaryActionButton';
 
