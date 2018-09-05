@@ -71,10 +71,8 @@ export class SelectInput extends React.Component {
     );
 
     /**
-     * When user sets new value prop, if it was undfined, and gets passed to Select as undfined
-     * Select will keep previouse state, which will be confusing for the user
-     * This is why we default to null
-     * https://react-select.com/props#prop-types
+     * Select (from react-select) will not update the selected value when the next value gets passed as undefined.
+     * So we need to pass null instead, so that Select clears the selected value.
      */
     return {
       selectedOptions: props.isMulti
