@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import omit from 'lodash.omit';
 import AsyncSelect from 'react-select/lib/Async';
+import { components as defaultComponents } from 'react-select';
 import classnames from 'classnames';
 import Constraints from '../../../materials/constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import LoadingIndicator from '../../internals/loading-indicator';
@@ -13,7 +15,7 @@ import TagRemove from '../../internals/tag-remove';
 import '../../internals/select.css';
 import messages from './messages';
 
-export const components = {
+const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
   LoadingIndicator,
@@ -112,7 +114,7 @@ export class AsyncSelectInput extends React.Component {
             })}
             components={{
               ...this.props.components,
-              ...components,
+              ...customizedComponents,
             }}
             classNamePrefix="react-select"
             onChange={(value, info) => {
@@ -168,5 +170,9 @@ export class AsyncSelectInput extends React.Component {
 }
 
 const Wrapped = injectIntl(AsyncSelectInput);
-Wrapped.isTouched = AsyncSelectInput.isTouched;
+addStaticFields(Wrapped, {
+  ...defaultComponents,
+  ...customizedComponents,
+  isTouched: AsyncSelectInput.isTouched,
+});
 export default Wrapped;
