@@ -24,7 +24,7 @@ Wraps the given text in the given HTML header `size`.
 | ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------- |
 | `elementType` | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                              |
 | `children`    | `PropTypes.node` |    ✅    | -                    | -       | -                                                              |
-| `truncate`    | `Bool`           |          | -                    | `false` | Option for truncate content in case the screen has small width |
+| `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width |
 
 #### Where to use
 
@@ -44,10 +44,10 @@ Wraps the given text in the given HTML header `size`.
 
 | Props         | Type             | Required | Values         | Default |
 | ------------- | ---------------- | :------: | -------------- | ------- |
-| `elementType` | `String`         |    ✅    | `['h4', 'h5']` |         |
-| `isBold`      | `Boolean`        |          |                | `false` |
-| `children`    | `PropTypes.node` |    ✅    |                |         |
-| `truncate`    | `Bool`           |          | -              | `false` |
+| `elementType` | `String`         |    ✅    | `['h4', 'h5']` | -       |
+| `isBold`      | `Boolean`        |    -     | -              | `false` |
+| `children`    | `PropTypes.node` |    ✅    | -              | -       |
+| `truncate`    | `Bool`           |    -     | -              | `false` |
 
 #### Where to use
 
@@ -81,11 +81,11 @@ Wraps the given text in a `<p>` element, for normal content.
 
 | Props      | Type             | Required | Values                                               | Default |
 | ---------- | ---------------- | :------: | ---------------------------------------------------- | ------- |
-| `isBold`   | `Boolean`        |          |                                                      | `false` |
-| `isItalic` | `Boolean`        |          |                                                      | `false` |
-| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative'']` |         |
-| `children` | `PropTypes.node` |    ✅    |                                                      |         |
-| `truncate` | `Bool`           |          | -                                                    | `false` |
+| `isBold`   | `Boolean`        |    -     | -                                                    | `false` |
+| `isItalic` | `Boolean`        |    -     | -                                                    | `false` |
+| `tone`     | `String`         |    -     | `[''primary', 'secondary', 'positive', 'negative'']` | -       |
+| `children` | `PropTypes.node` |    ✅    | -                                                    | -       |
+| `truncate` | `Bool`           |    -     | -                                                    | `false` |
 
 #### Where to use
 
@@ -107,11 +107,11 @@ properly style the text.
 
 | Props      | Type             | Required | Values                                                                      | Default |
 | ---------- | ---------------- | :------: | --------------------------------------------------------------------------- | ------- |
-| `isBold`   | `Boolean`        |          |                                                                             | `false` |
-| `isItalic` | `Boolean`        |          |                                                                             | `false` |
-| `tone`     | `String`         |          | `[''primary', 'secondary', 'positive', 'negative', 'inverted', 'warning'']` |         |
-| `children` | `PropTypes.node` |    ✅    |                                                                             |         |
-| `truncate` | `Bool`           |          | -                                                                           | `false` |
+| `isBold`   | `Boolean`        |    -     | -                                                                           | `false` |
+| `isItalic` | `Boolean`        |    -     | -                                                                           | `false` |
+| `tone`     | `String`         |    -     | `[''primary', 'secondary', 'positive', 'negative', 'inverted', 'warning'']` | -       |
+| `children` | `PropTypes.node` |    ✅    | -                                                                           | -       |
+| `truncate` | `Bool`           |    -     | -                                                                           | `false` |
 
 #### Where to use
 
