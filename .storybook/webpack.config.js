@@ -19,7 +19,7 @@ const sourceFolders = [
   path.resolve(__dirname, '../src'),
 ];
 
-module.exports = storybookBaseConfig => {
+module.exports = (storybookBaseConfig, configType) => {
   storybookBaseConfig.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
   storybookBaseConfig.module.rules = [
     // Disable require.ensure as it's not a standard language feature.
@@ -31,12 +31,20 @@ module.exports = storybookBaseConfig => {
       use: [
         // This loader parallelizes code compilation, it is optional but
         // improves compile time on larger projects
-        {
-          loader: require.resolve('thread-loader'),
-          options: {
-            poolTimeout: Infinity, // keep workers alive for more effective watch mode
+        Object.assign(
+          {},
+          {
+            loader: require.resolve('thread-loader'),
           },
-        },
+          // Keep workers alive only for development mode
+          configType === 'PRODUCTION'
+            ? {}
+            : {
+                options: {
+                  poolTimeout: Infinity, // keep workers alive for more effective watch mode
+                },
+              }
+        ),
         {
           loader: require.resolve('babel-loader'),
           options: {
