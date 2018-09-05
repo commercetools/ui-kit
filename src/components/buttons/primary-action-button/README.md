@@ -1,15 +1,15 @@
-# Buttons: Primary Button
+# Buttons: Primary Action Button
 
 ## Usage
 
 ```js
-import PrimaryButton from '@commercetools-frontend/ui-kit/buttons/primary-button';
+import PrimaryActionButton from '@commercetools-frontend/ui-kit/buttons/primary-action-button';
 ```
 
 #### Description
 
-Primary buttons are used for a primary action on a page. You must also pass a
-label for accessibility reasons.
+Primary action buttons are used for a primary action on a page. You must also pass an
+ariaLabel for accessibility reasons.
 
 #### Usage
 
