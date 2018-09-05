@@ -1,0 +1,16 @@
+sudo: false
+language: node_js
+node_js:
+  - '10'
+
+notifications:
+  email: false
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+script:
+   - yarn run jest --projects jest.*.config.js
+
