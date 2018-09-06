@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Spacings from '../../../materials/spacings';
 import styles from './base-button-wrapper.mod.css';
 
 class BaseButtonWrapper extends React.Component {
@@ -14,9 +15,7 @@ class BaseButtonWrapper extends React.Component {
     onClick: PropTypes.func,
     dataAttr: PropTypes.object,
     isDisabled: PropTypes.bool,
-    icon: PropTypes.node,
     type: PropTypes.oneOf(['button', 'reset', 'submit']),
-    size: PropTypes.oneOf(['small', 'big']),
   };
 
   state = {
@@ -46,3 +45,26 @@ class BaseButtonWrapper extends React.Component {
 }
 
 export default BaseButtonWrapper;
+
+export const BaseButtonContent = props => (
+  <span className={props.styles}>
+    <Spacings.Inline scale="xs" alignItems="center">
+      {props.icon &&
+        // FIXME: add proper tone when tones are refactored
+        React.cloneElement(props.icon, {
+          theme: props.isDisabled ? 'grey' : 'white',
+          size: props.size === 'big' ? 'big' : 'medium',
+        })}
+      <span>{props.children}</span>
+    </Spacings.Inline>
+  </span>
+);
+
+BaseButtonContent.propTypes = {
+  children: PropTypes.node.isRequired,
+  isDisabled: PropTypes.bool,
+  isToggled: PropTypes.bool,
+  icon: PropTypes.node,
+  size: PropTypes.oneOf(['small', 'big']),
+  styles: PropTypes.array,
+};
