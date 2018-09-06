@@ -6,20 +6,22 @@ import BaseButtonWrapper from '../base-button-wrapper';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './primary-action-button.mod.css';
 
-const getClassName = ({ isToggled, isDisabled }) => {
+const getStateClassName = ({ isToggled, isDisabled }) => {
   if (isDisabled) return styles.disabled;
   if (isToggled) return styles.active;
   return styles.button;
 };
 
+const getSizeClassName = size => styles[size];
+
 export const ButtonContent = props => (
   <span
     className={classnames(
-      getClassName({
+      getStateClassName({
         isToggled: props.isToggled,
         isDisabled: props.isDisabled,
       }),
-      styles[props.size]
+      getSizeClassName(props.size)
     )}
   >
     <Spacings.Inline scale="xs" alignItems="center">
