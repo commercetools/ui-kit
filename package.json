@@ -12,6 +12,7 @@
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "lint-staged",
+    "changelog": "conventional-changelog -p angular -u",
     "prepublish": "node ./scripts/generate-icon-exports.js",
     "prebuild": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
     "prestorybook:start": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
@@ -72,6 +73,7 @@
     "babel-loader": "8.0.2",
     "browserslist": "4.0.2",
     "common-tags": "1.8.0",
+    "conventional-changelog-cli": "2.0.5",
     "cross-env": "5.2.0",
     "css": "2.2.3",
     "css-loader": "1.0.0",
