@@ -1,5 +1,5 @@
 module.exports = {
-  '{src,examples}/**/*.md': ['npm run format:md', 'git add'],
+  '{.github,src,examples}/**/*.md': ['npm run format:md', 'git add'],
   '{src,scripts,examples,.storybook}/**/*.js': [
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`
     // flag, jest does not seem correctly parse the arguments.
