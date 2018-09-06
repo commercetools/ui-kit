@@ -23,7 +23,7 @@
     "format": "npm run format:js && npm run format:css & npm run format:md",
     "format:js": "prettier --write '{src,scripts,examples,.storybook}/**/*.js'",
     "format:css": "prettier --parser postcss --write '{src}/**/*.css'",
-    "format:md": "prettier --parser markdown --write '{src,examples}/**/*.md'",
+    "format:md": "prettier --parser markdown --write '{.github,src,examples}/**/*.md'",
     "test": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch"
   },
