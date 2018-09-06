@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Spacings from '../../../materials/spacings';
 import styles from './base-button-wrapper.mod.css';
 
+// This holds the logic of the `button` element, which wraps a `span` (defined as `BaseButtonContent`) with styles
 class BaseButtonWrapper extends React.Component {
   static displayName = 'BaseButtonWrapper';
 
@@ -15,11 +16,8 @@ class BaseButtonWrapper extends React.Component {
     onClick: PropTypes.func,
     dataAttr: PropTypes.object,
     isDisabled: PropTypes.bool,
+    isToggled: PropTypes.bool,
     type: PropTypes.oneOf(['button', 'reset', 'submit']),
-  };
-
-  state = {
-    isToggled: false,
   };
 
   render() {
@@ -35,7 +33,7 @@ class BaseButtonWrapper extends React.Component {
         // Accessibility
         role="button"
         aria-label={this.props.ariaLabel}
-        aria-pressed={this.state.isToggled}
+        aria-pressed={this.props.isToggled}
         {...this.props.dataAttr}
       >
         {this.props.children}
@@ -46,6 +44,7 @@ class BaseButtonWrapper extends React.Component {
 
 export default BaseButtonWrapper;
 
+// This holds the styles of the button, which is wrapped by a `button` (defined as `BaseButtonWrappr`) with the `button` element logic
 export const BaseButtonContent = props => (
   <span className={props.styles}>
     <Spacings.Inline scale="xs" alignItems="center">
