@@ -12,5 +12,4 @@ cache:
     - node_modules
 
 script:
-   - yarn run jest --projects jest.*.config.js
-
+    - yarn run jest --projects jest.*.config.js --maxWorkers=4
