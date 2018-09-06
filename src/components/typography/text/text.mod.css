@@ -75,6 +75,10 @@ small {
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .information {
   color: var(--color-blue);
 }

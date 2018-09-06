@@ -62,6 +62,7 @@ const Body = props =>
     <span
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles.italic]: props.isItalic,
         [styles[`${props.tone}`]]: props.tone,
         [styles.truncate]: props.truncate,
       })}
@@ -72,6 +73,7 @@ const Body = props =>
     <p
       className={classnames(styles['body-text'], {
         [styles.bold]: props.isBold,
+        [styles.italic]: props.isItalic,
         [styles[`${props.tone}`]]: props.tone,
         [styles.truncate]: props.truncate,
       })}
@@ -82,6 +84,7 @@ const Body = props =>
 Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
+  isItalic: PropTypes.bool,
   isInline: PropTypes.bool,
   tone: PropTypes.oneOf([
     'primary',
@@ -99,6 +102,7 @@ const Detail = props => (
   <small
     className={classnames({
       [styles.bold]: props.isBold,
+      [styles.italic]: props.isItalic,
       [styles.inline]: props.isInline,
       [styles[`${props.tone}`]]: props.tone,
       [styles.truncate]: props.truncate,
@@ -110,6 +114,7 @@ const Detail = props => (
 Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,
+  isItalic: PropTypes.bool,
   isInline: PropTypes.bool,
   tone: PropTypes.oneOf([
     'primary',
