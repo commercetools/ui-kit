@@ -82,3 +82,6 @@ typings/
 
 # Netlify
 netlify.toml
+
+# Build
+dist
