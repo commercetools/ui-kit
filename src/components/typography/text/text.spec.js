@@ -171,6 +171,20 @@ describe('<Body>', () => {
         expect(wrapper.text()).toMatch('Body');
       });
     });
+    describe('with italic text', () => {
+      beforeEach(() => {
+        wrapper = shallow(<Text.Body isItalic={true}>{'Body'}</Text.Body>);
+      });
+      it('should render element tag p', () => {
+        expect(wrapper.type()).toBe('p');
+      });
+      it('should have "italic" class', () => {
+        expect(wrapper).toContainClass(styles.italic);
+      });
+      it('should render given text', () => {
+        expect(wrapper.text()).toMatch('Body');
+      });
+    });
     describe('with tone', () => {
       beforeEach(() => {
         wrapper = shallow(<Text.Body tone="secondary">{'Detail'}</Text.Body>);
@@ -281,7 +295,22 @@ describe('<Detail>', () => {
         expect(wrapper).toHaveText('Detail');
       });
     });
-
+    describe('with italic text', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Detail isItalic={true}>{'Detail'}</Text.Detail>
+        );
+      });
+      it('should render element tag small', () => {
+        expect(wrapper.type()).toBe('small');
+      });
+      it('should have "italic" class', () => {
+        expect(wrapper).toContainClass(styles.italic);
+      });
+      it('should render given text', () => {
+        expect(wrapper).toHaveText('Detail');
+      });
+    });
     describe('with tone', () => {
       beforeEach(() => {
         wrapper = shallow(
