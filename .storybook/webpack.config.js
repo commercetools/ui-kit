@@ -33,9 +33,6 @@ module.exports = (storybookBaseConfig, configType) => {
         // improves compile time on larger projects
         Object.assign(
           {},
-          {
-            loader: require.resolve('thread-loader'),
-          },
           // Keep workers alive only for development mode
           configType === 'PRODUCTION'
             ? {}
