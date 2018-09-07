@@ -8,6 +8,7 @@ import babel from 'rollup-plugin-babel';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
+import execute from 'rollup-plugin-execute';
 import cleaner from 'rollup-plugin-cleaner';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
@@ -87,6 +88,12 @@ const basePlugins = [
       ],
     },
   }),
+  // copy static files over
+  // We tried all copy plugins of rollup, and couldn't get a single one to do
+  // this. So, the command-line it is!
+  execute(
+    'cp -r package.json README.md LICENSE materials proxy-exports/ dist/'
+  ),
 ];
 
 export default [
