@@ -12,8 +12,6 @@ import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-// import { uglify } from 'rollup-plugin-uglify';
-// import { minify } from 'uglify-es';
 import svgrPlugin from '@svgr/rollup';
 import babelOptions from '@commercetools-frontend/babel-preset-mc-app';
 import pkg from './package.json';
@@ -24,6 +22,20 @@ const browserslist = {
   ),
   production: ['>1%', 'not op_mini all', 'ie 11'],
 };
+
+const postcssPlugins = [
+  postcssImport(),
+  postcssPresetEnv({
+    browsers: browserslist.development,
+    autoprefixer: { grid: true },
+  }),
+  postcssCustomProperties({
+    preserve: false,
+  }),
+  postcssCustomMediaQueries(),
+  postcssPostcssColorModFunction(),
+  postcssReporter(),
+];
 
 const basePlugins = [
   peerDepsExternal(),
@@ -36,31 +48,26 @@ const basePlugins = [
   }),
   builtins(),
   resolve(),
+  // this is used for importing our css modules
   postcss({
-    include: '',
-    // exclude: 'node_modules/**',
+    include: ['**/*.mod.css'],
+    exclude: ['node_modules/**/*.css'],
     modules: true,
-    // extract: true,
     importLoaders: 1,
     localIdentName: '[name]__[local]___[hash:base64:5]',
-    plugins: [
-      postcssImport(),
-      postcssPresetEnv({
-        browsers: browserslist.development,
-        autoprefixer: { grid: true },
-      }),
-      postcssCustomProperties({
-        preserve: false,
-      }),
-      postcssCustomMediaQueries(),
-      postcssPostcssColorModFunction(),
-      postcssReporter(),
-    ],
+    plugins: postcssPlugins,
+  }),
+  // this is used for importing both vendor css (from node_modules) and for importing
+  // our global css which uses tokens that require postcss plugins (such as color-mod) to be compiled properly.
+  postcss({
+    exclude: ['**/*.mod.css'],
+    include: ['**/*.css'],
+    plugins: postcssPlugins,
   }),
   babel({
     runtimeHelpers: true,
     ...babelOptions(),
-    exclude: 'node_modules/**',
+    exclude: ['node_modules/**'],
   }),
   json(),
   svg({
