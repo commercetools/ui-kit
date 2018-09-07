@@ -53,6 +53,7 @@ export { default as Stamp } from './components/stamp';
 export { default as Constraints } from './materials/constraints';
 export { default as Spacings } from './materials/spacings';
 
+export * from '../i18n';
 export * from './components/switches';
 
 export { default as Table } from './components/table';
