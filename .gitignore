@@ -80,6 +80,3 @@ typings/
 .idea
 .vscode
 !.vscode/settings.json
-
-# Netlify
-netlify.toml
