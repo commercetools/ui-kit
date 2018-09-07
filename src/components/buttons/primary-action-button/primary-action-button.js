@@ -59,7 +59,7 @@ PrimaryActionButton.propTypes = {
   ref: PropTypes.string,
   children: PropTypes.node.isRequired,
   ariaLabel: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   dataAttr: PropTypes.object,
   isDisabled: PropTypes.bool,
   isToggled: PropTypes.bool,

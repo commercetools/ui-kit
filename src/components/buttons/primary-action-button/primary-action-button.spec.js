@@ -89,7 +89,7 @@ describe('rendering', () => {
           buttonWrapper = wrapper.find(BaseButtonWrapper);
         });
 
-        it('should pass the `isToggled` prop', () => {
+        it('should pass the `isDisabled` prop', () => {
           expect(buttonWrapper).toHaveProp('isDisabled', true);
         });
       });
