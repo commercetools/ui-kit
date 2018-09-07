@@ -8,6 +8,7 @@ import babel from 'rollup-plugin-babel';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
+import copy from 'rollup-plugin-copy';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
@@ -39,6 +40,7 @@ const postcssPlugins = [
 
 const basePlugins = [
   peerDepsExternal(),
+  builtins(),
   commonjs({
     include: 'node_modules/**',
     namedExports: {
@@ -46,7 +48,6 @@ const basePlugins = [
       'node_modules/flatpickr/dist/l10n/de.js': ['German'],
     },
   }),
-  builtins(),
   resolve(),
   // this is used for importing our css modules
   postcss({
@@ -65,9 +66,9 @@ const basePlugins = [
     plugins: postcssPlugins,
   }),
   babel({
+    exclude: ['node_modules/**'],
     runtimeHelpers: true,
     ...babelOptions(),
-    exclude: ['node_modules/**'],
   }),
   json(),
   svg({
@@ -84,6 +85,9 @@ const basePlugins = [
         { cleanupIDs: false },
       ],
     },
+  }),
+  copy({
+    'proxy-exports': 'dist',
   }),
 ];
 
