@@ -106,7 +106,7 @@ export default [
       // We tried all copy plugins of rollup, and couldn't get a single one to
       // do this. So, the shell it is!
       execute(
-        'cp -r package.json README.md LICENSE materials proxy-exports/ dist/'
+        'cp -R package.json README.md LICENSE materials proxy-exports/ dist/'
       ),
     ],
   },
