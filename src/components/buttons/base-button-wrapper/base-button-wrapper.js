@@ -65,5 +65,5 @@ BaseButtonContent.propTypes = {
   isToggled: PropTypes.bool,
   icon: PropTypes.node,
   size: PropTypes.oneOf(['small', 'big']),
-  styles: PropTypes.array,
+  styles: PropTypes.string,
 };

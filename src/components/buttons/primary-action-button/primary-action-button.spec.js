@@ -25,7 +25,7 @@ describe('rendering', () => {
         buttonWrapper = wrapper.find(BaseButtonWrapper);
       });
       it('should render a <BaseButtonWrapper/>', () => {
-        expect(wrapper).toRender('BaseButtonWrapper');
+        expect(wrapper).toRender(BaseButtonWrapper);
       });
       it('should supply `id`', () => {
         expect(buttonWrapper).toHaveProp('id', props.id);
