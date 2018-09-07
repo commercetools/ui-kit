@@ -8,7 +8,7 @@ import babel from 'rollup-plugin-babel';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
-import copy from 'rollup-plugin-copy';
+import cleaner from 'rollup-plugin-cleaner';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
@@ -18,16 +18,13 @@ import babelOptions from '@commercetools-frontend/babel-preset-mc-app';
 import pkg from './package.json';
 
 const browserslist = {
-  development: ['chrome', 'firefox'].map(
-    browser => `last 2 ${browser} versions`
-  ),
   production: ['>1%', 'not op_mini all', 'ie 11'],
 };
 
 const postcssPlugins = [
   postcssImport(),
   postcssPresetEnv({
-    browsers: browserslist.development,
+    browsers: browserslist.production,
     autoprefixer: { grid: true },
   }),
   postcssCustomProperties({
@@ -39,6 +36,10 @@ const postcssPlugins = [
 ];
 
 const basePlugins = [
+  cleaner({
+    silent: true,
+    targets: ['./dist/'],
+  }),
   peerDepsExternal(),
   builtins(),
   commonjs({
@@ -86,18 +87,21 @@ const basePlugins = [
       ],
     },
   }),
-  copy({
-    'proxy-exports': 'dist',
-  }),
 ];
 
 export default [
   {
     input: 'src/index.js',
-    output: {
-      file: pkg.module,
-      format: 'es',
-    },
+    output: [
+      {
+        file: `dist/${pkg.module}`,
+        format: 'esm',
+      },
+      {
+        file: `dist/${pkg.main}`,
+        format: 'cjs',
+      },
+    ],
     plugins: basePlugins,
   },
 ];
