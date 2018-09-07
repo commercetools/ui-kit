@@ -1,7 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
-import svg from 'rollup-plugin-svg';
 import builtins from 'rollup-plugin-node-builtins';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
@@ -87,10 +86,6 @@ export default [
         ...babelOptions(),
       }),
       json(),
-      svg({
-        include: ['**/*.svg'],
-        exclude: ['**/*.react.svg'],
-      }),
       svgrPlugin({
         include: ['**/*.react.svg'],
         icon: false,
