@@ -29,19 +29,6 @@ module.exports = (storybookBaseConfig, configType) => {
       test: /\.js$/,
       include: sourceFolders,
       use: [
-        // This loader parallelizes code compilation, it is optional but
-        // improves compile time on larger projects
-        Object.assign(
-          {},
-          // Keep workers alive only for development mode
-          configType === 'PRODUCTION'
-            ? {}
-            : {
-                options: {
-                  poolTimeout: Infinity, // keep workers alive for more effective watch mode
-                },
-              }
-        ),
         {
           loader: require.resolve('babel-loader'),
           options: {
