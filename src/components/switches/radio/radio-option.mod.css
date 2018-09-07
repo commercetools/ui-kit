@@ -35,10 +35,12 @@
 
 /* Hover */
 
-.labelWrapper:not(.labelWrapperDisabled):hover svg
-  [id='borderAndContent'] > [id='border'] {
-    stroke: var(--token-border-color-input-focus);
-  }
+.labelWrapper:not(.labelWrapperDisabled):hover
+  svg
+  [id='borderAndContent']
+  > [id='border'] {
+  stroke: var(--token-border-color-input-focus);
+}
 
 /* Hidden input */
 

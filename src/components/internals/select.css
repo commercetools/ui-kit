@@ -173,7 +173,8 @@
 .react-select .react-select__multi-value__remove {
   border-color: var(--token-border-color-tags-pristine);
   padding: 0 var(--spacing-4);
-  border-radius: 0 var(--token-border-radius-tags) var(--token-border-radius-tags) 0;
+  border-radius: 0 var(--token-border-radius-tags)
+    var(--token-border-radius-tags) 0;
   border-style: solid;
   border-width: 1px 1px 1px 0;
 }
@@ -189,7 +190,9 @@
   padding: 0;
 }
 
-.react-select .react-select__group:not(:first-child) .react-select__group-heading {
+.react-select
+  .react-select__group:not(:first-child)
+  .react-select__group-heading {
   border-top: 1px var(--token-border-color-separator) solid;
 }
 

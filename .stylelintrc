@@ -28,6 +28,7 @@
     "rule-empty-line-before": null,
     "value-list-comma-newline-after": null,
     "indentation": null,
-    "selector-descendant-combinator-no-non-space": null
+    "selector-descendant-combinator-no-non-space": null,
+    "selector-combinator-space-before": null
   }
 }
