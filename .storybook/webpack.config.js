@@ -83,30 +83,6 @@ module.exports = (storybookBaseConfig, configType) => {
         },
       ],
     },
-    // For normal svg files (not icons) we should load the file normally
-    // and simply use it as a `<img src/>`.
-    {
-      test: function testForNormalSvgFiles(fileName) {
-        return (
-          // Use this only for plain SVG.
-          // For SVG as React components, see loader above.
-          fileName.endsWith('.svg') && !fileName.endsWith('.react.svg')
-        );
-      },
-      use: [
-        {
-          loader: require.resolve('svg-url-loader'),
-          options: { noquotes: true },
-        },
-      ],
-    },
-    // "url" loader works like "file" loader except that it embeds assets
-    // smaller than specified limit in bytes as data URLs to avoid requests.
-    // A missing `test` is equivalent to a match.
-    {
-      test: /\.png$/,
-      use: [require.resolve('url-loader')],
-    },
     // "postcss" loader applies autoprefixer to our CSS
     // "css" loader resolves paths in CSS and adds assets as dependencies.
     // "style" loader turns CSS into JS modules that inject <style> tags.
