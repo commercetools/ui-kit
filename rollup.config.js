@@ -37,6 +37,8 @@ const basePlugins = [
   builtins(),
   resolve(),
   postcss({
+    include: '',
+    // exclude: 'node_modules/**',
     modules: true,
     // extract: true,
     importLoaders: 1,
