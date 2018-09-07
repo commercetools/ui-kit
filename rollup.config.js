@@ -14,10 +14,9 @@ import postcssPostcssColorModFunction from 'postcss-color-mod-function';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 // import { uglify } from 'rollup-plugin-uglify';
 // import { minify } from 'uglify-es';
+import svgrPlugin from '@svgr/rollup';
 import babelOptions from '@commercetools-frontend/babel-preset-mc-app';
 import pkg from './package.json';
-
-// const path = 'dist/ui-kit';
 
 const browserslist = {
   development: ['chrome', 'firefox'].map(
@@ -28,7 +27,6 @@ const browserslist = {
 
 const basePlugins = [
   peerDepsExternal(),
-  builtins(),
   commonjs({
     include: 'node_modules/**',
     namedExports: {
@@ -36,6 +34,7 @@ const basePlugins = [
       'node_modules/flatpickr/dist/l10n/de.js': ['German'],
     },
   }),
+  builtins(),
   resolve(),
   postcss({
     modules: true,
@@ -62,7 +61,21 @@ const basePlugins = [
     exclude: 'node_modules/**',
   }),
   json(),
-  svg(),
+  svg({
+    include: ['**/*.svg'],
+    exclude: ['**/*.react.svg'],
+  }),
+  svgrPlugin({
+    include: ['**/*.react.svg'],
+    icon: false,
+    svgoConfig: {
+      plugins: [
+        { removeViewBox: false },
+        // Keeps ID's of svgs so they can be targeted with CSS
+        { cleanupIDs: false },
+      ],
+    },
+  }),
 ];
 
 export default [
