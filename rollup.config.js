@@ -101,16 +101,7 @@ export default [
           ],
         },
       }),
-      // copy materials css over. don't even ask :(
-      execute(
-        "rsync -r --exclude '*.js' --exclude 'spacings/' --exclude 'constraints/' src/materials dist/"
-      ),
-      // copy static files over
-      // We tried all copy plugins of rollup, and couldn't get a single one to
-      // do this. So, the shell it is!
-      execute(
-        'cp -R package.json README.md LICENSE materials proxy-exports/ dist/'
-      ),
+      execute('node scripts/bundle-copy.js'),
     ],
   },
 ];
