@@ -8,7 +8,13 @@ const pick = require('lodash.pick');
 const pkg = require('../package.json');
 
 // 1. Copy meta files, materials folder (e.g. images) and ALL proxy-exports into `dist`
-const metaFiles = ['README.md', 'LICENSE', 'materials', 'proxy-exports/*'];
+const metaFiles = [
+  'README.md',
+  'CHANGELOG.md',
+  'LICENSE',
+  'materials',
+  'proxy-exports/*',
+];
 metaFiles.forEach(f => shelljs.cp('-R', f, path.join(__dirname, '../dist/')));
 // 2. Copy ALL css module files from materials into `dist`
 shelljs.exec(
