@@ -97,8 +97,8 @@ export class CreatableSelectInput extends React.Component {
               'react-select-warning': this.props.hasWarning,
             })}
             components={{
-              ...this.props.components,
               ...customizedComponents,
+              ...this.props.components,
             }}
             classNamePrefix="react-select"
             onChange={(value, info) =>
