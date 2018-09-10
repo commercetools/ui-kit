@@ -9,6 +9,7 @@ import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
 import execute from 'rollup-plugin-execute';
 import cleaner from 'rollup-plugin-cleaner';
+import replace from 'rollup-plugin-replace';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
@@ -49,6 +50,9 @@ export default [
       },
     ],
     plugins: [
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('production'),
+      }),
       cleaner({
         silent: true,
         targets: ['./dist/'],
