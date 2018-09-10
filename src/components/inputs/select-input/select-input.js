@@ -4,15 +4,22 @@ import { injectIntl } from 'react-intl';
 import has from 'lodash.has';
 import flatMap from 'lodash.flatmap';
 import classnames from 'classnames';
-import Select from 'react-select';
+import Select, { components as defaultComponents } from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../../materials/constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import TagRemove from '../../internals/tag-remove';
 import '../../internals/select.css';
 import messages from './messages';
+
+const customizedComponents = {
+  DropdownIndicator,
+  ClearIndicator,
+  MultiValueRemove: TagRemove,
+};
 
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
@@ -24,6 +31,7 @@ export class SelectInput extends React.Component {
   static defaultProps = {
     maxMenuHeight: 200,
   };
+
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     name: PropTypes.string,
@@ -36,6 +44,7 @@ export class SelectInput extends React.Component {
     maxMenuHeight: PropTypes.number,
     isDisabled: PropTypes.bool,
     isMulti: PropTypes.bool,
+    components: PropTypes.object,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.shape({ value: PropTypes.string.isRequired }),
@@ -105,9 +114,8 @@ export class SelectInput extends React.Component {
             })}
             maxMenuHeight={this.props.maxMenuHeight}
             components={{
-              DropdownIndicator,
-              ClearIndicator,
-              MultiValueRemove: TagRemove,
+              ...this.props.components,
+              ...customizedComponents,
             }}
             classNamePrefix="react-select"
             onChange={selectedOptions =>
@@ -169,5 +177,9 @@ export class SelectInput extends React.Component {
 }
 
 const Enhanced = injectIntl(SelectInput);
-Enhanced.isTouched = SelectInput.isTouched;
+addStaticFields(Enhanced, {
+  ...defaultComponents,
+  ...customizedComponents,
+  isTouched: SelectInput.isTouched,
+});
 export default Enhanced;

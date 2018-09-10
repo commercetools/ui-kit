@@ -3,14 +3,22 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import classnames from 'classnames';
 import CreatableSelect from 'react-select/lib/Creatable';
+import { components as defaultComponents } from 'react-select';
 import omit from 'lodash.omit';
 import Constraints from '../../../materials/constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import TagRemove from '../../internals/tag-remove';
 import '../../internals/select.css';
 import messages from './messages';
+
+const customizedComponents = {
+  DropdownIndicator,
+  ClearIndicator,
+  MultiValueRemove: TagRemove,
+};
 
 export class CreatableSelectInput extends React.Component {
   static displayName = 'SelectInput';
@@ -35,6 +43,7 @@ export class CreatableSelectInput extends React.Component {
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
     isMulti: PropTypes.bool,
+    components: PropTypes.object,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.shape({ value: PropTypes.string.isRequired }),
@@ -86,9 +95,8 @@ export class CreatableSelectInput extends React.Component {
               'react-select-warning': this.props.hasWarning,
             })}
             components={{
-              DropdownIndicator,
-              ClearIndicator,
-              MultiValueRemove: TagRemove,
+              ...this.props.components,
+              ...customizedComponents,
             }}
             classNamePrefix="react-select"
             onChange={(value, info) =>
@@ -152,5 +160,9 @@ export class CreatableSelectInput extends React.Component {
 }
 
 const Enhanced = injectIntl(CreatableSelectInput);
-Enhanced.isTouched = CreatableSelectInput.isTouched;
+addStaticFields(Enhanced, {
+  ...defaultComponents,
+  ...customizedComponents,
+  isTouched: CreatableSelectInput.isTouched,
+});
 export default Enhanced;

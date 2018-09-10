@@ -3,15 +3,24 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import omit from 'lodash.omit';
 import AsyncSelect from 'react-select/lib/Async';
+import { components as defaultComponents } from 'react-select';
 import classnames from 'classnames';
 import Constraints from '../../../materials/constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import LoadingIndicator from '../../internals/loading-indicator';
 import TagRemove from '../../internals/tag-remove';
 import '../../internals/select.css';
 import messages from './messages';
+
+const customizedComponents = {
+  DropdownIndicator,
+  ClearIndicator,
+  LoadingIndicator,
+  MultiValueRemove: TagRemove,
+};
 
 export class AsyncSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
@@ -53,6 +62,7 @@ export class AsyncSelectInput extends React.Component {
     onBlur: PropTypes.func,
     loadOptions: PropTypes.func.isRequired,
     isMulti: PropTypes.bool,
+    components: PropTypes.object,
     noOptionsMessage: PropTypes.func,
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
@@ -80,10 +90,8 @@ export class AsyncSelectInput extends React.Component {
               'react-select-warning': this.props.hasWarning,
             })}
             components={{
-              DropdownIndicator,
-              ClearIndicator,
-              LoadingIndicator,
-              MultiValueRemove: TagRemove,
+              ...this.props.components,
+              ...customizedComponents,
             }}
             classNamePrefix="react-select"
             onChange={(value, info) => {
@@ -139,5 +147,9 @@ export class AsyncSelectInput extends React.Component {
 }
 
 const Wrapped = injectIntl(AsyncSelectInput);
-Wrapped.isTouched = AsyncSelectInput.isTouched;
+addStaticFields(Wrapped, {
+  ...defaultComponents,
+  ...customizedComponents,
+  isTouched: AsyncSelectInput.isTouched,
+});
 export default Wrapped;

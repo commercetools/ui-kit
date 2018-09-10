@@ -60,7 +60,140 @@ It supports the same properties as `react-select`, except for `onChange` and `on
 | `horizontalConstraint` | `string`   |    -     | xs, s, m, l, xl, scale | -       | Horizontal size limit of the input fields.                                                                                                                                                                                                                                                                                                                        |
 | `onChange`             | `function` |    ✅    | -                      | -       | Called with a fake event when value is changed by user. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be a the selected option, or an array of options in case `props.isMulti` is `true`. The second argument is an object containing information about the cause of the change. |
 | `onBlur`               | `function` |    -     | -                      | -       | Called with a fake event when input is blurred. The event's `target.name` will be the `name` supplied in props. In case `props.isMulti` is `true`, the name will have `.0` appended which helps with the formik integration.                                                                                                                                      |
+| `components`           | `object`   |    -     | -                      | -       | Overrides for `AsyncCreatableSelectInput` conponents , see [what components you can override](https://react-select.com/components)                                                                                                                                                                                                                                |
 | `hasWarning`           | `bool`     |    -     | -                      | -       | Indicates the input field has a warning                                                                                                                                                                                                                                                                                                                           |
 | `hasError`             | `bool`     |    -     | -                      | -       | Indicates the input field has an error                                                                                                                                                                                                                                                                                                                            |
 
 See the [official documentation](https://react-select.com/props) for all other properties.
+
+#### Static Properties
+
+##### `isTouched(touched)`
+
+Expects to be called with an array or boolean.
+Returns `true` when truthy.
+
+##### `ClearIndicator`
+
+Default implementation of internal `ClearIndicator` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `Control`
+
+Default implementation of internal `Control` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `DropdownIndicator`
+
+Default implementation of internal `DropdownIndicator` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `DownChevron`
+
+Default implementation of internal `DownChevron` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `CrossIcon`
+
+Default implementation of internal `CrossIcon` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `Group`
+
+Default implementation of internal `Group` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `GroupHeading`
+
+Default implementation of internal `GroupHeading` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `IndicatorsContainer`
+
+Default implementation of internal `IndicatorsContainer` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `IndicatorSeparator`
+
+Default implementation of internal `IndicatorSeparator` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `Input`
+
+Default implementation of internal `Input` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `LoadingIndicator`
+
+Default implementation of internal `LoadingIndicator` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `Menu`
+
+Default implementation of internal `Menu` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `MenuList`
+
+Default implementation of internal `MenuList` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `MenuPortal`
+
+Default implementation of internal `MenuPortal` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `LoadingMessage`
+
+Default implementation of internal `LoadingMessage` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `NoOptionsMessage`
+
+Default implementation of internal `NoOptionsMessage` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `MultiValue`
+
+Default implementation of internal `MultiValue` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `MultiValueContainer`
+
+Default implementation of internal `MultiValueContainer` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `MultiValueLabel`
+
+Default implementation of internal `MultiValueLabel` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `MultiValueRemove`
+
+Default implementation of internal `MultiValueRemove` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `Option`
+
+Default implementation of internal `Option` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `Placeholder`
+
+Default implementation of internal `Placeholder` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `SelectContainer`
+
+Default implementation of internal `SelectContainer` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `SingleValue`
+
+Default implementation of internal `SingleValue` component.
+See the [official documentation](https://react-select.com/components).
+
+##### `ValueContainer`
+
+Default implementation of internal `ValueContainer` component.
+See the [official documentation](https://react-select.com/components).
