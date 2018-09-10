@@ -4,7 +4,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+**/.DS_Store
+dist
 # Runtime data
 pids
 *.pid
@@ -79,6 +80,3 @@ typings/
 .idea
 .vscode
 !.vscode/settings.json
-
-# Netlify
-netlify.toml

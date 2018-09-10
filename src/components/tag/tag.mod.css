@@ -88,7 +88,8 @@
 .removeWrapper {
   border-color: var(--token-border-color-tags-pristine);
   padding: 0 var(--spacing-4);
-  border-radius: 0 var(--token-border-radius-tags) var(--token-border-radius-tags) 0;
+  border-radius: 0 var(--token-border-radius-tags)
+    var(--token-border-radius-tags) 0;
   display: flex;
   align-items: center;
   background: inherit;

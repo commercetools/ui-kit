@@ -53,6 +53,7 @@ export { default as Stamp } from './components/stamp';
 export { default as Constraints } from './materials/constraints';
 export { default as Spacings } from './materials/spacings';
 
+export * from '../i18n';
 export * from './components/switches';
 
 export { default as Table } from './components/table';
@@ -64,3 +65,6 @@ export { default as Tag } from './components/tag';
 export { default as TimeRangePicker } from './components/time-range-picker';
 
 export { default as Text } from './components/typography/text';
+
+export { default as withMouseDownState } from './hocs/with-mouse-down-state';
+export { default as withMouseOverState } from './hocs/with-mouse-over-state';

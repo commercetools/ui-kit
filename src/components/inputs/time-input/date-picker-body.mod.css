@@ -32,7 +32,8 @@
   width: 100%;
   appearance: none;
   background: var(--token-background-color-input-pristine);
-  border-radius: var(--token-border-radius-input) 0 0 var(--token-border-radius-input);
+  border-radius: var(--token-border-radius-input) 0 0
+    var(--token-border-radius-input);
   border-bottom: 1px solid var(--token-border-color-input-pristine);
   border-left: 1px solid var(--token-border-color-input-pristine);
   border-top: 1px solid var(--token-border-color-input-pristine);

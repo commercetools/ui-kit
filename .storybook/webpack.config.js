@@ -29,22 +29,6 @@ module.exports = (storybookBaseConfig, configType) => {
       test: /\.js$/,
       include: sourceFolders,
       use: [
-        // This loader parallelizes code compilation, it is optional but
-        // improves compile time on larger projects
-        Object.assign(
-          {},
-          {
-            loader: require.resolve('thread-loader'),
-          },
-          // Keep workers alive only for development mode
-          configType === 'PRODUCTION'
-            ? {}
-            : {
-                options: {
-                  poolTimeout: Infinity, // keep workers alive for more effective watch mode
-                },
-              }
-        ),
         {
           loader: require.resolve('babel-loader'),
           options: {
@@ -98,30 +82,6 @@ module.exports = (storybookBaseConfig, configType) => {
           },
         },
       ],
-    },
-    // For normal svg files (not icons) we should load the file normally
-    // and simply use it as a `<img src/>`.
-    {
-      test: function testForNormalSvgFiles(fileName) {
-        return (
-          // Use this only for plain SVG.
-          // For SVG as React components, see loader above.
-          fileName.endsWith('.svg') && !fileName.endsWith('.react.svg')
-        );
-      },
-      use: [
-        {
-          loader: require.resolve('svg-url-loader'),
-          options: { noquotes: true },
-        },
-      ],
-    },
-    // "url" loader works like "file" loader except that it embeds assets
-    // smaller than specified limit in bytes as data URLs to avoid requests.
-    // A missing `test` is equivalent to a match.
-    {
-      test: /\.png$/,
-      use: [require.resolve('url-loader')],
     },
     // "postcss" loader applies autoprefixer to our CSS
     // "css" loader resolves paths in CSS and adds assets as dependencies.

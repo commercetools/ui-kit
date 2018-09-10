@@ -61,7 +61,9 @@
 
 /* Hover */
 
-.labelWrapper:not(.labelWrapperDisabled, .labelWrapperError):hover svg
-  [id='borderAndContent'] > [id='border'] {
-    stroke: var(--token-border-color-input-focus);
-  }
+.labelWrapper:not(.labelWrapperDisabled, .labelWrapperError):hover
+  svg
+  [id='borderAndContent']
+  > [id='border'] {
+  stroke: var(--token-border-color-input-focus);
+}

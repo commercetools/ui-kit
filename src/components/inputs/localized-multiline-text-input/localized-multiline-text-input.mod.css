@@ -20,7 +20,9 @@
   /* avoid wrapping label onto new lines */
   flex: 1 0 auto;
   color: var(--token-font-color-disabled);
-  line-height: calc(var(--token-size-height-input) - 2 * var(--border-radius-1));
+  line-height: calc(
+    var(--token-size-height-input) - 2 * var(--border-radius-1)
+  );
   background-color: var(--token-background-color-input-disabled);
   border-top-left-radius: var(--token-border-radius-input);
   border-bottom-left-radius: var(--token-border-radius-input);

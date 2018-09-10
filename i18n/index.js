@@ -1,3 +1,5 @@
-export * as en from './en.json';
-export * as de from './de.json';
-export * as es from './es.json';
+import * as en from './en.json';
+import * as de from './de.json';
+import * as es from './es.json';
+
+export { en, de, es };

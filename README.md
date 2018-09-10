@@ -13,8 +13,6 @@ $ npm install --save @commercetools-frontend/ui-kit
 $ yarn add @commercetools-frontend/ui-kit
 ```
 
-## Export structure
-
 The package main exports contains all the UI components.
 
 ```js
@@ -26,10 +24,17 @@ import {
 } from '@commercetools-frontend/ui-kit';
 ```
 
-There are some other exports that are grouped under different subfolders:
+#### Exports for backwards compatibility
 
-- `@commercetools-frontend/ui-kit/hocs`: contains useful Higher Order Components
-- `@commercetools-frontend/ui-kit/materials`: contains low-level styles and components
+Previously the library was consumed by reaching into the folders structure like
+
+```js
+import PrimaryButton from '@commercetools-frontend/ui-kit/buttons/primary-button';
+```
+
+In order to keep those imports backwards compatible, we provide the same old file structure in the `proxy-exports` folder, which then gets copied into `dist` at build time. Each folder only contains an `index.js` that points to the main export of the generated bundle.
+
+> The `proxy-exports` folder will be removed in the future.
 
 ## Motivation
 
