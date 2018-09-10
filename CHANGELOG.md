@@ -18,7 +18,7 @@
 
 - bundle package using [Rollup](https://rollupjs.org) ([26f3df2](https://github.com/commercetools/ui-kit/commit/26f3df2))
 
-The package now exposes all components as named exports, so you can import them without reaching into the internals (see [https://github.com/commercetools/ui-kit/blob/v2.0.0-rc.0/README.md#install](README) for more information).
+The package now exposes all components as named exports, so you can import them without reaching into the internals (see [README](https://github.com/commercetools/ui-kit/blob/v2.0.0-rc.0/README.md#install) for more information).
 
 > NOTE that we plan to remove those proxy exports in the `2.0.0` release.
 
