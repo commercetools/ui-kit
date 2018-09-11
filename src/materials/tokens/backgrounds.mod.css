@@ -13,6 +13,22 @@
     *   ▪ Background Colors
     * • Tags
     *  ◦ Background Colors
+    * • Buttons
+    *  ◦ Background Colors
+    *  ◦ Primary Action
+    *   ▪ Background Colors
+    *  ◦ Secondary Action
+    *   ▪ Background Colors
+    *  ◦ Critical Action
+    *   ▪ Background Colors
+    *  ◦ Icon
+    *   ▪ Background Colors
+    *  ◦ Flat Primary Action
+    *   ▪ Background Colors
+    *  ◦ Flat Secondary Action
+    *   ▪ Background Colors
+    *  ◦ Flat Icon
+    *   ▪ Background Colors
     */
 
   /* ==========================================================================
@@ -38,4 +54,69 @@
   --token-background-color-tags-disabled: var(--color-gray-95);
   --token-background-color-tags-normal-hover: var(--color-gray-60);
   --token-background-color-tags-warning-hover: var(--color-orange);
+
+  /* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-disabled: var(--color-navy-98);
+
+  /* Primary Action
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-primary-action-pristine: var(--color-green);
+  --token-background-color-button-primary-action-hover: var(--color-green-25);
+  --token-background-color-button-primary-action-active: var(--color-green);
+
+  /* Secondary Action
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-secondary-action-pristine: var(--color-white);
+  --token-background-color-button-secondary-action-hover: var(--color-white);
+  --token-background-color-button-secondary-action-active: var(--color-navy-98);
+  --token-background-color-button-secondary-action-active-hover: var(--color-gray-95);
+
+  /* Critical Action
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-critical-action-pristine: var(--color-orange);
+  --token-background-color-button-critical-action-hover: var(--color-orange);
+  --token-background-color-button-critical-action-active: var(--color-orange);
+
+  /* Flat Primary Action
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-flat-primary-action-pristine: 'transparent';
+  --token-background-color-button-flat-primary-action-hover: 'transparent';
+  --token-background-color-button-flat-primary-action-active: 'transparent';
+
+  /* Flat Primary Action
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-flat-primary-action-pristine: 'transparent';
+  --token-background-color-button-flat-primary-action-hover: 'transparent';
+  --token-background-color-button-flat-primary-action-active: 'transparent';
+
+  /* Icon
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-icon-pristine: var(--color-white);
+  --token-background-color-button-icon-hover: var(--color-white);
+  --token-background-color-button-icon-active: var(--color-navy-98);
+  --token-background-color-button-icon-active-hover: var(--color-gray-95);
+
+  /* Flat Icon
+   ========================================================================== */
+
+  /* Colors */
+  --token-background-color-button-flat-icon-pristine: 'transparent';
+  --token-background-color-button-flat-icon-hover: 'transparent';
+  --token-background-color-button-flat-icon-active: 'transparent';
 }
