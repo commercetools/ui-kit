@@ -23,6 +23,7 @@ class BaseButtonWrapper extends React.Component {
   render() {
     return (
       <button
+        {...this.props}
         id={this.props.id}
         name={this.props.name}
         disabled={this.props.isDisabled}

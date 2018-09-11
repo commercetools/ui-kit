@@ -13,7 +13,7 @@ const iconNames = Object.keys(icons);
 storiesOf('Buttons', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('1. Primary Action Button', () => (
+  .add('1. Primary Action', () => (
     <Section>
       <PrimaryActionButton
         id={text('id', '')}

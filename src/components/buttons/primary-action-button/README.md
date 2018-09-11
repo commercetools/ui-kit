@@ -8,7 +8,7 @@ import PrimaryActionButton from '@commercetools-frontend/ui-kit/buttons/primary-
 
 #### Description
 
-Primary action buttons are used for a primary action on a page. You must also pass an
+The PrimaryActionButton is used for a primary action on a page. You must also pass an
 ariaLabel for accessibility reasons.
 
 #### Usage
