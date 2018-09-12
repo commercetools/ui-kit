@@ -12,7 +12,7 @@ import Flatpickr from 'flatpickr';
 import { German } from 'flatpickr/dist/l10n/de';
 import isTouchDevice from 'is-touch-device';
 import moment from 'moment-timezone';
-import Constraints from '../../../materials/constraints';
+import Constraints from '../../constraints';
 import { DatePickerBody } from './date-picker-body';
 import './date-picker-ct-theme.mod.css';
 import styles from './date-input.mod.css';

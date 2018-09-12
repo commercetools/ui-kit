@@ -4,8 +4,8 @@ import requiredIf from 'react-required-if';
 import mapValues from 'lodash.mapvalues';
 import oneLine from 'common-tags/lib/oneLine';
 import { injectIntl } from 'react-intl';
-import Spacings from '../../../materials/spacings';
-import Constraints from '../../../materials/constraints';
+import Spacings from '../../spacings';
+import Constraints from '../../constraints';
 import {
   sortLanguages,
   createLocalizedDataAttributes,

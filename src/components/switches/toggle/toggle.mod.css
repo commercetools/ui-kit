@@ -1,7 +1,7 @@
-@import '../../../materials/spacings.mod.css';
-@import '../../../materials/sizes.mod.css';
-@import '../../../materials/transitions.mod.css';
-@import '../../../materials/shadows/base-shadows.mod.css';
+@import '../../../../materials/spacings.mod.css';
+@import '../../../../materials/sizes.mod.css';
+@import '../../../../materials/transitions.mod.css';
+@import '../../../../materials/shadows/base-shadows.mod.css';
 @import './toggle-bar.mod.css';
 @import './toggle-button.mod.css';
 

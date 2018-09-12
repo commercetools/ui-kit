@@ -16,6 +16,7 @@ const browserslist = {
 const sourceFolders = [
   path.resolve(__dirname),
   path.resolve(__dirname, '../examples'),
+  path.resolve(__dirname, '../materials'),
   path.resolve(__dirname, '../src'),
 ];
 

@@ -3,7 +3,7 @@ import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import Spacings from '../../../materials/spacings';
+import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Toggle from '.';

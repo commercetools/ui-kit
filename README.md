@@ -24,17 +24,31 @@ import {
 } from '@commercetools-frontend/ui-kit';
 ```
 
-#### Exports for backwards compatibility
+#### Importing CSS modules
 
-Previously the library was consumed by reaching into the folders structure like
+In order to make use of our CSS variables defined in our CSS module files, you can require those files (from `/materials`) within your `.mod.css` files:
 
-```js
-import PrimaryButton from '@commercetools-frontend/ui-kit/buttons/primary-button';
+```css
+@import '@commercetools-frontend/ui-kit/materials/spacings.mod.css';
+
+.container {
+  padding: var(--spacing-8);
+}
 ```
 
-In order to keep those imports backwards compatible, we provide the same old file structure in the `proxy-exports` folder, which then gets copied into `dist` at build time. Each folder only contains an `index.js` that points to the main export of the generated bundle.
+> Please look into the package itself to inspect what variables are available (_documentation will be provided in the future_)
 
-> The `proxy-exports` folder will be removed in the future.
+#### Importing SVG images
+
+Similar to CSS modules, if you need to use one of our available SVG images, you can require them from `/images`.
+
+```js
+import UnexpectedErrorSVG from '@commercetools-frontend/ui-kit/images/maintenance/unexpected-error.svg';
+
+<img src={UnexpectedErrorSVG} />;
+```
+
+> Please look into the package itself to inspect what images are available
 
 ## Motivation
 

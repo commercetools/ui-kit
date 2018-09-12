@@ -7,7 +7,7 @@ import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Constraints from '../../../materials/constraints';
+import Constraints from '../../constraints';
 import styles from './multiline-text-input.mod.css';
 import messages from './messages';
 

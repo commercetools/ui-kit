@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import invariant from 'invariant';
 import { defaultMemoize } from 'reselect';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Spacings from '../../../materials/spacings';
+import Spacings from '../../spacings';
 import Text from '../../typography/text';
 import CollapsibleMotion from '../../collapsible-motion';
 import HeaderIcon from './header-icon';

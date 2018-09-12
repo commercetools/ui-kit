@@ -9,7 +9,7 @@ import Section from '../../../../.storybook/decorators/section';
 import FormikBox from '../../../../.storybook/decorators/formik-box';
 import PrimaryButton from '../../buttons/primary-button';
 import SecondaryButton from '../../buttons/secondary-button';
-import Spacings from '../../../materials/spacings';
+import Spacings from '../../spacings';
 import Readme from './README.md';
 import NumberInput from './number-input';
 

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import CreatableSelect from 'react-select/lib/Creatable';
 import { components as defaultComponents } from 'react-select';
 import omit from 'lodash.omit';
-import Constraints from '../../../materials/constraints';
+import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';

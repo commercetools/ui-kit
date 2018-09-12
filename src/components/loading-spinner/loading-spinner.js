@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Text from '../typography/text';
-import Spacings from '../../materials/spacings';
+import Spacings from '../spacings';
 import styles from './loading-spinner.mod.css';
 
 const circlePath =

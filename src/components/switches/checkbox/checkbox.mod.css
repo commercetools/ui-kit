@@ -1,6 +1,6 @@
-@import '../../../materials/spacings.mod.css';
-@import '../../../materials/colors/base-colors.mod.css';
-@import '../../../materials/tokens/tokens.mod.css';
+@import '../../../../materials/spacings.mod.css';
+@import '../../../../materials/colors/base-colors.mod.css';
+@import '../../../../materials/tokens/tokens.mod.css';
 
 /* As this relies on SVG files, we need to sync them with our Design tokens colors */
 

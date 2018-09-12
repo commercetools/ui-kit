@@ -1,9 +1,9 @@
-@import '../../../materials/tokens/tokens.mod.css';
-@import '../../../materials/borders.mod.css';
-@import '../../../materials/colors/base-colors.mod.css';
-@import '../../../materials/sizes.mod.css';
-@import '../../../materials/spacings.mod.css';
-@import '../../../materials/transitions.mod.css';
+@import '../../../../materials/tokens/tokens.mod.css';
+@import '../../../../materials/borders.mod.css';
+@import '../../../../materials/colors/base-colors.mod.css';
+@import '../../../../materials/sizes.mod.css';
+@import '../../../../materials/spacings.mod.css';
+@import '../../../../materials/transitions.mod.css';
 
 :root {
   --width-currency-label: 60px;

@@ -3,9 +3,9 @@ module.exports = {
   displayName: 'stylelint',
   moduleFileExtensions: ['css'],
   testMatch: [
+    '<rootDir>/materials/*.css',
+    '<rootDir>/materials/**/*.css',
     '<rootDir>/src/**/*.css',
-    '<rootDir>/**/*.css', // for backwards compatible folders
   ],
-  testPathIgnorePatterns: ['<rootDir>/node_modules'],
   watchPlugins: ['jest-plugin-filename'],
 };

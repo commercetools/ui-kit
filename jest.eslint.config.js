@@ -4,10 +4,10 @@ module.exports = {
   testMatch: [
     '<rootDir>/.storybook/**/*.js',
     '<rootDir>/examples/**/*.js',
+    '<rootDir>/materials/**/*.js',
     '<rootDir>/scripts/**/*.js',
     '<rootDir>/src/**/*.js',
     '<rootDir>/**/*.js', // for backwards compatible folders
   ],
-  testPathIgnorePatterns: ['<rootDir>/node_modules', '<rootDir>/proxy-exports'],
   watchPlugins: ['jest-plugin-filename'],
 };

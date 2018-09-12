@@ -5,11 +5,11 @@ const isVariation = require('../src/utils/is-variation');
 
 const importPath = path.join(
   __dirname,
-  '../src/materials/colors/base-colors.mod.css'
+  '../materials/colors/base-colors.mod.css'
 );
 const exportPath = path.join(
   __dirname,
-  '../src/materials/colors/colors-for-story.mod.css'
+  '../materials/colors/colors-for-story.mod.css'
 );
 const loadedFile = fs.readFileSync(importPath, 'utf8');
 const fileToBeTransformed = css.parse(loadedFile);
