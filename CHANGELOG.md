@@ -1,3 +1,12 @@
+<a name="2.0.0-rc.1"></a>
+
+# [2.0.0-rc.0](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2018-09-12)
+
+### Tooling
+
+- optimize bundle sizes ([#40](https://github.com/commercetools/ui-kit/pull/40))
+- remove proxy exports ([#42](https://github.com/commercetools/ui-kit/pull/42))
+
 <a name="2.0.0-rc.0"></a>
 
 # [2.0.0-rc.0](https://github.com/commercetools/ui-kit/compare/v1.0.0-beta.30...v2.0.0-rc.0) (2018-09-10)
