@@ -18,7 +18,6 @@
     "prestorybook:start": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
     "storybook:build": "build-storybook -o .public",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
-    "build:dev": "rimraf dist && cross-env NODE_ENV=development rollup -c",
     "start": "yarn storybook:start",
     "storybook:start": "start-storybook -p 9002",
     "i18n:build": "mc-scripts extract-intl --build-translations --output-path=$(pwd)/i18n 'src/components/**/!(*.spec).js'",
