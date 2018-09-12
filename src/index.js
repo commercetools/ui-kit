@@ -2,6 +2,7 @@
 
 /* eslint-disable max-len,prettier/prettier */
 import * as i18n from '../i18n'
+import * as Icons from './components/icons';
 
 export { default as AccessibleButton } from './components/buttons/accessible-button';
 export { default as FlatButton } from './components/buttons/flat-button';
@@ -24,7 +25,8 @@ export { default as FieldLabel } from './components/field-label';
 
 export { default as TextField } from './components/fields/text-field';
 
-// TODO: group *Icons into a `Icons` named export
+export { Icons };
+// TODO: this type of export is deprecated and should be removed in the next major release
 export * from './components/icons';
 
 export { default as AsyncCreatableSelectInput } from './components/inputs/async-creatable-select-input';
