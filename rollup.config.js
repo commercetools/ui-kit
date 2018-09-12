@@ -7,7 +7,6 @@ import babel from 'rollup-plugin-babel';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
-import execute from 'rollup-plugin-execute';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
@@ -128,7 +127,7 @@ const config = [
       file: `dist/${pkg.module}`,
       format: 'esm',
     },
-    plugins: [...basePlugins, execute('node scripts/bundle-copy.js')],
+    plugins: basePlugins,
   },
   {
     input: 'src/index.js',

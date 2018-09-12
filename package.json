@@ -7,8 +7,18 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "ui-kit.cjs.js",
-  "module": "ui-kit.esm.js",
+  "main": "dist/ui-kit.cjs.js",
+  "module": "dist/ui-kit.esm.js",
+  "files": [
+    "dist",
+    "i18n",
+    "images",
+    "materials",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "lint-staged",
@@ -116,7 +126,6 @@
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-cleanup": "3.0.0",
     "rollup-plugin-commonjs": "9.1.6",
-    "rollup-plugin-execute": "1.0.0",
     "rollup-plugin-json": "3.0.0",
     "rollup-plugin-node-builtins": "2.1.2",
     "rollup-plugin-node-resolve": "3.4.0",
