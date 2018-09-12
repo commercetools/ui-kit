@@ -49,6 +49,7 @@ export default [
         format: 'cjs',
       },
     ],
+    external: Object.keys(pkg.dependencies).concat(pkg.peerDependencies),
     plugins: [
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
@@ -62,6 +63,12 @@ export default [
       commonjs({
         include: 'node_modules/**',
         namedExports: {
+          'node_modules/react/index.js': [
+            'Children',
+            'Component',
+            'createElement',
+            'isValidElement',
+          ],
           'node_modules/react-is/index.js': ['isValidElementType'],
           'node_modules/flatpickr/dist/l10n/de.js': ['German'],
         },
