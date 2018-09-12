@@ -9,7 +9,6 @@ import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
-import { uglify } from 'rollup-plugin-uglify';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
@@ -135,11 +134,7 @@ const config = [
       file: pkg.main,
       format: 'cjs',
     },
-    plugins: [
-      ...basePlugins,
-      // NOTE: disable if you whish to inspect the ouput (for debugging purposes)
-      uglify(),
-    ],
+    plugins: [...basePlugins],
   },
 ];
 
