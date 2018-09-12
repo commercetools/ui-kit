@@ -45,19 +45,27 @@ const postcssPlugins = [
 ];
 
 // This list includes common plugins shared between each output format.
-// The list is sorted alphabetically.
+// NOTE: the order of the plugins is important!
 const basePlugins = [
+  replace({
+    'process.env.NODE_ENV': JSON.stringify('production'),
+  }),
+  // To use the nodejs `resolve` algorithm
+  resolve(),
+  // For shimming nodejs builtins
+  builtins(),
+  // To automatically externalize `dependencies` and `peerDependencies`
+  // so that they do not end up in the bundle.
+  // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
+  peerDepsExternal({
+    includeDependencies: true,
+  }),
   // Transpile sources using our custom babel preset.
   babel({
     exclude: ['node_modules/**'],
     runtimeHelpers: true,
     ...babelOptions(),
   }),
-  // For shimming nodejs builtins
-  builtins(),
-  // To remove comments, trim trailing spaces, compact empty lines,
-  // and normalize line endings
-  cleanup(),
   // To convert CJS modules to ES6
   commonjs({
     include: 'node_modules/**',
@@ -76,12 +84,6 @@ const basePlugins = [
   }),
   // To convert JSON files to ES6
   json(),
-  // To automatically externalize `dependencies` and `peerDependencies`
-  // so that they do not end up in the bundle.
-  // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
-  peerDepsExternal({
-    includeDependencies: true,
-  }),
   // To convert CSS modules files to ES6
   postcss({
     include: ['**/*.mod.css'],
@@ -98,11 +100,6 @@ const basePlugins = [
     include: ['**/*.css'],
     plugins: postcssPlugins,
   }),
-  replace({
-    'process.env.NODE_ENV': JSON.stringify('production'),
-  }),
-  // To use the nodejs `resolve` algorithm
-  resolve(),
   // To convert SVG Icons to ES6
   svgrPlugin({
     // NOTE: only the files ending with `.react.svg` are supposed to be
@@ -117,6 +114,9 @@ const basePlugins = [
       ],
     },
   }),
+  // To remove comments, trim trailing spaces, compact empty lines,
+  // and normalize line endings
+  cleanup(),
 ];
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
