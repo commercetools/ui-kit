@@ -19,8 +19,15 @@ import svgrPlugin from '@svgr/rollup';
 import babelOptions from '@commercetools-frontend/babel-preset-mc-app';
 import pkg from './package.json';
 
+// Inspired by https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.prod.js
 const browserslist = {
-  production: ['>1%', 'not op_mini all', 'ie 11'],
+  production: [
+    '>1%',
+    'last 2 versions',
+    'Firefox ESR',
+    'not op_mini all',
+    'ie 11',
+  ],
 };
 
 const postcssPlugins = [
@@ -37,16 +44,25 @@ const postcssPlugins = [
   postcssReporter(),
 ];
 
+// This list includes common plugins shared between each output format.
+// The list is sorted alphabetically.
 const basePlugins = [
+  // Transpile sources using our custom babel preset.
   babel({
     exclude: ['node_modules/**'],
     runtimeHelpers: true,
     ...babelOptions(),
   }),
+  // For shimming nodejs builtins
   builtins(),
+  // To remove comments, trim trailing spaces, compact empty lines,
+  // and normalize line endings
   cleanup(),
+  // To convert CJS modules to ES6
   commonjs({
     include: 'node_modules/**',
+    // Explicitly specify "unresolvable" named exports
+    // https://github.com/rollup/rollup-plugin-commonjs#custom-named-exports
     namedExports: {
       'node_modules/react/index.js': [
         'Children',
@@ -58,20 +74,25 @@ const basePlugins = [
       'node_modules/flatpickr/dist/l10n/de.js': ['German'],
     },
   }),
+  // To convert JSON files to ES6
   json(),
-  peerDepsExternal(),
-  // this is used for importing our css modules
+  // To automatically externalize `dependencies` and `peerDependencies`
+  // so that they do not end up in the bundle.
+  // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
+  peerDepsExternal({
+    includeDependencies: true,
+  }),
+  // To convert CSS modules files to ES6
   postcss({
     include: ['**/*.mod.css'],
+    // Normal CSS will be handled separately (see below)
     exclude: ['node_modules/**/*.css'],
     modules: true,
     importLoaders: 1,
     localIdentName: '[name]__[local]___[hash:base64:5]',
     plugins: postcssPlugins,
   }),
-  // this is used for importing both vendor css (from node_modules) and for
-  // importing our global css which uses tokens that require postcss plugins
-  // (such as color-mod) to be compiled properly.
+  // To convert "normal" CSS files to ES6, usually from vendors
   postcss({
     exclude: ['**/*.mod.css'],
     include: ['**/*.css'],
@@ -80,8 +101,12 @@ const basePlugins = [
   replace({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
+  // To use the nodejs `resolve` algorithm
   resolve(),
+  // To convert SVG Icons to ES6
   svgrPlugin({
+    // NOTE: only the files ending with `.react.svg` are supposed to be
+    // converted to React components
     include: ['**/*.react.svg'],
     icon: false,
     svgoConfig: {
@@ -94,6 +119,8 @@ const basePlugins = [
   }),
 ];
 
+// We need to define 2 separate configs (`esm` and `cjs`) so that each can be
+// further customized.
 const config = [
   {
     input: 'src/index.js',
@@ -101,7 +128,6 @@ const config = [
       file: `dist/${pkg.module}`,
       format: 'esm',
     },
-    external: Object.keys(pkg.dependencies).concat(pkg.peerDependencies),
     plugins: [...basePlugins, execute('node scripts/bundle-copy.js')],
   },
   {
@@ -110,10 +136,10 @@ const config = [
       file: `dist/${pkg.main}`,
       format: 'cjs',
     },
-    external: Object.keys(pkg.dependencies).concat(pkg.peerDependencies),
     plugins: [
       ...basePlugins,
-      ...(process.env.NODE_ENV === 'production' ? [uglify()] : []),
+      // NOTE: disable if you whish to inspect the ouput (for debugging purposes)
+      uglify(),
     ],
   },
 ];
