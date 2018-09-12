@@ -8,7 +8,6 @@ import withReadme from 'storybook-readme/with-readme';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import mapValues from 'lodash.mapvalues';
 import { FormikBox, Section } from '../.storybook/decorators';
-import { Spacings } from '../src/materials';
 import {
   Text,
   ErrorMessage,
@@ -19,6 +18,7 @@ import {
   LocalizedTextInput,
   PrimaryButton,
   SecondaryButton,
+  Spacings,
 } from '../src';
 import Forms from './forms.md';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Constraints from '../../../materials/constraints';
+import Constraints from '../../constraints';
 import styles from './text-input.mod.css';
 
 // NOTE: order is important here

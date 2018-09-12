@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Constraints from '../../materials/constraints';
+import Constraints from '../constraints';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';

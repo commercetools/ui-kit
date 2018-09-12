@@ -10,11 +10,11 @@ const startCase = require('lodash').startCase;
 const flatMap = require('lodash').flatMap;
 const sortBy = require('lodash').sortBy;
 
-const relativePath = '../src/materials/colors/decisions/base-colors.json';
+const relativePath = '../materials/colors/decisions/base-colors.json';
 const importPath = path.join(__dirname, relativePath);
 const exportPath = path.join(
   __dirname,
-  '../src/materials/colors/base-colors.mod.css'
+  '../materials/colors/base-colors.mod.css'
 );
 const file = fs.readFileSync(importPath, 'utf8');
 

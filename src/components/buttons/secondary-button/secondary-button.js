@@ -6,7 +6,7 @@ import { compose } from 'recompose';
 import invariant from 'invariant';
 import isNil from 'lodash.isnil';
 import requiredIf from 'react-required-if';
-import Spacings from '../../../materials/spacings';
+import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';

@@ -1,4 +1,4 @@
-@import '../../materials/tokens/tokens.mod.css';
+@import '../../../materials/tokens/tokens.mod.css';
 
 /* FIXME: Add proper tone when tones are refactored */
 .highlighted {

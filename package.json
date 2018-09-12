@@ -24,10 +24,9 @@
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
-    "format": "npm run format:js && npm run format:css & npm run format:md",
-    "format:js": "prettier --write '{.storybook,examples,scripts,src}/**/*.js' *.js",
-    "format:css": "prettier --write --parser css '{.storybook,examples,src}/**/*.css'",
-    "format:md": "prettier --write --parser markdown '{.github,.storybook,examples,src}/**/*.md' *.md",
+    "format:js": "prettier --write '{.storybook,examples,materials,scripts,src}/**/*.js' *.js",
+    "format:css": "prettier --write --parser css '{.storybook,examples,materials,src}/**/*.css' materials/*.css",
+    "format:md": "prettier --write --parser markdown '{.github,.storybook,examples,materials,src}/**/*.md' *.md",
     "test": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch"
   },

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Spacings } from '../../../src/materials';
-import { Text } from '../../../src';
+import { Text, Spacings } from '../../../src';
 
 export default class FormikBox extends React.Component {
   static displayName = 'FormikBox';

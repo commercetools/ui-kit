@@ -5,7 +5,7 @@ import IntlDecorator from './decorators/intl';
 
 // setAddon(infoAddon);
 
-import '../src/materials/reset.mod.css';
+import '../materials/reset.mod.css';
 import './main.mod.css';
 
 setOptions({
@@ -23,10 +23,12 @@ setOptions({
   resolveStoryHierarchy: storyName => storyName.split('/'),
 });
 
-const req = require.context('../src', true, /\.story\.js$/);
+const srcStories = require.context('../src', true, /\.story\.js$/);
+const materialsStories = require.context('../materials', true, /\.story\.js$/);
 
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  srcStories.keys().forEach(filename => srcStories(filename));
+  materialsStories.keys().forEach(filename => materialsStories(filename));
 }
 
 addDecorator(IntlDecorator);

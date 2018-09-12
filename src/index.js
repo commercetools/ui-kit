@@ -1,6 +1,7 @@
 /* This is the entry point of the public package interface */
 
 /* eslint-disable max-len,prettier/prettier */
+import * as i18n from '../i18n'
 
 export { default as AccessibleButton } from './components/buttons/accessible-button';
 export { default as FlatButton } from './components/buttons/flat-button';
@@ -23,6 +24,7 @@ export { default as FieldLabel } from './components/field-label';
 
 export { default as TextField } from './components/fields/text-field';
 
+// TODO: group *Icons into a `Icons` named export
 export * from './components/icons';
 
 export { default as AsyncCreatableSelectInput } from './components/inputs/async-creatable-select-input';
@@ -50,11 +52,10 @@ export { default as CollapsiblePanel } from './components/panels/collapsible-pan
 
 export { default as Stamp } from './components/stamp';
 
-export { default as Constraints } from './materials/constraints';
-export { default as Spacings } from './materials/spacings';
+export { default as Constraints } from './components/constraints';
+export { default as Spacings } from './components/spacings';
 
-export * from '../i18n';
-export * from './components/switches';
+export { Radio, Checkbox, Toggle } from './components/switches';
 
 export { default as Table } from './components/table';
 export { default as BaseTable } from './components/table/base-table';
@@ -68,3 +69,5 @@ export { default as Text } from './components/typography/text';
 
 export { default as withMouseDownState } from './hocs/with-mouse-down-state';
 export { default as withMouseOverState } from './hocs/with-mouse-over-state';
+
+export { i18n };

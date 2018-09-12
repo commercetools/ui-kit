@@ -5,8 +5,8 @@ import oneLine from 'common-tags/lib/oneLine';
 import { FormattedMessage } from 'react-intl';
 import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Spacings from '../../../materials/spacings';
-import Constraints from '../../../materials/constraints';
+import Spacings from '../../spacings';
+import Constraints from '../../constraints';
 import Text from '../../typography/text';
 import {
   sortLanguages,

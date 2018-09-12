@@ -8,11 +8,11 @@ const path = require('path');
 const css = require('css');
 const flatMap = require('lodash').flatMap;
 
-const relativePath = '../src/materials/shadows/decisions/base-shadows.json';
+const relativePath = '../materials/shadows/decisions/base-shadows.json';
 const importPath = path.join(__dirname, relativePath);
 const exportPath = path.join(
   __dirname,
-  '../src/materials/shadows/base-shadows.mod.css'
+  '../materials/shadows/base-shadows.mod.css'
 );
 const file = fs.readFileSync(importPath, 'utf8');
 
