@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import has from 'lodash.has';
-import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import TextInput from '../../inputs/text-input';
 import createSequentialId from '../../../utils/create-sequential-id';
-import ErrorMessage from '../../messages/error-message';
+import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import messages from './messages';
 
 const sequentialId = createSequentialId('text-field-');
-
-const isObject = obj => typeof obj === 'object';
 
 const hasErrors = errors => Object.values(errors).some(Boolean);
 
@@ -75,42 +71,8 @@ class TextField extends React.Component {
     })(),
   });
 
-  renderErrors = () => {
-    if (!this.props.isTouched) return null;
-    if (!isObject(this.props.errors)) return null;
-
-    return (
-      Object.entries(this.props.errors)
-        // Only render errors which have truthy values, to avoid
-        // rendering an error for, e.g. { missing: false }
-        .filter(([, error]) => error)
-        .map(([key, error]) => {
-          // We might not a custom error render, so we fall back to null
-          // to enable the default errors to kick in
-          const errorComponent = this.props.renderError
-            ? this.props.renderError(key, error)
-            : null;
-          // Render a custom error if one was provided.
-          // Custom errors take precedence over the known errors
-          if (errorComponent)
-            return <ErrorMessage key={key}>{errorComponent}</ErrorMessage>;
-          // Try to see if we know this error and render that error instead then
-          if (key === 'missing')
-            return (
-              <ErrorMessage key={key}>
-                <FormattedMessage {...messages.missingRequiredField} />
-              </ErrorMessage>
-            );
-          // Render nothing in case the error is not known and no custom error
-          // was returned
-          // The input element will still have the red border to indicate an
-          // error in this case.
-          return null;
-        })
-    );
-  };
-
   render() {
+    const hasError = this.props.isTouched && hasErrors(this.props.errors);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -134,12 +96,16 @@ class TextField extends React.Component {
             isAutofocussed={this.props.isAutofocussed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
-            hasError={this.props.isTouched && hasErrors(this.props.errors)}
+            hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
           />
-          {this.renderErrors()}
+          <FieldErrors
+            errors={this.props.errors}
+            isVisible={hasError}
+            renderError={this.props.renderError}
+          />
         </Spacings.Stack>
       </Constraints.Horizontal>
     );

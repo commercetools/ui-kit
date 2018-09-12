@@ -51,7 +51,7 @@ storiesOf('Fields', module)
               isRequired={boolean('isRequired', false)}
               isTouched={boolean('isTouched', false)}
               name={text('name', '')}
-              value={number('value', value)}
+              value={value}
               onChange={event => {
                 action('onChange')(event);
                 onChange(event.target.value);
@@ -63,9 +63,9 @@ storiesOf('Fields', module)
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={text('placeholder', 'Placeholder')}
               title={text('title', 'Age')}
-              min={number('min', '')}
-              max={number('max', '')}
-              step={number('step', '')}
+              min={number('min')}
+              max={number('max')}
+              step={number('step')}
               hint={hint}
               description={text('description', '')}
               onInfoButtonClick={

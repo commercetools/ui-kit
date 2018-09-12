@@ -15,10 +15,9 @@ import Readme from './README.md';
 import NumberField from './number-field';
 
 // Cool stuff to try in this story:
-//  - Click the "Username" label and see how the input is focused automatically
-//  - Type a username with a space in it
-//  - Type a username which exceeds ten characters
-//  - Type a username which exceeds ten characters and has a space in it
+//  - Click the "Age" label and see how the input is focused automatically
+//  - Type an age with a space in it
+//  - Type a negative age
 //  - Play with the horizontalConstraint knob to see it influence the field
 
 storiesOf('Examples|Forms/Fields', module)
@@ -30,9 +29,9 @@ storiesOf('Examples|Forms/Fields', module)
         <Formik
           initialValues={{ age: '' }}
           validate={values => {
-            const errors = { userName: {} };
+            const errors = { age: {} };
             if (NumberField.isEmpty(values.age)) errors.age.missing = true;
-            if (NumberField.isEmpty(values.age)) errors.age.negative = true;
+            else if (values.age < 0) errors.age.negative = true;
             return omitEmpty(errors);
           }}
           onSubmit={(values, formik, ...rest) => {
@@ -51,16 +50,16 @@ storiesOf('Examples|Forms/Fields', module)
                 hint="Can not be negative"
                 name="age"
                 isRequired={true}
-                value={formik.values.userName}
+                value={formik.values.age}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                isTouched={formik.touched.userName}
+                isTouched={formik.touched.age}
                 horizontalConstraint={select(
                   'horizontalConstraint',
                   ['xs', 's', 'm', 'l', 'xl', 'scale'],
                   'm'
                 )}
-                errors={formik.errors.userName}
+                errors={formik.errors.age}
                 renderError={key => {
                   switch (key) {
                     // these could also use <FormattedMessage />
