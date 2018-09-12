@@ -44,7 +44,7 @@ const postcssPlugins = [
 
 // This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
-const basePlugins = [
+const plugins = [
   replace({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
@@ -119,23 +119,19 @@ const basePlugins = [
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
-const config = [
-  {
-    input: 'src/index.js',
-    output: {
+const config = {
+  input: 'src/index.js',
+  output: [
+    {
       file: pkg.module,
       format: 'esm',
     },
-    plugins: basePlugins,
-  },
-  {
-    input: 'src/index.js',
-    output: {
+    {
       file: pkg.main,
       format: 'cjs',
     },
-    plugins: [...basePlugins],
-  },
-];
+  ],
+  plugins,
+};
 
 export default config;
