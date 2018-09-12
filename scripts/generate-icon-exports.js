@@ -7,8 +7,8 @@ const stripIndents = require('common-tags/lib/stripIndents');
 const prettier = require('prettier');
 const rcfile = require('rcfile');
 
-const importPath = path.join(__dirname, '../components/icons/svg/*.svg');
-const exportPath = path.join(__dirname, '../components/icons/index.js');
+const importPath = path.join(__dirname, '../src/components/icons/svg/*.svg');
+const exportPath = path.join(__dirname, '../src/components/icons/index.js');
 const iconFileExt = '.react.svg';
 
 glob(importPath, (err, files) => {

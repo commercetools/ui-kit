@@ -10451,10 +10451,6 @@ rollup-plugin-commonjs@9.1.6:
     resolve "^1.5.0"
     rollup-pluginutils "^2.0.1"
 
-rollup-plugin-execute@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-execute/-/rollup-plugin-execute-1.0.0.tgz#cea6445ef5b2655253a6b0b859ecf7c6ef8d08f6"
-
 rollup-plugin-json@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-json/-/rollup-plugin-json-3.0.0.tgz#aeed2ff36e6c4fd0c60c4a8fc3d0884479e9dfce"
