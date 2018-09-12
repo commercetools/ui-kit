@@ -7,14 +7,12 @@ import Constraints from '../../../materials/constraints';
 import Spacings from '../../../materials/spacings';
 import FieldLabel from '../../field-label';
 import TextInput from '../../inputs/text-input';
+import createSequentialId from '../../../utils/create-sequential-id';
 import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
 
-const randomId = () =>
-  Math.random()
-    .toString(36)
-    .substring(2);
+const sequentialId = createSequentialId('text-field-');
 
 const isObject = obj => typeof obj === 'object';
 
@@ -73,7 +71,7 @@ class TextField extends React.Component {
     id: (() => {
       if (has(props, 'id')) return props.id;
       if (state.id) return state.id;
-      return randomId();
+      return sequentialId();
     })(),
   });
 
