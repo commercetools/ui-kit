@@ -16,7 +16,7 @@
     "materials/*.mod.css",
     "materials/**/*.mod.css",
     "CHANGELOG.md",
-    "README.md",
+    "./README.md",
     "LICENSE",
     "package.json"
   ],
