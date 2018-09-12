@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import has from 'lodash.has';
-import uuid from 'uuid';
 import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
 import Constraints from '../../../materials/constraints';
@@ -11,6 +10,11 @@ import TextInput from '../../inputs/text-input';
 import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
+
+const randomId = () =>
+  Math.random()
+    .toString(36)
+    .substring(2);
 
 const isObject = obj => typeof obj === 'object';
 
@@ -69,7 +73,7 @@ class TextField extends React.Component {
     id: (() => {
       if (has(props, 'id')) return props.id;
       if (state.id) return state.id;
-      return uuid();
+      return randomId();
     })(),
   });
 

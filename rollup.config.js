@@ -8,8 +8,9 @@ import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
 import execute from 'rollup-plugin-execute';
-import cleaner from 'rollup-plugin-cleaner';
+import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
+import { uglify } from 'rollup-plugin-uglify';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
@@ -36,79 +37,85 @@ const postcssPlugins = [
   postcssReporter(),
 ];
 
-export default [
+const basePlugins = [
+  babel({
+    exclude: ['node_modules/**'],
+    runtimeHelpers: true,
+    ...babelOptions(),
+  }),
+  builtins(),
+  cleanup(),
+  commonjs({
+    include: 'node_modules/**',
+    namedExports: {
+      'node_modules/react/index.js': [
+        'Children',
+        'Component',
+        'createElement',
+        'isValidElement',
+      ],
+      'node_modules/react-is/index.js': ['isValidElementType'],
+      'node_modules/flatpickr/dist/l10n/de.js': ['German'],
+    },
+  }),
+  json(),
+  peerDepsExternal(),
+  // this is used for importing our css modules
+  postcss({
+    include: ['**/*.mod.css'],
+    exclude: ['node_modules/**/*.css'],
+    modules: true,
+    importLoaders: 1,
+    localIdentName: '[name]__[local]___[hash:base64:5]',
+    plugins: postcssPlugins,
+  }),
+  // this is used for importing both vendor css (from node_modules) and for
+  // importing our global css which uses tokens that require postcss plugins
+  // (such as color-mod) to be compiled properly.
+  postcss({
+    exclude: ['**/*.mod.css'],
+    include: ['**/*.css'],
+    plugins: postcssPlugins,
+  }),
+  replace({
+    'process.env.NODE_ENV': JSON.stringify('production'),
+  }),
+  resolve(),
+  svgrPlugin({
+    include: ['**/*.react.svg'],
+    icon: false,
+    svgoConfig: {
+      plugins: [
+        { removeViewBox: false },
+        // Keeps ID's of svgs so they can be targeted with CSS
+        { cleanupIDs: false },
+      ],
+    },
+  }),
+];
+
+const config = [
   {
     input: 'src/index.js',
-    output: [
-      {
-        file: `dist/${pkg.module}`,
-        format: 'esm',
-      },
-      {
-        file: `dist/${pkg.main}`,
-        format: 'cjs',
-      },
-    ],
+    output: {
+      file: `dist/${pkg.module}`,
+      format: 'esm',
+    },
+    external: Object.keys(pkg.dependencies).concat(pkg.peerDependencies),
+    plugins: [...basePlugins, execute('node scripts/bundle-copy.js')],
+  },
+  {
+    input: 'src/index.js',
+    output: {
+      file: `dist/${pkg.main}`,
+      format: 'cjs',
+    },
     external: Object.keys(pkg.dependencies).concat(pkg.peerDependencies),
     plugins: [
-      replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-      }),
-      cleaner({
-        silent: true,
-        targets: ['./dist/'],
-      }),
-      peerDepsExternal(),
-      builtins(),
-      commonjs({
-        include: 'node_modules/**',
-        namedExports: {
-          'node_modules/react/index.js': [
-            'Children',
-            'Component',
-            'createElement',
-            'isValidElement',
-          ],
-          'node_modules/react-is/index.js': ['isValidElementType'],
-          'node_modules/flatpickr/dist/l10n/de.js': ['German'],
-        },
-      }),
-      resolve(),
-      // this is used for importing our css modules
-      postcss({
-        include: ['**/*.mod.css'],
-        exclude: ['node_modules/**/*.css'],
-        modules: true,
-        importLoaders: 1,
-        localIdentName: '[name]__[local]___[hash:base64:5]',
-        plugins: postcssPlugins,
-      }),
-      // this is used for importing both vendor css (from node_modules) and for
-      // importing our global css which uses tokens that require postcss plugins
-      // (such as color-mod) to be compiled properly.
-      postcss({
-        exclude: ['**/*.mod.css'],
-        include: ['**/*.css'],
-        plugins: postcssPlugins,
-      }),
-      babel({
-        exclude: ['node_modules/**'],
-        runtimeHelpers: true,
-        ...babelOptions(),
-      }),
-      json(),
-      svgrPlugin({
-        include: ['**/*.react.svg'],
-        icon: false,
-        svgoConfig: {
-          plugins: [
-            { removeViewBox: false },
-            // Keeps ID's of svgs so they can be targeted with CSS
-            { cleanupIDs: false },
-          ],
-        },
-      }),
-      execute('node scripts/bundle-copy.js'),
+      ...basePlugins,
+      ...(process.env.NODE_ENV === 'production' ? [uglify()] : []),
     ],
   },
 ];
+
+export default config;
