@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
+import { AsyncCreatable as AsyncCreatableSelect } from 'react-select';
 import { AsyncCreatableSelectInput } from './async-creatable-select-input';
 
 const createTestProps = custom => ({
