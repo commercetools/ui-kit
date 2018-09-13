@@ -63,11 +63,11 @@ _coming soon_
 
 ## Release
 
-The relase process is _semi-automated_: you only need to **manually** trigger it and [Travis][travis] will take care of the rest.
+The release process is _semi-automated_: you only need to **manually** trigger it and [Travis][travis] will take care of the rest.
 
-The steps to prepare and trigger a release are the following:
+The steps to prepare and trigger a release are as follows:
 
-- ensure to be on the latest `master` branch
+- ensure you are on the latest `master` branch
 - update the `CHANGELOG.md`
   - run `yarn changelog` to get a code snippet of the important commits from the last release
   - copy that and paste it into `CHANGELOG.md` file
