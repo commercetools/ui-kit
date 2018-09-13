@@ -60,3 +60,38 @@ import UnexpectedErrorSVG from '@commercetools-frontend/ui-kit/images/maintenanc
 ## Documentation
 
 _coming soon_
+
+## Release
+
+The relase process is _semi-automated_: you only need to **manually** trigger it and [Travis][travis] will take care of the rest.
+
+The steps to prepare and trigger a release are the following:
+
+- ensure to be on the latest `master` branch
+- update the `CHANGELOG.md`
+  - run `yarn changelog` to get a code snippet of the important commits from the last release
+  - copy that and paste it into `CHANGELOG.md` file
+  - make sure that the git tag references are correctly defined and the top entry represents the _new_ tag that you are about to create
+  - add or modify the generated changelog to provide more context about the new release
+- bump the `version` in the `package.json`
+- make a commit and push it to `master` (e.g. `git commit -am "chore: bump version to 2.0.0, update changelog"`)
+  - if you can't push it directly to `master`, open a Pull Request first
+- at this point you can create the `tag`: `git tag -m "Version v2.0.0" v2.0.0`
+  - the tag name is the `version` string in the `package.json` plus the prefix `v`
+- push the tag: `git push --tags`
+
+From now on, [Travis][travis] will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
+
+## Publishing documentation website
+
+The documentation is currently built with [Storybook][storybook] and is hosted on [Netlify][netlify].
+
+By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][netlify]. The _Production_ website is deployed from the branch `docs-production`.
+
+> The reason for not having continuous deployment from `master` branch is to keep it the same as the _latest_ release.
+
+Deployments for `docs-production` are automatically triggered from [Travis][travis] after the release was triggered (via **git tags**). [Travis][travis] will execute the `yarn docs:publish` command to update the production branch, which will trigger a deployment from [Netlify][netlify]
+
+[storybook]: https://storybook.js.org/
+[netlify]: https://www.netlify.com
+[travis]: https://travis-ci.org/commercetools/ui-kit

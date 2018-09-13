@@ -30,6 +30,7 @@
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
     "start": "yarn storybook:start",
     "storybook:start": "start-storybook -p 9002",
+    "docs:publish": "node scripts/publish-docs.js",
     "i18n:build": "mc-scripts extract-intl --build-translations --output-path=$(pwd)/i18n 'src/components/**/!(*.spec).js'",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
