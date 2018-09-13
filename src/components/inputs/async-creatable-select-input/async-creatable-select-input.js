@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import omit from 'lodash.omit';
-import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
-import { components as defaultComponents } from 'react-select';
+import {
+  components as defaultComponents,
+  AsyncCreatable as AsyncCreatableSelect,
+} from 'react-select';
 import classnames from 'classnames';
 import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';

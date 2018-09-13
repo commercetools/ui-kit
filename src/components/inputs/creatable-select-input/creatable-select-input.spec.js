@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CreatableSelect from 'react-select/lib/Creatable';
+import { Creatable as CreatableSelect } from 'react-select';
 import { CreatableSelectInput } from './creatable-select-input';
 
 const createTestProps = custom => ({
