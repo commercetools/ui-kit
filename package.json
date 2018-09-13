@@ -58,6 +58,7 @@
     "lodash.without": "4.4.0",
     "prop-types": "15.6.2",
     "react-required-if": "1.0.3",
+    "react-select": "2.0.0",
     "react-textarea-autosize": "7.0.2",
     "react-virtualized": "9.20.1",
     "recompose": "0.26.0",
@@ -119,7 +120,6 @@
     "react-dom": "16.4.2",
     "react-intl": "2.4.0",
     "react-router-dom": "4.3.1",
-    "react-select": "2.0.0",
     "react-value": "0.2.0",
     "rimraf": "2.6.2",
     "rollup": "0.65.0",
@@ -147,7 +147,6 @@
     "react": ">=16",
     "react-dom": ">=16",
     "react-intl": ">=2",
-    "react-router-dom": ">=4",
-    "react-select": ">=2"
+    "react-router-dom": ">=4"
   }
 }
