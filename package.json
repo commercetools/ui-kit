@@ -20,6 +20,13 @@
     "LICENSE",
     "package.json"
   ],
+  "keywords": [
+    "javascript",
+    "frontend",
+    "ui-kit",
+    "design-system",
+    "react"
+  ],
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "lint-staged",
