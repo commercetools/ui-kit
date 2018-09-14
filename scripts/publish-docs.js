@@ -4,12 +4,12 @@ if (!process.env.TRAVIS_TAG) {
 
 const shelljs = require('shelljs');
 
-const userEmail = 'npmjs@commercetools.com';
-const userName = 'ct-release-bot';
 const docsOrigin = 'origin-docs';
 const docsBranch = 'latest/docs';
 
 if (process.env.TRAVIS === 'true') {
+  const userEmail = 'npmjs@commercetools.com';
+  const userName = 'ct-release-bot';
   const remoteUrl = `https://${
     process.env.GH_TOKEN
   }@github.com/commercetools/ui-kit.git`;
