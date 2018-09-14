@@ -11,7 +11,7 @@ cache:
   directories:
     - node_modules
 
-script: yarn run jest --projects jest.*.config.js --maxWorkers=4
+script: yarn run jest --projects jest.*.config.js --maxWorkers=4 --reporters jest-silent-reporter
 
 before_deploy: yarn build
 
