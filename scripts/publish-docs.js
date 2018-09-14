@@ -24,5 +24,3 @@ shelljs.exec(`git branch -D ${docsBranch} > /dev/null 2>&1`);
 // Checkout a new local branch for `latest/docs`
 shelljs.exec(`git checkout -b ${docsBranch}`);
 shelljs.exec(`git push --force ${docsOrigin} ${docsBranch}`);
-// Switch back to the previous branch (e.g. `master`)
-shelljs.exec(`git checkout -`);
