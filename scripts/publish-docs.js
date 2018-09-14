@@ -1,7 +1,3 @@
-if (!process.env.TRAVIS_TAG) {
-  throw new Error('This script can only be executed when a git tag is created');
-}
-
 const shelljs = require('shelljs');
 
 const docsOrigin = 'origin-docs';
@@ -16,10 +12,16 @@ if (process.env.TRAVIS === 'true') {
   shelljs.exec(`git config --global user.email "${userEmail}"`);
   shelljs.exec(`git config --global user.name "${userName}"`);
   shelljs.exec(`git remote add ${docsOrigin} ${remoteUrl} > /dev/null 2>&1`);
+} else {
+  shelljs.exec(
+    `git remote add ${docsOrigin} git@github.com:commercetools/ui-kit.git > /dev/null 2>&1`
+  );
 }
 
-shelljs.exec(`git checkout ${docsBranch}`);
-shelljs.exec('git pull -r');
-// This assumes that git is checked out at this branch tag.
-shelljs.exec(`git merge ${process.env.TRAVIS_TAG}`);
-shelljs.exec(`git push --force-with-lease ${docsOrigin} ${docsBranch}`);
+// Make sure there is no existing docs branch locally
+shelljs.exec(`git branch -D ${docsBranch} > /dev/null 2>&1`);
+// Checkout a new local branch for `latest/docs`
+shelljs.exec(`git checkout -b ${docsBranch}`);
+shelljs.exec(`git push --force ${docsOrigin} ${docsBranch}`);
+// Switch back to the previous branch (e.g. `master`)
+shelljs.exec(`git checkout -`);
