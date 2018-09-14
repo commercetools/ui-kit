@@ -1,6 +1,6 @@
 <h2 align="center">commercetools UIKit 💅</h2>
 <p align="center">
-  <i>Design System component library</i>
+  <i>✨ Design System component library 🛠</i>
 </p>
 
 <h2 align="center">🚧 Under construction 🚧</h2>
@@ -26,7 +26,8 @@ import {
 
 #### Importing CSS modules
 
-In order to make use of our CSS variables defined in our CSS module files, you can require those files (from `/materials`) within your `.mod.css` files:
+When you are developing your application using the UIKit components, chances are that you want to use the same **CSS variables** based on our Design System.
+To do that, we expose those variables as a set of different files (e.g. `colors.mod.css`, `spacings.mod.css`, etc) from the `@commercetools-frontend/ui-kit/materials` package folder.
 
 ```css
 @import '@commercetools-frontend/ui-kit/materials/spacings.mod.css';
@@ -36,7 +37,35 @@ In order to make use of our CSS variables defined in our CSS module files, you c
 }
 ```
 
-> Please look into the package itself to inspect what variables are available (_documentation will be provided in the future_)
+Assuming that you are using [Webpack][webpack] to bundle your application, you might need to include the location to the `materials` folder in your [Webpack loaders](https://webpack.js.org/concepts/loaders/).
+
+```js
+// webpack.config.js
+{
+  module: {
+    rules: [
+      {
+        test: /\.mod\.css$/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          // 👇 Include the materials folder to allow `postcss` to transpile those files as well
+          path.resolve(
+            require.resolve('@commercetools-frontend/ui-kit'),
+            '../../materials'
+          ),
+
+          // or `path.resolve(__dirname, 'node_modules/@commercetools-frontend/ui-kit/materials')`
+        ],
+        use: [
+          // postcss loaders
+        ],
+      },
+    ];
+  }
+}
+```
+
+> Please look into the package itself to inspect which variables are available (_documentation will be provided in the future_).
 
 #### Importing SVG images
 
@@ -60,6 +89,8 @@ import UnexpectedErrorSVG from '@commercetools-frontend/ui-kit/images/maintenanc
 ## Documentation
 
 _coming soon_
+
+For now look at https://uikit.commercetools.com.
 
 ## Release
 
@@ -86,12 +117,13 @@ From now on, [Travis][travis] will take over the release: build the bundles, pub
 
 The documentation is currently built with [Storybook][storybook] and is hosted on [Netlify][netlify].
 
-By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][netlify]. The _Production_ website is deployed from the branch `docs-production`.
+By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][netlify]. The _Production_ website is deployed from the branch `latest/docs`.
 
-> The reason for not having continuous deployment from `master` branch is to keep it the same as the _latest_ release.
+> The reason for not having continuous deployment from `master` branch is to keep it the same as the _latest_ npm release.
 
-Deployments for `docs-production` are automatically triggered from [Travis][travis] after the release was triggered (via **git tags**). [Travis][travis] will execute the `yarn docs:publish` command to update the production branch, which will trigger a deployment from [Netlify][netlify]
+Deployments for `latest/docs` are automatically triggered from [Travis][travis] after the release was triggered (via **git tags**). [Travis][travis] will execute the `yarn docs:publish` command to update the production branch, which will trigger a deployment from [Netlify][netlify]
 
-[storybook]: https://storybook.js.org/
+[webpack]: https://webpack.js.org
+[storybook]: https://storybook.js.org
 [netlify]: https://www.netlify.com
 [travis]: https://travis-ci.org/commercetools/ui-kit
