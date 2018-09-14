@@ -1,6 +1,16 @@
+<a name="2.0.0-rc.4"></a>
+
+# [2.0.0-rc.4](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2018-09-14)
+
+### Tooling
+
+- fix deploy setup on travis ([a17a3c0](https://github.com/commercetools/ui-kit/commit/a17a3c0))
+
 <a name="2.0.0-rc.3"></a>
 
 # [2.0.0-rc.3](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2018-09-13)
+
+> This release is broken from npm, do not use it.
 
 ### Tooling
 
