@@ -22,6 +22,7 @@
   "UIKit.MultilineTextInput.expand": "",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "",
+  "UIKit.TextField.missingRequiredField": "",
   "UIKit.TimeInput.labelRange": "",
   "UIKit.TimeRangePicker.from": "",
   "UIKit.TimeRangePicker.to": ""
