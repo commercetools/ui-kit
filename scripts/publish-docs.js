@@ -13,9 +13,10 @@ if (process.env.TRAVIS === 'true') {
   shelljs.exec(`git config --global user.name "${userName}"`);
   shelljs.exec(`git remote add ${docsOrigin} ${remoteUrl} > /dev/null 2>&1`);
 } else {
-  shelljs.exec(
-    `git remote add ${docsOrigin} git@github.com:commercetools/ui-kit.git > /dev/null 2>&1`
-  );
+  // This part is in case you run the script locally, in which case you don't
+  // need the `GH_TOKEN` and can simply use the ssh remote.
+  const remoteUrl = 'git@github.com:commercetools/ui-kit.git';
+  shelljs.exec(`git remote add ${docsOrigin} ${remoteUrl} > /dev/null 2>&1`);
 }
 
 // Make sure there is no existing docs branch locally
