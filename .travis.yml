@@ -24,4 +24,6 @@ deploy:
   on:
     tags: true
 
-after_deploy: yarn docs:publish
+# Keep it disabled until this issue is clarified
+# https://twitter.com/emmenko/status/1040544486101856256
+# after_deploy: yarn docs:publish
