@@ -117,13 +117,8 @@ From now on, [Travis][travis] will take over the release: build the bundles, pub
 
 The documentation is currently built with [Storybook][storybook] and is hosted on [Netlify][netlify].
 
-By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][netlify]. The _Production_ website is deployed from the branch `latest/docs`.
-
-> The reason for not having continuous deployment from `master` branch is to keep it the same as the _latest_ npm release.
-
-Deployments for `latest/docs` are automatically triggered from [Travis][travis] after the release was triggered (via **git tags**). [Travis][travis] will execute the `yarn docs:publish` command to update the production branch, which will trigger a deployment from [Netlify][netlify]
+By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][netlify]. The _Production_ website is deployed from the branch `master`.
 
 [webpack]: https://webpack.js.org
 [storybook]: https://storybook.js.org
 [netlify]: https://www.netlify.com
-[travis]: https://travis-ci.org/commercetools/ui-kit
