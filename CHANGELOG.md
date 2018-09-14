@@ -1,3 +1,15 @@
+<a name="2.0.0-rc.5"></a>
+
+# [2.0.0-rc.5](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.4...v2.0.0-rc.5) (2018-09-14)
+
+### Chores
+
+- add missing german translations ([d5fd673](https://github.com/commercetools/ui-kit/commit/d5fd673))
+
+### Features
+
+- re-export `HorizontalConstraint` component ([f3be957](https://github.com/commercetools/ui-kit/commit/f3be957))
+
 <a name="2.0.0-rc.4"></a>
 
 # [2.0.0-rc.4](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2018-09-14)
