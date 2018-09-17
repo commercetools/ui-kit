@@ -13,6 +13,10 @@
     *   ▪ Background Colors
     * • Tags
     *  ◦ Background Colors
+    * • Buttons
+    *  ◦ Background Colors
+    *  ◦ Primary Action
+    *   ▪ Background Colors
     */
 
   /* ==========================================================================
@@ -38,4 +42,20 @@
   --token-background-color-tags-disabled: var(--color-gray-95);
   --token-background-color-tags-normal-hover: var(--color-gray-60);
   --token-background-color-tags-warning-hover: var(--color-orange);
+
+  /* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+   /* Colors */
+  --token-background-color-button-disabled: var(--color-navy-98);
+
+   /* Primary Action
+   ========================================================================== */
+
+   /* Colors */
+
+  --token-background-color-button-primary-action-pristine: var(--color-green);
+  --token-background-color-button-primary-action-hover: var(--color-green-25);
+  --token-background-color-button-primary-action-active: var(--color-green);
 }
