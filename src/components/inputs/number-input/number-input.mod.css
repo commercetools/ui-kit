@@ -74,6 +74,6 @@
 .pristine:active,
 .pristine:focus {
   border-color: var(--token-border-color-input-focus);
-  background: var(--token-background-color-input-focus);
+  background: var(--token-background-color-input-pristine);
   color: var(--token-font-color-default);
 }
