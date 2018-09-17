@@ -70,7 +70,7 @@ PrimaryActionButton.propTypes = {
   tone(props, propName, componentName, ...rest) {
     if (props.tone) {
       return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. Render a different button instead`
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. Render a different button instead (e.G \`CriticalActionButton\` if tone is \`urgent\`)`
       );
     }
     return PropTypes.bool(props, propName, componentName, ...rest);
@@ -78,7 +78,7 @@ PrimaryActionButton.propTypes = {
   isToggleButton(props, propName, componentName, ...rest) {
     if (props.isToggleButton) {
       return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. It has no use anymore`
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. The button will be shown as toggled if \`isToggled\` is passed`
       );
     }
     return PropTypes.bool(props, propName, componentName, ...rest);
