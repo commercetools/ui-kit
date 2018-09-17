@@ -58,7 +58,7 @@ PrimaryActionButton.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   label: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string,
   iconLeft: PropTypes.node,
   isToggled: PropTypes.bool,
   isDisabled: PropTypes.bool,
