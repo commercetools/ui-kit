@@ -30,7 +30,7 @@ const PrimaryActionButton = props => {
       onClick={props.onClick}
       disabled={props.isDisabled}
       className={styles.reset}
-      type={this.props.type}
+      type={props.type}
       {...dataProps}
       {...ariaProps}
     >
