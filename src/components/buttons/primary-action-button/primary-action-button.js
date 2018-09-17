@@ -26,7 +26,6 @@ const PrimaryActionButton = props => {
   };
   return (
     <button
-      label={props.label}
       onClick={props.onClick}
       disabled={props.isDisabled}
       className={styles.reset}
@@ -68,15 +67,21 @@ PrimaryActionButton.propTypes = {
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 
   // DEPRECATED
-  tone(props, propName, componentName) {
-    return new Error(
-      `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. Render a different button instead`
-    );
+  tone(props, propName, componentName, ...rest) {
+    if (props.tone) {
+      return new Error(
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. Render a different button instead`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
   },
-  isToggleButton(props, propName, componentName) {
-    return new Error(
-      `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. It has no use anymore`
-    );
+  isToggleButton(props, propName, componentName, ...rest) {
+    if (props.isToggleButton) {
+      return new Error(
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. It has no use anymore`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
   },
 };
 PrimaryActionButton.defaultProps = {
