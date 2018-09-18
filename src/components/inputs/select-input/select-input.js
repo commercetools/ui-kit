@@ -114,8 +114,8 @@ export class SelectInput extends React.Component {
             })}
             maxMenuHeight={this.props.maxMenuHeight}
             components={{
-              ...this.props.components,
               ...customizedComponents,
+              ...this.props.components,
             }}
             classNamePrefix="react-select"
             onChange={selectedOptions =>
