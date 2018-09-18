@@ -4,22 +4,18 @@ exports[`rendering with hint when hint is given should match snapshot 1`] = `
 <Horizontal
   constraint="scale"
 >
-  <div
-    className="label"
+  <Inline
+    alignItems="flexStart"
+    scale="xs"
   >
-    <Inline
-      alignItems="flexStart"
-      scale="xs"
-    >
-      <TextWrap>
-        <Label
-          isBold={true}
-        >
-          Label Title
-        </Label>
-      </TextWrap>
-    </Inline>
-  </div>
+    <TextWrap>
+      <Label
+        isBold={true}
+      >
+        Label Title
+      </Label>
+    </TextWrap>
+  </Inline>
   <div
     className="hint"
   >

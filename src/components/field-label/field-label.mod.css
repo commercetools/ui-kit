@@ -6,12 +6,6 @@
   flex: 1;
 }
 
-.hint,
-.label {
-  float: left;
-  clear: both;
-}
-
 .hintIcon {
   display: flex;
   flex-grow: 0;

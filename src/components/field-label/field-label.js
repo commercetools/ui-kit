@@ -9,29 +9,27 @@ import Constraints from '../constraints';
 import Spacings from '../spacings';
 import styles from './field-label.mod.css';
 
-export const FieldLabel = props => (
+const FieldLabel = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <div className={styles.label}>
-      <Spacings.Inline alignItems="flexStart" scale="xs">
-        <Text.Wrap>
-          <Label
-            isBold={true}
-            isRequiredIndicatorVisible={props.hasRequiredIndicator}
-            htmlFor={props.htmlFor}
-          >
-            {props.title}
-          </Label>
-        </Text.Wrap>
-        {props.onInfoButtonClick && (
-          <IconButton
-            label="More Info"
-            icon={<InformationIcon size="medium" />}
-            size="small"
-            onClick={props.onInfoButtonClick}
-          />
-        )}
-      </Spacings.Inline>
-    </div>
+    <Spacings.Inline alignItems="flexStart" scale="xs">
+      <Text.Wrap>
+        <Label
+          isBold={true}
+          isRequiredIndicatorVisible={props.hasRequiredIndicator}
+          htmlFor={props.htmlFor}
+        >
+          {props.title}
+        </Label>
+      </Text.Wrap>
+      {props.onInfoButtonClick && (
+        <IconButton
+          label="More Info"
+          icon={<InformationIcon size="medium" />}
+          size="small"
+          onClick={props.onInfoButtonClick}
+        />
+      )}
+    </Spacings.Inline>
 
     {props.hint && (
       <div className={styles.hint}>
