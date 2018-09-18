@@ -1,12 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FormattedMessage } from 'react-intl';
 import TextField from './text-field';
 import FieldLabel from '../../field-label';
 import TextInput from '../../inputs/text-input';
-import ErrorMessage from '../../messages/error-message';
+import FieldErrors from '../../field-errors';
 import { AddBoldIcon } from '../../icons';
-import messages from './messages';
 
 const createTestProps = customProps => ({
   title: 'Username',
@@ -121,7 +119,8 @@ describe('rendering', () => {
       expect(textInput).toHaveProp('placeholder', props.placeholder);
       expect(textInput).toHaveProp('hasError', true);
 
-      expect(wrapper).toRender(ErrorMessage);
+      expect(wrapper).toRender(FieldErrors);
+      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
     });
   });
 
@@ -160,12 +159,7 @@ describe('rendering', () => {
       expect(wrapper.find(TextInput)).toHaveProp('hasError', true);
     });
     it('should render the known error', () => {
-      expect(wrapper).toRender(ErrorMessage);
-      expect(wrapper.find(ErrorMessage)).toRender(FormattedMessage);
-      expect(wrapper.find(ErrorMessage).find(FormattedMessage)).toHaveProp(
-        'id',
-        messages.missingRequiredField.id
-      );
+      expect(wrapper).toRender(FieldErrors);
     });
   });
 
@@ -180,15 +174,11 @@ describe('rendering', () => {
       });
       wrapper = shallow(<TextField {...props} />);
     });
-    it('should mark the TextInput as erroneous', () => {
+    it('should mark the NumberInput as erroneous', () => {
       expect(wrapper.find(TextInput)).toHaveProp('hasError', true);
     });
-    it('should invoke renderError to obtain a custom error', () => {
-      expect(props.renderError).toHaveBeenCalledWith('customError', 5);
-    });
-    it('should render the unknown error', () => {
-      expect(wrapper).toRender(ErrorMessage);
-      expect(wrapper.find(ErrorMessage)).toHaveProp('children', 'customError');
+    it('should forward the error', () => {
+      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
     });
   });
 });
