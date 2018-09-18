@@ -9,6 +9,9 @@
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "No options",
   "UIKit.DateInput.labelRange": "to",
   "UIKit.DateTimeInput.labelRange": "to",
+  "UIKit.FieldErrors.invalidFractionalNumber": "A whole number is required.",
+  "UIKit.FieldErrors.invalidNegativeNumber": "Negative number is not supported.",
+  "UIKit.FieldErrors.missingRequiredField": "This field is required. Provide a value.",
   "UIKit.LocalizedMultilineTextInput.collapse": "Collapse",
   "UIKit.LocalizedMultilineTextInput.expand": "Expand",
   "UIKit.LocalizedMultilineTextInput.hide": "Hide languages ({remainingLanguages})",
@@ -22,7 +25,6 @@
   "UIKit.MultilineTextInput.expand": "Expand",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "No options",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "No options",
-  "UIKit.TextField.missingRequiredField": "This field is required. Provide a value.",
   "UIKit.TimeInput.labelRange": "to",
   "UIKit.TimeRangePicker.from": "From",
   "UIKit.TimeRangePicker.to": "To"

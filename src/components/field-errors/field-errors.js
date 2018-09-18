@@ -42,6 +42,18 @@ const FieldErrors = props => {
                 <FormattedMessage {...messages.missingRequiredField} />
               </ErrorMessage>
             );
+          if (key === 'negative')
+            return (
+              <ErrorMessage key={key}>
+                <FormattedMessage {...messages.invalidNegativeNumber} />
+              </ErrorMessage>
+            );
+          if (key === 'fractions')
+            return (
+              <ErrorMessage key={key}>
+                <FormattedMessage {...messages.invalidFractionalNumber} />
+              </ErrorMessage>
+            );
           // Render nothing in case the error is not known and no custom error
           // was returned
           // The input element will still have the red border to indicate an
