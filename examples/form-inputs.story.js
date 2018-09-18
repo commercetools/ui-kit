@@ -10,6 +10,7 @@ import mapValues from 'lodash.mapvalues';
 import { FormikBox, Section } from '../.storybook/decorators';
 import {
   Text,
+  FieldLabel,
   ErrorMessage,
   TextInput,
   NumberInput,
@@ -283,17 +284,13 @@ class ProductForm extends React.Component {
     return (
       <Spacings.Stack scale="m">
         <div>
-          {/*
-            The Text.Body labels used in this example are temprary as we don't
-            have FieldLabel or any InputField-compoennts in the UI-Kit yet.
-            You would probably use the LabelField component form core instead.
-
-            When adding a label, make sure the label can be clicked to focus
-            the component. This is usually done by associating a "for" property
-            on the label with the id of an input element.
-          */}
-          <Text.Body>Product name*</Text.Body>
+          <FieldLabel
+            title="Product Name"
+            htmlFor={`name.${this.props.selectedLanguage}`}
+            hasRequiredIndicator={true}
+          />
           <LocalizedTextInput
+            id="name"
             name="name"
             value={this.props.formik.values.name}
             onChange={this.props.formik.handleChange}
@@ -317,13 +314,14 @@ class ProductForm extends React.Component {
             )}
         </div>
         <div>
-          <Text.Body>Slug*</Text.Body>
-          <Text.Detail>
-            The slug can contain alphanumeric characters (0-9 or A-Z),
-            underscores or hyphens with no spaces, and can be anywhere between 2
-            to 256 characters long.
-          </Text.Detail>
+          <FieldLabel
+            title="Slug"
+            htmlFor={`slug.${this.props.selectedLanguage}`}
+            hasRequiredIndicator={true}
+            hint="The slug can contain alphanumeric characters (0-9 or A-Z), underscores or hyphens with no spaces, and can be anywhere between 2 to 256 characters long."
+          />
           <LocalizedTextInput
+            id="slug"
             name="slug"
             value={this.props.formik.values.slug}
             onChange={this.props.formik.handleChange}
@@ -379,8 +377,9 @@ class ProductForm extends React.Component {
             )}
         </div>
         <div>
-          <Text.Body>Product Description*</Text.Body>
+          <FieldLabel title="Product Description" htmlFor="description" />
           <MultilineTextInput
+            id="description"
             name="description"
             value={this.props.formik.values.description}
             onChange={this.props.formik.handleChange}
@@ -397,8 +396,13 @@ class ProductForm extends React.Component {
             )}
         </div>
         <div>
-          <Text.Body>Product key*</Text.Body>
+          <FieldLabel
+            title="Product Key"
+            htmlFor="key"
+            hasRequiredIndicator={true}
+          />
           <TextInput
+            id="key"
             name="key"
             value={this.props.formik.values.key}
             onChange={this.props.formik.handleChange}
@@ -429,7 +433,11 @@ class ProductForm extends React.Component {
             )}
         </div>
         <div>
-          <Text.Body>Inventory Quantity*</Text.Body>
+          <FieldLabel
+            title="Inventory Quantity"
+            htmlFor="inventory"
+            hasRequiredIndicator={true}
+          />
           <NumberInput
             name="inventory"
             value={this.props.formik.values.inventory}
@@ -457,8 +465,13 @@ class ProductForm extends React.Component {
             )}
         </div>
         <div>
-          <Text.Body>Price*</Text.Body>
+          <FieldLabel
+            title="Price"
+            htmlFor="price"
+            hasRequiredIndicator={true}
+          />
           <MoneyInput
+            id="price"
             name="price"
             value={this.props.formik.values.price}
             onChange={this.props.formik.handleChange}
