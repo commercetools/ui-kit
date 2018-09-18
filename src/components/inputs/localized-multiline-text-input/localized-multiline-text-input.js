@@ -97,32 +97,26 @@ export class LocalizedMultilineTextInput extends React.Component {
     ),
   };
 
-  toggleLanguage = language => {
-    console.log('toggleLanguage');
+  toggleLanguage = language =>
     this.setState(prevState => ({
       expandedTranslations: {
         ...prevState.expandedTranslations,
         [language]: !prevState.expandedTranslations[language],
       },
     }));
-  };
 
-  toggleLanguages = () => {
-    console.log('toggleLanguages');
+  toggleLanguages = () =>
     this.setState(prevState => ({
       areLanguagesOpened: !prevState.areLanguagesOpened,
     }));
-  };
 
-  expandAllTranslations = () => {
-    console.log('expandAllTranslations');
+  expandAllTranslations = () =>
     this.setState(prevState => ({
       expandedTranslations: mapValues(
         prevState.expandedTranslations,
         () => true
       ),
     }));
-  };
 
   static getDerivedStateFromProps = (props, state) => {
     // We want to automatically open the languages when an error is present on a
