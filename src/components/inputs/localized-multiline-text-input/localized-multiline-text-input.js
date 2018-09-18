@@ -10,6 +10,7 @@ import {
   sortLanguages,
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
+  getHasWarningOnRemainingLanguages,
   isTouched,
   omitEmptyTranslations,
   isEmpty,
@@ -62,7 +63,9 @@ export class LocalizedMultilineTextInput extends React.Component {
     placeholder: PropTypes.objectOf(PropTypes.string),
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
     errors: PropTypes.objectOf(PropTypes.node),
+    warnings: PropTypes.objectOf(PropTypes.node),
     // HoC
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
@@ -94,26 +97,32 @@ export class LocalizedMultilineTextInput extends React.Component {
     ),
   };
 
-  toggleLanguage = language =>
+  toggleLanguage = language => {
+    console.log('toggleLanguage');
     this.setState(prevState => ({
       expandedTranslations: {
         ...prevState.expandedTranslations,
         [language]: !prevState.expandedTranslations[language],
       },
     }));
+  };
 
-  toggleLanguages = () =>
+  toggleLanguages = () => {
+    console.log('toggleLanguages');
     this.setState(prevState => ({
       areLanguagesOpened: !prevState.areLanguagesOpened,
     }));
+  };
 
-  expandAllTranslations = () =>
+  expandAllTranslations = () => {
+    console.log('expandAllTranslations');
     this.setState(prevState => ({
       expandedTranslations: mapValues(
         prevState.expandedTranslations,
         () => true
       ),
     }));
+  };
 
   static getDerivedStateFromProps = (props, state) => {
     // We want to automatically open the languages when an error is present on a
@@ -123,8 +132,12 @@ export class LocalizedMultilineTextInput extends React.Component {
     const hasErrorOnRemainingLanguages =
       props.hasError ||
       getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
+    const hasWarningOnRemainingLanguages =
+      props.hasWarning ||
+      getHasWarningOnRemainingLanguages(props.warnings, props.selectedLanguage);
     const areLanguagesOpened =
       hasErrorOnRemainingLanguages ||
+      hasWarningOnRemainingLanguages ||
       props.hideLanguageControls ||
       state.areLanguagesOpened;
     return { areLanguagesOpened };
@@ -147,6 +160,12 @@ export class LocalizedMultilineTextInput extends React.Component {
               this.props.hasError ||
               getHasErrorOnRemainingLanguages(
                 this.props.errors,
+                this.props.selectedLanguage
+              );
+            const hasWarningOnRemainingLanguages =
+              this.props.hasWarning ||
+              getHasWarningOnRemainingLanguages(
+                this.props.warnings,
                 this.props.selectedLanguage
               );
             return (
@@ -201,7 +220,10 @@ export class LocalizedMultilineTextInput extends React.Component {
                         onClick={this.toggleLanguages}
                         remainingLanguages={languages.length - 1}
                         isDisabled={Boolean(
-                          this.props.hasError || hasErrorOnRemainingLanguages
+                          this.props.hasError ||
+                            hasErrorOnRemainingLanguages ||
+                            this.props.hasWarning ||
+                            hasWarningOnRemainingLanguages
                         )}
                       />
                     );
@@ -211,7 +233,12 @@ export class LocalizedMultilineTextInput extends React.Component {
                   this.props.hasError ||
                     (this.props.errors && this.props.errors[language])
                 )}
+                hasWarning={Boolean(
+                  this.props.hasWarning ||
+                    (this.props.warnings && this.props.warnings[language])
+                )}
                 intl={this.props.intl}
+                warning={this.props.warnings && this.props.warnings[language]}
                 error={this.props.errors && this.props.errors[language]}
                 {...createLocalizedDataAttributes(this.props, language)}
               />

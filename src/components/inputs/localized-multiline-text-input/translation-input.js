@@ -48,6 +48,7 @@ export default class TranslationInput extends React.Component {
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
     error: PropTypes.node,
+    warning: PropTypes.node,
   };
 
   // The minimum ammount of rows the MultilineTextInput will show.
@@ -88,6 +89,11 @@ export default class TranslationInput extends React.Component {
     // amount of lines it should have when collapsed
     const contentExceedsShownRows =
       this.state.contentRowCount > TranslationInput.MIN_ROW_COUNT;
+    const getCommands = props => {
+      if (props.error) return <div>{this.props.error}</div>;
+      if (props.warning) return <div>{this.props.warning}</div>;
+      return this.props.languagesControl;
+    };
 
     return (
       <Spacings.Stack scale="xs">
@@ -137,13 +143,7 @@ export default class TranslationInput extends React.Component {
           />
         </div>
         <div className={styles.commandsContainer}>
-          <div className={styles.commandsLeft}>
-            {this.props.error ? (
-              <div>{this.props.error}</div>
-            ) : (
-              this.props.languagesControl
-            )}
-          </div>
+          <div className={styles.commandsLeft}>{getCommands(this.props)}</div>
           <div className={styles.commandsExpand}>
             {!this.props.isCollapsed &&
               contentExceedsShownRows && (
@@ -157,7 +157,8 @@ export default class TranslationInput extends React.Component {
               )}
           </div>
         </div>
-        {this.props.error && this.props.languagesControl}
+        {(this.props.error || this.props.warning) &&
+          this.props.languagesControl}
       </Spacings.Stack>
     );
   }
