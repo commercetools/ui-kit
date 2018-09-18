@@ -12,7 +12,7 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const sequentialId = createSequentialId('text-field-');
 
-const hasErrors = errors => Object.values(errors).some(Boolean);
+const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
 class TextField extends React.Component {
   static displayName = 'TextField';
