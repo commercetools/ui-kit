@@ -7,7 +7,6 @@ import messages from './messages';
 const isObject = obj => typeof obj === 'object';
 
 const FieldErrors = props => {
-  console.log('FieldErrors', props);
   if (!props.isVisible) return null;
   if (!isObject(props.errors)) return null;
 

@@ -1,12 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FormattedMessage } from 'react-intl';
 import NumberField from './number-field';
 import FieldLabel from '../../field-label';
-import TextInput from '../../inputs/text-input';
-import ErrorMessage from '../../messages/error-message';
+import NumberInput from '../../inputs/number-input';
+import FieldErrors from '../../field-errors';
 import { AddBoldIcon } from '../../icons';
-import messages from './messages';
 
 const createTestProps = customProps => ({
   title: 'Username',
@@ -39,9 +37,9 @@ describe('rendering', () => {
         'data-test': 'baz',
       });
       const wrapper = shallow(<NumberField {...props} />);
-      textInput = wrapper.find(TextInput);
+      textInput = wrapper.find(NumberInput);
     });
-    it('should forward the attributes to the TextInput', () => {
+    it('should forward the attributes to the NumberInput', () => {
       expect(textInput).toHaveProp('data-foo', 'bar');
       expect(textInput).toHaveProp('data-test', 'baz');
     });
@@ -54,13 +52,13 @@ describe('rendering', () => {
       wrapper = shallow(<NumberField {...props} />);
     });
     it('should add a default id attribute', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('id');
+      expect(wrapper.find(NumberInput)).toHaveProp('id');
     });
     it('should add a default htmlFor attribute', () => {
       expect(wrapper.find(FieldLabel)).toHaveProp('htmlFor');
     });
     it('should use the same value for the id and htmlFor attribute', () => {
-      expect(wrapper.find(TextInput).prop('id')).toEqual(
+      expect(wrapper.find(NumberInput).prop('id')).toEqual(
         wrapper.find(FieldLabel).prop('htmlFor')
       );
     });
@@ -109,7 +107,7 @@ describe('rendering', () => {
       expect(fieldLabel).toHaveProp('badge', props.badge);
       expect(fieldLabel).toHaveProp('htmlFor', props.id);
 
-      const textInput = wrapper.find(TextInput);
+      const textInput = wrapper.find(NumberInput);
       expect(textInput).toHaveProp('name', props.name);
       expect(textInput).toHaveProp('value', props.value);
       expect(textInput).toHaveProp('onChange', props.onChange);
@@ -121,7 +119,8 @@ describe('rendering', () => {
       expect(textInput).toHaveProp('placeholder', props.placeholder);
       expect(textInput).toHaveProp('hasError', true);
 
-      expect(wrapper).toRender(ErrorMessage);
+      expect(wrapper).toRender(FieldErrors);
+      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
     });
   });
 
@@ -132,8 +131,8 @@ describe('rendering', () => {
       props = createTestProps({ isDisabled: true });
       wrapper = shallow(<NumberField {...props} />);
     });
-    it('should disable the TextInput', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('isDisabled', true);
+    it('should disable the NumberInput', () => {
+      expect(wrapper.find(NumberInput)).toHaveProp('isDisabled', true);
     });
   });
 
@@ -144,8 +143,8 @@ describe('rendering', () => {
       props = createTestProps({ isReadOnly: true });
       wrapper = shallow(<NumberField {...props} />);
     });
-    it('should mark the TextInput as read-only', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('isReadOnly', true);
+    it('should mark the NumberInput as read-only', () => {
+      expect(wrapper.find(NumberInput)).toHaveProp('isReadOnly', true);
     });
   });
 
@@ -156,16 +155,11 @@ describe('rendering', () => {
       props = createTestProps({ isTouched: true, errors: { missing: true } });
       wrapper = shallow(<NumberField {...props} />);
     });
-    it('should mark the TextInput as erroneous', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('hasError', true);
+    it('should mark the NumberInput as erroneous', () => {
+      expect(wrapper.find(NumberInput)).toHaveProp('hasError', true);
     });
     it('should render the known error', () => {
-      expect(wrapper).toRender(ErrorMessage);
-      expect(wrapper.find(ErrorMessage)).toRender(FormattedMessage);
-      expect(wrapper.find(ErrorMessage).find(FormattedMessage)).toHaveProp(
-        'id',
-        messages.missingRequiredField.id
-      );
+      expect(wrapper).toRender(FieldErrors);
     });
   });
 
@@ -180,15 +174,11 @@ describe('rendering', () => {
       });
       wrapper = shallow(<NumberField {...props} />);
     });
-    it('should mark the TextInput as erroneous', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('hasError', true);
+    it('should mark the NumberInput as erroneous', () => {
+      expect(wrapper.find(NumberInput)).toHaveProp('hasError', true);
     });
-    it('should invoke renderError to obtain a custom error', () => {
-      expect(props.renderError).toHaveBeenCalledWith('customError', 5);
-    });
-    it('should render the unknown error', () => {
-      expect(wrapper).toRender(ErrorMessage);
-      expect(wrapper.find(ErrorMessage)).toHaveProp('children', 'customError');
+    it('should forward the error', () => {
+      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
     });
   });
 });
