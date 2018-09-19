@@ -23,10 +23,10 @@ storiesOf('Buttons', module)
           icons[select('iconLeft', iconNames, iconNames[0])]
         )}
         label={text('label', 'Click me')}
-        ariaLabel={text('ariaLabel', 'Accessibility text')}
         isToggled={boolean('isToggled', false)}
         isDisabled={boolean('isDisabled', false)}
         onClick={action('onClick')}
+        {...{ 'aria-label': text('aria-label', 'Accessibility text') }}
       />
     </Section>
   ));

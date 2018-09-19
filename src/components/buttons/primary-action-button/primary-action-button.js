@@ -19,7 +19,7 @@ const PrimaryActionButton = props => {
     ...filterDataAttributes(props),
   };
   const ariaProps = {
-    'aria-label': props.ariaLabel,
+    'aria-label': props['aria-label'],
     'aria-disabled': props.isDisabled,
     'aria-pressed': props.isToggled,
     ...filterAriaAttributes(props),
@@ -58,7 +58,7 @@ PrimaryActionButton.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   label: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string,
+  'aria-label': PropTypes.string,
   iconLeft: PropTypes.node,
   isToggled: PropTypes.bool,
   isDisabled: PropTypes.bool,

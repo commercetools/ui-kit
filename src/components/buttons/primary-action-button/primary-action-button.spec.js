@@ -5,7 +5,7 @@ import PrimaryButton from './primary-action-button';
 
 const createProps = custom => ({
   label: '',
-  ariaLabel: '',
+  'aria-label': '',
   onClick: () => {},
   ...custom,
 });
@@ -33,16 +33,16 @@ describe('rendering', () => {
     describe('with aria-* props', () => {
       beforeEach(() => {
         props = createProps({
-          ariaLabel: 'close the modal',
+          'aria-label': 'close the modal',
           'aria-hidden': false,
           isDisabled: true,
         });
         wrapper = shallow(<PrimaryButton {...props} />);
       });
-      it('should supply `ariaLabel` to `button`', () => {
+      it('should supply `aria-label` to `button`', () => {
         expect(wrapper.find('button')).toHaveProp(
           'aria-label',
-          props.ariaLabel
+          props['aria-label']
         );
       });
       it('should supply `aria-hidden` to `button`', () => {
