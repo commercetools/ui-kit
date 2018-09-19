@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
-import TextInput from './text-input';
+import { render, fireEvent } from '../../../test-utils';
+import { TextInput } from '../../../index';
 
 const baseProps = { value: '', onChange: () => {} };
 
