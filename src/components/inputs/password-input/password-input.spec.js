@@ -56,7 +56,7 @@ describe('PasswordInput', () => {
     );
   });
 
-  it('should call onChange when chaning the value', () => {
+  it('should call onChange when changing the value', () => {
     const onChange = jest.fn(event => {
       expect(event.target.id).toEqual('some-id');
       expect(event.target.name).toEqual('some-name');
@@ -108,13 +108,12 @@ describe('PasswordInput', () => {
   });
 
   it('should have autoComplete set to `on`', () => {
-    const { container, debug } = render(
+    const { container } = render(
       <PasswordInput {...baseProps} autoComplete="on" />
     );
     expect(container.querySelector('input')).toHaveAttribute(
       'autocomplete',
       'on'
     );
-    debug();
   });
 });
