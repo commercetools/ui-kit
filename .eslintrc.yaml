@@ -1,2 +1,11 @@
 ---
 extends: "@commercetools-frontend/eslint-config-mc-app"
+settings:
+  import/ignore:
+    # included by default, but replaced if explicitly configured
+    - node_modules
+    # We use `export * from 'react-testing-library';` in `test-utils`, so that
+    # tests can do `import { render, fireEvent }` from '../test-utils'`.
+    # Because we export the whole namespace, the `import/ignore` rule can't find
+    # the named exports. So we disable the rule for imports of that file.
+    - test-utils.js
