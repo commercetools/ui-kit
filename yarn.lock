@@ -844,9 +844,9 @@
     babel-plugin-transform-dynamic-import "2.0.0"
     babel-plugin-transform-react-remove-prop-types "0.4.15"
 
-"@commercetools-frontend/eslint-config-mc-app@1.0.0-beta.31":
-  version "1.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-1.0.0-beta.31.tgz#81739366fad25f18f5496fc0f2f60231ff69277c"
+"@commercetools-frontend/eslint-config-mc-app@1.0.0-beta.32":
+  version "1.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-1.0.0-beta.32.tgz#00ae2969a3bcfe4c9ea9716a38e46946b52700f1"
   dependencies:
     babel-eslint "9.0.0"
     eslint "5.3.0"
