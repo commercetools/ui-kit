@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextField from './text-field';
+import NumberField from './number-field';
 import FieldLabel from '../../field-label';
-import TextInput from '../../inputs/text-input';
+import NumberInput from '../../inputs/number-input';
 import FieldErrors from '../../field-errors';
 import { AddBoldIcon } from '../../icons';
 
@@ -13,17 +13,17 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
-describe('TextField.isEmpty', () => {
+describe('NumberField.isEmpty', () => {
   describe('when called with an empty value', () => {
     it('should return true', () => {
-      expect(TextField.isEmpty('')).toBe(true);
-      expect(TextField.isEmpty(' ')).toBe(true);
+      expect(NumberField.isEmpty('')).toBe(true);
+      expect(NumberField.isEmpty(' ')).toBe(true);
     });
   });
   describe('when called with a filled value', () => {
     it('should return false', () => {
-      expect(TextField.isEmpty('a')).toBe(false);
-      expect(TextField.isEmpty(' a ')).toBe(false);
+      expect(NumberField.isEmpty('a')).toBe(false);
+      expect(NumberField.isEmpty(' a ')).toBe(false);
     });
   });
 });
@@ -36,10 +36,10 @@ describe('rendering', () => {
         'data-foo': 'bar',
         'data-test': 'baz',
       });
-      const wrapper = shallow(<TextField {...props} />);
-      textInput = wrapper.find(TextInput);
+      const wrapper = shallow(<NumberField {...props} />);
+      textInput = wrapper.find(NumberInput);
     });
-    it('should forward the attributes to the TextInput', () => {
+    it('should forward the attributes to the NumberInput', () => {
       expect(textInput).toHaveProp('data-foo', 'bar');
       expect(textInput).toHaveProp('data-test', 'baz');
     });
@@ -49,16 +49,16 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({ id: undefined });
-      wrapper = shallow(<TextField {...props} />);
+      wrapper = shallow(<NumberField {...props} />);
     });
     it('should add a default id attribute', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('id');
+      expect(wrapper.find(NumberInput)).toHaveProp('id');
     });
     it('should add a default htmlFor attribute', () => {
       expect(wrapper.find(FieldLabel)).toHaveProp('htmlFor');
     });
     it('should use the same value for the id and htmlFor attribute', () => {
-      expect(wrapper.find(TextInput).prop('id')).toEqual(
+      expect(wrapper.find(NumberInput).prop('id')).toEqual(
         wrapper.find(FieldLabel).prop('htmlFor')
       );
     });
@@ -68,7 +68,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({
-        // TextField
+        // NumberField
         id: 'foo',
         // FieldLabel
         title: 'Username',
@@ -78,7 +78,7 @@ describe('rendering', () => {
         onInfoButtonClick: jest.fn(),
         badge: <div>Some badge</div>,
 
-        // TextField
+        // NumberField
         name: 'field1',
         value: 'foo',
         onChange: jest.fn(),
@@ -91,7 +91,7 @@ describe('rendering', () => {
         errors: { missing: true },
         isTouched: true,
       });
-      wrapper = shallow(<TextField {...props} />);
+      wrapper = shallow(<NumberField {...props} />);
     });
 
     it('should forward the props for to the related components', () => {
@@ -107,7 +107,7 @@ describe('rendering', () => {
       expect(fieldLabel).toHaveProp('badge', props.badge);
       expect(fieldLabel).toHaveProp('htmlFor', props.id);
 
-      const textInput = wrapper.find(TextInput);
+      const textInput = wrapper.find(NumberInput);
       expect(textInput).toHaveProp('name', props.name);
       expect(textInput).toHaveProp('value', props.value);
       expect(textInput).toHaveProp('onChange', props.onChange);
@@ -129,10 +129,10 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({ isDisabled: true });
-      wrapper = shallow(<TextField {...props} />);
+      wrapper = shallow(<NumberField {...props} />);
     });
-    it('should disable the TextInput', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('isDisabled', true);
+    it('should disable the NumberInput', () => {
+      expect(wrapper.find(NumberInput)).toHaveProp('isDisabled', true);
     });
   });
 
@@ -141,10 +141,10 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({ isReadOnly: true });
-      wrapper = shallow(<TextField {...props} />);
+      wrapper = shallow(<NumberField {...props} />);
     });
-    it('should mark the TextInput as read-only', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('isReadOnly', true);
+    it('should mark the NumberInput as read-only', () => {
+      expect(wrapper.find(NumberInput)).toHaveProp('isReadOnly', true);
     });
   });
 
@@ -153,10 +153,10 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({ isTouched: true, errors: { missing: true } });
-      wrapper = shallow(<TextField {...props} />);
+      wrapper = shallow(<NumberField {...props} />);
     });
-    it('should mark the TextInput as erroneous', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('hasError', true);
+    it('should mark the NumberInput as erroneous', () => {
+      expect(wrapper.find(NumberInput)).toHaveProp('hasError', true);
     });
     it('should render the known error', () => {
       expect(wrapper).toRender(FieldErrors);
@@ -172,10 +172,10 @@ describe('rendering', () => {
         renderError: jest.fn(key => key),
         errors: { customError: 5 },
       });
-      wrapper = shallow(<TextField {...props} />);
+      wrapper = shallow(<NumberField {...props} />);
     });
     it('should mark the NumberInput as erroneous', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('hasError', true);
+      expect(wrapper.find(NumberInput)).toHaveProp('hasError', true);
     });
     it('should forward the error', () => {
       expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
