@@ -1,6 +1,6 @@
-# Forms
+# Form Inputs
 
-This story shows how to build a form using Formik and UI-Kit components. The form shows how to initialize the values based on existing data, how to validate the form and how to submit changed data back to an API. It also shows how to handle API errors.
+This story shows how to build a form using Formik and UI-Kit input components. The form shows how to initialize the values based on existing data, how to validate the form and how to submit changed data back to an API. It also shows how to handle API errors.
 
 Make sure to also check the source-code of the story. It contains code comments explaining the usage of the APIs and how it all comes together.
 
