@@ -1,231 +1,119 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, fireEvent } from 'react-testing-library';
 import PasswordInput from './password-input';
 
-const createTestProps = customProps => ({
+const baseProps = {
   value: '',
   onChange: () => jest.fn(),
-  ...customProps,
-});
+};
 
-describe('rendering', () => {
-  describe('data attributes', () => {
-    let input;
-    beforeEach(() => {
-      const props = createTestProps({
-        name: 'text-field1',
-        value: '1',
-        'data-foo': 'bar',
-        'data-test': 'baz',
-      });
-      const wrapper = shallow(<PasswordInput {...props} />);
-      input = wrapper.find('input');
-    });
-    it('should forward the attributes', () => {
-      expect(input).toHaveProp('data-foo', 'bar');
-      expect(input).toHaveProp('data-test', 'baz');
-    });
+describe('PasswordInput', () => {
+  it('should forward data-attributes', () => {
+    const { container } = render(
+      <PasswordInput {...baseProps} data-foo="bar" />
+    );
+    expect(container.querySelector('input')).toHaveAttribute('data-foo', 'bar');
   });
-  describe('pristine', () => {
-    let input;
-    beforeEach(() => {
-      const props = createTestProps({
-        name: 'field1',
-        value: 'foo',
-      });
-      const wrapper = shallow(<PasswordInput {...props} />);
-      input = wrapper.find('input');
-    });
 
-    it('should have class for pristine styles', () => {
-      expect(input).toHaveClassName('pristine');
-    });
-
-    it('input should have type password', () => {
-      expect(input).toHaveProp('type', 'password');
-    });
-
-    it('input have a HTML name', () => {
-      expect(input).toHaveProp('name', 'field1');
-    });
-
-    it('should have passed value', () => {
-      expect(input).toHaveProp('value', 'foo');
-    });
-    describe('with states', () => {
-      describe('warning', () => {
-        beforeEach(() => {
-          const props = createTestProps({
-            hasWarning: true,
-          });
-          const wrapper = shallow(<PasswordInput {...props} />);
-          input = wrapper.find('input');
-        });
-
-        it('should have warning styles', () => {
-          expect(input).toHaveClassName('warning');
-        });
-      });
-      describe('error', () => {
-        beforeEach(() => {
-          const props = createTestProps({
-            hasError: true,
-          });
-          const wrapper = shallow(<PasswordInput {...props} />);
-          input = wrapper.find('input');
-        });
-
-        it('should have error styles', () => {
-          expect(input).toHaveClassName('error');
-        });
-      });
-      describe('disabled', () => {
-        beforeEach(() => {
-          const props = createTestProps({
-            isDisabled: true,
-          });
-          const wrapper = shallow(<PasswordInput {...props} />);
-          input = wrapper.find('input');
-        });
-
-        it('should have class for the disabled state', () => {
-          expect(input).toHaveClassName('disabled');
-        });
-      });
-      describe('readonly', () => {
-        let wrapper;
-        beforeEach(() => {
-          const props = createTestProps({
-            isReadOnly: true,
-          });
-          wrapper = shallow(<PasswordInput {...props} />);
-          input = wrapper.find('input');
-        });
-
-        it('should have class for the readonly state', () => {
-          expect(input).toHaveClassName('readonly');
-        });
-
-        it('should have ARIA properties for the readonly state', () => {
-          expect(input).toHaveProp('aria-readonly', true);
-        });
-      });
-      describe('isPasswordVisible', () => {
-        let wrapper;
-        beforeEach(() => {
-          const props = createTestProps({
-            isPasswordVisible: true,
-          });
-          wrapper = shallow(<PasswordInput {...props} />);
-          input = wrapper.find('input');
-        });
-        it('should have the type `text`', () => {
-          expect(input).toHaveProp('type', 'text');
-        });
-      });
-      describe('autoComplete', () => {
-        let wrapper;
-        beforeEach(() => {
-          const props = createTestProps({
-            autoComplete: 'on',
-          });
-          wrapper = shallow(<PasswordInput {...props} />);
-          input = wrapper.find('input');
-        });
-        it('should have autoComplete set to `on`', () => {
-          expect(input).toHaveProp('autoComplete', 'on');
-        });
-      });
-    });
+  it('should render a password input', () => {
+    const { container } = render(<PasswordInput {...baseProps} />);
+    expect(container.querySelector('input')).toHaveAttribute(
+      'type',
+      'password'
+    );
   });
-});
 
-describe('callbacks', () => {
-  describe('when changing value', () => {
-    let wrapper;
-    let props;
-    let input;
-    beforeEach(() => {
-      props = createTestProps({
-        value: 'foo',
-        onChange: jest.fn(),
-      });
-      wrapper = shallow(<PasswordInput {...props} />);
-      input = wrapper.find('input');
-      input.simulate('change', { target: { value: 'bar' } });
-    });
-
-    it('should call onChange', () => {
-      expect(props.onChange).toHaveBeenCalled();
-    });
-
-    it('should update with new value', () => {
-      expect(props.onChange).toHaveBeenCalledWith({
-        target: {
-          value: 'bar',
-        },
-      });
-    });
+  it('should have pristine style when untouched', () => {
+    const { container } = render(<PasswordInput {...baseProps} />);
+    expect(container.querySelector('input')).toHaveClass('pristine');
   });
-  describe('when input gains focus', () => {
-    let wrapper;
-    let props;
-    let input;
-    beforeEach(() => {
-      props = createTestProps({
-        value: 'foo',
-        onFocus: jest.fn(),
-      });
-      wrapper = shallow(<PasswordInput {...props} />);
-      input = wrapper.find('input');
-      input.simulate('focus');
-    });
 
-    it('should call onFocus', () => {
-      expect(props.onFocus).toHaveBeenCalled();
-    });
-
-    it('should keep the same value', () => {
-      expect(input).toHaveProp('value', 'foo');
-    });
+  it('should have warning style when warning is present', () => {
+    const { container } = render(<PasswordInput {...baseProps} hasWarning />);
+    expect(container.querySelector('input')).toHaveClass('warning');
   });
-  describe('when input loses focus', () => {
-    let wrapper;
-    let props;
-    let input;
-    beforeEach(() => {
-      props = createTestProps({
-        value: 'foo',
-        onBlur: jest.fn(),
-      });
-      wrapper = shallow(<PasswordInput {...props} />);
-      input = wrapper.find('input');
-      input.simulate('blur');
-    });
 
-    it('should call onBlur', () => {
-      expect(props.onBlur).toHaveBeenCalled();
-    });
-
-    it('should keep the same value', () => {
-      expect(input).toHaveProp('value', 'foo');
-    });
+  it('should have error style when error is present', () => {
+    const { container } = render(<PasswordInput {...baseProps} hasError />);
+    expect(container.querySelector('input')).toHaveClass('error');
   });
-  describe('when `isAutofocussed` is passed', () => {
-    let wrapper;
-    let props;
-    let input;
-    beforeEach(() => {
-      props = createTestProps({
-        isAutofocussed: true,
-        onFocus: jest.fn(),
-      });
-      wrapper = shallow(<PasswordInput {...props} />);
-      input = wrapper.find('input');
-    });
 
-    it('should autofocus prop be true', () => {
-      expect(input).toHaveProp('autoFocus', true);
+  it('should have an HTML name', () => {
+    const { container } = render(<PasswordInput {...baseProps} name="foo" />);
+    expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
+  });
+
+  it('should forward the passed value', () => {
+    const { container } = render(<PasswordInput {...baseProps} value="foo" />);
+    expect(container.querySelector('input')).toHaveAttribute('value', 'foo');
+  });
+
+  it('should have ARIA properties for the readonly state', () => {
+    const { container } = render(<PasswordInput {...baseProps} isReadOnly />);
+    expect(container.querySelector('input')).toHaveAttribute(
+      'aria-readonly',
+      'true'
+    );
+  });
+
+  it('should call onChange when changing the value', () => {
+    const onChange = jest.fn(event => {
+      expect(event.target.id).toEqual('some-id');
+      expect(event.target.name).toEqual('some-name');
+      expect(event.target.value).toEqual('5');
     });
+    const { container } = render(
+      <PasswordInput
+        {...baseProps}
+        id="some-id"
+        name="some-name"
+        onChange={onChange}
+      />
+    );
+    const event = { target: { value: 5 } };
+    fireEvent.change(container.querySelector('input'), event);
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('should call onFocus when the input is focused', () => {
+    const onFocus = jest.fn();
+    const { container } = render(
+      <PasswordInput {...baseProps} onFocus={onFocus} />
+    );
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+  });
+
+  it('should call onBlur when input loses focus', () => {
+    const onFocus = jest.fn();
+    const { container } = render(
+      <PasswordInput {...baseProps} onFocus={onFocus} />
+    );
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+    container.querySelector('input').blur();
+    expect(container.querySelector('input')).not.toHaveFocus();
+  });
+
+  it('should have focus automatically when isAutofocussed is passed', () => {
+    const { container } = render(
+      <PasswordInput {...baseProps} isAutofocussed />
+    );
+    expect(container.querySelector('input')).toHaveFocus();
+  });
+
+  it('should be disabled when isDisabled is passed', () => {
+    const { container } = render(<PasswordInput {...baseProps} isDisabled />);
+    expect(container.querySelector('input')).toHaveAttribute('disabled');
+  });
+
+  it('should have autoComplete set to `on`', () => {
+    const { container } = render(
+      <PasswordInput {...baseProps} autoComplete="on" />
+    );
+    expect(container.querySelector('input')).toHaveAttribute(
+      'autocomplete',
+      'on'
+    );
   });
 });
