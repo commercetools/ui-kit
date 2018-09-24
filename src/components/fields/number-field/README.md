@@ -2,13 +2,12 @@
 
 #### Description
 
-A controlled text input component for numbers with validation
-states and a label.
+A controlled input component for numbers with validation states and a label.
 
 ## Usage
 
 ```js
-import NumberField from '@commercetools-frontend/ui-kit/fields/number-field';
+import { NumberField } from '@commercetools-frontend/ui-kit';
 
 <NumberField title="Age" value={5} onChange={value => alert(value)} />;
 ```
@@ -20,7 +19,7 @@ import NumberField from '@commercetools-frontend/ui-kit/fields/number-field';
 | `id`                   | `string`             |    -     | -                                  | -       | Used as HTML `id` property. An `id` is auto-generated when it is not specified.                                                                                                                                                                                       |
 | `horizontalConstraint` | `object`             |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                                                                                                                                                            |
 | `errors`               | `object`             |    -     | -                                  | -       | A map of errors. Error messages for known errors are rendered automatically. Unknown errors will be forwarded to `renderError`.                                                                                                                                       |
-| `renderError`          | `function`           |    -     | -                                  | -       | Called with custom errors, as `renderError(key, error)`. This function can return a message which will be wrapped in an `ErrorMessage`. It can also return `null` to show no error.                                                                                   |
+| `renderError`          | `function`           |    -     | -                                  | -       | Called with custom errors, as `renderError(key, error)`. This function can return a message which will be wrapped in an `ErrorMessage`. It can also return `null` to show no error. See "errors" section below for more information.                                  |
 | `isRequired`           | `bool`               |    -     | -                                  | `false` | Indicates if the value is required. Shows an the "required asterisk" if so.                                                                                                                                                                                           |
 | `isTouched`            | `bool`               |    -     | -                                  | `false` | Indicates whether the field was touched. Errors will only be shown when the field was touched.                                                                                                                                                                        |
 | `name`                 | `string`             |    -     | -                                  | -       | Used as HTML `name` of the input component. property                                                                                                                                                                                                                  |
