@@ -5,22 +5,22 @@ import requiredIf from 'react-required-if';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
-import TextInput from '../../inputs/text-input';
-import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
+import NumberInput from '../../inputs/number-input';
+import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const sequentialId = createSequentialId('text-field-');
 
-const hasErrors = errors => Object.values(errors).some(Boolean);
+const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
-class TextField extends React.Component {
-  static displayName = 'TextField';
+class NumberField extends React.Component {
+  static displayName = 'NumberField';
 
-  static isEmpty = TextInput.isEmpty;
+  static isEmpty = NumberInput.isEmpty;
 
   static propTypes = {
-    // TextField
+    // NumberField
     id: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
@@ -30,9 +30,9 @@ class TextField extends React.Component {
     isRequired: PropTypes.bool,
     isTouched: PropTypes.bool,
 
-    // TextInput
+    // NumberInput
     name: PropTypes.string,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
@@ -40,6 +40,9 @@ class TextField extends React.Component {
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     placeholder: PropTypes.string,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    step: PropTypes.number,
 
     // LabelField
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -86,7 +89,7 @@ class TextField extends React.Component {
             hasRequiredIndicator={this.props.isRequired}
             htmlFor={this.state.id}
           />
-          <TextInput
+          <NumberInput
             id={this.state.id}
             name={this.props.name}
             value={this.props.value}
@@ -99,6 +102,9 @@ class TextField extends React.Component {
             hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
+            min={this.props.min}
+            max={this.props.max}
+            step={this.props.step}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
@@ -112,4 +118,7 @@ class TextField extends React.Component {
   }
 }
 
-export default TextField;
+NumberField.hasFractionDigits = NumberInput.hasFractionDigits;
+NumberField.isEmpty = NumberInput.isEmpty;
+NumberField.toFormValue = NumberInput.toFormValue;
+export default NumberField;
