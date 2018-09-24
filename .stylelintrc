@@ -29,6 +29,7 @@
     "value-list-comma-newline-after": null,
     "indentation": null,
     "selector-descendant-combinator-no-non-space": null,
-    "selector-combinator-space-before": null
+    "selector-combinator-space-before": null,
+    "no-descending-specificity": null
   }
 }

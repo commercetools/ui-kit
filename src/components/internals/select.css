@@ -136,6 +136,7 @@
 /* Disabled */
 
 .react-select .react-select__control--is-disabled {
+  pointer-events: none;
   color: var(--token-font-color-disabled);
   background-color: var(--token-background-color-input-disabled);
   border-color: var(--token-border-color-input-disabled);
@@ -144,10 +145,6 @@
 .react-select .react-select__control--is-disabled,
 .react-select--is-disabled {
   cursor: not-allowed;
-}
-
-.react-select .react-select__control--is-disabled {
-  pointer-events: none;
 }
 
 /* Placeholder */
