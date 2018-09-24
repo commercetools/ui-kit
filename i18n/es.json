@@ -9,6 +9,9 @@
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "",
   "UIKit.DateInput.labelRange": "",
   "UIKit.DateTimeInput.labelRange": "",
+  "UIKit.FieldErrors.invalidFractionalNumber": "",
+  "UIKit.FieldErrors.invalidNegativeNumber": "",
+  "UIKit.FieldErrors.missingRequiredField": "",
   "UIKit.LocalizedMultilineTextInput.collapse": "",
   "UIKit.LocalizedMultilineTextInput.expand": "",
   "UIKit.LocalizedMultilineTextInput.hide": "",
@@ -22,7 +25,6 @@
   "UIKit.MultilineTextInput.expand": "",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "",
-  "UIKit.TextField.missingRequiredField": "",
   "UIKit.TimeInput.labelRange": "",
   "UIKit.TimeRangePicker.from": "",
   "UIKit.TimeRangePicker.to": ""

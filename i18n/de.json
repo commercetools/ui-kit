@@ -9,6 +9,9 @@
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "",
   "UIKit.DateInput.labelRange": "bis",
   "UIKit.DateTimeInput.labelRange": "bis",
+  "UIKit.FieldErrors.invalidFractionalNumber": "",
+  "UIKit.FieldErrors.invalidNegativeNumber": "",
+  "UIKit.FieldErrors.missingRequiredField": "",
   "UIKit.LocalizedMultilineTextInput.collapse": "Verbergen",
   "UIKit.LocalizedMultilineTextInput.expand": "Anzeigen",
   "UIKit.LocalizedMultilineTextInput.hide": "Sprachen verbergen",
@@ -22,7 +25,6 @@
   "UIKit.MultilineTextInput.expand": "Erweitern",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "",
-  "UIKit.TextField.missingRequiredField": "Pflichtfeld*, Geben Sie mindestens einen Wert an",
   "UIKit.TimeInput.labelRange": "",
   "UIKit.TimeRangePicker.from": "Von",
   "UIKit.TimeRangePicker.to": "Bis"

@@ -20,7 +20,7 @@ import {
   SecondaryButton,
   Spacings,
 } from '../src';
-import Forms from './forms.md';
+import Forms from './form-inputs.md';
 
 // utilities for story
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -507,7 +507,7 @@ class ProductForm extends React.Component {
   }
 }
 
-storiesOf('Examples|Forms', module)
+storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Forms))
   .add('Basic Formik Example', () => {
