@@ -19,7 +19,10 @@ const PrimaryActionButton = props => {
     ...filterDataAttributes(props),
   };
   const ariaProps = {
-    'aria-label': props['aria-label'],
+    // TODO: Turn `aria-label` into its own prop and make it required
+    // in order to make the component more accessible. Currently, for backwards
+    // compatibility reasons, `aria-label` contains the `label` prop value.
+    'aria-label': props.label,
     'aria-disabled': props.isDisabled,
     'aria-pressed': props.isToggled,
     ...filterAriaAttributes(props),
@@ -58,7 +61,6 @@ PrimaryActionButton.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   label: PropTypes.string.isRequired,
-  'aria-label': PropTypes.string,
   iconLeft: PropTypes.node,
   isToggled: PropTypes.bool,
   isDisabled: PropTypes.bool,

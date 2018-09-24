@@ -33,17 +33,14 @@ describe('rendering', () => {
     describe('with aria-* props', () => {
       beforeEach(() => {
         props = createProps({
-          'aria-label': 'close the modal',
+          label: 'close the modal',
           'aria-hidden': false,
           isDisabled: true,
         });
         wrapper = shallow(<PrimaryButton {...props} />);
       });
       it('should supply `aria-label` to `button`', () => {
-        expect(wrapper.find('button')).toHaveProp(
-          'aria-label',
-          props['aria-label']
-        );
+        expect(wrapper.find('button')).toHaveProp('aria-label', props.label);
       });
       it('should supply `aria-hidden` to `button`', () => {
         expect(wrapper.find('button')).toHaveProp(
