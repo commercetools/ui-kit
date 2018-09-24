@@ -102,7 +102,7 @@
     "cross-env": "5.2.0",
     "css": "2.2.4",
     "css-loader": "1.0.0",
-    "enzyme": "3.5.0",
+    "enzyme": "3.6.0",
     "eslint": "5.3.0",
     "formik": "1.0.2",
     "glob": "7.1.2",
