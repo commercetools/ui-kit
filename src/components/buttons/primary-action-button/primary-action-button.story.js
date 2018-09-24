@@ -26,7 +26,6 @@ storiesOf('Buttons', module)
         isToggled={boolean('isToggled', false)}
         isDisabled={boolean('isDisabled', false)}
         onClick={action('onClick')}
-        {...{ 'aria-label': text('aria-label', 'Accessibility text') }}
       />
     </Section>
   ));
