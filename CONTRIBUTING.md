@@ -1,11 +1,11 @@
 ## Contributing
 
-Please _read_ before contributing to UIKit as we settled on some informal
-processes to keep components in UIKit of a _high standard_ with _coherent_ APIs.
+Please _read_ before contributing to UI Kit as we settled on some informal
+processes to keep components in UI Kit of a _high standard_ with _coherent_ APIs.
 
-### Criteria for components in UIKit
+### Criteria for components in UI Kit
 
-These are general and loose rules components in UIKit should strive to fulfill.
+These are general and loose rules components in UI Kit should strive to fulfill.
 
 - General purpose and a core building block (of an application)
 - Isolated behaviour agnostic to its environment (not easy to reach into
@@ -22,20 +22,20 @@ These are general and loose rules components in UIKit should strive to fulfill.
 
 These are informal steps we suggest you to follow when adding a new component.
 
-1.  Create a new task to add the component to the UIKit.
+1.  Create a new task to add the component to the UI Kit.
 
     - [ ] Create task.
     - [ ] Add task to the MCD project.
-    - [ ] Add task to the [UIKit Kanban Board].
+    - [ ] Add task to the [UI Kit Kanban Board].
 
-2.  Sync with the UIKit leads
+2.  Sync with the UI Kit leads
 
     - [ ] Notify @lufego or @dferber90 of the task.
 
 3.  Create documentation for the component **UNDECIDED**
 
-    - [ ] Create copy of [UIKit Component Documentation Template].
-    - [ ] Add copy to the [UIKit Component Documentation List] page.
+    - [ ] Create copy of [UI Kit Component Documentation Template].
+    - [ ] Add copy to the [UI Kit Component Documentation List] page.
     - [ ] `Designer` & `Dev` go through the copy and update it for the new component.
 
 4.  Align design with style guide
@@ -50,7 +50,7 @@ These are informal steps we suggest you to follow when adding a new component.
 
     - [ ] `Designer` & `Dev` review the component's design.
 
-7.  Sync with the UIKit leads
+7.  Sync with the UI Kit leads
 
     - [ ] Notify @lufego or @dferber90 of the new design.
 
@@ -62,9 +62,9 @@ These are informal steps we suggest you to follow when adding a new component.
     - [ ] Use PropTypes to describe the component's props.
     - [ ] Show example usage of the component.
 
-9.  Develop the component and open a PR to add the component to the UIKit.
+9.  Develop the component and open a PR to add the component to the UI Kit.
 
-    - [ ] Open a PR to add the component to the UIKit.
+    - [ ] Open a PR to add the component to the UI Kit.
     - [ ] PR is approved by either Luis or Dominic or both.
 
 10. UX Review
@@ -73,20 +73,20 @@ These are informal steps we suggest you to follow when adding a new component.
 
 11. Component is merged
 
-    - [ ] `Designer` adds component to UIKit Sketch file.
+    - [ ] `Designer` adds component to UI Kit Sketch file.
 
 12. Migrate component to MC.
     - [ ] Component is used only where needed for the user story.
-    - [ ] Update component status on the UIKit Kanban board.
+    - [ ] Update component status on the UI Kit Kanban board.
 
-### When and how to change an existing component in UIKit
+### When and how to change an existing component in UI Kit
 
 - Changing an existing component should be done with a _certain degree_ of care.
   Please assume that the current API has been wrestled over.
 - If you want to add some functionality, consider if it should really be a
   concern of the component you want to enhance. For this:
   - The functionality should be applicable for a wide range of current and future
-    requested features. What is in _UIKit should be basic building blocks_ that
+    requested features. What is in _UI Kit should be basic building blocks_ that
     in theory can be used in a wide range of applications, even outside of
     commercetools.
   - When in doubt take inspiration from functionalities of the original
