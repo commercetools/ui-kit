@@ -243,7 +243,7 @@ class ProductForm extends React.Component {
           value={this.props.formik.values.inventory}
           onChange={this.props.formik.handleChange}
           onBlur={this.props.formik.handleBlur}
-          isTouched={this.props.formik.touched.inventory}
+          touched={this.props.formik.touched.inventory}
           errors={this.props.formik.errors.inventory}
           renderError={key => {
             switch (key) {
