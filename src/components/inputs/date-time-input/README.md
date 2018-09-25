@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import DateTimeInput from '@commercetools-frontend/ui-kit/inputs/date-time-input';
+import { DateTimeInput } from '@commercetools-frontend/ui-kit';
 ```
 
 #### Description

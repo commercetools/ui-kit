@@ -9,7 +9,7 @@ The `Toggle` switch allows a single settings option to be turned on or off.
 #### Usage
 
 ```js
-import { Toggle } from '@commercetools-frontend/ui-kit/switches';
+import { Toggle } from '@commercetools-frontend/ui-kit';
 
 <Toggle
   isDisabled={false}

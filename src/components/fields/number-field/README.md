@@ -9,7 +9,11 @@ A controlled input component for numbers with validation states and a label.
 ```js
 import { NumberField } from '@commercetools-frontend/ui-kit';
 
-<NumberField title="Age" value={5} onChange={value => alert(value)} />;
+<NumberField
+  title="Age"
+  value={5}
+  onChange={event => alert(event.target.value)}
+/>;
 ```
 
 #### Properties

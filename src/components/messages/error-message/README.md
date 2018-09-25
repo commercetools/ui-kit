@@ -7,7 +7,7 @@ Represents an error message.
 ## Usage
 
 ```js
-import ErrorMessage from '@commercetools-frontend/ui-kit/messages/error-message';
+import { ErrorMessage } from '@commercetools-frontend/ui-kit';
 
 <ErrorMessage>Something went wrong</ErrorMessage>;
 ```

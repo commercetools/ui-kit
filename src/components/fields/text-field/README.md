@@ -10,7 +10,11 @@ states.
 ```js
 import { TextField } from '@commercetools-frontend/ui-kit';
 
-<TextField title="Username" value="foo" onChange={value => alert(value)} />;
+<TextField
+  title="Username"
+  value="foo"
+  onChange={event => alert(event.target.value)}
+/>;
 ```
 
 #### Properties

@@ -3,9 +3,10 @@
 ## Usage
 
 ```js
-import PrimaryActionDropdown, {
-  Option,
-} from '@commercetools-frontend/ui-kit/dropdowns/primary-action-dropdown';
+import {
+  PrimaryActionDropdown,
+  PrimaryActionDropdownOption,
+} from '@commercetools-frontend/ui-kit';
 ```
 
 #### Description

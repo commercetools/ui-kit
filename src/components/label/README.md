@@ -11,7 +11,7 @@ In order to improve readability, using `inverted` tone is recommended on dark ba
 #### Usage
 
 ```js
-import Label from '@commercetools-frontend/ui-kit/label';
+import { Label } from '@commercetools-frontend/ui-kit';
 ```
 
 #### Examples

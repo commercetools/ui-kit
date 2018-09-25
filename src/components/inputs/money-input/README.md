@@ -11,9 +11,7 @@ import { MoneyInput } from '@commercetools-frontend/ui-kit';
 
 <MoneyInput
   value={{ amount: '1.00', currencyCode: 'EUR' }}
-  onChange={({ amount, currencyCode }) => {
-    /* .. */
-  }}
+  onChange={event => alert(event.target.name, event.target.value)}
   currencies={['EUR', 'USD']}
 />;
 ```

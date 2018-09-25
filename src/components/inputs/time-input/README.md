@@ -1,24 +1,16 @@
-# Dates: DateInput
-
-## Usage
-
-```js
-import TimeInput from '@commercetools-frontend/ui-kit/inputs/time-input';
-```
+# TimeInput
 
 #### Description
 
 The `TimeInput` component allows the user to select a time. This component also supports
 multiple date selection. It formats the selected date depending on the current locale.
 
-#### Usage
+## Usage
 
 ```js
-<DateInput
-  placeholder="Select a date..."
-  value="2017-12-31T16:02:50.000Z"
-  onChange={() => {}}
-/>
+import { TimeInput } from '@commercetools-frontend/ui-kit';
+
+<TimeInput value="2017-12-31T16:02:50.000Z" onChange={() => {}} />;
 ```
 
 #### Properties

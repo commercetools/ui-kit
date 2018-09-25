@@ -8,11 +8,11 @@ states.
 ## Usage
 
 ```js
-import LocalizedTextInput from '@commercetools-frontend/ui-kit/inputs/localized-text-input';
+import { LocalizedTextInput } from '@commercetools-frontend/ui-kit';
 
 <LocalizedTextInput
   value={{ en: 'House', de: 'House' }}
-  onChange={value => alert(value.en)}
+  onChange={event => alert(event.target.name, event.target.value)}
 />;
 ```
 

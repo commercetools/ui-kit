@@ -7,7 +7,7 @@ A spinner animation to show the user some information is loading
 ## Usage
 
 ```js
-import LoadingSpinner from '@commercetools-frontend/ui-kit/loading-spinner';
+import { LoadingSpinner } from '@commercetools-frontend/ui-kit';
 
 <LoadingSpinner size="s">{'Loading'}</LoadingSpinner>;
 ```

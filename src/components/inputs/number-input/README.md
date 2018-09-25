@@ -7,9 +7,9 @@ A controlled input component for numbers with validation states.
 ## Usage
 
 ```js
-import NumberInput from '@commercetools-frontend/ui-kit/inputs/number-input';
+import { NumberInput } from '@commercetools-frontend/ui-kit';
 
-<NumberInput value="2.5" onChange={value => alert(value)} />;
+<NumberInput value="2.5" onChange={event => alert(event.target.value)} />;
 ```
 
 #### Properties
