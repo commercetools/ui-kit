@@ -222,7 +222,7 @@ class ProductForm extends React.Component {
           onChange={this.props.formik.handleChange}
           onBlur={this.props.formik.handleBlur}
           isDisabled={this.props.formik.isSubmitting}
-          isTouched={this.props.formik.touched.key}
+          touched={this.props.formik.touched.key}
           errors={this.props.formik.errors.key}
           renderError={key => {
             // This example shows how to handle custom errors on top of the
@@ -243,7 +243,7 @@ class ProductForm extends React.Component {
           value={this.props.formik.values.inventory}
           onChange={this.props.formik.handleChange}
           onBlur={this.props.formik.handleBlur}
-          isTouched={this.props.formik.touched.inventory}
+          touched={this.props.formik.touched.inventory}
           errors={this.props.formik.errors.inventory}
           renderError={key => {
             switch (key) {

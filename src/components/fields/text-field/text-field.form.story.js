@@ -58,7 +58,7 @@ storiesOf('Examples|Forms/Fields', module)
                 value={formik.values.userName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                isTouched={formik.touched.userName}
+                touched={formik.touched.userName}
                 horizontalConstraint={select(
                   'horizontalConstraint',
                   ['xs', 's', 'm', 'l', 'xl', 'scale'],
