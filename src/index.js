@@ -50,6 +50,7 @@ export { default as Label } from './components/label';
 export { default as LoadingSpinner } from './components/loading-spinner';
 
 export { default as ErrorMessage } from './components/messages/error-message';
+export { default as WarningMessage } from './components/messages/warning-message';
 
 export { default as CollapsiblePanel } from './components/panels/collapsible-panel';
 
