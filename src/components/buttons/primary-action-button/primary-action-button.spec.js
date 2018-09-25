@@ -5,7 +5,6 @@ import PrimaryButton from './primary-action-button';
 
 const createProps = custom => ({
   label: '',
-  'aria-label': '',
   onClick: () => {},
   ...custom,
 });

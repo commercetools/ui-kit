@@ -27,6 +27,7 @@ const PrimaryActionButton = props => {
     'aria-pressed': props.isToggled,
     ...filterAriaAttributes(props),
   };
+
   return (
     <button
       onClick={props.onClick}
