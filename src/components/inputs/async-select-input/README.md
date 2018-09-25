@@ -11,7 +11,7 @@ An input component getting a selection from an asynchronously loaded list from t
 ## Usage
 
 ```js
-import AsyncSelectInput from '@commercetools-frontend/ui-kit/inputs/async-select-input';
+import { AsyncSelectInput } from '@commercetools-frontend/ui-kit';
 
 <AsyncSelectInput
   name="form-field-name"

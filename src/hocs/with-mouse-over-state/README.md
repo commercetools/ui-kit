@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import withMouseOverState from '@commercetools-frontend/ui-kit/hocs/with-mouse-over-state';
+import { withMouseOverState } from '@commercetools-frontend/ui-kit';
 
 const FooElement = props => (
   <div onMouseOver={props.handleMouseOver} onMouseOut={props.handleMouseOut}>

@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import CollapsiblePanel from '@commercetools-frontend/ui-kit/panels/collapsible-panel';
+import { CollapsiblePanel } from '@commercetools-frontend/ui-kit';
 ```
 
 > Please have a look at the [Component Best Practices](<(#component-best-practices)>) to ensure that you are using the component as intended from a development and UX perspective.

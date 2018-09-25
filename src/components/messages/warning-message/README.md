@@ -7,7 +7,7 @@ Represents an warning message.
 ## Usage
 
 ```js
-import WarningMessage from '@commercetools-frontend/ui-kit/messages/error-message';
+import { WarningMessage } from '@commercetools-frontend/ui-kit';
 
 <WarningMessage>This is a duplicate of {`${duplicate}`}</WarningMessage>;
 ```

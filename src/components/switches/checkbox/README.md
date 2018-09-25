@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { Checkbox } from '@commercetools-frontend/ui-kit/switches';
+import { Checkbox } from '@commercetools-frontend/ui-kit';
 ```
 
 #### Description

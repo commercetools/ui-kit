@@ -8,9 +8,9 @@ states.
 ## Usage
 
 ```js
-import TextInput from '@commercetools-frontend/ui-kit/inputs/text-input';
+import { TextInput } from '@commercetools-frontend/ui-kit';
 
-<TextInput value="foo" onChange={value => alert(value)} />;
+<TextInput value="foo" onChange={event => alert(event.target.value)} />;
 ```
 
 #### Properties

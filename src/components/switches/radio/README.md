@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { Radio } from '@commercetools-frontend/ui-kit/switches';
+import { Radio } from '@commercetools-frontend/ui-kit';
 ```
 
 #### Description

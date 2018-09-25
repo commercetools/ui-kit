@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import withMouseDownState from '@commercetools-frontend/ui-kit/hocs/with-mouse-down-state';
+import { withMouseDownState } from '@commercetools-frontend/ui-kit';
 
 const FooElement = props => (
   <div onMouseDown={props.handleMouseDown} onMouseUp={props.handleMouseUp}>
