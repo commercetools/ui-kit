@@ -52,7 +52,10 @@ describe('rendering', () => {
       wrapper = shallow(<TextField {...props} />);
     });
     it('should add a default id attribute', () => {
-      expect(wrapper.find(TextInput)).toHaveProp('id');
+      expect(wrapper.find(TextInput)).toHaveProp(
+        'id',
+        expect.stringMatching(/.+/)
+      );
     });
     it('should add a default htmlFor attribute', () => {
       expect(wrapper.find(FieldLabel)).toHaveProp('htmlFor');

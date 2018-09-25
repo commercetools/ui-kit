@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import has from 'lodash.has';
 import requiredIf from 'react-required-if';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
@@ -64,11 +63,11 @@ class TextField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: (() => {
-      if (has(props, 'id')) return props.id;
-      if (state.id) return state.id;
-      return sequentialId();
-    })(),
+    id: do {
+      if (props.id) props.id;
+      else if (state.id) state.id;
+      else sequentialId();
+    },
   });
 
   render() {
