@@ -31,7 +31,7 @@ storiesOf('Examples|Forms/Fields', module)
           initialValues={{ userName: '' }}
           validate={values => {
             const errors = { userName: {} };
-            if (values.userName.trim().length === 0)
+            if (TextField.isEmpty(values.userName))
               errors.userName.missing = true;
             if (values.userName.trim().indexOf(' ') !== -1)
               errors.userName.usesSpaces = true;
