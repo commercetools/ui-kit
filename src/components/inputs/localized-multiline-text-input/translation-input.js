@@ -48,6 +48,7 @@ export default class TranslationInput extends React.Component {
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
     error: PropTypes.node,
+    warning: PropTypes.node,
   };
 
   // The minimum ammount of rows the MultilineTextInput will show.
@@ -138,11 +139,11 @@ export default class TranslationInput extends React.Component {
         </div>
         <div className={styles.commandsContainer}>
           <div className={styles.commandsLeft}>
-            {this.props.error ? (
-              <div>{this.props.error}</div>
-            ) : (
-              this.props.languagesControl
-            )}
+            {do {
+              if (this.props.error) <div>{this.props.error}</div>;
+              else if (this.props.warning) <div>{this.props.warning}</div>;
+              else this.props.languagesControl;
+            }}
           </div>
           <div className={styles.commandsExpand}>
             {!this.props.isCollapsed &&
@@ -157,7 +158,8 @@ export default class TranslationInput extends React.Component {
               )}
           </div>
         </div>
-        {this.props.error && this.props.languagesControl}
+        {(this.props.error || this.props.warning) &&
+          this.props.languagesControl}
       </Spacings.Stack>
     );
   }

@@ -12,6 +12,7 @@ import {
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import ErrorMessage from '../../messages/error-message';
+import WarningMessage from '../../messages/warning-message';
 import LocalizedMultilineTextInputReadme from './README.md';
 import LocalizedMultilineTextInput from './localized-multiline-text-input';
 
@@ -28,6 +29,7 @@ storiesOf('Inputs', module)
       false
     );
     const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
+    const warnings = object('warnings', { en: '', de: '', 'nan-Hant-TW': '' });
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
@@ -70,6 +72,7 @@ storiesOf('Inputs', module)
                 'm'
               )}
               hasError={boolean('hasError', false)}
+              hasWarning={boolean('hasWarning', false)}
               errors={
                 Object.values(errors).some(error => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [language, error]) => {
@@ -77,6 +80,20 @@ storiesOf('Inputs', module)
                       acc[language] = <ErrorMessage>{error}</ErrorMessage>;
                       return acc;
                     }, {})
+                  : undefined
+              }
+              warnings={
+                Object.values(warnings).some(warning => warning.length > 0)
+                  ? Object.entries(warnings).reduce(
+                      (acc, [language, warning]) => {
+                        if (warning.length === 0) return acc;
+                        acc[language] = (
+                          <WarningMessage>{warning}</WarningMessage>
+                        );
+                        return acc;
+                      },
+                      {}
+                    )
                   : undefined
               }
               data-test="foo"
