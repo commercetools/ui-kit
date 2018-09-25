@@ -218,6 +218,8 @@ export default class MoneyInput extends React.Component {
     return moneyValue && moneyValue.type === 'highPrecision';
   };
 
+  static isTouched = touched => touched && Object.values(touched).some(Boolean);
+
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
@@ -242,8 +244,6 @@ export default class MoneyInput extends React.Component {
     currencies: [],
     horizontalConstraint: 'scale',
   };
-
-  static isTouched = touched => touched && Object.values(touched).some(Boolean);
 
   handleCurrencyChange = (event, toggleMenu) => {
     const currencyCode = event.target.value;

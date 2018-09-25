@@ -155,8 +155,8 @@ const validate = formValues => {
     name: {},
     slug: {},
     description: {},
-    price: {},
     inventory: {},
+    price: {},
   };
 
   // validate key
@@ -194,13 +194,6 @@ const validate = formValues => {
   if (MultilineTextInput.isEmpty(formValues.description))
     errors.description.missing = true;
 
-  // validate price
-  if (MoneyInput.isEmpty(formValues.price)) {
-    errors.price.missing = true;
-  } else if (MoneyInput.isHighPrecision(formValues.price)) {
-    errors.price.unsupportedHighPrecision = true;
-  }
-
   // validate inventory
   if (NumberInput.isEmpty(formValues.inventory)) {
     errors.inventory.missing = true;
@@ -209,6 +202,13 @@ const validate = formValues => {
     if (formValues.inventory < 0) errors.inventory.negative = true;
     if (NumberInput.hasFractionDigits(formValues.inventory))
       errors.inventory.fractions = true;
+  }
+
+  // validate price
+  if (MoneyInput.isEmpty(formValues.price)) {
+    errors.price.missing = true;
+  } else if (MoneyInput.isHighPrecision(formValues.price)) {
+    errors.price.unsupportedHighPrecision = true;
   }
 
   // Formik will think there are errors when the object returned as a
