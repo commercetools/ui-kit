@@ -92,7 +92,7 @@ describe('rendering', () => {
         isReadOnly: false,
         placeholder: 'Some placeholder',
         errors: { missing: true },
-        isTouched: true,
+        touched: true,
       });
       wrapper = shallow(<TextField {...props} />);
     });
@@ -155,7 +155,7 @@ describe('rendering', () => {
     let props;
     let wrapper;
     beforeEach(() => {
-      props = createTestProps({ isTouched: true, errors: { missing: true } });
+      props = createTestProps({ touched: true, errors: { missing: true } });
       wrapper = shallow(<TextField {...props} />);
     });
     it('should mark the TextInput as erroneous', () => {
@@ -171,7 +171,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({
-        isTouched: true,
+        touched: true,
         renderError: jest.fn(key => key),
         errors: { customError: 5 },
       });
