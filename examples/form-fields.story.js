@@ -11,6 +11,7 @@ import {
   Text,
   TextField,
   NumberField,
+  MoneyField,
   PrimaryButton,
   SecondaryButton,
   Spacings,
@@ -19,6 +20,10 @@ import Forms from './form-fields.md';
 
 // utilities for story
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// This data would usually be loaded from the project itself.
+// It is defined statically here to keep the example focused on the forms.
+const currencies = ['EUR', 'USD'];
 
 // This compnents fakes the data source.
 // The form does not care where data is coming from.
@@ -34,6 +39,7 @@ class FakeConnector extends React.Component {
     id: 'product-id-1',
     version: 1,
     key: 'shoe',
+    price: { currencyCode: 'EUR', centAmount: 300 },
     inventory: 30,
   };
   updateProduct = ({ id, version, product }) => {
@@ -92,6 +98,11 @@ const docToForm = doc => ({
   // string. This eases validation later on, as we don't have to deal with
   // undefined anymore.
   inventory: NumberField.toFormValue(doc.inventory),
+  // parseMoneyValue will ensure that the price field will have currencyCode and
+  // amount filled out or set to empty strings. This reduces the cases we
+  // need to deal with (amount, currencyCode or the whole object being
+  // undefined).
+  price: MoneyField.parseMoneyValue(doc.price),
 });
 
 // When the form gets submitted, we transform the form values back to a document
@@ -105,6 +116,7 @@ const formToDoc = formValues => ({
   version: formValues.version,
   key: formValues.key,
   inventory: formValues.inventory,
+  price: MoneyField.convertToMoneyValue(formValues.price),
 });
 
 // The validate function is responsible for determining the form's validation
@@ -121,6 +133,7 @@ const validate = formValues => {
   const errors = {
     key: {},
     inventory: {},
+    price: {},
   };
 
   // validate key
@@ -136,6 +149,13 @@ const validate = formValues => {
     if (formValues.inventory < 0) errors.inventory.negative = true;
     if (NumberField.hasFractionDigits(formValues.inventory))
       errors.inventory.fractions = true;
+  }
+
+  // validate price
+  if (MoneyField.isEmpty(formValues.price)) {
+    errors.price.missing = true;
+  } else if (MoneyField.isHighPrecision(formValues.price)) {
+    errors.price.unsupportedHighPrecision = true;
   }
 
   // Formik will think there are errors when the object returned as a
@@ -156,10 +176,18 @@ class ProductForm extends React.Component {
         // the value can not be parsed
         inventory: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
           .isRequired,
+        price: PropTypes.shape({
+          amount: PropTypes.string.isRequired,
+          currencyCode: PropTypes.string.isRequired,
+        }).isRequired,
       }).isRequired,
       touched: PropTypes.shape({
         key: PropTypes.bool,
         inventory: PropTypes.bool,
+        price: PropTypes.shape({
+          amount: PropTypes.bool,
+          currencyCode: PropTypes.bool,
+        }),
       }),
       errors: PropTypes.shape({
         key: PropTypes.shape({
@@ -170,6 +198,10 @@ class ProductForm extends React.Component {
           negative: PropTypes.bool,
           fractions: PropTypes.bool,
           missing: PropTypes.bool,
+        }),
+        price: PropTypes.shape({
+          missing: PropTypes.bool,
+          unsupportedHighPrecision: PropTypes.bool,
         }),
       }).isRequired,
       dirty: PropTypes.bool.isRequired,
@@ -218,6 +250,26 @@ class ProductForm extends React.Component {
               // Shows how to overwrite a default message of FieldErrors
               case 'fractions':
                 return 'Inventory must be a whole number.';
+              default:
+                return null;
+            }
+          }}
+        />
+        <MoneyField
+          title="Price"
+          name="price"
+          isRequired={true}
+          value={this.props.formik.values.price}
+          onChange={this.props.formik.handleChange}
+          onBlur={this.props.formik.handleBlur}
+          currencies={currencies}
+          touched={this.props.formik.touched.price}
+          errors={this.props.formik.errors.price}
+          renderError={key => {
+            switch (key) {
+              // Shows how to overwrite a default message of FieldErrors
+              case 'unsupportedHighPrecision':
+                return 'This value is a high precision value. High precision pricing is not supported for products.';
               default:
                 return null;
             }
