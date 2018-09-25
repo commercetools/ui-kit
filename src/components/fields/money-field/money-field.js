@@ -94,17 +94,12 @@ class MoneyField extends React.Component {
   });
 
   render() {
-    // These could differ in theory, so we keep them separate for now.
-    // We could examine the error and the current value to determine
-    // whether the error happened on the currency or the amount input for some
-    // errors like "missing" or "isHighPrecision".
-    //
-    // But we need to ensure to only "hide" errors for amount/currency when
-    // we are certain about all errors.
-    const hasCurrencyError =
-      MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
-    const hasAmountError =
-      MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
+    // We could determine the errors of amount and currencyCode separately
+    // and forward hasCurrencyError / hasAmountError depending on the error.
+    // This would work for example for the known "missing" error.
+    // Doing so would lead to the correct part of the MoneyField being marked
+    // with a red border instead of the complete field.
+    // This is something we can do later / when somebody asks for it.
     const hasAnyErrors =
       MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
     return (
@@ -129,9 +124,9 @@ class MoneyField extends React.Component {
             onBlur={this.props.onBlur}
             isDisabled={this.props.isDisabled}
             onChange={this.props.onChange}
-            hasCurrencyError={hasCurrencyError}
+            hasCurrencyError={hasAnyErrors}
             hasCurrencyWarning={this.props.hasCurrencyWarning}
-            hasAmountError={hasAmountError}
+            hasAmountError={hasAnyErrors}
             hasAmountWarning={this.props.hasAmountWarning}
             {...filterDataAttributes(this.props)}
           />
