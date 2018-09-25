@@ -1,19 +1,15 @@
-<h2 align="center">commercetools UIKit 💅</h2>
+<h2 align="center">commercetools UI Kit 💅</h2>
 <p align="center">
-  <i>✨ Design System component library 🛠</i>
+  <i>✨ Component library based on our design system 🛠</i>
 </p>
-
-<h2 align="center">🚧 Under construction 🚧</h2>
 
 ## Install
 
 ```bash
-$ npm install --save @commercetools-frontend/ui-kit
-
 $ yarn add @commercetools-frontend/ui-kit
 ```
 
-The package main exports contains all the UI components.
+The package's main export contains all UI components.
 
 ```js
 import {
@@ -26,8 +22,8 @@ import {
 
 #### Importing CSS modules
 
-When you are developing your application using the UIKit components, chances are that you want to use the same **CSS variables** based on our Design System.
-To do that, we expose those variables as a set of different files (e.g. `colors.mod.css`, `spacings.mod.css`, etc) from the `@commercetools-frontend/ui-kit/materials` package folder.
+When you are developing your application using the UI Kit components, chances you want to use the same design tokens as our design sytem. We provide them thorugh **CSS variables**.
+We expose those variables from different files (e.g. `colors.mod.css`, `spacings.mod.css`) from the `@commercetools-frontend/ui-kit/materials` folder.
 
 ```css
 @import '@commercetools-frontend/ui-kit/materials/spacings.mod.css';
@@ -86,11 +82,9 @@ import UnexpectedErrorSVG from '@commercetools-frontend/ui-kit/images/maintenanc
 - Used across different apps consumed by different teams
 - Shared language between developers and designers
 
-## Documentation
+## Documentation and Storybook
 
-_coming soon_
-
-For now look at https://uikit.commercetools.com.
+Available at https://uikit.commercetools.com.
 
 ## Release
 
@@ -122,3 +116,4 @@ By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][net
 [webpack]: https://webpack.js.org
 [storybook]: https://storybook.js.org
 [netlify]: https://www.netlify.com
+[travis]: https://travis-ci.org/commercetools/ui-kit/
