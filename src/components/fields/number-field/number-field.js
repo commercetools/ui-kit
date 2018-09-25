@@ -27,7 +27,7 @@ class NumberField extends React.Component {
     }),
     renderError: PropTypes.func,
     isRequired: PropTypes.bool,
-    isTouched: PropTypes.bool,
+    touched: PropTypes.bool,
 
     // NumberInput
     name: PropTypes.string,
@@ -74,7 +74,7 @@ class NumberField extends React.Component {
   });
 
   render() {
-    const hasError = this.props.isTouched && hasErrors(this.props.errors);
+    const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">

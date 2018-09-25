@@ -48,7 +48,7 @@ storiesOf('Fields', module)
                 }
               }}
               isRequired={boolean('isRequired', false)}
-              isTouched={boolean('isTouched', false)}
+              touched={boolean('touched', false)}
               name={text('name', '')}
               value={text('value', value)}
               onChange={event => {
