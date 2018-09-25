@@ -58,6 +58,10 @@ export const createLocalizedDataAttributes = (props, language) =>
 export const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) =>
   Boolean(errors) && without(Object.keys(errors), selectedLanguage).length > 0;
 
+export const getHasWarningOnRemainingLanguages = (warnings, selectedLanguage) =>
+  Boolean(warnings) &&
+  without(Object.keys(warnings), selectedLanguage).length > 0;
+
 export const createLocalizedString = (languages, existingTranslations = {}) => {
   const mergedLanguages = existingTranslations
     ? uniq([...languages, ...Object.keys(existingTranslations)])
