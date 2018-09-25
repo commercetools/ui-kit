@@ -25,6 +25,7 @@ export { default as FieldLabel } from './components/field-label';
 
 export { default as TextField } from './components/fields/text-field';
 export { default as NumberField } from './components/fields/number-field';
+export { default as MoneyField } from './components/fields/money-field';
 
 export { Icons };
 // TODO: this type of export is deprecated and should be removed in the next major release
