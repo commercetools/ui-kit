@@ -71,8 +71,6 @@ export { default as TimeRangePicker } from './components/time-range-picker';
 
 export { default as Text } from './components/typography/text';
 
-export { default as HorizontalConstraint } from './components/constraints/horizontal';
-
 export { default as withMouseDownState } from './hocs/with-mouse-down-state';
 export { default as withMouseOverState } from './hocs/with-mouse-over-state';
 
