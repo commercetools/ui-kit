@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import TextField from '@commercetools-frontend/ui-kit/fields/text-field';
+import { TextField } from '@commercetools-frontend/ui-kit';
 
 <TextField title="Username" value="foo" onChange={value => alert(value)} />;
 ```
