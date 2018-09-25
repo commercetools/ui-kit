@@ -89,11 +89,6 @@ export default class TranslationInput extends React.Component {
     // amount of lines it should have when collapsed
     const contentExceedsShownRows =
       this.state.contentRowCount > TranslationInput.MIN_ROW_COUNT;
-    const getCommands = props => {
-      if (props.error) return <div>{this.props.error}</div>;
-      if (props.warning) return <div>{this.props.warning}</div>;
-      return this.props.languagesControl;
-    };
 
     return (
       <Spacings.Stack scale="xs">
@@ -143,7 +138,13 @@ export default class TranslationInput extends React.Component {
           />
         </div>
         <div className={styles.commandsContainer}>
-          <div className={styles.commandsLeft}>{getCommands(this.props)}</div>
+          <div className={styles.commandsLeft}>
+            {(() => {
+              if (this.props.error) return <div>{this.props.error}</div>;
+              if (this.props.warning) return <div>{this.props.warning}</div>;
+              return this.props.languagesControl;
+            })()}
+          </div>
           <div className={styles.commandsExpand}>
             {!this.props.isCollapsed &&
               contentExceedsShownRows && (
