@@ -19,6 +19,7 @@ storiesOf('Inputs', module)
       ''
     );
     const defaultAmount = text('default value amount', '');
+    const name = text('name', '') || 'default-name';
     return (
       <React.Fragment>
         <Section>
@@ -31,20 +32,29 @@ storiesOf('Inputs', module)
             render={(value, onChange) => (
               <MoneyInput
                 id={text('id', '')}
-                name={text('name', '')}
+                name={name}
                 value={value}
                 currencies={boolean('dropdown', true) ? currencies : undefined}
                 placeholder={text('placeholder', 'Placeholder')}
-                onBlur={(...args) => action('onBlur')(...args)}
+                onBlur={action('onBlur')}
                 isDisabled={boolean('isDisabled', false)}
-                onChange={action('onChange')}
-                onChangeValue={(...args) => {
-                  action('onChangeValue')(...args);
-                  onChange(...args);
+                onChange={event => {
+                  action('onChange')(event);
+
+                  const nextMoney = do {
+                    if (event.target.name.endsWith('.amount')) {
+                      ({ ...value, amount: event.target.value });
+                    } else if (event.target.name.endsWith('.currencyCode')) {
+                      ({ ...value, currencyCode: event.target.value });
+                    }
+                  };
+
+                  onChange(nextMoney);
+
                   // eslint-disable-next-line no-console
                   console.log(
                     'parsed',
-                    MoneyInput.convertToMoneyValue(args[0])
+                    MoneyInput.convertToMoneyValue(nextMoney)
                   );
                 }}
                 hasCurrencyError={boolean('hasCurrencyError', false)}
