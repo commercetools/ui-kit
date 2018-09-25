@@ -7,7 +7,7 @@ article.
 ## Example
 
 ```jsx
-import Spacings from '@commercetools-frontend/ui-kit/materials/spacings';
+import { Spacings } from '@commercetools-frontend/ui-kit';
 
 <Spacings.Stack scale="m">
   <Card />

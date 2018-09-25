@@ -7,7 +7,7 @@ Stamps are visual labels which hold small amounts of information regarding an it
 ## Usage
 
 ```js
-import Stamp from '@commercetools-frontend/ui-kit/stamp';
+import { Stamp } from '@commercetools-frontend/ui-kit';
 ```
 
 ## Example

@@ -7,9 +7,9 @@ A controlled password input component.
 ## Usage
 
 ```js
-import PasswordInput from '@commercetools-frontend/ui-kit/inputs/password-input';
+import { PasswordInput } from '@commercetools-frontend/ui-kit';
 
-<PasswordInput value="foo" onChange={value => alert(value)} />;
+<PasswordInput value="foo" onChange={event => alert(event.target.value)} />;
 ```
 
 #### Properties

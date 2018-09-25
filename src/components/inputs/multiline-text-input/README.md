@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import MultilineTextInput from '@commercetools-frontend/ui-kit/inputs/multiline-text-input';
+import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
 
 <MultilineTextInput
   value="foo"

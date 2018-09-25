@@ -11,12 +11,12 @@ An input component getting a selection from the user.
 ## Usage
 
 ```js
-import SelectInput from '@commercetools-frontend/ui-kit/inputs/select-input';
+import { SelectInput } from '@commercetools-frontend/ui-kit';
 
 <SelectInput
   name="form-field-name"
   value={value}
-  onChange={handleChange}
+  onChange={event => alert(event.target.value)}
   options={[{ value: 'one', label: 'One' }, { value: 'two', label: 'Two' }]}
 />;
 ```

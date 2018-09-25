@@ -8,11 +8,11 @@ states.
 ## Usage
 
 ```js
-import LocalizedMultilineTextInput from '@commercetools-frontend/ui-kit/inputs/localized-multiline-text-input';
+import { LocalizedMultilineTextInput } from '@commercetools-frontend/ui-kit';
 
 <LocalizedMultilineTextInput
   value={{ en: 'House\nFoo', de: 'House' }}
-  onChange={value => alert(value.en)}
+  onChange={event => alert(event.target.name, event.target.value)}
 />;
 ```
 

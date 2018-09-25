@@ -11,7 +11,7 @@ An input component getting a selection from the user, and where options can also
 ## Usage
 
 ```js
-import CreatableSelectInput from '@commercetools-frontend/ui-kit/inputs/creatable-select-input';
+import { CreatableSelectInput } from '@commercetools-frontend/ui-kit';
 
 <CreatableSelectInput
   name="form-field-name"
