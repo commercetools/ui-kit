@@ -1,5 +1,5 @@
 {
-  "UIKit.AsyncCreatableSelectInput.createLabel": "",
+  "UIKit.AsyncCreatableSelectInput.createLabel": "!!",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithInputValue": "",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithoutInputValue": "",
   "UIKit.AsyncSelectInput.noOptionsMessageWithInputValue": "",
