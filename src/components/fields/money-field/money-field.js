@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import has from 'lodash.has';
 import requiredIf from 'react-required-if';
+import { FormattedMessage } from 'react-intl';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import MoneyInput from '../../inputs/money-input';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
+import { VerifiedIcon } from '../../icons';
+import { Text } from '../../..';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import messages from './messages';
 
 const sequentialId = createSequentialId('text-field-');
 
@@ -72,7 +76,7 @@ class MoneyField extends React.Component {
     ),
     hintIcon: PropTypes.node,
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    badge: PropTypes.node,
+    showHighPrecisionBadge: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -100,8 +104,15 @@ class MoneyField extends React.Component {
     // Doing so would lead to the correct part of the MoneyField being marked
     // with a red border instead of the complete field.
     // This is something we can do later / when somebody asks for it.
+    //
+    // We do not use MoneyField.isTouched() as we want to ensure both fields have been touched.
+    // This avoids showing an error when the user just selected a language but didn't add
+    // an amount yet.
     const hasAnyErrors =
-      MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
+      this.props.touched &&
+      this.props.touched.amount &&
+      this.props.touched.currencyCode &&
+      hasErrors(this.props.errors);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -111,7 +122,20 @@ class MoneyField extends React.Component {
             description={this.props.description}
             onInfoButtonClick={this.props.onInfoButtonClick}
             hintIcon={this.props.hintIcon}
-            badge={this.props.badge}
+            badge={
+              this.props.showHighPrecisionBadge &&
+              !MoneyInput.isEmpty(this.props.value) &&
+              MoneyInput.isHighPrecision(this.props.value) ? (
+                <Spacings.Inline scale="xs" alignItems="flexEnd">
+                  <VerifiedIcon size="medium" theme="blue" />
+                  <Text.Detail isInline={true}>
+                    <FormattedMessage {...messages.highPrecision} />
+                  </Text.Detail>
+                </Spacings.Inline>
+              ) : (
+                undefined
+              )
+            }
             hasRequiredIndicator={this.props.isRequired}
             htmlFor={this.state.id}
           />
@@ -125,9 +149,7 @@ class MoneyField extends React.Component {
             isDisabled={this.props.isDisabled}
             onChange={this.props.onChange}
             hasCurrencyError={hasAnyErrors}
-            hasCurrencyWarning={this.props.hasCurrencyWarning}
             hasAmountError={hasAnyErrors}
-            hasAmountWarning={this.props.hasAmountWarning}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors

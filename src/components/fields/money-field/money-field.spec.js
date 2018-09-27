@@ -80,7 +80,6 @@ describe('rendering', () => {
         hintIcon: <AddBoldIcon />,
         description: 'A description',
         onInfoButtonClick: jest.fn(),
-        badge: <div>Some badge</div>,
 
         // MoneyField
         name: 'field1',
@@ -106,7 +105,6 @@ describe('rendering', () => {
         'onInfoButtonClick',
         props.onInfoButtonClick
       );
-      expect(fieldLabel).toHaveProp('badge', props.badge);
       expect(fieldLabel).toHaveProp('htmlFor', props.id);
 
       const moneyInput = wrapper.find(MoneyInput);
@@ -141,7 +139,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({
-        touched: { amount: true },
+        touched: { currencyCode: true, amount: true },
         errors: { missing: true },
       });
       wrapper = shallow(<MoneyField {...props} />);
@@ -159,7 +157,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({
-        touched: { amount: true },
+        touched: { currencyCode: true, amount: true },
         renderError: jest.fn(key => key),
         errors: { customError: 5 },
       });
@@ -170,6 +168,22 @@ describe('rendering', () => {
     });
     it('should forward the error', () => {
       expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+    });
+  });
+
+  describe('when a high-precision price badge should be shown', () => {
+    let props;
+    let wrapper;
+    beforeEach(() => {
+      props = createTestProps({
+        showHighPrecisionBadge: true,
+        value: { currencyCode: 'EUR', amount: '15.002' },
+        touched: { currencyCode: true, amount: true },
+      });
+      wrapper = shallow(<MoneyField {...props} />);
+    });
+    it('should show a high precision price badge', () => {
+      expect(wrapper.find(FieldLabel)).toHaveProp('badge');
     });
   });
 });

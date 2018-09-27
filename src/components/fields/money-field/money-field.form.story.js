@@ -19,28 +19,39 @@ storiesOf('Examples|Forms/Fields', module)
   .addDecorator(withReadme(Readme))
   .add('MoneyField', () => {
     const currencies = ['EUR', 'USD', 'AED', 'KWD'];
+    const horizontalConstraint = select(
+      'horizontalConstraint',
+      ['xs', 's', 'm', 'l', 'xl', 'scale'],
+      'm'
+    );
     return (
       <Section>
         <IntlProvider locale="en">
           <Formik
             initialValues={{
-              price: { currencyCode: currencies[0], amount: '' },
+              price: { ...MoneyField.parseMoneyValue() },
+              pricePerTon: { ...MoneyField.parseMoneyValue() },
             }}
             validate={values => {
-              const errors = { price: {} };
+              const errors = { price: {}, pricePerTon: {} };
               if (MoneyField.isEmpty(values.price)) errors.price.missing = true;
               else if (MoneyField.isHighPrecision(values.price))
                 errors.price.unsupportedHighPrecision = true;
+
+              if (MoneyField.isEmpty(values.pricePerTon))
+                errors.pricePerTon.missing = true;
+
+              console.log(values, omitEmpty(errors));
               return omitEmpty(errors);
             }}
-            onSubmit={(values, formik, ...rest) => {
-              action('onSubmit')(values, formik, ...rest);
+            onSubmit={(values, formik) => {
+              action('onSubmit')(values, formik);
               formik.resetForm(values);
             }}
             render={formik => (
               <Spacings.Stack scale="l">
                 <MoneyField
-                  title="Price"
+                  title="Regular Price"
                   description={'How much is the fish?'}
                   hint="It is better to pay in EUR"
                   name="price"
@@ -50,11 +61,7 @@ storiesOf('Examples|Forms/Fields', module)
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   touched={formik.touched.price}
-                  horizontalConstraint={select(
-                    'horizontalConstraint',
-                    ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                    'm'
-                  )}
+                  horizontalConstraint={horizontalConstraint}
                   errors={formik.errors.price}
                   renderError={key => {
                     switch (key) {
@@ -65,6 +72,20 @@ storiesOf('Examples|Forms/Fields', module)
                         return null;
                     }
                   }}
+                />
+                <MoneyField
+                  title="Price per ton (High Precision)"
+                  description={'How much is a ton of fish?'}
+                  name="pricePerTon"
+                  isRequired={true}
+                  value={formik.values.pricePerTon}
+                  currencies={currencies}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  touched={formik.touched.pricePerTon}
+                  horizontalConstraint={horizontalConstraint}
+                  showHighPrecisionBadge={true}
+                  errors={formik.errors.pricePerTon}
                 />
                 <Spacings.Inline>
                   <SecondaryButton
