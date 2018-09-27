@@ -33,20 +33,15 @@ storiesOf('Examples|Forms/Inputs', module)
     <Section>
       <IntlProvider locale="en">
         <Formik
-          initialValues={{
-            price: MoneyInput.parseMoneyValue({
-              currencyCode: 'EUR',
-              centAmount: 1200,
-            }),
-          }}
+          initialValues={{ price: { currencyCode: '', amount: '' } }}
           validate={validate}
-          onSubmit={(values, formik, ...rest) => {
+          onSubmit={(values, formik) => {
             // eslint-disable-next-line no-console
             console.log(
               'money value',
               MoneyInput.convertToMoneyValue(values.price)
             );
-            action('onSubmit')(values, formik, ...rest);
+            action('onSubmit')(values, formik);
             formik.resetForm(values);
           }}
           render={formik => (
@@ -58,6 +53,11 @@ storiesOf('Examples|Forms/Inputs', module)
                   value={formik.values.price}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  hasCurrencyError={Boolean(
+                    formik.touched.price &&
+                      formik.touched.price.currencyCode &&
+                      formik.errors.price
+                  )}
                   hasAmountError={Boolean(
                     formik.touched.price &&
                       formik.touched.price.amount &&
