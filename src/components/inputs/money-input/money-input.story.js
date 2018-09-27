@@ -3,70 +3,76 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import { Value } from 'react-value';
 import Section from '../../../../.storybook/decorators/section';
 import MoneyInputReadme from './README.md';
 import MoneyInput from './money-input';
 
-storiesOf('Inputs', module)
-  .addDecorator(withKnobs)
-  .addDecorator(withReadme(MoneyInputReadme))
-  .add('MoneyInput', () => {
+// This uses a dedicated story component to keep track of state instead of
+// react-value. The reason is that MoneyInput can call twice onChange before
+// the component rerenders, so we'd need to use two separate <Value />
+// components to not lose data. So we use a dedicated component instead.
+// That makes it easier to log the parsed value as well.
+class MoneyInputStory extends React.Component {
+  static displayName = 'MoneyInputStory';
+
+  state = {
+    amount: '',
+    currencyCode: '',
+  };
+
+  componentDidUpdate(prevState) {
+    if (
+      prevState.amount !== this.state.amount ||
+      prevState.currencyCode !== this.state.currencyCode
+    ) {
+      // eslint-disable-next-line no-console
+      console.log(
+        'parsed',
+        MoneyInput.convertToMoneyValue({
+          amount: this.state.amount,
+          currencyCode: this.state.currencyCode,
+        })
+      );
+    }
+  }
+
+  render() {
     const currencies = ['EUR', 'USD', 'AED', 'KWD'];
-    const defaultCurrencyCode = select(
-      'default value currencyCode',
-      ['', ...currencies],
-      ''
-    );
-    const defaultAmount = text('default value amount', '');
     const name = text('name', '') || 'default-name';
+    const value = {
+      amount: this.state.amount,
+      currencyCode: this.state.currencyCode,
+    };
     return (
       <React.Fragment>
         <Section>
-          <Value
-            key={`${defaultCurrencyCode}-${defaultAmount}`}
-            defaultValue={{
-              amount: defaultAmount,
-              currencyCode: defaultCurrencyCode,
+          <MoneyInput
+            id={text('id', '')}
+            name={name}
+            value={value}
+            currencies={boolean('dropdown', true) ? currencies : undefined}
+            placeholder={text('placeholder', 'Placeholder')}
+            onBlur={action('onBlur')}
+            isDisabled={boolean('isDisabled', false)}
+            onChange={event => {
+              action('onChange')(event);
+
+              if (event.target.name.endsWith('.amount')) {
+                this.setState({ amount: event.target.value });
+              }
+
+              if (event.target.name.endsWith('.currencyCode')) {
+                this.setState({ currencyCode: event.target.value });
+              }
             }}
-            render={(value, onChange) => (
-              <MoneyInput
-                id={text('id', '')}
-                name={name}
-                value={value}
-                currencies={boolean('dropdown', true) ? currencies : undefined}
-                placeholder={text('placeholder', 'Placeholder')}
-                onBlur={action('onBlur')}
-                isDisabled={boolean('isDisabled', false)}
-                onChange={event => {
-                  action('onChange')(event);
-
-                  const nextMoney = do {
-                    if (event.target.name.endsWith('.amount')) {
-                      ({ ...value, amount: event.target.value });
-                    } else if (event.target.name.endsWith('.currencyCode')) {
-                      ({ ...value, currencyCode: event.target.value });
-                    }
-                  };
-
-                  onChange(nextMoney);
-
-                  // eslint-disable-next-line no-console
-                  console.log(
-                    'parsed',
-                    MoneyInput.convertToMoneyValue(nextMoney)
-                  );
-                }}
-                hasCurrencyError={boolean('hasCurrencyError', false)}
-                hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-                hasAmountError={boolean('hasAmountError', false)}
-                hasAmountWarning={boolean('hasAmountWarning', false)}
-                horizontalConstraint={select(
-                  'horizontalConstraint',
-                  ['s', 'm', 'l', 'xl', 'scale'],
-                  'm'
-                )}
-              />
+            hasCurrencyError={boolean('hasCurrencyError', false)}
+            hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
+            hasAmountError={boolean('hasAmountError', false)}
+            hasAmountWarning={boolean('hasAmountWarning', false)}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              ['s', 'm', 'l', 'xl', 'scale'],
+              'm'
             )}
           />
         </Section>
@@ -80,4 +86,10 @@ storiesOf('Inputs', module)
         </Section>
       </React.Fragment>
     );
-  });
+  }
+}
+
+storiesOf('Inputs', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(MoneyInputReadme))
+  .add('MoneyInput', () => <MoneyInputStory />);

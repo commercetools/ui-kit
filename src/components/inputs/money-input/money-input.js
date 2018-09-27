@@ -279,7 +279,17 @@ export default class MoneyInput extends React.Component {
               : formattedAmount,
           },
         };
-        this.props.onChange(fakeEvent);
+        // There is a bug in Formik at the moment where the validation will run
+        // with wrong values when "handleChange" is called consecutively before
+        // Formik gets a chance to rerun.
+        // PR with fix is open: https://github.com/jaredpalmer/formik/pull/939
+        // Once merged, we can remove the setTimeout call and call
+        // onChange directly.
+        // While the setTimeout workaround is in place, the error messages
+        // will flicker (appear and disappear) for a split-second.
+        setTimeout(() => {
+          this.props.onChange(fakeEvent);
+        }, 0);
       }
     }
     toggleMenu();
