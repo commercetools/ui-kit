@@ -117,3 +117,19 @@ By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][net
 [storybook]: https://storybook.js.org
 [netlify]: https://www.netlify.com
 [travis]: https://travis-ci.org/commercetools/ui-kit/
+
+## Translations (i18n)
+
+The UI Kit uses `react-intl`. The core messages are written down in `messages.js` files.
+
+The translations for the supported languages exist in the `/i18n` folder. We do not use any automated translation software.
+
+### Adding new messages
+
+In case you are working on a component and you want to add a completely new message, you should add it to (or create a) `messages.js` file. See the other `messages.js` files as an example.
+
+After adding the message, you need to run `yarn i18n:build`. This will modify the language files in `/i18n` by adding the new message.
+
+### Editing translations
+
+If you want to modify an existing translation, you will need to manually edit the related files in `/i18n`.
