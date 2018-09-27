@@ -126,9 +126,9 @@ The translations for the supported languages exist in the `/i18n` folder. We do 
 
 ### Adding new messages
 
-In case you are working on a component and you want to add a completely new message, you should add it to (or create a) `messages.js` file. See the other `messages.js` files as an example.
+In case you are working on a component and you want to add a completely new message, you should add it to (or create a) `messages.js` file. See the other `messages.js` files as a reference.
 
-After adding the message, you need to run `yarn i18n:build`. This will modify the language files in `/i18n` by adding the new message.
+After adding the message(s), you need to run `yarn i18n:build`. This will modify the language files in `/i18n` by adding empty translations for the message keys.
 
 ### Editing translations
 
