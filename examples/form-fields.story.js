@@ -10,6 +10,7 @@ import { FormikBox, Section } from '../.storybook/decorators';
 import {
   Text,
   TextField,
+  MultilineTextField,
   NumberField,
   MoneyField,
   PrimaryButton,
@@ -93,6 +94,10 @@ const docToForm = doc => ({
   // user will see the APIs ConcurrentModificationError as expected!
   version: doc.version,
   key: doc.key,
+  // The product does not contain a "description" field by default. However,
+  // the form expects description to be a string. Hence, we have to fall back
+  // to a string here!
+  description: doc.description || '',
   // The inventory should either be an empty string or a number. The inventory
   // could be undefined, in which case toFormValue will set it to an empty
   // string. This eases validation later on, as we don't have to deal with
@@ -115,6 +120,7 @@ const formToDoc = formValues => ({
   id: formValues.id,
   version: formValues.version,
   key: formValues.key,
+  description: formValues.description,
   inventory: formValues.inventory,
   price: MoneyField.convertToMoneyValue(formValues.price),
 });
@@ -132,6 +138,7 @@ const validate = formValues => {
   // all form fields to empty objects.
   const errors = {
     key: {},
+    description: {},
     inventory: {},
     price: {},
   };
@@ -140,6 +147,10 @@ const validate = formValues => {
   // Input elements usually provide a way to check whether it's value is empty
   // This is useful to determine whether a required value was not filled out.
   if (TextField.isEmpty(formValues.key)) errors.key.missing = true;
+
+  // validate description
+  if (MultilineTextField.isEmpty(formValues.description))
+    errors.description.missing = true;
 
   // validate inventory
   if (NumberField.isEmpty(formValues.inventory)) {
@@ -172,6 +183,7 @@ class ProductForm extends React.Component {
       values: PropTypes.shape({
         version: PropTypes.number.isRequired,
         key: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
         // Formik provides us with either a number or an empty string in case
         // the value can not be parsed
         inventory: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -183,6 +195,7 @@ class ProductForm extends React.Component {
       }).isRequired,
       touched: PropTypes.shape({
         key: PropTypes.bool,
+        description: PropTypes.bool,
         inventory: PropTypes.bool,
         price: PropTypes.shape({
           amount: PropTypes.bool,
@@ -194,6 +207,7 @@ class ProductForm extends React.Component {
           missing: PropTypes.bool,
           duplicate: PropTypes.bool,
         }),
+        description: PropTypes.shape({ missing: PropTypes.bool }),
         inventory: PropTypes.shape({
           negative: PropTypes.bool,
           fractions: PropTypes.bool,
@@ -235,6 +249,17 @@ class ProductForm extends React.Component {
                 return null;
             }
           }}
+        />
+        <MultilineTextField
+          title="Product Description"
+          name="description"
+          isRequired={true}
+          value={this.props.formik.values.description}
+          onChange={this.props.formik.handleChange}
+          onBlur={this.props.formik.handleBlur}
+          isDisabled={this.props.formik.isSubmitting}
+          errors={this.props.formik.errors.description}
+          touched={this.props.formik.touched.description}
         />
         <NumberField
           title="Inventory Quantity"

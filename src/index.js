@@ -24,6 +24,7 @@ export {
 export { default as FieldLabel } from './components/field-label';
 
 export { default as TextField } from './components/fields/text-field';
+export { default as MultilineTextField } from './components/fields/multiline-text-field';
 export { default as NumberField } from './components/fields/number-field';
 export { default as MoneyField } from './components/fields/money-field';
 
