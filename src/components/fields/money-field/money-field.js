@@ -76,7 +76,7 @@ class MoneyField extends React.Component {
     ),
     hintIcon: PropTypes.node,
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    showHighPrecisionBadge: PropTypes.bool,
+    hasHighPrecisionBadge: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -123,7 +123,7 @@ class MoneyField extends React.Component {
             onInfoButtonClick={this.props.onInfoButtonClick}
             hintIcon={this.props.hintIcon}
             badge={
-              this.props.showHighPrecisionBadge &&
+              this.props.hasHighPrecisionBadge &&
               !MoneyInput.isEmpty(this.props.value) &&
               MoneyInput.isHighPrecision(this.props.value) ? (
                 <Spacings.Inline scale="xs" alignItems="flexEnd">

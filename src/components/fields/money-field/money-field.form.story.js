@@ -84,7 +84,7 @@ storiesOf('Examples|Forms/Fields', module)
                   onBlur={formik.handleBlur}
                   touched={formik.touched.pricePerTon}
                   horizontalConstraint={horizontalConstraint}
-                  showHighPrecisionBadge={true}
+                  hasHighPrecisionBadge={true}
                   errors={formik.errors.pricePerTon}
                 />
                 <Spacings.Inline>

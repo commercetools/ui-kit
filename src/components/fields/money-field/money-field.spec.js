@@ -176,7 +176,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createTestProps({
-        showHighPrecisionBadge: true,
+        hasHighPrecisionBadge: true,
         value: { currencyCode: 'EUR', amount: '15.002' },
         touched: { currencyCode: true, amount: true },
       });
