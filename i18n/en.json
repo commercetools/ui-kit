@@ -20,6 +20,7 @@
   "UIKit.LocalizedTextInput.collapse": "Hide languages ({remainingLanguages})",
   "UIKit.LocalizedTextInput.expand": "Show all languages ({remainingLanguages})",
   "UIKit.LocalizedTextInput.missingRequiredField": "This field is required. Provide at least one value.",
+  "UIKit.MoneyField.highPrecision": "High Precision Price",
   "UIKit.MoneyInput.chevronLabel": "Open/Close Dropdown",
   "UIKit.MultilineTextInput.collapse": "Collapse",
   "UIKit.MultilineTextInput.expand": "Expand",
