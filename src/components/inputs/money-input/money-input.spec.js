@@ -550,7 +550,11 @@ describe('callbacks', () => {
           .prop('onClick')({ target: { value: '12' } });
       });
 
-      it('should call onChange with an event', () => {
+      it('should call onChange with an event', async () => {
+        // wait for onChange call which happens in setTimeout(fn ,0)
+        // This can be removed once the setTimeout workarounds are
+        // removed from money-input.
+        await new Promise(resolve => setTimeout(resolve, 1));
         expect(props.onChange).toHaveBeenCalledWith(
           expect.objectContaining({
             persist: expect.any(Function),
