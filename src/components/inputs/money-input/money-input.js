@@ -266,7 +266,19 @@ export default class MoneyInput extends React.Component {
         : formattedAmount;
 
       // change currency code
-      this.props.onChange(event);
+      // There is a bug in Formik at the moment where the validation will run
+      // with wrong values when "handleChange" is called before
+      // Formik gets a chance to rerun.
+      // PR with fix is open: https://github.com/jaredpalmer/formik/pull/939
+      // Once merged, we can remove the setTimeout call and call
+      // onChange directly.
+      // While the setTimeout workaround is in place, the error messages
+      // will flicker (appear and disappear) for a split-second.
+      // This setTimeout handles the case of the user entering a perfectly
+      // formatted number and then selecting a currency.
+      setTimeout(() => {
+        this.props.onChange(event);
+      }, 0);
 
       // change amount if necessary
       if (this.props.value.amount !== nextAmount) {
@@ -287,6 +299,8 @@ export default class MoneyInput extends React.Component {
         // onChange directly.
         // While the setTimeout workaround is in place, the error messages
         // will flicker (appear and disappear) for a split-second.
+        // This setTimeout handles the case of the user entering a non-formatted
+        // number and then selecting a currency.
         setTimeout(() => {
           this.props.onChange(fakeEvent);
         }, 0);
