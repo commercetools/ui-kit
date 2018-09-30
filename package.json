@@ -55,13 +55,18 @@
     "test:watch": "jest --config jest.test.config.js --watch"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-plugin-transform-dynamic-import": "2.1.0",
     "classnames": "2.2.6",
     "common-tags": "1.8.0",
     "dom-helpers": "3.3.1",
     "downshift": "2.2.2",
     "flatpickr": "4.5.2",
+    "graphql": "^0.13.0",
+    "graphql-tag": "^2.0.0",
     "invariant": "2.2.4",
     "is-touch-device": "1.0.1",
+    "jest-validate": "^23.6.0",
     "lodash.flatmap": "4.5.0",
     "lodash.has": "4.5.2",
     "lodash.isnil": "4.0.0",
@@ -70,6 +75,7 @@
     "lodash.sortby": "4.7.0",
     "lodash.uniq": "4.5.0",
     "lodash.without": "4.4.0",
+    "pegjs": "^0.10.0",
     "prop-types": "15.6.2",
     "react-required-if": "1.0.3",
     "react-select": "2.0.0",
@@ -78,7 +84,8 @@
     "recompose": "0.30.0",
     "reselect": "3.0.1",
     "styled-components": "3.4.9",
-    "warning": "4.0.2"
+    "warning": "4.0.2",
+    "webpack": "^4.0.0"
   },
   "devDependencies": {
     "@commercetools-frontend/babel-preset-mc-app": "1.0.0-beta.32",
