@@ -55,8 +55,6 @@
     "test:watch": "jest --config jest.test.config.js --watch"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0",
-    "babel-plugin-transform-dynamic-import": "2.1.0",
     "classnames": "2.2.6",
     "common-tags": "1.8.0",
     "dom-helpers": "3.3.1",
@@ -66,7 +64,6 @@
     "graphql-tag": "^2.0.0",
     "invariant": "2.2.4",
     "is-touch-device": "1.0.1",
-    "jest-validate": "^23.6.0",
     "lodash.flatmap": "4.5.0",
     "lodash.has": "4.5.2",
     "lodash.isnil": "4.0.0",
@@ -75,7 +72,6 @@
     "lodash.sortby": "4.7.0",
     "lodash.uniq": "4.5.0",
     "lodash.without": "4.4.0",
-    "pegjs": "^0.10.0",
     "prop-types": "15.6.2",
     "react-required-if": "1.0.3",
     "react-select": "2.0.0",
@@ -84,10 +80,10 @@
     "recompose": "0.30.0",
     "reselect": "3.0.1",
     "styled-components": "3.4.9",
-    "warning": "4.0.2",
-    "webpack": "^4.0.0"
+    "warning": "4.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "@commercetools-frontend/babel-preset-mc-app": "1.0.0-beta.32",
     "@commercetools-frontend/eslint-config-mc-app": "1.0.0-beta.32",
     "@commercetools-frontend/jest-preset-mc-app": "1.0.0-beta.32",
@@ -103,6 +99,7 @@
     "@svgr/rollup": "2.4.1",
     "@svgr/webpack": "2.4.1",
     "babel-loader": "8.0.4",
+    "babel-plugin-transform-dynamic-import": "2.1.0",
     "browserslist": "4.1.1",
     "common-tags": "1.8.0",
     "conventional-changelog-cli": "2.0.5",
@@ -121,6 +118,7 @@
     "jest-runner-eslint": "0.6.0",
     "jest-runner-stylelint": "1.0.0",
     "jest-silent-reporter": "0.1.1",
+    "jest-validate": "^23.6.0",
     "lint-staged": "7.3.0",
     "lodash.camelcase": "4.3.0",
     "lodash.pick": "4.4.0",
@@ -129,6 +127,7 @@
     "moment": "2.22.2",
     "moment-timezone": "0.5.21",
     "omit-empty": "0.4.1",
+    "pegjs": "^0.10.0",
     "postcss": "7.0.2",
     "postcss-color-mod-function": "3.0.3",
     "postcss-custom-media": "7.0.4",
@@ -164,7 +163,8 @@
     "stylelint": "9.5.0",
     "stylelint-config-standard": "18.2.0",
     "stylelint-order": "1.0.0",
-    "url-loader": "1.1.1"
+    "url-loader": "1.1.1",
+    "webpack": "^4.20.2"
   },
   "peerDependencies": {
     "moment": ">2.2",
