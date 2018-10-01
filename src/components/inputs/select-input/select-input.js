@@ -146,9 +146,13 @@ export class SelectInput extends React.Component {
      */
     return {
       selectedOptions: props.isMult
-        ? optionsWithoutGroups.filter(option =>
-            props.value.includes(option.value)
-          )
+        ? props.value
+            // Pass the options in the order selected by the use, so that the
+            // sorting is not lost
+            .map(value =>
+              optionsWithoutGroups.find(option => option.value === value)
+            )
+            .filter(Boolean)
         : optionsWithoutGroups.find(
             option => has(option, 'value') && option.value === props.value
           ) || null,
