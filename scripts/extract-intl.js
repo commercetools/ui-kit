@@ -17,6 +17,7 @@ const path = require('path');
 const mri = require('mri');
 const nodeGlob = require('glob');
 const { transformAsync } = require('@babel/core');
+// TODO: adapt to using our own babel preset setup
 const getBabelPresetForMcApp = require('@commercetools-frontend/babel-preset-mc-app');
 
 const flags = mri(process.argv.slice(2), {
