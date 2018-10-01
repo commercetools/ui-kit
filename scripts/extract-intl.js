@@ -21,7 +21,7 @@ const getBabelPresetForMcApp = require('@commercetools-frontend/babel-preset-mc-
 
 const flags = mri(process.argv.slice(2), {
   alias: { help: ['h'] },
-  default: { locale: 'en', 'build-translations': false },
+  default: { locale: 'en' },
 });
 const commands = flags._;
 
