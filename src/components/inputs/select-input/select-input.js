@@ -5,7 +5,6 @@ import has from 'lodash.has';
 import flatMap from 'lodash.flatmap';
 import classnames from 'classnames';
 import Select, { components as defaultComponents } from 'react-select';
-import omit from 'lodash.omit';
 import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
@@ -34,17 +33,74 @@ export class SelectInput extends React.Component {
 
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-    name: PropTypes.string,
-    value: (props, ...rest) =>
-      props.isMulti
-        ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
-        : PropTypes.string(props, ...rest),
-    onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func,
-    maxMenuHeight: PropTypes.number,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
+
+    // react-select base props
+    //
+    // Currently unsupported props are commented out. In case you need one of
+    // these props when using UI Kit, you can submit a PR and enable the
+    // prop. Don't forget to add it to the story, docs and other select input
+    // components as well!
+    //
+    // See https://react-select.com/props#select-props
+    'aria-label': PropTypes.string,
+    'aria-labelledby': PropTypes.string,
+    isAutofocussed: PropTypes.bool, // original: autoFocus
+    backspaceRemovesValue: PropTypes.bool,
+    // blurInputOnSelect: PropTypes.bool,
+    // captureMenuScroll: PropTypes.bool,
+    // className: PropTypes.string,
+    // classNamePrefix: PropTypes.string,
+    // closeMenuOnSelect: PropTypes.bool,
+    // closeMenuOnScroll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+    components: PropTypes.objectOf(PropTypes.func),
+    // controlShouldRenderValue: PropTypes.bool,
+    // delimiter: PropTypes.string,
+    // escapeClearsValue: PropTypes.bool,
+    filterOption: PropTypes.func,
+    // formatGroupLabel: PropTypes.func,
+    // formatOptionLabel: PropTypes.func,
+    // getOptionLabel: PropTypes.func,
+    // getOptionValue: PropTypes.func,
+    // hideSelectedOptions: PropTypes.bool,
+    id: PropTypes.string,
+    // inputValue: PropTypes.string,
+    inputId: PropTypes.string,
+    // instanceId: PropTypes.string,
+    isClearable: PropTypes.bool,
     isDisabled: PropTypes.bool,
+    // isLoading: PropTypes.bool,
+    isOptionDisabled: PropTypes.func,
+    // isOptionSelected: PropTypes.func,
     isMulti: PropTypes.bool,
-    components: PropTypes.object,
+    // isRtl: PropTypes.bool,
+    isSearchable: PropTypes.bool,
+    // loadingMessage: PropTypes.func,
+    // minMenuHeight: PropTypes.number,
+    maxMenuHeight: PropTypes.number,
+    // menuIsOpen: PropTypes.bool,
+    // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
+    // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
+    // menuPortalTarget: PropTypes.instanceOf(Element),
+    // menuShouldBlockScroll: PropTypes.bool,
+    // menuShouldScrollIntoView: PropTypes.bool,
+    name: PropTypes.string,
+    noOptionsMessage: PropTypes.func,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onInputChange: PropTypes.func,
+    // onKeyDown: PropTypes.func,
+    // onMenuOpen: PropTypes.func,
+    // onMenuClose: PropTypes.func,
+    // onMenuScrollToTop: PropTypes.func,
+    // onMenuScrollToBottom: PropTypes.func,
+    // openMenuOnFocus: PropTypes.bool,
+    // openMenuOnClick: PropTypes.bool,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.shape({ value: PropTypes.string.isRequired }),
@@ -55,12 +111,17 @@ export class SelectInput extends React.Component {
         }),
       ])
     ),
-    noOptionsMessage: PropTypes.func,
-    intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
-    }).isRequired,
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
+    // pageSize: PropTypes.number,
+    placeholder: PropTypes.string,
+    // screenReaderStatus: PropTypes.func,
+    // styles: PropTypes.objectOf(PropTypes.func),
+    // theme: PropTypes.object,
+    tabIndex: PropTypes.string,
+    tabSelectsValue: PropTypes.bool,
+    value: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
+        : PropTypes.string(props, ...rest),
   };
 
   state = { selectedOptions: [] };
@@ -84,7 +145,7 @@ export class SelectInput extends React.Component {
      * So we need to pass null instead, so that Select clears the selected value.
      */
     return {
-      selectedOptions: props.isMulti
+      selectedOptions: props.isMult
         ? optionsWithoutGroups.filter(option =>
             props.value.includes(option.value)
           )
@@ -99,11 +160,10 @@ export class SelectInput extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div {...filterDataAttributes(this.props)}>
           <Select
-            {...omit(this.props, [
-              'horizontalConstraint',
-              'hasError',
-              'hasWarning',
-            ])}
+            aria-label={this.props['aria-label']}
+            aria-labelledby={this.props['aria-labelledby']}
+            autoFocus={this.props.isAutofocussed}
+            backspaceRemovesValue={this.props.backspaceRemovesValue}
             className={classnames('react-select', {
               // We use global styles here as the react-select styles are global
               // as well. This sucks.
@@ -112,29 +172,33 @@ export class SelectInput extends React.Component {
               'react-select-error': this.props.hasError,
               'react-select-warning': this.props.hasWarning,
             })}
-            maxMenuHeight={this.props.maxMenuHeight}
+            classNamePrefix="react-select"
             components={{
               ...customizedComponents,
               ...this.props.components,
             }}
-            classNamePrefix="react-select"
-            onChange={selectedOptions =>
-              // selectedOptions is either an array, or a single option
-              // depending on whether we're in multi-mode or not (isMulti)
-              this.props.onChange({
-                target: {
-                  name: this.props.name,
-                  // eslint-disable-next-line no-nested-ternary
-                  value: selectedOptions
-                    ? this.props.isMulti
-                      ? selectedOptions.map(option => option.value)
-                      : selectedOptions.value
-                    : selectedOptions,
-                },
-                persist: () => {},
-              })
+            filterOption={this.props.filterOption}
+            id={this.props.id}
+            inputId={this.props.inputId}
+            isClearable={this.props.isClearable}
+            isDisabled={this.props.isDisabled}
+            isOptionDisabled={this.props.isOptionDisabled}
+            isMulti={this.props.isMulti}
+            isSearchable={this.props.isSearchable}
+            maxMenuHeight={this.props.maxMenuHeight}
+            name={this.props.name}
+            noOptionsMessage={
+              this.props.noOptionsMessage ||
+              (({ inputValue }) =>
+                inputValue === ''
+                  ? this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithoutInputValue
+                    )
+                  : this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithInputValue,
+                      { inputValue }
+                    ))
             }
-            value={this.state.selectedOptions}
             onBlur={
               typeof this.props.onBlur === 'function'
                 ? () => {
@@ -157,18 +221,29 @@ export class SelectInput extends React.Component {
                   }
                 : undefined
             }
-            noOptionsMessage={
-              this.props.noOptionsMessage ||
-              (({ inputValue }) =>
-                inputValue === ''
-                  ? this.props.intl.formatMessage(
-                      messages.noOptionsMessageWithoutInputValue
-                    )
-                  : this.props.intl.formatMessage(
-                      messages.noOptionsMessageWithInputValue,
-                      { inputValue }
-                    ))
+            onChange={selectedOptions =>
+              // selectedOptions is either an array, or a single option
+              // depending on whether we're in multi-mode or not (isMulti)
+              this.props.onChange({
+                target: {
+                  name: this.props.name,
+                  // eslint-disable-next-line no-nested-ternary
+                  value: selectedOptions
+                    ? this.props.isMulti
+                      ? selectedOptions.map(option => option.value)
+                      : selectedOptions.value
+                    : selectedOptions,
+                },
+                persist: () => {},
+              })
             }
+            onFocus={this.props.onFocus}
+            onInputChange={this.props.onInputChange}
+            options={this.props.options}
+            placeholder={this.props.placeholder}
+            tabIndex={this.props.tabIndex}
+            tabSelectsValue={this.props.tabSelectsValue}
+            value={this.state.selectedOptions}
           />
         </div>
       </Constraints.Horizontal>
