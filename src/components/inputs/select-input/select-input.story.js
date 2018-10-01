@@ -92,7 +92,7 @@ storiesOf('Inputs', module)
                   hasWarning={boolean('hasWarning', false)}
                   aria-label={text('aria-label', '')}
                   aria-labelledby={text('aria-labelledby', '')}
-                  autoFocus={boolean('isAutofocussed', false)}
+                  isAutofocussed={boolean('isAutofocussed', false)}
                   backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
                   id={text('id', '')}
                   containerId={text('containerId', '')}

@@ -1,9 +1,5 @@
 # AsyncSelectInput
 
-> ⚠️ This component is in beta!
-> We are still experimenting with the API, so it might change heavily.
-> The component is still unstyled and docs might be incomplete or outdated.
-
 #### Description
 
 An input component getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.
@@ -50,21 +46,43 @@ Any parent component using `AsyncSelectInput` has to pass in a value, which is i
 
 #### Properties
 
+| Props                   | Type                | Required | Values                             | Default | Description                                                                                                                                                                                                                                                                                 |
+| ----------------------- | ------------------- | :------: | ---------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `horizontalConstraint`  | `object`            |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                                                                                                                                                                                  |
+| `hasError`              | `bool`              |    -     | -                                  | -       | Indicates the input field has an error                                                                                                                                                                                                                                                      |
+| `hasWarning`            | `bool`              |    -     | -                                  | -       | Indicates the input field has a warning                                                                                                                                                                                                                                                     |
+| `aria-label`            | `string`            |    -     | -                                  | -       | Aria label (for assistive tech)                                                                                                                                                                                                                                                             |
+| `aria-labelledby`       | `string`            |    -     | -                                  | -       | HTML ID of an element that should be used as the label (for assistive tech)                                                                                                                                                                                                                 |
+| `isAutofocussed`        | `bool`              |    -     | -                                  | -       | Focus the control when it is mounted                                                                                                                                                                                                                                                        |
+| `backspaceRemovesValue` | `bool`              |    -     | -                                  | `true`  | Remove the currently focused option when the user presses backspace                                                                                                                                                                                                                         |
+| `components`            | `objectOf(func)`    |    -     | -                                  | -       | Map of components to overwrite the default ones, see [what components you can override](https://react-select.com/components)                                                                                                                                                                |
+| `filterOption`          | `func`              |    -     | -                                  | -       | Custom method to filter whether an option should be displayed in the menu                                                                                                                                                                                                                   |
+| `id`                    | `string`            |    -     | -                                  | -       | The id of the search input                                                                                                                                                                                                                                                                  |
+| `containerId`           | `string`            |    -     | -                                  | -       | The id to set on the SelectContainer component                                                                                                                                                                                                                                              |
+| `isClearable`           | `bool`              |    -     | -                                  | -       | Is the select value clearable                                                                                                                                                                                                                                                               |
+| `isDisabled`            | `bool`              |    -     | -                                  | -       | Is the select disabled                                                                                                                                                                                                                                                                      |
+| `isOptionDisabled`      | `func`              |    -     | -                                  | -       | Override the built-in logic to detect whether an option is disabled                                                                                                                                                                                                                         |
+| `isMulti`               | `bool`              |    -     | -                                  | -       | Support multiple selected options                                                                                                                                                                                                                                                           |
+| `isSearchable`          | `bool`              |    -     | -                                  | `true`  | Whether to enable search functionality                                                                                                                                                                                                                                                      |
+| `maxMenuHeight`         | `number`            |    -     | -                                  | -       | Maximum height of the menu before scrolling                                                                                                                                                                                                                                                 |
+| `name`                  | `string`            |    -     | -                                  | -       | Name of the HTML Input (optional - without this, no input will be rendered)                                                                                                                                                                                                                 |
+| `noOptionsMessage`      | `func`              |    -     | -                                  | -       | Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with `{ inputValue: String }`. `inputValue` will be an empty string when no search text is present. |
+| `onBlur`                | `func`              |    -     | -                                  | -       | Handle blur events on the control                                                                                                                                                                                                                                                           |
+| `onChange`              | `func`              |    ✅    | -                                  | -       | Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.                                     |
+| `onFocus`               | `func`              |    -     | -                                  | -       | Handle focus events on the control                                                                                                                                                                                                                                                          |
+| `onInputChange`         | `func`              |    -     | -                                  | -       | Handle change events on the input                                                                                                                                                                                                                                                           |
+| `placeholder`           | `string`            |    -     | -                                  | -       | Placeholder text for the select value                                                                                                                                                                                                                                                       |
+| `tabIndex`              | `string`            |    -     | -                                  | `"0"`   | Sets the tabIndex attribute on the input                                                                                                                                                                                                                                                    |
+| `tabSelectsValue`       | `bool`              |    -     | -                                  | `true`  | Select the currently focused option when the user presses tab                                                                                                                                                                                                                               |
+| `value`                 | `object` / `array`  |    -     | -                                  | -       | The value of the select; reflected by the selected option                                                                                                                                                                                                                                   |
+| `defaultOptions`        | `boolean` / `array` |    -     | -                                  | -       | The default set of options to show before the user starts searching. When set to true, the results for loadOptions('') will be autoloaded.                                                                                                                                                  |
+| `loadOptions`           | `function`          |    -     | -                                  | -       | Function that returns a promise, which is the set of options to be used once the promise resolves.                                                                                                                                                                                          |
+| `cacheOptions`          | `any`               |    -     | -                                  | -       | If cacheOptions is truthy, then the loaded data will be cached. The cache will remain until cacheOptions changes value.                                                                                                                                                                     |
+
 This input is built on top of [`react-select`](https://github.com/JedWatson/react-select) v2.
-It supports the same properties as `react-select`, except for `onChange` and `onBlur` for which the behavior was changed.
+It supports mostly same properties as `react-select`. Behaviour for some props was changed, and support for others was dropped.
 
-##### Customized properties
-
-| Props                  | Type       | Required | Values                 | Default | Description                                                                                                                                                                                                                                                                                                                                                       |
-| ---------------------- | ---------- | :------: | ---------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `horizontalConstraint` | `string`   |    -     | xs, s, m, l, xl, scale | -       | Horizontal size limit of the input fields.                                                                                                                                                                                                                                                                                                                        |
-| `onChange`             | `function` |    ✅    | -                      | -       | Called with a fake event when value is changed by user. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be a the selected option, or an array of options in case `props.isMulti` is `true`. The second argument is an object containing information about the cause of the change. |
-| `onBlur`               | `function` |    -     | -                      | -       | Called with a fake event when input is blurred. The event's `target.name` will be the `name` supplied in props. In case `props.isMulti` is `true`, the name will have `.0` appended which helps with the formik integration.                                                                                                                                      |
-| `components`           | `object`   |    -     | -                      | -       | Overrides for `AsyncSelectInput` conponents , see [what components you can override](https://react-select.com/components)                                                                                                                                                                                                                                         |
-| `hasWarning`           | `bool`     |    -     | -                      | -       | Indicates the input field has a warning                                                                                                                                                                                                                                                                                                                           |
-| `hasError`             | `bool`     |    -     | -                      | -       | Indicates the input field has an error                                                                                                                                                                                                                                                                                                                            |
-
-See the [official documentation](https://react-select.com/props) for all other properties.
+In case you need one of the currently excluded props, feel free to open a PR adding them.
 
 #### Static Properties
 
@@ -73,127 +91,37 @@ See the [official documentation](https://react-select.com/props) for all other p
 Expects to be called with an array or boolean.
 Returns `true` when truthy.
 
-##### `ClearIndicator`
+##### Components
 
-Default implementation of internal `ClearIndicator` component.
-See the [official documentation](https://react-select.com/components).
+It is possible to customize `SelectInput` by passing the `components` property.
+`SelectInput` exports the default underlying components as static exports.
 
-##### `Control`
+Components available as static exports are:
 
-Default implementation of internal `Control` component.
-See the [official documentation](https://react-select.com/components).
+- `ClearIndicator`
+- `Control`
+- `DropdownIndicator`
+- `DownChevron`
+- `CrossIcon`
+- `Group`
+- `GroupHeading`
+- `IndicatorsContainer`
+- `IndicatorSeparator`
+- `Input`
+- `LoadingIndicator`
+- `Menu`
+- `MenuList`
+- `MenuPortal`
+- `LoadingMessage`
+- `NoOptionsMessage`
+- `MultiValue`
+- `MultiValueContainer`
+- `MultiValueLabel`
+- `MultiValueRemove`
+- `Option`
+- `Placeholder`
+- `SelectContainer`
+- `SingleValue`
+- `ValueContainer`
 
-##### `DropdownIndicator`
-
-Default implementation of internal `DropdownIndicator` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `DownChevron`
-
-Default implementation of internal `DownChevron` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `CrossIcon`
-
-Default implementation of internal `CrossIcon` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `Group`
-
-Default implementation of internal `Group` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `GroupHeading`
-
-Default implementation of internal `GroupHeading` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `IndicatorsContainer`
-
-Default implementation of internal `IndicatorsContainer` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `IndicatorSeparator`
-
-Default implementation of internal `IndicatorSeparator` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `Input`
-
-Default implementation of internal `Input` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `LoadingIndicator`
-
-Default implementation of internal `LoadingIndicator` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `Menu`
-
-Default implementation of internal `Menu` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `MenuList`
-
-Default implementation of internal `MenuList` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `MenuPortal`
-
-Default implementation of internal `MenuPortal` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `LoadingMessage`
-
-Default implementation of internal `LoadingMessage` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `NoOptionsMessage`
-
-Default implementation of internal `NoOptionsMessage` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `MultiValue`
-
-Default implementation of internal `MultiValue` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `MultiValueContainer`
-
-Default implementation of internal `MultiValueContainer` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `MultiValueLabel`
-
-Default implementation of internal `MultiValueLabel` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `MultiValueRemove`
-
-Default implementation of internal `MultiValueRemove` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `Option`
-
-Default implementation of internal `Option` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `Placeholder`
-
-Default implementation of internal `Placeholder` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `SelectContainer`
-
-Default implementation of internal `SelectContainer` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `SingleValue`
-
-Default implementation of internal `SingleValue` component.
-See the [official documentation](https://react-select.com/components).
-
-##### `ValueContainer`
-
-Default implementation of internal `ValueContainer` component.
-See the [official documentation](https://react-select.com/components).
+See the [official documentation](https://react-select.com/components) for more information about the props they receive.
