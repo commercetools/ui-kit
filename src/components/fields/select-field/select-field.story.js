@@ -105,6 +105,10 @@ storiesOf('Fields', module)
               }}
               isRequired={boolean('isRequired', false)}
               touched={boolean('touched', false)}
+              aria-label={text('aria-label', '')}
+              aria-labelledby={text('aria-labelledby', '')}
+              backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+              containerId={text('containerId', '')}
               id={id || undefined}
               name={name}
               value={value}
@@ -114,7 +118,8 @@ storiesOf('Fields', module)
               }}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              autoFocus={boolean('autoFocus', false)}
+              onInputChange={action('onInputChange')}
+              isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isMulti={isMulti}
               placeholder={text('placeholder', 'Select...')}
@@ -123,6 +128,8 @@ storiesOf('Fields', module)
               isSearchable={boolean('isSearchable', false)}
               isClearable={boolean('isClearable', false)}
               options={options}
+              tabIndex={text('tabIndex', '0')}
+              tabSelectsValue={boolean('tabSelectsValue', true)}
               hint={hint}
               description={text('description', '')}
               onInfoButtonClick={

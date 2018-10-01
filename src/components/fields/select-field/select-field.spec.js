@@ -77,7 +77,7 @@ describe('rendering', () => {
         onChange: jest.fn(),
         onBlur: jest.fn(),
         onFocus: jest.fn(),
-        autoFocus: true,
+        isAutofocussed: true,
         isDisabled: false,
         placeholder: 'Some placeholder',
         errors: { missing: true },
@@ -105,7 +105,7 @@ describe('rendering', () => {
       expect(selectInput).toHaveProp('onChange', props.onChange);
       expect(selectInput).toHaveProp('onBlur', props.onBlur);
       expect(selectInput).toHaveProp('onFocus', props.onFocus);
-      expect(selectInput).toHaveProp('autoFocus', props.autoFocus);
+      expect(selectInput).toHaveProp('isAutofocussed', props.isAutofocussed);
       expect(selectInput).toHaveProp('isDisabled', props.isDisabled);
       expect(selectInput).toHaveProp('placeholder', props.placeholder);
       expect(selectInput).toHaveProp('hasError', true);
