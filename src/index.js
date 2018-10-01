@@ -27,6 +27,7 @@ export { default as TextField } from './components/fields/text-field';
 export { default as MultilineTextField } from './components/fields/multiline-text-field';
 export { default as NumberField } from './components/fields/number-field';
 export { default as MoneyField } from './components/fields/money-field';
+export { default as SelectField } from './components/fields/select-field';
 
 export { Icons };
 // TODO: this type of export is deprecated and should be removed in the next major release
