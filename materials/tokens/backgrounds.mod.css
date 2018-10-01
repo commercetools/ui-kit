@@ -17,6 +17,8 @@
     *  ◦ Background Colors
     *  ◦ Primary Action
     *   ▪ Background Colors
+    *  ◦ Critical Action
+    *   ▪ Background Colors
     */
 
   /* ==========================================================================
@@ -58,4 +60,13 @@
   --token-background-color-button-primary-action-pristine: var(--color-green);
   --token-background-color-button-primary-action-hover: var(--color-green-25);
   --token-background-color-button-primary-action-active: var(--color-green);
+
+  /* Critical Action
+  ========================================================================== */
+
+  /* Colors */
+
+ --token-background-color-button-critical-action-pristine: var(--color-orange);
+ --token-background-color-button-critical-action-hover: var(--color-orange);
+ --token-background-color-button-critical-action-active: var(--color-orange);
 }

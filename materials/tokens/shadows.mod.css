@@ -15,6 +15,8 @@
     *  ◦ Shadows Box
     *  ◦ Primary Action
     *   ▪ Shadows Box
+    *  ◦ Critical Action
+    *   ▪ Shadows Box
     */
 
   /* ==========================================================================
@@ -38,4 +40,12 @@
   --token-shadow-box-button-primary-action-pristine: var(--shadow-7-first), var(--shadow-7-second);
   --token-shadow-box-button-primary-action-hover: var(--shadow-8-first), var(--shadow-8-second);
   --token-shadow-box-button-primary-action-active: var(--shadow-9-first), var(--shadow-9-second), var(--shadow-9-third);
+
+  /* Critical Action
+   ========================================================================== */
+
+   /* Box */
+  --token-shadow-box-button-critical-action-pristine: var(--shadow-7-first), var(--shadow-7-second);
+  --token-shadow-box-button-critical-action-hover: var(--shadow-8-first), var(--shadow-8-second);
+  --token-shadow-box-button-critical-action-active: var(--shadow-9-first), var(--shadow-9-second), var(--shadow-9-third);
 }
