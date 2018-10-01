@@ -67,9 +67,11 @@ export class SelectInput extends React.Component {
     // getOptionLabel: PropTypes.func,
     // getOptionValue: PropTypes.func,
     // hideSelectedOptions: PropTypes.bool,
+    // This forwarded as react-select's "inputId"
     id: PropTypes.string,
     // inputValue: PropTypes.string,
-    inputId: PropTypes.string,
+    // This is forwarded as react-select's "id"
+    containerId: PropTypes.string,
     // instanceId: PropTypes.string,
     isClearable: PropTypes.bool,
     isDisabled: PropTypes.bool,
@@ -182,8 +184,12 @@ export class SelectInput extends React.Component {
               ...this.props.components,
             }}
             filterOption={this.props.filterOption}
-            id={this.props.id}
-            inputId={this.props.inputId}
+            // react-select uses "id" (for the container) and "inputId" (for the input),
+            // but we use "id" (for the input) and "containerId" (for the container)
+            // instead.
+            // This makes it easier to less confusing to use with <label />s.
+            id={this.props.containerId}
+            inputId={this.props.id}
             isClearable={this.props.isClearable}
             isDisabled={this.props.isDisabled}
             isOptionDisabled={this.props.isOptionDisabled}

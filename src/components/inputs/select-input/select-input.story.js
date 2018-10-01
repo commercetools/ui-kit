@@ -95,7 +95,7 @@ storiesOf('Inputs', module)
                   autoFocus={boolean('isAutofocussed', false)}
                   backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
                   id={text('id', '')}
-                  inputId={text('inputId', '')}
+                  containerId={text('containerId', '')}
                   isClearable={boolean('isClearable', false)}
                   isDisabled={boolean('isDisabled', false)}
                   isMulti={isMulti}
