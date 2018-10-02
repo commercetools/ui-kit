@@ -1,3 +1,38 @@
+<a name="2.0.0-rc.7"></a>
+
+# [2.0.0-rc.7](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2018-10-02)
+
+### Bug Fixes
+
+- **money-input:** add formatting workaround ([#102](https://github.com/commercetools/ui-kit/issues/102)) ([344c5d7](https://github.com/commercetools/ui-kit/commit/344c5d7))
+- **money-input:** lost updates for Formik validation ([#108](https://github.com/commercetools/ui-kit/issues/108)) ([54cbf91](https://github.com/commercetools/ui-kit/commit/54cbf91))
+- adds token for tag height and removes padding from library ([29c20c7](https://github.com/commercetools/ui-kit/commit/29c20c7))
+- remove HorizontalConstraint export ([#94](https://github.com/commercetools/ui-kit/issues/94)) ([508ff40](https://github.com/commercetools/ui-kit/commit/508ff40))
+
+### Features
+
+- add 'fractions' and 'negative' errors field-errors ([25b8e20](https://github.com/commercetools/ui-kit/commit/25b8e20))
+- add MultilineTextField ([#106](https://github.com/commercetools/ui-kit/issues/106)) ([5b810da](https://github.com/commercetools/ui-kit/commit/5b810da))
+- export WarningMessage ([#95](https://github.com/commercetools/ui-kit/issues/95)) ([67a1ea3](https://github.com/commercetools/ui-kit/commit/67a1ea3))
+- **aria-filter:** adds filterAriaAttributes util ([#124](https://github.com/commercetools/ui-kit/issues/124)) ([6de8161](https://github.com/commercetools/ui-kit/commit/6de8161))
+- **async-creatable-select-input:** explicitly declare props ([#122](https://github.com/commercetools/ui-kit/issues/122)) ([8e9b43e](https://github.com/commercetools/ui-kit/commit/8e9b43e))
+- **async-select-input:** explicitly declare props ([#120](https://github.com/commercetools/ui-kit/issues/120)) ([7bc0c6d](https://github.com/commercetools/ui-kit/commit/7bc0c6d))
+- **creatable-select-input:** explicitly declare props ([#121](https://github.com/commercetools/ui-kit/issues/121)) ([37e607f](https://github.com/commercetools/ui-kit/commit/37e607f))
+- **localized-multiline-text:** adds warning prop ([#77](https://github.com/commercetools/ui-kit/issues/77)) ([8f1e283](https://github.com/commercetools/ui-kit/commit/8f1e283))
+- **money-field:** add high-precision price badge ([#103](https://github.com/commercetools/ui-kit/issues/103)) ([f83306f](https://github.com/commercetools/ui-kit/commit/f83306f))
+
+### SelectInput
+
+- explicitly declare props ([#119](https://github.com/commercetools/ui-kit/issues/119)) ([44189a6](https://github.com/commercetools/ui-kit/commit/44189a6))
+
+### BREAKING CHANGES
+
+- removed support for some props, avoid blindly forwarding props. See commit for details.
+- feat(select-input): show values in selected order
+- feat(select-input): change ids: id (prev: inputId): The id of the input element.containerId (prev: id): The id of the search container.
+- removed inputId prop, changed target of id prop.
+- HorizontalConstraint export is no longer available.
+
 <a name="2.0.0-rc.6"></a>
 
 # [2.0.0-rc.6](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.5...v2.0.0-rc.6) (2018-09-18)
