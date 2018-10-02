@@ -35,9 +35,7 @@ module.exports = (storybookBaseConfig, configType) => {
           options: {
             babelrc: false,
             compact: false,
-            presets: [
-              require.resolve('@commercetools-frontend/babel-preset-mc-app'),
-            ],
+            presets: [require.resolve('../scripts/get-babel-preset')],
             // This is a feature of `babel-loader` for webpack (not Babel itself).
             // It enables caching results in ./node_modules/.cache/babel-loader/
             // directory for faster rebuilds.
@@ -57,9 +55,7 @@ module.exports = (storybookBaseConfig, configType) => {
           loader: require.resolve('babel-loader'),
           options: {
             babelrc: false,
-            presets: [
-              require.resolve('@commercetools-frontend/babel-preset-mc-app'),
-            ],
+            presets: [require.resolve('../scripts/get-babel-preset')],
             // This is a feature of `babel-loader` for webpack (not Babel itself).
             // It enables caching results in ./node_modules/.cache/babel-loader/
             // directory for faster rebuilds.

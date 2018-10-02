@@ -551,7 +551,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-transform-destructuring@^7.0.0":
+"@babel/plugin-transform-destructuring@7.1.2", "@babel/plugin-transform-destructuring@^7.0.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-destructuring/-/plugin-transform-destructuring-7.1.2.tgz#5fa77d473f5a0a3f5266ad7ce2e8c995a164d60a"
   integrity sha512-cvToXvp/OsYxtEn57XJu9BvsGSEYjAh9UeUuXpoi7x6QHB7YdWyQ4lRU/q0Fu1IJNT0o0u4FQ1DMQBzJ8/8vZg==
