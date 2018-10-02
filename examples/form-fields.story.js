@@ -16,6 +16,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   Spacings,
+  SelectField,
 } from '../src';
 import Forms from './form-fields.md';
 
@@ -42,6 +43,7 @@ class FakeConnector extends React.Component {
     key: 'shoe',
     price: { currencyCode: 'EUR', centAmount: 300 },
     inventory: 30,
+    status: 'modified',
   };
   updateProduct = ({ id, version, product }) => {
     action('updating product', { id, version, product });
@@ -108,6 +110,7 @@ const docToForm = doc => ({
   // need to deal with (amount, currencyCode or the whole object being
   // undefined).
   price: MoneyField.parseMoneyValue(doc.price),
+  status: doc.status,
 });
 
 // When the form gets submitted, we transform the form values back to a document
@@ -123,6 +126,7 @@ const formToDoc = formValues => ({
   description: formValues.description,
   inventory: formValues.inventory,
   price: MoneyField.convertToMoneyValue(formValues.price),
+  status: formValues.status,
 });
 
 // The validate function is responsible for determining the form's validation
@@ -192,6 +196,7 @@ class ProductForm extends React.Component {
           amount: PropTypes.string.isRequired,
           currencyCode: PropTypes.string.isRequired,
         }).isRequired,
+        status: PropTypes.oneOf(['published', 'unpublished', 'modified']),
       }).isRequired,
       touched: PropTypes.shape({
         key: PropTypes.bool,
@@ -201,6 +206,7 @@ class ProductForm extends React.Component {
           amount: PropTypes.bool,
           currencyCode: PropTypes.bool,
         }),
+        status: PropTypes.bool,
       }),
       errors: PropTypes.shape({
         key: PropTypes.shape({
@@ -299,6 +305,18 @@ class ProductForm extends React.Component {
                 return null;
             }
           }}
+        />
+        <SelectField
+          title="Status"
+          name="status"
+          value={this.props.formik.values.status}
+          onChange={this.props.formik.handleChange}
+          onBlur={this.props.formik.handleBlur}
+          options={[
+            { value: 'unpublished', label: 'Unpublished' },
+            { value: 'modified', label: 'Modified' },
+            { value: 'published', label: 'Published' },
+          ]}
         />
         <Spacings.Inline>
           <SecondaryButton

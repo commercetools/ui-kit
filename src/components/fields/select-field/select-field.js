@@ -1,0 +1,182 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import requiredIf from 'react-required-if';
+import Constraints from '../../constraints';
+import Spacings from '../../spacings';
+import FieldLabel from '../../field-label';
+import SelectInput from '../../inputs/select-input';
+import createSequentialId from '../../../utils/create-sequential-id';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
+import FieldErrors from '../../field-errors';
+
+const sequentialId = createSequentialId('text-field-');
+
+const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+
+export default class SelectField extends React.Component {
+  static displayName = 'SelectField';
+
+  static isTouched = SelectInput.isTouched;
+
+  // customizable components
+  static ClearIndicator = SelectInput.ClearIndicator;
+  static Control = SelectInput.Control;
+  static DropdownIndicator = SelectInput.DropdownIndicator;
+  static Group = SelectInput.Group;
+  static GroupHeading = SelectInput.GroupHeading;
+  static IndicatorsContainer = SelectInput.IndicatorsContainer;
+  static IndicatorSeparator = SelectInput.IndicatorSeparator;
+  static Input = SelectInput.Input;
+  static LoadingIndicator = SelectInput.LoadingIndicator;
+  static Menu = SelectInput.Menu;
+  static MenuList = SelectInput.MenuList;
+  static LoadingMessage = SelectInput.LoadingMessage;
+  static NoOptionsMessage = SelectInput.NoOptionsMessage;
+  static MultiValue = SelectInput.MultiValue;
+  static MultiValueContainer = SelectInput.MultiValueContainer;
+  static MultiValueLabel = SelectInput.MultiValueLabel;
+  static MultiValueRemove = SelectInput.MultiValueRemove;
+  static Option = SelectInput.Option;
+  static Placeholder = SelectInput.Placeholder;
+  static SelectContainer = SelectInput.SelectContainer;
+  static SingleValue = SelectInput.SingleValue;
+  static ValueContainer = SelectInput.ValueContainer;
+
+  static propTypes = {
+    // SelectField
+    id: PropTypes.string,
+    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    errors: PropTypes.shape({
+      missing: PropTypes.bool,
+    }),
+    renderError: PropTypes.func,
+    isRequired: PropTypes.bool,
+    touched: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(PropTypes.bool, ...rest)(props, ...rest)
+        : PropTypes.bool(props, ...rest),
+
+    // SelectInput
+    'aria-label': PropTypes.string,
+    'aria-labelledby': PropTypes.string,
+    isAutofocussed: PropTypes.bool,
+    backspaceRemovesValue: PropTypes.bool,
+    components: PropTypes.objectOf(PropTypes.func),
+    filterOption: PropTypes.func,
+    containerId: PropTypes.string,
+    isClearable: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    isOptionDisabled: PropTypes.func,
+    isMulti: PropTypes.bool,
+    isSearchable: PropTypes.bool,
+    maxMenuHeight: PropTypes.number,
+    name: PropTypes.string,
+    noOptionsMessage: PropTypes.func,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onInputChange: PropTypes.func,
+    options: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.shape({ value: PropTypes.string.isRequired }),
+        PropTypes.shape({
+          options: PropTypes.arrayOf(
+            PropTypes.shape({ value: PropTypes.string.isRequired })
+          ),
+        }),
+      ])
+    ),
+    placeholder: PropTypes.string,
+    tabIndex: PropTypes.string,
+    tabSelectsValue: PropTypes.bool,
+    value: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
+        : PropTypes.string(props, ...rest),
+
+    // LabelField
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    hint: requiredIf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+      props => props.hintIcon
+    ),
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    onInfoButtonClick: PropTypes.func,
+    hintIcon: PropTypes.node,
+    badge: PropTypes.node,
+  };
+
+  static defaultProps = {
+    horizontalConstraint: 'scale',
+  };
+
+  state = {
+    // We generate an id in case no id is provided by the parent to attach the
+    // label to the input component.
+    id: this.props.id,
+  };
+
+  static getDerivedStateFromProps = (props, state) => ({
+    id: do {
+      if (props.id) props.id;
+      else if (state.id) state.id;
+      else sequentialId();
+    },
+  });
+
+  render() {
+    const hasError =
+      SelectInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
+    return (
+      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+        <Spacings.Stack scale="xs">
+          <FieldLabel
+            title={this.props.title}
+            hint={this.props.hint}
+            description={this.props.description}
+            onInfoButtonClick={this.props.onInfoButtonClick}
+            hintIcon={this.props.hintIcon}
+            badge={this.props.badge}
+            hasRequiredIndicator={this.props.isRequired}
+            htmlFor={this.state.id}
+          />
+          <SelectInput
+            horizontalConstraint="scale"
+            hasError={hasError}
+            aria-label={this.props['aria-label']}
+            aria-labelledby={this.props['aria-labelledby']}
+            isAutofocussed={this.props.isAutofocussed}
+            backspaceRemovesValue={this.props.backspaceRemovesValue}
+            components={this.props.components}
+            filterOption={this.props.filterOption}
+            id={this.state.id}
+            containerId={this.props.containerId}
+            isClearable={this.props.isClearable}
+            isDisabled={this.props.isDisabled}
+            isOptionDisabled={this.props.isOptionDisabled}
+            isMulti={this.props.isMulti}
+            isSearchable={this.props.isSearchable}
+            maxMenuHeight={this.props.maxMenuHeight}
+            name={this.props.name}
+            noOptionsMessage={this.props.noOptionsMessage}
+            onBlur={this.props.onBlur}
+            onChange={this.props.onChange}
+            onFocus={this.props.onFocus}
+            onInputChange={this.props.onInputChange}
+            options={this.props.options}
+            placeholder={this.props.placeholder}
+            tabIndex={this.props.tabIndex}
+            tabSelectsValue={this.props.tabSelectsValue}
+            value={this.props.value}
+            {...filterDataAttributes(this.props)}
+          />
+          <FieldErrors
+            errors={this.props.errors}
+            isVisible={hasError}
+            renderError={this.props.renderError}
+          />
+        </Spacings.Stack>
+      </Constraints.Horizontal>
+    );
+  }
+}
