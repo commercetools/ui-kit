@@ -88,22 +88,32 @@ storiesOf('Inputs', module)
                     ['xs', 's', 'm', 'l', 'xl', 'scale'],
                     'scale'
                   )}
+                  hasError={boolean('hasError', false)}
+                  hasWarning={boolean('hasWarning', false)}
+                  aria-label={text('aria-label', '')}
+                  aria-labelledby={text('aria-labelledby', '')}
+                  autoFocus={boolean('isAutofocussed', false)}
+                  backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+                  id={text('id', '')}
+                  containerId={text('containerId', '')}
+                  isClearable={boolean('isClearable', false)}
+                  isDisabled={boolean('isDisabled', false)}
+                  isMulti={isMulti}
+                  isSearchable={boolean('isSearchable', false)}
+                  maxMenuHeight={number('maxMenuHeight', 200)}
                   name={text('name', 'form-field-name')}
-                  value={value}
+                  onBlur={action('onBlur')}
                   onChange={(event, ...args) => {
                     action('onChange')(event, ...args);
                     onChange(event.target.value);
                   }}
-                  onBlur={action('onBlur')}
-                  isMulti={isMulti}
-                  placeholder={text('placeholder', 'Select..')}
-                  maxMenuHeight={number('maxMenuHeight', 200)}
-                  isSearchable={boolean('isSearchable', false)}
-                  isDisabled={boolean('isDisabled', false)}
-                  isClearable={boolean('isClearable', false)}
-                  hasError={boolean('hasError', false)}
-                  hasWarning={boolean('hasWarning', false)}
+                  onFocus={action('onFocus')}
+                  onInputChange={action('onInputChange')}
                   options={options}
+                  placeholder={text('placeholder', 'Select..')}
+                  tabIndex={text('tabIndex', '0')}
+                  tabSelectsValue={boolean('tabSelectsValue', true)}
+                  value={value}
                 />
               )}
             />
