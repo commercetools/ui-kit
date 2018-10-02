@@ -1,3 +1,79 @@
+<a name="2.0.0-rc.7"></a>
+
+# [2.0.0-rc.7](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2018-10-02)
+
+### New components
+
+- `NumberField` [#74](https://github.com/commercetools/ui-kit/pull/74)
+- `WarningMessage` [#95](https://github.com/commercetools/ui-kit/pull/95)
+- `MoneyField` [#93](https://github.com/commercetools/ui-kit/pull/93) [#103](https://github.com/commercetools/ui-kit/pull/103)
+- `MultilineTextField` [#106](https://github.com/commercetools/ui-kit/pull/106)
+- `SelectField` [#114](https://github.com/commercetools/ui-kit/pull/114)
+
+### Added
+
+- Added Form Fields example, complementary to Form Inputs example [#76](https://github.com/commercetools/ui-kit/pull/76)
+- Spanish translations [#99](https://github.com/commercetools/ui-kit/pull/99)
+- Add translation workflow documentation [#105](https://github.com/commercetools/ui-kit/pull/105)
+
+### Changed
+
+- `FieldErrors`: support `fractions` and `negative` error types [#76](https://github.com/commercetools/ui-kit/pull/76)
+- `TextField`: safely check for errors [#76](https://github.com/commercetools/ui-kit/pull/76)
+- `LocalizedMultilineTextInput`: add `warning` prop support [#77](https://github.com/commercetools/ui-kit/pull/77)
+- `NumberField`, `TextField`: rename `isTouched` prop to `touched` for all fields [#97](https://github.com/commercetools/ui-kit/pull/97)
+- `SelectInput`: drop support of some props [#119](https://github.com/commercetools/ui-kit/pull/119)
+- `AsyncSelectInput`: drop support of some props [#120](https://github.com/commercetools/ui-kit/pull/120)
+- `CreatableSelectInput`: drop support of some props [#121](https://github.com/commercetools/ui-kit/pull/121)
+- `AsyncCreatableSelectInput`: drop support of some props [#122](https://github.com/commercetools/ui-kit/pull/122)
+
+### Removed
+
+- `HorizontalConstraint`: Removed export. Use `Constraints.Horizontal` instead [#94](https://github.com/commercetools/ui-kit/pull/94)
+
+### Fixed
+
+- Readd forms example [#75](https://github.com/commercetools/ui-kit/pull/75)
+- Fix Travis CI link in README [#89](https://github.com/commercetools/ui-kit/pull/89)
+- `MoneyInput`: Fix story and docs [#91](https://github.com/commercetools/ui-kit/pull/91)
+- `MoneyField`, `TextField`: Fix automatic id generation [#92](https://github.com/commercetools/ui-kit/pull/92)
+- Use top-level UI Kit export in examples [#96](https://github.com/commercetools/ui-kit/pull/96)
+- `MoneyInput`: add Formik bug workaround [#102](https://github.com/commercetools/ui-kit/pull/102) [#108](https://github.com/commercetools/ui-kit/pull/108)
+- `SelectInput`, `AsyncSelectInput`, `CreatableSelectInput`, `AsyncCreatableSelectInput`: Use same height when in `isMulti` mode [#112](https://github.com/commercetools/ui-kit/pull/112)
+- `SelectInput`: show values in selected order [#119](https://github.com/commercetools/ui-kit/pull/119)
+- `SelectInput`: replace `id` with `containerId` and `inputId` with `id` [#119](https://github.com/commercetools/ui-kit/pull/119)
+
+### BREAKING CHANGES
+
+#### `HorizontalConstraint`
+
+Removed export. This is already exported as `Constraints.Horizontal`.
+
+Use `Constraints.Horizontal` instead [#94](https://github.com/commercetools/ui-kit/pull/94).
+
+#### Renamed `isTouched` to `touched` for all Fields
+
+Renamed `isTouched` prop to `touched` for all fields. You need to upgrade `NumberField` and `TextField` by providing `touched` instead of `isTouched` [#97](https://github.com/commercetools/ui-kit/pull/97). Other fields are using `touched` already.
+
+#### Drop support for specific props
+
+Some props were dropped from
+`SelectInput` ([#119](https://github.com/commercetools/ui-kit/pull/119)), `AsyncSelectInput` ([#120](https://github.com/commercetools/ui-kit/pull/120)), `CreatableSelectInput` ([#121](https://github.com/commercetools/ui-kit/pull/121)) and `AsyncCreatableSelectInput` ([#122](https://github.com/commercetools/ui-kit/pull/122)).
+
+See the PRs for details. These props were not used in the MC.
+
+#### `SelectInput` ids
+
+Changed `SelectInput`s `id` to be applied to the input, and removed the `inputId` prop.
+Added a `containerId` to prop to enable still targeting the container.
+
+Upgrade your code like this:
+
+```diff
+- <SelectInput id="container-id" inputId="input-id" />
++ <SelectInput id="input-id" containerId="container-id" />
+```
+
 <a name="2.0.0-rc.6"></a>
 
 # [2.0.0-rc.6](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.5...v2.0.0-rc.6) (2018-09-18)
