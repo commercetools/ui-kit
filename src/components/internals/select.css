@@ -160,30 +160,30 @@
 }
 
 .react-select .react-select__multi-value {
-  height: var(--token-size-height-tags);
-  background-color: var(--token-background-color-tags-pristine);
+  height: var(--token-size-height-tag);
+  background-color: var(--token-background-color-tag-pristine);
   padding: 0;
 }
 
 .react-select .react-select__multi-value__label {
   font-size: var(--token-font-size-small);
   padding: var(--spacing-4) var(--spacing-8);
-  border-radius: var(--token-border-radius-tags);
-  border: 1px var(--token-border-color-tags-pristine) solid;
+  border-radius: var(--token-border-radius-tag);
+  border: 1px var(--token-border-color-tag-pristine) solid;
 }
 
 .react-select .react-select__multi-value__remove {
-  border-color: var(--token-border-color-tags-pristine);
+  border-color: var(--token-border-color-tag-pristine);
   padding: 0 var(--spacing-4);
-  border-radius: 0 var(--token-border-radius-tags)
-    var(--token-border-radius-tags) 0;
+  border-radius: 0 var(--token-border-radius-tag)
+    var(--token-border-radius-tag) 0;
   border-style: solid;
   border-width: 1px 1px 1px 0;
 }
 
 .react-select .react-select__multi-value__remove:hover {
-  background-color: var(--token-background-color-tags-normal-hover);
-  box-shadow: var(--token-shadow-box-tags-hover);
+  background-color: var(--token-background-color-tag-normal-hover);
+  box-shadow: var(--token-shadow-box-tag-hover);
 }
 
 /* Grouping */

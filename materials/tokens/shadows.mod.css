@@ -18,5 +18,5 @@
    ========================================================================== */
 
   /* Colors */
-  --token-shadow-box-tags-hover: var(--shadow-1-first), var(--shadow-1-second);
+  --token-shadow-box-tag-hover: var(--shadow-1-first), var(--shadow-1-second);
 }

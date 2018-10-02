@@ -43,13 +43,13 @@
    ========================================================================== */
 
   /* Colors */
-  --token-border-color-tags-pristine: var(--color-gray-60);
-  --token-border-color-tags-warning: var(--color-orange);
-  --token-border-color-tags-focus: var(--color-green);
-  --token-border-color-tags-warning-hover: var(--color-orange);
+  --token-border-color-tag-pristine: var(--color-gray-60);
+  --token-border-color-tag-warning: var(--color-orange);
+  --token-border-color-tag-focus: var(--color-green);
+  --token-border-color-tag-warning-hover: var(--color-orange);
 
   /* Radius */
-  --token-border-radius-tags: var(--border-radius-2);
+  --token-border-radius-tag: var(--border-radius-2);
 
   /* ==========================================================================
    Separator

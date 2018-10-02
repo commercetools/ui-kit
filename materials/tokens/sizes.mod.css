@@ -11,7 +11,7 @@
     * • Inputs
     *  ◦ Text fields
     *   ▪ Height
-      * • Tag
+      * • Tags
     *  ◦ Height
     */
 
@@ -30,5 +30,5 @@
    ========================================================================== */
 
   /* Height */
-  --token-size-height-tags: 26px;
+  --token-size-height-tag: 26px;
 }
