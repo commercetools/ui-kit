@@ -147,7 +147,7 @@ export class SelectInput extends React.Component {
      * So we need to pass null instead, so that Select clears the selected value.
      */
     return {
-      selectedOptions: props.isMult
+      selectedOptions: props.isMulti
         ? props.value
             // Pass the options in the order selected by the use, so that the
             // sorting is not lost
