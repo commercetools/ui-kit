@@ -6,7 +6,6 @@ import {
   components as defaultComponents,
   Creatable as CreatableSelect,
 } from 'react-select';
-import omit from 'lodash.omit';
 import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
@@ -31,21 +30,42 @@ export class CreatableSelectInput extends React.Component {
 
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-    name: PropTypes.string,
-    value: (props, ...rest) =>
-      props.isMulti
-        ? PropTypes.arrayOf(
-            PropTypes.shape({ value: PropTypes.string.isRequired })
-          ).isRequired(props, ...rest)
-        : PropTypes.shape({ value: PropTypes.string.isRequired })(
-            props,
-            ...rest
-          ),
-    onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
+
+    // react-select base props
+    //
+    // Currently unsupported props are commented out. In case you need one of
+    // these props when using UI Kit, you can submit a PR and enable the
+    // prop. Don't forget to add it to the story, docs and other select input
+    // components as well!
+    //
+    // See https://react-select.com/props#select-props
+    'aria-label': PropTypes.string,
+    'aria-labelledby': PropTypes.string,
+    isAutofocussed: PropTypes.bool, // original: autoFocus
+    backspaceRemovesValue: PropTypes.bool,
+    components: PropTypes.objectOf(PropTypes.func),
+    filterOption: PropTypes.func,
+    // This forwarded as react-select's "inputId"
+    id: PropTypes.string,
+    // This is forwarded as react-select's "id"
+    containerId: PropTypes.string,
+    isClearable: PropTypes.bool,
     isDisabled: PropTypes.bool,
+    isOptionDisabled: PropTypes.func,
     isMulti: PropTypes.bool,
-    components: PropTypes.object,
+    isSearchable: PropTypes.bool,
+    maxMenuHeight: PropTypes.number,
+    name: PropTypes.string,
+    noOptionsMessage: PropTypes.func,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onInputChange: PropTypes.func,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.shape({ value: PropTypes.string.isRequired }),
@@ -56,13 +76,26 @@ export class CreatableSelectInput extends React.Component {
         }),
       ])
     ),
+    placeholder: PropTypes.string,
+    tabIndex: PropTypes.string,
+    tabSelectsValue: PropTypes.bool,
+    value: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(
+            PropTypes.shape({ value: PropTypes.string.isRequired })
+          )(props, ...rest)
+        : PropTypes.shape({ value: PropTypes.string.isRequired })(
+            props,
+            ...rest
+          ),
+
+    // Creatable props
+    allowCreateWhileLoading: PropTypes.bool,
     formatCreateLabel: PropTypes.func,
-    noOptionsMessage: PropTypes.func,
-    intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
-    }).isRequired,
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
+    isValidNewOption: PropTypes.func,
+    getNewOptionData: PropTypes.func,
+    onCreateOption: PropTypes.func,
+    createOptionPosition: PropTypes.string,
   };
 
   static defaultProps = {
@@ -83,11 +116,10 @@ export class CreatableSelectInput extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div {...filterDataAttributes(this.props)}>
           <CreatableSelect
-            {...omit(this.props, [
-              'horizontalConstraint',
-              'hasError',
-              'hasWarning',
-            ])}
+            aria-label={this.props['aria-label']}
+            aria-labelledby={this.props['aria-labelledby']}
+            autoFocus={this.props.isAutofocussed}
+            backspaceRemovesValue={this.props.backspaceRemovesValue}
             className={classnames('react-select', {
               // We use global styles here as the react-select styles are global
               // as well. This sucks.
@@ -96,23 +128,37 @@ export class CreatableSelectInput extends React.Component {
               'react-select-error': this.props.hasError,
               'react-select-warning': this.props.hasWarning,
             })}
+            classNamePrefix="react-select"
             components={{
               ...customizedComponents,
               ...this.props.components,
             }}
-            classNamePrefix="react-select"
-            onChange={(value, info) =>
-              // selectedOptions is either an array, or a single option
-              // depending on whether we're in multi-mode or not (isMulti)
-              this.props.onChange(
-                {
-                  target: { name: this.props.name, value },
-                  persist: () => {},
-                },
-                info
-              )
+            filterOption={this.props.filterOption}
+            // react-select uses "id" (for the container) and "inputId" (for the input),
+            // but we use "id" (for the input) and "containerId" (for the container)
+            // instead.
+            // This makes it easier to less confusing to use with <label />s.
+            id={this.props.containerId}
+            inputId={this.props.id}
+            isClearable={this.props.isClearable}
+            isDisabled={this.props.isDisabled}
+            isOptionDisabled={this.props.isOptionDisabled}
+            isMulti={this.props.isMulti}
+            isSearchable={this.props.isSearchable}
+            maxMenuHeight={this.props.maxMenuHeight}
+            name={this.props.name}
+            noOptionsMessage={
+              this.props.noOptionsMessage ||
+              (({ inputValue }) =>
+                inputValue === ''
+                  ? this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithoutInputValue
+                    )
+                  : this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithInputValue,
+                      { inputValue }
+                    ))
             }
-            value={this.props.value}
             onBlur={
               typeof this.props.onBlur === 'function'
                 ? () => {
@@ -135,6 +181,26 @@ export class CreatableSelectInput extends React.Component {
                   }
                 : undefined
             }
+            onChange={(value, info) =>
+              // selectedOptions is either an array, or a single option
+              // depending on whether we're in multi-mode or not (isMulti)
+              this.props.onChange(
+                {
+                  target: { name: this.props.name, value },
+                  persist: () => {},
+                },
+                info
+              )
+            }
+            onFocus={this.props.onFocus}
+            onInputChange={this.props.onInputChange}
+            options={this.props.options}
+            placeholder={this.props.placeholder}
+            tabIndex={this.props.tabIndex}
+            tabSelectsValue={this.props.tabSelectsValue}
+            value={this.props.value}
+            // Creatable props
+            allowCreateWhileLoading={this.props.allowCreateWhileLoading}
             formatCreateLabel={
               this.props.formatCreateLabel ||
               (inputValue =>
@@ -142,18 +208,10 @@ export class CreatableSelectInput extends React.Component {
                   inputValue,
                 }))
             }
-            noOptionsMessage={
-              this.props.noOptionsMessage ||
-              (({ inputValue }) =>
-                inputValue === ''
-                  ? this.props.intl.formatMessage(
-                      messages.noOptionsMessageWithoutInputValue
-                    )
-                  : this.props.intl.formatMessage(
-                      messages.noOptionsMessageWithInputValue,
-                      { inputValue }
-                    ))
-            }
+            isValidNewOption={this.props.isValidNewOption}
+            getNewOptionData={this.props.getNewOptionData}
+            onCreateOption={this.props.onCreateOption}
+            createOptionPosition={this.props.createOptionPosition}
           />
         </div>
       </Constraints.Horizontal>
