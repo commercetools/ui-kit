@@ -9,7 +9,7 @@
     * Do not use these for border colors or background colors.
     *
     * Index
-    * • Tags
+    * • Tag
     *  ◦ Shadows Box
     */
 
@@ -18,5 +18,5 @@
    ========================================================================== */
 
   /* Colors */
-  --token-shadow-box-tags-hover: var(--shadow-1-first), var(--shadow-1-second);
+  --token-shadow-box-tag-hover: var(--shadow-1-first), var(--shadow-1-second);
 }

@@ -6,8 +6,8 @@
 .contentWrapper {
   display: flex;
   align-items: center;
-  height: var(--token-size-height-tags);
-  border-radius: var(--token-border-radius-tags);
+  height: var(--token-size-height-tag);
+  border-radius: var(--token-border-radius-tag);
   padding: 0 var(--spacing-8);
   cursor: default;
   font-family: inherit;
@@ -38,21 +38,21 @@
 /* Normal */
 
 .wrapperTypeNormal {
-  background-color: var(--token-background-color-tags-pristine);
+  background-color: var(--token-background-color-tag-pristine);
 }
 
 .contentWrapperNormal {
-  border-color: var(--token-border-color-tags-pristine);
+  border-color: var(--token-border-color-tag-pristine);
 }
 
 /* Warning */
 
 .wrapperTypeWarning {
-  background-color: var(--token-background-color-tags-warning);
+  background-color: var(--token-background-color-tag-warning);
 }
 
 .contentWrapperWarning {
-  border-color: var(--token-border-color-tags-warning);
+  border-color: var(--token-border-color-tag-warning);
 }
 
 /* Clickable */
@@ -62,24 +62,24 @@
 }
 
 .clickableContentWrapper:hover {
-  box-shadow: var(--token-shadow-box-tags-hover);
+  box-shadow: var(--token-shadow-box-tag-hover);
 }
 
 .clickableContentWrapperNormal:hover {
-  border-color: var(--token-border-color-tags-focus);
+  border-color: var(--token-border-color-tag-focus);
 }
 
 .clickableContentWrapperWarning:hover {
-  border-color: var(--token-border-color-tags-warning-hover);
-  border-right: 1px solid var(--token-border-color-tags-pristine);
+  border-color: var(--token-border-color-tag-warning-hover);
+  border-right: 1px solid var(--token-border-color-tag-pristine);
 }
 
 .clickableRemovableContentWrapperNormal:hover {
-  border-right: 1px solid var(--token-border-color-tags-pristine);
+  border-right: 1px solid var(--token-border-color-tag-pristine);
 }
 
 .clickableRemovableContentWrapperWarning {
-  border-right: 1px solid var(--token-border-color-tags-warning);
+  border-right: 1px solid var(--token-border-color-tag-warning);
 }
 
 /* Removable */
@@ -89,10 +89,10 @@
 }
 
 .removeWrapper {
-  border-color: var(--token-border-color-tags-pristine);
+  border-color: var(--token-border-color-tag-pristine);
   padding: 0 var(--spacing-4);
-  border-radius: 0 var(--token-border-radius-tags)
-    var(--token-border-radius-tags) 0;
+  border-radius: 0 var(--token-border-radius-tag)
+    var(--token-border-radius-tag) 0;
   display: flex;
   align-items: center;
   background: inherit;
@@ -101,16 +101,16 @@
 }
 
 .removeWrapper:hover {
-  background-color: var(--token-background-color-tags-normal-hover);
-  box-shadow: var(--token-shadow-box-tags-hover);
+  background-color: var(--token-background-color-tag-normal-hover);
+  box-shadow: var(--token-shadow-box-tag-hover);
 }
 
 .removeWrapperTypeWarning {
-  border-color: var(--token-border-color-tags-warning);
+  border-color: var(--token-border-color-tag-warning);
 }
 
 .removeWrapperTypeWarning:hover {
-  background-color: var(--token-background-color-tags-warning-hover);
+  background-color: var(--token-background-color-tag-warning-hover);
 }
 
 .removeWrapper svg {
@@ -120,7 +120,7 @@
 /* Disabled */
 
 .disabledWrapper {
-  background-color: var(--token-background-color-tags-disabled);
+  background-color: var(--token-background-color-tag-disabled);
 }
 
 .disabledContent {
