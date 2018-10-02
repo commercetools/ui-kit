@@ -3,7 +3,13 @@ import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { IntlProvider } from 'react-intl';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  number,
+} from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
@@ -29,7 +35,7 @@ const filterColors = inputValue =>
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const promiseOptions = inputValue =>
+const loadOptions = inputValue =>
   delay(500).then(() => filterColors(inputValue));
 
 class SelectStory extends React.Component {
@@ -49,30 +55,53 @@ class SelectStory extends React.Component {
               render={(value, onChange) => (
                 <div>
                   <AsyncCreatableSelectInput
-                    name={text('name', 'form-field-name')}
-                    isMulti={isMulti}
-                    isClearable={boolean('isClearable', true)}
-                    createOptionPosition={select(
-                      'createOptionPosition',
-                      ['first', 'last'],
-                      'last'
-                    )}
-                    cacheOptions
-                    value={value}
-                    onChange={(event, info) => {
-                      action('onChange')(event, info);
-                      onChange(event.target.value);
-                    }}
-                    onBlur={action('onBlur')}
-                    loadOptions={promiseOptions}
-                    defaultOptions={defaultOptions}
                     horizontalConstraint={select(
                       'horizontalConstraint',
                       ['xs', 's', 'm', 'l', 'xl', 'scale'],
                       'scale'
                     )}
-                    placeholder={text('placeholder', 'Select..')}
+                    hasError={boolean('hasError', false)}
+                    hasWarning={boolean('hasWarning', false)}
+                    aria-label={text('aria-label', '')}
+                    aria-labelledby={text('aria-labelledby', '')}
+                    isAutofocussed={boolean('isAutofocussed', false)}
+                    backspaceRemovesValue={boolean(
+                      'backspaceRemovesValue',
+                      true
+                    )}
+                    id={text('id', '')}
+                    containerId={text('containerId', '')}
+                    isClearable={boolean('isClearable', false)}
                     isDisabled={boolean('isDisabled', false)}
+                    isMulti={isMulti}
+                    isSearchable={boolean('isSearchable', true)}
+                    maxMenuHeight={number('maxMenuHeight', 200)}
+                    name={text('name', 'form-field-name')}
+                    onBlur={action('onBlur')}
+                    onChange={(event, info) => {
+                      action('onChange')(event, info);
+                      onChange(event.target.value);
+                    }}
+                    onFocus={action('onFocus')}
+                    onInputChange={action('onInputChange')}
+                    placeholder={text('placeholder', 'Select..')}
+                    tabIndex={text('tabIndex', '0')}
+                    tabSelectsValue={boolean('tabSelectsValue', true)}
+                    value={value}
+                    // Async props
+                    defaultOptions={defaultOptions}
+                    loadOptions={loadOptions}
+                    cacheOptions={boolean('cacheOptions', false)}
+                    // Creatable props
+                    allowCreateWhileLoading={boolean(
+                      'allowCreateWhileLoading',
+                      false
+                    )}
+                    createOptionPosition={select(
+                      'createOptionPosition',
+                      ['first', 'last'],
+                      'last'
+                    )}
                   />
                 </div>
               )}
