@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import omit from 'lodash.omit';
 import {
   components as defaultComponents,
   Async as AsyncSelect,
@@ -33,25 +32,67 @@ export class AsyncSelectInput extends React.Component {
 
   static displayName = 'AsyncSelectInput';
 
-  // Using "null" will ensure that the currently selected value disappears in
-  // case "undefined" gets passed as the next value
-  static defaultProps = { value: null };
+  static defaultProps = {
+    // Using "null" will ensure that the currently selected value disappears in
+    // case "undefined" gets passed as the next value
+    value: null,
+    isSearchable: true,
+  };
 
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
+
+    // react-select base props
+    //
+    // Currently unsupported props are commented out. In case you need one of
+    // these props when using UI Kit, you can submit a PR and enable the
+    // prop. Don't forget to add it to the story, docs and other select input
+    // components as well!
+    //
+    // See https://react-select.com/props#select-props
+    'aria-label': PropTypes.string,
+    'aria-labelledby': PropTypes.string,
+    // renamed autoFocus of react-select
+    isAutofocussed: PropTypes.bool,
+    backspaceRemovesValue: PropTypes.bool,
+    components: PropTypes.objectOf(PropTypes.func),
+    filterOption: PropTypes.func,
+    // This forwarded as react-select's "inputId"
+    id: PropTypes.string,
+    // inputValue: PropTypes.string,
+    // This is forwarded as react-select's "id"
+    containerId: PropTypes.string,
+    isClearable: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    isOptionDisabled: PropTypes.func,
+    isMulti: PropTypes.bool,
+    isSearchable: PropTypes.bool,
+    maxMenuHeight: PropTypes.number,
     name: PropTypes.string,
+    noOptionsMessage: PropTypes.func,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onInputChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    tabIndex: PropTypes.string,
+    tabSelectsValue: PropTypes.bool,
     value: (props, ...rest) =>
       props.isMulti
         ? PropTypes.arrayOf(
             PropTypes.shape({ value: PropTypes.string.isRequired })
-          ).isRequired(props, ...rest)
+          )(props, ...rest)
         : PropTypes.shape({ value: PropTypes.string.isRequired })(
             props,
             ...rest
           ),
-    options: PropTypes.objectOf(
-      PropTypes.shape({ value: PropTypes.string.isRequired })
-    ),
+
+    // Async props
     defaultOptions: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.arrayOf(
@@ -60,17 +101,8 @@ export class AsyncSelectInput extends React.Component {
         })
       ),
     ]),
-    onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func,
     loadOptions: PropTypes.func.isRequired,
-    isMulti: PropTypes.bool,
-    components: PropTypes.object,
-    noOptionsMessage: PropTypes.func,
-    intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
-    }).isRequired,
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
+    cacheOptions: PropTypes.any,
   };
 
   render() {
@@ -78,11 +110,10 @@ export class AsyncSelectInput extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div {...filterDataAttributes(this.props)}>
           <AsyncSelect
-            {...omit(this.props, [
-              'horizontalConstraint',
-              'hasError',
-              'hasWarning',
-            ])}
+            aria-label={this.props['aria-label']}
+            aria-labelledby={this.props['aria-labelledby']}
+            autoFocus={this.props.isAutofocussed}
+            backspaceRemovesValue={this.props.backspaceRemovesValue}
             className={classnames('react-select', {
               // We use global styles here as the react-select styles are global
               // as well. This sucks.
@@ -91,22 +122,37 @@ export class AsyncSelectInput extends React.Component {
               'react-select-error': this.props.hasError,
               'react-select-warning': this.props.hasWarning,
             })}
+            classNamePrefix="react-select"
             components={{
               ...customizedComponents,
               ...this.props.components,
             }}
-            classNamePrefix="react-select"
-            onChange={(value, info) => {
-              this.props.onChange(
-                {
-                  target: { name: this.props.name, value },
-                  persist: () => {},
-                },
-                info
-              );
-            }}
-            value={this.props.value}
-            loadOptions={this.props.loadOptions}
+            filterOption={this.props.filterOption}
+            // react-select uses "id" (for the container) and "inputId" (for the input),
+            // but we use "id" (for the input) and "containerId" (for the container)
+            // instead.
+            // This makes it easier to less confusing to use with <label />s.
+            id={this.props.containerId}
+            inputId={this.props.id}
+            isClearable={this.props.isClearable}
+            isDisabled={this.props.isDisabled}
+            isOptionDisabled={this.props.isOptionDisabled}
+            isMulti={this.props.isMulti}
+            isSearchable={this.props.isSearchable}
+            maxMenuHeight={this.props.maxMenuHeight}
+            name={this.props.name}
+            noOptionsMessage={
+              this.props.noOptionsMessage ||
+              (({ inputValue }) =>
+                inputValue === ''
+                  ? this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithoutInputValue
+                    )
+                  : this.props.intl.formatMessage(
+                      messages.noOptionsMessageWithInputValue,
+                      { inputValue }
+                    ))
+            }
             onBlur={
               this.props.onBlur
                 ? () => {
@@ -128,19 +174,25 @@ export class AsyncSelectInput extends React.Component {
                   }
                 : undefined
             }
-            noOptionsMessage={
-              this.props.noOptionsMessage ||
-              (({ inputValue }) =>
-                inputValue === ''
-                  ? this.props.intl.formatMessage(
-                      messages.noOptionsMessageWithoutInputValue
-                    )
-                  : this.props.intl.formatMessage(
-                      messages.noOptionsMessageWithInputValue,
-                      { inputValue }
-                    ))
-            }
-            isSearchable={true}
+            onChange={(value, info) => {
+              this.props.onChange(
+                {
+                  target: { name: this.props.name, value },
+                  persist: () => {},
+                },
+                info
+              );
+            }}
+            onFocus={this.props.onFocus}
+            onInputChange={this.props.onInputChange}
+            placeholder={this.props.placeholder}
+            tabIndex={this.props.tabIndex}
+            tabSelectsValue={this.props.tabSelectsValue}
+            value={this.props.value}
+            // Async react-select props
+            defaultOptions={this.props.defaultOptions}
+            loadOptions={this.props.loadOptions}
+            cacheOptions={this.props.cacheOptions}
           />
         </div>
       </Constraints.Horizontal>
