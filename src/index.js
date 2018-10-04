@@ -29,6 +29,7 @@ export { default as NumberField } from './components/fields/number-field';
 export { default as MoneyField } from './components/fields/money-field';
 export { default as SelectField } from './components/fields/select-field';
 export { default as AsyncSelectField } from './components/fields/async-select-field';
+export { default as CreatableSelectField } from './components/fields/creatable-select-field';
 
 export { Icons };
 // TODO: this type of export is deprecated and should be removed in the next major release
