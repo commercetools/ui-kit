@@ -1,3 +1,16 @@
+<a name="2.0.0-rc.8"></a>
+
+# [2.0.0-rc.8](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.7...v2.0.0-rc.8) (2018-10-04)
+
+### New Components
+
+- `CreatableSelectField` [#128](https://github.com/commercetools/ui-kit/pull/128)
+- `AsyncCreatableSelectField` [#129](https://github.com/commercetools/ui-kit/pull/129)
+
+### Fixed
+
+- `Icons` Fix SVG compilation so that icons can be properly styled. ([#134](https://github.com/commercetools/ui-kit/issues/134)) ([409e9e1](https://github.com/commercetools/ui-kit/commit/409e9e1))
+
 <a name="2.0.0-rc.7"></a>
 
 # [2.0.0-rc.7](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2018-10-02)
