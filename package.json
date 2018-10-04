@@ -34,8 +34,6 @@
     "react"
   ],
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "precommit": "lint-staged",
     "changelog": "conventional-changelog -p angular -u",
     "prebuild": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
     "prestorybook:start": "node ./scripts/generate-base-colors.js && node ./scripts/generate-base-shadows.js && node ./scripts/generate-colors-for-story.js",
@@ -111,7 +109,7 @@
     "graphql": "14.0.2",
     "graphql-tag": "2.10.0",
     "html-loader": "0.5.5",
-    "husky": "0.14.3",
+    "husky": "1.1.0",
     "jest": "23.6.0",
     "jest-dom": "1.12.1",
     "jest-plugin-filename": "0.0.1",
@@ -174,5 +172,11 @@
     "react-dom": ">=16",
     "react-intl": ">=2",
     "react-router-dom": ">=4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
   }
 }
