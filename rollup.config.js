@@ -106,6 +106,7 @@ const plugins = [
     icon: false,
     svgoConfig: {
       plugins: [
+        { removeAttrs: { attrs: '(stroke|fill)' } },
         { removeViewBox: false },
         // Keeps ID's of svgs so they can be targeted with CSS
         { cleanupIDs: false },
