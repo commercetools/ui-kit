@@ -51,7 +51,6 @@ storiesOf('Inputs', module)
                   [event.target.language]: event.target.value,
                 });
               }}
-              onChangeValue={action('onChangeValue')}
               selectedLanguage={select('selectedLanguage', ['en', 'de'], 'en')}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
