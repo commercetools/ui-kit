@@ -39,7 +39,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@7.1.2", "@babel/core@^7.0.0-rc.1", "@babel/core@^7.0.1":
+"@babel/core@7.1.2", "@babel/core@^7.0.0-rc.1", "@babel/core@^7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.1.2.tgz#f8d2a9ceb6832887329a7b60f9d035791400ba4e"
   dependencies:
@@ -678,7 +678,7 @@
     "@babel/helper-regex" "^7.0.0"
     regexpu-core "^4.1.3"
 
-"@babel/preset-env@7.1.0", "@babel/preset-env@^7.0.0":
+"@babel/preset-env@7.1.0", "@babel/preset-env@^7.0.0", "@babel/preset-env@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.1.0.tgz#e67ea5b0441cfeab1d6f41e9b5c79798800e8d11"
   dependencies:
@@ -1432,38 +1432,38 @@
     react-lifecycles-compat "^3.0.4"
     react-modal "^3.5.1"
 
-"@svgr/core@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@svgr/core/-/core-2.4.1.tgz#03a407c28c4a1d84305ae95021e8eabfda8fa731"
+"@svgr/core@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@svgr/core/-/core-3.0.0.tgz#f18f042d58f17f2f44f0a5323ded76feaad412fb"
   dependencies:
     camelcase "^5.0.0"
     cosmiconfig "^5.0.6"
     h2x-core "^1.1.0"
     h2x-plugin-jsx "^1.1.0"
     merge-deep "^3.0.2"
-    prettier "^1.14.2"
-    svgo "^1.0.5"
+    prettier "^1.14.3"
+    svgo "^1.1.1"
 
-"@svgr/rollup@2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@svgr/rollup/-/rollup-2.4.1.tgz#88fc72e8e23221946ff648e90765c39138773320"
+"@svgr/rollup@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@svgr/rollup/-/rollup-3.0.0.tgz#ae350aeb87022345d7a34e43b0bfe9985c488395"
   dependencies:
-    "@babel/core" "^7.0.1"
+    "@babel/core" "^7.1.2"
     "@babel/plugin-transform-react-constant-elements" "^7.0.0"
-    "@babel/preset-env" "^7.0.0"
+    "@babel/preset-env" "^7.1.0"
     "@babel/preset-react" "^7.0.0"
-    "@svgr/core" "^2.4.1"
-    rollup-pluginutils "^2.3.1"
+    "@svgr/core" "^3.0.0"
+    rollup-pluginutils "^2.3.3"
 
-"@svgr/webpack@2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-2.4.1.tgz#68bc581ecb4c09fadeb7936bd1afaceb9da960d2"
+"@svgr/webpack@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-3.0.0.tgz#edfa25cc2f0d1d689f6008d9d3b2d5a9f69ff28c"
   dependencies:
-    "@babel/core" "^7.0.1"
+    "@babel/core" "^7.1.2"
     "@babel/plugin-transform-react-constant-elements" "^7.0.0"
-    "@babel/preset-env" "^7.0.0"
+    "@babel/preset-env" "^7.1.0"
     "@babel/preset-react" "^7.0.0"
-    "@svgr/core" "^2.4.1"
+    "@svgr/core" "^3.0.0"
     loader-utils "^1.1.0"
 
 "@types/estree@0.0.39":
@@ -9504,7 +9504,7 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@1.14.3, prettier@^1.13.0, prettier@^1.14.2:
+prettier@1.14.3, prettier@^1.13.0, prettier@^1.14.3:
   version "1.14.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.3.tgz#90238dd4c0684b7edce5f83b0fb7328e48bd0895"
 
@@ -10661,7 +10661,7 @@ rollup-plugin-url@1.4.0:
     mime "^2.3.1"
     rollup-pluginutils "^2.0.1"
 
-rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.1:
+rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.1, rollup-pluginutils@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.3.3.tgz#3aad9b1eb3e7fe8262820818840bf091e5ae6794"
   dependencies:
@@ -11555,7 +11555,7 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-svgo@^1.0.5:
+svgo@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-1.1.1.tgz#12384b03335bcecd85cfa5f4e3375fed671cb985"
   dependencies:
