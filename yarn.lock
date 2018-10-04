@@ -2695,13 +2695,13 @@ browserslist@3.2.6:
     caniuse-lite "^1.0.30000830"
     electron-to-chromium "^1.3.42"
 
-browserslist@4.1.1, browserslist@^4.1.0, browserslist@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.1.1.tgz#328eb4ff1215b12df6589e9ab82f8adaa4fc8cd6"
+browserslist@4.1.2, browserslist@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.1.2.tgz#632feb46d1cbdd6bb1a6eb660eff68f2345ae7e7"
   dependencies:
-    caniuse-lite "^1.0.30000884"
-    electron-to-chromium "^1.3.62"
-    node-releases "^1.0.0-alpha.11"
+    caniuse-lite "^1.0.30000888"
+    electron-to-chromium "^1.3.73"
+    node-releases "^1.0.0-alpha.12"
 
 browserslist@^1.3.6, browserslist@^1.5.2, browserslist@^1.7.6:
   version "1.7.7"
@@ -2716,6 +2716,14 @@ browserslist@^2.11.3:
   dependencies:
     caniuse-lite "^1.0.30000792"
     electron-to-chromium "^1.3.30"
+
+browserslist@^4.1.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.1.1.tgz#328eb4ff1215b12df6589e9ab82f8adaa4fc8cd6"
+  dependencies:
+    caniuse-lite "^1.0.30000884"
+    electron-to-chromium "^1.3.62"
+    node-releases "^1.0.0-alpha.11"
 
 bser@^2.0.0:
   version "2.0.0"
@@ -2863,9 +2871,13 @@ caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   version "1.0.30000888"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000888.tgz#38081675206f8856b648c1cd793a28a2c5762448"
 
-caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000830, caniuse-lite@^1.0.30000884, caniuse-lite@^1.0.30000887:
+caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000830, caniuse-lite@^1.0.30000884:
   version "1.0.30000888"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000888.tgz#22edb50d91dd70612b5898e3b36f460600c6492f"
+
+caniuse-lite@^1.0.30000888:
+  version "1.0.30000889"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000889.tgz#53e266c83e725ad3bd2e4a3ea76d5031a8aa4c3e"
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -4084,12 +4096,12 @@ dom-serializer@0, dom-serializer@~0.1.0:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
-dom-testing-library@^3.1.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.6.0.tgz#e5598fae9477f3918e22aee44f2262727203b5bd"
+dom-testing-library@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.8.1.tgz#8607ef2e911f14f594028d14bc9f44fd32446078"
   dependencies:
     mutationobserver-shim "^0.3.2"
-    pretty-format "^22.4.3"
+    pretty-format "^23.6.0"
     wait-for-expect "^1.0.0"
 
 dom-walk@^0.1.0:
@@ -4164,9 +4176,9 @@ dotenv@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.0.0.tgz#24e37c041741c5f4b25324958ebbc34bca965935"
 
-downshift@2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-2.2.2.tgz#c88b982091e2affdea102e235843cc8c6e3a9f63"
+downshift@2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-2.2.3.tgz#85187568455134e72025fbddd40bb9cf96c55eed"
   dependencies:
     compute-scroll-into-view "^1.0.2"
     prop-types "^15.6.0"
@@ -4202,6 +4214,10 @@ ejs@^2.6.1:
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.42, electron-to-chromium@^1.3.62:
   version "1.3.72"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.72.tgz#b69683081d5b7eee6e1ea07b2f5fa30b3c72252d"
+
+electron-to-chromium@^1.3.73:
+  version "1.3.73"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.73.tgz#aa67787067d58cc3920089368b3b8d6fe0fc12f6"
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -8155,7 +8171,7 @@ node-pre-gyp@^0.10.0:
     semver "^5.3.0"
     tar "^4"
 
-node-releases@^1.0.0-alpha.11:
+node-releases@^1.0.0-alpha.11, node-releases@^1.0.0-alpha.12:
   version "1.0.0-alpha.12"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.0.0-alpha.12.tgz#32e461b879ea76ac674e511d9832cf29da345268"
   dependencies:
@@ -8836,18 +8852,11 @@ postcss-custom-media@7.0.4, postcss-custom-media@^7.0.4:
   dependencies:
     postcss "^7.0.2"
 
-postcss-custom-properties@8.0.5:
-  version "8.0.5"
-  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-8.0.5.tgz#e78a7bd813196332db9dface66a528ae5da8b98f"
+postcss-custom-properties@8.0.8, postcss-custom-properties@^8.0.8:
+  version "8.0.8"
+  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-8.0.8.tgz#1812e2553805e1affce93164dd1709ef6b69c53e"
   dependencies:
-    postcss "^7.0.2"
-    postcss-values-parser "^2.0.0"
-
-postcss-custom-properties@^8.0.5:
-  version "8.0.6"
-  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-8.0.6.tgz#404d2f0848abef200807ac1587ab7758983416fa"
-  dependencies:
-    postcss "^7.0.3"
+    postcss "^7.0.5"
     postcss-values-parser "^2.0.0"
 
 postcss-custom-selectors@^5.1.2:
@@ -9216,22 +9225,22 @@ postcss-place@^4.0.1:
     postcss "^7.0.2"
     postcss-values-parser "^2.0.0"
 
-postcss-preset-env@6.0.6:
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-6.0.6.tgz#f728b9a43bf01c24eb06efeeff59de0b31ee1105"
+postcss-preset-env@6.0.10:
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-6.0.10.tgz#47b05afa6db121b8b0c160a2aed322fa629f5ec5"
   dependencies:
     autoprefixer "^9.1.5"
-    browserslist "^4.1.1"
-    caniuse-lite "^1.0.30000887"
+    browserslist "^4.1.2"
+    caniuse-lite "^1.0.30000888"
     cssdb "^3.2.1"
-    postcss "^7.0.2"
+    postcss "^7.0.5"
     postcss-attribute-case-insensitive "^4.0.0"
     postcss-color-functional-notation "^2.0.1"
     postcss-color-hex-alpha "^5.0.2"
     postcss-color-mod-function "^3.0.3"
     postcss-color-rebeccapurple "^4.0.1"
     postcss-custom-media "^7.0.4"
-    postcss-custom-properties "^8.0.5"
+    postcss-custom-properties "^8.0.8"
     postcss-custom-selectors "^5.1.2"
     postcss-dir-pseudo-class "^5.0.0"
     postcss-env-function "^2.0.2"
@@ -9450,13 +9459,13 @@ postcss@6.0.1:
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-postcss@7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.2.tgz#7b5a109de356804e27f95a960bef0e4d5bc9bb18"
+postcss@7.0.5, postcss@^7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.5.tgz#70e6443e36a6d520b0fd4e7593fcca3635ee9f55"
   dependencies:
     chalk "^2.4.1"
     source-map "^0.6.1"
-    supports-color "^5.4.0"
+    supports-color "^5.5.0"
 
 postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.8, postcss@^5.2.16:
   version "5.2.18"
@@ -9475,7 +9484,7 @@ postcss@^6.0.1, postcss@^6.0.14, postcss@^6.0.17, postcss@^6.0.20, postcss@^6.0.
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.2, postcss@^7.0.3:
+postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.2:
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.4.tgz#b5a059597d2c1a8a9916cb6efb0b294f70b4f309"
   dependencies:
@@ -9870,9 +9879,9 @@ react-inspector@^2.3.0:
     babel-runtime "^6.26.0"
     is-dom "^1.0.9"
 
-react-intl@2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.6.0.tgz#b822fa91f1b55209b36c63d849f66e8c1bd08ea0"
+react-intl@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.7.0.tgz#be1244769ce51f71476afb9556485a46090db5fa"
   dependencies:
     hoist-non-react-statics "^2.5.5"
     intl-format-cache "^2.0.5"
@@ -9964,11 +9973,11 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.5.2"
     schedule "^0.5.0"
 
-react-testing-library@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.1.0.tgz#ae208d9e3b7faae233409d205e287b304ec8ffdc"
+react-testing-library@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.1.1.tgz#7cdbad6d546894dadc39f499d65018135b7e61a0"
   dependencies:
-    dom-testing-library "^3.1.0"
+    dom-testing-library "^3.8.1"
     wait-for-expect "^1.0.0"
 
 react-textarea-autosize@7.0.4, react-textarea-autosize@^7.0.4:
@@ -10659,9 +10668,9 @@ rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.1:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
 
-rollup@0.66.2:
-  version "0.66.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.66.2.tgz#77acdb9f4093f5f035ce75480577c40a81ea7999"
+rollup@0.66.4:
+  version "0.66.4"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.66.4.tgz#8067b9638af82873b7fd644af9c3d72108ca4bab"
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
