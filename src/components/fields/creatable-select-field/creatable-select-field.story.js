@@ -12,9 +12,9 @@ import {
 } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import SelectFieldReadme from './README.md';
+import CreatableSelectFieldReadme from './README.md';
 import * as icons from '../../icons';
-import SelectField from './creatable-select-field';
+import CreatableSelectField from './creatable-select-field';
 
 const options = [
   { value: 'platypus', label: 'Platypus' },
@@ -71,8 +71,8 @@ const options = [
 
 storiesOf('Fields', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(SelectFieldReadme))
-  .add('SelectField', () => {
+  .addDecorator(withReadme(CreatableSelectFieldReadme))
+  .add('CreatableSelectField', () => {
     const isMulti = boolean('isMulti', false);
     const hint = text('hint', 'Bonus points if it is a mammal');
 
@@ -88,7 +88,7 @@ storiesOf('Fields', module)
           key={isMulti}
           defaultValue={isMulti ? [] : undefined}
           render={(value, onChange) => (
-            <SelectField
+            <CreatableSelectField
               horizontalConstraint={select(
                 'horizontalConstraint',
                 ['xs', 's', 'm', 'l', 'xl', 'scale'],
@@ -125,7 +125,7 @@ storiesOf('Fields', module)
               placeholder={text('placeholder', 'Select...')}
               title={text('title', 'Favourite animal')}
               maxMenuHeight={number('maxMenuHeight', 200)}
-              isSearchable={boolean('isSearchable', false)}
+              isSearchable={boolean('isSearchable', true)}
               isClearable={boolean('isClearable', false)}
               options={options}
               tabIndex={text('tabIndex', '0')}
