@@ -127,7 +127,7 @@ describe('rendering', () => {
         });
       });
     });
-    describe('setting the button as active', () => {
+    describe('when is toggled', () => {
       beforeEach(() => {
         props = createProps({ isToggled: true });
         wrapper = shallow(<CriticalButton {...props} />);
@@ -137,7 +137,7 @@ describe('rendering', () => {
         expect(wrapper.find('div')).toContainClass('active');
       });
     });
-    describe('setting the button as not active', () => {
+    describe('when is not toggled', () => {
       beforeEach(() => {
         props = createProps({ isToggled: false });
         wrapper = shallow(<CriticalButton {...props} />);
@@ -147,7 +147,7 @@ describe('rendering', () => {
         expect(wrapper.find('div')).not.toContainClass('active');
       });
     });
-    describe('setting the button as disabled', () => {
+    describe('when is disabled', () => {
       let button;
       beforeEach(() => {
         props = createProps({ isDisabled: true });

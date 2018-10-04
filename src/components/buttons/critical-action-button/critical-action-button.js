@@ -70,14 +70,6 @@ CriticalActionButton.propTypes = {
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 
   // DEPRECATED
-  tone(props, propName, componentName, ...rest) {
-    if (props.tone) {
-      return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` is deprecated. Render a different button instead (e.G \`CriticalActionButton\` if tone is \`urgent\`)`
-      );
-    }
-    return PropTypes.bool(props, propName, componentName, ...rest);
-  },
   isToggleButton(props, propName, componentName, ...rest) {
     if (props.isToggleButton) {
       return new Error(
