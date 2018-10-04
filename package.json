@@ -111,7 +111,7 @@
     "html-loader": "0.5.5",
     "husky": "1.1.0",
     "jest": "23.6.0",
-    "jest-dom": "1.12.1",
+    "jest-dom": "2.0.2",
     "jest-plugin-filename": "0.0.1",
     "jest-runner-eslint": "0.6.0",
     "jest-runner-stylelint": "1.0.0",
