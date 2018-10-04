@@ -10,7 +10,7 @@ import MoneyInput from '../../inputs/money-input';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
 import { VerifiedIcon } from '../../icons';
-import { Text } from '../../..';
+import Text from '../../typography/text';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
 
