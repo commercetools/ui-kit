@@ -62,7 +62,7 @@ storiesOf('Icons', module)
               <Icon
                 size={sizeValue}
                 theme={select(
-                  'them',
+                  'theme',
                   [
                     'black',
                     'grey',
