@@ -1,20 +1,20 @@
 {
   "dist/ui-kit.cjs.js": {
-    "bundled": 610617,
-    "minified": 509052,
-    "gzipped": 74331
+    "bundled": 613930,
+    "minified": 511382,
+    "gzipped": 74974
   },
   "dist/ui-kit.esm.js": {
-    "bundled": 606431,
-    "minified": 505281,
-    "gzipped": 73848,
+    "bundled": 609708,
+    "minified": 507576,
+    "gzipped": 74487,
     "treeshaked": {
       "rollup": {
-        "code": 439883,
-        "import_statements": 1195
+        "code": 441179,
+        "import_statements": 1153
       },
       "webpack": {
-        "code": 452939
+        "code": 454226
       }
     }
   }
