@@ -1,3 +1,27 @@
+<a name="2.0.0-rc.9"></a>
+
+# [2.0.0-rc.9](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.8...2.0.0-rc.9) (2018-10-05)
+
+### New Components
+
+- `LocalizedTextField` [#133](https://github.com/commercetools/ui-kit/pull/133)
+- `LocalizedMultilineTextField` [#132](https://github.com/commercetools/ui-kit/pull/132)
+
+### Fixed
+
+- Fix broken checkboxes [#139](https://github.com/commercetools/ui-kit/issues/139)
+
+### Changed
+
+- Updated dependencies [#137](https://github.com/commercetools/ui-kit/issues/137)
+- Dropped dependency on `reselect` [#137](https://github.com/commercetools/ui-kit/issues/137)
+- Fixed "theme" typo [#137](https://github.com/commercetools/ui-kit/issues/137)
+- Dropped outdated warning in `CollapsiblePanel` [#137](https://github.com/commercetools/ui-kit/issues/137)
+
+### BREAKING CHANGES
+
+- If you use Formik, ensure you use at least `v1.3.1`. Otherwise form validation of `MoneyInput` will not work properly [#137](https://github.com/commercetools/ui-kit/issues/137)
+
 <a name="2.0.0-rc.8"></a>
 
 # [2.0.0-rc.8](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.7...v2.0.0-rc.8) (2018-10-04)
