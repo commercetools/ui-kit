@@ -13,6 +13,7 @@ import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import svgrPlugin from '@svgr/rollup';
 import babelOptions from '@commercetools-frontend/babel-preset-mc-app';
 import pkg from './package.json';
@@ -116,6 +117,7 @@ const plugins = [
   // To remove comments, trim trailing spaces, compact empty lines,
   // and normalize line endings
   cleanup(),
+  sizeSnapshot(),
 ];
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
