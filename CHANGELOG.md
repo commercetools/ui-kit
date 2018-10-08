@@ -1,3 +1,11 @@
+<a name="2.0.0-rc.10"></a>
+
+# [2.0.0-rc.10](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.9...2.0.0-rc.10) (2018-10-08)
+
+### Fixed
+
+- Fix broken DotIcon [#149](https://github.com/commercetools/ui-kit/issues/139)
+
 <a name="2.0.0-rc.9"></a>
 
 # [2.0.0-rc.9](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.8...2.0.0-rc.9) (2018-10-05)
