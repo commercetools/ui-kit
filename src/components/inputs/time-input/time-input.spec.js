@@ -25,6 +25,17 @@ describe('TimeInput.to24h', () => {
       expect(TimeInput.to24h('3:15 AM')).toEqual('03:15');
       expect(TimeInput.to24h('3:5 AM')).toEqual('03:05');
       expect(TimeInput.to24h('0:00')).toEqual('00:00');
+      expect(TimeInput.to24h('10:02:03')).toEqual('10:02:03');
+      expect(TimeInput.to24h('10:2:3')).toEqual('10:02:03');
+      expect(TimeInput.to24h('10:2:3.456')).toEqual('10:02:03.456');
+      expect(TimeInput.to24h('10:2:3.5')).toEqual('10:02:03.500');
+      expect(TimeInput.to24h('10:3.5')).toEqual('');
+      expect(TimeInput.to24h('1300:00.000')).toEqual('');
+      expect(TimeInput.to24h('1300')).toEqual('');
+      expect(TimeInput.to24h('300')).toEqual('');
+      expect(TimeInput.to24h('13:00.000')).toEqual('');
+      expect(TimeInput.to24h('15:09.300')).toEqual('');
+      expect(TimeInput.to24h('10:3.5')).toEqual('');
     });
   });
 });

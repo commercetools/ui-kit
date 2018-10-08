@@ -5,9 +5,62 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
 import { TimeInputBody } from './time-input-body';
 
-const leftPad = value => (String(value).length === 1 ? `0${value}` : value);
+const leftPad = (value, times = 2) => String(value).padStart(times, '0');
+const rightPad = (value, times = 3) => String(value).padEnd(times, '0');
 
-const format24hr = (hours, minutes) => `${leftPad(hours)}:${leftPad(minutes)}`;
+const format24hr = ([hours, minutes, seconds, milliseconds]) => {
+  const base = `${leftPad(hours)}:${leftPad(minutes)}`;
+  if (seconds === 0 && milliseconds === 0) return base;
+  if (milliseconds === 0) return `${base}:${leftPad(seconds)}`;
+  return `${base}:${leftPad(seconds)}.${rightPad(milliseconds)}`;
+};
+
+// Attempts to parse a string containing a time in either 12h or 24h format,
+// with precision of up to three milliseconds
+// Valid inputs:
+//   13:00
+//   3:00
+//   3 PM
+//   14:5 am
+//   13:00:00.000
+//   13:00:60
+//   13:00:59.908
+// Returns an array containing
+//   [hours, minutes, seconds, milliseconds]
+// or null
+const parse = rawTime => {
+  if (!rawTime || typeof rawTime !== 'string') return null;
+
+  const time = rawTime.trim().toLowerCase();
+
+  const match = time.match(
+    /^(\d{1,2})(?::(\d{1,2})(?::(\d{1,2})(?:\.(\d{1,3}))?)?)?\s*(am|pm)?$/
+  );
+  if (!match) return null;
+
+  // As we accept eg "3 AM" there might not be a value for minutes, seconds or
+  // milliseconds, so we default them
+  const [
+    ,
+    hours,
+    minutes = '00',
+    seconds = '00',
+    milliseconds = '000',
+    amPm,
+  ] = match;
+  if (Number(minutes) > 59) return null;
+  if (amPm && Number(hours) > 12) return null;
+  if (!amPm && Number(hours) > 23) return null;
+  if (Number(seconds) > 59) return null;
+  if (Number(milliseconds) > 999) return null;
+
+  return [
+    Number(hours) + (amPm === 'pm' ? 12 : 0),
+    Number(minutes),
+    Number(seconds),
+    Number(milliseconds),
+  ];
+};
 
 // This component lets the user select a time.
 //
@@ -17,24 +70,10 @@ export class TimeInput extends React.Component {
   static displayName = 'TimeInput';
 
   // Takes any input like 15:10, 3 AM, 3AM, 3:15AM, 3:5AM and turns it
-  // into a 24h format
-  static to24h = rawTime => {
-    if (!rawTime || typeof rawTime !== 'string') return '';
-
-    const time = rawTime.trim().toLowerCase();
-
-    const match = time.match(/^(\d{1,2})(?::?(\d{1,2}))?\s*(am|pm)?$/);
-    if (!match) return '';
-    // As we accept eg "3 AM" there might not be a value for minutes, so we
-    // default it to "00".
-    const [, hours, minutes = '00', amPm] = match;
-    if (Number(minutes) > 59) return '';
-    if (amPm && Number(hours) > 12) return '';
-    if (!amPm && Number(hours) > 23) return '';
-
-    return amPm === 'pm'
-      ? format24hr(Number(hours) + 12, minutes)
-      : format24hr(Number(hours), minutes);
+  // into a 24h format (with seconds and milliseconds if present)
+  static to24h = time => {
+    const parsedTime = parse(time);
+    return parsedTime ? format24hr(parsedTime) : '';
   };
 
   static propTypes = {
@@ -84,7 +123,20 @@ export class TimeInput extends React.Component {
 
   handleBlur = event => {
     // check formatting and reformat when necessary
-    const formattedTime = this.toLocaleTime(TimeInput.to24h(this.props.value));
+    const formattedTime = do {
+      const parsedTime = parse(this.props.value);
+
+      if (!parsedTime) '';
+      else {
+        const [, , seconds, milliseconds] = parsedTime;
+
+        const timeIn24hFormat = format24hr(parsedTime);
+        seconds === 0 && milliseconds === 0
+          ? this.toLocaleTime(timeIn24hFormat)
+          : timeIn24hFormat;
+      }
+    };
+
     if (formattedTime !== this.props.value) this.emitChange(formattedTime);
 
     // forward the onBlur call
