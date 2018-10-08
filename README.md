@@ -1,6 +1,7 @@
-[![](https://img.shields.io/npm/v/@commercetools-frontend/ui-kit.svg)](https://www.npmjs.com/package/@commercetools-frontend/ui-kit) ![](https://img.shields.io/bundlephobia/min/@commercetools-frontend/ui-kit.svg) [![GitHub issues](https://img.shields.io/github/issues/commercetools/ui-kit.svg)](https://github.com/commercetools/ui-kit/issues) [![GitHub forks](https://img.shields.io/github/forks/commercetools/ui-kit.svg)](https://github.com/commercetools/ui-kit/network) [![GitHub stars](https://img.shields.io/github/stars/commercetools/ui-kit.svg)](https://github.com/commercetools/ui-kit/stargazers) [![GitHub license](https://img.shields.io/github/license/commercetools/ui-kit.svg)](https://github.com/commercetools/ui-kit/blob/master/LICENSE)
-
 <h2 align="center">commercetools UI Kit 💅</h2>
+<p align="center">
+<a href="https://www.npmjs.com/package/@commercetools-frontend/ui-kit"><img src="https://img.shields.io/npm/v/@commercetools-frontend/ui-kit.svg" alt="" /></a> <a href="https://github.com/commercetools/ui-kit/issues"><img src="https://img.shields.io/github/issues/commercetools/ui-kit.svg" alt="GitHub issues" /></a> <a href="https://github.com/commercetools/ui-kit/network"><img src="https://img.shields.io/github/forks/commercetools/ui-kit.svg" alt="GitHub forks" /></a> <a href="https://github.com/commercetools/ui-kit/stargazers"><img src="https://img.shields.io/github/stars/commercetools/ui-kit.svg" alt="GitHub stars" /></a> <a href="https://github.com/commercetools/ui-kit/blob/master/LICENSE"><img src="https://img.shields.io/github/license/commercetools/ui-kit.svg" alt="GitHub license" /></a>
+</p>
 <p align="center">
   <i>✨ Component library based on our design system 🛠</i>
 </p>
