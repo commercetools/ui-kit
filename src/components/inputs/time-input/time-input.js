@@ -5,13 +5,14 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
 import { TimeInputBody } from './time-input-body';
 
-const leftPad = (value, times = 2) => String(value).padStart(times, '0');
-const rightPad = (value, times = 3) => String(value).padEnd(times, '0');
+const leftPad = (value, length = 2) => String(value).padStart(length, '0');
+const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
 
-const format24hr = ([hours, minutes, seconds, milliseconds]) => {
+const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
   const base = `${leftPad(hours)}:${leftPad(minutes)}`;
   if (seconds === 0 && milliseconds === 0) return base;
   if (milliseconds === 0) return `${base}:${leftPad(seconds)}`;
+  // string representation of a time without timezone in ISO 8601 format
   return `${base}:${leftPad(seconds)}.${rightPad(milliseconds)}`;
 };
 
@@ -28,7 +29,7 @@ const format24hr = ([hours, minutes, seconds, milliseconds]) => {
 // Returns an array containing
 //   [hours, minutes, seconds, milliseconds]
 // or null
-const parse = rawTime => {
+const parseTime = rawTime => {
   if (!rawTime || typeof rawTime !== 'string') return null;
 
   const time = rawTime.trim().toLowerCase();
@@ -54,12 +55,15 @@ const parse = rawTime => {
   if (Number(seconds) > 59) return null;
   if (Number(milliseconds) > 999) return null;
 
-  return [
-    Number(hours) + (amPm === 'pm' ? 12 : 0),
-    Number(minutes),
-    Number(seconds),
-    Number(milliseconds),
-  ];
+  return {
+    hours: Number(hours) + (amPm === 'pm' ? 12 : 0),
+    minutes: Number(minutes),
+    seconds: Number(seconds),
+    milliseconds: Number(milliseconds),
+    hasSeconds: Number(seconds) !== 0 || Number(milliseconds) !== 0,
+    hasMilliseconds: Number(milliseconds) !== 0,
+    amPm,
+  };
 };
 
 // This component lets the user select a time.
@@ -72,7 +76,7 @@ export class TimeInput extends React.Component {
   // Takes any input like 15:10, 3 AM, 3AM, 3:15AM, 3:5AM and turns it
   // into a 24h format (with seconds and milliseconds if present)
   static to24h = time => {
-    const parsedTime = parse(time);
+    const parsedTime = parseTime(time);
     return parsedTime ? format24hr(parsedTime) : '';
   };
 
@@ -102,7 +106,7 @@ export class TimeInput extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.intl.locale !== this.props.intl.locale) {
-      this.emitChange(this.toLocaleTime(TimeInput.to24h(this.props.value)));
+      this.emitChange(this.toLocaleTime(this.props.value));
     }
   }
 
@@ -113,29 +117,31 @@ export class TimeInput extends React.Component {
     this.props.onChange(event);
   };
 
-  // time must be passed in 24h format
-  // returns time in format of locale (either 12h or 24h).
+  // Converts any value to either a formatted value or an empty string
+  // The resulting format might use 12h or 24h, unless the time contains
+  // seconds or milliseconds. If seconds or milliseconds are contained, the
+  // the 24h format is returned.
+  //
+  // Returns time in a format suitable for the locale.
   toLocaleTime = time => {
-    const date = new Date(`1970-01-01 ${time}`);
+    const parsedTime = parseTime(time);
+    if (!parsedTime) return '';
+
+    const timeIn24hFormat = format24hr(parsedTime);
+
+    // return the 24h format, as the time has high precision
+    if (parsedTime.hasSeconds || parsedTime.hasMilliseconds)
+      return timeIn24hFormat;
+
+    // return the localized time (12h or 24h format)
+    const date = new Date(`1970-01-01 ${timeIn24hFormat}`);
     const isValidDate = !isNaN(date.getTime());
     return isValidDate ? this.props.intl.formatTime(date) : '';
   };
 
   handleBlur = event => {
     // check formatting and reformat when necessary
-    const formattedTime = do {
-      const parsedTime = parse(this.props.value);
-
-      if (!parsedTime) '';
-      else {
-        const [, , seconds, milliseconds] = parsedTime;
-
-        const timeIn24hFormat = format24hr(parsedTime);
-        seconds === 0 && milliseconds === 0
-          ? this.toLocaleTime(timeIn24hFormat)
-          : timeIn24hFormat;
-      }
-    };
+    const formattedTime = this.toLocaleTime(this.props.value);
 
     if (formattedTime !== this.props.value) this.emitChange(formattedTime);
 
