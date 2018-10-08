@@ -1,33 +1,129 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import isTouchDevice from 'is-touch-device';
-import { TimeInput } from './time-input';
+import TimeInput from './time-input';
+import { render, fireEvent } from '../../../test-utils';
 
-jest.mock('flatpickr');
-jest.mock('is-touch-device');
+const baseProps = { value: '', onChange: () => {} };
 
-// user is in London
-// eslint-disable-next-line no-extend-native
-Date.prototype.getTimezoneOffset = () => 0;
-
-// but she wants to see time in Mardid time zone
-const timeZone = 'Europe/Madrid';
-
-const createTestProps = custom => ({
-  onChange: jest.fn(),
-  value: null,
-  placeholder: 'test',
-  intl: { formatMessage: jest.fn(message => message.id), locale: 'en' },
-  timeZone,
-  ...custom,
+describe('TimeInput.to24h', () => {
+  describe('when called with empty value', () => {
+    it('should return an empty string', () => {
+      expect(TimeInput.to24h('')).toEqual('');
+    });
+  });
+  describe('when called with invalid time', () => {
+    it('should return an empty string', () => {
+      expect(TimeInput.to24h('65:10')).toEqual('');
+    });
+  });
+  describe('when called with valid time', () => {
+    it('should return the time in 24h format', () => {
+      expect(TimeInput.to24h('15:10')).toEqual('15:10');
+      expect(TimeInput.to24h('15:2')).toEqual('15:02');
+      expect(TimeInput.to24h('04')).toEqual('04:00');
+      expect(TimeInput.to24h('3 AM')).toEqual('03:00');
+      expect(TimeInput.to24h('3 PM')).toEqual('15:00');
+      expect(TimeInput.to24h('3:15 AM')).toEqual('03:15');
+      expect(TimeInput.to24h('3:5 AM')).toEqual('03:05');
+      expect(TimeInput.to24h('0:00')).toEqual('00:00');
+    });
+  });
 });
 
-describe('<DateInput />', () => {
-  beforeEach(() => {
-    isTouchDevice.mockClear();
-    isTouchDevice.mockReturnValue(false);
+describe('TimeInput', () => {
+  it('should forward data-attributes', () => {
+    const { container } = render(<TimeInput {...baseProps} data-foo="bar" />);
+    expect(container.querySelector('input')).toHaveAttribute('data-foo', 'bar');
   });
-  it('should render', () => {
-    expect(shallow(<TimeInput {...createTestProps()} />)).toMatchSnapshot();
+
+  it('should have error style when error is present', () => {
+    const { container } = render(<TimeInput {...baseProps} hasError />);
+    expect(container.querySelector('input')).toHaveClass('error');
+  });
+
+  it('should have an HTML name', () => {
+    const { container } = render(<TimeInput {...baseProps} name="foo" />);
+    expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
+  });
+
+  it('should have ARIA role', () => {
+    const { container } = render(<TimeInput {...baseProps} />);
+    expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
+  });
+
+  it('should forward the passed value', () => {
+    const { container } = render(<TimeInput {...baseProps} value="foo" />);
+    expect(container.querySelector('input')).toHaveAttribute('value', 'foo');
+  });
+
+  it('should call onChange when chaning the value', () => {
+    const onChange = jest.fn(event => {
+      expect(event.target.id).toEqual('some-id');
+      expect(event.target.name).toEqual('some-name');
+      expect(event.target.value).toEqual('foo');
+    });
+    const { container } = render(
+      <TimeInput
+        {...baseProps}
+        id="some-id"
+        name="some-name"
+        onChange={onChange}
+      />
+    );
+    const event = { target: { value: 'foo' } };
+    fireEvent.change(container.querySelector('input'), event);
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('should call onFocus when the input is focused', () => {
+    const onFocus = jest.fn();
+    const { container } = render(
+      <TimeInput {...baseProps} onFocus={onFocus} />
+    );
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+  });
+
+  it('should call onBlur when input loses focus', () => {
+    const { container } = render(<TimeInput {...baseProps} />);
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+    container.querySelector('input').blur();
+    expect(container.querySelector('input')).not.toHaveFocus();
+  });
+
+  it('should format the value when input is blurred on english locale', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <TimeInput {...baseProps} onChange={onChange} value="2:3 AM" />
+    );
+
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+    container.querySelector('input').blur();
+    expect(container.querySelector('input')).not.toHaveFocus();
+    expect(onChange).toHaveBeenCalledWith({
+      target: { id: undefined, name: undefined, value: '2:03 AM' },
+    });
+  });
+
+  it('should format the value when input is blurred on german locale', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <TimeInput {...baseProps} onChange={onChange} value="12:3" />,
+      { locale: 'de' }
+    );
+
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+    container.querySelector('input').blur();
+    expect(container.querySelector('input')).not.toHaveFocus();
+    expect(onChange).toHaveBeenCalledWith({
+      target: { id: undefined, name: undefined, value: '12:03' },
+    });
+  });
+
+  it('should have focus automatically when isAutofocussed is passed', () => {
+    const { container } = render(<TimeInput {...baseProps} isAutofocussed />);
+    expect(container.querySelector('input')).toHaveFocus();
   });
 });

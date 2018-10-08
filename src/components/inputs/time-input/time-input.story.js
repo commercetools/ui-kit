@@ -11,39 +11,32 @@ import TimeInput from './time-input';
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('TimeInput', () => {
-    const timeZone = select(
-      'timeZone',
-      ['Europe/Madrid', 'America/Los_Angeles'],
-      'Europe/Madrid'
-    );
-    return (
-      <Section>
-        <Value
-          key={timeZone}
-          defaultValue="17:12:00.000"
-          render={(value, onChange) => (
+  .add('TimeInput', () => (
+    <Section>
+      <Value
+        defaultValue="17:12"
+        render={(value, onChange) => (
+          <div>
             <TimeInput
-              key={timeZone}
               id={text('id', '')}
+              name={text('name', '')}
               placeholder={text('placeholder', 'Select a time...')}
-              mode={select('mode', ['single', 'multiple', 'range'], 'single')}
+              isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
-              value={text('value (Date in UTC)', value)}
-              onChange={time => {
-                action('onChange')(time);
-                onChange(time);
+              value={text('value', value)}
+              onChange={event => {
+                action('onChange')(event);
+                onChange(event.target.value);
               }}
-              isInvalid={boolean('isInvalid?', false)}
-              timeZone={timeZone}
+              hasError={boolean('hasError', false)}
               horizontalConstraint={select(
                 'horizontalConstraint',
                 ['xs', 's', 'm', 'l', 'xl', 'scale'],
                 'm'
               )}
             />
-          )}
-        />
-      </Section>
-    );
-  });
+          </div>
+        )}
+      />
+    </Section>
+  ));

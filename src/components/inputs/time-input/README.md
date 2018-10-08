@@ -2,30 +2,50 @@
 
 #### Description
 
-The `TimeInput` component allows the user to select a time. This component also supports
-multiple date selection. It formats the selected date depending on the current locale.
+The `TimeInput` component allows the user to select a time.
+It formats the selected date depending on the locale.
 
 ## Usage
 
 ```js
 import { TimeInput } from '@commercetools-frontend/ui-kit';
 
-<TimeInput value="2017-12-31T16:02:50.000Z" onChange={() => {}} />;
+<TimeInput value="14:00" onChange={() => {}} />;
 ```
 
 #### Properties
 
-| Props                     | Type     | Required | Values                                                                                                     | Default                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                       |
-| ------------------------- | -------- | :------: | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                      | `string` |    -     | -                                                                                                          | -                                                                                                      | Used as the HTML `id` attribute.                                                                                                                                                                                                                                                                                                                                                  |
-| `onChange`                | `func`   |    ✅    | -                                                                                                          | -                                                                                                      | a function called whenever the value changes.<br /><br />- `undefined` when mode is single and value was cleared<br />- `String` (`ISO` _date/time/datetime_) when mode is single and value changed<br />- `[]` when mode is multiple or range and value was cleared<br />- `Array<String>` (`ISO` _date/time/datetime_) when mode is multiple and at least one date was selected |
-| `onClose`                 | `func`   |    -     | -                                                                                                          | a function called whenever the picker closes. The function accepts an argument with the picker `value` |
-| `mode`                    | `oneOf`  |    -     | `range`, `multiple`, `single`                                                                              | `single`                                                                                               | Indicates the mode we can select dates                                                                                                                                                                                                                                                                                                                                            |
-| `timeScale`               | `oneOf`  |    -     | `time`, `date`, `datetime`                                                                                 | `date`                                                                                                 | Indicates the time scale for the picker                                                                                                                                                                                                                                                                                                                                           |
-| `timeZone`                | `string` |    -     | A valid [moment.tz](https://momentjs.com/timezone/docs/#/using-timezones/) time zone, e.g. `Europe/Madrid` | `date`                                                                                                 | The time zone used to show the UTC dates to the user. Only used when `timeScale` is `datetime`.                                                                                                                                                                                                                                                                                   |
-| `value`                   | `string` |    -     | -                                                                                                          |                                                                                                        | The date value                                                                                                                                                                                                                                                                                                                                                                    |
-| `placeholder`             | `string` |    -     | -                                                                                                          | -                                                                                                      | Placeholder value to show in the input field                                                                                                                                                                                                                                                                                                                                      |
-| `isDisabled`              | `bool`   |    -     | -                                                                                                          | `false`                                                                                                | Disables the date picker                                                                                                                                                                                                                                                                                                                                                          |
-| `horizontalConstraint`    | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale`                                                                         | `scale`                                                                                                | Horizontal size limit of the input field.                                                                                                                                                                                                                                                                                                                                         |
-| `isInvalid`               | `bool`   |    -     | -                                                                                                          | `false`                                                                                                | Switches to invalid-state                                                                                                                                                                                                                                                                                                                                                         |
-| `shouldInitializeOnMount` | `bool`   |    -     | -                                                                                                          | `false`                                                                                                | In case the picker plugin should be initialized when the component mounts (by default it will be initialized first when the user hovers with the mouse)                                                                                                                                                                                                                           |
+| Props                  | Type     | Required | Values                             | Default | Description                                                                                                              |
+| ---------------------- | -------- | :------: | ---------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `id`                   | `string` |    -     | -                                  | -       | Used as HTML `id` property                                                                                               |
+| `name`                 | `string` |    -     | -                                  | -       | Used as HTML `name` property                                                                                             |
+| `value`                | `string` |    ✅    | -                                  | -       | Value of the input                                                                                                       |
+| `onChange`             | `func`   |    -     | -                                  | -       | Called with an event holding the new value. Required when input is not read only. Parent should pass it back as `value`- |
+| `onBlur`               | `func`   |    -     | -                                  | -       | Called when field is blurred                                                                                             |
+| `hasError`             | `bool`   |    -     | -                                  | -       | Indicates the input field has an error                                                                                   |
+| `isAutofocussed`       | `bool`   |    -     | -                                  | -       | Focus the input field on initial render                                                                                  |
+| `isDisabled`           | `bool`   |    -     | -                                  | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                                       |
+| `isReadOnly`           | `bool`   |    -     | -                                  | `false` | Indicates that the field is displaying read-only content                                                                 |
+| `placeholder`          | `string` |    -     | -                                  | -       | Placeholder text for the input                                                                                           |
+| `horizontalConstraint` | `object` |          | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                               |
+
+The value after the field has been blurred is always either valid or an empty string. The input automatically formats the value on blur by calling `onChange` with the formatted value - or with an empty value in case the input was not a valid time.
+
+### Static methods
+
+#### `TimeInput.to24h`
+
+Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces only.
+
+```js
+TimeInput.to24h(''); // -> ''
+TimeInput.to24h(' '); // -> ''
+TimeInput.to24h('three'); // -> ''
+TimeInput.to24h('4 pm'); // -> 16:00
+TimeInput.to24h('4:40 AM'); // -> 04:00
+TimeInput.to24h('3pm'); // -> 15:00
+```
+
+### Main Functions and use cases are:
+
+- Input field for time

@@ -1,29 +1,10 @@
-.date-input-container {
+.time-input-container {
   width: 100%;
   align-items: center;
   display: flex;
 }
 
-.constraintScale {
-  width: var(--constraint-scale);
-}
-.constraintXs {
-  max-width: var(--constraint-xs);
-}
-.constraintS {
-  max-width: var(--constraint-s);
-}
-.constraintM {
-  max-width: var(--constraint-m);
-}
-.constraintL {
-  max-width: var(--constraint-l);
-}
-.constraintXl {
-  max-width: var(--constraint-xl);
-}
-
-.date-input {
+.time-input {
   width: 100%;
   appearance: none;
   background: var(--token-background-color-input-pristine);
@@ -43,31 +24,35 @@
 
 /* Active/Focus */
 
-.date-input:focus,
-.date-input:focus + .clear-icon-container,
-.date-input:active,
-.date-input:active + .clear-icon-container {
+.time-input:focus,
+.time-input:focus + .clear-icon-container,
+.time-input:active,
+.time-input:active + .clear-icon-container {
   border-color: var(--token-border-color-input-focus);
   color: var(--token-font-color-default);
   transition: var(--transition-standard);
 }
 
-/* Warning */
+/* Error */
 
-.date-input.invalid,
-.date-input.invalid + .clear-icon-container {
-  color: var(--token-font-color-warning);
-  border-color: var(--token-border-color-input-warning);
+.time-input.error,
+.time-input.error + .clear-icon-container {
+  color: var(--token-font-color-error);
+  border-color: var(--token-border-color-input-error);
 }
 
 /* Disabled */
 
-.date-input:disabled {
+.time-input:disabled,
+.time-input:read-only {
   background-color: var(--token-background-color-input-disabled);
   color: var(--token-font-color-disabled);
   border-color: var(--token-border-color-input-disabled);
-  cursor: not-allowed;
   opacity: 1; /* fix for mobile safari */
+}
+
+.time-input:disabled {
+  cursor: not-allowed;
 }
 
 /* Icon */
@@ -89,7 +74,7 @@
   composes: icon-container;
 }
 
-.calendar-icon-container {
+.clock-icon-container {
   composes: icon-container;
   border-top-right-radius: var(--token-border-radius-input);
   border-bottom-right-radius: var(--token-border-radius-input);
