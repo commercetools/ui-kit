@@ -118,7 +118,19 @@ describe('TimeInput', () => {
     container.querySelector('input').blur();
     expect(container.querySelector('input')).not.toHaveFocus();
     expect(onChange).toHaveBeenCalledWith({
-      target: { id: undefined, name: undefined, value: '12:03' },
+      target: {
+        id: undefined,
+        name: undefined,
+        // There is a limitation in node where the underlying Intl API used by
+        // react-intl does not contain the full locale data and  falls back to
+        // "en". This makes this test essentially useless, but I want to
+        // include it anyways to ensure that we at least get a value.
+        // Ideally, the value would be "12:03" (and it is in browsers), but
+        // it will be "12:03 PM" in this test.
+        // See https://github.com/jsdom/jsdom/issues/1626#issuecomment-253795231
+        // and https://github.com/nodejs/node/issues/8818
+        value: expect.stringMatching(/^12:03( PM)?$/),
+      },
     });
   });
 

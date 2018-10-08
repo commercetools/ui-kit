@@ -74,7 +74,7 @@ export class TimeInput extends React.Component {
     this.props.onChange(event);
   };
 
-  // time should be passed in as 24h format
+  // time must be passed in 24h format
   // returns time in format of locale (either 12h or 24h).
   toLocaleTime = time => {
     const date = new Date(`1970-01-01 ${time}`);
