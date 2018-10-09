@@ -57,7 +57,6 @@
     "common-tags": "1.8.0",
     "dom-helpers": "3.3.1",
     "downshift": "2.2.3",
-    "flatpickr": "4.5.2",
     "tiny-invariant": "1.0.1",
     "is-touch-device": "1.0.1",
     "lodash.flatmap": "4.5.0",
@@ -70,11 +69,7 @@
     "lodash.without": "4.4.0",
     "prop-types": "15.6.2",
     "react-required-if": "1.0.3",
-    "react-select": "2.1.0",
-    "react-textarea-autosize": "7.0.4",
-    "react-virtualized": "9.20.1",
     "recompose": "0.30.0",
-    "styled-components": "3.4.9",
     "warning": "4.0.2"
   },
   "devDependencies": {
@@ -104,6 +99,7 @@
     "css-loader": "1.0.0",
     "enzyme": "3.7.0",
     "eslint": "5.3.0",
+    "flatpickr": "4.5.2",
     "formik": "1.3.1",
     "glob": "7.1.3",
     "graphql": "14.0.2",
@@ -142,8 +138,11 @@
     "react-dom": "16.5.2",
     "react-intl": "2.7.0",
     "react-router-dom": "4.3.1",
+    "react-select": "2.1.0",
     "react-testing-library": "5.1.1",
+    "react-textarea-autosize": "7.0.4",
     "react-value": "0.2.0",
+    "react-virtualized": "9.20.1",
     "rimraf": "2.6.2",
     "rollup": "0.66.4",
     "rollup-plugin-babel": "4.0.3",
@@ -159,6 +158,7 @@
     "shelljs": "0.8.2",
     "storybook-readme": "4.0.0-beta1",
     "style-loader": "0.23.0",
+    "styled-components": "3.4.9",
     "stylelint": "9.6.0",
     "stylelint-config-standard": "18.2.0",
     "stylelint-order": "1.0.0",
@@ -166,12 +166,17 @@
     "webpack": "4.20.2"
   },
   "peerDependencies": {
+    "flatpickr": ">4.5.0",
     "moment": ">2.2",
     "moment-timezone": "^0.5",
     "react": ">=16",
     "react-dom": ">=16",
     "react-intl": ">=2",
-    "react-router-dom": ">=4"
+    "react-router-dom": ">=4",
+    "react-select": ">2.1.0",
+    "react-textarea-autosize": ">7.0.0",
+    "react-virtualized": ">9.0.0",
+    "styled-components": ">3.4.0"
   },
   "husky": {
     "hooks": {
