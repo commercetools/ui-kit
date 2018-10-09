@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'invariant';
+import invariant from 'tiny-invariant';
 import classnames from 'classnames';
 import Text from '../../typography/text';
 import { CaretDownIcon, CaretUpIcon } from '../../icons';

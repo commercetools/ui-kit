@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Checkbox } from './checkbox';
 
-jest.mock('invariant');
+jest.mock('tiny-invariant');
 
 const createTestProps = custom => ({
   name: 'bar',

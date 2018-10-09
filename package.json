@@ -58,7 +58,7 @@
     "dom-helpers": "3.3.1",
     "downshift": "2.2.3",
     "flatpickr": "4.5.2",
-    "invariant": "2.2.4",
+    "tiny-invariant": "1.0.1",
     "is-touch-device": "1.0.1",
     "lodash.flatmap": "4.5.0",
     "lodash.has": "4.5.2",

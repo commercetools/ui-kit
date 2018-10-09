@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { compose } from 'recompose';
-import invariant from 'invariant';
+import invariant from 'tiny-invariant';
 import isNil from 'lodash.isnil';
 import requiredIf from 'react-required-if';
 import Spacings from '../../spacings';
