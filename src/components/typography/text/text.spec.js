@@ -339,8 +339,8 @@ describe('<Detail>', () => {
     it('should not have "bold" class', () => {
       expect(wrapper).not.toContainClass(styles.bold);
     });
-    it('should have "inline" class', () => {
-      expect(wrapper).toContainClass(styles.inline);
+    it('should have "inline-text" class', () => {
+      expect(wrapper).toContainClass(styles['inline-text']);
     });
     it('should render given text', () => {
       expect(wrapper.text()).toMatch('Detail');
@@ -359,8 +359,8 @@ describe('<Detail>', () => {
       it('should have "bold" class', () => {
         expect(wrapper).toContainClass(styles.bold);
       });
-      it('should have "inline" class', () => {
-        expect(wrapper).toContainClass(styles.inline);
+      it('should have "inline-text" class', () => {
+        expect(wrapper).toContainClass(styles['inline-text']);
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
@@ -381,8 +381,8 @@ describe('<Detail>', () => {
       it('should have "secondary" class', () => {
         expect(wrapper).toContainClass(styles.secondary);
       });
-      it('should have "inline" class', () => {
-        expect(wrapper).toContainClass(styles.inline);
+      it('should have "inline-text" class', () => {
+        expect(wrapper).toContainClass(styles['inline-text']);
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');

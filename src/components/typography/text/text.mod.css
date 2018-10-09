@@ -107,7 +107,7 @@ small {
   color: var(--color-orange);
 }
 
-.inline {
+.inline-text {
   display: inline-block;
 }
 
