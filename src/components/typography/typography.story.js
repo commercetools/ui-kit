@@ -60,6 +60,7 @@ storiesOf('Typography/Text', module)
     <Section>
       <Text.Body
         isBold={boolean('bold', false)}
+        isInline={boolean('inline', false)}
         isItalic={boolean('italic', false)}
         tone={select('Text tone', [
           'none',
@@ -80,6 +81,7 @@ storiesOf('Typography/Text', module)
     <Section>
       <Text.Detail
         isBold={boolean('bold', false)}
+        isInline={boolean('inline', false)}
         isItalic={boolean('italic', false)}
         tone={select('Text tone', [
           'none',
