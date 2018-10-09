@@ -88,7 +88,8 @@ export class TimeInputBody extends React.Component {
             hasError={this.props.hasError}
             onClear={this.props.onClear}
           />
-          <div
+          <label
+            htmlFor={this.props.id}
             data-toggle
             className={classnames(styles['clock-icon-container'], {
               [styles['icon-container-disabled']]: this.props.isDisabled,
@@ -96,7 +97,7 @@ export class TimeInputBody extends React.Component {
             })}
           >
             <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
-          </div>
+          </label>
         </div>
       </Spacings.Inline>
     );

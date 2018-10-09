@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import createSequentialId from '../../../utils/create-sequential-id';
 import Constraints from '../../constraints';
 import { TimeInputBody } from './time-input-body';
+
+const sequentialId = createSequentialId('time-input-');
 
 const leftPad = (value, length = 2) => String(value).padStart(length, '0');
 const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
@@ -100,6 +103,20 @@ export class TimeInput extends React.Component {
     }).isRequired,
   };
 
+  state = {
+    // We generate an id in case no id is provided by the parent to attach the
+    // label to the input component.
+    id: this.props.id,
+  };
+
+  static getDerivedStateFromProps = (props, state) => ({
+    id: do {
+      if (props.id) props.id;
+      else if (state.id) state.id;
+      else sequentialId();
+    },
+  });
+
   static defaultProps = {
     horizontalConstraint: 'scale',
   };
@@ -153,7 +170,7 @@ export class TimeInput extends React.Component {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <TimeInputBody
-          id={this.props.id}
+          id={this.state.id}
           name={this.props.name}
           value={this.props.value}
           onChange={this.props.onChange}

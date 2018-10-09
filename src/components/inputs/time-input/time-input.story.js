@@ -20,7 +20,7 @@ storiesOf('Inputs', module)
             <TimeInput
               id={text('id', '')}
               name={text('name', '')}
-              placeholder={text('placeholder', 'Select a time...')}
+              placeholder={text('placeholder', 'Enter time')}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               value={text('value', value)}
