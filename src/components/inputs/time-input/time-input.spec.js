@@ -13,22 +13,6 @@ describe('TimeInput.to24h', () => {
   describe('when called with invalid time', () => {
     it('should return an empty string', () => {
       expect(TimeInput.to24h('65:10')).toEqual('');
-    });
-  });
-  describe('when called with valid time', () => {
-    it('should return the time in 24h format', () => {
-      expect(TimeInput.to24h('15:10')).toEqual('15:10');
-      expect(TimeInput.to24h('15:2')).toEqual('15:02');
-      expect(TimeInput.to24h('04')).toEqual('04:00');
-      expect(TimeInput.to24h('3 AM')).toEqual('03:00');
-      expect(TimeInput.to24h('3 PM')).toEqual('15:00');
-      expect(TimeInput.to24h('3:15 AM')).toEqual('03:15');
-      expect(TimeInput.to24h('3:5 AM')).toEqual('03:05');
-      expect(TimeInput.to24h('0:00')).toEqual('00:00');
-      expect(TimeInput.to24h('10:02:03')).toEqual('10:02:03');
-      expect(TimeInput.to24h('10:2:3')).toEqual('10:02:03');
-      expect(TimeInput.to24h('10:2:3.456')).toEqual('10:02:03.456');
-      expect(TimeInput.to24h('10:2:3.5')).toEqual('10:02:03.500');
       expect(TimeInput.to24h('10:3.5')).toEqual('');
       expect(TimeInput.to24h('1300:00.000')).toEqual('');
       expect(TimeInput.to24h('1300')).toEqual('');
@@ -36,6 +20,28 @@ describe('TimeInput.to24h', () => {
       expect(TimeInput.to24h('13:00.000')).toEqual('');
       expect(TimeInput.to24h('15:09.300')).toEqual('');
       expect(TimeInput.to24h('10:3.5')).toEqual('');
+    });
+  });
+  describe('when called with valid time', () => {
+    describe('when called with regular precision time', () => {
+      it('should return the time in 24h format', () => {
+        expect(TimeInput.to24h('15:10')).toEqual('15:10');
+        expect(TimeInput.to24h('15:2')).toEqual('15:02');
+        expect(TimeInput.to24h('04')).toEqual('04:00');
+        expect(TimeInput.to24h('3 AM')).toEqual('03:00');
+        expect(TimeInput.to24h('3 PM')).toEqual('15:00');
+        expect(TimeInput.to24h('3:15 AM')).toEqual('03:15');
+        expect(TimeInput.to24h('3:5 AM')).toEqual('03:05');
+        expect(TimeInput.to24h('0:00')).toEqual('00:00');
+      });
+    });
+    describe('when called with high precision time', () => {
+      it('should return the time in 24h format', () => {
+        expect(TimeInput.to24h('10:02:03')).toEqual('10:02:03');
+        expect(TimeInput.to24h('10:2:3')).toEqual('10:02:03');
+        expect(TimeInput.to24h('10:2:3.456')).toEqual('10:02:03.456');
+        expect(TimeInput.to24h('10:2:3.5')).toEqual('10:02:03.500');
+      });
     });
   });
 });
