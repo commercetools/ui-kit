@@ -103,7 +103,7 @@ const Detail = props => (
     className={classnames({
       [styles.bold]: props.isBold,
       [styles.italic]: props.isItalic,
-      [styles.inline]: props.isInline,
+      [styles['inline-text']]: props.isInline,
       [styles[`${props.tone}`]]: props.tone,
       [styles.truncate]: props.truncate,
     })}
