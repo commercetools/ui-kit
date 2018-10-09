@@ -4,7 +4,7 @@ import Text from '../../typography/text';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import CollapsiblePanel from './collapsible-panel';
 
-jest.mock('invariant');
+jest.mock('tiny-invariant');
 
 describe('CollapsiblePanel', () => {
   const createTestProps = props => ({

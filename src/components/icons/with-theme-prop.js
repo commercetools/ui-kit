@@ -1,5 +1,5 @@
 import { mapProps } from 'recompose';
-import invariant from 'invariant';
+import invariant from 'tiny-invariant';
 import styles from './icons.mod.css';
 
 const getThemeClassName = theme => {

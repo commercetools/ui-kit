@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'invariant';
+import invariant from 'tiny-invariant';
 import has from 'lodash.has';
 import isNumberish from '../../../utils/is-numberish';
 import filterDataAttributes from '../../../utils/filter-data-attributes';

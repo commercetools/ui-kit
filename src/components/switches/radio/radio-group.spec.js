@@ -1,10 +1,10 @@
 import React from 'react';
-import invariant from 'invariant';
+import invariant from 'tiny-invariant';
 import { shallow } from 'enzyme';
 import Option from './radio-option';
 import Group from './radio-group';
 
-jest.mock('invariant');
+jest.mock('tiny-invariant');
 
 const createOptionTestProps = custom => ({
   value: 'foo',
