@@ -1,103 +1,64 @@
 // This component is based on the experimental Date Picker example
 // https://react-select.com/advanced#experimental
 import React, { Component } from 'react';
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import omit from 'lodash.omit';
-import chrono from 'chrono-node';
 import Select, { components as SelectComponents } from 'react-select';
 import Constraints from '../../constraints';
+import messages from './messages';
 import styles from './date-input.mod.css';
 
 // TODO
 // - allow navigation with arrow keys (allow going up/down)
-// - enable typing "today", "tomorrow" (in locale)
-// - show value as "10.08.2017 (Tomorrow)" (in locale)
 
 const CalendarConnector = React.createContext();
 
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
 
-const createOptionForDate = (day, locale) => {
+const createOptionForDate = (day, intl) => {
   const date =
-    moment.isMoment(day) && day.locale() === locale
+    moment.isMoment(day) && day.locale() === intl.locale
       ? day
-      : moment(day).locale(locale);
+      : moment(day).locale(intl.locale);
   return {
     date,
     value: date.format('YYYY-MM-DD'),
     label: date.calendar(null, {
-      sameDay: 'Do MMM YYYY [(Today)]',
-      nextDay: 'Do MMM YYYY [(Tomorrow)]',
-      nextWeek: '[Next] dddd (Do MMM YYYY)',
-      lastDay: 'Do MMM YYYY [(Yesterday)]',
-      lastWeek: '[Last] dddd (Do MMM YYYY)',
-      sameElse: 'Do MMMM YYYY',
+      sameDay: intl.formatMessage(messages.sameDay),
+      nextDay: intl.formatMessage(messages.nextDay),
+      nextWeek: intl.formatMessage(messages.nextWeek),
+      lastDay: intl.formatMessage(messages.lastDay),
+      lastWeek: intl.formatMessage(messages.lastWeek),
+      sameElse: intl.formatMessage(messages.sameElse),
     }),
   };
 };
 
-const createCalendarOptions = (day, locale) => {
+const createCalendarOptions = (day, intl) => {
   const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
     (_, i) => {
       const dayOfMonth = i + 1;
       const date = moment(day)
-        .locale(locale)
+        .locale(intl.locale)
         .date(dayOfMonth);
-      return { ...createOptionForDate(date, locale), display: 'calendar' };
+      return {
+        ...createOptionForDate(date, intl),
+        display: 'calendar',
+      };
     }
   );
 
   const label = moment(day)
-    .locale(locale)
+    .locale(intl.locale)
     .format('MMMM YYYY');
 
   // group for the calendar
   return { label, options: daysInMonth };
 };
 
-const defaultOptions = [
-  // ...['today', 'tomorrow', 'yesterday'].map(i =>
-  //   createOptionForDate(chrono.parseDate(i))
-  // ),
-];
-
-const suggestions = [
-  'sunday',
-  'saturday',
-  'friday',
-  'thursday',
-  'wednesday',
-  'tuesday',
-  'monday',
-  'december',
-  'november',
-  'october',
-  'september',
-  'august',
-  'july',
-  'june',
-  'may',
-  'april',
-  'march',
-  'february',
-  'january',
-  'yesterday',
-  'tomorrow',
-  'today',
-].reduce((acc, str) => {
-  for (let i = 1; i < str.length; i += 1) {
-    acc[str.substr(0, i)] = str;
-  }
-  return acc;
-}, {});
-
-const suggest = str =>
-  str
-    .split(/\b/)
-    .map(i => suggestions[i] || i)
-    .join('');
+const defaultOptions = [];
 
 const daysHeaderStyles = {
   marginTop: '5px',
@@ -124,7 +85,7 @@ const headingStyles = {
   display: 'inline-block',
 };
 
-const Group = props => {
+const Group = injectIntl(props => {
   const Heading = props.Heading;
   return (
     <CalendarConnector.Consumer>
@@ -178,15 +139,15 @@ const Group = props => {
             <button
               onClick={() => {
                 const today = moment();
-                props.selectOption(createOptionForDate(today, locale));
+                props.selectOption(createOptionForDate(today, props.intl));
               }}
               className={styles.today}
             >
-              Today
+              <FormattedMessage {...messages.today} />
             </button>
             <div style={daysHeaderStyles}>
-              {days.map((day, i) => (
-                <span key={`${i}-${day}`} style={daysHeaderItemStyles}>
+              {days.map(day => (
+                <span key={day} style={daysHeaderItemStyles}>
                   {day}
                 </span>
               ))}
@@ -197,7 +158,7 @@ const Group = props => {
       }}
     </CalendarConnector.Consumer>
   );
-};
+});
 Group.displayName = 'Group';
 
 const getOptionStyles = defaultStyles => ({
@@ -275,6 +236,63 @@ class DateInput extends Component {
     };
   }
 
+  // Allow users to type things like "january" or "monday" and turn it into
+  // a date as a suggestion.
+  // Respects locales when making the suggestions.
+  // Translations for locales are taken from moment data and from
+  // our own translations.
+  suggest = rawWord => {
+    const word = rawWord.toLowerCase();
+
+    const matches = entry => entry.toLowerCase().startsWith(word);
+    if (matches(this.props.intl.formatMessage(messages.today))) {
+      const today = new Date();
+      return today;
+    }
+
+    if (matches(this.props.intl.formatMessage(messages.yesterday))) {
+      return moment()
+        .subtract(1, 'day')
+        .toDate();
+    }
+
+    if (matches(this.props.intl.formatMessage(messages.tomorrow))) {
+      return moment()
+        .add(1, 'day')
+        .toDate();
+    }
+
+    // weekdays is an array with index 0 being sunday
+    const weekdays = moment.localeData(this.props.intl.locale).weekdays();
+    // weekday is a number and starts with sunday being 0
+    const matchedWeekay = weekdays.findIndex(matches);
+    if (matchedWeekay !== -1) {
+      const weekday = moment().weekday();
+      return (
+        moment()
+          // we subtract so that we always match in the current week
+          .add(matchedWeekay - weekday, 'day')
+          .toDate()
+      );
+    }
+
+    const months = moment.localeData(this.props.intl.locale).months();
+    const matchedMonth = months.findIndex(matches);
+    if (matchedMonth !== -1) {
+      const month = moment().month();
+      return (
+        moment()
+          // we subtract so that we always match in the current year
+          .add(matchedMonth - month, 'month')
+          // always show first of month
+          .date(1)
+          .toDate()
+      );
+    }
+
+    return null;
+  };
+
   handleChange = option => {
     this.props.onChange(option ? option.value : '');
   };
@@ -302,12 +320,12 @@ class DateInput extends Component {
           );
 
           if (localeDate.isValid()) localeDate;
-          else chrono.parseDate(suggest(value.toLowerCase()));
+          else this.suggest(value);
         };
         this.setState(prevState => ({
           month: date || prevState.month,
           suggestedOptions: date
-            ? [createOptionForDate(date, this.props.intl.locale)]
+            ? [createOptionForDate(date, this.props.intl)]
             : [],
         }));
         break;
@@ -322,7 +340,7 @@ class DateInput extends Component {
 
     const date = new Date(standardDate);
     return isValidDate(date)
-      ? createOptionForDate(date, this.props.intl.locale)
+      ? createOptionForDate(date, this.props.intl)
       : undefined;
   };
 
@@ -349,7 +367,7 @@ class DateInput extends Component {
             onInputChange={this.handleInputChange}
             options={[
               ...this.state.suggestedOptions,
-              createCalendarOptions(this.state.month, this.props.intl.locale),
+              createCalendarOptions(this.state.month, this.props.intl),
             ]}
             value={this.standardDateToOption(this.props.value)}
             isClearable={this.props.isClearable}

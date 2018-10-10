@@ -28,10 +28,10 @@
   composes: monthButton;
   float: right;
   margin-right: 8px;
+  color: #1a1a1a;
 }
 
 .today:hover {
   /* background: rgb(38, 132, 255); */
   background: rgb(222, 235, 255);
-  color: #1a1a1a;
 }
