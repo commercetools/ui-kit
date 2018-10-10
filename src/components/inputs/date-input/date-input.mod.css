@@ -19,6 +19,7 @@
   flex-direction: row;
   margin-bottom: 8px;
   align-items: baseline;
+  font-size: 13px;
 }
 
 .month {
