@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Option } from './radio-option';
 
-jest.mock('invariant');
+jest.mock('tiny-invariant');
 
 const createTestProps = custom => ({
   value: 'foo',

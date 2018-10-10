@@ -1,4 +1,4 @@
-import invariant from 'invariant';
+import invariant from 'tiny-invariant';
 import without from 'lodash.without';
 import uniq from 'lodash.uniq';
 import filterDataAttributes from './filter-data-attributes';

@@ -1,3 +1,27 @@
+<a name="2.0.0-rc.11"></a>
+
+# [2.0.0-rc.11](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2018-10-09)
+
+### Bug Fixes
+
+- `Text`: fix Text inline prop ([#154](https://github.com/commercetools/ui-kit/issues/154))
+
+### Changes
+
+- Replace `invariant` with `tiny-invariant` ([#152](https://github.com/commercetools/ui-kit/issues/152))
+
+### BREAKING CHANGES
+
+- ([#152](https://github.com/commercetools/ui-kit/issues/152)) Consumers must provide `tiny-invariant` instead of `invariant`, as the UI-Kit's peer dependency has changed.
+
+<a name="2.0.0-rc.10"></a>
+
+# [2.0.0-rc.10](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.9...2.0.0-rc.10) (2018-10-08)
+
+### Fixed
+
+- Fix broken DotIcon [#149](https://github.com/commercetools/ui-kit/issues/139)
+
 <a name="2.0.0-rc.9"></a>
 
 # [2.0.0-rc.9](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.8...2.0.0-rc.9) (2018-10-05)

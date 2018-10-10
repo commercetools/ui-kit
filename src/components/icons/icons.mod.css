@@ -1,34 +1,34 @@
 @import '../../../materials/colors/base-colors.mod.css';
 
-.theme-black path {
+.theme-black * {
   fill: var(--color-black);
 }
 
-.theme-grey path {
+.theme-grey * {
   fill: var(--color-gray-60);
 }
 
-.theme-white path {
+.theme-white * {
   fill: var(--color-white);
 }
 
-.theme-blue path {
+.theme-blue * {
   fill: var(--color-blue);
 }
 
-.theme-green path {
+.theme-green * {
   fill: var(--color-green);
 }
 
-.theme-green-light path {
+.theme-green-light * {
   fill: var(--color-green-40);
 }
 
-.theme-orange path {
+.theme-orange * {
   fill: var(--color-orange);
 }
 
-.theme-red path {
+.theme-red * {
   fill: var(--color-red);
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { compose } from 'recompose';
-import invariant from 'invariant';
+import invariant from 'tiny-invariant';
 import isNil from 'lodash.isnil';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
