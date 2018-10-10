@@ -14,7 +14,7 @@ storiesOf('Inputs', module)
   .add('DateInput', () => (
     <Section>
       <Value
-        defaultValue="2007-03-18"
+        defaultValue=""
         render={(value, onChange) => (
           <div>
             <DateInput

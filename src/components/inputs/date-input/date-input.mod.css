@@ -10,9 +10,20 @@
   cursor: default;
 }
 
-.monthButton:hover:not(.today) {
-  background: #d9d9d9;
-  color: white;
+.monthButton:hover {
+  color: #1a1a1a;
+}
+
+.headingControls {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+  align-items: baseline;
+}
+
+.month {
+  flex: 1 1 auto;
+  text-align: center;
 }
 
 .prevMonth {
@@ -24,14 +35,25 @@
   margin-right: 4px;
 }
 
-.today {
-  composes: monthButton;
-  float: right;
-  margin-right: 8px;
-  color: #1a1a1a;
+.daysHeader {
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-left: 2%;
+  border-top: 1px solid #eee;
 }
 
-.today:hover {
-  /* background: rgb(38, 132, 255); */
-  background: rgb(222, 235, 255);
+.daysHeaderItem {
+  color: #999;
+  cursor: default;
+  font-size: 75%;
+  font-weight: 500;
+  display: inline-block;
+  width: 12%;
+  margin: 0 1%;
+  text-align: center;
+}
+
+.daysContainer {
+  padding-top: 5px;
+  padding-left: 2%;
 }

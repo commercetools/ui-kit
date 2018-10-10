@@ -1,7 +1,7 @@
 // This component is based on the experimental Date Picker example
 // https://react-select.com/advanced#experimental
 import React, { Component } from 'react';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import omit from 'lodash.omit';
@@ -60,40 +60,17 @@ const createCalendarOptions = (day, intl) => {
 
 const defaultOptions = [];
 
-const daysHeaderStyles = {
-  marginTop: '5px',
-  paddingTop: '5px',
-  paddingLeft: '2%',
-  borderTop: '1px solid #eee',
-};
-const daysHeaderItemStyles = {
-  color: '#999',
-  cursor: 'default',
-  fontSize: '75%',
-  fontWeight: '500',
-  display: 'inline-block',
-  width: '12%',
-  margin: '0 1%',
-  textAlign: 'center',
-};
-const daysContainerStyles = {
-  paddingTop: '5px',
-  paddingLeft: '2%',
-};
-
-const headingStyles = {
-  display: 'inline-block',
-};
-
 const Group = injectIntl(props => {
   const Heading = props.Heading;
   return (
     <CalendarConnector.Consumer>
       {({ month, setMonth, locale }) => {
         // const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+        // This code is modifying `days`, so we need to create a fresh array
+        // to avoid manipulating the moment data
         const days = [...moment.localeData(locale).weekdaysMin()];
         const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
-        // Rearrange so that week starts at Su/Monday
+        // Rearrange so that week starts at Sunday/Monday depending on locale
         Array.from({ length: firstDayOfWeek }).forEach(() => {
           days.push(days.shift());
         });
@@ -104,55 +81,49 @@ const Group = injectIntl(props => {
             {...props.innerProps}
           >
             <Heading
-              style={headingStyles}
               theme={props.theme}
               getStyles={props.getStyles}
               cx={props.cx}
               {...props.headingProps}
             >
-              <button
-                onClick={() => {
-                  setMonth(
-                    moment(month)
-                      .subtract(1, 'month')
-                      .toDate()
-                  );
-                }}
-                className={styles.prevMonth}
-              >
-                {'❮'}
-              </button>
-              <button
-                onClick={() => {
-                  setMonth(
-                    moment(month)
-                      .add(1, 'month')
-                      .toDate()
-                  );
-                }}
-                className={styles.nextMonth}
-              >
-                {'❯'}
-              </button>
-              {props.label}
+              <div className={styles.headingControls}>
+                <button
+                  onClick={() => {
+                    setMonth(
+                      moment(month)
+                        .subtract(1, 'month')
+                        .toDate()
+                    );
+                  }}
+                  className={styles.prevMonth}
+                  type="button"
+                >
+                  {'❮'}
+                </button>
+                <div className={styles.month}>{props.label}</div>
+                <button
+                  onClick={() => {
+                    setMonth(
+                      moment(month)
+                        .add(1, 'month')
+                        .toDate()
+                    );
+                  }}
+                  className={styles.nextMonth}
+                  type="button"
+                >
+                  {'❯'}
+                </button>
+              </div>
             </Heading>
-            <button
-              onClick={() => {
-                const today = moment();
-                props.selectOption(createOptionForDate(today, props.intl));
-              }}
-              className={styles.today}
-            >
-              <FormattedMessage {...messages.today} />
-            </button>
-            <div style={daysHeaderStyles}>
+            <div className={styles.daysHeader}>
               {days.map(day => (
-                <span key={day} style={daysHeaderItemStyles}>
+                <span key={day} className={styles.daysHeaderItem}>
                   {day}
                 </span>
               ))}
             </div>
-            <div style={daysContainerStyles}>{props.children}</div>
+            <div className={styles.daysContainer}>{props.children}</div>
           </div>
         );
       }}
