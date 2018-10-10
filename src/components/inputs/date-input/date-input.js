@@ -1,17 +1,29 @@
 // This component is based on the experimental Date Picker example
 // https://react-select.com/advanced#experimental
 import React, { Component } from 'react';
+import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import omit from 'lodash.omit';
 import chrono from 'chrono-node';
 import Select, { components as SelectComponents } from 'react-select';
 import Constraints from '../../constraints';
+import styles from './date-input.mod.css';
+
+// TODO
+// - allow navigation with arrow keys (allow going up/down)
+// - enable typing "today", "tomorrow" (in locale)
+// - show value as "10.08.2017 (Tomorrow)" (in locale)
 
 const CalendarConnector = React.createContext();
 
-const createOptionForDate = d => {
-  const date = moment.isMoment(d) ? d : moment(d);
+const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
+
+const createOptionForDate = (day, locale) => {
+  const date =
+    moment.isMoment(day) && day.locale() === locale
+      ? day
+      : moment(day).locale(locale);
   return {
     date,
     value: date.format('YYYY-MM-DD'),
@@ -26,16 +38,20 @@ const createOptionForDate = d => {
   };
 };
 
-const createCalendarOptions = (day = new Date()) => {
+const createCalendarOptions = (day, locale) => {
   const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
     (_, i) => {
       const dayOfMonth = i + 1;
-      const date = moment(day).date(dayOfMonth);
-      return { ...createOptionForDate(date), display: 'calendar' };
+      const date = moment(day)
+        .locale(locale)
+        .date(dayOfMonth);
+      return { ...createOptionForDate(date, locale), display: 'calendar' };
     }
   );
 
-  const label = moment(day).format('MMMM YYYY');
+  const label = moment(day)
+    .locale(locale)
+    .format('MMMM YYYY');
 
   // group for the calendar
   return { label, options: daysInMonth };
@@ -83,8 +99,6 @@ const suggest = str =>
     .map(i => suggestions[i] || i)
     .join('');
 
-const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-
 const daysHeaderStyles = {
   marginTop: '5px',
   paddingTop: '5px',
@@ -106,17 +120,6 @@ const daysContainerStyles = {
   paddingLeft: '2%',
 };
 
-const prevMonthStyles = {
-  display: 'inline-block',
-  margin: '0 10px',
-};
-
-const nextMonthStyles = {
-  display: 'inline-block',
-  margin: '0 10px',
-  float: 'right',
-};
-
 const headingStyles = {
   display: 'inline-block',
 };
@@ -125,55 +128,73 @@ const Group = props => {
   const Heading = props.Heading;
   return (
     <CalendarConnector.Consumer>
-      {({ month, setMonth }) => (
-        <div
-          aria-label={props.label}
-          style={props.getStyles('group', props)}
-          {...props.innerProps}
-        >
-          <button
-            onClick={() => {
-              setMonth(
-                moment(month)
-                  .subtract(1, 'month')
-                  .toDate()
-              );
-            }}
-            style={prevMonthStyles}
+      {({ month, setMonth, locale }) => {
+        // const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+        const days = [...moment.localeData(locale).weekdaysMin()];
+        const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
+        // Rearrange so that week starts at Su/Monday
+        Array.from({ length: firstDayOfWeek }).forEach(() => {
+          days.push(days.shift());
+        });
+        return (
+          <div
+            aria-label={props.label}
+            style={props.getStyles('group', props)}
+            {...props.innerProps}
           >
-            prev
-          </button>
-          <Heading
-            style={headingStyles}
-            theme={props.theme}
-            getStyles={props.getStyles}
-            cx={props.cx}
-            {...props.headingProps}
-          >
-            {props.label}
-          </Heading>
-          <button
-            onClick={() => {
-              setMonth(
-                moment(month)
-                  .add(1, 'month')
-                  .toDate()
-              );
-            }}
-            style={nextMonthStyles}
-          >
-            next
-          </button>
-          <div style={daysHeaderStyles}>
-            {days.map((day, i) => (
-              <span key={`${i}-${day}`} style={daysHeaderItemStyles}>
-                {day}
-              </span>
-            ))}
+            <Heading
+              style={headingStyles}
+              theme={props.theme}
+              getStyles={props.getStyles}
+              cx={props.cx}
+              {...props.headingProps}
+            >
+              <button
+                onClick={() => {
+                  setMonth(
+                    moment(month)
+                      .subtract(1, 'month')
+                      .toDate()
+                  );
+                }}
+                className={styles.prevMonth}
+              >
+                {'❮'}
+              </button>
+              <button
+                onClick={() => {
+                  setMonth(
+                    moment(month)
+                      .add(1, 'month')
+                      .toDate()
+                  );
+                }}
+                className={styles.nextMonth}
+              >
+                {'❯'}
+              </button>
+              {props.label}
+            </Heading>
+            <button
+              onClick={() => {
+                const today = moment();
+                props.selectOption(createOptionForDate(today, locale));
+              }}
+              className={styles.today}
+            >
+              Today
+            </button>
+            <div style={daysHeaderStyles}>
+              {days.map((day, i) => (
+                <span key={`${i}-${day}`} style={daysHeaderItemStyles}>
+                  {day}
+                </span>
+              ))}
+            </div>
+            <div style={daysContainerStyles}>{props.children}</div>
           </div>
-          <div style={daysContainerStyles}>{props.children}</div>
-        </div>
-      )}
+        );
+      }}
     </CalendarConnector.Consumer>
   );
 };
@@ -188,57 +209,121 @@ const getOptionStyles = defaultStyles => ({
   borderRadius: '4px',
 });
 
-const Option = props => {
-  if (props.data.display === 'calendar') {
-    const defaultStyles = props.getStyles('option', props);
-    const styles = getOptionStyles(defaultStyles);
-    if (props.data.date.date() === 1) {
-      const indentBy = props.data.date.day();
-      if (indentBy) {
-        styles.marginLeft = `${indentBy * 14 + 1}%`;
+const Option = props => (
+  <CalendarConnector.Consumer>
+    {({ locale }) => {
+      if (props.data.display === 'calendar') {
+        const defaultStyles = props.getStyles('option', props);
+        const optionStyles = getOptionStyles(defaultStyles);
+        // Indent the first day of the month (date() === 1) in so that it starts
+        // at the appropriate position.
+        // Further respect the start of the week depending on the locale to
+        // adjust the indentation.
+        if (props.data.date.date() === 1) {
+          const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
+          const indentBy = props.data.date.day() - firstDayOfWeek;
+          if (indentBy) {
+            optionStyles.marginLeft = `${indentBy * 14 + 1}%`;
+          }
+        }
+        // highlight today
+        const today = new Date();
+        if (props.data.date.isSame(today, 'day')) {
+          optionStyles.fontWeight = 'bold';
+        }
+        return (
+          <span {...props.innerProps} style={optionStyles} ref={props.innerRef}>
+            {props.data.date.format('D')}
+          </span>
+        );
       }
-    }
-    return (
-      <span {...props.innerProps} style={styles} ref={props.innerRef}>
-        {props.data.date.format('D')}
-      </span>
-    );
-  }
-  return <SelectComponents.Option {...props} />;
-};
+      return <SelectComponents.Option {...props} />;
+    }}
+  </CalendarConnector.Consumer>
+);
 Option.displayName = 'Option';
 
-export default class DateInput extends Component {
+class DateInput extends Component {
   static displayName = 'DateInput';
 
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    intl: PropTypes.shape({
+      formatDate: PropTypes.func,
+    }).isRequired,
   };
 
   state = {
+    prevValue: this.props.value,
     suggestedOptions: defaultOptions,
-    month: new Date(),
+    month: do {
+      const date = new Date(this.props.value);
+      isValidDate(date) ? date : new Date();
+    },
   };
 
-  handleInputChange = value => {
-    const today = new Date();
-    if (!value) {
-      this.setState({ suggestedOptions: defaultOptions, month: today });
-      return;
-    }
-    const date = chrono.parseDate(suggest(value.toLowerCase()));
+  static getDerivedStateFromProps(props, state) {
+    if (state.prevValue === props.value) return null;
 
-    this.setState({
-      suggestedOptions: date ? [createOptionForDate(date)] : [],
-      month: date || today,
-    });
+    return {
+      prevValue: props.value,
+      suggestedOptions: defaultOptions,
+      month: do {
+        const date = new Date(props.value);
+        isValidDate(date) ? date : new Date();
+      },
+    };
+  }
+
+  handleChange = option => {
+    this.props.onChange(option ? option.value : '');
+  };
+
+  handleInputChange = (value, { action }) => {
+    switch (action) {
+      case 'menu-close': {
+        const date = new Date(this.props.value);
+        this.setState({ month: isValidDate(date) ? date : new Date() });
+        break;
+      }
+      case 'input-change': {
+        if (!value) {
+          this.setState({ suggestedOptions: defaultOptions });
+          return;
+        }
+
+        // Attempt to parse dates in locale before falling back to chrono
+        // This helps to avoid the mixup of month and day for US/other notations
+        const date = do {
+          const localeDate = moment(
+            value,
+            moment.localeData(this.props.intl.locale).longDateFormat('L'),
+            this.props.intl.locale
+          );
+
+          if (localeDate.isValid()) localeDate;
+          else chrono.parseDate(suggest(value.toLowerCase()));
+        };
+        this.setState(prevState => ({
+          month: date || prevState.month,
+          suggestedOptions: date
+            ? [createOptionForDate(date, this.props.intl.locale)]
+            : [],
+        }));
+        break;
+      }
+      default:
+        break;
+    }
   };
 
   standardDateToOption = standardDate => {
     if (!standardDate) return undefined;
 
     const date = new Date(standardDate);
-    return isNaN(date.getTime()) ? undefined : createOptionForDate(date);
+    return isValidDate(date)
+      ? createOptionForDate(date, this.props.intl.locale)
+      : undefined;
   };
 
   render() {
@@ -246,6 +331,7 @@ export default class DateInput extends Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <CalendarConnector.Provider
           value={{
+            locale: this.props.intl.locale,
             month: this.state.month,
             setMonth: month => this.setState({ month }),
           }}
@@ -259,13 +345,11 @@ export default class DateInput extends Component {
               value.some(i => i.date.isSame(option.date, 'day'))
             }
             maxMenuHeight={380}
-            onChange={option => {
-              this.props.onChange(option.value);
-            }}
+            onChange={this.handleChange}
             onInputChange={this.handleInputChange}
             options={[
               ...this.state.suggestedOptions,
-              createCalendarOptions(this.state.month),
+              createCalendarOptions(this.state.month, this.props.intl.locale),
             ]}
             value={this.standardDateToOption(this.props.value)}
             isClearable={this.props.isClearable}
@@ -275,3 +359,5 @@ export default class DateInput extends Component {
     );
   }
 }
+
+export default injectIntl(DateInput);

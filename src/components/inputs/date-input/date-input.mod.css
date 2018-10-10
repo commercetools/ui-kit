@@ -1,3 +1,37 @@
-.container {
-  width: 100%;
+.monthButton {
+  display: inline-block;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  color: #9c9c9c;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 2px 8px;
+  cursor: default;
+}
+
+.monthButton:hover:not(.today) {
+  background: #d9d9d9;
+  color: white;
+}
+
+.prevMonth {
+  composes: monthButton;
+}
+
+.nextMonth {
+  composes: monthButton;
+  margin-right: 4px;
+}
+
+.today {
+  composes: monthButton;
+  float: right;
+  margin-right: 8px;
+}
+
+.today:hover {
+  /* background: rgb(38, 132, 255); */
+  background: rgb(222, 235, 255);
+  color: #1a1a1a;
 }
