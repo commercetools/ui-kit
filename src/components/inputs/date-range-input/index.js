@@ -1,1 +1,1 @@
-export { default } from './date-input';
+export { default } from './date-range-input';

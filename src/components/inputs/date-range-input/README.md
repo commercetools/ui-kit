@@ -1,15 +1,14 @@
-# Dates: DateInput
+# Dates: DateRangeInput
 
 ## Usage
 
 ```js
-import { DateInput } from '@commercetools-frontend/ui-kit';
+import { DateRangeInput } from '@commercetools-frontend/ui-kit';
 ```
 
 #### Description
 
-The `DateInput` component allows the user to select a date. This component also supports
-multiple date selection. It formats the selected date depending on the current locale.
+The `DateRangeInput` component allows the user to select a date range.
 
 #### Usage
 

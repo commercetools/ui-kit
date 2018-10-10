@@ -8,14 +8,34 @@ import omit from 'lodash.omit';
 import Select, { components as SelectComponents } from 'react-select';
 import Constraints from '../../constraints';
 import messages from './messages';
-import styles from './date-input.mod.css';
+import styles from './date-range-input.mod.css';
 
 // TODO
 // - allow navigation with arrow keys (allow going up/down)
 
+// basically a dumb version of deepEquals whichworks with ranges only
+const rangeEqual = (a, b) => {
+  if (a === b) return true;
+  if (a.length !== b.length) return false;
+  return a[0] === b[0] && a[1] === b[1];
+};
+
+const createRangeLabel = (range, locale) => {
+  const format = date =>
+    moment(date)
+      .locale(locale)
+      .format('L');
+  return range[0] === range[1]
+    ? `${format(range[0])}`
+    : `${format(range[0])} - ${format(range[1])}`;
+};
+
 const CalendarConnector = React.createContext();
 
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
+
+const sort = dates =>
+  moment(dates[0]).isBefore(dates[1], 'day') ? dates : [...dates].reverse();
 
 const createOptionForDate = (day, intl) => {
   const date =
@@ -136,16 +156,20 @@ const getOptionStyles = defaultStyles => ({
   ...defaultStyles,
   display: 'inline-block',
   width: '12%',
-  margin: '0 1%',
+  margin: '1px 1%',
   textAlign: 'center',
   borderRadius: '4px',
+  border: '1px solid transparent',
 });
 
 const Option = props => (
   <CalendarConnector.Consumer>
-    {({ locale }) => {
+    {({ locale, range, setRange, rangeTarget, setRangeTarget }) => {
       if (props.data.display === 'calendar') {
-        const defaultStyles = props.getStyles('option', props);
+        const defaultStyles = props.getStyles('option', {
+          ...props,
+          isFocused: range.length === 1 ? false : props.isFocused,
+        });
         const optionStyles = getOptionStyles(defaultStyles);
         // Indent the first day of the month (date() === 1) in so that it starts
         // at the appropriate position.
@@ -158,13 +182,90 @@ const Option = props => (
             optionStyles.marginLeft = `${indentBy * 14 + 1}%`;
           }
         }
+
         // highlight today
         const today = new Date();
         if (props.data.date.isSame(today, 'day')) {
           optionStyles.fontWeight = 'bold';
         }
+
+        // highlight range
+        const selectionRange = (() => {
+          switch (range.length) {
+            case 1:
+              return rangeTarget
+                ? sort([range[0], rangeTarget])
+                : // Simulate a one-day range when only one day has been
+                  // selected so far so that we can check the match as
+                  // a usual match
+                  [range[0], range[0]];
+            case 2:
+              return range;
+            case 0:
+            default:
+              return null;
+          }
+        })();
+
+        const isSelected =
+          selectionRange &&
+          moment(props.value).isBetween(
+            selectionRange[0],
+            selectionRange[1],
+            'day',
+            '[]'
+          );
+
+        const isSelectionStart =
+          selectionRange &&
+          moment(props.value).isSame(selectionRange[0], 'day');
+        const isSelectionEnd =
+          selectionRange &&
+          moment(props.value).isSame(selectionRange[1], 'day');
+
+        if (isSelected && !props.isFocused) {
+          optionStyles.backgroundColor = '#eee';
+        }
+        if (isSelectionStart) {
+          optionStyles.borderLeft = '1px solid #9c9c9c';
+          optionStyles.backgroundColor = 'rgb(222, 235, 255)';
+        }
+        if (isSelectionEnd) {
+          optionStyles.borderRight = '1px solid #9c9c9c';
+          optionStyles.backgroundColor = 'rgb(222, 235, 255)';
+        }
         return (
-          <span {...props.innerProps} style={optionStyles} ref={props.innerRef}>
+          <span
+            {...props.innerProps}
+            style={optionStyles}
+            ref={props.innerRef}
+            onClick={() => {
+              switch (range.length) {
+                case 1: {
+                  // sort range so that earlier date is always first
+                  const sortedRange = sort([range[0], props.value]);
+                  setRange(sortedRange);
+                  setRangeTarget(null);
+                  props.setValue({
+                    label: createRangeLabel(sortedRange, locale),
+                    value: sortedRange,
+                  });
+                  break;
+                }
+                case 0:
+                case 2:
+                  setRange([props.value]);
+                  break;
+                default:
+                  throw new Error(
+                    `DateRangePicker: Unexpected range ${range.toString()}`
+                  );
+              }
+            }}
+            onMouseOver={() => {
+              if (range.length === 1) setRangeTarget(props.value);
+            }}
+          >
             {props.data.date.format('D')}
           </span>
         );
@@ -175,14 +276,15 @@ const Option = props => (
 );
 Option.displayName = 'Option';
 
-class DateInput extends Component {
-  static displayName = 'DateInput';
+class DateRangeInput extends Component {
+  static displayName = 'DateRangeInput';
 
   static propTypes = {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     intl: PropTypes.shape({
       formatDate: PropTypes.func,
     }).isRequired,
+    value: PropTypes.arrayOf(PropTypes.string),
   };
 
   state = {
@@ -192,18 +294,26 @@ class DateInput extends Component {
       const date = new Date(this.props.value);
       isValidDate(date) ? date : new Date();
     },
+    range: [],
+    rangeTarget: null,
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (state.prevValue === props.value) return null;
+    if (rangeEqual(state.prevValue, props.value)) return null;
 
     return {
       prevValue: props.value,
       suggestedOptions: defaultOptions,
       month: do {
-        const date = new Date(props.value);
-        isValidDate(date) ? date : new Date();
+        const today = new Date();
+        if (props.value.length === 0) today;
+        else {
+          const date = new Date(props.value[0]);
+          isValidDate(date) ? date : new Date();
+        }
       },
+      range: props.value,
+      rangeTarget: null,
     };
   }
 
@@ -212,60 +322,61 @@ class DateInput extends Component {
   // Respects locales when making the suggestions.
   // Translations for locales are taken from moment data and from
   // our own translations.
-  suggest = rawWord => {
-    const word = rawWord.toLowerCase();
+  // eslint-disable-next-line arrow-body-style
+  suggest = (/* rawWord */) => {
+    // const word = rawWord.toLowerCase();
 
-    const matches = entry => entry.toLowerCase().startsWith(word);
-    if (matches(this.props.intl.formatMessage(messages.today))) {
-      const today = new Date();
-      return today;
-    }
+    // const matches = entry => entry.toLowerCase().startsWith(word);
+    // if (matches(this.props.intl.formatMessage(messages.today))) {
+    //   const today = new Date();
+    //   return today;
+    // }
 
-    if (matches(this.props.intl.formatMessage(messages.yesterday))) {
-      return moment()
-        .subtract(1, 'day')
-        .toDate();
-    }
+    // if (matches(this.props.intl.formatMessage(messages.yesterday))) {
+    //   return moment()
+    //     .subtract(1, 'day')
+    //     .toDate();
+    // }
 
-    if (matches(this.props.intl.formatMessage(messages.tomorrow))) {
-      return moment()
-        .add(1, 'day')
-        .toDate();
-    }
+    // if (matches(this.props.intl.formatMessage(messages.tomorrow))) {
+    //   return moment()
+    //     .add(1, 'day')
+    //     .toDate();
+    // }
 
-    // weekdays is an array with index 0 being sunday
-    const weekdays = moment.localeData(this.props.intl.locale).weekdays();
-    // weekday is a number and starts with sunday being 0
-    const matchedWeekay = weekdays.findIndex(matches);
-    if (matchedWeekay !== -1) {
-      const weekday = moment().weekday();
-      return (
-        moment()
-          // we subtract so that we always match in the current week
-          .add(matchedWeekay - weekday, 'day')
-          .toDate()
-      );
-    }
+    // // weekdays is an array with index 0 being sunday
+    // const weekdays = moment.localeData(this.props.intl.locale).weekdays();
+    // // weekday is a number and starts with sunday being 0
+    // const matchedWeekay = weekdays.findIndex(matches);
+    // if (matchedWeekay !== -1) {
+    //   const weekday = moment().weekday();
+    //   return (
+    //     moment()
+    //       // we subtract so that we always match in the current week
+    //       .add(matchedWeekay - weekday, 'day')
+    //       .toDate()
+    //   );
+    // }
 
-    const months = moment.localeData(this.props.intl.locale).months();
-    const matchedMonth = months.findIndex(matches);
-    if (matchedMonth !== -1) {
-      const month = moment().month();
-      return (
-        moment()
-          // we subtract so that we always match in the current year
-          .add(matchedMonth - month, 'month')
-          // always show first of month
-          .date(1)
-          .toDate()
-      );
-    }
+    // const months = moment.localeData(this.props.intl.locale).months();
+    // const matchedMonth = months.findIndex(matches);
+    // if (matchedMonth !== -1) {
+    //   const month = moment().month();
+    //   return (
+    //     moment()
+    //       // we subtract so that we always match in the current year
+    //       .add(matchedMonth - month, 'month')
+    //       // always show first of month
+    //       .date(1)
+    //       .toDate()
+    //   );
+    // }
 
     return null;
   };
 
   handleChange = option => {
-    this.props.onChange(option ? option.value : '');
+    this.props.onChange(option ? option.value : []);
   };
 
   handleInputChange = (value, { action }) => {
@@ -306,12 +417,16 @@ class DateInput extends Component {
     }
   };
 
-  standardDateToOption = standardDate => {
-    if (!standardDate) return undefined;
+  rangeToOption = range => {
+    if (!range || range.length !== 2) return undefined;
 
-    const date = new Date(standardDate);
-    return isValidDate(date)
-      ? createOptionForDate(date, this.props.intl)
+    const start = new Date(range[0]);
+    const end = new Date(range[1]);
+    return isValidDate(start) && isValidDate(end)
+      ? {
+          label: createRangeLabel(range, this.props.intl.locale),
+          value: range,
+        }
       : undefined;
   };
 
@@ -323,6 +438,10 @@ class DateInput extends Component {
             locale: this.props.intl.locale,
             month: this.state.month,
             setMonth: month => this.setState({ month }),
+            range: this.state.range,
+            setRange: range => this.setState({ range }),
+            rangeTarget: this.state.rangeTarget,
+            setRangeTarget: rangeTarget => this.setState({ rangeTarget }),
           }}
         >
           <Select
@@ -330,9 +449,6 @@ class DateInput extends Component {
             components={{ Group, Option }}
             filterOption={null}
             isMulti={false}
-            isOptionSelected={(option, value) =>
-              value.some(i => i.date.isSame(option.date, 'day'))
-            }
             maxMenuHeight={380}
             onChange={this.handleChange}
             onInputChange={this.handleInputChange}
@@ -340,7 +456,7 @@ class DateInput extends Component {
               ...this.state.suggestedOptions,
               createCalendarOptions(this.state.month, this.props.intl),
             ]}
-            value={this.standardDateToOption(this.props.value)}
+            value={this.rangeToOption(this.props.value)}
             isClearable={this.props.isClearable}
           />
         </CalendarConnector.Provider>
@@ -349,4 +465,4 @@ class DateInput extends Component {
   }
 }
 
-export default injectIntl(DateInput);
+export default injectIntl(DateRangeInput);

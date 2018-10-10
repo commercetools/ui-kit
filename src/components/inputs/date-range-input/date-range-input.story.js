@@ -10,7 +10,7 @@ import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
-import DateInput from './date-input';
+import DateRangeInput from './date-range-input';
 import * as messages from '../../../../i18n';
 
 addLocaleData(en);
@@ -23,16 +23,16 @@ const getMessages = locale => messages[locale];
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('DateInput', () => {
+  .add('DateRangeInput', () => {
     const locale = select('locale', locales, locales[0]);
     return (
       <Section>
         <IntlProvider locale={locale} messages={getMessages(locale)}>
           <Value
-            defaultValue=""
+            defaultValue={[]}
             render={(value, onChange) => (
               <div>
-                <DateInput
+                <DateRangeInput
                   value={value}
                   onChange={date => {
                     action('onChange')(date);
@@ -45,7 +45,12 @@ storiesOf('Inputs', module)
                     'm'
                   )}
                 />
-                <pre>Value: {value}</pre>
+                {value && (
+                  <React.Fragment>
+                    <pre>From: {value[0]}</pre>
+                    <pre>To: {value[1]}</pre>
+                  </React.Fragment>
+                )}
               </div>
             )}
           />
