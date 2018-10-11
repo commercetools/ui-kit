@@ -173,10 +173,7 @@ const Option = props => (
   <CalendarConnector.Consumer>
     {({ locale, range, rangeTarget, setRangeTarget }) => {
       if (props.data.display === 'calendar') {
-        const defaultStyles = props.getStyles('option', {
-          ...props,
-          isFocused: range.length === 1 ? false : props.isFocused,
-        });
+        const defaultStyles = props.getStyles('option', props);
         const optionStyles = getOptionStyles(defaultStyles);
         // Indent the first day of the month (date() === 1) in so that it starts
         // at the appropriate position.
@@ -231,7 +228,7 @@ const Option = props => (
           selectionRange &&
           moment(props.value).isSame(selectionRange[1], 'day');
 
-        if (isSelected && !props.isFocused) {
+        if (isSelected) {
           optionStyles.backgroundColor = '#eee';
         }
         if (isSelectionStart) {
