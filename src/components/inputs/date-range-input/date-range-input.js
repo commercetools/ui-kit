@@ -13,7 +13,7 @@ import styles from './date-range-input.mod.css';
 // TODO
 // - allow navigation with arrow keys (allow going up/down)
 
-// basically a dumb version of deepEquals whichworks with ranges only
+// basically a dumb version of deepEquals which works with ranges only
 const rangeEqual = (a, b) => {
   if (a === b) return true;
   if (a.length !== b.length) return false;
@@ -30,9 +30,16 @@ const createRangeLabel = (range, locale) => {
     : `${format(range[0])} - ${format(range[1])}`;
 };
 
-const CalendarConnector = React.createContext();
-
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
+
+const getMonthFromRange = value => {
+  const today = new Date();
+  if (value.length === 0) return today;
+  const date = new Date(value[0]);
+  return isValidDate(date) ? date : new Date();
+};
+
+const CalendarConnector = React.createContext();
 
 const sort = dates =>
   moment(dates[0]).isBefore(dates[1], 'day') ? dates : [...dates].reverse();
@@ -164,7 +171,7 @@ const getOptionStyles = defaultStyles => ({
 
 const Option = props => (
   <CalendarConnector.Consumer>
-    {({ locale, range, setRange, rangeTarget, setRangeTarget }) => {
+    {({ locale, range, rangeTarget, setRangeTarget }) => {
       if (props.data.display === 'calendar') {
         const defaultStyles = props.getStyles('option', {
           ...props,
@@ -201,6 +208,7 @@ const Option = props => (
                   [range[0], range[0]];
             case 2:
               return range;
+            // There is no selection, so there is no range
             case 0:
             default:
               return null;
@@ -239,31 +247,9 @@ const Option = props => (
             {...props.innerProps}
             style={optionStyles}
             ref={props.innerRef}
-            onClick={() => {
-              switch (range.length) {
-                case 1: {
-                  // sort range so that earlier date is always first
-                  const sortedRange = sort([range[0], props.value]);
-                  setRange(sortedRange);
-                  setRangeTarget(null);
-                  props.setValue({
-                    label: createRangeLabel(sortedRange, locale),
-                    value: sortedRange,
-                  });
-                  break;
-                }
-                case 0:
-                case 2:
-                  setRange([props.value]);
-                  break;
-                default:
-                  throw new Error(
-                    `DateRangePicker: Unexpected range ${range.toString()}`
-                  );
-              }
-            }}
-            onMouseOver={() => {
+            onMouseOver={event => {
               if (range.length === 1) setRangeTarget(props.value);
+              props.innerProps.onMouseOver(event);
             }}
           >
             {props.data.date.format('D')}
@@ -290,12 +276,15 @@ class DateRangeInput extends Component {
   state = {
     prevValue: this.props.value,
     suggestedOptions: defaultOptions,
-    month: do {
-      const date = new Date(this.props.value);
-      isValidDate(date) ? date : new Date();
-    },
+    month: getMonthFromRange(this.props.value),
     range: [],
     rangeTarget: null,
+    // As it doesn't seem possible to prevent the menu from closing in the
+    // input handler, we manually keep track of the state in the parent.
+    // 0 means the input is closed, all numbers > 0 mean that it is open.
+    // We set the openCount to 2 to prevent it from auto-closen after the first
+    // date of the range is selected.
+    openCount: 0,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -304,16 +293,9 @@ class DateRangeInput extends Component {
     return {
       prevValue: props.value,
       suggestedOptions: defaultOptions,
-      month: do {
-        const today = new Date();
-        if (props.value.length === 0) today;
-        else {
-          const date = new Date(props.value[0]);
-          isValidDate(date) ? date : new Date();
-        }
-      },
-      range: props.value,
-      rangeTarget: null,
+      month: getMonthFromRange(props.value),
+      range: props.value.length === 0 ? props.value : state.range,
+      rangeTarget: props.value.length === 0 ? null : state.rangeTarget,
     };
   }
 
@@ -376,49 +358,101 @@ class DateRangeInput extends Component {
   };
 
   handleChange = option => {
-    this.props.onChange(option ? option.value : []);
+    // user cleared the value
+    if (!option) {
+      this.setState({ range: [], rangeTarget: null }, () => {
+        this.props.onChange([]);
+      });
+      return;
+    }
+    // user selected a range
+    if (Array.isArray(option.value)) {
+      this.setState({ range: option.value, rangeTarget: null }, () => {
+        this.props.onChange(option.value || []);
+      });
+      return;
+    }
+    // user selected a single day
+    if (typeof option.value === 'string') {
+      this.setState(
+        prevState => {
+          switch (prevState.range.length) {
+            case 1: {
+              // sort range so that earlier date is always first
+              const sortedRange = sort([prevState.range[0], option.value]);
+              return {
+                range: sortedRange,
+                rangeTarget: null,
+              };
+            }
+            case 0:
+            case 2:
+              return { range: [option.value] };
+            default:
+              throw new Error(
+                `DateRangePicker: Unexpected range ${prevState.range.toString()}`
+              );
+          }
+        },
+        () => {
+          if (this.state.range.length === 2) {
+            this.props.onChange(this.state.range);
+          }
+        }
+      );
+      return;
+    }
+    throw new Error(`DateRangePicker: Unexpected value ${option.value}`);
   };
 
   handleInputChange = (value, { action }) => {
     switch (action) {
-      case 'menu-close': {
-        const date = new Date(this.props.value);
-        this.setState({ month: isValidDate(date) ? date : new Date() });
-        break;
-      }
-      case 'input-change': {
-        if (!value) {
-          this.setState({ suggestedOptions: defaultOptions });
-          return;
-        }
-
-        // Attempt to parse dates in locale before falling back to chrono
-        // This helps to avoid the mixup of month and day for US/other notations
-        const date = do {
-          const localeDate = moment(
-            value,
-            moment.localeData(this.props.intl.locale).longDateFormat('L'),
-            this.props.intl.locale
-          );
-
-          if (localeDate.isValid()) localeDate;
-          else this.suggest(value);
-        };
+      case 'set-value': {
         this.setState(prevState => ({
-          month: date || prevState.month,
-          suggestedOptions: date
-            ? [createOptionForDate(date, this.props.intl)]
-            : [],
+          openCount:
+            prevState.range.length === 0 || prevState.range.length === 2
+              ? // Effectively sets openCount to 2 to prevent the menu from closing
+                // after the selection has been made.
+                prevState.openCount + 1
+              : prevState.openCount,
         }));
         break;
       }
+      // case 'input-change': {
+      //   if (!value) {
+      //     this.setState({ suggestedOptions: defaultOptions });
+      //     return;
+      //   }
+
+      //   // Attempt to parse dates in locale before falling back to chrono
+      //   // This helps to avoid the mixup of month and day for US/other notations
+      //   const date = do {
+      //     const localeDate = moment(
+      //       value,
+      //       moment.localeData(this.props.intl.locale).longDateFormat('L'),
+      //       this.props.intl.locale
+      //     );
+
+      //     if (localeDate.isValid()) localeDate;
+      //     else this.suggest(value);
+      //   };
+      //   this.setState(prevState => ({
+      //     month: date || prevState.month,
+      //     suggestedOptions: date
+      //       ? [createOptionForDate(date, this.props.intl)]
+      //       : [],
+      //   }));
+      //   break;
+      // }
       default:
         break;
     }
   };
 
+  // This function needs to return null instead of undefined, otherwise
+  // react-select will not remove the selected value
   rangeToOption = range => {
-    if (!range || range.length !== 2) return undefined;
+    if (!range || range.length !== 2) return null;
 
     const start = new Date(range[0]);
     const end = new Date(range[1]);
@@ -427,7 +461,7 @@ class DateRangeInput extends Component {
           label: createRangeLabel(range, this.props.intl.locale),
           value: range,
         }
-      : undefined;
+      : null;
   };
 
   render() {
@@ -439,7 +473,6 @@ class DateRangeInput extends Component {
             month: this.state.month,
             setMonth: month => this.setState({ month }),
             range: this.state.range,
-            setRange: range => this.setState({ range }),
             rangeTarget: this.state.rangeTarget,
             setRangeTarget: rangeTarget => this.setState({ rangeTarget }),
           }}
@@ -458,6 +491,27 @@ class DateRangeInput extends Component {
             ]}
             value={this.rangeToOption(this.props.value)}
             isClearable={this.props.isClearable}
+            menuIsOpen={this.state.openCount > 0}
+            onBlur={() => {
+              this.setState({ range: [], rangeTarget: null });
+              // reset input when range selection is aborted by closing,
+              // also remove any value in case there was one
+              if (!rangeEqual(this.props.value, this.state.range)) {
+                if (this.props.value.length !== 0) this.props.onChange([]);
+              }
+            }}
+            onMenuOpen={() => {
+              this.setState(prevState => ({
+                openCount: prevState.openCount + 1,
+                range: this.props.value.length === 2 ? this.props.value : [],
+                rangeTarget: null,
+              }));
+            }}
+            onMenuClose={() => {
+              this.setState(prevState => ({
+                openCount: Math.max(prevState.openCount - 1, 0),
+              }));
+            }}
           />
         </CalendarConnector.Provider>
       </Constraints.Horizontal>
