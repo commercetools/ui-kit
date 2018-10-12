@@ -1,3 +1,60 @@
-.container {
-  width: 100%;
+.monthButton {
+  display: inline-block;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  color: #9c9c9c;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 2px 8px;
+  cursor: default;
+}
+
+.monthButton:hover {
+  color: #1a1a1a;
+}
+
+.headingControls {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+  align-items: baseline;
+  font-size: 13px;
+}
+
+.month {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.prevMonth {
+  composes: monthButton;
+}
+
+.nextMonth {
+  composes: monthButton;
+  margin-right: 4px;
+}
+
+.daysHeader {
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-left: 2%;
+  border-top: 1px solid #eee;
+}
+
+.daysHeaderItem {
+  color: #999;
+  cursor: default;
+  font-size: 75%;
+  font-weight: 500;
+  display: inline-block;
+  width: 12%;
+  margin: 0 1%;
+  text-align: center;
+}
+
+.daysContainer {
+  padding-top: 5px;
+  padding-left: 2%;
 }

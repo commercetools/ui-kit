@@ -1,350 +1,306 @@
-/*
-  TECHDEBT:
-  - Support timeZone in all cases, but only when timeZone is passed.
-*/
-
-import 'flatpickr/dist/themes/airbnb.css';
-import React from 'react';
-import PropTypes from 'prop-types';
+// This component is based on the experimental Date Picker example
+// https://react-select.com/advanced#experimental
+import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
-import Flatpickr from 'flatpickr';
-import { German } from 'flatpickr/dist/l10n/de';
-import isTouchDevice from 'is-touch-device';
-import moment from 'moment-timezone';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import Select, { components as SelectComponents } from 'react-select';
+import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
-import { DatePickerBody } from './date-picker-body';
-import './date-picker-ct-theme.mod.css';
-import styles from './date-time-input.mod.css';
 import messages from './messages';
+import styles from './date-time-input.mod.css';
 
-const getNumberOfFormattedDateChars = (timeScale, locale) => {
-  // moment gives us access to its underlying formats for individual locales
-  // http://momentjs.com/docs/#/i18n/instance-locale/
-  // this allows us to count the number of chars that will be displayed in the
-  // formatted date and adjust the input element accordingly
-  // Using this technique we can ensure that at least one value is displayed
-  switch (timeScale) {
-    case 'time':
-      return moment()
-        .locale(locale)
-        .localeData()._longDateFormat.LT.length;
-    case 'datetime':
-      return (
-        moment()
-          .locale(locale)
-          .localeData()._longDateFormat.L.length +
-        moment()
-          .locale(locale)
-          .localeData()._longDateFormat.LT.length
-      );
-    case 'date':
-      return moment()
-        .locale(locale)
-        .localeData()._longDateFormat.L.length;
-    default:
-      return 0;
-  }
+// TODO
+// - allow navigation with arrow keys (allow going up/down)
+
+const CalendarConnector = React.createContext();
+
+const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
+
+const createOptionForDate = (day, intl) => {
+  const date =
+    moment.isMoment(day) && day.locale() === intl.locale
+      ? day
+      : moment(day).locale(intl.locale);
+  return {
+    date,
+    value: date.format('YYYY-MM-DD'),
+    label: date.calendar(null, {
+      sameDay: intl.formatMessage(messages.sameDay),
+      nextDay: intl.formatMessage(messages.nextDay),
+      nextWeek: intl.formatMessage(messages.nextWeek),
+      lastDay: intl.formatMessage(messages.lastDay),
+      lastWeek: intl.formatMessage(messages.lastWeek),
+      sameElse: intl.formatMessage(messages.sameElse),
+    }),
+  };
 };
 
-// Calculates offset in minutes to add to given date
-// in order to fake timezone information in Flatpickr selector
-const getFlatpickrOffset = (value, timeZone) => {
-  const localTimeOffset = moment(value).utcOffset();
-  const timeZoneOffset = moment()
-    .tz(timeZone)
-    .utcOffset();
-
-  return timeZoneOffset - localTimeOffset;
-};
-
-const addFlatpickrOffset = (value, timeZone) =>
-  moment(value)
-    .add(getFlatpickrOffset(value, timeZone), 'minutes')
-    .toISOString();
-
-/*
-  Flatpickr is totally timezone-agnostic and hence it operates dates in a browser timezone.
-  But we want to show datetimes in a specific timezone. To do that we have to shift provided
-  date so that it will have time digits as if it was in desired timezone, but the date itself
-  will be in user browser timezone.
-*/
-export const presentInput = ({ value, timeZone, timeScale, mode }) => {
-  if (timeScale !== 'datetime') {
-    return value;
-  }
-
-  if (mode !== 'single') {
-    return value.map(v => addFlatpickrOffset(v, timeZone));
-  }
-
-  return addFlatpickrOffset(value, timeZone);
-};
-
-// Converts Date object provided by Flatpickr to formats expected by Datepicker users
-export const presentOutput = ({ value, timeScale, timeZone }) => {
-  switch (timeScale) {
-    case 'time':
-      return moment(value).format('HH:mm:ss.SSS');
-    case 'datetime': {
-      // As we shifted datetime value before passing it to Flatpickr, now we have to
-      // shift it back
-      return moment(value)
-        .subtract(getFlatpickrOffset(value, timeZone), 'minutes')
-        .toISOString();
+const createCalendarOptions = (day, intl) => {
+  const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
+    (_, i) => {
+      const dayOfMonth = i + 1;
+      const date = moment(day)
+        .locale(intl.locale)
+        .date(dayOfMonth);
+      return {
+        ...createOptionForDate(date, intl),
+        display: 'calendar',
+      };
     }
-    case 'date':
-      return moment(value).format('YYYY-MM-DD');
-    default:
-      return value;
-  }
+  );
+
+  const label = moment(day)
+    .locale(intl.locale)
+    .format('MMMM YYYY');
+
+  // group for the calendar
+  return { label, options: daysInMonth };
 };
 
-export const createFormatter = (timeScale, locale) => value => {
-  switch (timeScale) {
-    case 'time':
-      return moment(value, 'HH:mm:ss.SSS')
-        .locale(locale)
-        .format('LT');
-    case 'datetime':
-      return moment(value)
-        .locale(locale)
-        .format('L LT');
-    case 'date':
-      return moment(value)
-        .locale(locale)
-        .format('L');
-    default:
-      return value;
-  }
-};
+const defaultOptions = [];
 
-export class DateTimeInput extends React.PureComponent {
+const Group = injectIntl(props => {
+  const Heading = props.Heading;
+  return (
+    <CalendarConnector.Consumer>
+      {({ month, setMonth, locale }) => {
+        // const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+        // This code is modifying `days`, so we need to create a fresh array
+        // to avoid manipulating the moment data
+        const days = [...moment.localeData(locale).weekdaysMin()];
+        const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
+        // Rearrange so that week starts at Sunday/Monday depending on locale
+        Array.from({ length: firstDayOfWeek }).forEach(() => {
+          days.push(days.shift());
+        });
+        return (
+          <div
+            aria-label={props.label}
+            style={props.getStyles('group', props)}
+            {...props.innerProps}
+          >
+            <Heading
+              theme={props.theme}
+              getStyles={props.getStyles}
+              cx={props.cx}
+              {...props.headingProps}
+            >
+              <div className={styles.headingControls}>
+                <button
+                  onClick={() => {
+                    setMonth(
+                      moment(month)
+                        .subtract(1, 'month')
+                        .toDate()
+                    );
+                  }}
+                  className={styles.prevMonth}
+                  type="button"
+                >
+                  {'❮'}
+                </button>
+                <div className={styles.month}>{props.label}</div>
+                <button
+                  onClick={() => {
+                    setMonth(
+                      moment(month)
+                        .add(1, 'month')
+                        .toDate()
+                    );
+                  }}
+                  className={styles.nextMonth}
+                  type="button"
+                >
+                  {'❯'}
+                </button>
+              </div>
+            </Heading>
+            <div className={styles.daysHeader}>
+              {days.map(day => (
+                <span key={day} className={styles.daysHeaderItem}>
+                  {day}
+                </span>
+              ))}
+            </div>
+            <div className={styles.daysContainer}>{props.children}</div>
+          </div>
+        );
+      }}
+    </CalendarConnector.Consumer>
+  );
+});
+Group.displayName = 'Group';
+
+const getOptionStyles = defaultStyles => ({
+  ...defaultStyles,
+  display: 'inline-block',
+  width: '12%',
+  margin: '0 1%',
+  textAlign: 'center',
+  borderRadius: '4px',
+});
+
+const Option = props => (
+  <CalendarConnector.Consumer>
+    {({ locale }) => {
+      if (props.data.display === 'calendar') {
+        const defaultStyles = props.getStyles('option', props);
+        const optionStyles = getOptionStyles(defaultStyles);
+        // Indent the first day of the month (date() === 1) in so that it starts
+        // at the appropriate position.
+        // Further respect the start of the week depending on the locale to
+        // adjust the indentation.
+        if (props.data.date.date() === 1) {
+          const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
+          const indentBy = props.data.date.day() - firstDayOfWeek;
+          if (indentBy) {
+            optionStyles.marginLeft = `${indentBy * 14 + 1}%`;
+          }
+        }
+        // highlight today
+        const today = new Date();
+        if (props.data.date.isSame(today, 'day')) {
+          optionStyles.fontWeight = 'bold';
+        }
+        return (
+          <span {...props.innerProps} style={optionStyles} ref={props.innerRef}>
+            {props.data.date.format('D')}
+          </span>
+        );
+      }
+      return <SelectComponents.Option {...props} />;
+    }}
+  </CalendarConnector.Consumer>
+);
+Option.displayName = 'Option';
+
+class DateTimeInput extends Component {
   static displayName = 'DateTimeInput';
 
   static propTypes = {
     id: PropTypes.string,
-    shouldInitializeOnMount: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    isInvalid: PropTypes.bool,
-    mode: PropTypes.oneOf(['range', 'multiple', 'single']),
+    name: PropTypes.string,
+    value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    onClose: PropTypes.func,
-    placeholder: PropTypes.string,
+    isClearable: PropTypes.bool,
+    isAutofocussed: PropTypes.bool,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-    timeScale: PropTypes.oneOf(['datetime']),
-    timeZone: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string),
-    ]),
-
-    // HoC
     intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
       locale: PropTypes.string.isRequired,
+      formatMessage: PropTypes.func.isRequired,
     }).isRequired,
   };
 
-  static defaultProps = {
-    shouldInitializeOnMount: false,
-    isDisabled: false,
-    isInvalid: false,
-    mode: 'single',
-    timeScale: 'datetime',
-    horizontalConstraint: 'scale',
+  state = {
+    prevValue: this.props.value,
+    suggestedOptions: defaultOptions,
+    month: do {
+      const date = new Date(this.props.value);
+      isValidDate(date) ? date : new Date();
+    },
   };
 
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
-    this.formatter = createFormatter(
-      this.props.timeScale,
-      this.props.intl.locale
-    );
-    this.numberOfFormattedValueChars = getNumberOfFormattedDateChars(
-      this.props.timeScale,
-      this.props.intl.locale
-    );
-    this.options = {
-      defaultDate:
-        this.props.value &&
-        presentInput({
-          value: this.props.value,
-          timeZone: this.props.timeZone,
-          timeScale: this.props.timeScale,
-          mode: this.props.mode,
-        }),
-      enableTime:
-        this.props.timeScale === 'time' || this.props.timeScale === 'datetime',
-      // flatpickr falls back onto native datetime-inputs on touch-devices
-      // these need their values in a standard-format and will format it themselves
-      // based on the browsers-locale => using the formatter, will break the fields
-      formatDate: isTouchDevice() ? undefined : this.formatter,
-      // Gets the corresponding locale. For English we must set it as null.
-      // TODO make this asynchronous when more languages available
-      locale: this.props.intl.locale.startsWith('de') ? German : null,
-      mode: this.props.mode,
-      noCalendar: this.props.timeScale === 'time',
-      onChange: this.handleChange,
-      time_24hr: this.props.intl.locale.startsWith('de'),
-      wrap: true,
+  static getDerivedStateFromProps(props, state) {
+    if (state.prevValue === props.value) return null;
+
+    return {
+      prevValue: props.value,
+      suggestedOptions: defaultOptions,
+      month: do {
+        const date = new Date(props.value);
+        isValidDate(date) ? date : new Date();
+      },
     };
   }
 
-  // initializing on hove is not feasible for touch-devices, so we init-right away
-  // flatpickr does not do its expensive initialization on mobile, so this is safe
-  state = {
-    initialize: this.props.shouldInitializeOnMount || isTouchDevice(),
+  handleChange = option => {
+    this.props.onChange(option ? option.value : '');
   };
 
-  componentDidMount() {
-    if (this.shouldInitializeFlatpickr(this.state)) {
-      this.initDatepicker();
-    }
-  }
-
-  shouldInitializeFlatpickr = state => !this.flatpickr && state.initialize;
-
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillUpdate(nextProps, nextState) {
-    if (this.flatpickr && this.props.value !== nextProps.value) {
-      this.flatpickr.setDate(
-        nextProps.value &&
-          presentInput({
-            value: nextProps.value,
-            timeZone: nextProps.timeZone,
-            timeScale: nextProps.timeScale,
-            mode: nextProps.mode,
-          }),
-        false
-      );
-    } else if (this.shouldInitializeFlatpickr(nextState)) {
-      this.initDatepicker();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.flatpickr) {
-      this.flatpickr.destroy();
-    }
-  }
-
-  handleClearPicker = () => {
-    if (!this.flatpickr) return;
-    this.flatpickr.clear();
-    this.flatpickr.jumpToDate();
-    this.props.onChange();
-  };
-
-  handleChange = selectedDates => {
-    switch (this.props.mode) {
-      case 'single': {
-        const value = selectedDates.length === 0 ? undefined : selectedDates[0];
-        this.props.onChange(
-          value &&
-            presentOutput({
-              value,
-              timeScale: this.props.timeScale,
-              timeZone: this.props.timeZone,
-            })
-        );
+  handleInputChange = (value, { action }) => {
+    switch (action) {
+      case 'menu-close': {
+        const date = new Date(this.props.value);
+        this.setState({ month: isValidDate(date) ? date : new Date() });
         break;
       }
-      case 'range':
-      case 'multiple':
-        this.props.onChange(
-          selectedDates.map(
-            value =>
-              value &&
-              presentOutput({
-                value,
-                timeScale: this.props.timeScale,
-                timeZone: this.props.timeZone,
-              })
-          )
-        );
+      case 'input-change': {
+        if (!value) {
+          this.setState({ suggestedOptions: defaultOptions });
+          return;
+        }
+
+        // Attempt to parse dates in locale before falling back to chrono
+        // This helps to avoid the mixup of month and day for US/other notations
+        const date = do {
+          const localeDate = moment(
+            value,
+            moment.localeData(this.props.intl.locale).longDateFormat('L'),
+            this.props.intl.locale
+          );
+
+          if (localeDate.isValid()) localeDate;
+          else
+            suggestDate(value, this.props.intl.locale, {
+              today: this.props.intl.formatMessage(messages.today),
+              yesterday: this.props.intl.formatMessage(messages.yesterday),
+              tomorrow: this.props.intl.formatMessage(messages.tomorrow),
+            });
+        };
+        this.setState(prevState => ({
+          month: date || prevState.month,
+          suggestedOptions: date
+            ? [createOptionForDate(date, this.props.intl)]
+            : [],
+        }));
         break;
+      }
       default:
-        throw new Error(
-          `ui-kit/inputs/date-time-input: the specified mode '${
-            this.props.mode
-          }' is not supported.`
-        );
+        break;
     }
   };
 
-  handleMouseOver = () => {
-    this.setState(prevState => ({ ...prevState, initialize: true }));
-  };
+  standardDateToOption = standardDate => {
+    if (!standardDate) return undefined;
 
-  initDatepicker = () => {
-    if (!this.props.isDisabled) {
-      const options = {
-        onClose: () => {
-          if (this.pickerElem) {
-            this.pickerElem.blur();
-            // NOTE: we need to pass the `value` to enable validations
-            // when the picker closes.
-            if (this.props.onClose) this.props.onClose(this.props.value);
-          }
-        },
-        ...this.options,
-      };
-
-      this.flatpickr = new Flatpickr(this.pickerElem, options);
-    }
-  };
-
-  getRef = ref => {
-    this.pickerElem = ref;
-  };
-
-  /**
-   * @param  {String} selectedDate This can be `date`, `datetime`, or `time`
-   * @return {String} the formatted `selectedDate` based on `timeScale`
-   */
-  getFormattedValue = selectedDate => {
-    // `selectedDate` is expected to be an array
-    // when managing `range` and `multiple` modes
-    if (this.props.mode === 'multiple')
-      return selectedDate.map(v => this.formatter(v)).join(', ');
-    if (this.props.mode === 'range')
-      return selectedDate
-        .map(v => this.formatter(v))
-        .join(` ${this.props.intl.formatMessage(messages.labelRange)} `);
-
-    return this.formatter(selectedDate);
+    const date = new Date(standardDate);
+    return isValidDate(date)
+      ? createOptionForDate(date, this.props.intl)
+      : undefined;
   };
 
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div
-          className={styles.container}
-          onMouseOver={this.handleMouseOver}
-          ref={this.getRef}
+        <CalendarConnector.Provider
+          value={{
+            locale: this.props.intl.locale,
+            month: this.state.month,
+            setMonth: month => this.setState({ month }),
+          }}
         >
-          <DatePickerBody
+          <Select
             id={this.props.id}
-            formattedValue={
-              this.props.value &&
-              this.getFormattedValue(
-                presentInput({
-                  value: this.props.value,
-                  timeZone: this.props.timeZone,
-                  timeScale: this.props.timeScale,
-                  mode: this.props.mode,
-                })
-              )
+            name={this.props.name}
+            components={{ Group, Option }}
+            filterOption={null}
+            isMulti={false}
+            isOptionSelected={(option, value) =>
+              value.some(i => i.date.isSame(option.date, 'day'))
             }
-            isDisabled={this.props.isDisabled}
-            isInvalid={this.props.isInvalid}
-            onClearPicker={this.handleClearPicker}
-            placeholder={this.props.placeholder}
-            horizontalConstraint={this.props.horizontalConstraint}
-            timeScale={this.props.timeScale}
-            numberOfFormattedValueChars={this.numberOfFormattedValueChars}
+            maxMenuHeight={380}
+            onChange={this.handleChange}
+            onInputChange={this.handleInputChange}
+            options={[
+              ...this.state.suggestedOptions,
+              createCalendarOptions(this.state.month, this.props.intl),
+            ]}
+            value={this.standardDateToOption(this.props.value)}
+            isClearable={this.props.isClearable}
+            autoFocus={this.props.isAutofocussed}
           />
-        </div>
+        </CalendarConnector.Provider>
       </Constraints.Horizontal>
     );
   }
