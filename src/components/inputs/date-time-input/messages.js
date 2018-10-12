@@ -22,31 +22,31 @@ export default defineMessages({
   sameDay: {
     id: 'UIKit.DateTimeInput.sameDay',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: '[Today], Do MMM YYYY',
+    defaultMessage: '[Today at] LT',
   },
   nextDay: {
     id: 'UIKit.DateTimeInput.nextDay',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: '[Tomorrow], Do MMM YYYY',
+    defaultMessage: '[Tomorrow at] LT',
   },
   nextWeek: {
     id: 'UIKit.DateTimeInput.nextWeek',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: '[Next] dddd (Do MMM YYYY)',
+    defaultMessage: '[Next] dddd (Do MMM YYYY) [at] LT',
   },
   lastDay: {
     id: 'UIKit.DateTimeInput.lastDay',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: '[Yesterday], Do MMM YYYY',
+    defaultMessage: '[Yesterday at] LT',
   },
   lastWeek: {
     id: 'UIKit.DateTimeInput.lastWeek',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: '[Last] dddd (Do MMM YYYY)',
+    defaultMessage: '[Last] dddd, (Do MMM YYYY) [at] LT',
   },
   sameElse: {
     id: 'UIKit.DateTimeInput.sameElse',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: 'Do MMMM YYYY',
+    defaultMessage: 'LT',
   },
 });

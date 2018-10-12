@@ -13,6 +13,57 @@ import styles from './date-time-input.mod.css';
 // TODO
 // - allow navigation with arrow keys (allow going up/down)
 
+// COPIED FROM time-input.js
+// Attempts to parse a string containing a time in either 12h or 24h format,
+// with precision of up to three milliseconds
+// Valid inputs:
+//   13:00
+//   3:00
+//   3 PM
+//   14:5 am
+//   13:00:00.000
+//   13:00:60
+//   13:00:59.908
+// Returns an array containing
+//   [hours, minutes, seconds, milliseconds]
+// or null
+const parseTime = rawTime => {
+  if (!rawTime || typeof rawTime !== 'string') return null;
+
+  const time = rawTime.trim().toLowerCase();
+
+  const match = time.match(
+    /^(\d{1,2})(?::(\d{1,2})(?::(\d{1,2})(?:\.(\d{1,3}))?)?)?\s*(am|pm)?$/
+  );
+  if (!match) return null;
+
+  // As we accept eg "3 AM" there might not be a value for minutes, seconds or
+  // milliseconds, so we default them
+  const [
+    ,
+    hours,
+    minutes = '00',
+    seconds = '00',
+    milliseconds = '000',
+    amPm,
+  ] = match;
+  if (Number(minutes) > 59) return null;
+  if (amPm && Number(hours) > 12) return null;
+  if (!amPm && Number(hours) > 23) return null;
+  if (Number(seconds) > 59) return null;
+  if (Number(milliseconds) > 999) return null;
+
+  return {
+    hours: Number(hours) + (amPm === 'pm' ? 12 : 0),
+    minutes: Number(minutes),
+    seconds: Number(seconds),
+    milliseconds: Number(milliseconds),
+    hasSeconds: Number(seconds) !== 0 || Number(milliseconds) !== 0,
+    hasMilliseconds: Number(milliseconds) !== 0,
+    amPm,
+  };
+};
+
 const CalendarConnector = React.createContext();
 
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
@@ -22,17 +73,19 @@ const createOptionForDate = (day, intl) => {
     moment.isMoment(day) && day.locale() === intl.locale
       ? day
       : moment(day).locale(intl.locale);
+
   return {
     date,
-    value: date.format('YYYY-MM-DD'),
-    label: date.calendar(null, {
-      sameDay: intl.formatMessage(messages.sameDay),
-      nextDay: intl.formatMessage(messages.nextDay),
-      nextWeek: intl.formatMessage(messages.nextWeek),
-      lastDay: intl.formatMessage(messages.lastDay),
-      lastWeek: intl.formatMessage(messages.lastWeek),
-      sameElse: intl.formatMessage(messages.sameElse),
-    }),
+    value: date.format('YYYY-MM-DDThh:mm:ss.sss[Z]'),
+    label: date.format('YYYY-MM-DDThh:mm:ss.sss[Z]'),
+    // label: date.calendar(null, {
+    //   sameDay: intl.formatMessage(messages.sameDay),
+    //   nextDay: intl.formatMessage(messages.nextDay),
+    //   nextWeek: intl.formatMessage(messages.nextWeek),
+    //   lastDay: intl.formatMessage(messages.lastDay),
+    //   lastWeek: intl.formatMessage(messages.lastWeek),
+    //   sameElse: intl.formatMessage(messages.sameElse),
+    // }),
   };
 };
 
@@ -59,6 +112,136 @@ const createCalendarOptions = (day, intl) => {
 };
 
 const defaultOptions = [];
+
+class TimePicker extends React.Component {
+  static displayName = 'TimePicker';
+
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    timeInputRef: PropTypes.object,
+    value: PropTypes.string,
+    isDisabled: PropTypes.bool,
+  };
+
+  render() {
+    return (
+      <div>
+        <input
+          ref={this.props.timeInputRef}
+          type="text"
+          value={this.props.value}
+          onChange={this.props.onChange}
+          onBlur={this.props.onBlur}
+          onKeyDown={event => {
+            event.stopPropagation();
+          }}
+          onKeyUp={event => {
+            event.stopPropagation();
+            if (event.key === 'Enter') {
+              this.props.onSubmit();
+            }
+          }}
+        />
+      </div>
+    );
+  }
+}
+
+class MenuList extends React.Component {
+  static displayName = 'MenuList';
+  menuListRef = React.createRef();
+  render() {
+    return (
+      <div ref={this.menuListRef}>
+        <SelectComponents.MenuList {...this.props} />
+        {this.props.getValue().length > 0 && (
+          <CalendarConnector.Consumer>
+            {({
+              selectRef,
+              closeMenu,
+              timeInputRef,
+              time,
+              setTime,
+              onChange,
+            }) => (
+              <TimePicker
+                timeInputRef={timeInputRef}
+                onBlur={event => {
+                  if (
+                    selectRef.current.select.controlRef &&
+                    !selectRef.current.select.controlRef.contains(
+                      event.relatedTarget
+                    ) &&
+                    selectRef.current.select.menuListRef &&
+                    !selectRef.current.select.menuListRef.contains(
+                      event.relatedTarget
+                    )
+                  ) {
+                    closeMenu();
+                  }
+                }}
+                onSubmit={closeMenu}
+                value={time}
+                onChange={event => {
+                  const nextTime = event.target.value;
+                  setTime(nextTime);
+
+                  // tell the parent in case the time is valid
+                  const value = selectRef.current.state.value?.date;
+                  // We can only update the parent when there is a date already
+                  if (!value) return;
+
+                  const parsedTime = parseTime(time);
+                  if (parsedTime) {
+                    onChange(
+                      moment(value)
+                        .hour(parsedTime.hours)
+                        .minute(parsedTime.minutes)
+                        .second(parsedTime.seconds)
+                        .millisecond(parsedTime.milliseconds)
+                        .format('YYYY-MM-DDThh:mm:ss.sss[Z]')
+                    );
+                  } else {
+                    onChange(value.format('YYYY-MM-DDT00:00:00.000[Z]'));
+                  }
+                  // onChange()
+                }}
+              />
+            )}
+          </CalendarConnector.Consumer>
+        )}
+      </div>
+    );
+  }
+}
+
+class Menu extends React.Component {
+  static displayName = 'MenuList';
+  render() {
+    const { innerProps, ...remainingProps } = this.props;
+    return (
+      <CalendarConnector.Consumer>
+        {({ keepMenuOpen }) => (
+          <SelectComponents.Menu
+            {...remainingProps}
+            innerProps={{
+              ...innerProps,
+              onMouseDown: event => {
+                if (event.target.nodeName !== 'INPUT') {
+                  innerProps.onMouseDown(event);
+                } else {
+                  keepMenuOpen();
+                }
+              },
+            }}
+          />
+        )}
+      </CalendarConnector.Consumer>
+    );
+  }
+}
 
 const Group = injectIntl(props => {
   const Heading = props.Heading;
@@ -199,6 +382,8 @@ class DateTimeInput extends Component {
       const date = new Date(this.props.value);
       isValidDate(date) ? date : new Date();
     },
+    openCount: 0,
+    time: '',
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -225,6 +410,10 @@ class DateTimeInput extends Component {
         this.setState({ month: isValidDate(date) ? date : new Date() });
         break;
       }
+      case 'set-value':
+        if (this.timeInputRef.current) this.timeInputRef.current.focus();
+        this.setState({ openCount: 2, time: '' });
+        break;
       case 'input-change': {
         if (!value) {
           this.setState({ suggestedOptions: defaultOptions });
@@ -270,6 +459,9 @@ class DateTimeInput extends Component {
       : undefined;
   };
 
+  selectRef = React.createRef();
+  timeInputRef = React.createRef();
+
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
@@ -278,12 +470,20 @@ class DateTimeInput extends Component {
             locale: this.props.intl.locale,
             month: this.state.month,
             setMonth: month => this.setState({ month }),
+            keepMenuOpen: () => this.setState({ openCount: 2 }),
+            closeMenu: () => this.setState({ openCount: 0 }),
+            selectRef: this.selectRef,
+            timeInputRef: this.timeInputRef,
+            time: this.state.time,
+            setTime: time => this.setState({ time }),
+            onChange: this.props.onChange,
           }}
         >
           <Select
+            ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            components={{ Group, Option }}
+            components={{ Group, Option, MenuList, Menu }}
             filterOption={null}
             isMulti={false}
             isOptionSelected={(option, value) =>
@@ -299,6 +499,17 @@ class DateTimeInput extends Component {
             value={this.standardDateToOption(this.props.value)}
             isClearable={this.props.isClearable}
             autoFocus={this.props.isAutofocussed}
+            menuIsOpen={this.state.openCount > 0}
+            onMenuOpen={() => {
+              this.setState(prevState => ({
+                openCount: prevState.openCount + 1,
+              }));
+            }}
+            onMenuClose={() => {
+              this.setState(prevState => ({
+                openCount: Math.max(prevState.openCount - 1, 0),
+              }));
+            }}
           />
         </CalendarConnector.Provider>
       </Constraints.Horizontal>
