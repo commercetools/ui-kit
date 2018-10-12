@@ -266,8 +266,8 @@ class DateRangeInput extends Component {
   static displayName = 'DateRangeInput';
 
   static propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
     isClearable: PropTypes.bool,
