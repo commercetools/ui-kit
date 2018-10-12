@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import omit from 'lodash.omit';
 import Select, { components as SelectComponents } from 'react-select';
 import Constraints from '../../constraints';
 import messages from './messages';
@@ -179,9 +178,16 @@ class DateInput extends Component {
   static displayName = 'DateInput';
 
   static propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    isClearable: PropTypes.bool,
+    isAutofocussed: PropTypes.bool,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     intl: PropTypes.shape({
-      formatDate: PropTypes.func,
+      locale: PropTypes.string.isRequired,
+      formatMessage: PropTypes.func.isRequired,
     }).isRequired,
   };
 
@@ -326,7 +332,8 @@ class DateInput extends Component {
           }}
         >
           <Select
-            {...omit(this.props, ['horizontalConstraint'])}
+            id={this.props.id}
+            name={this.props.name}
             components={{ Group, Option }}
             filterOption={null}
             isMulti={false}
@@ -342,6 +349,7 @@ class DateInput extends Component {
             ]}
             value={this.standardDateToOption(this.props.value)}
             isClearable={this.props.isClearable}
+            autoFocus={this.props.isAutofocussed}
           />
         </CalendarConnector.Provider>
       </Constraints.Horizontal>
