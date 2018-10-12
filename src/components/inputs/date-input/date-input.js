@@ -179,8 +179,8 @@ class DateInput extends Component {
   static displayName = 'DateInput';
 
   static propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     isClearable: PropTypes.bool,
