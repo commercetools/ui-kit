@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import omit from 'lodash.omit';
 import Select, { components as SelectComponents } from 'react-select';
 import Constraints from '../../constraints';
 import messages from './messages';
@@ -13,6 +12,8 @@ import styles from './date-range-input.mod.css';
 // TODO
 // - allow navigation with arrow keys (allow going up/down)
 
+const rangeSeparator = ' - ';
+
 // basically a dumb version of deepEquals which works with ranges only
 const rangeEqual = (a, b) => {
   if (a === b) return true;
@@ -20,14 +21,22 @@ const rangeEqual = (a, b) => {
   return a[0] === b[0] && a[1] === b[1];
 };
 
-const createRangeLabel = (range, locale) => {
-  const format = date =>
-    moment(date)
-      .locale(locale)
-      .format('L');
+const createDayLabel = (date, intl) =>
+  date.calendar(null, {
+    sameDay: intl.formatMessage(messages.sameDay),
+    nextDay: intl.formatMessage(messages.nextDay),
+    nextWeek: intl.formatMessage(messages.nextWeek),
+    lastDay: intl.formatMessage(messages.lastDay),
+    lastWeek: intl.formatMessage(messages.lastWeek),
+    sameElse: intl.formatMessage(messages.sameElse),
+  });
+
+const createRangeLabel = (range, intl) => {
+  const format = standardDate =>
+    createDayLabel(moment(standardDate).locale(intl.locale), intl);
   return range[0] === range[1]
     ? `${format(range[0])}`
-    : `${format(range[0])} - ${format(range[1])}`;
+    : `${format(range[0])}${rangeSeparator}${format(range[1])}`;
 };
 
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
@@ -52,18 +61,11 @@ const createOptionForDate = (day, intl) => {
   return {
     date,
     value: date.format('YYYY-MM-DD'),
-    label: date.calendar(null, {
-      sameDay: intl.formatMessage(messages.sameDay),
-      nextDay: intl.formatMessage(messages.nextDay),
-      nextWeek: intl.formatMessage(messages.nextWeek),
-      lastDay: intl.formatMessage(messages.lastDay),
-      lastWeek: intl.formatMessage(messages.lastWeek),
-      sameElse: intl.formatMessage(messages.sameElse),
-    }),
+    label: createDayLabel(date, intl),
   };
 };
 
-const createCalendarOptions = (day, intl) => {
+const createCalendarGroup = (day, intl) => {
   const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
     (_, i) => {
       const dayOfMonth = i + 1;
@@ -228,7 +230,7 @@ const Option = props => (
           selectionRange &&
           moment(props.value).isSame(selectionRange[1], 'day');
 
-        if (isSelected) {
+        if (isSelected && !props.isFocused) {
           optionStyles.backgroundColor = '#eee';
         }
         if (isSelectionStart) {
@@ -263,11 +265,17 @@ class DateRangeInput extends Component {
   static displayName = 'DateRangeInput';
 
   static propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.arrayOf(PropTypes.string),
+    onChange: PropTypes.func.isRequired,
+    isClearable: PropTypes.bool,
+    isAutofocussed: PropTypes.bool,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     intl: PropTypes.shape({
-      formatDate: PropTypes.func,
+      locale: PropTypes.string.isRequired,
+      formatMessage: PropTypes.func.isRequired,
     }).isRequired,
-    value: PropTypes.arrayOf(PropTypes.string),
   };
 
   state = {
@@ -302,54 +310,48 @@ class DateRangeInput extends Component {
   // Translations for locales are taken from moment data and from
   // our own translations.
   // eslint-disable-next-line arrow-body-style
-  suggest = (/* rawWord */) => {
-    // const word = rawWord.toLowerCase();
+  suggest = rawWord => {
+    const word = rawWord.toLowerCase();
 
-    // const matches = entry => entry.toLowerCase().startsWith(word);
-    // if (matches(this.props.intl.formatMessage(messages.today))) {
-    //   const today = new Date();
-    //   return today;
-    // }
+    const matches = entry => entry.toLowerCase().startsWith(word);
+    if (matches(this.props.intl.formatMessage(messages.today))) {
+      const today = moment();
+      return today;
+    }
 
-    // if (matches(this.props.intl.formatMessage(messages.yesterday))) {
-    //   return moment()
-    //     .subtract(1, 'day')
-    //     .toDate();
-    // }
+    if (matches(this.props.intl.formatMessage(messages.yesterday))) {
+      return moment().subtract(1, 'day');
+    }
 
-    // if (matches(this.props.intl.formatMessage(messages.tomorrow))) {
-    //   return moment()
-    //     .add(1, 'day')
-    //     .toDate();
-    // }
+    if (matches(this.props.intl.formatMessage(messages.tomorrow))) {
+      return moment().add(1, 'day');
+    }
 
-    // // weekdays is an array with index 0 being sunday
-    // const weekdays = moment.localeData(this.props.intl.locale).weekdays();
-    // // weekday is a number and starts with sunday being 0
-    // const matchedWeekay = weekdays.findIndex(matches);
-    // if (matchedWeekay !== -1) {
-    //   const weekday = moment().weekday();
-    //   return (
-    //     moment()
-    //       // we subtract so that we always match in the current week
-    //       .add(matchedWeekay - weekday, 'day')
-    //       .toDate()
-    //   );
-    // }
+    // weekdays is an array with index 0 being sunday
+    const weekdays = moment.localeData(this.props.intl.locale).weekdays();
+    // weekday is a number and starts with sunday being 0
+    const matchedWeekay = weekdays.findIndex(matches);
+    if (matchedWeekay !== -1) {
+      const weekday = moment().weekday();
+      return (
+        moment()
+          // we subtract so that we always match in the current week
+          .add(matchedWeekay - weekday, 'day')
+      );
+    }
 
-    // const months = moment.localeData(this.props.intl.locale).months();
-    // const matchedMonth = months.findIndex(matches);
-    // if (matchedMonth !== -1) {
-    //   const month = moment().month();
-    //   return (
-    //     moment()
-    //       // we subtract so that we always match in the current year
-    //       .add(matchedMonth - month, 'month')
-    //       // always show first of month
-    //       .date(1)
-    //       .toDate()
-    //   );
-    // }
+    const months = moment.localeData(this.props.intl.locale).months();
+    const matchedMonth = months.findIndex(matches);
+    if (matchedMonth !== -1) {
+      const month = moment().month();
+      return (
+        moment()
+          // we subtract so that we always match in the current year
+          .add(matchedMonth - month, 'month')
+          // always show first of month
+          .date(1)
+      );
+    }
 
     return null;
   };
@@ -364,9 +366,13 @@ class DateRangeInput extends Component {
     }
     // user selected a range
     if (Array.isArray(option.value)) {
-      this.setState({ range: option.value, rangeTarget: null }, () => {
-        this.props.onChange(option.value || []);
-      });
+      // close menu when range is selected
+      this.setState(
+        { range: option.value, rangeTarget: null, openCount: 0 },
+        () => {
+          this.props.onChange(option.value || []);
+        }
+      );
       return;
     }
     // user selected a single day
@@ -408,39 +414,61 @@ class DateRangeInput extends Component {
         this.setState(prevState => ({
           openCount:
             prevState.range.length === 0 || prevState.range.length === 2
-              ? // Effectively sets openCount to 2 to prevent the menu from closing
+              ? // Sets openCount to 2 to prevent the menu from closing
                 // after the selection has been made.
-                prevState.openCount + 1
+                2
               : prevState.openCount,
         }));
         break;
       }
-      // case 'input-change': {
-      //   if (!value) {
-      //     this.setState({ suggestedOptions: defaultOptions });
-      //     return;
-      //   }
+      case 'input-change': {
+        if (!value) {
+          this.setState({ suggestedOptions: defaultOptions });
+          return;
+        }
 
-      //   // Attempt to parse dates in locale before falling back to chrono
-      //   // This helps to avoid the mixup of month and day for US/other notations
-      //   const date = do {
-      //     const localeDate = moment(
-      //       value,
-      //       moment.localeData(this.props.intl.locale).longDateFormat('L'),
-      //       this.props.intl.locale
-      //     );
+        const hasSeparator = value.includes(rangeSeparator);
 
-      //     if (localeDate.isValid()) localeDate;
-      //     else this.suggest(value);
-      //   };
-      //   this.setState(prevState => ({
-      //     month: date || prevState.month,
-      //     suggestedOptions: date
-      //       ? [createOptionForDate(date, this.props.intl)]
-      //       : [],
-      //   }));
-      //   break;
-      // }
+        if (!hasSeparator) {
+          // Attempt to parse dates in locale before falling back to chrono
+          // This helps to avoid the mixup of month and day for US/other notations
+          const date = do {
+            const localeDate = moment(
+              value,
+              moment.localeData(this.props.intl.locale).longDateFormat('L'),
+              this.props.intl.locale
+            );
+
+            if (localeDate.isValid()) localeDate;
+            else this.suggest(value);
+          };
+          this.setState(prevState => ({
+            month: date || prevState.month,
+            suggestedOptions: date
+              ? [createOptionForDate(date, this.props.intl)]
+              : [],
+          }));
+        } else {
+          const [rangeStart, rangeEnd] = value
+            .split(rangeSeparator)
+            .map(str => str.trim());
+
+          const rangeStartDate = this.suggest(rangeStart);
+          const rangeEndDate = this.suggest(rangeEnd);
+          if (rangeStartDate?.isValid() && rangeEndDate?.isValid()) {
+            this.setState({
+              suggestedOptions: [
+                this.rangeToOption([
+                  rangeStartDate.format('YYYY-MM-DD'),
+                  rangeEndDate.format('YYYY-MM-DD'),
+                ]),
+              ],
+            });
+          }
+        }
+
+        break;
+      }
       default:
         break;
     }
@@ -455,7 +483,7 @@ class DateRangeInput extends Component {
     const end = new Date(range[1]);
     return isValidDate(start) && isValidDate(end)
       ? {
-          label: createRangeLabel(range, this.props.intl.locale),
+          label: createRangeLabel(range, this.props.intl),
           value: range,
         }
       : null;
@@ -475,7 +503,8 @@ class DateRangeInput extends Component {
           }}
         >
           <Select
-            {...omit(this.props, ['horizontalConstraint'])}
+            id={this.props.id}
+            name={this.props.name}
             components={{ Group, Option }}
             filterOption={null}
             isMulti={false}
@@ -484,10 +513,11 @@ class DateRangeInput extends Component {
             onInputChange={this.handleInputChange}
             options={[
               ...this.state.suggestedOptions,
-              createCalendarOptions(this.state.month, this.props.intl),
+              createCalendarGroup(this.state.month, this.props.intl),
             ]}
             value={this.rangeToOption(this.props.value)}
             isClearable={this.props.isClearable}
+            autoFocus={this.props.isAutofocussed}
             menuIsOpen={this.state.openCount > 0}
             onBlur={() => {
               this.setState({ range: [], rangeTarget: null });
