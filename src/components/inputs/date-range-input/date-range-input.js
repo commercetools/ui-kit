@@ -5,6 +5,7 @@ import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Select, { components as SelectComponents } from 'react-select';
+import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-range-input.mod.css';
@@ -310,51 +311,12 @@ class DateRangeInput extends Component {
   // Translations for locales are taken from moment data and from
   // our own translations.
   // eslint-disable-next-line arrow-body-style
-  suggest = rawWord => {
-    const word = rawWord.toLowerCase();
-
-    const matches = entry => entry.toLowerCase().startsWith(word);
-    if (matches(this.props.intl.formatMessage(messages.today))) {
-      const today = moment();
-      return today;
-    }
-
-    if (matches(this.props.intl.formatMessage(messages.yesterday))) {
-      return moment().subtract(1, 'day');
-    }
-
-    if (matches(this.props.intl.formatMessage(messages.tomorrow))) {
-      return moment().add(1, 'day');
-    }
-
-    // weekdays is an array with index 0 being sunday
-    const weekdays = moment.localeData(this.props.intl.locale).weekdays();
-    // weekday is a number and starts with sunday being 0
-    const matchedWeekay = weekdays.findIndex(matches);
-    if (matchedWeekay !== -1) {
-      const weekday = moment().weekday();
-      return (
-        moment()
-          // we subtract so that we always match in the current week
-          .add(matchedWeekay - weekday, 'day')
-      );
-    }
-
-    const months = moment.localeData(this.props.intl.locale).months();
-    const matchedMonth = months.findIndex(matches);
-    if (matchedMonth !== -1) {
-      const month = moment().month();
-      return (
-        moment()
-          // we subtract so that we always match in the current year
-          .add(matchedMonth - month, 'month')
-          // always show first of month
-          .date(1)
-      );
-    }
-
-    return null;
-  };
+  suggest = rawWord =>
+    suggestDate(rawWord, this.props.intl.locale, {
+      today: this.props.intl.formatMessage(messages.today),
+      yesterday: this.props.intl.formatMessage(messages.yesterday),
+      tomorrow: this.props.intl.formatMessage(messages.tomorrow),
+    });
 
   handleChange = option => {
     // user cleared the value

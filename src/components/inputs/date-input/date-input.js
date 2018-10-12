@@ -5,6 +5,7 @@ import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Select, { components as SelectComponents } from 'react-select';
+import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-input.mod.css';
@@ -213,63 +214,6 @@ class DateInput extends Component {
     };
   }
 
-  // Allow users to type things like "january" or "monday" and turn it into
-  // a date as a suggestion.
-  // Respects locales when making the suggestions.
-  // Translations for locales are taken from moment data and from
-  // our own translations.
-  suggest = rawWord => {
-    const word = rawWord.toLowerCase();
-
-    const matches = entry => entry.toLowerCase().startsWith(word);
-    if (matches(this.props.intl.formatMessage(messages.today))) {
-      const today = new Date();
-      return today;
-    }
-
-    if (matches(this.props.intl.formatMessage(messages.yesterday))) {
-      return moment()
-        .subtract(1, 'day')
-        .toDate();
-    }
-
-    if (matches(this.props.intl.formatMessage(messages.tomorrow))) {
-      return moment()
-        .add(1, 'day')
-        .toDate();
-    }
-
-    // weekdays is an array with index 0 being sunday
-    const weekdays = moment.localeData(this.props.intl.locale).weekdays();
-    // weekday is a number and starts with sunday being 0
-    const matchedWeekay = weekdays.findIndex(matches);
-    if (matchedWeekay !== -1) {
-      const weekday = moment().weekday();
-      return (
-        moment()
-          // we subtract so that we always match in the current week
-          .add(matchedWeekay - weekday, 'day')
-          .toDate()
-      );
-    }
-
-    const months = moment.localeData(this.props.intl.locale).months();
-    const matchedMonth = months.findIndex(matches);
-    if (matchedMonth !== -1) {
-      const month = moment().month();
-      return (
-        moment()
-          // we subtract so that we always match in the current year
-          .add(matchedMonth - month, 'month')
-          // always show first of month
-          .date(1)
-          .toDate()
-      );
-    }
-
-    return null;
-  };
-
   handleChange = option => {
     this.props.onChange(option ? option.value : '');
   };
@@ -297,7 +241,12 @@ class DateInput extends Component {
           );
 
           if (localeDate.isValid()) localeDate;
-          else this.suggest(value);
+          else
+            suggestDate(value, this.props.intl.locale, {
+              today: this.props.intl.formatMessage(messages.today),
+              yesterday: this.props.intl.formatMessage(messages.yesterday),
+              tomorrow: this.props.intl.formatMessage(messages.tomorrow),
+            });
         };
         this.setState(prevState => ({
           month: date || prevState.month,
