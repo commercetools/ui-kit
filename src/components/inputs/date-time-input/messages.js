@@ -32,7 +32,7 @@ export default defineMessages({
   nextWeek: {
     id: 'UIKit.DateTimeInput.nextWeek',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: '[Next] dddd (Do MMM YYYY) [at] LT',
+    defaultMessage: '[Next] dddd, Do MMM YYYY [at] LT',
   },
   lastDay: {
     id: 'UIKit.DateTimeInput.lastDay',
@@ -42,11 +42,16 @@ export default defineMessages({
   lastWeek: {
     id: 'UIKit.DateTimeInput.lastWeek',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: '[Last] dddd, (Do MMM YYYY) [at] LT',
+    defaultMessage: '[Last] dddd, Do MMM YYYY [at] LT',
   },
   sameElse: {
     id: 'UIKit.DateTimeInput.sameElse',
     description: 'Label for a day (uses moment.js date notation)',
-    defaultMessage: 'LT',
+    defaultMessage: 'Do MMMM YYYY [at] LT',
+  },
+  timePickerPlaceholder: {
+    id: 'UIKit.DateTimeInput.timePickerPlaceholder',
+    description: 'Placeholder for the time input',
+    defaultMessage: 'Time (e.g. 3:15 pm)',
   },
 });

@@ -12,16 +12,24 @@ export function suggestDate(rawWord, locale, messages) {
 
   const matches = entry => entry.toLowerCase().startsWith(word);
   if (matches(messages.today)) {
-    const today = moment();
+    const today = moment()
+      .utc()
+      .startOf('day');
     return today;
   }
 
   if (matches(messages.yesterday)) {
-    return moment().subtract(1, 'day');
+    return moment()
+      .utc()
+      .startOf('day')
+      .subtract(1, 'day');
   }
 
   if (matches(messages.tomorrow)) {
-    return moment().add(1, 'day');
+    return moment()
+      .utc()
+      .startOf('day')
+      .add(1, 'day');
   }
 
   // weekdays is an array with index 0 being sunday
@@ -32,6 +40,8 @@ export function suggestDate(rawWord, locale, messages) {
     const weekday = moment().weekday();
     return (
       moment()
+        .utc()
+        .startOf('day')
         // we subtract so that we always match in the current week
         .add(matchedWeekay - weekday, 'day')
     );
@@ -43,6 +53,7 @@ export function suggestDate(rawWord, locale, messages) {
     const month = moment().month();
     return (
       moment()
+        .utc()
         // we subtract so that we always match in the current year
         .add(matchedMonth - month, 'month')
         // always show first of month

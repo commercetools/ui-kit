@@ -10,6 +10,13 @@ import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-time-input.mod.css';
 
+// TODO build rightbad into parseTime, as there is a bug in parseTime right now.
+// Bug: When parseTime is called with 00:00:00.75 it will return
+//   milliseconds: 75 instead of milliseconds: 750!
+// rightPad fixes this "accidentally" in TimeInput, but parseTime should
+// do the right thing. So we should add rightPad into parseTime
+const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
+
 // TODO
 // - allow navigation with arrow keys (allow going up/down)
 
@@ -57,7 +64,7 @@ const parseTime = rawTime => {
     hours: Number(hours) + (amPm === 'pm' ? 12 : 0),
     minutes: Number(minutes),
     seconds: Number(seconds),
-    milliseconds: Number(milliseconds),
+    milliseconds: Number(rightPad(milliseconds)),
     hasSeconds: Number(seconds) !== 0 || Number(milliseconds) !== 0,
     hasMilliseconds: Number(milliseconds) !== 0,
     amPm,
@@ -69,23 +76,23 @@ const CalendarConnector = React.createContext();
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
 
 const createOptionForDate = (day, intl) => {
-  const date =
-    moment.isMoment(day) && day.locale() === intl.locale
-      ? day
-      : moment(day).locale(intl.locale);
+  const date = moment.utc(day).locale(intl.locale);
+  // moment.isMoment(day) && day.locale() === intl.locale
+  //   ? day
+  //   : moment(day).locale(intl.locale);
 
   return {
     date,
-    value: date.format('YYYY-MM-DDThh:mm:ss.sss[Z]'),
-    label: date.format('YYYY-MM-DDThh:mm:ss.sss[Z]'),
-    // label: date.calendar(null, {
-    //   sameDay: intl.formatMessage(messages.sameDay),
-    //   nextDay: intl.formatMessage(messages.nextDay),
-    //   nextWeek: intl.formatMessage(messages.nextWeek),
-    //   lastDay: intl.formatMessage(messages.lastDay),
-    //   lastWeek: intl.formatMessage(messages.lastWeek),
-    //   sameElse: intl.formatMessage(messages.sameElse),
-    // }),
+    value: date.toISOString(),
+    // label: date.toISOString(),
+    label: date.calendar(null, {
+      sameDay: intl.formatMessage(messages.sameDay),
+      nextDay: intl.formatMessage(messages.nextDay),
+      nextWeek: intl.formatMessage(messages.nextWeek),
+      lastDay: intl.formatMessage(messages.lastDay),
+      lastWeek: intl.formatMessage(messages.lastWeek),
+      sameElse: intl.formatMessage(messages.sameElse),
+    }),
   };
 };
 
@@ -93,7 +100,12 @@ const createCalendarOptions = (day, intl) => {
   const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
     (_, i) => {
       const dayOfMonth = i + 1;
-      const date = moment(day)
+      const date = moment
+        .utc(day)
+        .hours(0)
+        .minutes(0)
+        .seconds(0)
+        .milliseconds(0)
         .locale(intl.locale)
         .date(dayOfMonth);
       return {
@@ -103,17 +115,18 @@ const createCalendarOptions = (day, intl) => {
     }
   );
 
-  const label = moment(day)
+  const groupLabel = moment
+    .utc(day)
     .locale(intl.locale)
     .format('MMMM YYYY');
 
   // group for the calendar
-  return { label, options: daysInMonth };
+  return { label: groupLabel, options: daysInMonth };
 };
 
 const defaultOptions = [];
 
-class TimePicker extends React.Component {
+class PlainTimePicker extends React.Component {
   static displayName = 'TimePicker';
 
   static propTypes = {
@@ -123,6 +136,9 @@ class TimePicker extends React.Component {
     timeInputRef: PropTypes.object,
     value: PropTypes.string,
     isDisabled: PropTypes.bool,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   render() {
@@ -131,6 +147,10 @@ class TimePicker extends React.Component {
         <input
           ref={this.props.timeInputRef}
           type="text"
+          className={styles.timeInput}
+          placeholder={this.props.intl.formatMessage(
+            messages.timePickerPlaceholder
+          )}
           value={this.props.value}
           onChange={this.props.onChange}
           onBlur={this.props.onBlur}
@@ -149,9 +169,18 @@ class TimePicker extends React.Component {
   }
 }
 
+const TimePicker = injectIntl(PlainTimePicker);
+
 class MenuList extends React.Component {
   static displayName = 'MenuList';
   menuListRef = React.createRef();
+
+  isTimeValid = time => {
+    // valid times are either empty strings or parseable times
+    const parsedTime = parseTime(time);
+    return !(!parsedTime && time.trim() !== '');
+  };
+
   render() {
     return (
       <div ref={this.menuListRef}>
@@ -181,30 +210,39 @@ class MenuList extends React.Component {
                   ) {
                     closeMenu();
                   }
+
+                  // reset date if time was not valid
+                  if (!this.isTimeValid(time)) onChange('');
                 }}
-                onSubmit={closeMenu}
+                onSubmit={() => {
+                  if (!this.isTimeValid(time)) onChange('');
+
+                  // close
+                  closeMenu();
+                }}
                 value={time}
                 onChange={event => {
                   const nextTime = event.target.value;
                   setTime(nextTime);
 
                   // tell the parent in case the time is valid
-                  const value = selectRef.current.state.value?.date;
+                  const value = this.props.getValue()?.[0]?.date;
                   // We can only update the parent when there is a date already
                   if (!value) return;
 
-                  const parsedTime = parseTime(time);
+                  const parsedTime = parseTime(nextTime);
                   if (parsedTime) {
                     onChange(
-                      moment(value)
+                      moment
+                        .utc(value)
                         .hour(parsedTime.hours)
                         .minute(parsedTime.minutes)
                         .second(parsedTime.seconds)
                         .millisecond(parsedTime.milliseconds)
-                        .format('YYYY-MM-DDThh:mm:ss.sss[Z]')
+                        .toISOString()
                     );
                   } else {
-                    onChange(value.format('YYYY-MM-DDT00:00:00.000[Z]'));
+                    onChange(value.toISOString());
                   }
                   // onChange()
                 }}
@@ -411,8 +449,14 @@ class DateTimeInput extends Component {
         break;
       }
       case 'set-value':
-        if (this.timeInputRef.current) this.timeInputRef.current.focus();
-        this.setState({ openCount: 2, time: '' });
+        // openCount needs to be 3 because onMenuClose runs twice
+        // once naturally, and once because the select loses focus when the
+        // input gets focused
+        this.setState({ openCount: 3, time: '' }, () => {
+          // wait for setState so that timeInput has a chance to mount,
+          // otherwise "current" will not be defined
+          this.timeInputRef.current.focus();
+        });
         break;
       case 'input-change': {
         if (!value) {
@@ -451,12 +495,12 @@ class DateTimeInput extends Component {
   };
 
   standardDateToOption = standardDate => {
-    if (!standardDate) return undefined;
+    if (!standardDate) return null;
 
-    const date = new Date(standardDate);
+    const date = moment(standardDate, moment.ISO_8601).toDate();
     return isValidDate(date)
       ? createOptionForDate(date, this.props.intl)
-      : undefined;
+      : null;
   };
 
   selectRef = React.createRef();
@@ -470,7 +514,7 @@ class DateTimeInput extends Component {
             locale: this.props.intl.locale,
             month: this.state.month,
             setMonth: month => this.setState({ month }),
-            keepMenuOpen: () => this.setState({ openCount: 2 }),
+            keepMenuOpen: cb => this.setState({ openCount: 2 }, cb),
             closeMenu: () => this.setState({ openCount: 0 }),
             selectRef: this.selectRef,
             timeInputRef: this.timeInputRef,
