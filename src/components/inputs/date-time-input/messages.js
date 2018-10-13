@@ -54,4 +54,9 @@ export default defineMessages({
     description: 'Placeholder for the time input',
     defaultMessage: 'Time (e.g. 3:15 pm)',
   },
+  dateTimeSeparators: {
+    id: 'UIKit.DateTimeInput.dateTimeSeparators',
+    description: 'Separators for date and time which inputs will be split by',
+    defaultMessage: ' at |@',
+  },
 });

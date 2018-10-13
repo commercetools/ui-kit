@@ -25,6 +25,7 @@
   "UIKit.DateRangeInput.today": "",
   "UIKit.DateRangeInput.tomorrow": "",
   "UIKit.DateRangeInput.yesterday": "",
+  "UIKit.DateTimeInput.dateTimeSeparators": "",
   "UIKit.DateTimeInput.lastDay": "",
   "UIKit.DateTimeInput.lastWeek": "",
   "UIKit.DateTimeInput.nextDay": "",

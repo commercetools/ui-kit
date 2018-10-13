@@ -17,6 +17,27 @@ import styles from './date-time-input.mod.css';
 // do the right thing. So we should add rightPad into parseTime
 const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
 
+// Tries to find the first match for which there is a date and time,
+// otherwise returns with a date only.
+// Example
+//  splitDateTimeString('Monday @ 4pm', [' at ', ' @ '])
+//  => ['Monday', '4pm']
+export const splitDateTimeString = (value, separators) => {
+  let result = [];
+  const clean = list =>
+    list
+      .filter(s => typeof s === 'string')
+      .map(s => s.trim())
+      .filter(s => s.length > 0);
+  separators.forEach(separator => {
+    const intermediateResult = value.split(new RegExp(separator, 'i'));
+    if (result.length === 0) result = clean(intermediateResult);
+    else if (intermediateResult.length > result.length)
+      result = clean(intermediateResult);
+  });
+  return result;
+};
+
 // TODO
 // - allow navigation with arrow keys (allow going up/down)
 
@@ -464,23 +485,38 @@ class DateTimeInput extends Component {
           return;
         }
 
+        const separators = this.props.intl
+          .formatMessage(messages.dateTimeSeparators)
+          .split('|');
+
+        const [dateString, timeString] = splitDateTimeString(value, separators);
+
         // Attempt to parse dates in locale before falling back to chrono
         // This helps to avoid the mixup of month and day for US/other notations
         const date = do {
           const localeDate = moment(
-            value,
+            dateString,
             moment.localeData(this.props.intl.locale).longDateFormat('L'),
             this.props.intl.locale
-          );
+          ).utc();
 
           if (localeDate.isValid()) localeDate;
           else
-            suggestDate(value, this.props.intl.locale, {
+            suggestDate(dateString, this.props.intl.locale, {
               today: this.props.intl.formatMessage(messages.today),
               yesterday: this.props.intl.formatMessage(messages.yesterday),
               tomorrow: this.props.intl.formatMessage(messages.tomorrow),
             });
         };
+
+        const time = parseTime(timeString);
+        if (time) {
+          date.hour(time.hours);
+          date.minute(time.minutes);
+          date.second(time.seconds);
+          date.millisecond(time.milliseconds);
+        }
+
         this.setState(prevState => ({
           month: date || prevState.month,
           suggestedOptions: date
