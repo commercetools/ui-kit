@@ -17,6 +17,12 @@ import styles from './date-time-input.mod.css';
 // do the right thing. So we should add rightPad into parseTime
 const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
 
+const formatTime = date => {
+  if (date.milliseconds()) return date.format('HH:mm:ss.SSS');
+  if (date.seconds()) return date.format('HH:mm:ss');
+  return date.format('HH:mm');
+};
+
 // Tries to find the first match for which there is a date and time,
 // otherwise returns with a date only.
 // Example
@@ -473,7 +479,7 @@ class DateTimeInput extends Component {
         // openCount needs to be 3 because onMenuClose runs twice
         // once naturally, and once because the select loses focus when the
         // input gets focused
-        this.setState({ openCount: 3, time: '' }, () => {
+        this.setState({ openCount: 3 }, () => {
           // wait for setState so that timeInput has a chance to mount,
           // otherwise "current" will not be defined
           this.timeInputRef.current.focus();
@@ -522,6 +528,7 @@ class DateTimeInput extends Component {
           suggestedOptions: date
             ? [createOptionForDate(date, this.props.intl)]
             : [],
+          time: time ? formatTime(date) : '',
         }));
         break;
       }
@@ -583,6 +590,9 @@ class DateTimeInput extends Component {
             onMenuOpen={() => {
               this.setState(prevState => ({
                 openCount: prevState.openCount + 1,
+                time: this.props.value
+                  ? formatTime(moment(this.props.value, moment.ISO_8601).utc())
+                  : '',
               }));
             }}
             onMenuClose={() => {
