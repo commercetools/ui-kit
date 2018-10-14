@@ -27,7 +27,7 @@
   "UIKit.DateRangeInput.yesterday": "Gestern",
   "UIKit.DateTimeInput.dateTimeSeparators": " um |@",
   "UIKit.DateTimeInput.lastDay": "[Gestern um] LT [Uhr]",
-  "UIKit.DateTimeInput.lastWeek": "[letzten] dddd, (Do MMM YYYY) [um] LT [Uhr]",
+  "UIKit.DateTimeInput.lastWeek": "[Letzten] dddd, (Do MMM YYYY) [um] LT [Uhr]",
   "UIKit.DateTimeInput.nextDay": "[Morgen um] LT [Uhr]",
   "UIKit.DateTimeInput.nextWeek": "dddd [um] LT [Uhr]",
   "UIKit.DateTimeInput.sameDay": "[Heute um] LT [Uhr]",

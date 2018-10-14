@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import mapValues from 'lodash.mapvalues';
 import Select, { components as SelectComponents } from 'react-select';
 import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
@@ -108,18 +109,33 @@ const createOptionForDate = (day, intl) => {
   //   ? day
   //   : moment(day).locale(intl.locale);
 
-  return {
-    date,
-    value: date.toISOString(),
-    // label: date.toISOString(),
-    label: date.calendar(null, {
+  const hasMilliseconds = date.milliseconds() > 0;
+  const hasSeconds = hasMilliseconds || date.seconds() > 0;
+  const formatters = mapValues(
+    {
       sameDay: intl.formatMessage(messages.sameDay),
       nextDay: intl.formatMessage(messages.nextDay),
       nextWeek: intl.formatMessage(messages.nextWeek),
       lastDay: intl.formatMessage(messages.lastDay),
       lastWeek: intl.formatMessage(messages.lastWeek),
       sameElse: intl.formatMessage(messages.sameElse),
-    }),
+    },
+    format => {
+      // Ensures the exact time is displayed, instead of minute precision only.
+      //
+      // This format replacement is kinda risky, but it's a nice workaround over
+      // using plenty of dedicated messages to each format.
+      if (hasMilliseconds) return format.replace(' LT', ' HH:mm:ss.SSS');
+      if (hasSeconds) return format.replace(' LT', ' LTS');
+      return format;
+    }
+  );
+
+  return {
+    date,
+    value: date.toISOString(),
+    // label: date.toISOString(),
+    label: date.calendar(null, formatters),
   };
 };
 
