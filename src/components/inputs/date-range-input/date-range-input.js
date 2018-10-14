@@ -389,9 +389,14 @@ class DateRangeInput extends Component {
           return;
         }
 
-        const hasSeparator = value.includes(rangeSeparator);
+        const [rangeStart, rangeEnd] = value
+          .split(rangeSeparator)
+          .filter(str => typeof str === 'string')
+          .map(str => str.trim());
 
-        if (!hasSeparator) {
+        const hasRange = rangeStart && rangeEnd;
+
+        if (!hasRange) {
           // Attempt to parse dates in locale before falling back to chrono
           // This helps to avoid the mixup of month and day for US/other notations
           const date = do {
@@ -411,10 +416,6 @@ class DateRangeInput extends Component {
               : [],
           }));
         } else {
-          const [rangeStart, rangeEnd] = value
-            .split(rangeSeparator)
-            .map(str => str.trim());
-
           const rangeStartDate = this.suggest(rangeStart);
           const rangeEndDate = this.suggest(rangeEnd);
           if (rangeStartDate?.isValid() && rangeEndDate?.isValid()) {
@@ -428,7 +429,6 @@ class DateRangeInput extends Component {
             });
           }
         }
-
         break;
       }
       default:

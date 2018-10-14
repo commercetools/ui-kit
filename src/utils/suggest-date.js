@@ -61,5 +61,11 @@ export function suggestDate(rawWord, locale, messages) {
     );
   }
 
+  const date = moment(
+    word,
+    moment.localeData(locale).longDateFormat('L')
+  ).utc();
+  if (date?.isValid()) return date;
+
   return null;
 }
