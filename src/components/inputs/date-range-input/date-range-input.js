@@ -35,7 +35,7 @@ const createDayLabel = (date, intl) =>
 const createRangeLabel = (range, intl) => {
   const format = standardDate =>
     createDayLabel(
-      moment.utc(standardDate, 'YYYY-MM-DD').locale(intl.locale),
+      moment.utc(standardDate, moment.ISO_8601).locale(intl.locale),
       intl
     );
   return range[0] === range[1]
@@ -65,7 +65,7 @@ const createOptionForDate = (day, intl) => {
       : moment.utc(day).locale(intl.locale);
   return {
     date,
-    value: date.format('YYYY-MM-DD'),
+    value: date.toISOString(),
     label: createDayLabel(date, intl),
   };
 };
@@ -426,8 +426,8 @@ class DateRangeInput extends Component {
             this.setState({
               suggestedOptions: [
                 this.rangeToOption([
-                  rangeStartDate.format('YYYY-MM-DD'),
-                  rangeEndDate.format('YYYY-MM-DD'),
+                  rangeStartDate.toISOString(),
+                  rangeEndDate.toISOString(),
                 ]),
               ],
             });
@@ -445,8 +445,8 @@ class DateRangeInput extends Component {
   rangeToOption = range => {
     if (!range || range.length !== 2) return null;
 
-    const start = moment.utc(range[0], 'YYYY-MM-DD', true).toDate();
-    const end = moment.utc(range[1], 'YYYY-MM-DD', true).toDate();
+    const start = moment.utc(range[0], moment.ISO_8601, true).toDate();
+    const end = moment.utc(range[1], moment.ISO_8601, true).toDate();
     return isValidDate(start) && isValidDate(end)
       ? {
           label: createRangeLabel(range, this.props.intl),
