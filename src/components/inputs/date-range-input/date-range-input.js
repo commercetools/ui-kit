@@ -34,19 +34,23 @@ const createDayLabel = (date, intl) =>
 
 const createRangeLabel = (range, intl) => {
   const format = standardDate =>
-    createDayLabel(moment(standardDate).locale(intl.locale), intl);
+    createDayLabel(
+      moment.utc(standardDate, 'YYYY-MM-DD').locale(intl.locale),
+      intl
+    );
   return range[0] === range[1]
     ? `${format(range[0])}`
     : `${format(range[0])}${rangeSeparator}${format(range[1])}`;
 };
 
-const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
+const isValidDate = date =>
+  Boolean(date) && typeof date.getTime === 'function' && !isNaN(date.getTime());
 
 const getMonthFromRange = value => {
-  const today = new Date();
+  const today = moment.utc().startOf('day');
   if (value.length === 0) return today;
-  const date = new Date(value[0]);
-  return isValidDate(date) ? date : new Date();
+  const date = moment.utc(value[0]).startOf('day');
+  return isValidDate(date) ? date : today;
 };
 
 const CalendarConnector = React.createContext();
@@ -58,7 +62,7 @@ const createOptionForDate = (day, intl) => {
   const date =
     moment.isMoment(day) && day.locale() === intl.locale
       ? day
-      : moment(day).locale(intl.locale);
+      : moment.utc(day).locale(intl.locale);
   return {
     date,
     value: date.format('YYYY-MM-DD'),
@@ -67,20 +71,22 @@ const createOptionForDate = (day, intl) => {
 };
 
 const createCalendarGroup = (day, intl) => {
-  const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
-    (_, i) => {
-      const dayOfMonth = i + 1;
-      const date = moment(day)
-        .locale(intl.locale)
-        .date(dayOfMonth);
-      return {
-        ...createOptionForDate(date, intl),
-        display: 'calendar',
-      };
-    }
-  );
+  const daysInMonth = Array.from({
+    length: moment.utc(day).daysInMonth(),
+  }).map((_, i) => {
+    const dayOfMonth = i + 1;
+    const date = moment
+      .utc(day)
+      .locale(intl.locale)
+      .date(dayOfMonth);
+    return {
+      ...createOptionForDate(date, intl),
+      display: 'calendar',
+    };
+  });
 
-  const label = moment(day)
+  const label = moment
+    .utc(day)
     .locale(intl.locale)
     .format('MMMM YYYY');
 
@@ -120,7 +126,8 @@ const Group = injectIntl(props => {
                 <button
                   onClick={() => {
                     setMonth(
-                      moment(month)
+                      moment
+                        .utc(month)
                         .subtract(1, 'month')
                         .toDate()
                     );
@@ -134,7 +141,8 @@ const Group = injectIntl(props => {
                 <button
                   onClick={() => {
                     setMonth(
-                      moment(month)
+                      moment
+                        .utc(month)
                         .add(1, 'month')
                         .toDate()
                     );
@@ -191,7 +199,7 @@ const Option = props => (
         }
 
         // highlight today
-        const today = new Date();
+        const today = moment.utc().startOf('day');
         if (props.data.date.isSame(today, 'day')) {
           optionStyles.fontWeight = 'bold';
         }
@@ -215,21 +223,17 @@ const Option = props => (
           }
         })();
 
+        const start = selectionRange && moment.utc(selectionRange[0]);
+        const end = selectionRange && moment.utc(selectionRange[1]);
+
         const isSelected =
           selectionRange &&
-          moment(props.value).isBetween(
-            selectionRange[0],
-            selectionRange[1],
-            'day',
-            '[]'
-          );
+          moment.utc(props.value).isBetween(start, end, 'day', '[]');
 
         const isSelectionStart =
-          selectionRange &&
-          moment(props.value).isSame(selectionRange[0], 'day');
+          selectionRange && moment.utc(props.value).isSame(start, 'day');
         const isSelectionEnd =
-          selectionRange &&
-          moment(props.value).isSame(selectionRange[1], 'day');
+          selectionRange && moment.utc(props.value).isSame(end, 'day');
 
         if (isSelected && !props.isFocused) {
           optionStyles.backgroundColor = '#eee';
@@ -400,7 +404,7 @@ class DateRangeInput extends Component {
           // Attempt to parse dates in locale before falling back to chrono
           // This helps to avoid the mixup of month and day for US/other notations
           const date = do {
-            const localeDate = moment(
+            const localeDate = moment.utc(
               value,
               moment.localeData(this.props.intl.locale).longDateFormat('L'),
               this.props.intl.locale
@@ -441,8 +445,8 @@ class DateRangeInput extends Component {
   rangeToOption = range => {
     if (!range || range.length !== 2) return null;
 
-    const start = new Date(range[0]);
-    const end = new Date(range[1]);
+    const start = moment.utc(range[0], 'YYYY-MM-DD', true).toDate();
+    const end = moment.utc(range[1], 'YYYY-MM-DD', true).toDate();
     return isValidDate(start) && isValidDate(end)
       ? {
           label: createRangeLabel(range, this.props.intl),

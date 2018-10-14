@@ -12,21 +12,19 @@ export function suggestDate(rawWord, locale, messages) {
 
   const matches = entry => entry.toLowerCase().startsWith(word);
   if (matches(messages.today)) {
-    const today = moment()
-      .utc()
-      .startOf('day');
+    const today = moment.utc().startOf('day');
     return today;
   }
 
   if (matches(messages.yesterday)) {
-    return moment()
+    return moment
       .utc()
       .startOf('day')
       .subtract(1, 'day');
   }
 
   if (matches(messages.tomorrow)) {
-    return moment()
+    return moment
       .utc()
       .startOf('day')
       .add(1, 'day');
@@ -39,7 +37,7 @@ export function suggestDate(rawWord, locale, messages) {
   if (matchedWeekay !== -1) {
     const weekday = moment().weekday();
     return (
-      moment()
+      moment
         .utc()
         .startOf('day')
         // we subtract so that we always match in the current week
@@ -50,9 +48,9 @@ export function suggestDate(rawWord, locale, messages) {
   const months = moment.localeData(locale).months();
   const matchedMonth = months.findIndex(matches);
   if (matchedMonth !== -1) {
-    const month = moment().month();
+    const month = moment.utc().month();
     return (
-      moment()
+      moment
         .utc()
         // we subtract so that we always match in the current year
         .add(matchedMonth - month, 'month')
@@ -61,10 +59,7 @@ export function suggestDate(rawWord, locale, messages) {
     );
   }
 
-  const date = moment(
-    word,
-    moment.localeData(locale).longDateFormat('L')
-  ).utc();
+  const date = moment.utc(word, moment.localeData(locale).longDateFormat('L'));
   if (date?.isValid()) return date;
 
   return null;
