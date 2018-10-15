@@ -4,14 +4,12 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import memoizeOne from 'memoize-one';
 import Select, { components as SelectComponents } from 'react-select';
 import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-range-input.mod.css';
-
-// TODO
-// - allow navigation with arrow keys (allow going up/down)
 
 const rangeSeparator = ' - ';
 
@@ -20,6 +18,18 @@ const rangeEqual = (a, b) => {
   if (a === b) return true;
   if (a.length !== b.length) return false;
   return a[0] === b[0] && a[1] === b[1];
+};
+
+const setFocus = (selectRef, option, cb) => {
+  // eslint-disable-next-line no-param-reassign
+  selectRef.current.select.scrollToFocusedOptionOnUpdate = true;
+  selectRef.current.select.setState(
+    {
+      focusedOption: option,
+      focusedValue: null,
+    },
+    cb
+  );
 };
 
 const createDayLabel = (date, intl) =>
@@ -70,7 +80,12 @@ const createOptionForDate = (day, intl) => {
   };
 };
 
-const createCalendarGroup = (day, intl) => {
+// memoized so that the options keep the same reference
+// This is enables keeping the focused option even when the props change,
+// as is the case when selectiong the first option of a range.
+// If the memoization is removed, the focused option will jump to the first
+// option after selecting the start of a range.
+const createCalendarGroup = memoizeOne((day, intl) => {
   const daysInMonth = Array.from({
     length: moment.utc(day).daysInMonth(),
   }).map((_, i) => {
@@ -91,8 +106,8 @@ const createCalendarGroup = (day, intl) => {
     .format('MMMM YYYY');
 
   // group for the calendar
-  return { label, options: daysInMonth };
-};
+  return { label, options: daysInMonth, display: 'calendarGroup' };
+});
 
 const defaultOptions = [];
 
@@ -266,6 +281,75 @@ const Option = props => (
 );
 Option.displayName = 'Option';
 
+// This component is used so that we can enhance the keyboard navigation
+class SelectContainer extends Component {
+  static displayName = 'SelectContainer';
+  render() {
+    return (
+      <CalendarConnector.Consumer>
+        {({ selectRef, range, setRangeTarget }) => (
+          <SelectComponents.SelectContainer
+            {...this.props}
+            innerProps={{
+              ...this.props.innerProps,
+              onKeyDown: event => {
+                console.log(selectRef.current);
+                if (
+                  this.props.isDisabled ||
+                  !this.props.isFocused ||
+                  !selectRef.current.state.menuIsOpen ||
+                  selectRef.current.select.state.focusedOption?.display !==
+                    'calendar'
+                ) {
+                  this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                const calendar = this.props.options.find(
+                  o => o.display === 'calendarGroup'
+                );
+                const dayIndex = calendar.options.findIndex(
+                  o => o === selectRef.current.select.state.focusedOption
+                );
+
+                const nextOptionIndex = (() => {
+                  switch (event.key) {
+                    case 'ArrowUp':
+                      return dayIndex - 7;
+                    case 'ArrowDown':
+                      return dayIndex + 7;
+                    case 'ArrowLeft':
+                      return dayIndex - 1;
+                    case 'ArrowRight':
+                      return dayIndex + 1;
+                    default:
+                      return null;
+                  }
+                })();
+
+                if (nextOptionIndex !== null) {
+                  const nextOption =
+                    calendar.options[
+                      Math.max(
+                        Math.min(nextOptionIndex, calendar.options.length - 1),
+                        0
+                      )
+                    ];
+                  setFocus(selectRef, nextOption, () => {
+                    if (range.length === 1) setRangeTarget(nextOption.value);
+                  });
+                } else {
+                  this.props.innerProps.onKeyDown(event);
+                }
+              },
+            }}
+          />
+        )}
+      </CalendarConnector.Consumer>
+    );
+  }
+}
+
 class DateRangeInput extends Component {
   static displayName = 'DateRangeInput';
 
@@ -377,14 +461,25 @@ class DateRangeInput extends Component {
   handleInputChange = (value, { action }) => {
     switch (action) {
       case 'set-value': {
-        this.setState(prevState => ({
-          openCount:
-            prevState.range.length === 0 || prevState.range.length === 2
-              ? // Sets openCount to 2 to prevent the menu from closing
-                // after the selection has been made.
-                2
-              : prevState.openCount,
-        }));
+        this.setState(
+          prevState => ({
+            openCount:
+              prevState.range.length === 0 || prevState.range.length === 2
+                ? // Sets openCount to 2 to prevent the menu from closing
+                  // after the selection has been made.
+                  2
+                : prevState.openCount,
+          }),
+          () => {
+            // Ensure that state in react-select reflects the state we pass in.
+            // Otherwise the selectRef.current.state.menuIsOpen check in
+            // SelectContainer will fail as menuIsOpen would be false, even
+            // though the menu is still open
+            this.selectRef.current.setState({
+              menuIsOpen: this.state.openCount > 0,
+            });
+          }
+        );
         break;
       }
       case 'input-change': {
@@ -455,6 +550,8 @@ class DateRangeInput extends Component {
       : null;
   };
 
+  selectRef = React.createRef();
+
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
@@ -466,12 +563,14 @@ class DateRangeInput extends Component {
             range: this.state.range,
             rangeTarget: this.state.rangeTarget,
             setRangeTarget: rangeTarget => this.setState({ rangeTarget }),
+            selectRef: this.selectRef,
           }}
         >
           <Select
+            ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            components={{ Group, Option }}
+            components={{ Group, Option, SelectContainer }}
             filterOption={null}
             isMulti={false}
             maxMenuHeight={380}

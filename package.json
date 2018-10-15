@@ -71,6 +71,7 @@
     "lodash.sortby": "4.7.0",
     "lodash.uniq": "4.5.0",
     "lodash.without": "4.4.0",
+    "memoize-one": "4.0.2",
     "prop-types": "15.6.2",
     "react-emotion": "9.2.12",
     "react-required-if": "1.0.3",
