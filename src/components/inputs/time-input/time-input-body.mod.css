@@ -19,6 +19,7 @@
   font: inherit;
   margin-right: 0; /* stop that jumping */
   padding: var(--spacing-8);
+  outline: 0;
 }
 
 /* Active/Focus */
