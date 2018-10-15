@@ -78,7 +78,7 @@
     "@commercetools-frontend/babel-preset-mc-app": "1.0.0-beta.32",
     "@commercetools-frontend/eslint-config-mc-app": "1.0.0-beta.32",
     "@commercetools-frontend/jest-preset-mc-app": "1.0.0-beta.32",
-    "@commitlint/cli": "7.2.0",
+    "@commitlint/cli": "7.2.1",
     "@commitlint/config-conventional": "7.1.2",
     "@storybook/addon-actions": "4.0.0-alpha.20",
     "@storybook/addon-info": "4.0.0-alpha.20",
