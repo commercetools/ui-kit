@@ -77,7 +77,7 @@
     "@babel/plugin-transform-react-constant-elements": "7.0.0",
     "@commercetools-frontend/babel-preset-mc-app": "1.0.0-beta.32",
     "@commercetools-frontend/eslint-config-mc-app": "1.0.0-beta.32",
-    "@commercetools-frontend/jest-preset-mc-app": "1.0.0-beta.32",
+    "@commercetools-frontend/jest-preset-mc-app": "1.0.0-beta.36",
     "@commitlint/cli": "7.2.1",
     "@commitlint/config-conventional": "7.1.2",
     "@storybook/addon-actions": "4.0.0-alpha.20",
