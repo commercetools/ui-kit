@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 // Allow users to type things like "january" or "monday" and turn it into
 // a date as a suggestion.
@@ -7,25 +7,25 @@ import moment from 'moment';
 // the passed messages.
 //
 // eslint-disable-next-line import/prefer-default-export
-export function suggestDate(rawWord, locale, messages) {
+export function suggestDate(rawWord, locale, messages, timeZone = 'UTC') {
   const word = rawWord.toLowerCase();
 
   const matches = entry => entry.toLowerCase().startsWith(word);
   if (matches(messages.today)) {
-    const today = moment.utc().startOf('day');
+    const today = moment.tz(timeZone).startOf('day');
     return today;
   }
 
   if (matches(messages.yesterday)) {
     return moment
-      .utc()
+      .tz(timeZone)
       .startOf('day')
       .subtract(1, 'day');
   }
 
   if (matches(messages.tomorrow)) {
     return moment
-      .utc()
+      .tz(timeZone)
       .startOf('day')
       .add(1, 'day');
   }
@@ -38,7 +38,7 @@ export function suggestDate(rawWord, locale, messages) {
     const weekday = moment().weekday();
     return (
       moment
-        .utc()
+        .tz(timeZone)
         .startOf('day')
         // we subtract so that we always match in the current week
         .add(matchedWeekay - weekday, 'day')
@@ -51,7 +51,7 @@ export function suggestDate(rawWord, locale, messages) {
     const month = moment.utc().month();
     return (
       moment
-        .utc()
+        .tz(timeZone)
         // we subtract so that we always match in the current year
         .add(matchedMonth - month, 'month')
         // always show first of month
@@ -59,7 +59,11 @@ export function suggestDate(rawWord, locale, messages) {
     );
   }
 
-  const date = moment.utc(word, moment.localeData(locale).longDateFormat('L'));
+  const date = moment.tz(
+    word,
+    moment.localeData(locale).longDateFormat('L'),
+    timeZone
+  );
   if (date?.isValid()) return date;
 
   return null;

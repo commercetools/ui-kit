@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import mapValues from 'lodash.mapvalues';
 import Select, { components as SelectComponents } from 'react-select';
 import { suggestDate } from '../../../utils/suggest-date';
@@ -103,11 +103,11 @@ const CalendarConnector = React.createContext();
 
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
 
-const createOptionForDate = (day, intl) => {
-  const date = moment.utc(day).locale(intl.locale);
-  // moment.isMoment(day) && day.locale() === intl.locale
-  //   ? day
-  //   : moment(day).locale(intl.locale);
+const createOptionForDate = (day, timeZone, intl) => {
+  // convert date to time zone
+  const date = moment(day)
+    .locale(intl.locale)
+    .tz(timeZone);
 
   const hasMilliseconds = date.milliseconds() > 0;
   const hasSeconds = hasMilliseconds || date.seconds() > 0;
@@ -134,17 +134,16 @@ const createOptionForDate = (day, intl) => {
   return {
     date,
     value: date.toISOString(),
-    // label: date.toISOString(),
     label: date.calendar(null, formatters),
   };
 };
 
-const createCalendarOptions = (day, intl) => {
+const createCalendarOptions = (day, timeZone, intl) => {
   const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
     (_, i) => {
       const dayOfMonth = i + 1;
       const date = moment
-        .utc(day)
+        .tz(timeZone)
         .hours(0)
         .minutes(0)
         .seconds(0)
@@ -152,14 +151,14 @@ const createCalendarOptions = (day, intl) => {
         .locale(intl.locale)
         .date(dayOfMonth);
       return {
-        ...createOptionForDate(date, intl),
+        ...createOptionForDate(date, timeZone, intl),
         display: 'calendar',
       };
     }
   );
 
   const groupLabel = moment
-    .utc(day)
+    .tz(day, timeZone)
     .locale(intl.locale)
     .format('MMMM YYYY');
 
@@ -237,6 +236,7 @@ class MenuList extends React.Component {
               time,
               setTime,
               onChange,
+              timeZone,
             }) => (
               <TimePicker
                 timeInputRef={timeInputRef}
@@ -277,7 +277,7 @@ class MenuList extends React.Component {
                   if (parsedTime) {
                     onChange(
                       moment
-                        .utc(value)
+                        .tz(value, timeZone)
                         .hour(parsedTime.hours)
                         .minute(parsedTime.minutes)
                         .second(parsedTime.seconds)
@@ -447,6 +447,7 @@ class DateTimeInput extends Component {
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    timeZone: PropTypes.string,
     isClearable: PropTypes.bool,
     isAutofocussed: PropTypes.bool,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
@@ -454,6 +455,10 @@ class DateTimeInput extends Component {
       locale: PropTypes.string.isRequired,
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+  };
+
+  static defaultProps = {
+    timeZone: 'UTC',
   };
 
   state = {
@@ -513,22 +518,28 @@ class DateTimeInput extends Component {
 
         const [dateString, timeString] = splitDateTimeString(value, separators);
 
-        // Attempt to parse dates in locale before falling back to chrono
+        // Attempt to parse dates in locale
         // This helps to avoid the mixup of month and day for US/other notations
         const date = do {
           const localeDate = moment(
             dateString,
             moment.localeData(this.props.intl.locale).longDateFormat('L'),
-            this.props.intl.locale
-          ).utc();
+            this.props.intl.locale,
+            this.props.timeZone
+          );
 
           if (localeDate.isValid()) localeDate;
           else
-            suggestDate(dateString, this.props.intl.locale, {
-              today: this.props.intl.formatMessage(messages.today),
-              yesterday: this.props.intl.formatMessage(messages.yesterday),
-              tomorrow: this.props.intl.formatMessage(messages.tomorrow),
-            });
+            suggestDate(
+              dateString,
+              this.props.intl.locale,
+              {
+                today: this.props.intl.formatMessage(messages.today),
+                yesterday: this.props.intl.formatMessage(messages.yesterday),
+                tomorrow: this.props.intl.formatMessage(messages.tomorrow),
+              },
+              this.props.timeZone
+            );
         };
 
         const time = parseTime(timeString);
@@ -542,7 +553,7 @@ class DateTimeInput extends Component {
         this.setState(prevState => ({
           month: date || prevState.month,
           suggestedOptions: date
-            ? [createOptionForDate(date, this.props.intl)]
+            ? [createOptionForDate(date, this.props.timeZone, this.props.intl)]
             : [],
           time: time ? formatTime(date) : '',
         }));
@@ -556,9 +567,11 @@ class DateTimeInput extends Component {
   standardDateToOption = standardDate => {
     if (!standardDate) return null;
 
-    const date = moment(standardDate, moment.ISO_8601).toDate();
-    return isValidDate(date)
-      ? createOptionForDate(date, this.props.intl)
+    const date = moment(standardDate, moment.ISO_8601)
+      .tz(this.props.timeZone)
+      .locale(this.props.intl.locale);
+    return moment.isMoment(date) || isValidDate(date)
+      ? createOptionForDate(date, this.props.timeZone, this.props.intl)
       : null;
   };
 
@@ -580,6 +593,7 @@ class DateTimeInput extends Component {
             time: this.state.time,
             setTime: time => this.setState({ time }),
             onChange: this.props.onChange,
+            timeZone: this.props.timeZone,
           }}
         >
           <Select
@@ -597,7 +611,11 @@ class DateTimeInput extends Component {
             onInputChange={this.handleInputChange}
             options={[
               ...this.state.suggestedOptions,
-              createCalendarOptions(this.state.month, this.props.intl),
+              createCalendarOptions(
+                this.state.month,
+                this.props.timeZone,
+                this.props.intl
+              ),
             ]}
             value={this.standardDateToOption(this.props.value)}
             isClearable={this.props.isClearable}
@@ -607,7 +625,13 @@ class DateTimeInput extends Component {
               this.setState(prevState => ({
                 openCount: prevState.openCount + 1,
                 time: this.props.value
-                  ? formatTime(moment(this.props.value, moment.ISO_8601).utc())
+                  ? formatTime(
+                      moment.tz(
+                        this.props.value,
+                        moment.ISO_8601,
+                        this.props.timeZone
+                      )
+                    )
                   : '',
               }));
             }}
