@@ -17,8 +17,7 @@ const path = require('path');
 const mri = require('mri');
 const nodeGlob = require('glob');
 const { transformAsync } = require('@babel/core');
-// TODO: adapt to using our own babel preset setup
-const getBabelPresetForMcApp = require('@commercetools-frontend/babel-preset-mc-app');
+const getBabelPreset = require('./get-babel-preset');
 
 const flags = mri(process.argv.slice(2), {
   alias: { help: ['h'] },
@@ -41,7 +40,7 @@ if (!flags['output-path']) {
   throw new Error('Missing required option "--output-path"');
 }
 
-const babelConfig = getBabelPresetForMcApp();
+const babelConfig = getBabelPreset();
 const { presets, plugins } = babelConfig;
 
 // Resolve the absolute path of the caller location. This is necessary
