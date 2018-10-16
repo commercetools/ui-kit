@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty';
 import { action } from '@storybook/addon-actions';
@@ -82,71 +81,69 @@ storiesOf('Examples|Forms/Fields', module)
     });
     return (
       <Section key={isMulti}>
-        <IntlProvider locale="en">
-          <Formik
-            initialValues={{ animal: isMulti ? [] : undefined }}
-            validate={values => {
-              const errors = { animal: {} };
-              if (isMulti ? values.animal.length === 0 : !values.animal)
-                errors.animal.missing = true;
-              return omitEmpty(errors);
-            }}
-            onSubmit={(values, formik) => {
-              action('onSubmit')(values, formik);
-              formik.resetForm(values);
-            }}
-            render={formik => (
-              <Spacings.Stack scale="l">
-                <AsyncCreatableSelectField
-                  horizontalConstraint={select(
-                    'horizontalConstraint',
-                    ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                    'm'
-                  )}
-                  errors={formik.errors.animal}
-                  isRequired={true}
-                  touched={formik.touched.animal}
-                  name="animal"
-                  value={formik.values.animal}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  isDisabled={formik.isSubmitting}
-                  isMulti={isMulti}
-                  title="Favourite animal"
-                  description="Bonus points if it is a mammal"
-                  isClearable={true}
-                  defaultOptions={[
-                    { value: 'dogs', label: 'Dogs' },
-                    { value: 'whales', label: 'Whales' },
-                  ]}
-                  loadOptions={searchText =>
-                    delay(delayTimeMs).then(() =>
-                      options.filter(option =>
-                        option.label
-                          .toLowerCase()
-                          .startsWith(searchText.toLowerCase())
-                      )
+        <Formik
+          initialValues={{ animal: isMulti ? [] : undefined }}
+          validate={values => {
+            const errors = { animal: {} };
+            if (isMulti ? values.animal.length === 0 : !values.animal)
+              errors.animal.missing = true;
+            return omitEmpty(errors);
+          }}
+          onSubmit={(values, formik) => {
+            action('onSubmit')(values, formik);
+            formik.resetForm(values);
+          }}
+          render={formik => (
+            <Spacings.Stack scale="l">
+              <AsyncCreatableSelectField
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+                errors={formik.errors.animal}
+                isRequired={true}
+                touched={formik.touched.animal}
+                name="animal"
+                value={formik.values.animal}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                isDisabled={formik.isSubmitting}
+                isMulti={isMulti}
+                title="Favourite animal"
+                description="Bonus points if it is a mammal"
+                isClearable={true}
+                defaultOptions={[
+                  { value: 'dogs', label: 'Dogs' },
+                  { value: 'whales', label: 'Whales' },
+                ]}
+                loadOptions={searchText =>
+                  delay(delayTimeMs).then(() =>
+                    options.filter(option =>
+                      option.label
+                        .toLowerCase()
+                        .startsWith(searchText.toLowerCase())
                     )
-                  }
+                  )
+                }
+              />
+              <Spacings.Inline>
+                <SecondaryButton
+                  onClick={formik.handleReset}
+                  isDisabled={formik.isSubmitting}
+                  label="Reset"
                 />
-                <Spacings.Inline>
-                  <SecondaryButton
-                    onClick={formik.handleReset}
-                    isDisabled={formik.isSubmitting}
-                    label="Reset"
-                  />
-                  <PrimaryButton
-                    onClick={formik.handleSubmit}
-                    isDisabled={formik.isSubmitting || !formik.dirty}
-                    label="Submit"
-                  />
-                </Spacings.Inline>
-                <hr />
-                <FormikBox formik={formik} />
-              </Spacings.Stack>
-            )}
-          />
-        </IntlProvider>
+                <PrimaryButton
+                  onClick={formik.handleSubmit}
+                  isDisabled={formik.isSubmitting || !formik.dirty}
+                  label="Submit"
+                />
+              </Spacings.Inline>
+              <hr />
+              <FormikBox formik={formik} />
+            </Spacings.Stack>
+          )}
+        />
       </Section>
     );
   });
