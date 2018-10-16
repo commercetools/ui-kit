@@ -24,19 +24,10 @@ module.exports = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testEnvironment: 'jsdom',
   testURL: 'https://mc.commercetools.com/',
-  testPathIgnorePatterns: ['node_modules', 'cypress'],
+  testPathIgnorePatterns: ['node_modules'],
   testRegex: '\\.spec\\.js$',
   transform: {
     '^.+\\.js$': '<rootDir>/test/transform-babel-jest.js',
   },
-  transformIgnorePatterns: [
-    // This option tells Jest to ignore specific folders from being transpiled
-    // (e.g. with babel).
-    // However we need to instruct jest to actually transpile some packages.
-    // NOTE: this might not be necessary anymore once we ship packages already
-    // transpiled.
-    'node_modules/(?!(@commercetools-frontend)/)',
-    'node_modules/@commercetools-frontend/ui-kit',
-  ],
   watchPlugins: ['jest-plugin-filename', 'jest-watch-master'],
 };
