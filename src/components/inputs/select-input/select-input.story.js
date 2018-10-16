@@ -1,6 +1,5 @@
 import React from 'react';
 import { Value } from 'react-value';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import {
@@ -77,47 +76,45 @@ storiesOf('Inputs', module)
     return (
       <Spacings.Stack scale="xl">
         <Section>
-          <IntlProvider locale="en">
-            <Value
-              key={isMulti}
-              defaultValue={isMulti ? [] : undefined}
-              render={(value, onChange) => (
-                <SelectInput
-                  horizontalConstraint={select(
-                    'horizontalConstraint',
-                    ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                    'scale'
-                  )}
-                  hasError={boolean('hasError', false)}
-                  hasWarning={boolean('hasWarning', false)}
-                  aria-label={text('aria-label', '')}
-                  aria-labelledby={text('aria-labelledby', '')}
-                  isAutofocussed={boolean('isAutofocussed', false)}
-                  backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
-                  id={text('id', '')}
-                  containerId={text('containerId', '')}
-                  isClearable={boolean('isClearable', false)}
-                  isDisabled={boolean('isDisabled', false)}
-                  isMulti={isMulti}
-                  isSearchable={boolean('isSearchable', false)}
-                  maxMenuHeight={number('maxMenuHeight', 200)}
-                  name={text('name', 'form-field-name')}
-                  onBlur={action('onBlur')}
-                  onChange={(event, ...args) => {
-                    action('onChange')(event, ...args);
-                    onChange(event.target.value);
-                  }}
-                  onFocus={action('onFocus')}
-                  onInputChange={action('onInputChange')}
-                  options={options}
-                  placeholder={text('placeholder', 'Select..')}
-                  tabIndex={text('tabIndex', '0')}
-                  tabSelectsValue={boolean('tabSelectsValue', true)}
-                  value={value}
-                />
-              )}
-            />
-          </IntlProvider>
+          <Value
+            key={isMulti}
+            defaultValue={isMulti ? [] : undefined}
+            render={(value, onChange) => (
+              <SelectInput
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                  'scale'
+                )}
+                hasError={boolean('hasError', false)}
+                hasWarning={boolean('hasWarning', false)}
+                aria-label={text('aria-label', '')}
+                aria-labelledby={text('aria-labelledby', '')}
+                isAutofocussed={boolean('isAutofocussed', false)}
+                backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+                id={text('id', '')}
+                containerId={text('containerId', '')}
+                isClearable={boolean('isClearable', false)}
+                isDisabled={boolean('isDisabled', false)}
+                isMulti={isMulti}
+                isSearchable={boolean('isSearchable', false)}
+                maxMenuHeight={number('maxMenuHeight', 200)}
+                name={text('name', 'form-field-name')}
+                onBlur={action('onBlur')}
+                onChange={(event, ...args) => {
+                  action('onChange')(event, ...args);
+                  onChange(event.target.value);
+                }}
+                onFocus={action('onFocus')}
+                onInputChange={action('onInputChange')}
+                options={options}
+                placeholder={text('placeholder', 'Select..')}
+                tabIndex={text('tabIndex', '0')}
+                tabSelectsValue={boolean('tabSelectsValue', true)}
+                value={value}
+              />
+            )}
+          />
         </Section>
         <Section>
           <LinkTo kind="Examples|Forms/Inputs" story="SelectInput">

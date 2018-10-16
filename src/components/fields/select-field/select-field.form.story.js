@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty';
 import { action } from '@storybook/addon-actions';
@@ -74,59 +73,57 @@ storiesOf('Examples|Forms/Fields', module)
     const isMulti = boolean('isMulti', true);
     return (
       <Section key={isMulti}>
-        <IntlProvider locale="en">
-          <Formik
-            initialValues={{ animal: isMulti ? [] : undefined }}
-            validate={values => {
-              const errors = { animal: {} };
-              if (isMulti ? values.animal.length === 0 : !values.animal)
-                errors.animal.missing = true;
-              return omitEmpty(errors);
-            }}
-            onSubmit={(values, formik) => {
-              action('onSubmit')(values, formik);
-              formik.resetForm(values);
-            }}
-            render={formik => (
-              <Spacings.Stack scale="l">
-                <SelectField
-                  horizontalConstraint={select(
-                    'horizontalConstraint',
-                    ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                    'm'
-                  )}
-                  errors={formik.errors.animal}
-                  isRequired={true}
-                  touched={formik.touched.animal}
-                  name="animal"
-                  value={formik.values.animal}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
+        <Formik
+          initialValues={{ animal: isMulti ? [] : undefined }}
+          validate={values => {
+            const errors = { animal: {} };
+            if (isMulti ? values.animal.length === 0 : !values.animal)
+              errors.animal.missing = true;
+            return omitEmpty(errors);
+          }}
+          onSubmit={(values, formik) => {
+            action('onSubmit')(values, formik);
+            formik.resetForm(values);
+          }}
+          render={formik => (
+            <Spacings.Stack scale="l">
+              <SelectField
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+                errors={formik.errors.animal}
+                isRequired={true}
+                touched={formik.touched.animal}
+                name="animal"
+                value={formik.values.animal}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                isDisabled={formik.isSubmitting}
+                isMulti={isMulti}
+                options={options}
+                title="Favourite animal"
+                description="Bonus points if it is a mammal"
+                isClearable={true}
+              />
+              <Spacings.Inline>
+                <SecondaryButton
+                  onClick={formik.handleReset}
                   isDisabled={formik.isSubmitting}
-                  isMulti={isMulti}
-                  options={options}
-                  title="Favourite animal"
-                  description="Bonus points if it is a mammal"
-                  isClearable={true}
+                  label="Reset"
                 />
-                <Spacings.Inline>
-                  <SecondaryButton
-                    onClick={formik.handleReset}
-                    isDisabled={formik.isSubmitting}
-                    label="Reset"
-                  />
-                  <PrimaryButton
-                    onClick={formik.handleSubmit}
-                    isDisabled={formik.isSubmitting || !formik.dirty}
-                    label="Submit"
-                  />
-                </Spacings.Inline>
-                <hr />
-                <FormikBox formik={formik} />
-              </Spacings.Stack>
-            )}
-          />
-        </IntlProvider>
+                <PrimaryButton
+                  onClick={formik.handleSubmit}
+                  isDisabled={formik.isSubmitting || !formik.dirty}
+                  label="Submit"
+                />
+              </Spacings.Inline>
+              <hr />
+              <FormikBox formik={formik} />
+            </Spacings.Stack>
+          )}
+        />
       </Section>
     );
   });

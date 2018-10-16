@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty';
 import { action } from '@storybook/addon-actions';
@@ -26,74 +25,72 @@ storiesOf('Examples|Forms/Fields', module)
   .addDecorator(withReadme(Readme))
   .add('TextField', () => (
     <Section>
-      <IntlProvider locale="en">
-        <Formik
-          initialValues={{ userName: '' }}
-          validate={values => {
-            const errors = { userName: {} };
-            if (TextField.isEmpty(values.userName))
-              errors.userName.missing = true;
-            if (values.userName.trim().indexOf(' ') !== -1)
-              errors.userName.usesSpaces = true;
-            if (values.userName.trim().length > 10)
-              errors.userName.exceedsMaxLength = true;
-            return omitEmpty(errors);
-          }}
-          onSubmit={(values, formik, ...rest) => {
-            action('onSubmit')(values, formik, ...rest);
-            formik.resetForm(values);
-          }}
-          render={formik => (
-            <Spacings.Stack scale="l">
-              <TextField
-                title="Username"
-                description={
-                  boolean('Use ridiculously long description', false)
-                    ? 'The name you will have on our platform. Chose it wisely as it can not be changed once it is set. Do not pick something with unicors or a superhero, everybody is doing that :) So once again, chose wisely since this is permantent.'
-                    : 'The name you will have on our platform'
+      <Formik
+        initialValues={{ userName: '' }}
+        validate={values => {
+          const errors = { userName: {} };
+          if (TextField.isEmpty(values.userName))
+            errors.userName.missing = true;
+          if (values.userName.trim().indexOf(' ') !== -1)
+            errors.userName.usesSpaces = true;
+          if (values.userName.trim().length > 10)
+            errors.userName.exceedsMaxLength = true;
+          return omitEmpty(errors);
+        }}
+        onSubmit={(values, formik, ...rest) => {
+          action('onSubmit')(values, formik, ...rest);
+          formik.resetForm(values);
+        }}
+        render={formik => (
+          <Spacings.Stack scale="l">
+            <TextField
+              title="Username"
+              description={
+                boolean('Use ridiculously long description', false)
+                  ? 'The name you will have on our platform. Chose it wisely as it can not be changed once it is set. Do not pick something with unicors or a superhero, everybody is doing that :) So once again, chose wisely since this is permantent.'
+                  : 'The name you will have on our platform'
+              }
+              hint="No spaces allowed"
+              name="userName"
+              isRequired={true}
+              value={formik.values.userName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              touched={formik.touched.userName}
+              horizontalConstraint={select(
+                'horizontalConstraint',
+                ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                'm'
+              )}
+              errors={formik.errors.userName}
+              renderError={key => {
+                switch (key) {
+                  // these could also use <FormattedMessage />
+                  case 'usesSpaces':
+                    return 'No spaces allowed';
+                  case 'exceedsMaxLength':
+                    return 'No more than 10 characters allowed';
+                  default:
+                    return null;
                 }
-                hint="No spaces allowed"
-                name="userName"
-                isRequired={true}
-                value={formik.values.userName}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                touched={formik.touched.userName}
-                horizontalConstraint={select(
-                  'horizontalConstraint',
-                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                  'm'
-                )}
-                errors={formik.errors.userName}
-                renderError={key => {
-                  switch (key) {
-                    // these could also use <FormattedMessage />
-                    case 'usesSpaces':
-                      return 'No spaces allowed';
-                    case 'exceedsMaxLength':
-                      return 'No more than 10 characters allowed';
-                    default:
-                      return null;
-                  }
-                }}
+              }}
+            />
+            <Spacings.Inline>
+              <SecondaryButton
+                onClick={formik.handleReset}
+                isDisabled={formik.isSubmitting}
+                label="Reset"
               />
-              <Spacings.Inline>
-                <SecondaryButton
-                  onClick={formik.handleReset}
-                  isDisabled={formik.isSubmitting}
-                  label="Reset"
-                />
-                <PrimaryButton
-                  onClick={formik.handleSubmit}
-                  isDisabled={formik.isSubmitting || !formik.dirty}
-                  label="Submit"
-                />
-              </Spacings.Inline>
-              <hr />
-              <FormikBox formik={formik} />
-            </Spacings.Stack>
-          )}
-        />
-      </IntlProvider>
+              <PrimaryButton
+                onClick={formik.handleSubmit}
+                isDisabled={formik.isSubmitting || !formik.dirty}
+                label="Submit"
+              />
+            </Spacings.Inline>
+            <hr />
+            <FormikBox formik={formik} />
+          </Spacings.Stack>
+        )}
+      />
     </Section>
   ));

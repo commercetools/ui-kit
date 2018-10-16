@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number } from '@storybook/addon-knobs';
@@ -73,102 +72,100 @@ class AsyncCreatableSelectInputStory extends React.Component {
     });
     return (
       <Section>
-        <IntlProvider locale="en">
-          <FakeConnector key={isMulti} isMulti={isMulti}>
-            {({ product }) => (
-              <Formik
-                initialValues={docToForm(product, isMulti)}
-                validate={
-                  // we use this failing validation so that we can see the touched
-                  // shape
-                  () => (failValidation ? { category: true } : {})
-                }
-                onSubmit={(values, formik, ...rest) => {
-                  action('onSubmit')(values, formik, ...rest);
-                  formik.resetForm(values);
-                }}
-                render={formik => {
-                  const hasError = failValidation;
-                  const isTouched = AsyncCreatableSelectInput.isTouched(
-                    formik.touched.category
-                  );
-                  return (
-                    <Spacings.Stack scale="l">
-                      <Spacings.Stack scale="xs">
-                        <AsyncCreatableSelectInput
-                          name="category"
-                          isMulti={isMulti}
-                          isClearable={true}
-                          cacheOptions={number('cacheOptions', 2)}
-                          value={formik.values.category}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          hasError={hasError && isTouched}
-                          defaultOptions={[
+        <FakeConnector key={isMulti} isMulti={isMulti}>
+          {({ product }) => (
+            <Formik
+              initialValues={docToForm(product, isMulti)}
+              validate={
+                // we use this failing validation so that we can see the touched
+                // shape
+                () => (failValidation ? { category: true } : {})
+              }
+              onSubmit={(values, formik, ...rest) => {
+                action('onSubmit')(values, formik, ...rest);
+                formik.resetForm(values);
+              }}
+              render={formik => {
+                const hasError = failValidation;
+                const isTouched = AsyncCreatableSelectInput.isTouched(
+                  formik.touched.category
+                );
+                return (
+                  <Spacings.Stack scale="l">
+                    <Spacings.Stack scale="xs">
+                      <AsyncCreatableSelectInput
+                        name="category"
+                        isMulti={isMulti}
+                        isClearable={true}
+                        cacheOptions={number('cacheOptions', 2)}
+                        value={formik.values.category}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        hasError={hasError && isTouched}
+                        defaultOptions={[
+                          { value: 'dogs', label: 'Dogs' },
+                          { value: 'whales', label: 'Whales' },
+                        ]}
+                        loadOptions={searchText => {
+                          const items = [
                             { value: 'dogs', label: 'Dogs' },
                             { value: 'whales', label: 'Whales' },
-                          ]}
-                          loadOptions={searchText => {
-                            const items = [
-                              { value: 'dogs', label: 'Dogs' },
-                              { value: 'whales', label: 'Whales' },
-                              { value: 'antilopes', label: 'Antilopes' },
-                              { value: 'snakes', label: 'Snakes' },
-                            ];
+                            { value: 'antilopes', label: 'Antilopes' },
+                            { value: 'snakes', label: 'Snakes' },
+                          ];
 
-                            return delay(delayTimeMs).then(() =>
-                              items.filter(item =>
-                                item.label
-                                  .toLowerCase()
-                                  .startsWith(searchText.toLowerCase())
-                              )
-                            );
-                          }}
-                        />
-                        {hasError &&
-                          isTouched && (
-                            <ErrorMessage>Category is required</ErrorMessage>
-                          )}
-                      </Spacings.Stack>
-                      <div>
-                        <button
-                          onClick={() => {
-                            // additional data could be on cats
-                            const cats = { label: 'Cats', value: 'cats' };
-                            formik.setFieldValue(
-                              'category',
-                              isMulti ? [cats] : cats
-                            );
-                            formik.setFieldTouched(
-                              'category',
-                              isMulti ? [true] : true
-                            );
-                          }}
-                        >
-                          Select Cats
-                        </button>
-                      </div>
-                      <Spacings.Inline>
-                        <SecondaryButton
-                          onClick={formik.handleReset}
-                          isDisabled={formik.isSubmitting}
-                          label="Reset"
-                        />
-                        <PrimaryButton
-                          onClick={formik.handleSubmit}
-                          isDisabled={formik.isSubmitting || !formik.dirty}
-                          label="Submit"
-                        />
-                      </Spacings.Inline>
-                      <hr />
-                      <FormikBox formik={formik} />
+                          return delay(delayTimeMs).then(() =>
+                            items.filter(item =>
+                              item.label
+                                .toLowerCase()
+                                .startsWith(searchText.toLowerCase())
+                            )
+                          );
+                        }}
+                      />
+                      {hasError &&
+                        isTouched && (
+                          <ErrorMessage>Category is required</ErrorMessage>
+                        )}
                     </Spacings.Stack>
-                  );
-                }}
-              />
-            )}
-          </FakeConnector>
-        </IntlProvider>
+                    <div>
+                      <button
+                        onClick={() => {
+                          // additional data could be on cats
+                          const cats = { label: 'Cats', value: 'cats' };
+                          formik.setFieldValue(
+                            'category',
+                            isMulti ? [cats] : cats
+                          );
+                          formik.setFieldTouched(
+                            'category',
+                            isMulti ? [true] : true
+                          );
+                        }}
+                      >
+                        Select Cats
+                      </button>
+                    </div>
+                    <Spacings.Inline>
+                      <SecondaryButton
+                        onClick={formik.handleReset}
+                        isDisabled={formik.isSubmitting}
+                        label="Reset"
+                      />
+                      <PrimaryButton
+                        onClick={formik.handleSubmit}
+                        isDisabled={formik.isSubmitting || !formik.dirty}
+                        label="Submit"
+                      />
+                    </Spacings.Inline>
+                    <hr />
+                    <FormikBox formik={formik} />
+                  </Spacings.Stack>
+                );
+              }}
+            />
+          )}
+        </FakeConnector>
       </Section>
     );
   }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
@@ -66,83 +65,81 @@ storiesOf('Examples|Forms/Inputs', module)
     ];
     return (
       <Section>
-        <IntlProvider locale="en">
-          <Formik
-            key={`${isMulti}-${isPrefilled}`}
-            initialValues={{ state: initialState, colour: initialColour }}
-            validate={
-              // we use failing validation so that we can see the touched shape
-              // on form submission
-              () => (failValidation ? { state: true, colour: true } : {})
-            }
-            onSubmit={(values, formik, ...rest) => {
-              action('onSubmit')(values, formik, ...rest);
-              formik.resetForm(values);
-            }}
-            render={formik => {
-              const stateInput = {
-                hasError: failValidation,
-                isTouched: SelectInput.isTouched(formik.touched.state),
-              };
-              const colourInput = {
-                hasError: failValidation,
-                isTouched: SelectInput.isTouched(formik.touched.colour),
-              };
-              return (
-                <Spacings.Stack scale="l">
-                  <Spacings.Stack scale="xs">
-                    <SelectInput
-                      name="state"
-                      isMulti={isMulti}
-                      value={formik.values.state}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      options={stateOptions}
-                      hasError={stateInput.hasError && stateInput.isTouched}
-                      isSearchable={false}
-                      isClearable={true}
-                    />
-                    {stateInput.hasError &&
-                      stateInput.isTouched && (
-                        <ErrorMessage>State is not valid</ErrorMessage>
-                      )}
-                  </Spacings.Stack>
-                  <Spacings.Stack scale="xs">
-                    <SelectInput
-                      name="colour"
-                      isMulti={isMulti}
-                      value={formik.values.colour}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      options={groupedOptions}
-                      hasError={colourInput.hasError && colourInput.isTouched}
-                      isSearchable={false}
-                      isClearable={true}
-                    />
-                    {colourInput.hasError &&
-                      colourInput.isTouched && (
-                        <ErrorMessage>Colour is not valid</ErrorMessage>
-                      )}
-                  </Spacings.Stack>
-                  <Spacings.Inline>
-                    <SecondaryButton
-                      onClick={formik.handleReset}
-                      isDisabled={formik.isSubmitting}
-                      label="Reset"
-                    />
-                    <PrimaryButton
-                      onClick={formik.handleSubmit}
-                      isDisabled={formik.isSubmitting || !formik.dirty}
-                      label="Submit"
-                    />
-                  </Spacings.Inline>
-                  <hr />
-                  <FormikBox formik={formik} />
+        <Formik
+          key={`${isMulti}-${isPrefilled}`}
+          initialValues={{ state: initialState, colour: initialColour }}
+          validate={
+            // we use failing validation so that we can see the touched shape
+            // on form submission
+            () => (failValidation ? { state: true, colour: true } : {})
+          }
+          onSubmit={(values, formik, ...rest) => {
+            action('onSubmit')(values, formik, ...rest);
+            formik.resetForm(values);
+          }}
+          render={formik => {
+            const stateInput = {
+              hasError: failValidation,
+              isTouched: SelectInput.isTouched(formik.touched.state),
+            };
+            const colourInput = {
+              hasError: failValidation,
+              isTouched: SelectInput.isTouched(formik.touched.colour),
+            };
+            return (
+              <Spacings.Stack scale="l">
+                <Spacings.Stack scale="xs">
+                  <SelectInput
+                    name="state"
+                    isMulti={isMulti}
+                    value={formik.values.state}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    options={stateOptions}
+                    hasError={stateInput.hasError && stateInput.isTouched}
+                    isSearchable={false}
+                    isClearable={true}
+                  />
+                  {stateInput.hasError &&
+                    stateInput.isTouched && (
+                      <ErrorMessage>State is not valid</ErrorMessage>
+                    )}
                 </Spacings.Stack>
-              );
-            }}
-          />
-        </IntlProvider>
+                <Spacings.Stack scale="xs">
+                  <SelectInput
+                    name="colour"
+                    isMulti={isMulti}
+                    value={formik.values.colour}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    options={groupedOptions}
+                    hasError={colourInput.hasError && colourInput.isTouched}
+                    isSearchable={false}
+                    isClearable={true}
+                  />
+                  {colourInput.hasError &&
+                    colourInput.isTouched && (
+                      <ErrorMessage>Colour is not valid</ErrorMessage>
+                    )}
+                </Spacings.Stack>
+                <Spacings.Inline>
+                  <SecondaryButton
+                    onClick={formik.handleReset}
+                    isDisabled={formik.isSubmitting}
+                    label="Reset"
+                  />
+                  <PrimaryButton
+                    onClick={formik.handleSubmit}
+                    isDisabled={formik.isSubmitting || !formik.dirty}
+                    label="Submit"
+                  />
+                </Spacings.Inline>
+                <hr />
+                <FormikBox formik={formik} />
+              </Spacings.Stack>
+            );
+          }}
+        />
       </Section>
     );
   });

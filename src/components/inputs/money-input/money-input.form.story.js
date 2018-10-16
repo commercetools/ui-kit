@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
@@ -31,71 +30,69 @@ storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withReadme(Readme))
   .add('MoneyInput', () => (
     <Section>
-      <IntlProvider locale="en">
-        <Formik
-          initialValues={{ price: { currencyCode: '', amount: '' } }}
-          validate={validate}
-          onSubmit={(values, formik) => {
-            // eslint-disable-next-line no-console
-            console.log(
-              'money value',
-              MoneyInput.convertToMoneyValue(values.price)
-            );
-            action('onSubmit')(values, formik);
-            formik.resetForm(values);
-          }}
-          render={formik => (
-            <Spacings.Stack scale="l">
-              <Spacings.Stack scale="s">
-                <MoneyInput
-                  name="price"
-                  currencies={['EUR', 'USD', 'AED', 'KWD']}
-                  value={formik.values.price}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  hasCurrencyError={Boolean(
-                    formik.touched.price &&
-                      formik.touched.price.currencyCode &&
-                      formik.errors.price
-                  )}
-                  hasAmountError={Boolean(
-                    formik.touched.price &&
-                      formik.touched.price.amount &&
-                      formik.errors.price
-                  )}
-                  horizontalConstraint="m"
-                />
-                {MoneyInput.isTouched(formik.touched.price) &&
-                  formik.errors.price &&
-                  formik.errors.price.missing && (
-                    <ErrorMessage>Missing price</ErrorMessage>
-                  )}
-                {MoneyInput.isTouched(formik.touched.price) &&
-                  formik.errors.price &&
-                  formik.errors.price.unsupportedHighPrecision && (
-                    <ErrorMessage>
-                      This value is a high precision value. High precision
-                      pricing is not supported for products.
-                    </ErrorMessage>
-                  )}
-              </Spacings.Stack>
-              <Spacings.Inline>
-                <SecondaryButton
-                  onClick={formik.handleReset}
-                  isDisabled={formik.isSubmitting}
-                  label="Reset"
-                />
-                <PrimaryButton
-                  onClick={formik.handleSubmit}
-                  isDisabled={formik.isSubmitting || !formik.dirty}
-                  label="Submit"
-                />
-              </Spacings.Inline>
-              <hr />
-              <FormikBox formik={formik} />
+      <Formik
+        initialValues={{ price: { currencyCode: '', amount: '' } }}
+        validate={validate}
+        onSubmit={(values, formik) => {
+          // eslint-disable-next-line no-console
+          console.log(
+            'money value',
+            MoneyInput.convertToMoneyValue(values.price)
+          );
+          action('onSubmit')(values, formik);
+          formik.resetForm(values);
+        }}
+        render={formik => (
+          <Spacings.Stack scale="l">
+            <Spacings.Stack scale="s">
+              <MoneyInput
+                name="price"
+                currencies={['EUR', 'USD', 'AED', 'KWD']}
+                value={formik.values.price}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                hasCurrencyError={Boolean(
+                  formik.touched.price &&
+                    formik.touched.price.currencyCode &&
+                    formik.errors.price
+                )}
+                hasAmountError={Boolean(
+                  formik.touched.price &&
+                    formik.touched.price.amount &&
+                    formik.errors.price
+                )}
+                horizontalConstraint="m"
+              />
+              {MoneyInput.isTouched(formik.touched.price) &&
+                formik.errors.price &&
+                formik.errors.price.missing && (
+                  <ErrorMessage>Missing price</ErrorMessage>
+                )}
+              {MoneyInput.isTouched(formik.touched.price) &&
+                formik.errors.price &&
+                formik.errors.price.unsupportedHighPrecision && (
+                  <ErrorMessage>
+                    This value is a high precision value. High precision pricing
+                    is not supported for products.
+                  </ErrorMessage>
+                )}
             </Spacings.Stack>
-          )}
-        />
-      </IntlProvider>
+            <Spacings.Inline>
+              <SecondaryButton
+                onClick={formik.handleReset}
+                isDisabled={formik.isSubmitting}
+                label="Reset"
+              />
+              <PrimaryButton
+                onClick={formik.handleSubmit}
+                isDisabled={formik.isSubmitting || !formik.dirty}
+                label="Submit"
+              />
+            </Spacings.Inline>
+            <hr />
+            <FormikBox formik={formik} />
+          </Spacings.Stack>
+        )}
+      />
     </Section>
   ));

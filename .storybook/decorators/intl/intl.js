@@ -1,4 +1,21 @@
 import React from 'react';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import { withKnobs, select } from '@storybook/addon-knobs';
+import en from 'react-intl/locale-data/en';
+import de from 'react-intl/locale-data/de';
+import es from 'react-intl/locale-data/es';
+import * as messages from '../../../i18n';
 
-export default storyFn => <IntlProvider locale="en">{storyFn()}</IntlProvider>;
+addLocaleData(en);
+addLocaleData(de);
+addLocaleData(es);
+const locales = Object.keys(messages);
+
+export default storyFn => {
+  const locale = select('global locale', locales, locales[0]);
+  return (
+    <IntlProvider locale={locale} messages={messages[locale]}>
+      {storyFn()}
+    </IntlProvider>
+  );
+};
