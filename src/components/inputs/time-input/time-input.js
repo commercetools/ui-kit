@@ -9,15 +9,18 @@ import { TimeInputBody } from './time-input-body';
 const sequentialId = createSequentialId('time-input-');
 
 const leftPad = (value, length = 2) => String(value).padStart(length, '0');
-const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
 
 const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
   const base = `${leftPad(hours)}:${leftPad(minutes)}`;
   if (seconds === 0 && milliseconds === 0) return base;
   if (milliseconds === 0) return `${base}:${leftPad(seconds)}`;
   // string representation of a time without timezone in ISO 8601 format
-  return `${base}:${leftPad(seconds)}.${rightPad(milliseconds)}`;
+  return `${base}:${leftPad(seconds)}.${leftPad(milliseconds, 3)}`;
 };
+
+const hasSeconds = parsedTime =>
+  parsedTime.seconds !== 0 || parsedTime.milliseconds !== 0;
+const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 
 // Attempts to parse a string containing a time in either 12h or 24h format,
 // with precision of up to three milliseconds
@@ -32,7 +35,7 @@ const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
 // Returns an array containing
 //   [hours, minutes, seconds, milliseconds]
 // or null
-const parseTime = rawTime => {
+export const parseTime = rawTime => {
   if (!rawTime || typeof rawTime !== 'string') return null;
 
   const time = rawTime.trim().toLowerCase();
@@ -62,10 +65,9 @@ const parseTime = rawTime => {
     hours: Number(hours) + (amPm === 'pm' ? 12 : 0),
     minutes: Number(minutes),
     seconds: Number(seconds),
-    milliseconds: Number(milliseconds),
-    hasSeconds: Number(seconds) !== 0 || Number(milliseconds) !== 0,
-    hasMilliseconds: Number(milliseconds) !== 0,
-    amPm,
+    // Parses the number as a fraction to ensure that .5, .05 and .005 are
+    // parsed correctily (they are 500, 50 and 5 respectively).
+    milliseconds: Number(`0.${milliseconds}`) * 1000,
   };
 };
 
@@ -147,7 +149,7 @@ export class TimeInput extends React.Component {
     const timeIn24hFormat = format24hr(parsedTime);
 
     // return the 24h format, as the time has high precision
-    if (parsedTime.hasSeconds || parsedTime.hasMilliseconds)
+    if (hasSeconds(parsedTime) || hasMilliseconds(parsedTime))
       return timeIn24hFormat;
 
     // return the localized time (12h or 24h format)
