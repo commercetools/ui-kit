@@ -209,15 +209,17 @@ return (
           onBlur={() => setFieldTouched('somePrice')}
           isDisabled={isSubmitting}
           onChange={value => setFieldValue('somePrice', value)}
-          hasAmountError={touched.somePrice && Boolean(errors.somePrice)}
+          hasAmountError={
+            MoneyInput.isTouched(touched.somePrice) && Boolean(errors.somePrice)
+          }
           horizontalConstraint="l"
         />
-        {touched.somePrice &&
+        {MoneyInput.isTouched(touched.somePrice) &&
           errors.somePrice &&
           errors.somePrice.missing && (
             <ErrorMessage>This field is required!</ErrorMessage>
           )}
-        {touched.somePrice &&
+        {MoneyInput.isTouched(touched.somePrice) &&
           errors.somePrice &&
           errors.somePrice.highPrecision && (
             <ErrorMessage>

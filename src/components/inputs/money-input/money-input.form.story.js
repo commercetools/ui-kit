@@ -52,20 +52,19 @@ storiesOf('Examples|Forms/Inputs', module)
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 hasCurrencyError={Boolean(
-                  formik.touched.price &&
-                    formik.touched.price.currencyCode &&
-                    formik.errors.price
+                  MoneyInput.isTouched(formik.touched.price, { all: true }) &&
+                    formik.errors.price?.missing
                 )}
                 hasAmountError={Boolean(
-                  formik.touched.price &&
-                    formik.touched.price.amount &&
-                    formik.errors.price
+                  MoneyInput.isTouched(formik.touched.price, { all: true }) &&
+                    (formik.errors.price?.missing ||
+                      formik.errors.price?.unsupportedHighPrecision)
                 )}
                 horizontalConstraint="m"
               />
               {MoneyInput.isTouched(formik.touched.price) &&
-                formik.errors.price &&
-                formik.errors.price.missing && (
+                (formik.errors.price?.amount?.missing ||
+                  formik.errors.price?.currencyCode?.missing) && (
                   <ErrorMessage>Missing price</ErrorMessage>
                 )}
               {MoneyInput.isTouched(formik.touched.price) &&
