@@ -10,9 +10,6 @@ import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-input.mod.css';
 
-// TODO
-// - allow navigation with arrow keys (allow going up/down)
-
 const CalendarConnector = React.createContext();
 
 const isValidDate = date => Boolean(date) && !isNaN(date.getTime());
@@ -55,7 +52,16 @@ const createCalendarOptions = (day, intl) => {
     .format('MMMM YYYY');
 
   // group for the calendar
-  return { label, options: daysInMonth };
+  return { label, options: daysInMonth, display: 'calendarGroup' };
+};
+
+const setFocus = (selectRef, option) => {
+  // eslint-disable-next-line no-param-reassign
+  selectRef.current.select.scrollToFocusedOptionOnUpdate = true;
+  selectRef.current.select.setState({
+    focusedOption: option,
+    focusedValue: null,
+  });
 };
 
 const defaultOptions = [];
@@ -175,6 +181,72 @@ const Option = props => (
 );
 Option.displayName = 'Option';
 
+// This component is used so that we can enhance the keyboard navigation
+class SelectContainer extends Component {
+  static displayName = 'SelectContainer';
+  render() {
+    return (
+      <CalendarConnector.Consumer>
+        {({ selectRef }) => (
+          <SelectComponents.SelectContainer
+            {...this.props}
+            innerProps={{
+              ...this.props.innerProps,
+              onKeyDown: event => {
+                if (
+                  this.props.isDisabled ||
+                  !this.props.isFocused ||
+                  !selectRef.current.state.menuIsOpen ||
+                  selectRef.current.select.state.focusedOption?.display !==
+                    'calendar'
+                ) {
+                  this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                const calendar = this.props.options.find(
+                  o => o.display === 'calendarGroup'
+                );
+                const dayIndex = calendar.options.findIndex(
+                  o => o === selectRef.current.select.state.focusedOption
+                );
+
+                const nextOptionIndex = (() => {
+                  switch (event.key) {
+                    case 'ArrowUp':
+                      return dayIndex - 7;
+                    case 'ArrowDown':
+                      return dayIndex + 7;
+                    case 'ArrowLeft':
+                      return dayIndex - 1;
+                    case 'ArrowRight':
+                      return dayIndex + 1;
+                    default:
+                      return null;
+                  }
+                })();
+
+                if (nextOptionIndex !== null) {
+                  const nextOption =
+                    calendar.options[
+                      Math.max(
+                        Math.min(nextOptionIndex, calendar.options.length - 1),
+                        0
+                      )
+                    ];
+                  setFocus(selectRef, nextOption);
+                } else {
+                  this.props.innerProps.onKeyDown(event);
+                }
+              },
+            }}
+          />
+        )}
+      </CalendarConnector.Consumer>
+    );
+  }
+}
+
 class DateInput extends Component {
   static displayName = 'DateInput';
 
@@ -270,6 +342,8 @@ class DateInput extends Component {
       : undefined;
   };
 
+  selectRef = React.createRef();
+
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
@@ -278,12 +352,14 @@ class DateInput extends Component {
             locale: this.props.intl.locale,
             month: this.state.month,
             setMonth: month => this.setState({ month }),
+            selectRef: this.selectRef,
           }}
         >
           <Select
+            ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            components={{ Group, Option }}
+            components={{ Group, Option, SelectContainer }}
             filterOption={null}
             isMulti={false}
             isOptionSelected={(option, value) =>
