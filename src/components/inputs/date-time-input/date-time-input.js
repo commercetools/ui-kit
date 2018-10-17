@@ -11,8 +11,6 @@ import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-time-input.mod.css';
 
-const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
-
 const formatTime = date => {
   if (date.milliseconds()) return date.format('HH:mm:ss.SSS');
   if (date.seconds()) return date.format('HH:mm:ss');
@@ -93,10 +91,9 @@ const parseTime = rawTime => {
     hours: Number(hours) + (amPm === 'pm' ? 12 : 0),
     minutes: Number(minutes),
     seconds: Number(seconds),
-    milliseconds: Number(rightPad(milliseconds)),
-    hasSeconds: Number(seconds) !== 0 || Number(milliseconds) !== 0,
-    hasMilliseconds: Number(milliseconds) !== 0,
-    amPm,
+    // Parses the number as a fraction to ensure that .5, .05 and .005 are
+    // parsed correctily (they are 500, 50 and 5 respectively).
+    milliseconds: Number(`0.${milliseconds}`) * 1000,
   };
 };
 
