@@ -51,12 +51,13 @@ if (!process.env.LISTENING_TO_UNHANDLED_REJECTION) {
     // We create a file in case there is an unhandled rejection
     // We later check for the existence of this file to fail CI
     if (process.env.CI && !process.env.HAS_CREATED_UNHANDLED_REJECTION_FILE) {
-      const rootPath = require.resolve('.');
+      const rootPath = process.cwd();
       fs.writeFileSync(
         path.join(
           rootPath,
           './fail-tests-because-there-was-an-unhandled-rejection.lock'
-        )
+        ),
+        ''
       );
       process.env.HAS_CREATED_UNHANDLED_REJECTION_FILE = true;
     }
