@@ -14,8 +14,9 @@ import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgrPlugin from '@svgr/rollup';
-import babelOptions from '@commercetools-frontend/babel-preset-mc-app';
 import pkg from './package.json';
+
+const babelOptions = require('./scripts/get-babel-preset');
 
 // Inspired by https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.prod.js
 const browserslist = {
