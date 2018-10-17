@@ -11,17 +11,21 @@ import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-time-input.mod.css';
 
-// TODO build rightbad into parseTime, as there is a bug in parseTime right now.
-// Bug: When parseTime is called with 00:00:00.75 it will return
-//   milliseconds: 75 instead of milliseconds: 750!
-// rightPad fixes this "accidentally" in TimeInput, but parseTime should
-// do the right thing. So we should add rightPad into parseTime
 const rightPad = (value, length = 3) => String(value).padEnd(length, '0');
 
 const formatTime = date => {
   if (date.milliseconds()) return date.format('HH:mm:ss.SSS');
   if (date.seconds()) return date.format('HH:mm:ss');
   return date.format('HH:mm');
+};
+
+const setFocus = (selectRef, option) => {
+  // eslint-disable-next-line no-param-reassign
+  selectRef.current.select.scrollToFocusedOptionOnUpdate = true;
+  selectRef.current.select.setState({
+    focusedOption: option,
+    focusedValue: null,
+  });
 };
 
 // Tries to find the first match for which there is a date and time,
@@ -44,9 +48,6 @@ export const splitDateTimeString = (value, separators) => {
   });
   return result;
 };
-
-// TODO
-// - allow navigation with arrow keys (allow going up/down)
 
 // COPIED FROM time-input.js
 // Attempts to parse a string containing a time in either 12h or 24h format,
@@ -163,7 +164,7 @@ const createCalendarOptions = (day, timeZone, intl) => {
     .format('MMMM YYYY');
 
   // group for the calendar
-  return { label: groupLabel, options: daysInMonth };
+  return { label: groupLabel, options: daysInMonth, display: 'calendarGroup' };
 };
 
 const defaultOptions = [];
@@ -439,6 +440,72 @@ const Option = props => (
 );
 Option.displayName = 'Option';
 
+// This component is used so that we can enhance the keyboard navigation
+class SelectContainer extends Component {
+  static displayName = 'SelectContainer';
+  render() {
+    return (
+      <CalendarConnector.Consumer>
+        {({ selectRef }) => (
+          <SelectComponents.SelectContainer
+            {...this.props}
+            innerProps={{
+              ...this.props.innerProps,
+              onKeyDown: event => {
+                if (
+                  this.props.isDisabled ||
+                  !this.props.isFocused ||
+                  !selectRef.current.state.menuIsOpen ||
+                  selectRef.current.select.state.focusedOption?.display !==
+                    'calendar'
+                ) {
+                  this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                const calendar = this.props.options.find(
+                  o => o.display === 'calendarGroup'
+                );
+                const dayIndex = calendar.options.findIndex(
+                  o => o === selectRef.current.select.state.focusedOption
+                );
+
+                const nextOptionIndex = (() => {
+                  switch (event.key) {
+                    case 'ArrowUp':
+                      return dayIndex - 7;
+                    case 'ArrowDown':
+                      return dayIndex + 7;
+                    case 'ArrowLeft':
+                      return dayIndex - 1;
+                    case 'ArrowRight':
+                      return dayIndex + 1;
+                    default:
+                      return null;
+                  }
+                })();
+
+                if (nextOptionIndex !== null) {
+                  const nextOption =
+                    calendar.options[
+                      Math.max(
+                        Math.min(nextOptionIndex, calendar.options.length - 1),
+                        0
+                      )
+                    ];
+                  setFocus(selectRef, nextOption);
+                } else {
+                  this.props.innerProps.onKeyDown(event);
+                }
+              },
+            }}
+          />
+        )}
+      </CalendarConnector.Consumer>
+    );
+  }
+}
+
 class DateTimeInput extends Component {
   static displayName = 'DateTimeInput';
 
@@ -600,7 +667,7 @@ class DateTimeInput extends Component {
             ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            components={{ Group, Option, MenuList, Menu }}
+            components={{ Group, Option, MenuList, Menu, SelectContainer }}
             filterOption={null}
             isMulti={false}
             isOptionSelected={(option, value) =>
