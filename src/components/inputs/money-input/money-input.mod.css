@@ -121,10 +121,12 @@
   display: flex;
   flex: 1 0 100%;
   padding: var(--spacing-4) var(--spacing-8);
+  flex-direction: column;
 }
 
 .languagesDropdown > * {
   flex: 1;
+  align-self: flex-end;
 }
 
 .chevron {

@@ -218,7 +218,11 @@ export default class MoneyInput extends React.Component {
     return moneyValue && moneyValue.type === 'highPrecision';
   };
 
-  static isTouched = touched => touched && Object.values(touched).some(Boolean);
+  static isTouched = (touched, { all = false } = {}) =>
+    touched &&
+    (all
+      ? Object.values(touched).every(Boolean)
+      : Object.values(touched).some(Boolean));
 
   static propTypes = {
     id: PropTypes.string,
