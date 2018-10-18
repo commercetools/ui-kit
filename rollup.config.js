@@ -44,6 +44,7 @@ const postcssPlugins = [
   postcssDiscardComments(),
   postcssCustomProperties({
     preserve: false,
+    importFrom: ['materials/colors/base-colors.mod.css'],
   }),
   postcssCustomMediaQueries(),
   postcssPostcssColorModFunction(),
@@ -102,7 +103,7 @@ const plugins = [
   postcss({
     exclude: ['**/*.mod.css'],
     include: ['**/*.css'],
-    plugins: postcssPlugins,
+    plugins: [],
   }),
   // To convert SVG Icons to ES6
   svgrPlugin({

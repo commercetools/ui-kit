@@ -108,6 +108,7 @@ module.exports = (storybookBaseConfig, configType) => {
               }),
               postcssCustomProperties({
                 preserve: false,
+                importFrom: ['materials/colors/base-colors.mod.css'],
               }),
               postcssCustomMediaQueries(),
               postcssPostcssColorModFunction(),
@@ -147,6 +148,7 @@ module.exports = (storybookBaseConfig, configType) => {
                   }),
                   postcssCustomProperties({
                     preserve: false,
+                    importFrom: ['materials/colors/base-colors.mod.css'],
                   }),
                   postcssCustomMediaQueries(),
                   postcssPostcssColorModFunction(),
