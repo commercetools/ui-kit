@@ -39,7 +39,7 @@ const CurrencyDropdown = props => (
           isOpen,
         })}
       >
-        <div className={styles.languagesDropdown}>
+        <div className={styles.languagesDropdown} onClick={toggleMenu}>
           <Spacings.Inline scale="xs" alignItems="center">
             <Currency
               id={props.id}
@@ -47,15 +47,10 @@ const CurrencyDropdown = props => (
               isDisabled={props.isDisabled}
               hasError={props.hasCurrencyError}
               hasWarning={props.hasCurrencyWarning}
-              onClick={toggleMenu}
               currency={props.currencyCode}
             />
             {props.currencies.length > 0 && (
-              <DropdownChevron
-                onClick={toggleMenu}
-                isDisabled={props.isDisabled}
-                isOpen={isOpen}
-              />
+              <DropdownChevron isDisabled={props.isDisabled} isOpen={isOpen} />
             )}
           </Spacings.Inline>
         </div>
