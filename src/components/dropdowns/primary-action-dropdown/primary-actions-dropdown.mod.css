@@ -1,7 +1,5 @@
-@import '../../../../materials/borders.mod.css';
 @import '../../../../materials/shadows/base-shadows.mod.css';
 @import '../../../../materials/sizes.mod.css';
-@import '../../../../materials/spacings.mod.css';
 
 .wrapper {
   position: relative;

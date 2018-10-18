@@ -1,7 +1,5 @@
 @import '../../../../materials/shadows/base-shadows.mod.css';
-@import '../../../../materials/spacings.mod.css';
 @import '../../../../materials/transitions.mod.css';
-@import '../../../../materials/borders.mod.css';
 
 :root {
   --size-container-small: 16px;

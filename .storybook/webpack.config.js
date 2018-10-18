@@ -6,6 +6,12 @@ const postcssCustomProperties = require('postcss-custom-properties');
 const postcssCustomMediaQueries = require('postcss-custom-media');
 const postcssPostcssColorModFunction = require('postcss-color-mod-function');
 
+const materialSources = [
+  'materials/colors/base-colors.mod.css',
+  'materials/spacings.mod.css',
+  'materials/borders.mod.css',
+];
+
 const browserslist = {
   development: ['chrome', 'firefox'].map(
     browser => `last 2 ${browser} versions`
@@ -108,7 +114,7 @@ module.exports = (storybookBaseConfig, configType) => {
               }),
               postcssCustomProperties({
                 preserve: false,
-                importFrom: ['materials/colors/base-colors.mod.css'],
+                importFrom: materialSources,
               }),
               postcssCustomMediaQueries(),
               postcssPostcssColorModFunction(),
@@ -148,7 +154,7 @@ module.exports = (storybookBaseConfig, configType) => {
                   }),
                   postcssCustomProperties({
                     preserve: false,
-                    importFrom: ['materials/colors/base-colors.mod.css'],
+                    importFrom: materialSources,
                   }),
                   postcssCustomMediaQueries(),
                   postcssPostcssColorModFunction(),
