@@ -301,7 +301,7 @@ export default class MoneyInput extends React.Component {
     this.props.onChange(fakeEvent);
   };
 
-  formatAmount = () => {
+  handleAmountBlur = () => {
     const amount = this.props.value.amount.trim();
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
@@ -340,7 +340,10 @@ export default class MoneyInput extends React.Component {
           onBlur={event => {
             // ensures that both fields are marked as touched when one of them
             // is blurred
-            if (!this.containerRef.current.contains(event.relatedTarget)) {
+            if (
+              typeof this.props.onBlur === 'function' &&
+              !this.containerRef.current.contains(event.relatedTarget)
+            ) {
               this.props.onBlur({
                 target: {
                   id: MoneyInput.getCurrencyDropdownId(this.props.id),
@@ -391,7 +394,7 @@ export default class MoneyInput extends React.Component {
             })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
-            onBlur={this.formatAmount}
+            onBlur={this.handleAmountBlur}
             disabled={this.props.isDisabled}
             {...filterDataAttributes(this.props)}
           />

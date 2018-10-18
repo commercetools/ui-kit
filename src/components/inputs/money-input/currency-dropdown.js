@@ -6,6 +6,7 @@ import styles from './money-input.mod.css';
 import Currency from './currency';
 import Option from './option';
 import DropdownChevron from './dropdown-chevron';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const getCurrencyDropdownSelectStyles = ({
   isDisabled,
@@ -38,6 +39,7 @@ const CurrencyDropdown = props => (
           hasWarning: props.hasWarning,
           isOpen,
         })}
+        {...filterDataAttributes(props)}
       >
         <div className={styles.languagesDropdown} onClick={toggleMenu}>
           <Spacings.Inline scale="xs" alignItems="center">
