@@ -9,7 +9,6 @@ import styles from './money-input.mod.css';
 export const DropdownChevron = props => (
   <AccessibleButton
     label={props.intl.formatMessage(messages.chevronLabel)}
-    onClick={props.onClick}
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
   >
@@ -31,7 +30,6 @@ export const DropdownChevron = props => (
 
 DropdownChevron.displayName = 'DropdownChevron';
 DropdownChevron.propTypes = {
-  onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
   isOpen: PropTypes.bool.isRequired,
   intl: PropTypes.shape({
