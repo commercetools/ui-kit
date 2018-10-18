@@ -7,7 +7,7 @@ module.exports = {
     '<rootDir>/materials/**/*.js',
     '<rootDir>/scripts/**/*.js',
     '<rootDir>/src/**/*.js',
-    '<rootDir>/**/*.js', // for backwards compatible folders
+    '<rootDir>/*.js',
   ],
   watchPlugins: ['jest-plugin-filename'],
 };

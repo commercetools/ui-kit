@@ -23,10 +23,12 @@ const formatCss = [
 ];
 
 module.exports = {
-  '*.md': formatMarkdown,
   '{.github,.storybook,examples,materials,src}/**/*.md': formatMarkdown,
-  '*.js': formatJs,
+  './*.md': formatMarkdown,
+
   '{.storybook,examples,materials,scripts,src}/**/*.js': formatJs,
+  './*.js': formatJs,
+
   'materials/*.css': formatCss,
   '{.storybook,examples,materials,src}/**/*.css': formatCss,
 };
