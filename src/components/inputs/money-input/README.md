@@ -41,10 +41,8 @@ The amount can have an arbitrary precision. When the precision of the amount exc
 | `isDisabled`           | `bool`                                     |    -     | -                            | `false` | Indicates that the field cannot be used.                                                                                                                      |
 | `onBlur`               | `func`                                     |    -     | -                            | -       | Called when the amount field or the currency code dropdown is blurred.                                                                                        |
 | `onChange`             | `function(event)`                          |    ✳️    | -                            | -       | Called with the event of the input or dropdown when either the currency or the amount have changed. Either `onChange` or `onChangeValue` must be passed.      |
-| `hasCurrencyError`     | `bool`                                     |    -     | -                            | -       | Indicates if the currency field has an error                                                                                                                  |
-| `hasCurrencyWarning`   | `bool`                                     |    -     | -                            | -       | Indicates if the currency field has a warning                                                                                                                 |
-| `hasAmountError`       | `bool`                                     |    -     | -                            | -       | Indicates if the centAmount field has an error                                                                                                                |
-| `hasAmountWarning`     | `bool`                                     |    -     | -                            | -       | Indicates if the centAmount field has a warning                                                                                                               |
+| `hasError`             | `bool`                                     |    -     | -                            | -       | Indicates if the input has an error                                                                                                                           |
+| `hasWarning`           | `bool`                                     |    -     | -                            | -       | Indicates if the input has a warning                                                                                                                          |
 | `horizontalConstraint` | `string`                                   |    -     | `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                                                    |
 
 ### Static methods
@@ -91,6 +89,19 @@ MoneyInput.isEmpty({ amount: '5', currencyCode: '' }); // -> true
 MoneyInput.isEmpty(); // -> true
 
 MoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> false
+```
+
+#### `MoneyInput.isTouched`
+
+The `areAllTouched` function will return `true` when all input elements were touched (currency dropdown and amount input).
+
+```js
+MoneyInput.isTouched({ amount: true, currencyCode: true }); // -> true
+
+MoneyInput.isTouched({ amount: true }); // -> false
+MoneyInput.isTouched({ currencyCode: true }); // -> false
+MoneyInput.isTouched({ amount: false, currencyCode: false }); // -> false
+MoneyInput.isTouched({}); // -> false
 ```
 
 #### `MoneyInput.getCurrencyDropdownId`
@@ -209,7 +220,9 @@ return (
           onBlur={() => setFieldTouched('somePrice')}
           isDisabled={isSubmitting}
           onChange={value => setFieldValue('somePrice', value)}
-          hasAmountError={touched.somePrice && Boolean(errors.somePrice)}
+          hasError={
+            MoneyInput.isTouched(touched.somePrice) && Boolean(errors.somePrice)
+          }
           horizontalConstraint="l"
         />
         {touched.somePrice &&

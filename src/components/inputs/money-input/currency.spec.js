@@ -105,9 +105,7 @@ describe('rendering', () => {
 
         describe('error', () => {
           beforeEach(() => {
-            props = createTestProps({
-              hasCurrencyError: true,
-            });
+            props = createTestProps({ hasError: true });
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
             downshiftRenderWrapper = render(props, downshiftProps);
           });
@@ -121,9 +119,7 @@ describe('rendering', () => {
 
         describe('warning', () => {
           beforeEach(() => {
-            props = createTestProps({
-              hasCurrencyWarning: true,
-            });
+            props = createTestProps({ hasWarning: true });
             downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
             downshiftRenderWrapper = render(props, downshiftProps);
           });
@@ -185,9 +181,7 @@ describe('rendering', () => {
 
       describe('error', () => {
         beforeEach(() => {
-          props = createTestProps({
-            hasAmountError: true,
-          });
+          props = createTestProps({ hasError: true });
           wrapper = shallow(<MoneyInput {...props} />);
           centAmountField = wrapper.find('input');
         });
@@ -199,9 +193,7 @@ describe('rendering', () => {
 
       describe('warning', () => {
         beforeEach(() => {
-          props = createTestProps({
-            hasAmountWarning: true,
-          });
+          props = createTestProps({ hasWarning: true });
           wrapper = shallow(<MoneyInput {...props} />);
           centAmountField = wrapper.find('input');
         });

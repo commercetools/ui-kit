@@ -147,8 +147,8 @@ const getAmountAsNumberFromMoneyValue = money =>
 
 const getAmountStyles = props => {
   if (props.isDisabled) return styles['amount-disabled'];
-  if (props.hasAmountError) return styles['amount-error'];
-  if (props.hasAmountWarning) return styles['amount-warning'];
+  if (props.hasError) return styles['amount-error'];
+  if (props.hasWarning) return styles['amount-warning'];
 
   return styles['amount-default'];
 };
@@ -218,7 +218,8 @@ export default class MoneyInput extends React.Component {
     return moneyValue && moneyValue.type === 'highPrecision';
   };
 
-  static isTouched = touched => touched && Object.values(touched).some(Boolean);
+  static isTouched = touched =>
+    Boolean(touched && touched.currencyCode && touched.amount);
 
   static propTypes = {
     id: PropTypes.string,
@@ -232,10 +233,8 @@ export default class MoneyInput extends React.Component {
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
-    hasCurrencyError: PropTypes.bool,
-    hasCurrencyWarning: PropTypes.bool,
-    hasAmountError: PropTypes.bool,
-    hasAmountWarning: PropTypes.bool,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
 
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   };
@@ -342,8 +341,8 @@ export default class MoneyInput extends React.Component {
               onChange={this.handleCurrencyChange}
               onBlur={this.props.onBlur}
               isDisabled={this.props.isDisabled}
-              hasCurrencyError={this.props.hasCurrencyError}
-              hasCurrencyWarning={this.props.hasCurrencyWarning}
+              hasError={this.props.hasError}
+              hasWarning={this.props.hasWarning}
             />
           ) : (
             <div className={styles['currency-label']}>
@@ -363,8 +362,8 @@ export default class MoneyInput extends React.Component {
             value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
-              hasAmountError: this.props.hasAmountError,
-              hasAmountWarning: this.props.hasAmountWarning,
+              hasError: this.props.hasError,
+              hasWarning: this.props.hasWarning,
             })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}

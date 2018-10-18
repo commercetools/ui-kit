@@ -51,26 +51,18 @@ storiesOf('Examples|Forms/Inputs', module)
                 value={formik.values.price}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                hasCurrencyError={Boolean(
-                  formik.touched.price &&
-                    formik.touched.price.currencyCode &&
-                    formik.errors.price
-                )}
-                hasAmountError={Boolean(
-                  formik.touched.price &&
-                    formik.touched.price.amount &&
-                    formik.errors.price
-                )}
+                hasError={
+                  MoneyInput.isTouched(formik.touched.price) &&
+                  Boolean(formik.errors.price)
+                }
                 horizontalConstraint="m"
               />
               {MoneyInput.isTouched(formik.touched.price) &&
-                formik.errors.price &&
-                formik.errors.price.missing && (
+                formik.errors.price?.missing && (
                   <ErrorMessage>Missing price</ErrorMessage>
                 )}
               {MoneyInput.isTouched(formik.touched.price) &&
-                formik.errors.price &&
-                formik.errors.price.unsupportedHighPrecision && (
+                formik.errors.price?.unsupportedHighPrecision && (
                   <ErrorMessage>
                     This value is a high precision value. High precision pricing
                     is not supported for products.
