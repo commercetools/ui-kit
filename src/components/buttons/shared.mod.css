@@ -1,5 +1,3 @@
-@import '../../../materials/sizes.mod.css';
-
 .button-big-wrapper {
   border-radius: var(--border-radius-6);
 }

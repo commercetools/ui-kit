@@ -1,6 +1,5 @@
 @import '../../../../materials/tokens/tokens.mod.css';
 @import '../../../../materials/transitions.mod.css';
-@import '../../../../materials/sizes.mod.css';
 
 .date-input-container {
   width: 100%;

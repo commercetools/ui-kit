@@ -23,6 +23,8 @@ const materialSources = [
   'materials/colors/base-colors.mod.css',
   'materials/spacings.mod.css',
   'materials/borders.mod.css',
+  'materials/transitions.mod.css',
+  'materials/sizes.mod.css',
 ];
 
 // Inspired by https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.prod.js
@@ -102,6 +104,7 @@ const plugins = [
     exclude: ['node_modules/**/*.css'],
     modules: true,
     importLoaders: 1,
+    // extract: true,
     localIdentName: '[name]__[local]___[hash:base64:5]',
     plugins: postcssPlugins,
   }),

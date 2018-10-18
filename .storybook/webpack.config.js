@@ -10,6 +10,8 @@ const materialSources = [
   'materials/colors/base-colors.mod.css',
   'materials/spacings.mod.css',
   'materials/borders.mod.css',
+  'materials/transitions.mod.css',
+  'materials/sizes.mod.css',
 ];
 
 const browserslist = {
