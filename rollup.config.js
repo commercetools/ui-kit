@@ -11,7 +11,7 @@ import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
-import postcssPostcssColorModFunction from 'postcss-color-mod-function';
+import postcssColorModFunction from 'postcss-color-mod-function';
 import postcssDiscardComments from 'postcss-discard-comments';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgrPlugin from '@svgr/rollup';
@@ -52,7 +52,7 @@ const postcssPlugins = [
     autoprefixer: { grid: true },
   }),
   postcssCustomMediaQueries(),
-  postcssPostcssColorModFunction(),
+  postcssColorModFunction(),
   // we need to place the postcssDiscardComments BEFORE postcssCustomProperties,
   // otherwise we will end up with a bunch of empty :root elements
   // wherever there are imported comments
