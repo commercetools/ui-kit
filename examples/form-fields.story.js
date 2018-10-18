@@ -274,6 +274,7 @@ class ProductForm extends React.Component {
           value={this.props.formik.values.inventory}
           onChange={this.props.formik.handleChange}
           onBlur={this.props.formik.handleBlur}
+          isDisabled={this.props.formik.isSubmitting}
           touched={this.props.formik.touched.inventory}
           errors={this.props.formik.errors.inventory}
           renderError={key => {
@@ -293,6 +294,7 @@ class ProductForm extends React.Component {
           value={this.props.formik.values.price}
           onChange={this.props.formik.handleChange}
           onBlur={this.props.formik.handleBlur}
+          isDisabled={this.props.formik.isSubmitting}
           currencies={currencies}
           touched={this.props.formik.touched.price}
           errors={this.props.formik.errors.price}
@@ -312,6 +314,7 @@ class ProductForm extends React.Component {
           value={this.props.formik.values.status}
           onChange={this.props.formik.handleChange}
           onBlur={this.props.formik.handleBlur}
+          isDisabled={this.props.formik.isSubmitting}
           options={[
             { value: 'unpublished', label: 'Unpublished' },
             { value: 'modified', label: 'Modified' },

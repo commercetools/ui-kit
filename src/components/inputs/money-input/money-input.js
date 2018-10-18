@@ -283,6 +283,7 @@ export default class MoneyInput extends React.Component {
       }
     }
     toggleMenu();
+    this.amountInputRef.current.focus();
   };
 
   handleAmountChange = event => {
@@ -300,7 +301,7 @@ export default class MoneyInput extends React.Component {
     this.props.onChange(fakeEvent);
   };
 
-  handleBlur = event => {
+  formatAmount = () => {
     const amount = this.props.value.amount.trim();
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
@@ -325,13 +326,36 @@ export default class MoneyInput extends React.Component {
         this.props.onChange(fakeEvent);
       }
     }
-    if (this.props.onBlur) this.props.onBlur(event);
   };
+
+  containerRef = React.createRef();
+  amountInputRef = React.createRef();
 
   render() {
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div className={styles['field-container']}>
+        <div
+          ref={this.containerRef}
+          className={styles['field-container']}
+          onBlur={event => {
+            // ensures that both fields are marked as touched when one of them
+            // is blurred
+            if (!this.containerRef.current.contains(event.relatedTarget)) {
+              this.props.onBlur({
+                target: {
+                  id: MoneyInput.getCurrencyDropdownId(this.props.id),
+                  name: getCurrencyDropdownName(this.props.name),
+                },
+              });
+              this.props.onBlur({
+                target: {
+                  id: MoneyInput.getAmountInputId(this.props.id),
+                  name: getAmountInputName(this.props.name),
+                },
+              });
+            }
+          }}
+        >
           {this.props.currencies.length > 0 ? (
             <CurrencyDropdown
               id={MoneyInput.getCurrencyDropdownId(this.props.id)}
@@ -339,7 +363,6 @@ export default class MoneyInput extends React.Component {
               currencies={this.props.currencies}
               currencyCode={this.props.value.currencyCode}
               onChange={this.handleCurrencyChange}
-              onBlur={this.props.onBlur}
               isDisabled={this.props.isDisabled}
               hasError={this.props.hasError}
               hasWarning={this.props.hasWarning}
@@ -356,6 +379,7 @@ export default class MoneyInput extends React.Component {
             </div>
           )}
           <input
+            ref={this.amountInputRef}
             id={MoneyInput.getAmountInputId(this.props.id)}
             name={getAmountInputName(this.props.name)}
             type="number"
@@ -367,7 +391,7 @@ export default class MoneyInput extends React.Component {
             })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
-            onBlur={this.handleBlur}
+            onBlur={this.formatAmount}
             disabled={this.props.isDisabled}
             {...filterDataAttributes(this.props)}
           />
