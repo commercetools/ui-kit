@@ -7,11 +7,18 @@ const postcssCustomMediaQueries = require('postcss-custom-media');
 const postcssPostcssColorModFunction = require('postcss-color-mod-function');
 
 const materialSources = [
-  'materials/colors/base-colors.mod.css',
-  'materials/spacings.mod.css',
   'materials/borders.mod.css',
-  'materials/transitions.mod.css',
+  'materials/colors/base-colors.mod.css',
+  'materials/shadows/base-shadows.mod.css',
   'materials/sizes.mod.css',
+  'materials/spacings.mod.css',
+  // tokens
+  'materials/tokens/backgrounds.mod.css',
+  'materials/tokens/borders.mod.css',
+  'materials/tokens/fonts.mod.css',
+  'materials/tokens/shadows.mod.css',
+  'materials/tokens/sizes.mod.css',
+  'materials/transitions.mod.css',
 ];
 
 const browserslist = {

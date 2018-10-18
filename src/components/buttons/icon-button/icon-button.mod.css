@@ -1,6 +1,3 @@
-@import '../../../../materials/shadows/base-shadows.mod.css';
-@import '../../../../materials/transitions.mod.css';
-
 :root {
   --size-small-button: 16px;
   --size-medium-button: 24px;

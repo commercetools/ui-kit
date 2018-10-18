@@ -1,6 +1,3 @@
-@import '../../../../materials/transitions.mod.css';
-@import '../../../../materials/shadows/base-shadows.mod.css';
-
 :root {
   --big-button-height: var(--standard-input-height);
   --big-button-width: var(--big-button-height);

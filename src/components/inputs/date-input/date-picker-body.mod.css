@@ -1,6 +1,3 @@
-@import '../../../../materials/tokens/tokens.mod.css';
-@import '../../../../materials/transitions.mod.css';
-
 .date-input-container {
   width: 100%;
   align-items: center;

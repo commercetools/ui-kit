@@ -1,6 +1,3 @@
-@import '../../../../materials/shadows/base-shadows.mod.css';
-@import '../../../../materials/transitions.mod.css';
-
 /** Button wrapper */
 .button-layout {
   display: inline-flex;
