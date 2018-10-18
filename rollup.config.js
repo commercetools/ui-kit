@@ -12,6 +12,7 @@ import replace from 'rollup-plugin-replace';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssPostcssColorModFunction from 'postcss-color-mod-function';
+import postcssDiscardComments from 'postcss-discard-comments';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
@@ -35,6 +36,12 @@ const postcssPlugins = [
     browsers: browserslist.production,
     autoprefixer: { grid: true },
   }),
+  // we need to place the postcssDiscardComments BEFORE postcssCustomProperties,
+  // otherwise we will end up with a bunch of empty :root elements
+  // wherever there are imported comments
+  // see https://github.com/postcss/postcss-custom-properties/issues/123
+  // and https://github.com/commercetools/ui-kit/pull/173
+  postcssDiscardComments(),
   postcssCustomProperties({
     preserve: false,
   }),
