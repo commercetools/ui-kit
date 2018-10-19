@@ -47,14 +47,22 @@ export class ToggleAnimation extends React.Component {
     const animationName = props.isOpen
       ? createOpeningAnimation(state.fullHeight)
       : createClosingAnimation(state.fullHeight);
+    const animation = `${animationName} 200ms forwards`;
     return {
-      animation: `${animationName} 200ms forwards`,
+      containerStyles: props.isOpen
+        ? { height: 'auto', animation }
+        : { height: 0, overflow: 'hidden', animation },
     };
   }
 
   nodeRef = React.createRef();
 
-  state = { fullHeight: null, animation: '' };
+  state = {
+    fullHeight: null,
+    containerStyles: this.props.isOpen
+      ? { height: 'auto' }
+      : { height: 0, overflow: 'hidden' },
+  };
 
   componentDidMount() {
     invariant(
@@ -90,9 +98,7 @@ export class ToggleAnimation extends React.Component {
 
   render() {
     return this.props.children({
-      containerStyles: this.props.isOpen
-        ? { height: 'auto', animation: this.state.animation }
-        : { height: 0, overflow: 'hidden', animation: this.state.animation },
+      containerStyles: this.state.containerStyles,
       toggle: this.handleToggle,
       registerContentNode: this.nodeRef,
     });
