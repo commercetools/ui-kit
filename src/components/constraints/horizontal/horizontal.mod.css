@@ -1,5 +1,3 @@
-@import '../../../../materials/sizes.mod.css';
-
 .constraintScale {
   width: var(--constraint-scale);
 }

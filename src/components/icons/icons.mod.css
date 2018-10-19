@@ -1,5 +1,3 @@
-@import '../../../materials/colors/base-colors.mod.css';
-
 .theme-black * {
   fill: var(--color-black);
 }

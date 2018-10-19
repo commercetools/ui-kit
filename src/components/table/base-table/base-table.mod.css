@@ -1,6 +1,3 @@
-@import '../../../../materials/colors/base-colors.mod.css';
-@import '../../../../materials/transitions.mod.css';
-
 :root {
   --shadow-fixed-column: 4px -2px 4px -4px rgba(0, 0, 0, 0.3);
 }

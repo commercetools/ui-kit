@@ -1,7 +1,3 @@
-@import '../../../../materials/tokens/tokens.mod.css';
-@import '../../../../materials/transitions.mod.css';
-@import '../../../../materials/spacings.mod.css';
-
 :root {
   /* we need this line-height to achieve 32px height when the component has only one row */
   --size-input-line-height: 22px;

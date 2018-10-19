@@ -11,13 +11,28 @@ import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
-import postcssPostcssColorModFunction from 'postcss-color-mod-function';
+import postcssColorModFunction from 'postcss-color-mod-function';
 import postcssDiscardComments from 'postcss-discard-comments';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 
 const babelOptions = require('./scripts/get-babel-preset');
+
+const materialSources = [
+  'materials/borders.mod.css',
+  'materials/colors/base-colors.mod.css',
+  'materials/shadows/base-shadows.mod.css',
+  'materials/sizes.mod.css',
+  'materials/spacings.mod.css',
+  // tokens
+  'materials/tokens/backgrounds.mod.css',
+  'materials/tokens/borders.mod.css',
+  'materials/tokens/fonts.mod.css',
+  'materials/tokens/shadows.mod.css',
+  'materials/tokens/sizes.mod.css',
+  'materials/transitions.mod.css',
+];
 
 // Inspired by https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.prod.js
 const browserslist = {
@@ -36,6 +51,8 @@ const postcssPlugins = [
     browsers: browserslist.production,
     autoprefixer: { grid: true },
   }),
+  postcssCustomMediaQueries(),
+  postcssColorModFunction(),
   // we need to place the postcssDiscardComments BEFORE postcssCustomProperties,
   // otherwise we will end up with a bunch of empty :root elements
   // wherever there are imported comments
@@ -44,9 +61,8 @@ const postcssPlugins = [
   postcssDiscardComments(),
   postcssCustomProperties({
     preserve: false,
+    importFrom: materialSources,
   }),
-  postcssCustomMediaQueries(),
-  postcssPostcssColorModFunction(),
   postcssReporter(),
 ];
 
@@ -102,6 +118,9 @@ const plugins = [
   postcss({
     exclude: ['**/*.mod.css'],
     include: ['**/*.css'],
+    // literally the only reason we have this, is because of the `select.css` file
+    // or else we would not need to include any plugins as this would
+    // just be vendor (plain) css.
     plugins: postcssPlugins,
   }),
   // To convert SVG Icons to ES6
