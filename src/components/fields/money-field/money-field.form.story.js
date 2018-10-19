@@ -13,6 +13,12 @@ import Spacings from '../../spacings';
 import Readme from './README.md';
 import MoneyField from './money-field';
 
+const formToDoc = values => ({
+  price: MoneyField.convertToMoneyValue(values.price),
+  pricePerTon: MoneyField.convertToMoneyValue(values.pricePerTon),
+  discountedPrice: MoneyField.convertToMoneyValue(values.discountedPrice),
+});
+
 storiesOf('Examples|Forms/Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
@@ -27,11 +33,12 @@ storiesOf('Examples|Forms/Fields', module)
       <Section>
         <Formik
           initialValues={{
-            price: { ...MoneyField.parseMoneyValue() },
-            pricePerTon: { ...MoneyField.parseMoneyValue() },
+            price: MoneyField.parseMoneyValue(),
+            pricePerTon: MoneyField.parseMoneyValue(),
+            discountedPrice: MoneyField.parseMoneyValue(),
           }}
           validate={values => {
-            const errors = { price: {}, pricePerTon: {} };
+            const errors = { price: {}, pricePerTon: {}, discountedPrice: {} };
             if (MoneyField.isEmpty(values.price)) errors.price.missing = true;
             else if (MoneyField.isHighPrecision(values.price))
               errors.price.unsupportedHighPrecision = true;
@@ -39,10 +46,25 @@ storiesOf('Examples|Forms/Fields', module)
             if (MoneyField.isEmpty(values.pricePerTon))
               errors.pricePerTon.missing = true;
 
+            // Shows how to validate optional `MoneyField`s. Notice that
+            // we do not error when this field is filled out partially, as it
+            // is not required.
+            // Supplying either only currency or only an amount will be treated
+            // as leaving the field blank.
+            // UX could want to show an error in this case, but then we'd also
+            // need a way to unset the currency, which is not possible now.
+            if (
+              !MoneyField.isEmpty(values.discountedPrice) &&
+              MoneyField.isHighPrecision(values.discountedPrice)
+            )
+              errors.discountedPrice.unsupportedHighPrecision = true;
+
             return omitEmpty(errors);
           }}
           onSubmit={(values, formik) => {
             action('onSubmit')(values, formik);
+            // eslint-disable-next-line no-console
+            console.log('doc', formToDoc(values));
             formik.resetForm(values);
           }}
           render={formik => (
@@ -83,6 +105,19 @@ storiesOf('Examples|Forms/Fields', module)
                 horizontalConstraint={horizontalConstraint}
                 hasHighPrecisionBadge={true}
                 errors={formik.errors.pricePerTon}
+              />
+              <MoneyField
+                title="Discounted Price per ton (High Precision)"
+                description={'How much is a ton of fish?'}
+                name="discountedPrice"
+                value={formik.values.discountedPrice}
+                currencies={currencies}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                touched={formik.touched.discountedPrice}
+                horizontalConstraint={horizontalConstraint}
+                hasHighPrecisionBadge={true}
+                errors={formik.errors.discountedPrice}
               />
               <Spacings.Inline>
                 <SecondaryButton
