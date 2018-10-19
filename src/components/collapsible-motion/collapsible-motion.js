@@ -1,34 +1,39 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import warning from 'warning';
-import { keyframes } from 'styled-components';
+import stringHash from '@sindresorhus/string-hash';
+import styleInject from 'style-inject';
 import Collapsible from '../collapsible';
 
-const createOpeningAnimation = height => keyframes`
-  0% {
-    height: 0;
-    overflow: hidden;
-  }
+// allows setting global css, basically a cheap version of styled-components
+const injectedKeyframes = new Map();
+const keyframes = frames => {
+  // check if this already exists
+  const hash = stringHash(frames);
+  const hashedName = injectedKeyframes.get(hash);
+  if (hashedName) return hashedName;
 
-  99% {
-    height: ${height}px;
-    overflow: hidden;
-  }
-  100% {
-    height: auto;
-    overflow: visible;
-  }
-`;
-const createClosingAnimation = height => keyframes`
-  from {
-    height: ${height}px;
-  }
+  const identifier = `keyframes-${hash}`;
+  injectedKeyframes.set(hash, identifier);
+  const css = `@keyframes ${identifier} { ${frames} }`;
 
-  to {
-    height: 0;
-    overflow: hidden;
-  }
-`;
+  styleInject(css);
+
+  return identifier;
+};
+
+const createOpeningAnimation = height =>
+  keyframes(`
+    0% { height: 0; overflow: hidden; }
+    99% { height: ${height}px; overflow: hidden; }
+    100% { height: auto; overflow: visible; }
+  `);
+
+const createClosingAnimation = height =>
+  keyframes(`
+    from { height: ${height}px; }
+    to { height: 0; overflow: hidden; }
+  `);
 
 export class ToggleAnimation extends React.Component {
   static displayName = 'ToggleAnimation';
