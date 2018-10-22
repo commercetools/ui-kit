@@ -48,16 +48,25 @@ export class ToggleAnimation extends React.Component {
       ? createOpeningAnimation(state.fullHeight)
       : createClosingAnimation(state.fullHeight);
     const animation = `${animationName} 200ms forwards`;
-    return {
-      containerStyles: props.isOpen
+
+    let containerStyles = {};
+
+    if (props.isOpen !== state.isOpen) {
+      containerStyles = props.isOpen
         ? { height: 'auto', animation }
-        : { height: 0, overflow: 'hidden', animation },
+        : { height: 0, overflow: 'hidden', animation };
+    }
+
+    return {
+      isOpen: props.isOpen,
+      containerStyles,
     };
   }
 
   nodeRef = React.createRef();
 
   state = {
+    isOpen: this.props.isOpen,
     fullHeight: null,
     containerStyles: this.props.isOpen
       ? { height: 'auto' }
