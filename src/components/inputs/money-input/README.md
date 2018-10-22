@@ -93,7 +93,7 @@ MoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> false
 
 #### `MoneyInput.isTouched`
 
-The `areAllTouched` function will return `true` when all input elements were touched (currency dropdown and amount input).
+The `isTouched` function will return `true` when all input elements were touched (currency dropdown and amount input).
 
 ```js
 MoneyInput.isTouched({ amount: true, currencyCode: true }); // -> true
