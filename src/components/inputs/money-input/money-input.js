@@ -2,13 +2,47 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import has from 'lodash.has';
+import Select from 'react-select';
+import ClearIndicator from '../../internals/clear-indicator';
+import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Contraints from '../../constraints';
 import styles from './money-input.mod.css';
 import currencies from './currencies.json';
-import Currency from './currency';
-import CurrencyDropdown from './currency-dropdown';
+import createSelectStyles from '../../internals/create-select-styles';
+import * as vars from '../../../../materials/custom-properties.json';
+
+// overwrite styles of createSelectStyles
+const createCurrencySelectStyles = ({
+  hasWarning,
+  hasError,
+  hasNoCurrencies,
+}) => {
+  const selectStyles = createSelectStyles({ hasWarning, hasError });
+  return {
+    ...selectStyles,
+    control: (base, state) => ({
+      ...selectStyles.control(base, state),
+      borderTopRightRadius: '0',
+      borderBottomRightRadius: '0',
+      borderRight: '0',
+      width: '72px',
+    }),
+    singleValue: base => ({
+      ...base,
+      color: do {
+        if (hasError) vars['--token-font-color-error'];
+        else if (hasWarning) vars['--token-font-color-warning'];
+        else base.color;
+      },
+    }),
+    dropdownIndicator: (base, state) => ({
+      ...selectStyles.dropdownIndicator(base, state),
+      visibility: hasNoCurrencies ? 'hidden' : undefined,
+    }),
+  };
+};
 
 // The MoneyInput component always operates on a value consisting of:
 //   { amount: String, currencyCode: String }
@@ -244,8 +278,8 @@ export default class MoneyInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  handleCurrencyChange = (event, toggleMenu) => {
-    const currencyCode = event.target.value;
+  handleCurrencyChange = option => {
+    const currencyCode = option.value;
     if (this.props.value.currencyCode !== currencyCode) {
       // When the user changes from a currency with 3 fraction digits to
       // a currency with 2 fraction digits, and when the input value was
@@ -265,11 +299,19 @@ export default class MoneyInput extends React.Component {
         : formattedAmount;
 
       // change currency code
-      this.props.onChange(event);
+      const fakeCurrencyEvent = {
+        persist: () => {},
+        target: {
+          id: MoneyInput.getCurrencyDropdownId(this.props.id),
+          name: getCurrencyDropdownName(this.props.name),
+          value: currencyCode || '',
+        },
+      };
+      this.props.onChange(fakeCurrencyEvent);
 
       // change amount if necessary
       if (this.props.value.amount !== nextAmount) {
-        const fakeEvent = {
+        const fakeAmountEvent = {
           persist: () => {},
           target: {
             name: getAmountInputName(this.props.name),
@@ -279,11 +321,11 @@ export default class MoneyInput extends React.Component {
           },
         };
 
-        this.props.onChange(fakeEvent);
+        this.props.onChange(fakeAmountEvent);
       }
+
+      this.amountInputRef.current.focus();
     }
-    toggleMenu();
-    this.amountInputRef.current.focus();
   };
 
   handleAmountChange = event => {
@@ -328,59 +370,55 @@ export default class MoneyInput extends React.Component {
     }
   };
 
-  containerRef = React.createRef();
   amountInputRef = React.createRef();
 
   render() {
+    const hasNoCurrencies = this.props.currencies.length === 0;
+    const hasWarning = this.props.hasCurrencyWarning;
+    const hasError = this.props.hasCurrencyError;
+    const currencySelectStyles = createCurrencySelectStyles({
+      hasWarning,
+      hasError,
+      hasNoCurrencies,
+    });
+    const options = this.props.currencies.map(currencyCode => ({
+      label: currencyCode,
+      value: currencyCode,
+    }));
+
+    const option = do {
+      const matchedOption = options.find(
+        o => o.value === this.props.value.currencyCode
+      );
+      if (matchedOption) matchedOption;
+      // ensure an option is found, even when the currencies don't include
+      // the money value's currencyCode
+      else if (this.props.value.currencyCode.trim() !== '')
+        ({
+          label: this.props.value.currencyCode,
+          value: this.props.value.currencyCode,
+        });
+      else null;
+    };
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div
-          ref={this.containerRef}
           className={styles['field-container']}
-          onBlur={event => {
-            // ensures that both fields are marked as touched when one of them
-            // is blurred
-            if (
-              typeof this.props.onBlur === 'function' &&
-              !this.containerRef.current.contains(event.relatedTarget)
-            ) {
-              this.props.onBlur({
-                target: {
-                  id: MoneyInput.getCurrencyDropdownId(this.props.id),
-                  name: getCurrencyDropdownName(this.props.name),
-                },
-              });
-              this.props.onBlur({
-                target: {
-                  id: MoneyInput.getAmountInputId(this.props.id),
-                  name: getAmountInputName(this.props.name),
-                },
-              });
-            }
-          }}
+          data-testid="money-input-container"
         >
-          {this.props.currencies.length > 0 ? (
-            <CurrencyDropdown
-              id={MoneyInput.getCurrencyDropdownId(this.props.id)}
-              name={getCurrencyDropdownName(this.props.name)}
-              currencies={this.props.currencies}
-              currencyCode={this.props.value.currencyCode}
-              onChange={this.handleCurrencyChange}
-              isDisabled={this.props.isDisabled}
-              hasError={this.props.hasError}
-              hasWarning={this.props.hasWarning}
-            />
-          ) : (
-            <div className={styles['currency-label']}>
-              <div className={styles['currency-wrapper']}>
-                <Currency
-                  id={MoneyInput.getCurrencyDropdownId(this.props.id)}
-                  isDisabled={this.props.isDisabled}
-                  currency={this.props.value.currencyCode}
-                />
-              </div>
-            </div>
-          )}
+          <Select
+            inputId={MoneyInput.getCurrencyDropdownId(this.props.id)}
+            name={getCurrencyDropdownName(this.props.name)}
+            value={option}
+            isDisabled={this.props.isDisabled || hasNoCurrencies}
+            isSearchable={false}
+            components={{ DropdownIndicator, ClearIndicator }}
+            options={options}
+            placeholder=""
+            styles={currencySelectStyles}
+            onChange={this.handleCurrencyChange}
+            data-testid="currency-dropdown"
+          />
           <input
             ref={this.amountInputRef}
             id={MoneyInput.getAmountInputId(this.props.id)}
