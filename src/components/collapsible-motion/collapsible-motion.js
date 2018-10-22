@@ -49,12 +49,15 @@ export class ToggleAnimation extends React.Component {
       : createClosingAnimation(state.fullHeight);
     const animation = `${animationName} 200ms forwards`;
 
-    let containerStyles = {};
+    let containerStyles = props.isOpen
+      ? { height: 'auto' }
+      : { height: 0, overflow: 'hidden' };
 
     if (props.isOpen !== state.isOpen) {
-      containerStyles = props.isOpen
-        ? { height: 'auto', animation }
-        : { height: 0, overflow: 'hidden', animation };
+      containerStyles = {
+        ...containerStyles,
+        animation,
+      };
     }
 
     return {
