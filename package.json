@@ -57,7 +57,7 @@
     "classnames": "2.2.6",
     "common-tags": "1.8.0",
     "dom-helpers": "3.3.1",
-    "downshift": "2.2.3",
+    "downshift": "3.1.1",
     "is-touch-device": "1.0.1",
     "lodash.flatmap": "4.5.0",
     "lodash.has": "4.5.2",
@@ -185,14 +185,14 @@
     "rollup-plugin-replace": "2.1.0",
     "rollup-plugin-url": "2.0.1",
     "shelljs": "0.8.2",
-    "storybook-readme": "4.0.0-beta1",
+    "storybook-readme": "4.0.2",
     "style-loader": "0.23.1",
-    "styled-components": "3.4.10",
+    "styled-components": "4.0.2",
     "stylelint": "9.6.0",
     "stylelint-config-standard": "18.2.0",
     "stylelint-order": "1.0.0",
     "url-loader": "1.1.2",
-    "webpack": "4.20.2"
+    "webpack": "4.21.0"
   },
   "peerDependencies": {
     "flatpickr": ">4.5.0",
