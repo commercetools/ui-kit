@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-// import { action } from '@storybook/addon-actions';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs';
-// import withReadme from 'storybook-readme/with-readme';
+import withReadme from 'storybook-readme/with-readme';
 import CollapsibleMotion from './collapsible-motion';
 import Spacings from '../spacings';
+import Readme from './README.md';
 
 class CollapsibleMotionStory extends React.Component {
   static displayName = 'CollapsibleMotionStory';
@@ -103,15 +103,5 @@ class CollapsibleMotionStory extends React.Component {
 
 storiesOf('Panels', module)
   .addDecorator(withKnobs)
-  // .addDecorator(withReadme(Readme))
-  .add('CollapsibleMotion', () => {
-    // this prop is passed to rerender the whole story, which simulates a
-    // parent rerendering
-    const num = number('rerender', 0, {
-      range: true,
-      min: 0,
-      max: 5000,
-      step: 1,
-    });
-    return <CollapsibleMotionStory num={num} />;
-  });
+  .addDecorator(withReadme(Readme))
+  .add('CollapsibleMotion', () => <CollapsibleMotionStory />);
