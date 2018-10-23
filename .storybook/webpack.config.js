@@ -108,7 +108,7 @@ module.exports = (storybookBaseConfig, configType) => {
               }),
               postcssCustomProperties({
                 preserve: false,
-                importFrom: 'materials/imports.css',
+                importFrom: 'materials/custom-properties.css',
               }),
               postcssCustomMediaQueries(),
               postcssPostcssColorModFunction(),
@@ -148,7 +148,7 @@ module.exports = (storybookBaseConfig, configType) => {
                   }),
                   postcssCustomProperties({
                     preserve: false,
-                    importFrom: 'materials/imports.css',
+                    importFrom: 'materials/custom-properties.css',
                   }),
                   postcssCustomMediaQueries(),
                   postcssPostcssColorModFunction(),

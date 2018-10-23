@@ -46,7 +46,7 @@ const postcssPlugins = [
   postcssDiscardComments(),
   postcssCustomProperties({
     preserve: false,
-    importFrom: 'materials/imports.css',
+    importFrom: 'materials/custom-properties.css',
   }),
   postcssReporter(),
 ];

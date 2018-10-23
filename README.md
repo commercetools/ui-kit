@@ -27,10 +27,10 @@ import {
 
 When you are developing your application using the UI Kit components, chances you want to use the same design tokens as our design system. We provide them through both **CSS variables** and **JavaScript variables**.
 
-We expose the **CSS variables** from the `@commercetools-frontend/ui-kit/materials/imports.css` file. This file can be used either like
+We expose the **CSS variables** from the `@commercetools-frontend/ui-kit/materials/custom-properties.css` file. This file can be used either like
 
 ```css
-@import '@commercetools-frontend/ui-kit/materials/imports.css';
+@import '@commercetools-frontend/ui-kit/materials/custom-properties.css';
 
 .container {
   padding: var(--spacing-8);
@@ -42,14 +42,14 @@ or can be used in along with [postcss-custom-properties](https://github.com/post
 ```js
   postcssCustomProperties({
     preserve: false,
-    importFrom: '@commercetools-frontend/ui-kit/materials/imports.css',
+    importFrom: '@commercetools-frontend/ui-kit/materials/custom-properties.css',
   }),
 ```
 
 You can also access the JavaScript variables like this
 
 ```js
-import { customProperties } from @commercetools-frontend/ui-kit/materials/imports
+import { customProperties } from '@commercetools-frontend/ui-kit';
 
 const green = customProperties['--color-green'];
 ```
