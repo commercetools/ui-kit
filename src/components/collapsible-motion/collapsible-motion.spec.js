@@ -28,10 +28,8 @@ describe('uncontrolled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerStyles: {
-          height: 'auto',
-          animation: 'keyframes-3501345875 200ms forwards',
-        },
+        // no animation here because the panel is already expanded
+        containerStyles: { height: 'auto' },
       })
     );
 
@@ -43,7 +41,9 @@ describe('uncontrolled mode', () => {
       expect.objectContaining({
         isOpen: false,
         containerStyles: {
-          animation: 'keyframes-1785486315 200ms forwards',
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
           height: 0,
           overflow: 'hidden',
         },
@@ -59,7 +59,9 @@ describe('uncontrolled mode', () => {
         isOpen: true,
         containerStyles: {
           height: 'auto',
-          animation: 'keyframes-3501345875 200ms forwards',
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
         },
       })
     );
@@ -108,10 +110,8 @@ describe('controlled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerStyles: {
-          height: 'auto',
-          animation: 'keyframes-3501345875 200ms forwards',
-        },
+        // no animation here because the panel is already expanded
+        containerStyles: { height: 'auto' },
       })
     );
 
@@ -123,7 +123,9 @@ describe('controlled mode', () => {
       expect.objectContaining({
         isOpen: false,
         containerStyles: {
-          animation: 'keyframes-1785486315 200ms forwards',
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
           height: 0,
           overflow: 'hidden',
         },
@@ -139,7 +141,9 @@ describe('controlled mode', () => {
         isOpen: true,
         containerStyles: {
           height: 'auto',
-          animation: 'keyframes-3501345875 200ms forwards',
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
         },
       })
     );

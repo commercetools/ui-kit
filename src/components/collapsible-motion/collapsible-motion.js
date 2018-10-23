@@ -1,26 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import invariant from 'tiny-invariant';
-import stringHash from '@sindresorhus/string-hash';
-import styleInject from 'style-inject';
+import { keyframes } from 'emotion';
 import Collapsible from '../collapsible';
-
-// allows setting global css, basically a cheap version of styled-components
-const injectedKeyframes = new Map();
-const keyframes = frames => {
-  // check if this already exists
-  const hash = stringHash(frames);
-  const hashedName = injectedKeyframes.get(hash);
-  if (hashedName) return hashedName;
-
-  const identifier = `keyframes-${hash}`;
-  injectedKeyframes.set(hash, identifier);
-  const css = `@keyframes ${identifier} { ${frames} }`;
-
-  styleInject(css);
-
-  return identifier;
-};
 
 const createOpeningAnimation = height =>
   keyframes(`
