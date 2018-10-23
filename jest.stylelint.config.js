@@ -2,12 +2,7 @@ module.exports = {
   runner: 'jest-runner-stylelint',
   displayName: 'stylelint',
   moduleFileExtensions: ['css'],
-  testMatch: [
-    '<rootDir>/.storybook/*.css',
-    '<rootDir>/.storybook/**/*.css',
-    '<rootDir>/materials/*.css',
-    '<rootDir>/materials/**/*.css',
-    '<rootDir>/src/**/*.css',
-  ],
+  testMatch: ['<rootDir>/**/*.css'],
+  testPathIgnorePatterns: ['/node_modules/', '.public/', 'dist/'],
   watchPlugins: ['jest-plugin-filename'],
 };

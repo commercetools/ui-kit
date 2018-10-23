@@ -1,13 +1,7 @@
 module.exports = {
   runner: 'jest-runner-eslint',
   displayName: 'eslint',
-  testMatch: [
-    '<rootDir>/.storybook/**/*.js',
-    '<rootDir>/examples/**/*.js',
-    '<rootDir>/materials/**/*.js',
-    '<rootDir>/scripts/**/*.js',
-    '<rootDir>/src/**/*.js',
-    '<rootDir>/*.js',
-  ],
+  testMatch: ['<rootDir>/**/*.js'],
+  testPathIgnorePatterns: ['/node_modules/', '.public/', 'dist/'],
   watchPlugins: ['jest-plugin-filename'],
 };
