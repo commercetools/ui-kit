@@ -39,7 +39,6 @@ storiesOf('Examples|Forms/Fields', module)
             if (MoneyField.isEmpty(values.pricePerTon))
               errors.pricePerTon.missing = true;
 
-            console.log(values, omitEmpty(errors));
             return omitEmpty(errors);
           }}
           onSubmit={(values, formik) => {

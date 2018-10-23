@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import has from 'lodash.has';
 import requiredIf from 'react-required-if';
 import { FormattedMessage } from 'react-intl';
+import has from 'lodash.has';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
@@ -98,21 +98,11 @@ class MoneyField extends React.Component {
   });
 
   render() {
-    // We could determine the errors of amount and currencyCode separately
-    // and forward hasCurrencyError / hasAmountError depending on the error.
-    // This would work for example for the known "missing" error.
-    // Doing so would lead to the correct part of the MoneyField being marked
-    // with a red border instead of the complete field.
-    // This is something we can do later / when somebody asks for it.
-    //
-    // We do not use MoneyField.isTouched() as we want to ensure both fields have been touched.
-    // This avoids showing an error when the user just selected a language but didn't add
-    // an amount yet.
-    const hasAnyErrors =
-      this.props.touched &&
-      this.props.touched.amount &&
-      this.props.touched.currencyCode &&
-      hasErrors(this.props.errors);
+    // MoneyField.isTouched() ensures both fields have been touched.
+    // This avoids showing an error when the user just selected a language but
+    // didn't add an amount yet.
+    const hasError =
+      MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -148,13 +138,12 @@ class MoneyField extends React.Component {
             onBlur={this.props.onBlur}
             isDisabled={this.props.isDisabled}
             onChange={this.props.onChange}
-            hasCurrencyError={hasAnyErrors}
-            hasAmountError={hasAnyErrors}
+            hasError={hasError}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
             errors={this.props.errors}
-            isVisible={hasAnyErrors}
+            isVisible={hasError}
             renderError={this.props.renderError}
           />
         </Spacings.Stack>

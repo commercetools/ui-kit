@@ -1,28 +1,61 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Downshift from 'downshift';
-import AccessibleButton from '../../buttons/accessible-button';
+import PropTypes from 'prop-types';
 import MoneyInput from './money-input';
-import Currency from './currency';
-import Option from './option';
-import CurrencyDropdown from './currency-dropdown';
-import DropdownChevron from './dropdown-chevron';
-import styles from './money-input.mod.css';
+import { render, fireEvent } from '../../../test-utils';
 
-const createTestProps = customProps => ({
-  value: { currencyCode: 'EUR', amount: '' },
-  currencies: ['EUR', 'USD'],
-  onChange: jest.fn(),
-  onBlur: jest.fn(),
-  ...customProps,
-});
-
-const createCurrencyProps = customProps => ({
-  isDisabled: false,
-  onClick: jest.fn(),
-  currency: '€',
-  ...customProps,
-});
+// We use this component to simulate the whole flow of
+// changing a value and formatting on blur.
+class TestComponent extends React.Component {
+  state = {
+    value: this.props.value,
+  };
+  static propTypes = {
+    id: PropTypes.string,
+    value: PropTypes.shape({
+      amount: PropTypes.string,
+      currencyCode: PropTypes.string,
+    }),
+    onChange: PropTypes.func,
+  };
+  static defaultProps = {
+    id: 'some-id',
+    name: 'some-name',
+    value: {
+      currencyCode: 'EUR',
+      amount: '12.50',
+    },
+    currencies: ['EUR', 'USD'],
+  };
+  handleChange = event => {
+    if (event.target.name === 'some-name.amount') {
+      this.setState(prevState => ({
+        value: { ...prevState.value, amount: event.target.value },
+      }));
+    }
+    if (event.target.name === 'some-name.currencyCode') {
+      this.setState(prevState => ({
+        value: { ...prevState.value, currencyCode: event.target.value },
+      }));
+    }
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <label htmlFor={MoneyInput.getAmountInputId(this.props.id)}>
+          Amount
+        </label>
+        <label htmlFor={MoneyInput.getCurrencyDropdownId(this.props.id)}>
+          Currency Code
+        </label>
+        <MoneyInput
+          {...this.props}
+          onChange={this.props.onChange || this.handleChange}
+          value={this.state.value}
+        />
+      </React.Fragment>
+    );
+  }
+}
 
 describe('MoneyInput.getCurrencyDropdownId', () => {
   describe('when an id is passed', () => {
@@ -288,356 +321,107 @@ describe('MoneyInput.isHighPrecision', () => {
 
 // -----------------------------------------------------------------------------
 
-describe('rendering', () => {
-  let wrapper;
-  let props;
-  let downshiftProps;
-  let dowshiftRenderWrapper;
+describe('MoneyInput', () => {
+  it('should forward data-attributes', () => {
+    const { getByLabelText } = render(<TestComponent data-foo="bar" />);
+    expect(getByLabelText('Amount')).toHaveAttribute('data-foo', 'bar');
+  });
 
-  describe('`Currency` component', () => {
-    const currencyProps = createCurrencyProps();
-    beforeEach(() => {
-      wrapper = shallow(<Currency {...currencyProps} />);
-    });
+  it('should render a number input', () => {
+    const { getByLabelText } = render(<TestComponent />);
+    expect(getByLabelText('Amount')).toHaveAttribute('type', 'number');
+  });
 
-    it('should render an `AccessibleButton`', () => {
-      expect(wrapper).toRender(AccessibleButton);
-    });
+  it('should have an HTML name based on the passed name', () => {
+    const { getByLabelText } = render(<TestComponent name="foo" />);
+    expect(getByLabelText('Amount')).toHaveAttribute('name', 'foo.amount');
+  });
 
-    it('should render selected currency symbol', () => {
-      expect(wrapper.find('TextDetail')).toHaveProp('children', '€');
+  it('should show the passed value', () => {
+    const { getByLabelText } = render(
+      <TestComponent value={{ amount: '20', currencyCode: 'EUR' }} />
+    );
+    expect(getByLabelText('Amount')).toHaveAttribute('value', '20');
+    expect(getByLabelText('Currency Code')).toHaveTextContent('EUR');
+  });
+
+  it('should allow changing the amount', () => {
+    const onChange = jest.fn();
+    const { getByLabelText } = render(<TestComponent onChange={onChange} />);
+
+    const event = { target: { value: '12' } };
+    fireEvent.change(getByLabelText('Amount'), event);
+
+    // onChange should be called with the updated amount
+    expect(onChange).toHaveBeenCalledWith({
+      persist: expect.any(Function),
+      target: {
+        name: 'some-name.amount',
+        value: '12',
+      },
     });
   });
 
-  describe('currency field', () => {
-    describe('dropdown head', () => {
-      beforeEach(() => {
-        props = createTestProps();
-        wrapper = shallow(<MoneyInput {...props} />);
-        downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-        dowshiftRenderWrapper = wrapper
-          .find(CurrencyDropdown)
-          .shallow()
-          .find(Downshift)
-          .renderProp('children', downshiftProps);
-      });
+  it('should allow changing the currency', () => {
+    const onChange = jest.fn();
 
-      it('should render `Currency`', () => {
-        expect(dowshiftRenderWrapper).toRender(Currency);
-      });
+    // We add labels here to be able to find the elements by their id and to
+    // ensure the MoneyInput is usable in forms which use labels
+    const { getByLabelText } = render(<TestComponent onChange={onChange} />);
 
-      describe('when currency is selectable', () => {
-        it('should render a chevron', () => {
-          expect(dowshiftRenderWrapper).toRender(DropdownChevron);
-        });
-      });
+    // open
+    fireEvent.click(getByLabelText('Currency Code'));
 
-      describe('with states', () => {
-        describe('open', () => {
-          beforeEach(() => {
-            props = createTestProps();
-            wrapper = shallow(<MoneyInput {...props} />);
-            downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = wrapper
-              .find(CurrencyDropdown)
-              .shallow()
-              .find(Downshift)
-              .renderProp('children', downshiftProps);
-          });
+    // change currency to USD
+    fireEvent.click(document.querySelector('[aria-label="USD"]'));
 
-          it('should have opened styles', () => {
-            expect(dowshiftRenderWrapper).toRender({
-              className: styles['currency-active'],
-            });
-          });
-        });
-
-        describe('disabled', () => {
-          beforeEach(() => {
-            props = createTestProps({
-              isDisabled: true,
-            });
-            wrapper = shallow(<MoneyInput {...props} />);
-            downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = wrapper
-              .find(CurrencyDropdown)
-              .shallow()
-              .find(Downshift)
-              .renderProp('children', downshiftProps);
-          });
-
-          it('should have disabled styles', () => {
-            expect(dowshiftRenderWrapper).toRender({
-              className: styles['currency-disabled'],
-            });
-          });
-        });
-
-        describe('error', () => {
-          beforeEach(() => {
-            props = createTestProps({
-              hasCurrencyError: true,
-            });
-            wrapper = shallow(<MoneyInput {...props} />);
-            downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = wrapper
-              .find(CurrencyDropdown)
-              .shallow()
-              .find(Downshift)
-              .renderProp('children', downshiftProps);
-          });
-
-          it('should have error styles', () => {
-            expect(dowshiftRenderWrapper).toRender({
-              className: styles['currency-error'],
-            });
-          });
-        });
-
-        describe('warning', () => {
-          beforeEach(() => {
-            props = createTestProps({
-              hasCurrencyWarning: true,
-            });
-            wrapper = shallow(<MoneyInput {...props} />);
-            downshiftProps = { isOpen: false, toggleMenu: jest.fn() };
-            dowshiftRenderWrapper = wrapper
-              .find(CurrencyDropdown)
-              .shallow()
-              .find(Downshift)
-              .renderProp('children', downshiftProps);
-          });
-
-          it('should have error styles', () => {
-            expect(dowshiftRenderWrapper).toRender({
-              className: styles['currency-warning'],
-            });
-          });
-        });
-      });
+    // onChange should be called when changing the currency
+    expect(onChange).toHaveBeenCalledWith({
+      persist: expect.any(Function),
+      target: {
+        name: 'some-name.currencyCode',
+        value: 'USD',
+      },
     });
 
-    describe('dropdown options', () => {
-      let options;
-      beforeEach(() => {
-        props = createTestProps();
-        wrapper = shallow(<MoneyInput {...props} />);
-        downshiftProps = { isOpen: true, toggleMenu: jest.fn() };
-        dowshiftRenderWrapper = wrapper
-          .find(CurrencyDropdown)
-          .shallow()
-          .find(Downshift)
-          .renderProp('children', downshiftProps);
-        options = dowshiftRenderWrapper.find('Option');
-      });
-
-      it('should render options', () => {
-        expect(dowshiftRenderWrapper).toRender('.currency-active');
-      });
-
-      it('should render as many options as currencies', () => {
-        expect(options).toHaveLength(2);
-      });
-    });
+    // the amount input should have focus after changing the currency
+    expect(getByLabelText('Amount')).toHaveFocus();
   });
 
-  describe('centAmount field', () => {
-    let centAmountField;
-    beforeEach(() => {
-      props = createTestProps();
-      wrapper = shallow(<MoneyInput {...props} />);
-      centAmountField = wrapper.find('input');
-    });
+  it('should format the amount on blur', () => {
+    const { getByLabelText } = render(<TestComponent />);
 
-    it('should render a `input`', () => {
-      expect(wrapper).toRender('input');
-    });
+    // change amount
+    fireEvent.change(getByLabelText('Amount'), { target: { value: '12' } });
 
-    describe('with states', () => {
-      describe('disabled', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            isDisabled: true,
-          });
-          wrapper = shallow(<MoneyInput {...props} />);
-          centAmountField = wrapper.find('input');
-        });
+    // blur amount
+    fireEvent.blur(getByLabelText('Amount'));
 
-        it('should have disabled styles', () => {
-          expect(centAmountField).toRender({
-            className: styles['amount-disabled'],
-          });
-        });
-      });
-
-      describe('error', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            hasAmountError: true,
-          });
-          wrapper = shallow(<MoneyInput {...props} />);
-          centAmountField = wrapper.find('input');
-        });
-
-        it('should have error styles', () => {
-          expect(centAmountField).toRender({
-            className: styles['amount-error'],
-          });
-        });
-      });
-
-      describe('warning', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            hasAmountWarning: true,
-          });
-          wrapper = shallow(<MoneyInput {...props} />);
-          centAmountField = wrapper.find('input');
-        });
-
-        it('should have warning styles', () => {
-          expect(centAmountField).toRender({
-            className: styles['amount-warning'],
-          });
-        });
-      });
-    });
-  });
-});
-
-describe('callbacks', () => {
-  let wrapper;
-  let props;
-  let dowshiftRenderWrapper;
-  let inputWrapper;
-  describe('currency field', () => {
-    describe('when selecting the already used currency', () => {
-      beforeEach(() => {
-        props = createTestProps();
-        wrapper = shallow(<MoneyInput {...props} />);
-
-        dowshiftRenderWrapper = wrapper
-          .find(CurrencyDropdown)
-          .dive()
-          .renderProp('children', { isOpen: true, toggleMenu: jest.fn() });
-
-        dowshiftRenderWrapper
-          .find(Option)
-          // click the currency which is already selected
-          .findWhere(item => item.prop('children') === props.value.currencyCode)
-          .prop('onClick')({ target: { value: '12' } });
-      });
-
-      it('should not call onChange', () => {
-        expect(props.onChange).not.toHaveBeenCalled();
-      });
-    });
-    describe('when changing currency', () => {
-      beforeEach(() => {
-        props = createTestProps({ name: 'foo' });
-        wrapper = shallow(<MoneyInput {...props} />);
-
-        dowshiftRenderWrapper = wrapper
-          .find(CurrencyDropdown)
-          .dive()
-          .renderProp('children', { isOpen: true, toggleMenu: jest.fn() });
-
-        dowshiftRenderWrapper
-          .find(Option)
-          // clicking the already selected one (EUR) won't trigger an action,
-          // so we click the second one (USD)
-          .findWhere(item => item.prop('children') === 'USD')
-          .prop('onClick')({ target: { value: '12' } });
-      });
-
-      it('should call onChange with an event', async () => {
-        // wait for onChange call which happens in setTimeout(fn ,0)
-        // This can be removed once the setTimeout workarounds are
-        // removed from money-input.
-        await new Promise(resolve => setTimeout(resolve, 1));
-        expect(props.onChange).toHaveBeenCalledWith(
-          expect.objectContaining({
-            persist: expect.any(Function),
-            target: expect.objectContaining({
-              name: `foo.currencyCode`,
-              value: 'USD',
-            }),
-          })
-        );
-      });
-    });
+    // input should have the formatted value after blurring
+    expect(getByLabelText('Amount')).toHaveAttribute('value', '12.00');
   });
 
-  describe('amount field', () => {
-    describe('when changing amount', () => {
-      beforeEach(() => {
-        props = createTestProps({ name: 'foo' });
-        wrapper = shallow(<MoneyInput {...props} />);
+  // The original currency (EUR) uses 2 fraction digits, whereas the
+  // next currency (KWD) uses 3 fraction digits.
+  // We expect the last fraction to get added when changing the value
+  it('should format the amount when the currency changes', async () => {
+    const { getByLabelText } = render(
+      <TestComponent
+        currencies={['EUR', 'KWD']}
+        value={{ currencyCode: 'EUR', amount: '12.50' }}
+      />
+    );
 
-        inputWrapper = wrapper.find('input');
-        inputWrapper.simulate('change', {
-          target: { name: 'foo.amount', value: '1.3' },
-        });
-      });
-      it('should call onChange', () => {
-        expect(props.onChange).toHaveBeenCalledWith(
-          expect.objectContaining({
-            persist: expect.any(Function),
-            target: expect.objectContaining({
-              name: `foo.amount`,
-              value: '1.3',
-            }),
-          })
-        );
-      });
-    });
-    describe('when input loses focus', () => {
-      describe('when value is not formatted', () => {
-        const event = {};
-        beforeEach(() => {
-          props = createTestProps({
-            name: 'foo',
-            value: { currencyCode: 'EUR', amount: '10.3' },
-            onBlur: jest.fn(),
-          });
-          wrapper = shallow(<MoneyInput {...props} />);
-          wrapper.find('input').prop('onBlur')(event);
-        });
+    // change currency
+    fireEvent.click(getByLabelText('Currency Code'));
 
-        it('should call onChange with the formatted value', () => {
-          expect(props.onChange).toHaveBeenCalledWith(
-            expect.objectContaining({
-              persist: expect.any(Function),
-              target: expect.objectContaining({
-                name: `foo.amount`,
-                value: '10.30',
-              }),
-            })
-          );
-        });
+    // change currency to KWD
+    fireEvent.click(document.querySelector('[aria-label="KWD"]'));
 
-        it('should call onBlur with an event', () => {
-          expect(props.onBlur).toHaveBeenCalledWith(event);
-        });
-      });
-      describe('when value is already formatted', () => {
-        const event = {};
-        beforeEach(() => {
-          props = createTestProps({
-            value: { currencyCode: 'EUR', amount: '10.15' },
-            onBlur: jest.fn(),
-          });
-          wrapper = shallow(<MoneyInput {...props} />);
-          wrapper.find('input').prop('onBlur')(event);
-        });
+    expect(getByLabelText('Currency Code')).toHaveTextContent('KWD');
 
-        it('should call onBlur with an event', () => {
-          expect(props.onBlur).toHaveBeenCalledWith(event);
-        });
-        it('should not call onChange', () => {
-          expect(props.onChange).not.toHaveBeenCalled();
-        });
-      });
-    });
+    // We can't use .toHaveAttribute('value', ' 12.500') as the attribute
+    // itself does not change in the DOM tree. Only the actual value changes.
+    expect(getByLabelText('Amount').value).toEqual('12.500');
   });
 });

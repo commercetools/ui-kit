@@ -114,8 +114,7 @@ describe('rendering', () => {
       expect(moneyInput).toHaveProp('onBlur', props.onBlur);
       expect(moneyInput).toHaveProp('isDisabled', props.isDisabled);
       expect(moneyInput).toHaveProp('placeholder', props.placeholder);
-      expect(moneyInput).toHaveProp('hasAmountError', true);
-      expect(moneyInput).toHaveProp('hasCurrencyError', true);
+      expect(moneyInput).toHaveProp('hasError', true);
 
       expect(wrapper).toRender(FieldErrors);
       expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
@@ -145,7 +144,7 @@ describe('rendering', () => {
       wrapper = shallow(<MoneyField {...props} />);
     });
     it('should mark the MoneyInput as erroneous', () => {
-      expect(wrapper.find(MoneyInput)).toHaveProp('hasAmountError', true);
+      expect(wrapper.find(MoneyInput)).toHaveProp('hasError', true);
     });
     it('should render the known error', () => {
       expect(wrapper).toRender(FieldErrors);
@@ -164,7 +163,7 @@ describe('rendering', () => {
       wrapper = shallow(<MoneyField {...props} />);
     });
     it('should mark the NumberInput as erroneous', () => {
-      expect(wrapper.find(MoneyInput)).toHaveProp('hasAmountError', true);
+      expect(wrapper.find(MoneyInput)).toHaveProp('hasError', true);
     });
     it('should forward the error', () => {
       expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);

@@ -147,8 +147,8 @@ const getAmountAsNumberFromMoneyValue = money =>
 
 const getAmountStyles = props => {
   if (props.isDisabled) return styles['amount-disabled'];
-  if (props.hasAmountError) return styles['amount-error'];
-  if (props.hasAmountWarning) return styles['amount-warning'];
+  if (props.hasError) return styles['amount-error'];
+  if (props.hasWarning) return styles['amount-warning'];
 
   return styles['amount-default'];
 };
@@ -218,7 +218,8 @@ export default class MoneyInput extends React.Component {
     return moneyValue && moneyValue.type === 'highPrecision';
   };
 
-  static isTouched = touched => touched && Object.values(touched).some(Boolean);
+  static isTouched = touched =>
+    Boolean(touched && touched.currencyCode && touched.amount);
 
   static propTypes = {
     id: PropTypes.string,
@@ -232,10 +233,8 @@ export default class MoneyInput extends React.Component {
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
-    hasCurrencyError: PropTypes.bool,
-    hasCurrencyWarning: PropTypes.bool,
-    hasAmountError: PropTypes.bool,
-    hasAmountWarning: PropTypes.bool,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
 
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   };
@@ -284,6 +283,7 @@ export default class MoneyInput extends React.Component {
       }
     }
     toggleMenu();
+    this.amountInputRef.current.focus();
   };
 
   handleAmountChange = event => {
@@ -301,7 +301,7 @@ export default class MoneyInput extends React.Component {
     this.props.onChange(fakeEvent);
   };
 
-  handleBlur = event => {
+  handleAmountBlur = () => {
     const amount = this.props.value.amount.trim();
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
@@ -326,13 +326,39 @@ export default class MoneyInput extends React.Component {
         this.props.onChange(fakeEvent);
       }
     }
-    if (this.props.onBlur) this.props.onBlur(event);
   };
+
+  containerRef = React.createRef();
+  amountInputRef = React.createRef();
 
   render() {
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div className={styles['field-container']}>
+        <div
+          ref={this.containerRef}
+          className={styles['field-container']}
+          onBlur={event => {
+            // ensures that both fields are marked as touched when one of them
+            // is blurred
+            if (
+              typeof this.props.onBlur === 'function' &&
+              !this.containerRef.current.contains(event.relatedTarget)
+            ) {
+              this.props.onBlur({
+                target: {
+                  id: MoneyInput.getCurrencyDropdownId(this.props.id),
+                  name: getCurrencyDropdownName(this.props.name),
+                },
+              });
+              this.props.onBlur({
+                target: {
+                  id: MoneyInput.getAmountInputId(this.props.id),
+                  name: getAmountInputName(this.props.name),
+                },
+              });
+            }
+          }}
+        >
           {this.props.currencies.length > 0 ? (
             <CurrencyDropdown
               id={MoneyInput.getCurrencyDropdownId(this.props.id)}
@@ -340,10 +366,9 @@ export default class MoneyInput extends React.Component {
               currencies={this.props.currencies}
               currencyCode={this.props.value.currencyCode}
               onChange={this.handleCurrencyChange}
-              onBlur={this.props.onBlur}
               isDisabled={this.props.isDisabled}
-              hasCurrencyError={this.props.hasCurrencyError}
-              hasCurrencyWarning={this.props.hasCurrencyWarning}
+              hasError={this.props.hasError}
+              hasWarning={this.props.hasWarning}
             />
           ) : (
             <div className={styles['currency-label']}>
@@ -357,18 +382,19 @@ export default class MoneyInput extends React.Component {
             </div>
           )}
           <input
+            ref={this.amountInputRef}
             id={MoneyInput.getAmountInputId(this.props.id)}
             name={getAmountInputName(this.props.name)}
             type="number"
             value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
-              hasAmountError: this.props.hasAmountError,
-              hasAmountWarning: this.props.hasAmountWarning,
+              hasError: this.props.hasError,
+              hasWarning: this.props.hasWarning,
             })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
-            onBlur={this.handleBlur}
+            onBlur={this.handleAmountBlur}
             disabled={this.props.isDisabled}
             {...filterDataAttributes(this.props)}
           />

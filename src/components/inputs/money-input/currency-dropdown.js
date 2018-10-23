@@ -6,24 +6,25 @@ import styles from './money-input.mod.css';
 import Currency from './currency';
 import Option from './option';
 import DropdownChevron from './dropdown-chevron';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const getCurrencyDropdownSelectStyles = ({
   isDisabled,
-  hasCurrencyError,
-  hasCurrencyWarning,
+  hasError,
+  hasWarning,
   isOpen,
 }) => {
   if (isDisabled) return styles['currency-disabled'];
-  if (hasCurrencyError) return styles['currency-error'];
-  if (hasCurrencyWarning) return styles['currency-warning'];
+  if (hasError) return styles['currency-error'];
+  if (hasWarning) return styles['currency-warning'];
   if (isOpen) return styles['currency-active'];
 
   return styles['currency-default'];
 };
 
 const getCurrencyDropdownOptionsStyles = props => {
-  if (props.hasCurrencyError) return styles['options-wrapper-error'];
-  if (props.hasCurrencyWarning) return styles['options-wrapper-warning'];
+  if (props.hasError) return styles['options-wrapper-error'];
+  if (props.hasWarning) return styles['options-wrapper-warning'];
 
   return styles['options-wrapper-active'];
 };
@@ -34,10 +35,11 @@ const CurrencyDropdown = props => (
       <div
         className={getCurrencyDropdownSelectStyles({
           isDisabled: props.isDisabled,
-          hasCurrencyError: props.hasCurrencyError,
-          hasCurrencyWarning: props.hasCurrencyWarning,
+          hasError: props.hasError,
+          hasWarning: props.hasWarning,
           isOpen,
         })}
+        {...filterDataAttributes(props)}
       >
         <div className={styles.languagesDropdown} onClick={toggleMenu}>
           <Spacings.Inline scale="xs" alignItems="center">
@@ -45,8 +47,8 @@ const CurrencyDropdown = props => (
               id={props.id}
               isDropdown={true}
               isDisabled={props.isDisabled}
-              hasError={props.hasCurrencyError}
-              hasWarning={props.hasCurrencyWarning}
+              hasError={props.hasError}
+              hasWarning={props.hasWarning}
               currency={props.currencyCode}
             />
             {props.currencies.length > 0 && (
@@ -58,8 +60,8 @@ const CurrencyDropdown = props => (
           props.currencies.length > 0 && (
             <div
               className={getCurrencyDropdownOptionsStyles({
-                hasCurrencyError: props.hasCurrencyError,
-                hasCurrencyWarning: props.hasCurrencyWarning,
+                hasError: props.hasError,
+                hasWarning: props.hasWarning,
               })}
             >
               {props.currencies.map(currencyCode => (
@@ -90,8 +92,8 @@ CurrencyDropdown.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   currencyCode: PropTypes.string,
   isDisabled: PropTypes.bool,
-  hasCurrencyError: PropTypes.bool,
-  hasCurrencyWarning: PropTypes.bool,
+  hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
   name: PropTypes.string,

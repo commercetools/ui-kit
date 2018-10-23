@@ -385,6 +385,7 @@ class ProductForm extends React.Component {
             value={this.props.formik.values.description}
             onChange={this.props.formik.handleChange}
             onBlur={this.props.formik.handleBlur}
+            isDisabled={this.props.formik.isSubmitting}
             hasError={
               this.props.formik.touched.description &&
               Boolean(this.props.formik.errors.description)
@@ -435,6 +436,7 @@ class ProductForm extends React.Component {
             value={this.props.formik.values.inventory}
             onChange={this.props.formik.handleChange}
             onBlur={this.props.formik.handleBlur}
+            isDisabled={this.props.formik.isSubmitting}
             hasError={
               this.props.formik.touched.inventory &&
               Boolean(this.props.formik.errors.inventory)
@@ -465,20 +467,17 @@ class ProductForm extends React.Component {
             onBlur={this.props.formik.handleBlur}
             currencies={currencies}
             isDisabled={this.props.formik.isSubmitting}
-            hasAmountError={Boolean(
-              this.props.formik.touched.price &&
-                this.props.formik.touched.price.amount &&
-                this.props.formik.errors.price
-            )}
+            hasError={
+              MoneyInput.isTouched(this.props.formik.touched.price) &&
+              Boolean(this.props.formik.errors.price)
+            }
           />
           {MoneyInput.isTouched(this.props.formik.touched.price) &&
-            this.props.formik.errors.price &&
-            this.props.formik.errors.price.missing && (
+            this.props.formik.errors.price?.missing && (
               <ErrorMessage>Missing price</ErrorMessage>
             )}
           {MoneyInput.isTouched(this.props.formik.touched.price) &&
-            this.props.formik.errors.price &&
-            this.props.formik.errors.price.unsupportedHighPrecision && (
+            this.props.formik.errors.price?.unsupportedHighPrecision && (
               <ErrorMessage>
                 This value is a high precision value. High precision pricing is
                 not supported for products.

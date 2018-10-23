@@ -65,10 +65,8 @@ class MoneyInputStory extends React.Component {
                 this.setState({ currencyCode: event.target.value });
               }
             }}
-            hasCurrencyError={boolean('hasCurrencyError', false)}
-            hasCurrencyWarning={boolean('hasCurrencyWarning', false)}
-            hasAmountError={boolean('hasAmountError', false)}
-            hasAmountWarning={boolean('hasAmountWarning', false)}
+            hasError={boolean('hasError', false)}
+            hasWarning={boolean('hasWarning', false)}
             horizontalConstraint={select(
               'horizontalConstraint',
               ['s', 'm', 'l', 'xl', 'scale'],
