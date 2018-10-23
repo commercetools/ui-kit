@@ -23,47 +23,11 @@
   --color-purple: #b866ff;
   --color-black: #1a1a1a;
   --color-white: #fff;
-  --token-background-color-input-pristine: #fff;
-  --token-background-color-input-disabled: hsl(195, 35.2941176471%, 98%);
-  --token-background-color-input-hover: hsl(0, 0%, 90%);
-  --token-background-color-input-selected: hsl(195, 35.2941176471%, 95%);
-  --token-background-color-tag-pristine: hsl(0, 0%, 95%);
-  --token-background-color-tag-warning: hsl(
-    25.110132158590307,
-    89.0196078431%,
-    95%
-  );
-  --token-background-color-tag-disabled: hsl(0, 0%, 95%);
-  --token-background-color-tag-normal-hover: hsl(0, 0%, 60%);
-  --token-background-color-tag-warning-hover: #f16d0e;
   --border-radius-1: 1px;
   --border-radius-2: 2px;
   --border-radius-4: 4px;
   --border-radius-6: 6px;
   --border-radius-20: 20px;
-  --token-border-color-input-pristine: hsl(0, 0%, 60%);
-  --token-border-color-input-focus: #00b39e;
-  --token-border-color-input-disabled: #ccc;
-  --token-border-color-input-readonly: #ccc;
-  --token-border-color-input-error: #e60050;
-  --token-border-color-input-warning: #f16d0e;
-  --token-border-radius-input: 6px;
-  --token-border-color-tag-pristine: hsl(0, 0%, 60%);
-  --token-border-color-tag-warning: #f16d0e;
-  --token-border-color-tag-focus: #00b39e;
-  --token-border-color-tag-warning-hover: #f16d0e;
-  --token-border-radius-tag: 2px;
-  --token-border-color-separator: #ccc;
-  --token-font-family-default: 'Open Sans', sans-serif;
-  --token-font-color-default: #1a1a1a;
-  --token-font-color-disabled: hsl(0, 0%, 60%);
-  --token-font-color-error: #e60050;
-  --token-font-color-success: #00b39e;
-  --token-font-color-warning: #f16d0e;
-  --token-font-color-readonly: hsl(0, 0%, 60%);
-  --token-font-color-placeholder: hsl(0, 0%, 60%);
-  --token-font-size-default: 13px;
-  --token-font-size-small: 12px;
   --shadow-1-first: 0 1px 3px rgba(0, 0, 0, 0.12);
   --shadow-1-second: 0 1px 2px rgba(0, 0, 0, 0.24);
   --shadow-2-first: 0 3px 6px rgba(0, 0, 0, 0.16);
@@ -90,10 +54,6 @@
   --shadow-14-first: 0 0 0.5px rgba(0, 0, 0, 0.1);
   --shadow-15-first: 0 2px 2px rgba(0, 0, 0, 0.24);
   --shadow-15-second: 0 1px 4.75px rgba(0, 0, 0, 0.12);
-  --token-shadow-box-tag-hover: 0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24);
-  --token-size-height-input: 32px;
-  --token-size-height-tag: 26px;
   --big-button-height: 32px;
   --small-button-height: 24px;
   --standard-input-height: 32px;
@@ -108,6 +68,46 @@
   --spacing-16: 16px;
   --spacing-24: 24px;
   --spacing-32: 32px;
+  --token-background-color-input-pristine: #fff;
+  --token-background-color-input-disabled: hsl(195, 35.2941176471%, 98%);
+  --token-background-color-input-hover: hsl(0, 0%, 90%);
+  --token-background-color-input-selected: hsl(195, 35.2941176471%, 95%);
+  --token-background-color-tag-pristine: hsl(0, 0%, 95%);
+  --token-background-color-tag-warning: hsl(
+    25.110132158590307,
+    89.0196078431%,
+    95%
+  );
+  --token-background-color-tag-disabled: hsl(0, 0%, 95%);
+  --token-background-color-tag-normal-hover: hsl(0, 0%, 60%);
+  --token-background-color-tag-warning-hover: #f16d0e;
+  --token-border-color-input-pristine: hsl(0, 0%, 60%);
+  --token-border-color-input-focus: #00b39e;
+  --token-border-color-input-disabled: #ccc;
+  --token-border-color-input-readonly: #ccc;
+  --token-border-color-input-error: #e60050;
+  --token-border-color-input-warning: #f16d0e;
+  --token-border-radius-input: 6px;
+  --token-border-color-tag-pristine: hsl(0, 0%, 60%);
+  --token-border-color-tag-warning: #f16d0e;
+  --token-border-color-tag-focus: #00b39e;
+  --token-border-color-tag-warning-hover: #f16d0e;
+  --token-border-radius-tag: 2px;
+  --token-border-color-separator: #ccc;
+  --token-font-family-default: 'Open Sans', sans-serif;
+  --token-font-color-default: #1a1a1a;
+  --token-font-color-disabled: hsl(0, 0%, 60%);
+  --token-font-color-error: #e60050;
+  --token-font-color-success: #00b39e;
+  --token-font-color-warning: #f16d0e;
+  --token-font-color-readonly: hsl(0, 0%, 60%);
+  --token-font-color-placeholder: hsl(0, 0%, 60%);
+  --token-font-size-default: 13px;
+  --token-font-size-small: 12px;
+  --token-shadow-box-tag-hover: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  --token-size-height-input: 32px;
+  --token-size-height-tag: 26px;
   --transition-linear-80ms: 80ms linear;
   --transition-easeinout-150ms: 150ms ease-in-out;
   --transition-standard: all 0.2s ease;

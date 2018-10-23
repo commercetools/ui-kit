@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'react-emotion';
 import { flatMap } from 'lodash';
-import { Text } from '../../src';
+import { Text } from '../../../src';
 import shadowGroups from './decisions/base-shadows.json';
 
 const Background = styled.div`

@@ -9,10 +9,10 @@ const postcssCustomProperties = require('postcss-custom-properties');
 const cssvariables = require('postcss-css-variables');
 const postcssImport = require('postcss-import');
 
-const exportPath = path.join(__dirname, '../materials/exports/vars');
-const importPath = path.join(__dirname, '../materials/index.css');
+const exportPath = path.join(__dirname, '../materials/materials');
+const importPath = path.join(__dirname, '../materials/internals/index.css');
 
-const css = fs.readFileSync('materials/index.css', 'utf8');
+const css = fs.readFileSync(importPath, 'utf8');
 
 postcss([
   postcssImport(),
