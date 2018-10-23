@@ -25,46 +25,36 @@ import {
 
 #### Importing CSS modules
 
-When you are developing your application using the UI Kit components, chances you want to use the same design tokens as our design sytem. We provide them thorugh **CSS variables**.
-We expose those variables from different files (e.g. `colors.mod.css`, `spacings.mod.css`) from the `@commercetools-frontend/ui-kit/materials` folder.
+When you are developing your application using the UI Kit components, chances you want to use the same design tokens as our design system. We provide them through both **CSS variables** and **JavaScript variables**.
+
+We expose the **CSS variables** from the `@commercetools-frontend/ui-kit/materials.css` file. This file can be used either like
 
 ```css
-@import '@commercetools-frontend/ui-kit/materials/spacings.mod.css';
+@import '@commercetools-frontend/ui-kit/materials.css';
 
 .container {
   padding: var(--spacing-8);
 }
 ```
 
-Assuming that you are using [Webpack][webpack] to bundle your application, you might need to include the location to the `materials` folder in your [Webpack loaders](https://webpack.js.org/concepts/loaders/).
+or can be used in along with [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties) like
 
 ```js
-// webpack.config.js
-{
-  module: {
-    rules: [
-      {
-        test: /\.mod\.css$/,
-        include: [
-          path.resolve(__dirname, 'src'),
-          // 👇 Include the materials folder to allow `postcss` to transpile those files as well
-          path.resolve(
-            require.resolve('@commercetools-frontend/ui-kit'),
-            '../../materials'
-          ),
-
-          // or `path.resolve(__dirname, 'node_modules/@commercetools-frontend/ui-kit/materials')`
-        ],
-        use: [
-          // postcss loaders
-        ],
-      },
-    ];
-  }
-}
+  postcssCustomProperties({
+    preserve: false,
+    importFrom: '@commercetools-frontend/ui-kit/materials.css',
+  }),
 ```
 
-> Please look into the package itself to inspect which variables are available (_documentation will be provided in the future_).
+You can also access the JavaScript variables like this
+
+```js
+import { customProperties } from @commercetools-frontend/ui-kit/materials/materials
+
+const green = customProperties['--color-green'];
+```
+
+> Please look at the file itself to inspect which variables are available (_documentation will be provided in the future_).
 
 #### Importing SVG images
 
