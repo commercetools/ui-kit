@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import Text from '../../typography/text';
 import Inset from '../inset';
 import Inline from './inline';

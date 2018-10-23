@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { Text } from '../../src';
 import isVariation from '../../src/utils/is-variation';
 import colorGroups from './decisions/base-colors.json';
