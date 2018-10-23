@@ -19,21 +19,6 @@ import pkg from './package.json';
 
 const babelOptions = require('./scripts/get-babel-preset');
 
-const materialSources = [
-  'materials/borders.mod.css',
-  'materials/colors/base-colors.mod.css',
-  'materials/shadows/base-shadows.mod.css',
-  'materials/sizes.mod.css',
-  'materials/spacings.mod.css',
-  // tokens
-  'materials/tokens/backgrounds.mod.css',
-  'materials/tokens/borders.mod.css',
-  'materials/tokens/fonts.mod.css',
-  'materials/tokens/shadows.mod.css',
-  'materials/tokens/sizes.mod.css',
-  'materials/transitions.mod.css',
-];
-
 // Inspired by https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.prod.js
 const browserslist = {
   production: [
@@ -61,7 +46,7 @@ const postcssPlugins = [
   postcssDiscardComments(),
   postcssCustomProperties({
     preserve: false,
-    importFrom: materialSources,
+    importFrom: 'materials/custom-properties.css',
   }),
   postcssReporter(),
 ];

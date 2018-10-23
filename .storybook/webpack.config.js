@@ -6,21 +6,6 @@ const postcssCustomProperties = require('postcss-custom-properties');
 const postcssCustomMediaQueries = require('postcss-custom-media');
 const postcssPostcssColorModFunction = require('postcss-color-mod-function');
 
-const materialSources = [
-  'materials/borders.mod.css',
-  'materials/colors/base-colors.mod.css',
-  'materials/shadows/base-shadows.mod.css',
-  'materials/sizes.mod.css',
-  'materials/spacings.mod.css',
-  // tokens
-  'materials/tokens/backgrounds.mod.css',
-  'materials/tokens/borders.mod.css',
-  'materials/tokens/fonts.mod.css',
-  'materials/tokens/shadows.mod.css',
-  'materials/tokens/sizes.mod.css',
-  'materials/transitions.mod.css',
-];
-
 const browserslist = {
   development: ['chrome', 'firefox'].map(
     browser => `last 2 ${browser} versions`
@@ -123,7 +108,7 @@ module.exports = (storybookBaseConfig, configType) => {
               }),
               postcssCustomProperties({
                 preserve: false,
-                importFrom: materialSources,
+                importFrom: 'materials/custom-properties.css',
               }),
               postcssCustomMediaQueries(),
               postcssPostcssColorModFunction(),
@@ -163,7 +148,7 @@ module.exports = (storybookBaseConfig, configType) => {
                   }),
                   postcssCustomProperties({
                     preserve: false,
-                    importFrom: materialSources,
+                    importFrom: 'materials/custom-properties.css',
                   }),
                   postcssCustomMediaQueries(),
                   postcssPostcssColorModFunction(),

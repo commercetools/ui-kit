@@ -81,4 +81,6 @@ export { default as Text } from './components/typography/text';
 export { default as withMouseDownState } from './hocs/with-mouse-down-state';
 export { default as withMouseOverState } from './hocs/with-mouse-over-state';
 
+export * as customProperties from '../materials/custom-properties.json'
+
 export { i18n };

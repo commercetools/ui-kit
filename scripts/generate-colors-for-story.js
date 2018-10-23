@@ -5,17 +5,17 @@ const isVariation = require('../src/utils/is-variation');
 
 const importPath = path.join(
   __dirname,
-  '../materials/colors/base-colors.mod.css'
+  '../materials/internals/colors/base-colors.mod.css'
 );
 const exportPath = path.join(
   __dirname,
-  '../materials/colors/colors-for-story.mod.css'
+  '../materials/internals/colors/colors-for-story.mod.css'
 );
 const loadedFile = fs.readFileSync(importPath, 'utf8');
 const fileToBeTransformed = css.parse(loadedFile);
 
 // Path where decision file is located, for documentation purposes only
-const originalPath = 'materials/colors/decisions/base-colors.json';
+const originalPath = 'materials/internals/colors/decisions/base-colors.json';
 
 // Gets all declarations inside the `:root` selector from fileToBeTransformed
 const rootRulesFromFileToBeTransformed = fileToBeTransformed.stylesheet.rules.find(
