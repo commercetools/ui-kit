@@ -10,7 +10,7 @@ const cssvariables = require('postcss-css-variables');
 const postcssImport = require('postcss-import');
 
 const relativePath = path.join(__dirname, '../materials/internals');
-const exportPath = path.join(__dirname, '../materials/materials');
+const exportPath = path.join(__dirname, '../materials');
 const importPath = path.join(__dirname, '../materials/internals/index.css');
 
 const css = fs.readFileSync(importPath, 'utf8');
@@ -32,22 +32,22 @@ postcss([
   // to export variables to css and js files
   postcssCustomProperties({
     preserve: false,
-    exportTo: [`${exportPath}.css`, `${exportPath}.js`],
+    exportTo: [`${exportPath}/imports.css`, `${exportPath}/imports.js`],
   }),
 ])
   .process(css, { from: importPath })
   .then(
     () => {
       const prettierConfig = rcfile('prettier');
-      const exportedJs = fs.readFileSync(`${exportPath}.js`, 'utf8');
-      const exportedCss = fs.readFileSync(`${exportPath}.css`, 'utf8');
+      const exportedJs = fs.readFileSync(`${exportPath}/imports.js`, 'utf8');
+      const exportedCss = fs.readFileSync(`${exportPath}/imports.css`, 'utf8');
       // format the files with prettier
       fs.writeFileSync(
-        `${exportPath}.js`,
+        `${exportPath}/imports.js`,
         prettier.format(`${commentDoNotModify}${exportedJs}`, prettierConfig)
       );
       fs.writeFileSync(
-        `${exportPath}.css`,
+        `${exportPath}/imports.css`,
         prettier.format(`${commentDoNotModify}${exportedCss}`, {
           ...prettierConfig,
           parser: 'scss',
