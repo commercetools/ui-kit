@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import invariant from 'tiny-invariant';
-import { keyframes } from 'emotion';
+import { keyframes } from 'react-emotion';
 import Collapsible from '../collapsible';
 
 const createOpeningAnimation = height =>

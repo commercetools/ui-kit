@@ -110,7 +110,6 @@
     "cross-env": "5.2.0",
     "css": "2.2.4",
     "css-loader": "1.0.0",
-    "emotion": "9.2.12",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "enzyme-to-json": "3.3.4",
@@ -195,7 +194,6 @@
     "webpack": "4.21.0"
   },
   "peerDependencies": {
-    "emotion": "^9.1.2",
     "flatpickr": ">4.5.0",
     "moment": ">2.2",
     "moment-timezone": "^0.5",
