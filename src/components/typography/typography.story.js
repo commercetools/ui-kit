@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
