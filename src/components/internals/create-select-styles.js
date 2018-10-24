@@ -161,7 +161,7 @@ const multiValueRemoveStyles = () => base => ({
 const groupStyles = () => base => ({
   ...base,
   padding: 0,
-  '&:not(:first-child)': {
+  '&:not(:firstChild)': {
     borderTop: `1px ${vars['--token-border-color-separator']} solid`,
   },
 });
