@@ -338,11 +338,11 @@ describe('MoneyInput', () => {
   });
 
   it('should show the passed value', () => {
-    const { getByLabelText } = render(
+    const { getByLabelText, getByTestId } = render(
       <TestComponent value={{ amount: '20', currencyCode: 'EUR' }} />
     );
     expect(getByLabelText('Amount')).toHaveAttribute('value', '20');
-    expect(getByLabelText('Currency Code')).toHaveTextContent('EUR');
+    expect(getByTestId('money-input-container')).toHaveTextContent('EUR');
   });
 
   it('should allow changing the amount', () => {
@@ -369,16 +369,19 @@ describe('MoneyInput', () => {
     // ensure the MoneyInput is usable in forms which use labels
     const { getByLabelText } = render(<TestComponent onChange={onChange} />);
 
-    // open
-    fireEvent.click(getByLabelText('Currency Code'));
+    // open using keyboard
+    fireEvent.focus(getByLabelText('Currency Code'));
+    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
 
-    // change currency to USD
-    fireEvent.click(document.querySelector('[aria-label="USD"]'));
+    // change currency to USD using keyboard
+    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
+    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'Enter' });
 
     // onChange should be called when changing the currency
     expect(onChange).toHaveBeenCalledWith({
       persist: expect.any(Function),
       target: {
+        id: 'some-id.currencyCode',
         name: 'some-name.currencyCode',
         value: 'USD',
       },
@@ -412,13 +415,13 @@ describe('MoneyInput', () => {
       />
     );
 
-    // change currency
-    fireEvent.click(getByLabelText('Currency Code'));
+    // open currency dropdown using keyboard
+    fireEvent.focus(getByLabelText('Currency Code'));
+    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
 
-    // change currency to KWD
-    fireEvent.click(document.querySelector('[aria-label="KWD"]'));
-
-    expect(getByLabelText('Currency Code')).toHaveTextContent('KWD');
+    // change currency to KWD using keyboard
+    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
+    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'Enter' });
 
     // We can't use .toHaveAttribute('value', ' 12.500') as the attribute
     // itself does not change in the DOM tree. Only the actual value changes.

@@ -8,7 +8,7 @@
   display: flex;
 }
 
-.input {
+.amountInput {
   display: flex;
   flex: 1;
   color: var(--token-font-color-default);
@@ -25,20 +25,20 @@
   appearance: none;
 }
 
-.input::placeholder {
+.amountInput::placeholder {
   color: var(--token-font-color-placeholder);
 }
 
 /* States for amount */
 
 .amount-default {
-  composes: input;
+  composes: amountInput;
   border-color: var(--token-border-color-input-pristine);
   background-color: var(--token-background-color-input-pristine);
 }
 
 .amount-disabled {
-  composes: input;
+  composes: amountInput;
   cursor: not-allowed;
   color: var(--token-font-color-disabled);
   border-color: var(--token-border-color-input-disabled);
@@ -47,13 +47,13 @@
 }
 
 .amount-warning {
-  composes: input;
+  composes: amountInput;
   color: var(--token-font-color-warning);
   border-color: var(--token-border-color-input-warning);
 }
 
 .amount-error {
-  composes: input;
+  composes: amountInput;
   color: var(--token-font-color-error);
   border-color: var(--token-border-color-input-error);
 }
@@ -63,125 +63,4 @@
   border-color: var(--token-border-color-input-focus);
   background: var(--token-background-color-input-pristine);
   color: var(--token-font-color-default);
-}
-
-/* Currency dropdown */
-.currency-default {
-  display: flex;
-  width: var(--width-currency-label);
-  flex-direction: column;
-  border-top-left-radius: var(--token-border-radius-input);
-  border-bottom-left-radius: var(--token-border-radius-input);
-  height: var(--token-size-height-input);
-  border: 1px var(--token-border-color-input-pristine) solid;
-  background-color: var(--token-background-color-input-pristine);
-  border-right: 0;
-  position: relative;
-}
-
-.currency-active {
-  composes: currency-default;
-  border-color: var(--token-border-color-input-focus);
-}
-
-.currency-disabled {
-  composes: currency-default;
-  color: var(--token-font-color-disabled);
-  border-color: var(--token-border-color-input-disabled);
-  background-color: var(--token-background-color-input-disabled);
-}
-
-.currency-warning {
-  composes: currency-default;
-  color: var(--token-font-color-warning);
-  border-color: var(--token-border-color-input-warning);
-}
-
-.currency-error {
-  composes: currency-default;
-  color: var(--token-font-color-error);
-  border-color: var(--token-border-color-input-error);
-}
-
-.currency-wrapper {
-  display: flex;
-  flex: 1 0 100%;
-  align-items: center;
-  padding: var(--spacing-4) var(--spacing-8);
-}
-
-.languagesDropdown {
-  display: flex;
-  flex: 1 0 100%;
-  padding: var(--spacing-4) var(--spacing-8);
-  flex-direction: column;
-}
-
-.languagesDropdown > * {
-  flex: 1;
-  align-self: flex-end;
-}
-
-.chevron {
-  display: flex;
-  align-items: center;
-}
-
-/* Currency Label (not dropdown) */
-
-.currency-label {
-  composes: currency-default;
-  border-color: var(--token-border-color-input-disabled);
-  color: var(--token-font-color-disabled);
-  background-color: var(--token-background-color-input-disabled);
-  padding: 0 var(--spacing-8);
-}
-
-.options-wrapper {
-  border-radius: var(--token-border-radius-input);
-  color: var(--token-font-color-default);
-  position: relative;
-  z-index: 5;
-  top: var(--spacing-4);
-
-  /* to center the options under the header */
-  left: -1px;
-}
-
-.options-wrapper-active {
-  composes: options-wrapper;
-  border: 1px solid var(--token-border-color-input-focus);
-}
-
-.options-wrapper-error {
-  composes: options-wrapper;
-  border: 1px solid var(--token-border-color-input-error);
-}
-
-.options-wrapper-warning {
-  composes: options-wrapper;
-  border: 1px solid var(--token-border-color-input-warning);
-}
-
-.option-wrapper {
-  display: block;
-  text-align: left;
-  width: 100%;
-  padding: var(--spacing-8);
-  background-color: var(--token-background-color-input-pristine);
-}
-
-.option-wrapper:first-child {
-  border-radius: var(--token-border-radius-input)
-    var(--token-border-radius-input) 0 0;
-}
-
-.option-wrapper:last-child {
-  border-radius: 0 0 var(--token-border-radius-input)
-    var(--token-border-radius-input);
-}
-
-.option-wrapper:hover {
-  /* FIXME: apply token for dropdown option hover */
-  background: var(--color-gray-90);
 }
