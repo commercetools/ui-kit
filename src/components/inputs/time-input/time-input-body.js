@@ -45,7 +45,7 @@ ClearSection.propTypes = {
 
 export const ClearSectionWithMouseOverState = withMouseOverState(ClearSection);
 
-export class TimeInputBody extends React.Component {
+export default class TimeInputBody extends React.Component {
   static displayName = 'TimeInputBody';
 
   static propTypes = {

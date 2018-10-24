@@ -4,7 +4,7 @@ import { injectIntl } from 'react-intl';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import createSequentialId from '../../../utils/create-sequential-id';
 import Constraints from '../../constraints';
-import { TimeInputBody } from './time-input-body';
+import TimeInputBody from './time-input-body';
 
 const sequentialId = createSequentialId('time-input-');
 
@@ -32,9 +32,7 @@ const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 //   13:00:00.000
 //   13:00:60
 //   13:00:59.908
-// Returns an array containing
-//   [hours, minutes, seconds, milliseconds]
-// or null
+// Returns an object containing time information or null
 export const parseTime = rawTime => {
   if (!rawTime || typeof rawTime !== 'string') return null;
 
@@ -71,10 +69,6 @@ export const parseTime = rawTime => {
   };
 };
 
-// This component lets the user select a time.
-//
-// The `value` of this component and the value of the event `onChange` gets
-// called with is always a 24hr format time string, or an empty string.
 export class TimeInput extends React.Component {
   static displayName = 'TimeInput';
 
