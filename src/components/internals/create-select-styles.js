@@ -8,7 +8,7 @@
   Always check all affected components when making changes here!
 */
 
-import * as vars from '../../../materials/custom-properties.json';
+import vars from '../../../materials/custom-properties.json';
 
 const controlStyles = props => (base, state) => ({
   ...base,
