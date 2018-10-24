@@ -171,8 +171,8 @@
 .react-select .react-select__multi-value__remove {
   border-color: var(--token-border-color-tag-pristine);
   padding: 0 var(--spacing-4);
-  border-radius: 0 var(--token-border-radius-tag)
-    var(--token-border-radius-tag) 0;
+  border-radius: 0 var(--token-border-radius-tag) var(--token-border-radius-tag)
+    0;
   border-style: solid;
   border-width: 1px 1px 1px 0;
 }
