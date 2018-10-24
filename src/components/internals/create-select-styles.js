@@ -31,7 +31,7 @@ const controlStyles = props => (base, state) => ({
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
   '&:hover': {
-    borderColor: vars['--token-border-color-input-focus'],
+    borderColor: vars['--token-border-color-input-pristine'],
     boxShadow: 'none',
   },
   '&:active': {
@@ -197,20 +197,25 @@ const indicatorsContainerStyles = () => () => ({
 });
 
 export default props => ({
-  control: controlStyles(props),
-  menu: menuStyles(props),
-  indicatorSeparator: indicatorSeparatorStyles(props),
-  dropdownIndicator: dropdownIndicatorStyles(props),
   clearIndicator: clearIndicatorStyles(props),
-  menuList: menuListStyles(props),
+  container: containerStyles(props),
+  control: controlStyles(props),
+  dropdownIndicator: dropdownIndicatorStyles(props),
+  group: groupStyles(props),
+  groupHeading: groupHeadingStyles(props),
   indicatorsContainer: indicatorsContainerStyles(props),
-  option: optionStyles(props),
-  placeholder: placeholderStyles(props),
-  valueContainer: valueContainerStyles(props),
+  indicatorSeparator: indicatorSeparatorStyles(props),
+  input: base => base,
+  loadingIndicator: base => base,
+  loadingMessage: base => base,
+  menu: menuStyles(props),
+  menuList: menuListStyles(props),
   multiValue: multiValueStyles(props),
   multiValueLabel: multiValueLabelStyles(props),
   multiValueRemove: multiValueRemoveStyles(props),
-  group: groupStyles(props),
-  groupHeading: groupHeadingStyles(props),
-  container: containerStyles(props),
+  noOptionsMessage: base => base,
+  option: optionStyles(props),
+  placeholder: placeholderStyles(props),
+  singleValue: base => base,
+  valueContainer: valueContainerStyles(props),
 });

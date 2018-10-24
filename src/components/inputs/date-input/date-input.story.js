@@ -29,6 +29,9 @@ storiesOf('Inputs', module)
                 ['xs', 's', 'm', 'l', 'xl', 'scale'],
                 'm'
               )}
+              isDisabled={boolean('isDisabled', false)}
+              hasError={boolean('hasError', false)}
+              hasWarning={boolean('hasWarning', false)}
             />
             <pre>Value: {value}</pre>
           </div>
