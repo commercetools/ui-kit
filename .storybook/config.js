@@ -5,7 +5,6 @@ import IntlDecorator from './decorators/intl';
 
 // setAddon(infoAddon);
 
-import '../materials/internals/reset.mod.css';
 import './main.mod.css';
 
 setOptions({

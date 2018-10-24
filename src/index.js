@@ -1,5 +1,8 @@
 /* This is the entry point of the public package interface */
 
+import '../materials/internals/grid.mod.css';
+import '../materials/internals/reset.mod.css';
+
 /* eslint-disable max-len,prettier/prettier */
 import * as i18n from '../i18n'
 import * as Icons from './components/icons';
