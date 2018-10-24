@@ -388,7 +388,8 @@ export default class MoneyInput extends React.Component {
 
     const option = do {
       const matchedOption = options.find(
-        o => o.value === this.props.value.currencyCode
+        optionCandidate =>
+          optionCandidate.value === this.props.value.currencyCode
       );
       if (matchedOption) matchedOption;
       // ensure an option is found, even when the currencies don't include
