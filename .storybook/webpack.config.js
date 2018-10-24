@@ -119,54 +119,11 @@ module.exports = (storybookBaseConfig, configType) => {
       ],
     },
     {
-      test: function testForNormalCssFiles(fileName) {
-        return (
-          // Use this only for plain CSS.
-          // For css-modules, see loader above.
-          fileName.endsWith('.css') && !fileName.endsWith('.mod.css')
-        );
-      },
-      // "postcss" loader applies autoprefixer to our CSS.
+      test: /\.css$/,
       // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
-      oneOf: [
-        {
-          // Use "postcss" for all the included source folders.
-          include: sourceFolders,
-          use: [
-            require.resolve('style-loader'),
-            require.resolve('css-loader'),
-            {
-              loader: require.resolve('postcss-loader'),
-              options: {
-                ident: 'postcss',
-                plugins: () => [
-                  postcssImport(),
-                  postcssPresetEnv({
-                    browsers: browserslist.development,
-                    autoprefixer: { grid: true },
-                  }),
-                  postcssCustomProperties({
-                    preserve: false,
-                    importFrom: 'materials/custom-properties.css',
-                  }),
-                  postcssCustomMediaQueries(),
-                  postcssPostcssColorModFunction(),
-                  postcssReporter(),
-                ],
-              },
-            },
-          ],
-        },
-        {
-          // For all other vendor CSS, do not use "postcss" loader.
-          include: /node_modules/,
-          loaders: [
-            require.resolve('style-loader'),
-            require.resolve('css-loader'),
-          ],
-        },
-      ],
+      include: /node_modules/,
+      loaders: [require.resolve('style-loader'), require.resolve('css-loader')],
     },
     // Storybook uses a plugin to load and render markdown files.
     {

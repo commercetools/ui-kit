@@ -5,7 +5,6 @@ import {
   components as defaultComponents,
   AsyncCreatable as AsyncCreatableSelect,
 } from 'react-select';
-import classnames from 'classnames';
 import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
@@ -13,8 +12,8 @@ import LoadingIndicator from '../../internals/loading-indicator';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import TagRemove from '../../internals/tag-remove';
-import '../../internals/select.css';
 import messages from './messages';
+import createSelectStyles from '../../internals/create-select-styles';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -120,19 +119,14 @@ export class AsyncCreatableSelectInput extends React.Component {
             aria-labelledby={this.props['aria-labelledby']}
             autoFocus={this.props.isAutofocussed}
             backspaceRemovesValue={this.props.backspaceRemovesValue}
-            className={classnames('react-select', {
-              // We use global styles here as the react-select styles are global
-              // as well. This sucks.
-              // The alternative would be to style the components, but this
-              // would mean we'd need to export our design tokens to JS.
-              'react-select-error': this.props.hasError,
-              'react-select-warning': this.props.hasWarning,
-            })}
-            classNamePrefix="react-select"
             components={{
               ...customizedComponents,
               ...this.props.components,
             }}
+            styles={createSelectStyles({
+              hasWarning: this.props.hasWarning,
+              hasError: this.props.hasError,
+            })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),
             // but we use "id" (for the input) and "containerId" (for the container)

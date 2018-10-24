@@ -105,10 +105,6 @@ const plugins = [
   postcss({
     exclude: ['**/*.mod.css'],
     include: ['**/*.css'],
-    // literally the only reason we have this, is because of the `select.css` file
-    // or else we would not need to include any plugins as this would
-    // just be vendor (plain) css.
-    plugins: postcssPlugins,
   }),
   // To convert SVG Icons to ES6
   svgrPlugin({
