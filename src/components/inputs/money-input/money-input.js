@@ -11,7 +11,7 @@ import Contraints from '../../constraints';
 import styles from './money-input.mod.css';
 import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
-import * as vars from '../../../../materials/custom-properties.json';
+import vars from '../../../../materials/custom-properties.json';
 
 // overwrite styles of createSelectStyles
 const createCurrencySelectStyles = ({
