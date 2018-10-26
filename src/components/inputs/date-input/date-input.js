@@ -27,6 +27,12 @@ const createDateInputStyles = ({ hasWarning, hasError }) => {
     }),
     option: (base, state) => ({
       ...selectStyles.option(base, state),
+      display: 'inline-block',
+      width: '12%',
+      margin: `0 1% ${vars['--spacing-8']} 1%`,
+      textAlign: 'center',
+      borderRadius: '4px',
+      fontWeight: state.today ? 'bold' : 'inherit',
       backgroundColor: do {
         if (state.isSelected) vars['--color-green'];
         else if (state.isFocused) vars['--token-background-color-input-hover'];
@@ -210,21 +216,15 @@ const Group = injectIntl(props => {
 });
 Group.displayName = 'Group';
 
-const getOptionStyles = defaultStyles => ({
-  ...defaultStyles,
-  display: 'inline-block',
-  width: '12%',
-  margin: `0 1% ${vars['--spacing-4']} 1%`,
-  textAlign: 'center',
-  borderRadius: '4px',
-});
-
 const Option = props => (
   <CalendarConnector.Consumer>
     {({ locale }) => {
       if (props.data.display === 'calendar') {
-        const defaultStyles = props.getStyles('option', props);
-        const optionStyles = getOptionStyles(defaultStyles);
+        const today = new Date();
+        const optionStyles = props.getStyles('option', {
+          ...props,
+          today: props.data.date.isSame(today, 'day'),
+        });
         // Indent the first day of the month (date() === 1) in so that it starts
         // at the appropriate position.
         // Further respect the start of the week depending on the locale to
@@ -236,11 +236,7 @@ const Option = props => (
             optionStyles.marginLeft = `${indentBy * 14 + 1}%`;
           }
         }
-        // highlight today
-        const today = new Date();
-        if (props.data.date.isSame(today, 'day')) {
-          optionStyles.fontWeight = 'bold';
-        }
+
         return (
           <span {...props.innerProps} style={optionStyles} ref={props.innerRef}>
             {props.data.date.format('D')}
