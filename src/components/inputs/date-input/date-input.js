@@ -9,13 +9,9 @@ import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-input.mod.css';
+import ClearIndicator from '../../internals/clear-indicator';
 import createSelectStyles from '../../internals/create-select-styles';
-import {
-  AngleLeftIcon,
-  AngleRightIcon,
-  CalendarIcon,
-  CloseIcon,
-} from '../../icons';
+import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 import vars from '../../../../materials/custom-properties.json';
 
@@ -41,14 +37,6 @@ const createDateInputStyles = ({ hasWarning, hasError }) => {
         else vars['--token-font-color-default'];
       },
     }),
-    // singleValue: base => ({
-    //   ...base,
-    //   color: do {
-    //     if (hasError) vars['--token-font-color-error'];
-    //     else if (hasWarning) vars['--token-font-color-warning'];
-    //     else base.color;
-    //   },
-    // }),
     groupHeading: (base, state) => ({
       ...selectStyles.groupHeading(base, state),
       padding: 0,
@@ -90,25 +78,6 @@ class Control extends React.Component {
     );
   }
 }
-
-const ClearIndicator = props => {
-  const {
-    getStyles,
-    innerProps: { ref, ...restInnerProps },
-  } = props;
-  return (
-    <div
-      {...restInnerProps}
-      ref={ref}
-      style={getStyles('clearIndicator', props)}
-    >
-      <div>
-        <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
-      </div>
-    </div>
-  );
-};
-ClearIndicator.displayName = 'ClearIndicator';
 
 const CalendarConnector = React.createContext();
 
