@@ -10,6 +10,84 @@ import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-time-input.mod.css';
+import ClearIndicator from '../../internals/clear-indicator';
+import createSelectStyles from '../../internals/create-select-styles';
+import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
+import SecondaryIconButton from '../../buttons/secondary-icon-button';
+import vars from '../../../../materials/custom-properties.json';
+
+const createDateInputStyles = ({ hasWarning, hasError }) => {
+  const selectStyles = createSelectStyles({ hasWarning, hasError });
+  return {
+    ...selectStyles,
+    control: (base, state) => ({
+      ...selectStyles.control(base, state),
+      flex: 1,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    }),
+    option: (base, state) => ({
+      ...selectStyles.option(base, state),
+      display: 'inline-block',
+      width: '12%',
+      margin: `0 1% ${vars['--spacing-8']} 1%`,
+      textAlign: 'center',
+      borderRadius: '4px',
+      fontWeight: state.today ? 'bold' : 'inherit',
+      backgroundColor: do {
+        if (state.isSelected) vars['--color-green'];
+        else if (state.isFocused) vars['--token-background-color-input-hover'];
+        else base.backgroundColor;
+      },
+      color: do {
+        if (state.isSelected) vars['--color-white'];
+        else vars['--token-font-color-default'];
+      },
+    }),
+    groupHeading: (base, state) => ({
+      ...selectStyles.groupHeading(base, state),
+      padding: 0,
+    }),
+    clearIndicator: base => ({
+      ...base,
+      marginTop: '3px',
+      padding: 0,
+    }),
+  };
+};
+
+class Control extends React.Component {
+  static displayName = 'Control';
+  render() {
+    return (
+      <CalendarConnector.Consumer>
+        {({ selectRef, hasError, hasWarning, openMenu }) => (
+          <div className={styles.controlContainer}>
+            <SelectComponents.Control {...this.props} />
+            <div
+              className={do {
+                if (this.props.isDisabled) styles.controlCalendarDisabled;
+                else if (hasError) styles.controlCalendarError;
+                else if (hasWarning) styles.controlCalendarWarning;
+                else if (this.props.isFocused) styles.controlCalendarFocused;
+                else styles.controlCalendar;
+              }}
+              onClick={() => {
+                selectRef.current.select.focus();
+                openMenu();
+              }}
+            >
+              <CalendarIcon
+                size="big"
+                theme={this.props.isDisabled ? 'grey' : 'black'}
+              />
+            </div>
+          </div>
+        )}
+      </CalendarConnector.Consumer>
+    );
+  }
+}
 
 const formatTime = date => {
   if (date.milliseconds()) return date.format('HH:mm:ss.SSS');
@@ -349,7 +427,8 @@ const Group = injectIntl(props => {
               {...props.headingProps}
             >
               <div className={styles.headingControls}>
-                <button
+                <SecondaryIconButton
+                  label="prev month"
                   onClick={() => {
                     setMonth(
                       moment(month)
@@ -357,13 +436,11 @@ const Group = injectIntl(props => {
                         .toDate()
                     );
                   }}
-                  className={styles.prevMonth}
-                  type="button"
-                >
-                  {'❮'}
-                </button>
+                  icon={<AngleLeftIcon size="medium" />}
+                />
                 <div className={styles.month}>{props.label}</div>
-                <button
+                <SecondaryIconButton
+                  label="next month"
                   onClick={() => {
                     setMonth(
                       moment(month)
@@ -371,21 +448,22 @@ const Group = injectIntl(props => {
                         .toDate()
                     );
                   }}
-                  className={styles.nextMonth}
-                  type="button"
-                >
-                  {'❯'}
-                </button>
+                  icon={<AngleRightIcon size="medium" />}
+                />
               </div>
             </Heading>
-            <div className={styles.daysHeader}>
-              {days.map(day => (
-                <span key={day} className={styles.daysHeaderItem}>
-                  {day}
-                </span>
-              ))}
+            <div className={styles.daysHeaderContainer}>
+              <div className={styles.daysHeader}>
+                {days.map(day => (
+                  <span key={day} className={styles.daysHeaderItem}>
+                    {day}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className={styles.daysContainer}>{props.children}</div>
+            <div className={styles.daysContainerContainer}>
+              <div className={styles.daysContainer}>{props.children}</div>
+            </div>
           </div>
         );
       }}
@@ -394,21 +472,15 @@ const Group = injectIntl(props => {
 });
 Group.displayName = 'Group';
 
-const getOptionStyles = defaultStyles => ({
-  ...defaultStyles,
-  display: 'inline-block',
-  width: '12%',
-  margin: '0 1%',
-  textAlign: 'center',
-  borderRadius: '4px',
-});
-
 const Option = props => (
   <CalendarConnector.Consumer>
     {({ locale }) => {
       if (props.data.display === 'calendar') {
-        const defaultStyles = props.getStyles('option', props);
-        const optionStyles = getOptionStyles(defaultStyles);
+        const today = new Date();
+        const optionStyles = props.getStyles('option', {
+          ...props,
+          today: props.data.date.isSame(today, 'day'),
+        });
         // Indent the first day of the month (date() === 1) in so that it starts
         // at the appropriate position.
         // Further respect the start of the week depending on the locale to
@@ -420,11 +492,7 @@ const Option = props => (
             optionStyles.marginLeft = `${indentBy * 14 + 1}%`;
           }
         }
-        // highlight today
-        const today = new Date();
-        if (props.data.date.isSame(today, 'day')) {
-          optionStyles.fontWeight = 'bold';
-        }
+
         return (
           <span {...props.innerProps} style={optionStyles} ref={props.innerRef}>
             {props.data.date.format('D')}
@@ -519,6 +587,9 @@ class DateTimeInput extends Component {
       locale: PropTypes.string.isRequired,
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+    isDisabled: PropTypes.bool,
+    hasWarning: PropTypes.bool,
+    hasError: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -658,13 +729,30 @@ class DateTimeInput extends Component {
             setTime: time => this.setState({ time }),
             onChange: this.props.onChange,
             timeZone: this.props.timeZone,
+            hasError: this.props.hasError,
+            hasWarning: this.props.hasWarning,
+            openMenu: () => this.setState({ openCount: 1 }),
           }}
         >
           <Select
             ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            components={{ Group, Option, MenuList, Menu, SelectContainer }}
+            styles={createDateInputStyles({
+              hasWarning: this.props.hasWarning,
+              hasError: this.props.hasError,
+            })}
+            components={{
+              Group,
+              Option,
+              MenuList,
+              Menu,
+              SelectContainer,
+              // styling
+              Control,
+              DropdownIndicator: () => null,
+              ClearIndicator,
+            }}
             filterOption={null}
             isMulti={false}
             isOptionSelected={(option, value) =>

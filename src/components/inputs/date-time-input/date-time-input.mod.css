@@ -1,53 +1,70 @@
-.monthButton {
-  display: inline-block;
-  margin: 0;
-  background: transparent;
-  border: 0;
-  color: #9c9c9c;
-  text-transform: uppercase;
-  border-radius: 3px;
-  padding: 2px 8px;
-  cursor: default;
-}
-
-.monthButton:hover {
-  color: #1a1a1a;
-}
-
 .headingControls {
   display: flex;
   flex-direction: row;
-  margin-bottom: 8px;
-  align-items: baseline;
+  align-items: center;
   font-size: 13px;
+  margin: 8px 16px;
+  padding: 0 2%;
 }
 
 .month {
   flex: 1 1 auto;
   text-align: center;
+  color: var(--token-font-color-default);
+  font-size: var(--token-font-size-default);
 }
 
-.prevMonth {
-  composes: monthButton;
-}
-
-.nextMonth {
-  composes: monthButton;
-  margin-right: 4px;
+.daysHeaderContainer {
+  padding: var(--spacing-16) var(--spacing-16);
+  border-top: 1px solid var(--color-gray-90);
 }
 
 .daysHeader {
-  margin-top: 5px;
-  padding-top: 5px;
   padding-left: 2%;
-  border-top: 1px solid #eee;
+}
+
+.controlContainer {
+  display: flex;
+}
+
+.controlCalendar {
+  border: 1px solid var(--token-border-color-input-pristine);
+  border-radius: var(--token-border-radius-input);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.controlCalendarDisabled {
+  composes: controlCalendar;
+  border-color: var(--token-border-color-input-disabled);
+  background-color: var(--token-background-color-input-disabled);
+}
+
+.controlCalendarError {
+  composes: controlCalendar;
+  border-color: var(--token-border-color-input-error);
+}
+
+.controlCalendarWarning {
+  composes: controlCalendar;
+  border-color: var(--token-border-color-input-warning);
+}
+
+.controlCalendarFocused {
+  composes: controlCalendar;
+  border-color: var(--token-border-color-input-focus);
 }
 
 .daysHeaderItem {
-  color: #999;
+  color: var(--color-gray-60);
+  font-weight: bold;
   cursor: default;
-  font-size: 75%;
-  font-weight: 500;
+  font-size: var(--token-font-size-small);
   display: inline-block;
   width: 12%;
   margin: 0 1%;
@@ -59,12 +76,19 @@
   padding-left: 2%;
 }
 
+.daysContainerContainer {
+  /* we need to deduct the bottom-margin of the options (a day) */
+  padding: 0 var(--spacing-8) calc(var(--spacing-16) - var(--spacing-4));
+}
+
 .timeInput {
   width: 100%;
   height: 32px;
-  border: 0;
-  border-top: 1px solid #eee;
+  border: 0 transparent;
+  border-top: 1px solid var(--color-gray);
+  background-color: transparent;
   padding: 0 10px;
   text-align: center;
   font-size: 13px;
+  outline: 0;
 }
