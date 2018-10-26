@@ -2,12 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CloseIcon } from '../../icons';
 
-const ClearIndicator = props => (
-  <div className="react-select__clear-indicator" {...props.innerProps}>
-    {/* FIXME: add proper tone when tones are refactored */}
-    <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
-  </div>
-);
+const ClearIndicator = props => {
+  const {
+    getStyles,
+    innerProps: { ref, ...restInnerProps },
+  } = props;
+  return (
+    <div
+      {...restInnerProps}
+      ref={ref}
+      style={getStyles('clearIndicator', props)}
+    >
+      <div>
+        <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
+      </div>
+    </div>
+  );
+};
 
 ClearIndicator.displayName = 'ClearIndicator';
 

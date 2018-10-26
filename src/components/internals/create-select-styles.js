@@ -72,7 +72,6 @@ const indicatorSeparatorStyles = () => base => ({
 const dropdownIndicatorStyles = () => base => ({
   ...base,
   color: vars['--token-font-color-default'],
-  marginRight: vars['--spacing-8'],
   margin: '0',
   padding: '0',
   marginLeft: vars['--spacing-4'],
@@ -81,6 +80,7 @@ const dropdownIndicatorStyles = () => base => ({
 const clearIndicatorStyles = () => base => ({
   ...base,
   display: 'flex',
+  padding: 0,
 });
 
 const menuListStyles = () => base => ({
@@ -192,6 +192,8 @@ const containerStyles = () => (base, state) => ({
 
 const indicatorsContainerStyles = () => () => ({
   background: 'none',
+  display: 'flex',
+  alignItems: 'baseline',
 });
 
 export default props => ({
