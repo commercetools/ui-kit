@@ -28,7 +28,9 @@ describe('<Headline>', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <Text.Headline elementType="h1">{'Title'}</Text.Headline>
+      <Text.Headline elementType="h1" title="tooltip text">
+        {'Title'}
+      </Text.Headline>
     );
   });
   it('should render element tag h1', () => {
@@ -39,6 +41,9 @@ describe('<Headline>', () => {
   });
   it('should render given text', () => {
     expect(wrapper.text()).toMatch('Title');
+  });
+  it('should has `title` prop', () => {
+    expect(wrapper.prop('title')).toBe('tooltip text');
   });
 
   describe('with truncated text', () => {
@@ -92,7 +97,12 @@ describe('<Subheadline>', () => {
   describe('with tone', () => {
     beforeEach(() => {
       wrapper = shallow(
-        <Text.Subheadline elementType="h4" isBold={true} tone="primary">
+        <Text.Subheadline
+          elementType="h4"
+          isBold={true}
+          tone="primary"
+          title="tooltip text"
+        >
           {'Subtitle'}
         </Text.Subheadline>
       );
@@ -108,6 +118,9 @@ describe('<Subheadline>', () => {
     });
     it('should have "primary" class', () => {
       expect(wrapper).toContainClass(styles.primary);
+    });
+    it('should has `title` prop', () => {
+      expect(wrapper.prop('title')).toBe('tooltip text');
     });
   });
   describe('with truncated text', () => {
@@ -132,13 +145,16 @@ describe('<Subheadline>', () => {
 describe('<Wrap>', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Text.Wrap>{'Title'}</Text.Wrap>);
+    wrapper = shallow(<Text.Wrap title={'tooltip text'}>{'Title'}</Text.Wrap>);
   });
   it('should have "wrap" class', () => {
     expect(wrapper).toContainClass(styles.wrap);
   });
   it('should render given text', () => {
     expect(wrapper.text()).toMatch('Title');
+  });
+  it('should has `title` prop', () => {
+    expect(wrapper.prop('title')).toBe('tooltip text');
   });
 });
 
@@ -197,6 +213,16 @@ describe('<Body>', () => {
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
+      });
+    });
+    describe('with title', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Body title="tooltip text">{'Detail'}</Text.Body>
+        );
+      });
+      it('should has `title` prop', () => {
+        expect(wrapper.prop('title')).toBe('tooltip text');
       });
     });
     describe('with truncated text', () => {
@@ -386,6 +412,19 @@ describe('<Detail>', () => {
       });
       it('should render given text', () => {
         expect(wrapper).toHaveText('Detail');
+      });
+    });
+
+    describe('with title', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Detail isInline={true} title="tooltip text">
+            {'Detail'}
+          </Text.Detail>
+        );
+      });
+      it('should has `title` prop', () => {
+        expect(wrapper.prop('title')).toBe('tooltip text');
       });
     });
 
