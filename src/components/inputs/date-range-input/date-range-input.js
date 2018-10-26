@@ -8,10 +8,91 @@ import memoizeOne from 'memoize-one';
 import Select, { components as SelectComponents } from 'react-select';
 import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
+import ClearIndicator from '../../internals/clear-indicator';
 import messages from './messages';
 import styles from './date-range-input.mod.css';
+import createSelectStyles from '../../internals/create-select-styles';
+import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
+import SecondaryIconButton from '../../buttons/secondary-icon-button';
+import vars from '../../../../materials/custom-properties.json';
 
 const rangeSeparator = ' - ';
+
+const createDateInputStyles = ({ hasWarning, hasError }) => {
+  const selectStyles = createSelectStyles({ hasWarning, hasError });
+  return {
+    ...selectStyles,
+    control: (base, state) => ({
+      ...selectStyles.control(base, state),
+      flex: 1,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    }),
+    option: (base, state) => ({
+      ...selectStyles.option(base, state),
+      display: 'inline-block',
+      width: '12%',
+      margin: `0 1% ${vars['--spacing-8']} 1%`,
+      textAlign: 'center',
+      borderRadius: '4px',
+      border: '1px solid transparent',
+      fontWeight: state.today ? 'bold' : 'inherit',
+      backgroundColor: do {
+        if (state.selectionStart) vars['--color-green'];
+        else if (state.selectionEnd) vars['--color-green'];
+        else if (state.selected) vars['--color-gray-90'];
+        else if (state.isFocused) vars['--token-background-color-input-hover'];
+        else base.backgroundColor;
+      },
+      color: do {
+        if (state.selectionStart || state.selectionEnd) vars['--color-white'];
+        else vars['--token-font-color-default'];
+      },
+    }),
+    groupHeading: (base, state) => ({
+      ...selectStyles.groupHeading(base, state),
+      padding: 0,
+    }),
+    clearIndicator: base => ({
+      ...base,
+      marginTop: '3px',
+      padding: 0,
+    }),
+  };
+};
+
+class Control extends React.Component {
+  static displayName = 'Control';
+  render() {
+    return (
+      <CalendarConnector.Consumer>
+        {({ selectRef, hasError, hasWarning, openMenu }) => (
+          <div className={styles.controlContainer}>
+            <SelectComponents.Control {...this.props} />
+            <div
+              className={do {
+                if (this.props.isDisabled) styles.controlCalendarDisabled;
+                else if (hasError) styles.controlCalendarError;
+                else if (hasWarning) styles.controlCalendarWarning;
+                else if (this.props.isFocused) styles.controlCalendarFocused;
+                else styles.controlCalendar;
+              }}
+              onClick={() => {
+                selectRef.current.select.focus();
+                openMenu();
+              }}
+            >
+              <CalendarIcon
+                size="big"
+                theme={this.props.isDisabled ? 'grey' : 'black'}
+              />
+            </div>
+          </div>
+        )}
+      </CalendarConnector.Consumer>
+    );
+  }
+}
 
 // basically a dumb version of deepEquals which works with ranges only
 const rangeEqual = (a, b) => {
@@ -138,45 +219,43 @@ const Group = injectIntl(props => {
               {...props.headingProps}
             >
               <div className={styles.headingControls}>
-                <button
+                <SecondaryIconButton
+                  label="prev month"
                   onClick={() => {
                     setMonth(
-                      moment
-                        .utc(month)
+                      moment(month)
                         .subtract(1, 'month')
                         .toDate()
                     );
                   }}
-                  className={styles.prevMonth}
-                  type="button"
-                >
-                  {'❮'}
-                </button>
+                  icon={<AngleLeftIcon size="medium" />}
+                />
                 <div className={styles.month}>{props.label}</div>
-                <button
+                <SecondaryIconButton
+                  label="next month"
                   onClick={() => {
                     setMonth(
-                      moment
-                        .utc(month)
+                      moment(month)
                         .add(1, 'month')
                         .toDate()
                     );
                   }}
-                  className={styles.nextMonth}
-                  type="button"
-                >
-                  {'❯'}
-                </button>
+                  icon={<AngleRightIcon size="medium" />}
+                />
               </div>
             </Heading>
-            <div className={styles.daysHeader}>
-              {days.map(day => (
-                <span key={day} className={styles.daysHeaderItem}>
-                  {day}
-                </span>
-              ))}
+            <div className={styles.daysHeaderContainer}>
+              <div className={styles.daysHeader}>
+                {days.map(day => (
+                  <span key={day} className={styles.daysHeaderItem}>
+                    {day}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className={styles.daysContainer}>{props.children}</div>
+            <div className={styles.daysContainerContainer}>
+              <div className={styles.daysContainer}>{props.children}</div>
+            </div>
           </div>
         );
       }}
@@ -185,40 +264,10 @@ const Group = injectIntl(props => {
 });
 Group.displayName = 'Group';
 
-const getOptionStyles = defaultStyles => ({
-  ...defaultStyles,
-  display: 'inline-block',
-  width: '12%',
-  margin: '1px 1%',
-  textAlign: 'center',
-  borderRadius: '4px',
-  border: '1px solid transparent',
-});
-
 const Option = props => (
   <CalendarConnector.Consumer>
     {({ locale, range, rangeTarget, setRangeTarget }) => {
       if (props.data.display === 'calendar') {
-        const defaultStyles = props.getStyles('option', props);
-        const optionStyles = getOptionStyles(defaultStyles);
-        // Indent the first day of the month (date() === 1) in so that it starts
-        // at the appropriate position.
-        // Further respect the start of the week depending on the locale to
-        // adjust the indentation.
-        if (props.data.date.date() === 1) {
-          const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
-          const indentBy = props.data.date.day() - firstDayOfWeek;
-          if (indentBy) {
-            optionStyles.marginLeft = `${indentBy * 14 + 1}%`;
-          }
-        }
-
-        // highlight today
-        const today = moment.utc().startOf('day');
-        if (props.data.date.isSame(today, 'day')) {
-          optionStyles.fontWeight = 'bold';
-        }
-
         // highlight range
         const selectionRange = (() => {
           switch (range.length) {
@@ -250,17 +299,27 @@ const Option = props => (
         const isSelectionEnd =
           selectionRange && moment.utc(props.value).isSame(end, 'day');
 
-        if (isSelected && !props.isFocused) {
-          optionStyles.backgroundColor = '#eee';
+        const today = moment.utc().startOf('day');
+        const optionStyles = props.getStyles('option', {
+          ...props,
+          selectionStart: isSelectionStart,
+          selected: isSelected,
+          selectionEnd: isSelectionEnd,
+          today: props.data.date.isSame(today, 'day'),
+        });
+
+        // Indent the first day of the month (date() === 1) in so that it starts
+        // at the appropriate position.
+        // Further respect the start of the week depending on the locale to
+        // adjust the indentation.
+        if (props.data.date.date() === 1) {
+          const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
+          const indentBy = props.data.date.day() - firstDayOfWeek;
+          if (indentBy) {
+            optionStyles.marginLeft = `${indentBy * 14 + 1}%`;
+          }
         }
-        if (isSelectionStart) {
-          optionStyles.borderLeft = '1px solid #9c9c9c';
-          optionStyles.backgroundColor = 'rgb(222, 235, 255)';
-        }
-        if (isSelectionEnd) {
-          optionStyles.borderRight = '1px solid #9c9c9c';
-          optionStyles.backgroundColor = 'rgb(222, 235, 255)';
-        }
+
         return (
           <span
             {...props.innerProps}
@@ -293,7 +352,6 @@ class SelectContainer extends Component {
             innerProps={{
               ...this.props.innerProps,
               onKeyDown: event => {
-                console.log(selectRef.current);
                 if (
                   this.props.isDisabled ||
                   !this.props.isFocused ||
@@ -365,6 +423,9 @@ class DateRangeInput extends Component {
       locale: PropTypes.string.isRequired,
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+    isDisabled: PropTypes.bool,
+    hasWarning: PropTypes.bool,
+    hasError: PropTypes.bool,
   };
 
   state = {
@@ -564,13 +625,31 @@ class DateRangeInput extends Component {
             rangeTarget: this.state.rangeTarget,
             setRangeTarget: rangeTarget => this.setState({ rangeTarget }),
             selectRef: this.selectRef,
+            hasError: this.props.hasError,
+            hasWarning: this.props.hasWarning,
+            openMenu: () =>
+              this.setState(prevState => ({
+                openCount: prevState.openCount + 1,
+              })),
           }}
         >
           <Select
             ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            components={{ Group, Option, SelectContainer }}
+            styles={createDateInputStyles({
+              hasWarning: this.props.hasWarning,
+              hasError: this.props.hasError,
+            })}
+            components={{
+              Group,
+              Option,
+              SelectContainer,
+              // styling
+              Control,
+              DropdownIndicator: () => null,
+              ClearIndicator,
+            }}
             filterOption={null}
             isMulti={false}
             maxMenuHeight={380}
