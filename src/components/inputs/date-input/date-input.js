@@ -54,7 +54,7 @@ class Control extends React.Component {
   render() {
     return (
       <CalendarConnector.Consumer>
-        {({ selectRef, hasError, hasWarning }) => (
+        {({ selectRef, hasError, hasWarning, openMenu }) => (
           <div className={styles.controlContainer}>
             <SelectComponents.Control {...this.props} />
             <div
@@ -65,7 +65,10 @@ class Control extends React.Component {
                 else if (this.props.isFocused) styles.controlCalendarFocused;
                 else styles.controlCalendar;
               }}
-              onClick={() => selectRef.current.select.focus()}
+              onClick={() => {
+                selectRef.current.select.focus();
+                openMenu();
+              }}
             >
               <CalendarIcon
                 size="big"
@@ -343,6 +346,7 @@ class DateInput extends Component {
       const date = new Date(this.props.value);
       isValidDate(date) ? date : new Date();
     },
+    isMenuOpen: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -427,6 +431,7 @@ class DateInput extends Component {
             selectRef: this.selectRef,
             hasError: this.props.hasError,
             hasWarning: this.props.hasWarning,
+            openMenu: () => this.setState({ isMenuOpen: true }),
           }}
         >
           <Select
@@ -462,10 +467,9 @@ class DateInput extends Component {
             isClearable={this.props.isClearable}
             isDisabled={this.props.isDisabled}
             autoFocus={this.props.isAutofocussed}
-            // The only reason to have this is so that clicking
-            // the CalendarIcon in Control can open the menu using
-            // selectRef.current.select.focus()
-            openMenuOnFocus={true}
+            menuIsOpen={this.state.isMenuOpen}
+            onMenuOpen={() => this.setState({ isMenuOpen: true })}
+            onMenuClose={() => this.setState({ isMenuOpen: false })}
           />
         </CalendarConnector.Provider>
       </Constraints.Horizontal>
