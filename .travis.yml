@@ -6,6 +6,9 @@ node_js:
 notifications:
   email: false
 
+addons:
+  chrome: stable
+
 cache:
   yarn: true
   directories:
