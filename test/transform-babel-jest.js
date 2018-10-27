@@ -5,7 +5,11 @@ const mcAppBabelConfig = getBabelPreset();
 
 const jestBabelConfig = {
   ...mcAppBabelConfig,
-  plugins: [...mcAppBabelConfig.plugins, ...jestBabelPreset.plugins],
+  plugins: [
+    ...mcAppBabelConfig.plugins,
+    ...jestBabelPreset.plugins,
+    ['module-rewrite', { replaceFunc: './test/replace-module-paths.js' }],
+  ],
 };
 
 module.exports = require('babel-jest').createTransformer(jestBabelConfig);

@@ -52,7 +52,9 @@
     "format:css": "prettier --write --parser css '**/*.css'",
     "format:md": "prettier --write --parser markdown '**/*.md'",
     "test": "jest --config jest.test.config.js",
-    "test:watch": "jest --config jest.test.config.js --watch"
+    "test:watch": "jest --config jest.test.config.js --watch",
+    "test:bundle": "jest --config jest.bundle.config.js",
+    "test:bundle:watch": "jest --config jest.bundle.config.js --watch"
   },
   "dependencies": {
     "classnames": "2.2.6",
@@ -101,6 +103,7 @@
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
     "babel-plugin-emotion": "9.2.11",
+    "babel-plugin-module-rewrite": "0.2.0",
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-transform-dynamic-import": "2.1.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.19",
