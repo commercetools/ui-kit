@@ -51,4 +51,8 @@ module.exports = {
     '^(?!.*\\.(js|css|json)$)': '<rootDir>/test/transform-file.js',
   },
   watchPlugins: ['jest-plugin-filename', 'jest-watch-master'],
+  reporters:
+    process.env.CI === 'true'
+      ? ['default', '<rootDir>/test/image-reporter.js']
+      : ['default'],
 };
