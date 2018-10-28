@@ -7,7 +7,12 @@ import { setDefaultOptions } from 'jsdom-screenshot';
 
 // TravisCI requires --no-sandbox to be able to run the tests
 setDefaultOptions({
-  launch: { args: process.env.CI === 'true' ? ['--no-sandbox'] : [] },
+  launch: {
+    args:
+      process.env.CI === 'true'
+        ? ['--no-sandbox', '--enable-font-antialiasing']
+        : ['--enable-font-antialiasing'],
+  },
 });
 
 // give tests more time as taking screenshots takes a while
