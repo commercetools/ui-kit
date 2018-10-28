@@ -30,4 +30,5 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/test/transform-babel-jest.js',
   },
   watchPlugins: ['jest-plugin-filename', 'jest-watch-master'],
+  reporters: process.env.CI === 'true' ? ['jest-silent-reporter'] : ['default'],
 };

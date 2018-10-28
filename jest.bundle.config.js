@@ -53,6 +53,6 @@ module.exports = {
   watchPlugins: ['jest-plugin-filename', 'jest-watch-master'],
   reporters:
     process.env.CI === 'true'
-      ? ['default', '<rootDir>/test/image-reporter.js']
+      ? ['jest-silent-reporter', '<rootDir>/test/image-reporter.js']
       : ['default'],
 };
