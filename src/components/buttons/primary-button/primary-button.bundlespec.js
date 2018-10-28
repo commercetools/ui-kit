@@ -5,11 +5,5 @@ import { PrimaryButton } from 'ui-kit';
 
 it('has no visual regressions', async () => {
   render(<PrimaryButton label="Submit" onClick={() => {}} />);
-  expect(
-    await generateImage({
-      launch: {
-        args: ['--no-sandbox'],
-      },
-    })
-  ).toMatchImageSnapshot();
+  expect(await generateImage()).toMatchImageSnapshot();
 });
