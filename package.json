@@ -136,7 +136,7 @@
     "jest": "23.6.0",
     "jest-dom": "2.1.0",
     "jest-enzyme": "7.0.0",
-    "jest-localstorage-mock": "2.2.0",
+    "jest-localstorage-mock": "2.3.0",
     "jest-plugin-filename": "0.0.1",
     "jest-runner-eslint": "0.6.0",
     "jest-runner-stylelint": "1.0.0",
