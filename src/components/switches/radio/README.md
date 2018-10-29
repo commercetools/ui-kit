@@ -40,12 +40,12 @@ import { Radio } from '@commercetools-frontend/ui-kit/switches';
 
 ##### Radio.Option
 
-| Props        | Type     | Required | Values | Default | Description                                                                                                      |
-| ------------ | -------- | :------: | ------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
-| `children`   | `string` |    -     | -      | -       | The descriptive text of the Radio.Option                                                                         |
-| `isDisabled` | `bool`   |    -     | -      | `false` | Disables the Radio.Option within the Radio.Group                                                                 |
-| `isHovered`  | `bool`   |    -     | -      | `false` | Renders the Radio.Option in a hovered state. We need this, as hover can somethimes come from a parent component. |
-| `value`      | `string` |    ✅    | -      | -       | The value of the option passed to `onChange` in `Radio.Group` a                                                  |
+| Props        | Type     | Required | Values | Default | Description                                                                                                                                                                                                                                                                       |
+| ------------ | -------- | :------: | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`   | `string` |    -     | -      | -       | The descriptive text of the Radio.Option                                                                                                                                                                                                                                          |
+| `isDisabled` | `bool`   |    -     | -      | `false` | Disables the Radio.Option within the Radio.Group                                                                                                                                                                                                                                  |
+| `isHovered`  | `bool`   |    -     | -      | `false` | Forces Radio.Option to be rendered in a hovered state. That's needed for the cases when hovered appearance should be triggered by the parent component and not the Radio.Option itself. Radio.Option is capable of handling it's own hovering without the need to pass this prop. |
+| `value`      | `string` |    ✅    | -      | -       | The value of the option passed to `onChange` in `Radio.Group` a                                                                                                                                                                                                                   |
 
 #### Invariants
 
