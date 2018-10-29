@@ -58,16 +58,20 @@ rules:
           'componentDidUpdate',
         ]
     'function-paren-newline': 0
+    # ui-kit is a mapped module in bundle tests, so it will not be found
+    # settting ignorePackages will disable the extension warning for it.
     'import/extensions': [
       'error',
-      'always',
+      'ignorePackages',
       {
         js: 'never',
       },
     ]
     'import/no-extraneous-dependencies': 0
     'import/no-named-as-default': 0
-    'import/no-unresolved': 0
+    # ui-kit is a mapped module in bundle tests, so it will not be found
+    # We exclude it from the checks
+    'import/no-unresolved': [2, { ignore: ['^ui-kit$'] }]
     'import/first': 0
     'import/order': 2
     'no-restricted-globals': ['error', 'find', 'name', 'location']
