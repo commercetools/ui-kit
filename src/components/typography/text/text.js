@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './text.mod.css';
 
+const nonEmptyString = (props, propName, componentName) => {
+  const value = props[propName];
+  if (typeof value === 'string' && !value)
+    return new Error(
+      `Invalid prop '${propName}' supplied to '${componentName}'. Expected it to be nonempty string, but it was empty.`
+    );
+  return null;
+};
+
 const Headline = props => {
   const HeadlineElement = props.elementType;
   return (
@@ -20,7 +29,7 @@ Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   elementType: PropTypes.oneOf(['h1', 'h2', 'h3']).isRequired,
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 
@@ -51,7 +60,7 @@ Subheadline.propTypes = {
     'negative',
   ]),
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 
@@ -63,7 +72,7 @@ const Wrap = props => (
 Wrap.displayName = 'TextWrap';
 Wrap.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  title: nonEmptyString,
 };
 
 const Body = props =>
@@ -106,7 +115,7 @@ Body.propTypes = {
     'inverted',
   ]),
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 
@@ -138,7 +147,7 @@ Detail.propTypes = {
     'warning',
   ]),
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 

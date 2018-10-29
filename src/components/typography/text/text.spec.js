@@ -43,7 +43,7 @@ describe('<Headline>', () => {
     expect(wrapper.text()).toMatch('Title');
   });
   it('should has `title` prop', () => {
-    expect(wrapper.prop('title')).toBe('tooltip text');
+    expect(wrapper).toHaveProp('title', 'tooltip text');
   });
 
   describe('with truncated text', () => {
@@ -120,7 +120,7 @@ describe('<Subheadline>', () => {
       expect(wrapper).toContainClass(styles.primary);
     });
     it('should has `title` prop', () => {
-      expect(wrapper.prop('title')).toBe('tooltip text');
+      expect(wrapper).toHaveProp('title', 'tooltip text');
     });
   });
   describe('with truncated text', () => {
@@ -154,7 +154,7 @@ describe('<Wrap>', () => {
     expect(wrapper.text()).toMatch('Title');
   });
   it('should has `title` prop', () => {
-    expect(wrapper.prop('title')).toBe('tooltip text');
+    expect(wrapper).toHaveProp('title', 'tooltip text');
   });
 });
 
@@ -222,7 +222,7 @@ describe('<Body>', () => {
         );
       });
       it('should has `title` prop', () => {
-        expect(wrapper.prop('title')).toBe('tooltip text');
+        expect(wrapper).toHaveProp('title', 'tooltip text');
       });
     });
     describe('with truncated text', () => {
@@ -424,7 +424,7 @@ describe('<Detail>', () => {
         );
       });
       it('should has `title` prop', () => {
-        expect(wrapper.prop('title')).toBe('tooltip text');
+        expect(wrapper).toHaveProp('title', 'tooltip text');
       });
     });
 
