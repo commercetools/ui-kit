@@ -11,6 +11,7 @@ export class Option extends React.PureComponent {
   static displayName = 'RadioOption';
   static propTypes = {
     value: PropTypes.string.isRequired,
+    isHovered: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isChecked: PropTypes.bool,
     children: PropTypes.node,
@@ -35,6 +36,8 @@ export class Option extends React.PureComponent {
             <div
               className={classnames(styles.radioWrapper, {
                 [styles.isDisabled]: this.props.isDisabled,
+                [styles.isHovered]:
+                  this.props.isHovered && !this.props.isDisabled,
               })}
             >
               {this.props.isChecked ? <Icons.Checked /> : <Icons.Default />}

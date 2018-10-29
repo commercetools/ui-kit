@@ -52,6 +52,31 @@ describe('<Option>', () => {
         });
       });
 
+      describe('when hovered', () => {
+        beforeEach(() => {
+          props = createTestProps({ isHovered: true });
+
+          wrapper = shallow(<Option {...props} />);
+        });
+
+        it('should show the `input` in a hovered state', () => {
+          expect(wrapper.exists('.isHovered')).toBe(true);
+        });
+      });
+
+      describe('when hovered and disabled', () => {
+        beforeEach(() => {
+          props = createTestProps({ isHovered: true, isDisabled: true });
+
+          wrapper = shallow(<Option {...props} />);
+        });
+
+        it('should show the `input` in a disable state', () => {
+          expect(wrapper.exists('.isHovered')).toBe(false);
+          expect(wrapper.exists('.isDisabled')).toBe(true);
+        });
+      });
+
       describe('when checked', () => {
         beforeEach(() => {
           props = createTestProps({ isDisabled: true });

@@ -25,6 +25,7 @@ storiesOf('Switches', module)
               value={value}
               isChecked={boolean('isChecked', false)}
               isIndeterminate={boolean('isIndeterminate', false)}
+              isHovered={boolean('isHovered', false)}
               isDisabled={boolean('isDisabled', false)}
               hasError={boolean('hasError', false)}
             >

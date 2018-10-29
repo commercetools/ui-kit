@@ -40,11 +40,12 @@ import { Radio } from '@commercetools-frontend/ui-kit/switches';
 
 ##### Radio.Option
 
-| Props        | Type     | Required | Values | Default | Description                                                   |
-| ------------ | -------- | :------: | ------ | ------- | ------------------------------------------------------------- |
-| `children`   | `string` |    -     | -      | -       | The descriptive text of the Radio.Option                      |
-| `isDisabled` | `bool`   |    -     | -      | `false` | Disables the Radio.Option within the Radio.Group              |
-| `value`      | `string` |    ✅    | -      | -       | The value of the option passed to `onChange` in `Radio.Group` |
+| Props        | Type     | Required | Values | Default | Description                                                                                                      |
+| ------------ | -------- | :------: | ------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
+| `children`   | `string` |    -     | -      | -       | The descriptive text of the Radio.Option                                                                         |
+| `isDisabled` | `bool`   |    -     | -      | `false` | Disables the Radio.Option within the Radio.Group                                                                 |
+| `isHovered`  | `bool`   |    -     | -      | `false` | Renders the Radio.Option in a hovered state. We need this, as hover can somethimes come from a parent component. |
+| `value`      | `string` |    ✅    | -      | -       | The value of the option passed to `onChange` in `Radio.Group` a                                                  |
 
 #### Invariants
 

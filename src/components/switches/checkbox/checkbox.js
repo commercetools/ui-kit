@@ -15,6 +15,7 @@ export class Checkbox extends React.PureComponent {
     isChecked: PropTypes.bool,
     isIndeterminate: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
+    isHovered: PropTypes.bool,
     isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
     children: PropTypes.node,
@@ -39,6 +40,10 @@ export class Checkbox extends React.PureComponent {
             <div
               className={classnames(styles.checkboxWrapper, {
                 [styles.isDisabled]: this.props.isDisabled,
+                [styles.isHovered]:
+                  this.props.isHovered &&
+                  !this.props.isDisabled &&
+                  !this.props.hasError,
                 [styles.hasError]: this.props.hasError,
               })}
             >
