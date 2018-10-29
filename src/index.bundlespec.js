@@ -1,5 +1,4 @@
 import { i18n, customProperties } from 'ui-kit';
-// import { i18n, customProperties } from '..';
 
 describe('exports', () => {
   it('should export i18n for three languages', () => {
