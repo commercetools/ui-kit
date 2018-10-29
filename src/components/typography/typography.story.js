@@ -19,6 +19,7 @@ storiesOf('Typography/Text', module)
     <Section>
       <Text.Headline
         elementType={select('Element type', ['h1', 'h2', 'h3'], 'h1')}
+        title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text Headline')}
@@ -38,6 +39,7 @@ storiesOf('Typography/Text', module)
           'positive',
           'negative',
         ])}
+        title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text Subheadline')}
@@ -47,7 +49,9 @@ storiesOf('Typography/Text', module)
   .add('Wrap', () => (
     <Section>
       <InlineColorWrapper width={'200px'}>
-        <Text.Wrap>
+        <Text.Wrap
+          title={text('title', 'Text to be shown as tooltip on hover')}
+        >
           {text(
             'Text',
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
@@ -71,6 +75,7 @@ storiesOf('Typography/Text', module)
           'negative',
           'inverted',
         ])}
+        title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text Body')}
@@ -92,6 +97,7 @@ storiesOf('Typography/Text', module)
           'negative',
           'warning',
         ])}
+        title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >
         {text('Text', 'Sample text Detail')}

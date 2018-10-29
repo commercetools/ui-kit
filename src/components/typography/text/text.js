@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './text.mod.css';
 
+const nonEmptyString = (props, propName, componentName) => {
+  const value = props[propName];
+  if (typeof value === 'string' && !value)
+    return new Error(
+      `Invalid prop '${propName}' supplied to '${componentName}'. Expected it to be nonempty string, but it was empty.`
+    );
+  return null;
+};
+
 const Headline = props => {
   const HeadlineElement = props.elementType;
   return (
@@ -10,6 +19,7 @@ const Headline = props => {
       className={classnames({
         [styles.truncate]: props.truncate,
       })}
+      title={props.title}
     >
       {props.children}
     </HeadlineElement>
@@ -19,6 +29,7 @@ Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   elementType: PropTypes.oneOf(['h1', 'h2', 'h3']).isRequired,
   children: PropTypes.node.isRequired,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 
@@ -31,6 +42,7 @@ const Subheadline = props => {
         [styles[`${props.tone}`]]: props.tone,
         [styles.truncate]: props.truncate,
       })}
+      title={props.title}
     >
       {props.children}
     </SubheadlineElement>
@@ -48,13 +60,19 @@ Subheadline.propTypes = {
     'negative',
   ]),
   children: PropTypes.node.isRequired,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 
-const Wrap = props => <div className={styles.wrap}>{props.children}</div>;
+const Wrap = props => (
+  <div className={styles.wrap} title={props.title}>
+    {props.children}
+  </div>
+);
 Wrap.displayName = 'TextWrap';
 Wrap.propTypes = {
   children: PropTypes.node.isRequired,
+  title: nonEmptyString,
 };
 
 const Body = props =>
@@ -66,6 +84,7 @@ const Body = props =>
         [styles[`${props.tone}`]]: props.tone,
         [styles.truncate]: props.truncate,
       })}
+      title={props.title}
     >
       {props.children}
     </span>
@@ -77,6 +96,7 @@ const Body = props =>
         [styles[`${props.tone}`]]: props.tone,
         [styles.truncate]: props.truncate,
       })}
+      title={props.title}
     >
       {props.children}
     </p>
@@ -95,6 +115,7 @@ Body.propTypes = {
     'inverted',
   ]),
   children: PropTypes.node.isRequired,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 
@@ -107,6 +128,7 @@ const Detail = props => (
       [styles[`${props.tone}`]]: props.tone,
       [styles.truncate]: props.truncate,
     })}
+    title={props.title}
   >
     {props.children}
   </small>
@@ -125,6 +147,7 @@ Detail.propTypes = {
     'warning',
   ]),
   children: PropTypes.node.isRequired,
+  title: nonEmptyString,
   truncate: PropTypes.bool,
 };
 

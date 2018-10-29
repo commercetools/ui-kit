@@ -24,6 +24,7 @@ Wraps the given text in the given HTML header `size`.
 | ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------- |
 | `elementType` | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                              |
 | `children`    | `PropTypes.node` |    ✅    | -                    | -       | -                                                              |
+| `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element            |
 | `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width |
 
 #### Where to use
@@ -47,6 +48,7 @@ Wraps the given text in the given HTML header `size`.
 | `elementType` | `String`         |    ✅    | `['h4', 'h5']` | -       |
 | `isBold`      | `Boolean`        |    -     | -              | `false` |
 | `children`    | `PropTypes.node` |    ✅    | -              | -       |
+| `title`       | `String`         |    -     | -              | -       |
 | `truncate`    | `Bool`           |    -     | -              | `false` |
 
 #### Where to use
@@ -85,6 +87,7 @@ Wraps the given text in a `<p>` element, for normal content.
 | `isItalic` | `Boolean`        |    -     | -                                                  | `false` |
 | `tone`     | `String`         |    -     | `['primary', 'secondary', 'positive', 'negative']` | -       |
 | `children` | `PropTypes.node` |    ✅    | -                                                  | -       |
+| `title`    | `String`         |    -     | -                                                  | -       |
 | `truncate` | `Bool`           |    -     | -                                                  | `false` |
 
 #### Where to use
@@ -111,6 +114,7 @@ properly style the text.
 | `isItalic` | `Boolean`        |    -     | -                                                                          | `false` |
 | `tone`     | `String`         |    -     | `['primary', 'secondary', 'positive', 'negative', 'inverted', 'warning'']` | -       |
 | `children` | `PropTypes.node` |    ✅    | -                                                                          | -       |
+| `title`    | `String`         |    -     | -                                                                          | -       |
 | `truncate` | `Bool`           |    -     | -                                                                          | `false` |
 
 #### Where to use
