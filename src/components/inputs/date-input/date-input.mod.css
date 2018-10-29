@@ -15,7 +15,7 @@
 }
 
 .daysHeaderContainer {
-  padding: var(--spacing-16) var(--spacing-16);
+  padding: var(--spacing-16) var(--spacing-8);
   border-top: 1px solid var(--color-gray-90);
 }
 
@@ -72,7 +72,6 @@
 }
 
 .daysContainer {
-  padding-top: 5px;
   padding-left: 2%;
 }
 
