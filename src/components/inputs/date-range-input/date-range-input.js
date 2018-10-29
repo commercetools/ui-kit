@@ -11,32 +11,29 @@ import Constraints from '../../constraints';
 import ClearIndicator from '../../internals/clear-indicator';
 import messages from './messages';
 import styles from './date-range-input.mod.css';
-import createSelectStyles from '../../internals/create-select-styles';
+import createDateSelectStyles from '../../internals/create-date-select-styles';
 import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 import vars from '../../../../materials/custom-properties.json';
 
 const rangeSeparator = ' - ';
 
-const createDateInputStyles = ({ hasWarning, hasError }) => {
-  const selectStyles = createSelectStyles({ hasWarning, hasError });
+const createDateRangeInputStyles = ({ hasWarning, hasError }) => {
+  const selectStyles = createDateSelectStyles({ hasWarning, hasError });
   return {
     ...selectStyles,
-    control: (base, state) => ({
-      ...selectStyles.control(base, state),
-      flex: 1,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    }),
     option: (base, state) => ({
       ...selectStyles.option(base, state),
-      display: 'inline-block',
-      width: '12%',
-      margin: `0 1% ${vars['--spacing-8']} 1%`,
-      textAlign: 'center',
-      borderRadius: '4px',
-      border: '1px solid transparent',
-      fontWeight: state.today ? 'bold' : 'inherit',
+      ...(state.data.display === 'calendar'
+        ? {
+            display: 'inline-block',
+            width: '12%',
+            margin: `0 1% ${vars['--spacing-8']} 1%`,
+            textAlign: 'center',
+            borderRadius: '4px',
+            fontWeight: state.today ? 'bold' : 'inherit',
+          }
+        : {}),
       backgroundColor: do {
         if (state.selectionStart) vars['--color-green'];
         else if (state.selectionEnd) vars['--color-green'];
@@ -48,15 +45,6 @@ const createDateInputStyles = ({ hasWarning, hasError }) => {
         if (state.selectionStart || state.selectionEnd) vars['--color-white'];
         else vars['--token-font-color-default'];
       },
-    }),
-    groupHeading: (base, state) => ({
-      ...selectStyles.groupHeading(base, state),
-      padding: 0,
-    }),
-    clearIndicator: base => ({
-      ...base,
-      marginTop: '3px',
-      padding: 0,
     }),
   };
 };
@@ -637,7 +625,7 @@ class DateRangeInput extends Component {
             ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            styles={createDateInputStyles({
+            styles={createDateRangeInputStyles({
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
             })}

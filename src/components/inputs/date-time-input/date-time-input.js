@@ -11,50 +11,9 @@ import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-time-input.mod.css';
 import ClearIndicator from '../../internals/clear-indicator';
-import createSelectStyles from '../../internals/create-select-styles';
+import createDateSelectStyles from '../../internals/create-date-select-styles';
 import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
-import vars from '../../../../materials/custom-properties.json';
-
-const createDateInputStyles = ({ hasWarning, hasError }) => {
-  const selectStyles = createSelectStyles({ hasWarning, hasError });
-  return {
-    ...selectStyles,
-    control: (base, state) => ({
-      ...selectStyles.control(base, state),
-      flex: 1,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    }),
-    option: (base, state) => ({
-      ...selectStyles.option(base, state),
-      display: 'inline-block',
-      width: '12%',
-      margin: `0 1% ${vars['--spacing-8']} 1%`,
-      textAlign: 'center',
-      borderRadius: '4px',
-      fontWeight: state.today ? 'bold' : 'inherit',
-      backgroundColor: do {
-        if (state.isSelected) vars['--color-green'];
-        else if (state.isFocused) vars['--token-background-color-input-hover'];
-        else base.backgroundColor;
-      },
-      color: do {
-        if (state.isSelected) vars['--color-white'];
-        else vars['--token-font-color-default'];
-      },
-    }),
-    groupHeading: (base, state) => ({
-      ...selectStyles.groupHeading(base, state),
-      padding: 0,
-    }),
-    clearIndicator: base => ({
-      ...base,
-      marginTop: '3px',
-      padding: 0,
-    }),
-  };
-};
 
 class Control extends React.Component {
   static displayName = 'Control';
@@ -738,7 +697,7 @@ class DateTimeInput extends Component {
             ref={this.selectRef}
             id={this.props.id}
             name={this.props.name}
-            styles={createDateInputStyles({
+            styles={createDateSelectStyles({
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
             })}
