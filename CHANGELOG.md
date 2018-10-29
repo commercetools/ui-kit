@@ -1,3 +1,29 @@
+<a name="2.0.0-rc.12"></a>
+
+# [2.0.0-rc.12](https://github.com/commercetools/ui-kit/compare/2.0.0-rc.11...2.0.0-rc.12) (2018-10-29)
+
+### Bug Fixes
+
+- import vars correctly ([#188](https://github.com/commercetools/ui-kit/issues/188))
+- remove overflow:none from body reset ([#189](https://github.com/commercetools/ui-kit/issues/189))
+- replace styled-components with react-emotion ([#184](https://github.com/commercetools/ui-kit/issues/184))
+- `SelectInput`: align indicator icons properly ([#190](https://github.com/commercetools/ui-kit/issues/190))
+
+### Changes
+
+- explicitly peer deep deps ([#156](https://github.com/commercetools/ui-kit/issues/156))
+- `bundling`: lower bundle size by discarding comments ([#173](https://github.com/commercetools/ui-kit/issues/173))
+- self contain styles first step ([#186](https://github.com/commercetools/ui-kit/issues/186))
+- `Text`: add `title` prop to all typography components ([#191](https://github.com/commercetools/ui-kit/issues/191))
+
+### BREAKING CHANGES
+
+- `MoneyInput`: better UX, less error cases ([#175](https://github.com/commercetools/ui-kit/issues/175))
+  - dropped support for hasAmountError, hasAmountWarning, hasCurrencyError and hasCurrencyWarning. Use hasError and hasWarning instead.
+  - isTouched only returns true when both fields were touched from now on.
+  - mark both fields as touched when one of them loses focus
+- extract css variables to js and css files ([#181](https://github.com/commercetools/ui-kit/issues/181))
+
 <a name="2.0.0-rc.11"></a>
 
 # [2.0.0-rc.11](https://github.com/commercetools/ui-kit/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2018-10-09)
