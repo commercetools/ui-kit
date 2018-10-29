@@ -63,3 +63,7 @@
   > [id='border'] {
   stroke: var(--token-border-color-input-focus);
 }
+
+.isHovered svg [id='borderAndContent'] > [id='border'] {
+  stroke: var(--token-border-color-input-focus);
+}

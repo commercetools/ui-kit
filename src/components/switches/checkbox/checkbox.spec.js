@@ -84,6 +84,36 @@ describe('<Checkbox>', () => {
         });
       });
 
+      describe('when hovered', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            isHovered: true,
+          });
+
+          wrapper = shallow(<Checkbox {...props} />);
+        });
+
+        it('should render checkbox in a hovered state', () => {
+          expect(wrapper.exists('.isHovered')).toBe(true);
+        });
+      });
+
+      describe('when hovered and disabled', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            isHovered: true,
+            isDisabled: true,
+          });
+
+          wrapper = shallow(<Checkbox {...props} />);
+        });
+
+        it('should render checkbox in a disabled state', () => {
+          expect(wrapper.exists('.isHovered')).toBe(false);
+          expect(wrapper.exists('.isDisabled')).toBe(true);
+        });
+      });
+
       describe('when unchecked', () => {
         beforeEach(() => {
           props = createTestProps({

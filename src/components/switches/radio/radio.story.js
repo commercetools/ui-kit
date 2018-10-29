@@ -25,18 +25,21 @@ storiesOf('Switches', module)
       >
         <Radio.Option
           isDisabled={boolean('isFirstOptionDisabled', false)}
+          isHovered={boolean('isFirstOptionHovered', false)}
           value="foo-value"
         >
           {text('Label of primary action', 'Primary option')}
         </Radio.Option>
         <Radio.Option
           isDisabled={boolean('isSecondOptionDisabled', false)}
+          isHovered={boolean('isSecondOptionHovered', true)}
           value="bar-value"
         >
           {text('Label of second action', 'Second option')}
         </Radio.Option>
         <Radio.Option
           isDisabled={boolean('isThirdOptionDisabled', true)}
+          isHovered={boolean('isThirdOptionHovered', false)}
           value="baz-value"
         >
           {text('Label of third action', 'Third option')}

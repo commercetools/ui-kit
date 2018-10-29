@@ -15,6 +15,12 @@ export class Checkbox extends React.PureComponent {
     isChecked: PropTypes.bool,
     isIndeterminate: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
+    // This prop forces Checkbox to be rendered in a hovered state (thought isDisabled takes
+    // precedence over that). We need that to address a use-case when hovering is comming
+    // from somewhere up the hierarchy. There is no need to touch this prop in case
+    // all you need is a general highlighting on hover of Checkbox body, which is solved
+    // by a corresponding :hover selector in the syles of this component.
+    isHovered: PropTypes.bool,
     isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
     children: PropTypes.node,
@@ -39,6 +45,10 @@ export class Checkbox extends React.PureComponent {
             <div
               className={classnames(styles.checkboxWrapper, {
                 [styles.isDisabled]: this.props.isDisabled,
+                [styles.isHovered]:
+                  this.props.isHovered &&
+                  !this.props.isDisabled &&
+                  !this.props.hasError,
                 [styles.hasError]: this.props.hasError,
               })}
             >

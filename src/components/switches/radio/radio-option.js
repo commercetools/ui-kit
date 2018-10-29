@@ -11,6 +11,12 @@ export class Option extends React.PureComponent {
   static displayName = 'RadioOption';
   static propTypes = {
     value: PropTypes.string.isRequired,
+    // This prop forces Radio.Option to be rendered in a hovered state (thought isDisabled takes
+    // precedence over that). We need that to address a use-case when hovering is comming
+    // from somewhere up the hierarchy. There is no need to touch this prop in case
+    // all you need is a general highlighting on hover of Radio.Option body, which is solved
+    // by a corresponding :hover selector in the syles of this component.
+    isHovered: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isChecked: PropTypes.bool,
     children: PropTypes.node,
@@ -35,6 +41,8 @@ export class Option extends React.PureComponent {
             <div
               className={classnames(styles.radioWrapper, {
                 [styles.isDisabled]: this.props.isDisabled,
+                [styles.isHovered]:
+                  this.props.isHovered && !this.props.isDisabled,
               })}
             >
               {this.props.isChecked ? <Icons.Checked /> : <Icons.Default />}
