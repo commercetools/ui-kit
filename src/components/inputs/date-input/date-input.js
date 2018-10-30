@@ -12,6 +12,7 @@ import styles from './date-input.mod.css';
 import ClearIndicator from '../../internals/clear-indicator';
 import createDateSelectStyles from '../../internals/create-date-select-styles';
 import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
 class Control extends React.Component {
@@ -378,55 +379,57 @@ class DateInput extends Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <CalendarConnector.Provider
-          value={{
-            locale: this.props.intl.locale,
-            month: this.state.month,
-            setMonth: month => this.setState({ month }),
-            selectRef: this.selectRef,
-            hasError: this.props.hasError,
-            hasWarning: this.props.hasWarning,
-            openMenu: () => this.setState({ isMenuOpen: true }),
-          }}
-        >
-          <Select
-            ref={this.selectRef}
-            inputId={this.props.id}
-            name={this.props.name}
-            styles={createDateSelectStyles({
-              hasWarning: this.props.hasWarning,
+        <div {...filterDataAttributes(this.props)}>
+          <CalendarConnector.Provider
+            value={{
+              locale: this.props.intl.locale,
+              month: this.state.month,
+              setMonth: month => this.setState({ month }),
+              selectRef: this.selectRef,
               hasError: this.props.hasError,
-            })}
-            components={{
-              Group,
-              Option,
-              SelectContainer,
-              // styling
-              Control,
-              DropdownIndicator: () => null,
-              ClearIndicator,
+              hasWarning: this.props.hasWarning,
+              openMenu: () => this.setState({ isMenuOpen: true }),
             }}
-            filterOption={null}
-            isMulti={false}
-            isOptionSelected={(option, value) =>
-              value.some(i => i.date.isSame(option.date, 'day'))
-            }
-            maxMenuHeight={380}
-            onChange={this.handleChange}
-            onInputChange={this.handleInputChange}
-            options={[
-              ...this.state.suggestedOptions,
-              createCalendarOptions(this.state.month, this.props.intl),
-            ]}
-            value={this.standardDateToOption(this.props.value)}
-            isClearable={this.props.isClearable}
-            isDisabled={this.props.isDisabled}
-            autoFocus={this.props.isAutofocussed}
-            menuIsOpen={this.state.isMenuOpen}
-            onMenuOpen={() => this.setState({ isMenuOpen: true })}
-            onMenuClose={() => this.setState({ isMenuOpen: false })}
-          />
-        </CalendarConnector.Provider>
+          >
+            <Select
+              ref={this.selectRef}
+              inputId={this.props.id}
+              name={this.props.name}
+              styles={createDateSelectStyles({
+                hasWarning: this.props.hasWarning,
+                hasError: this.props.hasError,
+              })}
+              components={{
+                Group,
+                Option,
+                SelectContainer,
+                // styling
+                Control,
+                DropdownIndicator: () => null,
+                ClearIndicator,
+              }}
+              filterOption={null}
+              isMulti={false}
+              isOptionSelected={(option, value) =>
+                value.some(i => i.date.isSame(option.date, 'day'))
+              }
+              maxMenuHeight={380}
+              onChange={this.handleChange}
+              onInputChange={this.handleInputChange}
+              options={[
+                ...this.state.suggestedOptions,
+                createCalendarOptions(this.state.month, this.props.intl),
+              ]}
+              value={this.standardDateToOption(this.props.value)}
+              isClearable={this.props.isClearable}
+              isDisabled={this.props.isDisabled}
+              autoFocus={this.props.isAutofocussed}
+              menuIsOpen={this.state.isMenuOpen}
+              onMenuOpen={() => this.setState({ isMenuOpen: true })}
+              onMenuClose={() => this.setState({ isMenuOpen: false })}
+            />
+          </CalendarConnector.Provider>
+        </div>
       </Constraints.Horizontal>
     );
   }

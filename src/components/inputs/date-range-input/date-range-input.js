@@ -13,6 +13,7 @@ import messages from './messages';
 import styles from './date-range-input.mod.css';
 import createDateSelectStyles from '../../internals/create-date-select-styles';
 import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 import vars from '../../../../materials/custom-properties.json';
 
@@ -351,6 +352,33 @@ class SelectContainer extends Component {
                   return;
                 }
 
+                // When the user types a single date or a date range
+                // and then presses enter, we want to select that date range
+                if (event.key === 'Enter') {
+                  const firstOption = this.props.options?.[0];
+                  if (!firstOption) {
+                    this.props.innerProps.onKeyDown(event);
+                    return;
+                  }
+                  if (typeof firstOption.value === 'string') {
+                    this.props.setValue(null);
+                    this.props.setValue(firstOption);
+                    this.props.setValue(firstOption);
+                    return;
+                  }
+                  if (
+                    Array.isArray(firstOption.value) &&
+                    firstOption.value.length === 2
+                  ) {
+                    this.props.setValue(null);
+                    this.props.setValue({ value: firstOption.value[0] });
+                    this.props.setValue({ value: firstOption.value[1] });
+                    return;
+                  }
+                  // this.props.setValue();
+                  return;
+                }
+
                 const calendar = this.props.options.find(
                   o => o.display === 'calendarGroup'
                 );
@@ -374,6 +402,9 @@ class SelectContainer extends Component {
                 })();
 
                 if (nextOptionIndex !== null) {
+                  // prevent cursor from moving when user is moving the
+                  // highlighted date
+                  event.preventDefault();
                   const nextOption =
                     calendar.options[
                       Math.max(
@@ -604,75 +635,77 @@ class DateRangeInput extends Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <CalendarConnector.Provider
-          value={{
-            locale: this.props.intl.locale,
-            month: this.state.month,
-            setMonth: month => this.setState({ month }),
-            range: this.state.range,
-            rangeTarget: this.state.rangeTarget,
-            setRangeTarget: rangeTarget => this.setState({ rangeTarget }),
-            selectRef: this.selectRef,
-            hasError: this.props.hasError,
-            hasWarning: this.props.hasWarning,
-            openMenu: () =>
-              this.setState(prevState => ({
-                openCount: prevState.openCount + 1,
-              })),
-          }}
-        >
-          <Select
-            ref={this.selectRef}
-            id={this.props.id}
-            name={this.props.name}
-            styles={createDateRangeInputStyles({
-              hasWarning: this.props.hasWarning,
+        <div {...filterDataAttributes(this.props)}>
+          <CalendarConnector.Provider
+            value={{
+              locale: this.props.intl.locale,
+              month: this.state.month,
+              setMonth: month => this.setState({ month }),
+              range: this.state.range,
+              rangeTarget: this.state.rangeTarget,
+              setRangeTarget: rangeTarget => this.setState({ rangeTarget }),
+              selectRef: this.selectRef,
               hasError: this.props.hasError,
-            })}
-            components={{
-              Group,
-              Option,
-              SelectContainer,
-              // styling
-              Control,
-              DropdownIndicator: () => null,
-              ClearIndicator,
+              hasWarning: this.props.hasWarning,
+              openMenu: () =>
+                this.setState(prevState => ({
+                  openCount: prevState.openCount + 1,
+                })),
             }}
-            filterOption={null}
-            isMulti={false}
-            maxMenuHeight={380}
-            onChange={this.handleChange}
-            onInputChange={this.handleInputChange}
-            options={[
-              ...this.state.suggestedOptions,
-              createCalendarGroup(this.state.month, this.props.intl),
-            ]}
-            value={this.rangeToOption(this.props.value)}
-            isClearable={this.props.isClearable}
-            autoFocus={this.props.isAutofocussed}
-            menuIsOpen={this.state.openCount > 0}
-            onBlur={() => {
-              this.setState({ range: [], rangeTarget: null });
-              // reset input when range selection is aborted by closing,
-              // also remove any value in case there was one
-              if (!rangeEqual(this.props.value, this.state.range)) {
-                if (this.props.value.length !== 0) this.props.onChange([]);
-              }
-            }}
-            onMenuOpen={() => {
-              this.setState(prevState => ({
-                openCount: prevState.openCount + 1,
-                range: this.props.value.length === 2 ? this.props.value : [],
-                rangeTarget: null,
-              }));
-            }}
-            onMenuClose={() => {
-              this.setState(prevState => ({
-                openCount: Math.max(prevState.openCount - 1, 0),
-              }));
-            }}
-          />
-        </CalendarConnector.Provider>
+          >
+            <Select
+              ref={this.selectRef}
+              inputId={this.props.id}
+              name={this.props.name}
+              styles={createDateRangeInputStyles({
+                hasWarning: this.props.hasWarning,
+                hasError: this.props.hasError,
+              })}
+              components={{
+                Group,
+                Option,
+                SelectContainer,
+                // styling
+                Control,
+                DropdownIndicator: () => null,
+                ClearIndicator,
+              }}
+              filterOption={null}
+              isMulti={false}
+              maxMenuHeight={380}
+              onChange={this.handleChange}
+              onInputChange={this.handleInputChange}
+              options={[
+                ...this.state.suggestedOptions,
+                createCalendarGroup(this.state.month, this.props.intl),
+              ]}
+              value={this.rangeToOption(this.props.value)}
+              isClearable={this.props.isClearable}
+              autoFocus={this.props.isAutofocussed}
+              menuIsOpen={this.state.openCount > 0}
+              onBlur={() => {
+                this.setState({ range: [], rangeTarget: null });
+                // reset input when range selection is aborted by closing,
+                // also remove any value in case there was one
+                if (!rangeEqual(this.props.value, this.state.range)) {
+                  if (this.props.value.length !== 0) this.props.onChange([]);
+                }
+              }}
+              onMenuOpen={() => {
+                this.setState(prevState => ({
+                  openCount: prevState.openCount + 1,
+                  range: this.props.value.length === 2 ? this.props.value : [],
+                  rangeTarget: null,
+                }));
+              }}
+              onMenuClose={() => {
+                this.setState(prevState => ({
+                  openCount: Math.max(prevState.openCount - 1, 0),
+                }));
+              }}
+            />
+          </CalendarConnector.Provider>
+        </div>
       </Constraints.Horizontal>
     );
   }

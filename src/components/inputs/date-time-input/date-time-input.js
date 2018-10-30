@@ -50,8 +50,8 @@ class Control extends React.Component {
 
 const formatTime = date => {
   if (date.milliseconds()) return date.format('HH:mm:ss.SSS');
-  if (date.seconds()) return date.format('HH:mm:ss');
-  return date.format('HH:mm');
+  if (date.seconds()) return date.format('LTS'); // 5:13:51 PM
+  return date.format('LT'); // 5:13 PM
 };
 
 const setFocus = (selectRef, option) => {
@@ -95,8 +95,8 @@ export const splitDateTimeString = (value, separators) => {
 //   13:00:00.000
 //   13:00:60
 //   13:00:59.908
-// Returns an array containing
-//   [hours, minutes, seconds, milliseconds]
+// Returns an object containing
+//   { hours, minutes, seconds, milliseconds }
 // or null
 const parseTime = rawTime => {
   if (!rawTime || typeof rawTime !== 'string') return null;
@@ -173,16 +173,16 @@ const createOptionForDate = (day, timeZone, intl) => {
   };
 };
 
-const createCalendarOptions = (day, timeZone, intl) => {
+const createCalendarOptions = (day, timeZone, intl, time) => {
   const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
     (_, i) => {
       const dayOfMonth = i + 1;
       const date = moment
         .tz(timeZone)
-        .hours(0)
-        .minutes(0)
-        .seconds(0)
-        .milliseconds(0)
+        .hours(time ? time.hours : 0)
+        .minutes(time ? time.minutes : 0)
+        .seconds(time ? time.seconds : 0)
+        .milliseconds(time ? time.milliseconds : 0)
         .locale(intl.locale)
         .date(dayOfMonth);
       return {
@@ -598,6 +598,10 @@ class DateTimeInput extends Component {
           // wait for setState so that timeInput has a chance to mount,
           // otherwise "current" will not be defined
           this.timeInputRef.current.focus();
+          this.timeInputRef.current.setSelectionRange(
+            0,
+            this.state.time.length
+          );
         });
         break;
       case 'input-change': {
@@ -725,7 +729,8 @@ class DateTimeInput extends Component {
               createCalendarOptions(
                 this.state.month,
                 this.props.timeZone,
-                this.props.intl
+                this.props.intl,
+                parseTime(this.state.time)
               ),
             ]}
             value={this.standardDateToOption(this.props.value)}
@@ -737,11 +742,13 @@ class DateTimeInput extends Component {
                 openCount: prevState.openCount + 1,
                 time: this.props.value
                   ? formatTime(
-                      moment.tz(
-                        this.props.value,
-                        moment.ISO_8601,
-                        this.props.timeZone
-                      )
+                      moment
+                        .tz(
+                          this.props.value,
+                          moment.ISO_8601,
+                          this.props.timeZone
+                        )
+                        .locale(this.props.intl.locale)
                     )
                   : '',
               }));

@@ -18,6 +18,7 @@ storiesOf('Inputs', module)
         render={(value, onChange) => (
           <div>
             <DateInput
+              id="foo"
               value={value}
               onChange={date => {
                 action('onChange')(date);

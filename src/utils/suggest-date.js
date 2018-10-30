@@ -36,13 +36,19 @@ export function suggestDate(rawWord, locale, messages, timeZone = 'UTC') {
   const matchedWeekay = weekdays.findIndex(matches);
   if (matchedWeekay !== -1) {
     const weekday = moment().weekday();
-    return (
-      moment
-        .tz(timeZone)
-        .startOf('day')
-        // we subtract so that we always match in the current week
-        .add(matchedWeekay - weekday, 'day')
-    );
+
+    // we subtract so that we always match in the current week,
+    // then we adjust so that matches are always in the future when typing
+    // weekdays
+    const suggestedDayDelta = do {
+      const delta = matchedWeekay - weekday;
+      delta < 0 ? delta + 7 : delta;
+    };
+
+    return moment
+      .tz(timeZone)
+      .startOf('day')
+      .add(suggestedDayDelta, 'day');
   }
 
   const months = moment.localeData(locale).months();
