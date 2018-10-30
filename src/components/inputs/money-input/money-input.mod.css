@@ -59,6 +59,13 @@
   border-color: var(--token-border-color-input-error);
 }
 
+.amount-focus {
+  composes: amountInput;
+  border-color: var(--token-border-color-input-focus);
+  background: var(--token-background-color-input-pristine);
+  color: var(--token-font-color-default);
+}
+
 .amount-default:active,
 .amount-default:focus {
   border-color: var(--token-border-color-input-focus);

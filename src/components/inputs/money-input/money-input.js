@@ -18,6 +18,8 @@ const createCurrencySelectStyles = ({
   hasWarning,
   hasError,
   hasNoCurrencies,
+  isDisabled,
+  inputHasFocus,
 }) => {
   const selectStyles = createSelectStyles({ hasWarning, hasError });
   return {
@@ -28,6 +30,20 @@ const createCurrencySelectStyles = ({
       borderBottomRightRadius: '0',
       borderRight: '0',
       width: '72px',
+      borderColor: do {
+        if (isDisabled) vars['--token-border-color-input-disabled'];
+        else if (hasError) vars['--token-border-color-input-error'];
+        else if (hasWarning) vars['--token-border-color-input-warning'];
+        else if (inputHasFocus) vars['--token-border-color-input-focus'];
+        else vars['--token-border-color-input-pristine'];
+      },
+      '&:hover': do {
+        if (isDisabled) vars['--token-border-color-input-disabled'];
+        else if (hasError) vars['--token-border-color-input-error'];
+        else if (hasWarning) vars['--token-border-color-input-warning'];
+        else if (inputHasFocus) vars['--token-border-color-input-focus'];
+        else vars['--token-border-color-input-pristine'];
+      },
     }),
     singleValue: base => ({
       ...base,
@@ -188,6 +204,7 @@ const getAmountStyles = props => {
   if (props.isDisabled) return styles['amount-disabled'];
   if (props.hasError) return styles['amount-error'];
   if (props.hasWarning) return styles['amount-warning'];
+  if (props.hasFocus) return styles['amount-focus'];
 
   return styles['amount-default'];
 };
@@ -283,6 +300,11 @@ export default class MoneyInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
+  state = {
+    currencyHasFocus: false,
+    amountHasFocus: false,
+  };
+
   handleCurrencyChange = option => {
     const currencyCode = option.value;
     if (this.props.value.currencyCode !== currencyCode) {
@@ -352,6 +374,9 @@ export default class MoneyInput extends React.Component {
 
   handleAmountBlur = () => {
     const amount = this.props.value.amount.trim();
+    this.setState({
+      amountHasFocus: false,
+    });
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
     if (amount.length > 0 && currencies[this.props.value.currencyCode]) {
@@ -382,11 +407,15 @@ export default class MoneyInput extends React.Component {
   render() {
     const hasNoCurrencies = this.props.currencies.length === 0;
     const hasWarning = this.props.hasCurrencyWarning;
-    const hasError = this.props.hasCurrencyError;
+    const inputHasFocus =
+      this.state.currencyHasFocus || this.state.amountHasFocus;
+
     const currencySelectStyles = createCurrencySelectStyles({
       hasWarning,
-      hasError,
+      hasError: this.props.hasCurrencyError || this.props.hasError,
       hasNoCurrencies,
+      isDisabled: this.props.isDisabled || hasNoCurrencies,
+      inputHasFocus,
     });
     const options = this.props.currencies.map(currencyCode => ({
       label: currencyCode,
@@ -424,6 +453,8 @@ export default class MoneyInput extends React.Component {
             options={options}
             placeholder=""
             styles={currencySelectStyles}
+            onFocus={() => this.setState({ currencyHasFocus: true })}
+            onBlur={() => this.setState({ currencyHasFocus: false })}
             onChange={this.handleCurrencyChange}
             data-testid="currency-dropdown"
           />
@@ -432,11 +463,13 @@ export default class MoneyInput extends React.Component {
             id={MoneyInput.getAmountInputId(this.props.id)}
             name={getAmountInputName(this.props.name)}
             type="text"
+            onFocus={() => this.setState({ amountHasFocus: true })}
             value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
               hasError: this.props.hasError,
               hasWarning: this.props.hasWarning,
+              hasFocus: inputHasFocus,
             })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
