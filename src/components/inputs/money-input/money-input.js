@@ -13,7 +13,6 @@ import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
 import vars from '../../../../materials/custom-properties.json';
 
-console.log('token-font-color-error', vars['--token-font-color-error']);
 // overwrite styles of createSelectStyles
 const createCurrencySelectStyles = ({
   hasWarning,

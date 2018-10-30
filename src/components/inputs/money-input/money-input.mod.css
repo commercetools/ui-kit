@@ -23,6 +23,7 @@
   outline: none;
   box-shadow: none;
   appearance: none;
+  margin-left: 0;
 }
 
 .amountInput::placeholder {
