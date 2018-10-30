@@ -338,14 +338,16 @@ export default class MoneyInput extends React.Component {
     // value to a number, as we want to keep a string!
     // The fake event does not contain the input type information, so Formik
     // will not convert the value to a number.
-    const fakeEvent = {
-      persist: () => {},
-      target: {
-        name: event.target.name,
-        value: event.target.value,
-      },
-    };
-    this.props.onChange(fakeEvent);
+    if (isNumberish(event.target.value)) {
+      const fakeEvent = {
+        persist: () => {},
+        target: {
+          name: event.target.name,
+          value: event.target.value,
+        },
+      };
+      this.props.onChange(fakeEvent);
+    }
   };
 
   handleAmountBlur = () => {
@@ -429,7 +431,7 @@ export default class MoneyInput extends React.Component {
             ref={this.amountInputRef}
             id={MoneyInput.getAmountInputId(this.props.id)}
             name={getAmountInputName(this.props.name)}
-            type="number"
+            type="text"
             value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
