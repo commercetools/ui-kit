@@ -31,7 +31,6 @@ const controlStyles = props => (base, state) => ({
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
   '&:hover': {
-    borderColor: vars['--token-border-color-input-pristine'],
     boxShadow: 'none',
   },
   '&:active': {
