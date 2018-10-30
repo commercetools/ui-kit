@@ -327,9 +327,9 @@ describe('MoneyInput', () => {
     expect(getByLabelText('Amount')).toHaveAttribute('data-foo', 'bar');
   });
 
-  it('should render a number input', () => {
+  it('should render a text input', () => {
     const { getByLabelText } = render(<TestComponent />);
-    expect(getByLabelText('Amount')).toHaveAttribute('type', 'number');
+    expect(getByLabelText('Amount')).toHaveAttribute('type', 'text');
   });
 
   it('should have an HTML name based on the passed name', () => {
