@@ -9,10 +9,11 @@ import Select, { components as SelectComponents } from 'react-select';
 import { suggestDate } from '../../../utils/suggest-date';
 import Constraints from '../../constraints';
 import ClearIndicator from '../../internals/clear-indicator';
+import CalendarDropdownIndicator from '../../internals/calendar-dropdown-indicator';
 import messages from './messages';
 import styles from './date-range-input.mod.css';
 import createDateSelectStyles from '../../internals/create-date-select-styles';
-import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
+import { AngleLeftIcon, AngleRightIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 import vars from '../../../../materials/custom-properties.json';
@@ -49,39 +50,6 @@ const createDateRangeInputStyles = ({ hasWarning, hasError }) => {
     }),
   };
 };
-
-class Control extends React.Component {
-  static displayName = 'Control';
-  render() {
-    return (
-      <CalendarConnector.Consumer>
-        {({ selectRef, hasError, hasWarning, openMenu }) => (
-          <div className={styles.controlContainer}>
-            <SelectComponents.Control {...this.props} />
-            <div
-              className={do {
-                if (this.props.isDisabled) styles.controlCalendarDisabled;
-                else if (hasError) styles.controlCalendarError;
-                else if (hasWarning) styles.controlCalendarWarning;
-                else if (this.props.isFocused) styles.controlCalendarFocused;
-                else styles.controlCalendar;
-              }}
-              onClick={() => {
-                selectRef.current.select.focus();
-                openMenu();
-              }}
-            >
-              <CalendarIcon
-                size="big"
-                theme={this.props.isDisabled ? 'grey' : 'black'}
-              />
-            </div>
-          </div>
-        )}
-      </CalendarConnector.Consumer>
-    );
-  }
-}
 
 // basically a dumb version of deepEquals which works with ranges only
 const rangeEqual = (a, b) => {
@@ -666,8 +634,7 @@ class DateRangeInput extends Component {
                 Option,
                 SelectContainer,
                 // styling
-                Control,
-                DropdownIndicator: () => null,
+                DropdownIndicator: CalendarDropdownIndicator,
                 ClearIndicator,
               }}
               filterOption={null}

@@ -10,43 +10,11 @@ import Constraints from '../../constraints';
 import messages from './messages';
 import styles from './date-input.mod.css';
 import ClearIndicator from '../../internals/clear-indicator';
+import CalendarDropdownIndicator from '../../internals/calendar-dropdown-indicator';
 import createDateSelectStyles from '../../internals/create-date-select-styles';
-import { AngleLeftIcon, AngleRightIcon, CalendarIcon } from '../../icons';
+import { AngleLeftIcon, AngleRightIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
-
-class Control extends React.Component {
-  static displayName = 'Control';
-  render() {
-    return (
-      <CalendarConnector.Consumer>
-        {({ selectRef, hasError, hasWarning, openMenu }) => (
-          <div className={styles.controlContainer}>
-            <SelectComponents.Control {...this.props} />
-            <div
-              className={do {
-                if (this.props.isDisabled) styles.controlCalendarDisabled;
-                else if (hasError) styles.controlCalendarError;
-                else if (hasWarning) styles.controlCalendarWarning;
-                else if (this.props.isFocused) styles.controlCalendarFocused;
-                else styles.controlCalendar;
-              }}
-              onClick={() => {
-                selectRef.current.select.focus();
-                openMenu();
-              }}
-            >
-              <CalendarIcon
-                size="big"
-                theme={this.props.isDisabled ? 'grey' : 'black'}
-              />
-            </div>
-          </div>
-        )}
-      </CalendarConnector.Consumer>
-    );
-  }
-}
 
 const CalendarConnector = React.createContext();
 
@@ -404,8 +372,8 @@ class DateInput extends Component {
                 Option,
                 SelectContainer,
                 // styling
-                Control,
-                DropdownIndicator: () => null,
+                // Control,
+                DropdownIndicator: CalendarDropdownIndicator,
                 ClearIndicator,
               }}
               filterOption={null}

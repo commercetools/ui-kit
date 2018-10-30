@@ -7,9 +7,30 @@ export default ({ hasWarning, hasError }) => {
     ...selectStyles,
     control: (base, state) => ({
       ...selectStyles.control(base, state),
-      flex: 1,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
+      paddingRight: 0,
+    }),
+    indicatorSeparator: (base, state) => ({
+      ...base,
+      alignSelf: 'stretch',
+      backgroundColor: do {
+        if (state.isDisabled) vars['--token-border-color-input-disabled'];
+        else if (hasError) vars['--token-border-color-input-error'];
+        else if (hasWarning) vars['--token-border-color-input-warning'];
+        else if (state.isFocused) vars['--token-border-color-input-focus'];
+        else vars['--token-border-color-input-pristine'];
+      },
+      width: '1px',
+      margin: '0',
+    }),
+    dropdownIndicator: (base, state) => ({
+      ...selectStyles.dropdownIndicator(base, state),
+      margin: `0 ${vars['--spacing-4']}`,
+    }),
+    indicatorsContainer: (base, state) => ({
+      ...selectStyles.indicatorsContainer(base, state),
+      alignItems: 'center',
+      // total height - 2 times border height
+      height: `calc(${vars['--token-size-height-input']} - 2 * 1px)`,
     }),
     option: (base, state) => ({
       ...selectStyles.option(base, state),
@@ -39,7 +60,11 @@ export default ({ hasWarning, hasError }) => {
     }),
     clearIndicator: base => ({
       ...base,
-      marginTop: '3px',
+      // The icon is 16px, but its container is 19px high. The icon clings to
+      // the top, so we need 3px to actually center it. And then the icon is
+      // still of by .5px, so we center it as well. :cry:
+      marginTop: '3.5px',
+      marginRight: vars['--spacing-4'],
       padding: 0,
     }),
   };
