@@ -356,19 +356,8 @@ export default class MoneyInput extends React.Component {
   };
 
   handleAmountChange = event => {
-    // We need to emit a fake event to stop Formik from auto-converting the
-    // value to a number, as we want to keep a string!
-    // The fake event does not contain the input type information, so Formik
-    // will not convert the value to a number.
     if (isNumberish(event.target.value)) {
-      const fakeEvent = {
-        persist: () => {},
-        target: {
-          name: event.target.name,
-          value: event.target.value,
-        },
-      };
-      this.props.onChange(fakeEvent);
+      this.props.onChange(event);
     }
   };
 
