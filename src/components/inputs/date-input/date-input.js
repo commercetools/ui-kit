@@ -183,7 +183,7 @@ class SelectContainer extends Component {
   render() {
     return (
       <CalendarConnector.Consumer>
-        {({ selectRef }) => (
+        {({ selectRef, month, setMonth }) => (
           <SelectComponents.SelectContainer
             {...this.props}
             innerProps={{
@@ -197,6 +197,23 @@ class SelectContainer extends Component {
                     'calendar'
                 ) {
                   this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                const changeMonth = delta =>
+                  setMonth(
+                    moment(month)
+                      .add(delta, 'month')
+                      .toDate()
+                  );
+
+                // allow users to navigate months by pressing shift + left/right
+                if (event.key === 'ArrowLeft' && event.shiftKey) {
+                  changeMonth(-1);
+                  return;
+                }
+                if (event.key === 'ArrowRight' && event.shiftKey) {
+                  changeMonth(1);
                   return;
                 }
 
@@ -222,7 +239,35 @@ class SelectContainer extends Component {
                   }
                 })();
 
-                if (nextOptionIndex !== null) {
+                if (nextOptionIndex === null) {
+                  this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                // avoid moving cursor in text
+                event.preventDefault();
+
+                // allow navigating to suggested options and between months
+                // when using keyboard
+                // Arrow Up/Down navigates within current month and results
+                // Arrow Left/Right can be used to change months
+                if (nextOptionIndex < 0) {
+                  // when there is a custom option
+                  if (
+                    this.props.options.length > 1 &&
+                    event.key === 'ArrowUp'
+                  ) {
+                    setFocus(selectRef, this.props.options[0]);
+                  } else if (event.key === 'ArrowLeft') {
+                    changeMonth(1);
+                  }
+                } else if (nextOptionIndex >= calendar.options.length) {
+                  if (event.key === 'ArrowDown') {
+                    setFocus(selectRef, null);
+                  } else if (event.key === 'ArrowRight') {
+                    changeMonth(-1);
+                  }
+                } else {
                   const nextOption =
                     calendar.options[
                       Math.max(
@@ -231,8 +276,6 @@ class SelectContainer extends Component {
                       )
                     ];
                   setFocus(selectRef, nextOption);
-                } else {
-                  this.props.innerProps.onKeyDown(event);
                 }
               },
             }}
@@ -372,7 +415,6 @@ class DateInput extends Component {
                 Option,
                 SelectContainer,
                 // styling
-                // Control,
                 DropdownIndicator: CalendarDropdownIndicator,
                 ClearIndicator,
               }}
