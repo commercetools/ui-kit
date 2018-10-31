@@ -60,7 +60,7 @@ export const parseTime = rawTime => {
   if (Number(milliseconds) > 999) return null;
 
   return {
-    hours: Number(hours) + (amPm === 'pm' ? 12 : 0),
+    hours: Number(hours) + (amPm === 'pm' && Number(hours) !== 12 ? 12 : 0),
     minutes: Number(minutes),
     seconds: Number(seconds),
     // Parses the number as a fraction to ensure that .5, .05 and .005 are
@@ -147,7 +147,21 @@ export class TimeInput extends React.Component {
       return timeIn24hFormat;
 
     // return the localized time (12h or 24h format)
-    const date = new Date(`1970-01-01 ${timeIn24hFormat}`);
+    const date = new Date(
+      Date.UTC(
+        1970,
+        0,
+        1,
+        time.hours,
+        time.minutes,
+        time.seconds,
+        time.milliseconds
+      )
+    );
+    date.setDate(1);
+    date.setMonth(0);
+    date.setYear(1970);
+    console.log(date);
     const isValidDate = !isNaN(date.getTime());
     return isValidDate ? this.props.intl.formatTime(date) : '';
   };
