@@ -51,20 +51,6 @@ export function suggestDate(rawWord, locale, messages, timeZone = 'UTC') {
       .add(suggestedDayDelta, 'day');
   }
 
-  const months = moment.localeData(locale).months();
-  const matchedMonth = months.findIndex(matches);
-  if (matchedMonth !== -1) {
-    const month = moment.utc().month();
-    return (
-      moment
-        .tz(timeZone)
-        // we subtract so that we always match in the current year
-        .add(matchedMonth - month, 'month')
-        // always show first of month
-        .date(1)
-    );
-  }
-
   const date = moment.tz(
     word,
     moment.localeData(locale).longDateFormat('L'),
