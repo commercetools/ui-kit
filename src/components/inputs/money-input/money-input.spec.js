@@ -27,6 +27,7 @@ class TestComponent extends React.Component {
     currencies: ['EUR', 'USD'],
   };
   handleChange = event => {
+    event.persist();
     if (event.target.name === 'some-name.amount') {
       this.setState(prevState => ({
         value: { ...prevState.value, amount: event.target.value },
@@ -340,21 +341,41 @@ describe('MoneyInput', () => {
     expect(getByTestId('money-input-container')).toHaveTextContent('EUR');
   });
 
-  it('should allow changing the amount', () => {
-    const onChange = jest.fn();
+  it('should allow changing the amount with numbers', () => {
+    let event;
+
+    const onChange = e => {
+      event = {
+        persist: e.persist,
+        target: {
+          value: e.target.value,
+          name: e.target.name,
+        },
+      };
+    };
     const { getByLabelText } = render(<TestComponent onChange={onChange} />);
 
-    const event = { target: { value: '12' } };
-    fireEvent.change(getByLabelText('Amount'), event);
+    fireEvent.change(getByLabelText('Amount'), { target: { value: '12' } });
 
-    // onChange should be called with the updated amount
-    expect(onChange).toHaveBeenCalledWith({
+    // event should be the updated amount
+    expect(event).toEqual({
       persist: expect.any(Function),
       target: {
         name: 'some-name.amount',
         value: '12',
       },
     });
+  });
+
+  it('should not allow changing the amount with invalid numbers', () => {
+    const onChange = jest.fn();
+    const { getByLabelText } = render(<TestComponent onChange={onChange} />);
+
+    fireEvent.change(getByLabelText('Amount'), {
+      target: { value: 'non number' },
+    });
+
+    expect(onChange).toBeCalledTimes(0);
   });
 
   it('should allow changing the currency', () => {
@@ -390,7 +411,9 @@ describe('MoneyInput', () => {
     const { getByLabelText } = render(<TestComponent />);
 
     // change amount
-    fireEvent.change(getByLabelText('Amount'), { target: { value: '12' } });
+    fireEvent.change(getByLabelText('Amount'), {
+      target: { value: '12' },
+    });
 
     // blur amount
     fireEvent.blur(getByLabelText('Amount'));

@@ -377,8 +377,7 @@ export default class MoneyInput extends React.Component {
       // When the user entered a value with centPrecision, we can format
       // the resulting value to that currency, e.g. 20.1 to 20.10
       if (String(formattedAmount) !== amount) {
-        // We need to emit a fake event to stop Formik from auto-converting the
-        // value to a number, as we want to keep a string!
+        // We need to emit an event with the now formatted value
         const fakeEvent = {
           persist: () => {},
           target: {
