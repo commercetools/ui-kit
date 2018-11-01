@@ -47,140 +47,122 @@ describe('TimeInput.to24h', () => {
 });
 
 describe('parseTime', () => {
-  it('should parse time in 12h format', () => {
-    expect(parseTime('3pm')).toEqual({
-      hours: 15,
-      milliseconds: 0,
+  it('should work with am/pm times', () => {
+    // 0 am (does not exist)
+    expect(parseTime('0 am')).toEqual(null);
+    // 0:30 am (does not exist)
+    expect(parseTime('0:30 am')).toEqual(null);
+    // 1 am (01:00)
+    expect(parseTime('1 am')).toEqual({
+      hours: 1,
       minutes: 0,
       seconds: 0,
-    });
-    expect(parseTime('3 PM')).toEqual({
-      hours: 15,
       milliseconds: 0,
+    });
+    // 12 am (24:00) = 0:00
+    expect(parseTime('12 am')).toEqual({
+      hours: 0,
       minutes: 0,
       seconds: 0,
-    });
-    expect(parseTime('3am')).toEqual({
-      hours: 3,
       milliseconds: 0,
+    });
+    // 12:30 am (00:30)
+    expect(parseTime('12:30 am')).toEqual({
+      hours: 0,
+      minutes: 30,
+      seconds: 0,
+      milliseconds: 0,
+    });
+
+    // 2:3 AM (02:03)
+    expect(parseTime('2:3 AM')).toEqual({
+      hours: 2,
+      minutes: 3,
+      seconds: 0,
+      milliseconds: 0,
+    });
+
+    // 0 pm (does not exist)
+    expect(parseTime('0 pm')).toEqual(null);
+    // 0:30 pm (does not exist)
+    expect(parseTime('0:30 pm')).toEqual(null);
+    // 1 pm (13:00)
+    expect(parseTime('1 pm')).toEqual({
+      hours: 13,
       minutes: 0,
       seconds: 0,
-    });
-    expect(parseTime('3 AM')).toEqual({
-      hours: 3,
       milliseconds: 0,
+    });
+    // 12 pm (12:00)
+    expect(parseTime('12 pm')).toEqual({
+      hours: 12,
       minutes: 0,
       seconds: 0,
-    });
-    expect(parseTime('3:15 AM')).toEqual({
-      hours: 3,
       milliseconds: 0,
-      minutes: 15,
+    });
+    // 11 pm (23:00)
+    expect(parseTime('11 pm')).toEqual({
+      hours: 23,
+      minutes: 0,
       seconds: 0,
-    });
-    expect(parseTime('3:16 PM')).toEqual({
-      hours: 15,
       milliseconds: 0,
-      minutes: 16,
+    });
+    // 12:30 pm (12:30)
+    expect(parseTime('12:30 pm')).toEqual({
+      hours: 12,
+      minutes: 30,
       seconds: 0,
-    });
-    expect(parseTime('3:16:30 PM')).toEqual({
-      hours: 15,
       milliseconds: 0,
-      minutes: 16,
-      seconds: 30,
-    });
-    expect(parseTime('3:16:30.5 PM')).toEqual({
-      hours: 15,
-      milliseconds: 500,
-      minutes: 16,
-      seconds: 30,
     });
   });
 
-  it('should parse time in 24h format', () => {
-    expect(parseTime('3')).toEqual({
-      hours: 3,
-      milliseconds: 0,
+  it('should work with 24h times', () => {
+    expect(parseTime('0:00')).toEqual({
+      hours: 0,
       minutes: 0,
       seconds: 0,
-    });
-    expect(parseTime('13')).toEqual({
-      hours: 13,
       milliseconds: 0,
+    });
+    expect(parseTime('12:00')).toEqual({
+      hours: 12,
       minutes: 0,
       seconds: 0,
-    });
-    expect(parseTime('13:15')).toEqual({
-      hours: 13,
       milliseconds: 0,
-      minutes: 15,
+    });
+    expect(parseTime('23:59')).toEqual({
+      hours: 23,
+      minutes: 59,
       seconds: 0,
-    });
-    expect(parseTime('13:5')).toEqual({
-      hours: 13,
       milliseconds: 0,
-      minutes: 5,
-      seconds: 0,
     });
-    expect(parseTime('13:05')).toEqual({
-      hours: 13,
-      milliseconds: 0,
-      minutes: 5,
-      seconds: 0,
+    expect(parseTime('23:59:34.010')).toEqual({
+      hours: 23,
+      minutes: 59,
+      seconds: 34,
+      milliseconds: 10,
     });
-    expect(parseTime('13:05:30')).toEqual({
-      hours: 13,
-      milliseconds: 0,
-      minutes: 5,
-      seconds: 30,
+    expect(parseTime('23:59:34.001')).toEqual({
+      hours: 23,
+      minutes: 59,
+      seconds: 34,
+      milliseconds: 1,
     });
-    expect(parseTime('13:05:30.5')).toEqual({
-      hours: 13,
-      milliseconds: 500,
-      minutes: 5,
-      seconds: 30,
-    });
-    expect(parseTime('13:05:30.50')).toEqual({
-      hours: 13,
-      milliseconds: 500,
-      minutes: 5,
-      seconds: 30,
-    });
-    expect(parseTime('13:05:30.05')).toEqual({
-      hours: 13,
-      milliseconds: 50,
-      minutes: 5,
-      seconds: 30,
-    });
-    expect(parseTime('13:05:30.005')).toEqual({
-      hours: 13,
-      milliseconds: 5,
-      minutes: 5,
-      seconds: 30,
-    });
-    expect(parseTime('13:05:30.050')).toEqual({
-      hours: 13,
-      milliseconds: 50,
-      minutes: 5,
-      seconds: 30,
-    });
-    expect(parseTime('13:05:30.500')).toEqual({
-      hours: 13,
-      milliseconds: 500,
-      minutes: 5,
-      seconds: 30,
+    expect(parseTime('23:59:34.1')).toEqual({
+      hours: 23,
+      minutes: 59,
+      seconds: 34,
+      milliseconds: 100,
     });
   });
 
-  it('should return null for invalid times', () => {
-    expect(parseTime('')).toBe(null);
-    expect(parseTime('asdf')).toBe(null);
-    expect(parseTime('25:12')).toBe(null);
-    expect(parseTime('14am')).toBe(null);
-    expect(parseTime('14pm')).toBe(null);
-    expect(parseTime('14 AM')).toBe(null);
-    expect(parseTime('14 PM')).toBe(null);
+  it('should work with some invalid 24:00 time for convenience', () => {
+    expect(parseTime('24:00')).toEqual({
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    expect(parseTime('24:30')).toEqual(null);
   });
 });
 

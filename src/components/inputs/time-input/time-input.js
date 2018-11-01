@@ -32,7 +32,9 @@ const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 //   13:00:00.000
 //   13:00:60
 //   13:00:59.908
-// Returns an object containing time information or null
+// Returns an object containing
+//   { hours, minutes, seconds, milliseconds }
+// or null
 export const parseTime = rawTime => {
   if (!rawTime || typeof rawTime !== 'string') return null;
 
@@ -45,27 +47,52 @@ export const parseTime = rawTime => {
 
   // As we accept eg "3 AM" there might not be a value for minutes, seconds or
   // milliseconds, so we default them
-  const [
+  let [
     ,
     hours,
     minutes = '00',
     seconds = '00',
     milliseconds = '000',
+    // eslint-disable-next-line prefer-const
     amPm,
   ] = match;
-  if (Number(minutes) > 59) return null;
-  if (amPm && Number(hours) > 12) return null;
-  if (!amPm && Number(hours) > 23) return null;
-  if (Number(seconds) > 59) return null;
-  if (Number(milliseconds) > 999) return null;
+  minutes = Number(minutes);
+  seconds = Number(seconds);
+  // Parses the number as a fraction to ensure that .5, .05 and .005 are
+  // parsed correctily (they are 500, 50 and 5 respectively).
+  milliseconds = Number(`0.${milliseconds}`) * 1000;
+  // edge-case: allow 24:00, but nothing over it
+  hours =
+    Number(hours) === 24 && minutes === 0 && seconds === 0 && milliseconds === 0
+      ? 0
+      : Number(hours);
+
+  if (amPm) {
+    if (hours === 0) return null;
+    if (minutes > 59) return null;
+  } else {
+    if (hours > 23) return null;
+    if (minutes > 59) return null;
+  }
+  if (seconds > 59) return null;
+  if (milliseconds > 999) return null;
+
+  // 12 pm (just like 24:00) would be on the next day, so we treat it as an
+  // invalid value to avoid edge cases like the day jumping forward
+  // if (amPm === 'pm' && Number(hours) === 12) return null;
+
+  const hourOffset = do {
+    if (amPm === 'am' && hours === 12) -12;
+    else if (amPm === 'am') 0;
+    else if (amPm === 'pm' && hours !== 12) 12;
+    else 0;
+  };
 
   return {
-    hours: Number(hours) + (amPm === 'pm' && Number(hours) !== 12 ? 12 : 0),
-    minutes: Number(minutes),
-    seconds: Number(seconds),
-    // Parses the number as a fraction to ensure that .5, .05 and .005 are
-    // parsed correctily (they are 500, 50 and 5 respectively).
-    milliseconds: Number(`0.${milliseconds}`) * 1000,
+    hours: Number(hours) + hourOffset,
+    minutes,
+    seconds,
+    milliseconds,
   };
 };
 
@@ -148,20 +175,15 @@ export class TimeInput extends React.Component {
 
     // return the localized time (12h or 24h format)
     const date = new Date(
-      Date.UTC(
-        1970,
-        0,
-        1,
-        time.hours,
-        time.minutes,
-        time.seconds,
-        time.milliseconds
-      )
+      1970,
+      0,
+      1,
+      parsedTime.hours,
+      parsedTime.minutes,
+      parsedTime.seconds,
+      parsedTime.milliseconds
     );
-    date.setDate(1);
-    date.setMonth(0);
-    date.setYear(1970);
-    console.log(date);
+
     const isValidDate = !isNaN(date.getTime());
     return isValidDate ? this.props.intl.formatTime(date) : '';
   };
