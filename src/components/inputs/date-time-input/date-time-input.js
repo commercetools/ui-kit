@@ -167,23 +167,25 @@ const createOptionForDate = (day, timeZone, intl) => {
 };
 
 const createCalendarOptions = (day, timeZone, intl, time) => {
-  const daysInMonth = Array.from({ length: moment(day).daysInMonth() }).map(
-    (_, i) => {
-      const dayOfMonth = i + 1;
-      const date = moment
-        .tz(timeZone)
-        .hours(time ? time.hours : 0)
-        .minutes(time ? time.minutes : 0)
-        .seconds(time ? time.seconds : 0)
-        .milliseconds(time ? time.milliseconds : 0)
-        .locale(intl.locale)
-        .date(dayOfMonth);
-      return {
-        ...createOptionForDate(date, timeZone, intl),
-        display: 'calendar',
-      };
-    }
-  );
+  const daysInMonth = Array.from({
+    length: moment(day)
+      .tz(timeZone)
+      .daysInMonth(),
+  }).map((_, i) => {
+    const dayOfMonth = i + 1;
+    const date = moment(day)
+      .tz(timeZone)
+      .hours(time ? time.hours : 0)
+      .minutes(time ? time.minutes : 0)
+      .seconds(time ? time.seconds : 0)
+      .milliseconds(time ? time.milliseconds : 0)
+      .locale(intl.locale)
+      .date(dayOfMonth);
+    return {
+      ...createOptionForDate(date, timeZone, intl),
+      display: 'calendar',
+    };
+  });
 
   const groupLabel = moment
     .tz(day, timeZone)
