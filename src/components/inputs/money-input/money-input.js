@@ -29,7 +29,7 @@ const createCurrencySelectStyles = ({
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
-      width: '72px',
+      minWidth: '72px',
       borderColor: do {
         if (isDisabled) vars['--token-border-color-input-disabled'];
         else if (hasError) vars['--token-border-color-input-error'];
@@ -47,11 +47,8 @@ const createCurrencySelectStyles = ({
     }),
     singleValue: base => ({
       ...base,
-      marginLeft: '0',
-      marginRight: '0',
-      maxWidth: '100%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
+      marginLeft: 0,
+      maxWidth: 'initial',
       color: do {
         if (hasError) vars['--token-font-color-error'];
         else if (hasWarning) vars['--token-font-color-warning'];
