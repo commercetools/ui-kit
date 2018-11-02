@@ -18,6 +18,8 @@ const createCurrencySelectStyles = ({
   hasWarning,
   hasError,
   hasNoCurrencies,
+  isDisabled,
+  hasFocus,
 }) => {
   const selectStyles = createSelectStyles({ hasWarning, hasError });
   return {
@@ -27,10 +29,26 @@ const createCurrencySelectStyles = ({
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
-      width: '72px',
+      minWidth: '72px',
+      borderColor: do {
+        if (isDisabled) vars['--token-border-color-input-disabled'];
+        else if (hasError) vars['--token-border-color-input-error'];
+        else if (hasWarning) vars['--token-border-color-input-warning'];
+        else if (hasFocus) vars['--token-border-color-input-focus'];
+        else vars['--token-border-color-input-pristine'];
+      },
+      '&:hover': do {
+        if (isDisabled) vars['--token-border-color-input-disabled'];
+        else if (hasError) vars['--token-border-color-input-error'];
+        else if (hasWarning) vars['--token-border-color-input-warning'];
+        else if (hasFocus) vars['--token-border-color-input-focus'];
+        else vars['--token-border-color-input-pristine'];
+      },
     }),
     singleValue: base => ({
       ...base,
+      marginLeft: 0,
+      maxWidth: 'initial',
       color: do {
         if (hasError) vars['--token-font-color-error'];
         else if (hasWarning) vars['--token-font-color-warning'];
@@ -183,6 +201,7 @@ const getAmountStyles = props => {
   if (props.isDisabled) return styles['amount-disabled'];
   if (props.hasError) return styles['amount-error'];
   if (props.hasWarning) return styles['amount-warning'];
+  if (props.hasFocus) return styles['amount-focus'];
 
   return styles['amount-default'];
 };
@@ -278,6 +297,11 @@ export default class MoneyInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
+  state = {
+    currencyHasFocus: false,
+    amountHasFocus: false,
+  };
+
   handleCurrencyChange = option => {
     const currencyCode = option.value;
     if (this.props.value.currencyCode !== currencyCode) {
@@ -329,22 +353,14 @@ export default class MoneyInput extends React.Component {
   };
 
   handleAmountChange = event => {
-    // We need to emit a fake event to stop Formik from auto-converting the
-    // value to a number, as we want to keep a string!
-    // The fake event does not contain the input type information, so Formik
-    // will not convert the value to a number.
-    const fakeEvent = {
-      persist: () => {},
-      target: {
-        name: event.target.name,
-        value: event.target.value,
-      },
-    };
-    this.props.onChange(fakeEvent);
+    if (isNumberish(event.target.value)) {
+      this.props.onChange(event);
+    }
   };
 
   handleAmountBlur = () => {
     const amount = this.props.value.amount.trim();
+    this.setState({ amountHasFocus: false });
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
     if (amount.length > 0 && currencies[this.props.value.currencyCode]) {
@@ -356,8 +372,7 @@ export default class MoneyInput extends React.Component {
       // When the user entered a value with centPrecision, we can format
       // the resulting value to that currency, e.g. 20.1 to 20.10
       if (String(formattedAmount) !== amount) {
-        // We need to emit a fake event to stop Formik from auto-converting the
-        // value to a number, as we want to keep a string!
+        // We need to emit an event with the now formatted value
         const fakeEvent = {
           persist: () => {},
           target: {
@@ -375,11 +390,14 @@ export default class MoneyInput extends React.Component {
   render() {
     const hasNoCurrencies = this.props.currencies.length === 0;
     const hasWarning = this.props.hasCurrencyWarning;
-    const hasError = this.props.hasCurrencyError;
+    const hasFocus = this.state.currencyHasFocus || this.state.amountHasFocus;
+
     const currencySelectStyles = createCurrencySelectStyles({
       hasWarning,
-      hasError,
+      hasError: this.props.hasCurrencyError || this.props.hasError,
       hasNoCurrencies,
+      isDisabled: this.props.isDisabled || hasNoCurrencies,
+      hasFocus,
     });
     const options = this.props.currencies.map(currencyCode => ({
       label: currencyCode,
@@ -417,6 +435,8 @@ export default class MoneyInput extends React.Component {
             options={options}
             placeholder=""
             styles={currencySelectStyles}
+            onFocus={() => this.setState({ currencyHasFocus: true })}
+            onBlur={() => this.setState({ currencyHasFocus: false })}
             onChange={this.handleCurrencyChange}
             data-testid="currency-dropdown"
           />
@@ -424,12 +444,14 @@ export default class MoneyInput extends React.Component {
             ref={this.amountInputRef}
             id={MoneyInput.getAmountInputId(this.props.id)}
             name={getAmountInputName(this.props.name)}
-            type="number"
+            type="text"
+            onFocus={() => this.setState({ amountHasFocus: true })}
             value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,
               hasError: this.props.hasError,
               hasWarning: this.props.hasWarning,
+              hasFocus,
             })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
