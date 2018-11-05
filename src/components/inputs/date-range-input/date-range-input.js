@@ -303,7 +303,7 @@ class SelectContainer extends Component {
   render() {
     return (
       <CalendarConnector.Consumer>
-        {({ selectRef, range, setRangeTarget }) => (
+        {({ selectRef, range, setRangeTarget, month, setMonth }) => (
           <SelectComponents.SelectContainer
             {...this.props}
             innerProps={{
@@ -347,6 +347,23 @@ class SelectContainer extends Component {
                   return;
                 }
 
+                const changeMonth = delta =>
+                  setMonth(
+                    moment(month)
+                      .add(delta, 'month')
+                      .toDate()
+                  );
+
+                // allow users to navigate months by pressing shift + left/right
+                if (event.key === 'ArrowLeft' && event.shiftKey) {
+                  changeMonth(-1);
+                  return;
+                }
+                if (event.key === 'ArrowRight' && event.shiftKey) {
+                  changeMonth(1);
+                  return;
+                }
+
                 const calendar = this.props.options.find(
                   o => o.display === 'calendarGroup'
                 );
@@ -369,10 +386,35 @@ class SelectContainer extends Component {
                   }
                 })();
 
-                if (nextOptionIndex !== null) {
-                  // prevent cursor from moving when user is moving the
-                  // highlighted date
-                  event.preventDefault();
+                if (nextOptionIndex === null) {
+                  this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                // avoid moving cursor in text
+                event.preventDefault();
+
+                // allow navigating to suggested options and between months
+                // when using keyboard
+                // Arrow Up/Down navigates within current month and results
+                // Arrow Left/Right can be used to change months
+                if (nextOptionIndex < 0) {
+                  // when there is a custom option
+                  if (
+                    this.props.options.length > 1 &&
+                    event.key === 'ArrowUp'
+                  ) {
+                    setFocus(selectRef, this.props.options[0]);
+                  } else if (event.key === 'ArrowLeft') {
+                    changeMonth(-1);
+                  }
+                } else if (nextOptionIndex >= calendar.options.length) {
+                  if (event.key === 'ArrowDown') {
+                    setFocus(selectRef, null);
+                  } else if (event.key === 'ArrowRight') {
+                    changeMonth(1);
+                  }
+                } else {
                   const nextOption =
                     calendar.options[
                       Math.max(
@@ -383,9 +425,25 @@ class SelectContainer extends Component {
                   setFocus(selectRef, nextOption, () => {
                     if (range.length === 1) setRangeTarget(nextOption.value);
                   });
-                } else {
-                  this.props.innerProps.onKeyDown(event);
                 }
+
+                // if (nextOptionIndex !== null) {
+                //   // prevent cursor from moving when user is moving the
+                //   // highlighted date
+                //   event.preventDefault();
+                //   const nextOption =
+                //     calendar.options[
+                //       Math.max(
+                //         Math.min(nextOptionIndex, calendar.options.length - 1),
+                //         0
+                //       )
+                //     ];
+                //   setFocus(selectRef, nextOption, () => {
+                //     if (range.length === 1) setRangeTarget(nextOption.value);
+                //   });
+                // } else {
+                //   this.props.innerProps.onKeyDown(event);
+                // }
               },
             }}
           />
@@ -642,6 +700,17 @@ class DateRangeInput extends Component {
               maxMenuHeight={380}
               onChange={this.handleChange}
               onInputChange={this.handleInputChange}
+              onFocus={this.props.onFocus}
+              onBlur={() => {
+                this.setState({ range: [], rangeTarget: null });
+                // reset input when range selection is aborted by closing,
+                // also remove any value in case there was one
+                if (!rangeEqual(this.props.value, this.state.range)) {
+                  if (this.props.value.length !== 0) this.props.onChange([]);
+                }
+
+                if (this.props.onBlur) this.props.onBlur();
+              }}
               options={[
                 ...this.state.suggestedOptions,
                 createCalendarGroup(this.state.month, this.props.intl),
@@ -650,14 +719,6 @@ class DateRangeInput extends Component {
               isClearable={this.props.isClearable}
               autoFocus={this.props.isAutofocussed}
               menuIsOpen={this.state.openCount > 0}
-              onBlur={() => {
-                this.setState({ range: [], rangeTarget: null });
-                // reset input when range selection is aborted by closing,
-                // also remove any value in case there was one
-                if (!rangeEqual(this.props.value, this.state.range)) {
-                  if (this.props.value.length !== 0) this.props.onChange([]);
-                }
-              }}
               onMenuOpen={() => {
                 this.setState(prevState => ({
                   openCount: prevState.openCount + 1,

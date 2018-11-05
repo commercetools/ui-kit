@@ -4,6 +4,30 @@ import DateRangeInput from './date-range-input';
 
 const baseProps = { value: ['', ''], onChange: () => {} };
 
+class TestComponent extends React.Component {
+  state = {
+    value: [],
+  };
+  handleChange = value => {
+    this.setState({ value });
+  };
+  render() {
+    return (
+      <div>
+        <label htmlFor="some-id">Date</label>
+        <DateRangeInput
+          {...baseProps}
+          id="some-id"
+          name="some-name"
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+        <div data-testid="value">{this.state.value.join(' - ')}</div>
+      </div>
+    );
+  }
+}
+
 describe('DateRangeInput', () => {
   it('should forward data-attributes', () => {
     const { container } = render(
@@ -17,26 +41,28 @@ describe('DateRangeInput', () => {
     expect(container.querySelector('[name="foo"]')).toBeTruthy();
   });
 
-  it('should call onChange when chaning the value by typing', () => {
-    const onChange = jest.fn(value => {
-      expect(value).toEqual('2018-10-01');
-    });
-    const { getByLabelText } = render(
-      <div>
-        <label htmlFor="some-id">Date</label>
-        <DateRangeInput
-          {...baseProps}
-          id="some-id"
-          name="some-name"
-          onChange={onChange}
-        />
-      </div>
+  it('should allow changing the value by typing in english', () => {
+    const { getByLabelText, getByTestId } = render(<TestComponent />);
+    const event = { target: { value: '09/18/2018 - 09/20/2018' } };
+    fireEvent.change(getByLabelText('Date'), event);
+    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+    expect(getByTestId('value')).toHaveTextContent(
+      '2018-09-18T00:00:00.000Z - 2018-09-20T00:00:00.000Z'
     );
+  });
+
+  it('should allow changing the value by typing in german', () => {
+    const { getByLabelText, getByTestId } = render(<TestComponent />, {
+      locale: 'de',
+    });
     const event = { target: { value: '18.09.2018 - 20.09.2018' } };
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
-    expect(onChange).toHaveBeenCalled();
+    expect(getByTestId('value')).toHaveTextContent(
+      '2018-09-18T00:00:00.000Z - 2018-09-20T00:00:00.000Z'
+    );
   });
 
   it('should call onFocus when the input is focused', () => {
@@ -46,17 +72,19 @@ describe('DateRangeInput', () => {
     );
     container.querySelector('input').focus();
     expect(container.querySelector('input')).toHaveFocus();
+    expect(onFocus).toHaveBeenCalled();
   });
 
   it('should call onBlur when input loses focus', () => {
-    const onFocus = jest.fn();
+    const onBlur = jest.fn();
     const { container } = render(
-      <DateRangeInput {...baseProps} onFocus={onFocus} />
+      <DateRangeInput {...baseProps} onBlur={onBlur} />
     );
     container.querySelector('input').focus();
     expect(container.querySelector('input')).toHaveFocus();
     container.querySelector('input').blur();
     expect(container.querySelector('input')).not.toHaveFocus();
+    expect(onBlur).toHaveBeenCalled();
   });
 
   it('should have focus automatically when isAutofocussed is passed', () => {
@@ -64,5 +92,10 @@ describe('DateRangeInput', () => {
       <DateRangeInput {...baseProps} isAutofocussed />
     );
     expect(container.querySelector('input')).toHaveFocus();
+  });
+
+  it('should not have focus automatically when isAutofocussed is not passed', () => {
+    const { container } = render(<DateRangeInput {...baseProps} />);
+    expect(container.querySelector('input')).not.toHaveFocus();
   });
 });
