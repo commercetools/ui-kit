@@ -14,6 +14,7 @@ import ClearIndicator from '../../internals/clear-indicator';
 import CalendarDropdownIndicator from '../../internals/calendar-dropdown-indicator';
 import createDateSelectStyles from '../../internals/create-date-select-styles';
 import { AngleLeftIcon, AngleRightIcon } from '../../icons';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
 const formatTime = date => {
@@ -465,7 +466,7 @@ class SelectContainer extends Component {
   render() {
     return (
       <CalendarConnector.Consumer>
-        {({ selectRef }) => (
+        {({ selectRef, month, setMonth }) => (
           <SelectComponents.SelectContainer
             {...this.props}
             innerProps={{
@@ -479,6 +480,23 @@ class SelectContainer extends Component {
                     'calendar'
                 ) {
                   this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                const changeMonth = delta =>
+                  setMonth(
+                    moment(month)
+                      .add(delta, 'month')
+                      .toDate()
+                  );
+
+                // allow users to navigate months by pressing shift + left/right
+                if (event.key === 'ArrowLeft' && event.shiftKey) {
+                  changeMonth(-1);
+                  return;
+                }
+                if (event.key === 'ArrowRight' && event.shiftKey) {
+                  changeMonth(1);
                   return;
                 }
 
@@ -504,7 +522,34 @@ class SelectContainer extends Component {
                   }
                 })();
 
-                if (nextOptionIndex !== null) {
+                if (nextOptionIndex === null) {
+                  this.props.innerProps.onKeyDown(event);
+                  return;
+                }
+
+                // avoid moving cursor in text
+                event.preventDefault();
+                // allow navigating to suggested options and between months
+                // when using keyboard
+                // Arrow Up/Down navigates within current month and results
+                // Arrow Left/Right can be used to change months
+                if (nextOptionIndex < 0) {
+                  // when there is a custom option
+                  if (
+                    this.props.options.length > 1 &&
+                    event.key === 'ArrowUp'
+                  ) {
+                    setFocus(selectRef, this.props.options[0]);
+                  } else if (event.key === 'ArrowLeft') {
+                    changeMonth(-1);
+                  }
+                } else if (nextOptionIndex >= calendar.options.length) {
+                  if (event.key === 'ArrowDown') {
+                    setFocus(selectRef, null);
+                  } else if (event.key === 'ArrowRight') {
+                    changeMonth(1);
+                  }
+                } else {
                   const nextOption =
                     calendar.options[
                       Math.max(
@@ -513,8 +558,6 @@ class SelectContainer extends Component {
                       )
                     ];
                   setFocus(selectRef, nextOption);
-                } else {
-                  this.props.innerProps.onKeyDown(event);
                 }
               },
             }}
@@ -533,6 +576,8 @@ class DateTimeInput extends Component {
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
     timeZone: PropTypes.string,
     isClearable: PropTypes.bool,
     isAutofocussed: PropTypes.bool,
@@ -575,6 +620,11 @@ class DateTimeInput extends Component {
   }
 
   handleChange = option => {
+    // We close the calendar in case the user types "today" or "today at 3pm"
+    // or "09/18/2018 at 2pm" and selectes the suggested option
+    if (option?.display !== 'calendar') {
+      this.setState({ openCount: 0 });
+    }
     this.props.onChange(option ? option.value : '');
   };
 
@@ -590,13 +640,19 @@ class DateTimeInput extends Component {
         // once naturally, and once because the select loses focus when the
         // input gets focused
         this.setState({ openCount: 3 }, () => {
-          // wait for setState so that timeInput has a chance to mount,
+          // Wait for setState so that timeInput has a chance to mount,
           // otherwise "current" will not be defined
-          this.timeInputRef.current.focus();
-          this.timeInputRef.current.setSelectionRange(
-            0,
-            this.state.time.length
-          );
+          // When the user types "today" or a date and presses enter, then we
+          // take that time and submit right away. The user does not get a
+          // chance to enter a time. They should type "today at 4pm" if they
+          // want to specify a time
+          if (this.timeInputRef.current) {
+            this.timeInputRef.current.focus();
+            this.timeInputRef.current.setSelectionRange(
+              0,
+              this.state.time.length
+            );
+          }
         });
         break;
       case 'input-change': {
@@ -614,7 +670,7 @@ class DateTimeInput extends Component {
         // Attempt to parse dates in locale
         // This helps to avoid the mixup of month and day for US/other notations
         const date = do {
-          const localeDate = moment(
+          const localeDate = moment.tz(
             dateString,
             moment.localeData(this.props.intl.locale).longDateFormat('L'),
             this.props.intl.locale,
@@ -635,12 +691,13 @@ class DateTimeInput extends Component {
             );
         };
 
-        const time = parseTime(timeString);
-        if (time) {
-          date.hour(time.hours);
-          date.minute(time.minutes);
-          date.second(time.seconds);
-          date.millisecond(time.milliseconds);
+        const parsedTime = parseTime(timeString);
+        if (parsedTime) {
+          date
+            .hours(parsedTime.hours)
+            .minutes(parsedTime.minutes)
+            .seconds(parsedTime.seconds)
+            .milliseconds(parsedTime.milliseconds);
         }
 
         this.setState(prevState => ({
@@ -648,7 +705,8 @@ class DateTimeInput extends Component {
           suggestedOptions: date
             ? [createOptionForDate(date, this.props.timeZone, this.props.intl)]
             : [],
-          time: time ? formatTime(date) : '',
+          time: parsedTime ? formatTime(date) : '',
+          openCount: 1,
         }));
         break;
       }
@@ -674,86 +732,90 @@ class DateTimeInput extends Component {
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <CalendarConnector.Provider
-          value={{
-            locale: this.props.intl.locale,
-            month: this.state.month,
-            setMonth: month => this.setState({ month }),
-            keepMenuOpen: cb => this.setState({ openCount: 2 }, cb),
-            closeMenu: () => this.setState({ openCount: 0 }),
-            selectRef: this.selectRef,
-            timeInputRef: this.timeInputRef,
-            time: this.state.time,
-            setTime: time => this.setState({ time }),
-            onChange: this.props.onChange,
-            timeZone: this.props.timeZone,
-            hasError: this.props.hasError,
-            hasWarning: this.props.hasWarning,
-            openMenu: () => this.setState({ openCount: 1 }),
-          }}
-        >
-          <Select
-            ref={this.selectRef}
-            id={this.props.id}
-            name={this.props.name}
-            styles={createDateSelectStyles({
-              hasWarning: this.props.hasWarning,
+        <div {...filterDataAttributes(this.props)}>
+          <CalendarConnector.Provider
+            value={{
+              locale: this.props.intl.locale,
+              month: this.state.month,
+              setMonth: month => this.setState({ month }),
+              keepMenuOpen: cb => this.setState({ openCount: 2 }, cb),
+              closeMenu: () => this.setState({ openCount: 0 }),
+              selectRef: this.selectRef,
+              timeInputRef: this.timeInputRef,
+              time: this.state.time,
+              setTime: time => this.setState({ time }),
+              onChange: this.props.onChange,
+              timeZone: this.props.timeZone,
               hasError: this.props.hasError,
-            })}
-            components={{
-              Group,
-              Option,
-              MenuList,
-              Menu,
-              SelectContainer,
-              // styling
-              DropdownIndicator: CalendarDropdownIndicator,
-              ClearIndicator,
+              hasWarning: this.props.hasWarning,
+              openMenu: () => this.setState({ openCount: 1 }),
             }}
-            filterOption={null}
-            isMulti={false}
-            isOptionSelected={(option, value) =>
-              value.some(i => i.date.isSame(option.date, 'day'))
-            }
-            maxMenuHeight={380}
-            onChange={this.handleChange}
-            onInputChange={this.handleInputChange}
-            options={[
-              ...this.state.suggestedOptions,
-              createCalendarOptions(
-                this.state.month,
-                this.props.timeZone,
-                this.props.intl,
-                parseTime(this.state.time)
-              ),
-            ]}
-            value={this.standardDateToOption(this.props.value)}
-            isClearable={this.props.isClearable}
-            autoFocus={this.props.isAutofocussed}
-            menuIsOpen={this.state.openCount > 0}
-            onMenuOpen={() => {
-              this.setState(prevState => ({
-                openCount: prevState.openCount + 1,
-                time: this.props.value
-                  ? formatTime(
-                      moment
-                        .tz(
-                          this.props.value,
-                          moment.ISO_8601,
-                          this.props.timeZone
-                        )
-                        .locale(this.props.intl.locale)
-                    )
-                  : '',
-              }));
-            }}
-            onMenuClose={() => {
-              this.setState(prevState => ({
-                openCount: Math.max(prevState.openCount - 1, 0),
-              }));
-            }}
-          />
-        </CalendarConnector.Provider>
+          >
+            <Select
+              ref={this.selectRef}
+              inputId={this.props.id}
+              name={this.props.name}
+              styles={createDateSelectStyles({
+                hasWarning: this.props.hasWarning,
+                hasError: this.props.hasError,
+              })}
+              components={{
+                Group,
+                Option,
+                MenuList,
+                Menu,
+                SelectContainer,
+                // styling
+                DropdownIndicator: CalendarDropdownIndicator,
+                ClearIndicator,
+              }}
+              filterOption={null}
+              isMulti={false}
+              isOptionSelected={(option, value) =>
+                value.some(i => i.date.isSame(option.date, 'day'))
+              }
+              maxMenuHeight={380}
+              onChange={this.handleChange}
+              onInputChange={this.handleInputChange}
+              onFocus={this.props.onFocus}
+              onBlur={this.props.onBlur}
+              options={[
+                ...this.state.suggestedOptions,
+                createCalendarOptions(
+                  this.state.month,
+                  this.props.timeZone,
+                  this.props.intl,
+                  parseTime(this.state.time)
+                ),
+              ]}
+              value={this.standardDateToOption(this.props.value)}
+              isClearable={this.props.isClearable}
+              autoFocus={this.props.isAutofocussed}
+              menuIsOpen={this.state.openCount > 0}
+              onMenuOpen={() => {
+                this.setState(prevState => ({
+                  openCount: prevState.openCount + 1,
+                  time: this.props.value
+                    ? formatTime(
+                        moment
+                          .tz(
+                            this.props.value,
+                            moment.ISO_8601,
+                            this.props.timeZone
+                          )
+                          .locale(this.props.intl.locale)
+                      )
+                    : '',
+                }));
+              }}
+              onMenuClose={() => {
+                this.setState(prevState => ({
+                  openCount: Math.max(prevState.openCount - 1, 0),
+                }));
+              }}
+            />
+          </CalendarConnector.Provider>
+        </div>
       </Constraints.Horizontal>
     );
   }
