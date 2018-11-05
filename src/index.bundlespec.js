@@ -9,11 +9,15 @@ describe('exports', () => {
     expect(customProperties).toBeTruthy();
   });
 
-  it('should have the translations', () => {
-    // This test ensures some translations exist, assuming the others would
-    // work as well then
-    expect(i18n.en['UIKit.DateInput.labelRange']).toEqual('to');
-    expect(i18n.de['UIKit.DateInput.labelRange']).toEqual('bis');
-    expect(i18n.es['UIKit.DateInput.labelRange']).toEqual('hasta');
+  it('should have translations', () => {
+    expect(Object.keys(i18n.en).length > 0).toBe(true);
+    expect(Object.keys(i18n.de).length > 0).toBe(true);
+    expect(Object.keys(i18n.es).length > 0).toBe(true);
+  });
+
+  it('should not have a default key', () => {
+    expect(Object.keys(i18n.en)).not.toContain('default');
+    expect(Object.keys(i18n.de)).not.toContain('default');
+    expect(Object.keys(i18n.es)).not.toContain('default');
   });
 });
