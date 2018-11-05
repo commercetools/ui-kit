@@ -24,6 +24,8 @@ storiesOf('Inputs', module)
                 action('onChange')(date);
                 onChange(date);
               }}
+              onFocus={action('onFocus')}
+              onBlur={action('onBlur')}
               isClearable={boolean('isClearable', true)}
               horizontalConstraint={select(
                 'horizontalConstraint',

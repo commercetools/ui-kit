@@ -259,13 +259,13 @@ class SelectContainer extends Component {
                   ) {
                     setFocus(selectRef, this.props.options[0]);
                   } else if (event.key === 'ArrowLeft') {
-                    changeMonth(1);
+                    changeMonth(-1);
                   }
                 } else if (nextOptionIndex >= calendar.options.length) {
                   if (event.key === 'ArrowDown') {
                     setFocus(selectRef, null);
                   } else if (event.key === 'ArrowRight') {
-                    changeMonth(-1);
+                    changeMonth(1);
                   }
                 } else {
                   const nextOption =
