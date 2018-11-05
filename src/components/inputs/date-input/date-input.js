@@ -294,6 +294,8 @@ class DateInput extends Component {
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
     isClearable: PropTypes.bool,
     isAutofocussed: PropTypes.bool,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
@@ -426,6 +428,8 @@ class DateInput extends Component {
               maxMenuHeight={380}
               onChange={this.handleChange}
               onInputChange={this.handleInputChange}
+              onFocus={this.props.onFocus}
+              onBlur={this.props.onBlur}
               options={[
                 ...this.state.suggestedOptions,
                 createCalendarOptions(this.state.month, this.props.intl),
