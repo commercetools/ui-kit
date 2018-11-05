@@ -11,13 +11,13 @@ addLocaleData(de);
 addLocaleData(es);
 
 const customRender = (node, opts = {}) => {
-  const { locale = 'en', ...options } = opts;
+  const { locale = 'en', ...rtlOptions } = opts;
 
   return render(
     <IntlProvider locale={locale} messages={messages}>
       {node}
     </IntlProvider>,
-    options
+    rtlOptions
   );
 };
 
