@@ -222,9 +222,6 @@ class PlainTimePicker extends React.Component {
           ref={this.props.timeInputRef}
           type="text"
           className={styles.timeInput}
-          placeholder={this.props.intl.formatMessage(
-            messages.timePickerPlaceholder
-          )}
           value={this.props.value}
           onChange={this.props.onChange}
           onBlur={this.props.onBlur}
@@ -625,6 +622,18 @@ class DateTimeInput extends Component {
     // or "09/18/2018 at 2pm" and selectes the suggested option
     if (option?.display !== 'calendar') {
       this.setState({ openCount: 0 });
+    } else {
+      // set the time in case there is no time yet
+      this.setState(prevState => ({
+        time:
+          prevState.time === ''
+            ? moment()
+                .tz(this.props.timeZone)
+                .locale(this.props.intl.locale)
+                .startOf('day')
+                .format('LT')
+            : prevState.time,
+      }));
     }
     this.props.onChange(option ? option.value : '');
   };

@@ -32,7 +32,6 @@
   "UIKit.DateTimeInput.nextWeek": "[Next] dddd, L [at] LT",
   "UIKit.DateTimeInput.sameDay": "[Today at] LT",
   "UIKit.DateTimeInput.sameElse": "LLL",
-  "UIKit.DateTimeInput.timePickerPlaceholder": "Time",
   "UIKit.DateTimeInput.today": "Today",
   "UIKit.DateTimeInput.tomorrow": "Tomorrow",
   "UIKit.DateTimeInput.yesterday": "Yesterday",
