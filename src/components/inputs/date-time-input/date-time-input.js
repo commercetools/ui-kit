@@ -100,6 +100,7 @@ export const parseTime = rawTime => {
       : Number(hours);
 
   if (amPm) {
+    if (hours > 12) return null;
     if (hours === 0) return null;
     if (minutes > 59) return null;
   } else {

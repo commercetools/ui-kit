@@ -38,6 +38,8 @@ describe('parseTime', () => {
   it('should work with am/pm times', () => {
     // 0 am (does not exist)
     expect(parseTime('0 am')).toEqual(null);
+    // 65 am (does not exist)
+    expect(parseTime('65 am')).toEqual(null);
     // 0:30 am (does not exist)
     expect(parseTime('0:30 am')).toEqual(null);
     // 1 am (01:00)
