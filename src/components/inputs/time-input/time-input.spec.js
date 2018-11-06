@@ -82,8 +82,9 @@ describe('parseTime', () => {
       milliseconds: 0,
     });
 
-    // 0 pm (does not exist)
     expect(parseTime('0 pm')).toEqual(null);
+    // 65 pm (does not exist)
+    expect(parseTime('65 pm')).toEqual(null);
     // 0:30 pm (does not exist)
     expect(parseTime('0:30 pm')).toEqual(null);
     // 1 pm (13:00)
