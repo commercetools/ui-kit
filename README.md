@@ -6,6 +6,8 @@
   <i>✨ Component library based on our design system 🛠</i>
 </p>
 
+> If you are building **Merchant Center Applications**, be sure to check out our [application-kit](https://github.com/commercetools/merchant-center-application-kit)
+
 ## Install
 
 ```bash
