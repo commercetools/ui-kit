@@ -1,15 +1,13 @@
-:root {
-  /* MAX-WIDTH */
-  @custom-media --screen-max-mobile (width < 768px); /* xsm */
-  @custom-media --screen-max-desktop (width < 1024px); /* sm */
-  @custom-media --screen-max-biggerdesktop (width < 1280px); /* md */
-  @custom-media --screen-max-giantdesktop (width < 1680px); /* lg */
-  @custom-media --screen-max-jumbodesktop (width < 1920px); /* xlg */
+/* MAX-WIDTH */
+@custom-media --screen-max-mobile (width < 768px); /* xsm */
+@custom-media --screen-max-desktop (width < 1024px); /* sm */
+@custom-media --screen-max-biggerdesktop (width < 1280px); /* md */
+@custom-media --screen-max-giantdesktop (width < 1680px); /* lg */
+@custom-media --screen-max-jumbodesktop (width < 1920px); /* xlg */
 
-  /* MIN-WIDTH */
-  @custom-media --screen-min-mobile (width >= 768px); /* xsm */
-  @custom-media --screen-min-desktop (width >= 1024px); /* sm */
-  @custom-media --screen-min-biggerdesktop (width >= 1280px); /* md */
-  @custom-media --screen-min-giantdesktop (width >= 1680px); /* lg */
-  @custom-media --screen-min-jumbodesktop (width >= 1920px); /* xlg */
-}
+/* MIN-WIDTH */
+@custom-media --screen-min-mobile (width >= 768px); /* xsm */
+@custom-media --screen-min-desktop (width >= 1024px); /* sm */
+@custom-media --screen-min-biggerdesktop (width >= 1280px); /* md */
+@custom-media --screen-min-giantdesktop (width >= 1680px); /* lg */
+@custom-media --screen-min-jumbodesktop (width >= 1920px); /* xlg */
