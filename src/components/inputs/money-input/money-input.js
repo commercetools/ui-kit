@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import has from 'lodash.has';
 import Select from 'react-select';
+import { injectIntl } from 'react-intl';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
@@ -117,10 +118,33 @@ const createCurrencySelectStyles = ({
 // }
 // which equals 0.0123456 €
 
-// Parses the value returned from <input type="number" />'s onChange function
+// Parses the value returned from <input type="text" />'s onChange function
 // The input will only call us with parseable values, or an empty string
 // The function will return NaN for the empty string.
-export const parseAmount = amount => parseFloat(amount, 10);
+//
+// Parsing
+// Since most users are not careful about how they enter values, we will parse
+// both `.` and `,` as decimal separators.
+// When a value is `1.000,00` we parse it as `1000`.
+// When a value is `1,000.00` we also parse it as `1000`.
+//
+// This means the highest amount always wins. We do this by comparing the last
+// position of `.` and `,`. Whatever occurs later is used as the decimal
+// separator.
+export const parseAmount = amount => {
+  const lastDot = String(amount).lastIndexOf('.');
+  const lastComma = String(amount).lastIndexOf(',');
+
+  const separator = lastComma > lastDot ? ',' : '.';
+  const throwaway = separator === '.' ? ',' : '\\.';
+
+  // The amount with only one sparator
+  const normalizedAmount = String(amount)
+    .replace(new RegExp(`${throwaway}`, 'g'), '')
+    .replace(separator, '.');
+
+  return parseFloat(normalizedAmount, 10);
+};
 
 // Turns the user input into a value the MoneyInput can pass up through onChange
 // In case the number of fraction digits contained in "amount" exceeds the
@@ -175,27 +199,29 @@ export const createMoneyValue = (currencyCode, amount) => {
   };
 };
 
-const formatAmount = (amount, currencyCode) => {
-  // fallback in case the user didn't enter an amount yet (or it's invalid)
-  const moneyValue = createMoneyValue(currencyCode, amount) || {
-    currencyCode,
-    centAmount: NaN,
-  };
-  // format highPrecision so that . gets replaced by, and vice versa.
-  if (moneyValue.type === 'highPrecision') {
-    return (moneyValue.preciseAmount / 10 ** moneyValue.fractionDigits).toFixed(
-      moneyValue.fractionDigits
-    );
-  }
-  return (moneyValue.centAmount / 10 ** moneyValue.fractionDigits).toFixed(
-    moneyValue.fractionDigits
-  );
-};
-
 const getAmountAsNumberFromMoneyValue = money =>
   money.type === 'highPrecision'
     ? money.preciseAmount / 10 ** money.fractionDigits
     : money.centAmount / 10 ** currencies[money.currencyCode].fractionDigits;
+
+// gets called with a string and should return a formatted string
+const formatAmount = (value, currencyCode, locale) => {
+  // fallback in case the user didn't enter an amount yet (or it's invalid)
+  const moneyValue = createMoneyValue(currencyCode, value) || {
+    currencyCode,
+    centAmount: NaN,
+  };
+
+  const amount = getAmountAsNumberFromMoneyValue(moneyValue);
+
+  return isNaN(amount)
+    ? ''
+    : amount.toLocaleString(locale, {
+        minimumFractionDigits: moneyValue.preciseAmount
+          ? moneyValue.fractionDigits
+          : currencies[moneyValue.currencyCode].fractionDigits,
+      });
+};
 
 const getAmountStyles = props => {
   if (props.isDisabled) return styles['amount-disabled'];
@@ -210,7 +236,7 @@ const getAmountInputName = name => (name ? `${name}.amount` : undefined);
 const getCurrencyDropdownName = name =>
   name ? `${name}.currencyCode` : undefined;
 
-export default class MoneyInput extends React.Component {
+class MoneyInput extends React.Component {
   static displayName = 'MoneyInput';
 
   static getAmountInputId = getAmountInputName;
@@ -223,8 +249,13 @@ export default class MoneyInput extends React.Component {
       typeof value.amount === 'string' ? value.amount.trim() : ''
     );
 
-  static parseMoneyValue = moneyValue => {
+  static parseMoneyValue = (moneyValue, locale) => {
     if (!moneyValue) return { currencyCode: '', amount: '' };
+
+    invariant(
+      typeof locale === 'string',
+      'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
+    );
 
     invariant(
       typeof moneyValue === 'object',
@@ -251,7 +282,8 @@ export default class MoneyInput extends React.Component {
 
     const amount = formatAmount(
       String(getAmountAsNumberFromMoneyValue(moneyValue)),
-      moneyValue.currencyCode
+      moneyValue.currencyCode,
+      locale
     );
 
     return { amount, currencyCode: moneyValue.currencyCode };
@@ -288,6 +320,9 @@ export default class MoneyInput extends React.Component {
     onChange: PropTypes.func.isRequired,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
+    intl: PropTypes.shape({
+      locale: PropTypes.string.isRequired,
+    }).isRequired,
 
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   };
@@ -313,7 +348,8 @@ export default class MoneyInput extends React.Component {
       // be lost
       const formattedAmount = formatAmount(
         this.props.value.amount.trim(),
-        currencyCode
+        currencyCode,
+        this.props.intl.locale
       );
       // The user could be changing the currency before entering any amount,
       // or while the amount is invalid. In these cases, we don't attempt to
@@ -339,9 +375,7 @@ export default class MoneyInput extends React.Component {
           persist: () => {},
           target: {
             name: getAmountInputName(this.props.name),
-            value: isNaN(formattedAmount)
-              ? this.props.value.amount
-              : formattedAmount,
+            value: nextAmount,
           },
         };
 
@@ -366,7 +400,8 @@ export default class MoneyInput extends React.Component {
     if (amount.length > 0 && currencies[this.props.value.currencyCode]) {
       const formattedAmount = formatAmount(
         amount,
-        this.props.value.currencyCode
+        this.props.value.currencyCode,
+        this.props.intl.locale
       );
 
       // When the user entered a value with centPrecision, we can format
@@ -464,3 +499,5 @@ export default class MoneyInput extends React.Component {
     );
   }
 }
+
+export default injectIntl(MoneyInput);
