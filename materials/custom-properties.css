@@ -117,4 +117,9 @@
   --transition-linear-80ms: 80ms linear;
   --transition-easeinout-150ms: 150ms ease-in-out;
   --transition-standard: all 0.2s ease;
+  --break-point-mobile: 768px;
+  --break-point-desktop: 1024px;
+  --break-point-biggerdesktop: 1280px;
+  --break-point-giantdesktop: 1680px;
+  --break-point-jumbodesktop: 1920px;
 }
