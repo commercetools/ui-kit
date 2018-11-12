@@ -309,6 +309,9 @@ class SelectContainer extends Component {
             innerProps={{
               ...this.props.innerProps,
               onKeyDown: event => {
+                // Let react-select handle the keyDown event unless the menu
+                // is already open. When the menu is open, we want enhance
+                // the UX by customizing the keyboard usage.
                 if (
                   this.props.isDisabled ||
                   !this.props.isFocused ||
@@ -343,7 +346,6 @@ class SelectContainer extends Component {
                     this.props.setValue({ value: firstOption.value[1] });
                     return;
                   }
-                  // this.props.setValue();
                   return;
                 }
 
@@ -371,6 +373,10 @@ class SelectContainer extends Component {
                   o => o === selectRef.current.select.state.focusedOption
                 );
 
+                // Allow the user to navigate up/down the calendar using the
+                // arrow keys by jumping for 7 days instead of one.
+                // Jumping for 7 days effectively moves the day highlight one
+                // week up/down.
                 const nextOptionIndex = (() => {
                   switch (event.key) {
                     case 'ArrowUp':
@@ -426,24 +432,6 @@ class SelectContainer extends Component {
                     if (range.length === 1) setRangeTarget(nextOption.value);
                   });
                 }
-
-                // if (nextOptionIndex !== null) {
-                //   // prevent cursor from moving when user is moving the
-                //   // highlighted date
-                //   event.preventDefault();
-                //   const nextOption =
-                //     calendar.options[
-                //       Math.max(
-                //         Math.min(nextOptionIndex, calendar.options.length - 1),
-                //         0
-                //       )
-                //     ];
-                //   setFocus(selectRef, nextOption, () => {
-                //     if (range.length === 1) setRangeTarget(nextOption.value);
-                //   });
-                // } else {
-                //   this.props.innerProps.onKeyDown(event);
-                // }
               },
             }}
           />

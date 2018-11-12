@@ -188,6 +188,9 @@ class SelectContainer extends Component {
             {...this.props}
             innerProps={{
               ...this.props.innerProps,
+              // Let react-select handle the keyDown event unless the menu
+              // is already open. When the menu is open, we want enhance
+              // the UX by customizing the keyboard usage.
               onKeyDown: event => {
                 if (
                   this.props.isDisabled ||
@@ -224,6 +227,10 @@ class SelectContainer extends Component {
                   o => o === selectRef.current.select.state.focusedOption
                 );
 
+                // Allow the user to navigate up/down the calendar using the
+                // arrow keys by jumping for 7 days instead of one.
+                // Jumping for 7 days effectively moves the day highlight one
+                // week up/down.
                 const nextOptionIndex = (() => {
                   switch (event.key) {
                     case 'ArrowUp':
