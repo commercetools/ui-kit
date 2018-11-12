@@ -178,7 +178,9 @@ describe('MoneyInput.parseMoneyValue', () => {
   });
   describe('when called with a value missing currencyCode', () => {
     it('should throw', () => {
-      expect(() => MoneyInput.parseMoneyValue({ centAmount: 10 })).toThrow(
+      expect(() =>
+        MoneyInput.parseMoneyValue({ centAmount: 10 }, 'en')
+      ).toThrow(
         'MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
       );
     });
@@ -186,20 +188,26 @@ describe('MoneyInput.parseMoneyValue', () => {
   describe('when called with a centPrecision money missing centAmount', () => {
     it('should throw', () => {
       expect(() =>
-        MoneyInput.parseMoneyValue({
-          type: 'centPrecision',
-          currencyCode: 'EUR',
-        })
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'centPrecision',
+            currencyCode: 'EUR',
+          },
+          'en'
+        )
       ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
     });
   });
   describe('when called with a centPrecision money using an unknown currenyCode', () => {
     it('should throw', () => {
       expect(() =>
-        MoneyInput.parseMoneyValue({
-          type: 'centPrecision',
-          currencyCode: 'FOO',
-        })
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'centPrecision',
+            currencyCode: 'FOO',
+          },
+          'en'
+        )
       ).toThrow(
         'MoneyInput.parseMoneyValue: Value must use known currency code'
       );
@@ -208,70 +216,102 @@ describe('MoneyInput.parseMoneyValue', () => {
   describe('when called with a highPrecision money missing fractionDigits', () => {
     it('should throw', () => {
       expect(() =>
-        MoneyInput.parseMoneyValue({
-          type: 'highPrecision',
-          currencyCode: 'EUR',
-          preciseAmount: 3,
-        })
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'highPrecision',
+            currencyCode: 'EUR',
+            preciseAmount: 3,
+          },
+          'en'
+        )
       ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
     });
   });
   describe('when called with a highPrecision money missing preciseAmount', () => {
     it('should throw', () => {
       expect(() =>
-        MoneyInput.parseMoneyValue({
-          type: 'highPrecision',
-          currencyCode: 'EUR',
-          fractionDigits: 2,
-        })
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'highPrecision',
+            currencyCode: 'EUR',
+            fractionDigits: 2,
+          },
+          'en'
+        )
       ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
     });
   });
-
-  describe('when called with a minimal, valid centPrecision price', () => {
-    it('should turn it into a value', () => {
-      expect(
-        MoneyInput.parseMoneyValue({
-          centAmount: 1234,
-          currencyCode: 'EUR',
-        })
-      ).toEqual({ amount: '12.34', currencyCode: 'EUR' });
-    });
-  });
-  describe('when called with a full, valid centPrecision price', () => {
-    it('should turn it into a value', () => {
-      expect(
+  describe('when called without a locale', () => {
+    it('should throw', () => {
+      expect(() =>
         MoneyInput.parseMoneyValue({
           type: 'centPrecision',
           centAmount: 1234,
           currencyCode: 'EUR',
           fractionDigits: 2,
         })
+      ).toThrow(
+        'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
+      );
+    });
+  });
+
+  describe('when called with a minimal, valid centPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        MoneyInput.parseMoneyValue(
+          {
+            centAmount: 1234,
+            currencyCode: 'EUR',
+          },
+          'en'
+        )
+      ).toEqual({ amount: '12.34', currencyCode: 'EUR' });
+    });
+  });
+  describe('when called with a full, valid centPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'centPrecision',
+            centAmount: 1234,
+            currencyCode: 'EUR',
+            fractionDigits: 2,
+          },
+          'en'
+        )
       ).toEqual({ amount: '12.34', currencyCode: 'EUR' });
     });
   });
   describe('when called with a minimal highPrecision price', () => {
     it('should turn it into a value', () => {
       expect(
-        MoneyInput.parseMoneyValue({
-          type: 'highPrecision',
-          currencyCode: 'EUR',
-          fractionDigits: 3,
-          preciseAmount: 12345,
-        })
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'highPrecision',
+            currencyCode: 'EUR',
+            fractionDigits: 3,
+            preciseAmount: 12345,
+          },
+          'en'
+        )
       ).toEqual({ amount: '12.345', currencyCode: 'EUR' });
     });
   });
   describe('when called with a full highPrecision price', () => {
     it('should turn it into a value', () => {
       expect(
-        MoneyInput.parseMoneyValue({
-          type: 'highPrecision',
-          centAmount: 1234,
-          currencyCode: 'EUR',
-          fractionDigits: 3,
-          preciseAmount: 12345,
-        })
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'highPrecision',
+            centAmount: 1234,
+            currencyCode: 'EUR',
+            fractionDigits: 3,
+            preciseAmount: 12345,
+          },
+          'en'
+        )
       ).toEqual({ amount: '12.345', currencyCode: 'EUR' });
     });
   });
@@ -444,5 +484,66 @@ describe('MoneyInput', () => {
     // We can't use .toHaveAttribute('value', ' 12.500') as the attribute
     // itself does not change in the DOM tree. Only the actual value changes.
     expect(getByLabelText('Amount').value).toEqual('12.500');
+  });
+
+  describe('when the locale is custom', () => {
+    // The implementation of MoneyInput relies on Number.prototype.toLocaleString,
+    // but it only respects the english format in JSDOM, so we need to mock it.
+    const originalToLocaleString = Number.prototype.toLocaleString;
+    beforeEach(() => {
+      // eslint-disable-next-line no-extend-native
+      Number.prototype.toLocaleString = jest.fn(function toLocaleString(
+        language,
+        options
+      ) {
+        return `(${this}).toLocaleString(${language}, ${JSON.stringify(
+          options
+        )})`;
+      });
+    });
+    afterEach(() => {
+      // eslint-disable-next-line no-extend-native
+      Number.prototype.toLocaleString = originalToLocaleString;
+    });
+
+    it('should format the amount on blur to US format when locale is en', () => {
+      const { getByLabelText } = render(
+        <TestComponent
+          currencies={['EUR']}
+          value={{ currencyCode: 'EUR', amount: '12.5' }}
+        />,
+        { locale: 'en' }
+      );
+
+      //
+      getByLabelText('Amount').focus();
+      fireEvent.blur(getByLabelText('Amount'));
+
+      // We can't use .toHaveAttribute() as the attribute
+      // itself does not change in the DOM tree. Only the actual value changes.
+      expect(getByLabelText('Amount').value).toEqual(
+        '(12.5).toLocaleString(en, {"minimumFractionDigits":2})'
+      );
+    });
+
+    it('should format the amount on blur to german format when locale is de', () => {
+      const { getByLabelText } = render(
+        <TestComponent
+          currencies={['EUR']}
+          value={{ currencyCode: 'EUR', amount: '12.5' }}
+        />,
+        { locale: 'de' }
+      );
+
+      //
+      getByLabelText('Amount').focus();
+      fireEvent.blur(getByLabelText('Amount'));
+
+      // We can't use .toHaveAttribute() as the attribute
+      // itself does not change in the DOM tree. Only the actual value changes.
+      expect(getByLabelText('Amount').value).toEqual(
+        '(12.5).toLocaleString(de, {"minimumFractionDigits":2})'
+      );
+    });
   });
 });
