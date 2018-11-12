@@ -83,18 +83,6 @@ const green = customProperties['--color-green'];
 
 > Please look at the [file](materials/custom-properties.json) itself to inspect which variables are available (_documentation will be provided in the future_).
 
-#### Importing SVG images
-
-Similar to CSS modules, if you need to use one of our available SVG images, you can require them from `/images`.
-
-```js
-import UnexpectedErrorSVG from '@commercetools-frontend/ui-kit/images/maintenance/unexpected-error.svg';
-
-<img src={UnexpectedErrorSVG} />;
-```
-
-> Please look into the package itself to inspect what images are available
-
 ## Motivation
 
 - Declarative components serving as a design guide
