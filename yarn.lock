@@ -1549,6 +1549,11 @@
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-4.0.0.tgz#b2690fd6a1bbc09eda1919f046ed8536642f41ef"
   integrity sha512-zntj51VejwgZKfJxci4oCZ2wffDSz7sv9Pn5YybP9tRr+LM9qHhDZl2Vk0EfortmcJTdz9L/BE+os6dSms1Mtg==
 
+"@svgr/babel-plugin-transform-svg-component@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-4.0.1.tgz#d134a03abed4648ce5e988507366476b2406d1a8"
+  integrity sha512-bhJXVIbax1pLTuGITpYX6DilG+j/hWnIjoYliPSKnv0/zLOP3afOpymM47Pa9nvHMFmSACU9WiTEngsi+KuIUQ==
+
 "@svgr/babel-preset@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-preset/-/babel-preset-4.0.0.tgz#a7a8288e65d39ee47fd4f4cfb347c096be393b2d"
@@ -1563,6 +1568,20 @@
     "@svgr/babel-plugin-transform-react-native-svg" "^4.0.0"
     "@svgr/babel-plugin-transform-svg-component" "^4.0.0"
 
+"@svgr/babel-preset@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@svgr/babel-preset/-/babel-preset-4.0.1.tgz#41d568f648092a68d80f5bebe137fcc781416a23"
+  integrity sha512-5X6X0RN8G4E8NsmEbusLu6nSlKTmoSfRxGzSELRQU8UxijGHhLXD2U7cdxvKtg4u9ELdMiP7X3ub8nAoXoRHYA==
+  dependencies:
+    "@svgr/babel-plugin-add-jsx-attribute" "^4.0.0"
+    "@svgr/babel-plugin-remove-jsx-attribute" "^4.0.0"
+    "@svgr/babel-plugin-remove-jsx-empty-expression" "^4.0.0"
+    "@svgr/babel-plugin-replace-jsx-attribute-value" "^4.0.0"
+    "@svgr/babel-plugin-svg-dynamic-title" "^4.0.0"
+    "@svgr/babel-plugin-svg-em-dimensions" "^4.0.0"
+    "@svgr/babel-plugin-transform-react-native-svg" "^4.0.0"
+    "@svgr/babel-plugin-transform-svg-component" "^4.0.1"
+
 "@svgr/core@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@svgr/core/-/core-4.0.0.tgz#03691f0df52da88421a2423375a0c7201ef2adaf"
@@ -1572,10 +1591,26 @@
     camelcase "^5.0.0"
     cosmiconfig "^5.0.6"
 
+"@svgr/core@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@svgr/core/-/core-4.0.2.tgz#ad4ae7dcdd99a057c2ff5ad83ab5a323b31a1c3b"
+  integrity sha512-uG11daKHxvkLX7t9f34Y1S1yj98GJeglPSYhnURUYpQcosuGIFlRrEbwIczwshVu7ad3l4EIMubOj4TzD7CPlg==
+  dependencies:
+    "@svgr/plugin-jsx" "^4.0.2"
+    camelcase "^5.0.0"
+    cosmiconfig "^5.0.6"
+
 "@svgr/hast-util-to-babel-ast@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@svgr/hast-util-to-babel-ast/-/hast-util-to-babel-ast-4.0.0.tgz#7ecab0927cfc24f110130d1cd0f8b90581105666"
   integrity sha512-mnFG0SnGtKOllHg13BO1dzxEqj8wK10n4OMXC8bPaFvhIi6W+7J1FWoH0DKEElkIygDsXlLBNKJoQlHQXJXcDA==
+  dependencies:
+    "@babel/types" "^7.1.3"
+
+"@svgr/hast-util-to-babel-ast@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@svgr/hast-util-to-babel-ast/-/hast-util-to-babel-ast-4.0.2.tgz#35d3c84ba7a0d7b591c440285b691d5d2946091b"
+  integrity sha512-Vajp+rAJKnMS7a/mhubd9esYvpOC4uhkrWidFMfG5AGjftLB6faicG898VyPjsSpATrfy5rUfkCcdqYeZKvnbA==
   dependencies:
     "@babel/types" "^7.1.3"
 
@@ -1591,6 +1626,18 @@
     unified "^7.0.1"
     vfile "^3.0.1"
 
+"@svgr/plugin-jsx@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@svgr/plugin-jsx/-/plugin-jsx-4.0.2.tgz#a665820526f1f934f89a8452b7f793365ab7422e"
+  integrity sha512-FCyQfGH7ket3nHp4OC3Wo+cNUDuOulE6CyO3AE6z7Nw7vNVN15lrE3z5bV7yaelBdxYtH6n1Hl3oFgUvhfZkqA==
+  dependencies:
+    "@babel/core" "^7.1.2"
+    "@svgr/babel-preset" "^4.0.1"
+    "@svgr/hast-util-to-babel-ast" "^4.0.2"
+    rehype-parse "^5.0.0"
+    unified "^7.0.1"
+    vfile "^3.0.1"
+
 "@svgr/plugin-svgo@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@svgr/plugin-svgo/-/plugin-svgo-4.0.0.tgz#808990bcd4dc5c0c15dea259a433e3ec83e5831b"
@@ -1600,17 +1647,17 @@
     merge-deep "^3.0.2"
     svgo "^1.1.1"
 
-"@svgr/rollup@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@svgr/rollup/-/rollup-4.0.0.tgz#062fb4aad7e5df72f0f47703aaae93ae6ee49fff"
-  integrity sha512-+HWXZsCNTCi4K6S1hF7m+2XLj9nSv0CTwjlDhAZENNx6Mvvbz5vkODNA0S9SSI4XobYUWQs5lzVQ1xe0J171Fg==
+"@svgr/rollup@4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@svgr/rollup/-/rollup-4.0.2.tgz#d446b81e8ff98f351aab1044c1305a756360d7c5"
+  integrity sha512-N1CxW0sCjQZyKW4eBm7zR+hAfxKDLs0gv2uTh6fI18xmvFjUo20aqhza5KL6NWir57jfsECTZwKLvfaQblcPJg==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-transform-react-constant-elements" "^7.0.0"
     "@babel/preset-env" "^7.1.0"
     "@babel/preset-react" "^7.0.0"
-    "@svgr/core" "^4.0.0"
-    "@svgr/plugin-jsx" "^4.0.0"
+    "@svgr/core" "^4.0.2"
+    "@svgr/plugin-jsx" "^4.0.2"
     "@svgr/plugin-svgo" "^4.0.0"
     rollup-pluginutils "^2.3.3"
 
@@ -2096,11 +2143,6 @@ ansi-colors@^3.0.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.1.tgz#9638047e4213f3428a11944a7d4b31cba0a3ff95"
   integrity sha512-Xt+zb6nqgvV9SWAVp0EG3lRsHcbq5DDgqjPPz6pwgtj6RKz65zGXMNa82oJfOSBA/to6GmRP7Dr+6o+kbApTzQ==
-
-ansi-escapes@^1.0.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
-  integrity sha1-06ioOzGapneTZisT52HHkRQiMG4=
 
 ansi-escapes@^2.0.0:
   version "2.0.0"
@@ -8624,21 +8666,7 @@ listr-silent-renderer@^1.1.1:
   resolved "https://registry.yarnpkg.com/listr-silent-renderer/-/listr-silent-renderer-1.1.1.tgz#924b5a3757153770bf1a8e3fbf74b8bbf3f9242e"
   integrity sha1-kktaN1cVN3C/Go4/v3S4u/P5JC4=
 
-listr-update-renderer@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/listr-update-renderer/-/listr-update-renderer-0.4.0.tgz#344d980da2ca2e8b145ba305908f32ae3f4cc8a7"
-  integrity sha1-NE2YDaLKLosUW6MFkI8yrj9MyKc=
-  dependencies:
-    chalk "^1.1.3"
-    cli-truncate "^0.2.1"
-    elegant-spinner "^1.0.1"
-    figures "^1.7.0"
-    indent-string "^3.0.0"
-    log-symbols "^1.0.2"
-    log-update "^1.0.2"
-    strip-ansi "^3.0.1"
-
-"listr-update-renderer@https://github.com/okonet/listr-update-renderer/tarball/upgrade-log-update":
+listr-update-renderer@^0.4.0, "listr-update-renderer@https://github.com/okonet/listr-update-renderer/tarball/upgrade-log-update":
   version "0.4.0"
   resolved "https://github.com/okonet/listr-update-renderer/tarball/upgrade-log-update#06073fa93166277607a7814f4e1f83960081414c"
   dependencies:
@@ -9013,14 +9041,6 @@ log-symbols@^2.0.0, log-symbols@^2.2.0:
   integrity sha512-VeIAFslyIerEJLXHziedo2basKbMKtTw3vfn5IzG0XTjhAVEJyNHnL2p7vc+wBDSdQuUpNw3M2u6xb9QsAY5Eg==
   dependencies:
     chalk "^2.0.1"
-
-log-update@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/log-update/-/log-update-1.0.2.tgz#19929f64c4093d2d2e7075a1dad8af59c296b8d1"
-  integrity sha1-GZKfZMQJPS0ucHWh2tivWcKWuNE=
-  dependencies:
-    ansi-escapes "^1.0.0"
-    cli-cursor "^1.0.2"
 
 log-update@^2.3.0:
   version "2.3.0"
