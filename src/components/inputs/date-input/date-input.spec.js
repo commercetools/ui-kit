@@ -39,7 +39,7 @@ describe('DateInput', () => {
     expect(container.querySelector('[name="foo"]')).toBeTruthy();
   });
 
-  it('should allow changing the value by typing in english', () => {
+  it('should allow changing the value by typing a date in an american format', () => {
     const { getByLabelText, getByTestId } = render(<TestComponent />);
     const event = { target: { value: '09/18/2018' } };
     fireEvent.change(getByLabelText('Date'), event);
@@ -48,7 +48,7 @@ describe('DateInput', () => {
     expect(getByTestId('value')).toHaveTextContent('2018-09-18');
   });
 
-  it('should allow changing the value by typing in german', () => {
+  it('should allow changing the value by typing a date in a german format', () => {
     const { getByLabelText, getByTestId } = render(<TestComponent />, {
       locale: 'de',
     });
