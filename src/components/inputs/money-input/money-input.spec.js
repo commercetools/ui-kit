@@ -152,6 +152,33 @@ describe('MoneyInput.convertToMoneyValue', () => {
     });
   });
 
+  describe('when called with a centPrecision price with weird JS rounding', () => {
+    it('should treat it as a decimal separator', () => {
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '2.49' })
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'EUR',
+        centAmount: 249,
+        fractionDigits: 2,
+      });
+
+      // This test ensures that rounding is used instead of just cutting the
+      // number of. Cutting it of would result in an incorrect 239998.
+      expect(
+        MoneyInput.convertToMoneyValue({
+          currencyCode: 'EUR',
+          amount: '2399.99',
+        })
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'EUR',
+        centAmount: 239999,
+        fractionDigits: 2,
+      });
+    });
+  });
+
   describe('when called with a high precision price', () => {
     it('should return a money value of type "highPrecision"', () => {
       expect(
