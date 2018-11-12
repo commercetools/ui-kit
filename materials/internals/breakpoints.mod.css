@@ -1,0 +1,7 @@
+:root {
+  --break-point-mobile: 768px;
+  --break-point-desktop: 1024px;
+  --break-point-biggerdesktop: 1280px;
+  --break-point-giantdesktop: 1680px;
+  --break-point-jumbodesktop: 1920px;
+}
