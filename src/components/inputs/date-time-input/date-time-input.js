@@ -15,6 +15,7 @@ import CalendarDropdownIndicator from '../../internals/calendar-dropdown-indicat
 import createDateSelectStyles from '../../internals/create-date-select-styles';
 import { AngleLeftIcon, AngleRightIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import createWeekDays from '../../../utils/create-week-days';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
 const formatTime = date => {
@@ -358,15 +359,7 @@ const Group = injectIntl(props => {
   return (
     <CalendarConnector.Consumer>
       {({ month, setMonth, locale }) => {
-        // const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-        // This code is modifying `days`, so we need to create a fresh array
-        // to avoid manipulating the moment data
-        const days = [...moment.localeData(locale).weekdaysMin()];
-        const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
-        // Rearrange so that week starts at Sunday/Monday depending on locale
-        Array.from({ length: firstDayOfWeek }).forEach(() => {
-          days.push(days.shift());
-        });
+        const days = createWeekDays(locale);
         return (
           <div
             aria-label={props.label}
