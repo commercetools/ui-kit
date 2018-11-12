@@ -118,10 +118,6 @@ const createCurrencySelectStyles = ({
 // }
 // which equals 0.0123456 €
 
-// Parses the value returned from <input type="text" />'s onChange function
-// The input will only call us with parseable values, or an empty string
-// The function will return NaN for the empty string.
-//
 // Parsing
 // Since most users are not careful about how they enter values, we will parse
 // both `.` and `,` as decimal separators.
@@ -131,15 +127,15 @@ const createCurrencySelectStyles = ({
 // This means the highest amount always wins. We do this by comparing the last
 // position of `.` and `,`. Whatever occurs later is used as the decimal
 // separator.
-export const parseAmount = amount => {
-  const lastDot = String(amount).lastIndexOf('.');
-  const lastComma = String(amount).lastIndexOf(',');
+export const parseRawAmountToNumber = rawAmount => {
+  const lastDot = String(rawAmount).lastIndexOf('.');
+  const lastComma = String(rawAmount).lastIndexOf(',');
 
   const separator = lastComma > lastDot ? ',' : '.';
   const throwaway = separator === '.' ? ',' : '\\.';
 
-  // The amount with only one sparator
-  const normalizedAmount = String(amount)
+  // The raw amount with only one sparator
+  const normalizedAmount = String(rawAmount)
     .replace(new RegExp(`${throwaway}`, 'g'), '')
     .replace(separator, '.');
 
@@ -157,15 +153,15 @@ export const parseAmount = amount => {
 //  - no currency was selected
 //
 // This function expects the "amount" to be a trimmed value.
-export const createMoneyValue = (currencyCode, amount) => {
+export const createMoneyValue = (currencyCode, rawAmount) => {
   if (!currencyCode) return null;
 
   const currency = currencies[currencyCode];
   if (!currency) return null;
 
-  if (amount.length === 0 || !isNumberish(amount)) return null;
+  if (rawAmount.length === 0 || !isNumberish(rawAmount)) return null;
 
-  const amountAsNumber = parseAmount(amount);
+  const amountAsNumber = parseRawAmountToNumber(rawAmount);
   if (isNaN(amountAsNumber)) return null;
 
   const centAmount = amountAsNumber * 10 ** currency.fractionDigits;
@@ -199,15 +195,16 @@ export const createMoneyValue = (currencyCode, amount) => {
   };
 };
 
-const getAmountAsNumberFromMoneyValue = money =>
-  money.type === 'highPrecision'
-    ? money.preciseAmount / 10 ** money.fractionDigits
-    : money.centAmount / 10 ** currencies[money.currencyCode].fractionDigits;
+const getAmountAsNumberFromMoneyValue = moneyValue =>
+  moneyValue.type === 'highPrecision'
+    ? moneyValue.preciseAmount / 10 ** moneyValue.fractionDigits
+    : moneyValue.centAmount /
+      10 ** currencies[moneyValue.currencyCode].fractionDigits;
 
 // gets called with a string and should return a formatted string
-const formatAmount = (value, currencyCode, locale) => {
+const formatAmount = (rawAmount, currencyCode, locale) => {
   // fallback in case the user didn't enter an amount yet (or it's invalid)
-  const moneyValue = createMoneyValue(currencyCode, value) || {
+  const moneyValue = createMoneyValue(currencyCode, rawAmount) || {
     currencyCode,
     centAmount: NaN,
   };
