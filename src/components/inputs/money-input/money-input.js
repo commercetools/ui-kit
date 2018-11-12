@@ -164,9 +164,24 @@ export const createMoneyValue = (currencyCode, rawAmount) => {
   const amountAsNumber = parseRawAmountToNumber(rawAmount);
   if (isNaN(amountAsNumber)) return null;
 
-  const centAmount = amountAsNumber * 10 ** currency.fractionDigits;
+  // The cent amount is rounded to the currencie's default number
+  // of fraction digits for prices with high precision.
+  //
+  // Additionally, JavaScript is sometimes incorrect when multiplying floats,
+  //   e.g. 2.49 * 100 -> 249.00000000000003
+  // While inaccuracy from multiplying floating point numbers is a
+  // general problem in JS, we can avoid it by cutting off all
+  // decimals. This is possible since cents is the base unit, so we
+  // operate on integers anyways
+  // Also we should the round the value to ensure that we come close
+  // to the nearest decimal value
+  // ref: https://github.com/commercetools/merchant-center-frontend/pull/770
+  const centAmount = Math.trunc(
+    Math.round(amountAsNumber * 10 ** currency.fractionDigits)
+  );
+
   const fractionDigitsOfAmount =
-    // The input will always use a dot as the separator.
+    // The conversion to a string will always use a dot as the separator.
     // That means we don't have to handle a comma.
     String(amountAsNumber).indexOf('.') === -1
       ? 0
@@ -176,9 +191,7 @@ export const createMoneyValue = (currencyCode, rawAmount) => {
     return {
       type: 'highPrecision',
       currencyCode,
-      // For prices with high precision, the cent amount is rounded to the
-      // currencies default number of fraction digits
-      centAmount: parseFloat(centAmount.toFixed(0), 10),
+      centAmount,
       preciseAmount: parseInt(
         amountAsNumber * 10 ** fractionDigitsOfAmount,
         10
@@ -211,13 +224,13 @@ const formatAmount = (rawAmount, currencyCode, locale) => {
 
   const amount = getAmountAsNumberFromMoneyValue(moneyValue);
 
+  const fractionDigits = moneyValue.preciseAmount
+    ? moneyValue.fractionDigits
+    : currencies[moneyValue.currencyCode].fractionDigits;
+
   return isNaN(amount)
     ? ''
-    : amount.toLocaleString(locale, {
-        minimumFractionDigits: moneyValue.preciseAmount
-          ? moneyValue.fractionDigits
-          : currencies[moneyValue.currencyCode].fractionDigits,
-      });
+    : amount.toLocaleString(locale, { minimumFractionDigits: fractionDigits });
 };
 
 const getAmountStyles = props => {
