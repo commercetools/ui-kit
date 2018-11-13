@@ -1,5 +1,20 @@
+// WARNING
+//
+// This component relies on the internals of react-select, as it accesses
+// instance methods! Be careful when upgrading react-select and ensure this
+// component keeps working!
+//
+// Ultimately, this component should be rewritten without react-select, maybe
+// with downshift.
+
+// NOTE
+// date-input, date-range-input and date-time-input are all based on
+// react-select and behave pretty similar. If you make a change to this
+// component, you probably also want to update the other two compnoents!
+
 // This component is based on the experimental Date Picker example
 // https://react-select.com/advanced#experimental
+
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
