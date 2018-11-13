@@ -1,0 +1,12 @@
+.menu {
+  height: 200;
+  overflow-y: scroll;
+}
+
+.suggestions {
+  background: lightgreen;
+}
+
+.calendar {
+  background: lightcoral;
+}
