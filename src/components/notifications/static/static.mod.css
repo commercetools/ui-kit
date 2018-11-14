@@ -1,0 +1,71 @@
+.notification {
+  display: flex;
+  align-items: stretch;
+  text-align: left;
+  word-break: break-word;
+  hyphens: auto;
+  margin: var(--spacing-16);
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius-6) 0 0 var(--border-radius-6);
+  border-width: 0;
+  padding: var(--spacing-8) var(--spacing-16);
+}
+
+/*
+   Actual visible assests of used icons has a width of 18px, but
+   they have margins which makes them 24px wide.
+
+   Notification elements should use beautiful eye-popping spacings carefully picked
+   by our designers, hence apply negative margin to make icon width match
+   its actual content.
+ */
+.iconContainer svg {
+  margin: 0 -3px;
+}
+
+.error .iconContainer {
+  background: var(--color-red);
+}
+
+.warning .iconContainer {
+  background: var(--color-orange);
+}
+
+.info .iconContainer {
+  background: var(--color-blue);
+}
+
+.success .iconContainer {
+  background: var(--color-green);
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-8);
+  background: var(--color-white);
+  border-radius: 0 var(--border-radius-6) var(--border-radius-6) 0;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.error .content {
+  border-color: var(--color-red);
+}
+
+.warning .content {
+  border-color: var(--color-orange);
+}
+
+.info .content {
+  border-color: var(--color-blue);
+}
+
+.success .content {
+  border-color: var(--color-green);
+}

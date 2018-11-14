@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Static should render notification of type \`error\` 1`] = `
+<div>
+  <div
+    class="notification error"
+  >
+    <div
+      class="iconContainer"
+    >
+      <test-file-stub
+        classname="theme-white"
+        height="24"
+        width="24"
+      />
+    </div>
+    <div
+      class="content"
+    >
+      A message
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Static should render notification of type \`info\` 1`] = `
+<div>
+  <div
+    class="notification info"
+  >
+    <div
+      class="iconContainer"
+    >
+      <test-file-stub
+        classname="theme-white"
+        height="24"
+        width="24"
+      />
+    </div>
+    <div
+      class="content"
+    >
+      A message
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Static should render notification of type \`success\` 1`] = `
+<div>
+  <div
+    class="notification success"
+  >
+    <div
+      class="iconContainer"
+    >
+      <test-file-stub
+        classname="theme-white"
+        height="24"
+        width="24"
+      />
+    </div>
+    <div
+      class="content"
+    >
+      A message
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Static should render notification of type \`warning\` 1`] = `
+<div>
+  <div
+    class="notification warning"
+  >
+    <div
+      class="iconContainer"
+    >
+      <test-file-stub
+        classname="theme-white"
+        height="24"
+        width="24"
+      />
+    </div>
+    <div
+      class="content"
+    >
+      A message
+    </div>
+  </div>
+</div>
+`;
