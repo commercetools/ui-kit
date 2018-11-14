@@ -30,6 +30,23 @@ import { FieldLabel } from '@commercetools-frontend/ui-kit';
 />
 ```
 
+The `hintIcon` also accepts a custom `theme` while defaulting to `orange` in the case above.
+
+```diff
+<FieldLabel
+  title={<FormattedMessage {...messages.title} />}
+  hasRequiredIndicator={true}
+  onInfoButtonClick={() => {}} />}
+  hint={<FormattedMessage {...messages.hint} />}
+- hintIcon={<WarningIcon />}
++ hintIcon={<WarningIcon theme="green" />}
+  description={<FormattedMessage {...messages.description} />}
+  badge={<FlatButton tone="primary" label="show" />}
+  htmlFor="sampleInput"
+  horizontalConstraint="m"
+/>
+```
+
 #### Properties
 
 | Props                  | Type               | Required | Values                             | Default | Description                                                                                                                                                                                                                                                           |
