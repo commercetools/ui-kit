@@ -114,6 +114,21 @@ describe('rendering', () => {
       it('should set the icon size', () => {
         expect(hintIconWrapper).toHaveProp('size', 'medium');
       });
+
+      describe('with custom theme', () => {
+        beforeEach(() => {
+          props = createTestProps({
+            hint: 'foo',
+            hintIcon: <WarningIcon theme="green" />,
+          });
+          wrapper = shallow(<FieldLabel {...props} />);
+          hintIconWrapper = wrapper.find(WarningIcon);
+        });
+
+        it('should set the icon theme', () => {
+          expect(hintIconWrapper).toHaveProp('theme', 'green');
+        });
+      });
     });
 
     describe('when hintIcon is not given', () => {
