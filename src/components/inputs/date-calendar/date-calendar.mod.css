@@ -1,0 +1,26 @@
+.menu {
+  height: 200;
+  overflow-y: scroll;
+}
+
+.suggestions {
+  background: lightgreen;
+}
+
+.calendar {
+  margin: 0;
+  padding: 0 1%;
+}
+
+.calendar li {
+  list-style-type: none;
+  display: inline-block;
+  margin: 2px 1%;
+  width: 12%;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.weekday {
+  background: lightblue;
+}

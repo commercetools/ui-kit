@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import moment from 'moment';
 import { injectIntl } from 'react-intl';
-import styles from './downshift-calendar.mod.css';
+import styles from './date-calendar.mod.css';
 import {
   createCalendarItems,
   createSuggestedItems,
@@ -57,10 +57,13 @@ class DownshiftCalendar extends React.Component {
   };
   showToday = () => {
     const today = moment();
-    this.setState(prevState => ({
-      calendarDate: today,
-      highlightedIndex: prevState.suggestedDates.length + today.date() - 1,
-    }));
+    this.setState(
+      prevState => ({
+        calendarDate: today,
+        highlightedIndex: prevState.suggestedDates.length + today.date() - 1,
+      }),
+      () => this.inputRef.current.focus()
+    );
   };
   render() {
     return (
@@ -112,6 +115,13 @@ class DownshiftCalendar extends React.Component {
             else if (highlightedIndex < suggestedItems.length) 'suggestedItem';
             else 'calendarItem';
           };
+
+          const paddingDays = do {
+            const weekday = this.state.calendarDate.startOf('month').day();
+            Array(weekday).fill();
+          };
+
+          const weekdays = moment.localeData('en').weekdaysMin();
 
           return (
             <div>
@@ -237,28 +247,32 @@ class DownshiftCalendar extends React.Component {
                       ))}
                     </ul>
                     {this.state.calendarDate.format('YYYY-MM')}
+                    <button
+                      type="button"
+                      onClick={this.showPrevMonth}
+                      onKeyDown={createButtonKeyDownHandler(this.inputRef)}
+                    >
+                      -
+                    </button>
+                    <button type="button" onClick={this.showToday}>
+                      o
+                    </button>
+                    <button
+                      type="button"
+                      onClick={this.showNextMonth}
+                      onKeyDown={createButtonKeyDownHandler(this.inputRef)}
+                    >
+                      +
+                    </button>
                     <ul className={styles.calendar}>
-                      <button
-                        type="button"
-                        onClick={this.showPrevMonth}
-                        onKeyDown={createButtonKeyDownHandler(this.inputRef)}
-                      >
-                        -
-                      </button>
-                      <button
-                        type="button"
-                        onClick={this.showToday}
-                        onKeyDown={() => this.inputRef.current.focus()}
-                      >
-                        o
-                      </button>
-                      <button
-                        type="button"
-                        onClick={this.showNextMonth}
-                        onKeyDown={createButtonKeyDownHandler(this.inputRef)}
-                      >
-                        +
-                      </button>
+                      {weekdays.map(weekday => (
+                        <li key={weekday} className={styles.weekday}>
+                          {weekday}
+                        </li>
+                      ))}
+                      {paddingDays.map((day, index) => (
+                        <li key={index} />
+                      ))}
                       {calendarItems.map((item, index) => (
                         <li
                           key={item.format('YYYY-MM-DD')}
@@ -273,7 +287,7 @@ class DownshiftCalendar extends React.Component {
                             },
                           })}
                         >
-                          {item.format('YYYY-MM-DD')}
+                          {item.format('DD')}
                         </li>
                       ))}
                     </ul>
