@@ -6,3 +6,4 @@ file_filter = i18n/<lang>.json
 source_file = i18n/core.json
 source_lang = en_US
 type = KEYVALUEJSON
+
