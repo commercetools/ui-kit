@@ -123,4 +123,6 @@ export {
 
 export { i18n };
 
-export { default as Notifications } from './components/notifications';
+export {
+  default as ContentNotification,
+} from './components/notifications/content-notification';

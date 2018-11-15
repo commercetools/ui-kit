@@ -1,4 +1,4 @@
-# MoneyInput
+# ContentNotification
 
 #### Description
 
@@ -7,11 +7,11 @@ An in-place notification panel.
 ## Usage
 
 ```js
-import { Notifications } from '@commercetools-frontend/ui-kit';
+import { ContentNotification } from '@commercetools-frontend/ui-kit';
 
-<Notifications.Static type="error">
+<ContentNotification type="error">
   Something went wrong here!
-</Notifications.Static>;
+</ContentNotification>;
 ```
 
 #### Properties

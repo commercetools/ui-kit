@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { ErrorIcon, WarningIcon, InfoIcon, SuccessIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import styles from './static.mod.css';
+import styles from './content-notification.mod.css';
 
 class NotificationIcon extends React.PureComponent {
   static displayName = 'NotificationIcon';
@@ -28,8 +28,8 @@ class NotificationIcon extends React.PureComponent {
   }
 }
 
-export default class StaticNotification extends React.PureComponent {
-  static displayName = 'StaticNotification';
+export default class ContentNotification extends React.PureComponent {
+  static displayName = 'ContentNotification';
 
   static propTypes = {
     type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
