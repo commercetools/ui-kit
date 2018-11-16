@@ -19,4 +19,4 @@ import { ContentNotification } from '@commercetools-frontend/ui-kit';
 | Props      | Type     | Required | Values                                | Default | Description                                       |
 | ---------- | -------- | :------: | ------------------------------------- | ------- | ------------------------------------------------- |
 | `children` | `node`   |    -     | -                                     | -       | Message to be shown inside a notification panel.  |
-| `type`     | `string` |    -     | `success`, `info`, `warning`, `error` | -       | Type of notification, determining its appearance. |
+| `type`     | `string` |    ✅    | `success`, `info`, `warning`, `error` | -       | Type of notification, determining its appearance. |
