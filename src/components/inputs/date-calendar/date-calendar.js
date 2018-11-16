@@ -10,19 +10,9 @@ import {
   preventDownshiftDefault,
   createButtonKeyDownHandler,
 } from './utils';
-import messages from './messages';
 
-const createItemToString = intl => item =>
-  item
-    ? item.calendar(null, {
-        sameDay: intl.formatMessage(messages.sameDay),
-        nextDay: intl.formatMessage(messages.nextDay),
-        nextWeek: intl.formatMessage(messages.nextWeek),
-        lastDay: intl.formatMessage(messages.lastDay),
-        lastWeek: intl.formatMessage(messages.lastWeek),
-        sameElse: intl.formatMessage(messages.sameElse),
-      })
-    : '';
+const createItemToString = (/* intl */) => item =>
+  item ? moment(item).format('L') : '';
 
 class DateCalendar extends React.Component {
   static displayName = 'DateCalendar';
@@ -30,6 +20,8 @@ class DateCalendar extends React.Component {
     intl: PropTypes.shape({
       locale: PropTypes.string.isRequired,
     }).isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
   };
   inputRef = React.createRef();
   state = {
@@ -65,11 +57,24 @@ class DateCalendar extends React.Component {
       () => this.inputRef.current.focus()
     );
   };
+  handleChange = date => {
+    this.inputRef.current.setSelectionRange(0, 100);
+    const value = date ? date.format('YYYY-MM-DD') : '';
+    this.props.onChange({
+      target: {
+        id: this.props.id,
+        name: this.props.name,
+        value,
+      },
+    });
+  };
   render() {
     return (
       <Downshift
         itemToString={createItemToString(this.props.intl)}
+        selectedItem={this.props.value === '' ? null : this.props.value}
         highlightedIndex={this.state.highlightedIndex}
+        onChange={this.handleChange}
         onStateChange={changes => {
           // eslint-disable-next-line no-prototype-builtins
           if (changes.hasOwnProperty('inputValue')) {
