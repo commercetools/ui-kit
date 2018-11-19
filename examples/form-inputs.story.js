@@ -352,7 +352,7 @@ class ProductForm extends React.Component {
               mapValues(
                 // We only show errors once the field has been touched
                 LocalizedTextInput.isTouched(this.props.formik.touched.slug) &&
-                this.props.formik.errors.slug
+                  this.props.formik.errors.slug
                   ? // We map on the per-field errors which are present on
                     // the "translations" field
                     this.props.formik.errors.slug.translations
