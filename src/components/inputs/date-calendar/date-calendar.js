@@ -32,6 +32,111 @@ const createButtonKeyDownHandler = ref => event => {
 const createItemToString = (/* intl */) => item =>
   item ? moment(item).format('L') : '';
 
+const createKeyDownHandler = ({
+  isOpen,
+  setHighlightedIndex,
+  clearSelection,
+  closeMenu,
+  inputValue,
+  highlightedItemType,
+  highlightedIndex,
+  allItems,
+  openMenu,
+  suggestedItems,
+  showNextMonth,
+  showPrevMonth,
+  emit,
+}) => event => {
+  const preventCursorJump = () => {
+    event.preventDefault();
+  };
+
+  // allow closing menu when pressing enter on empty input
+  if (
+    event.key === 'Enter' &&
+    inputValue.trim() === '' &&
+    highlightedIndex === null
+  ) {
+    preventDownshiftDefault(event);
+    clearSelection();
+    closeMenu();
+    emit('');
+    return;
+  }
+
+  const arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
+
+  if (highlightedItemType !== 'none') {
+    // user presses arrow keys while something is highlighted,
+    // so we want to prevent the cursor from jumping
+    if (arrowKeys.includes(event.key)) preventCursorJump();
+    // user types while something was highlighted, so we
+    // want to remove the highlight, which in turn
+    // allows the user to use the arrow keys
+    else setHighlightedIndex(null);
+  }
+
+  if (event.key === 'ArrowLeft') {
+    if (highlightedItemType === 'none') return;
+    preventDownshiftDefault(event);
+
+    if (highlightedIndex === suggestedItems.length) {
+      showPrevMonth();
+    } else {
+      setHighlightedIndex(
+        do {
+          if (highlightedIndex === 0) null;
+          else Math.max(highlightedIndex - 1, 0);
+        }
+      );
+    }
+    return;
+  }
+  if (event.key === 'ArrowRight') {
+    if (highlightedItemType === 'none') return;
+    preventDownshiftDefault(event);
+    if (highlightedIndex === allItems.length - 1) {
+      showNextMonth();
+    } else {
+      setHighlightedIndex(Math.min(highlightedIndex + 1, allItems.length - 1));
+    }
+    return;
+  }
+
+  if (event.key === 'ArrowDown') {
+    preventDownshiftDefault(event);
+
+    // reopens menu after in cases user focues the input,
+    // then selects a value (menu closes) and then presses
+    // the down key
+    if (!isOpen) openMenu();
+
+    setHighlightedIndex(
+      do {
+        if (highlightedItemType === 'none') 0;
+        else if (highlightedItemType === 'calendarItem')
+          Math.min(highlightedIndex + 7, allItems.length - 1);
+        else highlightedIndex + 1;
+      }
+    );
+  }
+  if (event.key === 'ArrowUp') {
+    preventDownshiftDefault(event);
+    setHighlightedIndex(
+      do {
+        if (highlightedIndex === 0) null;
+        else if (highlightedIndex === null) null;
+        else if (highlightedItemType === 'calendarItem')
+          Math.max(
+            highlightedIndex - 7,
+            Math.max(suggestedItems.length - 1, 0)
+          );
+        else highlightedIndex - 1;
+      }
+    );
+  }
+};
+
 class DateCalendar extends React.Component {
   static displayName = 'DateCalendar';
   static propTypes = {
@@ -161,108 +266,44 @@ class DateCalendar extends React.Component {
                     // arrow keys to move the cursor when hovering
                     if (isOpen) setHighlightedIndex(null);
                   },
-                  onKeyDown: event => {
-                    const preventCursorJump = () => {
-                      event.preventDefault();
-                    };
-
-                    // allow closing menu when pressing enter on empty input
-                    if (
-                      event.key === 'Enter' &&
-                      inputValue.trim() === '' &&
-                      this.state.highlightedIndex === null
-                    ) {
-                      preventDownshiftDefault(event);
-                      clearSelection();
-                      closeMenu();
-                      this.emit('');
-                      return;
-                    }
-
-                    const arrowKeys = [
-                      'ArrowLeft',
-                      'ArrowRight',
-                      'ArrowUp',
-                      'ArrowDown',
-                    ];
-
-                    if (highlightedItemType !== 'none') {
-                      // user presses arrow keys while something is highlighted,
-                      // so we want to prevent the cursor from jumping
-                      if (arrowKeys.includes(event.key)) preventCursorJump();
-                      // user types while something was highlighted, so we
-                      // want to remove the highlight, which in turn
-                      // allows the user to use the arrow keys
-                      else setHighlightedIndex(null);
-                    }
-
-                    if (event.key === 'ArrowLeft') {
-                      if (highlightedItemType === 'none') return;
-                      preventDownshiftDefault(event);
-
-                      if (highlightedIndex === suggestedItems.length) {
-                        this.showPrevMonth();
-                      } else {
-                        setHighlightedIndex(
-                          do {
-                            if (highlightedIndex === 0) null;
-                            else Math.max(highlightedIndex - 1, 0);
-                          }
-                        );
-                      }
-                      return;
-                    }
-                    if (event.key === 'ArrowRight') {
-                      if (highlightedItemType === 'none') return;
-                      preventDownshiftDefault(event);
-                      if (highlightedIndex === allItems.length - 1) {
-                        this.showNextMonth();
-                      } else {
-                        setHighlightedIndex(
-                          Math.min(highlightedIndex + 1, allItems.length - 1)
-                        );
-                      }
-                      return;
-                    }
-
-                    if (event.key === 'ArrowDown') {
-                      preventDownshiftDefault(event);
-
-                      // reopens menu after in cases user focues the input,
-                      // then selects a value (menu closes) and then presses
-                      // the down key
-                      if (!isOpen) openMenu();
-
-                      setHighlightedIndex(
-                        do {
-                          if (highlightedItemType === 'none') 0;
-                          else if (highlightedItemType === 'calendarItem')
-                            Math.min(highlightedIndex + 7, allItems.length - 1);
-                          else highlightedIndex + 1;
-                        }
-                      );
-                    }
-                    if (event.key === 'ArrowUp') {
-                      preventDownshiftDefault(event);
-                      setHighlightedIndex(
-                        do {
-                          if (highlightedIndex === 0) null;
-                          else if (highlightedIndex === null) null;
-                          else if (highlightedItemType === 'calendarItem')
-                            Math.max(
-                              highlightedIndex - 7,
-                              Math.max(suggestedItems.length - 1, 0)
-                            );
-                          else highlightedIndex - 1;
-                        }
-                      );
-                    }
-                  },
+                  onKeyDown: createKeyDownHandler({
+                    isOpen,
+                    setHighlightedIndex,
+                    clearSelection,
+                    closeMenu,
+                    inputValue,
+                    highlightedItemType,
+                    highlightedIndex,
+                    allItems,
+                    openMenu,
+                    suggestedItems,
+                    showNextMonth: this.showNextMonth,
+                    showPrevMonth: this.showPrevMonth,
+                    emit: this.emit,
+                  }),
                   onFocus: openMenu,
                   onClick: openMenu,
                 })}
               />
-              <button {...getToggleButtonProps()}>
+              <button
+                {...getToggleButtonProps({
+                  onKeyDown: createKeyDownHandler({
+                    isOpen,
+                    setHighlightedIndex,
+                    clearSelection,
+                    closeMenu,
+                    inputValue,
+                    highlightedItemType,
+                    highlightedIndex,
+                    allItems,
+                    openMenu,
+                    suggestedItems,
+                    showNextMonth: this.showNextMonth,
+                    showPrevMonth: this.showPrevMonth,
+                    emit: this.emit,
+                  }),
+                })}
+              >
                 {isOpen ? 'close' : 'open'}
               </button>
               {selectedItem ? (
@@ -320,11 +361,16 @@ class DateCalendar extends React.Component {
                           {...getItemProps({
                             item,
                             style: {
-                              backgroundColor:
-                                suggestedItems.length + index ===
-                                highlightedIndex
-                                  ? 'gray'
-                                  : null,
+                              backgroundColor: do {
+                                if (
+                                  suggestedItems.length + index ===
+                                  highlightedIndex
+                                )
+                                  'gray';
+                                else if (item.isSame(this.props.value, 'day'))
+                                  'green';
+                                else null;
+                              },
                             },
                           })}
                         >
