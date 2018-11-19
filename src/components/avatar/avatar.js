@@ -9,9 +9,9 @@ export const GravatarImg = props => {
   return (
     <img
       className={classnames(styles['gravatar-img'], {
-        [styles['gravatar-image-small']]: props.size === 's',
-        [styles['gravatar-image-medium']]: props.size === 'm',
-        [styles['gravatar-image-large']]: props.size === 'l',
+        [styles['gravatar-image-small']]: props.scale === 's',
+        [styles['gravatar-image-medium']]: props.scale === 'm',
+        [styles['gravatar-image-large']]: props.scale === 'l',
       })}
       src={imageUrl}
       srcSet={imageUrl}
@@ -22,7 +22,7 @@ export const GravatarImg = props => {
 GravatarImg.displayName = 'GravatarImg';
 GravatarImg.propTypes = {
   hash: PropTypes.string,
-  size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
+  scale: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
 };
 
 export const Initials = props => (
@@ -44,13 +44,13 @@ const Avatar = props => (
   <div
     className={classnames(
       styles['avatar-base'],
-      styles[`avatar-${props.size}`],
+      styles[`avatar-${props.scale}`],
       {
         [styles['avatar-hover']]: props.isHighlighted,
       }
     )}
   >
-    <GravatarImg hash={props.gravatarHash} size={props.size} />
+    <GravatarImg hash={props.gravatarHash} scale={props.scale} />
     <Initials firstName={props.firstName} lastName={props.lastName} />
   </div>
 );
@@ -59,7 +59,7 @@ Avatar.defaultProps = {
   firstName: '',
   lastName: '',
   isHighlighted: false,
-  size: 's',
+  scale: 's',
 };
 
 Avatar.propTypes = {
@@ -67,7 +67,7 @@ Avatar.propTypes = {
   lastName: PropTypes.string,
   gravatarHash: PropTypes.string.isRequired,
   isHighlighted: PropTypes.bool,
-  size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
+  scale: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
 };
 
 export default Avatar;

@@ -8,13 +8,13 @@ exports[`render <GravatarImg /> with regular email should match snapshot 1`] = `
 />
 `;
 
-exports[`render when highlighted should contain style for small size 1`] = `
+exports[`render when highlighted should contain style for highligting component 1`] = `
 <div
   className="avatar-base avatar-l avatar-hover"
 >
   <GravatarImg
     hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
-    size="l"
+    scale="l"
   />
   <Initials
     firstName=""
@@ -23,13 +23,13 @@ exports[`render when highlighted should contain style for small size 1`] = `
 </div>
 `;
 
-exports[`render when large size should contain style for large size 1`] = `
+exports[`render when large scale should contain style for large scale 1`] = `
 <div
   className="avatar-base avatar-l"
 >
   <GravatarImg
     hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
-    size="l"
+    scale="l"
   />
   <Initials
     firstName=""
@@ -38,13 +38,13 @@ exports[`render when large size should contain style for large size 1`] = `
 </div>
 `;
 
-exports[`render when medium size should contain style for medium size 1`] = `
+exports[`render when medium scale should contain style for medium scale 1`] = `
 <div
   className="avatar-base avatar-m"
 >
   <GravatarImg
     hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
-    size="m"
+    scale="m"
   />
   <Initials
     firstName=""
@@ -53,13 +53,13 @@ exports[`render when medium size should contain style for medium size 1`] = `
 </div>
 `;
 
-exports[`render when small size should contain style for small size 1`] = `
+exports[`render when small scale should contain style for small scale 1`] = `
 <div
   className="avatar-base avatar-s"
 >
   <GravatarImg
     hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
-    size="s"
+    scale="s"
   />
   <Initials
     firstName=""

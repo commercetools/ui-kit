@@ -8,7 +8,7 @@ const createTestProps = customProps => ({
   lastName: '',
   gravatarHash: '20c9c1b252b46ab49d6f7a4cee9c3e68',
   isHighlighted: false,
-  size: 'l',
+  scale: 'l',
   ...customProps,
 });
 
@@ -37,7 +37,7 @@ describe('render', () => {
     describe('with regular email', () => {
       beforeEach(() => {
         wrapper = shallow(
-          <GravatarImg size="s" hash="20c9c1b252b46ab49d6f7a4cee9c3e68" />
+          <GravatarImg scale="s" hash="20c9c1b252b46ab49d6f7a4cee9c3e68" />
         );
       });
 
@@ -47,31 +47,31 @@ describe('render', () => {
     });
   });
 
-  describe('when large size', () => {
+  describe('when large scale', () => {
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<Avatar {...props} />);
     });
 
-    it('should contain style for large size', () => {
+    it('should contain style for large scale', () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
-  describe('when medium size', () => {
+  describe('when medium scale', () => {
     beforeEach(() => {
-      props = createTestProps({ size: 'm' });
+      props = createTestProps({ scale: 'm' });
       wrapper = shallow(<Avatar {...props} />);
     });
-    it('should contain style for medium size', () => {
+    it('should contain style for medium scale', () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
-  describe('when small size', () => {
+  describe('when small scale', () => {
     beforeEach(() => {
-      props = createTestProps({ size: 's' });
+      props = createTestProps({ scale: 's' });
       wrapper = shallow(<Avatar {...props} />);
     });
-    it('should contain style for small size', () => {
+    it('should contain style for small scale', () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
@@ -80,7 +80,7 @@ describe('render', () => {
       props = createTestProps({ isHighlighted: true });
       wrapper = shallow(<Avatar {...props} />);
     });
-    it('should contain style for small size', () => {
+    it('should contain style for highligting component', () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
