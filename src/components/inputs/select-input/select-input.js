@@ -136,9 +136,8 @@ export class SelectInput extends React.Component {
     //     { label: 'Flavours', options: flavourOptions },
     //   ];
     // So we "ungroup" the options by merging them all into one list first.
-    const optionsWithoutGroups = flatMap(
-      props.options,
-      option => (has(option, 'value') ? option : option.options)
+    const optionsWithoutGroups = flatMap(props.options, option =>
+      has(option, 'value') ? option : option.options
     );
 
     /**

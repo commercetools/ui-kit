@@ -100,10 +100,9 @@ storiesOf('Examples|Forms/Inputs', module)
                     isSearchable={false}
                     isClearable={true}
                   />
-                  {stateInput.hasError &&
-                    stateInput.isTouched && (
-                      <ErrorMessage>State is not valid</ErrorMessage>
-                    )}
+                  {stateInput.hasError && stateInput.isTouched && (
+                    <ErrorMessage>State is not valid</ErrorMessage>
+                  )}
                 </Spacings.Stack>
                 <Spacings.Stack scale="xs">
                   <SelectInput
@@ -117,10 +116,9 @@ storiesOf('Examples|Forms/Inputs', module)
                     isSearchable={false}
                     isClearable={true}
                   />
-                  {colourInput.hasError &&
-                    colourInput.isTouched && (
-                      <ErrorMessage>Colour is not valid</ErrorMessage>
-                    )}
+                  {colourInput.hasError && colourInput.isTouched && (
+                    <ErrorMessage>Colour is not valid</ErrorMessage>
+                  )}
                 </Spacings.Stack>
                 <Spacings.Inline>
                   <SecondaryButton

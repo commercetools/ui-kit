@@ -198,10 +198,9 @@ export class PrimaryActionDropdown extends React.PureComponent {
         >
           {primaryOption.props.children}
         </DropdownHead>
-        {this.state.isOpen &&
-          !primaryOption.props.isDisabled && (
-            <Options>{childrenAsArray}</Options>
-          )}
+        {this.state.isOpen && !primaryOption.props.isDisabled && (
+          <Options>{childrenAsArray}</Options>
+        )}
       </div>
     );
   }

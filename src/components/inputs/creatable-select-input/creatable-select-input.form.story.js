@@ -108,10 +108,9 @@ storiesOf('Examples|Forms/Inputs', module)
                     hasError={stateInput.hasError && stateInput.isTouched}
                     isClearable={true}
                   />
-                  {stateInput.hasError &&
-                    stateInput.isTouched && (
-                      <ErrorMessage>State is not valid</ErrorMessage>
-                    )}
+                  {stateInput.hasError && stateInput.isTouched && (
+                    <ErrorMessage>State is not valid</ErrorMessage>
+                  )}
                 </Spacings.Stack>
                 <Spacings.Stack scale="xs">
                   <CreatableSelectInput
@@ -124,10 +123,9 @@ storiesOf('Examples|Forms/Inputs', module)
                     hasError={colourInput.hasError && colourInput.isTouched}
                     isClearable={true}
                   />
-                  {colourInput.hasError &&
-                    colourInput.isTouched && (
-                      <ErrorMessage>Colour is not valid</ErrorMessage>
-                    )}
+                  {colourInput.hasError && colourInput.isTouched && (
+                    <ErrorMessage>Colour is not valid</ErrorMessage>
+                  )}
                 </Spacings.Stack>
                 <Spacings.Inline>
                   <SecondaryButton

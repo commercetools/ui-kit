@@ -27,10 +27,8 @@ const declarationsBody = flatMap(colors, colorGroup =>
   //   Transforms the colors object into base colors
   flatMap(Object.entries(colorGroup), ([colorName, variations]) =>
     flatMap(
-      sortBy(
-        Object.entries(variations),
-        ([variationName]) =>
-          variationName === 'default' ? -Infinity : variationName
+      sortBy(Object.entries(variations), ([variationName]) =>
+        variationName === 'default' ? -Infinity : variationName
       ),
       ([variationNumber, lightnessPercentage]) => {
         // defines the main colors variables

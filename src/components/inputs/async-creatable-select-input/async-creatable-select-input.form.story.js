@@ -123,10 +123,9 @@ class AsyncCreatableSelectInputStory extends React.Component {
                           );
                         }}
                       />
-                      {hasError &&
-                        isTouched && (
-                          <ErrorMessage>Category is required</ErrorMessage>
-                        )}
+                      {hasError && isTouched && (
+                        <ErrorMessage>Category is required</ErrorMessage>
+                      )}
                     </Spacings.Stack>
                     <div>
                       <button
