@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render <GravatarImg /> with regular email should match snapshot 1`] = `
+<img
+  className="gravatar-img gravatar-image-small"
+  src="https://www.gravatar.com/avatar/20c9c1b252b46ab49d6f7a4cee9c3e68?d=blank"
+  srcSet="https://www.gravatar.com/avatar/20c9c1b252b46ab49d6f7a4cee9c3e68?d=blank"
+/>
+`;
+
+exports[`render when highlighted should contain style for small size 1`] = `
+<div
+  className="avatar-base avatar-l avatar-hover"
+>
+  <GravatarImg
+    hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
+    size="l"
+  />
+  <Initials
+    firstName=""
+    lastName=""
+  />
+</div>
+`;
+
+exports[`render when large size should contain style for large size 1`] = `
+<div
+  className="avatar-base avatar-l"
+>
+  <GravatarImg
+    hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
+    size="l"
+  />
+  <Initials
+    firstName=""
+    lastName=""
+  />
+</div>
+`;
+
+exports[`render when medium size should contain style for medium size 1`] = `
+<div
+  className="avatar-base avatar-m"
+>
+  <GravatarImg
+    hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
+    size="m"
+  />
+  <Initials
+    firstName=""
+    lastName=""
+  />
+</div>
+`;
+
+exports[`render when small size should contain style for small size 1`] = `
+<div
+  className="avatar-base avatar-s"
+>
+  <GravatarImg
+    hash="20c9c1b252b46ab49d6f7a4cee9c3e68"
+    size="s"
+  />
+  <Initials
+    firstName=""
+    lastName=""
+  />
+</div>
+`;
