@@ -10,11 +10,11 @@ storiesOf('Images', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Avatar', () => {
-    const size = select('size', ['s', 'm', 'l'], 'l');
+    const scale = select('scale', ['s', 'm', 'l'], 'l');
 
-    const wrapperSize = do {
-      if (size === 's') '26px';
-      else if (size === 'm') '48px';
+    const wrapperScale = do {
+      if (scale === 's') '26px';
+      else if (scale === 'm') '48px';
       else '100px';
     };
 
@@ -22,8 +22,8 @@ storiesOf('Images', module)
       <Section>
         <div
           style={{
-            width: wrapperSize,
-            height: wrapperSize,
+            width: wrapperScale,
+            height: wrapperScale,
           }}
         >
           <Avatar
@@ -31,7 +31,7 @@ storiesOf('Images', module)
             lastName={text('lastName', 'Snow')}
             gravatarHash={text('gravatarHash', '')}
             isHighlighted={boolean('isHighlighted', false)}
-            size={size}
+            scale={scale}
           />
         </div>
       </Section>
