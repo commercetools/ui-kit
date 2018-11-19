@@ -102,7 +102,7 @@
     "@storybook/addon-options": "4.0.2",
     "@storybook/react": "4.0.2",
     "@svgr/rollup": "4.0.2",
-    "@svgr/webpack": "4.0.2",
+    "@svgr/webpack": "4.0.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
