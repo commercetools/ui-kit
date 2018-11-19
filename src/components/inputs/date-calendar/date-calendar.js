@@ -4,12 +4,30 @@ import Downshift from 'downshift';
 import moment from 'moment';
 import { injectIntl } from 'react-intl';
 import styles from './date-calendar.mod.css';
-import {
-  createCalendarItems,
-  createSuggestedItems,
-  preventDownshiftDefault,
-  createButtonKeyDownHandler,
-} from './utils';
+
+const createCalendarItems = day =>
+  Array.from({ length: moment(day).daysInMonth() }).map((_, i) => {
+    const dayOfMonth = i + 1;
+    const date = moment(day).date(dayOfMonth);
+    return date;
+  });
+
+// eslint-disable-next-line arrow-body-style
+const createSuggestedItems = inputValue => {
+  if (inputValue.startsWith('t')) return [moment()];
+  return [];
+};
+
+const preventDownshiftDefault = event => {
+  // eslint-disable-next-line no-param-reassign
+  event.nativeEvent.preventDownshiftDefault = true;
+};
+
+const createButtonKeyDownHandler = ref => event => {
+  if (event.key === 'Enter') return;
+  event.preventDefault();
+  ref.current.focus();
+};
 
 const createItemToString = (/* intl */) => item =>
   item ? moment(item).format('L') : '';
@@ -27,7 +45,8 @@ class DateCalendar extends React.Component {
   state = {
     calendarDate: moment(),
     suggestedDates: [],
-    highlightedIndex: null,
+    highlightedIndex:
+      this.props.value === '' ? null : moment(this.props.value).date() - 1,
   };
   showPrevMonth = () => {
     this.setState(prevState => ({
@@ -60,6 +79,9 @@ class DateCalendar extends React.Component {
   handleChange = date => {
     this.inputRef.current.setSelectionRange(0, 100);
     const value = date ? date.format('YYYY-MM-DD') : '';
+    this.emit(value);
+  };
+  emit = value =>
     this.props.onChange({
       target: {
         id: this.props.id,
@@ -67,7 +89,6 @@ class DateCalendar extends React.Component {
         value,
       },
     });
-  };
   render() {
     return (
       <Downshift
@@ -104,6 +125,8 @@ class DateCalendar extends React.Component {
 
           highlightedIndex,
           openMenu,
+          closeMenu,
+          inputValue,
           setHighlightedIndex,
           selectedItem,
           isOpen,
@@ -142,6 +165,19 @@ class DateCalendar extends React.Component {
                     const preventCursorJump = () => {
                       event.preventDefault();
                     };
+
+                    // allow closing menu when pressing enter on empty input
+                    if (
+                      event.key === 'Enter' &&
+                      inputValue.trim() === '' &&
+                      this.state.highlightedIndex === null
+                    ) {
+                      preventDownshiftDefault(event);
+                      clearSelection();
+                      closeMenu();
+                      this.emit('');
+                      return;
+                    }
 
                     const arrowKeys = [
                       'ArrowLeft',
