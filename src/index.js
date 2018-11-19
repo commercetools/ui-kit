@@ -122,3 +122,7 @@ export {
 } from '../materials/custom-properties.json';
 
 export { i18n };
+
+export {
+  default as ContentNotification,
+} from './components/notifications/content-notification';
