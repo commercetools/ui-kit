@@ -1,0 +1,35 @@
+.base {
+  list-style-type: none;
+  display: inline-block;
+  margin: 4px 1%;
+  width: 12%;
+  text-align: center;
+  padding: 10px 0;
+  cursor: default;
+}
+
+.day {
+  composes: base;
+  border-radius: 4px;
+}
+
+.heading {
+  composes: base;
+  color: #999;
+  font-weight: bold;
+}
+
+.spacing {
+  composes: base;
+}
+
+/* States */
+
+.highlighted {
+  background-color: #e6e6e6;
+}
+
+.selected {
+  background-color: #1ab29e;
+  color: white;
+}

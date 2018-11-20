@@ -1,0 +1,12 @@
+
+
+.menu {
+  overflow-y: scroll;
+  border: 1px solid var(--token-border-color-input-focus);
+  border-radius: var(--token-border-radius-input);
+  padding-bottom: 10px;
+  margin-top: 4px;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+}

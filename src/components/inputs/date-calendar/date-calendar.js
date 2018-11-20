@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import moment from 'moment';
 import { injectIntl } from 'react-intl';
-import styles from './date-calendar.mod.css';
+import DateCalendarBody from './date-calendar-body';
+import DateCalendarMenu from './date-calendar-menu';
+import DateCalendarHeader from './date-calendar-header';
+import DateCalendarCalendar from './date-calendar-calendar';
+import DateCalendarDay from './date-calendar-day';
+import DateCalendarSuggestions from './date-calendar-suggestions';
+import DateCalendarSuggestion from './date-calendar-suggestion';
+import Constraints from '../../constraints';
 
 const createCalendarItems = day =>
   Array.from({ length: moment(day).daysInMonth() }).map((_, i) => {
@@ -21,12 +28,6 @@ const createSuggestedItems = inputValue => {
 const preventDownshiftDefault = event => {
   // eslint-disable-next-line no-param-reassign
   event.nativeEvent.preventDownshiftDefault = true;
-};
-
-const createButtonKeyDownHandler = ref => event => {
-  if (event.key === 'Enter') return;
-  event.preventDefault();
-  ref.current.focus();
 };
 
 const createItemToString = (/* intl */) => item =>
@@ -196,195 +197,172 @@ class DateCalendar extends React.Component {
     });
   render() {
     return (
-      <Downshift
-        itemToString={createItemToString(this.props.intl)}
-        selectedItem={this.props.value === '' ? null : this.props.value}
-        highlightedIndex={this.state.highlightedIndex}
-        onChange={this.handleChange}
-        onStateChange={changes => {
-          // eslint-disable-next-line no-prototype-builtins
-          if (changes.hasOwnProperty('inputValue')) {
-            const suggestedItems = createSuggestedItems(
-              changes.inputValue,
+      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+        <Downshift
+          itemToString={createItemToString(this.props.intl)}
+          selectedItem={this.props.value === '' ? null : this.props.value}
+          highlightedIndex={this.state.highlightedIndex}
+          onChange={this.handleChange}
+          onStateChange={changes => {
+            // eslint-disable-next-line no-prototype-builtins
+            if (changes.hasOwnProperty('inputValue')) {
+              const suggestedItems = createSuggestedItems(
+                changes.inputValue,
+                this.props.intl
+              );
+              this.setState({
+                suggestedDates: suggestedItems,
+                highlightedIndex: suggestedItems.length > 0 ? 0 : null,
+              });
+            }
+
+            // eslint-disable-next-line no-prototype-builtins
+            if (changes.hasOwnProperty('highlightedIndex')) {
+              this.setState({ highlightedIndex: changes.highlightedIndex });
+            }
+          }}
+        >
+          {({
+            getInputProps,
+            getMenuProps,
+            getItemProps,
+            getToggleButtonProps,
+
+            clearSelection,
+
+            highlightedIndex,
+            openMenu,
+            closeMenu,
+            inputValue,
+            setHighlightedIndex,
+            selectedItem,
+            isOpen,
+          }) => {
+            const suggestedItems = this.state.suggestedDates;
+            const calendarItems = createCalendarItems(
+              this.state.calendarDate,
               this.props.intl
             );
-            this.setState({
-              suggestedDates: suggestedItems,
-              highlightedIndex: suggestedItems.length > 0 ? 0 : null,
-            });
-          }
+            const allItems = [...suggestedItems, ...calendarItems];
 
-          // eslint-disable-next-line no-prototype-builtins
-          if (changes.hasOwnProperty('highlightedIndex')) {
-            this.setState({ highlightedIndex: changes.highlightedIndex });
-          }
-        }}
-      >
-        {({
-          getInputProps,
-          getMenuProps,
-          getItemProps,
-          getToggleButtonProps,
+            const highlightedItemType = do {
+              if (highlightedIndex === null) 'none';
+              else if (highlightedIndex < suggestedItems.length)
+                'suggestedItem';
+              else 'calendarItem';
+            };
 
-          clearSelection,
+            const paddingDays = do {
+              const weekday = this.state.calendarDate.startOf('month').day();
+              Array(weekday).fill();
+            };
 
-          highlightedIndex,
-          openMenu,
-          closeMenu,
-          inputValue,
-          setHighlightedIndex,
-          selectedItem,
-          isOpen,
-        }) => {
-          const suggestedItems = this.state.suggestedDates;
-          const calendarItems = createCalendarItems(
-            this.state.calendarDate,
-            this.props.intl
-          );
-          const allItems = [...suggestedItems, ...calendarItems];
+            const weekdays = moment.localeData('en').weekdaysMin();
 
-          const highlightedItemType = do {
-            if (highlightedIndex === null) 'none';
-            else if (highlightedIndex < suggestedItems.length) 'suggestedItem';
-            else 'calendarItem';
-          };
-
-          const paddingDays = do {
-            const weekday = this.state.calendarDate.startOf('month').day();
-            Array(weekday).fill();
-          };
-
-          const weekdays = moment.localeData('en').weekdaysMin();
-
-          return (
-            <div>
-              <input
-                ref={this.inputRef}
-                {...getInputProps({
-                  onMouseEnter: () => {
-                    // we remove the highlight so that the user can use the
-                    // arrow keys to move the cursor when hovering
-                    if (isOpen) setHighlightedIndex(null);
-                  },
-                  onKeyDown: createKeyDownHandler({
-                    isOpen,
-                    setHighlightedIndex,
-                    clearSelection,
-                    closeMenu,
-                    inputValue,
-                    highlightedItemType,
-                    highlightedIndex,
-                    allItems,
-                    openMenu,
-                    suggestedItems,
-                    showNextMonth: this.showNextMonth,
-                    showPrevMonth: this.showPrevMonth,
-                    emit: this.emit,
-                  }),
-                  onFocus: openMenu,
-                  onClick: openMenu,
-                })}
-              />
-              <button
-                {...getToggleButtonProps({
-                  onKeyDown: createKeyDownHandler({
-                    isOpen,
-                    setHighlightedIndex,
-                    clearSelection,
-                    closeMenu,
-                    inputValue,
-                    highlightedItemType,
-                    highlightedIndex,
-                    allItems,
-                    openMenu,
-                    suggestedItems,
-                    showNextMonth: this.showNextMonth,
-                    showPrevMonth: this.showPrevMonth,
-                    emit: this.emit,
-                  }),
-                })}
-              >
-                {isOpen ? 'close' : 'open'}
-              </button>
-              {selectedItem ? (
-                <button onClick={clearSelection}>x</button>
-              ) : null}
-              <div {...getMenuProps({ className: styles.menu })}>
-                {isOpen ? (
-                  <React.Fragment>
-                    <ul className={styles.suggestions}>
-                      {suggestedItems.map((item, index) => (
-                        <li
-                          key={item.format('YYYY-MM-DD')}
-                          {...getItemProps({
-                            item,
-                            style: {
-                              backgroundColor:
-                                index === highlightedIndex ? 'gray' : null,
-                            },
-                          })}
-                        >
-                          Suggestion {item.format('YYYY-MM-DD')}
-                        </li>
-                      ))}
-                    </ul>
-                    {this.state.calendarDate.format('YYYY-MM')}
-                    <button
-                      type="button"
-                      onClick={this.showPrevMonth}
-                      onKeyDown={createButtonKeyDownHandler(this.inputRef)}
-                    >
-                      -
-                    </button>
-                    <button type="button" onClick={this.showToday}>
-                      o
-                    </button>
-                    <button
-                      type="button"
-                      onClick={this.showNextMonth}
-                      onKeyDown={createButtonKeyDownHandler(this.inputRef)}
-                    >
-                      +
-                    </button>
-                    <ul className={styles.calendar}>
+            return (
+              <div>
+                <DateCalendarBody
+                  inputRef={this.inputRef}
+                  inputProps={getInputProps({
+                    onMouseEnter: () => {
+                      // we remove the highlight so that the user can use the
+                      // arrow keys to move the cursor when hovering
+                      if (isOpen) setHighlightedIndex(null);
+                    },
+                    onKeyDown: createKeyDownHandler({
+                      isOpen,
+                      setHighlightedIndex,
+                      clearSelection,
+                      closeMenu,
+                      inputValue,
+                      highlightedItemType,
+                      highlightedIndex,
+                      allItems,
+                      openMenu,
+                      suggestedItems,
+                      showNextMonth: this.showNextMonth,
+                      showPrevMonth: this.showPrevMonth,
+                      emit: this.emit,
+                    }),
+                    onFocus: openMenu,
+                    onClick: openMenu,
+                  })}
+                  hasSelection={Boolean(selectedItem)}
+                  onClear={clearSelection}
+                  isOpen={isOpen}
+                  toggleButtonProps={getToggleButtonProps({
+                    onKeyDown: createKeyDownHandler({
+                      isOpen,
+                      setHighlightedIndex,
+                      clearSelection,
+                      closeMenu,
+                      inputValue,
+                      highlightedItemType,
+                      highlightedIndex,
+                      allItems,
+                      openMenu,
+                      suggestedItems,
+                      showNextMonth: this.showNextMonth,
+                      showPrevMonth: this.showPrevMonth,
+                      emit: this.emit,
+                    }),
+                  })}
+                />
+                {isOpen && (
+                  <DateCalendarMenu {...getMenuProps()}>
+                    {suggestedItems.length > 0 && (
+                      <DateCalendarSuggestions>
+                        {suggestedItems.map((item, index) => (
+                          <DateCalendarSuggestion
+                            key={item.format('YYYY-MM-DD')}
+                            {...getItemProps({ item })}
+                            isHighlighted={index === highlightedIndex}
+                          >
+                            Suggestion {item.format('YYYY-MM-DD')}
+                          </DateCalendarSuggestion>
+                        ))}
+                      </DateCalendarSuggestions>
+                    )}
+                    <DateCalendarHeader
+                      label={this.state.calendarDate.format('MMMM YYYY')}
+                      onPrevMonthClick={this.showPrevMonth}
+                      onTodayClick={this.showToday}
+                      onNextMonthClick={this.showNextMonth}
+                    />
+                    <DateCalendarCalendar>
                       {weekdays.map(weekday => (
-                        <li key={weekday} className={styles.weekday}>
+                        <DateCalendarDay key={weekday} type="heading">
                           {weekday}
-                        </li>
+                        </DateCalendarDay>
                       ))}
                       {paddingDays.map((day, index) => (
-                        <li key={index} />
+                        <DateCalendarDay key={index} type="spacing" />
                       ))}
                       {calendarItems.map((item, index) => (
-                        <li
+                        <DateCalendarDay
                           key={item.format('YYYY-MM-DD')}
                           {...getItemProps({
                             item,
-                            style: {
-                              backgroundColor: do {
-                                if (
-                                  suggestedItems.length + index ===
-                                  highlightedIndex
-                                )
-                                  'gray';
-                                else if (item.isSame(this.props.value, 'day'))
-                                  'green';
-                                else null;
-                              },
+                            onMouseOut: () => {
+                              setHighlightedIndex(null);
                             },
                           })}
+                          isHighlighted={
+                            suggestedItems.length + index === highlightedIndex
+                          }
+                          isSelected={item.isSame(this.props.value, 'day')}
                         >
                           {item.format('DD')}
-                        </li>
+                        </DateCalendarDay>
                       ))}
-                    </ul>
-                  </React.Fragment>
-                ) : null}
+                    </DateCalendarCalendar>
+                  </DateCalendarMenu>
+                )}
               </div>
-            </div>
-          );
-        }}
-      </Downshift>
+            );
+          }}
+        </Downshift>
+      </Constraints.Horizontal>
     );
   }
 }
