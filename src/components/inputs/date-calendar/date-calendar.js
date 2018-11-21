@@ -352,7 +352,7 @@ class DateCalendar extends React.Component {
                           }
                           isSelected={item.isSame(this.props.value, 'day')}
                         >
-                          {item.format('DD')}
+                          {item.format('D')}
                         </DateCalendarDay>
                       ))}
                     </DateCalendarCalendar>

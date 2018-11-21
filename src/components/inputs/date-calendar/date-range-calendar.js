@@ -530,7 +530,7 @@ class DateRangeCalendar extends React.Component {
                             isRangeBetween={isRangeBetween}
                             isRangeEnd={isRangeEnd}
                           >
-                            {item.format('DD')}
+                            {item.format('D')}
                           </DateCalendarDay>
                         );
                       })}
