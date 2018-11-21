@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
-import moment from 'moment';
 import { injectIntl } from 'react-intl';
 import DateCalendarBody from './date-calendar-body';
 import DateCalendarMenu from './date-calendar-menu';
@@ -11,17 +10,30 @@ import DateCalendarDay from './date-calendar-day';
 import DateCalendarSuggestions from './date-calendar-suggestions';
 import DateCalendarSuggestion from './date-calendar-suggestion';
 import Constraints from '../../constraints';
+import {
+  getDaysInMonth,
+  changeDateInMonth,
+  getDateInMonth,
+  getToday,
+  formatDate,
+  changeMonth,
+  getPaddingDayCount,
+  getWeekdayNames,
+  getCalendarLabel,
+  isSameDay,
+  getCalendarDayLabel,
+  isBetween as isBetweenDates,
+} from './utils';
 
 const createCalendarItems = day =>
-  Array.from({ length: moment(day).daysInMonth() }).map((_, i) => {
+  Array.from({ length: getDaysInMonth(day) }).map((_, i) => {
     const dayOfMonth = i + 1;
-    const date = moment(day).date(dayOfMonth);
+    const date = changeDateInMonth(day, dayOfMonth);
     return date;
   });
 
 const createSuggestedItems = inputValue => {
-  if (inputValue.startsWith('t'))
-    return [[moment().startOf('week'), moment().endOf('week')]];
+  if (inputValue.startsWith('t')) return [getToday(), getToday()];
   return [];
 };
 
@@ -47,28 +59,24 @@ const preventDownshiftDefault = event => {
 const getRange = ({ item, value, startDate, highlightedItem }) => {
   const isRangeSelectionInProgress = startDate;
   const hasSelection = value.length === 2;
-  const formattedItem = item.format('YYYY-MM-DD');
-  const isStartDate = formattedItem === startDate;
+  const isStartDate = isSameDay(item, startDate);
 
   const isBetween =
-    highlightedItem &&
-    (item.isBetween(startDate, highlightedItem) ||
-      item.isBetween(highlightedItem, startDate));
+    highlightedItem && isBetweenDates(item, startDate, highlightedItem);
 
   const isRangeStart = do {
     if (isRangeSelectionInProgress) isStartDate;
-    else if (hasSelection) value[0] === formattedItem;
+    else if (hasSelection) value[0] === item;
     else false;
   };
   const isRangeBetween = do {
     if (isRangeSelectionInProgress) isBetween;
-    else if (hasSelection) item.isBetween(value[0], value[1]);
+    else if (hasSelection) isBetweenDates(item, value[0], value[1]);
     else false;
   };
   const isRangeEnd = do {
-    if (isRangeSelectionInProgress)
-      formattedItem === highlightedItem?.format('YYYY-MM-DD');
-    else if (hasSelection) value[1] === formattedItem;
+    if (isRangeSelectionInProgress) item === highlightedItem;
+    else if (hasSelection) value[1] === item;
     else false;
   };
 
@@ -79,11 +87,10 @@ const getRange = ({ item, value, startDate, highlightedItem }) => {
   };
 };
 
-const createItemToString = (/* intl */) => item => {
-  if (Array.isArray(item))
-    return item.map(i => (i ? i.format('L') : '')).join(' ');
-  return item ? moment(item).format('L') : '';
-};
+const createItemToString = (/* intl */) => item =>
+  Array.isArray(item)
+    ? item.map(i => (i ? formatDate(i) : '')).join(' - ')
+    : formatDate(item);
 
 const createKeyDownHandler = ({
   isOpen,
@@ -197,7 +204,7 @@ class DateRangeCalendar extends React.Component {
   };
   inputRef = React.createRef();
   state = {
-    calendarDate: moment(),
+    calendarDate: getToday(),
     suggestedDates: [],
     startDate: null,
     highlightedIndex: null,
@@ -209,28 +216,29 @@ class DateRangeCalendar extends React.Component {
   };
   showPrevMonth = () => {
     this.setState(prevState => ({
-      calendarDate: prevState.calendarDate.clone().subtract(1, 'month'),
+      calendarDate: changeMonth(prevState.calendarDate, -1),
       // select first day in next month
       highlightedIndex: prevState.suggestedDates.length,
     }));
   };
   showNextMonth = () => {
     this.setState(prevState => {
-      const nextMonth = prevState.calendarDate.clone().add(1, 'month');
+      const nextMonth = changeMonth(prevState.calendarDate, 1);
       return {
         calendarDate: nextMonth,
         highlightedIndex:
           // select last day in next month
-          prevState.suggestedDates.length + nextMonth.daysInMonth() - 1,
+          prevState.suggestedDates.length + getDaysInMonth(nextMonth) - 1,
       };
     });
   };
   showToday = () => {
-    const today = moment();
+    const today = getToday();
     this.setState(
       prevState => ({
         calendarDate: today,
-        highlightedIndex: prevState.suggestedDates.length + today.date() - 1,
+        highlightedIndex:
+          prevState.suggestedDates.length + getDateInMonth(today) - 1,
       }),
       () => this.inputRef.current.focus()
     );
@@ -253,21 +261,6 @@ class DateRangeCalendar extends React.Component {
           selectedItem={null}
           highlightedIndex={this.state.highlightedIndex}
           onStateChange={changes => {
-            // on focus
-            // {"isOpen":true,"type":"__autocomplete_unknown__"}
-
-            // on hover item
-            // {"highlightedIndex":18,"type":"__autocomplete_item_mouseenter__"}
-
-            // on item click
-            // {"isOpen":false,"highlightedIndex":null,"selectedItem":"2018-11-18T23:00:00.000Z","inputValue":"11/19/2018","type":"__autocomplete_click_item__"}
-
-            // on second item click
-            // {"isOpen":false,"highlightedIndex":null,"selectedItem":"2018-11-21T23:00:00.000Z","inputValue":"11/22/2018","type":"__autocomplete_click_item__"}
-
-            // on type
-            // {"type":"__autocomplete_change_input__","inputValue":"f"}
-
             /* eslint-disable no-prototype-builtins */
 
             this.setState(prevState => {
@@ -294,20 +287,15 @@ class DateRangeCalendar extends React.Component {
 
                 return {
                   highlightedIndex: prevState.highlightedIndex,
-                  startDate: prevState.startDate
-                    ? null
-                    : changes.selectedItem.format('YYYY-MM-DD'),
+                  startDate: prevState.startDate ? null : changes.selectedItem,
                   isOpen: !hasFinishedRangeSelection,
                   inputValue: do {
                     if (hasFinishedRangeSelection)
-                      [
-                        prevState.startDate,
-                        changes.selectedItem.format('YYYY-MM-DD'),
-                      ]
+                      [prevState.startDate, changes.selectedItem]
                         .sort()
                         .join(' - ');
                     else if (hasStartedRangeSelection)
-                      `${changes.selectedItem.format('YYYY-MM-DD')} -`;
+                      `${formatDate(changes.selectedItem)} -`;
                     else '';
                   },
                 };
@@ -336,22 +324,22 @@ class DateRangeCalendar extends React.Component {
                     startDate: null,
                   };
                 if (parsedRange.length === 1) {
-                  const calendarDate = moment(parsedRange[0]);
+                  const calendarDate = parsedRange[0];
                   return {
                     suggestedDates,
                     highlightedIndex:
-                      suggestedDates.length + calendarDate.date() - 1,
+                      suggestedDates.length + getDateInMonth(calendarDate) - 1,
                     inputValue: changes.inputValue,
                     startDate: parsedRange[0],
                     calendarDate,
                   };
                 }
                 if (parsedRange.length === 2) {
-                  const calendarDate = moment(parsedRange[1]);
+                  const calendarDate = parsedRange[1];
                   return {
                     suggestedDates,
                     highlightedIndex:
-                      suggestedDates.length + calendarDate.date() - 1,
+                      suggestedDates.length + getDateInMonth(calendarDate) - 1,
                     inputValue: changes.inputValue,
                     startDate: parsedRange[0],
                     calendarDate,
@@ -369,10 +357,7 @@ class DateRangeCalendar extends React.Component {
           }}
           onChange={selectedItem => {
             if (this.state.startDate && selectedItem) {
-              this.emit([
-                this.state.startDate,
-                selectedItem.format('YYYY-MM-DD'),
-              ]);
+              this.emit([this.state.startDate, selectedItem]);
             } else {
               this.emit([]);
             }
@@ -407,11 +392,11 @@ class DateRangeCalendar extends React.Component {
             };
 
             const paddingDays = do {
-              const weekday = this.state.calendarDate.startOf('month').day();
+              const weekday = getPaddingDayCount(this.state.calendarDate);
               Array(weekday).fill();
             };
 
-            const weekdays = moment.localeData('en').weekdaysMin();
+            const weekdays = getWeekdayNames('en');
 
             return (
               <div>
@@ -472,21 +457,17 @@ class DateRangeCalendar extends React.Component {
                       <DateCalendarSuggestions>
                         {this.state.suggestedDates.map((item, index) => (
                           <DateCalendarSuggestion
-                            key={`${item[0].format(
-                              'YYYY-MM-DD'
-                            )} - ${item[1].format('YYYY-MM-DD')}`}
+                            key={`${item[0]} - ${item[1]}`}
                             {...getItemProps({ item })}
                             isHighlighted={index === highlightedIndex}
                           >
-                            Suggestion{' '}
-                            {item[0].format('YYYY-MM-DD') -
-                              item[1].format('YYYY-MM-DD')}
+                            Suggestion {item[0] - item[1]}
                           </DateCalendarSuggestion>
                         ))}
                       </DateCalendarSuggestions>
                     )}
                     <DateCalendarHeader
-                      label={this.state.calendarDate.format('MMMM YYYY')}
+                      label={getCalendarLabel(this.state.calendarDate)}
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}
@@ -517,7 +498,7 @@ class DateRangeCalendar extends React.Component {
                         });
                         return (
                           <DateCalendarDay
-                            key={item.format('YYYY-MM-DD')}
+                            key={item}
                             {...getItemProps({
                               item,
                               onMouseOut: () => {
@@ -529,7 +510,7 @@ class DateRangeCalendar extends React.Component {
                             isRangeBetween={isRangeBetween}
                             isRangeEnd={isRangeEnd}
                           >
-                            {item.format('D')}
+                            {getCalendarDayLabel(item)}
                           </DateCalendarDay>
                         );
                       })}

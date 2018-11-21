@@ -22,3 +22,17 @@ export const getWeekdayNames = locale =>
 export const getCalendarLabel = day => moment(day).format('MMMM YYYY');
 export const isSameDay = (a, b) => moment(a).isSame(b, 'day');
 export const getCalendarDayLabel = day => moment(day).format('D');
+
+export const isBetween = (item, start, end) => {
+  const itemDate = moment(item);
+  const startDate = moment(start);
+  const endDate = moment(end);
+  return (
+    itemDate.isBetween(startDate, endDate) ||
+    itemDate.isBetween(endDate, startDate)
+  );
+};
+
+// replace
+// `${this.props.value[0]} - ${this.props.value[1]}`
+// look for "inputValue:"
