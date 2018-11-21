@@ -12,7 +12,6 @@ import DateCalendarSuggestion from './date-calendar-suggestion';
 import Constraints from '../../constraints';
 import {
   getDaysInMonth,
-  changeDateInMonth,
   getDateInMonth,
   getToday,
   formatDate,
@@ -22,16 +21,8 @@ import {
   getCalendarLabel,
   isSameDay,
   getCalendarDayLabel,
+  createCalendarItems,
 } from './utils';
-
-// END OF UTILS ----------------------------------------------------------------
-
-const createCalendarItems = day =>
-  Array.from({ length: getDaysInMonth(day) }).map((_, i) => {
-    const dayOfMonth = i + 1;
-    const date = changeDateInMonth(day, dayOfMonth);
-    return date;
-  });
 
 const createSuggestedItems = inputValue => {
   if (inputValue.startsWith('t')) return [getToday()];

@@ -12,7 +12,7 @@ import DateCalendarSuggestion from './date-calendar-suggestion';
 import Constraints from '../../constraints';
 import {
   getDaysInMonth,
-  changeDateInMonth,
+  createCalendarItems,
   getDateInMonth,
   getToday,
   formatDate,
@@ -25,17 +25,15 @@ import {
   isBetween as isBetweenDates,
 } from './utils';
 
-const createCalendarItems = day =>
-  Array.from({ length: getDaysInMonth(day) }).map((_, i) => {
-    const dayOfMonth = i + 1;
-    const date = changeDateInMonth(day, dayOfMonth);
-    return date;
-  });
-
 const createSuggestedItems = inputValue => {
   if (inputValue.startsWith('t')) return [getToday(), getToday()];
   return [];
 };
+
+const createItemToString = (/* intl */) => item =>
+  Array.isArray(item)
+    ? item.map(i => (i ? formatDate(i) : '')).join(' - ')
+    : formatDate(item);
 
 const parseRangeText = text => {
   // TODO parse more formats, but format them all to YYYY-MM-DD
@@ -86,11 +84,6 @@ const getRange = ({ item, value, startDate, highlightedItem }) => {
     isRangeEnd,
   };
 };
-
-const createItemToString = (/* intl */) => item =>
-  Array.isArray(item)
-    ? item.map(i => (i ? formatDate(i) : '')).join(' - ')
-    : formatDate(item);
 
 const createKeyDownHandler = ({
   isOpen,

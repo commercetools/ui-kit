@@ -1,10 +1,6 @@
 import moment from 'moment';
 
 export const getDaysInMonth = day => moment(day).daysInMonth();
-export const changeDateInMonth = (day, dayOfMonth) =>
-  moment(day)
-    .date(dayOfMonth)
-    .format('YYYY-MM-DD');
 export const getDateInMonth = day => moment(day).date();
 export const getToday = () => moment().format('YYYY-MM-DD');
 export const formatDate = day => moment(day).format('L');
@@ -32,6 +28,18 @@ export const isBetween = (item, start, end) => {
     itemDate.isBetween(endDate, startDate)
   );
 };
+
+const changeDateInMonth = (day, dayOfMonth) =>
+  moment(day)
+    .date(dayOfMonth)
+    .format('YYYY-MM-DD');
+
+export const createCalendarItems = day =>
+  Array.from({ length: getDaysInMonth(day) }).map((_, i) => {
+    const dayOfMonth = i + 1;
+    const date = changeDateInMonth(day, dayOfMonth);
+    return date;
+  });
 
 // replace
 // `${this.props.value[0]} - ${this.props.value[1]}`

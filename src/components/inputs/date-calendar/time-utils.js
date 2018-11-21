@@ -33,7 +33,7 @@ export const getToday = timeZone =>
     .startOf('day')
     .toISOString();
 export const formatDate = (day, timeZone) =>
-  moment.tz(day, timeZone).format('L');
+  moment.tz(day, timeZone).format('L LT');
 export const changeMonth = (day, timeZone, delta) =>
   moment
     .tz(day, timeZone)

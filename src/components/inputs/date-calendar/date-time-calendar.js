@@ -80,7 +80,7 @@ const parseInputText = (text, locale, timeZone) => {
   return '';
 };
 
-const createItemToString = (intl, timeZone) => item =>
+const createItemToString = (locale, timeZone) => item =>
   item ? formatDate(item, timeZone) : '';
 
 const createKeyDownHandler = ({
@@ -278,11 +278,12 @@ class DateTimeCalendar extends React.Component {
       },
     });
   render() {
+    console.log(this.props.timeZone);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
           itemToString={createItemToString(
-            this.props.intl,
+            this.props.intl.locale,
             this.props.timeZone
           )}
           selectedItem={this.props.value === '' ? null : this.props.value}
