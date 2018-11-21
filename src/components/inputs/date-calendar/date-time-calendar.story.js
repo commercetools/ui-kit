@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import DateCalendarReadme from './README.md';
@@ -51,6 +51,22 @@ class DateTimeCalendarStory extends React.Component {
           <DateTimeCalendar
             value={this.state.value}
             onChange={this.handleChange}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              ['xs', 's', 'm', 'l', 'xl', 'scale'],
+              'scale'
+            )}
+            timeZone={select(
+              'timeZone',
+              [
+                'UTC',
+                'America/Los_Angeles',
+                'America/New_York',
+                'Asia/Tokyo',
+                'Europe/Amsterdam',
+              ],
+              'UTC'
+            )}
           />
           {this.state.value}
         </div>
