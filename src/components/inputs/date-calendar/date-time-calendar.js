@@ -38,7 +38,6 @@ const createCalendarItems = (day, timeString) => {
   });
 };
 
-// eslint-disable-next-line arrow-body-style
 const createSuggestedItems = inputValue => {
   if (inputValue.startsWith('t')) return [moment()];
   return [];

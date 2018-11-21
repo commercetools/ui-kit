@@ -19,7 +19,6 @@ const createCalendarItems = day =>
     return date;
   });
 
-// eslint-disable-next-line arrow-body-style
 const createSuggestedItems = inputValue => {
   if (inputValue.startsWith('t'))
     return [[moment().startOf('week'), moment().endOf('week')]];
