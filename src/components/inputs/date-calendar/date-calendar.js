@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
-import moment from 'moment';
 import { injectIntl } from 'react-intl';
 import DateCalendarBody from './date-calendar-body';
 import DateCalendarMenu from './date-calendar-menu';
@@ -11,28 +10,19 @@ import DateCalendarDay from './date-calendar-day';
 import DateCalendarSuggestions from './date-calendar-suggestions';
 import DateCalendarSuggestion from './date-calendar-suggestion';
 import Constraints from '../../constraints';
-
-const getDaysInMonth = day => moment(day).daysInMonth();
-const changeDateInMonth = (day, dayOfMonth) =>
-  moment(day)
-    .date(dayOfMonth)
-    .format('YYYY-MM-DD');
-const getDateInMonth = day => moment(day).date();
-const getToday = () => moment().format('YYYY-MM-DD');
-const formatDate = day => moment(day).format('L');
-const changeMonth = (day, delta) =>
-  moment(day)
-    .add(delta, 'month')
-    .format('YYYY-MM-DD');
-const getPaddingDayCount = day =>
-  moment(day)
-    .startOf('month')
-    .day();
-const getWeekdayNames = locale => moment.localeData(locale).weekdaysMin();
-
-const getCalendarLabel = day => moment(day).format('MMMM YYYY');
-const isSameDay = (a, b) => moment(a).isSame(b, 'day');
-const getCalendarDayLabel = day => moment(day).format('D');
+import {
+  getDaysInMonth,
+  changeDateInMonth,
+  getDateInMonth,
+  getToday,
+  formatDate,
+  changeMonth,
+  getPaddingDayCount,
+  getWeekdayNames,
+  getCalendarLabel,
+  isSameDay,
+  getCalendarDayLabel,
+} from './utils';
 
 // END OF UTILS ----------------------------------------------------------------
 
@@ -172,7 +162,7 @@ class DateCalendar extends React.Component {
   };
   inputRef = React.createRef();
   state = {
-    calendarDate: moment(),
+    calendarDate: getToday(),
     suggestedDates: [],
     highlightedIndex:
       this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
