@@ -12,15 +12,39 @@ import DateCalendarSuggestions from './date-calendar-suggestions';
 import DateCalendarSuggestion from './date-calendar-suggestion';
 import Constraints from '../../constraints';
 
+const getDaysInMonth = day => moment(day).daysInMonth();
+const changeDateInMonth = (day, dayOfMonth) =>
+  moment(day)
+    .date(dayOfMonth)
+    .format('YYYY-MM-DD');
+const getDateInMonth = day => moment(day).date();
+const getToday = () => moment().format('YYYY-MM-DD');
+const formatDate = day => moment(day).format('L');
+const changeMonth = (day, delta) =>
+  moment(day)
+    .add(delta, 'month')
+    .format('YYYY-MM-DD');
+const getPaddingDayCount = day =>
+  moment(day)
+    .startOf('month')
+    .day();
+const getWeekdayNames = locale => moment.localeData(locale).weekdaysMin();
+
+const getCalendarLabel = day => moment(day).format('MMMM YYYY');
+const isSameDay = (a, b) => moment(a).isSame(b, 'day');
+const getCalendarDayLabel = day => moment(day).format('D');
+
+// END OF UTILS ----------------------------------------------------------------
+
 const createCalendarItems = day =>
-  Array.from({ length: moment(day).daysInMonth() }).map((_, i) => {
+  Array.from({ length: getDaysInMonth(day) }).map((_, i) => {
     const dayOfMonth = i + 1;
-    const date = moment(day).date(dayOfMonth);
+    const date = changeDateInMonth(day, dayOfMonth);
     return date;
   });
 
 const createSuggestedItems = inputValue => {
-  if (inputValue.startsWith('t')) return [moment()];
+  if (inputValue.startsWith('t')) return [getToday()];
   return [];
 };
 
@@ -30,7 +54,7 @@ const preventDownshiftDefault = event => {
 };
 
 const createItemToString = (/* intl */) => item =>
-  item ? moment(item).format('L') : '';
+  item ? formatDate(item) : '';
 
 const createKeyDownHandler = ({
   isOpen,
@@ -151,40 +175,40 @@ class DateCalendar extends React.Component {
     calendarDate: moment(),
     suggestedDates: [],
     highlightedIndex:
-      this.props.value === '' ? null : moment(this.props.value).date() - 1,
+      this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
   };
   showPrevMonth = () => {
     this.setState(prevState => ({
-      calendarDate: prevState.calendarDate.clone().subtract(1, 'month'),
+      calendarDate: changeMonth(prevState.calendarDate, -1),
       // select first day in next month
       highlightedIndex: prevState.suggestedDates.length,
     }));
   };
   showNextMonth = () => {
     this.setState(prevState => {
-      const nextMonth = prevState.calendarDate.clone().add(1, 'month');
+      const nextMonth = changeMonth(prevState.calendarDate, 1);
       return {
         calendarDate: nextMonth,
         highlightedIndex:
           // select last day in next month
-          prevState.suggestedDates.length + nextMonth.daysInMonth() - 1,
+          prevState.suggestedDates.length + getDaysInMonth(nextMonth) - 1,
       };
     });
   };
   showToday = () => {
-    const today = moment();
+    const today = getToday();
     this.setState(
       prevState => ({
         calendarDate: today,
-        highlightedIndex: prevState.suggestedDates.length + today.date() - 1,
+        highlightedIndex:
+          prevState.suggestedDates.length + getDateInMonth(today) - 1,
       }),
       () => this.inputRef.current.focus()
     );
   };
   handleChange = date => {
     this.inputRef.current.setSelectionRange(0, 100);
-    const value = date ? date.format('YYYY-MM-DD') : '';
-    this.emit(value);
+    this.emit(date);
   };
   emit = value =>
     this.props.onChange({
@@ -252,11 +276,11 @@ class DateCalendar extends React.Component {
             };
 
             const paddingDays = do {
-              const weekday = this.state.calendarDate.startOf('month').day();
+              const weekday = getPaddingDayCount(this.state.calendarDate);
               Array(weekday).fill();
             };
 
-            const weekdays = moment.localeData('en').weekdaysMin();
+            const weekdays = getWeekdayNames('en');
 
             return (
               <div>
@@ -313,17 +337,17 @@ class DateCalendar extends React.Component {
                       <DateCalendarSuggestions>
                         {suggestedItems.map((item, index) => (
                           <DateCalendarSuggestion
-                            key={item.format('YYYY-MM-DD')}
+                            key={item}
                             {...getItemProps({ item })}
                             isHighlighted={index === highlightedIndex}
                           >
-                            Suggestion {item.format('YYYY-MM-DD')}
+                            Suggestion {item}
                           </DateCalendarSuggestion>
                         ))}
                       </DateCalendarSuggestions>
                     )}
                     <DateCalendarHeader
-                      label={this.state.calendarDate.format('MMMM YYYY')}
+                      label={getCalendarLabel(this.state.calendarDate)}
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}
@@ -339,7 +363,7 @@ class DateCalendar extends React.Component {
                       ))}
                       {calendarItems.map((item, index) => (
                         <DateCalendarDay
-                          key={item.format('YYYY-MM-DD')}
+                          key={item}
                           {...getItemProps({
                             item,
                             onMouseOut: () => {
@@ -349,9 +373,9 @@ class DateCalendar extends React.Component {
                           isHighlighted={
                             suggestedItems.length + index === highlightedIndex
                           }
-                          isSelected={item.isSame(this.props.value, 'day')}
+                          isSelected={isSameDay(item, this.props.value)}
                         >
-                          {item.format('D')}
+                          {getCalendarDayLabel(item)}
                         </DateCalendarDay>
                       ))}
                     </DateCalendarCalendar>
