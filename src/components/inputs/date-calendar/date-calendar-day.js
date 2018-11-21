@@ -5,29 +5,31 @@ import classname from 'classnames';
 import styles from './date-calendar-day.mod.css';
 
 const DateCalendarDay = props => (
-  <li
-    className={classname(
-      do {
-        if (props.type === 'heading') styles.heading;
-        else if (props.type === 'spacing') styles.spacing;
-        else styles.day;
-      },
-      {
-        [styles.highlighted]: props.isHighlighted,
-        [styles.selected]: props.isSelected,
-        [styles.rangeStart]: props.isRangeStart,
-        [styles.rangeBetween]: props.isRangeBetween,
-        [styles.rangeEnd]: props.isRangeEnd,
-      }
-    )}
-    {...omit(props, [
-      'isHighlighted',
-      'isSelected',
-      'isRangeStart',
-      'isRangeBetween',
-      'isRangeEnd',
-    ])}
-  />
+  <li className={styles.wrapper}>
+    <div
+      className={classname(
+        do {
+          if (props.type === 'heading') styles.heading;
+          else if (props.type === 'spacing') styles.spacing;
+          else styles.day;
+        },
+        {
+          [styles.highlighted]: props.isHighlighted,
+          [styles.selected]: props.isSelected,
+          [styles.rangeStart]: props.isRangeStart,
+          [styles.rangeBetween]: props.isRangeBetween,
+          [styles.rangeEnd]: props.isRangeEnd,
+        }
+      )}
+      {...omit(props, [
+        'isHighlighted',
+        'isSelected',
+        'isRangeStart',
+        'isRangeBetween',
+        'isRangeEnd',
+      ])}
+    />
+  </li>
 );
 
 DateCalendarDay.displayName = 'DateCalendarDay';
