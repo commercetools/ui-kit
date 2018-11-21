@@ -13,33 +13,43 @@ import DateCalendarSuggestions from './date-calendar-suggestions';
 import DateCalendarSuggestion from './date-calendar-suggestion';
 import DateCalendarTimeInput from './date-calendar-time-input';
 import Constraints from '../../constraints';
+import {
+  getDaysInMonth,
+  changeDateInMonth,
+  changeTime,
+  formatTime,
+  getDateInMonth,
+  getToday,
+  formatDate,
+  changeMonth,
+  getPaddingDayCount,
+  getWeekdayNames,
+  getStartOf,
+  getCalendarLabel,
+  isSameDay,
+  getCalendarDayLabel,
+} from './time-utils';
 
 const activationTypes = [
   Downshift.stateChangeTypes.keyDownEnter,
   Downshift.stateChangeTypes.clickItem,
 ];
 
-const createCalendarItems = (day, timeString) => {
+const createCalendarItems = (day, timeString, intl, timeZone) => {
   const parsedTime = parseTime(timeString);
 
-  return Array.from({ length: moment(day).daysInMonth() }).map((_, i) => {
+  return Array.from({ length: getDaysInMonth(day, timeZone) }).map((_, i) => {
     const dayOfMonth = i + 1;
-    const date = moment(day)
-      .date(dayOfMonth)
-      .startOf('day');
+    let date = changeDateInMonth(day, timeZone, dayOfMonth);
     if (parsedTime) {
-      date.hours(parsedTime.hours);
-      date.minutes(parsedTime.minutes);
-      date.seconds(parsedTime.seconds);
-      date.seconds(parsedTime.seconds);
-      date.milliseconds(parsedTime.milliseconds);
+      date = changeTime(date, timeZone, parsedTime);
     }
     return date;
   });
 };
 
-const createSuggestedItems = inputValue => {
-  if (inputValue.startsWith('t')) return [moment()];
+const createSuggestedItems = (inputValue, timeZone) => {
+  if (inputValue.startsWith('t')) return [getToday(timeZone)];
   return [];
 };
 
@@ -48,15 +58,15 @@ const preventDownshiftDefault = event => {
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
-const parseInputText = text => {
+const parseInputText = (text, locale, timeZone) => {
   const [dateString, timeString] = text.split(' ');
-  if (!dateString) return null;
+  if (!dateString) return '';
 
-  const date = moment(dateString, 'MM/DD/YYYY');
-  if (!date.isValid()) return null;
+  const date = moment.tz(dateString, 'MM/DD/YYYY', timeZone);
+  if (!date.isValid()) return '';
 
   // enable parsing a date only
-  if (!timeString) return date.startOf('day');
+  if (!timeString) return date.startOf('day').toISOString();
 
   const parsedTime = parseTime(timeString);
   if (parsedTime) {
@@ -65,13 +75,13 @@ const parseInputText = text => {
     date.seconds(parsedTime.seconds);
     date.seconds(parsedTime.seconds);
     date.milliseconds(parsedTime.milliseconds);
-    return date;
+    return date.toISOString();
   }
-  return null;
+  return '';
 };
 
-const createItemToString = (/* intl */) => item =>
-  item ? moment(item).format('L LT') : '';
+const createItemToString = (intl, timeZone) => item =>
+  item ? formatDate(item, timeZone) : '';
 
 const createKeyDownHandler = ({
   isOpen,
@@ -188,47 +198,62 @@ class DateTimeCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    timeZone: PropTypes.string.isRequired,
   };
   inputRef = React.createRef();
   timeInputRef = React.createRef();
   state = {
-    calendarDate: moment(),
+    calendarDate: getToday(this.props.timeZone),
     suggestedDates: [],
     highlightedIndex:
-      this.props.value === '' ? null : moment(this.props.value).date() - 1,
+      this.props.value === ''
+        ? null
+        : getDateInMonth(this.props.value, this.props.timeZone) - 1,
     timeString: '',
   };
   showPrevMonth = () => {
     this.setState(prevState => ({
-      calendarDate: prevState.calendarDate.clone().subtract(1, 'month'),
+      calendarDate: changeMonth(
+        prevState.calendarDate,
+        this.props.timeZone,
+        -1
+      ),
       // select first day in next month
       highlightedIndex: prevState.suggestedDates.length,
     }));
   };
   showNextMonth = () => {
     this.setState(prevState => {
-      const nextMonth = prevState.calendarDate.clone().add(1, 'month');
+      const nextMonth = changeMonth(
+        prevState.calendarDate,
+        this.props.timeZone,
+        1
+      );
       return {
         calendarDate: nextMonth,
         highlightedIndex:
           // select last day in next month
-          prevState.suggestedDates.length + nextMonth.daysInMonth() - 1,
+          prevState.suggestedDates.length +
+          getDaysInMonth(nextMonth, this.props.timeZone) -
+          1,
       };
     });
   };
   showToday = () => {
-    const today = moment();
+    const today = getToday(this.props.timeZone);
     this.setState(
       prevState => ({
         calendarDate: today,
-        highlightedIndex: prevState.suggestedDates.length + today.date() - 1,
+        highlightedIndex:
+          prevState.suggestedDates.length +
+          getDaysInMonth(today, this.props.timeZone) -
+          1,
       }),
       () => this.inputRef.current.focus()
     );
   };
   handleChange = date => {
-    const value = date ? date.toISOString() : '';
-    this.emit(value);
+    this.emit(date);
   };
   handleTimeChange = event => {
     const parsedTime = parseTime(event.target.value);
@@ -238,15 +263,11 @@ class DateTimeCalendar extends React.Component {
     // We can't update the parent when there is no value
     if (this.props.value === '') return;
 
-    const date = moment(this.props.value).startOf('day');
+    let date = getStartOf(this.props.value, this.props.timeZone);
     if (parsedTime) {
-      date.hours(parsedTime.hours);
-      date.minutes(parsedTime.minutes);
-      date.seconds(parsedTime.seconds);
-      date.seconds(parsedTime.seconds);
-      date.milliseconds(parsedTime.milliseconds);
+      date = changeTime(date, this.props.timeZone, parsedTime);
     }
-    this.emit(date.toISOString());
+    this.emit(date);
   };
   emit = value =>
     this.props.onChange({
@@ -260,16 +281,16 @@ class DateTimeCalendar extends React.Component {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
-          itemToString={createItemToString(this.props.intl)}
+          itemToString={createItemToString(
+            this.props.intl,
+            this.props.timeZone
+          )}
           selectedItem={this.props.value === '' ? null : this.props.value}
           highlightedIndex={this.state.highlightedIndex}
           onChange={this.handleChange}
           stateReducer={(state, changes) => {
             if (activationTypes.includes(changes.type)) {
-              return {
-                ...changes,
-                isOpen: true,
-              };
+              return { ...changes, isOpen: true };
             }
 
             return changes;
@@ -283,7 +304,7 @@ class DateTimeCalendar extends React.Component {
                     startDate: changes.isOpen ? prevState.startDate : null,
                     inputValue: changes.inputValue || prevState.inputValue,
                     timeString: changes.selectedItem
-                      ? changes.selectedItem.format('LT')
+                      ? formatTime(changes.selectedItem, this.props.timeZone)
                       : prevState.timeString,
                   };
                 }
@@ -291,7 +312,7 @@ class DateTimeCalendar extends React.Component {
                 if (changes.hasOwnProperty('inputValue')) {
                   const suggestedItems = createSuggestedItems(
                     changes.inputValue,
-                    this.props.intl
+                    this.props.timeZone
                   );
                   return {
                     suggestedDates: suggestedItems,
@@ -305,7 +326,7 @@ class DateTimeCalendar extends React.Component {
                     startDate: changes.isOpen ? prevState.startDate : null,
                     // set time input value to time from value when menu is opened
                     timeString: changes.isOpen
-                      ? moment(this.props.value).format('LT')
+                      ? formatTime(this.props.value, this.props.timeZone)
                       : '',
                   };
                 }
@@ -347,7 +368,8 @@ class DateTimeCalendar extends React.Component {
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
               this.state.timeString,
-              this.props.intl
+              this.props.intl,
+              this.props.timeZone
             );
             const allItems = [...suggestedItems, ...calendarItems];
 
@@ -359,14 +381,17 @@ class DateTimeCalendar extends React.Component {
             };
 
             const paddingDays = do {
-              const weekday = this.state.calendarDate.startOf('month').day();
+              const weekday = getPaddingDayCount(
+                this.state.calendarDate,
+                this.props.timeZone
+              );
               Array(weekday).fill();
             };
 
-            const weekdays = moment.localeData('en').weekdaysMin();
+            const weekdays = getWeekdayNames('en');
 
             const isTimeInputVisible =
-              this.props.value && this.props.value !== '';
+              Boolean(this.props.value) && this.props.value !== '';
 
             return (
               <div>
@@ -386,12 +411,11 @@ class DateTimeCalendar extends React.Component {
                         closeMenu();
 
                         const parsedDate = parseInputText(
-                          this.state.inputValue
+                          this.state.inputValue,
+                          this.props.intl.locale,
+                          this.props.timeZone
                         );
-                        // this.setState({
-                        //   inputValue: parsedDate ? parsedDate.format('L LT') : '',
-                        // });
-                        this.emit(parsedDate ? parsedDate.toISOString() : '');
+                        this.emit(parsedDate);
                         return;
                       }
 
@@ -423,15 +447,15 @@ class DateTimeCalendar extends React.Component {
                       this.setState(() => {
                         if (!parsedTime) return { timeString: '' };
 
-                        const date = moment();
+                        let date = getToday(this.props.timeZone);
                         if (parsedTime) {
-                          date.hours(parsedTime.hours);
-                          date.minutes(parsedTime.minutes);
-                          date.seconds(parsedTime.seconds);
-                          date.seconds(parsedTime.seconds);
-                          date.milliseconds(parsedTime.milliseconds);
+                          date = changeTime(
+                            date,
+                            this.props.timeZone,
+                            parsedTime
+                          );
                         }
-                        return { timeString: date.format('LT') };
+                        return { timeString: formatTime(date) };
                       });
                     },
                   })}
@@ -463,17 +487,17 @@ class DateTimeCalendar extends React.Component {
                       <DateCalendarSuggestions>
                         {suggestedItems.map((item, index) => (
                           <DateCalendarSuggestion
-                            key={item.format('YYYY-MM-DD')}
+                            key={item}
                             {...getItemProps({ item })}
                             isHighlighted={index === highlightedIndex}
                           >
-                            Suggestion {item.format('YYYY-MM-DD')}
+                            Suggestion {item}
                           </DateCalendarSuggestion>
                         ))}
                       </DateCalendarSuggestions>
                     )}
                     <DateCalendarHeader
-                      label={this.state.calendarDate.format('MMMM YYYY')}
+                      label={getCalendarLabel(this.state.calendarDate)}
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}
@@ -489,7 +513,7 @@ class DateTimeCalendar extends React.Component {
                       ))}
                       {calendarItems.map((item, index) => (
                         <DateCalendarDay
-                          key={item.format('YYYY-MM-DD')}
+                          key={item}
                           {...getItemProps({
                             item,
                             onMouseOut: () => {
@@ -499,9 +523,9 @@ class DateTimeCalendar extends React.Component {
                           isHighlighted={
                             suggestedItems.length + index === highlightedIndex
                           }
-                          isSelected={item.isSame(this.props.value, 'day')}
+                          isSelected={isSameDay(item, this.props.value)}
                         >
-                          {item.format('D')}
+                          {getCalendarDayLabel(item)}
                         </DateCalendarDay>
                       ))}
                     </DateCalendarCalendar>
