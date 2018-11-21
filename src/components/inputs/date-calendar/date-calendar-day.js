@@ -15,19 +15,31 @@ const DateCalendarDay = props => (
       {
         [styles.highlighted]: props.isHighlighted,
         [styles.selected]: props.isSelected,
+        [styles.rangeStart]: props.isRangeStart,
+        [styles.rangeBetween]: props.isRangeBetween,
+        [styles.rangeEnd]: props.isRangeEnd,
       }
     )}
-    {...omit(props, ['isHighlighted', 'isSelected'])}
+    {...omit(props, [
+      'isHighlighted',
+      'isSelected',
+      'isRangeStart',
+      'isRangeBetween',
+      'isRangeEnd',
+    ])}
   />
 );
 
 DateCalendarDay.displayName = 'DateCalendarDay';
 
 DateCalendarDay.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   type: PropTypes.oneOf(['heading', 'spacing', 'day']),
   isHighlighted: PropTypes.bool,
   isSelected: PropTypes.bool,
+  isRangeStart: PropTypes.bool,
+  isRangeBetween: PropTypes.bool,
+  isRangeEnd: PropTypes.bool,
 };
 
 export default DateCalendarDay;

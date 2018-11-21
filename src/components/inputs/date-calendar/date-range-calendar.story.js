@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import DateCalendarReadme from './README.md';
@@ -26,6 +26,11 @@ class DateRangeCalendarStory extends React.Component {
           <DateRangeCalendar
             value={this.state.value}
             onChange={this.handleChange}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              ['xs', 's', 'm', 'l', 'xl', 'scale'],
+              'scale'
+            )}
           />
           {JSON.stringify(this.state.value)}
         </div>

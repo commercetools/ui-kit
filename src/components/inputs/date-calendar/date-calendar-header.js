@@ -35,7 +35,6 @@ DateCalendarHeader.propTypes = {
   onPrevMonthClick: PropTypes.func.isRequired,
   onTodayClick: PropTypes.func.isRequired,
   onNextMonthClick: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func.isRequired,
 };
 
 export default DateCalendarHeader;

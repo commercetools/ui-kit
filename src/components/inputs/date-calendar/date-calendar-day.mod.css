@@ -6,6 +6,16 @@
   text-align: center;
   padding: 10px 0;
   cursor: default;
+
+  /*
+    We transition these props to avoid flickering while the cursor moves between
+    days.
+    The other alternative would be to always keep the last item selected (we're
+    currently unsetting the highlight onMouseLeave manually), but keeping it
+    selected leads to confusion as the user clicks slightly outside of the date
+    and then wonders why the click is not registered.
+  */
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
 }
 
 .day {
@@ -32,4 +42,15 @@
 .selected {
   background-color: #1ab29e;
   color: white;
+}
+
+.rangeStart,
+.rangeEnd {
+  background-color: #21b39f;
+  color: white;
+}
+
+.rangeBetween {
+  background-color: #eee;
+  color: black;
 }
