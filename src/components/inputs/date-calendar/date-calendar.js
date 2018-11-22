@@ -196,7 +196,9 @@ class DateCalendar extends React.Component {
       target: {
         id: this.props.id,
         name: this.props.name,
-        value,
+        // when cleared the value is null, but we always want it to be an
+        // empty string when there is no value.
+        value: value || '',
       },
     });
   render() {

@@ -59,7 +59,9 @@ const preventDownshiftDefault = event => {
 };
 
 const parseInputText = (text, locale, timeZone) => {
-  const [dateString, timeString] = text.split(' ');
+  const parts = text.split(' ');
+  const dateString = parts[0];
+  const timeString = parts.slice(1).join(' ');
   if (!dateString) return '';
 
   const date = moment.tz(dateString, 'MM/DD/YYYY', timeZone);
@@ -274,14 +276,21 @@ class DateTimeCalendar extends React.Component {
       target: {
         id: this.props.id,
         name: this.props.name,
-        value,
+        // when cleared the value is null, but we always want it to be an
+        // empty string when there is no value.
+        value: value || '',
       },
     });
   render() {
-    console.log(this.props.timeZone);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
+          // Setting the key to the timeZone conveniently forces a rerender
+          // when the time-zone changes. Otherwise we'd need to make
+          // inputValue a controlled property so that we can update
+          // the displayed value as downshift seems to ignore an updated
+          // itemToString function.
+          key={this.props.timeZone}
           itemToString={createItemToString(
             this.props.intl.locale,
             this.props.timeZone
@@ -363,6 +372,7 @@ class DateTimeCalendar extends React.Component {
             closeMenu,
             setHighlightedIndex,
             selectedItem,
+            inputValue,
             isOpen,
           }) => {
             const suggestedItems = this.state.suggestedDates;
@@ -409,14 +419,15 @@ class DateTimeCalendar extends React.Component {
                       // close menu and notify parent
                       if (event.key === 'Enter' && highlightedIndex === null) {
                         preventDownshiftDefault(event);
-                        closeMenu();
 
                         const parsedDate = parseInputText(
-                          this.state.inputValue,
+                          inputValue,
                           this.props.intl.locale,
                           this.props.timeZone
                         );
                         this.emit(parsedDate);
+
+                        closeMenu();
                         return;
                       }
 
