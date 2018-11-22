@@ -42,13 +42,23 @@ export const changeMonth = (day, timeZone, delta) =>
     .tz(day, timeZone)
     .add(delta, 'month')
     .format('YYYY-MM-DD');
-export const getPaddingDayCount = (day, timeZone) =>
-  moment
+
+export const getPaddingDayCount = (day, locale, timeZone) => {
+  const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
+  const firstDayOfMonth = moment
     .tz(day, timeZone)
+    // .tz(timeZone)
     .startOf('month')
     .day();
-export const getWeekdayNames = locale =>
-  moment.localeData(locale).weekdaysMin();
+
+  return firstDayOfMonth - firstDayOfWeek;
+};
+
+export const getWeekdayNames = locale => {
+  const weekDays = moment.localeData(locale).weekdaysMin();
+  const firstDay = moment.localeData(locale).firstDayOfWeek();
+  return [...weekDays.slice(firstDay), ...weekDays.slice(0, firstDay)];
+};
 
 export const getStartOf = (day, timeZone) =>
   moment
@@ -58,7 +68,8 @@ export const getStartOf = (day, timeZone) =>
 
 export const getCalendarLabel = day => moment(day).format('MMMM YYYY');
 export const isSameDay = (a, b) => moment(a).isSame(b, 'day');
-export const getCalendarDayLabel = day => moment(day).format('D');
+export const getCalendarDayLabel = (day, timeZone) =>
+  moment.tz(day, timeZone).format('D');
 
 export const createItemDateTimeToString = (locale, timeZone) => item =>
   item ? formatDate(item, locale, timeZone) : '';

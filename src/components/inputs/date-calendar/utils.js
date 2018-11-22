@@ -9,12 +9,21 @@ export const changeMonth = (day, delta) =>
   moment(day)
     .add(delta, 'month')
     .format('YYYY-MM-DD');
-export const getPaddingDayCount = day =>
-  moment(day)
+
+export const getPaddingDayCount = (day, locale) => {
+  const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
+  const firstDayOfMonth = moment(day)
     .startOf('month')
     .day();
-export const getWeekdayNames = locale =>
-  moment.localeData(locale).weekdaysMin();
+
+  return firstDayOfMonth - firstDayOfWeek;
+};
+
+export const getWeekdayNames = locale => {
+  const weekDays = moment.localeData(locale).weekdaysMin();
+  const firstDay = moment.localeData(locale).firstDayOfWeek();
+  return [...weekDays.slice(firstDay), ...weekDays.slice(0, firstDay)];
+};
 
 export const getCalendarLabel = (day, locale) =>
   moment(day, 'YYYY-MM-DD', locale).format('MMMM YYYY');

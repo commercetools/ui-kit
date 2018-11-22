@@ -354,12 +354,13 @@ class DateTimeCalendar extends React.Component {
             const paddingDays = do {
               const weekday = getPaddingDayCount(
                 this.state.calendarDate,
+                this.props.intl.locale,
                 this.props.timeZone
               );
               Array(weekday).fill();
             };
 
-            const weekdays = getWeekdayNames('en');
+            const weekdays = getWeekdayNames(this.props.intl.locale);
 
             const isTimeInputVisible =
               Boolean(this.props.value) && this.props.value !== '';
@@ -497,7 +498,7 @@ class DateTimeCalendar extends React.Component {
                           }
                           isSelected={isSameDay(item, this.props.value)}
                         >
-                          {getCalendarDayLabel(item)}
+                          {getCalendarDayLabel(item, this.props.timeZone)}
                         </DateCalendarDay>
                       ))}
                     </DateCalendarCalendar>

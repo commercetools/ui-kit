@@ -267,11 +267,14 @@ class DateCalendar extends React.Component {
             };
 
             const paddingDays = do {
-              const weekday = getPaddingDayCount(this.state.calendarDate);
+              const weekday = getPaddingDayCount(
+                this.state.calendarDate,
+                this.props.intl.locale
+              );
               Array(weekday).fill();
             };
 
-            const weekdays = getWeekdayNames('en');
+            const weekdays = getWeekdayNames(this.props.intl.locale);
 
             return (
               <div>
