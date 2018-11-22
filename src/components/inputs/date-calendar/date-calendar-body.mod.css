@@ -57,11 +57,8 @@
 .icon-container {
   align-items: center;
   background-color: var(--token-background-color-input-pristine);
-  border-bottom: 1px solid var(--token-border-color-input-pristine);
-  border-right: 1px solid var(--token-border-color-input-pristine);
-  border-top: 1px solid var(--token-border-color-input-pristine);
+  border: 1px solid var(--token-border-color-input-pristine);
   height: var(--token-size-height-input);
-  border-left: none;
   cursor: pointer;
   display: flex;
   padding: var(--spacing-4);
@@ -74,6 +71,8 @@
 
 .clear-icon-container {
   composes: icon-container;
+  border-left: none;
+  border-right: none;
 }
 
 .calendar-icon-container {

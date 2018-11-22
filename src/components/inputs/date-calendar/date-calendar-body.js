@@ -1,16 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
 import Spacings from '../../spacings';
 import styles from './date-calendar-body.mod.css';
-
-const getIconTheme = (isDisabled, isMouseOver) => {
-  if (isDisabled) return 'grey';
-  if (isMouseOver) return 'orange';
-  return 'black';
-};
 
 export const ClearSection = props => (
   <div
@@ -19,14 +12,9 @@ export const ClearSection = props => (
       [styles['icon-container-disabled']]: props.isDisabled,
       [styles.invalid]: props.hasError,
     })}
-    onMouseOver={props.handleMouseOver}
-    onMouseOut={props.handleMouseOut}
   >
     {!props.isDisabled && (
-      <CloseIcon
-        size="medium"
-        theme={getIconTheme(props.isDisabled, props.isMouseOver)}
-      />
+      <CloseIcon size="medium" theme={props.isDisabled ? 'grey' : 'black'} />
     )}
   </div>
 );
@@ -34,19 +22,8 @@ ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
   isDisabled: PropTypes.bool,
   hasError: PropTypes.bool,
-  isMouseOver: PropTypes.bool.isRequired,
   onClear: PropTypes.func,
-
-  // HoC
-  handleMouseOut: PropTypes.func.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
 };
-
-ClearSection.defaultProps = {
-  hasError: false,
-};
-
-export const ClearSectionWithMouseOverState = withMouseOverState(ClearSection);
 
 export default class DateCalendarBody extends React.PureComponent {
   static displayName = 'DateCalendarBody';
@@ -90,7 +67,7 @@ export default class DateCalendarBody extends React.PureComponent {
             }}
           />
           {this.props.hasSelection && (
-            <ClearSectionWithMouseOverState
+            <ClearSection
               isDisabled={this.props.isDisabled}
               hasError={this.props.hasError}
               onClear={this.props.onClear}
