@@ -6,15 +6,15 @@ import Section from '../../../.storybook/decorators/section';
 import Avatar from './avatar';
 import Readme from './README.md';
 
-storiesOf('Images', module)
+storiesOf('Avatar', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Avatar', () => {
-    const scale = select('scale', ['s', 'm', 'l'], 'l');
+    const size = select('size', ['s', 'm', 'l'], 'l');
 
-    const wrapperScale = do {
-      if (scale === 's') '26px';
-      else if (scale === 'm') '48px';
+    const wrapperSize = do {
+      if (size === 's') '26px';
+      else if (size === 'm') '48px';
       else '100px';
     };
 
@@ -22,8 +22,8 @@ storiesOf('Images', module)
       <Section>
         <div
           style={{
-            width: wrapperScale,
-            height: wrapperScale,
+            width: wrapperSize,
+            height: wrapperSize,
           }}
         >
           <Avatar
@@ -31,7 +31,7 @@ storiesOf('Images', module)
             lastName={text('lastName', 'Snow')}
             gravatarHash={text('gravatarHash', '')}
             isHighlighted={boolean('isHighlighted', false)}
-            scale={scale}
+            size={size}
           />
         </div>
       </Section>

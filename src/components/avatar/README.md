@@ -24,5 +24,5 @@ import { Avatar } from '@commercetools-frontend/ui-kit';
 | `gravatarHash`  | `string` |    ✅    | -                     | -       | Hash of the image to be showed                   |
 | `firstName`     | `string` |          | -                     | ''      | First name of the user in case there is no image |
 | `lastName`      | `string` |          | -                     | ''      | Last name of the user in case there is no image  |
-| `scale`         | `string` |    ✅    | oneOf(['s', 'm', 'l]) | `s`     | The size of the Avatar component.                |
+| `size`          | `string` |    ✅    | oneOf(['s', 'm', 'l]) | `s`     | The size of the Avatar component.                |
 | `isHighlighted` | `bool`   |    -     | -                     | `false` | Highlights the Avatar                            |
