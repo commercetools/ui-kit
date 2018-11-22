@@ -162,7 +162,7 @@ class DateTimeCalendar extends React.Component {
   timeInputRef = React.createRef();
   state = {
     calendarDate: getToday(this.props.timeZone),
-    suggestedDates: [],
+    suggestedItems: [],
     highlightedIndex:
       this.props.value === ''
         ? null
@@ -177,7 +177,7 @@ class DateTimeCalendar extends React.Component {
         -1
       ),
       // select first day in next month
-      highlightedIndex: prevState.suggestedDates.length,
+      highlightedIndex: prevState.suggestedItems.length,
     }));
   };
   showNextMonth = () => {
@@ -191,7 +191,7 @@ class DateTimeCalendar extends React.Component {
         calendarDate: nextMonth,
         highlightedIndex:
           // select last day in next month
-          prevState.suggestedDates.length +
+          prevState.suggestedItems.length +
           getDaysInMonth(nextMonth, this.props.timeZone) -
           1,
       };
@@ -203,7 +203,7 @@ class DateTimeCalendar extends React.Component {
       prevState => ({
         calendarDate: today,
         highlightedIndex:
-          prevState.suggestedDates.length +
+          prevState.suggestedItems.length +
           getDaysInMonth(today, this.props.timeZone) -
           1,
       }),
@@ -281,7 +281,7 @@ class DateTimeCalendar extends React.Component {
                     this.props.timeZone
                   );
                   return {
-                    suggestedDates: suggestedItems,
+                    suggestedItems,
                     highlightedIndex: suggestedItems.length > 0 ? 0 : null,
                   };
                 }
@@ -335,7 +335,7 @@ class DateTimeCalendar extends React.Component {
             inputValue,
             isOpen,
           }) => {
-            const suggestedItems = this.state.suggestedDates;
+            const suggestedItems = this.state.suggestedItems;
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
               this.state.timeString,

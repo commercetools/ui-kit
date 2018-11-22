@@ -152,7 +152,7 @@ class DateCalendar extends React.Component {
   state = {
     calendarDate:
       this.props.value.length === 2 ? this.props.value[0] : getToday(),
-    suggestedDates: [],
+    suggestedItems: [],
     highlightedIndex:
       this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
   };
@@ -160,7 +160,7 @@ class DateCalendar extends React.Component {
     this.setState(prevState => ({
       calendarDate: changeMonth(prevState.calendarDate, -1),
       // select first day in next month
-      highlightedIndex: prevState.suggestedDates.length,
+      highlightedIndex: prevState.suggestedItems.length,
     }));
   };
   showNextMonth = () => {
@@ -170,7 +170,7 @@ class DateCalendar extends React.Component {
         calendarDate: nextMonth,
         highlightedIndex:
           // select last day in next month
-          prevState.suggestedDates.length + getDaysInMonth(nextMonth) - 1,
+          prevState.suggestedItems.length + getDaysInMonth(nextMonth) - 1,
       };
     });
   };
@@ -180,7 +180,7 @@ class DateCalendar extends React.Component {
       prevState => ({
         calendarDate: today,
         highlightedIndex:
-          prevState.suggestedDates.length + getDateInMonth(today) - 1,
+          prevState.suggestedItems.length + getDateInMonth(today) - 1,
       }),
       () => this.inputRef.current.focus()
     );
@@ -216,7 +216,7 @@ class DateCalendar extends React.Component {
                 this.props.intl
               );
               this.setState({
-                suggestedDates: suggestedItems,
+                suggestedItems,
                 highlightedIndex: suggestedItems.length > 0 ? 0 : null,
               });
             }
@@ -252,7 +252,7 @@ class DateCalendar extends React.Component {
             selectedItem,
             isOpen,
           }) => {
-            const suggestedItems = this.state.suggestedDates;
+            const suggestedItems = this.state.suggestedItems;
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
               this.props.intl

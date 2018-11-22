@@ -1,0 +1,13 @@
+- parse date in locale
+- make suggestions
+- tests
+- jump year?
+- documentation
+- hasError / hasWarning etc
+- high precision time in DateTimeInput
+
+done
+- display date in locale
+- respect time zone
+- jump to selected month when opened
+- adjust start of week
