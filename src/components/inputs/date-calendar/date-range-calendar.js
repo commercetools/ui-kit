@@ -15,7 +15,6 @@ import {
   createCalendarItems,
   getDateInMonth,
   getToday,
-  formatDate,
   changeMonth,
   getPaddingDayCount,
   getWeekdayNames,
@@ -23,17 +22,14 @@ import {
   isSameDay,
   getCalendarDayLabel,
   isBetween as isBetweenDates,
+  createItemRangeToString,
+  formatRange,
 } from './utils';
 
 const createSuggestedItems = inputValue => {
   if (inputValue.startsWith('t')) return [getToday(), getToday()];
   return [];
 };
-
-const createItemToString = (/* intl */) => item =>
-  Array.isArray(item)
-    ? item.map(i => (i ? formatDate(i) : '')).join(' - ')
-    : formatDate(item);
 
 const parseRangeText = text => {
   // TODO parse more formats, but format them all to YYYY-MM-DD
@@ -195,6 +191,11 @@ class DateRangeCalendar extends React.Component {
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
   };
+  static getDerivedStateFromProps(props) {
+    return {
+      inputValue: formatRange(props.value, props.intl.locale),
+    };
+  }
   inputRef = React.createRef();
   state = {
     calendarDate: getToday(),
@@ -202,10 +203,7 @@ class DateRangeCalendar extends React.Component {
     startDate: null,
     highlightedIndex: null,
     isOpen: false,
-    inputValue:
-      this.props.value.length === 2
-        ? `${this.props.value[0]} - ${this.props.value[1]}`
-        : '',
+    inputValue: formatRange(this.props.value, this.props.intl.locale),
   };
   showPrevMonth = () => {
     this.setState(prevState => ({
@@ -249,7 +247,7 @@ class DateRangeCalendar extends React.Component {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
-          itemToString={createItemToString(this.props.intl)}
+          itemToString={createItemRangeToString(this.props.intl.locale)}
           inputValue={this.state.inputValue}
           selectedItem={null}
           highlightedIndex={this.state.highlightedIndex}
@@ -265,10 +263,10 @@ class DateRangeCalendar extends React.Component {
                 return {
                   highlightedIndex: null,
                   isOpen: false,
-                  inputValue:
-                    this.props.value.length === 2
-                      ? `${this.props.value[0]} - ${this.props.value[1]}`
-                      : '',
+                  inputValue: formatRange(
+                    this.props.value,
+                    this.props.intl.locale
+                  ),
                 };
               }
 
@@ -284,11 +282,15 @@ class DateRangeCalendar extends React.Component {
                   isOpen: !hasFinishedRangeSelection,
                   inputValue: do {
                     if (hasFinishedRangeSelection)
-                      [prevState.startDate, changes.selectedItem]
-                        .sort()
-                        .join(' - ');
+                      formatRange(
+                        [prevState.startDate, changes.selectedItem],
+                        this.props.intl.locale
+                      );
                     else if (hasStartedRangeSelection)
-                      `${formatDate(changes.selectedItem)} -`;
+                      formatRange(
+                        [changes.selectedItem],
+                        this.props.intl.locale
+                      );
                     else '';
                   },
                 };
@@ -460,7 +462,10 @@ class DateRangeCalendar extends React.Component {
                       </DateCalendarSuggestions>
                     )}
                     <DateCalendarHeader
-                      label={getCalendarLabel(this.state.calendarDate)}
+                      label={getCalendarLabel(
+                        this.state.calendarDate,
+                        this.props.intl.locale
+                      )}
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}

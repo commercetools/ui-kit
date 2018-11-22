@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
-import moment from 'moment';
 import { injectIntl } from 'react-intl';
 import { parseTime } from './parse-time';
 import DateCalendarBody from './date-calendar-body';
@@ -15,12 +14,10 @@ import DateCalendarTimeInput from './date-calendar-time-input';
 import Constraints from '../../constraints';
 import {
   getDaysInMonth,
-  changeDateInMonth,
   changeTime,
   formatTime,
   getDateInMonth,
   getToday,
-  formatDate,
   changeMonth,
   getPaddingDayCount,
   getWeekdayNames,
@@ -28,6 +25,10 @@ import {
   getCalendarLabel,
   isSameDay,
   getCalendarDayLabel,
+  createItemDateTimeToString,
+  createCalendarItems,
+  createSuggestedItems,
+  parseInputText,
 } from './time-utils';
 
 const activationTypes = [
@@ -35,55 +36,10 @@ const activationTypes = [
   Downshift.stateChangeTypes.clickItem,
 ];
 
-const createCalendarItems = (day, timeString, intl, timeZone) => {
-  const parsedTime = parseTime(timeString);
-
-  return Array.from({ length: getDaysInMonth(day, timeZone) }).map((_, i) => {
-    const dayOfMonth = i + 1;
-    let date = changeDateInMonth(day, timeZone, dayOfMonth);
-    if (parsedTime) {
-      date = changeTime(date, timeZone, parsedTime);
-    }
-    return date;
-  });
-};
-
-const createSuggestedItems = (inputValue, timeZone) => {
-  if (inputValue.startsWith('t')) return [getToday(timeZone)];
-  return [];
-};
-
 const preventDownshiftDefault = event => {
   // eslint-disable-next-line no-param-reassign
   event.nativeEvent.preventDownshiftDefault = true;
 };
-
-const parseInputText = (text, locale, timeZone) => {
-  const parts = text.split(' ');
-  const dateString = parts[0];
-  const timeString = parts.slice(1).join(' ');
-  if (!dateString) return '';
-
-  const date = moment.tz(dateString, 'MM/DD/YYYY', timeZone);
-  if (!date.isValid()) return '';
-
-  // enable parsing a date only
-  if (!timeString) return date.startOf('day').toISOString();
-
-  const parsedTime = parseTime(timeString);
-  if (parsedTime) {
-    date.hours(parsedTime.hours);
-    date.minutes(parsedTime.minutes);
-    date.seconds(parsedTime.seconds);
-    date.seconds(parsedTime.seconds);
-    date.milliseconds(parsedTime.milliseconds);
-    return date.toISOString();
-  }
-  return '';
-};
-
-const createItemToString = (locale, timeZone) => item =>
-  item ? formatDate(item, timeZone) : '';
 
 const createKeyDownHandler = ({
   isOpen,
@@ -290,8 +246,8 @@ class DateTimeCalendar extends React.Component {
           // inputValue a controlled property so that we can update
           // the displayed value as downshift seems to ignore an updated
           // itemToString function.
-          key={this.props.timeZone}
-          itemToString={createItemToString(
+          key={`${this.props.timeZone}:${this.props.intl.locale}`}
+          itemToString={createItemDateTimeToString(
             this.props.intl.locale,
             this.props.timeZone
           )}

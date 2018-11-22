@@ -14,7 +14,6 @@ import {
   getDaysInMonth,
   getDateInMonth,
   getToday,
-  formatDate,
   changeMonth,
   getPaddingDayCount,
   getWeekdayNames,
@@ -22,6 +21,7 @@ import {
   isSameDay,
   getCalendarDayLabel,
   createCalendarItems,
+  createItemToString,
 } from './utils';
 
 const createSuggestedItems = inputValue => {
@@ -33,9 +33,6 @@ const preventDownshiftDefault = event => {
   // eslint-disable-next-line no-param-reassign
   event.nativeEvent.preventDownshiftDefault = true;
 };
-
-const createItemToString = (/* intl */) => item =>
-  item ? formatDate(item) : '';
 
 const createKeyDownHandler = ({
   isOpen,
@@ -205,7 +202,8 @@ class DateCalendar extends React.Component {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
-          itemToString={createItemToString(this.props.intl)}
+          key={this.props.intl.locale}
+          itemToString={createItemToString(this.props.intl.locale)}
           selectedItem={this.props.value === '' ? null : this.props.value}
           highlightedIndex={this.state.highlightedIndex}
           onChange={this.handleChange}
@@ -330,7 +328,10 @@ class DateCalendar extends React.Component {
                       </DateCalendarSuggestions>
                     )}
                     <DateCalendarHeader
-                      label={getCalendarLabel(this.state.calendarDate)}
+                      label={getCalendarLabel(
+                        this.state.calendarDate,
+                        this.props.intl.locale
+                      )}
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}
