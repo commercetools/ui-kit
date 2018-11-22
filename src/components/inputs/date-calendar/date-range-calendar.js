@@ -198,7 +198,8 @@ class DateRangeCalendar extends React.Component {
   }
   inputRef = React.createRef();
   state = {
-    calendarDate: getToday(),
+    calendarDate:
+      this.props.value.length === 2 ? this.props.value[0] : getToday(),
     suggestedDates: [],
     startDate: null,
     highlightedIndex: null,
@@ -301,7 +302,14 @@ class DateRangeCalendar extends React.Component {
                   isOpen: changes.isOpen,
                   highlightedIndex: changes.highlightedIndex || null,
                   inputValue: changes.inputValue || prevState.inputValue,
-                  startDate: changes.isOpen ? prevState.startDate : null,
+                  // Reset range selection progress when menu opens/closes
+                  startDate: null,
+                  // Ensure calendar opens on selected date.
+                  // Open on the current day as a fallback.
+                  calendarDate:
+                    this.props.value.length === 2
+                      ? this.props.value[0]
+                      : getToday(),
                 };
               }
 

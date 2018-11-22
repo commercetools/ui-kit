@@ -294,6 +294,10 @@ class DateTimeCalendar extends React.Component {
                     timeString: changes.isOpen
                       ? formatTime(this.props.value, this.props.timeZone)
                       : '',
+                    // ensure calendar always opens on selected item, or on
+                    // current month when there is no selected item
+                    calendarDate:
+                      this.props.value === '' ? getToday() : this.props.value,
                   };
                 }
 

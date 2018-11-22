@@ -150,7 +150,8 @@ class DateCalendar extends React.Component {
   };
   inputRef = React.createRef();
   state = {
-    calendarDate: getToday(),
+    calendarDate:
+      this.props.value.length === 2 ? this.props.value[0] : getToday(),
     suggestedDates: [],
     highlightedIndex:
       this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
@@ -208,7 +209,7 @@ class DateCalendar extends React.Component {
           highlightedIndex={this.state.highlightedIndex}
           onChange={this.handleChange}
           onStateChange={changes => {
-            // eslint-disable-next-line no-prototype-builtins
+            /* eslint-disable no-prototype-builtins */
             if (changes.hasOwnProperty('inputValue')) {
               const suggestedItems = createSuggestedItems(
                 changes.inputValue,
@@ -220,10 +221,19 @@ class DateCalendar extends React.Component {
               });
             }
 
-            // eslint-disable-next-line no-prototype-builtins
             if (changes.hasOwnProperty('highlightedIndex')) {
               this.setState({ highlightedIndex: changes.highlightedIndex });
             }
+
+            // ensure calendar always opens on selected item, or on current
+            // month when there is no selected item
+            if (changes.hasOwnProperty('isOpen') && changes.isOpen) {
+              this.setState({
+                calendarDate:
+                  this.props.value === '' ? getToday() : this.props.value,
+              });
+            }
+            /* eslint-enable no-prototype-builtins */
           }}
         >
           {({
