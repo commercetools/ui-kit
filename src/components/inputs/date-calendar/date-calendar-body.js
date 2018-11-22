@@ -63,6 +63,10 @@ export default class DateCalendarBody extends React.PureComponent {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   };
 
+  state = {
+    isFocused: false,
+  };
+
   render() {
     return (
       <Spacings.Inline alignItems="center">
@@ -71,9 +75,19 @@ export default class DateCalendarBody extends React.PureComponent {
             ref={this.props.inputRef}
             className={classnames(styles['date-input'], {
               [styles.invalid]: this.props.hasError,
-              [styles.focused]: this.props.isOpen,
+              [styles.focused]: this.props.isOpen || this.state.isFocused,
             })}
             {...this.props.inputProps}
+            onFocus={event => {
+              this.setState({ isFocused: true });
+              if (this.props.inputProps.onFocus)
+                this.props.inputProps.onFocus(event);
+            }}
+            onBlur={event => {
+              this.setState({ isFocused: false });
+              if (this.props.inputProps.onBlur)
+                this.props.inputProps.onBlur(event);
+            }}
           />
           {this.props.hasSelection && (
             <ClearSectionWithMouseOverState
@@ -87,9 +101,19 @@ export default class DateCalendarBody extends React.PureComponent {
             className={classnames(styles['calendar-icon-container'], {
               [styles['icon-container-disabled']]: this.props.isDisabled,
               [styles.invalid]: this.props.hasError,
-              [styles.focused]: this.props.isOpen,
+              [styles.focused]: this.props.isOpen || this.state.isFocused,
             })}
             {...this.props.toggleButtonProps}
+            onFocus={event => {
+              this.setState({ isFocused: true });
+              if (this.props.toggleButtonProps.onFocus)
+                this.props.toggleButtonProps.onFocus(event);
+            }}
+            onBlur={event => {
+              this.setState({ isFocused: false });
+              if (this.props.toggleButtonProps.onBlur)
+                this.props.toggleButtonProps.onBlur(event);
+            }}
           >
             {this.props.icon === 'clock' ? (
               <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />

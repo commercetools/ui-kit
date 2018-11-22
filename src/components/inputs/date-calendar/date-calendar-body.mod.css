@@ -65,6 +65,7 @@
   cursor: pointer;
   display: flex;
   padding: var(--spacing-4);
+  outline: 0;
 }
 
 .icon-container.focused {
