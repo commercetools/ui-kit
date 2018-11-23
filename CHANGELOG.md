@@ -1,6 +1,6 @@
-<a name="2.0.0-rc.12"></a>
+<a name="3.0.0"></a>
 
-# [2.0.0-rc.12](https://github.com/commercetools/ui-kit/compare/2.0.0-rc.11...2.0.0) (2018-11-23)
+# [3.0.0](https://github.com/commercetools/ui-kit/compare/2.0.0-rc.11...3.0.0) (2018-11-23)
 
 ## BREAKING CHANGES
 
