@@ -8,8 +8,8 @@
 - `MoneyInput`: `isTouched` only returns true when both fields were touched from now on. ([9e00148](https://github.com/commercetools/ui-kit/commit/9e00148)), closes [#175](https://github.com/commercetools/ui-kit/issues/175)
 - `media-queries`: need to be imported differently now [#218](https://github.com/commercetools/ui-kit/pull/218)
 
-* You need to explicitly add [our peer deep deps](https://github.com/commercetools/ui-kit/blob/20a9315/package.json#L210-L220) ([#156](https://github.com/commercetools/ui-kit/issues/156)) ([ae59216](https://github.com/commercetools/ui-kit/commit/ae59216))
-* We dropped some images which were hosted in ui-kit but didn't belong here ([#230](https://github.com/commercetools/ui-kit/issues/230)) ([3f3dadf](https://github.com/commercetools/ui-kit/commit/3f3dadf))
+* You need to explicitly add [our peer dependencies](https://github.com/commercetools/ui-kit/blob/20a9315/package.json#L210-L220) ([#156](https://github.com/commercetools/ui-kit/issues/156)) ([ae59216](https://github.com/commercetools/ui-kit/commit/ae59216))
+* We dropped some images which were hosted in ui-kit but didn't belong here ([#230](https://github.com/commercetools/ui-kit/issues/230)) ([3f3dadf](https://github.com/commercetools/ui-kit/commit/3f3dadf)) and moved them into another package [`@commercetools-frontend/assets`](https://www.npmjs.com/package/@commercetools-frontend/assets)
 * Consumers of ui-kit no longer need to `import '../materials/internals/reset.mod.css';` and `import '../materials/internals/grid.mod.css';` ([#186](https://github.com/commercetools/ui-kit/issues/186)) ([7a9e27b](https://github.com/commercetools/ui-kit/commit/7a9e27b))
 
 ## Bug Fixes
@@ -25,12 +25,12 @@
 
 ## Features
 
-- `ConnectorIcon`: added `ConnectorIcon`([#243](https://github.com/commercetools/ui-kit/issues/243)) ([36ef073](https://github.com/commercetools/ui-kit/commit/36ef073))
 - **Media Queries** are now exported as custom properties ([#220](https://github.com/commercetools/ui-kit/issues/220)) ([5073d2a](https://github.com/commercetools/ui-kit/commit/5073d2a))
 - `MoneyInput`: added thousand-separators ([#221](https://github.com/commercetools/ui-kit/issues/221)) ([6f58ca8](https://github.com/commercetools/ui-kit/commit/6f58ca8))
 - Our design tokens are now exported as css variables (custom properties) and as a json file (`materials/custom-properties.css` and `materials/custom-properties.json`) ([#181](https://github.com/commercetools/ui-kit/issues/181)) ([b7c4e85](https://github.com/commercetools/ui-kit/commit/b7c4e85))
 - `FieldLabel`: it's now possible to pass a `theme` for the `hintIcon` ([#231](https://github.com/commercetools/ui-kit/issues/231)) ([5ea305e](https://github.com/commercetools/ui-kit/commit/5ea305e))
-- **icons:** add several new icons ([#247](https://github.com/commercetools/ui-kit/issues/247)) ([67d1810](https://github.com/commercetools/ui-kit/commit/67d1810))
+- **icons:** add several new icons ([#247](https://github.com/commercetools/ui-kit/issues/247)) ([67d1810](https://github.com/commercetools/ui-kit/commit/67d1810)) ([#251](https://github.com/commercetools/ui-kit/pull/251))
+  - `ConnectedTriangleIcon`, `ConnectedSquareIcon`, `HeartIcon`, `PaperclipIcon`, `PluginIcon`, `RocketIcon`, `StarIcon`
 - `ContentNotification`: add new notification type ([#232](https://github.com/commercetools/ui-kit/issues/232)) ([46fb887](https://github.com/commercetools/ui-kit/commit/46fb887))
 - **typography:** add `title` prop to all typography components ([#191](https://github.com/commercetools/ui-kit/issues/191)) ([acb4e78](https://github.com/commercetools/ui-kit/commit/acb4e78))
 

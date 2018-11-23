@@ -94,7 +94,7 @@ const green = customProperties['--color-green'];
 
 Available at https://uikit.commercetools.com.
 
-## Release
+## Releasing
 
 The release process is _semi-automated_: you only need to **manually** trigger it and [Travis][travis] will take care of the rest. All automated releases go the the `next` distribution channel. This gives us a chance to test releases out before making them offical by moving the `latest` dist-tag along.
 
@@ -113,13 +113,17 @@ The release process is _semi-automated_: you only need to **manually** trigger i
   - the tag name is the `version` string in the `package.json` plus the prefix `v`
 - push the tag: `git push --tags`
 
-From now on, [Travis][travis] will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
+From that point, [Travis][travis] will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
 
 ### Moving the `latest` dist-tag to a release:
 
-After testing the `next` release by upgrading an application, it's time to move the `latest` tag to make the release official. Use `npm dist-tag add @commercetools-frontend/ui-kit@<version> latest` to move the `latest` dist-tag onto that release.
+After testing the `next` release on a production project, it's time to move to the `latest` dist-tag to make the release official.
 
-## About release-candidates & alpha / beta versions
+```bash
+$ npm dist-tag add @commercetools-frontend/ui-kit@<version> latest
+```
+
+### About release-candidates & alpha / beta versions
 
 Having release candidates is not necesssary when using semantic releases:
 
