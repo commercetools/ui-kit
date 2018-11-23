@@ -34,29 +34,20 @@
   opacity: 0.7;
 }
 
-.gravatar-image-small {
+.avatar-s {
+  font-size: 1rem;
   height: var(--size-s);
   width: var(--size-s);
 }
 
-.gravatar-image-medium {
+.avatar-m {
+  font-size: 1.5rem;
   height: var(--size-m);
   width: var(--size-m);
 }
 
-.gravatar-image-large {
-  height: var(--size-l);
-  width: var(--size-l);
-}
-
-.avatar-s {
-  font-size: 1rem;
-}
-
-.avatar-m {
-  font-size: 1.5rem;
-}
-
 .avatar-l {
   font-size: 3rem;
+  height: var(--size-l);
+  width: var(--size-l);
 }

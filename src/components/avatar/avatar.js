@@ -34,11 +34,7 @@ const getSizeInPx = size => do {
 
 const GravatarImg = props => (
   <img
-    className={classnames(styles['gravatar-img'], {
-      [styles['gravatar-image-small']]: props.size === 's',
-      [styles['gravatar-image-medium']]: props.size === 'm',
-      [styles['gravatar-image-large']]: props.size === 'l',
-    })}
+    className={styles['gravatar-img']}
     src={createGravatarImgUrl(props.hash, getSizeInPx(props.size))}
     srcSet={oneLineTrim`
       ${createGravatarImgUrl(props.hash, getSizeInPx(props.size))} 1x, 
