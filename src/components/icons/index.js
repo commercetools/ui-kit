@@ -42,8 +42,8 @@ import OrigCloseIcon from './svg/close.react.svg';
 import OrigCodeViewIcon from './svg/code-view.react.svg';
 import OrigCoinsIcon from './svg/coins.react.svg';
 import OrigColumnsIcon from './svg/columns.react.svg';
-import OrigConnectionIcon from './svg/connection.react.svg';
-import OrigConnectorIcon from './svg/connector.react.svg';
+import OrigConnectedSquareIcon from './svg/connected-square.react.svg';
+import OrigConnectedTriangleIcon from './svg/connected-triangle.react.svg';
 import OrigCopyIcon from './svg/copy.react.svg';
 import OrigCubesIcon from './svg/cubes.react.svg';
 import OrigCustomSettingsIcon from './svg/custom-settings.react.svg';
@@ -151,8 +151,12 @@ const CloseIcon = withThemeProp(withSizeProp(OrigCloseIcon));
 const CodeViewIcon = withThemeProp(withSizeProp(OrigCodeViewIcon));
 const CoinsIcon = withThemeProp(withSizeProp(OrigCoinsIcon));
 const ColumnsIcon = withThemeProp(withSizeProp(OrigColumnsIcon));
-const ConnectionIcon = withThemeProp(withSizeProp(OrigConnectionIcon));
-const ConnectorIcon = withThemeProp(withSizeProp(OrigConnectorIcon));
+const ConnectedSquareIcon = withThemeProp(
+  withSizeProp(OrigConnectedSquareIcon)
+);
+const ConnectedTriangleIcon = withThemeProp(
+  withSizeProp(OrigConnectedTriangleIcon)
+);
 const CopyIcon = withThemeProp(withSizeProp(OrigCopyIcon));
 const CubesIcon = withThemeProp(withSizeProp(OrigCubesIcon));
 const CustomSettingsIcon = withThemeProp(withSizeProp(OrigCustomSettingsIcon));
@@ -254,8 +258,8 @@ CloseIcon.displayName = 'CloseIcon';
 CodeViewIcon.displayName = 'CodeViewIcon';
 CoinsIcon.displayName = 'CoinsIcon';
 ColumnsIcon.displayName = 'ColumnsIcon';
-ConnectionIcon.displayName = 'ConnectionIcon';
-ConnectorIcon.displayName = 'ConnectorIcon';
+ConnectedSquareIcon.displayName = 'ConnectedSquareIcon';
+ConnectedTriangleIcon.displayName = 'ConnectedTriangleIcon';
 CopyIcon.displayName = 'CopyIcon';
 CubesIcon.displayName = 'CubesIcon';
 CustomSettingsIcon.displayName = 'CustomSettingsIcon';
@@ -355,8 +359,8 @@ export { CloseIcon };
 export { CodeViewIcon };
 export { CoinsIcon };
 export { ColumnsIcon };
-export { ConnectionIcon };
-export { ConnectorIcon };
+export { ConnectedSquareIcon };
+export { ConnectedTriangleIcon };
 export { CopyIcon };
 export { CubesIcon };
 export { CustomSettingsIcon };
