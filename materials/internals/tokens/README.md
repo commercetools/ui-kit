@@ -4,7 +4,7 @@
 
 Design Tokens are an abstraction for everything impacting the visual design of an app/platform. They are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes.
 
-> A system’s strength comes from knowing how to apply options (like $color-neutral-20) to contexts (like a conventional dark background color). This grounds the option as a decision.
+> A system’s strength comes from knowing how to apply options (like \$color-neutral-20) to contexts (like a conventional dark background color). This grounds the option as a decision.
 
 ```
 $background-color-dark = $color-neutral-20;
