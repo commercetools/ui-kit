@@ -1,0 +1,53 @@
+:root {
+  --size-s: 26px;
+  --size-m: 48px;
+  --size-l: 100px;
+}
+
+.avatar-base {
+  align-items: center;
+  background-color: var(--color-gray-60);
+  border-radius: 100%;
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.avatar-hover {
+  background-color: var(--color-gray);
+}
+
+.initials {
+  position: absolute;
+}
+
+.gravatar-img {
+  background-position: center center;
+  background-size: contain;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-hover .gravatar-img {
+  opacity: 0.7;
+}
+
+.avatar-s {
+  font-size: 1rem;
+  height: var(--size-s);
+  width: var(--size-s);
+}
+
+.avatar-m {
+  font-size: 1.5rem;
+  height: var(--size-m);
+  width: var(--size-m);
+}
+
+.avatar-l {
+  font-size: 3rem;
+  height: var(--size-l);
+  width: var(--size-l);
+}
