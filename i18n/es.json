@@ -21,7 +21,6 @@
   "UIKit.LocalizedTextInput.expand": "Mostrar todos los lenguajes ({remainingLanguages})",
   "UIKit.LocalizedTextInput.missingRequiredField": "Este campo es obligatorio. Proporcione un valor al menos.",
   "UIKit.MoneyField.highPrecision": "",
-  "UIKit.MoneyInput.chevronLabel": "Abrir/Cerrar menú desplegable",
   "UIKit.MultilineTextInput.collapse": "Contraer",
   "UIKit.MultilineTextInput.expand": "Expandir",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "Menú vacío",

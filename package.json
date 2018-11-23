@@ -46,6 +46,7 @@
     "storybook:start": "start-storybook -p 9002",
     "docs:publish": "node scripts/publish-docs.js",
     "i18n:build": "node scripts/extract-intl.js --output-path=$(pwd)/i18n 'src/components/**/!(*.spec).js'",
+    "i18n:pull": "node scripts/pull-i18n.js",
     "lint": "jest --projects jest.eslint.config.js jest.stylelint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",

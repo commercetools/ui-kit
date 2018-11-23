@@ -1,5 +1,15 @@
 sudo: false
+
+addons:
+  apt:
+    update: true
+    sources:
+      - deadsnakes
+    packages:
+      - python3.6
+
 language: node_js
+
 node_js:
   - '10'
 
@@ -11,12 +21,21 @@ cache:
   directories:
     - node_modules
 
+before_install:
+  - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
+  - (pip -V && pip3 -V && pip3.6 -V) | uniq
+  - python3.6 -m pip install --user transifex-client
+  - export PATH="$HOME/.local/bin:$PATH"
+
 script:
   # the jest.bundle.config.js tests run on the bundle,
   # so we need to build it first
   - yarn build
   - yarn run jest --projects jest.*.config.js --maxWorkers=4 --reporters jest-silent-reporter
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
+
+after_success:
+  - ./scripts/push_translations.sh
 
 before_deploy: yarn build
 
