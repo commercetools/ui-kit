@@ -26,11 +26,6 @@ import {
   formatRange,
 } from './utils';
 
-const createSuggestedItems = inputValue => {
-  if (inputValue.startsWith('t')) return [getToday(), getToday()];
-  return [];
-};
-
 const parseRangeText = text => {
   // TODO parse more formats, but format them all to YYYY-MM-DD
   const isValid = str => /^\d{4}-\d{2}-\d{2}$/.test(str);
@@ -43,6 +38,13 @@ const parseRangeText = text => {
     })
     .filter(Boolean);
   return parts;
+};
+
+const isSameRange = (a, b) => {
+  if (a.length !== b.length) return false;
+  if (a.length === 0) return true;
+  if (a[0] === b[0] && a[1] === b[1]) return true;
+  return false;
 };
 
 const preventDownshiftDefault = event => {
@@ -191,8 +193,10 @@ class DateRangeCalendar extends React.Component {
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
   };
-  static getDerivedStateFromProps(props) {
+  static getDerivedStateFromProps(props, state) {
+    if (isSameRange(props.value, state.prevValue)) return null;
     return {
+      prevValue: props.value,
       inputValue: formatRange(props.value, props.intl.locale),
     };
   }
@@ -205,6 +209,7 @@ class DateRangeCalendar extends React.Component {
     highlightedIndex: null,
     isOpen: false,
     inputValue: formatRange(this.props.value, this.props.intl.locale),
+    prevValue: this.props.value,
   };
   showPrevMonth = () => {
     this.setState(prevState => ({
@@ -314,24 +319,19 @@ class DateRangeCalendar extends React.Component {
               }
 
               if (changes.hasOwnProperty('inputValue')) {
-                const suggestedItems = createSuggestedItems(
-                  changes.inputValue,
-                  this.props.intl
-                );
                 const parsedRange = parseRangeText(changes.inputValue);
                 if (parsedRange.length === 0)
                   return {
-                    suggestedItems,
-                    highlightedIndex: suggestedItems.length > 0 ? 0 : null,
+                    suggestedItems: [],
+                    highlightedIndex: null,
                     inputValue: changes.inputValue,
                     startDate: null,
                   };
                 if (parsedRange.length === 1) {
                   const calendarDate = parsedRange[0];
                   return {
-                    suggestedItems,
-                    highlightedIndex:
-                      suggestedItems.length + getDateInMonth(calendarDate) - 1,
+                    suggestedItems: [],
+                    highlightedIndex: getDateInMonth(calendarDate) - 1,
                     inputValue: changes.inputValue,
                     startDate: parsedRange[0],
                     calendarDate,
@@ -340,9 +340,8 @@ class DateRangeCalendar extends React.Component {
                 if (parsedRange.length === 2) {
                   const calendarDate = parsedRange[1];
                   return {
-                    suggestedItems,
-                    highlightedIndex:
-                      suggestedItems.length + getDateInMonth(calendarDate) - 1,
+                    suggestedItems: [],
+                    highlightedIndex: getDateInMonth(calendarDate) - 1,
                     inputValue: changes.inputValue,
                     startDate: parsedRange[0],
                     calendarDate,
@@ -380,6 +379,7 @@ class DateRangeCalendar extends React.Component {
             closeMenu,
             setHighlightedIndex,
             isOpen,
+            inputValue,
           }) => {
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
@@ -420,7 +420,7 @@ class DateRangeCalendar extends React.Component {
                       highlightedIndex,
                       allItems,
                       openMenu,
-                      inputValue: this.state.inputValue,
+                      inputValue,
                       suggestedItems: this.state.suggestedItems,
                       showNextMonth: this.showNextMonth,
                       showPrevMonth: this.showPrevMonth,
@@ -446,7 +446,7 @@ class DateRangeCalendar extends React.Component {
                       highlightedIndex,
                       allItems,
                       openMenu,
-                      inputValue: this.state.inputValue,
+                      inputValue,
                       suggestedItems: this.state.suggestedItems,
                       showNextMonth: this.showNextMonth,
                       showPrevMonth: this.showPrevMonth,

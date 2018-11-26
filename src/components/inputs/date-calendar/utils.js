@@ -66,6 +66,17 @@ export const formatRange = (range, locale) =>
     .map(item => formatDate(item, locale))
     .join(' - ');
 
+export const parseInputToDate = (text, locale) => {
+  const localeDate = moment(
+    text,
+    moment.localeData(locale).longDateFormat('L'),
+    locale
+  );
+
+  if (localeDate.isValid()) return localeDate.format('YYYY-MM-DD');
+  return '';
+};
+
 // replace
 // `${this.props.value[0]} - ${this.props.value[1]}`
 // look for "inputValue:"

@@ -22,12 +22,8 @@ import {
   getCalendarDayLabel,
   createCalendarItems,
   createItemToString,
+  parseInputToDate,
 } from './utils';
-
-const createSuggestedItems = inputValue => {
-  if (inputValue.startsWith('t')) return [getToday()];
-  return [];
-};
 
 const preventDownshiftDefault = event => {
   // eslint-disable-next-line no-param-reassign
@@ -44,10 +40,12 @@ const createKeyDownHandler = ({
   highlightedIndex,
   allItems,
   openMenu,
+  inputRef,
   suggestedItems,
   showNextMonth,
   showPrevMonth,
   emit,
+  locale,
 }) => event => {
   const preventCursorJump = () => {
     event.preventDefault();
@@ -63,6 +61,19 @@ const createKeyDownHandler = ({
     clearSelection();
     closeMenu();
     emit('');
+    return;
+  }
+
+  if (
+    event.key === 'Enter' &&
+    inputValue.trim() !== '' &&
+    highlightedIndex === null
+  ) {
+    preventDownshiftDefault(event);
+    closeMenu();
+
+    emit(parseInputToDate(inputValue, locale));
+    inputRef.current.setSelectionRange(0, 100);
     return;
   }
 
@@ -211,14 +222,32 @@ class DateCalendar extends React.Component {
           onStateChange={changes => {
             /* eslint-disable no-prototype-builtins */
             if (changes.hasOwnProperty('inputValue')) {
-              const suggestedItems = createSuggestedItems(
-                changes.inputValue,
-                this.props.intl
-              );
-              this.setState({
-                suggestedItems,
-                highlightedIndex: suggestedItems.length > 0 ? 0 : null,
-              });
+              // input changed because user typed
+              if (changes.type === Downshift.stateChangeTypes.changeInput) {
+                const date = parseInputToDate(
+                  changes.inputValue,
+                  this.props.intl.locale
+                );
+                console.log('parsed', date);
+                if (date === '') {
+                  this.setState({
+                    suggestedItems: [],
+                    highlightedIndex: null,
+                  });
+                } else {
+                  this.setState({
+                    suggestedItems: [date],
+                    highlightedIndex: null,
+                    calendarDate: date,
+                  });
+                }
+              } else {
+                // input changed because user selected a date
+                this.setState({
+                  suggestedItems: [],
+                  highlightedIndex: null,
+                });
+              }
             }
 
             if (changes.hasOwnProperty('highlightedIndex')) {
@@ -297,9 +326,11 @@ class DateCalendar extends React.Component {
                       allItems,
                       openMenu,
                       suggestedItems,
+                      inputRef: this.inputRef,
                       showNextMonth: this.showNextMonth,
                       showPrevMonth: this.showPrevMonth,
                       emit: this.emit,
+                      locale: this.props.intl.locale,
                     }),
                     onFocus: openMenu,
                     onClick: openMenu,
@@ -319,9 +350,11 @@ class DateCalendar extends React.Component {
                       allItems,
                       openMenu,
                       suggestedItems,
+                      inputRef: this.inputRef,
                       showNextMonth: this.showNextMonth,
                       showPrevMonth: this.showPrevMonth,
                       emit: this.emit,
+                      locale: this.props.intl.locale,
                     }),
                   })}
                 />
