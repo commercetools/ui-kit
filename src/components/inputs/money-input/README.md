@@ -225,11 +225,9 @@ return (
           }
           horizontalConstraint="l"
         />
-        {touched.somePrice &&
-          errors.somePrice &&
-          errors.somePrice.missing && (
-            <ErrorMessage>This field is required!</ErrorMessage>
-          )}
+        {touched.somePrice && errors.somePrice && errors.somePrice.missing && (
+          <ErrorMessage>This field is required!</ErrorMessage>
+        )}
         {touched.somePrice &&
           errors.somePrice &&
           errors.somePrice.highPrecision && (

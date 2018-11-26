@@ -94,11 +94,11 @@ const green = customProperties['--color-green'];
 
 Available at https://uikit.commercetools.com.
 
-## Release
+## Releasing
 
-The release process is _semi-automated_: you only need to **manually** trigger it and [Travis][travis] will take care of the rest.
+The release process is _semi-automated_: you only need to **manually** trigger it and [Travis][travis] will take care of the rest. All automated releases go the the `next` distribution channel. This gives us a chance to test releases out before making them offical by moving the `latest` dist-tag along.
 
-The steps to prepare and trigger a release are as follows:
+### The steps to prepare and trigger a release to `next` are as follows:
 
 - ensure you are on the latest `master` branch
 - update the `CHANGELOG.md`
@@ -113,7 +113,23 @@ The steps to prepare and trigger a release are as follows:
   - the tag name is the `version` string in the `package.json` plus the prefix `v`
 - push the tag: `git push --tags`
 
-From now on, [Travis][travis] will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
+From that point, [Travis][travis] will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
+
+### Moving the `latest` dist-tag to a release:
+
+After testing the `next` release on a production project, it's time to move to the `latest` dist-tag to make the release official.
+
+```bash
+$ npm dist-tag add @commercetools-frontend/ui-kit@<version> latest
+```
+
+### About release-candidates & alpha / beta versions
+
+Having release candidates is not necesssary when using semantic releases:
+
+> "With semantic-release it’s discouraged to put information about stability into the version number (i.e. 1.0.0-beta or 2.0.0-rc1) because it’s mixing things up. The tool you can use to comunicate stability are npm’s dist-tags. The last paragraph of this section should give you some hints: https://github.com/semantic-release/semantic-release#how-does-it-work"
+>
+> boennemann, [source](https://gitter.im/semantic-release/semantic-release/archives/2015/08/26)
 
 ## Publishing documentation website
 

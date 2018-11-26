@@ -28,6 +28,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+  tag: next
 
 # Keep it disabled until this issue is clarified
 # https://twitter.com/emmenko/status/1040544486101856256
