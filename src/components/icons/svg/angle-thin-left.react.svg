@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-left</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-24.000000, -936.000000)" fill="#000000">
+            <g id="Directions" transform="translate(24.000000, 888.000000)">
+                <g id="Arrow-Left" transform="translate(0.000000, 48.000000)">
+                    <path d="M16.33625,20.8878 C16.21875,20.8878 16.140625,20.85 16.0625,20.7378 L7.429375,12.4878 C7.273125,12.3378 7.273125,12.1128 7.429375,11.9628 L16.0625,3.675 C16.21875,3.525 16.453125,3.525 16.609375,3.675 C16.765625,3.825 16.765625,4.05 16.609375,4.2 L8.25,12.225 L16.609375,20.2128 C16.765625,20.3628 16.765625,20.5878 16.609375,20.7378 C16.53125,20.8506 16.41375,20.8878 16.335625,20.8878 L16.33625,20.8878 Z" id="shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
