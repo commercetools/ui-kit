@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FilterIcon } from '../../icons';
+import Icons from '../../icons';
 import { SecondaryIconButton } from './secondary-icon-button';
 
 const createTestProps = custom => ({
   label: 'Accessible button',
   onClick: jest.fn(),
-  icon: <FilterIcon />,
+  icon: <Icons.Filter />,
 
   // HoC
   isMouseOver: false,
@@ -33,11 +33,11 @@ describe('rendering', () => {
   });
 
   it('should render the icon', () => {
-    expect(wrapper).toRender('FilterIcon');
+    expect(wrapper).toRender(Icons.Filter);
   });
 
   it('renders an icon with black theme', () => {
-    expect(wrapper.find('FilterIcon')).toHaveProp('theme', 'black');
+    expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'black');
   });
 
   describe('if mouse is over', () => {
@@ -46,7 +46,7 @@ describe('rendering', () => {
       wrapper = shallow(<SecondaryIconButton {...props} />);
     });
     it('renders an icon with green theme', () => {
-      expect(wrapper.find('FilterIcon')).toHaveProp('theme', 'green');
+      expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'green');
     });
   });
 
@@ -59,7 +59,7 @@ describe('rendering', () => {
       expect(wrapper.find('AccessibleButton')).toHaveProp('isDisabled', true);
     });
     it('renders an icon with grey theme', () => {
-      expect(wrapper.find('FilterIcon')).toHaveProp('theme', 'grey');
+      expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'grey');
     });
   });
 

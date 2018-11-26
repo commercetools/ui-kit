@@ -12,7 +12,7 @@ import {
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import TextFieldReadme from './README.md';
-import * as icons from '../../icons';
+import Icons from '../../icons';
 import TextField from './text-field';
 
 storiesOf('Fields', module)
@@ -27,9 +27,9 @@ storiesOf('Fields', module)
           const hint = text('hint', 'Enter your username');
 
           // hintIcon will only render when hint exists
-          const iconNames = Object.keys(icons);
+          const iconNames = Object.keys(Icons);
           const icon = select('hintIcon', ['', ...iconNames], '');
-          const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
+          const hintIcon = icon ? React.createElement(Icons[icon]) : undefined;
           return (
             <TextField
               id={name.trim() === '' ? undefined : name}

@@ -4,7 +4,7 @@ import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
 import TextareaAutosize from 'react-textarea-autosize';
 import FlatButton from '../../buttons/flat-button';
-import { AngleUpIcon, AngleDownIcon } from '../../icons';
+import Icons from '../../icons';
 import Collapsible from '../../collapsible';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
@@ -126,9 +126,9 @@ export class MultilineTextInput extends React.Component {
                     )}
                     icon={
                       isOpen ? (
-                        <AngleUpIcon size="small" />
+                        <Icons.AngleUp size="small" />
                       ) : (
-                        <AngleDownIcon size="small" />
+                        <Icons.AngleDown size="small" />
                       )
                     }
                   />

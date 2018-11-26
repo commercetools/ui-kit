@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CloseIcon } from '../../icons';
+import Icons from '../../icons';
 
 const ClearIndicator = props => {
   const {
@@ -14,7 +14,7 @@ const ClearIndicator = props => {
       style={getStyles('clearIndicator', props)}
     >
       <div>
-        <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
+        <Icons.Close theme={props.isDisabled && 'grey'} size="medium" />
       </div>
     </div>
   );

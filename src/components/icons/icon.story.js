@@ -6,7 +6,7 @@ import styled from 'react-emotion';
 import kebabCase from 'lodash.kebabcase';
 import Text from '../typography/text';
 import Readme from './README.md';
-import * as icons from '.';
+import Icons from '.';
 
 const IconList = styled.div`
   display: grid;
@@ -33,14 +33,14 @@ const FileName = styled.div`
   }
 `;
 
-const iconNames = Object.keys(icons);
+const iconNames = Object.keys(Icons);
 
 storiesOf('Icons', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('All Icons', () => (
     <IconList>
-      {Object.values(icons).map((Icon, index) => {
+      {Object.values(Icons).map((Icon, index) => {
         const sizeValue = select(
           'size',
           ['small', 'medium', 'big', 'scale'],

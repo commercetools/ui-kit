@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Text from '../../typography/text';
-import { AddIcon } from '../../icons';
+import Icons from '../../icons';
 import { FlatButton } from './flat-button';
 
 const createTestProps = props => ({
   type: 'primary',
   label: 'Accessibility text',
   onClick: jest.fn(),
-  icon: <AddIcon size="medium" />,
+  icon: <Icons.Add size="medium" />,
   isDisabled: false,
 
   isMouseOver: false,
@@ -47,7 +47,7 @@ describe('rendering', () => {
   });
 
   it('should render the icon', () => {
-    expect(wrapper).toRender(AddIcon);
+    expect(wrapper).toRender(Icons.Add);
   });
 
   describe('icon position', () => {
@@ -56,7 +56,7 @@ describe('rendering', () => {
         /* eslint-disable react/jsx-key */
         expect(
           wrapper.containsMatchingElement([
-            <AddIcon size="medium" />,
+            <Icons.Add size="medium" />,
             <Text.Body>{'Accessibility text'}</Text.Body>,
           ])
         ).toBe(true);
@@ -73,7 +73,7 @@ describe('rendering', () => {
         expect(
           wrapper.containsMatchingElement([
             <Text.Body>{'Accessibility text'}</Text.Body>,
-            <AddIcon size="medium" />,
+            <Icons.Add size="medium" />,
           ])
         ).toBe(true);
         /* eslint-enable react/jsx-key */

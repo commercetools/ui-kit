@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Text from '../../typography/text';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
-import { AngleDownIcon, AngleUpIcon } from '../../icons';
+import Icons from '../../icons';
 import styles from './sortable-header.mod.css';
 
 /*
@@ -47,9 +47,9 @@ const SortableHeader = props => {
       <Text.Body tone="inverted">{props.children}</Text.Body>
       <span className={styles.arrow}>
         {isArrowDown ? (
-          <AngleDownIcon size="medium" theme={theme} />
+          <Icons.AngleDown size="medium" theme={theme} />
         ) : (
-          <AngleUpIcon className={styles.arrow} size="small" theme={theme} />
+          <Icons.AngleUp className={styles.arrow} size="small" theme={theme} />
         )}
       </span>
     </div>

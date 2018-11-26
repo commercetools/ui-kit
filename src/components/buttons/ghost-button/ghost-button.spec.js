@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddBoldIcon } from '../../icons';
+import Icons from '../../icons';
 import GhostButton from './ghost-button';
 
 const createProps = custom => ({
@@ -150,25 +150,25 @@ describe('rendering', () => {
 
     beforeEach(() => {
       props = createProps({
-        iconLeft: <AddBoldIcon />,
+        iconLeft: <Icons.AddBold />,
       });
       wrapper = shallow(<GhostButton {...props} />);
     });
 
     it('should render an icon', () => {
-      expect(wrapper).toRender(AddBoldIcon);
+      expect(wrapper).toRender(Icons.AddBold);
     });
 
     describe('with icon size big', () => {
       beforeEach(() => {
         props = createProps({
-          iconLeft: <AddBoldIcon size="big" />,
+          iconLeft: <Icons.AddBold size="big" />,
         });
         wrapper = shallow(<GhostButton {...props} />);
       });
 
       it('should overwrite the Icon size to be medium', () => {
-        expect(wrapper.find(AddBoldIcon)).toHaveProp('size', 'medium');
+        expect(wrapper.find(Icons.AddBold)).toHaveProp('size', 'medium');
       });
     });
 
@@ -176,13 +176,13 @@ describe('rendering', () => {
       beforeEach(() => {
         props = createProps({
           isDisabled: true,
-          iconLeft: <AddBoldIcon />,
+          iconLeft: <Icons.AddBold />,
         });
         wrapper = shallow(<GhostButton {...props} />);
       });
 
       it('should apply the grey theme to the icon', () => {
-        expect(wrapper.find(AddBoldIcon)).toHaveProp('theme', 'grey');
+        expect(wrapper.find(Icons.AddBold)).toHaveProp('theme', 'grey');
       });
     });
   });

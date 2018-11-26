@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WarningIcon } from '../icons';
+import Icons from '../icons';
 import Label from '../label';
 import Text from '../typography/text';
 import FlatButton from '../buttons/flat-button';
@@ -102,13 +102,13 @@ describe('rendering', () => {
   describe('with `hintIcon`', () => {
     describe('when hintIcon is given', () => {
       beforeEach(() => {
-        props = createTestProps({ hint: 'foo', hintIcon: <WarningIcon /> });
+        props = createTestProps({ hint: 'foo', hintIcon: <Icons.Warning /> });
         wrapper = shallow(<FieldLabel {...props} />);
-        hintIconWrapper = wrapper.find(WarningIcon);
+        hintIconWrapper = wrapper.find(Icons.Warning);
       });
 
       it('should display the icon', () => {
-        expect(wrapper).toRender(WarningIcon);
+        expect(wrapper).toRender(Icons.Warning);
       });
 
       it('should set the icon size', () => {
@@ -119,10 +119,10 @@ describe('rendering', () => {
         beforeEach(() => {
           props = createTestProps({
             hint: 'foo',
-            hintIcon: <WarningIcon theme="green" />,
+            hintIcon: <Icons.Warning theme="green" />,
           });
           wrapper = shallow(<FieldLabel {...props} />);
-          hintIconWrapper = wrapper.find(WarningIcon);
+          hintIconWrapper = wrapper.find(Icons.Warning);
         });
 
         it('should set the icon theme', () => {

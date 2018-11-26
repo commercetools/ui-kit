@@ -13,7 +13,7 @@ import {
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import AsyncSelectFieldReadme from './README.md';
-import * as icons from '../../icons';
+import Icons from '../../icons';
 import AsyncSelectField from './async-select-field';
 
 const animalOptions = [
@@ -91,9 +91,9 @@ storiesOf('Fields', module)
       : false;
 
     // hintIcon will only render when hint exists
-    const iconNames = Object.keys(icons);
+    const iconNames = Object.keys(Icons);
     const icon = select('hintIcon', ['', ...iconNames], '');
-    const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
+    const hintIcon = icon ? React.createElement(Icons[icon]) : undefined;
     const name = text('name', 'favAnimal');
     const id = text('id', '');
     return (

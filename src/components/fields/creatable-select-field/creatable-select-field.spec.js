@@ -4,7 +4,7 @@ import CreatableSelectField from './creatable-select-field';
 import FieldLabel from '../../field-label';
 import CreatableSelectInput from '../../inputs/creatable-select-input';
 import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
+import Icons from '../../icons';
 
 const createTestProps = customProps => ({
   title: 'Favourite Animal',
@@ -66,7 +66,7 @@ describe('rendering', () => {
         // FieldLabel
         title: 'Username',
         hint: 'Some hint',
-        hintIcon: <AddBoldIcon />,
+        hintIcon: <Icons.AddBold />,
         description: 'A description',
         onInfoButtonClick: jest.fn(),
         badge: <div>Some badge</div>,

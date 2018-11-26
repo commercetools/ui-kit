@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FilterIcon } from '../../icons';
+import Icons from '../../icons';
 import AccessibleButton from '../accessible-button';
 import { SecondaryButton, getIconThemeColor } from './secondary-button';
 
@@ -125,7 +125,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createProps({
-        iconLeft: <FilterIcon />,
+        iconLeft: <Icons.Filter />,
       });
       wrapper = shallow(<SecondaryButton {...props} />);
     });
@@ -135,7 +135,7 @@ describe('rendering', () => {
     });
 
     it('should render an icon', () => {
-      expect(wrapper).toRender(FilterIcon);
+      expect(wrapper).toRender(Icons.Filter);
     });
 
     describe('when theme is not default', () => {
@@ -145,13 +145,13 @@ describe('rendering', () => {
             theme: 'blue',
             isToggled: true,
             isToggleButton: true,
-            iconLeft: <FilterIcon theme="red" />,
+            iconLeft: <Icons.Filter theme="red" />,
           });
           wrapper = shallow(<SecondaryButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be the same color as button', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'blue');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'blue');
         });
       });
       describe('when mouse down', () => {
@@ -161,13 +161,13 @@ describe('rendering', () => {
             isMouseDown: true,
             isToggled: true,
             isToggleButton: true,
-            iconLeft: <FilterIcon theme="red" />,
+            iconLeft: <Icons.Filter theme="red" />,
           });
           wrapper = shallow(<SecondaryButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be the same color as button', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'blue');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'blue');
         });
       });
       describe('when mouse over', () => {
@@ -177,13 +177,13 @@ describe('rendering', () => {
             isMouseOver: true,
             isToggled: false,
             isToggleButton: true,
-            iconLeft: <FilterIcon theme="red" />,
+            iconLeft: <Icons.Filter theme="red" />,
           });
           wrapper = shallow(<SecondaryButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be the same color as button', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'blue');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'blue');
         });
       });
     });
@@ -194,13 +194,13 @@ describe('rendering', () => {
             theme: 'default',
             isToggled: true,
             isToggleButton: true,
-            iconLeft: <FilterIcon theme="red" />,
+            iconLeft: <Icons.Filter theme="red" />,
           });
           wrapper = shallow(<SecondaryButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be icon`s color prop', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'red');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'red');
         });
       });
       describe('when mouse down', () => {
@@ -210,13 +210,13 @@ describe('rendering', () => {
             isMouseDown: true,
             isToggled: true,
             isToggleButton: true,
-            iconLeft: <FilterIcon theme="red" />,
+            iconLeft: <Icons.Filter theme="red" />,
           });
           wrapper = shallow(<SecondaryButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be icon`s color prop', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'red');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'red');
         });
       });
       describe('when mouse over', () => {
@@ -226,13 +226,13 @@ describe('rendering', () => {
             isMouseOver: true,
             isToggled: false,
             isToggleButton: true,
-            iconLeft: <FilterIcon theme="red" />,
+            iconLeft: <Icons.Filter theme="red" />,
           });
           wrapper = shallow(<SecondaryButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be the same color as button', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'blue');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'blue');
         });
       });
     });
@@ -379,7 +379,7 @@ describe('utils', () => {
           theme: 'blue',
           isToggled: true,
           isToggleButton: true,
-          iconLeft: <FilterIcon theme="red" />,
+          iconLeft: <Icons.Filter theme="red" />,
         });
       });
       it('should return `blue` color as a theme class', () => {

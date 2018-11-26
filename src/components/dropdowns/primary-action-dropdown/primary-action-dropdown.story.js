@@ -4,11 +4,11 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import * as icons from '../../icons';
+import Icons from '../../icons';
 import Readme from './README.md';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 
-const iconNames = Object.keys(icons);
+const iconNames = Object.keys(Icons);
 
 storiesOf('Dropdowns', module)
   .addDecorator(withKnobs)
@@ -18,7 +18,7 @@ storiesOf('Dropdowns', module)
       <PrimaryActionDropdown>
         <Option
           iconLeft={React.createElement(
-            icons[select('icon', iconNames, iconNames[0])]
+            Icons[select('icon', iconNames, iconNames[0])]
           )}
           isDisabled={boolean('isPrimaryOptionDisabled', false)}
           onClick={action('onClick primary option')}

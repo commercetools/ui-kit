@@ -4,11 +4,11 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import * as icons from '../../icons';
+import Icons from '../../icons';
 import Readme from './README.md';
 import IconButton from './icon-button';
 
-const iconNames = Object.keys(icons);
+const iconNames = Object.keys(Icons);
 
 storiesOf('Buttons', module)
   .addDecorator(withKnobs)
@@ -20,7 +20,7 @@ storiesOf('Buttons', module)
         size={select('size', ['big', 'medium', 'small'], 'big')}
         theme={select('theme', ['green', 'blue', 'default'], 'default')}
         icon={React.createElement(
-          icons[select('icon', iconNames, iconNames[0])]
+          Icons[select('icon', iconNames, iconNames[0])]
         )}
         onClick={action('onClick')}
         label={text('label', 'Accessibility text')}

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import * as icons from '../icons';
+import Icons from '../icons';
 import FlatButton from '../buttons/flat-button';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
@@ -16,9 +16,9 @@ storiesOf('FieldLabel', module)
     const hint = text('hint', 'Enter a number between 0 and 1');
 
     // hintIcon will only render when hint exists
-    const iconNames = Object.keys(icons);
+    const iconNames = Object.keys(Icons);
     const icon = select('hintIcon', ['', ...iconNames], 'SortingIcon');
-    const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
+    const hintIcon = icon ? React.createElement(Icons[icon]) : undefined;
     return (
       <Section>
         <FieldLabel
@@ -44,7 +44,7 @@ storiesOf('FieldLabel', module)
             boolean('show badge', false) ? (
               <FlatButton
                 tone="primary"
-                icon={<icons.BoxIcon />}
+                icon={<Icons.Box />}
                 label="show"
                 onClick={() => {}}
               />

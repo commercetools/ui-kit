@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import Constraints from '../constraints';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
-import { CloseBoldIcon } from '../icons';
+import Icons from '../icons';
 import styles from './tag.mod.css';
 
 const getWrapperTypeClassName = type =>
@@ -137,7 +137,7 @@ const Tag = props => (
             }
           )}
         >
-          <CloseBoldIcon size="medium" />
+          <Icons.CloseBold size="medium" />
         </AccessibleButton>
       )}
     </div>

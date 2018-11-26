@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Text from '../../typography/text';
-import { AddIcon } from '../../icons';
+import Icons from '../../icons';
 import LinkButton from './link-button';
 
 const createTestProps = props => ({
   label: 'Accessibility text',
   to: '/foo/bar',
-  iconLeft: <AddIcon size="medium" />,
+  iconLeft: <Icons.Add size="medium" />,
   isDisabled: false,
   ...props,
 });
@@ -59,7 +59,7 @@ describe('rendering', () => {
   });
 
   it('should render the icon', () => {
-    expect(wrapper).toRender('AddIcon');
+    expect(wrapper).toRender(Icons.Add);
   });
 
   describe('with data-* props', () => {
@@ -135,7 +135,7 @@ describe('rendering', () => {
     });
 
     it('renders the icon with "grey" theme', () => {
-      expect(wrapper.find('AddIcon')).toHaveProp('theme', 'grey');
+      expect(wrapper.find(Icons.Add)).toHaveProp('theme', 'grey');
     });
   });
 });

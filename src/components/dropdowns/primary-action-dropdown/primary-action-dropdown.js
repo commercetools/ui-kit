@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import classnames from 'classnames';
 import Text from '../../typography/text';
-import { CaretDownIcon, CaretUpIcon } from '../../icons';
+import Icons from '../../icons';
 import AccessibleButton from '../../buttons/accessible-button';
 import styles from './primary-actions-dropdown.mod.css';
 
@@ -63,7 +63,11 @@ const DropdownChevron = props => (
   */}
     <div className={styles.iconWrapper}>
       {React.cloneElement(
-        props.isOpen && !props.isDisabled ? <CaretUpIcon /> : <CaretDownIcon />,
+        props.isOpen && !props.isDisabled ? (
+          <Icons.CaretUp />
+        ) : (
+          <Icons.CaretDown />
+        ),
         {
           theme: props.isDisabled ? 'grey' : 'black',
           size: 'small',

@@ -4,7 +4,7 @@ import NumberField from './number-field';
 import FieldLabel from '../../field-label';
 import NumberInput from '../../inputs/number-input';
 import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
+import Icons from '../../icons';
 
 const createTestProps = customProps => ({
   title: 'Username',
@@ -76,7 +76,7 @@ describe('rendering', () => {
         // FieldLabel
         title: 'Username',
         hint: 'Some hint',
-        hintIcon: <AddBoldIcon />,
+        hintIcon: <Icons.AddBold />,
         description: 'A description',
         onInfoButtonClick: jest.fn(),
         badge: <div>Some badge</div>,

@@ -4,7 +4,7 @@ import LocalizedMultilineTextField from './localized-multiline-text-field';
 import FieldLabel from '../../field-label';
 import LocalizedMultilineTextInput from '../../inputs/localized-multiline-text-input';
 import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
+import Icons from '../../icons';
 
 const createTestProps = customProps => ({
   title: 'Description',
@@ -62,7 +62,7 @@ describe('rendering', () => {
         // FieldLabel
         title: 'Description',
         hint: 'Some hint',
-        hintIcon: <AddBoldIcon />,
+        hintIcon: <Icons.AddBold />,
         description: 'A description',
         onInfoButtonClick: jest.fn(),
         badge: <div>Some badge</div>,

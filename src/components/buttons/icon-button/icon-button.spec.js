@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FilterIcon } from '../../icons';
+import Icons from '../../icons';
 import { IconButton } from './icon-button';
 
 const createProps = custom => ({
@@ -123,7 +123,7 @@ describe('rendering', () => {
     let wrapper;
     beforeEach(() => {
       props = createProps({
-        icon: <FilterIcon />,
+        icon: <Icons.Filter />,
       });
       wrapper = shallow(<IconButton {...props} />);
     });
@@ -133,7 +133,7 @@ describe('rendering', () => {
     });
 
     it('should render an icon', () => {
-      expect(wrapper).toRender(FilterIcon);
+      expect(wrapper).toRender(Icons.Filter);
     });
 
     describe('when IconButton size is medium', () => {
@@ -141,13 +141,13 @@ describe('rendering', () => {
         beforeEach(() => {
           props = createProps({
             size: 'medium',
-            icon: <FilterIcon size="big" />,
+            icon: <Icons.Filter size="big" />,
           });
           wrapper = shallow(<IconButton {...props} />);
         });
 
         it('should overwrite the Icon size to be medium', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('size', 'medium');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('size', 'medium');
         });
       });
     });
@@ -159,13 +159,13 @@ describe('rendering', () => {
             theme: 'blue',
             isToggled: true,
             isToggleButton: true,
-            icon: <FilterIcon theme="red" />,
+            icon: <Icons.Filter theme="red" />,
           });
           wrapper = shallow(<IconButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be white', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'white');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'white');
         });
       });
 
@@ -177,16 +177,16 @@ describe('rendering', () => {
             isMouseOver: true,
             isToggled: false,
             isToggleButton: true,
-            icon: <FilterIcon theme="black" />,
+            icon: <Icons.Filter theme="black" />,
           });
           wrapper = shallow(<IconButton {...props} />);
         });
 
         it('should overwrite the Icon theme to be white', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'white');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'white');
         });
         it('should not overwrite the Icon theme to be black', () => {
-          expect(wrapper.find(FilterIcon)).not.toHaveProp('theme', 'black');
+          expect(wrapper.find(Icons.Filter)).not.toHaveProp('theme', 'black');
         });
       });
       describe('when mouse is down and mouse is out', () => {
@@ -197,16 +197,16 @@ describe('rendering', () => {
             isMouseOver: false,
             isToggled: false,
             isToggleButton: true,
-            icon: <FilterIcon theme="black" />,
+            icon: <Icons.Filter theme="black" />,
           });
           wrapper = shallow(<IconButton {...props} />);
         });
 
         it('should not overwrite the Icon theme to be white', () => {
-          expect(wrapper.find(FilterIcon)).not.toHaveProp('theme', 'white');
+          expect(wrapper.find(Icons.Filter)).not.toHaveProp('theme', 'white');
         });
         it('should overwrite the Icon theme to be black', () => {
-          expect(wrapper.find(FilterIcon)).toHaveProp('theme', 'black');
+          expect(wrapper.find(Icons.Filter)).toHaveProp('theme', 'black');
         });
       });
     });

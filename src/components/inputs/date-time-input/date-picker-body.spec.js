@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CalendarIcon, ClockIcon } from '../../icons';
+import Icons from '../../icons';
 import {
   DatePickerBody,
   ClearSection,
@@ -57,11 +57,11 @@ describe('<DatePickerBody>', () => {
       });
 
       it('should render a Calendar icon', () => {
-        expect(wrapper).toRender(CalendarIcon);
+        expect(wrapper).toRender(Icons.Calendar);
       });
 
       it('should not render a Clock icon', () => {
-        expect(wrapper).not.toRender(ClockIcon);
+        expect(wrapper).not.toRender(Icons.Clock);
       });
     });
 
@@ -74,11 +74,11 @@ describe('<DatePickerBody>', () => {
       });
 
       it('should render a Calendar icon', () => {
-        expect(wrapper).toRender(CalendarIcon);
+        expect(wrapper).toRender(Icons.Calendar);
       });
 
       it('should not render a Clock icon', () => {
-        expect(wrapper).not.toRender(ClockIcon);
+        expect(wrapper).not.toRender(Icons.Clock);
       });
     });
     describe('when is for picking "time"', () => {
@@ -90,11 +90,11 @@ describe('<DatePickerBody>', () => {
       });
 
       it('should not render a Calendar icon', () => {
-        expect(wrapper).not.toRender(CalendarIcon);
+        expect(wrapper).not.toRender(Icons.Calendar);
       });
 
       it('should render a Clock icon', () => {
-        expect(wrapper).toRender(ClockIcon);
+        expect(wrapper).toRender(Icons.Clock);
       });
     });
 
@@ -185,8 +185,8 @@ describe('<DatePickerBody>', () => {
         );
       });
 
-      it('should set the grey-theme on `CalendarIcon`', () => {
-        expect(wrapper.find(CalendarIcon)).toHaveProp('theme', 'grey');
+      it('should set the grey-theme on `Icons.Calendar`', () => {
+        expect(wrapper.find(Icons.Calendar)).toHaveProp('theme', 'grey');
       });
     });
   });

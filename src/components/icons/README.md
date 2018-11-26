@@ -3,9 +3,9 @@
 ## Usage
 
 ```js
-import { ExportIcon } from '@commercetools-frontend/ui-kit';
+import { Icons } from '@commercetools-frontend/ui-kit';
 
-<ExportIcon />;
+<Icons.Add />;
 ```
 
 #### Description
@@ -14,8 +14,8 @@ You can find a list of all available icons in the UIKit.
 
 #### How to add new icons
 
-1.  add the SVG file you got from the designer to `@commercetools-frontend/ui-kit/icons/svg`
-2.  restart webpack (`npm start` in development)
+1.  add the SVG file you got from the designer to the [`svg`](./svg) folder
+2.  run the script `node scripts/generate-icon-exports.js` from the project root folder
 
 #### Properties
 
@@ -31,18 +31,23 @@ Main use cases are:
 - Buttons
 
   ```jsx
-  <SecondaryButton
-    onClick={() => {}}
-    iconLeft={<ExportIcon />}
-    label={this.props.intl.formatMessage(messages.exportList)}
-  />
+  <FormattedMessage {...messages.add}>
+    {label => (
+      <SecondaryButton
+        onClick={() => {}}
+        iconLeft={<Icons.Add />}
+        label={label}
+      />
+    )}
+  </FormattedMessage>
   ```
 
 - Icon Buttons
+
   ```jsx
-  <IconButton
-    onClick={() => {}}
-    icon={<ExportIcon />}
-    label={this.props.intl.formatMessage(messages.exportList)}
-  />
+  <FormattedMessage {...messages.add}>
+    {label => (
+      <IconButton onClick={() => {}} icon={<Icons.Add />} label={label} />
+    )}
+  </FormattedMessage>
   ```

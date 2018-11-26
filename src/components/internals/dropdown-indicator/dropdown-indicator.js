@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { components } from 'react-select';
-import { CaretDownIcon } from '../../icons';
+import Icons from '../../icons';
 
 const DropdownIndicator = props => (
   <components.DropdownIndicator {...props}>
     {/* FIXME: add proper tone when tones are refactored */}
-    <CaretDownIcon theme={props.isDisabled && 'grey'} size="medium" />
+    <Icons.CaretDown theme={props.isDisabled && 'grey'} size="medium" />
   </components.DropdownIndicator>
 );
 

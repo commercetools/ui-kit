@@ -8,7 +8,7 @@ const prettier = require('prettier');
 const rcfile = require('rcfile');
 
 const importPath = path.join(__dirname, '../src/components/icons/svg/*.svg');
-const exportPath = path.join(__dirname, '../src/components/icons/index.js');
+const exportPath = path.join(__dirname, '../src/components/icons/exports.js');
 const iconFileExt = '.react.svg';
 
 glob(importPath, (err, files) => {
@@ -19,7 +19,7 @@ glob(importPath, (err, files) => {
     );
     return stripIndents`
       ${importsString}
-      import Orig${componentName}Icon from './svg/${baseName}';
+      import Orig${componentName} from './svg/${baseName}';
     `;
   }, "import withSizeProp from './with-size-prop';\nimport withThemeProp from './with-theme-prop';");
   const delarationStatements = files.reduce(
@@ -27,37 +27,21 @@ glob(importPath, (err, files) => {
       const componentName = upperFirst(
         camelCase(path.basename(fileName, iconFileExt))
       );
+      // Keep the `Icon` suffix in the `displayName` for better readability
       return stripIndents`
-      ${declarationStatement}
-      const ${componentName}Icon = withThemeProp(withSizeProp(Orig${componentName}Icon));
-    `;
+        ${declarationStatement}
+        export const ${componentName} = withThemeProp(withSizeProp(Orig${componentName}));
+        ${componentName}.displayName = '${componentName}Icon';
+      `;
     },
     ''
   );
-  const displayNameStatements = files.reduce((displayNameString, fileName) => {
-    const componentName = upperFirst(
-      camelCase(path.basename(fileName, iconFileExt))
-    );
-    return stripIndents`
-      ${displayNameString}
-      ${componentName}Icon.displayName = '${componentName}Icon';
-    `;
-  }, '');
-  const exportStatements = files.reduce((importsString, fileName) => {
-    const componentName = upperFirst(
-      camelCase(path.basename(fileName, iconFileExt))
-    );
-    return stripIndents`
-      ${importsString}
-      export { ${componentName}Icon };
-    `;
-  }, '');
   const comment = stripIndents`
     // This file is auto-generated using the 'generate-icon-exports.js' script
     // so any changes made to this file manually will be lost the next time the
     // script is executed
   `;
-  const iconsFile = `${comment}\n${importStatements}\n\n${delarationStatements}\n\n${displayNameStatements}\n\n${exportStatements}\n`;
+  const iconsFile = `${comment}\n${importStatements}\n\n${delarationStatements}`;
   const prettierConfig = rcfile('prettier');
 
   fs.writeFileSync(exportPath, prettier.format(iconsFile, prettierConfig));

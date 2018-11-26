@@ -9,7 +9,7 @@ import FieldLabel from '../../field-label';
 import MoneyInput from '../../inputs/money-input';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
-import { VerifiedIcon } from '../../icons';
+import Icons from '../../icons';
 import Text from '../../typography/text';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
@@ -117,7 +117,7 @@ class MoneyField extends React.Component {
               !MoneyInput.isEmpty(this.props.value) &&
               MoneyInput.isHighPrecision(this.props.value) ? (
                 <Spacings.Inline scale="xs" alignItems="flexEnd">
-                  <VerifiedIcon size="medium" theme="blue" />
+                  <Icons.Verified size="medium" theme="blue" />
                   <Text.Detail isInline={true}>
                     <FormattedMessage {...messages.highPrecision} />
                   </Text.Detail>

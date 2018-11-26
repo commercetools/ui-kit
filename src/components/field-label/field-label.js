@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import requiredIf from 'react-required-if';
 import IconButton from '../buttons/icon-button';
-import { InformationIcon } from '../icons';
+import Icons from '../icons';
 import Text from '../typography/text';
 import Label from '../label';
 import Constraints from '../constraints';
@@ -25,7 +25,7 @@ export const FieldLabel = props => (
         {props.onInfoButtonClick && (
           <IconButton
             label="More Info"
-            icon={<InformationIcon size="medium" />}
+            icon={<Icons.Information size="medium" />}
             size="small"
             onClick={props.onInfoButtonClick}
           />

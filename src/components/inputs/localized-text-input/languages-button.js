@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import FlatButton from '../../buttons/flat-button';
-import { WorldIcon } from '../../icons';
+import Icons from '../../icons';
 import messages from './messages';
 
 const LanguagesButton = ({
@@ -14,14 +14,14 @@ const LanguagesButton = ({
 }) =>
   isOpen ? (
     <FlatButton
-      icon={<WorldIcon />}
+      icon={<Icons.World />}
       label={intl.formatMessage(messages.collapse, { remainingLanguages })}
       onClick={onClick}
       isDisabled={isDisabled}
     />
   ) : (
     <FlatButton
-      icon={<WorldIcon />}
+      icon={<Icons.World />}
       label={intl.formatMessage(messages.expand, { remainingLanguages })}
       onClick={onClick}
     />

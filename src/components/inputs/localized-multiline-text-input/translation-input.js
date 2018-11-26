@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import TextareaAutosize from 'react-textarea-autosize';
 import requiredIf from 'react-required-if';
 import FlatButton from '../../buttons/flat-button';
-import { AngleUpIcon } from '../../icons';
+import Icons from '../../icons';
 import Spacings from '../../spacings';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
@@ -152,7 +152,7 @@ export default class TranslationInput extends React.Component {
                 type="primary"
                 isDisabled={this.props.isDisabled}
                 label={this.props.intl.formatMessage(messages.collapse)}
-                icon={<AngleUpIcon size="small" />}
+                icon={<Icons.AngleUp size="small" />}
               />
             )}
           </div>

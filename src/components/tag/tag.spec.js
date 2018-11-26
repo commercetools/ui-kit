@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { shallow } from 'enzyme';
-import { CloseBoldIcon } from '../icons';
+import Icons from '../icons';
 import Tag, { TagNormalBody, TagLinkBody } from './tag';
 
 describe('`<TagLinkBody />`', () => {
@@ -261,7 +261,7 @@ describe('<Tag />', () => {
       });
 
       it('should render `CloseBoldIcon`', () => {
-        expect(wrapper).toRender(CloseBoldIcon);
+        expect(wrapper).toRender(Icons.CloseBold);
       });
     });
 

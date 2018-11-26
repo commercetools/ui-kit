@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CloseBoldIcon } from '../../icons';
+import Icons from '../../icons';
 
 const TagRemove = props => (
   <div {...props.innerProps}>
-    <CloseBoldIcon size="medium" />
+    <Icons.CloseBold size="medium" />
   </div>
 );
 

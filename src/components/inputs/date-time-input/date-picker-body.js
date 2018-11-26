@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
-import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
+import Icons from '../../icons';
 import Spacings from '../../spacings';
 import styles from './date-picker-body.mod.css';
 
@@ -42,7 +42,7 @@ export const ClearSection = props => (
     onMouseOut={props.handleMouseOut}
   >
     {!props.isDisabled && (
-      <CloseIcon
+      <Icons.Close
         size="medium"
         theme={getIconTheme(props.isDisabled, props.isMouseOver)}
       />
@@ -122,9 +122,11 @@ export class DatePickerBody extends React.PureComponent {
             })}
           >
             {this.props.timeScale === 'time' ? (
-              <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
+              <Icons.Clock theme={this.props.isDisabled ? 'grey' : 'black'} />
             ) : (
-              <CalendarIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
+              <Icons.Calendar
+                theme={this.props.isDisabled ? 'grey' : 'black'}
+              />
             )}
           </div>
         </div>

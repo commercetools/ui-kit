@@ -4,7 +4,7 @@ import MoneyField from './money-field';
 import FieldLabel from '../../field-label';
 import MoneyInput from '../../inputs/money-input';
 import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
+import Icons from '../../icons';
 
 const createTestProps = customProps => ({
   title: 'Price',
@@ -77,7 +77,7 @@ describe('rendering', () => {
         // FieldLabel
         title: 'Price',
         hint: 'Some hint',
-        hintIcon: <AddBoldIcon />,
+        hintIcon: <Icons.AddBold />,
         description: 'A description',
         onInfoButtonClick: jest.fn(),
 

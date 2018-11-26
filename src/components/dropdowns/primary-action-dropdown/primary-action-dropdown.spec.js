@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import AccessibleButton from '../../buttons/accessible-button';
-import { CaretDownIcon, CaretUpIcon, CloseBoldIcon } from '../../icons';
+import Icons from '../../icons';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 
 describe('<Option />', () => {
@@ -18,7 +18,7 @@ describe('<Option />', () => {
 
     beforeEach(() => {
       props = createTestProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
 
       wrapper = shallow(<Option {...props} />);
@@ -57,7 +57,7 @@ describe('<Option />', () => {
       beforeEach(() => {
         props = createTestProps({
           isDisabled: true,
-          iconLeft: <CloseBoldIcon />,
+          iconLeft: <Icons.CloseBold />,
         });
 
         wrapper = shallow(<Option {...props} />);
@@ -80,7 +80,7 @@ describe('<Option />', () => {
         describe('onClick', () => {
           beforeEach(() => {
             props = createTestProps({
-              iconLeft: <CloseBoldIcon />,
+              iconLeft: <Icons.CloseBold />,
             });
 
             wrapper = shallow(<Option {...props} />);
@@ -111,10 +111,10 @@ describe('<PrimaryActionDropdown />', () => {
 
     beforeEach(() => {
       primaryOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
       secondOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
 
       wrapper = shallow(
@@ -176,7 +176,7 @@ describe('<PrimaryActionDropdown />', () => {
         });
 
         it('should render `CaretDownIcon`', () => {
-          expect(chevronWrapper).toRender(CaretDownIcon);
+          expect(chevronWrapper).toRender(Icons.CaretDown);
         });
 
         it('should receive `onClick` as `handleOpen`', () => {
@@ -196,7 +196,7 @@ describe('<PrimaryActionDropdown />', () => {
           });
 
           it('should render `CaretUpIcon`', () => {
-            expect(chevronWrapper).toRender(CaretUpIcon);
+            expect(chevronWrapper).toRender(Icons.CaretUp);
           });
 
           it('should receive `onClick`', () => {
@@ -211,11 +211,11 @@ describe('<PrimaryActionDropdown />', () => {
       describe('when first option is disabled (`isDisabled`)', () => {
         beforeEach(() => {
           primaryOptionProps = createOptionProps({
-            iconLeft: <CloseBoldIcon />,
+            iconLeft: <Icons.CloseBold />,
             isDisabled: true,
           });
           secondOptionProps = createOptionProps({
-            iconLeft: <CloseBoldIcon />,
+            iconLeft: <Icons.CloseBold />,
           });
 
           wrapper = shallow(
@@ -248,11 +248,11 @@ describe('<PrimaryActionDropdown />', () => {
       describe('when all options are disabled (`isDisabled`)', () => {
         beforeEach(() => {
           primaryOptionProps = createOptionProps({
-            iconLeft: <CloseBoldIcon />,
+            iconLeft: <Icons.CloseBold />,
             isDisabled: true,
           });
           secondOptionProps = createOptionProps({
-            iconLeft: <CloseBoldIcon />,
+            iconLeft: <Icons.CloseBold />,
             isDisabled: true,
           });
 
@@ -314,10 +314,10 @@ describe('<PrimaryActionDropdown />', () => {
 
     beforeEach(() => {
       primaryOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
       secondOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
 
       wrapper = shallow(
@@ -399,10 +399,10 @@ describe('<PrimaryActionDropdown />', () => {
 
     beforeEach(() => {
       primaryOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
       secondOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
 
       wrapper = shallow(
@@ -434,10 +434,10 @@ describe('<PrimaryActionDropdown />', () => {
       global.window.removeEventListener = jest.fn();
 
       primaryOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
       secondOptionProps = createOptionProps({
-        iconLeft: <CloseBoldIcon />,
+        iconLeft: <Icons.CloseBold />,
       });
 
       wrapper = shallow(
