@@ -88,7 +88,6 @@ class DateCalendar extends React.Component {
           onChange={this.handleChange}
           onStateChange={changes => {
             /* eslint-disable no-prototype-builtins */
-            console.log('foo');
             if (changes.hasOwnProperty('inputValue')) {
               // input changed because user typed
               if (changes.type === Downshift.stateChangeTypes.changeInput) {

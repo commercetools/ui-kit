@@ -21,17 +21,15 @@ import {
   isBetween as isBetweenDates,
   createItemRangeToString,
   formatRange,
+  parseInputToDate,
 } from './utils';
 
-const parseRangeText = text => {
-  // TODO parse more formats, but format them all to YYYY-MM-DD
-  const isValid = str => /^\d{4}-\d{2}-\d{2}$/.test(str);
+const parseRangeText = (text, locale) => {
   const parts = text
     .split(' - ')
     .map(part => {
-      const cleanedPart = part.trim().replace(' -', '');
-      if (isValid(cleanedPart)) return cleanedPart;
-      return null;
+      const parsedDate = parseInputToDate(part.trim(), locale);
+      return parsedDate === '' ? null : parsedDate;
     })
     .filter(Boolean);
   return parts;
@@ -85,8 +83,19 @@ class DateRangeCalendar extends React.Component {
     onChange: PropTypes.func.isRequired,
   };
   static getDerivedStateFromProps(props, state) {
-    if (isSameRange(props.value, state.prevValue)) return null;
+    // We need to update the input value string in case so that is is formatted
+    // according to the locale and holds the current value in case the value
+    // changes or when the locale changes
+    const shouldUpdateInputValue =
+      !isSameRange(props.value, state.prevValue) ||
+      props.intl.locale !== state.prevLocale;
+
+    if (!shouldUpdateInputValue) return null;
+
     return {
+      prevLocale: props.intl.locale,
+      // This is not the input value but the actual value passed to
+      // DateRangeCalendar
       prevValue: props.value,
       inputValue: formatRange(props.value, props.intl.locale),
     };
@@ -101,6 +110,7 @@ class DateRangeCalendar extends React.Component {
     isOpen: false,
     inputValue: formatRange(this.props.value, this.props.intl.locale),
     prevValue: this.props.value,
+    prevLocale: this.props.intl.locale,
   };
   jumpMonth = amount => {
     this.setState(prevState => {
@@ -132,13 +142,21 @@ class DateRangeCalendar extends React.Component {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
+          key={this.props.intl.locale}
           itemToString={createItemRangeToString(this.props.intl.locale)}
           inputValue={this.state.inputValue}
           selectedItem={null}
           highlightedIndex={this.state.highlightedIndex}
-          onInputValueChange={inputValue => {
+          onInputValueChange={(inputValue, changes) => {
+            // only attempt to parse input when the user typed into the input
+            // field
+            if (changes.type !== Downshift.stateChangeTypes.changeInput) return;
+
             this.setState(() => {
-              const parsedRange = parseRangeText(inputValue);
+              const parsedRange = parseRangeText(
+                inputValue,
+                this.props.intl.locale
+              );
               if (parsedRange.length === 0)
                 return {
                   suggestedItems: [],
