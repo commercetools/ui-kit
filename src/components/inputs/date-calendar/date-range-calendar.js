@@ -9,7 +9,6 @@ import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
 import Constraints from '../../constraints';
 import {
-  getDaysInMonth,
   createCalendarItems,
   getDateInMonth,
   getToday,
@@ -103,22 +102,10 @@ class DateRangeCalendar extends React.Component {
     inputValue: formatRange(this.props.value, this.props.intl.locale),
     prevValue: this.props.value,
   };
-  showPrevMonth = () => {
-    this.setState(prevState => ({
-      calendarDate: changeMonth(prevState.calendarDate, -1),
-      // select first day in next month
-      highlightedIndex: prevState.suggestedItems.length,
-    }));
-  };
-  showNextMonth = () => {
+  jumpMonth = amount => {
     this.setState(prevState => {
-      const nextMonth = changeMonth(prevState.calendarDate, 1);
-      return {
-        calendarDate: nextMonth,
-        highlightedIndex:
-          // select last day in next month
-          prevState.suggestedItems.length + getDaysInMonth(nextMonth) - 1,
-      };
+      const nextDate = changeMonth(prevState.calendarDate, amount);
+      return { calendarDate: nextDate, highlightedIndex: 0 };
     });
   };
   showToday = () => {
@@ -131,26 +118,6 @@ class DateRangeCalendar extends React.Component {
       }),
       () => this.inputRef.current.focus()
     );
-  };
-  showNextYear = () => {
-    this.setState(prevState => {
-      const nextMonth = changeMonth(prevState.calendarDate, 12);
-      return {
-        calendarDate: nextMonth,
-        // select last day in next month
-        highlightedIndex: getDaysInMonth(nextMonth) - 1,
-      };
-    });
-  };
-  showPrevYear = () => {
-    this.setState(prevState => {
-      const nextMonth = changeMonth(prevState.calendarDate, -12);
-      return {
-        calendarDate: nextMonth,
-        // select last day in next month
-        highlightedIndex: getDaysInMonth(nextMonth) - 1,
-      };
-    });
   };
   emit = unsortedRange => {
     this.props.onChange({
@@ -333,11 +300,11 @@ class DateRangeCalendar extends React.Component {
                         this.state.calendarDate,
                         this.props.intl.locale
                       )}
-                      onPrevMonthClick={this.showPrevMonth}
+                      onPrevMonthClick={() => this.jumpMonth(-1)}
                       onTodayClick={this.showToday}
-                      onNextMonthClick={this.showNextMonth}
-                      onPrevYearClick={this.showPrevYear}
-                      onNextYearClick={this.showNextYear}
+                      onNextMonthClick={() => this.jumpMonth(1)}
+                      onPrevYearClick={() => this.jumpMonth(-12)}
+                      onNextYearClick={() => this.jumpMonth(12)}
                     />
                     <DateCalendarCalendar>
                       {weekdays.map(weekday => (

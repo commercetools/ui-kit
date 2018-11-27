@@ -69,32 +69,10 @@ class DateTimeCalendar extends React.Component {
         : getDateInMonth(this.props.value, this.props.timeZone) - 1,
     timeString: '',
   };
-  showPrevMonth = () => {
-    this.setState(prevState => ({
-      calendarDate: changeMonth(
-        prevState.calendarDate,
-        this.props.timeZone,
-        -1
-      ),
-      // select first day in next month
-      highlightedIndex: prevState.suggestedItems.length,
-    }));
-  };
-  showNextMonth = () => {
+  jumpMonth = amount => {
     this.setState(prevState => {
-      const nextMonth = changeMonth(
-        prevState.calendarDate,
-        this.props.timeZone,
-        1
-      );
-      return {
-        calendarDate: nextMonth,
-        highlightedIndex:
-          // select last day in next month
-          prevState.suggestedItems.length +
-          getDaysInMonth(nextMonth, this.props.timeZone) -
-          1,
-      };
+      const nextDate = changeMonth(prevState.calendarDate, amount);
+      return { calendarDate: nextDate, highlightedIndex: 0 };
     });
   };
   showToday = () => {
@@ -109,34 +87,6 @@ class DateTimeCalendar extends React.Component {
       }),
       () => this.inputRef.current.focus()
     );
-  };
-  showPrevYear = () => {
-    this.setState(prevState => {
-      const nextYear = changeMonth(
-        prevState.calendarDate,
-        this.props.timeZone,
-        -12
-      );
-      return {
-        calendarDate: nextYear,
-        // select last day in next month
-        highlightedIndex: getDaysInMonth(nextYear) - 1,
-      };
-    });
-  };
-  showNextYear = () => {
-    this.setState(prevState => {
-      const nextYear = changeMonth(
-        prevState.calendarDate,
-        this.props.timeZone,
-        12
-      );
-      return {
-        calendarDate: nextYear,
-        // select last day in next month
-        highlightedIndex: getDaysInMonth(nextYear) - 1,
-      };
-    });
   };
   handleChange = date => {
     this.emit(date);
@@ -352,11 +302,11 @@ class DateTimeCalendar extends React.Component {
                   >
                     <DateCalendarHeader
                       label={getCalendarLabel(this.state.calendarDate)}
-                      onPrevMonthClick={this.showPrevMonth}
+                      onPrevMonthClick={() => this.jumpMonth(-1)}
                       onTodayClick={this.showToday}
-                      onNextMonthClick={this.showNextMonth}
-                      onPrevYearClick={this.showPrevYear}
-                      onNextYearClick={this.showNextYear}
+                      onNextMonthClick={() => this.jumpMonth(1)}
+                      onPrevYearClick={() => this.jumpMonth(-12)}
+                      onNextYearClick={() => this.jumpMonth(12)}
                     />
                     <DateCalendarCalendar>
                       {weekdays.map(weekday => (

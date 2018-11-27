@@ -9,7 +9,6 @@ import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
 import Constraints from '../../constraints';
 import {
-  getDaysInMonth,
   getDateInMonth,
   getToday,
   changeMonth,
@@ -47,35 +46,10 @@ class DateCalendar extends React.Component {
       highlightedIndex: prevState.suggestedItems.length,
     }));
   };
-  showNextMonth = () => {
+  jumpMonth = amount => {
     this.setState(prevState => {
-      const nextMonth = changeMonth(prevState.calendarDate, 1);
-      return {
-        calendarDate: nextMonth,
-        highlightedIndex:
-          // select last day in next month
-          prevState.suggestedItems.length + getDaysInMonth(nextMonth) - 1,
-      };
-    });
-  };
-  showPrevYear = () => {
-    this.setState(prevState => {
-      const nextYear = changeMonth(prevState.calendarDate, -12);
-      return {
-        calendarDate: nextYear,
-        // select last day in next month
-        highlightedIndex: getDaysInMonth(nextYear) - 1,
-      };
-    });
-  };
-  showNextYear = () => {
-    this.setState(prevState => {
-      const nextYear = changeMonth(prevState.calendarDate, 12);
-      return {
-        calendarDate: nextYear,
-        // select last day in next month
-        highlightedIndex: getDaysInMonth(nextYear) - 1,
-      };
+      const nextDate = changeMonth(prevState.calendarDate, amount);
+      return { calendarDate: nextDate, highlightedIndex: 0 };
     });
   };
   showToday = () => {
@@ -211,11 +185,11 @@ class DateCalendar extends React.Component {
                         this.state.calendarDate,
                         this.props.intl.locale
                       )}
-                      onPrevMonthClick={this.showPrevMonth}
+                      onPrevMonthClick={() => this.jumpMonth(-1)}
                       onTodayClick={this.showToday}
-                      onNextMonthClick={this.showNextMonth}
-                      onPrevYearClick={this.showPrevYear}
-                      onNextYearClick={this.showNextYear}
+                      onNextMonthClick={() => this.jumpMonth(1)}
+                      onPrevYearClick={() => this.jumpMonth(-12)}
+                      onNextYearClick={() => this.jumpMonth(12)}
                     />
                     <DateCalendarCalendar>
                       {weekdays.map(weekday => (
