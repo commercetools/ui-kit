@@ -1,3 +1,50 @@
+# [4.0.0](https://github.com/commercetools/ui-kit/compare/v3.0.0...v4.0.0) (2018-11-27)
+
+### Bug Fixes
+
+- `Icons`: invalid names ([#262](https://github.com/commercetools/ui-kit/pull/262))
+
+### Changes
+
+- Removed `peerDependencies` for some packages ([#263](https://github.com/commercetools/ui-kit/pull/263))
+- Updated dependencies for some packages ([#258](https://github.com/commercetools/ui-kit/pull/258))
+
+### BREAKING CHANGES
+
+- ([#262](https://github.com/commercetools/ui-kit/pull/262)) The following icons got renamed:
+
+| Invalid name        | Icon                                                                                                                                   | Correct name           |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| AddressBillingIcon  | <img width="40" alt="image" src="https://user-images.githubusercontent.com/1110551/49015997-0284c480-f185-11e8-8b28-931069175241.png"> | PaperBillInvertedIcon  |
+| AddressShippingIcon | <img width="38" alt="image" src="https://user-images.githubusercontent.com/1110551/49016050-2c3deb80-f185-11e8-93f2-7939d36be53e.png"> | TruckIcon              |
+| ArrowGraphDownIcon  | <img width="35" alt="image" src="https://user-images.githubusercontent.com/1110551/49016071-437cd900-f185-11e8-8f47-3505e5e84e09.png"> | ArrowDownIcon          |
+| ArrowGraphLeftIcon  | <img width="35" alt="image" src="https://user-images.githubusercontent.com/1110551/49016081-4e376e00-f185-11e8-92cb-9c5681b9559f.png"> | ArrowLeftIcon          |
+| ArrowGraphRightIcon | <img width="37" alt="image" src="https://user-images.githubusercontent.com/1110551/49016093-555e7c00-f185-11e8-9978-bbd42e0e54af.png"> | ArrowRightIcon         |
+| ArrowGraphUpIcon    | <img width="34" alt="image" src="https://user-images.githubusercontent.com/1110551/49016105-5d1e2080-f185-11e8-96e1-e5236b6bea59.png"> | ArrowUpIcon            |
+| ArrowLeftIcon       | <img width="33" alt="image" src="https://user-images.githubusercontent.com/1110551/49016252-cd2ca680-f185-11e8-89e5-166ead7c7d90.png"> | AngleThinLeftIcon      |
+| ArrowRightIcon      | <img width="44" alt="image" src="https://user-images.githubusercontent.com/1110551/49016259-d3bb1e00-f185-11e8-9a5e-47a3cc1000c7.png"> | AngleThinRightIcon     |
+| BoxIcon             | <img width="41" alt="image" src="https://user-images.githubusercontent.com/1110551/49016134-71621d80-f185-11e8-92bb-a08b19566ed3.png"> | CubeIcon               |
+| BoxProductIcon      | <img width="44" alt="image" src="https://user-images.githubusercontent.com/1110551/49016147-78892b80-f185-11e8-825b-42bc243b59dd.png"> | BoxIcon                |
+| CategoryTreeIcon    | <img width="42" alt="image" src="https://user-images.githubusercontent.com/1110551/49016161-80e16680-f185-11e8-9a3a-a9f7644ce498.png"> | TreeStructureIcon      |
+| CustomSettingsIcon  | <img width="37" alt="image" src="https://user-images.githubusercontent.com/1110551/49016172-8939a180-f185-11e8-952e-ae40a28bc207.png"> | ScreenGearIcon         |
+| CustomViewIcon      | <img width="35" alt="image" src="https://user-images.githubusercontent.com/1110551/49016180-9060af80-f185-11e8-8d0f-1ed44b605c76.png"> | ScreenUserIcon         |
+| CustomerFilledIcon  | <img width="35" alt="image" src="https://user-images.githubusercontent.com/1110551/49016191-98b8ea80-f185-11e8-9aeb-8e8e5947bda2.png"> | UserFilledIcon         |
+| CustomerIcon        | <img width="38" alt="image" src="https://user-images.githubusercontent.com/1110551/49016204-a1112580-f185-11e8-9db5-a89537aa6331.png"> | UserLinearIcon         |
+| ProjectSettingsIcon | <img width="40" alt="image" src="https://user-images.githubusercontent.com/1110551/49016217-ab332400-f185-11e8-8d3f-18dca228a365.png"> | GearIcon               |
+| ReturnInfoIcon      | <img width="39" alt="image" src="https://user-images.githubusercontent.com/1110551/49016231-b2f2c880-f185-11e8-977c-5554e6b68a87.png"> | BidirectionalArrowIcon |
+| TagDiscountIcon     | <img width="34" alt="image" src="https://user-images.githubusercontent.com/1110551/49016240-b9814000-f185-11e8-909a-d1db7e7739ef.png"> | TagStackedIcon         |
+
+We recommend to do a simple **search/replace** for migrating the names. Note that there are a couple of new names that were previously other icons, so be careful when updating those. We recommend doing it in the following order:
+
+1. `ArrowLeftIcon` -> `AngleThinLeftIcon`
+2. `ArrowRightIcon` -> `AngleThinRightIcon`
+3. `ArrowGraphLeftIcon` -> `ArrowLeftIcon`
+4. `ArrowGraphRightIcon` -> `ArrowRightIcon`
+5. `BoxIcon` -> `CubeIcon`
+6. `BoxProductIcon` -> `BoxIcon`
+
+- ([#263](https://github.com/commercetools/ui-kit/pull/263)) The following `peerDependencies` got removed: `flatpickr`, `react-select`, `react-textarea-autosize`, `react-virtualized`. You don't need to explicitly install them anymore, unless you are using them of course.
+
 <a name="3.0.0"></a>
 
 # [3.0.0](https://github.com/commercetools/ui-kit/compare/2.0.0-rc.11...3.0.0) (2018-11-23)
