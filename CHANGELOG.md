@@ -7,6 +7,7 @@
 ### Changes
 
 - Removed `peerDependencies` for some packages ([#263](https://github.com/commercetools/ui-kit/pull/263))
+- Updated dependencies for some packages ([#258](https://github.com/commercetools/ui-kit/pull/258))
 
 ### BREAKING CHANGES
 
