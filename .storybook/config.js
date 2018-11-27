@@ -9,7 +9,7 @@ import './main.mod.css';
 
 addDecorator(
   withOptions({
-    name: 'MC Styleguide',
+    name: 'UI Kit',
     url: 'https://uikit.commercetools.com',
     goFullScreen: false,
     showStoriesPanel: true,
