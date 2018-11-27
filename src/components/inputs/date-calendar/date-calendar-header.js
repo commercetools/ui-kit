@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../typography/text';
 import styles from './date-calendar-header.mod.css';
+import Spacings from '../../spacings';
 import {
   AngleLeftIcon,
   AngleRightIcon,
@@ -13,19 +14,6 @@ import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
 const DateCalendarHeader = props => (
   <div className={styles.container}>
-    <div className={styles.yearContainer}>
-      <Text.Body isBold={true}>{props.label}</Text.Body>
-      <SecondaryIconButton
-        label="prev month"
-        onClick={props.onPrevYearClick}
-        icon={<AngleUpIcon size="medium" />}
-      />
-      <SecondaryIconButton
-        label="prev month"
-        onClick={props.onNextYearClick}
-        icon={<AngleDownIcon size="medium" />}
-      />
-    </div>
     <div className={styles.buttons}>
       <SecondaryIconButton
         label="prev month"
@@ -42,6 +30,21 @@ const DateCalendarHeader = props => (
         onClick={props.onNextMonthClick}
         icon={<AngleRightIcon size="medium" />}
       />
+    </div>
+    <div className={styles.yearContainer}>
+      <Text.Body isBold={true}>{props.label}</Text.Body>
+      <Spacings.Stack scale="xs">
+        <SecondaryIconButton
+          label="prev month"
+          onClick={props.onPrevYearClick}
+          icon={<AngleUpIcon size="small" />}
+        />
+        <SecondaryIconButton
+          label="prev month"
+          onClick={props.onNextYearClick}
+          icon={<AngleDownIcon size="small" />}
+        />
+      </Spacings.Stack>
     </div>
   </div>
 );

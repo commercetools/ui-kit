@@ -88,6 +88,7 @@ class DateCalendar extends React.Component {
           onChange={this.handleChange}
           onStateChange={changes => {
             /* eslint-disable no-prototype-builtins */
+            console.log('foo');
             if (changes.hasOwnProperty('inputValue')) {
               // input changed because user typed
               if (changes.type === Downshift.stateChangeTypes.changeInput) {
@@ -144,6 +145,7 @@ class DateCalendar extends React.Component {
             setHighlightedIndex,
             selectedItem,
             isOpen,
+            inputValue,
           }) => {
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
@@ -170,6 +172,11 @@ class DateCalendar extends React.Component {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
                       if (isOpen) setHighlightedIndex(null);
+                    },
+                    onKeyDown: event => {
+                      if (event.key === 'Enter' && inputValue.trim() === '') {
+                        clearSelection();
+                      }
                     },
                     onFocus: openMenu,
                     onClick: openMenu,

@@ -257,6 +257,7 @@ class DateRangeCalendar extends React.Component {
             openMenu,
             setHighlightedIndex,
             isOpen,
+            inputValue,
           }) => {
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
@@ -281,6 +282,12 @@ class DateRangeCalendar extends React.Component {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
                       if (isOpen) setHighlightedIndex(null);
+                    },
+                    onKeyDown: event => {
+                      if (event.key === 'Enter' && inputValue.trim() === '') {
+                        clearSelection();
+                        this.emit([]);
+                      }
                     },
                     onFocus: openMenu,
                     onClick: openMenu,
