@@ -1,3 +1,9 @@
+# [4.0.1](https://github.com/commercetools/ui-kit/compare/v4.0.0...v4.0.1) (2018-11-27)
+
+### Bug Fixes
+
+- `materials`: Fixed exported media-query formatting ([#266](https://github.com/commercetools/ui-kit/pull/266))
+
 # [4.0.0](https://github.com/commercetools/ui-kit/compare/v3.0.0...v4.0.0) (2018-11-27)
 
 ### Bug Fixes
