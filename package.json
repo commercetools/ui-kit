@@ -105,7 +105,7 @@
     "@storybook/addon-links": "4.0.7",
     "@storybook/addon-options": "4.0.7",
     "@storybook/react": "4.0.7",
-    "@svgr/rollup": "4.0.3",
+    "@svgr/rollup": "4.1.0",
     "@svgr/webpack": "4.0.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
