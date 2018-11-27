@@ -59,6 +59,7 @@ class DateTimeCalendar extends React.Component {
     timeZone: PropTypes.string.isRequired,
     id: PropTypes.string,
     name: PropTypes.string,
+    isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
@@ -255,6 +256,7 @@ class DateTimeCalendar extends React.Component {
                 <DateCalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    disabled: this.props.isDisabled,
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
@@ -312,13 +314,15 @@ class DateTimeCalendar extends React.Component {
                   hasSelection={Boolean(selectedItem)}
                   onClear={clearSelection}
                   isOpen={isOpen}
+                  isDisabled={this.props.isDisabled}
                   toggleButtonProps={getToggleButtonProps({
+                    disabled: this.props.isDisabled,
                     onBlur: createBlurHandler(this.timeInputRef),
                   })}
                   hasError={this.props.hasError}
                   hasWarning={this.props.hasWarning}
                 />
-                {isOpen && (
+                {isOpen && !this.props.isDisabled && (
                   <DateCalendarMenu
                     {...getMenuProps()}
                     hasFooter={isTimeInputVisible}
@@ -347,6 +351,7 @@ class DateTimeCalendar extends React.Component {
                           key={item}
                           isToday={isSameDay(today, item)}
                           {...getItemProps({
+                            disabled: this.props.isDisabled,
                             item,
                             onMouseOut: () => {
                               setHighlightedIndex(null);
