@@ -143,7 +143,7 @@
     "graphql-tag": "2.10.0",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
-    "husky": "1.1.4",
+    "husky": "1.2.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
     "jest-dom": "2.1.1",
