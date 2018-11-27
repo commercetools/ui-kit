@@ -33,6 +33,7 @@ class DateCalendarStory extends React.Component {
             )}
             id={text('id', '')}
             name={text('name', '')}
+            placeholder={text('placeholder', '')}
             isDisabled={boolean('isDisabled', false)}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}

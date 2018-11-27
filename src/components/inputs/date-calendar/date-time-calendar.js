@@ -10,6 +10,7 @@ import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
 import DateCalendarTimeInput from './date-calendar-time-input';
 import Constraints from '../../constraints';
+import messages from './date-time-calendar.messages';
 import {
   getDaysInMonth,
   changeTime,
@@ -59,6 +60,7 @@ class DateTimeCalendar extends React.Component {
     timeZone: PropTypes.string.isRequired,
     id: PropTypes.string,
     name: PropTypes.string,
+    placeholder: PropTypes.string,
     isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
@@ -256,6 +258,10 @@ class DateTimeCalendar extends React.Component {
                 <DateCalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    placeholder:
+                      typeof this.props.placeholder === 'string'
+                        ? this.props.placeholder
+                        : this.props.intl.formatMessage(messages.placeholder),
                     disabled: this.props.isDisabled,
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
