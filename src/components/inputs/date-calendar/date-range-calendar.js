@@ -47,11 +47,6 @@ const isSameRange = (a, b) => {
   return false;
 };
 
-const preventDownshiftDefault = event => {
-  // eslint-disable-next-line no-param-reassign
-  event.nativeEvent.preventDownshiftDefault = true;
-};
-
 const getRange = ({ item, value, startDate, highlightedItem }) => {
   const isRangeSelectionInProgress = startDate;
   const hasSelection = value.length === 2;
@@ -81,107 +76,6 @@ const getRange = ({ item, value, startDate, highlightedItem }) => {
     isRangeBetween,
     isRangeEnd,
   };
-};
-
-const createKeyDownHandler = ({
-  isOpen,
-  setHighlightedIndex,
-  clearSelection,
-  closeMenu,
-  highlightedItemType,
-  highlightedIndex,
-  allItems,
-  openMenu,
-  inputValue,
-  suggestedItems,
-  showNextMonth,
-  showPrevMonth,
-  emit,
-}) => event => {
-  const preventCursorJump = () => {
-    event.preventDefault();
-  };
-
-  // allow closing menu when pressing enter on empty input
-  if (
-    event.key === 'Enter' &&
-    inputValue.trim() === '' &&
-    highlightedIndex === null
-  ) {
-    preventDownshiftDefault(event);
-    clearSelection();
-    closeMenu();
-    emit([]);
-    return;
-  }
-
-  const arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
-
-  if (highlightedItemType !== 'none') {
-    // User presses arrow keys while something is highlighted,
-    // so we want to prevent the cursor from jumping
-    if (arrowKeys.includes(event.key)) preventCursorJump();
-  }
-
-  if (event.key === 'ArrowLeft') {
-    if (highlightedItemType === 'none') return;
-    preventDownshiftDefault(event);
-
-    if (highlightedIndex === suggestedItems.length) {
-      showPrevMonth();
-    } else {
-      setHighlightedIndex(
-        do {
-          if (highlightedIndex === 0) null;
-          else Math.max(highlightedIndex - 1, 0);
-        }
-      );
-    }
-    return;
-  }
-  if (event.key === 'ArrowRight') {
-    if (highlightedItemType === 'none') return;
-    preventDownshiftDefault(event);
-    if (highlightedIndex === allItems.length - 1) {
-      showNextMonth();
-    } else {
-      setHighlightedIndex(Math.min(highlightedIndex + 1, allItems.length - 1));
-    }
-    return;
-  }
-
-  if (event.key === 'ArrowDown') {
-    preventDownshiftDefault(event);
-
-    // reopens menu after in cases user focues the input,
-    // then selects a value (menu closes) and then presses
-    // the down key
-    if (!isOpen) openMenu();
-
-    setHighlightedIndex(
-      do {
-        if (highlightedItemType === 'none') 0;
-        else if (highlightedItemType === 'calendarItem')
-          Math.min(highlightedIndex + 7, allItems.length - 1);
-        else highlightedIndex + 1;
-      }
-    );
-  }
-  if (event.key === 'ArrowUp') {
-    preventDownshiftDefault(event);
-    setHighlightedIndex(
-      do {
-        if (highlightedIndex === 0) null;
-        else if (highlightedIndex === null) null;
-        else if (highlightedItemType === 'calendarItem')
-          Math.max(
-            highlightedIndex - 7,
-            Math.max(suggestedItems.length - 1, 0)
-          );
-        else highlightedIndex - 1;
-      }
-    );
-  }
 };
 
 class DateRangeCalendar extends React.Component {
@@ -376,23 +270,14 @@ class DateRangeCalendar extends React.Component {
 
             highlightedIndex,
             openMenu,
-            closeMenu,
             setHighlightedIndex,
             isOpen,
-            inputValue,
           }) => {
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
               this.props.intl
             );
             const allItems = [...this.state.suggestedItems, ...calendarItems];
-
-            const highlightedItemType = do {
-              if (highlightedIndex === null) 'none';
-              else if (highlightedIndex < this.state.suggestedItems.length)
-                'suggestedItem';
-              else 'calendarItem';
-            };
 
             const paddingDays = do {
               const weekday = getPaddingDayCount(this.state.calendarDate);
@@ -411,21 +296,6 @@ class DateRangeCalendar extends React.Component {
                       // arrow keys to move the cursor when hovering
                       if (isOpen) setHighlightedIndex(null);
                     },
-                    onKeyDown: createKeyDownHandler({
-                      isOpen,
-                      setHighlightedIndex,
-                      clearSelection,
-                      closeMenu,
-                      highlightedItemType,
-                      highlightedIndex,
-                      allItems,
-                      openMenu,
-                      inputValue,
-                      suggestedItems: this.state.suggestedItems,
-                      showNextMonth: this.showNextMonth,
-                      showPrevMonth: this.showPrevMonth,
-                      emit: this.emit,
-                    }),
                     onFocus: openMenu,
                     onClick: openMenu,
                   })}
@@ -436,23 +306,7 @@ class DateRangeCalendar extends React.Component {
                     clearSelection();
                   }}
                   isOpen={isOpen}
-                  toggleButtonProps={getToggleButtonProps({
-                    onKeyDown: createKeyDownHandler({
-                      isOpen,
-                      setHighlightedIndex,
-                      clearSelection,
-                      closeMenu,
-                      highlightedItemType,
-                      highlightedIndex,
-                      allItems,
-                      openMenu,
-                      inputValue,
-                      suggestedItems: this.state.suggestedItems,
-                      showNextMonth: this.showNextMonth,
-                      showPrevMonth: this.showPrevMonth,
-                      emit: this.emit,
-                    }),
-                  })}
+                  toggleButtonProps={getToggleButtonProps()}
                 />
                 {isOpen && (
                   <DateCalendarMenu {...getMenuProps()}>

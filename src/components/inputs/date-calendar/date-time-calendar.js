@@ -41,104 +41,6 @@ const preventDownshiftDefault = event => {
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
-const createKeyDownHandler = ({
-  isOpen,
-  setHighlightedIndex,
-  // clearSelection,
-  // closeMenu,
-  highlightedItemType,
-  highlightedIndex,
-  allItems,
-  openMenu,
-  suggestedItems,
-  showNextMonth,
-  showPrevMonth,
-  timeInputRef,
-  // emit,
-}) => event => {
-  const preventCursorJump = () => {
-    event.preventDefault();
-  };
-
-  const arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
-
-  if (highlightedItemType !== 'none') {
-    // user presses arrow keys while something is highlighted,
-    // so we want to prevent the cursor from jumping
-    if (arrowKeys.includes(event.key)) preventCursorJump();
-    // user types while something was highlighted, so we
-    // want to remove the highlight, which in turn
-    // allows the user to use the arrow keys
-    else setHighlightedIndex(null);
-  }
-
-  if (event.key === 'ArrowLeft') {
-    if (highlightedItemType === 'none') return;
-    preventDownshiftDefault(event);
-
-    if (highlightedIndex === suggestedItems.length) {
-      showPrevMonth();
-    } else {
-      setHighlightedIndex(
-        do {
-          if (highlightedIndex === 0) null;
-          else Math.max(highlightedIndex - 1, 0);
-        }
-      );
-    }
-    return;
-  }
-  if (event.key === 'ArrowRight') {
-    if (highlightedItemType === 'none') return;
-    preventDownshiftDefault(event);
-    if (highlightedIndex === allItems.length - 1) {
-      showNextMonth();
-    } else {
-      setHighlightedIndex(Math.min(highlightedIndex + 1, allItems.length - 1));
-    }
-    return;
-  }
-
-  if (event.key === 'ArrowDown') {
-    preventDownshiftDefault(event);
-
-    if (highlightedIndex === allItems.length - 1 && isOpen) {
-      setHighlightedIndex(null);
-      timeInputRef.current.focus();
-      return;
-    }
-
-    // reopens menu after in cases user focues the input,
-    // then selects a value (menu closes) and then presses
-    // the down key
-    if (!isOpen) openMenu();
-
-    setHighlightedIndex(
-      do {
-        if (highlightedItemType === 'none') 0;
-        else if (highlightedItemType === 'calendarItem')
-          Math.min(highlightedIndex + 7, allItems.length - 1);
-        else highlightedIndex + 1;
-      }
-    );
-  }
-  if (event.key === 'ArrowUp') {
-    preventDownshiftDefault(event);
-    setHighlightedIndex(
-      do {
-        if (highlightedIndex === 0) null;
-        else if (highlightedIndex === null) null;
-        else if (highlightedItemType === 'calendarItem')
-          Math.max(
-            highlightedIndex - 7,
-            Math.max(suggestedItems.length - 1, 0)
-          );
-        else highlightedIndex - 1;
-      }
-    );
-  }
-};
-
 // This keeps the menu open when the user focuses the time input (thereby
 // blurring the regular input/toggle button)
 const createBlurHandler = timeInputRef => event => {
@@ -342,14 +244,6 @@ class DateTimeCalendar extends React.Component {
               this.props.intl,
               this.props.timeZone
             );
-            const allItems = [...suggestedItems, ...calendarItems];
-
-            const highlightedItemType = do {
-              if (highlightedIndex === null) 'none';
-              else if (highlightedIndex < suggestedItems.length)
-                'suggestedItem';
-              else 'calendarItem';
-            };
 
             const paddingDays = do {
               const weekday = getPaddingDayCount(
@@ -389,21 +283,7 @@ class DateTimeCalendar extends React.Component {
                         this.emit(parsedDate);
 
                         closeMenu();
-                        return;
                       }
-
-                      createKeyDownHandler({
-                        isOpen,
-                        setHighlightedIndex,
-                        highlightedItemType,
-                        highlightedIndex,
-                        allItems,
-                        openMenu,
-                        suggestedItems,
-                        showNextMonth: this.showNextMonth,
-                        showPrevMonth: this.showPrevMonth,
-                        timeInputRef: this.timeInputRef,
-                      })(event);
                     },
                     onFocus: openMenu,
                     onClick: openMenu,
@@ -436,18 +316,6 @@ class DateTimeCalendar extends React.Component {
                   onClear={clearSelection}
                   isOpen={isOpen}
                   toggleButtonProps={getToggleButtonProps({
-                    onKeyDown: createKeyDownHandler({
-                      isOpen,
-                      setHighlightedIndex,
-                      highlightedItemType,
-                      highlightedIndex,
-                      allItems,
-                      openMenu,
-                      suggestedItems,
-                      showNextMonth: this.showNextMonth,
-                      showPrevMonth: this.showPrevMonth,
-                      timeInputRef: this.timeInputRef,
-                    }),
                     onBlur: createBlurHandler(this.timeInputRef),
                   })}
                 />
