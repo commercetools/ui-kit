@@ -57,6 +57,8 @@ class DateTimeCalendar extends React.Component {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     timeZone: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
@@ -127,6 +129,7 @@ class DateTimeCalendar extends React.Component {
           // the displayed value as downshift seems to ignore an updated
           // itemToString function.
           key={`${this.props.timeZone}:${this.props.intl.locale}`}
+          inputId={this.props.id}
           itemToString={createItemDateTimeToString(
             this.props.intl.locale,
             this.props.timeZone

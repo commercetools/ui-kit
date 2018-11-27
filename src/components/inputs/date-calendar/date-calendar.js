@@ -30,6 +30,8 @@ class DateCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
@@ -84,6 +86,7 @@ class DateCalendar extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
           key={this.props.intl.locale}
+          inputId={this.props.id}
           itemToString={createItemToString(this.props.intl.locale)}
           selectedItem={this.props.value === '' ? null : this.props.value}
           highlightedIndex={this.state.highlightedIndex}

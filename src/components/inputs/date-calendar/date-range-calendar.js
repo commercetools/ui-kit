@@ -81,6 +81,8 @@ class DateRangeCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
@@ -297,6 +299,7 @@ class DateRangeCalendar extends React.Component {
             return (
               <div>
                 <DateCalendarBody
+                  inputId={this.props.id}
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
                     onMouseEnter: () => {

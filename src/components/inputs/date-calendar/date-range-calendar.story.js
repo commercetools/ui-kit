@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import DateCalendarReadme from './README.md';
@@ -30,6 +30,8 @@ class DateRangeCalendarStory extends React.Component {
             ['xs', 's', 'm', 'l', 'xl', 'scale'],
             'scale'
           )}
+          id={text('id', '')}
+          name={text('name', '')}
           hasError={boolean('hasError', false)}
           hasWarning={boolean('hasWarning', false)}
         />
