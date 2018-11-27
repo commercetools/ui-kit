@@ -136,9 +136,41 @@ class DateRangeCalendar extends React.Component {
           inputValue={this.state.inputValue}
           selectedItem={null}
           highlightedIndex={this.state.highlightedIndex}
+          onInputValueChange={inputValue => {
+            this.setState(() => {
+              const parsedRange = parseRangeText(inputValue);
+              if (parsedRange.length === 0)
+                return {
+                  suggestedItems: [],
+                  highlightedIndex: null,
+                  inputValue,
+                  startDate: null,
+                };
+              if (parsedRange.length === 1) {
+                const calendarDate = parsedRange[0];
+                return {
+                  suggestedItems: [],
+                  highlightedIndex: getDateInMonth(calendarDate) - 1,
+                  inputValue,
+                  startDate: parsedRange[0],
+                  calendarDate,
+                };
+              }
+              if (parsedRange.length === 2) {
+                const calendarDate = parsedRange[1];
+                return {
+                  suggestedItems: [],
+                  highlightedIndex: getDateInMonth(calendarDate) - 1,
+                  inputValue,
+                  startDate: parsedRange[0],
+                  calendarDate,
+                };
+              }
+              return null;
+            });
+          }}
           onStateChange={changes => {
             /* eslint-disable no-prototype-builtins */
-
             this.setState(prevState => {
               // ensure input value matches prop value when menu is closed
               if (
@@ -195,37 +227,6 @@ class DateRangeCalendar extends React.Component {
                       ? this.props.value[0]
                       : getToday(),
                 };
-              }
-
-              if (changes.hasOwnProperty('inputValue')) {
-                const parsedRange = parseRangeText(changes.inputValue);
-                if (parsedRange.length === 0)
-                  return {
-                    suggestedItems: [],
-                    highlightedIndex: null,
-                    inputValue: changes.inputValue,
-                    startDate: null,
-                  };
-                if (parsedRange.length === 1) {
-                  const calendarDate = parsedRange[0];
-                  return {
-                    suggestedItems: [],
-                    highlightedIndex: getDateInMonth(calendarDate) - 1,
-                    inputValue: changes.inputValue,
-                    startDate: parsedRange[0],
-                    calendarDate,
-                  };
-                }
-                if (parsedRange.length === 2) {
-                  const calendarDate = parsedRange[1];
-                  return {
-                    suggestedItems: [],
-                    highlightedIndex: getDateInMonth(calendarDate) - 1,
-                    inputValue: changes.inputValue,
-                    startDate: parsedRange[0],
-                    calendarDate,
-                  };
-                }
               }
 
               if (changes.hasOwnProperty('highlightedIndex')) {
