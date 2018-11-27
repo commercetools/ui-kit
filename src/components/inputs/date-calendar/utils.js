@@ -16,7 +16,8 @@ export const getPaddingDayCount = (day, locale) => {
     .startOf('month')
     .day();
 
-  return firstDayOfMonth - firstDayOfWeek;
+  // ensure number is always positive
+  return (firstDayOfMonth - firstDayOfWeek + 7) % 7;
 };
 
 export const getWeekdayNames = locale => {
