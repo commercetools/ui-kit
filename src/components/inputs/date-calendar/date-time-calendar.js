@@ -57,6 +57,8 @@ class DateTimeCalendar extends React.Component {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     timeZone: PropTypes.string.isRequired,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
   };
   inputRef = React.createRef();
   timeInputRef = React.createRef();
@@ -310,11 +312,15 @@ class DateTimeCalendar extends React.Component {
                   toggleButtonProps={getToggleButtonProps({
                     onBlur: createBlurHandler(this.timeInputRef),
                   })}
+                  hasError={this.props.hasError}
+                  hasWarning={this.props.hasWarning}
                 />
                 {isOpen && (
                   <DateCalendarMenu
                     {...getMenuProps()}
                     hasFooter={isTimeInputVisible}
+                    hasError={this.props.hasError}
+                    hasWarning={this.props.hasWarning}
                   >
                     <DateCalendarHeader
                       label={getCalendarLabel(this.state.calendarDate)}

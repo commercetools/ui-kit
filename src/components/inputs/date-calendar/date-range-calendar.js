@@ -81,6 +81,8 @@ class DateRangeCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
   };
   static getDerivedStateFromProps(props, state) {
     // We need to update the input value string in case so that is is formatted
@@ -319,9 +321,15 @@ class DateRangeCalendar extends React.Component {
                   }}
                   isOpen={isOpen}
                   toggleButtonProps={getToggleButtonProps()}
+                  hasError={this.props.hasError}
+                  hasWarning={this.props.hasWarning}
                 />
                 {isOpen && (
-                  <DateCalendarMenu {...getMenuProps()}>
+                  <DateCalendarMenu
+                    {...getMenuProps()}
+                    hasError={this.props.hasError}
+                    hasWarning={this.props.hasWarning}
+                  >
                     <DateCalendarHeader
                       label={getCalendarLabel(
                         this.state.calendarDate,

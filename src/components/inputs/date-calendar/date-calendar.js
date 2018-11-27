@@ -30,6 +30,8 @@ class DateCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
   };
   inputRef = React.createRef();
   state = {
@@ -184,9 +186,15 @@ class DateCalendar extends React.Component {
                   onClear={clearSelection}
                   isOpen={isOpen}
                   toggleButtonProps={getToggleButtonProps()}
+                  hasError={this.props.hasError}
+                  hasWarning={this.props.hasWarning}
                 />
                 {isOpen && (
-                  <DateCalendarMenu {...getMenuProps()}>
+                  <DateCalendarMenu
+                    {...getMenuProps()}
+                    hasError={this.props.hasError}
+                    hasWarning={this.props.hasWarning}
+                  >
                     <DateCalendarHeader
                       label={getCalendarLabel(
                         this.state.calendarDate,

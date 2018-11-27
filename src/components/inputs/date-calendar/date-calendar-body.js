@@ -51,7 +51,8 @@ export default class DateCalendarBody extends React.PureComponent {
           <input
             ref={this.props.inputRef}
             className={classnames(styles['date-input'], {
-              [styles.invalid]: this.props.hasError,
+              [styles.error]: this.props.hasError,
+              [styles.warning]: this.props.hasWarning,
               [styles.focused]: this.props.isOpen || this.state.isFocused,
             })}
             {...this.props.inputProps}
@@ -77,7 +78,8 @@ export default class DateCalendarBody extends React.PureComponent {
             type="button"
             className={classnames(styles['calendar-icon-container'], {
               [styles['icon-container-disabled']]: this.props.isDisabled,
-              [styles.invalid]: this.props.hasError,
+              [styles.error]: this.props.hasError,
+              [styles.warning]: this.props.hasWarning,
               [styles.focused]: this.props.isOpen || this.state.isFocused,
             })}
             {...this.props.toggleButtonProps}
