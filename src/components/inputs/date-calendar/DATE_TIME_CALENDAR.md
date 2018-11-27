@@ -34,7 +34,6 @@ multiple date selection. It formats the selected date depending on the current l
 | `placeholder`          | `string` |    -     | -                                  | -       | Placeholder value to show in the input field                                                                                            |
 | `isDisabled`           | `bool`   |    -     | -                                  | `false` | Disables the date picker                                                                                                                |
 | `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input field.                                                                                               |
-| `isAutofocussed`       | `bool`   |    -     | -                                  | -       | Focus the input field on initial render                                                                                                 |
 
 ##### `props.timeZone`
 
