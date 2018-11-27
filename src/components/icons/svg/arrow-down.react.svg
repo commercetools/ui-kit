@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
-    <title>arrow-graph-down</title>
+    <title>arrow-down</title>
     <desc>Created with sketchtool.</desc>
     <defs></defs>
     <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
         <g id="MC-icon-set" transform="translate(-24.000000, -1032.000000)" fill="#000000">
             <g id="Directions" transform="translate(24.000000, 888.000000)">
-                <g id="Arrow-Graph-Down" transform="translate(0.000000, 144.000000)">
+                <g id="Arrow-Down" transform="translate(0.000000, 144.000000)">
                     <path d="M18.2588297,14.5606061 L15.7645264,14.5606061 L13.5546104,14.5606061 L13.5546104,4.43097643 C13.5546104,3.64069585 12.894975,3 12.0813331,3 C11.2676911,3 10.6080558,3.64069585 10.6080558,4.43097643 L10.6080558,14.5606061 L8.39813983,14.5606061 L5.78359613,14.5606061 L12.0813331,21 L18.2588297,14.5606061 Z" id="shape"></path>
                 </g>
             </g>

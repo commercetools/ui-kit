@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
-    <title>box</title>
+    <title>cube</title>
     <desc>Created with sketchtool.</desc>
     <defs></defs>
     <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
         <g id="MC-icon-set" transform="translate(-24.000000, -72.000000)" fill="#000000">
             <g id="Application" transform="translate(24.000000, 24.000000)">
-                <g id="Box" transform="translate(0.000000, 48.000000)">
+                <g id="Cube" transform="translate(0.000000, 48.000000)">
                     <path d="M8.17416835,9.64583922 L8.14770973,9.66233766 L4.70265054,7.53506494 L11.99807,3 L14.9348175,4.8253281 L14.9660962,4.80584416 L19.2934894,7.53506494 L11.99807,12.0701299 L8.17416835,9.64583922 Z M11.7729027,12.4909091 L11.7729027,20.8597403 L4.5,16.3246753 L4.5,7.95584416 L8.01260937,10.1532468 L11.7729027,12.4909091 Z M12.2232373,12.4909091 L19.49614,7.95584416 L19.49614,16.3246753 L12.2232373,20.8597403 L12.2232373,12.4909091 Z" id="shape"></path>
                 </g>
             </g>
