@@ -23,20 +23,30 @@ export const changeTime = (dateString, timeZone, parsedTime) => {
   return date.toISOString();
 };
 
-export const formatTime = (day, timeZone) =>
-  moment.tz(day, timeZone).format('LT');
+export const formatTime = (day, locale, timeZone) => {
+  const date = moment.tz(day, timeZone).locale(locale);
+  if (date.milliseconds()) return date.format('HH:mm:ss.SSS');
+  if (date.seconds()) return date.format('LTS'); // 5:13:51 PM
+  return date.format('LT'); // 5:13 PM
+};
+
+export const formatDate = (day, locale, timeZone) => {
+  const date = moment(day, moment.ISO_8601, locale)
+    .tz(timeZone)
+    .format('L');
+  const time = formatTime(day, locale, timeZone);
+  return `${date} ${time}`;
+};
 
 export const getDateInMonth = (day, timeZone) =>
   moment.tz(day, timeZone).date();
+
 export const getToday = timeZone =>
   moment
     .tz(timeZone)
     .startOf('day')
     .toISOString();
-export const formatDate = (day, locale, timeZone) =>
-  moment(day, moment.ISO_8601, locale)
-    .tz(timeZone)
-    .format('L LT');
+
 export const changeMonth = (day, timeZone, delta) =>
   moment
     .tz(day, timeZone)

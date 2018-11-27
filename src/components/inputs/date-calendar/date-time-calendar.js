@@ -148,7 +148,11 @@ class DateTimeCalendar extends React.Component {
                     startDate: changes.isOpen ? prevState.startDate : null,
                     inputValue: changes.inputValue || prevState.inputValue,
                     timeString: changes.selectedItem
-                      ? formatTime(changes.selectedItem, this.props.timeZone)
+                      ? formatTime(
+                          changes.selectedItem,
+                          this.props.intl.locale,
+                          this.props.timeZone
+                        )
                       : prevState.timeString,
                   };
                 }
@@ -169,9 +173,14 @@ class DateTimeCalendar extends React.Component {
                     inputValue: changes.inputValue || prevState.inputValue,
                     startDate: changes.isOpen ? prevState.startDate : null,
                     // set time input value to time from value when menu is opened
-                    timeString: changes.isOpen
-                      ? formatTime(this.props.value, this.props.timeZone)
-                      : '',
+                    timeString:
+                      changes.isOpen && this.props.value !== ''
+                        ? formatTime(
+                            this.props.value,
+                            this.props.intl.locale,
+                            this.props.timeZone
+                          )
+                        : '',
                     // ensure calendar always opens on selected item, or on
                     // current month when there is no selected item
                     calendarDate:
@@ -285,7 +294,13 @@ class DateTimeCalendar extends React.Component {
                             parsedTime
                           );
                         }
-                        return { timeString: formatTime(date) };
+                        return {
+                          timeString: formatTime(
+                            date,
+                            this.props.intl.locale,
+                            this.props.timeZone
+                          ),
+                        };
                       });
                     },
                   })}
@@ -337,27 +352,26 @@ class DateTimeCalendar extends React.Component {
                         </DateCalendarDay>
                       ))}
                     </DateCalendarCalendar>
-                    {isTimeInputVisible && (
-                      <DateCalendarTimeInput
-                        timeInputRef={this.timeInputRef}
-                        value={this.state.timeString}
-                        onChange={this.handleTimeChange}
-                        onKeyDown={event => {
-                          if (event.key === 'ArrowUp') {
-                            setHighlightedIndex(null);
-                            this.inputRef.current.focus();
-                            return;
-                          }
+                    <DateCalendarTimeInput
+                      isDisabled={!isTimeInputVisible}
+                      timeInputRef={this.timeInputRef}
+                      value={this.state.timeString}
+                      onChange={this.handleTimeChange}
+                      onKeyDown={event => {
+                        if (event.key === 'ArrowUp') {
+                          setHighlightedIndex(null);
+                          this.inputRef.current.focus();
+                          return;
+                        }
 
-                          if (event.key === 'Enter') {
-                            setHighlightedIndex(null);
-                            this.inputRef.current.focus();
-                            this.inputRef.current.setSelectionRange(0, 100);
-                            closeMenu();
-                          }
-                        }}
-                      />
-                    )}
+                        if (event.key === 'Enter') {
+                          setHighlightedIndex(null);
+                          this.inputRef.current.focus();
+                          this.inputRef.current.setSelectionRange(0, 100);
+                          closeMenu();
+                        }
+                      }}
+                    />
                   </DateCalendarMenu>
                 )}
               </div>
