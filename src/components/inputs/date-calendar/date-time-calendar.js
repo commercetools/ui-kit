@@ -231,6 +231,7 @@ class DateTimeCalendar extends React.Component {
             };
 
             const weekdays = getWeekdayNames(this.props.intl.locale);
+            const today = getToday();
 
             const isTimeInputVisible =
               Boolean(this.props.value) && this.props.value !== '';
@@ -320,6 +321,7 @@ class DateTimeCalendar extends React.Component {
                       {calendarItems.map((item, index) => (
                         <DateCalendarDay
                           key={item}
+                          isToday={isSameDay(today, item)}
                           {...getItemProps({
                             item,
                             onMouseOut: () => {

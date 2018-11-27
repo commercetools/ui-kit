@@ -19,6 +19,11 @@ const DateCalendarDay = props => (
           [styles.rangeStart]: props.isRangeStart,
           [styles.rangeBetween]: props.isRangeBetween,
           [styles.rangeEnd]: props.isRangeEnd,
+          [styles.today]:
+            !props.isSelected &&
+            !props.isRangeStart &&
+            !props.isRangeEnd &&
+            props.isToday,
         }
       )}
       {...omit(props, [
@@ -27,6 +32,7 @@ const DateCalendarDay = props => (
         'isRangeStart',
         'isRangeBetween',
         'isRangeEnd',
+        'isToday',
       ])}
     />
   </li>
@@ -42,6 +48,7 @@ DateCalendarDay.propTypes = {
   isRangeStart: PropTypes.bool,
   isRangeBetween: PropTypes.bool,
   isRangeEnd: PropTypes.bool,
+  isToday: PropTypes.bool,
 };
 
 export default DateCalendarDay;

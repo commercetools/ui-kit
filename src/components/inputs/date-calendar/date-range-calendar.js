@@ -270,6 +270,7 @@ class DateRangeCalendar extends React.Component {
             };
 
             const weekdays = getWeekdayNames('en');
+            const today = getToday();
 
             return (
               <div>
@@ -333,6 +334,7 @@ class DateRangeCalendar extends React.Component {
                         return (
                           <DateCalendarDay
                             key={item}
+                            isToday={isSameDay(today, item)}
                             {...getItemProps({
                               item,
                               onMouseOut: () => {

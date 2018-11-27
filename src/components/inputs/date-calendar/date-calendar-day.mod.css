@@ -19,7 +19,6 @@
 .heading {
   composes: base;
   color: #999;
-  font-weight: bold;
 }
 
 .spacing {
@@ -46,4 +45,9 @@
 .rangeBetween {
   background-color: #eee;
   color: black;
+}
+
+.today {
+  color: var(--color-blue);
+  font-weight: bold;
 }
