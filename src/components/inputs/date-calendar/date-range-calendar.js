@@ -7,8 +7,6 @@ import DateCalendarMenu from './date-calendar-menu';
 import DateCalendarHeader from './date-calendar-header';
 import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
-import DateCalendarSuggestions from './date-calendar-suggestions';
-import DateCalendarSuggestion from './date-calendar-suggestion';
 import Constraints from '../../constraints';
 import {
   getDaysInMonth,
@@ -133,6 +131,26 @@ class DateRangeCalendar extends React.Component {
       }),
       () => this.inputRef.current.focus()
     );
+  };
+  showNextYear = () => {
+    this.setState(prevState => {
+      const nextMonth = changeMonth(prevState.calendarDate, 12);
+      return {
+        calendarDate: nextMonth,
+        // select last day in next month
+        highlightedIndex: getDaysInMonth(nextMonth) - 1,
+      };
+    });
+  };
+  showPrevYear = () => {
+    this.setState(prevState => {
+      const nextMonth = changeMonth(prevState.calendarDate, -12);
+      return {
+        calendarDate: nextMonth,
+        // select last day in next month
+        highlightedIndex: getDaysInMonth(nextMonth) - 1,
+      };
+    });
   };
   emit = unsortedRange => {
     this.props.onChange({
@@ -310,19 +328,6 @@ class DateRangeCalendar extends React.Component {
                 />
                 {isOpen && (
                   <DateCalendarMenu {...getMenuProps()}>
-                    {this.state.suggestedItems.length > 0 && (
-                      <DateCalendarSuggestions>
-                        {this.state.suggestedItems.map((item, index) => (
-                          <DateCalendarSuggestion
-                            key={`${item[0]} - ${item[1]}`}
-                            {...getItemProps({ item })}
-                            isHighlighted={index === highlightedIndex}
-                          >
-                            Suggestion {item[0] - item[1]}
-                          </DateCalendarSuggestion>
-                        ))}
-                      </DateCalendarSuggestions>
-                    )}
                     <DateCalendarHeader
                       label={getCalendarLabel(
                         this.state.calendarDate,
@@ -331,6 +336,8 @@ class DateRangeCalendar extends React.Component {
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}
+                      onPrevYearClick={this.showPrevYear}
+                      onNextYearClick={this.showNextYear}
                     />
                     <DateCalendarCalendar>
                       {weekdays.map(weekday => (

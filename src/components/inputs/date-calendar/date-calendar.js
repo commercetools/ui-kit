@@ -7,8 +7,6 @@ import DateCalendarMenu from './date-calendar-menu';
 import DateCalendarHeader from './date-calendar-header';
 import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
-import DateCalendarSuggestions from './date-calendar-suggestions';
-import DateCalendarSuggestion from './date-calendar-suggestion';
 import Constraints from '../../constraints';
 import {
   getDaysInMonth,
@@ -60,6 +58,26 @@ class DateCalendar extends React.Component {
       };
     });
   };
+  showPrevYear = () => {
+    this.setState(prevState => {
+      const nextYear = changeMonth(prevState.calendarDate, -12);
+      return {
+        calendarDate: nextYear,
+        // select last day in next month
+        highlightedIndex: getDaysInMonth(nextYear) - 1,
+      };
+    });
+  };
+  showNextYear = () => {
+    this.setState(prevState => {
+      const nextYear = changeMonth(prevState.calendarDate, 12);
+      return {
+        calendarDate: nextYear,
+        // select last day in next month
+        highlightedIndex: getDaysInMonth(nextYear) - 1,
+      };
+    });
+  };
   showToday = () => {
     const today = getToday();
     this.setState(
@@ -103,19 +121,18 @@ class DateCalendar extends React.Component {
                   changes.inputValue,
                   this.props.intl.locale
                 );
-                console.log('parsed', date);
-                if (date === '') {
-                  this.setState({
-                    suggestedItems: [],
-                    highlightedIndex: null,
-                  });
-                } else {
-                  this.setState({
-                    suggestedItems: [date],
-                    highlightedIndex: null,
-                    calendarDate: date,
-                  });
-                }
+                this.setState(
+                  date === ''
+                    ? {
+                        suggestedItems: [],
+                        highlightedIndex: null,
+                      }
+                    : {
+                        suggestedItems: [date],
+                        highlightedIndex: getDateInMonth(date) - 1,
+                        calendarDate: date,
+                      }
+                );
               } else {
                 // input changed because user selected a date
                 this.setState({
@@ -154,7 +171,6 @@ class DateCalendar extends React.Component {
             selectedItem,
             isOpen,
           }) => {
-            const suggestedItems = this.state.suggestedItems;
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
               this.props.intl
@@ -190,19 +206,6 @@ class DateCalendar extends React.Component {
                 />
                 {isOpen && (
                   <DateCalendarMenu {...getMenuProps()}>
-                    {suggestedItems.length > 0 && (
-                      <DateCalendarSuggestions>
-                        {suggestedItems.map((item, index) => (
-                          <DateCalendarSuggestion
-                            key={item}
-                            {...getItemProps({ item })}
-                            isHighlighted={index === highlightedIndex}
-                          >
-                            Suggestion {item}
-                          </DateCalendarSuggestion>
-                        ))}
-                      </DateCalendarSuggestions>
-                    )}
                     <DateCalendarHeader
                       label={getCalendarLabel(
                         this.state.calendarDate,
@@ -211,6 +214,8 @@ class DateCalendar extends React.Component {
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}
+                      onPrevYearClick={this.showPrevYear}
+                      onNextYearClick={this.showNextYear}
                     />
                     <DateCalendarCalendar>
                       {weekdays.map(weekday => (
@@ -230,9 +235,7 @@ class DateCalendar extends React.Component {
                               setHighlightedIndex(null);
                             },
                           })}
-                          isHighlighted={
-                            suggestedItems.length + index === highlightedIndex
-                          }
+                          isHighlighted={index === highlightedIndex}
                           isSelected={isSameDay(item, this.props.value)}
                         >
                           {getCalendarDayLabel(item)}

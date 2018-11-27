@@ -8,8 +8,6 @@ import DateCalendarMenu from './date-calendar-menu';
 import DateCalendarHeader from './date-calendar-header';
 import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
-import DateCalendarSuggestions from './date-calendar-suggestions';
-import DateCalendarSuggestion from './date-calendar-suggestion';
 import DateCalendarTimeInput from './date-calendar-time-input';
 import Constraints from '../../constraints';
 import {
@@ -111,6 +109,34 @@ class DateTimeCalendar extends React.Component {
       }),
       () => this.inputRef.current.focus()
     );
+  };
+  showPrevYear = () => {
+    this.setState(prevState => {
+      const nextYear = changeMonth(
+        prevState.calendarDate,
+        this.props.timeZone,
+        -12
+      );
+      return {
+        calendarDate: nextYear,
+        // select last day in next month
+        highlightedIndex: getDaysInMonth(nextYear) - 1,
+      };
+    });
+  };
+  showNextYear = () => {
+    this.setState(prevState => {
+      const nextYear = changeMonth(
+        prevState.calendarDate,
+        this.props.timeZone,
+        12
+      );
+      return {
+        calendarDate: nextYear,
+        // select last day in next month
+        highlightedIndex: getDaysInMonth(nextYear) - 1,
+      };
+    });
   };
   handleChange = date => {
     this.emit(date);
@@ -324,24 +350,13 @@ class DateTimeCalendar extends React.Component {
                     {...getMenuProps()}
                     hasFooter={isTimeInputVisible}
                   >
-                    {suggestedItems.length > 0 && (
-                      <DateCalendarSuggestions>
-                        {suggestedItems.map((item, index) => (
-                          <DateCalendarSuggestion
-                            key={item}
-                            {...getItemProps({ item })}
-                            isHighlighted={index === highlightedIndex}
-                          >
-                            Suggestion {item}
-                          </DateCalendarSuggestion>
-                        ))}
-                      </DateCalendarSuggestions>
-                    )}
                     <DateCalendarHeader
                       label={getCalendarLabel(this.state.calendarDate)}
                       onPrevMonthClick={this.showPrevMonth}
                       onTodayClick={this.showToday}
                       onNextMonthClick={this.showNextMonth}
+                      onPrevYearClick={this.showPrevYear}
+                      onNextYearClick={this.showNextYear}
                     />
                     <DateCalendarCalendar>
                       {weekdays.map(weekday => (

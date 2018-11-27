@@ -13,3 +13,13 @@
 .buttons > * {
   margin: 0 4px;
 }
+
+.yearContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.yearContainer > * {
+  margin: 0 4px 0 0;
+}
+
