@@ -288,8 +288,6 @@ class DateTimeCalendar extends React.Component {
                           this.props.timeZone
                         );
 
-                        console.log(parsedDate);
-
                         this.emit(parsedDate);
 
                         closeMenu();
