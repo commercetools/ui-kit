@@ -6003,6 +6003,11 @@ eslint-plugin-prettier@3.0.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
+eslint-plugin-react-percy@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-percy/-/eslint-plugin-react-percy-0.2.4.tgz#4692790925db3f5baa20b55e5062047cdf465f68"
+  integrity sha512-9u0k0gomPVfJiJh01v69fJVx69aZ/FTew0nJG1YrvLHBiK1n9m2Tmuo+jPWYGbbqkldLUWorYFfmnZfXrTflxw==
+
 eslint-plugin-react@7.11.1:
   version "7.11.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.11.1.tgz#c01a7af6f17519457d6116aa94fc6d2ccad5443c"
