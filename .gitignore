@@ -72,6 +72,8 @@ typings/
 
 # Storybook build output
 .public
+# Storybook build for percy
+storybook-static
 
 # Serverless directories
 .serverless

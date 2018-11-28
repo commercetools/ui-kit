@@ -16,7 +16,7 @@ script:
   # so we need to build it first
   - yarn build
   - yarn run jest --projects jest.*.config.js --maxWorkers=4 --reporters jest-silent-reporter
-  - yarn percy
+  - yarn snapshot
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
 
 before_deploy: yarn build
