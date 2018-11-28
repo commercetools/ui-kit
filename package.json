@@ -55,7 +55,8 @@
     "test": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
-    "test:bundle:watch": "jest --config jest.bundle.config.js --watch"
+    "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
+    "percy": "react-percy"
   },
   "dependencies": {
     "classnames": "2.2.6",
