@@ -1,3 +1,9 @@
+# [4.0.2](https://github.com/commercetools/ui-kit/compare/v4.0.1...v4.0.2) (2018-11-28)
+
+### Bug Fixes
+
+- `Avatar`: Add missing `Avatar` export ([#268](https://github.com/commercetools/ui-kit/pull/268))
+
 # [4.0.1](https://github.com/commercetools/ui-kit/compare/v4.0.0...v4.0.1) (2018-11-27)
 
 ### Bug Fixes
