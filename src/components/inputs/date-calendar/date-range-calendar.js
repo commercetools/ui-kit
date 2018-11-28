@@ -9,6 +9,7 @@ import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
 import Constraints from '../../constraints';
 import messages from './date-range-calendar.messages';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   createCalendarItems,
   getDateInMonth,
@@ -82,6 +83,8 @@ class DateRangeCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
     id: PropTypes.string,
     name: PropTypes.string,
     placeholder: PropTypes.string,
@@ -150,6 +153,7 @@ class DateRangeCalendar extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
           key={this.props.intl.locale}
+          inputId={this.props.id}
           itemToString={createItemRangeToString(this.props.intl.locale)}
           inputValue={this.state.inputValue}
           selectedItem={null}
@@ -300,11 +304,11 @@ class DateRangeCalendar extends React.Component {
             const today = getToday();
 
             return (
-              <div>
+              <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
                 <DateCalendarBody
-                  inputId={this.props.id}
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    name: this.props.name,
                     placeholder:
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
@@ -323,6 +327,7 @@ class DateRangeCalendar extends React.Component {
                     },
                     onFocus: openMenu,
                     onClick: openMenu,
+                    ...filterDataAttributes(this.props),
                   })}
                   hasSelection={this.props.value.length === 2}
                   onClear={() => {

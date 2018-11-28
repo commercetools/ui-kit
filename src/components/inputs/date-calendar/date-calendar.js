@@ -9,6 +9,7 @@ import DateCalendarCalendar from './date-calendar-calendar';
 import DateCalendarDay from './date-calendar-day';
 import Constraints from '../../constraints';
 import messages from './date-calendar.messages';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   getDateInMonth,
   getToday,
@@ -31,6 +32,8 @@ class DateCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
     id: PropTypes.string,
     name: PropTypes.string,
     placeholder: PropTypes.string,
@@ -171,10 +174,11 @@ class DateCalendar extends React.Component {
             const today = getToday();
 
             return (
-              <div>
+              <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
                 <DateCalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    name: this.props.name,
                     placeholder:
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
@@ -192,6 +196,7 @@ class DateCalendar extends React.Component {
                     },
                     onFocus: openMenu,
                     onClick: openMenu,
+                    ...filterDataAttributes(this.props),
                   })}
                   hasSelection={Boolean(selectedItem)}
                   onClear={clearSelection}

@@ -11,6 +11,7 @@ import DateCalendarDay from './date-calendar-day';
 import DateCalendarTimeInput from './date-calendar-time-input';
 import Constraints from '../../constraints';
 import messages from './date-time-calendar.messages';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   getDaysInMonth,
   changeTime,
@@ -57,6 +58,8 @@ class DateTimeCalendar extends React.Component {
     }).isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
     timeZone: PropTypes.string.isRequired,
     id: PropTypes.string,
     name: PropTypes.string,
@@ -254,10 +257,11 @@ class DateTimeCalendar extends React.Component {
               Boolean(this.props.value) && this.props.value !== '';
 
             return (
-              <div>
+              <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
                 <DateCalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    name: this.props.name,
                     placeholder:
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
@@ -279,6 +283,9 @@ class DateTimeCalendar extends React.Component {
                           this.props.intl.locale,
                           this.props.timeZone
                         );
+
+                        console.log(parsedDate);
+
                         this.emit(parsedDate);
 
                         closeMenu();
@@ -316,6 +323,7 @@ class DateTimeCalendar extends React.Component {
                         };
                       });
                     },
+                    ...filterDataAttributes(this.props),
                   })}
                   hasSelection={Boolean(selectedItem)}
                   onClear={clearSelection}

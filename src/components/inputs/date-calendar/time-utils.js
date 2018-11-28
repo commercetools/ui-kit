@@ -2,7 +2,7 @@
 // respects the timezone and uses full iso date strings instead of
 // just YYYY-MM-DD.
 
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { parseTime } from './parse-time';
 
 export const getDaysInMonth = (day, timeZone) =>
@@ -109,7 +109,11 @@ export const parseInputText = (text, locale, timeZone) => {
   const timeString = parts.slice(1).join(' ');
   if (!dateString) return '';
 
-  const date = moment.tz(dateString, 'MM/DD/YYYY', timeZone);
+  const date = moment.tz(
+    dateString,
+    moment.localeData(locale).longDateFormat('L'),
+    timeZone
+  );
   if (!date.isValid()) return '';
 
   // enable parsing a date only
