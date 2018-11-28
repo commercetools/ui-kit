@@ -81,7 +81,11 @@ class DateTimeCalendar extends React.Component {
   };
   jumpMonth = amount => {
     this.setState(prevState => {
-      const nextDate = changeMonth(prevState.calendarDate, amount);
+      const nextDate = changeMonth(
+        prevState.calendarDate,
+        this.props.timeZone,
+        amount
+      );
       return { calendarDate: nextDate, highlightedIndex: 0 };
     });
   };

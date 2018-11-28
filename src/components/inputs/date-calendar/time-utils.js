@@ -51,7 +51,7 @@ export const changeMonth = (day, timeZone, delta) =>
   moment
     .tz(day, timeZone)
     .add(delta, 'month')
-    .format('YYYY-MM-DD');
+    .toISOString();
 
 export const getPaddingDayCount = (day, locale, timeZone) => {
   const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
