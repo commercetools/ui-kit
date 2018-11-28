@@ -24,10 +24,14 @@ plugins:
   - 'prettier'
   - 'prefer-object-spread'
   - 'react'
+  - 'react-percy'
 overrides:
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
+  - files: ['*.percy.js']
+    env:
+      'react-percy/globals': true
 settings:
   import/ignore:
     # included by default, but replaced if explicitly configured
