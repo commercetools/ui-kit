@@ -3,7 +3,6 @@
 import '../materials/internals/grid.mod.css';
 import '../materials/internals/reset.mod.css';
 import * as i18n from '../i18n';
-import * as Icons from './components/icons';
 
 export {
   default as AccessibleButton,
@@ -53,8 +52,6 @@ export {
   default as AsyncCreatableSelectField,
 } from './components/fields/async-creatable-select-field';
 
-export { Icons };
-// TODO: this type of export is deprecated and should be removed in the next major release
 export * from './components/icons';
 
 export {
