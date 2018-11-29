@@ -346,7 +346,10 @@ class DateTimeCalendar extends React.Component {
                     hasWarning={this.props.hasWarning}
                   >
                     <DateCalendarHeader
-                      label={getCalendarLabel(this.state.calendarDate)}
+                      label={getCalendarLabel(
+                        this.state.calendarDate,
+                        this.props.intl.locale
+                      )}
                       onPrevMonthClick={() => this.jumpMonth(-1)}
                       onTodayClick={this.showToday}
                       onNextMonthClick={() => this.jumpMonth(1)}
