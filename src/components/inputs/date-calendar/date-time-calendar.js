@@ -342,7 +342,7 @@ class DateTimeCalendar extends React.Component {
                 {isOpen && !this.props.isDisabled && (
                   <DateCalendarMenu
                     {...getMenuProps()}
-                    hasFooter={isTimeInputVisible}
+                    hasFooter={true}
                     hasError={this.props.hasError}
                     hasWarning={this.props.hasWarning}
                   >
