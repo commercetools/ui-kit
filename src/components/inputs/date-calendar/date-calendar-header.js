@@ -2,19 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../typography/text';
 import styles from './date-calendar-header.mod.css';
-import Spacings from '../../spacings';
-import {
-  AngleLeftIcon,
-  AngleRightIcon,
-  PinActiveIcon,
-  AngleUpIcon,
-  AngleDownIcon,
-} from '../../icons';
+import { AngleLeftIcon, AngleRightIcon, PinActiveIcon } from '../../icons';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
 const DateCalendarHeader = props => (
   <div className={styles.container}>
-    <div className={styles.buttons}>
+    <div className={styles.month}>
       <SecondaryIconButton
         label="prev month"
         onClick={props.onPrevMonthClick}
@@ -30,21 +23,22 @@ const DateCalendarHeader = props => (
         onClick={props.onNextMonthClick}
         icon={<AngleRightIcon size="medium" />}
       />
+      <Text.Body isInline={true} isBold={true}>
+        {props.monthLabel}
+      </Text.Body>
     </div>
-    <div className={styles.yearContainer}>
-      <Text.Body isBold={true}>{props.label}</Text.Body>
-      <Spacings.Stack scale="xs">
-        <SecondaryIconButton
-          label="prev month"
-          onClick={props.onPrevYearClick}
-          icon={<AngleUpIcon size="small" />}
-        />
-        <SecondaryIconButton
-          label="prev month"
-          onClick={props.onNextYearClick}
-          icon={<AngleDownIcon size="small" />}
-        />
-      </Spacings.Stack>
+    <div className={styles.year}>
+      <SecondaryIconButton
+        label="prev month"
+        onClick={props.onPrevYearClick}
+        icon={<AngleLeftIcon size="medium" />}
+      />
+      <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
+      <SecondaryIconButton
+        label="prev month"
+        onClick={props.onNextYearClick}
+        icon={<AngleRightIcon size="medium" />}
+      />
     </div>
   </div>
 );
@@ -52,7 +46,8 @@ const DateCalendarHeader = props => (
 DateCalendarHeader.displayName = 'DateCalendarHeader';
 
 DateCalendarHeader.propTypes = {
-  label: PropTypes.string.isRequired,
+  monthLabel: PropTypes.string.isRequired,
+  yearLabel: PropTypes.string.isRequired,
   onPrevMonthClick: PropTypes.func.isRequired,
   onTodayClick: PropTypes.func.isRequired,
   onNextMonthClick: PropTypes.func.isRequired,

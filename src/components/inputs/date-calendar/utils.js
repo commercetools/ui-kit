@@ -26,8 +26,10 @@ export const getWeekdayNames = locale => {
   return [...weekDays.slice(firstDay), ...weekDays.slice(0, firstDay)];
 };
 
-export const getCalendarLabel = (day, locale) =>
-  moment(day, 'YYYY-MM-DD', locale).format('MMMM YYYY');
+export const getMonthCalendarLabel = (day, locale) =>
+  moment(day, 'YYYY-MM-DD', locale).format('MMMM');
+export const getYearCalendarLabel = (day, locale) =>
+  moment(day, 'YYYY-MM-DD', locale).format('YYYY');
 export const isSameDay = (a, b) => moment(a).isSame(b, 'day');
 export const getCalendarDayLabel = day => moment(day).format('D');
 

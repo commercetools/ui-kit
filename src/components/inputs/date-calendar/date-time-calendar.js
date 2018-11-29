@@ -22,7 +22,8 @@ import {
   getPaddingDayCount,
   getWeekdayNames,
   getStartOf,
-  getCalendarLabel,
+  getMonthCalendarLabel,
+  getYearCalendarLabel,
   isSameDay,
   getCalendarDayLabel,
   createItemDateTimeToString,
@@ -346,7 +347,11 @@ class DateTimeCalendar extends React.Component {
                     hasWarning={this.props.hasWarning}
                   >
                     <DateCalendarHeader
-                      label={getCalendarLabel(
+                      monthLabel={getMonthCalendarLabel(
+                        this.state.calendarDate,
+                        this.props.intl.locale
+                      )}
+                      yearLabel={getYearCalendarLabel(
                         this.state.calendarDate,
                         this.props.intl.locale
                       )}

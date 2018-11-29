@@ -4,24 +4,21 @@
   margin-bottom: 4px;
   justify-content: space-between;
   border-bottom: 1px solid #eaeaea;
-  align-content: center;
-}
-
-.buttons {
-  align-self: center;
-}
-
-.buttons > * {
-  margin: 0 4px;
-}
-
-.yearContainer {
-  display: flex;
-  flex-direction: row;
   align-items: center;
 }
 
-.yearContainer > * {
-  margin: 0 8px 0 0;
+.month {
+  display: flex;
 }
 
+.month > * {
+  margin: 0 4px 0 0;
+}
+
+.year {
+  display: flex;
+}
+
+.year > * {
+  margin: 0 0 0 4px;
+}

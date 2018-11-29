@@ -77,8 +77,10 @@ export const getStartOf = (day, timeZone) =>
     .startOf('day')
     .toISOString();
 
-export const getCalendarLabel = (day, locale) =>
-  moment(day, moment.ISO_8601, locale).format('MMMM YYYY');
+export const getMonthCalendarLabel = (day, locale) =>
+  moment(day, moment.ISO_8601, locale).format('MMMM');
+export const getYearCalendarLabel = (day, locale) =>
+  moment(day, moment.ISO_8601, locale).format('YYYY');
 export const isSameDay = (a, b) => moment(a).isSame(b, 'day');
 export const getCalendarDayLabel = (day, timeZone) =>
   moment.tz(day, timeZone).format('D');
