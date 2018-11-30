@@ -11,6 +11,7 @@ const DateCalendarTimeInput = props => (
     value={props.value}
     onChange={props.onChange}
     onKeyDown={props.onKeyDown}
+    placeholder={props.placeholder}
   />
 );
 
@@ -22,6 +23,7 @@ DateCalendarTimeInput.propTypes = {
   onKeyDown: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
 };
 
 export default DateCalendarTimeInput;

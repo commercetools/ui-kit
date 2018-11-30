@@ -393,6 +393,9 @@ class DateTimeCalendar extends React.Component {
                     <DateCalendarTimeInput
                       isDisabled={!isTimeInputVisible}
                       timeInputRef={this.timeInputRef}
+                      placeholder={this.props.intl.formatMessage(
+                        messages.timePlaceholder
+                      )}
                       value={this.state.timeString}
                       onChange={this.handleTimeChange}
                       onKeyDown={event => {
