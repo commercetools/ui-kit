@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../typography/text';
 import styles from './date-calendar-header.mod.css';
-import { AngleLeftIcon, AngleRightIcon, PinActiveIcon } from '../../icons';
+import { AngleLeftIcon, AngleRightIcon, CircleIcon } from '../../icons';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
 const DateCalendarHeader = props => (
@@ -16,7 +16,7 @@ const DateCalendarHeader = props => (
       <SecondaryIconButton
         label="next month"
         onClick={props.onTodayClick}
-        icon={<PinActiveIcon size="medium" />}
+        icon={<CircleIcon size="medium" />}
       />
       <SecondaryIconButton
         label="next month"
