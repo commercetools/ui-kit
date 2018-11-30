@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './date-calendar-time-input.mod.css';
+import styles from './time-input.mod.css';
 
 const DateCalendarTimeInput = props => (
   <input

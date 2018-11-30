@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash.omit';
 import classnames from 'classnames';
-import styles from './date-calendar-menu.mod.css';
+import styles from './calendar-menu.mod.css';
 
 export default class DateCalendarMenu extends Component {
   static displayName = 'DateCalendarMenu';

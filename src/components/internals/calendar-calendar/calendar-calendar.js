@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './date-calendar-calendar.mod.css';
+import styles from './calendar-calendar.mod.css';
 
 const DateCalendarCalendar = props => (
   <ul className={styles.calendar}>{props.children}</ul>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash.omit';
 import classname from 'classnames';
-import styles from './date-calendar-day.mod.css';
+import styles from './calendar-day.mod.css';
 
 const DateCalendarDay = props => (
   <li className={styles.wrapper}>

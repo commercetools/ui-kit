@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
-import DateCalendarBody from './date-calendar-body';
-import DateCalendarMenu from './date-calendar-menu';
-import DateCalendarHeader from './date-calendar-header';
-import DateCalendarCalendar from './date-calendar-calendar';
-import DateCalendarDay from './date-calendar-day';
+import CalendarBody from '../../internals/calendar-body';
+import CalendarMenu from '../../internals/calendar-menu';
+import CalendarHeader from '../../internals/calendar-header';
+import CalendarCalendar from '../../internals/calendar-calendar';
+import CalendarDay from '../../internals/calendar-day';
 import Constraints from '../../constraints';
-import messages from './date-calendar.messages';
+import messages from './messages';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   getDateInMonth,
@@ -23,7 +23,7 @@ import {
   createCalendarItems,
   createItemToString,
   parseInputToDate,
-} from './utils';
+} from '../../../utils/calendar';
 
 class DateCalendar extends React.Component {
   static displayName = 'DateCalendar';
@@ -176,7 +176,7 @@ class DateCalendar extends React.Component {
 
             return (
               <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
-                <DateCalendarBody
+                <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
                     name: this.props.name,
@@ -210,12 +210,12 @@ class DateCalendar extends React.Component {
                   hasWarning={this.props.hasWarning}
                 />
                 {isOpen && !this.props.isDisabled && (
-                  <DateCalendarMenu
+                  <CalendarMenu
                     {...getMenuProps()}
                     hasError={this.props.hasError}
                     hasWarning={this.props.hasWarning}
                   >
-                    <DateCalendarHeader
+                    <CalendarHeader
                       monthLabel={getMonthCalendarLabel(
                         this.state.calendarDate,
                         this.props.intl.locale
@@ -230,17 +230,17 @@ class DateCalendar extends React.Component {
                       onPrevYearClick={() => this.jumpMonth(-12)}
                       onNextYearClick={() => this.jumpMonth(12)}
                     />
-                    <DateCalendarCalendar>
+                    <CalendarCalendar>
                       {weekdays.map(weekday => (
-                        <DateCalendarDay key={weekday} type="heading">
+                        <CalendarDay key={weekday} type="heading">
                           {weekday}
-                        </DateCalendarDay>
+                        </CalendarDay>
                       ))}
                       {paddingDays.map((day, index) => (
-                        <DateCalendarDay key={index} type="spacing" />
+                        <CalendarDay key={index} type="spacing" />
                       ))}
                       {calendarItems.map((item, index) => (
-                        <DateCalendarDay
+                        <CalendarDay
                           key={item}
                           isToday={isSameDay(today, item)}
                           {...getItemProps({
@@ -254,10 +254,10 @@ class DateCalendar extends React.Component {
                           isSelected={isSameDay(item, this.props.value)}
                         >
                           {getCalendarDayLabel(item)}
-                        </DateCalendarDay>
+                        </CalendarDay>
                       ))}
-                    </DateCalendarCalendar>
-                  </DateCalendarMenu>
+                    </CalendarCalendar>
+                  </CalendarMenu>
                 )}
               </div>
             );

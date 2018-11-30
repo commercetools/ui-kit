@@ -3,15 +3,15 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
-import DateCalendarReadme from './README.md';
-import DateRangeCalendar from './date-range-calendar';
+import DateTimeInputReadme from './README.md';
+import DateTimeInput from './date-time-input';
 import Section from '../../../../.storybook/decorators/section';
 
-class DateRangeCalendarStory extends React.Component {
-  static displayName = 'DateRangeCalendarStory';
+class DateTimeInputStory extends React.Component {
+  static displayName = 'DateTimeInputStory';
 
   state = {
-    value: ['2018-11-13', '2018-11-16'],
+    value: '',
   };
 
   handleChange = event => {
@@ -23,13 +23,24 @@ class DateRangeCalendarStory extends React.Component {
     const placeholder = text('placeholder', '');
     return (
       <Section>
-        <DateRangeCalendar
+        <DateTimeInput
           value={this.state.value}
           onChange={this.handleChange}
           horizontalConstraint={select(
             'horizontalConstraint',
             ['xs', 's', 'm', 'l', 'xl', 'scale'],
-            'scale'
+            'l'
+          )}
+          timeZone={select(
+            'timeZone',
+            [
+              'UTC',
+              'America/Los_Angeles',
+              'America/New_York',
+              'Asia/Tokyo',
+              'Europe/Amsterdam',
+            ],
+            'UTC'
           )}
           id={text('id', '')}
           name={text('name', '')}
@@ -45,5 +56,5 @@ class DateRangeCalendarStory extends React.Component {
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(DateCalendarReadme))
-  .add('DateRangeCalendar', () => <DateRangeCalendarStory />);
+  .addDecorator(withReadme(DateTimeInputReadme))
+  .add('DateTimeInput', () => <DateTimeInputStory />);

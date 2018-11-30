@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
 import Spacings from '../../spacings';
-import styles from './date-calendar-body.mod.css';
+import styles from './calendar-body.mod.css';
 
 export const ClearSection = props => (
   <div

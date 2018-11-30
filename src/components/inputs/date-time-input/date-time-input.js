@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
-import { parseTime } from './parse-time';
-import DateCalendarBody from './date-calendar-body';
-import DateCalendarMenu from './date-calendar-menu';
-import DateCalendarHeader from './date-calendar-header';
-import DateCalendarCalendar from './date-calendar-calendar';
-import DateCalendarDay from './date-calendar-day';
-import DateCalendarTimeInput from './date-calendar-time-input';
+import { parseTime } from '../../../utils/parse-time';
+import CalendarBody from '../../internals/calendar-body';
+import CalendarMenu from '../../internals/calendar-menu';
+import CalendarHeader from '../../internals/calendar-header';
+import CalendarCalendar from '../../internals/calendar-calendar';
+import CalendarDay from '../../internals/calendar-day';
+import TimeInput from './time-input';
 import Constraints from '../../constraints';
-import messages from './date-time-calendar.messages';
+import messages from './messages';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   getDaysInMonth,
@@ -30,7 +30,7 @@ import {
   createCalendarItems,
   createSuggestedItems,
   parseInputText,
-} from './time-utils';
+} from '../../../utils/calendar-time';
 
 const activationTypes = [
   Downshift.stateChangeTypes.keyDownEnter,
@@ -51,8 +51,8 @@ const createBlurHandler = timeInputRef => event => {
   }
 };
 
-class DateTimeCalendar extends React.Component {
-  static displayName = 'DateTimeCalendar';
+class DateTimeInput extends React.Component {
+  static displayName = 'DateTimeInput';
   static propTypes = {
     intl: PropTypes.shape({
       locale: PropTypes.string.isRequired,
@@ -263,7 +263,7 @@ class DateTimeCalendar extends React.Component {
 
             return (
               <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
-                <DateCalendarBody
+                <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
                     name: this.props.name,
@@ -340,13 +340,13 @@ class DateTimeCalendar extends React.Component {
                   hasWarning={this.props.hasWarning}
                 />
                 {isOpen && !this.props.isDisabled && (
-                  <DateCalendarMenu
+                  <CalendarMenu
                     {...getMenuProps()}
                     hasFooter={true}
                     hasError={this.props.hasError}
                     hasWarning={this.props.hasWarning}
                   >
-                    <DateCalendarHeader
+                    <CalendarHeader
                       monthLabel={getMonthCalendarLabel(
                         this.state.calendarDate,
                         this.props.intl.locale
@@ -361,17 +361,17 @@ class DateTimeCalendar extends React.Component {
                       onPrevYearClick={() => this.jumpMonth(-12)}
                       onNextYearClick={() => this.jumpMonth(12)}
                     />
-                    <DateCalendarCalendar>
+                    <CalendarCalendar>
                       {weekdays.map(weekday => (
-                        <DateCalendarDay key={weekday} type="heading">
+                        <CalendarDay key={weekday} type="heading">
                           {weekday}
-                        </DateCalendarDay>
+                        </CalendarDay>
                       ))}
                       {paddingDays.map((day, index) => (
-                        <DateCalendarDay key={index} type="spacing" />
+                        <CalendarDay key={index} type="spacing" />
                       ))}
                       {calendarItems.map((item, index) => (
-                        <DateCalendarDay
+                        <CalendarDay
                           key={item}
                           isToday={isSameDay(today, item)}
                           {...getItemProps({
@@ -387,10 +387,10 @@ class DateTimeCalendar extends React.Component {
                           isSelected={isSameDay(item, this.props.value)}
                         >
                           {getCalendarDayLabel(item, this.props.timeZone)}
-                        </DateCalendarDay>
+                        </CalendarDay>
                       ))}
-                    </DateCalendarCalendar>
-                    <DateCalendarTimeInput
+                    </CalendarCalendar>
+                    <TimeInput
                       isDisabled={!isTimeInputVisible}
                       timeInputRef={this.timeInputRef}
                       placeholder={this.props.intl.formatMessage(
@@ -413,7 +413,7 @@ class DateTimeCalendar extends React.Component {
                         }
                       }}
                     />
-                  </DateCalendarMenu>
+                  </CalendarMenu>
                 )}
               </div>
             );
@@ -424,4 +424,4 @@ class DateTimeCalendar extends React.Component {
   }
 }
 
-export default injectIntl(DateTimeCalendar);
+export default injectIntl(DateTimeInput);

@@ -3,12 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
-import DateCalendarReadme from './README.md';
-import DateCalendar from './date-calendar';
+import DateInputReadme from './README.md';
+import DateInput from './date-input';
 import Section from '../../../../.storybook/decorators/section';
 
-class DateCalendarStory extends React.Component {
-  static displayName = 'DateCalendarStory';
+class DateInputStory extends React.Component {
+  static displayName = 'DateInputStory';
 
   state = {
     value: '2018-11-16',
@@ -24,13 +24,13 @@ class DateCalendarStory extends React.Component {
     return (
       <Section>
         <div>
-          <DateCalendar
+          <DateInput
             value={this.state.value}
             onChange={this.handleChange}
             horizontalConstraint={select(
               'horizontalConstraint',
               ['xs', 's', 'm', 'l', 'xl', 'scale'],
-              'scale'
+              'l'
             )}
             id={text('id', '')}
             name={text('name', '')}
@@ -47,5 +47,5 @@ class DateCalendarStory extends React.Component {
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(DateCalendarReadme))
-  .add('DateCalendar', () => <DateCalendarStory />);
+  .addDecorator(withReadme(DateInputReadme))
+  .add('DateInput', () => <DateInputStory />);
