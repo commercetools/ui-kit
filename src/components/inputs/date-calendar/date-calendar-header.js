@@ -9,17 +9,17 @@ const DateCalendarHeader = props => (
   <div className={styles.container}>
     <div className={styles.month}>
       <SecondaryIconButton
-        label="prev month"
+        label="show prev month"
         onClick={props.onPrevMonthClick}
         icon={<AngleLeftIcon size="medium" />}
       />
       <SecondaryIconButton
-        label="next month"
+        label="show today"
         onClick={props.onTodayClick}
         icon={<CircleIcon size="medium" />}
       />
       <SecondaryIconButton
-        label="next month"
+        label="show next month"
         onClick={props.onNextMonthClick}
         icon={<AngleRightIcon size="medium" />}
       />
@@ -29,13 +29,13 @@ const DateCalendarHeader = props => (
     </div>
     <div className={styles.year}>
       <SecondaryIconButton
-        label="prev month"
+        label="show prev year"
         onClick={props.onPrevYearClick}
         icon={<AngleLeftIcon size="medium" />}
       />
       <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
       <SecondaryIconButton
-        label="prev month"
+        label="show next year"
         onClick={props.onNextYearClick}
         icon={<AngleRightIcon size="medium" />}
       />
