@@ -20,6 +20,7 @@ class DateTimeCalendarStory extends React.Component {
   };
 
   render() {
+    const placeholder = text('placeholder', '');
     return (
       <Section>
         <DateTimeCalendar
@@ -43,7 +44,7 @@ class DateTimeCalendarStory extends React.Component {
           )}
           id={text('id', '')}
           name={text('name', '')}
-          placeholder={text('placeholder', '')}
+          placeholder={placeholder === '' ? undefined : placeholder}
           isDisabled={boolean('isDisabled', false)}
           hasError={boolean('hasError', false)}
           hasWarning={boolean('hasWarning', false)}
