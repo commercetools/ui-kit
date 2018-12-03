@@ -65,7 +65,7 @@ const plugins = [
   // so that they do not end up in the bundle.
   // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
   peerDepsExternal({
-    dependencies: true,
+    includeDependencies: true,
   }),
   // Transpile sources using our custom babel preset.
   babel({
