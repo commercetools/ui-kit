@@ -179,7 +179,7 @@
     "postcss-preset-env": "6.4.0",
     "postcss-reporter": "6.0.0",
     "postcss-safe-parser": "4.0.1",
-    "prettier": "1.15.2",
+    "prettier": "1.15.3",
     "rcfile": "1.0.3",
     "react": "16.6.3",
     "react-dom": "16.6.3",
