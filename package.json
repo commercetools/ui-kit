@@ -202,7 +202,7 @@
     "shelljs": "0.8.3",
     "storybook-readme": "4.0.2",
     "style-loader": "0.23.1",
-    "stylelint": "9.8.0",
+    "stylelint": "9.9.0",
     "stylelint-config-standard": "18.2.0",
     "stylelint-order": "2.0.0",
     "url-loader": "1.1.2",
