@@ -1,0 +1,53 @@
+.wrapper {
+  list-style-type: none;
+  display: inline-block;
+  margin: 2px 1%;
+  width: 12%;
+}
+
+.base {
+  text-align: center;
+  padding: 8px 0;
+  cursor: default;
+}
+
+.day {
+  composes: base;
+  border-radius: 4px;
+}
+
+.heading {
+  composes: base;
+  color: #999;
+}
+
+.spacing {
+  composes: base;
+}
+
+/* States */
+
+.highlighted {
+  background-color: #e6e6e6;
+}
+
+.selected {
+  background-color: #1ab29e;
+  color: white;
+}
+
+.rangeStart,
+.rangeEnd {
+  background-color: #21b39f;
+  color: white;
+}
+
+.rangeBetween {
+  background-color: #eee;
+  color: black;
+}
+
+.today {
+  color: var(--color-blue);
+  font-weight: bold;
+}

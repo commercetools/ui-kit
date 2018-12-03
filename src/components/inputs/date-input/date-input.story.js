@@ -1,48 +1,51 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
-import { Value } from 'react-value';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
+import DateInputReadme from './README.md';
 import DateInput from './date-input';
+import Section from '../../../../.storybook/decorators/section';
+
+class DateInputStory extends React.Component {
+  static displayName = 'DateInputStory';
+
+  state = {
+    value: '2018-11-16',
+  };
+
+  handleChange = event => {
+    action('onChange')(event);
+    this.setState({ value: event.target.value });
+  };
+
+  render() {
+    const placeholder = text('placeholder', '');
+    return (
+      <Section>
+        <div>
+          <DateInput
+            value={this.state.value}
+            onChange={this.handleChange}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              ['xs', 's', 'm', 'l', 'xl', 'scale'],
+              'l'
+            )}
+            id={text('id', '')}
+            name={text('name', '')}
+            placeholder={placeholder === '' ? undefined : placeholder}
+            isDisabled={boolean('isDisabled', false)}
+            hasError={boolean('hasError', false)}
+            hasWarning={boolean('hasWarning', false)}
+          />
+        </div>
+      </Section>
+    );
+  }
+}
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
-  .add('DateInput', () => {
-    const timeZone = select(
-      'timeZone',
-      ['Europe/Madrid', 'America/Los_Angeles'],
-      'Europe/Madrid'
-    );
-    return (
-      <Section>
-        <Value
-          key={timeZone}
-          defaultValue="2017-12-31"
-          render={(value, onChange) => (
-            <DateInput
-              id={text('id', '')}
-              placeholder={text('placeholder', 'Select a date...')}
-              mode={select('mode', ['single', 'multiple', 'range'], 'single')}
-              isDisabled={boolean('isDisabled', false)}
-              value={text('value (Date in UTC)', value)}
-              onChange={date => {
-                action('onChange')(date);
-                onChange(date);
-              }}
-              isInvalid={boolean('isInvalid?', false)}
-              timeZone={timeZone}
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                'm'
-              )}
-            />
-          )}
-        />
-      </Section>
-    );
-  });
+  .addDecorator(withReadme(DateInputReadme))
+  .add('DateInput', () => <DateInputStory />);
