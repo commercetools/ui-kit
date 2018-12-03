@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import withReadme from 'storybook-readme/with-readme';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Text } from '../../../index';
 import Inline from '../inline';
 import Inset from './inset';

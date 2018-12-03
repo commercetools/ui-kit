@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs';
+import { jsx, css } from '@emotion/core';
 import withReadme from 'storybook-readme/with-readme';
 import CollapsibleMotion from './collapsible-motion';
 import Spacings from '../spacings';
@@ -22,14 +24,25 @@ class CollapsibleMotionStory extends React.Component {
           <div key={isDefaultClosed}>
             <div>Some content before</div>
             <CollapsibleMotion isDefaultClosed={isDefaultClosed}>
-              {({ isOpen, toggle, containerStyles, registerContentNode }) => (
+              {({
+                isOpen,
+                toggle,
+                animation,
+                containerStyles,
+                registerContentNode,
+              }) => (
                 <div>
                   <div>
                     <button onClick={toggle}>
                       {isOpen ? 'Close' : 'Open'}
                     </button>
                   </div>
-                  <div style={containerStyles}>
+                  <div
+                    style={containerStyles}
+                    css={css`
+                      animation: ${animation} 200ms forwards;
+                    `}
+                  >
                     <div ref={registerContentNode}>
                       <div
                         style={{
@@ -67,12 +80,22 @@ class CollapsibleMotionStory extends React.Component {
               isClosed={this.state.isClosed}
               onToggle={this.handleToggle}
             >
-              {({ toggle, containerStyles, registerContentNode }) => (
+              {({
+                toggle,
+                containerStyles,
+                animation,
+                registerContentNode,
+              }) => (
                 <div>
                   <div>
                     <button onClick={toggle}>Toggle</button>
                   </div>
-                  <div style={containerStyles}>
+                  <div
+                    style={containerStyles}
+                    css={css`
+                      animation: ${animation} 200ms forwards;
+                    `}
+                  >
                     <div ref={registerContentNode}>
                       <div
                         style={{

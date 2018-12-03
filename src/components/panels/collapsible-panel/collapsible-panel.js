@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash.isnil';
+import { jsx, css } from '@emotion/core';
 import classnames from 'classnames';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
@@ -79,7 +81,13 @@ export default class CollapsiblePanel extends React.PureComponent {
         onToggle={this.props.onToggle}
         isDefaultClosed={this.props.isDefaultClosed}
       >
-        {({ isOpen, toggle, containerStyles, registerContentNode }) => (
+        {({
+          isOpen,
+          toggle,
+          animation,
+          containerStyles,
+          registerContentNode,
+        }) => (
           <div
             className={classnames(this.props.className, {
               [styles['container-condensed']]: this.props.condensed,
@@ -141,7 +149,12 @@ export default class CollapsiblePanel extends React.PureComponent {
               </Spacings.InsetSquish>
             </div>
 
-            <div style={containerStyles}>
+            <div
+              style={containerStyles}
+              css={css`
+                animation: ${animation} 200ms forwards;
+              `}
+            >
               <div ref={registerContentNode}>
                 {this.props.description && (
                   <Spacings.Inset scale={scale}>
