@@ -109,22 +109,32 @@ class CollapsibleMotion extends React.PureComponent {
           <ToggleAnimation isOpen={isOpen} toggle={toggle}>
             {({ animation, toggle: animationToggle, registerContentNode }) => (
               <ClassNames>
-                {({ css }) => {
+                {({ css, cx }) => {
+                  let animationClass;
+
+                  if (animation) {
+                    animationClass = css`
+                      animation: ${animation} 200ms forwards;
+                    `;
+                  }
+
                   const containerClassName = css`
-                    animation: ${animation} 200ms forwards;
                     height: ${do {
                       if (isOpen) 'auto;';
-                      else '0';
+                      else '0;';
                     }}
                     overflow: ${do {
                       if (isOpen) 'hidden;';
-                      else 'inherit';
+                      else 'inherit;';
                     }}
                   `;
 
                   return this.props.children({
                     isOpen,
-                    containerClassName,
+                    containerClassName: cx(
+                      containerClassName,
+                      animationClass && animationClass
+                    ),
                     toggle: animationToggle,
                     registerContentNode,
                   });
