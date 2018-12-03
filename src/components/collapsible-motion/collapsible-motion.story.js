@@ -1,8 +1,6 @@
-/** @jsx jsx */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs';
-import { jsx, css } from '@emotion/core';
 import withReadme from 'storybook-readme/with-readme';
 import CollapsibleMotion from './collapsible-motion';
 import Spacings from '../spacings';
@@ -27,7 +25,7 @@ class CollapsibleMotionStory extends React.Component {
               {({
                 isOpen,
                 toggle,
-                animation,
+                containerClassName,
                 containerStyles,
                 registerContentNode,
               }) => (
@@ -37,12 +35,7 @@ class CollapsibleMotionStory extends React.Component {
                       {isOpen ? 'Close' : 'Open'}
                     </button>
                   </div>
-                  <div
-                    style={containerStyles}
-                    css={css`
-                      animation: ${animation} 200ms forwards;
-                    `}
-                  >
+                  <div style={containerStyles} className={containerClassName}>
                     <div ref={registerContentNode}>
                       <div
                         style={{
@@ -80,22 +73,12 @@ class CollapsibleMotionStory extends React.Component {
               isClosed={this.state.isClosed}
               onToggle={this.handleToggle}
             >
-              {({
-                toggle,
-                containerStyles,
-                animation,
-                registerContentNode,
-              }) => (
+              {({ toggle, containerClassName, registerContentNode }) => (
                 <div>
                   <div>
                     <button onClick={toggle}>Toggle</button>
                   </div>
-                  <div
-                    style={containerStyles}
-                    css={css`
-                      animation: ${animation} 200ms forwards;
-                    `}
-                  >
+                  <div className={containerClassName}>
                     <div ref={registerContentNode}>
                       <div
                         style={{

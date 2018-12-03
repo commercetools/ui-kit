@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import invariant from 'tiny-invariant';
-import { keyframes } from '@emotion/core';
+import { keyframes, ClassNames } from '@emotion/core';
 import Collapsible from '../collapsible';
 
 const createOpeningAnimation = height =>
@@ -26,10 +26,6 @@ export class ToggleAnimation extends React.Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const containerStyles = props.isOpen
-      ? { height: 'auto' }
-      : { height: 0, overflow: 'hidden' };
-
     let animation = null;
 
     if (props.isOpen !== state.isOpen) {
@@ -41,7 +37,6 @@ export class ToggleAnimation extends React.Component {
     return {
       isOpen: props.isOpen,
       animation,
-      containerStyles,
     };
   }
 
@@ -51,9 +46,6 @@ export class ToggleAnimation extends React.Component {
     isOpen: this.props.isOpen,
     fullHeight: null,
     animation: null,
-    containerStyles: this.props.isOpen
-      ? { height: 'auto' }
-      : { height: 0, overflow: 'hidden' },
   };
 
   componentDidMount() {
@@ -90,7 +82,6 @@ export class ToggleAnimation extends React.Component {
 
   render() {
     return this.props.children({
-      containerStyles: this.state.containerStyles,
       animation: this.state.animation,
       toggle: this.handleToggle,
       registerContentNode: this.nodeRef,
@@ -116,20 +107,30 @@ class CollapsibleMotion extends React.PureComponent {
       >
         {({ isOpen, toggle }) => (
           <ToggleAnimation isOpen={isOpen} toggle={toggle}>
-            {({
-              containerStyles,
-              animation,
-              toggle: animationToggle,
-              registerContentNode,
-            }) =>
-              this.props.children({
-                isOpen,
-                toggle: animationToggle,
-                animation,
-                containerStyles,
-                registerContentNode,
-              })
-            }
+            {({ animation, toggle: animationToggle, registerContentNode }) => (
+              <ClassNames>
+                {({ css }) => {
+                  const containerClassName = css`
+                    animation: ${animation} 200ms forwards;
+                    height: ${do {
+                      if (isOpen) 'auto;';
+                      else '0';
+                    }}
+                    overflow: ${do {
+                      if (isOpen) 'hidden;';
+                      else 'inherit';
+                    }}
+                  `;
+
+                  return this.props.children({
+                    isOpen,
+                    containerClassName,
+                    toggle: animationToggle,
+                    registerContentNode,
+                  });
+                }}
+              </ClassNames>
+            )}
           </ToggleAnimation>
         )}
       </Collapsible>
