@@ -1,9 +1,14 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  labelRange: {
-    id: 'UIKit.DateTimeInput.labelRange',
-    description: 'Label for range inputs',
-    defaultMessage: 'to',
+  placeholder: {
+    id: 'UIKit.DateTimeInput.placeholder',
+    description: 'Placeholder for date time input',
+    defaultMessage: 'MM/DD/YYYY - HH:mm AM/PM',
+  },
+  timePlaceholder: {
+    id: 'UIKit.DateTimeInput.timePlaceholder',
+    description: 'Placeholder for time input at bottom of date-time-input',
+    defaultMessage: 'HH:mm AM/PM',
   },
 });
