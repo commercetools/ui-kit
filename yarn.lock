@@ -12609,10 +12609,10 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.6.3"
     scheduler "^0.11.2"
 
-react-testing-library@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.3.0.tgz#b88124441d8756438137b705eb26a99410de69cc"
-  integrity sha512-hUXurQC8b828s2Fyuyuibz1PvPbGWb5vSIDCb1ihcGVjzBP9OGnsAm6Dhpu7XqC1o/68KJ/5/QdkeiTDxS9gpw==
+react-testing-library@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.3.1.tgz#d70ab711c8cef604fd70c9ec422d59e7e51ae112"
+  integrity sha512-lYhbNhlDRzOkqo+QjDGmG7BpFL8nBNLmCi0npW+VsF8pvhwtu78D4rZ7V3WimRaXFQqOt8VQ0+3CwjGkqV9VUA==
   dependencies:
     dom-testing-library "^3.12.0"
 
