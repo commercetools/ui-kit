@@ -6,12 +6,12 @@ import CollapsibleMotion from './collapsible-motion';
 describe('uncontrolled mode', () => {
   it('should toggle when clicked', async () => {
     const renderProp = jest.fn(
-      ({ isOpen, toggle, containerStyles, registerContentNode }) => (
+      ({ isOpen, toggle, containerClassName, registerContentNode }) => (
         <div>
           <button data-testid="button" onClick={toggle}>
             {isOpen ? 'Close' : 'Open'}
           </button>
-          <div data-testid="container-node" style={containerStyles}>
+          <div data-testid="container-node" className={containerClassName}>
             <div data-testid="content-node" ref={registerContentNode}>
               Content
             </div>
@@ -29,7 +29,7 @@ describe('uncontrolled mode', () => {
       expect.objectContaining({
         isOpen: true,
         // no animation here because the panel is already expanded
-        containerStyles: { height: 'auto' },
+        containerClassName: expect.any(String),
       })
     );
 
@@ -40,13 +40,7 @@ describe('uncontrolled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: false,
-        containerStyles: {
-          animation: expect.stringMatching(
-            /^animation-[a-z0-9]+ 200ms forwards$/
-          ),
-          height: 0,
-          overflow: 'hidden',
-        },
+        containerClassName: expect.any(String),
       })
     );
 
@@ -57,12 +51,7 @@ describe('uncontrolled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerStyles: {
-          height: 'auto',
-          animation: expect.stringMatching(
-            /^animation-[a-z0-9]+ 200ms forwards$/
-          ),
-        },
+        containerClassName: expect.any(String),
       })
     );
   });
@@ -111,7 +100,7 @@ describe('controlled mode', () => {
       expect.objectContaining({
         isOpen: true,
         // no animation here because the panel is already expanded
-        containerStyles: { height: 'auto' },
+        containerClassName: expect.any(String),
       })
     );
 
@@ -122,13 +111,7 @@ describe('controlled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: false,
-        containerStyles: {
-          animation: expect.stringMatching(
-            /^animation-[a-z0-9]+ 200ms forwards$/
-          ),
-          height: 0,
-          overflow: 'hidden',
-        },
+        containerClassName: expect.any(String),
       })
     );
 
@@ -139,12 +122,7 @@ describe('controlled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerStyles: {
-          height: 'auto',
-          animation: expect.stringMatching(
-            /^animation-[a-z0-9]+ 200ms forwards$/
-          ),
-        },
+        containerClassName: expect.any(String),
       })
     );
   });
