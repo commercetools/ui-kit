@@ -7,18 +7,18 @@
 
 .base {
   text-align: center;
-  padding: 8px 0;
+  padding: var(--spacing-8) 0;
   cursor: default;
 }
 
 .day {
   composes: base;
-  border-radius: 4px;
+  border-radius: var(--border-radius-4);
 }
 
 .heading {
   composes: base;
-  color: #999;
+  color: var(--color-gray-60);
 }
 
 .spacing {
@@ -28,23 +28,23 @@
 /* States */
 
 .highlighted {
-  background-color: #e6e6e6;
+  background-color: var(--color-gray-90);
 }
 
 .selected {
-  background-color: #1ab29e;
-  color: white;
+  background-color: var(--color-green);
+  color: var(--color-white);
 }
 
 .rangeStart,
 .rangeEnd {
-  background-color: #21b39f;
-  color: white;
+  background-color: var(--color-green-40);
+  color: var(--color-white);
 }
 
 .rangeBetween {
-  background-color: #eee;
-  color: black;
+  background-color: var(--color-gray-90);
+  color: var(--token-font-color-default);
 }
 
 .today {

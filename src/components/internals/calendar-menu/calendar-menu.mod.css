@@ -2,10 +2,10 @@
   overflow-y: scroll;
   border: 1px solid var(--token-border-color-input-focus);
   border-radius: var(--token-border-radius-input);
-  margin-top: 4px;
+  margin-top: var(--spacing-4);
   position: absolute;
   width: 100%;
-  background-color: white;
+  background-color: var(--color-white);
 }
 
 .menuBase.warning {
