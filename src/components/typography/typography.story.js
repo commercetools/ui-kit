@@ -12,7 +12,7 @@ const InlineColorWrapper = styled.div`
   display: inline-block;
   width: ${props => props.width};
 `;
-storiesOf('Typography/Text', module)
+storiesOf('Basics|Typography/Text', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Headline', () => (

@@ -100,7 +100,7 @@ const getAllShadowsNames = (ordinals, shadowGroup) => {
   return shadowNames.join(' + ');
 };
 
-storiesOf('Shadows', module).add('All Shadows', () => (
+storiesOf('Basics|Shadows', module).add('All Shadows', () => (
   <Background>
     {Object.entries(shadowGroups).map(([shadowGroup, ordinals]) => (
       <Wrapper key={shadowGroup}>

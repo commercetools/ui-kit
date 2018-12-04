@@ -55,7 +55,7 @@ const FileName = styled.div`
   }
 `;
 
-storiesOf('Colors', module).add('All Colors', () => (
+storiesOf('Basics|Colors', module).add('All Colors', () => (
   <Background>
     {Object.entries(colorGroups).map(([colorName, variations]) => (
       <React.Fragment key={`fragment-${colorName}`}>
