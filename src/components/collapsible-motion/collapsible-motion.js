@@ -26,22 +26,25 @@ export class ToggleAnimation extends React.Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    let animation = null;
-
     const containerStyles = props.isOpen
       ? { height: 'auto' }
       : { height: 0, overflow: 'hidden' };
 
-    if (props.isOpen !== state.isOpen) {
-      animation = props.isOpen
-        ? createOpeningAnimation(state.fullHeight)
-        : createClosingAnimation(state.fullHeight);
-    }
+    const animation = do {
+      if (props.isOpen !== state.isOpen) {
+        if (props.isOpen) {
+          createOpeningAnimation(state.fullHeight);
+        } else {
+          createClosingAnimation(state.fullHeight);
+        }
+      } else {
+        null;
+      }
+    };
 
     return {
       isOpen: props.isOpen,
       containerStyles,
-
       animation,
     };
   }
