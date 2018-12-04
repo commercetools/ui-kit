@@ -41,6 +41,7 @@ export class ToggleAnimation extends React.Component {
     return {
       isOpen: props.isOpen,
       containerStyles,
+
       animation,
     };
   }
@@ -127,7 +128,7 @@ class CollapsibleMotion extends React.PureComponent {
                   let animationStyle = {};
 
                   if (animation) {
-                    // this is required so that the keyframes animation is actually injected into the DOM
+                    // By calling `css`, emotion injects the required CSS into the document head.
                     css`
                       animation: ${animation} 200ms forwards;
                     `;
