@@ -79,7 +79,7 @@ export default class CollapsiblePanel extends React.PureComponent {
         onToggle={this.props.onToggle}
         isDefaultClosed={this.props.isDefaultClosed}
       >
-        {({ isOpen, toggle, containerClassName, registerContentNode }) => (
+        {({ isOpen, toggle, containerStyles, registerContentNode }) => (
           <div
             className={classnames(this.props.className, {
               [styles['container-condensed']]: this.props.condensed,
@@ -141,7 +141,7 @@ export default class CollapsiblePanel extends React.PureComponent {
               </Spacings.InsetSquish>
             </div>
 
-            <div className={containerClassName}>
+            <div style={containerStyles}>
               <div ref={registerContentNode}>
                 {this.props.description && (
                   <Spacings.Inset scale={scale}>

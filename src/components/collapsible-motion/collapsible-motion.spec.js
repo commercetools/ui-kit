@@ -6,12 +6,12 @@ import CollapsibleMotion from './collapsible-motion';
 describe('uncontrolled mode', () => {
   it('should toggle when clicked', async () => {
     const renderProp = jest.fn(
-      ({ isOpen, toggle, containerClassName, registerContentNode }) => (
+      ({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <div>
           <button data-testid="button" onClick={toggle}>
             {isOpen ? 'Close' : 'Open'}
           </button>
-          <div data-testid="container-node" className={containerClassName}>
+          <div data-testid="container-node" style={containerStyles}>
             <div data-testid="content-node" ref={registerContentNode}>
               Content
             </div>
@@ -28,7 +28,8 @@ describe('uncontrolled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerClassName: expect.any(String),
+        // no animation here because the panel is already expanded
+        containerStyles: { height: 'auto' },
       })
     );
 
@@ -39,7 +40,13 @@ describe('uncontrolled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: false,
-        containerClassName: expect.any(String),
+        containerStyles: {
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
+          height: 0,
+          overflow: 'hidden',
+        },
       })
     );
 
@@ -50,7 +57,12 @@ describe('uncontrolled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerClassName: expect.any(String),
+        containerStyles: {
+          height: 'auto',
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
+        },
       })
     );
   });
@@ -98,7 +110,8 @@ describe('controlled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerClassName: expect.any(String),
+        // no animation here because the panel is already expanded
+        containerStyles: { height: 'auto' },
       })
     );
 
@@ -109,7 +122,13 @@ describe('controlled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: false,
-        containerClassName: expect.any(String),
+        containerStyles: {
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
+          height: 0,
+          overflow: 'hidden',
+        },
       })
     );
 
@@ -120,7 +139,12 @@ describe('controlled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        containerClassName: expect.any(String),
+        containerStyles: {
+          height: 'auto',
+          animation: expect.stringMatching(
+            /^animation-[a-z0-9]+ 200ms forwards$/
+          ),
+        },
       })
     );
   });

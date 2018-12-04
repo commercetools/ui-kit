@@ -22,20 +22,14 @@ class CollapsibleMotionStory extends React.Component {
           <div key={isDefaultClosed}>
             <div>Some content before</div>
             <CollapsibleMotion isDefaultClosed={isDefaultClosed}>
-              {({
-                isOpen,
-                toggle,
-                containerClassName,
-                containerStyles,
-                registerContentNode,
-              }) => (
+              {({ isOpen, toggle, containerStyles, registerContentNode }) => (
                 <div>
                   <div>
                     <button onClick={toggle}>
                       {isOpen ? 'Close' : 'Open'}
                     </button>
                   </div>
-                  <div style={containerStyles} className={containerClassName}>
+                  <div style={containerStyles}>
                     <div ref={registerContentNode}>
                       <div
                         style={{
@@ -73,12 +67,12 @@ class CollapsibleMotionStory extends React.Component {
               isClosed={this.state.isClosed}
               onToggle={this.handleToggle}
             >
-              {({ toggle, containerClassName, registerContentNode }) => (
+              {({ toggle, containerStyles, registerContentNode }) => (
                 <div>
                   <div>
                     <button onClick={toggle}>Toggle</button>
                   </div>
-                  <div className={containerClassName}>
+                  <div style={containerStyles}>
                     <div ref={registerContentNode}>
                       <div
                         style={{

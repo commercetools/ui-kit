@@ -28,6 +28,10 @@ export class ToggleAnimation extends React.Component {
   static getDerivedStateFromProps(props, state) {
     let animation = null;
 
+    const containerStyles = props.isOpen
+      ? { height: 'auto' }
+      : { height: 0, overflow: 'hidden' };
+
     if (props.isOpen !== state.isOpen) {
       animation = props.isOpen
         ? createOpeningAnimation(state.fullHeight)
@@ -36,6 +40,7 @@ export class ToggleAnimation extends React.Component {
 
     return {
       isOpen: props.isOpen,
+      containerStyles,
       animation,
     };
   }
@@ -46,6 +51,9 @@ export class ToggleAnimation extends React.Component {
     isOpen: this.props.isOpen,
     fullHeight: null,
     animation: null,
+    containerStyles: this.props.isOpen
+      ? { height: 'auto' }
+      : { height: 0, overflow: 'hidden' },
   };
 
   componentDidMount() {
@@ -83,6 +91,7 @@ export class ToggleAnimation extends React.Component {
   render() {
     return this.props.children({
       animation: this.state.animation,
+      containerStyles: this.state.containerStyles,
       toggle: this.handleToggle,
       registerContentNode: this.nodeRef,
     });
@@ -107,28 +116,32 @@ class CollapsibleMotion extends React.PureComponent {
       >
         {({ isOpen, toggle }) => (
           <ToggleAnimation isOpen={isOpen} toggle={toggle}>
-            {({ animation, toggle: animationToggle, registerContentNode }) => (
+            {({
+              animation,
+              containerStyles,
+              toggle: animationToggle,
+              registerContentNode,
+            }) => (
               <ClassNames>
-                {({ css, cx }) => {
-                  let animationClass;
+                {({ css }) => {
+                  let animationStyle = {};
 
                   if (animation) {
-                    animationClass = css`
+                    // this is required so that the keyframes animation is actually injected into the DOM
+                    css`
                       animation: ${animation} 200ms forwards;
                     `;
+                    animationStyle = {
+                      animation: `${animation.name} 200ms forwards`,
+                    };
                   }
-
-                  const containerClassName = css`
-                    height: ${isOpen ? 'auto' : '0'};
-                    overflow: ${isOpen ? 'hidden' : 'inherit'};
-                  `;
 
                   return this.props.children({
                     isOpen,
-                    containerClassName: cx(
-                      containerClassName,
-                      animationClass && animationClass
-                    ),
+                    containerStyles: {
+                      ...containerStyles,
+                      ...animationStyle,
+                    },
                     toggle: animationToggle,
                     registerContentNode,
                   });
