@@ -119,14 +119,8 @@ class CollapsibleMotion extends React.PureComponent {
                   }
 
                   const containerClassName = css`
-                    height: ${do {
-                      if (isOpen) 'auto;';
-                      else '0;';
-                    }}
-                    overflow: ${do {
-                      if (isOpen) 'hidden;';
-                      else 'inherit;';
-                    }}
+                    height: ${isOpen ? 'auto' : '0'};
+                    overflow: ${isOpen ? 'hidden' : 'inherit'};
                   `;
 
                   return this.props.children({

@@ -28,7 +28,6 @@ describe('uncontrolled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        // no animation here because the panel is already expanded
         containerClassName: expect.any(String),
       })
     );
@@ -99,7 +98,6 @@ describe('controlled mode', () => {
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
-        // no animation here because the panel is already expanded
         containerClassName: expect.any(String),
       })
     );
