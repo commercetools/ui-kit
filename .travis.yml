@@ -12,13 +12,17 @@ cache:
     - node_modules
 
 script:
+  # fail fast - in case there is an error building, quit immediately.
+  # instruct bash to quit if there is a non zero response code (error)
+  # https://github.com/commercetools/ui-kit/pull/284
+  - set -e
   # the jest.bundle.config.js tests run on the bundle,
   # so we need to build it first
-  - set -e
   - yarn build
   - yarn run jest --projects jest.*.config.js --maxWorkers=4 --reporters jest-silent-reporter
   - yarn percy
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
+  # back to default in case internal travis scripts return non zero response codes.
   - set +e
 
 before_deploy: yarn build
