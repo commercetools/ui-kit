@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash.omit';
-import classname from 'classnames';
+import classnames from 'classnames';
 import styles from './calendar-day.mod.css';
 
 const DateCalendarDay = props => (
   <li className={styles.wrapper}>
     <div
-      className={classname(
+      className={classnames(
         do {
           if (props.type === 'heading') styles.heading;
           else if (props.type === 'spacing') styles.spacing;
