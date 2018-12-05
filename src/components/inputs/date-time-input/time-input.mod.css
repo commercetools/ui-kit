@@ -2,10 +2,15 @@
   width: 100%;
   text-align: center;
   border: 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid var(--color-gray-90);
   padding: 10px 0;
   outline: 0;
-  margin-top: 8px;
-  font-size: 13px;
-  color: #1a1a1a;
+  margin-top: var(--spacing-8);
+  font-size: var(--token-font-size-default);
+  color: var(--color-black);
+}
+
+.timeInput:disabled {
+  /* Fixes background color in Firefox */
+  background-color: var(--color-white);
 }
