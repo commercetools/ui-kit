@@ -1,357 +1,271 @@
-/*
-  TECHDEBT:
-  - Support timeZone in all cases, but only when timeZone is passed.
-*/
-
-import 'flatpickr/dist/themes/airbnb.css';
 import React from 'react';
 import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
+import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
-import Flatpickr from 'flatpickr';
-import { German } from 'flatpickr/dist/l10n/de';
-import isTouchDevice from 'is-touch-device';
-import moment from 'moment-timezone';
+import CalendarBody from '../../internals/calendar-body';
+import CalendarMenu from '../../internals/calendar-menu';
+import CalendarHeader from '../../internals/calendar-header';
+import CalendarCalendar from '../../internals/calendar-calendar';
+import CalendarDay from '../../internals/calendar-day';
 import Constraints from '../../constraints';
-import { DatePickerBody } from './date-picker-body';
-import './date-picker-ct-theme.mod.css';
-import styles from './date-input.mod.css';
 import messages from './messages';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
+import {
+  getDateInMonth,
+  getToday,
+  changeMonth,
+  getPaddingDayCount,
+  getWeekdayNames,
+  getMonthCalendarLabel,
+  getYearCalendarLabel,
+  isSameDay,
+  getCalendarDayLabel,
+  createCalendarItems,
+  createItemToString,
+  parseInputToDate,
+} from '../../../utils/calendar';
 
-const getNumberOfFormattedDateChars = (timeScale, locale) => {
-  // moment gives us access to its underlying formats for individual locales
-  // http://momentjs.com/docs/#/i18n/instance-locale/
-  // this allows us to count the number of chars that will be displayed in the
-  // formatted date and adjust the input element accordingly
-  // Using this technique we can ensure that at least one value is displayed
-  switch (timeScale) {
-    case 'time':
-      return moment()
-        .locale(locale)
-        .localeData()._longDateFormat.LT.length;
-    case 'datetime':
-      return (
-        moment()
-          .locale(locale)
-          .localeData()._longDateFormat.L.length +
-        moment()
-          .locale(locale)
-          .localeData()._longDateFormat.LT.length
-      );
-    case 'date':
-      return moment()
-        .locale(locale)
-        .localeData()._longDateFormat.L.length;
-    default:
-      return 0;
-  }
-};
-
-// Calculates offset in minutes to add to given date
-// in order to fake timezone information in Flatpickr selector
-const getFlatpickrOffset = (value, timeZone) => {
-  const localTimeOffset = moment(value).utcOffset();
-  const timeZoneOffset = moment()
-    .tz(timeZone)
-    .utcOffset();
-
-  return timeZoneOffset - localTimeOffset;
-};
-
-const addFlatpickrOffset = (value, timeZone) =>
-  moment(value)
-    .add(getFlatpickrOffset(value, timeZone), 'minutes')
-    .toISOString();
-
-/*
-  Flatpickr is totally timezone-agnostic and hence it operates dates in a browser timezone.
-  But we want to show datetimes in a specific timezone. To do that we have to shift provided
-  date so that it will have time digits as if it was in desired timezone, but the date itself
-  will be in user browser timezone.
-*/
-export const presentInput = ({ value, timeZone, timeScale, mode }) => {
-  if (timeScale !== 'datetime') {
-    return value;
-  }
-
-  if (mode !== 'single') {
-    return value.map(v => addFlatpickrOffset(v, timeZone));
-  }
-
-  return addFlatpickrOffset(value, timeZone);
-};
-
-// Converts Date object provided by Flatpickr to formats expected by Datepicker users
-export const presentOutput = ({ value, timeScale, timeZone }) => {
-  switch (timeScale) {
-    case 'time':
-      return moment(value).format('HH:mm:ss.SSS');
-    case 'datetime': {
-      // As we shifted datetime value before passing it to Flatpickr, now we have to
-      // shift it back
-      return moment(value)
-        .subtract(getFlatpickrOffset(value, timeZone), 'minutes')
-        .toISOString();
-    }
-    case 'date':
-      return moment(value).format('YYYY-MM-DD');
-    default:
-      return value;
-  }
-};
-
-export const createFormatter = (timeScale, locale) => value => {
-  switch (timeScale) {
-    case 'time':
-      return moment(value, 'HH:mm:ss.SSS')
-        .locale(locale)
-        .format('LT');
-    case 'datetime':
-      return moment(value)
-        .locale(locale)
-        .format('L LT');
-    case 'date':
-      return moment(value)
-        .locale(locale)
-        .format('L');
-    default:
-      return value;
-  }
-};
-
-export class DateInput extends React.PureComponent {
-  static displayName = 'DateInput';
-
+class DateCalendar extends React.Component {
+  static displayName = 'DateCalendar';
   static propTypes = {
-    id: PropTypes.string,
-    shouldInitializeOnMount: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    isInvalid: PropTypes.bool,
-    mode: PropTypes.oneOf(['range', 'multiple', 'single']),
-    onChange: PropTypes.func.isRequired,
-    onClose: PropTypes.func,
-    placeholder: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-    timeScale: PropTypes.oneOf(['date']),
-    timeZone: requiredIf(
-      PropTypes.string,
-      props => props.timeScale === 'datetime'
-    ),
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string),
-    ]),
-
-    // HoC
     intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
       locale: PropTypes.string.isRequired,
     }).isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    placeholder: PropTypes.string,
+    isDisabled: PropTypes.bool,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
   };
-
-  static defaultProps = {
-    shouldInitializeOnMount: false,
-    isDisabled: false,
-    isInvalid: false,
-    mode: 'single',
-    timeScale: 'date',
-    horizontalConstraint: 'scale',
-  };
-
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
-    this.formatter = createFormatter(
-      this.props.timeScale,
-      this.props.intl.locale
-    );
-    this.numberOfFormattedValueChars = getNumberOfFormattedDateChars(
-      this.props.timeScale,
-      this.props.intl.locale
-    );
-    this.options = {
-      defaultDate:
-        this.props.value &&
-        presentInput({
-          value: this.props.value,
-          timeZone: this.props.timeZone,
-          timeScale: this.props.timeScale,
-          mode: this.props.mode,
-        }),
-      enableTime:
-        this.props.timeScale === 'time' || this.props.timeScale === 'datetime',
-      // flatpickr falls back onto native datetime-inputs on touch-devices
-      // these need their values in a standard-format and will format it themselves
-      // based on the browsers-locale => using the formatter, will break the fields
-      formatDate: isTouchDevice() ? undefined : this.formatter,
-      // Gets the corresponding locale. For English we must set it as null.
-      // TODO make this asynchronous when more languages available
-      locale: this.props.intl.locale.startsWith('de') ? German : null,
-      mode: this.props.mode,
-      noCalendar: this.props.timeScale === 'time',
-      onChange: this.handleChange,
-      time_24hr: this.props.intl.locale.startsWith('de'),
-      wrap: true,
-    };
-  }
-
-  // initializing on hove is not feasible for touch-devices, so we init-right away
-  // flatpickr does not do its expensive initialization on mobile, so this is safe
+  inputRef = React.createRef();
   state = {
-    initialize: this.props.shouldInitializeOnMount || isTouchDevice(),
+    calendarDate:
+      this.props.value.length === 2 ? this.props.value[0] : getToday(),
+    suggestedItems: [],
+    highlightedIndex:
+      this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
   };
-
-  componentDidMount() {
-    if (this.shouldInitializeFlatpickr(this.state)) {
-      this.initDatepicker();
-    }
-  }
-
-  shouldInitializeFlatpickr = state => !this.flatpickr && state.initialize;
-
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillUpdate(nextProps, nextState) {
-    if (this.flatpickr && this.props.value !== nextProps.value) {
-      this.flatpickr.setDate(
-        nextProps.value &&
-          presentInput({
-            value: nextProps.value,
-            timeZone: nextProps.timeZone,
-            timeScale: nextProps.timeScale,
-            mode: nextProps.mode,
-          }),
-        false
-      );
-    } else if (this.shouldInitializeFlatpickr(nextState)) {
-      this.initDatepicker();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.flatpickr) {
-      this.flatpickr.destroy();
-    }
-  }
-
-  handleClearPicker = () => {
-    if (!this.flatpickr) return;
-    this.flatpickr.clear();
-    this.flatpickr.jumpToDate();
-    this.props.onChange();
+  showPrevMonth = () => {
+    this.setState(prevState => ({
+      calendarDate: changeMonth(prevState.calendarDate, -1),
+      // select first day in next month
+      highlightedIndex: prevState.suggestedItems.length,
+    }));
   };
-
-  handleChange = selectedDates => {
-    switch (this.props.mode) {
-      case 'single': {
-        const value = selectedDates.length === 0 ? undefined : selectedDates[0];
-        this.props.onChange(
-          value &&
-            presentOutput({
-              value,
-              timeScale: this.props.timeScale,
-              timeZone: this.props.timeZone,
-            })
-        );
-        break;
-      }
-      case 'range':
-      case 'multiple':
-        this.props.onChange(
-          selectedDates.map(
-            value =>
-              value &&
-              presentOutput({
-                value,
-                timeScale: this.props.timeScale,
-                timeZone: this.props.timeZone,
-              })
-          )
-        );
-        break;
-      default:
-        throw new Error(
-          `ui-kit/inputs/date-input: the specified mode '${
-            this.props.mode
-          }' is not supported.`
-        );
-    }
+  jumpMonth = amount => {
+    this.setState(prevState => {
+      const nextDate = changeMonth(prevState.calendarDate, amount);
+      return { calendarDate: nextDate, highlightedIndex: 0 };
+    });
   };
-
-  handleMouseOver = () => {
-    this.setState(prevState => ({ ...prevState, initialize: true }));
+  showToday = () => {
+    const today = getToday();
+    this.setState(
+      prevState => ({
+        calendarDate: today,
+        highlightedIndex:
+          prevState.suggestedItems.length + getDateInMonth(today) - 1,
+      }),
+      () => this.inputRef.current.focus()
+    );
   };
-
-  initDatepicker = () => {
-    if (!this.props.isDisabled) {
-      const options = {
-        onClose: () => {
-          if (this.pickerElem) {
-            this.pickerElem.blur();
-            // NOTE: we need to pass the `value` to enable validations
-            // when the picker closes.
-            if (this.props.onClose) this.props.onClose(this.props.value);
-          }
-        },
-        ...this.options,
-      };
-
-      this.flatpickr = new Flatpickr(this.pickerElem, options);
-    }
+  handleChange = date => {
+    this.inputRef.current.setSelectionRange(0, 100);
+    this.emit(date);
   };
-
-  getRef = ref => {
-    this.pickerElem = ref;
-  };
-
-  /**
-   * @param  {String} selectedDate This can be `date`, `datetime`, or `time`
-   * @return {String} the formatted `selectedDate` based on `timeScale`
-   */
-  getFormattedValue = selectedDate => {
-    // `selectedDate` is expected to be an array
-    // when managing `range` and `multiple` modes
-    if (this.props.mode === 'multiple')
-      return selectedDate.map(v => this.formatter(v)).join(', ');
-    if (this.props.mode === 'range')
-      return selectedDate
-        .map(v => this.formatter(v))
-        .join(` ${this.props.intl.formatMessage(messages.labelRange)} `);
-
-    return this.formatter(selectedDate);
-  };
-
+  emit = value =>
+    this.props.onChange({
+      target: {
+        id: this.props.id,
+        name: this.props.name,
+        // when cleared the value is null, but we always want it to be an
+        // empty string when there is no value.
+        value: value || '',
+      },
+    });
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div
-          className={styles.container}
-          onMouseOver={this.handleMouseOver}
-          ref={this.getRef}
-        >
-          <DatePickerBody
-            id={this.props.id}
-            formattedValue={
-              this.props.value &&
-              this.getFormattedValue(
-                presentInput({
-                  value: this.props.value,
-                  timeZone: this.props.timeZone,
-                  timeScale: this.props.timeScale,
-                  mode: this.props.mode,
-                })
-              )
+        <Downshift
+          key={this.props.intl.locale}
+          inputId={this.props.id}
+          itemToString={createItemToString(this.props.intl.locale)}
+          selectedItem={this.props.value === '' ? null : this.props.value}
+          highlightedIndex={this.state.highlightedIndex}
+          onChange={this.handleChange}
+          onStateChange={changes => {
+            /* eslint-disable no-prototype-builtins */
+            if (changes.hasOwnProperty('inputValue')) {
+              // input changed because user typed
+              if (changes.type === Downshift.stateChangeTypes.changeInput) {
+                const date = parseInputToDate(
+                  changes.inputValue,
+                  this.props.intl.locale
+                );
+                this.setState(
+                  date === ''
+                    ? {
+                        suggestedItems: [],
+                        highlightedIndex: null,
+                      }
+                    : {
+                        suggestedItems: [date],
+                        highlightedIndex: getDateInMonth(date) - 1,
+                        calendarDate: date,
+                      }
+                );
+              } else {
+                // input changed because user selected a date
+                this.setState({
+                  suggestedItems: [],
+                  highlightedIndex: null,
+                });
+              }
             }
-            isDisabled={this.props.isDisabled}
-            isInvalid={this.props.isInvalid}
-            onClearPicker={this.handleClearPicker}
-            placeholder={this.props.placeholder}
-            horizontalConstraint={this.props.horizontalConstraint}
-            timeScale={this.props.timeScale}
-            numberOfFormattedValueChars={this.numberOfFormattedValueChars}
-          />
-        </div>
+
+            if (changes.hasOwnProperty('highlightedIndex')) {
+              this.setState({ highlightedIndex: changes.highlightedIndex });
+            }
+
+            // ensure calendar always opens on selected item, or on current
+            // month when there is no selected item
+            if (changes.hasOwnProperty('isOpen') && changes.isOpen) {
+              this.setState({
+                calendarDate:
+                  this.props.value === '' ? getToday() : this.props.value,
+              });
+            }
+            /* eslint-enable no-prototype-builtins */
+          }}
+        >
+          {({
+            getInputProps,
+            getMenuProps,
+            getItemProps,
+            getToggleButtonProps,
+
+            clearSelection,
+
+            highlightedIndex,
+            openMenu,
+            setHighlightedIndex,
+            selectedItem,
+            isOpen,
+            inputValue,
+          }) => {
+            const calendarItems = createCalendarItems(
+              this.state.calendarDate,
+              this.props.intl
+            );
+
+            const paddingDays = do {
+              const weekday = getPaddingDayCount(
+                this.state.calendarDate,
+                this.props.intl.locale
+              );
+              Array(weekday).fill();
+            };
+
+            const weekdays = getWeekdayNames(this.props.intl.locale);
+            const today = getToday();
+
+            return (
+              <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
+                <CalendarBody
+                  inputRef={this.inputRef}
+                  inputProps={getInputProps({
+                    name: this.props.name,
+                    placeholder:
+                      typeof this.props.placeholder === 'string'
+                        ? this.props.placeholder
+                        : this.props.intl.formatMessage(messages.placeholder),
+                    disabled: this.props.isDisabled,
+                    onMouseEnter: () => {
+                      // we remove the highlight so that the user can use the
+                      // arrow keys to move the cursor when hovering
+                      if (isOpen) setHighlightedIndex(null);
+                    },
+                    onKeyDown: event => {
+                      if (event.key === 'Enter' && inputValue.trim() === '') {
+                        clearSelection();
+                      }
+                    },
+                    onFocus: openMenu,
+                    onClick: openMenu,
+                    ...filterDataAttributes(this.props),
+                  })}
+                  hasSelection={Boolean(selectedItem)}
+                  onClear={clearSelection}
+                  isOpen={isOpen}
+                  isDisabled={this.props.isDisabled}
+                  toggleButtonProps={getToggleButtonProps({
+                    disabled: this.props.isDisabled,
+                  })}
+                  hasError={this.props.hasError}
+                  hasWarning={this.props.hasWarning}
+                />
+                {isOpen && !this.props.isDisabled && (
+                  <CalendarMenu
+                    {...getMenuProps()}
+                    hasError={this.props.hasError}
+                    hasWarning={this.props.hasWarning}
+                  >
+                    <CalendarHeader
+                      monthLabel={getMonthCalendarLabel(
+                        this.state.calendarDate,
+                        this.props.intl.locale
+                      )}
+                      yearLabel={getYearCalendarLabel(
+                        this.state.calendarDate,
+                        this.props.intl.locale
+                      )}
+                      onPrevMonthClick={() => this.jumpMonth(-1)}
+                      onTodayClick={this.showToday}
+                      onNextMonthClick={() => this.jumpMonth(1)}
+                      onPrevYearClick={() => this.jumpMonth(-12)}
+                      onNextYearClick={() => this.jumpMonth(12)}
+                    />
+                    <CalendarCalendar>
+                      {weekdays.map(weekday => (
+                        <CalendarDay key={weekday} type="heading">
+                          {weekday}
+                        </CalendarDay>
+                      ))}
+                      {paddingDays.map((day, index) => (
+                        <CalendarDay key={index} type="spacing" />
+                      ))}
+                      {calendarItems.map((item, index) => (
+                        <CalendarDay
+                          key={item}
+                          isToday={isSameDay(today, item)}
+                          {...getItemProps({
+                            disabled: this.props.isDisabled,
+                            item,
+                            onMouseOut: () => {
+                              setHighlightedIndex(null);
+                            },
+                          })}
+                          isHighlighted={index === highlightedIndex}
+                          isSelected={isSameDay(item, this.props.value)}
+                        >
+                          {getCalendarDayLabel(item)}
+                        </CalendarDay>
+                      ))}
+                    </CalendarCalendar>
+                  </CalendarMenu>
+                )}
+              </div>
+            );
+          }}
+        </Downshift>
       </Constraints.Horizontal>
     );
   }
 }
 
-export default injectIntl(DateInput);
+export default injectIntl(DateCalendar);

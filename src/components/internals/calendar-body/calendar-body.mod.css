@@ -4,25 +4,6 @@
   display: flex;
 }
 
-.constraintScale {
-  width: var(--constraint-scale);
-}
-.constraintXs {
-  max-width: var(--constraint-xs);
-}
-.constraintS {
-  max-width: var(--constraint-s);
-}
-.constraintM {
-  max-width: var(--constraint-m);
-}
-.constraintL {
-  max-width: var(--constraint-l);
-}
-.constraintXl {
-  max-width: var(--constraint-xl);
-}
-
 .date-input {
   width: 100%;
   appearance: none;
@@ -39,12 +20,15 @@
   font: inherit;
   margin-right: 0; /* stop that jumping */
   padding: var(--spacing-8);
+  outline: 0;
 }
 
 /* Active/Focus */
 
 .date-input:focus,
-.date-input:focus + .clear-icon-container {
+.date-input.focused,
+.date-input:focus + .clear-icon-container,
+.date-input.focused + .clear-icon-container {
   border-color: var(--token-border-color-input-focus);
   color: var(--token-font-color-default);
   transition: var(--transition-standard);
@@ -52,10 +36,30 @@
 
 /* Warning */
 
-.date-input.invalid,
-.date-input.invalid + .clear-icon-container {
+.date-input.warning,
+.date-input.warning + .clear-icon-container {
   color: var(--token-font-color-warning);
   border-color: var(--token-border-color-input-warning);
+}
+
+.icon-container.warning,
+.icon-container.warning + .clear-icon-container {
+  color: var(--token-font-color-warning);
+  border-color: var(--token-border-color-input-warning);
+}
+
+/* Error */
+
+.date-input.error,
+.date-input.error + .clear-icon-container {
+  color: var(--token-font-color-error);
+  border-color: var(--token-border-color-input-error);
+}
+
+.icon-container.error,
+.icon-container.error + .clear-icon-container {
+  color: var(--token-font-color-error);
+  border-color: var(--token-border-color-input-error);
 }
 
 /* Disabled */
@@ -73,18 +77,22 @@
 .icon-container {
   align-items: center;
   background-color: var(--token-background-color-input-pristine);
-  border-bottom: 1px solid var(--token-border-color-input-pristine);
-  border-right: 1px solid var(--token-border-color-input-pristine);
-  border-top: 1px solid var(--token-border-color-input-pristine);
+  border: 1px solid var(--token-border-color-input-pristine);
   height: var(--token-size-height-input);
-  border-left: none;
   cursor: pointer;
   display: flex;
   padding: var(--spacing-4);
+  outline: 0;
+}
+
+.icon-container.focused:not(.error):not(.warning) {
+  border-color: var(--token-border-color-input-focus);
 }
 
 .clear-icon-container {
   composes: icon-container;
+  border-left: none;
+  border-right: none;
 }
 
 .calendar-icon-container {
