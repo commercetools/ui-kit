@@ -1,4 +1,3 @@
-// COPIED FROM time-input.js
 // Attempts to parse a string containing a time in either 12h or 24h format,
 // with precision of up to three milliseconds
 // Valid inputs:
