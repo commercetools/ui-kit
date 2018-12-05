@@ -64,6 +64,9 @@ export {
   default as CreatableSelectInput,
 } from './components/inputs/creatable-select-input';
 export { default as DateInput } from './components/inputs/date-input';
+export {
+  default as DateRangeInput,
+} from './components/inputs/date-range-input';
 export { default as DateTimeInput } from './components/inputs/date-time-input';
 export {
   default as LocalizedMultilineTextInput,
