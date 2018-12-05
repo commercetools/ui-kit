@@ -1,49 +1,60 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
-import { Value } from 'react-value';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
+import DateTimeInputReadme from './README.md';
 import DateTimeInput from './date-time-input';
+import Section from '../../../../.storybook/decorators/section';
 
-storiesOf('Inputs', module)
-  .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
-  .add('DateTimeInput', () => {
-    const timeZone = select(
-      'timeZone',
-      ['Europe/Madrid', 'America/Los_Angeles'],
-      'Europe/Madrid'
-    );
+class DateTimeInputStory extends React.Component {
+  static displayName = 'DateTimeInputStory';
+
+  state = {
+    value: '',
+  };
+
+  handleChange = event => {
+    action('onChange')(event);
+    this.setState({ value: event.target.value });
+  };
+
+  render() {
+    const placeholder = text('placeholder', '');
     return (
       <Section>
-        <Value
-          key={timeZone}
-          defaultValue="2017-12-31T16:02:50.000Z"
-          render={(value, onChange) => (
-            <DateTimeInput
-              key={timeZone}
-              id={text('id', '')}
-              placeholder={text('placeholder', 'Select a date...')}
-              mode={select('mode', ['single', 'multiple', 'range'], 'single')}
-              isDisabled={boolean('isDisabled', false)}
-              value={text('value (Date in UTC)', value)}
-              onChange={datetime => {
-                action('onChange')(datetime);
-                onChange(datetime);
-              }}
-              isInvalid={boolean('isInvalid?', false)}
-              timeZone={timeZone}
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                'm'
-              )}
-            />
+        <DateTimeInput
+          value={this.state.value}
+          onChange={this.handleChange}
+          horizontalConstraint={select(
+            'horizontalConstraint',
+            ['xs', 's', 'm', 'l', 'xl', 'scale'],
+            'l'
           )}
+          timeZone={select(
+            'timeZone',
+            [
+              'UTC',
+              'America/Los_Angeles',
+              'America/New_York',
+              'Asia/Tokyo',
+              'Europe/Amsterdam',
+            ],
+            'UTC'
+          )}
+          id={text('id', '')}
+          name={text('name', '')}
+          placeholder={placeholder === '' ? undefined : placeholder}
+          isDisabled={boolean('isDisabled', false)}
+          hasError={boolean('hasError', false)}
+          hasWarning={boolean('hasWarning', false)}
         />
       </Section>
     );
-  });
+  }
+}
+
+storiesOf('Inputs', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(DateTimeInputReadme))
+  .add('DateTimeInput', () => <DateTimeInputStory />);
