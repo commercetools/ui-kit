@@ -80,7 +80,7 @@ class DateTimeInput extends React.Component {
         : getDateInMonth(this.props.value, this.props.timeZone) - 1,
     timeString: '',
   };
-  jumpMonth = amount => {
+  jumpMonths = amount => {
     this.setState(prevState => {
       const nextDate = changeMonth(
         prevState.calendarDate,
@@ -355,11 +355,11 @@ class DateTimeInput extends React.Component {
                         this.state.calendarDate,
                         this.props.intl.locale
                       )}
-                      onPrevMonthClick={() => this.jumpMonth(-1)}
+                      onPrevMonthClick={() => this.jumpMonths(-1)}
                       onTodayClick={this.showToday}
-                      onNextMonthClick={() => this.jumpMonth(1)}
-                      onPrevYearClick={() => this.jumpMonth(-12)}
-                      onNextYearClick={() => this.jumpMonth(12)}
+                      onNextMonthClick={() => this.jumpMonths(1)}
+                      onPrevYearClick={() => this.jumpMonths(-12)}
+                      onNextYearClick={() => this.jumpMonths(12)}
                     />
                     <CalendarCalendar>
                       {weekdays.map(weekday => (
