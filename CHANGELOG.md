@@ -1,3 +1,17 @@
+# [4.0.3](https://github.com/commercetools/ui-kit/compare/v4.0.2...v4.0.3) (2018-12-05)
+
+### Bug Fixes
+
+- Rollup config fix - stop inadvertent dependency bundling ([#279](https://github.com/commercetools/ui-kit/pull/279))
+
+### Tooling
+
+- Fail fast on Travis ([#284](https://github.com/commercetools/ui-kit/pull/284))
+
+### Changes
+
+- Updated dependencies for some packages ([#280](https://github.com/commercetools/ui-kit/pull/280))
+
 # [4.0.2](https://github.com/commercetools/ui-kit/compare/v4.0.1...v4.0.2) (2018-11-28)
 
 ### Bug Fixes
