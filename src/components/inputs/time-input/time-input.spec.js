@@ -1,33 +1,279 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import isTouchDevice from 'is-touch-device';
-import { TimeInput } from './time-input';
+import TimeInput, { parseTime } from './time-input';
+import { render, fireEvent } from '../../../test-utils';
 
-jest.mock('flatpickr');
-jest.mock('is-touch-device');
+const baseProps = { value: '', onChange: () => {} };
 
-// user is in London
-// eslint-disable-next-line no-extend-native
-Date.prototype.getTimezoneOffset = () => 0;
-
-// but she wants to see time in Mardid time zone
-const timeZone = 'Europe/Madrid';
-
-const createTestProps = custom => ({
-  onChange: jest.fn(),
-  value: null,
-  placeholder: 'test',
-  intl: { formatMessage: jest.fn(message => message.id), locale: 'en' },
-  timeZone,
-  ...custom,
+describe('TimeInput.to24h', () => {
+  describe('when called with empty value', () => {
+    it('should return an empty string', () => {
+      expect(TimeInput.to24h('')).toEqual('');
+    });
+  });
+  describe('when called with invalid time', () => {
+    it('should return an empty string', () => {
+      expect(TimeInput.to24h('65:10')).toEqual('');
+      expect(TimeInput.to24h('10:3.5')).toEqual('');
+      expect(TimeInput.to24h('1300:00.000')).toEqual('');
+      expect(TimeInput.to24h('1300')).toEqual('');
+      expect(TimeInput.to24h('300')).toEqual('');
+      expect(TimeInput.to24h('13:00.000')).toEqual('');
+      expect(TimeInput.to24h('15:09.300')).toEqual('');
+      expect(TimeInput.to24h('10:3.5')).toEqual('');
+    });
+  });
+  describe('when called with valid time', () => {
+    describe('when called with regular precision time', () => {
+      it('should return the time in 24h format', () => {
+        expect(TimeInput.to24h('15:10')).toEqual('15:10');
+        expect(TimeInput.to24h('15:2')).toEqual('15:02');
+        expect(TimeInput.to24h('04')).toEqual('04:00');
+        expect(TimeInput.to24h('3 AM')).toEqual('03:00');
+        expect(TimeInput.to24h('3 PM')).toEqual('15:00');
+        expect(TimeInput.to24h('3:15 AM')).toEqual('03:15');
+        expect(TimeInput.to24h('3:5 AM')).toEqual('03:05');
+        expect(TimeInput.to24h('0:00')).toEqual('00:00');
+      });
+    });
+    describe('when called with high precision time', () => {
+      it('should return the time in 24h format', () => {
+        expect(TimeInput.to24h('10:02:03')).toEqual('10:02:03');
+        expect(TimeInput.to24h('10:2:3')).toEqual('10:02:03');
+        expect(TimeInput.to24h('10:2:3.456')).toEqual('10:02:03.456');
+        expect(TimeInput.to24h('10:2:3.5')).toEqual('10:02:03.500');
+      });
+    });
+  });
 });
 
-describe('<DateInput />', () => {
-  beforeEach(() => {
-    isTouchDevice.mockClear();
-    isTouchDevice.mockReturnValue(false);
+describe('parseTime', () => {
+  it('should work with am/pm times', () => {
+    // 0 am (does not exist)
+    expect(parseTime('0 am')).toEqual(null);
+    // 0:30 am (does not exist)
+    expect(parseTime('0:30 am')).toEqual(null);
+    // 1 am (01:00)
+    expect(parseTime('1 am')).toEqual({
+      hours: 1,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    // 12 am (24:00) = 0:00
+    expect(parseTime('12 am')).toEqual({
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    // 12:30 am (00:30)
+    expect(parseTime('12:30 am')).toEqual({
+      hours: 0,
+      minutes: 30,
+      seconds: 0,
+      milliseconds: 0,
+    });
+
+    // 2:3 AM (02:03)
+    expect(parseTime('2:3 AM')).toEqual({
+      hours: 2,
+      minutes: 3,
+      seconds: 0,
+      milliseconds: 0,
+    });
+
+    expect(parseTime('0 pm')).toEqual(null);
+    // 65 pm (does not exist)
+    expect(parseTime('65 pm')).toEqual(null);
+    // 0:30 pm (does not exist)
+    expect(parseTime('0:30 pm')).toEqual(null);
+    // 1 pm (13:00)
+    expect(parseTime('1 pm')).toEqual({
+      hours: 13,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    // 12 pm (12:00)
+    expect(parseTime('12 pm')).toEqual({
+      hours: 12,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    // 11 pm (23:00)
+    expect(parseTime('11 pm')).toEqual({
+      hours: 23,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    // 12:30 pm (12:30)
+    expect(parseTime('12:30 pm')).toEqual({
+      hours: 12,
+      minutes: 30,
+      seconds: 0,
+      milliseconds: 0,
+    });
   });
-  it('should render', () => {
-    expect(shallow(<TimeInput {...createTestProps()} />)).toMatchSnapshot();
+
+  it('should work with 24h times', () => {
+    expect(parseTime('0:00')).toEqual({
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    expect(parseTime('12:00')).toEqual({
+      hours: 12,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    expect(parseTime('23:59')).toEqual({
+      hours: 23,
+      minutes: 59,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    expect(parseTime('23:59:34.010')).toEqual({
+      hours: 23,
+      minutes: 59,
+      seconds: 34,
+      milliseconds: 10,
+    });
+    expect(parseTime('23:59:34.001')).toEqual({
+      hours: 23,
+      minutes: 59,
+      seconds: 34,
+      milliseconds: 1,
+    });
+    expect(parseTime('23:59:34.1')).toEqual({
+      hours: 23,
+      minutes: 59,
+      seconds: 34,
+      milliseconds: 100,
+    });
+  });
+
+  it('should work with some invalid 24:00 time for convenience', () => {
+    expect(parseTime('24:00')).toEqual({
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    });
+    expect(parseTime('24:30')).toEqual(null);
+  });
+});
+
+describe('TimeInput', () => {
+  it('should forward data-attributes', () => {
+    const { container } = render(<TimeInput {...baseProps} data-foo="bar" />);
+    expect(container.querySelector('input')).toHaveAttribute('data-foo', 'bar');
+  });
+
+  it('should have error style when error is present', () => {
+    const { container } = render(<TimeInput {...baseProps} hasError />);
+    expect(container.querySelector('input')).toHaveClass('error');
+  });
+
+  it('should have an HTML name', () => {
+    const { container } = render(<TimeInput {...baseProps} name="foo" />);
+    expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
+  });
+
+  it('should have ARIA role', () => {
+    const { container } = render(<TimeInput {...baseProps} />);
+    expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
+  });
+
+  it('should forward the passed value', () => {
+    const { container } = render(<TimeInput {...baseProps} value="foo" />);
+    expect(container.querySelector('input')).toHaveAttribute('value', 'foo');
+  });
+
+  it('should call onChange when chaning the value', () => {
+    const onChange = jest.fn(event => {
+      expect(event.target.id).toEqual('some-id');
+      expect(event.target.name).toEqual('some-name');
+      expect(event.target.value).toEqual('foo');
+    });
+    const { container } = render(
+      <TimeInput
+        {...baseProps}
+        id="some-id"
+        name="some-name"
+        onChange={onChange}
+      />
+    );
+    const event = { target: { value: 'foo' } };
+    fireEvent.change(container.querySelector('input'), event);
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('should call onFocus when the input is focused', () => {
+    const onFocus = jest.fn();
+    const { container } = render(
+      <TimeInput {...baseProps} onFocus={onFocus} />
+    );
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+  });
+
+  it('should call onBlur when input loses focus', () => {
+    const { container } = render(<TimeInput {...baseProps} />);
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+    container.querySelector('input').blur();
+    expect(container.querySelector('input')).not.toHaveFocus();
+  });
+
+  it('should format the value when input is blurred on english locale', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <TimeInput {...baseProps} onChange={onChange} value="2:3 AM" />
+    );
+
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+    container.querySelector('input').blur();
+    expect(container.querySelector('input')).not.toHaveFocus();
+    expect(onChange).toHaveBeenCalledWith({
+      target: { id: undefined, name: undefined, value: '2:03 AM' },
+    });
+  });
+
+  it('should format the value when input is blurred on german locale', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <TimeInput {...baseProps} onChange={onChange} value="12:3" />,
+      { locale: 'de' }
+    );
+
+    container.querySelector('input').focus();
+    expect(container.querySelector('input')).toHaveFocus();
+    container.querySelector('input').blur();
+    expect(container.querySelector('input')).not.toHaveFocus();
+    expect(onChange).toHaveBeenCalledWith({
+      target: {
+        id: undefined,
+        name: undefined,
+        // There is a limitation in node where the underlying Intl API used by
+        // react-intl does not contain the full locale data and  falls back to
+        // "en". This makes this test essentially useless, but I want to
+        // include it anyways to ensure that we at least get a value.
+        // Ideally, the value would be "12:03" (and it is in browsers), but
+        // it will be "12:03 PM" in this test.
+        // See https://github.com/jsdom/jsdom/issues/1626#issuecomment-253795231
+        // and https://github.com/nodejs/node/issues/8818
+        value: expect.stringMatching(/^12:03( PM)?$/),
+      },
+    });
+  });
+
+  it('should have focus automatically when isAutofocussed is passed', () => {
+    const { container } = render(<TimeInput {...baseProps} isAutofocussed />);
+    expect(container.querySelector('input')).toHaveFocus();
   });
 });
