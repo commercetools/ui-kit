@@ -1,0 +1,88 @@
+.time-input-container {
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+
+.time-input {
+  width: 100%;
+  appearance: none;
+  background: var(--token-background-color-input-pristine);
+  border-radius: var(--token-border-radius-input) 0 0
+    var(--token-border-radius-input);
+  border-bottom: 1px solid var(--token-border-color-input-pristine);
+  border-left: 1px solid var(--token-border-color-input-pristine);
+  border-top: 1px solid var(--token-border-color-input-pristine);
+  border-right: none;
+  height: var(--token-size-height-input);
+  flex-grow: 1;
+  font: inherit;
+  margin-right: 0; /* stop that jumping */
+  padding: var(--spacing-8);
+  outline: 0;
+}
+
+/* Active/Focus */
+
+.time-input:focus,
+.time-input:focus + .clear-icon-container,
+.time-input:active,
+.time-input:active + .clear-icon-container {
+  border-color: var(--token-border-color-input-focus);
+  color: var(--token-font-color-default);
+  transition: var(--transition-standard);
+}
+
+/* Error */
+
+.time-input.error,
+.time-input.error + .clear-icon-container {
+  color: var(--token-font-color-error);
+  border-color: var(--token-border-color-input-error);
+}
+
+/* Disabled */
+
+.time-input:disabled,
+.time-input:read-only {
+  background-color: var(--token-background-color-input-disabled);
+  color: var(--token-font-color-disabled);
+  border-color: var(--token-border-color-input-disabled);
+  opacity: 1; /* fix for mobile safari */
+}
+
+.time-input:disabled {
+  cursor: not-allowed;
+}
+
+/* Icon */
+
+.icon-container {
+  align-items: center;
+  background-color: var(--token-background-color-input-pristine);
+  border-bottom: 1px solid var(--token-border-color-input-pristine);
+  border-right: 1px solid var(--token-border-color-input-pristine);
+  border-top: 1px solid var(--token-border-color-input-pristine);
+  height: var(--token-size-height-input);
+  border-left: none;
+  display: flex;
+  padding: var(--spacing-4);
+}
+
+.clear-icon-container {
+  composes: icon-container;
+  cursor: pointer;
+}
+
+.clock-icon-container {
+  composes: icon-container;
+  border-top-right-radius: var(--token-border-radius-input);
+  border-bottom-right-radius: var(--token-border-radius-input);
+}
+
+.icon-container-disabled {
+  cursor: not-allowed;
+  background-color: var(--token-background-color-input-disabled);
+  color: var(--token-font-color-disabled);
+  border-color: var(--token-border-color-input-disabled);
+}
