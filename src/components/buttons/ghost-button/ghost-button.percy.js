@@ -1,38 +1,40 @@
 import React from 'react';
-import GhostButton from './ghost-button';
-import { InformationIcon } from '../../icons';
+import { InformationIcon, GhostButton } from '../../../../dist/ui-kit.esm';
+import { Cases, Case, screenshot } from '../../../../test/percy';
 
-suite('GhostButton', () => {
-  percySnapshot('regular', () => (
-    <GhostButton label="A label text" onClick={() => {}} />
-  ));
+screenshot('GhostButton', () => (
+  <Cases>
+    <Case label="regular">
+      <GhostButton label="A label text" onClick={() => {}} />
+    </Case>
 
-  percySnapshot('disabled', () => (
-    <GhostButton label="A label text" onClick={() => {}} isDisabled={true} />
-  ));
+    <Case label="disabled">
+      <GhostButton label="A label text" onClick={() => {}} isDisabled={true} />
+    </Case>
 
-  percySnapshot('with iconLeft', () => (
-    <GhostButton
-      label="A label text"
-      onClick={() => {}}
-      iconLeft={<InformationIcon />}
-    />
-  ));
+    <Case label="with iconLeft">
+      <GhostButton
+        label="A label text"
+        onClick={() => {}}
+        iconLeft={<InformationIcon />}
+      />
+    </Case>
 
-  percySnapshot('as toggle button (not toggled)', () => (
-    <GhostButton
-      label="A label text"
-      onClick={() => {}}
-      isToggleButton={true}
-    />
-  ));
+    <Case label="as toggle button (not toggled)">
+      <GhostButton
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+      />
+    </Case>
 
-  percySnapshot('as toggle button (toggled)', () => (
-    <GhostButton
-      label="A label text"
-      onClick={() => {}}
-      isToggleButton={true}
-      isToggled={true}
-    />
-  ));
-});
+    <Case label="as toggle button (toggled)">
+      <GhostButton
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+        isToggled={true}
+      />
+    </Case>
+  </Cases>
+));

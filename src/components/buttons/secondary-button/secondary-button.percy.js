@@ -1,107 +1,101 @@
 import React from 'react';
-import SecondaryButton from './secondary-button';
-import { InformationIcon } from '../../icons';
+import { InformationIcon, SecondaryButton } from '../../../../dist/ui-kit.esm';
+import { Cases, Case, screenshot } from '../../../../test/percy';
 
-suite('SecondaryButton', () => {
-  percySnapshot('regular', () => (
-    <SecondaryButton label="A label text" onClick={() => {}} />
-  ));
+screenshot('SecondaryButton', () => (
+  <Cases>
+    <Case label="regular">
+      <SecondaryButton label="A label text" onClick={() => {}} />
+    </Case>
 
-  percySnapshot('disabled', () => (
-    <SecondaryButton
-      label="A label text"
-      onClick={() => {}}
-      isDisabled={true}
-    />
-  ));
+    <Case label="disabled">
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        isDisabled={true}
+      />
+    </Case>
 
-  percySnapshot('with icon left (default)', () => (
-    <SecondaryButton
-      label="A label text"
-      onClick={() => {}}
-      iconLeft={<InformationIcon />}
-    />
-  ));
+    <Case label="with icon left (default)">
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        iconLeft={<InformationIcon />}
+      />
+    </Case>
 
-  suite('as toggle button', () => {
-    percySnapshot('when not toggled', () => (
+    <Case label="as toggle button - when not toggled">
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
       />
-    ));
+    </Case>
 
-    percySnapshot('when toggled', () => (
+    <Case label="as toggle button - when toggled">
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={true}
       />
-    ));
+    </Case>
 
-    suite('with theme', () => {
-      percySnapshot('when toggled with theme "default"', () => (
-        <SecondaryButton
-          label="A label text"
-          onClick={() => {}}
-          isToggleButton={true}
-          isToggled={true}
-          theme="default"
-        />
-      ));
-      percySnapshot('when toggled with theme "blue"', () => (
-        <SecondaryButton
-          label="A label text"
-          onClick={() => {}}
-          isToggleButton={true}
-          isToggled={true}
-          theme="blue"
-        />
-      ));
-      percySnapshot('when not toggled with theme "default"', () => (
-        <SecondaryButton
-          label="A label text"
-          onClick={() => {}}
-          isToggleButton={true}
-          isToggled={false}
-          theme="default"
-        />
-      ));
-      percySnapshot('when not toggled with theme "blue"', () => (
-        <SecondaryButton
-          label="A label text"
-          onClick={() => {}}
-          isToggleButton={true}
-          isToggled={false}
-          theme="blue"
-        />
-      ));
-    });
-  });
+    <Case label='with theme - when toggled with theme "default"'>
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+        isToggled={true}
+        theme="default"
+      />
+    </Case>
+    <Case label='with theme - when toggled with theme "blue"'>
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+        isToggled={true}
+        theme="blue"
+      />
+    </Case>
+    <Case label='with theme - when not toggled with theme "default"'>
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+        isToggled={false}
+        theme="default"
+      />
+    </Case>
+    <Case label='with theme - when not toggled with theme "blue"'>
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+        isToggled={false}
+        theme="blue"
+      />
+    </Case>
 
-  suite('size', () => {
-    percySnapshot('when "big"', () => (
+    <Case label='size - when "big"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="big" />
-    ));
+    </Case>
 
-    percySnapshot('when "small"', () => (
+    <Case label='size - when "small"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="small" />
-    ));
-  });
+    </Case>
 
-  suite('tone', () => {
-    percySnapshot('when "urgent"', () => (
+    <Case label='tone - when "urgent"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="urgent" />
-    ));
+    </Case>
 
-    percySnapshot('when "primary"', () => (
+    <Case label='tone - when "primary"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="primary" />
-    ));
-  });
+    </Case>
 
-  suite('when used as link', () => {
-    <SecondaryButton label="A label text" linkTo="/" />;
-  });
-});
+    <Case label="when used as link">
+      <SecondaryButton label="A label text" linkTo="/" />
+    </Case>
+  </Cases>
+));

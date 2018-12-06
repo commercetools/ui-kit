@@ -1,27 +1,27 @@
 import React from 'react';
-import IconButton from './icon-button';
-import { InformationIcon } from '../../icons';
+import { IconButton, InformationIcon } from '../../../../dist/ui-kit.esm';
+import { Cases, Case, screenshot } from '../../../../test/percy';
 
-suite('IconButton', () => {
-  percySnapshot('regular', () => (
-    <IconButton
-      icon={<InformationIcon />}
-      label="A label text"
-      onClick={() => {}}
-    />
-  ));
+screenshot('IconButton', () => (
+  <Cases>
+    <Case label="regular">
+      <IconButton
+        icon={<InformationIcon />}
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
 
-  percySnapshot('disabled', () => (
-    <IconButton
-      icon={<InformationIcon />}
-      label="A label text"
-      onClick={() => {}}
-      isDisabled={true}
-    />
-  ));
+    <Case label="disabled">
+      <IconButton
+        icon={<InformationIcon />}
+        label="A label text"
+        onClick={() => {}}
+        isDisabled={true}
+      />
+    </Case>
 
-  suite('as toggle button', () => {
-    percySnapshot('when toggled', () => (
+    <Case label="when toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -29,103 +29,89 @@ suite('IconButton', () => {
         isToggleButton={true}
         isToggled={true}
       />
-    ));
+    </Case>
 
-    percySnapshot('when not toggled', () => (
+    <Case label="when not toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
       />
-    ));
-  });
-
-  suite('shapes', () => {
-    percySnapshot('when round (default)', () => (
+    </Case>
+    <Case label="shapes - when round (default)">
       <IconButton
         icon={<InformationIcon />}
         shape="round"
         label="A label text"
         onClick={() => {}}
       />
-    ));
+    </Case>
 
-    percySnapshot('when square', () => (
+    <Case label="shapes - when square">
       <IconButton
         icon={<InformationIcon />}
         shape="square"
         label="A label text"
         onClick={() => {}}
       />
-    ));
-  });
+    </Case>
+    <Case label="sizes - when round - when small">
+      <IconButton
+        icon={<InformationIcon />}
+        size="small"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
 
-  suite('sizes', () => {
-    suite('when round', () => {
-      percySnapshot('when small', () => (
-        <IconButton
-          icon={<InformationIcon />}
-          size="small"
-          label="A label text"
-          onClick={() => {}}
-        />
-      ));
+    <Case label="sizes - when round - when medium">
+      <IconButton
+        icon={<InformationIcon />}
+        size="medium"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
 
-      percySnapshot('when medium', () => (
-        <IconButton
-          icon={<InformationIcon />}
-          size="medium"
-          label="A label text"
-          onClick={() => {}}
-        />
-      ));
+    <Case label="sizes - when round - when big (default)">
+      <IconButton
+        icon={<InformationIcon />}
+        size="big"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
+    <Case label="sizes - when square - when small">
+      <IconButton
+        icon={<InformationIcon />}
+        shape="square"
+        size="small"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
 
-      percySnapshot('when big (default)', () => (
-        <IconButton
-          icon={<InformationIcon />}
-          size="big"
-          label="A label text"
-          onClick={() => {}}
-        />
-      ));
-    });
+    <Case label="sizes - when square - when medium">
+      <IconButton
+        icon={<InformationIcon />}
+        shape="square"
+        size="medium"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
 
-    suite('when square', () => {
-      percySnapshot('when small', () => (
-        <IconButton
-          icon={<InformationIcon />}
-          shape="square"
-          size="small"
-          label="A label text"
-          onClick={() => {}}
-        />
-      ));
-
-      percySnapshot('when medium', () => (
-        <IconButton
-          icon={<InformationIcon />}
-          shape="square"
-          size="medium"
-          label="A label text"
-          onClick={() => {}}
-        />
-      ));
-
-      percySnapshot('when big (default)', () => (
-        <IconButton
-          icon={<InformationIcon />}
-          shape="square"
-          size="big"
-          label="A label text"
-          onClick={() => {}}
-        />
-      ));
-    });
-  });
-
-  suite('theme', () => {
-    percySnapshot('when default', () => (
+    <Case label="sizes - when square - when big (default)">
+      <IconButton
+        icon={<InformationIcon />}
+        shape="square"
+        size="big"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
+    <Case label="theme - when default">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -133,9 +119,9 @@ suite('IconButton', () => {
         isToggleButton={true}
         theme="default"
       />
-    ));
+    </Case>
 
-    percySnapshot('when green', () => (
+    <Case label="theme - when green">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -143,9 +129,9 @@ suite('IconButton', () => {
         isToggleButton={true}
         theme="green"
       />
-    ));
+    </Case>
 
-    percySnapshot('when blue', () => (
+    <Case label="theme - when blue">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -153,6 +139,6 @@ suite('IconButton', () => {
         isToggleButton={true}
         theme="blue"
       />
-    ));
-  });
-});
+    </Case>
+  </Cases>
+));

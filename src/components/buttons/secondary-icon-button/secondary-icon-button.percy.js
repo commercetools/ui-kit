@@ -1,22 +1,26 @@
 import React from 'react';
-import SecondaryIconButton from './secondary-icon-button';
-import { InformationIcon } from '../../icons';
+import {
+  SecondaryIconButton,
+  InformationIcon,
+} from '../../../../dist/ui-kit.esm';
+import { Cases, Case, screenshot } from '../../../../test/percy';
 
-suite('SecondaryIconButton', () => {
-  percySnapshot('regular', () => (
-    <SecondaryIconButton
-      icon={<InformationIcon />}
-      label="A label text"
-      onClick={() => {}}
-    />
-  ));
-
-  percySnapshot('disabled', () => (
-    <SecondaryIconButton
-      icon={<InformationIcon />}
-      label="A label text"
-      onClick={() => {}}
-      isDisabled={true}
-    />
-  ));
-});
+screenshot('SecondaryIconButton', () => (
+  <Cases>
+    <Case label="regular">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Case>
+    <Case label="disabled">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        label="A label text"
+        onClick={() => {}}
+        isDisabled={true}
+      />
+    </Case>
+  </Cases>
+));

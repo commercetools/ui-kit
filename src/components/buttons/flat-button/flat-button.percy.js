@@ -1,46 +1,44 @@
 import React from 'react';
-import FlatButton from './flat-button';
-import { InformationIcon } from '../../icons';
+import { FlatButton, InformationIcon } from '../../../../dist/ui-kit.esm';
+import { Cases, Case, screenshot } from '../../../../test/percy';
 
-suite('FlatButton', () => {
-  percySnapshot('regular', () => (
-    <FlatButton type="primary" label="A label text" onClick={() => {}} />
-  ));
-
-  percySnapshot('disabled', () => (
-    <FlatButton
-      type="primary"
-      label="A label text"
-      onClick={() => {}}
-      isDisabled={true}
-    />
-  ));
-
-  percySnapshot('with icon left (default)', () => (
-    <FlatButton
-      type="primary"
-      label="A label text"
-      onClick={() => {}}
-      icon={<InformationIcon />}
-    />
-  ));
-
-  percySnapshot('with icon right', () => (
-    <FlatButton
-      type="primary"
-      label="A label text"
-      onClick={() => {}}
-      icon={<InformationIcon />}
-      iconPosition="right"
-    />
-  ));
-
-  percySnapshot('secondary', () => (
-    <FlatButton
-      type="secondary"
-      label="A label text"
-      onClick={() => {}}
-      icon={<InformationIcon />}
-    />
-  ));
-});
+screenshot('FlatButton', () => (
+  <Cases>
+    <Case label="regular">
+      <FlatButton type="primary" label="A label text" onClick={() => {}} />
+    </Case>
+    <Case label="disabled">
+      <FlatButton
+        type="primary"
+        label="A label text"
+        onClick={() => {}}
+        isDisabled={true}
+      />
+    </Case>
+    <Case label="with icon left (default)">
+      <FlatButton
+        type="primary"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+      />
+    </Case>
+    <Case label="with icon right">
+      <FlatButton
+        type="primary"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+        iconPosition="right"
+      />
+    </Case>
+    <Case label="secondary">
+      <FlatButton
+        type="secondary"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+      />
+    </Case>
+  </Cases>
+));

@@ -1,24 +1,27 @@
 import React from 'react';
-import LinkButton from './link-button';
-import { InformationIcon } from '../../icons';
+import { LinkButton, InformationIcon } from '../../../../dist/ui-kit.esm';
+import { Cases, Case, screenshot } from '../../../../test/percy';
 
-suite('LinkButton', () => {
-  percySnapshot('regular', () => <LinkButton label="A label text" to="/" />);
+screenshot('LinkButton', () => (
+  <Cases>
+    <Case label="regular">
+      <LinkButton label="A label text" to="/" />
+    </Case>
+    <Case label="disabled">
+      <LinkButton label="A label text" to="/" isDisabled={true} />
+    </Case>
 
-  percySnapshot('disabled', () => (
-    <LinkButton label="A label text" to="/" isDisabled={true} />
-  ));
+    <Case label="with icon left">
+      <LinkButton label="A label text" to="/" icon={<InformationIcon />} />
+    </Case>
 
-  percySnapshot('with icon left', () => (
-    <LinkButton label="A label text" to="/" icon={<InformationIcon />} />
-  ));
-
-  percySnapshot('with icon left and disabled', () => (
-    <LinkButton
-      label="A label text"
-      to="/"
-      isDisabled={true}
-      icon={<InformationIcon />}
-    />
-  ));
-});
+    <Case label="with icon left and disabled">
+      <LinkButton
+        label="A label text"
+        to="/"
+        isDisabled={true}
+        icon={<InformationIcon />}
+      />
+    </Case>
+  </Cases>
+));

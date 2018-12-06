@@ -1,24 +1,12 @@
 const path = require('path');
-const postcssImport = require('postcss-import');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssReporter = require('postcss-reporter');
-const postcssCustomProperties = require('postcss-custom-properties');
-const postcssCustomMediaQueries = require('postcss-custom-media');
-const postcssPostcssColorModFunction = require('postcss-color-mod-function');
 
 const sourceFolders = [
-  path.resolve(__dirname),
-  path.resolve(__dirname, './examples'),
-  path.resolve(__dirname, './materials'),
+  // path.resolve(__dirname),
+  path.resolve(__dirname, './test/percy'),
+  // path.resolve(__dirname, './examples'),
+  // path.resolve(__dirname, './materials'),
   path.resolve(__dirname, './src'),
 ];
-
-const browserslist = {
-  development: ['chrome', 'firefox'].map(
-    browser => `last 2 ${browser} versions`
-  ),
-  production: ['>1%', 'not op_mini all', 'ie 11'],
-};
 
 module.exports = {
   webpack: {
@@ -29,6 +17,7 @@ module.exports = {
         // Process JS with Babel.
         {
           test: /\.js$/,
+          exclude: /\/dist\/ui-kit\.esm/,
           include: sourceFolders,
           use: [
             {
@@ -44,97 +33,6 @@ module.exports = {
                 highlightCode: true,
               },
             },
-          ],
-        },
-        // For svg icons, we want to get them transformed into React components
-        // when we import them.
-        {
-          test: /\.react\.svg$/,
-          include: sourceFolders,
-          use: [
-            {
-              loader: require.resolve('babel-loader'),
-              options: {
-                babelrc: false,
-                presets: [require.resolve('./scripts/get-babel-preset')],
-                // This is a feature of `babel-loader` for webpack (not Babel itself).
-                // It enables caching results in ./node_modules/.cache/babel-loader/
-                // directory for faster rebuilds.
-                cacheDirectory: true,
-                highlightCode: true,
-              },
-            },
-            {
-              loader: require.resolve('@svgr/webpack'),
-              options: {
-                // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
-                // See related PR: https://github.com/smooth-code/svgr/pull/137
-                icon: false,
-                svgoConfig: {
-                  plugins: [
-                    { removeViewBox: false },
-                    // Keeps ID's of svgs so they can be targeted with CSS
-                    { cleanupIDs: false },
-                  ],
-                },
-              },
-            },
-          ],
-        },
-        // "postcss" loader applies autoprefixer to our CSS
-        // "css" loader resolves paths in CSS and adds assets as dependencies.
-        // "style" loader turns CSS into JS modules that inject <style> tags.
-        {
-          test: /\.mod\.css$/,
-          include: sourceFolders,
-          use: [
-            require.resolve('style-loader'),
-            {
-              loader: require.resolve('css-loader'),
-              options: {
-                modules: true,
-                importLoaders: 1,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-              },
-            },
-            {
-              loader: require.resolve('postcss-loader'),
-              options: {
-                ident: 'postcss',
-                plugins: () => [
-                  postcssImport({ path: sourceFolders }),
-                  postcssPresetEnv({
-                    browsers: browserslist.development,
-                    autoprefixer: { grid: true },
-                  }),
-                  postcssCustomProperties({
-                    preserve: false,
-                    importFrom: 'materials/custom-properties.css',
-                  }),
-                  postcssCustomMediaQueries(),
-                  postcssPostcssColorModFunction(),
-                  postcssReporter(),
-                ],
-              },
-            },
-          ],
-        },
-        {
-          test: /\.css$/,
-          // "css" loader resolves paths in CSS and adds assets as dependencies.
-          // "style" loader turns CSS into JS modules that inject <style> tags.
-          include: /node_modules/,
-          loaders: [
-            require.resolve('style-loader'),
-            require.resolve('css-loader'),
-          ],
-        },
-        // Storybook uses a plugin to load and render markdown files.
-        {
-          test: /\.md$/,
-          use: [
-            { loader: require.resolve('html-loader') },
-            { loader: require.resolve('markdown-loader') },
           ],
         },
       ],
