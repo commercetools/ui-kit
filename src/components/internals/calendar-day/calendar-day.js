@@ -4,7 +4,7 @@ import omit from 'lodash.omit';
 import classnames from 'classnames';
 import styles from './calendar-day.mod.css';
 
-const DateCalendarDay = props => (
+const CalendarDay = props => (
   <li className={styles.wrapper}>
     <div
       className={classnames(
@@ -38,9 +38,9 @@ const DateCalendarDay = props => (
   </li>
 );
 
-DateCalendarDay.displayName = 'DateCalendarDay';
+CalendarDay.displayName = 'CalendarDay';
 
-DateCalendarDay.propTypes = {
+CalendarDay.propTypes = {
   children: PropTypes.node,
   type: PropTypes.oneOf(['heading', 'spacing', 'day']),
   isHighlighted: PropTypes.bool,
@@ -51,4 +51,4 @@ DateCalendarDay.propTypes = {
   isToday: PropTypes.bool,
 };
 
-export default DateCalendarDay;
+export default CalendarDay;

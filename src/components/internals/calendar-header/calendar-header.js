@@ -5,7 +5,7 @@ import styles from './calendar-header.mod.css';
 import { AngleLeftIcon, AngleRightIcon, CircleIcon } from '../../icons';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
-const DateCalendarHeader = props => (
+const CalendarHeader = props => (
   <div className={styles.container}>
     <div className={styles.month}>
       <SecondaryIconButton
@@ -43,9 +43,9 @@ const DateCalendarHeader = props => (
   </div>
 );
 
-DateCalendarHeader.displayName = 'DateCalendarHeader';
+CalendarHeader.displayName = 'CalendarHeader';
 
-DateCalendarHeader.propTypes = {
+CalendarHeader.propTypes = {
   monthLabel: PropTypes.string.isRequired,
   yearLabel: PropTypes.string.isRequired,
   onPrevMonthClick: PropTypes.func.isRequired,
@@ -55,4 +55,4 @@ DateCalendarHeader.propTypes = {
   onNextYearClick: PropTypes.func.isRequired,
 };
 
-export default DateCalendarHeader;
+export default CalendarHeader;
