@@ -71,7 +71,7 @@ export default class TimeInputBody extends React.Component {
             id={this.props.id}
             name={this.props.name}
             className={classnames(styles['time-input'], {
-              [styles.error]: this.props.hasError,
+              [styles.error]: !this.props.isDisabled && this.props.hasError,
             })}
             placeholder={this.props.placeholder}
             autoFocus={this.props.isAutofocussed}
