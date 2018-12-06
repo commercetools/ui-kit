@@ -22,13 +22,22 @@ dropdown will be disabled.
 #### Usage
 
 ```js
-import PrimaryActionDropdown, { Option } from '@commercetools-frontend/ui-kit/dropdowns/primary-action-dropdown';
+import {
+  PrimaryActionDropdown,
+  PrimaryActionDropdownOption,
+} from '@commercetools-frontend/ui-kit';
 
 <PrimaryActionDropdown>
-  <Option icon={<AddBoldIcon />} onClick={alert('primary clicked')}}>Primary option</Option>
-  <Option onClick={alert('clicked')}>Another option</Option>
-  <Option isDisabled={true} onClick={alert('clicked')}>Even another option</Option>
-</PrimaryActionDropdown>
+  <PrimaryActionDropdownOption icon={<AddBoldIcon />} onClick={() => {}}>
+    Primary option
+  </PrimaryActionDropdownOption>
+  <PrimaryActionDropdownOption onClick={() => {}}>
+    Another option
+  </PrimaryActionDropdownOption>
+  <PrimaryActionDropdownOption isDisabled={true} onClick={() => {}}>
+    Even another option
+  </PrimaryActionDropdownOption>
+</PrimaryActionDropdown>;
 ```
 
 #### Properties

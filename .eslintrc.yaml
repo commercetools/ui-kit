@@ -33,6 +33,8 @@ overrides:
     env:
       'react-percy/globals': true
     rules:
+      # We disable the rule for dist/ui-kit imports as there is no guarantee
+      # that a bundle has been created before running the tests.
       'import/no-unresolved': [2, { ignore: ['\/dist\/ui-kit\.esm'] }]
 settings:
   import/ignore:
