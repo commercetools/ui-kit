@@ -1,47 +1,47 @@
 import React from 'react';
 import { InformationIcon, SecondaryButton } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('SecondaryButton', () => (
-  <Cases>
-    <Case label="regular">
+  <Suite>
+    <Spec label="regular">
       <SecondaryButton label="A label text" onClick={() => {}} />
-    </Case>
+    </Spec>
 
-    <Case label="disabled">
+    <Spec label="disabled">
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         isDisabled={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label="with icon left (default)">
+    <Spec label="with icon left (default)">
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         iconLeft={<InformationIcon />}
       />
-    </Case>
+    </Spec>
 
-    <Case label="as toggle button - when not toggled">
+    <Spec label="as toggle button - when not toggled">
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label="as toggle button - when toggled">
+    <Spec label="as toggle button - when toggled">
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label='with theme - when toggled with theme "default"'>
+    <Spec label='with theme - when toggled with theme "default"'>
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
@@ -49,8 +49,8 @@ screenshot('SecondaryButton', () => (
         isToggled={true}
         theme="default"
       />
-    </Case>
-    <Case label='with theme - when toggled with theme "blue"'>
+    </Spec>
+    <Spec label='with theme - when toggled with theme "blue"'>
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
@@ -58,8 +58,8 @@ screenshot('SecondaryButton', () => (
         isToggled={true}
         theme="blue"
       />
-    </Case>
-    <Case label='with theme - when not toggled with theme "default"'>
+    </Spec>
+    <Spec label='with theme - when not toggled with theme "default"'>
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
@@ -67,8 +67,8 @@ screenshot('SecondaryButton', () => (
         isToggled={false}
         theme="default"
       />
-    </Case>
-    <Case label='with theme - when not toggled with theme "blue"'>
+    </Spec>
+    <Spec label='with theme - when not toggled with theme "blue"'>
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
@@ -76,26 +76,26 @@ screenshot('SecondaryButton', () => (
         isToggled={false}
         theme="blue"
       />
-    </Case>
+    </Spec>
 
-    <Case label='size - when "big"'>
+    <Spec label='size - when "big"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="big" />
-    </Case>
+    </Spec>
 
-    <Case label='size - when "small"'>
+    <Spec label='size - when "small"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="small" />
-    </Case>
+    </Spec>
 
-    <Case label='tone - when "urgent"'>
+    <Spec label='tone - when "urgent"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="urgent" />
-    </Case>
+    </Spec>
 
-    <Case label='tone - when "primary"'>
+    <Spec label='tone - when "primary"'>
       <SecondaryButton label="A label text" onClick={() => {}} size="primary" />
-    </Case>
+    </Spec>
 
-    <Case label="when used as link">
+    <Spec label="when used as link">
       <SecondaryButton label="A label text" linkTo="/" />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));

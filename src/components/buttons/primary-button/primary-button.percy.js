@@ -1,60 +1,60 @@
 import React from 'react';
 import { InformationIcon, PrimaryButton } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('PrimaryButton', () => (
-  <Cases>
-    <Case label="regular">
+  <Suite>
+    <Spec label="regular">
       <PrimaryButton label="A label text" onClick={() => {}} />
-    </Case>
+    </Spec>
 
-    <Case label="disabled">
+    <Spec label="disabled">
       <PrimaryButton
         label="A label text"
         onClick={() => {}}
         isDisabled={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label="with icon left (default)">
+    <Spec label="with icon left (default)">
       <PrimaryButton
         label="A label text"
         onClick={() => {}}
         iconLeft={<InformationIcon />}
       />
-    </Case>
+    </Spec>
 
-    <Case label="as toggle button - when not toggled">
+    <Spec label="as toggle button - when not toggled">
       <PrimaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label="as toggle button - when toggled">
+    <Spec label="as toggle button - when toggled">
       <PrimaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label='size - when "big"'>
+    <Spec label='size - when "big"'>
       <PrimaryButton label="A label text" onClick={() => {}} size="big" />
-    </Case>
+    </Spec>
 
-    <Case label='size - when "small"'>
+    <Spec label='size - when "small"'>
       <PrimaryButton label="A label text" onClick={() => {}} size="small" />
-    </Case>
+    </Spec>
 
-    <Case label='tone - when "urgent"'>
+    <Spec label='tone - when "urgent"'>
       <PrimaryButton label="A label text" onClick={() => {}} tone="urgent" />
-    </Case>
+    </Spec>
 
-    <Case label='tone - when "primary"'>
+    <Spec label='tone - when "primary"'>
       <PrimaryButton label="A label text" onClick={() => {}} tone="primary" />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));

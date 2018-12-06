@@ -1,29 +1,29 @@
 import React from 'react';
 import { FlatButton, InformationIcon } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('FlatButton', () => (
-  <Cases>
-    <Case label="regular">
+  <Suite>
+    <Spec label="regular">
       <FlatButton type="primary" label="A label text" onClick={() => {}} />
-    </Case>
-    <Case label="disabled">
+    </Spec>
+    <Spec label="disabled">
       <FlatButton
         type="primary"
         label="A label text"
         onClick={() => {}}
         isDisabled={true}
       />
-    </Case>
-    <Case label="with icon left (default)">
+    </Spec>
+    <Spec label="with icon left (default)">
       <FlatButton
         type="primary"
         label="A label text"
         onClick={() => {}}
         icon={<InformationIcon />}
       />
-    </Case>
-    <Case label="with icon right">
+    </Spec>
+    <Spec label="with icon right">
       <FlatButton
         type="primary"
         label="A label text"
@@ -31,14 +31,14 @@ screenshot('FlatButton', () => (
         icon={<InformationIcon />}
         iconPosition="right"
       />
-    </Case>
-    <Case label="secondary">
+    </Spec>
+    <Spec label="secondary">
       <FlatButton
         type="secondary"
         label="A label text"
         onClick={() => {}}
         icon={<InformationIcon />}
       />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));

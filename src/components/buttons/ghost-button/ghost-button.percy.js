@@ -1,40 +1,40 @@
 import React from 'react';
 import { InformationIcon, GhostButton } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('GhostButton', () => (
-  <Cases>
-    <Case label="regular">
+  <Suite>
+    <Spec label="regular">
       <GhostButton label="A label text" onClick={() => {}} />
-    </Case>
+    </Spec>
 
-    <Case label="disabled">
+    <Spec label="disabled">
       <GhostButton label="A label text" onClick={() => {}} isDisabled={true} />
-    </Case>
+    </Spec>
 
-    <Case label="with iconLeft">
+    <Spec label="with iconLeft">
       <GhostButton
         label="A label text"
         onClick={() => {}}
         iconLeft={<InformationIcon />}
       />
-    </Case>
+    </Spec>
 
-    <Case label="as toggle button (not toggled)">
+    <Spec label="as toggle button (not toggled)">
       <GhostButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label="as toggle button (toggled)">
+    <Spec label="as toggle button (toggled)">
       <GhostButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={true}
       />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));

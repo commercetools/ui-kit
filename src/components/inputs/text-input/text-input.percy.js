@@ -1,34 +1,34 @@
 import React from 'react';
 import { TextInput } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('TextInput', () => (
-  <Cases>
-    <Case label="enabed">
+  <Suite>
+    <Spec label="enabed">
       <TextInput
         value="Some value"
         onChange={() => {}}
         horizontalConstraint="m"
       />
-    </Case>
-    <Case label="disabled">
+    </Spec>
+    <Spec label="disabled">
       <TextInput
         value="Some value"
         onChange={() => {}}
         horizontalConstraint="m"
         isDisabled={true}
       />
-    </Case>
-    <Case label="placeholder">
+    </Spec>
+    <Spec label="placeholder">
       <TextInput
         value=""
         onChange={() => {}}
         horizontalConstraint="m"
         placeholder="Some placeholder"
       />
-    </Case>
-    <Case label="horizontalConstraint='l'">
+    </Spec>
+    <Spec label="horizontalConstraint='l'">
       <TextInput value="" onChange={() => {}} horizontalConstraint="l" />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));

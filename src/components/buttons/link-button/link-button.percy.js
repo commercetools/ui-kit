@@ -1,27 +1,27 @@
 import React from 'react';
 import { LinkButton, InformationIcon } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('LinkButton', () => (
-  <Cases>
-    <Case label="regular">
+  <Suite>
+    <Spec label="regular">
       <LinkButton label="A label text" to="/" />
-    </Case>
-    <Case label="disabled">
+    </Spec>
+    <Spec label="disabled">
       <LinkButton label="A label text" to="/" isDisabled={true} />
-    </Case>
+    </Spec>
 
-    <Case label="with icon left">
+    <Spec label="with icon left">
       <LinkButton label="A label text" to="/" icon={<InformationIcon />} />
-    </Case>
+    </Spec>
 
-    <Case label="with icon left and disabled">
+    <Spec label="with icon left and disabled">
       <LinkButton
         label="A label text"
         to="/"
         isDisabled={true}
         icon={<InformationIcon />}
       />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));

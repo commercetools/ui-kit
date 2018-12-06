@@ -3,24 +3,24 @@ import {
   SecondaryIconButton,
   InformationIcon,
 } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('SecondaryIconButton', () => (
-  <Cases>
-    <Case label="regular">
+  <Suite>
+    <Spec label="regular">
       <SecondaryIconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
-    <Case label="disabled">
+    </Spec>
+    <Spec label="disabled">
       <SecondaryIconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isDisabled={true}
       />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));

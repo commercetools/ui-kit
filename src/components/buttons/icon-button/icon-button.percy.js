@@ -1,27 +1,27 @@
 import React from 'react';
 import { IconButton, InformationIcon } from '../../../../dist/ui-kit.esm';
-import { Cases, Case, screenshot } from '../../../../test/percy';
+import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 screenshot('IconButton', () => (
-  <Cases>
-    <Case label="regular">
+  <Suite>
+    <Spec label="regular">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
+    </Spec>
 
-    <Case label="disabled">
+    <Spec label="disabled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isDisabled={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label="when toggled">
+    <Spec label="when toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -29,60 +29,60 @@ screenshot('IconButton', () => (
         isToggleButton={true}
         isToggled={true}
       />
-    </Case>
+    </Spec>
 
-    <Case label="when not toggled">
+    <Spec label="when not toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
       />
-    </Case>
-    <Case label="shapes - when round (default)">
+    </Spec>
+    <Spec label="shapes - when round (default)">
       <IconButton
         icon={<InformationIcon />}
         shape="round"
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
+    </Spec>
 
-    <Case label="shapes - when square">
+    <Spec label="shapes - when square">
       <IconButton
         icon={<InformationIcon />}
         shape="square"
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
-    <Case label="sizes - when round - when small">
+    </Spec>
+    <Spec label="sizes - when round - when small">
       <IconButton
         icon={<InformationIcon />}
         size="small"
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
+    </Spec>
 
-    <Case label="sizes - when round - when medium">
+    <Spec label="sizes - when round - when medium">
       <IconButton
         icon={<InformationIcon />}
         size="medium"
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
+    </Spec>
 
-    <Case label="sizes - when round - when big (default)">
+    <Spec label="sizes - when round - when big (default)">
       <IconButton
         icon={<InformationIcon />}
         size="big"
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
-    <Case label="sizes - when square - when small">
+    </Spec>
+    <Spec label="sizes - when square - when small">
       <IconButton
         icon={<InformationIcon />}
         shape="square"
@@ -90,9 +90,9 @@ screenshot('IconButton', () => (
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
+    </Spec>
 
-    <Case label="sizes - when square - when medium">
+    <Spec label="sizes - when square - when medium">
       <IconButton
         icon={<InformationIcon />}
         shape="square"
@@ -100,9 +100,9 @@ screenshot('IconButton', () => (
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
+    </Spec>
 
-    <Case label="sizes - when square - when big (default)">
+    <Spec label="sizes - when square - when big (default)">
       <IconButton
         icon={<InformationIcon />}
         shape="square"
@@ -110,8 +110,8 @@ screenshot('IconButton', () => (
         label="A label text"
         onClick={() => {}}
       />
-    </Case>
-    <Case label="theme - when default">
+    </Spec>
+    <Spec label="theme - when default">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -119,9 +119,9 @@ screenshot('IconButton', () => (
         isToggleButton={true}
         theme="default"
       />
-    </Case>
+    </Spec>
 
-    <Case label="theme - when green">
+    <Spec label="theme - when green">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -129,9 +129,9 @@ screenshot('IconButton', () => (
         isToggleButton={true}
         theme="green"
       />
-    </Case>
+    </Spec>
 
-    <Case label="theme - when blue">
+    <Spec label="theme - when blue">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
@@ -139,6 +139,6 @@ screenshot('IconButton', () => (
         isToggleButton={true}
         theme="blue"
       />
-    </Case>
-  </Cases>
+    </Spec>
+  </Suite>
 ));
