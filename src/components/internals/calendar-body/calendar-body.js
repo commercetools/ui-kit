@@ -25,8 +25,8 @@ ClearSection.propTypes = {
   onClear: PropTypes.func,
 };
 
-export default class DateCalendarBody extends React.PureComponent {
-  static displayName = 'DateCalendarBody';
+export default class CalendarBody extends React.PureComponent {
+  static displayName = 'CalendarBody';
 
   static propTypes = {
     inputRef: PropTypes.object.isRequired,

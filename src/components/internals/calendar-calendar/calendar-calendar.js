@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './calendar-calendar.mod.css';
 
-const DateCalendarCalendar = props => (
+const CalendarCalendar = props => (
   <ul className={styles.calendar}>{props.children}</ul>
 );
 
-DateCalendarCalendar.displayName = 'DateCalendarCalendar';
+CalendarCalendar.displayName = 'CalendarCalendar';
 
-DateCalendarCalendar.propTypes = {
+CalendarCalendar.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default DateCalendarCalendar;
+export default CalendarCalendar;

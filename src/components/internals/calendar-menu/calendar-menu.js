@@ -4,8 +4,8 @@ import omit from 'lodash.omit';
 import classnames from 'classnames';
 import styles from './calendar-menu.mod.css';
 
-export default class DateCalendarMenu extends Component {
-  static displayName = 'DateCalendarMenu';
+export default class CalendarMenu extends Component {
+  static displayName = 'CalendarMenu';
   static propTypes = {
     children: PropTypes.node.isRequired,
     hasFooter: PropTypes.bool,
