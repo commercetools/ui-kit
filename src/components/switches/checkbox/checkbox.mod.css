@@ -11,11 +11,11 @@
   align-items: center;
 }
 
-.checkboxWrapper svg [id='borderAndContent'] > [id='border'] {
+.checkboxWrapper svg [id$='borderAndContent'] > [id$='border'] {
   stroke: 1px var(--token-border-color-input-pristine) solid;
 }
 
-.checkboxWrapper svg [id='borderAndContent'] > [id='content'] {
+.checkboxWrapper svg [id$='borderAndContent'] > [id$='content'] {
   fill: var(--token-border-color-input-focus);
 }
 
@@ -37,21 +37,21 @@
 
 /* hasError */
 
-.hasError svg [id='borderAndContent'] > [id='content'] {
+.hasError svg [id$='borderAndContent'] > [id$='content'] {
   fill: var(--token-border-color-input-error);
 }
 
-.hasError svg [id='borderAndContent'] > [id='border'] {
+.hasError svg [id$='borderAndContent'] > [id$='border'] {
   stroke: var(--token-font-color-error);
 }
 
 /* isDisabled */
 
-.isDisabled svg [id='borderAndContent'] > [id='content'] {
+.isDisabled svg [id$='borderAndContent'] > [id$='content'] {
   fill: var(--token-font-color-disabled);
 }
 
-.isDisabled svg [id='borderAndContent'] > [id='border'] {
+.isDisabled svg [id$='borderAndContent'] > [id$='border'] {
   stroke: var(--token-border-color-input-disabled);
 }
 
@@ -59,11 +59,11 @@
 
 .labelWrapper:not(.labelWrapperDisabled, .labelWrapperError):hover
   svg
-  [id='borderAndContent']
-  > [id='border'] {
+  [id$='borderAndContent']
+  > [id$='border'] {
   stroke: var(--token-border-color-input-focus);
 }
 
-.isHovered svg [id='borderAndContent'] > [id='border'] {
+.isHovered svg [id$='borderAndContent'] > [id$='border'] {
   stroke: var(--token-border-color-input-focus);
 }
