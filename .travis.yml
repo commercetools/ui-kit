@@ -21,7 +21,7 @@ script:
   - yarn build
   - yarn run jest --projects jest.*.config.js --maxWorkers=4 --reporters jest-silent-reporter
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
-  - yarn percy
+  # yarn percy
   # back to default in case internal travis scripts return non zero response codes.
   - set +e
 
