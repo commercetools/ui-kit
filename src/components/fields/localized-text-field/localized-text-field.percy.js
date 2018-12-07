@@ -16,6 +16,7 @@ screenshot('LocalizedTextField', () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
+        horizontalConstraint="m"
       />
     </Spec>
     <Spec label="when multiline text is expanded by default">
