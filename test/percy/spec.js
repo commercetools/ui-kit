@@ -86,7 +86,7 @@ Props.propTypes = {
 const Spec = props => (
   <Container inverted={props.inverted}>
     <Label>{props.label}</Label>
-    <Props>{props.children}</Props>
+    {!props.omitPropsList && <Props>{props.children}</Props>}
     <Box>{props.children}</Box>
   </Container>
 );
@@ -95,6 +95,11 @@ Spec.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
   inverted: PropTypes.bool,
+  omitPropsList: PropTypes.bool,
+};
+
+Spec.defaultProps = {
+  omitPropsList: false,
 };
 
 Spec.displayName = 'Spec';

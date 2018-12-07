@@ -7,23 +7,19 @@ const NarrowBox = styled.div`
   width: 200px;
 `;
 
-const InvertedBox = styled.div`
-  background-color: black;
-  color: white;
-`;
-
 screenshot('Text', () => (
   <Suite>
     <Spec label="Headline - h1">
       <Text.Headline elementType="h1">{'Title H1'}</Text.Headline>
     </Spec>
-    <Spec label="Headline - h1 - truncated">
-      <NarrowBox>
+    <NarrowBox>
+      <Spec label="Headline - h1 - truncated">
         <Text.Headline elementType="h1" truncate={true}>
           {'A longer title that should be truncated'}
         </Text.Headline>
-      </NarrowBox>
-    </Spec>
+      </Spec>
+    </NarrowBox>
+
     <Spec label="Headline - h2">
       <Text.Headline elementType="h2">{'Title H2'}</Text.Headline>
     </Spec>
@@ -35,13 +31,13 @@ screenshot('Text', () => (
         {'Bigger subheadline'}
       </Text.Subheadline>
     </Spec>
-    <Spec label="Subheadline - h4 - truncated">
-      <NarrowBox>
+    <NarrowBox>
+      <Spec label="Subheadline - h4 - truncated">
         <Text.Subheadline elementType="h4" truncate={true}>
           {'A longer subheadline that should be truncated'}
         </Text.Subheadline>
-      </NarrowBox>
-    </Spec>
+      </Spec>
+    </NarrowBox>
     <Spec label="Subheadline - h4 - bold">
       <Text.Subheadline isBold={true} elementType="h4">
         {'Bold subheadline'}
@@ -112,11 +108,9 @@ screenshot('Text', () => (
       <Text.Body tone="negative">Body text negative</Text.Body>
     </Spec>
     <NarrowBox>
-      <InvertedBox>
-        <Spec label="Body - tone - inverted">
-          <Text.Body tone="inverted">Body text inverted</Text.Body>
-        </Spec>
-      </InvertedBox>
+      <Spec inverted label="Body - tone - inverted">
+        <Text.Body tone="inverted">Body text inverted</Text.Body>
+      </Spec>
     </NarrowBox>
     <NarrowBox>
       <Spec label="Body - truncate">
@@ -125,7 +119,7 @@ screenshot('Text', () => (
         </Text.Body>
       </Spec>
     </NarrowBox>
-    <Spec label="Body - inline">
+    <Spec label="Body - inline" omitPropsList>
       <Text.Body isInline={true}>One inline body text{'. '}</Text.Body>
       <Text.Body isInline={true}>A second inline text.</Text.Body>
     </Spec>
@@ -154,11 +148,9 @@ screenshot('Text', () => (
       <Text.Detail tone="negative">Detail text negative</Text.Detail>
     </Spec>
     <NarrowBox>
-      <InvertedBox>
-        <Spec label="Detail - tone - inverted">
-          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
-        </Spec>
-      </InvertedBox>
+      <Spec inverted label="Detail - tone - inverted">
+        <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
+      </Spec>
     </NarrowBox>
     <NarrowBox>
       <Spec label="Detail - truncate">
@@ -167,7 +159,7 @@ screenshot('Text', () => (
         </Text.Detail>
       </Spec>
     </NarrowBox>
-    <Spec label="Detail - inline">
+    <Spec label="Detail - inline" omitPropsList>
       <Text.Detail isInline={true}>One inline detail text{'. '}</Text.Detail>
       <Text.Detail isInline={true}>A second inline text.</Text.Detail>
     </Spec>
