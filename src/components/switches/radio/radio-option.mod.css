@@ -11,21 +11,21 @@
   align-items: center;
 }
 
-.radioWrapper svg [id='borderAndContent'] > [id='border'] {
+.radioWrapper svg [id$='borderAndContent'] > [id$='border'] {
   stroke: 1px var(--token-border-color-input-pristine) solid;
 }
 
-.radioWrapper svg [id='borderAndContent'] > [id='content'] {
+.radioWrapper svg [id$='borderAndContent'] > [id$='content'] {
   fill: var(--token-border-color-input-focus);
 }
 
 /* isDisabled */
 
-.isDisabled svg [id='borderAndContent'] > [id='content'] {
+.isDisabled svg [id$='borderAndContent'] > [id$='content'] {
   fill: var(--token-font-color-disabled);
 }
 
-.isDisabled svg [id='borderAndContent'] > [id='border'] {
+.isDisabled svg [id$='borderAndContent'] > [id$='border'] {
   stroke: var(--token-border-color-input-disabled);
 }
 
@@ -33,12 +33,12 @@
 
 .labelWrapper:not(.labelWrapperDisabled):hover
   svg
-  [id='borderAndContent']
-  > [id='border'] {
+  [id$='borderAndContent']
+  > [id$='border'] {
   stroke: var(--token-border-color-input-focus);
 }
 
-.isHovered svg [id='borderAndContent'] > [id='border'] {
+.isHovered svg [id$='borderAndContent'] > [id$='border'] {
   stroke: var(--token-border-color-input-focus);
 }
 
