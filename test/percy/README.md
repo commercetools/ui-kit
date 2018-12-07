@@ -46,6 +46,8 @@ screenshot('PrimaryButton', () => (
 ));
 ```
 
+You can test this snapshot in your browser before even uploading it to Percy by running `yarn percy --debug`.
+
 ### `screenshot`
 
 Usually when writing tests for Percy you'd call `percySnapshot('label', options, () => <Foo />)`. As we want to always use the same options (the same viewport), we export a preconfigured `screenshot` function which provides the options out of the box.
@@ -65,6 +67,14 @@ A `Spec` should render your component in a specific state.
 You can use multiple specs within a `Suite`.
 
 ## Local development (rarely used)
+
+### Viewing snapshots in browser
+
+You can run `yarn percy --debug` to show your snapshots in the browser without having to upload them. This is useful when you're working on adding more snapshots or resolving bugs in existing snapshots.
+
+No snapshots will be uploaded to Percy in this case.
+
+### Uploading local snapshots
 
 Usually, you'd let Percy run for your PRs on CI. There is no need to run it locally. However, if you ever need to run Percy locally (e.g. to debug our Percy setup), you can follow the steps described [here](https://docs.percy.io/docs/local-development).
 
