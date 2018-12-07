@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.inverted ? '#111' : '#eee')};
 `;
 
 const Label = styled.div`
@@ -25,7 +26,7 @@ const PropList = styled.div`
 const PropLabel = styled.span`
   font-weight: bold;
   padding: 0 4px;
-  min-width: 120px;
+  min-width: 140px;
   display: inline-block;
 `;
 
@@ -35,12 +36,27 @@ const PropValue = styled.span`
 
 const Box = styled.div``;
 
-const Pill = props => (
-  <div>
-    <PropLabel>{props.label}</PropLabel>
-    <PropValue>{JSON.stringify(props.value)}</PropValue>
-  </div>
-);
+const Pill = props => {
+  const value = (() => {
+    if (React.isValidElement(props.value)) return 'React Element';
+    if (
+      Array.isArray(props.value) &&
+      props.value.every(element => React.isValidElement(element))
+    )
+      return '[React Element]';
+    try {
+      return JSON.stringify(props.value);
+    } catch (e) {
+      return '-';
+    }
+  })();
+  return (
+    <div>
+      <PropLabel>{props.label}</PropLabel>
+      <PropValue>{value}</PropValue>
+    </div>
+  );
+};
 
 Pill.displayName = 'Pill';
 Pill.propTypes = {
@@ -68,7 +84,7 @@ Props.propTypes = {
 };
 
 const Spec = props => (
-  <Container>
+  <Container inverted={props.inverted}>
     <Label>{props.label}</Label>
     <Props>{props.children}</Props>
     <Box>{props.children}</Box>
@@ -78,6 +94,7 @@ const Spec = props => (
 Spec.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
+  inverted: PropTypes.bool,
 };
 
 Spec.displayName = 'Spec';

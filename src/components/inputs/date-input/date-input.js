@@ -25,8 +25,8 @@ import {
   parseInputToDate,
 } from '../../../utils/calendar';
 
-class DateCalendar extends React.Component {
-  static displayName = 'DateCalendar';
+class DateInput extends React.Component {
+  static displayName = 'DateInput';
   static propTypes = {
     intl: PropTypes.shape({
       locale: PropTypes.string.isRequired,
@@ -276,4 +276,4 @@ class DateCalendar extends React.Component {
   }
 }
 
-export default injectIntl(DateCalendar);
+export default injectIntl(DateInput);

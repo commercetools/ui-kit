@@ -1,16 +1,20 @@
 import React from 'react';
-import { TextInput } from '../../../../dist/ui-kit.esm';
+import { PasswordInput } from '../../../../dist/ui-kit.esm';
 import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 const value = 'hello world how are you?';
 
-screenshot('TextInput', () => (
+screenshot('PasswordInput', () => (
   <Suite>
     <Spec label="minimal">
-      <TextInput value={value} onChange={() => {}} horizontalConstraint="m" />
+      <PasswordInput
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
     </Spec>
     <Spec label="when disabled">
-      <TextInput
+      <PasswordInput
         isDisabled={true}
         value={value}
         onChange={() => {}}
@@ -18,7 +22,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="when read-only">
-      <TextInput
+      <PasswordInput
         isReadOnly={true}
         value={value}
         onChange={() => {}}
@@ -26,7 +30,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="when placeholder is visible">
-      <TextInput
+      <PasswordInput
         isDisabled={true}
         value=""
         placeholder="Enter a text"
@@ -35,7 +39,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="with error">
-      <TextInput
+      <PasswordInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -43,7 +47,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="with warning">
-      <TextInput
+      <PasswordInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -51,7 +55,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="with error and warning">
-      <TextInput
+      <PasswordInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -60,30 +64,12 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="when disabled and closed by default">
-      <TextInput
+      <PasswordInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
         isDefaultClosed={true}
         isDisabled={true}
-      />
-    </Spec>
-    <Spec label="when disabled with error">
-      <TextInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        isDisabled={true}
-        hasError={true}
-      />
-    </Spec>
-    <Spec label="when disabled with warning">
-      <TextInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        isDisabled={true}
-        hasWarning={true}
       />
     </Spec>
   </Suite>
