@@ -44,8 +44,7 @@ class DateCalendar extends React.Component {
   };
   inputRef = React.createRef();
   state = {
-    calendarDate:
-      this.props.value.length === 2 ? this.props.value[0] : getToday(),
+    calendarDate: this.props.value || getToday(),
     suggestedItems: [],
     highlightedIndex:
       this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
