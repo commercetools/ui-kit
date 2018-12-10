@@ -51,7 +51,6 @@ storiesOf('Typography/Text', module)
       <InlineColorWrapper width={'200px'}>
         <Text.Wrap
           title={text('title', 'Text to be shown as tooltip on hover')}
-          dataTest={text('dataTest', 'test-prop')}
         >
           {text(
             'Text',
