@@ -272,6 +272,15 @@ describe('<Body>', () => {
     });
   });
 
+  describe('with dataTest', () => {
+    beforeEach(() => {
+      wrapper = shallow(<Text.Body data-test="prop-test">{'Body'}</Text.Body>);
+    });
+    it('should contain `data-test` prop', () => {
+      expect(wrapper).toHaveProp('data-test', 'prop-test');
+    });
+  });
+
   describe('when used as inline text', () => {
     beforeEach(() => {
       wrapper = shallow(<Text.Body isInline={true}>{'Body'}</Text.Body>);
@@ -321,13 +330,17 @@ describe('<Body>', () => {
         expect(wrapper).toHaveText('Detail');
       });
     });
-  });
-  describe('with dataTest', () => {
-    beforeEach(() => {
-      wrapper = shallow(<Text.Body data-test="prop-test">{'Body'}</Text.Body>);
-    });
-    it('should contain `data-test` prop', () => {
-      expect(wrapper).toHaveProp('data-test', 'prop-test');
+    describe('with dataTest', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Body isInline={true} data-test="prop-test">
+            {'Body'}
+          </Text.Body>
+        );
+      });
+      it('should contain `data-test` prop', () => {
+        expect(wrapper).toHaveProp('data-test', 'prop-test');
+      });
     });
   });
 });
