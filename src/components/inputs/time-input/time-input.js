@@ -19,8 +19,6 @@ const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
   return `${base}:${leftPad(seconds)}.${leftPad(milliseconds, 3)}`;
 };
 
-const hasSeconds = parsedTime =>
-  parsedTime.seconds !== 0 || parsedTime.milliseconds !== 0;
 const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 
 export class TimeInput extends React.Component {
@@ -73,7 +71,9 @@ export class TimeInput extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.intl.locale !== this.props.intl.locale) {
-      this.emitChange(this.toLocaleTime(this.props.value));
+      this.emitChange(
+        TimeInput.toLocaleTime(this.props.value, this.props.intl.locale)
+      );
     }
   }
 
@@ -90,15 +90,14 @@ export class TimeInput extends React.Component {
   // the 24h format is returned.
   //
   // Returns time in a format suitable for the locale.
-  toLocaleTime = time => {
+  static toLocaleTime = (time, locale) => {
     const parsedTime = parseTime(time);
     if (!parsedTime) return '';
 
     const timeIn24hFormat = format24hr(parsedTime);
 
     // return the 24h format, as the time has high precision
-    if (hasSeconds(parsedTime) || hasMilliseconds(parsedTime))
-      return timeIn24hFormat;
+    if (hasMilliseconds(parsedTime)) return timeIn24hFormat;
 
     // return the localized time (12h or 24h format)
     const date = new Date(
@@ -111,13 +110,23 @@ export class TimeInput extends React.Component {
       parsedTime.milliseconds
     );
 
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      // only show seconds when time contains seconds
+      second: parsedTime.seconds > 0 ? 'numeric' : undefined,
+    };
+
     const isValidDate = !isNaN(date.getTime());
-    return isValidDate ? this.props.intl.formatTime(date) : '';
+    return isValidDate ? date.toLocaleTimeString(locale, options) : '';
   };
 
   handleBlur = event => {
     // check formatting and reformat when necessary
-    const formattedTime = this.toLocaleTime(this.props.value);
+    const formattedTime = TimeInput.toLocaleTime(
+      this.props.value,
+      this.props.intl.locale
+    );
 
     if (formattedTime !== this.props.value) this.emitChange(formattedTime);
 
