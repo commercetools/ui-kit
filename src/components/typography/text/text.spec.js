@@ -58,6 +58,19 @@ describe('<Headline>', () => {
       expect(wrapper).toContainClass(styles.truncate);
     });
   });
+
+  describe('with dataTest', () => {
+    beforeEach(() => {
+      wrapper = shallow(
+        <Text.Headline elementType="h1" truncate={true} data-test="prop-test">
+          {'Title'}
+        </Text.Headline>
+      );
+    });
+    it('should contain `data-test` prop', () => {
+      expect(wrapper).toHaveProp('data-test', 'prop-test');
+    });
+  });
 });
 
 describe('<Subheadline>', () => {
@@ -123,6 +136,7 @@ describe('<Subheadline>', () => {
       expect(wrapper).toHaveProp('title', 'tooltip text');
     });
   });
+
   describe('with truncated text', () => {
     beforeEach(() => {
       wrapper = shallow(
@@ -138,6 +152,25 @@ describe('<Subheadline>', () => {
     });
     it('should contain `truncate` class', () => {
       expect(wrapper).toContainClass(styles.truncate);
+    });
+  });
+
+  describe('with dataTest', () => {
+    beforeEach(() => {
+      wrapper = shallow(
+        <Text.Subheadline
+          elementType="h4"
+          isBold={true}
+          tone="primary"
+          title="tooltip text"
+          data-test="prop-test"
+        >
+          {'Subtitle'}
+        </Text.Subheadline>
+      );
+    });
+    it('should contain `data-test` prop', () => {
+      expect(wrapper).toHaveProp('data-test', 'prop-test');
     });
   });
 });
@@ -159,8 +192,8 @@ describe('<Wrap>', () => {
 });
 
 describe('<Body>', () => {
+  let wrapper;
   describe('when used as block text', () => {
-    let wrapper;
     beforeEach(() => {
       wrapper = shallow(<Text.Body>{'Body'}</Text.Body>);
     });
@@ -239,8 +272,16 @@ describe('<Body>', () => {
     });
   });
 
+  describe('with dataTest', () => {
+    beforeEach(() => {
+      wrapper = shallow(<Text.Body data-test="prop-test">{'Body'}</Text.Body>);
+    });
+    it('should contain `data-test` prop', () => {
+      expect(wrapper).toHaveProp('data-test', 'prop-test');
+    });
+  });
+
   describe('when used as inline text', () => {
-    let wrapper;
     beforeEach(() => {
       wrapper = shallow(<Text.Body isInline={true}>{'Body'}</Text.Body>);
     });
@@ -289,12 +330,24 @@ describe('<Body>', () => {
         expect(wrapper).toHaveText('Detail');
       });
     });
+    describe('with dataTest', () => {
+      beforeEach(() => {
+        wrapper = shallow(
+          <Text.Body isInline={true} data-test="prop-test">
+            {'Body'}
+          </Text.Body>
+        );
+      });
+      it('should contain `data-test` prop', () => {
+        expect(wrapper).toHaveProp('data-test', 'prop-test');
+      });
+    });
   });
 });
 
 describe('<Detail>', () => {
+  let wrapper;
   describe('when used as block text', () => {
-    let wrapper;
     beforeEach(() => {
       wrapper = shallow(<Text.Detail>{'Detail'}</Text.Detail>);
     });
@@ -355,7 +408,6 @@ describe('<Detail>', () => {
     });
   });
   describe('when used as inline text', () => {
-    let wrapper;
     beforeEach(() => {
       wrapper = shallow(<Text.Detail isInline={true}>{'Detail'}</Text.Detail>);
     });
@@ -439,6 +491,14 @@ describe('<Detail>', () => {
       it('should contain `truncate` class', () => {
         expect(wrapper).toContainClass(styles.truncate);
       });
+    });
+  });
+  describe('with dataTest', () => {
+    beforeEach(() => {
+      wrapper = shallow(<Text.Body data-test="prop-test">{'Body'}</Text.Body>);
+    });
+    it('should contain `data-test` prop', () => {
+      expect(wrapper).toHaveProp('data-test', 'prop-test');
     });
   });
 });

@@ -27,6 +27,8 @@ Wraps the given text in the given HTML header `size`.
 | `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element            |
 | `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width |
 
+The component further forwards all `data-` attributes to the underlying component.
+
 #### Where to use
 
 Title of pages.
@@ -51,6 +53,8 @@ Wraps the given text in the given HTML header `size`.
 | `children`    | `PropTypes.node` |    ✅    | -                                                                 | -       |
 | `title`       | `String`         |    -     | -                                                                 | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
+
+The component further forwards all `data-` attributes to the underlying component.
 
 #### Where to use
 
@@ -91,6 +95,8 @@ Wraps the given text in a `<p>` element, for normal content.
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
 
+The component further forwards all `data-` attributes to the underlying component.
+
 #### Where to use
 
 Content text in general.
@@ -117,6 +123,8 @@ properly style the text.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
+
+The component further forwards all `data-` attributes to the underlying component.
 
 #### Where to use
 

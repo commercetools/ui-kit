@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './text.mod.css';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const nonEmptyString = (props, propName, componentName) => {
   const value = props[propName];
@@ -20,6 +21,7 @@ const Headline = props => {
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </HeadlineElement>
@@ -43,6 +45,7 @@ const Subheadline = props => {
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </SubheadlineElement>
@@ -85,6 +88,7 @@ const Body = props =>
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </span>
@@ -97,6 +101,7 @@ const Body = props =>
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </p>
@@ -129,6 +134,7 @@ const Detail = props => (
       [styles.truncate]: props.truncate,
     })}
     title={props.title}
+    {...filterDataAttributes(props)}
   >
     {props.children}
   </small>
