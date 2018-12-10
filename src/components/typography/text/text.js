@@ -20,6 +20,7 @@ const Headline = props => {
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      data-test={props.dataTest}
     >
       {props.children}
     </HeadlineElement>
@@ -31,6 +32,7 @@ Headline.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  dataTest: PropTypes.string,
 };
 
 const Subheadline = props => {
@@ -43,6 +45,7 @@ const Subheadline = props => {
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      data-test={props.dataTest}
     >
       {props.children}
     </SubheadlineElement>
@@ -62,6 +65,7 @@ Subheadline.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  dataTest: PropTypes.string,
 };
 
 const Wrap = props => (
@@ -85,6 +89,7 @@ const Body = props =>
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      data-test={props.dataTest}
     >
       {props.children}
     </span>
@@ -97,6 +102,7 @@ const Body = props =>
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
+      data-test={props.dataTest}
     >
       {props.children}
     </p>
@@ -117,6 +123,7 @@ Body.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  dataTest: PropTypes.string,
 };
 
 const Detail = props => (
@@ -129,6 +136,7 @@ const Detail = props => (
       [styles.truncate]: props.truncate,
     })}
     title={props.title}
+    data-test={props.dataTest}
   >
     {props.children}
   </small>
@@ -149,6 +157,7 @@ Detail.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  dataTest: PropTypes.string,
 };
 
 export default {

@@ -26,6 +26,7 @@ Wraps the given text in the given HTML header `size`.
 | `children`    | `PropTypes.node` |    ✅    | -                    | -       | -                                                              |
 | `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element            |
 | `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width |
+| `dataTest`    | `String`         |    -     | -                    | -       | Prop for E2E testing                                           |
 
 #### Where to use
 
@@ -51,6 +52,7 @@ Wraps the given text in the given HTML header `size`.
 | `children`    | `PropTypes.node` |    ✅    | -                                                                 | -       |
 | `title`       | `String`         |    -     | -                                                                 | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
+| `dataTest`    | `String`         |    -     | -                                                                 | -       | Prop for E2E testing |
 
 #### Where to use
 
@@ -90,6 +92,7 @@ Wraps the given text in a `<p>` element, for normal content.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
+| `dataTest` | `String`         |    -     | -                                                                             | -       |
 
 #### Where to use
 
@@ -117,6 +120,7 @@ properly style the text.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
+| `dataTest` | `String`         |    -     | -                                                                             | -       |
 
 #### Where to use
 

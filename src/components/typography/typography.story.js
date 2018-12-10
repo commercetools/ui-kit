@@ -21,6 +21,7 @@ storiesOf('Typography/Text', module)
         elementType={select('Element type', ['h1', 'h2', 'h3'], 'h1')}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        dataTest={text('dataTest', 'test-prop')}
       >
         {text('Text', 'Sample text Headline')}
       </Text.Headline>
@@ -41,6 +42,7 @@ storiesOf('Typography/Text', module)
         ])}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        dataTest={text('dataTest', 'test-prop')}
       >
         {text('Text', 'Sample text Subheadline')}
       </Text.Subheadline>
@@ -51,6 +53,7 @@ storiesOf('Typography/Text', module)
       <InlineColorWrapper width={'200px'}>
         <Text.Wrap
           title={text('title', 'Text to be shown as tooltip on hover')}
+          dataTest={text('dataTest', 'test-prop')}
         >
           {text(
             'Text',
@@ -77,6 +80,7 @@ storiesOf('Typography/Text', module)
         ])}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        dataTest={text('dataTest', 'test-prop')}
       >
         {text('Text', 'Sample text Body')}
       </Text.Body>
@@ -99,6 +103,7 @@ storiesOf('Typography/Text', module)
         ])}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        dataTest={text('dataTest', 'test-prop')}
       >
         {text('Text', 'Sample text Detail')}
       </Text.Detail>
