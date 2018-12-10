@@ -26,7 +26,5 @@
   "UIKit.MultilineTextInput.expand": "Expandir",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "Menú vacío",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",
-  "UIKit.TimeInput.labelRange": "hasta",
-  "UIKit.TimeRangePicker.from": "Desde",
-  "UIKit.TimeRangePicker.to": "hasta"
+  "UIKit.TimeInput.labelRange": "hasta"
 }

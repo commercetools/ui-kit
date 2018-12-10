@@ -26,7 +26,5 @@
   "UIKit.MultilineTextInput.expand": "Erweitern",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "",
-  "UIKit.TimeInput.labelRange": "",
-  "UIKit.TimeRangePicker.from": "Von",
-  "UIKit.TimeRangePicker.to": "Bis"
+  "UIKit.TimeInput.labelRange": ""
 }
