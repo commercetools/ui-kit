@@ -6,6 +6,7 @@
   position: absolute;
   width: 100%;
   background-color: var(--color-white);
+  z-index: 1;
 }
 
 .menuBase.warning {

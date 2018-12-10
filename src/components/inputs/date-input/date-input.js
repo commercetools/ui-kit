@@ -44,8 +44,7 @@ class DateCalendar extends React.Component {
   };
   inputRef = React.createRef();
   state = {
-    calendarDate:
-      this.props.value.length === 2 ? this.props.value[0] : getToday(),
+    calendarDate: this.props.value || getToday(),
     suggestedItems: [],
     highlightedIndex:
       this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
@@ -73,6 +72,15 @@ class DateCalendar extends React.Component {
       }),
       () => this.inputRef.current.focus()
     );
+  };
+  handleBlur = () => {
+    if (this.props.onBlur)
+      this.props.onBlur({
+        target: {
+          id: this.props.id,
+          name: this.props.name,
+        },
+      });
   };
   handleChange = date => {
     this.inputRef.current.setSelectionRange(0, 100);
@@ -175,7 +183,7 @@ class DateCalendar extends React.Component {
             const today = getToday();
 
             return (
-              <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
+              <div onFocus={this.props.onFocus} onBlur={this.handleBlur}>
                 <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({

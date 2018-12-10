@@ -103,8 +103,14 @@ class DateTimeInput extends React.Component {
       () => this.inputRef.current.focus()
     );
   };
-  handleChange = date => {
-    this.emit(date);
+  handleBlur = () => {
+    if (this.props.onBlur)
+      this.props.onBlur({
+        target: {
+          id: this.props.id,
+          name: this.props.name,
+        },
+      });
   };
   handleTimeChange = event => {
     const parsedTime = parseTime(event.target.value);
@@ -147,7 +153,7 @@ class DateTimeInput extends React.Component {
           )}
           selectedItem={this.props.value === '' ? null : this.props.value}
           highlightedIndex={this.state.highlightedIndex}
-          onChange={this.handleChange}
+          onChange={this.emit}
           stateReducer={(state, changes) => {
             if (activationTypes.includes(changes.type)) {
               return { ...changes, isOpen: true };
@@ -262,7 +268,7 @@ class DateTimeInput extends React.Component {
               Boolean(this.props.value) && this.props.value !== '';
 
             return (
-              <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
+              <div onFocus={this.props.onFocus} onBlur={this.handleBlur}>
                 <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
