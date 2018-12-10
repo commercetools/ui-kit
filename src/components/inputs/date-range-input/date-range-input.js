@@ -140,6 +140,15 @@ class DateRangeCalendar extends React.Component {
       () => this.inputRef.current.focus()
     );
   };
+  handleBlur = () => {
+    if (this.props.onBlur)
+      this.props.onBlur({
+        target: {
+          id: this.props.id,
+          name: this.props.name,
+        },
+      });
+  };
   emit = unsortedRange => {
     this.props.onChange({
       target: {
@@ -305,7 +314,7 @@ class DateRangeCalendar extends React.Component {
             const today = getToday();
 
             return (
-              <div onFocus={this.props.onFocus} onBlur={this.props.onBlur}>
+              <div onFocus={this.props.onFocus} onBlur={this.handleBlur}>
                 <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
