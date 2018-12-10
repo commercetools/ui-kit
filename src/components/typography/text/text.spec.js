@@ -62,7 +62,7 @@ describe('<Headline>', () => {
   describe('with dataTest', () => {
     beforeEach(() => {
       wrapper = shallow(
-        <Text.Headline elementType="h1" truncate={true} dataTest="prop-test">
+        <Text.Headline elementType="h1" truncate={true} data-test="prop-test">
           {'Title'}
         </Text.Headline>
       );
@@ -163,7 +163,7 @@ describe('<Subheadline>', () => {
           isBold={true}
           tone="primary"
           title="tooltip text"
-          dataTest="prop-test"
+          data-test="prop-test"
         >
           {'Subtitle'}
         </Text.Subheadline>
@@ -324,7 +324,7 @@ describe('<Body>', () => {
   });
   describe('with dataTest', () => {
     beforeEach(() => {
-      wrapper = shallow(<Text.Body dataTest="prop-test">{'Body'}</Text.Body>);
+      wrapper = shallow(<Text.Body data-test="prop-test">{'Body'}</Text.Body>);
     });
     it('should contain `data-test` prop', () => {
       expect(wrapper).toHaveProp('data-test', 'prop-test');
@@ -482,7 +482,7 @@ describe('<Detail>', () => {
   });
   describe('with dataTest', () => {
     beforeEach(() => {
-      wrapper = shallow(<Text.Body dataTest="prop-test">{'Body'}</Text.Body>);
+      wrapper = shallow(<Text.Body data-test="prop-test">{'Body'}</Text.Body>);
     });
     it('should contain `data-test` prop', () => {
       expect(wrapper).toHaveProp('data-test', 'prop-test');

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './text.mod.css';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const nonEmptyString = (props, propName, componentName) => {
   const value = props[propName];
@@ -20,7 +21,7 @@ const Headline = props => {
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
-      data-test={props.dataTest}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </HeadlineElement>
@@ -32,7 +33,6 @@ Headline.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 const Subheadline = props => {
@@ -45,7 +45,7 @@ const Subheadline = props => {
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
-      data-test={props.dataTest}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </SubheadlineElement>
@@ -65,7 +65,6 @@ Subheadline.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 const Wrap = props => (
@@ -89,7 +88,7 @@ const Body = props =>
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
-      data-test={props.dataTest}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </span>
@@ -102,7 +101,7 @@ const Body = props =>
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
-      data-test={props.dataTest}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </p>
@@ -123,7 +122,6 @@ Body.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 const Detail = props => (
@@ -136,7 +134,7 @@ const Detail = props => (
       [styles.truncate]: props.truncate,
     })}
     title={props.title}
-    data-test={props.dataTest}
+    {...filterDataAttributes(props)}
   >
     {props.children}
   </small>
@@ -157,7 +155,6 @@ Detail.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 export default {
