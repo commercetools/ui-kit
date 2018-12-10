@@ -33,7 +33,6 @@ Headline.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 const Subheadline = props => {
@@ -66,7 +65,6 @@ Subheadline.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 const Wrap = props => (
@@ -124,7 +122,6 @@ Body.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 const Detail = props => (
@@ -158,7 +155,6 @@ Detail.propTypes = {
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  dataTest: PropTypes.string,
 };
 
 export default {

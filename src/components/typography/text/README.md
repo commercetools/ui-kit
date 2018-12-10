@@ -26,7 +26,8 @@ Wraps the given text in the given HTML header `size`.
 | `children`    | `PropTypes.node` |    ✅    | -                    | -       | -                                                              |
 | `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element            |
 | `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width |
-| `dataTest`    | `String`         |    -     | -                    | -       | Prop for E2E testing                                           |
+
+The component further forwards all `data-` attributes to the underlying component.
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -54,7 +55,8 @@ Wraps the given text in the given HTML header `size`.
 | `children`    | `PropTypes.node` |    ✅    | -                                                                 | -       |
 | `title`       | `String`         |    -     | -                                                                 | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
-| `dataTest`    | `String`         |    -     | -                                                                 | -       | Prop for E2E testing |
+
+The component further forwards all `data-` attributes to the underlying component.
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -96,7 +98,8 @@ Wraps the given text in a `<p>` element, for normal content.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
-| `dataTest` | `String`         |    -     | -                                                                             | -       |
+
+The component further forwards all `data-` attributes to the underlying component.
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -126,7 +129,8 @@ properly style the text.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
-| `dataTest` | `String`         |    -     | -                                                                             | -       |
+
+The component further forwards all `data-` attributes to the underlying component.
 
 The component further forwards all `data-` attributes to the underlying component.
 
