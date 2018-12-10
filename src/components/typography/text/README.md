@@ -29,8 +29,6 @@ Wraps the given text in the given HTML header `size`.
 
 The component further forwards all `data-` attributes to the underlying component.
 
-The component further forwards all `data-` attributes to the underlying component.
-
 #### Where to use
 
 Title of pages.
@@ -55,8 +53,6 @@ Wraps the given text in the given HTML header `size`.
 | `children`    | `PropTypes.node` |    ✅    | -                                                                 | -       |
 | `title`       | `String`         |    -     | -                                                                 | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
-
-The component further forwards all `data-` attributes to the underlying component.
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -101,8 +97,6 @@ Wraps the given text in a `<p>` element, for normal content.
 
 The component further forwards all `data-` attributes to the underlying component.
 
-The component further forwards all `data-` attributes to the underlying component.
-
 #### Where to use
 
 Content text in general.
@@ -129,8 +123,6 @@ properly style the text.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
-
-The component further forwards all `data-` attributes to the underlying component.
 
 The component further forwards all `data-` attributes to the underlying component.
 
