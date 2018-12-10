@@ -86,7 +86,6 @@ const plugins = [
         'isValidElement',
       ],
       'node_modules/react-is/index.js': ['isValidElementType'],
-      'node_modules/flatpickr/dist/l10n/de.js': ['German'],
     },
   }),
   // To convert JSON files to ES6
