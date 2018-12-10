@@ -22,7 +22,8 @@ script:
   - yarn run jest --projects jest.*.config.js --maxWorkers=4 --reporters jest-silent-reporter
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
   # skip percy builds when this is not a pull request or when it's not master to save precious snaps
-  - if [[ $TRAVIS_PULL_REQUEST != 'false' || ${TRAVIS_BRANCH} == 'master' ]] ; then yarn percy; else echo 'skipping percy build'; fi
+  # also skip when PR is opened by `renovate`
+  - bash ./scripts/run-percy.sh
   # back to default in case internal travis scripts return non zero response codes.
   - set +e
 
