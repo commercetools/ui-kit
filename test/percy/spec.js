@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-const Container = styled.div`
+const SpecContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${props => (props.inverted ? '#111' : '#eee')};
+  /*
+    We don't want a change in a component's height resulting in diffs of the
+    remaining states below it, so we establish a min-height for each spec to
+    prevent that.
+  */
+  min-height: 400px;
 `;
 
 const Label = styled.div`
@@ -34,7 +39,9 @@ const PropValue = styled.span`
   padding: 0 4px;
 `;
 
-const Box = styled.div``;
+const Box = styled.div`
+  background-color: ${props => (props.inverted ? '#111' : '#eee')};
+`;
 
 const Pill = props => {
   const value = (() => {
@@ -84,11 +91,11 @@ Props.propTypes = {
 };
 
 const Spec = props => (
-  <Container inverted={props.inverted}>
+  <SpecContainer>
     <Label>{props.label}</Label>
     {!props.omitPropsList && <Props>{props.children}</Props>}
-    <Box>{props.children}</Box>
-  </Container>
+    <Box inverted={props.inverted}>{props.children}</Box>
+  </SpecContainer>
 );
 
 Spec.propTypes = {
