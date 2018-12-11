@@ -8,8 +8,7 @@ import { DateInput } from '@commercetools-frontend/ui-kit';
 
 #### Description
 
-The `DateInput` component allows the user to select a date. This component also supports
-multiple date selection. It formats the selected date depending on the current locale.
+The `DateInput` component allows the user to select a date. It formats the selected date depending on the users' locale.
 
 #### Usage
 
@@ -36,3 +35,14 @@ multiple date selection. It formats the selected date depending on the current l
 | `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input field.                                                                                                 |
 | `hasWarning`           | `bool`   |    -     | -                                  | -       | Indicates the input field has a warning                                                                                                   |
 | `hasError`             | `bool`   |    -     | -                                  | -       | Indicates the input field has an error                                                                                                    |
+
+### Static methods
+
+#### `DateInput.isEmpty`
+
+Returns `true` when the value is considered empty, which is when the value is an empty string.
+
+```js
+DateInput.isEmpty(''); // -> true
+DateInput.isEmpty('2018-09-20'); // -> false
+```
