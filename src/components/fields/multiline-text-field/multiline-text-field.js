@@ -5,11 +5,9 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import MultilineTextInput from '../../inputs/multiline-text-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import withId from '../../../hocs/with-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-
-const sequentialId = createSequentialId('text-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -57,20 +55,6 @@ class MultilineTextField extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  state = {
-    // We generate an id in case no id is provided by the parent to attach the
-    // label to the input component.
-    id: this.props.id,
-  };
-
-  static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
-  });
-
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
@@ -84,10 +68,10 @@ class MultilineTextField extends React.Component {
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            htmlFor={this.props.id}
           />
           <MultilineTextInput
-            id={this.state.id}
+            id={this.props.id}
             name={this.props.name}
             value={this.props.value}
             onChange={this.props.onChange}
@@ -113,4 +97,4 @@ class MultilineTextField extends React.Component {
   }
 }
 
-export default MultilineTextField;
+export default withId('multiline-text-field-')(MultilineTextField);

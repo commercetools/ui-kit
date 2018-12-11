@@ -6,16 +6,14 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import LocalizedTextInput from '../../inputs/localized-text-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import withId from '../../../hocs/with-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
-const sequentialId = createSequentialId('text-field-');
-
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
-class LocalizedMultilineTextField extends React.Component {
-  static displayName = 'LocalizedMultilineTextField';
+class LocalizedTextField extends React.Component {
+  static displayName = 'LocalizedTextField';
 
   static getId = LocalizedTextInput.getId;
 
@@ -30,7 +28,7 @@ class LocalizedMultilineTextField extends React.Component {
   static isTouched = LocalizedTextInput.isTouched;
 
   static propTypes = {
-    // LocalizedMultilineTextField
+    // LocalizedTextField
     id: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
@@ -81,20 +79,6 @@ class LocalizedMultilineTextField extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  state = {
-    // We generate an id in case no id is provided by the parent to attach the
-    // label to the input component.
-    id: this.props.id,
-  };
-
-  static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
-  });
-
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
@@ -108,10 +92,10 @@ class LocalizedMultilineTextField extends React.Component {
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            htmlFor={this.props.id}
           />
           <LocalizedTextInput
-            id={this.state.id}
+            id={this.props.id}
             name={this.props.name}
             value={this.props.value}
             onChange={this.props.onChange}
@@ -140,4 +124,4 @@ class LocalizedMultilineTextField extends React.Component {
   }
 }
 
-export default LocalizedMultilineTextField;
+export default withId('localized-text-field-')(LocalizedTextField);

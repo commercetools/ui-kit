@@ -6,10 +6,8 @@ import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import FieldErrors from '../../field-errors';
 import NumberInput from '../../inputs/number-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import withId from '../../../hocs/with-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-
-const sequentialId = createSequentialId('text-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -59,20 +57,6 @@ class NumberField extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  state = {
-    // We generate an id in case no id is provided by the parent to attach the
-    // label to the input component.
-    id: this.props.id,
-  };
-
-  static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
-  });
-
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
@@ -86,10 +70,10 @@ class NumberField extends React.Component {
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            htmlFor={this.props.id}
           />
           <NumberInput
-            id={this.state.id}
+            id={this.props.id}
             name={this.props.name}
             value={this.props.value}
             onChange={this.props.onChange}
@@ -120,4 +104,4 @@ class NumberField extends React.Component {
 NumberField.hasFractionDigits = NumberInput.hasFractionDigits;
 NumberField.isEmpty = NumberInput.isEmpty;
 NumberField.toFormValue = NumberInput.toFormValue;
-export default NumberField;
+export default withId('number-field-')(NumberField);

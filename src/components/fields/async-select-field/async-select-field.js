@@ -5,15 +5,13 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import AsyncSelectInput from '../../inputs/async-select-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import withId from '../../../hocs/with-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
 
-const sequentialId = createSequentialId('text-field-');
-
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
-export default class AsyncSelectField extends React.Component {
+class AsyncSelectField extends React.Component {
   static displayName = 'AsyncSelectField';
 
   static isTouched = AsyncSelectInput.isTouched;
@@ -112,20 +110,6 @@ export default class AsyncSelectField extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  state = {
-    // We generate an id in case no id is provided by the parent to attach the
-    // label to the input component.
-    id: this.props.id,
-  };
-
-  static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
-  });
-
   render() {
     const hasError =
       AsyncSelectInput.isTouched(this.props.touched) &&
@@ -141,7 +125,7 @@ export default class AsyncSelectField extends React.Component {
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            htmlFor={this.props.id}
           />
           <AsyncSelectInput
             horizontalConstraint="scale"
@@ -152,7 +136,7 @@ export default class AsyncSelectField extends React.Component {
             backspaceRemovesValue={this.props.backspaceRemovesValue}
             components={this.props.components}
             filterOption={this.props.filterOption}
-            id={this.state.id}
+            id={this.props.id}
             containerId={this.props.containerId}
             isClearable={this.props.isClearable}
             isDisabled={this.props.isDisabled}
@@ -186,3 +170,5 @@ export default class AsyncSelectField extends React.Component {
     );
   }
 }
+
+export default withId('async-select-field-')(AsyncSelectField);

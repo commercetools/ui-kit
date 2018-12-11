@@ -7,14 +7,12 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import MoneyInput from '../../inputs/money-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import withId from '../../../hocs/with-id';
 import FieldErrors from '../../field-errors';
 import { VerifiedIcon } from '../../icons';
 import Text from '../../typography/text';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
-
-const sequentialId = createSequentialId('text-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -83,20 +81,6 @@ class MoneyField extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  state = {
-    // We generate an id in case no id is provided by the parent to attach the
-    // label to the input component.
-    id: this.props.id,
-  };
-
-  static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
-  });
-
   render() {
     // MoneyField.isTouched() ensures both fields have been touched.
     // This avoids showing an error when the user just selected a language but
@@ -127,10 +111,10 @@ class MoneyField extends React.Component {
               )
             }
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            htmlFor={this.props.id}
           />
           <MoneyInput
-            id={this.state.id}
+            id={this.props.id}
             name={this.props.name}
             value={this.props.value}
             currencies={this.props.currencies}
@@ -152,4 +136,4 @@ class MoneyField extends React.Component {
   }
 }
 
-export default MoneyField;
+export default withId('money-field-')(MoneyField);

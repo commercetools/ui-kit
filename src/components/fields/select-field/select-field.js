@@ -5,15 +5,13 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import SelectInput from '../../inputs/select-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import withId from '../../../hocs/with-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
 
-const sequentialId = createSequentialId('text-field-');
-
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
-export default class SelectField extends React.Component {
+class SelectField extends React.Component {
   static displayName = 'SelectField';
 
   static isTouched = SelectInput.isTouched;
@@ -110,20 +108,6 @@ export default class SelectField extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  state = {
-    // We generate an id in case no id is provided by the parent to attach the
-    // label to the input component.
-    id: this.props.id,
-  };
-
-  static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
-  });
-
   render() {
     const hasError =
       SelectInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
@@ -138,7 +122,7 @@ export default class SelectField extends React.Component {
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            htmlFor={this.props.id}
           />
           <SelectInput
             horizontalConstraint="scale"
@@ -149,7 +133,7 @@ export default class SelectField extends React.Component {
             backspaceRemovesValue={this.props.backspaceRemovesValue}
             components={this.props.components}
             filterOption={this.props.filterOption}
-            id={this.state.id}
+            id={this.props.id}
             containerId={this.props.containerId}
             isClearable={this.props.isClearable}
             isDisabled={this.props.isDisabled}
@@ -180,3 +164,4 @@ export default class SelectField extends React.Component {
     );
   }
 }
+export default withId('select-field-')(SelectField);
