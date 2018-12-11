@@ -9,7 +9,7 @@ import NumberInput from '../../inputs/number-input';
 import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
-const sequentialId = createSequentialId('text-field-');
+const sequentialId = createSequentialId('number-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 

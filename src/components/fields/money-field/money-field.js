@@ -14,7 +14,7 @@ import Text from '../../typography/text';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
 
-const sequentialId = createSequentialId('text-field-');
+const sequentialId = createSequentialId('money-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 

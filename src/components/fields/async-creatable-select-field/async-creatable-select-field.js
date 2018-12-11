@@ -9,7 +9,7 @@ import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
 
-const sequentialId = createSequentialId('text-field-');
+const sequentialId = createSequentialId('async-creatable-select-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
