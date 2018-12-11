@@ -19,9 +19,12 @@ import {
   getId,
   getName,
 } from '../../../utils/localized';
+import createSequentialId from '../../../utils/create-sequential-id';
 import LanguagesButton from './languages-button';
 import messages from './messages';
 import styles from './localized-text-input.mod.css';
+
+const sequentialId = createSequentialId('localized-text-field-');
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -180,12 +183,20 @@ export default class LocalizedTextInput extends React.Component {
       hasErrorOnRemainingLanguages ||
       props.hideExpansionControls ||
       state.areLanguagesOpened;
-    return { areLanguagesOpened };
+
+    const id = do {
+      if (props.id) props.id;
+      else if (state.id) state.id;
+      else sequentialId();
+    };
+
+    return { areLanguagesOpened, id };
   };
 
   state = {
     // This state is used to show/hide the remaining translations
     areLanguagesOpened: this.props.isDefaultExpanded,
+    id: this.props.id,
   };
 
   toggleLanguages = () =>
@@ -217,7 +228,7 @@ export default class LocalizedTextInput extends React.Component {
               <div key={language}>
                 <Spacings.Stack scale="xs">
                   <LocalizedInput
-                    id={LocalizedTextInput.getId(this.props.id, language)}
+                    id={LocalizedTextInput.getId(this.state.id, language)}
                     name={LocalizedTextInput.getName(this.props.name, language)}
                     value={this.props.value[language]}
                     onChange={this.props.onChange}
