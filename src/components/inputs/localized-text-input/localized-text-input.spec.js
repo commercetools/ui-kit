@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../test-utils';
 import LocalizedTextInput from './localized-text-input';
-import { getName } from '../../../utils/localized';
 
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.
@@ -65,10 +64,10 @@ it('should forward data-attributes', () => {
 });
 
 it('should have an HTML name', () => {
-  const { container } = renderLocalizedTextInput({ name: 'foo' });
-  expect(
-    container.querySelector(`[name="${getName('foo', 'en')}"]`)
-  ).toBeInTheDocument();
+  const { getByLabelText } = renderLocalizedTextInput({
+    name: 'foo',
+  });
+  expect(getByLabelText('EN')).toHaveAttribute('name', 'foo.en');
 });
 
 it('should have focus automatically when isAutofocussed is passed', () => {
