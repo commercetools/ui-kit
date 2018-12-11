@@ -32,6 +32,8 @@
 - Testing
 
   - [ ] Supports `data` attributes
+  - [ ] Uses [react-testing-library](https://github.com/kentcdodds/react-testing-library) tests
+  - [ ] Has visual regression tests
 
 - Accessibility (optional)
   - [ ] Supports `aria` attributes
