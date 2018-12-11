@@ -51,6 +51,16 @@ const renderDateRangeInput = (props, options) => {
   };
 };
 
+describe('DateRangeInput.isEmpty', () => {
+  it('should return true when called with an empty range', () => {
+    expect(DateRangeInput.isEmpty([])).toBe(true);
+  });
+  it('should return false when called with a range', () => {
+    expect(DateRangeInput.isEmpty(['2018-09-20', '2018-09-20'])).toBe(false);
+    expect(DateRangeInput.isEmpty(['2018-09-20', '2018-09-24'])).toBe(false);
+  });
+});
+
 it('should render an input', () => {
   const { getByLabelText } = renderDateRangeInput();
   expect(getByLabelText('Date')).toBeTruthy();

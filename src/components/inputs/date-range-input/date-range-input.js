@@ -93,6 +93,7 @@ class DateRangeCalendar extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
+  static isEmpty = range => range.length === 0;
   static getDerivedStateFromProps(props, state) {
     // We need to update the input value string in case so that is is formatted
     // according to the locale and holds the current value in case the value
