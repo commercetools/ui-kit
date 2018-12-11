@@ -8,6 +8,7 @@
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "",
   "UIKit.DateInput.placeholder": "DD.MM.YYYY",
+  "UIKit.DateRangeInput.placeholder": "DD.MM.YYYY - DD.MM.YYYY",
   "UIKit.DateTimeInput.placeholder": "DD.MM.YYYY - HH:mm",
   "UIKit.DateTimeInput.timePlaceholder": "HH:mm",
   "UIKit.FieldErrors.invalidFractionalNumber": "",
@@ -25,6 +26,5 @@
   "UIKit.MultilineTextInput.collapse": "Ausblenden",
   "UIKit.MultilineTextInput.expand": "Erweitern",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "",
-  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "",
-  "UIKit.TimeInput.labelRange": ""
+  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": ""
 }
