@@ -117,13 +117,13 @@ describe('when input is collapsed', () => {
 
 describe('when input is expanded', () => {
   it('should expand and show all language inputs when `Show all languages` is clicked', () => {
-    const { getByLabelText, getByText } = renderLocalizedMultilineTextInput();
-    getByText(/show all languages/i).click();
+    const { getByLabelText } = renderLocalizedMultilineTextInput();
+    getByLabelText(/show all languages/i).click();
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
   it('should allow changing the french input', () => {
-    const { getByLabelText, getByText } = renderLocalizedMultilineTextInput();
-    getByText(/show all languages/i).click();
+    const { getByLabelText } = renderLocalizedMultilineTextInput();
+    getByLabelText(/show all languages/i).click();
     const event = { target: { value: 'Je veux manger du poulet' } };
     const frenchInput = getByLabelText('FR');
     fireEvent.focus(frenchInput);
@@ -136,23 +136,26 @@ describe('when input is expanded', () => {
 
 describe('when expanded by default', () => {
   it('should render one input per language', () => {
-    const { getByLabelText, getByText } = renderLocalizedMultilineTextInput({
+    const { getByLabelText } = renderLocalizedMultilineTextInput({
       areLanguagesDefaultOpened: true,
     });
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(getByLabelText('FR')).toBeInTheDocument();
-    expect(getByText(/hide languages/i)).toBeInTheDocument();
+    expect(getByLabelText(/hide languages/i)).toBeInTheDocument();
   });
 });
 
 describe('when expansion controls are hidden', () => {
   it('should render one input per language and no hide button', () => {
-    const { getByLabelText, queryByText } = renderLocalizedMultilineTextInput({
+    const {
+      getByLabelText,
+      queryByLabelText,
+    } = renderLocalizedMultilineTextInput({
       hideLanguageControls: true,
     });
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(getByLabelText('FR')).toBeInTheDocument();
-    expect(queryByText(/hide languages/i)).not.toBeInTheDocument();
+    expect(queryByLabelText(/hide languages/i)).not.toBeInTheDocument();
   });
 });
 
@@ -167,10 +170,10 @@ describe('when disabled', () => {
   });
   describe('when expanded', () => {
     it('should be able to expand, and all inputs are disabled', () => {
-      const { getByLabelText, getByText } = renderLocalizedMultilineTextInput({
+      const { getByLabelText } = renderLocalizedMultilineTextInput({
         isDisabled: true,
       });
-      getByText(/show all languages/i).click();
+      getByLabelText(/show all languages/i).click();
       expect(getByLabelText('EN')).toHaveAttribute('disabled');
       expect(getByLabelText('FR')).toHaveAttribute('disabled');
     });
@@ -192,10 +195,10 @@ describe('when read-only', () => {
   });
   describe('when expanded', () => {
     it('should be able to expand, and all inputs are readonly', () => {
-      const { getByLabelText, getByText } = renderLocalizedMultilineTextInput({
+      const { getByLabelText } = renderLocalizedMultilineTextInput({
         isReadOnly: true,
       });
-      getByText(/show all languages/i).click();
+      getByLabelText(/show all languages/i).click();
       expect(getByLabelText('EN')).toHaveAttribute('readonly');
       expect(getByLabelText('FR')).toHaveAttribute('readonly');
     });
