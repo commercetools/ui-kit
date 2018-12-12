@@ -2,17 +2,37 @@ import React from 'react';
 import { Tag } from '../../../dist/ui-kit.esm';
 import { Suite, Spec, screenshot } from '../../../test/percy';
 
+const longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et
+metus ultrices, interdum augue eget, consequat orci. Nam et nisi
+eleifend, fermentum nunc non, sagittis tortor. Pellentesque vulputate
+dignissim leo fermentum vehicula. Fusce efficitur est molestie augue
+ullamcorper dictum. Donec non leo a augue dictum pretium. Praesent ac
+quam pharetra, posuere mauris in, pharetra nisi.`;
+
 screenshot('Tag', () => (
   <Suite>
     <Spec label="Normal">
       <Tag type="normal">Tag</Tag>
+    </Spec>
+    <Spec label="Normal - multiple lines of text">
+      <Tag type="normal">{longText}</Tag>
     </Spec>
     <Spec label="Normal - onRemove">
       <Tag type="normal" onRemove={() => {}}>
         With remove
       </Tag>
     </Spec>
+    <Spec label="Normal - multiple lines of text - onRemove">
+      <Tag type="normal" onRemove={() => {}}>
+        {longText}
+      </Tag>
+    </Spec>
     <Spec label="Normal - horizontalConstraint - xs">
+      <Tag type="normal" horizontalConstraint="xs">
+        Tag
+      </Tag>
+    </Spec>
+    <Spec label="Normal - multiple lines of text - horizontalConstraint - xs">
       <Tag type="normal" horizontalConstraint="xs">
         Tag
       </Tag>
