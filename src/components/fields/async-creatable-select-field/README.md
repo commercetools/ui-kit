@@ -9,12 +9,15 @@ An input componentwith validation states and a label getting a selection from an
 ```js
 import { AsyncCreatableSelectField } from '@commercetools-frontend/ui-kit';
 
-<AsyncCreatableAsyncCreatableSelectInput
+<AsyncCreatableSelectField
   title="State"
   name="form-field-name"
   value={{ value: 'one', label: 'One' }}
   onChange={event => alert(event.target.value)}
-  options={[{ value: 'one', label: 'One' }, { value: 'two', label: 'Two' }]}
+  loadOptions={() => Promise.resolve([
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' }
+  ])
 />;
 ```
 

@@ -33,7 +33,6 @@ const sequentialId = createSequentialId('localized-text-field-');
 const getStyles = props => {
   if (props.isDisabled) return styles.disabled;
   if (props.hasError) return styles.error;
-  if (props.hasWarning) return styles.warning;
   if (props.isReadOnly) return styles.readonly;
 
   return styles.pristine;
@@ -53,7 +52,6 @@ class LocalizedInput extends React.Component {
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
     placeholder: PropTypes.string,
   };
   handleChange = event => {
@@ -94,7 +92,6 @@ class LocalizedInput extends React.Component {
           className={getStyles({
             isDisabled: this.props.isDisabled,
             hasError: this.props.hasError,
-            hasWarning: this.props.hasWarning,
             isReadOnly: this.props.isReadOnly,
           })}
           readOnly={this.props.isReadOnly}

@@ -1,16 +1,16 @@
 import React from 'react';
-import { TextInput } from '../../../../dist/ui-kit.esm';
+import { NumberInput } from '../../../../dist/ui-kit.esm';
 import { Suite, Spec, screenshot } from '../../../../test/percy';
 
-const value = 'hello world how are you?';
+const value = '18';
 
-screenshot('TextInput', () => (
+screenshot('NumberInput', () => (
   <Suite>
     <Spec label="minimal">
-      <TextInput value={value} onChange={() => {}} horizontalConstraint="m" />
+      <NumberInput value={value} onChange={() => {}} horizontalConstraint="m" />
     </Spec>
     <Spec label="when disabled">
-      <TextInput
+      <NumberInput
         isDisabled={true}
         value={value}
         onChange={() => {}}
@@ -18,7 +18,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="when read-only">
-      <TextInput
+      <NumberInput
         isReadOnly={true}
         value={value}
         onChange={() => {}}
@@ -26,7 +26,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="when placeholder is visible">
-      <TextInput
+      <NumberInput
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
@@ -34,7 +34,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="when placeholder is visible and input is disabled">
-      <TextInput
+      <NumberInput
         isDisabled={true}
         value=""
         placeholder="Enter a text"
@@ -43,7 +43,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="with error">
-      <TextInput
+      <NumberInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -51,7 +51,7 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="with warning">
-      <TextInput
+      <NumberInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -59,29 +59,11 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="with error and warning">
-      <TextInput
+      <NumberInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
         hasError={true}
-        hasWarning={true}
-      />
-    </Spec>
-    <Spec label="when disabled with error">
-      <TextInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        isDisabled={true}
-        hasError={true}
-      />
-    </Spec>
-    <Spec label="when disabled with warning">
-      <TextInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        isDisabled={true}
         hasWarning={true}
       />
     </Spec>

@@ -78,22 +78,6 @@ screenshot('SecondaryButton', () => (
       />
     </Spec>
 
-    <Spec label='size - when "big"'>
-      <SecondaryButton label="A label text" onClick={() => {}} size="big" />
-    </Spec>
-
-    <Spec label='size - when "small"'>
-      <SecondaryButton label="A label text" onClick={() => {}} size="small" />
-    </Spec>
-
-    <Spec label='tone - when "urgent"'>
-      <SecondaryButton label="A label text" onClick={() => {}} size="urgent" />
-    </Spec>
-
-    <Spec label='tone - when "primary"'>
-      <SecondaryButton label="A label text" onClick={() => {}} size="primary" />
-    </Spec>
-
     <Spec label="when used as link">
       <SecondaryButton label="A label text" linkTo="/" />
     </Spec>

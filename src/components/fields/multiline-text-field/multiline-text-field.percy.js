@@ -1,32 +1,40 @@
 import React from 'react';
-import { TextInput } from '../../../../dist/ui-kit.esm';
+import { MultilineTextField } from '../../../../dist/ui-kit.esm';
 import { Suite, Spec, screenshot } from '../../../../test/percy';
 
-const value = 'hello world how are you?';
+const value = 'hello\nworld\nhow\nare\nyou?';
 
-screenshot('TextInput', () => (
+screenshot('MultilineTextField', () => (
   <Suite>
     <Spec label="minimal">
-      <TextInput value={value} onChange={() => {}} horizontalConstraint="m" />
+      <MultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when required">
+      <MultilineTextField
+        title="Welcome Text"
+        isRequired={true}
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
     </Spec>
     <Spec label="when disabled">
-      <TextInput
+      <MultilineTextField
+        title="Welcome Text"
         isDisabled={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
       />
     </Spec>
-    <Spec label="when read-only">
-      <TextInput
-        isReadOnly={true}
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-      />
-    </Spec>
     <Spec label="when placeholder is visible">
-      <TextInput
+      <MultilineTextField
+        title="Welcome Text"
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
@@ -34,7 +42,8 @@ screenshot('TextInput', () => (
       />
     </Spec>
     <Spec label="when placeholder is visible and input is disabled">
-      <TextInput
+      <MultilineTextField
+        title="Welcome Text"
         isDisabled={true}
         value=""
         placeholder="Enter a text"
@@ -42,47 +51,42 @@ screenshot('TextInput', () => (
         horizontalConstraint="m"
       />
     </Spec>
-    <Spec label="with error">
-      <TextInput
+    <Spec label="with error when not touched">
+      <MultilineTextField
+        title="Welcome Text"
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        hasError={true}
+        errors={{ missing: true }}
       />
     </Spec>
-    <Spec label="with warning">
-      <TextInput
+    <Spec label="with error when touched">
+      <MultilineTextField
+        title="Welcome Text"
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        hasWarning={true}
+        errors={{ missing: true }}
+        touched={true}
       />
     </Spec>
-    <Spec label="with error and warning">
-      <TextInput
+    <Spec label="when closed by default">
+      <MultilineTextField
+        title="Welcome Text"
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        hasError={true}
-        hasWarning={true}
+        isDefaultClosed={true}
       />
     </Spec>
-    <Spec label="when disabled with error">
-      <TextInput
+    <Spec label="when disabled and closed by default">
+      <MultilineTextField
+        title="Welcome Text"
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
+        isDefaultClosed={true}
         isDisabled={true}
-        hasError={true}
-      />
-    </Spec>
-    <Spec label="when disabled with warning">
-      <TextInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        isDisabled={true}
-        hasWarning={true}
       />
     </Spec>
   </Suite>
