@@ -28,7 +28,7 @@ class TestComponent extends React.Component {
   };
 
   state = {
-    value: this.props.value || '',
+    value: this.props.value,
   };
 
   handleChange = event => {
@@ -230,8 +230,6 @@ describe('in multi mode', () => {
         },
       });
       // open list again
-      onChange.mockReset();
-      onChange.mockClear();
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       getByText('Raspberry').click();
