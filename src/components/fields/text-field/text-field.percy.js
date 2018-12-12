@@ -35,6 +35,15 @@ screenshot('TextField', () => (
     <Spec label="when placeholder is shown">
       <TextField
         title="Welcome Text"
+        value=""
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when placeholder is shown and disabled">
+      <TextField
+        title="Welcome Text"
         isDisabled={true}
         value=""
         placeholder="Enter a text"

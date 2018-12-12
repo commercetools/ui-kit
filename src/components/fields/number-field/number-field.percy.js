@@ -44,6 +44,15 @@ screenshot('NumberField', () => (
     <Spec label="when placeholder is shown">
       <NumberField
         title="Age"
+        value=""
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when placeholder is shown and input is disabled">
+      <NumberField
+        title="Age"
         isDisabled={true}
         value=""
         placeholder="Enter a text"

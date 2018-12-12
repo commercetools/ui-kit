@@ -31,6 +31,14 @@ screenshot('PasswordInput', () => (
     </Spec>
     <Spec label="when placeholder is visible">
       <PasswordInput
+        value=""
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when placeholder is visible and input is disabled">
+      <PasswordInput
         isDisabled={true}
         value=""
         placeholder="Enter a text"

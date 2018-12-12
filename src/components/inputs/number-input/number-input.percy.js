@@ -27,6 +27,14 @@ screenshot('NumberInput', () => (
     </Spec>
     <Spec label="when placeholder is visible">
       <NumberInput
+        value=""
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when placeholder is visible and input is disabled">
+      <NumberInput
         isDisabled={true}
         value=""
         placeholder="Enter a text"

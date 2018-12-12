@@ -27,6 +27,14 @@ screenshot('TextInput', () => (
     </Spec>
     <Spec label="when placeholder is visible">
       <TextInput
+        value=""
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when placeholder is visible and input is disabled">
+      <TextInput
         isDisabled={true}
         value=""
         placeholder="Enter a text"

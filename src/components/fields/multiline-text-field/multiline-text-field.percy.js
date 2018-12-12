@@ -35,6 +35,15 @@ screenshot('MultilineTextField', () => (
     <Spec label="when placeholder is visible">
       <MultilineTextField
         title="Welcome Text"
+        value=""
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when placeholder is visible and input is disabled">
+      <MultilineTextField
+        title="Welcome Text"
         isDisabled={true}
         value=""
         placeholder="Enter a text"
