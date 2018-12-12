@@ -12,6 +12,7 @@ import SecondaryButton from '../../buttons/secondary-button';
 import Spacings from '../../spacings';
 import Readme from './README.md';
 import TextField from './text-field';
+import TextInput from '../../inputs/text-input';
 
 // Cool stuff to try in this story:
 //  - Click the "Username" label and see how the input is focused automatically
@@ -29,7 +30,7 @@ storiesOf('Examples|Forms/Fields', module)
         initialValues={{ userName: '' }}
         validate={values => {
           const errors = { userName: {} };
-          if (TextField.isEmpty(values.userName))
+          if (TextInput.isEmpty(values.userName))
             errors.userName.missing = true;
           if (values.userName.trim().indexOf(' ') !== -1)
             errors.userName.usesSpaces = true;

@@ -12,6 +12,7 @@ import SecondaryButton from '../../buttons/secondary-button';
 import Spacings from '../../spacings';
 import Readme from './README.md';
 import MultilineTextField from './multiline-text-field';
+import MultilineTextInput from '../../inputs/multiline-text-input';
 
 storiesOf('Examples|Forms/Fields', module)
   .addDecorator(withKnobs)
@@ -22,7 +23,7 @@ storiesOf('Examples|Forms/Fields', module)
         initialValues={{ description: '' }}
         validate={values => {
           const errors = { description: {} };
-          if (MultilineTextField.isEmpty(values.description))
+          if (MultilineTextInput.isEmpty(values.description))
             errors.description.missing = true;
           if (values.description.trim().length > 160)
             errors.description.exceedsMaxLength = true;

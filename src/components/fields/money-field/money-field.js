@@ -21,14 +21,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 class MoneyField extends React.Component {
   static displayName = 'MoneyField';
 
-  static getAmountInputId = MoneyInput.getAmountInputId;
-  static getCurrencyDropdownId = MoneyInput.getCurrencyDropdownId;
-  static convertToMoneyValue = MoneyInput.convertToMoneyValue;
-  static parseMoneyValue = MoneyInput.parseMoneyValue;
-  static isEmpty = MoneyInput.isEmpty;
-  static isHighPrecision = MoneyInput.isHighPrecision;
-  static isTouched = MoneyInput.isTouched;
-
   static propTypes = {
     // MoneyField
     id: PropTypes.string,
@@ -98,7 +90,7 @@ class MoneyField extends React.Component {
   });
 
   render() {
-    // MoneyField.isTouched() ensures both fields have been touched.
+    // MoneyInput.isTouched() ensures both fields have been touched.
     // This avoids showing an error when the user just selected a language but
     // didn't add an amount yet.
     const hasError =

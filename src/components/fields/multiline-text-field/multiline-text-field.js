@@ -16,8 +16,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 class MultilineTextField extends React.Component {
   static displayName = 'MultilineTextField';
 
-  static isEmpty = MultilineTextInput.isEmpty;
-
   static propTypes = {
     // MultilineTextField
     id: PropTypes.string,

@@ -16,32 +16,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 export default class SelectField extends React.Component {
   static displayName = 'SelectField';
 
-  static isTouched = SelectInput.isTouched;
-
-  // customizable components
-  static ClearIndicator = SelectInput.ClearIndicator;
-  static Control = SelectInput.Control;
-  static DropdownIndicator = SelectInput.DropdownIndicator;
-  static Group = SelectInput.Group;
-  static GroupHeading = SelectInput.GroupHeading;
-  static IndicatorsContainer = SelectInput.IndicatorsContainer;
-  static IndicatorSeparator = SelectInput.IndicatorSeparator;
-  static Input = SelectInput.Input;
-  static LoadingIndicator = SelectInput.LoadingIndicator;
-  static Menu = SelectInput.Menu;
-  static MenuList = SelectInput.MenuList;
-  static LoadingMessage = SelectInput.LoadingMessage;
-  static NoOptionsMessage = SelectInput.NoOptionsMessage;
-  static MultiValue = SelectInput.MultiValue;
-  static MultiValueContainer = SelectInput.MultiValueContainer;
-  static MultiValueLabel = SelectInput.MultiValueLabel;
-  static MultiValueRemove = SelectInput.MultiValueRemove;
-  static Option = SelectInput.Option;
-  static Placeholder = SelectInput.Placeholder;
-  static SelectContainer = SelectInput.SelectContainer;
-  static SingleValue = SelectInput.SingleValue;
-  static ValueContainer = SelectInput.ValueContainer;
-
   static propTypes = {
     // SelectField
     id: PropTypes.string,

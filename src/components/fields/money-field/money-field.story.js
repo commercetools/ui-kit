@@ -13,6 +13,7 @@ import Section from '../../../../.storybook/decorators/section';
 import MoneyFieldReadme from './README.md';
 import * as icons from '../../icons';
 import MoneyField from './money-field';
+import MoneyInput from '../../inputs/money-input';
 
 // This uses a dedicated story component to keep track of state instead of
 // react-value. The reason is that MoneyInput can call twice onChange before
@@ -35,7 +36,7 @@ class MoneyFieldStory extends React.Component {
       // eslint-disable-next-line no-console
       console.log(
         'parsed',
-        MoneyField.convertToMoneyValue({
+        MoneyInput.convertToMoneyValue({
           amount: this.state.amount,
           currencyCode: this.state.currencyCode,
         })

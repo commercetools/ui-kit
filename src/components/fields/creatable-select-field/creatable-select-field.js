@@ -16,32 +16,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 export default class SelectField extends React.Component {
   static displayName = 'SelectField';
 
-  static isTouched = CreatableSelectInput.isTouched;
-
-  // customizable components
-  static ClearIndicator = CreatableSelectInput.ClearIndicator;
-  static Control = CreatableSelectInput.Control;
-  static DropdownIndicator = CreatableSelectInput.DropdownIndicator;
-  static Group = CreatableSelectInput.Group;
-  static GroupHeading = CreatableSelectInput.GroupHeading;
-  static IndicatorsContainer = CreatableSelectInput.IndicatorsContainer;
-  static IndicatorSeparator = CreatableSelectInput.IndicatorSeparator;
-  static Input = CreatableSelectInput.Input;
-  static LoadingIndicator = CreatableSelectInput.LoadingIndicator;
-  static Menu = CreatableSelectInput.Menu;
-  static MenuList = CreatableSelectInput.MenuList;
-  static LoadingMessage = CreatableSelectInput.LoadingMessage;
-  static NoOptionsMessage = CreatableSelectInput.NoOptionsMessage;
-  static MultiValue = CreatableSelectInput.MultiValue;
-  static MultiValueContainer = CreatableSelectInput.MultiValueContainer;
-  static MultiValueLabel = CreatableSelectInput.MultiValueLabel;
-  static MultiValueRemove = CreatableSelectInput.MultiValueRemove;
-  static Option = CreatableSelectInput.Option;
-  static Placeholder = CreatableSelectInput.Placeholder;
-  static SelectContainer = CreatableSelectInput.SelectContainer;
-  static SingleValue = CreatableSelectInput.SingleValue;
-  static ValueContainer = CreatableSelectInput.ValueContainer;
-
   static propTypes = {
     // SelectField
     id: PropTypes.string,

@@ -64,7 +64,3 @@ When the `key` is known, and when the value is truthy, and when `renderError` re
 Known error keys are:
 
 - `missing`: tells the user that this field is required
-
-### Static methods
-
-This component supports the same static methods as `LocalizedTextInput`. See `LocalizedTextInput` for details.

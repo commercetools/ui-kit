@@ -13,21 +13,6 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
-describe('MultilineTextField.isEmpty', () => {
-  describe('when called with an empty value', () => {
-    it('should return true', () => {
-      expect(MultilineTextField.isEmpty('')).toBe(true);
-      expect(MultilineTextField.isEmpty(' ')).toBe(true);
-    });
-  });
-  describe('when called with a filled value', () => {
-    it('should return false', () => {
-      expect(MultilineTextField.isEmpty('a')).toBe(false);
-      expect(MultilineTextField.isEmpty(' a ')).toBe(false);
-    });
-  });
-});
-
 describe('rendering', () => {
   describe('data attributes', () => {
     let textInput;

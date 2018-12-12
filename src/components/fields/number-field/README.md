@@ -62,7 +62,3 @@ When the `key` is known, and when the value is truthy, and when `renderError` re
 Known error keys are:
 
 - `missing`: tells the user that this field is required
-
-### Static methods
-
-This input has the same static methods as the `NumberInput`. See its README for their documentation.

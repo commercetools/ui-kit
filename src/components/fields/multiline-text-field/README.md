@@ -58,10 +58,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required
 
-### Static methods
-
-This component reexports the static methods of `MultilineTextInput`. See that for more information.
-
 ### Main Functions and use cases are:
 
 - Input field for multi-line strings

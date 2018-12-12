@@ -12,11 +12,12 @@ import SecondaryButton from '../../buttons/secondary-button';
 import Spacings from '../../spacings';
 import Readme from './README.md';
 import MoneyField from './money-field';
+import MoneyInput from '../../inputs/money-input';
 
 const formToDoc = values => ({
-  price: MoneyField.convertToMoneyValue(values.price),
-  pricePerTon: MoneyField.convertToMoneyValue(values.pricePerTon),
-  discountedPrice: MoneyField.convertToMoneyValue(values.discountedPrice),
+  price: MoneyInput.convertToMoneyValue(values.price),
+  pricePerTon: MoneyInput.convertToMoneyValue(values.pricePerTon),
+  discountedPrice: MoneyInput.convertToMoneyValue(values.discountedPrice),
 });
 
 storiesOf('Examples|Forms/Fields', module)
@@ -33,17 +34,17 @@ storiesOf('Examples|Forms/Fields', module)
       <Section>
         <Formik
           initialValues={{
-            price: MoneyField.parseMoneyValue(),
-            pricePerTon: MoneyField.parseMoneyValue(),
-            discountedPrice: MoneyField.parseMoneyValue(),
+            price: MoneyInput.parseMoneyValue(),
+            pricePerTon: MoneyInput.parseMoneyValue(),
+            discountedPrice: MoneyInput.parseMoneyValue(),
           }}
           validate={values => {
             const errors = { price: {}, pricePerTon: {}, discountedPrice: {} };
-            if (MoneyField.isEmpty(values.price)) errors.price.missing = true;
-            else if (MoneyField.isHighPrecision(values.price))
+            if (MoneyInput.isEmpty(values.price)) errors.price.missing = true;
+            else if (MoneyInput.isHighPrecision(values.price))
               errors.price.unsupportedHighPrecision = true;
 
-            if (MoneyField.isEmpty(values.pricePerTon))
+            if (MoneyInput.isEmpty(values.pricePerTon))
               errors.pricePerTon.missing = true;
 
             // Shows how to validate optional `MoneyField`s. Notice that
@@ -54,8 +55,8 @@ storiesOf('Examples|Forms/Fields', module)
             // UX could want to show an error in this case, but then we'd also
             // need a way to unset the currency, which is not possible now.
             if (
-              !MoneyField.isEmpty(values.discountedPrice) &&
-              MoneyField.isHighPrecision(values.discountedPrice)
+              !MoneyInput.isEmpty(values.discountedPrice) &&
+              MoneyInput.isHighPrecision(values.discountedPrice)
             )
               errors.discountedPrice.unsupportedHighPrecision = true;
 
