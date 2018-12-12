@@ -27,13 +27,12 @@ screenshot('MoneyField', () => (
         currencies={currencies}
       />
     </Spec>
-    <Spec label="with only one currency">
+    <Spec label="without currency selection">
       <MoneyField
         title="Price"
         horizontalConstraint="m"
         value={value}
         onChange={() => {}}
-        currencies={['EUR']}
       />
     </Spec>
     <Spec label="when disabled">

@@ -19,37 +19,6 @@ screenshot('LocalizedTextField', () => (
         horizontalConstraint="m"
       />
     </Spec>
-    <Spec label="when multiline text is expanded by default">
-      <LocalizedTextField
-        title="Welcome Text"
-        value={value}
-        onChange={() => {}}
-        selectedLanguage="en"
-        horizontalConstraint="m"
-        isMultilineDefaultExpanded={true}
-      />
-    </Spec>
-    <Spec label="when multiline text and languages are expanded by default">
-      <LocalizedTextField
-        title="Welcome Text"
-        value={value}
-        onChange={() => {}}
-        selectedLanguage="en"
-        horizontalConstraint="m"
-        isMultilineDefaultExpanded={true}
-        areLanguagesDefaultOpened={true}
-      />
-    </Spec>
-    <Spec label="when language controls are hidden">
-      <LocalizedTextField
-        title="Welcome Text"
-        value={value}
-        onChange={() => {}}
-        selectedLanguage="en"
-        horizontalConstraint="m"
-        hideLanguageControls={true}
-      />
-    </Spec>
     <Spec label="when languages are opened by default">
       <LocalizedTextField
         title="Welcome Text"
@@ -57,7 +26,17 @@ screenshot('LocalizedTextField', () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        areLanguagesDefaultOpened={true}
+        isDefaultExpanded={true}
+      />
+    </Spec>
+    <Spec label="when expansion controls are hidden">
+      <LocalizedTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint="m"
+        hideExpansionControls={true}
       />
     </Spec>
     <Spec label="when read-only and open">
@@ -68,7 +47,7 @@ screenshot('LocalizedTextField', () => (
         selectedLanguage="en"
         horizontalConstraint="m"
         isReadOnly={true}
-        areLanguagesDefaultOpened={true}
+        isDefaultExpanded={true}
       />
     </Spec>
     <Spec label="when read-only and closed">
@@ -89,7 +68,7 @@ screenshot('LocalizedTextField', () => (
         selectedLanguage="en"
         horizontalConstraint="m"
         isDisabled={true}
-        areLanguagesDefaultOpened={true}
+        isDefaultExpanded={true}
       />
     </Spec>
     <Spec label="when disabled and closed">

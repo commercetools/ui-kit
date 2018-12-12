@@ -1,5 +1,9 @@
 import React from 'react';
-import { LocalizedMultilineTextInput } from '../../../../dist/ui-kit.esm';
+import {
+  LocalizedMultilineTextInput,
+  ErrorMessage,
+  WarningMessage,
+} from '../../../../dist/ui-kit.esm';
 import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 const value = {
@@ -98,7 +102,7 @@ screenshot('LocalizedMultilineTextInput', () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        errors={{ en: 'foo' }}
+        errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
     <Spec label="when there is an error for a specific language (second one)">
@@ -107,7 +111,7 @@ screenshot('LocalizedMultilineTextInput', () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        errors={{ de: 'foo' }}
+        errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
     <Spec label="when there is a general error">
@@ -125,7 +129,7 @@ screenshot('LocalizedMultilineTextInput', () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        warnings={{ en: 'foo' }}
+        warnings={{ en: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
     <Spec label="when there is a warning for a specific language (second one)">
@@ -134,7 +138,7 @@ screenshot('LocalizedMultilineTextInput', () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        warnings={{ de: 'foo' }}
+        warnings={{ de: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
     <Spec label="when there is a general warning">

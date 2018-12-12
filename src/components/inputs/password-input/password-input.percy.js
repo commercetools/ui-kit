@@ -71,14 +71,5 @@ screenshot('PasswordInput', () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec label="when disabled and closed by default">
-      <PasswordInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        isDefaultClosed={true}
-        isDisabled={true}
-      />
-    </Spec>
   </Suite>
 ));

@@ -67,15 +67,6 @@ screenshot('TextInput', () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec label="when disabled and closed by default">
-      <TextInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        isDefaultClosed={true}
-        isDisabled={true}
-      />
-    </Spec>
     <Spec label="when disabled with error">
       <TextInput
         value={value}

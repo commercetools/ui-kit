@@ -12,7 +12,7 @@ screenshot('LinkButton', () => (
     </Spec>
 
     <Spec label="with icon left">
-      <LinkButton label="A label text" to="/" icon={<InformationIcon />} />
+      <LinkButton label="A label text" to="/" iconLeft={<InformationIcon />} />
     </Spec>
 
     <Spec label="with icon left and disabled">
@@ -20,7 +20,7 @@ screenshot('LinkButton', () => (
         label="A label text"
         to="/"
         isDisabled={true}
-        icon={<InformationIcon />}
+        iconLeft={<InformationIcon />}
       />
     </Spec>
   </Suite>
