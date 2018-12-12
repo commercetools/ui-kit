@@ -1,132 +1,382 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Creatable as CreatableSelect } from 'react-select';
-import { CreatableSelectInput } from './creatable-select-input';
+import PropTypes from 'prop-types';
+import { render, fireEvent } from '../../../test-utils';
+import CreatableSelectInput from './creatable-select-input';
 
-const createTestProps = custom => ({
-  name: 'foo',
-  options: [
-    { value: 'ready', label: 'Ready' },
-    { value: 'shipped', label: 'Shipped' },
-    { value: 'delivered', label: 'Delivered' },
-    { value: 'returned', label: 'Returned' },
-  ],
-  onChange: jest.fn(),
-  onBlur: jest.fn(),
-  intl: { formatMessage: jest.fn(message => message.id) },
-  ...custom,
+// We use this component to simulate the whole flow of
+// changing a value and formatting on blur.
+class TestComponent extends React.Component {
+  static displayName = 'TestComponent';
+  static propTypes = {
+    id: PropTypes.string,
+    value: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(
+            PropTypes.shape({ value: PropTypes.string.isRequired })
+          )(props, ...rest)
+        : PropTypes.shape({ value: PropTypes.string.isRequired })(
+            props,
+            ...rest
+          ),
+    onChange: PropTypes.func,
+  };
+  static defaultProps = {
+    id: 'some-id',
+    name: 'some-name',
+    value: { value: 'banana', label: 'Banana' },
+    options: [
+      { value: 'banana', label: 'Banana' },
+      { value: 'mango', label: 'Mango' },
+      { value: 'raspberry', label: 'Raspberry' },
+      { value: 'lichi', label: 'Lichi' },
+    ],
+  };
+
+  state = {
+    value: this.props.value,
+  };
+
+  handleChange = event => {
+    event.persist();
+    this.setState({
+      value: event.target.value,
+    });
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <label htmlFor={this.props.id}>Fruit</label>
+        <CreatableSelectInput
+          {...this.props}
+          onChange={this.handleChange}
+          value={this.state.value}
+          options={this.props.options}
+        />
+      </React.Fragment>
+    );
+  }
+}
+
+const renderInput = (props, options) =>
+  render(<TestComponent {...props} />, options);
+
+it('should forward data-attributes', () => {
+  const { container } = renderInput({ 'data-foo': 'bar' });
+  // here we have to use container.querySelector because the data attributes are attached
+  // to the wrapper div, not to the input itself.
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
 });
 
-describe('overwritten props', () => {
-  describe('when in single-value mode', () => {
-    let wrapper;
-    let props;
-    beforeEach(() => {
-      props = createTestProps();
-      wrapper = shallow(<CreatableSelectInput {...props} />);
+it('should have focus automatically when isAutofocussed is passed', () => {
+  const { getByLabelText } = renderInput({ isAutofocussed: true });
+  expect(getByLabelText('Fruit')).toHaveFocus();
+});
+
+it('should call onFocus when the input is focused', () => {
+  const onFocus = jest.fn();
+  const { getByLabelText } = renderInput({ onFocus });
+  const input = getByLabelText('Fruit');
+  input.focus();
+  expect(input).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});
+
+it('should call onBlur when input loses focus', () => {
+  const onBlur = jest.fn();
+  const { getByLabelText } = renderInput({ onBlur });
+  const input = getByLabelText('Fruit');
+  input.focus();
+  expect(input).toHaveFocus();
+  input.blur();
+  expect(input).not.toHaveFocus();
+  expect(onBlur).toHaveBeenCalled();
+});
+
+describe('in single mode', () => {
+  describe('when no value is specified', () => {
+    it('should render a select input', () => {
+      const { getByLabelText } = renderInput();
+      const input = getByLabelText('Fruit');
+      expect(input).toBeInTheDocument();
     });
-    describe('when value is changed', () => {
-      let shippedOption;
-      const info = {};
-      beforeEach(() => {
-        shippedOption = props.options[1];
-        wrapper.find(CreatableSelect).prop('onChange')(shippedOption, info);
+  });
+  describe('when a value is specified', () => {
+    it('should render a select input with preselected value', () => {
+      const { getByLabelText, getByText } = renderInput({
+        value: { value: 'banana', label: 'Banana' },
       });
-      it('should call onChange with an event', () => {
-        expect(props.onChange).toHaveBeenCalledWith(
-          {
-            persist: expect.any(Function),
-            target: { name: 'foo', value: shippedOption },
-          },
-          info
-        );
+      const input = getByLabelText('Fruit');
+      expect(input).toBeInTheDocument();
+      expect(getByText('Banana')).toBeInTheDocument();
+    });
+  });
+  describe('interacting', () => {
+    it('should open the list and all options should be visible', () => {
+      const { getByLabelText, getByText } = renderInput();
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      fireEvent.keyUp(input, { key: 'ArrowDown' });
+      expect(getByText('Mango')).toBeInTheDocument();
+      expect(getByText('Lichi')).toBeInTheDocument();
+      expect(getByText('Raspberry')).toBeInTheDocument();
+    });
+    it('should be able to select an option', () => {
+      const { getByLabelText, getByText, queryByText } = renderInput();
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      getByText('Mango').click();
+      // new selected value should be Mango
+      expect(getByText('Mango')).toBeInTheDocument();
+      // list should closed and not visible
+      expect(queryByText('Banana')).not.toBeInTheDocument();
+    });
+    it('should call onChange when value selected', () => {
+      const onChange = jest.fn();
+      const { getByLabelText, getByText } = renderInput({
+        onChange,
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      getByText('Mango').click();
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: { value: 'mango', label: 'Mango' },
+        },
       });
     });
-    describe('when field is blurred', () => {
-      beforeEach(() => {
-        wrapper.find(CreatableSelect).prop('onBlur')();
+    it('should be able to create an option', () => {
+      const { getByLabelText, getByText } = renderInput();
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      const event = { target: { value: 'Orange', label: 'Orange' } };
+      fireEvent.change(input, event);
+      fireEvent.keyDown(input, { key: 'Enter' });
+      fireEvent.keyUp(input, { key: 'Enter' });
+      expect(getByText('Orange')).toBeInTheDocument();
+    });
+    it('should call onChange with the created option', () => {
+      const onChange = jest.fn();
+      const { getByLabelText } = renderInput({
+        onChange,
       });
-      it('should call onBlur with an event', () => {
-        expect(props.onBlur).toHaveBeenCalledWith({
-          persist: expect.any(Function),
-          target: { name: 'foo' },
-        });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      const event = { target: { value: 'Orange', label: 'Orange' } };
+      fireEvent.change(input, event);
+      fireEvent.keyDown(input, { key: 'Enter' });
+      fireEvent.keyUp(input, { key: 'Enter' });
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: expect.objectContaining({ value: 'Orange', label: 'Orange' }),
+        },
       });
     });
   });
-  describe('when in multi-value mode', () => {
-    let wrapper;
-    let props;
-    let readyOption;
-    let shippedOption;
-    const info = {};
-    beforeEach(() => {
-      props = createTestProps({ isMulti: true, value: [] });
-      readyOption = props.options[0];
-      shippedOption = props.options[1];
-      wrapper = shallow(<CreatableSelectInput {...props} />);
+});
+
+describe('in multi mode', () => {
+  describe('when no value is specified', () => {
+    it('should render a select input', () => {
+      const { getByLabelText } = renderInput({
+        isMulti: true,
+        value: [],
+      });
+      const input = getByLabelText('Fruit');
+      expect(input).toBeInTheDocument();
     });
-    describe('when value is changed', () => {
-      beforeEach(() => {
-        wrapper.find(CreatableSelect).prop('onChange')(
-          [readyOption, shippedOption],
-          info
-        );
-      });
-      it('should call onChange with an event', () => {
-        expect(props.onChange).toHaveBeenCalledWith(
-          {
-            persist: expect.any(Function),
-            target: { name: 'foo', value: [readyOption, shippedOption] },
-          },
-          info
-        );
-      });
-    });
-    describe('when field is blurred', () => {
-      beforeEach(() => {
-        wrapper.find(CreatableSelect).prop('onBlur')();
-      });
-      it('should call onBlur with an event', () => {
-        expect(props.onBlur).toHaveBeenCalledWith({
-          persist: expect.any(Function),
-          target: { name: 'foo.0' },
+    describe('when values are specified', () => {
+      it('should render a select input with preselected values', () => {
+        const { getByLabelText, getByText } = renderInput({
+          isMulti: true,
+          value: [
+            { value: 'mango', label: 'Mango' },
+            { value: 'raspberry', label: 'Raspberry' },
+          ],
         });
+        const input = getByLabelText('Fruit');
+        expect(input).toBeInTheDocument();
+        expect(getByText('Mango')).toBeInTheDocument();
+        expect(getByText('Raspberry')).toBeInTheDocument();
       });
     });
   });
-  describe('when used with option groups', () => {
-    let wrapper;
-    let props;
-    const colourOptions = [
-      { value: 'purple', label: 'Purple', color: '#5243AA' },
-      { value: 'orange', label: 'Orange', color: '#FF8B00' },
-      { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-      { value: 'green', label: 'Green', color: '#36B37E' },
-      { value: 'forest', label: 'Forest', color: '#00875A' },
-      { value: 'slate', label: 'Slate', color: '#253858' },
-      { value: 'silver', label: 'Silver', color: '#666666' },
-    ];
-
-    const flavourOptions = [
-      { value: 'vanilla', label: 'Vanilla', rating: 'safe' },
-      { value: 'chocolate', label: 'Chocolate', rating: 'good' },
-    ];
-
-    const groupedOptions = [
-      { label: 'Colours', options: colourOptions },
-      { label: 'Flavours', options: flavourOptions },
-    ];
-
-    const yellowOption = colourOptions[2];
-
-    beforeEach(() => {
-      props = createTestProps({ options: groupedOptions, value: yellowOption });
-      wrapper = shallow(<CreatableSelectInput {...props} />);
+  describe('interacting', () => {
+    it('should open the list and all options should be visible', () => {
+      const { getByLabelText, getByText } = renderInput({
+        isMulti: true,
+        value: [],
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      fireEvent.keyUp(input, { key: 'ArrowDown' });
+      expect(getByText('Mango')).toBeInTheDocument();
+      expect(getByText('Lichi')).toBeInTheDocument();
+      expect(getByText('Raspberry')).toBeInTheDocument();
     });
-
-    it('should forward the selected option as the value', () => {
-      expect(wrapper.find(CreatableSelect)).toHaveProp('value', yellowOption);
+    it('should be able to select two option', () => {
+      const { getByLabelText, getByText, queryByText } = renderInput({
+        isMulti: true,
+        value: [],
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      getByText('Mango').click();
+      // new selected value should be Mango
+      expect(getByText('Mango')).toBeInTheDocument();
+      // list should closed and not visible
+      expect(queryByText('Banana')).not.toBeInTheDocument();
+      // open list again
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      getByText('Banana').click();
+      // new values should be Banana and Mango
+      expect(getByText('Banana')).toBeInTheDocument();
+      expect(getByText('Mango')).toBeInTheDocument();
+      // list should closed and not visible
+      expect(queryByText('Raspberry')).not.toBeInTheDocument();
     });
+    it('should call onChange when two values selected', () => {
+      const onChange = jest.fn();
+      const { getByLabelText, getByText } = renderInput({
+        onChange,
+        isMulti: true,
+        value: [],
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      getByText('Mango').click();
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: [expect.objectContaining({ value: 'mango', label: 'Mango' })],
+        },
+      });
+      // open list again
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      getByText('Raspberry').click();
+
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: [
+            expect.objectContaining(
+              { value: 'mango', label: 'Mango' },
+              { value: 'raspberry', label: 'Raspberry' }
+            ),
+          ],
+        },
+      });
+    });
+    it('should be able to create two options', () => {
+      const { getByLabelText, getByText } = renderInput({
+        isMulti: true,
+        value: [],
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      const event = { target: { value: 'Orange', label: 'Orange' } };
+      fireEvent.change(input, event);
+      fireEvent.keyDown(input, { key: 'Enter' });
+      fireEvent.keyUp(input, { key: 'Enter' });
+      // open again
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      const appleEvent = { target: { value: 'Apple', label: 'Apple' } };
+      fireEvent.change(input, appleEvent);
+      fireEvent.keyDown(input, { key: 'Enter' });
+      fireEvent.keyUp(input, { key: 'Enter' });
+
+      expect(getByText('Orange')).toBeInTheDocument();
+      expect(getByText('Apple')).toBeInTheDocument();
+    });
+    it('should call onChange when two created values', () => {
+      const onChange = jest.fn();
+      const { getByLabelText } = renderInput({
+        onChange,
+        isMulti: true,
+        value: [],
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      const event = { target: { value: 'Orange', label: 'Orange' } };
+      fireEvent.change(input, event);
+      fireEvent.keyDown(input, { key: 'Enter' });
+      fireEvent.keyUp(input, { key: 'Enter' });
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: [
+            expect.objectContaining({ value: 'Orange', label: 'Orange' }),
+          ],
+        },
+      });
+      // open list again
+      const appleEvent = { target: { value: 'Apple', label: 'Apple' } };
+      fireEvent.change(input, appleEvent);
+      fireEvent.keyDown(input, { key: 'Enter' });
+      fireEvent.keyUp(input, { key: 'Enter' });
+
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: [
+            expect.objectContaining({ value: 'Orange', label: 'Orange' }),
+            expect.objectContaining({ value: 'Apple', label: 'Apple' }),
+          ],
+        },
+      });
+    });
+  });
+});
+
+describe('when used with option groups', () => {
+  const colourOptions = [
+    { value: 'purple', label: 'Purple', color: '#5243AA' },
+    { value: 'orange', label: 'Orange', color: '#FF8B00' },
+    { value: 'yellow', label: 'Yellow', color: '#FFC400' },
+  ];
+
+  const flavourOptions = [
+    { value: 'vanilla', label: 'Vanilla', rating: 'safe' },
+    { value: 'chocolate', label: 'Chocolate', rating: 'good' },
+  ];
+  const groupedOptions = [
+    { label: 'Colours', options: colourOptions },
+    { label: 'Flavours', options: flavourOptions },
+  ];
+
+  const yellowOption = colourOptions[2];
+
+  it('should render a select input with preselected values', () => {
+    const { getByLabelText, getByText } = renderInput({
+      value: yellowOption,
+      options: groupedOptions,
+    });
+    const input = getByLabelText('Fruit');
+    expect(input).toBeInTheDocument();
+    expect(getByText(yellowOption.label)).toBeInTheDocument();
   });
 });
