@@ -8,7 +8,6 @@ export {
   default as AccessibleButton,
 } from './components/buttons/accessible-button';
 export { default as FlatButton } from './components/buttons/flat-button';
-export { default as GhostButton } from './components/buttons/ghost-button';
 export { default as IconButton } from './components/buttons/icon-button';
 export { default as LinkButton } from './components/buttons/link-button';
 export { default as PrimaryButton } from './components/buttons/primary-button';
