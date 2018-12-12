@@ -12,6 +12,7 @@ import SecondaryButton from '../../buttons/secondary-button';
 import Spacings from '../../spacings';
 import Readme from './README.md';
 import NumberField from './number-field';
+import NumberInput from '../../inputs/number-input';
 
 // Cool stuff to try in this story:
 //  - Click the "Age" label and see how the input is focused automatically
@@ -28,7 +29,7 @@ storiesOf('Examples|Forms/Fields', module)
         initialValues={{ age: '' }}
         validate={values => {
           const errors = { age: {} };
-          if (NumberField.isEmpty(values.age)) errors.age.missing = true;
+          if (NumberInput.isEmpty(values.age)) errors.age.missing = true;
           else if (values.age < 0) errors.age.negative = true;
           return omitEmpty(errors);
         }}

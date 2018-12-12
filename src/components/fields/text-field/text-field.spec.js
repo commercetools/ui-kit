@@ -13,21 +13,6 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
-describe('TextField.isEmpty', () => {
-  describe('when called with an empty value', () => {
-    it('should return true', () => {
-      expect(TextField.isEmpty('')).toBe(true);
-      expect(TextField.isEmpty(' ')).toBe(true);
-    });
-  });
-  describe('when called with a filled value', () => {
-    it('should return false', () => {
-      expect(TextField.isEmpty('a')).toBe(false);
-      expect(TextField.isEmpty(' a ')).toBe(false);
-    });
-  });
-});
-
 describe('rendering', () => {
   describe('data attributes', () => {
     let textInput;

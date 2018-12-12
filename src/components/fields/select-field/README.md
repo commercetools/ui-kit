@@ -77,7 +77,3 @@ When the `key` is known, and when the value is truthy, and when `renderError` re
 Known error keys are:
 
 - `missing`: tells the user that this field is required
-
-### Static methods
-
-`SelectField` supports the same static methods as `SelectInput`. See `SelectInput` for the description.

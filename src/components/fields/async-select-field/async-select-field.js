@@ -16,32 +16,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 export default class AsyncSelectField extends React.Component {
   static displayName = 'AsyncSelectField';
 
-  static isTouched = AsyncSelectInput.isTouched;
-
-  // customizable components
-  static ClearIndicator = AsyncSelectInput.ClearIndicator;
-  static Control = AsyncSelectInput.Control;
-  static DropdownIndicator = AsyncSelectInput.DropdownIndicator;
-  static Group = AsyncSelectInput.Group;
-  static GroupHeading = AsyncSelectInput.GroupHeading;
-  static IndicatorsContainer = AsyncSelectInput.IndicatorsContainer;
-  static IndicatorSeparator = AsyncSelectInput.IndicatorSeparator;
-  static Input = AsyncSelectInput.Input;
-  static LoadingIndicator = AsyncSelectInput.LoadingIndicator;
-  static Menu = AsyncSelectInput.Menu;
-  static MenuList = AsyncSelectInput.MenuList;
-  static LoadingMessage = AsyncSelectInput.LoadingMessage;
-  static NoOptionsMessage = AsyncSelectInput.NoOptionsMessage;
-  static MultiValue = AsyncSelectInput.MultiValue;
-  static MultiValueContainer = AsyncSelectInput.MultiValueContainer;
-  static MultiValueLabel = AsyncSelectInput.MultiValueLabel;
-  static MultiValueRemove = AsyncSelectInput.MultiValueRemove;
-  static Option = AsyncSelectInput.Option;
-  static Placeholder = AsyncSelectInput.Placeholder;
-  static SelectContainer = AsyncSelectInput.SelectContainer;
-  static SingleValue = AsyncSelectInput.SingleValue;
-  static ValueContainer = AsyncSelectInput.ValueContainer;
-
   static propTypes = {
     // AsyncSelectField
     id: PropTypes.string,

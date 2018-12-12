@@ -11,9 +11,13 @@ import { FormikBox, Section } from '../.storybook/decorators';
 import {
   Text,
   TextField,
+  TextInput,
   MultilineTextField,
+  MultilineTextInput,
   NumberField,
+  NumberInput,
   MoneyField,
+  MoneyInput,
   PrimaryButton,
   SecondaryButton,
   Spacings,
@@ -105,12 +109,12 @@ const docToForm = (doc, locale) => ({
   // could be undefined, in which case toFormValue will set it to an empty
   // string. This eases validation later on, as we don't have to deal with
   // undefined anymore.
-  inventory: NumberField.toFormValue(doc.inventory),
+  inventory: NumberInput.toFormValue(doc.inventory),
   // parseMoneyValue will ensure that the price field will have currencyCode and
   // amount filled out or set to empty strings. This reduces the cases we
   // need to deal with (amount, currencyCode or the whole object being
   // undefined).
-  price: MoneyField.parseMoneyValue(doc.price, locale),
+  price: MoneyInput.parseMoneyValue(doc.price, locale),
   status: doc.status,
 });
 
@@ -126,7 +130,7 @@ const formToDoc = formValues => ({
   key: formValues.key,
   description: formValues.description,
   inventory: formValues.inventory,
-  price: MoneyField.convertToMoneyValue(formValues.price),
+  price: MoneyInput.convertToMoneyValue(formValues.price),
   status: formValues.status,
 });
 
@@ -151,26 +155,26 @@ const validate = formValues => {
   // validate key
   // Input elements usually provide a way to check whether it's value is empty
   // This is useful to determine whether a required value was not filled out.
-  if (TextField.isEmpty(formValues.key)) errors.key.missing = true;
+  if (TextInput.isEmpty(formValues.key)) errors.key.missing = true;
 
   // validate description
-  if (MultilineTextField.isEmpty(formValues.description))
+  if (MultilineTextInput.isEmpty(formValues.description))
     errors.description.missing = true;
 
   // validate inventory
-  if (NumberField.isEmpty(formValues.inventory)) {
+  if (NumberInput.isEmpty(formValues.inventory)) {
     errors.inventory.missing = true;
   } else {
     // When the value is not empty, we can assume that it is a number
     if (formValues.inventory < 0) errors.inventory.negative = true;
-    if (NumberField.hasFractionDigits(formValues.inventory))
+    if (NumberInput.hasFractionDigits(formValues.inventory))
       errors.inventory.fractions = true;
   }
 
   // validate price
-  if (MoneyField.isEmpty(formValues.price)) {
+  if (MoneyInput.isEmpty(formValues.price)) {
     errors.price.missing = true;
-  } else if (MoneyField.isHighPrecision(formValues.price)) {
+  } else if (MoneyInput.isHighPrecision(formValues.price)) {
     errors.price.unsupportedHighPrecision = true;
   }
 

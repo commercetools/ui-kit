@@ -67,10 +67,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required but no value was provided
 
-### Static methods
-
-Supports the same static methods as `MoneyInput`.
-
 ### Main Functions and use cases are:
 
 - Getting monetary value input with a currency from users (with cent precision or high precision)

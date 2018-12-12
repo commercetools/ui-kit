@@ -57,18 +57,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required
 
-### Static methods
-
-#### `TextField.isEmpty`
-
-Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces only.
-
-```js
-TextField.isEmpty(''); // -> true
-TextField.isEmpty(' '); // -> true
-TextField.isEmpty('tree'); // -> false
-```
-
 ### Main Functions and use cases are:
 
 - Input field for single-line strings

@@ -14,18 +14,6 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
-describe('static methods', () => {
-  it('should reexport the static methods of MoneyInput', () => {
-    expect(typeof MoneyField.getAmountInputId).toBe('function');
-    expect(typeof MoneyField.getCurrencyDropdownId).toBe('function');
-    expect(typeof MoneyField.convertToMoneyValue).toBe('function');
-    expect(typeof MoneyField.parseMoneyValue).toBe('function');
-    expect(typeof MoneyField.isEmpty).toBe('function');
-    expect(typeof MoneyField.isHighPrecision).toBe('function');
-    expect(typeof MoneyField.isTouched).toBe('function');
-  });
-});
-
 describe('rendering', () => {
   describe('data attributes', () => {
     let moneyInput;

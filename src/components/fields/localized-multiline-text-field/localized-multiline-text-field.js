@@ -17,20 +17,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 class LocalizedMultilineTextField extends React.Component {
   static displayName = 'LocalizedMultilineTextField';
 
-  static getId = LocalizedMultilineTextInput.getId;
-
-  static getName = LocalizedMultilineTextInput.getName;
-
-  static createLocalizedString =
-    LocalizedMultilineTextInput.createLocalizedString;
-
-  static isEmpty = LocalizedMultilineTextInput.isEmpty;
-
-  static omitEmptyTranslations =
-    LocalizedMultilineTextInput.omitEmptyTranslations;
-
-  static isTouched = LocalizedMultilineTextInput.isTouched;
-
   static propTypes = {
     // LocalizedMultilineTextField
     id: PropTypes.string,

@@ -16,32 +16,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 export default class SelectField extends React.Component {
   static displayName = 'SelectField';
 
-  static isTouched = AsyncCreatableSelectInput.isTouched;
-
-  // customizable components
-  static ClearIndicator = AsyncCreatableSelectInput.ClearIndicator;
-  static Control = AsyncCreatableSelectInput.Control;
-  static DropdownIndicator = AsyncCreatableSelectInput.DropdownIndicator;
-  static Group = AsyncCreatableSelectInput.Group;
-  static GroupHeading = AsyncCreatableSelectInput.GroupHeading;
-  static IndicatorsContainer = AsyncCreatableSelectInput.IndicatorsContainer;
-  static IndicatorSeparator = AsyncCreatableSelectInput.IndicatorSeparator;
-  static Input = AsyncCreatableSelectInput.Input;
-  static LoadingIndicator = AsyncCreatableSelectInput.LoadingIndicator;
-  static Menu = AsyncCreatableSelectInput.Menu;
-  static MenuList = AsyncCreatableSelectInput.MenuList;
-  static LoadingMessage = AsyncCreatableSelectInput.LoadingMessage;
-  static NoOptionsMessage = AsyncCreatableSelectInput.NoOptionsMessage;
-  static MultiValue = AsyncCreatableSelectInput.MultiValue;
-  static MultiValueContainer = AsyncCreatableSelectInput.MultiValueContainer;
-  static MultiValueLabel = AsyncCreatableSelectInput.MultiValueLabel;
-  static MultiValueRemove = AsyncCreatableSelectInput.MultiValueRemove;
-  static Option = AsyncCreatableSelectInput.Option;
-  static Placeholder = AsyncCreatableSelectInput.Placeholder;
-  static SelectContainer = AsyncCreatableSelectInput.SelectContainer;
-  static SingleValue = AsyncCreatableSelectInput.SingleValue;
-  static ValueContainer = AsyncCreatableSelectInput.ValueContainer;
-
   static propTypes = {
     // SelectField
     id: PropTypes.string,

@@ -16,8 +16,6 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 class NumberField extends React.Component {
   static displayName = 'NumberField';
 
-  static isEmpty = NumberInput.isEmpty;
-
   static propTypes = {
     // NumberField
     id: PropTypes.string,
@@ -117,7 +115,4 @@ class NumberField extends React.Component {
   }
 }
 
-NumberField.hasFractionDigits = NumberInput.hasFractionDigits;
-NumberField.isEmpty = NumberInput.isEmpty;
-NumberField.toFormValue = NumberInput.toFormValue;
 export default NumberField;
