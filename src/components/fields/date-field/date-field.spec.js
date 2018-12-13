@@ -13,19 +13,6 @@ const createTestProps = customProps => ({
   ...customProps,
 });
 
-describe('DateField.isEmpty', () => {
-  describe('when called with an empty value', () => {
-    it('should return true', () => {
-      expect(DateField.isEmpty('')).toBe(true);
-    });
-  });
-  describe('when called with a filled value', () => {
-    it('should return false', () => {
-      expect(DateField.isEmpty('2018-10-30')).toBe(false);
-    });
-  });
-});
-
 describe('rendering', () => {
   describe('data attributes', () => {
     let textInput;
