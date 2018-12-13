@@ -14,25 +14,12 @@ screenshot('Tag', () => (
     <Spec label="Normal">
       <Tag type="normal">Tag</Tag>
     </Spec>
-    <Spec label="Normal - multiple lines of text">
-      <Tag type="normal">{longText}</Tag>
-    </Spec>
     <Spec label="Normal - onRemove">
       <Tag type="normal" onRemove={() => {}}>
         With remove
       </Tag>
     </Spec>
-    <Spec label="Normal - multiple lines of text - onRemove">
-      <Tag type="normal" onRemove={() => {}}>
-        {longText}
-      </Tag>
-    </Spec>
     <Spec label="Normal - horizontalConstraint - xs">
-      <Tag type="normal" horizontalConstraint="xs">
-        Tag
-      </Tag>
-    </Spec>
-    <Spec label="Normal - multiple lines of text - horizontalConstraint - xs">
       <Tag type="normal" horizontalConstraint="xs">
         Tag
       </Tag>
@@ -64,6 +51,14 @@ screenshot('Tag', () => (
     <Spec label="Warning - disabled">
       <Tag type="warning" isDisabled={true}>
         Warning but disabled
+      </Tag>
+    </Spec>
+    <Spec label="Normal - multiple lines of text">
+      <Tag type="normal">{longText}</Tag>
+    </Spec>
+    <Spec label="Normal - multiple lines of text - onRemove">
+      <Tag type="normal" onRemove={() => {}}>
+        {longText}
       </Tag>
     </Spec>
   </Suite>
