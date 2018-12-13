@@ -98,7 +98,7 @@ it('should have focus automatically when isAutofocussed is passed', () => {
   expect(container.querySelector('input')).toHaveFocus();
 });
 
-it('should call onChange when chaning the value', () => {
+it('should call onChange when changing the value', () => {
   const { container, onChange } = renderTextField();
   const event = { target: { value: 'foo' } };
   fireEvent.change(container.querySelector('input'), event);
