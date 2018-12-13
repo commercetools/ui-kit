@@ -1,3 +1,25 @@
+<a name="5.0.0"></a>
+
+# [5.0.0](https://github.com/commercetools/ui-kit/compare/v4.0.3...v5.0.0) (2018-12-13)
+
+## BREAKING CHANGES
+
+- `DateInput`: Previously `onChange` would be called with the value directly. Now it gets called with an event containing the value. This was done to be in line with how the other inputs work. ([#281](https://github.com/commercetools/ui-kit/pull/281))
+- `DateTimeInput`: Previously `onChange` would be called with the value directly. Now it gets called with an event containing the value. This was done to be in line with how the other inputs work. The `mode` property was dropped. Property `isInvalid` has been renamed to `hasError`. New property `hasWarning` is now supported. ([#282](https://github.com/commercetools/ui-kit/pull/282))
+- `TimeInput`: Previously `onChange` would be called with the value directly. Now it gets called with an event containing the value. This was done to be in line with how the other inputs work. Property `isInvalid` has been renamed to `hasError`. The following properties were dropped: `mode` and `timeZone`. ([#151](https://github.com/commercetools/ui-kit/pull/151))
+- `GhostButton`: This component has been removed. ([#317](https://github.com/commercetools/ui-kit/pull/317))
+- All field components: Removes re-export of static method. Use the exports from the respective input component instead. ([#321](https://github.com/commercetools/ui-kit/pull/321))
+
+## Features
+
+- `DateRangeInput`: New component ([#286](https://github.com/commercetools/ui-kit/pull/286))
+- `DateField`: New component ([#309](https://github.com/commercetools/ui-kit/pull/309))
+
+## Bug Fixes
+
+- `Checkbox`, `Radio`: Fix for `disabled` and `hovered` states. ([#292](https://github.com/commercetools/ui-kit/pull/292))
+- `Tag`: Adds support for multi lined tags. ([#327](https://github.com/commercetools/ui-kit/pull/327))
+
 # [4.0.3](https://github.com/commercetools/ui-kit/compare/v4.0.2...v4.0.3) (2018-12-05)
 
 ### Bug Fixes
