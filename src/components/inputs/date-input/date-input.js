@@ -27,6 +27,9 @@ import {
 
 class DateInput extends React.Component {
   static displayName = 'DateInput';
+
+  static isEmpty = value => value === '';
+
   static propTypes = {
     intl: PropTypes.shape({
       locale: PropTypes.string.isRequired,
@@ -42,13 +45,16 @@ class DateInput extends React.Component {
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
+
   inputRef = React.createRef();
+
   state = {
     calendarDate: this.props.value || getToday(),
     suggestedItems: [],
     highlightedIndex:
       this.props.value === '' ? null : getDateInMonth(this.props.value) - 1,
   };
+
   showPrevMonth = () => {
     this.setState(prevState => ({
       calendarDate: changeMonth(prevState.calendarDate, -1),
@@ -56,12 +62,14 @@ class DateInput extends React.Component {
       highlightedIndex: prevState.suggestedItems.length,
     }));
   };
+
   jumpMonth = amount => {
     this.setState(prevState => {
       const nextDate = changeMonth(prevState.calendarDate, amount);
       return { calendarDate: nextDate, highlightedIndex: 0 };
     });
   };
+
   showToday = () => {
     const today = getToday();
     this.setState(
@@ -73,6 +81,7 @@ class DateInput extends React.Component {
       () => this.inputRef.current.focus()
     );
   };
+
   handleBlur = () => {
     if (this.props.onBlur)
       this.props.onBlur({
@@ -82,10 +91,12 @@ class DateInput extends React.Component {
         },
       });
   };
+
   handleChange = date => {
     this.inputRef.current.setSelectionRange(0, 100);
     this.emit(date);
   };
+
   emit = value =>
     this.props.onChange({
       target: {
@@ -96,6 +107,7 @@ class DateInput extends React.Component {
         value: value || '',
       },
     });
+
   render() {
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
