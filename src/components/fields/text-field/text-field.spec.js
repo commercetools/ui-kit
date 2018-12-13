@@ -57,22 +57,22 @@ const renderTextField = (customProps, options) => {
 
 it('should render a text field', () => {
   const { getByLabelText } = renderTextField();
-  expect(getByLabelText('TextField')).toBeTruthy();
+  expect(getByLabelText('TextField')).toBeInTheDocument();
 });
 
 it('shoult render a title', () => {
-  const { queryByText } = renderTextField({ title: 'foo title' });
-  expect(queryByText('foo title')).toBeTruthy();
+  const { getByText } = renderTextField({ title: 'foo title' });
+  expect(getByText('foo title')).toBeInTheDocument();
 });
 
 it('should forward data-attributes', () => {
   const { container } = renderTextField({ 'data-foo': 'bar' });
-  expect(container.querySelector('[data-foo="bar"]')).toBeTruthy();
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
 });
 
 it('should have an HTML name', () => {
   const { container } = renderTextField({ name: 'foo' });
-  expect(container.querySelector('[name="foo"]')).toBeTruthy();
+  expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
 });
 
 it('should call onFocus when the input is focused', () => {
@@ -107,22 +107,22 @@ it('should call onChange when chaning the value', () => {
 
 describe('when `description` is passed', () => {
   it('should render a description', () => {
-    const { queryByText } = renderTextField({ description: 'foo description' });
-    expect(queryByText('foo description')).toBeTruthy();
+    const { getByText } = renderTextField({ description: 'foo description' });
+    expect(getByText('foo description')).toBeInTheDocument();
   });
 });
 
 describe('when `hint` is passed', () => {
   it('should render a hint', () => {
-    const { queryByText } = renderTextField({ hint: 'foo hint' });
-    expect(queryByText('foo hint')).toBeTruthy();
+    const { getByText } = renderTextField({ hint: 'foo hint' });
+    expect(getByText('foo hint')).toBeInTheDocument();
   });
 });
 
 describe('when `badge` is passed', () => {
   it('should render a badge', () => {
-    const { queryByText } = renderTextField({ badge: 'foo badge' });
-    expect(queryByText('foo badge')).toBeTruthy();
+    const { getByText } = renderTextField({ badge: 'foo badge' });
+    expect(getByText('foo badge')).toBeInTheDocument();
   });
 });
 
@@ -136,22 +136,24 @@ describe('when disabled', () => {
 describe('when readOnly', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderTextField({ isReadOnly: true });
-    expect(getByLabelText('TextField')).toHaveAttribute('readOnly');
+    expect(getByLabelText('TextField')).toHaveAttribute('readonly');
   });
 });
 
 describe('when required', () => {
   it('should add `*` to title`', () => {
-    const { queryByText } = renderTextField({ isRequired: true });
-    expect(queryByText('*')).toBeTruthy();
+    const { getByText } = renderTextField({ isRequired: true });
+    expect(getByText('*')).toBeInTheDocument();
   });
 });
 
 describe('when showing an info button', () => {
   it('should render an info button', () => {
     const onInfoButtonClick = jest.fn();
-    const { container } = renderTextField({ onInfoButtonClick });
-    expect(container.querySelector('button')).toBeTruthy();
+    const { getByLabelText } = renderTextField({
+      onInfoButtonClick,
+    });
+    expect(getByLabelText('More Info')).toBeInTheDocument();
   });
   it('should call onInfoButtonClick when button is clicked', () => {
     const onInfoButtonClick = jest.fn();
@@ -164,24 +166,24 @@ describe('when showing an info button', () => {
 describe('when field is touched and has errors', () => {
   describe('when field empty', () => {
     it('should render a default error', () => {
-      const { queryByText } = renderTextField({
+      const { getByText } = renderTextField({
         touched: true,
         errors: { missing: true },
       });
       expect(
-        queryByText('This field is required. Provide a value.')
-      ).toBeTruthy();
+        getByText('This field is required. Provide a value.')
+      ).toBeInTheDocument();
     });
   });
   describe('when has a custom error', () => {
     it('should render a custom error', () => {
       const renderError = jest.fn(() => 'Custom error');
-      const { queryByText } = renderTextField({
+      const { getByText } = renderTextField({
         touched: true,
         errors: { custom: true },
         renderError,
       });
-      expect(queryByText('Custom error')).toBeTruthy();
+      expect(getByText('Custom error')).toBeInTheDocument();
     });
   });
 });
