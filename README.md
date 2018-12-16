@@ -15,12 +15,12 @@ $ yarn add @commercetools-frontend/ui-kit
 
 # or
 
-$ npm i @commercetools-frontend/ui-kit
+$ npm install --save @commercetools-frontend/ui-kit
 ```
 
 ### Required peer dependencies
 
-UI Kit comes with some [peer dependencies](https://docs.npmjs.com/files/package.json#peerdependencies) which are required to be available in any project consuming it. These include but may not be limited to: `moment`, `moment-timezone`, `react`, `react-dom`, `react-intl` and `react-router-dom`. An up-to-date list with their respective version ranges can be found in the [package.json](https://github.com/commercetools/ui-kit/blob/master/package.json). Please make sure all package are installed within your application for UI Kit to be able to work as expected.
+UI Kit comes with some [peer dependencies](https://docs.npmjs.com/files/package.json#peerdependencies) which are required to be available in any project consuming it. These include but may not be limited to: `moment`, `moment-timezone`, `react`, `react-dom`, `react-intl` and `react-router-dom`. An up-to-date list with their respective version ranges can be found in the [package.json](https://github.com/commercetools/ui-kit/blob/master/package.json). Please make sure all packages are installed within your application for UI Kit to be able to work as expected.
 
 ### Importing
 
