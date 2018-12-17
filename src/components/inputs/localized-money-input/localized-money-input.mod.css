@@ -1,106 +1,9 @@
-:root {
-  /* we need this line-height to achieve 32px height when the component has only one row */
-  --size-input-line-height: 22px;
-}
-
 /* Base */
 
 .fieldContainer {
   width: 100%;
   position: relative;
   display: flex;
-}
-
-.languageLabel {
-  /* avoid wrapping label onto new lines */
-  flex: 1 0 auto;
-  color: var(--token-font-color-disabled);
-  line-height: calc(
-    var(--token-size-height-input) - 2 * var(--border-radius-1)
-  );
-  background-color: var(--token-background-color-input-disabled);
-  border-top-left-radius: var(--token-border-radius-input);
-  border-bottom-left-radius: var(--token-border-radius-input);
-  border: 1px var(--token-border-color-input-disabled) solid;
-  padding: 0 var(--spacing-8);
-  transition: var(--transition-standard);
-  border-right: 0;
-  box-shadow: none;
-  appearance: none;
-}
-
-.input {
-  color: var(--token-font-color-default);
-  font-family: var(--token-font-family-default);
-  font-size: var(--token-font-size-default);
-  min-height: var(--token-size-height-input);
-  border-top-right-radius: var(--token-border-radius-input);
-  border-bottom-right-radius: var(--token-border-radius-input);
-  width: 100%;
-  border-style: solid;
-  border-width: var(--border-radius-1);
-  padding: var(--spacing-4) var(--spacing-8);
-  transition: var(--transition-standard);
-  outline: 0;
-  box-shadow: none;
-  appearance: none;
-  line-height: var(--size-input-line-height);
-  white-space: pre-wrap;
-  resize: vertical;
-}
-
-.inputClosed {
-  overflow: hidden;
-  word-break: break-all;
-}
-
-.input::placeholder {
-  color: var(--token-font-color-placeholder);
-}
-
-/* States */
-
-.pristine {
-  composes: input;
-  border-color: var(--token-border-color-input-pristine);
-  background-color: var(--token-background-color-input-pristine);
-}
-
-.warning {
-  composes: input;
-  color: var(--token-font-color-warning);
-  border-color: var(--token-border-color-input-warning);
-}
-
-.error {
-  composes: input;
-  color: var(--token-font-color-error);
-  border-color: var(--token-border-color-input-error);
-}
-
-.disabled {
-  composes: input;
-  cursor: not-allowed;
-  color: var(--token-font-color-disabled);
-  border-color: var(--token-border-color-input-disabled);
-  background-color: var(--token-background-color-input-disabled);
-  opacity: 1; /* fix for mobile safari */
-}
-
-.readonly {
-  composes: input;
-  border-color: var(--token-border-color-input-readonly);
-  color: var(--token-font-color-readonly);
-  cursor: default;
-}
-
-/* States */
-
-.pristine:active,
-.pristine:focus {
-  border-color: var(--token-border-color-input-focus);
-  background: var(--token-background-color-input-pristine);
-  color: var(--token-font-color-default);
 }
 
 /* Commands */
@@ -113,6 +16,3 @@
   flex: 1;
 }
 
-.commandsExpand {
-  flex: 0;
-}
