@@ -83,6 +83,9 @@ export {
 } from './components/inputs/localized-text-input';
 export { default as MoneyInput } from './components/inputs/money-input';
 export {
+  default as LocalizedMoneyInput,
+} from './components/inputs/localized-money-input';
+export {
   default as MultilineTextInput,
 } from './components/inputs/multiline-text-input';
 export { default as NumberInput } from './components/inputs/number-input';

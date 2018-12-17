@@ -42,6 +42,14 @@ export const sortLanguages = (selectedLanguage, allLanguages) => {
   return [selectedLanguage, ...related.sort(), ...unrelated.sort()];
 };
 
+// sorts the currencies with the following priority:
+// - The selected currency is placed first (e.g EUR)
+// - All other currencies follow, sorted alphabetically as well
+export const sortCurrencies = (selectedCurrency, allCurrencies) => {
+  const remainingCurrencies = without(allCurrencies, selectedCurrency);
+  return [selectedCurrency, ...remainingCurrencies.sort()];
+};
+
 export const createLocalizedDataAttributes = (props, language) =>
   Object.entries(filterDataAttributes(props)).reduce((acc, [key, value]) => {
     switch (key) {
