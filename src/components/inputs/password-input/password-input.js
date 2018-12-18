@@ -76,4 +76,6 @@ PasswordInput.defaultProps = {
   isPasswordVisible: false,
 };
 
+PasswordInput.isEmpty = value => !value || value.trim().length === 0;
+
 export default PasswordInput;
