@@ -19,6 +19,7 @@
 
 .amountInput {
   display: flex;
+  width: 100%;
   flex: 1;
   color: var(--font-color-default);
   font-family: var(--font-family-default);
