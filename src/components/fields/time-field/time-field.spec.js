@@ -1,156 +1,178 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import PropTypes from 'prop-types';
+import { render, fireEvent } from '../../../test-utils';
 import TimeField from './time-field';
-import FieldLabel from '../../field-label';
-import TimeInput from '../../inputs/time-input';
-import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
 
-const createTestProps = customProps => ({
-  title: 'Release time',
-  value: '',
-  onChange: () => jest.fn(),
-  ...customProps,
+// This component is used to enable easy testing.
+// It overwrites the onChange function and places a label for the
+// input component. It also ensures an id so that the label can associate
+// the input. This allows tests to use getByLabelText.
+// It also makes sure the event's value passed to onChange flows back to the
+// component so that we can test it under real conditions.
+// As a convenience, we enable accessing a mocked onChange function.
+class Story extends React.Component {
+  static displayName = 'Story';
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string,
+    id: PropTypes.string,
+  };
+  static defaultProps = {
+    id: 'text-field',
+  };
+  state = {
+    value: this.props.value || '',
+  };
+  handleChange = event => {
+    this.props.onChange(event);
+    this.setState({ value: event.target.value });
+  };
+  render() {
+    return (
+      <div>
+        <label htmlFor={this.props.id}>TimeField</label>
+        <TimeField
+          id={this.props.id}
+          {...this.props}
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  }
+}
+
+const renderTimeField = (customProps, options) => {
+  const props = {
+    title: 'foo',
+    onChange: jest.fn(),
+    ...customProps,
+  };
+  return {
+    ...render(<Story {...props} />, options),
+    onChange: props.onChange,
+  };
+};
+
+it('should render a text field', () => {
+  const { getByLabelText } = renderTimeField();
+  expect(getByLabelText('TimeField')).toBeInTheDocument();
 });
 
-describe('rendering', () => {
-  describe('data attributes', () => {
-    let textInput;
-    beforeEach(() => {
-      const props = createTestProps({
-        'data-foo': 'bar',
-        'data-test': 'baz',
-      });
-      const wrapper = shallow(<TimeField {...props} />);
-      textInput = wrapper.find(TimeInput);
-    });
-    it('should forward the attributes to the TimeInput', () => {
-      expect(textInput).toHaveProp('data-foo', 'bar');
-      expect(textInput).toHaveProp('data-test', 'baz');
-    });
-  });
-  describe('when no id is provided', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ id: undefined });
-      wrapper = shallow(<TimeField {...props} />);
-    });
-    it('should add a default id attribute', () => {
-      expect(wrapper.find(TimeInput)).toHaveProp(
-        'id',
-        expect.stringMatching(/.+/)
-      );
-    });
-    it('should add a default htmlFor attribute', () => {
-      expect(wrapper.find(FieldLabel)).toHaveProp('htmlFor');
-    });
-    it('should use the same value for the id and htmlFor attribute', () => {
-      expect(wrapper.find(TimeInput).prop('id')).toEqual(
-        wrapper.find(FieldLabel).prop('htmlFor')
-      );
-    });
-  });
-  describe('when touched', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        // TimeField
-        id: 'foo',
-        // FieldLabel
-        title: 'Release Time',
-        hint: 'Time of publication',
-        hintIcon: <AddBoldIcon />,
-        description: 'A description',
-        onInfoButtonClick: jest.fn(),
-        badge: <div>Some badge</div>,
+it('shoult render a title', () => {
+  const { getByText } = renderTimeField({ title: 'foo title' });
+  expect(getByText('foo title')).toBeInTheDocument();
+});
 
-        // TimeField
-        name: 'field1',
-        value: '14:30',
-        onChange: jest.fn(),
-        onBlur: jest.fn(),
-        onFocus: jest.fn(),
-        isDisabled: false,
-        placeholder: 'Some placeholder',
+it('should forward data-attributes', () => {
+  const { container } = renderTimeField({ 'data-foo': 'bar' });
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+});
+
+it('should have an HTML name', () => {
+  const { container } = renderTimeField({ name: 'foo' });
+  expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
+});
+
+it('should call onFocus when the input is focused', () => {
+  const onFocus = jest.fn();
+  const { getByLabelText } = renderTimeField({ onFocus });
+  getByLabelText('TimeField').focus();
+  expect(getByLabelText('TimeField')).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});
+
+it('should call onBlur when input loses focus', () => {
+  const onBlur = jest.fn();
+  const { getByLabelText } = renderTimeField({ onBlur });
+  getByLabelText('TimeField').focus();
+  expect(getByLabelText('TimeField')).toHaveFocus();
+  getByLabelText('TimeField').blur();
+  expect(getByLabelText('TimeField')).not.toHaveFocus();
+  expect(onBlur).toHaveBeenCalled();
+});
+
+it('should have focus automatically when isAutofocussed is passed', () => {
+  const { getByLabelText } = renderTimeField({ isAutofocussed: true });
+  expect(getByLabelText('TimeField')).toHaveFocus();
+});
+
+it('should call onChange when changing the value', () => {
+  const { getByLabelText, onChange } = renderTimeField();
+  const event = { target: { value: '2pm' } };
+  fireEvent.change(getByLabelText('TimeField'), event);
+  expect(onChange).toHaveBeenCalled();
+});
+
+describe('when `description` is passed', () => {
+  it('should render a description', () => {
+    const { getByText } = renderTimeField({ description: 'foo description' });
+    expect(getByText('foo description')).toBeInTheDocument();
+  });
+});
+
+describe('when `hint` is passed', () => {
+  it('should render a hint', () => {
+    const { getByText } = renderTimeField({ hint: 'foo hint' });
+    expect(getByText('foo hint')).toBeInTheDocument();
+  });
+});
+
+describe('when `badge` is passed', () => {
+  it('should render a badge', () => {
+    const { getByText } = renderTimeField({ badge: 'foo badge' });
+    expect(getByText('foo badge')).toBeInTheDocument();
+  });
+});
+
+describe('when disabled', () => {
+  it('should disable the input', () => {
+    const { getByLabelText } = renderTimeField({ isDisabled: true });
+    expect(getByLabelText('TimeField')).toHaveAttribute('disabled');
+  });
+});
+
+describe('when required', () => {
+  it('should add `*` to title`', () => {
+    const { getByText } = renderTimeField({ isRequired: true });
+    expect(getByText('*')).toBeInTheDocument();
+  });
+});
+
+describe('when showing an info button', () => {
+  it('should render an info button', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderTimeField({
+      onInfoButtonClick,
+    });
+    expect(getByLabelText('More Info')).toBeInTheDocument();
+  });
+  it('should call onInfoButtonClick when button is clicked', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderTimeField({ onInfoButtonClick });
+    getByLabelText('More Info').click();
+    expect(onInfoButtonClick).toHaveBeenCalled();
+  });
+});
+
+describe('when field is touched and has errors', () => {
+  describe('when field empty', () => {
+    it('should render a default error', () => {
+      const { getByText } = renderTimeField({
+        touched: true,
         errors: { missing: true },
-        touched: true,
       });
-      wrapper = shallow(<TimeField {...props} />);
-    });
-
-    it('should forward the props for to the related components', () => {
-      const fieldLabel = wrapper.find(FieldLabel);
-      expect(fieldLabel).toHaveProp('title', props.title);
-      expect(fieldLabel).toHaveProp('hint', props.hint);
-      expect(fieldLabel).toHaveProp('hintIcon', props.hintIcon);
-      expect(fieldLabel).toHaveProp('description', props.description);
-      expect(fieldLabel).toHaveProp(
-        'onInfoButtonClick',
-        props.onInfoButtonClick
-      );
-      expect(fieldLabel).toHaveProp('badge', props.badge);
-      expect(fieldLabel).toHaveProp('htmlFor', props.id);
-
-      const textInput = wrapper.find(TimeInput);
-      expect(textInput).toHaveProp('name', props.name);
-      expect(textInput).toHaveProp('value', props.value);
-      expect(textInput).toHaveProp('onChange', props.onChange);
-      expect(textInput).toHaveProp('onBlur', props.onBlur);
-      expect(textInput).toHaveProp('onFocus', props.onFocus);
-      expect(textInput).toHaveProp('isDisabled', props.isDisabled);
-      expect(textInput).toHaveProp('placeholder', props.placeholder);
-      expect(textInput).toHaveProp('hasError', true);
-
-      expect(wrapper).toRender(FieldErrors);
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText(/field is required/i)).toBeInTheDocument();
     });
   });
-
-  describe('when disabled', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ isDisabled: true });
-      wrapper = shallow(<TimeField {...props} />);
-    });
-    it('should disable the TimeInput', () => {
-      expect(wrapper.find(TimeInput)).toHaveProp('isDisabled', true);
-    });
-  });
-
-  describe('when there are known errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ touched: true, errors: { missing: true } });
-      wrapper = shallow(<TimeField {...props} />);
-    });
-    it('should mark the TimeInput as erroneous', () => {
-      expect(wrapper.find(TimeInput)).toHaveProp('hasError', true);
-    });
-    it('should render the known error', () => {
-      expect(wrapper).toRender(FieldErrors);
-    });
-  });
-
-  describe('when there are unknown errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
+  describe('when there is a custom error', () => {
+    it('should render the custom error message', () => {
+      const { getByText } = renderTimeField({
         touched: true,
-        renderError: jest.fn(key => key),
-        errors: { customError: 5 },
+        errors: { custom: true },
+        renderError: () => 'Custom error',
       });
-      wrapper = shallow(<TimeField {...props} />);
-    });
-    it('should mark the NumberInput as erroneous', () => {
-      expect(wrapper.find(TimeInput)).toHaveProp('hasError', true);
-    });
-    it('should forward the error', () => {
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText('Custom error')).toBeInTheDocument();
     });
   });
 });

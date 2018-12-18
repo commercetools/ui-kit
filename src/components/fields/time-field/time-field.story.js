@@ -25,6 +25,7 @@ storiesOf('Fields', module)
         render={(value, onChange) => {
           const name = text('name', '');
           const hint = text('hint', 'Select the time of publication');
+          const placeholder = text('placeholder', 'Placeholder');
 
           // hintIcon will only render when hint exists
           const iconNames = Object.keys(icons);
@@ -58,7 +59,7 @@ storiesOf('Fields', module)
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
               isDisabled={boolean('isDisabled', false)}
-              placeholder={text('placeholder', 'Placeholder')}
+              placeholder={placeholder === '' ? undefined : placeholder}
               title={text('title', 'Release Date')}
               hint={hint}
               description={text('description', '')}

@@ -33,6 +33,7 @@ class TimeField extends React.Component {
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
+    isAutofocussed: PropTypes.bool,
     isDisabled: PropTypes.bool,
     placeholder: PropTypes.string,
 
@@ -88,6 +89,7 @@ class TimeField extends React.Component {
             onChange={this.props.onChange}
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
+            isAutofocussed={this.props.isAutofocussed}
             isDisabled={this.props.isDisabled}
             hasError={hasError}
             placeholder={this.props.placeholder}
