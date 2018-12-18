@@ -43,6 +43,38 @@ Main Functions and use cases are:
 
 #### Static Properties
 
+#### `LocalizedMoneyInput.convertToMoneyValue`
+
+The `convertToMoneyValue` function will turn a LocalizedMoneyInput value into a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
+If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
+
+Here are examples of `centPrecision` and `highPrecision` prices.
+
+```js
+// 42.00 €
+{
+  "type": "centPrecision",
+  "currencyCode": "EUR",
+  "centAmount": 4200,
+  "fractionDigits": 2
+}
+```
+
+```js
+// 0.0123456 €
+{
+ "type": "highPrecision",
+ "currencyCode": "EUR",
+ "centAmount": 1,
+ "preciseAmount": 123456,
+ "fractionDigits": 7
+}
+```
+
+#### `LocalizedMoneyInput.parseMoneyValue`
+
+The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ amount, currencyCode })`.
+
 ##### `isEmpty(localizedField)`
 
 Returns `true` when all values in a localized field are empty.

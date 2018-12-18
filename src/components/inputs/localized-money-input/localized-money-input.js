@@ -143,6 +143,9 @@ export class LocalizedMoneyInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
+  static convertToMoneyValue = MoneyInput.convertToMoneyValue;
+  static parseMoneyValue = MoneyInput.parseMoneyValue;
+  static isHighPrecision = MoneyInput.isHighPrecision;
   static isEmpty = MoneyInput.isEmpty;
 
   static isTouched = MoneyInput.isTouched;
@@ -295,7 +298,4 @@ export class LocalizedMoneyInput extends React.Component {
   }
 }
 
-const Wrapped = injectIntl(LocalizedMoneyInput);
-Wrapped.isTouched = LocalizedMoneyInput.isTouched;
-Wrapped.isEmpty = LocalizedMoneyInput.isEmpty;
-export default Wrapped;
+export default injectIntl(LocalizedMoneyInput);
