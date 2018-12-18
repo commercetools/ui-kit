@@ -5,7 +5,7 @@ import { AddIcon } from '../../icons';
 import { FlatButton } from './flat-button';
 
 const createTestProps = props => ({
-  type: 'primary',
+  tone: 'primary',
   label: 'Accessibility text',
   onClick: jest.fn(),
   icon: <AddIcon size="medium" />,
@@ -34,8 +34,8 @@ describe('rendering', () => {
     expect(wrapper).toRender('AccessibleButton');
   });
 
-  it('should pass the button type to <AccessibleButton>', () => {
-    expect(wrapper.find('AccessibleButton')).toHaveClassName(props.type);
+  it('should pass the button tone to <AccessibleButton>', () => {
+    expect(wrapper.find('AccessibleButton')).toHaveClassName(props.tone);
   });
 
   it('should render a <Text.Body>', () => {

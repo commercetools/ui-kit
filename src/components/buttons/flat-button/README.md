@@ -14,7 +14,7 @@ Flat buttons are minimal and a flat variation of primary and secondary buttons.
 
 ```js
 <FlatButton
-  type="primary"
+  tone="primary"
   icon={<InformationIcon />}
   label="A label text"
   onClick={() => alert('Button clicked')}
@@ -28,7 +28,7 @@ iconClass label url onClick
 
 | Props          | Type      | Required | Values                 | Default   | Description                                           |
 | -------------- | --------- | :------: | ---------------------- | --------- | ----------------------------------------------------- |
-| `type`         | `oneOf`   |    -     | `primary`, `secondary` | `primary` | -                                                     |
+| `tone`         | `oneOf`   |    -     | `primary`, `secondary` | `primary` | -                                                     |
 | `label`        | `string`  |    ✅    | -                      | -         | Should describe what the button is for                |
 | `onClick`      | `func`    |    ✅    | -                      | -         | What the button will trigger when clicked             |
 | `icon`         | `element` |    -     | -                      | -         | The icon of the button                                |

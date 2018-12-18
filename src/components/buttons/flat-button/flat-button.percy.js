@@ -5,11 +5,11 @@ import { Suite, Spec, screenshot } from '../../../../test/percy';
 screenshot('FlatButton', () => (
   <Suite>
     <Spec label="regular">
-      <FlatButton type="primary" label="A label text" onClick={() => {}} />
+      <FlatButton tone="primary" label="A label text" onClick={() => {}} />
     </Spec>
     <Spec label="disabled">
       <FlatButton
-        type="primary"
+        tone="primary"
         label="A label text"
         onClick={() => {}}
         isDisabled={true}
@@ -17,7 +17,7 @@ screenshot('FlatButton', () => (
     </Spec>
     <Spec label="with icon left (default)">
       <FlatButton
-        type="primary"
+        tone="primary"
         label="A label text"
         onClick={() => {}}
         icon={<InformationIcon />}
@@ -25,7 +25,7 @@ screenshot('FlatButton', () => (
     </Spec>
     <Spec label="with icon right">
       <FlatButton
-        type="primary"
+        tone="primary"
         label="A label text"
         onClick={() => {}}
         icon={<InformationIcon />}
@@ -34,7 +34,7 @@ screenshot('FlatButton', () => (
     </Spec>
     <Spec label="secondary">
       <FlatButton
-        type="secondary"
+        tone="secondary"
         label="A label text"
         onClick={() => {}}
         icon={<InformationIcon />}

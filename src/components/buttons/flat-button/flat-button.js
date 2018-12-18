@@ -15,8 +15,8 @@ export const FlatButton = props => {
 
   let iconTheme = 'black';
   if (props.isDisabled) iconTheme = 'grey';
-  else if (props.type === 'primary') iconTheme = 'green';
-  else if (props.type === 'secondary' && props.isMouseOver)
+  else if (props.tone === 'primary') iconTheme = 'green';
+  else if (props.tone === 'secondary' && props.isMouseOver)
     iconTheme = 'orange';
 
   const iconElement =
@@ -33,7 +33,7 @@ export const FlatButton = props => {
         label={props.label}
         onClick={props.onClick}
         isDisabled={props.isDisabled}
-        className={classnames(styles.button, styles[props.type], {
+        className={classnames(styles.button, styles[props.tone], {
           [styles.disabled]: props.isDisabled,
         })}
       >
@@ -49,7 +49,7 @@ export const FlatButton = props => {
 
 FlatButton.displayName = 'FlatButton';
 FlatButton.propTypes = {
-  type: PropTypes.oneOf(['primary', 'secondary']),
+  tone: PropTypes.oneOf(['primary', 'secondary']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   icon: PropTypes.element,
@@ -62,7 +62,7 @@ FlatButton.propTypes = {
   handleMouseOut: PropTypes.func.isRequired,
 };
 FlatButton.defaultProps = {
-  type: 'primary',
+  tone: 'primary',
   iconPosition: 'left',
   isDisabled: false,
 };
