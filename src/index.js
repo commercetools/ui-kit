@@ -30,6 +30,7 @@ export { default as FieldLabel } from './components/field-label';
 
 export { default as TextField } from './components/fields/text-field';
 export { default as DateField } from './components/fields/date-field';
+export { default as DateTimeField } from './components/fields/date-time-field';
 export { default as TimeField } from './components/fields/time-field';
 export {
   default as MultilineTextField,
