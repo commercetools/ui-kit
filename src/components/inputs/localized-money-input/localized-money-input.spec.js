@@ -275,3 +275,411 @@ describe('when the error is on the selected currency', () => {
     expect(getByText(errors.CAD)).toBeInTheDocument();
   });
 });
+
+describe('LocalizedMoneyInput.convertToMoneyValues', () => {
+  describe('when an unknown currency is used', () => {
+    it('should return an error for this currency', () => {
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: '9',
+          foo: '1',
+          USD: '12',
+        })
+      ).toEqual([
+        {
+          centAmount: 900,
+          currencyCode: 'EUR',
+          fractionDigits: 2,
+          type: 'centPrecision',
+        },
+        null,
+        {
+          centAmount: 1200,
+          currencyCode: 'USD',
+          fractionDigits: 2,
+          type: 'centPrecision',
+        },
+      ]);
+    });
+  });
+
+  describe('when no amount is present', () => {
+    it('should return an error for this currency', () => {
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          USD: '21',
+          EUR: '',
+          EGP: '9',
+        })
+      ).toEqual([
+        {
+          centAmount: 2100,
+          currencyCode: 'USD',
+          fractionDigits: 2,
+          type: 'centPrecision',
+        },
+        null,
+        {
+          centAmount: 900,
+          currencyCode: 'EGP',
+          fractionDigits: 2,
+          type: 'centPrecision',
+        },
+      ]);
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({ EUR: undefined })
+      ).toEqual([null]);
+    });
+  });
+
+  describe('when amount can not be parsed', () => {
+    it('should return an error for this currency', () => {
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: 'foo',
+        })
+      ).toEqual([null]);
+    });
+  });
+
+  // The browser always transforms "1,2" to "1.2" on the event
+  // so we don't need to handle the comma case.
+  describe('when called with a centPrecision price', () => {
+    it('should treat it as a decimal separator', () => {
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: '1.2',
+        })
+      ).toEqual([
+        {
+          type: 'centPrecision',
+          currencyCode: 'EUR',
+          centAmount: 120,
+          fractionDigits: 2,
+        },
+      ]);
+
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          KWD: '1.234',
+        })
+      ).toEqual([
+        {
+          type: 'centPrecision',
+          currencyCode: 'KWD',
+          centAmount: 1234,
+          fractionDigits: 3,
+        },
+      ]);
+    });
+  });
+
+  describe('when called with a centPrecision price with weird JS rounding', () => {
+    it('should treat it as a decimal separator', () => {
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: '2.49',
+        })
+      ).toEqual([
+        {
+          type: 'centPrecision',
+          currencyCode: 'EUR',
+          centAmount: 249,
+          fractionDigits: 2,
+        },
+      ]);
+
+      // This test ensures that rounding is used instead of just cutting the
+      // number of. Cutting it of would result in an incorrect 239998.
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: '2399.99',
+        })
+      ).toEqual([
+        {
+          type: 'centPrecision',
+          currencyCode: 'EUR',
+          centAmount: 239999,
+          fractionDigits: 2,
+        },
+      ]);
+    });
+  });
+
+  describe('when called with a high precision price', () => {
+    it('should return a money value of type "highPrecision"', () => {
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: '1.234',
+        })
+      ).toEqual([
+        {
+          type: 'highPrecision',
+          currencyCode: 'EUR',
+          centAmount: 123,
+          fractionDigits: 3,
+          preciseAmount: 1234,
+        },
+      ]);
+    });
+  });
+});
+
+describe('LocalizedMoneyInput.parseMoneyValues', () => {
+  describe('when called without a value', () => {
+    it('should return empty array', () => {
+      expect(LocalizedMoneyInput.parseMoneyValues()).toEqual([]);
+    });
+  });
+  describe('when called with a centPrecision money missing centAmount', () => {
+    it('should throw', () => {
+      expect(() =>
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              type: 'centPrecision',
+              currencyCode: 'EUR',
+            },
+          ],
+          'en'
+        )
+      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    });
+  });
+  describe('when called with a centPrecision money using an unknown currenyCode', () => {
+    it('should throw', () => {
+      expect(() =>
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              type: 'centPrecision',
+              currencyCode: 'FOO',
+            },
+          ],
+          'en'
+        )
+      ).toThrow(
+        'MoneyInput.parseMoneyValue: Value must use known currency code'
+      );
+    });
+  });
+  describe('when called with a highPrecision money missing fractionDigits', () => {
+    it('should throw', () => {
+      expect(() =>
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              type: 'highPrecision',
+              currencyCode: 'EUR',
+              preciseAmount: 3,
+            },
+          ],
+          'en'
+        )
+      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    });
+  });
+  describe('when called with a highPrecision money missing preciseAmount', () => {
+    it('should throw', () => {
+      expect(() =>
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              type: 'highPrecision',
+              currencyCode: 'EUR',
+              fractionDigits: 2,
+            },
+          ],
+          'en'
+        )
+      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    });
+  });
+  describe('when called without a locale', () => {
+    it('should throw', () => {
+      expect(() =>
+        LocalizedMoneyInput.parseMoneyValues([
+          {
+            type: 'centPrecision',
+            centAmount: 1234,
+            currencyCode: 'EUR',
+            fractionDigits: 2,
+          },
+        ])
+      ).toThrow(
+        'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
+      );
+    });
+  });
+
+  describe('when called with a minimal, valid centPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              centAmount: 1234,
+              currencyCode: 'EUR',
+            },
+          ],
+          'en'
+        )
+      ).toEqual([{ amount: '12.34', currencyCode: 'EUR' }]);
+    });
+  });
+  describe('when called with a full, valid centPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              type: 'centPrecision',
+              centAmount: 1234,
+              currencyCode: 'EUR',
+              fractionDigits: 2,
+            },
+          ],
+          'en'
+        )
+      ).toEqual([{ amount: '12.34', currencyCode: 'EUR' }]);
+    });
+  });
+  describe('when called with a minimal highPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              type: 'highPrecision',
+              currencyCode: 'EUR',
+              fractionDigits: 3,
+              preciseAmount: 12345,
+            },
+          ],
+          'en'
+        )
+      ).toEqual([{ amount: '12.345', currencyCode: 'EUR' }]);
+    });
+  });
+  describe('when called with a full highPrecision price', () => {
+    it('should turn it into a value', () => {
+      expect(
+        LocalizedMoneyInput.parseMoneyValues(
+          [
+            {
+              type: 'highPrecision',
+              centAmount: 1234,
+              currencyCode: 'EUR',
+              fractionDigits: 3,
+              preciseAmount: 12345,
+            },
+          ],
+          'en'
+        )
+      ).toEqual([{ amount: '12.345', currencyCode: 'EUR' }]);
+    });
+  });
+});
+
+describe('LocalizedMoneyInput.isHighPrecision', () => {
+  describe('when called with a high precision money value', () => {
+    it('should return true', () => {
+      expect(
+        LocalizedMoneyInput.isHighPrecision([
+          { amount: '2.001', currencyCode: 'EUR' },
+        ])
+      ).toMatchObject({ EUR: true });
+    });
+  });
+  describe('when called with a regular precision money value', () => {
+    it('should return false for empty currencies', () => {
+      expect(
+        LocalizedMoneyInput.isHighPrecision([
+          { amount: '2.00', currencyCode: 'EUR' },
+        ])
+      ).toMatchObject({ EUR: false });
+    });
+  });
+  describe('when called with an empty money value', () => {
+    it('should throw', () => {
+      expect(() =>
+        LocalizedMoneyInput.isHighPrecision([
+          { amount: '', currencyCode: 'EUR' },
+        ])
+      ).toThrow();
+    });
+  });
+});
+
+describe('LocalizedMoneyInput.isEmpty', () => {
+  describe('when value is filled out', () => {
+    it('should return false for empty currencies', () => {
+      expect(
+        LocalizedMoneyInput.isEmpty([{ amount: '5', currencyCode: 'EUR' }])
+      ).toMatchObject({ EUR: false });
+    });
+  });
+  describe('when value is empty', () => {
+    it('should return true', () => {
+      expect(
+        LocalizedMoneyInput.isEmpty([{ amount: '', currencyCode: 'EUR' }])
+      ).toMatchObject({ EUR: true });
+    });
+  });
+});
+
+describe('LocalizedMoneyInput.isAllEmpty', () => {
+  describe('when value is filled out', () => {
+    it('should return false if some have value', () => {
+      expect(
+        LocalizedMoneyInput.isAllEmpty([
+          { amount: '5', currencyCode: 'EUR' },
+          { amount: '', currencyCode: 'EUR' },
+        ])
+      ).toBe(false);
+    });
+  });
+  describe('when value is empty', () => {
+    it('should return true if all are empty', () => {
+      expect(
+        LocalizedMoneyInput.isAllEmpty([
+          { amount: '', currencyCode: 'EUR' },
+          { amount: '', currencyCode: 'EUR' },
+        ])
+      ).toBe(true);
+    });
+  });
+});
+
+describe('LocalizedMoneyInput.hasEmptyValue', () => {
+  describe('when value is filled out', () => {
+    it('should return false if some have value', () => {
+      expect(
+        LocalizedMoneyInput.hasEmptyValue([
+          { amount: '5', currencyCode: 'EUR' },
+          { amount: '', currencyCode: 'EUR' },
+        ])
+      ).toBe(true);
+    });
+  });
+  describe('when value is empty', () => {
+    it('should return true if all are empty', () => {
+      expect(
+        LocalizedMoneyInput.hasEmptyValue([
+          { amount: '', currencyCode: 'EUR' },
+          { amount: '', currencyCode: 'EUR' },
+        ])
+      ).toBe(true);
+    });
+  });
+  describe('when value is all', () => {
+    it('should return true if all are empty', () => {
+      expect(
+        LocalizedMoneyInput.hasEmptyValue([
+          { amount: '21.33', currencyCode: 'EUR' },
+          { amount: '51.99', currencyCode: 'EUR' },
+        ])
+      ).toBe(false);
+    });
+  });
+});

@@ -143,10 +143,35 @@ export class LocalizedMoneyInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  static convertToMoneyValue = MoneyInput.convertToMoneyValue;
-  static parseMoneyValue = MoneyInput.parseMoneyValue;
-  static isHighPrecision = MoneyInput.isHighPrecision;
-  static isEmpty = MoneyInput.isEmpty;
+  static convertToMoneyValues = values =>
+    Object.keys(values).map(currencyCode =>
+      MoneyInput.convertToMoneyValue({
+        currencyCode,
+        amount: values[currencyCode],
+      })
+    );
+
+  static parseMoneyValues = (moneyValues = [], locale) =>
+    moneyValues.map(value => MoneyInput.parseMoneyValue(value, locale));
+
+  static isHighPrecision = (values = []) =>
+    values
+      .map(value => ({
+        [value.currencyCode]: MoneyInput.isHighPrecision(value),
+      }))
+      .reduce((accFlags, flag) => ({ ...accFlags, ...flag }), {});
+
+  static isEmpty = (values = []) =>
+    values
+      .map(value => ({
+        [value.currencyCode]: MoneyInput.isEmpty(value),
+      }))
+      .reduce((accFlags, flag) => ({ ...accFlags, ...flag }), {});
+
+  static isAllEmpty = (values = []) =>
+    !values.map(value => !MoneyInput.isEmpty(value)).some(Boolean);
+
+  static hasEmptyValue = (values = []) => values.some(MoneyInput.isEmpty);
 
   static isTouched = MoneyInput.isTouched;
 
