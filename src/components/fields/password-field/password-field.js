@@ -9,7 +9,7 @@ import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
-const sequentialId = createSequentialId('text-field-');
+const sequentialId = createSequentialId('password-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -27,7 +27,7 @@ class PasswordField extends React.Component {
     isRequired: PropTypes.bool,
     touched: PropTypes.bool,
 
-    // TextInput
+    // PasswordInput
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
