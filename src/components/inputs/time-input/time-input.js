@@ -36,6 +36,7 @@ export class TimeInput extends React.Component {
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     hasError: PropTypes.bool,
     isAutofocussed: PropTypes.bool,
@@ -142,6 +143,7 @@ export class TimeInput extends React.Component {
           name={this.props.name}
           value={this.props.value}
           onChange={this.props.onChange}
+          onFocus={this.props.onFocus}
           onBlur={this.handleBlur}
           isAutofocussed={this.props.isAutofocussed}
           isDisabled={this.props.isDisabled}
