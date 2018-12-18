@@ -32,7 +32,7 @@ storiesOf('Examples|Forms/Fields', module)
           const errors = { password: {} };
           if (PasswordInput.isEmpty(values.password))
             errors.password.missing = true;
-          if (values.password.trim().indexOf('#') !== -1)
+          if (values.password.trim().indexOf('#') === -1)
             errors.password.insecure = true;
           return omitEmpty(errors);
         }}
@@ -43,8 +43,8 @@ storiesOf('Examples|Forms/Fields', module)
         render={formik => (
           <Spacings.Stack scale="l">
             <PasswordField
-              title="password"
-              description={'Please choose a password.'}
+              title="Password"
+              description="Please choose a password."
               hint="Must contain at least one `#`"
               name="password"
               isRequired={true}
