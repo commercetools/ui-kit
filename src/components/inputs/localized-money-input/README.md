@@ -2,7 +2,7 @@
 
 #### Description
 
-A controlled text input component for localized multi-line strings with validation
+A controlled input component for localized money values with validation
 states.
 
 ## Usage
@@ -94,7 +94,80 @@ LocalizedMoneyInput.isEmpty({ USD: '12.43', EUR: '' });
 // -> false
 ```
 
-##### `isTouched(touched)`
+##### `LocalizedMoneyInput.convertToMoneyValues`
 
-Expects to be called with an object or `undefined`.
-Returns `true` when at least one value is truthy.
+The `convertToMoneyValues` function will turn a LocalizedMoneyInput value into array of [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
+If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
+
+Here are examples of `centPrecision` and `highPrecision` prices.
+
+```js
+// 42.00 €
+[
+  {
+    type: 'centPrecision',
+    currencyCode: 'EUR',
+    centAmount: 4200,
+    fractionDigits: 2,
+  },
+];
+```
+
+```js
+// 0.0123456 €
+[
+  {
+    type: 'highPrecision',
+    currencyCode: 'EUR',
+    centAmount: 1,
+    preciseAmount: 123456,
+    fractionDigits: 7,
+  },
+];
+```
+
+##### `LocalizedMoneyInput.parseMoneyValues`
+
+The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ amount, currencyCode })`.
+
+##### `LocalizedMoneyInput.isEmpty`
+
+The `isEmpty` function will return `true` for the crrency when the passed `LocalizedMoneyInput` value for this currency is empty (either has no currency or no amount, or does not exist at all).
+
+```js
+LocalizedMoneyInput.isEmpty([{ amount: '', currencyCode: 'EUR' }]); // -> { EUR: true }
+
+LocalizedMoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> { EUR: false }
+```
+
+##### `LocalizedMoneyInput.isAllEmpty`
+
+The `isAllEmpty` function will return `true` when the passed `LocalizedMoneyInput` values are all empty value (no amount, or does not exist at all).
+
+```js
+LocalizedMoneyInput.isAllEmpty([
+  { amount: '', currencyCode: 'EUR' },
+  { amount: '', currencyCode: 'USD' },
+]); // ->  true
+
+LocalizedMoneyInput.isAllEmpty([
+  { amount: '12.93', currencyCode: 'EUR' },
+  { amount: '', currencyCode: 'USD' },
+]); // ->  false
+```
+
+##### `LocalizedMoneyInput.hasEmptyValue`
+
+The `hasEmptyValue` function will return `true` when the passed `LocalizedMoneyInput` values has at least one empty value (no amount, or does not exist at all).
+
+```js
+LocalizedMoneyInput.hasEmptyValue([
+  { amount: '', currencyCode: 'EUR' },
+  { amount: '', currencyCode: 'USD' },
+]); // ->  false
+
+LocalizedMoneyInput.hasEmptyValue([
+  { amount: '12.93', currencyCode: 'EUR' },
+  { amount: '', currencyCode: 'USD' },
+]); // ->  true
+```

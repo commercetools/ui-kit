@@ -173,8 +173,6 @@ export class LocalizedMoneyInput extends React.Component {
 
   static hasEmptyValue = (values = []) => values.some(MoneyInput.isEmpty);
 
-  static isTouched = MoneyInput.isTouched;
-
   state = {
     // This state is used to show/hide the remaining currencies
     areCurrenciesOpened: this.props.isDefaultExpanded,
