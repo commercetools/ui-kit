@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash.omit';
 import { render, fireEvent } from '../../../test-utils';
 import NumberField from './number-field';
 
@@ -14,7 +13,7 @@ import NumberField from './number-field';
 class Story extends React.Component {
   static displayName = 'Story';
   static propTypes = {
-    onEvent: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     value: PropTypes.string,
     id: PropTypes.string,
   };
@@ -25,7 +24,7 @@ class Story extends React.Component {
     value: this.props.value || '',
   };
   handleChange = event => {
-    this.props.onEvent(event);
+    this.props.onChange(event);
     this.setState({ value: event.target.value });
   };
   render() {
@@ -34,7 +33,7 @@ class Story extends React.Component {
         <label htmlFor={this.props.id}>NumberField</label>
         <NumberField
           id={this.props.id}
-          {...omit(this.props, 'onEvent')}
+          {...this.props}
           value={this.state.value}
           onChange={this.handleChange}
         />
@@ -44,14 +43,14 @@ class Story extends React.Component {
 }
 
 const renderNumberField = (customProps, options) => {
-  const onChange = jest.fn();
   const props = {
     title: 'foo',
+    onChange: jest.fn(),
     ...customProps,
   };
   return {
-    onChange,
-    ...render(<Story onEvent={onChange} {...props} />, options),
+    ...render(<Story {...props} />, options),
+    onChange: props.onChange,
   };
 };
 
@@ -77,31 +76,31 @@ it('should have an HTML name', () => {
 
 it('should call onFocus when the input is focused', () => {
   const onFocus = jest.fn();
-  const { container } = renderNumberField({ onFocus });
-  container.querySelector('input').focus();
-  expect(container.querySelector('input')).toHaveFocus();
+  const { getByLabelText } = renderNumberField({ onFocus });
+  getByLabelText('NumberField').focus();
+  expect(getByLabelText('NumberField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
 it('should call onBlur when input loses focus', () => {
   const onBlur = jest.fn();
-  const { container } = renderNumberField({ onBlur });
-  container.querySelector('input').focus();
-  expect(container.querySelector('input')).toHaveFocus();
-  container.querySelector('input').blur();
-  expect(container.querySelector('input')).not.toHaveFocus();
+  const { getByLabelText } = renderNumberField({ onBlur });
+  getByLabelText('NumberField').focus();
+  expect(getByLabelText('NumberField')).toHaveFocus();
+  getByLabelText('NumberField').blur();
+  expect(getByLabelText('NumberField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
 
 it('should have focus automatically when isAutofocussed is passed', () => {
-  const { container } = renderNumberField({ isAutofocussed: true });
-  expect(container.querySelector('input')).toHaveFocus();
+  const { getByLabelText } = renderNumberField({ isAutofocussed: true });
+  expect(getByLabelText('NumberField')).toHaveFocus();
 });
 
 it('should call onChange when changing the value', () => {
-  const { container, onChange } = renderNumberField();
+  const { getByLabelText, onChange } = renderNumberField();
   const event = { target: { value: '1000' } };
-  fireEvent.change(container.querySelector('input'), event);
+  fireEvent.change(getByLabelText('NumberField'), event);
   expect(onChange).toHaveBeenCalled();
 });
 
@@ -178,8 +177,8 @@ describe('when showing an info button', () => {
   });
   it('should call onInfoButtonClick when button is clicked', () => {
     const onInfoButtonClick = jest.fn();
-    const { container } = renderNumberField({ onInfoButtonClick });
-    container.querySelector('button').click();
+    const { getByLabelText } = renderNumberField({ onInfoButtonClick });
+    getByLabelText('More Info').click();
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });
@@ -191,18 +190,15 @@ describe('when field is touched and has errors', () => {
         touched: true,
         errors: { missing: true },
       });
-      expect(
-        getByText('This field is required. Provide a value.')
-      ).toBeInTheDocument();
+      expect(getByText(/field is required/i)).toBeInTheDocument();
     });
   });
-  describe('when has a custom error', () => {
-    it('should render a custom error', () => {
-      const renderError = jest.fn(() => 'Custom error');
+  describe('when there is a custom error', () => {
+    it('should render the custom error message', () => {
       const { getByText } = renderNumberField({
         touched: true,
         errors: { custom: true },
-        renderError,
+        renderError: () => 'Custom error',
       });
       expect(getByText('Custom error')).toBeInTheDocument();
     });
