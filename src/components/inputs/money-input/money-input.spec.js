@@ -442,7 +442,7 @@ describe('MoneyInput', () => {
       target: { value: 'non number' },
     });
 
-    expect(onChange).toBeCalledTimes(0);
+    expect(onChange).toHaveBeenCalledTimes(0);
   });
 
   it('should allow changing the currency', () => {
