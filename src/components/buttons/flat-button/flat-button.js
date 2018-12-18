@@ -30,6 +30,7 @@ export const FlatButton = props => {
     <div onMouseOver={props.handleMouseOver} onMouseOut={props.handleMouseOut}>
       <AccessibleButton
         buttonAttributes={dataProps}
+        type={props.type}
         label={props.label}
         onClick={props.onClick}
         isDisabled={props.isDisabled}
@@ -50,6 +51,7 @@ export const FlatButton = props => {
 FlatButton.displayName = 'FlatButton';
 FlatButton.propTypes = {
   tone: PropTypes.oneOf(['primary', 'secondary']),
+  type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   icon: PropTypes.element,
@@ -63,6 +65,7 @@ FlatButton.propTypes = {
 };
 FlatButton.defaultProps = {
   tone: 'primary',
+  type: 'button',
   iconPosition: 'left',
   isDisabled: false,
 };

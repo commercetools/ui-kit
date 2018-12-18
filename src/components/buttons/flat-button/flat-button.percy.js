@@ -40,5 +40,23 @@ screenshot('FlatButton', () => (
         icon={<InformationIcon />}
       />
     </Spec>
+    <Spec label="as submit button">
+      <FlatButton
+        tone="primary"
+        type="submit"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+      />
+    </Spec>
+    <Spec label="as reset button">
+      <FlatButton
+        tone="primary"
+        type="reset"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+      />
+    </Spec>
   </Suite>
 ));

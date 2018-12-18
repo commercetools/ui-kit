@@ -16,6 +16,7 @@ exports[`rendering outputs correct tree 1`] = `
     isToggleButton={false}
     label="Accessibility text"
     onClick={[MockFunction]}
+    type="button"
   >
     <AddIcon
       size="medium"

@@ -140,5 +140,35 @@ screenshot('IconButton', () => (
         theme="blue"
       />
     </Spec>
+
+    <Spec label="type - when button">
+      <IconButton
+        icon={<InformationIcon />}
+        type="button"
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+      />
+    </Spec>
+
+    <Spec label="type - when submit">
+      <IconButton
+        icon={<InformationIcon />}
+        type="submit"
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+      />
+    </Spec>
+
+    <Spec label="type - when reset">
+      <IconButton
+        icon={<InformationIcon />}
+        type="reset"
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+      />
+    </Spec>
   </Suite>
 ));

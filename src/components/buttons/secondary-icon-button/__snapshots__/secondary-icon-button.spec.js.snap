@@ -16,6 +16,7 @@ exports[`rendering outputs correct tree 1`] = `
     isToggleButton={false}
     label="Accessible button"
     onClick={[MockFunction]}
+    type="button"
   >
     <div
       className="icon-container"

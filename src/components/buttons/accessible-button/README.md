@@ -42,6 +42,7 @@ export default Button;
 | Property         | Type     | Required? | Description                                                                                                   |
 | :--------------- | :------- | :-------: | :------------------------------------------------------------------------------------------------------------ |
 | id               | String   |     -     | Used as the HTML `id` attribute.                                                                              |
+| type             | String   |     -     | Used as the HTML `type` attribute. Supported values are type: `submit`, `reset`, `button`.                    |
 | label            | String   |     ✓     | The text that should be used as `aria-label`                                                                  |
 | onClick          | Function |     ✓     | Callback that is called when the button is clicked                                                            |
 | isToggled        | Bool     |     -     | Set this prop to indicate a toggle button and it's state                                                      |

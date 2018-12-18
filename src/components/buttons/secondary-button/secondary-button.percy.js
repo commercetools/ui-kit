@@ -81,5 +81,17 @@ screenshot('SecondaryButton', () => (
     <Spec label="when used as link">
       <SecondaryButton label="A label text" linkTo="/" />
     </Spec>
+
+    <Spec label='when type is "button"'>
+      <SecondaryButton label="A label text" onClick={() => {}} type="button" />
+    </Spec>
+
+    <Spec label='when type is "submit"'>
+      <SecondaryButton label="A label text" onClick={() => {}} type="submit" />
+    </Spec>
+
+    <Spec label='when type is "reset"'>
+      <SecondaryButton label="A label text" onClick={() => {}} type="reset" />
+    </Spec>
   </Suite>
 ));

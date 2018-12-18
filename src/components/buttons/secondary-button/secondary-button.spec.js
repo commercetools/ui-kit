@@ -5,6 +5,7 @@ import AccessibleButton from '../accessible-button';
 import { SecondaryButton, getIconThemeColor } from './secondary-button';
 
 const createProps = custom => ({
+  type: 'button',
   label: '',
   onClick: () => {},
   iconLeft: '',
@@ -41,6 +42,10 @@ describe('rendering', () => {
 
     it('should apply `button` class name to `AccessibleButton`', () => {
       expect(wrapper.find('AccessibleButton')).toHaveClassName('button');
+    });
+
+    it('should supply `type` to `<AccessibleButton />`', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp('type', props.type);
     });
 
     it('should supply `onClick` to `<AccessibleButton />`', () => {

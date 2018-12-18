@@ -76,6 +76,7 @@ export const SecondaryButton = props => {
       to={shouldLink ? props.linkTo : undefined}
     >
       <AccessibleButton
+        type={props.type}
         buttonAttributes={dataProps}
         label={props.label}
         onClick={props.onClick}
@@ -99,6 +100,7 @@ export const SecondaryButton = props => {
 };
 
 SecondaryButton.propTypes = {
+  type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   iconLeft: PropTypes.node,
   isToggleButton: PropTypes.bool.isRequired,
@@ -150,8 +152,8 @@ SecondaryButton.propTypes = {
 };
 
 SecondaryButton.defaultProps = {
+  type: 'button',
   theme: 'default',
-
   isToggleButton: false,
 };
 

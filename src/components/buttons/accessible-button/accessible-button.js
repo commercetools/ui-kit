@@ -13,6 +13,7 @@ export default class AccessibleButton extends React.PureComponent {
   static displayName = 'AccessibleButton';
   static propTypes = {
     id: PropTypes.string,
+    type: PropTypes.oneOf(['submit', 'reset', 'button']),
     label: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     // set to true or false to indicate a toggle button
@@ -35,6 +36,7 @@ export default class AccessibleButton extends React.PureComponent {
   static defaultProps = {
     isToggleButton: false,
     buttonAttributes: {},
+    type: 'button',
   };
 
   render() {
@@ -53,7 +55,7 @@ export default class AccessibleButton extends React.PureComponent {
       <button
         id={this.props.id}
         ref={this.props.buttonRef}
-        type="button"
+        type={this.props.type}
         aria-label={this.props.label}
         onClick={this.props.onClick}
         className={classnames(

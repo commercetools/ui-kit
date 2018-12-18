@@ -4,6 +4,7 @@ import { FilterIcon } from '../../icons';
 import { IconButton } from './icon-button';
 
 const createProps = custom => ({
+  type: 'button',
   label: '',
   onClick: () => {},
   icon: '',
@@ -39,6 +40,10 @@ describe('rendering', () => {
 
     it('should apply `button-layout` class name to `AccessibleButton`', () => {
       expect(wrapper.find('AccessibleButton')).toHaveClassName('container-big');
+    });
+
+    it('should supply `type` to `<AccessibleButton />`', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp('type', props.type);
     });
 
     it('should supply `onClick` to `<AccessibleButton />`', () => {

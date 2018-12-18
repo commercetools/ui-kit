@@ -24,6 +24,7 @@ const PrimaryButton = props => {
       })}
     >
       <AccessibleButton
+        type={props.type}
         buttonAttributes={dataProps}
         label={props.label}
         onClick={props.onClick}
@@ -48,6 +49,7 @@ const PrimaryButton = props => {
 };
 
 PrimaryButton.propTypes = {
+  type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   buttonAttributes: PropTypes.object,
   iconLeft: PropTypes.node,
@@ -68,6 +70,7 @@ PrimaryButton.propTypes = {
   tone: PropTypes.oneOf(['urgent', 'primary']),
 };
 PrimaryButton.defaultProps = {
+  type: 'button',
   size: 'big',
   isToggleButton: false,
   tone: 'primary',

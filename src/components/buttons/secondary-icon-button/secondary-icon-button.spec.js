@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FilterIcon } from '../../icons';
 import { SecondaryIconButton } from './secondary-icon-button';
+import AccessibleButton from '../accessible-button';
 
 const createTestProps = custom => ({
   label: 'Accessible button',
@@ -34,6 +35,10 @@ describe('rendering', () => {
 
   it('should render the icon', () => {
     expect(wrapper).toRender('FilterIcon');
+  });
+
+  it('forwards the type', () => {
+    expect(wrapper.find(AccessibleButton)).toHaveProp('type', 'button');
   });
 
   it('renders an icon with black theme', () => {

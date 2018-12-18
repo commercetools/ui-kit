@@ -19,6 +19,7 @@ exports[`rendering structure should output correct tree 1`] = `
     isToggleButton={false}
     label=""
     onClick={[Function]}
+    type="button"
   >
     <Inline
       alignItems="center"
@@ -49,6 +50,7 @@ exports[`rendering with icon should output correct tree 1`] = `
     isToggleButton={false}
     label=""
     onClick={[Function]}
+    type="button"
   >
     <Inline
       alignItems="center"
