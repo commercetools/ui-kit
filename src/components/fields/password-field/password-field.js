@@ -34,9 +34,11 @@ class PasswordField extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
+    isPasswordVisible: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     placeholder: PropTypes.string,
+    autoComplete: PropTypes.string,
 
     // LabelField
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -91,10 +93,12 @@ class PasswordField extends React.Component {
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
             isAutofocussed={this.props.isAutofocussed}
+            isPasswordVisible={this.props.isPasswordVisible}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}
             placeholder={this.props.placeholder}
+            autoComplete={this.props.autoComplete}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
           />

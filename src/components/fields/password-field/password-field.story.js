@@ -48,6 +48,7 @@ storiesOf('Fields', module)
                 }
               }}
               isRequired={boolean('isRequired', false)}
+              isPasswordVisible={boolean('isPasswordVisible', false)}
               touched={boolean('touched', false)}
               name={text('name', '')}
               value={text('value', value)}
@@ -61,6 +62,11 @@ storiesOf('Fields', module)
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={text('placeholder', 'Placeholder')}
+              autoComplete={select(
+                'autoComplete',
+                ['on', 'off', 'current-password', 'new-password'],
+                'off'
+              )}
               title={text('title', 'Password')}
               hint={hint}
               description={text('description', '')}

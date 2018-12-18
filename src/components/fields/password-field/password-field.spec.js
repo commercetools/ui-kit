@@ -148,6 +148,13 @@ describe('when required', () => {
   });
 });
 
+describe('with autoComplete', () => {
+  it('should auto complete the input', () => {
+    const { getByLabelText } = renderPasswordField({ autoComplete: 'on' });
+    expect(getByLabelText('PasswordField')).toHaveAttribute('autoComplete');
+  });
+});
+
 describe('when showing an info button', () => {
   it('should render an info button', () => {
     const onInfoButtonClick = jest.fn();
