@@ -7,9 +7,9 @@ import {
 import { Suite, Spec, screenshot } from '../../../../test/percy';
 
 const value = {
-  EUR: 12.77,
-  USD: 13.55,
-  CAD: 19.82,
+  EUR: '12.77',
+  USD: '13.55',
+  CAD: '19.82',
 };
 
 screenshot('LocalizedMoneyInput', () => (

@@ -209,23 +209,6 @@ export class LocalizedMoneyInput extends React.Component {
     return { areCurrenciesOpened, id };
   };
 
-  handleChange = event => {
-    // We manipulate the event to add the currency to the target.
-    // That way the users  can read
-    // event.target.currency and event.target.value to determine the next value.
-    //
-    // We only need this information for the story, the MC application code will
-    // never need to access the information in such an inconvenient way, as
-    // Formik can deal with a name like "foo.en" and sets the value correctly.
-    // We can't use this as we aren't guaranteed a name in the story as the user
-    // might clear it using the knob, and then we can't parse the currency from
-    // the input name anymore.
-    //
-    // eslint-disable-next-line no-param-reassign
-    event.target.currency = this.props.currency;
-    this.props.onChange(event);
-  };
-
   render() {
     const currencies = sortCurrencies(
       this.props.selectedCurrency,
