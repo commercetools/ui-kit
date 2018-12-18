@@ -11,20 +11,20 @@ import {
 } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import DateFieldReadme from './README.md';
+import TimeFieldReadme from './README.md';
 import * as icons from '../../icons';
-import DateField from './date-field';
+import TimeField from './time-field';
 
 storiesOf('Fields', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(DateFieldReadme))
-  .add('DateField', () => (
+  .addDecorator(withReadme(TimeFieldReadme))
+  .add('TimeField', () => (
     <Section>
       <Value
         defaultValue=""
         render={(value, onChange) => {
           const name = text('name', '');
-          const hint = text('hint', 'Select the date of publication');
+          const hint = text('hint', 'Select the time of publication');
           const placeholder = text('placeholder', 'Placeholder');
 
           // hintIcon will only render when hint exists
@@ -32,7 +32,7 @@ storiesOf('Fields', module)
           const icon = select('hintIcon', ['', ...iconNames], '');
           const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
           return (
-            <DateField
+            <TimeField
               id={name.trim() === '' ? undefined : name}
               horizontalConstraint={select(
                 'horizontalConstraint',

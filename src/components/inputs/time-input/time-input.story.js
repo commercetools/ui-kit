@@ -28,6 +28,8 @@ storiesOf('Inputs', module)
                 action('onChange')(event);
                 onChange(event.target.value);
               }}
+              onFocus={action('onFocus')}
+              onBlur={action('onBlur')}
               hasError={boolean('hasError', false)}
               horizontalConstraint={select(
                 'horizontalConstraint',

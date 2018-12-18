@@ -7,7 +7,7 @@ import FieldErrors from '../../field-errors';
 import { AddBoldIcon } from '../../icons';
 
 const createTestProps = customProps => ({
-  title: 'Username',
+  title: 'Release date',
   value: '',
   onChange: () => jest.fn(),
   ...customProps,
