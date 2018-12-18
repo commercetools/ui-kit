@@ -39,6 +39,9 @@ import {
 
 When you are developing your application using the UI Kit components, chances you want to use the same design tokens as our design system. We provide them through both **CSS variables** and **JavaScript variables**.
 
+<details>
+<summary>Show details</summary>
+
 We expose the **CSS variables** from the `@commercetools-frontend/ui-kit/materials/custom-properties.css` file.
 
 **Importing css variables in css files**
@@ -93,6 +96,8 @@ const green = customProperties['--color-green'];
 
 > Please look at the [file](materials/custom-properties.json) itself to inspect which variables are available (_documentation will be provided in the future_).
 
+</details>
+
 ## Motivation
 
 - Declarative components serving as a design guide
@@ -103,67 +108,3 @@ const green = customProperties['--color-green'];
 ## Documentation and Storybook
 
 Available at https://uikit.commercetools.com.
-
-## Releasing
-
-The release process is _semi-automated_: you only need to **manually** trigger it and [Travis][travis] will take care of the rest. All automated releases go the the `next` distribution channel. This gives us a chance to test releases out before making them offical by moving the `latest` dist-tag along.
-
-### The steps to prepare and trigger a release to `next` are as follows:
-
-- ensure you are on the latest `master` branch
-- update the `CHANGELOG.md`
-  - run `yarn changelog` to get a code snippet of the important commits from the last release
-  - copy that and paste it into `CHANGELOG.md` file
-  - make sure that the git tag references are correctly defined and the top entry represents the _new_ tag that you are about to create
-  - add or modify the generated changelog to provide more context about the new release
-- bump the `version` in the `package.json`
-- make a commit and push it to `master` (e.g. `git commit -am "chore: bump version to 2.0.0, update changelog"`)
-  - if you can't push it directly to `master`, open a Pull Request first
-- at this point you can create the `tag`: `git tag -m "Version v2.0.0" v2.0.0`
-  - the tag name is the `version` string in the `package.json` plus the prefix `v`
-- push the tag: `git push --tags`
-
-From that point, [Travis][travis] will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
-
-### Moving the `latest` dist-tag to a release:
-
-After testing the `next` release on a production project, it's time to move to the `latest` dist-tag to make the release official.
-
-```bash
-$ npm dist-tag add @commercetools-frontend/ui-kit@<version> latest
-```
-
-### About release-candidates & alpha / beta versions
-
-Having release candidates is not necesssary when using semantic releases:
-
-> "With semantic-release it’s discouraged to put information about stability into the version number (i.e. 1.0.0-beta or 2.0.0-rc1) because it’s mixing things up. The tool you can use to comunicate stability are npm’s dist-tags. The last paragraph of this section should give you some hints: https://github.com/semantic-release/semantic-release#how-does-it-work"
->
-> boennemann, [source](https://gitter.im/semantic-release/semantic-release/archives/2015/08/26)
-
-## Publishing documentation website
-
-The documentation is currently built with [Storybook][storybook] and is hosted on [Netlify][netlify].
-
-By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify][netlify]. The _Production_ website is deployed from the branch `master`.
-
-[webpack]: https://webpack.js.org
-[storybook]: https://storybook.js.org
-[netlify]: https://www.netlify.com
-[travis]: https://travis-ci.org/commercetools/ui-kit/
-
-## Translations (i18n)
-
-The UI Kit uses `react-intl`. The core messages are written down in `messages.js` files.
-
-The translations for the supported languages exist in the `/i18n` folder. We do not use any automated translation software.
-
-### Adding new messages
-
-In case you are working on a component and you want to add a completely new message, you should add it to (or create a) `messages.js` file. See the other `messages.js` files as a reference.
-
-After adding the message(s), you need to run `yarn i18n:build`. This will modify the language files in `/i18n` by adding empty translations for the message keys.
-
-### Editing translations
-
-If you want to modify an existing translation, you will need to manually edit the related files in `/i18n`.
