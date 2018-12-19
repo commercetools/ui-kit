@@ -8,12 +8,12 @@ export default defineMessages({
   },
   show: {
     id: 'UIKit.LocalizedMoneyInput.show',
-    description: '',
+    description: 'Show all currencies button',
     defaultMessage: 'Show all currencies ({remainingCurrencies})',
   },
   hide: {
     id: 'UIKit.LocalizedMoneyInput.hide',
-    description: '',
+    description: 'Hide currencies button',
     defaultMessage: 'Hide currencies ({remainingCurrencies})',
   },
 });
