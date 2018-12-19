@@ -4,7 +4,6 @@
   text-align: left;
   word-break: break-word;
   hyphens: auto;
-  margin: var(--spacing-16);
 }
 
 .iconContainer {
