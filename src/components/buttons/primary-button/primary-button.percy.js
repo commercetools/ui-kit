@@ -56,17 +56,5 @@ screenshot('PrimaryButton', () => (
     <Spec label='tone - when "primary"'>
       <PrimaryButton label="A label text" onClick={() => {}} tone="primary" />
     </Spec>
-
-    <Spec label='type - when "button"'>
-      <PrimaryButton label="A label text" onClick={() => {}} type="button" />
-    </Spec>
-
-    <Spec label='type - when "submit"'>
-      <PrimaryButton label="A label text" onClick={() => {}} type="submit" />
-    </Spec>
-
-    <Spec label='type - when "reset"'>
-      <PrimaryButton label="A label text" onClick={() => {}} type="reset" />
-    </Spec>
   </Suite>
 ));
