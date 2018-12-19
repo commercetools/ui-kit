@@ -343,7 +343,7 @@ describe('interaction', () => {
     let wrapper;
     describe('when not disabled', () => {
       beforeEach(() => {
-        props = createProps({ linkTo: '/foo/bar' });
+        props = createProps({ type: undefined, linkTo: '/foo/bar' });
         wrapper = shallow(<SecondaryButton {...props} />);
       });
       it('should render a `Link` component', () => {
@@ -356,6 +356,7 @@ describe('interaction', () => {
     describe('when disabled', () => {
       beforeEach(() => {
         props = createProps({
+          type: undefined,
           linkTo: '/foo/bar',
           isDisabled: true,
           onClick: jest.fn(),
