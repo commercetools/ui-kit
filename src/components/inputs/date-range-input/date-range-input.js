@@ -228,14 +228,17 @@ class DateRangeCalendar extends React.Component {
               }
 
               if (changes.hasOwnProperty('selectedItem')) {
-                const hasFinishedRangeSelection =
-                  prevState.startDate && changes.selectedItem;
-                const hasStartedRangeSelection =
-                  !prevState.startDate && changes.selectedItem;
+                const hasStartedRangeSelection = Boolean(
+                  !prevState.startDate && changes.selectedItem
+                );
+                const hasFinishedRangeSelection = Boolean(
+                  prevState.startDate && changes.selectedItem
+                );
 
                 return {
                   highlightedIndex: prevState.highlightedIndex,
                   startDate: prevState.startDate ? null : changes.selectedItem,
+                  calendarDate: changes.selectedItem,
                   isOpen: !hasFinishedRangeSelection,
                   inputValue: do {
                     if (hasFinishedRangeSelection)
@@ -331,7 +334,14 @@ class DateRangeCalendar extends React.Component {
                       if (isOpen) setHighlightedIndex(null);
                     },
                     onKeyDown: event => {
-                      if (event.key === 'Enter' && inputValue.trim() === '') {
+                      if (
+                        event.key === 'Enter' &&
+                        inputValue.trim() === '' &&
+                        // do not clear value when user presses Enter to
+                        // select the end date (so only clear when there is no
+                        // startDate)
+                        !this.state.startDate
+                      ) {
                         clearSelection();
                         this.emit([]);
                       }

@@ -4,7 +4,7 @@ export const getDaysInMonth = day => moment(day).daysInMonth();
 export const getDateInMonth = day => moment(day).date();
 export const getToday = () => moment().format('YYYY-MM-DD');
 export const formatDate = (day, locale) =>
-  moment(day, 'YYYY-MM-DD', locale).format('L');
+  day ? moment(day, 'YYYY-MM-DD', locale).format('L') : '';
 export const changeMonth = (day, delta) =>
   moment(day)
     .add(delta, 'month')
