@@ -130,7 +130,8 @@ SecondaryButton.propTypes = {
   isDisabled: PropTypes.bool,
   buttonAttributes: PropTypes.object,
   type: (props, propName, componentName, ...rest) => {
-    if (props.linkTo) {
+    // the type defaults to `button`, so we don't need to handle undefined
+    if (props.linkTo && props.type !== 'button') {
       throw new Error(
         oneLine`
           ${componentName}: "${propName}" does not have any effect when

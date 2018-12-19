@@ -376,6 +376,42 @@ describe('interaction', () => {
   });
 });
 
+describe('prop-type checks', () => {
+  /* eslint-disable no-console */
+  const logError = global.console.error;
+  beforeEach(() => {
+    global.console.error = jest.fn();
+  });
+  afterAll(() => {
+    global.console.error = logError;
+  });
+  // React only emits the warnings once for each prop, so we can't run the
+  // test for "submit" and for "reset" as one of them would always not succeed.
+  describe('when linkTo is set and type is not "button"', () => {
+    it('should warn', () => {
+      const props = createProps({
+        key: 'y',
+        type: 'submit',
+        linkTo: '/foo/bar',
+      });
+      shallow(<SecondaryButton {...props} />);
+      expect(global.console.error).toHaveBeenCalled();
+    });
+  });
+  describe('when linkTo is set and type is "button"', () => {
+    it('should warn', () => {
+      const props = createProps({
+        key: 'z',
+        type: 'button',
+        linkTo: '/foo/bar',
+      });
+      shallow(<SecondaryButton {...props} />);
+      expect(global.console.error).not.toHaveBeenCalled();
+    });
+  });
+  /* eslint-enable no-console */
+});
+
 describe('utils', () => {
   let props;
   describe('getIconThemeColor', () => {
