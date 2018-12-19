@@ -4,6 +4,7 @@ import { AddBoldIcon } from '../../icons';
 import PrimaryButton from './primary-button';
 
 const createProps = custom => ({
+  type: 'button',
   label: '',
   onClick: () => {},
   ...custom,
@@ -26,6 +27,10 @@ describe('rendering', () => {
         'onClick',
         props.onClick
       );
+    });
+
+    it('should supply `type` to `AccessibleButton`', () => {
+      expect(wrapper.find('AccessibleButton')).toHaveProp('type', props.type);
     });
 
     it('should supply `isToggled` to `AccessibleButton`', () => {

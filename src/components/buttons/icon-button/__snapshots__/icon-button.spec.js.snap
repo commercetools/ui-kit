@@ -18,6 +18,7 @@ exports[`rendering icon should output correct tree 1`] = `
     isToggleButton={false}
     label=""
     onClick={[Function]}
+    type="button"
   >
     <div
       className="button-layout container-big"
@@ -48,6 +49,7 @@ exports[`rendering structure should output correct tree 1`] = `
     isToggleButton={false}
     label=""
     onClick={[Function]}
+    type="button"
   >
     <div
       className="button-layout container-big"

@@ -20,6 +20,7 @@ export const SecondaryIconButton = props => {
       className={styles.button}
     >
       <AccessibleButton
+        type={props.type}
         buttonAttributes={buttonAttributes}
         label={props.label}
         onClick={props.onClick}
@@ -35,6 +36,7 @@ export const SecondaryIconButton = props => {
 
 SecondaryIconButton.displayName = 'SecondaryIconButton';
 SecondaryIconButton.propTypes = {
+  type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
   isDisabled: PropTypes.bool,
@@ -46,6 +48,7 @@ SecondaryIconButton.propTypes = {
   handleMouseOut: PropTypes.func.isRequired,
 };
 SecondaryIconButton.defaultProps = {
+  type: 'button',
   isDisabled: false,
 };
 

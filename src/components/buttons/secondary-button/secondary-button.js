@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import oneLine from 'common-tags/lib/oneLine';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { compose } from 'recompose';
@@ -76,6 +77,7 @@ export const SecondaryButton = props => {
       to={shouldLink ? props.linkTo : undefined}
     >
       <AccessibleButton
+        type={props.type}
         buttonAttributes={dataProps}
         label={props.label}
         onClick={props.onClick}
@@ -127,6 +129,24 @@ SecondaryButton.propTypes = {
   },
   isDisabled: PropTypes.bool,
   buttonAttributes: PropTypes.object,
+  type: (props, propName, componentName, ...rest) => {
+    // the type defaults to `button`, so we don't need to handle undefined
+    if (props.linkTo && props.type !== 'button') {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "linkTo" is set.
+        `
+      );
+    }
+    return PropTypes.oneOf(['submit', 'reset', 'button'])(
+      props,
+      propName,
+      componentName,
+      ...rest
+    );
+  },
+
   onClick: requiredIf(PropTypes.func, props => !props.linkTo),
   linkTo: PropTypes.oneOfType([
     PropTypes.string,
@@ -150,8 +170,8 @@ SecondaryButton.propTypes = {
 };
 
 SecondaryButton.defaultProps = {
+  type: 'button',
   theme: 'default',
-
   isToggleButton: false,
 };
 

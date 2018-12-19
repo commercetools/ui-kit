@@ -22,6 +22,7 @@ exports[`<Tag /> rendering when \`linkTo\` is not set should output correct tree
       isToggleButton={false}
       label="Remove"
       onClick={[MockFunction]}
+      type="button"
     >
       <CloseBoldIcon
         size="medium"
@@ -122,6 +123,7 @@ exports[`<Tag /> rendering when removable (\`onRemove\`) should output correct t
       isToggleButton={false}
       label="Remove"
       onClick={[MockFunction]}
+      type="button"
     >
       <CloseBoldIcon
         size="medium"

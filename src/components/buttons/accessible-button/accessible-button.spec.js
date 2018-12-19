@@ -24,6 +24,9 @@ describe('rendering', () => {
     it('should apply the className prop to the button', () => {
       expect(wrapper.find('button')).toContainClass(props.className);
     });
+    it('should default to the "button" type', () => {
+      expect(wrapper.find('button')).toHaveProp('type', 'button');
+    });
     it('should have the type button', () => {
       expect(wrapper.find('button').prop('type')).toBe('button');
     });
@@ -32,6 +35,23 @@ describe('rendering', () => {
     });
     it('should add the button class to the button', () => {
       expect(wrapper.find('button')).toContainClass('button');
+    });
+  });
+  describe('type variations', () => {
+    it('should allow setting button type to "submit"', () => {
+      const props = createProps({ type: 'submit' });
+      const wrapper = shallow(<AccessibleButton {...props} />);
+      expect(wrapper.find('button')).toHaveProp('type', 'submit');
+    });
+    it('should allow setting button type to "reset"', () => {
+      const props = createProps({ type: 'reset' });
+      const wrapper = shallow(<AccessibleButton {...props} />);
+      expect(wrapper.find('button')).toHaveProp('type', 'reset');
+    });
+    it('should allow setting button type to "button"', () => {
+      const props = createProps({ type: 'button' });
+      const wrapper = shallow(<AccessibleButton {...props} />);
+      expect(wrapper.find('button')).toHaveProp('type', 'button');
     });
   });
   describe('label', () => {

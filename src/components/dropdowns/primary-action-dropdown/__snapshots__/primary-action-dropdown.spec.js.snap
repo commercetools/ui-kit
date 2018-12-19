@@ -8,6 +8,7 @@ exports[`<Option /> rendering should output correct tree 1`] = `
   isToggleButton={false}
   label="Icecream we scream!"
   onClick={[MockFunction]}
+  type="button"
 >
   Icecream we scream!
 </AccessibleButton>

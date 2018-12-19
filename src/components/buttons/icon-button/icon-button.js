@@ -71,6 +71,7 @@ export const IconButton = props => {
     >
       <AccessibleButton
         buttonAttributes={dataProps}
+        type={props.type}
         label={props.label}
         onClick={props.onClick}
         isToggled={props.isToggled}
@@ -95,6 +96,7 @@ export const IconButton = props => {
 };
 
 IconButton.propTypes = {
+  type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   icon: PropTypes.node,
   isToggleButton: PropTypes.bool.isRequired,
@@ -140,6 +142,7 @@ IconButton.propTypes = {
 };
 
 IconButton.defaultProps = {
+  type: 'button',
   theme: 'default',
   size: 'big',
   shape: 'round',

@@ -16,6 +16,7 @@ storiesOf('Buttons', module)
   .add('IconButton', () => (
     <Section>
       <IconButton
+        type={select('type', ['submit', 'reset', 'button'], 'button')}
         shape={select('shape', ['round', 'square'], 'round')}
         size={select('size', ['big', 'medium', 'small'], 'big')}
         theme={select('theme', ['green', 'blue', 'default'], 'default')}

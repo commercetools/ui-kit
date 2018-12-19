@@ -16,6 +16,7 @@ storiesOf('Buttons', module)
   .add('PrimaryButton', () => (
     <Section>
       <PrimaryButton
+        type={select('type', ['submit', 'reset', 'button'], 'button')}
         tone={select('tone', ['urgent', 'primary'], 'primary')}
         size={select('size', ['small', 'big'], 'big')}
         iconLeft={React.createElement(
