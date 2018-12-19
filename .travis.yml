@@ -23,12 +23,7 @@ script:
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
   # skip percy builds when this is not a pull request or when it's not master to save precious snaps
   # also skip when PR is opened by `renovate`
-  #
-  # Percy is disabled for now as we ran over the budget for this month.
-  # It should be reenabled once we are moved to the bigger plan, which we
-  # already requested from Percy, or as soon as the new month starts.
-  #- bash ./scripts/run-percy.sh
-  #
+  - bash ./scripts/run-percy.sh
   # back to default in case internal travis scripts return non zero response codes.
   - set +e
 
