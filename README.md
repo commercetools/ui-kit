@@ -37,7 +37,7 @@ import {
 
 #### Importing CSS variables
 
-When you are developing your application using the UI Kit components, chances you want to use the same design tokens as our design system. We provide them through both **CSS variables** and **JavaScript variables**.
+When you are developing your application using UI Kit components, chances you want to use the same design tokens as our design system. We provide them through both **CSS variables** and **JavaScript variables**.
 
 <details>
 <summary>Show details</summary>

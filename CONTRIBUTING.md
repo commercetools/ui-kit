@@ -22,27 +22,28 @@ These are general and loose rules components in UI Kit should strive to fulfill.
 
 ### Testing
 
-We split our testing in three parts: functionality, visual and the final bundle. We use separate tools for these, and we try to avoid overlap.
+We split our testing into three parts: functionality testing, visual testing and bundle testing. We use separate tools for each of these, and we try to avoid overlap.
 
-#### Functionality testing
+#### Functionality testing (`*.spec.js`)
+
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106).
 
 - write tests from a user perspective, not from a dev perspective
 - we test using `react-testing-library`
-  - we have `test-utils` as a thin wrapper which sets up the context of tested components
+  - we offer `test-utils` as a thin wrapper which sets up the context of tested components
   - we avoid `beforeEach` as it leads to test coupling
   - an `it` can describe the flow of a user
   - it is okay to have many `expect` statements in an `it`
-  - code comments can help explain the `expect`s better
-- avoid testing for visuals (classnames or the DOM structure)
+  - we use code comments to help explain the `expect`s better
+- avoid testing the visuals (classnames or DOM structure)
   - the user does not care about the DOM structure or the classnames themselves
   - use visual testing instead (see below)
-- if mocking is required, try to do it at the level the user interacts with the component
-  - Examples
-    - good: mocking network responses
-    - bad: mocking a fetching component
-  - Try to keep mocking minimal. The less we mock, and the later we mock, the more our tests will cover and the more confidence we gain that our components work
+- try to use mocks at the same interface that a user would use (DOM, network, local-storage, cookies) instead of mocking implementation parts of the app
+- try to keep mocking minimal. The less we mock, and the further down the stack we mock, the more our tests will cover and the more confidence we gain that our components work
 
-#### Visual testing
+#### Visual testing (`*.percy.js`)
+
+These tests are used to prevent visuals regressions in our components exported from the build produced by rollup. It is necessary to build the bundle before running these tests.
 
 - we will use a tool called [Percy](https://percy.io/) for visual regression testing
 - we test the components from the produced bundle
@@ -56,9 +57,9 @@ We split our testing in three parts: functionality, visual and the final bundle.
   - we set a min-height for every `Spec` to ensure that changes in height of a component's state don't break the visual diff of states following below that
 - we can currently not "interact" with components (like opening a dropdown menu) before taking a screenshot. We might be able to solve this by using Puppeteer in the future, but we wanted to get up and running first.
 
-#### Bundle testing
+#### Bundle testing (`*.bundlespec.js`)
 
-We have test files ending with `*.bundlespec.js`. They are used to test the bundle produced by the rollup build. It is necessary to run the build before running these tests. We use these to further ensure that our bundling process works.
+These tests are used to ensure the bundle produced by rollup. It is necessary to build the bundle before running these tests. We use these tests to further ensure that our bundling process works.
 
 ## Releasing
 
