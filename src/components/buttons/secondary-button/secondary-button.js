@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import oneLine from 'common-tags/lib/oneLine';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { compose } from 'recompose';
@@ -100,7 +101,6 @@ export const SecondaryButton = props => {
 };
 
 SecondaryButton.propTypes = {
-  type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   iconLeft: PropTypes.node,
   isToggleButton: PropTypes.bool.isRequired,
@@ -129,6 +129,23 @@ SecondaryButton.propTypes = {
   },
   isDisabled: PropTypes.bool,
   buttonAttributes: PropTypes.object,
+  type: (props, propName, componentName, ...rest) => {
+    if (props.linkTo) {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "linkTo" is set.
+        `
+      );
+    }
+    return PropTypes.oneOf(['submit', 'reset', 'button'])(
+      props,
+      propName,
+      componentName,
+      ...rest
+    );
+  },
+
   onClick: requiredIf(PropTypes.func, props => !props.linkTo),
   linkTo: PropTypes.oneOfType([
     PropTypes.string,

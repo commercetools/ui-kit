@@ -18,6 +18,7 @@ storiesOf('Buttons', module)
     <Section>
       <MemoryRouter>
         <SecondaryButton
+          type={select('type', ['button', 'reset', 'submit'], 'button')}
           theme={select('theme', ['blue', 'default'], 'default')}
           iconLeft={React.createElement(
             icons[select('iconLeft', iconNames, iconNames[0])]
