@@ -16,14 +16,4 @@ export default defineMessages({
     description: '',
     defaultMessage: 'Hide currencies ({remainingCurrencies})',
   },
-  expand: {
-    id: 'UIKit.LocalizedMoneyInput.expand',
-    description: '',
-    defaultMessage: 'Expand',
-  },
-  collapse: {
-    id: 'UIKit.LocalizedMoneyInput.collapse',
-    description: '',
-    defaultMessage: 'Collapse',
-  },
 });
