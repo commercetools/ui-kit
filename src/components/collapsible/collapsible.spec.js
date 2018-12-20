@@ -1,76 +1,59 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import Collapsible from './collapsible';
+import { render } from '../../test-utils';
 
-const createTestProps = customProps => ({
-  isClosed: undefined,
-  onToggle: undefined,
-  ...customProps,
-});
+const TestComponent = props => (
+  <Collapsible {...props}>
+    {options => (
+      <div>
+        <div data-testid="openState">{options.isOpen ? 'open' : 'closed'}</div>
+        <button data-testid="toggle" onClick={options.toggle}>
+          Toggle
+        </button>
+      </div>
+    )}
+  </Collapsible>
+);
 
-describe('rendering', () => {
-  describe('when component is uncontrolled', () => {
-    let renderCallback;
-    beforeEach(() => {
-      const props = createTestProps();
-      renderCallback = jest.fn(() => <div />);
-      shallow(<Collapsible {...props}>{renderCallback}</Collapsible>);
-    });
-
-    it('should call the render callback', () => {
-      expect(renderCallback).toHaveBeenCalled();
-    });
-
-    it('should be open by default', () => {
-      expect(renderCallback.mock.calls[0][0].isOpen).toBe(true);
-    });
-
-    it('toggle should be a function', () => {
-      expect(typeof renderCallback.mock.calls[0][0].toggle).toBe('function');
-    });
-
-    describe('when toggled', () => {
-      beforeEach(() => {
-        renderCallback.mock.calls[0][0].toggle();
-      });
-
-      it('should have called the render callback again', () => {
-        expect(renderCallback).toHaveBeenCalledTimes(2);
-      });
-
-      it('should close', () => {
-        expect(renderCallback.mock.calls[1][0].isOpen).toBe(false);
-      });
-    });
+describe('when component is uncontrolled', () => {
+  it('should be open by default', () => {
+    const { getByTestId } = render(<TestComponent />);
+    expect(getByTestId('openState')).toHaveTextContent('open');
   });
 
-  describe('when component is controlled', () => {
-    let renderCallback;
-    beforeEach(() => {
-      const props = createTestProps({
-        isClosed: true,
-        onToggle: jest.fn(),
-      });
-      renderCallback = jest.fn(() => <div />);
-      shallow(<Collapsible {...props}>{renderCallback}</Collapsible>);
-    });
+  it('should be possible to toggle the open state', () => {
+    const { getByTestId } = render(<TestComponent />);
+    expect(getByTestId('openState')).toHaveTextContent('open');
+    getByTestId('toggle').click();
+    expect(getByTestId('openState')).toHaveTextContent('closed');
+  });
 
-    it('should call the render callback', () => {
-      expect(renderCallback).toHaveBeenCalled();
-    });
+  it('should respect the default closed state', () => {
+    const { getByTestId } = render(<TestComponent isDefaultClosed={true} />);
+    expect(getByTestId('openState')).toHaveTextContent('closed');
+  });
+});
 
-    it('should be closed based on isClosed prop', () => {
-      expect(renderCallback.mock.calls[0][0].isOpen).toBe(false);
-    });
+describe('when component is controlled', () => {
+  it('should be open by default', () => {
+    const onToggle = jest.fn();
+    const { getByTestId } = render(
+      <TestComponent isClosed={false} onToggle={onToggle} />
+    );
+    expect(getByTestId('openState')).toHaveTextContent('open');
+  });
 
-    describe('when toggled', () => {
-      beforeEach(() => {
-        renderCallback.mock.calls[0][0].toggle();
-      });
-
-      it('should call the custom onToggle prop', () => {
-        expect(renderCallback.mock.instances[0].onToggle).toHaveBeenCalled();
-      });
-    });
+  it('should be possible to toggle the open state', () => {
+    const onToggle = jest.fn();
+    const { getByTestId, rerender } = render(
+      <TestComponent isClosed={false} onToggle={onToggle} />
+    );
+    expect(getByTestId('openState')).toHaveTextContent('open');
+    getByTestId('toggle').click();
+    expect(onToggle).toHaveBeenCalledTimes(1);
+    // simulate the parent react to onToggle by changing the isClosed state
+    // to true
+    rerender(<TestComponent isClosed={true} onToggle={onToggle} />);
+    expect(getByTestId('openState')).toHaveTextContent('closed');
   });
 });
