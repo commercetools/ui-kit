@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`with default props should match snapshot 1`] = `
-<em
-  className="highlighted"
->
-  *
-</em>
-`;
