@@ -1,17 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '../../../test-utils';
 import ErrorMessage from './error-message';
 
-describe('rendering', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(
-      <ErrorMessage>
-        <div>hi</div>
-      </ErrorMessage>
-    );
-  });
-  it('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+it('should render children', () => {
+  const { container } = render(<ErrorMessage>Some error message</ErrorMessage>);
+
+  expect(container).toHaveTextContent('Some error message');
 });
