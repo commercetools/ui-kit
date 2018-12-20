@@ -1,51 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '../../../test-utils';
 import Horizontal from './horizontal';
 
-describe('rendering', () => {
-  describe('by default', () => {
-    let wrapper;
+// The different constraints are tested in the visual regression tests.
+// That tests also ensure this component accepts a "constraint" prop.
 
-    beforeEach(() => {
-      wrapper = shallow(
-        <Horizontal>
-          <div />
-        </Horizontal>
-      );
-    });
-
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should apply `constraintScale` as the horizontalConstraint class name', () => {
-      expect(wrapper).toHaveClassName('constraintScale');
-    });
-
-    it('should render `children`', () => {
-      expect(wrapper.children()).toBeDefined();
-    });
-  });
-
-  describe('with `constraint`', () => {
-    let wrapper;
-    let props;
-
-    beforeEach(() => {
-      props = { constraint: 'xl' };
-      wrapper = shallow(
-        <Horizontal {...props}>
-          <div />
-        </Horizontal>
-      );
-    });
-
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should apply the `constraintXl` class name', () => {
-      expect(wrapper).toHaveClassName('constraintXl');
-    });
-  });
+it('should render children', () => {
+  const { getByTestId } = render(
+    <Horizontal>
+      <div data-testid="child" />
+    </Horizontal>
+  );
+  expect(getByTestId('child')).toBeInTheDocument();
 });
