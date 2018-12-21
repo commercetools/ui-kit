@@ -1,242 +1,128 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '../../../test-utils';
 import { Checkbox } from './checkbox';
 
 jest.mock('tiny-invariant');
 
-const createTestProps = custom => ({
-  name: 'bar',
-  value: 'foo',
-  isDisabled: false,
-  isChecked: false,
-  isIndeterminate: false,
-  onChange: jest.fn(),
-
-  // HoC
-  handleMouseOver: jest.fn(),
-  handleMouseOut: jest.fn(),
-  isMouseOver: false,
-  ...custom,
+it('should render the label', () => {
+  const { getByLabelText } = render(
+    <Checkbox onChange={() => {}} isChecked={false}>
+      Accept Terms
+    </Checkbox>
+  );
+  expect(getByLabelText('Accept Terms')).toBeInTheDocument();
 });
 
-describe('<Checkbox>', () => {
-  describe('rendering', () => {
-    let props;
-    let wrapper;
-    describe('without children', () => {
-      beforeEach(() => {
-        props = createTestProps();
-
-        wrapper = shallow(<Checkbox {...props} />);
-      });
-
-      it('should match snapshot', () => {
-        expect(wrapper).toMatchSnapshot();
-      });
-
-      it('should supply `onChange` to the `input`', () => {
-        expect(wrapper.find('input')).toHaveProp('onChange', props.onChange);
-      });
-
-      describe('with `data-*`', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            'data-test': 'foo-attribute-select-me-from-e2e',
-          });
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-        it('should match snapshot', () => {
-          expect(wrapper).toMatchSnapshot();
-        });
-      });
-
-      describe('when checked', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            isChecked: true,
-          });
-
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-        it('should match snapshot', () => {
-          expect(wrapper).toMatchSnapshot();
-        });
-
-        it('should check the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp('checked', true);
-        });
-        describe('when indeterminate', () => {
-          beforeEach(() => {
-            props = createTestProps({
-              isChecked: true,
-              isIndeterminate: true,
-            });
-
-            wrapper = shallow(<Checkbox {...props} />);
-          });
-          it('should match snapshot', () => {
-            expect(wrapper).toMatchSnapshot();
-          });
-
-          it('should not check the `input`', () => {
-            expect(wrapper.find('input')).toHaveProp('checked', false);
-          });
-        });
-      });
-
-      describe('when hovered', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            isHovered: true,
-          });
-
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-
-        it('should render checkbox in a hovered state', () => {
-          expect(wrapper.exists('.isHovered')).toBe(true);
-        });
-      });
-
-      describe('when hovered and disabled', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            isHovered: true,
-            isDisabled: true,
-          });
-
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-
-        it('should render checkbox in a disabled state', () => {
-          expect(wrapper.exists('.isHovered')).toBe(false);
-          expect(wrapper.exists('.isDisabled')).toBe(true);
-        });
-      });
-
-      describe('when unchecked', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            isChecked: false,
-          });
-
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-        it('should match snapshot', () => {
-          expect(wrapper).toMatchSnapshot();
-        });
-
-        it('should not check the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp('checked', false);
-        });
-      });
-      describe('when indeterminate', () => {
-        beforeEach(() => {
-          props = createTestProps({
-            isChecked: false,
-            isIndeterminate: true,
-          });
-
-          wrapper = shallow(<Checkbox {...props} />);
-        });
-        it('should match snapshot', () => {
-          expect(wrapper).toMatchSnapshot();
-        });
-
-        it('should not check the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp('checked', false);
-        });
-      });
-    });
-
-    describe('with children', () => {
-      beforeEach(() => {
-        props = createTestProps();
-
-        wrapper = shallow(<Checkbox {...props}>{'Some label'}</Checkbox>);
-      });
-
-      it('should match snapshot', () => {
-        expect(wrapper).toMatchSnapshot();
-      });
-    });
-  });
+it('should call onChange when text is clicked', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = render(
+    <Checkbox onChange={onChange} isChecked={false}>
+      Accept Terms
+    </Checkbox>
+  );
+  getByLabelText('Accept Terms').click();
+  expect(onChange).toHaveBeenCalledTimes(1);
 });
 
-describe('callbacks', () => {
-  const createEvent = ({ isChecked = true } = {}) => ({
-    target: {
-      isChecked,
-    },
+it('should not call onChange when text is clicked while disabled', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = render(
+    <Checkbox onChange={onChange} isChecked={false} isDisabled={true}>
+      Accept Terms
+    </Checkbox>
+  );
+  getByLabelText('Accept Terms').click();
+  expect(onChange).not.toHaveBeenCalled();
+});
+
+it('should call onChange when outside label is clicked', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = render(
+    <div>
+      <label htmlFor="checkbox">Checkbox</label>
+      <Checkbox onChange={onChange} isChecked={false} id="checkbox">
+        Accept Terms
+      </Checkbox>
+    </div>
+  );
+  getByLabelText('Checkbox').click();
+
+  expect(onChange).toHaveBeenCalledTimes(1);
+  // it should get called with an event
+  expect(onChange).toHaveBeenCalledWith(expect.any(Object));
+});
+
+it('should forward data attributes', () => {
+  const onChange = jest.fn();
+  const { container } = render(
+    <Checkbox onChange={onChange} isChecked={false} data-foo="bar">
+      Accept Terms
+    </Checkbox>
+  );
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+});
+
+it('should check the input when isChecked is "true"', () => {
+  const { getByLabelText } = render(
+    <Checkbox onChange={() => {}} isChecked={true}>
+      Accept Terms
+    </Checkbox>
+  );
+  expect(getByLabelText('Accept Terms')).toHaveAttribute('checked');
+});
+
+it('should not check the input when isChecked is "false"', () => {
+  const { getByLabelText } = render(
+    <Checkbox onChange={() => {}} isChecked={false}>
+      Accept Terms
+    </Checkbox>
+  );
+  expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
+});
+
+it('should allow changing the checked state', () => {
+  const onChange = jest.fn();
+  const { getByLabelText, rerender } = render(
+    <Checkbox onChange={onChange} isChecked={false}>
+      Accept Terms
+    </Checkbox>
+  );
+  expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
+
+  getByLabelText('Accept Terms').click();
+  expect(onChange).toHaveBeenCalledTimes(1);
+
+  // simulate onChange function updating the state in the parent and passing
+  // a new state down
+  rerender(
+    <Checkbox onChange={onChange} isChecked={true}>
+      Accept Terms
+    </Checkbox>
+  );
+
+  expect(getByLabelText('Accept Terms')).toHaveAttribute('checked');
+
+  getByLabelText('Accept Terms').click();
+  expect(onChange).toHaveBeenCalledTimes(2);
+});
+
+describe('when indeterminate', () => {
+  it('should not check the input when isChecked is "false"', () => {
+    const { getByLabelText } = render(
+      <Checkbox onChange={() => {}} isChecked={false} isIndeterminate={true}>
+        Accept Terms
+      </Checkbox>
+    );
+    expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
   });
 
-  describe('when changing', () => {
-    let props;
-    describe('when isChecked', () => {
-      beforeEach(() => {
-        props = createTestProps({ isChecked: true });
-
-        const wrapper = shallow(<Checkbox {...props} />);
-        wrapper
-          .find('input')
-          .simulate('change', createEvent({ isChecked: props.isChecked }));
-      });
-
-      it('should invoke `onChange`', () => {
-        expect(props.onChange).toHaveBeenCalled();
-      });
-
-      it('should invoke `onChange` with `isChecked`', () => {
-        expect(props.onChange).toHaveBeenCalledWith(
-          expect.objectContaining({
-            target: expect.objectContaining({
-              isChecked: props.isChecked,
-            }),
-          })
-        );
-      });
-
-      it('should invoke `onChange` with `event`', () => {
-        expect(props.onChange).toHaveBeenCalledWith(
-          expect.objectContaining({
-            target: expect.any(Object),
-          })
-        );
-      });
-    });
-
-    describe('when not isChecked', () => {
-      beforeEach(() => {
-        props = createTestProps({ isChecked: false });
-
-        const wrapper = shallow(<Checkbox {...props} />);
-
-        wrapper
-          .find('input')
-          .simulate('change', createEvent({ isChecked: props.isChecked }));
-      });
-
-      it('should invoke `onChange`', () => {
-        expect(props.onChange).toHaveBeenCalled();
-      });
-
-      it('should invoke `onChange` with `isChecked`', () => {
-        expect(props.onChange).toHaveBeenCalledWith(
-          expect.objectContaining({
-            target: expect.objectContaining({
-              isChecked: props.isChecked,
-            }),
-          })
-        );
-      });
-
-      it('should invoke `onChange` with `event`', () => {
-        expect(props.onChange).toHaveBeenCalledWith(
-          expect.objectContaining({
-            target: expect.any(Object),
-          })
-        );
-      });
-    });
+  // The input is always unchecked when the state is indeterminate!
+  it('should not check the input when isChecked is "true"', () => {
+    const { getByLabelText } = render(
+      <Checkbox onChange={() => {}} isChecked={true} isIndeterminate={true}>
+        Accept Terms
+      </Checkbox>
+    );
+    expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
   });
 });
