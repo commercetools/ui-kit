@@ -1,176 +1,253 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import PropTypes from 'prop-types';
+import { render, fireEvent } from '../../../test-utils';
 import MoneyField from './money-field';
-import FieldLabel from '../../field-label';
 import MoneyInput from '../../inputs/money-input';
-import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
 
-const createTestProps = customProps => ({
-  title: 'Price',
-  value: { amount: '', currencyCode: 'EUR' },
-  onChange: () => jest.fn(),
-  currencies: ['EUR', 'USD'],
-  ...customProps,
+// This component is used to enable easy testing.
+// It overwrites the onChange function and places a label for the
+// input component. It also ensures an id so that the label can associate
+// the input. This allows tests to use getByLabelText.
+// It also makes sure the event's value passed to onChange flows back to the
+// component so that we can test it under real conditions.
+// As a convenience, we enable accessing a mocked onChange function.
+class Story extends React.Component {
+  static displayName = 'Story';
+  static propTypes = {
+    onChange: PropTypes.func,
+    value: PropTypes.shape({
+      amount: PropTypes.string.isRequired,
+      currencyCode: PropTypes.string.isRequired,
+    }),
+    id: PropTypes.string,
+  };
+  static defaultProps = {
+    title: 'foo',
+    id: 'money-field',
+    value: { amount: '', currencyCode: 'EUR' },
+    currencies: ['EUR', 'USD'],
+  };
+  state = {
+    value: this.props.value,
+  };
+  handleChange = event => {
+    if (this.props.onChange) this.props.onChange(event);
+
+    this.setState(prevState => ({
+      value: {
+        ...prevState.value,
+        [event.target.name]: event.target.value,
+      },
+    }));
+  };
+  render() {
+    return (
+      <div>
+        <label htmlFor={MoneyInput.getAmountInputId(this.props.id)}>
+          Amount
+        </label>
+        <label htmlFor={MoneyInput.getCurrencyDropdownId(this.props.id)}>
+          Currency Code
+        </label>
+        <MoneyField
+          id={this.props.id}
+          {...this.props}
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  }
+}
+
+const renderMoneyField = (props, options) =>
+  render(<Story {...props} />, options);
+
+it('should render a money field', () => {
+  const { getByLabelText } = renderMoneyField();
+  expect(getByLabelText('Amount')).toBeInTheDocument();
+  expect(getByLabelText('Currency Code')).toBeInTheDocument();
 });
 
-describe('rendering', () => {
-  describe('data attributes', () => {
-    let moneyInput;
-    beforeEach(() => {
-      const props = createTestProps({
-        'data-foo': 'bar',
-        'data-test': 'baz',
-      });
-      const wrapper = shallow(<MoneyField {...props} />);
-      moneyInput = wrapper.find(MoneyInput);
-    });
-    it('should forward the attributes to the MoneyInput', () => {
-      expect(moneyInput).toHaveProp('data-foo', 'bar');
-      expect(moneyInput).toHaveProp('data-test', 'baz');
-    });
-  });
-  describe('when no id is provided', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ id: undefined });
-      wrapper = shallow(<MoneyField {...props} />);
-    });
-    it('should add a default id attribute', () => {
-      expect(wrapper.find(MoneyInput)).toHaveProp(
-        'id',
-        expect.stringMatching(/.+/)
-      );
-    });
-    it('should add a default htmlFor attribute', () => {
-      expect(wrapper.find(FieldLabel)).toHaveProp(
-        'htmlFor',
-        expect.stringMatching(/.+/)
-      );
-    });
-    it('should use the same value for the id and htmlFor attribute', () => {
-      expect(wrapper.find(MoneyInput).prop('id')).toEqual(
-        wrapper.find(FieldLabel).prop('htmlFor')
-      );
-    });
-  });
-  describe('when touched', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        // MoneyField
-        id: 'price',
-        // FieldLabel
-        title: 'Price',
-        hint: 'Some hint',
-        hintIcon: <AddBoldIcon />,
-        description: 'A description',
-        onInfoButtonClick: jest.fn(),
+it('should render a title', () => {
+  const { getByText } = renderMoneyField({ title: 'foo title' });
+  expect(getByText('foo title')).toBeInTheDocument();
+});
 
-        // MoneyField
-        name: 'field1',
-        value: { amount: '20', currencyCode: 'EUR' },
-        currencies: ['EUR', 'USD'],
-        onChange: jest.fn(),
-        onBlur: jest.fn(),
-        isDisabled: false,
-        placeholder: 'Some placeholder',
-        errors: { missing: true },
+it('should forward data-attributes', () => {
+  const { container } = renderMoneyField({ 'data-foo': 'bar' });
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+});
+
+it('should have an HTML name for dropdown and amount input', () => {
+  const { container } = renderMoneyField({ name: 'foo' });
+  expect(container.querySelector('[name="foo.amount"]')).toBeInTheDocument();
+  expect(
+    container.querySelector('[name="foo.currencyCode"]')
+  ).toBeInTheDocument();
+});
+
+it('should call onFocus when amount input is focused', () => {
+  const onFocus = jest.fn();
+  const { getByLabelText } = renderMoneyField({ onFocus });
+  getByLabelText('Amount').focus();
+  expect(getByLabelText('Amount')).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});
+
+it('should call onFocus when currency select is focused', () => {
+  const onFocus = jest.fn();
+  const { getByLabelText } = renderMoneyField({ onFocus });
+  getByLabelText('Currency Code').focus();
+  expect(getByLabelText('Currency Code')).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});
+
+it('should call onBlur when amount input loses focus', () => {
+  const onBlur = jest.fn();
+  const { getByLabelText } = renderMoneyField({ onBlur });
+  getByLabelText('Amount').focus();
+  expect(getByLabelText('Amount')).toHaveFocus();
+  getByLabelText('Amount').blur();
+  expect(getByLabelText('Amount')).not.toHaveFocus();
+  expect(onBlur).toHaveBeenCalled();
+});
+
+it('should call onBlur when currency select loses focus', () => {
+  const onBlur = jest.fn();
+  const { getByLabelText } = renderMoneyField({ onBlur });
+  getByLabelText('Currency Code').focus();
+  expect(getByLabelText('Currency Code')).toHaveFocus();
+  getByLabelText('Currency Code').blur();
+  expect(getByLabelText('Currency Code')).not.toHaveFocus();
+  expect(onBlur).toHaveBeenCalled();
+});
+
+it('should call onChange when changing the value', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = renderMoneyField({
+    id: 'money-field-id',
+    name: 'money-field-name',
+    onChange,
+  });
+  fireEvent.change(getByLabelText('Amount'), { target: { value: '20' } });
+
+  fireEvent.focus(getByLabelText('Currency Code'));
+  fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
+
+  expect(onChange).toHaveBeenCalledTimes(1);
+  expect(onChange).toHaveBeenCalledWith({
+    persist: expect.any(Function),
+    target: {
+      id: 'money-field-id.amount',
+      name: 'money-field-name.amount',
+      value: '20',
+    },
+  });
+
+  // change currency to USD using keyboard
+  fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
+  fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'Enter' });
+
+  // it should change the currency
+  expect(onChange).toHaveBeenCalledWith({
+    persist: expect.any(Function),
+    target: {
+      id: 'money-field-id.currencyCode',
+      name: 'money-field-name.currencyCode',
+      value: 'USD',
+    },
+  });
+
+  // it should move the focus back to the input
+  expect(getByLabelText('Amount')).toHaveFocus();
+
+  // onChange should be called when changing the currency
+  expect(onChange).toHaveBeenCalledTimes(2);
+});
+
+describe('when `description` is passed', () => {
+  it('should render a description', () => {
+    const { getByText } = renderMoneyField({
+      description: 'foo description',
+    });
+    expect(getByText('foo description')).toBeInTheDocument();
+  });
+});
+
+describe('when `hint` is passed', () => {
+  it('should render a hint', () => {
+    const { getByText } = renderMoneyField({ hint: 'foo hint' });
+    expect(getByText('foo hint')).toBeInTheDocument();
+  });
+});
+
+describe('when high precision price should be shown', () => {
+  it('should be visible when a high precision price is entered', () => {
+    const { container } = renderMoneyField({
+      value: { amount: '12.004', currencyCode: 'EUR' },
+      hasHighPrecisionBadge: true,
+    });
+    expect(container).toHaveTextContent(/High Precision Price/i);
+  });
+  it('should not be visible when no high precision price is entered', () => {
+    const { container } = renderMoneyField({
+      value: { amount: '12.00', currencyCode: 'EUR' },
+      hasHighPrecisionBadge: true,
+    });
+    expect(container).not.toHaveTextContent(/High Precision Price/i);
+  });
+});
+
+describe('when disabled', () => {
+  it('should disable the inputs', () => {
+    const { getByLabelText } = renderMoneyField({ isDisabled: true });
+    expect(getByLabelText('Amount')).toHaveAttribute('disabled');
+    expect(getByLabelText('Currency Code')).toHaveAttribute('disabled');
+  });
+});
+
+describe('when required', () => {
+  it('should add `*` to title`', () => {
+    const { getByText } = renderMoneyField({ isRequired: true });
+    expect(getByText('*')).toBeInTheDocument();
+  });
+});
+
+describe('when showing an info button', () => {
+  it('should render an info button', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderMoneyField({
+      onInfoButtonClick,
+    });
+    expect(getByLabelText('More Info')).toBeInTheDocument();
+  });
+  it('should call onInfoButtonClick when button is clicked', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderMoneyField({ onInfoButtonClick });
+    getByLabelText('More Info').click();
+    expect(onInfoButtonClick).toHaveBeenCalled();
+  });
+});
+
+describe('when field is touched and has errors', () => {
+  describe('when field empty', () => {
+    it('should render a default error', () => {
+      const { getByText } = renderMoneyField({
         touched: { amount: true, currencyCode: true },
-      });
-      wrapper = shallow(<MoneyField {...props} />);
-    });
-
-    it('should forward the props for to the related components', () => {
-      const fieldLabel = wrapper.find(FieldLabel);
-      expect(fieldLabel).toHaveProp('title', props.title);
-      expect(fieldLabel).toHaveProp('hint', props.hint);
-      expect(fieldLabel).toHaveProp('hintIcon', props.hintIcon);
-      expect(fieldLabel).toHaveProp('description', props.description);
-      expect(fieldLabel).toHaveProp(
-        'onInfoButtonClick',
-        props.onInfoButtonClick
-      );
-      expect(fieldLabel).toHaveProp('htmlFor', props.id);
-
-      const moneyInput = wrapper.find(MoneyInput);
-      expect(moneyInput).toHaveProp('name', props.name);
-      expect(moneyInput).toHaveProp('value', props.value);
-      expect(moneyInput).toHaveProp('onChange', props.onChange);
-      expect(moneyInput).toHaveProp('onBlur', props.onBlur);
-      expect(moneyInput).toHaveProp('isDisabled', props.isDisabled);
-      expect(moneyInput).toHaveProp('placeholder', props.placeholder);
-      expect(moneyInput).toHaveProp('hasError', true);
-
-      expect(wrapper).toRender(FieldErrors);
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
-    });
-  });
-
-  describe('when disabled', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ isDisabled: true });
-      wrapper = shallow(<MoneyField {...props} />);
-    });
-    it('should disable the MoneyInput', () => {
-      expect(wrapper.find(MoneyInput)).toHaveProp('isDisabled', true);
-    });
-  });
-
-  describe('when there are known errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        touched: { currencyCode: true, amount: true },
         errors: { missing: true },
       });
-      wrapper = shallow(<MoneyField {...props} />);
-    });
-    it('should mark the MoneyInput as erroneous', () => {
-      expect(wrapper.find(MoneyInput)).toHaveProp('hasError', true);
-    });
-    it('should render the known error', () => {
-      expect(wrapper).toRender(FieldErrors);
+      expect(getByText(/field is required/i)).toBeInTheDocument();
     });
   });
-
-  describe('when there are unknown errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        touched: { currencyCode: true, amount: true },
-        renderError: jest.fn(key => key),
-        errors: { customError: 5 },
+  describe('when there is a custom error', () => {
+    it('should render the custom error message', () => {
+      const { getByText } = renderMoneyField({
+        touched: { amount: true, currencyCode: true },
+        errors: { custom: true },
+        renderError: () => 'Custom error',
       });
-      wrapper = shallow(<MoneyField {...props} />);
-    });
-    it('should mark the NumberInput as erroneous', () => {
-      expect(wrapper.find(MoneyInput)).toHaveProp('hasError', true);
-    });
-    it('should forward the error', () => {
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
-    });
-  });
-
-  describe('when a high-precision price badge should be shown', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        hasHighPrecisionBadge: true,
-        value: { currencyCode: 'EUR', amount: '15.002' },
-        touched: { currencyCode: true, amount: true },
-      });
-      wrapper = shallow(<MoneyField {...props} />);
-    });
-    it('should show a high precision price badge', () => {
-      expect(wrapper.find(FieldLabel)).toHaveProp('badge');
+      expect(getByText('Custom error')).toBeInTheDocument();
     });
   });
 });
