@@ -408,6 +408,106 @@ describe('MoneyInput', () => {
     expect(getByTestId('money-input-container')).toHaveTextContent('EUR');
   });
 
+  it('should call onFocus when the currency select is focused', () => {
+    const onFocus = jest.fn();
+    const { getByLabelText } = render(
+      <TestComponent
+        value={{ amount: '20', currencyCode: 'EUR' }}
+        onFocus={onFocus}
+      />
+    );
+    getByLabelText('Currency Code').focus();
+    expect(getByLabelText('Currency Code')).toHaveFocus();
+    expect(onFocus).toHaveBeenCalledWith({
+      target: { id: 'some-id.currencyCode', name: 'some-name.currencyCode' },
+    });
+  });
+
+  it('should call onBlur twice when amount input loses focus for outside element', () => {
+    const onBlur = jest.fn();
+    const { getByLabelText } = render(
+      <TestComponent
+        value={{ amount: '20', currencyCode: 'EUR' }}
+        onBlur={onBlur}
+      />
+    );
+    getByLabelText('Amount').focus();
+    expect(getByLabelText('Amount')).toHaveFocus();
+    getByLabelText('Amount').blur();
+    expect(getByLabelText('Amount')).not.toHaveFocus();
+
+    // onBlur should be called twice as we want to mark both,
+    // currency dropdown and amount input as touched when the element
+    // which gained focus is not part of the MoneyInput
+    expect(onBlur).toHaveBeenCalledWith({
+      target: { id: 'some-id.currencyCode', name: 'some-name.currencyCode' },
+    });
+    expect(onBlur).toHaveBeenCalledWith({
+      target: { id: 'some-id.amount', name: 'some-name.amount' },
+    });
+  });
+
+  it('should call onBlur twice when currency select loses focus', () => {
+    const onBlur = jest.fn();
+    const { getByLabelText } = render(
+      <TestComponent
+        value={{ amount: '20', currencyCode: 'EUR' }}
+        onBlur={onBlur}
+      />
+    );
+    getByLabelText('Currency Code').focus();
+    expect(getByLabelText('Currency Code')).toHaveFocus();
+    getByLabelText('Currency Code').blur();
+    expect(getByLabelText('Currency Code')).not.toHaveFocus();
+
+    // onBlur should be called twice as we want to mark both,
+    // currency dropdown and amount input as touched when the element
+    // which gained focus is not part of the MoneyInput
+    expect(onBlur).toHaveBeenCalledWith({
+      target: { id: 'some-id.currencyCode', name: 'some-name.currencyCode' },
+    });
+    expect(onBlur).toHaveBeenCalledWith({
+      target: { id: 'some-id.amount', name: 'some-name.amount' },
+    });
+  });
+
+  it('should not call onBlur when focus switches from currency to amount', () => {
+    const onBlur = jest.fn();
+    const { getByLabelText } = render(
+      <TestComponent
+        value={{ amount: '20', currencyCode: 'EUR' }}
+        onBlur={onBlur}
+      />
+    );
+    getByLabelText('Currency Code').focus();
+    expect(getByLabelText('Currency Code')).toHaveFocus();
+
+    getByLabelText('Amount').focus();
+    expect(getByLabelText('Currency Code')).not.toHaveFocus();
+    expect(getByLabelText('Amount')).toHaveFocus();
+
+    expect(onBlur).not.toHaveBeenCalled();
+  });
+
+  it('should not call onBlur when focus switches from amount to currency', () => {
+    const onBlur = jest.fn();
+    const { getByLabelText } = render(
+      <TestComponent
+        value={{ amount: '20', currencyCode: 'EUR' }}
+        onBlur={onBlur}
+      />
+    );
+
+    getByLabelText('Amount').focus();
+    expect(getByLabelText('Amount')).toHaveFocus();
+
+    getByLabelText('Currency Code').focus();
+    expect(getByLabelText('Currency Code')).toHaveFocus();
+    expect(getByLabelText('Amount')).not.toHaveFocus();
+
+    expect(onBlur).not.toHaveBeenCalled();
+  });
+
   it('should allow changing the amount with numbers', () => {
     let event;
 
