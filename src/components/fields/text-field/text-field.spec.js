@@ -19,6 +19,8 @@ class Story extends React.Component {
   };
   static defaultProps = {
     id: 'text-field',
+    title: 'foo',
+    onChange: () => {},
   };
   state = {
     value: this.props.value || '',
@@ -42,17 +44,8 @@ class Story extends React.Component {
   }
 }
 
-const renderTextField = (customProps, options) => {
-  const props = {
-    title: 'foo',
-    onChange: jest.fn(),
-    ...customProps,
-  };
-  return {
-    ...render(<Story {...props} />, options),
-    onChange: props.onChange,
-  };
-};
+const renderTextField = (props, options) =>
+  render(<Story {...props} />, options);
 
 it('should render a text field', () => {
   const { getByLabelText } = renderTextField();
@@ -98,7 +91,8 @@ it('should have focus automatically when isAutofocussed is passed', () => {
 });
 
 it('should call onChange when changing the value', () => {
-  const { getByLabelText, onChange } = renderTextField();
+  const onChange = jest.fn();
+  const { getByLabelText } = renderTextField({ onChange });
   const event = { target: { value: 'foo' } };
   fireEvent.change(getByLabelText('TextField'), event);
   expect(onChange).toHaveBeenCalled();
