@@ -1,9 +1,9 @@
 import React from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, select } from '@storybook/addon-knobs';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
-import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Toggle from '.';
@@ -13,35 +13,21 @@ storiesOf('Switches', module)
   .addDecorator(withReadme(Readme))
   .add('Toggle', () => (
     <Section>
-      <Spacings.Stack>
-        <Value
-          defaultValue={false}
-          render={(value, onChange) => (
-            <Spacings.Inline alignItems="center">
-              <Toggle
-                size={select('size', ['small', 'big'], 'big')}
-                isDisabled={false}
-                isChecked={value}
-                onChange={onChange}
-              />
-              <label>Default</label>
-            </Spacings.Inline>
-          )}
-        />
-        <Value
-          defaultValue={true}
-          render={(value, onChange) => (
-            <Spacings.Inline alignItems="center">
-              <Toggle
-                size={select('size', ['small', 'big'], 'big')}
-                isDisabled={boolean('isSecondToggleDisabled', true)}
-                isChecked={value}
-                onChange={onChange}
-              />
-              <label>Default Disabled</label>
-            </Spacings.Inline>
-          )}
-        />
-      </Spacings.Stack>
+      <Value
+        defaultValue={false}
+        render={(value, onChange) => (
+          <Toggle
+            id={text('id', '')}
+            name={text('name', '')}
+            size={select('size', ['small', 'big'], 'big')}
+            isDisabled={boolean('isDisabled', false)}
+            isChecked={value}
+            onChange={isChecked => {
+              action('onChange')(isChecked);
+              onChange(isChecked);
+            }}
+          />
+        )}
+      />
     </Section>
   ));

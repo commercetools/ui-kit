@@ -1,99 +1,75 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Toggle } from './toggle';
+import { render } from '../../../test-utils';
+import Toggle from './toggle';
 
-const createTestProps = custom => ({
-  name: 'toggle',
-  size: 'big',
-  isDisabled: false,
-  isChecked: false,
-  onChange: jest.fn(),
+it('should render children', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = render(
+    <div>
+      <label htmlFor="toggle">Toggle</label>
+      <Toggle id="toggle" isChecked={false} onChange={onChange} />
+    </div>
+  );
 
-  // HoC
-  handleMouseOver: jest.fn(),
-  handleMouseOut: jest.fn(),
-  isMouseOver: false,
-  ...custom,
+  expect(getByLabelText('Toggle')).toBeInTheDocument();
 });
 
-describe('<Toggle>', () => {
-  describe('rendering', () => {
-    let props;
-    let wrapper;
-    describe('without children', () => {
-      beforeEach(() => {
-        props = createTestProps();
+it('should call onChange when clicked', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = render(
+    <div>
+      <label htmlFor="toggle">Toggle</label>
+      <Toggle id="toggle" isChecked={false} onChange={onChange} />
+    </div>
+  );
 
-        wrapper = shallow(<Toggle {...props} />);
-      });
+  getByLabelText('Toggle').click();
 
-      it('should match snapshot', () => {
-        expect(wrapper).toMatchSnapshot();
-      });
+  expect(onChange).toHaveBeenCalledTimes(1);
+  expect(onChange).toHaveBeenCalledWith(true);
+});
 
-      it('should supply `onChange` to the input', () => {
-        expect(wrapper.find('input')).toHaveProp(
-          'onChange',
-          expect.any(Function)
-        );
-      });
+it('should not call onChange when clicked while disabled', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = render(
+    <div>
+      <label htmlFor="toggle">Toggle</label>
+      <Toggle
+        id="toggle"
+        isChecked={false}
+        onChange={onChange}
+        isDisabled={true}
+      />
+    </div>
+  );
 
-      describe('when disabled', () => {
-        beforeEach(() => {
-          props = createTestProps({ isDisabled: true });
+  getByLabelText('Toggle').click();
 
-          wrapper = shallow(<Toggle {...props} />);
-        });
+  expect(onChange).not.toHaveBeenCalled();
+});
 
-        it('should disable the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp('disabled', true);
-        });
-      });
+describe('checked attribute', () => {
+  it('should have checked state when checked', () => {
+    const onChange = jest.fn();
+    const { getByLabelText } = render(
+      <div>
+        <label htmlFor="toggle">Toggle</label>
+        <Toggle id="toggle" isChecked={true} onChange={onChange} />
+      </div>
+    );
 
-      describe('when checked', () => {
-        beforeEach(() => {
-          props = createTestProps({ isChecked: true });
-
-          wrapper = shallow(<Toggle {...props} />);
-        });
-
-        it('should check the `input`', () => {
-          expect(wrapper.find('input')).toHaveProp('checked', true);
-        });
-      });
-    });
-
-    describe('with children', () => {
-      beforeEach(() => {
-        props = createTestProps({ isChecked: false });
-
-        wrapper = shallow(<Toggle {...props} />);
-      });
-
-      it('should match snapshot', () => {
-        expect(wrapper).toMatchSnapshot();
-      });
-    });
+    expect(getByLabelText('Toggle')).toHaveAttribute('checked');
   });
 
-  describe('callback', () => {
-    describe('onChange', () => {
-      let props;
-      let wrapper;
-      beforeEach(() => {
-        props = createTestProps();
-        wrapper = shallow(<Toggle {...props} />);
+  it('should not have checked state when not checked', () => {
+    const onChange = jest.fn();
+    const { getByLabelText } = render(
+      <div>
+        <label htmlFor="toggle">Toggle</label>
+        <Toggle id="toggle" isChecked={false} onChange={onChange} />
+      </div>
+    );
 
-        wrapper.find({ name: props.name }).prop('onChange')();
-      });
-
-      it('should invoke the `onChange` callback', () => {
-        expect(props.onChange).toHaveBeenCalled();
-      });
-
-      it('should invoke the `onChange` callback with not `isChecked`', () => {
-        expect(props.onChange).toHaveBeenCalledWith(!props.isChecked);
-      });
-    });
+    expect(getByLabelText('Toggle')).not.toHaveAttribute('checked');
   });
 });

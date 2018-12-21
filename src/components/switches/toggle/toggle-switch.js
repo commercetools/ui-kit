@@ -37,7 +37,6 @@ ToggleButton.propTypes = {
   size: PropTypes.string.isRequired,
   isChecked: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-  isMouseOver: PropTypes.bool.isRequired,
 };
 
 ToggleBar.displayName = 'ToggleBar';
@@ -45,7 +44,6 @@ ToggleBar.propTypes = {
   size: PropTypes.string.isRequired,
   isChecked: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-  isMouseOver: PropTypes.bool.isRequired,
 };
 
 const ToggleSwitch = props => (
@@ -60,7 +58,6 @@ ToggleSwitch.propTypes = {
   size: PropTypes.string.isRequired,
   isChecked: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-  isMouseOver: PropTypes.bool.isRequired,
 };
 
 export default ToggleSwitch;
