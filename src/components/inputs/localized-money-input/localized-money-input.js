@@ -104,7 +104,7 @@ export class LocalizedMoneyInput extends React.Component {
     name: PropTypes.string,
     // then input doesn't accept a "currencies" prop, instead all possible
     // currencies have to exist (with empty or filled strings) on the value:
-    //   { EUR: 12.00, USD: 14.23, CAD: 13.70 }
+    //   { EUR: '12.00', USD: '14.23', CAD: '13.70' }
     value: PropTypes.objectOf(PropTypes.string).isRequired,
     onChange: PropTypes.func,
     selectedCurrency: PropTypes.string.isRequired,
@@ -152,26 +152,31 @@ export class LocalizedMoneyInput extends React.Component {
     );
 
   static parseMoneyValues = (moneyValues = [], locale) =>
-    moneyValues.map(value => MoneyInput.parseMoneyValue(value, locale));
+    moneyValues
+      .map(value => MoneyInput.parseMoneyValue(value, locale))
+      .reduce(
+        (pairs, value) => ({
+          ...pairs,
+          [value.currencyCode]: value.amount,
+        }),
+        {}
+      );
 
-  static isHighPrecision = (values = []) =>
-    values
-      .map(value => ({
-        [value.currencyCode]: MoneyInput.isHighPrecision(value),
-      }))
-      .reduce((accFlags, flag) => ({ ...accFlags, ...flag }), {});
+  static getHighPrecisionCurrencies = values =>
+    Object.keys(values).filter(currency =>
+      MoneyInput.isHighPrecision({
+        currencyCode: currency,
+        amount: values[currency],
+      })
+    );
 
-  static isEmpty = (values = []) =>
-    values
-      .map(value => ({
-        [value.currencyCode]: MoneyInput.isEmpty(value),
-      }))
-      .reduce((accFlags, flag) => ({ ...accFlags, ...flag }), {});
-
-  static isAllEmpty = (values = []) =>
-    !values.map(value => !MoneyInput.isEmpty(value)).some(Boolean);
-
-  static hasEmptyValue = (values = []) => values.some(MoneyInput.isEmpty);
+  static getEmptyCurrencies = values =>
+    Object.keys(values).filter(currency =>
+      MoneyInput.isEmpty({
+        currencyCode: currency,
+        amount: values[currency],
+      })
+    );
 
   state = {
     // This state is used to show/hide the remaining currencies

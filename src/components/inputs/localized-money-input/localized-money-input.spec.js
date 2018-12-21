@@ -427,8 +427,8 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
 
 describe('LocalizedMoneyInput.parseMoneyValues', () => {
   describe('when called without a value', () => {
-    it('should return empty array', () => {
-      expect(LocalizedMoneyInput.parseMoneyValues()).toEqual([]);
+    it('should return empty object', () => {
+      expect(LocalizedMoneyInput.parseMoneyValues()).toEqual({});
     });
   });
   describe('when called with a centPrecision money missing centAmount', () => {
@@ -524,7 +524,7 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual([{ amount: '12.34', currencyCode: 'EUR' }]);
+      ).toEqual({ EUR: '12.34' });
     });
   });
   describe('when called with a full, valid centPrecision price', () => {
@@ -541,7 +541,7 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual([{ amount: '12.34', currencyCode: 'EUR' }]);
+      ).toEqual({ EUR: '12.34' });
     });
   });
   describe('when called with a minimal highPrecision price', () => {
@@ -558,7 +558,7 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual([{ amount: '12.345', currencyCode: 'EUR' }]);
+      ).toEqual({ EUR: '12.345' });
     });
   });
   describe('when called with a full highPrecision price', () => {
@@ -576,34 +576,34 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual([{ amount: '12.345', currencyCode: 'EUR' }]);
+      ).toEqual({ EUR: '12.345' });
     });
   });
 });
 
-describe('LocalizedMoneyInput.isHighPrecision', () => {
-  describe('when called with a high precision money value', () => {
-    it('should return true', () => {
+describe('LocalizedMoneyInput.getHighPrecisionCurrencies', () => {
+  describe('when called with a regular precision money value', () => {
+    it('should return empty array', () => {
       expect(
-        LocalizedMoneyInput.isHighPrecision([
-          { amount: '2.001', currencyCode: 'EUR' },
-        ])
-      ).toMatchObject({ EUR: true });
+        LocalizedMoneyInput.getHighPrecisionCurrencies({ EUR: '2.01' })
+      ).toMatchObject([]);
     });
   });
-  describe('when called with a regular precision money value', () => {
-    it('should return false for empty currencies', () => {
+  describe('when called with a high precision money value', () => {
+    it("should return the currencies that don't have high precision value", () => {
       expect(
-        LocalizedMoneyInput.isHighPrecision([
-          { amount: '2.00', currencyCode: 'EUR' },
-        ])
-      ).toMatchObject({ EUR: false });
+        LocalizedMoneyInput.getHighPrecisionCurrencies({
+          EUR: '13.44',
+          USD: '2.001',
+          EGP: '12.00',
+        })
+      ).toMatchObject(['USD']);
     });
   });
   describe('when called with an empty money value', () => {
     it('should throw', () => {
       expect(() =>
-        LocalizedMoneyInput.isHighPrecision([
+        LocalizedMoneyInput.getHighPrecisionCurrencies([
           { amount: '', currencyCode: 'EUR' },
         ])
       ).toThrow();
@@ -611,75 +611,19 @@ describe('LocalizedMoneyInput.isHighPrecision', () => {
   });
 });
 
-describe('LocalizedMoneyInput.isEmpty', () => {
+describe('LocalizedMoneyInput.getEmptyCurrencies', () => {
   describe('when value is filled out', () => {
-    it('should return false for empty currencies', () => {
+    it('should return empty array', () => {
       expect(
-        LocalizedMoneyInput.isEmpty([{ amount: '5', currencyCode: 'EUR' }])
-      ).toMatchObject({ EUR: false });
+        LocalizedMoneyInput.getEmptyCurrencies({ EUR: '5.22', USD: '31.88' })
+      ).toMatchObject([]);
     });
   });
   describe('when value is empty', () => {
-    it('should return true', () => {
+    it("should return the currencies that don't have value", () => {
       expect(
-        LocalizedMoneyInput.isEmpty([{ amount: '', currencyCode: 'EUR' }])
-      ).toMatchObject({ EUR: true });
-    });
-  });
-});
-
-describe('LocalizedMoneyInput.isAllEmpty', () => {
-  describe('when value is filled out', () => {
-    it('should return false if some have value', () => {
-      expect(
-        LocalizedMoneyInput.isAllEmpty([
-          { amount: '5', currencyCode: 'EUR' },
-          { amount: '', currencyCode: 'EUR' },
-        ])
-      ).toBe(false);
-    });
-  });
-  describe('when value is empty', () => {
-    it('should return true if all are empty', () => {
-      expect(
-        LocalizedMoneyInput.isAllEmpty([
-          { amount: '', currencyCode: 'EUR' },
-          { amount: '', currencyCode: 'EUR' },
-        ])
-      ).toBe(true);
-    });
-  });
-});
-
-describe('LocalizedMoneyInput.hasEmptyValue', () => {
-  describe('when value is filled out', () => {
-    it('should return false if some have value', () => {
-      expect(
-        LocalizedMoneyInput.hasEmptyValue([
-          { amount: '5', currencyCode: 'EUR' },
-          { amount: '', currencyCode: 'EUR' },
-        ])
-      ).toBe(true);
-    });
-  });
-  describe('when value is empty', () => {
-    it('should return true if all are empty', () => {
-      expect(
-        LocalizedMoneyInput.hasEmptyValue([
-          { amount: '', currencyCode: 'EUR' },
-          { amount: '', currencyCode: 'EUR' },
-        ])
-      ).toBe(true);
-    });
-  });
-  describe('when value is all', () => {
-    it('should return true if all are empty', () => {
-      expect(
-        LocalizedMoneyInput.hasEmptyValue([
-          { amount: '21.33', currencyCode: 'EUR' },
-          { amount: '51.99', currencyCode: 'EUR' },
-        ])
-      ).toBe(false);
+        LocalizedMoneyInput.getEmptyCurrencies({ EUR: '', USD: '31.88' })
+      ).toMatchObject(['EUR']);
     });
   });
 });

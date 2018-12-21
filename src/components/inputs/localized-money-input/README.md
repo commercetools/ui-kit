@@ -75,23 +75,48 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 
 The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ amount, currencyCode })`.
 
-##### `isEmpty(localizedField)`
+#### `LocalizedMoneyInput.getEmptyCurrencies`
 
-Returns `true` when all values in a localized field are empty.
+Returns array of the empty currencies
 
 ```js
-LocalizedMoneyInput.isEmpty({});
-// -> true
+LocalizedMoneyInput.getEmptyCurrencies({});
+// -> []
 ```
 
 ```js
-LocalizedMoneyInput.isEmpty({ USD: '', EUR: '  ' });
-// -> true
+LocalizedMoneyInput.getEmptyCurrencies({ USD: '', EUR: '' });
+// -> ['USD', 'EUR']
 ```
 
 ```js
-LocalizedMoneyInput.isEmpty({ USD: '12.43', EUR: '' });
-// -> false
+LocalizedMoneyInput.getEmptyCurrencies({ USD: '12.43', EUR: '' });
+// -> ['EUR']
+```
+
+#### `LocalizedMoneyInput.getHighPrecisionCurrencies`
+
+Returns array of the currencies that have high precision amount
+
+```js
+LocalizedMoneyInput.getHighPrecisionCurrencies({});
+// -> []
+```
+
+```js
+LocalizedMoneyInput.getHighPrecisionCurrencies({
+  USD: '12.2221',
+  EUR: '9.9999',
+});
+// -> ['USD', 'EUR']
+```
+
+```js
+LocalizedMoneyInput.getHighPrecisionCurrencies({
+  USD: '12.43',
+  EUR: '0.00001',
+});
+// -> ['EUR']
 ```
 
 ##### `LocalizedMoneyInput.convertToMoneyValues`
@@ -128,16 +153,16 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 
 ##### `LocalizedMoneyInput.parseMoneyValues`
 
-The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ amount, currencyCode })`.
+The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ currencyCode: amount })`.
 
-##### `LocalizedMoneyInput.isEmpty`
+##### `LocalizedMoneyInput.getEmptyCurrencies`
 
-The `isEmpty` function will return `true` for the crrency when the passed `LocalizedMoneyInput` value for this currency is empty (either has no currency or no amount, or does not exist at all).
+The `getEmptyCurrencies` function will return array of crrencies that don't have amount .
 
 ```js
-LocalizedMoneyInput.isEmpty([{ amount: '', currencyCode: 'EUR' }]); // -> { EUR: true }
+LocalizedMoneyInput.getEmptyCurrencies({ EUR: '', USD: '12.77' }); // -> ['EUR']
 
-LocalizedMoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> { EUR: false }
+LocalizedMoneyInput.getEmptyCurrencies({ EUR: '12.77' }); // -> []
 ```
 
 ##### `LocalizedMoneyInput.isAllEmpty`
@@ -170,4 +195,122 @@ LocalizedMoneyInput.hasEmptyValue([
   { amount: '12.93', currencyCode: 'EUR' },
   { amount: '', currencyCode: 'USD' },
 ]); // ->  true
+```
+
+### Example
+
+Here's an example of how `LocalizedMoneyInput` would be used inside a form.
+
+```jsx
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import { Formik } from 'formik';
+import omitEmpty from 'omit-empty';
+import ErrorMessage from '@commercetools-frontend/ui-kit/messages/error-message';
+import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
+
+
+// the existing document, e.g. from the database
+const doc = {
+  prices: [
+    {
+      currencyCode: 'ALL',
+      centAmount: 1200
+    },
+    {
+      currencyCode: 'AMD',
+      centAmount: 3300,
+    }
+  ],
+};
+
+// A function to convert a document to form values.
+const docToFormValues = aDoc => ({
+  // The parseMoneyValue function will turn a MoneyValue into a
+  // value the LocalizedMoneyInput component can handle ({currency: amount})
+  prices: LocalizedMoneyInput.parseMoneyValues(aDoc.prices),
+});
+
+// a function to convert form values back to a document
+const formValuesToDoc = formValues => ({
+  // The convertToMoneyValue function will turn a LocalizedMoneyInput
+  // value into a value the API can handle
+  // It automatically converts to centPrecision or highPrecision
+  // depending on the number of supplied fraction digits and the
+  // used currency code.
+  // If you want to forbid highPrecision, then the form's validation
+  // needs to add an error when it sees a highPrecision price.
+  // See example below
+  prices: LocalizedMoneyInput.convertToMoneyValues(formValues.prices),
+});
+
+const validate = formValues => {
+  const errors = { prices: {} };
+  Object.keys(formValues.prices).forEach(currency => {
+    errors.prices[currency] = {};
+  })
+  const emptyCurrencies = LocalizedMoneyInput.getEmptyCurrencies(formValues.prices);
+  // ['ERU', 'USD']
+  // THis form dosen't accept highprecision prices
+  const highPrecisionCurrencies = LocalizedMoneyInput.getHighPrecisionCurrencies(formValues.prices);
+  // ['CAD', 'USD']
+  emptyCurrencies.forEach(emptyCurrency => {
+    errors.prices[emptyCurrency].missing = true;
+  });
+
+  highPrecisionCurrencies.forEach(highPrecisionCurrency => {
+    errors.prices[highPrecisionCurrency].highPrecision = true;
+  });
+
+  return omitEmpty(errors);
+};
+const initialValues = docToFormValues(doc);
+const renderErrors = (errors) => {
+  Object.keys(errors.prices).reduce(currency => {
+    const error = errors.prices[currency]?.missing && (
+                  <ErrorMessage>This field is required!</ErrorMessage>
+                ) ||
+                errors.prices[currency]?.highPrecision && (
+          <ErrorMessage>High precision prices not  supported here!</ErrorMessage>
+        ))
+    return {
+      [currency]: touched.prices[currency] &&  error
+    }
+  })
+}
+
+return (
+  <Formik
+    initialValues={initialValues}
+    validate={validate}
+    onSubmit={formValues => {
+      // doc will contain "prices" holding a MoneyValue,
+      // ready to be consumed by the API
+      const nextDoc = formValuesToDoc(formValues);
+      console.log(nextDoc);
+    }}
+    render={({
+      values,
+      errors,
+      touched,
+      setFieldValue,
+      setFieldTouched,
+      handleSubmit,
+      isSubmitting,
+    }) => (
+      <form onSubmit={handleSubmit}>
+        <LocalizedMoneyInput
+          value={values.prices}
+          onBlur={() => setFieldTouched('prices')}
+          isDisabled={isSubmitting}
+          onChange={value => setFieldValue('prices', value)}
+          errors={renderErrors(errors)}
+          horizontalConstraint="l"
+        />
+
+        <button type="submit">Submit</button>
+      </form>
+    )}
+  />
+);
 ```
