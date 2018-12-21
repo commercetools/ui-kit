@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`rendering should output correct tree 1`] = `
-<withHandlers(BaseComponent)
-  isMouseDown={false}
-  setMouseDown={[Function]}
-/>
-`;

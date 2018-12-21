@@ -1,61 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { shallow } from 'enzyme';
-import withMouseDownState, { stateHandlers } from './with-mouse-down-state';
+import { render, fireEvent } from '../../test-utils';
+import withMouseDownState from './with-mouse-down-state';
 
-const BaseComponent = props => (
-  <button
-    disabled={props.isMouseOver}
-    onMouseOver={props.handleMouseOver}
-    onMouseOut={props.handleMouseOut}
-  />
-);
-BaseComponent.propTypes = {
-  // HoC
-  isMouseOver: PropTypes.bool.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseOut: PropTypes.func.isRequired,
-};
+const Component = withMouseDownState(props => (
+  <div
+    data-testid="div"
+    onMouseDown={props.handleMouseDown}
+    onMouseUp={props.handleMouseUp}
+  >
+    {props.isMouseDown ? 'mouse down' : 'mouse not down'}
+  </div>
+));
 
-describe('rendering', () => {
-  let wrapper;
-  let EnhancedComponent;
-
-  beforeEach(() => {
-    EnhancedComponent = withMouseDownState(BaseComponent);
-
-    wrapper = shallow(<EnhancedComponent />);
-  });
-
-  it('should output correct tree', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+it('should provide isMouseDown as "false" by default', () => {
+  const { getByTestId } = render(<Component />);
+  expect(getByTestId('div')).toHaveTextContent('mouse not down');
 });
 
-describe('state handlers', () => {
-  let setMouseDown;
+it('should work through the whole cycle', () => {
+  const { getByTestId } = render(<Component />);
 
-  beforeEach(() => {
-    setMouseDown = jest.fn();
-  });
+  // it should provide isMouseDown as "true" when mouse is down
+  fireEvent(
+    getByTestId('div'),
+    new MouseEvent('mousedown', { bubbles: true, cancelable: true })
+  );
+  expect(getByTestId('div')).toHaveTextContent('mouse down');
 
-  describe('when handling mouse over', () => {
-    beforeEach(() => {
-      stateHandlers.handleMouseDown({ setMouseDown })();
-    });
-
-    it('should invoke `setMouseDown` with `true`', () => {
-      expect(setMouseDown).toHaveBeenCalledWith(true);
-    });
-  });
-
-  describe('when handling mouse out', () => {
-    beforeEach(() => {
-      stateHandlers.handleMouseUp({ setMouseDown })();
-    });
-
-    it('should invoke `setMouseDown` with `true`', () => {
-      expect(setMouseDown).toHaveBeenCalledWith(false);
-    });
-  });
+  // it should provide isMouseDown as "false" when mouse is up again
+  fireEvent(
+    getByTestId('div'),
+    new MouseEvent('mouseup', { bubbles: true, cancelable: true })
+  );
+  expect(getByTestId('div')).toHaveTextContent('mouse not down');
 });
