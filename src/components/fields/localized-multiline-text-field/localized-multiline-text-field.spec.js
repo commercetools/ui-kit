@@ -41,7 +41,6 @@ class Story extends React.Component {
       <div>
         <label htmlFor={this.props.id}>LocalizedMultilineTextField</label>
         <LocalizedMultilineTextField
-          id={this.props.id}
           {...this.props}
           value={this.state.value}
           onChange={this.handleChange}
@@ -59,7 +58,7 @@ it('should render a text field', () => {
   expect(getByLabelText('EN')).toBeInTheDocument();
 });
 
-it('shoult render a title', () => {
+it('should render a title', () => {
   const { getByText } = renderLocalizedMultilineTextField({
     title: 'foo title',
   });

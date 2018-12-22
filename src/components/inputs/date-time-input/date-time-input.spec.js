@@ -33,7 +33,6 @@ class Story extends React.Component {
       <div>
         <label htmlFor={this.props.id}>Date</label>
         <DateTimeInput
-          id={this.props.id}
           timeZone="UTC"
           {...omit(this.props, 'onEvent')}
           value={this.state.value}

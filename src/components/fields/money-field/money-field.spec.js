@@ -50,7 +50,6 @@ class Story extends React.Component {
           Currency Code
         </label>
         <MoneyField
-          id={this.props.id}
           {...this.props}
           value={this.state.value}
           onChange={this.handleChange}

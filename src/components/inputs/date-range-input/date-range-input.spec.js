@@ -33,7 +33,6 @@ class Story extends React.Component {
       <div>
         <label htmlFor={this.props.id}>Date</label>
         <DateRangeInput
-          id={this.props.id}
           {...omit(this.props, 'onEvent')}
           value={this.state.value}
           onChange={this.handleChange}
