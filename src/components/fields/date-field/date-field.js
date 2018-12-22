@@ -30,7 +30,7 @@ class DateField extends React.Component {
     // DateInput
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isDisabled: PropTypes.bool,
