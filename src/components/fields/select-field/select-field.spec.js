@@ -1,163 +1,180 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import PropTypes from 'prop-types';
+import { render, fireEvent } from '../../../test-utils';
 import SelectField from './select-field';
-import FieldLabel from '../../field-label';
-import SelectInput from '../../inputs/select-input';
-import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
 
-const createTestProps = customProps => ({
-  title: 'Favourite Animal',
-  options: [
-    { value: 'ready', label: 'Ready' },
-    { value: 'shipped', label: 'Shipped' },
-    { value: 'delivered', label: 'Delivered' },
-    { value: 'returned', label: 'Returned' },
-  ],
-  onChange: () => jest.fn(),
-  ...customProps,
+// This component is used to enable easy testing.
+// It overwrites the onChange function and places a label for the
+// input component. It also ensures an id so that the label can associate
+// the input. This allows tests to use getByLabelText.
+// It also makes sure the event's value passed to onChange flows back to the
+// component so that we can test it under real conditions.
+// As a convenience, we enable accessing a mocked onChange function.
+class Story extends React.Component {
+  static displayName = 'Story';
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string,
+    id: PropTypes.string,
+    options: PropTypes.array.isRequired,
+  };
+  static defaultProps = {
+    id: 'text-field',
+    title: 'foo',
+    onChange: () => {},
+    options: [
+      { value: 'ready', label: 'Ready' },
+      { value: 'shipped', label: 'Shipped' },
+      { value: 'delivered', label: 'Delivered' },
+      { value: 'returned', label: 'Returned' },
+    ],
+  };
+  state = {
+    value: this.props.value || '',
+  };
+  handleChange = event => {
+    this.props.onChange(event);
+    this.setState({ value: event.target.value });
+  };
+  render() {
+    return (
+      <div>
+        <label htmlFor={this.props.id}>SelectField</label>
+        <SelectField
+          {...this.props}
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  }
+}
+
+const renderSelectField = (props, options) =>
+  render(<Story {...props} />, options);
+
+it('should render a text field', () => {
+  const { getByLabelText } = renderSelectField();
+  expect(getByLabelText('SelectField')).toBeInTheDocument();
 });
 
-describe('rendering', () => {
-  describe('data attributes', () => {
-    let selectInput;
-    beforeEach(() => {
-      const props = createTestProps({
-        'data-foo': 'bar',
-        'data-test': 'baz',
-      });
-      const wrapper = shallow(<SelectField {...props} />);
-      selectInput = wrapper.find(SelectInput);
-    });
-    it('should forward the attributes to the SelectInput', () => {
-      expect(selectInput).toHaveProp('data-foo', 'bar');
-      expect(selectInput).toHaveProp('data-test', 'baz');
-    });
-  });
-  describe('when no id is provided', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ id: undefined });
-      wrapper = shallow(<SelectField {...props} />);
-    });
-    it('should add a default id attribute', () => {
-      expect(wrapper.find(SelectInput)).toHaveProp(
-        'id',
-        expect.stringMatching(/.+/)
-      );
-    });
-    it('should add a default htmlFor attribute', () => {
-      expect(wrapper.find(FieldLabel)).toHaveProp('htmlFor');
-    });
-    it('should use the same value for the id and htmlFor attribute', () => {
-      expect(wrapper.find(SelectInput).prop('id')).toEqual(
-        wrapper.find(FieldLabel).prop('htmlFor')
-      );
-    });
-  });
-  describe('when touched', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        // SelectField
-        id: 'foo',
-        // FieldLabel
-        title: 'Username',
-        hint: 'Some hint',
-        hintIcon: <AddBoldIcon />,
-        description: 'A description',
-        onInfoButtonClick: jest.fn(),
-        badge: <div>Some badge</div>,
+it('should render a title', () => {
+  const { getByText } = renderSelectField({ title: 'foo title' });
+  expect(getByText('foo title')).toBeInTheDocument();
+});
 
-        // SelectField
-        name: 'field1',
-        value: 'foo',
-        onChange: jest.fn(),
-        onBlur: jest.fn(),
-        onFocus: jest.fn(),
-        isAutofocussed: true,
-        isDisabled: false,
-        placeholder: 'Some placeholder',
+it('should forward data-attributes', () => {
+  const { container } = renderSelectField({ 'data-foo': 'bar' });
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+});
+
+it('should have an HTML name', () => {
+  const { container } = renderSelectField({ name: 'foo' });
+  expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
+});
+
+it('should call onFocus when the input is focused', () => {
+  const onFocus = jest.fn();
+  const { getByLabelText } = renderSelectField({ onFocus });
+  getByLabelText('SelectField').focus();
+  expect(getByLabelText('SelectField')).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});
+
+it('should call onBlur when input loses focus', () => {
+  const onBlur = jest.fn();
+  const { getByLabelText } = renderSelectField({ onBlur });
+  getByLabelText('SelectField').focus();
+  expect(getByLabelText('SelectField')).toHaveFocus();
+  getByLabelText('SelectField').blur();
+  expect(getByLabelText('SelectField')).not.toHaveFocus();
+  expect(onBlur).toHaveBeenCalled();
+});
+
+it('should have focus automatically when isAutofocussed is passed', () => {
+  const { getByLabelText } = renderSelectField({ isAutofocussed: true });
+  expect(getByLabelText('SelectField')).toHaveFocus();
+});
+
+it('should call onChange when changing the value', () => {
+  const onChange = jest.fn();
+  const { getByLabelText, getByText } = renderSelectField({ onChange });
+  const input = getByLabelText('SelectField');
+  fireEvent.focus(input);
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  getByText('Ready').click();
+  expect(onChange).toHaveBeenCalled();
+});
+
+describe('when `description` is passed', () => {
+  it('should render a description', () => {
+    const { getByText } = renderSelectField({ description: 'foo description' });
+    expect(getByText('foo description')).toBeInTheDocument();
+  });
+});
+
+describe('when `hint` is passed', () => {
+  it('should render a hint', () => {
+    const { getByText } = renderSelectField({ hint: 'foo hint' });
+    expect(getByText('foo hint')).toBeInTheDocument();
+  });
+});
+
+describe('when `badge` is passed', () => {
+  it('should render a badge', () => {
+    const { getByText } = renderSelectField({ badge: 'foo badge' });
+    expect(getByText('foo badge')).toBeInTheDocument();
+  });
+});
+
+describe('when disabled', () => {
+  it('should disable the input', () => {
+    const { getByLabelText } = renderSelectField({ isDisabled: true });
+    expect(getByLabelText('SelectField')).toHaveAttribute('disabled');
+  });
+});
+
+describe('when required', () => {
+  it('should add `*` to title`', () => {
+    const { getByText } = renderSelectField({ isRequired: true });
+    expect(getByText('*')).toBeInTheDocument();
+  });
+});
+
+describe('when showing an info button', () => {
+  it('should render an info button', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderSelectField({
+      onInfoButtonClick,
+    });
+    expect(getByLabelText('More Info')).toBeInTheDocument();
+  });
+  it('should call onInfoButtonClick when button is clicked', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderSelectField({ onInfoButtonClick });
+    getByLabelText('More Info').click();
+    expect(onInfoButtonClick).toHaveBeenCalled();
+  });
+});
+
+describe('when field is touched and has errors', () => {
+  describe('when field empty', () => {
+    it('should render a default error', () => {
+      const { getByText } = renderSelectField({
+        touched: true,
         errors: { missing: true },
-        touched: true,
       });
-      wrapper = shallow(<SelectField {...props} />);
-    });
-
-    it('should forward the props for to the related components', () => {
-      const fieldLabel = wrapper.find(FieldLabel);
-      expect(fieldLabel).toHaveProp('title', props.title);
-      expect(fieldLabel).toHaveProp('hint', props.hint);
-      expect(fieldLabel).toHaveProp('hintIcon', props.hintIcon);
-      expect(fieldLabel).toHaveProp('description', props.description);
-      expect(fieldLabel).toHaveProp(
-        'onInfoButtonClick',
-        props.onInfoButtonClick
-      );
-      expect(fieldLabel).toHaveProp('badge', props.badge);
-      expect(fieldLabel).toHaveProp('htmlFor', props.id);
-
-      const selectInput = wrapper.find(SelectInput);
-      expect(selectInput).toHaveProp('name', props.name);
-      expect(selectInput).toHaveProp('value', props.value);
-      expect(selectInput).toHaveProp('onChange', props.onChange);
-      expect(selectInput).toHaveProp('onBlur', props.onBlur);
-      expect(selectInput).toHaveProp('onFocus', props.onFocus);
-      expect(selectInput).toHaveProp('isAutofocussed', props.isAutofocussed);
-      expect(selectInput).toHaveProp('isDisabled', props.isDisabled);
-      expect(selectInput).toHaveProp('placeholder', props.placeholder);
-      expect(selectInput).toHaveProp('hasError', true);
-
-      expect(wrapper).toRender(FieldErrors);
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText(/field is required/i)).toBeInTheDocument();
     });
   });
-
-  describe('when disabled', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ isDisabled: true });
-      wrapper = shallow(<SelectField {...props} />);
-    });
-    it('should disable the SelectInput', () => {
-      expect(wrapper.find(SelectInput)).toHaveProp('isDisabled', true);
-    });
-  });
-
-  describe('when there are known errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ touched: true, errors: { missing: true } });
-      wrapper = shallow(<SelectField {...props} />);
-    });
-    it('should mark the SelectInput as erroneous', () => {
-      expect(wrapper.find(SelectInput)).toHaveProp('hasError', true);
-    });
-    it('should render the known error', () => {
-      expect(wrapper).toRender(FieldErrors);
-    });
-  });
-
-  describe('when there are unknown errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
+  describe('when there is a custom error', () => {
+    it('should render the custom error message', () => {
+      const { getByText } = renderSelectField({
         touched: true,
-        renderError: jest.fn(key => key),
-        errors: { customError: 5 },
+        errors: { custom: true },
+        renderError: () => 'Custom error',
       });
-      wrapper = shallow(<SelectField {...props} />);
-    });
-    it('should mark the NumberInput as erroneous', () => {
-      expect(wrapper.find(SelectInput)).toHaveProp('hasError', true);
-    });
-    it('should forward the error', () => {
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText('Custom error')).toBeInTheDocument();
     });
   });
 });
