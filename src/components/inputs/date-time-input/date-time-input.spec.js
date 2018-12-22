@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash.omit';
 import { render, fireEvent } from '../../../test-utils';
 import DateTimeInput from './date-time-input';
 
@@ -14,7 +13,7 @@ import DateTimeInput from './date-time-input';
 class Story extends React.Component {
   static displayName = 'Story';
   static propTypes = {
-    onEvent: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     value: PropTypes.string,
     id: PropTypes.string,
   };
@@ -25,7 +24,7 @@ class Story extends React.Component {
     value: this.props.value || '',
   };
   handleChange = event => {
-    this.props.onEvent(event);
+    if (this.props.onChange) this.props.onChange(event);
     this.setState({ value: event.target.value });
   };
   render() {
@@ -34,7 +33,7 @@ class Story extends React.Component {
         <label htmlFor={this.props.id}>Date</label>
         <DateTimeInput
           timeZone="UTC"
-          {...omit(this.props, 'onEvent')}
+          {...this.props}
           value={this.state.value}
           onChange={this.handleChange}
         />
@@ -43,13 +42,8 @@ class Story extends React.Component {
   }
 }
 
-const renderDateTimeInput = (props, options) => {
-  const onChange = jest.fn();
-  return {
-    onChange,
-    ...render(<Story onEvent={onChange} {...props} />, options),
-  };
-};
+const renderDateTimeInput = (props, options) =>
+  render(<Story {...props} />, options);
 
 it('should render an input', () => {
   const { getByLabelText } = renderDateTimeInput();
@@ -93,7 +87,8 @@ describe('when disabled', () => {
 
 describe('when locale is "en"', () => {
   it('should allow changing the value by typing a date in an american format', () => {
-    const { getByLabelText, onChange } = renderDateTimeInput();
+    const onChange = jest.fn();
+    const { getByLabelText } = renderDateTimeInput({ onChange });
     const event = { target: { value: '09/18/2018 3pm' } };
     fireEvent.focus(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
@@ -111,8 +106,9 @@ describe('when locale is "en"', () => {
 
 describe('when locale is "de"', () => {
   it('should allow changing the value by typing a date in a german format', () => {
-    const { getByLabelText, onChange } = renderDateTimeInput(
-      {},
+    const onChange = jest.fn();
+    const { getByLabelText } = renderDateTimeInput(
+      { onChange },
       { locale: 'de' }
     );
     const event = { target: { value: '18.9.2018 15:00' } };
