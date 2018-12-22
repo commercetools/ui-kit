@@ -1,51 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '../../../test-utils';
 import InsetSquish from './inset-squish';
 
-describe('rendering', () => {
-  describe('by default', () => {
-    let wrapper;
-
-    beforeEach(() => {
-      wrapper = shallow(
-        <InsetSquish>
-          <div />
-        </InsetSquish>
-      );
-    });
-
-    it('should output correc tree', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should apply `m` as the scale class name', () => {
-      expect(wrapper).toHaveClassName('m');
-    });
-
-    it('should render `children`', () => {
-      expect(wrapper.children()).toBeDefined();
-    });
-  });
-
-  describe('with `scale`', () => {
-    let wrapper;
-    let props;
-
-    beforeEach(() => {
-      props = { scale: 'l' };
-      wrapper = shallow(
-        <InsetSquish {...props}>
-          <div />
-        </InsetSquish>
-      );
-    });
-
-    it('should output correc tree', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should apply the `scale` class name', () => {
-      expect(wrapper).toHaveClassName(props.scale);
-    });
-  });
+it('should render children', () => {
+  const { getByTestId } = render(
+    <InsetSquish>
+      <div data-testid="first-child" />
+      <div data-testid="second-child" />
+    </InsetSquish>
+  );
+  expect(getByTestId('first-child')).toBeInTheDocument();
+  expect(getByTestId('second-child')).toBeInTheDocument();
 });

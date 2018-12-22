@@ -1,9 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '../../test-utils';
 import RequiredIndicator from './required-indicator';
 
-describe('with default props', () => {
-  it('should match snapshot', () => {
-    expect(shallow(<RequiredIndicator />)).toMatchSnapshot();
-  });
+it('should render', () => {
+  const { container } = render(<RequiredIndicator />);
+  expect(container).toHaveTextContent('*');
 });

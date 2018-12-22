@@ -29,7 +29,7 @@ overrides:
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
-  - files: ['*.percy.js']
+  - files: ['*.percy.js', 'test/percy/suite.js']
     env:
       'react-percy/globals': true
     rules:

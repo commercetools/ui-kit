@@ -16,14 +16,17 @@ storiesOf('Switches', module)
     <Section>
       <Spacings.Stack>
         <Value
-          render={(value, onChange) => (
+          defaultValue={false}
+          render={(isChecked, onChange) => (
             <Checkbox
+              id={text('id', '')}
+              name={text('name', '')}
               onChange={event => {
                 action('onChange')(event);
-                onChange(event.target.value);
+                onChange(!isChecked);
               }}
-              value={value}
-              isChecked={boolean('isChecked', false)}
+              value={text('value', '')}
+              isChecked={boolean('isChecked', isChecked)}
               isIndeterminate={boolean('isIndeterminate', false)}
               isHovered={boolean('isHovered', false)}
               isDisabled={boolean('isDisabled', false)}

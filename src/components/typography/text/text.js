@@ -68,7 +68,11 @@ Subheadline.propTypes = {
 };
 
 const Wrap = props => (
-  <div className={styles.wrap} title={props.title}>
+  <div
+    className={styles.wrap}
+    title={props.title}
+    {...filterDataAttributes(props)}
+  >
     {props.children}
   </div>
 );

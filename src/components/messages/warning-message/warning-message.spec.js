@@ -1,17 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import WarningMessage from './warning-message';
+import { render } from '../../../test-utils';
+import ErrorMessage from './warning-message';
 
-describe('rendering', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(
-      <WarningMessage>
-        <div>hi</div>
-      </WarningMessage>
-    );
-  });
-  it('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+it('should render children', () => {
+  const { container } = render(
+    <ErrorMessage>Some warning message</ErrorMessage>
+  );
+
+  expect(container).toHaveTextContent('Some warning message');
 });

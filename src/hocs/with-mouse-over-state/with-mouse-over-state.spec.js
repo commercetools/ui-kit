@@ -1,61 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { shallow } from 'enzyme';
-import withMouseOverState, { stateHandlers } from './with-mouse-over-state';
+import { render, fireEvent } from '../../test-utils';
+import withMouseOverState from './with-mouse-over-state';
 
-const BaseComponent = props => (
-  <button
-    disabled={props.isMouseOver}
+const Component = withMouseOverState(props => (
+  <div
+    data-testid="div"
     onMouseOver={props.handleMouseOver}
     onMouseOut={props.handleMouseOut}
-  />
-);
-BaseComponent.propTypes = {
-  // HoC
-  isMouseOver: PropTypes.bool.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseOut: PropTypes.func.isRequired,
-};
+  >
+    {props.isMouseOver ? 'mouse over' : 'mouse not over'}
+  </div>
+));
 
-describe('rendering', () => {
-  let wrapper;
-  let EnhancedComponent;
-
-  beforeEach(() => {
-    EnhancedComponent = withMouseOverState(BaseComponent);
-
-    wrapper = shallow(<EnhancedComponent />);
-  });
-
-  it('should output correct tree', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+it('should provide isMouseOver as "false" by default', () => {
+  const { getByTestId } = render(<Component />);
+  expect(getByTestId('div')).toHaveTextContent('mouse not over');
 });
 
-describe('state handlers', () => {
-  let setMouseOver;
+it('should work through the whole cycle', () => {
+  const { getByTestId } = render(<Component />);
 
-  beforeEach(() => {
-    setMouseOver = jest.fn();
-  });
+  // it should provide isMouseOver as "true" when mouse is over
+  fireEvent(
+    getByTestId('div'),
+    new MouseEvent('mouseover', { bubbles: true, cancelable: true })
+  );
+  expect(getByTestId('div')).toHaveTextContent('mouse over');
 
-  describe('when handling mouse over', () => {
-    beforeEach(() => {
-      stateHandlers.handleMouseOver({ setMouseOver })();
-    });
-
-    it('should invoke `setMouseOver` with `true`', () => {
-      expect(setMouseOver).toHaveBeenCalledWith(true);
-    });
-  });
-
-  describe('when handling mouse out', () => {
-    beforeEach(() => {
-      stateHandlers.handleMouseOut({ setMouseOver })();
-    });
-
-    it('should invoke `setMouseOver` with `true`', () => {
-      expect(setMouseOver).toHaveBeenCalledWith(false);
-    });
-  });
+  // it should provide isMouseOver as "false" when mouse is up again
+  fireEvent(
+    getByTestId('div'),
+    new MouseEvent('mouseout', { bubbles: true, cancelable: true })
+  );
+  expect(getByTestId('div')).toHaveTextContent('mouse not over');
 });
