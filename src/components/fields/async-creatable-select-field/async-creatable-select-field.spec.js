@@ -1,174 +1,199 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import PropTypes from 'prop-types';
+import { render, fireEvent, waitForElement } from '../../../test-utils';
 import AsyncCreatableSelectField from './async-creatable-select-field';
-import FieldLabel from '../../field-label';
-import AsyncCreatableSelectInput from '../../inputs/async-creatable-select-input';
-import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
 
-const createTestProps = customProps => ({
-  title: 'Favourite Animal',
-  defaultOptions: [
-    { value: 'ready', label: 'Ready' },
-    { value: 'shipped', label: 'Shipped' },
-    { value: 'delivered', label: 'Delivered' },
-    { value: 'returned', label: 'Returned' },
-  ],
-  loadOptions: jest.fn(),
-  onChange: () => jest.fn(),
-  ...customProps,
+// This component is used to enable easy testing.
+// It overwrites the onChange function and places a label for the
+// input component. It also ensures an id so that the label can associate
+// the input. This allows tests to use getByLabelText.
+// It also makes sure the event's value passed to onChange flows back to the
+// component so that we can test it under real conditions.
+// As a convenience, we enable accessing a mocked onChange function.
+class Story extends React.Component {
+  static displayName = 'Story';
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.object,
+    id: PropTypes.string,
+    loadOptions: PropTypes.func,
+    defaultOptions: PropTypes.bool,
+  };
+  static defaultProps = {
+    id: 'text-field',
+    title: 'foo',
+    onChange: () => {},
+    loadOptions: () =>
+      Promise.resolve([
+        { value: 'ready', label: 'Ready' },
+        { value: 'shipped', label: 'Shipped' },
+        { value: 'delivered', label: 'Delivered' },
+        { value: 'returned', label: 'Returned' },
+      ]),
+    defaultOptions: true,
+    value: { value: 'ready', label: 'Ready' },
+  };
+  state = {
+    value: this.props.value,
+  };
+  handleChange = event => {
+    this.props.onChange(event);
+    this.setState({ value: event.target.value });
+  };
+  render() {
+    return (
+      <div>
+        <label htmlFor={this.props.id}>AsyncCreatableSelectField</label>
+        <AsyncCreatableSelectField
+          {...this.props}
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  }
+}
+
+const renderAsyncCreatableSelectField = (props, options) =>
+  render(<Story {...props} />, options);
+
+it('should render a text field', () => {
+  const { getByLabelText } = renderAsyncCreatableSelectField();
+  expect(getByLabelText('AsyncCreatableSelectField')).toBeInTheDocument();
 });
 
-describe('rendering', () => {
-  describe('data attributes', () => {
-    let selectInput;
-    beforeEach(() => {
-      const props = createTestProps({
-        'data-foo': 'bar',
-        'data-test': 'baz',
-      });
-      const wrapper = shallow(<AsyncCreatableSelectField {...props} />);
-      selectInput = wrapper.find(AsyncCreatableSelectInput);
-    });
-    it('should forward the attributes to the AsyncCreatableSelectInput', () => {
-      expect(selectInput).toHaveProp('data-foo', 'bar');
-      expect(selectInput).toHaveProp('data-test', 'baz');
-    });
-  });
-  describe('when no id is provided', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ id: undefined });
-      wrapper = shallow(<AsyncCreatableSelectField {...props} />);
-    });
-    it('should add a default id attribute', () => {
-      expect(wrapper.find(AsyncCreatableSelectInput)).toHaveProp(
-        'id',
-        expect.stringMatching(/.+/)
-      );
-    });
-    it('should add a default htmlFor attribute', () => {
-      expect(wrapper.find(FieldLabel)).toHaveProp('htmlFor');
-    });
-    it('should use the same value for the id and htmlFor attribute', () => {
-      expect(wrapper.find(AsyncCreatableSelectInput).prop('id')).toEqual(
-        wrapper.find(FieldLabel).prop('htmlFor')
-      );
-    });
-  });
-  describe('when touched', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        // AsyncCreatableSelectField
-        id: 'foo',
-        // FieldLabel
-        title: 'Username',
-        hint: 'Some hint',
-        hintIcon: <AddBoldIcon />,
-        description: 'A description',
-        onInfoButtonClick: jest.fn(),
-        badge: <div>Some badge</div>,
+it('should render a title', () => {
+  const { getByText } = renderAsyncCreatableSelectField({ title: 'foo title' });
+  expect(getByText('foo title')).toBeInTheDocument();
+});
 
-        // AsyncCreatableSelectField
-        name: 'field1',
-        value: 'foo',
-        onChange: jest.fn(),
-        onBlur: jest.fn(),
-        onFocus: jest.fn(),
-        isAutofocussed: true,
-        isDisabled: false,
-        placeholder: 'Some placeholder',
+it('should forward data-attributes', () => {
+  const { container } = renderAsyncCreatableSelectField({ 'data-foo': 'bar' });
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+});
+
+it('should have an HTML name', () => {
+  const { container } = renderAsyncCreatableSelectField({ name: 'foo' });
+  expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
+});
+
+it('should call onFocus when the input is focused', () => {
+  const onFocus = jest.fn();
+  const { getByLabelText } = renderAsyncCreatableSelectField({ onFocus });
+  getByLabelText('AsyncCreatableSelectField').focus();
+  expect(getByLabelText('AsyncCreatableSelectField')).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});
+
+it('should call onBlur when input loses focus', () => {
+  const onBlur = jest.fn();
+  const { getByLabelText } = renderAsyncCreatableSelectField({ onBlur });
+  getByLabelText('AsyncCreatableSelectField').focus();
+  expect(getByLabelText('AsyncCreatableSelectField')).toHaveFocus();
+  getByLabelText('AsyncCreatableSelectField').blur();
+  expect(getByLabelText('AsyncCreatableSelectField')).not.toHaveFocus();
+  expect(onBlur).toHaveBeenCalled();
+});
+
+it('should have focus automatically when isAutofocussed is passed', () => {
+  const { getByLabelText } = renderAsyncCreatableSelectField({
+    isAutofocussed: true,
+  });
+  expect(getByLabelText('AsyncCreatableSelectField')).toHaveFocus();
+});
+
+it('should call onChange when changing the value', async () => {
+  const onChange = jest.fn();
+  const { getByLabelText, getByText } = renderAsyncCreatableSelectField({
+    onChange,
+  });
+  const input = getByLabelText('AsyncCreatableSelectField');
+  fireEvent.focus(input);
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  await waitForElement(() => getByText('Shipped'));
+  getByText('Shipped').click();
+  expect(onChange).toHaveBeenCalled();
+});
+
+describe('when `description` is passed', () => {
+  it('should render a description', () => {
+    const { getByText } = renderAsyncCreatableSelectField({
+      description: 'foo description',
+    });
+    expect(getByText('foo description')).toBeInTheDocument();
+  });
+});
+
+describe('when `hint` is passed', () => {
+  it('should render a hint', () => {
+    const { getByText } = renderAsyncCreatableSelectField({ hint: 'foo hint' });
+    expect(getByText('foo hint')).toBeInTheDocument();
+  });
+});
+
+describe('when `badge` is passed', () => {
+  it('should render a badge', () => {
+    const { getByText } = renderAsyncCreatableSelectField({
+      badge: 'foo badge',
+    });
+    expect(getByText('foo badge')).toBeInTheDocument();
+  });
+});
+
+describe('when disabled', () => {
+  it('should disable the input', () => {
+    const { getByLabelText } = renderAsyncCreatableSelectField({
+      isDisabled: true,
+    });
+    expect(getByLabelText('AsyncCreatableSelectField')).toHaveAttribute(
+      'disabled'
+    );
+  });
+});
+
+describe('when required', () => {
+  it('should add `*` to title`', () => {
+    const { getByText } = renderAsyncCreatableSelectField({ isRequired: true });
+    expect(getByText('*')).toBeInTheDocument();
+  });
+});
+
+describe('when showing an info button', () => {
+  it('should render an info button', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderAsyncCreatableSelectField({
+      onInfoButtonClick,
+    });
+    expect(getByLabelText('More Info')).toBeInTheDocument();
+  });
+  it('should call onInfoButtonClick when button is clicked', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderAsyncCreatableSelectField({
+      onInfoButtonClick,
+    });
+    getByLabelText('More Info').click();
+    expect(onInfoButtonClick).toHaveBeenCalled();
+  });
+});
+
+describe('when field is touched and has errors', () => {
+  describe('when field empty', () => {
+    it('should render a default error', () => {
+      const { getByText } = renderAsyncCreatableSelectField({
+        touched: true,
         errors: { missing: true },
-        touched: true,
       });
-      wrapper = shallow(<AsyncCreatableSelectField {...props} />);
-    });
-
-    it('should forward the props for to the related components', () => {
-      const fieldLabel = wrapper.find(FieldLabel);
-      expect(fieldLabel).toHaveProp('title', props.title);
-      expect(fieldLabel).toHaveProp('hint', props.hint);
-      expect(fieldLabel).toHaveProp('hintIcon', props.hintIcon);
-      expect(fieldLabel).toHaveProp('description', props.description);
-      expect(fieldLabel).toHaveProp(
-        'onInfoButtonClick',
-        props.onInfoButtonClick
-      );
-      expect(fieldLabel).toHaveProp('badge', props.badge);
-      expect(fieldLabel).toHaveProp('htmlFor', props.id);
-
-      const selectInput = wrapper.find(AsyncCreatableSelectInput);
-      expect(selectInput).toHaveProp('name', props.name);
-      expect(selectInput).toHaveProp('value', props.value);
-      expect(selectInput).toHaveProp('onChange', props.onChange);
-      expect(selectInput).toHaveProp('onBlur', props.onBlur);
-      expect(selectInput).toHaveProp('onFocus', props.onFocus);
-      expect(selectInput).toHaveProp('isAutofocussed', props.isAutofocussed);
-      expect(selectInput).toHaveProp('isDisabled', props.isDisabled);
-      expect(selectInput).toHaveProp('placeholder', props.placeholder);
-      expect(selectInput).toHaveProp('loadOptions', props.loadOptions);
-      expect(selectInput).toHaveProp('hasError', true);
-
-      expect(wrapper).toRender(FieldErrors);
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText(/field is required/i)).toBeInTheDocument();
     });
   });
-
-  describe('when disabled', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ isDisabled: true });
-      wrapper = shallow(<AsyncCreatableSelectField {...props} />);
-    });
-    it('should disable the AsyncCreatableSelectInput', () => {
-      expect(wrapper.find(AsyncCreatableSelectInput)).toHaveProp(
-        'isDisabled',
-        true
-      );
-    });
-  });
-
-  describe('when there are known errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ touched: true, errors: { missing: true } });
-      wrapper = shallow(<AsyncCreatableSelectField {...props} />);
-    });
-    it('should mark the AsyncCreatableSelectInput as erroneous', () => {
-      expect(wrapper.find(AsyncCreatableSelectInput)).toHaveProp(
-        'hasError',
-        true
-      );
-    });
-    it('should render the known error', () => {
-      expect(wrapper).toRender(FieldErrors);
-    });
-  });
-
-  describe('when there are unknown errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
+  describe('when there is a custom error', () => {
+    it('should render the custom error message', () => {
+      const { getByText } = renderAsyncCreatableSelectField({
         touched: true,
-        renderError: jest.fn(key => key),
-        errors: { customError: 5 },
+        errors: { custom: true },
+        renderError: () => 'Custom error',
       });
-      wrapper = shallow(<AsyncCreatableSelectField {...props} />);
-    });
-    it('should mark the NumberInput as erroneous', () => {
-      expect(wrapper.find(AsyncCreatableSelectInput)).toHaveProp(
-        'hasError',
-        true
-      );
-    });
-    it('should forward the error', () => {
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText('Custom error')).toBeInTheDocument();
     });
   });
 });
