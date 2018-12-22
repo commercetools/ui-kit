@@ -65,8 +65,13 @@ export default class SelectField extends React.Component {
     tabSelectsValue: PropTypes.bool,
     value: (props, ...rest) =>
       props.isMulti
-        ? PropTypes.arrayOf(PropTypes.string)(props, ...rest)
-        : PropTypes.string(props, ...rest),
+        ? PropTypes.arrayOf(
+            PropTypes.shape({ value: PropTypes.string.isRequired })
+          )(props, ...rest)
+        : PropTypes.shape({ value: PropTypes.string.isRequired })(
+            props,
+            ...rest
+          ),
 
     // Creatable props
     allowCreateWhileLoading: PropTypes.bool,
