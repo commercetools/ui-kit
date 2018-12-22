@@ -1,157 +1,174 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import PropTypes from 'prop-types';
+import { render, fireEvent } from '../../../test-utils';
 import DateTimeField from './date-time-field';
-import FieldLabel from '../../field-label';
-import DateTimeInput from '../../inputs/date-time-input';
-import FieldErrors from '../../field-errors';
-import { AddBoldIcon } from '../../icons';
 
-const createTestProps = customProps => ({
-  title: 'Release date',
-  timeZone: 'UTC',
-  value: '',
-  onChange: () => jest.fn(),
-  ...customProps,
+// This component is used to enable easy testing.
+// It overwrites the onChange function and places a label for the
+// input component. It also ensures an id so that the label can associate
+// the input. This allows tests to use getByLabelText.
+// It also makes sure the event's value passed to onChange flows back to the
+// component so that we can test it under real conditions.
+// As a convenience, we enable accessing a mocked onChange function.
+class Story extends React.Component {
+  static displayName = 'Story';
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string,
+    id: PropTypes.string,
+  };
+  static defaultProps = {
+    id: 'date-field',
+    title: 'foo',
+    timeZone: 'UTC',
+    onChange: () => {},
+    value: '',
+  };
+  state = {
+    value: this.props.value,
+  };
+  handleChange = event => {
+    this.props.onChange(event);
+    this.setState({ value: event.target.value });
+  };
+  render() {
+    return (
+      <div>
+        <label htmlFor={this.props.id}>DateTimeField</label>
+        <DateTimeField
+          {...this.props}
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  }
+}
+
+const renderDateTimeField = (props, options) =>
+  render(<Story {...props} />, options);
+
+it('should render a text field', () => {
+  const { getByLabelText } = renderDateTimeField();
+  expect(getByLabelText('DateTimeField')).toBeInTheDocument();
 });
 
-describe('rendering', () => {
-  describe('data attributes', () => {
-    let textInput;
-    beforeEach(() => {
-      const props = createTestProps({
-        'data-foo': 'bar',
-        'data-test': 'baz',
-      });
-      const wrapper = shallow(<DateTimeField {...props} />);
-      textInput = wrapper.find(DateTimeInput);
-    });
-    it('should forward the attributes to the DateTimeInput', () => {
-      expect(textInput).toHaveProp('data-foo', 'bar');
-      expect(textInput).toHaveProp('data-test', 'baz');
-    });
-  });
-  describe('when no id is provided', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ id: undefined });
-      wrapper = shallow(<DateTimeField {...props} />);
-    });
-    it('should add a default id attribute', () => {
-      expect(wrapper.find(DateTimeInput)).toHaveProp(
-        'id',
-        expect.stringMatching(/.+/)
-      );
-    });
-    it('should add a default htmlFor attribute', () => {
-      expect(wrapper.find(FieldLabel)).toHaveProp('htmlFor');
-    });
-    it('should use the same value for the id and htmlFor attribute', () => {
-      expect(wrapper.find(DateTimeInput).prop('id')).toEqual(
-        wrapper.find(FieldLabel).prop('htmlFor')
-      );
-    });
-  });
-  describe('when touched', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
-        // DateTimeField
-        id: 'foo',
-        // FieldLabel
-        title: 'Release Date',
-        hint: 'Date of publication',
-        hintIcon: <AddBoldIcon />,
-        description: 'A description',
-        onInfoButtonClick: jest.fn(),
-        badge: <div>Some badge</div>,
+it('should render a title', () => {
+  const { getByText } = renderDateTimeField({ title: 'foo title' });
+  expect(getByText('foo title')).toBeInTheDocument();
+});
 
-        // DateTimeField
-        name: 'field1',
-        value: '2018-11-30T13:25:59.500Z',
-        onChange: jest.fn(),
-        onBlur: jest.fn(),
-        onFocus: jest.fn(),
-        isDisabled: false,
-        placeholder: 'Some placeholder',
+it('should forward data-attributes', () => {
+  const { container } = renderDateTimeField({ 'data-foo': 'bar' });
+  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+});
+
+it('should have an HTML name', () => {
+  const { container } = renderDateTimeField({ name: 'foo' });
+  expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
+});
+
+it('should call onFocus when the input is focused', () => {
+  const onFocus = jest.fn();
+  const { getByLabelText } = renderDateTimeField({ onFocus });
+  getByLabelText('DateTimeField').focus();
+  expect(getByLabelText('DateTimeField')).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});
+
+it('should call onBlur when input loses focus', () => {
+  const onBlur = jest.fn();
+  const { getByLabelText } = renderDateTimeField({ onBlur });
+  getByLabelText('DateTimeField').focus();
+  expect(getByLabelText('DateTimeField')).toHaveFocus();
+  getByLabelText('DateTimeField').blur();
+  expect(getByLabelText('DateTimeField')).not.toHaveFocus();
+  expect(onBlur).toHaveBeenCalled();
+});
+
+it('should call onChange when changing the value', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = renderDateTimeField({ onChange });
+  const event = { target: { value: '12/30/2018 12:00 AM' } };
+  fireEvent.focus(getByLabelText('DateTimeField'));
+  fireEvent.change(getByLabelText('DateTimeField'), event);
+  fireEvent.keyDown(getByLabelText('DateTimeField'), { key: 'Enter' });
+  fireEvent.keyUp(getByLabelText('DateTimeField'), { key: 'Enter' });
+  fireEvent.blur(getByLabelText('DateTimeField'));
+  expect(onChange).toHaveBeenCalled();
+});
+
+describe('when `description` is passed', () => {
+  it('should render a description', () => {
+    const { getByText } = renderDateTimeField({
+      description: 'foo description',
+    });
+    expect(getByText('foo description')).toBeInTheDocument();
+  });
+});
+
+describe('when `hint` is passed', () => {
+  it('should render a hint', () => {
+    const { getByText } = renderDateTimeField({ hint: 'foo hint' });
+    expect(getByText('foo hint')).toBeInTheDocument();
+  });
+});
+
+describe('when `badge` is passed', () => {
+  it('should render a badge', () => {
+    const { getByText } = renderDateTimeField({ badge: 'foo badge' });
+    expect(getByText('foo badge')).toBeInTheDocument();
+  });
+});
+
+describe('when disabled', () => {
+  it('should disable the input', () => {
+    const { getByLabelText } = renderDateTimeField({ isDisabled: true });
+    expect(getByLabelText('DateTimeField')).toHaveAttribute('disabled');
+  });
+});
+
+describe('when required', () => {
+  it('should add `*` to title`', () => {
+    const { getByText } = renderDateTimeField({ isRequired: true });
+    expect(getByText('*')).toBeInTheDocument();
+  });
+});
+
+describe('when showing an info button', () => {
+  it('should render an info button', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderDateTimeField({
+      onInfoButtonClick,
+    });
+    expect(getByLabelText('More Info')).toBeInTheDocument();
+  });
+  it('should call onInfoButtonClick when button is clicked', () => {
+    const onInfoButtonClick = jest.fn();
+    const { getByLabelText } = renderDateTimeField({ onInfoButtonClick });
+    getByLabelText('More Info').click();
+    expect(onInfoButtonClick).toHaveBeenCalled();
+  });
+});
+
+describe('when field is touched and has errors', () => {
+  describe('when field empty', () => {
+    it('should render a default error', () => {
+      const { getByText } = renderDateTimeField({
+        touched: true,
         errors: { missing: true },
-        touched: true,
       });
-      wrapper = shallow(<DateTimeField {...props} />);
-    });
-
-    it('should forward the props for to the related components', () => {
-      const fieldLabel = wrapper.find(FieldLabel);
-      expect(fieldLabel).toHaveProp('title', props.title);
-      expect(fieldLabel).toHaveProp('hint', props.hint);
-      expect(fieldLabel).toHaveProp('hintIcon', props.hintIcon);
-      expect(fieldLabel).toHaveProp('description', props.description);
-      expect(fieldLabel).toHaveProp(
-        'onInfoButtonClick',
-        props.onInfoButtonClick
-      );
-      expect(fieldLabel).toHaveProp('badge', props.badge);
-      expect(fieldLabel).toHaveProp('htmlFor', props.id);
-
-      const textInput = wrapper.find(DateTimeInput);
-      expect(textInput).toHaveProp('name', props.name);
-      expect(textInput).toHaveProp('value', props.value);
-      expect(textInput).toHaveProp('onChange', props.onChange);
-      expect(textInput).toHaveProp('onBlur', props.onBlur);
-      expect(textInput).toHaveProp('onFocus', props.onFocus);
-      expect(textInput).toHaveProp('isDisabled', props.isDisabled);
-      expect(textInput).toHaveProp('placeholder', props.placeholder);
-      expect(textInput).toHaveProp('hasError', true);
-
-      expect(wrapper).toRender(FieldErrors);
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText(/field is required/i)).toBeInTheDocument();
     });
   });
-
-  describe('when disabled', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ isDisabled: true });
-      wrapper = shallow(<DateTimeField {...props} />);
-    });
-    it('should disable the DateTimeInput', () => {
-      expect(wrapper.find(DateTimeInput)).toHaveProp('isDisabled', true);
-    });
-  });
-
-  describe('when there are known errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({ touched: true, errors: { missing: true } });
-      wrapper = shallow(<DateTimeField {...props} />);
-    });
-    it('should mark the DateTimeInput as erroneous', () => {
-      expect(wrapper.find(DateTimeInput)).toHaveProp('hasError', true);
-    });
-    it('should render the known error', () => {
-      expect(wrapper).toRender(FieldErrors);
-    });
-  });
-
-  describe('when there are unknown errors', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createTestProps({
+  describe('when there is a custom error', () => {
+    it('should render the custom error message', () => {
+      const { getByText } = renderDateTimeField({
         touched: true,
-        renderError: jest.fn(key => key),
-        errors: { customError: 5 },
+        errors: { custom: true },
+        renderError: () => 'Custom error',
       });
-      wrapper = shallow(<DateTimeField {...props} />);
-    });
-    it('should mark the NumberInput as erroneous', () => {
-      expect(wrapper.find(DateTimeInput)).toHaveProp('hasError', true);
-    });
-    it('should forward the error', () => {
-      expect(wrapper.find(FieldErrors)).toHaveProp('errors', props.errors);
+      expect(getByText('Custom error')).toBeInTheDocument();
     });
   });
 });
