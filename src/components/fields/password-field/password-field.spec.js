@@ -59,7 +59,7 @@ it('should render a text field', () => {
   expect(getByLabelText('PasswordField')).toBeInTheDocument();
 });
 
-it('shoult render a title', () => {
+it('should render a title', () => {
   const { getByText } = renderPasswordField({ title: 'foo title' });
   expect(getByText('foo title')).toBeInTheDocument();
 });

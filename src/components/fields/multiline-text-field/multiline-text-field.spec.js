@@ -52,7 +52,7 @@ it('should render a text field', () => {
   expect(getByLabelText('MultilineTextField')).toBeInTheDocument();
 });
 
-it('shoult render a title', () => {
+it('should render a title', () => {
   const { getByText } = renderMultilineTextField({ title: 'foo title' });
   expect(getByText('foo title')).toBeInTheDocument();
 });
