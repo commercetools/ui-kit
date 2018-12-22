@@ -35,7 +35,6 @@ class Story extends React.Component {
       <div>
         <label htmlFor={this.props.id}>DateRangeField</label>
         <DateRangeField
-          id={this.props.id}
           {...this.props}
           value={this.state.value}
           onChange={this.handleChange}

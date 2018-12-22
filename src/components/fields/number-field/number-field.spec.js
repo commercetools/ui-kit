@@ -32,7 +32,6 @@ class Story extends React.Component {
       <div>
         <label htmlFor={this.props.id}>NumberField</label>
         <NumberField
-          id={this.props.id}
           {...this.props}
           value={this.state.value}
           onChange={this.handleChange}

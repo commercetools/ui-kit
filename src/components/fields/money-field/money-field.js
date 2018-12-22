@@ -127,6 +127,7 @@ class MoneyField extends React.Component {
             value={this.props.value}
             currencies={this.props.currencies}
             placeholder={this.props.placeholder}
+            onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
             isDisabled={this.props.isDisabled}
             onChange={this.props.onChange}

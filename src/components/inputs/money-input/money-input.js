@@ -325,6 +325,7 @@ class MoneyInput extends React.Component {
     }).isRequired,
     currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
     placeholder: PropTypes.string,
+    onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -381,15 +382,14 @@ class MoneyInput extends React.Component {
 
       // change amount if necessary
       if (this.props.value.amount !== nextAmount) {
-        const fakeAmountEvent = {
+        this.props.onChange({
           persist: () => {},
           target: {
+            id: MoneyInput.getAmountInputId(this.props.id),
             name: getAmountInputName(this.props.name),
             value: nextAmount,
           },
-        };
-
-        this.props.onChange(fakeAmountEvent);
+        });
       }
 
       this.amountInputRef.current.focus();
@@ -398,7 +398,14 @@ class MoneyInput extends React.Component {
 
   handleAmountChange = event => {
     if (isNumberish(event.target.value)) {
-      this.props.onChange(event);
+      this.props.onChange({
+        persist: () => {},
+        target: {
+          id: MoneyInput.getAmountInputId(this.props.id),
+          name: getAmountInputName(this.props.name),
+          value: event.target.value,
+        },
+      });
     }
   };
 
@@ -421,6 +428,7 @@ class MoneyInput extends React.Component {
         const fakeEvent = {
           persist: () => {},
           target: {
+            id: MoneyInput.getAmountInputId(this.props.id),
             name: getAmountInputName(this.props.name),
             value: formattedAmount,
           },
@@ -430,6 +438,7 @@ class MoneyInput extends React.Component {
     }
   };
 
+  containerRef = React.createRef();
   amountInputRef = React.createRef();
 
   render() {
@@ -467,8 +476,30 @@ class MoneyInput extends React.Component {
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div
+          ref={this.containerRef}
           className={styles['field-container']}
           data-testid="money-input-container"
+          onBlur={event => {
+            // ensures that both fields are marked as touched when one of them
+            // is blurred
+            if (
+              typeof this.props.onBlur === 'function' &&
+              !this.containerRef.current.contains(event.relatedTarget)
+            ) {
+              this.props.onBlur({
+                target: {
+                  id: MoneyInput.getCurrencyDropdownId(this.props.id),
+                  name: getCurrencyDropdownName(this.props.name),
+                },
+              });
+              this.props.onBlur({
+                target: {
+                  id: MoneyInput.getAmountInputId(this.props.id),
+                  name: getAmountInputName(this.props.name),
+                },
+              });
+            }
+          }}
         >
           <Select
             inputId={MoneyInput.getCurrencyDropdownId(this.props.id)}
@@ -480,7 +511,16 @@ class MoneyInput extends React.Component {
             options={options}
             placeholder=""
             styles={currencySelectStyles}
-            onFocus={() => this.setState({ currencyHasFocus: true })}
+            onFocus={() => {
+              if (this.props.onFocus)
+                this.props.onFocus({
+                  target: {
+                    id: MoneyInput.getCurrencyDropdownId(this.props.id),
+                    name: getCurrencyDropdownName(this.props.name),
+                  },
+                });
+              this.setState({ currencyHasFocus: true });
+            }}
             onBlur={() => this.setState({ currencyHasFocus: false })}
             onChange={this.handleCurrencyChange}
             data-testid="currency-dropdown"
@@ -490,7 +530,16 @@ class MoneyInput extends React.Component {
             id={MoneyInput.getAmountInputId(this.props.id)}
             name={getAmountInputName(this.props.name)}
             type="text"
-            onFocus={() => this.setState({ amountHasFocus: true })}
+            onFocus={() => {
+              if (this.props.onFocus)
+                this.props.onFocus({
+                  target: {
+                    id: MoneyInput.getAmountInputId(this.props.id),
+                    name: getAmountInputName(this.props.name),
+                  },
+                });
+              this.setState({ amountHasFocus: true });
+            }}
             value={this.props.value.amount}
             className={getAmountStyles({
               isDisabled: this.props.isDisabled,

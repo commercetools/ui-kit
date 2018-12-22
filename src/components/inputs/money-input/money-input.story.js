@@ -52,6 +52,7 @@ class MoneyInputStory extends React.Component {
             value={value}
             currencies={boolean('dropdown', true) ? currencies : undefined}
             placeholder={text('placeholder', 'Placeholder')}
+            onFocus={action('onFocus')}
             onBlur={action('onBlur')}
             isDisabled={boolean('isDisabled', false)}
             onChange={event => {
