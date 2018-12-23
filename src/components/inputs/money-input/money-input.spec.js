@@ -670,6 +670,11 @@ describe('MoneyInput', () => {
     });
   });
 
+  it('should have focus the amount input automatically when isAutofocussed is passed', () => {
+    const { getByLabelText } = render(<TestComponent isAutofocussed={true} />);
+    expect(getByLabelText('Amount')).toHaveFocus();
+  });
+
   it('should render a readonly input when readonly', () => {
     const { getByLabelText } = render(<TestComponent isReadOnly={true} />);
     expect(getByLabelText('Amount')).toHaveAttribute('readonly');

@@ -119,6 +119,13 @@ it('should call onBlur when currency select loses focus', () => {
   expect(onBlur).toHaveBeenCalled();
 });
 
+it('should have focus the amount input automatically when isAutofocussed is passed', () => {
+  const { getByLabelText } = renderMoneyField({
+    isAutofocussed: true,
+  });
+  expect(getByLabelText('Amount')).toHaveFocus();
+});
+
 it('should call onChange when changing the value', () => {
   const onChange = jest.fn();
   const { getByLabelText } = renderMoneyField({
@@ -199,6 +206,15 @@ describe('when disabled', () => {
   it('should disable the inputs', () => {
     const { getByLabelText } = renderMoneyField({ isDisabled: true });
     expect(getByLabelText('Amount')).toHaveAttribute('disabled');
+    expect(getByLabelText('EUR')).toHaveAttribute('disabled');
+  });
+});
+
+describe('when readOnly', () => {
+  it('should make the inputs readonly', () => {
+    const { getByLabelText } = renderMoneyField({ isReadOnly: true });
+    expect(getByLabelText('Amount')).toHaveAttribute('readonly');
+    // currency select should be disabled
     expect(getByLabelText('EUR')).toHaveAttribute('disabled');
   });
 });

@@ -57,6 +57,8 @@ class MoneyField extends React.Component {
     placeholder: PropTypes.string,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
+    isAutofocussed: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
 
     // LabelField
@@ -130,6 +132,8 @@ class MoneyField extends React.Component {
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
             isDisabled={this.props.isDisabled}
+            isAutofocussed={this.props.isAutofocussed}
+            isReadOnly={this.props.isReadOnly}
             onChange={this.props.onChange}
             hasError={hasError}
             {...filterDataAttributes(this.props)}
