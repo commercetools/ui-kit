@@ -87,5 +87,13 @@ screenshot('MoneyInput', () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="when readOnly">
+      <MoneyInput
+        horizontalConstraint="m"
+        value={emptyValue}
+        onChange={() => {}}
+        isReadOnly={true}
+      />
+    </Spec>
   </Suite>
 ));
