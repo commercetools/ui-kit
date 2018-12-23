@@ -46,9 +46,6 @@ class Story extends React.Component {
         <label htmlFor={MoneyInput.getAmountInputId(this.props.id)}>
           Amount
         </label>
-        <label htmlFor={MoneyInput.getCurrencyDropdownId(this.props.id)}>
-          Currency Code
-        </label>
         <MoneyField
           {...this.props}
           value={this.state.value}
@@ -65,7 +62,7 @@ const renderMoneyField = (props, options) =>
 it('should render a money field', () => {
   const { getByLabelText } = renderMoneyField();
   expect(getByLabelText('Amount')).toBeInTheDocument();
-  expect(getByLabelText('Currency Code')).toBeInTheDocument();
+  expect(getByLabelText('EUR')).toBeInTheDocument();
 });
 
 it('should render a title', () => {
@@ -97,8 +94,8 @@ it('should call onFocus when amount input is focused', () => {
 it('should call onFocus when currency select is focused', () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMoneyField({ onFocus });
-  getByLabelText('Currency Code').focus();
-  expect(getByLabelText('Currency Code')).toHaveFocus();
+  getByLabelText('EUR').focus();
+  expect(getByLabelText('EUR')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
@@ -115,10 +112,10 @@ it('should call onBlur when amount input loses focus', () => {
 it('should call onBlur when currency select loses focus', () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMoneyField({ onBlur });
-  getByLabelText('Currency Code').focus();
-  expect(getByLabelText('Currency Code')).toHaveFocus();
-  getByLabelText('Currency Code').blur();
-  expect(getByLabelText('Currency Code')).not.toHaveFocus();
+  getByLabelText('EUR').focus();
+  expect(getByLabelText('EUR')).toHaveFocus();
+  getByLabelText('EUR').blur();
+  expect(getByLabelText('EUR')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
 
@@ -131,8 +128,8 @@ it('should call onChange when changing the value', () => {
   });
   fireEvent.change(getByLabelText('Amount'), { target: { value: '20' } });
 
-  fireEvent.focus(getByLabelText('Currency Code'));
-  fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
+  fireEvent.focus(getByLabelText('EUR'));
+  fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
 
   expect(onChange).toHaveBeenCalledTimes(1);
   expect(onChange).toHaveBeenCalledWith({
@@ -145,8 +142,8 @@ it('should call onChange when changing the value', () => {
   });
 
   // change currency to USD using keyboard
-  fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
-  fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'Enter' });
+  fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
+  fireEvent.keyDown(getByLabelText('EUR'), { key: 'Enter' });
 
   // it should change the currency
   expect(onChange).toHaveBeenCalledWith({
@@ -202,7 +199,7 @@ describe('when disabled', () => {
   it('should disable the inputs', () => {
     const { getByLabelText } = renderMoneyField({ isDisabled: true });
     expect(getByLabelText('Amount')).toHaveAttribute('disabled');
-    expect(getByLabelText('Currency Code')).toHaveAttribute('disabled');
+    expect(getByLabelText('EUR')).toHaveAttribute('disabled');
   });
 });
 
