@@ -90,8 +90,9 @@ screenshot('MoneyInput', () => (
     <Spec label="when readOnly">
       <MoneyInput
         horizontalConstraint="m"
-        value={emptyValue}
+        value={value}
         onChange={() => {}}
+        currencies={currencies}
         isReadOnly={true}
       />
     </Spec>

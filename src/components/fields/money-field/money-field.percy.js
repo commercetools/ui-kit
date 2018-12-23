@@ -106,5 +106,15 @@ screenshot('MoneyField', () => (
         touched={{ amount: true, currencyCode: true }}
       />
     </Spec>
+    <Spec label="when readonly">
+      <MoneyField
+        title="Price"
+        horizontalConstraint="m"
+        value={value}
+        onChange={() => {}}
+        currencies={currencies}
+        isReadOnly={true}
+      />
+    </Spec>
   </Suite>
 ));
