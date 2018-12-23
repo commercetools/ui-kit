@@ -45,9 +45,6 @@ class TestComponent extends React.Component {
         <label htmlFor={MoneyInput.getAmountInputId(this.props.id)}>
           Amount
         </label>
-        <label htmlFor={MoneyInput.getCurrencyDropdownId(this.props.id)}>
-          Currency Code
-        </label>
         <MoneyInput
           {...this.props}
           onChange={this.props.onChange || this.handleChange}
@@ -416,8 +413,8 @@ describe('MoneyInput', () => {
         onFocus={onFocus}
       />
     );
-    getByLabelText('Currency Code').focus();
-    expect(getByLabelText('Currency Code')).toHaveFocus();
+    getByLabelText('EUR').focus();
+    expect(getByLabelText('EUR')).toHaveFocus();
     expect(onFocus).toHaveBeenCalledWith({
       target: { id: 'some-id.currencyCode', name: 'some-name.currencyCode' },
     });
@@ -455,10 +452,10 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    getByLabelText('Currency Code').focus();
-    expect(getByLabelText('Currency Code')).toHaveFocus();
-    getByLabelText('Currency Code').blur();
-    expect(getByLabelText('Currency Code')).not.toHaveFocus();
+    getByLabelText('EUR').focus();
+    expect(getByLabelText('EUR')).toHaveFocus();
+    getByLabelText('EUR').blur();
+    expect(getByLabelText('EUR')).not.toHaveFocus();
 
     // onBlur should be called twice as we want to mark both,
     // currency dropdown and amount input as touched when the element
@@ -479,11 +476,11 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    getByLabelText('Currency Code').focus();
-    expect(getByLabelText('Currency Code')).toHaveFocus();
+    getByLabelText('EUR').focus();
+    expect(getByLabelText('EUR')).toHaveFocus();
 
     getByLabelText('Amount').focus();
-    expect(getByLabelText('Currency Code')).not.toHaveFocus();
+    expect(getByLabelText('EUR')).not.toHaveFocus();
     expect(getByLabelText('Amount')).toHaveFocus();
 
     expect(onBlur).not.toHaveBeenCalled();
@@ -501,8 +498,8 @@ describe('MoneyInput', () => {
     getByLabelText('Amount').focus();
     expect(getByLabelText('Amount')).toHaveFocus();
 
-    getByLabelText('Currency Code').focus();
-    expect(getByLabelText('Currency Code')).toHaveFocus();
+    getByLabelText('EUR').focus();
+    expect(getByLabelText('EUR')).toHaveFocus();
     expect(getByLabelText('Amount')).not.toHaveFocus();
 
     expect(onBlur).not.toHaveBeenCalled();
@@ -553,12 +550,12 @@ describe('MoneyInput', () => {
     const { getByLabelText } = render(<TestComponent onChange={onChange} />);
 
     // open using keyboard
-    fireEvent.focus(getByLabelText('Currency Code'));
-    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
+    fireEvent.focus(getByLabelText('EUR'));
+    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
 
     // change currency to USD using keyboard
-    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
-    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'Enter' });
+    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
+    fireEvent.keyDown(getByLabelText('EUR'), { key: 'Enter' });
 
     // onChange should be called when changing the currency
     expect(onChange).toHaveBeenCalledWith({
@@ -601,12 +598,12 @@ describe('MoneyInput', () => {
     );
 
     // open currency dropdown using keyboard
-    fireEvent.focus(getByLabelText('Currency Code'));
-    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
+    fireEvent.focus(getByLabelText('EUR'));
+    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
 
     // change currency to KWD using keyboard
-    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'ArrowDown' });
-    fireEvent.keyDown(getByLabelText('Currency Code'), { key: 'Enter' });
+    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
+    fireEvent.keyDown(getByLabelText('EUR'), { key: 'Enter' });
 
     // We can't use .toHaveAttribute('value', ' 12.500') as the attribute
     // itself does not change in the DOM tree. Only the actual value changes.
@@ -662,7 +659,6 @@ describe('MoneyInput', () => {
         { locale: 'de' }
       );
 
-      //
       getByLabelText('Amount').focus();
       fireEvent.blur(getByLabelText('Amount'));
 
@@ -672,5 +668,14 @@ describe('MoneyInput', () => {
         '(12.5).toLocaleString(de, {"minimumFractionDigits":2})'
       );
     });
+  });
+
+  it('should render a readonly input when readonly', () => {
+    const { getByLabelText } = render(<TestComponent isReadOnly={true} />);
+    expect(getByLabelText('Amount')).toHaveAttribute('readonly');
+  });
+  it('should render a disabled currency select when readonly', () => {
+    const { getByLabelText } = render(<TestComponent isReadOnly={true} />);
+    expect(getByLabelText('EUR')).toHaveAttribute('disabled');
   });
 });

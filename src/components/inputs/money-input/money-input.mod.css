@@ -47,6 +47,13 @@
   opacity: 1; /* fix for mobile safari */
 }
 
+.amount-readonly {
+  composes: amountInput;
+  border-color: var(--token-border-color-input-readonly);
+  color: var(--token-font-color-readonly);
+  cursor: default;
+}
+
 .amount-warning {
   composes: amountInput;
   color: var(--token-font-color-warning);

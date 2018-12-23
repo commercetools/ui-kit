@@ -55,6 +55,8 @@ class MoneyInputStory extends React.Component {
             onFocus={action('onFocus')}
             onBlur={action('onBlur')}
             isDisabled={boolean('isDisabled', false)}
+            isReadOnly={boolean('isReadOnly', false)}
+            isAutofocussed={boolean('isAutofocussed', false)}
             onChange={event => {
               action('onChange')(event);
 

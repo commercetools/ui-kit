@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import has from 'lodash.has';
-import Select from 'react-select';
+import requiredIf from 'react-required-if';
+import Select, { components } from 'react-select';
 import { injectIntl } from 'react-intl';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
@@ -14,12 +15,25 @@ import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
 import vars from '../../../../materials/custom-properties.json';
 
+const SingleValue = ({ id, ...props }) => (
+  <components.SingleValue {...props}>
+    <label htmlFor={id}>{props.children}</label>
+  </components.SingleValue>
+);
+
+SingleValue.displayName = 'SingleValue';
+
+SingleValue.propTypes = {
+  id: PropTypes.string,
+};
+
 // overwrite styles of createSelectStyles
 const createCurrencySelectStyles = ({
   hasWarning,
   hasError,
   hasNoCurrencies,
   isDisabled,
+  isReadOnly,
   hasFocus,
 }) => {
   const selectStyles = createSelectStyles({ hasWarning, hasError });
@@ -33,6 +47,7 @@ const createCurrencySelectStyles = ({
       minWidth: '72px',
       borderColor: do {
         if (isDisabled) vars['--token-border-color-input-disabled'];
+        else if (isReadOnly) vars['--token-border-color-input-readonly'];
         else if (hasError) vars['--token-border-color-input-error'];
         else if (hasWarning) vars['--token-border-color-input-warning'];
         else if (hasFocus) vars['--token-border-color-input-focus'];
@@ -40,10 +55,15 @@ const createCurrencySelectStyles = ({
       },
       '&:hover': do {
         if (isDisabled) vars['--token-border-color-input-disabled'];
+        else if (isReadOnly) vars['--token-border-color-input-readonly'];
         else if (hasError) vars['--token-border-color-input-error'];
         else if (hasWarning) vars['--token-border-color-input-warning'];
         else if (hasFocus) vars['--token-border-color-input-focus'];
         else vars['--token-border-color-input-pristine'];
+      },
+      backgroundColor: do {
+        if (isReadOnly) vars['--token-background-color-input-pristine'];
+        else base.backgroundColor;
       },
     }),
     singleValue: base => ({
@@ -237,6 +257,7 @@ const getAmountStyles = props => {
   if (props.isDisabled) return styles['amount-disabled'];
   if (props.hasError) return styles['amount-error'];
   if (props.hasWarning) return styles['amount-warning'];
+  if (props.isReadOnly) return styles['amount-readonly'];
   if (props.hasFocus) return styles['amount-focus'];
 
   return styles['amount-default'];
@@ -328,7 +349,9 @@ class MoneyInput extends React.Component {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     isDisabled: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
+    isReadOnly: PropTypes.bool,
+    isAutofocussed: PropTypes.bool,
+    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     intl: PropTypes.shape({
@@ -451,6 +474,7 @@ class MoneyInput extends React.Component {
       hasError: this.props.hasCurrencyError || this.props.hasError,
       hasNoCurrencies,
       isDisabled: this.props.isDisabled || hasNoCurrencies,
+      isReadOnly: this.props.isReadOnly,
       hasFocus,
     });
     const options = this.props.currencies.map(currencyCode => ({
@@ -473,6 +497,7 @@ class MoneyInput extends React.Component {
         });
       else null;
     };
+    const id = MoneyInput.getCurrencyDropdownId(this.props.id);
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div
@@ -502,12 +527,18 @@ class MoneyInput extends React.Component {
           }}
         >
           <Select
-            inputId={MoneyInput.getCurrencyDropdownId(this.props.id)}
+            inputId={id}
             name={getCurrencyDropdownName(this.props.name)}
             value={option}
-            isDisabled={this.props.isDisabled || hasNoCurrencies}
+            isDisabled={
+              this.props.isDisabled || hasNoCurrencies || this.props.isReadOnly
+            }
             isSearchable={false}
-            components={{ DropdownIndicator, ClearIndicator }}
+            components={{
+              SingleValue: props => <SingleValue {...props} id={id} />,
+              DropdownIndicator,
+              ClearIndicator,
+            }}
             options={options}
             placeholder=""
             styles={currencySelectStyles}
@@ -545,12 +576,15 @@ class MoneyInput extends React.Component {
               isDisabled: this.props.isDisabled,
               hasError: this.props.hasError,
               hasWarning: this.props.hasWarning,
+              isReadOnly: this.props.isReadOnly,
               hasFocus,
             })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
             onBlur={this.handleAmountBlur}
             disabled={this.props.isDisabled}
+            readOnly={this.props.isReadOnly}
+            autoFocus={this.props.isAutofocussed}
             {...filterDataAttributes(this.props)}
           />
         </div>
