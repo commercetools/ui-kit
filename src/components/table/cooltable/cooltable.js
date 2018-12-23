@@ -17,16 +17,20 @@ export default class CoolTable extends React.Component {
     ).isRequired,
     renderItem: PropTypes.func.isRequired,
     maxHeight: PropTypes.number,
+    maxWidth: PropTypes.number,
   };
   render() {
     return (
       <div
         className={styles.grid}
         style={{
-          gridTemplateColumns: `repeat(${this.props.columns.length}, auto)`,
+          gridTemplateColumns: this.props.columns
+            .map(column => column.width || 'auto')
+            .join(' '),
           maxHeight: this.props.maxHeight
             ? `${this.props.maxHeight + 200}px`
             : '',
+          maxWidth: this.props.maxWidth ? `${this.props.maxWidth + 200}px` : '',
           overflowY: 'auto',
         }}
       >

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, number } from '@storybook/addon-knobs';
+import { withKnobs, number, boolean } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import Readme from '../README.md';
 import CoolTable from './cooltable';
@@ -151,6 +151,31 @@ class RoleInput extends React.Component {
   }
 }
 
+const columns = [
+  {
+    key: 'name',
+    label: 'Name',
+  },
+  {
+    key: 'role',
+    label: 'Role',
+  },
+  {
+    key: 'nationality',
+    label: 'Nationality',
+  },
+  {
+    key: 'age',
+    label: 'Age',
+    align: 'right',
+  },
+  {
+    key: ':-)',
+    label: ':-)',
+    align: 'center',
+  },
+];
+
 // Basic example
 class BaseTableExample extends React.Component {
   static displayName = 'BaseTableExample';
@@ -158,32 +183,6 @@ class BaseTableExample extends React.Component {
     sortDirection: undefined,
     items: staticItems,
   };
-
-  // Move to own component
-  columns = [
-    {
-      key: 'name',
-      label: 'Name',
-    },
-    {
-      key: 'role',
-      label: 'Role',
-    },
-    {
-      key: 'nationality',
-      label: 'Nationality',
-    },
-    {
-      key: 'age',
-      label: 'Age',
-      align: 'right',
-    },
-    {
-      key: ':-)',
-      label: ':-)',
-      align: 'center',
-    },
-  ];
 
   onCheckboxClick = ({ rowIndex /* , columnKey */ }) => {
     this.setState(prevState => ({
@@ -235,7 +234,11 @@ class BaseTableExample extends React.Component {
         </div>
 
         <CoolTable
-          columns={this.columns}
+          columns={
+            boolean('overflow columns', false)
+              ? columns.map(column => ({ ...column, width: '200px' }))
+              : columns
+          }
           items={this.state.items}
           renderItem={({ item, column /* rowIndex, columnIndex */ }) => {
             switch (column.key) {
@@ -248,6 +251,12 @@ class BaseTableExample extends React.Component {
             }
           }}
           maxHeight={number('maxHeight', 0, {
+            range: true,
+            min: 0,
+            max: 1000,
+            step: 1,
+          })}
+          maxWidth={number('maxWidth', 0, {
             range: true,
             min: 0,
             max: 1000,
