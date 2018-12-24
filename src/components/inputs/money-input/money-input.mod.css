@@ -1,5 +1,13 @@
-:root {
-  --width-currency-label: 60px;
+.currency-label {
+  position: relative;
+  display: flex;
+  border-top-left-radius: var(--token-border-radius-input);
+  border-bottom-left-radius: var(--token-border-radius-input);
+  border: 1px var(--token-border-color-input-pristine) solid;
+  border-right: 0;
+  padding: 0 var(--spacing-8);
+  align-items: center;
+  min-width: 72px;
 }
 
 .field-container {

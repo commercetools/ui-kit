@@ -15,6 +15,19 @@ import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
 import vars from '../../../../materials/custom-properties.json';
 
+const CurrencyLabel = props => (
+  <label htmlFor={props.id} className={styles['currency-label']}>
+    {props.children}
+  </label>
+);
+
+CurrencyLabel.displayName = 'CurrencyLabel';
+
+CurrencyLabel.propTypes = {
+  id: PropTypes.string,
+  children: PropTypes.node,
+};
+
 const SingleValue = ({ id, ...props }) => (
   <components.SingleValue {...props}>
     <label htmlFor={id}>{props.children}</label>
@@ -526,36 +539,44 @@ class MoneyInput extends React.Component {
             }
           }}
         >
-          <Select
-            inputId={id}
-            name={getCurrencyDropdownName(this.props.name)}
-            value={option}
-            isDisabled={
-              this.props.isDisabled || hasNoCurrencies || this.props.isReadOnly
-            }
-            isSearchable={false}
-            components={{
-              SingleValue: props => <SingleValue {...props} id={id} />,
-              DropdownIndicator,
-              ClearIndicator,
-            }}
-            options={options}
-            placeholder=""
-            styles={currencySelectStyles}
-            onFocus={() => {
-              if (this.props.onFocus)
-                this.props.onFocus({
-                  target: {
-                    id: MoneyInput.getCurrencyDropdownId(this.props.id),
-                    name: getCurrencyDropdownName(this.props.name),
-                  },
-                });
-              this.setState({ currencyHasFocus: true });
-            }}
-            onBlur={() => this.setState({ currencyHasFocus: false })}
-            onChange={this.handleCurrencyChange}
-            data-testid="currency-dropdown"
-          />
+          {this.props.isCurrencySelectionDisabled ? (
+            <CurrencyLabel id={MoneyInput.getAmountInputId(this.props.id)}>
+              {option && option.label}
+            </CurrencyLabel>
+          ) : (
+            <Select
+              inputId={id}
+              name={getCurrencyDropdownName(this.props.name)}
+              value={option}
+              isDisabled={
+                this.props.isDisabled ||
+                hasNoCurrencies ||
+                this.props.isReadOnly
+              }
+              isSearchable={false}
+              components={{
+                SingleValue: props => <SingleValue {...props} id={id} />,
+                DropdownIndicator,
+                ClearIndicator,
+              }}
+              options={options}
+              placeholder=""
+              styles={currencySelectStyles}
+              onFocus={() => {
+                if (this.props.onFocus)
+                  this.props.onFocus({
+                    target: {
+                      id: MoneyInput.getCurrencyDropdownId(this.props.id),
+                      name: getCurrencyDropdownName(this.props.name),
+                    },
+                  });
+                this.setState({ currencyHasFocus: true });
+              }}
+              onBlur={() => this.setState({ currencyHasFocus: false })}
+              onChange={this.handleCurrencyChange}
+              data-testid="currency-dropdown"
+            />
+          )}
           <input
             ref={this.amountInputRef}
             id={MoneyInput.getAmountInputId(this.props.id)}
