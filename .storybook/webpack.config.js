@@ -133,6 +133,13 @@ module.exports = (storybookBaseConfig, configType) => {
         { loader: require.resolve('markdown-loader') },
       ],
     },
+    {
+      test: /\.yaml$/,
+      use: [
+        { loader: require.resolve('json-loader') },
+        { loader: require.resolve('yaml-loader') },
+      ],
+    },
   ];
 
   return storybookBaseConfig;

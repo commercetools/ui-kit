@@ -1,9 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 // import { Headline } from '../../../src/components/typography/text';
 import TextInput from '../../../src/components/inputs/text-input';
 import tokens from '../../custom-properties.json';
+import yamlTokens from './tokens.yaml';
+
+console.log(yamlTokens);
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
