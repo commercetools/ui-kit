@@ -670,7 +670,7 @@ describe('MoneyInput', () => {
     });
   });
 
-  it('should have focus the amount input automatically when isAutofocussed is passed', () => {
+  it('should focus the amount input automatically when isAutofocussed is passed', () => {
     const { getByLabelText } = render(<TestComponent isAutofocussed={true} />);
     expect(getByLabelText('Amount')).toHaveFocus();
   });

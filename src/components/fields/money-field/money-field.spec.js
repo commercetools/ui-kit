@@ -119,7 +119,7 @@ it('should call onBlur when currency select loses focus', () => {
   expect(onBlur).toHaveBeenCalled();
 });
 
-it('should have focus the amount input automatically when isAutofocussed is passed', () => {
+it('should focus the amount input automatically when isAutofocussed is passed', () => {
   const { getByLabelText } = renderMoneyField({
     isAutofocussed: true,
   });
