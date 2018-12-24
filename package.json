@@ -125,7 +125,7 @@
     "conventional-changelog-cli": "2.0.11",
     "cross-env": "5.2.0",
     "css": "2.2.4",
-    "css-loader": "2.0.1",
+    "css-loader": "2.0.2",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
     "enzyme-to-json": "3.3.5",
