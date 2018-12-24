@@ -166,7 +166,7 @@
     "markdown-loader": "4.0.0",
     "moment": "2.23.0",
     "moment-timezone": "0.5.23",
-    "mri": "1.1.1",
+    "mri": "1.1.4",
     "omit-empty": "1.0.0",
     "pegjs": "0.10.0",
     "postcss": "7.0.7",
