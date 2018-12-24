@@ -44,7 +44,6 @@ SingleValue.propTypes = {
 const createCurrencySelectStyles = ({
   hasWarning,
   hasError,
-  hasNoCurrencies,
   isDisabled,
   isReadOnly,
   hasFocus,
@@ -88,10 +87,6 @@ const createCurrencySelectStyles = ({
         else if (hasWarning) vars['--token-font-color-warning'];
         else base.color;
       },
-    }),
-    dropdownIndicator: (base, state) => ({
-      ...selectStyles.dropdownIndicator(base, state),
-      visibility: hasNoCurrencies ? 'hidden' : undefined,
     }),
   };
 };
@@ -485,8 +480,7 @@ class MoneyInput extends React.Component {
     const currencySelectStyles = createCurrencySelectStyles({
       hasWarning,
       hasError: this.props.hasCurrencyError || this.props.hasError,
-      hasNoCurrencies,
-      isDisabled: this.props.isDisabled || hasNoCurrencies,
+      isDisabled: this.props.isDisabled,
       isReadOnly: this.props.isReadOnly,
       hasFocus,
     });
@@ -539,8 +533,11 @@ class MoneyInput extends React.Component {
             }
           }}
         >
-          {this.props.isCurrencySelectionDisabled ? (
-            <CurrencyLabel id={MoneyInput.getAmountInputId(this.props.id)}>
+          {hasNoCurrencies ? (
+            <CurrencyLabel
+              id={MoneyInput.getAmountInputId(this.props.id)}
+              isDisabled={this.props.isDisabled}
+            >
               {option && option.label}
             </CurrencyLabel>
           ) : (
@@ -548,11 +545,7 @@ class MoneyInput extends React.Component {
               inputId={id}
               name={getCurrencyDropdownName(this.props.name)}
               value={option}
-              isDisabled={
-                this.props.isDisabled ||
-                hasNoCurrencies ||
-                this.props.isReadOnly
-              }
+              isDisabled={this.props.isDisabled || this.props.isReadOnly}
               isSearchable={false}
               components={{
                 SingleValue: props => <SingleValue {...props} id={id} />,

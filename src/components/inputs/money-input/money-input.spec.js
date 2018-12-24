@@ -683,4 +683,23 @@ describe('MoneyInput', () => {
     const { getByLabelText } = render(<TestComponent isReadOnly={true} />);
     expect(getByLabelText('EUR')).toHaveAttribute('disabled');
   });
+
+  describe('when there are no currencies', () => {
+    it('should call onFocus when the input is focused', () => {
+      const onFocus = jest.fn();
+      const { getByLabelText } = render(
+        <TestComponent
+          currencies={[]}
+          onFocus={onFocus}
+          value={{ currencyCode: 'EUR', amount: '12.33' }}
+        />
+      );
+      const input = getByLabelText('EUR');
+      input.focus();
+      expect(input).toHaveFocus();
+      expect(onFocus).toHaveBeenCalledWith({
+        target: { id: 'some-id.amount', name: 'some-name.amount' },
+      });
+    });
+  });
 });

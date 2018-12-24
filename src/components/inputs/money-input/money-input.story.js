@@ -43,6 +43,7 @@ class MoneyInputStory extends React.Component {
   }
 
   render() {
+    const currencies = array('currencies', ['EUR', 'USD', 'AED', 'KWD']);
     const name = text('name', '') || 'default-name';
     const value = {
       amount: this.state.amount,
@@ -55,16 +56,12 @@ class MoneyInputStory extends React.Component {
             id={text('id', '')}
             name={name}
             value={value}
-            currencies={array('currencies', ['EUR', 'USD', 'AED', 'KWD'])}
+            currencies={boolean('dropdown', true) ? currencies : undefined}
             placeholder={text('placeholder', 'Placeholder')}
             onFocus={action('onFocus')}
             onBlur={action('onBlur')}
             isDisabled={boolean('isDisabled', false)}
             isReadOnly={boolean('isReadOnly', false)}
-            isCurrencySelectionDisabled={boolean(
-              'isCurrencySelectionDisabled',
-              false
-            )}
             isAutofocussed={boolean('isAutofocussed', false)}
             onChange={event => {
               action('onChange')(event);

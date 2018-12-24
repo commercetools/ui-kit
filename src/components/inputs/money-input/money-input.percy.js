@@ -96,5 +96,31 @@ screenshot('MoneyInput', () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="without currencies">
+      <MoneyInput
+        horizontalConstraint="m"
+        value={value}
+        onChange={() => {}}
+        currencies={[]}
+      />
+    </Spec>
+    <Spec label="without currencies - when readOnly">
+      <MoneyInput
+        horizontalConstraint="m"
+        value={value}
+        onChange={() => {}}
+        currencies={[]}
+        isReadOnly={true}
+      />
+    </Spec>
+    <Spec label="without currencies - when disabled">
+      <MoneyInput
+        horizontalConstraint="m"
+        value={value}
+        onChange={() => {}}
+        currencies={[]}
+        isDisabled={true}
+      />
+    </Spec>
   </Suite>
 ));
