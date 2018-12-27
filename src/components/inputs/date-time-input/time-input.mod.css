@@ -6,7 +6,7 @@
   padding: 10px 0;
   outline: 0;
   margin-top: var(--spacing-8);
-  font-size: var(--token-font-size-default);
+  font-size: var(--font-size-default);
   color: var(--color-black);
 }
 

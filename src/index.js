@@ -1,7 +1,7 @@
 /* This is the entry point of the public package interface */
 
-import '../materials/internals/grid.mod.css';
-import '../materials/internals/reset.mod.css';
+import '../materials/grid.mod.css';
+import '../materials/reset.mod.css';
 import * as i18n from '../i18n';
 
 export {

@@ -5,6 +5,7 @@ const postcssReporter = require('postcss-reporter');
 const postcssCustomProperties = require('postcss-custom-properties');
 const postcssCustomMediaQueries = require('postcss-custom-media');
 const postcssPostcssColorModFunction = require('postcss-color-mod-function');
+const customProperties = require('../materials/custom-properties.json');
 
 const browserslist = {
   development: ['chrome', 'firefox'].map(
@@ -108,7 +109,7 @@ module.exports = (storybookBaseConfig, configType) => {
               }),
               postcssCustomProperties({
                 preserve: false,
-                importFrom: 'materials/custom-properties.css',
+                importFrom: { 'custom-properties': customProperties },
               }),
               postcssCustomMediaQueries(),
               postcssPostcssColorModFunction(),

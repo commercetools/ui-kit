@@ -10,7 +10,7 @@
 .button-appearance {
   display: inline-block;
   background-color: var(--color-white);
-  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  box-shadow: var(--shadow-7);
   color: var(--color-black);
   font-size: 1rem;
   transition: background-color var(--transition-linear-80ms),
@@ -56,14 +56,12 @@
 /* Toggled button */
 
 .active {
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
   background-color: var(--color-white);
 }
 
 .active:hover {
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
   background-color: var(--color-gray-95);
 }
 
@@ -82,12 +80,11 @@
 /* Default button */
 
 .default:hover {
-  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+  box-shadow: var(--shadow-8);
 }
 
 .default:active {
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
   background-color: var(--color-white);
 }
 

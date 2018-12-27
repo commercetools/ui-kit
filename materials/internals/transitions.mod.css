@@ -1,9 +1,0 @@
-:root {
-  --transition-linear-80ms: 80ms linear;
-  --transition-easeinout-150ms: 150ms ease-in-out;
-  --transition-standard: all 0.2s ease;
-}
-
-.transition-standard {
-  transition: var(--transition-standard);
-}

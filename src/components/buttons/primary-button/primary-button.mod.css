@@ -26,19 +26,19 @@
 }
 
 .button {
-  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  box-shadow: var(--shadow-7);
 }
 
 .active:hover,
 .active:focus,
 .button:hover,
 .button:focus {
-  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+  box-shadow: var(--shadow-8);
 }
 
 .active,
 .button:active {
-  box-shadow: inset var(--shadow-7-first), inset var(--shadow-7-second);
+  box-shadow: var(--shadow-7);
 }
 
 /**

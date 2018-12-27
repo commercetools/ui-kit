@@ -1,4 +1,4 @@
-@import './colors/base-colors.mod.css';
+@import './custom-properties.css';
 
 *,
 *::before,
