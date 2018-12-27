@@ -38,7 +38,7 @@
 
 .active,
 .button:active {
-  box-shadow: var(--shadow-7);
+  box-shadow: inset var(--shadow-7-first), inset var(--shadow-7-second);
 }
 
 /**

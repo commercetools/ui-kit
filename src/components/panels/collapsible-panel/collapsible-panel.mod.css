@@ -4,7 +4,7 @@
 }
 
 .base-container {
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-1-second);
   border-radius: var(--border-radius-6);
   position: relative;
   min-width: 550px;

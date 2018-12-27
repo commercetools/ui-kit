@@ -1,5 +1,5 @@
 :root {
-  --big-button-height: var(--size-height-input);
+  --big-button-height: var(--standard-input-height);
   --big-button-width: var(--big-button-height);
   --small-button-height: calc(var(--big-button-height) / 2);
   --small-button-width: var(--small-button-height);
@@ -8,7 +8,8 @@
 .toggle-button {
   position: absolute;
   z-index: 1;
-  filter: var(--shadow-11);
+  filter: drop-shadow(var(--shadow-11-first))
+    drop-shadow(var(--shadow-11-second));
   transition: var(--transition-standard);
 }
 
@@ -31,7 +32,7 @@
 .toggle-button.active {
   /* The extra 7% shifts the button to the right by about 2px for big and 1px for small */
   transform: translateX(107%);
-  filter: var(--shadow-12);
+  filter: drop-shadow(var(--shadow-12-first));
 }
 
 .toggle-button.active :global(.bt-fill) {
@@ -39,7 +40,7 @@
 }
 
 .toggle-button.disabled {
-  filter: var(--shadow-13);
+  filter: drop-shadow(var(--shadow-13-first));
 }
 
 .toggle-button.disabled :global(.bt-fill) {
@@ -47,7 +48,7 @@
 }
 
 .toggle-button.disabled.active {
-  filter: var(--shadow-14);
+  filter: drop-shadow(var(--shadow-14-first));
 }
 
 .toggle-button.disabled.active :global(.bt-fill) {
@@ -55,7 +56,8 @@
 }
 
 .toggle-container:hover .toggle-button {
-  filter: var(--shadow-15);
+  filter: drop-shadow(var(--shadow-15-first))
+    drop-shadow(var(--shadow-15-second));
 }
 
 .toggle-container:hover.disabled .toggle-button {
