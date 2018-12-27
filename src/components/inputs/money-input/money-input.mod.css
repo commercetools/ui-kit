@@ -1,5 +1,14 @@
-:root {
-  --width-currency-label: 60px;
+.currency-label {
+  display: flex;
+  color: var(--token-font-color-disabled);
+  background-color: var(--token-background-color-input-disabled);
+  border-top-left-radius: var(--token-border-radius-input);
+  border-bottom-left-radius: var(--token-border-radius-input);
+  border: 1px var(--token-border-color-input-disabled) solid;
+  border-right: 0;
+  padding: 0 var(--spacing-8);
+  align-items: center;
+  min-width: 72px;
 }
 
 .field-container {
@@ -45,6 +54,13 @@
   border-color: var(--token-border-color-input-disabled);
   background-color: var(--token-background-color-input-disabled);
   opacity: 1; /* fix for mobile safari */
+}
+
+.amount-readonly {
+  composes: amountInput;
+  border-color: var(--token-border-color-input-readonly);
+  color: var(--token-font-color-readonly);
+  cursor: default;
 }
 
 .amount-warning {

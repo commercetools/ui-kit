@@ -88,6 +88,8 @@ class MoneyFieldStory extends React.Component {
           placeholder={text('placeholder', 'Placeholder')}
           onBlur={action('onBlur')}
           isDisabled={boolean('isDisabled', false)}
+          isReadOnly={boolean('isReadOnly', false)}
+          isAutofocussed={boolean('isAutofocussed', false)}
           onChange={event => {
             action('onChange')(event);
 
