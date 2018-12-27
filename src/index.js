@@ -27,6 +27,7 @@ export {
 } from './components/dropdowns/primary-action-dropdown';
 
 export { default as FieldLabel } from './components/field-label';
+export { default as FieldErrors } from './components/field-errors';
 
 export { default as TextField } from './components/fields/text-field';
 export { default as DateField } from './components/fields/date-field';

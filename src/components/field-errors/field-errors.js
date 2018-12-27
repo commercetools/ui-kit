@@ -36,19 +36,19 @@ const FieldErrors = props => {
             return <ErrorMessage key={key}>{defaultErrorElement}</ErrorMessage>;
 
           // Try to see if we know this error and render that error instead then
-          if (key === 'missing')
+          if (key === FieldErrors.errorTypes.MISSING)
             return (
               <ErrorMessage key={key}>
                 <FormattedMessage {...messages.missingRequiredField} />
               </ErrorMessage>
             );
-          if (key === 'negative')
+          if (key === FieldErrors.errorTypes.NEGATIVE)
             return (
               <ErrorMessage key={key}>
                 <FormattedMessage {...messages.invalidNegativeNumber} />
               </ErrorMessage>
             );
-          if (key === 'fractions')
+          if (key === FieldErrors.errorTypes.FRACTIONS)
             return (
               <ErrorMessage key={key}>
                 <FormattedMessage {...messages.invalidFractionalNumber} />
@@ -71,6 +71,12 @@ FieldErrors.propTypes = {
   isVisible: PropTypes.bool,
   renderError: PropTypes.func,
   renderDefaultError: PropTypes.func,
+};
+
+FieldErrors.errorTypes = {
+  MISSING: 'missing',
+  NEGATIVE: 'negative',
+  FRACTIONS: 'fractions',
 };
 
 export default FieldErrors;
