@@ -56,8 +56,6 @@ const FieldErrors = props => {
             );
           // Render nothing in case the error is not known and no custom error
           // was returned
-          // The input element will still have the red border to indicate an
-          // error in this case.
           return null;
         })}
     </React.Fragment>
