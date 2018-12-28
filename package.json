@@ -44,7 +44,6 @@
     "playground": "webpack-dev-server --config playground/webpack.config.js --watch",
     "vrt-playground:build": "rimraf vrt-examples/dist && NODE_ENV=production webpack -p --config vrt-examples/webpack.config.js",
     "vrt-playground:serve": "node vrt-examples/server",
-
     "start": "yarn storybook:start",
     "storybook:start": "start-storybook -p 9002 -s docs/assets",
     "docs:publish": "node scripts/publish-docs.js",

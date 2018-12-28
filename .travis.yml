@@ -24,7 +24,9 @@ script:
   # skip percy builds when this is not a pull request or when it's not master to save precious snaps
   # also skip when PR is opened by `renovate`
   # back to default in case internal travis scripts return non zero response codes.
-  - bash ./scripts/run-percy.sh
+  # - bash ./scripts/run-percy.sh
+  - yarn vrt-playground:build
+  - yarn percy
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
   - set +e
 
