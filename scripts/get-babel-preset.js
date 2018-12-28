@@ -105,7 +105,7 @@ module.exports = function getBabelPresets() {
         // Remove PropTypes from production build
         require('babel-plugin-transform-react-remove-prop-types').default,
         {
-          removeImport: true,
+          mode: 'wrap',
         },
       ],
       // function* () { yield 42; yield 43; }
