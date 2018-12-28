@@ -32,7 +32,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(\.example.js|js)$/,
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          query: {
+            compact: true,
+            presets: [require.resolve('../scripts/get-babel-preset')],
+          },
+        },
+      },
+      {
+        test: /\.example.js$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
