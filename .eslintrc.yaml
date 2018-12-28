@@ -29,13 +29,12 @@ overrides:
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
-  - files: ['*.percy.js', 'test/percy/suite.js']
-    env:
-      'react-percy/globals': true
+  - files: ['*.example.js']
     rules:
-      # We disable the rule for dist/ui-kit imports as there is no guarantee
-      # that a bundle has been created before running the tests.
-      'import/no-unresolved': [2, { ignore: ['\/dist\/ui-kit\.esm'] }]
+      'react/display-name': 0
+  - files: ['*.visualspec.js']
+    globals:
+        page: true
 settings:
   import/ignore:
     # included by default, but replaced if explicitly configured

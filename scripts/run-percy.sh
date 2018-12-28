@@ -10,7 +10,7 @@ if [[ $TRAVIS_PULL_REQUEST != 'false' || ${TRAVIS_BRANCH} == 'master' ]]
   regexp='^renovate\/'
   if ! [[ ${TRAVIS_PULL_REQUEST_BRANCH} =~ ${regexp} ]]
     then
-      yarn percy
+      yarn vrt-playground:build && yarn test:percy
     else
       echo 'Skipping percy - PR opened by `renovate`'
   fi
