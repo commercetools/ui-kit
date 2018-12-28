@@ -24,7 +24,6 @@ plugins:
   - 'prettier'
   - 'prefer-object-spread'
   - 'react'
-  - 'react-percy'
 overrides:
   - files: ['*.spec.js']
     rules:
