@@ -1,4 +1,29 @@
----
+# This file contains our design tokens.
+#
+# The tokens are formed by first establishing the choices we offer for our
+# design system. Those are things like which colors are we using,
+# which border radius, spacing, shadows and so on.
+#
+# The file also lists the states and comopnent groups for which we apply design
+# tokens. The explicit list of states aims to prevent diversion, e.g. by using
+# both "-hover" and "-hovered".
+#
+# Next are the decisions. Decisions take a choice and apply it to a certain
+# component group and state. For example, we can make the decision to use
+# the choice "color-green" for the attribute border-color for the component
+# group "input" in the state "active". Note that for decisions, the component
+# group and state are optional.
+#
+# A more in-depth explanation can be found in the README of the token story in
+# Storybook at uikit.commercetools.com.
+#
+#
+# Run "node scripts/generate-custom-properties" to generate
+# materials/custom-properties.css and materials/custom-properties.json based on
+# this file.
+#
+# The names of decisions in this file need to follow this format:
+#   <attribute>-for-<component-group>-when-<state>-
 
 choiceGroups:
   colors:
@@ -120,39 +145,39 @@ decisionGroups:
     prefix: background-color
     decisions:
       background-color-input-pristine:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-white
       background-color-input-disabled:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-navy-98
       background-color-input-hover:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-gray-90
       background-color-input-selected:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-navy-95
       background-color-tag-pristine:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-gray-95
       background-color-tag-warning:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-orange-95
       background-color-tag-disabled:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-gray-95
       background-color-tag-normal-hover:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-gray-60
       background-color-tag-warning-hover:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: color-orange
   borderColors:
@@ -160,47 +185,47 @@ decisionGroups:
     prefix: border-color
     decisions:
       border-color-input-pristine:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-gray-60
       border-color-input-focus:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-green
       border-color-input-disabled:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-gray
       border-color-input-readonly:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-gray
       border-color-input-error:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-red
       border-color-input-warning:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-orange
       border-color-tag-pristine:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-gray-60
       border-color-tag-warning:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-orange
       border-color-tag-focus:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-green
       border-color-tag-warning-hover:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-orange
       border-color-separator:
-        description: 'bar'
+        description: ''
         deprecated: true
         choice: color-gray
   borderRadius:
@@ -271,22 +296,22 @@ decisionGroups:
     prefix: shadow
     decisions:
       shadow-box-tag-when-hovered:
-        description: 'foo'
+        description: ''
         deprecated: true
         choice: shadow-1
-  # There are no choices for these yet so we didn't apply them
-  # size:
-  #   label: Sizes
-  #   decisions: 
-  #     size-height-input:
-  #       description: ''
-  #       value: 32px
-  #     size-height-tag:
-  #       description: ''
-  #       value: 26px
 
-# These tokens are deprecated and not convertible to the new format
-# as we don't have a group for heights
+
+# These tokens are deprecated as they don't follow our naming patterns.
+# Ideally they should be replaced with new tokens and not be used anymore.
+# But since we have not yet introduced alternatives for them it's still okay to
+# use them.
+#
+# We aim to remove each token from here as soon as we introduce an alternative,
+# but sometimes that's not possible because the usage of the tokens is invalid
+# as well (e.g. the shadows are being combined in invalid ways by ui-kit
+# consumers. We already have new shadow tokens, but those invalid useages would
+# break. Upgrading those parts is not something the ui-kit teams can do on their
+# own so we kept the old tokens around even though proper shadow tokens exist).
 plainTokens:
   big-button-height: 32px
   small-button-height: 24px
