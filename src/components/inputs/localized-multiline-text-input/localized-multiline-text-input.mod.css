@@ -14,14 +14,14 @@
 .languageLabel {
   /* avoid wrapping label onto new lines */
   flex: 1 0 auto;
-  color: var(--token-font-color-disabled);
+  color: var(--font-color-disabled);
   line-height: calc(
-    var(--token-size-height-input) - 2 * var(--border-radius-1)
+    var(--size-height-input) - 2 * var(--border-radius-1)
   );
-  background-color: var(--token-background-color-input-disabled);
-  border-top-left-radius: var(--token-border-radius-input);
-  border-bottom-left-radius: var(--token-border-radius-input);
-  border: 1px var(--token-border-color-input-disabled) solid;
+  background-color: var(--background-color-input-disabled);
+  border-top-left-radius: var(--border-radius-input);
+  border-bottom-left-radius: var(--border-radius-input);
+  border: 1px var(--border-color-input-disabled) solid;
   padding: 0 var(--spacing-8);
   transition: var(--transition-standard);
   border-right: 0;
@@ -30,12 +30,12 @@
 }
 
 .input {
-  color: var(--token-font-color-default);
-  font-family: var(--token-font-family-default);
-  font-size: var(--token-font-size-default);
-  min-height: var(--token-size-height-input);
-  border-top-right-radius: var(--token-border-radius-input);
-  border-bottom-right-radius: var(--token-border-radius-input);
+  color: var(--font-color-default);
+  font-family: var(--font-family-default);
+  font-size: var(--font-size-default);
+  min-height: var(--size-height-input);
+  border-top-right-radius: var(--border-radius-input);
+  border-bottom-right-radius: var(--border-radius-input);
   width: 100%;
   border-style: solid;
   border-width: var(--border-radius-1);
@@ -55,42 +55,42 @@
 }
 
 .input::placeholder {
-  color: var(--token-font-color-placeholder);
+  color: var(--font-color-placeholder);
 }
 
 /* States */
 
 .pristine {
   composes: input;
-  border-color: var(--token-border-color-input-pristine);
-  background-color: var(--token-background-color-input-pristine);
+  border-color: var(--border-color-input-pristine);
+  background-color: var(--background-color-input-pristine);
 }
 
 .warning {
   composes: input;
-  color: var(--token-font-color-warning);
-  border-color: var(--token-border-color-input-warning);
+  color: var(--font-color-warning);
+  border-color: var(--border-color-input-warning);
 }
 
 .error {
   composes: input;
-  color: var(--token-font-color-error);
-  border-color: var(--token-border-color-input-error);
+  color: var(--font-color-error);
+  border-color: var(--border-color-input-error);
 }
 
 .disabled {
   composes: input;
   cursor: not-allowed;
-  color: var(--token-font-color-disabled);
-  border-color: var(--token-border-color-input-disabled);
-  background-color: var(--token-background-color-input-disabled);
+  color: var(--font-color-disabled);
+  border-color: var(--border-color-input-disabled);
+  background-color: var(--background-color-input-disabled);
   opacity: 1; /* fix for mobile safari */
 }
 
 .readonly {
   composes: input;
-  border-color: var(--token-border-color-input-readonly);
-  color: var(--token-font-color-readonly);
+  border-color: var(--border-color-input-readonly);
+  color: var(--font-color-readonly);
   cursor: default;
 }
 
@@ -98,9 +98,9 @@
 
 .pristine:active,
 .pristine:focus {
-  border-color: var(--token-border-color-input-focus);
-  background: var(--token-background-color-input-pristine);
-  color: var(--token-font-color-default);
+  border-color: var(--border-color-input-focus);
+  background: var(--background-color-input-pristine);
+  color: var(--font-color-default);
 }
 
 /* Commands */

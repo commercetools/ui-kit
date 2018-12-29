@@ -7,14 +7,14 @@
 .date-input {
   width: 100%;
   appearance: none;
-  background: var(--token-background-color-input-pristine);
-  border-radius: var(--token-border-radius-input) 0 0
-    var(--token-border-radius-input);
-  border-bottom: 1px solid var(--token-border-color-input-pristine);
-  border-left: 1px solid var(--token-border-color-input-pristine);
-  border-top: 1px solid var(--token-border-color-input-pristine);
+  background: var(--background-color-input-pristine);
+  border-radius: var(--border-radius-input) 0 0
+    var(--border-radius-input);
+  border-bottom: 1px solid var(--border-color-input-pristine);
+  border-left: 1px solid var(--border-color-input-pristine);
+  border-top: 1px solid var(--border-color-input-pristine);
   border-right: none;
-  height: var(--token-size-height-input);
+  height: var(--size-height-input);
   cursor: pointer;
   flex-grow: 1;
   font: inherit;
@@ -29,8 +29,8 @@
 .date-input.focused,
 .date-input:focus + .clear-icon-container,
 .date-input.focused + .clear-icon-container {
-  border-color: var(--token-border-color-input-focus);
-  color: var(--token-font-color-default);
+  border-color: var(--border-color-input-focus);
+  color: var(--font-color-default);
   transition: var(--transition-standard);
 }
 
@@ -38,36 +38,36 @@
 
 .date-input.warning,
 .date-input.warning + .clear-icon-container {
-  color: var(--token-font-color-warning);
-  border-color: var(--token-border-color-input-warning);
+  color: var(--font-color-warning);
+  border-color: var(--border-color-input-warning);
 }
 
 .icon-container.warning,
 .icon-container.warning + .clear-icon-container {
-  color: var(--token-font-color-warning);
-  border-color: var(--token-border-color-input-warning);
+  color: var(--font-color-warning);
+  border-color: var(--border-color-input-warning);
 }
 
 /* Error */
 
 .date-input.error,
 .date-input.error + .clear-icon-container {
-  color: var(--token-font-color-error);
-  border-color: var(--token-border-color-input-error);
+  color: var(--font-color-error);
+  border-color: var(--border-color-input-error);
 }
 
 .icon-container.error,
 .icon-container.error + .clear-icon-container {
-  color: var(--token-font-color-error);
-  border-color: var(--token-border-color-input-error);
+  color: var(--font-color-error);
+  border-color: var(--border-color-input-error);
 }
 
 /* Disabled */
 
 .date-input:disabled {
-  background-color: var(--token-background-color-input-disabled);
-  color: var(--token-font-color-disabled);
-  border-color: var(--token-border-color-input-disabled);
+  background-color: var(--background-color-input-disabled);
+  color: var(--font-color-disabled);
+  border-color: var(--border-color-input-disabled);
   cursor: not-allowed;
   opacity: 1; /* fix for mobile safari */
 }
@@ -76,9 +76,9 @@
 
 .icon-container {
   align-items: center;
-  background-color: var(--token-background-color-input-pristine);
-  border: 1px solid var(--token-border-color-input-pristine);
-  height: var(--token-size-height-input);
+  background-color: var(--background-color-input-pristine);
+  border: 1px solid var(--border-color-input-pristine);
+  height: var(--size-height-input);
   cursor: pointer;
   display: flex;
   padding: var(--spacing-4);
@@ -86,7 +86,7 @@
 }
 
 .icon-container.focused:not(.error):not(.warning) {
-  border-color: var(--token-border-color-input-focus);
+  border-color: var(--border-color-input-focus);
 }
 
 .clear-icon-container {
@@ -97,13 +97,13 @@
 
 .calendar-icon-container {
   composes: icon-container;
-  border-top-right-radius: var(--token-border-radius-input);
-  border-bottom-right-radius: var(--token-border-radius-input);
+  border-top-right-radius: var(--border-radius-input);
+  border-bottom-right-radius: var(--border-radius-input);
 }
 
 .icon-container-disabled {
   cursor: not-allowed;
-  background-color: var(--token-background-color-input-disabled);
-  color: var(--token-font-color-disabled);
-  border-color: var(--token-border-color-input-disabled);
+  background-color: var(--background-color-input-disabled);
+  color: var(--font-color-disabled);
+  border-color: var(--border-color-input-disabled);
 }

@@ -58,23 +58,23 @@ const createCurrencySelectStyles = ({
       borderRight: '0',
       minWidth: '72px',
       borderColor: do {
-        if (isDisabled) vars['--token-border-color-input-disabled'];
-        else if (isReadOnly) vars['--token-border-color-input-readonly'];
-        else if (hasError) vars['--token-border-color-input-error'];
-        else if (hasWarning) vars['--token-border-color-input-warning'];
-        else if (hasFocus) vars['--token-border-color-input-focus'];
-        else vars['--token-border-color-input-pristine'];
+        if (isDisabled) vars['--border-color-input-disabled'];
+        else if (isReadOnly) vars['--border-color-input-readonly'];
+        else if (hasError) vars['--border-color-input-error'];
+        else if (hasWarning) vars['--border-color-input-warning'];
+        else if (hasFocus) vars['--border-color-input-focus'];
+        else vars['--border-color-input-pristine'];
       },
       '&:hover': do {
-        if (isDisabled) vars['--token-border-color-input-disabled'];
-        else if (isReadOnly) vars['--token-border-color-input-readonly'];
-        else if (hasError) vars['--token-border-color-input-error'];
-        else if (hasWarning) vars['--token-border-color-input-warning'];
-        else if (hasFocus) vars['--token-border-color-input-focus'];
-        else vars['--token-border-color-input-pristine'];
+        if (isDisabled) vars['--border-color-input-disabled'];
+        else if (isReadOnly) vars['--border-color-input-readonly'];
+        else if (hasError) vars['--border-color-input-error'];
+        else if (hasWarning) vars['--border-color-input-warning'];
+        else if (hasFocus) vars['--border-color-input-focus'];
+        else vars['--border-color-input-pristine'];
       },
       backgroundColor: do {
-        if (isReadOnly) vars['--token-background-color-input-pristine'];
+        if (isReadOnly) vars['--background-color-input-pristine'];
         else base.backgroundColor;
       },
     }),
@@ -83,8 +83,8 @@ const createCurrencySelectStyles = ({
       marginLeft: 0,
       maxWidth: 'initial',
       color: do {
-        if (hasError) vars['--token-font-color-error'];
-        else if (hasWarning) vars['--token-font-color-warning'];
+        if (hasError) vars['--font-color-error'];
+        else if (hasWarning) vars['--font-color-warning'];
         else base.color;
       },
     }),

@@ -2,7 +2,7 @@
 @import './toggle-button.mod.css';
 
 :root {
-  --big-toggle-height: var(--standard-input-height);
+  --big-toggle-height: var(--size-height-input);
   --big-toggle-width: calc(var(--big-toggle-height) * 2);
   --small-toggle-height: calc(var(--big-toggle-height) / 2);
   --small-toggle-width: calc(var(--small-toggle-height) * 2);

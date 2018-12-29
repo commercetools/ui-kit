@@ -27,16 +27,15 @@
 
 .defaultPrimaryAction {
   background-color: var(--color-white);
-  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  box-shadow: var(--shadow-7);
 }
 
 .defaultPrimaryAction:hover {
-  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+  box-shadow: var(--shadow-8);
 }
 
 .defaultPrimaryAction:active {
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
   background-color: var(--color-gray-95);
 }
 
@@ -71,7 +70,7 @@
   left: 0;
   border: 1px solid var(--color-gray);
   border-radius: var(--border-radius-6);
-  box-shadow: var(--shadow-1-first), var(--shadow-1-second);
+  box-shadow: var(--shadow-1);
 }
 
 .optionWrapper {

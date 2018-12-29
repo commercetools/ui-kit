@@ -16,6 +16,7 @@ import postcssDiscardComments from 'postcss-discard-comments';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
+import customProperties from './materials/custom-properties.json';
 
 const babelOptions = require('./scripts/get-babel-preset');
 
@@ -46,7 +47,7 @@ const postcssPlugins = [
   postcssDiscardComments(),
   postcssCustomProperties({
     preserve: false,
-    importFrom: 'materials/custom-properties.css',
+    importFrom: { 'custom-properties': customProperties },
   }),
   postcssReporter(),
 ];

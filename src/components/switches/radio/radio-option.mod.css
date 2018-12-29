@@ -12,21 +12,21 @@
 }
 
 .radioWrapper svg [id$='borderAndContent'] > [id$='border'] {
-  stroke: 1px var(--token-border-color-input-pristine) solid;
+  stroke: 1px var(--border-color-input-pristine) solid;
 }
 
 .radioWrapper svg [id$='borderAndContent'] > [id$='content'] {
-  fill: var(--token-border-color-input-focus);
+  fill: var(--border-color-input-focus);
 }
 
 /* isDisabled */
 
 .isDisabled svg [id$='borderAndContent'] > [id$='content'] {
-  fill: var(--token-font-color-disabled);
+  fill: var(--font-color-disabled);
 }
 
 .isDisabled svg [id$='borderAndContent'] > [id$='border'] {
-  stroke: var(--token-border-color-input-disabled);
+  stroke: var(--border-color-input-disabled);
 }
 
 /* Hover */
@@ -35,11 +35,11 @@
   svg
   [id$='borderAndContent']
   > [id$='border'] {
-  stroke: var(--token-border-color-input-focus);
+  stroke: var(--border-color-input-focus);
 }
 
 .isHovered svg [id$='borderAndContent'] > [id$='border'] {
-  stroke: var(--token-border-color-input-focus);
+  stroke: var(--border-color-input-focus);
 }
 
 /* Hidden input */

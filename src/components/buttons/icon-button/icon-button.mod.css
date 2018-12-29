@@ -11,7 +11,7 @@
 .button-appearance {
   display: inline-block;
   background-color: var(--color-white);
-  box-shadow: var(--shadow-7-first), var(--shadow-7-second);
+  box-shadow: var(--shadow-7);
   color: var(--color-black);
   transition: background-color var(--transition-linear-80ms),
     box-shadow 150ms ease-in-out;
@@ -87,26 +87,23 @@
 /* Default button */
 
 .default:hover {
-  box-shadow: var(--shadow-8-first), var(--shadow-8-second);
+  box-shadow: var(--shadow-8);
 }
 
 .default:active {
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
   background-color: var(--color-white);
 }
 
 /* Toggled button */
 
 .active {
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
   background-color: var(--color-white);
 }
 
 .active:hover {
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
   background-color: var(--color-gray-95);
 }
 
@@ -127,8 +124,7 @@
 .active.disabled.theme-blue {
   background-color: var(--color-blue-85);
   color: var(--color-white);
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
 }
 
 /* Toggled button */
@@ -160,8 +156,7 @@
 .active.disabled.theme-green {
   background-color: var(--color-green-85);
   color: var(--color-white);
-  box-shadow: var(--shadow-9-first), var(--shadow-9-second),
-    var(--shadow-9-third);
+  box-shadow: var(--shadow-9);
 }
 
 /* Toggled button */

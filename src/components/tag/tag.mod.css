@@ -3,8 +3,8 @@
 .contentWrapper {
   display: flex;
   align-items: center;
-  min-height: var(--token-size-height-tag);
-  border-radius: var(--token-border-radius-tag);
+  min-height: var(--size-height-tag);
+  border-radius: var(--border-radius-tag);
   padding: 5px var(--spacing-8);
   cursor: default;
   font-family: inherit;
@@ -35,21 +35,21 @@
 /* Normal */
 
 .wrapperTypeNormal {
-  background-color: var(--token-background-color-tag-pristine);
+  background-color: var(--background-color-tag-pristine);
 }
 
 .contentWrapperNormal {
-  border-color: var(--token-border-color-tag-pristine);
+  border-color: var(--border-color-tag-pristine);
 }
 
 /* Warning */
 
 .wrapperTypeWarning {
-  background-color: var(--token-background-color-tag-warning);
+  background-color: var(--background-color-tag-warning);
 }
 
 .contentWrapperWarning {
-  border-color: var(--token-border-color-tag-warning);
+  border-color: var(--border-color-tag-warning);
 }
 
 /* Clickable */
@@ -59,24 +59,24 @@
 }
 
 .clickableContentWrapper:hover {
-  box-shadow: var(--token-shadow-box-tag-hover);
+  box-shadow: var(--shadow-box-tag-hover);
 }
 
 .clickableContentWrapperNormal:hover {
-  border-color: var(--token-border-color-tag-focus);
+  border-color: var(--border-color-tag-focus);
 }
 
 .clickableContentWrapperWarning:hover {
-  border-color: var(--token-border-color-tag-warning-hover);
-  border-right: 1px solid var(--token-border-color-tag-pristine);
+  border-color: var(--border-color-tag-warning-hover);
+  border-right: 1px solid var(--border-color-tag-pristine);
 }
 
 .clickableRemovableContentWrapperNormal:hover {
-  border-right: 1px solid var(--token-border-color-tag-pristine);
+  border-right: 1px solid var(--border-color-tag-pristine);
 }
 
 .clickableRemovableContentWrapperWarning {
-  border-right: 1px solid var(--token-border-color-tag-warning);
+  border-right: 1px solid var(--border-color-tag-warning);
 }
 
 /* Removable */
@@ -86,9 +86,9 @@
 }
 
 .removeWrapper {
-  border-color: var(--token-border-color-tag-pristine);
+  border-color: var(--border-color-tag-pristine);
   padding: 0 var(--spacing-4);
-  border-radius: 0 var(--token-border-radius-tag) var(--token-border-radius-tag)
+  border-radius: 0 var(--border-radius-tag) var(--border-radius-tag)
     0;
   display: flex;
   align-items: center;
@@ -98,30 +98,30 @@
 }
 
 .removeWrapper:hover {
-  background-color: var(--token-background-color-tag-normal-hover);
-  box-shadow: var(--token-shadow-box-tag-hover);
+  background-color: var(--background-color-tag-normal-hover);
+  box-shadow: var(--shadow-box-tag-hover);
 }
 
 .removeWrapperTypeWarning {
-  border-color: var(--token-border-color-tag-warning);
+  border-color: var(--border-color-tag-warning);
 }
 
 .removeWrapperTypeWarning:hover {
-  background-color: var(--token-background-color-tag-warning-hover);
+  background-color: var(--background-color-tag-warning-hover);
 }
 
 .removeWrapper svg {
-  fill: var(--token-font-color-default);
+  fill: var(--font-color-default);
 }
 
 /* Disabled */
 
 .disabledWrapper {
-  background-color: var(--token-background-color-tag-disabled);
+  background-color: var(--background-color-tag-disabled);
 }
 
 .disabledContent {
-  color: var(--token-font-color-disabled);
+  color: var(--font-color-disabled);
 }
 
 .disabledRemove:hover {
@@ -130,5 +130,5 @@
 }
 
 .disabledRemove svg {
-  fill: var(--token-font-color-disabled);
+  fill: var(--font-color-disabled);
 }

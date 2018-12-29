@@ -1,10 +1,10 @@
 .currency-label {
   display: flex;
-  color: var(--token-font-color-disabled);
-  background-color: var(--token-background-color-input-disabled);
-  border-top-left-radius: var(--token-border-radius-input);
-  border-bottom-left-radius: var(--token-border-radius-input);
-  border: 1px var(--token-border-color-input-disabled) solid;
+  color: var(--font-color-disabled);
+  background-color: var(--background-color-input-disabled);
+  border-top-left-radius: var(--border-radius-input);
+  border-bottom-left-radius: var(--border-radius-input);
+  border: 1px var(--border-color-input-disabled) solid;
   border-right: 0;
   padding: 0 var(--spacing-8);
   align-items: center;
@@ -20,13 +20,13 @@
 .amountInput {
   display: flex;
   flex: 1;
-  color: var(--token-font-color-default);
-  font-family: var(--token-font-family-default);
-  font-size: var(--token-font-size-default);
-  height: var(--token-size-height-input);
-  border-top-right-radius: var(--token-border-radius-input);
-  border-bottom-right-radius: var(--token-border-radius-input);
-  border: 1px var(--token-border-color-input-pristine) solid;
+  color: var(--font-color-default);
+  font-family: var(--font-family-default);
+  font-size: var(--font-size-default);
+  height: var(--size-height-input);
+  border-top-right-radius: var(--border-radius-input);
+  border-bottom-right-radius: var(--border-radius-input);
+  border: 1px var(--border-color-input-pristine) solid;
   padding: 0 var(--spacing-8);
   transition: var(--transition-standard);
   outline: none;
@@ -36,55 +36,55 @@
 }
 
 .amountInput::placeholder {
-  color: var(--token-font-color-placeholder);
+  color: var(--font-color-placeholder);
 }
 
 /* States for amount */
 
 .amount-default {
   composes: amountInput;
-  border-color: var(--token-border-color-input-pristine);
-  background-color: var(--token-background-color-input-pristine);
+  border-color: var(--border-color-input-pristine);
+  background-color: var(--background-color-input-pristine);
 }
 
 .amount-disabled {
   composes: amountInput;
   cursor: not-allowed;
-  color: var(--token-font-color-disabled);
-  border-color: var(--token-border-color-input-disabled);
-  background-color: var(--token-background-color-input-disabled);
+  color: var(--font-color-disabled);
+  border-color: var(--border-color-input-disabled);
+  background-color: var(--background-color-input-disabled);
   opacity: 1; /* fix for mobile safari */
 }
 
 .amount-readonly {
   composes: amountInput;
-  border-color: var(--token-border-color-input-readonly);
-  color: var(--token-font-color-readonly);
+  border-color: var(--border-color-input-readonly);
+  color: var(--font-color-readonly);
   cursor: default;
 }
 
 .amount-warning {
   composes: amountInput;
-  color: var(--token-font-color-warning);
-  border-color: var(--token-border-color-input-warning);
+  color: var(--font-color-warning);
+  border-color: var(--border-color-input-warning);
 }
 
 .amount-error {
   composes: amountInput;
-  color: var(--token-font-color-error);
-  border-color: var(--token-border-color-input-error);
+  color: var(--font-color-error);
+  border-color: var(--border-color-input-error);
 }
 
 .amount-focus {
   composes: amountInput;
-  border-color: var(--token-border-color-input-focus);
-  background: var(--token-background-color-input-pristine);
-  color: var(--token-font-color-default);
+  border-color: var(--border-color-input-focus);
+  background: var(--background-color-input-pristine);
+  color: var(--font-color-default);
 }
 
 .amount-default:active,
 .amount-default:focus {
-  border-color: var(--token-border-color-input-focus);
-  background: var(--token-background-color-input-pristine);
-  color: var(--token-font-color-default);
+  border-color: var(--border-color-input-focus);
+  background: var(--background-color-input-pristine);
+  color: var(--font-color-default);
 }

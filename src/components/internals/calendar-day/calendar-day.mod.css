@@ -44,7 +44,7 @@
 
 .rangeBetween {
   background-color: var(--color-gray-90);
-  color: var(--token-font-color-default);
+  color: var(--font-color-default);
 }
 
 .today {
