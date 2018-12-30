@@ -106,6 +106,7 @@
     "@storybook/addon-knobs": "4.1.2",
     "@storybook/addon-links": "4.1.2",
     "@storybook/addon-options": "4.1.2",
+    "@storybook/addon-storysource": "4.1.4",
     "@storybook/react": "4.1.2",
     "@svgr/rollup": "4.1.0",
     "@svgr/webpack": "4.1.0",

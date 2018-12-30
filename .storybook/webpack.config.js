@@ -26,6 +26,12 @@ module.exports = (storybookBaseConfig, configType) => {
   storybookBaseConfig.module.rules = [
     // Disable require.ensure as it's not a standard language feature.
     { parser: { requireEnsure: false } },
+    // add story source
+    {
+      test: /\.story\.js$/,
+      loaders: [require.resolve('@storybook/addon-storysource/loader')],
+      enforce: 'pre',
+    },
     // Process JS with Babel.
     {
       test: /\.js$/,
