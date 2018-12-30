@@ -79,7 +79,7 @@ const filterAnimals = inputValue =>
 const loadOptions = inputValue =>
   delay(500).then(() => filterAnimals(inputValue));
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(AsyncSelectFieldReadme))
   .add('AsyncSelectField', () => {

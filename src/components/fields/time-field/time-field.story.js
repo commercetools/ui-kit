@@ -15,7 +15,7 @@ import TimeFieldReadme from './README.md';
 import * as icons from '../../icons';
 import TimeField from './time-field';
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(TimeFieldReadme))
   .add('TimeField', () => (

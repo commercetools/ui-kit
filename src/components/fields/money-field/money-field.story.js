@@ -118,7 +118,7 @@ class MoneyFieldStory extends React.Component {
   }
 }
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(MoneyFieldReadme))
   .add('MoneyField', () => <MoneyFieldStory />);

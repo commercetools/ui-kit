@@ -6,7 +6,7 @@ import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import WarningMessage from './warning-message';
 
-storiesOf('Messages', module)
+storiesOf('Components|Messages', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('WarningMessage', () => (

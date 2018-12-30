@@ -15,7 +15,7 @@ import TextFieldReadme from './README.md';
 import * as icons from '../../icons';
 import TextField from './text-field';
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(TextFieldReadme))
   .add('TextField', () => (

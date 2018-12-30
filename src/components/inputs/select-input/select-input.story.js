@@ -16,7 +16,7 @@ import Spacings from '../../spacings';
 import Readme from './README.md';
 import SelectInput from './select-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('SelectInput', () => {

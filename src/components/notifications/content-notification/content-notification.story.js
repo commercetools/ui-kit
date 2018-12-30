@@ -6,7 +6,7 @@ import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import ContentNotification from './content-notification';
 
-storiesOf('Notifications', module)
+storiesOf('Components|Notifications', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('ContentNotification', () => (

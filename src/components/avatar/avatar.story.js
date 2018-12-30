@@ -6,7 +6,7 @@ import Section from '../../../.storybook/decorators/section';
 import Avatar from './avatar';
 import Readme from './README.md';
 
-storiesOf('Avatar', module)
+storiesOf('Components|Avatar', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Avatar', () => (

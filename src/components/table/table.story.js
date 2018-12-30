@@ -81,7 +81,7 @@ const baseColumns = onCheckboxClick => [
   },
 ];
 
-storiesOf('Table', module)
+storiesOf('Components|Table', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('basic example', () => <BaseTable />)

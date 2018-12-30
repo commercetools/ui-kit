@@ -96,7 +96,7 @@ class MoneyInputStory extends React.Component {
   }
 }
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(MoneyInputReadme))
   .add('MoneyInput', () => <MoneyInputStory />);

@@ -7,7 +7,7 @@ import CollapsiblePanel from './collapsible-panel';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import Readme from './README.md';
 
-storiesOf('Panels', module)
+storiesOf('Components|Panels', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('CollapsiblePanel', () => {
