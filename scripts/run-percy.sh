@@ -10,7 +10,7 @@ if [[ $TRAVIS_PULL_REQUEST != 'false' || ${TRAVIS_BRANCH} == 'master' ]]
   regexp='^renovate\/'
   if ! [[ ${TRAVIS_PULL_REQUEST_BRANCH} =~ ${regexp} ]]
     then
-      yarn vrt-playground:build && percy exec -- jest --config jest.visual.config.js --runInBand --reporters jest-silent-reporter
+      yarn visual-testing-playground:build && percy exec -- jest --config jest.visual.config.js --runInBand --reporters jest-silent-reporter
     else
       echo 'Skipping percy - PR opened by `renovate`'
   fi
