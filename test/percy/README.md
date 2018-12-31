@@ -10,7 +10,7 @@ This works by taking screenshots of our components in different states. When cha
 
 #### Create files ending in `.visualroute.js`
 
-Our `visual-testing-playground` detects all files ending in `.visualroute.js`, and creates a route for each of these files. We can then use these routes in our test files ending in `visualspec.js`
+Our `visual-testing-app` detects all files ending in `.visualroute.js`, and creates a route for each of these files. We can then use these routes in our test files ending in `visualspec.js`
 
 #### Write tests in ending `.visualspec.js`
 
@@ -51,7 +51,7 @@ export const component = () => (
 );
 ```
 
-You can see your route by running `yarn visual-testing-playground:build` and `yarn visual-testing-playground:serve` and then navigating to your defined routePath.
+You can see your route by running `yarn visual-testing-app:build` and `yarn visual-testing-app:serve` and then navigating to your defined routePath.
 
 ## Adding Visual Regression Tests
 
@@ -92,7 +92,7 @@ You can use multiple specs within a `Suite`.
 
 ### Viewing snapshots in browser
 
-You can run `yarn visual-testing-playground:build` and `yarn visual-testing-playground:serve` to show your routes in the browser without having to upload them. This is useful when you're working on adding more snapshots or resolving bugs in existing snapshots.
+You can run `yarn visual-testing-app:build` and `yarn visual-testing-app:serve` to show your routes in the browser without having to upload them. This is useful when you're working on adding more snapshots or resolving bugs in existing snapshots.
 
 No snapshots will be uploaded to Percy in this case.
 
@@ -109,7 +109,7 @@ export PERCY_TOKEN=aaabbbcccdddeeefff
 export PERCY_BRANCH=local
 
 # build the visual testing playground app so your visual routes are available.
-yarn visual-testing-playground:build
+yarn visual-testing-app:build
 # Run percy. Once it's done it will print a URL where you
 # can review the visual diffs.
 yarn percy

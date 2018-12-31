@@ -24,7 +24,7 @@ if (!info) {
 module.exports = {
   mode: 'development',
   stats: 'minimal',
-  entry: './visual-testing-playground/src/index.js',
+  entry: './visual-testing-app/src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),

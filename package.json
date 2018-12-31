@@ -58,8 +58,8 @@
     "percy": "percy exec -- yarn test:visual",
     "test:visual": "jest --config jest.visual.config.js --runInBand",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
-    "visual-testing-playground:build": "rimraf visual-testing-playground/dist && NODE_ENV=production webpack --config visual-testing-playground/webpack.config.js",
-    "visual-testing-playground:serve": "node visual-testing-playground/server"
+    "visual-testing-app:build": "rimraf visual-testing-app/dist && NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
+    "visual-testing-app:serve": "node visual-testing-app/server"
   },
   "dependencies": {
     "@emotion/core": "10.0.5",
