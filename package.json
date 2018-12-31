@@ -42,8 +42,6 @@
     "build": "rimraf dist && cross-env NODE_ENV=production rollup --config",
     "build:watch": "rimraf dist && cross-env NODE_ENV=production rollup --config --watch",
     "playground": "webpack-dev-server --config playground/webpack.config.js --watch",
-    "vrt-playground:build": "rimraf vrt-examples/dist && NODE_ENV=production webpack --config vrt-examples/webpack.config.js",
-    "vrt-playground:serve": "node vrt-examples/server",
     "start": "yarn storybook:start",
     "storybook:start": "start-storybook -p 9002 -s docs/assets",
     "docs:publish": "node scripts/publish-docs.js",
@@ -58,8 +56,10 @@
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
     "percy": "percy exec -- yarn test:visual",
-    "test:visual": "jest --config jest.visual.config.js --maxWorkers=1",
-    "test:bundle:watch": "jest --config jest.bundle.config.js --watch"
+    "test:visual": "jest --config jest.visual.config.js --runInBand",
+    "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
+    "visual-testing-playground:build": "rimraf visual-testing-playground/dist && NODE_ENV=production webpack --config visual-testing-playground/webpack.config.js",
+    "visual-testing-playground:serve": "node visual-testing-playground/server"
   },
   "dependencies": {
     "@emotion/core": "10.0.5",

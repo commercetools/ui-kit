@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    command: 'node ./vrt-examples/server.js',
+    command: 'node ./visual-testing-playground/server.js',
     port: 3001,
   },
 };

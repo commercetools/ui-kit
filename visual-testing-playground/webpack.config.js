@@ -16,7 +16,7 @@ if (!info) {
   // We can only start ui-kit when it was built first
   console.info(
     '\x1b[33m%s\x1b[0m', // log in yellow
-    '⚠️  You need to run "yarn build" or "yarn build:watch" before starting the playground!'
+    '⚠️  You need to run "yarn build" or "yarn build:watch" before starting the visual testing playground!'
   );
   process.exit(0);
 }
@@ -24,7 +24,7 @@ if (!info) {
 module.exports = {
   mode: 'development',
   stats: 'minimal',
-  entry: './vrt-examples/src/index.js',
+  entry: './visual-testing-playground/src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -33,17 +33,6 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          query: {
-            compact: true,
-            presets: [require.resolve('../scripts/get-babel-preset')],
-          },
-        },
-      },
-      {
-        test: /\.example.js$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
