@@ -1,13 +1,12 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../test/percy/widths';
 
 describe('Messages', () => {
   beforeAll(async () => {
     await page.goto('http://localhost:3001/messages');
   });
 
-  it('Messages', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('An error message');
-    await percySnapshot(page, 'Messages', { widths });
+    await percySnapshot(page, 'Messages');
   });
 });

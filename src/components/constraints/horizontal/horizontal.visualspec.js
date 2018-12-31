@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('Constraints.Horizontal', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('Constraints.Horizontal', () => {
 
   it('Constraints.Horizontal', async () => {
     await expect(page).toMatch('when constraints is "xs"');
-    await percySnapshot(page, 'Constraints.Horizontal', { widths });
+    await percySnapshot(page, 'Constraints.Horizontal');
   });
 });

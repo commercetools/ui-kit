@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('DateField', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('DateField', () => {
 
   it('DateField', async () => {
     await expect(page).toMatch('Release Date');
-    await percySnapshot(page, 'DateField', { widths });
+    await percySnapshot(page, 'DateField');
   });
 });

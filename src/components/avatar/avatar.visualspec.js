@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../test/percy/widths';
 
 describe('Avatar', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('Avatar', () => {
 
   it('Avatar', async () => {
     await expect(page).toMatch('when gravatar hash is known');
-    await percySnapshot(page, 'Avatar', { widths });
+    await percySnapshot(page, 'Avatar');
   });
 });

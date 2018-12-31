@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('LocalizedTextField', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('LocalizedTextField', () => {
 
   it('LocalizedTextField', async () => {
     await expect(page).toMatch('Welcome Text');
-    await percySnapshot(page, 'LocalizedTextField', { widths });
+    await percySnapshot(page, 'LocalizedTextField');
   });
 });

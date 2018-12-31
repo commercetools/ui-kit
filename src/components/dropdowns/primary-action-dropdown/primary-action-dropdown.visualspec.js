@@ -1,13 +1,12 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('PrimaryActionDropdown', () => {
   beforeAll(async () => {
     await page.goto('http://localhost:3001/primary-action-dropdown');
   });
 
-  it('PrimaryActionDropdown', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('Primary option');
-    await percySnapshot(page, 'PrimaryActionDropdown', { widths });
+    await percySnapshot(page, 'PrimaryActionDropdown');
   });
 });

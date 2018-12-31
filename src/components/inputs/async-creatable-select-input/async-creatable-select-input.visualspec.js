@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('AsyncCreatableSelectInput', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('AsyncCreatableSelectInput', () => {
 
   it('AsyncCreatableSelectInput', async () => {
     await expect(page).toMatch('minimal');
-    await percySnapshot(page, 'AsyncCreatableSelectInput', { widths });
+    await percySnapshot(page, 'AsyncCreatableSelectInput');
   });
 });

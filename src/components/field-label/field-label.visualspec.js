@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../test/percy/widths';
 
 describe('FieldLabel', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('FieldLabel', () => {
 
   it('FieldLabel', async () => {
     await expect(page).toMatch('Hello');
-    await percySnapshot(page, 'FieldLabel', { widths });
+    await percySnapshot(page, 'FieldLabel');
   });
 });

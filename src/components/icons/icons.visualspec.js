@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../test/percy/widths';
 
 describe('Icons', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('Icons', () => {
 
   it('Icons', async () => {
     await expect(page).toMatch('AddBoldIcon');
-    await percySnapshot(page, 'Icons', { widths });
+    await percySnapshot(page, 'Icons');
   });
 });

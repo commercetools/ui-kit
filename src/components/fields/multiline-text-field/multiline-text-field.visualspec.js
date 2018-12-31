@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('MultilineTextField', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('MultilineTextField', () => {
 
   it('MultilineTextField', async () => {
     await expect(page).toMatch('Welcome Text');
-    await percySnapshot(page, 'MultilineTextField', { widths });
+    await percySnapshot(page, 'MultilineTextField');
   });
 });

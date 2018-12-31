@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('PasswordField', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('PasswordField', () => {
 
   it('PasswordField', async () => {
     await expect(page).toMatch('Welcome Text');
-    await percySnapshot(page, 'PasswordField', { widths });
+    await percySnapshot(page, 'PasswordField');
   });
 });

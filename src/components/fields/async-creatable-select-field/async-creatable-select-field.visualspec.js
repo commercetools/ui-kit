@@ -1,5 +1,4 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('AsyncCreatableSelectField', () => {
   beforeAll(async () => {
@@ -8,6 +7,6 @@ describe('AsyncCreatableSelectField', () => {
 
   it('AsyncCreatableSelectField', async () => {
     await expect(page).toMatch('State');
-    await percySnapshot(page, 'AsyncCreatableSelectField', { widths });
+    await percySnapshot(page, 'AsyncCreatableSelectField');
   });
 });

@@ -61,7 +61,6 @@ Below is an example of how to add Visual Regression Test.
 // primary-button.visualspec.js
 
 import { percySnapshot } from '@percy/puppeteer';
-import { widths } from '../../../../test/percy/widths';
 
 describe('PrimaryButton', () => {
   beforeAll(async () => {
@@ -70,7 +69,7 @@ describe('PrimaryButton', () => {
 
   it('PrimaryButton', async () => {
     await expect(page).toMatch('A label text');
-    await percySnapshot(page, 'PrimaryButton', { widths });
+    await percySnapshot(page, 'PrimaryButton');
   });
 });
 ```
