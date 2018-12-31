@@ -8,7 +8,7 @@ The tokens give semantic meaning to our plain palette of choices..
 - [What are Choices, Decisions and Design Tokens?](#what-are-choices-decisions-and-design-tokens)
 - [Choices](#choices)
 - [Design Tokens](#design-tokens)
-- [Design Tokens limit choices by making decisions](#design-tokens-limit-choices-by-making-desicions)
+- [Design Tokens limit choices by making decisions](#design-tokens-limit-choices-by-making-decisions)
   - [Example for colors](#example-for-colors)
   - [Example for font-sizes](#example-for-font-sizes)
 - [Token Structure](#token-structure)
