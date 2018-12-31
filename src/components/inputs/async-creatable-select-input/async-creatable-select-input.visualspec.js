@@ -2,10 +2,10 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('AsyncCreatableSelectInput', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/async-creatable-select-input');
+    await page.goto(`${HOST}/async-creatable-select-input`);
   });
 
-  it('AsyncCreatableSelectInput', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('minimal');
     await percySnapshot(page, 'AsyncCreatableSelectInput');
   });

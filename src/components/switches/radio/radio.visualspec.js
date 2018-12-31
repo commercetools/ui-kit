@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('Radio', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/radio');
+    await page.goto(`${HOST}/radio`);
   });
 
   it('Default', async () => {

@@ -2,10 +2,10 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('AsyncSelectField', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/async-select-field');
+    await page.goto(`${HOST}/async-select-field`);
   });
 
-  it('AsyncSelectField', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('State');
     await percySnapshot(page, 'AsyncSelectField');
   });

@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('FlatButton', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/flat-button');
+    await page.goto(`${HOST}/flat-button`);
   });
 
   it('Default', async () => {

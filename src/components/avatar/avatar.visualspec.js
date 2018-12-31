@@ -2,10 +2,10 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('Avatar', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/avatar');
+    await page.goto(`${HOST}/avatar`);
   });
 
-  it('Avatar', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('when gravatar hash is known');
     await percySnapshot(page, 'Avatar');
   });

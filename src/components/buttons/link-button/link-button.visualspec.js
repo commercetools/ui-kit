@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('LinkButton', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/link-button');
+    await page.goto(`${HOST}/link-button`);
   });
 
   it('Default', async () => {

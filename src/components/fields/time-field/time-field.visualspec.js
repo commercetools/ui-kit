@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('TimeField', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/time-field');
+    await page.goto(`${HOST}/time-field`);
   });
 
   it('Default', async () => {

@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('TimeInput', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/time-input');
+    await page.goto(`${HOST}/time-input`);
   });
 
   it('Default', async () => {

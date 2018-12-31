@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('AsyncSelectInput', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/async-select-input');
+    await page.goto(`${HOST}/async-select-input`);
   });
 
   it('Default', async () => {

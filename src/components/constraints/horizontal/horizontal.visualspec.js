@@ -2,10 +2,10 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('Constraints.Horizontal', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/constraints-horizontal');
+    await page.goto(`${HOST}/constraints-horizontal`);
   });
 
-  it('Constraints.Horizontal', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('when constraints is "xs"');
     await percySnapshot(page, 'Constraints.Horizontal');
   });

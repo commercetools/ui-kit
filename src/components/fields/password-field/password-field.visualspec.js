@@ -2,10 +2,10 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('PasswordField', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/password-field');
+    await page.goto(`${HOST}/password-field`);
   });
 
-  it('PasswordField', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('Welcome Text');
     await percySnapshot(page, 'PasswordField');
   });

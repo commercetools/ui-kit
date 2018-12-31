@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('LocalizedMultilineTextField', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/localized-multiline-text-field');
+    await page.goto(`${HOST}/localized-multiline-text-field`);
   });
 
   it('Default', async () => {

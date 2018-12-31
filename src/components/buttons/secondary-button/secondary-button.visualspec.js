@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('SecondaryButton', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/secondary-button');
+    await page.goto(`${HOST}/secondary-button`);
   });
 
   it('Default', async () => {

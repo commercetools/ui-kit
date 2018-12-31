@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('Messages', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/messages');
+    await page.goto(`${HOST}/messages`);
   });
 
   it('Default', async () => {

@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('PrimaryActionDropdown', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/primary-action-dropdown');
+    await page.goto(`${HOST}/primary-action-dropdown`);
   });
 
   it('Default', async () => {

@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('CollapsiblePanel', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/collapsible-panel');
+    await page.goto(`${HOST}/collapsible-panel`);
   });
 
   it('Default', async () => {

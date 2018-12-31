@@ -2,10 +2,10 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('Icons', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/icons');
+    await page.goto(`${HOST}/icons`);
   });
 
-  it('Icons', async () => {
+  it('Default', async () => {
     await expect(page).toMatch('AddBoldIcon');
     await percySnapshot(page, 'Icons');
   });

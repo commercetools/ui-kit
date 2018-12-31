@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('Spacings', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/spacings');
+    await page.goto(`${HOST}/spacings`);
   });
 
   it('Default', async () => {

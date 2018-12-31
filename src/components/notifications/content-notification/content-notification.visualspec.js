@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('ContentNotification', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/content-notification');
+    await page.goto(`${HOST}/content-notification`);
   });
 
   it('Default', async () => {

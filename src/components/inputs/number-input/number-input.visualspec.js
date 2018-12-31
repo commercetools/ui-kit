@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('NumberInput', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/number-input');
+    await page.goto(`${HOST}/number-input`);
   });
 
   it('Default', async () => {

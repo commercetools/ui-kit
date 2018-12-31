@@ -2,7 +2,7 @@ import { percySnapshot } from '@percy/puppeteer';
 
 describe('PasswordInput', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3001/password-input');
+    await page.goto(`${HOST}/password-input`);
   });
 
   it('Default', async () => {
