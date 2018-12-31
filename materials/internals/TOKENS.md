@@ -1,14 +1,14 @@
 # Design Tokens
 
-> This document is WIP and subject to change as we learn more about design tokens.
+> This document is a WIP and subject to change as we learn more about design tokens.
 
 We use design tokens as the smallest form of information in our visual language.
-The tokens give semantic meaning to the plain palette of choices we have.
+The tokens give semantic meaning to our plain palette of choices..
 
 - [What are Choices, Decisions and Design Tokens?](#what-are-choices-decisions-and-design-tokens)
 - [Choices](#choices)
 - [Design Tokens](#design-tokens)
-- [Design Tokens limit choices by making desicions](#design-tokens-limit-choices-by-making-desicions)
+- [Design Tokens limit choices by making decisions](#design-tokens-limit-choices-by-making-desicions)
   - [Example for colors](#example-for-colors)
   - [Example for font-sizes](#example-for-font-sizes)
 - [Token Structure](#token-structure)
@@ -26,7 +26,7 @@ A design system offers a range of **choices**. The choices are all possible valu
 
 **Decisions** apply choices to specific situations, giving them semantic meaning. For example, only a subset of all available colors can be used for background colors. Another subset of colors can be used for font colors. More specific decisions could be to use a certain color like `color-orange` (from the choices) for the border color of an input component in a disabled state.
 
-Every **decision** made results in a **Design Token** which represent that decision by giving it semantic meaning. For example the token `--border-color-for-input-when-disabled` could hold `color-orange` which would constitue a decision. The decision would be to use the choice `color-orange` for the property `border-color` when a component of the component group `input` is in the `disabled` state.
+Every **decision** made results in a **Design Token** which represent that decision by giving it semantic meaning. For example the token `--border-color-for-input-when-disabled` could hold `color-orange` which would constitute a decision. The decision would be to use the choice `color-orange` for the property `border-color` when a component of the component group `input` is in the `disabled` state.
 
 ## Choices
 
@@ -41,10 +41,10 @@ The following are examples of choices available in our design system:
 
 Check out the story in [Storybook](https://uikit.commercetools.com/?selectedKind=Basics%7CTokens&selectedStory=All%20Tokens) to see our design tokens.
 
-## Design Tokens limit choices by making desicions
+## Design Tokens limit choices by making decisions
 
 These general choices are narrowed down by design tokens. Design Tokens
-limit the choices we offer for certain properties by deciding which use for specific groups.
+limit the choices we offer for certain properties by deciding which to use for specific groups.
 
 ### Example for colors
 
@@ -111,7 +111,7 @@ _This short [article](https://techpinions.com/snippet-design-is-the-difference-b
 
 Our design tokens aim to be human-readable and easy to comprehend. We settled on
 a format which contains separator words (`for`, `when` and `on`) to help distinguish
-the different aspects of a design token.
+between the different aspects of a design token.
 
 <img src="https://pbs.twimg.com/media/DsD1XN-XgAAb9lx.jpg" alt="token-structure" width="552" />
 
@@ -154,7 +154,7 @@ Example:
 
 <img src="https://i.imgur.com/y8Dhedi.jpg" width="552" />
 
-> Note: We dropped the `--token` prefix in the meantime but didnt upgrade this graphic yet.
+> Note: We already dropped the `--token` prefix but have not upgraded this graphic yet.
 
 ### Aspect: Property
 
@@ -172,7 +172,7 @@ The Component Group limits the choices to a certain type of component. We identi
 
 ### Aspect: State
 
-States are not exlcusive. An element can be in multiple states at the same time.
+States are not exclusive. An element can be in multiple states at the same time.
 
 We identified the following states:
 
@@ -207,7 +207,7 @@ _This explanation was taken from https://stackoverflow.com/a/1678020 and modifie
 
 ### Aspect: Modifier
 
-Some elements need to look different in certain situations. Modifers allow to
+Some elements need to look different in certain situations. Modifiers allow us to
 represent that information in the design token.
 
 #### `on-dark`
