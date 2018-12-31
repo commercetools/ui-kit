@@ -1,5 +1,5 @@
 import React from 'react';
-import { InformationIcon, SecondaryButton } from '../../../../dist/ui-kit.esm';
+import { InformationIcon, SecondaryButton } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/secondary-button';

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 const componentsContext = require.context(
   '../../src/components',
   true,
-  /\.example\.js$/
+  /\.visualroute\.js$/
 );
 const allComponents = componentsContext.keys().reduce((components, file) => {
   const Comp = componentsContext(file);

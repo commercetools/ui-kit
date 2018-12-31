@@ -28,7 +28,7 @@ overrides:
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
-  - files: ['*.example.js']
+  - files: ['*.visualroute.js']
     rules:
       'react/display-name': 0
   - files: ['*.visualspec.js']
