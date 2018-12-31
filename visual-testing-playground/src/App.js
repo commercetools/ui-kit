@@ -8,7 +8,12 @@ const componentsContext = require.context(
 );
 const allComponents = componentsContext.keys().reduce((components, file) => {
   const Comp = componentsContext(file);
-  const label = file.substring(file.lastIndexOf('/') + 1);
+  // trim leading slash
+  const label = Comp.routePath.substring(1);
+  if (components[label]) {
+    // eslint-disable-next-line no-console
+    console.error(`Duplicate route generated for: /${label}`);
+  }
   // eslint-disable-next-line no-param-reassign
   components[label] = Comp;
   return components;
