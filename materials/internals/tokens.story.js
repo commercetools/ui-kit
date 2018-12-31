@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
-// import { Headline } from '../../../src/components/typography/text';
+import withReadme from 'storybook-readme/with-readme';
+import Readme from './TOKENS.md';
 import TextInput from '../../src/components/inputs/text-input';
 import definition from './definition.yaml';
 
@@ -557,4 +558,6 @@ class Story extends React.Component {
   }
 }
 
-storiesOf('Basics|Tokens', module).add('All Tokens', () => <Story />);
+storiesOf('Basics|Tokens', module)
+  .addDecorator(withReadme(Readme))
+  .add('All Tokens', () => <Story />);
