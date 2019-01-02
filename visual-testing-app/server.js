@@ -9,12 +9,7 @@ app.use('/favicon.ico', (req, res) => {
   res.status(404).end();
 });
 
-app.use(
-  '/dist/',
-  express.static(`${__dirname}/dist/`, {
-    maxAge: '365d',
-  })
-);
+app.use('/dist/', express.static(`${__dirname}/dist/`, {}));
 
 app.use('*', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);

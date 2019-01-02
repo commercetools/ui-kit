@@ -22,18 +22,38 @@ if (!info) {
 }
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   stats: 'minimal',
   entry: './visual-testing-app/src/index.js',
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          priority: -20,
+        },
+        'ui-kit': {
+          test: /ui-kit.esm/,
+          name: 'ui-kit',
+          chunks: 'all',
+          priority: -15,
+        },
+      },
+    },
+  },
+
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: [/(node_modules)/, /ui-kit.esm/],
+        exclude: [/(node_modules)/, /(ui-kit.esm)/],
         use: {
           loader: 'babel-loader',
           query: {
