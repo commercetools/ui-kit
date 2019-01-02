@@ -22,6 +22,7 @@ if (!info) {
 }
 
 module.exports = {
+  target: 'web',
   mode: 'production',
   stats: 'minimal',
   entry: './visual-testing-app/src/index.js',
@@ -31,6 +32,7 @@ module.exports = {
     publicPath: '/',
   },
   optimization: {
+    minimize: false,
     splitChunks: {
       cacheGroups: {
         vendors: {
