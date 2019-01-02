@@ -16,15 +16,16 @@ script:
   # instruct bash to quit if there is a non zero response code (error)
   # https://github.com/commercetools/ui-kit/pull/284
   - set -e
+  - yarn run jest --projects jest.test.config.js --maxWorkers=4 --reporters jest-silent-reporter
   # the jest.bundle.config.js tests run on the bundle,
   # so we need to build it first
   - yarn build
-  - yarn run jest --projects jest.*.config.js --maxWorkers=4 --reporters jest-silent-reporter
-  - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
+  - yarn run jest --projects jest.bundle.config.js --maxWorkers=4 --reporters jest-silent-reporter
   # skip percy builds when this is not a pull request or when it's not master to save precious snaps
   # also skip when PR is opened by `renovate`
-  - bash ./scripts/run-percy.sh
   # back to default in case internal travis scripts return non zero response codes.
+  - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
+  - bash ./scripts/run-percy.sh
   - set +e
 
 before_deploy: yarn build
