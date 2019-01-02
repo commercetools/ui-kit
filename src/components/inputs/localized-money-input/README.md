@@ -165,38 +165,6 @@ LocalizedMoneyInput.getEmptyCurrencies({ EUR: '', USD: '12.77' }); // -> ['EUR']
 LocalizedMoneyInput.getEmptyCurrencies({ EUR: '12.77' }); // -> []
 ```
 
-##### `LocalizedMoneyInput.isAllEmpty`
-
-The `isAllEmpty` function will return `true` when the passed `LocalizedMoneyInput` values are all empty value (no amount, or does not exist at all).
-
-```js
-LocalizedMoneyInput.isAllEmpty([
-  { amount: '', currencyCode: 'EUR' },
-  { amount: '', currencyCode: 'USD' },
-]); // ->  true
-
-LocalizedMoneyInput.isAllEmpty([
-  { amount: '12.93', currencyCode: 'EUR' },
-  { amount: '', currencyCode: 'USD' },
-]); // ->  false
-```
-
-##### `LocalizedMoneyInput.hasEmptyValue`
-
-The `hasEmptyValue` function will return `true` when the passed `LocalizedMoneyInput` values has at least one empty value (no amount, or does not exist at all).
-
-```js
-LocalizedMoneyInput.hasEmptyValue([
-  { amount: '', currencyCode: 'EUR' },
-  { amount: '', currencyCode: 'USD' },
-]); // ->  false
-
-LocalizedMoneyInput.hasEmptyValue([
-  { amount: '12.93', currencyCode: 'EUR' },
-  { amount: '', currencyCode: 'USD' },
-]); // ->  true
-```
-
 ### Example
 
 Here's an example of how `LocalizedMoneyInput` would be used inside a form.
@@ -214,7 +182,7 @@ import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
 const doc = {
   prices: [
     {
-      currencyCode: 'ALL',
+      currencyCode: 'EUR',
       centAmount: 1200
     },
     {
@@ -225,10 +193,10 @@ const doc = {
 };
 
 // A function to convert a document to form values.
-const docToFormValues = aDoc => ({
+const docToFormValues = doc => ({
   // The parseMoneyValue function will turn a MoneyValue into a
   // value the LocalizedMoneyInput component can handle ({currency: amount})
-  prices: LocalizedMoneyInput.parseMoneyValues(aDoc.prices),
+  prices: LocalizedMoneyInput.parseMoneyValues(doc.prices),
 });
 
 // a function to convert form values back to a document
@@ -253,11 +221,11 @@ const validate = formValues => {
   // ['ERU', 'USD']
   // THis form dosen't accept highprecision prices
   const highPrecisionCurrencies = LocalizedMoneyInput.getHighPrecisionCurrencies(formValues.prices);
+
   // ['CAD', 'USD']
   emptyCurrencies.forEach(emptyCurrency => {
     errors.prices[emptyCurrency].missing = true;
   });
-
   highPrecisionCurrencies.forEach(highPrecisionCurrency => {
     errors.prices[highPrecisionCurrency].highPrecision = true;
   });
@@ -295,15 +263,17 @@ return (
       touched,
       setFieldValue,
       setFieldTouched,
+      handleChange,
+      handleBlur,
       handleSubmit,
       isSubmitting,
     }) => (
       <form onSubmit={handleSubmit}>
         <LocalizedMoneyInput
           value={values.prices}
-          onBlur={() => setFieldTouched('prices')}
+          onChange={handleChange}
+          onBlur={handleBlur}
           isDisabled={isSubmitting}
-          onChange={value => setFieldValue('prices', value)}
           errors={renderErrors(errors)}
           horizontalConstraint="l"
         />
