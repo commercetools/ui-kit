@@ -157,7 +157,7 @@ class BaseTable extends React.PureComponent {
   render() {
     return (
       <Suite>
-        <Spec label="Basic example">
+        <Spec label="Basic example" omitPropsList>
           <Table
             columns={this.columns}
             rowCount={this.state.rows.length}
