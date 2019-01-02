@@ -616,14 +616,14 @@ describe('LocalizedMoneyInput.getEmptyCurrencies', () => {
     it('should return empty array', () => {
       expect(
         LocalizedMoneyInput.getEmptyCurrencies({ EUR: '5.22', USD: '31.88' })
-      ).toMatchObject([]);
+      ).toHaveLength(0);
     });
   });
   describe('when value is empty', () => {
     it("should return the currencies that don't have value", () => {
       expect(
         LocalizedMoneyInput.getEmptyCurrencies({ EUR: '', USD: '31.88' })
-      ).toMatchObject(['EUR']);
+      ).toEqual(expect.arrayContaining(['EUR']));
     });
   });
 });

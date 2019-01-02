@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import without from 'lodash.without';
 import oneLine from 'common-tags/lib/oneLine';
 import { injectIntl } from 'react-intl';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import {
-  sortCurrencies,
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
   getHasWarningOnRemainingLanguages,
@@ -19,6 +19,13 @@ import CurrencyControl from './currency-control';
 import styles from './localized-money-input.mod.css';
 
 const sequentialId = createSequentialId('localized-money-input-');
+// sorts the currencies with the following priority:
+// - The selected currency is placed first (e.g EUR)
+// - All other currencies follow, sorted alphabetically as well
+export const sortCurrencies = (selectedCurrency, allCurrencies) => {
+  const remainingCurrencies = without(allCurrencies, selectedCurrency);
+  return [selectedCurrency, ...remainingCurrencies.sort()];
+};
 
 class LocalizedInput extends React.Component {
   static displayName = 'LocalizedInput';
