@@ -33,7 +33,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
+        exclude: [/(node_modules)/, /ui-kit.esm/],
         use: {
           loader: 'babel-loader',
           query: {
