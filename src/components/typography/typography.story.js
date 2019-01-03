@@ -31,14 +31,14 @@ storiesOf('Basics|Typography/Text', module)
       <Text.Subheadline
         elementType={select('Element type', ['h4', 'h5'], 'h4')}
         isBold={boolean('bold', false)}
-        tone={select('Text tone', [
-          'none',
-          'primary',
-          'information',
-          'secondary',
-          'positive',
-          'negative',
-        ])}
+        tone={select('Text tone', {
+          none: null,
+          primary: 'primary',
+          information: 'information',
+          secondary: 'secondary',
+          positive: 'positive',
+          negative: 'negative',
+        })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >
@@ -66,15 +66,15 @@ storiesOf('Basics|Typography/Text', module)
         isBold={boolean('bold', false)}
         isInline={boolean('inline', false)}
         isItalic={boolean('italic', false)}
-        tone={select('Text tone', [
-          'none',
-          'primary',
-          'information',
-          'secondary',
-          'positive',
-          'negative',
-          'inverted',
-        ])}
+        tone={select('Text tone', {
+          none: null,
+          primary: 'primary',
+          information: 'information',
+          secondary: 'secondary',
+          positive: 'positive',
+          negative: 'negative',
+          inverted: 'inverted',
+        })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >

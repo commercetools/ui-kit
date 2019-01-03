@@ -9,6 +9,7 @@ import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
+import postcssNesting from 'postcss-nesting';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomMediaQueries from 'postcss-custom-media';
 import postcssColorModFunction from 'postcss-color-mod-function';
@@ -49,6 +50,7 @@ const postcssPlugins = [
     preserve: false,
     importFrom: { 'custom-properties': customProperties },
   }),
+  postcssNesting(),
   postcssReporter(),
 ];
 

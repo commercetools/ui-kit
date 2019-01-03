@@ -1,5 +1,6 @@
 const path = require('path');
 const postcssImport = require('postcss-import');
+const postcssNesting = require('postcss-nesting');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssReporter = require('postcss-reporter');
 const postcssCustomProperties = require('postcss-custom-properties');
@@ -119,6 +120,7 @@ module.exports = (storybookBaseConfig, configType) => {
               }),
               postcssCustomMediaQueries(),
               postcssPostcssColorModFunction(),
+              postcssNesting(),
               postcssReporter(),
             ],
           },
