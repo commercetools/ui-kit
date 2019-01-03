@@ -1,8 +1,7 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
-// import withReadme from 'storybook-readme/with-readme';
-// import TextInputReadme from './README.md';
+import { doc } from 'storybook-readme';
+import Forms from './FORMS.md';
 
 storiesOf('Philosophy|Guide', module)
-  // .addDecorator(withReadme(TextInputReadme))
-  .add('Forms', () => <p>Forms!</p>);
+  .addParameters({ options: { showAddonPanel: false } })
+  .add('Forms', doc(Forms));
