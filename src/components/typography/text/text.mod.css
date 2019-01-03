@@ -12,6 +12,66 @@
   --font-color: var(--color-black);
 }
 
+.body-text {
+  font-size: var(--font-body);
+  color: var(--color-black);
+  margin: 0;
+}
+
+.detail {
+  color: var(--font-color);
+  font-size: var(--font-detail);
+  display: block;
+}
+
+.headline {
+  color: var(--font-color);
+  margin: 0;
+  font-weight: 300;
+}
+
+.subheadline {
+  margin: 0;
+  font-weight: normal;
+  color: var(--font-color);
+}
+
+.primary {
+  color: var(--color-green);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+ font-style: italic;
+}
+
+.information {
+  color: var(--color-blue);
+}
+
+.secondary {
+  color: var(--color-gray-60);
+}
+
+.positive {
+  color: var(--color-green-25);
+}
+
+.negative {
+  color: var(--color-red);
+}
+
+.inverted {
+  color: var(--color-white);
+}
+
+.warning {
+  color: var(--color-orange);
+}
+
 h1.headline {
   font-size: var(--font-h1);
 }
@@ -26,96 +86,10 @@ h3.headline {
 
 h4.subheadline {
   font-size: var(--font-h4);
-  font-weight: normal;
 }
 
 h5.subheadline {
   font-size: var(--font-h5);
-  font-weight: normal;
-}
-
-.detail {
-  font-size: var(--font-detail);
-  display: block;
-
-  &.bold {
-    font-weight: bold;
-  }
-
-  &.italic {
-    font-style: italic;
-  }
-
-  &.primary {
-    color: var(--color-green);
-  }
-
-  &.information {
-    color: var(--color-blue);
-  }
-
-  &.secondary {
-    color: var(--color-gray-60);
-  }
-
-  &.positive {
-    color: var(--color-green-25);
-  }
-
-  &.negative {
-    color: var(--color-red);
-  }
-
-  &.inverted {
-    color: var(--color-white);
-  }
-
-  &.warning {
-    color: var(--color-orange);
-  }
-}
-
-.body-text,
-small {
-  color: var(--font-color);
-}
-
-.body-text {
-  font-size: var(--font-body);
-  color: var(--color-black);
-  margin: 0;
-
-  &.bold {
-    font-weight: bold;
-  }
-
-  &.italic {
-    font-style: italic;
-  }
-
-  &.primary {
-    color: var(--color-green);
-  }
-
-  &.information {
-    color: var(--color-blue);
-  }
-
-  &.secondary {
-    color: var(--color-gray-60);
-  }
-
-  &.positive {
-    color: var(--color-green-25);
-  }
-
-  &.negative {
-    color: var(--color-red);
-  }
-
-  &.inverted {
-    color: var(--color-white);
-  }
 }
 
 .inline-text {
@@ -130,44 +104,4 @@ small {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-h1,
-h2,
-h3 {
-  &.headline {
-    color: var(--font-color);
-    margin: 0;
-    font-weight: 300;
-  }
-}
-
-h4.subheadline,
-h5.subheadline {
-  margin: 0;
-  color: var(--font-color);
-
-  &.bold {
-    font-weight: bold;
-  }
-
-  &.primary {
-    color: var(--color-green);
-  }
-
-  &.information {
-    color: var(--color-blue);
-  }
-
-  &.secondary {
-    color: var(--color-gray-60);
-  }
-
-  &.positive {
-    color: var(--color-green-25);
-  }
-
-  &.negative {
-    color: var(--color-red);
-  }
 }
