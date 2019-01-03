@@ -22,18 +22,41 @@ if (!info) {
 }
 
 module.exports = {
+  target: 'web',
+  // note: we have to use 'development' for now, because when we use production
+  // our emotion styles aren't displayed in our percy snapshots.
   mode: 'development',
   stats: 'minimal',
   entry: './visual-testing-app/src/index.js',
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          priority: -20,
+        },
+        'ui-kit': {
+          test: /ui-kit.esm/,
+          name: 'ui-kit',
+          chunks: 'all',
+          priority: -15,
+        },
+      },
+    },
+  },
+
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: [/(node_modules)/, /ui-kit.esm/],
+        exclude: [/(node_modules)/, /(ui-kit.esm)/],
         use: {
           loader: 'babel-loader',
           query: {
