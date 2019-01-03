@@ -88,15 +88,16 @@ storiesOf('Basics|Typography/Text', module)
         isBold={boolean('bold', false)}
         isInline={boolean('inline', false)}
         isItalic={boolean('italic', false)}
-        tone={select('Text tone', [
-          'none',
-          'primary',
-          'information',
-          'secondary',
-          'positive',
-          'negative',
-          'warning',
-        ])}
+        tone={select('Text tone', {
+          none: null,
+          primary: 'primary',
+          information: 'information',
+          secondary: 'secondary',
+          positive: 'positive',
+          negative: 'negative',
+          inverted: 'inverted',
+          warning: 'warning',
+        })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >
