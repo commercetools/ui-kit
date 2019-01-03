@@ -18,6 +18,7 @@ const Headline = props => {
   return (
     <HeadlineElement
       className={classnames({
+        [styles.headline]: true,
         [styles.truncate]: props.truncate,
       })}
       title={props.title}
@@ -40,6 +41,7 @@ const Subheadline = props => {
   return (
     <SubheadlineElement
       className={classnames({
+        [styles.subheadline]: true,
         [styles.bold]: props.isBold,
         [styles[`${props.tone}`]]: props.tone,
         [styles.truncate]: props.truncate,
@@ -130,7 +132,7 @@ Body.propTypes = {
 
 const Detail = props => (
   <small
-    className={classnames({
+    className={classnames(styles.detail, {
       [styles.bold]: props.isBold,
       [styles.italic]: props.isItalic,
       [styles['inline-text']]: props.isInline,
