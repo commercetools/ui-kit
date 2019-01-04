@@ -19,10 +19,13 @@
   margin: 0;
 }
 
+.detail-container {
+  font-family: var(--font-family-default);
+}
+
 .detail {
   color: var(--font-color);
   font-size: var(--font-detail);
-  font-family: var(--font-family-default);
   display: block;
 }
 

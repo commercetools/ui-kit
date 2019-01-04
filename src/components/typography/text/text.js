@@ -131,19 +131,21 @@ Body.propTypes = {
 };
 
 const Detail = props => (
-  <small
-    className={classnames(styles.detail, {
-      [styles.bold]: props.isBold,
-      [styles.italic]: props.isItalic,
-      [styles['inline-text']]: props.isInline,
-      [styles[`${props.tone}`]]: props.tone,
-      [styles.truncate]: props.truncate,
-    })}
-    title={props.title}
-    {...filterDataAttributes(props)}
-  >
-    {props.children}
-  </small>
+  <div className={styles['detail-container']}>
+    <small
+      className={classnames(styles.detail, {
+        [styles.bold]: props.isBold,
+        [styles.italic]: props.isItalic,
+        [styles['inline-text']]: props.isInline,
+        [styles[`${props.tone}`]]: props.tone,
+        [styles.truncate]: props.truncate,
+      })}
+      title={props.title}
+      {...filterDataAttributes(props)}
+    >
+      {props.children}
+    </small>
+  </div>
 );
 
 Detail.displayName = 'TextDetail';

@@ -1,9 +1,3 @@
-.wrapper {
-  overflow: hidden;
-  width: 100%;
-  flex: 1;
-}
-
 .hint,
 .label {
   float: left;
