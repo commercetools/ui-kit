@@ -11,9 +11,6 @@ body {
   color: var(--color-black);
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
 }
 
 html {
