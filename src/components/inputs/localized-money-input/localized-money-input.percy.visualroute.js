@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  LocalizedMoneyInput,
-  ErrorMessage,
-  WarningMessage,
-} from '../../../../dist/ui-kit.esm';
-import { Suite, Spec, screenshot } from '../../../../test/percy';
+import { LocalizedMoneyInput, ErrorMessage, WarningMessage } from 'ui-kit';
+import { Suite, Spec } from '../../../../test/percy';
 
 const value = {
   EUR: '12.77',
@@ -12,7 +8,9 @@ const value = {
   CAD: '19.82',
 };
 
-screenshot('LocalizedMoneyInput', () => (
+export const routePath = '/localized-money-input';
+
+export const component = () => (
   <Suite>
     <Spec label="minimal">
       <LocalizedMoneyInput
@@ -112,4 +110,4 @@ screenshot('LocalizedMoneyInput', () => (
       />
     </Spec>
   </Suite>
-));
+);
