@@ -34,7 +34,7 @@ class MultilineTextField extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
-    isDefaultClosed: PropTypes.bool,
+    defaultExpandMultilineText: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     placeholder: PropTypes.string,
@@ -92,7 +92,7 @@ class MultilineTextField extends React.Component {
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
             isAutofocussed={this.props.isAutofocussed}
-            isDefaultClosed={this.props.isDefaultClosed}
+            defaultExpandMultilineText={this.props.defaultExpandMultilineText}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}

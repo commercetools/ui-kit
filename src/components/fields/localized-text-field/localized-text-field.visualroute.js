@@ -28,7 +28,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        isDefaultExpanded={true}
+        defaultExpandLanguages={true}
       />
     </Spec>
     <Spec label="when expansion controls are hidden">
@@ -38,7 +38,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        hideExpansionControls={true}
+        hideLanguageExpansionControls={true}
       />
     </Spec>
     <Spec label="when read-only and open">
@@ -49,7 +49,7 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint="m"
         isReadOnly={true}
-        isDefaultExpanded={true}
+        defaultExpandLanguages={true}
       />
     </Spec>
     <Spec label="when read-only and closed">
@@ -70,7 +70,7 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint="m"
         isDisabled={true}
-        isDefaultExpanded={true}
+        defaultExpandLanguages={true}
       />
     </Spec>
     <Spec label="when disabled and closed">

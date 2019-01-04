@@ -72,22 +72,22 @@ export const component = () => (
         touched={true}
       />
     </Spec>
-    <Spec label="when closed by default">
+    <Spec label="when expanded by default">
       <MultilineTextField
         title="Welcome Text"
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        isDefaultClosed={true}
+        defaultExpandMultilineText={true}
       />
     </Spec>
-    <Spec label="when disabled and closed by default">
+    <Spec label="when disabled and expanded by default">
       <MultilineTextField
         title="Welcome Text"
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        isDefaultClosed={true}
+        defaultExpandMultilineText={true}
         isDisabled={true}
       />
     </Spec>
