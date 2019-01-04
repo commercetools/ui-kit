@@ -2,6 +2,7 @@
 
 .contentWrapper {
   display: flex;
+  box-sizing: border-box;
   align-items: center;
   min-height: var(--size-height-tag);
   border-radius: var(--border-radius-tag);
