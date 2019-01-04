@@ -7,6 +7,7 @@
 
 .date-input {
   width: 100%;
+  box-sizing: border-box;
   appearance: none;
   background: var(--background-color-input-pristine);
   border-radius: var(--border-radius-input) 0 0
@@ -77,6 +78,7 @@
 
 .icon-container {
   align-items: center;
+  box-sizing: border-box;
   background-color: var(--background-color-input-pristine);
   border: 1px solid var(--border-color-input-pristine);
   height: var(--size-height-input);

@@ -8,6 +8,7 @@
 .time-input {
   width: 100%;
   appearance: none;
+  box-sizing: border-box;
   background: var(--background-color-input-pristine);
   border-radius: var(--border-radius-input) 0 0
     var(--border-radius-input);
@@ -60,6 +61,7 @@
 
 .icon-container {
   align-items: center;
+  box-sizing: border-box;
   background-color: var(--background-color-input-pristine);
   border-bottom: 1px solid var(--border-color-input-pristine);
   border-right: 1px solid var(--border-color-input-pristine);

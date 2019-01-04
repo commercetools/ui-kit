@@ -1,17 +1,5 @@
-@import '../custom-properties.css';
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
 html,
 body {
   color: var(--color-black);
   font-size: 13px;
-}
-
-html {
-  box-sizing: border-box;
 }
