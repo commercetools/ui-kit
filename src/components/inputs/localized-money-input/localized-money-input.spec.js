@@ -92,7 +92,6 @@ describe('when input is collapsed', () => {
       selectedCurrency: 'CAD',
     });
     expect(getByLabelText('CAD')).toBeInTheDocument();
-    // toThrow('Unable to find a label with the text of: USD"')
     expect(queryByLabelText('USD')).not.toBeInTheDocument();
   });
   it('should allow changing value of the input', () => {
