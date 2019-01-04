@@ -20,15 +20,6 @@ html {
   box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
 button {
   cursor: pointer;
 }
@@ -38,9 +29,4 @@ a {
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease-in;
-}
-
-p {
-  color: var(--color-black);
-  margin: 0;
 }

@@ -57,6 +57,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'UI Kit Playground',
+      template: path.resolve(__dirname, 'index.template.html'),
     }),
   ],
   resolve: {
