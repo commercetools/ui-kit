@@ -10,6 +10,7 @@
   cursor: pointer;
   color: inherit;
   font: inherit;
+  font-size: var(--font-size-default);
   font-family: var(--font-family-default);
 }
 

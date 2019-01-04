@@ -1,5 +1,7 @@
 .container {
   font-family: var(--font-family-default);
+  color: var(--color-black);
+  font-size: var(--font-size-default);
 }
 
 .tone-critical {

@@ -2,6 +2,7 @@
   width: 100%;
   align-items: center;
   display: flex;
+  font-size: var(--font-size-default);
   font-family: var(--font-family-default);
 }
 

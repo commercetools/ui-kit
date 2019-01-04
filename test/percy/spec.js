@@ -21,6 +21,7 @@ const Label = styled.div`
   background-color: #774caf;
   padding: 5px;
   color: white;
+  font-size: 13px;
 `;
 
 const PropList = styled.div`
