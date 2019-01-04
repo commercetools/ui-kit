@@ -63,7 +63,7 @@ it('should forward data-attributes', () => {
   expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
 });
 
-it('should have an HTML name', () => {
+it('should have the selected currency', () => {
   const { getByLabelText } = renderLocalizedMoneyInput({
     name: 'foo',
     selectedCurrency: 'CAD',
