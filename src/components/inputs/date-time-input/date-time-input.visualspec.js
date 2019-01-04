@@ -1,6 +1,6 @@
 import { percySnapshot } from '@percy/puppeteer';
 
-describe('DateTimeIpnut', () => {
+describe('DateTimeInput', () => {
   it('Default', async () => {
     await page.goto(`${HOST}/date-time-input`);
     await expect(page).toMatch('minimal');
