@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { customProperties } from '../../dist/ui-kit.esm';
 
 const SpecContainer = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const SpecContainer = styled.div`
 `;
 
 const Label = styled.div`
+  font-family: ${customProperties['--font-family-default']};
   font-weight: bold;
   background-color: #774caf;
   padding: 5px;
@@ -21,6 +23,7 @@ const Label = styled.div`
 `;
 
 const PropList = styled.div`
+  font-family: ${customProperties['--font-family-default']};
   background-color: #894ac3;
   padding: 5px;
   font-size: 8pt;
