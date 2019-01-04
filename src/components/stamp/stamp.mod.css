@@ -1,3 +1,7 @@
+.container {
+  font-family: var(--font-family-default);
+}
+
 .tone-critical {
   background-color: var(--color-red-95);
   border: 1px solid var(--color-red);

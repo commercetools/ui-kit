@@ -180,6 +180,7 @@ const groupHeadingStyles = () => base => ({
 
 const containerStyles = () => (base, state) => ({
   ...base,
+  fontFamily: vars['--font-family-default'],
   minHeight: vars['--size-height-input'],
   borderRadius: vars['--border-radius-input'],
   cursor: state.isDisabled ? 'not-allowed' : base.cursor,

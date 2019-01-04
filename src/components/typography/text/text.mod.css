@@ -20,9 +20,9 @@
 }
 
 .detail {
-  font-family: var(--font-family-default);
   color: var(--font-color);
   font-size: var(--font-detail);
+  font-family: var(--font-family-default);
   display: block;
 }
 

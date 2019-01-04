@@ -1,5 +1,6 @@
 .menuBase {
   overflow-y: scroll;
+  font-family: var(--font-family-default);
   border: 1px solid var(--border-color-input-focus);
   border-radius: var(--border-radius-input);
   margin-top: var(--spacing-4);
@@ -25,4 +26,3 @@
 .menuWithFooter {
   composes: menuBase;
 }
-

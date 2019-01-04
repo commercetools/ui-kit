@@ -4,6 +4,7 @@
 }
 
 .base-container {
+  font-family: var(--font-family-default);
   box-shadow: var(--shadow-1-second);
   border-radius: var(--border-radius-6);
   position: relative;
