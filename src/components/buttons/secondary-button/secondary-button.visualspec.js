@@ -1,4 +1,7 @@
 import { percySnapshot } from '@percy/puppeteer';
+import { getDocument, queries } from 'pptr-testing-library';
+
+const { getByLabelText } = queries;
 
 describe('SecondaryButton', () => {
   beforeAll(async () => {
@@ -6,7 +9,9 @@ describe('SecondaryButton', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('A label text');
+    const doc = await getDocument(page);
+    const button = await getByLabelText(doc, 'A label text');
+    expect(button).toBeTruthy();
     await percySnapshot(page, 'SecondaryButton');
   });
 });

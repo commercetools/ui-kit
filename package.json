@@ -186,6 +186,7 @@
     "postcss-preset-env": "6.5.0",
     "postcss-reporter": "6.0.0",
     "postcss-safe-parser": "4.0.1",
+    "pptr-testing-library": "0.3.1",
     "prettier": "1.15.3",
     "puppeteer": "1.11.0",
     "rcfile": "1.0.3",

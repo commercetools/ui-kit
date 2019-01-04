@@ -19,14 +19,3 @@ body {
 html {
   box-sizing: border-box;
 }
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: var(--color-green);
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.2s ease-in;
-}
