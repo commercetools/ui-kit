@@ -38,10 +38,12 @@ const PropLabel = styled.span`
   padding: 0 4px;
   min-width: 140px;
   display: inline-block;
+  box-sizing: border-box;
 `;
 
 const PropValue = styled.span`
   padding: 0 4px;
+  box-sizing: border-box;
 `;
 
 const Box = styled.div`
