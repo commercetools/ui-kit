@@ -17,6 +17,7 @@ const SpecContainer = styled.div`
 const Label = styled.div`
   font-family: ${customProperties['--font-family-default']};
   font-weight: bold;
+  box-sizing: border-box;
   background-color: #774caf;
   padding: 5px;
   color: white;
@@ -26,6 +27,7 @@ const PropList = styled.div`
   font-family: ${customProperties['--font-family-default']};
   background-color: #894ac3;
   padding: 5px;
+  box-sizing: border-box;
   font-size: 8pt;
   font-family: monospace;
   color: white;
