@@ -25,7 +25,7 @@ script:
   # also skip when PR is opened by `renovate`
   # back to default in case internal travis scripts return non zero response codes.
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
-  - bash ./scripts/run-percy.sh
+  - ./scripts/run-percy.sh
   - set +e
 
 before_deploy: yarn build
@@ -39,6 +39,9 @@ deploy:
   on:
     tags: true
   tag: next
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ] && [[ ! "$TRAVIS_COMMIT_MESSAGE" =~ \[skip\ publish\] ]]; then node ./scripts/release-canary.js; fi
 
 # Keep it disabled until this issue is clarified
 # https://twitter.com/emmenko/status/1040544486101856256
