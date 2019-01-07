@@ -140,7 +140,7 @@ describe('when expanded by default', () => {
     const { getByLabelText } = renderLocalizedMoneyInput({
       name: 'foo',
       selectedCurrency: 'CAD',
-      isDefaultExpanded: true,
+      defaultExpandCurrencies: true,
     });
     const usdInput = getByLabelText('USD');
     const CADInput = getByLabelText('CAD');
@@ -197,7 +197,7 @@ describe('when placeholders are provided', () => {
   it('should forward the placeholders', () => {
     const { getByLabelText } = renderLocalizedMoneyInput({
       name: 'foo',
-      isDefaultExpanded: true,
+      defaultExpandCurrencies: true,
       placeholder: {
         USD: 'USD placeholder',
         CAD: 'CAD placeholder',

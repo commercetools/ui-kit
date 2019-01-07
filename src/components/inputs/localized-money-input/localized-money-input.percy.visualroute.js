@@ -43,7 +43,7 @@ export const component = () => (
         selectedCurrency="CAD"
         horizontalConstraint="m"
         isDisabled={true}
-        isDefaultExpanded={true}
+        defaultExpandCurrencies={true}
       />
     </Spec>
     <Spec label="when disabled and closed">

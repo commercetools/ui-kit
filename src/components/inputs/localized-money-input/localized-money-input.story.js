@@ -20,14 +20,14 @@ storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedMoneyInputReadme))
   .add('LocalizedMoneyInput', () => {
-    const isDefaultExpanded = boolean('isDefaultExpanded', false);
+    const defaultExpandCurrencies = boolean('defaultExpandCurrencies', false);
 
     const errors = object('errors', { EUR: '', USD: '', EGP: '' });
     const warnings = object('warnings', { EUR: '', USD: '', EGP: '' });
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
-    const key = `key-${isDefaultExpanded}`;
+    const key = `key-${defaultExpandCurrencies}`;
     return (
       <Section>
         <Value
@@ -52,11 +52,14 @@ storiesOf('Inputs', module)
               )}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              hideExpansionControls={boolean('hideExpansionControls', false)}
-              isDefaultExpanded={
+              hideCurrencyExpansionControls={boolean(
+                'hideCurrencyExpansionControls',
+                false
+              )}
+              defaultExpandCurrencies={
                 // we need to set undefined instead of false to avoid prop-type
-                // warnings in case hideExpansionControls is true
-                isDefaultExpanded || undefined
+                // warnings in case hideCurrencyExpansionControls is true
+                defaultExpandCurrencies || undefined
               }
               isDisabled={boolean('isDisabled', false)}
               placeholder={object('placeholder', { EUR: '', USD: '' })}

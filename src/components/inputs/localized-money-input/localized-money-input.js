@@ -118,7 +118,7 @@ export class LocalizedMoneyInput extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     hideCurrencyExpansionControls: PropTypes.bool,
-    isDefaultExpanded: (props, propName, componentName, ...rest) => {
+    defaultExpandCurrencies: (props, propName, componentName, ...rest) => {
       if (
         props.hideCurrencyExpansionControls &&
         typeof props[propName] === 'boolean'
@@ -190,7 +190,7 @@ export class LocalizedMoneyInput extends React.Component {
 
   state = {
     // This state is used to show/hide the remaining currencies
-    areCurrenciesOpened: this.props.isDefaultExpanded,
+    areCurrenciesOpened: this.props.defaultExpandCurrencies,
   };
 
   toggleCurrencies = () =>
