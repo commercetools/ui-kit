@@ -24,7 +24,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        isDefaultExpanded={true}
+        defaultExpandCurrencies={true}
       />
     </Spec>
     <Spec label="when expansion controls are hidden">
