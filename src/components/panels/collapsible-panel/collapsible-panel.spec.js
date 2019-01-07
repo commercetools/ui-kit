@@ -21,7 +21,7 @@ it('should smoke', () => {
 
 describe('header controls', () => {
   describe('when passed header controls without an onClick', () => {
-    it('should not call onToggle when headerControls are clicked', () => {
+    it('should not call onToggle when headerControls is clicked', () => {
       const onToggle = jest.fn();
       const { getByText } = render(
         <CollapsiblePanel
@@ -39,7 +39,7 @@ describe('header controls', () => {
     });
   });
   describe('when passed header controls with an onClick', () => {
-    it('should call not onToggle when headerControls are clicked', () => {
+    it('should not call onToggle when headerControls is clicked', () => {
       const onToggle = jest.fn();
       const { getByText } = render(
         <CollapsiblePanel
