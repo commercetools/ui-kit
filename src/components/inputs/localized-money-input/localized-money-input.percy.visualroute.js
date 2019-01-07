@@ -33,7 +33,7 @@ export const component = () => (
         onChange={() => {}}
         selectedCurrency="CAD"
         horizontalConstraint="m"
-        hideExpansionControls={true}
+        hideCurrencyExpansionControls={true}
       />
     </Spec>
     <Spec label="when disabled and open">

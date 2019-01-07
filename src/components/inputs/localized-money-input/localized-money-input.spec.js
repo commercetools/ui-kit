@@ -155,7 +155,7 @@ describe('when expansion controls are hidden', () => {
     const { queryByLabelText } = renderLocalizedMoneyInput({
       name: 'foo',
       selectedCurrency: 'CAD',
-      hideExpansionControls: true,
+      hideCurrencyExpansionControls: true,
     });
     const usdInput = queryByLabelText('USD');
     const CADInput = queryByLabelText('CAD');
