@@ -82,24 +82,26 @@ export default class CollapsiblePanel extends React.PureComponent {
       >
         {({ isOpen, toggle, containerStyles, registerContentNode }) => (
           <div
-            className={classnames(this.props.className, {
-              [styles['container-condensed']]: this.props.condensed,
-              [styles['container-open']]: isOpen,
-              [styles['container-theme-light']]: this.props.theme === 'light',
-              [styles['container-theme-dark']]: this.props.theme === 'dark',
-            })}
+            className={classnames(
+              this.props.className,
+              styles[`container-theme-${this.props.theme}`],
+              {
+                [styles['container-condensed']]: this.props.condensed,
+                [styles['container-open']]: isOpen,
+              }
+            )}
           >
             <div
               onClick={this.props.isDisabled ? undefined : toggle}
-              className={classnames(styles['base-header-container'], {
-                [styles['header-container-theme-light']]:
-                  this.props.theme === 'light',
-                [styles['header-container-theme-dark']]:
-                  this.props.theme === 'dark',
-                [styles.disabled]: this.props.isDisabled,
-                [styles.sticky]: this.props.isSticky && isOpen,
-                [styles['header-closed']]: !isOpen,
-              })}
+              className={classnames(
+                styles['base-header-container'],
+                styles[`header-container-theme-${this.props.theme}`],
+                {
+                  [styles.disabled]: this.props.isDisabled,
+                  [styles.sticky]: this.props.isSticky && isOpen,
+                  [styles['header-closed']]: !isOpen,
+                }
+              )}
             >
               <Spacings.InsetSquish scale={scale}>
                 <div
