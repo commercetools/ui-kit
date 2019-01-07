@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { AsyncSelectField } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -12,7 +13,7 @@ const value = { value: 'one', label: 'One' };
 
 export const routePath = '/async-select-field';
 
-export const component = () => (
+const DefaultRoute = () => (
   <Suite>
     <Spec label="minimal">
       <AsyncSelectField
@@ -67,4 +68,52 @@ export const component = () => (
       />
     </Spec>
   </Suite>
+);
+
+const InteractionRoute = () => (
+  <Switch>
+    <Route
+      path={`${routePath}/interaction/without-default-options`}
+      render={() => (
+        <Suite>
+          <Spec omitPropsList label="with defaultOptions disabled">
+            <AsyncSelectField
+              title="State"
+              name="form-field-name"
+              value={value}
+              onChange={() => {}}
+              defaultOptions={false}
+              loadOptions={loadOptions}
+              horizontalConstraint="m"
+            />
+          </Spec>
+        </Suite>
+      )}
+    />
+    <Route
+      path={`${routePath}/interaction`}
+      render={() => (
+        <Suite>
+          <Spec omitPropsList label="with defaultOptions enabled">
+            <AsyncSelectField
+              title="State"
+              name="form-field-name"
+              value={value}
+              onChange={() => {}}
+              defaultOptions={true}
+              loadOptions={loadOptions}
+              horizontalConstraint="m"
+            />
+          </Spec>
+        </Suite>
+      )}
+    />
+  </Switch>
+);
+
+export const component = () => (
+  <Switch>
+    <Route path={`${routePath}/interaction`} component={InteractionRoute} />
+    <Route exact path={routePath} component={DefaultRoute} />
+  </Switch>
 );
