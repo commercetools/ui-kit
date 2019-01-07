@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Spacings from '../spacings';
 import styles from './stamp.mod.css';
 
@@ -13,7 +14,7 @@ export const availableTones = [
 ];
 
 const Label = props => (
-  <div className={styles[`tone-${props.tone}`]}>
+  <div className={classnames(styles.container, styles[`tone-${props.tone}`])}>
     <Spacings.InsetSquish scale="s">{props.children}</Spacings.InsetSquish>
   </div>
 );

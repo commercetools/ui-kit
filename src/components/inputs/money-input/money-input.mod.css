@@ -9,9 +9,12 @@
   padding: 0 var(--spacing-8);
   align-items: center;
   min-width: 72px;
+  font-size: var(--font-size-default);
+  box-sizing: border-box;
 }
 
 .field-container {
+  font-family: var(--font-family-default);
   width: 100%;
   position: relative;
   display: flex;
@@ -20,6 +23,7 @@
 .amountInput {
   display: flex;
   flex: 1;
+  box-sizing: border-box;
   color: var(--font-color-default);
   font-family: var(--font-family-default);
   font-size: var(--font-size-default);

@@ -4,6 +4,9 @@
   text-align: left;
   word-break: break-word;
   hyphens: auto;
+  font-size: var(--font-size-default);
+  color: var(--color-black);
+  font-family: var(--font-family-default);
 }
 
 .iconContainer {

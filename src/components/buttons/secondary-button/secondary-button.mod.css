@@ -12,7 +12,7 @@
   background-color: var(--color-white);
   box-shadow: var(--shadow-7);
   color: var(--color-black);
-  font-size: 1rem;
+  font-size: var(--font-size-default);
   transition: background-color var(--transition-linear-80ms),
     box-shadow var(--transition-easeinout-150ms);
 }
@@ -34,6 +34,10 @@
 
 .container {
   border-radius: var(--border-radius-6);
+}
+
+a.container {
+  text-decoration: none;
 }
 
 /* The actual button element */

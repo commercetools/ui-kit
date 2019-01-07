@@ -13,6 +13,7 @@
 /* Default */
 
 .textarea {
+  box-sizing: border-box;
   color: var(--font-color-default);
   font-family: var(--font-family-default);
   font-size: var(--font-size-default);

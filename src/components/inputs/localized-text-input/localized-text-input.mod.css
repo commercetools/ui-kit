@@ -9,6 +9,7 @@
 .languageLabel {
   /* avoid wrapping label onto new lines */
   flex: 1 0 auto;
+  box-sizing: border-box;
   color: var(--font-color-disabled);
   height: var(--size-height-input);
   line-height: var(--size-height-input);
@@ -24,6 +25,7 @@
 }
 
 .input {
+  box-sizing: border-box;
   color: var(--font-color-default);
   font-family: var(--font-family-default);
   font-size: var(--font-size-default);

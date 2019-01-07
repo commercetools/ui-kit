@@ -53,6 +53,7 @@ const menuStyles = props => base => ({
   borderRadius: vars['--border-radius-input'],
   backgroundColor: vars['--background-color-input-pristine'],
   boxShadow: vars['--shadow-7'],
+  fontSize: vars['--font-size-default'],
   margin: `${vars['--spacing-4']} 0 0 0`,
   borderColor: do {
     if (props.hasError) vars['--border-color-input-error'];
@@ -180,6 +181,7 @@ const groupHeadingStyles = () => base => ({
 
 const containerStyles = () => (base, state) => ({
   ...base,
+  fontFamily: vars['--font-family-default'],
   minHeight: vars['--size-height-input'],
   borderRadius: vars['--border-radius-input'],
   cursor: state.isDisabled ? 'not-allowed' : base.cursor,

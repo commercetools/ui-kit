@@ -7,6 +7,7 @@
 
 .input {
   color: var(--font-color-default);
+  box-sizing: border-box;
   font-family: var(--font-family-default);
   font-size: var(--font-size-default);
   height: var(--size-height-input);

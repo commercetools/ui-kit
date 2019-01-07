@@ -145,6 +145,7 @@ const Detail = props => (
     {props.children}
   </small>
 );
+
 Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,
