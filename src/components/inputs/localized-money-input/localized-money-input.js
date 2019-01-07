@@ -117,13 +117,16 @@ export class LocalizedMoneyInput extends React.Component {
     selectedCurrency: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    hideExpansionControls: PropTypes.bool,
+    hideCurrencyExpansionControls: PropTypes.bool,
     isDefaultExpanded: (props, propName, componentName, ...rest) => {
-      if (props.hideExpansionControls && typeof props[propName] === 'boolean') {
+      if (
+        props.hideCurrencyExpansionControls &&
+        typeof props[propName] === 'boolean'
+      ) {
         throw new Error(
           oneLine`
             ${componentName}: "${propName}" does not have any effect when
-            "hideExpansionControls" is set.
+            "hideCurrencyExpansionControls" is set.
           `
         );
       }
@@ -209,7 +212,7 @@ export class LocalizedMoneyInput extends React.Component {
     const areCurrenciesOpened =
       hasErrorOnRemainingCurrencies ||
       hasWarningOnRemainingCurrencies ||
-      props.hideExpansionControls ||
+      props.hideCurrencyExpansionControls ||
       state.areCurrenciesOpened;
 
     const id = do {
@@ -269,7 +272,7 @@ export class LocalizedMoneyInput extends React.Component {
                 currenciesControl={(() => {
                   if (
                     !hasRemainingCurrencies ||
-                    this.props.hideExpansionControls
+                    this.props.hideCurrencyExpansionControls
                   )
                     return null;
                   if (isFirstCurrency && !this.state.areCurrenciesOpened)
