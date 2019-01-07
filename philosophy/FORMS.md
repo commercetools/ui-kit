@@ -7,7 +7,8 @@ With our approach to forms, we strive to
 - **eliminate architectural discrepancy between different forms** by using the same approach for all forms
 - **offer good UX** by embedding the same principles for all forms in our solution
 
-This document tries to outline the reasoning behind our form component design by showing the challenges we faced which led to the current design. This document aims to help contributors understand which considerations are relevant when building input components for ui-kit.
+This document tries to outline the reasoning behind our form component philosophy by showing the challenges we faced which led to the current design.
+This document aims to help contributors understand which considerations are relevant when building input components for ui-kit.
 
 It is not intended as a usage-guide of our input components. In fact it doesn't touch our input components for the most part.
 
@@ -28,7 +29,7 @@ It is not intended as a usage-guide of our input components. In fact it doesn't 
 - [What this approach means for our input components](#what-this-approach-means-for-our-input-components)
 - [Most important lessons](#most-important-lessons)
 - [Formik disclaimer](#formik-disclaimer)
-- [Solutions recipies:](#solutions-recipies)
+- [Solutions recipes:](#solutions-recipes)
   - [Data conversion](#data-conversion)
     - [The response shape of the server is inconvenient to build a form on](#the-response-shape-of-the-server-is-inconvenient-to-build-a-form-on)
     - [Providing defaults (Unifying inconsisent data: empty strings, `undefined` & `null`)](#providing-defaults-unifying-inconsisent-data-empty-strings-undefined--null)
@@ -44,7 +45,7 @@ It is not intended as a usage-guide of our input components. In fact it doesn't 
 
 ## Typical steps of forms
 
-We want to offer a generic solution to forms. The following things usually need to be solved (roughly in that order) when building a form:
+We want to offer a generic solution to forms. The following problems usually need to be solved (roughly in this order) when building a form:
 
 - fetching initial form data
 - transforming the fetched data into form values
@@ -53,7 +54,7 @@ We want to offer a generic solution to forms. The following things usually need 
 - validating the form as the user interacts with the form
 - rendering validation errors
 - validating the form on submission
-- Handling form submission
+- handling form submission
 - transforming the form values back into a document which e.g. can be sent to the server
 
 Other problems might arise while building the form. We collected hints on how
@@ -167,7 +168,7 @@ We use [Formik](https://github.com/jaredpalmer/formik) to handle our form state.
 </GetProduct>
 ```
 
-As we've set the `name` attribute on the `input`, we can directly use `formik.handleChange` and `formik.handleBlur`. The `input` component will call these functions with an event, from `onChange` and `onBlur` respectively. That event will contain the input's name as `event.target.name`. Formik uses that information to change `formik.values.name` to the new value. It is therefore convenient when our input components call the change handlers with an event, and when that event containst the target.
+As we've set the `name` attribute on the `input`, we can directly use `formik.handleChange` and `formik.handleBlur`. The `input` component will call these functions with an event, from `onChange` and `onBlur` respectively. That event will contain the input's name as `event.target.name`. Formik uses that information to change `formik.values.name` to the new value. It is therefore convenient when our input components call the change handlers with an event, and when that event contains the target.
 
 Formik keeps track of the form values. It initializes the form values based on its `initialValues` property.
 
@@ -205,7 +206,7 @@ As the user now makes changes to fields and blurs them, Formik's `touched` state
 
 This indicates that the "name" field was touched.
 
-You'll notice that formik handles the `touched` state automatically based on `event.target`'s name. We never told it to set that value specifically. While a user is interacting with the a form, Formik produces a `touched` state solely based on the events `formik.handleBlur` receives.
+You'll notice that Formik handles the `touched` state automatically based on `event.target`'s name. We never told it to set that value specifically. While a user is interacting with the a form, Formik produces a `touched` state solely based on the events `formik.handleBlur` receives.
 
 Knowing which fields have been touched by the user is important information for when we try to figure out which validation error messages to show to the user. More on that later.
 
@@ -414,7 +415,7 @@ export const docToFormValues = doc => ({
 
 This `formValuesToDoc` function doesn't seem like a lot now, but it will come
 in handy when we face more difficult problems later on as you'll see in the
-more solution recipies below.
+more solution recipes below.
 
 So now we end up with
 
@@ -455,38 +456,38 @@ As the state is managed outside of our input components, our input components ne
 
 Our input components should let the form handle validation. They should accept an indicator of validation state from the form (e.g. a `hasError` property which they use to display an appropriate border color) instead of trying to determine that state themselves.
 
-The inputs should keep the user-input around and store that in the state. They should not attempt to format user-input while users type (e.g. formatting numbers). More on this in "Solution recipies".
+The inputs should keep the user-input around and store that in the state. They should not attempt to format user-input while users type (e.g. formatting numbers). More on this in "Solution recipes".
 
-When an input gathers more than one information (e.g. a `MoneyInput` where users can select a currency from a dropdown and enter an amount), the input should not attempt to hide the fact that two separate inputs are used. Use two separate values and touched states. More on this in "Solution recipies". This is a limitation of Formik automatically determining the `touched` state on form submission. See "Solution recipies" for more information.
+When an input gathers more than one information (e.g. a `MoneyInput` where users can select a currency from a dropdown and enter an amount), the input should not attempt to hide the fact that two separate inputs are used. Use two separate values and touched states. More on this in "Solution recipes". This is a limitation of Formik automatically determining the `touched` state on form submission. See "Solution recipes" for more information.
 
 ## Most important lessons
 
 - **Convert data on the way into and out of the form** to keep the form oblivious to the data source
 - **Don't convert user input too early**. Keep user input around while they are editing, otherwise you'll lose some information, e.g. when a user is editing a number.
 - **Validate before converting**. Validation should guarantee that the conversions of form values back into the document succeeds.
-- **Validate form values** Never attempt to convert the data back into a document and attempt to validate the document. This will couple the vlaidation to the document. Instead, validate the user input (the form values)!
-- **Validate on a form level** Don't attempt to validate individual inputs. Validation must be the concern of the form itself, as it has the whole overview. It knows all values and knows how they come together.
-- **Only mark error types during validation** Don't attempt to generate error messages while validating. Use booleans to mark validation errors, e.g. `{ name: { missing: true } }`. This lets you change how the errors are shown, and enables you to localize the error messages with your regular translation tools.
-- **Always detect all validation errors** Don't stop validation after you found the first validation error. Try to mark all invalid fields as invalid. Decide which errors should be shown during rendering.
-- **Let rendering take care of displaying errors** During rendering you know which fields have been touched, whether the user attempted a form submission and which fields have validation errors. Decide which validation errors to show during rendering based on all those indicators.
+- **Validate form values**: Never attempt to convert the data back into a document and attempt to validate the document. This will couple the vlaidation to the document. Instead, validate the user input (the form values)!
+- **Validate on a form level**: Don't attempt to validate individual inputs. Validation must be the concern of the form itself, as it has the whole overview. It knows all values and knows how they come together.
+- **Only mark error types during validation**: Don't attempt to generate error messages while validating. Use booleans to mark validation errors, e.g. `{ name: { missing: true } }`. This lets you change how the errors are shown, and enables you to localize the error messages with your regular translation tools.
+- **Always detect all validation errors**: Don't stop validation after you found the first validation error. Try to mark all invalid fields as invalid. Decide which errors should be shown during rendering.
+- **Let rendering take care of displaying errors**: During rendering you know which fields have been touched, whether the user attempted a form submission and which fields have validation errors. Decide which validation errors to show during rendering based on all those indicators.
 
 ## Formik disclaimer
 
 While we use [Formik](https://github.com/jaredpalmer/formik) to handle our form state, there are some parts of Formik's philosophy we don't agree with.
-Formik is a great library and embraces many good principles when building forms. However, we derive from a few of their recommendations on purpose:
+Formik is a great library and embraces many good principles when building forms. However, we deviate from a few of their recommendations on purpose:
 
 - It’s impossible to keep track of when an array was touched in some cases (e.g. when an element was removed and the array is now empty), because Formik is trying to auto-generate the touched state on submission. The touched state of an empty array is `{ someArray: [] }`. This means `[]` has to be interpreted as the array having been touched.
 - Formik values can't be objects. Because Formik traverses the `value` and creates one big `touched` state, we can't have a `touched` state for a value which is an object (as money-input would be). Sometimes we would like to make it seem like there is only one input (e.g. for a money-input where users can select a currency and enter an amount, we'd like to have a single `touched` state for the whole thing). Formik forces us to use individual touched states and to handle values individually.
 - Too big of an API with `Form`, `withFormik`, `Field`, `ErrorMessage` and `Formik`. There are many ways to achieve the same thing. We generally try to use `<Formik />` only.
-- The recommendation to generate error messages from the validation function mixes validation and rendering logic. Returning strings from the validation function gets in the way of using an applications' localization approach and makes it hard to determine failed validations in case an error needs to be shown in multiple places. It also makes it hard to attach multiple validation errors to a single field. That's why instead of returning a string for a field, we use objects holding booleans per field, e.g. `{ name: { missing: true } }`.
+- The recommendation to generate error messages from the validation function mixes validation and rendering logic. Returning strings from the validation function gets in the way of using an application's localization approach and makes it hard to determine failed validations in case an error needs to be shown in multiple places. It also makes it hard to attach multiple validation errors to a single field. That's why instead of returning a string for a field, we use objects holding booleans per field, e.g. `{ name: { missing: true } }`.
 
-## Solutions recipies:
+## Solutions recipes:
 
 When building a form, you might run into other challenges along the way. We already
 have solutions for the most common cases which work with our approach to forms.
 They are shown below:
 
-Here are some solution recipes for those cases:
+Here are some solution recipes for these cases:
 
 - Data conversion
   - The response shape of the server is inconvenient to build a form on
@@ -601,7 +602,7 @@ All browser inputs of type `number` will always only call `onChange` with either
 
 This works for most cases, but we never get to see the original value entered by the user as the value gets parsed first. We either see a valid number or an empty string. This means we can't differntiate between `-0` and `0`. We also don't know wheter a user entered `9,8` (with a comma) or `9.8` (with a dot) as we will see the number `9.8` either way. We also can't differentiate between the user entering `00001` and `1.000`. We will see `1` in both cases. We also can't distinguish between `2e3` and `2000` as both are converted to `2000`. We also can't distinguish between the invalid `4e`, just `e` and an empty input - as we'll be called with `""` for all invalid values.
 
-The examples above were just for Google Chrome which prevents typing non-numbers. In Firefox it's possible to enter any string into `<input type="text" />` input elements. So it could happen that a user enters "hello" into a numeric input - and our Form thinks the user entered nothing, as Firefox will call `onChange` with an event holding an empty string.
+The examples above were just for Google Chrome which prevents typing non-numbers. In Firefox it's possible to enter any string into `<input type="number" />` input elements. So it could happen that a user enters "hello" into a numeric input - and our Form thinks the user entered nothing, as Firefox will call `onChange` with an event holding an empty string.
 
 Something to be aware of is that our forms can't distinguish between an empty value and an invalid value in those cases. It might happen that our form state holds an empty string while the input is actually currently displaying an invalid value. You can play around with it in [this CodeSandbox](https://codesandbox.io/s/69rxm1413).
 
@@ -739,7 +740,7 @@ We can now use any translation approach without having to intertwine it with val
 />
 ```
 
-Having this control also allows us to render arbitraryily complex error messages right from our code.
+Having this control also allows us to render arbitrarily complex error messages right from our code.
 
 #### Multiple errors on a single field
 
@@ -864,7 +865,9 @@ There are two approaches:
 - We can ensure `MoneyInput` always calls `onChange` with a full value like `{ currencyCode: 'EUR', amount: '2.00' }`
 - We can adapt the input names to be `price.currencyCode` or `price.amount` respectively. Formik will read that name and set the nested value only.
 
-If we were to go with the first approach, we'd need to fake `event.target.name` in `onBlur` as well, otherwise formik would set `{ touched: { price: true } }` instead of `{ touched: { price: { amount: true, currencyCode: true } } }`. That is bad, as Formik will set ``{ touched: { price: { amount: true, currencyCode: true } } }`once the form is submitted - so we end up with a`touched`state which changes shape! There is a CodeSandbox which illustrates this problem. Try changing the price and keep an eye on the`touched`state. Then submit the form, and you'll see a different`touched` state.
+If we were to go with the first approach, we'd need to fake `event.target.name` in `onBlur` as well, otherwise formik would set `{ touched: { price: true } }` instead of `{ touched: { price: { amount: true, currencyCode: true } } }`.
+That is bad, as Formik will set `{ touched: { price: { amount: true, currencyCode: true } } }` once the form is submitted - so we end up with a `touched` state which changes shape!
+There is a CodeSandbox which illustrates this problem. Try changing the price and keep an eye on the `touched` state. Then submit the form, and you'll see a different `touched` state.
 
 If we were to accept changes to the shape of our `touched` state, we'd need to tak the different shapes into consideration every time we work with the `touched` shape and it just generally makes things harder to follow.
 
@@ -874,7 +877,7 @@ So it's better to go with the second approach right away. We amend the names of 
 
 As mentioned above, our `MoneyInput` consists of two parts: an currency selector and an amount input.
 
-We want the amount to be formatted like a monetary value, e.g. "200.00" or "2,000.00". However, the data we receive from our fantasy API looks like this: `{ currencyCode: 'EUR', centAmount: 200 }` for 2€.
+We want the amount to be formatted like a monetary value, e.g. "200.00" or "2,000.00". However, the data we receive from our fictitious API looks like this: `{ currencyCode: 'EUR', centAmount: 200 }` for 2€.
 
 How do we go about formatting the value properly? As our form values always hold the actual value entered by the user, we need to format the initial value in `docToFormValues` already.
 
