@@ -101,16 +101,20 @@ export default class CollapsiblePanel extends React.PureComponent {
               })}
             >
               <Spacings.InsetSquish scale={scale}>
-                <div {...dataProps} className={styles.header}>
+                <div
+                  {...dataProps}
+                  className={classnames(styles.header, {
+                    [styles['header-disabled']]: this.props.isDisabled,
+                  })}
+                >
                   <div className={styles['truncate-header']}>
                     <Spacings.Inline alignItems="center" scale="s">
-                      {!this.props.isDisabled && (
-                        <HeaderIcon
-                          isClosed={!isOpen}
-                          tone={this.props.tone}
-                          size={this.props.condensed ? 'small' : 'medium'}
-                        />
-                      )}
+                      <HeaderIcon
+                        isClosed={!isOpen}
+                        isDisabled={this.props.isDisabled}
+                        tone={this.props.tone}
+                        size={this.props.condensed ? 'small' : 'medium'}
+                      />
                       <Spacings.Inline alignItems="center" scale={scale}>
                         {this.props.condensed ? (
                           <Text.Detail
