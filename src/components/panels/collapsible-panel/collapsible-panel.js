@@ -89,6 +89,7 @@ export default class CollapsiblePanel extends React.PureComponent {
             })}
           >
             <div
+              onClick={this.props.isDisabled ? undefined : toggle}
               className={classnames(styles['base-header-container'], {
                 [styles['header-container-theme-light']]:
                   this.props.theme === 'light',
@@ -100,11 +101,7 @@ export default class CollapsiblePanel extends React.PureComponent {
               })}
             >
               <Spacings.InsetSquish scale={scale}>
-                <div
-                  {...dataProps}
-                  onClick={this.props.isDisabled ? undefined : toggle}
-                  className={styles.header}
-                >
+                <div {...dataProps} className={styles.header}>
                   <div className={styles['truncate-header']}>
                     <Spacings.Inline alignItems="center" scale="s">
                       {!this.props.isDisabled && (
