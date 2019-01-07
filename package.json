@@ -142,7 +142,7 @@
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-prefer-object-spread": "1.2.1",
     "eslint-plugin-prettier": "3.0.0",
-    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-react": "7.12.3",
     "express": "4.16.4",
     "formik": "1.4.1",
     "glob": "7.1.3",
