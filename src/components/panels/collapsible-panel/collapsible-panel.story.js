@@ -28,6 +28,7 @@ storiesOf('Components|Panels', module)
           isSticky={boolean('isSticky', false)}
           isDisabled={boolean('isDisabled', false)}
           tone={select('tone', ['primary', 'urgent'], 'primary')}
+          hideExpansionControls={boolean('hideExpansionControls', false)}
           headerControls={text('headerControls', 'headerControl')}
           theme={select('theme', ['dark', 'light'])}
           condensed={condensed}

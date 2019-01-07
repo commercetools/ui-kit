@@ -26,6 +26,7 @@ export default class CollapsiblePanel extends React.PureComponent {
     tone: PropTypes.oneOf(['urgent', 'primary']),
     theme: PropTypes.oneOf(['dark', 'light']),
     condensed: PropTypes.bool,
+    hideExpansionControls: PropTypes.bool,
 
     // props when uncontrolled
     isDefaultClosed(props, propName, componentName, ...rest) {
@@ -109,12 +110,14 @@ export default class CollapsiblePanel extends React.PureComponent {
                 >
                   <div className={styles['truncate-header']}>
                     <Spacings.Inline alignItems="center" scale="s">
-                      <HeaderIcon
-                        isClosed={!isOpen}
-                        isDisabled={this.props.isDisabled}
-                        tone={this.props.tone}
-                        size={this.props.condensed ? 'small' : 'medium'}
-                      />
+                      {!this.props.hideExpansionControls && (
+                        <HeaderIcon
+                          isClosed={!isOpen}
+                          isDisabled={this.props.isDisabled}
+                          tone={this.props.tone}
+                          size={this.props.condensed ? 'small' : 'medium'}
+                        />
+                      )}
                       <Spacings.Inline alignItems="center" scale={scale}>
                         {this.props.condensed ? (
                           <Text.Detail
