@@ -16,7 +16,7 @@ import WarningMessage from '../../messages/warning-message';
 import LocalizedMoneyInputReadme from './README.md';
 import LocalizedMoneyInput from './localized-money-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedMoneyInputReadme))
   .add('LocalizedMoneyInput', () => {
