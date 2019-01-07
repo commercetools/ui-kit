@@ -20,12 +20,9 @@ storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedMultilineTextInputReadme))
   .add('LocalizedMultilineTextInput', () => {
-    const areLanguagesDefaultOpened = boolean(
-      'areLanguagesDefaultOpened',
-      false
-    );
-    const isMultilineDefaultExpanded = boolean(
-      'isMultilineDefaultExpanded',
+    const defaultExpandLanguages = boolean('defaultExpandLanguages', false);
+    const defaultExpandMultilineText = boolean(
+      'defaultExpandMultilineText',
       false
     );
     const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
@@ -33,7 +30,7 @@ storiesOf('Inputs', module)
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
-    const key = `${isMultilineDefaultExpanded}-${areLanguagesDefaultOpened}`;
+    const key = `${defaultExpandMultilineText}-${defaultExpandLanguages}`;
     return (
       <Section>
         <Value
@@ -54,13 +51,16 @@ storiesOf('Inputs', module)
               selectedLanguage={select('selectedLanguage', ['en', 'de'], 'en')}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              hideLanguageControls={boolean('hideLanguageControls', false)}
-              areLanguagesDefaultOpened={
+              hideLanguageExpansionControls={boolean(
+                'hideLanguageExpansionControls',
+                false
+              )}
+              defaultExpandLanguages={
                 // we need to set undefined instead of false to avoid prop-type
-                // warnings in case hideLanguageControls is true
-                areLanguagesDefaultOpened || undefined
+                // warnings in case hideLanguageExpansionControls is true
+                defaultExpandLanguages || undefined
               }
-              isMultilineDefaultExpanded={isMultilineDefaultExpanded}
+              defaultExpandMultilineText={defaultExpandMultilineText}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}

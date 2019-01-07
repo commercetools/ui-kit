@@ -80,7 +80,7 @@ it('should have an HTML name for input, according to the language', () => {
 it('should have an HTML name for every input when all inputs are visible', () => {
   const { container } = renderLocalizedMultilineTextField({
     name: 'foo',
-    areLanguagesDefaultOpened: true,
+    defaultExpandLanguages: true,
   });
   expect(container.querySelector('[name="foo.en"]')).toBeInTheDocument();
   expect(container.querySelector('[name="foo.de"]')).toBeInTheDocument();
@@ -170,7 +170,7 @@ describe('when disabled', () => {
   it('should disable all inputs when all languages  are visible', () => {
     const { getByLabelText } = renderLocalizedMultilineTextField({
       isDisabled: true,
-      areLanguagesDefaultOpened: true,
+      defaultExpandLanguages: true,
     });
     expect(getByLabelText('EN')).toHaveAttribute('disabled');
     expect(getByLabelText('DE')).toHaveAttribute('disabled');
@@ -187,7 +187,7 @@ describe('when readOnly', () => {
   it('should disable all inputs when all languages are visible', () => {
     const { getByLabelText } = renderLocalizedMultilineTextField({
       isReadOnly: true,
-      areLanguagesDefaultOpened: true,
+      defaultExpandLanguages: true,
     });
     expect(getByLabelText('EN')).toHaveAttribute('readonly');
     expect(getByLabelText('DE')).toHaveAttribute('readonly');

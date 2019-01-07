@@ -44,14 +44,17 @@ export class LocalizedMultilineTextInput extends React.Component {
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    isMultilineDefaultExpanded: PropTypes.bool,
-    hideLanguageControls: PropTypes.bool,
-    areLanguagesDefaultOpened: (props, propName, componentName, ...rest) => {
-      if (props.hideLanguageControls && typeof props[propName] === 'boolean') {
+    defaultExpandMultilineText: PropTypes.bool,
+    hideLanguageExpansionControls: PropTypes.bool,
+    defaultExpandLanguages: (props, propName, componentName, ...rest) => {
+      if (
+        props.hideLanguageExpansionControls &&
+        typeof props[propName] === 'boolean'
+      ) {
         throw new Error(
           oneLine`
             ${componentName}: "${propName}" does not have any effect when
-            "hideLanguageControls" is set.
+            "hideLanguageExpansionControls" is set.
           `
         );
       }
@@ -90,10 +93,10 @@ export class LocalizedMultilineTextInput extends React.Component {
 
   state = {
     // This state is used to show/hide the remaining translations
-    areLanguagesOpened: this.props.areLanguagesDefaultOpened,
+    areLanguagesOpened: this.props.defaultExpandLanguages,
     // This state is to manage the expand/collapse of multiline text inputs
     expandedTranslations: mapValues(this.props.value, () =>
-      Boolean(this.props.isMultilineDefaultExpanded)
+      Boolean(this.props.defaultExpandMultilineText)
     ),
   };
 
@@ -132,7 +135,7 @@ export class LocalizedMultilineTextInput extends React.Component {
     const areLanguagesOpened =
       hasErrorOnRemainingLanguages ||
       hasWarningOnRemainingLanguages ||
-      props.hideLanguageControls ||
+      props.hideLanguageExpansionControls ||
       state.areLanguagesOpened;
     return { areLanguagesOpened };
   };
@@ -186,7 +189,10 @@ export class LocalizedMultilineTextInput extends React.Component {
                 isDisabled={this.props.isDisabled}
                 isReadOnly={this.props.isReadOnly}
                 languagesControl={(() => {
-                  if (!hasRemainingLanguages || this.props.hideLanguageControls)
+                  if (
+                    !hasRemainingLanguages ||
+                    this.props.hideLanguageExpansionControls
+                  )
                     return null;
                   if (isFirstLanguage && !this.state.areLanguagesOpened)
                     return (

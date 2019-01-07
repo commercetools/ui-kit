@@ -30,16 +30,16 @@ storiesOf('Fields', module)
           const name = text('name', '');
           const hint = text('hint', 'More information about the product');
 
-          const areLanguagesDefaultOpened = boolean(
-            'areLanguagesDefaultOpened',
+          const defaultExpandLanguages = boolean(
+            'defaultExpandLanguages',
             false
           );
-          const isMultilineDefaultExpanded = boolean(
-            'isMultilineDefaultExpanded',
+          const defaultExpandMultilineText = boolean(
+            'defaultExpandMultilineText',
             false
           );
 
-          const key = `${isMultilineDefaultExpanded}-${areLanguagesDefaultOpened}`;
+          const key = `${defaultExpandMultilineText}-${defaultExpandLanguages}`;
 
           const errorsByLanguage = boolean('errorsByLanguage', false);
 
@@ -83,13 +83,16 @@ storiesOf('Fields', module)
               )}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              hideLanguageControls={boolean('hideLanguageControls', false)}
-              areLanguagesDefaultOpened={
+              hideLanguageExpansionControls={boolean(
+                'hideLanguageExpansionControls',
+                false
+              )}
+              defaultExpandLanguages={
                 // we need to set undefined instead of false to avoid prop-type
-                // warnings in case hideLanguageControls is true
-                areLanguagesDefaultOpened || undefined
+                // warnings in case hideLanguageExpansionControls is true
+                defaultExpandLanguages || undefined
               }
-              isMultilineDefaultExpanded={isMultilineDefaultExpanded}
+              defaultExpandMultilineText={defaultExpandMultilineText}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}

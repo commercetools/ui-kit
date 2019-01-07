@@ -131,13 +131,16 @@ export default class LocalizedTextInput extends React.Component {
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    hideExpansionControls: PropTypes.bool,
-    isDefaultExpanded: (props, propName, componentName, ...rest) => {
-      if (props.hideExpansionControls && typeof props[propName] === 'boolean') {
+    hideLanguageExpansionControls: PropTypes.bool,
+    defaultExpandLanguages: (props, propName, componentName, ...rest) => {
+      if (
+        props.hideLanguageExpansionControls &&
+        typeof props[propName] === 'boolean'
+      ) {
         throw new Error(
           oneLine`
             ${componentName}: "${propName}" does not have any effect when
-            "hideExpansionControls" is set.
+            "hideLanguageExpansionControls" is set.
           `
         );
       }
@@ -176,10 +179,10 @@ export default class LocalizedTextInput extends React.Component {
     const hasErrorOnRemainingLanguages =
       props.hasError ||
       getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
-    const areLanguagesOpened =
+    const areLanguagesExpanded =
       hasErrorOnRemainingLanguages ||
-      props.hideExpansionControls ||
-      state.areLanguagesOpened;
+      props.hideLanguageExpansionControls ||
+      state.areLanguagesExpanded;
 
     const id = do {
       if (props.id) props.id;
@@ -187,18 +190,18 @@ export default class LocalizedTextInput extends React.Component {
       else sequentialId();
     };
 
-    return { areLanguagesOpened, id };
+    return { areLanguagesExpanded, id };
   };
 
   state = {
     // This state is used to show/hide the remaining translations
-    areLanguagesOpened: this.props.isDefaultExpanded,
+    areLanguagesExpanded: this.props.defaultExpandLanguages,
     id: this.props.id,
   };
 
   toggleLanguages = () =>
     this.setState(prevState => ({
-      areLanguagesOpened: !prevState.areLanguagesOpened,
+      areLanguagesExpanded: !prevState.areLanguagesExpanded,
     }));
 
   render() {
@@ -219,7 +222,8 @@ export default class LocalizedTextInput extends React.Component {
                 this.props.errors,
                 this.props.selectedLanguage
               );
-            if (!isFirstLanguage && !this.state.areLanguagesOpened) return null;
+            if (!isFirstLanguage && !this.state.areLanguagesExpanded)
+              return null;
 
             return (
               <div key={language}>
@@ -250,11 +254,11 @@ export default class LocalizedTextInput extends React.Component {
                   {(() => {
                     if (
                       !hasRemainingLanguages ||
-                      this.props.hideExpansionControls
+                      this.props.hideLanguageExpansionControls
                     )
                       return null;
 
-                    if (isFirstLanguage && !this.state.areLanguagesOpened)
+                    if (isFirstLanguage && !this.state.areLanguagesExpanded)
                       return (
                         <LanguagesButton
                           onClick={this.toggleLanguages}

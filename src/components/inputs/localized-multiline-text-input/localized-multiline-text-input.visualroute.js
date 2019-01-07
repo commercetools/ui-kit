@@ -29,7 +29,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        isMultilineDefaultExpanded={true}
+        defaultExpandMultilineText={true}
       />
     </Spec>
     <Spec label="when multiline text and languages are expanded by default">
@@ -38,8 +38,8 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        isMultilineDefaultExpanded={true}
-        areLanguagesDefaultOpened={true}
+        defaultExpandMultilineText={true}
+        defaultExpandLanguages={true}
       />
     </Spec>
     <Spec label="when language controls are hidden">
@@ -48,7 +48,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        hideLanguageControls={true}
+        hideLanguageExpansionControls={true}
       />
     </Spec>
     <Spec label="when languages are opened by default">
@@ -57,7 +57,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
-        areLanguagesDefaultOpened={true}
+        defaultExpandLanguages={true}
       />
     </Spec>
     <Spec label="when read-only and open">
@@ -67,7 +67,7 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint="m"
         isReadOnly={true}
-        areLanguagesDefaultOpened={true}
+        defaultExpandLanguages={true}
       />
     </Spec>
     <Spec label="when read-only and closed">
@@ -86,7 +86,7 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint="m"
         isDisabled={true}
-        areLanguagesDefaultOpened={true}
+        defaultExpandLanguages={true}
       />
     </Spec>
     <Spec label="when disabled and closed">

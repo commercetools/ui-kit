@@ -35,13 +35,16 @@ class LocalizedMultilineTextField extends React.Component {
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    hideExpansionControls: PropTypes.bool,
-    isDefaultExpanded: (props, propName, componentName, ...rest) => {
-      if (props.hideExpansionControls && typeof props[propName] === 'boolean') {
+    hideLanguageExpansionControls: PropTypes.bool,
+    defaultExpandLanguages: (props, propName, componentName, ...rest) => {
+      if (
+        props.hideLanguageExpansionControls &&
+        typeof props[propName] === 'boolean'
+      ) {
         throw new Error(
           oneLine`
             ${componentName}: "${propName}" does not have any effect when
-            "hideExpansionControls" is set.
+            "hideLanguageExpansionControls" is set.
           `
         );
       }
@@ -106,8 +109,10 @@ class LocalizedMultilineTextField extends React.Component {
             selectedLanguage={this.props.selectedLanguage}
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
-            hideExpansionControls={this.props.hideExpansionControls}
-            isDefaultExpanded={this.props.isDefaultExpanded}
+            hideLanguageExpansionControls={
+              this.props.hideLanguageExpansionControls
+            }
+            defaultExpandLanguages={this.props.defaultExpandLanguages}
             isAutofocussed={this.props.isAutofocussed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}

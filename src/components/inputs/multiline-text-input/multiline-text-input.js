@@ -42,7 +42,7 @@ export class MultilineTextInput extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
-    isDefaultClosed: PropTypes.bool,
+    defaultExpandMultilineText: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
@@ -54,13 +54,6 @@ export class MultilineTextInput extends React.Component {
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
-  };
-
-  static defaultProps = {
-    hasError: false,
-    hasWarning: false,
-    isAutofocussed: false,
-    isDefaultClosed: false,
   };
 
   state = {
@@ -82,7 +75,7 @@ export class MultilineTextInput extends React.Component {
 
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Collapsible isDefaultClosed={this.props.isDefaultClosed}>
+        <Collapsible isDefaultClosed={!this.props.defaultExpandMultilineText}>
           {({ isOpen, toggle }) => (
             <React.Fragment>
               <TextareaAutosize

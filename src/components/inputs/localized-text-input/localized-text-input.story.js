@@ -19,11 +19,11 @@ storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedTextInputReadme))
   .add('LocalizedTextInput', () => {
-    const isDefaultExpanded = boolean('isDefaultExpanded', false);
+    const defaultExpandLanguages = boolean('defaultExpandLanguages', false);
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
-    const key = isDefaultExpanded ? 'yes' : 'no';
+    const key = defaultExpandLanguages ? 'yes' : 'no';
     const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
     return (
       <Section>
@@ -45,11 +45,14 @@ storiesOf('Inputs', module)
               selectedLanguage={select('selectedLanguage', ['en', 'de'], 'en')}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              hideExpansionControls={boolean('hideExpansionControls', false)}
-              isDefaultExpanded={
+              hideLanguageExpansionControls={boolean(
+                'hideLanguageExpansionControls',
+                false
+              )}
+              defaultExpandLanguages={
                 // we need to set undefined instead of false to avoid prop-type
-                // warnings on the story in case hideExpansionControls is true
-                isDefaultExpanded || undefined
+                // warnings on the story in case hideLanguageExpansionControls is true
+                defaultExpandLanguages || undefined
               }
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
