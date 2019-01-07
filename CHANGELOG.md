@@ -17,6 +17,7 @@
 - `FieldErrors`: Export component ([#371](https://github.com/commercetools/ui-kit/pull/371))
 - Add `type` prop to multiple buttons (`FlatButton`, `IconButton`, `PrimaryButton`, `SecondaryButton`, `SecondaryIconButton`) to enable using them as submit/reset buttons in forms. ([#349](https://github.com/commercetools/ui-kit/pull/349))
 - `MoneyInput`, `MoneyField`: Adds support for `onFocus` ([#357](https://github.com/commercetools/ui-kit/pull/357)), `isAutofocussed` and `isReadOnly` ([#362](https://github.com/commercetools/ui-kit/pull/362))
+- `LocalizedMoneyInput`: New component ([#339](https://github.com/commercetools/ui-kit/pull/339))
 
 ### Bug Fixes
 
@@ -28,6 +29,7 @@
 ### Refactoring
 
 - `MoneyInput`: Wraps `SingleValue` of react-select with a label pointing at the `currencyCode` input, so that it can be targeted using RTL ([#362](https://github.com/commercetools/ui-kit/pull/362))
+- All components now have encapsulated styles [#387](https://github.com/commercetools/ui-kit/pull/387)
 
 ### Chore
 
