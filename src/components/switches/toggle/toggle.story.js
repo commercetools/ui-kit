@@ -8,7 +8,7 @@ import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Toggle from '.';
 
-storiesOf('Switches', module)
+storiesOf('Components|Switches', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Toggle', () => (

@@ -6,7 +6,7 @@ import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import LoadingSpinner from './loading-spinner';
 
-storiesOf('Loading', module)
+storiesOf('Components|Loading', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('LoadingSpinner', () => (

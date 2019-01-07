@@ -7,7 +7,7 @@ import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Label from './label';
 
-storiesOf('Label', module)
+storiesOf('Components|Label', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Label', () => (

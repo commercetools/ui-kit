@@ -16,7 +16,7 @@ import WarningMessage from '../../messages/warning-message';
 import LocalizedMultilineTextInputReadme from './README.md';
 import LocalizedMultilineTextInput from './localized-multiline-text-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedMultilineTextInputReadme))
   .add('LocalizedMultilineTextInput', () => {

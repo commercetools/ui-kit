@@ -32,7 +32,7 @@ const sizes = [
   { name: 'xl', pixels: '32px' },
 ];
 
-storiesOf('Spacings', module)
+storiesOf('Components|Spacings', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Stack', () => {

@@ -15,7 +15,7 @@ import ErrorMessage from '../../messages/error-message';
 import LocalizedTextInputReadme from './README.md';
 import LocalizedTextInput from './localized-text-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedTextInputReadme))
   .add('LocalizedTextInput', () => {

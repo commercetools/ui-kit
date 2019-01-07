@@ -8,7 +8,7 @@ import Section from '../../../../.storybook/decorators/section';
 import NumberInputReadme from './README.md';
 import NumberInput from './number-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(NumberInputReadme))
   .add('NumberInput', () => {

@@ -16,7 +16,7 @@ import Spacings from '../../spacings';
 import Readme from './README.md';
 import CreatableSelectInput from './creatable-select-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('CreatableSelectInput', () => {

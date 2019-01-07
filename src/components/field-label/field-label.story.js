@@ -9,7 +9,7 @@ import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import FieldLabel from './field-label';
 
-storiesOf('FieldLabel', module)
+storiesOf('Components|FieldLabel', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('FieldLabel', () => {

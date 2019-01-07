@@ -107,7 +107,7 @@ class SelectStory extends React.Component {
   }
 }
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('AsyncCreatableSelectInput', () => <SelectStory />);

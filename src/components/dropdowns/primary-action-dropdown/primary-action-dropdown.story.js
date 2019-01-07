@@ -10,7 +10,7 @@ import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 
 const iconNames = Object.keys(icons);
 
-storiesOf('Dropdowns', module)
+storiesOf('Components|Dropdowns', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('PrimaryActionDropdown', () => (

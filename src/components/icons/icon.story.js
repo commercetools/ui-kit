@@ -35,7 +35,7 @@ const FileName = styled.div`
 
 const iconNames = Object.keys(icons);
 
-storiesOf('Icons', module)
+storiesOf('Components|Icons', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('All Icons', () => (

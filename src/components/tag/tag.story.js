@@ -28,7 +28,7 @@ const Story = () => (
 );
 Story.displayName = 'Story';
 
-storiesOf('Tags', module)
+storiesOf('Components|Tags', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   // Router is required to support the Link component used by Tag

@@ -15,7 +15,7 @@ import DateRangeFieldReadme from './README.md';
 import * as icons from '../../icons';
 import DateRangeField from './date-range-field';
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(DateRangeFieldReadme))
   .add('DateRangeField', () => (

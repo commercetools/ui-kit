@@ -54,7 +54,7 @@ class DateTimeInputStory extends React.Component {
   }
 }
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(DateTimeInputReadme))
   .add('DateTimeInput', () => <DateTimeInputStory />);

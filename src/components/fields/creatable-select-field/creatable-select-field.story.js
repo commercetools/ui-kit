@@ -69,7 +69,7 @@ const options = [
   { value: 'deer', label: 'Deer' },
 ];
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(CreatableSelectFieldReadme))
   .add('CreatableSelectField', () => {
