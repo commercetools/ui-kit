@@ -43,7 +43,7 @@ class DateRangeInputStory extends React.Component {
   }
 }
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(DateRangeInputReadme))
   .add('DateRangeInput', () => <DateRangeInputStory />);

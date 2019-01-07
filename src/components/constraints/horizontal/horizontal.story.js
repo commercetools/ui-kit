@@ -32,7 +32,7 @@ const sizes = [
   { name: 'xl', width: '100%' },
 ];
 
-storiesOf('Constraints', module)
+storiesOf('Components|Constraints', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Horizontal', () => {

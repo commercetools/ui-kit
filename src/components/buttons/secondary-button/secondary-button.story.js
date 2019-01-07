@@ -11,7 +11,7 @@ import SecondaryButton from './secondary-button';
 
 const iconNames = Object.keys(icons);
 
-storiesOf('Buttons', module)
+storiesOf('Components|Buttons', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('SecondaryButton', () => (

@@ -27,10 +27,16 @@ addDecorator(
 const srcStories = require.context('../src', true, /\.story\.js$/);
 const materialsStories = require.context('../materials', true, /\.story\.js$/);
 const exampleStories = require.context('../examples', true, /\.story\.js$/);
+const philosophyStories = require.context(
+  '../philosophy',
+  true,
+  /\.story\.js$/
+);
 
 function loadStories() {
-  srcStories.keys().forEach(filename => srcStories(filename));
+  philosophyStories.keys().forEach(filename => philosophyStories(filename));
   materialsStories.keys().forEach(filename => materialsStories(filename));
+  srcStories.keys().forEach(filename => srcStories(filename));
   exampleStories.keys().forEach(filename => exampleStories(filename));
 }
 

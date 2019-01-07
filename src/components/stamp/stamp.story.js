@@ -13,7 +13,7 @@ const numberOfIcons = iconNames.length;
 const getRandomIndex = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-storiesOf('Stamps', module)
+storiesOf('Components|Stamps', module)
   .addDecorator(withReadme(Readme))
   .add('Stamp', () => (
     <Section>

@@ -8,7 +8,7 @@ import Section from '../../../../.storybook/decorators/section';
 import PasswordInputReadme from './README.md';
 import PasswordInput from './password-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(PasswordInputReadme))
   .add('PasswordInput', () => (

@@ -15,7 +15,7 @@ import DateTimeFieldReadme from './README.md';
 import * as icons from '../../icons';
 import DateTimeField from './date-time-field';
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(DateTimeFieldReadme))
   .add('DateTimeField', () => (

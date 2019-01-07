@@ -101,7 +101,7 @@ class CollapsibleMotionStory extends React.Component {
   }
 }
 
-storiesOf('Panels', module)
+storiesOf('Components|Panels', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('CollapsibleMotion', () => <CollapsibleMotionStory />);

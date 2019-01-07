@@ -8,7 +8,7 @@ import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import TimeInput from './time-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('TimeInput', () => (

@@ -15,7 +15,7 @@ import PasswordFieldReadme from './README.md';
 import * as icons from '../../icons';
 import PasswordField from './password-field';
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(PasswordFieldReadme))
   .add('PasswordField', () => (

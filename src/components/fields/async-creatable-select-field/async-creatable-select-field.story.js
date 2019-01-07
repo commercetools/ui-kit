@@ -79,7 +79,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const loadOptions = inputValue =>
   delay(500).then(() => filterColors(inputValue));
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(AsyncCreatableSelectFieldReadme))
   .add('AsyncCreatableSelectField', () => {

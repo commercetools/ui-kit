@@ -16,7 +16,7 @@ import LocalizedTextFieldReadme from './README.md';
 import * as icons from '../../icons';
 import LocalizedTextField from './localized-text-field';
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedTextFieldReadme))
   .add('LocalizedTextField', () => (

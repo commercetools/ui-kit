@@ -8,7 +8,7 @@ import Section from '../../../../.storybook/decorators/section';
 import TextInputReadme from './README.md';
 import TextInput from './text-input';
 
-storiesOf('Inputs', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(TextInputReadme))
   .add('TextInput', () => (

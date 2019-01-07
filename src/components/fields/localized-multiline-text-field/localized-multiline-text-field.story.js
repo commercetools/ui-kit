@@ -16,7 +16,7 @@ import LocalizedMultilineTextFieldReadme from './README.md';
 import * as icons from '../../icons';
 import LocalizedMultilineTextField from './localized-multiline-text-field';
 
-storiesOf('Fields', module)
+storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(LocalizedMultilineTextFieldReadme))
   .add('LocalizedMultilineTextField', () => (

@@ -40,7 +40,7 @@ const sizes = [
   { name: 'l', pixels: '16px x 32px' },
 ];
 
-storiesOf('Spacings', module)
+storiesOf('Components|Spacings', module)
   .addDecorator(withReadme(Readme))
   .add('Inset Squish', () => (
     <View>
