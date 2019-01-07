@@ -13,24 +13,28 @@
 }
 
 .body-text {
+  font-family: var(--font-family-default);
   font-size: var(--font-body);
-  color: var(--color-black);
+  color: var(--font-color);
   margin: 0;
 }
 
 .detail {
   color: var(--font-color);
   font-size: var(--font-detail);
+  font-family: var(--font-family-default);
   display: block;
 }
 
 .headline {
+  font-family: var(--font-family-default);
   color: var(--font-color);
   margin: 0;
   font-weight: 300;
 }
 
 .subheadline {
+  font-family: var(--font-family-default);
   margin: 0;
   font-weight: normal;
   color: var(--font-color);
@@ -97,6 +101,9 @@ h5.subheadline {
 }
 
 .wrap {
+  font-family: var(--font-family-default);
+  color: var(--font-color);
+  font-size: var(--font-body);
   white-space: pre-wrap;
 }
 

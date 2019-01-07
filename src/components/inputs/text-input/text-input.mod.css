@@ -19,6 +19,7 @@
   transition: var(--transition-standard);
   outline: none;
   box-shadow: none;
+  box-sizing: border-box;
   appearance: none;
 }
 

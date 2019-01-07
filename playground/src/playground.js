@@ -1,6 +1,7 @@
 import React from 'react';
 import { PrimaryButton, MoneyInput, i18n } from 'ui-kit';
 import { IntlProvider } from 'react-intl';
+import './playground.css';
 
 export default class Playground extends React.Component {
   static displayName = 'Playground';

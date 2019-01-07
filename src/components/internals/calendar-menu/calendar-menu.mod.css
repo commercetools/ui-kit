@@ -1,9 +1,13 @@
 .menuBase {
   overflow-y: scroll;
+  color: var(--color-black);
+  font-family: var(--font-family-default);
   border: 1px solid var(--border-color-input-focus);
   border-radius: var(--border-radius-input);
   margin-top: var(--spacing-4);
+  font-size: var(--font-size-default);
   position: absolute;
+  box-sizing: border-box;
   width: 100%;
   background-color: var(--color-white);
   z-index: 1;
@@ -25,4 +29,3 @@
 .menuWithFooter {
   composes: menuBase;
 }
-

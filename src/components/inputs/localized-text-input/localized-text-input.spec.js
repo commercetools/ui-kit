@@ -130,7 +130,7 @@ describe('when input is expanded', () => {
 describe('when expanded by default', () => {
   it('should render one input per language', () => {
     const { getByLabelText } = renderLocalizedTextInput({
-      isDefaultExpanded: true,
+      defaultExpandLanguages: true,
     });
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(getByLabelText('FR')).toBeInTheDocument();
@@ -141,7 +141,7 @@ describe('when expanded by default', () => {
 describe('when expansion controls are hidden', () => {
   it('should render one input per language and no hide button', () => {
     const { getByLabelText, queryByLabelText } = renderLocalizedTextInput({
-      hideExpansionControls: true,
+      hideLanguageExpansionControls: true,
     });
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(getByLabelText('FR')).toBeInTheDocument();
@@ -195,7 +195,7 @@ describe('when read-only', () => {
 describe('when placeholders are provided', () => {
   it('should forward the placeholders', () => {
     const { getByLabelText } = renderLocalizedTextInput({
-      isDefaultExpanded: true,
+      defaultExpandLanguages: true,
       placeholder: {
         en: 'I love cheese',
         fr: "Ostie que j'aime le fromage",

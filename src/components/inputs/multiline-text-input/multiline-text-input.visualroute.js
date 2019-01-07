@@ -73,20 +73,20 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec label="when closed by default">
+    <Spec label="when expanded by default">
       <MultilineTextInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        isDefaultClosed={true}
+        defaultExpandMultilineText={true}
       />
     </Spec>
-    <Spec label="when disabled and closed by default">
+    <Spec label="when disabled and expanded by default">
       <MultilineTextInput
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        isDefaultClosed={true}
+        defaultExpandMultilineText={true}
         isDisabled={true}
       />
     </Spec>

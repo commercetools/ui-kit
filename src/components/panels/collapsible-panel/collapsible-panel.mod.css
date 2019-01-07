@@ -4,10 +4,13 @@
 }
 
 .base-container {
+  font-family: var(--font-family-default);
   box-shadow: var(--shadow-1-second);
+  color: var(--color-black);
   border-radius: var(--border-radius-6);
   position: relative;
   min-width: 550px;
+  font-size: var(--font-size-default);
   padding: 0;
 }
 

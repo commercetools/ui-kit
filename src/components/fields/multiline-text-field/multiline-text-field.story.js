@@ -25,6 +25,10 @@ storiesOf('Fields', module)
         render={(value, onChange) => {
           const name = text('name', '');
           const hint = text('hint', 'Enter a description');
+          const defaultExpandMultilineText = boolean(
+            'defaultExpandMultilineText',
+            false
+          );
 
           // hintIcon will only render when hint exists
           const iconNames = Object.keys(icons);
@@ -32,6 +36,11 @@ storiesOf('Fields', module)
           const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
           return (
             <MultilineTextField
+              key={
+                defaultExpandMultilineText
+                  ? 'default-expanded'
+                  : 'not-default-expanded'
+              }
               id={name.trim() === '' ? undefined : name}
               horizontalConstraint={select(
                 'horizontalConstraint',
@@ -59,7 +68,7 @@ storiesOf('Fields', module)
               onFocus={action('onFocus')}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
-              isDefaultClosed={boolean('isDefaultClosed', false)}
+              defaultExpandMultilineText={defaultExpandMultilineText}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={text('placeholder', 'Placeholder')}
               title={text('title', 'Description')}

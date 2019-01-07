@@ -30,9 +30,12 @@ storiesOf('Fields', module)
           const name = text('name', '');
           const hint = text('hint', 'More information about the product');
 
-          const isDefaultExpanded = boolean('isDefaultExpanded', false);
+          const defaultExpandLanguages = boolean(
+            'defaultExpandLanguages',
+            false
+          );
 
-          const key = isDefaultExpanded;
+          const key = defaultExpandLanguages;
 
           const errorsByLanguage = boolean('errorsByLanguage', false);
 
@@ -76,11 +79,14 @@ storiesOf('Fields', module)
               )}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              hideExpansionControls={boolean('hideExpansionControls', false)}
-              isDefaultExpanded={
+              hideLanguageExpansionControls={boolean(
+                'hideLanguageExpansionControls',
+                false
+              )}
+              defaultExpandLanguages={
                 // we need to set undefined instead of false to avoid prop-type
-                // warnings in case hideExpansionControls is true
-                isDefaultExpanded || undefined
+                // warnings in case hideLanguageExpansionControls is true
+                defaultExpandLanguages || undefined
               }
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}

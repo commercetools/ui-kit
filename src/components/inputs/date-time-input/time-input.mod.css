@@ -5,8 +5,8 @@
   border-top: 1px solid var(--color-gray-90);
   padding: 10px 0;
   outline: 0;
-  margin-top: var(--spacing-8);
   font-size: var(--font-size-default);
+  margin-top: var(--spacing-8);
   color: var(--color-black);
 }
 

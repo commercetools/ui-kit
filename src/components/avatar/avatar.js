@@ -37,7 +37,7 @@ const GravatarImg = props => (
     className={styles['gravatar-img']}
     src={createGravatarImgUrl(props.hash, getSizeInPx(props.size))}
     srcSet={oneLineTrim`
-      ${createGravatarImgUrl(props.hash, getSizeInPx(props.size))} 1x, 
+      ${createGravatarImgUrl(props.hash, getSizeInPx(props.size))} 1x,
       ${createGravatarImgUrl(props.hash, getSizeInPx(props.size) * 2)} 2x
     `}
   />
@@ -50,7 +50,9 @@ GravatarImg.propTypes = {
 };
 
 const Initials = props => (
-  <div className={styles.initials}>
+  <div
+    className={classnames(styles.initials, styles[`initials-${props.size}`])}
+  >
     {getInitialsFromName({
       firstName: props.firstName,
       lastName: props.lastName,
@@ -62,6 +64,7 @@ Initials.displayName = 'Initials';
 Initials.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
+  size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
 };
 
 const Avatar = props => (
@@ -76,7 +79,11 @@ const Avatar = props => (
     {...filterDataAttributes(props)}
   >
     <GravatarImg hash={props.gravatarHash} size={props.size} />
-    <Initials firstName={props.firstName} lastName={props.lastName} />
+    <Initials
+      size={props.size}
+      firstName={props.firstName}
+      lastName={props.lastName}
+    />
   </div>
 );
 Avatar.displayName = 'Avatar';
