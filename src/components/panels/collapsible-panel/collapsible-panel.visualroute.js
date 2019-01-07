@@ -81,5 +81,33 @@ export const component = () => (
         Content
       </CollapsiblePanel>
     </Spec>
+    <Spec label="disabled">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={true}
+        tone="primary"
+        headerControls="headerControl"
+        theme="light"
+        condensed
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="hideExpansionControls">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        hideExpansionControls={true}
+        tone="primary"
+        headerControls="headerControl"
+        theme="light"
+        condensed
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
   </Suite>
 );
