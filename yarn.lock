@@ -1478,7 +1478,7 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-1.0.4.tgz#b740f68609dfae8aa71c3a6cab15d816407ba493"
   integrity sha512-60CHpq+eqnTxLZQ4PGHYNwUX572hgpMHGPtTWMjdTMsAvlm69lZV/4ly6O3sAYkomo4NggGcomrDpBe34rxUqw==
 
-"@percy/agent@^0.1.2":
+"@percy/agent@^0.1.7":
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@percy/agent/-/agent-0.1.7.tgz#c90c00112ef2d7e0fb9edf3b935510ccc30d4d8e"
   integrity sha512-cqxq5+yRYq+yRe42TQQvGXoVMCO6tIg5ZG7VD1sF88OqLhXNiiYTKmoi81wyOTtjfkJN0OI+ioSQ3NK8+mZeQw==
@@ -1503,12 +1503,12 @@
     sinon "7.1.1"
     winston "^2.0.0"
 
-"@percy/puppeteer@1.0.0-beta.5":
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-1.0.0-beta.5.tgz#562dbbe5a31b613524ef4283357d1ebd61c2195f"
-  integrity sha512-ToJqcC6VPH5sldqprylrhAOTMLLrxYkcfOQhnPWmUIAXk8O9hDhQ2rmIrJBd2LS195mpVyR8k7vP1080Yph1GQ==
+"@percy/puppeteer@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-1.0.0.tgz#534c60e442c5993c6c03e1a4f4529220d21cdd9a"
+  integrity sha512-U7HY/FXDUgBupJd72qjkwNWGXzPBHkyCtFRCeuQqN7FZWF7+8wESUJrfMSLo75kZnC6RgGhb6pTpBs3SqyoFMA==
   dependencies:
-    "@percy/agent" "^0.1.2"
+    "@percy/agent" "^0.1.7"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
