@@ -1,8 +1,8 @@
 # Fields
 
-Fields combine a label, an input element and valdiation messages.
+Fields combine a label, an input element and validation messages.
 
-Think of Fields as a form of API sugar expressed as additional components.
+Think of Fields as a form of syntactic sugar expressed as additional components.
 They forward most properties to the underlying components while combining some
 APIs of the components for easier usage.
 
@@ -42,6 +42,7 @@ All field components should at least accept these properties
 | `value`      | `any`      |
 | `onChange`   | `function` |
 | `isDisabled` | `boolean`  |
+| `data-*`     | `any`      |
 
 ## Auto-generated ids
 
