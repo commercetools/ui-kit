@@ -1,6 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { render } from '../../../test-utils';
 import CollapsiblePanel from './collapsible-panel';
+
+const HeaderControls = props => (
+  <div onClick={props.onClick}>Header Controls</div>
+);
+
+HeaderControls.propTypes = {
+  onClick: PropTypes.func,
+};
 
 it('should smoke', () => {
   const { getByText } = render(
@@ -8,6 +17,45 @@ it('should smoke', () => {
   );
   expect(getByText('Header')).toBeInTheDocument();
   expect(getByText('Children')).toBeInTheDocument();
+});
+
+describe('header controls', () => {
+  describe('when passed header controls without an onClick', () => {
+    it('should not call onToggle when headerControls are clicked', () => {
+      const onToggle = jest.fn();
+      const { getByText } = render(
+        <CollapsiblePanel
+          header="Header"
+          onToggle={onToggle}
+          headerControls={<HeaderControls />}
+          className="foo"
+          isClosed={true}
+        >
+          Children
+        </CollapsiblePanel>
+      );
+      getByText('Header Controls').click();
+      expect(onToggle).not.toHaveBeenCalled();
+    });
+  });
+  describe('when passed header controls with an onClick', () => {
+    it('should call not onToggle when headerControls are clicked', () => {
+      const onToggle = jest.fn();
+      const { getByText } = render(
+        <CollapsiblePanel
+          header="Header"
+          onToggle={onToggle}
+          headerControls={<HeaderControls onClick={() => {}} />}
+          className="foo"
+          isClosed={true}
+        >
+          Children
+        </CollapsiblePanel>
+      );
+      getByText('Header Controls').click();
+      expect(onToggle).not.toHaveBeenCalled();
+    });
+  });
 });
 
 // We really shouldn't be accepting arbitrary class-names
