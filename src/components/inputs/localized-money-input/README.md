@@ -177,18 +177,17 @@ import omitEmpty from 'omit-empty';
 import ErrorMessage from '@commercetools-frontend/ui-kit/messages/error-message';
 import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
 
-
 // the existing document, e.g. from the database
 const doc = {
   prices: [
     {
       currencyCode: 'EUR',
-      centAmount: 1200
+      centAmount: 1200,
     },
     {
       currencyCode: 'AMD',
       centAmount: 3300,
-    }
+    },
   ],
 };
 
@@ -201,7 +200,7 @@ const docToFormValues = doc => ({
 
 // a function to convert form values back to a document
 const formValuesToDoc = formValues => ({
-  // The convertToMoneyValue function will turn a LocalizedMoneyInput
+  // The convertToMoneyValue function will convert a LocalizedMoneyInput
   // value into a value the API can handle
   // It automatically converts to centPrecision or highPrecision
   // depending on the number of supplied fraction digits and the
@@ -216,11 +215,15 @@ const validate = formValues => {
   const errors = { prices: {} };
   Object.keys(formValues.prices).forEach(currency => {
     errors.prices[currency] = {};
-  })
-  const emptyCurrencies = LocalizedMoneyInput.getEmptyCurrencies(formValues.prices);
+  });
+  const emptyCurrencies = LocalizedMoneyInput.getEmptyCurrencies(
+    formValues.prices
+  );
   // ['ERU', 'USD']
-  // THis form dosen't accept highprecision prices
-  const highPrecisionCurrencies = LocalizedMoneyInput.getHighPrecisionCurrencies(formValues.prices);
+  // This form dosen't accept highprecision prices
+  const highPrecisionCurrencies = LocalizedMoneyInput.getHighPrecisionCurrencies(
+    formValues.prices
+  );
 
   // ['CAD', 'USD']
   emptyCurrencies.forEach(emptyCurrency => {
@@ -233,19 +236,20 @@ const validate = formValues => {
   return omitEmpty(errors);
 };
 const initialValues = docToFormValues(doc);
-const renderErrors = (errors) => {
+const renderErrors = errors => {
   Object.keys(errors.prices).reduce(currency => {
-    const error = errors.prices[currency]?.missing && (
-                  <ErrorMessage>This field is required!</ErrorMessage>
-                ) ||
-                errors.prices[currency]?.highPrecision && (
-          <ErrorMessage>High precision prices not  supported here!</ErrorMessage>
-        ))
+    const error =
+      (errors.prices[currency]?.missing && (
+        <ErrorMessage>This field is required!</ErrorMessage>
+      )) ||
+      (errors.prices[currency]?.highPrecision && (
+        <ErrorMessage>High precision prices not supported here!</ErrorMessage>
+      ));
     return {
-      [currency]: touched.prices[currency] &&  error
-    }
-  })
-}
+      [currency]: touched.prices[currency] && error,
+    };
+  });
+};
 
 return (
   <Formik
@@ -260,9 +264,6 @@ return (
     render={({
       values,
       errors,
-      touched,
-      setFieldValue,
-      setFieldTouched,
       handleChange,
       handleBlur,
       handleSubmit,
