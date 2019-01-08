@@ -1,3 +1,7 @@
+:root {
+  --menu-z-index: 99999; /* copied from flatpickr */
+}
+
 .menuBase {
   overflow-y: scroll;
   color: var(--color-black);
@@ -10,7 +14,7 @@
   box-sizing: border-box;
   width: 100%;
   background-color: var(--color-white);
-  z-index: 1;
+  z-index: var(--menu-z-index);
 }
 
 .menuBase.warning {
