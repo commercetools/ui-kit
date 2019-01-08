@@ -24,13 +24,15 @@
 - Add `type` prop to multiple buttons (`FlatButton`, `IconButton`, `PrimaryButton`, `SecondaryButton`, `SecondaryIconButton`) to enable using them as submit/reset buttons in forms. ([#349](https://github.com/commercetools/ui-kit/pull/349))
 - `MoneyInput`, `MoneyField`: Adds support for `onFocus` ([#357](https://github.com/commercetools/ui-kit/pull/357)), `isAutofocussed` and `isReadOnly` ([#362](https://github.com/commercetools/ui-kit/pull/362))
 - `LocalizedMoneyInput`: New component ([#339](https://github.com/commercetools/ui-kit/pull/339))
+- `TimeInput`: Add default placeholder ([#405](https://github.com/commercetools/ui-kit/pull/405))
 
 ### Bug Fixes
 
 - `DateRangeInput`: Fixes jumping date when selecting date range outside of current month. Fixes "_Invalid date_" showing up when pressing `Esc`. ([#345](https://github.com/commercetools/ui-kit/pull/345))
 - `ContentNotification`: Remove margin ([#352](https://github.com/commercetools/ui-kit/issues/352))
-- `MoneyInput`: Fixes `onBlur` being called properly ([#357](https://github.com/commercetools/ui-kit/issues/357))
+- `MoneyInput`: Fixes `onBlur` being called properly ([#357](https://github.com/commercetools/ui-kit/issues/357))-
 - `CollapsiblePanel`: Toggling the CollapsiblePanel can now be trigged from the entire height of the header ([#401](https://github.com/commercetools/ui-kit/issues/401))
+- `DateRangeInput`, `DateTimeInput`, `DateInput`: fixes z-index issue. ([#406](https://github.com/commercetools/ui-kit/issues/406))
 
 ### Refactoring
 
