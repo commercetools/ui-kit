@@ -158,6 +158,7 @@ Detail.propTypes = {
     'positive',
     'negative',
     'warning',
+    'inverted',
   ]),
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
