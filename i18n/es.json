@@ -29,5 +29,6 @@
   "UIKit.MultilineTextInput.collapse": "Contraer",
   "UIKit.MultilineTextInput.expand": "Expandir",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "Menú vacío",
-  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "Menú vacío"
+  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",
+  "UIKit.TimeInput.placeholder": "HH:mm"
 }

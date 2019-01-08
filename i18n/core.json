@@ -29,5 +29,6 @@
   "UIKit.MultilineTextInput.collapse": "Collapse",
   "UIKit.MultilineTextInput.expand": "Expand",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "No options",
-  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "No options"
+  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "No options",
+  "UIKit.TimeInput.placeholder": "HH:mm AM/PM"
 }
