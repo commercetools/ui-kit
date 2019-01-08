@@ -33,7 +33,9 @@ class DateInput extends React.Component {
   static propTypes = {
     intl: PropTypes.shape({
       locale: PropTypes.string.isRequired,
+      formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     onFocus: PropTypes.func,

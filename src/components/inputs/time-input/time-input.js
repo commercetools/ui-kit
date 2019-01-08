@@ -6,6 +6,7 @@ import createSequentialId from '../../../utils/create-sequential-id';
 import Constraints from '../../constraints';
 import { parseTime } from '../../../utils/parse-time';
 import TimeInputBody from './time-input-body';
+import messages from './messages';
 
 const sequentialId = createSequentialId('time-input-');
 
@@ -47,6 +48,7 @@ export class TimeInput extends React.Component {
 
     // HoC
     intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
       formatTime: PropTypes.func.isRequired,
       locale: PropTypes.string.isRequired,
     }).isRequired,
@@ -149,7 +151,11 @@ export class TimeInput extends React.Component {
           isDisabled={this.props.isDisabled}
           hasError={this.props.hasError}
           onClear={() => this.emitChange('')}
-          placeholder={this.props.placeholder}
+          placeholder={
+            typeof this.props.placeholder === 'string'
+              ? this.props.placeholder
+              : this.props.intl.formatMessage(messages.placeholder)
+          }
           {...filterDataAttributes(this.props)}
         />
       </Constraints.Horizontal>
