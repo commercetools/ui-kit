@@ -1,3 +1,17 @@
+<a name="6.1.0"></a>
+
+# [6.1.0](https://github.com/commercetools/ui-kit/compare/v6.0.0...v6.1.0) (2019-01-08)
+
+### Features
+
+- `EyeCrossedIcon`: new component ([#409](https://github.com/commercetools/ui-kit/pull/409))
+
+### Bug Fixes
+
+- `MoneyInput`: use narrow styling when no currencies are passed ([#411](https://github.com/commercetools/ui-kit/pull/411))
+- `PrimaryActionDropdown`: use secondary tone when disabled ([#408](https://github.com/commercetools/ui-kit/pull/408))
+- `Text` add missing inverted prop to prop-types ([#414](https://github.com/commercetools/ui-kit/pull/414))
+
 <a name="6.0.0"></a>
 
 # [6.0.0](https://github.com/commercetools/ui-kit/compare/v5.0.0...v6.0.0) (2019-01-07)
