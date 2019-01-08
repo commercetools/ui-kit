@@ -1,3 +1,54 @@
+<a name="6.0.0"></a>
+
+# [6.0.0](https://github.com/commercetools/ui-kit/compare/v5.0.0...v6.0.0) (2019-01-07)
+
+## BREAKING CHANGES
+
+- The `type` prop of `FlatButton` was renamed to `tone`. A new `type` prop was added to `FlatButton` instead for which possible values are `submit`, `reset` and `button`. ([#349](https://github.com/commercetools/ui-kit/pull/349))
+- All custom properties in `custom-properties.{json,css}` no longer use the `--token` prefix. ([#370](https://github.com/commercetools/ui-kit/pull/370))
+- Encapsulate typography styles to the `Text` components ([#383](https://github.com/commercetools/ui-kit/pull/383))
+- Removed the `isDefaultClosed` prop. Added `defaultExpandMultilineText` instead (default flipped!) for `MultilineTextInput` and `MultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `isDefaultExpanded` prop to `defaultExpandLanguages` for `LocalizedTextInput` and `LocalizedTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `hideExpansionControls` prop to `hideLanguageExpansionControls` for `LocalizedTextInput` and `LocalizedTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `isMultilineDefaultExpanded` prop to `defaultExpandMultilineText` for `LocalizedMultilineTextInput` and `LocalizedMultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `areLanguagesDefaultOpened` prop to `defaultExpandLanguages` for `LocalizedMultilineTextInput` and `LocalizedMultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `hideLanguageControls` prop to `hideLanguageExpansionControls` for `LocalizedMultilineTextInput` and `LocalizedMultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+
+## Features
+
+- `PasswordField`: New component ([#342](https://github.com/commercetools/ui-kit/pull/342))
+- `TimeField`: New component ([#346](https://github.com/commercetools/ui-kit/pull/346))
+- `DateTimeField`: New component ([#347](https://github.com/commercetools/ui-kit/pull/347))
+- `DateRangeField`: New component ([#348](https://github.com/commercetools/ui-kit/pull/348))
+- `FieldErrors`: Export component ([#371](https://github.com/commercetools/ui-kit/pull/371))
+- Add `type` prop to multiple buttons (`FlatButton`, `IconButton`, `PrimaryButton`, `SecondaryButton`, `SecondaryIconButton`) to enable using them as submit/reset buttons in forms. ([#349](https://github.com/commercetools/ui-kit/pull/349))
+- `MoneyInput`, `MoneyField`: Adds support for `onFocus` ([#357](https://github.com/commercetools/ui-kit/pull/357)), `isAutofocussed` and `isReadOnly` ([#362](https://github.com/commercetools/ui-kit/pull/362))
+- `LocalizedMoneyInput`: New component ([#339](https://github.com/commercetools/ui-kit/pull/339))
+- `TimeInput`: Add default placeholder ([#405](https://github.com/commercetools/ui-kit/pull/405))
+
+### Bug Fixes
+
+- `DateRangeInput`: Fixes jumping date when selecting date range outside of current month. Fixes "_Invalid date_" showing up when pressing `Esc`. ([#345](https://github.com/commercetools/ui-kit/pull/345))
+- `ContentNotification`: Remove margin ([#352](https://github.com/commercetools/ui-kit/issues/352))
+- `MoneyInput`: Fixes `onBlur` being called properly ([#357](https://github.com/commercetools/ui-kit/issues/357))-
+- `CollapsiblePanel`: Toggling the CollapsiblePanel can now be trigged from the entire height of the header ([#401](https://github.com/commercetools/ui-kit/issues/401))
+- `DateRangeInput`, `DateTimeInput`, `DateInput`: fixes z-index issue. ([#406](https://github.com/commercetools/ui-kit/issues/406))
+
+### Refactoring
+
+- `MoneyInput`: Wraps `SingleValue` of react-select with a label pointing at the `currencyCode` input, so that it can be targeted using RTL ([#362](https://github.com/commercetools/ui-kit/pull/362))
+- All components now have encapsulated styles [#387](https://github.com/commercetools/ui-kit/pull/387)
+
+### Chore
+
+- Consumer of `ui-kit` will get "prop types" warnings ([#372](https://github.com/commercetools/ui-kit/pull/372))
+
+### Documentation
+
+- Document required peer dependencies ([#332](https://github.com/commercetools/ui-kit/pull/332))
+- Update README, add testing section ([#350](https://github.com/commercetools/ui-kit/pull/350))
+- Document tokens ([#374](https://github.com/commercetools/ui-kit/pull/374))
+
 <a name="5.0.0"></a>
 
 # [5.0.0](https://github.com/commercetools/ui-kit/compare/v4.0.3...v5.0.0) (2018-12-13)
