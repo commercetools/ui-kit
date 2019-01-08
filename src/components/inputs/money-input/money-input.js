@@ -5,7 +5,6 @@ import has from 'lodash.has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
 import { injectIntl } from 'react-intl';
-import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -38,6 +37,7 @@ SingleValue.displayName = 'SingleValue';
 
 SingleValue.propTypes = {
   id: PropTypes.string,
+  children: PropTypes.node,
 };
 
 // overwrite styles of createSelectStyles
@@ -474,12 +474,11 @@ class MoneyInput extends React.Component {
 
   render() {
     const hasNoCurrencies = this.props.currencies.length === 0;
-    const hasWarning = this.props.hasCurrencyWarning;
     const hasFocus = this.state.currencyHasFocus || this.state.amountHasFocus;
 
     const currencySelectStyles = createCurrencySelectStyles({
-      hasWarning,
-      hasError: this.props.hasCurrencyError || this.props.hasError,
+      hasWarning: this.props.hasWarning,
+      hasError: this.props.hasError,
       isDisabled: this.props.isDisabled,
       isReadOnly: this.props.isReadOnly,
       hasFocus,
@@ -550,7 +549,6 @@ class MoneyInput extends React.Component {
               components={{
                 SingleValue: props => <SingleValue {...props} id={id} />,
                 DropdownIndicator,
-                ClearIndicator,
               }}
               options={options}
               placeholder=""
