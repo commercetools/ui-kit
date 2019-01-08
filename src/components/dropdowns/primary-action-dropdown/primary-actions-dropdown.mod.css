@@ -43,7 +43,6 @@
 .disabledDropdownHeadChevron {
   box-shadow: none;
   background-color: var(--color-navy-98);
-  color: var(--color-gray);
 }
 
 .primaryOptionChevron {
