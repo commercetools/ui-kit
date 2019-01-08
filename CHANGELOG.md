@@ -7,6 +7,12 @@
 - The `type` prop of `FlatButton` was renamed to `tone`. A new `type` prop was added to `FlatButton` instead for which possible values are `submit`, `reset` and `button`. ([#349](https://github.com/commercetools/ui-kit/pull/349))
 - All custom properties in `custom-properties.{json,css}` no longer use the `--token` prefix. ([#370](https://github.com/commercetools/ui-kit/pull/370))
 - Encapsulate typography styles to the `Text` components ([#383](https://github.com/commercetools/ui-kit/pull/383))
+- Removed the `isDefaultClosed` prop. Added `defaultExpandMultilineText` instead (default flipped!) for `MultilineTextInput` and `MultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `isDefaultExpanded` prop to `defaultExpandLanguages` for `LocalizedTextInput` and `LocalizedTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `hideExpansionControls` prop to `hideLanguageExpansionControls` for `LocalizedTextInput` and `LocalizedTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `isMultilineDefaultExpanded` prop to `defaultExpandMultilineText` for `LocalizedMultilineTextInput` and `LocalizedMultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `areLanguagesDefaultOpened` prop to `defaultExpandLanguages` for `LocalizedMultilineTextInput` and `LocalizedMultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
+- Renamed the `hideLanguageControls` prop to `hideLanguageExpansionControls` for `LocalizedMultilineTextInput` and `LocalizedMultilineTextField` ([#389](https://github.com/commercetools/ui-kit/pull/389))
 
 ## Features
 
