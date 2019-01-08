@@ -36,7 +36,9 @@ class DropdownHead extends React.PureComponent {
             })}
           </span>
           <span className={styles.primaryActionTextWrapper}>
-            <Text.Detail>{this.props.children}</Text.Detail>
+            <Text.Detail tone={this.props.isDisabled ? 'secondary' : undefined}>
+              {this.props.children}
+            </Text.Detail>
           </span>
         </AccessibleButton>
         {this.props.chevron}
