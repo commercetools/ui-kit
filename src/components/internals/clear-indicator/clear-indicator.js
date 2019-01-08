@@ -13,9 +13,7 @@ const ClearIndicator = props => {
       ref={ref}
       style={getStyles('clearIndicator', props)}
     >
-      <div>
-        <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
-      </div>
+      <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
     </div>
   );
 };
@@ -25,6 +23,7 @@ ClearIndicator.displayName = 'ClearIndicator';
 ClearIndicator.propTypes = {
   innerProps: PropTypes.object,
   isDisabled: PropTypes.bool,
+  getStyles: PropTypes.func.isRequired,
 };
 
 export default ClearIndicator;

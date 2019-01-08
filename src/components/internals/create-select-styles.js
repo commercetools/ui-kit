@@ -93,7 +93,7 @@ const menuListStyles = () => base => ({
 
 const optionStyles = () => (base, state) => ({
   ...base,
-  transition: '--transition-standard',
+  transition: vars['--transition-standard'],
   paddingLeft: vars['--spacing-8'],
   paddingRight: vars['--spacing-8'],
   color: do {
@@ -195,7 +195,7 @@ const containerStyles = () => (base, state) => ({
 const indicatorsContainerStyles = () => () => ({
   background: 'none',
   display: 'flex',
-  alignItems: 'baseline',
+  alignItems: 'center',
 });
 
 export default props => ({
