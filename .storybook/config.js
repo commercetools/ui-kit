@@ -34,6 +34,7 @@ const philosophyStories = require.context(
 );
 
 function loadStories() {
+  require('./welcome.story');
   philosophyStories.keys().forEach(filename => philosophyStories(filename));
   materialsStories.keys().forEach(filename => materialsStories(filename));
   srcStories.keys().forEach(filename => srcStories(filename));
