@@ -1,3 +1,11 @@
+<a name="6.1.1"></a>
+
+# [6.1.1](https://github.com/commercetools/ui-kit/compare/v6.1.0...v6.1.1) (2019-01-09)
+
+### Bug Fixes
+
+- `Radio`: allow boolean and string proptype values ([#416](https://github.com/commercetools/ui-kit/pull/416))
+
 <a name="6.1.0"></a>
 
 # [6.1.0](https://github.com/commercetools/ui-kit/compare/v6.0.0...v6.1.0) (2019-01-08)
