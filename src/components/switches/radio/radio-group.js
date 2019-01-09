@@ -12,7 +12,7 @@ class Group extends React.PureComponent {
     direction: PropTypes.oneOf(['stack', 'inline']),
     onChange: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
     children: PropTypes.node.isRequired,
     scale: PropTypes.string,
   };

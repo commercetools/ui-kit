@@ -10,7 +10,7 @@ import styles from './radio-option.mod.css';
 export class Option extends React.PureComponent {
   static displayName = 'RadioOption';
   static propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
     // This prop forces Radio.Option to be rendered in a hovered state (thought isDisabled takes
     // precedence over that). We need that to address a use-case when hovering is comming
     // from somewhere up the hierarchy. There is no need to touch this prop in case
