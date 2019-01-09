@@ -6,6 +6,10 @@
 
 - `Radio`: allow boolean and string proptype values ([#416](https://github.com/commercetools/ui-kit/pull/416))
 
+### Documentation
+
+- Improve VRT documentation ([#417](https://github.com/commercetools/ui-kit/pull/417))
+
 <a name="6.1.0"></a>
 
 # [6.1.0](https://github.com/commercetools/ui-kit/compare/v6.0.0...v6.1.0) (2019-01-08)
