@@ -55,9 +55,8 @@
     "test": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
-    "percy": "percy exec -- yarn test:visual",
-    "test:visual": "jest --config jest.visual.config.js --runInBand",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
+    "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
     "visual-testing-app:build": "rimraf visual-testing-app/dist && NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
     "visual-testing-app:serve": "node visual-testing-app/server"
   },

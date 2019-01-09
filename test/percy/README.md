@@ -4,6 +4,105 @@ We use visual regression testing to avoid inadvertently introducing visual regre
 
 This works by taking screenshots of our components in different states. When changes are made, they get compared to the baseline on CI by [Percy](https://percy.io/). In case changes are detected, the CI check will fail unless somebody approves the changes on the Percy website.
 
+- [Scripts overview](#scripts-overview)
+  - [Running on CI](#running-on-ci)
+  - [Running tests locally to debug components](#running-tests-locally-to-debug-components)
+  - [Running tests locally to debug snapshots](#running-tests-locally-to-debug-snapshots)
+  - [In detail](#in-detail)
+    - [yarn build](#yarn-build)
+    - [yarn visual-testing-app:build](#yarn-visual-testing-appbuild)
+    - [yarn visual-testing-app:serve](#yarn-visual-testing-appserve)
+    - [yarn percy](#yarn-percy)
+- [Constraints](#constraints)
+  - [How to write visual regressions tests](#how-to-write-visual-regressions-tests)
+    - [Create files ending in `.visualroute.js`](#create-files-ending-in-visualroutejs)
+    - [Write tests in ending `.visualspec.js`](#write-tests-in-ending-visualspecjs)
+  - [Why we test the bundle](#why-we-test-the-bundle)
+  - [Why we group multiple states into one snapshot](#why-we-group-multiple-states-into-one-snapshot)
+- [Adding Visual Regression Routes](#adding-visual-regression-routes)
+- [Adding Visual Regression Tests](#adding-visual-regression-tests)
+  - [Suite](#suite)
+  - [Spec](#spec)
+
+## Scripts overview
+
+### Running on CI
+
+```bash
+# build ui-kit first
+yarn build
+
+# now build the visual-testing-app
+yarn visual-testing-app:build
+
+# run percy tests
+yarn percy --reporters jest-silent-reporter
+```
+
+### Debugging components locally
+
+```bash
+# build ui-kit in watch mode
+yarn build:watch
+
+# now build the visual-testing-app
+yarn visual-testing-app:build
+
+# serve the visual-testing-app
+# you can now visit http://localhost:3001 to see what the components look like
+yarn visual-testing-app:serve
+```
+
+### Running tests locally to debug snapshots
+
+```bash
+# build ui-kit in watch mode
+yarn build:watch
+
+# now build the visual-testing-app
+yarn visual-testing-app:build
+
+# export percy token (you can get it from https://percy.io/commercetools-GmbH/ui-kit/settings)
+# percy will use this to upload your local snapshots
+export PERCY_TOKEN=foo
+
+# export percy branch
+# percy uses this to establish the baseline, usually you'll always use "local"
+export PERCY_BRANCH=local
+
+# run percy tests
+# Once its done it will print a URL which lets you review the visual diffs
+yarn percy
+```
+
+You'll notice that we're not serving `visual-testing-app` here. Puppeteer does that for us, see `just-puppeteer.config.js`.
+
+### In detail
+
+#### `yarn build`
+
+Builds the ui-kit. Since visual-regression-testing uses the final ui-kit bundle,
+you need to run this or `yarn build:watch` before starting the tests.
+
+#### `yarn visual-testing-app:build`
+
+This builds the visual-testing-application. It needs to be run before starting
+the visual regression tests.
+
+#### `yarn visual-testing-app:serve`
+
+This command is useful for debugging tests locally. This serves the visual-testing-application, but you need to build it first using `yarn visual-testing-app:build`!
+
+It starts a local web server which you can visit to see what the routes look like in your browser.
+
+#### `yarn percy`
+
+This runs the puppeteer tests and captures results using percy.
+
+If you're running this locally, make sure you have `PERCY_TOKEN` and `PERCY_BRANCH` exported (see below). Otherwise you'll be warned with `Warning: Skipping visual tests. PERCY_TOKEN was not provided.` and no snapshots will be taken.
+
+Locally, you can run `yarn percy` without having `PERCY_TOKEN` and `PERCY_BRANCH` exported in case you only want to verify the puppeteer setup.
+
 ## Constraints
 
 ### How to write visual regressions tests
@@ -74,7 +173,7 @@ describe('PrimaryButton', () => {
 });
 ```
 
-You can run your test by running `yarn test:visual`. Notice how before we call `percySnapshot`, we add an expect assertion on some text on the page. This is to ensure that the tests will fail if your route cannot be found. Otherwise, we could end up uploading a lot of `route not founds` to Percy.
+You can run your test by running `yarn percy`. Notice how before we call `percySnapshot`, we add an expect assertion on some text on the page. This is to ensure that the tests will fail if your route cannot be found. Otherwise, we could end up uploading a lot of `route not founds` to Percy.
 
 ### `Suite`
 
@@ -87,30 +186,3 @@ You should only use one `Suite` per `screenshot` as there is no point in definin
 A `Spec` should render your component in a specific state.
 
 You can use multiple specs within a `Suite`.
-
-## Local development (rarely used)
-
-### Viewing snapshots in browser
-
-You can run `yarn visual-testing-app:build` and `yarn visual-testing-app:serve` to show your routes in the browser without having to upload them. This is useful when you're working on adding more snapshots or resolving bugs in existing snapshots.
-
-No snapshots will be uploaded to Percy in this case.
-
-### Uploading local snapshots
-
-Usually, you'd let Percy run for your PRs on CI. There is no need to run it locally. However, if you ever need to run Percy locally (e.g. to debug our Percy setup), you can follow the steps described [here](https://docs.percy.io/docs/local-development).
-
-In short:
-
-```bash
-# Get the token from ui-kit's settings on percy.io
-export PERCY_TOKEN=aaabbbcccdddeeefff
-# Set the branch to local so that it uses the correct baseline
-export PERCY_BRANCH=local
-
-# build the visual testing playground app so your visual routes are available.
-yarn visual-testing-app:build
-# Run percy. Once it's done it will print a URL where you
-# can review the visual diffs.
-yarn percy
-```
