@@ -1,33 +1,30 @@
 import React from 'react';
 import { TextInput } from 'ui-kit';
+import Combinations from '../../../../test/combinations';
 import { Suite, Spec } from '../../../../test/percy';
 
 export default (
   <Suite>
-    <Spec label="minimal">
-      <div data-sketch-symbol="TextInput/regular">
-        <TextInput value="" onChange={() => {}} horizontalConstraint="m" />
-      </div>
-    </Spec>
-    <Spec label="when disabled">
-      <div data-sketch-symbol="TextInput/disabled">
-        <TextInput
-          isDisabled={true}
-          value=""
-          onChange={() => {}}
-          horizontalConstraint="m"
-        />
-      </div>
-    </Spec>
-    <Spec label="when read-only">
-      <div data-sketch-symbol="TextInput/read-only">
-        <TextInput
-          isReadOnly={true}
-          value=""
-          onChange={() => {}}
-          horizontalConstraint="m"
-        />
-      </div>
-    </Spec>
+    <Combinations
+      name="TextInput"
+      config={{
+        horizontalConstraint: ['m', 's'],
+        disabled: [true, false],
+        readOnly: [true, false],
+      }}
+      renderCombination={(name, combi) => (
+        <Spec key={name} label={name}>
+          <div data-sketch-symbol={name}>
+            <TextInput
+              value=""
+              onChange={() => {}}
+              horizontalConstraint={combi.horizontalConstraint}
+              isDisabled={combi.disabled}
+              isReadOnly={combi.readOnly}
+            />
+          </div>
+        </Spec>
+      )}
+    />
   </Suite>
 );
