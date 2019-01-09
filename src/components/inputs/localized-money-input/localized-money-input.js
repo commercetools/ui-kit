@@ -67,6 +67,15 @@ class LocalizedInput extends React.Component {
     //
     // eslint-disable-next-line no-param-reassign
     event.target.currency = this.props.currency;
+
+    // We manipulate the event to remove any characters after the currencyCode.
+    // This is for use by Formik as it expects the input name to be of the form:
+    // "price.EUR"
+    // But the onChange from the MoneyInput produces an event with name of the form:
+    // "price.EUR.amount"
+    //
+    // eslint-disable-next-line no-param-reassign
+    event.target.name = event.target.name.replace(/(.*)(\..*)$/, '$1');
     this.props.onChange(event);
   };
 
