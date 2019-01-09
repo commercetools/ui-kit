@@ -1,7 +1,7 @@
 import React from 'react';
 import definition from './definition.yaml';
 
-export default () => (
+export default (
   <div>
     <h3>Colors</h3>
     {Object.entries(definition.choiceGroups.colors.choices).map(

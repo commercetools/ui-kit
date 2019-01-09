@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-export default () => (
+export default (
   <Suite>
     <Spec label="minimal">
       <div data-sketch-symbol="TextInput/regular">
