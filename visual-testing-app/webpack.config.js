@@ -69,6 +69,13 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.yaml$/,
+        use: [
+          { loader: require.resolve('json-loader') },
+          { loader: require.resolve('yaml-loader') },
+        ],
+      },
     ],
   },
   resolve: {

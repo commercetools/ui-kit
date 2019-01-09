@@ -28,6 +28,10 @@ overrides:
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
+  - files: ['*.sketch.js']
+    rules:
+      'import/prefer-default-export': 0
+      'react/display-name': 0
   - files: ['*.visualroute.js']
     rules:
       'react/display-name': 0

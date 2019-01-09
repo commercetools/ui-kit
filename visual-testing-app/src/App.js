@@ -20,6 +20,13 @@ const allComponents = componentsContext.keys().reduce((components, file) => {
   return components;
 }, {});
 
+const sketchContext = require.context('../..', true, /\.sketch\.js$/);
+const sketchComponents = sketchContext.keys().reduce((components, file) => {
+  const Comp = sketchContext(file);
+  components.push(Comp);
+  return components;
+}, []);
+
 class App extends React.Component {
   render() {
     return (
@@ -33,7 +40,17 @@ class App extends React.Component {
               component={Component.component}
             />
           ))}
-          <Route component={() => <div>No route found</div>} />
+          <Route
+            path="/sketch"
+            render={() => (
+              <React.Fragment>
+                {sketchComponents.map((exps, index) => (
+                  <exps.default key={index} />
+                ))}
+              </React.Fragment>
+            )}
+          />
+          <Route render={() => <div>No route found</div>} />
         </Switch>
       </Router>
     );
