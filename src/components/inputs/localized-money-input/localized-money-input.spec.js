@@ -242,18 +242,22 @@ describe('when every field has an error', () => {
       missing: true,
     },
   };
-  it('should be open all fields and render errors', () => {
+  const errorMessages = {
+    USD: 'A value is required',
+    CAD: 'A value is required',
+  };
+  it('should open all fields and render errors', () => {
     const { getByText } = renderLocalizedMoneyInput({
       name: 'foo',
       errors,
     });
-    expect(getByText(errors.USD)).toBeInTheDocument();
-    expect(getByText(errors.CAD)).toBeInTheDocument();
+    expect(getByText(errorMessages.USD)).toBeInTheDocument();
+    expect(getByText(errorMessages.CAD)).toBeInTheDocument();
   });
 });
 
 describe('when the error is not on the selected currency', () => {
-  it('should be open all fields and render errors', () => {
+  it('should open all fields and render errors', () => {
     const errors = {
       USD: {
         missing: true,
@@ -367,7 +371,9 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
         },
       ]);
       expect(
-        LocalizedMoneyInput.convertToMoneyValues({ EUR: undefined })
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: { currencyCode: 'EUR', amount: '' },
+        })
       ).toEqual([null]);
     });
   });
