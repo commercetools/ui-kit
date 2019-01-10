@@ -25,7 +25,7 @@ import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
 | ------------------------------- | ---------------- | :------: | ---------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                            | `string`         |    -     | -                                  | -       | Used as prefix of HTML `id` property. Each input field id will have the currency as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`                                                                                |
 | `name`                          | `string`         |    -     | -                                  | -       | Used as HTML `name` property for each input field. Each input field name will have the currency as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`                                                               |
-| `value`                         | `object`         |    ✅    | -                                  | -       | Values to use. Keyed by currency, the values are the actual values, e.g. `{ USD: {currencyCode: 'USD', amount: '12.22'}, EUR: {currencyCode: 'EUR', amount: '41.44'} }`                                            |
+| `value`                         | `object`         |    ✅    | -                                  | -       | Values to use. Keyed by currency, the values are the money values, e.g. `{ USD: {currencyCode: 'USD', amount: '12.22'}, EUR: {currencyCode: 'EUR', amount: '41.44'} }`                                             |
 | `onChange`                      | `function`       |    ✅    | -                                  | -       | Gets called when any input is changed. Is called with the change event of the changed input.                                                                                                                       |
 | `selectedCurrency`              | `string`         |    ✅    | -                                  | -       | Specifies which currency will be shown in case the `LocalizedMoneyInput` is collapsed.                                                                                                                             |
 | `onBlur`                        | `function`       |    -     | -                                  | -       | Called when any field is blurred. Is called with the `event` of that field.                                                                                                                                        |
@@ -174,11 +174,11 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 
 ##### `LocalizedMoneyInput.parseMoneyValues`
 
-The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ [currencyCode]: {currencyCode: [currencyCode], amount: [amount]} })`.
+The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ [currencyCode]: {currencyCode, amount} })`.
 
 ##### `LocalizedMoneyInput.getEmptyCurrencies`
 
-The `getEmptyCurrencies` function will return array of crrencies that don't have amount .
+The `getEmptyCurrencies` function will return array of currencies that don't have amount .
 
 ```js
 LocalizedMoneyInput.getEmptyCurrencies({
