@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import * as UIKit from 'ui-kit';
-import { Suite, Spec } from '../../../test/percy';
+import { Suite, SketchSpec } from '../../../test/percy';
 
 const Inline = styled.div`
   display: flex;
@@ -24,26 +24,24 @@ const themes = [
 
 export default (
   <Suite>
-    {icons.map(iconName => {
-      const Icon = UIKit[iconName];
-      return sizes.map(size => (
-        <Spec
-          key={`${iconName}-${size}`}
-          label={`${iconName} - ${size}`}
-          omitPropsList
-        >
-          <Inline>
-            {themes.map(theme => (
-              <div
-                key={theme}
-                data-sketch-symbol={`Icon/${iconName}/${size}/${theme}`}
-              >
-                <Icon size={size} theme={theme} />
-              </div>
-            ))}
-          </Inline>
-        </Spec>
-      ));
-    })}
+    <SketchSpec label="Icons">
+      {icons.map(iconName => {
+        const Icon = UIKit[iconName];
+        return sizes.map(size => (
+          <div key={`${iconName}-${size}`}>
+            <Inline>
+              {themes.map(theme => (
+                <div
+                  key={theme}
+                  data-sketch-symbol={`Icon/${iconName}/${size}/${theme}`}
+                >
+                  <Icon size={size} theme={theme} />
+                </div>
+              ))}
+            </Inline>
+          </div>
+        ));
+      })}
+    </SketchSpec>
   </Suite>
 );

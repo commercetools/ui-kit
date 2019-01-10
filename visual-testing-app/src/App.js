@@ -23,7 +23,7 @@ const allComponents = componentsContext.keys().reduce((components, file) => {
 const sketchContext = require.context('../..', true, /\.sketch\.js$/);
 const sketchElements = sketchContext.keys().reduce((elements, file) => {
   const fileExports = sketchContext(file);
-  elements.push(fileExports.default);
+  elements.push(React.cloneElement(fileExports.default, { key: file }));
   return elements;
 }, []);
 

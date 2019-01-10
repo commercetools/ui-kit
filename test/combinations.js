@@ -5,7 +5,7 @@ const getName = (prefix, combi) => {
   const name = Object.entries(combi)
     .map(([prop, value]) => {
       if (typeof value === 'boolean') {
-        return value ? prop : `not ${prop}`;
+        return value ? prop : `regular`;
       }
       return value;
     })
@@ -48,11 +48,11 @@ const Combinations = props => {
       {combinations
         .filter(combi => !props.skip(combi))
         .map(combi =>
-          props.renderCombination(
+          props.render(
+            combi,
             typeof props.name === 'string'
               ? getName(props.name, combi)
-              : props.name(combi),
-            combi
+              : props.name(combi)
           )
         )}
     </React.Fragment>
@@ -63,8 +63,9 @@ Combinations.displayName = 'Combinations';
 
 Combinations.propTypes = {
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
-  renderCombination: PropTypes.func.isRequired,
+  render: PropTypes.func.isRequired,
   skip: PropTypes.func,
+  reshape: PropTypes.func,
   config: PropTypes.object.isRequired,
 };
 

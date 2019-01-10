@@ -1,20 +1,20 @@
 import React from 'react';
 import { TextInput } from 'ui-kit';
 import Combinations from '../../../../test/combinations';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, SketchSpec } from '../../../../test/percy';
 
 export default (
   <Suite>
-    <Combinations
-      name="TextInput"
-      config={{
-        horizontalConstraint: ['m', 's'],
-        disabled: [true, false],
-        readOnly: [true, false],
-      }}
-      renderCombination={(name, combi) => (
-        <Spec key={name} label={name}>
-          <div data-sketch-symbol={name}>
+    <SketchSpec label="TextInput">
+      <Combinations
+        name="TextInput"
+        config={{
+          horizontalConstraint: ['m', 's'],
+          disabled: [true, false],
+          readOnly: [true, false],
+        }}
+        render={(combi, name) => (
+          <div key={name} data-sketch-symbol={name}>
             <TextInput
               value=""
               onChange={() => {}}
@@ -23,8 +23,8 @@ export default (
               isReadOnly={combi.readOnly}
             />
           </div>
-        </Spec>
-      )}
-    />
+        )}
+      />
+    </SketchSpec>
   </Suite>
 );
