@@ -32,7 +32,6 @@ export class Toggle extends React.PureComponent {
       >
         <ToggleSwitch
           size={this.props.size}
-          isMouseOver={this.props.isMouseOver}
           isChecked={this.props.isChecked}
           isDisabled={this.props.isDisabled}
         />

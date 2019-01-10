@@ -11,6 +11,7 @@ export default class CalendarMenu extends Component {
     hasFooter: PropTypes.bool,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
+    footer: PropTypes.node,
   };
   render() {
     return (

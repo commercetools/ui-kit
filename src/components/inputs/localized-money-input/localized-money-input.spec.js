@@ -10,7 +10,7 @@ class TestComponent extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     value: PropTypes.objectOf(PropTypes.string).isRequired,
-    onChange: PropTypes.func,
+    handleChange: PropTypes.func,
     selectedCurrency: PropTypes.string.isRequired,
   };
   static defaultProps = {
