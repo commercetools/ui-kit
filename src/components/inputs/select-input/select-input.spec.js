@@ -16,10 +16,10 @@ class TestComponent extends React.Component {
     onChange: PropTypes.func,
     options: PropTypes.arrayOf(
       PropTypes.shape({
-        value: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
+        value: PropTypes.string,
+        label: PropTypes.string,
       })
-    ).isRequired,
+    ),
   };
   static defaultProps = {
     id: 'some-id',

@@ -18,10 +18,12 @@ class TestComponent extends React.Component {
             props,
             ...rest
           ),
-    options: PropTypes.shape({
-      value: PropTypes.string,
-      label: PropTypes.string,
-    }),
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.string,
+      })
+    ),
     onChange: PropTypes.func,
   };
   static defaultProps = {
