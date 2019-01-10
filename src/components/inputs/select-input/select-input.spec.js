@@ -14,6 +14,12 @@ class TestComponent extends React.Component {
         ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
         : PropTypes.string(props, ...rest),
     onChange: PropTypes.func,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.string,
+      })
+    ),
   };
   static defaultProps = {
     id: 'some-id',

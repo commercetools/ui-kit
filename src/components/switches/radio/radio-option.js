@@ -31,7 +31,7 @@ export class Option extends React.PureComponent {
 
   render() {
     return (
-      <div {...filterDataAttributes(this.props)}>
+      <div>
         <label
           className={classnames(styles.labelWrapper, {
             [styles.labelWrapperDisabled]: this.props.isDisabled,
@@ -68,6 +68,7 @@ export class Option extends React.PureComponent {
               disabled={this.props.isDisabled}
               checked={this.props.isChecked}
               type="radio"
+              {...filterDataAttributes(this.props)}
             />
           </Spacings.Inline>
         </label>

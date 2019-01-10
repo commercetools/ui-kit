@@ -9,6 +9,8 @@ class TestComponent extends React.Component {
   static displayName = 'TestComponent';
   static propTypes = {
     id: PropTypes.string,
+    defaultOptions: PropTypes.bool.isRequired,
+    loadOptions: PropTypes.func.isRequired,
     value: (props, ...rest) =>
       props.isMulti
         ? PropTypes.arrayOf(PropTypes.object).isRequired(props, ...rest)

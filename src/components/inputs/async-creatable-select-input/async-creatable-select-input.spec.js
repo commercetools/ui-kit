@@ -18,6 +18,9 @@ class TestComponent extends React.Component {
             props,
             ...rest
           ),
+    loadOptions: PropTypes.func,
+    defaultOptions: PropTypes.bool,
+    isSearchable: PropTypes.bool,
     onChange: PropTypes.func,
   };
   static defaultProps = {

@@ -59,6 +59,7 @@ export default class TimeInputBody extends React.Component {
     onClear: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
     placeholder: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   };
