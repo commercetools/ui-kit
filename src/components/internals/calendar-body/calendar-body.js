@@ -32,11 +32,11 @@ export default class CalendarBody extends React.PureComponent {
     inputRef: PropTypes.object.isRequired,
     icon: PropTypes.string,
     id: PropTypes.string,
-    inputProps: PropTypes.shapeOf({
+    inputProps: PropTypes.shape({
       onBlur: PropTypes.func,
       onFocus: PropTypes.func,
     }),
-    toggleButtonProps: PropTypes.shapeOf({
+    toggleButtonProps: PropTypes.shape({
       onBlur: PropTypes.func,
       onFocus: PropTypes.func,
     }),
