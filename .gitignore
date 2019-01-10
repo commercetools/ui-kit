@@ -72,6 +72,7 @@ typings/
 
 # Storybook build output
 .public
+docs/assets/icons
 
 # Serverless directories
 .serverless
