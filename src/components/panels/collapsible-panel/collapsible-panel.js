@@ -67,6 +67,7 @@ export default class CollapsiblePanel extends React.PureComponent {
   static defaultProps = {
     theme: 'dark',
     condensed: false,
+    isDisabled: false,
   };
 
   render() {
