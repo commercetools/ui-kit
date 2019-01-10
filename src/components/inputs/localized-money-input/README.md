@@ -11,7 +11,10 @@ states.
 import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
 
 <LocalizedMoneyInput
-  value={{ USD: '12.22', EUR: '41.44' }}
+  value={{
+    USD: { currencyCode: 'USD', amount: '12.22' },
+    EUR: { currencyCode: 'EUR', amount: '41.44' },
+  }}
   onChange={event => alert(event.target.name, event.target.value)}
 />;
 ```
@@ -22,7 +25,7 @@ import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
 | ------------------------------- | ---------------- | :------: | ---------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                            | `string`         |    -     | -                                  | -       | Used as prefix of HTML `id` property. Each input field id will have the currency as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`                                                                                |
 | `name`                          | `string`         |    -     | -                                  | -       | Used as HTML `name` property for each input field. Each input field name will have the currency as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`                                                               |
-| `value`                         | `object`         |    ✅    | -                                  | -       | Values to use. Keyed by currency, the values are the actual values, e.g. `{ USD: '12.22', EUR: '41.44' }`                                                                                                          |
+| `value`                         | `object`         |    ✅    | -                                  | -       | Values to use. Keyed by currency, the values are the actual values, e.g. `{ USD: {currencyCode: 'USD', amount: '12.22'}, EUR: {currencyCode: 'EUR', amount: '41.44'} }`                                            |
 | `onChange`                      | `function`       |    ✅    | -                                  | -       | Gets called when any input is changed. Is called with the change event of the changed input.                                                                                                                       |
 | `selectedCurrency`              | `string`         |    ✅    | -                                  | -       | Specifies which currency will be shown in case the `LocalizedMoneyInput` is collapsed.                                                                                                                             |
 | `onBlur`                        | `function`       |    -     | -                                  | -       | Called when any field is blurred. Is called with the `event` of that field.                                                                                                                                        |
@@ -85,12 +88,18 @@ LocalizedMoneyInput.getEmptyCurrencies({});
 ```
 
 ```js
-LocalizedMoneyInput.getEmptyCurrencies({ USD: '', EUR: '' });
+LocalizedMoneyInput.getEmptyCurrencies({
+  USD: { currencyCode: 'USD', amount: '' },
+  EUR: { currencyCode: 'EUR', amount: '' },
+});
 // -> ['USD', 'EUR']
 ```
 
 ```js
-LocalizedMoneyInput.getEmptyCurrencies({ USD: '12.43', EUR: '' });
+LocalizedMoneyInput.getEmptyCurrencies({
+  USD: { currencyCode: 'USD', amount: '12.43' },
+  EUR: { currencyCode: 'EUR', amount: '' },
+});
 // -> ['EUR']
 ```
 
@@ -105,16 +114,28 @@ LocalizedMoneyInput.getHighPrecisionCurrencies({});
 
 ```js
 LocalizedMoneyInput.getHighPrecisionCurrencies({
-  USD: '12.2221',
-  EUR: '9.9999',
+  USD: {
+    currencyCode: 'USD',
+    amount: '12.2221',
+  },
+  EUR: {
+    currencyCode: 'EUR',
+    amount: '9.9999',
+  },
 });
 // -> ['USD', 'EUR']
 ```
 
 ```js
 LocalizedMoneyInput.getHighPrecisionCurrencies({
-  USD: '12.43',
-  EUR: '0.00001',
+  USD: {
+    currencyCode: 'USD',
+    amount: '12.43',
+  },
+  EUR: {
+    currencyCode: 'EUR',
+    amount: '0.00001',
+  },
 });
 // -> ['EUR']
 ```
@@ -153,16 +174,21 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 
 ##### `LocalizedMoneyInput.parseMoneyValues`
 
-The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ currencyCode: amount })`.
+The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ [currencyCode]: {currencyCode: [currencyCode], amount: [amount]} })`.
 
 ##### `LocalizedMoneyInput.getEmptyCurrencies`
 
 The `getEmptyCurrencies` function will return array of crrencies that don't have amount .
 
 ```js
-LocalizedMoneyInput.getEmptyCurrencies({ EUR: '', USD: '12.77' }); // -> ['EUR']
+LocalizedMoneyInput.getEmptyCurrencies({
+  EUR: { currencyCode: 'EUR', amount: '' },
+  USD: { currencyCode: 'USD', amount: '12.77' },
+}); // -> ['EUR']
 
-LocalizedMoneyInput.getEmptyCurrencies({ EUR: '12.77' }); // -> []
+LocalizedMoneyInput.getEmptyCurrencies({
+  EUR: { currencyCode: 'EUR', amount: '12.77' },
+}); // -> []
 ```
 
 ### Example
@@ -219,8 +245,8 @@ const validate = formValues => {
   const emptyCurrencies = LocalizedMoneyInput.getEmptyCurrencies(
     formValues.prices
   );
-  // ['ERU', 'USD']
-  // This form dosen't accept highprecision prices
+  // ['EUR', 'USD']
+  // This form doesn't accept high precision prices
   const highPrecisionCurrencies = LocalizedMoneyInput.getHighPrecisionCurrencies(
     formValues.prices
   );

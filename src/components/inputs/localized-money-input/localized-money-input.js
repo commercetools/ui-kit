@@ -67,15 +67,6 @@ class LocalizedInput extends React.Component {
     //
     // eslint-disable-next-line no-param-reassign
     event.target.currency = this.props.currency;
-
-    // We manipulate the event to remove any characters after the currencyCode.
-    // This is for use by Formik as it expects the input name to be of the form:
-    // "price.EUR"
-    // But the onChange from the MoneyInput produces an event with name of the form:
-    // "price.EUR.amount"
-    //
-    // eslint-disable-next-line no-param-reassign
-    event.target.name = event.target.name.replace(/(.*)(\..*)$/, '$1');
     this.props.onChange(event);
   };
 
@@ -120,8 +111,13 @@ export class LocalizedMoneyInput extends React.Component {
     name: PropTypes.string,
     // then input doesn't accept a "currencies" prop, instead all possible
     // currencies have to exist (with empty or filled strings) on the value:
-    //   { EUR: '12.00', USD: '14.23', CAD: '13.70' }
-    value: PropTypes.objectOf(PropTypes.string).isRequired,
+    // { EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
+    value: PropTypes.objectOf(
+      PropTypes.shape({
+        amount: PropTypes.string.isRequired,
+        currencyCode: PropTypes.string.isRequired,
+      })
+    ),
     onChange: PropTypes.func,
     selectedCurrency: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
@@ -164,10 +160,7 @@ export class LocalizedMoneyInput extends React.Component {
 
   static convertToMoneyValues = values =>
     Object.keys(values).map(currencyCode =>
-      MoneyInput.convertToMoneyValue({
-        currencyCode,
-        amount: values[currencyCode],
-      })
+      MoneyInput.convertToMoneyValue(values[currencyCode])
     );
 
   static parseMoneyValues = (moneyValues = [], locale) =>
@@ -176,25 +169,19 @@ export class LocalizedMoneyInput extends React.Component {
       .reduce(
         (pairs, value) => ({
           ...pairs,
-          [value.currencyCode]: value.amount,
+          [value.currencyCode]: value,
         }),
         {}
       );
 
   static getHighPrecisionCurrencies = values =>
     Object.keys(values).filter(currency =>
-      MoneyInput.isHighPrecision({
-        currencyCode: currency,
-        amount: values[currency],
-      })
+      MoneyInput.isHighPrecision(values[currency])
     );
 
   static getEmptyCurrencies = values =>
     Object.keys(values).filter(currency =>
-      MoneyInput.isEmpty({
-        currencyCode: currency,
-        amount: values[currency],
-      })
+      MoneyInput.isEmpty(values[currency])
     );
 
   state = {
@@ -264,10 +251,7 @@ export class LocalizedMoneyInput extends React.Component {
                 key={currency}
                 id={LocalizedMoneyInput.getId(this.state.id, currency)}
                 name={LocalizedMoneyInput.getName(this.props.name, currency)}
-                value={{
-                  currencyCode: currency,
-                  amount: this.props.value[currency],
-                }}
+                value={this.props.value[currency]}
                 onChange={this.props.onChange}
                 currency={currency}
                 placeholder={
