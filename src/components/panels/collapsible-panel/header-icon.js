@@ -4,7 +4,11 @@ import classnames from 'classnames';
 import { AngleDownIcon, AngleRightIcon } from '../../icons';
 import styles from './collapsible-panel.mod.css';
 
-const getArrowTheme = tone => (tone === 'urgent' ? 'white' : 'black');
+const getArrowTheme = ({ tone, isDisabled }) => do {
+  if (isDisabled) 'grey';
+  else if (tone === 'urgent') 'white';
+  else 'black';
+};
 
 const HeaderIcon = props => (
   <div
@@ -12,14 +16,27 @@ const HeaderIcon = props => (
       styles['header-icon'],
       styles[`header-icon-${props.tone}`],
       {
+        [styles['header-icon-disabled']]: props.isDisabled,
         [styles['header-icon-small']]: props.size === 'small',
       }
     )}
   >
     {props.isClosed ? (
-      <AngleRightIcon theme={getArrowTheme(props.tone)} size={props.size} />
+      <AngleRightIcon
+        theme={getArrowTheme({
+          tone: props.tone,
+          isDisabled: props.isDisabled,
+        })}
+        size={props.size}
+      />
     ) : (
-      <AngleDownIcon theme={getArrowTheme(props.tone)} size={props.size} />
+      <AngleDownIcon
+        theme={getArrowTheme({
+          tone: props.tone,
+          isDisabled: props.isDisabled,
+        })}
+        size={props.size}
+      />
     )}
   </div>
 );
@@ -28,6 +45,7 @@ HeaderIcon.displayName = 'HeaderIcon';
 HeaderIcon.propTypes = {
   tone: PropTypes.oneOf(['urgent', 'primary']),
   isClosed: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   size: PropTypes.string.isRequired,
 };
 

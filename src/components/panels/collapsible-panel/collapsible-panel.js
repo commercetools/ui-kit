@@ -26,6 +26,7 @@ export default class CollapsiblePanel extends React.PureComponent {
     tone: PropTypes.oneOf(['urgent', 'primary']),
     theme: PropTypes.oneOf(['dark', 'light']),
     condensed: PropTypes.bool,
+    hideExpansionControls: PropTypes.bool,
 
     // props when uncontrolled
     isDefaultClosed(props, propName, componentName, ...rest) {
@@ -66,6 +67,7 @@ export default class CollapsiblePanel extends React.PureComponent {
   static defaultProps = {
     theme: 'dark',
     condensed: false,
+    isDisabled: false,
   };
 
   render() {
@@ -81,32 +83,40 @@ export default class CollapsiblePanel extends React.PureComponent {
       >
         {({ isOpen, toggle, containerStyles, registerContentNode }) => (
           <div
-            className={classnames(this.props.className, {
-              [styles['container-condensed']]: this.props.condensed,
-              [styles['container-open']]: isOpen,
-              [styles['container-theme-light']]: this.props.theme === 'light',
-              [styles['container-theme-dark']]: this.props.theme === 'dark',
-            })}
+            className={classnames(
+              this.props.className,
+              styles[`container-theme-${this.props.theme}`],
+              {
+                [styles['container-condensed']]: this.props.condensed,
+                [styles['container-open']]: isOpen,
+              }
+            )}
           >
             <div
               onClick={this.props.isDisabled ? undefined : toggle}
-              className={classnames(styles['base-header-container'], {
-                [styles['header-container-theme-light']]:
-                  this.props.theme === 'light',
-                [styles['header-container-theme-dark']]:
-                  this.props.theme === 'dark',
-                [styles.disabled]: this.props.isDisabled,
-                [styles.sticky]: this.props.isSticky && isOpen,
-                [styles['header-closed']]: !isOpen,
-              })}
+              className={classnames(
+                styles['base-header-container'],
+                styles[`header-container-theme-${this.props.theme}`],
+                {
+                  [styles.disabled]: this.props.isDisabled,
+                  [styles.sticky]: this.props.isSticky && isOpen,
+                  [styles['header-closed']]: !isOpen,
+                }
+              )}
             >
               <Spacings.InsetSquish scale={scale}>
-                <div {...dataProps} className={styles.header}>
+                <div
+                  {...dataProps}
+                  className={classnames(styles.header, {
+                    [styles['header-disabled']]: this.props.isDisabled,
+                  })}
+                >
                   <div className={styles['truncate-header']}>
                     <Spacings.Inline alignItems="center" scale="s">
-                      {!this.props.isDisabled && (
+                      {!this.props.hideExpansionControls && (
                         <HeaderIcon
                           isClosed={!isOpen}
+                          isDisabled={this.props.isDisabled}
                           tone={this.props.tone}
                           size={this.props.condensed ? 'small' : 'medium'}
                         />
