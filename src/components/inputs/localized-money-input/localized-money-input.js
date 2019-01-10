@@ -117,7 +117,7 @@ export class LocalizedMoneyInput extends React.Component {
         amount: PropTypes.string.isRequired,
         currencyCode: PropTypes.string.isRequired,
       })
-    ),
+    ).isRequired,
     onChange: PropTypes.func,
     selectedCurrency: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
@@ -159,9 +159,7 @@ export class LocalizedMoneyInput extends React.Component {
   };
 
   static convertToMoneyValues = values =>
-    Object.keys(values).map(currencyCode =>
-      MoneyInput.convertToMoneyValue(values[currencyCode])
-    );
+    Object.values(values).map(value => MoneyInput.convertToMoneyValue(value));
 
   static parseMoneyValues = (moneyValues = [], locale) =>
     moneyValues
@@ -175,14 +173,10 @@ export class LocalizedMoneyInput extends React.Component {
       );
 
   static getHighPrecisionCurrencies = values =>
-    Object.keys(values).filter(currency =>
-      MoneyInput.isHighPrecision(values[currency])
-    );
+    Object.values(values).filter(value => MoneyInput.isHighPrecision(value));
 
   static getEmptyCurrencies = values =>
-    Object.keys(values).filter(currency =>
-      MoneyInput.isEmpty(values[currency])
-    );
+    Object.values(values).filter(value => MoneyInput.isEmpty(value));
 
   state = {
     // This state is used to show/hide the remaining currencies
