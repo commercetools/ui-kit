@@ -11,7 +11,7 @@ export const routePath = '/collapsible-panel';
 
 export const component = () => (
   <Suite>
-    <Spec label="condensed">
+    <Spec label="condensed - dark">
       <CollapsiblePanel
         header="Header"
         description="Some description"
@@ -25,23 +25,9 @@ export const component = () => (
         Content
       </CollapsiblePanel>
     </Spec>
-    <Spec label="regular (not condensed)">
+    <Spec label="condensed - light">
       <CollapsiblePanel
-        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
-        description="Some description"
-        isDisabled={false}
-        tone="primary"
-        headerControls="headerControl"
-        theme="dark"
-        condensed
-        secondaryHeader="Secondary Header"
-      >
-        Content
-      </CollapsiblePanel>
-    </Spec>
-    <Spec label="light">
-      <CollapsiblePanel
-        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        header="Header"
         description="Some description"
         isDisabled={false}
         tone="primary"
@@ -53,12 +39,13 @@ export const component = () => (
         Content
       </CollapsiblePanel>
     </Spec>
-    <Spec label="urgent and light">
+    <Spec label="condensed - light - hideExpansionControls">
       <CollapsiblePanel
-        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        header="Header"
         description="Some description"
         isDisabled={false}
-        tone="urgent"
+        hideExpansionControls={true}
+        tone="primary"
         headerControls="headerControl"
         theme="light"
         condensed
@@ -67,23 +54,9 @@ export const component = () => (
         Content
       </CollapsiblePanel>
     </Spec>
-    <Spec label="urgent and dark">
+    <Spec label="condensed - light - isDisabled">
       <CollapsiblePanel
-        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
-        description="Some description"
-        isDisabled={false}
-        tone="urgent"
-        headerControls="headerControl"
-        theme="dark"
-        condensed
-        secondaryHeader="Secondary Header"
-      >
-        Content
-      </CollapsiblePanel>
-    </Spec>
-    <Spec label="disabled">
-      <CollapsiblePanel
-        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        header="Header"
         description="Some description"
         isDisabled={true}
         tone="primary"
@@ -95,15 +68,149 @@ export const component = () => (
         Content
       </CollapsiblePanel>
     </Spec>
-    <Spec label="hideExpansionControls">
+    <Spec label="regular (not condensed) - dark">
       <CollapsiblePanel
         header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
         description="Some description"
+        isDisabled={false}
+        tone="primary"
+        headerControls="headerControl"
+        theme="dark"
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="regular (not condensed) - dark - hideExpansionControls">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={false}
         hideExpansionControls={true}
         tone="primary"
         headerControls="headerControl"
+        theme="dark"
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="regular (not condensed) - dark - isDisabled">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={true}
+        tone="primary"
+        headerControls="headerControl"
+        theme="dark"
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="regular (not condensed) - light">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={false}
+        tone="primary"
+        headerControls="headerControl"
+        theme="light"
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="condensed - light and urgent">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={false}
+        tone="urgent"
+        headerControls="headerControl"
         theme="light"
         condensed
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="condensed - dark and urgent">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={false}
+        tone="urgent"
+        headerControls="headerControl"
+        theme="dark"
+        condensed
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="condensed - dark and urgent - isDisabled">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={true}
+        tone="urgent"
+        headerControls="headerControl"
+        theme="dark"
+        condensed
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="regular (not condensed) - light and urgent">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={false}
+        tone="urgent"
+        headerControls="headerControl"
+        theme="light"
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="regular (not condensed) - dark and urgent">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={false}
+        tone="urgent"
+        headerControls="headerControl"
+        theme="dark"
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="regular (not condensed) - dark and urgent - hideExpansionControls">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={false}
+        hideExpansionControls={true}
+        tone="urgent"
+        headerControls="headerControl"
+        theme="dark"
+        secondaryHeader="Secondary Header"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
+    <Spec label="regular (not condensed) - dark and urgent - isDisabled">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={true}
+        tone="urgent"
+        headerControls="headerControl"
+        theme="dark"
         secondaryHeader="Secondary Header"
       >
         Content
