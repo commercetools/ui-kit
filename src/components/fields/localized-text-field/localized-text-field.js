@@ -14,11 +14,11 @@ const sequentialId = createSequentialId('localized-text-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
-class LocalizedMultilineTextField extends React.Component {
-  static displayName = 'LocalizedMultilineTextField';
+class LocalizedTextField extends React.Component {
+  static displayName = 'LocalizedTextField';
 
   static propTypes = {
-    // LocalizedMultilineTextField
+    // LocalizedTextField
     id: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
@@ -133,4 +133,4 @@ class LocalizedMultilineTextField extends React.Component {
   }
 }
 
-export default LocalizedMultilineTextField;
+export default LocalizedTextField;
