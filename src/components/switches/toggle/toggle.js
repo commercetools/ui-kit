@@ -28,7 +28,6 @@ export class Toggle extends React.PureComponent {
         className={classnames(styles.labelWrapper, {
           [styles.labelWrapperDisabled]: this.props.isDisabled,
         })}
-        {...filterDataAttributes(this.props)}
       >
         <ToggleSwitch
           size={this.props.size}
@@ -43,6 +42,7 @@ export class Toggle extends React.PureComponent {
           disabled={this.props.isDisabled}
           checked={this.props.isChecked}
           type="checkbox"
+          {...filterDataAttributes(this.props)}
         />
       </label>
     );

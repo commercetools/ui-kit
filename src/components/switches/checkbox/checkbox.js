@@ -52,7 +52,7 @@ export class Checkbox extends React.PureComponent {
 
   render() {
     return (
-      <div {...filterDataAttributes(this.props)}>
+      <div>
         <label
           htmlFor={this.state.id}
           className={classnames(styles.labelWrapper, {
@@ -94,6 +94,7 @@ export class Checkbox extends React.PureComponent {
               disabled={this.props.isDisabled}
               checked={this.props.isChecked && !this.props.isIndeterminate}
               type="checkbox"
+              {...filterDataAttributes(this.props)}
             />
           </Spacings.Inline>
         </label>
