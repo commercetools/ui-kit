@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import styles from './toggle.mod.css';
+import styles from './toggle-input.mod.css';
 import ToggleSwitch from './toggle-switch';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
-export class Toggle extends React.PureComponent {
+class ToggleInput extends React.PureComponent {
   static displayName = 'Toggle';
   static propTypes = {
     id: PropTypes.string,
@@ -49,4 +49,4 @@ export class Toggle extends React.PureComponent {
   }
 }
 
-export default Toggle;
+export default ToggleInput;

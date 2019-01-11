@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from '../../../test-utils';
-import Toggle from './toggle';
+import ToggleInput from './toggle-input';
 
 it('should render children', () => {
   const onChange = jest.fn();
   const { getByLabelText } = render(
     <div>
       <label htmlFor="toggle">Toggle</label>
-      <Toggle id="toggle" isChecked={false} onChange={onChange} />
+      <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
     </div>
   );
 
@@ -22,7 +22,7 @@ it('should call onChange when clicked', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="toggle">Toggle</label>
-      <Toggle id="toggle" isChecked={false} onChange={onChange} />
+      <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
     </div>
   );
 
@@ -44,7 +44,7 @@ it('should not call onChange when clicked while disabled', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="toggle">Toggle</label>
-      <Toggle
+      <ToggleInput
         id="toggle"
         isChecked={false}
         onChange={onChange}
@@ -64,7 +64,7 @@ describe('checked attribute', () => {
     const { getByLabelText } = render(
       <div>
         <label htmlFor="toggle">Toggle</label>
-        <Toggle id="toggle" isChecked={true} onChange={onChange} />
+        <ToggleInput id="toggle" isChecked={true} onChange={onChange} />
       </div>
     );
 
@@ -76,7 +76,7 @@ describe('checked attribute', () => {
     const { getByLabelText } = render(
       <div>
         <label htmlFor="toggle">Toggle</label>
-        <Toggle id="toggle" isChecked={false} onChange={onChange} />
+        <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
       </div>
     );
 

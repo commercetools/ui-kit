@@ -91,7 +91,7 @@ export { default as PasswordInput } from './components/inputs/password-input';
 export { default as SelectInput } from './components/inputs/select-input';
 export { default as TextInput } from './components/inputs/text-input';
 export { default as TimeInput } from './components/inputs/time-input';
-export { default as Toggle } from './components/inputs/toggle';
+export { default as ToggleInput } from './components/inputs/toggle-input';
 export { default as Checkbox } from './components/inputs/checkbox';
 export { default as Radio } from './components/inputs/radio';
 export { default as Label } from './components/label';
