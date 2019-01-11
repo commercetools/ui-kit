@@ -15,7 +15,9 @@ it('should render children', () => {
 });
 
 it('should call onChange when clicked', () => {
-  const onChange = jest.fn();
+  const onChange = jest.fn(event => {
+    event.persist();
+  });
 
   const { getByLabelText } = render(
     <div>

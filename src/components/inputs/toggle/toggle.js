@@ -38,17 +38,9 @@ export class Toggle extends React.PureComponent {
           className={styles.inputWrapper}
           id={this.props.id}
           name={this.props.name}
-          onChange={() =>
-            this.props.onChange({
-              target: {
-                id: this.props.id,
-                name: this.props.name,
-                checked: !this.props.isChecked,
-              },
-            })
-          }
+          onChange={this.props.onChange}
           disabled={this.props.isDisabled}
-          checked={this.props.isChecked}
+          defaultChecked={this.props.isChecked}
           type="checkbox"
           {...filterDataAttributes(this.props)}
         />
