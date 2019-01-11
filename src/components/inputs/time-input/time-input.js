@@ -82,7 +82,7 @@ export class TimeInput extends React.Component {
 
   emitChange = value => {
     const event = {
-      target: { id: this.props.id, name: this.props.name, value },
+      target: { id: this.state.id, name: this.props.name, value },
     };
     this.props.onChange(event);
   };
