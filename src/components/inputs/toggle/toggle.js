@@ -22,6 +22,17 @@ export class Toggle extends React.PureComponent {
     size: 'big',
   };
 
+  emitChange = () => {
+    const event = {
+      target: {
+        id: this.props.id,
+        name: this.props.name,
+        value: !this.props.isChecked,
+      },
+    };
+    this.props.onChange(event);
+  };
+
   render() {
     return (
       <label
@@ -38,7 +49,7 @@ export class Toggle extends React.PureComponent {
           className={styles.inputWrapper}
           id={this.props.id}
           name={this.props.name}
-          onChange={() => this.props.onChange(!this.props.isChecked)}
+          onChange={this.emitChange}
           disabled={this.props.isDisabled}
           checked={this.props.isChecked}
           type="checkbox"

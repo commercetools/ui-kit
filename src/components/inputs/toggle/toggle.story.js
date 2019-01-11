@@ -8,7 +8,7 @@ import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Toggle from '.';
 
-storiesOf('Components|Switches', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Toggle', () => (
@@ -22,9 +22,9 @@ storiesOf('Components|Switches', module)
             size={select('size', ['small', 'big'], 'big')}
             isDisabled={boolean('isDisabled', false)}
             isChecked={value}
-            onChange={isChecked => {
-              action('onChange')(isChecked);
-              onChange(isChecked);
+            onChange={event => {
+              action('onChange')(event);
+              onChange(event.target.value);
             }}
           />
         )}
