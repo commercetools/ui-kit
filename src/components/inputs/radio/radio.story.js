@@ -13,7 +13,7 @@ const radioOption1 = 'Option #1';
 const radioOption2 = 'Option #2';
 const radioOption3 = 'Option #3';
 
-storiesOf('Components|Switches', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('RadioGroup', () => (
