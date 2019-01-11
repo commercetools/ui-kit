@@ -119,7 +119,11 @@ describe('TimeInput', () => {
     container.querySelector('input').blur();
     expect(container.querySelector('input')).not.toHaveFocus();
     expect(onChange).toHaveBeenCalledWith({
-      target: { id: undefined, name: undefined, value: '2:03 AM' },
+      target: {
+        id: expect.stringMatching(/^time-input-/i),
+        name: undefined,
+        value: '2:03 AM',
+      },
     });
   });
 
@@ -136,7 +140,7 @@ describe('TimeInput', () => {
     expect(container.querySelector('input')).not.toHaveFocus();
     expect(onChange).toHaveBeenCalledWith({
       target: {
-        id: undefined,
+        id: expect.stringMatching(/^time-input-/i),
         name: undefined,
         // There is a limitation in node where the underlying Intl API used by
         // react-intl does not contain the full locale data and  falls back to
