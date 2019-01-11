@@ -1,6 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { render } from '../../../test-utils';
 import ToggleInput from './toggle-input';
+
+class TestComponent extends React.Component {
+  static propTypes = {
+    isChecked: PropTypes.bool,
+    onChange: PropTypes.func,
+    id: PropTypes.string,
+  };
+
+  state = {
+    isChecked: this.props.isChecked,
+  };
+
+  render() {
+    return (
+      <div>
+        <label htmlFor={this.props.id}>Toggle</label>
+        <ToggleInput
+          id={this.props.id}
+          isChecked={this.state.isChecked}
+          onChange={evt => {
+            this.setState({
+              isChecked: evt.target.checked,
+            });
+            if (this.props.onChange) {
+              this.props.onChange(evt);
+            }
+          }}
+        />
+      </div>
+    );
+  }
+}
 
 it('should render children', () => {
   const onChange = jest.fn();
@@ -20,10 +53,7 @@ it('should call onChange when clicked', () => {
   });
 
   const { getByLabelText } = render(
-    <div>
-      <label htmlFor="toggle">Toggle</label>
-      <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
-    </div>
+    <TestComponent id="toggle" isChecked={false} onChange={onChange} />
   );
 
   getByLabelText('Toggle').click();
