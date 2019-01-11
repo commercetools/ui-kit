@@ -12,9 +12,9 @@ import { ToggleInput } from '@commercetools-frontend/ui-kit';
 <ToggleInput
   isDisabled={false}
   isChecked={false}
-  onChange={..}
-  size='small'
-/>
+  onChange={event => alert(event.target.checked)}
+  size="small"
+/>;
 ```
 
 #### Use case
