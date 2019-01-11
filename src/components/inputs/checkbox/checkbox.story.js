@@ -9,7 +9,7 @@ import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Checkbox from '.';
 
-storiesOf('Components|Switches', module)
+storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Checkbox', () => (
