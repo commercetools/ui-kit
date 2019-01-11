@@ -19,19 +19,19 @@ import { ToggleInput } from '@commercetools-frontend/ui-kit';
 
 #### Use case
 
-The table below describes the use of the `ToggleInput`.
+The table below describes the use of the `ToggleInput` vs `Checkbox` and `Radio`.
 
-| Switch type | Number of options | Selection |
-| ----------- | ----------------- | --------- |
-| `Checkbox`  | Multiple          | Multiple  |
-| `Radio`     | Multiple          | Single    |
-| `Toggle`    | Two               | Single    |
+| Switch type   | Number of options | Selection |
+| ------------- | ----------------- | --------- |
+| `Checkbox`    | Multiple          | Multiple  |
+| `Radio`       | Multiple          | Single    |
+| `ToggleInput` | Two               | Single    |
 
 #### Properties
 
-| Props        | Type     | Required | Values                  | Default | Description                       |
-| ------------ | -------- | :------: | ----------------------- | ------- | --------------------------------- |
-| `isDisabled` | `bool`   |    -     | -                       | `false` | Disables the Toggle               |
-| `isChecked`  | `bool`   |    -     | -                       | `false` | Checks the Toggle                 |
-| `onChange`   | `func`   |    ✅    | -                       | -       | called with the new value.        |
-| `size`       | `string` |    ✅    | oneOf(['small', 'big']) | `big`   | The size of the Toggle component. |
+| Props        | Type     | Required | Values                  | Default | Description                            |
+| ------------ | -------- | :------: | ----------------------- | ------- | -------------------------------------- |
+| `isDisabled` | `bool`   |    -     | -                       | `false` | Disables the ToggleInput               |
+| `isChecked`  | `bool`   |    -     | -                       | `false` | Checks the ToggleInput                 |
+| `onChange`   | `func`   |    ✅    | -                       | -       | called with the new value.             |
+| `size`       | `string` |    ✅    | oneOf(['small', 'big']) | `big`   | The size of the ToggleInput component. |

@@ -40,7 +40,7 @@ class ToggleInput extends React.PureComponent {
           name={this.props.name}
           onChange={this.props.onChange}
           disabled={this.props.isDisabled}
-          defaultChecked={this.props.isChecked}
+          checked={this.props.isChecked}
           type="checkbox"
           {...filterDataAttributes(this.props)}
         />

@@ -29,14 +29,7 @@ it('should call onChange when clicked', () => {
   getByLabelText('Toggle').click();
 
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({
-      target: expect.objectContaining({
-        id: 'toggle',
-        checked: true,
-      }),
-    })
-  );
+  expect(getByLabelText('Toggle')).toHaveProperty('checked', true);
 });
 
 it('should not call onChange when clicked while disabled', () => {
