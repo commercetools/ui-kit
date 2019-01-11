@@ -33,7 +33,7 @@ describe('AsyncCreatableSelectField', () => {
         'AsyncCreatableSelectField - withDefaultOptions disabled - open'
       );
       // typing triggers async loadOptions
-      await select.type(' ');
+      await select.type('Three');
       await percySnapshot(
         page,
         'AsyncCreatableSelectField - withDefaultOptions disabled - open - after typing'
