@@ -16,6 +16,7 @@ it('should render children', () => {
 
 it('should call onChange when clicked', () => {
   const onChange = jest.fn();
+
   const { getByLabelText } = render(
     <div>
       <label htmlFor="toggle">Toggle</label>
@@ -26,9 +27,14 @@ it('should call onChange when clicked', () => {
   getByLabelText('Toggle').click();
 
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(onChange).toHaveBeenCalledWith({
-    target: { id: 'toggle', name: undefined, value: true },
-  });
+  expect(onChange).toHaveBeenCalledWith(
+    expect.objectContaining({
+      target: expect.objectContaining({
+        id: 'toggle',
+        checked: true,
+      }),
+    })
+  );
 });
 
 it('should not call onChange when clicked while disabled', () => {

@@ -24,7 +24,7 @@ storiesOf('Components|Inputs', module)
             isChecked={value}
             onChange={event => {
               action('onChange')(event);
-              onChange(event.target.value);
+              onChange(event.target.checked);
             }}
           />
         )}

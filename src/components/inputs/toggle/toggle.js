@@ -12,7 +12,7 @@ export class Toggle extends React.PureComponent {
     name: PropTypes.string,
     size: PropTypes.oneOf(['small', 'big']).isRequired,
     isDisabled: PropTypes.bool,
-    isChecked: PropTypes.bool,
+    isChecked: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -20,17 +20,6 @@ export class Toggle extends React.PureComponent {
     isDisabled: false,
     isChecked: false,
     size: 'big',
-  };
-
-  emitChange = () => {
-    const event = {
-      target: {
-        id: this.props.id,
-        name: this.props.name,
-        value: !this.props.isChecked,
-      },
-    };
-    this.props.onChange(event);
   };
 
   render() {
@@ -49,7 +38,15 @@ export class Toggle extends React.PureComponent {
           className={styles.inputWrapper}
           id={this.props.id}
           name={this.props.name}
-          onChange={this.emitChange}
+          onChange={() =>
+            this.props.onChange({
+              target: {
+                id: this.props.id,
+                name: this.props.name,
+                checked: !this.props.isChecked,
+              },
+            })
+          }
           disabled={this.props.isDisabled}
           checked={this.props.isChecked}
           type="checkbox"
