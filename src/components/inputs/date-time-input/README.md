@@ -26,18 +26,18 @@ multiple date selection. It formats the selected date depending on the current l
 
 | Props                  | Type     | Required | Values                             | Default | Description                                                                                                                             |
 | ---------------------- | -------- | :------: | ---------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                   | `string` |    -     | -                                  | -       | Used as the HTML `id` attribute.                                                                                                        |
-| `name`                 | `string` |    -     | -                                  | -       | Used as the HTML `name` attribute.                                                                                                      |
-| `timeZone`             | `string` |    ✅    | -                                  | -       | Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed. |
+| `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input field.                                                                                               |
+| `value`                | `string` |    -     | -                                  | -       | The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").                    |
 | `onChange`             | `func`   |    ✅    | -                                  | -       | Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".      |
 | `onFocus`              | `func`   |    -     | -                                  | -       | Called when the date input gains focus.                                                                                                 |
 | `onBlur`               | `func`   |    -     | -                                  | -       | Called when the date input loses focus.                                                                                                 |
-| `value`                | `string` |    -     | -                                  | -       | The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").                    |
+| `timeZone`             | `string` |    ✅    | -                                  | -       | Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed. |
+| `id`                   | `string` |    -     | -                                  | -       | Used as the HTML `id` attribute.                                                                                                        |
+| `name`                 | `string` |    -     | -                                  | -       | Used as the HTML `name` attribute.                                                                                                      |
 | `placeholder`          | `string` |    -     | -                                  | -       | Placeholder value to show in the input field                                                                                            |
 | `isDisabled`           | `bool`   |    -     | -                                  | `false` | Disables the date picker                                                                                                                |
-| `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input field.                                                                                               |
-| `hasWarning`           | `bool`   |    -     | -                                  | -       | Indicates the input field has a warning                                                                                                 |
 | `hasError`             | `bool`   |    -     | -                                  | -       | Indicates the input field has an error                                                                                                  |
+| `hasWarning`           | `bool`   |    -     | -                                  | -       | Indicates the input field has a warning                                                                                                 |
 
 ##### `props.timeZone`
 

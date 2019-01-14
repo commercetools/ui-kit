@@ -26,12 +26,12 @@ Link buttons are similar to Flat buttons, however they are constructed as a
 
 #### Properties
 
-| Props        | Type      | Required | Values | Default | Description                                           |
-| ------------ | --------- | :------: | ------ | ------- | ----------------------------------------------------- |
-| `label`      | `string`  |    ✅    | -      | -       | Should describe what the button is for                |
-| `to`         | `string`  |    ✅    | -      | -       | The URL that the Link should point to                 |
-| `iconLeft`   | `element` |    -     | -      | -       | The icon of the button                                |
-| `isDisabled` | `boolean` |    -     | -      | -       | Tells when the button should present a disabled state |
+| Props        | Type                                                              | Required | Values | Default | Description                                           |
+| ------------ | ----------------------------------------------------------------- | :------: | ------ | ------- | ----------------------------------------------------- |
+| `label`      | `string`                                                          |    ✅    | -      | -       | Should describe what the button is for                |
+| `to`         | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                 |
+| `iconLeft`   | `element`                                                         |    -     | -      | -       | The icon of the button                                |
+| `isDisabled` | `boolean`                                                         |    -     | -      | -       | Tells when the button should present a disabled state |
 
 Main Functions and use cases are:
 

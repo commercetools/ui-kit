@@ -12,10 +12,10 @@ import { Constraints } from '@commercetools-frontend/ui-kit';
 
 ## Properties
 
-| Props        | Type             | Required | Values                                 | Default |
-| ------------ | ---------------- | :------: | -------------------------------------- | ------- |
-| `constraint` | `String`         |    -     | `['scale', 'xs', 's', 'm', 'l', 'xl']` | `scale` |
-| `children`   | `PropTypes.node` |    ✅    | -                                      | -       |
+| Props        | Type             | Required | Values                               | Default |
+| ------------ | ---------------- | :------: | ------------------------------------ | ------- |
+| `constraint` | `String`         |    -     | `'scale', 'xs', 's', 'm', 'l', 'xl'` | `scale` |
+| `children`   | `PropTypes.node` |    ✅    | -                                    | -       |
 
 ## Scales
 

@@ -25,16 +25,16 @@ Icon Buttons are "icon-only" buttons. They trigger an action when clicked
 
 | Props            | Type     | Required | Values                      | Default         | Description                                                                                                                                      |
 | ---------------- | -------- | :------: | --------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| type             | `string` |    -     | `submit`, `reset`, `button` | `button`        | Used as the HTML `type` attribute.                                                                                                               |
+| `type`           | `string` |    -     | `submit`, `reset`, `button` | `button`        | Used as the HTML `type` attribute.                                                                                                               |
 | `label`          | `string` |    ✅    | -                           | -               | Should describe what the button does, for accessibility purposes (screen-reader users)                                                           |
-| `onClick`        | `func`   |    ✅    | -                           | -               | What the button will trigger when clicked                                                                                                        |
-| `isToggleButton` | `bool`   |    ✅    | -                           | `false`         | If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled |
+| `icon`           | `node`   |    -     | -                           | -               | Likely an `Icon` component                                                                                                                       |
+| `isToggleButton` | `bool`   |    -     | -                           | `false`         | If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled |
 | `isToggled`      | `bool`   |    -     | -                           | -               | Tells when the button should present a toggled state. It does not have any effect when `isToggleButton` is false                                 |
+| `isDisabled`     | `bool`   |    -     | -                           | -               | Tells when the button should present a disabled state                                                                                            |
+| `onClick`        | `func`   |    ✅    | -                           | -               | What the button will trigger when clicked                                                                                                        |
 | `shape`          | `oneOf`  |    -     | `round`, `square`           | `round`         | The container shape of the button                                                                                                                |
 | `size`           | `oneOf`  |    -     | `big`, `medium`, `small`    | `big`           | -                                                                                                                                                |
-| `icon`           | `node`   |    -     | -                           | -               | Likely an `Icon` component                                                                                                                       |
 | `theme`          | `oneOf`  |    -     | `default`                   | `blue`, `green` | The component may have a theme only if `isToggleButton` is true                                                                                  |
-| `isDisabled`     | `bool`   |    -     | -                           | -               | Tells when the button should present a disabled state                                                                                            |
 
 #### Where to use
 
