@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
-import kebabCase from 'lodash.kebabcase';
 import Text from '../typography/text';
 import Readme from './README.md';
 import * as icons from '.';
@@ -23,14 +22,6 @@ const IconItem = styled.div`
 
 const IconContainer = styled.div`
   margin: 16px 0;
-`;
-
-const FileName = styled.div`
-  > small {
-    color: rgba(0, 0, 0, 0.4);
-    font-family: Courier;
-    white-space: nowrap;
-  }
 `;
 
 const iconNames = Object.keys(icons);
@@ -77,13 +68,7 @@ storiesOf('Components|Icons', module)
                 )}
               />
             </IconContainer>
-            {iconNames[index]}
-            <FileName>
-              <Text.Detail>
-                {kebabCase(iconNames[index]).replace(/-icon/, '')}
-                {'.svg'}
-              </Text.Detail>
-            </FileName>
+            <Text.Body>{iconNames[index]}</Text.Body>
           </IconItem>
         );
       })}
