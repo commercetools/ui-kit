@@ -93,7 +93,7 @@ export { default as TextInput } from './components/inputs/text-input';
 export { default as TimeInput } from './components/inputs/time-input';
 export { default as ToggleInput } from './components/inputs/toggle-input';
 export { default as CheckboxInput } from './components/inputs/checkbox-input';
-export { default as Radio } from './components/inputs/radio';
+export { default as RadioInput } from './components/inputs/radio-input';
 export { default as Label } from './components/label';
 
 export { default as LoadingSpinner } from './components/loading-spinner';
