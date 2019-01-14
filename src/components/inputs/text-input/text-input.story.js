@@ -32,7 +32,7 @@ storiesOf('Components|Inputs', module)
             placeholder={text('placeholder', 'Placeholder')}
             horizontalConstraint={select(
               'horizontalConstraint',
-              ['xs', 's', 'm', 'l', 'xl', 'scale'],
+              ['s', 'm', 'l', 'xl', 'scale'],
               'm'
             )}
           />
