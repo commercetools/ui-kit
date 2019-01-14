@@ -67,7 +67,7 @@ storiesOf('Components|Inputs', module)
               placeholder={object('placeholder', { en: '', de: '' })}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                ['m', 'l', 'xl', 'scale'],
                 'm'
               )}
               hasError={boolean('hasError', false)}
