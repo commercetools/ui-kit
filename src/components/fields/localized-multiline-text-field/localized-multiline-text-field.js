@@ -20,7 +20,7 @@ class LocalizedMultilineTextField extends React.Component {
   static propTypes = {
     // LocalizedMultilineTextField
     id: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
       missing: PropTypes.bool,
     }),
