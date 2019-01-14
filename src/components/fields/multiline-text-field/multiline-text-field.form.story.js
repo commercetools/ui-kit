@@ -47,7 +47,7 @@ storiesOf('Examples|Forms/Fields', module)
               touched={formik.touched.description}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                ['m', 'l', 'xl', 'scale'],
                 'm'
               )}
               errors={formik.errors.description}
