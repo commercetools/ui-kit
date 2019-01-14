@@ -16,6 +16,7 @@ script:
   # instruct bash to quit if there is a non zero response code (error)
   # https://github.com/commercetools/ui-kit/pull/284
   - set -e
+  - yarn run jest --projects jest.eslint.config.js --maxWorkers=4 --reporters jest-silent-reporter
   - yarn run jest --projects jest.test.config.js --maxWorkers=4 --reporters jest-silent-reporter
   # the jest.bundle.config.js tests run on the bundle,
   # so we need to build it first
