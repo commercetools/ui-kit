@@ -9,17 +9,31 @@ class TestComponent extends React.Component {
   static displayName = 'TestComponent';
   static propTypes = {
     id: PropTypes.string,
-    value: PropTypes.objectOf(PropTypes.string).isRequired,
-    handleChange: PropTypes.func,
+    value: PropTypes.objectOf(
+      PropTypes.shape({
+        amount: PropTypes.string.isRequired,
+        currencyCode: PropTypes.string.isRequired,
+      })
+    ),
+    onChange: PropTypes.func,
     selectedCurrency: PropTypes.string.isRequired,
   };
   static defaultProps = {
     id: 'some-id',
     name: 'some-name',
     value: {
-      EUR: '12.77',
-      USD: '13.55',
-      CAD: '19.82',
+      EUR: {
+        currencyCode: 'EUR',
+        amount: '12.77',
+      },
+      USD: {
+        currencyCode: 'USD',
+        amount: '13.55',
+      },
+      CAD: {
+        currencyCode: 'CAD',
+        amount: '19.82',
+      },
     },
     selectedCurrency: 'CAD',
     intl: { formatMessage: message => message.id },
@@ -35,10 +49,13 @@ class TestComponent extends React.Component {
     this.setState({
       value: {
         ...this.state.value,
-        [event.target.currency]: event.target.value,
+        [event.target.currency]: {
+          currencyCode: event.target.currency,
+          amount: event.target.value,
+        },
       },
     });
-    if (this.props.handleChange) this.props.handleChange(event);
+    if (this.props.onChange) this.props.onChange(event);
   };
 
   render() {
@@ -273,9 +290,18 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
     it('should return an error for this currency', () => {
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          EUR: '9',
-          foo: '1',
-          USD: '12',
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '9',
+          },
+          foo: {
+            currencyCode: 'foo',
+            amount: '1',
+          },
+          USD: {
+            currencyCode: 'USD',
+            amount: '12',
+          },
         })
       ).toEqual([
         {
@@ -299,9 +325,18 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
     it('should return an error for this currency', () => {
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          USD: '21',
-          EUR: '',
-          EGP: '9',
+          USD: {
+            currencyCode: 'USD',
+            amount: '21',
+          },
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '',
+          },
+          EGP: {
+            currencyCode: 'EGP',
+            amount: '9',
+          },
         })
       ).toEqual([
         {
@@ -319,7 +354,12 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
         },
       ]);
       expect(
-        LocalizedMoneyInput.convertToMoneyValues({ EUR: undefined })
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '',
+          },
+        })
       ).toEqual([null]);
     });
   });
@@ -328,7 +368,10 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
     it('should return an error for this currency', () => {
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          EUR: 'foo',
+          EUR: {
+            currencyCode: 'EUR',
+            amount: 'foo',
+          },
         })
       ).toEqual([null]);
     });
@@ -340,7 +383,10 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
     it('should treat it as a decimal separator', () => {
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          EUR: '1.2',
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '1.2',
+          },
         })
       ).toEqual([
         {
@@ -353,7 +399,10 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
 
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          KWD: '1.234',
+          KWD: {
+            currencyCode: 'KWD',
+            amount: '1.234',
+          },
         })
       ).toEqual([
         {
@@ -370,7 +419,10 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
     it('should treat it as a decimal separator', () => {
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          EUR: '2.49',
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '2.49',
+          },
         })
       ).toEqual([
         {
@@ -385,7 +437,10 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
       // number of. Cutting it of would result in an incorrect 239998.
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          EUR: '2399.99',
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '2399.99',
+          },
         })
       ).toEqual([
         {
@@ -402,7 +457,10 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
     it('should return a money value of type "highPrecision"', () => {
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          EUR: '1.234',
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '1.234',
+          },
         })
       ).toEqual([
         {
@@ -516,7 +574,12 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual({ EUR: '12.34' });
+      ).toEqual({
+        EUR: {
+          currencyCode: 'EUR',
+          amount: '12.34',
+        },
+      });
     });
   });
   describe('when called with a full, valid centPrecision price', () => {
@@ -533,7 +596,12 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual({ EUR: '12.34' });
+      ).toEqual({
+        EUR: {
+          currencyCode: 'EUR',
+          amount: '12.34',
+        },
+      });
     });
   });
   describe('when called with a minimal highPrecision price', () => {
@@ -550,7 +618,12 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual({ EUR: '12.345' });
+      ).toEqual({
+        EUR: {
+          currencyCode: 'EUR',
+          amount: '12.345',
+        },
+      });
     });
   });
   describe('when called with a full highPrecision price', () => {
@@ -568,7 +641,12 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toEqual({ EUR: '12.345' });
+      ).toEqual({
+        EUR: {
+          currencyCode: 'EUR',
+          amount: '12.345',
+        },
+      });
     });
   });
 });
@@ -577,7 +655,9 @@ describe('LocalizedMoneyInput.getHighPrecisionCurrencies', () => {
   describe('when called with a regular precision money value', () => {
     it('should return empty array', () => {
       expect(
-        LocalizedMoneyInput.getHighPrecisionCurrencies({ EUR: '2.01' })
+        LocalizedMoneyInput.getHighPrecisionCurrencies({
+          EUR: { currencyCode: 'EUR', amount: '2.01' },
+        })
       ).toMatchObject([]);
     });
   });
@@ -585,9 +665,18 @@ describe('LocalizedMoneyInput.getHighPrecisionCurrencies', () => {
     it("should return the currencies that don't have high precision value", () => {
       expect(
         LocalizedMoneyInput.getHighPrecisionCurrencies({
-          EUR: '13.44',
-          USD: '2.001',
-          EGP: '12.00',
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '13.44',
+          },
+          USD: {
+            currencyCode: 'USD',
+            amount: '2.001',
+          },
+          EGP: {
+            currencyCode: 'EGP',
+            amount: '12.00',
+          },
         })
       ).toMatchObject(['USD']);
     });
@@ -607,14 +696,32 @@ describe('LocalizedMoneyInput.getEmptyCurrencies', () => {
   describe('when value is filled out', () => {
     it('should return empty array', () => {
       expect(
-        LocalizedMoneyInput.getEmptyCurrencies({ EUR: '5.22', USD: '31.88' })
+        LocalizedMoneyInput.getEmptyCurrencies({
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '5.22',
+          },
+          USD: {
+            currencyCode: 'USD',
+            amount: '31.88',
+          },
+        })
       ).toHaveLength(0);
     });
   });
   describe('when value is empty', () => {
     it("should return the currencies that don't have value", () => {
       expect(
-        LocalizedMoneyInput.getEmptyCurrencies({ EUR: '', USD: '31.88' })
+        LocalizedMoneyInput.getEmptyCurrencies({
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '',
+          },
+          USD: {
+            currencyCode: 'USD',
+            amount: '31.88',
+          },
+        })
       ).toEqual(expect.arrayContaining(['EUR']));
     });
   });

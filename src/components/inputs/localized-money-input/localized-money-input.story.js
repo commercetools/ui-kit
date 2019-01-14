@@ -31,7 +31,11 @@ storiesOf('Components|Inputs', module)
     return (
       <Section>
         <Value
-          defaultValue={{ EUR: '', USD: '', EGP: '' }}
+          defaultValue={{
+            EUR: { currencyCode: 'EUR', amount: '' },
+            USD: { currencyCode: 'USD', amount: '' },
+            EGP: { currencyCode: 'EGP', amount: '' },
+          }}
           render={(value, onChange) => (
             <LocalizedMoneyInput
               key={key}
@@ -42,7 +46,10 @@ storiesOf('Components|Inputs', module)
                 action('onChange')(event);
                 onChange({
                   ...value,
-                  [event.target.currency]: event.target.value,
+                  [event.target.currency]: {
+                    currencyCode: event.target.currency,
+                    amount: event.target.value,
+                  },
                 });
               }}
               selectedCurrency={select(

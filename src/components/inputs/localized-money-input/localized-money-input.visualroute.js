@@ -3,9 +3,18 @@ import { LocalizedMoneyInput, ErrorMessage, WarningMessage } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = {
-  EUR: '12.77',
-  USD: '13.55',
-  CAD: '19.82',
+  EUR: {
+    currencyCode: 'EUR',
+    amount: '12.77',
+  },
+  USD: {
+    currencyCode: 'USD',
+    amount: '13.55',
+  },
+  CAD: {
+    currencyCode: 'CAD',
+    amount: '19.82',
+  },
 };
 
 export const routePath = '/localized-money-input';

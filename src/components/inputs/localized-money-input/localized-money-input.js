@@ -111,8 +111,13 @@ export class LocalizedMoneyInput extends React.Component {
     name: PropTypes.string,
     // then input doesn't accept a "currencies" prop, instead all possible
     // currencies have to exist (with empty or filled strings) on the value:
-    //   { EUR: '12.00', USD: '14.23', CAD: '13.70' }
-    value: PropTypes.objectOf(PropTypes.string).isRequired,
+    // { EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
+    value: PropTypes.objectOf(
+      PropTypes.shape({
+        amount: PropTypes.string.isRequired,
+        currencyCode: PropTypes.string.isRequired,
+      })
+    ).isRequired,
     onChange: PropTypes.func,
     selectedCurrency: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
@@ -154,12 +159,7 @@ export class LocalizedMoneyInput extends React.Component {
   };
 
   static convertToMoneyValues = values =>
-    Object.keys(values).map(currencyCode =>
-      MoneyInput.convertToMoneyValue({
-        currencyCode,
-        amount: values[currencyCode],
-      })
-    );
+    Object.values(values).map(value => MoneyInput.convertToMoneyValue(value));
 
   static parseMoneyValues = (moneyValues = [], locale) =>
     moneyValues
@@ -167,25 +167,19 @@ export class LocalizedMoneyInput extends React.Component {
       .reduce(
         (pairs, value) => ({
           ...pairs,
-          [value.currencyCode]: value.amount,
+          [value.currencyCode]: value,
         }),
         {}
       );
 
   static getHighPrecisionCurrencies = values =>
-    Object.keys(values).filter(currency =>
-      MoneyInput.isHighPrecision({
-        currencyCode: currency,
-        amount: values[currency],
-      })
+    Object.keys(values).filter(currencyCode =>
+      MoneyInput.isHighPrecision(values[currencyCode])
     );
 
   static getEmptyCurrencies = values =>
-    Object.keys(values).filter(currency =>
-      MoneyInput.isEmpty({
-        currencyCode: currency,
-        amount: values[currency],
-      })
+    Object.keys(values).filter(currencyCode =>
+      MoneyInput.isEmpty(values[currencyCode])
     );
 
   state = {
@@ -255,10 +249,7 @@ export class LocalizedMoneyInput extends React.Component {
                 key={currency}
                 id={LocalizedMoneyInput.getId(this.state.id, currency)}
                 name={LocalizedMoneyInput.getName(this.props.name, currency)}
-                value={{
-                  currencyCode: currency,
-                  amount: this.props.value[currency],
-                }}
+                value={this.props.value[currency]}
                 onChange={this.props.onChange}
                 currency={currency}
                 placeholder={
