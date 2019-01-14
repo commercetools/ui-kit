@@ -26,11 +26,11 @@ also pass a label for accessibility reasons.
 
 | Props        | Type     | Required | Values                      | Default  | Description                                                                            |
 | ------------ | -------- | :------: | --------------------------- | -------- | -------------------------------------------------------------------------------------- |
-| type         | `string` |    -     | `submit`, `reset`, `button` | `button` | Used as the HTML `type` attribute.                                                     |
+| `type`       | `string` |    -     | `submit`, `reset`, `button` | `button` | Used as the HTML `type` attribute.                                                     |
 | `label`      | `string` |    ✅    | -                           | -        | Should describe what the button does, for accessibility purposes (screen-reader users) |
-| `onClick`    | `func`   |    ✅    | -                           | -        | What the button will trigger when clicked                                              |
 | `icon`       | `node`   |    ✅    | -                           | -        | An `Icon` component                                                                    |
 | `isDisabled` | `bool`   |    -     | -                           | `false`  | Tells when the button should present a disabled state                                  |
+| `onClick`    | `func`   |    ✅    | -                           | -        | What the button will trigger when clicked                                              |
 
 #### Where to use
 

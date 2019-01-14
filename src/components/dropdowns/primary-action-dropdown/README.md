@@ -54,8 +54,8 @@ import {
 | ------------ | -------- | :------: | ------ | ------- | -------------------------------------------------------------------------------------------------- |
 | `onClick`    | `func`   |    ✅    | -      | -       | What will trigger whenever the option is clicked                                                   |
 | `isDisabled` | `bool`   |    -     | -      | `false` | Disables the option within the dropdown. If all options are disabled the dropdown will be disabled |
-| `icon`       | `node`   |    ✅    | -      | -       | The icon left to the option (only for the primary option)                                          |
 | `children`   | `string` |    ✅    | -      | -       | The label of the option                                                                            |
+| `iconLeft`   | `node`   |    ✅    | -      | -       | The icon left to the option (only for the primary option)                                          |
 
 #### Invariants
 

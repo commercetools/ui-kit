@@ -24,17 +24,17 @@ The `DateInput` component allows the user to select a date. It formats the selec
 
 | Props                  | Type     | Required | Values                             | Default | Description                                                                                                                               |
 | ---------------------- | -------- | :------: | ---------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                   | `string` |    -     | -                                  | -       | Used as the HTML `id` attribute.                                                                                                          |
-| `name`                 | `string` |    -     | -                                  | -       | Used as the HTML `name` attribute.                                                                                                        |
+| `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input field.                                                                                                 |
+| `value`                | `string` |    ✅    | -                                  | -       | The selected date, must either be an empty string or a date formatted as "YYYY-MM-DD".                                                    |
 | `onChange`             | `func`   |    ✅    | -                                  | -       | Called when the date changes. Called with an event containing either an empty string (no value) or a string in this format: "YYYY-MM-DD". |
 | `onFocus`              | `func`   |    -     | -                                  | -       | Called when the date input gains focus.                                                                                                   |
 | `onBlur`               | `func`   |    -     | -                                  | -       | Called when the date input loses focus.                                                                                                   |
-| `value`                | `string` |    ✅    | -                                  | -       | The selected date, must either be an empty string or a date formatted as "YYYY-MM-DD".                                                    |
+| `id`                   | `string` |    -     | -                                  | -       | Used as the HTML `id` attribute.                                                                                                          |
+| `name`                 | `string` |    -     | -                                  | -       | Used as the HTML `name` attribute.                                                                                                        |
 | `placeholder`          | `string` |    -     | -                                  | -       | Placeholder value to show in the input field                                                                                              |
 | `isDisabled`           | `bool`   |    -     | -                                  | `false` | Disables the date picker                                                                                                                  |
-| `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input field.                                                                                                 |
-| `hasWarning`           | `bool`   |    -     | -                                  | -       | Indicates the input field has a warning                                                                                                   |
 | `hasError`             | `bool`   |    -     | -                                  | -       | Indicates the input field has an error                                                                                                    |
+| `hasWarning`           | `bool`   |    -     | -                                  | -       | Indicates the input field has a warning                                                                                                   |
 
 ### Static methods
 

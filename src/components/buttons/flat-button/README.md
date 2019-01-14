@@ -29,7 +29,7 @@ iconClass label url onClick
 | Props          | Type      | Required | Values                      | Default   | Description                                           |
 | -------------- | --------- | :------: | --------------------------- | --------- | ----------------------------------------------------- |
 | `tone`         | `oneOf`   |    -     | `primary`, `secondary`      | `primary` | -                                                     |
-| type           | `string`  |    -     | `submit`, `reset`, `button` | `button`  | Used as the HTML `type` attribute.                    |
+| `type`         | `string`  |    -     | `submit`, `reset`, `button` | `button`  | Used as the HTML `type` attribute.                    |
 | `label`        | `string`  |    ✅    | -                           | -         | Should describe what the button is for                |
 | `onClick`      | `func`    |    ✅    | -                           | -         | What the button will trigger when clicked             |
 | `icon`         | `element` |    -     | -                           | -         | The icon of the button                                |
