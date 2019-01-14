@@ -83,7 +83,7 @@ storiesOf('Components|Inputs', module)
               <SelectInput
                 horizontalConstraint={select(
                   'horizontalConstraint',
-                  ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                  ['s', 'm', 'l', 'xl', 'scale'],
                   'scale'
                 )}
                 hasError={boolean('hasError', false)}
