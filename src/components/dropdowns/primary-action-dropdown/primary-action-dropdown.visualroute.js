@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import {
   PrimaryActionDropdown,
   PrimaryActionDropdownOption,
@@ -8,7 +9,28 @@ import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/primary-action-dropdown';
 
-export const component = () => (
+const InteractionRoute = () => (
+  <Suite>
+    <Spec label="when open">
+      <PrimaryActionDropdown>
+        <PrimaryActionDropdownOption
+          iconLeft={<AddBoldIcon />}
+          onClick={() => {}}
+        >
+          Primary option
+        </PrimaryActionDropdownOption>
+        <PrimaryActionDropdownOption onClick={() => {}}>
+          Another option
+        </PrimaryActionDropdownOption>
+        <PrimaryActionDropdownOption isDisabled onClick={() => {}}>
+          Disabled option
+        </PrimaryActionDropdownOption>
+      </PrimaryActionDropdown>
+    </Spec>
+  </Suite>
+);
+
+const DefaultRoute = () => (
   <Suite>
     <Spec label="regular">
       <PrimaryActionDropdown>
@@ -38,4 +60,11 @@ export const component = () => (
       </PrimaryActionDropdown>
     </Spec>
   </Suite>
+);
+
+export const component = () => (
+  <Switch>
+    <Route path={`${routePath}/interaction`} component={InteractionRoute} />
+    <Route path={routePath} component={DefaultRoute} />
+  </Switch>
 );
