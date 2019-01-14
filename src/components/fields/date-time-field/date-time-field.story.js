@@ -36,7 +36,7 @@ storiesOf('Components|Fields', module)
               id={name.trim() === '' ? undefined : name}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                ['m', 'l', 'xl', 'scale'],
                 'm'
               )}
               errors={object('errors', { missing: true, customError: true })}
