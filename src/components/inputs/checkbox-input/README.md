@@ -1,4 +1,4 @@
-# Switches: Checkbox
+# CheckboxInput
 
 ## Usage
 

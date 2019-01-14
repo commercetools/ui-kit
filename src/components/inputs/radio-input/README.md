@@ -1,4 +1,4 @@
-# Switches: RadioInput
+# RadioInput
 
 ## Usage
 
