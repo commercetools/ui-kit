@@ -54,7 +54,7 @@ storiesOf('Examples|Forms/Fields', module)
               touched={formik.touched.password}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                ['s', 'm', 'l', 'xl', 'scale'],
                 'm'
               )}
               errors={formik.errors.password}
