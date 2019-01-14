@@ -39,7 +39,7 @@ export class AsyncCreatableSelectInput extends React.Component {
   };
 
   static propTypes = {
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
