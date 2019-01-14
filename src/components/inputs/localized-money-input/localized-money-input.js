@@ -173,10 +173,14 @@ export class LocalizedMoneyInput extends React.Component {
       );
 
   static getHighPrecisionCurrencies = values =>
-    Object.values(values).filter(value => MoneyInput.isHighPrecision(value));
+    Object.keys(values).filter(currencyCode =>
+      MoneyInput.isHighPrecision(values[currencyCode])
+    );
 
   static getEmptyCurrencies = values =>
-    Object.values(values).filter(value => MoneyInput.isEmpty(value));
+    Object.keys(values).filter(currencyCode =>
+      MoneyInput.isEmpty(values[currencyCode])
+    );
 
   state = {
     // This state is used to show/hide the remaining currencies

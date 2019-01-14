@@ -9,10 +9,6 @@ class TestComponent extends React.Component {
   static displayName = 'TestComponent';
   static propTypes = {
     id: PropTypes.string,
-<<<<<<< HEAD
-    value: PropTypes.objectOf(PropTypes.string).isRequired,
-    handleChange: PropTypes.func,
-=======
     value: PropTypes.objectOf(
       PropTypes.shape({
         amount: PropTypes.string.isRequired,
@@ -20,7 +16,6 @@ class TestComponent extends React.Component {
       })
     ),
     onChange: PropTypes.func,
->>>>>>> fix(localizedmoneyinput): value set to object of {amount,currencyCode}
     selectedCurrency: PropTypes.string.isRequired,
   };
   static defaultProps = {
@@ -235,33 +230,23 @@ describe('when placeholders are provided', () => {
 
 describe('when every field has an error', () => {
   const errors = {
-    USD: {
-      missing: true,
-    },
-    CAD: {
-      missing: true,
-    },
-  };
-  const errorMessages = {
     USD: 'A value is required',
     CAD: 'A value is required',
   };
-  it('should open all fields and render errors', () => {
+  it('should be open all fields and render errors', () => {
     const { getByText } = renderLocalizedMoneyInput({
       name: 'foo',
       errors,
     });
-    expect(getByText(errorMessages.USD)).toBeInTheDocument();
-    expect(getByText(errorMessages.CAD)).toBeInTheDocument();
+    expect(getByText(errors.USD)).toBeInTheDocument();
+    expect(getByText(errors.CAD)).toBeInTheDocument();
   });
 });
 
 describe('when the error is not on the selected currency', () => {
-  it('should open all fields and render errors', () => {
+  it('should be open all fields and render errors', () => {
     const errors = {
-      USD: {
-        missing: true,
-      },
+      USD: 'A value is required',
     };
     const { getByText, getByLabelText } = renderLocalizedMoneyInput({
       selectedCurrency: 'CAD',
@@ -280,9 +265,7 @@ describe('when the error is not on the selected currency', () => {
 describe('when the error is on the selected currency', () => {
   it('should display the error without expanding', () => {
     const errors = {
-      CAD: {
-        missing: true,
-      },
+      CAD: 'A value is required',
     };
     const {
       queryByLabelText,
@@ -372,7 +355,10 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
       ]);
       expect(
         LocalizedMoneyInput.convertToMoneyValues({
-          EUR: { currencyCode: 'EUR', amount: '' },
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '',
+          },
         })
       ).toEqual([null]);
     });
