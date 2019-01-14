@@ -29,7 +29,7 @@ import { PasswordInput } from '@commercetools-frontend/ui-kit';
 | `hasWarning`           | `bool`   |    -     |                           -                           | -       | Indicates the input field has a warning                                                                |
 | `isPasswordVisible`    | `bool`   |    -     |                           -                           | `false` | Indicates whether we show the password or not                                                          |
 | `placeholder`          | `string` |    -     |                           -                           | -       | Placeholder text for the input                                                                         |
-| `horizontalConstraint` | `string` |    -     |     `xs` \| `s` \| `m` \| `l` \| `xl` \| `scale`      | `scale` | Horizontal size limit of the input fields.                                                             |
+| `horizontalConstraint` | `string` |    -     |         `s` \| `m` \| `l` \| `xl` \| `scale`          | `scale` | Horizontal size limit of the input fields.                                                             |
 | `autoComplete`         | `string` |    -     | `on` \| `off` \| `current-password` \| `new-password` | -       | Password autocomplete mode                                                                             |
 
 The component further forwards all `data-` attributes to the underlying `input` component.
