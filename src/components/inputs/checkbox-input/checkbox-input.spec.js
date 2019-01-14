@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from '../../../test-utils';
-import { Checkbox } from './checkbox';
+import CheckboxInput from './checkbox-input';
 
 jest.mock('tiny-invariant');
 
 it('should render the label', () => {
   const { getByLabelText } = render(
-    <Checkbox onChange={() => {}} isChecked={false}>
+    <CheckboxInput onChange={() => {}} isChecked={false}>
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
   expect(getByLabelText('Accept Terms')).toBeInTheDocument();
 });
@@ -16,9 +16,9 @@ it('should render the label', () => {
 it('should call onChange when text is clicked', () => {
   const onChange = jest.fn();
   const { getByLabelText } = render(
-    <Checkbox onChange={onChange} isChecked={false}>
+    <CheckboxInput onChange={onChange} isChecked={false}>
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
   getByLabelText('Accept Terms').click();
   expect(onChange).toHaveBeenCalledTimes(1);
@@ -27,9 +27,9 @@ it('should call onChange when text is clicked', () => {
 it('should not call onChange when text is clicked while disabled', () => {
   const onChange = jest.fn();
   const { getByLabelText } = render(
-    <Checkbox onChange={onChange} isChecked={false} isDisabled={true}>
+    <CheckboxInput onChange={onChange} isChecked={false} isDisabled={true}>
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
   getByLabelText('Accept Terms').click();
   expect(onChange).not.toHaveBeenCalled();
@@ -40,9 +40,9 @@ it('should call onChange when outside label is clicked', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="checkbox">Checkbox</label>
-      <Checkbox onChange={onChange} isChecked={false} id="checkbox">
+      <CheckboxInput onChange={onChange} isChecked={false} id="checkbox">
         Accept Terms
-      </Checkbox>
+      </CheckboxInput>
     </div>
   );
   getByLabelText('Checkbox').click();
@@ -55,27 +55,27 @@ it('should call onChange when outside label is clicked', () => {
 it('should forward data attributes', () => {
   const onChange = jest.fn();
   const { container } = render(
-    <Checkbox onChange={onChange} isChecked={false} data-foo="bar">
+    <CheckboxInput onChange={onChange} isChecked={false} data-foo="bar">
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
   expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
 });
 
 it('should check the input when isChecked is "true"', () => {
   const { getByLabelText } = render(
-    <Checkbox onChange={() => {}} isChecked={true}>
+    <CheckboxInput onChange={() => {}} isChecked={true}>
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
   expect(getByLabelText('Accept Terms')).toHaveAttribute('checked');
 });
 
 it('should not check the input when isChecked is "false"', () => {
   const { getByLabelText } = render(
-    <Checkbox onChange={() => {}} isChecked={false}>
+    <CheckboxInput onChange={() => {}} isChecked={false}>
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
   expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
 });
@@ -83,9 +83,9 @@ it('should not check the input when isChecked is "false"', () => {
 it('should allow changing the checked state', () => {
   const onChange = jest.fn();
   const { getByLabelText, rerender } = render(
-    <Checkbox onChange={onChange} isChecked={false}>
+    <CheckboxInput onChange={onChange} isChecked={false}>
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
   expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
 
@@ -95,9 +95,9 @@ it('should allow changing the checked state', () => {
   // simulate onChange function updating the state in the parent and passing
   // a new state down
   rerender(
-    <Checkbox onChange={onChange} isChecked={true}>
+    <CheckboxInput onChange={onChange} isChecked={true}>
       Accept Terms
-    </Checkbox>
+    </CheckboxInput>
   );
 
   expect(getByLabelText('Accept Terms')).toHaveAttribute('checked');
@@ -109,9 +109,13 @@ it('should allow changing the checked state', () => {
 describe('when indeterminate', () => {
   it('should not check the input when isChecked is "false"', () => {
     const { getByLabelText } = render(
-      <Checkbox onChange={() => {}} isChecked={false} isIndeterminate={true}>
+      <CheckboxInput
+        onChange={() => {}}
+        isChecked={false}
+        isIndeterminate={true}
+      >
         Accept Terms
-      </Checkbox>
+      </CheckboxInput>
     );
     expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
   });
@@ -119,9 +123,13 @@ describe('when indeterminate', () => {
   // The input is always unchecked when the state is indeterminate!
   it('should not check the input when isChecked is "true"', () => {
     const { getByLabelText } = render(
-      <Checkbox onChange={() => {}} isChecked={true} isIndeterminate={true}>
+      <CheckboxInput
+        onChange={() => {}}
+        isChecked={true}
+        isIndeterminate={true}
+      >
         Accept Terms
-      </Checkbox>
+      </CheckboxInput>
     );
     expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
   });

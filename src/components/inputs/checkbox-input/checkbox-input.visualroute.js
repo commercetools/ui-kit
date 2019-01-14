@@ -1,100 +1,100 @@
 import React from 'react';
-import { Checkbox } from 'ui-kit';
+import { CheckboxInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-export const routePath = '/checkbox';
+export const routePath = '/checkbox-input';
 
 export const component = () => (
   <Suite>
     <Spec label="when default">
-      <Checkbox onChange={() => {}} value="value">
+      <CheckboxInput onChange={() => {}} value="value">
         I want kale
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when checked">
-      <Checkbox onChange={() => {}} value="value" isChecked={true}>
+      <CheckboxInput onChange={() => {}} value="value" isChecked={true}>
         I want pizza
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when indetermiate">
-      <Checkbox onChange={() => {}} value="value" isIndeterminate={true}>
+      <CheckboxInput onChange={() => {}} value="value" isIndeterminate={true}>
         I want kale pizza
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when hovered">
-      <Checkbox onChange={() => {}} value="value" isHovered={true}>
+      <CheckboxInput onChange={() => {}} value="value" isHovered={true}>
         I want pasta
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when checked and hovered">
-      <Checkbox
+      <CheckboxInput
         onChange={() => {}}
         value="value"
         isHovered={true}
         isChecked={true}
       >
         I want to watch hockey
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when indeterminate and hovered">
-      <Checkbox
+      <CheckboxInput
         onChange={() => {}}
         value="value"
         isIndeterminate={true}
         isHovered={true}
       >
         I want kale
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when with error">
-      <Checkbox onChange={() => {}} value="value" hasError={true}>
+      <CheckboxInput onChange={() => {}} value="value" hasError={true}>
         I want ice cream pizza
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when checked and with error">
-      <Checkbox
+      <CheckboxInput
         onChange={() => {}}
         isChecked={true}
         value="value"
         hasError={true}
       >
         I want pizza but not frozen pizza
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when indeterminate and with error">
-      <Checkbox
+      <CheckboxInput
         onChange={() => {}}
         isIndeterminate={true}
         value="value"
         hasError={true}
       >
         I want frozen beer
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when disabled">
-      <Checkbox onChange={() => {}} value="value" isDisabled={true}>
+      <CheckboxInput onChange={() => {}} value="value" isDisabled={true}>
         I want tequila
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when checked and disabled">
-      <Checkbox
+      <CheckboxInput
         onChange={() => {}}
         value="value"
         isDisabled={true}
         isChecked={true}
       >
         I want mezcal
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
     <Spec label="when indeterminate and disabled">
-      <Checkbox
+      <CheckboxInput
         onChange={() => {}}
         value="value"
         isDisabled={true}
         isIndeterminate={true}
       >
         I want mezcal with a worm
-      </Checkbox>
+      </CheckboxInput>
     </Spec>
   </Suite>
 );

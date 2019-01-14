@@ -7,18 +7,18 @@ import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
-import Checkbox from '.';
+import CheckboxInput from './checkbox-input';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('Checkbox', () => (
+  .add('CheckboxInput', () => (
     <Section>
       <Spacings.Stack>
         <Value
           defaultValue={false}
           render={(isChecked, onChange) => (
-            <Checkbox
+            <CheckboxInput
               id={text('id', '')}
               name={text('name', '')}
               onChange={event => {
@@ -33,7 +33,7 @@ storiesOf('Components|Inputs', module)
               hasError={boolean('hasError', false)}
             >
               {text('Label', 'This is a label')}
-            </Checkbox>
+            </CheckboxInput>
           )}
         />
       </Spacings.Stack>

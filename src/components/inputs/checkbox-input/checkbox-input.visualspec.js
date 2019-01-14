@@ -1,11 +1,11 @@
 import { percySnapshot } from '@percy/puppeteer';
 
-describe('Checkbox', () => {
+describe('CheckboxInput', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/checkbox`);
+    await page.goto(`${HOST}/checkbox-input`);
   });
 
-  it('Checkbox', async () => {
+  it('CheckboxInput', async () => {
     await expect(page).toMatch('when default');
     await percySnapshot(page, 'Checkbox');
   });
