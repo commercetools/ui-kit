@@ -78,7 +78,7 @@ rules:
     'import/no-named-as-default': 0
     # ui-kit is a mapped module in bundle tests, so it will not be found
     # We exclude it from the checks
-    'import/no-unresolved': [2, { ignore: ['^ui-kit$'] }]
+    'import/no-unresolved': [2, { ignore: ['ui-kit'] }]
     'import/first': 0
     'import/order': 2
     'no-restricted-globals': ['error', 'find', 'name', 'location']
