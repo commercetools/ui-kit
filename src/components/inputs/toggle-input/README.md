@@ -31,7 +31,9 @@ The table below describes the use of the `ToggleInput` vs `Checkbox` and `Radio`
 
 | Props        | Type     | Required | Values                  | Default | Description                            |
 | ------------ | -------- | :------: | ----------------------- | ------- | -------------------------------------- |
-| `isDisabled` | `bool`   |    -     | -                       | `false` | Disables the ToggleInput               |
-| `isChecked`  | `bool`   |    -     | -                       | `false` | Checks the ToggleInput                 |
-| `onChange`   | `func`   |    ✅    | -                       | -       | called with the new value.             |
+| `id`         | `string` |          |                         |         | Used as the HTML `id` property         |
+| `name`       | `string` |          |                         |         | Used as the HTML `name` property       |
+| `isDisabled` | `bool`   |          |                         | `false` | Disables the ToggleInput               |
+| `isChecked`  | `bool`   |          |                         | `false` | Checks the ToggleInput                 |
+| `onChange`   | `func`   |    ✅    |                         |         | called with the new value.             |
 | `size`       | `string` |    ✅    | oneOf(['small', 'big']) | `big`   | The size of the ToggleInput component. |
