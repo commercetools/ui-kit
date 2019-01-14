@@ -46,7 +46,10 @@ storiesOf('Components|Inputs', module)
                 action('onChange')(event);
                 onChange({
                   ...value,
-                  [event.target.currency]: event.target.value,
+                  [event.target.currency]: {
+                    currencyCode: event.target.currency,
+                    amount: event.target.value,
+                  },
                 });
               }}
               selectedCurrency={select(
