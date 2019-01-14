@@ -19,7 +19,7 @@ class DateField extends React.Component {
   static propTypes = {
     // DateField
     id: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
       missing: PropTypes.bool,
     }),
