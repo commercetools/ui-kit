@@ -79,7 +79,7 @@ FieldLabel.propTypes = {
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,
   htmlFor: PropTypes.string,
-  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
 };
 
 FieldLabel.defaultProps = {

@@ -24,7 +24,7 @@ storiesOf('Components|FieldLabel', module)
         <FieldLabel
           horizontalConstraint={select(
             'horizontalConstraint',
-            ['xs', 's', 'm', 'l', 'xl', 'scale'],
+            ['s', 'm', 'l', 'xl', 'scale'],
             'scale'
           )}
           title={text('title', 'Sort Order')}
