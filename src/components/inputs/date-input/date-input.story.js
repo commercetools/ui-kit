@@ -29,7 +29,7 @@ class DateInputStory extends React.Component {
             onChange={this.handleChange}
             horizontalConstraint={select(
               'horizontalConstraint',
-              ['xs', 's', 'm', 'l', 'xl', 'scale'],
+              ['m', 'l', 'xl', 'scale'],
               'l'
             )}
             id={text('id', '')}
