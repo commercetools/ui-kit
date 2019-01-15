@@ -19,7 +19,7 @@ export default class AsyncSelectField extends React.Component {
   static propTypes = {
     // AsyncSelectField
     id: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
       missing: PropTypes.bool,
     }),

@@ -91,7 +91,7 @@ storiesOf('Components|Fields', module)
             <SelectField
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
+                ['s', 'm', 'l', 'xl', 'scale'],
                 'm'
               )}
               errors={object('errors', { missing: true, customError: true })}

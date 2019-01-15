@@ -40,7 +40,7 @@ storiesOf('Components|Inputs', module)
             placeholder={text('placeholder', 'Password')}
             horizontalConstraint={select(
               'horizontalConstraint',
-              ['xs', 's', 'm', 'l', 'xl', 'scale'],
+              ['s', 'm', 'l', 'xl', 'scale'],
               'm'
             )}
           />

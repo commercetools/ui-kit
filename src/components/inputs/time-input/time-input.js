@@ -44,7 +44,7 @@ export class TimeInput extends React.Component {
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     placeholder: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
 
     // HoC
     intl: PropTypes.shape({

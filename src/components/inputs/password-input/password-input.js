@@ -60,7 +60,7 @@ PasswordInput.propTypes = {
   hasWarning: PropTypes.bool,
   isPasswordVisible: PropTypes.bool,
   placeholder: PropTypes.string,
-  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   autoComplete: PropTypes.oneOf([
     'on',
     'off',

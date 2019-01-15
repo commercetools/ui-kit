@@ -139,7 +139,7 @@ export class LocalizedMoneyInput extends React.Component {
     },
     isDisabled: PropTypes.bool,
     placeholder: PropTypes.objectOf(PropTypes.string),
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     errors: PropTypes.objectOf(PropTypes.node),

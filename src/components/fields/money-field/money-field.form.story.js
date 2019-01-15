@@ -27,7 +27,7 @@ storiesOf('Examples|Forms/Fields', module)
     const currencies = ['EUR', 'USD', 'AED', 'KWD'];
     const horizontalConstraint = select(
       'horizontalConstraint',
-      ['xs', 's', 'm', 'l', 'xl', 'scale'],
+      ['m', 'l', 'xl', 'scale'],
       'm'
     );
     return (

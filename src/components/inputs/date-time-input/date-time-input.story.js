@@ -28,7 +28,7 @@ class DateTimeInputStory extends React.Component {
           onChange={this.handleChange}
           horizontalConstraint={select(
             'horizontalConstraint',
-            ['xs', 's', 'm', 'l', 'xl', 'scale'],
+            ['m', 'l', 'xl', 'scale'],
             'l'
           )}
           timeZone={select(
