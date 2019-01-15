@@ -1,7 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
-import builtins from 'rollup-plugin-node-builtins';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 import postcssImport from 'postcss-import';
@@ -9,10 +8,9 @@ import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
+import svgrPlugin from '@svgr/rollup';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssDiscardComments from 'postcss-discard-comments';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 import customProperties from './materials/custom-properties.json';
 
@@ -56,14 +54,9 @@ const plugins = [
   }),
   // To use the nodejs `resolve` algorithm
   resolve(),
-  // For shimming nodejs builtins
-  builtins(),
   // To automatically externalize `peerDependencies` and `dependencies`
   // so that they do not end up in the bundle.
   // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
-  peerDepsExternal({
-    includeDependencies: true,
-  }),
   // Transpile sources using our custom babel preset.
   babel({
     exclude: ['node_modules/**'],
@@ -73,17 +66,6 @@ const plugins = [
   // To convert CJS modules to ES6
   commonjs({
     include: 'node_modules/**',
-    // Explicitly specify "unresolvable" named exports
-    // https://github.com/rollup/rollup-plugin-commonjs#custom-named-exports
-    namedExports: {
-      'node_modules/react/index.js': [
-        'Children',
-        'Component',
-        'createElement',
-        'isValidElement',
-      ],
-      'node_modules/react-is/index.js': ['isValidElementType'],
-    },
   }),
   // To convert JSON files to ES6
   json(),
@@ -121,10 +103,15 @@ const plugins = [
   cleanup(),
 ];
 
+const deps = Object.keys(pkg.dependencies || {});
+const peerDeps = Object.keys(pkg.peerDependencies || {});
+const defaultExternal = deps.concat(peerDeps);
+
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
 const config = {
   input: 'src/index.js',
+  external: defaultExternal,
   output: [
     {
       file: pkg.module,
