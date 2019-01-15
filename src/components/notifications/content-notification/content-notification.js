@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { ErrorIcon, WarningIcon, InfoIcon, SuccessIcon } from '../../icons';
+import { ErrorIcon, WarningIcon, InfoIcon, CheckBoldIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './content-notification.mod.css';
 
@@ -17,7 +17,7 @@ class NotificationIcon extends React.PureComponent {
       if (this.props.type === 'error') ErrorIcon;
       else if (this.props.type === 'info') InfoIcon;
       else if (this.props.type === 'warning') WarningIcon;
-      else SuccessIcon;
+      else CheckBoldIcon;
     };
 
     return (
