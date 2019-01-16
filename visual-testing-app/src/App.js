@@ -25,7 +25,22 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={() => <div>Home!</div>} />
+          <Route
+            path="/"
+            exact
+            component={() => (
+              <div>
+                <h1>Visual Testing App</h1>
+                <ul>
+                  {Object.values(allComponents).map(Component => (
+                    <li key={Component.routePath}>
+                      <a href={Component.routePath}>{Component.routePath}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          />
           {Object.values(allComponents).map(Component => (
             <Route
               key={Component.routePath}
