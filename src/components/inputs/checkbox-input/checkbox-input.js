@@ -6,12 +6,12 @@ import createSequentialId from '../../../utils/create-sequential-id';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import Icons from './icons';
-import styles from './checkbox.mod.css';
+import styles from './checkbox-input.mod.css';
 
 const sequentialId = createSequentialId('checkbox-');
 
-export class Checkbox extends React.PureComponent {
-  static displayName = 'Checkbox';
+class CheckboxInput extends React.PureComponent {
+  static displayName = 'CheckboxInput';
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
@@ -103,4 +103,4 @@ export class Checkbox extends React.PureComponent {
   }
 }
 
-export default Checkbox;
+export default CheckboxInput;

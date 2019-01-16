@@ -72,7 +72,7 @@ describe('TimeInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('value', 'foo');
   });
 
-  it('should call onChange when chaning the value', () => {
+  it('should call onChange when changing the value', () => {
     const onChange = jest.fn(event => {
       expect(event.target.id).toEqual('some-id');
       expect(event.target.name).toEqual('some-name');

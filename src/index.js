@@ -91,7 +91,9 @@ export { default as PasswordInput } from './components/inputs/password-input';
 export { default as SelectInput } from './components/inputs/select-input';
 export { default as TextInput } from './components/inputs/text-input';
 export { default as TimeInput } from './components/inputs/time-input';
-
+export { default as ToggleInput } from './components/inputs/toggle-input';
+export { default as CheckboxInput } from './components/inputs/checkbox-input';
+export { default as RadioInput } from './components/inputs/radio-input';
 export { default as Label } from './components/label';
 
 export { default as LoadingSpinner } from './components/loading-spinner';
@@ -109,8 +111,6 @@ export { default as Stamp } from './components/stamp';
 
 export { default as Constraints } from './components/constraints';
 export { default as Spacings } from './components/spacings';
-
-export { Radio, Checkbox, Toggle } from './components/switches';
 
 export { default as Table } from './components/table';
 export { default as BaseTable } from './components/table/base-table';

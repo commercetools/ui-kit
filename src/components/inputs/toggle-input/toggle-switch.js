@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icons from './icons';
-import styles from './toggle.mod.css';
+import styles from './toggle-input.mod.css';
 
 const getStateClassNames = (baseClass, size, isDisabled, isChecked) =>
   classnames(styles[`${baseClass}-${size}`], {
