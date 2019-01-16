@@ -27,6 +27,11 @@ addDecorator(
 const srcStories = require.context('../src', true, /\.story\.js$/);
 const materialsStories = require.context('../materials', true, /\.story\.js$/);
 const exampleStories = require.context('../examples', true, /\.story\.js$/);
+const srcExampleStories = require.context(
+  '../src',
+  true,
+  /\.example.story\.js$/
+);
 const philosophyStories = require.context(
   '../philosophy',
   true,
@@ -39,6 +44,7 @@ function loadStories() {
   materialsStories.keys().forEach(filename => materialsStories(filename));
   srcStories.keys().forEach(filename => srcStories(filename));
   exampleStories.keys().forEach(filename => exampleStories(filename));
+  srcExampleStories.keys().forEach(filename => srcExampleStories(filename));
 }
 
 addDecorator(IntlDecorator);

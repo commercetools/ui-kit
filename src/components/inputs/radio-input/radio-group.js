@@ -21,8 +21,7 @@ class Group extends React.PureComponent {
     scale: 'm',
   };
 
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
     const childrenAsArray = React.Children.toArray(this.props.children);
@@ -32,7 +31,7 @@ class Group extends React.PureComponent {
 
     invariant(
       optionChildrenAsArray.length > 0,
-      '@commercetools-frontend/ui-kit/switches/radio: must contain at least one Radio.Option'
+      'Radio.Group must contain at least one Radio.Option'
     );
   }
 
