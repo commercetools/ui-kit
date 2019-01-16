@@ -41,7 +41,6 @@
     "storybook:build": "build-storybook -o .public -s docs/assets",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup --config",
     "build:watch": "rimraf dist && cross-env NODE_ENV=production rollup --config --watch",
-    "playground": "webpack-dev-server --config playground/webpack.config.js --watch",
     "start": "yarn storybook:start",
     "storybook:start": "start-storybook -p 9002 -s docs/assets",
     "docs:publish": "node scripts/publish-docs.js",
