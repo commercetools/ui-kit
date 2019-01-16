@@ -48,7 +48,14 @@ class App extends React.Component {
               component={Component.component}
             />
           ))}
-          <Route component={() => <div>No route found</div>} />
+          <Route
+            component={() => (
+              <div>
+                <p>No route found</p>
+                <a href="/">Show all routes</a>
+              </div>
+            )}
+          />
         </Switch>
       </Router>
     );
