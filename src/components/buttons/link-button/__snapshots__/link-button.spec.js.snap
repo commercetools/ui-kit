@@ -7,7 +7,7 @@ exports[`rendering outputs correct tree 1`] = `
   replace={false}
   to="/foo/bar"
 >
-  <AddIcon
+  <PlusThinIcon
     size="medium"
     theme="green"
   />

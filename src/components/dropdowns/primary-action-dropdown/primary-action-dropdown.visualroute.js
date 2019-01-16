@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import {
   PrimaryActionDropdown,
   PrimaryActionDropdownOption,
-  AddBoldIcon,
+  PlusBoldIcon,
 } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -14,7 +14,7 @@ const InteractionRoute = () => (
     <Spec label="when open">
       <PrimaryActionDropdown>
         <PrimaryActionDropdownOption
-          iconLeft={<AddBoldIcon />}
+          iconLeft={<PlusBoldIcon />}
           onClick={() => {}}
         >
           Primary option
@@ -35,7 +35,7 @@ const DefaultRoute = () => (
     <Spec label="regular">
       <PrimaryActionDropdown>
         <PrimaryActionDropdownOption
-          iconLeft={<AddBoldIcon />}
+          iconLeft={<PlusBoldIcon />}
           onClick={() => {}}
         >
           Primary option
@@ -49,7 +49,7 @@ const DefaultRoute = () => (
       <PrimaryActionDropdown>
         <PrimaryActionDropdownOption
           isDisabled={true}
-          iconLeft={<AddBoldIcon />}
+          iconLeft={<PlusBoldIcon />}
           onClick={() => {}}
         >
           Primary option

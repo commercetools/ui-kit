@@ -28,7 +28,7 @@ import {
 } from '@commercetools-frontend/ui-kit';
 
 <PrimaryActionDropdown>
-  <PrimaryActionDropdownOption icon={<AddBoldIcon />} onClick={() => {}}>
+  <PrimaryActionDropdownOption icon={<PlusBoldIcon />} onClick={() => {}}>
     Primary option
   </PrimaryActionDropdownOption>
   <PrimaryActionDropdownOption onClick={() => {}}>
