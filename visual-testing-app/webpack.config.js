@@ -18,7 +18,7 @@ if (!info) {
   // We can only start ui-kit when it was built first
   console.info(
     '\x1b[33m%s\x1b[0m', // log in yellow
-    '⚠️  You need to run "yarn build" or "yarn build:watch" before starting the visual testing playground!'
+    '⚠️  You need to run "yarn build" or "yarn build:watch" before starting the visual testing app!'
   );
   process.exit(0);
 }
