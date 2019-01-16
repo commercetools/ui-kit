@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 const path = require('path');
 const fs = require('fs');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // Ensure UI Kit build (ui-kit.esm.js) exists
 // and warn in case it is old.
@@ -76,4 +78,10 @@ module.exports = {
       'ui-kit': path.resolve(__dirname, '..'),
     },
   },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      template: 'visual-testing-app/index.html',
+    }),
+  ],
 };

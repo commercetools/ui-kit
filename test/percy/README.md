@@ -46,9 +46,11 @@ yarn percy --reporters jest-silent-reporter
 yarn build:watch
 
 # now build the visual-testing-app
-yarn visual-testing-app:build
+yarn visual-testing-app:build:watch
 
-# serve the visual-testing-app
+# serve the visual-testing-app (this starts a static file server)
+# you can make changes to the visual-testing-app or ui-kit and reload the page
+# to see changes.
 # you can now visit http://localhost:3001 to see what the components look like
 yarn visual-testing-app:serve
 ```
@@ -88,6 +90,8 @@ you need to run this or `yarn build:watch` before starting the tests.
 
 This builds the visual-testing-application. It needs to be run before starting
 the visual regression tests.
+
+You can also start it in watch mode using `yarn visual-testing-app:build:watch`.
 
 #### `yarn visual-testing-app:serve`
 
