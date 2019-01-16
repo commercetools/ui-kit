@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={() => <div>Home</div>} />
+          <Route path="/" exact component={() => <div>Home!</div>} />
           {Object.values(allComponents).map(Component => (
             <Route
               key={Component.routePath}
