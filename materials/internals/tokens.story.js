@@ -52,7 +52,13 @@ const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
 
 const getChoiceValue = choiceName => {
   const choice = Object.values(definition.choiceGroups)
-    .map(choiceGroup => choiceGroup.choices)
+    .map(choiceGroup => {
+      if (!choiceGroup.choices) {
+        console.log(choiceGroup);
+        return {};
+      }
+      return choiceGroup.choices;
+    })
     .find(choices => choices[choiceName]);
   if (!choice)
     throw new Error(`Tried to get value of non-existant choice ${choiceName}`);
@@ -452,7 +458,7 @@ class Story extends React.Component {
           )}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.borderRadius}
+          choiceGroup={definition.choiceGroups.borderRadiuses}
           searchText={this.state.searchText}
           renderSample={value => (
             <React.Fragment>
@@ -509,15 +515,6 @@ class Story extends React.Component {
           (optionally in a certain state).
         </p>
         <DecisionGroup
-          decisionGroup={definition.decisionGroups.backgroundColors}
-          searchText={this.state.searchText}
-          renderSample={value => (
-            <React.Fragment>
-              <ColorSample color={value} /> {value}
-            </React.Fragment>
-          )}
-        />
-        <DecisionGroup
           decisionGroup={definition.decisionGroups.borderColors}
           searchText={this.state.searchText}
           renderSample={value => (
@@ -527,7 +524,7 @@ class Story extends React.Component {
           )}
         />
         <DecisionGroup
-          decisionGroup={definition.decisionGroups.borderRadius}
+          decisionGroup={definition.decisionGroups.borderRadiuses}
           searchText={this.state.searchText}
           renderSample={value => (
             <React.Fragment>

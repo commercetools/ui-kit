@@ -36,7 +36,9 @@
   ],
   "scripts": {
     "changelog": "conventional-changelog -p angular -u",
-    "prebuild": "rimraf ./dist && node ./scripts/generate-icon-exports.js && node ./scripts/generate-custom-properties.js",
+    "design-tokens:build": "node ./scripts/generate-custom-properties.js",
+    "design-tokens:build:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn design-tokens:build'",
+    "prebuild": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-custom-properties.js",
     "prestorybook:start": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-custom-properties.js",
     "storybook:build": "build-storybook -o .public -s docs/assets",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup --config",
