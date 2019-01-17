@@ -343,7 +343,7 @@ decisionGroups:
     decisions:
       placeholder-font-color-for-input:
         description: ''
-        choice: color-orange
+        choice: color-gray-60
 
   fontSizes:
     label: Font Sizes
