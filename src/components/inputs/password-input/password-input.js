@@ -20,27 +20,25 @@ const getStyles = props => {
 
 const PasswordInput = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <div className={styles.container}>
-      <input
-        id={props.id}
-        name={props.name}
-        type={props.isPasswordVisible ? 'text' : 'password'}
-        value={props.value}
-        onChange={props.onChange}
-        onBlur={props.onBlur}
-        onFocus={props.onFocus}
-        disabled={props.isDisabled}
-        placeholder={props.placeholder}
-        autoComplete={props.autoComplete}
-        className={getStyles(props)}
-        readOnly={props.isReadOnly}
-        autoFocus={props.isAutofocussed}
-        {...filterDataAttributes(props)}
-        /* ARIA */
-        aria-readonly={props.isReadOnly}
-        contentEditable={!props.isReadOnly}
-      />
-    </div>
+    <input
+      id={props.id}
+      name={props.name}
+      type={props.isPasswordVisible ? 'text' : 'password'}
+      value={props.value}
+      onChange={props.onChange}
+      onBlur={props.onBlur}
+      onFocus={props.onFocus}
+      disabled={props.isDisabled}
+      placeholder={props.placeholder}
+      autoComplete={props.autoComplete}
+      className={getStyles(props)}
+      readOnly={props.isReadOnly}
+      autoFocus={props.isAutofocussed}
+      {...filterDataAttributes(props)}
+      /* ARIA */
+      aria-readonly={props.isReadOnly}
+      contentEditable={!props.isReadOnly}
+    />
   </Constraints.Horizontal>
 );
 
