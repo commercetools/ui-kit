@@ -52,13 +52,7 @@ const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
 
 const getChoiceValue = choiceName => {
   const choice = Object.values(definition.choiceGroups)
-    .map(choiceGroup => {
-      if (!choiceGroup.choices) {
-        console.log(choiceGroup);
-        return {};
-      }
-      return choiceGroup.choices;
-    })
+    .map(choiceGroup => choiceGroup.choices)
     .find(choices => choices[choiceName]);
   if (!choice)
     throw new Error(`Tried to get value of non-existant choice ${choiceName}`);
@@ -514,6 +508,15 @@ class Story extends React.Component {
           These are specific decisions where a choice gets applied to an element
           (optionally in a certain state).
         </p>
+        <DecisionGroup
+          decisionGroup={definition.decisionGroups.backgroundColors}
+          searchText={this.state.searchText}
+          renderSample={value => (
+            <React.Fragment>
+              <ColorSample color={value} /> {value}
+            </React.Fragment>
+          )}
+        />
         <DecisionGroup
           decisionGroup={definition.decisionGroups.borderColors}
           searchText={this.state.searchText}
