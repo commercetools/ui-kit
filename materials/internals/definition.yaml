@@ -68,12 +68,12 @@ choiceGroups:
     label: Font families
     prefix: font-family
     choices:
-      font-family: "'Open Sans', sans-serif"
+      font-family-body: "'Open Sans', sans-serif"
   fontSizes:
     label: Font sizes
     prefix: font-size
     choices:
-      font-size-m: "13px"
+      font-size-m: '13px'
   shadows:
     label: Shadows
     prefix: shadow
@@ -129,10 +129,8 @@ choiceGroups:
       break-point-giantdesktop: 1680px
       break-point-jumbodesktop: 1920px
 
-
 states:
-  active:
-    'Trigged while the user is currently interacting with the element'
+  active: 'Trigged while the user is currently interacting with the element'
   hovered:
     description: 'When the mouse is over the element'
   disabled:
@@ -283,12 +281,6 @@ decisionGroups:
         choice: border-radius-6
   # We don't have font families in choices yet, so we can't have decisions for
   # them
-  # font-family:
-  #   label: Font Family
-  #   decisions:
-  #     default:
-  #       description: ''
-  #       value: '"Open Sans", sans-serif'
 
   fontColors:
     label: Font Colors
@@ -338,21 +330,20 @@ decisionGroups:
         description: ''
         choice: color-orange
 
-
-    fontFamily:
-      label: Font family
-      prefix: font-family
-      decisions:
-        font-family:
-          description: ''
-          choice: font-family
-    placeholderFontColors:
-      label: Placeholder font colors
-      prefix: placeholder-font-color
-      decisions:
-        placeholder-font-color-for-input:
-          description: ''
-          choice: color-gray-60
+  fontFamily:
+    label: Font family
+    prefix: font-family
+    decisions:
+      font-family:
+        description: ''
+        choice: font-family-body
+  placeholderFontColors:
+    label: Placeholder font colors
+    prefix: placeholder-font-color
+    decisions:
+      placeholder-font-color-for-input:
+        description: ''
+        choice: color-orange
 
   fontSizes:
     label: Font Sizes
@@ -369,7 +360,6 @@ decisionGroups:
         description: ''
         deprecated: true
         choice: shadow-1
-
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
@@ -415,6 +405,6 @@ plainTokens:
   font-family-default: "'Open Sans', sans-serif"
   font-size-default: 13px
   font-size-small: 12px
-  shadow-box-tag-hover: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)"
+  shadow-box-tag-hover: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
   size-height-tag: 26px
   standard-input-height: 32px
