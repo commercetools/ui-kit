@@ -109,6 +109,8 @@ export {
 
 export { default as Stamp } from './components/stamp';
 
+export { default as Grid } from './components/grid';
+
 export { default as Constraints } from './components/constraints';
 export { default as Spacings } from './components/spacings';
 

@@ -7,6 +7,6 @@ const sectionStyles = {
 
 const Section = props => <div style={sectionStyles}>{props.children}</div>;
 
-Section.propTypes = { children: PropTypes.element.isRequired };
+Section.propTypes = { children: PropTypes.node.isRequired };
 
 export default Section;
