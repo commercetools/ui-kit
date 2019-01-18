@@ -1,0 +1,39 @@
+.center {
+  align-items: center;
+}
+.flexStart {
+  align-items: flex-start;
+}
+.flexEnd {
+  align-items: flex-end;
+}
+.stretch {
+  align-items: stretch;
+}
+.baseline {
+  align-items: baseline;
+}
+
+.xs,
+.s,
+.m,
+.l,
+.xl {
+  display: flex;
+}
+
+.xs > * + * {
+  margin: 0 0 0 var(--spacing-4);
+}
+.s > * + * {
+  margin: 0 0 0 var(--spacing-8);
+}
+.m > * + * {
+  margin: 0 0 0 var(--spacing-16);
+}
+.l > * + * {
+  margin: 0 0 0 var(--spacing-24);
+}
+.xl > * + * {
+  margin: 0 0 0 var(--spacing-32);
+}
