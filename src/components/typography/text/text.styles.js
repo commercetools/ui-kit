@@ -3,7 +3,6 @@ import vars from '../../../../materials/custom-properties.json';
 
 const baseStyles = `
   font-family: ${vars['--font-family-default']};
-  margin: 0;
   color: ${vars['--color-black']};
 `;
 
@@ -65,6 +64,7 @@ const getElementFontSize = elementType => {
 
 export const bodyStyles = props => css`
   ${baseStyles}
+  margin: 0;
   font-size: 13px;
   ${props.isBold && bold}
   ${props.isItalic && italic}
@@ -74,6 +74,7 @@ export const bodyStyles = props => css`
 
 export const headlineStyles = props => css`
   ${baseStyles}
+  margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
   font-weight: 300;
   ${props.truncate && truncate}
@@ -81,6 +82,7 @@ export const headlineStyles = props => css`
 
 export const subheadlineStyles = props => css`
   ${baseStyles}
+  margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
   font-weight: normal;
   ${props.truncate && truncate}
