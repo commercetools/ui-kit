@@ -33,6 +33,8 @@ const getTone = tone => {
       return `color: ${vars['--color-gray-60']};`;
     case 'positive':
       return `color: ${vars['--color-green-25']};`;
+    case 'primary':
+      return `color: ${vars['--color-green']};`;
     case 'negative':
       return `color: ${vars['--color-red']};`;
     case 'inverted':
@@ -94,7 +96,7 @@ export const wrapStyles = () => css`
 
 export const detailStyles = props => css`
   ${baseStyles}
-  display: 'block';
+  display: block;
   font-size: 12px;
   ${props.isInline && inline}
   ${props.isBold && bold}
