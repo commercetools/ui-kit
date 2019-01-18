@@ -64,7 +64,7 @@ module.exports = function getBabelPresets() {
     ].filter(Boolean),
     plugins: [
       // Experimental macros support. Will be documented after it's had some time
-      // in the wild.r
+      // in the wild.
       require('babel-plugin-macros').default,
       // https://github.com/emotion-js/emotion/tree/master/packages/babel-plugin-emotion
       require('babel-plugin-emotion').default,
