@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
-import { getStyles } from './flat-button.styles';
 import AccessibleButton from '../accessible-button';
+import styles from './flat-button.mod.css';
 
 export const FlatButton = props => {
   const dataProps = {
@@ -33,7 +34,9 @@ export const FlatButton = props => {
         label={props.label}
         onClick={props.onClick}
         isDisabled={props.isDisabled}
-        css={getStyles(props)}
+        className={classnames(styles.button, styles[props.tone], {
+          [styles.disabled]: props.isDisabled,
+        })}
       >
         {props.iconPosition === 'left' && iconElement}
         <div>
