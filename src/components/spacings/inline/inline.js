@@ -1,12 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import styles from './inline.mod.css';
+import vars from '../../../../materials/custom-properties';
+
+const getMargin = scale => {
+  switch (scale) {
+    case 'xs':
+      return vars['--spacing-4'];
+    case 's':
+      return vars['--spacing-8'];
+    case 'm':
+      return vars['--spacing-16'];
+    case 'l':
+      return vars['--spacing-24'];
+    case 'xl':
+      return vars['--spacing-32'];
+    default:
+      return vars['--spacing-4'];
+  }
+};
+
+const getAlignItems = alignItems => {
+  switch (alignItems) {
+    case 'center':
+      return 'center';
+
+    case 'flexStart':
+      return 'flex-start';
+
+    case 'flexEnd':
+      return 'flex-end';
+
+    case 'baseline':
+      return 'baseline';
+    case 'stretch':
+      return 'stretch';
+    default:
+      return '';
+  }
+};
 
 const Inline = props => (
   <div
-    className={classnames(styles[props.scale], styles[props.alignItems])}
+    css={css`
+      display: flex;
+      align-items: ${getAlignItems(props.alignItems)};
+      > * + * {
+        margin: 0 0 0 ${getMargin(props.scale)};
+      }
+    `}
     {...filterDataAttributes(props)}
   >
     {props.children}
