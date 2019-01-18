@@ -221,7 +221,18 @@ export const createMoneyValue = (currencyCode, rawAmount) => {
       currencyCode,
       centAmount,
       preciseAmount: parseInt(
-        amountAsNumber * 10 ** fractionDigitsOfAmount,
+        // Here we need to convert  a number like 8.066652 to its centamount
+        // We could do that by multiplying it with 10 ** number-of-fraction-digits
+        // but then we'll run into problems with JavaScript's floating point
+        // number precision and end up with 8066651.9999999, and then parseInt
+        // cuts off the remainder.
+        // So instead of using maths to convert the number, we just replace
+        // the dot inside the number which does the same thing.
+        // We don't need to replace "," as well, as numbers always us a dot
+        // when converted using String().
+        //
+        // The mathematical way: amountAsNumber * 10 ** fractionDigitsOfAmount,
+        String(amountAsNumber).replace('.', ''),
         10
       ),
       fractionDigits: fractionDigitsOfAmount,
