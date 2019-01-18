@@ -102,6 +102,7 @@
     "@commercetools/jest-enzyme-matchers": "1.1.2",
     "@commitlint/cli": "7.3.2",
     "@commitlint/config-conventional": "7.3.1",
+    "@emotion/babel-preset-css-prop": "10.0.6",
     "@percy/puppeteer": "1.0.1",
     "@storybook/addon-actions": "4.1.7",
     "@storybook/addon-info": "4.1.7",

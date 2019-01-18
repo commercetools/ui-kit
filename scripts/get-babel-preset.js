@@ -60,10 +60,11 @@ module.exports = function getBabelPresets() {
           useBuiltIns: true,
         },
       ],
+      '@emotion/babel-preset-css-prop',
     ].filter(Boolean),
     plugins: [
       // Experimental macros support. Will be documented after it's had some time
-      // in the wild.
+      // in the wild.r
       require('babel-plugin-macros').default,
       // https://github.com/emotion-js/emotion/tree/master/packages/babel-plugin-emotion
       require('babel-plugin-emotion').default,

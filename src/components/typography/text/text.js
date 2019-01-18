@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import styles from './text.mod.css';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import {
+  bodyStyles,
+  detailStyles,
+  headlineStyles,
+  subheadlineStyles,
+  wrapStyles,
+} from './text.styles';
 
 const nonEmptyString = (props, propName, componentName) => {
   const value = props[propName];
@@ -17,10 +22,7 @@ const Headline = props => {
   const HeadlineElement = props.elementType;
   return (
     <HeadlineElement
-      className={classnames({
-        [styles.headline]: true,
-        [styles.truncate]: props.truncate,
-      })}
+      css={headlineStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -28,6 +30,7 @@ const Headline = props => {
     </HeadlineElement>
   );
 };
+
 Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   elementType: PropTypes.oneOf(['h1', 'h2', 'h3']).isRequired,
@@ -40,19 +43,15 @@ const Subheadline = props => {
   const SubheadlineElement = props.elementType;
   return (
     <SubheadlineElement
-      className={classnames({
-        [styles.subheadline]: true,
-        [styles.bold]: props.isBold,
-        [styles[`${props.tone}`]]: props.tone,
-        [styles.truncate]: props.truncate,
-      })}
       title={props.title}
+      css={subheadlineStyles(props)}
       {...filterDataAttributes(props)}
     >
       {props.children}
     </SubheadlineElement>
   );
 };
+
 Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
   elementType: PropTypes.oneOf(['h4', 'h5']).isRequired,
@@ -70,14 +69,11 @@ Subheadline.propTypes = {
 };
 
 const Wrap = props => (
-  <div
-    className={styles.wrap}
-    title={props.title}
-    {...filterDataAttributes(props)}
-  >
+  <div css={wrapStyles()} title={props.title} {...filterDataAttributes(props)}>
     {props.children}
   </div>
 );
+
 Wrap.displayName = 'TextWrap';
 Wrap.propTypes = {
   children: PropTypes.node.isRequired,
@@ -87,12 +83,7 @@ Wrap.propTypes = {
 const Body = props =>
   props.isInline ? (
     <span
-      className={classnames(styles['body-text'], {
-        [styles.bold]: props.isBold,
-        [styles.italic]: props.isItalic,
-        [styles[`${props.tone}`]]: props.tone,
-        [styles.truncate]: props.truncate,
-      })}
+      css={bodyStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -100,18 +91,14 @@ const Body = props =>
     </span>
   ) : (
     <p
-      className={classnames(styles['body-text'], {
-        [styles.bold]: props.isBold,
-        [styles.italic]: props.isItalic,
-        [styles[`${props.tone}`]]: props.tone,
-        [styles.truncate]: props.truncate,
-      })}
+      css={bodyStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
       {props.children}
     </p>
   );
+
 Body.displayName = 'TextBody';
 Body.propTypes = {
   isBold: PropTypes.bool,
@@ -132,13 +119,7 @@ Body.propTypes = {
 
 const Detail = props => (
   <small
-    className={classnames(styles.detail, {
-      [styles.bold]: props.isBold,
-      [styles.italic]: props.isItalic,
-      [styles['inline-text']]: props.isInline,
-      [styles[`${props.tone}`]]: props.tone,
-      [styles.truncate]: props.truncate,
-    })}
+    css={detailStyles(props)}
     title={props.title}
     {...filterDataAttributes(props)}
   >

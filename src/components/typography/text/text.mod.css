@@ -1,43 +1,10 @@
 :root {
   /* Sizes */
-  --font-h1: 32px;
-  --font-h2: 24px;
-  --font-h3: 20px;
-  --font-h4: 16px;
-  --font-h5: 14px;
   --font-body: 13px;
   --font-detail: 12px;
 
   /* Colors */
   --font-color: var(--color-black);
-}
-
-.body-text {
-  font-family: var(--font-family-default);
-  font-size: var(--font-body);
-  color: var(--font-color);
-  margin: 0;
-}
-
-.detail {
-  color: var(--font-color);
-  font-size: var(--font-detail);
-  font-family: var(--font-family-default);
-  display: block;
-}
-
-.headline {
-  font-family: var(--font-family-default);
-  color: var(--font-color);
-  margin: 0;
-  font-weight: 300;
-}
-
-.subheadline {
-  font-family: var(--font-family-default);
-  margin: 0;
-  font-weight: normal;
-  color: var(--font-color);
 }
 
 .primary {
@@ -74,26 +41,6 @@
 
 .warning {
   color: var(--color-orange);
-}
-
-h1.headline {
-  font-size: var(--font-h1);
-}
-
-h2.headline {
-  font-size: var(--font-h2);
-}
-
-h3.headline {
-  font-size: var(--font-h3);
-}
-
-h4.subheadline {
-  font-size: var(--font-h4);
-}
-
-h5.subheadline {
-  font-size: var(--font-h5);
 }
 
 .inline-text {
