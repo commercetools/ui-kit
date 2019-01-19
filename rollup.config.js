@@ -1,3 +1,4 @@
+import typescript from 'rollup-plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
@@ -49,6 +50,7 @@ const postcssPlugins = [
 // This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
 const plugins = [
+  typescript(),
   replace({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
@@ -110,7 +112,7 @@ const defaultExternal = deps.concat(peerDeps);
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
 const config = {
-  input: 'compiled/index.js',
+  input: 'src/index.js',
   external: defaultExternal,
   output: [
     {
