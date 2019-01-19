@@ -1,3 +1,4 @@
+compiled/
 dist/
 proxy_exports/**/*.js
 node_modules/*
