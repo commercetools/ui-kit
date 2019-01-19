@@ -5,6 +5,19 @@ import { ErrorIcon, WarningIcon, InfoIcon, CheckBoldIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import styles from './content-notification.mod.css';
 
+const getIconByType = type => {
+  switch (type) {
+    case 'error':
+      return ErrorIcon;
+    case 'info':
+      return InfoIcon;
+    case 'warning':
+      return WarningIcon;
+    default:
+      return CheckBoldIcon;
+  }
+};
+
 class NotificationIcon extends React.PureComponent {
   static displayName = 'NotificationIcon';
   static propTypes = {
@@ -13,13 +26,7 @@ class NotificationIcon extends React.PureComponent {
   };
 
   render() {
-    const Icon = do {
-      if (this.props.type === 'error') ErrorIcon;
-      else if (this.props.type === 'info') InfoIcon;
-      else if (this.props.type === 'warning') WarningIcon;
-      else CheckBoldIcon;
-    };
-
+    const Icon = getIconByType(this.props.type);
     return (
       <div className={styles.iconContainer}>
         <Icon theme="white" />

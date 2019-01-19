@@ -26,10 +26,10 @@ const getInitialsFromName = ({ firstName = '', lastName = '' }) =>
 const createGravatarImgUrl = (md5Hash, size) =>
   `https://www.gravatar.com/avatar/${md5Hash}?s=${size}&d=blank`;
 
-const getSizeInPx = size => do {
-  if (size === 'l') 100;
-  else if (size === 'm') 48;
-  else 26;
+const getSizeInPx = size => {
+  if (size === 'l') return 100;
+  if (size === 'm') return 48;
+  return 26;
 };
 
 const GravatarImg = props => (

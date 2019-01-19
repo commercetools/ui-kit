@@ -57,36 +57,36 @@ const createCurrencySelectStyles = ({
       borderBottomRightRadius: '0',
       borderRight: '0',
       minWidth: '72px',
-      borderColor: do {
-        if (isDisabled) vars['--border-color-input-disabled'];
-        else if (isReadOnly) vars['--border-color-input-readonly'];
-        else if (hasError) vars['--border-color-input-error'];
-        else if (hasWarning) vars['--border-color-input-warning'];
-        else if (hasFocus) vars['--border-color-input-focus'];
-        else vars['--border-color-input-pristine'];
-      },
-      '&:hover': do {
-        if (isDisabled) vars['--border-color-input-disabled'];
-        else if (isReadOnly) vars['--border-color-input-readonly'];
-        else if (hasError) vars['--border-color-input-error'];
-        else if (hasWarning) vars['--border-color-input-warning'];
-        else if (hasFocus) vars['--border-color-input-focus'];
-        else vars['--border-color-input-pristine'];
-      },
-      backgroundColor: do {
-        if (isReadOnly) vars['--background-color-input-pristine'];
-        else base.backgroundColor;
-      },
+      borderColor: (() => {
+        if (isDisabled) return vars['--border-color-input-disabled'];
+        if (isReadOnly) return vars['--border-color-input-readonly'];
+        if (hasError) return vars['--border-color-input-error'];
+        if (hasWarning) return vars['--border-color-input-warning'];
+        if (hasFocus) return vars['--border-color-input-focus'];
+        return vars['--border-color-input-pristine'];
+      })(),
+      '&:hover': (() => {
+        if (isDisabled) return vars['--border-color-input-disabled'];
+        if (isReadOnly) return vars['--border-color-input-readonly'];
+        if (hasError) return vars['--border-color-input-error'];
+        if (hasWarning) return vars['--border-color-input-warning'];
+        if (hasFocus) return vars['--border-color-input-focus'];
+        return vars['--border-color-input-pristine'];
+      })(),
+      backgroundColor: (() => {
+        if (isReadOnly) return vars['--background-color-input-pristine'];
+        return base.backgroundColor;
+      })(),
     }),
     singleValue: base => ({
       ...base,
       marginLeft: 0,
       maxWidth: 'initial',
-      color: do {
-        if (hasError) vars['--font-color-error'];
-        else if (hasWarning) vars['--font-color-warning'];
-        else base.color;
-      },
+      color: (() => {
+        if (hasError) return vars['--font-color-error'];
+        if (hasWarning) return vars['--font-color-warning'];
+        return base.color;
+      })(),
     }),
   };
 };
@@ -499,21 +499,21 @@ class MoneyInput extends React.Component {
       value: currencyCode,
     }));
 
-    const option = do {
+    const option = (() => {
       const matchedOption = options.find(
         optionCandidate =>
           optionCandidate.value === this.props.value.currencyCode
       );
-      if (matchedOption) matchedOption;
+      if (matchedOption) return matchedOption;
       // ensure an option is found, even when the currencies don't include
       // the money value's currencyCode
-      else if (this.props.value.currencyCode.trim() !== '')
-        ({
+      if (this.props.value.currencyCode.trim() !== '')
+        return {
           label: this.props.value.currencyCode,
           value: this.props.value.currencyCode,
-        });
-      else null;
-    };
+        };
+      return null;
+    })();
     const id = MoneyInput.getCurrencyDropdownId(this.props.id);
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>

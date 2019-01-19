@@ -5,11 +5,9 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import AsyncSelectInput from '../../inputs/async-select-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
-
-const sequentialId = createSequentialId('async-select-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -98,11 +96,7 @@ export default class AsyncSelectField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
+    id: getFieldId(props, state, 'async-select-field-'),
   });
 
   render() {

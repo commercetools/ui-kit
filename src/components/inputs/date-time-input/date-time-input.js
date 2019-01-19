@@ -254,14 +254,12 @@ class DateTimeInput extends React.Component {
               this.props.timeZone
             );
 
-            const paddingDays = do {
-              const weekday = getPaddingDayCount(
-                this.state.calendarDate,
-                this.props.intl.locale,
-                this.props.timeZone
-              );
-              Array(weekday).fill();
-            };
+            const paddingDayCount = getPaddingDayCount(
+              this.state.calendarDate,
+              this.props.intl.locale,
+              this.props.timeZone
+            );
+            const paddingDays = Array(paddingDayCount).fill();
 
             const weekdays = getWeekdayNames(this.props.intl.locale);
             const today = getToday();

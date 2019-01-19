@@ -4,10 +4,10 @@ import classnames from 'classnames';
 import { AngleDownIcon, AngleRightIcon } from '../../icons';
 import styles from './collapsible-panel.mod.css';
 
-const getArrowTheme = ({ tone, isDisabled }) => do {
-  if (isDisabled) 'grey';
-  else if (tone === 'urgent') 'white';
-  else 'black';
+const getArrowTheme = ({ tone, isDisabled }) => {
+  if (isDisabled) return 'grey';
+  if (tone === 'urgent') return 'white';
+  return 'black';
 };
 
 const HeaderIcon = props => (

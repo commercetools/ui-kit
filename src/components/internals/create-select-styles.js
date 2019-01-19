@@ -16,13 +16,13 @@ const controlStyles = props => (base, state) => ({
   backgroundColor: state.isDisabled
     ? vars['--background-color-input-disabled']
     : vars['--background-color-input-pristine'],
-  borderColor: do {
-    if (state.isDisabled) vars['--border-color-input-disabled'];
-    else if (props.hasError) vars['--border-color-input-error'];
-    else if (props.hasWarning) vars['--border-color-input-warning'];
-    else if (state.isFocused) vars['--border-color-input-focus'];
-    else vars['--border-color-input-pristine'];
-  },
+  borderColor: (() => {
+    if (state.isDisabled) return vars['--border-color-input-disabled'];
+    if (props.hasError) return vars['--border-color-input-error'];
+    if (props.hasWarning) return vars['--border-color-input-warning'];
+    if (state.isFocused) return vars['--border-color-input-focus'];
+    return vars['--border-color-input-pristine'];
+  })(),
   borderRadius: vars['--border-radius-input'],
   minHeight: vars['--size-height-input'],
   cursor: state.isDisabled ? 'not-allowed' : 'pointer',
@@ -55,11 +55,11 @@ const menuStyles = props => base => ({
   boxShadow: vars['--shadow-7'],
   fontSize: vars['--font-size-default'],
   margin: `${vars['--spacing-4']} 0 0 0`,
-  borderColor: do {
-    if (props.hasError) vars['--border-color-input-error'];
-    else if (props.hasWarning) vars['--border-color-input-warning'];
-    else base.borderColor;
-  },
+  borderColor: (() => {
+    if (props.hasError) return vars['--border-color-input-error'];
+    if (props.hasWarning) return vars['--border-color-input-warning'];
+    return base.borderColor;
+  })(),
 });
 
 const indicatorSeparatorStyles = () => base => ({
@@ -96,22 +96,22 @@ const optionStyles = () => (base, state) => ({
   transition: vars['--transition-standard'],
   paddingLeft: vars['--spacing-8'],
   paddingRight: vars['--spacing-8'],
-  color: do {
-    if (!state.isDisabled) vars['--font-size-default'];
-    else if (state.isSelected) vars['--font-color-default'];
-    else base.color;
-  },
-  backgroundColor: do {
-    if (state.isSelected) vars['--background-color-input-selected'];
-    else if (state.isFocused) vars['--background-color-input-hover'];
-    else base.backgroundColor;
-  },
+  color: (() => {
+    if (!state.isDisabled) return vars['--font-size-default'];
+    if (state.isSelected) return vars['--font-color-default'];
+    return base.color;
+  })(),
+  backgroundColor: (() => {
+    if (state.isSelected) return vars['--background-color-input-selected'];
+    if (state.isFocused) return vars['--background-color-input-hover'];
+    return base.backgroundColor;
+  })(),
 
   '&:active': {
-    color: do {
-      if (!state.isDisabled) vars['--font-color-default'];
-      else base.color;
-    },
+    color: (() => {
+      if (!state.isDisabled) return vars['--font-color-default'];
+      return base.color;
+    })(),
     backgroundColor: vars['--background-color-input-selected'],
   },
 });

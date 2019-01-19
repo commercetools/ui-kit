@@ -59,12 +59,12 @@ export const parseTime = rawTime => {
   // invalid value to avoid edge cases like the day jumping forward
   // if (amPm === 'pm' && Number(hours) === 12) return null;
 
-  const hourOffset = do {
-    if (amPm === 'am' && hours === 12) -12;
-    else if (amPm === 'am') 0;
-    else if (amPm === 'pm' && hours !== 12) 12;
-    else 0;
-  };
+  const hourOffset = (() => {
+    if (amPm === 'am' && hours === 12) return -12;
+    if (amPm === 'am') return 0;
+    if (amPm === 'pm' && hours !== 12) return 12;
+    return 0;
+  })();
 
   return {
     hours: Number(hours) + hourOffset,

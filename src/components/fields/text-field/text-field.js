@@ -5,11 +5,9 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import TextInput from '../../inputs/text-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-
-const sequentialId = createSequentialId('text-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -61,11 +59,7 @@ class TextField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
+    id: getFieldId(props, state, 'text-field-'),
   });
 
   render() {

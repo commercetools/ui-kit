@@ -185,13 +185,11 @@ class DateInput extends React.Component {
               this.props.intl
             );
 
-            const paddingDays = do {
-              const weekday = getPaddingDayCount(
-                this.state.calendarDate,
-                this.props.intl.locale
-              );
-              Array(weekday).fill();
-            };
+            const paddingDayCount = getPaddingDayCount(
+              this.state.calendarDate,
+              this.props.intl.locale
+            );
+            const paddingDays = Array(paddingDayCount).fill();
 
             const weekdays = getWeekdayNames(this.props.intl.locale);
             const today = getToday();

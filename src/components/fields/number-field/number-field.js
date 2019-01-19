@@ -6,10 +6,8 @@ import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import FieldErrors from '../../field-errors';
 import NumberInput from '../../inputs/number-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-
-const sequentialId = createSequentialId('number-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -64,11 +62,7 @@ class NumberField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
+    id: getFieldId(props, state, 'number-field-'),
   });
 
   render() {

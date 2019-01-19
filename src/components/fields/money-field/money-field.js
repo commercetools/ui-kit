@@ -7,14 +7,12 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import MoneyInput from '../../inputs/money-input';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import FieldErrors from '../../field-errors';
 import { VerifiedIcon } from '../../icons';
 import Text from '../../typography/text';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
-
-const sequentialId = createSequentialId('money-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -85,11 +83,7 @@ class MoneyField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
+    id: getFieldId(props, state, 'money-field-'),
   });
 
   render() {

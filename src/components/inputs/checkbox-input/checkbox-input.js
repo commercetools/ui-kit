@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import Icons from './icons';
 import styles from './checkbox-input.mod.css';
-
-const sequentialId = createSequentialId('checkbox-');
 
 class CheckboxInput extends React.PureComponent {
   static displayName = 'CheckboxInput';
@@ -43,11 +41,7 @@ class CheckboxInput extends React.PureComponent {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
+    id: getFieldId(props, state, 'checkbox-'),
   });
 
   render() {

@@ -19,12 +19,10 @@ import {
   getId,
   getName,
 } from '../../../utils/localized';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import LanguagesButton from './languages-button';
 import messages from './messages';
 import styles from './localized-text-input.mod.css';
-
-const sequentialId = createSequentialId('localized-text-field-');
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -184,11 +182,7 @@ export default class LocalizedTextInput extends React.Component {
       props.hideLanguageExpansionControls ||
       state.areLanguagesExpanded;
 
-    const id = do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    };
+    const id = getFieldId(props, state, 'localized-text-input-');
 
     return { areLanguagesExpanded, id };
   };
