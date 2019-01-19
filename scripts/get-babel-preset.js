@@ -117,7 +117,6 @@ module.exports = function getBabelPresets() {
           async: false,
         },
       ],
-      require('@babel/plugin-proposal-optional-chaining').default,
       // Adds syntax support for import()
       require('@babel/plugin-syntax-dynamic-import').default,
       isEnvTest &&
