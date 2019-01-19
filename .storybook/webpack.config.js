@@ -3,6 +3,7 @@ const postcssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssReporter = require('postcss-reporter');
 const postcssCustomProperties = require('postcss-custom-properties');
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const customProperties = require('../materials/custom-properties.json');
 
 const browserslist = {
@@ -50,6 +51,11 @@ module.exports = (storybookBaseConfig, configType) => {
           },
         },
       ],
+    },
+    {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      loader: 'awesome-typescript-loader',
     },
     // For svg icons, we want to get them transformed into React components
     // when we import them.
@@ -144,6 +150,12 @@ module.exports = (storybookBaseConfig, configType) => {
         { loader: require.resolve('yaml-loader') },
       ],
     },
+  ];
+  storybookBaseConfig.resolve.plugins = [
+    new TsConfigPathsPlugin({
+      tsconfig: 'tsconfig.json',
+      compiler: 'typescript',
+    }),
   ];
 
   return storybookBaseConfig;
