@@ -86,6 +86,3 @@ fail-tests-because-there-was-an-unhandled-rejection.lock
 
 # percy.io
 .percy-debug
-
-# Typescript
-compiled

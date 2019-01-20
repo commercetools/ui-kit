@@ -1,9 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './horizontal.mod.css';
 
-const getConstraintSyle = constraint => {
+type HorizontalConstraint = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
+type HorizontalProps = {
+  constraint: HorizontalConstraint,
+};
+
+const getConstraintSyle = (constraint: HorizontalConstraint): string => {
   switch (constraint) {
     case 'xs':
       return styles.constraintXs;
@@ -18,21 +22,21 @@ const getConstraintSyle = constraint => {
     case 'scale':
       return styles.constraintScale;
     default:
-      return undefined;
+      throw new Error(`Unsupported constraint ${constraint}`);
   }
 };
 
-const Horizontal = ({ children, constraint }) => (
-  <div className={classnames(styles.container, getConstraintSyle(constraint))}>
-    {children}
+const Horizontal: React.SFC<HorizontalProps> = props => (
+  <div
+    className={classnames(
+      styles.container,
+      getConstraintSyle(props.constraint)
+    )}
+  >
+    {props.children}
   </div>
 );
 Horizontal.displayName = 'Horizontal';
-Horizontal.propTypes = {
-  constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-  children: PropTypes.node.isRequired,
-};
-
 Horizontal.defaultProps = {
   constraint: 'scale',
 };
