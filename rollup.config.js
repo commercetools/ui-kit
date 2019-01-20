@@ -3,14 +3,15 @@ import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
+import cleanup from 'rollup-plugin-cleanup';
+import replace from 'rollup-plugin-replace';
+import bucklescript from 'rollup-plugin-bucklescript';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
-import cleanup from 'rollup-plugin-cleanup';
-import replace from 'rollup-plugin-replace';
-import svgrPlugin from '@svgr/rollup';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssDiscardComments from 'postcss-discard-comments';
+import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 import customProperties from './materials/custom-properties.json';
 
@@ -52,6 +53,7 @@ const plugins = [
   replace({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
+  bucklescript(),
   // To use the nodejs `resolve` algorithm
   resolve(),
   // To automatically externalize `peerDependencies` and `dependencies`

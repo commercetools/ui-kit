@@ -2,3 +2,5 @@ dist/
 proxy_exports/**/*.js
 node_modules/*
 **/node_modules/*
+**/*.bs.js
+**/*.gen.js

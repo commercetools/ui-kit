@@ -3632,6 +3632,23 @@ browserslist@^2.11.3:
     caniuse-lite "^1.0.30000792"
     electron-to-chromium "^1.3.30"
 
+bs-css@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/bs-css/-/bs-css-8.0.0.tgz#d844a1441517637d65d1e269de83646201e0ca6f"
+  integrity sha512-+72aQGlLEetOpp6QLJEJMcFWhBOOUte1sfLl/Xj2dhKZ49xh9R8SD2z8AgL3klDOwf2lapxUHIoxi9XAxLbnVQ==
+  dependencies:
+    emotion "^9.2.12"
+
+bs-platform@4.0.18:
+  version "4.0.18"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-4.0.18.tgz#d17b8693ba1f714d9b27e0ddb365f2069ba4b8a0"
+  integrity sha512-BwzW0iYHvREqUZIgQxJmdJrxexppLvJxYQ4LLexbhCp7uZU5DIZ5ub4ZHpkCkc8fn8bsXWc+Rrejb3csi+BoAQ==
+
+bsb-js@^1.0.1:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/bsb-js/-/bsb-js-1.1.7.tgz#12cc91e974f5896b3a2aa8358419d24e56f552c3"
+  integrity sha512-FSR7d5Kb6KfVI5sLz9bEeD9pbA9F4Zbkk1xa6R9CJtyd+dJ7mIkxoXqv7cw7HWcuee+VpIhmjYzrplnFd/5Qgg==
+
 bser@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/bser/-/bser-2.0.0.tgz#9ac78d3ed5d915804fd87acb158bc797147a1719"
@@ -5646,7 +5663,7 @@ emojis-list@^2.0.0:
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
 
-emotion@^9.1.2:
+emotion@^9.1.2, emotion@^9.2.12:
   version "9.2.12"
   resolved "https://registry.yarnpkg.com/emotion/-/emotion-9.2.12.tgz#53925aaa005614e65c6e43db8243c843574d1ea9"
   integrity sha512-hcx7jppaI8VoXxIWEhxpDW7I+B4kq9RNzQLmsrF6LY8BGKqe2N+gFAQr0EfuFucFlPs2A9HM4+xNj4NeqEWIOQ==
@@ -6922,6 +6939,11 @@ generic-names@^1.0.3:
   integrity sha1-LXhqEhruUIh2eWk56OO/+DbCCRc=
   dependencies:
     loader-utils "^0.2.16"
+
+gentype@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/gentype/-/gentype-2.4.1.tgz#8288ead1cec78f3fd3f3be0883759812e3a64298"
+  integrity sha512-GFL80BtObYeGfn8q78AHc+Hr0whv9aJlbKcio/WxgFspj5tj7XjEgcDzhzUMPx1fQrBaFS4YnkoViF2yAyO0AA==
 
 get-caller-file@^1.0.1:
   version "1.0.3"
@@ -12727,7 +12749,7 @@ react-docgen@^3.0.0-rc.1:
     node-dir "^0.1.10"
     recast "^0.16.0"
 
-react-dom@16.7.0, react-dom@^16.6.3, react-dom@^16.7.0:
+react-dom@16.7.0, "react-dom@>=15.0.0 || >=16.0.0", react-dom@^16.6.3, react-dom@^16.7.0:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.7.0.tgz#a17b2a7ca89ee7390bc1ed5eb81783c7461748b8"
   integrity sha512-D0Ufv1ExCAmF38P2Uh1lwpminZFRXEINJe53zRAbm4KPwSyd6DY/uDoS0Blj9jvPpn1+wivKpZYc8aAAN/nAkg==
@@ -12941,7 +12963,7 @@ react-virtualized@9.21.0:
     prop-types "^15.6.0"
     react-lifecycles-compat "^3.0.4"
 
-react@16.7.0, react@^16.6.3, react@^16.7.0:
+react@16.7.0, "react@>=15.0.0 || >=16.0.0", react@^16.6.3, react@^16.7.0:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.7.0.tgz#b674ec396b0a5715873b350446f7ea0802ab6381"
   integrity sha512-StCz3QY8lxTb5cl2HJxjwLFOXPIFQp+p+hxQfc8WE0QiLfCtIlKj8/+5tjjKm8uSTlAW+fCPaavGFS06V9Ar3A==
@@ -12957,6 +12979,13 @@ reactcss@^1.2.0:
   integrity sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==
   dependencies:
     lodash "^4.0.1"
+
+read-bsconfig@^1.0.3:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/read-bsconfig/-/read-bsconfig-1.0.5.tgz#fef6b45b5ff43a26e138389f19282501c6d17d28"
+  integrity sha512-xw/5UYFJNQaE3bh/5NPA6zPKn9qUGEWPKHvClzRhvIZru+Q2uLBVMm6VBo7CvAIp8w+q4QuQe/Vogoc4tccfjw==
+  dependencies:
+    json5 "^0.5.1"
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -13082,6 +13111,14 @@ realpath-native@^1.0.0:
   integrity sha512-+S3zTvVt9yTntFrBpm7TQmQ3tzpCrnA1a/y+3cUHAc9ZR6aIjG0WNLR+Rj79QpJktY+VeW/TQtFlQ1bzsehI8g==
   dependencies:
     util.promisify "^1.0.0"
+
+reason-react@0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.5.3.tgz#10601809742fd991109ec9d69ad4baf2c3f17540"
+  integrity sha512-dUkoqXrP/gOjkmkW+k/otEUP+yeXH5+QfdxNT5EW60MXM3zbCdFhbNzKBbjYOZ6x96UbxK869CObjX04BdJEDg==
+  dependencies:
+    react ">=15.0.0 || >=16.0.0"
+    react-dom ">=15.0.0 || >=16.0.0"
 
 recast@^0.16.0:
   version "0.16.2"
@@ -13660,6 +13697,16 @@ rollup-plugin-babel@4.3.2:
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     rollup-pluginutils "^2.3.0"
+
+rollup-plugin-bucklescript@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-bucklescript/-/rollup-plugin-bucklescript-0.7.0.tgz#2955f9ed21316c0f4e6cc26a251e9e8e90617193"
+  integrity sha512-4py0qQtWRP96pogpVW/mzcwU7ZDIe+Zph995yLb4tENrO36gnhduAFF0qBfmgekc28/Q9PvBorBoOr7TSheKpw==
+  dependencies:
+    bsb-js "^1.0.1"
+    read-bsconfig "^1.0.3"
+    resolve "^1.5.0"
+    rollup-pluginutils "^2.0.1"
 
 rollup-plugin-cleanup@3.1.1:
   version "3.1.1"

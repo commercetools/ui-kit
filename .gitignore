@@ -81,9 +81,15 @@ typings/
 .vscode
 !.vscode/settings.json
 
-
 # File used to fail tests on CI
 fail-tests-because-there-was-an-unhandled-rejection.lock
 
 # percy.io
 .percy-debug
+
+# Bucklescript
+.merlin
+.bsb.lock
+lib
+*.bs.js
+*.gen.js

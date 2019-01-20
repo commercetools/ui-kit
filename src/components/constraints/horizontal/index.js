@@ -1,1 +1,1 @@
-export { default } from './horizontal';
+export { default } from './Horizontal.gen';
