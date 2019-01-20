@@ -13,7 +13,7 @@ addLocaleData(de);
 addLocaleData(es);
 
 const customRender = (
-  node,
+  node: React.ReactNode,
   {
     locale = 'en', // react-router
     route = '/',
@@ -32,9 +32,7 @@ const customRender = (
   // this to test implementation details).
   history,
 });
-
 // re-export everything
 export * from 'react-testing-library';
-
 // override render method
 export { customRender as render };
