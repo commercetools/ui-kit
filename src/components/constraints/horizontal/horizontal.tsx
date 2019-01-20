@@ -1,9 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const getConstraintSyles = constraint => {
+type HorizontalConstraint = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
+type HorizontalProps = {
+  constraint: HorizontalConstraint,
+};
+
+const getConstraintStyles = (constraint: HorizontalConstraint) => {
   switch (constraint) {
     case 'xs':
       return css`
@@ -34,25 +38,20 @@ const getConstraintSyles = constraint => {
   }
 };
 
-const Horizontal = props => (
+const Horizontal: React.FC<HorizontalProps> = props => (
   <div
     css={[
       css`
         width: 100%;
         position: relative;
       `,
-      getConstraintSyles(props.constraint),
+      getConstraintStyles(props.constraint),
     ]}
   >
     {props.children}
   </div>
 );
 Horizontal.displayName = 'Horizontal';
-Horizontal.propTypes = {
-  constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-  children: PropTypes.node.isRequired,
-};
-
 Horizontal.defaultProps = {
   constraint: 'scale',
 };

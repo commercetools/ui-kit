@@ -1,17 +1,17 @@
-import typescript from 'rollup-plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
+import cleanup from 'rollup-plugin-cleanup';
+import replace from 'rollup-plugin-replace';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssReporter from 'postcss-reporter';
-import cleanup from 'rollup-plugin-cleanup';
-import replace from 'rollup-plugin-replace';
-import svgrPlugin from '@svgr/rollup';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssDiscardComments from 'postcss-discard-comments';
+import svgrPlugin from '@svgr/rollup';
+import typescript from '@wessberg/rollup-plugin-ts';
 import pkg from './package.json';
 import customProperties from './materials/custom-properties.json';
 
@@ -50,7 +50,6 @@ const postcssPlugins = [
 // This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
 const plugins = [
-  typescript(),
   replace({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
@@ -64,6 +63,10 @@ const plugins = [
     exclude: ['node_modules/**'],
     runtimeHelpers: true,
     ...babelOptions(),
+  }),
+  // Compile typescript
+  typescript({
+    browserslist: browserslist.production,
   }),
   // To convert CJS modules to ES6
   commonjs({

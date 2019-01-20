@@ -4,10 +4,9 @@ import Horizontal from './horizontal';
 
 // The different constraints are tested in the visual regression tests.
 // That tests also ensure this component accepts a "constraint" prop.
-
 it('should render children', () => {
   const { getByTestId } = render(
-    <Horizontal>
+    <Horizontal constraint="scale">
       <div data-testid="child" />
     </Horizontal>
   );
