@@ -160,6 +160,19 @@ describe('MoneyInput.convertToMoneyValue', () => {
         fractionDigits: 2,
       });
 
+      expect(
+        MoneyInput.convertToMoneyValue({
+          currencyCode: 'EUR',
+          amount: '8.066652',
+        })
+      ).toEqual({
+        type: 'highPrecision',
+        currencyCode: 'EUR',
+        centAmount: 807,
+        preciseAmount: 8066652,
+        fractionDigits: 6,
+      });
+
       // This test ensures that rounding is used instead of just cutting the
       // number of. Cutting it of would result in an incorrect 239998.
       expect(
