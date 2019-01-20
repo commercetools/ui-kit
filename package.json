@@ -41,7 +41,7 @@
     "bs:clean": "bsb -clean-world",
     "design-tokens:build": "node ./scripts/generate-custom-properties.js",
     "design-tokens:build:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn design-tokens:build'",
-    "prebuild": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build",
+    "prebuild": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build && yarn bs:build",
     "prestorybook:start": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build",
     "storybook:build": "build-storybook -o .public -s docs/assets",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup --config",
