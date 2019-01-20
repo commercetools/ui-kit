@@ -40,7 +40,7 @@ const endProgram = message => {
   process.exit(1);
 };
 
-const TOKEN_REGEX = /^(\w+(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?$/i;
+const TOKEN_REGEX = /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?$/i;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
@@ -68,13 +68,14 @@ Object.values(definitions.choiceGroups).forEach(choiceGroup => {
 Object.values(definitions.decisionGroups).forEach(decisionGroup => {
   Object.entries(decisionGroup.decisions).forEach(([key, decision]) => {
     if (tokens[key]) endProgram(`Token "${key} already exists!"`);
-
     if (key !== key.toLowerCase())
       endProgram(`Tokens "${key}" must be lower case`);
-
-    if (!tokens[decision.choice])
+    if (!decision.choice) {
+      endProgram(`You forgot to specify a choice for ${decision}`);
+    }
+    if (!tokens[decision.choice]) {
       endProgram(`Choice called "${decision.choice}" was not found!`);
-
+    }
     // TODO parse token name and warn when invalid name was given and token
     // is not deprecated
 

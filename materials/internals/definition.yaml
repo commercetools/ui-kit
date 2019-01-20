@@ -55,8 +55,8 @@ choiceGroups:
       color-purple: '#b866ff'
       color-black: '#1a1a1a'
       color-white: '#fff'
-  borderRadius:
-    label: Border Radius
+  borderRadiuses:
+    label: Border Radiuses
     prefix: border-radius
     choices:
       border-radius-1: 1px
@@ -64,6 +64,16 @@ choiceGroups:
       border-radius-4: 4px
       border-radius-6: 6px
       border-radius-20: 20px
+  fontFamilies:
+    label: Font families
+    prefix: font-family
+    choices:
+      font-family-body: "'Open Sans', sans-serif"
+  fontSizes:
+    label: Font sizes
+    prefix: font-size
+    choices:
+      font-size-m: '13px'
   shadows:
     label: Shadows
     prefix: shadow
@@ -112,22 +122,21 @@ choiceGroups:
   breakpoints:
     label: Breakpoints
     prefix: break-point
-    choices: 
+    choices:
       break-point-mobile: 768px
       break-point-desktop: 1024px
       break-point-biggerdesktop: 1280px
       break-point-giantdesktop: 1680px
       break-point-jumbodesktop: 1920px
 
-
 states:
+  active: 'Trigged while the user is currently interacting with the element'
   hovered:
     description: 'When the mouse is over the element'
-  # not sure we should actually have this one
-  pristine:
-    description: 'The element was not interacted with yet'
   disabled:
     description: 'When the element can not be interacted with'
+  focused:
+    description: 'When the element is currently selected to receive input'
   readonly:
     description: 'When the element can not be modified'
   warning:
@@ -180,6 +189,14 @@ decisionGroups:
         description: ''
         deprecated: true
         choice: color-orange
+      background-color-for-input:
+        description: ''
+        deprecated: false
+        choice: color-white
+      background-color-for-input-when-disabled:
+        description: ''
+        choice: color-navy-98
+
   borderColors:
     label: Border Colors
     prefix: border-color
@@ -228,7 +245,26 @@ decisionGroups:
         description: ''
         deprecated: true
         choice: color-gray
-  borderRadius:
+      border-color-for-input:
+        description: ''
+        choice: color-gray-60
+      border-color-for-input-when-focused:
+        description: ''
+        choice: color-green
+      border-color-for-input-when-disabled:
+        description: ''
+        choice: color-gray
+      border-color-for-input-when-readonly:
+        description: ''
+        choice: color-gray
+      border-color-for-input-when-error:
+        description: ''
+        choice: color-red
+      border-color-for-input-when-warning:
+        description: ''
+        choice: color-orange
+
+  borderRadiuses:
     label: Border Radius
     prefix: border-radius
     decisions:
@@ -240,14 +276,12 @@ decisionGroups:
         description: ''
         deprecated: true
         choice: border-radius-2
+      border-radius-for-input:
+        description: ''
+        choice: border-radius-6
   # We don't have font families in choices yet, so we can't have decisions for
   # them
-  # font-family:
-  #   label: Font Family
-  #   decisions:
-  #     default:
-  #       description: ''
-  #       value: '"Open Sans", sans-serif'
+
   fontColors:
     label: Font Colors
     prefix: font-color
@@ -280,17 +314,44 @@ decisionGroups:
         description: ''
         deprecated: true
         choice: color-gray-60
-  # We don't have font sizes in choices yet, so we can't have decisions for them
-  # fontSizes:
-  #   label: Font Sizes
-  #   prefix: font-size
-  #   decisions:
-  #     font-size-default:
-  #       description: ''
-  #       value: 13px
-  #     font-size-small:
-  #       description: ''
-  #       value: 12px
+      font-color-for-input:
+        description: ''
+        choice: color-black
+      font-color-for-input-when-disabled:
+        description: ''
+        choice: color-gray-60
+      font-color-for-input-when-error:
+        description: ''
+        choice: color-red
+      font-color-for-input-when-readonly:
+        description: ''
+        choice: color-gray-60
+      font-color-for-input-when-warning:
+        description: ''
+        choice: color-orange
+
+  fontFamily:
+    label: Font family
+    prefix: font-family
+    decisions:
+      font-family:
+        description: ''
+        choice: font-family-body
+  placeholderFontColors:
+    label: Placeholder font colors
+    prefix: placeholder-font-color
+    decisions:
+      placeholder-font-color-for-input:
+        description: ''
+        choice: color-gray-60
+
+  fontSizes:
+    label: Font Sizes
+    prefix: font-size
+    decisions:
+      font-size-for-input:
+        description: ''
+        choice: font-size-m
   shadows:
     label: Shadows
     prefix: shadow
@@ -299,7 +360,6 @@ decisionGroups:
         description: ''
         deprecated: true
         choice: shadow-1
-
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
@@ -345,6 +405,6 @@ plainTokens:
   font-family-default: "'Open Sans', sans-serif"
   font-size-default: 13px
   font-size-small: 12px
-  shadow-box-tag-hover: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)"
+  shadow-box-tag-hover: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
   size-height-tag: 26px
   standard-input-height: 32px

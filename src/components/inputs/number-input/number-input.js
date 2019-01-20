@@ -21,30 +21,28 @@ const getStyles = props => {
 
 const NumberInput = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <div className={styles.container}>
-      <input
-        id={props.id}
-        name={props.name}
-        type="number"
-        value={props.value}
-        min={props.min}
-        max={props.max}
-        step={props.step}
-        onChange={props.onChange}
-        onBlur={props.onBlur}
-        onFocus={props.onFocus}
-        disabled={props.isDisabled}
-        placeholder={props.placeholder}
-        className={getStyles(props)}
-        readOnly={props.isReadOnly}
-        autoFocus={props.isAutofocussed}
-        {...filterDataAttributes(props)}
-        /* ARIA */
-        aria-readonly={props.isReadOnly}
-        role="textbox"
-        contentEditable={!props.isReadOnly}
-      />
-    </div>
+    <input
+      id={props.id}
+      name={props.name}
+      type="number"
+      value={props.value}
+      min={props.min}
+      max={props.max}
+      step={props.step}
+      onChange={props.onChange}
+      onBlur={props.onBlur}
+      onFocus={props.onFocus}
+      disabled={props.isDisabled}
+      placeholder={props.placeholder}
+      className={getStyles(props)}
+      readOnly={props.isReadOnly}
+      autoFocus={props.isAutofocussed}
+      {...filterDataAttributes(props)}
+      /* ARIA */
+      aria-readonly={props.isReadOnly}
+      role="textbox"
+      contentEditable={!props.isReadOnly}
+    />
   </Constraints.Horizontal>
 );
 

@@ -1,19 +1,13 @@
 /* Base */
 
-.container {
-  width: 100%;
-  position: relative;
-}
-
 .input {
-  color: var(--font-color-default);
-  font-family: var(--font-family-default);
-  font-size: var(--font-size-default);
-  border-radius: var(--border-radius-input);
+  background-color: var(--background-color-for-input);
+  color: var(--font-color-for-input);
+  font-family: var(--font-family);
+  font-size: var(--font-size-for-input);
+  border-radius: var(--border-radius-for-input);
   height: var(--size-height-input);
-  line-height: var(--size-height-input);
-  background-color: var(--background-color-input-pristine);
-  border: 1px var(--border-color-input-pristine) solid;
+  border: 1px var(--border-color-for-input) solid;
   width: 100%;
   padding: 0 var(--spacing-8);
   transition: var(--transition-standard);
@@ -24,42 +18,42 @@
 }
 
 .input::placeholder {
-  color: var(--font-color-placeholder);
+  color: var(--placeholder-font-color-for-input);
 }
 
 /* States */
 
 .pristine {
   composes: input;
-  border-color: var(--border-color-input-pristine);
-  background-color: var(--background-color-input-pristine);
+  border-color: var(--border-color-for-input);
+  background-color: var(--background-color-for-input);
 }
 
 .warning {
   composes: input;
-  color: var(--font-color-warning);
-  border-color: var(--border-color-input-warning);
+  color: var(--font-color-for-input-when-warning);
+  border-color: var(--border-color-for-input-when-warning);
 }
 
 .error {
   composes: input;
-  color: var(--font-color-error);
-  border-color: var(--border-color-input-error);
+  color: var(--font-color-for-input-when-error);
+  border-color: var(--border-color-for-input-when-error);
 }
 
 .disabled {
   composes: input;
   cursor: not-allowed;
-  color: var(--font-color-disabled);
-  border-color: var(--border-color-input-disabled);
-  background-color: var(--background-color-input-disabled);
+  color: var(--font-color-for-input-when-disabled);
+  border-color: var(--border-color-for-input-when-disabled);
+  background-color: var(--background-color-for-input-when-disabled);
   opacity: 1; /* fix for mobile safari */
 }
 
 .readonly {
   composes: input;
-  border-color: var(--border-color-input-readonly);
-  color: var(--font-color-readonly);
+  border-color: var(--border-color-for-input-when-readonly);
+  color: var(--font-color-for-input-when-readonly);
   cursor: default;
 }
 
@@ -67,7 +61,7 @@
 
 .pristine:active,
 .pristine:focus {
-  border-color: var(--border-color-input-focus);
-  background: var(--background-color-input-pristine);
-  color: var(--font-color-default);
+  border-color: var(--border-color-for-input-when-focused);
+  background: var(--background-color-for-input);
+  color: var(--font-color-for-input);
 }

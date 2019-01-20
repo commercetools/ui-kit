@@ -33,8 +33,8 @@ overrides:
       'react/display-name': 0
   - files: ['*.visualspec.js']
     globals:
-        page: true
-        HOST: true
+      page: true
+      HOST: true
 settings:
   import/ignore:
     # included by default, but replaced if explicitly configured
@@ -49,63 +49,53 @@ settings:
     version: detect
 
 rules:
-    'class-methods-use-this':
-      - 'error'
-      - exceptMethods: [
-          'render',
-          'getInitialState',
-          'getDefaultProps',
-          'getChildContext',
-          'shouldComponentUpdate',
-          'UNSAFE_componentWillMount',
-          'UNSAFE_componentWillReceiveProps',
-          'UNSAFE_componentWillUpdate',
-          'componentWillUnmount',
-          'componentDidMount',
-          'componentDidUpdate',
-        ]
-    'function-paren-newline': 0
-    # ui-kit is a mapped module in bundle tests, so it will not be found
-    # settting ignorePackages will disable the extension warning for it.
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-      },
-    ]
-    'import/no-extraneous-dependencies': 0
-    'import/no-named-as-default': 0
-    # ui-kit is a mapped module in bundle tests, so it will not be found
-    # We exclude it from the checks
-    'import/no-unresolved': [2, { ignore: ['ui-kit'] }]
-    'import/first': 0
-    'import/order': 2
-    'no-restricted-globals': ['error', 'find', 'name', 'location']
-    'no-warning-comments': 0
-    'no-use-before-define': [
-      'error',
-      {
-        functions: false,
-      },
-    ]
-    'no-underscore-dangle': 0
-    'jest/no-identical-title': 'warn'
-    'jest/no-focused-tests': 2
-    'react/jsx-uses-vars': 2
-    'react/wrap-multilines': 0
-    'react/no-deprecated': 'error'
-    'react/no-find-dom-node': 0
-    'react/display-name': [
-      1,
-      {
-        ignoreTranspilerName: true,
-      }
-    ]
-    'prefer-object-spread/prefer-object-spread': 2
-    'prefer-destructuring': 0
-    'prefer-promise-reject-errors': 'warn'
-    'react/jsx-no-target-blank': 0
-    'lines-between-class-members': 0
-    # NOTE: The regular rule does not support do-expressions. The equivalent rule of babel does.
-    'no-unused-expressions': 0
+  'class-methods-use-this':
+    - 'error'
+    - exceptMethods:
+        - render
+        - getInitialState
+        - getDefaultProps
+        - getChildContext
+        - shouldComponentUpdate
+        - UNSAFE_componentWillMount
+        - UNSAFE_componentWillReceiveProps
+        - UNSAFE_componentWillUpdate
+        - componentWillUnmount
+        - componentDidMount
+        - componentDidUpdate
+  'function-paren-newline': 0
+  # ui-kit is a mapped module in bundle tests, so it will not be found
+  # settting ignorePackages will disable the extension warning for it.
+  'import/extensions':
+    - error
+    - ignorePackages
+    - js: 'never'
+  'import/no-extraneous-dependencies': 0
+  'import/no-named-as-default': 0
+  # ui-kit is a mapped module in bundle tests, so it will not be found
+  # We exclude it from the checks
+  'import/no-unresolved': [2, { ignore: ['ui-kit'] }]
+  'import/first': 0
+  'import/order': 2
+  'no-restricted-globals': ['error', 'find', 'name', 'location']
+  'no-warning-comments': 0
+  'no-use-before-define':
+    - error
+    - functions: false
+  'no-underscore-dangle': 0
+  'jest/no-identical-title': 'warn'
+  'jest/no-focused-tests': 2
+  'react/jsx-uses-vars': 2
+  'react/wrap-multilines': 0
+  'react/no-deprecated': 'error'
+  'react/no-find-dom-node': 0
+  'react/display-name':
+    - 1
+    - ignoreTranspilerName: true
+  'prefer-object-spread/prefer-object-spread': 2
+  'prefer-destructuring': 0
+  'prefer-promise-reject-errors': 'warn'
+  'react/jsx-no-target-blank': 0
+  'lines-between-class-members': 0
+  # NOTE: The regular rule does not support do-expressions. The equivalent rule of babel does.
+  'no-unused-expressions': 0

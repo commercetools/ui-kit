@@ -36,7 +36,9 @@
   ],
   "scripts": {
     "changelog": "conventional-changelog -p angular -u",
-    "prebuild": "rimraf ./dist && node ./scripts/generate-icon-exports.js && node ./scripts/generate-custom-properties.js",
+    "design-tokens:build": "node ./scripts/generate-custom-properties.js",
+    "design-tokens:build:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn design-tokens:build'",
+    "prebuild": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build",
     "prestorybook:start": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-custom-properties.js",
     "storybook:build": "build-storybook -o .public -s docs/assets",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup --config",
@@ -51,6 +53,7 @@
     "format:js": "prettier --write '**/*.js'",
     "format:css": "prettier --write --parser css '**/*.css'",
     "format:md": "prettier --write --parser markdown '**/*.md'",
+    "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
     "test": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",

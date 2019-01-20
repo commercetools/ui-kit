@@ -452,7 +452,7 @@ class Story extends React.Component {
           )}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.borderRadius}
+          choiceGroup={definition.choiceGroups.borderRadiuses}
           searchText={this.state.searchText}
           renderSample={value => (
             <React.Fragment>
@@ -527,7 +527,7 @@ class Story extends React.Component {
           )}
         />
         <DecisionGroup
-          decisionGroup={definition.decisionGroups.borderRadius}
+          decisionGroup={definition.decisionGroups.borderRadiuses}
           searchText={this.state.searchText}
           renderSample={value => (
             <React.Fragment>
