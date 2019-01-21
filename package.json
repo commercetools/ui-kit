@@ -39,7 +39,7 @@
     "design-tokens:build": "node ./scripts/generate-custom-properties.js",
     "design-tokens:build:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn design-tokens:build'",
     "prebuild": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build",
-    "postbuild": "tsc -d --emitDeclarationOnly --allowJs false --declarationDir dist",
+    "postbuild": "tsc -d --emitDeclarationOnly -p tsconfig.declarations.json",
     "prestorybook:start": "node ./scripts/generate-icon-exports.js && node ./scripts/generate-custom-properties.js",
     "storybook:build": "build-storybook -o .public -s docs/assets",
     "build": "cross-env NODE_ENV=production rollup --config",

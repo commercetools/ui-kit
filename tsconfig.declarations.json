@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src", "types"],
+  "exclude": [
+    "**/*.spec.tsx",
+    "**/*.bundlespec.tsx",
+    "**/*.story.tsx",
+    "**/*.visualroute.tsx",
+    "**/*.visualspec.tsx",
+    "src/test-utils.tsx"
+  ],
+  "compilerOptions": {
+    "allowJs": false,
+    "declarationDir": "dist"
+  }
+}
