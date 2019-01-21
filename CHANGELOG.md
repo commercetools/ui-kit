@@ -8,19 +8,18 @@
 - `Checkbox`: renamed to `CheckboxInput` ([#428](https://github.com/commercetools/ui-kit/pull/428))
 - `Toggle`: renamed to `ToggleInput`, now returns an event from onChange ([#428](https://github.com/commercetools/ui-kit/pull/428))
 - `LocalizedMoneyInput`: remove 'amount/currencyCode' from event name ([#419](https://github.com/commercetools/ui-kit/issues/419)) ([e28d022](https://github.com/commercetools/ui-kit/commit/e28d022))
-
-- ([#435](https://github.com/commercetools/ui-kit/pull/435)) The following icons got renamed:
-
-FlagFulfilledIcon -> FlagFilledIcon
-FlagIcon -> FlagLinearIcon
-DoneIcon -> CheckThinIcon
-SuccessIcon -> CheckBoldIcon
-DeleteIcon -> BinLinearIcon
-DeleteFilledIcon -> BinFilledIcon
-AddIcon -> PlusThinIcon
-AddBoldIcon -> PlusBoldIcon
-PinActiveIcon -> PinLinearIcon
-PinIcon -> PinFilled
+- ([#433](https://github.com/commercetools/ui-kit/pull/433)) Some unsupported HorizontalConstraint props have been dropped. Please check the PR for more details
+- ([#435](https://github.com/commercetools/ui-kit/pull/435)) The following icons have been renamed:
+  - FlagFulfilledIcon -> FlagFilledIcon
+  - FlagIcon -> FlagLinearIcon
+  - DoneIcon -> CheckThinIcon
+  - SuccessIcon -> CheckBoldIcon
+  - DeleteIcon -> BinLinearIcon
+  - DeleteFilledIcon -> BinFilledIcon
+  - AddIcon -> PlusThinIcon
+  - AddBoldIcon -> PlusBoldIcon
+  - PinActiveIcon -> PinLinearIcon
+  - PinIcon -> PinFilled
 
 ### Bug Fixes
 
