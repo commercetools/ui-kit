@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
 type HorizontalConstraint = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
-interface HorizontalProps {
+type HorizontalProps = {
   constraint: HorizontalConstraint;
 }
 
