@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import oneLineTrim from 'common-tags/lib/oneLineTrim';
-import styles from './avatar.mod.css';
+import { css } from '@emotion/core';
+import vars from '../../../materials/custom-properties';
 import filterDataAttributes from '../../utils/filter-data-attributes';
+
+const avatarSizes = {
+  s: { width: '26px', fontSize: '1em' },
+  m: { width: '48px', fontSize: '1.5em' },
+  l: { width: '100px', fontSize: '3em' },
+};
 
 const getFirstChar = str =>
   typeof str === 'string'
@@ -23,22 +29,26 @@ const getInitialsFromName = ({ firstName = '', lastName = '' }) =>
  *
  * @see: https://de.gravatar.com/site/implement/images/
  */
-const createGravatarImgUrl = (md5Hash, size) =>
-  `https://www.gravatar.com/avatar/${md5Hash}?s=${size}&d=blank`;
-
-const getSizeInPx = size => {
-  if (size === 'l') return 100;
-  if (size === 'm') return 48;
-  return 26;
+const createGravatarImgUrl = (md5Hash, size, multiplyBy = 1) => {
+  const sizeAsInt = avatarSizes[size].width.replace(/px$/, '');
+  const gravatarSize = sizeAsInt * multiplyBy;
+  return `https://www.gravatar.com/avatar/${md5Hash}?s=${gravatarSize}&d=blank`;
 };
 
 const GravatarImg = props => (
   <img
-    className={styles['gravatar-img']}
-    src={createGravatarImgUrl(props.hash, getSizeInPx(props.size))}
+    css={css`
+      background-position: center center;
+      background-size: contain;
+      position: relative;
+      z-index: 10;
+
+      ${props.isHighlighted ? 'opacity: 0.7;' : ''}
+    `}
+    src={createGravatarImgUrl(props.hash, props.size)}
     srcSet={oneLineTrim`
-      ${createGravatarImgUrl(props.hash, getSizeInPx(props.size))} 1x,
-      ${createGravatarImgUrl(props.hash, getSizeInPx(props.size) * 2)} 2x
+      ${createGravatarImgUrl(props.hash, props.size)} 1x,
+      ${createGravatarImgUrl(props.hash, props.size, 2)} 2x
     `}
   />
 );
@@ -47,11 +57,15 @@ GravatarImg.displayName = 'GravatarImg';
 GravatarImg.propTypes = {
   hash: PropTypes.string,
   size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
+  isHighlighted: PropTypes.bool,
 };
 
 const Initials = props => (
   <div
-    className={classnames(styles.initials, styles[`initials-${props.size}`])}
+    css={css`
+      position: absolute;
+      font-size: ${avatarSizes[props.size].fontSize};
+    `}
   >
     {getInitialsFromName({
       firstName: props.firstName,
@@ -69,16 +83,30 @@ Initials.propTypes = {
 
 const Avatar = props => (
   <div
-    className={classnames(
-      styles['avatar-base'],
-      styles[`avatar-${props.size}`],
-      {
-        [styles['avatar-hover']]: props.isHighlighted,
-      }
-    )}
+    css={css`
+      align-items: center;
+      font-family: ${vars['--font-family-default']};
+      background-color: ${vars['--color-gray-60']};
+      border-radius: 100%;
+      font-size: ${vars['--font-size-default']};
+      color: ${vars['--color-white']};
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+
+      height: ${avatarSizes[props.size].width};
+      width: ${avatarSizes[props.size].width};
+
+      ${props.isHighlighted ? `background-color: ${vars['--color-gray']};` : ''}
+    `}
     {...filterDataAttributes(props)}
   >
-    <GravatarImg hash={props.gravatarHash} size={props.size} />
+    <GravatarImg
+      hash={props.gravatarHash}
+      size={props.size}
+      isHighlighted={props.isHighlighted}
+    />
     <Initials
       size={props.size}
       firstName={props.firstName}
