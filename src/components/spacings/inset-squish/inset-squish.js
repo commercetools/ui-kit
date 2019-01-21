@@ -4,8 +4,8 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
-const getPadding = props => {
-  switch (props.scale) {
+const getPadding = scale => {
+  switch (scale) {
     case 's':
       return `${vars['--spacing-4']} ${vars['--spacing-8']}`;
     case 'm':
