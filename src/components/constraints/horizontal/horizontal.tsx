@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styles from './horizontal.mod.css';
 
 type HorizontalConstraint = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
-interface HorizontalProps {
+type HorizontalProps = {
   constraint: HorizontalConstraint;
 }
 

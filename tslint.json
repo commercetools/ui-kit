@@ -14,6 +14,7 @@
   },
   "rules": {
     "interface-name": [true, "never-prefix"],
+    "interface-over-type-literal": false,
     "no-namespace": false,
     "ordered-imports": false
   }
