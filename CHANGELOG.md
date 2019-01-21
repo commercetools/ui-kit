@@ -1,3 +1,36 @@
+<a name="7.0.0"></a>
+
+# [7.0.0](https://github.com/commercetools/ui-kit/compare/v6.1.0...v7.0.0) (2019-01-21)
+
+## BREAKING CHANGES
+
+- `Radio`: renamed to `RadioInput`
+- `Checkbox`: renamed to `CheckboxInput`
+- `Toggle`: renamed to `ToggleInput`
+- `LocalizedMoneyInput`: remove 'amount/currencyCode' from event name ([#419](https://github.com/commercetools/ui-kit/issues/419)) ([e28d022](https://github.com/commercetools/ui-kit/commit/e28d022))
+
+### Bug Fixes
+
+- `ErrorMessage`: support data-attributes ([#424](https://github.com/commercetools/ui-kit/issues/424)) ([7d35c2e](https://github.com/commercetools/ui-kit/commit/7d35c2e))
+
+- `MoneyField`: remove required `currencies` prop ([#422](https://github.com/commercetools/ui-kit/issues/422)) ([c05d9da](https://github.com/commercetools/ui-kit/commit/c05d9da))
+
+- `MoneyInput`: avoid messing with floating point numbers ([#446](https://github.com/commercetools/ui-kit/issues/446)) ([f5c6260](https://github.com/commercetools/ui-kit/commit/f5c6260))
+
+- `RadioInput.Option`, `CheckboxInput`, `SwitchInput:` move data-attributes to input ([#423](https://github.com/commercetools/ui-kit/issues/423)) ([677dc77](https://github.com/commercetools/ui-kit/commit/677dc77))
+
+- `TimeInput`: call onChange with generated id instead of undefined if no id passed as prop ([#427](https://github.com/commercetools/ui-kit/issues/427)) ([7bbc6c6](https://github.com/commercetools/ui-kit/commit/7bbc6c6))
+
+### Features
+
+- `CollapsiblePanel`: add `hideExpansionControls` (not hidden by default) ([#421](https://github.com/commercetools/ui-kit/issues/421)) ([0bd7fa9](https://github.com/commercetools/ui-kit/commit/0bd7fa9))
+
+- `Grid`: new component ([#442](https://github.com/commercetools/ui-kit/issues/442)) ([7469bae](https://github.com/commercetools/ui-kit/commit/7469bae))
+
+### Refactoring
+
+`TextInput`, `PasswordInput`, `NumberInput`: use design tokens ([#443](https://github.com/commercetools/ui-kit/issues/443)) ([792c505](https://github.com/commercetools/ui-kit/commit/792c505))
+
 <a name="6.1.1"></a>
 
 # [6.1.1](https://github.com/commercetools/ui-kit/compare/v6.1.0...v6.1.1) (2019-01-09)
