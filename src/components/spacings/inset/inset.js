@@ -16,7 +16,6 @@ const getPadding = scale => {
       return vars['--spacing-24'];
     case 'xl':
       return vars['--spacing-32'];
-
     default:
       return 0;
   }

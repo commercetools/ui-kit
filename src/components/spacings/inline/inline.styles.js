@@ -29,7 +29,7 @@ const getMargin = scale => {
     case 'xl':
       return vars['--spacing-32'];
     default:
-      return vars['--spacing-8'];
+      return 0;
   }
 };
 
