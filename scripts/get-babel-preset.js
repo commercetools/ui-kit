@@ -10,6 +10,7 @@ module.exports = function getBabelPresets() {
   const isEnvDevelopment = env === 'development';
   const isEnvProduction = env === 'production';
   const isEnvTest = env === 'test';
+  const isRollup = process.env.BUILD_ROLLUP === true;
 
   if (!isEnvDevelopment && !isEnvProduction && !isEnvTest) {
     throw new Error(
@@ -104,9 +105,10 @@ module.exports = function getBabelPresets() {
       isEnvProduction && [
         // Remove PropTypes from production build
         require('babel-plugin-transform-react-remove-prop-types').default,
-        {
-          mode: 'wrap',
-        },
+        // In case of rollup bundles, we want to keep the prop types but wrap
+        // them into a `process.env.NODE_ENV !== "production"` so that when
+        // building the final application bundles, those codes parts can be removed.
+        isRollup ? { mode: 'wrap' } : { removeImport: true },
       ],
       // function* () { yield 42; yield 43; }
       !isEnvTest && [
