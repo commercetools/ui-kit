@@ -3,9 +3,9 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
 type HorizontalConstraint = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
-type HorizontalProps = {
-  constraint: HorizontalConstraint,
-};
+interface HorizontalProps {
+  constraint: HorizontalConstraint;
+}
 
 const getConstraintStyles = (constraint: HorizontalConstraint) => {
   switch (constraint) {

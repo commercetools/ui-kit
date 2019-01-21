@@ -1,0 +1,5 @@
+{
+  "eslint.enable": false,
+  "tslint.jsEnable": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
