@@ -71,6 +71,7 @@ typings/
 .vuepress/dist
 
 # Storybook build output
+.awcache
 .public
 
 # Serverless directories

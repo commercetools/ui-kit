@@ -36,30 +36,23 @@ module.exports = (storybookBaseConfig, configType) => {
       loaders: [require.resolve('@storybook/addon-storysource/loader')],
       enforce: 'pre',
     },
-    // Process JS with Babel.
     {
-      test: /\.js$/,
-      include: sourceFolders,
+      test: /\.(js|ts)x?$/,
+      exclude: /node_modules/,
       use: [
         {
-          loader: require.resolve('babel-loader'),
+          loader: require.resolve('awesome-typescript-loader'),
           options: {
-            babelrc: false,
-            compact: false,
-            presets: [require.resolve('../scripts/get-babel-preset')],
-            // This is a feature of `babel-loader` for webpack (not Babel itself).
-            // It enables caching results in ./node_modules/.cache/babel-loader/
-            // directory for faster rebuilds.
-            cacheDirectory: true,
-            highlightCode: true,
+            useCache: true,
+            useBabel: true,
+            babelOptions: {
+              babelrc: false,
+              presets: [require.resolve('../scripts/get-babel-preset')],
+            },
+            babelCore: require.resolve('@babel/core'),
           },
         },
       ],
-    },
-    {
-      test: /\.tsx?$/,
-      exclude: /node_modules/,
-      loader: 'awesome-typescript-loader',
     },
     // For svg icons, we want to get them transformed into React components
     // when we import them.
@@ -155,9 +148,11 @@ module.exports = (storybookBaseConfig, configType) => {
       ],
     },
   ];
+  // Currently we need to add '.ts' to the resolve.extensions array.
+  storybookBaseConfig.resolve.extensions = ['.ts', '.tsx', '.js', '.jsx'];
   storybookBaseConfig.resolve.plugins = [
     new TsConfigPathsPlugin({
-      tsconfig: 'tsconfig.json',
+      tsconfig: '../tsconfig.json',
       compiler: 'typescript',
     }),
   ];
