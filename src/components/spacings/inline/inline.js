@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import styles from './inline.mod.css';
+import getStyles from './inline.styles';
 
 const Inline = props => (
-  <div
-    className={classnames(styles[props.scale], styles[props.alignItems])}
-    {...filterDataAttributes(props)}
-  >
+  <div css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </div>
 );

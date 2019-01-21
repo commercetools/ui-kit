@@ -29,16 +29,15 @@ const getMargin = scale => {
     case 'xl':
       return vars['--spacing-32'];
     default:
-      return vars['--spacing-4'];
+      return vars['--spacing-8'];
   }
 };
 
 export default props => css`
   display: flex;
-  flex-direction: column;
   ${getAlignItems(props.alignItems)}
 
   > * + * {
-    margin: ${getMargin(props.scale)} 0 0;
+    margin: 0 0 0 ${getMargin(props.scale)};
   }
 `;

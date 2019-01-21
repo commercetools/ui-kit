@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import { getStackStyles } from './stack.styles';
+import getStyles from './stack.styles';
 
 const Stack = props => (
-  <div css={getStackStyles(props)} {...filterDataAttributes(props)}>
+  <div css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </div>
 );
