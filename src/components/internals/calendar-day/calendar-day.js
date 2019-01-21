@@ -7,25 +7,20 @@ import styles from './calendar-day.mod.css';
 const CalendarDay = props => (
   <li className={styles.wrapper}>
     <div
-      className={classnames(
-        do {
-          if (props.type === 'heading') styles.heading;
-          else if (props.type === 'spacing') styles.spacing;
-          else styles.day;
-        },
-        {
-          [styles.highlighted]: props.isHighlighted,
-          [styles.selected]: props.isSelected,
-          [styles.rangeStart]: props.isRangeStart,
-          [styles.rangeBetween]: props.isRangeBetween,
-          [styles.rangeEnd]: props.isRangeEnd,
-          [styles.today]:
-            !props.isSelected &&
-            !props.isRangeStart &&
-            !props.isRangeEnd &&
-            props.isToday,
-        }
-      )}
+      className={classnames({
+        [styles.day]: !['heading', 'spacing'].includes(props.type),
+        [styles.heading]: ['heading', 'spacing'].includes(props.type),
+        [styles.highlighted]: props.isHighlighted,
+        [styles.selected]: props.isSelected,
+        [styles.rangeStart]: props.isRangeStart,
+        [styles.rangeBetween]: props.isRangeBetween,
+        [styles.rangeEnd]: props.isRangeEnd,
+        [styles.today]:
+          !props.isSelected &&
+          !props.isRangeStart &&
+          !props.isRangeEnd &&
+          props.isToday,
+      })}
       {...omit(props, [
         'isHighlighted',
         'isSelected',

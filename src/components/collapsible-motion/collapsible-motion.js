@@ -30,17 +30,14 @@ export class ToggleAnimation extends React.Component {
       ? { height: 'auto' }
       : { height: 0, overflow: 'hidden' };
 
-    const animation = do {
-      if (props.isOpen !== state.isOpen) {
-        if (props.isOpen) {
-          createOpeningAnimation(state.fullHeight);
-        } else {
-          createClosingAnimation(state.fullHeight);
-        }
+    let animation = null;
+    if (props.isOpen !== state.isOpen) {
+      if (props.isOpen) {
+        animation = createOpeningAnimation(state.fullHeight);
       } else {
-        null;
+        animation = createClosingAnimation(state.fullHeight);
       }
-    };
+    }
 
     return {
       isOpen: props.isOpen,
@@ -132,6 +129,7 @@ class CollapsibleMotion extends React.PureComponent {
 
                   if (animation) {
                     // By calling `css`, emotion injects the required CSS into the document head.
+                    // eslint-disable-next-line no-unused-expressions
                     css`
                       animation: ${animation} 200ms forwards;
                     `;

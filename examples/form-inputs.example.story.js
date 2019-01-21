@@ -474,11 +474,13 @@ class ProductForm extends React.Component {
             }
           />
           {MoneyInput.isTouched(this.props.formik.touched.price) &&
-            this.props.formik.errors.price?.missing && (
+            this.props.formik.errors.price &&
+            this.props.formik.errors.price.missing && (
               <ErrorMessage>Missing price</ErrorMessage>
             )}
           {MoneyInput.isTouched(this.props.formik.touched.price) &&
-            this.props.formik.errors.price?.unsupportedHighPrecision && (
+            this.props.formik.errors.price &&
+            this.props.formik.errors.price.unsupportedHighPrecision && (
               <ErrorMessage>
                 This value is a high precision value. High precision pricing is
                 not supported for products.

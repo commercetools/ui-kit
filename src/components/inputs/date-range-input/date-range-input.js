@@ -53,21 +53,26 @@ const getRange = ({ item, value, startDate, highlightedItem }) => {
   const isBetween =
     highlightedItem && isBetweenDates(item, startDate, highlightedItem);
 
-  const isRangeStart = do {
-    if (isRangeSelectionInProgress) isStartDate;
-    else if (hasSelection) value[0] === item;
-    else false;
-  };
-  const isRangeBetween = do {
-    if (isRangeSelectionInProgress) isBetween;
-    else if (hasSelection) isBetweenDates(item, value[0], value[1]);
-    else false;
-  };
-  const isRangeEnd = do {
-    if (isRangeSelectionInProgress) item === highlightedItem;
-    else if (hasSelection) value[1] === item;
-    else false;
-  };
+  let isRangeStart = false;
+  if (isRangeSelectionInProgress) {
+    isRangeStart = isStartDate;
+  } else if (hasSelection) {
+    isRangeStart = value[0] === item;
+  }
+
+  let isRangeBetween = false;
+  if (isRangeSelectionInProgress) {
+    isRangeBetween = isBetween;
+  } else if (hasSelection) {
+    isRangeBetween = isBetweenDates(item, value[0], value[1]);
+  }
+
+  let isRangeEnd = false;
+  if (isRangeSelectionInProgress) {
+    isRangeEnd = item === highlightedItem;
+  } else if (hasSelection) {
+    isRangeEnd = value[1] === item;
+  }
 
   return {
     isRangeStart,
@@ -242,19 +247,21 @@ class DateRangeCalendar extends React.Component {
                   startDate: prevState.startDate ? null : changes.selectedItem,
                   calendarDate: changes.selectedItem,
                   isOpen: !hasFinishedRangeSelection,
-                  inputValue: do {
-                    if (hasFinishedRangeSelection)
-                      formatRange(
+                  inputValue: (() => {
+                    if (hasFinishedRangeSelection) {
+                      return formatRange(
                         [prevState.startDate, changes.selectedItem],
                         this.props.intl.locale
                       );
-                    else if (hasStartedRangeSelection)
-                      formatRange(
+                    }
+                    if (hasStartedRangeSelection) {
+                      return formatRange(
                         [changes.selectedItem],
                         this.props.intl.locale
                       );
-                    else '';
-                  },
+                    }
+                    return '';
+                  })(),
                 };
               }
 
@@ -311,10 +318,8 @@ class DateRangeCalendar extends React.Component {
             );
             const allItems = [...this.state.suggestedItems, ...calendarItems];
 
-            const paddingDays = do {
-              const weekday = getPaddingDayCount(this.state.calendarDate);
-              Array(weekday).fill();
-            };
+            const paddingDayCount = getPaddingDayCount(this.state.calendarDate);
+            const paddingDays = Array(paddingDayCount).fill();
 
             const weekdays = getWeekdayNames('en');
             const today = getToday();

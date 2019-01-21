@@ -12,13 +12,12 @@ import {
   getId,
   getName,
 } from '../../../utils/localized';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import MoneyInput from '../money-input';
 import CurrencyControl from './currency-control';
 import styles from './localized-money-input.mod.css';
 
-const sequentialId = createSequentialId('localized-money-input-');
 // sorts the currencies with the following priority:
 // - The selected currency is placed first (e.g EUR)
 // - All other currencies follow, sorted alphabetically as well
@@ -89,11 +88,11 @@ class LocalizedInput extends React.Component {
         </div>
         <div className={styles.commandsContainer}>
           <div className={styles.commandsLeft}>
-            {do {
-              if (this.props.error) <div>{this.props.error}</div>;
-              else if (this.props.warning) <div>{this.props.warning}</div>;
-              else this.props.currenciesControl;
-            }}
+            {(() => {
+              if (this.props.error) return <div>{this.props.error}</div>;
+              if (this.props.warning) return <div>{this.props.warning}</div>;
+              return this.props.currenciesControl;
+            })()}
           </div>
         </div>
         {(this.props.error || this.props.warning) &&
@@ -209,11 +208,7 @@ export class LocalizedMoneyInput extends React.Component {
       props.hideCurrencyExpansionControls ||
       state.areCurrenciesOpened;
 
-    const id = do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    };
+    const id = getFieldId(props, state, 'localized-money-input-');
 
     return { areCurrenciesOpened, id };
   };

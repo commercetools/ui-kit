@@ -97,5 +97,3 @@ rules:
   'prefer-promise-reject-errors': 'warn'
   'react/jsx-no-target-blank': 0
   'lines-between-class-members': 0
-  # NOTE: The regular rule does not support do-expressions. The equivalent rule of babel does.
-  'no-unused-expressions': 0

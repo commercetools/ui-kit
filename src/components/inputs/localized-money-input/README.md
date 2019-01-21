@@ -267,10 +267,10 @@ const initialValues = docToFormValues(doc);
 const renderErrors = errors => {
   Object.keys(errors.prices).reduce(currency => {
     const error =
-      (errors.prices[currency]?.missing && (
+      (errors.prices[currency] && errors.prices[currency].missing && (
         <ErrorMessage>This field is required!</ErrorMessage>
       )) ||
-      (errors.prices[currency]?.highPrecision && (
+      (errors.prices[currency] && errors.prices[currency].highPrecision && (
         <ErrorMessage>High precision prices not supported here!</ErrorMessage>
       ));
     return {

@@ -139,11 +139,11 @@ export default class TranslationInput extends React.Component {
         </div>
         <div className={styles.commandsContainer}>
           <div className={styles.commandsLeft}>
-            {do {
-              if (this.props.error) <div>{this.props.error}</div>;
-              else if (this.props.warning) <div>{this.props.warning}</div>;
-              else this.props.languagesControl;
-            }}
+            {(() => {
+              if (this.props.error) return <div>{this.props.error}</div>;
+              if (this.props.warning) return <div>{this.props.warning}</div>;
+              return this.props.languagesControl;
+            })()}
           </div>
           <div className={styles.commandsExpand}>
             {!this.props.isCollapsed && contentExceedsShownRows && (

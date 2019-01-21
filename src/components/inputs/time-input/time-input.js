@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import createSequentialId from '../../../utils/create-sequential-id';
+import getFieldId from '../../../utils/get-field-id';
 import Constraints from '../../constraints';
 import { parseTime } from '../../../utils/parse-time';
 import TimeInputBody from './time-input-body';
 import messages from './messages';
-
-const sequentialId = createSequentialId('time-input-');
 
 const leftPad = (value, length = 2) => String(value).padStart(length, '0');
 
@@ -61,11 +59,7 @@ export class TimeInput extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: do {
-      if (props.id) props.id;
-      else if (state.id) state.id;
-      else sequentialId();
-    },
+    id: getFieldId(props, state, 'time-input-'),
   });
 
   static defaultProps = {
