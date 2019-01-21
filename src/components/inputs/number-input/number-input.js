@@ -80,8 +80,8 @@ NumberInput.isEmpty = value => {
   return true;
 };
 
-NumberInput.hasFractionDigits = number => {
-  const fraction = number % 1;
+NumberInput.hasFractionDigits = value => {
+  const fraction = value % 1;
   invariant(
     !isNaN(fraction),
     'NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'

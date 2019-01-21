@@ -129,7 +129,7 @@ class CollapsibleMotion extends React.PureComponent {
 
                   if (animation) {
                     // By calling `css`, emotion injects the required CSS into the document head.
-                    // eslint-disable-next-line no-unused-expressions
+                    // tslint:disable-next-line:no-unused-expression
                     css`
                       animation: ${animation} 200ms forwards;
                     `;

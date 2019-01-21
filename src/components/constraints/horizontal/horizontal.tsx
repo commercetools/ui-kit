@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import styles from './horizontal.mod.css';
 
 type HorizontalConstraint = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
-type HorizontalProps = {
-  constraint: HorizontalConstraint,
-};
+interface HorizontalProps {
+  constraint: HorizontalConstraint;
+}
 
 const getConstraintSyle = (constraint: HorizontalConstraint): string => {
   switch (constraint) {
@@ -26,7 +26,7 @@ const getConstraintSyle = (constraint: HorizontalConstraint): string => {
   }
 };
 
-const Horizontal: React.SFC<HorizontalProps> = props => (
+const Horizontal: React.FC<HorizontalProps> = props => (
   <div
     className={classnames(
       styles.container,
