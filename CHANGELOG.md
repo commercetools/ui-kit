@@ -4,9 +4,9 @@
 
 ## BREAKING CHANGES
 
-- `Radio`: renamed to `RadioInput`
-- `Checkbox`: renamed to `CheckboxInput`
-- `Toggle`: renamed to `ToggleInput`
+- `Radio`: renamed to `RadioInput` ([#428](https://github.com/commercetools/ui-kit/pull/428))
+- `Checkbox`: renamed to `CheckboxInput` ([#428](https://github.com/commercetools/ui-kit/pull/428))
+- `Toggle`: renamed to `ToggleInput`, now returns an event from onChange ([#428](https://github.com/commercetools/ui-kit/pull/428))
 - `LocalizedMoneyInput`: remove 'amount/currencyCode' from event name ([#419](https://github.com/commercetools/ui-kit/issues/419)) ([e28d022](https://github.com/commercetools/ui-kit/commit/e28d022))
 
 ### Bug Fixes
