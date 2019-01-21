@@ -9,6 +9,19 @@
 - `Toggle`: renamed to `ToggleInput`, now returns an event from onChange ([#428](https://github.com/commercetools/ui-kit/pull/428))
 - `LocalizedMoneyInput`: remove 'amount/currencyCode' from event name ([#419](https://github.com/commercetools/ui-kit/issues/419)) ([e28d022](https://github.com/commercetools/ui-kit/commit/e28d022))
 
+- ([#435](https://github.com/commercetools/ui-kit/pull/435)) The following icons got renamed:
+
+FlagFulfilledIcon -> FlagFilledIcon
+FlagIcon -> FlagLinearIcon
+DoneIcon -> CheckThinIcon
+SuccessIcon -> CheckBoldIcon
+DeleteIcon -> BinLinearIcon
+DeleteFilledIcon -> BinFilledIcon
+AddIcon -> PlusThinIcon
+AddBoldIcon -> PlusBoldIcon
+PinActiveIcon -> PinLinearIcon
+PinIcon -> PinFilled
+
 ### Bug Fixes
 
 - `ErrorMessage`: support data-attributes ([#424](https://github.com/commercetools/ui-kit/issues/424)) ([7d35c2e](https://github.com/commercetools/ui-kit/commit/7d35c2e))
