@@ -5,49 +5,53 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
+import Spacings from '../../spacings';
 
 const LinkButton = props => (
   <Link
     to={props.to}
-    css={css`
-      display: inline-flex;
-      align-items: center;
-      font-size: 1rem;
-      border: none;
-      background: none;
-      padding: 0;
-      min-height: initial;
-      cursor: pointer;
-      text-decoration: none;
-      ${props.isDisabled ? 'cursor: not-allowed;' : ''}
-
-      > * + * {
-        margin: 0 0 0 ${vars['--spacing-4']};
-      }
-      p {
-        color: ${vars['--color-green']};
-        ${props.isDisabled ? `color: ${vars['--color-gray']};` : ''}
-      }
-      &:hover {
+    css={[
+      css`
+        display: inline-flex;
+        align-items: center;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        padding: 0;
+        min-height: initial;
+        cursor: pointer;
+        text-decoration: none;
         p {
-          color: ${vars['--color-green-25']};
-          ${props.isDisabled ? `color: ${vars['--color-gray']});` : ''}
+          color: ${vars['--color-green']};
+          ${props.isDisabled ? `color: ${vars['--color-gray']};` : ''}
         }
-      }
-    `}
+        &:hover {
+          p {
+            color: ${vars['--color-green-25']};
+            ${props.isDisabled ? `color: ${vars['--color-gray']});` : ''}
+          }
+        }
+      `,
+      props.isDisabled &&
+        css`
+          cursor: not-allowed;
+        `,
+    ]}
     onClick={props.isDisabled ? event => event.preventDefault() : undefined}
     data-track-component="LinkButton"
     {...filterDataAttributes(props)}
     aria-label={props.label}
   >
-    {Boolean(props.iconLeft) &&
-      React.cloneElement(props.iconLeft, {
-        size: 'medium',
-        theme: props.isDisabled ? 'grey' : 'green',
-      })}
-    <div>
-      <Text.Body>{props.label}</Text.Body>
-    </div>
+    <Spacings.Inline scale="xs" alignItems="center">
+      {Boolean(props.iconLeft) &&
+        React.cloneElement(props.iconLeft, {
+          size: 'medium',
+          theme: props.isDisabled ? 'grey' : 'green',
+        })}
+      <div>
+        <Text.Body>{props.label}</Text.Body>
+      </div>
+    </Spacings.Inline>
   </Link>
 );
 

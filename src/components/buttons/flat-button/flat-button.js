@@ -5,6 +5,7 @@ import vars from '../../../../materials/custom-properties';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
+import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
 
 const getIconElement = props => {
@@ -54,10 +55,6 @@ export const FlatButton = props => {
           background: none;
           padding: 0;
           min-height: initial;
-
-          > * + * {
-            margin: 0 0 0 ${vars['--spacing-4']};
-          }
           p {
             color: ${props.isDisabled
               ? vars['--color-gray']
@@ -73,11 +70,13 @@ export const FlatButton = props => {
         `}
         buttonAttributes={dataProps}
       >
-        {props.iconPosition === 'left' && getIconElement(props)}
-        <div>
-          <Text.Body>{props.label}</Text.Body>
-        </div>
-        {props.iconPosition === 'right' && getIconElement(props)}
+        <Spacings.Inline scale="xs" alignItems="center">
+          {props.iconPosition === 'left' && getIconElement(props)}
+          <div>
+            <Text.Body>{props.label}</Text.Body>
+          </div>
+          {props.iconPosition === 'right' && getIconElement(props)}
+        </Spacings.Inline>
       </AccessibleButton>
     </div>
   );

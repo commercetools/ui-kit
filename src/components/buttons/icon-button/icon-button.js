@@ -75,9 +75,6 @@ export const IconButton = props => {
               display: flex;
               align-items: center;
               justify-content: center;
-              > * + * {
-                margin: 0 0 0 6px;
-              }
             `,
             getSizeStyles(props.size),
           ]}
