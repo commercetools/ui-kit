@@ -14,7 +14,6 @@ import postcssReporter from 'postcss-reporter';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssDiscardComments from 'postcss-discard-comments';
 import svgrPlugin from '@svgr/rollup';
-import typescript from '@wessberg/rollup-plugin-ts';
 import pkg from './package.json';
 import customProperties from './materials/custom-properties.json';
 
@@ -30,6 +29,7 @@ const browserslist = {
     'ie 11',
   ],
 };
+const extensions = ['.js', '.ts', '.tsx', '.es', '.mjs'];
 
 const postcssPlugins = [
   postcssImport(),
@@ -57,19 +57,18 @@ const plugins = [
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
   // To use the nodejs `resolve` algorithm
-  resolve(),
+  resolve({
+    extensions,
+  }),
   // To automatically externalize `peerDependencies` and `dependencies`
   // so that they do not end up in the bundle.
   // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
   // Transpile sources using our custom babel preset.
   babel({
     exclude: ['node_modules/**'],
+    extensions,
     runtimeHelpers: true,
     ...babelOptions(),
-  }),
-  // Compile typescript
-  typescript({
-    browserslist: browserslist.production,
   }),
   // To convert CJS modules to ES6
   commonjs({

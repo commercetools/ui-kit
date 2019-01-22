@@ -61,6 +61,7 @@ module.exports = function getBabelPresets() {
           useBuiltIns: true,
         },
       ],
+      require('@babel/preset-typescript').default,
     ].filter(Boolean),
     plugins: [
       // Experimental macros support. Will be documented after it's had some time
