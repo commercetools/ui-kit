@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import vars from '../../../../materials/custom-properties';
 import Text from '../../typography/text';
 import { CaretDownIcon, CaretUpIcon } from '../../icons';
 import AccessibleButton from '../../buttons/accessible-button';
-import styles from './primary-actions-dropdown.mod.css';
 
 class DropdownHead extends React.PureComponent {
   static displayName = 'DropdownHead';
@@ -19,23 +20,64 @@ class DropdownHead extends React.PureComponent {
 
   render() {
     return (
-      <div className={styles.primaryOptionWrapper}>
+      <div
+        css={css`
+          display: flex;
+          align-items: center;
+        `}
+      >
         <AccessibleButton
           label={this.props.children}
           onClick={this.props.onClick}
           isDisabled={this.props.isDisabled}
-          className={classnames(styles.primaryActionWrapper, {
-            [styles.defaultPrimaryAction]: !this.props.isDisabled,
-            [styles.disabledPrimaryAction]: this.props.isDisabled,
-          })}
+          css={[
+            css`
+              display: flex;
+              align-items: center;
+              padding: 0 ${vars['--spacing-8']};
+              border-radius: ${vars['--border-radius-6']} 0 0
+                ${vars['--border-radius-6']};
+              height: ${vars['--big-button-height']};
+            `,
+            this.props.isDisabled
+              ? css`
+                  box-shadow: none;
+                  background-color: ${vars['--color-navy-98']};
+                `
+              : css`
+                  background-color: ${vars['--color-white']};
+                  box-shadow: ${vars['--shadow-7']};
+                  &:hover {
+                    box-shadow: ${vars['--shadow-8']};
+                  }
+                  &:active {
+                    box-shadow: ${vars['--shadow-9']};
+                    background-color: ${vars['--color-gray-95']};
+                  }
+                `,
+          ]}
         >
-          <span className={styles.primaryActionIconWrapper}>
+          <span
+            css={css`
+              margin: 0 ${vars['--spacing-4']} 0 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            `}
+          >
             {React.cloneElement(this.props.iconLeft, {
               size: 'big',
               theme: this.props.isDisabled ? 'grey' : 'black',
             })}
           </span>
-          <span className={styles.primaryActionTextWrapper}>
+          <span
+            css={css`
+              margin: 0 ${vars['--spacing-4']} 0 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            `}
+          >
             <Text.Detail tone={this.props.isDisabled ? 'secondary' : undefined}>
               {this.props.children}
             </Text.Detail>
@@ -54,7 +96,33 @@ const DropdownChevron = React.forwardRef((props, ref) => (
     onClick={props.onClick}
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
-    className={props.className}
+    css={[
+      css`
+        display: flex;
+        align-items: center;
+        padding: 0 ${vars['--spacing-4']};
+        border-radius: 0 ${vars['--border-radius-6']}
+          ${vars['--border-radius-6']} 0;
+        border-left: 1px solid ${vars['--color-gray']};
+        height: ${vars['--big-button-height']};
+      `,
+      props.isDisabled
+        ? css`
+            box-shadow: none;
+            background-color: ${vars['--color-navy-98']};
+          `
+        : css`
+            background-color: ${vars['--color-white']};
+            box-shadow: ${vars['--shadow-7']};
+            &:hover {
+              box-shadow: ${vars['--shadow-8']};
+            }
+            &:active {
+              box-shadow: ${vars['--shadow-9']};
+              background-color: ${vars['--color-gray-95']};
+            }
+          `,
+    ]}
   >
     {/*
     We need to apply pointer-events: none on the icons, so that
@@ -63,7 +131,13 @@ const DropdownChevron = React.forwardRef((props, ref) => (
     That way we can use the ref to compare event.target to the
     AccessibleButton's button in the global click handler.
   */}
-    <div className={styles.iconWrapper}>
+    <div
+      // The margin-top is to center the icon as the caret visually looks too high otherwise
+      css={css`
+        pointer-events: none;
+        margin-top: 3px;
+      `}
+    >
       {React.cloneElement(
         props.isOpen && !props.isDisabled ? <CaretUpIcon /> : <CaretDownIcon />,
         {
@@ -79,25 +153,48 @@ DropdownChevron.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  className: PropTypes.string.isRequired,
 };
 
-const Options = props => (
-  <div className={styles.optionsWrapper}>{props.children}</div>
-);
-Options.displayName = 'Options';
-Options.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+const Options = styled.div`
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  top: calc(${vars['--spacing-8']} + ${vars['--big-button-height']});
+  left: 0;
+  border: 1px solid ${vars['--color-gray']};
+  border-radius: ${vars['--border-radius-6']};
+  box-shadow: ${vars['--shadow-1']};
+`;
 
 export const Option = props => (
   <AccessibleButton
     label={props.children}
     onClick={props.onClick}
     isDisabled={props.isDisabled}
-    className={classnames(styles.optionWrapper, {
-      [styles.disabledOption]: props.isDisabled,
-    })}
+    css={[
+      css`
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: ${vars['--spacing-8']};
+        background-color: ${vars['--color-white']};
+        &:first-of-type {
+          border-radius: ${vars['--border-radius-6']}
+            ${vars['--border-radius-6']} 0 0;
+        }
+        &:last-of-type {
+          border-radius: 0 0 ${vars['--border-radius-6']}
+            ${vars['--border-radius-6']};
+        }
+        &:hover {
+          background-color: ${vars['--color-gray-95']};
+        }
+      `,
+      props.isDisabled &&
+        css`
+          color: ${vars['--color-gray']};
+        `,
+    ]}
   >
     {props.children}
   </AccessibleButton>
@@ -176,7 +273,13 @@ export class PrimaryActionDropdown extends React.PureComponent {
     );
 
     return (
-      <div className={styles.wrapper}>
+      <div
+        css={css`
+          position: relative;
+          display: inline-flex;
+          align-items: column;
+        `}
+      >
         <DropdownHead
           iconLeft={primaryOption.props.iconLeft}
           isDisabled={primaryOption.props.isDisabled}
@@ -189,11 +292,6 @@ export class PrimaryActionDropdown extends React.PureComponent {
               onClick={this.state.isOpen ? this.handleClose : this.handleOpen}
               isDisabled={primaryOption.props.isDisabled}
               isOpen={this.state.isOpen}
-              className={classnames(styles.primaryOptionChevron, {
-                [styles.defaultPrimaryAction]: !primaryOption.props.isDisabled,
-                [styles.disabledDropdownHeadChevron]:
-                  primaryOption.props.isDisabled,
-              })}
             />
           }
         >

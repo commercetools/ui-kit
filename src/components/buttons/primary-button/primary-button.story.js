@@ -13,20 +13,23 @@ const iconNames = Object.keys(icons);
 storiesOf('Components|Buttons', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('PrimaryButton', () => (
-    <Section>
-      <PrimaryButton
-        type={select('type', ['submit', 'reset', 'button'], 'button')}
-        tone={select('tone', ['urgent', 'primary'], 'primary')}
-        size={select('size', ['small', 'big'], 'big')}
-        iconLeft={React.createElement(
-          icons[select('iconLeft', iconNames, iconNames[0])]
-        )}
-        label={text('label', 'Accessibility text')}
-        isToggleButton={boolean('isToggleButton', false)}
-        isToggled={boolean('isToggled', false)}
-        isDisabled={boolean('isDisabled', false)}
-        onClick={action('onClick')}
-      />
-    </Section>
-  ));
+  .add('PrimaryButton', () => {
+    const selectedIcon = select('iconLeft', ['', ...iconNames], iconNames[0]);
+    return (
+      <Section>
+        <PrimaryButton
+          type={select('type', ['submit', 'reset', 'button'], 'button')}
+          tone={select('tone', ['urgent', 'primary'], 'primary')}
+          size={select('size', ['small', 'big'], 'big')}
+          {...(selectedIcon
+            ? { iconLeft: React.createElement(icons[selectedIcon]) }
+            : {})}
+          label={text('label', 'Accessibility text')}
+          isToggleButton={boolean('isToggleButton', false)}
+          isToggled={boolean('isToggled', false)}
+          isDisabled={boolean('isDisabled', false)}
+          onClick={action('onClick')}
+        />
+      </Section>
+    );
+  });
