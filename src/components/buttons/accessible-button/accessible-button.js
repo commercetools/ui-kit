@@ -56,7 +56,6 @@ AccessibleButton.propTypes = {
       );
     return PropTypes.bool({ isToggled }, ...rest);
   },
-  buttonRef: PropTypes.func,
   isToggleButton: PropTypes.bool,
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func,

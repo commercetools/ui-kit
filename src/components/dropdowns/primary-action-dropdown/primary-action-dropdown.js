@@ -47,9 +47,9 @@ class DropdownHead extends React.PureComponent {
   }
 }
 
-const DropdownChevron = props => (
+const DropdownChevron = React.forwardRef((props, ref) => (
   <AccessibleButton
-    buttonRef={props.buttonRef}
+    ref={ref}
     label="Open Dropdown"
     onClick={props.onClick}
     isDisabled={props.isDisabled}
@@ -73,14 +73,13 @@ const DropdownChevron = props => (
       )}
     </div>
   </AccessibleButton>
-);
+));
 DropdownChevron.displayName = 'DropdownChevron';
 DropdownChevron.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string.isRequired,
-  buttonRef: PropTypes.func.isRequired,
 };
 
 const Options = props => (
@@ -135,6 +134,8 @@ export class PrimaryActionDropdown extends React.PureComponent {
     isOpen: false,
   };
 
+  ref = React.createRef();
+
   handleOpen = () => {
     this.setState({ isOpen: true });
   };
@@ -146,7 +147,7 @@ export class PrimaryActionDropdown extends React.PureComponent {
   // close the dropdown when anything but the dropdown trigger is clicked,
   // including when the dropdown content itself is clicked.
   handleGlobalClick = event => {
-    const dropdownButton = this.dropdownButton;
+    const dropdownButton = this.ref.current;
     if (
       event.target !== dropdownButton &&
       !dropdownButton.contains(event.target)
@@ -184,9 +185,7 @@ export class PrimaryActionDropdown extends React.PureComponent {
           }
           chevron={
             <DropdownChevron
-              buttonRef={dropdownButton => {
-                this.dropdownButton = dropdownButton;
-              }}
+              ref={this.ref}
               onClick={this.state.isOpen ? this.handleClose : this.handleOpen}
               isDisabled={primaryOption.props.isDisabled}
               isOpen={this.state.isOpen}
