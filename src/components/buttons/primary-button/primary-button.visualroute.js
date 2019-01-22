@@ -69,30 +69,30 @@ export const component = () => (
       />
     </Spec>
 
-    <Spec label="as toggle button (urgent theme) - when not toggled">
+    <Spec label="as toggle button (urgent tone) - when not toggled">
       <PrimaryButton
         label="A label text"
         onClick={() => {}}
-        theme="urgent"
+        tone="urgent"
         isToggleButton={true}
       />
     </Spec>
 
-    <Spec label="as toggle button (urgent theme) - when toggled">
+    <Spec label="as toggle button (urgent tone) - when toggled">
       <PrimaryButton
         label="A label text"
         onClick={() => {}}
-        theme="urgent"
+        tone="urgent"
         isToggleButton={true}
         isToggled={true}
       />
     </Spec>
 
-    <Spec label="as toggle button (urgent theme) - when toggled and disabled">
+    <Spec label="as toggle button (urgent tone) - when toggled and disabled">
       <PrimaryButton
         label="A label text"
         onClick={() => {}}
-        theme="urgent"
+        tone="urgent"
         isToggleButton={true}
         isToggled={true}
         isDisabled={true}
