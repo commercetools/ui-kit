@@ -4,7 +4,6 @@ const postcssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssReporter = require('postcss-reporter');
 const postcssCustomProperties = require('postcss-custom-properties');
-const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const customProperties = require('../materials/custom-properties.json');
 
 const browserslist = {
@@ -36,20 +35,22 @@ module.exports = (storybookBaseConfig, configType) => {
       loaders: [require.resolve('@storybook/addon-storysource/loader')],
       enforce: 'pre',
     },
+    // Process JS with Babel.
     {
       test: /\.(js|ts)x?$/,
-      exclude: /node_modules/,
+      include: sourceFolders,
       use: [
         {
-          loader: require.resolve('awesome-typescript-loader'),
+          loader: require.resolve('babel-loader'),
           options: {
-            useCache: true,
-            useBabel: true,
-            babelOptions: {
-              babelrc: false,
-              presets: [require.resolve('../scripts/get-babel-preset')],
-            },
-            babelCore: require.resolve('@babel/core'),
+            babelrc: false,
+            compact: false,
+            presets: [require.resolve('../scripts/get-babel-preset')],
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/
+            // directory for faster rebuilds.
+            cacheDirectory: true,
+            highlightCode: true,
           },
         },
       ],
@@ -148,14 +149,9 @@ module.exports = (storybookBaseConfig, configType) => {
       ],
     },
   ];
+
   // Currently we need to add '.ts' to the resolve.extensions array.
   storybookBaseConfig.resolve.extensions = ['.ts', '.tsx', '.js', '.jsx'];
-  storybookBaseConfig.resolve.plugins = [
-    new TsConfigPathsPlugin({
-      tsconfig: '../tsconfig.json',
-      compiler: 'typescript',
-    }),
-  ];
 
   return storybookBaseConfig;
 };

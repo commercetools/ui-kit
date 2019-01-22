@@ -61,7 +61,8 @@ module.exports = function getBabelPresets() {
           useBuiltIns: true,
         },
       ],
-      '@emotion/babel-preset-css-prop',
+      require('@emotion/babel-preset-css-prop').default,
+      require('@babel/preset-typescript').default,
     ].filter(Boolean),
     plugins: [
       // Experimental macros support. Will be documented after it's had some time
