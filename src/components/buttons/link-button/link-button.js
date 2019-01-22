@@ -1,36 +1,54 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
-import styles from './link-button.mod.css';
 
-const LinkButton = props => {
-  const dataAttributes = {
-    'data-track-component': 'LinkButton',
-    ...filterDataAttributes(props),
-  };
-  return (
-    <Link
-      to={props.to}
-      className={classnames(styles.button, {
-        [styles.disabled]: props.isDisabled,
+const LinkButton = props => (
+  <Link
+    to={props.to}
+    css={css`
+      display: inline-flex;
+      align-items: center;
+      font-size: 1rem;
+      border: none;
+      background: none;
+      padding: 0;
+      min-height: initial;
+      cursor: pointer;
+      text-decoration: none;
+      ${props.isDisabled ? 'cursor: not-allowed;' : ''}
+
+      > * + * {
+        margin: 0 0 0 ${vars['--spacing-4']};
+      }
+      p {
+        color: ${vars['--color-green']};
+        ${props.isDisabled ? `color: ${vars['--color-gray']};` : ''}
+      }
+      &:hover {
+        p {
+          color: ${vars['--color-green-25']};
+          ${props.isDisabled ? `color: ${vars['--color-gray']});` : ''}
+        }
+      }
+    `}
+    onClick={props.isDisabled ? event => event.preventDefault() : undefined}
+    data-track-component="LinkButton"
+    {...filterDataAttributes(props)}
+  >
+    {Boolean(props.iconLeft) &&
+      React.cloneElement(props.iconLeft, {
+        size: 'medium',
+        theme: props.isDisabled ? 'grey' : 'green',
       })}
-      onClick={props.isDisabled ? event => event.preventDefault() : undefined}
-      {...dataAttributes}
-    >
-      {Boolean(props.iconLeft) &&
-        React.cloneElement(props.iconLeft, {
-          size: 'medium',
-          theme: props.isDisabled ? 'grey' : 'green',
-        })}
-      <div>
-        <Text.Body>{props.label}</Text.Body>
-      </div>
-    </Link>
-  );
-};
+    <div>
+      <Text.Body>{props.label}</Text.Body>
+    </div>
+  </Link>
+);
 
 LinkButton.displayName = 'LinkButton';
 LinkButton.propTypes = {

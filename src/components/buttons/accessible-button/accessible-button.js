@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
-import styles from './accessible-button.mod.css';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 
 /*
   Even though this button could be a functional component a class is used to
@@ -58,10 +58,26 @@ export default class AccessibleButton extends React.PureComponent {
         type={this.props.type}
         aria-label={this.props.label}
         onClick={this.props.onClick}
-        className={classnames(
-          this.props.isDisabled ? styles.disabled : styles.button,
-          this.props.className
-        )}
+        css={css`
+          border: none;
+          background: none;
+          display: inline-block;
+          outline: 0;
+          padding: 0;
+          margin: 0;
+          white-space: nowrap;
+          cursor: pointer;
+          color: inherit;
+          font: inherit;
+          font-size: ${vars['--font-size-default']};
+          font-family: ${vars['--font-family-default']};
+
+          ${this.props.isDisabled ? 'cursor: not-allowed;' : ''}
+        `}
+        // Allow to override the styles by passing a `className` prop.
+        // Custom styles can also be passed using the `css` prop from emotion.
+        // https://emotion.sh/docs/css-prop#style-precedence
+        className={this.props.className}
         {...propsForToggle}
         {...propsForDisabled}
         {...this.props.buttonAttributes}

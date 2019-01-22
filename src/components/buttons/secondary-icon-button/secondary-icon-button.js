@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
-import styles from './secondary-icon-button.mod.css';
 
 export const SecondaryIconButton = props => {
   const buttonAttributes = {
@@ -17,7 +17,15 @@ export const SecondaryIconButton = props => {
     <div
       onMouseOver={props.handleMouseOver}
       onMouseOut={props.handleMouseOut}
-      className={styles.button}
+      css={css`
+        display: inline-flex;
+        align-items: center;
+        border: none;
+        background: none;
+        padding: 0;
+        min-height: initial;
+        cursor: pointer;
+      `}
     >
       <AccessibleButton
         type={props.type}
@@ -26,7 +34,13 @@ export const SecondaryIconButton = props => {
         onClick={props.onClick}
         isDisabled={props.isDisabled}
       >
-        <div className={styles['icon-container']}>
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          `}
+        >
           {React.cloneElement(props.icon, { theme: iconTheme })}
         </div>
       </AccessibleButton>
