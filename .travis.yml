@@ -17,6 +17,7 @@ script:
   # https://github.com/commercetools/ui-kit/pull/284
   - set -e
   - yarn run jest --projects jest.test.config.js jest.stylelint.config.js jest.tslint.config.js --maxWorkers=4 --reporters jest-silent-reporter
+  - yarn run type-check
   # the jest.bundle.config.js tests run on the bundle,
   # so we need to build it first
   - yarn build
