@@ -42,7 +42,6 @@ export const FlatButton = props => {
   return (
     <div onMouseOver={props.handleMouseOver} onMouseOut={props.handleMouseOut}>
       <AccessibleButton
-        buttonAttributes={dataProps}
         type={props.type}
         label={props.label}
         onClick={props.onClick}
@@ -59,13 +58,11 @@ export const FlatButton = props => {
           > * + * {
             margin: 0 0 0 ${vars['--spacing-4']};
           }
-
           p {
             color: ${props.isDisabled
               ? vars['--color-gray']
               : getColorTone(props.tone)};
           }
-
           &:hover {
             p {
               color: ${props.isDisabled
@@ -74,6 +71,7 @@ export const FlatButton = props => {
             }
           }
         `}
+        buttonAttributes={dataProps}
       >
         {props.iconPosition === 'left' && getIconElement(props)}
         <div>

@@ -21,7 +21,7 @@ storiesOf('Components|Buttons', module)
         )}
         onClick={action('onClick')}
         label={text('label', 'Accessibility text')}
-        isDisabled={boolean('isDisabled?', false)}
+        isDisabled={boolean('isDisabled', false)}
       />
     </Section>
   ));

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'recompose';
-import invariant from 'tiny-invariant';
 import isNil from 'lodash.isnil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
@@ -9,109 +8,18 @@ import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
-
-const buttonSizes = {
-  small: '16px',
-  medium: '24px',
-  big: '32px',
-};
-
-const getStateStyles = (isDisabled, isToggled, theme) => {
-  // toggled means active
-  if (isToggled) {
-    const activeStyle = `
-      box-shadow: ${vars['--shadow-9']};
-      background-color: ${vars['--color-white']};
-      &:hover {
-        box-shadow: ${vars['--shadow-9']};
-        background-color: ${vars['--color-gray-95']};
-      }
-    `;
-    switch (theme) {
-      case 'blue':
-        return `
-          ${activeStyle}
-          ${
-            // When the button is active and somehow is disabled it should have
-            // a different color to indicate that it's active but can't receive any actions
-            isDisabled
-              ? `
-                background-color: ${vars['--color-blue-85']};
-                color: ${vars['--color-white']};
-                box-shadow: ${vars['--shadow-9']};
-              `
-              : ''
-          }
-          background-color: ${vars['--color-blue']};
-          color: ${vars['--color-white']};
-          &:hover {
-            background-color: ${vars['--color-blue-85']};
-          }
-        `;
-      case 'green':
-        return `
-          ${activeStyle}
-          ${
-            // When the button is active and somehow is disabled it should have
-            // a different color to indicate that it's active but can't receive any actions
-            isDisabled
-              ? `
-                background-color: ${vars['--color-green-85']};
-                color: ${vars['--color-white']};
-                box-shadow: ${vars['--shadow-9']};
-              `
-              : ''
-          }
-          background-color: ${vars['--color-green']};
-          color: ${vars['--color-white']};
-          &:hover {
-            background-color: ${vars['--color-green-85']};
-          }
-        `;
-      default:
-        return activeStyle;
-    }
-  }
-  if (isDisabled) {
-    const disabledStyle = `
-      background-color: ${vars['--color-navy-98']};
-      color: ${vars['--color-gray-60']};
-      box-shadow: none;
-    `;
-    switch (theme) {
-      case 'blue':
-        return `
-          ${disabledStyle}
-          &:hover {
-            background-color: ${vars['--color-blue-85']};
-          }
-        `;
-      case 'green':
-        return `
-          ${disabledStyle}
-          &:hover {
-            background-color: ${vars['--color-green-85']};
-          }
-        `;
-      default:
-        return disabledStyle;
-    }
-  }
-  return `
-    &:hover {
-      box-shadow: ${vars['--shadow-8']};
-    }
-    &:active {
-      box-shadow: ${vars['--shadow-9']};
-      background-color: ${vars['--color-white']};
-    }
-  `;
-};
+import {
+  getStateStyles,
+  getShapeStyles,
+  getSizeStyles,
+  getThemeStyles,
+} from './icon-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 const getIconThemeColor = props => {
+  const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be white when hovering/clicking
-  if (props.theme !== 'default' && (props.isToggled || props.isMouseOver)) {
+  if (props.theme !== 'default' && (isActive || props.isMouseOver)) {
     if (props.isDisabled) {
       return 'grey';
     }
@@ -124,122 +32,55 @@ const getIconThemeColor = props => {
   return props.icon.props.theme;
 };
 
-const getShapeStyles = (shape, size) => {
-  switch (shape) {
-    case 'round':
-      return `border-radius: 50%;`;
-    case 'square':
-      switch (size) {
-        case 'small':
-          return `border-radius: ${vars['--border-radius-2']};`;
-        case 'medium':
-          return `border-radius: ${vars['--border-radius-4']};`;
-        case 'big':
-          return `border-radius: ${vars['--border-radius-6']};`;
-        default:
-          return '';
-      }
-    default:
-      return '';
-  }
-};
-const getSizeStyles = size => {
-  switch (size) {
-    case 'small':
-      return `
-        height: ${buttonSizes.small};
-        width: ${buttonSizes.small};
-      `;
-    case 'medium':
-      return `
-        height: ${buttonSizes.medium};
-        width: ${buttonSizes.medium};
-      `;
-    case 'big':
-      return `
-        height: ${buttonSizes.big};
-        width: ${buttonSizes.big};
-      `;
-    default:
-      return '';
-  }
-};
-const getThemeStyles = theme => {
-  if (!theme) return '';
-
-  if (theme === 'default') return '';
-
-  switch (theme) {
-    case 'green':
-      return `
-        &:active {
-          background-color:  ${vars['--color-green']};
-          color:  ${vars['--color-white']};
-        }
-      `;
-    case 'blue':
-      return `
-        &:hover {
-          background-color:  ${vars['--color-blue']};
-          color:  ${vars['--color-white']};
-        }
-      `;
-    default: {
-      invariant(
-        false,
-        `ui-kit/IconButton: the specified theme '${theme}' is not supported.`
-      );
-      return '';
-    }
-  }
-};
-
 export const IconButton = props => {
-  const dataProps = {
+  const buttonAttributes = {
     'data-track-component': 'IconButton',
     ...filterDataAttributes(props),
   };
+  const isActive = props.isToggleButton && props.isToggled;
   return (
     <div
       onMouseDown={props.handleMouseDown}
       onMouseUp={props.handleMouseUp}
       onMouseOver={props.handleMouseOver}
       onMouseOut={props.handleMouseOut}
-      css={css`
-        display: inline-block;
-        background-color: ${vars['--color-white']};
-        box-shadow: ${vars['--shadow-7']};
-        color: ${vars['--color-black']};
-        transition: background-color ${vars['--transition-linear-80ms']},
-          box-shadow 150ms ease-in-out;
-
-        ${getStateStyles(props.isDisabled, props.isToggled, props.theme)}
-        ${getShapeStyles(props.shape, props.size)}
-        ${getSizeStyles(props.size)}
-        ${getThemeStyles(props.theme)}
-      `}
+      css={[
+        css`
+          display: inline-block;
+          background-color: ${vars['--color-white']};
+          box-shadow: ${vars['--shadow-7']};
+          color: ${vars['--color-black']};
+          transition: background-color ${vars['--transition-linear-80ms']},
+            box-shadow 150ms ease-in-out;
+        `,
+        getStateStyles(props.isDisabled, isActive, props.theme),
+        getShapeStyles(props.shape, props.size),
+        getSizeStyles(props.size),
+        getThemeStyles(props.theme),
+      ]}
     >
       <AccessibleButton
-        buttonAttributes={dataProps}
+        buttonAttributes={buttonAttributes}
         type={props.type}
         label={props.label}
         onClick={props.onClick}
+        isToggleButton={props.isToggleButton}
         isToggled={props.isToggled}
         isDisabled={props.isDisabled}
-        css={css`
-          ${getSizeStyles(props.size)}
-        `}
+        css={getSizeStyles(props.size)}
       >
         <div
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            ${getSizeStyles(props.size)}
-            > * + * {
-              margin: 0 0 0 6px;
-            }
-          `}
+          css={[
+            css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              > * + * {
+                margin: 0 0 0 6px;
+              }
+            `,
+            getSizeStyles(props.size),
+          ]}
         >
           {props.icon &&
             React.cloneElement(props.icon, {

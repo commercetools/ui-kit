@@ -3,7 +3,6 @@ import React from 'react';
 import oneLine from 'common-tags/lib/oneLine';
 import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
-import invariant from 'tiny-invariant';
 import isNil from 'lodash.isnil';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
@@ -13,72 +12,15 @@ import AccessibleButton from '../accessible-button';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-
-const getStateStyles = (isDisabled, isToggled, theme) => {
-  // toggled means active
-  if (isToggled) {
-    const baseActiveStyles = `
-      box-shadow: ${vars['--shadow-9']};
-      background-color: ${vars['--color-white']};
-      &:hover {
-        background-color: ${vars['--color-gray-95']};
-      }
-      ${
-        isDisabled
-          ? `
-            box-shadow: 0 0 0 1px ${vars['--color-gray']} inset;
-            background-color: ${vars['--color-navy-98']};
-            color: ${vars['--color-gray-60']};
-            pointer-events: none;
-          `
-          : ''
-      }
-    `;
-    switch (theme) {
-      case 'blue':
-        return `
-          ${baseActiveStyles}
-          color: ${vars['--color-blue']};
-        `;
-      default:
-        return baseActiveStyles;
-    }
-  }
-  if (isDisabled) {
-    const baseDisabledStyles = `
-      box-shadow: 0 0 0 1px ${vars['--color-gray']} inset;
-      background-color: ${vars['--color-navy-98']};
-      color: ${vars['--color-gray-60']};
-      pointer-events: none;
-    `;
-    switch (theme) {
-      case 'blue':
-        return `
-          ${baseDisabledStyles}
-          color: ${vars['--color-gray-60']};
-          ${isToggled ? `color: ${vars['--color-blue']};` : ''}
-        `;
-      default:
-        return baseDisabledStyles;
-    }
-  }
-  return `
-    &:hover {
-      box-shadow: ${vars['--shadow-8']};
-    }
-    &:active {
-      box-shadow: ${vars['--shadow-9']};
-      background-color: ${vars['--color-white']};
-    }
-  `;
-};
+import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 export const getIconThemeColor = props => {
+  const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be the same color as the theme on hover/active states
   if (
     props.theme !== 'default' &&
-    (props.isToggled || (props.isMouseOver && !props.isDisabled))
+    (isActive || (props.isMouseOver && !props.isDisabled))
   )
     return props.theme; // returns the passed in theme without overwriting
   // if button is disabled, icon should be grey
@@ -87,56 +29,28 @@ export const getIconThemeColor = props => {
   return props.iconLeft.props.theme;
 };
 
-const getThemeStyles = theme => {
-  if (!theme) return '';
-
-  if (theme === 'default') return '';
-
-  switch (theme) {
-    case 'blue':
-      return `
-        &:hover {
-          color:  ${vars['--color-blue']};
-        }
-      `;
-    default: {
-      invariant(
-        false,
-        `ui-kit/SecondaryButton: the specified theme '${theme}' is not supported.`
-      );
-      return `
-        &:hover {
-          box-shadow: ${vars['--shadow-8']};
-        }
-        &:active {
-          box-shadow: ${vars['--shadow-9']};
-          background-color: ${vars['--color-white']};
-        }
-      `;
-    }
-  }
-};
-
 export const SecondaryButton = props => {
   const dataProps = {
     'data-track-component': 'SecondaryButton',
     ...filterDataAttributes(props),
   };
+  const isActive = props.isToggleButton && props.isToggled;
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
 
-  const containerStyles = `
-    display: inline-block;
-    background-color: ${vars['--color-white']};
-    border-radius: ${vars['--border-radius-6']};
-    box-shadow: ${vars['--shadow-7']};
-    color: ${vars['--color-black']};
-    font-size: ${vars['--font-size-default']};
-    transition: background-color ${vars['--transition-linear-80ms']},
-      box-shadow ${vars['--transition-easeinout-150ms']};
-
-    ${getStateStyles(props.isDisabled, props.isToggled, props.theme)}
-    ${getThemeStyles(props.theme)}
-  `;
+  const containerStyles = [
+    css`
+      display: inline-block;
+      background-color: ${vars['--color-white']};
+      border-radius: ${vars['--border-radius-6']};
+      box-shadow: ${vars['--shadow-7']};
+      color: ${vars['--color-black']};
+      font-size: ${vars['--font-size-default']};
+      transition: background-color ${vars['--transition-linear-80ms']},
+        box-shadow ${vars['--transition-easeinout-150ms']};
+    `,
+    getStateStyles(props.isDisabled, isActive, props.theme),
+    getThemeStyles(props.theme),
+  ];
 
   const containerElements = (
     <AccessibleButton
@@ -144,13 +58,14 @@ export const SecondaryButton = props => {
       buttonAttributes={dataProps}
       label={props.label}
       onClick={props.onClick}
+      isToggleButton={props.isToggleButton}
       isToggled={props.isToggled}
       isDisabled={props.isDisabled}
       css={css`
         display: flex;
         align-items: center;
         padding: 0 ${vars['--spacing-16']};
-        height: ${vars['--size-container-big']};
+        height: ${vars['--big-button-height']};
       `}
     >
       <Spacings.Inline alignItems="center" scale="xs">
@@ -176,10 +91,12 @@ export const SecondaryButton = props => {
   if (shouldUseLinkTag) {
     return (
       <Link
-        css={css`
-          ${containerStyles}
-          text-decoration: none;
-        `}
+        css={[
+          ...containerStyles,
+          css`
+            text-decoration: none;
+          `,
+        ]}
         onMouseDown={props.handleMouseDown}
         onMouseUp={props.handleMouseUp}
         onMouseOver={props.handleMouseOver}
@@ -192,9 +109,7 @@ export const SecondaryButton = props => {
   }
   return (
     <div
-      css={css`
-        ${containerStyles}
-      `}
+      css={containerStyles}
       onMouseDown={props.handleMouseDown}
       onMouseUp={props.handleMouseUp}
       onMouseOver={props.handleMouseOver}

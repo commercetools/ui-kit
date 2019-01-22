@@ -1,113 +1,70 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '../../../test-utils';
 import AccessibleButton from './accessible-button';
 
-const createProps = custom => ({
-  label: '',
-  onClick: () => {},
+const createTestProps = custom => ({
+  label: 'test-button',
+  onClick: jest.fn(),
   children: <div />,
-  className: '',
   ...custom,
 });
 
 describe('rendering', () => {
-  describe('button', () => {
-    let props;
-    let wrapper;
-    beforeEach(() => {
-      props = createProps({ className: 'foo' });
-      wrapper = shallow(<AccessibleButton {...props} />);
-    });
-    it('should render a <button/> tag', () => {
-      expect(wrapper).toRender('button');
-    });
-    it('should apply the className prop to the button', () => {
-      expect(wrapper.find('button')).toContainClass(props.className);
-    });
-    it('should default to the "button" type', () => {
-      expect(wrapper.find('button')).toHaveProp('type', 'button');
-    });
-    it('should have the type button', () => {
-      expect(wrapper.find('button').prop('type')).toBe('button');
-    });
-    it('should have no aria-pressed attribute', () => {
-      expect(wrapper.find('button').prop('aria-pressed')).toBeUndefined();
-    });
-    it('should add the button class to the button', () => {
-      expect(wrapper.find('button')).toContainClass('button');
-    });
+  let props;
+  beforeEach(() => {
+    props = createTestProps();
+  });
+  it('should render', () => {
+    const { getByLabelText } = render(<AccessibleButton {...props} />);
+    expect(getByLabelText('test-button')).toBeInTheDocument();
+    expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+  });
+  it('should apply the className "foo" to the button', () => {
+    const { getByLabelText } = render(
+      <AccessibleButton {...props} className="foo" />
+    );
+    expect(getByLabelText('test-button')).toHaveClass('foo');
+  });
+  it('should pass a ref', () => {
+    const ref = React.createRef();
+    const { container } = render(<AccessibleButton {...props} ref={ref} />);
+    expect(container).toContainElement(ref.current);
+  });
+  it('should be marked as "disabled"', () => {
+    const { getByLabelText } = render(
+      <AccessibleButton {...props} isDisabled={true} />
+    );
+    expect(getByLabelText('test-button')).toHaveAttribute('disabled');
+    expect(getByLabelText('test-button')).toHaveAttribute(
+      'aria-disabled',
+      'true'
+    );
+  });
+  it('should be marked as "active"', () => {
+    const { getByLabelText } = render(
+      <AccessibleButton {...props} isToggleButton={true} isToggled={true} />
+    );
+    expect(getByLabelText('test-button')).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    );
   });
   describe('type variations', () => {
-    it('should allow setting button type to "submit"', () => {
-      const props = createProps({ type: 'submit' });
-      const wrapper = shallow(<AccessibleButton {...props} />);
-      expect(wrapper.find('button')).toHaveProp('type', 'submit');
+    it('should render a button of type "button"', () => {
+      const { getByLabelText } = render(<AccessibleButton {...props} />);
+      expect(getByLabelText('test-button')).toHaveAttribute('type', 'button');
     });
-    it('should allow setting button type to "reset"', () => {
-      const props = createProps({ type: 'reset' });
-      const wrapper = shallow(<AccessibleButton {...props} />);
-      expect(wrapper.find('button')).toHaveProp('type', 'reset');
-    });
-    it('should allow setting button type to "button"', () => {
-      const props = createProps({ type: 'button' });
-      const wrapper = shallow(<AccessibleButton {...props} />);
-      expect(wrapper.find('button')).toHaveProp('type', 'button');
-    });
-  });
-  describe('label', () => {
-    const props = createProps({ label: 'Login' });
-    const wrapper = shallow(<AccessibleButton {...props} />);
-    it('set the aria-label attribute of the button to the label', () => {
-      expect(wrapper.find('button').prop('aria-label')).toBe('Login');
-    });
-  });
-  describe('as a toggle button', () => {
-    describe('when setting the button as active', () => {
-      const props = createProps({ isToggleButton: true, isToggled: true });
-      const wrapper = shallow(<AccessibleButton {...props} />);
-      it('should set the aria-pressed attribute to true', () => {
-        expect(wrapper.find('button').prop('aria-pressed')).toBe(true);
-      });
-    });
-    describe('when setting the button as not active', () => {
-      const props = createProps({ isToggleButton: true, isToggled: false });
-      const wrapper = shallow(<AccessibleButton {...props} />);
-      it('should set the aria-pressed attribute to false', () => {
-        expect(wrapper.find('button').prop('aria-pressed')).toBe(false);
-      });
-    });
-  });
-  describe('setting the button as disabled', () => {
-    const props = createProps({ isDisabled: true });
-    const wrapper = shallow(<AccessibleButton {...props} />);
-    it('should set the aria-disabled attribute to true', () => {
-      expect(wrapper.find('button').prop('aria-disabled')).toBe(true);
-    });
-    it('should set the disabled attribute on the button', () => {
-      expect(wrapper.find('button').prop('disabled')).toBe(true);
-    });
-    it('should add the disabled class to the button', () => {
-      expect(wrapper.find('button')).toContainClass('disabled');
-    });
-  });
-  describe('children', () => {
-    const props = createProps({ children: <div className="foo" /> });
-    const wrapper = shallow(<AccessibleButton {...props} />);
-    it('should render children', () => {
-      expect(wrapper.find('button').contains(<div className="foo" />)).toBe(
-        true
+    it('should render a button of type "submit"', () => {
+      const { getByLabelText } = render(
+        <AccessibleButton {...props} type="submit" />
       );
+      expect(getByLabelText('test-button')).toHaveAttribute('type', 'submit');
     });
-  });
-});
-
-describe('interaction', () => {
-  describe('clicking the button', () => {
-    const props = createProps({ onClick: jest.fn() });
-    const wrapper = shallow(<AccessibleButton {...props} />);
-    wrapper.find('button').simulate('click');
-    it('should call the onClick callback', () => {
-      expect(props.onClick).toHaveBeenCalledTimes(1);
+    it('should render a button of type "reset"', () => {
+      const { getByLabelText } = render(
+        <AccessibleButton {...props} type="reset" />
+      );
+      expect(getByLabelText('test-button')).toHaveAttribute('type', 'reset');
     });
   });
 });

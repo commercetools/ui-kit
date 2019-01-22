@@ -38,6 +38,7 @@ const LinkButton = props => (
     onClick={props.isDisabled ? event => event.preventDefault() : undefined}
     data-track-component="LinkButton"
     {...filterDataAttributes(props)}
+    aria-label={props.label}
   >
     {Boolean(props.iconLeft) &&
       React.cloneElement(props.iconLeft, {
