@@ -1,9 +1,9 @@
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties.json';
+import * as vars from '../../../../materials/custom-properties';
 
 const baseStyles = `
-  font-family: ${vars['--font-family-default']};
-  color: ${vars['--color-black']};
+  font-family: ${vars.fontFamilyDefault};
+  color: ${vars.colorBlack};
 `;
 
 const truncate = `
@@ -27,19 +27,19 @@ const inline = `
 const getTone = tone => {
   switch (tone) {
     case 'information':
-      return `color: ${vars['--color-blue']};`;
+      return `color: ${vars.colorBlue};`;
     case 'secondary':
-      return `color: ${vars['--color-gray-60']};`;
+      return `color: ${vars.colorGray60};`;
     case 'positive':
-      return `color: ${vars['--color-green-25']};`;
+      return `color: ${vars.colorGreen25};`;
     case 'primary':
-      return `color: ${vars['--color-green']};`;
+      return `color: ${vars.colorGreen};`;
     case 'negative':
-      return `color: ${vars['--color-red']};`;
+      return `color: ${vars.colorRed};`;
     case 'inverted':
-      return `color: ${vars['--color-white']};`;
+      return `color: ${vars.colorWhite};`;
     case 'warning':
-      return `color: ${vars['--color-orange']};`;
+      return `color: ${vars.colorOrange};`;
     default:
       return ``;
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Spacings from '../spacings';
-import vars from '../../../materials/custom-properties';
+import * as vars from '../../../materials/custom-properties';
 
 export const availableTones = [
   'critical',
@@ -17,38 +17,38 @@ const getToneStyles = props => {
   switch (props.tone) {
     case 'critical': {
       return css`
-        background-color: ${vars['--color-red-95']};
-        border: 1px solid ${vars['--color-red']};
+        background-color: ${vars.colorRed95};
+        border: 1px solid ${vars.colorRed};
       `;
     }
     case 'warning': {
       return css`
-        background-color: ${vars['--color-orange-95']};
-        border: 1px solid ${vars['--color-orange']};
+        background-color: ${vars.colorOrange95};
+        border: 1px solid ${vars.colorOrange};
       `;
     }
     case 'positive': {
       return css`
-        background-color: ${vars['--color-green-85']};
-        border: 1px solid ${vars['--color-green-40']};
+        background-color: ${vars.colorGreen85};
+        border: 1px solid ${vars.colorGreen40};
       `;
     }
     case 'information': {
       return css`
-        background-color: ${vars['--color-blue-95']};
-        border: 1px solid ${vars['--color-blue']};
+        background-color: ${vars.colorBlue95};
+        border: 1px solid ${vars.colorBlue};
       `;
     }
     case 'primary': {
       return css`
-        background-color: ${vars['--color-green-95']};
-        border: 1px solid ${vars['--color-green-25']};
+        background-color: ${vars.colorGreen95};
+        border: 1px solid ${vars.colorGreen25};
       `;
     }
     case 'secondary': {
       return css`
-        background-color: ${vars['--color-gray-90']};
-        border: 1px solid ${vars['--color-gray-60']};
+        background-color: ${vars.colorGray90};
+        border: 1px solid ${vars.colorGray60};
       `;
     }
     default:
@@ -60,9 +60,9 @@ const Label = props => (
   <div
     css={[
       css`
-        font-family: ${vars['--font-family-default']};
-        color: ${vars['-color-black']};
-        font-size: ${vars['--font-size-default']};
+        font-family: ${vars.fontFamilyDefault};
+        color: ${vars.colorBlack};
+        font-size: ${vars.fontSizeDefault};
         border-radius: 2px;
       `,
       getToneStyles(props),

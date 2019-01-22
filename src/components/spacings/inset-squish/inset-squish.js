@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import * as vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const getPadding = scale => {
   switch (scale) {
     case 's':
-      return `${vars['--spacing-4']} ${vars['--spacing-8']}`;
+      return `${vars.spacing4} ${vars.spacing8}`;
     case 'm':
-      return `${vars['--spacing-8']} ${vars['--spacing-16']}`;
+      return `${vars.spacing8} ${vars.spacing16}`;
     case 'l':
-      return `${vars['--spacing-16']} ${vars['--spacing-32']}`;
+      return `${vars.spacing16} ${vars.spacing32}`;
     default:
       return 0;
   }

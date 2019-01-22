@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import oneLineTrim from 'common-tags/lib/oneLineTrim';
 import { css } from '@emotion/core';
-import vars from '../../../materials/custom-properties';
+import * as vars from '../../../materials/custom-properties';
 import filterDataAttributes from '../../utils/filter-data-attributes';
 
 const avatarSizes = {
@@ -85,11 +85,11 @@ const Avatar = props => (
   <div
     css={css`
       align-items: center;
-      font-family: ${vars['--font-family-default']};
-      background-color: ${vars['--color-gray-60']};
+      font-family: ${vars.fontFamilyDefault};
+      background-color: ${vars.colorGray60};
       border-radius: 100%;
-      font-size: ${vars['--font-size-default']};
-      color: ${vars['--color-white']};
+      font-size: ${vars.fontSizeDefault};
+      color: ${vars.colorWhite};
       display: flex;
       justify-content: center;
       overflow: hidden;
@@ -98,7 +98,7 @@ const Avatar = props => (
       height: ${avatarSizes[props.size].width};
       width: ${avatarSizes[props.size].width};
 
-      ${props.isHighlighted ? `background-color: ${vars['--color-gray']};` : ''}
+      ${props.isHighlighted ? `background-color: ${vars.colorGray};` : ''}
     `}
     {...filterDataAttributes(props)}
   >
