@@ -11,6 +11,7 @@
   ],
   "compilerOptions": {
     "allowJs": false,
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "noEmit": false
   }
 }
