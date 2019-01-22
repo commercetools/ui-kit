@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { css } from '@emotion/core';
+import vars from '../../../materials/custom-properties';
 import Constraints from '../constraints';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
@@ -22,10 +24,6 @@ const getClickableContentWrapperTypeClassName = ({ type, isRemovable }) =>
     : classnames(styles.clickableContentWrapperNormal, {
         [styles.clickableRemovableContentWrapperNormal]: isRemovable,
       });
-const getRemoveWrapperTypeClassName = type =>
-  type === 'warning'
-    ? styles.removeWrapperTypeWarning
-    : styles.removeWrapperTypeNormal;
 
 export const TagLinkBody = props => (
   <div
@@ -129,13 +127,47 @@ const Tag = props => (
           label="Remove"
           isDisabled={props.isDisabled}
           onClick={props.isDisabled ? undefined : props.onRemove}
-          className={classnames(
-            styles.removeWrapper,
-            getRemoveWrapperTypeClassName(props.type),
-            {
-              [styles.disabledRemove]: props.isDisabled,
-            }
-          )}
+          css={[
+            css`
+              border-color: ${vars['--border-color-tag-pristine']};
+              padding: 0 ${vars['--spacing-4']};
+              border-radius: 0 ${vars['--border-radius-tag']}
+                ${vars['--border-radius-tag']} 0;
+              display: flex;
+              align-items: center;
+              background: inherit;
+              border-style: solid;
+              border-width: 1px 1px 1px 0;
+              &:hover {
+                background-color: ${vars[
+                  '--background-color-tag-normal-hover'
+                ]};
+                box-shadow: ${vars['--shadow-box-tag-hover']};
+              }
+              > svg * {
+                fill: ${vars['--font-color-default']};
+              }
+            `,
+            props.type === 'warning' &&
+              css`
+                border-color: ${vars['--border-color-tag-warning']};
+                &:hover {
+                  background-color: ${vars[
+                    '--background-color-tag-warning-hover'
+                  ]};
+                }
+              `,
+            props.isDisabled &&
+              css`
+                &:hover {
+                  background: inherit;
+                  box-shadow: none;
+                }
+                > svg * {
+                  fill: ${vars['--font-color-disabled']};
+                }
+              `,
+          ]}
         >
           <CloseBoldIcon size="medium" />
         </AccessibleButton>

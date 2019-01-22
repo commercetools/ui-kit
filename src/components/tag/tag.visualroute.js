@@ -63,5 +63,10 @@ export const component = () => (
         {longText}
       </Tag>
     </Spec>
+    <Spec label="Normal - onRemove (disabled)">
+      <Tag type="normal" onRemove={() => {}} isDisabled={true}>
+        {longText}
+      </Tag>
+    </Spec>
   </Suite>
 );
