@@ -37,7 +37,7 @@ export default props => css`
   display: flex;
   ${getAlignItems(props.alignItems)}
 
-  > * + * {
+  & > * + * {
     margin: 0 0 0 ${getMargin(props.scale)};
   }
 `;
