@@ -39,9 +39,9 @@ export const FlatButton = props => {
         })}
       >
         {props.iconPosition === 'left' && iconElement}
-
-        <Text.Body>{props.label}</Text.Body>
-
+        <div>
+          <Text.Body>{props.label}</Text.Body>
+        </div>
         {props.iconPosition === 'right' && iconElement}
       </AccessibleButton>
     </div>

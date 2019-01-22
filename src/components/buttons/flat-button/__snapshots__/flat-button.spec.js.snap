@@ -22,9 +22,11 @@ exports[`rendering outputs correct tree 1`] = `
       size="medium"
       theme="green"
     />
-    <TextBody>
-      Accessibility text
-    </TextBody>
+    <div>
+      <TextBody>
+        Accessibility text
+      </TextBody>
+    </div>
   </AccessibleButton>
 </div>
 `;

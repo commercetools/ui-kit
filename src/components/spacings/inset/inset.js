@@ -1,10 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import styles from './inset.mod.css';
+import vars from '../../../../materials/custom-properties';
+
+const getPadding = scale => {
+  switch (scale) {
+    case 'xs':
+      return vars['--spacing-4'];
+    case 's':
+      return vars['--spacing-8'];
+    case 'm':
+      return vars['--spacing-16'];
+    case 'l':
+      return vars['--spacing-24'];
+    case 'xl':
+      return vars['--spacing-32'];
+    default:
+      return 0;
+  }
+};
 
 const Inset = props => (
-  <div className={styles[props.scale]} {...filterDataAttributes(props)}>
+  <div
+    css={css`
+      padding: ${getPadding(props.scale)};
+    `}
+    {...filterDataAttributes(props)}
+  >
     {props.children}
   </div>
 );
