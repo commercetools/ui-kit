@@ -13,7 +13,7 @@ const getSizeStyle = size => {
   switch (size) {
     case 'scale':
       return `
-        svg.scale:not(:root) {
+        &:not(:root) {
           width: 100%;
           height: auto;
         }
