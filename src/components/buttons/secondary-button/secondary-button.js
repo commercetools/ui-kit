@@ -2,34 +2,25 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import oneLine from 'common-tags/lib/oneLine';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
 import { compose } from 'recompose';
-import invariant from 'tiny-invariant';
 import isNil from 'lodash.isnil';
 import requiredIf from 'react-required-if';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import styles from './secondary-button.mod.css';
-
-const Div = props => <div {...props} />;
-Div.displayName = 'Div';
-
-const getStateClassNames = (isDisabled, isToggled) =>
-  classnames({
-    [styles.default]: !isToggled && !isDisabled,
-    [styles.active]: isToggled,
-    [styles.disabled]: isDisabled,
-  });
+import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 export const getIconThemeColor = props => {
+  const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be the same color as the theme on hover/active states
   if (
     props.theme !== 'default' &&
-    (props.isToggled || (props.isMouseOver && !props.isDisabled))
+    (isActive || (props.isMouseOver && !props.isDisabled))
   )
     return props.theme; // returns the passed in theme without overwriting
   // if button is disabled, icon should be grey
@@ -38,65 +29,94 @@ export const getIconThemeColor = props => {
   return props.iconLeft.props.theme;
 };
 
-const getThemeClassName = theme => {
-  if (!theme) return undefined;
-
-  const themeClassName = styles[`theme-${theme}`];
-
-  // Whenever a theme is specified a fitting theme className should
-  // be available except for the default theme.
-  invariant(
-    themeClassName || theme === 'default',
-    `ui-kit/SecondaryButton: the specified theme '${theme}' is not supported.`
-  );
-
-  return themeClassName;
-};
-
 export const SecondaryButton = props => {
   const dataProps = {
     'data-track-component': 'SecondaryButton',
     ...filterDataAttributes(props),
   };
+  const isActive = props.isToggleButton && props.isToggled;
+  const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
 
-  const shouldLink = !props.isDisabled && Boolean(props.linkTo);
-  const WrapperComponent = shouldLink ? Link : Div;
+  const containerStyles = [
+    css`
+      display: inline-block;
+      background-color: ${vars.colorWhite};
+      border-radius: ${vars.borderRadius6};
+      box-shadow: ${vars.shadow7};
+      color: ${vars.colorBlack};
+      font-size: ${vars.fontSizeDefault};
+      transition: background-color ${vars.transitionLinear80Ms},
+        box-shadow ${vars.transitionEaseinout150Ms};
+    `,
+    getStateStyles(props.isDisabled, isActive, props.theme),
+    getThemeStyles(props.theme),
+  ];
 
+  const containerElements = (
+    <AccessibleButton
+      type={props.type}
+      buttonAttributes={dataProps}
+      label={props.label}
+      onClick={props.onClick}
+      isToggleButton={props.isToggleButton}
+      isToggled={props.isToggled}
+      isDisabled={props.isDisabled}
+      css={css`
+        display: flex;
+        align-items: center;
+        padding: 0 ${vars.spacing16};
+        height: ${vars.bigButtonHeight};
+      `}
+    >
+      <Spacings.Inline alignItems="center" scale="xs">
+        {Boolean(props.iconLeft) && (
+          <span
+            css={css`
+              margin: 0 ${vars.spacing4} 0 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            `}
+          >
+            {React.cloneElement(props.iconLeft, {
+              theme: getIconThemeColor(props),
+            })}
+          </span>
+        )}
+        <span>{props.label}</span>
+      </Spacings.Inline>
+    </AccessibleButton>
+  );
+
+  if (shouldUseLinkTag) {
+    return (
+      <Link
+        css={[
+          ...containerStyles,
+          css`
+            text-decoration: none;
+          `,
+        ]}
+        onMouseDown={props.handleMouseDown}
+        onMouseUp={props.handleMouseUp}
+        onMouseOver={props.handleMouseOver}
+        onMouseOut={props.handleMouseOut}
+        to={props.linkTo}
+      >
+        {containerElements}
+      </Link>
+    );
+  }
   return (
-    <WrapperComponent
+    <div
+      css={containerStyles}
       onMouseDown={props.handleMouseDown}
       onMouseUp={props.handleMouseUp}
       onMouseOver={props.handleMouseOver}
       onMouseOut={props.handleMouseOut}
-      className={classnames(
-        styles.container,
-        styles['button-appearance'],
-        getStateClassNames(props.isDisabled, props.isToggled),
-        getThemeClassName(props.theme)
-      )}
-      to={shouldLink ? props.linkTo : undefined}
     >
-      <AccessibleButton
-        type={props.type}
-        buttonAttributes={dataProps}
-        label={props.label}
-        onClick={props.onClick}
-        isToggled={props.isToggled}
-        isDisabled={props.isDisabled}
-        className={styles.button}
-      >
-        <Spacings.Inline alignItems="center" scale="xs">
-          {Boolean(props.iconLeft) && (
-            <span className={styles['icon-container']}>
-              {React.cloneElement(props.iconLeft, {
-                theme: getIconThemeColor(props),
-              })}
-            </span>
-          )}
-          <span>{props.label}</span>
-        </Spacings.Inline>
-      </AccessibleButton>
-    </WrapperComponent>
+      {containerElements}
+    </div>
   );
 };
 

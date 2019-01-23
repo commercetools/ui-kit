@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
+import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
-import styles from './flat-button.mod.css';
 
-export const FlatButton = props => {
-  const dataProps = {
-    'data-track-component': 'LinkButton',
-    ...filterDataAttributes(props),
-  };
+const getIconElement = props => {
+  if (!props.icon) return null;
 
   let iconTheme = 'black';
   if (props.isDisabled) iconTheme = 'grey';
@@ -19,30 +17,66 @@ export const FlatButton = props => {
   else if (props.tone === 'secondary' && props.isMouseOver)
     iconTheme = 'orange';
 
-  const iconElement =
-    props.icon &&
-    React.cloneElement(props.icon, {
-      size: 'medium',
-      theme: iconTheme,
-    });
+  return React.cloneElement(props.icon, {
+    size: 'medium',
+    theme: iconTheme,
+  });
+};
+
+const getTextColor = (tone, isHover = false) => {
+  switch (tone) {
+    case 'primary':
+      return isHover ? vars.colorGreen25 : vars.colorGreen;
+    case 'secondary':
+      return vars.colorBlack;
+    default:
+      return 'inherit';
+  }
+};
+
+export const FlatButton = props => {
+  const dataProps = {
+    'data-track-component': 'LinkButton',
+    ...filterDataAttributes(props),
+  };
 
   return (
     <div onMouseOver={props.handleMouseOver} onMouseOut={props.handleMouseOut}>
       <AccessibleButton
-        buttonAttributes={dataProps}
         type={props.type}
         label={props.label}
         onClick={props.onClick}
         isDisabled={props.isDisabled}
-        className={classnames(styles.button, styles[props.tone], {
-          [styles.disabled]: props.isDisabled,
-        })}
+        css={css`
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+          border: none;
+          background: none;
+          padding: 0;
+          min-height: initial;
+          p {
+            color: ${props.isDisabled
+              ? vars.colorGray
+              : getTextColor(props.tone)};
+          }
+          &:hover {
+            p {
+              color: ${props.isDisabled
+                ? vars.colorGray
+                : getTextColor(props.tone, true)};
+            }
+          }
+        `}
+        buttonAttributes={dataProps}
       >
-        {props.iconPosition === 'left' && iconElement}
-        <div>
-          <Text.Body>{props.label}</Text.Body>
-        </div>
-        {props.iconPosition === 'right' && iconElement}
+        <Spacings.Inline scale="xs" alignItems="center">
+          {props.iconPosition === 'left' && getIconElement(props)}
+          <div>
+            <Text.Body>{props.label}</Text.Body>
+          </div>
+          {props.iconPosition === 'right' && getIconElement(props)}
+        </Spacings.Inline>
       </AccessibleButton>
     </div>
   );

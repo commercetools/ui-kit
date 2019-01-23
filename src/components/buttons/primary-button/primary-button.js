@@ -1,48 +1,52 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
 import isNil from 'lodash.isnil';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
-import styles from './primary-button.mod.css';
-
-const getButtonClassNames = ({ isToggled, isDisabled }) => {
-  if (isDisabled) return styles.disabled;
-  if (isToggled) return styles.active;
-  return styles.button;
-};
+import {
+  getButtonLayoutStyles,
+  getButtonStyles,
+} from './primary-button.styles';
 
 const PrimaryButton = props => {
   const dataProps = {
     'data-track-component': 'PrimaryButton',
     ...filterDataAttributes(props),
   };
+  const isActive = props.isToggleButton && props.isToggled;
   return (
-    <div
-      className={classnames(styles[`button-layout-${props.size}`], {
-        [styles[`button-tone-${props.tone}`]]: !props.isDisabled,
-      })}
-    >
+    <div css={getButtonLayoutStyles(props.size)}>
       <AccessibleButton
         type={props.type}
         buttonAttributes={dataProps}
         label={props.label}
         onClick={props.onClick}
+        isToggleButton={props.isToggleButton}
         isToggled={props.isToggled}
         isDisabled={props.isDisabled}
-        className={getButtonClassNames({
-          isToggled: props.isToggled,
-          isDisabled: props.isDisabled,
-        })}
+        css={getButtonStyles(props.isDisabled, isActive, props.tone)}
       >
-        {Boolean(props.iconLeft) && (
-          <span className={styles['icon-container']}>
-            {React.cloneElement(props.iconLeft, {
-              theme: props.isDisabled ? 'grey' : 'white',
-            })}
-          </span>
-        )}
-        <span>{props.label}</span>
+        <Spacings.Inline alignItems="center" scale="xs">
+          {Boolean(props.iconLeft) && (
+            <span
+              css={css`
+                margin: 0 ${vars.spacing4} 0 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              `}
+            >
+              {React.cloneElement(props.iconLeft, {
+                theme: props.isDisabled ? 'grey' : 'white',
+                size: props.size === 'small' ? 'medium' : 'big',
+              })}
+            </span>
+          )}
+          <span>{props.label}</span>
+        </Spacings.Inline>
       </AccessibleButton>
     </div>
   );
