@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import requiredIf from 'react-required-if';
+import { css } from '@emotion/core';
 import IconButton from '../buttons/icon-button';
 import { InformationIcon } from '../icons';
 import Text from '../typography/text';
@@ -48,7 +49,14 @@ export const FieldLabel = props => (
         </Text.Detail>
       )}
 
-      {props.badge}
+      <div
+        css={css`
+          display: flex;
+          justify-content: flex-end;
+        `}
+      >
+        {props.badge}
+      </div>
     </Spacings.Stack>
   </Constraints.Horizontal>
 );
