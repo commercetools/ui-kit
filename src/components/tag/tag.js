@@ -15,12 +15,35 @@ const getTextDetailColor = isDisabled => {
   return vars.colorBlack;
 };
 
-const getWrapperTypeClassName = type =>
-  type === 'warning' ? styles.wrapperTypeWarning : styles.wrapperTypeNormal;
-const getContentWrapperTypeClassName = type =>
+const getContentWrapperStyles = props => css`
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  min-height: ${vars.sizeHeightTag};
+  border-radius: ${vars.borderRadiusTag};
+  padding: 5px ${vars.spacing8};
+  cursor: default;
+  font-family: inherit;
+  white-space: normal;
+  text-align: left;
+  min-width: 0;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  border-style: solid;
+  border-width: 1px;
+  border-color: ${props.type === 'warning'
+    ? vars.borderColorTagWarning
+    : vars.borderColorTagPristine};
+
+  /* fixing things for IE11 ... */
+  width: 100%;
+`;
+
+const getWrapperBackgroundColor = type =>
   type === 'warning'
-    ? styles.contentWrapperWarning
-    : styles.contentWrapperNormal;
+    ? vars.backgroundColorTagWarning
+    : vars.backgroundColorTagPristine;
+
 const getClickableContentWrapperTypeClassName = ({ type, isRemovable }) =>
   type === 'warning'
     ? classnames(styles.clickableContentWrapperWarning, {
@@ -32,20 +55,24 @@ const getClickableContentWrapperTypeClassName = ({ type, isRemovable }) =>
 
 export const TagLinkBody = props => (
   <div
-    className={classnames(
-      styles.contentWrapper,
-      getContentWrapperTypeClassName(props.type),
-      {
-        [getClickableContentWrapperTypeClassName({
-          type: props.type,
-          isRemovable: Boolean(props.onRemove),
-        })]: !props.isDisabled,
-        [styles.clickableContentWrapper]: !props.isDisabled,
-        [styles.plainLink]: !props.isDisabled,
-        [styles.disabledContent]: props.isDisabled,
-        [styles.removableContent]: !props.isDisabled && Boolean(props.onRemove),
-      }
-    )}
+    css={[
+      getContentWrapperStyles(props),
+      !props.isDisabled &&
+        css`
+          cursor: pointer;
+        `,
+      !props.isDisabled &&
+        Boolean(props.onRemove) &&
+        css`
+          padding-right: ${vars.spacing8};
+        `,
+    ]}
+    className={classnames({
+      [getClickableContentWrapperTypeClassName({
+        type: props.type,
+        isRemovable: Boolean(props.onRemove),
+      })]: !props.isDisabled,
+    })}
   >
     {!props.isDisabled ? (
       <Link
@@ -87,20 +114,21 @@ TagLinkBody.propTypes = {
 
 export const TagNormalBody = props => (
   <div
-    className={classnames(
-      styles.contentWrapper,
-      getContentWrapperTypeClassName(props.type),
-      {
-        [getClickableContentWrapperTypeClassName({
-          type: props.type,
-          isRemovable: Boolean(props.onRemove),
-        })]: Boolean(props.onClick) && !props.isDisabled,
-        [styles.clickableContentWrapper]:
-          !props.isDisabled && Boolean(props.onClick),
-        [styles.disabledContent]: props.isDisabled,
-        [styles.removableContent]: Boolean(props.onRemove),
-      }
-    )}
+    css={[
+      getContentWrapperStyles(props),
+      Boolean(props.onRemove) &&
+        css`
+          padding-right: ${vars.spacing8};
+        `,
+    ]}
+    className={classnames({
+      [getClickableContentWrapperTypeClassName({
+        type: props.type,
+        isRemovable: Boolean(props.onRemove),
+      })]: Boolean(props.onClick) && !props.isDisabled,
+      [styles.clickableContentWrapper]:
+        !props.isDisabled && Boolean(props.onClick),
+    })}
     onClick={props.isDisabled ? undefined : props.onClick}
   >
     <Text.Detail
@@ -124,13 +152,13 @@ TagNormalBody.propTypes = {
 const Tag = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <div
-      className={classnames(
-        styles.wrapper,
-        getWrapperTypeClassName(props.type),
-        {
-          [styles.disabledWrapper]: props.isDisabled,
-        }
-      )}
+      css={[
+        css`
+          min-width: 0;
+          display: flex;
+          background-color: ${getWrapperBackgroundColor(props.type)};
+        `,
+      ]}
     >
       {props.linkTo ? (
         <TagLinkBody
