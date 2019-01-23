@@ -1,9 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
 import { ErrorIcon, WarningIcon, InfoIcon, CheckBoldIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import styles from './content-notification.mod.css';
+import vars from '../../../../materials/custom-properties';
+
+const getIconContainerBackgroundColour = props => {
+  switch (props.type) {
+    case 'error':
+      return vars.colorRed;
+    case 'info':
+      return vars.colorBlue;
+    case 'warning':
+      return vars.colorOrange;
+    case 'success':
+      return vars.colorGreen;
+    default:
+      return '';
+  }
+};
 
 const getIconByType = type => {
   switch (type) {
@@ -28,12 +43,39 @@ class NotificationIcon extends React.PureComponent {
   render() {
     const Icon = getIconByType(this.props.type);
     return (
-      <div className={styles.iconContainer}>
+      <div
+        css={css`
+          display: flex;
+          align-items: center;
+          border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+          border-width: 0;
+          padding: ${vars.spacing8} ${vars.spacing16};
+          background-color: ${getIconContainerBackgroundColour(this.props)};
+          svg {
+            margin: 0 -3px;
+          }
+        `}
+      >
         <Icon theme="white" />
       </div>
     );
   }
 }
+
+const getContentBorderColor = props => {
+  switch (props.type) {
+    case 'error':
+      return vars.colorRed;
+    case 'info':
+      return vars.colorBlue;
+    case 'warning':
+      return vars.colorOrange;
+    case 'success':
+      return vars.colorGreen;
+    default:
+      return '';
+  }
+};
 
 export default class ContentNotification extends React.PureComponent {
   static displayName = 'ContentNotification';
@@ -47,10 +89,33 @@ export default class ContentNotification extends React.PureComponent {
     return (
       <div
         {...filterDataAttributes(this.props)}
-        className={classnames(styles.notification, styles[this.props.type])}
+        css={css`
+          display: flex;
+          align-items: stretch;
+          text-align: left;
+          word-break: break-word;
+          hyphens: auto;
+          font-size: ${vars.fontSizeDefault};
+          color: ${vars.colorBlack};
+          font-family: ${vars.fontFamilyDefault};
+        `}
       >
         <NotificationIcon type={this.props.type} theme="white" />
-        <div className={styles.content}>{this.props.children}</div>
+        <div
+          css={css`
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            padding: ${vars.spacing8};
+            background: ${vars.colorWhite};
+            border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: ${getContentBorderColor(this.props)};
+          `}
+        >
+          {this.props.children}
+        </div>
       </div>
     );
   }
