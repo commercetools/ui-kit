@@ -10,8 +10,8 @@ import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
 import styles from './tag.mod.css';
 
-const getTextDetailColor = props => {
-  if (props.isDisabled) return vars.colorGray;
+const getTextDetailColor = isDisabled => {
+  if (isDisabled) return vars.colorGray60;
   return vars.colorBlack;
 };
 
@@ -57,7 +57,7 @@ export const TagLinkBody = props => (
       >
         <Text.Detail
           css={css`
-            color: ${getTextDetailColor(props)};
+            color: ${getTextDetailColor(props.isDisabled)};
           `}
         >
           {props.children}
@@ -66,7 +66,7 @@ export const TagLinkBody = props => (
     ) : (
       <Text.Detail
         css={css`
-          color: ${getTextDetailColor(props)};
+          color: ${getTextDetailColor(props.isDisabled)};
         `}
       >
         {props.children}
@@ -105,7 +105,7 @@ export const TagNormalBody = props => (
   >
     <Text.Detail
       css={css`
-        color: ${getTextDetailColor(props)};
+        color: ${getTextDetailColor(props.isDisabled)};
       `}
     >
       {props.children}
@@ -189,7 +189,7 @@ const Tag = props => (
                   box-shadow: none;
                 }
                 > svg * {
-                  fill: ${vars.colorGray};
+                  fill: ${vars.colorGray60};
                 }
               `,
           ]}
