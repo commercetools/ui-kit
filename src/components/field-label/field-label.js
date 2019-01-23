@@ -7,11 +7,10 @@ import Text from '../typography/text';
 import Label from '../label';
 import Constraints from '../constraints';
 import Spacings from '../spacings';
-import styles from './field-label.mod.css';
 
 export const FieldLabel = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <div className={styles.label}>
+    <Spacings.Stack scale="xs">
       <Spacings.Inline alignItems="flexStart" scale="xs">
         <Text.Wrap>
           <Label
@@ -31,37 +30,26 @@ export const FieldLabel = props => (
           />
         )}
       </Spacings.Inline>
-    </div>
 
-    {props.hint && (
-      <div className={styles.hint}>
+      {props.hint && (
         <Spacings.Inline alignItems="center" scale="xs">
-          {props.hintIcon && (
-            <span className={styles.hintIcon}>
-              {// FIXME: add proper tone when tones are refactored
-              React.cloneElement(props.hintIcon, {
-                size: 'medium',
-                theme: props.hintIcon.props.theme || 'orange',
-              })}
-            </span>
-          )}
+          {props.hintIcon &&
+            // FIXME: add proper tone when tones are refactored
+            React.cloneElement(props.hintIcon, {
+              size: 'medium',
+              theme: props.hintIcon.props.theme || 'orange',
+            })}
           {props.hint && <Text.Detail>{props.hint}</Text.Detail>}
         </Spacings.Inline>
-      </div>
-    )}
-    {props.description && (
-      <div className={styles.description}>
+      )}
+      {props.description && (
         <Text.Detail>
           <Text.Wrap>{props.description}</Text.Wrap>
         </Text.Detail>
-      </div>
-    )}
+      )}
 
-    {props.badge && (
-      <div className={styles.badge}>
-        <div className={styles['label-badge']}>{props.badge}</div>
-      </div>
-    )}
+      {props.badge}
+    </Spacings.Stack>
   </Constraints.Horizontal>
 );
 
