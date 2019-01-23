@@ -23,7 +23,7 @@ const getIconElement = props => {
   });
 };
 
-const getColorTone = (tone, isHover = false) => {
+const getTextColor = (tone, isHover = false) => {
   switch (tone) {
     case 'primary':
       return isHover ? vars.colorGreen25 : vars.colorGreen;
@@ -58,13 +58,13 @@ export const FlatButton = props => {
           p {
             color: ${props.isDisabled
               ? vars.colorGray
-              : getColorTone(props.tone)};
+              : getTextColor(props.tone)};
           }
           &:hover {
             p {
               color: ${props.isDisabled
                 ? vars.colorGray
-                : getColorTone(props.tone, true)};
+                : getTextColor(props.tone, true)};
             }
           }
         `}

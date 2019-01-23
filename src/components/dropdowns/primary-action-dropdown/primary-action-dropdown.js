@@ -8,6 +8,39 @@ import Text from '../../typography/text';
 import { CaretDownIcon, CaretUpIcon } from '../../icons';
 import AccessibleButton from '../../buttons/accessible-button';
 
+const getButtonStyles = isDisabled => {
+  const baseButtonStyles = css`
+    display: flex;
+    align-items: center;
+    padding: 0 ${vars.spacing8};
+    border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+    height: ${vars.bigButtonHeight};
+  `;
+  if (isDisabled) {
+    return [
+      baseButtonStyles,
+      css`
+        box-shadow: none;
+        background-color: ${vars.colorNavy98};
+      `,
+    ];
+  }
+  return [
+    baseButtonStyles,
+    css`
+      background-color: ${vars.colorWhite};
+      box-shadow: ${vars.shadow7};
+      &:hover {
+        box-shadow: ${vars.shadow8};
+      }
+      &:active {
+        box-shadow: ${vars.shadow9};
+        background-color: ${vars.colorGray95};
+      }
+    `,
+  ];
+};
+
 class DropdownHead extends React.PureComponent {
   static displayName = 'DropdownHead';
   static propTypes = {
@@ -30,31 +63,7 @@ class DropdownHead extends React.PureComponent {
           label={this.props.children}
           onClick={this.props.onClick}
           isDisabled={this.props.isDisabled}
-          css={[
-            css`
-              display: flex;
-              align-items: center;
-              padding: 0 ${vars.spacing8};
-              border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
-              height: ${vars.bigButtonHeight};
-            `,
-            this.props.isDisabled
-              ? css`
-                  box-shadow: none;
-                  background-color: ${vars.colorNavy98};
-                `
-              : css`
-                  background-color: ${vars.colorWhite};
-                  box-shadow: ${vars.shadow7};
-                  &:hover {
-                    box-shadow: ${vars.shadow8};
-                  }
-                  &:active {
-                    box-shadow: ${vars.shadow9};
-                    background-color: ${vars.colorGray95};
-                  }
-                `,
-          ]}
+          css={getButtonStyles(this.props.isDisabled)}
         >
           <span
             css={css`
@@ -96,30 +105,11 @@ const DropdownChevron = React.forwardRef((props, ref) => (
     isDisabled={props.isDisabled}
     isOpen={props.isOpen}
     css={[
+      ...getButtonStyles(props.isDisabled),
       css`
-        display: flex;
-        align-items: center;
         padding: 0 ${vars.spacing4};
-        border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
         border-left: 1px solid ${vars.colorGray};
-        height: ${vars.bigButtonHeight};
       `,
-      props.isDisabled
-        ? css`
-            box-shadow: none;
-            background-color: ${vars.colorNnavy98};
-          `
-        : css`
-            background-color: ${vars.colorWhite};
-            box-shadow: ${vars.shadow7};
-            &:hover {
-              box-shadow: ${vars.shadow8};
-            }
-            &:active {
-              box-shadow: ${vars.shadow9};
-              background-color: ${vars.colorGray95};
-            }
-          `,
     ]}
   >
     {/*
