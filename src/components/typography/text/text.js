@@ -122,6 +122,7 @@ const Detail = props => (
     css={detailStyles(props)}
     title={props.title}
     {...filterDataAttributes(props)}
+    className={props.className}
   >
     {props.children}
   </small>
@@ -141,6 +142,7 @@ Detail.propTypes = {
     'warning',
     'inverted',
   ]),
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
