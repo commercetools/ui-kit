@@ -49,14 +49,16 @@ export const FieldLabel = props => (
         </Text.Detail>
       )}
 
-      <div
-        css={css`
-          display: flex;
-          justify-content: flex-end;
-        `}
-      >
-        {props.badge}
-      </div>
+      {props.badge && (
+        <div
+          css={css`
+            display: flex;
+            justify-content: flex-end;
+          `}
+        >
+          {props.badge}
+        </div>
+      )}
     </Spacings.Stack>
   </Constraints.Horizontal>
 );
