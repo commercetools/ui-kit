@@ -22,9 +22,9 @@ const sourceFolders = [
 ];
 
 module.exports = (storybookBaseConfig, configType) => {
-  storybookBaseConfig.plugins.push[
+  storybookBaseConfig.plugins.push(
     new MomentLocalesPlugin({ localesToKeep: ['de', 'es'] })
-  ];
+  );
   storybookBaseConfig.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
   storybookBaseConfig.module.rules = [
     // Disable require.ensure as it's not a standard language feature.
