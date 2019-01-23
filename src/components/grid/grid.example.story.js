@@ -4,7 +4,7 @@ import { withKnobs, select, number } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
 import Section from '../../../.storybook/decorators/section';
-import customProperties from '../../../materials/custom-properties.json';
+import customProperties from '../../../materials/custom-properties';
 import Spacings from '../spacings';
 import Text from '../typography/text';
 import Readme from './README.md';
@@ -18,7 +18,7 @@ const Placeholder = styled.div`
   align-items: center;
   justify-content: center;
   background-color: pink;
-  padding: ${customProperties['--spacing-16']};
+  padding: ${customProperties.spacing16};
 `;
 
 const renderGridElements = () => {

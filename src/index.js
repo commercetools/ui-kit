@@ -127,9 +127,7 @@ export { default as withMouseOverState } from './hocs/with-mouse-over-state';
 
 export { default as Avatar } from './components/avatar';
 
-export {
-  default as customProperties,
-} from '../materials/custom-properties.json';
+export { default as customProperties } from '../materials/custom-properties';
 
 export { i18n };
 
