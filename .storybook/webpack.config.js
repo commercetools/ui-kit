@@ -1,4 +1,5 @@
 const path = require('path');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const postcssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssReporter = require('postcss-reporter');
@@ -21,6 +22,9 @@ const sourceFolders = [
 ];
 
 module.exports = (storybookBaseConfig, configType) => {
+  storybookBaseConfig.plugins.push(
+    new MomentLocalesPlugin({ localesToKeep: ['de', 'es'] })
+  );
   storybookBaseConfig.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
   storybookBaseConfig.module.rules = [
     // Disable require.ensure as it's not a standard language feature.
