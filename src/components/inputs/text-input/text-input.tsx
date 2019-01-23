@@ -4,7 +4,7 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
 import styles from './text-input.mod.css';
 
-type HorizontalConstraint = 's' | 'm' | 'l' | 'xl' | 'scale';
+type HorizontalConstraintOfTextInput = 's' | 'm' | 'l' | 'xl' | 'scale';
 type TextInputProps = {
   id?: string;
   name?: string;
@@ -18,7 +18,7 @@ type TextInputProps = {
   hasError?: boolean;
   hasWarning?: boolean;
   placeholder?: string;
-  horizontalConstraint: HorizontalConstraint;
+  horizontalConstraint: HorizontalConstraintOfTextInput;
 };
 
 // NOTE: order is important here
