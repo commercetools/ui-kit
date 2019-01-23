@@ -129,32 +129,27 @@ const Tag = props => (
           onClick={props.isDisabled ? undefined : props.onRemove}
           css={[
             css`
-              border-color: ${vars['--border-color-tag-pristine']};
-              padding: 0 ${vars['--spacing-4']};
-              border-radius: 0 ${vars['--border-radius-tag']}
-                ${vars['--border-radius-tag']} 0;
+              border-color: ${vars.borderColorTagPristine};
+              padding: 0 ${vars.spacing4};
+              border-radius: 0 ${vars.borderRadiusTag} ${vars.borderRadiusTag} 0;
               display: flex;
               align-items: center;
               background: inherit;
               border-style: solid;
               border-width: 1px 1px 1px 0;
               &:hover {
-                background-color: ${vars[
-                  '--background-color-tag-normal-hover'
-                ]};
-                box-shadow: ${vars['--shadow-box-tag-hover']};
+                background-color: ${vars.backgroundColorTagNormalHover};
+                box-shadow: ${vars.shadowBoxTagHover};
               }
               > svg * {
-                fill: ${vars['--font-color-default']};
+                fill: ${vars.fontColorDefault};
               }
             `,
             props.type === 'warning' &&
               css`
-                border-color: ${vars['--border-color-tag-warning']};
+                border-color: ${vars.borderColorTagWarning};
                 &:hover {
-                  background-color: ${vars[
-                    '--background-color-tag-warning-hover'
-                  ]};
+                  background-color: ${vars.borderColorTagWarningHover};
                 }
               `,
             props.isDisabled &&
@@ -164,7 +159,7 @@ const Tag = props => (
                   box-shadow: none;
                 }
                 > svg * {
-                  fill: ${vars['--font-color-disabled']};
+                  fill: ${vars.fontColorDisabled};
                 }
               `,
           ]}

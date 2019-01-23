@@ -34,32 +34,31 @@ class DropdownHead extends React.PureComponent {
             css`
               display: flex;
               align-items: center;
-              padding: 0 ${vars['--spacing-8']};
-              border-radius: ${vars['--border-radius-6']} 0 0
-                ${vars['--border-radius-6']};
-              height: ${vars['--big-button-height']};
+              padding: 0 ${vars.spacing8};
+              border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+              height: ${vars.bigButtonHeight};
             `,
             this.props.isDisabled
               ? css`
                   box-shadow: none;
-                  background-color: ${vars['--color-navy-98']};
+                  background-color: ${vars.colorNavy98};
                 `
               : css`
-                  background-color: ${vars['--color-white']};
-                  box-shadow: ${vars['--shadow-7']};
+                  background-color: ${vars.colorWhite};
+                  box-shadow: ${vars.shadow7};
                   &:hover {
-                    box-shadow: ${vars['--shadow-8']};
+                    box-shadow: ${vars.shadow8};
                   }
                   &:active {
-                    box-shadow: ${vars['--shadow-9']};
-                    background-color: ${vars['--color-gray-95']};
+                    box-shadow: ${vars.shadow9};
+                    background-color: ${vars.colorGray95};
                   }
                 `,
           ]}
         >
           <span
             css={css`
-              margin: 0 ${vars['--spacing-4']} 0 0;
+              margin: 0 ${vars.spacing4} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -72,7 +71,7 @@ class DropdownHead extends React.PureComponent {
           </span>
           <span
             css={css`
-              margin: 0 ${vars['--spacing-4']} 0 0;
+              margin: 0 ${vars.spacing4} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -100,26 +99,25 @@ const DropdownChevron = React.forwardRef((props, ref) => (
       css`
         display: flex;
         align-items: center;
-        padding: 0 ${vars['--spacing-4']};
-        border-radius: 0 ${vars['--border-radius-6']}
-          ${vars['--border-radius-6']} 0;
-        border-left: 1px solid ${vars['--color-gray']};
-        height: ${vars['--big-button-height']};
+        padding: 0 ${vars.spacing4};
+        border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
+        border-left: 1px solid ${vars.colorGray};
+        height: ${vars.bigButtonHeight};
       `,
       props.isDisabled
         ? css`
             box-shadow: none;
-            background-color: ${vars['--color-navy-98']};
+            background-color: ${vars.colorNnavy98};
           `
         : css`
-            background-color: ${vars['--color-white']};
-            box-shadow: ${vars['--shadow-7']};
+            background-color: ${vars.colorWhite};
+            box-shadow: ${vars.shadow7};
             &:hover {
-              box-shadow: ${vars['--shadow-8']};
+              box-shadow: ${vars.shadow8};
             }
             &:active {
-              box-shadow: ${vars['--shadow-9']};
-              background-color: ${vars['--color-gray-95']};
+              box-shadow: ${vars.shadow9};
+              background-color: ${vars.colorGray95};
             }
           `,
     ]}
@@ -159,11 +157,11 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(${vars['--spacing-8']} + ${vars['--big-button-height']});
+  top: calc(${vars.spacing8} + ${vars.bigButtonHeight});
   left: 0;
-  border: 1px solid ${vars['--color-gray']};
-  border-radius: ${vars['--border-radius-6']};
-  box-shadow: ${vars['--shadow-1']};
+  border: 1px solid ${vars.colorGray};
+  border-radius: ${vars.borderRadius6};
+  box-shadow: ${vars.shadow1};
 `;
 
 export const Option = props => (
@@ -176,23 +174,21 @@ export const Option = props => (
         display: block;
         text-align: left;
         width: 100%;
-        padding: ${vars['--spacing-8']};
-        background-color: ${vars['--color-white']};
+        padding: ${vars.spacing8};
+        background-color: ${vars.colorWhite};
         &:first-of-type {
-          border-radius: ${vars['--border-radius-6']}
-            ${vars['--border-radius-6']} 0 0;
+          border-radius: ${vars.borderRadius6} ${vars.borderRadius6} 0 0;
         }
         &:last-of-type {
-          border-radius: 0 0 ${vars['--border-radius-6']}
-            ${vars['--border-radius-6']};
+          border-radius: 0 0 ${vars.borderRadius6} ${vars.borderRadius6};
         }
         &:hover {
-          background-color: ${vars['--color-gray-95']};
+          background-color: ${vars.colorGray95};
         }
       `,
       props.isDisabled &&
         css`
-          color: ${vars['--color-gray']};
+          color: ${vars.colorGray};
         `,
     ]}
   >
