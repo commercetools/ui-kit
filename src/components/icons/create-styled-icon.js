@@ -25,13 +25,11 @@ const getSizeStyle = size => {
         width: ${iconSizes[size]}px;
         height: ${iconSizes[size]}px;
       `;
-    default: {
-      invariant(
-        size,
-        `ui-kit/Icon: the specified size '${size}' is not supported.`
-      );
-      return '';
-    }
+    default:
+      return `
+        width: ${iconSizes.big}px;
+        height: ${iconSizes.big}px;
+      `;
   }
 };
 
