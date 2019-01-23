@@ -10,6 +10,11 @@ import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
 import styles from './tag.mod.css';
 
+const getTextDetailColor = isDisabled => {
+  if (isDisabled) return vars.colorGray60;
+  return vars.colorBlack;
+};
+
 const getWrapperTypeClassName = type =>
   type === 'warning' ? styles.wrapperTypeWarning : styles.wrapperTypeNormal;
 const getContentWrapperTypeClassName = type =>
@@ -43,14 +48,33 @@ export const TagLinkBody = props => (
     )}
   >
     {!props.isDisabled ? (
-      <Link onClick={props.onClick} to={props.linkTo}>
-        <Text.Detail>{props.children}</Text.Detail>
+      <Link
+        onClick={props.onClick}
+        to={props.linkTo}
+        css={css`
+          text-decoration: none;
+        `}
+      >
+        <Text.Detail
+          css={css`
+            color: ${getTextDetailColor(props.isDisabled)};
+          `}
+        >
+          {props.children}
+        </Text.Detail>
       </Link>
     ) : (
-      <Text.Detail>{props.children}</Text.Detail>
+      <Text.Detail
+        css={css`
+          color: ${getTextDetailColor(props.isDisabled)};
+        `}
+      >
+        {props.children}
+      </Text.Detail>
     )}
   </div>
 );
+
 TagLinkBody.displayName = 'TagLinkBody';
 TagLinkBody.propTypes = {
   type: PropTypes.string.isRequired,
@@ -79,7 +103,13 @@ export const TagNormalBody = props => (
     )}
     onClick={props.isDisabled ? undefined : props.onClick}
   >
-    <Text.Detail>{props.children}</Text.Detail>
+    <Text.Detail
+      css={css`
+        color: ${getTextDetailColor(props.isDisabled)};
+      `}
+    >
+      {props.children}
+    </Text.Detail>
   </div>
 );
 TagNormalBody.displayName = 'TagNormalBody';
@@ -159,7 +189,7 @@ const Tag = props => (
                   box-shadow: none;
                 }
                 > svg * {
-                  fill: ${vars.fontColorDisabled};
+                  fill: ${vars.colorGray60};
                 }
               `,
           ]}
