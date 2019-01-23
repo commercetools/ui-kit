@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { ErrorIcon, WarningIcon, InfoIcon, CheckBoldIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import vars from '../../../../materials/custom-properties';
+import vars from '../../../../materials/custom-properties.json';
 
 const getIconContainerBackgroundColour = props => {
   switch (props.type) {
