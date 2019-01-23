@@ -1,5 +1,16 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
+import {
+  HeadlineProps,
+  SubheadlineProps,
+  BodyProps,
+  DetailProps,
+  ElementTypeOfHeadline,
+  ElementTypeOfSubheadline,
+  ToneOfSubheadline,
+  ToneOfBody,
+  ToneOfDetail,
+} from './types';
 
 const baseStyles = `
   font-family: ${vars.fontFamilyDefault};
@@ -24,7 +35,7 @@ const inline = `
   display: inline-block;
 `;
 
-const getTone = tone => {
+const getTone = (tone: ToneOfSubheadline | ToneOfBody | ToneOfDetail) => {
   switch (tone) {
     case 'information':
       return `color: ${vars.colorBlue};`;
@@ -45,7 +56,9 @@ const getTone = tone => {
   }
 };
 
-const getElementFontSize = elementType => {
+const getElementFontSize = (
+  elementType: ElementTypeOfHeadline | ElementTypeOfSubheadline
+) => {
   switch (elementType) {
     case 'h1':
       return '32px';
@@ -62,7 +75,7 @@ const getElementFontSize = elementType => {
   }
 };
 
-export const bodyStyles = props => css`
+export const bodyStyles = (props: BodyProps) => css`
   ${baseStyles}
   margin: 0;
   font-size: 13px;
@@ -72,7 +85,7 @@ export const bodyStyles = props => css`
   ${props.truncate && truncate}
 `;
 
-export const headlineStyles = props => css`
+export const headlineStyles = (props: HeadlineProps) => css`
   ${baseStyles}
   margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
@@ -80,7 +93,7 @@ export const headlineStyles = props => css`
   ${props.truncate && truncate}
 `;
 
-export const subheadlineStyles = props => css`
+export const subheadlineStyles = (props: SubheadlineProps) => css`
   ${baseStyles}
   margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
@@ -96,7 +109,7 @@ export const wrapStyles = () => css`
   white-space: pre-wrap;
 `;
 
-export const detailStyles = props => css`
+export const detailStyles = (props: DetailProps) => css`
   ${baseStyles}
   display: block;
   font-size: 12px;

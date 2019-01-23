@@ -7,14 +7,13 @@ import {
   subheadlineStyles,
   wrapStyles,
 } from './text.styles';
-
-type ElementTypeOfHeadline = 'h1' | 'h2' | 'h3';
-type HeadlineProps = {
-  elementType: ElementTypeOfHeadline;
-  title?: string;
-  truncate?: boolean;
-  children: React.ReactNode;
-};
+import {
+  HeadlineProps,
+  SubheadlineProps,
+  WrapProps,
+  BodyProps,
+  DetailProps,
+} from './types';
 
 const Headline: React.FC<HeadlineProps> = props => {
   const HeadlineElement = props.elementType;
@@ -28,24 +27,7 @@ const Headline: React.FC<HeadlineProps> = props => {
     </HeadlineElement>
   );
 };
-
 Headline.displayName = 'TextHeadline';
-
-type ElementTypeOfSubheadline = 'h4' | 'h5';
-type ToneOfSubheadline =
-  | 'primary'
-  | 'secondary'
-  | 'information'
-  | 'positive'
-  | 'negative';
-type SubheadlineProps = {
-  elementType: ElementTypeOfSubheadline;
-  isBold?: boolean;
-  tone?: ToneOfSubheadline;
-  title?: string;
-  truncate?: boolean;
-  children: React.ReactNode;
-};
 
 const Subheadline: React.FC<SubheadlineProps> = props => {
   const SubheadlineElement = props.elementType;
@@ -62,35 +44,12 @@ const Subheadline: React.FC<SubheadlineProps> = props => {
 
 Subheadline.displayName = 'TextSubheadline';
 
-type WrapProps = {
-  title?: string;
-  children: React.ReactNode;
-};
-
 const Wrap: React.FC<WrapProps> = props => (
   <div css={wrapStyles()} title={props.title} {...filterDataAttributes(props)}>
     {props.children}
   </div>
 );
-
 Wrap.displayName = 'TextWrap';
-
-type ToneOfBody =
-  | 'primary'
-  | 'secondary'
-  | 'information'
-  | 'positive'
-  | 'negative'
-  | 'inverted';
-type BodyProps = {
-  isBold?: boolean;
-  isItalic?: boolean;
-  isInline?: boolean;
-  tone?: ToneOfBody;
-  title?: string;
-  truncate?: boolean;
-  children: React.ReactNode;
-};
 
 const Body: React.FC<BodyProps> = props =>
   props.isInline ? (
@@ -110,26 +69,7 @@ const Body: React.FC<BodyProps> = props =>
       {props.children}
     </p>
   );
-
 Body.displayName = 'TextBody';
-
-type ToneOfDetail =
-  | 'primary'
-  | 'secondary'
-  | 'information'
-  | 'positive'
-  | 'negative'
-  | 'inverted';
-type DetailProps = {
-  isBold?: boolean;
-  isItalic?: boolean;
-  isInline?: boolean;
-  tone?: ToneOfDetail;
-  title?: string;
-  truncate?: boolean;
-  className?: string;
-  children: React.ReactNode;
-};
 
 const Detail: React.FC<DetailProps> = props => (
   <small
@@ -141,13 +81,14 @@ const Detail: React.FC<DetailProps> = props => (
     {props.children}
   </small>
 );
-
 Detail.displayName = 'TextDetail';
 
-export default {
+const Text = {
   Body,
   Detail,
   Headline,
   Subheadline,
   Wrap,
 };
+
+export default Text;
