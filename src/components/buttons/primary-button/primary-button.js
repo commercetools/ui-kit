@@ -41,6 +41,7 @@ const PrimaryButton = props => {
             >
               {React.cloneElement(props.iconLeft, {
                 theme: props.isDisabled ? 'grey' : 'white',
+                size: props.size === 'small' ? 'medium' : 'big',
               })}
             </span>
           )}

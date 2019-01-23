@@ -16,7 +16,7 @@ const getButtonLayoutStyles = size => {
           border-radius: ${vars['--border-radius-4']};
           > button {
             padding: 0 ${vars['--spacing-8']} 0 ${vars['--spacing-8']};
-            height: ${vars['--big-button-height']};
+            height: ${vars['--small-button-height']};
             border-radius: ${vars['--border-radius-4']};
           }
         `,
