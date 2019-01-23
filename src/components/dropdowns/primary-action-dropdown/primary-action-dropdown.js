@@ -12,8 +12,6 @@ const getButtonStyles = isDisabled => {
   const baseButtonStyles = css`
     display: flex;
     align-items: center;
-    padding: 0 ${vars.spacing8};
-    border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
     height: ${vars.bigButtonHeight};
   `;
   if (isDisabled) {
@@ -63,7 +61,13 @@ class DropdownHead extends React.PureComponent {
           label={this.props.children}
           onClick={this.props.onClick}
           isDisabled={this.props.isDisabled}
-          css={getButtonStyles(this.props.isDisabled)}
+          css={[
+            ...getButtonStyles(this.props.isDisabled),
+            css`
+              padding: 0 ${vars.spacing8};
+              border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+            `,
+          ]}
         >
           <span
             css={css`
@@ -109,6 +113,7 @@ const DropdownChevron = React.forwardRef((props, ref) => (
       css`
         padding: 0 ${vars.spacing4};
         border-left: 1px solid ${vars.colorGray};
+        border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
       `,
     ]}
   >
