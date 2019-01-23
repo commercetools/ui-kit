@@ -8,56 +8,56 @@
   Always check all affected components when making changes here!
 */
 
-import vars from '../../../materials/custom-properties.json';
+import vars from '../../../materials/custom-properties';
 
 const controlStyles = props => (base, state) => ({
   ...base,
-  fontSize: vars['--font-size-default'],
+  fontSize: vars.fontSizeDefault,
   backgroundColor: state.isDisabled
-    ? vars['--background-color-input-disabled']
-    : vars['--background-color-input-pristine'],
+    ? vars.backgroundColorInputDisabled
+    : vars.backgroundColorInputPristine,
   borderColor: (() => {
-    if (state.isDisabled) return vars['--border-color-input-disabled'];
-    if (props.hasError) return vars['--border-color-input-error'];
-    if (props.hasWarning) return vars['--border-color-input-warning'];
-    if (state.isFocused) return vars['--border-color-input-focus'];
-    return vars['--border-color-input-pristine'];
+    if (state.isDisabled) return vars.borderColorInputDisabled;
+    if (props.hasError) return vars.borderColorInputError;
+    if (props.hasWarning) return vars.borderColorInputWarning;
+    if (state.isFocused) return vars.borderColorInputFocus;
+    return vars.borderColorInputPristine;
   })(),
-  borderRadius: vars['--border-radius-input'],
-  minHeight: vars['--size-height-input'],
+  borderRadius: vars.borderRadiusInput,
+  minHeight: vars.sizeHeightInput,
   cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-  padding: `0 ${vars['--spacing-8']}`,
+  padding: `0 ${vars.spacing8}`,
 
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
   '&:hover': {
-    borderColor: vars['--border-color-input-focus'],
+    borderColor: vars.borderColorInputFocus,
     boxShadow: 'none',
   },
   '&:active': {
-    borderColor: vars['--border-color-input-focus'],
+    borderColor: vars.borderColorInputFocus,
     boxShadow: 'none',
   },
   '&:focus': {
-    borderColor: vars['--border-color-input-focus'],
+    borderColor: vars.borderColorInputFocus,
     boxShadow: 'none',
   },
 
   pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
-  color: state.isDisabled ? vars['--font-color-disabled'] : base.color,
+  color: state.isDisabled ? vars.fontColorDisabled : base.color,
 });
 
 const menuStyles = props => base => ({
   ...base,
-  border: `1px ${vars['--border-color-input-focus']} solid`,
-  borderRadius: vars['--border-radius-input'],
-  backgroundColor: vars['--background-color-input-pristine'],
-  boxShadow: vars['--shadow-7'],
-  fontSize: vars['--font-size-default'],
-  margin: `${vars['--spacing-4']} 0 0 0`,
+  border: `1px ${vars.borderColorInputFocus} solid`,
+  borderRadius: vars.borderRadiusInput,
+  backgroundColor: vars.backgroundColorInputPristine,
+  boxShadow: vars.shadow7,
+  fontSize: vars.fontSizeDefault,
+  margin: `${vars.spacing4} 0 0 0`,
   borderColor: (() => {
-    if (props.hasError) return vars['--border-color-input-error'];
-    if (props.hasWarning) return vars['--border-color-input-warning'];
+    if (props.hasError) return vars.borderColorInputError;
+    if (props.hasWarning) return vars.borderColorInputWarning;
     return base.borderColor;
   })(),
 });
@@ -67,15 +67,15 @@ const indicatorSeparatorStyles = () => base => ({
   display: 'none',
   margin: '0',
   padding: '0',
-  marginLeft: vars['--spacing-4'],
+  marginLeft: vars.spacing4,
 });
 
 const dropdownIndicatorStyles = () => base => ({
   ...base,
-  color: vars['--font-color-default'],
+  color: vars.fontColorDefault,
   margin: '0',
   padding: '0',
-  marginLeft: vars['--spacing-4'],
+  marginLeft: vars.spacing4,
 });
 
 const clearIndicatorStyles = () => base => ({
@@ -87,38 +87,38 @@ const clearIndicatorStyles = () => base => ({
 const menuListStyles = () => base => ({
   ...base,
   padding: '0',
-  borderRadius: vars['--border-radius-input'],
-  backgroundColor: vars['--background-color-input-pristine'],
+  borderRadius: vars.borderRadiusInput,
+  backgroundColor: vars.backgroundColorInputPristine,
 });
 
 const optionStyles = () => (base, state) => ({
   ...base,
-  transition: vars['--transition-standard'],
-  paddingLeft: vars['--spacing-8'],
-  paddingRight: vars['--spacing-8'],
+  transition: vars.transitionStandard,
+  paddingLeft: vars.spacing8,
+  paddingRight: vars.spacing8,
   color: (() => {
-    if (!state.isDisabled) return vars['--font-size-default'];
-    if (state.isSelected) return vars['--font-color-default'];
+    if (!state.isDisabled) return vars.fontSizeDefault;
+    if (state.isSelected) return vars.fontColorDefault;
     return base.color;
   })(),
   backgroundColor: (() => {
-    if (state.isSelected) return vars['--background-color-input-selected'];
-    if (state.isFocused) return vars['--background-color-input-hover'];
+    if (state.isSelected) return vars.backgroundColorInputSelected;
+    if (state.isFocused) return vars.backgroundColorInputHover;
     return base.backgroundColor;
   })(),
 
   '&:active': {
     color: (() => {
-      if (!state.isDisabled) return vars['--font-color-default'];
+      if (!state.isDisabled) return vars.fontColorDefault;
       return base.color;
     })(),
-    backgroundColor: vars['--background-color-input-selected'],
+    backgroundColor: vars.backgroundColorInputSelected,
   },
 });
 
 const placeholderStyles = () => base => ({
   ...base,
-  color: vars['--font-color-placeholder'],
+  color: vars.fontColorPlaceholder,
 });
 
 const valueContainerStyles = () => base => ({
@@ -130,32 +130,30 @@ const valueContainerStyles = () => base => ({
 
 const multiValueStyles = () => base => ({
   ...base,
-  height: vars['--size-height-tag'],
-  backgroundColor: vars['--background-color-tag-pristine'],
+  height: vars.sizeHeightTag,
+  backgroundColor: vars.backgroundColorTagPristine,
   padding: '0',
 });
 
 const multiValueLabelStyles = () => base => ({
   ...base,
-  fontSize: vars['--font-size-small'],
-  padding: `${vars['--spacing-4']} ${vars['--spacing-8']}`,
-  borderRadius: vars['--border-radius-tag'],
-  border: `1px ${vars['--border-color-tag-pristine']} solid`,
+  fontSize: vars.fontSizeSmall,
+  padding: `${vars.spacing4} ${vars.spacing8}`,
+  borderRadius: vars.borderRadiusTag,
+  border: `1px ${vars.borderColorTagPristine} solid`,
 });
 
 const multiValueRemoveStyles = () => base => ({
   ...base,
-  borderColor: vars['--border-color-tag-pristine'],
-  padding: `0 ${vars['--spacing-4']}`,
-  borderRadius: `0 ${vars['--border-radius-tag']} ${
-    vars['--border-radius-tag']
-  } 0`,
+  borderColor: vars.borderColorTagPristine,
+  padding: `0 ${vars.spacing4}`,
+  borderRadius: `0 ${vars.borderRadiusTag} ${vars.borderRadiusTag} 0`,
   borderStyle: 'solid',
   borderWidth: '1px 1px 1px 0',
 
   '&:hover': {
-    backgroundColor: vars['--background-color-tag-normal-hover'],
-    boxShadow: vars['--shadow-box-tag-hover'],
+    backgroundColor: vars.backgroundColorTagNormalHover,
+    boxShadow: vars.shadowBoxTagHover,
   },
 });
 
@@ -163,31 +161,27 @@ const groupStyles = () => base => ({
   ...base,
   padding: 0,
   '&:not(:firstChild)': {
-    borderTop: `1px ${vars['--border-color-separator']} solid`,
+    borderTop: `1px ${vars.borderColorSeparator} solid`,
   },
 });
 
 const groupHeadingStyles = () => base => ({
   ...base,
-  color: vars['--font-color-readonly'],
-  fontSize: vars['--font-size-small'],
+  color: vars.fontColorReadonly,
+  fontSize: vars.fontSizeSmall,
   textTransform: 'none',
   fontWeight: 'bold',
-  margin: `0 ${vars['--spacing-4']}`,
-  padding: `${vars['--spacing-8']} ${vars['--spacing-4']} ${
-    vars['--spacing-4']
-  }`,
+  margin: `0 ${vars.spacing4}`,
+  padding: `${vars.spacing8} ${vars.spacing4} ${vars.spacing4}`,
 });
 
 const containerStyles = () => (base, state) => ({
   ...base,
-  fontFamily: vars['--font-family-default'],
-  minHeight: vars['--size-height-input'],
-  borderRadius: vars['--border-radius-input'],
+  fontFamily: vars.fontFamilyDefault,
+  minHeight: vars.sizeHeightInput,
+  borderRadius: vars.borderRadiusInput,
   cursor: state.isDisabled ? 'not-allowed' : base.cursor,
-  borderColor: state.isFocused
-    ? vars['--border-color-input-focus']
-    : base.borderColor,
+  borderColor: state.isFocused ? vars.borderColorInputFocus : base.borderColor,
 
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 });

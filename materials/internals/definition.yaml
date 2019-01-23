@@ -18,9 +18,8 @@
 # Storybook at uikit.commercetools.com.
 #
 #
-# Run "node scripts/generate-custom-properties" to generate
-# materials/custom-properties.css and materials/custom-properties.json based on
-# this file.
+# Run "node scripts/generate-custom-properties" to generate `materials/custom-properties`
+# files in different format (css, json, js, ...).
 #
 # The names of decisions in this file need to follow this format:
 #   <attribute>-for-<component-group>-when-<state>-

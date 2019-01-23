@@ -20,6 +20,7 @@
     "i18n",
     "materials/custom-properties.css",
     "materials/custom-properties.json",
+    "materials/custom-properties.js",
     "materials/media-queries.mod.css",
     "CHANGELOG.md",
     "./README.md",

@@ -12,7 +12,7 @@ import Contraints from '../../constraints';
 import styles from './money-input.mod.css';
 import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
-import vars from '../../../../materials/custom-properties.json';
+import vars from '../../../../materials/custom-properties';
 
 const CurrencyLabel = props => (
   <label htmlFor={props.id} className={styles['currency-label']}>
@@ -58,23 +58,23 @@ const createCurrencySelectStyles = ({
       borderRight: '0',
       minWidth: '72px',
       borderColor: (() => {
-        if (isDisabled) return vars['--border-color-input-disabled'];
-        if (isReadOnly) return vars['--border-color-input-readonly'];
-        if (hasError) return vars['--border-color-input-error'];
-        if (hasWarning) return vars['--border-color-input-warning'];
-        if (hasFocus) return vars['--border-color-input-focus'];
-        return vars['--border-color-input-pristine'];
+        if (isDisabled) return vars.borderColorInputDisabled;
+        if (isReadOnly) return vars.borderColorInputReadonly;
+        if (hasError) return vars.borderColorInputError;
+        if (hasWarning) return vars.borderColorInputWarning;
+        if (hasFocus) return vars.borderColorInputFocus;
+        return vars.borderColorInputPristine;
       })(),
       '&:hover': (() => {
-        if (isDisabled) return vars['--border-color-input-disabled'];
-        if (isReadOnly) return vars['--border-color-input-readonly'];
-        if (hasError) return vars['--border-color-input-error'];
-        if (hasWarning) return vars['--border-color-input-warning'];
-        if (hasFocus) return vars['--border-color-input-focus'];
-        return vars['--border-color-input-pristine'];
+        if (isDisabled) return vars.borderColorInputDisabled;
+        if (isReadOnly) return vars.borderColorInputReadonly;
+        if (hasError) return vars.borderColorInputError;
+        if (hasWarning) return vars.borderColorInputWarning;
+        if (hasFocus) return vars.borderColorInputFocus;
+        return vars.borderColorInputPristine;
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return vars['--background-color-input-pristine'];
+        if (isReadOnly) return vars.backgroundColorInputPristine;
         return base.backgroundColor;
       })(),
     }),
@@ -83,8 +83,8 @@ const createCurrencySelectStyles = ({
       marginLeft: 0,
       maxWidth: 'initial',
       color: (() => {
-        if (hasError) return vars['--font-color-error'];
-        if (hasWarning) return vars['--font-color-warning'];
+        if (hasError) return vars.fontColorError;
+        if (hasWarning) return vars.fontColorWarning;
         return base.color;
       })(),
     }),
