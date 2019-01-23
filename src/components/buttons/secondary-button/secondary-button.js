@@ -40,13 +40,13 @@ export const SecondaryButton = props => {
   const containerStyles = [
     css`
       display: inline-block;
-      background-color: ${vars['--color-white']};
-      border-radius: ${vars['--border-radius-6']};
-      box-shadow: ${vars['--shadow-7']};
-      color: ${vars['--color-black']};
-      font-size: ${vars['--font-size-default']};
-      transition: background-color ${vars['--transition-linear-80ms']},
-        box-shadow ${vars['--transition-easeinout-150ms']};
+      background-color: ${vars.colorWhite};
+      border-radius: ${vars.borderRadius6};
+      box-shadow: ${vars.shadow7};
+      color: ${vars.colorBlack};
+      font-size: ${vars.fontSizeDefault};
+      transition: background-color ${vars.transitionLinear80Ms},
+        box-shadow ${vars.transitionEaseinout150Ms};
     `,
     getStateStyles(props.isDisabled, isActive, props.theme),
     getThemeStyles(props.theme),
@@ -64,15 +64,15 @@ export const SecondaryButton = props => {
       css={css`
         display: flex;
         align-items: center;
-        padding: 0 ${vars['--spacing-16']};
-        height: ${vars['--big-button-height']};
+        padding: 0 ${vars.spacing16};
+        height: ${vars.bigButtonHeight};
       `}
     >
       <Spacings.Inline alignItems="center" scale="xs">
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${vars['--spacing-4']} 0 0;
+              margin: 0 ${vars.spacing4} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;

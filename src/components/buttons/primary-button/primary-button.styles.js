@@ -5,19 +5,19 @@ const getButtonLayoutStyles = size => {
   const baseLayoutStyles = css`
     display: inline-flex;
     align-items: center;
-    color: ${vars['--color-white']};
-    transition: background-color ${vars['--transition-linear-80ms']};
+    color: ${vars.colorWhite};
+    transition: background-color ${vars.transitionLinear80Ms};
   `;
   switch (size) {
     case 'small':
       return [
         baseLayoutStyles,
         css`
-          border-radius: ${vars['--border-radius-4']};
+          border-radius: ${vars.borderRadius4};
           > button {
-            padding: 0 ${vars['--spacing-8']} 0 ${vars['--spacing-8']};
-            height: ${vars['--small-button-height']};
-            border-radius: ${vars['--border-radius-4']};
+            padding: 0 ${vars.spacing8} 0 ${vars.spacing8};
+            height: ${vars.smallButtonHeight};
+            border-radius: ${vars.borderRadius4};
           }
         `,
       ];
@@ -25,11 +25,11 @@ const getButtonLayoutStyles = size => {
       return [
         baseLayoutStyles,
         css`
-          border-radius: ${vars['--border-radius-6']};
+          border-radius: ${vars.borderRadius6};
           > button {
-            padding: 0 ${vars['--spacing-16']} 0 ${vars['--spacing-16']};
-            height: ${vars['--big-button-height']};
-            border-radius: ${vars['--border-radius-6']};
+            padding: 0 ${vars.spacing16} 0 ${vars.spacing16};
+            height: ${vars.bigButtonHeight};
+            border-radius: ${vars.borderRadius6};
           }
         `,
       ];
@@ -41,7 +41,7 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
   const baseStyles = css`
     display: flex;
     align-items: center;
-    font-size: ${vars['--font-size-default']};
+    font-size: ${vars.fontSizeDefault};
   `;
   // "disabled" takes precendece over "active"
   if (isDisabled) {
@@ -51,9 +51,9 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
         &,
         &:active,
         &:hover {
-          background-color: ${vars['--color-navy-98']};
-          color: ${vars['--color-gray-60']};
-          box-shadow: 0 0 0 1px ${vars['--color-gray']} inset;
+          background-color: ${vars.colorNavy98};
+          color: ${vars.colorGray60};
+          box-shadow: 0 0 0 1px ${vars.colorGray} inset;
         }
       `,
     ];
@@ -62,11 +62,10 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
     const baseActiveStyles = [
       baseStyles,
       css`
-        box-shadow: inset ${vars['--shadow-7-first']},
-          inset ${vars['--shadow-7-second']};
+        box-shadow: inset ${vars.shadow7First}, inset ${vars.shadow7Second};
         &:hover,
         &:focus {
-          box-shadow: ${vars['--shadow-8']};
+          box-shadow: ${vars.shadow8};
         }
       `,
     ];
@@ -75,12 +74,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
         return [
           baseActiveStyles,
           css`
-            background-color: ${vars['--color-green']};
+            background-color: ${vars.colorGreen};
             &:hover {
-              background-color: ${vars['--color-green-25']};
+              background-color: ${vars.colorGreen25};
             }
             &:active {
-              background-color: ${vars['--color-green']};
+              background-color: ${vars.colorGreen};
             }
           `,
         ];
@@ -88,12 +87,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
         return [
           baseActiveStyles,
           css`
-            background-color: ${vars['--color-orange']};
+            background-color: ${vars.colorOrange};
             &:hover {
-              background-color: ${vars['--color-orange']};
+              background-color: ${vars.colorOrange};
             }
             &:active {
-              background-color: ${vars['--color-orange']};
+              background-color: ${vars.colorOrange};
             }
           `,
         ];
@@ -104,14 +103,13 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
   const baseDefaultStyles = [
     baseStyles,
     css`
-      box-shadow: ${vars['--shadow-7']};
+      box-shadow: ${vars.shadow7};
       &:hover,
       &:focus {
-        box-shadow: ${vars['--shadow-8']};
+        box-shadow: ${vars.shadow8};
       }
       &:active {
-        box-shadow: inset ${vars['--shadow-7-first']},
-          inset ${vars['--shadow-7-second']};
+        box-shadow: inset ${vars.shadow7First}, inset ${vars.shadow7Second};
       }
     `,
   ];
@@ -120,12 +118,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
       return [
         baseDefaultStyles,
         css`
-          background-color: ${vars['--color-green']};
+          background-color: ${vars.colorGreen};
           &:hover {
-            background-color: ${vars['--color-green-25']};
+            background-color: ${vars.colorGreen25};
           }
           &:active {
-            background-color: ${vars['--color-green']};
+            background-color: ${vars.colorGreen};
           }
         `,
       ];
@@ -133,12 +131,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
       return [
         baseDefaultStyles,
         css`
-          background-color: ${vars['--color-orange']};
+          background-color: ${vars.colorOrange};
           &:hover {
-            background-color: ${vars['--color-green-25']};
+            background-color: ${vars.colorGreen25};
           }
           &:active {
-            background-color: ${vars['--color-orange']};
+            background-color: ${vars.colorOrange};
           }
         `,
       ];

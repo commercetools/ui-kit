@@ -11,8 +11,8 @@ const buttonSizes = {
 const getStateStyles = (isDisabled, isActive, theme) => {
   if (isDisabled) {
     const disabledStyle = css`
-      background-color: ${vars['--color-navy-98']};
-      color: ${vars['--color-gray-60']};
+      background-color: ${vars.colorNavy98};
+      color: ${vars.colorGray60};
       box-shadow: none;
     `;
     switch (theme) {
@@ -21,7 +21,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
           disabledStyle,
           css`
             &:hover {
-              background-color: ${vars['--color-blue-85']};
+              background-color: ${vars.colorBlue85};
             }
           `,
         ];
@@ -30,7 +30,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
           disabledStyle,
           css`
             &:hover {
-              background-color: ${vars['--color-green-85']};
+              background-color: ${vars.colorGreen85};
             }
           `,
         ];
@@ -40,11 +40,11 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   }
   if (isActive) {
     const activeStyle = css`
-      box-shadow: ${vars['--shadow-9']};
-      background-color: ${vars['--color-white']};
+      box-shadow: ${vars.shadow9};
+      background-color: ${vars.colorWhite};
       &:hover {
-        box-shadow: ${vars['--shadow-9']};
-        background-color: ${vars['--color-gray-95']};
+        box-shadow: ${vars.shadow9};
+        background-color: ${vars.colorGray95};
       }
     `;
     switch (theme) {
@@ -57,16 +57,16 @@ const getStateStyles = (isDisabled, isActive, theme) => {
               // a different color to indicate that it's active but can't receive any actions
               isDisabled
                 ? `
-                  background-color: ${vars['--color-blue-85']};
-                  color: ${vars['--color-white']};
-                  box-shadow: ${vars['--shadow-9']};
+                  background-color: ${vars.colorBlue85};
+                  color: ${vars.colorWhite};
+                  box-shadow: ${vars.shadow9};
                 `
                 : ''
             }
-            background-color: ${vars['--color-blue']};
-            color: ${vars['--color-white']};
+            background-color: ${vars.colorBlue};
+            color: ${vars.colorWhite};
             &:hover {
-              background-color: ${vars['--color-blue-85']};
+              background-color: ${vars.colorBlue85};
             }
           `,
         ];
@@ -79,16 +79,16 @@ const getStateStyles = (isDisabled, isActive, theme) => {
               // a different color to indicate that it's active but can't receive any actions
               isDisabled
                 ? `
-                  background-color: ${vars['--color-green-85']};
-                  color: ${vars['--color-white']};
-                  box-shadow: ${vars['--shadow-9']};
+                  background-color: ${vars.colorGreen85};
+                  color: ${vars.colorWhite};
+                  box-shadow: ${vars.shadow9};
                 `
                 : ''
             }
-            background-color: ${vars['--color-green']};
-            color: ${vars['--color-white']};
+            background-color: ${vars.colorGreen};
+            color: ${vars.colorWhite};
             &:hover {
-              background-color: ${vars['--color-green-85']};
+              background-color: ${vars.colorGreen85};
             }
           `,
         ];
@@ -98,11 +98,11 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   }
   return css`
     &:hover {
-      box-shadow: ${vars['--shadow-8']};
+      box-shadow: ${vars.shadow8};
     }
     &:active {
-      box-shadow: ${vars['--shadow-9']};
-      background-color: ${vars['--color-white']};
+      box-shadow: ${vars.shadow9};
+      background-color: ${vars.colorWhite};
     }
   `;
 };
@@ -117,15 +117,15 @@ const getShapeStyles = (shape, size) => {
       switch (size) {
         case 'small':
           return css`
-            border-radius: ${vars['--border-radius-2']};
+            border-radius: ${vars.borderRadius2};
           `;
         case 'medium':
           return css`
-            border-radius: ${vars['--border-radius-4']};
+            border-radius: ${vars.borderRadius4};
           `;
         case 'big':
           return css`
-            border-radius: ${vars['--border-radius-6']};
+            border-radius: ${vars.borderRadius6};
           `;
         default:
           return css``;
@@ -164,15 +164,15 @@ const getThemeStyles = theme => {
     case 'green':
       return css`
         &:active {
-          background-color: ${vars['--color-green']};
-          color: ${vars['--color-white']};
+          background-color: ${vars.colorGreen};
+          color: ${vars.colorWhite};
         }
       `;
     case 'blue':
       return css`
         &:hover {
-          background-color: ${vars['--color-blue']};
-          color: ${vars['--color-white']};
+          background-color: ${vars.colorBlue};
+          color: ${vars.colorWhite};
         }
       `;
     default: {

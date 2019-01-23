@@ -47,10 +47,10 @@ export const IconButton = props => {
       css={[
         css`
           display: inline-block;
-          background-color: ${vars['--color-white']};
-          box-shadow: ${vars['--shadow-7']};
-          color: ${vars['--color-black']};
-          transition: background-color ${vars['--transition-linear-80ms']},
+          background-color: ${vars.colorWhite};
+          box-shadow: ${vars.shadow7};
+          color: ${vars.colorBlack};
+          transition: background-color ${vars.transitionLinear80Ms},
             box-shadow 150ms ease-in-out;
         `,
         getStateStyles(props.isDisabled, isActive, props.theme),

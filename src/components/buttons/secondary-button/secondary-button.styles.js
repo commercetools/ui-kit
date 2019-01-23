@@ -5,9 +5,9 @@ import vars from '../../../../materials/custom-properties';
 const getStateStyles = (isDisabled, isActive, theme) => {
   if (isDisabled) {
     const baseDisabledStyles = css`
-      box-shadow: 0 0 0 1px ${vars['--color-gray']} inset;
-      background-color: ${vars['--color-navy-98']};
-      color: ${vars['--color-gray-60']};
+      box-shadow: 0 0 0 1px ${vars.colorGray} inset;
+      background-color: ${vars.colorNavy98};
+      color: ${vars.colorGray60};
       pointer-events: none;
       cursor: not-allowed;
     `;
@@ -16,9 +16,9 @@ const getStateStyles = (isDisabled, isActive, theme) => {
         return [
           baseDisabledStyles,
           css`
-            color: ${vars['--color-gray-60']};
+            color: ${vars.colorGray60};
           `,
-          isActive && `color: ${vars['--color-blue']};`,
+          isActive && `color: ${vars.colorBlue};`,
         ];
       default:
         return baseDisabledStyles;
@@ -27,17 +27,17 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   if (isActive) {
     const baseActiveStyles = [
       css`
-        box-shadow: ${vars['--shadow-9']};
-        background-color: ${vars['--color-white']};
+        box-shadow: ${vars.shadow9};
+        background-color: ${vars.colorWhite};
         &:hover {
-          background-color: ${vars['--color-gray-95']};
+          background-color: ${vars.colorGray95};
         }
       `,
       isDisabled &&
         css`
-          box-shadow: 0 0 0 1px ${vars['--color-gray']} inset;
-          background-color: ${vars['--color-navy-98']};
-          color: ${vars['--color-gray-60']};
+          box-shadow: 0 0 0 1px ${vars.colorGray} inset;
+          background-color: ${vars.colorNavy98};
+          color: ${vars.colorGray60};
           pointer-events: none;
         `,
     ];
@@ -46,7 +46,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
         return [
           baseActiveStyles,
           css`
-            color: ${vars['--color-blue']};
+            color: ${vars.colorBlue};
           `,
         ];
       default:
@@ -55,11 +55,11 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   }
   return css`
     &:hover {
-      box-shadow: ${vars['--shadow-8']};
+      box-shadow: ${vars.shadow8};
     }
     &:active {
-      box-shadow: ${vars['--shadow-9']};
-      background-color: ${vars['--color-white']};
+      box-shadow: ${vars.shadow9};
+      background-color: ${vars.colorWhite};
     }
   `;
 };
@@ -73,7 +73,7 @@ const getThemeStyles = theme => {
     case 'blue':
       return css`
         &:hover {
-          color: ${vars['--color-blue']};
+          color: ${vars.colorBlue};
         }
       `;
     default: {
@@ -83,11 +83,11 @@ const getThemeStyles = theme => {
       );
       return css`
         &:hover {
-          box-shadow: ${vars['--shadow-8']};
+          box-shadow: ${vars.shadow8};
         }
         &:active {
-          box-shadow: ${vars['--shadow-9']};
-          background-color: ${vars['--color-white']};
+          box-shadow: ${vars.shadow9};
+          background-color: ${vars.colorWhite};
         }
       `;
     }

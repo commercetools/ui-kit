@@ -26,9 +26,9 @@ const getIconElement = props => {
 const getColorTone = (tone, isHover = false) => {
   switch (tone) {
     case 'primary':
-      return isHover ? vars['--color-green-25'] : vars['--color-green'];
+      return isHover ? vars.colorGreen25 : vars.colorGreen;
     case 'secondary':
-      return vars['--color-black'];
+      return vars.colorBlack;
     default:
       return 'inherit';
   }
@@ -57,13 +57,13 @@ export const FlatButton = props => {
           min-height: initial;
           p {
             color: ${props.isDisabled
-              ? vars['--color-gray']
+              ? vars.colorGray
               : getColorTone(props.tone)};
           }
           &:hover {
             p {
               color: ${props.isDisabled
-                ? vars['--color-gray']
+                ? vars.colorGray
                 : getColorTone(props.tone, true)};
             }
           }
