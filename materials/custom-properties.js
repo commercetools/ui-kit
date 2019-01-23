@@ -5,164 +5,157 @@
   The variables should be updated in 'materials/internals/definition.yaml'.
 */
 
-export const colorGreen = '#00b39e';
-export const colorGreen25 = 'hsl(172.9608938547486, 100%, 25%)';
-export const colorGreen40 = 'hsl(172.9608938547486, 100%, 40%)';
-export const colorGreen85 = 'hsl(172.9608938547486, 100%, 85%)';
-export const colorGreen95 = 'hsl(172.9608938547486, 100%, 95%)';
-export const colorNavy = '#213c45';
-export const colorNavy30 = 'hsl(195, 35.2941176471%, 30%)';
-export const colorNavy40 = 'hsl(195, 35.2941176471%, 40%)';
-export const colorNavy95 = 'hsl(195, 35.2941176471%, 95%)';
-export const colorNavy98 = 'hsl(195, 35.2941176471%, 98%)';
-export const colorGray = '#ccc';
-export const colorGray60 = 'hsl(0, 0%, 60%)';
-export const colorGray90 = 'hsl(0, 0%, 90%)';
-export const colorGray95 = 'hsl(0, 0%, 95%)';
-export const colorBlue = '#078cdf';
-export const colorBlue85 = 'hsl(203.05555555555554, 93.9130434783%, 85%)';
-export const colorBlue95 = 'hsl(203.05555555555554, 93.9130434783%, 95%)';
-export const colorOrange = '#f16d0e';
-export const colorOrange95 = 'hsl(25.110132158590307, 89.0196078431%, 95%)';
-export const colorRed = '#e60050';
-export const colorRed95 = 'hsl(339.1304347826087, 100%, 95%)';
-export const colorPurple = '#b866ff';
-export const colorBlack = '#1a1a1a';
-export const colorWhite = '#fff';
-export const borderRadius1 = '1px';
-export const borderRadius2 = '2px';
-export const borderRadius4 = '4px';
-export const borderRadius6 = '6px';
-export const borderRadius20 = '20px';
-export const fontFamilyBody = "'Open Sans', sans-serif";
-export const fontSizeM = '13px';
-export const shadow1 =
-  '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)';
-export const shadow2 =
-  '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)';
-export const shadow3 =
-  '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)';
-export const shadow4 =
-  '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)';
-export const shadow5 =
-  '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)';
-export const shadow6 = '0 -1px 2px 0 rgba(0, 0, 0, 0.2)';
-export const shadow7 =
-  '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)';
-export const shadow8 =
-  '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)';
-export const shadow9 =
-  'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)';
-export const shadow10 = '0 0 0 1px rgba(224, 230, 237, 0.5)';
-export const shadow11 =
-  '0 1px 0.5px rgba(0, 0, 0, 0.24), 0 -1px 0.75px rgba(0, 0, 0, 0.12)';
-export const shadow12 = '0 0 1px rgba(0, 0, 0, 0.25)';
-export const shadow13 = '0 0 1px rgba(0, 0, 0, 0.25)';
-export const shadow14 = '0 0 0.5px rgba(0, 0, 0, 0.1)';
-export const shadow15 =
-  '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)';
-export const constraintScale = '100%';
-export const constraintXs = '50px';
-export const constraintS = '132px';
-export const constraintM = '355px';
-export const constraintL = '400px';
-export const constraintXl = '768px';
-export const spacing4 = '4px';
-export const spacing8 = '8px';
-export const spacing16 = '16px';
-export const spacing24 = '24px';
-export const spacing32 = '32px';
-export const transitionLinear80Ms = '80ms linear';
-export const transitionEaseinout150Ms = '150ms ease-in-out';
-export const transitionStandard = 'all 0.2s ease';
-export const breakPointMobile = '768px';
-export const breakPointDesktop = '1024px';
-export const breakPointBiggerdesktop = '1280px';
-export const breakPointGiantdesktop = '1680px';
-export const breakPointJumbodesktop = '1920px';
-export const backgroundColorInputPristine = '#fff';
-export const backgroundColorInputDisabled = 'hsl(195, 35.2941176471%, 98%)';
-export const backgroundColorInputHover = 'hsl(0, 0%, 90%)';
-export const backgroundColorInputSelected = 'hsl(195, 35.2941176471%, 95%)';
-export const backgroundColorTagPristine = 'hsl(0, 0%, 95%)';
-export const backgroundColorTagWarning =
-  'hsl(25.110132158590307, 89.0196078431%, 95%)';
-export const backgroundColorTagDisabled = 'hsl(0, 0%, 95%)';
-export const backgroundColorTagNormalHover = 'hsl(0, 0%, 60%)';
-export const backgroundColorTagWarningHover = '#f16d0e';
-export const backgroundColorForInput = '#fff';
-export const backgroundColorForInputWhenDisabled =
-  'hsl(195, 35.2941176471%, 98%)';
-export const borderColorInputPristine = 'hsl(0, 0%, 60%)';
-export const borderColorInputFocus = '#00b39e';
-export const borderColorInputDisabled = '#ccc';
-export const borderColorInputReadonly = '#ccc';
-export const borderColorInputError = '#e60050';
-export const borderColorInputWarning = '#f16d0e';
-export const borderColorTagPristine = 'hsl(0, 0%, 60%)';
-export const borderColorTagWarning = '#f16d0e';
-export const borderColorTagFocus = '#00b39e';
-export const borderColorTagWarningHover = '#f16d0e';
-export const borderColorSeparator = '#ccc';
-export const borderColorForInput = 'hsl(0, 0%, 60%)';
-export const borderColorForInputWhenFocused = '#00b39e';
-export const borderColorForInputWhenDisabled = '#ccc';
-export const borderColorForInputWhenReadonly = '#ccc';
-export const borderColorForInputWhenError = '#e60050';
-export const borderColorForInputWhenWarning = '#f16d0e';
-export const borderRadiusInput = '6px';
-export const borderRadiusTag = '2px';
-export const borderRadiusForInput = '6px';
-export const fontColorDefault = '#1a1a1a';
-export const fontColorDisabled = 'hsl(0, 0%, 60%)';
-export const fontColorError = '#e60050';
-export const fontColorSuccess = '#00b39e';
-export const fontColorWarning = '#f16d0e';
-export const fontColorReadonly = 'hsl(0, 0%, 60%)';
-export const fontColorPlaceholder = 'hsl(0, 0%, 60%)';
-export const fontColorForInput = '#1a1a1a';
-export const fontColorForInputWhenDisabled = 'hsl(0, 0%, 60%)';
-export const fontColorForInputWhenError = '#e60050';
-export const fontColorForInputWhenReadonly = 'hsl(0, 0%, 60%)';
-export const fontColorForInputWhenWarning = '#f16d0e';
-export const fontFamily = "'Open Sans', sans-serif";
-export const placeholderFontColorForInput = 'hsl(0, 0%, 60%)';
-export const fontSizeForInput = '13px';
-export const shadowBoxTagWhenHovered =
-  '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)';
-export const bigButtonHeight = '32px';
-export const smallButtonHeight = '24px';
-export const sizeHeightInput = '32px';
-export const shadow1First = '0 1px 3px rgba(0, 0, 0, 0.12)';
-export const shadow1Second = '0 1px 2px rgba(0, 0, 0, 0.24)';
-export const shadow2First = '0 3px 6px rgba(0, 0, 0, 0.16)';
-export const shadow2Second = '0 3px 6px rgba(0, 0, 0, 0.23)';
-export const shadow3First = '0 10px 20px rgba(0, 0, 0, 0.19)';
-export const shadow3Second = '0 6px 6px rgba(0, 0, 0, 0.23)';
-export const shadow4First = '0 14px 28px rgba(0, 0, 0, 0.25)';
-export const shadow4Second = '0 10px 10px rgba(0, 0, 0, 0.22)';
-export const shadow5First = '0 19px 38px rgba(0, 0, 0, 0.3)';
-export const shadow5Second = '0 15px 12px rgba(0, 0, 0, 0.22)';
-export const shadow6First = '0 -1px 2px 0 rgba(0, 0, 0, 0.2)';
-export const shadow7First = '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12)';
-export const shadow7Second = '0 1px 1px 0 rgba(0, 0, 0, 0.24)';
-export const shadow8First = '0 1px 9.5px 0 rgba(0, 0, 0, 0.12)';
-export const shadow8Second = '0 2px 4px 0 rgba(0, 0, 0, 0.24)';
-export const shadow9First = 'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1)';
-export const shadow9Second = 'inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2)';
-export const shadow9Third = 'inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)';
-export const shadow10First = '0 0 0 1px rgba(224, 230, 237, 0.5)';
-export const shadow11First = '0 1px 0.5px rgba(0, 0, 0, 0.24)';
-export const shadow11Second = '0 -1px 0.75px rgba(0, 0, 0, 0.12)';
-export const shadow12First = '0 0 1px rgba(0, 0, 0, 0.25)';
-export const shadow13First = '0 0 1px rgba(0, 0, 0, 0.25)';
-export const shadow14First = '0 0 0.5px rgba(0, 0, 0, 0.1)';
-export const shadow15First = '0 2px 2px rgba(0, 0, 0, 0.24)';
-export const shadow15Second = '0 1px 4.75px rgba(0, 0, 0, 0.12)';
-export const fontFamilyDefault = "'Open Sans', sans-serif";
-export const fontSizeDefault = '13px';
-export const fontSizeSmall = '12px';
-export const shadowBoxTagHover =
-  '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)';
-export const sizeHeightTag = '26px';
-export const standardInputHeight = '32px';
+export default {
+  colorGreen: '#00b39e',
+  colorGreen25: 'hsl(172.9608938547486, 100%, 25%)',
+  colorGreen40: 'hsl(172.9608938547486, 100%, 40%)',
+  colorGreen85: 'hsl(172.9608938547486, 100%, 85%)',
+  colorGreen95: 'hsl(172.9608938547486, 100%, 95%)',
+  colorNavy: '#213c45',
+  colorNavy30: 'hsl(195, 35.2941176471%, 30%)',
+  colorNavy40: 'hsl(195, 35.2941176471%, 40%)',
+  colorNavy95: 'hsl(195, 35.2941176471%, 95%)',
+  colorNavy98: 'hsl(195, 35.2941176471%, 98%)',
+  colorGray: '#ccc',
+  colorGray60: 'hsl(0, 0%, 60%)',
+  colorGray90: 'hsl(0, 0%, 90%)',
+  colorGray95: 'hsl(0, 0%, 95%)',
+  colorBlue: '#078cdf',
+  colorBlue85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
+  colorBlue95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
+  colorOrange: '#f16d0e',
+  colorOrange95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
+  colorRed: '#e60050',
+  colorRed95: 'hsl(339.1304347826087, 100%, 95%)',
+  colorPurple: '#b866ff',
+  colorBlack: '#1a1a1a',
+  colorWhite: '#fff',
+  borderRadius1: '1px',
+  borderRadius2: '2px',
+  borderRadius4: '4px',
+  borderRadius6: '6px',
+  borderRadius20: '20px',
+  fontFamilyBody: "'Open Sans', sans-serif",
+  fontSizeM: '13px',
+  shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  shadow2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
+  shadow3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
+  shadow4: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
+  shadow5: '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)',
+  shadow6: '0 -1px 2px 0 rgba(0, 0, 0, 0.2)',
+  shadow7:
+    '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+  shadow8: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+  shadow9:
+    'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+  shadow10: '0 0 0 1px rgba(224, 230, 237, 0.5)',
+  shadow11:
+    '0 1px 0.5px rgba(0, 0, 0, 0.24), 0 -1px 0.75px rgba(0, 0, 0, 0.12)',
+  shadow12: '0 0 1px rgba(0, 0, 0, 0.25)',
+  shadow13: '0 0 1px rgba(0, 0, 0, 0.25)',
+  shadow14: '0 0 0.5px rgba(0, 0, 0, 0.1)',
+  shadow15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
+  constraintScale: '100%',
+  constraintXs: '50px',
+  constraintS: '132px',
+  constraintM: '355px',
+  constraintL: '400px',
+  constraintXl: '768px',
+  spacing4: '4px',
+  spacing8: '8px',
+  spacing16: '16px',
+  spacing24: '24px',
+  spacing32: '32px',
+  transitionLinear80Ms: '80ms linear',
+  transitionEaseinout150Ms: '150ms ease-in-out',
+  transitionStandard: 'all 0.2s ease',
+  breakPointMobile: '768px',
+  breakPointDesktop: '1024px',
+  breakPointBiggerdesktop: '1280px',
+  breakPointGiantdesktop: '1680px',
+  breakPointJumbodesktop: '1920px',
+  backgroundColorInputPristine: '#fff',
+  backgroundColorInputDisabled: 'hsl(195, 35.2941176471%, 98%)',
+  backgroundColorInputHover: 'hsl(0, 0%, 90%)',
+  backgroundColorInputSelected: 'hsl(195, 35.2941176471%, 95%)',
+  backgroundColorTagPristine: 'hsl(0, 0%, 95%)',
+  backgroundColorTagWarning: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
+  backgroundColorTagDisabled: 'hsl(0, 0%, 95%)',
+  backgroundColorTagNormalHover: 'hsl(0, 0%, 60%)',
+  backgroundColorTagWarningHover: '#f16d0e',
+  backgroundColorForInput: '#fff',
+  backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
+  borderColorInputPristine: 'hsl(0, 0%, 60%)',
+  borderColorInputFocus: '#00b39e',
+  borderColorInputDisabled: '#ccc',
+  borderColorInputReadonly: '#ccc',
+  borderColorInputError: '#e60050',
+  borderColorInputWarning: '#f16d0e',
+  borderColorTagPristine: 'hsl(0, 0%, 60%)',
+  borderColorTagWarning: '#f16d0e',
+  borderColorTagFocus: '#00b39e',
+  borderColorTagWarningHover: '#f16d0e',
+  borderColorSeparator: '#ccc',
+  borderColorForInput: 'hsl(0, 0%, 60%)',
+  borderColorForInputWhenFocused: '#00b39e',
+  borderColorForInputWhenDisabled: '#ccc',
+  borderColorForInputWhenReadonly: '#ccc',
+  borderColorForInputWhenError: '#e60050',
+  borderColorForInputWhenWarning: '#f16d0e',
+  borderRadiusInput: '6px',
+  borderRadiusTag: '2px',
+  borderRadiusForInput: '6px',
+  fontColorDefault: '#1a1a1a',
+  fontColorDisabled: 'hsl(0, 0%, 60%)',
+  fontColorError: '#e60050',
+  fontColorSuccess: '#00b39e',
+  fontColorWarning: '#f16d0e',
+  fontColorReadonly: 'hsl(0, 0%, 60%)',
+  fontColorPlaceholder: 'hsl(0, 0%, 60%)',
+  fontColorForInput: '#1a1a1a',
+  fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
+  fontColorForInputWhenError: '#e60050',
+  fontColorForInputWhenReadonly: 'hsl(0, 0%, 60%)',
+  fontColorForInputWhenWarning: '#f16d0e',
+  fontFamily: "'Open Sans', sans-serif",
+  placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
+  fontSizeForInput: '13px',
+  shadowBoxTagWhenHovered:
+    '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  bigButtonHeight: '32px',
+  smallButtonHeight: '24px',
+  sizeHeightInput: '32px',
+  shadow1First: '0 1px 3px rgba(0, 0, 0, 0.12)',
+  shadow1Second: '0 1px 2px rgba(0, 0, 0, 0.24)',
+  shadow2First: '0 3px 6px rgba(0, 0, 0, 0.16)',
+  shadow2Second: '0 3px 6px rgba(0, 0, 0, 0.23)',
+  shadow3First: '0 10px 20px rgba(0, 0, 0, 0.19)',
+  shadow3Second: '0 6px 6px rgba(0, 0, 0, 0.23)',
+  shadow4First: '0 14px 28px rgba(0, 0, 0, 0.25)',
+  shadow4Second: '0 10px 10px rgba(0, 0, 0, 0.22)',
+  shadow5First: '0 19px 38px rgba(0, 0, 0, 0.3)',
+  shadow5Second: '0 15px 12px rgba(0, 0, 0, 0.22)',
+  shadow6First: '0 -1px 2px 0 rgba(0, 0, 0, 0.2)',
+  shadow7First: '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12)',
+  shadow7Second: '0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+  shadow8First: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12)',
+  shadow8Second: '0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+  shadow9First: 'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1)',
+  shadow9Second: 'inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2)',
+  shadow9Third: 'inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+  shadow10First: '0 0 0 1px rgba(224, 230, 237, 0.5)',
+  shadow11First: '0 1px 0.5px rgba(0, 0, 0, 0.24)',
+  shadow11Second: '0 -1px 0.75px rgba(0, 0, 0, 0.12)',
+  shadow12First: '0 0 1px rgba(0, 0, 0, 0.25)',
+  shadow13First: '0 0 1px rgba(0, 0, 0, 0.25)',
+  shadow14First: '0 0 0.5px rgba(0, 0, 0, 0.1)',
+  shadow15First: '0 2px 2px rgba(0, 0, 0, 0.24)',
+  shadow15Second: '0 1px 4.75px rgba(0, 0, 0, 0.12)',
+  fontFamilyDefault: "'Open Sans', sans-serif",
+  fontSizeDefault: '13px',
+  fontSizeSmall: '12px',
+  shadowBoxTagHover:
+    '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  sizeHeightTag: '26px',
+  standardInputHeight: '32px',
+};

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import * as vars from '../../../../materials/custom-properties';
+import vars from '../../../../materials/custom-properties';
 
 const getPadding = scale => {
   switch (scale) {

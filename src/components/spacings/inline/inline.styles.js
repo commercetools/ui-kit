@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import * as vars from '../../../../materials/custom-properties';
+import vars from '../../../../materials/custom-properties';
 
 const getAlignItems = alignment => {
   switch (alignment) {

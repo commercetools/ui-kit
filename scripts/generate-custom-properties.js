@@ -109,9 +109,11 @@ const printJavaScript = data => `
   The variables should be updated in 'materials/internals/definition.yaml'.
 */
 
+export default {
 ${Object.entries(data)
-  .map(([key, value]) => `export const ${camelCase(key)} = "${value}";`)
+  .map(([key, value]) => `${camelCase(key)}: "${value}",`)
   .join('\n')}
+};
 `;
 
 const printCss = data => `
