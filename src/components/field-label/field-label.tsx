@@ -14,11 +14,11 @@ type FieldLabelProps = {
   hint: React.ReactNode;
   description: React.ReactNode;
   onInfoButtonClick?: () => void;
-  hintIcon: React.ReactNode;
+  hintIcon: React.ReactElement<any>;
   badge: React.ReactNode;
   hasRequiredIndicator?: boolean;
   htmlFor?: string;
-  horizontalConstraint?: HorizontalConstraintOfFieldLabel;
+  horizontalConstraint: HorizontalConstraintOfFieldLabel;
 };
 
 export const FieldLabel: React.FC<FieldLabelProps> = props => {
