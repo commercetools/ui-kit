@@ -1,30 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import styles from './horizontal.mod.css';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 
-const getConstraintSyle = constraint => {
+const getConstraintSyles = constraint => {
   switch (constraint) {
     case 'xs':
-      return styles.constraintXs;
+      return css`
+        max-width: ${vars.constraintXs};
+      `;
     case 's':
-      return styles.constraintS;
+      return css`
+        max-width: ${vars.constraintS};
+      `;
     case 'm':
-      return styles.constraintM;
+      return css`
+        max-width: ${vars.constraintM};
+      `;
     case 'l':
-      return styles.constraintL;
+      return css`
+        max-width: ${vars.constraintL};
+      `;
     case 'xl':
-      return styles.constraintXl;
+      return css`
+        max-width: ${vars.constraintXl};
+      `;
     case 'scale':
-      return styles.constraintScale;
+      return css`
+        width: ${vars.constraintScale};
+      `;
     default:
-      return undefined;
+      return css``;
   }
 };
 
-const Horizontal = ({ children, constraint }) => (
-  <div className={classnames(styles.container, getConstraintSyle(constraint))}>
-    {children}
+const Horizontal = props => (
+  <div
+    css={[
+      css`
+        width: 100%;
+        position: relative;
+      `,
+      getConstraintSyles(props.constraint),
+    ]}
+  >
+    {props.children}
   </div>
 );
 Horizontal.displayName = 'Horizontal';
