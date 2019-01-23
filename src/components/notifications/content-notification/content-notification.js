@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { ErrorIcon, WarningIcon, InfoIcon, CheckBoldIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import vars from '../../../../materials/custom-properties.json';
+import vars from '../../../../materials/custom-properties';
 
 const getIconContainerBackgroundColour = props => {
   switch (props.type) {
     case 'error':
-      return vars['--color-red'];
+      return vars.colorRed;
     case 'info':
-      return vars['--color-blue'];
+      return vars.colorBlue;
     case 'warning':
-      return vars['--color-orange'];
+      return vars.colorOrange;
     case 'success':
-      return vars['--color-green'];
+      return vars.colorGreen;
     default:
       return '';
   }
@@ -47,10 +47,9 @@ class NotificationIcon extends React.PureComponent {
         css={css`
           display: flex;
           align-items: center;
-          border-radius: ${vars['--border-radius-6']} 0 0
-            ${vars['--border-radius-6']};
+          border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
           border-width: 0;
-          padding: ${vars['--spacing-8']} ${vars['--spacing-16']};
+          padding: ${vars.spacing8} ${vars.spacing16};
           background-color: ${getIconContainerBackgroundColour(this.props)};
           svg {
             margin: 0 -3px;
@@ -66,13 +65,13 @@ class NotificationIcon extends React.PureComponent {
 const getContentBorderColor = props => {
   switch (props.type) {
     case 'error':
-      return vars['--color-red'];
+      return vars.colorRed;
     case 'info':
-      return vars['--color-blue'];
+      return vars.colorBlue;
     case 'warning':
-      return vars['--color-orange'];
+      return vars.colorOrange;
     case 'success':
-      return vars['--color-green'];
+      return vars.colorGreen;
     default:
       return '';
   }
@@ -96,9 +95,9 @@ export default class ContentNotification extends React.PureComponent {
           text-align: left;
           word-break: break-word;
           hyphens: auto;
-          font-size: ${vars['--font-size-default']};
-          color: ${vars['--color-black']};
-          font-family: ${vars['--font-family-default']};
+          font-size: ${vars.fontSizeDefault};
+          color: ${vars.colorBlack};
+          font-family: ${vars.fontFamilyDefault};
         `}
       >
         <NotificationIcon type={this.props.type} theme="white" />
@@ -107,10 +106,9 @@ export default class ContentNotification extends React.PureComponent {
             flex-grow: 1;
             display: flex;
             align-items: center;
-            padding: ${vars['--spacing-8']};
-            background: ${vars['--color-white']};
-            border-radius: 0 ${vars['--border-radius-6']}
-              ${vars['--border-radius-6']} 0;
+            padding: ${vars.spacing8};
+            background: ${vars.colorWhite};
+            border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
             border-width: 1px;
             border-style: solid;
             border-color: ${getContentBorderColor(this.props)};
