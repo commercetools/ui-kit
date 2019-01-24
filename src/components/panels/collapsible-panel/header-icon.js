@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
 import { AngleDownIcon, AngleRightIcon } from '../../icons';
-import styles from './collapsible-panel.mod.css';
+import vars from '../../../../materials/custom-properties';
+
+const sizeIconContainer = '24px';
+const sizeIconContainerSmall = '16px';
 
 const getArrowTheme = ({ tone, isDisabled }) => {
   if (isDisabled) return 'grey';
@@ -12,14 +15,29 @@ const getArrowTheme = ({ tone, isDisabled }) => {
 
 const HeaderIcon = props => (
   <div
-    className={classnames(
-      styles['header-icon'],
-      styles[`header-icon-${props.tone}`],
-      {
-        [styles['header-icon-disabled']]: props.isDisabled,
-        [styles['header-icon-small']]: props.size === 'small',
-      }
-    )}
+    css={[
+      css`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: ${props.size === 'small'
+          ? sizeIconContainerSmall
+          : sizeIconContainer};
+        width: ${props.size === 'small'
+          ? sizeIconContainerSmall
+          : sizeIconContainer};
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: ${vars.shadow7};
+        background-color: ${props.tone === 'urgent'
+          ? vars.colorOrange
+          : vars.colorWhite};
+      `,
+      props.isDisabled &&
+        css`
+          box-shadow: none;
+        `,
+    ]}
   >
     {props.isClosed ? (
       <AngleRightIcon

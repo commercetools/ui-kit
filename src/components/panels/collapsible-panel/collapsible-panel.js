@@ -2,13 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash.isnil';
 import { css } from '@emotion/core';
-import classnames from 'classnames';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
 import Text from '../../typography/text';
 import CollapsibleMotion from '../../collapsible-motion';
 import HeaderIcon from './header-icon';
-import styles from './collapsible-panel.mod.css';
 import vars from '../../../../materials/custom-properties';
 
 // When `isClosed` is provided the component behaves as a controlled component,
@@ -148,9 +146,6 @@ export default class CollapsiblePanel extends React.PureComponent {
                   `,
               ]}
               onClick={this.props.isDisabled ? undefined : toggle}
-              className={classnames({
-                [styles['header-closed']]: !isOpen,
-              })}
             >
               <Spacings.InsetSquish scale={scale}>
                 <div
@@ -188,7 +183,11 @@ export default class CollapsiblePanel extends React.PureComponent {
                       `,
                   ]}
                 >
-                  <div className={styles['truncate-header']}>
+                  <div
+                    css={css`
+                      min-width: 0;
+                    `}
+                  >
                     <Spacings.Inline alignItems="center" scale="s">
                       {!this.props.hideExpansionControls && (
                         <HeaderIcon
