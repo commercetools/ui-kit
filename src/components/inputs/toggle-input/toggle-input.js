@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import styles from './toggle-input.mod.css';
+import { css } from '@emotion/core';
 import ToggleSwitch from './toggle-switch';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
@@ -25,9 +24,15 @@ class ToggleInput extends React.PureComponent {
   render() {
     return (
       <label
-        className={classnames(styles.labelWrapper, {
-          [styles.labelWrapperDisabled]: this.props.isDisabled,
-        })}
+        css={
+          this.props.isDisabled
+            ? css`
+                cursor: not-allowed;
+              `
+            : css`
+                cursor: pointer;
+              `
+        }
       >
         <ToggleSwitch
           size={this.props.size}
@@ -35,7 +40,9 @@ class ToggleInput extends React.PureComponent {
           isDisabled={this.props.isDisabled}
         />
         <input
-          className={styles.inputWrapper}
+          css={css`
+            display: none;
+          `}
           id={this.props.id}
           name={this.props.name}
           onChange={this.props.onChange}

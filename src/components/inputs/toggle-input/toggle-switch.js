@@ -1,53 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Icons from './icons';
-import styles from './toggle-input.mod.css';
-
-const getStateClassNames = (baseClass, size, isDisabled, isChecked) =>
-  classnames(styles[`${baseClass}-${size}`], {
-    [styles.active]: isChecked,
-    [styles.disabled]: isDisabled,
-  });
+import {
+  getToggleSwitchStyles,
+  getToggleButtonStyles,
+  getToggleBarStyles,
+} from './toggle-input.styles';
 
 export const ToggleButton = props => (
-  <Icons.ButtonDefault
-    className={getStateClassNames(
-      'toggle-button',
-      props.size,
-      props.isDisabled,
-      props.isChecked
-    )}
-  />
+  <Icons.ButtonDefault css={getToggleButtonStyles(props)} />
 );
-
-export const ToggleBar = props => (
-  <Icons.BarDefault
-    className={getStateClassNames(
-      'toggle-bar',
-      props.size,
-      props.isDisabled,
-      props.isChecked
-    )}
-  />
-);
-
 ToggleButton.displayName = 'ToggleButton';
 ToggleButton.propTypes = {
-  size: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['small', 'big']).isRequired,
   isChecked: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
 };
 
+export const ToggleBar = props => (
+  <Icons.BarDefault css={getToggleBarStyles(props)} />
+);
 ToggleBar.displayName = 'ToggleBar';
 ToggleBar.propTypes = {
-  size: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['small', 'big']).isRequired,
   isChecked: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
 };
 
 const ToggleSwitch = props => (
-  <div className={styles[`toggle-container-${props.size}`]}>
+  <div css={getToggleSwitchStyles(props)}>
     <ToggleButton {...props} />
     <ToggleBar {...props} />
   </div>
@@ -55,7 +36,7 @@ const ToggleSwitch = props => (
 
 ToggleSwitch.displayName = 'ToggleSwitch';
 ToggleSwitch.propTypes = {
-  size: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['small', 'big']).isRequired,
   isChecked: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
 };
