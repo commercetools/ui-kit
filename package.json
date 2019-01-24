@@ -84,7 +84,6 @@
     "react-select": "2.3.0",
     "react-textarea-autosize": "7.1.0",
     "react-virtualized": "9.21.0",
-    "recompose": "0.30.0",
     "tiny-invariant": "1.0.3",
     "warning": "4.0.2"
   },
