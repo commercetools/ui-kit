@@ -28,14 +28,6 @@ const getTextareaStyles = props => {
         word-break: break-all;
       `,
   ];
-  if (props.isDisabled) {
-    return [
-      ...baseStyles,
-      css`
-        resize: none;
-      `,
-    ];
-  }
   return baseStyles;
 };
 

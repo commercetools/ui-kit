@@ -8,6 +8,7 @@ import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import messages from './messages';
 import { getTextareaStyles } from './multiline-text-input.styles';
@@ -65,7 +66,7 @@ export class MultilineTextInput extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Collapsible isDefaultClosed={!this.props.defaultExpandMultilineText}>
           {({ isOpen, toggle }) => (
-            <React.Fragment>
+            <Spacings.Stack scale="xs">
               <TextareaAutosize
                 name={this.props.name}
                 value={this.props.value}
@@ -94,12 +95,12 @@ export class MultilineTextInput extends React.Component {
               {shouldRenderToggleButton && (
                 <div
                   css={css`
-                    float: right;
+                    display: flex;
+                    justify-content: flex-end;
                   `}
                 >
                   <FlatButton
                     onClick={toggle}
-                    type="primary"
                     isDisabled={this.props.isDisabled}
                     label={this.props.intl.formatMessage(
                       isOpen ? messages.collapse : messages.expand
@@ -114,7 +115,7 @@ export class MultilineTextInput extends React.Component {
                   />
                 </div>
               )}
-            </React.Fragment>
+            </Spacings.Stack>
           )}
         </Collapsible>
       </Constraints.Horizontal>

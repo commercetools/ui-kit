@@ -150,7 +150,6 @@ export default class TranslationInput extends React.Component {
             {!this.props.isCollapsed && contentExceedsShownRows && (
               <FlatButton
                 onClick={this.props.onToggle}
-                type="primary"
                 isDisabled={this.props.isDisabled}
                 label={this.props.intl.formatMessage(messages.collapse)}
                 icon={<AngleUpIcon size="small" />}

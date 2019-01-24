@@ -20,14 +20,6 @@ const getTextareaStyles = props => {
       resize: vertical;
     `,
   ];
-  if (props.isDisabled) {
-    return [
-      ...baseStyles,
-      css`
-        resize: none;
-      `,
-    ];
-  }
   return baseStyles;
 };
 
