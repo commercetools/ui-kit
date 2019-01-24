@@ -42,7 +42,7 @@ const getTextareaStyles = props => {
   ];
   if (props.isDisabled) {
     return [
-      baseInputStyles,
+      ...baseInputStyles,
       css`
         cursor: not-allowed;
         color: ${vars.fontColorDisabled};
@@ -54,7 +54,7 @@ const getTextareaStyles = props => {
   }
   if (props.hasError) {
     return [
-      baseInputStyles,
+      ...baseInputStyles,
       css`
         color: ${vars.fontColorError};
         border-color: ${vars.borderColorInputError};
@@ -63,7 +63,7 @@ const getTextareaStyles = props => {
   }
   if (props.hasWarning) {
     return [
-      baseInputStyles,
+      ...baseInputStyles,
       css`
         color: ${vars.fontColorWarning};
         border-color: ${vars.borderColorInputWarning};
@@ -72,7 +72,7 @@ const getTextareaStyles = props => {
   }
   if (props.isReadOnly) {
     return [
-      baseInputStyles,
+      ...baseInputStyles,
       css`
         border-color: ${vars.borderColorInputReadonly};
         color: ${vars.fontColorReadonly};
@@ -81,7 +81,7 @@ const getTextareaStyles = props => {
     ];
   }
   return [
-    baseInputStyles,
+    ...baseInputStyles,
     css`
       &:active,
       &:focus {
