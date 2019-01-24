@@ -30,21 +30,6 @@ describe('TextInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('type', 'text');
   });
 
-  it('should have pristine style when untouched', () => {
-    const { container } = render(<TextInput {...baseProps} />);
-    expect(container.querySelector('input')).toHaveClass('pristine');
-  });
-
-  it('should have warning style when warning is present', () => {
-    const { container } = render(<TextInput {...baseProps} hasWarning />);
-    expect(container.querySelector('input')).toHaveClass('warning');
-  });
-
-  it('should have error style when error is present', () => {
-    const { container } = render(<TextInput {...baseProps} hasError />);
-    expect(container.querySelector('input')).toHaveClass('error');
-  });
-
   it('should have an HTML name', () => {
     const { container } = render(<TextInput {...baseProps} name="foo" />);
     expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
