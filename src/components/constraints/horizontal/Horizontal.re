@@ -11,15 +11,18 @@ module Styles = {
 
   let container = style([width(`percent(100.)), position(`relative)]);
 
-  let style_of_constraint = c =>
-    switch (c) {
-    | Scale => style([width(`percent(100.))])
-    | Xs => style([minWidth(`px(50))])
-    | S => style([minWidth(`px(132))])
-    | M => style([minWidth(`px(355))])
-    | L => style([minWidth(`px(400))])
-    | Xl => style([minWidth(`px(768))])
-    };
+  let style_of_constraint = c => {
+    let def =
+      switch (c) {
+      | Scale => width(`percent(100.))
+      | Xs => minWidth(CustomProperties.constraintXs)
+      | S => minWidth(CustomProperties.constraintS)
+      | M => minWidth(CustomProperties.constraintM)
+      | L => minWidth(CustomProperties.constraintL)
+      | Xl => minWidth(CustomProperties.constraintXl)
+      };
+    style([def]);
+  };
 };
 
 let component = ReasonReact.statelessComponent(__MODULE__);
@@ -38,4 +41,3 @@ let make = (~constraint_=Scale, children) => {
       children
     </div>,
 };
-

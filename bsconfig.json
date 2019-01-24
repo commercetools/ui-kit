@@ -2,6 +2,10 @@
   "name": "ui-kit",
   "sources": [
     {
+      "dir": "materials",
+      "subdirs": true
+    },
+    {
       "dir": "src",
       "subdirs": true
     }
