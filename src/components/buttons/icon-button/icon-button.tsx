@@ -1,13 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { compose } from 'recompose';
-import isNil from 'lodash.isnil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
+import invariant from 'tiny-invariant';
 import {
   getStateStyles,
   getShapeStyles,
@@ -15,8 +14,29 @@ import {
   getThemeStyles,
 } from './icon-button.styles';
 
+type IconButtonProps = {
+  type: 'submit' | 'reset' | 'button';
+  label: string;
+  icon: React.ReactElement<any>;
+  isToggleButton: boolean;
+  isToggled: boolean;
+  isDisabled?: boolean;
+  onClick?: (e: React.MouseEvent<any>) => void;
+  shape: 'round' | 'square';
+  size: 'small' | 'medium' | 'big';
+  theme: 'default' | 'green' | 'blue';
+
+  // HoC
+  isMouseDown: boolean;
+  isMouseOver: () => void;
+  handleMouseOver: () => void;
+  handleMouseOut: () => void;
+  handleMouseDown: () => void;
+  handleMouseUp: () => void;
+};
+
 // Gets the color which the icon should have based on context of button's state/cursor behavior
-const getIconThemeColor = props => {
+const getIconThemeColor = (props: IconButtonProps) => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be white when hovering/clicking
   if (props.theme !== 'default' && (isActive || props.isMouseOver)) {
@@ -32,7 +52,20 @@ const getIconThemeColor = props => {
   return props.icon.props.theme;
 };
 
-export const IconButton = props => {
+export const IconButton: React.FC<IconButtonProps> = props => {
+  invariant(
+    props.isToggleButton && typeof props.isToggled === 'undefined',
+    'ui-kit/IconButton: when `isToggleButton` is passed `isToggled` is required.'
+  );
+  invariant(
+    !props.isToggleButton && typeof props.isToggled !== 'undefined',
+    'ui-kit/IconButton: when not `isToggleButton` `isToggled` does not affect the component.'
+  );
+  invariant(
+    !props.isToggleButton && props.theme !== 'default',
+    'ui-kit/IconButton: when not `isToggleButton` a `theme` is not supported.'
+  );
+
   const buttonAttributes = {
     'data-track-component': 'IconButton',
     ...filterDataAttributes(props),
@@ -88,52 +121,6 @@ export const IconButton = props => {
       </AccessibleButton>
     </div>
   );
-};
-
-IconButton.propTypes = {
-  type: PropTypes.oneOf(['submit', 'reset', 'button']),
-  label: PropTypes.string.isRequired,
-  icon: PropTypes.node,
-  isToggleButton: PropTypes.bool.isRequired,
-  isToggled(props, propName, componentName, ...rest) {
-    if (props.isToggleButton) {
-      return PropTypes.bool.isRequired(props, propName, componentName, ...rest);
-    }
-    if (!isNil(props[propName]))
-      return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the button is not a toggle button.`
-      );
-    return PropTypes.bool(props, propName, componentName, ...rest);
-  },
-  isDisabled: PropTypes.bool,
-  /* FIXME: onClick should be required.
-    There are still some places where we can't pass it yet.
-    Check the spreadsheet to see where;
-  */
-  onClick: PropTypes.func,
-  shape: PropTypes.oneOf(['round', 'square']),
-  size: PropTypes.oneOf(['small', 'medium', 'big']),
-  theme(props, propName, componentName, ...rest) {
-    if (props[propName] !== 'default' && !props.isToggleButton) {
-      return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Only toggle buttons may have a theme.`
-      );
-    }
-    return PropTypes.oneOf(['default', 'green', 'blue'])(
-      props,
-      propName,
-      componentName,
-      ...rest
-    );
-  },
-
-  // HoC
-  isMouseDown: PropTypes.bool.isRequired,
-  isMouseOver: PropTypes.bool.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseOut: PropTypes.func.isRequired,
-  handleMouseDown: PropTypes.func.isRequired,
-  handleMouseUp: PropTypes.func.isRequired,
 };
 
 IconButton.defaultProps = {
