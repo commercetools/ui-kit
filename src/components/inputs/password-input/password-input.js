@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
-import { getInputStyles } from './password-input.styles';
+import { getInputStyles } from '../styles';
 
 const PasswordInput = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
@@ -18,7 +18,7 @@ const PasswordInput = props => (
       disabled={props.isDisabled}
       placeholder={props.placeholder}
       autoComplete={props.autoComplete}
-      className={getInputStyles(props)}
+      css={getInputStyles(props)}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
       {...filterDataAttributes(props)}

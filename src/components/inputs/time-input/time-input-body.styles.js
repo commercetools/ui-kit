@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
+import { getInputStyles } from '../styles';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -88,23 +89,11 @@ const getInputContainerStyles = () => css`
   font-family: ${vars.fontFamilyDefault};
 `;
 
-const getInputStyles = props => {
-  const baseStyles = css`
-    width: 100%;
-    appearance: none;
-    box-sizing: border-box;
-    background: ${vars.backgroundColorInputPristine};
+const getTimeInputStyles = props => [
+  getInputStyles(props),
+  css`
     border-radius: ${vars.borderRadiusInput} 0 0 ${vars.borderRadiusInput};
-    border-bottom: 1px solid ${vars.borderColorInputPristine};
-    border-left: 1px solid ${vars.borderColorInputPristine};
-    border-top: 1px solid ${vars.borderColorInputPristine};
     border-right: none;
-    height: ${vars.sizeHeightInput};
-    flex-grow: 1;
-    font: inherit;
-    margin-right: 0; /* stop that jumping */
-    padding: ${vars.spacing8};
-    outline: 0;
 
     &:focus,
     &:active,
@@ -126,22 +115,12 @@ const getInputStyles = props => {
       border-color: ${vars.borderColorInputDisabled};
       opacity: 1; /* fix for mobile safari */
     }
-  `;
-  if (!props.isDisabled && props.hasError) {
-    return [
-      baseStyles,
-      css`
-        color: ${vars.fontColorError};
-        border-color: ${vars.borderColorInputError};
-      `,
-    ];
-  }
-  return baseStyles;
-};
+  `,
+];
 
 export {
   getClearSectionStyles,
   getInputContainerStyles,
-  getInputStyles,
+  getTimeInputStyles,
   getClockIconContainerStyles,
 };

@@ -7,8 +7,8 @@ import Spacings from '../../spacings';
 import {
   getClearSectionStyles,
   getClockIconContainerStyles,
+  getTimeInputStyles,
   getInputContainerStyles,
-  getInputStyles,
 } from './time-input-body.styles';
 
 const getIconTheme = (isDisabled, isMouseOver) => {
@@ -72,7 +72,7 @@ export default class TimeInputBody extends React.Component {
           <input
             id={this.props.id}
             name={this.props.name}
-            css={getInputStyles(this.props)}
+            css={getTimeInputStyles(this.props)}
             placeholder={this.props.placeholder}
             autoFocus={this.props.isAutofocussed}
             disabled={this.props.isDisabled}

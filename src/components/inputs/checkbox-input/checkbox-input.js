@@ -50,18 +50,9 @@ class CheckboxInput extends React.PureComponent {
   render() {
     return (
       <div>
-        <label
-          htmlFor={this.state.id}
-          css={getLabelStyles(this.props.isDisabled, this.props.hasError)}
-        >
+        <label htmlFor={this.state.id} css={getLabelStyles(this.props)}>
           <Spacings.Inline alignItems="center">
-            <div
-              css={getCheckboxWrapperStyles(
-                this.props.isDisabled,
-                this.props.hasError,
-                this.props.isHovered
-              )}
-            >
+            <div css={getCheckboxWrapperStyles(this.props)}>
               {(() => {
                 if (this.props.isIndeterminate) return <Icons.Indeterminate />;
                 if (this.props.isChecked) return <Icons.Checked />;

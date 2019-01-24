@@ -1,13 +1,13 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const getLabelStyles = (isDisabled, hasError) => {
-  if (isDisabled) {
+const getLabelStyles = props => {
+  if (props.isDisabled) {
     return css`
       cursor: not-allowed;
     `;
   }
-  if (hasError) {
+  if (props.hasError) {
     return css``;
   }
   return css`
@@ -18,7 +18,7 @@ const getLabelStyles = (isDisabled, hasError) => {
   `;
 };
 
-const getCheckboxWrapperStyles = (isDisabled, hasError, isHovered) => {
+const getCheckboxWrapperStyles = props => {
   const baseStyles = css`
     display: flex;
     align-items: center;
@@ -29,7 +29,7 @@ const getCheckboxWrapperStyles = (isDisabled, hasError, isHovered) => {
       fill: ${vars.borderColorInputFocus};
     }
   `;
-  if (isDisabled) {
+  if (props.isDisabled) {
     return [
       baseStyles,
       css`
@@ -42,7 +42,7 @@ const getCheckboxWrapperStyles = (isDisabled, hasError, isHovered) => {
       `,
     ];
   }
-  if (hasError) {
+  if (props.hasError) {
     return [
       baseStyles,
       css`
@@ -56,7 +56,7 @@ const getCheckboxWrapperStyles = (isDisabled, hasError, isHovered) => {
       `,
     ];
   }
-  if (isHovered && !isDisabled && !hasError) {
+  if (props.isHovered && !props.isDisabled && !props.hasError) {
     return [
       baseStyles,
       css`

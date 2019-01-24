@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
+import { getInputStyles } from '../styles';
 
 /* we need this line-height to achieve 32px height when the component has only one row */
 const sizeInputLineHeight = '22px';
@@ -9,30 +10,17 @@ const sizeInputLineHeight = '22px';
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
 const getTextareaStyles = props => {
-  const baseInputStyles = [
+  const baseStyles = [
+    getInputStyles(props),
     css`
-      box-sizing: border-box;
-      color: ${vars.fontColorDefault};
-      font-family: ${vars.fontFamilyDefault};
-      font-size: ${vars.fontSizeDefault};
-      min-height: ${vars.sizeHeightInput};
-      border-top-right-radius: ${vars.borderRadiusInput};
-      border-bottom-right-radius: ${vars.borderRadiusInput};
-      width: 100%;
-      border-style: solid;
-      border-width: ${vars.borderRadius1};
-      padding: ${vars.spacing4} ${vars.spacing8};
-      transition: ${vars.transitionStandard};
-      outline: 0;
-      box-shadow: none;
-      appearance: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      flex: auto;
       line-height: ${sizeInputLineHeight};
+      padding: ${vars.spacing4} ${vars.spacing8};
+      word-break: break-all;
       white-space: pre-wrap;
       resize: vertical;
-
-      &::placeholder {
-        color: ${vars.fontColorPlaceholder};
-      }
     `,
     props.isCollapsed &&
       css`
@@ -42,55 +30,13 @@ const getTextareaStyles = props => {
   ];
   if (props.isDisabled) {
     return [
-      ...baseInputStyles,
+      ...baseStyles,
       css`
-        cursor: not-allowed;
-        color: ${vars.fontColorDisabled};
-        border-color: ${vars.borderColorInputDisabled};
-        background-color: ${vars.backgroundColorInputDisabled};
-        opacity: 1; /* fix for mobile safari */
+        resize: none;
       `,
     ];
   }
-  if (props.hasError) {
-    return [
-      ...baseInputStyles,
-      css`
-        color: ${vars.fontColorError};
-        border-color: ${vars.borderColorInputError};
-      `,
-    ];
-  }
-  if (props.hasWarning) {
-    return [
-      ...baseInputStyles,
-      css`
-        color: ${vars.fontColorWarning};
-        border-color: ${vars.borderColorInputWarning};
-      `,
-    ];
-  }
-  if (props.isReadOnly) {
-    return [
-      ...baseInputStyles,
-      css`
-        border-color: ${vars.borderColorInputReadonly};
-        color: ${vars.fontColorReadonly};
-        cursor: default;
-      `,
-    ];
-  }
-  return [
-    ...baseInputStyles,
-    css`
-      &:active,
-      &:focus {
-        border-color: ${vars.borderColorInputFocus};
-        background: ${vars.backgroundColorInputPristine};
-        color: ${vars.fontColorDefault};
-      }
-    `,
-  ];
+  return baseStyles;
 };
 
 const getLanguageLabelStyles = () => css`

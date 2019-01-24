@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
-import { getInputStyles } from './text-input.styles';
+import { getInputStyles } from '../styles';
 
 const TextInput = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
@@ -17,9 +17,9 @@ const TextInput = props => (
       onFocus={props.onFocus}
       disabled={props.isDisabled}
       placeholder={props.placeholder}
-      css={getInputStyles(props)}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
+      css={getInputStyles(props)}
       {...filterDataAttributes(props)}
       /* ARIA */
       aria-readonly={props.isReadOnly}

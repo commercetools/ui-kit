@@ -24,7 +24,7 @@ import getFieldId from '../../../utils/get-field-id';
 import LanguagesButton from './languages-button';
 import messages from './messages';
 import {
-  getInputStyles,
+  getLocalizedInputStyles,
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
 
@@ -86,7 +86,7 @@ class LocalizedInput extends React.Component {
           onFocus={this.props.onFocus}
           disabled={this.props.isDisabled}
           placeholder={this.props.placeholder}
-          css={getInputStyles(this.props)}
+          css={getLocalizedInputStyles(this.props)}
           readOnly={this.props.isReadOnly}
           autoFocus={this.props.isAutofocussed}
           /* ARIA */

@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
+import { getInputStyles } from '../styles';
 
 const getCurrencyLabelStyles = () => css`
   display: flex;
@@ -15,93 +16,17 @@ const getCurrencyLabelStyles = () => css`
   box-sizing: border-box;
 `;
 
-const getAmountInputStyles = props => {
-  const baseInputStyles = css`
-    display: flex;
-    width: 100%;
-    flex: 1;
-    box-sizing: border-box;
-    color: ${vars.fontColorDefault};
-    font-family: ${vars.fontFamilyDefault};
-    font-size: ${vars.fontSizeDefault};
-    height: ${vars.sizeHeightInput};
-    border-top-right-radius: ${vars.borderRadiusInput};
-    border-bottom-right-radius: ${vars.borderRadiusInput};
-    border: 1px ${vars.borderColorInputPristine} solid;
-    padding: 0 ${vars.spacing8};
-    transition: ${vars.transitionStandard};
-    outline: none;
-    box-shadow: none;
-    appearance: none;
+const getAmountInputStyles = props => [
+  getInputStyles(props),
+  css`
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     margin-left: 0;
 
     &::placeholder {
       color: ${vars.fontColorPlaceholder};
     }
-  `;
-  if (props.isDisabled) {
-    return [
-      baseInputStyles,
-      css`
-        cursor: not-allowed;
-        color: ${vars.fontColorDisabled};
-        border-color: ${vars.borderColorInputDisabled};
-        background-color: ${vars.backgroundColorInputDisabled};
-        opacity: 1; /* fix for mobile safari */
-      `,
-    ];
-  }
-  if (props.hasError) {
-    return [
-      baseInputStyles,
-      css`
-        color: ${vars.fontColorError};
-        border-color: ${vars.borderColorInputError};
-      `,
-    ];
-  }
-  if (props.hasWarning) {
-    return [
-      baseInputStyles,
-      css`
-        color: ${vars.fontColorWarning};
-        border-color: ${vars.borderColorInputWarning};
-      `,
-    ];
-  }
-  if (props.isReadOnly) {
-    return [
-      baseInputStyles,
-      css`
-        border-color: ${vars.borderColorInputReadonly};
-        color: ${vars.fontColorReadonly};
-        cursor: default;
-      `,
-    ];
-  }
-  if (props.hasFocus) {
-    return [
-      baseInputStyles,
-      css`
-        border-color: ${vars.borderColorInputFocus};
-        background: ${vars.backgroundColorInputPristine};
-        color: ${vars.fontColorDefault};
-      `,
-    ];
-  }
-  return [
-    baseInputStyles,
-    css`
-      border-color: ${vars.borderColorInputPristine};
-      background-color: ${vars.backgroundColorInputPristine};
-      &:active,
-      &:focus {
-        border-color: ${vars.borderColorInputFocus};
-        background: ${vars.backgroundColorInputPristine};
-        color: ${vars.fontColorDefault};
-      }
-    `,
-  ];
-};
+  `,
+];
 
 export { getCurrencyLabelStyles, getAmountInputStyles };
