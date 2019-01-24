@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash.omit';
-import classnames from 'classnames';
-import styles from './calendar-menu.mod.css';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 
 export default class CalendarMenu extends Component {
   static displayName = 'CalendarMenu';
@@ -17,13 +17,31 @@ export default class CalendarMenu extends Component {
     return (
       <div
         {...omit(this.props, ['hasFooter', 'hasError', 'hasWarning'])}
-        className={classnames(
-          this.props.hasFooter ? styles.menuWithFooter : styles.menu,
-          {
-            [styles.error]: this.props.hasError,
-            [styles.warning]: this.props.hasWarning,
+        css={css`
+          overflow-y: scroll;
+          color: ${vars.colorBlack};
+          font-family: ${vars.fontFamilyDefault};
+          border: 1px solid ${vars.borderColorInputFocus};
+          border-radius: ${vars.borderRadiusInput};
+          margin-top: ${vars.spacing4};
+          font-size: ${vars.fontSizeDefault};
+          position: absolute;
+          box-sizing: border-box;
+          width: 100%;
+          background-color: ${vars.colorWhite};
+          z-index: 99999; /* copied from flatpickr */;
+          ${this.props.hasFooter ? '' : `padding-bottom: 10px;`}
+          ${
+            this.props.hasError
+              ? `border-color: ${vars.borderColorInputError};`
+              : ''
           }
-        )}
+          ${
+            this.props.hasWarning
+              ? `border-color: ${vars.borderColorInputWarning};`
+              : ''
+          }
+        `}
       >
         {this.props.children}
         {this.props.footer}

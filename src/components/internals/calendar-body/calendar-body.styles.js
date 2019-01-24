@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
-import { getInputStyles } from '../styles';
+import { getInputStyles } from '../../inputs/styles';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -12,13 +12,12 @@ const getClearSectionStyles = props => {
     box-sizing: border-box;
     background-color: ${vars.backgroundColorInputPristine};
     border-bottom: 1px solid ${vars.borderColorInputPristine};
-    border-right: 1px solid ${vars.borderColorInputPristine};
     border-top: 1px solid ${vars.borderColorInputPristine};
-    border-left: none;
     height: ${vars.sizeHeightInput};
     display: flex;
     padding: ${vars.spacing4};
     cursor: pointer;
+    outline: 0;
   `;
   if (props.isDisabled) {
     return [
@@ -37,26 +36,32 @@ const getClearSectionStyles = props => {
       css`
         color: ${vars.fontColorError};
         border-color: ${vars.borderColorInputError};
+      `,
+    ];
+  }
+  if (props.isOpen || props.isFocused) {
+    return [
+      baseIconStyles,
+      css`
+        border-color: ${vars.borderColorInputFocus};
       `,
     ];
   }
   return baseIconStyles;
 };
 
-const getClockIconContainerStyles = props => {
+const getCalendarIconContainerStyles = (props, state) => {
   const baseIconStyles = css`
     align-items: center;
     box-sizing: border-box;
     background-color: ${vars.backgroundColorInputPristine};
-    border-bottom: 1px solid ${vars.borderColorInputPristine};
-    border-right: 1px solid ${vars.borderColorInputPristine};
-    border-top: 1px solid ${vars.borderColorInputPristine};
-    border-left: none;
+    border: 1px solid ${vars.borderColorInputPristine};
     height: ${vars.sizeHeightInput};
     display: flex;
     padding: ${vars.spacing4};
     border-top-right-radius: ${vars.borderRadiusInput};
     border-bottom-right-radius: ${vars.borderRadiusInput};
+    outline: 0;
   `;
   if (props.isDisabled) {
     return [
@@ -75,6 +80,23 @@ const getClockIconContainerStyles = props => {
       css`
         color: ${vars.fontColorError};
         border-color: ${vars.borderColorInputError};
+      `,
+    ];
+  }
+  if (props.hasWarning) {
+    return [
+      baseIconStyles,
+      css`
+        color: ${vars.fontColorWarning};
+        border-color: ${vars.borderColorInputWarning};
+      `,
+    ];
+  }
+  if (props.isOpen || state.isFocused) {
+    return [
+      baseIconStyles,
+      css`
+        border-color: ${vars.borderColorInputFocus};
       `,
     ];
   }
@@ -89,38 +111,54 @@ const getInputContainerStyles = () => css`
   font-family: ${vars.fontFamilyDefault};
 `;
 
-const getTimeInputStyles = props => [
-  getInputStyles(props),
-  css`
-    border-radius: ${vars.borderRadiusInput} 0 0 ${vars.borderRadiusInput};
-    border-right: none;
+const getDateTimeInputStyles = (props, state) => {
+  const baseStyles = [
+    getInputStyles(props),
+    css`
+      border-radius: ${vars.borderRadiusInput} 0 0 ${vars.borderRadiusInput};
+      border-right: none;
 
-    &:focus,
-    &:active,
-    &:focus + *,
-    &:active + * {
-      border-color: ${vars.borderColorInputFocus};
-      color: ${vars.fontColorDefault};
-      transition: ${vars.transitionStandard};
-    }
+      &:focus,
+      &:active,
+      &:focus + *,
+      &:active + * {
+        border-color: ${vars.borderColorInputFocus};
+        color: ${vars.fontColorDefault};
+        transition: ${vars.transitionStandard};
+      }
 
-    &:disabled {
-      cursor: not-allowed;
-    }
+      &:disabled {
+        cursor: not-allowed;
+      }
 
-    &:disabled,
-    &:read-only {
-      background-color: ${vars.backgroundColorInputDisabled};
-      color: ${vars.fontColorDisabled};
-      border-color: ${vars.borderColorInputDisabled};
-      opacity: 1; /* fix for mobile safari */
-    }
-  `,
-];
+      &:disabled,
+      &:read-only {
+        background-color: ${vars.backgroundColorInputDisabled};
+        color: ${vars.fontColorDisabled};
+        border-color: ${vars.borderColorInputDisabled};
+        opacity: 1; /* fix for mobile safari */
+      }
+    `,
+  ];
+  if (props.isOpen || state.isFocused) {
+    return [
+      ...baseStyles,
+      css`
+        &,
+        & + * {
+          border-color: ${vars.borderColorInputFocus};
+          color: ${vars.fontColorDefault};
+          transition: ${vars.transitionStandard};
+        }
+      `,
+    ];
+  }
+  return baseStyles;
+};
 
 export {
   getClearSectionStyles,
   getInputContainerStyles,
-  getTimeInputStyles,
-  getClockIconContainerStyles,
+  getDateTimeInputStyles,
+  getCalendarIconContainerStyles,
 };
