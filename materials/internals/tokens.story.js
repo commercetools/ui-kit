@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import withReadme from 'storybook-readme/with-readme';
 import Readme from './TOKENS.md';
 import TextInput from '../../src/components/inputs/text-input';
+import vars from '../custom-properties';
 import definition from './definition.yaml';
 
 const Table = styled.table`
@@ -24,6 +25,8 @@ const Table = styled.table`
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
+  font-family: ${vars.fontFamilyDefault};
+  color: ${vars.colorBlack};
   margin: 10px;
   > * + * {
     margin: 16px 0 0 0;
