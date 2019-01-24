@@ -21,43 +21,28 @@ glob(importPath, (err, files) => {
       ${importsString}
       import Orig${componentName}Icon from './svg/${baseName}';
     `;
-  }, "import withSizeProp from './with-size-prop';\nimport withThemeProp from './with-theme-prop';");
+  }, "import createStyledIcon from './create-styled-icon';");
   const delarationStatements = files.reduce(
     (declarationStatement, fileName) => {
       const componentName = upperFirst(
         camelCase(path.basename(fileName, iconFileExt))
       );
+      const displayName = `${componentName}Icon`;
       return stripIndents`
-      ${declarationStatement}
-      const ${componentName}Icon = withThemeProp(withSizeProp(Orig${componentName}Icon));
-    `;
+        ${declarationStatement}
+        export const ${displayName} = createStyledIcon(Orig${displayName}, '${displayName}');
+      `;
     },
     ''
   );
-  const displayNameStatements = files.reduce((displayNameString, fileName) => {
-    const componentName = upperFirst(
-      camelCase(path.basename(fileName, iconFileExt))
-    );
-    return stripIndents`
-      ${displayNameString}
-      ${componentName}Icon.displayName = '${componentName}Icon';
-    `;
-  }, '');
-  const exportStatements = files.reduce((importsString, fileName) => {
-    const componentName = upperFirst(
-      camelCase(path.basename(fileName, iconFileExt))
-    );
-    return stripIndents`
-      ${importsString}
-      export { ${componentName}Icon };
-    `;
-  }, '');
-  const comment = stripIndents`
+  const iconsFile = `
     // This file is auto-generated using the 'generate-icon-exports.js' script
     // so any changes made to this file manually will be lost the next time the
     // script is executed
+    ${importStatements}
+
+    ${delarationStatements}
   `;
-  const iconsFile = `${comment}\n${importStatements}\n\n${delarationStatements}\n\n${displayNameStatements}\n\n${exportStatements}\n`;
   const prettierConfig = rcfile('prettier');
 
   fs.writeFileSync(exportPath, prettier.format(iconsFile, prettierConfig));

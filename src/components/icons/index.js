@@ -1,8 +1,7 @@
 // This file is auto-generated using the 'generate-icon-exports.js' script
 // so any changes made to this file manually will be lost the next time the
 // script is executed
-import withSizeProp from './with-size-prop';
-import withThemeProp from './with-theme-prop';
+import createStyledIcon from './create-styled-icon';
 import OrigAngleDownIcon from './svg/angle-down.react.svg';
 import OrigAngleLeftIcon from './svg/angle-left.react.svg';
 import OrigAngleRightIcon from './svg/angle-right.react.svg';
@@ -106,323 +105,225 @@ import OrigVerifiedIcon from './svg/verified.react.svg';
 import OrigWarningIcon from './svg/warning.react.svg';
 import OrigWorldIcon from './svg/world.react.svg';
 
-const AngleDownIcon = withThemeProp(withSizeProp(OrigAngleDownIcon));
-const AngleLeftIcon = withThemeProp(withSizeProp(OrigAngleLeftIcon));
-const AngleRightIcon = withThemeProp(withSizeProp(OrigAngleRightIcon));
-const AngleThinLeftIcon = withThemeProp(withSizeProp(OrigAngleThinLeftIcon));
-const AngleThinRightIcon = withThemeProp(withSizeProp(OrigAngleThinRightIcon));
-const AngleUpIcon = withThemeProp(withSizeProp(OrigAngleUpIcon));
-const ArrowDownIcon = withThemeProp(withSizeProp(OrigArrowDownIcon));
-const ArrowLeftIcon = withThemeProp(withSizeProp(OrigArrowLeftIcon));
-const ArrowLongDownIcon = withThemeProp(withSizeProp(OrigArrowLongDownIcon));
-const ArrowRightIcon = withThemeProp(withSizeProp(OrigArrowRightIcon));
-const ArrowTriangleDownIcon = withThemeProp(
-  withSizeProp(OrigArrowTriangleDownIcon)
+export const AngleDownIcon = createStyledIcon(
+  OrigAngleDownIcon,
+  'AngleDownIcon'
 );
-const ArrowTriangleUpIcon = withThemeProp(
-  withSizeProp(OrigArrowTriangleUpIcon)
+export const AngleLeftIcon = createStyledIcon(
+  OrigAngleLeftIcon,
+  'AngleLeftIcon'
 );
-const ArrowUpIcon = withThemeProp(withSizeProp(OrigArrowUpIcon));
-const ArrowsIcon = withThemeProp(withSizeProp(OrigArrowsIcon));
-const BackIcon = withThemeProp(withSizeProp(OrigBackIcon));
-const BidirectionalArrowIcon = withThemeProp(
-  withSizeProp(OrigBidirectionalArrowIcon)
+export const AngleRightIcon = createStyledIcon(
+  OrigAngleRightIcon,
+  'AngleRightIcon'
 );
-const BinFilledIcon = withThemeProp(withSizeProp(OrigBinFilledIcon));
-const BinLinearIcon = withThemeProp(withSizeProp(OrigBinLinearIcon));
-const BoxIcon = withThemeProp(withSizeProp(OrigBoxIcon));
-const BrainIcon = withThemeProp(withSizeProp(OrigBrainIcon));
-const CalendarIcon = withThemeProp(withSizeProp(OrigCalendarIcon));
-const CameraIcon = withThemeProp(withSizeProp(OrigCameraIcon));
-const CaretDownIcon = withThemeProp(withSizeProp(OrigCaretDownIcon));
-const CaretUpIcon = withThemeProp(withSizeProp(OrigCaretUpIcon));
-const CartIcon = withThemeProp(withSizeProp(OrigCartIcon));
-const ChainBrokenIcon = withThemeProp(withSizeProp(OrigChainBrokenIcon));
-const ChainIcon = withThemeProp(withSizeProp(OrigChainIcon));
-const CheckActiveIcon = withThemeProp(withSizeProp(OrigCheckActiveIcon));
-const CheckBoldIcon = withThemeProp(withSizeProp(OrigCheckBoldIcon));
-const CheckInactiveIcon = withThemeProp(withSizeProp(OrigCheckInactiveIcon));
-const CheckThinIcon = withThemeProp(withSizeProp(OrigCheckThinIcon));
-const CircleIcon = withThemeProp(withSizeProp(OrigCircleIcon));
-const ClipboardIcon = withThemeProp(withSizeProp(OrigClipboardIcon));
-const ClockIcon = withThemeProp(withSizeProp(OrigClockIcon));
-const CloseBoldIcon = withThemeProp(withSizeProp(OrigCloseBoldIcon));
-const CloseIcon = withThemeProp(withSizeProp(OrigCloseIcon));
-const CodeViewIcon = withThemeProp(withSizeProp(OrigCodeViewIcon));
-const CoinsIcon = withThemeProp(withSizeProp(OrigCoinsIcon));
-const ColumnsIcon = withThemeProp(withSizeProp(OrigColumnsIcon));
-const ConnectedSquareIcon = withThemeProp(
-  withSizeProp(OrigConnectedSquareIcon)
+export const AngleThinLeftIcon = createStyledIcon(
+  OrigAngleThinLeftIcon,
+  'AngleThinLeftIcon'
 );
-const ConnectedTriangleIcon = withThemeProp(
-  withSizeProp(OrigConnectedTriangleIcon)
+export const AngleThinRightIcon = createStyledIcon(
+  OrigAngleThinRightIcon,
+  'AngleThinRightIcon'
 );
-const CopyIcon = withThemeProp(withSizeProp(OrigCopyIcon));
-const CubeIcon = withThemeProp(withSizeProp(OrigCubeIcon));
-const CubesIcon = withThemeProp(withSizeProp(OrigCubesIcon));
-const DotIcon = withThemeProp(withSizeProp(OrigDotIcon));
-const DownloadIcon = withThemeProp(withSizeProp(OrigDownloadIcon));
-const DragDropIcon = withThemeProp(withSizeProp(OrigDragDropIcon));
-const DragIcon = withThemeProp(withSizeProp(OrigDragIcon));
-const EditIcon = withThemeProp(withSizeProp(OrigEditIcon));
-const ErrorIcon = withThemeProp(withSizeProp(OrigErrorIcon));
-const ExpandIcon = withThemeProp(withSizeProp(OrigExpandIcon));
-const ExportIcon = withThemeProp(withSizeProp(OrigExportIcon));
-const EyeCrossedIcon = withThemeProp(withSizeProp(OrigEyeCrossedIcon));
-const FilterIcon = withThemeProp(withSizeProp(OrigFilterIcon));
-const FlagFilledIcon = withThemeProp(withSizeProp(OrigFlagFilledIcon));
-const FlagLinearIcon = withThemeProp(withSizeProp(OrigFlagLinearIcon));
-const FlameIcon = withThemeProp(withSizeProp(OrigFlameIcon));
-const GearIcon = withThemeProp(withSizeProp(OrigGearIcon));
-const GraphIcon = withThemeProp(withSizeProp(OrigGraphIcon));
-const GridIcon = withThemeProp(withSizeProp(OrigGridIcon));
-const HeartIcon = withThemeProp(withSizeProp(OrigHeartIcon));
-const ImportIcon = withThemeProp(withSizeProp(OrigImportIcon));
-const InfoIcon = withThemeProp(withSizeProp(OrigInfoIcon));
-const InformationIcon = withThemeProp(withSizeProp(OrigInformationIcon));
-const ListIcon = withThemeProp(withSizeProp(OrigListIcon));
-const LogoutIcon = withThemeProp(withSizeProp(OrigLogoutIcon));
-const MailIcon = withThemeProp(withSizeProp(OrigMailIcon));
-const MinimizeIcon = withThemeProp(withSizeProp(OrigMinimizeIcon));
-const NestedViewIcon = withThemeProp(withSizeProp(OrigNestedViewIcon));
-const PagesIcon = withThemeProp(withSizeProp(OrigPagesIcon));
-const PaperBillInvertedIcon = withThemeProp(
-  withSizeProp(OrigPaperBillInvertedIcon)
+export const AngleUpIcon = createStyledIcon(OrigAngleUpIcon, 'AngleUpIcon');
+export const ArrowDownIcon = createStyledIcon(
+  OrigArrowDownIcon,
+  'ArrowDownIcon'
 );
-const PaperclipIcon = withThemeProp(withSizeProp(OrigPaperclipIcon));
-const PinFilledIcon = withThemeProp(withSizeProp(OrigPinFilledIcon));
-const PinLinearIcon = withThemeProp(withSizeProp(OrigPinLinearIcon));
-const PluginIcon = withThemeProp(withSizeProp(OrigPluginIcon));
-const PlusBoldIcon = withThemeProp(withSizeProp(OrigPlusBoldIcon));
-const PlusThinIcon = withThemeProp(withSizeProp(OrigPlusThinIcon));
-const RefreshIcon = withThemeProp(withSizeProp(OrigRefreshIcon));
-const RestoreIcon = withThemeProp(withSizeProp(OrigRestoreIcon));
-const RevertIcon = withThemeProp(withSizeProp(OrigRevertIcon));
-const ReviewIcon = withThemeProp(withSizeProp(OrigReviewIcon));
-const RocketIcon = withThemeProp(withSizeProp(OrigRocketIcon));
-const ScreenGearIcon = withThemeProp(withSizeProp(OrigScreenGearIcon));
-const ScreenUserIcon = withThemeProp(withSizeProp(OrigScreenUserIcon));
-const SearchIcon = withThemeProp(withSizeProp(OrigSearchIcon));
-const SortingIcon = withThemeProp(withSizeProp(OrigSortingIcon));
-const SpeedometerIcon = withThemeProp(withSizeProp(OrigSpeedometerIcon));
-const SplitIcon = withThemeProp(withSizeProp(OrigSplitIcon));
-const StarIcon = withThemeProp(withSizeProp(OrigStarIcon));
-const SupportIcon = withThemeProp(withSizeProp(OrigSupportIcon));
-const SwitcherIcon = withThemeProp(withSizeProp(OrigSwitcherIcon));
-const TableIcon = withThemeProp(withSizeProp(OrigTableIcon));
-const TagMultiIcon = withThemeProp(withSizeProp(OrigTagMultiIcon));
-const TagStackedIcon = withThemeProp(withSizeProp(OrigTagStackedIcon));
-const TagIcon = withThemeProp(withSizeProp(OrigTagIcon));
-const TreeStructureIcon = withThemeProp(withSizeProp(OrigTreeStructureIcon));
-const TruckIcon = withThemeProp(withSizeProp(OrigTruckIcon));
-const UserFilledIcon = withThemeProp(withSizeProp(OrigUserFilledIcon));
-const UserLinearIcon = withThemeProp(withSizeProp(OrigUserLinearIcon));
-const VerifiedIcon = withThemeProp(withSizeProp(OrigVerifiedIcon));
-const WarningIcon = withThemeProp(withSizeProp(OrigWarningIcon));
-const WorldIcon = withThemeProp(withSizeProp(OrigWorldIcon));
-
-AngleDownIcon.displayName = 'AngleDownIcon';
-AngleLeftIcon.displayName = 'AngleLeftIcon';
-AngleRightIcon.displayName = 'AngleRightIcon';
-AngleThinLeftIcon.displayName = 'AngleThinLeftIcon';
-AngleThinRightIcon.displayName = 'AngleThinRightIcon';
-AngleUpIcon.displayName = 'AngleUpIcon';
-ArrowDownIcon.displayName = 'ArrowDownIcon';
-ArrowLeftIcon.displayName = 'ArrowLeftIcon';
-ArrowLongDownIcon.displayName = 'ArrowLongDownIcon';
-ArrowRightIcon.displayName = 'ArrowRightIcon';
-ArrowTriangleDownIcon.displayName = 'ArrowTriangleDownIcon';
-ArrowTriangleUpIcon.displayName = 'ArrowTriangleUpIcon';
-ArrowUpIcon.displayName = 'ArrowUpIcon';
-ArrowsIcon.displayName = 'ArrowsIcon';
-BackIcon.displayName = 'BackIcon';
-BidirectionalArrowIcon.displayName = 'BidirectionalArrowIcon';
-BinFilledIcon.displayName = 'BinFilledIcon';
-BinLinearIcon.displayName = 'BinLinearIcon';
-BoxIcon.displayName = 'BoxIcon';
-BrainIcon.displayName = 'BrainIcon';
-CalendarIcon.displayName = 'CalendarIcon';
-CameraIcon.displayName = 'CameraIcon';
-CaretDownIcon.displayName = 'CaretDownIcon';
-CaretUpIcon.displayName = 'CaretUpIcon';
-CartIcon.displayName = 'CartIcon';
-ChainBrokenIcon.displayName = 'ChainBrokenIcon';
-ChainIcon.displayName = 'ChainIcon';
-CheckActiveIcon.displayName = 'CheckActiveIcon';
-CheckBoldIcon.displayName = 'CheckBoldIcon';
-CheckInactiveIcon.displayName = 'CheckInactiveIcon';
-CheckThinIcon.displayName = 'CheckThinIcon';
-CircleIcon.displayName = 'CircleIcon';
-ClipboardIcon.displayName = 'ClipboardIcon';
-ClockIcon.displayName = 'ClockIcon';
-CloseBoldIcon.displayName = 'CloseBoldIcon';
-CloseIcon.displayName = 'CloseIcon';
-CodeViewIcon.displayName = 'CodeViewIcon';
-CoinsIcon.displayName = 'CoinsIcon';
-ColumnsIcon.displayName = 'ColumnsIcon';
-ConnectedSquareIcon.displayName = 'ConnectedSquareIcon';
-ConnectedTriangleIcon.displayName = 'ConnectedTriangleIcon';
-CopyIcon.displayName = 'CopyIcon';
-CubeIcon.displayName = 'CubeIcon';
-CubesIcon.displayName = 'CubesIcon';
-DotIcon.displayName = 'DotIcon';
-DownloadIcon.displayName = 'DownloadIcon';
-DragDropIcon.displayName = 'DragDropIcon';
-DragIcon.displayName = 'DragIcon';
-EditIcon.displayName = 'EditIcon';
-ErrorIcon.displayName = 'ErrorIcon';
-ExpandIcon.displayName = 'ExpandIcon';
-ExportIcon.displayName = 'ExportIcon';
-EyeCrossedIcon.displayName = 'EyeCrossedIcon';
-FilterIcon.displayName = 'FilterIcon';
-FlagFilledIcon.displayName = 'FlagFilledIcon';
-FlagLinearIcon.displayName = 'FlagLinearIcon';
-FlameIcon.displayName = 'FlameIcon';
-GearIcon.displayName = 'GearIcon';
-GraphIcon.displayName = 'GraphIcon';
-GridIcon.displayName = 'GridIcon';
-HeartIcon.displayName = 'HeartIcon';
-ImportIcon.displayName = 'ImportIcon';
-InfoIcon.displayName = 'InfoIcon';
-InformationIcon.displayName = 'InformationIcon';
-ListIcon.displayName = 'ListIcon';
-LogoutIcon.displayName = 'LogoutIcon';
-MailIcon.displayName = 'MailIcon';
-MinimizeIcon.displayName = 'MinimizeIcon';
-NestedViewIcon.displayName = 'NestedViewIcon';
-PagesIcon.displayName = 'PagesIcon';
-PaperBillInvertedIcon.displayName = 'PaperBillInvertedIcon';
-PaperclipIcon.displayName = 'PaperclipIcon';
-PinFilledIcon.displayName = 'PinFilledIcon';
-PinLinearIcon.displayName = 'PinLinearIcon';
-PluginIcon.displayName = 'PluginIcon';
-PlusBoldIcon.displayName = 'PlusBoldIcon';
-PlusThinIcon.displayName = 'PlusThinIcon';
-RefreshIcon.displayName = 'RefreshIcon';
-RestoreIcon.displayName = 'RestoreIcon';
-RevertIcon.displayName = 'RevertIcon';
-ReviewIcon.displayName = 'ReviewIcon';
-RocketIcon.displayName = 'RocketIcon';
-ScreenGearIcon.displayName = 'ScreenGearIcon';
-ScreenUserIcon.displayName = 'ScreenUserIcon';
-SearchIcon.displayName = 'SearchIcon';
-SortingIcon.displayName = 'SortingIcon';
-SpeedometerIcon.displayName = 'SpeedometerIcon';
-SplitIcon.displayName = 'SplitIcon';
-StarIcon.displayName = 'StarIcon';
-SupportIcon.displayName = 'SupportIcon';
-SwitcherIcon.displayName = 'SwitcherIcon';
-TableIcon.displayName = 'TableIcon';
-TagMultiIcon.displayName = 'TagMultiIcon';
-TagStackedIcon.displayName = 'TagStackedIcon';
-TagIcon.displayName = 'TagIcon';
-TreeStructureIcon.displayName = 'TreeStructureIcon';
-TruckIcon.displayName = 'TruckIcon';
-UserFilledIcon.displayName = 'UserFilledIcon';
-UserLinearIcon.displayName = 'UserLinearIcon';
-VerifiedIcon.displayName = 'VerifiedIcon';
-WarningIcon.displayName = 'WarningIcon';
-WorldIcon.displayName = 'WorldIcon';
-
-export { AngleDownIcon };
-export { AngleLeftIcon };
-export { AngleRightIcon };
-export { AngleThinLeftIcon };
-export { AngleThinRightIcon };
-export { AngleUpIcon };
-export { ArrowDownIcon };
-export { ArrowLeftIcon };
-export { ArrowLongDownIcon };
-export { ArrowRightIcon };
-export { ArrowTriangleDownIcon };
-export { ArrowTriangleUpIcon };
-export { ArrowUpIcon };
-export { ArrowsIcon };
-export { BackIcon };
-export { BidirectionalArrowIcon };
-export { BinFilledIcon };
-export { BinLinearIcon };
-export { BoxIcon };
-export { BrainIcon };
-export { CalendarIcon };
-export { CameraIcon };
-export { CaretDownIcon };
-export { CaretUpIcon };
-export { CartIcon };
-export { ChainBrokenIcon };
-export { ChainIcon };
-export { CheckActiveIcon };
-export { CheckBoldIcon };
-export { CheckInactiveIcon };
-export { CheckThinIcon };
-export { CircleIcon };
-export { ClipboardIcon };
-export { ClockIcon };
-export { CloseBoldIcon };
-export { CloseIcon };
-export { CodeViewIcon };
-export { CoinsIcon };
-export { ColumnsIcon };
-export { ConnectedSquareIcon };
-export { ConnectedTriangleIcon };
-export { CopyIcon };
-export { CubeIcon };
-export { CubesIcon };
-export { DotIcon };
-export { DownloadIcon };
-export { DragDropIcon };
-export { DragIcon };
-export { EditIcon };
-export { ErrorIcon };
-export { ExpandIcon };
-export { ExportIcon };
-export { EyeCrossedIcon };
-export { FilterIcon };
-export { FlagFilledIcon };
-export { FlagLinearIcon };
-export { FlameIcon };
-export { GearIcon };
-export { GraphIcon };
-export { GridIcon };
-export { HeartIcon };
-export { ImportIcon };
-export { InfoIcon };
-export { InformationIcon };
-export { ListIcon };
-export { LogoutIcon };
-export { MailIcon };
-export { MinimizeIcon };
-export { NestedViewIcon };
-export { PagesIcon };
-export { PaperBillInvertedIcon };
-export { PaperclipIcon };
-export { PinFilledIcon };
-export { PinLinearIcon };
-export { PluginIcon };
-export { PlusBoldIcon };
-export { PlusThinIcon };
-export { RefreshIcon };
-export { RestoreIcon };
-export { RevertIcon };
-export { ReviewIcon };
-export { RocketIcon };
-export { ScreenGearIcon };
-export { ScreenUserIcon };
-export { SearchIcon };
-export { SortingIcon };
-export { SpeedometerIcon };
-export { SplitIcon };
-export { StarIcon };
-export { SupportIcon };
-export { SwitcherIcon };
-export { TableIcon };
-export { TagMultiIcon };
-export { TagStackedIcon };
-export { TagIcon };
-export { TreeStructureIcon };
-export { TruckIcon };
-export { UserFilledIcon };
-export { UserLinearIcon };
-export { VerifiedIcon };
-export { WarningIcon };
-export { WorldIcon };
+export const ArrowLeftIcon = createStyledIcon(
+  OrigArrowLeftIcon,
+  'ArrowLeftIcon'
+);
+export const ArrowLongDownIcon = createStyledIcon(
+  OrigArrowLongDownIcon,
+  'ArrowLongDownIcon'
+);
+export const ArrowRightIcon = createStyledIcon(
+  OrigArrowRightIcon,
+  'ArrowRightIcon'
+);
+export const ArrowTriangleDownIcon = createStyledIcon(
+  OrigArrowTriangleDownIcon,
+  'ArrowTriangleDownIcon'
+);
+export const ArrowTriangleUpIcon = createStyledIcon(
+  OrigArrowTriangleUpIcon,
+  'ArrowTriangleUpIcon'
+);
+export const ArrowUpIcon = createStyledIcon(OrigArrowUpIcon, 'ArrowUpIcon');
+export const ArrowsIcon = createStyledIcon(OrigArrowsIcon, 'ArrowsIcon');
+export const BackIcon = createStyledIcon(OrigBackIcon, 'BackIcon');
+export const BidirectionalArrowIcon = createStyledIcon(
+  OrigBidirectionalArrowIcon,
+  'BidirectionalArrowIcon'
+);
+export const BinFilledIcon = createStyledIcon(
+  OrigBinFilledIcon,
+  'BinFilledIcon'
+);
+export const BinLinearIcon = createStyledIcon(
+  OrigBinLinearIcon,
+  'BinLinearIcon'
+);
+export const BoxIcon = createStyledIcon(OrigBoxIcon, 'BoxIcon');
+export const BrainIcon = createStyledIcon(OrigBrainIcon, 'BrainIcon');
+export const CalendarIcon = createStyledIcon(OrigCalendarIcon, 'CalendarIcon');
+export const CameraIcon = createStyledIcon(OrigCameraIcon, 'CameraIcon');
+export const CaretDownIcon = createStyledIcon(
+  OrigCaretDownIcon,
+  'CaretDownIcon'
+);
+export const CaretUpIcon = createStyledIcon(OrigCaretUpIcon, 'CaretUpIcon');
+export const CartIcon = createStyledIcon(OrigCartIcon, 'CartIcon');
+export const ChainBrokenIcon = createStyledIcon(
+  OrigChainBrokenIcon,
+  'ChainBrokenIcon'
+);
+export const ChainIcon = createStyledIcon(OrigChainIcon, 'ChainIcon');
+export const CheckActiveIcon = createStyledIcon(
+  OrigCheckActiveIcon,
+  'CheckActiveIcon'
+);
+export const CheckBoldIcon = createStyledIcon(
+  OrigCheckBoldIcon,
+  'CheckBoldIcon'
+);
+export const CheckInactiveIcon = createStyledIcon(
+  OrigCheckInactiveIcon,
+  'CheckInactiveIcon'
+);
+export const CheckThinIcon = createStyledIcon(
+  OrigCheckThinIcon,
+  'CheckThinIcon'
+);
+export const CircleIcon = createStyledIcon(OrigCircleIcon, 'CircleIcon');
+export const ClipboardIcon = createStyledIcon(
+  OrigClipboardIcon,
+  'ClipboardIcon'
+);
+export const ClockIcon = createStyledIcon(OrigClockIcon, 'ClockIcon');
+export const CloseBoldIcon = createStyledIcon(
+  OrigCloseBoldIcon,
+  'CloseBoldIcon'
+);
+export const CloseIcon = createStyledIcon(OrigCloseIcon, 'CloseIcon');
+export const CodeViewIcon = createStyledIcon(OrigCodeViewIcon, 'CodeViewIcon');
+export const CoinsIcon = createStyledIcon(OrigCoinsIcon, 'CoinsIcon');
+export const ColumnsIcon = createStyledIcon(OrigColumnsIcon, 'ColumnsIcon');
+export const ConnectedSquareIcon = createStyledIcon(
+  OrigConnectedSquareIcon,
+  'ConnectedSquareIcon'
+);
+export const ConnectedTriangleIcon = createStyledIcon(
+  OrigConnectedTriangleIcon,
+  'ConnectedTriangleIcon'
+);
+export const CopyIcon = createStyledIcon(OrigCopyIcon, 'CopyIcon');
+export const CubeIcon = createStyledIcon(OrigCubeIcon, 'CubeIcon');
+export const CubesIcon = createStyledIcon(OrigCubesIcon, 'CubesIcon');
+export const DotIcon = createStyledIcon(OrigDotIcon, 'DotIcon');
+export const DownloadIcon = createStyledIcon(OrigDownloadIcon, 'DownloadIcon');
+export const DragDropIcon = createStyledIcon(OrigDragDropIcon, 'DragDropIcon');
+export const DragIcon = createStyledIcon(OrigDragIcon, 'DragIcon');
+export const EditIcon = createStyledIcon(OrigEditIcon, 'EditIcon');
+export const ErrorIcon = createStyledIcon(OrigErrorIcon, 'ErrorIcon');
+export const ExpandIcon = createStyledIcon(OrigExpandIcon, 'ExpandIcon');
+export const ExportIcon = createStyledIcon(OrigExportIcon, 'ExportIcon');
+export const EyeCrossedIcon = createStyledIcon(
+  OrigEyeCrossedIcon,
+  'EyeCrossedIcon'
+);
+export const FilterIcon = createStyledIcon(OrigFilterIcon, 'FilterIcon');
+export const FlagFilledIcon = createStyledIcon(
+  OrigFlagFilledIcon,
+  'FlagFilledIcon'
+);
+export const FlagLinearIcon = createStyledIcon(
+  OrigFlagLinearIcon,
+  'FlagLinearIcon'
+);
+export const FlameIcon = createStyledIcon(OrigFlameIcon, 'FlameIcon');
+export const GearIcon = createStyledIcon(OrigGearIcon, 'GearIcon');
+export const GraphIcon = createStyledIcon(OrigGraphIcon, 'GraphIcon');
+export const GridIcon = createStyledIcon(OrigGridIcon, 'GridIcon');
+export const HeartIcon = createStyledIcon(OrigHeartIcon, 'HeartIcon');
+export const ImportIcon = createStyledIcon(OrigImportIcon, 'ImportIcon');
+export const InfoIcon = createStyledIcon(OrigInfoIcon, 'InfoIcon');
+export const InformationIcon = createStyledIcon(
+  OrigInformationIcon,
+  'InformationIcon'
+);
+export const ListIcon = createStyledIcon(OrigListIcon, 'ListIcon');
+export const LogoutIcon = createStyledIcon(OrigLogoutIcon, 'LogoutIcon');
+export const MailIcon = createStyledIcon(OrigMailIcon, 'MailIcon');
+export const MinimizeIcon = createStyledIcon(OrigMinimizeIcon, 'MinimizeIcon');
+export const NestedViewIcon = createStyledIcon(
+  OrigNestedViewIcon,
+  'NestedViewIcon'
+);
+export const PagesIcon = createStyledIcon(OrigPagesIcon, 'PagesIcon');
+export const PaperBillInvertedIcon = createStyledIcon(
+  OrigPaperBillInvertedIcon,
+  'PaperBillInvertedIcon'
+);
+export const PaperclipIcon = createStyledIcon(
+  OrigPaperclipIcon,
+  'PaperclipIcon'
+);
+export const PinFilledIcon = createStyledIcon(
+  OrigPinFilledIcon,
+  'PinFilledIcon'
+);
+export const PinLinearIcon = createStyledIcon(
+  OrigPinLinearIcon,
+  'PinLinearIcon'
+);
+export const PluginIcon = createStyledIcon(OrigPluginIcon, 'PluginIcon');
+export const PlusBoldIcon = createStyledIcon(OrigPlusBoldIcon, 'PlusBoldIcon');
+export const PlusThinIcon = createStyledIcon(OrigPlusThinIcon, 'PlusThinIcon');
+export const RefreshIcon = createStyledIcon(OrigRefreshIcon, 'RefreshIcon');
+export const RestoreIcon = createStyledIcon(OrigRestoreIcon, 'RestoreIcon');
+export const RevertIcon = createStyledIcon(OrigRevertIcon, 'RevertIcon');
+export const ReviewIcon = createStyledIcon(OrigReviewIcon, 'ReviewIcon');
+export const RocketIcon = createStyledIcon(OrigRocketIcon, 'RocketIcon');
+export const ScreenGearIcon = createStyledIcon(
+  OrigScreenGearIcon,
+  'ScreenGearIcon'
+);
+export const ScreenUserIcon = createStyledIcon(
+  OrigScreenUserIcon,
+  'ScreenUserIcon'
+);
+export const SearchIcon = createStyledIcon(OrigSearchIcon, 'SearchIcon');
+export const SortingIcon = createStyledIcon(OrigSortingIcon, 'SortingIcon');
+export const SpeedometerIcon = createStyledIcon(
+  OrigSpeedometerIcon,
+  'SpeedometerIcon'
+);
+export const SplitIcon = createStyledIcon(OrigSplitIcon, 'SplitIcon');
+export const StarIcon = createStyledIcon(OrigStarIcon, 'StarIcon');
+export const SupportIcon = createStyledIcon(OrigSupportIcon, 'SupportIcon');
+export const SwitcherIcon = createStyledIcon(OrigSwitcherIcon, 'SwitcherIcon');
+export const TableIcon = createStyledIcon(OrigTableIcon, 'TableIcon');
+export const TagMultiIcon = createStyledIcon(OrigTagMultiIcon, 'TagMultiIcon');
+export const TagStackedIcon = createStyledIcon(
+  OrigTagStackedIcon,
+  'TagStackedIcon'
+);
+export const TagIcon = createStyledIcon(OrigTagIcon, 'TagIcon');
+export const TreeStructureIcon = createStyledIcon(
+  OrigTreeStructureIcon,
+  'TreeStructureIcon'
+);
+export const TruckIcon = createStyledIcon(OrigTruckIcon, 'TruckIcon');
+export const UserFilledIcon = createStyledIcon(
+  OrigUserFilledIcon,
+  'UserFilledIcon'
+);
+export const UserLinearIcon = createStyledIcon(
+  OrigUserLinearIcon,
+  'UserLinearIcon'
+);
+export const VerifiedIcon = createStyledIcon(OrigVerifiedIcon, 'VerifiedIcon');
+export const WarningIcon = createStyledIcon(OrigWarningIcon, 'WarningIcon');
+export const WorldIcon = createStyledIcon(OrigWorldIcon, 'WorldIcon');

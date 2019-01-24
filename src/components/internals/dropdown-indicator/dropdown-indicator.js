@@ -6,7 +6,7 @@ import { CaretDownIcon } from '../../icons';
 const DropdownIndicator = props => (
   <components.DropdownIndicator {...props}>
     {/* FIXME: add proper tone when tones are refactored */}
-    <CaretDownIcon theme={props.isDisabled && 'grey'} size="small" />
+    <CaretDownIcon theme={props.isDisabled ? 'grey' : undefined} size="small" />
   </components.DropdownIndicator>
 );
 
