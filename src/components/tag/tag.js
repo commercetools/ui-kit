@@ -53,7 +53,7 @@ const getClickableContentWrapperStyles = ({ type, isRemoveable }) =>
         `,
         isRemoveable &&
           css`
-            border-right: 1px solid var(--border-color-tag-warning);
+            border-right: 1px solid ${vars.borderColorTagWarning};
           `,
       ]
     : [
