@@ -5,17 +5,21 @@ import has from 'lodash.has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
 import { injectIntl } from 'react-intl';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Contraints from '../../constraints';
-import styles from './money-input.mod.css';
 import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
-import vars from '../../../../materials/custom-properties';
+import {
+  getCurrencyLabelStyles,
+  getAmountInputStyles,
+} from './money-input.styles';
 
 const CurrencyLabel = props => (
-  <label htmlFor={props.id} className={styles['currency-label']}>
+  <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
     {props.children}
   </label>
 );
@@ -272,16 +276,6 @@ const formatAmount = (rawAmount, currencyCode, locale) => {
     : amount.toLocaleString(locale, { minimumFractionDigits: fractionDigits });
 };
 
-const getAmountStyles = props => {
-  if (props.isDisabled) return styles['amount-disabled'];
-  if (props.hasError) return styles['amount-error'];
-  if (props.hasWarning) return styles['amount-warning'];
-  if (props.isReadOnly) return styles['amount-readonly'];
-  if (props.hasFocus) return styles['amount-focus'];
-
-  return styles['amount-default'];
-};
-
 const getAmountInputName = name => (name ? `${name}.amount` : undefined);
 const getCurrencyDropdownName = name =>
   name ? `${name}.currencyCode` : undefined;
@@ -519,7 +513,12 @@ class MoneyInput extends React.Component {
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div
           ref={this.containerRef}
-          className={styles['field-container']}
+          css={css`
+            font-family: ${vars.fontFamilyDefault};
+            width: 100%;
+            position: relative;
+            display: flex;
+          `}
           data-testid="money-input-container"
           onBlur={event => {
             // ensures that both fields are marked as touched when one of them
@@ -595,13 +594,7 @@ class MoneyInput extends React.Component {
               this.setState({ amountHasFocus: true });
             }}
             value={this.props.value.amount}
-            className={getAmountStyles({
-              isDisabled: this.props.isDisabled,
-              hasError: this.props.hasError,
-              hasWarning: this.props.hasWarning,
-              isReadOnly: this.props.isReadOnly,
-              hasFocus,
-            })}
+            css={getAmountInputStyles({ ...this.props, hasFocus })}
             placeholder={this.props.placeholder}
             onChange={this.handleAmountChange}
             onBlur={this.handleAmountBlur}
