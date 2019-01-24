@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash.isnil';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
 import Text from '../../typography/text';
 import CollapsibleMotion from '../../collapsible-motion';
 import HeaderIcon from './header-icon';
-import styles from './collapsible-panel.mod.css';
+import {
+  getContainerStyles,
+  getContentStyles,
+  getHeaderContainerStyles,
+  getHeaderStyles,
+} from './collapsible-panel.styles';
 
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
@@ -83,35 +88,31 @@ export default class CollapsiblePanel extends React.PureComponent {
       >
         {({ isOpen, toggle, containerStyles, registerContentNode }) => (
           <div
-            className={classnames(
-              this.props.className,
-              styles[`container-theme-${this.props.theme}`],
-              {
-                [styles['container-condensed']]: this.props.condensed,
-                [styles['container-open']]: isOpen,
-              }
-            )}
+            css={getContainerStyles({
+              isCondensed: this.props.condensed,
+              theme: this.props.theme,
+            })}
+            className={this.props.className}
           >
             <div
+              css={getHeaderContainerStyles({
+                isOpen,
+                isDisabled: this.props.isDisabled,
+                isSticky: this.props.isSticky,
+                theme: this.props.theme,
+              })}
               onClick={this.props.isDisabled ? undefined : toggle}
-              className={classnames(
-                styles['base-header-container'],
-                styles[`header-container-theme-${this.props.theme}`],
-                {
-                  [styles.disabled]: this.props.isDisabled,
-                  [styles.sticky]: this.props.isSticky && isOpen,
-                  [styles['header-closed']]: !isOpen,
-                }
-              )}
             >
               <Spacings.InsetSquish scale={scale}>
                 <div
                   {...dataProps}
-                  className={classnames(styles.header, {
-                    [styles['header-disabled']]: this.props.isDisabled,
-                  })}
+                  css={getHeaderStyles({ isDisabled: this.props.isDisabled })}
                 >
-                  <div className={styles['truncate-header']}>
+                  <div
+                    css={css`
+                      min-width: 0;
+                    `}
+                  >
                     <Spacings.Inline alignItems="center" scale="s">
                       {!this.props.hideExpansionControls && (
                         <HeaderIcon
@@ -156,7 +157,7 @@ export default class CollapsiblePanel extends React.PureComponent {
                   </Spacings.Inset>
                 )}
                 <Spacings.Inset scale={scale}>
-                  <div className={styles.content}>{this.props.children}</div>
+                  <div css={getContentStyles()}>{this.props.children}</div>
                 </Spacings.Inset>
               </div>
             </div>
