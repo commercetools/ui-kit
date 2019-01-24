@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import oneLine from 'common-tags/lib/oneLine';
 import { FormattedMessage } from 'react-intl';
+import { css } from '@emotion/core';
 import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
@@ -22,19 +23,10 @@ import {
 import getFieldId from '../../../utils/get-field-id';
 import LanguagesButton from './languages-button';
 import messages from './messages';
-import styles from './localized-text-input.mod.css';
-
-// NOTE: order is important here
-// * a disabled-field currently does not display warning/error-states so it takes precedence
-// * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
-// how you can interact with the field is controlled separately by the props, this only influences visuals
-const getStyles = props => {
-  if (props.isDisabled) return styles.disabled;
-  if (props.hasError) return styles.error;
-  if (props.isReadOnly) return styles.readonly;
-
-  return styles.pristine;
-};
+import {
+  getInputStyles,
+  getLanguageLabelStyles,
+} from './localized-text-input.styles';
 
 class LocalizedInput extends React.Component {
   static displayName = 'LocalizedInput';
@@ -70,8 +62,15 @@ class LocalizedInput extends React.Component {
   };
   render() {
     return (
-      <div key={this.props.language} className={styles.fieldContainer}>
-        <label htmlFor={this.props.id} className={styles.languageLabel}>
+      <div
+        key={this.props.language}
+        css={css`
+          width: 100%;
+          position: relative;
+          display: flex;
+        `}
+      >
+        <label htmlFor={this.props.id} css={getLanguageLabelStyles()}>
           {/* FIXME: add proper tone for disabled when tones are refactored */}
           <Text.Detail tone="secondary">
             {this.props.language.toUpperCase()}
@@ -87,11 +86,7 @@ class LocalizedInput extends React.Component {
           onFocus={this.props.onFocus}
           disabled={this.props.isDisabled}
           placeholder={this.props.placeholder}
-          className={getStyles({
-            isDisabled: this.props.isDisabled,
-            hasError: this.props.hasError,
-            isReadOnly: this.props.isReadOnly,
-          })}
+          css={getInputStyles(this.props)}
           readOnly={this.props.isReadOnly}
           autoFocus={this.props.isAutofocussed}
           /* ARIA */
