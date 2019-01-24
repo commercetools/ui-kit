@@ -21,12 +21,13 @@ const withMouseDownState = BaseComponent => {
     handleMouseUp = () => this.setMouseDown(false);
 
     render() {
-      return React.createElement(BaseComponent, {
-        ...this.props,
+      const injectedProps = {
         isMouseDown: this.state.isMouseDown,
         handleMouseDown: this.handleMouseDown,
         handleMouseUp: this.handleMouseUp,
-      });
+      };
+
+      return <BaseComponent {...{ ...this.props, ...injectedProps }} />;
     }
   }
 

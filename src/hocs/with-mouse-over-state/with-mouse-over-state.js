@@ -16,12 +16,13 @@ const withMouseOverState = BaseComponent => {
     handleMouseOut = () => this.setMouseOver(false);
 
     render() {
-      return React.createElement(BaseComponent, {
-        ...this.props,
+      const injectedProps = {
         isMouseOver: this.state.isMouseOver,
         handleMouseOver: this.handleMouseOver,
         handleMouseOut: this.handleMouseOut,
-      });
+      };
+
+      return <BaseComponent {...{ ...this.props, ...injectedProps }} />;
     }
   }
 
