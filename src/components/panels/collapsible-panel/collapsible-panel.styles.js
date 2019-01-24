@@ -52,13 +52,6 @@ const getHeaderContainerStyles = ({ isDisabled, isOpen, isSticky, theme }) => {
         z-index: 1;
         border-top-right-radius: ${vars.borderRadius6};
         border-top-left-radius: ${vars.borderRadius6};
-
-        /* FIXME: this is supposed to fix a bug in Chrome with position: sticky in
-                 low-DPI screens. Once the bug is fixed, please remove this. (https://goo.gl/GVcJXf) */
-
-        @media only screen and (-webkit-max-device-pixel-ratio: 1) {
-          top: calc(${vars.spacing16} * -1);
-        }
       `,
     !isOpen &&
       css`
