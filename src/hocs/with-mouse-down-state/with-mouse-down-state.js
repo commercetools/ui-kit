@@ -1,5 +1,5 @@
+import flowRight from 'lodash.flowright';
 import {
-  compose,
   withState,
   withHandlers,
   wrapDisplayName,
@@ -12,7 +12,7 @@ export const stateHandlers = {
 };
 
 export default component =>
-  compose(
+  flowRight(
     setDisplayName(wrapDisplayName(component, 'WithMouseDownState')),
     withState('isMouseDown', 'setMouseDown', false),
     withHandlers(stateHandlers)
