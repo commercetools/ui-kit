@@ -1,17 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './time-input.mod.css';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 
+const getInputStyles = () => css`
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-top: 1px solid ${vars.colorGray90};
+  padding: 10px 0;
+  outline: 0;
+  font-size: ${vars.fontSizeDefault};
+  margin-top: ${vars.spacing8};
+  color: ${vars.colorBlack};
+
+  :disabled {
+    /* Fixes background color in Firefox */
+    background-color: ${vars.colorWhite};
+  }
+`;
 const DateCalendarTimeInput = props => (
   <input
     disabled={props.isDisabled}
     ref={props.timeInputRef}
     type="text"
-    className={styles.timeInput}
     value={props.value}
     onChange={props.onChange}
     onKeyDown={props.onKeyDown}
     placeholder={props.placeholder}
+    css={getInputStyles()}
   />
 );
 
