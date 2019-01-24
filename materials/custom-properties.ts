@@ -4,7 +4,6 @@
   This file is created by the 'scripts/generate-custom-properties.js' script.
   The variables should be updated in 'materials/internals/definition.yaml'.
 */
-
 /* tslint:disable:object-literal-sort-keys */
 
 type CustomProperties = {
