@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'recompose';
+import flowRight from 'lodash.flowright';
 import isNil from 'lodash.isnil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
@@ -146,7 +146,7 @@ IconButton.defaultProps = {
 
 IconButton.displayName = 'IconButton';
 
-export default compose(
+export default flowRight(
   withMouseOverState,
   withMouseDownState
 )(IconButton);

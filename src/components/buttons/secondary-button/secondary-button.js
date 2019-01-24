@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import oneLine from 'common-tags/lib/oneLine';
 import { Link } from 'react-router-dom';
-import { compose } from 'recompose';
+import flowRight from 'lodash.flowright';
 import isNil from 'lodash.isnil';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
@@ -197,7 +197,7 @@ SecondaryButton.defaultProps = {
 
 SecondaryButton.displayName = 'SecondaryButton';
 
-export default compose(
+export default flowRight(
   withMouseOverState,
   withMouseDownState
 )(SecondaryButton);

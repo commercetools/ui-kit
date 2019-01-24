@@ -75,6 +75,7 @@
     "lodash.isnil": "4.0.0",
     "lodash.mapvalues": "4.6.0",
     "lodash.omit": "4.5.0",
+    "lodash.flowright": "3.5.0",
     "lodash.sortby": "4.7.0",
     "lodash.uniq": "4.5.0",
     "lodash.without": "4.4.0",
@@ -83,7 +84,6 @@
     "react-select": "2.3.0",
     "react-textarea-autosize": "7.1.0",
     "react-virtualized": "9.21.0",
-    "recompose": "0.30.0",
     "tiny-invariant": "1.0.3",
     "warning": "4.0.2"
   },
