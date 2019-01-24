@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { css } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 import Constraints from '../constraints';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
-import styles from './tag.mod.css';
 
 const getTextDetailColor = isDisabled => {
   if (isDisabled) return vars.colorGray60;
@@ -44,35 +42,55 @@ const getWrapperBackgroundColor = type =>
     ? vars.backgroundColorTagWarning
     : vars.backgroundColorTagPristine;
 
-const getClickableContentWrapperTypeClassName = ({ type, isRemovable }) =>
+const getClickableContentWrapperStyles = ({ type, isRemoveable }) =>
   type === 'warning'
-    ? classnames(styles.clickableContentWrapperWarning, {
-        [styles.clickableRemovableContentWrapperWarning]: isRemovable,
-      })
-    : classnames(styles.clickableContentWrapperNormal, {
-        [styles.clickableRemovableContentWrapperNormal]: isRemovable,
-      });
+    ? [
+        css`
+          &:hover {
+            border-color: ${vars.borderColorTagWarningHover};
+            border-right: 1px solid ${vars.borderColorTagPristine};
+          }
+        `,
+        isRemoveable &&
+          css`
+            border-right: 1px solid var(--border-color-tag-warning);
+          `,
+      ]
+    : [
+        css`
+          &:hover {
+            border-color: ${vars.borderColorTagFocus};
+          }
+        `,
+        isRemoveable &&
+          css`
+            &:hover {
+              border-right: 1px solid ${vars.borderColorTagPristine};
+            }
+          `,
+      ];
 
 export const TagLinkBody = props => (
   <div
-    css={[
-      getContentWrapperStyles(props),
+    css={
+      ([
+        getContentWrapperStyles(props),
+        !props.isDisabled &&
+          css`
+            cursor: pointer;
+          `,
+        !props.isDisabled &&
+          Boolean(props.onRemove) &&
+          css`
+            padding-right: ${vars.spacing8};
+          `,
+      ],
       !props.isDisabled &&
-        css`
-          cursor: pointer;
-        `,
-      !props.isDisabled &&
-        Boolean(props.onRemove) &&
-        css`
-          padding-right: ${vars.spacing8};
-        `,
-    ]}
-    className={classnames({
-      [getClickableContentWrapperTypeClassName({
-        type: props.type,
-        isRemovable: Boolean(props.onRemove),
-      })]: !props.isDisabled,
-    })}
+        getClickableContentWrapperStyles({
+          type: props.type,
+          isRemoveable: Boolean(props.onRemove),
+        }))
+    }
   >
     {!props.isDisabled ? (
       <Link
@@ -120,15 +138,20 @@ export const TagNormalBody = props => (
         css`
           padding-right: ${vars.spacing8};
         `,
+      !props.isDisabled &&
+        Boolean(props.onClick) &&
+        getClickableContentWrapperStyles({
+          type: props.type,
+          isRemoveable: Boolean(props.onRemove),
+        }),
+      !props.isDisabled &&
+        Boolean(props.onClick) &&
+        css`
+          &:hover {
+            box-shadow: ${vars.shadowBoxTagHover};
+          }
+        `,
     ]}
-    className={classnames({
-      [getClickableContentWrapperTypeClassName({
-        type: props.type,
-        isRemovable: Boolean(props.onRemove),
-      })]: Boolean(props.onClick) && !props.isDisabled,
-      [styles.clickableContentWrapper]:
-        !props.isDisabled && Boolean(props.onClick),
-    })}
     onClick={props.isDisabled ? undefined : props.onClick}
   >
     <Text.Detail
