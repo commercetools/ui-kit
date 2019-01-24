@@ -27,7 +27,6 @@ const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
   font-family: ${vars.fontFamilyDefault};
   color: ${vars.colorBlack};
-  font-size: 13px;
   margin: 10px;
   > * + * {
     margin: 16px 0 0 0;
