@@ -28,7 +28,7 @@ const sizePerScale = {
 const positionOrigin = '20px';
 
 const LoadingSpinner = props => {
-  const size = sizePerScale[props.scale] && '32px';
+  const size = sizePerScale[props.scale] || '32px';
   return (
     <Spacings.Inline alignItems="center">
       <div
