@@ -24,15 +24,9 @@ class ToggleInput extends React.PureComponent {
   render() {
     return (
       <label
-        css={
-          this.props.isDisabled
-            ? css`
-                cursor: not-allowed;
-              `
-            : css`
-                cursor: pointer;
-              `
-        }
+        css={css`
+          cursor: ${this.props.isDisabled ? 'not-allowed' : 'pointer'};
+        `}
       >
         <ToggleSwitch
           size={this.props.size}
