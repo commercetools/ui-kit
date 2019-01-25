@@ -1,17 +1,5 @@
 const path = require('path');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const postcssImport = require('postcss-import');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssReporter = require('postcss-reporter');
-const postcssCustomProperties = require('postcss-custom-properties');
-const customProperties = require('../materials/custom-properties.json');
-
-const browserslist = {
-  development: ['chrome', 'firefox'].map(
-    browser => `last 2 ${browser} versions`
-  ),
-  production: ['>1%', 'not op_mini all', 'ie 11'],
-};
 
 const sourceFolders = [
   path.resolve(__dirname),
@@ -89,49 +77,6 @@ module.exports = (storybookBaseConfig, configType) => {
           },
         },
       ],
-    },
-    // "postcss" loader applies autoprefixer to our CSS
-    // "css" loader resolves paths in CSS and adds assets as dependencies.
-    // "style" loader turns CSS into JS modules that inject <style> tags.
-    {
-      test: /\.mod\.css$/,
-      include: sourceFolders,
-      use: [
-        require.resolve('style-loader'),
-        {
-          loader: require.resolve('css-loader'),
-          options: {
-            modules: true,
-            importLoaders: 1,
-            localIdentName: '[name]__[local]___[hash:base64:5]',
-          },
-        },
-        {
-          loader: require.resolve('postcss-loader'),
-          options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssImport({ path: sourceFolders }),
-              postcssPresetEnv({
-                browsers: browserslist.development,
-                autoprefixer: { grid: true },
-              }),
-              postcssCustomProperties({
-                preserve: false,
-                importFrom: { 'custom-properties': customProperties },
-              }),
-              postcssReporter(),
-            ],
-          },
-        },
-      ],
-    },
-    {
-      test: /\.css$/,
-      // "css" loader resolves paths in CSS and adds assets as dependencies.
-      // "style" loader turns CSS into JS modules that inject <style> tags.
-      include: /node_modules/,
-      loaders: [require.resolve('style-loader'), require.resolve('css-loader')],
     },
     // Storybook uses a plugin to load and render markdown files.
     {

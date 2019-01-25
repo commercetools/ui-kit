@@ -10,7 +10,6 @@ import { css, ClassNames } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 import Button from '../buttons/secondary-button';
 import Readme from './README.md';
-import 'react-virtualized/styles.css';
 import Table from './table';
 
 // Data generator for story
