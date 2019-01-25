@@ -1,13 +1,6 @@
 const path = require('path');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
-const browserslist = {
-  development: ['chrome', 'firefox'].map(
-    browser => `last 2 ${browser} versions`
-  ),
-  production: ['>1%', 'not op_mini all', 'ie 11'],
-};
-
 const sourceFolders = [
   path.resolve(__dirname),
   path.resolve(__dirname, '../examples'),
@@ -84,13 +77,6 @@ module.exports = (storybookBaseConfig, configType) => {
           },
         },
       ],
-    },
-    {
-      test: /\.css$/,
-      // "css" loader resolves paths in CSS and adds assets as dependencies.
-      // "style" loader turns CSS into JS modules that inject <style> tags.
-      include: /node_modules/,
-      loaders: [require.resolve('style-loader'), require.resolve('css-loader')],
     },
     // Storybook uses a plugin to load and render markdown files.
     {
