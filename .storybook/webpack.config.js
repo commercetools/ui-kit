@@ -1,10 +1,5 @@
 const path = require('path');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const postcssImport = require('postcss-import');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssReporter = require('postcss-reporter');
-const postcssCustomProperties = require('postcss-custom-properties');
-const customProperties = require('../materials/custom-properties.json');
 
 const browserslist = {
   development: ['chrome', 'firefox'].map(
@@ -86,42 +81,6 @@ module.exports = (storybookBaseConfig, configType) => {
                 { cleanupIDs: false },
               ],
             },
-          },
-        },
-      ],
-    },
-    // "postcss" loader applies autoprefixer to our CSS
-    // "css" loader resolves paths in CSS and adds assets as dependencies.
-    // "style" loader turns CSS into JS modules that inject <style> tags.
-    {
-      test: /\.mod\.css$/,
-      include: sourceFolders,
-      use: [
-        require.resolve('style-loader'),
-        {
-          loader: require.resolve('css-loader'),
-          options: {
-            modules: true,
-            importLoaders: 1,
-            localIdentName: '[name]__[local]___[hash:base64:5]',
-          },
-        },
-        {
-          loader: require.resolve('postcss-loader'),
-          options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssImport({ path: sourceFolders }),
-              postcssPresetEnv({
-                browsers: browserslist.development,
-                autoprefixer: { grid: true },
-              }),
-              postcssCustomProperties({
-                preserve: false,
-                importFrom: { 'custom-properties': customProperties },
-              }),
-              postcssReporter(),
-            ],
           },
         },
       ],

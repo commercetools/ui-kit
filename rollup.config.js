@@ -1,50 +1,13 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
-import postcssImport from 'postcss-import';
-import postcssPresetEnv from 'postcss-preset-env';
-import postcssReporter from 'postcss-reporter';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
 import svgrPlugin from '@svgr/rollup';
-import postcssCustomProperties from 'postcss-custom-properties';
-import postcssDiscardComments from 'postcss-discard-comments';
 import pkg from './package.json';
-import customProperties from './materials/custom-properties.json';
 
 const babelOptions = require('./scripts/get-babel-preset');
-
-// Inspired by https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.prod.js
-const browserslist = {
-  production: [
-    '>1%',
-    'last 2 versions',
-    'Firefox ESR',
-    'not op_mini all',
-    'ie 11',
-  ],
-};
-
-const postcssPlugins = [
-  postcssImport(),
-  postcssPresetEnv({
-    browsers: browserslist.production,
-    autoprefixer: { grid: true },
-  }),
-  // we need to place the postcssDiscardComments BEFORE postcssCustomProperties,
-  // otherwise we will end up with a bunch of empty :root elements
-  // wherever there are imported comments
-  // see https://github.com/postcss/postcss-custom-properties/issues/123
-  // and https://github.com/commercetools/ui-kit/pull/173
-  postcssDiscardComments(),
-  postcssCustomProperties({
-    preserve: false,
-    importFrom: { 'custom-properties': customProperties },
-  }),
-  postcssReporter(),
-];
 
 // This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
@@ -69,21 +32,6 @@ const plugins = [
   }),
   // To convert JSON files to ES6
   json(),
-  // To convert CSS modules files to ES6
-  postcss({
-    include: ['**/*.mod.css'],
-    // Normal CSS will be handled separately (see below)
-    exclude: ['node_modules/**/*.css'],
-    modules: true,
-    importLoaders: 1,
-    localIdentName: '[name]__[local]___[hash:base64:5]',
-    plugins: postcssPlugins,
-  }),
-  // To convert "normal" CSS files to ES6, usually from vendors
-  postcss({
-    exclude: ['**/*.mod.css'],
-    include: ['**/*.css'],
-  }),
   // To convert SVG Icons to ES6
   svgrPlugin({
     // NOTE: only the files ending with `.react.svg` are supposed to be

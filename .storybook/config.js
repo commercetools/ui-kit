@@ -5,8 +5,6 @@ import IntlDecorator from './decorators/intl';
 
 // setAddon(infoAddon);
 
-import './main.mod.css';
-
 addDecorator(
   withOptions({
     name: 'UI Kit',
