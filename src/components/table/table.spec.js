@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Table from './table';
+import BaseTable from './base-table';
 
 const FooterComponent = () => <div>{'Hello'}</div>;
 const createTestProps = custom => ({
@@ -33,7 +34,7 @@ describe('Table', () => {
   });
 
   it('should render BaseTable', () => {
-    expect(wrapperContent).toRender('BaseTable');
+    expect(wrapperContent).toRender(BaseTable);
   });
 
   describe('when component is mounted', () => {
@@ -48,7 +49,7 @@ describe('Table', () => {
           wrapper.instance().renderContent({ height: 100, width: 200 })
         );
 
-        wrapper.instance().footerElement = { clientHeight: 10 };
+        wrapper.instance().ref.current = { clientHeight: 10 };
         wrapper.instance().componentDidMount();
       });
       it('should set footerHeight', () => {
@@ -87,7 +88,7 @@ describe('Table', () => {
         expect(wrapperContent.find('BaseTable').prop('maxHeight')).toBe(768);
       });
       it('should render footer', () => {
-        expect(wrapperContent).toRender({ className: 'footer' });
+        expect(wrapperContent).toRender(FooterComponent);
       });
     });
     describe('defaultHeight is provided', () => {
@@ -113,7 +114,7 @@ describe('Table', () => {
         expect(wrapperContent.find('BaseTable')).toHaveProp('maxHeight', 475);
       });
       it('should render footer', () => {
-        expect(wrapperContent).toRender({ className: 'footer' });
+        expect(wrapperContent).toRender(FooterComponent);
       });
     });
   });
@@ -130,7 +131,7 @@ describe('Table', () => {
         expect(wrapperContent.find('BaseTable')).toHaveProp('maxHeight', 768);
       });
       it('should not render footer', () => {
-        expect(wrapperContent).not.toRender({ className: 'footer' });
+        expect(wrapperContent).not.toRender(FooterComponent);
       });
     });
     describe('defaultHeight is provided', () => {
@@ -144,7 +145,7 @@ describe('Table', () => {
         expect(wrapperContent.find('BaseTable')).toHaveProp('maxHeight', 475);
       });
       it('should not render footer', () => {
-        expect(wrapperContent).not.toRender({ className: 'footer' });
+        expect(wrapperContent).not.toRender(FooterComponent);
       });
     });
   });
@@ -170,7 +171,7 @@ describe('Table', () => {
         );
       });
       it('should render footer', () => {
-        expect(wrapperContent).toRender({ className: 'footer' });
+        expect(wrapperContent).toRender(FooterComponent);
       });
     });
     describe('defaultHeight is provided', () => {
@@ -195,7 +196,7 @@ describe('Table', () => {
         );
       });
       it('should render footer', () => {
-        expect(wrapperContent).toRender({ className: 'footer' });
+        expect(wrapperContent).toRender(FooterComponent);
       });
     });
   });
@@ -215,7 +216,7 @@ describe('Table', () => {
         expect(wrapperContent.find('BaseTable')).toHaveProp('maxHeight', 800);
       });
       it('should not render footer', () => {
-        expect(wrapperContent).not.toRender({ className: 'footer' });
+        expect(wrapperContent).not.toRender(FooterComponent);
       });
     });
     describe('defaultHeight is provided', () => {
@@ -234,7 +235,7 @@ describe('Table', () => {
         expect(wrapperContent.find('BaseTable')).toHaveProp('maxHeight', 800);
       });
       it('should not render footer', () => {
-        expect(wrapperContent).not.toRender({ className: 'footer' });
+        expect(wrapperContent).not.toRender(FooterComponent);
       });
     });
   });
@@ -263,7 +264,7 @@ describe('Table', () => {
         );
       });
       it('should render footer', () => {
-        expect(wrapperContent).toRender({ className: 'footer' });
+        expect(wrapperContent).toRender(FooterComponent);
       });
     });
     describe('defaultHeight is provided', () => {
@@ -290,7 +291,7 @@ describe('Table', () => {
         );
       });
       it('should render footer', () => {
-        expect(wrapperContent).toRender({ className: 'footer' });
+        expect(wrapperContent).toRender(FooterComponent);
       });
     });
   });

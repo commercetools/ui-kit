@@ -4,11 +4,12 @@ import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
 import sortBy from 'lodash.sortby';
 import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
 import classnames from 'classnames';
+import { Global, ClassNames, css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import Spacings from '../../spacings';
 import SortableHeader from '../sortable-header';
 import Cell from '../cell';
 import cellRangeRenderer from './cell-range-renderer';
-import styles from './base-table.mod.css';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 export default class BaseTable extends React.Component {
@@ -55,15 +56,23 @@ export default class BaseTable extends React.Component {
          * Custom class that is added to the header's cell container.
          */
         headerClassName: PropTypes.string,
+        headerStyle: PropTypes.object,
         /**
          * Custom class that is added to the cell's container.
          */
         className: PropTypes.string,
+        cellClassName: PropTypes.string, // alias
         /**
          * Function to return a custom class that is added to the cell's
          * container.
          */
         classNameGetter: PropTypes.func,
+        cellClassNameGetter: PropTypes.func, // alias
+        /**
+         * Function to return a custom class that is added to the cell's
+         * container.
+         */
+        cellStyleGetter: PropTypes.func,
         /**
          * Function that is called when the user clicks a cell in this column.
          * Only use this if you want to have a column specific behaviour. Most
@@ -90,6 +99,7 @@ export default class BaseTable extends React.Component {
     sortDirection: PropTypes.oneOf(['ASC', 'DESC']),
     sortBy: PropTypes.string,
     tableClassName: PropTypes.string,
+    tableStyle: PropTypes.object,
     // The keyMapper is only used in the storybook to make the table update
     // measurements when the cells contents change on the fly
     keyMapper: PropTypes.func,
@@ -329,42 +339,53 @@ export default class BaseTable extends React.Component {
       </Cell>
     );
 
-  itemRenderer = renderParams => {
+  renderItemCell = renderParams => {
     // `columnDefinition` is the original column-definition from where you defined the table
     // `renderParams` holds similar looking-information but is the data provided by "react-virtualized"
     const columnDefinition = this.columns[renderParams.columnIndex];
+    if (renderParams.rowIndex === 0) {
+      return (
+        <ClassNames>
+          {({ css: makeClassName }) => (
+            <div
+              style={{
+                ...(renderParams.style || {}),
+                ...(columnDefinition.headerStyle || {}),
+              }}
+              className={classnames(
+                makeClassName({
+                  background: vars.colorNavy,
+                  color: vars.colorWhite,
+                }),
+                columnDefinition.headerClassName,
+                makeClassName({ textAlign: columnDefinition.align || 'left' })
+              )}
+            >
+              {this.headerRenderer(columnDefinition)}
+            </div>
+          )}
+        </ClassNames>
+      );
+    }
     return (
-      <CellMeasurer
-        cache={this.cellMeasurerCache}
-        columnIndex={renderParams.columnIndex}
-        key={renderParams.key}
-        parent={renderParams.parent}
-        rowIndex={renderParams.rowIndex}
-      >
-        {renderParams.rowIndex === 0 ? (
+      <ClassNames>
+        {({ css: makeClassName }) => (
           <div
-            style={renderParams.style}
             className={classnames(
-              styles['header-cell'],
-              columnDefinition.headerClassName,
-              styles[`align-${columnDefinition.align || 'left'}`]
-            )}
-          >
-            {this.headerRenderer(columnDefinition)}
-          </div>
-        ) : (
-          <div
-            // TODO: move the className and handlers into Cell
-            style={renderParams.style}
-            className={classnames(
-              styles[`align-${columnDefinition.align || 'left'}`],
-              {
-                [styles['hovered-row']]:
-                  renderParams.rowIndex === this.state.hoveredRowIndex &&
-                  renderParams.rowIndex !== 0 &&
-                  this.props.onRowClick,
-              },
+              makeClassName({
+                textAlign: columnDefinition.align || 'left',
+                ...(renderParams.rowIndex === this.state.hoveredRowIndex &&
+                renderParams.rowIndex !== 0 &&
+                this.props.onRowClick
+                  ? {
+                      cursor: 'pointer',
+                      transition: vars.transitionStandard,
+                      background: vars.colorGray90,
+                    }
+                  : {}),
+              }),
               columnDefinition.className,
+              columnDefinition.cellClassName,
               columnDefinition.classNameGetter
                 ? columnDefinition.classNameGetter({
                     rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
@@ -372,8 +393,27 @@ export default class BaseTable extends React.Component {
                     height: renderParams.height,
                     width: renderParams.width,
                   })
+                : undefined,
+              columnDefinition.cellClassNameGetter
+                ? columnDefinition.cellClassNameGetter({
+                    rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
+                    columnKey: columnDefinition.key,
+                    height: renderParams.height,
+                    width: renderParams.width,
+                  })
                 : undefined
             )}
+            style={{
+              ...(renderParams.style || {}),
+              ...(columnDefinition.cellStyleGetter
+                ? columnDefinition.cellStyleGetter({
+                    rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
+                    columnKey: columnDefinition.key,
+                    height: renderParams.height,
+                    width: renderParams.width,
+                  })
+                : {}),
+            }}
             data-test={`cell-${renderParams.rowIndex}-${columnDefinition.key}`}
             onClick={event => {
               if (columnDefinition.onClick) {
@@ -422,41 +462,79 @@ export default class BaseTable extends React.Component {
             </Cell>
           </div>
         )}
-      </CellMeasurer>
+      </ClassNames>
     );
   };
+
+  itemRenderer = renderParams => (
+    <CellMeasurer
+      cache={this.cellMeasurerCache}
+      columnIndex={renderParams.columnIndex}
+      key={renderParams.key}
+      parent={renderParams.parent}
+      rowIndex={renderParams.rowIndex}
+    >
+      {this.renderItemCell(renderParams)}
+    </CellMeasurer>
+  );
+
   render() {
     return (
-      <div
-        className={classnames(styles.wrapper, this.props.tableClassName)}
-        style={{ width: this.state.width }}
-        {...filterDataAttributes(this.props)}
-      >
-        <MultiGrid
-          ref={this.registerMultiGrid}
-          classNameTopLeftGrid={styles['fixed-static']}
-          classNameBottomLeftGrid={styles['fixed-column']}
-          classNameBottomRightGrid={styles['table-body']}
-          className={styles.table}
-          deferredMeasurementCache={this.cellMeasurerCache}
-          cellRangeRenderer={cellRangeRenderer}
-          fixedRowCount={1}
-          cellRenderer={this.itemRenderer}
-          columnWidth={this.getColumnWidth(this.cellMeasurerCache.columnWidth)}
-          columnCount={this.props.columns.length}
-          height={this.state.height}
-          rowHeight={this.cellMeasurerCache.rowHeight}
-          rowCount={this.props.rowCount + 1}
-          onScroll={this.props.onScroll}
-          scrollToRow={this.props.scrollToRow}
-          width={this.state.width}
-          // The three props below are only passed down in order to make the component rerender
-          hoveredRowIndex={this.state.hoveredRowIndex}
-          items={this.props.items}
-          cols={this.props.columns}
-          onSectionRendered={this.handleSectionRendered}
+      <React.Fragment>
+        <Global
+          styles={css`
+            .ReactVirtualized__Grid {
+              background: ${vars.colorWhite};
+              /* Removes :focus ring from table */
+              outline-width: 0;
+            }
+          `}
         />
-      </div>
+        <ClassNames>
+          {({ css: makeClassName }) => (
+            <div
+              className={classnames(
+                makeClassName({
+                  outline: `1px solid ${vars.colorGray90}`,
+                }),
+                this.props.tableClassName
+              )}
+              style={{
+                ...(this.props.tableStyle || {}),
+                width: this.state.width,
+              }}
+              {...filterDataAttributes(this.props)}
+            >
+              <MultiGrid
+                ref={this.registerMultiGrid}
+                styleTopLeftGrid={{ background: vars.colorGray90 }}
+                styleBottomLeftGrid={{
+                  boxShadow: '4px -2px 4px -4px rgba(0, 0, 0, 0.3)',
+                }}
+                deferredMeasurementCache={this.cellMeasurerCache}
+                cellRangeRenderer={cellRangeRenderer}
+                fixedRowCount={1}
+                cellRenderer={this.itemRenderer}
+                columnWidth={this.getColumnWidth(
+                  this.cellMeasurerCache.columnWidth
+                )}
+                columnCount={this.props.columns.length}
+                height={this.state.height}
+                rowHeight={this.cellMeasurerCache.rowHeight}
+                rowCount={this.props.rowCount + 1}
+                onScroll={this.props.onScroll}
+                scrollToRow={this.props.scrollToRow}
+                width={this.state.width}
+                // The three props below are only passed down in order to make the component rerender
+                hoveredRowIndex={this.state.hoveredRowIndex}
+                items={this.props.items}
+                cols={this.props.columns}
+                onSectionRendered={this.handleSectionRendered}
+              />
+            </div>
+          )}
+        </ClassNames>
+      </React.Fragment>
     );
   }
 }

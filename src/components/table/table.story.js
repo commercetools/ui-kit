@@ -6,11 +6,12 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import sortBy from 'lodash.sortby';
+import { css, ClassNames } from '@emotion/core';
+import vars from '../../../materials/custom-properties';
 import Button from '../buttons/secondary-button';
 import Readme from './README.md';
 import 'react-virtualized/styles.css';
-import styles from './table.mod.css';
-import Table from '.';
+import Table from './table';
 
 // Data generator for story
 
@@ -47,15 +48,14 @@ const generateItems = (cols, numberOfRows) =>
     ),
   }));
 
-const baseColumns = onCheckboxClick => [
+const baseColumns = ({ onCheckboxClick, checkboxClassName }) => [
   {
     key: 'checkbox',
     label: 'Checkbox',
     onClick: onCheckboxClick,
-    classNameGetter: ({ rowIndex }) =>
-      rowIndex === 0
-        ? styles['checkbox-cell-special']
-        : styles['checkbox-cell'],
+    cellClassName: checkboxClassName,
+    cellStyleGetter: ({ rowIndex }) =>
+      rowIndex === 0 ? { borderLeft: `2px solid red` } : {},
   },
   {
     key: 'name',
@@ -221,9 +221,6 @@ class BaseTable extends React.PureComponent {
     sortDirection: undefined,
   };
 
-  // Move to own component
-  columns = baseColumns(this.onCheckboxClick);
-
   renderItem = ({ rowIndex, columnIndex }) => {
     const col = this.columns[columnIndex];
     const item = this.state.rows[rowIndex];
@@ -253,15 +250,40 @@ class BaseTable extends React.PureComponent {
 
   render() {
     return (
-      <div style={{ padding: '20px' }}>
-        <Table
-          columns={this.columns}
-          rowCount={this.state.rows.length}
-          itemRenderer={this.renderItem}
-          onRowClick={action('row click')}
-          shouldFillRemainingVerticalSpace={true}
-          items={this.state.rows}
-        />
+      <div
+        css={css`
+          padding: 20px;
+        `}
+      >
+        <ClassNames>
+          {({ css: makeClassName }) => {
+            this.columns = baseColumns({
+              onCheckboxClick: this.onCheckboxClick,
+              checkboxClassName: makeClassName({
+                backgroundColor: '#f2f2f2',
+                borderLeft: `2px solid ${vars.colorBlue}`,
+                ':hover': {
+                  backgroundColor: '#e0e0e0',
+                  cursor: 'pointer',
+                },
+              }),
+            });
+            return (
+              <Table
+                columns={this.columns}
+                rowCount={this.state.rows.length}
+                itemRenderer={this.renderItem}
+                onRowClick={action('row click')}
+                shouldFillRemainingVerticalSpace={true}
+                items={this.state.rows}
+                // Just to test that we can pass a classname here
+                tableClassName={makeClassName({
+                  fontFamily: 'cursive',
+                })}
+              />
+            );
+          }}
+        </ClassNames>
       </div>
     );
   }
@@ -370,26 +392,30 @@ class Wrapper extends React.PureComponent {
   render() {
     return (
       <div
-        style={{
+        css={css`
           overflow: 'auto',
           height: '100vh',
           display: 'flex',
-          flexDirection: 'column',
-        }}
+          flex-direction: column;
+        `}
       >
-        <div style={{ padding: '20px 0 0 20px' }}>
+        <div
+          css={css`
+            padding: 20px 0 0 20px;
+          `}
+        >
           <h4>{'columns'}</h4>
           {this.state.cols.map((col, colIndex) => (
             <div
               key={colIndex}
-              style={{
-                border: '1px solid #ccc',
-                borderRadius: '10px',
-                padding: '10px',
-                margin: '5px',
-                display: 'inline-block',
-                position: 'relative',
-              }}
+              css={css`
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 5px;
+                display: inline-block;
+                position: relative;
+              `}
             >
               <div>
                 <Button
@@ -468,15 +494,19 @@ class Wrapper extends React.PureComponent {
             </div>
           ))}
         </div>
-        <div style={{ padding: '20px' }}>
+        <div
+          css={css`
+            padding: 20px;
+          `}
+        >
           <Button onClick={this.handleAddColumn} label="Add Column" />
         </div>
         <div
-          style={{
-            width: '400px',
-            padding: '20px',
-            display: 'inline-block',
-          }}
+          css={css`
+            width: 400px;
+            padding: 20px;
+            display: inline-block;
+          `}
         >
           {'onRowClick'}
           <input
@@ -487,7 +517,13 @@ class Wrapper extends React.PureComponent {
             onChange={this.handleChange}
           />
         </div>
-        <div style={{ padding: '20px', flexGrow: 1, display: 'flex' }}>
+        <div
+          css={css`
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+          `}
+        >
           {this.props.children({
             shouldFillRemainingVerticalSpace: boolean(
               'shouldFillRemainingVerticalSpace',
