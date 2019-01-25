@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import Text from '../../typography/text';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
-import styles from './sortable-header.mod.css';
 
 /*
 Logic of arrow indicating sort order is slightly complex:
@@ -39,17 +39,43 @@ const SortableHeader = props => {
     <div
       onMouseOver={props.handleMouseOver}
       onMouseOut={props.handleMouseOut}
-      className={classnames(styles.container, {
-        [styles.active]: isActive,
-        [styles.reversed]: props.alignRight,
-      })}
+      css={[
+        css`
+          display: flex;
+          justify-content: space-between;
+          &:hover {
+            cursor: pointer;
+          }
+        `,
+        props.alignRight &&
+          css`
+            flex-direction: row-reverse;
+          `,
+      ]}
     >
       <Text.Body tone="inverted">{props.children}</Text.Body>
-      <span className={styles.arrow}>
+      <span
+        id="arrow"
+        css={[
+          css`
+            visibility: hidden; /* use visibility so react-virtualized can account for arrow-width on calcs */
+            pointer-events: none; /* Do not unhover when on the icon */
+            padding: 0 0 0 ${vars.spacing16};
+          `,
+          (isActive || props.isMouseOver) &&
+            css`
+              visibility: visible;
+            `,
+          props.alignRight &&
+            css`
+              padding: 0 ${vars.spacing16} 0 0;
+            `,
+        ]}
+      >
         {isArrowDown ? (
           <AngleDownIcon size="medium" theme={theme} />
         ) : (
-          <AngleUpIcon className={styles.arrow} size="small" theme={theme} />
+          <AngleUpIcon size="small" theme={theme} />
         )}
       </span>
     </div>

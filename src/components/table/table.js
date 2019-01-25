@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AutoSizer } from 'react-virtualized';
 import omit from 'lodash.omit';
+import { css } from '@emotion/core';
 import BaseTable from './base-table';
-import styles from './table.mod.css';
 
 /* The table shouldn't be greater than 768px on smaller screens,
 and should scale according to the height provided by <AutoSizer />
@@ -21,13 +21,14 @@ export class Table extends React.PureComponent {
     shouldFillRemainingVerticalSpace: PropTypes.bool.isRequired,
   };
 
+  ref = React.createRef();
+
   componentDidMount() {
     /* The <AutoSizer /> calculates the remaining space of the entire screen.
       Because of that, additional elements inside the container, besides the
       <BaseTable/>, needs to be taken into consideration when calculating
       the actual <BaseTable/> height (= container height - footer height) */
-    if (this.props.children)
-      this.footerHeight = this.footerElement.clientHeight;
+    if (this.props.children) this.footerHeight = this.ref.current.clientHeight;
   }
 
   renderContent({ height, width }) {
@@ -52,10 +53,11 @@ export class Table extends React.PureComponent {
         />
         {this.props.children && (
           <div
-            ref={footer => {
-              this.footerElement = footer;
-            }}
-            className={styles.footer}
+            ref={this.ref}
+            css={css`
+              display: flex;
+              flex-direction: column;
+            `}
           >
             {this.props.children}
           </div>
@@ -66,7 +68,12 @@ export class Table extends React.PureComponent {
 
   render() {
     return (
-      <div className={styles.container}>
+      <div
+        css={css`
+          flex-grow: 1;
+          flex-shrink: 0;
+        `}
+      >
         <AutoSizer disableHeight={!this.props.shouldFillRemainingVerticalSpace}>
           {/*
               NOTE: because `AutoSizer` implements `PureComponent`, if we pass

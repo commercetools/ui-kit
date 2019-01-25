@@ -1,6 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { CellMeasurer, MultiGrid } from 'react-virtualized';
+import { ClassNames } from '@emotion/core';
 import SortableHeader from '../sortable-header';
+import Cell from '../cell';
 import BaseTable from './base-table';
 import cellRangeRenderer from './cell-range-renderer';
 
@@ -23,21 +26,25 @@ describe('BaseTable', () => {
   describe('rendering', () => {
     let props;
     let wrapper;
+    let gridWrapper;
     beforeEach(() => {
       props = createTestProps();
       wrapper = shallow(<BaseTable {...props} />);
+      gridWrapper = shallow(
+        wrapper.find(ClassNames).prop('children')({ css: jest.fn() })
+      );
     });
     it('should render <MultiGrid>', () => {
-      expect(wrapper).toRender('MultiGrid');
+      expect(gridWrapper).toRender(MultiGrid);
     });
     it('should pass deferredMeasurementCache prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp(
+      expect(gridWrapper.find(MultiGrid)).toHaveProp(
         'deferredMeasurementCache',
         wrapper.instance().cellMeasurerCache
       );
     });
     it('should pass cellRangeRender prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp(
+      expect(gridWrapper.find(MultiGrid)).toHaveProp(
         'cellRangeRenderer',
         cellRangeRenderer
       );
@@ -48,58 +55,61 @@ describe('BaseTable', () => {
           columns: [{ key: '1', isFixed: true }, { key: '2' }],
         });
         wrapper = shallow(<BaseTable {...props} />);
+        gridWrapper = shallow(
+          wrapper.find(ClassNames).prop('children')({ css: jest.fn() })
+        );
       });
       it('should not pass fixedColumnCount prop to <MultiGrid>', () => {
-        expect(wrapper.find('MultiGrid')).toHaveProp('fixedColumnCount', 0);
+        expect(gridWrapper.find(MultiGrid)).toHaveProp('fixedColumnCount', 0);
       });
     });
     it('should pass fixedRowCount prop as 1 to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp('fixedRowCount', 1);
+      expect(gridWrapper.find(MultiGrid)).toHaveProp('fixedRowCount', 1);
     });
     it('should pass cellRenderer prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp(
+      expect(gridWrapper.find(MultiGrid)).toHaveProp(
         'cellRenderer',
         wrapper.instance().itemRenderer
       );
     });
     it('should pass columnWidth prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp(
+      expect(gridWrapper.find(MultiGrid)).toHaveProp(
         'columnWidth',
         expect.any(Function)
       );
     });
     it('should pass columnCount prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp('columnCount', 10);
+      expect(gridWrapper.find(MultiGrid)).toHaveProp('columnCount', 10);
     });
     it('should pass height prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp('height', 500);
+      expect(gridWrapper.find(MultiGrid)).toHaveProp('height', 500);
     });
     it('should pass rowHeight prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp(
+      expect(gridWrapper.find(MultiGrid)).toHaveProp(
         'rowHeight',
         wrapper.instance().cellMeasurerCache.rowHeight
       );
     });
     it('should pass rowCount prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp('rowCount', 21);
+      expect(gridWrapper.find(MultiGrid)).toHaveProp('rowCount', 21);
     });
     it('should pass width prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp('width', 500);
+      expect(gridWrapper.find(MultiGrid)).toHaveProp('width', 500);
     });
     it('should pass hoveredRowIndex prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp(
+      expect(gridWrapper.find(MultiGrid)).toHaveProp(
         'hoveredRowIndex',
         undefined
       );
     });
     it('should pass items prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp('items', props.items);
+      expect(gridWrapper.find(MultiGrid)).toHaveProp('items', props.items);
     });
     it('should pass cols prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp('cols', props.columns);
+      expect(gridWrapper.find(MultiGrid)).toHaveProp('cols', props.columns);
     });
     it('should pass onSectionRendered prop to <MultiGrid>', () => {
-      expect(wrapper.find('MultiGrid')).toHaveProp(
+      expect(gridWrapper.find(MultiGrid)).toHaveProp(
         'onSectionRendered',
         expect.any(Function)
       );
@@ -348,18 +358,12 @@ describe('BaseTable', () => {
       let headerWrapper;
       describe('when column is sortable', () => {
         beforeEach(() => {
-          headerWrapper = shallow(
+          headerWrapper = mount(
             wrapper.instance().headerRenderer({
               key: 'id',
               isSortable: true,
-              label: <div>{'The label'}</div>,
+              label: <span>{'The label'}</span>,
             })
-          );
-        });
-        it('should render div with onClick handler', () => {
-          expect(headerWrapper.find('div').at(1)).toHaveProp(
-            'onClick',
-            expect.any(Function)
           );
         });
         it('should render SortableHeader', () => {
@@ -385,32 +389,27 @@ describe('BaseTable', () => {
         });
         it('should render given label component', () => {
           expect(headerWrapper.find(SortableHeader)).toContainReact(
-            <div>{'The label'}</div>
+            <span>{'The label'}</span>
           );
         });
       });
       describe('when column is not sortable', () => {
         beforeEach(() => {
-          headerWrapper = shallow(
+          headerWrapper = mount(
             wrapper.instance().headerRenderer({
               isSortable: false,
-              label: <div>{'The label'}</div>,
+              label: <span>{'The label'}</span>,
             })
           );
         });
         it('should render given label component', () => {
-          expect(headerWrapper).toContainReact(<div>{'The label'}</div>);
+          expect(headerWrapper).toContainReact(<span>{'The label'}</span>);
         });
       });
     });
     describe('itemRenderer', () => {
       let itemWrapper;
       beforeEach(() => {
-        wrapper.instance().columns = [
-          {
-            key: 'id',
-          },
-        ];
         itemWrapper = shallow(
           <div>
             {wrapper.instance().itemRenderer({
@@ -418,155 +417,153 @@ describe('BaseTable', () => {
               rowIndex: 1,
               key: 'id',
               parent: { key: 'the-parent???' },
-              style: {},
             })}
           </div>
         );
       });
       it('should pass cache prop to CellMeasurer', () => {
-        expect(itemWrapper.find('CellMeasurer')).toHaveProp(
+        expect(itemWrapper.find(CellMeasurer)).toHaveProp(
           'cache',
           wrapper.instance().cellMeasurerCache
         );
       });
       it('should pass columnIndex prop to CellMeasurer', () => {
-        expect(itemWrapper.find('CellMeasurer')).toHaveProp('columnIndex', 0);
+        expect(itemWrapper.find(CellMeasurer)).toHaveProp('columnIndex', 0);
       });
       it('should pass parent prop to CellMeasurer', () => {
-        expect(itemWrapper.find('CellMeasurer')).toHaveProp('parent', {
+        expect(itemWrapper.find(CellMeasurer)).toHaveProp('parent', {
           key: 'the-parent???',
         });
       });
       it('should pass rowIndex prop to CellMeasurer', () => {
-        expect(itemWrapper.find('CellMeasurer')).toHaveProp('rowIndex', 1);
+        expect(itemWrapper.find(CellMeasurer)).toHaveProp('rowIndex', 1);
       });
-      it('should render Cell', () => {
-        expect(itemWrapper).toRender('Cell');
-      });
-      it('should render Cell with content of props.itemRenderer', () => {
-        expect(itemWrapper.find('Cell')).toContainReact(<div>{'foo'}</div>);
-      });
-      describe('when onRowClick is defined', () => {
+      describe('renderItemCell', () => {
+        let cellWrapper;
         beforeEach(() => {
-          props = createTestProps({ onRowClick: jest.fn() });
-          wrapper = shallow(<BaseTable {...props} />);
           wrapper.instance().columns = [
             {
               key: 'id',
             },
           ];
-          itemWrapper = shallow(
-            <div>
-              {wrapper.instance().itemRenderer({
+          cellWrapper = mount(
+            wrapper.instance().renderItemCell({
+              columnIndex: 0,
+              rowIndex: 1,
+              key: 'id',
+              parent: { key: 'the-parent???' },
+            })
+          );
+        });
+        it('should render Cell', () => {
+          expect(cellWrapper).toRender(Cell);
+        });
+        it('should render Cell with content of props.itemRenderer', () => {
+          expect(cellWrapper.find(Cell)).toContainReact(<div>{'foo'}</div>);
+        });
+        describe('when onRowClick is defined', () => {
+          beforeEach(() => {
+            props = createTestProps({ onRowClick: jest.fn() });
+            wrapper = shallow(<BaseTable {...props} />);
+            wrapper.instance().columns = [
+              {
+                key: 'id',
+              },
+            ];
+            cellWrapper = mount(
+              wrapper.instance().renderItemCell({
                 columnIndex: 0,
                 rowIndex: 1,
                 key: 'id',
                 parent: { key: 'the-parent???' },
-                style: {},
-              })}
-            </div>
-          );
-        });
-        it('should pass onRowClick to inner container', () => {
-          expect(
-            itemWrapper
-              .find('CellMeasurer')
-              .find('div')
-              .first()
-          ).toHaveProp('onClick', expect.any(Function));
-        });
-        it('should pass onMouseEnter to inner container', () => {
-          expect(
-            itemWrapper
-              .find('CellMeasurer')
-              .find('div')
-              .first()
-          ).toHaveProp('onMouseEnter', expect.any(Function));
-        });
-        it('should pass onMouseLeave to inner container', () => {
-          expect(
-            itemWrapper
-              .find('CellMeasurer')
-              .find('div')
-              .first()
-          ).toHaveProp('onMouseLeave', expect.any(Function));
-        });
-        describe('when clicking on onClick', () => {
-          beforeEach(() => {
-            itemWrapper
-              .find('CellMeasurer')
-              .find('div')
-              .first()
-              .prop('onClick')({});
-          });
-          it('should call onRowClick with rowIndex 0', () => {
-            expect(props.onRowClick).toHaveBeenCalledWith(
-              expect.any(Object),
-              0
+              })
             );
           });
-          describe('when column has an ÎonClick handler', () => {
+          it('should pass onRowClick to inner container', () => {
+            expect(cellWrapper.find({ 'data-test': 'cell-1-id' })).toHaveProp(
+              'onClick',
+              expect.any(Function)
+            );
+          });
+          it('should pass onMouseEnter to inner container', () => {
+            expect(cellWrapper.find({ 'data-test': 'cell-1-id' })).toHaveProp(
+              'onMouseEnter',
+              expect.any(Function)
+            );
+          });
+          it('should pass onMouseLeave to inner container', () => {
+            expect(cellWrapper.find({ 'data-test': 'cell-1-id' })).toHaveProp(
+              'onMouseLeave',
+              expect.any(Function)
+            );
+          });
+          describe('when clicking on onClick', () => {
             beforeEach(() => {
-              wrapper.instance().columns = [
-                {
-                  key: 'id',
-                  onClick: jest.fn(),
-                },
-              ];
-              itemWrapper = shallow(
-                <div>
-                  {wrapper.instance().itemRenderer({
+              cellWrapper.find({ 'data-test': 'cell-1-id' }).prop('onClick')(
+                {}
+              );
+            });
+            it('should call onRowClick with rowIndex 0', () => {
+              expect(props.onRowClick).toHaveBeenCalledWith(
+                expect.any(Object),
+                0
+              );
+            });
+            describe('when column has an onClick handler', () => {
+              beforeEach(() => {
+                wrapper.instance().columns = [
+                  {
+                    key: 'id',
+                    onClick: jest.fn(),
+                  },
+                ];
+                cellWrapper = mount(
+                  wrapper.instance().renderItemCell({
                     columnIndex: 0,
                     rowIndex: 1,
                     key: 'id',
                     parent: { key: 'the-parent???' },
-                    style: {},
-                  })}
-                </div>
-              );
-              itemWrapper
-                .find('CellMeasurer')
-                .find('div')
-                .first()
-                .prop('onClick')({});
-            });
-            it('should call column onClick with rowIndex 0', () => {
-              expect(
-                wrapper.instance().columns[0].onClick
-              ).toHaveBeenCalledWith(
-                expect.objectContaining({
-                  rowIndex: 0,
-                })
-              );
+                  })
+                );
+                cellWrapper.find({ 'data-test': 'cell-1-id' }).prop('onClick')(
+                  {}
+                );
+              });
+              it('should call column onClick with rowIndex 0', () => {
+                expect(
+                  wrapper.instance().columns[0].onClick
+                ).toHaveBeenCalledWith(
+                  expect.objectContaining({
+                    rowIndex: 0,
+                  })
+                );
+              });
             });
           });
         });
-      });
-      describe('when rowIndex is 0 (header)', () => {
-        beforeEach(() => {
-          wrapper.instance().columns = [
-            {
-              key: 'id',
-              isSortable: false,
-              label: <div>{'The label'}</div>,
-            },
-          ];
-          itemWrapper = shallow(
-            <div>
-              {wrapper.instance().itemRenderer({
+        describe('when rowIndex is 0 (header)', () => {
+          beforeEach(() => {
+            wrapper.instance().columns = [
+              {
+                key: 'id',
+                isSortable: false,
+                label: <div>{'The label'}</div>,
+              },
+            ];
+            cellWrapper = mount(
+              wrapper.instance().renderItemCell({
                 columnIndex: 0,
                 rowIndex: 0,
                 key: 'id',
                 parent: { key: 'the-parent???' },
-                style: {},
-              })}
-            </div>
-          );
-        });
-        it('should render Cell with content of headerRenderer', () => {
-          expect(itemWrapper.find('Cell')).toContainReact(
-            <div>{'The label'}</div>
-          );
+              })
+            );
+          });
+          it('should render Cell with content of headerRenderer', () => {
+            expect(cellWrapper.find(Cell)).toContainReact(
+              <div>{'The label'}</div>
+            );
+          });
         });
       });
     });
