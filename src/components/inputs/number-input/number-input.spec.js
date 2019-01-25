@@ -75,21 +75,6 @@ describe('NumberInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('type', 'number');
   });
 
-  it('should have pristine style when untouched', () => {
-    const { container } = render(<NumberInput {...baseProps} />);
-    expect(container.querySelector('input')).toHaveClass('pristine');
-  });
-
-  it('should have warning style when warning is present', () => {
-    const { container } = render(<NumberInput {...baseProps} hasWarning />);
-    expect(container.querySelector('input')).toHaveClass('warning');
-  });
-
-  it('should have error style when error is present', () => {
-    const { container } = render(<NumberInput {...baseProps} hasError />);
-    expect(container.querySelector('input')).toHaveClass('error');
-  });
-
   it('should have an HTML name', () => {
     const { container } = render(<NumberInput {...baseProps} name="foo" />);
     expect(container.querySelector('input')).toHaveAttribute('name', 'foo');

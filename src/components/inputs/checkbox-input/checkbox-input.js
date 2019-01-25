@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import getFieldId from '../../../utils/get-field-id';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import Icons from './icons';
-import styles from './checkbox-input.mod.css';
+import {
+  getLabelStyles,
+  getCheckboxWrapperStyles,
+} from './checkbox-input.styles';
 
 class CheckboxInput extends React.PureComponent {
   static displayName = 'CheckboxInput';
@@ -47,24 +50,9 @@ class CheckboxInput extends React.PureComponent {
   render() {
     return (
       <div>
-        <label
-          htmlFor={this.state.id}
-          className={classnames(styles.labelWrapper, {
-            [styles.labelWrapperDisabled]: this.props.isDisabled,
-            [styles.labelWrapperError]: this.props.hasError,
-          })}
-        >
+        <label htmlFor={this.state.id} css={getLabelStyles(this.props)}>
           <Spacings.Inline alignItems="center">
-            <div
-              className={classnames(styles.checkboxWrapper, {
-                [styles.isDisabled]: this.props.isDisabled,
-                [styles.isHovered]:
-                  this.props.isHovered &&
-                  !this.props.isDisabled &&
-                  !this.props.hasError,
-                [styles.hasError]: this.props.hasError,
-              })}
-            >
+            <div css={getCheckboxWrapperStyles(this.props)}>
               {(() => {
                 if (this.props.isIndeterminate) return <Icons.Indeterminate />;
                 if (this.props.isChecked) return <Icons.Checked />;
@@ -82,14 +70,16 @@ class CheckboxInput extends React.PureComponent {
               </div>
             )}
             <input
-              className={styles.inputWrapper}
+              css={css`
+                display: none;
+              `}
+              type="checkbox"
               id={this.state.id}
               name={this.props.name}
               value={this.props.value}
               onChange={this.props.onChange}
               disabled={this.props.isDisabled}
               checked={this.props.isChecked && !this.props.isIndeterminate}
-              type="checkbox"
               {...filterDataAttributes(this.props)}
             />
           </Spacings.Inline>

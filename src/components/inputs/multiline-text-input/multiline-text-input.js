@@ -3,26 +3,15 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { injectIntl } from 'react-intl';
 import TextareaAutosize from 'react-textarea-autosize';
+import { css } from '@emotion/core';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Collapsible from '../../collapsible';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import Spacings from '../../spacings';
 import Constraints from '../../constraints';
-import styles from './multiline-text-input.mod.css';
 import messages from './messages';
-
-// NOTE: order is important here
-// * a disabled-field currently does not display warning/error-states so it takes precedence
-// * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
-// how you can interact with the field is controlled separately by the props, this only influences visuals
-const getStyles = ({ isDisabled, hasError, hasWarning, isReadOnly }) => {
-  if (isDisabled) return styles.disabled;
-  if (hasError) return styles.error;
-  if (hasWarning) return styles.warning;
-  if (isReadOnly) return styles.readonly;
-
-  return styles.pristine;
-};
+import { getTextareaStyles } from './multiline-text-input.styles';
 
 export class MultilineTextInput extends React.Component {
   static displayName = 'MultilineTextInput';
@@ -77,7 +66,7 @@ export class MultilineTextInput extends React.Component {
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Collapsible isDefaultClosed={!this.props.defaultExpandMultilineText}>
           {({ isOpen, toggle }) => (
-            <React.Fragment>
+            <Spacings.Stack scale="xs">
               <TextareaAutosize
                 name={this.props.name}
                 value={this.props.value}
@@ -91,12 +80,7 @@ export class MultilineTextInput extends React.Component {
                 }}
                 disabled={this.props.isDisabled}
                 placeholder={this.props.placeholder}
-                className={getStyles({
-                  isDisabled: this.props.isDisabled,
-                  hasError: this.props.hasError,
-                  hasWarning: this.props.hasWarning,
-                  isReadOnly: this.props.isReadOnly,
-                })}
+                css={getTextareaStyles(this.props)}
                 readOnly={this.props.isReadOnly}
                 autoFocus={this.props.isAutofocussed}
                 /* ARIA */
@@ -109,10 +93,14 @@ export class MultilineTextInput extends React.Component {
                 {...filterDataAttributes(this.props)}
               />
               {shouldRenderToggleButton && (
-                <div className={styles.expand}>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: flex-end;
+                  `}
+                >
                   <FlatButton
                     onClick={toggle}
-                    type="primary"
                     isDisabled={this.props.isDisabled}
                     label={this.props.intl.formatMessage(
                       isOpen ? messages.collapse : messages.expand
@@ -127,7 +115,7 @@ export class MultilineTextInput extends React.Component {
                   />
                 </div>
               )}
-            </React.Fragment>
+            </Spacings.Stack>
           )}
         </Collapsible>
       </Constraints.Horizontal>

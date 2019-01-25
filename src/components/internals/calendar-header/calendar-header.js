@@ -1,13 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import Text from '../../typography/text';
-import styles from './calendar-header.mod.css';
+import Spacings from '../../spacings';
 import { AngleLeftIcon, AngleRightIcon, CircleIcon } from '../../icons';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
 
 const CalendarHeader = props => (
-  <div className={styles.container}>
-    <div className={styles.month}>
+  <div
+    css={css`
+      display: flex;
+      padding: 10px 2% 6px;
+      margin-bottom: ${vars.spacing4};
+      justify-content: space-between;
+      border-bottom: 1px solid ${vars.colorGray90};
+    `}
+  >
+    <Spacings.Inline scale="xs" alignItems="center">
       <SecondaryIconButton
         label="show prev month"
         onClick={props.onPrevMonthClick}
@@ -26,8 +36,8 @@ const CalendarHeader = props => (
       <Text.Body isInline={true} isBold={true}>
         {props.monthLabel}
       </Text.Body>
-    </div>
-    <div className={styles.year}>
+    </Spacings.Inline>
+    <Spacings.Inline scale="xs" alignItems="center">
       <SecondaryIconButton
         label="show prev year"
         onClick={props.onPrevYearClick}
@@ -41,7 +51,7 @@ const CalendarHeader = props => (
         onClick={props.onNextYearClick}
         icon={<AngleRightIcon size="medium" />}
       />
-    </div>
+    </Spacings.Inline>
   </div>
 );
 

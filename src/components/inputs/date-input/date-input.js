@@ -5,7 +5,7 @@ import { injectIntl } from 'react-intl';
 import CalendarBody from '../../internals/calendar-body';
 import CalendarMenu from '../../internals/calendar-menu';
 import CalendarHeader from '../../internals/calendar-header';
-import CalendarCalendar from '../../internals/calendar-calendar';
+import CalendarContent from '../../internals/calendar-content';
 import CalendarDay from '../../internals/calendar-day';
 import Constraints from '../../constraints';
 import messages from './messages';
@@ -250,7 +250,7 @@ class DateInput extends React.Component {
                       onPrevYearClick={() => this.jumpMonth(-12)}
                       onNextYearClick={() => this.jumpMonth(12)}
                     />
-                    <CalendarCalendar>
+                    <CalendarContent>
                       {weekdays.map(weekday => (
                         <CalendarDay key={weekday} type="heading">
                           {weekday}
@@ -276,7 +276,7 @@ class DateInput extends React.Component {
                           {getCalendarDayLabel(item)}
                         </CalendarDay>
                       ))}
-                    </CalendarCalendar>
+                    </CalendarContent>
                   </CalendarMenu>
                 )}
               </div>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import without from 'lodash.without';
 import oneLine from 'common-tags/lib/oneLine';
 import { injectIntl } from 'react-intl';
+import { css } from '@emotion/core';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import {
@@ -16,7 +17,6 @@ import getFieldId from '../../../utils/get-field-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import MoneyInput from '../money-input';
 import CurrencyControl from './currency-control';
-import styles from './localized-money-input.mod.css';
 
 // sorts the currencies with the following priority:
 // - The selected currency is placed first (e.g EUR)
@@ -72,7 +72,13 @@ class LocalizedInput extends React.Component {
   render() {
     return (
       <Spacings.Stack scale="xs">
-        <div className={styles.fieldContainer}>
+        <div
+          css={css`
+            width: 100%;
+            position: relative;
+            display: flex;
+          `}
+        >
           <MoneyInput
             id={this.props.id}
             name={this.props.name}
@@ -86,8 +92,16 @@ class LocalizedInput extends React.Component {
             {...filterDataAttributes(this.props)}
           />
         </div>
-        <div className={styles.commandsContainer}>
-          <div className={styles.commandsLeft}>
+        <div
+          css={css`
+            display: flex;
+          `}
+        >
+          <div
+            css={css`
+              flex: 1;
+            `}
+          >
             {(() => {
               if (this.props.error) return <div>{this.props.error}</div>;
               if (this.props.warning) return <div>{this.props.warning}</div>;

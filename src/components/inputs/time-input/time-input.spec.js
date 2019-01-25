@@ -52,11 +52,6 @@ describe('TimeInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('data-foo', 'bar');
   });
 
-  it('should have error style when error is present', () => {
-    const { container } = render(<TimeInput {...baseProps} hasError />);
-    expect(container.querySelector('input')).toHaveClass('error');
-  });
-
   it('should have an HTML name', () => {
     const { container } = render(<TimeInput {...baseProps} name="foo" />);
     expect(container.querySelector('input')).toHaveAttribute('name', 'foo');

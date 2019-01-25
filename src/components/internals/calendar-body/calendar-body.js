@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
 import Spacings from '../../spacings';
-import styles from './calendar-body.mod.css';
+import {
+  getClearSectionStyles,
+  getCalendarIconContainerStyles,
+  getDateTimeInputStyles,
+  getInputContainerStyles,
+} from './calendar-body.styles';
 
 export const ClearSection = props => (
   <div
     onClick={props.isDisabled ? undefined : props.onClear}
-    className={classnames(styles['clear-icon-container'], {
-      [styles['icon-container-disabled']]: props.isDisabled,
-      [styles.invalid]: props.hasError,
-    })}
+    css={getClearSectionStyles(props)}
   >
     {!props.isDisabled && (
       <CloseIcon size="medium" theme={props.isDisabled ? 'grey' : 'black'} />
@@ -59,14 +60,10 @@ export default class CalendarBody extends React.PureComponent {
   render() {
     return (
       <Spacings.Inline alignItems="center">
-        <div className={styles['date-input-container']}>
+        <div css={getInputContainerStyles()}>
           <input
             ref={this.props.inputRef}
-            className={classnames(styles['date-input'], {
-              [styles.error]: !this.props.isDisabled && this.props.hasError,
-              [styles.warning]: !this.props.isDisabled && this.props.hasWarning,
-              [styles.focused]: this.props.isOpen || this.state.isFocused,
-            })}
+            css={getDateTimeInputStyles(this.props, this.state)}
             {...this.props.inputProps}
             onFocus={event => {
               this.setState({ isFocused: true });
@@ -83,17 +80,13 @@ export default class CalendarBody extends React.PureComponent {
             <ClearSection
               isDisabled={this.props.isDisabled}
               hasError={this.props.hasError}
+              isFocused={this.state.isFocused}
               onClear={this.props.onClear}
             />
           )}
           <button
             type="button"
-            className={classnames(styles['calendar-icon-container'], {
-              [styles['icon-container-disabled']]: this.props.isDisabled,
-              [styles.error]: !this.props.isDisabled && this.props.hasError,
-              [styles.warning]: !this.props.isDisabled && this.props.hasWarning,
-              [styles.focused]: this.props.isOpen || this.state.isFocused,
-            })}
+            css={getCalendarIconContainerStyles(this.props, this.state)}
             {...this.props.toggleButtonProps}
             onFocus={event => {
               this.setState({ isFocused: true });

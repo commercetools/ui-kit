@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
 import Text from '../../typography/text';
 import Icons from './icons';
-import styles from './radio-option.mod.css';
+import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
 export class Option extends React.PureComponent {
   static displayName = 'RadioOption';
@@ -32,19 +32,9 @@ export class Option extends React.PureComponent {
   render() {
     return (
       <div>
-        <label
-          className={classnames(styles.labelWrapper, {
-            [styles.labelWrapperDisabled]: this.props.isDisabled,
-          })}
-        >
+        <label css={getLabelStyles(this.props)}>
           <Spacings.Inline alignItems="center">
-            <div
-              className={classnames(styles.radioWrapper, {
-                [styles.isDisabled]: this.props.isDisabled,
-                [styles.isHovered]:
-                  this.props.isHovered && !this.props.isDisabled,
-              })}
-            >
+            <div css={getContainerStyles(this.props)}>
               {this.props.isChecked ? <Icons.Checked /> : <Icons.Default />}
             </div>
             {this.props.children && (
@@ -63,7 +53,9 @@ export class Option extends React.PureComponent {
               </div>
             )}
             <input
-              className={styles.inputWrapper}
+              css={css`
+                display: none;
+              `}
               name={this.props.name}
               value={this.props.value}
               onChange={this.props.onChange}

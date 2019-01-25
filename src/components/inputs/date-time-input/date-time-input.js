@@ -6,7 +6,7 @@ import { parseTime } from '../../../utils/parse-time';
 import CalendarBody from '../../internals/calendar-body';
 import CalendarMenu from '../../internals/calendar-menu';
 import CalendarHeader from '../../internals/calendar-header';
-import CalendarCalendar from '../../internals/calendar-calendar';
+import CalendarContent from '../../internals/calendar-content';
 import CalendarDay from '../../internals/calendar-day';
 import TimeInput from './time-input';
 import Constraints from '../../constraints';
@@ -367,7 +367,7 @@ class DateTimeInput extends React.Component {
                       onPrevYearClick={() => this.jumpMonths(-12)}
                       onNextYearClick={() => this.jumpMonths(12)}
                     />
-                    <CalendarCalendar>
+                    <CalendarContent>
                       {weekdays.map(weekday => (
                         <CalendarDay key={weekday} type="heading">
                           {weekday}
@@ -395,7 +395,7 @@ class DateTimeInput extends React.Component {
                           {getCalendarDayLabel(item, this.props.timeZone)}
                         </CalendarDay>
                       ))}
-                    </CalendarCalendar>
+                    </CalendarContent>
                     <TimeInput
                       isDisabled={!isTimeInputVisible}
                       timeInputRef={this.timeInputRef}

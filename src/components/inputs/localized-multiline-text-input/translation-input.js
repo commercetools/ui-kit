@@ -1,28 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import TextareaAutosize from 'react-textarea-autosize';
 import requiredIf from 'react-required-if';
+import { css } from '@emotion/core';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon } from '../../icons';
 import Spacings from '../../spacings';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
 import messages from './messages';
-import styles from './localized-multiline-text-input.mod.css';
-
-// NOTE: order is important here
-// * a disabled-field currently does not display warning/error-states so it takes precedence
-// * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
-// how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClassNames = props => {
-  if (props.isDisabled) return styles.disabled;
-  if (props.hasError) return styles.error;
-  if (props.hasWarning) return styles.warning;
-  if (props.isReadOnly) return styles.readonly;
-
-  return styles.pristine;
-};
+import {
+  getTextareaStyles,
+  getLanguageLabelStyles,
+} from './translation-input.styles';
 
 export default class TranslationInput extends React.Component {
   static displayName = 'TranslationInput';
@@ -92,8 +82,15 @@ export default class TranslationInput extends React.Component {
 
     return (
       <Spacings.Stack scale="xs">
-        <div key={this.props.language} className={styles.fieldContainer}>
-          <label htmlFor={this.props.id} className={styles.languageLabel}>
+        <div
+          key={this.props.language}
+          css={css`
+            width: 100%;
+            position: relative;
+            display: flex;
+          `}
+        >
+          <label htmlFor={this.props.id} css={getLanguageLabelStyles}>
             {/* FIXME: add proper tone for disabled when tones are refactored */}
             <Text.Detail tone="secondary">
               {this.props.language.toUpperCase()}
@@ -114,15 +111,7 @@ export default class TranslationInput extends React.Component {
             }}
             disabled={this.props.isDisabled}
             placeholder={this.props.placeholder}
-            className={classnames(
-              getClassNames({
-                isDisabled: this.props.isDisabled,
-                hasError: this.props.hasError,
-                hasWarning: this.props.hasWarning,
-                isReadOnly: this.props.isReadOnly,
-              }),
-              { [styles.inputClosed]: this.props.isCollapsed }
-            )}
+            css={getTextareaStyles(this.props)}
             readOnly={this.props.isReadOnly}
             autoFocus={this.props.isAutofocussed}
             /* ARIA */
@@ -137,19 +126,30 @@ export default class TranslationInput extends React.Component {
             {...filterDataAttributes(this.props)}
           />
         </div>
-        <div className={styles.commandsContainer}>
-          <div className={styles.commandsLeft}>
+        <div
+          css={css`
+            display: flex;
+          `}
+        >
+          <div
+            css={css`
+              flex: 1;
+            `}
+          >
             {(() => {
               if (this.props.error) return <div>{this.props.error}</div>;
               if (this.props.warning) return <div>{this.props.warning}</div>;
               return this.props.languagesControl;
             })()}
           </div>
-          <div className={styles.commandsExpand}>
+          <div
+            css={css`
+              flex: 0;
+            `}
+          >
             {!this.props.isCollapsed && contentExceedsShownRows && (
               <FlatButton
                 onClick={this.props.onToggle}
-                type="primary"
                 isDisabled={this.props.isDisabled}
                 label={this.props.intl.formatMessage(messages.collapse)}
                 icon={<AngleUpIcon size="small" />}
