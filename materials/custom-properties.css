@@ -36,7 +36,7 @@
   --border-radius-6: 6px;
   --border-radius-20: 20px;
   --font-family-body: 'Open Sans', sans-serif;
-  --font-size-m: 13px;
+  --font-size-m: 1rem;
   --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   --shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   --shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -120,7 +120,7 @@
   --font-color-for-input-when-warning: #f16d0e;
   --font-family: 'Open Sans', sans-serif;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
-  --font-size-for-input: 13px;
+  --font-size-for-input: 1rem;
   --shadow-box-tag-when-hovered: 0 1px 3px rgba(0, 0, 0, 0.12),
     0 1px 2px rgba(0, 0, 0, 0.24);
   --big-button-height: 32px;
@@ -153,7 +153,7 @@
   --shadow-15-first: 0 2px 2px rgba(0, 0, 0, 0.24);
   --shadow-15-second: 0 1px 4.75px rgba(0, 0, 0, 0.12);
   --font-family-default: 'Open Sans', sans-serif;
-  --font-size-default: 13px;
+  --font-size-default: 1rem;
   --font-size-small: 12px;
   --shadow-box-tag-hover: 0 1px 3px rgba(0, 0, 0, 0.12),
     0 1px 2px rgba(0, 0, 0, 0.24);

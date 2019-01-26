@@ -48,15 +48,15 @@ const getTone = tone => {
 const getElementFontSize = elementType => {
   switch (elementType) {
     case 'h1':
-      return '32px';
+      return '2.462rem';
     case 'h2':
-      return '24px';
+      return '1.846rem';
     case 'h3':
-      return '20px';
+      return '1.538rem';
     case 'h4':
-      return '16px';
+      return '1.231rem';
     case 'h5':
-      return '14px';
+      return '1.077rem';
     default:
       return '';
   }
@@ -65,7 +65,7 @@ const getElementFontSize = elementType => {
 export const bodyStyles = props => css`
   ${baseStyles}
   margin: 0;
-  font-size: 13px;
+  font-size: 1rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.tone && getTone(props.tone)}
@@ -92,14 +92,14 @@ export const subheadlineStyles = props => css`
 
 export const wrapStyles = () => css`
   ${baseStyles}
-  font-size: 13px;
+  font-size: 1rem;
   white-space: pre-wrap;
 `;
 
 export const detailStyles = props => css`
   ${baseStyles}
   display: block;
-  font-size: 12px;
+  font-size: 0.9231rem;
   ${props.isInline && inline}
   ${props.isBold && bold}
   ${props.isItalic && italic}

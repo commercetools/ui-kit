@@ -36,7 +36,7 @@ export default {
   borderRadius6: '6px',
   borderRadius20: '20px',
   fontFamilyBody: "'Open Sans', sans-serif",
-  fontSizeM: '13px',
+  fontSizeM: '1rem',
   shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
   shadow2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
   shadow3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
@@ -119,7 +119,7 @@ export default {
   fontColorForInputWhenWarning: '#f16d0e',
   fontFamily: "'Open Sans', sans-serif",
   placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
-  fontSizeForInput: '13px',
+  fontSizeForInput: '1rem',
   shadowBoxTagWhenHovered:
     '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
   bigButtonHeight: '32px',
@@ -152,7 +152,7 @@ export default {
   shadow15First: '0 2px 2px rgba(0, 0, 0, 0.24)',
   shadow15Second: '0 1px 4.75px rgba(0, 0, 0, 0.12)',
   fontFamilyDefault: "'Open Sans', sans-serif",
-  fontSizeDefault: '13px',
+  fontSizeDefault: '1rem',
   fontSizeSmall: '12px',
   shadowBoxTagHover:
     '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
