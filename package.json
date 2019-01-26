@@ -50,7 +50,6 @@
     "lint": "jest --projects jest.eslint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "format:js": "prettier --write '**/*.js'",
-    "format:css": "prettier --write --parser css '**/*.css'",
     "format:md": "prettier --write --parser markdown '**/*.md'",
     "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
     "test": "jest --config jest.test.config.js",
