@@ -25,6 +25,8 @@ const randomName = (val = 'static') => {
   );
 };
 
+randomName.displayName = 'randomName';
+
 const generateValue = ({ dynamicWidth, dynamicHeight }) => {
   if (dynamicWidth && dynamicHeight)
     return randomName(
@@ -528,6 +530,7 @@ class Wrapper extends React.PureComponent {
               'shouldFillRemainingVerticalSpace',
               false
             ),
+            // eslint-disable-next-line no-alert
             onRowClick: this.state.onRowClick ? () => alert('clicked!') : null,
             numberOfRows: number('numberOfRows', 50),
             defaultHeight: number('defaultHeight (default 768)', 768),

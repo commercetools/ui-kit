@@ -52,6 +52,7 @@ const Description = styled.p`
 `;
 
 const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
+DeprecationBadge.displayName = 'DeprecationBadge';
 
 const getChoiceValue = choiceName => {
   const choice = Object.values(definition.choiceGroups)
