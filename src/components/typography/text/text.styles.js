@@ -48,15 +48,15 @@ const getTone = tone => {
 const getElementFontSize = elementType => {
   switch (elementType) {
     case 'h1':
-      return '2.461538461rem';
+      return '2.4615rem';
     case 'h2':
-      return '1.8461538461rem';
+      return '1.8462rem';
     case 'h3':
-      return '1.5384615384rem';
+      return '1.5385rem';
     case 'h4':
-      return '1.2307692307rem';
+      return '1.2308rem';
     case 'h5':
-      return '1.0769230769rem';
+      return '1.0769rem';
     default:
       return '';
   }
@@ -99,7 +99,7 @@ export const wrapStyles = () => css`
 export const detailStyles = props => css`
   ${baseStyles}
   display: block;
-  font-size: 0.923076923rem;
+  font-size: 0.9231rem;
   ${props.isInline && inline}
   ${props.isBold && bold}
   ${props.isItalic && italic}
