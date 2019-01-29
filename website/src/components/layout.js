@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { css, Global } from '@emotion/core';
+// TODO: overwrite custom editor styles
+import reactLiveStyles from 'react-live/react-live.css';
 import { customProperties } from 'ui-kit';
 import Header from './header';
 
@@ -16,6 +18,7 @@ const Layout = props => (
           height: 100vh;
           font-family: ${customProperties.fontFamilyDefault};
         }
+        ${reactLiveStyles}
       `}
     />
     <StaticQuery

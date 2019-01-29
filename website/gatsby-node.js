@@ -7,6 +7,7 @@
 // You can delete this file if you're not using it
 const fs = require('fs');
 const path = require('path');
+const webpack = require('webpack');
 
 // Ensure UI Kit build (ui-kit.esm.js) exists
 // and warn in case it is old.
@@ -56,6 +57,12 @@ exports.onCreateWebpackConfig = ({
       // Exclude all node_modules from transpilation, except for 'swiper' and 'dom7'
       exclude: [/(node_modules)/, /(ui-kit.esm)/],
     },
+  ];
+
+  config.plugins = [
+    ...config.plugins,
+    // See https://github.com/FormidableLabs/react-live/issues/5
+    new webpack.IgnorePlugin(/^(xor|props)$/),
   ];
 
   // This will completely replace the webpack config with the modified object.

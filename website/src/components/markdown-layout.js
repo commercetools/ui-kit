@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import prismStyles from 'react-syntax-highlighter/dist/styles/prism/xonokai';
 import { MDXProvider } from '@mdx-js/tag';
-import styled from '@emotion/styled';
 import { Text } from 'ui-kit';
 import SEO from './seo';
 import Layout from './layout';
+import CodeEditor from './code-editor';
 
 const TagH1 = props => <Text.Headline elementType="h1" {...props} />;
 TagH1.displayName = 'TagH1';
@@ -24,14 +24,24 @@ const TagStrong = props => (
   <Text.Body isBold={true} isInline={true} {...props} />
 );
 TagStrong.displayName = 'TagStrong';
-// The `<SyntaxHighlighter>` renders a `<pre><code/></pre>`, therefore we
-// should render a `<div/>` for the `pre` tag that works as a wrapper.
-const TagPre = styled.div``;
+const TagPre = props => props.children;
 TagPre.displayName = 'TagPre';
-const TagCode = props => (
-  <SyntaxHighlighter language="javascript" style={prismStyles} {...props} />
-);
+const TagCode = props => {
+  const isLive = /language-\.jsx/.test(props.className);
+  if (!isLive) {
+    return (
+      <SyntaxHighlighter language="javascript" style={prismStyles} {...props} />
+    );
+  }
+  return (
+    <CodeEditor code={React.Children.toArray(props.children).join('\n')} />
+  );
+};
 TagCode.displayName = 'TagCode';
+TagCode.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+};
 
 const MarkdownLayout = props => (
   <Layout>
