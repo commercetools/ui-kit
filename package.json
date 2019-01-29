@@ -58,7 +58,11 @@
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
     "visual-testing-app:build": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
     "visual-testing-app:build:watch": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js --watch",
-    "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001"
+    "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001",
+    "website:install": "yarn --cwd website install",
+    "website:start": "yarn --cwd website run start",
+    "website:build": "yarn --cwd website run build",
+    "website:serve": "yarn --cwd website run serve"
   },
   "dependencies": {
     "@emotion/core": "10.0.6",
