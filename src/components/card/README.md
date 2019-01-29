@@ -8,7 +8,7 @@ import { Card } from '@commercetools-frontend/ui-kit';
 
 #### Description
 
-Cards are areas that display content and actions on a single topic.
+Cards are used to display content and actions on a single topic.
 
 #### Usage
 
@@ -24,5 +24,5 @@ Cards are areas that display content and actions on a single topic.
 | ----------- | -------- | :------: | ---------------- | -------- | --------------------------------- |
 | `theme`     | `string` |    -     | `light`, `dark`  | `light`  | background color of the card      |
 | `type`      | `string` |    -     | `raised`, `flat` | `raised` | The type of card                  |
-| `classname` | `string` |    -     | -                | `raised` | className passed to the container |
+| `classname` | `string` |    -     | -                | -        | className passed to the container |
 | `children`  | `node`   |    ✅    | -                | -        | Content rendered within the card  |
