@@ -24,7 +24,9 @@ const TagStrong = props => (
   <Text.Body isBold={true} isInline={true} {...props} />
 );
 TagStrong.displayName = 'TagStrong';
-const TagPre = styled.pre``;
+// The `<SyntaxHighlighter>` renders a `<pre><code/></pre>`, therefore we
+// should render a `<div/>` for the `pre` tag that works as a wrapper.
+const TagPre = styled.div``;
 TagPre.displayName = 'TagPre';
 const TagCode = props => (
   <SyntaxHighlighter language="javascript" style={prismStyles} {...props} />
