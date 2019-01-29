@@ -1,0 +1,27 @@
+# Card
+
+## Usage
+
+```js
+import { Card } from '@commercetools-frontend/ui-kit';
+```
+
+#### Description
+
+Cards are areas that display content and actions on a single topic.
+
+#### Usage
+
+```js
+<Card theme="light" type="raised">
+  <p>You'll never guess where I've been!</p>
+</Card>
+```
+
+#### Properties
+
+| Props      | Type     | Required | Values           | Default  | Description                      |
+| ---------- | -------- | :------: | ---------------- | -------- | -------------------------------- |
+| `theme`    | `string` |    -     | `light`, `dark`  | `light`  | background color of the card     |
+| `type`     | `string` |    -     | `raised`, `flat` | `raised` | The type of card                 |
+| `children` | `node`   |    ✅    | -                | -        | Content rendered within the card |
