@@ -1,3 +1,27 @@
+<a name="8.0.0"></a>
+
+# [8.0.0](https://github.com/commercetools/ui-kit/compare/v7.0.0...v8.0.0) (2019-01-29)
+
+This release mostly includes internal changes and should be quite straightforward to upgrade.
+
+## BREAKING CHANGES
+
+- We rewrote our components to use [Emotion](https://emotion.sh) styles (CSS-in-JS) instead of CSS Modules. One of the reasons was to support SSR, which Emotion [supports out-of-the-box](https://emotion.sh/docs/ssr), to enable using the UI-Kit for static sites (e.g. Gatsby, Next.js). Before, styles were injected **after** the components will be rendered, causing a FOUC (_Flash Of Unstyled Content_).
+
+> This change does not visually affects the components, thanks to our Visual Regression Testing setup. You can read about it in our [techblog](https://techblog.commercetools.com/keeping-a-react-design-system-consistent-f055160d5166).
+
+- The font sizes of the components have been changed from `px` to `rem`, to allow consumers of the UI-Kit to determine the size according to their requirements (e.g. for Merchant Center applications the _root_ size should be `13px`, for documentation websites the size can be left to the user's browser). ([#482](https://github.com/commercetools/ui-kit/issues/482))
+
+> The `@commercetools-frontend/application-shell` package already sets the font size to `13px`, so you shouldn't need to change anything.
+
+- Previously, the `customProperties` object from the main export was returning a JSON object with keys like `--color-black`. The JSON export was not really meant to be used from JS code, therefore now the object is formatted with _camelCase_ keys, like `colorBlack`. The JSON file is still available from `@commercetools-frontend/ui-kit/materials/custom-properties.json`.
+
+- The `@commercetools-frontend/ui-kit/materials/media-queries.mod.css` has been removed and is now available from the package `@commercetools-frontend/application-components/materials/media-queries.mod.css`.
+
+### Bug Fixes
+
+- `Tag`: Design fixes for the `isDisabled` state ([#464](https://github.com/commercetools/ui-kit/pull/464))
+
 <a name="7.0.0"></a>
 
 # [7.0.0](https://github.com/commercetools/ui-kit/compare/v6.1.0...v7.0.0) (2019-01-21)
