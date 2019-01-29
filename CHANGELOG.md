@@ -18,6 +18,10 @@ This release mostly includes internal changes and should be quite straightforwar
 
 - The `@commercetools-frontend/ui-kit/materials/media-queries.mod.css` has been removed and is now available from the package `@commercetools-frontend/application-components/materials/media-queries.mod.css`.
 
+### Bug Fixes
+
+- `Tag`: Design fixes for the `isDisabled` state ([#464](https://github.com/commercetools/ui-kit/pull/464))
+
 <a name="7.0.0"></a>
 
 # [7.0.0](https://github.com/commercetools/ui-kit/compare/v6.1.0...v7.0.0) (2019-01-21)
