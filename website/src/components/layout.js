@@ -36,7 +36,7 @@ const Layout = props => (
           css={css`
             height: 100vh;
             display: grid;
-            grid-template-rows: auto 48px 1fr;
+            grid-template-rows: auto 96px 1fr;
             grid-template-columns: auto 1fr;
           `}
         >
@@ -44,21 +44,24 @@ const Layout = props => (
             css={css`
               grid-row: 2;
               grid-column: 1/3;
+              height: 96px;
             `}
             siteTitle={data.site.siteMetadata.title}
           />
-          <aside
-            css={css`
-              position: relative;
-              grid-row: 3;
-              display: flex;
-              flex-direction: column;
-              width: 128px;
-              border-right: 1px solid ${customProperties.colorPurple};
-            `}
-          >
-            {'Side'}
-          </aside>
+          {props.showSidebar && (
+            <aside
+              css={css`
+                position: relative;
+                grid-row: 3;
+                display: flex;
+                flex-direction: column;
+                width: 128px;
+                border-right: 1px solid ${customProperties.colorPurple};
+              `}
+            >
+              {'Side'}
+            </aside>
+          )}
           <div
             role="main"
             css={css`
@@ -93,7 +96,6 @@ const Layout = props => (
                 flex-grow: 1;
                 display: flex;
                 flex-direction: column;
-                padding: 16px;
               `}
             >
               {props.children}
@@ -106,7 +108,11 @@ const Layout = props => (
 );
 Layout.displayName = 'Layout';
 Layout.propTypes = {
+  showSidebar: PropTypes.bool,
   children: PropTypes.node.isRequired,
+};
+Layout.defaultProps = {
+  showSidebar: true,
 };
 
 export default Layout;

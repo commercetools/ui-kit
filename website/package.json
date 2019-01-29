@@ -15,6 +15,7 @@
     "@mdx-js/mdx": "0.16.8",
     "@mdx-js/tag": "0.16.8",
     "babel-core": "7.0.0-bridge.0",
+    "formik": "1.4.3",
     "gatsby": "2.0.103",
     "gatsby-image": "2.0.29",
     "gatsby-mdx": "0.3.5",

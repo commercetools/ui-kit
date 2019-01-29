@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `commercetools UI Kit 💅`,
+    title: `💅 UI Kit`,
     description: `UI component library based on our Design System`,
     author: `commercetools`,
   },

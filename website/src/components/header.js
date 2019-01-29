@@ -8,14 +8,24 @@ const Header = props => (
   <div
     className={props.className}
     css={css`
-      border-bottom: 1px solid ${customProperties.colorPurple};
+      background-color: ${customProperties.colorGreen};
       display: flex;
       align-items: center;
       padding: 0 16px;
+      flex: 1;
     `}
   >
     <Spacings.Inline>
-      <Link to="/">{props.siteTitle}</Link>
+      <Link
+        to="/"
+        css={css`
+          text-decoration: none;
+          font-size: 2rem;
+          color: ${customProperties.colorGreen85};
+        `}
+      >
+        {props.siteTitle}
+      </Link>
     </Spacings.Inline>
   </div>
 );
