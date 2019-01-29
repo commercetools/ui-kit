@@ -22,7 +22,7 @@
     "materials/custom-properties.json",
     "materials/custom-properties.js",
     "CHANGELOG.md",
-    "./README.md",
+    "README.md",
     "LICENSE",
     "package.json"
   ],
