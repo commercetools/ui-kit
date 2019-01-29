@@ -25,7 +25,7 @@ storiesOf('Components|Cards', module)
           dark: 'dark',
         })}
       >
-        {text('children', 'Text of a notification')}
+        {text('children', 'Card text')}
       </Card>
     </Section>
   ));
