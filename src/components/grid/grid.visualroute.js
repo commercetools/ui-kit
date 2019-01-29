@@ -14,6 +14,7 @@ const Placeholder = styled.div`
   justify-content: center;
   background-color: pink;
   padding: 16px;
+  font-size: 16px;
 `;
 
 export const component = () => (
