@@ -9,8 +9,12 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "@babel/core": "7.2.2",
+    "@emotion/core": "10.0.6",
+    "@emotion/styled": "10.0.6",
     "@mdx-js/mdx": "0.16.8",
     "@mdx-js/tag": "0.16.8",
+    "babel-core": "7.0.0-bridge.0",
     "gatsby": "2.0.103",
     "gatsby-image": "2.0.29",
     "gatsby-mdx": "0.3.5",
@@ -24,6 +28,7 @@
     "gatsby-transformer-sharp": "2.1.12",
     "moment": "2.24.0",
     "moment-timezone": "0.5.23",
+    "prop-types": "15.6.2",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-helmet": "5.2.0",
