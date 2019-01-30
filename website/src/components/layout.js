@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { css, Global } from '@emotion/core';
 import { customProperties } from 'ui-kit';
 import Header from './header';
+import Navbar from './navbar';
 import Footer from './footer';
 
 const Layout = props => (
@@ -149,7 +150,7 @@ const Layout = props => (
                 background-color: ${customProperties.colorNavy95};
               `}
             >
-              {'Side'}
+              <Navbar />
             </aside>
           )}
           <div

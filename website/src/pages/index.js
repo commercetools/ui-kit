@@ -76,7 +76,7 @@ const IndexPage = () => (
             <SecondaryButton
               label="Getting started"
               iconLeft={<AngleThinRightIcon />}
-              onClick={() => navigateTo('/getting-started')}
+              onClick={() => navigateTo('/getting-started/installation')}
             />
             <SecondaryButton
               label="API Documentation"

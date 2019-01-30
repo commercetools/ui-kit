@@ -3,6 +3,30 @@ module.exports = {
     title: `ui-kit`,
     description: `UI component library based on our Design System`,
     author: `commercetools`,
+    navbarLinks: [
+      {
+        label: 'Getting started',
+        subgroup: [
+          { label: 'Installation', linkTo: '/getting-started/installation' },
+          { label: 'Usage', linkTo: '/getting-started/usage' },
+        ],
+      },
+      {
+        label: 'Components API',
+        subgroup: [
+          { label: 'Typography', linkTo: '/components/typography' },
+          {
+            label: 'Fields',
+            subgroup: [
+              {
+                label: 'DateTimeField',
+                linkTo: '/components/fields/date-time',
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
