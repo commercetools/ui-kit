@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import prismStyles from 'react-syntax-highlighter/dist/styles/prism/xonokai';
 import { MDXProvider } from '@mdx-js/tag';
 import { Text } from 'ui-kit';
 import SEO from './seo';
@@ -30,7 +29,12 @@ const TagCode = props => {
   const isLive = /language-\.jsx/.test(props.className);
   if (!isLive) {
     return (
-      <SyntaxHighlighter language="javascript" style={prismStyles} {...props} />
+      <SyntaxHighlighter
+        language="javascript"
+        // Styles are defined globally in the `layout.js` component
+        useInlineStyles={false}
+        {...props}
+      />
     );
   }
   return (
