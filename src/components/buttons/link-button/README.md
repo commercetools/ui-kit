@@ -33,6 +33,8 @@ Link buttons are similar to Flat buttons, however they are constructed as a
 | `iconLeft`   | `element`                                                         |    -     | -      | -       | The icon of the button                                |
 | `isDisabled` | `boolean`                                                         |    -     | -      | -       | Tells when the button should present a disabled state |
 
+The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
+
 Main Functions and use cases are:
 
 - Back to list _example: a link to going back to another page_

@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
 
 export const SecondaryIconButton = props => {
   const buttonAttributes = {
     'data-track-component': 'SecondaryIconButton',
+    ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };
   let iconTheme = 'black';

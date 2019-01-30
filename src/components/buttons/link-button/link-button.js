@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
@@ -39,6 +40,7 @@ const LinkButton = props => (
     ]}
     onClick={props.isDisabled ? event => event.preventDefault() : undefined}
     data-track-component="LinkButton"
+    {...filterAriaAttributes(props)}
     {...filterDataAttributes(props)}
     aria-label={props.label}
   >

@@ -3,6 +3,7 @@ import React from 'react';
 import isNil from 'lodash.isnil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
@@ -14,6 +15,7 @@ import {
 const PrimaryButton = props => {
   const dataProps = {
     'data-track-component': 'PrimaryButton',
+    ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };
   const isActive = props.isToggleButton && props.isToggled;

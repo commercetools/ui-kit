@@ -24,6 +24,15 @@ describe('rendering', () => {
     const { getByTestId } = render(<SecondaryIconButton {...props} />);
     expect(getByTestId('icon')).toBeInTheDocument();
   });
+  it('should pass aria attributes', () => {
+    const { getByLabelText } = render(
+      <SecondaryIconButton {...props} aria-describedby="tooltip-1" />
+    );
+    expect(getByLabelText('test-button')).toHaveAttribute(
+      'aria-describedby',
+      'tooltip-1'
+    );
+  });
   it('should be marked as "disabled"', () => {
     const { getByLabelText } = render(
       <SecondaryIconButton {...props} isDisabled={true} />
