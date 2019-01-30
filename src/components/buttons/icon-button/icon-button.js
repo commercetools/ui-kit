@@ -6,6 +6,7 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
 import {
@@ -35,6 +36,7 @@ const getIconThemeColor = props => {
 export const IconButton = props => {
   const buttonAttributes = {
     'data-track-component': 'IconButton',
+    ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };
   const isActive = props.isToggleButton && props.isToggled;

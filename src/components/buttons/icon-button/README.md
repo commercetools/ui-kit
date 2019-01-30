@@ -36,6 +36,8 @@ Icon Buttons are "icon-only" buttons. They trigger an action when clicked
 | `size`           | `oneOf`  |    -     | `big`, `medium`, `small`    | `big`           | -                                                                                                                                                |
 | `theme`          | `oneOf`  |    -     | `default`                   | `blue`, `green` | The component may have a theme only if `isToggleButton` is true                                                                                  |
 
+The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
+
 #### Where to use
 
 Main Functions and use cases are:

@@ -36,6 +36,8 @@ iconClass label url onClick
 | `iconPosition` | `oneOf`   |    -     | `left`, `right`             | `left`    | The position of the icon                              |
 | `isDisabled`   | `boolean` |    -     | -                           | -         | Tells when the button should present a disabled state |
 
+The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
+
 #### Where to use
 
 Main Functions and use cases are:

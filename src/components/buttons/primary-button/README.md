@@ -36,6 +36,8 @@ label for accessibility reasons.
 | `size`             | `oneOf`  |    -     | `big`, `small`              | `big`     | -                                                                                                                                                |
 | `tone`             | `oneOf`  |    -     | `urgent`, `primary`         | `primary` | The component may have a theme only if `isToggleButton` is true                                                                                  |
 
+The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
+
 Main Functions and use cases are:
 
 - Primary action _example: Save changes_

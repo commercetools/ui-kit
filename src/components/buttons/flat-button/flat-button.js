@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
@@ -37,6 +38,7 @@ const getTextColor = (tone, isHover = false) => {
 export const FlatButton = props => {
   const dataProps = {
     'data-track-component': 'LinkButton',
+    ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };
 

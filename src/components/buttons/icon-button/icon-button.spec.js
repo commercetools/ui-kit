@@ -30,6 +30,15 @@ describe('rendering', () => {
     expect(getByLabelText('test-button')).toBeInTheDocument();
     expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
   });
+  it('should be pass aria attributes', () => {
+    const { getByLabelText } = render(
+      <IconButton {...props} aria-describedby="tooltip-1" />
+    );
+    expect(getByLabelText('test-button')).toHaveAttribute(
+      'aria-describedby',
+      'tooltip-1'
+    );
+  });
   it('should be marked as "disabled"', () => {
     const { getByLabelText } = render(
       <IconButton {...props} isDisabled={true} />

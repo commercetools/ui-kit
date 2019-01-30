@@ -37,6 +37,8 @@ accessibility reasons.
 | `onClick`          | `func`               |          | -                           | -         | What the button will trigger when clicked                                                                                                        |
 | `linkTo`           | `string` or `object` |    -     | -                           | -         | Where the button should redirect when clicked                                                                                                    |
 
+The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
+
 Main Functions and use cases are:
 
 - Secondary action _example: Discard changes_

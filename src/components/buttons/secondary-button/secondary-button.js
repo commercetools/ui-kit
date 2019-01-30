@@ -11,6 +11,7 @@ import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
@@ -32,6 +33,7 @@ export const getIconThemeColor = props => {
 export const SecondaryButton = props => {
   const dataProps = {
     'data-track-component': 'SecondaryButton',
+    ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };
   const isActive = props.isToggleButton && props.isToggled;

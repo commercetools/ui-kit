@@ -27,6 +27,15 @@ describe('rendering', () => {
       expect(history.location.pathname).toBe('/foo/bar');
     });
   });
+  it('should pass aria attributes"', () => {
+    const { getByLabelText } = render(
+      <LinkButton {...props} aria-describedby="tooltip-1" />
+    );
+    expect(getByLabelText('test-button')).toHaveAttribute(
+      'aria-describedby',
+      'tooltip-1'
+    );
+  });
   it('should prevent the navigation when "disabled"', async () => {
     const { getByLabelText, history } = render(
       <LinkButton {...props} isDisabled={true} />
