@@ -19,6 +19,11 @@ const Layout = props => (
         }
 
         /* Syntax highlighting custom colors */
+        code {
+          background-color: ${customProperties.colorNavy95};
+          color: ${customProperties.colorBlue};
+          padding: 2px 4px;
+        }
         .prism-code,
         .hljs {
           display: block;
@@ -37,6 +42,12 @@ const Layout = props => (
           text-align: left;
           word-spacing: normal;
           tab-size: 2;
+        }
+        .hljs {
+          margin: ${customProperties.spacing16} 0;
+        }
+        .hljs code {
+          padding: unset;
         }
         .token.comment,
         .token.prolog,

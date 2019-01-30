@@ -27,6 +27,7 @@
     "gatsby-plugin-sharp": "2.0.18",
     "gatsby-source-filesystem": "2.0.18",
     "gatsby-transformer-sharp": "2.1.12",
+    "github-slugger": "1.2.1",
     "moment": "2.24.0",
     "moment-timezone": "0.5.23",
     "prop-types": "15.6.2",

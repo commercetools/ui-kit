@@ -16,6 +16,7 @@ const StyledProvider = styled(LiveProvider)`
   border-radius: 4px;
   border: 1px solid ${customProperties.borderColorForInputWhenReadonly};
   overflow: hidden;
+  margin: ${customProperties.spacing16} 0;
 `;
 const PreviewPanel = styled.div`
   overflow: hidden;

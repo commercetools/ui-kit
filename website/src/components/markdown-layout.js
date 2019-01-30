@@ -3,22 +3,93 @@ import PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { MDXProvider } from '@mdx-js/tag';
 import { css } from '@emotion/core';
-import { Text, customProperties } from 'ui-kit';
+import { Text, ChainIcon, customProperties } from 'ui-kit';
+import GithubSlugger from 'github-slugger';
 import SEO from './seo';
 import Layout from './layout';
 import CodeEditor from './code-editor';
 
-const TagH1 = props => <Text.Headline elementType="h1" {...props} />;
-TagH1.displayName = 'TagH1';
-const TagH2 = props => <Text.Headline elementType="h2" {...props} />;
-TagH2.displayName = 'TagH2';
-const TagH3 = props => <Text.Headline elementType="h3" {...props} />;
-TagH3.displayName = 'TagH3';
-const TagH4 = props => <Text.Subheadline elementType="h4" {...props} />;
-TagH4.displayName = 'TagH4';
-const TagH5 = props => <Text.Subheadline elementType="h5" {...props} />;
-TagH5.displayName = 'TagH5';
-const TagParagraph = Text.Body;
+const slugger = new GithubSlugger();
+
+const headersTagToComponentMap = {
+  h1: Text.Headline,
+  h2: Text.Headline,
+  h3: Text.Headline,
+  h4: Text.Subheadline,
+  h5: Text.Subheadline,
+};
+
+const headersTagToSpacingMap = {
+  h1: '48px',
+  h2: customProperties.spacing32,
+  h3: customProperties.spacing24,
+  h4: customProperties.spacing16,
+  h5: customProperties.spacing16,
+};
+
+const createStyledHeaderTag = elementType => {
+  const Component = headersTagToComponentMap[elementType];
+  const Element = props => {
+    const text = React.Children.toArray(props.children).join('\n');
+    const anchorId = slugger.slug(text);
+    return (
+      <div
+        id={anchorId}
+        css={css`
+          display: flex;
+          align-items: center;
+          margin-top: ${headersTagToSpacingMap[elementType]};
+          > * + * {
+            margin: 0 0 0 ${customProperties.spacing4};
+          }
+          a {
+            visibility: hidden;
+            align-items: center;
+            display: flex;
+          }
+          &:hover {
+            a {
+              visibility: visible;
+            }
+          }
+        `}
+      >
+        <a href={`#${anchorId}`} aria-hidden={true}>
+          <ChainIcon size="medium" theme="grey" />
+        </a>
+        <Component elementType={elementType} {...props} />
+      </div>
+    );
+  };
+  Element.displayName = Component.displayName;
+  Element.propTypes = {
+    children: PropTypes.node,
+  };
+  return Element;
+};
+
+const TagH1 = createStyledHeaderTag('h1');
+const TagH2 = createStyledHeaderTag('h2');
+const TagH3 = createStyledHeaderTag('h3');
+const TagH4 = createStyledHeaderTag('h4');
+const TagH5 = createStyledHeaderTag('h5');
+const TagParagraph = props => (
+  <div
+    css={css`
+      margin-top: ${customProperties.spacing16};
+      code {
+        background-color: ${customProperties.colorNavy95};
+        color: ${customProperties.colorBlue};
+        padding: 2px 4px;
+      }
+      p {
+        line-height: 1.3rem;
+      }
+    `}
+  >
+    <Text.Body {...props} />
+  </div>
+);
 TagParagraph.displayName = 'TagParagraph';
 const TagStrong = props => (
   <Text.Body isBold={true} isInline={true} {...props} />
