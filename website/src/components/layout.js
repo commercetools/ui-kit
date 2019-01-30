@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { css, Global } from '@emotion/core';
 import { customProperties } from 'ui-kit';
 import Header from './header';
+import Footer from './footer';
 
 const Layout = props => (
   <React.Fragment>
@@ -18,11 +19,12 @@ const Layout = props => (
         }
 
         /* Syntax highlighting custom colors */
-        .prism-code {
+        .prism-code,
+        .hljs {
           display: block;
           white-space: pre;
-          background-color: ${customProperties.colorWhite};
-          color: ${customProperties.colorNavy};
+          background-color: ${customProperties.colorNavy95};
+          /* color: ${customProperties.colorNavy}; */
           padding: 0.5rem;
           margin: 0;
           box-sizing: border-box;
@@ -112,13 +114,13 @@ const Layout = props => (
           css={css`
             height: 100vh;
             display: grid;
-            grid-template-rows: auto 96px 1fr;
+            grid-template-rows: 96px 1fr;
             grid-template-columns: auto 1fr;
           `}
         >
           <Header
             css={css`
-              grid-row: 2;
+              grid-row: 1;
               grid-column: 1/3;
               height: 96px;
             `}
@@ -128,10 +130,10 @@ const Layout = props => (
             <aside
               css={css`
                 position: relative;
-                grid-row: 3;
+                grid-row: 2;
                 display: flex;
                 flex-direction: column;
-                width: 128px;
+                width: 256px;
                 border-right: 1px solid ${customProperties.colorPurple};
               `}
             >
@@ -142,28 +144,28 @@ const Layout = props => (
             role="main"
             css={css`
               grid-column: 2;
-              grid-row: 3;
+              grid-row: 2;
 
               /*
-              Allow the this flex child to grow smaller than its smallest content.
-              This is needed when there is a really wide text inside that would stretch
-              this node to be wider than the parent.
-            */
+                Allow this flex child to grow smaller than its smallest content.
+                This is needed when there is a really wide text inside that would stretch
+                this node to be wider than the parent.
+              */
               min-width: 0;
               overflow-x: hidden;
               overflow-y: scroll;
 
               /*
-              layout the children. There will always be the page and side notification
-              about the actual content. The content should stretch to fill the rest of
-              the page.
-            */
+                layout the children. There will always be the page and side notification
+                about the actual content. The content should stretch to fill the rest of
+                the page.
+              */
               display: flex;
               flex-direction: column;
 
               /*
-              set position to relative to layout notifications and modals
-            */
+                set position to relative to layout notifications and modals
+              */
               position: relative;
             `}
           >
@@ -175,6 +177,7 @@ const Layout = props => (
               `}
             >
               {props.children}
+              <Footer />
             </div>
           </div>
         </div>
