@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { css } from '@emotion/core';
 import getFieldId from '../../utils/get-field-id';
-import { getBodyStyles } from './tooltip.styles';
+import { getBodyStyles, getWrapperStyles } from './tooltip.styles';
 
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
@@ -56,28 +56,17 @@ class Tooltip extends React.Component {
             ...this.props.children.props,
             'aria-describedby': this.state.id,
           })}
-        </div>
-        <div
-          css={css`
-            box-sizing: content-box;
-            max-height: 150px;
-            opacity: 1;
-            visibility: visible;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            cursor: default;
-          `}
-        >
-          <span
-            id={this.state.id}
-            css={getBodyStyles({ type: this.props.type })}
-            aria-label={this.props.title}
-            aria-hidden={!this.state.open}
-            role="tooltip"
-          >
-            {this.props.title}
-          </span>
+          <div css={getWrapperStyles({ position: this.props.position })}>
+            <span
+              id={this.state.id}
+              css={getBodyStyles({ type: this.props.type })}
+              aria-label={this.props.title}
+              aria-hidden={!this.state.open}
+              role="tooltip"
+            >
+              {this.props.title}
+            </span>
+          </div>
         </div>
       </React.Fragment>
     );
@@ -94,6 +83,7 @@ Tooltip.propTypes = {
 
 Tooltip.defaultProps = {
   leaveDelay: 0,
+  position: 'bottom',
   type: 'info',
 };
 

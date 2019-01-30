@@ -18,6 +18,17 @@ storiesOf('Components|Tooltips', module)
         <Tooltip
           title={label}
           leaveDelay={number('leave delay', 0)}
+          position={select(
+            'position',
+            {
+              top: 'top',
+              'top-right': 'top-right',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+            'top'
+          )}
           type={select(
             'type',
             {
