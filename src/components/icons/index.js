@@ -54,12 +54,14 @@ import OrigEditIcon from './svg/edit.react.svg';
 import OrigErrorIcon from './svg/error.react.svg';
 import OrigExpandIcon from './svg/expand.react.svg';
 import OrigExportIcon from './svg/export.react.svg';
+import OrigExternalLinkIcon from './svg/external-link.react.svg';
 import OrigEyeCrossedIcon from './svg/eye-crossed.react.svg';
 import OrigFilterIcon from './svg/filter.react.svg';
 import OrigFlagFilledIcon from './svg/flag-filled.react.svg';
 import OrigFlagLinearIcon from './svg/flag-linear.react.svg';
 import OrigFlameIcon from './svg/flame.react.svg';
 import OrigGearIcon from './svg/gear.react.svg';
+import OrigGraduationCapIcon from './svg/graduation-cap.react.svg';
 import OrigGraphIcon from './svg/graph.react.svg';
 import OrigGridIcon from './svg/grid.react.svg';
 import OrigHeartIcon from './svg/heart.react.svg';
@@ -90,6 +92,7 @@ import OrigSearchIcon from './svg/search.react.svg';
 import OrigSortingIcon from './svg/sorting.react.svg';
 import OrigSpeedometerIcon from './svg/speedometer.react.svg';
 import OrigSplitIcon from './svg/split.react.svg';
+import OrigStackIcon from './svg/stack.react.svg';
 import OrigStarIcon from './svg/star.react.svg';
 import OrigSupportIcon from './svg/support.react.svg';
 import OrigSwitcherIcon from './svg/switcher.react.svg';
@@ -97,6 +100,7 @@ import OrigTableIcon from './svg/table.react.svg';
 import OrigTagMultiIcon from './svg/tag-multi.react.svg';
 import OrigTagStackedIcon from './svg/tag-stacked.react.svg';
 import OrigTagIcon from './svg/tag.react.svg';
+import OrigTerminalIcon from './svg/terminal.react.svg';
 import OrigTreeStructureIcon from './svg/tree-structure.react.svg';
 import OrigTruckIcon from './svg/truck.react.svg';
 import OrigUserFilledIcon from './svg/user-filled.react.svg';
@@ -229,6 +233,10 @@ export const EditIcon = createStyledIcon(OrigEditIcon, 'EditIcon');
 export const ErrorIcon = createStyledIcon(OrigErrorIcon, 'ErrorIcon');
 export const ExpandIcon = createStyledIcon(OrigExpandIcon, 'ExpandIcon');
 export const ExportIcon = createStyledIcon(OrigExportIcon, 'ExportIcon');
+export const ExternalLinkIcon = createStyledIcon(
+  OrigExternalLinkIcon,
+  'ExternalLinkIcon'
+);
 export const EyeCrossedIcon = createStyledIcon(
   OrigEyeCrossedIcon,
   'EyeCrossedIcon'
@@ -244,6 +252,10 @@ export const FlagLinearIcon = createStyledIcon(
 );
 export const FlameIcon = createStyledIcon(OrigFlameIcon, 'FlameIcon');
 export const GearIcon = createStyledIcon(OrigGearIcon, 'GearIcon');
+export const GraduationCapIcon = createStyledIcon(
+  OrigGraduationCapIcon,
+  'GraduationCapIcon'
+);
 export const GraphIcon = createStyledIcon(OrigGraphIcon, 'GraphIcon');
 export const GridIcon = createStyledIcon(OrigGridIcon, 'GridIcon');
 export const HeartIcon = createStyledIcon(OrigHeartIcon, 'HeartIcon');
@@ -301,6 +313,7 @@ export const SpeedometerIcon = createStyledIcon(
   'SpeedometerIcon'
 );
 export const SplitIcon = createStyledIcon(OrigSplitIcon, 'SplitIcon');
+export const StackIcon = createStyledIcon(OrigStackIcon, 'StackIcon');
 export const StarIcon = createStyledIcon(OrigStarIcon, 'StarIcon');
 export const SupportIcon = createStyledIcon(OrigSupportIcon, 'SupportIcon');
 export const SwitcherIcon = createStyledIcon(OrigSwitcherIcon, 'SwitcherIcon');
@@ -311,6 +324,7 @@ export const TagStackedIcon = createStyledIcon(
   'TagStackedIcon'
 );
 export const TagIcon = createStyledIcon(OrigTagIcon, 'TagIcon');
+export const TerminalIcon = createStyledIcon(OrigTerminalIcon, 'TerminalIcon');
 export const TreeStructureIcon = createStyledIcon(
   OrigTreeStructureIcon,
   'TreeStructureIcon'
