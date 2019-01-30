@@ -90,7 +90,9 @@ const IndexPage = () => (
     </Hero>
     <ContentWrapper>
       <CodeEditor
-        code={`<Formik
+        noInline={true}
+        code={`const Example = () => (
+<Formik
   initialValues={{ email: '', password: '' }}
   validate={values => {
     const errors = {};
@@ -140,7 +142,9 @@ const IndexPage = () => (
       </Spacings.Stack>
     </form>
   )}
-/>
+/>);
+
+render(<Example />);
 `}
       />
     </ContentWrapper>

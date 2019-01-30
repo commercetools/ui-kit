@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { css, Global } from '@emotion/core';
-// TODO: overwrite custom editor styles
-import reactLiveStyles from 'react-live/react-live.css';
 import { customProperties } from 'ui-kit';
 import Header from './header';
 
@@ -18,7 +16,85 @@ const Layout = props => (
           height: 100vh;
           font-family: ${customProperties.fontFamilyDefault};
         }
-        ${reactLiveStyles}
+
+        /* Syntax highlighting custom colors */
+        .prism-code {
+          display: block;
+          white-space: pre;
+          background-color: ${customProperties.colorWhite};
+          color: ${customProperties.colorNavy};
+          padding: 0.5rem;
+          margin: 0;
+          box-sizing: border-box;
+          vertical-align: baseline;
+          outline: none;
+          text-shadow: none;
+          hyphens: none;
+          word-wrap: normal;
+          word-break: normal;
+          text-align: left;
+          word-spacing: normal;
+          tab-size: 2;
+        }
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+          color: ${customProperties.colorGray60};
+        }
+        .token.punctuation {
+          opacity: 0.7;
+          color: ${customProperties.colorOrange};
+        }
+        .namespace {
+          opacity: 0.7;
+        }
+        .token.property,
+        .token.tag,
+        .token.boolean,
+        .token.number,
+        .token.constant,
+        .token.symbol {
+          color: ${customProperties.colorNavy40};
+        }
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+          color: ${customProperties.colorGreen};
+        }
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .language-css .token.string,
+        .style .token.string,
+        .token.variable {
+          color: ${customProperties.colorOrange};
+        }
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword {
+          color: ${customProperties.colorBlue};
+        }
+        .token.regex,
+        .token.important {
+          color: ${customProperties.colorPurple};
+        }
+        .token.important,
+        .token.bold {
+          font-weight: bold;
+        }
+        .token.italic {
+          font-style: italic;
+        }
+        .token.entity {
+          cursor: help;
+        }
+        .token.deleted {
+          color: red;
+        }
       `}
     />
     <StaticQuery

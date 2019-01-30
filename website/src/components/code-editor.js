@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
+import { LiveProvider, LiveEditor, withLive } from 'react-live';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Formik } from 'formik';
@@ -25,7 +25,7 @@ const EditorContainer = styled.div`
     max-height: auto;
   }
 `;
-const PreviewPanel = styled(LivePreview)`
+const PreviewPanel = styled.div`
   overflow: hidden;
   height: auto;
   background: ${customProperties.colorWhite};
@@ -45,10 +45,15 @@ const PreviewPanel = styled(LivePreview)`
     overflow: scroll;
   }
 `;
+const ErrorPanel = styled(PreviewPanel)`
+  background: ${customProperties.colorRed95};
+  color: ${customProperties.colorRed};
+  white-space: pre-wrap;
+`;
 const EditorPanel = styled(LiveEditor)`
   overflow: scroll;
   height: auto;
-  background: ${customProperties.colorBlack};
+  background: ${customProperties.colorNavy95};
   border-radius: 0 ${customProperties.spacing8} ${customProperties.spacing8} 0;
   padding: ${customProperties.spacing16};
   font-size: 1.2rem;
@@ -65,31 +70,44 @@ const EditorPanel = styled(LiveEditor)`
   }
 `;
 
+// TODO: use `LiveContext` once it's released in the next `react-live` version
+const WithLive = withLive(props => props.children(props.live));
+
 const CodeEditor = props => (
   <StyledProvider
-    {...props}
+    noInline={props.noInline}
     mountStylesheet={false}
     scope={{ css, ...uikit, Formik, ...props.scope }}
     code={props.code}
   >
     <EditorContainer>
-      <PreviewPanel />
+      <WithLive>
+        {live => {
+          if (live.error) {
+            return (
+              <ErrorPanel className="react-live-error">{live.error}</ErrorPanel>
+            );
+          }
+          const Element = live.element;
+          return (
+            <PreviewPanel className="react-live-preview">
+              {Element && <Element />}
+            </PreviewPanel>
+          );
+        }}
+      </WithLive>
       <EditorPanel ignoreTabKey={true} />
     </EditorContainer>
-    <LiveError />
   </StyledProvider>
 );
 CodeEditor.displayName = 'CodeEditor';
 CodeEditor.propTypes = {
   code: PropTypes.string.isRequired,
   scope: PropTypes.object,
+  noInline: PropTypes.bool,
 };
 CodeEditor.defaultProps = {
   scope: {},
-  transformCode: function transformCode(src) {
-    if (src.startsWith('<')) return src;
-    return `<React.Fragment>${src}</React.Fragment>`;
-  },
+  noInline: false,
 };
-
 export default CodeEditor;
