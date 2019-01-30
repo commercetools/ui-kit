@@ -13,19 +13,34 @@ export const getWrapperStyles = () => css`
   pointer-events: none;
   z-index: 99;
   font-size: 1rem;
-  font-family: ${vars.fontFamilyDefault};
   display: block;
-
-  &[aria-hidden='true'] {
-    display: none;
-  }
 `;
 
-export const getBodyStyles = () => css`
+const getBorderColor = ({ type }) => {
+  switch (type) {
+    case 'info':
+      return vars.colorGreen;
+    case 'warning':
+      return vars.colorOrange;
+    case 'error':
+      return vars.colorRed;
+    default:
+      return '';
+  }
+};
+
+export const getBodyStyles = ({ type }) => css`
   border-radius: 5px;
   min-width: 100px;
+  font-family: ${vars.fontFamilyDefault};
+  border: solid 1px ${getBorderColor({ type })};
+  padding: 6px;
   background-color: ${vars.colorWhite};
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 3px 3px 0 rgba(0, 0, 0, 0.24);
   vertical-align: middle;
   font-size: 0.857rem;
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
 `;

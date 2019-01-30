@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { css } from '@emotion/core';
 import withReadme from 'storybook-readme/with-readme';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, select, number } from '@storybook/addon-knobs';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
-import PrimaryButton from '../buttons/primary-button';
 
 storiesOf('Components|Tooltips', module)
   .addDecorator(withKnobs)
@@ -16,20 +16,33 @@ storiesOf('Components|Tooltips', module)
     return (
       <Section>
         <Tooltip
-          ariaLabel={label}
           title={label}
+          leaveDelay={number('leave delay', 0)}
           type={select(
             'type',
             {
+              info: 'info',
               warning: 'warning',
               error: 'error',
-              info: 'info',
-              success: 'success',
             },
             'warning'
           )}
         >
-          <PrimaryButton label="Click me" />
+          <button
+            css={css`
+              background: purple;
+              padding: 8px;
+              border-color: purple;
+              border-radius: 6px;
+              color: white;
+              font-size: 1rem;
+              font-family: 'Open Sans', sans-serif;
+              cursor: pointer;
+            `}
+            aria-label="Click me"
+          >
+            click me
+          </button>
         </Tooltip>
       </Section>
     );
