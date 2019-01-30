@@ -10,6 +10,7 @@ const { customProperties } = uikit;
 
 const StyledProvider = styled(LiveProvider)`
   border-radius: 4px;
+  border: 1px solid ${customProperties.borderColorForInputWhenReadonly};
   overflow: hidden;
 `;
 const EditorContainer = styled.div`
@@ -22,22 +23,19 @@ const EditorContainer = styled.div`
 
   @media (max-width: 799px) {
     flex-direction: column;
-    max-height: auto;
+    max-height: none;
   }
 `;
 const PreviewPanel = styled.div`
   overflow: hidden;
   height: auto;
   background: ${customProperties.colorWhite};
-  border: 1px solid ${customProperties.borderColorInputDisabled};
-  border-radius: ${customProperties.spacing8} 0 0 ${customProperties.spacing8};
   padding: ${customProperties.spacing16};
   flex-basis: 50%;
   width: 50%;
   max-width: 50%;
 
   @media (max-width: 799px) {
-    border-radius: ${customProperties.spacing8} ${customProperties.spacing8} 0 0;
     flex-basis: auto;
     width: 100%;
     max-width: 100%;
@@ -54,15 +52,14 @@ const EditorPanel = styled(LiveEditor)`
   overflow: scroll;
   height: auto;
   background: ${customProperties.colorNavy95};
-  border-radius: 0 ${customProperties.spacing8} ${customProperties.spacing8} 0;
   padding: ${customProperties.spacing16};
+  box-shadow: ${customProperties.shadow9Second};
   font-size: 1.2rem;
   flex-basis: 50%;
   width: 50%;
   max-width: 50%;
 
   @media (max-width: 799px) {
-    border-radius: 0 0 ${customProperties.spacing8} ${customProperties.spacing8};
     flex-basis: auto;
     width: 100%;
     max-width: 100%;

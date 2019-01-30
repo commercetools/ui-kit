@@ -6,6 +6,8 @@ import {
   AngleThinRightIcon,
   Spacings,
   SecondaryButton,
+  Text,
+  CodeViewIcon,
   customProperties,
 } from 'ui-kit';
 import Layout from '../components/layout';
@@ -15,13 +17,26 @@ import CodeEditor from '../components/code-editor';
 import pkg from '../../../package.json';
 
 const Hero = styled.div`
-  background-color: ${customProperties.colorGreen};
+  background-color: ${customProperties.colorNavy40};
+`;
+const HeroMessage = styled.div`
+  font-size: 2.5rem;
+  color: ${customProperties.colorNavy98};
+  line-height: 3rem;
+  flex: 1;
+  flex-grow: 2;
 `;
 const ContentWrapper = styled.div`
   padding: 72px 0;
   width: 80%;
   max-width: 900px;
   margin: 0 auto;
+`;
+const HeroTextHighlighted = styled.span`
+  color: ${customProperties.colorNavy40};
+  background-color: ${customProperties.colorWhite};
+  padding: ${customProperties.spacing4};
+  font-weight: 100;
 `;
 
 const IndexPage = () => (
@@ -31,46 +46,30 @@ const IndexPage = () => (
       <ContentWrapper>
         <Spacings.Stack scale="m">
           <Spacings.Inline scale="xl" alignItems="center">
-            <div
-              css={css`
-                font-size: 2rem;
-                color: ${customProperties.colorGreen85};
-              `}
-            >
+            <HeroMessage>
               <div>
                 {`A `}
-                <span
-                  css={css`
-                    color: ${customProperties.colorGreen95};
-                    font-weight: 100;
-                  `}
-                >
-                  {'component library'}
-                </span>
+                <HeroTextHighlighted>{'component library'}</HeroTextHighlighted>
                 {` for building User Interfaces.`}
               </div>
-              <div
-                css={css`
-                  font-size: 1.5rem;
-                `}
-              >
+              <Text.Subheadline elementType="h5" tone="inverted">
                 {`Based on commercetools `}
                 <span
                   css={css`
-                    color: ${customProperties.colorGreen95};
-                    font-weight: 100;
+                    text-decoration: underline;
                   `}
                 >
                   {'Design System'}
                 </span>
-              </div>
-            </div>
+              </Text.Subheadline>
+            </HeroMessage>
             <div
               css={css`
-                font-size: 10rem;
+                flex: 1;
+                flex-grow: 1;
               `}
             >
-              {'👩‍🎨'}
+              <CodeViewIcon size="scale" theme="white" />
             </div>
           </Spacings.Inline>
           <Spacings.Inline scale="xl">
@@ -96,12 +95,10 @@ const IndexPage = () => (
   initialValues={{ email: '', password: '' }}
   validate={values => {
     const errors = {};
-    if (TextInput.isEmpty(values.email)) {
+    if (TextInput.isEmpty(values.email))
       errors.email = { missing: true };
-    }
-    if (TextInput.isEmpty(values.password)) {
+    if (TextInput.isEmpty(values.password))
       errors.password = { missing: true };
-    }
     return errors;
   }}
   onSubmit={formValues => { console.log(formValues); }}
