@@ -16,7 +16,7 @@ Our typography components should be used when rendering any kind of text. We div
 import { Text } from '@commercetools-frontend/ui-kit';
 ```
 
-## Headline
+### `<Text.Headline>`
 
 ```.jsx
 <Spacings.Stack scale="m">
@@ -28,12 +28,153 @@ import { Text } from '@commercetools-frontend/ui-kit';
 </Spacings.Stack>
 ```
 
-## Subheadline
+#### Properties
+
+| Props         | Type             | Required | Values               | Default | Description                                                    |
+| ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------- |
+| `elementType` | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                              |
+| `children`    | `PropTypes.node` |    ✅    | -                    | -       | -                                                              |
+| `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element            |
+| `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width |
+
+The component further forwards all `data-` attributes to the underlying component.
+
+#### Where to use
+
+Title of pages.
+
+### `<Text.Subheadline>`
 
 ```.jsx
 <Spacings.Stack scale="m">
   <Text.Subheadline elementType="h4">This is a H4</Text.Subheadline>
+  <Text.Subheadline elementType="h4" isBold={true}>This is an H4 with bold font</Text.Subheadline>
+  <Text.Subheadline elementType="h4" tone="primary">This is an H4 with a primary color</Text.Subheadline>
+  <Text.Subheadline elementType="h4" tone="secondary">This is an H4 with a secondary color</Text.Subheadline>
+  <Text.Subheadline elementType="h4" tone="information">This is an H4 with an information color</Text.Subheadline>
+  <Text.Subheadline elementType="h4" tone="positive">This is an H4 with a positive color</Text.Subheadline>
+  <Text.Subheadline elementType="h4" tone="negative">This is an H4 with a negative color</Text.Subheadline>
 
   <Text.Subheadline elementType="h5">This is a H5</Text.Subheadline>
+  <Text.Subheadline elementType="h5" isBold={true}>This is an H5 with bold font</Text.Subheadline>
+  <Text.Subheadline elementType="h5" tone="primary">This is an H5 with a primary color</Text.Subheadline>
+  <Text.Subheadline elementType="h5" tone="secondary">This is an H5 with a secondary color</Text.Subheadline>
+  <Text.Subheadline elementType="h5" tone="information">This is an H5 with an information color</Text.Subheadline>
+  <Text.Subheadline elementType="h5" tone="positive">This is an H5 with a positive color</Text.Subheadline>
+  <Text.Subheadline elementType="h5" tone="negative">This is an H5 with a negative color</Text.Subheadline>
 </Spacings.Stack>
 ```
+
+#### Properties
+
+| Props         | Type             | Required | Values                                                            | Default |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------- | ------- |
+| `elementType` | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |
+| `isBold`      | `Boolean`        |    -     | -                                                                 | `false` |
+| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative']` | -       |
+| `children`    | `PropTypes.node` |    ✅    | -                                                                 | -       |
+| `title`       | `String`         |    -     | -                                                                 | -       |
+| `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
+
+The component further forwards all `data-` attributes to the underlying component.
+
+#### Where to use
+
+Subtitle of pages.
+
+### `<Text.Wrap>`
+
+Wraps the given text in its container. And for long text, text will be wrapped to new line.
+
+#### Usage
+
+```.jsx
+<Constraints.Horizontal constraint="m">
+  <Text.Wrap>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </Text.Wrap>
+</Constraints.Horizontal>
+```
+
+#### Where to use
+
+When we render value that may be vey long, and we prefer to wrap text to new line after it exceeds its wrapper's width.
+
+### `<Text.Body>`
+
+Wraps the given text in a `<p>` element, for normal content.
+
+#### Usage
+
+```.jsx
+<Spacings.Stack scale="m">
+  <Text.Body>This is a normal paragraph</Text.Body>
+  <Text.Body isBold={true}>This is a paragraph with bold font</Text.Body>
+  <Text.Body isItalic={true}>This is a paragraph with italic font</Text.Body>
+  <Text.Body tone="primary">This is a paragraph with a primary color</Text.Body>
+  <Text.Body tone="secondary">This is a paragraph with a secondary color</Text.Body>
+  <Text.Body tone="information">This is a paragraph with an information color</Text.Body>
+  <Text.Body tone="positive">This is a paragraph with a positive color</Text.Body>
+  <Text.Body tone="negative">This is a paragraph with a negative color</Text.Body>
+  <div style={{ background: customProperties.colorBlack }}>
+    <Text.Body tone="inverted">This is a paragraph with an inverted color</Text.Body>
+  </div>
+</Spacings.Stack>
+```
+
+#### Properties
+
+| Props      | Type             | Required | Values                                                                        | Default |
+| ---------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
+| `isBold`   | `Boolean`        |    -     | -                                                                             | `false` |
+| `isItalic` | `Boolean`        |    -     | -                                                                             | `false` |
+| `tone`     | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'inverted']` | -       |
+| `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
+| `title`    | `String`         |    -     | -                                                                             | -       |
+| `truncate` | `Bool`           |    -     | -                                                                             | `false` |
+
+The component further forwards all `data-` attributes to the underlying component.
+
+#### Where to use
+
+Content text in general.
+
+### `<Text.Detail>`
+
+Wraps the given text in a `<small>` semantic tag. It accepts a `tone` prop to
+properly style the text.
+
+#### Usage
+
+```.jsx
+<Spacings.Stack scale="m">
+  <Text.Detail>This is a normal text</Text.Detail>
+  <Text.Detail isBold={true}>This is a text with bold font</Text.Detail>
+  <Text.Detail isItalic={true}>This is a text with italic font</Text.Detail>
+  <Text.Detail tone="primary">This is a text with a primary color</Text.Detail>
+  <Text.Detail tone="secondary">This is a text with a secondary color</Text.Detail>
+  <Text.Detail tone="information">This is a text with an information color</Text.Detail>
+  <Text.Detail tone="positive">This is a text with a positive color</Text.Detail>
+  <Text.Detail tone="negative">This is a text with a negative color</Text.Detail>
+  <div style={{ background: customProperties.colorBlack }}>
+    <Text.Detail tone="inverted">This is a text with an inverted color</Text.Detail>
+  </div>
+</Spacings.Stack>
+```
+
+#### Properties
+
+| Props      | Type             | Required | Values                                                                        | Default |
+| ---------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
+| `isBold`   | `Boolean`        |    -     | -                                                                             | `false` |
+| `isItalic` | `Boolean`        |    -     | -                                                                             | `false` |
+| `tone`     | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |
+| `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
+| `title`    | `String`         |    -     | -                                                                             | -       |
+| `truncate` | `Bool`           |    -     | -                                                                             | `false` |
+
+The component further forwards all `data-` attributes to the underlying component.
+
+#### Where to use
+
+Details text of form boxes.
