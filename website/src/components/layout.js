@@ -27,7 +27,7 @@ const Layout = props => (
           /* color: ${customProperties.colorNavy}; */
           padding: 0.5rem;
           margin: 0;
-          box-sizing: border-box;
+          box-sizing: content-box;
           vertical-align: baseline;
           outline: none;
           text-shadow: none;
@@ -134,7 +134,8 @@ const Layout = props => (
                 display: flex;
                 flex-direction: column;
                 width: 256px;
-                border-right: 1px solid ${customProperties.colorPurple};
+                border-right: 1px solid ${customProperties.colorGray};
+                background-color: ${customProperties.colorNavy95};
               `}
             >
               {'Side'}

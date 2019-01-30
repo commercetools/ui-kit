@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { MDXProvider } from '@mdx-js/tag';
-import { Text } from 'ui-kit';
+import { css } from '@emotion/core';
+import { Text, customProperties } from 'ui-kit';
 import SEO from './seo';
 import Layout from './layout';
 import CodeEditor from './code-editor';
@@ -37,8 +38,29 @@ const TagCode = props => {
       />
     );
   }
+  const code = React.Children.toArray(props.children).join('\n');
+  const shouldInlineCode = code.trim().startsWith('<');
+  // For now, you can pass custom styles to the live editor panels
+  // by appending a list of CSS-in-JS styles next to the language tag.
+  // For example:
+  //
+  // ```.jsx-(minHeight:400px,maxHeight:400px)
+  const customStyles = props.className
+    .replace(/language-\.jsx(-\((.*)\))?/, '$2')
+    .split(',')
+    .reduce((styles, styleString) => {
+      const styleParts = styleString.split(':');
+      if (styleParts.length === 2) {
+        return { ...styles, [styleParts[0]]: styleParts[1] };
+      }
+      return styles;
+    }, {});
   return (
-    <CodeEditor code={React.Children.toArray(props.children).join('\n')} />
+    <CodeEditor
+      code={code}
+      noInline={!shouldInlineCode}
+      customStyles={customStyles}
+    />
   );
 };
 TagCode.displayName = 'TagCode';
@@ -62,10 +84,14 @@ const MarkdownLayout = props => (
         code: TagCode,
       }}
     >
-      <>
+      <div
+        css={css`
+          padding: ${customProperties.spacing16};
+        `}
+      >
         <SEO title={props.frontmatter.title} />
         {props.children}
-      </>
+      </div>
     </MDXProvider>
   </Layout>
 );
