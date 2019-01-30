@@ -6,7 +6,7 @@ describe('Card', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Normal');
+    await expect(page).toMatch('Type - Raised, Theme - Light');
     await percySnapshot(page, 'Card');
   });
 });

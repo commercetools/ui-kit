@@ -153,7 +153,7 @@ export default {
   shadow15Second: '0 1px 4.75px rgba(0, 0, 0, 0.12)',
   fontFamilyDefault: "'Open Sans', sans-serif",
   fontSizeDefault: '1rem',
-  fontSizeSmall: '0.9231rem',
+  fontSizeSmall: '12px',
   shadowBoxTagHover:
     '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
   sizeHeightTag: '26px',
