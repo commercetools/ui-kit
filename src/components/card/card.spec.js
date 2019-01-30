@@ -1,0 +1,8 @@
+import React from 'react';
+import { render } from '../../test-utils';
+import Card from './card';
+
+it('should render children', () => {
+  const { container } = render(<Card>Bread</Card>);
+  expect(container).toHaveTextContent('Bread');
+});
