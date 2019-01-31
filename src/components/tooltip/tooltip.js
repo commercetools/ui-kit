@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { css } from '@emotion/core';
+import { Manager, Reference, Popper } from 'react-popper';
 import getFieldId from '../../utils/get-field-id';
-import { getBodyStyles, getWrapperStyles } from './tooltip.styles';
+import createSequentialId from '../../utils/create-sequential-id';
+import { getBodyStyles } from './tooltip.styles';
+
+const sequentialId = createSequentialId('localized-text-field-');
 
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
@@ -12,17 +15,38 @@ class Tooltip extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, 'tooltip-'),
+    id: getFieldId(props, state, sequentialId),
   });
 
-  handleEnter = () => {
-    this.setState({
-      open: true,
-    });
+  handleEnter = event => {
+    const childrenProps = this.props.children.props;
+
+    if (event.type === 'mouseover' && childrenProps.onMouseOver) {
+      childrenProps.onMouseOver(event);
+    }
+
+    if (event.type === 'focus' && childrenProps.onFocus) {
+      childrenProps.onFocus(event);
+    }
+
+    if (!this.state.open) {
+      this.setState({
+        open: true,
+      });
+    }
   };
 
-  handleLeave = () => {
+  handleLeave = event => {
+    const childrenProps = this.props.children.props;
     clearTimeout(this.leaveTimer);
+
+    if (event.type === 'mouseleave' && childrenProps.onMouseLeave) {
+      childrenProps.onMouseLeave(event);
+    }
+
+    if (event.type === 'blur' && childrenProps.onBlur) {
+      childrenProps.onBlur(event);
+    }
 
     if (this.props.leaveDelay) {
       this.leaveTimer = setTimeout(() => {
@@ -40,35 +64,39 @@ class Tooltip extends React.Component {
   };
 
   render() {
+    const childrenProps = {
+      'aria-describedby': this.state.open ? this.state.id : null,
+      ...this.props.children.props,
+    };
+
+    childrenProps.onMouseOver = this.handleEnter;
+    childrenProps.onMouseLeave = this.handleLeave;
+    childrenProps.onFocus = this.handleEnter;
+    childrenProps.onBlur = this.handleLeave;
+
     return (
-      <React.Fragment>
-        <div
-          // this is the container
-          css={css`
-            position: relative;
-          `}
-          onMouseOver={this.handleEnter}
-          onMouseOut={this.handleLeave}
-          onFocus={this.handleEnter}
-          onBlur={this.handleLeave}
-        >
-          {React.cloneElement(this.props.children, {
-            ...this.props.children.props,
-            'aria-describedby': this.state.id,
-          })}
-          <div css={getWrapperStyles({ position: this.props.position })}>
-            <span
-              id={this.state.id}
-              css={getBodyStyles({ type: this.props.type })}
-              aria-label={this.props.title}
+      <Manager>
+        <Reference>
+          {({ ref }) =>
+            React.cloneElement(this.props.children, {
+              ...childrenProps,
+              ref,
+            })
+          }
+        </Reference>
+        <Popper placement={this.props.placement}>
+          {({ ref, style, placement }) => (
+            <div
+              ref={ref}
+              css={{ ...style, ...getBodyStyles({ type: this.props.type }) }}
+              data-placement={placement}
               aria-hidden={!this.state.open}
-              role="tooltip"
             >
-              {this.props.title}
-            </span>
-          </div>
-        </div>
-      </React.Fragment>
+              Popper element
+            </div>
+          )}
+        </Popper>
+      </Manager>
     );
   }
 }
@@ -77,13 +105,13 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   leaveDelay: PropTypes.number.isRequired,
   type: PropTypes.oneOf(['warning', 'info', 'error']).isRequired,
-  position: PropTypes.oneOf(['top', 'top-right', 'bottom', 'left', 'right']),
+  placement: PropTypes.oneOf(['top', 'left', 'bottom', 'right']),
   title: PropTypes.string.isRequired,
 };
 
 Tooltip.defaultProps = {
   leaveDelay: 0,
-  position: 'bottom',
+  placement: 'bottom',
   type: 'info',
 };
 

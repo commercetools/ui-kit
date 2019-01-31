@@ -11,50 +11,94 @@ storiesOf('Components|Tooltips', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Tooltip', () => {
-    const label = text('children', 'Tooltip text');
+    const label = text(
+      'children',
+      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.'
+    );
+
+    const placement = select(
+      'placement',
+      {
+        top: 'top',
+        bottom: 'bottom',
+        left: 'left',
+        right: 'right',
+      },
+      'top'
+    );
+    const type = select(
+      'type',
+      {
+        info: 'info',
+        warning: 'warning',
+        error: 'error',
+      },
+      'warning'
+    );
+
+    const leaveDelay = number('leave delay', 0);
 
     return (
       <Section>
-        <Tooltip
-          title={label}
-          leaveDelay={number('leave delay', 0)}
-          position={select(
-            'position',
-            {
-              top: 'top',
-              'top-right': 'top-right',
-              bottom: 'bottom',
-              left: 'left',
-              right: 'right',
-            },
-            'top'
-          )}
-          type={select(
-            'type',
-            {
-              info: 'info',
-              warning: 'warning',
-              error: 'error',
-            },
-            'warning'
-          )}
+        <div
+          css={css`
+            margin: 24px;
+          `}
         >
-          <button
-            css={css`
-              background: purple;
-              padding: 8px;
-              border-color: purple;
-              border-radius: 6px;
-              color: white;
-              font-size: 1rem;
-              font-family: 'Open Sans', sans-serif;
-              cursor: pointer;
-            `}
-            aria-label="Click me"
+          <div>With full width button</div>
+          <Tooltip
+            title={label}
+            leaveDelay={leaveDelay}
+            placement={placement}
+            type={type}
           >
-            click me
-          </button>
-        </Tooltip>
+            <button
+              css={css`
+                background: purple;
+                padding: 8px;
+                border-color: purple;
+                border-radius: 6px;
+                width: 100%;
+                color: white;
+                font-size: 1rem;
+                font-family: 'Open Sans', sans-serif;
+                cursor: pointer;
+              `}
+              aria-label="Click me"
+            >
+              click me
+            </button>
+          </Tooltip>
+          <div
+            css={css`
+              margin-top: 50px;
+            `}
+          >
+            With full non full width button
+          </div>
+          <Tooltip
+            title={label}
+            leaveDelay={leaveDelay}
+            placement={placement}
+            type={type}
+          >
+            <button
+              css={css`
+                background: purple;
+                padding: 8px;
+                border-color: purple;
+                border-radius: 6px;
+                color: white;
+                font-size: 1rem;
+                font-family: 'Open Sans', sans-serif;
+                cursor: pointer;
+              `}
+              aria-label="Click me"
+            >
+              click me
+            </button>
+          </Tooltip>
+        </div>
       </Section>
     );
   });
