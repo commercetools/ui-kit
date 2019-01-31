@@ -1,3 +1,14 @@
+<a name="8.1.0"></a>
+
+# [8.1.0](https://github.com/commercetools/ui-kit/compare/v8.0.0...v8.1.0) (2019-01-31)
+
+### Features
+
+- Icons: adding new icons for new welcome landing page ([#497](https://github.com/commercetools/ui-kit/issues/497)) ([00fa71c](https://github.com/commercetools/ui-kit/commit/00fa71c))
+
+* `Card`: new component ([#494](https://github.com/commercetools/ui-kit/pull/494))
+* Buttons: support all aria-attributes ([#496](https://github.com/commercetools/ui-kit/pull/496))
+
 <a name="8.0.0"></a>
 
 # [8.0.0](https://github.com/commercetools/ui-kit/compare/v7.0.0...v8.0.0) (2019-01-29)
