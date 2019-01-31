@@ -6,8 +6,11 @@ import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import MultilineTextInput from '../../inputs/multiline-text-input';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+
+const sequentialId = createSequentialId('multiline-text-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -60,7 +63,7 @@ class MultilineTextField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, 'multiline-text-field-'),
+    id: getFieldId(props, state, sequentialId),
   });
 
   render() {

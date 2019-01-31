@@ -7,8 +7,11 @@ import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import LocalizedMultilineTextInput from '../../inputs/localized-multiline-text-input';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+
+const sequentialId = createSequentialId('localized-multiline-text-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -78,7 +81,7 @@ class LocalizedMultilineTextField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, 'localized-multiline-text-field-'),
+    id: getFieldId(props, state, sequentialId),
   });
 
   render() {

@@ -14,9 +14,12 @@ import {
   getName,
 } from '../../../utils/localized';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import MoneyInput from '../money-input';
 import CurrencyControl from './currency-control';
+
+const sequentialId = createSequentialId('localized-money-input-');
 
 // sorts the currencies with the following priority:
 // - The selected currency is placed first (e.g EUR)
@@ -222,7 +225,7 @@ export class LocalizedMoneyInput extends React.Component {
       props.hideCurrencyExpansionControls ||
       state.areCurrenciesOpened;
 
-    const id = getFieldId(props, state, 'localized-money-input-');
+    const id = getFieldId(props, state, sequentialId);
 
     return { areCurrenciesOpened, id };
   };

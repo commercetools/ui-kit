@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import Icons from './icons';
@@ -10,6 +11,8 @@ import {
   getLabelStyles,
   getCheckboxWrapperStyles,
 } from './checkbox-input.styles';
+
+const sequentialId = createSequentialId('checkbox-input-');
 
 class CheckboxInput extends React.PureComponent {
   static displayName = 'CheckboxInput';
@@ -44,7 +47,7 @@ class CheckboxInput extends React.PureComponent {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, 'checkbox-'),
+    id: getFieldId(props, state, sequentialId),
   });
 
   render() {
