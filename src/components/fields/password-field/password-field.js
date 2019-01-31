@@ -6,8 +6,11 @@ import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import PasswordInput from '../../inputs/password-input';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+
+const sequentialId = createSequentialId('password-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -61,7 +64,7 @@ class PasswordField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, 'password-field-'),
+    id: getFieldId(props, state, sequentialId),
   });
 
   render() {

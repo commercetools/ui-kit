@@ -6,8 +6,11 @@ import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import CreatableSelectInput from '../../inputs/creatable-select-input';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
+
+const sequentialId = createSequentialId('creatable-select-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -102,7 +105,7 @@ export default class SelectField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, 'creatable-select-field-'),
+    id: getFieldId(props, state, sequentialId),
   });
 
   render() {

@@ -6,8 +6,11 @@ import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import DateRangeInput from '../../inputs/date-range-input';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+
+const sequentialId = createSequentialId('date-range-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
@@ -57,7 +60,7 @@ class DateRangeField extends React.Component {
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, 'date-range-field-'),
+    id: getFieldId(props, state, sequentialId),
   });
 
   render() {

@@ -21,12 +21,15 @@ import {
   getName,
 } from '../../../utils/localized';
 import getFieldId from '../../../utils/get-field-id';
+import createSequentialId from '../../../utils/create-sequential-id';
 import LanguagesButton from './languages-button';
 import messages from './messages';
 import {
   getLocalizedInputStyles,
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
+
+const sequentialId = createSequentialId('localized-text-input-');
 
 class LocalizedInput extends React.Component {
   static displayName = 'LocalizedInput';
@@ -177,7 +180,7 @@ export default class LocalizedTextInput extends React.Component {
       props.hideLanguageExpansionControls ||
       state.areLanguagesExpanded;
 
-    const id = getFieldId(props, state, 'localized-text-input-');
+    const id = getFieldId(props, state, sequentialId);
 
     return { areLanguagesExpanded, id };
   };

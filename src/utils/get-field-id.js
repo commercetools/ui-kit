@@ -1,6 +1,4 @@
-import createSequentialId from './create-sequential-id';
-
-const getFieldId = (props, state, prefix) =>
-  props.id || state.id || createSequentialId(prefix)();
+const getFieldId = (props, state, createId) =>
+  props.id || state.id || createId();
 
 export default getFieldId;
