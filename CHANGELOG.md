@@ -1,3 +1,11 @@
+<a name="8.1.1"></a>
+
+# [8.1.1](https://github.com/commercetools/ui-kit/compare/v8.1.0...v8.1.1) (2019-01-31)
+
+### Bug Fixes
+
+- sequential field id generation ([#499](https://github.com/commercetools/ui-kit/issues/499)) ([c85074a](https://github.com/commercetools/ui-kit/commit/c85074a))
+
 <a name="8.1.0"></a>
 
 # [8.1.0](https://github.com/commercetools/ui-kit/compare/v8.0.0...v8.1.0) (2019-01-31)
