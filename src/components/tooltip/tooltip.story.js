@@ -6,6 +6,7 @@ import { withKnobs, text, select, number } from '@storybook/addon-knobs';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
+import { WorldIcon } from '../icons';
 import PrimaryButton from '../buttons/primary-button';
 
 storiesOf('Components|Tooltips', module)
@@ -153,6 +154,29 @@ storiesOf('Components|Tooltips', module)
                 onClick={() => {}}
                 label="don't click me"
               />
+            </div>
+          </Tooltip>
+
+          <div
+            css={css`
+              margin-top: 42px;
+            `}
+          >
+            With an icon{' '}
+          </div>
+
+          <Tooltip
+            title={label}
+            leaveDelay={leaveDelay}
+            placement={placement}
+            type={type}
+          >
+            <div
+              css={css`
+                display: inline-block;
+              `}
+            >
+              <WorldIcon />
             </div>
           </Tooltip>
         </div>
