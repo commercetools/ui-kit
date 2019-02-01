@@ -123,7 +123,20 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   leaveDelay: PropTypes.number.isRequired,
   type: PropTypes.oneOf(['warning', 'info', 'error']).isRequired,
-  placement: PropTypes.oneOf(['top', 'left', 'bottom', 'right']),
+  placement: PropTypes.oneOf([
+    'top',
+    'top-start',
+    'top-end',
+    'right',
+    'right-start',
+    'right-end',
+    'bottom',
+    'bottom-start',
+    'bottom-end',
+    'left',
+    'left-start',
+    'left-end',
+  ]),
   title: PropTypes.string.isRequired,
 };
 
