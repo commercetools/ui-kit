@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Manager, Reference, Popper } from 'react-popper';
+import invariant from 'tiny-invariant';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import { getBodyStyles } from './tooltip.styles';
@@ -17,6 +18,22 @@ class Tooltip extends React.Component {
   static getDerivedStateFromProps = (props, state) => ({
     id: getFieldId(props, state, sequentialId),
   });
+
+  componentDidMount() {
+    // eslint-disable-next-line no-console
+    const childrenProps = this.props.children.props;
+
+    invariant(
+      !(childrenProps.disabled || childrenProps.isDisabled),
+      [
+        'ui-kit: you are providing a disabled `button` child to the Tooltip component.',
+        'A disabled element does not fire events.',
+        "Tooltip needs to listen to the child element's events to display the title.",
+        '',
+        'Place a `div` container on top of the element.',
+      ].join('\n')
+    );
+  }
 
   handleEnter = event => {
     const childrenProps = this.props.children.props;
@@ -73,6 +90,7 @@ class Tooltip extends React.Component {
     childrenProps.onMouseLeave = this.handleLeave;
     childrenProps.onFocus = this.handleEnter;
     childrenProps.onBlur = this.handleLeave;
+    // console.log('here --->', childrenProps);
 
     return (
       <Manager>

@@ -6,6 +6,7 @@ import { withKnobs, text, select, number } from '@storybook/addon-knobs';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
+import PrimaryButton from '../buttons/primary-button';
 
 storiesOf('Components|Tooltips', module)
   .addDecorator(withKnobs)
@@ -79,22 +80,71 @@ storiesOf('Components|Tooltips', module)
             placement={placement}
             type={type}
           >
-            <button
+            <div
               css={css`
-                background: purple;
-                padding: 8px;
-                border-color: purple;
-                border-radius: 6px;
-                color: white;
-                margin-left: 60px;
-                font-size: 1rem;
-                font-family: 'Open Sans', sans-serif;
-                cursor: pointer;
+                display: inline-block;
               `}
-              aria-label="Click me"
             >
-              click me
-            </button>
+              <button
+                disabled
+                css={css`
+                  background: purple;
+                  padding: 8px;
+                  pointer-events: none;
+                  border-color: purple;
+                  border-radius: 6px;
+                  color: white;
+                  font-size: 1rem;
+                  font-family: 'Open Sans', sans-serif;
+                  cursor: pointer;
+                `}
+                aria-label="Click me"
+              >
+                click me
+              </button>
+            </div>
+          </Tooltip>
+
+          <div
+            css={css`
+              margin-top: 50px;
+            `}
+          >
+            With ui kit button
+          </div>
+          <Tooltip
+            title={label}
+            leaveDelay={leaveDelay}
+            placement={placement}
+            type={type}
+          >
+            <PrimaryButton onClick={() => {}} label="don't click me" />
+          </Tooltip>
+
+          <div
+            css={css`
+              margin-top: 50px;
+            `}
+          >
+            With disabled ui kit button
+          </div>
+          <Tooltip
+            title={label}
+            leaveDelay={leaveDelay}
+            placement={placement}
+            type={type}
+          >
+            <div
+              css={css`
+                display: inline-block;
+              `}
+            >
+              <PrimaryButton
+                isDisabled
+                onClick={() => {}}
+                label="don't click me"
+              />
+            </div>
           </Tooltip>
         </div>
       </Section>

@@ -5,6 +5,7 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterEventAttributes from '../../../utils/filter-event-attributes';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
 import {
@@ -12,16 +13,19 @@ import {
   getButtonStyles,
 } from './primary-button.styles';
 
-const PrimaryButton = props => {
+const PrimaryButton = React.forwardRef((props, ref) => {
   const dataProps = {
     'data-track-component': 'PrimaryButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
+    ...filterEventAttributes(props),
   };
+
   const isActive = props.isToggleButton && props.isToggled;
   return (
     <div css={getButtonLayoutStyles(props.size)}>
       <AccessibleButton
+        ref={ref}
         type={props.type}
         buttonAttributes={dataProps}
         label={props.label}
@@ -52,7 +56,7 @@ const PrimaryButton = props => {
       </AccessibleButton>
     </div>
   );
-};
+});
 
 PrimaryButton.propTypes = {
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
