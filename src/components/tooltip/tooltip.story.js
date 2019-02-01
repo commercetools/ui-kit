@@ -147,6 +147,7 @@ storiesOf('Components|Tooltips', module)
             <div
               css={css`
                 display: inline-block;
+                cursor: not-allowed;
               `}
             >
               <PrimaryButton

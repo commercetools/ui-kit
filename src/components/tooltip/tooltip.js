@@ -1,3 +1,4 @@
+// inspired from https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Tooltip/Tooltip.js
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Manager, Reference, Popper } from 'react-popper';
