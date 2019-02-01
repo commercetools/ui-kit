@@ -92,7 +92,7 @@ class Tooltip extends React.Component {
               data-placement={placement}
               aria-hidden={!this.state.open}
             >
-              Popper element
+              {this.props.title}
             </div>
           )}
         </Popper>
