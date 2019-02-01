@@ -5,7 +5,7 @@ import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import { getBodyStyles } from './tooltip.styles';
 
-const sequentialId = createSequentialId('localized-text-field-');
+const sequentialId = createSequentialId('tooltip-');
 
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';

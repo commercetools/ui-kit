@@ -11,10 +11,7 @@ storiesOf('Components|Tooltips', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('Tooltip', () => {
-    const label = text(
-      'children',
-      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.'
-    );
+    const label = text('children', 'Tool tip text.');
 
     const placement = select(
       'placement',
@@ -89,6 +86,7 @@ storiesOf('Components|Tooltips', module)
                 border-color: purple;
                 border-radius: 6px;
                 color: white;
+                margin-left: 60px;
                 font-size: 1rem;
                 font-family: 'Open Sans', sans-serif;
                 cursor: pointer;
