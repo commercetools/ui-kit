@@ -90,7 +90,6 @@ class Tooltip extends React.Component {
     childrenProps.onMouseLeave = this.handleLeave;
     childrenProps.onFocus = this.handleEnter;
     childrenProps.onBlur = this.handleLeave;
-    // console.log('here --->', childrenProps);
 
     return (
       <Manager>
