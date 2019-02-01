@@ -35,13 +35,14 @@ jest.mock(
 );
 
 describe('Tooltip', () => {
-  it('should render children', () => {
+  it('should render children and label', () => {
     const { getByText } = render(
       <Tooltip title="What kind of bear is best?">
         <button>Click me!</button>
       </Tooltip>
     );
     expect(getByText('Click me!')).toBeInTheDocument();
+    expect(getByText('What kind of bear is best?')).toBeInTheDocument();
   });
 
   describe('interacting', () => {
