@@ -39,6 +39,7 @@ import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
 | `hasWarning`                    | `bool`           |    -     | -                       | -       | Indicates the input field has a warning                                                                                                                                |
 | `errors`                        | `objectOf(node)` |    -     | -                       | -       | Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.            |
 | `warnings`                      | `objectOf(node)` |    -     | -                       | -       | Used to show warnings underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the warning to show for that key.        |
+| `isTouched`                     | `bool`           |    -     | -                       | `false` | Indicates whether the field was touched. If there are errors or warnings, input will only be expanded when it has been touched                                         |
 
 The component forwards all `data` attribute props. It further adds a `-${currency}` suffix to the values of the `data-test` and `data-track-component` attributes, e.g `data-test="foo"` will get added to the input for `en` as `data-test="foo-en"`.
 

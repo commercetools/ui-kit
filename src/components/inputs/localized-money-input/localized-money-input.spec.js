@@ -233,10 +233,19 @@ describe('when every field has an error', () => {
     USD: 'A value is required',
     CAD: 'A value is required',
   };
-  it('should be open all fields and render errors', () => {
+  it('should not open all fields and render errors if not touched', () => {
+    const { getByLabelText, queryByLabelText } = renderLocalizedMoneyInput({
+      name: 'foo',
+      errors,
+    });
+    expect(getByLabelText('CAD')).toBeInTheDocument();
+    expect(queryByLabelText('USD')).not.toBeInTheDocument();
+  });
+  it('should be open all fields and render errors when touched', () => {
     const { getByText } = renderLocalizedMoneyInput({
       name: 'foo',
       errors,
+      isTouched: true,
     });
     expect(getByText(errors.USD)).toBeInTheDocument();
     expect(getByText(errors.CAD)).toBeInTheDocument();
@@ -252,6 +261,7 @@ describe('when the error is not on the selected currency', () => {
       selectedCurrency: 'CAD',
       name: 'foo',
       errors,
+      isTouched: true,
     });
     const usdInput = getByLabelText('USD');
     const CADInput = getByLabelText('CAD');

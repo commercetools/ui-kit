@@ -80,6 +80,7 @@ export const component = () => (
         selectedCurrency="CAD"
         horizontalConstraint="m"
         errors={{ EUR: <ErrorMessage>foo</ErrorMessage> }}
+        isTouched={true}
       />
     </Spec>
     <Spec label="when there is a warning for a specific currency (first one)">

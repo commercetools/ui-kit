@@ -77,6 +77,7 @@ storiesOf('Components|Inputs', module)
               )}
               hasError={boolean('hasError', false)}
               hasWarning={boolean('hasWarning', false)}
+              isTouched={boolean('isTouched', false)}
               errors={
                 Object.values(errors).some(error => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [currency, error]) => {

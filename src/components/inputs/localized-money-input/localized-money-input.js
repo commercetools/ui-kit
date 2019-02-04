@@ -158,6 +158,7 @@ export class LocalizedMoneyInput extends React.Component {
     horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
+    isTouched: PropTypes.bool,
     errors: PropTypes.objectOf(PropTypes.node),
     warnings: PropTypes.objectOf(PropTypes.node),
     // HoC
@@ -220,8 +221,8 @@ export class LocalizedMoneyInput extends React.Component {
       props.hasWarning ||
       getHasWarningOnRemainingLanguages(props.warnings, props.selectedCurrency);
     const areCurrenciesOpened =
-      hasErrorOnRemainingCurrencies ||
-      hasWarningOnRemainingCurrencies ||
+      (hasErrorOnRemainingCurrencies && props.isTouched) ||
+      (hasWarningOnRemainingCurrencies && props.isTouched) ||
       props.hideCurrencyExpansionControls ||
       state.areCurrenciesOpened;
 
