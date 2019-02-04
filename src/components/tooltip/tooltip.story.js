@@ -2,7 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { css } from '@emotion/core';
 import withReadme from 'storybook-readme/with-readme';
-import { withKnobs, text, select, number } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  number,
+} from '@storybook/addon-knobs';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
@@ -44,7 +50,7 @@ storiesOf('Components|Tooltips', module)
     );
 
     const leaveDelay = number('leave delay', 0);
-
+    const open = boolean('', false);
     return (
       <Section>
         <div
@@ -58,6 +64,7 @@ storiesOf('Components|Tooltips', module)
             leaveDelay={leaveDelay}
             placement={placement}
             type={type}
+            open={open}
           >
             <button
               css={css`

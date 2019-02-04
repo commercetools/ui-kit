@@ -12,9 +12,18 @@ const sequentialId = createSequentialId('tooltip-');
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
 
-  state = {
-    open: false,
-  };
+  constructor(props) {
+    super();
+    this.isControlled = props.open != null;
+    this.state = {
+      open: null,
+    };
+
+    if (!this.isControlled) {
+      // not controlled, use internal state
+      this.state.open = false;
+    }
+  }
 
   static getDerivedStateFromProps = (props, state) => ({
     id: getFieldId(props, state, sequentialId),
@@ -47,7 +56,7 @@ class Tooltip extends React.Component {
       childrenProps.onFocus(event);
     }
 
-    if (!this.state.open) {
+    if (!this.state.open && !this.isControlled) {
       this.setState({
         open: true,
       });
@@ -76,9 +85,11 @@ class Tooltip extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({
-      open: false,
-    });
+    if (!this.isControlled) {
+      this.setState({
+        open: false,
+      });
+    }
   };
 
   render() {
@@ -91,6 +102,8 @@ class Tooltip extends React.Component {
     childrenProps.onMouseLeave = this.handleLeave;
     childrenProps.onFocus = this.handleEnter;
     childrenProps.onBlur = this.handleLeave;
+
+    const open = this.isControlled ? this.props.open : this.state.open;
 
     return (
       <Manager>
@@ -108,7 +121,7 @@ class Tooltip extends React.Component {
               ref={ref}
               css={{ ...style, ...getBodyStyles({ type: this.props.type }) }}
               data-placement={placement}
-              aria-hidden={!this.state.open}
+              aria-hidden={!open}
             >
               {this.props.title}
             </div>
@@ -122,6 +135,7 @@ class Tooltip extends React.Component {
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   leaveDelay: PropTypes.number.isRequired,
+  open: PropTypes.bool,
   type: PropTypes.oneOf(['warning', 'info', 'error']).isRequired,
   placement: PropTypes.oneOf([
     'top',
