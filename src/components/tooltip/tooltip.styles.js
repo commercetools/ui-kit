@@ -34,8 +34,4 @@ export const getBodyStyles = ({ type }) => ({
   fontSize: '0.857rem',
   color: getTextColor({ type }),
   backgroundColor: vars.colorWhite,
-
-  "&[aria-hidden='true']": {
-    opacity: '0.01',
-  },
 });

@@ -45,8 +45,17 @@ class Tooltip extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.leaveTimer);
+  }
+
   handleEnter = event => {
     const childrenProps = this.props.children.props;
+
+    // Remove the title ahead of time.
+    // We don't want to wait for the next render commit.
+    // We would risk displaying two tooltips at the same time (native + this one).
+    this.childrenRef.setAttribute('title', '');
 
     if (event.type === 'mouseover' && childrenProps.onMouseOver) {
       childrenProps.onMouseOver(event);
@@ -60,6 +69,10 @@ class Tooltip extends React.Component {
       this.setState({
         open: true,
       });
+    }
+
+    if (this.props.onOpen) {
+      this.props.onOpen(event);
     }
   };
 
@@ -84,17 +97,30 @@ class Tooltip extends React.Component {
     }
   };
 
-  handleClose = () => {
+  handleClose = event => {
     if (!this.isControlled) {
       this.setState({
         open: false,
       });
     }
+    if (this.props.onClose) {
+      this.props.onClose(event);
+    }
+  };
+
+  onRootRef = ref => {
+    this.childrenRef = ref;
   };
 
   render() {
+    const open = this.isControlled ? this.props.open : this.state.open;
+
     const childrenProps = {
       'aria-describedby': this.state.open ? this.state.id : null,
+      // for seo and accessibility, we add the tooltip's title
+      // as a native title when the title is hidden
+      title:
+        !open && typeof this.props.title === 'string' ? this.props.title : null,
       ...this.props.children.props,
     };
 
@@ -103,11 +129,9 @@ class Tooltip extends React.Component {
     childrenProps.onFocus = this.handleEnter;
     childrenProps.onBlur = this.handleLeave;
 
-    const open = this.isControlled ? this.props.open : this.state.open;
-
     return (
       <Manager>
-        <Reference>
+        <Reference innerRef={this.onRootRef}>
           {({ ref }) =>
             React.cloneElement(this.props.children, {
               ...childrenProps,
@@ -115,18 +139,19 @@ class Tooltip extends React.Component {
             })
           }
         </Reference>
-        <Popper placement={this.props.placement}>
-          {({ ref, style, placement }) => (
-            <div
-              ref={ref}
-              css={{ ...style, ...getBodyStyles({ type: this.props.type }) }}
-              data-placement={placement}
-              aria-hidden={!open}
-            >
-              {this.props.title}
-            </div>
-          )}
-        </Popper>
+        {open && (
+          <Popper placement={this.props.placement}>
+            {({ ref, style, placement }) => (
+              <div
+                ref={ref}
+                css={{ ...style, ...getBodyStyles({ type: this.props.type }) }}
+                data-placement={placement}
+              >
+                {this.props.title}
+              </div>
+            )}
+          </Popper>
+        )}
       </Manager>
     );
   }
@@ -137,6 +162,8 @@ Tooltip.propTypes = {
   leaveDelay: PropTypes.number.isRequired,
   open: PropTypes.bool,
   type: PropTypes.oneOf(['warning', 'info', 'error']).isRequired,
+  onClose: PropTypes.func,
+  onOpen: PropTypes.func,
   placement: PropTypes.oneOf([
     'top',
     'top-start',
