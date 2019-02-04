@@ -144,7 +144,14 @@ class Tooltip extends React.Component {
             {({ ref, style, placement }) => (
               <div
                 ref={ref}
-                css={{ ...style, ...getBodyStyles({ type: this.props.type }) }}
+                css={{
+                  ...style,
+                  ...getBodyStyles({
+                    constraint: this.props.constraint,
+                    type: this.props.type,
+                    placement,
+                  }),
+                }}
                 data-placement={placement}
               >
                 {this.props.title}
@@ -159,6 +166,7 @@ class Tooltip extends React.Component {
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
+  constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']).isRequired,
   leaveDelay: PropTypes.number.isRequired,
   open: PropTypes.bool,
   type: PropTypes.oneOf(['warning', 'info', 'error']).isRequired,
@@ -183,6 +191,7 @@ Tooltip.propTypes = {
 
 Tooltip.defaultProps = {
   leaveDelay: 0,
+  constraint: 'scale',
   placement: 'bottom',
   type: 'info',
 };

@@ -2,13 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { css } from '@emotion/core';
 import withReadme from 'storybook-readme/with-readme';
-import {
-  withKnobs,
-  boolean,
-  text,
-  select,
-  number,
-} from '@storybook/addon-knobs';
+import { withKnobs, text, select, number } from '@storybook/addon-knobs';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
@@ -20,6 +14,12 @@ storiesOf('Components|Tooltips', module)
   .addDecorator(withReadme(Readme))
   .add('Tooltip', () => {
     const label = text('children', 'Tool tip text.');
+
+    const constraint = select(
+      'constraint',
+      ['xs', 's', 'm', 'l', 'xl', 'scale'],
+      'scale'
+    );
 
     const placement = select(
       'placement',
@@ -50,7 +50,7 @@ storiesOf('Components|Tooltips', module)
     );
 
     const leaveDelay = number('leave delay', 0);
-    const open = boolean('', false);
+
     return (
       <Section>
         <div
@@ -64,7 +64,8 @@ storiesOf('Components|Tooltips', module)
             leaveDelay={leaveDelay}
             placement={placement}
             type={type}
-            open={open}
+            open={true}
+            constraint={constraint}
           >
             <button
               css={css`
@@ -95,6 +96,7 @@ storiesOf('Components|Tooltips', module)
             leaveDelay={leaveDelay}
             placement={placement}
             type={type}
+            constraint={constraint}
           >
             <div
               css={css`
@@ -134,6 +136,7 @@ storiesOf('Components|Tooltips', module)
             leaveDelay={leaveDelay}
             placement={placement}
             type={type}
+            constraint={constraint}
           >
             <PrimaryButton onClick={() => {}} label="don't click me" />
           </Tooltip>
@@ -150,6 +153,7 @@ storiesOf('Components|Tooltips', module)
             leaveDelay={leaveDelay}
             placement={placement}
             type={type}
+            constraint={constraint}
           >
             <div
               css={css`
@@ -178,6 +182,7 @@ storiesOf('Components|Tooltips', module)
             leaveDelay={leaveDelay}
             placement={placement}
             type={type}
+            constraint={constraint}
           >
             <div
               css={css`
