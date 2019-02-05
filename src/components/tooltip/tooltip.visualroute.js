@@ -52,6 +52,7 @@ export const component = () => (
             title={constraint !== 'xs' ? longTitle : title}
             open={true}
             small={small}
+            placement="bottom"
             horizontalConstraint={constraint}
           >
             <PrimaryButton onClick={noop} label="Hello" />
