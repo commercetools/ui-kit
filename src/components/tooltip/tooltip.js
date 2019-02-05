@@ -183,7 +183,7 @@ Tooltip.propTypes = {
 
 Tooltip.defaultProps = {
   leaveDelay: 0,
-  constraint: 'scale',
+  horizontalConstraint: 'scale',
   placement: 'top',
   type: 'info',
 };
