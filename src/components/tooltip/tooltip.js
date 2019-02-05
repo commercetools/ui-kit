@@ -140,7 +140,7 @@ class Tooltip extends React.Component {
                 css={{
                   ...style,
                   ...getBodyStyles({
-                    constraint: this.props.constraint,
+                    constraint: this.props.horizontalConstraint,
                     placement,
                   }),
                 }}
@@ -158,7 +158,8 @@ class Tooltip extends React.Component {
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
-  constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']).isRequired,
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
+    .isRequired,
   leaveDelay: PropTypes.number.isRequired,
   open: PropTypes.bool,
   onClose: PropTypes.func,
@@ -183,7 +184,7 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
   leaveDelay: 0,
   constraint: 'scale',
-  placement: 'bottom',
+  placement: 'top',
   type: 'info',
 };
 
