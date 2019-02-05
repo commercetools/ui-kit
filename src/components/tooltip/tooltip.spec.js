@@ -41,7 +41,7 @@ class TestComponent extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     buttonLabel: PropTypes.string.isRequired,
-    open: PropTypes.bool,
+    isOpen: PropTypes.bool,
     id: PropTypes.string,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
@@ -57,7 +57,7 @@ class TestComponent extends React.Component {
   };
 
   state = {
-    open: this.props.open,
+    open: this.props.isOpen,
   };
 
   toggleTooltip = () => {
@@ -73,7 +73,7 @@ class TestComponent extends React.Component {
           title={this.props.title}
           onClose={this.props.onClose}
           onOpen={this.props.onOpen}
-          open={this.state.open}
+          isOpen={this.state.open}
           id={this.props.id}
           leaveDelay={this.props.leaveDelay}
         >
@@ -107,7 +107,9 @@ describe('Tooltip', () => {
   });
 
   it('should set aria-describedby on button when open', () => {
-    const { container } = render(<TestComponent id="my-tooltip" open={true} />);
+    const { container } = render(
+      <TestComponent id="my-tooltip" isOpen={true} />
+    );
     expect(
       container.querySelector("[aria-describedby='my-tooltip']")
     ).toBeInTheDocument();
@@ -220,7 +222,7 @@ describe('Tooltip', () => {
   describe('when controlled with open prop', () => {
     it('should open and close based on open prop', () => {
       const { queryByText, getByText, getByLabelText } = render(
-        <TestComponent open={false} />
+        <TestComponent isOpen={false} />
       );
 
       const toggleButton = getByLabelText('Toggle tooltip');

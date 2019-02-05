@@ -21,7 +21,7 @@ export const component = () => (
           margin-top: 50px;
         `}
       />
-      <Tooltip title={title} open={true} eventsEnabled={false}>
+      <Tooltip title={title} isOpen={true} eventsEnabled={false}>
         <PrimaryButton onClick={noop} label="Hello" />
       </Tooltip>
     </Spec>

@@ -13,7 +13,7 @@ class Tooltip extends React.Component {
   static displayName = 'ToolTip';
 
   state = {
-    open: this.isControlled ? this.props.open : false,
+    open: this.isControlled ? this.props.isOpen : false,
   };
 
   static getDerivedStateFromProps = (props, state) => ({
@@ -99,14 +99,14 @@ class Tooltip extends React.Component {
     }
   };
 
-  onRootRef = ref => {
+  setChildrenRef = ref => {
     this.childrenRef = ref;
   };
 
-  isControlled = this.props.open != null;
+  isControlled = this.props.isOpen != null;
 
   render() {
-    const open = this.isControlled ? this.props.open : this.state.open;
+    const open = this.isControlled ? this.props.isOpen : this.state.open;
 
     const childrenProps = {
       'aria-describedby': open ? this.state.id : null,
@@ -115,16 +115,15 @@ class Tooltip extends React.Component {
       title:
         !open && typeof this.props.title === 'string' ? this.props.title : null,
       ...this.props.children.props,
+      onMouseOver: this.handleEnter,
+      onMouseLeave: this.handleLeave,
+      onFocus: this.handleEnter,
+      onBlur: this.handleLeave,
     };
-
-    childrenProps.onMouseOver = this.handleEnter;
-    childrenProps.onMouseLeave = this.handleLeave;
-    childrenProps.onFocus = this.handleEnter;
-    childrenProps.onBlur = this.handleLeave;
 
     return (
       <Manager>
-        <Reference innerRef={this.onRootRef}>
+        <Reference innerRef={this.setChildrenRef}>
           {({ ref }) =>
             React.cloneElement(this.props.children, {
               ...childrenProps,
@@ -161,7 +160,7 @@ Tooltip.propTypes = {
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
     .isRequired,
   leaveDelay: PropTypes.number.isRequired,
-  open: PropTypes.bool,
+  isOpen: PropTypes.bool,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   placement: PropTypes.oneOf([
