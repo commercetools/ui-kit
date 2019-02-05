@@ -53,7 +53,7 @@ storiesOf('Components|Tooltips', module)
             title={label}
             leaveDelay={leaveDelay}
             placement={placement}
-            constraint={constraint}
+            horizontalConstraint={constraint}
           >
             <PrimaryButton onClick={() => {}} label="Submit" />
           </Tooltip>
