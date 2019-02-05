@@ -6,6 +6,7 @@ import invariant from 'tiny-invariant';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import { getBodyStyles } from './tooltip.styles';
+import RootRef from '../internals/root-ref';
 
 const sequentialId = createSequentialId('tooltip-');
 
@@ -46,7 +47,10 @@ class Tooltip extends React.Component {
     // Remove the title ahead of time.
     // We don't want to wait for the next render commit.
     // We would risk displaying two tooltips at the same time (native + this one).
-    this.childrenRef.setAttribute('title', '');
+
+    if (this.childrenRef && typeof this.childrenRef === 'function') {
+      this.childrenRef.setAttribute('title', '');
+    }
 
     if (event.type === 'mouseover' && childrenProps.onMouseOver) {
       childrenProps.onMouseOver(event);
@@ -124,12 +128,13 @@ class Tooltip extends React.Component {
     return (
       <Manager>
         <Reference innerRef={this.setChildrenRef}>
-          {({ ref }) =>
-            React.cloneElement(this.props.children, {
-              ...childrenProps,
-              ref,
-            })
-          }
+          {({ ref }) => (
+            <RootRef rootRef={ref}>
+              {React.cloneElement(this.props.children, {
+                ...childrenProps,
+              })}
+            </RootRef>
+          )}
         </Reference>
         {open && (
           <Popper placement={this.props.placement}>

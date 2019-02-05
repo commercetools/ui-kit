@@ -13,7 +13,7 @@ import {
   getButtonStyles,
 } from './primary-button.styles';
 
-const PrimaryButton = React.forwardRef((props, ref) => {
+const PrimaryButton = props => {
   const dataProps = {
     'data-track-component': 'PrimaryButton',
     ...filterAriaAttributes(props),
@@ -25,7 +25,6 @@ const PrimaryButton = React.forwardRef((props, ref) => {
   return (
     <div css={getButtonLayoutStyles(props.size)}>
       <AccessibleButton
-        ref={ref}
         type={props.type}
         buttonAttributes={dataProps}
         label={props.label}
@@ -56,7 +55,7 @@ const PrimaryButton = React.forwardRef((props, ref) => {
       </AccessibleButton>
     </div>
   );
-});
+};
 
 PrimaryButton.propTypes = {
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
