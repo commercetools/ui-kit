@@ -13,7 +13,7 @@ class Tooltip extends React.Component {
   static displayName = 'ToolTip';
 
   constructor(props) {
-    super();
+    super(props);
     this.isControlled = props.open != null;
     this.state = {
       open: null,
@@ -116,7 +116,7 @@ class Tooltip extends React.Component {
     const open = this.isControlled ? this.props.open : this.state.open;
 
     const childrenProps = {
-      'aria-describedby': this.state.open ? this.state.id : null,
+      'aria-describedby': open ? this.state.id : null,
       // for seo and accessibility, we add the tooltip's title
       // as a native title when the title is hidden
       title:
