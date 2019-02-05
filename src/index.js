@@ -122,6 +122,8 @@ export { default as Tag } from './components/tag';
 
 export { default as Card } from './components/card';
 
+export { default as Tooltip } from './components/tooltip';
+
 export { default as Text } from './components/typography/text';
 
 export { default as withMouseDownState } from './hocs/with-mouse-down-state';

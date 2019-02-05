@@ -1,8 +1,3 @@
-// These tests are disabled for now as we couldn't get CollapsiblePanel to
-// render in percy. We suspect that this happens for the same reason that we can
-// not render the table in Percy.
-// We did not get to the bottom of the problem yet, unfortunately.
-
 import React from 'react';
 import { CollapsiblePanel } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';

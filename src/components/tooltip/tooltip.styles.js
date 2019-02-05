@@ -44,7 +44,7 @@ const getMaxWidth = ({ constraint }) => {
       return vars.constraintM;
     case 'l':
       return vars.constraintL;
-    case 'Xl':
+    case 'xl':
       return vars.constraintXl;
     case 'scale':
     default:

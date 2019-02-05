@@ -11,7 +11,7 @@ const SpecContainer = styled.div`
     remaining states below it, so we establish a min-height for each spec to
     prevent that.
   */
-  min-height: 400px;
+  min-height: ${props => (props.small ? '150px' : '400px')};
 `;
 
 const Label = styled.div`
@@ -99,7 +99,7 @@ Props.propTypes = {
 };
 
 const Spec = props => (
-  <SpecContainer>
+  <SpecContainer small={props.small}>
     <Label>{props.label}</Label>
     {!props.omitPropsList && <Props>{props.children}</Props>}
     <Box inverted={props.inverted}>{props.children}</Box>
@@ -110,10 +110,12 @@ Spec.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
   inverted: PropTypes.bool,
+  small: PropTypes.bool,
   omitPropsList: PropTypes.bool,
 };
 
 Spec.defaultProps = {
+  small: false,
   omitPropsList: false,
 };
 
