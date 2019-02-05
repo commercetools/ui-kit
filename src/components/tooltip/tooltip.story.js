@@ -6,7 +6,6 @@ import { withKnobs, text, select, number } from '@storybook/addon-knobs';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
-import { WorldIcon } from '../icons';
 import PrimaryButton from '../buttons/primary-button';
 
 storiesOf('Components|Tooltips', module)
@@ -39,158 +38,24 @@ storiesOf('Components|Tooltips', module)
       },
       'top'
     );
-    const type = select(
-      'type',
-      {
-        info: 'info',
-        warning: 'warning',
-        error: 'error',
-      },
-      'warning'
-    );
 
-    const leaveDelay = number('leave delay', 0);
+    const leaveDelay = number('leave delay', 1000);
 
     return (
       <Section>
         <div
           css={css`
-            margin: 24px;
+            padding: 80px 0 80px 80px;
           `}
         >
-          <div>With full width button</div>
+          <p>With ui kit button</p>
           <Tooltip
             title={label}
             leaveDelay={leaveDelay}
             placement={placement}
-            type={type}
-            open={true}
             constraint={constraint}
           >
-            <button
-              css={css`
-                background: purple;
-                padding: 8px;
-                border-color: purple;
-                border-radius: 6px;
-                width: 100%;
-                color: white;
-                font-size: 1rem;
-                font-family: 'Open Sans', sans-serif;
-                cursor: pointer;
-              `}
-              aria-label="Click me"
-            >
-              click me
-            </button>
-          </Tooltip>
-          <div
-            css={css`
-              margin-top: 50px;
-            `}
-          >
-            With full non full width button
-          </div>
-          <Tooltip
-            title={label}
-            leaveDelay={leaveDelay}
-            placement={placement}
-            type={type}
-            constraint={constraint}
-          >
-            <div
-              css={css`
-                display: inline-block;
-              `}
-            >
-              <button
-                disabled
-                css={css`
-                  background: purple;
-                  padding: 8px;
-                  pointer-events: none;
-                  border-color: purple;
-                  border-radius: 6px;
-                  color: white;
-                  width: 150px;
-                  font-size: 1rem;
-                  font-family: 'Open Sans', sans-serif;
-                  cursor: pointer;
-                `}
-                aria-label="Click me"
-              >
-                click me
-              </button>
-            </div>
-          </Tooltip>
-
-          <div
-            css={css`
-              margin-top: 50px;
-            `}
-          >
-            With ui kit button
-          </div>
-          <Tooltip
-            title={label}
-            leaveDelay={leaveDelay}
-            placement={placement}
-            type={type}
-            constraint={constraint}
-          >
-            <PrimaryButton onClick={() => {}} label="don't click me" />
-          </Tooltip>
-
-          <div
-            css={css`
-              margin-top: 50px;
-            `}
-          >
-            With disabled ui kit button
-          </div>
-          <Tooltip
-            title={label}
-            leaveDelay={leaveDelay}
-            placement={placement}
-            type={type}
-            constraint={constraint}
-          >
-            <div
-              css={css`
-                display: inline-block;
-                cursor: not-allowed;
-              `}
-            >
-              <PrimaryButton
-                isDisabled
-                onClick={() => {}}
-                label="don't click me"
-              />
-            </div>
-          </Tooltip>
-
-          <div
-            css={css`
-              margin-top: 42px;
-            `}
-          >
-            With an icon{' '}
-          </div>
-
-          <Tooltip
-            title={label}
-            leaveDelay={leaveDelay}
-            placement={placement}
-            type={type}
-            constraint={constraint}
-          >
-            <div
-              css={css`
-                display: inline-block;
-              `}
-            >
-              <WorldIcon />
-            </div>
+            <PrimaryButton onClick={() => {}} label="Submit" />
           </Tooltip>
         </div>
       </Section>

@@ -141,7 +141,6 @@ class Tooltip extends React.Component {
                   ...style,
                   ...getBodyStyles({
                     constraint: this.props.constraint,
-                    type: this.props.type,
                     placement,
                   }),
                 }}
@@ -162,7 +161,6 @@ Tooltip.propTypes = {
   constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']).isRequired,
   leaveDelay: PropTypes.number.isRequired,
   open: PropTypes.bool,
-  type: PropTypes.oneOf(['warning', 'info', 'error']).isRequired,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   placement: PropTypes.oneOf([

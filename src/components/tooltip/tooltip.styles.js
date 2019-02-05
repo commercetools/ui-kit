@@ -1,25 +1,5 @@
 import vars from '../../../materials/custom-properties';
 
-const getTextColor = ({ type }) => {
-  if (type === 'info') {
-    return vars.colorNavy;
-  }
-  return vars.colorBlack;
-};
-
-const getBorderColor = ({ type }) => {
-  switch (type) {
-    case 'info':
-      return vars.colorGreen;
-    case 'warning':
-      return vars.colorOrange;
-    case 'error':
-      return vars.colorRed;
-    default:
-      return '';
-  }
-};
-
 const getOffsetMargin = ({ placement }) => {
   const position = (placement && placement.split('-')[0]) || '';
   switch (position) {
@@ -55,18 +35,18 @@ const getMaxWidth = ({ constraint }) => {
 // here we use object styles so we can spread these
 // with the styles we get from react-popper :D
 // eslint-disable-next-line import/prefer-default-export
-export const getBodyStyles = ({ constraint, placement, type }) => ({
+export const getBodyStyles = ({ constraint, placement }) => ({
   fontFamily: vars.fontFamilyDefault,
   borderRadius: vars.borderRadius6,
   padding: `${vars.spacing4} ${vars.spacing8}`,
   margin: getOffsetMargin({ placement }),
-  border: `1px solid ${getBorderColor({ type })}`,
-  boxShadow: `0 0 2px 0 rgba(0, 0, 0, 0.12), 0 3px 3px 0 rgba(0, 0, 0, 0.24)`,
+  border: 'none',
+  boxShadow: vars.shadow15,
   verticalAlign: 'middle',
   fontSize: '0.857rem',
   maxWidth: getMaxWidth({ constraint }),
   // so hovering over the tooltip when the tooltip overlaps the component
   pointerEvents: 'none',
-  color: getTextColor({ type }),
-  backgroundColor: vars.colorWhite,
+  color: vars.colorWhite,
+  backgroundColor: vars.colorNavy,
 });

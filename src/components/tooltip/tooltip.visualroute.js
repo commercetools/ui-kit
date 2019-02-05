@@ -16,8 +16,6 @@ export const routePath = '/tooltip';
 
 const constraints = ['xs', 's', 'm', 'l', 'xl', 'scale'];
 
-const types = ['info', 'warning', 'error'];
-
 const placements = [
   'top',
   'top-start',
@@ -61,18 +59,6 @@ export const component = () => (
         </Spec>
       );
     })}
-    {types.map(type => (
-      <Spec
-        key={type}
-        label={`Open - position bottom - type ${type}`}
-        omitPropsList
-        small
-      >
-        <Tooltip title={title} open={true} type={type}>
-          <PrimaryButton onClick={noop} label="Hello" />
-        </Tooltip>
-      </Spec>
-    ))}
     {placements.map(placement => (
       <Spec
         key={placement}
