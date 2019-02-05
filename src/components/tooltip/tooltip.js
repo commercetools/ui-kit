@@ -12,18 +12,9 @@ const sequentialId = createSequentialId('tooltip-');
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
 
-  constructor(props) {
-    super(props);
-    this.isControlled = props.open != null;
-    this.state = {
-      open: null,
-    };
-
-    if (!this.isControlled) {
-      // not controlled, use internal state
-      this.state.open = false;
-    }
-  }
+  state = {
+    open: this.isControlled ? this.props.open : false,
+  };
 
   static getDerivedStateFromProps = (props, state) => ({
     id: getFieldId(props, state, sequentialId),
@@ -111,6 +102,8 @@ class Tooltip extends React.Component {
   onRootRef = ref => {
     this.childrenRef = ref;
   };
+
+  isControlled = this.props.open != null;
 
   render() {
     const open = this.isControlled ? this.props.open : this.state.open;
