@@ -26,6 +26,14 @@ describe('rendering', () => {
     expect(getByLabelText('Add')).toBeInTheDocument();
     expect(getByLabelText('Add')).not.toHaveAttribute('disabled');
   });
+  it('should pass events', () => {
+    const onFocus = jest.fn();
+    const { getByLabelText } = render(
+      <FlatButton {...props} onFocus={onFocus} />
+    );
+    getByLabelText('Add').focus();
+    expect(onFocus).toHaveBeenCalled();
+  });
   it('should pass aria attributes"', () => {
     const { getByLabelText } = render(
       <FlatButton {...props} isDisabled={true} aria-describedby="tooltip-1" />

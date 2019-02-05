@@ -30,7 +30,7 @@ describe('rendering', () => {
     );
     expect(queryByTestId('icon')).not.toBeInTheDocument();
   });
-  it('should pass as aria attributes', () => {
+  it('should pass aria attributes', () => {
     const { getByLabelText } = render(
       <PrimaryButton {...props} aria-describedby="tooltip-1" />
     );
@@ -38,6 +38,14 @@ describe('rendering', () => {
       'aria-describedby',
       'tooltip-1'
     );
+  });
+  it('should pass events', () => {
+    const onFocus = jest.fn();
+    const { getByLabelText } = render(
+      <PrimaryButton {...props} onFocus={onFocus} />
+    );
+    getByLabelText('Add').focus();
+    expect(onFocus).toHaveBeenCalled();
   });
   it('should be marked as "disabled"', () => {
     const { getByLabelText } = render(

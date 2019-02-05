@@ -36,6 +36,14 @@ describe('rendering', () => {
       'tooltip-1'
     );
   });
+  it('should pass events', () => {
+    const onFocus = jest.fn();
+    const { getByLabelText } = render(
+      <LinkButton {...props} onFocus={onFocus} />
+    );
+    getByLabelText('test-button').focus();
+    expect(onFocus).toHaveBeenCalled();
+  });
   it('should prevent the navigation when "disabled"', async () => {
     const { getByLabelText, history } = render(
       <LinkButton {...props} isDisabled={true} />

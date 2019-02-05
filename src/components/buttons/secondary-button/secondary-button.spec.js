@@ -39,6 +39,14 @@ describe('rendering', () => {
       'tooltip-1'
     );
   });
+  it('should pass events', () => {
+    const onFocus = jest.fn();
+    const { getByLabelText } = render(
+      <SecondaryButton {...props} onFocus={onFocus} />
+    );
+    getByLabelText('Add').focus();
+    expect(onFocus).toHaveBeenCalled();
+  });
   it('should be marked as "disabled"', () => {
     const { getByLabelText } = render(
       <SecondaryButton {...props} isDisabled={true} />

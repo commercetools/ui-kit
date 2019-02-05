@@ -5,6 +5,7 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterEventAttributes from '../../../utils/filter-event-attributes';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 
@@ -42,6 +43,7 @@ const LinkButton = props => (
     data-track-component="LinkButton"
     {...filterAriaAttributes(props)}
     {...filterDataAttributes(props)}
+    {...filterEventAttributes(props)}
     aria-label={props.label}
   >
     <Spacings.Inline scale="xs" alignItems="center">
