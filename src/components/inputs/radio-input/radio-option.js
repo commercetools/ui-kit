@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterEventAttributes from '../../../utils/filter-event-attributes';
 import Spacings from '../../spacings';
 import Text from '../../typography/text';
 import Icons from './icons';
@@ -32,7 +33,7 @@ export class Option extends React.PureComponent {
   render() {
     return (
       <div>
-        <label css={getLabelStyles(this.props)}>
+        <label css={getLabelStyles(this.props)} {...filterEventAttributes}>
           <Spacings.Inline alignItems="center">
             <div css={getContainerStyles(this.props)}>
               {this.props.isChecked ? <Icons.Checked /> : <Icons.Default />}
