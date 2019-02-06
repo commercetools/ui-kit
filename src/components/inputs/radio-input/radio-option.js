@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import filterEventAttributes from '../../../utils/filter-event-attributes';
 import Spacings from '../../spacings';
@@ -63,6 +64,7 @@ export class Option extends React.PureComponent {
               disabled={this.props.isDisabled}
               checked={this.props.isChecked}
               type="radio"
+              {...filterAriaAttributes(this.props)}
               {...filterDataAttributes(this.props)}
             />
           </Spacings.Inline>
