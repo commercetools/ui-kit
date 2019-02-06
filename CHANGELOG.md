@@ -1,3 +1,16 @@
+<a name="8.2.0"></a>
+
+# [8.2.0](https://github.com/commercetools/ui-kit/compare/v8.1.1...v8.2.0) (2019-02-06)
+
+### Bug Fixes
+
+- `Tag`: Wrong CSS is applied in case linkTo prop is provided ([#511](https://github.com/commercetools/ui-kit/issues/511)) ([ba038f0](https://github.com/commercetools/ui-kit/commit/ba038f0))
+- `MoneyInput`: Background color fix for single currency MoneyInput ([#513](https://github.com/commercetools/ui-kit/pull/513))
+
+### Features
+
+- `Card`: support data attributes ([#514](https://github.com/commercetools/ui-kit/issues/514)) ([0c1538b](https://github.com/commercetools/ui-kit/commit/0c1538b))
+
 <a name="8.1.1"></a>
 
 # [8.1.1](https://github.com/commercetools/ui-kit/compare/v8.1.0...v8.1.1) (2019-01-31)
