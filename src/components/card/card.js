@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { css } from '@emotion/core';
+import filterDataAttributes from '../../utils/filter-data-attributes';
 import vars from '../../../materials/custom-properties';
 
 const Card = props => (
   <div
+    {...filterDataAttributes(props)}
     css={[
       css`
         display: flex;
