@@ -72,25 +72,23 @@ const getClickableContentWrapperStyles = ({ type, isRemoveable }) =>
 
 export const TagLinkBody = props => (
   <div
-    css={
-      ([
-        getContentWrapperStyles(props),
-        !props.isDisabled &&
-          css`
-            cursor: pointer;
-          `,
-        !props.isDisabled &&
-          Boolean(props.onRemove) &&
-          css`
-            padding-right: ${vars.spacing8};
-          `,
-      ],
+    css={[
+      getContentWrapperStyles(props),
+      !props.isDisabled &&
+        css`
+          cursor: pointer;
+        `,
+      !props.isDisabled &&
+        Boolean(props.onRemove) &&
+        css`
+          padding-right: ${vars.spacing8};
+        `,
       !props.isDisabled &&
         getClickableContentWrapperStyles({
           type: props.type,
           isRemoveable: Boolean(props.onRemove),
-        }))
-    }
+        }),
+    ]}
   >
     {!props.isDisabled ? (
       <Link
