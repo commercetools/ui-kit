@@ -165,8 +165,11 @@ const groupStyles = () => base => ({
   },
 });
 
-const groupHeadingStyles = () => base => ({
+const groupHeadingStyles = props => base => ({
   ...base,
+  borderTop: props.shouldDivideOptionGroups
+    ? vars.borderTopForOptionGroupSeparator
+    : base.borderTop,
   color: vars.fontColorReadonly,
   fontSize: vars.fontSizeSmall,
   textTransform: 'none',

@@ -105,6 +105,7 @@ export default {
   borderRadiusInput: '6px',
   borderRadiusTag: '2px',
   borderRadiusForInput: '6px',
+  borderTopForOptionGroupSeparator: '1px solid hsl(0, 0%, 60%)',
   fontColorDefault: '#1a1a1a',
   fontColorDisabled: 'hsl(0, 0%, 60%)',
   fontColorError: '#e60050',
