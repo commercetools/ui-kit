@@ -5,7 +5,7 @@ import { getInputStyles } from '../styles';
 const getCurrencyLabelStyles = () => css`
   display: flex;
   color: ${vars.fontColorDisabled};
-  background-color: var(--background-color-input-disabled);
+  background-color: ${vars.colorNavy98};
   border-top-left-radius: ${vars.borderRadiusInput};
   border-bottom-left-radius: ${vars.borderRadiusInput};
   border: 1px ${vars.borderColorInputDisabled} solid;
