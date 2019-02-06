@@ -12,7 +12,7 @@ const Story = () => (
   <Section>
     <Tag
       type={select('type', ['normal', 'warning'], 'normal')}
-      linkTo={select('linkTo', ['/foo', undefined], undefined)}
+      linkTo={select('linkTo', ['/foo', undefined], '/foo')}
       isDisabled={boolean('isDisabled', false)}
       onClick={boolean('onClick', false) ? action('onClick') : undefined}
       horizontalConstraint={select(
