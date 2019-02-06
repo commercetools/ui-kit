@@ -3190,7 +3190,7 @@ babel-polyfill@6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-jest@^24.1.0:
+babel-preset-jest@24.1.0, babel-preset-jest@^24.1.0:
   version "24.1.0"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-24.1.0.tgz#83bc564fdcd4903641af65ec63f2f5de6b04132e"
   integrity sha512-FfNLDxFWsNX9lUmtwY7NheGlANnagvxq8LZdl5PKnVG3umP+S/g0XbVBfwtA4Ai3Ri/IMkWabBz3Tyk9wdspcw==
