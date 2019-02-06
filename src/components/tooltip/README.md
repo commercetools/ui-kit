@@ -18,7 +18,7 @@ Tooltips display informative text when users hover over or focus on an element.
 #### Working with disabled child elements
 
 When you use a tooltip with a disabled element, you need to wrap element in a div, as
-disabled elements do not fire events.
+disabled elements do not fire events. It's a good idea to add this style `pointer-events: none` to the disabled element to stop it from capturing events.
 
 ```js
 <Tooltip
@@ -41,12 +41,12 @@ disabled elements do not fire events.
 
 #### Working with custom child elements
 
-The tooltip needs to apply DOM event listeners to its child element. If the child is a custom React element, you need to make sure that it spreads its properties to the underlying DOM element.
+The tooltip needs to apply DOM event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to its child element. If the child is a custom React element, you need to make sure that it spreads these properties to the underlying DOM element.
 
 ```js
 const MyComponent = props => {
-  // We spread the properties to the underlying DOM element.
-  return <div {...props}>Bin</div>;
+  // We use a static method from Tooltip to forward required props.
+  return <div {...Tooltip.forwardProps(props)}>Bin</div>;
 };
 
 <Tooltip title="Delete">
