@@ -3,39 +3,8 @@ import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../test-utils';
 import Tooltip from './tooltip';
 
+jest.mock('popper.js');
 jest.useFakeTimers();
-
-// copy pasta from https://github.com/FezVrasta/popper.js/issues/478
-jest.mock(
-  'popper.js',
-  () =>
-    class Popper {
-      static placements = [
-        'auto',
-        'auto-end',
-        'auto-start',
-        'bottom',
-        'bottom-end',
-        'bottom-start',
-        'left',
-        'left-end',
-        'left-start',
-        'right',
-        'right-end',
-        'right-start',
-        'top',
-        'top-end',
-        'top-start',
-      ];
-
-      constructor() {
-        return {
-          destroy: () => {},
-          scheduleUpdate: () => {},
-        };
-      }
-    }
-);
 
 class TestComponent extends React.Component {
   static propTypes = {
@@ -235,5 +204,28 @@ describe('Tooltip', () => {
       // tooltip should be hidden
       expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
     });
+  });
+});
+
+describe('static methods', () => {
+  it('should forward required props', () => {
+    const requiredProps = {
+      onMouseOver: '',
+      onMouseLeave: '',
+      onFocus: '',
+      onBlur: '',
+    };
+
+    const extraneousProps = {
+      pandaCount: '',
+      infectionRate: '',
+    };
+
+    const props = {
+      ...requiredProps,
+      ...extraneousProps,
+    };
+
+    expect(Tooltip.forwardProps(props)).toEqual(requiredProps);
   });
 });

@@ -10,16 +10,33 @@ import RootRef from '../internals/root-ref';
 
 const sequentialId = createSequentialId('tooltip-');
 
+const requiredProps = [
+  'onMouseOver',
+  'onMouseLeave',
+  'onFocus',
+  'onBlur',
+  'aria-describedby',
+];
+
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
+
+  static getDerivedStateFromProps = (props, state) => ({
+    id: getFieldId(props, state, sequentialId),
+  });
 
   state = {
     open: this.isControlled ? this.props.isOpen : false,
   };
 
-  static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, sequentialId),
-  });
+  static forwardProps = props =>
+    Object.keys(props)
+      .filter(prop => requiredProps.includes(prop))
+      .reduce((acc, p) => {
+        // eslint-disable-next-line no-param-reassign
+        acc[p] = props[p];
+        return acc;
+      }, {});
 
   componentDidMount() {
     // eslint-disable-next-line no-console
