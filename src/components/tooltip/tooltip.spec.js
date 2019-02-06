@@ -108,7 +108,7 @@ describe('Tooltip', () => {
       // should show the tooltip
       expect(getByText('What kind of bear is best?')).toBeInTheDocument();
       // should remove the title
-      expect(button).not.toHaveProperty('title');
+      expect(button).toHaveProperty('title', '');
       fireEvent.mouseLeave(button);
       // should call callbacks
       expect(onMouseLeave).toHaveBeenCalled();
@@ -141,7 +141,7 @@ describe('Tooltip', () => {
       // should show the tooltip
       expect(getByText('What kind of bear is best?')).toBeInTheDocument();
       // should remove the title
-      expect(button).not.toHaveProperty('title');
+      expect(button).toHaveProperty('title', '');
       fireEvent.blur(button);
       // should call callbacks
       expect(onBlur).toHaveBeenCalled();

@@ -16,6 +16,7 @@ const requiredProps = [
   'onFocus',
   'onBlur',
   'aria-describedby',
+  'title',
 ];
 
 class Tooltip extends React.Component {
@@ -64,7 +65,6 @@ class Tooltip extends React.Component {
     // Remove the title ahead of time.
     // We don't want to wait for the next render commit.
     // We would risk displaying two tooltips at the same time (native + this one).
-
     if (this.childrenRef && typeof this.childrenRef === 'function') {
       this.childrenRef.setAttribute('title', '');
     }
