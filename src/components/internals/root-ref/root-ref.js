@@ -14,6 +14,11 @@ const setRef = (ref, value) => {
 
 export default class RootRef extends React.Component {
   static displayName = 'RootRef';
+
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    rootRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
+  };
   componentDidMount() {
     this.ref = ReactDOM.findDOMNode(this);
     setRef(this.props.rootRef, this.ref);
@@ -41,8 +46,3 @@ export default class RootRef extends React.Component {
     return this.props.children;
   }
 }
-
-RootRef.propTypes = {
-  children: PropTypes.element.isRequired,
-  rootRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
-};
