@@ -20,7 +20,7 @@ module.exports = {
     '<rootDir>/test/setup-tests.js',
     'jest-localstorage-mock',
   ],
-  setupTestFrameworkScriptFile: '<rootDir>/scripts/setup-test-framework.js',
+  setupFilesAfterEnv: ['<rootDir>/scripts/setup-test-framework.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testEnvironment: 'jsdom',
   testURL: 'https://mc.commercetools.com/',
