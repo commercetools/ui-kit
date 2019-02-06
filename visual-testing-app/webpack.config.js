@@ -27,7 +27,7 @@ module.exports = {
   target: 'web',
   // note: we have to use 'development' for now, because when we use production
   // our emotion styles aren't displayed in our percy snapshots.
-  mode: 'production',
+  mode: 'development',
   stats: 'minimal',
   entry: './visual-testing-app/src/index.js',
   output: {
