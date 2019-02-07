@@ -19,7 +19,11 @@ class TestComponent extends React.Component {
     leaveDelay: PropTypes.number,
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
+    components: PropTypes.shape({
+      WrapperComponent: PropTypes.any,
+    }),
   };
+
   static defaultProps = {
     title: 'What kind of bear is best?',
     buttonLabel: 'Submit',
@@ -45,6 +49,7 @@ class TestComponent extends React.Component {
           isOpen={this.state.open}
           id={this.props.id}
           leaveDelay={this.props.leaveDelay}
+          components={this.props.components}
         >
           <button
             onFocus={this.props.onFocus}
@@ -204,6 +209,62 @@ describe('Tooltip', () => {
       // tooltip should be hidden
       expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
     });
+  });
+});
+
+const TooltipWrapper = React.forwardRef((props, ref) => (
+  <div
+    data-testid="tooltip-custom-wrapper"
+    ref={ref}
+    style={{ display: 'block' }}
+    {...props}
+  >
+    {props.children}
+  </div>
+));
+
+TooltipWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+describe('when used with a custom wrapper component', () => {
+  it('should render custom wrapper and interact with keyboard', () => {
+    const onFocus = jest.fn();
+    const onBlur = jest.fn();
+    const onClose = jest.fn();
+    const onOpen = jest.fn();
+    const { container, queryByText, getByText } = render(
+      <TestComponent
+        onClose={onClose}
+        onOpen={onOpen}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        components={{ WrapperComponent: TooltipWrapper }}
+      />
+    );
+
+    // should render the custom WrapperComponent
+    expect(
+      container.querySelector("[data-testid='tooltip-custom-wrapper']")
+    ).toBeInTheDocument();
+
+    const button = getByText('Submit');
+    fireEvent.focus(button);
+    // should call callbacks
+    expect(onFocus).toHaveBeenCalled();
+    expect(onOpen).toHaveBeenCalled();
+    // should show the tooltip
+    expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+    // should remove the title
+    expect(button).toHaveProperty('title', '');
+    fireEvent.blur(button);
+    // should call callbacks
+    expect(onBlur).toHaveBeenCalled();
+    expect(onClose).toHaveBeenCalled();
+    // should hide tooltip
+    expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
+    // should add the title again
+    expect(button).toHaveProperty('title', 'What kind of bear is best?');
   });
 });
 

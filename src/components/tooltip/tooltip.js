@@ -1,12 +1,14 @@
 // inspired from https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Tooltip/Tooltip.js
 import PropTypes from 'prop-types';
 import React from 'react';
+import { isValidElementType } from 'react-is';
 import { Manager, Reference, Popper } from 'react-popper';
 import invariant from 'tiny-invariant';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
-import { getBodyStyles } from './tooltip.styles';
 import RootRef from '../internals/root-ref';
+import Wrapper from './wrapper';
+import { getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
 
@@ -21,6 +23,49 @@ const requiredProps = [
 
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
+
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
+      .isRequired,
+    leaveDelay: PropTypes.number.isRequired,
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.func,
+    onOpen: PropTypes.func,
+    placement: PropTypes.oneOf([
+      'top',
+      'top-start',
+      'top-end',
+      'right',
+      'right-start',
+      'right-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'left',
+      'left-start',
+      'left-end',
+    ]),
+    title: PropTypes.string.isRequired,
+    components: PropTypes.shape({
+      WrapperComponent: (props, propName) => {
+        if (props[propName] && !isValidElementType(props[propName])) {
+          return new Error(
+            `Invalid prop 'component' supplied to 'Route': the prop is not a valid React component`
+          );
+        }
+        return null;
+      },
+    }),
+  };
+
+  static defaultProps = {
+    components: {},
+    leaveDelay: 0,
+    horizontalConstraint: 'scale',
+    placement: 'top',
+    type: 'info',
+  };
 
   static getDerivedStateFromProps = (props, state) => ({
     id: getFieldId(props, state, sequentialId),
@@ -136,21 +181,26 @@ class Tooltip extends React.Component {
       title:
         !open && typeof this.props.title === 'string' ? this.props.title : null,
       ...this.props.children.props,
+    };
+
+    const eventListeners = {
       onMouseOver: this.handleEnter,
       onMouseLeave: this.handleLeave,
       onFocus: this.handleEnter,
       onBlur: this.handleLeave,
     };
 
+    const WrapperComponent = this.props.components.WrapperComponent || Wrapper;
+
     return (
       <Manager>
         <Reference innerRef={this.setChildrenRef}>
           {({ ref }) => (
-            <RootRef rootRef={ref}>
-              {React.cloneElement(this.props.children, {
-                ...childrenProps,
-              })}
-            </RootRef>
+            <WrapperComponent {...eventListeners}>
+              <RootRef rootRef={ref}>
+                {React.cloneElement(this.props.children, { ...childrenProps })}
+              </RootRef>
+            </WrapperComponent>
           )}
         </Reference>
         {open && (
@@ -176,37 +226,5 @@ class Tooltip extends React.Component {
     );
   }
 }
-
-Tooltip.propTypes = {
-  children: PropTypes.node.isRequired,
-  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
-    .isRequired,
-  leaveDelay: PropTypes.number.isRequired,
-  isOpen: PropTypes.bool,
-  onClose: PropTypes.func,
-  onOpen: PropTypes.func,
-  placement: PropTypes.oneOf([
-    'top',
-    'top-start',
-    'top-end',
-    'right',
-    'right-start',
-    'right-end',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-    'left',
-    'left-start',
-    'left-end',
-  ]),
-  title: PropTypes.string.isRequired,
-};
-
-Tooltip.defaultProps = {
-  leaveDelay: 0,
-  horizontalConstraint: 'scale',
-  placement: 'top',
-  type: 'info',
-};
 
 export default Tooltip;

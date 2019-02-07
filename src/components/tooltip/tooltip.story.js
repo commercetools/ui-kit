@@ -1,12 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { css } from '@emotion/core';
 import withReadme from 'storybook-readme/with-readme';
-import { withKnobs, text, select, number } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  number,
+} from '@storybook/addon-knobs';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
 import PrimaryButton from '../buttons/primary-button';
+
+const CustomWrapper = props => (
+  <div {...props} style={{ display: 'block', backgroundColor: 'pink' }}>
+    {props.children}
+  </div>
+);
+
+CustomWrapper.propTypes = {
+  children: PropTypes.node,
+};
+CustomWrapper.displayName = 'CustomWrapper';
 
 storiesOf('Components|Tooltips', module)
   .addDecorator(withKnobs)
@@ -41,6 +59,8 @@ storiesOf('Components|Tooltips', module)
 
     const leaveDelay = number('leave delay', 1000);
 
+    const fullWidth = boolean('full width wrapper', false);
+
     return (
       <Section>
         <div
@@ -54,6 +74,7 @@ storiesOf('Components|Tooltips', module)
             leaveDelay={leaveDelay}
             placement={placement}
             horizontalConstraint={constraint}
+            components={{ WrapperComponent: fullWidth ? CustomWrapper : null }}
           >
             <PrimaryButton onClick={() => {}} label="Submit" />
           </Tooltip>

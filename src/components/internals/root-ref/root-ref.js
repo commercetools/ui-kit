@@ -19,6 +19,7 @@ export default class RootRef extends React.Component {
     children: PropTypes.element.isRequired,
     rootRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
   };
+
   componentDidMount() {
     this.ref = ReactDOM.findDOMNode(this);
     setRef(this.props.rootRef, this.ref);
