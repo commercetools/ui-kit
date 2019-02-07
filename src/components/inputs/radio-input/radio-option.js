@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterEventAttributes from '../../../utils/filter-event-attributes';
 import Spacings from '../../spacings';
 import Text from '../../typography/text';
 import Icons from './icons';
@@ -34,7 +32,7 @@ export class Option extends React.PureComponent {
   render() {
     return (
       <div>
-        <label css={getLabelStyles(this.props)} {...filterEventAttributes}>
+        <label css={getLabelStyles(this.props)}>
           <Spacings.Inline alignItems="center">
             <div css={getContainerStyles(this.props)}>
               {this.props.isChecked ? <Icons.Checked /> : <Icons.Default />}
@@ -64,7 +62,6 @@ export class Option extends React.PureComponent {
               disabled={this.props.isDisabled}
               checked={this.props.isChecked}
               type="radio"
-              {...filterAriaAttributes(this.props)}
               {...filterDataAttributes(this.props)}
             />
           </Spacings.Inline>

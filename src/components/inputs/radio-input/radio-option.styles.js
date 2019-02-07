@@ -43,26 +43,17 @@ const getContainerStyles = props => {
 };
 
 const getLabelStyles = props => {
-  const baseStyles = css`
-    display: inline-flex;
-  `;
   if (props.isDisabled) {
-    return [
-      baseStyles,
-      css`
-        cursor: not-allowed;
-      `,
-    ];
+    return css`
+      cursor: not-allowed;
+    `;
   }
-  return [
-    baseStyles,
-    css`
-      cursor: pointer;
-      &:hover svg [id$='borderAndContent'] > [id$='border'] {
-        stroke: ${vars.borderColorInputFocus};
-      }
-    `,
-  ];
+  return css`
+    cursor: pointer;
+    &:hover svg [id$='borderAndContent'] > [id$='border'] {
+      stroke: ${vars.borderColorInputFocus};
+    }
+  `;
 };
 
 export { getContainerStyles, getLabelStyles };
