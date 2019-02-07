@@ -267,26 +267,3 @@ describe('when used with a custom wrapper component', () => {
     expect(button).toHaveProperty('title', 'What kind of bear is best?');
   });
 });
-
-describe('static methods', () => {
-  it('should forward required props', () => {
-    const requiredProps = {
-      onMouseOver: '',
-      onMouseLeave: '',
-      onFocus: '',
-      onBlur: '',
-    };
-
-    const extraneousProps = {
-      pandaCount: '',
-      infectionRate: '',
-    };
-
-    const props = {
-      ...requiredProps,
-      ...extraneousProps,
-    };
-
-    expect(Tooltip.forwardProps(props)).toEqual(requiredProps);
-  });
-});
