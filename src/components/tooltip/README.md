@@ -17,40 +17,41 @@ Tooltips display informative text when users hover over or focus on an element.
 
 #### Working with disabled child elements
 
-When you use a tooltip with a disabled element, you need to wrap element in a div, as
-disabled elements do not fire events. It's a good idea to add this style `pointer-events: none` to the disabled element to stop it from capturing events.
+When you use a tooltip with a disabled element, you should the style `pointer-events: none` to the disabled element to stop it from capturing events.
 
 ```js
 <Tooltip
   position="left"
   label="You do not have permission to delete the database"
 >
-  <div style={{ cursor: 'not-allowed' }}>
-    <button
-      disabled
-      onClick={deleteDb()}
-      style={{
-        pointerEvents: 'none',
-      }}
-    >
-      Delete production database
-    </button>
-  </div>
+  <button
+    disabled
+    onClick={deleteDb()}
+    style={{
+      pointerEvents: 'none',
+    }}
+  >
+    Delete production database
+  </button>
 </Tooltip>
 ```
 
-#### Working with custom child elements
+#### Customizing the wrapper
 
-The tooltip needs to apply DOM event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to its child element. If the child is a custom React element, you need to make sure that it spreads these properties to the underlying DOM element.
+The tooltip applies event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to a wrapping component around the passed in component. By default, this wrapper is displayed with style `inline-block`. If you want to customize this behaviour, then you can pass in a custom wrapping element.
 
 ```js
-const MyComponent = props => {
-  // We use a static method from Tooltip to forward required props.
-  return <div {...Tooltip.forwardProps(props)}>Bin</div>;
-};
+const Wrapper = styled.div`
+  display: block;
+`;
 
-<Tooltip title="Delete">
-  <MyComponent />
+const FullWidthButton = styled.button`
+  display: block;
+  width: 100%;
+`;
+
+<Tooltip title="Delete" components={{ WrapperComponent: Wrapper }}>
+  <FullWidthButton>Submit</FullWidthButton>
 </Tooltip>;
 ```
 
@@ -65,3 +66,4 @@ const MyComponent = props => {
 | `position`             | `object` |    -     | `top`, `top-start`, `top-end`, `right`, `right-start`, `right-end`, `bottom`, `bottom-end`, `bottom-start`, `left`, `left-start`, `left-end` | `top`   | How the tooltip is positioned relative to the child element                                     |
 | `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale`                                                                                                           | `scale` | Horizontal size limit of the tooltip                                                            |
 | `children`             | `node`   |    ✅    | -                                                                                                                                            | -       | Content rendered within the tooltip                                                             |
+| `components`           | `object` |    -     | `WrapperComponent`                                                                                                                           | -       | If passed, the tooltip will wrap your component with this element                               |

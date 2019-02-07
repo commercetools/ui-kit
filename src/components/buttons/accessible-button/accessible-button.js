@@ -27,7 +27,6 @@ const AccessibleButton = React.forwardRef((props, ref) => (
       `,
       props.isDisabled &&
         css`
-          cursor: not-allowed;
           pointer-events: none;
         `,
     ]}

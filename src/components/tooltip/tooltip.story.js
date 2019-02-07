@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
+import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import withReadme from 'storybook-readme/with-readme';
 import {
@@ -15,11 +16,10 @@ import Readme from './README.md';
 import Tooltip from './tooltip';
 import PrimaryButton from '../buttons/primary-button';
 
-const CustomWrapper = props => (
-  <div {...props} style={{ display: 'block', backgroundColor: 'pink' }}>
-    {props.children}
-  </div>
-);
+const CustomWrapper = styled.div`
+  display: block;
+  background-color: pink;
+`;
 
 CustomWrapper.propTypes = {
   children: PropTypes.node,
@@ -76,7 +76,11 @@ storiesOf('Components|Tooltips', module)
             horizontalConstraint={constraint}
             components={{ WrapperComponent: fullWidth ? CustomWrapper : null }}
           >
-            <PrimaryButton onClick={() => {}} label="Submit" />
+            <PrimaryButton
+              onClick={() => {}}
+              label="Submit"
+              isDisabled={boolean('button disabled', false)}
+            />
           </Tooltip>
         </div>
       </Section>

@@ -1,22 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
-const Wrapper = props => (
-  <div
-    css={css`
-      display: inline-block;
-    `}
-    {...props}
-  >
-    {props.children}
-  </div>
-);
-
-Wrapper.displayName = 'Wrapper';
-
-Wrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Wrapper;
+export default styled.div`
+  display: inline-block;
+`;

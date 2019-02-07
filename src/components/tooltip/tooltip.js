@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { isValidElementType } from 'react-is';
 import { Manager, Reference, Popper } from 'react-popper';
-import invariant from 'tiny-invariant';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import RootRef from '../internals/root-ref';
@@ -51,7 +50,7 @@ class Tooltip extends React.Component {
       WrapperComponent: (props, propName) => {
         if (props[propName] && !isValidElementType(props[propName])) {
           return new Error(
-            `Invalid prop 'component' supplied to 'Route': the prop is not a valid React component`
+            `Invalid prop 'components.WrapperComponent' supplied to 'WrapperComponent': the prop is not a valid React component`
           );
         }
         return null;
@@ -67,14 +66,6 @@ class Tooltip extends React.Component {
     type: 'info',
   };
 
-  static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, sequentialId),
-  });
-
-  state = {
-    open: this.isControlled ? this.props.isOpen : false,
-  };
-
   static forwardProps = props =>
     Object.keys(props)
       .filter(prop => requiredProps.includes(prop))
@@ -84,21 +75,13 @@ class Tooltip extends React.Component {
         return acc;
       }, {});
 
-  componentDidMount() {
-    // eslint-disable-next-line no-console
-    const childrenProps = this.props.children.props;
+  static getDerivedStateFromProps = (props, state) => ({
+    id: getFieldId(props, state, sequentialId),
+  });
 
-    invariant(
-      !(childrenProps.disabled || childrenProps.isDisabled),
-      [
-        'ui-kit: you are providing a disabled `button` child to the Tooltip component.',
-        'A disabled element does not fire events.',
-        "Tooltip needs to listen to the child element's events to display the title.",
-        '',
-        'Place a `div` container on top of the element.',
-      ].join('\n')
-    );
-  }
+  state = {
+    open: this.isControlled ? this.props.isOpen : false,
+  };
 
   componentWillUnmount() {
     clearTimeout(this.leaveTimer);
@@ -131,6 +114,9 @@ class Tooltip extends React.Component {
     if (this.props.onOpen) {
       this.props.onOpen(event);
     }
+
+    event.preventDefault();
+    event.stopPropagation();
   };
 
   handleLeave = event => {
