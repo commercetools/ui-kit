@@ -157,25 +157,27 @@ const multiValueRemoveStyles = () => base => ({
   },
 });
 
-const groupStyles = () => base => ({
+const groupStyles = props => base => ({
   ...base,
   padding: 0,
-  '&:not(:firstChild)': {
-    borderTop: `1px ${vars.borderColorSeparator} solid`,
+  '&:not(:first-child)': {
+    borderTop: props.shouldDivideOptionGroups
+      ? vars.borderTopForOptionGroupSeparator
+      : base.borderTop,
   },
 });
 
-const groupHeadingStyles = props => base => ({
+export const groupHeadingStyles = () => base => ({
   ...base,
-  borderTop: props.shouldDivideOptionGroups
-    ? vars.borderTopForOptionGroupSeparator
-    : base.borderTop,
   color: vars.fontColorReadonly,
   fontSize: vars.fontSizeSmall,
   textTransform: 'none',
   fontWeight: 'bold',
   margin: `0 ${vars.spacing4}`,
   padding: `${vars.spacing8} ${vars.spacing4} ${vars.spacing4}`,
+  '&:empty': {
+    padding: 0,
+  },
 });
 
 const containerStyles = () => (base, state) => ({
