@@ -90,6 +90,7 @@ import OrigScreenGearIcon from './svg/screen-gear.react.svg';
 import OrigScreenUserIcon from './svg/screen-user.react.svg';
 import OrigSearchIcon from './svg/search.react.svg';
 import OrigSortingIcon from './svg/sorting.react.svg';
+import OrigSpeechBubbleIcon from './svg/speech-bubble.react.svg';
 import OrigSpeedometerIcon from './svg/speedometer.react.svg';
 import OrigSplitIcon from './svg/split.react.svg';
 import OrigStackIcon from './svg/stack.react.svg';
@@ -308,6 +309,10 @@ export const ScreenUserIcon = createStyledIcon(
 );
 export const SearchIcon = createStyledIcon(OrigSearchIcon, 'SearchIcon');
 export const SortingIcon = createStyledIcon(OrigSortingIcon, 'SortingIcon');
+export const SpeechBubbleIcon = createStyledIcon(
+  OrigSpeechBubbleIcon,
+  'SpeechBubbleIcon'
+);
 export const SpeedometerIcon = createStyledIcon(
   OrigSpeedometerIcon,
   'SpeedometerIcon'
