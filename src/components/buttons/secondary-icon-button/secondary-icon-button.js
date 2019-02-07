@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterEventAttributes from '../../../utils/filter-event-attributes';
 import AccessibleButton from '../accessible-button';
 
 export const SecondaryIconButton = props => {
@@ -12,7 +11,6 @@ export const SecondaryIconButton = props => {
     'data-track-component': 'SecondaryIconButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
-    ...filterEventAttributes(props),
   };
   let iconTheme = 'black';
   if (props.isDisabled) iconTheme = 'grey';

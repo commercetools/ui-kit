@@ -5,7 +5,6 @@ import vars from '../../../../materials/custom-properties';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterEventAttributes from '../../../utils/filter-event-attributes';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
@@ -41,7 +40,6 @@ export const FlatButton = props => {
     'data-track-component': 'FlatButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
-    ...filterEventAttributes(props),
   };
 
   return (

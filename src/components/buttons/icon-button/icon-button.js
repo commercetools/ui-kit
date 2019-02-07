@@ -8,7 +8,6 @@ import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterEventAttributes from '../../../utils/filter-event-attributes';
 import AccessibleButton from '../accessible-button';
 import {
   getStateStyles,
@@ -39,7 +38,6 @@ export const IconButton = props => {
     'data-track-component': 'IconButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
-    ...filterEventAttributes(props),
   };
   const isActive = props.isToggleButton && props.isToggled;
   return (

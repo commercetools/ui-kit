@@ -5,7 +5,6 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterEventAttributes from '../../../utils/filter-event-attributes';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
 import {
@@ -18,7 +17,6 @@ const PrimaryButton = props => {
     'data-track-component': 'PrimaryButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
-    ...filterEventAttributes(props),
   };
 
   const isActive = props.isToggleButton && props.isToggled;

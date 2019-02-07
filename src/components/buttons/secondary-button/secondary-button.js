@@ -13,7 +13,6 @@ import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterEventAttributes from '../../../utils/filter-event-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
@@ -36,7 +35,6 @@ export const SecondaryButton = props => {
     'data-track-component': 'SecondaryButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
-    ...filterEventAttributes(props),
   };
   const isActive = props.isToggleButton && props.isToggled;
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
