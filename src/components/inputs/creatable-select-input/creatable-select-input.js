@@ -75,6 +75,7 @@ export class CreatableSelectInput extends React.Component {
         }),
       ])
     ),
+    shouldDivideOptionGroups: PropTypes.bool,
     placeholder: PropTypes.string,
     tabIndex: PropTypes.string,
     tabSelectsValue: PropTypes.bool,
@@ -126,6 +127,7 @@ export class CreatableSelectInput extends React.Component {
             styles={createSelectStyles({
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
+              shouldDivideOptionGroups: this.props.shouldDivideOptionGroups,
             })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),

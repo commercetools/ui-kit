@@ -70,6 +70,10 @@ storiesOf('Examples|Forms/Inputs', module)
       if (!isMulti && isPrefilled) return blueOption;
       return null;
     })();
+    const shouldDivideOptionGroups = boolean(
+      'Should divide option groups',
+      false
+    );
     const failValidation = boolean('Fail validation', false);
 
     return (
@@ -122,6 +126,7 @@ storiesOf('Examples|Forms/Inputs', module)
                     options={groupedOptions}
                     hasError={colourInput.hasError && colourInput.isTouched}
                     isClearable={true}
+                    shouldDivideOptionGroups={shouldDivideOptionGroups}
                   />
                   {colourInput.hasError && colourInput.isTouched && (
                     <ErrorMessage>Colour is not valid</ErrorMessage>
