@@ -167,7 +167,7 @@ const groupStyles = props => base => ({
   },
 });
 
-export const groupHeadingStyles = () => base => ({
+const groupHeadingStyles = () => base => ({
   ...base,
   color: vars.fontColorReadonly,
   fontSize: vars.fontSizeSmall,

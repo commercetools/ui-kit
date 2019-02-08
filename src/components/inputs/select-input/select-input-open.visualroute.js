@@ -3,11 +3,13 @@ import { SelectInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const options = [
-  { value: 'one', label: 'One' },
-  { value: 'two', label: 'Two' },
+  { label: 'one', options: [{ value: 'one', label: 'One' }] },
+  { options: [{ value: 'two', label: 'Two' }] },
 ];
 
 const value = 'one';
+
+const shouldDivideOptionGroups = true;
 
 export const routePath = '/select-input-open';
 
@@ -20,6 +22,7 @@ export const component = () => (
         onChange={() => {}}
         options={options}
         horizontalConstraint="m"
+        shouldDivideOptionGroups={shouldDivideOptionGroups}
       />
     </Spec>
   </Suite>

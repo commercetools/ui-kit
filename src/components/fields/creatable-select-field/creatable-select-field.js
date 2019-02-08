@@ -73,6 +73,7 @@ export default class SelectField extends React.Component {
             props,
             ...rest
           ),
+    shouldDivideOptionGroups: PropTypes.bool,
 
     // Creatable props
     allowCreateWhileLoading: PropTypes.bool,
@@ -160,6 +161,7 @@ export default class SelectField extends React.Component {
             getNewOptionData={this.props.getNewOptionData}
             onCreateOption={this.props.onCreateOption}
             createOptionPosition={this.props.createOptionPosition}
+            shouldDivideOptionGroups={this.props.shouldDivideOptionGroups}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
