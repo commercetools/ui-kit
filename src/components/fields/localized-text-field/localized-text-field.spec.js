@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../test-utils';
+import { render } from '../../../test-utils';
 import LocalizedTextField from './localized-text-field';
 
 // This component is used to enable easy testing.
@@ -103,28 +103,6 @@ it('should call onBlur when input loses focus', () => {
 it('should have focus automatically when isAutofocussed is passed', () => {
   const { getByLabelText } = renderLocalizedTextField({ isAutofocussed: true });
   expect(getByLabelText('EN')).toHaveFocus();
-});
-
-it('should call onChange when changing the value', () => {
-  const onChange = jest.fn(event => {
-    event.persist();
-  });
-  const { getByLabelText } = renderLocalizedTextField({
-    name: 'name-of-pet',
-    onChange,
-  });
-  fireEvent.change(getByLabelText('EN'), {
-    target: { language: 'en', value: 'foo' },
-  });
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({
-      target: expect.objectContaining({
-        name: 'name-of-pet.en',
-        language: 'en',
-        value: 'foo',
-      }),
-    })
-  );
 });
 
 describe('when `description` is passed', () => {
