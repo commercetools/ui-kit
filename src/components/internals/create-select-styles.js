@@ -161,7 +161,7 @@ const groupStyles = props => base => ({
   ...base,
   padding: 0,
   '&:not(:first-child)': {
-    borderTop: props.shouldDivideOptionGroups
+    borderTop: props.showOptionGroupDivider
       ? `1px solid ${vars.colorGray}`
       : base.borderTop,
   },

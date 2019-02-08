@@ -102,7 +102,7 @@ export class AsyncSelectInput extends React.Component {
     ]),
     loadOptions: PropTypes.func.isRequired,
     cacheOptions: PropTypes.any,
-    shouldDivideOptionGroups: PropTypes.bool,
+    showOptionGroupDivider: PropTypes.bool,
   };
 
   render() {
@@ -121,7 +121,7 @@ export class AsyncSelectInput extends React.Component {
             styles={createSelectStyles({
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
-              shouldDivideOptionGroups: this.props.shouldDivideOptionGroups,
+              showOptionGroupDivider: this.props.showOptionGroupDivider,
             })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),

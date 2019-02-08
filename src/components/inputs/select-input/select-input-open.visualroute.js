@@ -9,7 +9,7 @@ const options = [
 
 const value = 'one';
 
-const shouldDivideOptionGroups = true;
+const showOptionGroupDivider = true;
 
 export const routePath = '/select-input-open';
 
@@ -22,7 +22,7 @@ export const component = () => (
         onChange={() => {}}
         options={options}
         horizontalConstraint="m"
-        shouldDivideOptionGroups={shouldDivideOptionGroups}
+        showOptionGroupDivider={showOptionGroupDivider}
       />
     </Spec>
   </Suite>

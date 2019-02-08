@@ -70,10 +70,7 @@ class AsyncCreatableSelectInputStory extends React.Component {
       max: 5000,
       step: 50,
     });
-    const shouldDivideOptionGroups = boolean(
-      'Should divide option groups',
-      false
-    );
+    const showOptionGroupDivider = boolean('Show option group divider', false);
     return (
       <Section>
         <FakeConnector key={isMulti} isMulti={isMulti}>
@@ -138,7 +135,7 @@ class AsyncCreatableSelectInputStory extends React.Component {
                             ],
                           },
                         ]}
-                        shouldDivideOptionGroups={shouldDivideOptionGroups}
+                        showOptionGroupDivider={showOptionGroupDivider}
                         loadOptions={searchText => {
                           const items = [
                             { value: 'dogs', label: 'Dogs' },

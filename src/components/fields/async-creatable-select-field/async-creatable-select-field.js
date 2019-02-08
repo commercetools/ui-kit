@@ -73,7 +73,7 @@ export default class SelectField extends React.Component {
             props,
             ...rest
           ),
-    shouldDivideOptionGroups: PropTypes.bool,
+    showOptionGroupDivider: PropTypes.bool,
 
     // Async props
     defaultOptions: PropTypes.oneOfType([
@@ -177,7 +177,7 @@ export default class SelectField extends React.Component {
             getNewOptionData={this.props.getNewOptionData}
             onCreateOption={this.props.onCreateOption}
             createOptionPosition={this.props.createOptionPosition}
-            shouldDivideOptionGroups={this.props.shouldDivideOptionGroups}
+            showOptionGroupDivider={this.props.showOptionGroupDivider}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors

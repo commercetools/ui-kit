@@ -108,7 +108,7 @@ export class AsyncCreatableSelectInput extends React.Component {
     getNewOptionData: PropTypes.func,
     onCreateOption: PropTypes.func,
     createOptionPosition: PropTypes.string,
-    shouldDivideOptionGroups: PropTypes.bool,
+    showOptionGroupDivider: PropTypes.bool,
   };
 
   render() {
@@ -127,7 +127,7 @@ export class AsyncCreatableSelectInput extends React.Component {
             styles={createSelectStyles({
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
-              shouldDivideOptionGroups: this.props.shouldDivideOptionGroups,
+              showOptionGroupDivider: this.props.showOptionGroupDivider,
             })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),
