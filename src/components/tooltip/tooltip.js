@@ -1,15 +1,18 @@
-// inspired from https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Tooltip/Tooltip.js
+// inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/RootRef/RootRef.js#L7-L36
 import PropTypes from 'prop-types';
 import React from 'react';
-import { isValidElementType } from 'react-is';
+import styled from '@emotion/styled';
 import { Manager, Reference, Popper } from 'react-popper';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import RootRef from '../internals/root-ref';
-import Wrapper from './wrapper';
 import { getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
+
+const Wrapper = styled.div`
+  display: inline-block;
+`;
 
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
@@ -38,14 +41,7 @@ class Tooltip extends React.Component {
     ]),
     title: PropTypes.string.isRequired,
     components: PropTypes.shape({
-      WrapperComponent: (props, propName) => {
-        if (props[propName] && !isValidElementType(props[propName])) {
-          return new Error(
-            `Invalid prop 'components.WrapperComponent' supplied to 'WrapperComponent': the prop is not a valid React component`
-          );
-        }
-        return null;
-      },
+      WrapperComponent: PropTypes.node,
     }),
   };
 

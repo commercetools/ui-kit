@@ -17,7 +17,9 @@ Tooltips display informative text when users hover over or focus on an element.
 
 #### Working with disabled child elements
 
-When you use a tooltip with a disabled element, you should the style `pointer-events: none` to the disabled element to stop it from capturing events.
+When you use a tooltip with a disabled element, you should define the style `pointer-events: none` to the disabled element to stop it from capturing events.
+
+The Button components from `ui-kit` already support this functionality.
 
 ```js
 <Tooltip
@@ -38,7 +40,7 @@ When you use a tooltip with a disabled element, you should the style `pointer-ev
 
 #### Customizing the wrapper
 
-The tooltip applies event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to a wrapping component around the passed in component. By default, this wrapper is displayed with style `inline-block`. If you want to customize this behaviour, then you can pass in a custom wrapping element.
+The tooltip applies event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to a wrapping `div` component around the children element. By default, this wrapper is displayed with style `inline-block`. If you want to customize this behaviour, then you can pass in a custom element.
 
 ```js
 const Wrapper = styled.div`
