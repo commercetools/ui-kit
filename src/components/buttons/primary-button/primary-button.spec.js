@@ -30,7 +30,7 @@ describe('rendering', () => {
     );
     expect(queryByTestId('icon')).not.toBeInTheDocument();
   });
-  it('should pass as aria attributes', () => {
+  it('should pass aria attributes', () => {
     const { getByLabelText } = render(
       <PrimaryButton {...props} aria-describedby="tooltip-1" />
     );

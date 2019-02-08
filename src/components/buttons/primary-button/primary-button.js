@@ -18,6 +18,7 @@ const PrimaryButton = props => {
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };
+
   const isActive = props.isToggleButton && props.isToggled;
   return (
     <div css={getButtonLayoutStyles(props.size)}>

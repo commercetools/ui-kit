@@ -37,7 +37,7 @@ const getTextColor = (tone, isHover = false) => {
 
 export const FlatButton = props => {
   const dataProps = {
-    'data-track-component': 'LinkButton',
+    'data-track-component': 'FlatButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };

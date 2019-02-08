@@ -27,7 +27,7 @@ const AccessibleButton = React.forwardRef((props, ref) => (
       `,
       props.isDisabled &&
         css`
-          cursor: not-allowed;
+          pointer-events: none;
         `,
     ]}
     // Allow to override the styles by passing a `className` prop.
