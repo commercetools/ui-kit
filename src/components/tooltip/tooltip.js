@@ -1,4 +1,4 @@
-// inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/RootRef/RootRef.js#L7-L36
+// inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/Tooltip/Tooltip.js
 import PropTypes from 'prop-types';
 import React from 'react';
 import { isValidElementType } from 'react-is';
@@ -22,7 +22,7 @@ class Tooltip extends React.Component {
     children: PropTypes.node.isRequired,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
       .isRequired,
-    leaveDelay: PropTypes.number.isRequired,
+    closeAfter: PropTypes.number.isRequired,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
@@ -55,7 +55,7 @@ class Tooltip extends React.Component {
 
   static defaultProps = {
     components: {},
-    leaveDelay: 0,
+    closeAfter: 0,
     horizontalConstraint: 'scale',
     placement: 'top',
     type: 'info',
@@ -117,10 +117,10 @@ class Tooltip extends React.Component {
       childrenProps.onBlur(event);
     }
 
-    if (this.props.leaveDelay) {
+    if (this.props.closeAfter) {
       this.leaveTimer = setTimeout(() => {
         this.handleClose();
-      }, this.props.leaveDelay);
+      }, this.props.closeAfter);
     } else {
       this.handleClose();
     }

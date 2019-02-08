@@ -16,7 +16,7 @@ class TestComponent extends React.Component {
     onClose: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
-    leaveDelay: PropTypes.number,
+    closeAfter: PropTypes.number,
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
     components: PropTypes.shape({
@@ -48,7 +48,7 @@ class TestComponent extends React.Component {
           onOpen={this.props.onOpen}
           isOpen={this.state.open}
           id={this.props.id}
-          leaveDelay={this.props.leaveDelay}
+          closeAfter={this.props.closeAfter}
           components={this.props.components}
         >
           <button
@@ -170,7 +170,7 @@ describe('Tooltip', () => {
           onOpen={onOpen}
           onFocus={onFocus}
           onBlur={onBlur}
-          leaveDelay={1000}
+          closeAfter={1000}
         />
       );
 

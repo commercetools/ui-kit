@@ -11,7 +11,7 @@ export const routePath = '/tooltip';
 export const component = () => (
   <Suite>
     <Spec label="Closed" omitPropsList>
-      <Tooltip title={title} eventsEnabled={false}>
+      <Tooltip title={title}>
         <PrimaryButton onClick={noop} label="Hello" />
       </Tooltip>
     </Spec>
