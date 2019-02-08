@@ -8,19 +8,22 @@ describe('SelectInput', () => {
   });
 
   it('Open', async () => {
-    await page.goto(`${HOST}/select-input-open`);
-    await page.click('#select-input-1');
+    await page.goto(`${HOST}/select-input/open`);
+    await page.click('#select-input');
     await expect(page).toMatch('One');
     await percySnapshot(page, 'SelectInput - open - without option groups');
-    await page.click('#select-input-2');
+  });
+  it('Open with option groups', async () => {
+    await page.goto(`${HOST}/select-input/open-with-option-groups`);
+    await page.click('#select-input');
     await percySnapshot(
       page,
       'SelectInput - open - option group with no divider'
     );
-    await page.click('#select-input-3');
-    await percySnapshot(
-      page,
-      'SelectInput - open - options groups with divider'
-    );
+  });
+  it('Open with option groups and divider', async () => {
+    await page.goto(`${HOST}/select-input/open-with-option-groups-and-divider`);
+    await page.click('#select-input');
+    await percySnapshot(page, 'SelectInput - open - option group with divider');
   });
 });
