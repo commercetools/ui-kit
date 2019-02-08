@@ -57,20 +57,33 @@ const defaultExternal = deps.concat(peerDeps);
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
-const config = {
-  input: 'src/index.js',
-  external: defaultExternal,
-  output: [
-    {
-      file: pkg.module,
-      format: 'esm',
-    },
-    {
-      file: pkg.main,
-      format: 'cjs',
-    },
-  ],
-  plugins,
-};
+const config = [
+  {
+    input: 'src/index.js',
+    external: defaultExternal,
+    output: [
+      {
+        file: pkg.module,
+        format: 'esm',
+      },
+      {
+        file: pkg.main,
+        format: 'cjs',
+      },
+    ],
+    plugins,
+  },
+  {
+    input: 'src/components/stamp/index.js',
+    external: defaultExternal,
+    output: [
+      {
+        file: 'dist/stamp.esm.js',
+        format: 'esm',
+      },
+    ],
+    plugins,
+  },
+];
 
 export default config;
