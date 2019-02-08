@@ -21,7 +21,7 @@ export const component = () => (
   <Suite>
     <Spec label="option without option groups">
       <SelectInput
-        id="select-input"
+        id="select-input-1"
         value={value}
         onChange={() => {}}
         options={options}
@@ -30,7 +30,7 @@ export const component = () => (
     </Spec>
     <Spec label="option group with no divider">
       <SelectInput
-        id="select-input"
+        id="select-input-2"
         value={value}
         onChange={() => {}}
         options={optionsWithGroups}
@@ -39,7 +39,7 @@ export const component = () => (
     </Spec>
     <Spec label="options groups with divider">
       <SelectInput
-        id="select-input"
+        id="select-input-3"
         value={value}
         onChange={() => {}}
         options={optionsWithGroups}
