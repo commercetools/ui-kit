@@ -60,7 +60,13 @@ module.exports = function getBabelPresets() {
           useBuiltIns: true,
         },
       ],
-      '@emotion/babel-preset-css-prop',
+      [
+        '@emotion/babel-preset-css-prop',
+        {
+          sourceMap: isEnvDevelopment,
+          autoLabel: !isEnvProduction,
+        },
+      ],
     ].filter(Boolean),
     plugins: [
       [
