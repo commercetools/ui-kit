@@ -44,7 +44,7 @@ export const getBodyStyles = ({ constraint, placement }) => ({
   boxShadow: vars.shadow15,
   verticalAlign: 'middle',
   fontSize: '0.857rem',
-  opacity: '0.9',
+  opacity: '0.95',
   maxWidth: getMaxWidth({ constraint }),
   // so hovering over the tooltip when the tooltip overlaps the component
   pointerEvents: 'none',
