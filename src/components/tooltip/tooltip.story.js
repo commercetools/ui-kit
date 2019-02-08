@@ -57,7 +57,7 @@ storiesOf('Components|Tooltips', module)
       'top'
     );
 
-    const leaveDelay = number('leave delay', 1000);
+    const closeAfter = number('close after', 1000);
 
     const fullWidth = boolean('full width wrapper', false);
 
@@ -71,7 +71,7 @@ storiesOf('Components|Tooltips', module)
           <p>With ui kit button</p>
           <Tooltip
             title={label}
-            leaveDelay={leaveDelay}
+            closeAfter={closeAfter}
             placement={placement}
             horizontalConstraint={constraint}
             components={{ WrapperComponent: fullWidth ? CustomWrapper : null }}
