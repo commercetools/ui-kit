@@ -1,3 +1,11 @@
+<a name="8.3.1"></a>
+
+# [8.3.1](https://github.com/commercetools/ui-kit/compare/v8.3.0...v8.3.1) (2019-02-11)
+
+### Bug Fixes
+
+- SelectInputs and SelectFields: Wrong CSS is applied in case of multi and disabled states ([#532](https://github.com/commercetools/ui-kit/issues/532))
+
 <a name="8.3.0"></a>
 
 # [8.3.0](https://github.com/commercetools/ui-kit/compare/v8.2.0...v8.3.0) (2019-02-11)
