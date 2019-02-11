@@ -7829,10 +7829,10 @@ jest-docblock@^24.0.0:
   dependencies:
     detect-newline "^2.1.0"
 
-jest-dom@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-3.0.2.tgz#63094a95c721a5647dcaa7a87991c7a9ebf30608"
-  integrity sha512-jDnI83LWZgIrlJe7d21SBx2vzcUiuSTErjIMn8bq+Wm/LF/k6XS+6zmpMUaGlykqC05uyWHNeg4K+Qr3atuVEw==
+jest-dom@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-3.1.0.tgz#a7b57d5152957def86a855614e56b6585becd97b"
+  integrity sha512-TGbg5gHF6TfIOlsoqK57EvHtiGCKAi87xWqqiNk+1S0+hteV6ThCjh/2BrKkMBODKDKR52yfUKM0lrVldi3Z2w==
   dependencies:
     chalk "^2.4.1"
     css "^2.2.3"
