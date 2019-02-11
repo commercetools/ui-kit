@@ -6216,10 +6216,10 @@ format@^0.2.2:
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
-formik@1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-1.4.3.tgz#a3bece72f545981f8fc825c21d5292d9aac524d2"
-  integrity sha512-rwwcCPhidgiACnh1RBY8vp+Zp9ompHxezuGeIqmOh9RvmNCB8GCupoCWdDkWB0DZ1MBoDl76swB2v/FbMxeEmw==
+formik@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-1.5.0.tgz#d2d31086834fd1b788077e451deca2b6fce14084"
+  integrity sha512-xSrikKwW2lcnOo4m0qe0GJZo4owclEHAsRzfYuzHL6coeAKDE80UjVwaRf5SdOhA3ac6/w/0jelzh5zDeJMZdQ==
   dependencies:
     create-react-context "^0.2.2"
     deepmerge "^2.1.1"
