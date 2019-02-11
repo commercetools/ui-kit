@@ -135,9 +135,13 @@ const multiValueStyles = () => base => ({
   padding: '0',
 });
 
-const multiValueLabelStyles = () => base => ({
+const multiValueLabelStyles = () => (base, state) => ({
   ...base,
   fontSize: vars.fontSizeSmall,
+  color: (() => {
+    if (state.isDisabled) return vars.fontColorForInputWhenDisabled;
+    return base.color;
+  })(),
   padding: `${vars.spacing4} ${vars.spacing8}`,
   borderRadius: vars.borderRadiusTag,
   border: `1px ${vars.borderColorTagPristine} solid`,
