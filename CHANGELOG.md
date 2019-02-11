@@ -1,3 +1,19 @@
+<a name="8.3.0"></a>
+
+# [8.3.0](https://github.com/commercetools/ui-kit/compare/v8.2.0...v8.3.0) (2019-02-11)
+
+### Features
+
+- `Tooltip`: new component ([#501](https://github.com/commercetools/ui-kit/pull/501))
+- `SpeechBubbleIcon`: new component ([#516](https://github.com/commercetools/ui-kit/pull/516))
+- SelectInputs: adds new prop `showOptionGroupDivider` ([#517](https://github.com/commercetools/ui-kit/pull/517))
+
+### Refactoring
+
+- Bundling - stop bundling emotion css source maps ([#519](https://github.com/commercetools/ui-kit/pull/519), [#520](https://github.com/commercetools/ui-kit/pull/520))
+
+- Various dependency updates ([#529](https://github.com/commercetools/ui-kit/pull/529))
+
 <a name="8.2.0"></a>
 
 # [8.2.0](https://github.com/commercetools/ui-kit/compare/v8.1.1...v8.2.0) (2019-02-06)
