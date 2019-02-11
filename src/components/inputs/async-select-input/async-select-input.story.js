@@ -15,16 +15,24 @@ import Readme from './README.md';
 import AsyncSelectInput from './async-select-input';
 
 const colourOptions = [
-  { label: 'Ocean', value: 'ocean', someData: 1 },
-  { label: 'Blue', value: 'blue', someData: 2 },
-  { label: 'Purple', value: 'purple', someData: 3 },
-  { label: 'Red', value: 'red', someData: 4 },
-  { label: 'Orange', value: 'orange', someData: 5 },
-  { label: 'Yellow', value: 'yellow', someData: 6 },
-  { label: 'Green', value: 'green', someData: 7 },
-  { label: 'Forest', value: 'forest', someData: 8 },
-  { label: 'Slate', value: 'slate', someData: 9 },
-  { label: 'Silver', value: 'silver', someData: 10 },
+  {
+    options: [
+      { label: 'Ocean', value: 'ocean', someData: 1 },
+      { label: 'Blue', value: 'blue', someData: 2 },
+      { label: 'Purple', value: 'purple', someData: 3 },
+      { label: 'Red', value: 'red', someData: 4 },
+      { label: 'Orange', value: 'orange', someData: 5 },
+      { label: 'Yellow', value: 'yellow', someData: 6 },
+    ],
+  },
+  {
+    options: [
+      { label: 'Green', value: 'green', someData: 7 },
+      { label: 'Forest', value: 'forest', someData: 8 },
+      { label: 'Slate', value: 'slate', someData: 9 },
+      { label: 'Silver', value: 'silver', someData: 10 },
+    ],
+  },
 ];
 
 const filterColors = inputValue =>
@@ -44,6 +52,7 @@ class SelectStory extends React.Component {
     const defaultOptions = boolean('defaultOptions', true)
       ? colourOptions
       : false;
+    const showOptionGroupDivider = boolean('Show option group divider', false);
     return (
       <React.Fragment>
         <Section>
@@ -87,6 +96,7 @@ class SelectStory extends React.Component {
                   defaultOptions={defaultOptions}
                   loadOptions={loadOptions}
                   cacheOptions={boolean('cacheOptions', false)}
+                  showOptionGroupDivider={showOptionGroupDivider}
                 />
               </div>
             )}
