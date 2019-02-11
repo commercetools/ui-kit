@@ -36,6 +36,7 @@ export const flavourOptions = [
 export const groupedOptions = [
   { label: 'Colours', options: colourOptions },
   { label: 'Flavours', options: flavourOptions },
+  { options: flavourOptions },
 ];
 
 storiesOf('Examples|Forms/Inputs', module)
@@ -44,6 +45,7 @@ storiesOf('Examples|Forms/Inputs', module)
   .add('SelectInput', () => {
     const isMulti = boolean('Use multi-value select input', false);
     const isPrefilled = boolean('Prefill selected value', false);
+    const showOptionGroupDivider = boolean('Show option group divider', false);
     const initialState = (() => {
       if (isMulti && isPrefilled) return ['ready'];
       if (isMulti && !isPrefilled) return [];
@@ -115,6 +117,7 @@ storiesOf('Examples|Forms/Inputs', module)
                     hasError={colourInput.hasError && colourInput.isTouched}
                     isSearchable={false}
                     isClearable={true}
+                    showOptionGroupDivider={showOptionGroupDivider}
                   />
                   {colourInput.hasError && colourInput.isTouched && (
                     <ErrorMessage>Colour is not valid</ErrorMessage>

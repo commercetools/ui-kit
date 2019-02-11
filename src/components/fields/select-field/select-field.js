@@ -61,6 +61,7 @@ export default class SelectField extends React.Component {
         }),
       ])
     ),
+    showOptionGroupDivider: PropTypes.bool,
     placeholder: PropTypes.string,
     tabIndex: PropTypes.string,
     tabSelectsValue: PropTypes.bool,
@@ -139,6 +140,7 @@ export default class SelectField extends React.Component {
             tabIndex={this.props.tabIndex}
             tabSelectsValue={this.props.tabSelectsValue}
             value={this.props.value}
+            showOptionGroupDivider={this.props.showOptionGroupDivider}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors

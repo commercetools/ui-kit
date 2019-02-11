@@ -70,6 +70,7 @@ class AsyncCreatableSelectInputStory extends React.Component {
       max: 5000,
       step: 50,
     });
+    const showOptionGroupDivider = boolean('Show option group divider', false);
     return (
       <Section>
         <FakeConnector key={isMulti} isMulti={isMulti}>
@@ -103,15 +104,60 @@ class AsyncCreatableSelectInputStory extends React.Component {
                         onBlur={formik.handleBlur}
                         hasError={hasError && isTouched}
                         defaultOptions={[
-                          { value: 'dogs', label: 'Dogs' },
-                          { value: 'whales', label: 'Whales' },
+                          {
+                            label: 'Animals',
+                            options: [
+                              { value: 'dogs', label: 'Dogs' },
+                              { value: 'whales', label: 'Whales' },
+                              { value: 'antilopes', label: 'Antilopes' },
+                              { value: 'snakes', label: 'Snakes' },
+                            ],
+                          },
+                          {
+                            label: 'Flavours',
+                            options: [
+                              {
+                                value: 'vanilla',
+                                label: 'Vanilla',
+                              },
+                              {
+                                value: 'chocolate',
+                                label: 'Chocolate',
+                              },
+                              {
+                                value: 'strawberry',
+                                label: 'Strawberry',
+                              },
+                              {
+                                value: 'salted-caramel',
+                                label: 'Salted Caramel',
+                              },
+                            ],
+                          },
                         ]}
+                        showOptionGroupDivider={showOptionGroupDivider}
                         loadOptions={searchText => {
                           const items = [
                             { value: 'dogs', label: 'Dogs' },
                             { value: 'whales', label: 'Whales' },
                             { value: 'antilopes', label: 'Antilopes' },
                             { value: 'snakes', label: 'Snakes' },
+                            {
+                              value: 'vanilla',
+                              label: 'Vanilla',
+                            },
+                            {
+                              value: 'chocolate',
+                              label: 'Chocolate',
+                            },
+                            {
+                              value: 'strawberry',
+                              label: 'Strawberry',
+                            },
+                            {
+                              value: 'salted-caramel',
+                              label: 'Salted Caramel',
+                            },
                           ];
 
                           return delay(delayTimeMs).then(() =>

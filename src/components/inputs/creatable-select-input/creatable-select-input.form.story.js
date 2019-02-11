@@ -70,6 +70,7 @@ storiesOf('Examples|Forms/Inputs', module)
       if (!isMulti && isPrefilled) return blueOption;
       return null;
     })();
+    const showOptionGroupDivider = boolean('Show option group divider', false);
     const failValidation = boolean('Fail validation', false);
 
     return (
@@ -122,6 +123,7 @@ storiesOf('Examples|Forms/Inputs', module)
                     options={groupedOptions}
                     hasError={colourInput.hasError && colourInput.isTouched}
                     isClearable={true}
+                    showOptionGroupDivider={showOptionGroupDivider}
                   />
                   {colourInput.hasError && colourInput.isTouched && (
                     <ErrorMessage>Colour is not valid</ErrorMessage>

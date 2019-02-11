@@ -112,6 +112,7 @@ export class SelectInput extends React.Component {
         }),
       ])
     ),
+    showOptionGroupDivider: PropTypes.bool,
     // pageSize: PropTypes.number,
     placeholder: PropTypes.string,
     // screenReaderStatus: PropTypes.func,
@@ -175,6 +176,7 @@ export class SelectInput extends React.Component {
             styles={createSelectStyles({
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
+              showOptionGroupDivider: this.props.showOptionGroupDivider,
             })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),

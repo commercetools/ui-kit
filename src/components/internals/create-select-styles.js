@@ -157,11 +157,13 @@ const multiValueRemoveStyles = () => base => ({
   },
 });
 
-const groupStyles = () => base => ({
+const groupStyles = props => base => ({
   ...base,
   padding: 0,
-  '&:not(:firstChild)': {
-    borderTop: `1px ${vars.borderColorSeparator} solid`,
+  '&:not(:first-child)': {
+    borderTop: props.showOptionGroupDivider
+      ? `1px solid ${vars.colorGray}`
+      : base.borderTop,
   },
 });
 
@@ -173,6 +175,9 @@ const groupHeadingStyles = () => base => ({
   fontWeight: 'bold',
   margin: `0 ${vars.spacing4}`,
   padding: `${vars.spacing8} ${vars.spacing4} ${vars.spacing4}`,
+  '&:empty': {
+    padding: 0,
+  },
 });
 
 const containerStyles = () => (base, state) => ({

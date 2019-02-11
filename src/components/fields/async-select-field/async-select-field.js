@@ -63,6 +63,7 @@ export default class AsyncSelectField extends React.Component {
             props,
             ...rest
           ),
+    showOptionGroupDivider: PropTypes.bool,
 
     // Async props
     defaultOptions: PropTypes.oneOfType([
@@ -75,7 +76,6 @@ export default class AsyncSelectField extends React.Component {
     ]),
     loadOptions: PropTypes.func.isRequired,
     cacheOptions: PropTypes.any,
-
     // LabelField
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
@@ -150,6 +150,7 @@ export default class AsyncSelectField extends React.Component {
             defaultOptions={this.props.defaultOptions}
             loadOptions={this.props.loadOptions}
             cacheOptions={this.props.cacheOptions}
+            showOptionGroupDivider={this.props.showOptionGroupDivider}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
