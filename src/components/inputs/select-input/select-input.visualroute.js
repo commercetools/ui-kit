@@ -73,6 +73,25 @@ const DefaultRoute = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="with multiple values selected">
+      <SelectInput
+        value={['one', 'two']}
+        onChange={() => {}}
+        options={options}
+        isMulti={true}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="with multiple values selected and disabled">
+      <SelectInput
+        value={['one', 'two']}
+        onChange={() => {}}
+        options={options}
+        isMulti={true}
+        isDisabled={true}
+        horizontalConstraint="m"
+      />
+    </Spec>
   </Suite>
 );
 
