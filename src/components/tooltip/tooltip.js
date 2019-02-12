@@ -45,7 +45,7 @@ class Tooltip extends React.Component {
       BodyComponent: (props, propName) => {
         if (props[propName] && !isValidElementType(props[propName])) {
           return new Error(
-            `Invalid prop 'component' supplied to 'BodyComponent': the prop is not a valid React component`
+            `Invalid prop 'components.BodyComponent' supplied to 'Tooltip': the prop is not a valid React component`
           );
         }
         return null;
@@ -53,7 +53,7 @@ class Tooltip extends React.Component {
       WrapperComponent: (props, propName) => {
         if (props[propName] && !isValidElementType(props[propName])) {
           return new Error(
-            `Invalid prop 'component' supplied to 'WrapperComponent': the prop is not a valid React component`
+            `Invalid prop 'components.WrapperComponent' supplied to 'Tooltip': the prop is not a valid React component`
           );
         }
         return null;
