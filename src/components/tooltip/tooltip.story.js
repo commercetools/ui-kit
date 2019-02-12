@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -21,10 +20,10 @@ const CustomWrapper = styled.div`
   background-color: pink;
 `;
 
-CustomWrapper.propTypes = {
-  children: PropTypes.node,
-};
-CustomWrapper.displayName = 'CustomWrapper';
+const CustomBody = styled.div`
+  font-size: 0.875rem;
+  color: red;
+`;
 
 storiesOf('Components|Tooltips', module)
   .addDecorator(withKnobs)
@@ -60,6 +59,7 @@ storiesOf('Components|Tooltips', module)
     const closeAfter = number('close after', 1000);
 
     const fullWidth = boolean('full width wrapper', false);
+    const customBodyWrapper = boolean('custom body wrapper', false);
 
     return (
       <Section>
@@ -74,7 +74,10 @@ storiesOf('Components|Tooltips', module)
             closeAfter={closeAfter}
             placement={placement}
             horizontalConstraint={constraint}
-            components={{ WrapperComponent: fullWidth ? CustomWrapper : null }}
+            components={{
+              WrapperComponent: fullWidth ? CustomWrapper : null,
+              BodyComponent: customBodyWrapper ? CustomBody : null,
+            }}
           >
             <PrimaryButton
               onClick={() => {}}
