@@ -7,7 +7,7 @@ import { Manager, Reference, Popper } from 'react-popper';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import RootRef from '../internals/root-ref';
-import { getBodyStyles } from './tooltip.styles';
+import { Body, getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
 
@@ -42,10 +42,18 @@ class Tooltip extends React.Component {
     ]),
     title: PropTypes.string.isRequired,
     components: PropTypes.shape({
+      BodyComponent: (props, propName) => {
+        if (props[propName] && !isValidElementType(props[propName])) {
+          return new Error(
+            `Invalid prop 'components.BodyComponent' supplied to 'Tooltip': the prop is not a valid React component`
+          );
+        }
+        return null;
+      },
       WrapperComponent: (props, propName) => {
         if (props[propName] && !isValidElementType(props[propName])) {
           return new Error(
-            `Invalid prop 'component' supplied to 'WrappedComponent': the prop is not a valid React component`
+            `Invalid prop 'components.WrapperComponent' supplied to 'Tooltip': the prop is not a valid React component`
           );
         }
         return null;
@@ -163,6 +171,7 @@ class Tooltip extends React.Component {
     };
 
     const WrapperComponent = this.props.components.WrapperComponent || Wrapper;
+    const BodyComponent = this.props.components.BodyComponent || Body;
 
     return (
       <Manager>
@@ -189,7 +198,7 @@ class Tooltip extends React.Component {
                 }}
                 data-placement={placement}
               >
-                {this.props.title}
+                <BodyComponent>{this.props.title}</BodyComponent>
               </div>
             )}
           </Popper>

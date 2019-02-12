@@ -57,6 +57,20 @@ const FullWidthButton = styled.button`
 </Tooltip>;
 ```
 
+### Customizing the tooltip body
+
+You can customize the look and feel of the tooltip body by passing in a custom `BodyComponent`
+
+```js
+const Body = styled.div`
+  color: red;
+`;
+
+<Tooltip title="Delete" components={{ BodyComponent: Body }}>
+  <button>Submit</button>
+</Tooltip>;
+```
+
 #### Properties
 
 | Props                  | Type     | Required | Values                                                                                                                                       | Default | Description                                                                                     |
@@ -68,4 +82,4 @@ const FullWidthButton = styled.button`
 | `position`             | `object` |    -     | `top`, `top-start`, `top-end`, `right`, `right-start`, `right-end`, `bottom`, `bottom-end`, `bottom-start`, `left`, `left-start`, `left-end` | `top`   | How the tooltip is positioned relative to the child element                                     |
 | `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale`                                                                                                           | `scale` | Horizontal size limit of the tooltip                                                            |
 | `children`             | `node`   |    ✅    | -                                                                                                                                            | -       | Content rendered within the tooltip                                                             |
-| `components`           | `object` |    -     | `WrapperComponent`                                                                                                                           | -       | If passed, the tooltip will wrap your component with this element                               |
+| `components`           | `object` |    -     | `WrapperComponent`, `BodyComponent`                                                                                                          | -       | If passed, the tooltip will wrap your component with this element                               |

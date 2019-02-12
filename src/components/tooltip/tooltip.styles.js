@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import vars from '../../../materials/custom-properties';
 
 const getOffsetMargin = ({ placement }) => {
@@ -32,22 +33,24 @@ const getMaxWidth = ({ constraint }) => {
   }
 };
 
+export const Body = styled.div`
+  font-family: ${vars.fontFamilyDefault};
+  border-radius: ${vars.borderRadius6};
+  padding: ${vars.spacing4} ${vars.spacing8};
+  border: 'none';
+  box-shadow: ${vars.shadow15};
+  font-size: 0.857rem;
+  opacity: 0.95;
+  color: ${vars.colorWhite};
+  background-color: ${vars.colorNavy};
+`;
 // here we use object styles so we can spread these
 // with the styles we get from react-popper :D
 // eslint-disable-next-line import/prefer-default-export
 export const getBodyStyles = ({ constraint, placement }) => ({
   fontFamily: vars.fontFamilyDefault,
-  borderRadius: vars.borderRadius6,
-  padding: `${vars.spacing4} ${vars.spacing8}`,
   margin: getOffsetMargin({ placement }),
-  border: 'none',
-  boxShadow: vars.shadow15,
-  verticalAlign: 'middle',
-  fontSize: '0.857rem',
-  opacity: '0.95',
   maxWidth: getMaxWidth({ constraint }),
   // so hovering over the tooltip when the tooltip overlaps the component
   pointerEvents: 'none',
-  color: vars.colorWhite,
-  backgroundColor: vars.colorNavy,
 });

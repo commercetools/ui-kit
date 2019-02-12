@@ -20,6 +20,7 @@ class TestComponent extends React.Component {
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
     components: PropTypes.shape({
+      BodyComponent: PropTypes.any,
       WrapperComponent: PropTypes.any,
     }),
   };
@@ -226,6 +227,54 @@ const TooltipWrapper = React.forwardRef((props, ref) => (
 TooltipWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+const BodyComponent = props => (
+  <div data-testid="tooltip-custom-body">{props.children}</div>
+);
+
+BodyComponent.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+describe('when used with a custom body component', () => {
+  it('should render custom body and interact with keyboard', () => {
+    const onFocus = jest.fn();
+    const onBlur = jest.fn();
+    const onClose = jest.fn();
+    const onOpen = jest.fn();
+    const { container, queryByText, getByText } = render(
+      <TestComponent
+        onClose={onClose}
+        onOpen={onOpen}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        components={{ BodyComponent }}
+      />
+    );
+
+    const button = getByText('Submit');
+    fireEvent.focus(button);
+    // should call callbacks
+    expect(onFocus).toHaveBeenCalled();
+    expect(onOpen).toHaveBeenCalled();
+    // should show the tooltip and show the custom body
+    expect(
+      container.querySelector("[data-testid='tooltip-custom-body']")
+    ).toBeInTheDocument();
+
+    expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+    // should remove the title
+    expect(button).toHaveProperty('title', '');
+    fireEvent.blur(button);
+    // should call callbacks
+    expect(onBlur).toHaveBeenCalled();
+    expect(onClose).toHaveBeenCalled();
+    // should hide tooltip
+    expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
+    // should add the title again
+    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+  });
+});
 
 describe('when used with a custom wrapper component', () => {
   it('should render custom wrapper and interact with keyboard', () => {
