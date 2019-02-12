@@ -1,3 +1,11 @@
+<a name="8.4.0"></a>
+
+# [8.4.0](https://github.com/commercetools/ui-kit/compare/v8.3.1...v8.4.0) (2019-02-12)
+
+### Features
+
+- `Tooltip`: allow passing in custom `BodyComponent` ([#535](https://github.com/commercetools/ui-kit/pull/535))
+
 <a name="8.3.1"></a>
 
 # [8.3.1](https://github.com/commercetools/ui-kit/compare/v8.3.0...v8.3.1) (2019-02-11)
