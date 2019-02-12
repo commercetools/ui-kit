@@ -59,7 +59,17 @@ const FullWidthButton = styled.button`
 
 ### Customizing the tooltip body
 
-`Tooltip` accepts a `BodyComponent` prop to allow customizing the look and feel of the tooltip.
+You can customize the look and feel of the tooltip body by passing in a custom `BodyComponent`
+
+```js
+const Body = styled.div`
+  color: red;
+`;
+
+<Tooltip title="Delete" components={{ BodyComponent: Body }}>
+  <button>Submit</button>
+</Tooltip>;
+```
 
 #### Properties
 
