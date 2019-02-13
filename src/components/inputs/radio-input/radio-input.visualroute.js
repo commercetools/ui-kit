@@ -22,13 +22,13 @@ export const component = () => (
       >
         <RadioInput.Option value="apples">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍎'}</div>
+            <div>{'&#127822;'}</div>
             <Text.Body>{'Apples'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍊'}</div>
+            <div>{'&#127818;'}</div>
             <Text.Body>{'Oranges'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
@@ -44,13 +44,13 @@ export const component = () => (
       >
         <RadioInput.Option value="apples">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍎'}</div>
+            <div>{'&#127822;'}</div>
             <Text.Body>{'Apples'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍊'}</div>
+            <div>{'&#127818;'}</div>
             <Text.Body>{'Oranges'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
@@ -65,13 +65,13 @@ export const component = () => (
       >
         <RadioInput.Option value="apples">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍎'}</div>
+            <div>{'&#127822;'}</div>
             <Text.Body>{'Apples'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
         <RadioInput.Option value="oranges" isDisabled={true}>
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍊'}</div>
+            <div>{'&#127818;'}</div>
             <Text.Body>{'Oranges'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
@@ -86,13 +86,13 @@ export const component = () => (
       >
         <RadioInput.Option value="apples">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍎'}</div>
+            <div>{'&#127822;'}</div>
             <Text.Body>{'Apples'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
         <RadioInput.Option value="oranges" isHovered={true}>
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍊'}</div>
+            <div>{'&#127818;'}</div>
             <Text.Body>{'Oranges'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
@@ -108,13 +108,13 @@ export const component = () => (
       >
         <RadioInput.Option value="apples">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍎'}</div>
+            <div>{'&#127822;'}</div>
             <Text.Body>{'Apples'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍊'}</div>
+            <div>{'&#127818;'}</div>
             <Text.Body>{'Oranges'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
@@ -130,13 +130,13 @@ export const component = () => (
       >
         <RadioInput.Option value="apples">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍎'}</div>
+            <div>{'&#127822;'}</div>
             <Text.Body>{'Apples'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍊'}</div>
+            <div>{'&#127818;'}</div>
             <Text.Body>{'Oranges'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
@@ -203,13 +203,13 @@ export const component = () => (
       >
         <RadioInput.Option value="apples">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍎'}</div>
+            <div>{'&#127822;'}</div>
             <Text.Body>{'Apples'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
           <Spacings.Inline scale="s" alignItems="center">
-            <div>{'🍊'}</div>
+            <div>{'&#127818;'}</div>
             <Text.Body>{'Oranges'}</Text.Body>
           </Spacings.Inline>
         </RadioInput.Option>
