@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { StylesProvider } from 'ui-kit';
 
 const componentsContext = require.context(
   '../../src/components',
@@ -22,41 +23,43 @@ const allComponents = componentsContext.keys().reduce((components, file) => {
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            component={() => (
-              <div>
-                <h1>Visual Testing App</h1>
-                <ul>
-                  {Object.values(allComponents).map(Component => (
-                    <li key={Component.routePath}>
-                      <a href={Component.routePath}>{Component.routePath}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          />
-          {Object.values(allComponents).map(Component => (
+      <StylesProvider baseFontSize="13px">
+        <Router>
+          <Switch>
             <Route
-              key={Component.routePath}
-              path={Component.routePath}
-              component={Component.component}
+              path="/"
+              exact
+              component={() => (
+                <div>
+                  <h1>Visual Testing App</h1>
+                  <ul>
+                    {Object.values(allComponents).map(Component => (
+                      <li key={Component.routePath}>
+                        <a href={Component.routePath}>{Component.routePath}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             />
-          ))}
-          <Route
-            component={() => (
-              <div>
-                <p>No route found</p>
-                <a href="/">Show all routes</a>
-              </div>
-            )}
-          />
-        </Switch>
-      </Router>
+            {Object.values(allComponents).map(Component => (
+              <Route
+                key={Component.routePath}
+                path={Component.routePath}
+                component={Component.component}
+              />
+            ))}
+            <Route
+              component={() => (
+                <div>
+                  <p>No route found</p>
+                  <a href="/">Show all routes</a>
+                </div>
+              )}
+            />
+          </Switch>
+        </Router>
+      </StylesProvider>
     );
   }
 }
