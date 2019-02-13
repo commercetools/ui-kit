@@ -5,6 +5,8 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
+import Text from '../../typography/text';
+import Spacings from '../../spacings';
 import Readme from './README.md';
 import RadioInput from '.';
 
@@ -19,48 +21,92 @@ storiesOf('Components|Inputs', module)
   .add('RadioInputGroup', () => (
     <Section>
       <Value
-        defaultValue={'foo-value'}
+        defaultValue={'apple'}
         render={(value, onChange) => (
           <RadioInput.Group
-            name={text('name', '', radioGroup)}
+            id={text('id', 'fruits', radioGroup)}
+            name={text('name', 'fruits', radioGroup)}
+            value={value}
             onChange={event => {
               action('onChange')(event);
               onChange(event.target.value);
             }}
-            value={value}
+            onBlur={event => {
+              action('onBlur')(event);
+            }}
+            onFocus={event => {
+              action('onFocus')(event);
+            }}
+            isDisabled={boolean('disabled', false, radioGroup)}
+            isReadOnly={boolean('read only', false, radioGroup)}
+            hasError={boolean('has error', false, radioGroup)}
+            hasWarning={boolean('has warning', false, radioGroup)}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              ['m', 'l', 'xl', 'scale'],
+              'm',
+              radioGroup
+            )}
             direction={select(
               'direction',
               ['stack', 'inline'],
               'stack',
               radioGroup
             )}
-            scale={select(
-              'scale',
-              ['xs', 's', 'm', 'l', 'xl'],
-              'm',
-              radioGroup
-            )}
+            directionProps={{
+              scale: select(
+                'direction props (scale)',
+                ['xs', 's', 'm', 'l', 'xl'],
+                'm',
+                radioGroup
+              ),
+            }}
           >
             <RadioInput.Option
-              isDisabled={boolean('isDisabled #1', false, radioOption1)}
+              value={text('value #1', 'apple', radioOption1)}
+              isDisabled={boolean(
+                'isDisabled #1 (forced)',
+                false,
+                radioOption1
+              )}
               isHovered={boolean('isHovered #1', false, radioOption1)}
-              value="foo-value"
             >
-              {'Label of primary action'}
+              <Spacings.Inline scale="s" alignItems="center">
+                <div>{'🍎'}</div>
+                <Text.Body>{text('label #1', 'Apple', radioOption1)}</Text.Body>
+              </Spacings.Inline>
             </RadioInput.Option>
             <RadioInput.Option
-              value="bar-value"
-              isDisabled={boolean('isDisabled #2', false, radioOption2)}
+              value={text('value #2', 'banana', radioOption2)}
+              isDisabled={boolean(
+                'isDisabled #2 (forced)',
+                false,
+                radioOption2
+              )}
               isHovered={boolean('isHovered #2', false, radioOption2)}
             >
-              {'Label of second action'}
+              <Spacings.Inline scale="s" alignItems="center">
+                <div>{'🍌'}</div>
+                <Text.Body>
+                  {text('label #2', 'Banana', radioOption2)}
+                </Text.Body>
+              </Spacings.Inline>
             </RadioInput.Option>
             <RadioInput.Option
-              value="baz-value"
-              isDisabled={boolean('isDisabled #3', false, radioOption3)}
+              value={text('value #3', 'pineapple', radioOption3)}
+              isDisabled={boolean(
+                'isDisabled #3 (forced)',
+                false,
+                radioOption3
+              )}
               isHovered={boolean('isHovered #3', false, radioOption3)}
             >
-              {'Label of third action'}
+              <Spacings.Inline scale="s" alignItems="center">
+                <div>{'🍍'}</div>
+                <Text.Body>
+                  {text('label #3', 'Pineapple', radioOption3)}
+                </Text.Body>
+              </Spacings.Inline>
             </RadioInput.Option>
           </RadioInput.Group>
         )}

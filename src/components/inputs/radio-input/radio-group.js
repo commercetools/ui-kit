@@ -2,23 +2,39 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import Option from './radio-option';
+
+const directionWrapper = {
+  stack: Spacings.Stack,
+  inline: Spacings.Inline,
+};
 
 class Group extends React.PureComponent {
   static displayName = 'RadioGroup';
   static propTypes = {
-    className: PropTypes.string,
-    direction: PropTypes.oneOf(['stack', 'inline']),
-    onChange: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
+    isDisabled: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
+    hasError: PropTypes.bool,
+    hasWarning: PropTypes.bool,
+    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    direction: PropTypes.oneOf(Object.keys(directionWrapper)),
+    directionProps: PropTypes.object,
     children: PropTypes.node.isRequired,
-    scale: PropTypes.string,
   };
   static defaultProps = {
+    horizontalConstraint: 'scale',
     direction: 'stack',
-    scale: 'm',
+    directionProps: {
+      scale: 'm',
+    },
   };
 
   componentDidMount() {
@@ -36,25 +52,49 @@ class Group extends React.PureComponent {
   }
 
   render() {
-    const DirectionWrapper =
-      this.props.direction === 'stack' ? Spacings.Stack : Spacings.Inline;
+    const optionElements = React.Children.map(
+      this.props.children,
+      (child, index) => {
+        // NOTE: Allowing to intersperse other elements than `Option`.
+        if (child && child.type.displayName === Option.displayName) {
+          return React.cloneElement(child, {
+            id: `${this.props.id}-${index}`,
+            name: this.props.name,
+            isChecked: this.props.value === child.props.value,
+            isDisabled: child.props.isDisabled || this.props.isDisabled,
+            isReadOnly: this.props.isReadOnly,
+            hasError: this.props.hasError,
+            hasWarning: this.props.hasWarning,
+            onChange: this.props.onChange,
+            onFocus: this.props.onFocus,
+            onBlur: this.props.onBlur,
+          });
+        }
+        return child;
+      }
+    );
+    if (this.props.direction === 'inline') {
+      return (
+        <div id={this.props.id}>
+          <Spacings.Inline
+            {...this.props.directionProps}
+            {...filterDataAttributes(this.props)}
+          >
+            {optionElements}
+          </Spacings.Inline>
+        </div>
+      );
+    }
     return (
-      <div
-        className={this.props.className}
-        {...filterDataAttributes(this.props)}
-      >
-        <DirectionWrapper scale={this.props.scale}>
-          {React.Children.map(this.props.children, child => {
-            // NOTE: Allowing to intersperse other elements than `Option`.
-            if (child && child.type.displayName === Option.displayName)
-              return React.cloneElement(child, {
-                isChecked: this.props.value === child.props.value,
-                name: this.props.name,
-                onChange: this.props.onChange,
-              });
-            return child;
-          })}
-        </DirectionWrapper>
+      <div id={this.props.id}>
+        <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+          <Spacings.Stack
+            {...this.props.directionProps}
+            {...filterDataAttributes(this.props)}
+          >
+            {optionElements}
+          </Spacings.Stack>
+        </Constraints.Horizontal>
       </div>
     );
   }

@@ -6,7 +6,7 @@ describe('Radio', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Apples');
+    await expect(page).toMatch(/Apples/);
     await percySnapshot(page, 'Radio');
   });
 });

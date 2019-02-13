@@ -3,70 +3,68 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
-import Text from '../../typography/text';
 import Icons from './icons';
 import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
-export class Option extends React.PureComponent {
-  static displayName = 'RadioOption';
-  static propTypes = {
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-    // This prop forces Radio.Option to be rendered in a hovered state (thought isDisabled takes
-    // precedence over that). We need that to address a use-case when hovering is comming
-    // from somewhere up the hierarchy. There is no need to touch this prop in case
-    // all you need is a general highlighting on hover of Radio.Option body, which is solved
-    // by a corresponding :hover selector in the syles of this component.
-    isHovered: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    isChecked: PropTypes.bool,
-    children: PropTypes.node,
-    // Injected through as compound component
-    // not required as `createElement` is used.
-    name: PropTypes.string,
-    onChange: PropTypes.func,
-  };
-  static defaultProps = {
-    isDisabled: false,
-  };
-
-  render() {
-    return (
-      <div>
-        <label css={getLabelStyles(this.props)}>
-          <Spacings.Inline alignItems="center">
-            <div css={getContainerStyles(this.props)}>
-              {this.props.isChecked ? <Icons.Checked /> : <Icons.Default />}
-            </div>
-            {this.props.children && (
-              <Text.Body
-                // FIXME: add proper tones when we have disabled/primary in tones
-                tone={this.props.isDisabled ? 'secondary' : undefined}
-                // We need isInline to prevent Text.Body from rendering a p tag.
-                // Otherwise we would get a validateDomNesting warning because
-                // the "children" might contain a div (e.g for a tooltip), so we
-                // would wrongly render a div inside a p tag.
-                isInline={true}
-              >
-                {this.props.children}
-              </Text.Body>
-            )}
-            <input
-              css={css`
-                display: none;
-              `}
-              name={this.props.name}
-              value={this.props.value}
-              onChange={this.props.onChange}
-              disabled={this.props.isDisabled}
-              checked={this.props.isChecked}
-              type="radio"
-              {...filterDataAttributes(this.props)}
-            />
-          </Spacings.Inline>
-        </label>
+const Option = props => (
+  <label
+    css={getLabelStyles(props)}
+    role="radio"
+    aria-checked={props.isChecked}
+    onFocus={props.onFocus}
+    onBlur={props.onBlur}
+    htmlFor={props.id}
+  >
+    <Spacings.Inline scale="s" alignItems="center">
+      <div css={getContainerStyles(props)}>
+        {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
       </div>
-    );
-  }
-}
+      <div>{props.children}</div>
+      <input
+        css={css`
+          display: none;
+        `}
+        id={props.id}
+        name={props.name}
+        value={props.value}
+        onChange={props.isReadOnly ? undefined : props.onChange}
+        disabled={props.isDisabled}
+        checked={props.isChecked}
+        type="radio"
+        readOnly={props.isReadOnly}
+        aria-readonly={props.isReadOnly}
+        {...filterDataAttributes(props)}
+      />
+    </Spacings.Inline>
+  </label>
+);
+Option.displayName = 'RadioOption';
+Option.propTypes = {
+  // Direct props
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func,
+  ]).isRequired,
+
+  // Injected props from the parent Group component
+  id: PropTypes.string,
+  name: PropTypes.string,
+  isChecked: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  hasError: PropTypes.bool,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+
+  // This prop forces Radio.Option to be rendered in a hovered state (though isDisabled takes
+  // precedence over that). We need that to address a use-case when hovering is comming
+  // from somewhere up the hierarchy. There is no need to touch this prop in case
+  // all you need is a general highlighting on hover of Radio.Option body, which is solved
+  // by a corresponding :hover selector in the syles of this component.
+  isHovered: PropTypes.bool,
+};
 
 export default Option;
