@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { RadioInput, Spacings, Text } from 'ui-kit';
+import { RadioInput, Text } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const GreenBox = styled.div`
@@ -21,16 +21,10 @@ export const component = () => (
         direction="stack"
       >
         <RadioInput.Option value="apples">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127822;'}</div>
-            <Text.Body>{'Apples'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Apples'}</Text.Body>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127818;'}</div>
-            <Text.Body>{'Oranges'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Oranges'}</Text.Body>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -43,16 +37,10 @@ export const component = () => (
         isDisabled={true}
       >
         <RadioInput.Option value="apples">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127822;'}</div>
-            <Text.Body>{'Apples'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Apples'}</Text.Body>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127818;'}</div>
-            <Text.Body>{'Oranges'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Oranges'}</Text.Body>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -64,16 +52,10 @@ export const component = () => (
         direction="stack"
       >
         <RadioInput.Option value="apples">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127822;'}</div>
-            <Text.Body>{'Apples'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Apples'}</Text.Body>
         </RadioInput.Option>
         <RadioInput.Option value="oranges" isDisabled={true}>
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127818;'}</div>
-            <Text.Body>{'Oranges'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Oranges'}</Text.Body>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -85,16 +67,10 @@ export const component = () => (
         direction="stack"
       >
         <RadioInput.Option value="apples">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127822;'}</div>
-            <Text.Body>{'Apples'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Apples'}</Text.Body>
         </RadioInput.Option>
         <RadioInput.Option value="oranges" isHovered={true}>
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127818;'}</div>
-            <Text.Body>{'Oranges'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Oranges'}</Text.Body>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -107,16 +83,10 @@ export const component = () => (
         hasError={true}
       >
         <RadioInput.Option value="apples">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127822;'}</div>
-            <Text.Body>{'Apples'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Apples'}</Text.Body>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127818;'}</div>
-            <Text.Body>{'Oranges'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Oranges'}</Text.Body>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -129,16 +99,10 @@ export const component = () => (
         hasWarning={true}
       >
         <RadioInput.Option value="apples">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127822;'}</div>
-            <Text.Body>{'Apples'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Apples'}</Text.Body>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127818;'}</div>
-            <Text.Body>{'Oranges'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Oranges'}</Text.Body>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -202,16 +166,10 @@ export const component = () => (
         direction="inline"
       >
         <RadioInput.Option value="apples">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127822;'}</div>
-            <Text.Body>{'Apples'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Apples'}</Text.Body>
         </RadioInput.Option>
         <RadioInput.Option value="oranges">
-          <Spacings.Inline scale="s" alignItems="center">
-            <div>{'&#127818;'}</div>
-            <Text.Body>{'Oranges'}</Text.Body>
-          </Spacings.Inline>
+          <Text.Body>{'Oranges'}</Text.Body>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
