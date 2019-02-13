@@ -71,7 +71,7 @@ storiesOf('Components|Inputs', module)
               )}
               isHovered={boolean('isHovered #1', false, radioOption1)}
             >
-              <Spacings.Inline scale="s" alignItems="center">
+              <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍎'}</div>
                 <Text.Body>{text('label #1', 'Apple', radioOption1)}</Text.Body>
               </Spacings.Inline>
@@ -85,7 +85,7 @@ storiesOf('Components|Inputs', module)
               )}
               isHovered={boolean('isHovered #2', false, radioOption2)}
             >
-              <Spacings.Inline scale="s" alignItems="center">
+              <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍌'}</div>
                 <Text.Body>
                   {text('label #2', 'Banana', radioOption2)}
@@ -101,7 +101,7 @@ storiesOf('Components|Inputs', module)
               )}
               isHovered={boolean('isHovered #3', false, radioOption3)}
             >
-              <Spacings.Inline scale="s" alignItems="center">
+              <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍍'}</div>
                 <Text.Body>
                   {text('label #3', 'Pineapple', radioOption3)}

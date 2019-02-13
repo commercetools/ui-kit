@@ -19,7 +19,7 @@ const Option = props => (
       <div css={getContainerStyles(props)}>
         {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
       </div>
-      <div>{props.children}</div>
+      {props.children}
       <input
         css={css`
           display: none;
