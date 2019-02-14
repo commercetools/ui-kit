@@ -20,7 +20,11 @@ const Option = props => (
       <div css={getContainerStyles(props)}>
         {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
       </div>
-      <div>
+      <div
+        css={css`
+          width: 100%;
+        `}
+      >
         <Text.Body tone={props.isDisabled ? 'secondary' : undefined}>
           {props.children}
         </Text.Body>
