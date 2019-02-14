@@ -1,6 +1,11 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
+const baseStyles = `
+  font-family: ${vars.fontFamilyDefault};
+  color: ${vars.colorBlack};
+`;
+
 const truncate = `
   white-space: nowrap;
   overflow: hidden;
@@ -58,6 +63,8 @@ const getElementFontSize = elementType => {
 };
 
 export const bodyStyles = props => css`
+  ${baseStyles}
+  margin: 0;
   font-size: 1rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
@@ -66,12 +73,16 @@ export const bodyStyles = props => css`
 `;
 
 export const headlineStyles = props => css`
+  ${baseStyles}
+  margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
   font-weight: 300;
   ${props.truncate && truncate}
 `;
 
 export const subheadlineStyles = props => css`
+  ${baseStyles}
+  margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
   font-weight: normal;
   ${props.truncate && truncate}
@@ -80,11 +91,13 @@ export const subheadlineStyles = props => css`
 `;
 
 export const wrapStyles = () => css`
+  ${baseStyles}
   font-size: 1rem;
   white-space: pre-wrap;
 `;
 
 export const detailStyles = props => css`
+  ${baseStyles}
   display: block;
   font-size: 0.9231rem;
   ${props.isInline && inline}

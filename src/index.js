@@ -133,8 +133,6 @@ export { default as Avatar } from './components/avatar';
 
 export { default as customProperties } from '../materials/custom-properties';
 
-export { default as StylesProvider } from './components/styles-provider';
-
 export { i18n };
 
 export {
