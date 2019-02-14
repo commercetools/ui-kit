@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../test-utils';
-import Text from '../../typography/text';
 import RadioInput from '../../inputs/radio-input';
 import RadioField from './radio-field';
 
@@ -40,12 +39,8 @@ class Story extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         >
-          <RadioInput.Option value="apple">
-            <Text.Body>Apple</Text.Body>
-          </RadioInput.Option>
-          <RadioInput.Option value="banana">
-            <Text.Body>Banana</Text.Body>
-          </RadioInput.Option>
+          <RadioInput.Option value="apple">Apple</RadioInput.Option>
+          <RadioInput.Option value="banana">Banana</RadioInput.Option>
         </RadioField>
       </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadioField, RadioInput, Text } from 'ui-kit';
+import { RadioField, RadioInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = 'apple';
@@ -15,12 +15,8 @@ export const component = () => (
         onChange={() => {}}
         horizontalConstraint="m"
       >
-        <RadioInput.Option value="apple">
-          <Text.Body>{'Apple'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="orange">
-          <Text.Body>{'Banana'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
     <Spec label="when required">
@@ -31,12 +27,8 @@ export const component = () => (
         onChange={() => {}}
         horizontalConstraint="m"
       >
-        <RadioInput.Option value="apple">
-          <Text.Body>{'Apple'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="orange">
-          <Text.Body>{'Banana'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
     <Spec label="when disabled">
@@ -47,12 +39,8 @@ export const component = () => (
         onChange={() => {}}
         horizontalConstraint="m"
       >
-        <RadioInput.Option value="apple">
-          <Text.Body>{'Apple'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="orange">
-          <Text.Body>{'Banana'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
     <Spec label="when placeholder is shown">
@@ -63,12 +51,8 @@ export const component = () => (
         onChange={() => {}}
         horizontalConstraint="m"
       >
-        <RadioInput.Option value="apple">
-          <Text.Body>{'Apple'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="orange">
-          <Text.Body>{'Banana'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
     <Spec label="when placeholder is shown and disabled">
@@ -80,12 +64,8 @@ export const component = () => (
         onChange={() => {}}
         horizontalConstraint="m"
       >
-        <RadioInput.Option value="apple">
-          <Text.Body>{'Apple'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="orange">
-          <Text.Body>{'Banana'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
     <Spec label="with error when not touched">
@@ -96,12 +76,8 @@ export const component = () => (
         horizontalConstraint="m"
         errors={{ missing: true }}
       >
-        <RadioInput.Option value="apple">
-          <Text.Body>{'Apple'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="orange">
-          <Text.Body>{'Banana'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
     <Spec label="with error when touched">
@@ -113,12 +89,8 @@ export const component = () => (
         errors={{ missing: true }}
         touched={true}
       >
-        <RadioInput.Option value="apple">
-          <Text.Body>{'Apple'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="orange">
-          <Text.Body>{'Banana'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
   </Suite>

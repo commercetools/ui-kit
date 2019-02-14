@@ -24,13 +24,13 @@ import { RadioInput } from '@commercetools-frontend/ui-kit/switches';
   <RadioInput.Option value="apple">
     <Spacings.Inline alignItems="center">
       <div>🍎</div>
-      <Text.Body>Apple</Text.Body>
+      Apple
     </Spacings.Inline>
   </RadioInput.Option>
   <RadioInput.Option value="banana">
     <Spacings.Inline alignItems="center">
       <div>🍌</div>
-      <Text.Body>Banana</Text.Body>
+      Banana
     </Spacings.Inline>
   </RadioInput.Option>
 </RadioInput.Group>
@@ -60,12 +60,12 @@ import { RadioInput } from '@commercetools-frontend/ui-kit/switches';
 
 ##### RadioInput.Option
 
-| Props        | Type                  | Required | Values | Default | Description                                                                                                                                                                                                                                                                                                                 |
-| ------------ | --------------------- | :------: | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`      | `string` \| `boolean` |    ✅    | -      | -       | The value identifying this `RadioInput.Option`                                                                                                                                                                                                                                                                              |
-| `children`   | `node`                |    ✅    | -      | -       | Pass any react components to describe what the `RadioInput.Option` represents.                                                                                                                                                                                                                                              |
-| `isDisabled` | `bool`                |    -     | -      | `false` | Radio `RadioInput.Option` automatically get the `isDisabled` state passed to the `RadioInput.Group` component. Only in cases where you would need force the `disabled` state of one of the `RadioInput.Option`s, you can pass this prop which will take precedence over the one passed to the `RadioInput.Group` component. |
-| `isHovered`  | `bool`                |    -     | -      | `false` | Forces `RadioInput.Option` to be rendered in a hovered state. That's needed for cases when hovered appearance should be triggered by the parent component and not the `RadioInput.Option` itself. An `RadioInput.Option` is capable of handling it's own hovering without the need to pass this prop.                       |
+| Props        | Type                  | Required | Values | Default | Description                                                                                                                                                                                                                                                                                                                                              |
+| ------------ | --------------------- | :------: | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`      | `string` \| `boolean` |    ✅    | -      | -       | The value identifying this `RadioInput.Option`                                                                                                                                                                                                                                                                                                           |
+| `children`   | `node`                |    ✅    | -      | -       | Pass any react components to describe what the `RadioInput.Option` represents. NOTE that the children components are wrapped into a `Text.Body`, which applies a `secondary` tone in case the `RadioInput` is disabled. If you have a `Text` component within the children, make sure to apply the `secondary` tone to it in case of `isDisabled` state. |
+| `isDisabled` | `bool`                |    -     | -      | `false` | Radio `RadioInput.Option` automatically get the `isDisabled` state passed to the `RadioInput.Group` component. Only in cases where you would need force the `disabled` state of one of the `RadioInput.Option`s, you can pass this prop which will take precedence over the one passed to the `RadioInput.Group` component.                              |
+| `isHovered`  | `bool`                |    -     | -      | `false` | Forces `RadioInput.Option` to be rendered in a hovered state. That's needed for cases when hovered appearance should be triggered by the parent component and not the `RadioInput.Option` itself. An `RadioInput.Option` is capable of handling it's own hovering without the need to pass this prop.                                                    |
 
 #### Invariants
 

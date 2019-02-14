@@ -15,16 +15,14 @@ import { RadioField } from '@commercetools-frontend/ui-kit';
   value="apple"
   onChange={event => alert(event.target.value)}
 >
-  <RadioInput.Option value="apple">
-    <Text.Body>{'Apple'}</Text.Body>
-  </RadioInput.Option>
-  <RadioInput.Option value="banana">
-    <Text.Body>{'Banana'}</Text.Body>
-  </RadioInput.Option>
+  <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+  <RadioInput.Option value="banana">{'Banana'}</RadioInput.Option>
 </RadioField>;
 ```
 
 #### Properties
+
+##### RadioField
 
 | Props                  | Type               | Required | Values                  | Default          | Description                                                                                                                                                                                                                                                           |
 | ---------------------- | ------------------ | :------: | ----------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,6 +50,10 @@ import { RadioField } from '@commercetools-frontend/ui-kit';
 | `badge`                | `node`             |    -     | -                       | -                | Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email)                                                                                                                           |
 
 The component further forwards all `data-` attributes to the underlying `RadioInput` component.
+
+##### RadioInput.Option
+
+See `RadioInput` README for the list of props.
 
 ##### `errors`
 

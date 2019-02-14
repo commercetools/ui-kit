@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
+import Text from '../../typography/text';
 import Icons from './icons';
 import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
@@ -19,7 +20,11 @@ const Option = props => (
       <div css={getContainerStyles(props)}>
         {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
       </div>
-      {props.children}
+      <div>
+        <Text.Body tone={props.isDisabled ? 'secondary' : undefined}>
+          {props.children}
+        </Text.Body>
+      </div>
       <input
         css={css`
           display: none;

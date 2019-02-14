@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { RadioInput, Text } from 'ui-kit';
+import { RadioInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const GreenBox = styled.div`
@@ -20,12 +20,8 @@ export const component = () => (
         onChange={() => {}}
         direction="stack"
       >
-        <RadioInput.Option value="apples">
-          <Text.Body>{'Apples'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="oranges">
-          <Text.Body>{'Oranges'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apples">{'Apples'}</RadioInput.Option>
+        <RadioInput.Option value="oranges">{'Oranges'}</RadioInput.Option>
       </RadioInput.Group>
     </Spec>
     <Spec label="when direction is stack (disabled)">
@@ -36,12 +32,8 @@ export const component = () => (
         direction="stack"
         isDisabled={true}
       >
-        <RadioInput.Option value="apples">
-          <Text.Body>{'Apples'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="oranges">
-          <Text.Body>{'Oranges'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apples">{'Apples'}</RadioInput.Option>
+        <RadioInput.Option value="oranges">{'Oranges'}</RadioInput.Option>
       </RadioInput.Group>
     </Spec>
     <Spec label="when direction is stack (only one option disabled)">
@@ -51,11 +43,9 @@ export const component = () => (
         onChange={() => {}}
         direction="stack"
       >
-        <RadioInput.Option value="apples">
-          <Text.Body>{'Apples'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apples">{'Apples'}</RadioInput.Option>
         <RadioInput.Option value="oranges" isDisabled={true}>
-          <Text.Body>{'Oranges'}</Text.Body>
+          {'Oranges'}
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -66,11 +56,9 @@ export const component = () => (
         onChange={() => {}}
         direction="stack"
       >
-        <RadioInput.Option value="apples">
-          <Text.Body>{'Apples'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apples">{'Apples'}</RadioInput.Option>
         <RadioInput.Option value="oranges" isHovered={true}>
-          <Text.Body>{'Oranges'}</Text.Body>
+          {'Oranges'}
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -82,12 +70,8 @@ export const component = () => (
         direction="stack"
         hasError={true}
       >
-        <RadioInput.Option value="apples">
-          <Text.Body>{'Apples'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="oranges">
-          <Text.Body>{'Oranges'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apples">{'Apples'}</RadioInput.Option>
+        <RadioInput.Option value="oranges">{'Oranges'}</RadioInput.Option>
       </RadioInput.Group>
     </Spec>
     <Spec label="when direction is stack (has warning)">
@@ -98,12 +82,8 @@ export const component = () => (
         direction="stack"
         hasWarning={true}
       >
-        <RadioInput.Option value="apples">
-          <Text.Body>{'Apples'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="oranges">
-          <Text.Body>{'Oranges'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apples">{'Apples'}</RadioInput.Option>
+        <RadioInput.Option value="oranges">{'Oranges'}</RadioInput.Option>
       </RadioInput.Group>
     </Spec>
     <Spec label="when direction is stack (constraint m)">
@@ -165,12 +145,8 @@ export const component = () => (
         onChange={() => {}}
         direction="inline"
       >
-        <RadioInput.Option value="apples">
-          <Text.Body>{'Apples'}</Text.Body>
-        </RadioInput.Option>
-        <RadioInput.Option value="oranges">
-          <Text.Body>{'Oranges'}</Text.Body>
-        </RadioInput.Option>
+        <RadioInput.Option value="apples">{'Apples'}</RadioInput.Option>
+        <RadioInput.Option value="oranges">{'Oranges'}</RadioInput.Option>
       </RadioInput.Group>
     </Spec>
   </Suite>

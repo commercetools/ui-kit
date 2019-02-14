@@ -5,7 +5,6 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import Readme from './README.md';
 import RadioInput from '.';
@@ -73,7 +72,7 @@ storiesOf('Components|Inputs', module)
             >
               <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍎'}</div>
-                <Text.Body>{text('label #1', 'Apple', radioOption1)}</Text.Body>
+                {text('label #1', 'Apple', radioOption1)}
               </Spacings.Inline>
             </RadioInput.Option>
             <RadioInput.Option
@@ -87,9 +86,7 @@ storiesOf('Components|Inputs', module)
             >
               <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍌'}</div>
-                <Text.Body>
-                  {text('label #2', 'Banana', radioOption2)}
-                </Text.Body>
+                {text('label #2', 'Banana', radioOption2)}
               </Spacings.Inline>
             </RadioInput.Option>
             <RadioInput.Option
@@ -103,9 +100,7 @@ storiesOf('Components|Inputs', module)
             >
               <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍍'}</div>
-                <Text.Body>
-                  {text('label #3', 'Pineapple', radioOption3)}
-                </Text.Body>
+                {text('label #3', 'Pineapple', radioOption3)}
               </Spacings.Inline>
             </RadioInput.Option>
           </RadioInput.Group>
