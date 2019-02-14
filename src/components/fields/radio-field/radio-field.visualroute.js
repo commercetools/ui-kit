@@ -43,24 +43,11 @@ export const component = () => (
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
-    <Spec label="when placeholder is shown">
+    <Spec label="when readonly">
       <RadioField
         title="Welcome Text"
-        value=""
-        placeholder="Enter a text"
-        onChange={() => {}}
-        horizontalConstraint="m"
-      >
-        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
-        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
-      </RadioField>
-    </Spec>
-    <Spec label="when placeholder is shown and disabled">
-      <RadioField
-        title="Welcome Text"
-        isDisabled={true}
-        value=""
-        placeholder="Enter a text"
+        isReadOnly={true}
+        value={value}
         onChange={() => {}}
         horizontalConstraint="m"
       >
