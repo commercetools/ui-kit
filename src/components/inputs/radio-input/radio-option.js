@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
-import Text from '../../typography/text';
 import Icons from './icons';
 import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
@@ -23,11 +23,14 @@ const Option = props => (
       <div
         css={css`
           width: 100%;
+          font-size: 1rem;
+          font-family: ${vars.fontFamilyDefault};
+          color: ${props.isDisabled
+            ? vars.fontColorDisabled
+            : vars.fontColorDefault};
         `}
       >
-        <Text.Body tone={props.isDisabled ? 'secondary' : undefined}>
-          {props.children}
-        </Text.Body>
+        {props.children}
       </div>
       <input
         css={css`
