@@ -12,6 +12,7 @@ class TestComponent extends React.Component {
     buttonLabel: PropTypes.string.isRequired,
     isOpen: PropTypes.bool,
     id: PropTypes.string,
+    isEnabled: PropTypes.bool.isRequired,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
     onFocus: PropTypes.func,
@@ -26,6 +27,7 @@ class TestComponent extends React.Component {
   };
 
   static defaultProps = {
+    isEnabled: true,
     title: 'What kind of bear is best?',
     buttonLabel: 'Submit',
   };
@@ -46,6 +48,7 @@ class TestComponent extends React.Component {
         <Tooltip
           title={this.props.title}
           onClose={this.props.onClose}
+          isEnabled={this.props.isEnabled}
           onOpen={this.props.onOpen}
           isOpen={this.state.open}
           id={this.props.id}
@@ -314,5 +317,60 @@ describe('when used with a custom wrapper component', () => {
     expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
     // should add the title again
     expect(button).toHaveProperty('title', 'What kind of bear is best?');
+  });
+});
+
+describe('when isEnabled is false', () => {
+  it('should not render a tooltip and not call callbacks', () => {
+    const onMouseOver = jest.fn();
+    const onMouseLeave = jest.fn();
+    const onFocus = jest.fn();
+    const onBlur = jest.fn();
+    const onClose = jest.fn();
+    const onOpen = jest.fn();
+    const { queryByText, getByText } = render(
+      <TestComponent
+        isEnabled={false}
+        onClose={onClose}
+        onOpen={onOpen}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onMouseOver={onMouseOver}
+        onMouseLeave={onMouseLeave}
+      />
+    );
+
+    const button = getByText('Submit');
+    fireEvent.focus(button);
+    // should not call callbacks when using keyboard
+    expect(onFocus).not.toHaveBeenCalled();
+    expect(onOpen).not.toHaveBeenCalled();
+
+    // should not be visible
+    expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
+    // should not remove title
+    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+
+    fireEvent.blur(button);
+
+    expect(onBlur).not.toHaveBeenCalled();
+    expect(onClose).not.toHaveBeenCalled();
+
+    // should not call callbacks when using mouse
+
+    fireEvent.mouseOver(button);
+
+    expect(onMouseOver).not.toHaveBeenCalled();
+    expect(onOpen).not.toHaveBeenCalled();
+
+    // should not be visible
+    expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
+    // should not remove title
+    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+
+    fireEvent.mouseLeave(button);
+
+    expect(onMouseLeave).not.toHaveBeenCalled();
+    expect(onClose).not.toHaveBeenCalled();
   });
 });

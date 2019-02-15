@@ -23,6 +23,7 @@ class Tooltip extends React.Component {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
       .isRequired,
     closeAfter: PropTypes.number.isRequired,
+    isEnabled: PropTypes.bool.isRequired,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
@@ -65,6 +66,7 @@ class Tooltip extends React.Component {
     components: {},
     closeAfter: 0,
     horizontalConstraint: 'scale',
+    isEnabled: true,
     placement: 'top',
     type: 'info',
   };
@@ -83,7 +85,6 @@ class Tooltip extends React.Component {
 
   handleEnter = event => {
     const childrenProps = this.props.children.props;
-
     // Remove the title ahead of time.
     // We don't want to wait for the next render commit.
     // We would risk displaying two tooltips at the same time (native + this one).
@@ -161,14 +162,21 @@ class Tooltip extends React.Component {
       title:
         !open && typeof this.props.title === 'string' ? this.props.title : null,
       ...this.props.children.props,
+      // don't pass event listeners to children
+      onFocus: null,
+      onMouseOver: null,
+      onMouseLeave: null,
+      onBlur: null,
     };
 
-    const eventListeners = {
-      onMouseOver: this.handleEnter,
-      onMouseLeave: this.handleLeave,
-      onFocus: this.handleEnter,
-      onBlur: this.handleLeave,
-    };
+    const eventListeners = this.props.isEnabled
+      ? {
+          onMouseOver: this.handleEnter,
+          onMouseLeave: this.handleLeave,
+          onFocus: this.handleEnter,
+          onBlur: this.handleLeave,
+        }
+      : {};
 
     const WrapperComponent = this.props.components.WrapperComponent || Wrapper;
     const BodyComponent = this.props.components.BodyComponent || Body;

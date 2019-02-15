@@ -71,10 +71,24 @@ const Body = styled.div`
 </Tooltip>;
 ```
 
+### Disabling the tooltip functionality
+
+There may be cases when you only want to enable the display of a tooltip under a certain condition. In these cases, you may want to set the `isEnabled` prop to false.
+
+```js
+<Tooltip
+  isEnabled={!props.isDisabled}
+  title="You do not have permission to perform this action"
+>
+  <button disabled={props.isDisabled}>Submit</button>
+</Tooltip>
+```
+
 #### Properties
 
 | Props                  | Type     | Required | Values                                                                                                                                       | Default | Description                                                                                     |
 | ---------------------- | -------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `isEnabled`            | `bool`   |    -     | -                                                                                                                                            | true    | Whether or not the tooltip opens and closes as a result of event listeners.                     |
 | `isOpen`               | `bool`   |    -     | -                                                                                                                                            | -       | If passed, the tooltip's open and closed states are controlled by this prop                     |
 | `closeAfter`           | `number` |    -     | -                                                                                                                                            | 0       | Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip |
 | `onOpen`               | `func`   |    -     | -                                                                                                                                            | -       | Called when the tooltip is opened                                                               |
