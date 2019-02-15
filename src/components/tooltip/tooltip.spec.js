@@ -12,7 +12,7 @@ class TestComponent extends React.Component {
     buttonLabel: PropTypes.string.isRequired,
     isOpen: PropTypes.bool,
     id: PropTypes.string,
-    isEnabled: PropTypes.bool.isRequired,
+    isDisabled: PropTypes.bool,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
     onFocus: PropTypes.func,
@@ -27,7 +27,6 @@ class TestComponent extends React.Component {
   };
 
   static defaultProps = {
-    isEnabled: true,
     title: 'What kind of bear is best?',
     buttonLabel: 'Submit',
   };
@@ -48,7 +47,7 @@ class TestComponent extends React.Component {
         <Tooltip
           title={this.props.title}
           onClose={this.props.onClose}
-          isEnabled={this.props.isEnabled}
+          isDisabled={this.props.isDisabled}
           onOpen={this.props.onOpen}
           isOpen={this.state.open}
           id={this.props.id}
@@ -320,7 +319,7 @@ describe('when used with a custom wrapper component', () => {
   });
 });
 
-describe('when isEnabled is false', () => {
+describe('when isDisabled is true', () => {
   it('should not render a tooltip and not call callbacks', () => {
     const onMouseOver = jest.fn();
     const onMouseLeave = jest.fn();
@@ -330,7 +329,7 @@ describe('when isEnabled is false', () => {
     const onOpen = jest.fn();
     const { queryByText, getByText } = render(
       <TestComponent
-        isEnabled={false}
+        isDisabled={true}
         onClose={onClose}
         onOpen={onOpen}
         onFocus={onFocus}

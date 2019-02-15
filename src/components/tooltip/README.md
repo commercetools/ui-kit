@@ -71,15 +71,15 @@ const Body = styled.div`
 </Tooltip>;
 ```
 
-### Only displaying the tooltip under certain conditions
+### Conditionally displaying tooltips
 
-There may be cases when you only want to enable the display of a tooltip under a certain condition. In these cases, you may want to set the `isEnabled` prop to false.
+There may be cases when you only want to enable the display of a tooltip under a certain condition. In these cases, you may want to set the `isDisabled` prop to false.
 
 In the following example, the tooltip text only appears on hover when the button is disabled.
 
 ```js
 <Tooltip
-  isEnabled={!props.isDisabled}
+  isDisabled={!props.isDisabled}
   title="You do not have permission to perform this action"
 >
   <button disabled={props.isDisabled}>Submit</button>
@@ -90,7 +90,7 @@ In the following example, the tooltip text only appears on hover when the button
 
 | Props                  | Type     | Required | Values                                                                                                                                       | Default | Description                                                                                     |
 | ---------------------- | -------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------- |
-| `isEnabled`            | `bool`   |    -     | -                                                                                                                                            | true    | Whether or not the tooltip opens and closes as a result of event listeners.                     |
+| `isDisabled`           | `bool`   |    -     | -                                                                                                                                            | false   | Whether or not the tooltip opens and closes as a result of event listeners.                     |
 | `isOpen`               | `bool`   |    -     | -                                                                                                                                            | -       | If passed, the tooltip's open and closed states are controlled by this prop                     |
 | `closeAfter`           | `number` |    -     | -                                                                                                                                            | 0       | Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip |
 | `onOpen`               | `func`   |    -     | -                                                                                                                                            | -       | Called when the tooltip is opened                                                               |
