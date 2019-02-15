@@ -49,7 +49,7 @@
   "--constraint-xs": "50px",
   "--constraint-s": "132px",
   "--constraint-m": "355px",
-  "--constraint-l": "400px",
+  "--constraint-l": "496px",
   "--constraint-xl": "768px",
   "--spacing-4": "4px",
   "--spacing-8": "8px",
