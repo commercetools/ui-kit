@@ -12,7 +12,7 @@ class TestComponent extends React.Component {
     buttonLabel: PropTypes.string.isRequired,
     isOpen: PropTypes.bool,
     id: PropTypes.string,
-    isDisabled: PropTypes.bool,
+    off: PropTypes.bool,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
     onFocus: PropTypes.func,
@@ -47,7 +47,7 @@ class TestComponent extends React.Component {
         <Tooltip
           title={this.props.title}
           onClose={this.props.onClose}
-          isDisabled={this.props.isDisabled}
+          off={this.props.off}
           onOpen={this.props.onOpen}
           isOpen={this.state.open}
           id={this.props.id}
@@ -319,7 +319,7 @@ describe('when used with a custom wrapper component', () => {
   });
 });
 
-describe('when isDisabled is true', () => {
+describe('when off is true', () => {
   it('should not render a tooltip and not call callbacks', () => {
     const onMouseOver = jest.fn();
     const onMouseLeave = jest.fn();
@@ -329,7 +329,7 @@ describe('when isDisabled is true', () => {
     const onOpen = jest.fn();
     const { queryByText, getByText } = render(
       <TestComponent
-        isDisabled={true}
+        off={true}
         onClose={onClose}
         onOpen={onOpen}
         onFocus={onFocus}

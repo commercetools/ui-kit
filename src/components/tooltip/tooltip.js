@@ -23,7 +23,7 @@ class Tooltip extends React.Component {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
       .isRequired,
     closeAfter: PropTypes.number.isRequired,
-    isDisabled: PropTypes.bool.isRequired,
+    off: PropTypes.bool.isRequired,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
@@ -66,7 +66,7 @@ class Tooltip extends React.Component {
     components: {},
     closeAfter: 0,
     horizontalConstraint: 'scale',
-    isDisabled: false,
+    off: false,
     placement: 'top',
     type: 'info',
   };
@@ -169,7 +169,7 @@ class Tooltip extends React.Component {
       onBlur: null,
     };
 
-    const eventListeners = !this.props.isDisabled
+    const eventListeners = !this.props.off
       ? {
           onMouseOver: this.handleEnter,
           onMouseLeave: this.handleLeave,

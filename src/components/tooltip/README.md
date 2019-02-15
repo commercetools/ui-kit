@@ -73,13 +73,13 @@ const Body = styled.div`
 
 ### Conditionally displaying tooltips
 
-There may be cases when you only want to enable the display of a tooltip under a certain condition. In these cases, you may want to use the `isDisabled`.
+There may be cases when you only want to enable the display of a tooltip under a certain condition. In these cases, you may want to use the `off` prop.
 
 In the following example, the tooltip text only appears on hover when the button is disabled.
 
 ```js
 <Tooltip
-  isDisabled={!props.isDisabled}
+  off={props.isDisabled}
   title="You do not have permission to perform this action"
 >
   <button disabled={props.isDisabled}>Submit</button>
