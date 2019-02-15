@@ -1,3 +1,11 @@
+<a name="8.5.0"></a>
+
+# [8.5.0](https://github.com/commercetools/ui-kit/compare/v8.4.0...v8.5.0) (2019-02-15)
+
+### Features
+
+- `Tooltip`: Add `off` prop ([#539](https://github.com/commercetools/ui-kit/issues/539)) ([2777c53](https://github.com/commercetools/ui-kit/commit/2777c53))
+
 <a name="8.4.0"></a>
 
 # [8.4.0](https://github.com/commercetools/ui-kit/compare/v8.3.1...v8.4.0) (2019-02-12)
