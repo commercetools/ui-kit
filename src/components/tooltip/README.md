@@ -71,10 +71,26 @@ const Body = styled.div`
 </Tooltip>;
 ```
 
+### Conditionally displaying tooltips
+
+There may be cases when you only want to enable the display of a tooltip under a certain condition. In these cases, you may want to use the `off` prop.
+
+In the following example, the tooltip text only appears on hover when the button is disabled.
+
+```js
+<Tooltip
+  off={props.isDisabled}
+  title="You do not have permission to perform this action"
+>
+  <button disabled={props.isDisabled}>Submit</button>
+</Tooltip>
+```
+
 #### Properties
 
 | Props                  | Type     | Required | Values                                                                                                                                       | Default | Description                                                                                     |
 | ---------------------- | -------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `isDisabled`           | `bool`   |    -     | -                                                                                                                                            | false   | Whether or not the tooltip opens and closes as a result of event listeners.                     |
 | `isOpen`               | `bool`   |    -     | -                                                                                                                                            | -       | If passed, the tooltip's open and closed states are controlled by this prop                     |
 | `closeAfter`           | `number` |    -     | -                                                                                                                                            | 0       | Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip |
 | `onOpen`               | `func`   |    -     | -                                                                                                                                            | -       | Called when the tooltip is opened                                                               |
