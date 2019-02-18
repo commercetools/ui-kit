@@ -59,7 +59,7 @@ export default {
   constraintXs: '50px',
   constraintS: '132px',
   constraintM: '355px',
-  constraintL: '400px',
+  constraintL: '496px',
   constraintXl: '768px',
   spacing4: '4px',
   spacing8: '8px',

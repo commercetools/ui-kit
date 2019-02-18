@@ -100,7 +100,7 @@ choiceGroups:
       constraint-xs: 50px
       constraint-s: 132px
       constraint-m: 355px
-      constraint-l: 400px
+      constraint-l: 496px
       constraint-xl: 768px
   spacings:
     label: Spacings
