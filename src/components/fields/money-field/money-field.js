@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import has from 'lodash.has';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
@@ -73,6 +73,10 @@ class MoneyField extends React.Component {
     hintIcon: PropTypes.node,
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     hasHighPrecisionBadge: PropTypes.bool,
+    // HoC
+    intl: PropTypes.shape({
+      locale: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
@@ -107,7 +111,10 @@ class MoneyField extends React.Component {
             badge={
               this.props.hasHighPrecisionBadge &&
               !MoneyInput.isEmpty(this.props.value) &&
-              MoneyInput.isHighPrecision(this.props.value) ? (
+              MoneyInput.isHighPrecision(
+                this.props.value,
+                this.props.intl.locale
+              ) ? (
                 <Spacings.Inline scale="xs" alignItems="flexEnd">
                   <VerifiedIcon size="medium" theme="blue" />
                   <Text.Detail isInline={true}>
@@ -147,4 +154,4 @@ class MoneyField extends React.Component {
   }
 }
 
-export default MoneyField;
+export default injectIntl(MoneyField);

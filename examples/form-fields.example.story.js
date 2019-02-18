@@ -124,13 +124,13 @@ const docToForm = (doc, locale) => ({
 // from the rest of the application.
 // When the forms implemenation changes, we only need to adapt docToForm and
 // formToDoc instead of the whole application.
-const formToDoc = formValues => ({
+const formToDoc = (formValues, locale) => ({
   id: formValues.id,
   version: formValues.version,
   key: formValues.key,
   description: formValues.description,
   inventory: formValues.inventory,
-  price: MoneyInput.convertToMoneyValue(formValues.price),
+  price: MoneyInput.convertToMoneyValue(formValues.price, locale),
   status: formValues.status,
 });
 
@@ -142,7 +142,7 @@ const formToDoc = formValues => ({
 // As we're very strict when initializing the form, we can count on any value
 // either being a string or a number, or an object containing such. We never
 // have to check for undefined values.
-const validate = formValues => {
+const validate = (formValues, locale) => {
   // To make it easier to attach errors during validation, we initialize
   // all form fields to empty objects.
   const errors = {
@@ -174,7 +174,7 @@ const validate = formValues => {
   // validate price
   if (MoneyInput.isEmpty(formValues.price)) {
     errors.price.missing = true;
-  } else if (MoneyInput.isHighPrecision(formValues.price)) {
+  } else if (MoneyInput.isHighPrecision(formValues.price, locale)) {
     errors.price.unsupportedHighPrecision = true;
   }
 
@@ -354,10 +354,10 @@ const Story = injectIntl(props => (
       {({ product, updateProduct }) => (
         <Formik
           initialValues={docToForm(product, props.intl.locale)}
-          validate={validate}
+          validate={formValues => validate(formValues, props.intl.locale)}
           onSubmit={(formValues, formik) => {
             action('values of form submission')(formValues);
-            const nextProduct = formToDoc(formValues);
+            const nextProduct = formToDoc(formValues, props.intl.locale);
             // Usually, we would compute update actions here by comparing
             // nextProduct to the product from FakeConnector.
             // We would then use formValues.id and formValues.version

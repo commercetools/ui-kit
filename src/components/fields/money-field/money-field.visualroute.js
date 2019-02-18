@@ -14,7 +14,7 @@ const highPrecisionValue = {
 
 const emptyValue = { amount: '', currencyCode: '' };
 
-const currencies = ['EUR', 'USD'];
+const currencies = ['EUR', 'USD', 'JPY'];
 
 export const routePath = '/money-field';
 
