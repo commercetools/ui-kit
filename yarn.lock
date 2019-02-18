@@ -1486,10 +1486,10 @@
     sinon "7.1.1"
     winston "^2.0.0"
 
-"@percy/puppeteer@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-1.0.4.tgz#8aeace7695484a4304a8adb3bd220bb211cd64b2"
-  integrity sha512-qemyEVxs02ZPSv7blb0+KpUDoXsNhR706r7RacwGXK9frGqLU0OQmdVtyD2O+P8/5ODtCd+oDov76AR7+ZHQqg==
+"@percy/puppeteer@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-1.0.5.tgz#ce067fc7911f3b839c319f399b250a10590225ea"
+  integrity sha512-BITaTJXygNiKrkYOFkZ1lTvritlWYVkf+HYPl7TFRykbm78Uh0zbDtdl6A1CXGtJsS0oUpgTvQ2FStFjsgfqVA==
   dependencies:
     "@percy/agent" "^0.1.12"
 
