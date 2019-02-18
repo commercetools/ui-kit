@@ -15,10 +15,6 @@ const value = {
     currencyCode: 'CAD',
     amount: '19.82',
   },
-  JPY: {
-    currencyCode: 'CAD',
-    amount: '20000',
-  },
 };
 
 export const routePath = '/localized-money-input';
