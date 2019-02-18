@@ -73,6 +73,7 @@ import OrigLogoutIcon from './svg/logout.react.svg';
 import OrigMailIcon from './svg/mail.react.svg';
 import OrigMinimizeIcon from './svg/minimize.react.svg';
 import OrigNestedViewIcon from './svg/nested-view.react.svg';
+import OrigPageGearIcon from './svg/page-gear.react.svg';
 import OrigPagesIcon from './svg/pages.react.svg';
 import OrigPaperBillInvertedIcon from './svg/paper-bill-inverted.react.svg';
 import OrigPaperclipIcon from './svg/paperclip.react.svg';
@@ -274,6 +275,7 @@ export const NestedViewIcon = createStyledIcon(
   OrigNestedViewIcon,
   'NestedViewIcon'
 );
+export const PageGearIcon = createStyledIcon(OrigPageGearIcon, 'PageGearIcon');
 export const PagesIcon = createStyledIcon(OrigPagesIcon, 'PagesIcon');
 export const PaperBillInvertedIcon = createStyledIcon(
   OrigPaperBillInvertedIcon,
