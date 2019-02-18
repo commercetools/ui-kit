@@ -174,8 +174,10 @@ export class LocalizedMoneyInput extends React.Component {
     horizontalConstraint: 'scale',
   };
 
-  static convertToMoneyValues = values =>
-    Object.values(values).map(value => MoneyInput.convertToMoneyValue(value));
+  static convertToMoneyValues = (values, locale) =>
+    Object.values(values).map(value =>
+      MoneyInput.convertToMoneyValue(value, locale)
+    );
 
   static parseMoneyValues = (moneyValues = [], locale) =>
     moneyValues
@@ -188,9 +190,9 @@ export class LocalizedMoneyInput extends React.Component {
         {}
       );
 
-  static getHighPrecisionCurrencies = values =>
+  static getHighPrecisionCurrencies = (values, locale) =>
     Object.keys(values).filter(currencyCode =>
-      MoneyInput.isHighPrecision(values[currencyCode])
+      MoneyInput.isHighPrecision(values[currencyCode], locale)
     );
 
   static getEmptyCurrencies = values =>
