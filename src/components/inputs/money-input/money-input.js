@@ -149,20 +149,42 @@ const createCurrencySelectStyles = ({
 //  "fractionDigits": 7
 // }
 // which equals 0.0123456 €
-// we use the number 9999.999 becauause it'll either be formated to
+// when locale is provided we use the number 9999.999 becauause it'll either be formated to
 // A: 9,999.999
 // B: 9.999,999
-export const getLocalsSperatorAndThrowaway = locale => {
-  const [throwaway, separator] = (9999.999)
-    .toLocaleString(locale)
-    .replace(/9/g, '')
-    .split('')
-    .map(symbol => (symbol === '.' ? '\\.' : symbol));
-  return { throwaway, separator };
+// otherwise, we infere the throwaway, separator from the amount
+// When a value is `1.000,00` we parse it as `1000`.
+// When a value is `1,000.00` we also parse it as `1000`.
+// Since most users are not careful about how they enter values, we will parse
+// both `.` and `,` as decimal separators.
+// This means the highest amount always wins. We do this by comparing the last
+// position of `.` and `,`. Whatever occurs later is used as the decimal
+// separator.
+export const getLocalsSperatorAndThrowaway = (rawAmount, locale) => {
+  if (locale) {
+    const [throwaway, separator] = (9999.999)
+      .toLocaleString(locale)
+      .replace(/9/g, '')
+      .split('')
+      .map(symbol => (symbol === '.' ? '\\.' : symbol));
+    return { throwaway, separator };
+  }
+  const lastDot = String(rawAmount).lastIndexOf('.');
+  const lastComma = String(rawAmount).lastIndexOf(',');
+
+  const separator = lastComma > lastDot ? ',' : '.';
+  const throwaway = separator === '.' ? ',' : '\\.';
+  return {
+    throwaway,
+    separator,
+  };
 };
 // Parsing
 export const parseRawAmountToNumber = (rawAmount, locale) => {
-  const { throwaway, separator } = getLocalsSperatorAndThrowaway(locale);
+  const { throwaway, separator } = getLocalsSperatorAndThrowaway(
+    rawAmount,
+    locale
+  );
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
     .replace(new RegExp(`${throwaway}`, 'g'), '')
@@ -190,6 +212,10 @@ export const createMoneyValue = (currencyCode, rawAmount, locale) => {
 
   if (rawAmount.length === 0 || !isNumberish(rawAmount)) return null;
 
+  invariant(
+    locale || currency.fractionDigits !== 0,
+    `A locale must be provided when currency has no fraction digits (${currencyCode})`
+  );
   const amountAsNumber = parseRawAmountToNumber(rawAmount, locale);
   if (isNaN(amountAsNumber)) return null;
 

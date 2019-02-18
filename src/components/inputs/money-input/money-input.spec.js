@@ -100,6 +100,15 @@ describe('MoneyInput.convertToMoneyValue', () => {
       ).toEqual(null);
     });
   });
+  describe('when an unknown currency is used2', () => {
+    it('should return an invalid object', () => {
+      expect(() =>
+        MoneyInput.convertToMoneyValue({ currencyCode: 'JPY', amount: '1' })
+      ).toThrow(
+        'A locale must be provided when currency has no fraction digits (JPY)'
+      );
+    });
+  });
 
   describe('when no amount is present', () => {
     it('should return an invalid object', () => {
