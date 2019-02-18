@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Intl from 'intl';
 import MoneyInput from './money-input';
 import { render, fireEvent } from '../../../test-utils';
 
@@ -84,13 +85,18 @@ describe('MoneyInput.getAmountInputId', () => {
 describe('MoneyInput.convertToMoneyValue', () => {
   describe('when there is no currency code', () => {
     it('should return an invalid object', () => {
-      expect(MoneyInput.convertToMoneyValue({ amount: '1' })).toEqual(null);
+      expect(MoneyInput.convertToMoneyValue({ amount: '1' }, 'en')).toEqual(
+        null
+      );
     });
   });
   describe('when an unknown currency is used', () => {
     it('should return an invalid object', () => {
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'foo', amount: '1' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'foo', amount: '1' },
+          'en'
+        )
       ).toEqual(null);
     });
   });
@@ -98,11 +104,14 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when no amount is present', () => {
     it('should return an invalid object', () => {
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'EUR', amount: '' },
+          'en'
+        )
       ).toEqual(null);
-      expect(MoneyInput.convertToMoneyValue({ currencyCode: 'EUR' })).toEqual(
-        null
-      );
+      expect(
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR' }, 'en')
+      ).toEqual(null);
     });
   });
 
@@ -120,7 +129,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
       // tests here.
 
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: 'foo' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'EUR', amount: 'foo' },
+          'en'
+        )
       ).toEqual(null);
     });
   });
@@ -130,7 +142,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when called with a centPrecision price', () => {
     it('should treat it as a decimal separator', () => {
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '1.2' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'EUR', amount: '1.2' },
+          'en'
+        )
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'EUR',
@@ -139,7 +154,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
       });
 
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'KWD', amount: '1.234' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'KWD', amount: '1.234' },
+          'en'
+        )
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'KWD',
@@ -152,7 +170,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when called with a centPrecision price with weird JS rounding', () => {
     it('should treat it as a decimal separator', () => {
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '2.49' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'EUR', amount: '2.49' },
+          'en'
+        )
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'EUR',
@@ -161,10 +182,13 @@ describe('MoneyInput.convertToMoneyValue', () => {
       });
 
       expect(
-        MoneyInput.convertToMoneyValue({
-          currencyCode: 'EUR',
-          amount: '8.066652',
-        })
+        MoneyInput.convertToMoneyValue(
+          {
+            currencyCode: 'EUR',
+            amount: '8.066652',
+          },
+          'en'
+        )
       ).toEqual({
         type: 'highPrecision',
         currencyCode: 'EUR',
@@ -176,10 +200,13 @@ describe('MoneyInput.convertToMoneyValue', () => {
       // This test ensures that rounding is used instead of just cutting the
       // number of. Cutting it of would result in an incorrect 239998.
       expect(
-        MoneyInput.convertToMoneyValue({
-          currencyCode: 'EUR',
-          amount: '2399.99',
-        })
+        MoneyInput.convertToMoneyValue(
+          {
+            currencyCode: 'EUR',
+            amount: '2399.99',
+          },
+          'en'
+        )
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'EUR',
@@ -192,7 +219,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when called with a high precision price', () => {
     it('should return a money value of type "highPrecision"', () => {
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '1.234' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'EUR', amount: '1.234' },
+          'en'
+        )
       ).toEqual({
         type: 'highPrecision',
         currencyCode: 'EUR',
@@ -377,21 +407,27 @@ describe('MoneyInput.isHighPrecision', () => {
   describe('when called with a high precision money value', () => {
     it('should return true', () => {
       expect(
-        MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' })
+        MoneyInput.isHighPrecision(
+          { amount: '2.001', currencyCode: 'EUR' },
+          'en'
+        )
       ).toBe(true);
     });
   });
   describe('when called with a regular precision money value', () => {
     it('should return false', () => {
       expect(
-        MoneyInput.isHighPrecision({ amount: '2.00', currencyCode: 'EUR' })
+        MoneyInput.isHighPrecision(
+          { amount: '2.00', currencyCode: 'EUR' },
+          'en'
+        )
       ).toBe(false);
     });
   });
   describe('when called with an empty money value', () => {
     it('should throw', () => {
       expect(() =>
-        MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' })
+        MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }, 'en')
       ).toThrow();
     });
   });
@@ -633,9 +669,7 @@ describe('MoneyInput', () => {
         language,
         options
       ) {
-        return `(${this}).toLocaleString(${language}, ${JSON.stringify(
-          options
-        )})`;
+        return new Intl.NumberFormat(language, options).format(this);
       });
     });
     afterEach(() => {
@@ -658,16 +692,14 @@ describe('MoneyInput', () => {
 
       // We can't use .toHaveAttribute() as the attribute
       // itself does not change in the DOM tree. Only the actual value changes.
-      expect(getByLabelText('Amount').value).toEqual(
-        '(12.5).toLocaleString(en, {"minimumFractionDigits":2})'
-      );
+      expect(getByLabelText('Amount').value).toEqual('12.50');
     });
 
     it('should format the amount on blur to german format when locale is de', () => {
       const { getByLabelText } = render(
         <TestComponent
           currencies={['EUR']}
-          value={{ currencyCode: 'EUR', amount: '12.5' }}
+          value={{ currencyCode: 'EUR', amount: '12,5' }}
         />,
         { locale: 'de' }
       );
@@ -677,9 +709,7 @@ describe('MoneyInput', () => {
 
       // We can't use .toHaveAttribute() as the attribute
       // itself does not change in the DOM tree. Only the actual value changes.
-      expect(getByLabelText('Amount').value).toEqual(
-        '(12.5).toLocaleString(de, {"minimumFractionDigits":2})'
-      );
+      expect(getByLabelText('Amount').value).toEqual('12,50');
     });
   });
 

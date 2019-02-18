@@ -134,9 +134,11 @@ The `isHighPrecision` function will return `true` when a `MoneyInput` value is p
 The function may not be called with empty money values. It will throw in those cases.
 
 ```js
-MoneyInput.isHighPrecision({ amount: '2.00', currencyCode: 'EUR' }); // -> false
-MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' }); // -> true
-MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }); // -> throws
+MoneyInput.isHighPrecision({ amount: '2.00', currencyCode: 'EUR' }, 'en'); // -> false
+MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' }, 'en'); // -> true
+MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' }, 'de'); // -> false
+MoneyInput.isHighPrecision({ amount: '2,001', currencyCode: 'EUR' }, 'de'); // -> true
+MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }, 'en'); // -> throws
 ```
 
 ### Example
@@ -171,7 +173,7 @@ const docToFormValues = aDoc => ({
 });
 
 // a function to convert form values back to a document
-const formValuesToDoc = formValues => ({
+const formValuesToDoc = (formValues, locale) => ({
   // The convertToMoneyValue function will turn a MoneyInput
   // value into a value the API can handle
   // It automatically converts to centPrecision or highPrecision
@@ -180,12 +182,15 @@ const formValuesToDoc = formValues => ({
   // If you want to forbid highPrecision, then the form's validation
   // needs to add an error when it sees a highPrecision price.
   // See example below
-  somePrice: MoneyInput.convertToMoneyValue(formValues.somePrice),
+  somePrice: MoneyInput.convertToMoneyValue(formValues.somePrice, locale),
 });
 
-const validate = formValues => {
+const validate = (formValues, locale) => {
   const errors = { somePrice: {} };
-  const moneyValue = MoneyInput.convertToMoneyValue(formValues.somePrice);
+  const moneyValue = MoneyInput.convertToMoneyValue(
+    formValues.somePrice,
+    locale
+  );
   // convertToMoneyValue returns null whenever the value is invalid
   if (!moneyValue) {
     errors.somePrice.missing = true;
