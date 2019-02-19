@@ -85,23 +85,18 @@ describe('MoneyInput.getAmountInputId', () => {
 describe('MoneyInput.convertToMoneyValue', () => {
   describe('when there is no currency code', () => {
     it('should return an invalid object', () => {
-      expect(MoneyInput.convertToMoneyValue({ amount: '1' }, 'en')).toEqual(
-        null
-      );
+      expect(MoneyInput.convertToMoneyValue({ amount: '1' })).toEqual(null);
     });
   });
   describe('when an unknown currency is used', () => {
     it('should return an invalid object', () => {
       expect(
-        MoneyInput.convertToMoneyValue(
-          { currencyCode: 'foo', amount: '1' },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({ currencyCode: 'foo', amount: '1' })
       ).toEqual(null);
     });
   });
-  describe('when an unknown currency is used2', () => {
-    it('should return an invalid object', () => {
+  describe('when a currency with no fractions digits is used and locale is not passed', () => {
+    it('should throw error that locale is required', () => {
       expect(() =>
         MoneyInput.convertToMoneyValue({ currencyCode: 'JPY', amount: '1' })
       ).toThrow(
@@ -113,14 +108,11 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when no amount is present', () => {
     it('should return an invalid object', () => {
       expect(
-        MoneyInput.convertToMoneyValue(
-          { currencyCode: 'EUR', amount: '' },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '' })
       ).toEqual(null);
-      expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR' }, 'en')
-      ).toEqual(null);
+      expect(MoneyInput.convertToMoneyValue({ currencyCode: 'EUR' })).toEqual(
+        null
+      );
     });
   });
 
@@ -138,10 +130,7 @@ describe('MoneyInput.convertToMoneyValue', () => {
       // tests here.
 
       expect(
-        MoneyInput.convertToMoneyValue(
-          { currencyCode: 'EUR', amount: 'foo' },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: 'foo' })
       ).toEqual(null);
     });
   });
@@ -151,10 +140,7 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when called with a centPrecision price', () => {
     it('should treat it as a decimal separator', () => {
       expect(
-        MoneyInput.convertToMoneyValue(
-          { currencyCode: 'EUR', amount: '1.2' },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '1.2' })
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'EUR',
@@ -179,10 +165,7 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when called with a centPrecision price with weird JS rounding', () => {
     it('should treat it as a decimal separator', () => {
       expect(
-        MoneyInput.convertToMoneyValue(
-          { currencyCode: 'EUR', amount: '2.49' },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '2.49' })
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'EUR',
@@ -191,13 +174,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
       });
 
       expect(
-        MoneyInput.convertToMoneyValue(
-          {
-            currencyCode: 'EUR',
-            amount: '8.066652',
-          },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({
+          currencyCode: 'EUR',
+          amount: '8.066652',
+        })
       ).toEqual({
         type: 'highPrecision',
         currencyCode: 'EUR',
@@ -209,13 +189,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
       // This test ensures that rounding is used instead of just cutting the
       // number of. Cutting it of would result in an incorrect 239998.
       expect(
-        MoneyInput.convertToMoneyValue(
-          {
-            currencyCode: 'EUR',
-            amount: '2399.99',
-          },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({
+          currencyCode: 'EUR',
+          amount: '2399.99',
+        })
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'EUR',
@@ -228,10 +205,7 @@ describe('MoneyInput.convertToMoneyValue', () => {
   describe('when called with a high precision price', () => {
     it('should return a money value of type "highPrecision"', () => {
       expect(
-        MoneyInput.convertToMoneyValue(
-          { currencyCode: 'EUR', amount: '1.234' },
-          'en'
-        )
+        MoneyInput.convertToMoneyValue({ currencyCode: 'EUR', amount: '1.234' })
       ).toEqual({
         type: 'highPrecision',
         currencyCode: 'EUR',
@@ -416,28 +390,31 @@ describe('MoneyInput.isHighPrecision', () => {
   describe('when called with a high precision money value', () => {
     it('should return true', () => {
       expect(
-        MoneyInput.isHighPrecision(
-          { amount: '2.001', currencyCode: 'EUR' },
-          'en'
-        )
+        MoneyInput.isHighPrecision({ amount: '2.001', currencyCode: 'EUR' })
       ).toBe(true);
     });
   });
   describe('when called with a regular precision money value', () => {
     it('should return false', () => {
       expect(
-        MoneyInput.isHighPrecision(
-          { amount: '2.00', currencyCode: 'EUR' },
-          'en'
-        )
+        MoneyInput.isHighPrecision({ amount: '2.00', currencyCode: 'EUR' })
       ).toBe(false);
     });
   });
   describe('when called with an empty money value', () => {
     it('should throw', () => {
       expect(() =>
-        MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }, 'en')
+        MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' })
       ).toThrow();
+    });
+  });
+  describe('when a currency with no fractions digits is used and locale is not passed', () => {
+    it('should throw error that locale is required', () => {
+      expect(() =>
+        MoneyInput.isHighPrecision({ amount: '1', currencyCode: 'JPY' })
+      ).toThrow(
+        'A locale must be provided when currency has no fraction digits (JPY)'
+      );
     });
   });
 });

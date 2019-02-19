@@ -289,23 +289,20 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
   describe('when an unknown currency is used', () => {
     it('should return an error for this currency', () => {
       expect(
-        LocalizedMoneyInput.convertToMoneyValues(
-          {
-            EUR: {
-              currencyCode: 'EUR',
-              amount: '9',
-            },
-            foo: {
-              currencyCode: 'foo',
-              amount: '1',
-            },
-            USD: {
-              currencyCode: 'USD',
-              amount: '12',
-            },
+        LocalizedMoneyInput.convertToMoneyValues({
+          EUR: {
+            currencyCode: 'EUR',
+            amount: '9',
           },
-          'en'
-        )
+          foo: {
+            currencyCode: 'foo',
+            amount: '1',
+          },
+          USD: {
+            currencyCode: 'USD',
+            amount: '12',
+          },
+        })
       ).toEqual([
         {
           centAmount: 900,
