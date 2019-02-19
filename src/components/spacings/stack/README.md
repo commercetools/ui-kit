@@ -18,12 +18,11 @@ import { Spacings } from '@commercetools-frontend/ui-kit';
 
 ## Properties
 
-| Props            | Type             | Required | Values                                                                                  | Default      |
-| ---------------- | ---------------- | :------: | --------------------------------------------------------------------------------------- | ------------ |
-| `scale`          | `String`         |    -     | `['xs', 's', 'm', 'l', 'xl']`                                                           | `s`          |
-| `alignItems`     | `oneOf`          |    -     | `['stretch', 'flex-start', 'flex-end', 'center']`                                       | `flex-start` |
-| `justifyContent` | `oneOf`          |    -     | `['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly']` | `flex-start` |
-| `children`       | `PropTypes.node` |    -     | -                                                                                       | -            |
+| Props        | Type             | Required | Values                                            | Default      |
+| ------------ | ---------------- | :------: | ------------------------------------------------- | ------------ |
+| `scale`      | `String`         |    -     | `['xs', 's', 'm', 'l', 'xl']`                     | `s`          |
+| `alignItems` | `oneOf`          |    -     | `['stretch', 'flex-start', 'flex-end', 'center']` | `flex-start` |
+| `children`   | `PropTypes.node` |    -     | -                                                 | -            |
 
 ## Scales
 

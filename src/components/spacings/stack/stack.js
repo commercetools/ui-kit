@@ -22,20 +22,11 @@ Stack.propTypes = {
     'flexStart',
     'flexEnd',
   ]),
-  justifyContent: PropTypes.oneOf([
-    'flex-start',
-    'flex-end',
-    'center',
-    'space-between',
-    'space-around',
-    'space-evenly',
-  ]),
 };
 
 Stack.defaultProps = {
   scale: 's',
   alignItems: 'stretch',
-  justifyContent: 'flex-start',
 };
 
 export default Stack;

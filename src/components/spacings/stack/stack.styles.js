@@ -33,7 +33,6 @@ export default props => css`
   display: flex;
   flex-direction: column;
   align-items: ${getAlignItem(props.alignItems)};
-  justify-content: ${props.justifyContent};
 
   > * + * {
     margin: ${getMargin(props.scale)} 0 0;
