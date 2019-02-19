@@ -160,13 +160,13 @@ const createCurrencySelectStyles = ({
 // This means the highest amount always wins. We do this by comparing the last
 // position of `.` and `,`. Whatever occurs later is used as the decimal
 // separator.
-export const getLocalsSperatorAndThrowaway = (rawAmount, locale) => {
+export const getLocalesSperatorAndThrowaway = (rawAmount, locale) => {
   if (locale) {
     const [throwaway, separator] = (9999.999)
-      .toLocaleString(locale)
-      .replace(/9/g, '')
+      .toLocaleString(locale) // after this step it'll be either 9,999.999 or 9.999,999 based in the locale
+      .replace(/9/g, '') // then we remove the number `9` to endup with `,.` or `.,`
       .split('')
-      .map(symbol => (symbol === '.' ? '\\.' : symbol));
+      .map(symbol => (symbol === '.' ? '\\.' : symbol)); // here we escape the '.' to use it as regex
     return { throwaway, separator };
   }
   const lastDot = String(rawAmount).lastIndexOf('.');
@@ -181,7 +181,7 @@ export const getLocalsSperatorAndThrowaway = (rawAmount, locale) => {
 };
 // Parsing
 export const parseRawAmountToNumber = (rawAmount, locale) => {
-  const { throwaway, separator } = getLocalsSperatorAndThrowaway(
+  const { throwaway, separator } = getLocalesSperatorAndThrowaway(
     rawAmount,
     locale
   );
