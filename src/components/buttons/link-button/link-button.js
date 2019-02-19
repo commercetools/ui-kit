@@ -50,9 +50,7 @@ const LinkButton = props => (
           size: 'medium',
           theme: props.isDisabled ? 'grey' : 'green',
         })}
-      <div>
-        <Text.Body>{props.label}</Text.Body>
-      </div>
+      <Text.Body>{props.label}</Text.Body>
     </Spacings.Inline>
   </Link>
 );

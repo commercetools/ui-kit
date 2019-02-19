@@ -74,9 +74,7 @@ export const FlatButton = props => {
       >
         <Spacings.Inline scale="xs" alignItems="center">
           {props.iconPosition === 'left' && getIconElement(props)}
-          <div>
-            <Text.Body>{props.label}</Text.Body>
-          </div>
+          <Text.Body>{props.label}</Text.Body>
           {props.iconPosition === 'right' && getIconElement(props)}
         </Spacings.Inline>
       </AccessibleButton>
