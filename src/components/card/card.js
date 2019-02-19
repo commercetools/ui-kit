@@ -16,7 +16,6 @@ const Card = props => (
         width: 100%;
         box-shadow: ${props.type === 'raised' ? vars.shadow1Second : 'none'};
         border-radius: ${vars.borderRadius6};
-        padding: ${vars.spacing16};
         background: ${props.theme === 'dark'
           ? vars.colorGray95
           : vars.colorWhite};
@@ -24,7 +23,13 @@ const Card = props => (
     ]}
     className={props.className}
   >
-    {props.children}
+    <div
+      css={css`
+        padding: ${vars.spacing16};
+      `}
+    >
+      {props.children}
+    </div>
   </div>
 );
 
