@@ -233,7 +233,7 @@ export const component = () => (
     ].map(prop => (
       <Spec
         key={`inline-justify-${prop}`}
-        label={`Inset - when justifyContent is ${prop}`}
+        label={`Inline - when justifyContent is ${prop}`}
       >
         <View>
           <Constraints.Horizontal constraint="scale">
