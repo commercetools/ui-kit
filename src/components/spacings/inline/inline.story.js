@@ -54,7 +54,7 @@ storiesOf('Components|Spacings', module)
   .add('Inline', () => {
     const alignItems = select(
       'Align items',
-      ['flexStart', 'center', 'flexEnd', 'stretch', 'baseline'],
+      ['flex-start', 'center', 'flex-end', 'stretch', 'baseline'],
       'stretch'
     );
     return (

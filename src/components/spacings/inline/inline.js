@@ -14,17 +14,29 @@ Inline.propTypes = {
   scale: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
   alignItems: PropTypes.oneOf([
     'stretch',
-    'flexStart',
-    'flexEnd',
+    'flex-start',
+    'flex-end',
     'center',
     'baseline',
+    // Deprecated
+    'flexStart',
+    'flexEnd',
+  ]),
+  justifyContent: PropTypes.oneOf([
+    'flex-start',
+    'flex-end',
+    'center',
+    'space-between',
+    'space-around',
+    'space-evenly',
   ]),
   children: PropTypes.node,
 };
 
 Inline.defaultProps = {
   scale: 's',
-  alignItems: 'flexStart',
+  alignItems: 'flex-start',
+  justifyContent: 'flex-start',
 };
 
 export default Inline;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Spacings, Text } from 'ui-kit';
+import { Spacings, Text, Constraints } from 'ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/spacings';
@@ -105,7 +105,7 @@ const insetSquishSizes = [
   { name: 'l', pixels: '16px x 32px' },
 ];
 
-const flexProps = ['stretch', 'flexStart', 'flexEnd', 'center'];
+const flexProps = ['stretch', 'flex-start', 'flex-end', 'center'];
 const exampleHeights = ['50px', '60px', '76px', '40px', '66px'];
 
 const StackExample = ({ alignItems }) => (
@@ -221,6 +221,36 @@ export const component = () => (
     {flexProps.map(prop => (
       <Spec key={`stack-${prop}`} label={`Stack - when alignItems is ${prop}`}>
         <StackExample alignItems={prop} />
+      </Spec>
+    ))}
+    {[
+      'flex-start',
+      'flex-end',
+      'center',
+      'space-between',
+      'space-around',
+      'space-evenly',
+    ].map(prop => (
+      <Spec
+        key={`inline-justify-${prop}`}
+        label={`Inline - when justifyContent is ${prop}`}
+      >
+        <View>
+          <Constraints.Horizontal constraint="scale">
+            <Spacings.Inline
+              scale="s"
+              alignItems="center"
+              justifyContent={prop}
+            >
+              <div>
+                <Text.Body>{'Text on the left'}</Text.Body>
+              </div>
+              <div>
+                <Text.Body>{'Text on the right'}</Text.Body>
+              </div>
+            </Spacings.Inline>
+          </Constraints.Horizontal>
+        </View>
       </Spec>
     ))}
   </Suite>

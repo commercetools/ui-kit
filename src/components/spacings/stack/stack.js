@@ -13,7 +13,15 @@ Stack.displayName = 'Stack';
 Stack.propTypes = {
   scale: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
   children: PropTypes.node,
-  alignItems: PropTypes.oneOf(['stretch', 'flexStart', 'flexEnd', 'center']),
+  alignItems: PropTypes.oneOf([
+    'stretch',
+    'flex-start',
+    'flex-end',
+    'center',
+    // Deprecated
+    'flexStart',
+    'flexEnd',
+  ]),
 };
 
 Stack.defaultProps = {
