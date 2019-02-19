@@ -38,7 +38,7 @@ storiesOf('Components|Spacings', module)
   .add('Stack', () => {
     const alignItems = select(
       'Align items',
-      ['flexStart', 'center', 'flexEnd', 'stretch'],
+      ['flex-start', 'center', 'flex-end', 'stretch'],
       'stretch'
     );
     return (

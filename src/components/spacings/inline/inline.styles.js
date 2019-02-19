@@ -1,18 +1,14 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const getAlignItems = alignment => {
+const getAlignItem = alignment => {
   switch (alignment) {
-    case 'center':
-      return `align-items: center;`;
     case 'flexStart':
-      return `align-items: flex-start;`;
+      return `flex-start`;
     case 'flexEnd':
-      return `align-items: flex-end;`;
-    case 'stretch':
-      return `align-items: stretch;`;
+      return `flex-end`;
     default:
-      return ``;
+      return alignment;
   }
 };
 
@@ -35,7 +31,8 @@ const getMargin = scale => {
 
 export default props => css`
   display: flex;
-  ${getAlignItems(props.alignItems)}
+  align-items: ${getAlignItem(props.alignItems)};
+  justify-content: ${props.justifyContent};
 
   > * + * {
     margin: 0 0 0 ${getMargin(props.scale)};
