@@ -1,10 +1,6 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-// NOTE: order is important here
-// * a disabled-field currently does not display warning/error-states so it takes precedence
-// * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
-// how you can interact with the field is controlled separately by the props, this only influences visuals
 const getContainerStyles = props => {
   const baseStyles = css`
     display: flex;
@@ -29,6 +25,32 @@ const getContainerStyles = props => {
       `,
     ];
   }
+  if (props.hasError) {
+    return [
+      baseStyles,
+      css`
+        svg [id$='borderAndContent'] > [id$='content'] {
+          fill: ${vars.fontColorError};
+        }
+        svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputError};
+        }
+      `,
+    ];
+  }
+  if (props.hasWarning) {
+    return [
+      baseStyles,
+      css`
+        svg [id$='borderAndContent'] > [id$='content'] {
+          fill: ${vars.fontColorWarning};
+        }
+        svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputWarning};
+        }
+      `,
+    ];
+  }
   if (props.isHovered && !props.isDisabled) {
     return [
       baseStyles,
@@ -39,21 +61,80 @@ const getContainerStyles = props => {
       `,
     ];
   }
+  if (props.isReadOnly) {
+    return [
+      baseStyles,
+      css`
+        svg [id$='borderAndContent'] > [id$='content'] {
+          fill: ${vars.fontColorReadonly};
+        }
+        svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputReadonly};
+        }
+      `,
+    ];
+  }
   return baseStyles;
 };
 
 const getLabelStyles = props => {
-  if (props.isDisabled) {
-    return css`
-      cursor: not-allowed;
-    `;
-  }
-  return css`
+  const baseStyles = css`
     cursor: pointer;
     &:hover svg [id$='borderAndContent'] > [id$='border'] {
       stroke: ${vars.borderColorInputFocus};
     }
+    &:active,
+    &:focus {
+      border-color: ${vars.borderColorInputFocus};
+    }
   `;
+  if (props.isDisabled) {
+    return [
+      baseStyles,
+      css`
+        cursor: not-allowed;
+        color: ${vars.fontColorDisabled};
+        &:hover svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputDisabled};
+        }
+      `,
+    ];
+  }
+  if (props.hasError) {
+    return [
+      baseStyles,
+      css`
+        color: ${vars.fontColorError};
+        &:hover svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputError};
+        }
+      `,
+    ];
+  }
+  if (props.hasWarning) {
+    return [
+      baseStyles,
+      css`
+        color: ${vars.fontColorWarning};
+        &:hover svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputWarning};
+        }
+      `,
+    ];
+  }
+  if (props.isReadOnly) {
+    return [
+      baseStyles,
+      css`
+        cursor: default;
+        color: ${vars.fontColorReadonly};
+        &:hover svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputReadonly};
+        }
+      `,
+    ];
+  }
+  return baseStyles;
 };
 
 export { getContainerStyles, getLabelStyles };

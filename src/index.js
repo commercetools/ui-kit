@@ -56,6 +56,7 @@ export {
   default as AsyncCreatableSelectField,
 } from './components/fields/async-creatable-select-field';
 export { default as PasswordField } from './components/fields/password-field';
+export { default as RadioField } from './components/fields/radio-field';
 
 export * from './components/icons';
 
