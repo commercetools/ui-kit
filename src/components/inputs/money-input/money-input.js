@@ -149,14 +149,16 @@ const createCurrencySelectStyles = ({
 //  "fractionDigits": 7
 // }
 // which equals 0.0123456 €
-// When a value is `1.000,00` we parse it as `1000`.
-// When a value is `1,000.00` we also parse it as `1000`.
+
+// Parsing
 // Since most users are not careful about how they enter values, we will parse
 // both `.` and `,` as decimal separators.
+// When a value is `1.000,00` we parse it as `1000`.
+// When a value is `1,000.00` we also parse it as `1000`.
+//
 // This means the highest amount always wins. We do this by comparing the last
 // position of `.` and `,`. Whatever occurs later is used as the decimal
 // separator.
-// Parsing
 export const parseRawAmountToNumber = (rawAmount, locale) => {
   let throwaway;
   let separator;
