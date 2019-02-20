@@ -56,6 +56,7 @@ import OrigExpandIcon from './svg/expand.react.svg';
 import OrigExportIcon from './svg/export.react.svg';
 import OrigExternalLinkIcon from './svg/external-link.react.svg';
 import OrigEyeCrossedIcon from './svg/eye-crossed.react.svg';
+import OrigEyeIcon from './svg/eye.react.svg';
 import OrigFilterIcon from './svg/filter.react.svg';
 import OrigFlagFilledIcon from './svg/flag-filled.react.svg';
 import OrigFlagLinearIcon from './svg/flag-linear.react.svg';
@@ -243,6 +244,7 @@ export const EyeCrossedIcon = createStyledIcon(
   OrigEyeCrossedIcon,
   'EyeCrossedIcon'
 );
+export const EyeIcon = createStyledIcon(OrigEyeIcon, 'EyeIcon');
 export const FilterIcon = createStyledIcon(OrigFilterIcon, 'FilterIcon');
 export const FlagFilledIcon = createStyledIcon(
   OrigFlagFilledIcon,

@@ -48,7 +48,6 @@ storiesOf('Components|Fields', module)
                 }
               }}
               isRequired={boolean('isRequired', false)}
-              isPasswordVisible={boolean('isPasswordVisible', false)}
               touched={boolean('touched', false)}
               name={text('name', '')}
               value={text('value', value)}

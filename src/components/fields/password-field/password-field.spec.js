@@ -191,3 +191,24 @@ describe('when field is touched and has errors', () => {
     });
   });
 });
+
+describe('when input has no value', () => {
+  it('should disable the `show` button`', () => {
+    const { getByLabelText } = renderPasswordField();
+    expect(getByLabelText('show')).toHaveAttribute('disabled');
+  });
+});
+
+describe('when input value is not empty', () => {
+  it('should enable the `show` button`', () => {
+    const { getByLabelText } = renderPasswordField({ value: 'foo' });
+    expect(getByLabelText('show')).not.toHaveAttribute('disabled');
+  });
+  describe('when the `show` button is clicked', () => {
+    it('should change the label of the button to `hide`', () => {
+      const { getByLabelText } = renderPasswordField({ value: 'foo' });
+      getByLabelText('show').click();
+      expect(getByLabelText('hide')).toBeInTheDocument();
+    });
+  });
+});

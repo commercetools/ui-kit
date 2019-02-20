@@ -28,6 +28,8 @@
   "UIKit.MoneyField.highPrecision": "",
   "UIKit.MultilineTextInput.collapse": "Ausblenden",
   "UIKit.MultilineTextInput.expand": "Erweitern",
+  "UIKit.PasswordField.hide": "verbergen",
+  "UIKit.PasswordField.show": "anzeigen",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "",
   "UIKit.TimeInput.placeholder": "HH:mm"
