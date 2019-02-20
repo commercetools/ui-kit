@@ -63,14 +63,12 @@ class CheckboxInput extends React.PureComponent {
               })()}
             </div>
             {this.props.children && (
-              <div>
-                <Text.Body
-                  // FIXME: add proper tones when we have disabled/primary in tones
-                  tone={this.props.isDisabled ? 'secondary' : undefined}
-                >
-                  {this.props.children}
-                </Text.Body>
-              </div>
+              <Text.Body
+                // FIXME: add proper tones when we have disabled/primary in tones
+                tone={this.props.isDisabled ? 'secondary' : undefined}
+              >
+                {this.props.children}
+              </Text.Body>
             )}
             <input
               css={css`

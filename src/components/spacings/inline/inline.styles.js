@@ -29,12 +29,18 @@ const getMargin = scale => {
   }
 };
 
+/**
+ * We need to force the margin for the child elements as ome children
+ * might have `margin: 0` defined, which results in a higher CSS specificity,
+ * causing the margings of the spacing components to be ignored.
+ * See https://github.com/commercetools/ui-kit/issues/542
+ */
 export default props => css`
   display: flex;
   align-items: ${getAlignItem(props.alignItems)};
   justify-content: ${props.justifyContent};
 
   > * + * {
-    margin: 0 0 0 ${getMargin(props.scale)};
+    margin: 0 0 0 ${getMargin(props.scale)} !important;
   }
 `;

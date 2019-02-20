@@ -43,9 +43,7 @@ const CalendarHeader = props => (
         onClick={props.onPrevYearClick}
         icon={<AngleLeftIcon size="medium" />}
       />
-      <div>
-        <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
-      </div>
+      <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
       <SecondaryIconButton
         label="show next year"
         onClick={props.onNextYearClick}
