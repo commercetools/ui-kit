@@ -149,10 +149,6 @@ const createCurrencySelectStyles = ({
 //  "fractionDigits": 7
 // }
 // which equals 0.0123456 €
-// when locale is provided we use the number 9999.999 becauause it'll either be formated to
-// A: 9,999.999
-// B: 9.999,999
-// otherwise, we infere the throwaway, separator from the amount
 // When a value is `1.000,00` we parse it as `1000`.
 // When a value is `1,000.00` we also parse it as `1000`.
 // Since most users are not careful about how they enter values, we will parse
@@ -162,8 +158,8 @@ const createCurrencySelectStyles = ({
 // separator.
 export const getLocalesSperatorAndThrowaway = (rawAmount, locale) => {
   if (locale) {
-    const [throwaway, separator] = (9999.999)
-      .toLocaleString(locale) // after this step it'll be either 9,999.999 or 9.999,999 based in the locale
+    const [throwaway, separator] = (9999.999) // we need any number that has more than 3 digits to show the thousand sepirator, and has fractions
+      .toLocaleString(locale) // after this step (localizing it) it'll be either 9,999.999 or 9.999,999 based in the locale
       .replace(/9/g, '') // then we remove the number `9` to endup with `,.` or `.,`
       .split('')
       .map(symbol => (symbol === '.' ? '\\.' : symbol)); // here we escape the '.' to use it as regex
@@ -181,10 +177,22 @@ export const getLocalesSperatorAndThrowaway = (rawAmount, locale) => {
 };
 // Parsing
 export const parseRawAmountToNumber = (rawAmount, locale) => {
-  const { throwaway, separator } = getLocalesSperatorAndThrowaway(
-    rawAmount,
-    locale
-  );
+  let throwaway;
+  let separator;
+
+  if (locale) {
+    [throwaway, separator] = (9999.999) // we need any number that has more than 3 digits to show the thousand sepirator, and has fractions
+      .toLocaleString(locale) // after this step (localizing it) it'll be either 9,999.999 or 9.999,999 based in the locale
+      .replace(/9/g, '') // then we remove the number `9` to endup with `,.` or `.,`
+      .split('')
+      .map(symbol => (symbol === '.' ? '\\.' : symbol)); // here we escape the '.' to use it as regex
+  } else {
+    const lastDot = String(rawAmount).lastIndexOf('.');
+    const lastComma = String(rawAmount).lastIndexOf(',');
+
+    separator = lastComma > lastDot ? ',' : '.';
+    throwaway = separator === '.' ? ',' : '\\.';
+  }
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
     .replace(new RegExp(`${throwaway}`, 'g'), '')
