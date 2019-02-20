@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Intl from 'intl';
 import MoneyInput from './money-input';
 import { render, fireEvent } from '../../../test-utils';
 
@@ -646,23 +645,6 @@ describe('MoneyInput', () => {
   });
 
   describe('when the locale is custom', () => {
-    // The implementation of MoneyInput relies on Number.prototype.toLocaleString,
-    // but it only respects the english format in JSDOM, so we need to mock it.
-    const originalToLocaleString = Number.prototype.toLocaleString;
-    beforeEach(() => {
-      // eslint-disable-next-line no-extend-native
-      Number.prototype.toLocaleString = jest.fn(function toLocaleString(
-        language,
-        options
-      ) {
-        return new Intl.NumberFormat(language, options).format(this);
-      });
-    });
-    afterEach(() => {
-      // eslint-disable-next-line no-extend-native
-      Number.prototype.toLocaleString = originalToLocaleString;
-    });
-
     it('should format the amount on blur to US format when locale is en', () => {
       const { getByLabelText } = render(
         <TestComponent
