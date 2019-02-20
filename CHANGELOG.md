@@ -1,3 +1,24 @@
+<a name="8.6.0"></a>
+
+# [8.6.0](https://github.com/commercetools/ui-kit/compare/v8.5.0...v8.6.0) (2019-02-20)
+
+### Features
+
+- `RadioField`: New component ([#537](https://github.com/commercetools/ui-kit/issues/537)) ([c2fcaf7](https://github.com/commercetools/ui-kit/commit/c2fcaf7))
+- `PasswordField`: add show/hide button ([#555](https://github.com/commercetools/ui-kit/issues/555)) ([9f420c5](https://github.com/commercetools/ui-kit/commit/9f420c5))
+- Icons: new `EyeIcon` ([#555](https://github.com/commercetools/ui-kit/issues/555)) ([9f420c5](https://github.com/commercetools/ui-kit/commit/9f420c5))
+- Icons: new `PageGearIcon` ([#553](https://github.com/commercetools/ui-kit/issues/553)) ([8c080aa](https://github.com/commercetools/ui-kit/commit/8c080aa))
+- `Spacings.Inline`, `Spacings.Stack`: support justify-content prop for Inline/Stack components ([#557](https://github.com/commercetools/ui-kit/issues/557)) ([5bd61e7](https://github.com/commercetools/ui-kit/commit/5bd61e7)), closes [#552](https://github.com/commercetools/ui-kit/issues/552)
+
+### Bug Fixes
+
+- `Card`: do not apply padding to outer flex container. Fixes [#554](https://github.com/commercetools/ui-kit/issues/554) ([#556](https://github.com/commercetools/ui-kit/issues/556)) ([65b150e](https://github.com/commercetools/ui-kit/commit/65b150e))
+- Spacings: specificity of margin for children elements ([#558](https://github.com/commercetools/ui-kit/issues/558)) ([733408f](https://github.com/commercetools/ui-kit/commit/733408f))
+
+### Refactoring
+
+- Various dependency updates ([#549](https://github.com/commercetools/ui-kit/pull/549))
+
 <a name="8.5.0"></a>
 
 # [8.5.0](https://github.com/commercetools/ui-kit/compare/v8.4.0...v8.5.0) (2019-02-15)
