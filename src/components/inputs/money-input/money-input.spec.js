@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Intl from 'intl';
 import MoneyInput from './money-input';
 import { render, fireEvent } from '../../../test-utils';
 
@@ -662,23 +661,6 @@ describe('MoneyInput', () => {
       // We can't use .toHaveAttribute() as the attribute
       // itself does not change in the DOM tree. Only the actual value changes.
       expect(getByLabelText('Amount').value).toEqual('12.50');
-    });
-
-    it('should format the amount on blur to german format when locale is de', () => {
-      const { getByLabelText } = render(
-        <TestComponent
-          currencies={['EUR']}
-          value={{ currencyCode: 'EUR', amount: '12,5' }}
-        />,
-        { locale: 'de' }
-      );
-
-      getByLabelText('Amount').focus();
-      fireEvent.blur(getByLabelText('Amount'));
-
-      // We can't use .toHaveAttribute() as the attribute
-      // itself does not change in the DOM tree. Only the actual value changes.
-      expect(getByLabelText('Amount').value).toEqual('12,50');
     });
   });
 
