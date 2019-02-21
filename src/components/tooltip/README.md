@@ -73,12 +73,12 @@ const Body = styled.div`
 
 ### Customizing where the portal is rendered
 
-When you are dealing with virtualized components, it can be useful to render the tooltip into another part of the document. You can define a `PopperWrapperComponent` to do this.
+When you are dealing with virtualized components, it can be useful to render the tooltip into another part of the document. You can define a `TooltipWrapperComponent` to do this.
 
 ```js
 const Portal = props => ReactDOM.createPortal(props.children, document.body);
 
-<Tooltip title="Delete" components={{ PopperWrapperComponent: Portal }}>
+<Tooltip title="Delete" components={{ TooltipWrapperComponent: Portal }}>
   <button>Submit</button>
 </Tooltip>;
 ```

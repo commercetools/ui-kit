@@ -7,7 +7,7 @@ import Tooltip from './tooltip';
 jest.mock('popper.js');
 jest.useFakeTimers();
 
-const WithPortal = props => {
+const Portal = props => {
   const domNode = document.querySelector('#portal-id');
   return ReactDOM.createPortal(props.children, domNode);
 };
@@ -27,7 +27,7 @@ class TestComponent extends React.Component {
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
     components: PropTypes.shape({
-      PopperWrapperComponent: PropTypes.any,
+      TooltipWrapperComponent: PropTypes.any,
       BodyComponent: PropTypes.any,
       WrapperComponent: PropTypes.any,
     }),
@@ -348,7 +348,7 @@ describe('when used with a custom popper wrapper component', () => {
         onBlur={onBlur}
         components={{
           BodyComponent,
-          PopperWrapperComponent: WithPortal,
+          TooltipWrapperComponent: Portal,
         }}
       />
     );

@@ -14,7 +14,7 @@ import Readme from './README.md';
 import Table from './table';
 import Tooltip from '../tooltip';
 
-const WithPortal = props => {
+const Portal = props => {
   const domNode = document.body;
   return ReactDOM.createPortal(props.children, domNode);
 };
@@ -267,7 +267,7 @@ class BaseTable extends React.PureComponent {
     if (!showTooltip) {
       return <div>{item[col.key]}</div>;
     }
-    const components = usePortal ? { PopperWrapperComponent: WithPortal } : {};
+    const components = usePortal ? { TooltipWrapperComponent: Portal } : {};
     return (
       <Tooltip components={components} title={tooltipText} placement="left">
         <div>{item[col.key]}</div>

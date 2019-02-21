@@ -15,11 +15,11 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 
-const PopperWrapperComponent = props => (
+const TooltipWrapperComponent = props => (
   <React.Fragment>{props.children}</React.Fragment>
 );
-PopperWrapperComponent.displayName = 'PopperWrapperComponent';
-PopperWrapperComponent.propTypes = {
+TooltipWrapperComponent.displayName = 'TooltipWrapperComponent';
+TooltipWrapperComponent.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
@@ -59,10 +59,10 @@ class Tooltip extends React.Component {
         }
         return null;
       },
-      PopperWrapperComponent: (props, propName) => {
+      TooltipWrapperComponent: (props, propName) => {
         if (props[propName] && !isValidElementType(props[propName])) {
           return new Error(
-            `Invalid prop 'components.PopperWrapperComponent' supplied to 'Tooltip': the prop is not a valid React component`
+            `Invalid prop 'components.TooltipWrapperComponent' supplied to 'Tooltip': the prop is not a valid React component`
           );
         }
         return null;
@@ -196,8 +196,8 @@ class Tooltip extends React.Component {
 
     const WrapperComponent = this.props.components.WrapperComponent || Wrapper;
     const BodyComponent = this.props.components.BodyComponent || Body;
-    const PopperWrapper =
-      this.props.components.PopperWrapperComponent || PopperWrapperComponent;
+    const TooltipWrapper =
+      this.props.components.TooltipWrapperComponent || TooltipWrapperComponent;
     return (
       <Manager>
         <Reference innerRef={this.setChildrenRef}>
@@ -210,7 +210,7 @@ class Tooltip extends React.Component {
           )}
         </Reference>
         {open && (
-          <PopperWrapper>
+          <TooltipWrapper>
             <Popper placement={this.props.placement} positionFixed={true}>
               {({ ref, style, placement }) => (
                 <div
@@ -228,7 +228,7 @@ class Tooltip extends React.Component {
                 </div>
               )}
             </Popper>
-          </PopperWrapper>
+          </TooltipWrapper>
         )}
       </Manager>
     );
