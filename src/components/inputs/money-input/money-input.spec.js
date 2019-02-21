@@ -94,6 +94,15 @@ describe('MoneyInput.convertToMoneyValue', () => {
       ).toEqual(null);
     });
   });
+  describe('when a currency with no fractions digits is used and locale is not passed', () => {
+    it('should throw error that locale is required', () => {
+      expect(() =>
+        MoneyInput.convertToMoneyValue({ currencyCode: 'JPY', amount: '1' })
+      ).toThrow(
+        'A locale must be provided when currency has no fraction digits (JPY)'
+      );
+    });
+  });
 
   describe('when no amount is present', () => {
     it('should return an invalid object', () => {
@@ -139,7 +148,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
       });
 
       expect(
-        MoneyInput.convertToMoneyValue({ currencyCode: 'KWD', amount: '1.234' })
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'KWD', amount: '1.234' },
+          'en'
+        )
       ).toEqual({
         type: 'centPrecision',
         currencyCode: 'KWD',
@@ -395,6 +407,15 @@ describe('MoneyInput.isHighPrecision', () => {
       ).toThrow();
     });
   });
+  describe('when a currency with no fractions digits is used and locale is not passed', () => {
+    it('should throw error that locale is required', () => {
+      expect(() =>
+        MoneyInput.isHighPrecision({ amount: '1', currencyCode: 'JPY' })
+      ).toThrow(
+        'A locale must be provided when currency has no fraction digits (JPY)'
+      );
+    });
+  });
 });
 
 // -----------------------------------------------------------------------------
@@ -624,25 +645,6 @@ describe('MoneyInput', () => {
   });
 
   describe('when the locale is custom', () => {
-    // The implementation of MoneyInput relies on Number.prototype.toLocaleString,
-    // but it only respects the english format in JSDOM, so we need to mock it.
-    const originalToLocaleString = Number.prototype.toLocaleString;
-    beforeEach(() => {
-      // eslint-disable-next-line no-extend-native
-      Number.prototype.toLocaleString = jest.fn(function toLocaleString(
-        language,
-        options
-      ) {
-        return `(${this}).toLocaleString(${language}, ${JSON.stringify(
-          options
-        )})`;
-      });
-    });
-    afterEach(() => {
-      // eslint-disable-next-line no-extend-native
-      Number.prototype.toLocaleString = originalToLocaleString;
-    });
-
     it('should format the amount on blur to US format when locale is en', () => {
       const { getByLabelText } = render(
         <TestComponent
@@ -658,28 +660,7 @@ describe('MoneyInput', () => {
 
       // We can't use .toHaveAttribute() as the attribute
       // itself does not change in the DOM tree. Only the actual value changes.
-      expect(getByLabelText('Amount').value).toEqual(
-        '(12.5).toLocaleString(en, {"minimumFractionDigits":2})'
-      );
-    });
-
-    it('should format the amount on blur to german format when locale is de', () => {
-      const { getByLabelText } = render(
-        <TestComponent
-          currencies={['EUR']}
-          value={{ currencyCode: 'EUR', amount: '12.5' }}
-        />,
-        { locale: 'de' }
-      );
-
-      getByLabelText('Amount').focus();
-      fireEvent.blur(getByLabelText('Amount'));
-
-      // We can't use .toHaveAttribute() as the attribute
-      // itself does not change in the DOM tree. Only the actual value changes.
-      expect(getByLabelText('Amount').value).toEqual(
-        '(12.5).toLocaleString(de, {"minimumFractionDigits":2})'
-      );
+      expect(getByLabelText('Amount').value).toEqual('12.50');
     });
   });
 

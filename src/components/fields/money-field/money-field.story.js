@@ -8,6 +8,7 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs';
+import { injectIntl } from 'react-intl';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import MoneyFieldReadme from './README.md';
@@ -36,16 +37,20 @@ class MoneyFieldStory extends React.Component {
       // eslint-disable-next-line no-console
       console.log(
         'parsed',
-        MoneyInput.convertToMoneyValue({
-          amount: this.state.amount,
-          currencyCode: this.state.currencyCode,
-        })
+        MoneyInput.convertToMoneyValue(
+          {
+            amount: this.state.amount,
+            currencyCode: this.state.currencyCode,
+          },
+          // eslint-disable-next-line react/prop-types
+          this.props.intl.locale
+        )
       );
     }
   }
 
   render() {
-    const currencies = ['EUR', 'USD', 'AED', 'KWD'];
+    const currencies = ['EUR', 'USD', 'AED', 'KWD', 'JPY'];
     const name = text('name', '') || 'default-name';
     const hint = text('hint', 'How much is the fish?');
 
@@ -117,8 +122,8 @@ class MoneyFieldStory extends React.Component {
     );
   }
 }
-
+const Story = injectIntl(MoneyFieldStory);
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(MoneyFieldReadme))
-  .add('MoneyField', () => <MoneyFieldStory />);
+  .add('MoneyField', () => <Story />);

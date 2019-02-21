@@ -159,13 +159,23 @@ const createCurrencySelectStyles = ({
 // This means the highest amount always wins. We do this by comparing the last
 // position of `.` and `,`. Whatever occurs later is used as the decimal
 // separator.
-export const parseRawAmountToNumber = rawAmount => {
-  const lastDot = String(rawAmount).lastIndexOf('.');
-  const lastComma = String(rawAmount).lastIndexOf(',');
+export const parseRawAmountToNumber = (rawAmount, locale) => {
+  let throwaway;
+  let separator;
 
-  const separator = lastComma > lastDot ? ',' : '.';
-  const throwaway = separator === '.' ? ',' : '\\.';
+  if (locale) {
+    [throwaway, separator] = (9999.999) // we need any number that has more than 3 digits to show the thousand sepirator, and has fractions
+      .toLocaleString(locale) // after this step (localizing it) it'll be either 9,999.999 or 9.999,999 based in the locale
+      .replace(/9/g, '') // then we remove the number `9` to endup with `,.` or `.,`
+      .split('')
+      .map(symbol => (symbol === '.' ? '\\.' : symbol)); // here we escape the '.' to use it as regex
+  } else {
+    const lastDot = String(rawAmount).lastIndexOf('.');
+    const lastComma = String(rawAmount).lastIndexOf(',');
 
+    separator = lastComma > lastDot ? ',' : '.';
+    throwaway = separator === '.' ? ',' : '\\.';
+  }
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
     .replace(new RegExp(`${throwaway}`, 'g'), '')
@@ -185,7 +195,7 @@ export const parseRawAmountToNumber = rawAmount => {
 //  - no currency was selected
 //
 // This function expects the "amount" to be a trimmed value.
-export const createMoneyValue = (currencyCode, rawAmount) => {
+export const createMoneyValue = (currencyCode, rawAmount, locale) => {
   if (!currencyCode) return null;
 
   const currency = currencies[currencyCode];
@@ -193,7 +203,11 @@ export const createMoneyValue = (currencyCode, rawAmount) => {
 
   if (rawAmount.length === 0 || !isNumberish(rawAmount)) return null;
 
-  const amountAsNumber = parseRawAmountToNumber(rawAmount);
+  invariant(
+    locale || currency.fractionDigits !== 0,
+    `A locale must be provided when currency has no fraction digits (${currencyCode})`
+  );
+  const amountAsNumber = parseRawAmountToNumber(rawAmount, locale);
   if (isNaN(amountAsNumber)) return null;
 
   // The cent amount is rounded to the currencie's default number
@@ -260,7 +274,7 @@ const getAmountAsNumberFromMoneyValue = moneyValue =>
 // gets called with a string and should return a formatted string
 const formatAmount = (rawAmount, currencyCode, locale) => {
   // fallback in case the user didn't enter an amount yet (or it's invalid)
-  const moneyValue = createMoneyValue(currencyCode, rawAmount) || {
+  const moneyValue = createMoneyValue(currencyCode, rawAmount, locale) || {
     currencyCode,
     centAmount: NaN,
   };
@@ -287,10 +301,11 @@ class MoneyInput extends React.Component {
 
   static getCurrencyDropdownId = getCurrencyDropdownName;
 
-  static convertToMoneyValue = value =>
+  static convertToMoneyValue = (value, locale) =>
     createMoneyValue(
       value.currencyCode,
-      typeof value.amount === 'string' ? value.amount.trim() : ''
+      typeof value.amount === 'string' ? value.amount.trim() : '',
+      locale
     );
 
   static parseMoneyValue = (moneyValue, locale) => {
@@ -338,12 +353,12 @@ class MoneyInput extends React.Component {
     formValue.amount.trim() === '' ||
     formValue.currencyCode.trim() === '';
 
-  static isHighPrecision = formValue => {
+  static isHighPrecision = (formValue, locale) => {
     invariant(
       !MoneyInput.isEmpty(formValue),
       'MoneyValue.isHighPrecision may not be called with an empty money value.'
     );
-    const moneyValue = MoneyInput.convertToMoneyValue(formValue);
+    const moneyValue = MoneyInput.convertToMoneyValue(formValue, locale);
     return moneyValue && moneyValue.type === 'highPrecision';
   };
 

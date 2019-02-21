@@ -1,4 +1,5 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import {
@@ -34,16 +35,20 @@ class MoneyInputStory extends React.Component {
       // eslint-disable-next-line no-console
       console.log(
         'parsed',
-        MoneyInput.convertToMoneyValue({
-          amount: this.state.amount,
-          currencyCode: this.state.currencyCode,
-        })
+        MoneyInput.convertToMoneyValue(
+          {
+            amount: this.state.amount,
+            currencyCode: this.state.currencyCode,
+          },
+          // eslint-disable-next-line react/prop-types
+          this.props.intl.locale
+        )
       );
     }
   }
 
   render() {
-    const currencies = array('currencies', ['EUR', 'USD', 'AED', 'KWD']);
+    const currencies = array('currencies', ['EUR', 'USD', 'AED', 'KWD', 'JPY']);
     const name = text('name', '') || 'default-name';
     const value = {
       amount: this.state.amount,
@@ -95,8 +100,8 @@ class MoneyInputStory extends React.Component {
     );
   }
 }
-
+const Story = injectIntl(MoneyInputStory);
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(MoneyInputReadme))
-  .add('MoneyInput', () => <MoneyInputStory />);
+  .add('MoneyInput', () => <Story />);
