@@ -15,11 +15,11 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 
-const TooltipWrapperComponent = props => (
+const TooltipWrapper = props => (
   <React.Fragment>{props.children}</React.Fragment>
 );
-TooltipWrapperComponent.displayName = 'TooltipWrapperComponent';
-TooltipWrapperComponent.propTypes = {
+TooltipWrapper.displayName = 'TooltipWrapperComponent';
+TooltipWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
@@ -196,8 +196,8 @@ class Tooltip extends React.Component {
 
     const WrapperComponent = this.props.components.WrapperComponent || Wrapper;
     const BodyComponent = this.props.components.BodyComponent || Body;
-    const TooltipWrapper =
-      this.props.components.TooltipWrapperComponent || TooltipWrapperComponent;
+    const TooltipWrapperComponent =
+      this.props.components.TooltipWrapperComponent || TooltipWrapper;
     return (
       <Manager>
         <Reference innerRef={this.setChildrenRef}>
@@ -210,7 +210,7 @@ class Tooltip extends React.Component {
           )}
         </Reference>
         {open && (
-          <TooltipWrapper>
+          <TooltipWrapperComponent>
             <Popper placement={this.props.placement} positionFixed={true}>
               {({ ref, style, placement }) => (
                 <div
@@ -228,7 +228,7 @@ class Tooltip extends React.Component {
                 </div>
               )}
             </Popper>
-          </TooltipWrapper>
+          </TooltipWrapperComponent>
         )}
       </Manager>
     );
