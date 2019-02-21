@@ -1,42 +1,54 @@
 import { css } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
+import designTokens from '../../../materials/design-tokens';
 
-const getInputStyles = props => {
+const getInputStyles = (props, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
   const baseStyles = css`
     appearance: none;
-    background-color: ${vars.backgroundColorForInput};
-    border: 1px solid ${vars.borderColorForInput};
-    border-radius: ${vars.borderRadiusForInput};
+    background-color: ${overwrittenVars[designTokens.backgroundColorForInput]};
+    border: 1px solid ${overwrittenVars[designTokens.borderColorForInput]};
+    border-radius: ${overwrittenVars[designTokens.borderRadiusForInput]};
     box-shadow: none;
     box-sizing: border-box;
-    color: ${vars.fontColorForInput};
+    color: ${overwrittenVars[designTokens.fontColorForInput]};
     display: flex;
     flex: 1;
-    font-family: ${vars.fontFamilyDefault};
-    font-size: ${vars.fontSizeForInput};
-    height: ${vars.sizeHeightInput};
-    min-height: ${vars.sizeHeightInput};
+    font-family: ${overwrittenVars.fontFamilyDefault};
+    font-size: ${overwrittenVars[designTokens.fontSizeForInput]};
+    height: ${overwrittenVars.sizeHeightInput};
+    min-height: ${overwrittenVars.sizeHeightInput};
     outline: none;
     overflow: hidden;
-    padding: 0 ${vars.spacing8};
-    transition: ${vars.transitionStandard};
+    padding: 0 ${overwrittenVars.spacing8};
+    transition: ${overwrittenVars.transitionStandard};
     width: 100%;
 
     &::placeholder {
-      color: ${vars.placeholderFontColorForInput};
+      color: ${overwrittenVars[designTokens.placeholderFontColorForInput]};
     }
     &:active,
     &:focus {
-      border-color: ${vars.borderColorForInputWhenFocused};
+      border-color: ${overwrittenVars[
+        designTokens.borderColorForInputWhenFocused
+      ]};
     }
   `;
   if (props.isDisabled) {
     return [
       baseStyles,
       css`
-        background-color: ${vars.backgroundColorForInputWhenDisabled};
-        border-color: ${vars.borderColorForInputWhenDisabled};
-        color: ${vars.fontColorForInputWhenDisabled};
+        background-color: ${overwrittenVars[
+          designTokens.backgroundColorForInputWhenDisabled
+        ]};
+        border-color: ${overwrittenVars[
+          designTokens.borderColorForInputWhenDisabled
+        ]};
+        color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
         cursor: not-allowed;
         opacity: 1; /* fix for mobile safari */
       `,
@@ -46,8 +58,10 @@ const getInputStyles = props => {
     return [
       baseStyles,
       css`
-        border-color: ${vars.borderColorForInputWhenError};
-        color: ${vars.fontColorForInputWhenError};
+        border-color: ${overwrittenVars[
+          designTokens.borderColorForInputWhenError
+        ]};
+        color: ${overwrittenVars[designTokens.fontColorForInputWhenError]};
       `,
     ];
   }
@@ -56,8 +70,10 @@ const getInputStyles = props => {
       baseStyles,
       css`
       ${baseStyles}
-      border-color: ${vars.borderColorForInputWhenWarning};
-      color: ${vars.fontColorForInputWhenWarning};
+      border-color: ${
+        overwrittenVars[designTokens.borderColorForInputWhenWarning]
+      };
+      color: ${overwrittenVars[designTokens.fontColorForInputWhenWarning]};
     `,
     ];
   }
@@ -65,8 +81,10 @@ const getInputStyles = props => {
     return [
       baseStyles,
       css`
-        border-color: ${vars.borderColorForInputWhenReadonly};
-        color: ${vars.fontColorForInputWhenReadonly};
+        border-color: ${overwrittenVars[
+          designTokens.borderColorForInputWhenReadonly
+        ]};
+        color: ${overwrittenVars[designTokens.fontColorForInputWhenReadonly]};
         cursor: default;
       `,
     ];

@@ -10,7 +10,7 @@
 #
 # Next are the decisions. Decisions take a choice and apply it to a certain
 # component group and state. For example, we can make the decision to use
-# the choice "color-green" for the attribute border-color for the component
+# the choice "color-primary" for the attribute border-color for the component
 # group "input" in the state "active". Note that for decisions, the component
 # group and state are optional.
 #
@@ -54,6 +54,31 @@ choiceGroups:
       color-purple: '#b866ff'
       color-black: '#1a1a1a'
       color-white: '#fff'
+      ## new
+      color-primary: '#00b39e'
+      color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
+      color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
+      color-primary-85: 'hsl(172.9608938547486, 100%, 85%)'
+      color-primary-95: 'hsl(172.9608938547486, 100%, 95%)'
+      color-dark-accent: '#213c45'
+      color-dark-accent-30: 'hsl(195, 35.2941176471%, 30%)'
+      color-dark-accent-40: 'hsl(195, 35.2941176471%, 40%)'
+      color-dark-accent-95: 'hsl(195, 35.2941176471%, 95%)'
+      color-dark-accent-98: 'hsl(195, 35.2941176471%, 98%)'
+      color-neutral: '#ccc'
+      color-neutral-60: 'hsl(0, 0%, 60%)'
+      color-neutral-90: 'hsl(0, 0%, 90%)'
+      color-neutral-95: 'hsl(0, 0%, 95%)'
+      color-info: '#078cdf'
+      color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
+      color-info-95: 'hsl(203.05555555555554, 93.9130434783%, 95%)'
+      color-warning: '#f16d0e'
+      color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
+      color-error: '#e60050'
+      color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
+      color-dark: '#1a1a1a'
+      color-light: '#fff'
+
   borderRadiuses:
     label: Border Radiuses
     prefix: border-radius
@@ -155,46 +180,46 @@ decisionGroups:
       background-color-input-pristine:
         description: ''
         deprecated: true
-        choice: color-white
+        choice: color-light
       background-color-input-disabled:
         description: ''
         deprecated: true
-        choice: color-navy-98
+        choice: color-dark-accent-98
       background-color-input-hover:
         description: ''
         deprecated: true
-        choice: color-gray-90
+        choice: color-neutral-90
       background-color-input-selected:
         description: ''
         deprecated: true
-        choice: color-navy-95
+        choice: color-dark-accent-95
       background-color-tag-pristine:
         description: ''
         deprecated: true
-        choice: color-gray-95
+        choice: color-neutral-95
       background-color-tag-warning:
         description: ''
         deprecated: true
-        choice: color-orange-95
+        choice: color-warning-95
       background-color-tag-disabled:
         description: ''
         deprecated: true
-        choice: color-gray-95
+        choice: color-neutral-95
       background-color-tag-normal-hover:
         description: ''
         deprecated: true
-        choice: color-gray-60
+        choice: color-neutral-60
       background-color-tag-warning-hover:
         description: ''
         deprecated: true
-        choice: color-orange
+        choice: color-warning
       background-color-for-input:
         description: ''
         deprecated: false
-        choice: color-white
+        choice: color-light
       background-color-for-input-when-disabled:
         description: ''
-        choice: color-navy-98
+        choice: color-dark-accent-98
 
   borderColors:
     label: Border Colors
@@ -203,65 +228,65 @@ decisionGroups:
       border-color-input-pristine:
         description: ''
         deprecated: true
-        choice: color-gray-60
+        choice: color-neutral-60
       border-color-input-focus:
         description: ''
         deprecated: true
-        choice: color-green
+        choice: color-primary
       border-color-input-disabled:
         description: ''
         deprecated: true
-        choice: color-gray
+        choice: color-neutral
       border-color-input-readonly:
         description: ''
         deprecated: true
-        choice: color-gray
+        choice: color-neutral
       border-color-input-error:
         description: ''
         deprecated: true
-        choice: color-red
+        choice: color-error
       border-color-input-warning:
         description: ''
         deprecated: true
-        choice: color-orange
+        choice: color-warning
       border-color-tag-pristine:
         description: ''
         deprecated: true
-        choice: color-gray-60
+        choice: color-neutral-60
       border-color-tag-warning:
         description: ''
         deprecated: true
-        choice: color-orange
+        choice: color-warning
       border-color-tag-focus:
         description: ''
         deprecated: true
-        choice: color-green
+        choice: color-primary
       border-color-tag-warning-hover:
         description: ''
         deprecated: true
-        choice: color-orange
+        choice: color-warning
       border-color-separator:
         description: ''
         deprecated: true
-        choice: color-gray
+        choice: color-neutral
       border-color-for-input:
         description: ''
-        choice: color-gray-60
+        choice: color-neutral-60
       border-color-for-input-when-focused:
         description: ''
-        choice: color-green
+        choice: color-primary
       border-color-for-input-when-disabled:
         description: ''
-        choice: color-gray
+        choice: color-neutral
       border-color-for-input-when-readonly:
         description: ''
-        choice: color-gray
+        choice: color-neutral
       border-color-for-input-when-error:
         description: ''
-        choice: color-red
+        choice: color-error
       border-color-for-input-when-warning:
         description: ''
-        choice: color-orange
+        choice: color-warning
 
   borderRadiuses:
     label: Border Radius
@@ -288,46 +313,46 @@ decisionGroups:
       font-color-default:
         description: ''
         deprecated: true
-        choice: color-black
+        choice: color-dark
       font-color-disabled:
         description: ''
         deprecated: true
-        choice: color-gray-60
+        choice: color-neutral-60
       font-color-error:
         description: ''
         deprecated: true
-        choice: color-red
+        choice: color-error
       font-color-success:
         description: ''
         deprecated: true
-        choice: color-green
+        choice: color-primary
       font-color-warning:
         description: ''
         deprecated: true
-        choice: color-orange
+        choice: color-warning
       font-color-readonly:
         description: ''
         deprecated: true
-        choice: color-gray-60
+        choice: color-neutral-60
       font-color-placeholder:
         description: ''
         deprecated: true
-        choice: color-gray-60
+        choice: color-neutral-60
       font-color-for-input:
         description: ''
-        choice: color-black
+        choice: color-dark
       font-color-for-input-when-disabled:
         description: ''
-        choice: color-gray-60
+        choice: color-neutral-60
       font-color-for-input-when-error:
         description: ''
-        choice: color-red
+        choice: color-error
       font-color-for-input-when-readonly:
         description: ''
-        choice: color-gray-60
+        choice: color-neutral-60
       font-color-for-input-when-warning:
         description: ''
-        choice: color-orange
+        choice: color-warning
 
   fontFamily:
     label: Font family
@@ -342,7 +367,7 @@ decisionGroups:
     decisions:
       placeholder-font-color-for-input:
         description: ''
-        choice: color-gray-60
+        choice: color-neutral-60
 
   fontSizes:
     label: Font Sizes
