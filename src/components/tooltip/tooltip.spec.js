@@ -1,10 +1,16 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../test-utils';
 import Tooltip from './tooltip';
 
 jest.mock('popper.js');
 jest.useFakeTimers();
+
+const WithPortal = props => {
+  const domNode = document.querySelector('#portal-id');
+  return ReactDOM.createPortal(props.children, domNode);
+};
 
 class TestComponent extends React.Component {
   static propTypes = {
@@ -21,6 +27,7 @@ class TestComponent extends React.Component {
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
     components: PropTypes.shape({
+      PopperWrapperComponent: PropTypes.any,
       BodyComponent: PropTypes.any,
       WrapperComponent: PropTypes.any,
     }),
@@ -43,29 +50,36 @@ class TestComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <Tooltip
-          title={this.props.title}
-          onClose={this.props.onClose}
-          off={this.props.off}
-          onOpen={this.props.onOpen}
-          isOpen={this.state.open}
-          id={this.props.id}
-          closeAfter={this.props.closeAfter}
-          components={this.props.components}
-        >
-          <button
-            onFocus={this.props.onFocus}
-            onBlur={this.props.onBlur}
-            onMouseOver={this.props.onMouseOver}
-            onMouseLeave={this.props.onMouseLeave}
+      <React.Fragment>
+        <div id="portal-id" />
+        <div id="main">
+          <Tooltip
+            title={this.props.title}
+            onClose={this.props.onClose}
+            off={this.props.off}
+            onOpen={this.props.onOpen}
+            isOpen={this.state.open}
+            id={this.props.id}
+            closeAfter={this.props.closeAfter}
+            components={this.props.components}
           >
-            {this.props.buttonLabel}
-          </button>
-        </Tooltip>
-        <label htmlFor="toggleButton">Toggle tooltip</label>
-        <button id="toggleButton" type="button" onClick={this.toggleTooltip} />
-      </div>
+            <button
+              onFocus={this.props.onFocus}
+              onBlur={this.props.onBlur}
+              onMouseOver={this.props.onMouseOver}
+              onMouseLeave={this.props.onMouseLeave}
+            >
+              {this.props.buttonLabel}
+            </button>
+          </Tooltip>
+          <label htmlFor="toggleButton">Toggle tooltip</label>
+          <button
+            id="toggleButton"
+            type="button"
+            onClick={this.toggleTooltip}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }
@@ -304,6 +318,59 @@ describe('when used with a custom wrapper component', () => {
     // should call callbacks
     expect(onFocus).toHaveBeenCalled();
     expect(onOpen).toHaveBeenCalled();
+    // should show the tooltip
+    expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+    // should remove the title
+    expect(button).toHaveProperty('title', '');
+    fireEvent.blur(button);
+    // should call callbacks
+    expect(onBlur).toHaveBeenCalled();
+    expect(onClose).toHaveBeenCalled();
+    // should hide tooltip
+    expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
+    // should add the title again
+    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+  });
+});
+
+describe('when used with a custom popper wrapper component', () => {
+  it('should render tooltip inside custom popper wrapper and interact with keyboard', () => {
+    const onFocus = jest.fn();
+    const onBlur = jest.fn();
+    const onClose = jest.fn();
+    const onOpen = jest.fn();
+
+    const { container, queryByText, getByText } = render(
+      <TestComponent
+        onClose={onClose}
+        onOpen={onOpen}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        components={{
+          BodyComponent,
+          PopperWrapperComponent: WithPortal,
+        }}
+      />
+    );
+
+    const button = getByText('Submit');
+    fireEvent.focus(button);
+    // should call callbacks
+    expect(onFocus).toHaveBeenCalled();
+    expect(onOpen).toHaveBeenCalled();
+
+    // should not render the tooltip inside of the main div\
+    const mainContainer = container.querySelector('#main');
+    expect(
+      mainContainer.querySelector("[data-testid='tooltip-custom-body']")
+    ).not.toBeInTheDocument();
+
+    // should render the tooltip inside of the portal
+    const portalContainer = container.querySelector('#portal-id');
+    expect(
+      portalContainer.querySelector("[data-testid='tooltip-custom-body']")
+    ).toBeInTheDocument();
+
     // should show the tooltip
     expect(getByText('What kind of bear is best?')).toBeInTheDocument();
     // should remove the title
