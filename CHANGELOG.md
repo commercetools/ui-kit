@@ -1,3 +1,11 @@
+<a name="9.1.0"></a>
+
+# [9.1.0](https://github.com/commercetools/ui-kit/compare/v9.0.0...v9.1.0) (2019-02-21)
+
+### Features
+
+- `Tooltip`: adds new prop `TooltipWrapperComponent` ([#560](https://github.com/commercetools/ui-kit/issues/560)) ([4f5ff38](https://github.com/commercetools/ui-kit/commit/4f5ff38))
+
 <a name="9.0.0"></a>
 
 # [9.0.0](https://github.com/commercetools/ui-kit/compare/v8.5.0...v9.0.0) (2019-02-20)
