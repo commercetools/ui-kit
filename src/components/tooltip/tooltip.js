@@ -15,6 +15,14 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 
+const TooltipWrapper = props => (
+  <React.Fragment>{props.children}</React.Fragment>
+);
+TooltipWrapper.displayName = 'TooltipWrapperComponent';
+TooltipWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 class Tooltip extends React.Component {
   static displayName = 'ToolTip';
 
@@ -47,6 +55,14 @@ class Tooltip extends React.Component {
         if (props[propName] && !isValidElementType(props[propName])) {
           return new Error(
             `Invalid prop 'components.BodyComponent' supplied to 'Tooltip': the prop is not a valid React component`
+          );
+        }
+        return null;
+      },
+      TooltipWrapperComponent: (props, propName) => {
+        if (props[propName] && !isValidElementType(props[propName])) {
+          return new Error(
+            `Invalid prop 'components.TooltipWrapperComponent' supplied to 'Tooltip': the prop is not a valid React component`
           );
         }
         return null;
@@ -180,7 +196,8 @@ class Tooltip extends React.Component {
 
     const WrapperComponent = this.props.components.WrapperComponent || Wrapper;
     const BodyComponent = this.props.components.BodyComponent || Body;
-
+    const TooltipWrapperComponent =
+      this.props.components.TooltipWrapperComponent || TooltipWrapper;
     return (
       <Manager>
         <Reference innerRef={this.setChildrenRef}>
@@ -193,23 +210,25 @@ class Tooltip extends React.Component {
           )}
         </Reference>
         {open && (
-          <Popper placement={this.props.placement}>
-            {({ ref, style, placement }) => (
-              <div
-                ref={ref}
-                css={{
-                  ...style,
-                  ...getBodyStyles({
-                    constraint: this.props.horizontalConstraint,
-                    placement,
-                  }),
-                }}
-                data-placement={placement}
-              >
-                <BodyComponent>{this.props.title}</BodyComponent>
-              </div>
-            )}
-          </Popper>
+          <TooltipWrapperComponent>
+            <Popper placement={this.props.placement} positionFixed={true}>
+              {({ ref, style, placement }) => (
+                <div
+                  ref={ref}
+                  css={{
+                    ...style,
+                    ...getBodyStyles({
+                      constraint: this.props.horizontalConstraint,
+                      placement,
+                    }),
+                  }}
+                  data-placement={placement}
+                >
+                  <BodyComponent>{this.props.title}</BodyComponent>
+                </div>
+              )}
+            </Popper>
+          </TooltipWrapperComponent>
         )}
       </Manager>
     );

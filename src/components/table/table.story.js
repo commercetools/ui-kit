@@ -1,9 +1,10 @@
 import crypto from 'crypto';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import sortBy from 'lodash.sortby';
 import { css, ClassNames } from '@emotion/core';
@@ -11,6 +12,12 @@ import vars from '../../../materials/custom-properties';
 import Button from '../buttons/secondary-button';
 import Readme from './README.md';
 import Table from './table';
+import Tooltip from '../tooltip';
+
+const Portal = props => {
+  const domNode = document.body;
+  return ReactDOM.createPortal(props.children, domNode);
+};
 
 // Data generator for story
 
@@ -85,7 +92,18 @@ const baseColumns = ({ onCheckboxClick, checkboxClassName }) => [
 storiesOf('Components|Table', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('basic example', () => <BaseTable />)
+  .add('basic example', () => {
+    const showTooltip = boolean('show tooltip', false);
+    const usePortal = boolean('use portal for tooltip', true);
+    const tooltipText = text('tooltip text', 'Tooltip example');
+    return (
+      <BaseTable
+        showTooltip={showTooltip}
+        tooltipText={tooltipText}
+        usePortal={usePortal}
+      />
+    );
+  })
   .add('full example', () => (
     <Wrapper>
       {props => {
@@ -135,6 +153,12 @@ storiesOf('Components|Table', module)
 // Basic example
 class BaseTable extends React.PureComponent {
   static displayName = 'BaseTable';
+
+  static propTypes = {
+    usePortal: PropTypes.bool.isRequired,
+    showTooltip: PropTypes.bool.isRequired,
+    tooltipText: PropTypes.string.isRequired,
+  };
   state = {
     rows: [
       {
@@ -222,9 +246,16 @@ class BaseTable extends React.PureComponent {
     sortDirection: undefined,
   };
 
-  renderItem = ({ rowIndex, columnIndex }) => {
+  renderItem = ({
+    rowIndex,
+    columnIndex,
+    showTooltip,
+    usePortal,
+    tooltipText,
+  }) => {
     const col = this.columns[columnIndex];
     const item = this.state.rows[rowIndex];
+
     if (columnIndex === 0)
       return (
         <input
@@ -233,7 +264,15 @@ class BaseTable extends React.PureComponent {
           name={`${item.id}-select`}
         />
       );
-    return <div>{item[col.key]}</div>;
+    if (!showTooltip) {
+      return <div>{item[col.key]}</div>;
+    }
+    const components = usePortal ? { TooltipWrapperComponent: Portal } : {};
+    return (
+      <Tooltip components={components} title={tooltipText} placement="left">
+        <div>{item[col.key]}</div>
+      </Tooltip>
+    );
   };
 
   onCheckboxClick = ({ rowIndex /* , columnKey */ }) => {
@@ -273,7 +312,15 @@ class BaseTable extends React.PureComponent {
               <Table
                 columns={this.columns}
                 rowCount={this.state.rows.length}
-                itemRenderer={this.renderItem}
+                itemRenderer={({ rowIndex, columnIndex }) =>
+                  this.renderItem({
+                    rowIndex,
+                    columnIndex,
+                    showTooltip: this.props.showTooltip,
+                    tooltipText: this.props.tooltipText,
+                    usePortal: this.props.usePortal,
+                  })
+                }
                 onRowClick={action('row click')}
                 shouldFillRemainingVerticalSpace={true}
                 items={this.state.rows}
