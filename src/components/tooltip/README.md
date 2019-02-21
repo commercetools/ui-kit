@@ -71,6 +71,18 @@ const Body = styled.div`
 </Tooltip>;
 ```
 
+### Customizing where the portal is rendered
+
+When you are dealing with virtualized components, it can be useful to render the tooltip into another part of the document. You can define a `PopperWrapperComponent` to do this.
+
+```js
+const Portal = props => ReactDOM.renderPortal(props.children, document.body);
+
+<Tooltip title="Delete" components={{ PopperWrapperComponent: Portal }}>
+  <button>Submit</button>
+</Tooltip>;
+```
+
 ### Conditionally displaying tooltips
 
 There may be cases when you only want to enable the display of a tooltip under a certain condition. In these cases, you may want to use the `off` prop.
