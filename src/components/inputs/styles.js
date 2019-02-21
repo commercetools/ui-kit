@@ -4,16 +4,16 @@ import vars from '../../../materials/custom-properties';
 const getInputStyles = props => {
   const baseStyles = css`
     appearance: none;
-    background-color: ${vars.backgroundColorInputPristine};
-    border: 1px solid ${vars.borderColorInputPristine};
-    border-radius: ${vars.borderRadiusInput};
+    background-color: ${vars.backgroundColorForInput};
+    border: 1px solid ${vars.borderColorForInput};
+    border-radius: ${vars.borderRadiusForInput};
     box-shadow: none;
     box-sizing: border-box;
-    color: ${vars.fontColorDefault};
+    color: ${vars.fontColorForInput};
     display: flex;
     flex: 1;
     font-family: ${vars.fontFamilyDefault};
-    font-size: ${vars.fontSizeDefault};
+    font-size: ${vars.fontSizeForInput};
     height: ${vars.sizeHeightInput};
     min-height: ${vars.sizeHeightInput};
     outline: none;
@@ -23,20 +23,20 @@ const getInputStyles = props => {
     width: 100%;
 
     &::placeholder {
-      color: ${vars.fontColorPlaceholder};
+      color: ${vars.placeholderFontColorForInput};
     }
     &:active,
     &:focus {
-      border-color: ${vars.borderColorInputFocus};
+      border-color: ${vars.borderColorForInputWhenFocused};
     }
   `;
   if (props.isDisabled) {
     return [
       baseStyles,
       css`
-        background-color: ${vars.backgroundColorInputDisabled};
-        border-color: ${vars.borderColorInputDisabled};
-        color: ${vars.fontColorDisabled};
+        background-color: ${vars.backgroundColorForInputWhenDisabled};
+        border-color: ${vars.borderColorForInputWhenDisabled};
+        color: ${vars.fontColorForInputWhenDisabled};
         cursor: not-allowed;
         opacity: 1; /* fix for mobile safari */
       `,
@@ -46,8 +46,8 @@ const getInputStyles = props => {
     return [
       baseStyles,
       css`
-        border-color: ${vars.borderColorInputError};
-        color: ${vars.fontColorError};
+        border-color: ${vars.borderColorForInputWhenError};
+        color: ${vars.fontColorForInputWhenError};
       `,
     ];
   }
@@ -56,8 +56,8 @@ const getInputStyles = props => {
       baseStyles,
       css`
       ${baseStyles}
-      border-color: ${vars.borderColorInputWarning};
-      color: ${vars.fontColorWarning};
+      border-color: ${vars.borderColorForInputWhenWarning};
+      color: ${vars.fontColorForInputWhenWarning};
     `,
     ];
   }
@@ -65,8 +65,8 @@ const getInputStyles = props => {
     return [
       baseStyles,
       css`
-        border-color: ${vars.borderColorInputReadonly};
-        color: ${vars.fontColorReadonly};
+        border-color: ${vars.borderColorForInputWhenReadonly};
+        color: ${vars.fontColorForInputWhenReadonly};
         cursor: default;
       `,
     ];
