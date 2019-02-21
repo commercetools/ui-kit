@@ -25,7 +25,7 @@ script:
   # also skip when PR is opened by `renovate`
   # back to default in case internal travis scripts return non zero response codes.
   - "! test -f fail-tests-because-there-was-an-unhandled-rejection.lock"
-  # - bash ./scripts/run-percy.sh
+  - bash ./scripts/run-percy.sh
   - set +e
 
 before_deploy: yarn build
