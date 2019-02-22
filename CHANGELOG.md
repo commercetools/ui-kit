@@ -1,3 +1,20 @@
+<a name="9.1.0"></a>
+
+# [9.1.0](https://github.com/commercetools/ui-kit/compare/v9.0.0...v9.1.0) (2019-02-22)
+
+### Features
+
+- `Tooltip`: adds new prop `TooltipWrapperComponent` ([#560](https://github.com/commercetools/ui-kit/issues/560)) ([4f5ff38](https://github.com/commercetools/ui-kit/commit/4f5ff38))
+- Inputs: use design tokens for input styling ([#562](https://github.com/commercetools/ui-kit/issues/562)) ([8ec02e6](https://github.com/commercetools/ui-kit/commit/8ec02e6))
+
+### Bug Fixes
+
+- `MoneyInput`: fix for inputting currencies with no fractional digits ([bf5fccc](https://github.com/commercetools/ui-kit/commit/bf5fccc))
+
+### Refactoring
+
+- Various dependency updates ([#564](https://github.com/commercetools/ui-kit/pull/564))
+
 <a name="9.0.0"></a>
 
 # [9.0.0](https://github.com/commercetools/ui-kit/compare/v8.5.0...v9.0.0) (2019-02-20)
