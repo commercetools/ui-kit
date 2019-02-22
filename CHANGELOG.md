@@ -1,6 +1,6 @@
 <a name="9.1.0"></a>
 
-# [9.1.0](https://github.com/commercetools/ui-kit/compare/v9.0.0...v9.1.0) (2019-02-21)
+# [9.1.0](https://github.com/commercetools/ui-kit/compare/v9.0.0...v9.1.0) (2019-02-22)
 
 ### Features
 
