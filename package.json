@@ -175,7 +175,7 @@
     "react-dom": "16.8.3",
     "react-intl": "2.8.0",
     "react-router-dom": "4.3.1",
-    "react-testing-library": "5.9.0",
+    "react-testing-library": "6.0.0",
     "react-value": "0.2.0",
     "rimraf": "2.6.3",
     "rollup": "1.2.2",
