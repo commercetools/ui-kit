@@ -1,5 +1,4 @@
 import invariant from 'tiny-invariant';
-import without from 'lodash.without';
 import uniq from 'lodash.uniq';
 import filterDataAttributes from './filter-data-attributes';
 
@@ -36,7 +35,7 @@ export const splitLanguages = (selectedLanguage, languages) => {
 export const sortLanguages = (selectedLanguage, allLanguages) => {
   const { related, unrelated } = splitLanguages(
     selectedLanguage,
-    without(allLanguages, selectedLanguage)
+    allLanguages.filter(language => language !== selectedLanguage)
   );
 
   return [selectedLanguage, ...related.sort(), ...unrelated.sort()];
@@ -55,12 +54,18 @@ export const createLocalizedDataAttributes = (props, language) =>
     return acc;
   }, {});
 
-export const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) =>
-  Boolean(errors) && without(Object.keys(errors), selectedLanguage).length > 0;
+export const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) => {
+  return (
+    Boolean(errors) &&
+    Object.keys(errors).filter(language => language !== selectedLanguage)
+      .length > 0
+  );
+};
 
 export const getHasWarningOnRemainingLanguages = (warnings, selectedLanguage) =>
   Boolean(warnings) &&
-  without(Object.keys(warnings), selectedLanguage).length > 0;
+  Object.keys(warnings).filter(language => language !== selectedLanguage)
+    .length > 0;
 
 export const createLocalizedString = (languages, existingTranslations = {}) => {
   const mergedLanguages = existingTranslations
