@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import mapValues from 'lodash.mapvalues';
-import oneLine from 'common-tags/lib/oneLine';
+import { oneLine } from 'common-tags';
 import { injectIntl } from 'react-intl';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
@@ -95,9 +94,12 @@ export class LocalizedMultilineTextInput extends React.Component {
     // This state is used to show/hide the remaining translations
     areLanguagesOpened: this.props.defaultExpandLanguages,
     // This state is to manage the expand/collapse of multiline text inputs
-    expandedTranslations: mapValues(this.props.value, () =>
-      Boolean(this.props.defaultExpandMultilineText)
-    ),
+    expandedTranslations: Object.keys(this.props.value).reduce((acc, key) => {
+      return {
+        [key]: Boolean(this.props.defaultExpandMultilineText),
+        ...acc,
+      };
+    }, {}),
   };
 
   toggleLanguage = language =>
@@ -115,9 +117,14 @@ export class LocalizedMultilineTextInput extends React.Component {
 
   expandAllTranslations = () =>
     this.setState(prevState => ({
-      expandedTranslations: mapValues(
-        prevState.expandedTranslations,
-        () => true
+      expandedTranslations: Object.keys(prevState.expandedTranslations).reduce(
+        (acc, key) => {
+          return {
+            [key]: Boolean(this.props.defaultExpandMultilineText),
+            ...acc,
+          };
+        },
+        {}
       ),
     }));
 
@@ -145,6 +152,7 @@ export class LocalizedMultilineTextInput extends React.Component {
       this.props.selectedLanguage,
       Object.keys(this.props.value)
     );
+
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="s">
