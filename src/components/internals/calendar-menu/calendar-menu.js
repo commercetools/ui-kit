@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash.omit';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
@@ -14,9 +13,11 @@ export default class CalendarMenu extends Component {
     footer: PropTypes.node,
   };
   render() {
+    const { hasFooter, hasWarning, hasError, ...rest } = this.props;
+
     return (
       <div
-        {...omit(this.props, ['hasFooter', 'hasError', 'hasWarning'])}
+        {...rest}
         css={css`
           overflow-y: scroll;
           color: ${vars.colorBlack};
@@ -30,17 +31,9 @@ export default class CalendarMenu extends Component {
           width: 100%;
           background-color: ${vars.colorWhite};
           z-index: 99999; /* copied from flatpickr */;
-          ${this.props.hasFooter ? '' : `padding-bottom: 10px;`}
-          ${
-            this.props.hasError
-              ? `border-color: ${vars.borderColorInputError};`
-              : ''
-          }
-          ${
-            this.props.hasWarning
-              ? `border-color: ${vars.borderColorInputWarning};`
-              : ''
-          }
+          ${hasFooter ? '' : `padding-bottom: 10px;`}
+          ${hasError ? `border-color: ${vars.borderColorInputError};` : ''}
+          ${hasWarning ? `border-color: ${vars.borderColorInputWarning};` : ''}
         `}
       >
         {this.props.children}
