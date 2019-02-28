@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import without from 'lodash.without';
-import oneLine from 'common-tags/lib/oneLine';
+import { oneLine } from 'common-tags';
 import { injectIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import Spacings from '../../spacings';

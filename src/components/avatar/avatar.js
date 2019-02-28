@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import oneLineTrim from 'common-tags/lib/oneLineTrim';
+import { oneLineTrim } from 'common-tags';
 import { css } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 import filterDataAttributes from '../../utils/filter-data-attributes';

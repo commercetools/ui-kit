@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import oneLine from 'common-tags/lib/oneLine';
+import { oneLine } from 'common-tags';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
