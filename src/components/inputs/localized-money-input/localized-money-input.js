@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import without from 'lodash.without';
 import { oneLine } from 'common-tags';
 import { injectIntl } from 'react-intl';
 import { css } from '@emotion/core';
@@ -25,7 +24,9 @@ const sequentialId = createSequentialId('localized-money-input-');
 // - The selected currency is placed first (e.g EUR)
 // - All other currencies follow, sorted alphabetically as well
 export const sortCurrencies = (selectedCurrency, allCurrencies) => {
-  const remainingCurrencies = without(allCurrencies, selectedCurrency);
+  const remainingCurrencies = allCurrencies.filter(
+    currency => currency !== selectedCurrency
+  );
   return [selectedCurrency, ...remainingCurrencies.sort()];
 };
 
