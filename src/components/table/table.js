@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AutoSizer } from 'react-virtualized';
-import omit from 'lodash.omit';
 import { css } from '@emotion/core';
 import BaseTable from './base-table';
 
@@ -32,8 +31,15 @@ export class Table extends React.PureComponent {
   }
 
   renderContent({ height, width }) {
-    const defaultHeight = this.props.defaultHeight || DEFAULT_TABLE_HEIGHT;
     let tableMaxHeight;
+
+    const {
+      children,
+      defaultHeight = DEFAULT_TABLE_HEIGHT,
+      shouldFillRemainingVerticalSpace,
+      ...rest
+    } = this.props;
+
     if (this.props.shouldFillRemainingVerticalSpace) {
       const maxHeight = Math.max(height, defaultHeight);
       const footerHeight = this.props.children ? this.footerHeight : 0;
@@ -43,11 +49,7 @@ export class Table extends React.PureComponent {
     return (
       <div style={{ width }}>
         <BaseTable
-          {...omit(this.props, [
-            'children',
-            'defaultHeight',
-            'shouldFillRemainingVerticalSpace',
-          ])}
+          {...rest}
           maxHeight={tableMaxHeight || defaultHeight}
           maxWidth={width}
         />

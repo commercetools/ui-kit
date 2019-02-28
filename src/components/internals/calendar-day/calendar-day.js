@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash.omit';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
@@ -68,28 +67,29 @@ const getStyles = props => {
   return styles;
 };
 
-const CalendarDay = props => (
-  <li
-    css={css`
-      list-style-type: none;
-      display: inline-block;
-      margin: 2px 1%;
-      width: 12%;
-    `}
-  >
-    <div
-      css={getStyles(props)}
-      {...omit(props, [
-        'isHighlighted',
-        'isSelected',
-        'isRangeStart',
-        'isRangeBetween',
-        'isRangeEnd',
-        'isToday',
-      ])}
-    />
-  </li>
-);
+const CalendarDay = props => {
+  const {
+    isHighlighted,
+    isSelected,
+    isRangeStart,
+    isRangeBetween,
+    isRangeEnd,
+    isToday,
+    ...rest
+  } = props;
+  return (
+    <li
+      css={css`
+        list-style-type: none;
+        display: inline-block;
+        margin: 2px 1%;
+        width: 12%;
+      `}
+    >
+      <div css={getStyles(props)} {...rest} />
+    </li>
+  );
+};
 
 CalendarDay.displayName = 'CalendarDay';
 
