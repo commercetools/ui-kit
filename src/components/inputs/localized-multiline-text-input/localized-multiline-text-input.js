@@ -94,12 +94,15 @@ export class LocalizedMultilineTextInput extends React.Component {
     // This state is used to show/hide the remaining translations
     areLanguagesOpened: this.props.defaultExpandLanguages,
     // This state is to manage the expand/collapse of multiline text inputs
-    expandedTranslations: Object.keys(this.props.value).reduce((acc, key) => {
-      return {
-        [key]: Boolean(this.props.defaultExpandMultilineText),
-        ...acc,
-      };
-    }, {}),
+    expandedTranslations: Object.keys(this.props.value).reduce(
+      (translations, locale) => {
+        return {
+          [locale]: Boolean(this.props.defaultExpandMultilineText),
+          ...translations,
+        };
+      },
+      {}
+    ),
   };
 
   toggleLanguage = language =>
@@ -118,10 +121,10 @@ export class LocalizedMultilineTextInput extends React.Component {
   expandAllTranslations = () =>
     this.setState(prevState => ({
       expandedTranslations: Object.keys(prevState.expandedTranslations).reduce(
-        (acc, key) => {
+        (translations, locale) => {
           return {
-            [key]: true,
-            ...acc,
+            [locale]: true,
+            ...translations,
           };
         },
         {}
