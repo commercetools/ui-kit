@@ -17,8 +17,6 @@ const plugins = [
   }),
   // To use the nodejs `resolve` algorithm
   resolve(),
-  // To automatically externalize `peerDependencies` and `dependencies`
-  // so that they do not end up in the bundle.
   // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
   // Transpile sources using our custom babel preset.
   babel({
