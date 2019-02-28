@@ -120,7 +120,7 @@ export class LocalizedMultilineTextInput extends React.Component {
       expandedTranslations: Object.keys(prevState.expandedTranslations).reduce(
         (acc, key) => {
           return {
-            [key]: Boolean(this.props.defaultExpandMultilineText),
+            [key]: true,
             ...acc,
           };
         },
