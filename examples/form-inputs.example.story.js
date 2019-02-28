@@ -7,7 +7,6 @@ import { action } from '@storybook/addon-actions';
 import omitEmpty from 'omit-empty';
 import withReadme from 'storybook-readme/with-readme';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import mapValues from 'lodash.mapvalues';
 import { FormikBox, Section } from '../.storybook/decorators';
 import {
   Text,
@@ -182,11 +181,17 @@ const validate = (formValues, locale) => {
     errors.slug.missing = true;
   } else {
     const isValidSlug = value => /^[a-zA-Z0-9_-]{2,256}$/.test(value);
-    const translationErrors = mapValues(
-      LocalizedTextInput.omitEmptyTranslations(formValues.slug),
-      // more validation errors could be added in theory
-      slug => (isValidSlug(slug) ? {} : { hasForbiddenChars: true })
-    );
+    const translationErrors = Object.keys(
+      LocalizedTextInput.omitEmptyTranslations(formValues.slug)
+    ).reduce((acc, language) => {
+      const value = isValidSlug(formValues.slug[language])
+        ? {}
+        : { hasForbiddenChars: true };
+      return {
+        ...acc,
+        [language]: value,
+      };
+    }, {});
 
     errors.slug.translations = translationErrors;
   }
@@ -349,24 +354,31 @@ class ProductForm extends React.Component {
               // specific messages in code means we can make use of our existing
               // translation mechanism. We could easily render
               // <FormattedMessage /> instead of rendering the warning string.
-              mapValues(
-                // We only show errors once the field has been touched
-                LocalizedTextInput.isTouched(this.props.formik.touched.slug) &&
-                  this.props.formik.errors.slug
-                  ? // We map on the per-field errors which are present on
-                    // the "translations" field
-                    this.props.formik.errors.slug.translations
-                  : {},
-                error => {
-                  if (error.hasForbiddenChars) {
-                    return <ErrorMessage>This slug is not valid.</ErrorMessage>;
-                  }
-                  // we could map other errors here as well
+              (() => {
+                const allLocales =
+                  LocalizedTextInput.isTouched(
+                    this.props.formik.touched.slug
+                  ) && this.props.formik.errors.slug
+                    ? // We map on the per-field errors which are present on
+                      // the "translations" field
+                      this.props.formik.errors.slug.translations
+                    : {};
+                return Object.entries(allLocales).reduce(
+                  (acc, [key, error]) => {
+                    const value = error.hasForbiddenChars ? (
+                      <ErrorMessage>This slug is not valid.</ErrorMessage>
+                    ) : (
+                      undefined
+                    );
 
-                  // returning undefined results in no error for that field
-                  return undefined;
-                }
-              )
+                    return {
+                      [key]: value,
+                      ...acc,
+                    };
+                  },
+                  {}
+                );
+              })()
             }
           />
           {LocalizedTextInput.isTouched(this.props.formik.touched.slug) &&

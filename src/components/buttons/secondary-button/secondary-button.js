@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import oneLine from 'common-tags/lib/oneLine';
+import { oneLine } from 'common-tags';
 import { Link } from 'react-router-dom';
 import flowRight from 'lodash.flowright';
 import isNil from 'lodash.isnil';
