@@ -4,6 +4,7 @@ import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 
@@ -55,20 +56,25 @@ const defaultExternal = deps.concat(peerDeps);
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
-const config = {
-  input: 'src/index.js',
-  external: defaultExternal,
-  output: [
-    {
-      file: pkg.module,
-      format: 'esm',
-    },
-    {
+const config = [
+  {
+    input: 'src/index.js',
+    external: defaultExternal,
+    output: {
       file: pkg.main,
       format: 'cjs',
     },
-  ],
-  plugins,
-};
+    plugins,
+  },
+  {
+    input: 'src/index.js',
+    external: defaultExternal,
+    output: {
+      file: pkg.module,
+      format: 'esm',
+    },
+    plugins: plugins.concat(sizeSnapshot()),
+  },
+];
 
 export default config;
