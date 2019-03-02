@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import has from 'lodash.has';
+import has from 'lodash/has';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';

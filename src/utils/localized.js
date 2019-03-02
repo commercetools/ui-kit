@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant';
-import uniq from 'lodash.uniq';
+import uniq from 'lodash/uniq';
 import filterDataAttributes from './filter-data-attributes';
 
 export const getId = (idPrefix, language) =>

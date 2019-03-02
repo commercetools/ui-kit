@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
-import has from 'lodash.has';
+import has from 'lodash/has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
 import { injectIntl } from 'react-intl';

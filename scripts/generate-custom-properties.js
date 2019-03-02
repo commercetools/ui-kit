@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('yaml');
-const camelCase = require('lodash.camelcase');
+const camelCase = require('lodash/camelCase');
 const prettier = require('prettier');
 const rcfile = require('rcfile');
 

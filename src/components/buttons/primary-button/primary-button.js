@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import isNil from 'lodash.isnil';
+import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
