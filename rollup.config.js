@@ -7,11 +7,13 @@ import replace from 'rollup-plugin-replace';
 import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 
-const babelOptions = require('./scripts/get-babel-preset');
+const getBabelPreset = require('./scripts/get-babel-preset');
+
+const babelOptions = getBabelPreset();
 
 // This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
-const plugins = [
+const configureRollupPlugins = (options = {}) => [
   replace({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
@@ -22,7 +24,11 @@ const plugins = [
   babel({
     exclude: ['node_modules/**'],
     runtimeHelpers: true,
-    ...babelOptions(),
+    ...babelOptions,
+    plugins: [
+      ...babelOptions.plugins,
+      ...(options.babel && options.babel.plugins ? options.babel.plugins : []),
+    ],
   }),
   // To convert CJS modules to ES6
   commonjs({
@@ -55,20 +61,36 @@ const defaultExternal = deps.concat(peerDeps);
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
-const config = {
-  input: 'src/index.js',
-  external: defaultExternal,
-  output: [
-    {
-      file: pkg.module,
-      format: 'esm',
-    },
-    {
+const config = [
+  {
+    input: 'src/index.js',
+    external: defaultExternal,
+    output: {
       file: pkg.main,
       format: 'cjs',
     },
-  ],
-  plugins,
-};
+    plugins: configureRollupPlugins(),
+  },
+  {
+    input: 'src/index.js',
+    external: defaultExternal,
+    output: {
+      file: pkg.module,
+      format: 'esm',
+    },
+    plugins: configureRollupPlugins({
+      babel: {
+        plugins: [
+          [
+            'transform-rename-import',
+            {
+              replacements: [{ original: 'lodash', replacement: 'lodash-es' }],
+            },
+          ],
+        ],
+      },
+    }),
+  },
+];
 
 export default config;

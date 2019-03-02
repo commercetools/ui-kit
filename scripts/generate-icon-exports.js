@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
-const camelCase = require('lodash.camelcase');
-const upperFirst = require('lodash.upperfirst');
-const stripIndents = require('common-tags/lib/stripIndents');
+const camelCase = require('lodash/camelCase');
+const upperFirst = require('lodash/upperFirst');
+const { stripIndents } = require('common-tags');
 const prettier = require('prettier');
 const rcfile = require('rcfile');
 

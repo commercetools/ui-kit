@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-module.exports = function getBabelPresets() {
+module.exports = function getBabelPreset() {
   // This is similar to how `env` works in Babel:
   // https://babeljs.io/docs/usage/babelrc/#env-option
   // We are not using `env` because it’s ignored in versions > babel-core@6.10.4:

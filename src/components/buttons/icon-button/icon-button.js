@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import flowRight from 'lodash.flowright';
-import isNil from 'lodash.isnil';
+import flowRight from 'lodash/flowRight';
+import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import withMouseDownState from '../../../hocs/with-mouse-down-state';

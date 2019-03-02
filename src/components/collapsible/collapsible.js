@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import isNil from 'lodash.isnil';
+import isNil from 'lodash/isNil';
 
 class Collapsible extends React.PureComponent {
   static displayName = 'Collapsible';

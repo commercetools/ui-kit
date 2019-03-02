@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import has from 'lodash.has';
-import flatMap from 'lodash.flatmap';
+import has from 'lodash/has';
+import flatMap from 'lodash/flatMap';
 import Select, { components as defaultComponents } from 'react-select';
 import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';

@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number, text } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import sortBy from 'lodash.sortby';
+import sortBy from 'lodash/sortBy';
 import { css, ClassNames } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 import Button from '../buttons/secondary-button';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
-import sortBy from 'lodash.sortby';
+import sortBy from 'lodash/sortBy';
 import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
 import classnames from 'classnames';
 import { Global, ClassNames, css } from '@emotion/core';
