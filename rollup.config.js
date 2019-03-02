@@ -4,6 +4,7 @@ import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 
@@ -13,47 +14,51 @@ const babelOptions = getBabelPreset();
 
 // This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
-const configureRollupPlugins = (options = {}) => [
-  replace({
-    'process.env.NODE_ENV': JSON.stringify('production'),
-  }),
-  // To use the nodejs `resolve` algorithm
-  resolve(),
-  // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
-  // Transpile sources using our custom babel preset.
-  babel({
-    exclude: ['node_modules/**'],
-    runtimeHelpers: true,
-    ...babelOptions,
-    plugins: [
-      ...babelOptions.plugins,
-      ...(options.babel && options.babel.plugins ? options.babel.plugins : []),
-    ],
-  }),
-  // To convert CJS modules to ES6
-  commonjs({
-    include: 'node_modules/**',
-  }),
-  // To convert JSON files to ES6
-  json(),
-  // To convert SVG Icons to ES6
-  svgrPlugin({
-    // NOTE: only the files ending with `.react.svg` are supposed to be
-    // converted to React components
-    include: ['**/*.react.svg'],
-    icon: false,
-    svgoConfig: {
+const configureRollupPlugins = (options = {}) =>
+  [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    // To use the nodejs `resolve` algorithm
+    resolve(),
+    // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
+    // Transpile sources using our custom babel preset.
+    babel({
+      exclude: ['node_modules/**'],
+      runtimeHelpers: true,
+      ...babelOptions,
       plugins: [
-        { removeViewBox: false },
-        // Keeps ID's of svgs so they can be targeted with CSS
-        { cleanupIDs: false },
+        ...babelOptions.plugins,
+        ...(options.babel && options.babel.plugins
+          ? options.babel.plugins
+          : []),
       ],
-    },
-  }),
-  // To remove comments, trim trailing spaces, compact empty lines,
-  // and normalize line endings
-  cleanup(),
-];
+    }),
+    // To convert CJS modules to ES6
+    commonjs({
+      include: 'node_modules/**',
+    }),
+    // To convert JSON files to ES6
+    json(),
+    // To convert SVG Icons to ES6
+    svgrPlugin({
+      // NOTE: only the files ending with `.react.svg` are supposed to be
+      // converted to React components
+      include: ['**/*.react.svg'],
+      icon: false,
+      svgoConfig: {
+        plugins: [
+          { removeViewBox: false },
+          // Keeps ID's of svgs so they can be targeted with CSS
+          { cleanupIDs: false },
+        ],
+      },
+    }),
+    // To remove comments, trim trailing spaces, compact empty lines,
+    // and normalize line endings
+    cleanup(),
+    options.sizeSnapshot && sizeSnapshot(),
+  ].filter(Boolean);
 
 const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
@@ -89,6 +94,7 @@ const config = [
           ],
         ],
       },
+      sizeSnapshot: true,
     }),
   },
 ];
