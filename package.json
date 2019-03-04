@@ -151,7 +151,7 @@
     "jest-validate": "24.0.0",
     "jest-watch-master": "1.0.0",
     "json-loader": "0.5.7",
-    "lint-staged": "8.1.4",
+    "lint-staged": "8.1.5",
     "markdown-loader": "5.0.0",
     "moment": "2.24.0",
     "moment-locales-webpack-plugin": "1.0.7",
