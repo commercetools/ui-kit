@@ -1,6 +1,6 @@
 import React from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs/react';
 import en from 'react-intl/locale-data/en';
 import de from 'react-intl/locale-data/de';
 import es from 'react-intl/locale-data/es';

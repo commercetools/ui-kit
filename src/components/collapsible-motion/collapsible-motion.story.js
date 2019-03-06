@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, number, boolean } from '@storybook/addon-knobs';
+import { withKnobs, number, boolean } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import CollapsibleMotion from './collapsible-motion';
 import Spacings from '../spacings';

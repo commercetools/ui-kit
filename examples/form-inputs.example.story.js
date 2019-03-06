@@ -6,7 +6,7 @@ import { injectIntl } from 'react-intl';
 import { action } from '@storybook/addon-actions';
 import omitEmpty from 'omit-empty';
 import withReadme from 'storybook-readme/with-readme';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs/react';
 import { FormikBox, Section } from '../.storybook/decorators';
 import {
   Text,

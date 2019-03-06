@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, number, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import sortBy from 'lodash/sortBy';
 import { css, ClassNames } from '@emotion/core';

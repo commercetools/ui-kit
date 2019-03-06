@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
 import Text from '../typography/text';

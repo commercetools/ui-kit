@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../spacings';

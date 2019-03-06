@@ -8,7 +8,7 @@ import {
   text,
   select,
   object,
-} from '@storybook/addon-knobs';
+} from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import DateTimeFieldReadme from './README.md';
