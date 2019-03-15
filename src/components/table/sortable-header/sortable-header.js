@@ -42,6 +42,7 @@ const SortableHeader = props => {
       css={[
         css`
           display: flex;
+          align-items: center;
           justify-content: space-between;
           &:hover {
             cursor: pointer;
