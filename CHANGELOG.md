@@ -1,3 +1,16 @@
+<a name="9.1.1"></a>
+
+# [9.1.1](https://github.com/commercetools/ui-kit/compare/v9.1.0...v9.1.1) (2019-03-19)
+
+### Bug Fixes
+
+- `MoneyInput`: parse money value in MoneyInput ([#597](https://github.com/commercetools/ui-kit/issues/597)) ([6f922d9](https://github.com/commercetools/ui-kit/commit/6f922d9))
+- `Table`: to remove jumpy effect on hover ([#598](https://github.com/commercetools/ui-kit/issues/598)) ([05cabae](https://github.com/commercetools/ui-kit/commit/05cabae))
+
+### Refactoring
+
+- Remove unnecessary lodash map values dep ([#572](https://github.com/commercetools/ui-kit/issues/572)) ([b82e3b4](https://github.com/commercetools/ui-kit/commit/b82e3b4))
+
 <a name="9.1.0"></a>
 
 # [9.1.0](https://github.com/commercetools/ui-kit/compare/v9.0.0...v9.1.0) (2019-02-22)
