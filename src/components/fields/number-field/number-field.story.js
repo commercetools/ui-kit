@@ -9,7 +9,7 @@ import {
   select,
   object,
   number,
-} from '@storybook/addon-knobs';
+} from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import NumberFieldReadme from './README.md';

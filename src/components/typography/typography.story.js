@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../.storybook/decorators/section';
 import Text from './text';

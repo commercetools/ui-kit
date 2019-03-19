@@ -8,7 +8,7 @@ import {
   text,
   select,
   number,
-} from '@storybook/addon-knobs';
+} from '@storybook/addon-knobs/react';
 import LinkTo from '@storybook/addon-links/react';
 import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';

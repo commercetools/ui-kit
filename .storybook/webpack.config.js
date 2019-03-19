@@ -9,12 +9,10 @@ const sourceFolders = [
   path.resolve(__dirname, '../src'),
 ];
 
-module.exports = (storybookBaseConfig, configType) => {
-  storybookBaseConfig.plugins.push(
-    new MomentLocalesPlugin({ localesToKeep: ['de', 'es'] })
-  );
-  storybookBaseConfig.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
-  storybookBaseConfig.module.rules = [
+module.exports = ({ config }) => {
+  config.plugins.push(new MomentLocalesPlugin({ localesToKeep: ['de', 'es'] }));
+  config.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
+  config.module.rules = [
     // Disable require.ensure as it's not a standard language feature.
     { parser: { requireEnsure: false } },
     // add story source
@@ -95,5 +93,5 @@ module.exports = (storybookBaseConfig, configType) => {
     },
   ];
 
-  return storybookBaseConfig;
+  return config;
 };

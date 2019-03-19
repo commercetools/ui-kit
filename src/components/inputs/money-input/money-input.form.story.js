@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { injectIntl } from 'react-intl';
-import { withKnobs, number } from '@storybook/addon-knobs';
+import { withKnobs, number } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import omitEmpty from 'omit-empty';
 import ErrorMessage from '../../messages/error-message';
