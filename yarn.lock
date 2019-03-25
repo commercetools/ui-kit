@@ -1474,10 +1474,10 @@
   dependencies:
     core-js "^2.6.5"
 
-"@storybook/core-events@^5.0.1":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.2.tgz#5fb775d18a96c0c73c630112ab6ce2e1cb8bc92e"
-  integrity sha512-wHi0UHwADSko77KUGN9/WtyhrKdQ8A0zwoPBcermFMqYoka3bcgyEkNKuvt6KuRyO3NT5FYhR0XWQPpNUOXkqw==
+"@storybook/core-events@^5.0.3":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.0.5.tgz#831fa76523194a79f23c986ab57393cbbf49d091"
+  integrity sha512-N6E1uhvCHpqixCkLjPEwN7aIMaWt2RZvnW0TW46BnX4W3OOwpSB6xWKM1k8TDDntGAsFwaqB7AuiATBy9VHXOg==
   dependencies:
     core-js "^2.6.5"
 
@@ -10819,12 +10819,12 @@ stealthy-require@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
 
-storybook-readme@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.0.tgz#9d159a0cb5f99117aff10236bd558a9b21e505de"
-  integrity sha512-fgxXMQWZq7hNIu8WSWbsDGE6ZmtqXpF0s8ZfdRtfeBsp12Ys2J5GP4FMJgta1VHtth0vbpzMuook2IXqWmdmvA==
+storybook-readme@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/storybook-readme/-/storybook-readme-5.0.1.tgz#679a98a80254e7a5f46ed0f6592a79876a9bf9c2"
+  integrity sha512-MQCBfJZIOMt62rVf0UqUuAMnZdR8sLKZTEobemjNIXT+BeQNRLp2glWOifvGFJDSJxdkr/gZFW7c6mYvrG3VIA==
   dependencies:
-    "@storybook/core-events" "^5.0.1"
+    "@storybook/core-events" "^5.0.3"
     highlight.js "^9.15.6"
     html-loader "^0.5.5"
     lodash "^4.17.11"
