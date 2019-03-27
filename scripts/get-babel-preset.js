@@ -38,6 +38,7 @@ module.exports = function getBabelPreset() {
           targets: {
             browsers: ['last 1 versions'],
           },
+          corejs: 2,
           // `entry` transforms `@babel/polyfill` into individual requires for
           // the targeted browsers. This is safer than `usage` which performs
           // static code analysis to determine what's required.
