@@ -194,7 +194,7 @@
     "react": "16.x",
     "react-dom": "16.x",
     "react-intl": "2.x",
-    "react-router-dom": "4.x || 5.x"
+    "react-router-dom": "5.x"
   },
   "husky": {
     "hooks": {
