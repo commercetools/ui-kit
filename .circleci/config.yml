@@ -38,7 +38,7 @@ commands:
       - persist_to_workspace:
           root: *working_directory
           paths:
-            - /dist
+            - dist
   restore_workspace:
     steps:
       - attach_workspace:
