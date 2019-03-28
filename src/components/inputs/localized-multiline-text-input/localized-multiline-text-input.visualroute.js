@@ -6,10 +6,13 @@ import {
 } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
+const lorem =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
+
 const value = {
-  en: 'hello\nworld',
-  de: 'hallo\nwelt',
-  es: 'hola\nmundo',
+  en: lorem,
+  de: lorem,
+  es: lorem,
 };
 
 export const routePath = '/localized-multiline-text-input';
