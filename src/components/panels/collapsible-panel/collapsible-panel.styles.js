@@ -61,7 +61,7 @@ const getHeaderContainerStyles = ({ isDisabled, isOpen, isSticky, theme }) => {
   ];
 };
 
-const getHeaderStyles = ({ isDisabled }) => {
+const getHeaderStyles = ({ isDisabled, isCondensed }) => {
   const baseStyles = css`
     display: flex;
     flex: 1;
@@ -96,7 +96,16 @@ const getHeaderStyles = ({ isDisabled }) => {
       `,
     ];
   }
-  return baseStyles;
+  return [
+    baseStyles,
+    !isCondensed &&
+      css`
+        /**
+         We set a min-height of 32px to anticipate use-cases where SecondaryButton or PrimaryButton
+         are rendered in the headerControl */
+        min-height: ${vars.spacing32};
+      `,
+  ];
 };
 
 const getContentStyles = () => css`
