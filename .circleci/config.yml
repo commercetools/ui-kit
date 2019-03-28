@@ -58,7 +58,7 @@ commands:
   vrt_test:
     description: 'Running Visual Regression Tests'
     steps:
-      - run: ./scripts/run-percy-.sh
+      - run: ./scripts/run-percy.sh
   publish_to_next:
     parameters:
       working_directory:
