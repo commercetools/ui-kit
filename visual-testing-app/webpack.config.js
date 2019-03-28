@@ -75,7 +75,7 @@ module.exports = {
     },
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'visual-testing-app/index.html',
     }),
