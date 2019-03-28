@@ -14,6 +14,7 @@ aliases:
     key: v1-yarn-cache-{{ checksum "yarn.lock" }}
     paths:
       - ~/.cache/yarn
+      - node_modules
 
 executors:
   node_10:
