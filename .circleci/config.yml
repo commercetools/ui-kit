@@ -20,6 +20,10 @@ executors:
     docker:
       - image: circleci/node:10.15
     working_directory: *working_directory
+  puppeteer:
+    docker:
+      - image: alekzonder/puppeteer
+    working_directory: *working_directory
 
 commands:
   install_dependencies:
@@ -100,7 +104,7 @@ jobs:
       - restore_workspace
       - bundle_test
   vrt_test:
-    executor: node_10
+    executor: puppeteer
     steps:
       - install_dependencies
       - restore_workspace
