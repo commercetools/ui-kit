@@ -20,10 +20,6 @@ executors:
     docker:
       - image: circleci/node:10.15
     working_directory: *working_directory
-  puppeteer:
-    docker:
-      - image: alekzonder/puppeteer
-    working_directory: *working_directory
 
 commands:
   install_dependencies:
@@ -62,6 +58,25 @@ commands:
   vrt_test:
     description: 'Running Visual Regression Tests'
     steps:
+      - run:
+          name: Update
+          working_directory: *working_directory
+          command: |
+            sudo apt-get update -y
+      - run:
+          name: Update
+          working_directory: *working_directory
+          command: |
+            sudo apt-get upgrade -y
+      - run:
+          name: Install Chrome headless dependencies
+          working_directory: *working_directory
+          command: |
+            sudo apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+            libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+            libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+            libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
+            ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget --fix-missing
       - run: ./scripts/run-percy.sh
   publish_to_next:
     parameters:
@@ -104,7 +119,7 @@ jobs:
       - restore_workspace
       - bundle_test
   vrt_test:
-    executor: puppeteer
+    executor: node_10
     steps:
       - install_dependencies
       - restore_workspace
