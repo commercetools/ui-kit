@@ -3,7 +3,7 @@ const shelljs = require('shelljs');
 const docsOrigin = 'origin-docs';
 const docsBranch = 'latest/docs';
 
-if (process.env.TRAVIS === 'true') {
+if (process.env.CI === 'true') {
   const userEmail = 'npmjs@commercetools.com';
   const userName = 'ct-release-bot';
   const remoteUrl = `https://${

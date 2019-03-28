@@ -1,0 +1,137 @@
+version: 2.1
+
+aliases:
+  - &working_directory ~/ui-kit
+
+  - &restore_yarn_cache
+    name: 'Restoring yarn cache'
+    keys:
+      - v1-yarn-cache-{{ checksum "yarn.lock" }}
+      - v1-yarn-cache
+
+  - &save_yarn_cache
+    name: 'Saving yarn cache'
+    key: v1-yarn-cache-{{ checksum "yarn.lock" }}
+    paths:
+      - ~/.cache/yarn
+
+executors:
+  node_10:
+    docker:
+      - image: circleci/node:10.15
+    working_directory: *working_directory
+
+commands:
+  install_dependencies:
+    description: 'Installing dependencies'
+    steps:
+      - checkout
+      - restore_cache: *restore_yarn_cache
+      - run: yarn install --pure-lockfile
+      - save_cache: *save_yarn_cache
+  build_artifacts:
+    description: 'Building artifacts'
+    steps:
+      - run: yarn build
+  save_workspace:
+    steps:
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - /dist
+  restore_workspace:
+    steps:
+      - attach_workspace:
+          at: *working_directory
+  lint:
+    description: 'Running linters'
+    steps:
+      - run: yarn run jest --projects jest.eslint.config.js --maxWorkers=3 --reporters jest-silent-reporter
+  unit_test:
+    description: 'Running unit tests'
+    steps:
+      - run: yarn run jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
+  bundle_test:
+    description: 'Running bundle tests'
+    steps:
+      - run: yarn run jest --projects jest.bundle.config.js --maxWorkers=3 --reporters jest-silent-reporter
+  vrt_test:
+    description: 'Running Visual Regression Tests'
+    steps:
+      - run: ./scripts/run-percy-.sh
+  publish_to_next:
+    parameters:
+      working_directory:
+        type: string
+        default: *working_directory
+    steps:
+      - checkout
+      - restore_cache: *restore_yarn_cache
+      - install_dependencies
+      - build_artifacts
+      - run:
+          name: Authenticating with npm registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > << parameters.working_directory >>/.npmrc
+      - run:
+          name: Publishing to next dist-tag
+          command: yarn release:next
+
+jobs:
+  lint:
+    executor: node_10
+    steps:
+      - install_dependencies
+      - lint
+  unit_test:
+    executor: node_10
+    steps:
+      - install_dependencies
+      - unit_test
+  build:
+    executor: node_10
+    steps:
+      - install_dependencies
+      - run: yarn build
+      - save_workspace
+  bundle_test:
+    executor: node_10
+    steps:
+      - install_dependencies
+      - restore_workspace
+      - bundle_test
+  vrt_test:
+    executor: node_10
+    steps:
+      - install_dependencies
+      - restore_workspace
+      - vrt_test
+  publish:
+    executor: node_10
+    steps:
+      - publish_to_next
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - lint
+      - unit_test
+      - build:
+          requires:
+            - unit_test
+            - lint
+      - bundle_test:
+          requires:
+            - build
+      - vrt_test:
+          requires:
+            - build
+      - publish:
+          requires:
+            - bundle_test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              only:
+                - master
