@@ -97,15 +97,11 @@ commands:
           command: yarn release:next
 
 jobs:
-  lint:
+  lint_and_test:
     executor: node_10
     steps:
       - install_dependencies
       - lint
-  unit_test:
-    executor: node_10
-    steps:
-      - install_dependencies
       - unit_test
   build:
     executor: node_10
@@ -134,12 +130,10 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - lint
-      - unit_test
+      - lint_and_test
       - build:
           requires:
-            - unit_test
-            - lint
+            - lint_and_test
       - bundle_test:
           requires:
             - build
