@@ -106,7 +106,10 @@ export default class CollapsiblePanel extends React.PureComponent {
               <Spacings.InsetSquish scale={scale}>
                 <div
                   {...dataProps}
-                  css={getHeaderStyles({ isDisabled: this.props.isDisabled })}
+                  css={getHeaderStyles({
+                    isCondensed: this.props.condensed,
+                    isDisabled: this.props.isDisabled,
+                  })}
                 >
                   <div
                     css={css`
