@@ -27,7 +27,6 @@ const controlStyles = props => (base, state) => ({
   minHeight: vars.sizeHeightInput,
   cursor: state.isDisabled ? 'not-allowed' : 'pointer',
   padding: `0 ${vars.spacing8}`,
-
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
   '&:hover': {
@@ -89,6 +88,16 @@ const menuListStyles = () => base => ({
   padding: '0',
   borderRadius: vars.borderRadiusInput,
   backgroundColor: vars.backgroundColorInputPristine,
+
+  '&::-webkit-scrollbar': {
+    '-webkit-appearance': 'none',
+    width: '7px',
+  },
+
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '4px',
+    backgroundColor: 'rgba(0, 0, 0, .5)',
+  },
 });
 
 const optionStyles = () => (base, state) => ({
