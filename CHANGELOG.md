@@ -1,3 +1,11 @@
+<a name="9.1.2"></a>
+
+# [9.1.2](https://github.com/commercetools/ui-kit/compare/v9.1.1...v9.1.2) (2019-03-29)
+
+### Bug Fixes
+
+- `CollapsiblePanel`: add `min-height` when not condensed [#616](https://github.com/commercetools/ui-kit/pull/616) ([3dd5856](https://github.com/commercetools/ui-kit/commit/3dd5856a8fae660722ffe769023657ad0c7f9cef))
+
 <a name="9.1.1"></a>
 
 # [9.1.1](https://github.com/commercetools/ui-kit/compare/v9.1.0...v9.1.1) (2019-03-19)
