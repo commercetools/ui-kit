@@ -89,6 +89,10 @@ const menuListStyles = () => base => ({
   borderRadius: vars.borderRadiusInput,
   backgroundColor: vars.backgroundColorInputPristine,
 
+  // this CSS is here to override the default scroll behaviour in Mac OSX
+  // that hides the scrollbar unless you are scrolling.
+  // it comes from here http://blog.0100.tv/2012/11/webkit-scrollbars-on-os-x/
+
   '&::-webkit-scrollbar': {
     width: '9px',
   },
