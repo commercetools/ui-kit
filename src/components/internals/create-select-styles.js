@@ -96,7 +96,6 @@ const menuListStyles = () => base => ({
   '&::-webkit-scrollbar-track': {
     '-webkit-border-radius': '5px',
     borderRadius: '5px',
-    // background: 'rgba(0,0,0,0.1)',
   },
 
   '&::-webkit-scrollbar-thumb': {
