@@ -90,13 +90,27 @@ const menuListStyles = () => base => ({
   backgroundColor: vars.backgroundColorInputPristine,
 
   '&::-webkit-scrollbar': {
-    '-webkit-appearance': 'none',
-    width: '7px',
+    width: '9px',
+  },
+
+  '&::-webkit-scrollbar-track': {
+    '-webkit-border-radius': '5px',
+    borderRadius: '5px',
+    background: 'rgba(0,0,0,0.1)',
   },
 
   '&::-webkit-scrollbar-thumb': {
-    borderRadius: '4px',
-    backgroundColor: 'rgba(0, 0, 0, .5)',
+    '-webkit-border-radius': '5px',
+    borderRadius: '5px',
+    background: 'rgba(0,0,0,0.2)',
+  },
+
+  '&::-webkit-scrollbar-thumb:hover': {
+    background: 'rgba(0,0,0,0.4)',
+  },
+
+  '&::-webkit-scrollbar-thumb:window-inactive': {
+    // background: 'rgba(0,0,0,0.05)',
   },
 });
 
