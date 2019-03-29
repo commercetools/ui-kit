@@ -60,11 +60,11 @@ choiceGroups:
       color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
       color-primary-85: 'hsl(172.9608938547486, 100%, 85%)'
       color-primary-95: 'hsl(172.9608938547486, 100%, 95%)'
-      color-dark-accent: '#213c45'
-      color-dark-accent-30: 'hsl(195, 35.2941176471%, 30%)'
-      color-dark-accent-40: 'hsl(195, 35.2941176471%, 40%)'
-      color-dark-accent-95: 'hsl(195, 35.2941176471%, 95%)'
-      color-dark-accent-98: 'hsl(195, 35.2941176471%, 98%)'
+      color-accent: '#213c45'
+      color-accent-30: 'hsl(195, 35.2941176471%, 30%)'
+      color-accent-40: 'hsl(195, 35.2941176471%, 40%)'
+      color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
+      color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
       color-neutral: '#ccc'
       color-neutral-60: 'hsl(0, 0%, 60%)'
       color-neutral-90: 'hsl(0, 0%, 90%)'
@@ -76,8 +76,8 @@ choiceGroups:
       color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
       color-error: '#e60050'
       color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
-      color-dark: '#1a1a1a'
-      color-light: '#fff'
+      color-solid: '#1a1a1a'
+      color-surface: '#fff'
 
   borderRadiuses:
     label: Border Radiuses
@@ -180,11 +180,11 @@ decisionGroups:
       background-color-input-pristine:
         description: ''
         deprecated: true
-        choice: color-light
+        choice: color-surface
       background-color-input-disabled:
         description: ''
         deprecated: true
-        choice: color-dark-accent-98
+        choice: color-accent-98
       background-color-input-hover:
         description: ''
         deprecated: true
@@ -192,7 +192,7 @@ decisionGroups:
       background-color-input-selected:
         description: ''
         deprecated: true
-        choice: color-dark-accent-95
+        choice: color-accent-95
       background-color-tag-pristine:
         description: ''
         deprecated: true
@@ -216,10 +216,10 @@ decisionGroups:
       background-color-for-input:
         description: ''
         deprecated: false
-        choice: color-light
+        choice: color-surface
       background-color-for-input-when-disabled:
         description: ''
-        choice: color-dark-accent-98
+        choice: color-accent-98
 
   borderColors:
     label: Border Colors
@@ -313,7 +313,7 @@ decisionGroups:
       font-color-default:
         description: ''
         deprecated: true
-        choice: color-dark
+        choice: color-solid
       font-color-disabled:
         description: ''
         deprecated: true
@@ -340,7 +340,7 @@ decisionGroups:
         choice: color-neutral-60
       font-color-for-input:
         description: ''
-        choice: color-dark
+        choice: color-solid
       font-color-for-input-when-disabled:
         description: ''
         choice: color-neutral-60
