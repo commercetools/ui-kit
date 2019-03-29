@@ -65,7 +65,7 @@ These tests are used to ensure the bundle produced by rollup. It is necessary to
 
 ## Releasing
 
-The release process is _semi-automated_: you only need to **manually** trigger it and [Travis](https://travis-ci.org/commercetools/ui-kit/) will take care of the rest. All automated releases go the the `next` distribution channel. This gives us a chance to test releases out before making them offical by moving the `latest` dist-tag along.
+The release process is _semi-automated_: you only need to **manually** trigger it and [CircleCI](https://circleci.com/gh/commercetools/ui-kit) will take care of the rest. All automated releases go the the `next` distribution channel. This gives us a chance to test releases out before making them offical by moving the `latest` dist-tag along.
 
 <details>
   <summary>
@@ -91,7 +91,7 @@ The release process is _semi-automated_: you only need to **manually** trigger i
   - the tag name is the `version` string in the `package.json` plus the prefix `v`
 - push the tag: `git push --tags`
 
-From that point on, [Travis](https://travis-ci.org/commercetools/ui-kit/) will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
+From that point on, [CircleCI](https://circleci.com/gh/commercetools/ui-kit) will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
 
 ### Moving the `latest` dist-tag to a release:
 
