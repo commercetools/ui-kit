@@ -12,18 +12,18 @@ import vars from '../../../materials/custom-properties';
 
 const controlStyles = props => (base, state) => ({
   ...base,
-  fontSize: vars.fontSizeDefault,
+  fontSize: vars.fontSizeForInput,
   backgroundColor: state.isDisabled
-    ? vars.backgroundColorInputDisabled
-    : vars.backgroundColorInputPristine,
+    ? vars.backgroundColorForInputWhenDisabled
+    : vars.backgroundColorForInput,
   borderColor: (() => {
-    if (state.isDisabled) return vars.borderColorInputDisabled;
-    if (props.hasError) return vars.borderColorInputError;
-    if (props.hasWarning) return vars.borderColorInputWarning;
-    if (state.isFocused) return vars.borderColorInputFocus;
-    return vars.borderColorInputPristine;
+    if (state.isDisabled) return vars.borderColorForInputWhenDisabled;
+    if (props.hasError) return vars.borderColorForInputWhenError;
+    if (props.hasWarning) return vars.borderColorForInputWhenWarning;
+    if (state.isFocused) return vars.borderColorForInputWhenFocused;
+    return vars.borderColorForInput;
   })(),
-  borderRadius: vars.borderRadiusInput,
+  borderRadius: vars.borderRadiusForInput,
   minHeight: vars.sizeHeightInput,
   cursor: state.isDisabled ? 'not-allowed' : 'pointer',
   padding: `0 ${vars.spacing8}`,
@@ -31,33 +31,33 @@ const controlStyles = props => (base, state) => ({
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
   '&:hover': {
-    borderColor: vars.borderColorInputFocus,
+    borderColor: vars.borderColorForInputWhenFocused,
     boxShadow: 'none',
   },
   '&:active': {
-    borderColor: vars.borderColorInputFocus,
+    borderColor: vars.borderColorForInputWhenFocused,
     boxShadow: 'none',
   },
   '&:focus': {
-    borderColor: vars.borderColorInputFocus,
+    borderColor: vars.borderColorForInputWhenFocused,
     boxShadow: 'none',
   },
 
   pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
-  color: state.isDisabled ? vars.fontColorDisabled : base.color,
+  color: state.isDisabled ? vars.fontColorForInputWhenDisabled : base.color,
 });
 
 const menuStyles = props => base => ({
   ...base,
-  border: `1px ${vars.borderColorInputFocus} solid`,
-  borderRadius: vars.borderRadiusInput,
-  backgroundColor: vars.backgroundColorInputPristine,
+  border: `1px ${vars.borderColorForInputWhenFocused} solid`,
+  borderRadius: vars.borderRadiusForInput,
+  backgroundColor: vars.backgroundColorForInput,
   boxShadow: vars.shadow7,
-  fontSize: vars.fontSizeDefault,
+  fontSize: vars.fontSizeForInput,
   margin: `${vars.spacing4} 0 0 0`,
   borderColor: (() => {
-    if (props.hasError) return vars.borderColorInputError;
-    if (props.hasWarning) return vars.borderColorInputWarning;
+    if (props.hasError) return vars.borderColorForInputWhenError;
+    if (props.hasWarning) return vars.borderColorForInputWhenWarning;
     return base.borderColor;
   })(),
 });
@@ -72,7 +72,7 @@ const indicatorSeparatorStyles = () => base => ({
 
 const dropdownIndicatorStyles = () => base => ({
   ...base,
-  color: vars.fontColorDefault,
+  color: vars.fontColorForInput,
   margin: '0',
   padding: '0',
   marginLeft: vars.spacing4,
@@ -87,8 +87,8 @@ const clearIndicatorStyles = () => base => ({
 const menuListStyles = () => base => ({
   ...base,
   padding: '0',
-  borderRadius: vars.borderRadiusInput,
-  backgroundColor: vars.backgroundColorInputPristine,
+  borderRadius: vars.borderRadiusForInput,
+  backgroundColor: vars.backgroundColorForInput,
 });
 
 const optionStyles = () => (base, state) => ({
