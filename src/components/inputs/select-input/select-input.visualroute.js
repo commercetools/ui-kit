@@ -3,14 +3,26 @@ import { Route, Switch } from 'react-router-dom';
 import { SelectInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-const options = [
+const defaultOptions = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
+  { value: 'three', label: 'Three' },
+  { value: 'four', label: 'Four' },
+  { value: 'five', label: 'Five' },
+  { value: 'six', label: 'Six' },
 ];
 
+const options = defaultOptions;
+
 const optionsWithGroups = [
-  { label: 'one', options: [{ value: 'one', label: 'One' }] },
-  { options: [{ value: 'two', label: 'Two' }] },
+  { label: 'Numbers', options: defaultOptions },
+  {
+    label: 'Animals',
+    options: [
+      { value: 'cats', label: 'Cats' },
+      { value: 'dogs', label: 'Dogs' },
+    ],
+  },
 ];
 
 const value = 'one';
