@@ -20,14 +20,8 @@ const longOptions = defaultOptions.concat([
 const options = defaultOptions;
 
 const optionsWithGroups = [
-  { label: 'Numbers', options: longOptions },
-  {
-    label: 'Animals',
-    options: [
-      { value: 'cats', label: 'Cats' },
-      { value: 'dogs', label: 'Dogs' },
-    ],
-  },
+  { label: 'one', options: [{ value: 'one', label: 'One' }] },
+  { options: longOptions },
 ];
 
 const value = 'one';
