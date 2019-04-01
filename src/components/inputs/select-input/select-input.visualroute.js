@@ -6,18 +6,21 @@ import { Suite, Spec } from '../../../../test/percy';
 const defaultOptions = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
+];
+
+const longOptions = defaultOptions.concat([
   { value: 'three', label: 'Three' },
   { value: 'four', label: 'Four' },
   { value: 'five', label: 'Five' },
   { value: 'six', label: 'Six' },
   { value: 'seven', label: 'Seven' },
   { value: 'eight', label: 'Eight' },
-];
+]);
 
 const options = defaultOptions;
 
 const optionsWithGroups = [
-  { label: 'Numbers', options: defaultOptions },
+  { label: 'Numbers', options: longOptions },
   {
     label: 'Animals',
     options: [
@@ -116,7 +119,7 @@ const OpenRoute = () => (
         id="select-input"
         value={value}
         onChange={() => {}}
-        options={options}
+        options={longOptions}
         horizontalConstraint="m"
       />
     </Spec>
