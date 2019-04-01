@@ -97,8 +97,8 @@ const optionStyles = () => (base, state) => ({
   paddingLeft: vars.spacing8,
   paddingRight: vars.spacing8,
   color: (() => {
-    if (!state.isDisabled) return vars.fontSizeDefault;
-    if (state.isSelected) return vars.fontColorDefault;
+    if (!state.isDisabled) return vars.fontColorForInput;
+    if (state.isSelected) return vars.fontColorForInput;
     return base.color;
   })(),
   backgroundColor: (() => {
@@ -109,7 +109,7 @@ const optionStyles = () => (base, state) => ({
 
   '&:active': {
     color: (() => {
-      if (!state.isDisabled) return vars.fontColorDefault;
+      if (!state.isDisabled) return vars.fontColorForInput;
       return base.color;
     })(),
     backgroundColor: vars.backgroundColorInputSelected,
@@ -118,7 +118,7 @@ const optionStyles = () => (base, state) => ({
 
 const placeholderStyles = () => base => ({
   ...base,
-  color: vars.fontColorPlaceholder,
+  color: vars.placeholderFontColorForInput,
 });
 
 const valueContainerStyles = () => base => ({
@@ -173,7 +173,7 @@ const groupStyles = props => base => ({
 
 const groupHeadingStyles = () => base => ({
   ...base,
-  color: vars.fontColorReadonly,
+  color: vars.fontColorForInputWhenReadonly,
   fontSize: vars.fontSizeSmall,
   textTransform: 'none',
   fontWeight: 'bold',
@@ -188,9 +188,11 @@ const containerStyles = () => (base, state) => ({
   ...base,
   fontFamily: vars.fontFamilyDefault,
   minHeight: vars.sizeHeightInput,
-  borderRadius: vars.borderRadiusInput,
+  borderRadius: vars.borderRadiusForInput,
   cursor: state.isDisabled ? 'not-allowed' : base.cursor,
-  borderColor: state.isFocused ? vars.borderColorInputFocus : base.borderColor,
+  borderColor: state.isFocused
+    ? vars.borderColorForInputWhenFocused
+    : base.borderColor,
 
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 });
