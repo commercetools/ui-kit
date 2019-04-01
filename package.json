@@ -164,7 +164,7 @@
     "omit-empty": "1.0.0",
     "pptr-testing-library": "0.3.1",
     "prettier": "1.16.4",
-    "puppeteer": "1.13.0",
+    "puppeteer": "1.14.0",
     "rcfile": "1.0.3",
     "react": "16.8.6",
     "react-dom": "16.8.6",
