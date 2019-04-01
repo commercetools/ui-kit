@@ -10,6 +10,8 @@ const defaultOptions = [
   { value: 'four', label: 'Four' },
   { value: 'five', label: 'Five' },
   { value: 'six', label: 'Six' },
+  { value: 'seven', label: 'Seven' },
+  { value: 'eight', label: 'Eight' },
 ];
 
 const options = defaultOptions;
