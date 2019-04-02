@@ -22,12 +22,12 @@ const LinkButton = props => (
         min-height: initial;
         cursor: pointer;
         text-decoration: none;
-        p {
+        span {
           color: ${vars.colorGreen};
           ${props.isDisabled ? `color: ${vars.colorGray};` : ''}
         }
         &:hover {
-          p {
+          span {
             color: ${vars.colorGreen25};
             ${props.isDisabled ? `color: ${vars.colorGray});` : ''}
           }
@@ -50,7 +50,7 @@ const LinkButton = props => (
           size: 'medium',
           theme: props.isDisabled ? 'grey' : 'green',
         })}
-      <Text.Body>{props.label}</Text.Body>
+      <Text.Body isInline={true}>{props.label}</Text.Body>
     </Spacings.Inline>
   </Link>
 );
