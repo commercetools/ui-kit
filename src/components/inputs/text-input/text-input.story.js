@@ -11,8 +11,8 @@ import TextInputReadme from './README.md';
 import TextInput from './text-input';
 
 const darkTheme = {
-  colorLight: 'black',
-  colorDark: 'white',
+  colorSurface: 'black',
+  colorSolid: 'white',
   colorDarkAccent98: 'white',
   colorError: 'darkred',
   borderRadius6: '0',
