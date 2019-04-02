@@ -42,33 +42,25 @@ const getWrapperBackgroundColor = type =>
     ? vars.backgroundColorTagWarning
     : vars.backgroundColorTagPristine;
 
-const getClickableContentWrapperStyles = ({ type, isRemoveable }) =>
-  type === 'warning'
-    ? [
-        css`
-          &:hover {
-            border-color: ${vars.borderColorTagWarningHover};
-            border-right: 1px solid ${vars.borderColorTagPristine};
-          }
-        `,
-        isRemoveable &&
-          css`
-            border-right: 1px solid ${vars.borderColorTagWarning};
-          `,
-      ]
-    : [
+const getClickableContentWrapperStyles = ({ type, isRemoveable }) => {
+  const base = [
+    isRemoveable &&
+      css`
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      `,
+  ];
+
+  return type === 'warning'
+    ? base
+    : base.concat([
         css`
           &:hover {
             border-color: ${vars.borderColorTagFocus};
           }
         `,
-        isRemoveable &&
-          css`
-            &:hover {
-              border-right: 1px solid ${vars.borderColorTagPristine};
-            }
-          `,
-      ];
+      ]);
+};
 
 export const TagLinkBody = props => (
   <div
@@ -228,7 +220,7 @@ const Tag = props => (
               css`
                 border-color: ${vars.borderColorTagWarning};
                 &:hover {
-                  background-color: ${vars.borderColorTagWarningHover};
+                  background-color: ${vars.borderColorTagWarning};
                 }
               `,
             props.isDisabled &&
