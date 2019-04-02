@@ -19,7 +19,7 @@ const TextInput = props => (
       placeholder={props.placeholder}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
-      css={getInputStyles(props)}
+      css={theme => getInputStyles(props, theme)}
       {...filterDataAttributes(props)}
       /* ARIA */
       aria-readonly={props.isReadOnly}

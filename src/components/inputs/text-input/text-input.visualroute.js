@@ -1,10 +1,16 @@
 import React from 'react';
 import { TextInput } from 'ui-kit';
+import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = 'hello world how are you?';
 
 export const routePath = '/text-input';
+
+const theme = {
+  colorError: 'darkred',
+  fontSizeM: '1.2rem',
+};
 
 export const component = () => (
   <Suite>
@@ -86,6 +92,16 @@ export const component = () => (
         isDisabled={true}
         hasWarning={true}
       />
+    </Spec>
+    <Spec label="with custom theme (custom fontSize and error color)">
+      <ThemeProvider theme={theme}>
+        <TextInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint="m"
+          hasError={true}
+        />
+      </ThemeProvider>
     </Spec>
   </Suite>
 );

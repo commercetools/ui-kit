@@ -1,4 +1,6 @@
 import React from 'react';
+import { css } from '@emotion/core';
+import { ThemeProvider } from 'emotion-theming';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Value } from 'react-value';
@@ -8,35 +10,54 @@ import Section from '../../../../.storybook/decorators/section';
 import TextInputReadme from './README.md';
 import TextInput from './text-input';
 
+const darkTheme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorDarkAccent98: 'white',
+  colorError: 'darkred',
+  borderRadius6: '0',
+};
+
+const darkStyles = css`
+  background-color: black;
+`;
+
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(TextInputReadme))
-  .add('TextInput', () => (
-    <Section>
-      <Value
-        defaultValue=""
-        render={(value, onChange) => (
-          <TextInput
-            id={text('id', '')}
-            name={text('name', '')}
-            value={text('value', value)}
-            onChange={event => {
-              action('onChange')(event);
-              onChange(event.target.value);
-            }}
-            isAutofocussed={boolean('isAutofocussed', false)}
-            isDisabled={boolean('isDisabled', false)}
-            isReadOnly={boolean('isReadOnly', false)}
-            hasError={boolean('hasError', false)}
-            hasWarning={boolean('hasWarning', false)}
-            placeholder={text('placeholder', 'Placeholder')}
-            horizontalConstraint={select(
-              'horizontalConstraint',
-              ['s', 'm', 'l', 'xl', 'scale'],
-              'm'
-            )}
-          />
-        )}
-      />
-    </Section>
-  ));
+  .add('TextInput', () => {
+    const darkMode = boolean('dark mode (shows off custom theme)', false);
+    return (
+      <ThemeProvider theme={darkMode ? darkTheme : {}}>
+        <div css={darkMode ? darkStyles : {}}>
+          <Section>
+            <Value
+              defaultValue=""
+              render={(value, onChange) => (
+                <TextInput
+                  id={text('id', '')}
+                  name={text('name', '')}
+                  value={text('value', value)}
+                  onChange={event => {
+                    action('onChange')(event);
+                    onChange(event.target.value);
+                  }}
+                  isAutofocussed={boolean('isAutofocussed', false)}
+                  isDisabled={boolean('isDisabled', false)}
+                  isReadOnly={boolean('isReadOnly', false)}
+                  hasError={boolean('hasError', false)}
+                  hasWarning={boolean('hasWarning', false)}
+                  placeholder={text('placeholder', 'Placeholder')}
+                  horizontalConstraint={select(
+                    'horizontalConstraint',
+                    ['s', 'm', 'l', 'xl', 'scale'],
+                    'm'
+                  )}
+                />
+              )}
+            />
+          </Section>
+        </div>
+      </ThemeProvider>
+    );
+  });
