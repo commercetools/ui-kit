@@ -4,9 +4,9 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import getStyles from './inline.styles';
 
 const Inline = props => (
-  <div css={getStyles(props)} {...filterDataAttributes(props)}>
+  <span css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
-  </div>
+  </span>
 );
 
 Inline.displayName = 'Inline';
