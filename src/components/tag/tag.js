@@ -46,6 +46,7 @@ const getClickableContentWrapperStyles = ({ type, isRemoveable }) => {
   const base = [
     isRemoveable &&
       css`
+        border-right: 0;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       `,
@@ -53,13 +54,13 @@ const getClickableContentWrapperStyles = ({ type, isRemoveable }) => {
 
   return type === 'warning'
     ? base
-    : base.concat([
+    : [
         css`
           &:hover {
             border-color: ${vars.borderColorTagFocus};
           }
         `,
-      ]);
+      ].concat(base);
 };
 
 export const TagLinkBody = props => (
@@ -207,22 +208,18 @@ const Tag = props => (
               align-items: center;
               background: inherit;
               border-style: solid;
-              border-width: 1px 1px 1px 0;
+              border-width: 1px 1px 1px 1px;
               &:hover {
-                background-color: ${vars.backgroundColorTagNormalHover};
-                box-shadow: ${vars.shadowBoxTagHover};
+                border-color: ${vars.borderColorTagWarning};
+
+                > svg * {
+                  fill: ${vars.borderColorTagWarning};
+                }
               }
               > svg * {
                 fill: ${vars.fontColorDefault};
               }
             `,
-            props.type === 'warning' &&
-              css`
-                border-color: ${vars.borderColorTagWarning};
-                &:hover {
-                  background-color: ${vars.borderColorTagWarning};
-                }
-              `,
             props.isDisabled &&
               css`
                 &:hover {
