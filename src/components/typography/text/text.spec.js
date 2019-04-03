@@ -28,7 +28,7 @@ describe('exports', () => {
 describe('<Headline>', () => {
   it('should render element tag h1', () => {
     const { container } = render(
-      <Text.Headline elementType="h1" title="tooltip text">
+      <Text.Headline as="h1" title="tooltip text">
         {'Title'}
       </Text.Headline>
     );
@@ -38,7 +38,7 @@ describe('<Headline>', () => {
 
   it('should render given text', () => {
     const { container } = render(
-      <Text.Headline elementType="h1" title="tooltip text">
+      <Text.Headline as="h1" title="tooltip text">
         {'Title'}
       </Text.Headline>
     );
@@ -58,7 +58,7 @@ describe('<Headline>', () => {
 
   it('should set `title` attribute', () => {
     const { queryByTitle } = render(
-      <Text.Headline elementType="h1" title="tooltip text">
+      <Text.Headline as="h1" title="tooltip text">
         {'Title'}
       </Text.Headline>
     );
@@ -67,7 +67,7 @@ describe('<Headline>', () => {
 
   it('should forward data attriutes', () => {
     const { getByTitle } = render(
-      <Text.Headline elementType="h1" data-foo="bar" title="headline">
+      <Text.Headline as="h1" data-foo="bar" title="headline">
         {'Title'}
       </Text.Headline>
     );
@@ -78,7 +78,7 @@ describe('<Headline>', () => {
 describe('<Subheadline>', () => {
   it('should render element tag h4', () => {
     const { container } = render(
-      <Text.Subheadline elementType="h4" title="tooltip text">
+      <Text.Subheadline as="h4" title="tooltip text">
         {'Title'}
       </Text.Subheadline>
     );
@@ -87,7 +87,7 @@ describe('<Subheadline>', () => {
 
   it('should render given text', () => {
     const { container } = render(
-      <Text.Subheadline elementType="h4" title="tooltip text">
+      <Text.Subheadline as="h4" title="tooltip text">
         {'Subtitle'}
       </Text.Subheadline>
     );
@@ -107,7 +107,7 @@ describe('<Subheadline>', () => {
 
   it('should set `title` attribute', () => {
     const { queryByTitle } = render(
-      <Text.Subheadline elementType="h4" title="tooltip text">
+      <Text.Subheadline as="h4" title="tooltip text">
         {'Title'}
       </Text.Subheadline>
     );
@@ -116,7 +116,7 @@ describe('<Subheadline>', () => {
 
   it('should forward data attriutes', () => {
     const { getByTitle } = render(
-      <Text.Subheadline elementType="h4" data-foo="bar" title="subheadline">
+      <Text.Subheadline as="h4" data-foo="bar" title="subheadline">
         {'Title'}
       </Text.Subheadline>
     );
@@ -187,10 +187,10 @@ describe('<Body>', () => {
     expect(getByTitle('body')).toHaveAttribute('data-foo', 'bar');
   });
 
-  describe('when inline', () => {
-    it('should render element tag span', () => {
+  describe('when `as` prop is set to `span`', () => {
+    it('should render as a span', () => {
       const { container } = render(
-        <Text.Body title="tooltip text" isInline={true}>
+        <Text.Body title="tooltip text" as="span">
           {'Body'}
         </Text.Body>
       );
