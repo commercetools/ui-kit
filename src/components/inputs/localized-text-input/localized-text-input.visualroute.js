@@ -1,11 +1,20 @@
 import React from 'react';
 import { LocalizedTextInput, ErrorMessage } from 'ui-kit';
+import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = {
   en: 'hello world',
   de: 'hallo welt',
   es: 'hola mundo',
+};
+
+const theme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorNeutral60: 'rgba(0,0,0,0.60)',
+  colorNeutral: 'rgba(0,0,0,0.60)',
+  colorAccent98: 'rgba(0,0,0,0.98)',
 };
 
 export const routePath = '/localized-text-input';
@@ -101,6 +110,16 @@ export const component = () => (
         horizontalConstraint="m"
         hasError={true}
       />
+    </Spec>
+    <Spec label="with a custom (dark) theme" omitPropsList={true}>
+      <ThemeProvider theme={theme}>
+        <LocalizedTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint="m"
+        />
+      </ThemeProvider>
     </Spec>
   </Suite>
 );
