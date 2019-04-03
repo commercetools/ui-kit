@@ -62,23 +62,23 @@ const createCurrencySelectStyles = ({
       borderRight: '0',
       minWidth: '72px',
       borderColor: (() => {
-        if (isDisabled) return vars.borderColorInputDisabled;
-        if (isReadOnly) return vars.borderColorInputReadonly;
-        if (hasError) return vars.borderColorInputError;
-        if (hasWarning) return vars.borderColorInputWarning;
-        if (hasFocus) return vars.borderColorInputFocus;
-        return vars.borderColorInputPristine;
+        if (isDisabled) return vars.borderColorForInputWhenDisabled;
+        if (isReadOnly) return vars.borderColorForInputWhenReadonly;
+        if (hasError) return vars.borderColorForInputWhenError;
+        if (hasWarning) return vars.borderColorForInputWhenWarning;
+        if (hasFocus) return vars.borderColorForInputWhenFocused;
+        return vars.borderColorForInput;
       })(),
       '&:hover': (() => {
-        if (isDisabled) return vars.borderColorInputDisabled;
-        if (isReadOnly) return vars.borderColorInputReadonly;
-        if (hasError) return vars.borderColorInputError;
+        if (isDisabled) return vars.borderColorForInputWhenDisabled;
+        if (isReadOnly) return vars.borderColorForInputWhenReadonly;
+        if (hasError) return vars.borderColorForInputWhenError;
         if (hasWarning) return vars.borderColorInputWarning;
-        if (hasFocus) return vars.borderColorInputFocus;
-        return vars.borderColorInputPristine;
+        if (hasFocus) return vars.borderColorForInputWhenFocused;
+        return vars.borderColorForInput;
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return vars.backgroundColorInputPristine;
+        if (isReadOnly) return vars.backgroundColorForInput;
         return base.backgroundColor;
       })(),
     }),
@@ -87,8 +87,8 @@ const createCurrencySelectStyles = ({
       marginLeft: 0,
       maxWidth: 'initial',
       color: (() => {
-        if (hasError) return vars.fontColorError;
-        if (hasWarning) return vars.fontColorWarning;
+        if (hasError) return vars.fontColorForInputWhenError;
+        if (hasWarning) return vars.fontColorForInputWhenWarning;
         return base.color;
       })(),
     }),
