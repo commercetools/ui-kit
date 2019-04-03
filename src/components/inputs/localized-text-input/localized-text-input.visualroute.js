@@ -111,7 +111,7 @@ export const component = () => (
         hasError={true}
       />
     </Spec>
-    <Spec label="with a custom (dark) theme">
+    <Spec label="with a custom (dark) theme" omitPropsList={true}>
       <ThemeProvider theme={theme}>
         <LocalizedTextInput
           value={value}
