@@ -90,7 +90,10 @@ export default class TranslationInput extends React.Component {
             display: flex;
           `}
         >
-          <label htmlFor={this.props.id} css={getLanguageLabelStyles}>
+          <label
+            htmlFor={this.props.id}
+            css={theme => getLanguageLabelStyles(this.props, theme)}
+          >
             {/* FIXME: add proper tone for disabled when tones are refactored */}
             <Text.Detail tone="secondary">
               {this.props.language.toUpperCase()}
@@ -111,7 +114,7 @@ export default class TranslationInput extends React.Component {
             }}
             disabled={this.props.isDisabled}
             placeholder={this.props.placeholder}
-            css={getTextareaStyles(this.props)}
+            css={theme => getTextareaStyles(this.props, theme)}
             readOnly={this.props.isReadOnly}
             autoFocus={this.props.isAutofocussed}
             /* ARIA */
