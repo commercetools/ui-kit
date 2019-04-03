@@ -94,6 +94,7 @@ Wraps the given text in a `<p>` element, for normal content.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
+| `isInline` | `Bool`           |    -     | -                                                                             | `false` |
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -123,6 +124,7 @@ properly style the text.
 | `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
 | `title`    | `String`         |    -     | -                                                                             | -       |
 | `truncate` | `Bool`           |    -     | -                                                                             | `false` |
+| `isInline` | `Bool`           |    -     | -                                                                             | `false` |
 
 The component further forwards all `data-` attributes to the underlying component.
 
