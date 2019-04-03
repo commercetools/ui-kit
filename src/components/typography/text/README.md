@@ -22,11 +22,12 @@ Wraps the given text in the given HTML header `size`.
 
 | Props         | Type             | Required | Values               | Default | Description                                                          |
 | ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------------- |
-| `elementType` | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                                    |
+| `as`          | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                                    |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                    | -       | -                                                                    |
 | `intlMessage` | `intl message`   | ✅ (\*)  | -                    | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element                  |
 | `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width       |
+| `elementType` | `String`         |    -     | `['h1', 'h2', 'h3']` | -       | ⚠️ Deprecated                                                        |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
@@ -50,13 +51,14 @@ Wraps the given text in the given HTML header `size`.
 
 | Props         | Type             | Required | Values                                                            | Default |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------- | ------- |
-| `elementType` | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |
+| `as`          | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |
 | `isBold`      | `Boolean`        |    -     | -                                                                 | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative']` | -       |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                 | -       |
 | `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                 | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `title`       | `String`         |    -     | -                                                                 | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
+| `elementType` | `String`         |    -     | `['h4', 'h5']`                                                    | -       | ⚠️ Deprecated |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
@@ -94,6 +96,7 @@ Wraps the given text in a `<p>` element, for normal content.
 
 | Props         | Type             | Required | Values                                                                        | Default |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
+| `as`          | `String`         |    -     | `['p', 'span']`                                                               | -       |
 | `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
 | `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'inverted']` | -       |
@@ -101,7 +104,7 @@ Wraps the given text in a `<p>` element, for normal content.
 | `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `title`       | `String`         |    -     | -                                                                             | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
-| `isInline`    | `Bool`           |    -     | -                                                                             | `false` |
+| `isInline`    | `Bool`           |    -     | -                                                                             | `false` | ⚠️ Deprecated |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
