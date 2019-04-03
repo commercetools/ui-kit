@@ -48,23 +48,10 @@ const Headline = props => {
 
 Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
-  as(props, propName, componentName, ...rest) {
-    // is required if the prop 'elementType' is not defined
-    if (!props.elementType) {
-      return PropTypes.oneOf(['h1', 'h2', 'h3']).isRequired(
-        props,
-        propName,
-        componentName,
-        ...rest
-      );
-    }
-    return PropTypes.oneOf(['h1', 'h2', 'h3'])(
-      props,
-      propName,
-      componentName,
-      ...rest
-    );
-  },
+  as: requiredIf(
+    PropTypes.oneOf(['h1', 'h2', 'h3']),
+    props => !props.elementType
+  ),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
       const message = oneLine`
@@ -93,7 +80,6 @@ Headline.propTypes = {
       ...rest
     );
   },
-  children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
   intlMessage: requiredIf(intlMessageShape, props => !props.children),
@@ -119,23 +105,7 @@ const Subheadline = props => {
 
 Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
-  as(props, propName, componentName, ...rest) {
-    // is required only if the prop 'elementType' is not defined
-    if (!props.elementType) {
-      return PropTypes.oneOf(['h4', 'h5']).isRequired(
-        props,
-        propName,
-        componentName,
-        ...rest
-      );
-    }
-    return PropTypes.oneOf(['h4', 'h5'])(
-      props,
-      propName,
-      componentName,
-      ...rest
-    );
-  },
+  as: requiredIf(PropTypes.oneOf(['h4', 'h5']), props => !props.elementType),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
       const message = oneLine`
