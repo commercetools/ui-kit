@@ -7,15 +7,7 @@ const value = 'hello world how are you?';
 
 export const routePath = '/password-input';
 
-const darkTheme = {
-  colorSurface: 'black',
-  colorSolid: 'white',
-  colorNeutral60: 'rgba(255,255,255,0.60)',
-  colorNeutral: 'rgba(255,255,255,0.60)',
-  colorAccent98: 'rgba(0,0,0,0.98)',
-};
-
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <PasswordInput
@@ -82,8 +74,8 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
-      <Spec label="with custom (inverted) theme" inverted>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with custom (inverted) theme">
         <PasswordInput
           value={value}
           onChange={() => {}}
