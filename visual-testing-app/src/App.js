@@ -1,6 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+const darkTheme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorNeutral60: 'rgba(255,255,255,0.60)',
+  colorNeutral: 'rgba(255,255,255,0.60)',
+  colorAccent98: 'rgba(0,0,0,0.98)',
+};
+
 const componentsContext = require.context(
   '../../src/components',
   true,
@@ -44,7 +52,7 @@ class App extends React.Component {
             <Route
               key={Component.routePath}
               path={Component.routePath}
-              component={Component.component}
+              render={() => <Component.component theme={darkTheme} />}
             />
           ))}
           <Route

@@ -8,15 +8,8 @@ const value =
 
 export const routePath = '/multiline-text-input';
 
-const darkTheme = {
-  colorSurface: 'black',
-  colorSolid: 'white',
-  colorNeutral60: 'rgba(255,255,255,0.60)',
-  colorNeutral: 'rgba(255,255,255,0.60)',
-  colorAccent98: 'rgba(0,0,0,0.98)',
-};
-
-export const component = () => (
+// eslint-disable-next-line react/prop-types
+export const component = ({ theme }) => (
   <Suite>
     <Spec label="minimal">
       <MultilineTextInput
@@ -100,7 +93,7 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <Spec inverted label="with custom (inverted) theme">
         <MultilineTextInput
           value={value}

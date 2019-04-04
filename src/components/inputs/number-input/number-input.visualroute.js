@@ -5,17 +5,10 @@ import { Suite, Spec } from '../../../../test/percy';
 
 const value = '18';
 
-const darkTheme = {
-  colorSurface: 'black',
-  colorSolid: 'white',
-  colorNeutral60: 'rgba(255,255,255,0.60)',
-  colorNeutral: 'rgba(255,255,255,0.60)',
-  colorAccent98: 'rgba(0,0,0,0.98)',
-};
-
 export const routePath = '/number-input';
 
-export const component = () => (
+// eslint-disable-next-line react/prop-types
+export const component = ({ theme }) => (
   <Suite>
     <Spec label="minimal">
       <NumberInput value={value} onChange={() => {}} horizontalConstraint="m" />
@@ -69,7 +62,7 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <Spec label="with custom (inverted) theme" inverted>
         <NumberInput
           value={value}
