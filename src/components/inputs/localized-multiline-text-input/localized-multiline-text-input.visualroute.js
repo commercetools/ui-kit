@@ -18,8 +18,7 @@ const value = {
 
 export const routePath = '/localized-multiline-text-input';
 
-// eslint-disable-next-line react/prop-types
-export const component = ({ theme }) => (
+export const component = ({ darkTheme }) => (
   <Suite>
     <Spec label="minimal">
       <LocalizedMultilineTextInput
@@ -157,8 +156,8 @@ export const component = ({ theme }) => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={theme}>
-      <Spec label="with custom theme" inverted>
+    <ThemeProvider theme={darkTheme}>
+      <Spec label="with custom theme">
         <LocalizedMultilineTextInput
           value={value}
           onChange={() => {}}

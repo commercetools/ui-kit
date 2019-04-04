@@ -30,6 +30,7 @@ overrides:
       'react/display-name': 0
   - files: ['*.visualroute.js']
     rules:
+      'react/prop-types': 0
       'react/display-name': 0
   - files: ['*.visualspec.js']
     globals:
