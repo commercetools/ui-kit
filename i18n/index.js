@@ -1,5 +1,7 @@
-import en from './en.json';
-import de from './de.json';
-import es from './es.json';
+import en from './data/en.json';
+import de from './data/de.json';
+import es from './data/es.json';
+import frFR from './data/fr-FR.json';
+import zhCN from './data/zh-CN.json';
 
-export { en, de, es };
+export { en, de, es, frFR, zhCN };
