@@ -1,10 +1,19 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { PasswordInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = 'hello world how are you?';
 
 export const routePath = '/password-input';
+
+const darkTheme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorNeutral60: 'rgba(255,255,255,0.60)',
+  colorNeutral: 'rgba(255,255,255,0.60)',
+  colorAccent98: 'rgba(0,0,0,0.98)',
+};
 
 export const component = () => (
   <Suite>
@@ -73,5 +82,14 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <ThemeProvider theme={darkTheme}>
+      <Spec label="with custom (inverted) theme" inverted>
+        <PasswordInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint="m"
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
