@@ -42,62 +42,61 @@ const getWrapperBackgroundColor = type =>
     ? vars.backgroundColorTagWarning
     : vars.backgroundColorTagPristine;
 
-const getClickableContentWrapperStyles = ({ type, isRemoveable }) =>
+const getClickableContentWrapperStyles = ({ type }) =>
   type === 'warning'
-    ? [
-        css`
-          &:hover {
-            border-color: ${vars.borderColorTagWarningHover};
-            border-right: 1px solid ${vars.borderColorTagPristine};
-          }
-        `,
-        isRemoveable &&
-          css`
-            border-right: 1px solid ${vars.borderColorTagWarning};
-          `,
-      ]
+    ? []
     : [
         css`
           &:hover {
             border-color: ${vars.borderColorTagFocus};
           }
         `,
-        isRemoveable &&
-          css`
-            &:hover {
-              border-right: 1px solid ${vars.borderColorTagPristine};
-            }
-          `,
       ];
 
-export const TagLinkBody = props => (
-  <div
-    css={[
-      getContentWrapperStyles(props),
-      !props.isDisabled &&
-        css`
-          cursor: pointer;
-        `,
-      !props.isDisabled &&
-        Boolean(props.onRemove) &&
-        css`
-          padding-right: ${vars.spacing8};
-        `,
-      !props.isDisabled &&
-        getClickableContentWrapperStyles({
-          type: props.type,
-          isRemoveable: Boolean(props.onRemove),
-        }),
-    ]}
-  >
-    {!props.isDisabled ? (
-      <Link
-        onClick={props.onClick}
-        to={props.linkTo}
-        css={css`
-          text-decoration: none;
-        `}
-      >
+export const TagLinkBody = props => {
+  const isRemoveable = Boolean(props.onRemove);
+  return (
+    <div
+      css={[
+        getContentWrapperStyles(props),
+        !props.isDisabled &&
+          css`
+            cursor: pointer;
+          `,
+        !props.isDisabled &&
+          isRemoveable &&
+          css`
+            padding-right: ${vars.spacing8};
+          `,
+        !props.isDisabled &&
+          getClickableContentWrapperStyles({
+            type: props.type,
+          }),
+        isRemoveable &&
+          css`
+            border-right: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          `,
+      ]}
+    >
+      {!props.isDisabled ? (
+        <Link
+          onClick={props.onClick}
+          to={props.linkTo}
+          css={css`
+            text-decoration: none;
+          `}
+        >
+          <Text.Detail
+            css={css`
+              color: ${getTextDetailColor(props.isDisabled)};
+            `}
+          >
+            {props.children}
+          </Text.Detail>
+        </Link>
+      ) : (
         <Text.Detail
           css={css`
             color: ${getTextDetailColor(props.isDisabled)};
@@ -105,18 +104,10 @@ export const TagLinkBody = props => (
         >
           {props.children}
         </Text.Detail>
-      </Link>
-    ) : (
-      <Text.Detail
-        css={css`
-          color: ${getTextDetailColor(props.isDisabled)};
-        `}
-      >
-        {props.children}
-      </Text.Detail>
-    )}
-  </div>
-);
+      )}
+    </div>
+  );
+};
 
 TagLinkBody.displayName = 'TagLinkBody';
 TagLinkBody.propTypes = {
@@ -135,6 +126,9 @@ export const TagNormalBody = props => (
       Boolean(props.onRemove) &&
         css`
           padding-right: ${vars.spacing8};
+          border-right: 0;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
         `,
       !props.isDisabled &&
         Boolean(props.onClick) &&
@@ -208,29 +202,27 @@ const Tag = props => (
           onClick={props.isDisabled ? undefined : props.onRemove}
           css={[
             css`
-              border-color: ${vars.borderColorTagPristine};
+              border-color: ${props.type === 'warning'
+                ? vars.borderColorTagWarning
+                : vars.borderColorTagPristine};
               padding: 0 ${vars.spacing4};
               border-radius: 0 ${vars.borderRadiusTag} ${vars.borderRadiusTag} 0;
               display: flex;
               align-items: center;
               background: inherit;
               border-style: solid;
-              border-width: 1px 1px 1px 0;
+              border-width: 1px 1px 1px 1px;
               &:hover {
-                background-color: ${vars.backgroundColorTagNormalHover};
-                box-shadow: ${vars.shadowBoxTagHover};
+                border-color: ${vars.borderColorTagWarning};
+
+                > svg * {
+                  fill: ${vars.borderColorTagWarning};
+                }
               }
               > svg * {
                 fill: ${vars.fontColorDefault};
               }
             `,
-            props.type === 'warning' &&
-              css`
-                border-color: ${vars.borderColorTagWarning};
-                &:hover {
-                  background-color: ${vars.borderColorTagWarningHover};
-                }
-              `,
             props.isDisabled &&
               css`
                 &:hover {
