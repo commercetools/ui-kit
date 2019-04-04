@@ -14,10 +14,9 @@
     "access": "public"
   },
   "main": "dist/ui-kit.cjs.js",
-  "module": "dist/ui-kit.esm.js",
+  "module": "dist/ui-kit.esm",
   "files": [
     "dist",
-    "i18n",
     "materials/custom-properties.css",
     "materials/custom-properties.json",
     "materials/custom-properties.js",

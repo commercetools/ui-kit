@@ -6,7 +6,7 @@ const fs = require('fs');
 // and warn in case it is old.
 const info = (() => {
   try {
-    return fs.statSync('./dist/ui-kit.esm.js');
+    return fs.statSync('./dist/ui-kit.esm/index.js');
   } catch (e) {
     return null;
   }

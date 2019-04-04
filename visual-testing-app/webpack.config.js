@@ -8,7 +8,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // and warn in case it is old.
 const info = (() => {
   try {
-    return fs.statSync('./dist/ui-kit.esm.js');
+    return fs.statSync('./dist/ui-kit.esm/index.js');
   } catch (e) {
     return null;
   }
