@@ -8,7 +8,7 @@ const value = '18';
 export const routePath = '/number-input';
 
 // eslint-disable-next-line react/prop-types
-export const component = ({ darkTheme }) => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <NumberInput value={value} onChange={() => {}} horizontalConstraint="m" />
@@ -62,7 +62,7 @@ export const component = ({ darkTheme }) => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with custom (inverted) theme">
         <NumberInput
           value={value}

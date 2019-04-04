@@ -8,7 +8,7 @@ const value =
 
 export const routePath = '/multiline-text-input';
 
-export const component = ({ darkTheme }) => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <MultilineTextInput
@@ -92,7 +92,7 @@ export const component = ({ darkTheme }) => (
         isDisabled={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with custom (inverted) theme">
         <MultilineTextInput
           value={value}

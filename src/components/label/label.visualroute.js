@@ -5,7 +5,7 @@ import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/label';
 
-export const component = ({ darkTheme }) => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <Label>Hello</Label>
@@ -18,7 +18,7 @@ export const component = ({ darkTheme }) => (
         Hello
       </Label>
     </Spec>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={themes.darkTheme}>
       <Spec label="when inverted">
         <Label tone="inverted">Hello</Label>
       </Spec>

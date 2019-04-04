@@ -11,7 +11,7 @@ const value = {
 
 export const routePath = '/localized-text-input';
 
-export const component = ({ darkTheme }) => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <LocalizedTextInput
@@ -103,7 +103,7 @@ export const component = ({ darkTheme }) => (
         hasError={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with a custom (dark) theme" omitPropsList={true}>
         <LocalizedTextInput
           value={value}

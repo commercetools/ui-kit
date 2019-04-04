@@ -11,8 +11,6 @@ const darkTheme = {
   colorAccent98: 'rgba(0,0,0,0.98)',
 };
 
-console.log('customProperties', customProperties);
-
 const componentsContext = require.context(
   '../../src/components',
   true,
