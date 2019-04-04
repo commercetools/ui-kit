@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { Tag } from 'ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
@@ -11,7 +12,7 @@ quam pharetra, posuere mauris in, pharetra nisi.`;
 
 export const routePath = '/tag';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="Normal">
       <Tag type="normal">Tag</Tag>
@@ -63,10 +64,10 @@ export const component = () => (
         {longText}
       </Tag>
     </Spec>
-    <Spec label="Normal - onRemove (disabled)">
-      <Tag type="normal" onRemove={() => {}} isDisabled={true}>
-        {longText}
-      </Tag>
-    </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with dark theme">
+        <Tag type="normal">Tag</Tag>
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
