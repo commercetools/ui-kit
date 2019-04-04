@@ -8,13 +8,9 @@ const NarrowBox = styled.div`
   width: 200px;
 `;
 
-const darkTheme = {
-  colorSurface: 'black',
-};
-
 export const routePath = '/text';
 
-export const component = () => (
+export const component = ({ darkTheme }) => (
   <Suite>
     <Spec label="Headline - h1">
       <Text.Headline elementType="h1">{'Title H1'}</Text.Headline>
