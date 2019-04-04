@@ -62,15 +62,20 @@ const defaultExternal = deps.concat(peerDeps);
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
 const config = [
-  // {
-  //   input: 'src/index.js',
-  //   external: defaultExternal,
-  //   output: {
-  //     file: pkg.main,
-  //     format: 'cjs',
-  //   },
-  //   plugins: configureRollupPlugins(),
-  // },
+  {
+    input: {
+      index: 'src/index.js',
+      en: 'i18n/en.json',
+      de: 'i18n/de.json',
+      es: 'i18n/es.json',
+    },
+    external: defaultExternal,
+    output: {
+      dir: pkg.main,
+      format: 'cjs',
+    },
+    plugins: configureRollupPlugins(),
+  },
   {
     input: {
       index: 'src/index.js',
