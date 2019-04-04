@@ -10,7 +10,7 @@ const NarrowBox = styled.div`
 
 export const routePath = '/text';
 
-export const component = ({ darkTheme }) => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="Headline - h1">
       <Text.Headline elementType="h1">{'Title H1'}</Text.Headline>
@@ -111,7 +111,7 @@ export const component = ({ darkTheme }) => (
       <Text.Body tone="negative">Body text negative</Text.Body>
     </Spec>
     <NarrowBox>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={themes.darkTheme}>
         <Spec label="Body - tone - inverted">
           <Text.Body tone="inverted">Body text inverted</Text.Body>
         </Spec>
@@ -153,7 +153,7 @@ export const component = ({ darkTheme }) => (
       <Text.Detail tone="negative">Detail text negative</Text.Detail>
     </Spec>
     <NarrowBox>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={themes.darkTheme}>
         <Spec label="Detail - tone - inverted">
           <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
         </Spec>

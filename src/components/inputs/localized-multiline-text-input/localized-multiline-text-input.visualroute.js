@@ -18,7 +18,7 @@ const value = {
 
 export const routePath = '/localized-multiline-text-input';
 
-export const component = ({ darkTheme }) => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <LocalizedMultilineTextInput
@@ -156,7 +156,7 @@ export const component = ({ darkTheme }) => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with custom theme">
         <LocalizedMultilineTextInput
           value={value}

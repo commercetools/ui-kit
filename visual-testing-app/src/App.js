@@ -11,6 +11,8 @@ const darkTheme = {
   colorAccent98: 'rgba(0,0,0,0.98)',
 };
 
+console.log('customProperties', customProperties);
+
 const componentsContext = require.context(
   '../../src/components',
   true,
@@ -55,7 +57,7 @@ class App extends React.Component {
               <Route
                 key={Component.routePath}
                 path={Component.routePath}
-                render={() => <Component.component theme={{ darkTheme }} />}
+                render={() => <Component.component themes={{ darkTheme }} />}
               />
             ))}
             <Route
