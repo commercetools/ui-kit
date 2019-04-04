@@ -55,7 +55,7 @@ class App extends React.Component {
               <Route
                 key={Component.routePath}
                 path={Component.routePath}
-                render={() => <Component.component theme={darkTheme} />}
+                render={() => <Component.component theme={{ darkTheme }} />}
               />
             ))}
             <Route
