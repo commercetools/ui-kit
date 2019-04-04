@@ -19,7 +19,7 @@ export default storyFn => {
   const locale = select('global locale', availableLocales, availableLocales[0]);
   const messages = require(`../../../i18n/data/${locale}.json`);
   return (
-    <IntlProvider locale={locale} messages={messages[locale]}>
+    <IntlProvider locale={locale} messages={messages}>
       {storyFn()}
     </IntlProvider>
   );
