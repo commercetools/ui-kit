@@ -21,7 +21,7 @@ const NumberInput = props => (
       onFocus={props.onFocus}
       disabled={props.isDisabled}
       placeholder={props.placeholder}
-      css={getInputStyles(props)}
+      css={theme => getInputStyles(props, theme)}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
       {...filterDataAttributes(props)}

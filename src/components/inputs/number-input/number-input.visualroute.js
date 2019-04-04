@@ -1,8 +1,17 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { NumberInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = '18';
+
+const darkTheme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorNeutral60: 'rgba(255,255,255,0.60)',
+  colorNeutral: 'rgba(255,255,255,0.60)',
+  colorAccent98: 'rgba(0,0,0,0.98)',
+};
 
 export const routePath = '/number-input';
 
@@ -60,14 +69,14 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec label="with error and warning">
-      <NumberInput
-        value={value}
-        onChange={() => {}}
-        horizontalConstraint="m"
-        hasError={true}
-        hasWarning={true}
-      />
-    </Spec>
+    <ThemeProvider theme={darkTheme}>
+      <Spec label="with custom (inverted) theme" inverted>
+        <NumberInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint="m"
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
