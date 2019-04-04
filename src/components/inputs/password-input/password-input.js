@@ -18,7 +18,7 @@ const PasswordInput = props => (
       disabled={props.isDisabled}
       placeholder={props.placeholder}
       autoComplete={props.autoComplete}
-      css={getInputStyles(props)}
+      css={theme => getInputStyles(props, theme)}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
       {...filterDataAttributes(props)}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { PasswordInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -6,7 +7,7 @@ const value = 'hello world how are you?';
 
 export const routePath = '/password-input';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <PasswordInput
@@ -73,5 +74,14 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with custom (inverted) theme">
+        <PasswordInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint="m"
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
