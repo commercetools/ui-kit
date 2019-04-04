@@ -80,7 +80,7 @@ export class MultilineTextInput extends React.Component {
                 }}
                 disabled={this.props.isDisabled}
                 placeholder={this.props.placeholder}
-                css={getTextareaStyles(this.props)}
+                css={theme => getTextareaStyles(this.props, theme)}
                 readOnly={this.props.isReadOnly}
                 autoFocus={this.props.isAutofocussed}
                 /* ARIA */

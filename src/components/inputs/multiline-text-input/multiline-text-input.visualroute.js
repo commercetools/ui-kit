@@ -1,11 +1,20 @@
 import React from 'react';
 import { MultilineTextInput } from 'ui-kit';
+import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 export const routePath = '/multiline-text-input';
+
+const darkTheme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorNeutral60: 'rgba(255,255,255,0.60)',
+  colorNeutral: 'rgba(255,255,255,0.60)',
+  colorAccent98: 'rgba(0,0,0,0.98)',
+};
 
 export const component = () => (
   <Suite>
@@ -91,5 +100,14 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+    <ThemeProvider theme={darkTheme}>
+      <Spec inverted label="with custom (inverted) theme">
+        <MultilineTextInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint="m"
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
