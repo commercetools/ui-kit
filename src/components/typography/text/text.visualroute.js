@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { ThemeProvider } from 'emotion-theming';
 import { Text } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -9,7 +10,7 @@ const NarrowBox = styled.div`
 
 export const routePath = '/text';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="Headline - h1">
       <Text.Headline elementType="h1">{'Title H1'}</Text.Headline>
@@ -110,9 +111,11 @@ export const component = () => (
       <Text.Body tone="negative">Body text negative</Text.Body>
     </Spec>
     <NarrowBox>
-      <Spec inverted label="Body - tone - inverted">
-        <Text.Body tone="inverted">Body text inverted</Text.Body>
-      </Spec>
+      <ThemeProvider theme={themes.darkTheme}>
+        <Spec label="Body - tone - inverted">
+          <Text.Body tone="inverted">Body text inverted</Text.Body>
+        </Spec>
+      </ThemeProvider>
     </NarrowBox>
     <NarrowBox>
       <Spec label="Body - truncate">
@@ -150,9 +153,11 @@ export const component = () => (
       <Text.Detail tone="negative">Detail text negative</Text.Detail>
     </Spec>
     <NarrowBox>
-      <Spec inverted label="Detail - tone - inverted">
-        <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
-      </Spec>
+      <ThemeProvider theme={themes.darkTheme}>
+        <Spec label="Detail - tone - inverted">
+          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
+        </Spec>
+      </ThemeProvider>
     </NarrowBox>
     <NarrowBox>
       <Spec label="Detail - truncate">

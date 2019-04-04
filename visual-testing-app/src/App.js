@@ -1,5 +1,15 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import customProperties from '../../materials/custom-properties';
+
+const darkTheme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorNeutral60: 'rgba(255,255,255,0.60)',
+  colorNeutral: 'rgba(255,255,255,0.60)',
+  colorAccent98: 'rgba(0,0,0,0.98)',
+};
 
 const componentsContext = require.context(
   '../../src/components',
@@ -22,41 +32,43 @@ const allComponents = componentsContext.keys().reduce((components, file) => {
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            component={() => (
-              <div>
-                <h1>Visual Testing App</h1>
-                <ul>
-                  {Object.values(allComponents).map(Component => (
-                    <li key={Component.routePath}>
-                      <a href={Component.routePath}>{Component.routePath}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          />
-          {Object.values(allComponents).map(Component => (
+      <ThemeProvider theme={customProperties}>
+        <Router>
+          <Switch>
             <Route
-              key={Component.routePath}
-              path={Component.routePath}
-              component={Component.component}
+              path="/"
+              exact
+              component={() => (
+                <div>
+                  <h1>Visual Testing App</h1>
+                  <ul>
+                    {Object.values(allComponents).map(Component => (
+                      <li key={Component.routePath}>
+                        <a href={Component.routePath}>{Component.routePath}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             />
-          ))}
-          <Route
-            component={() => (
-              <div>
-                <p>No route found</p>
-                <a href="/">Show all routes</a>
-              </div>
-            )}
-          />
-        </Switch>
-      </Router>
+            {Object.values(allComponents).map(Component => (
+              <Route
+                key={Component.routePath}
+                path={Component.routePath}
+                render={() => <Component.component themes={{ darkTheme }} />}
+              />
+            ))}
+            <Route
+              component={() => (
+                <div>
+                  <p>No route found</p>
+                  <a href="/">Show all routes</a>
+                </div>
+              )}
+            />
+          </Switch>
+        </Router>
+      </ThemeProvider>
     );
   }
 }

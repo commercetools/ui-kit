@@ -9,17 +9,9 @@ const value = {
   es: 'hola mundo',
 };
 
-const theme = {
-  colorSurface: 'black',
-  colorSolid: 'white',
-  colorNeutral60: 'rgba(0,0,0,0.60)',
-  colorNeutral: 'rgba(0,0,0,0.60)',
-  colorAccent98: 'rgba(0,0,0,0.98)',
-};
-
 export const routePath = '/localized-text-input';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <LocalizedTextInput
@@ -111,15 +103,15 @@ export const component = () => (
         hasError={true}
       />
     </Spec>
-    <Spec label="with a custom (dark) theme" omitPropsList={true}>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with a custom (dark) theme" omitPropsList={true}>
         <LocalizedTextInput
           value={value}
           onChange={() => {}}
           selectedLanguage="en"
           horizontalConstraint="m"
         />
-      </ThemeProvider>
-    </Spec>
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );

@@ -7,14 +7,6 @@ import {
 } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-const darkTheme = {
-  colorSurface: 'black',
-  colorSolid: 'white',
-  colorNeutral60: 'rgba(255,255,255,0.60)',
-  colorNeutral: 'rgba(255,255,255,0.60)',
-  colorAccent98: 'rgba(0,0,0,0.98)',
-};
-
 const lorem =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
@@ -26,7 +18,7 @@ const value = {
 
 export const routePath = '/localized-multiline-text-input';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <LocalizedMultilineTextInput
@@ -164,8 +156,8 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={darkTheme}>
-      <Spec label="with custom theme" inverted>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with custom theme">
         <LocalizedMultilineTextInput
           value={value}
           onChange={() => {}}

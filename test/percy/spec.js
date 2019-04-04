@@ -48,7 +48,7 @@ const PropValue = styled.span`
 `;
 
 const Box = styled.div`
-  background-color: ${props => (props.inverted ? '#111' : '#eee')};
+  background-color: ${props => props.theme.colorSurface};
 `;
 
 const Pill = props => {
@@ -102,14 +102,13 @@ const Spec = props => (
   <SpecContainer>
     <Label>{props.label}</Label>
     {!props.omitPropsList && <Props>{props.children}</Props>}
-    <Box inverted={props.inverted}>{props.children}</Box>
+    <Box>{props.children}</Box>
   </SpecContainer>
 );
 
 Spec.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
-  inverted: PropTypes.bool,
   omitPropsList: PropTypes.bool,
 };
 
