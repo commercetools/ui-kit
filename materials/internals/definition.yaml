@@ -171,6 +171,10 @@ states:
 componentGroups:
   input:
     description: 'Input elements'
+  tag:
+    description: 'Tag elements'
+  tag-warning:
+    description: 'Tag elements with type warning'
 
 decisionGroups:
   backgroundColors:
@@ -220,6 +224,12 @@ decisionGroups:
       background-color-for-input-when-disabled:
         description: ''
         choice: color-accent-98
+      background-color-for-tag:
+        description: ''
+        choice: color-neutral-95
+      background-color-for-tag-warning:
+        description: ''
+        choice: color-warning-95
 
   borderColors:
     label: Border Colors
@@ -287,6 +297,15 @@ decisionGroups:
       border-color-for-input-when-warning:
         description: ''
         choice: color-warning
+      border-color-for-tag:
+        description: ''
+        choice: color-neutral-60
+      border-color-for-tag-warning:
+        description: ''
+        choice: color-warning
+      border-color-for-tag-when-focused:
+        description: ''
+        choice: color-primary
 
   borderRadiuses:
     label: Border Radius
@@ -303,6 +322,9 @@ decisionGroups:
       border-radius-for-input:
         description: ''
         choice: border-radius-6
+      border-radius-for-tag:
+        description: ''
+        choice: border-radius-2
   # We don't have font families in choices yet, so we can't have decisions for
   # them
 
@@ -353,6 +375,12 @@ decisionGroups:
       font-color-for-input-when-warning:
         description: ''
         choice: color-warning
+      font-color-for-tag:
+        description: ''
+        choice: color-solid
+      font-color-for-tag-when-disabled:
+        description: ''
+        choice: color-neutral-60
 
   fontFamily:
     label: Font family

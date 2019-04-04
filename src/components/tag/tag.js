@@ -9,8 +9,8 @@ import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
 
 const getTextDetailColor = isDisabled => {
-  if (isDisabled) return vars.colorGray60;
-  return vars.colorBlack;
+  if (isDisabled) return vars.fontColorForTagWhenDisabled;
+  return vars.fontColorForTag;
 };
 
 const getContentWrapperStyles = props => css`
@@ -18,7 +18,7 @@ const getContentWrapperStyles = props => css`
   box-sizing: border-box;
   align-items: center;
   min-height: ${vars.sizeHeightTag};
-  border-radius: ${vars.borderRadiusTag};
+  border-radius: ${vars.borderRadiusForTag};
   padding: 5px ${vars.spacing8};
   cursor: default;
   font-family: inherit;
@@ -30,8 +30,8 @@ const getContentWrapperStyles = props => css`
   border-style: solid;
   border-width: 1px;
   border-color: ${props.type === 'warning'
-    ? vars.borderColorTagWarning
-    : vars.borderColorTagPristine};
+    ? vars.borderColorForTagWarning
+    : vars.borderColorForTag};
 
   /* fixing things for IE11 ... */
   width: 100%;
@@ -39,8 +39,8 @@ const getContentWrapperStyles = props => css`
 
 const getWrapperBackgroundColor = type =>
   type === 'warning'
-    ? vars.backgroundColorTagWarning
-    : vars.backgroundColorTagPristine;
+    ? vars.backgroundColorForTagWarning
+    : vars.backgroundColorForTag;
 
 const getClickableContentWrapperStyles = ({ type }) =>
   type === 'warning'
@@ -48,7 +48,7 @@ const getClickableContentWrapperStyles = ({ type }) =>
     : [
         css`
           &:hover {
-            border-color: ${vars.borderColorTagFocus};
+            border-color: ${vars.borderColorForTagWhenFocused};
           }
         `,
       ];
@@ -203,24 +203,25 @@ const Tag = props => (
           css={[
             css`
               border-color: ${props.type === 'warning'
-                ? vars.borderColorTagWarning
-                : vars.borderColorTagPristine};
+                ? vars.borderColorForTagWarning
+                : vars.borderColorForTag};
               padding: 0 ${vars.spacing4};
-              border-radius: 0 ${vars.borderRadiusTag} ${vars.borderRadiusTag} 0;
+              border-radius: 0 ${vars.borderRadiusForTag}
+                ${vars.borderRadiusForTag} 0;
               display: flex;
               align-items: center;
               background: inherit;
               border-style: solid;
               border-width: 1px 1px 1px 1px;
               &:hover {
-                border-color: ${vars.borderColorTagWarning};
+                border-color: ${vars.borderColorForTagWarning};
 
                 > svg * {
-                  fill: ${vars.borderColorTagWarning};
+                  fill: ${vars.borderColorForTagWarning};
                 }
               }
               > svg * {
-                fill: ${vars.fontColorDefault};
+                fill: ${vars.fontColorForTag};
               }
             `,
             props.isDisabled &&
@@ -230,7 +231,7 @@ const Tag = props => (
                   box-shadow: none;
                 }
                 > svg * {
-                  fill: ${vars.colorGray60};
+                  fill: ${vars.fontColorForTagWhenDisabled};
                 }
               `,
           ]}
