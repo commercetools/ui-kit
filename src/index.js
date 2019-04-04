@@ -1,6 +1,6 @@
 /* This is the entry point of the public package interface */
 
-import * as i18n from '../i18n';
+export { default as loadIntlMessages } from '../i18n/load-messages';
 
 export {
   default as AccessibleButton,
@@ -133,8 +133,6 @@ export { default as withMouseOverState } from './hocs/with-mouse-over-state';
 export { default as Avatar } from './components/avatar';
 
 export { default as customProperties } from '../materials/custom-properties';
-
-export { i18n };
 
 export {
   default as ContentNotification,

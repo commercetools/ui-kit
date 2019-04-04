@@ -66,8 +66,10 @@ const config = [
     input: 'src/index.js',
     external: defaultExternal,
     output: {
-      file: pkg.main,
       format: 'cjs',
+      dir: 'dist',
+      chunkFileNames: 'ui-kit-[name]-[hash].cjs.js',
+      entryFileNames: 'ui-kit-[name].cjs.js',
     },
     plugins: configureRollupPlugins(),
   },
@@ -75,8 +77,10 @@ const config = [
     input: 'src/index.js',
     external: defaultExternal,
     output: {
-      file: pkg.module,
       format: 'esm',
+      dir: 'dist',
+      chunkFileNames: 'ui-kit-[name]-[hash].esm.js',
+      entryFileNames: 'ui-kit-[name].esm.js',
     },
     plugins: configureRollupPlugins({
       babel: {

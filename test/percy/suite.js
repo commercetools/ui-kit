@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
-import { i18n as messages } from '../../dist/ui-kit.esm';
 
 addLocaleData(en);
 
 const Suite = props => (
-  <IntlProvider locale="en" messages={messages.en}>
+  <IntlProvider locale="en">
     <div>{props.children}</div>
   </IntlProvider>
 );

@@ -4,11 +4,11 @@ const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-// Ensure UI Kit build (ui-kit.esm.js) exists
+// Ensure UI Kit build (ui-kit-index.esm.js) exists
 // and warn in case it is old.
 const info = (() => {
   try {
-    return fs.statSync('./dist/ui-kit.esm.js');
+    return fs.statSync('./dist/ui-kit-index.esm.js');
   } catch (e) {
     return null;
   }
@@ -45,7 +45,7 @@ module.exports = {
           priority: -20,
         },
         'ui-kit': {
-          test: /ui-kit.esm/,
+          test: /ui-kit-index.esm/,
           name: 'ui-kit',
           chunks: 'all',
           priority: -15,
@@ -58,7 +58,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: [/(node_modules)/, /(ui-kit.esm)/],
+        exclude: [/(node_modules)/, /(ui-kit-index.esm)/],
         use: {
           loader: 'babel-loader',
           query: {

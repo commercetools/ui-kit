@@ -13,8 +13,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/ui-kit.cjs.js",
-  "module": "dist/ui-kit.esm.js",
+  "main": "dist/ui-kit-index.cjs.js",
+  "module": "dist/ui-kit-index.esm.js",
   "files": [
     "dist",
     "i18n",
@@ -170,7 +170,7 @@
     "react-dom": "16.8.6",
     "react-intl": "2.8.0",
     "react-router-dom": "5.0.0",
-    "react-testing-library": "6.0.3",
+    "react-testing-library": "6.0.4",
     "react-value": "0.2.0",
     "rimraf": "2.6.3",
     "rollup": "1.7.4",

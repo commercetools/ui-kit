@@ -19,9 +19,10 @@ const nodeGlob = require('glob');
 const { transformAsync } = require('@babel/core');
 const getBabelPreset = require('./get-babel-preset');
 
+const supportedLocales = ['en', 'de', 'es', 'fr-FR', 'zh-CN'];
 const flags = mri(process.argv.slice(2), {
   alias: { help: ['h'] },
-  default: { locale: 'en' },
+  default: { locale: 'en', locales: supportedLocales },
 });
 const commands = flags._;
 
@@ -30,8 +31,9 @@ if (commands.length === 0 || (flags.help && commands.length === 0)) {
   Usage: scripts/extract-intl.js [options] <glob-pattern>..
 
   Options:
-  --output-path         The location where to put the extracted messages
-  --locale=<locale>     (optional) The default locale to use [default "en"]
+  --output-path                       The location where to put the extracted messages
+  --locale=<locale>                   (optional) The default locale to use [default "en"]
+  --locales=<locale1,locale2,...>     (optional) The supported locales to map to [default ${supportedLocales.toString()}]
   `);
   process.exit(0);
 }
@@ -46,8 +48,8 @@ const { presets, plugins } = babelConfig;
 // Resolve the absolute path of the caller location. This is necessary
 // to point to files within that folder.
 const rootPath = process.cwd();
-const locales = ['en', 'de', 'es'];
 const defaultLocale = flags.locale;
+const locales = flags.locales;
 const outputPath = flags['output-path'];
 const globFilesToParse = commands[0];
 

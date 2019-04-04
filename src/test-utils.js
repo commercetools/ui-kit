@@ -6,11 +6,23 @@ import { createMemoryHistory } from 'history';
 import en from 'react-intl/locale-data/en';
 import de from 'react-intl/locale-data/de';
 import es from 'react-intl/locale-data/es';
-import messages from '../i18n/core.json';
+import frFR from 'react-intl/locale-data/fr';
+import zhCN from 'react-intl/locale-data/zh';
+import messagesEn from '../i18n/data/en.json';
+import messagesDe from '../i18n/data/de.json';
+import messagesEs from '../i18n/data/es.json';
 
 addLocaleData(en);
 addLocaleData(de);
 addLocaleData(es);
+addLocaleData(frFR);
+addLocaleData(zhCN);
+
+const messages = {
+  en: messagesEn,
+  de: messagesDe,
+  es: messagesEs,
+};
 
 const customRender = (
   node,
@@ -22,9 +34,11 @@ const customRender = (
   } = {}
 ) => ({
   ...render(
-    <IntlProvider locale={locale} messages={messages}>
-      <Router history={history}>{node}</Router>
-    </IntlProvider>,
+    <Router history={history}>
+      <IntlProvider locale={locale} messages={messages[locale]}>
+        {node}
+      </IntlProvider>
+    </Router>,
     rtlOptions
   ),
   // adding `history` to the returned utilities to allow us
