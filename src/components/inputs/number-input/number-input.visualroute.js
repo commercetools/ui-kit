@@ -63,7 +63,7 @@ export const component = ({ darkTheme }) => (
       />
     </Spec>
     <ThemeProvider theme={darkTheme}>
-      <Spec label="with custom (inverted) theme" inverted>
+      <Spec label="with custom (inverted) theme">
         <NumberInput
           value={value}
           onChange={() => {}}
