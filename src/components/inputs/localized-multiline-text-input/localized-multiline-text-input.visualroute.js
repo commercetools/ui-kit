@@ -1,10 +1,19 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import {
   LocalizedMultilineTextInput,
   ErrorMessage,
   WarningMessage,
 } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
+
+const darkTheme = {
+  colorSurface: 'black',
+  colorSolid: 'white',
+  colorNeutral60: 'rgba(255,255,255,0.60)',
+  colorNeutral: 'rgba(255,255,255,0.60)',
+  colorAccent98: 'rgba(0,0,0,0.98)',
+};
 
 const lorem =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
@@ -155,5 +164,14 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <ThemeProvider theme={darkTheme}>
+      <Spec label="with custom theme" inverted>
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
