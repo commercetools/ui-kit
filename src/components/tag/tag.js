@@ -26,6 +26,7 @@ const getContentWrapperStyles = (props, theme) => {
   };
 
   return css`
+    position: relative;
     display: flex;
     box-sizing: border-box;
     align-items: center;
@@ -93,6 +94,16 @@ export const TagLinkBody = props => {
           isRemoveable &&
           css`
             padding-right: ${vars.spacing8};
+            &:hover {
+              &:after {
+                position: absolute;
+                right: -1px;
+                content: '';
+                background-color: ${vars.borderColorForTagWhenFocused};
+                width: 1px;
+                height: 100%;
+              }
+            }
           `,
         !props.isDisabled &&
           getClickableContentWrapperStyles({
@@ -168,6 +179,14 @@ export const TagNormalBody = props => (
         css`
           &:hover {
             box-shadow: ${vars.shadowBoxTagHover};
+            &:after {
+              position: absolute;
+              right: -1px;
+              content: '';
+              background-color: ${vars.borderColorForTagWhenFocused};
+              width: 1px;
+              height: 100%;
+            }
           }
         `,
     ]}
@@ -247,7 +266,8 @@ const Tag = props => (
                 background: inherit;
                 border-style: solid;
                 border-width: 1px 1px 1px 1px;
-                &:hover {
+                &:hover,
+                &:focus {
                   border-color: ${overwrittenVars[
                     designTokens.borderColorForTagWarning
                   ]};
@@ -264,10 +284,6 @@ const Tag = props => (
               `,
               props.isDisabled &&
                 css`
-                  &:hover {
-                    background: inherit;
-                    box-shadow: none;
-                  }
                   > svg * {
                     fill: ${overwrittenVars[
                       designTokens.fontColorForTagWhenDisabled
