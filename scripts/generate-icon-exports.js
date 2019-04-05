@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const shelljs = require('shelljs');
 const camelCase = require('lodash/camelCase');
 const upperFirst = require('lodash/upperFirst');
 const { stripIndents } = require('common-tags');
@@ -8,8 +9,16 @@ const prettier = require('prettier');
 const rcfile = require('rcfile');
 
 const importPath = path.join(__dirname, '../src/components/icons/svg/*.svg');
-const exportPath = path.join(__dirname, '../src/components/icons/index.js');
+const mainExportPath = path.join(__dirname, '../src/components/icons/index.js');
+const componentsExportPath = path.join(
+  __dirname,
+  '../src/components/icons/generated'
+);
 const iconFileExt = '.react.svg';
+
+// Clean up icons
+shelljs.rm('-rf', componentsExportPath);
+shelljs.mkdir('-p', componentsExportPath);
 
 glob(importPath, (err, files) => {
   const importStatements = files.reduce((importsString, fileName) => {
@@ -45,5 +54,23 @@ glob(importPath, (err, files) => {
   `;
   const prettierConfig = rcfile('prettier');
 
-  fs.writeFileSync(exportPath, prettier.format(iconsFile, prettierConfig));
+  fs.writeFileSync(mainExportPath, prettier.format(iconsFile, prettierConfig));
+
+  // Additionally, generate one file for each icon
+  files.forEach(fileName => {
+    const svgBaseName = path.basename(fileName);
+    const iconBaseName = path.basename(fileName, iconFileExt);
+    const componentName = upperFirst(camelCase(iconBaseName));
+    const displayName = `${componentName}Icon`;
+    const data = `
+    import Orig${componentName}Icon from '../svg/${svgBaseName}';
+    import createStyledIcon from '../create-styled-icon';
+
+    export default createStyledIcon(Orig${displayName}, '${displayName}');
+    `;
+    fs.writeFileSync(
+      path.join(componentsExportPath, `${iconBaseName}-icon.js`),
+      prettier.format(data, prettierConfig)
+    );
+  });
 });

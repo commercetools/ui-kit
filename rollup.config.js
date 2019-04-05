@@ -1,3 +1,7 @@
+import path from 'path';
+import glob from 'glob';
+import camelCase from 'lodash/camelCase';
+import upperFirst from 'lodash/upperFirst';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
@@ -8,6 +12,33 @@ import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 
 const getBabelPreset = require('./scripts/get-babel-preset');
+
+const componentsFilePaths = glob.sync('src/components/**/index.js', {
+  ignore: [
+    '**/internals/**',
+    '**/icons/**',
+    '**/table/*/index.js',
+    '**/spacings/*/index.js',
+  ],
+});
+const iconsFilePaths = glob.sync('src/components/icons/generated/*');
+const hocsFilePaths = glob.sync('src/hocs/**/index.js');
+const entryPoints = {
+  index: 'src/index.js',
+  customProperties: 'materials/custom-properties.js',
+  ...componentsFilePaths.reduce((acc, filePath) => {
+    const componentName = path.basename(filePath.replace('index.js', ''));
+    return { ...acc, [upperFirst(camelCase(componentName))]: filePath };
+  }, {}),
+  ...iconsFilePaths.reduce((acc, filePath) => {
+    const componentName = path.basename(filePath, '.js');
+    return { ...acc, [upperFirst(camelCase(componentName))]: filePath };
+  }, {}),
+  ...hocsFilePaths.reduce((acc, filePath) => {
+    const componentName = path.basename(filePath.replace('index.js', ''));
+    return { ...acc, [upperFirst(camelCase(componentName))]: filePath };
+  }, {}),
+};
 
 const babelOptions = getBabelPreset();
 
@@ -63,19 +94,19 @@ const defaultExternal = deps.concat(peerDeps);
 // further customized.
 const config = [
   {
-    input: 'src/index.js',
+    input: entryPoints,
     external: defaultExternal,
     output: {
-      file: pkg.main,
+      dir: 'dist/cjs',
       format: 'cjs',
     },
     plugins: configureRollupPlugins(),
   },
   {
-    input: 'src/index.js',
+    input: entryPoints,
     external: defaultExternal,
     output: {
-      file: pkg.module,
+      dir: 'dist/esm',
       format: 'esm',
     },
     plugins: configureRollupPlugins({
