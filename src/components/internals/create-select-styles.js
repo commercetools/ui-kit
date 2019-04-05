@@ -51,7 +51,7 @@ const controlStyles = props => (base, state) => ({
 
 const menuStyles = props => base => ({
   ...base,
-  border: `1px ${vars.borderColorForInput} solid`,
+  border: `1px ${vars.borderColorForInputWhenFocused} solid`,
   borderRadius: vars.borderRadiusForInput,
   backgroundColor: vars.backgroundColorForInput,
   boxShadow: vars.shadow7,
