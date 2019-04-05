@@ -58,15 +58,27 @@ export const FlatButton = props => {
           padding: 0;
           min-height: initial;
           p {
-            color: ${props.isDisabled
-              ? vars.colorGray
-              : getTextColor(props.tone)};
+            color: ${
+              props.isDisabled ? vars.colorGray : getTextColor(props.tone)
+            };
           }
-          &:hover {
+          &:hover,
+          &:focus {
             p {
-              color: ${props.isDisabled
-                ? vars.colorGray
-                : getTextColor(props.tone, true)};
+              color: ${
+                props.isDisabled
+                  ? vars.colorGray
+                  : getTextColor(props.tone, true)
+              };
+            }
+
+            svg * {
+                fill: ${
+                  props.isDisabled
+                    ? vars.colorGray
+                    : getTextColor(props.tone, true)
+                };
+              }
             }
           }
         `}
