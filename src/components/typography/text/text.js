@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import requiredIf from 'react-required-if';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   bodyStyles,
@@ -8,6 +10,12 @@ import {
   subheadlineStyles,
   wrapStyles,
 } from './text.styles';
+
+const intlMessageShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  defaultMessage: PropTypes.string.isRequired,
+});
 
 const nonEmptyString = (props, propName, componentName) => {
   const value = props[propName];
@@ -26,7 +34,11 @@ const Headline = props => {
       title={props.title}
       {...filterDataAttributes(props)}
     >
-      {props.children}
+      {props.intlMessage ? (
+        <FormattedMessage {...props.intlMessage} />
+      ) : (
+        props.children
+      )}
     </HeadlineElement>
   );
 };
@@ -34,9 +46,10 @@ const Headline = props => {
 Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   elementType: PropTypes.oneOf(['h1', 'h2', 'h3']).isRequired,
-  children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
 const Subheadline = props => {
@@ -47,7 +60,11 @@ const Subheadline = props => {
       css={subheadlineStyles(props)}
       {...filterDataAttributes(props)}
     >
-      {props.children}
+      {props.intlMessage ? (
+        <FormattedMessage {...props.intlMessage} />
+      ) : (
+        props.children
+      )}
     </SubheadlineElement>
   );
 };
@@ -63,21 +80,27 @@ Subheadline.propTypes = {
     'positive',
     'negative',
   ]),
-  children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
 const Wrap = props => (
   <div css={wrapStyles()} title={props.title} {...filterDataAttributes(props)}>
-    {props.children}
+    {props.intlMessage ? (
+      <FormattedMessage {...props.intlMessage} />
+    ) : (
+      props.children
+    )}
   </div>
 );
 
 Wrap.displayName = 'TextWrap';
 Wrap.propTypes = {
-  children: PropTypes.node.isRequired,
   title: nonEmptyString,
+  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
 const Body = props =>
@@ -87,7 +110,11 @@ const Body = props =>
       title={props.title}
       {...filterDataAttributes(props)}
     >
-      {props.children}
+      {props.intlMessage ? (
+        <FormattedMessage {...props.intlMessage} />
+      ) : (
+        props.children
+      )}
     </span>
   ) : (
     <p
@@ -95,7 +122,11 @@ const Body = props =>
       title={props.title}
       {...filterDataAttributes(props)}
     >
-      {props.children}
+      {props.intlMessage ? (
+        <FormattedMessage {...props.intlMessage} />
+      ) : (
+        props.children
+      )}
     </p>
   );
 
@@ -112,9 +143,10 @@ Body.propTypes = {
     'negative',
     'inverted',
   ]),
-  children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
 const Detail = props => (
@@ -124,7 +156,11 @@ const Detail = props => (
     {...filterDataAttributes(props)}
     className={props.className}
   >
-    {props.children}
+    {props.intlMessage ? (
+      <FormattedMessage {...props.intlMessage} />
+    ) : (
+      props.children
+    )}
   </small>
 );
 
@@ -143,9 +179,10 @@ Detail.propTypes = {
     'inverted',
   ]),
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
   title: nonEmptyString,
   truncate: PropTypes.bool,
+  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
 export default {

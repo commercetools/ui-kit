@@ -20,12 +20,15 @@ Wraps the given text in the given HTML header `size`.
 
 #### Properties
 
-| Props         | Type             | Required | Values               | Default | Description                                                    |
-| ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------- |
-| `elementType` | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                              |
-| `children`    | `PropTypes.node` |    ✅    | -                    | -       | -                                                              |
-| `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element            |
-| `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width |
+| Props         | Type             | Required | Values               | Default | Description                                                          |
+| ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------------- |
+| `elementType` | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                                    |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                    | -       | -                                                                    |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                    | -       | An intl message object that will be rendered with `FormattedMessage` |
+| `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element                  |
+| `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width       |
+
+> `*`: `children` is required only if `intlMessage` is not provided
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -50,9 +53,12 @@ Wraps the given text in the given HTML header `size`.
 | `elementType` | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |
 | `isBold`      | `Boolean`        |    -     | -                                                                 | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative']` | -       |
-| `children`    | `PropTypes.node` |    ✅    | -                                                                 | -       |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                 | -       |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                 | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `title`       | `String`         |    -     | -                                                                 | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
+
+> `*`: `children` is required only if `intlMessage` is not provided
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -86,15 +92,18 @@ Wraps the given text in a `<p>` element, for normal content.
 
 #### Properties
 
-| Props      | Type             | Required | Values                                                                        | Default |
-| ---------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
-| `isBold`   | `Boolean`        |    -     | -                                                                             | `false` |
-| `isItalic` | `Boolean`        |    -     | -                                                                             | `false` |
-| `tone`     | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'inverted']` | -       |
-| `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
-| `title`    | `String`         |    -     | -                                                                             | -       |
-| `truncate` | `Bool`           |    -     | -                                                                             | `false` |
-| `isInline` | `Bool`           |    -     | -                                                                             | `false` |
+| Props         | Type             | Required | Values                                                                        | Default |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
+| `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
+| `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
+| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'inverted']` | -       |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An intl message object that will be rendered with `FormattedMessage` |
+| `title`       | `String`         |    -     | -                                                                             | -       |
+| `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
+| `isInline`    | `Bool`           |    -     | -                                                                             | `false` |
+
+> `*`: `children` is required only if `intlMessage` is not provided
 
 The component further forwards all `data-` attributes to the underlying component.
 
@@ -116,15 +125,18 @@ properly style the text.
 
 #### Properties
 
-| Props      | Type             | Required | Values                                                                        | Default |
-| ---------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
-| `isBold`   | `Boolean`        |    -     | -                                                                             | `false` |
-| `isItalic` | `Boolean`        |    -     | -                                                                             | `false` |
-| `tone`     | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |
-| `children` | `PropTypes.node` |    ✅    | -                                                                             | -       |
-| `title`    | `String`         |    -     | -                                                                             | -       |
-| `truncate` | `Bool`           |    -     | -                                                                             | `false` |
-| `isInline` | `Bool`           |    -     | -                                                                             | `false` |
+| Props         | Type             | Required | Values                                                                        | Default |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
+| `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
+| `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
+| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An intl message object that will be rendered with `FormattedMessage` |
+| `title`       | `String`         |    -     | -                                                                             | -       |
+| `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
+| `isInline`    | `Bool`           |    -     | -                                                                             | `false` |
+
+> `*`: `children` is required only if `intlMessage` is not provided
 
 The component further forwards all `data-` attributes to the underlying component.
 
