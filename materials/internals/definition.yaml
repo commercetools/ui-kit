@@ -136,6 +136,11 @@ choiceGroups:
       spacing-16: 16px
       spacing-24: 24px
       spacing-32: 32px
+      spacing-xs: 4px
+      spacing-s: 8px
+      spacing-m: 16px
+      spacing-l: 24px
+      spacing-xl: 32px
   transitions:
     label: Transitions
     prefix: transition
