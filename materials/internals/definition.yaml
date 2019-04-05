@@ -172,7 +172,8 @@ states:
     description: 'When the element has slightly wrong input'
   error:
     description: 'When the element has invalid input'
-
+  selected:
+    description: 'When the element is selected'
 componentGroups:
   input:
     description: 'Input elements'
@@ -226,9 +227,15 @@ decisionGroups:
         description: ''
         deprecated: false
         choice: color-surface
+      background-color-for-input-when-selected:
+        description: ''
+        choice: color-accent-95
       background-color-for-input-when-disabled:
         description: ''
         choice: color-accent-98
+      background-color-for-input-when-hovered:
+        description: ''
+        choice: color-neutral-90
       background-color-for-tag:
         description: ''
         choice: color-neutral-95
