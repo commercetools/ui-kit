@@ -180,7 +180,7 @@
     "rollup-plugin-json": "4.0.0",
     "rollup-plugin-node-resolve": "4.0.1",
     "rollup-plugin-replace": "2.1.1",
-    "serve": "10.1.2",
+    "serve": "11.0.0",
     "shelljs": "0.8.3",
     "storybook-readme": "5.0.1",
     "webpack": "4.29.6",

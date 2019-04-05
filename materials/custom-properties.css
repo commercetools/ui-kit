@@ -109,6 +109,12 @@
   --background-color-tag-warning-hover: #f16d0e;
   --background-color-for-input: #fff;
   --background-color-for-input-when-disabled: hsl(195, 35.2941176471%, 98%);
+  --background-color-for-tag: hsl(0, 0%, 95%);
+  --background-color-for-tag-warning: hsl(
+    25.110132158590307,
+    89.0196078431%,
+    95%
+  );
   --border-color-input-pristine: hsl(0, 0%, 60%);
   --border-color-input-focus: #00b39e;
   --border-color-input-disabled: #ccc;
@@ -126,9 +132,13 @@
   --border-color-for-input-when-readonly: #ccc;
   --border-color-for-input-when-error: #e60050;
   --border-color-for-input-when-warning: #f16d0e;
+  --border-color-for-tag: hsl(0, 0%, 60%);
+  --border-color-for-tag-warning: #f16d0e;
+  --border-color-for-tag-when-focused: #00b39e;
   --border-radius-input: 6px;
   --border-radius-tag: 2px;
   --border-radius-for-input: 6px;
+  --border-radius-for-tag: 2px;
   --font-color-default: #1a1a1a;
   --font-color-disabled: hsl(0, 0%, 60%);
   --font-color-error: #e60050;
@@ -141,6 +151,8 @@
   --font-color-for-input-when-error: #e60050;
   --font-color-for-input-when-readonly: hsl(0, 0%, 60%);
   --font-color-for-input-when-warning: #f16d0e;
+  --font-color-for-tag: #1a1a1a;
+  --font-color-for-tag-when-disabled: hsl(0, 0%, 60%);
   --font-family: 'Open Sans', sans-serif;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
   --font-size-for-input: 1rem;

@@ -3,62 +3,88 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
+import designTokens from '../../../materials/design-tokens';
 import Constraints from '../constraints';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
 
-const getTextDetailColor = isDisabled => {
-  if (isDisabled) return vars.colorGray60;
-  return vars.colorBlack;
+const getTextDetailColor = (isDisabled, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+  if (isDisabled)
+    return overwrittenVars[designTokens.fontColorForTagWhenDisabled];
+  return overwrittenVars[designTokens.fontColorForTag];
 };
 
-const getContentWrapperStyles = props => css`
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  min-height: ${vars.sizeHeightTag};
-  border-radius: ${vars.borderRadiusTag};
-  padding: 5px ${vars.spacing8};
-  cursor: default;
-  font-family: inherit;
-  white-space: normal;
-  text-align: left;
-  min-width: 0;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  border-style: solid;
-  border-width: 1px;
-  border-color: ${props.type === 'warning'
-    ? vars.borderColorTagWarning
-    : vars.borderColorTagPristine};
+const getContentWrapperStyles = (props, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
 
-  /* fixing things for IE11 ... */
-  width: 100%;
-`;
+  return css`
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    min-height: ${vars.sizeHeightTag};
+    border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
+    padding: 5px ${vars.spacing8};
+    cursor: default;
+    font-family: inherit;
+    white-space: normal;
+    text-align: left;
+    min-width: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: ${props.type === 'warning'
+      ? overwrittenVars[designTokens.borderColorForTagWarning]
+      : overwrittenVars[designTokens.borderColorForTag]};
 
-const getWrapperBackgroundColor = type =>
-  type === 'warning'
-    ? vars.backgroundColorTagWarning
-    : vars.backgroundColorTagPristine;
+    /* fixing things for IE11 ... */
+    width: 100%;
+  `;
+};
 
-const getClickableContentWrapperStyles = ({ type }) =>
-  type === 'warning'
+const getWrapperBackgroundColor = (type, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return type === 'warning'
+    ? overwrittenVars[designTokens.backgroundColorForTagWarning]
+    : overwrittenVars[designTokens.backgroundColorForTag];
+};
+const getClickableContentWrapperStyles = ({ type, theme }) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return type === 'warning'
     ? []
     : [
         css`
           &:hover {
-            border-color: ${vars.borderColorTagFocus};
+            border-color: ${overwrittenVars[
+              designTokens.borderColorForTagWhenFocused
+            ]};
           }
         `,
       ];
+};
 
 export const TagLinkBody = props => {
   const isRemoveable = Boolean(props.onRemove);
   return (
     <div
-      css={[
-        getContentWrapperStyles(props),
+      css={theme => [
+        getContentWrapperStyles(props, theme),
         !props.isDisabled &&
           css`
             cursor: pointer;
@@ -71,6 +97,7 @@ export const TagLinkBody = props => {
         !props.isDisabled &&
           getClickableContentWrapperStyles({
             type: props.type,
+            theme,
           }),
         isRemoveable &&
           css`
@@ -89,8 +116,8 @@ export const TagLinkBody = props => {
           `}
         >
           <Text.Detail
-            css={css`
-              color: ${getTextDetailColor(props.isDisabled)};
+            css={theme => css`
+              color: ${getTextDetailColor(props.isDisabled, theme)};
             `}
           >
             {props.children}
@@ -98,8 +125,8 @@ export const TagLinkBody = props => {
         </Link>
       ) : (
         <Text.Detail
-          css={css`
-            color: ${getTextDetailColor(props.isDisabled)};
+          css={theme => css`
+            color: ${getTextDetailColor(props.isDisabled, theme)};
           `}
         >
           {props.children}
@@ -121,8 +148,8 @@ TagLinkBody.propTypes = {
 
 export const TagNormalBody = props => (
   <div
-    css={[
-      getContentWrapperStyles(props),
+    css={theme => [
+      getContentWrapperStyles(props, theme),
       Boolean(props.onRemove) &&
         css`
           padding-right: ${vars.spacing8};
@@ -134,7 +161,7 @@ export const TagNormalBody = props => (
         Boolean(props.onClick) &&
         getClickableContentWrapperStyles({
           type: props.type,
-          isRemoveable: Boolean(props.onRemove),
+          theme,
         }),
       !props.isDisabled &&
         Boolean(props.onClick) &&
@@ -147,8 +174,8 @@ export const TagNormalBody = props => (
     onClick={props.isDisabled ? undefined : props.onClick}
   >
     <Text.Detail
-      css={css`
-        color: ${getTextDetailColor(props.isDisabled)};
+      css={theme => css`
+        color: ${getTextDetailColor(props.isDisabled, theme)};
       `}
     >
       {props.children}
@@ -167,11 +194,11 @@ TagNormalBody.propTypes = {
 const Tag = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <div
-      css={[
+      css={theme => [
         css`
           min-width: 0;
           display: flex;
-          background-color: ${getWrapperBackgroundColor(props.type)};
+          background-color: ${getWrapperBackgroundColor(props.type, theme)};
         `,
       ]}
     >
@@ -200,40 +227,55 @@ const Tag = props => (
           label="Remove"
           isDisabled={props.isDisabled}
           onClick={props.isDisabled ? undefined : props.onRemove}
-          css={[
-            css`
-              border-color: ${props.type === 'warning'
-                ? vars.borderColorTagWarning
-                : vars.borderColorTagPristine};
-              padding: 0 ${vars.spacing4};
-              border-radius: 0 ${vars.borderRadiusTag} ${vars.borderRadiusTag} 0;
-              display: flex;
-              align-items: center;
-              background: inherit;
-              border-style: solid;
-              border-width: 1px 1px 1px 1px;
-              &:hover {
-                border-color: ${vars.borderColorTagWarning};
+          css={theme => {
+            const overwrittenVars = {
+              ...vars,
+              ...theme,
+            };
 
-                > svg * {
-                  fill: ${vars.borderColorTagWarning};
-                }
-              }
-              > svg * {
-                fill: ${vars.fontColorDefault};
-              }
-            `,
-            props.isDisabled &&
+            return [
               css`
+                border-color: ${props.type === 'warning'
+                  ? overwrittenVars[designTokens.borderColorForTagWarning]
+                  : overwrittenVars[designTokens.borderColorForTag]};
+                padding: 0 ${vars.spacing4};
+                border-radius: 0
+                  ${overwrittenVars[designTokens.borderRadiusForTag]}
+                  ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
+                display: flex;
+                align-items: center;
+                background: inherit;
+                border-style: solid;
+                border-width: 1px 1px 1px 1px;
                 &:hover {
-                  background: inherit;
-                  box-shadow: none;
+                  border-color: ${overwrittenVars[
+                    designTokens.borderColorForTagWarning
+                  ]};
+
+                  > svg * {
+                    fill: ${overwrittenVars[
+                      designTokens.borderColorForTagWarning
+                    ]};
+                  }
                 }
                 > svg * {
-                  fill: ${vars.colorGray60};
+                  fill: ${overwrittenVars[designTokens.fontColorForTag]};
                 }
               `,
-          ]}
+              props.isDisabled &&
+                css`
+                  &:hover {
+                    background: inherit;
+                    box-shadow: none;
+                  }
+                  > svg * {
+                    fill: ${overwrittenVars[
+                      designTokens.fontColorForTagWhenDisabled
+                    ]};
+                  }
+                `,
+            ];
+          }}
         >
           <CloseBoldIcon size="medium" />
         </AccessibleButton>
