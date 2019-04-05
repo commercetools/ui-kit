@@ -1,7 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { PrimaryButton, Tooltip } from 'ui-kit';
+import PrimaryButton from '@commercetools-frontend/ui-kit/dist/esm/PrimaryButton';
+import Tooltip from '@commercetools-frontend/ui-kit/dist/esm/Tooltip';
 import { Suite, Spec } from '../../../test/percy';
 
 const title = 'What kind of bear is best';

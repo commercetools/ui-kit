@@ -1,10 +1,8 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
-import {
-  LocalizedMultilineTextInput,
-  ErrorMessage,
-  WarningMessage,
-} from 'ui-kit';
+import LocalizedMultilineTextInput from '@commercetools-frontend/ui-kit/dist/esm/LocalizedMultilineTextInput';
+import ErrorMessage from '@commercetools-frontend/ui-kit/dist/esm/ErrorMessage';
+import WarningMessage from '@commercetools-frontend/ui-kit/dist/esm/WarningMessage';
 import { Suite, Spec } from '../../../../test/percy';
 
 const lorem =

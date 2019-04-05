@@ -1,5 +1,5 @@
 import React from 'react';
-import { MoneyField } from 'ui-kit';
+import MoneyField from '@commercetools-frontend/ui-kit/dist/esm/MoneyField';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { RadioField, RadioInput } from 'ui-kit';
+import RadioField from '@commercetools-frontend/ui-kit/dist/esm/RadioField';
+import RadioInput from '@commercetools-frontend/ui-kit/dist/esm/RadioInput';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = 'apple';

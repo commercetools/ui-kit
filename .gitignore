@@ -5,7 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 **/.DS_Store
-dist
+
 # Runtime data
 pids
 *.pid
@@ -81,9 +81,13 @@ typings/
 .vscode
 !.vscode/settings.json
 
-
 # File used to fail tests on CI
 fail-tests-because-there-was-an-unhandled-rejection.lock
 
 # percy.io
 .percy-debug
+
+# artifacts
+dist
+**/icons/generated
+visual-testing-app/src/routes.js

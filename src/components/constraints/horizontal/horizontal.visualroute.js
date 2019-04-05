@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Constraints } from 'ui-kit';
+import Constraints from '@commercetools-frontend/ui-kit/dist/esm/Constraints';
 import { Suite, Spec } from '../../../../test/percy';
 
 const GreenBox = styled.div`

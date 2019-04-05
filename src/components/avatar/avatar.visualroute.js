@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar } from 'ui-kit';
+import Avatar from '@commercetools-frontend/ui-kit/dist/esm/Avatar';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/avatar';

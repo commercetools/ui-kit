@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { customProperties } from '../../dist/ui-kit.esm';
+import customProperties from '@commercetools-frontend/ui-kit/dist/esm/customProperties';
 
 const SpecContainer = styled.div`
   display: flex;

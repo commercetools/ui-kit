@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateRangeField } from 'ui-kit';
+import DateRangeField from '@commercetools-frontend/ui-kit/dist/esm/DateRangeField';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = ['2018-09-20', '2018-09-24'];

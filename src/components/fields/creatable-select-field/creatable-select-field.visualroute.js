@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreatableSelectField } from 'ui-kit';
+import CreatableSelectField from '@commercetools-frontend/ui-kit/dist/esm/CreatableSelectField';
 import { Suite, Spec } from '../../../../test/percy';
 
 const options = [

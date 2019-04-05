@@ -57,8 +57,10 @@
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "release:next": "yarn publish --tag next",
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
-    "visual-testing-app:build": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
-    "visual-testing-app:build:watch": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js --watch",
+    "previsual-testing-app:start": "node scripts/setup-vrt-environment.js",
+    "previsual-testing-app:build": "node scripts/setup-vrt-environment.js",
+    "visual-testing-app:start": "parcel visual-testing-app/index.html -d visual-testing-app/dist --port 3001 --no-autoinstall",
+    "visual-testing-app:build": "parcel build visual-testing-app/index.html -d visual-testing-app/dist",
     "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001"
   },
   "dependencies": {
@@ -162,6 +164,7 @@
     "moment-timezone": "0.5.23",
     "mri": "1.1.4",
     "omit-empty": "1.0.0",
+    "parcel-bundler": "1.12.3",
     "pptr-testing-library": "0.3.1",
     "prettier": "1.16.4",
     "puppeteer": "1.14.0",

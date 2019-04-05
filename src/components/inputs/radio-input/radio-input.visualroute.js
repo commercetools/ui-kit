@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { RadioInput } from 'ui-kit';
+import RadioInput from '@commercetools-frontend/ui-kit/dist/esm/RadioInput';
 import { Suite, Spec } from '../../../../test/percy';
 
 const GreenBox = styled.div`

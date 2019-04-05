@@ -1,5 +1,5 @@
 import React from 'react';
-import { MoneyInput } from 'ui-kit';
+import MoneyInput from '@commercetools-frontend/ui-kit/dist/esm/MoneyInput';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = {

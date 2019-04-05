@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label } from 'ui-kit';
+import Label from '@commercetools-frontend/ui-kit/dist/esm/Label';
 import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../test/percy';
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import {
-  PrimaryActionDropdown,
-  PrimaryActionDropdownOption,
-  PlusBoldIcon,
-} from 'ui-kit';
+import PrimaryActionDropdown, {
+  Option as PrimaryActionDropdownOption,
+} from '@commercetools-frontend/ui-kit/dist/esm/PrimaryActionDropdown';
+import PlusBoldIcon from '@commercetools-frontend/ui-kit/dist/esm/PlusBoldIcon';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/primary-action-dropdown';

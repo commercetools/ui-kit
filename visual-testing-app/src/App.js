@@ -1,7 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import customProperties from '../../materials/custom-properties';
+import customProperties from '@commercetools-frontend/ui-kit/dist/esm/customProperties';
+// eslint-disable-next-line import/no-unresolved
+import * as routes from './routes';
 
 const darkTheme = {
   colorSurface: 'black',
@@ -10,24 +12,6 @@ const darkTheme = {
   colorNeutral: 'rgba(255,255,255,0.60)',
   colorAccent98: 'rgba(0,0,0,0.98)',
 };
-
-const componentsContext = require.context(
-  '../../src/components',
-  true,
-  /\.visualroute\.js$/
-);
-const allComponents = componentsContext.keys().reduce((components, file) => {
-  const Comp = componentsContext(file);
-  // trim leading slash
-  const label = Comp.routePath.substring(1);
-  if (components[label]) {
-    // eslint-disable-next-line no-console
-    console.error(`Duplicate route generated for: /${label}`);
-  }
-  // eslint-disable-next-line no-param-reassign
-  components[label] = Comp;
-  return components;
-}, {});
 
 class App extends React.Component {
   render() {
@@ -42,22 +26,24 @@ class App extends React.Component {
                 <div>
                   <h1>Visual Testing App</h1>
                   <ul>
-                    {Object.values(allComponents).map(Component => (
-                      <li key={Component.routePath}>
-                        <a href={Component.routePath}>{Component.routePath}</a>
+                    {Object.values(routes).map(({ routePath }) => (
+                      <li key={routePath}>
+                        <a href={routePath}>{routePath}</a>
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
             />
-            {Object.values(allComponents).map(Component => (
-              <Route
-                key={Component.routePath}
-                path={Component.routePath}
-                render={() => <Component.component themes={{ darkTheme }} />}
-              />
-            ))}
+            {Object.values(routes).map(
+              ({ routePath, component: Component }) => (
+                <Route
+                  key={routePath}
+                  path={routePath}
+                  render={() => <Component themes={{ darkTheme }} />}
+                />
+              )
+            )}
             <Route
               component={() => (
                 <div>

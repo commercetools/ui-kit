@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stamp } from 'ui-kit';
+import Stamp from '@commercetools-frontend/ui-kit/dist/esm/Stamp';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/stamp';

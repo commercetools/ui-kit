@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Grid, customProperties } from 'ui-kit';
+import Grid from '@commercetools-frontend/ui-kit/dist/esm/Grid';
+import customProperties from '@commercetools-frontend/ui-kit/dist/esm/customProperties';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/grid';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from 'ui-kit';
+import Tag from '@commercetools-frontend/ui-kit/dist/esm/Tag';
 import { Suite, Spec } from '../../../test/percy';
 
 const longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et

@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlatButton, InformationIcon } from 'ui-kit';
+import FlatButton from '@commercetools-frontend/ui-kit/dist/esm/FlatButton';
+import InformationIcon from '@commercetools-frontend/ui-kit/dist/esm/InformationIcon';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/flat-button';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'ui-kit';
+import TextInput from '@commercetools-frontend/ui-kit/dist/esm/TextInput';
 import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 

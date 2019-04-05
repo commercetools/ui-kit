@@ -1,5 +1,7 @@
 import React from 'react';
-import { LocalizedMoneyInput, ErrorMessage, WarningMessage } from 'ui-kit';
+import LocalizedMoneyInput from '@commercetools-frontend/ui-kit/dist/esm/LocalizedMoneyInput';
+import ErrorMessage from '@commercetools-frontend/ui-kit/dist/esm/ErrorMessage';
+import WarningMessage from '@commercetools-frontend/ui-kit/dist/esm/WarningMessage';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = {

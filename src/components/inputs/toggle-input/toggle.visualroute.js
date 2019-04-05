@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToggleInput } from 'ui-kit';
+import ToggleInput from '@commercetools-frontend/ui-kit/dist/esm/ToggleInput';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/toggle';

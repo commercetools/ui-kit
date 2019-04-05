@@ -1,5 +1,6 @@
 import React from 'react';
-import { LocalizedTextInput, ErrorMessage } from 'ui-kit';
+import LocalizedTextInput from '@commercetools-frontend/ui-kit/dist/esm/LocalizedTextInput';
+import ErrorMessage from '@commercetools-frontend/ui-kit/dist/esm/ErrorMessage';
 import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 

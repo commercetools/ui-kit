@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimeInput } from 'ui-kit';
+import TimeInput from '@commercetools-frontend/ui-kit/dist/esm/TimeInput';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = '3:00 PM';

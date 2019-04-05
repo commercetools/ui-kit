@@ -1,5 +1,7 @@
 import React from 'react';
-import { FieldLabel, WarningIcon, FlatButton } from 'ui-kit';
+import FieldLabel from '@commercetools-frontend/ui-kit/dist/esm/FieldLabel';
+import WarningIcon from '@commercetools-frontend/ui-kit/dist/esm/WarningIcon';
+import FlatButton from '@commercetools-frontend/ui-kit/dist/esm/FlatButton';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/field-label';

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
-import * as UIKit from 'ui-kit';
+import * as UIKit from '@commercetools-frontend/ui-kit/dist/esm';
 import { Suite, Spec } from '../../../test/percy';
 
 const IconList = styled.div`

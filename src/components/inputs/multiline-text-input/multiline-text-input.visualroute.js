@@ -1,5 +1,5 @@
 import React from 'react';
-import { MultilineTextInput } from 'ui-kit';
+import MultilineTextInput from '@commercetools-frontend/ui-kit/dist/esm/MultilineTextInput';
 import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 

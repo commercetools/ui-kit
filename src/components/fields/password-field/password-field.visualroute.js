@@ -1,5 +1,5 @@
 import React from 'react';
-import { PasswordField } from 'ui-kit';
+import PasswordField from '@commercetools-frontend/ui-kit/dist/esm/PasswordField';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = 'hello world, how are you?';

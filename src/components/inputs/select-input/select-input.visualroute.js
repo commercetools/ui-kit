@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { SelectInput } from 'ui-kit';
+import SelectInput from '@commercetools-frontend/ui-kit/dist/esm/SelectInput';
 import { Suite, Spec } from '../../../../test/percy';
 
 const options = [

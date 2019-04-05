@@ -1,5 +1,5 @@
 import React from 'react';
-import { LocalizedMultilineTextField } from 'ui-kit';
+import LocalizedMultilineTextField from '@commercetools-frontend/ui-kit/dist/esm/LocalizedMultilineTextField';
 import { Suite, Spec } from '../../../../test/percy';
 
 const lorem =

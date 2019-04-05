@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxInput } from 'ui-kit';
+import CheckboxInput from '@commercetools-frontend/ui-kit/dist/esm/CheckboxInput';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/checkbox-input';
