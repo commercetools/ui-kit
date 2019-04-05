@@ -3,14 +3,25 @@ import { Route, Switch } from 'react-router-dom';
 import { SelectInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-const options = [
+const defaultOptions = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
 ];
 
+const longOptions = defaultOptions.concat([
+  { value: 'three', label: 'Three' },
+  { value: 'four', label: 'Four' },
+  { value: 'five', label: 'Five' },
+  { value: 'six', label: 'Six' },
+  { value: 'seven', label: 'Seven' },
+  { value: 'eight', label: 'Eight' },
+]);
+
+const options = defaultOptions;
+
 const optionsWithGroups = [
-  { label: 'one', options: [{ value: 'one', label: 'One' }] },
-  { options: [{ value: 'two', label: 'Two' }] },
+  { label: 'animals', options: [{ value: 'cats', label: 'Cats' }] },
+  { options: longOptions },
 ];
 
 const value = 'one';
@@ -102,7 +113,7 @@ const OpenRoute = () => (
         id="select-input"
         value={value}
         onChange={() => {}}
-        options={options}
+        options={longOptions}
         horizontalConstraint="m"
       />
     </Spec>

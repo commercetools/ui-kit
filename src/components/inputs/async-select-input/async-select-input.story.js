@@ -79,7 +79,7 @@ class SelectStory extends React.Component {
                   isDisabled={boolean('isDisabled', false)}
                   isMulti={isMulti}
                   isSearchable={boolean('isSearchable', true)}
-                  maxMenuHeight={number('maxMenuHeight', 200)}
+                  maxMenuHeight={number('maxMenuHeight', 220)}
                   name={text('name', 'form-field-name')}
                   onBlur={action('onBlur')}
                   onChange={(event, info) => {

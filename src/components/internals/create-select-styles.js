@@ -178,7 +178,7 @@ const groupHeadingStyles = () => base => ({
   textTransform: 'none',
   fontWeight: 'bold',
   margin: `0 ${vars.spacing4}`,
-  padding: `${vars.spacing8} ${vars.spacing4} ${vars.spacing4}`,
+  padding: `${vars.spacing8} ${vars.spacing4}`,
   '&:empty': {
     padding: 0,
   },

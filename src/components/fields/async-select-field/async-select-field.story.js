@@ -138,7 +138,7 @@ storiesOf('Components|Fields', module)
               isMulti={isMulti}
               placeholder={text('placeholder', 'Select...')}
               title={text('title', 'Favourite animal')}
-              maxMenuHeight={number('maxMenuHeight', 200)}
+              maxMenuHeight={number('maxMenuHeight', 220)}
               isSearchable={boolean('isSearchable', true)}
               isClearable={boolean('isClearable', false)}
               tabIndex={text('tabIndex', '0')}

@@ -27,7 +27,7 @@ export class SelectInput extends React.Component {
   static isTouched = touched => Boolean(touched);
 
   static defaultProps = {
-    maxMenuHeight: 200,
+    maxMenuHeight: 220,
   };
 
   static propTypes = {
