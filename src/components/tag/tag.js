@@ -266,7 +266,8 @@ const Tag = props => (
                 background: inherit;
                 border-style: solid;
                 border-width: 1px 1px 1px 1px;
-                &:hover {
+                &:hover,
+                &:focus {
                   border-color: ${overwrittenVars[
                     designTokens.borderColorForTagWarning
                   ]};
@@ -283,10 +284,6 @@ const Tag = props => (
               `,
               props.isDisabled &&
                 css`
-                  &:hover {
-                    background: inherit;
-                    box-shadow: none;
-                  }
                   > svg * {
                     fill: ${overwrittenVars[
                       designTokens.fontColorForTagWhenDisabled
