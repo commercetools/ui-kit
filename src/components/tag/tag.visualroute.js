@@ -64,7 +64,14 @@ export const component = ({ themes }) => (
         {longText}
       </Tag>
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
+    <Spec label="Normal - onRemove (disabled)">
+      <Tag type="normal" onRemove={() => {}} isDisabled={true}>
+        {longText}
+      </Tag>
+    </Spec>
+    <ThemeProvider
+      theme={{ ...themes.darkTheme, colorNeutral95: 'rgba(0,0,0,0.05)' }}
+    >
       <Spec label="with dark theme">
         <Tag type="normal">Tag</Tag>
       </Spec>

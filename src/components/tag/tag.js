@@ -194,11 +194,11 @@ TagNormalBody.propTypes = {
 const Tag = props => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <div
-      css={[
+      css={theme => [
         css`
           min-width: 0;
           display: flex;
-          background-color: ${getWrapperBackgroundColor(props.type)};
+          background-color: ${getWrapperBackgroundColor(props.type, theme)};
         `,
       ]}
     >
