@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '../../../test-utils';
 import Text from './text';
 
+const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
+
 describe('exports', () => {
   it('should export 5 components', () => {
     expect(Object.keys(Text)).toHaveLength(5);
@@ -43,6 +45,17 @@ describe('<Headline>', () => {
     expect(container).toHaveTextContent('Title');
   });
 
+  it('should render given text with react-intl', () => {
+    const { container } = render(
+      <Text.Headline
+        elementType="h1"
+        title="tooltip text"
+        intlMessage={intlMessage}
+      />
+    );
+    expect(container).toHaveTextContent('Hello');
+  });
+
   it('should set `title` attribute', () => {
     const { queryByTitle } = render(
       <Text.Headline elementType="h1" title="tooltip text">
@@ -69,7 +82,6 @@ describe('<Subheadline>', () => {
         {'Title'}
       </Text.Subheadline>
     );
-
     expect(container.querySelector('h4')).toBeInTheDocument();
   });
 
@@ -79,8 +91,18 @@ describe('<Subheadline>', () => {
         {'Subtitle'}
       </Text.Subheadline>
     );
-
     expect(container).toHaveTextContent('Subtitle');
+  });
+
+  it('should render given text with react-intl', () => {
+    const { container } = render(
+      <Text.Subheadline
+        elementType="h4"
+        title="tooltip text"
+        intlMessage={intlMessage}
+      />
+    );
+    expect(container).toHaveTextContent('Hello');
   });
 
   it('should set `title` attribute', () => {
@@ -107,8 +129,14 @@ describe('<Wrap>', () => {
     const { container } = render(
       <Text.Wrap title="tooltip text">{'Text'}</Text.Wrap>
     );
-
     expect(container).toHaveTextContent('Text');
+  });
+
+  it('should render given text with react-intl', () => {
+    const { container } = render(
+      <Text.Wrap title="tooltip text" intlMessage={intlMessage} />
+    );
+    expect(container).toHaveTextContent('Hello');
   });
 
   it('should set `title` attribute', () => {
@@ -133,7 +161,6 @@ describe('<Body>', () => {
     const { container } = render(
       <Text.Body title="tooltip text">{'Body'}</Text.Body>
     );
-
     expect(container.querySelector('p')).toBeInTheDocument();
   });
 
@@ -141,8 +168,14 @@ describe('<Body>', () => {
     const { container } = render(
       <Text.Body title="tooltip text">{'Text'}</Text.Body>
     );
-
     expect(container).toHaveTextContent('Text');
+  });
+
+  it('should render given text with react-intl', () => {
+    const { container } = render(
+      <Text.Body title="tooltip text" intlMessage={intlMessage} />
+    );
+    expect(container).toHaveTextContent('Hello');
   });
 
   it('should forward data attriutes', () => {
@@ -161,7 +194,6 @@ describe('<Body>', () => {
           {'Body'}
         </Text.Body>
       );
-
       expect(container.querySelector('span')).toBeInTheDocument();
     });
   });
@@ -172,7 +204,6 @@ describe('<Detail>', () => {
     const { container } = render(
       <Text.Detail title="tooltip text">{'Detail'}</Text.Detail>
     );
-
     expect(container.querySelector('small')).toBeInTheDocument();
   });
 
@@ -180,8 +211,14 @@ describe('<Detail>', () => {
     const { container } = render(
       <Text.Detail title="tooltip text">{'Text'}</Text.Detail>
     );
-
     expect(container).toHaveTextContent('Text');
+  });
+
+  it('should render given text with react-intl', () => {
+    const { container } = render(
+      <Text.Detail title="tooltip text" intlMessage={intlMessage} />
+    );
+    expect(container).toHaveTextContent('Hello');
   });
 
   it('should forward data attriutes', () => {

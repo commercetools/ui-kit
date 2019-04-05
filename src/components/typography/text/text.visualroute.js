@@ -8,6 +8,8 @@ const NarrowBox = styled.div`
   width: 200px;
 `;
 
+const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
+
 export const routePath = '/text';
 
 export const component = ({ themes }) => (
@@ -169,6 +171,36 @@ export const component = ({ themes }) => (
     <Spec label="Detail - inline" omitPropsList>
       <Text.Detail isInline={true}>One inline detail text{'. '}</Text.Detail>
       <Text.Detail isInline={true}>A second inline text.</Text.Detail>
+    </Spec>
+    <Spec label="Headline - h1 (intl message)">
+      <Text.Headline elementType="h1" intlMessage={intlMessage} />
+    </Spec>
+    <Spec label="Headline - h2 (intl message)">
+      <Text.Headline elementType="h2" intlMessage={intlMessage} />
+    </Spec>
+    <Spec label="Headline - h3 (intl message)">
+      <Text.Headline elementType="h3" intlMessage={intlMessage} />
+    </Spec>
+    <Spec label="Subheadline - h4 (intl message)">
+      <Text.Subheadline elementType="h4" intlMessage={intlMessage} />
+    </Spec>
+    <Spec label="Subheadline - h5 (intl message)">
+      <Text.Subheadline elementType="h5" intlMessage={intlMessage} />
+    </Spec>
+    <Spec label="Wrap (intl message)">
+      <Text.Wrap
+        intlMessage={{
+          ...intlMessage,
+          defaultMessage:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        }}
+      />
+    </Spec>
+    <Spec label="Body (intl message)">
+      <Text.Body intlMessage={intlMessage} />
+    </Spec>
+    <Spec label="Detail (intl message)">
+      <Text.Detail intlMessage={intlMessage} />
     </Spec>
   </Suite>
 );
