@@ -2,11 +2,11 @@
 const rootPath = process.cwd();
 const fs = require('fs');
 
-// Ensure UI Kit build (ui-kit.esm.js) exists
+// Ensure UI Kit build (dist/esm/index.js) exists
 // and warn in case it is old.
 const info = (() => {
   try {
-    return fs.statSync('./dist/ui-kit.esm.js');
+    return fs.statSync('./dist/esm/index.js');
   } catch (e) {
     return null;
   }
