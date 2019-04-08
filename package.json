@@ -125,7 +125,7 @@
     "cross-env": "5.2.0",
     "emotion-theming": "10.0.10",
     "enzyme": "3.9.0",
-    "enzyme-adapter-react-16": "1.11.2",
+    "enzyme-adapter-react-16": "1.12.1",
     "enzyme-to-json": "3.3.5",
     "eslint": "5.16.0",
     "eslint-config-airbnb-base": "13.1.0",
