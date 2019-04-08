@@ -96,7 +96,7 @@
     "@commitlint/cli": "7.5.2",
     "@commitlint/config-conventional": "7.5.0",
     "@emotion/babel-preset-css-prop": "10.0.9",
-    "@percy/puppeteer": "1.0.5",
+    "@percy/puppeteer": "1.0.7",
     "@storybook/addon-actions": "5.0.6",
     "@storybook/addon-info": "5.0.6",
     "@storybook/addon-knobs": "5.0.6",
