@@ -7,11 +7,6 @@ const value = {
   currencyCode: 'EUR',
 };
 
-const highPrecisionValue = {
-  amount: '13.501',
-  currencyCode: 'EUR',
-};
-
 const emptyValue = { amount: '', currencyCode: '' };
 
 const currencies = ['EUR', 'USD'];
@@ -55,26 +50,6 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         currencies={currencies}
-      />
-    </Spec>
-    <Spec label="with high precision badge and regular price">
-      <MoneyField
-        title="Price"
-        horizontalConstraint="m"
-        value={value}
-        onChange={() => {}}
-        currencies={currencies}
-        hasHighPrecisionBadge={true}
-      />
-    </Spec>
-    <Spec label="with high precision badge and high precision price">
-      <MoneyField
-        title="Price"
-        horizontalConstraint="m"
-        value={highPrecisionValue}
-        onChange={() => {}}
-        currencies={currencies}
-        hasHighPrecisionBadge={true}
       />
     </Spec>
     <Spec label="with placeholder">

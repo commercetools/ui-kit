@@ -57,6 +57,7 @@ class MoneyInputStory extends React.Component {
     return (
       <React.Fragment>
         <Section>
+          <div style={{ paddingBottom: '200px' }} />
           <MoneyInput
             id={text('id', '')}
             name={name}

@@ -6,17 +6,25 @@ import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
 import { injectIntl } from 'react-intl';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Contraints from '../../constraints';
+import Tooltip from '../../tooltip';
+import { FractionDigitsIcon } from '../../icons';
 import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
 import {
   getCurrencyLabelStyles,
   getAmountInputStyles,
 } from './money-input.styles';
+import messages from './messages';
+
+const TooltipWrapper = styled.div`
+  display: flex;
+`;
 
 const CurrencyLabel = props => (
   <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
@@ -384,6 +392,7 @@ class MoneyInput extends React.Component {
     hasWarning: PropTypes.bool,
     intl: PropTypes.shape({
       locale: PropTypes.string.isRequired,
+      formatMessage: PropTypes.func.isRequired,
     }).isRequired,
 
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
@@ -524,6 +533,11 @@ class MoneyInput extends React.Component {
       return null;
     })();
     const id = MoneyInput.getCurrencyDropdownId(this.props.id);
+
+    const isHighPrecision =
+      !MoneyInput.isEmpty(this.props.value) &&
+      MoneyInput.isHighPrecision(this.props.value, this.props.intl.locale);
+
     return (
       <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div
@@ -593,31 +607,75 @@ class MoneyInput extends React.Component {
               data-testid="currency-dropdown"
             />
           )}
-          <input
-            ref={this.amountInputRef}
-            id={MoneyInput.getAmountInputId(this.props.id)}
-            name={getAmountInputName(this.props.name)}
-            type="text"
-            onFocus={() => {
-              if (this.props.onFocus)
-                this.props.onFocus({
-                  target: {
-                    id: MoneyInput.getAmountInputId(this.props.id),
-                    name: getAmountInputName(this.props.name),
-                  },
-                });
-              this.setState({ amountHasFocus: true });
-            }}
-            value={this.props.value.amount}
-            css={getAmountInputStyles({ ...this.props, hasFocus })}
-            placeholder={this.props.placeholder}
-            onChange={this.handleAmountChange}
-            onBlur={this.handleAmountBlur}
-            disabled={this.props.isDisabled}
-            readOnly={this.props.isReadOnly}
-            autoFocus={this.props.isAutofocussed}
-            {...filterDataAttributes(this.props)}
-          />
+          <div
+            css={css`
+              position: relative;
+            `}
+          >
+            <input
+              ref={this.amountInputRef}
+              id={MoneyInput.getAmountInputId(this.props.id)}
+              name={getAmountInputName(this.props.name)}
+              type="text"
+              onFocus={() => {
+                if (this.props.onFocus)
+                  this.props.onFocus({
+                    target: {
+                      id: MoneyInput.getAmountInputId(this.props.id),
+                      name: getAmountInputName(this.props.name),
+                    },
+                  });
+                this.setState({ amountHasFocus: true });
+              }}
+              value={this.props.value.amount}
+              css={[
+                getAmountInputStyles({ ...this.props, hasFocus }),
+                // accounts for size of icon
+                css`
+                  padding-right: 24px;
+                `,
+              ]}
+              placeholder={this.props.placeholder}
+              onChange={this.handleAmountChange}
+              onBlur={this.handleAmountBlur}
+              disabled={this.props.isDisabled}
+              readOnly={this.props.isReadOnly}
+              autoFocus={this.props.isAutofocussed}
+              {...filterDataAttributes(this.props)}
+            />
+            {isHighPrecision && (
+              <div
+                css={css`
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  margin-right: ${vars.spacingXs};
+                  height: 100%;
+                  display: flex;
+                  align-items: center;
+                  cursor: default;
+                  justify-content: center;
+                `}
+              >
+                <Tooltip
+                  placement="top-end"
+                  // we use negative margin to make up for the padding in the Tooltip Wrapper
+                  // so that the tooltip is flush with the component
+                  customBodyStyles={{
+                    margin: `${vars.spacing8} -${vars.spacing4} ${
+                      vars.spacing8
+                    } 0`,
+                  }}
+                  title={this.props.intl.formatMessage(messages.highPrecision)}
+                  components={{
+                    WrapperComponent: TooltipWrapper,
+                  }}
+                >
+                  <FractionDigitsIcon theme="blue" />
+                </Tooltip>
+              </div>
+            )}
+          </div>
         </div>
       </Contraints.Horizontal>
     );
