@@ -610,6 +610,7 @@ class MoneyInput extends React.Component {
           <div
             css={css`
               position: relative;
+              flex: 1;
             `}
           >
             <input
