@@ -1,3 +1,4 @@
+const mri = require('mri');
 const path = require('path');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
@@ -9,9 +10,15 @@ const sourceFolders = [
   path.resolve(__dirname, '../src'),
 ];
 
+/**
+ * NOTE:
+ *    Generating source maps takes up to 30 seconds (from about 60 seconds buidl time).
+ *    This lets Netlify time out the build as it exceeds 60 seconds. As a result
+ *    the storybook build will not include source maps.
+ */
+const disableSourceMaps = process.argv.slice(2).includes('--no-source-maps');
+
 module.exports = ({ config }) => {
-  // nuke terser for speed
-  config.optimization.minimizer = [];
   config.plugins.push(
     new MomentLocalesPlugin({ localesToKeep: ['de', 'es', 'fr', 'zh-cn'] })
   );
@@ -96,6 +103,8 @@ module.exports = ({ config }) => {
       ],
     },
   ];
+
+  config.optimization.minimizer[0].options.sourceMap = disableSourceMaps;
 
   return config;
 };

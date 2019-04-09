@@ -39,7 +39,7 @@
     "design-tokens:build:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn design-tokens:build'",
     "prebuild": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build",
     "prestorybook:start": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build",
-    "storybook:build": "build-storybook -o .public -s docs/assets",
+    "storybook:build": "build-storybook -o .public -s docs/assets -- --no-source-maps",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup --config",
     "build:watch": "rimraf dist && cross-env NODE_ENV=production rollup --config --watch",
     "start": "yarn storybook:start",
