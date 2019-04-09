@@ -10,6 +10,8 @@ const sourceFolders = [
 ];
 
 module.exports = ({ config }) => {
+  // nuke terser for speed
+  config.optimization.minimizer = [];
   config.plugins.push(
     new MomentLocalesPlugin({ localesToKeep: ['de', 'es', 'fr', 'zh-cn'] })
   );
