@@ -662,10 +662,12 @@ class MoneyInput extends React.Component {
                   placement="top-end"
                   // we use negative margin to make up for the padding in the Tooltip Wrapper
                   // so that the tooltip is flush with the component
-                  customBodyStyles={{
-                    margin: `${vars.spacing8} -${vars.spacing4} ${
-                      vars.spacing8
-                    } 0`,
+                  styles={{
+                    body: {
+                      margin: `${vars.spacing8} -${vars.spacing4} ${
+                        vars.spacing8
+                      } 0`,
+                    },
                   }}
                   title={this.props.intl.formatMessage(messages.highPrecision)}
                   components={{
