@@ -3,28 +3,26 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import Tag from '../../tag';
 
-const MultiValue = props => {
-  return (
-    <div
-      css={css`
-        display: inline-block;
-        margin: 2px;
-      `}
+const MultiValue = props => (
+  <div
+    css={css`
+      display: inline-block;
+      margin: 2px;
+    `}
+  >
+    <Tag
+      styles={{
+        body: css`
+          padding: 4px 8px 3px 6px;
+        `,
+      }}
+      isDisabled={props.isDisabled}
+      onRemove={props.removeProps.onClick}
     >
-      <Tag
-        styles={{
-          body: css`
-            padding: 4px 8px 3px 6px;
-          `,
-        }}
-        isDisabled={props.isDisabled}
-        onRemove={props.removeProps.onClick}
-      >
-        {props.data.label}
-      </Tag>
-    </div>
-  );
-};
+      {props.data.label}
+    </Tag>
+  </div>
+);
 
 MultiValue.displayName = 'MultiValue';
 
