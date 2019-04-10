@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import { injectIntl } from 'react-intl';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
@@ -9,14 +10,37 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
-import TagRemove from '../../internals/tag-remove';
+import Tag from '../../tag';
 import messages from './messages';
 import createSelectStyles from '../../internals/create-select-styles';
+
+const MultiValue = props => {
+  return (
+    <span
+      css={css`
+        margin: 2px;
+      `}
+    >
+      <Tag onRemove={props.removeProps.onClick}>{props.data.label}</Tag>
+    </span>
+  );
+};
+
+MultiValue.displayName = 'MultiValue';
+
+MultiValue.propTypes = {
+  removeProps: PropTypes.shape({
+    onClick: PropTypes.func.isRequired,
+  }).isRequired,
+  data: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
-  MultiValueRemove: TagRemove,
+  MultiValue,
 };
 
 export class SelectInput extends React.Component {
