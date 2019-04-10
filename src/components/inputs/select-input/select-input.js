@@ -22,7 +22,11 @@ const MultiValue = props => {
         margin: 2px;
       `}
     >
-      <Tag isDisabled={props.isDisabled} onRemove={props.removeProps.onClick}>
+      <Tag
+        size="small"
+        isDisabled={props.isDisabled}
+        onRemove={props.removeProps.onClick}
+      >
         {props.data.label}
       </Tag>
     </div>

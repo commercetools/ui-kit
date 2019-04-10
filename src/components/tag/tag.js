@@ -30,9 +30,10 @@ const getContentWrapperStyles = (props, theme) => {
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    min-height: ${vars.sizeHeightTag};
     border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
-    padding: 5px ${vars.spacingS};
+    padding: ${props.size === 'small'
+      ? '4px 8px 3px 6px'
+      : `5px ${vars.spacingS}`};
     cursor: default;
     font-family: inherit;
     white-space: normal;
@@ -204,6 +205,7 @@ export const TagNormalBody = props => (
 TagNormalBody.displayName = 'TagNormalBody';
 TagNormalBody.propTypes = {
   type: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   onRemove: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
@@ -223,6 +225,7 @@ const Tag = props => (
     >
       {props.linkTo ? (
         <TagLinkBody
+          size={props.size}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
@@ -233,6 +236,7 @@ const Tag = props => (
         </TagLinkBody>
       ) : (
         <TagNormalBody
+          size={props.size}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
@@ -302,6 +306,7 @@ const Tag = props => (
 
 Tag.propTypes = {
   type: PropTypes.oneOf(['normal', 'warning']),
+  size: PropTypes.oneOf(['small', 'big']).isRequired,
   linkTo: PropTypes.string,
   isDisabled: PropTypes.bool,
   onRemove: PropTypes.func,
@@ -311,6 +316,7 @@ Tag.propTypes = {
 };
 Tag.defaultProps = {
   type: 'normal',
+  size: 'big',
   isDisabled: false,
   horizontalConstraint: 'scale',
 };
