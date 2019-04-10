@@ -130,45 +130,6 @@ const valueContainerStyles = () => base => ({
   overflow: 'hidden',
 });
 
-const multiValueStyles = () => base => ({
-  ...base,
-  height: vars.sizeHeightTag,
-  backgroundColor: vars.backgroundColorForTag,
-  padding: '0',
-});
-
-const multiValueLabelStyles = () => (base, state) => ({
-  ...base,
-  fontSize: vars.fontSizeSmall,
-  color: (() => {
-    if (state.isDisabled) return vars.fontColorForInputWhenDisabled;
-    return base.color;
-  })(),
-  padding: `${vars.spacingXs} ${vars.spacingS}`,
-  border: `1px ${vars.borderColorForTag} solid`,
-  borderRadius: `${vars.borderRadiusForTag} 0 0 ${vars.borderRadiusForTag}`,
-  borderRight: 0,
-});
-
-const multiValueRemoveStyles = () => base => ({
-  ...base,
-  borderColor: vars.borderColorForTag,
-  padding: `0 ${vars.spacingXs}`,
-  borderRadius: `0 ${vars.borderRadiusForTag} ${vars.borderRadiusForTag} 0`,
-  borderStyle: 'solid',
-  borderWidth: '1px',
-
-  '&:hover': {
-    boxShadow: 'none',
-    backgroundColor: vars.backgroundColorForTag,
-    borderColor: vars.borderColorForTagWarning,
-
-    '> svg *': {
-      fill: vars.borderColorForTagWarning,
-    },
-  },
-});
-
 const groupStyles = props => base => ({
   ...base,
   padding: 0,
@@ -222,9 +183,6 @@ export default props => ({
   option: optionStyles(props),
   placeholder: placeholderStyles(props),
   valueContainer: valueContainerStyles(props),
-  multiValue: multiValueStyles(props),
-  multiValueLabel: multiValueLabelStyles(props),
-  multiValueRemove: multiValueRemoveStyles(props),
   group: groupStyles(props),
   groupHeading: groupHeadingStyles(props),
   container: containerStyles(props),
