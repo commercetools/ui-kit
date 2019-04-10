@@ -17,6 +17,7 @@ import { FractionDigitsIcon } from '../../icons';
 import currencies from './currencies.json';
 import createSelectStyles from '../../internals/create-select-styles';
 import {
+  getHighPrecisionWrapperStyles,
   getCurrencyLabelStyles,
   getAmountInputStyles,
 } from './money-input.styles';
@@ -645,19 +646,7 @@ class MoneyInput extends React.Component {
               {...filterDataAttributes(this.props)}
             />
             {this.props.hasHighPrecisionBadge && isHighPrecision && (
-              <div
-                css={css`
-                  position: absolute;
-                  top: 0;
-                  right: 0;
-                  margin-right: ${vars.spacingXs};
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  cursor: default;
-                  justify-content: center;
-                `}
-              >
+              <div css={() => getHighPrecisionWrapperStyles(this.props)}>
                 <Tooltip
                   off={this.props.isDisabled}
                   placement="top-end"
