@@ -9,9 +9,9 @@ import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
+import MultiValue from '../../internals/multivalue';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import LoadingIndicator from '../../internals/loading-indicator';
-import TagRemove from '../../internals/tag-remove';
 import messages from './messages';
 import createSelectStyles from '../../internals/create-select-styles';
 
@@ -19,7 +19,7 @@ const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
   LoadingIndicator,
-  MultiValueRemove: TagRemove,
+  MultiValue,
 };
 
 export class AsyncSelectInput extends React.Component {
