@@ -29,7 +29,7 @@ const getAmountInputStyles = props => [
   `,
 ];
 
-const getHighPrecisionWrapperStyles = props => css`
+const getHighPrecisionWrapperStyles = ({ isDisabled }) => css`
   position: absolute;
   top: 0;
   right: 0;
@@ -37,7 +37,7 @@ const getHighPrecisionWrapperStyles = props => css`
   height: 100%;
   display: flex;
   align-items: center;
-  cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+  cursor: ${isDisabled ? 'not-allowed' : 'default'};
   justify-content: center;
 `;
 

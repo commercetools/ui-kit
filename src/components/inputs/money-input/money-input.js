@@ -646,7 +646,13 @@ class MoneyInput extends React.Component {
               {...filterDataAttributes(this.props)}
             />
             {this.props.hasHighPrecisionBadge && isHighPrecision && (
-              <div css={() => getHighPrecisionWrapperStyles(this.props)}>
+              <div
+                css={() =>
+                  getHighPrecisionWrapperStyles({
+                    isDisabled: this.props.isDisabled,
+                  })
+                }
+              >
                 <Tooltip
                   off={this.props.isDisabled}
                   placement="top-end"
