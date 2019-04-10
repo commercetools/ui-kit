@@ -64,6 +64,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         currencies={currencies}
+        hasHighPrecisionBadge={true}
       />
     </Spec>
     <Spec label="with high precision badge and high precision price">
@@ -73,6 +74,7 @@ export const component = () => (
         value={highPrecisionValue}
         onChange={() => {}}
         currencies={currencies}
+        hasHighPrecisionBadge={true}
       />
     </Spec>
     <Spec label="with placeholder">

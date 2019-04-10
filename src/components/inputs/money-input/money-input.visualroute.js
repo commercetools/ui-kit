@@ -42,6 +42,7 @@ export const component = () => (
         value={highPrecisionValue}
         onChange={() => {}}
         currencies={currencies}
+        hasHighPrecisionBadge={true}
       />
     </Spec>
     <Spec label="when disabled">
