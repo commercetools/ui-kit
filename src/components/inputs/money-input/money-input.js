@@ -394,7 +394,7 @@ class MoneyInput extends React.Component {
       locale: PropTypes.string.isRequired,
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
-
+    hasHighPrecisionBadge: PropTypes.bool,
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   };
 
@@ -644,7 +644,7 @@ class MoneyInput extends React.Component {
               autoFocus={this.props.isAutofocussed}
               {...filterDataAttributes(this.props)}
             />
-            {isHighPrecision && (
+            {this.props.hasHighPrecisionBadge && isHighPrecision && (
               <div
                 css={css`
                   position: absolute;
@@ -659,6 +659,7 @@ class MoneyInput extends React.Component {
                 `}
               >
                 <Tooltip
+                  off={this.props.isDisabled}
                   placement="top-end"
                   // we use negative margin to make up for the padding in the Tooltip Wrapper
                   // so that the tooltip is flush with the component
@@ -674,7 +675,9 @@ class MoneyInput extends React.Component {
                     WrapperComponent: TooltipWrapper,
                   }}
                 >
-                  <FractionDigitsIcon theme="blue" />
+                  <FractionDigitsIcon
+                    theme={this.props.isDisabled ? 'grey' : 'blue'}
+                  />
                 </Tooltip>
               </div>
             )}

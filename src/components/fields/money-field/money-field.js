@@ -31,6 +31,7 @@ class MoneyField extends React.Component {
       amount: PropTypes.bool,
       currencyCode: PropTypes.bool,
     }),
+    hasHighPrecisionBadge: PropTypes.bool,
 
     // Some other fields use isTouched, but the check isn't as simple here.
     // isTouched accepts a boolean, whereas touched takes an object.
@@ -115,6 +116,7 @@ class MoneyField extends React.Component {
             isReadOnly={this.props.isReadOnly}
             onChange={this.props.onChange}
             hasError={hasError}
+            hasHighPrecisionBadge={this.props.hasHighPrecisionBadge}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
