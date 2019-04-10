@@ -31,9 +31,7 @@ const getContentWrapperStyles = (props, theme) => {
     box-sizing: border-box;
     align-items: center;
     border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
-    padding: ${props.size === 'small'
-      ? '4px 8px 3px 6px'
-      : `5px ${vars.spacingS}`};
+    padding: 5px ${vars.spacingS};
     cursor: default;
     font-family: inherit;
     white-space: normal;
@@ -117,6 +115,7 @@ export const TagLinkBody = props => {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           `,
+        props.styles.body,
       ]}
     >
       {!props.isDisabled ? (
@@ -156,6 +155,9 @@ TagLinkBody.propTypes = {
   linkTo: PropTypes.string,
   isDisabled: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
+  styles: PropTypes.shape({
+    body: PropTypes.object,
+  }).isRequired,
 };
 
 export const TagNormalBody = props => (
@@ -190,6 +192,7 @@ export const TagNormalBody = props => (
             }
           }
         `,
+      props.styles.body,
     ]}
     onClick={props.isDisabled ? undefined : props.onClick}
   >
@@ -205,11 +208,13 @@ export const TagNormalBody = props => (
 TagNormalBody.displayName = 'TagNormalBody';
 TagNormalBody.propTypes = {
   type: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   onRemove: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
+  styles: PropTypes.shape({
+    body: PropTypes.object,
+  }).isRequired,
 };
 
 const Tag = props => (
@@ -225,7 +230,7 @@ const Tag = props => (
     >
       {props.linkTo ? (
         <TagLinkBody
-          size={props.size}
+          styles={props.styles}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
@@ -236,7 +241,7 @@ const Tag = props => (
         </TagLinkBody>
       ) : (
         <TagNormalBody
-          size={props.size}
+          styles={props.styles}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
@@ -306,7 +311,9 @@ const Tag = props => (
 
 Tag.propTypes = {
   type: PropTypes.oneOf(['normal', 'warning']),
-  size: PropTypes.oneOf(['small', 'big']).isRequired,
+  styles: PropTypes.shape({
+    body: PropTypes.object,
+  }).isRequired,
   linkTo: PropTypes.string,
   isDisabled: PropTypes.bool,
   onRemove: PropTypes.func,
@@ -316,7 +323,9 @@ Tag.propTypes = {
 };
 Tag.defaultProps = {
   type: 'normal',
-  size: 'big',
+  styles: {
+    body: {},
+  },
   isDisabled: false,
   horizontalConstraint: 'scale',
 };

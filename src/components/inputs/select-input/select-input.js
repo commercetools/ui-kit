@@ -23,7 +23,11 @@ const MultiValue = props => {
       `}
     >
       <Tag
-        size="small"
+        styles={{
+          body: css`
+            padding: 4px 8px 3px 6px;
+          `,
+        }}
         isDisabled={props.isDisabled}
         onRemove={props.removeProps.onClick}
       >
