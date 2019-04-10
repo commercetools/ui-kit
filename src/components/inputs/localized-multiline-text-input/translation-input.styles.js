@@ -18,7 +18,7 @@ const getTextareaStyles = (props, theme) => {
       border-bottom-left-radius: 0;
       flex: auto;
       line-height: ${sizeInputLineHeight};
-      padding: ${vars.spacing4} ${vars.spacing8};
+      padding: ${vars.spacingXs} ${vars.spacingS};
       word-break: break-all;
       white-space: pre-wrap;
       resize: vertical;
@@ -54,7 +54,7 @@ const getLanguageLabelStyles = (props, theme) => {
     ]};
     border: 1px ${overwrittenVars[designTokens.borderColorForInputWhenDisabled]}
       solid;
-    padding: 0 ${vars.spacing8};
+    padding: 0 ${vars.spacingS};
     transition: ${vars.transitionStandard};
     border-right: 0;
     box-shadow: none;

@@ -61,7 +61,7 @@ const SortableHeader = props => {
           css`
             visibility: hidden; /* use visibility so react-virtualized can account for arrow-width on calcs */
             pointer-events: none; /* Do not unhover when on the icon */
-            padding: 0 0 0 ${vars.spacing16};
+            padding: 0 0 0 ${vars.spacingM};
           `,
           (isActive || props.isMouseOver) &&
             css`
@@ -69,7 +69,7 @@ const SortableHeader = props => {
             `,
           props.alignRight &&
             css`
-              padding: 0 ${vars.spacing16} 0 0;
+              padding: 0 ${vars.spacingM} 0 0;
             `,
         ]}
       >

@@ -11,7 +11,7 @@ const getInputStyles = () => css`
   padding: 10px 0;
   outline: 0;
   font-size: ${vars.fontSizeDefault};
-  margin-top: ${vars.spacing8};
+  margin-top: ${vars.spacingS};
   color: ${vars.colorBlack};
 
   :disabled {

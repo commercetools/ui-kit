@@ -36,7 +36,7 @@ const PrimaryButton = props => {
           {Boolean(props.iconLeft) && (
             <span
               css={css`
-                margin: 0 ${vars.spacing4} 0 0;
+                margin: 0 ${vars.spacingXs} 0 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;

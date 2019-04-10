@@ -49,7 +49,7 @@ class NotificationIcon extends React.PureComponent {
           align-items: center;
           border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
           border-width: 0;
-          padding: ${vars.spacing8} ${vars.spacing16};
+          padding: ${vars.spacingS} ${vars.spacingM};
           background-color: ${getIconContainerBackgroundColour(this.props)};
           svg {
             margin: 0 -3px;
@@ -106,7 +106,7 @@ export default class ContentNotification extends React.PureComponent {
             flex-grow: 1;
             display: flex;
             align-items: center;
-            padding: ${vars.spacing8};
+            padding: ${vars.spacingS};
             background: ${vars.colorWhite};
             border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
             border-width: 1px;

@@ -10,7 +10,7 @@ const getCurrencyLabelStyles = () => css`
   border-bottom-left-radius: ${vars.borderRadiusForInput};
   border: 1px ${vars.borderColorForInputWhenDisabled} solid;
   border-right: 0;
-  padding: 0 ${vars.spacing8};
+  padding: 0 ${vars.spacingS};
   align-items: center;
   font-size: ${vars.fontSizeForInput};
   box-sizing: border-box;

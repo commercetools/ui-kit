@@ -32,7 +32,7 @@ const getContentWrapperStyles = (props, theme) => {
     align-items: center;
     min-height: ${vars.sizeHeightTag};
     border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
-    padding: 5px ${vars.spacing8};
+    padding: 5px ${vars.spacingS};
     cursor: default;
     font-family: inherit;
     white-space: normal;
@@ -93,7 +93,7 @@ export const TagLinkBody = props => {
         !props.isDisabled &&
           isRemoveable &&
           css`
-            padding-right: ${vars.spacing8};
+            padding-right: ${vars.spacingS};
             &:hover {
               &:after {
                 position: absolute;
@@ -163,7 +163,7 @@ export const TagNormalBody = props => (
       getContentWrapperStyles(props, theme),
       Boolean(props.onRemove) &&
         css`
-          padding-right: ${vars.spacing8};
+          padding-right: ${vars.spacingS};
           border-right: 0;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
@@ -257,7 +257,7 @@ const Tag = props => (
                 border-color: ${props.type === 'warning'
                   ? overwrittenVars[designTokens.borderColorForTagWarning]
                   : overwrittenVars[designTokens.borderColorForTag]};
-                padding: 0 ${vars.spacing4};
+                padding: 0 ${vars.spacingXs};
                 border-radius: 0
                   ${overwrittenVars[designTokens.borderRadiusForTag]}
                   ${overwrittenVars[designTokens.borderRadiusForTag]} 0;

@@ -6,10 +6,10 @@ const getOffsetMargin = ({ placement }) => {
   switch (position) {
     case 'left':
     case 'right':
-      return `0 ${vars.spacing4}`;
+      return `0 ${vars.spacingXs}`;
     case 'top':
     case 'bottom':
-      return `${vars.spacing4} 0`;
+      return `${vars.spacingXs} 0`;
     default:
       return '';
   }
@@ -36,7 +36,7 @@ const getMaxWidth = ({ constraint }) => {
 export const Body = styled.div`
   font-family: ${vars.fontFamilyDefault};
   border-radius: ${vars.borderRadius6};
-  padding: ${vars.spacing4} ${vars.spacing8};
+  padding: ${vars.spacingXs} ${vars.spacingS};
   border: 'none';
   box-shadow: ${vars.shadow15};
   font-size: 0.857rem;

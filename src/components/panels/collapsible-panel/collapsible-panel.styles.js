@@ -85,7 +85,7 @@ const getHeaderStyles = ({ isDisabled, isCondensed }) => {
     > * + * {
       /* would have loved to use Spacings.Inline here but that would require a
     complete overhaul of this components' structure */
-      margin: 0 0 0 ${vars.spacing16};
+      margin: 0 0 0 ${vars.spacingM};
     }
   `;
   if (isDisabled) {
@@ -103,7 +103,7 @@ const getHeaderStyles = ({ isDisabled, isCondensed }) => {
         /**
          We set a min-height of 32px to anticipate use-cases where SecondaryButton or PrimaryButton
          are rendered in the headerControl */
-        min-height: ${vars.spacing32};
+        min-height: ${vars.spacingXl};
       `,
   ];
 };

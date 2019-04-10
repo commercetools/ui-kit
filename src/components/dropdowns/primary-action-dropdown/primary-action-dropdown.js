@@ -64,14 +64,14 @@ class DropdownHead extends React.PureComponent {
           css={[
             ...getButtonStyles(this.props.isDisabled),
             css`
-              padding: 0 ${vars.spacing8};
+              padding: 0 ${vars.spacingS};
               border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
             `,
           ]}
         >
           <span
             css={css`
-              margin: 0 ${vars.spacing4} 0 0;
+              margin: 0 ${vars.spacingXs} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -84,7 +84,7 @@ class DropdownHead extends React.PureComponent {
           </span>
           <span
             css={css`
-              margin: 0 ${vars.spacing4} 0 0;
+              margin: 0 ${vars.spacingXs} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -111,7 +111,7 @@ const DropdownChevron = React.forwardRef((props, ref) => (
     css={[
       ...getButtonStyles(props.isDisabled),
       css`
-        padding: 0 ${vars.spacing4};
+        padding: 0 ${vars.spacingXs};
         border-left: 1px solid ${vars.colorGray};
         border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
       `,
@@ -152,7 +152,7 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(${vars.spacing8} + ${vars.bigButtonHeight});
+  top: calc(${vars.spacingS} + ${vars.bigButtonHeight});
   left: 0;
   border: 1px solid ${vars.colorGray};
   border-radius: ${vars.borderRadius6};
@@ -169,7 +169,7 @@ export const Option = props => (
         display: block;
         text-align: left;
         width: 100%;
-        padding: ${vars.spacing8};
+        padding: ${vars.spacingS};
         background-color: ${vars.colorWhite};
         &:first-of-type {
           border-radius: ${vars.borderRadius6} ${vars.borderRadius6} 0 0;

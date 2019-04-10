@@ -8,7 +8,7 @@ const getStyles = props => {
   if (!['heading', 'spacing'].includes(props.type)) {
     styles.push(css`
       text-align: center;
-      padding: ${vars.spacing8} 0;
+      padding: ${vars.spacingS} 0;
       cursor: default;
       border-radius: ${vars.borderRadius4};
     `);
@@ -16,7 +16,7 @@ const getStyles = props => {
   if (['heading', 'spacing'].includes(props.type)) {
     styles.push(css`
       text-align: center;
-      padding: ${vars.spacing8} 0;
+      padding: ${vars.spacingS} 0;
       cursor: default;
       color: ${vars.colorGray60};
     `);

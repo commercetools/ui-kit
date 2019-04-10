@@ -24,7 +24,7 @@ export default class CalendarMenu extends Component {
           font-family: ${vars.fontFamilyDefault};
           border: 1px solid ${vars.borderColorInputFocus};
           border-radius: ${vars.borderRadiusInput};
-          margin-top: ${vars.spacing4};
+          margin-top: ${vars.spacingXs};
           font-size: ${vars.fontSizeDefault};
           position: absolute;
           box-sizing: border-box;

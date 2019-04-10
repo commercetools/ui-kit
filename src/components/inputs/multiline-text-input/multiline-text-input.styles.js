@@ -13,7 +13,7 @@ const getTextareaStyles = (props, theme) => {
   const baseStyles = [
     getInputStyles(props, theme),
     css`
-      padding: ${vars.spacing4} ${vars.spacing8};
+      padding: ${vars.spacingXs} ${vars.spacingS};
       line-height: ${sizeInputLineHeight};
       word-break: break-all;
       white-space: pre-wrap;

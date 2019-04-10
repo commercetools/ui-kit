@@ -66,7 +66,7 @@ export const SecondaryButton = props => {
       css={css`
         display: flex;
         align-items: center;
-        padding: 0 ${vars.spacing16};
+        padding: 0 ${vars.spacingM};
         height: ${vars.bigButtonHeight};
       `}
     >
@@ -74,7 +74,7 @@ export const SecondaryButton = props => {
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${vars.spacing4} 0 0;
+              margin: 0 ${vars.spacingXs} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;

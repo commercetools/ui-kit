@@ -36,14 +36,14 @@ const PropList = styled.div`
 
 const PropLabel = styled.span`
   font-weight: bold;
-  padding: 0 ${customProperties.spacing4};
+  padding: 0 ${customProperties.spacingXs};
   min-width: 140px;
   display: inline-block;
   box-sizing: border-box;
 `;
 
 const PropValue = styled.span`
-  padding: 0 ${customProperties.spacing4};
+  padding: 0 ${customProperties.spacingXs};
   box-sizing: border-box;
 `;
 

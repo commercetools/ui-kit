@@ -17,7 +17,7 @@ const getClearSectionStyles = props => {
     border-left: none;
     height: ${vars.sizeHeightInput};
     display: flex;
-    padding: ${vars.spacing4};
+    padding: ${vars.spacingXs};
     cursor: pointer;
   `;
   if (props.isDisabled) {
@@ -54,7 +54,7 @@ const getClockIconContainerStyles = props => {
     border-left: none;
     height: ${vars.sizeHeightInput};
     display: flex;
-    padding: ${vars.spacing4};
+    padding: ${vars.spacingXs};
     border-top-right-radius: ${vars.borderRadiusInput};
     border-bottom-right-radius: ${vars.borderRadiusInput};
   `;

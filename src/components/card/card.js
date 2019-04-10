@@ -25,7 +25,7 @@ const Card = props => (
   >
     <div
       css={css`
-        padding: ${vars.spacing16};
+        padding: ${vars.spacingM};
       `}
     >
       {props.children}
