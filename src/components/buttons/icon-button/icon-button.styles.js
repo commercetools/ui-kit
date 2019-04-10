@@ -11,8 +11,8 @@ const buttonSizes = {
 const getStateStyles = (isDisabled, isActive, theme) => {
   if (isDisabled) {
     const disabledStyle = css`
-      background-color: ${vars.colorNavy98};
-      color: ${vars.colorGray60};
+      background-color: ${vars.colorAccent98};
+      color: ${vars.colorNeutral60};
       box-shadow: none;
     `;
     switch (theme) {
@@ -21,7 +21,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
           disabledStyle,
           css`
             &:hover {
-              background-color: ${vars.colorBlue85};
+              background-color: ${vars.colorInfo85};
             }
           `,
         ];
@@ -30,7 +30,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
           disabledStyle,
           css`
             &:hover {
-              background-color: ${vars.colorGreen85};
+              background-color: ${vars.colorPrimary85};
             }
           `,
         ];
@@ -41,10 +41,10 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   if (isActive) {
     const activeStyle = css`
       box-shadow: ${vars.shadow9};
-      background-color: ${vars.colorWhite};
+      background-color: ${vars.colorSurface};
       &:hover {
         box-shadow: ${vars.shadow9};
-        background-color: ${vars.colorGray95};
+        background-color: ${vars.colorNeutral95};
       }
     `;
     switch (theme) {
@@ -57,16 +57,16 @@ const getStateStyles = (isDisabled, isActive, theme) => {
               // a different color to indicate that it's active but can't receive any actions
               isDisabled
                 ? `
-                  background-color: ${vars.colorBlue85};
-                  color: ${vars.colorWhite};
+                  background-color: ${vars.colorInfo85};
+                  color: ${vars.colorSurface};
                   box-shadow: ${vars.shadow9};
                 `
                 : ''
             }
-            background-color: ${vars.colorBlue};
-            color: ${vars.colorWhite};
+            background-color: ${vars.colorInfo};
+            color: ${vars.colorSurface};
             &:hover {
-              background-color: ${vars.colorBlue85};
+              background-color: ${vars.colorInfo85};
             }
           `,
         ];
@@ -79,16 +79,16 @@ const getStateStyles = (isDisabled, isActive, theme) => {
               // a different color to indicate that it's active but can't receive any actions
               isDisabled
                 ? `
-                  background-color: ${vars.colorGreen85};
-                  color: ${vars.colorWhite};
+                  background-color: ${vars.colorPrimary85};
+                  color: ${vars.colorSurface};
                   box-shadow: ${vars.shadow9};
                 `
                 : ''
             }
-            background-color: ${vars.colorGreen};
-            color: ${vars.colorWhite};
+            background-color: ${vars.colorPrimary};
+            color: ${vars.colorSurface};
             &:hover {
-              background-color: ${vars.colorGreen85};
+              background-color: ${vars.colorPrimary85};
             }
           `,
         ];
@@ -102,7 +102,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
     }
     &:active {
       box-shadow: ${vars.shadow9};
-      background-color: ${vars.colorWhite};
+      background-color: ${vars.colorSurface};
     }
   `;
 };
@@ -164,15 +164,15 @@ const getThemeStyles = theme => {
     case 'green':
       return css`
         &:active {
-          background-color: ${vars.colorGreen};
-          color: ${vars.colorWhite};
+          background-color: ${vars.colorPrimary};
+          color: ${vars.colorSurface};
         }
       `;
     case 'blue':
       return css`
         &:hover {
-          background-color: ${vars.colorBlue};
-          color: ${vars.colorWhite};
+          background-color: ${vars.colorInfo};
+          color: ${vars.colorSurface};
         }
       `;
     default: {

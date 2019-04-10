@@ -354,8 +354,8 @@ export default class BaseTable extends React.Component {
               }}
               className={classnames(
                 makeClassName({
-                  background: vars.colorNavy,
-                  color: vars.colorWhite,
+                  background: vars.colorAccent,
+                  color: vars.colorSurface,
                 }),
                 columnDefinition.headerClassName,
                 makeClassName({ textAlign: columnDefinition.align || 'left' })
@@ -380,7 +380,7 @@ export default class BaseTable extends React.Component {
                   ? {
                       cursor: 'pointer',
                       transition: vars.transitionStandard,
-                      background: vars.colorGray90,
+                      background: vars.colorNeutral90,
                     }
                   : {}),
               }),
@@ -484,7 +484,7 @@ export default class BaseTable extends React.Component {
         <Global
           styles={css`
             .ReactVirtualized__Grid {
-              background: ${vars.colorWhite};
+              background: ${vars.colorSurface};
               /* Removes :focus ring from table */
               outline-width: 0;
             }
@@ -495,7 +495,7 @@ export default class BaseTable extends React.Component {
             <div
               className={classnames(
                 makeClassName({
-                  outline: `1px solid ${vars.colorGray90}`,
+                  outline: `1px solid ${vars.colorNeutral90}`,
                 }),
                 this.props.tableClassName
               )}
@@ -507,7 +507,7 @@ export default class BaseTable extends React.Component {
             >
               <MultiGrid
                 ref={this.registerMultiGrid}
-                styleTopLeftGrid={{ background: vars.colorGray90 }}
+                styleTopLeftGrid={{ background: vars.colorNeutral90 }}
                 styleBottomLeftGrid={{
                   boxShadow: '4px -2px 4px -4px rgba(0, 0, 0, 0.3)',
                 }}

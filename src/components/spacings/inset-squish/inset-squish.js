@@ -7,11 +7,11 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 const getPadding = scale => {
   switch (scale) {
     case 's':
-      return `${vars.spacing4} ${vars.spacing8}`;
+      return `${vars.spacingXs} ${vars.spacingS}`;
     case 'm':
-      return `${vars.spacing8} ${vars.spacing16}`;
+      return `${vars.spacingS} ${vars.spacingM}`;
     case 'l':
-      return `${vars.spacing16} ${vars.spacing32}`;
+      return `${vars.spacingM} ${vars.spacingXl}`;
     default:
       return 0;
   }

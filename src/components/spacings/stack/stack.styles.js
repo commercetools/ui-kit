@@ -15,15 +15,15 @@ const getAlignItem = alignment => {
 const getMargin = scale => {
   switch (scale) {
     case 'xs':
-      return vars.spacing4;
+      return vars.spacingXs;
     case 's':
-      return vars.spacing8;
+      return vars.spacingS;
     case 'm':
-      return vars.spacing16;
+      return vars.spacingM;
     case 'l':
-      return vars.spacing24;
+      return vars.spacingL;
     case 'xl':
-      return vars.spacing32;
+      return vars.spacingXl;
     default:
       return 0;
   }

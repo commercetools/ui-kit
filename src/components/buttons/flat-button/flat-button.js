@@ -27,9 +27,9 @@ const getIconElement = props => {
 const getTextColor = (tone, isHover = false) => {
   switch (tone) {
     case 'primary':
-      return isHover ? vars.colorGreen25 : vars.colorGreen;
+      return isHover ? vars.colorPrimary25 : vars.colorPrimary;
     case 'secondary':
-      return vars.colorBlack;
+      return vars.colorSolid;
     default:
       return 'inherit';
   }
@@ -59,7 +59,7 @@ export const FlatButton = props => {
           min-height: initial;
           p {
             color: ${
-              props.isDisabled ? vars.colorGray : getTextColor(props.tone)
+              props.isDisabled ? vars.colorNeutral : getTextColor(props.tone)
             };
           }
           &:hover,
@@ -67,7 +67,7 @@ export const FlatButton = props => {
             p {
               color: ${
                 props.isDisabled
-                  ? vars.colorGray
+                  ? vars.colorNeutral
                   : getTextColor(props.tone, true)
               };
             }
@@ -75,7 +75,7 @@ export const FlatButton = props => {
             svg * {
                 fill: ${
                   props.isDisabled
-                    ? vars.colorGray
+                    ? vars.colorNeutral
                     : getTextColor(props.tone, true)
                 };
               }

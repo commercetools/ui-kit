@@ -15,7 +15,7 @@ const getClearSectionStyles = props => {
     border-top: 1px solid ${vars.borderColorInputPristine};
     height: ${vars.sizeHeightInput};
     display: flex;
-    padding: ${vars.spacing4};
+    padding: ${vars.spacingXs};
     cursor: pointer;
     outline: 0;
   `;
@@ -58,7 +58,7 @@ const getCalendarIconContainerStyles = (props, state) => {
     border: 1px solid ${vars.borderColorInputPristine};
     height: ${vars.sizeHeightInput};
     display: flex;
-    padding: ${vars.spacing4};
+    padding: ${vars.spacingXs};
     border-top-right-radius: ${vars.borderRadiusInput};
     border-bottom-right-radius: ${vars.borderRadiusInput};
     outline: 0;

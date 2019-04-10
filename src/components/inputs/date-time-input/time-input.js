@@ -7,16 +7,16 @@ const getInputStyles = () => css`
   width: 100%;
   text-align: center;
   border: 0;
-  border-top: 1px solid ${vars.colorGray90};
+  border-top: 1px solid ${vars.colorNeutral90};
   padding: 10px 0;
   outline: 0;
   font-size: ${vars.fontSizeDefault};
-  margin-top: ${vars.spacing8};
-  color: ${vars.colorBlack};
+  margin-top: ${vars.spacingS};
+  color: ${vars.colorSolid};
 
   :disabled {
     /* Fixes background color in Firefox */
-    background-color: ${vars.colorWhite};
+    background-color: ${vars.colorSurface};
   }
 `;
 const DateCalendarTimeInput = props => (

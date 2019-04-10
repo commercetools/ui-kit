@@ -30,8 +30,8 @@ const HeaderIcon = props => (
         flex-shrink: 0;
         box-shadow: ${vars.shadow7};
         background-color: ${props.tone === 'urgent'
-          ? vars.colorOrange
-          : vars.colorWhite};
+          ? vars.colorWarning
+          : vars.colorSurface};
       `,
       props.isDisabled &&
         css`

@@ -91,7 +91,7 @@ const getToggleButtonStyles = props => {
         filter: drop-shadow(${vars.shadow12First});
 
         svg .bt-fill {
-          fill: ${vars.colorGreen};
+          fill: ${vars.colorPrimary};
         }
       `,
     props.isDisabled &&
@@ -99,7 +99,7 @@ const getToggleButtonStyles = props => {
         filter: drop-shadow(${vars.shadow13First});
 
         svg .bt-fill {
-          fill: ${vars.colorGray90};
+          fill: ${vars.colorNeutral90};
         }
       `,
     props.isChecked &&
@@ -108,7 +108,7 @@ const getToggleButtonStyles = props => {
         filter: drop-shadow(${vars.shadow14First});
 
         svg .bt-fill {
-          fill: ${vars.colorGreen85};
+          fill: ${vars.colorPrimary85};
         }
       `,
   ];
@@ -142,19 +142,19 @@ const getToggleBarStyles = props => {
       position: absolute;
       left: 0;
       rect {
-        fill: ${vars.colorGray60};
+        fill: ${vars.colorNeutral60};
       }
     `,
     props.isChecked &&
       css`
         rect {
-          fill: ${vars.colorGreen25};
+          fill: ${vars.colorPrimary25};
         }
       `,
     props.isDisabled &&
       css`
         rect {
-          fill: ${vars.colorNavy95};
+          fill: ${vars.colorAccent95};
         }
       `,
   ];

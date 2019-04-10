@@ -17,38 +17,38 @@ const getToneStyles = props => {
   switch (props.tone) {
     case 'critical': {
       return css`
-        background-color: ${vars.colorRed95};
-        border: 1px solid ${vars.colorRed};
+        background-color: ${vars.colorError95};
+        border: 1px solid ${vars.colorError};
       `;
     }
     case 'warning': {
       return css`
-        background-color: ${vars.colorOrange95};
-        border: 1px solid ${vars.colorOrange};
+        background-color: ${vars.colorWarning95};
+        border: 1px solid ${vars.colorWarning};
       `;
     }
     case 'positive': {
       return css`
-        background-color: ${vars.colorGreen85};
-        border: 1px solid ${vars.colorGreen40};
+        background-color: ${vars.colorPrimary85};
+        border: 1px solid ${vars.colorPrimary40};
       `;
     }
     case 'information': {
       return css`
-        background-color: ${vars.colorBlue95};
-        border: 1px solid ${vars.colorBlue};
+        background-color: ${vars.colorInfo95};
+        border: 1px solid ${vars.colorInfo};
       `;
     }
     case 'primary': {
       return css`
-        background-color: ${vars.colorGreen95};
-        border: 1px solid ${vars.colorGreen25};
+        background-color: ${vars.colorPrimary95};
+        border: 1px solid ${vars.colorPrimary25};
       `;
     }
     case 'secondary': {
       return css`
-        background-color: ${vars.colorGray90};
-        border: 1px solid ${vars.colorGray60};
+        background-color: ${vars.colorNeutral90};
+        border: 1px solid ${vars.colorNeutral60};
       `;
     }
     default:
@@ -61,7 +61,7 @@ const Label = props => (
     css={[
       css`
         font-family: ${vars.fontFamilyDefault};
-        color: ${vars.colorBlack};
+        color: ${vars.colorSolid};
         font-size: ${vars.fontSizeDefault};
         border-radius: 2px;
       `,

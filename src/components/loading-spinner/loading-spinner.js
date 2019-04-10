@@ -46,7 +46,7 @@ const LoadingSpinner = props => {
         >
           <path
             css={css`
-              fill: ${vars.colorNavy};
+              fill: ${vars.colorAccent};
               opacity: 0.2;
             `}
             d={circlePath}
@@ -54,7 +54,7 @@ const LoadingSpinner = props => {
           <path
             css={css`
               animation: ${spin} 0.5s infinite linear;
-              fill: ${vars.colorNavy};
+              fill: ${vars.colorAccent};
               transform-origin: ${positionOrigin} ${positionOrigin} 0;
             `}
             d={pointerPath}

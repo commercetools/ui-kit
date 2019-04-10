@@ -19,21 +19,21 @@ const getButtonStyles = isDisabled => {
       baseButtonStyles,
       css`
         box-shadow: none;
-        background-color: ${vars.colorNavy98};
+        background-color: ${vars.colorAccent98};
       `,
     ];
   }
   return [
     baseButtonStyles,
     css`
-      background-color: ${vars.colorWhite};
+      background-color: ${vars.colorSurface};
       box-shadow: ${vars.shadow7};
       &:hover {
         box-shadow: ${vars.shadow8};
       }
       &:active {
         box-shadow: ${vars.shadow9};
-        background-color: ${vars.colorGray95};
+        background-color: ${vars.colorNeutral95};
       }
     `,
   ];
@@ -64,14 +64,14 @@ class DropdownHead extends React.PureComponent {
           css={[
             ...getButtonStyles(this.props.isDisabled),
             css`
-              padding: 0 ${vars.spacing8};
+              padding: 0 ${vars.spacingS};
               border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
             `,
           ]}
         >
           <span
             css={css`
-              margin: 0 ${vars.spacing4} 0 0;
+              margin: 0 ${vars.spacingXs} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -84,7 +84,7 @@ class DropdownHead extends React.PureComponent {
           </span>
           <span
             css={css`
-              margin: 0 ${vars.spacing4} 0 0;
+              margin: 0 ${vars.spacingXs} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -111,8 +111,8 @@ const DropdownChevron = React.forwardRef((props, ref) => (
     css={[
       ...getButtonStyles(props.isDisabled),
       css`
-        padding: 0 ${vars.spacing4};
-        border-left: 1px solid ${vars.colorGray};
+        padding: 0 ${vars.spacingXs};
+        border-left: 1px solid ${vars.colorNeutral};
         border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
       `,
     ]}
@@ -152,9 +152,9 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(${vars.spacing8} + ${vars.bigButtonHeight});
+  top: calc(${vars.spacingS} + ${vars.bigButtonHeight});
   left: 0;
-  border: 1px solid ${vars.colorGray};
+  border: 1px solid ${vars.colorNeutral};
   border-radius: ${vars.borderRadius6};
   box-shadow: ${vars.shadow1};
 `;
@@ -169,8 +169,8 @@ export const Option = props => (
         display: block;
         text-align: left;
         width: 100%;
-        padding: ${vars.spacing8};
-        background-color: ${vars.colorWhite};
+        padding: ${vars.spacingS};
+        background-color: ${vars.colorSurface};
         &:first-of-type {
           border-radius: ${vars.borderRadius6} ${vars.borderRadius6} 0 0;
         }
@@ -178,12 +178,12 @@ export const Option = props => (
           border-radius: 0 0 ${vars.borderRadius6} ${vars.borderRadius6};
         }
         &:hover {
-          background-color: ${vars.colorGray95};
+          background-color: ${vars.colorNeutral95};
         }
       `,
       props.isDisabled &&
         css`
-          color: ${vars.colorGray};
+          color: ${vars.colorNeutral};
         `,
     ]}
   >

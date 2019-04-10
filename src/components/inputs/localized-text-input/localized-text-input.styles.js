@@ -41,7 +41,7 @@ const getLanguageLabelStyles = (props, theme) => {
     ]};
     border: 1px ${overwrittenVars[designTokens.borderColorForInputWhenDisabled]}
       solid;
-    padding: 0 ${vars.spacing8};
+    padding: 0 ${vars.spacingS};
     transition: ${vars.transitionStandard};
     border-right: 0;
     box-shadow: none;

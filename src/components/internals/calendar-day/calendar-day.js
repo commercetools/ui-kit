@@ -8,7 +8,7 @@ const getStyles = props => {
   if (!['heading', 'spacing'].includes(props.type)) {
     styles.push(css`
       text-align: center;
-      padding: ${vars.spacing8} 0;
+      padding: ${vars.spacingS} 0;
       cursor: default;
       border-radius: ${vars.borderRadius4};
     `);
@@ -16,38 +16,38 @@ const getStyles = props => {
   if (['heading', 'spacing'].includes(props.type)) {
     styles.push(css`
       text-align: center;
-      padding: ${vars.spacing8} 0;
+      padding: ${vars.spacingS} 0;
       cursor: default;
-      color: ${vars.colorGray60};
+      color: ${vars.colorNeutral60};
     `);
   }
   if (props.isHighlighted) {
     styles.push(
       css`
-        background-color: ${vars.colorGray90};
+        background-color: ${vars.colorNeutral90};
       `
     );
   }
   if (props.isSelected) {
     styles.push(
       css`
-        background-color: ${vars.colorGreen};
-        color: ${vars.colorWhite};
+        background-color: ${vars.colorPrimary};
+        color: ${vars.colorSurface};
       `
     );
   }
   if (props.isRangeStart || props.isRangeEnd) {
     styles.push(
       css`
-        background-color: ${vars.colorGreen40};
-        color: ${vars.colorWhite};
+        background-color: ${vars.colorPrimary40};
+        color: ${vars.colorSurface};
       `
     );
   }
   if (props.isRangeBetween) {
     styles.push(
       css`
-        background-color: ${vars.colorGray90};
+        background-color: ${vars.colorNeutral90};
         color: ${vars.fontColorDefault};
       `
     );
@@ -59,7 +59,7 @@ const getStyles = props => {
     props.isToday
   ) {
     styles.push(css`
-      color: ${vars.colorBlue};
+      color: ${vars.colorInfo};
       font-weight: bold;
     `);
   }

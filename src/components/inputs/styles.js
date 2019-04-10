@@ -24,7 +24,7 @@ const getInputStyles = (props, theme) => {
     min-height: ${overwrittenVars.sizeHeightInput};
     outline: none;
     overflow: hidden;
-    padding: 0 ${overwrittenVars.spacing8};
+    padding: 0 ${overwrittenVars.spacingS};
     transition: ${overwrittenVars.transitionStandard};
     width: 100%;
 

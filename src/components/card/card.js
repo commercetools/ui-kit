@@ -17,15 +17,15 @@ const Card = props => (
         box-shadow: ${props.type === 'raised' ? vars.shadow1Second : 'none'};
         border-radius: ${vars.borderRadius6};
         background: ${props.theme === 'dark'
-          ? vars.colorGray95
-          : vars.colorWhite};
+          ? vars.colorNeutral95
+          : vars.colorSurface};
       `,
     ]}
     className={props.className}
   >
     <div
       css={css`
-        padding: ${vars.spacing16};
+        padding: ${vars.spacingM};
       `}
     >
       {props.children}

@@ -5,13 +5,15 @@ const getContainerStyles = ({ isCondensed, theme }) => {
   const baseStyles = css`
     font-family: ${vars.fontFamilyDefault};
     box-shadow: ${vars.shadow1Second};
-    color: ${vars.colorBlack};
+    color: ${vars.colorSolid};
     border-radius: ${vars.borderRadius6};
     position: relative;
     min-width: 550px;
     font-size: ${vars.fontSizeDefault};
     padding: 0;
-    background-color: ${theme === 'light' ? vars.colorWhite : vars.colorGray95};
+    background-color: ${theme === 'light'
+      ? vars.colorSurface
+      : vars.colorNeutral95};
   `;
 
   if (isCondensed) {
@@ -31,14 +33,16 @@ const getHeaderContainerStyles = ({ isDisabled, isOpen, isSticky, theme }) => {
     cursor: pointer;
     border-top-left-radius: ${vars.borderRadius6};
     border-top-right-radius: ${vars.borderRadius6};
-    background-color: ${theme === 'light' ? vars.colorWhite : vars.colorGray95};
+    background-color: ${theme === 'light'
+      ? vars.colorSurface
+      : vars.colorNeutral95};
   `;
 
   return [
     baseStyles,
     isOpen &&
       css`
-        border-bottom: 1px ${vars.colorGray60} solid;
+        border-bottom: 1px ${vars.colorNeutral60} solid;
       `,
     isDisabled &&
       css`
@@ -85,7 +89,7 @@ const getHeaderStyles = ({ isDisabled, isCondensed }) => {
     > * + * {
       /* would have loved to use Spacings.Inline here but that would require a
     complete overhaul of this components' structure */
-      margin: 0 0 0 ${vars.spacing16};
+      margin: 0 0 0 ${vars.spacingM};
     }
   `;
   if (isDisabled) {
@@ -103,7 +107,7 @@ const getHeaderStyles = ({ isDisabled, isCondensed }) => {
         /**
          We set a min-height of 32px to anticipate use-cases where SecondaryButton or PrimaryButton
          are rendered in the headerControl */
-        min-height: ${vars.spacing32};
+        min-height: ${vars.spacingXl};
       `,
   ];
 };
