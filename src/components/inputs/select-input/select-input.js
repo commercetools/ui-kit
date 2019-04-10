@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import { injectIntl } from 'react-intl';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
@@ -10,44 +9,9 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
-import Tag from '../../tag';
+import MultiValue from '../../internals/multivalue';
 import messages from './messages';
 import createSelectStyles from '../../internals/create-select-styles';
-
-const MultiValue = props => {
-  return (
-    <div
-      css={css`
-        display: inline-block;
-        margin: 2px;
-      `}
-    >
-      <Tag
-        styles={{
-          body: css`
-            padding: 4px 8px 3px 6px;
-          `,
-        }}
-        isDisabled={props.isDisabled}
-        onRemove={props.removeProps.onClick}
-      >
-        {props.data.label}
-      </Tag>
-    </div>
-  );
-};
-
-MultiValue.displayName = 'MultiValue';
-
-MultiValue.propTypes = {
-  isDisabled: PropTypes.bool,
-  removeProps: PropTypes.shape({
-    onClick: PropTypes.func.isRequired,
-  }).isRequired,
-  data: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 const customizedComponents = {
   DropdownIndicator,
