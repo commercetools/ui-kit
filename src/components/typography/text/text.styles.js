@@ -3,7 +3,7 @@ import vars from '../../../../materials/custom-properties';
 
 const baseStyles = `
   font-family: ${vars.fontFamilyDefault};
-  color: ${vars.colorBlack};
+  color: ${vars.colorSolid};
 `;
 
 const truncate = `
@@ -27,19 +27,19 @@ const inline = `
 const getTone = tone => {
   switch (tone) {
     case 'information':
-      return `color: ${vars.colorBlue};`;
+      return `color: ${vars.colorInfo};`;
     case 'secondary':
-      return `color: ${vars.colorGray60};`;
+      return `color: ${vars.colorNeutral60};`;
     case 'positive':
-      return `color: ${vars.colorGreen25};`;
+      return `color: ${vars.colorPrimary25};`;
     case 'primary':
-      return `color: ${vars.colorGreen};`;
+      return `color: ${vars.colorPrimary};`;
     case 'negative':
-      return `color: ${vars.colorRed};`;
+      return `color: ${vars.colorError};`;
     case 'inverted':
-      return `color: ${vars.colorWhite};`;
+      return `color: ${vars.colorSurface};`;
     case 'warning':
-      return `color: ${vars.colorOrange};`;
+      return `color: ${vars.colorWarning};`;
     default:
       return ``;
   }

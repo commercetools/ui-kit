@@ -42,10 +42,10 @@ export const SecondaryButton = props => {
   const containerStyles = [
     css`
       display: inline-block;
-      background-color: ${vars.colorWhite};
+      background-color: ${vars.colorSurface};
       border-radius: ${vars.borderRadius6};
       box-shadow: ${vars.shadow7};
-      color: ${vars.colorBlack};
+      color: ${vars.colorSolid};
       font-size: ${vars.fontSizeDefault};
       transition: background-color ${vars.transitionLinear80Ms},
         box-shadow ${vars.transitionEaseinout150Ms};

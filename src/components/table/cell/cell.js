@@ -6,8 +6,8 @@ const Cell = styled.div`
   align-items: center;
   height: 100%;
   white-space: pre;
-  border-bottom: 1px solid ${vars.colorGray90};
-  border-right: 1px solid ${vars.colorGray90};
+  border-bottom: 1px solid ${vars.colorNeutral90};
+  border-right: 1px solid ${vars.colorNeutral90};
 
   & > * {
     flex: 1 0 100%;

@@ -41,8 +41,8 @@ export const Body = styled.div`
   box-shadow: ${vars.shadow15};
   font-size: 0.857rem;
   opacity: 0.95;
-  color: ${vars.colorWhite};
-  background-color: ${vars.colorNavy};
+  color: ${vars.colorSurface};
+  background-color: ${vars.colorAccent};
 `;
 // here we use object styles so we can spread these
 // with the styles we get from react-popper :D

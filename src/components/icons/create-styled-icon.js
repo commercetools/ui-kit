@@ -37,21 +37,21 @@ const getColor = theme => {
   if (!theme) return 'inherit';
   switch (theme) {
     case 'black':
-      return vars.colorBlack;
+      return vars.colorSolid;
     case 'grey':
-      return vars.colorGray60;
+      return vars.colorNeutral60;
     case 'white':
-      return vars.colorWhite;
+      return vars.colorSurface;
     case 'blue':
-      return vars.colorBlue;
+      return vars.colorInfo;
     case 'green':
-      return vars.colorGreen;
+      return vars.colorPrimary;
     case 'green-light':
-      return vars.colorGreen40;
+      return vars.colorPrimary40;
     case 'orange':
-      return vars.colorOrange;
+      return vars.colorWarning;
     case 'red':
-      return vars.colorRed;
+      return vars.colorError;
     default: {
       invariant(
         theme,

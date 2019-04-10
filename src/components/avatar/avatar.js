@@ -86,10 +86,10 @@ const Avatar = props => (
     css={css`
       align-items: center;
       font-family: ${vars.fontFamilyDefault};
-      background-color: ${vars.colorGray60};
+      background-color: ${vars.colorNeutral60};
       border-radius: 100%;
       font-size: ${vars.fontSizeDefault};
-      color: ${vars.colorWhite};
+      color: ${vars.colorSurface};
       display: flex;
       justify-content: center;
       overflow: hidden;
@@ -98,7 +98,7 @@ const Avatar = props => (
       height: ${avatarSizes[props.size].width};
       width: ${avatarSizes[props.size].width};
 
-      ${props.isHighlighted ? `background-color: ${vars.colorGray};` : ''}
+      ${props.isHighlighted ? `background-color: ${vars.colorNeutral};` : ''}
     `}
     {...filterDataAttributes(props)}
   >

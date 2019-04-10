@@ -23,13 +23,13 @@ const LinkButton = props => (
         cursor: pointer;
         text-decoration: none;
         span {
-          color: ${vars.colorGreen};
-          ${props.isDisabled ? `color: ${vars.colorGray};` : ''}
+          color: ${vars.colorPrimary};
+          ${props.isDisabled ? `color: ${vars.colorNeutral};` : ''}
         }
         &:hover {
           span {
-            color: ${vars.colorGreen25};
-            ${props.isDisabled ? `color: ${vars.colorGray});` : ''}
+            color: ${vars.colorPrimary25};
+            ${props.isDisabled ? `color: ${vars.colorNeutral});` : ''}
           }
         }
       `,

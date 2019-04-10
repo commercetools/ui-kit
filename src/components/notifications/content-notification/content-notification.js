@@ -8,13 +8,13 @@ import vars from '../../../../materials/custom-properties';
 const getIconContainerBackgroundColour = props => {
   switch (props.type) {
     case 'error':
-      return vars.colorRed;
+      return vars.colorError;
     case 'info':
-      return vars.colorBlue;
+      return vars.colorInfo;
     case 'warning':
-      return vars.colorOrange;
+      return vars.colorWarning;
     case 'success':
-      return vars.colorGreen;
+      return vars.colorPrimary;
     default:
       return '';
   }
@@ -65,13 +65,13 @@ class NotificationIcon extends React.PureComponent {
 const getContentBorderColor = props => {
   switch (props.type) {
     case 'error':
-      return vars.colorRed;
+      return vars.colorError;
     case 'info':
-      return vars.colorBlue;
+      return vars.colorInfo;
     case 'warning':
-      return vars.colorOrange;
+      return vars.colorWarning;
     case 'success':
-      return vars.colorGreen;
+      return vars.colorPrimary;
     default:
       return '';
   }
@@ -96,7 +96,7 @@ export default class ContentNotification extends React.PureComponent {
           word-break: break-word;
           hyphens: auto;
           font-size: ${vars.fontSizeDefault};
-          color: ${vars.colorBlack};
+          color: ${vars.colorSolid};
           font-family: ${vars.fontFamilyDefault};
         `}
       >
@@ -107,7 +107,7 @@ export default class ContentNotification extends React.PureComponent {
             display: flex;
             align-items: center;
             padding: ${vars.spacingS};
-            background: ${vars.colorWhite};
+            background: ${vars.colorSurface};
             border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
             border-width: 1px;
             border-style: solid;

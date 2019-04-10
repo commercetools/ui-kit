@@ -14,7 +14,7 @@ const CalendarHeader = props => (
       padding: 10px 2% 6px;
       margin-bottom: ${vars.spacingXs};
       justify-content: space-between;
-      border-bottom: 1px solid ${vars.colorGray90};
+      border-bottom: 1px solid ${vars.colorNeutral90};
     `}
   >
     <Spacings.Inline scale="xs" alignItems="center">

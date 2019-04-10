@@ -20,7 +20,7 @@ export default class CalendarMenu extends Component {
         {...rest}
         css={css`
           overflow-y: scroll;
-          color: ${vars.colorBlack};
+          color: ${vars.colorSolid};
           font-family: ${vars.fontFamilyDefault};
           border: 1px solid ${vars.borderColorInputFocus};
           border-radius: ${vars.borderRadiusInput};
@@ -29,7 +29,7 @@ export default class CalendarMenu extends Component {
           position: absolute;
           box-sizing: border-box;
           width: 100%;
-          background-color: ${vars.colorWhite};
+          background-color: ${vars.colorSurface};
           z-index: 99999; /* copied from flatpickr */;
           ${hasFooter ? '' : `padding-bottom: 10px;`}
           ${hasError ? `border-color: ${vars.borderColorInputError};` : ''}

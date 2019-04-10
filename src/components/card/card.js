@@ -17,8 +17,8 @@ const Card = props => (
         box-shadow: ${props.type === 'raised' ? vars.shadow1Second : 'none'};
         border-radius: ${vars.borderRadius6};
         background: ${props.theme === 'dark'
-          ? vars.colorGray95
-          : vars.colorWhite};
+          ? vars.colorNeutral95
+          : vars.colorSurface};
       `,
     ]}
     className={props.className}

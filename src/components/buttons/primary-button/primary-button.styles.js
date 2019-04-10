@@ -5,7 +5,7 @@ const getButtonLayoutStyles = size => {
   const baseLayoutStyles = css`
     display: inline-flex;
     align-items: center;
-    color: ${vars.colorWhite};
+    color: ${vars.colorSurface};
     transition: background-color ${vars.transitionLinear80Ms};
   `;
   switch (size) {
@@ -51,9 +51,9 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
         &,
         &:active,
         &:hover {
-          background-color: ${vars.colorNavy98};
-          color: ${vars.colorGray60};
-          box-shadow: 0 0 0 1px ${vars.colorGray} inset;
+          background-color: ${vars.colorAccent98};
+          color: ${vars.colorNeutral60};
+          box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
         }
       `,
     ];
@@ -74,12 +74,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
         return [
           baseActiveStyles,
           css`
-            background-color: ${vars.colorGreen};
+            background-color: ${vars.colorPrimary};
             &:hover {
-              background-color: ${vars.colorGreen25};
+              background-color: ${vars.colorPrimary25};
             }
             &:active {
-              background-color: ${vars.colorGreen};
+              background-color: ${vars.colorPrimary};
             }
           `,
         ];
@@ -87,12 +87,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
         return [
           baseActiveStyles,
           css`
-            background-color: ${vars.colorOrange};
+            background-color: ${vars.colorWarning};
             &:hover {
-              background-color: ${vars.colorOrange};
+              background-color: ${vars.colorWarning};
             }
             &:active {
-              background-color: ${vars.colorOrange};
+              background-color: ${vars.colorWarning};
             }
           `,
         ];
@@ -118,12 +118,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
       return [
         baseDefaultStyles,
         css`
-          background-color: ${vars.colorGreen};
+          background-color: ${vars.colorPrimary};
           &:hover {
-            background-color: ${vars.colorGreen25};
+            background-color: ${vars.colorPrimary25};
           }
           &:active {
-            background-color: ${vars.colorGreen};
+            background-color: ${vars.colorPrimary};
           }
         `,
       ];
@@ -131,12 +131,12 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
       return [
         baseDefaultStyles,
         css`
-          background-color: ${vars.colorOrange};
+          background-color: ${vars.colorWarning};
           &:hover {
-            background-color: ${vars.colorGreen25};
+            background-color: ${vars.colorPrimary25};
           }
           &:active {
-            background-color: ${vars.colorOrange};
+            background-color: ${vars.colorWarning};
           }
         `,
       ];

@@ -301,7 +301,7 @@ class BaseTable extends React.PureComponent {
               onCheckboxClick: this.onCheckboxClick,
               checkboxClassName: makeClassName({
                 backgroundColor: '#f2f2f2',
-                borderLeft: `2px solid ${vars.colorBlue}`,
+                borderLeft: `2px solid ${vars.colorInfo}`,
                 ':hover': {
                   backgroundColor: '#e0e0e0',
                   cursor: 'pointer',

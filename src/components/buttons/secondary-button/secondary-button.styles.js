@@ -5,9 +5,9 @@ import vars from '../../../../materials/custom-properties';
 const getStateStyles = (isDisabled, isActive, theme) => {
   if (isDisabled) {
     const baseDisabledStyles = css`
-      box-shadow: 0 0 0 1px ${vars.colorGray} inset;
-      background-color: ${vars.colorNavy98};
-      color: ${vars.colorGray60};
+      box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
+      background-color: ${vars.colorAccent98};
+      color: ${vars.colorNeutral60};
       pointer-events: none;
       cursor: not-allowed;
     `;
@@ -16,9 +16,9 @@ const getStateStyles = (isDisabled, isActive, theme) => {
         return [
           baseDisabledStyles,
           css`
-            color: ${vars.colorGray60};
+            color: ${vars.colorNeutral60};
           `,
-          isActive && `color: ${vars.colorBlue};`,
+          isActive && `color: ${vars.colorInfo};`,
         ];
       default:
         return baseDisabledStyles;
@@ -28,16 +28,16 @@ const getStateStyles = (isDisabled, isActive, theme) => {
     const baseActiveStyles = [
       css`
         box-shadow: ${vars.shadow9};
-        background-color: ${vars.colorWhite};
+        background-color: ${vars.colorSurface};
         &:hover {
-          background-color: ${vars.colorGray95};
+          background-color: ${vars.colorNeutral95};
         }
       `,
       isDisabled &&
         css`
-          box-shadow: 0 0 0 1px ${vars.colorGray} inset;
-          background-color: ${vars.colorNavy98};
-          color: ${vars.colorGray60};
+          box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
+          background-color: ${vars.colorAccent98};
+          color: ${vars.colorNeutral60};
           pointer-events: none;
         `,
     ];
@@ -46,7 +46,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
         return [
           baseActiveStyles,
           css`
-            color: ${vars.colorBlue};
+            color: ${vars.colorInfo};
           `,
         ];
       default:
@@ -59,7 +59,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
     }
     &:active {
       box-shadow: ${vars.shadow9};
-      background-color: ${vars.colorWhite};
+      background-color: ${vars.colorSurface};
     }
   `;
 };
@@ -73,7 +73,7 @@ const getThemeStyles = theme => {
     case 'blue':
       return css`
         &:hover {
-          color: ${vars.colorBlue};
+          color: ${vars.colorInfo};
         }
       `;
     default: {
@@ -87,7 +87,7 @@ const getThemeStyles = theme => {
         }
         &:active {
           box-shadow: ${vars.shadow9};
-          background-color: ${vars.colorWhite};
+          background-color: ${vars.colorSurface};
         }
       `;
     }
