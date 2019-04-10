@@ -116,6 +116,7 @@ class MoneyFieldStory extends React.Component {
               : undefined
           }
           hintIcon={hintIcon}
+          hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
         />
       </Section>
     );
