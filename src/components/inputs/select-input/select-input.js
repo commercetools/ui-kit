@@ -16,19 +16,23 @@ import createSelectStyles from '../../internals/create-select-styles';
 
 const MultiValue = props => {
   return (
-    <span
+    <div
       css={css`
+        display: inline-block;
         margin: 2px;
       `}
     >
-      <Tag onRemove={props.removeProps.onClick}>{props.data.label}</Tag>
-    </span>
+      <Tag isDisabled={props.isDisabled} onRemove={props.removeProps.onClick}>
+        {props.data.label}
+      </Tag>
+    </div>
   );
 };
 
 MultiValue.displayName = 'MultiValue';
 
 MultiValue.propTypes = {
+  isDisabled: PropTypes.bool,
   removeProps: PropTypes.shape({
     onClick: PropTypes.func.isRequired,
   }).isRequired,

@@ -30,7 +30,7 @@ const getContentWrapperStyles = (props, theme) => {
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    height: ${vars.sizeHeightTag};
+    min-height: ${vars.sizeHeightTag};
     border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
     padding: 5px ${vars.spacingS};
     cursor: default;
