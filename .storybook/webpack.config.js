@@ -13,6 +13,19 @@ module.exports = ({ config }) => {
   config.plugins.push(
     new MomentLocalesPlugin({ localesToKeep: ['de', 'es', 'fr', 'zh-cn'] })
   );
+
+  if (process.env.NODE_ENV === 'production') {
+    // remove progress plugin
+    // progress plugin outputs a lot of console logs, which makes
+    // netlify build realllllllllllllllly slow.
+    config.plugins = config.plugins.filter(
+      plugin => plugin.constructor.name !== 'ProgressPlugin'
+    );
+    config.devtool = 'none'; // TODO: should we use something differen?
+  } else {
+    config.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
+  }
+
   config.devtool = 'cheap-module-source-map'; // TODO: should we use something differen?
   config.module.rules = [
     // Disable require.ensure as it's not a standard language feature.
