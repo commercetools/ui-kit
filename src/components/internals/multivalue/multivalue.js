@@ -11,6 +11,8 @@ const MultiValue = props => (
     `}
   >
     <Tag
+      // in order to make our Tag match the previous tags, we need to set these
+      // custom styles
       styles={{
         body: css`
           padding: 4px 8px 3px 6px;
