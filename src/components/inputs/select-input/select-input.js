@@ -9,14 +9,14 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
-import TagRemove from '../../internals/tag-remove';
+import MultiValue from '../../internals/multivalue';
 import messages from './messages';
 import createSelectStyles from '../../internals/create-select-styles';
 
 const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
-  MultiValueRemove: TagRemove,
+  MultiValue,
 };
 
 export class SelectInput extends React.Component {

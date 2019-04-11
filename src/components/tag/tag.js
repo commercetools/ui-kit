@@ -30,7 +30,6 @@ const getContentWrapperStyles = (props, theme) => {
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    min-height: ${vars.sizeHeightTag};
     border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
     padding: 5px ${vars.spacingS};
     cursor: default;
@@ -116,6 +115,7 @@ export const TagLinkBody = props => {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           `,
+        props.styles.body,
       ]}
     >
       {!props.isDisabled ? (
@@ -155,6 +155,9 @@ TagLinkBody.propTypes = {
   linkTo: PropTypes.string,
   isDisabled: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
+  styles: PropTypes.shape({
+    body: PropTypes.object,
+  }).isRequired,
 };
 
 export const TagNormalBody = props => (
@@ -189,6 +192,7 @@ export const TagNormalBody = props => (
             }
           }
         `,
+      props.styles.body,
     ]}
     onClick={props.isDisabled ? undefined : props.onClick}
   >
@@ -208,6 +212,9 @@ TagNormalBody.propTypes = {
   onRemove: PropTypes.func,
   isDisabled: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
+  styles: PropTypes.shape({
+    body: PropTypes.object,
+  }).isRequired,
 };
 
 const Tag = props => (
@@ -223,6 +230,7 @@ const Tag = props => (
     >
       {props.linkTo ? (
         <TagLinkBody
+          styles={props.styles}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
@@ -233,6 +241,7 @@ const Tag = props => (
         </TagLinkBody>
       ) : (
         <TagNormalBody
+          styles={props.styles}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
@@ -302,6 +311,9 @@ const Tag = props => (
 
 Tag.propTypes = {
   type: PropTypes.oneOf(['normal', 'warning']),
+  styles: PropTypes.shape({
+    body: PropTypes.object,
+  }).isRequired,
   linkTo: PropTypes.string,
   isDisabled: PropTypes.bool,
   onRemove: PropTypes.func,
@@ -311,6 +323,9 @@ Tag.propTypes = {
 };
 Tag.defaultProps = {
   type: 'normal',
+  styles: {
+    body: {},
+  },
   isDisabled: false,
   horizontalConstraint: 'scale',
 };

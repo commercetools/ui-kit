@@ -28,6 +28,7 @@ A tag is often used for items that need to be labeled or categorized. This might
 | Props                  | Type     | Required | Values                             | Default  | Description                                                        |
 | ---------------------- | -------- | :------: | ---------------------------------- | -------- | ------------------------------------------------------------------ |
 | `type`                 | `string` |    -     | `normal`, `warning`                | `normal` | Indicates color scheme of the tag                                  |
+| `styles.body`          | `object` |    -     | -                                  | -        | Styles spread onto the tag body                                    |
 | `linkTo`               | `string` |    -     | -                                  | -        | Location the tag links to when enabled                             |
 | `isDisabled`           | `bool`   |    -     | -                                  | `false`  | Disables the tag and the option to remove                          |
 | `onRemove`             | `func`   |    -     | -                                  | -        | Called when remove is clicked                                      |
