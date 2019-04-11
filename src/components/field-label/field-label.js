@@ -35,7 +35,11 @@ export const FieldLabel = props => (
       {props.hint && (
         <Spacings.Inline alignItems="center" scale="s">
           {props.hintIcon && (
-            <div>
+            <div
+              css={css`
+                display: inline-block;
+              `}
+            >
               {React.cloneElement(props.hintIcon, {
                 // FIXME: add proper tone when tones are refactored
                 size: props.hintIcon.props.size || 'medium',

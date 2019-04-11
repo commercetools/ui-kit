@@ -27,14 +27,6 @@ export const component = () => (
         horizontalConstraint="m"
       />
     </Spec>
-    <Spec label="with long hint and big icon">
-      <FieldLabel
-        title="Hello"
-        hint={lorem}
-        hintIcon={<WarningIcon size="big" />}
-        horizontalConstraint="m"
-      />
-    </Spec>
     <Spec label="with required indicator">
       <FieldLabel
         title="Hello"
@@ -66,6 +58,14 @@ export const component = () => (
         badge={<FlatButton tone="primary" label="show" />}
         htmlFor="sampleInput"
         horizontalConstraint="l"
+      />
+    </Spec>
+    <Spec label="with long hint and big icon">
+      <FieldLabel
+        title="Hello"
+        hint={lorem}
+        hintIcon={<WarningIcon size="big" />}
+        horizontalConstraint="m"
       />
     </Spec>
   </Suite>
