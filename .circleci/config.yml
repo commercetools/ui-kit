@@ -34,6 +34,10 @@ commands:
     description: 'Building artifacts'
     steps:
       - run: yarn build
+  build_storybook:
+    description: 'Building storybook'
+    steps:
+      - run: yarn storybook:build
   save_workspace:
     steps:
       - persist_to_workspace:
@@ -107,7 +111,8 @@ jobs:
     executor: node_10
     steps:
       - install_dependencies
-      - run: yarn build
+      - build_artifacts
+      - build_storybook
       - save_workspace
   bundle_test:
     executor: node_10
