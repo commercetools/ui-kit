@@ -86,6 +86,7 @@ class MoneyInputStory extends React.Component {
               ['s', 'm', 'l', 'xl', 'scale'],
               'm'
             )}
+            hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
           />
         </Section>
         <Section>

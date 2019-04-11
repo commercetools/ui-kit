@@ -31,6 +31,9 @@ class Tooltip extends React.Component {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
       .isRequired,
     closeAfter: PropTypes.number.isRequired,
+    styles: PropTypes.shape({
+      body: PropTypes.object.isRequired,
+    }).isRequired,
     off: PropTypes.bool.isRequired,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
@@ -80,6 +83,7 @@ class Tooltip extends React.Component {
 
   static defaultProps = {
     components: {},
+    styles: { body: {} },
     closeAfter: 0,
     horizontalConstraint: 'scale',
     off: false,
@@ -220,6 +224,7 @@ class Tooltip extends React.Component {
                     ...getBodyStyles({
                       constraint: this.props.horizontalConstraint,
                       placement,
+                      customStyles: this.props.styles.body,
                     }),
                   }}
                   data-placement={placement}

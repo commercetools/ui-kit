@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import { FormattedMessage, injectIntl } from 'react-intl';
 import has from 'lodash/has';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
@@ -10,10 +9,7 @@ import MoneyInput from '../../inputs/money-input';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
-import { VerifiedIcon } from '../../icons';
-import Text from '../../typography/text';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import messages from './messages';
 
 const sequentialId = createSequentialId('money-field-');
 
@@ -35,6 +31,7 @@ class MoneyField extends React.Component {
       amount: PropTypes.bool,
       currencyCode: PropTypes.bool,
     }),
+    hasHighPrecisionBadge: PropTypes.bool,
 
     // Some other fields use isTouched, but the check isn't as simple here.
     // isTouched accepts a boolean, whereas touched takes an object.
@@ -72,11 +69,6 @@ class MoneyField extends React.Component {
     ),
     hintIcon: PropTypes.node,
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    hasHighPrecisionBadge: PropTypes.bool,
-    // HoC
-    intl: PropTypes.shape({
-      locale: PropTypes.string.isRequired,
-    }).isRequired,
   };
 
   static defaultProps = {
@@ -108,23 +100,6 @@ class MoneyField extends React.Component {
             description={this.props.description}
             onInfoButtonClick={this.props.onInfoButtonClick}
             hintIcon={this.props.hintIcon}
-            badge={
-              this.props.hasHighPrecisionBadge &&
-              !MoneyInput.isEmpty(this.props.value) &&
-              MoneyInput.isHighPrecision(
-                this.props.value,
-                this.props.intl.locale
-              ) ? (
-                <Spacings.Inline scale="xs" alignItems="flexEnd">
-                  <VerifiedIcon size="medium" theme="blue" />
-                  <Text.Detail isInline={true}>
-                    <FormattedMessage {...messages.highPrecision} />
-                  </Text.Detail>
-                </Spacings.Inline>
-              ) : (
-                undefined
-              )
-            }
             hasRequiredIndicator={this.props.isRequired}
             htmlFor={this.state.id}
           />
@@ -141,6 +116,7 @@ class MoneyField extends React.Component {
             isReadOnly={this.props.isReadOnly}
             onChange={this.props.onChange}
             hasError={hasError}
+            hasHighPrecisionBadge={this.props.hasHighPrecisionBadge}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
@@ -154,4 +130,4 @@ class MoneyField extends React.Component {
   }
 }
 
-export default injectIntl(MoneyField);
+export default MoneyField;

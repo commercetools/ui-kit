@@ -29,4 +29,20 @@ const getAmountInputStyles = props => [
   `,
 ];
 
-export { getCurrencyLabelStyles, getAmountInputStyles };
+const getHighPrecisionWrapperStyles = ({ isDisabled }) => css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: ${vars.spacingXs};
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: ${isDisabled ? 'not-allowed' : 'default'};
+  justify-content: center;
+`;
+
+export {
+  getHighPrecisionWrapperStyles,
+  getCurrencyLabelStyles,
+  getAmountInputStyles,
+};

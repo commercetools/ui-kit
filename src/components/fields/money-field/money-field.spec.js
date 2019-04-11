@@ -185,23 +185,6 @@ describe('when `hint` is passed', () => {
   });
 });
 
-describe('when high precision price should be shown', () => {
-  it('should be visible when a high precision price is entered', () => {
-    const { container } = renderMoneyField({
-      value: { amount: '12.004', currencyCode: 'EUR' },
-      hasHighPrecisionBadge: true,
-    });
-    expect(container).toHaveTextContent(/High Precision Price/i);
-  });
-  it('should not be visible when no high precision price is entered', () => {
-    const { container } = renderMoneyField({
-      value: { amount: '12.00', currencyCode: 'EUR' },
-      hasHighPrecisionBadge: true,
-    });
-    expect(container).not.toHaveTextContent(/High Precision Price/i);
-  });
-});
-
 describe('when disabled', () => {
   it('should disable the inputs', () => {
     const { getByLabelText } = renderMoneyField({ isDisabled: true });

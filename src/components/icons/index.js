@@ -61,6 +61,7 @@ import OrigFilterIcon from './svg/filter.react.svg';
 import OrigFlagFilledIcon from './svg/flag-filled.react.svg';
 import OrigFlagLinearIcon from './svg/flag-linear.react.svg';
 import OrigFlameIcon from './svg/flame.react.svg';
+import OrigFractionDigitsIcon from './svg/fraction-digits.react.svg';
 import OrigGearIcon from './svg/gear.react.svg';
 import OrigGraduationCapIcon from './svg/graduation-cap.react.svg';
 import OrigGraphIcon from './svg/graph.react.svg';
@@ -255,6 +256,10 @@ export const FlagLinearIcon = createStyledIcon(
   'FlagLinearIcon'
 );
 export const FlameIcon = createStyledIcon(OrigFlameIcon, 'FlameIcon');
+export const FractionDigitsIcon = createStyledIcon(
+  OrigFractionDigitsIcon,
+  'FractionDigitsIcon'
+);
 export const GearIcon = createStyledIcon(OrigGearIcon, 'GearIcon');
 export const GraduationCapIcon = createStyledIcon(
   OrigGraduationCapIcon,

@@ -42,6 +42,17 @@ export const component = () => (
         value={highPrecisionValue}
         onChange={() => {}}
         currencies={currencies}
+        hasHighPrecisionBadge={true}
+      />
+    </Spec>
+    <Spec label="with high precision badge and disabled">
+      <MoneyInput
+        horizontalConstraint="m"
+        value={highPrecisionValue}
+        onChange={() => {}}
+        currencies={currencies}
+        isDisabled={true}
+        hasHighPrecisionBadge={true}
       />
     </Spec>
     <Spec label="when disabled">
