@@ -107,7 +107,7 @@ jobs:
     executor: node_10
     steps:
       - install_dependencies
-      - run: yarn build
+      - build_artifacts
       - save_workspace
   bundle_test:
     executor: node_10
@@ -146,5 +146,3 @@ workflows:
           filters:
             tags:
               only: /^v.*/
-            branches:
-              ignore: /.*/
