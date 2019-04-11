@@ -633,9 +633,11 @@ class MoneyInput extends React.Component {
               css={[
                 getAmountInputStyles({ ...this.props, hasFocus }),
                 // accounts for size of icon
-                css`
-                  padding-right: {vars.spacingL};
-                `,
+                this.props.hasHighPrecisionBadge &&
+                  isHighPrecision &&
+                  css`
+                    padding-right: ${vars.spacingL};
+                  `,
               ]}
               placeholder={this.props.placeholder}
               onChange={this.handleAmountChange}
