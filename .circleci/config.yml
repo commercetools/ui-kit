@@ -96,11 +96,11 @@ commands:
           command: |
             if [ ${<< parameters.git_branch >>} != "master" ]; then
               echo "Git branch is ${<< parameters.git_branch >>}, not publishing."
-              exit 0
+              circleci-agent step halt
             fi
             else if [ -z ${<< parameters.git_tag >>}]; then
               echo "Git tag is not set, not publishing."
-              exit 0
+              circleci-agent step halt
             fi
             else
               echo "Git branch is ${<< parameters.git_branch >>} and tag is ${<< parameters.git_tag >>}, publishing."
