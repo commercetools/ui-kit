@@ -1,3 +1,31 @@
+<a name="9.2.0"></a>
+
+# [9.2.0](https://github.com/commercetools/ui-kit/compare/v9.1.2...v9.2.0) (2019-04-11)
+
+### Bug Fixes
+
+- **circleci:** releasing to next ([#619](https://github.com/commercetools/ui-kit/issues/619)) ([fbea050](https://github.com/commercetools/ui-kit/commit/fbea050))
+- `SelectInput`: change default menu height ([#624](https://github.com/commercetools/ui-kit/issues/624)) ([0b43ce5](https://github.com/commercetools/ui-kit/commit/0b43ce5))
+- `FlatButton`: add focus highlighting ([#648](https://github.com/commercetools/ui-kit/issues/648)) ([7741452](https://github.com/commercetools/ui-kit/commit/7741452))
+- `MoneyInput`: change high precision money badge ([#661](https://github.com/commercetools/ui-kit/issues/661)) ([1091426](https://github.com/commercetools/ui-kit/commit/1091426))
+- `Tag`: css fixes for tag ([#626](https://github.com/commercetools/ui-kit/issues/626)) ([4cf0219](https://github.com/commercetools/ui-kit/commit/4cf0219))
+- `Tag`: right border of removable tag ([#650](https://github.com/commercetools/ui-kit/issues/650)) ([425e82d](https://github.com/commercetools/ui-kit/commit/425e82d))
+- `LinkButton`: to use inline TextBody ([#627](https://github.com/commercetools/ui-kit/issues/627)) ([815333e](https://github.com/commercetools/ui-kit/commit/815333e))
+- **ci:** storybook build times ([#667](https://github.com/commercetools/ui-kit/issues/667)) ([43fb470](https://github.com/commercetools/ui-kit/commit/43fb470))
+
+### Features
+
+- `TextInput`: make text-input `theme-able` ([#563](https://github.com/commercetools/ui-kit/issues/563)) ([6b49e33](https://github.com/commercetools/ui-kit/commit/6b49e33))
+- **i18n:** support new locales fr-FR and zh-CN ([#643](https://github.com/commercetools/ui-kit/issues/643)) ([667fefd](https://github.com/commercetools/ui-kit/commit/667fefd))
+- `LocalizedMultilineTextInput`: support theming ([257139f](https://github.com/commercetools/ui-kit/commit/257139f))
+- `LocalizedTextInput`: support custom theming, use design tokens ([#630](https://github.com/commercetools/ui-kit/issues/630)) ([1505fba](https://github.com/commercetools/ui-kit/commit/1505fba))
+- `MultilineTextInput`: support custom theming ([#633](https://github.com/commercetools/ui-kit/issues/633)) ([59fec17](https://github.com/commercetools/ui-kit/commit/59fec17))
+- `NumberInput`: support custom theming ([#634](https://github.com/commercetools/ui-kit/issues/634)) ([f1129b6](https://github.com/commercetools/ui-kit/commit/f1129b6))
+- `PasswordInput`: support theming ([#635](https://github.com/commercetools/ui-kit/issues/635)) ([18ea367](https://github.com/commercetools/ui-kit/commit/18ea367))
+- `Tag`: use design tokens, add theming ([#641](https://github.com/commercetools/ui-kit/issues/641)) ([b3d5285](https://github.com/commercetools/ui-kit/commit/b3d5285))
+- **custom-properties**: tshirt size spacings ([#645](https://github.com/commercetools/ui-kit/issues/645)) ([0b3c7a8](https://github.com/commercetools/ui-kit/commit/0b3c7a8))
+- **text:** allow to pass intl message instead of children ([#651](https://github.com/commercetools/ui-kit/issues/651)) ([5e108e5](https://github.com/commercetools/ui-kit/commit/5e108e5))
+
 <a name="9.1.2"></a>
 
 # [9.1.2](https://github.com/commercetools/ui-kit/compare/v9.1.1...v9.1.2) (2019-03-29)
