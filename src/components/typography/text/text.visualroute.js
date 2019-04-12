@@ -202,5 +202,22 @@ export const component = ({ themes }) => (
     <Spec label="Detail (intl message)">
       <Text.Detail intlMessage={intlMessage} />
     </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="Headline (dark theme)">
+        <Text.Headline elementType="h1">Dark theme</Text.Headline>
+      </Spec>
+      <Spec label="Subheadline (dark theme)">
+        <Text.Subheadline elementType="h4">Dark theme</Text.Subheadline>
+      </Spec>
+      <Spec label="Body (dark theme)">
+        <Text.Body>Dark theme</Text.Body>
+      </Spec>
+      <Spec label="Detail (dark theme)">
+        <Text.Detail>Dark theme</Text.Detail>
+      </Spec>
+      <Spec label="Wrap (dark theme)">
+        <Text.Wrap>Dark theme</Text.Wrap>
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );

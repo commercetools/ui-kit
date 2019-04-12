@@ -1,10 +1,17 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const baseStyles = `
-  font-family: ${vars.fontFamilyDefault};
-  color: ${vars.colorSolid};
+const getBaseStyles = (props, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return `
+   font-family: ${vars.fontFamilyDefault};
+   color: ${overwrittenVars.colorSolid};
 `;
+};
 
 const truncate = `
   white-space: nowrap;
@@ -24,22 +31,26 @@ const inline = `
   display: inline-block;
 `;
 
-const getTone = tone => {
+const getTone = (tone, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
   switch (tone) {
     case 'information':
-      return `color: ${vars.colorInfo};`;
+      return `color: ${overwrittenVars.colorInfo};`;
     case 'secondary':
-      return `color: ${vars.colorNeutral60};`;
+      return `color: ${overwrittenVars.colorNeutral60};`;
     case 'positive':
-      return `color: ${vars.colorPrimary25};`;
+      return `color: ${overwrittenVars.colorPrimary25};`;
     case 'primary':
-      return `color: ${vars.colorPrimary};`;
+      return `color: ${overwrittenVars.colorPrimary};`;
     case 'negative':
-      return `color: ${vars.colorError};`;
+      return `color: ${overwrittenVars.colorError};`;
     case 'inverted':
-      return `color: ${vars.colorSurface};`;
+      return `color: ${overwrittenVars.colorSurface};`;
     case 'warning':
-      return `color: ${vars.colorWarning};`;
+      return `color: ${overwrittenVars.colorWarning};`;
     default:
       return ``;
   }
@@ -62,47 +73,47 @@ const getElementFontSize = elementType => {
   }
 };
 
-export const bodyStyles = props => css`
-  ${baseStyles}
+export const bodyStyles = (props, theme) => css`
+  ${getBaseStyles(props, theme)}
   margin: 0;
   font-size: 1rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone && getTone(props.tone)}
+  ${props.tone && getTone(props.tone, theme)}
   ${props.truncate && truncate}
 `;
 
-export const headlineStyles = props => css`
-  ${baseStyles}
+export const headlineStyles = (props, theme) => css`
+  ${getBaseStyles(props, theme)}
   margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
   font-weight: 300;
   ${props.truncate && truncate}
 `;
 
-export const subheadlineStyles = props => css`
-  ${baseStyles}
+export const subheadlineStyles = (props, theme) => css`
+${getBaseStyles(props, theme)}
   margin: 0;
   font-size: ${getElementFontSize(props.elementType)};
   font-weight: normal;
   ${props.truncate && truncate}
   ${props.isBold && bold}
-  ${props.tone && getTone(props.tone)}
+  ${props.tone && getTone(props.tone, theme)}
 `;
 
-export const wrapStyles = () => css`
-  ${baseStyles}
+export const wrapStyles = (props, theme) => css`
+  ${getBaseStyles(props, theme)}
   font-size: 1rem;
   white-space: pre-wrap;
 `;
 
-export const detailStyles = props => css`
-  ${baseStyles}
+export const detailStyles = (props, theme) => css`
+  ${getBaseStyles(props, theme)}
   display: block;
   font-size: 0.9231rem;
   ${props.isInline && inline}
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone && getTone(props.tone)}
+  ${props.tone && getTone(props.tone, theme)}
   ${props.truncate && truncate}
 `;

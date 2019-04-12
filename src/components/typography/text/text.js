@@ -30,7 +30,7 @@ const Headline = props => {
   const HeadlineElement = props.elementType;
   return (
     <HeadlineElement
-      css={headlineStyles(props)}
+      css={theme => headlineStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -57,7 +57,7 @@ const Subheadline = props => {
   return (
     <SubheadlineElement
       title={props.title}
-      css={subheadlineStyles(props)}
+      css={theme => subheadlineStyles(props, theme)}
       {...filterDataAttributes(props)}
     >
       {props.intlMessage ? (
@@ -87,7 +87,11 @@ Subheadline.propTypes = {
 };
 
 const Wrap = props => (
-  <div css={wrapStyles()} title={props.title} {...filterDataAttributes(props)}>
+  <div
+    css={theme => wrapStyles(props, theme)}
+    title={props.title}
+    {...filterDataAttributes(props)}
+  >
     {props.intlMessage ? (
       <FormattedMessage {...props.intlMessage} />
     ) : (
@@ -106,7 +110,7 @@ Wrap.propTypes = {
 const Body = props =>
   props.isInline ? (
     <span
-      css={bodyStyles(props)}
+      css={theme => bodyStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -118,7 +122,7 @@ const Body = props =>
     </span>
   ) : (
     <p
-      css={bodyStyles(props)}
+      css={theme => bodyStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -151,7 +155,7 @@ Body.propTypes = {
 
 const Detail = props => (
   <small
-    css={detailStyles(props)}
+    css={theme => detailStyles(props, theme)}
     title={props.title}
     {...filterDataAttributes(props)}
     className={props.className}

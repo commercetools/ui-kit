@@ -18,9 +18,11 @@ export const component = ({ themes }) => (
         Hello
       </Label>
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="when inverted">
-        <Label tone="inverted">Hello</Label>
+    <ThemeProvider theme={{ ...themes.darkTheme, colorSurface: 'purple' }}>
+      <Spec label="when inverted" omitPropsList={true}>
+        <ThemeProvider theme={themes.darkTheme}>
+          <Label tone="inverted">Hello</Label>
+        </ThemeProvider>
       </Spec>
     </ThemeProvider>
   </Suite>
