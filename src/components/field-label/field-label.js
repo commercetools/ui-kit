@@ -37,7 +37,7 @@ export const FieldLabel = props => (
           {props.hintIcon && (
             <div
               css={css`
-                display: inline-block;
+                display: flex;
               `}
             >
               {React.cloneElement(props.hintIcon, {
