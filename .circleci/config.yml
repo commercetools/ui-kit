@@ -81,10 +81,30 @@ commands:
       - run: ./scripts/run-percy.sh
   publish_to_next:
     parameters:
+      git_branch:
+        type: env_var_name
+        default: CIRCLE_BRANCH
+      git_tag:
+        type: env_var_name
+        default: CIRCLE_TAG
       working_directory:
         type: string
         default: *working_directory
     steps:
+      - run:
+          name: Checking if on master branch
+          command: |
+            if [ ${<< parameters.git_branch >>} != "master" ]
+            then
+              echo "Git branch is ${<< parameters.git_branch >>}, not publishing."
+              circleci-agent step halt
+            elif [ -z ${<< parameters.git_tag >>}]
+            then
+              echo "Git tag is not set, not publishing."
+              circleci-agent step halt
+            else
+              echo "Git branch is ${<< parameters.git_branch >>} and tag is ${<< parameters.git_tag >>}, publishing."
+            fi
       - checkout
       - restore_cache: *restore_yarn_cache
       - install_dependencies
@@ -93,7 +113,7 @@ commands:
           name: Authenticating with npm registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > << parameters.working_directory >>/.npmrc
       - run:
-          name: Publishing to next dist-tag
+          name: Publishing ${<< parameters.git_tag >>} from ${<< parameters.git_branch >>} to next dist-tag
           command: yarn release:next
 
 jobs:
@@ -143,6 +163,3 @@ workflows:
       - publish:
           requires:
             - bundle_test
-          filters:
-            tags:
-              only: /^v.*/
