@@ -27,7 +27,6 @@ const slugifyLocale = locale => {
 };
 
 export default storyFn => {
-  console.log(locales);
   const locale = select('global locale', locales, locales[0]);
   return (
     <IntlProvider locale={slugifyLocale(locale)} messages={messages[locale]}>
