@@ -30,7 +30,7 @@ import { FieldLabel } from '@commercetools-frontend/ui-kit';
 />
 ```
 
-The `hintIcon` also accepts a custom `theme` while defaulting to `orange` in the case above.
+The `hintIcon` also accepts a custom `theme` while defaulting to `orange` in the case above. The `hintIcon` does **not** support the `size` prop, and will always be rendered in the size `medium`.
 
 ```diff
 <FieldLabel
