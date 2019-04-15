@@ -1,7 +1,7 @@
 import { i18n, customProperties } from 'ui-kit';
 
 describe('exports', () => {
-  it('should export i18n for three languages', () => {
+  it('should export i18n for five languages', () => {
     expect(Object.keys(i18n)).toEqual(['en', 'de', 'es', 'frFR', 'zhCN']);
   });
 
@@ -15,5 +15,7 @@ describe('exports', () => {
     expect(Object.keys(i18n.en)[0]).toEqual(expect.any(String));
     expect(Object.keys(i18n.de)[0]).toEqual(expect.any(String));
     expect(Object.keys(i18n.es)[0]).toEqual(expect.any(String));
+    expect(Object.keys(i18n.frFR)[0]).toEqual(expect.any(String));
+    expect(Object.keys(i18n.zhCN)[0]).toEqual(expect.any(String));
   });
 });
