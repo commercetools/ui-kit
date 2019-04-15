@@ -86,7 +86,7 @@ export class SelectInput extends React.Component {
     // menuIsOpen: PropTypes.bool,
     // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
     // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
-    // menuPortalTarget: PropTypes.instanceOf(Element),
+    menuPortalTarget: PropTypes.instanceOf(Element),
     // menuShouldBlockScroll: PropTypes.bool,
     // menuShouldScrollIntoView: PropTypes.bool,
     name: PropTypes.string,
@@ -191,6 +191,7 @@ export class SelectInput extends React.Component {
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
             maxMenuHeight={this.props.maxMenuHeight}
+            menuPortalTarget={this.props.menuPortalTarget}
             name={this.props.name}
             noOptionsMessage={
               this.props.noOptionsMessage ||

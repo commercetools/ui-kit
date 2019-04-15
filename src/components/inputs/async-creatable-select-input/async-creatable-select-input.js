@@ -70,6 +70,7 @@ export class AsyncCreatableSelectInput extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
+    menuPortalTarget: PropTypes.Element,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
     onBlur: PropTypes.func,
@@ -142,6 +143,7 @@ export class AsyncCreatableSelectInput extends React.Component {
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
             maxMenuHeight={this.props.maxMenuHeight}
+            menuPortalTarget={this.props.menuPortalTarget}
             name={this.props.name}
             noOptionsMessage={
               this.props.noOptionsMessage ||
