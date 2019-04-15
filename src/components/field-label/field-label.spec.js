@@ -3,6 +3,8 @@ import { render } from '../../test-utils';
 import { WarningIcon } from '../icons';
 import FieldLabel from './field-label';
 
+jest.mock('tiny-invariant');
+
 it('should accept a title', () => {
   const { container } = render(<FieldLabel title="Title" />);
   expect(container).toHaveTextContent('Title');
