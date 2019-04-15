@@ -72,7 +72,7 @@ export class AsyncSelectInput extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
-    menuPortalTarget: PropTypes.Element,
+    menuPortalTarget: PropTypes.element,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
     onBlur: PropTypes.func,
