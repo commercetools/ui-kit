@@ -15,5 +15,7 @@ describe('exports', () => {
     expect(Object.keys(i18n.en)[0]).toEqual(expect.any(String));
     expect(Object.keys(i18n.de)[0]).toEqual(expect.any(String));
     expect(Object.keys(i18n.es)[0]).toEqual(expect.any(String));
+    expect(Object.keys(i18n.frFR)[0]).toEqual(expect.any(String));
+    expect(Object.keys(i18n.zhCN)[0]).toEqual(expect.any(String));
   });
 });
