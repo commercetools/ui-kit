@@ -15,10 +15,21 @@ addLocaleData(frFR);
 addLocaleData(zhCN);
 const locales = Object.keys(messages);
 
+const slugifyLocale = locale => {
+  switch (locale) {
+    case 'frFR':
+      return 'fr-FR';
+    case 'zhCN':
+      return 'zh-CN';
+    default:
+      return locale;
+  }
+};
+
 export default storyFn => {
   const locale = select('global locale', locales, locales[0]);
   return (
-    <IntlProvider locale={locale} messages={messages[locale]}>
+    <IntlProvider locale={slugifyLocale(locale)} messages={messages[locale]}>
       {storyFn()}
     </IntlProvider>
   );
