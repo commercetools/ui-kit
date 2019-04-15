@@ -106,7 +106,7 @@
     "@storybook/react": "5.0.6",
     "@storybook/theming": "5.0.6",
     "@svgr/rollup": "4.1.0",
-    "@svgr/webpack": "4.1.0",
+    "@svgr/webpack": "4.2.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "24.7.1",
     "babel-loader": "8.0.5",
