@@ -15,7 +15,7 @@
   "UIKit.FieldErrors.invalidNegativeNumber": "Nombre négatif non pris en charge.",
   "UIKit.FieldErrors.missingRequiredField": "Veuillez indiquer au moins une valeur.",
   "UIKit.LocalizedMoneyInput.hide": "Masquer les devices ({remainingCurrencies})",
-  "UIKit.LocalizedMoneyInput.missingRequiredField": "Ce champ est requis. Veuillez indiquer au moins une valeur.",
+  "UIKit.LocalizedMoneyInput.missingRequiredField": "Ce champ est requis. Veuillez indiquer une valeur.",
   "UIKit.LocalizedMoneyInput.show": "Afficher toutes les devises  ({remainingCurrencies})",
   "UIKit.LocalizedMultilineTextInput.collapse": "Réduire",
   "UIKit.LocalizedMultilineTextInput.expand": "Développer",
