@@ -4091,11 +4091,6 @@ clone-deep@^0.2.4:
     lazy-cache "^1.0.3"
     shallow-clone "^0.1.2"
 
-clorox@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/clorox/-/clorox-1.0.3.tgz#6fa63653f280c33d69f548fb14d239ddcfa1590d"
-  integrity sha512-w3gKAUKMJYmmaJyc+p+iDrDtLvsFasrx/y6/zWo2U1TZfsz3y4Vl4T9PHCZrOwk1eMTOSRI6xHdpDR4PhTdy8Q==
-
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -8128,19 +8123,6 @@ jest-mock@^24.7.0:
   dependencies:
     "@jest/types" "^24.7.0"
 
-jest-plugin-filename@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/jest-plugin-filename/-/jest-plugin-filename-0.0.1.tgz#786c458611c013b758e2640ec695f9015f8c7d95"
-  integrity sha512-T2VGDDF0sHhCdJZh9/rbkL8zHZhPkGZf8plWPd3jbig3nQTWvXQUFRU0RSRNbn+FhZLEKP78SR9IMsCx76NIew==
-  dependencies:
-    ansi-escapes "^3.0.0"
-    chalk "^2.3.1"
-    lodash "4.17.5"
-    prompts "git://github.com/terkelg/prompts.git#792824f8e5bfe3d632da0e48be23ab718b8f6646"
-    slash "^1.0.0"
-    string-length "^2.0.0"
-    strip-ansi "^4.0.0"
-
 jest-pnp-resolver@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.2.1.tgz#ecdae604c077a7fbc70defb6d517c3c1c898923a"
@@ -8311,7 +8293,19 @@ jest-watch-master@1.0.0:
   dependencies:
     chalk "^2.0.0"
 
-jest-watcher@^24.7.1:
+jest-watch-typeahead@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/jest-watch-typeahead/-/jest-watch-typeahead-0.3.0.tgz#f56d9ee17ea71ecbf8253fed213df3185a1584c9"
+  integrity sha512-+uOtlppt9ysST6k6ZTqsPI0WNz2HLa8bowiZylZoQCQaAVn7XsVmHhZREkz73FhKelrFrpne4hQQjdq42nFEmA==
+  dependencies:
+    ansi-escapes "^3.0.0"
+    chalk "^2.4.1"
+    jest-watcher "^24.3.0"
+    slash "^2.0.0"
+    string-length "^2.0.0"
+    strip-ansi "^5.0.0"
+
+jest-watcher@^24.3.0, jest-watcher@^24.7.1:
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/jest-watcher/-/jest-watcher-24.7.1.tgz#e161363d7f3f4e1ef3d389b7b3a0aad247b673f5"
   integrity sha512-Wd6TepHLRHVKLNPacEsBwlp9raeBIO+01xrN24Dek4ggTS8HHnOzYSFnvp+6MtkkJ3KfMzy220KTi95e2rRkrw==
@@ -8955,11 +8949,6 @@ lodash@4.17.11, lodash@>4.17.4, lodash@^4.0.1, lodash@^4.15.0, lodash@^4.17.10, 
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
-
-lodash@4.17.5:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
-  integrity sha512-svL3uiZf1RwhH+cWrfZn3A4+U58wbP0tGVTLQPbjplZxZ8ROD9VLuNgsRniTlLe7OlSqR79RUehXgpBW/s0IQw==
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -10678,13 +10667,6 @@ prompts@^2.0.1, prompts@^2.0.4:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-"prompts@git://github.com/terkelg/prompts.git#792824f8e5bfe3d632da0e48be23ab718b8f6646":
-  version "0.1.4"
-  resolved "git://github.com/terkelg/prompts.git#792824f8e5bfe3d632da0e48be23ab718b8f6646"
-  dependencies:
-    clorox "^1.0.1"
-    sisteransi "^0.1.0"
-
 prop-types-exact@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/prop-types-exact/-/prop-types-exact-1.2.0.tgz#825d6be46094663848237e3925a98c6e944e9869"
@@ -12270,11 +12252,6 @@ sinon@7.2.3:
     lolex "^3.0.0"
     nise "^1.4.8"
     supports-color "^5.5.0"
-
-sisteransi@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
-  integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
 sisteransi@^1.0.0:
   version "1.0.0"
