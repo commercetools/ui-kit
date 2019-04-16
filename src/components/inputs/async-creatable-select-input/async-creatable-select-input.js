@@ -36,6 +36,7 @@ export class AsyncCreatableSelectInput extends React.Component {
     // case "undefined" gets passed as the next value
     value: null,
     isSearchable: true,
+    menuPortalZIndex: 1,
   };
 
   static propTypes = {
@@ -71,6 +72,7 @@ export class AsyncCreatableSelectInput extends React.Component {
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
     menuPortalTarget: PropTypes.element,
+    menuPortalZIndex: PropTypes.number.isRequired,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
     onBlur: PropTypes.func,
@@ -129,6 +131,7 @@ export class AsyncCreatableSelectInput extends React.Component {
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
               showOptionGroupDivider: this.props.showOptionGroupDivider,
+              menuPortalZIndex: this.props.menuPortalZIndex,
             })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),

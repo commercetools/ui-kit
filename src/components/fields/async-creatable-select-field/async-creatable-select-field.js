@@ -46,6 +46,7 @@ export default class SelectField extends React.Component {
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
     menuPortalTarget: PropTypes.element,
+    menuPortalZIndex: PropTypes.number,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
     onBlur: PropTypes.func,
@@ -157,6 +158,7 @@ export default class SelectField extends React.Component {
             isSearchable={this.props.isSearchable}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
+            menuPortalZIndex={this.props.menuPortalZIndex}
             name={this.props.name}
             noOptionsMessage={this.props.noOptionsMessage}
             onBlur={this.props.onBlur}

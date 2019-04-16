@@ -28,6 +28,7 @@ export class SelectInput extends React.Component {
 
   static defaultProps = {
     maxMenuHeight: 220,
+    menuPortalZIndex: 1,
   };
 
   static propTypes = {
@@ -87,6 +88,7 @@ export class SelectInput extends React.Component {
     // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
     // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
     menuPortalTarget: PropTypes.instanceOf(Element),
+    menuPortalZIndex: PropTypes.number.isRequired,
     // menuShouldBlockScroll: PropTypes.bool,
     // menuShouldScrollIntoView: PropTypes.bool,
     name: PropTypes.string,
@@ -177,6 +179,7 @@ export class SelectInput extends React.Component {
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
               showOptionGroupDivider: this.props.showOptionGroupDivider,
+              menuPortalZIndex: this.props.menuPortalZIndex,
             })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),
