@@ -45,7 +45,7 @@ export default class SelectField extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
-    menuPortalTarget: PropTypes.instanceOf(Element),
+    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
     menuPortalZIndex: PropTypes.number,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,

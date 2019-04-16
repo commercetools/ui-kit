@@ -87,7 +87,7 @@ export class SelectInput extends React.Component {
     // menuIsOpen: PropTypes.bool,
     // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
     // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
-    menuPortalTarget: PropTypes.instanceOf(Element),
+    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
     menuPortalZIndex: PropTypes.number.isRequired,
     // menuShouldBlockScroll: PropTypes.bool,
     // menuShouldScrollIntoView: PropTypes.bool,
