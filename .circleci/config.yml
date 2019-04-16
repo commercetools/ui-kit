@@ -163,6 +163,10 @@ workflows:
       - publish:
           filters:
             tags:
-              only: /^v.*/
+              only: /v[\.0-9]+.*/
+            branches:
+              only:
+                - master
+                - /release\/.*/
           requires:
             - bundle_test
