@@ -396,6 +396,7 @@ class MoneyInput extends React.Component {
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
     menuPortalZIndex: PropTypes.number.isRequired,
+    menuShouldBlockScroll: PropTypes.bool,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     intl: PropTypes.shape({
@@ -613,6 +614,7 @@ class MoneyInput extends React.Component {
                 this.setState({ currencyHasFocus: true });
               }}
               menuPortalTarget={this.props.menuPortalTarget}
+              menuShouldBlockScroll={this.props.menuShouldBlockScroll}
               onBlur={() => this.setState({ currencyHasFocus: false })}
               onChange={this.handleCurrencyChange}
               data-testid="currency-dropdown"

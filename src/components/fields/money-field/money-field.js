@@ -61,6 +61,7 @@ class MoneyField extends React.Component {
     onChange: PropTypes.func.isRequired,
     menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
     menuPortalZIndex: PropTypes.number,
+    menuShouldBlockScroll: PropTypes.bool,
 
     // LabelField
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -121,6 +122,7 @@ class MoneyField extends React.Component {
             hasHighPrecisionBadge={this.props.hasHighPrecisionBadge}
             menuPortalTarget={this.props.menuPortalTarget}
             menuPortalZIndex={this.props.menuPortalZIndex}
+            menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
