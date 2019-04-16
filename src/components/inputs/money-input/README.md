@@ -48,6 +48,8 @@ The amount can have an arbitrary precision. When the precision of the amount exc
 | `hasWarning`            | `bool`                                     |    -     | -                            | -       | Indicates if the input has a warning                                                                                                                          |
 | `horizontalConstraint`  | `string`                                   |    -     | `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                                                    |
 | `hasHighPrecisionBadge` | `bool`                                     |    -     | -                            | -       | Shows high precision badge in case current value uses high precision.                                                                                         |
+| `menuPortalTarget`      | `HTMLElement`                              |    -     | -                            | -       | Dom element to portal the currency select menu to                                                                                                             |
+| `menuPortalZIndex`      | `number`                                   |    -     | -                            | -       | z-index value for the currency select menu portal                                                                                                             |
 
 ### Static methods
 

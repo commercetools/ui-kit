@@ -60,8 +60,13 @@ const createCurrencySelectStyles = ({
   isDisabled,
   isReadOnly,
   hasFocus,
+  menuPortalZIndex,
 }) => {
-  const selectStyles = createSelectStyles({ hasWarning, hasError });
+  const selectStyles = createSelectStyles({
+    hasWarning,
+    hasError,
+    menuPortalZIndex,
+  });
   return {
     ...selectStyles,
     control: (base, state) => ({
@@ -389,6 +394,8 @@ class MoneyInput extends React.Component {
     isReadOnly: PropTypes.bool,
     isAutofocussed: PropTypes.bool,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalZIndex: PropTypes.number.isRequired,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
     intl: PropTypes.shape({
@@ -402,6 +409,7 @@ class MoneyInput extends React.Component {
   static defaultProps = {
     currencies: [],
     horizontalConstraint: 'scale',
+    menuPortalZIndex: 1,
   };
 
   state = {
@@ -512,6 +520,7 @@ class MoneyInput extends React.Component {
       isDisabled: this.props.isDisabled,
       isReadOnly: this.props.isReadOnly,
       hasFocus,
+      menuPortalZIndex: this.props.menuPortalZIndex,
     });
     const options = this.props.currencies.map(currencyCode => ({
       label: currencyCode,
@@ -603,6 +612,7 @@ class MoneyInput extends React.Component {
                   });
                 this.setState({ currencyHasFocus: true });
               }}
+              menuPortalTarget={this.props.menuPortalTarget}
               onBlur={() => this.setState({ currencyHasFocus: false })}
               onChange={this.handleCurrencyChange}
               data-testid="currency-dropdown"
