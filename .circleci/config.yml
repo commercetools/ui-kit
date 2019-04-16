@@ -98,6 +98,10 @@ commands:
             then
               echo "Git branch is ${<< parameters.git_branch >>}, not publishing."
               circleci-agent step halt
+            elif [ -z ${<< parameters.git_tag >>}]
+            then
+              echo "Git tag is not set, not publishing."
+              circleci-agent step halt
             else
               echo "Git branch is ${<< parameters.git_branch >>} and tag is ${<< parameters.git_tag >>}, publishing."
             fi
