@@ -1,3 +1,20 @@
+<a name="9.3.0"></a>
+
+# [9.3.0](https://github.com/commercetools/ui-kit/compare/v9.2.0...v9.3.0) (2019-04-16)
+
+### Bug Fixes
+
+- **circleci:** remove branch ignore rule ([b8443e1](https://github.com/commercetools/ui-kit/commit/b8443e1))
+- **storybook:** fix for choosing french and chinese locales ([#681](https://github.com/commercetools/ui-kit/issues/681)) ([d6163da](https://github.com/commercetools/ui-kit/commit/d6163da))
+
+### Features
+
+- `SelectInputs`, `SelectFields`: support `menuPortalTarget` prop ([#682](https://github.com/commercetools/ui-kit/issues/682)) ([a8c132b](https://github.com/commercetools/ui-kit/commit/a8c132b))
+- `SelectInputs`, `SelectFields`: support add `shouldBlockScroll` prop ([#686](https://github.com/commercetools/ui-kit/issues/686)) ([60507df](https://github.com/commercetools/ui-kit/commit/60507df))
+- `MoneyInput`, `MoneyField`: support `menuPortalTarget` and `shouldBlockScroll` ([#684](https://github.com/commercetools/ui-kit/issues/684)) ([85d4bd8](https://github.com/commercetools/ui-kit/commit/85d4bd8))
+- `i18n`: add translations for Simplified Chinese and French ([#679](https://github.com/commercetools/ui-kit/issues/679)) ([9e6ca2b](https://github.com/commercetools/ui-kit/commit/9e6ca2b))
+- `Text`: support theming ([#671](https://github.com/commercetools/ui-kit/issues/671)) ([1ac8324](https://github.com/commercetools/ui-kit/commit/1ac8324))
+
 <a name="9.2.0"></a>
 
 # [9.2.0](https://github.com/commercetools/ui-kit/compare/v9.1.2...v9.2.0) (2019-04-11)
