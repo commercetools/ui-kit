@@ -50,5 +50,5 @@ module.exports = {
   transform: {
     '^.+\\.js$': '<rootDir>/test/transform-babel-jest.js',
   },
-  watchPlugins: ['jest-plugin-filename', 'jest-watch-master'],
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
 };

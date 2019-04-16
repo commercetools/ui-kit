@@ -3,5 +3,5 @@ module.exports = {
   displayName: 'eslint',
   testMatch: ['<rootDir>/**/*.js'],
   testPathIgnorePatterns: ['/node_modules/', '.public/', 'dist/'],
-  watchPlugins: ['jest-plugin-filename'],
+  watchPlugins: ['jest-watch-typeahead/filename'],
 };
