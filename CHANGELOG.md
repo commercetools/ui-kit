@@ -5,7 +5,7 @@
 ### Bug Fixes
 
 - **circleci:** remove branch ignore rule ([b8443e1](https://github.com/commercetools/ui-kit/commit/b8443e1))
-- **storybook:** fix for choosing french and chinese locales ([#681](https://github.com/commercetools/ui-kit/issues/681)) ([d6163da](https://github.com/commercetools/ui-kit/commit/d6163da))
+- **storybook:** fix for choosing French and Chinese locales ([#681](https://github.com/commercetools/ui-kit/issues/681)) ([d6163da](https://github.com/commercetools/ui-kit/commit/d6163da))
 
 ### Features
 
