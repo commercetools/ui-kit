@@ -59,6 +59,8 @@ export class CreatableSelectInput extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
+    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalZIndex: PropTypes.number.isRequired,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
     onBlur: PropTypes.func,
@@ -109,6 +111,7 @@ export class CreatableSelectInput extends React.Component {
     // not do the option/value mapping going on there and therefore provides
     // the default API of react-select.
     isSearchable: true,
+    menuPortalZIndex: 1,
   };
 
   render() {
@@ -128,6 +131,7 @@ export class CreatableSelectInput extends React.Component {
               hasWarning: this.props.hasWarning,
               hasError: this.props.hasError,
               showOptionGroupDivider: this.props.showOptionGroupDivider,
+              menuPortalZIndex: this.props.menuPortalZIndex,
             })}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),
@@ -142,6 +146,7 @@ export class CreatableSelectInput extends React.Component {
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
             maxMenuHeight={this.props.maxMenuHeight}
+            menuPortalTarget={this.props.menuPortalTarget}
             name={this.props.name}
             noOptionsMessage={
               this.props.noOptionsMessage ||

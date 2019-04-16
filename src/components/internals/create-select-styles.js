@@ -56,6 +56,7 @@ const menuStyles = props => base => ({
   backgroundColor: vars.backgroundColorForInput,
   boxShadow: vars.shadow7,
   fontSize: vars.fontSizeForInput,
+  fontFamily: vars.fontFamilyDefault,
   margin: `${vars.spacingXs} 0 0 0`,
   borderColor: (() => {
     if (props.hasError) return vars.borderColorForInputWhenError;
@@ -172,6 +173,11 @@ const indicatorsContainerStyles = () => () => ({
   alignItems: 'center',
 });
 
+const menuPortalStyles = props => base => ({
+  ...base,
+  zIndex: props.menuPortalZIndex,
+});
+
 export default props => ({
   control: controlStyles(props),
   menu: menuStyles(props),
@@ -179,6 +185,7 @@ export default props => ({
   dropdownIndicator: dropdownIndicatorStyles(props),
   clearIndicator: clearIndicatorStyles(props),
   menuList: menuListStyles(props),
+  menuPortal: menuPortalStyles(props),
   indicatorsContainer: indicatorsContainerStyles(props),
   option: optionStyles(props),
   placeholder: placeholderStyles(props),
