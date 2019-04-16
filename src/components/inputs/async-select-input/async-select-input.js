@@ -75,6 +75,7 @@ export class AsyncSelectInput extends React.Component {
     maxMenuHeight: PropTypes.number,
     menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
     menuPortalZIndex: PropTypes.number.isRequired,
+    menuShouldBlockScroll: PropTypes.bool,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
     onBlur: PropTypes.func,
@@ -141,6 +142,7 @@ export class AsyncSelectInput extends React.Component {
             isSearchable={this.props.isSearchable}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
+            menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             name={this.props.name}
             noOptionsMessage={
               this.props.noOptionsMessage ||

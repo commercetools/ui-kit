@@ -47,6 +47,7 @@ export default class SelectField extends React.Component {
     maxMenuHeight: PropTypes.number,
     menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
     menuPortalZIndex: PropTypes.number,
+    menuShouldBlockScroll: PropTypes.bool,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
     onBlur: PropTypes.func,
@@ -159,6 +160,7 @@ export default class SelectField extends React.Component {
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
             menuPortalZIndex={this.props.menuPortalZIndex}
+            menuShouldBlockSroll={this.props.menuShouldBlockScroll}
             name={this.props.name}
             noOptionsMessage={this.props.noOptionsMessage}
             onBlur={this.props.onBlur}
