@@ -94,11 +94,7 @@ commands:
       - run:
           name: Checking if on master branch
           command: |
-            if [ ${<< parameters.git_branch >>} != "master" ]
-            then
-              echo "Git branch is ${<< parameters.git_branch >>}, not publishing."
-              circleci-agent step halt
-            elif [ -z ${<< parameters.git_tag >>}]
+            if [ -z ${<< parameters.git_tag >>}]
             then
               echo "Git tag is not set, not publishing."
               circleci-agent step halt
