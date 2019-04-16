@@ -89,7 +89,7 @@ export class SelectInput extends React.Component {
     // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
     menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
     menuPortalZIndex: PropTypes.number.isRequired,
-    // menuShouldBlockScroll: PropTypes.bool,
+    menuShouldBlockScroll: PropTypes.bool,
     // menuShouldScrollIntoView: PropTypes.bool,
     name: PropTypes.string,
     noOptionsMessage: PropTypes.func,
@@ -195,6 +195,7 @@ export class SelectInput extends React.Component {
             isSearchable={this.props.isSearchable}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
+            menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             name={this.props.name}
             noOptionsMessage={
               this.props.noOptionsMessage ||
