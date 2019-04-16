@@ -56,6 +56,7 @@ const menuStyles = props => base => ({
   backgroundColor: vars.backgroundColorForInput,
   boxShadow: vars.shadow7,
   fontSize: vars.fontSizeForInput,
+  fontFamily: vars.fontFamilyDefault,
   margin: `${vars.spacingXs} 0 0 0`,
   borderColor: (() => {
     if (props.hasError) return vars.borderColorForInputWhenError;
