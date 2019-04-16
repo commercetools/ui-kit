@@ -161,5 +161,8 @@ workflows:
           requires:
             - build
       - publish:
+          filters:
+            tags:
+              only: /^v.*/
           requires:
             - bundle_test
