@@ -12,12 +12,15 @@ import DropdownIndicator from '../../internals/dropdown-indicator';
 import MultiValue from '../../internals/multivalue';
 import messages from './messages';
 import createSelectStyles from '../../internals/create-select-styles';
+import getElement from '../../../utils/get-element';
 
 const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
   MultiValue,
 };
+
+const PropTypeElement = getElement();
 
 export class SelectInput extends React.Component {
   static displayName = 'SelectInput';
@@ -87,7 +90,7 @@ export class SelectInput extends React.Component {
     // menuIsOpen: PropTypes.bool,
     // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
     // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
-    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalTarget: PropTypes.instanceOf(PropTypeElement),
     menuPortalZIndex: PropTypes.number.isRequired,
     menuShouldBlockScroll: PropTypes.bool,
     // menuShouldScrollIntoView: PropTypes.bool,

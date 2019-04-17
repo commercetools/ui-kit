@@ -7,6 +7,7 @@ import {
 } from 'react-select';
 import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import getElement from '../../../utils/get-element';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
@@ -19,6 +20,8 @@ const customizedComponents = {
   ClearIndicator,
   MultiValue,
 };
+
+const PropTypeElement = getElement();
 
 export class CreatableSelectInput extends React.Component {
   static displayName = 'SelectInput';
@@ -59,7 +62,7 @@ export class CreatableSelectInput extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
-    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalTarget: PropTypes.instanceOf(PropTypeElement),
     menuPortalZIndex: PropTypes.number.isRequired,
     menuShouldBlockScroll: PropTypes.bool,
     name: PropTypes.string,

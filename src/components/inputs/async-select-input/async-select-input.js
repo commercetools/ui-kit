@@ -7,6 +7,7 @@ import {
 } from 'react-select';
 import Constraints from '../../constraints';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import getElement from '../../../utils/get-element';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import MultiValue from '../../internals/multivalue';
@@ -21,6 +22,8 @@ const customizedComponents = {
   LoadingIndicator,
   MultiValue,
 };
+
+const PropTypeElement = getElement();
 
 export class AsyncSelectInput extends React.Component {
   // Formik will set the field to an array on submission, so we always have to
@@ -73,7 +76,7 @@ export class AsyncSelectInput extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
-    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalTarget: PropTypes.instanceOf(PropTypeElement),
     menuPortalZIndex: PropTypes.number.isRequired,
     menuShouldBlockScroll: PropTypes.bool,
     name: PropTypes.string,
