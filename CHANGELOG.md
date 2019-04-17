@@ -1,3 +1,13 @@
+<a name="9.3.1"></a>
+
+# [9.3.1](https://github.com/commercetools/ui-kit/compare/v9.3.0...v9.3.1) (2019-04-17)
+
+### Bug Fixes
+
+- **circleci:** releasing from master and release ([#689](https://github.com/commercetools/ui-kit/issues/689)) ([7a7f8da](https://github.com/commercetools/ui-kit/commit/7a7f8da))
+- replace deprecated and broken package jest-plugin-filename with jest-watch-typeahead ([#685](https://github.com/commercetools/ui-kit/issues/685)) ([cd72a2b](https://github.com/commercetools/ui-kit/commit/cd72a2b))
+- `SelectInputs`, `SelectFields`, `MoneyField`, `MoneyInput`: incorrect prop type ([#692](https://github.com/commercetools/ui-kit/issues/692)) ([62e9599](https://github.com/commercetools/ui-kit/commit/62e9599))
+
 <a name="9.3.0"></a>
 
 # [9.3.0](https://github.com/commercetools/ui-kit/compare/v9.2.0...v9.3.0) (2019-04-16)
