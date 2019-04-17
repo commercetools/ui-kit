@@ -5,6 +5,7 @@ import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
 import Select, { components as defaultComponents } from 'react-select';
 import Constraints from '../../constraints';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
@@ -87,7 +88,7 @@ export class SelectInput extends React.Component {
     // menuIsOpen: PropTypes.bool,
     // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
     // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
-    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number.isRequired,
     menuShouldBlockScroll: PropTypes.bool,
     // menuShouldScrollIntoView: PropTypes.bool,

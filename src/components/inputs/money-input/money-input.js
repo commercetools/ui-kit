@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Contraints from '../../constraints';
 import Tooltip from '../../tooltip';
@@ -394,7 +395,7 @@ class MoneyInput extends React.Component {
     isReadOnly: PropTypes.bool,
     isAutofocussed: PropTypes.bool,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number.isRequired,
     menuShouldBlockScroll: PropTypes.bool,
     hasError: PropTypes.bool,

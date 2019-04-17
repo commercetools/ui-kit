@@ -6,6 +6,7 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import MoneyInput from '../../inputs/money-input';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
@@ -59,7 +60,7 @@ class MoneyField extends React.Component {
     isReadOnly: PropTypes.bool,
     isAutofocussed: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
-    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number,
     menuShouldBlockScroll: PropTypes.bool,
 

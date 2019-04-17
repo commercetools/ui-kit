@@ -6,6 +6,7 @@ import {
   Creatable as CreatableSelect,
 } from 'react-select';
 import Constraints from '../../constraints';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
@@ -59,7 +60,7 @@ export class CreatableSelectInput extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
-    menuPortalTarget: PropTypes.instanceOf(PropTypes.element),
+    menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number.isRequired,
     menuShouldBlockScroll: PropTypes.bool,
     name: PropTypes.string,
