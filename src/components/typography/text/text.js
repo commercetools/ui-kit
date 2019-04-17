@@ -35,7 +35,7 @@ const Headline = props => {
       {...filterDataAttributes(props)}
     >
       {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
+        <FormattedMessage {...props.intlMessage} values={props.intlValues} />
       ) : (
         props.children
       )}
@@ -49,6 +49,7 @@ Headline.propTypes = {
   title: nonEmptyString,
   truncate: PropTypes.bool,
   intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlValues: PropTypes.object,
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -61,7 +62,7 @@ const Subheadline = props => {
       {...filterDataAttributes(props)}
     >
       {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
+        <FormattedMessage {...props.intlMessage} values={props.intlValues} />
       ) : (
         props.children
       )}
@@ -83,6 +84,7 @@ Subheadline.propTypes = {
   title: nonEmptyString,
   truncate: PropTypes.bool,
   intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlValues: PropTypes.object,
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -93,7 +95,7 @@ const Wrap = props => (
     {...filterDataAttributes(props)}
   >
     {props.intlMessage ? (
-      <FormattedMessage {...props.intlMessage} />
+      <FormattedMessage {...props.intlMessage} values={props.intlValues} />
     ) : (
       props.children
     )}
@@ -104,6 +106,7 @@ Wrap.displayName = 'TextWrap';
 Wrap.propTypes = {
   title: nonEmptyString,
   intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlValues: PropTypes.object,
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -115,7 +118,7 @@ const Body = props =>
       {...filterDataAttributes(props)}
     >
       {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
+        <FormattedMessage {...props.intlMessage} values={props.intlValues} />
       ) : (
         props.children
       )}
@@ -127,7 +130,7 @@ const Body = props =>
       {...filterDataAttributes(props)}
     >
       {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
+        <FormattedMessage {...props.intlMessage} values={props.intlValues} />
       ) : (
         props.children
       )}
@@ -150,6 +153,7 @@ Body.propTypes = {
   title: nonEmptyString,
   truncate: PropTypes.bool,
   intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlValues: PropTypes.object,
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -161,7 +165,7 @@ const Detail = props => (
     className={props.className}
   >
     {props.intlMessage ? (
-      <FormattedMessage {...props.intlMessage} />
+      <FormattedMessage {...props.intlMessage} values={props.intlValues} />
     ) : (
       props.children
     )}
@@ -186,6 +190,7 @@ Detail.propTypes = {
   title: nonEmptyString,
   truncate: PropTypes.bool,
   intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlValues: PropTypes.object,
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
