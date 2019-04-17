@@ -5,13 +5,11 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import SelectInput from '../../inputs/select-input';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
-import getElement from '../../../utils/get-element';
-
-const PropTypeElement = getElement();
 
 const sequentialId = createSequentialId('select-field-');
 
@@ -48,7 +46,7 @@ export default class SelectField extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
-    menuPortalTarget: PropTypes.instanceOf(PropTypeElement),
+    menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number,
     menuShouldBlockScroll: PropTypes.bool,
     name: PropTypes.string,

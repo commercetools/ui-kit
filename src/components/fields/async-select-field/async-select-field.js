@@ -5,8 +5,8 @@ import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import AsyncSelectInput from '../../inputs/async-select-input';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import getFieldId from '../../../utils/get-field-id';
-import getElement from '../../../utils/get-element';
 import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
@@ -14,8 +14,6 @@ import FieldErrors from '../../field-errors';
 const sequentialId = createSequentialId('async-select-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
-
-const PropTypeElement = getElement();
 
 export default class AsyncSelectField extends React.Component {
   static displayName = 'AsyncSelectField';
@@ -48,7 +46,7 @@ export default class AsyncSelectField extends React.Component {
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
-    menuPortalTarget: PropTypes.instanceOf(PropTypeElement),
+    menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number,
     menuShouldBlockScroll: PropTypes.bool,
     name: PropTypes.string,
