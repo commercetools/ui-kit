@@ -100,6 +100,11 @@ it('should call onBlur when input loses focus', () => {
   expect(onBlur).toHaveBeenCalled();
 });
 
+it('should pass autocomplete', () => {
+  const { getByLabelText } = renderLocalizedTextField({ autoComplete: 'off' });
+  expect(getByLabelText('EN')).toHaveAttribute('autocomplete', 'off');
+});
+
 it('should have focus automatically when isAutofocussed is passed', () => {
   const { getByLabelText } = renderLocalizedTextField({ isAutofocussed: true });
   expect(getByLabelText('EN')).toHaveFocus();

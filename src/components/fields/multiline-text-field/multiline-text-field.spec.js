@@ -89,6 +89,14 @@ it('should have focus automatically when isAutofocussed is passed', () => {
   expect(getByLabelText('MultilineTextField')).toHaveFocus();
 });
 
+it('should pass autocomplete', () => {
+  const { getByLabelText } = renderMultilineTextField({ autoComplete: 'off' });
+  expect(getByLabelText('MultilineTextField')).toHaveAttribute(
+    'autocomplete',
+    'off'
+  );
+});
+
 it('should call onChange when changing the value', () => {
   const onChange = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onChange });

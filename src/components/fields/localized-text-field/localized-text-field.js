@@ -30,6 +30,7 @@ class LocalizedTextField extends React.Component {
     touched: PropTypes.bool,
 
     // LocalizedTextInput
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.objectOf(PropTypes.string).isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
@@ -99,6 +100,7 @@ class LocalizedTextField extends React.Component {
             htmlFor={this.state.id}
           />
           <LocalizedTextInput
+            autoComplete={this.props.autoComplete}
             id={this.state.id}
             name={this.props.name}
             value={this.props.value}
