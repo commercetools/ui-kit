@@ -79,6 +79,14 @@ describe('MultilineTextInput', () => {
     );
   });
 
+  it('should pass autoComplete', () => {
+    const { getByLabelText } = render(<TestComponent autoComplete="off" />);
+    expect(getByLabelText('Description')).toHaveAttribute(
+      'autoComplete',
+      'off'
+    );
+  });
+
   it('should forward html name', () => {
     const { getByLabelText } = render(<TestComponent name="field1" />);
     expect(getByLabelText('Description')).toHaveAttribute('name', 'field1');

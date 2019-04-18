@@ -68,6 +68,13 @@ it('should have an HTML name', () => {
   expect(getByLabelText('EN')).toHaveAttribute('name', 'foo.en');
 });
 
+it('should pass autoComplete', () => {
+  const { getByLabelText } = renderLocalizedMultilineTextInput({
+    autoComplete: 'off',
+  });
+  expect(getByLabelText('EN')).toHaveAttribute('autoComplete', 'off');
+});
+
 it('should have focus automatically when isAutofocussed is passed', () => {
   const { getByLabelText } = renderLocalizedMultilineTextInput({
     isAutofocussed: true,

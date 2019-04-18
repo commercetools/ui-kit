@@ -35,6 +35,7 @@ export class LocalizedMultilineTextInput extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
+    autoComplete: PropTypes.string,
     // then input doesn't accept a "languages" prop, instead all possible
     // languages have to exist (with empty or filled strings) on the value:
     //   { en: 'foo', de: '', es: '' }
@@ -179,6 +180,7 @@ export class LocalizedMultilineTextInput extends React.Component {
             return (
               <TranslationInput
                 key={language}
+                autoComplete={this.props.autoComplete}
                 id={LocalizedMultilineTextInput.getId(this.props.id, language)}
                 name={LocalizedMultilineTextInput.getName(
                   this.props.name,

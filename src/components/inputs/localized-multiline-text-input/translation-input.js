@@ -19,6 +19,7 @@ export default class TranslationInput extends React.Component {
 
   static propTypes = {
     id: PropTypes.string,
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
@@ -102,6 +103,7 @@ export default class TranslationInput extends React.Component {
           <TextareaAutosize
             id={this.props.id}
             name={this.props.name}
+            autoComplete={this.props.autoComplete}
             type="text"
             value={this.props.value}
             onChange={this.handleChange}

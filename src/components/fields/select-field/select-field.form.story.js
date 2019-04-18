@@ -96,7 +96,8 @@ storiesOf('Examples|Forms/Fields', module)
                 errors={formik.errors.animal}
                 isRequired={true}
                 touched={formik.touched.animal}
-                name="animal"
+                name="name"
+                isSearchable={true}
                 value={formik.values.animal}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}

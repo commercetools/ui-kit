@@ -70,6 +70,13 @@ it('should have an HTML name', () => {
   expect(getByLabelText('EN')).toHaveAttribute('name', 'foo.en');
 });
 
+it('should pass autoComplete', () => {
+  const { getByLabelText } = renderLocalizedTextInput({
+    autoComplete: 'off',
+  });
+  expect(getByLabelText('EN')).toHaveAttribute('autoComplete', 'off');
+});
+
 it('should have focus automatically when isAutofocussed is passed', () => {
   const { getByLabelText } = renderLocalizedTextInput({ isAutofocussed: true });
   expect(getByLabelText('EN')).toHaveFocus();

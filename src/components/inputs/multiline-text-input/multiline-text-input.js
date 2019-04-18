@@ -25,6 +25,7 @@ export class MultilineTextInput extends React.Component {
 
   static propTypes = {
     name: PropTypes.string,
+    autoComplete: PropTypes.string,
     id: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
@@ -69,6 +70,7 @@ export class MultilineTextInput extends React.Component {
             <Spacings.Stack scale="xs">
               <TextareaAutosize
                 name={this.props.name}
+                autoComplete={this.props.autoComplete}
                 value={this.props.value}
                 onChange={this.props.onChange}
                 onHeightChange={this.handleHeightChange}
