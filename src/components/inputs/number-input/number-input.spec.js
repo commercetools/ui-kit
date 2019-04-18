@@ -85,6 +85,16 @@ describe('NumberInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
   });
 
+  it('should have pass autoComplete', () => {
+    const { container } = render(
+      <NumberInput autoComplete="off" {...baseProps} />
+    );
+    expect(container.querySelector('input')).toHaveAttribute(
+      'autocomplete',
+      'off'
+    );
+  });
+
   it('should forward the passed value', () => {
     const { container } = render(<NumberInput {...baseProps} value="foo" />);
     expect(container.querySelector('input')).toHaveAttribute('value', 'foo');

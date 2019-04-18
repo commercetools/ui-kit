@@ -57,6 +57,16 @@ describe('TimeInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
   });
 
+  it('should pass autocompomplete', () => {
+    const { container } = render(
+      <TimeInput autoComplete="off" {...baseProps} />
+    );
+    expect(container.querySelector('input')).toHaveAttribute(
+      'autocomplete',
+      'off'
+    );
+  });
+
   it('should have ARIA role', () => {
     const { container } = render(<TimeInput {...baseProps} />);
     expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');

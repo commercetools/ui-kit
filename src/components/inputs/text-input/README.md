@@ -20,6 +20,7 @@ import { TextInput } from '@commercetools-frontend/ui-kit';
 | `id`                   | `string` |    -     | -                            | -       | Used as HTML `id` property                                                                             |
 | `name`                 | `string` |    -     | -                            | -       | Used as HTML `name` property                                                                           |
 | `value`                | `string` |    ✅    | -                            | -       | Value of the input                                                                                     |
+| `autoComplete`         | `string` |    -     | -                            | -       | Used as HTML `autocomplete` property                                                                   |
 | `onChange`             | `func`   |    -     | -                            | -       | Called with the new value. Required when input is not read only. Parent should pass it back as `value` |
 | `onBlur`               | `func`   |    -     | -                            | -       | Called when field is blurred                                                                           |
 | `onFocus`              | `func`   |    -     | -                            | -       | Called when field is focused                                                                           |

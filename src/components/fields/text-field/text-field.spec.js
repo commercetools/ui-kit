@@ -66,6 +66,14 @@ it('should have an HTML name', () => {
   expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
 });
 
+it('should have an HTML autocomplete', () => {
+  const { container } = renderTextField({ autoComplete: 'off' });
+  expect(container.querySelector('input')).toHaveAttribute(
+    'autocomplete',
+    'off'
+  );
+});
+
 it('should call onFocus when the input is focused', () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderTextField({ onFocus });

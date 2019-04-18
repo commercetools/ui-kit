@@ -36,6 +36,7 @@ export class TimeInput extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
+    autoComplete: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     onFocus: PropTypes.func,
@@ -140,6 +141,7 @@ export class TimeInput extends React.Component {
         <TimeInputBody
           id={this.state.id}
           name={this.props.name}
+          autoComplete={this.props.autoComplete}
           value={this.props.value}
           onChange={this.props.onChange}
           onFocus={this.props.onFocus}

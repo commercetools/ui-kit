@@ -110,6 +110,16 @@ describe('when `description` is passed', () => {
   });
 });
 
+describe('when `autoComplete` is passed', () => {
+  it('should render an input with autocomplete', () => {
+    const { getByLabelText } = renderNumberField({ autoComplete: 'off' });
+    expect(getByLabelText('NumberField')).toHaveAttribute(
+      'autocomplete',
+      'off'
+    );
+  });
+});
+
 describe('when `min` is passed', () => {
   it('should render a description', () => {
     const { getByLabelText } = renderNumberField({ min: 20 });

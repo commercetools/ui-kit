@@ -19,6 +19,7 @@ const TextInput = props => (
       placeholder={props.placeholder}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
+      autoComplete={props.autoComplete}
       css={theme => getInputStyles(props, theme)}
       {...filterDataAttributes(props)}
       /* ARIA */
@@ -32,6 +33,7 @@ const TextInput = props => (
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
+  autoComplete: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
