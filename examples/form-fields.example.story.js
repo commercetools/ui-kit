@@ -248,7 +248,6 @@ class ProductForm extends React.Component {
           onBlur={this.props.formik.handleBlur}
           isDisabled={this.props.formik.isSubmitting}
           touched={this.props.formik.touched.key}
-          autoComplete="off"
           errors={this.props.formik.errors.key}
           renderError={key => {
             // This example shows how to handle custom errors on top of the
