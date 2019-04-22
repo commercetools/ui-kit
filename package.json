@@ -159,7 +159,7 @@
     "markdown-loader": "5.0.0",
     "moment": "2.24.0",
     "moment-locales-webpack-plugin": "1.0.7",
-    "moment-timezone": "0.5.23",
+    "moment-timezone": "0.5.25",
     "mri": "1.1.4",
     "omit-empty": "1.0.0",
     "pptr-testing-library": "0.3.1",
