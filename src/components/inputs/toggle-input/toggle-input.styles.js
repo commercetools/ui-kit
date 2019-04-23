@@ -17,8 +17,8 @@ const toggleButtonSizes = {
     width: '16px',
   },
   big: {
-    height: '32px',
-    width: '32px',
+    height: '26px',
+    width: '26px',
   },
 };
 const toggleBarSizes = {
@@ -27,7 +27,7 @@ const toggleBarSizes = {
     width: '32px',
   },
   big: {
-    height: '24px',
+    height: '32px',
     width: '64px',
   },
 };
@@ -36,8 +36,8 @@ const getToggleSwitchStyles = props => {
   const baseStyles = [
     css`
       &:hover > * {
-        filter: drop-shadow(${vars.shadow15First})
-          drop-shadow(${vars.shadow15Second});
+        /* filter: drop-shadow(${vars.shadow15First})
+          drop-shadow(${vars.shadow15Second}); */
       }
     `,
     props.isDisabled &&
@@ -75,20 +75,23 @@ const getToggleButtonStyles = props => {
   const baseStyles = [
     css`
       position: absolute;
+      left: 2px;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 1;
-      filter: drop-shadow(${vars.shadow11First})
-        drop-shadow(${vars.shadow11Second});
-      transition: ${vars.transitionStandard};
-
+      /* filter: drop-shadow(${vars.shadow11First})
+        drop-shadow(${vars.shadow11Second}); */
+      transition: transform 0.2s;
+      /*
       svg .bt-fill {
-        transition: ${vars.transitionStandard};
-      }
+        transition: fill 0.2s ease;
+      } */
     `,
     props.isChecked &&
       css`
         /* The extra 7% shifts the button to the right by about 2px for big and 1px for small */
-        transform: translateX(107%);
-        filter: drop-shadow(${vars.shadow12First});
+        transform: translate(130%, -50%);
+        /* filter: drop-shadow(${vars.shadow12First}); */
 
         svg .bt-fill {
           fill: ${vars.colorPrimary};
@@ -96,7 +99,7 @@ const getToggleButtonStyles = props => {
       `,
     props.isDisabled &&
       css`
-        filter: drop-shadow(${vars.shadow13First});
+        /* filter: drop-shadow(${vars.shadow13First}); */
 
         svg .bt-fill {
           fill: ${vars.colorNeutral90};
@@ -105,7 +108,7 @@ const getToggleButtonStyles = props => {
     props.isChecked &&
       props.isDisabled &&
       css`
-        filter: drop-shadow(${vars.shadow14First});
+        /* filter: drop-shadow(${vars.shadow14First}); */
 
         svg .bt-fill {
           fill: ${vars.colorPrimary85};
@@ -117,7 +120,6 @@ const getToggleButtonStyles = props => {
       return [
         ...baseStyles,
         css`
-          position: relative;
           height: ${toggleButtonSizes.small.height};
           width: ${toggleButtonSizes.small.width};
         `,
@@ -126,7 +128,6 @@ const getToggleButtonStyles = props => {
       return [
         ...baseStyles,
         css`
-          position: relative;
           height: ${toggleButtonSizes.big.height};
           width: ${toggleButtonSizes.big.width};
         `,
@@ -148,7 +149,7 @@ const getToggleBarStyles = props => {
     props.isChecked &&
       css`
         rect {
-          fill: ${vars.colorPrimary25};
+          fill: ${vars.colorPrimary};
         }
       `,
     props.isDisabled &&
@@ -163,7 +164,6 @@ const getToggleBarStyles = props => {
       return [
         ...baseStyles,
         css`
-          top: 2px;
           height: ${toggleBarSizes.small.height};
           width: ${toggleBarSizes.small.width};
         `,
@@ -172,7 +172,6 @@ const getToggleBarStyles = props => {
       return [
         ...baseStyles,
         css`
-          top: 4px;
           height: ${toggleBarSizes.big.height};
           width: ${toggleBarSizes.big.width};
         `,
