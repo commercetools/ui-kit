@@ -12,6 +12,7 @@ const NumberInput = props => (
       id={props.id}
       name={props.name}
       type="number"
+      autoComplete={props.autoComplete}
       value={props.value}
       min={props.min}
       max={props.max}
@@ -38,6 +39,7 @@ NumberInput.displayName = 'NumberInput';
 NumberInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
+  autoComplete: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   min: PropTypes.number,
   max: PropTypes.number,

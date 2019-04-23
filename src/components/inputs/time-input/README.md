@@ -19,6 +19,7 @@ import { TimeInput } from '@commercetools-frontend/ui-kit';
 | ---------------------- | -------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `id`                   | `string` |    -     | -                            | -       | Used as HTML `id` property                                                                                               |
 | `name`                 | `string` |    -     | -                            | -       | Used as HTML `name` property                                                                                             |
+| `autoComplete`         | `string` |    -     | -                            | -       | Used as HTML `autocomplete` property                                                                                     |
 | `value`                | `string` |    ✅    | -                            | -       | Value of the input                                                                                                       |
 | `onChange`             | `func`   |    -     | -                            | -       | Called with an event holding the new value. Required when input is not read only. Parent should pass it back as `value`- |
 | `onFocus`              | `func`   |    -     | -                            | -       | Called when field is focused                                                                                             |

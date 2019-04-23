@@ -29,6 +29,7 @@ class NumberField extends React.Component {
     touched: PropTypes.bool,
 
     // NumberInput
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
@@ -86,6 +87,7 @@ class NumberField extends React.Component {
           <NumberInput
             id={this.state.id}
             name={this.props.name}
+            autoComplete={this.props.autoComplete}
             value={this.props.value}
             onChange={this.props.onChange}
             onBlur={this.props.onBlur}

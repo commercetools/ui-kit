@@ -383,6 +383,7 @@ class MoneyInput extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
+    autoComplete: PropTypes.string,
     value: PropTypes.shape({
       amount: PropTypes.string.isRequired,
       currencyCode: PropTypes.string.isRequired,
@@ -630,6 +631,7 @@ class MoneyInput extends React.Component {
             <input
               ref={this.amountInputRef}
               id={MoneyInput.getAmountInputId(this.props.id)}
+              autoComplete={this.props.autoComplete}
               name={getAmountInputName(this.props.name)}
               type="text"
               onFocus={() => {

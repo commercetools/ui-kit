@@ -431,6 +431,11 @@ describe('MoneyInput', () => {
     expect(getByLabelText('Amount')).toHaveAttribute('name', 'foo.amount');
   });
 
+  it('should pass autoComplete', () => {
+    const { getByLabelText } = render(<TestComponent autoComplete="off" />);
+    expect(getByLabelText('Amount')).toHaveAttribute('autocomplete', 'off');
+  });
+
   it('should show the passed value', () => {
     const { getByLabelText, getByTestId } = render(
       <TestComponent value={{ amount: '20', currencyCode: 'EUR' }} />

@@ -51,6 +51,7 @@ export default class TimeInputBody extends React.Component {
 
   static propTypes = {
     id: PropTypes.string,
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string,
     isAutofocussed: PropTypes.bool,
@@ -72,6 +73,7 @@ export default class TimeInputBody extends React.Component {
           <input
             id={this.props.id}
             name={this.props.name}
+            autoComplete={this.props.autoComplete}
             css={getTimeInputStyles(this.props)}
             placeholder={this.props.placeholder}
             autoFocus={this.props.isAutofocussed}

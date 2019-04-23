@@ -83,6 +83,11 @@ it('should have an HTML name for dropdown and amount input', () => {
   ).toBeInTheDocument();
 });
 
+it('should pass autocomplete', () => {
+  const { getByLabelText } = renderMoneyField({ autoComplete: 'off' });
+  expect(getByLabelText('Amount')).toHaveAttribute('autocomplete', 'off');
+});
+
 it('should call onFocus when amount input is focused', () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMoneyField({ onFocus });

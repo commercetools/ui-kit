@@ -72,6 +72,13 @@ it('should forward data-attributes', () => {
   expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
 });
 
+it('should pass autoComplete', () => {
+  const { getByLabelText } = renderLocalizedMultilineTextField({
+    autoComplete: 'off',
+  });
+  expect(getByLabelText('EN')).toHaveAttribute('autocomplete', 'off');
+});
+
 it('should have an HTML name for input, according to the language', () => {
   const { container } = renderLocalizedMultilineTextField({ name: 'foo' });
   expect(container.querySelector('[name="foo.en"]')).toBeInTheDocument();

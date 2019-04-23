@@ -35,6 +35,16 @@ describe('TextInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
   });
 
+  it('should have an HTML autocomplete', () => {
+    const { container } = render(
+      <TextInput autoComplete="off" {...baseProps} />
+    );
+    expect(container.querySelector('input')).toHaveAttribute(
+      'autocomplete',
+      'off'
+    );
+  });
+
   it('should have ARIA role', () => {
     const { container } = render(<TextInput {...baseProps} />);
     expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');

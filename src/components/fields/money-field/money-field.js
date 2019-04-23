@@ -47,6 +47,7 @@ class MoneyField extends React.Component {
     },
 
     // MoneyInput
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.shape({
       amount: PropTypes.string.isRequired,
@@ -110,6 +111,7 @@ class MoneyField extends React.Component {
           <MoneyInput
             id={this.state.id}
             name={this.props.name}
+            autoComplete={this.props.autoComplete}
             value={this.props.value}
             currencies={this.props.currencies}
             placeholder={this.props.placeholder}

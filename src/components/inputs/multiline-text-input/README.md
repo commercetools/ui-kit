@@ -21,6 +21,7 @@ import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
 | Props                        | Type     | Required | Values                  | Default | Description                                                                                                               |
 | ---------------------------- | -------- | :------: | ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `name`                       | `string` |    -     | -                       | -       | Used as HTML `name` property                                                                                              |
+| `autoComplete`               | `string` |    -     | -                       | -       | Used as HTML `autoComplete` property                                                                                      |
 | `id`                         | `string` |    -     | -                       | -       | Specifies the id of an element                                                                                            |
 | `value`                      | `string` |    ✅    | -                       | -       | Value of the input                                                                                                        |
 | `onChange`                   | `func`   |    ✅    | -                       | -       | Called with an event containing the new value. Required, unless input is `read-only. Parent should pass it back as`value` |

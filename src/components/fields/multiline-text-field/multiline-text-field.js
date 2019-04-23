@@ -29,6 +29,7 @@ class MultilineTextField extends React.Component {
     touched: PropTypes.bool,
 
     // TextInput
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
@@ -84,6 +85,7 @@ class MultilineTextField extends React.Component {
           <MultilineTextInput
             id={this.state.id}
             name={this.props.name}
+            autoComplete={this.props.autoComplete}
             value={this.props.value}
             onChange={this.props.onChange}
             onBlur={this.props.onBlur}

@@ -30,6 +30,7 @@ class LocalizedMultilineTextField extends React.Component {
     touched: PropTypes.bool,
 
     // LocalizedMultilineTextInput
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.objectOf(PropTypes.string).isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
@@ -102,6 +103,7 @@ class LocalizedMultilineTextField extends React.Component {
           <LocalizedMultilineTextInput
             id={this.state.id}
             name={this.props.name}
+            autoComplete={this.props.autoComplete}
             value={this.props.value}
             onChange={this.props.onChange}
             selectedLanguage={this.props.selectedLanguage}

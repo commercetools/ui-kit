@@ -36,6 +36,7 @@ class LocalizedInput extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
+    autoComplete: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     language: PropTypes.string.isRequired,
@@ -85,6 +86,7 @@ class LocalizedInput extends React.Component {
         <input
           id={this.props.id}
           name={this.props.name}
+          autoComplete={this.props.autoComplete}
           type="text"
           value={this.props.value}
           onChange={this.handleChange}
@@ -122,6 +124,7 @@ export default class LocalizedTextInput extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
+    autoComplete: PropTypes.string,
     // then input doesn't accept a "languages" prop, instead all possible
     // languages have to exist (with empty or filled strings) on the value:
     //   { en: 'foo', de: '', es: '' }
@@ -224,6 +227,7 @@ export default class LocalizedTextInput extends React.Component {
               <div key={language}>
                 <Spacings.Stack scale="xs">
                   <LocalizedInput
+                    autoComplete={this.props.autoComplete}
                     id={LocalizedTextInput.getId(this.state.id, language)}
                     name={LocalizedTextInput.getName(this.props.name, language)}
                     value={this.props.value[language]}
