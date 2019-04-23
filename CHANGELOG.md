@@ -1,3 +1,15 @@
+<a name="9.4.0"></a>
+
+# [9.4.0](https://github.com/commercetools/ui-kit/compare/v9.3.1...v9.4.0) (2019-04-23)
+
+### Features
+
+- `* inputs`, `* fields`: add `autoComplete` prop to most inputs / fields. ([#696](https://github.com/commercetools/ui-kit/issues/696)) ([f1274ec](https://github.com/commercetools/ui-kit/commit/f1274ec))
+
+### Refactoring
+
+- Various dependency updates ([#704](https://github.com/commercetools/ui-kit/pull/704))
+
 <a name="9.3.1"></a>
 
 # [9.3.1](https://github.com/commercetools/ui-kit/compare/v9.3.0...v9.3.1) (2019-04-17)
