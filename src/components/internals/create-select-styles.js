@@ -31,19 +31,24 @@ const controlStyles = props => (base, state) => ({
   boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
   '&:hover': {
-    borderColor: vars.borderColorForInputWhenFocused,
+    borderColor: state.isDisabled
+      ? vars.borderColorForInputWhenDisabled
+      : vars.borderColorForInputWhenFocused,
     boxShadow: 'none',
   },
   '&:active': {
-    borderColor: vars.borderColorForInputWhenFocused,
+    borderColor: state.isDisabled
+      ? vars.borderColorForInputWhenDisabled
+      : vars.borderColorForInputWhenFocused,
     boxShadow: 'none',
   },
   '&:focus': {
-    borderColor: vars.borderColorForInputWhenFocused,
+    borderColor: state.isDisabled
+      ? vars.borderColorForInputWhenDisabled
+      : vars.borderColorForInputWhenFocused,
     boxShadow: 'none',
   },
-
-  pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
+  pointerEvents: 'all',
   color: state.isDisabled
     ? vars.fontColorForInputWhenDisabled
     : base.fontColorForInput,
