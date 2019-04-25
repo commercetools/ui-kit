@@ -57,6 +57,18 @@ storiesOf('Components|Spacings', module)
       ['flex-start', 'center', 'flex-end', 'stretch', 'baseline'],
       'stretch'
     );
+    const justifyContent = select(
+      'Justify content',
+      [
+        'flex-start',
+        'flex-end',
+        'center',
+        'space-between',
+        'space-around',
+        'space-evenly',
+      ],
+      'flex-start'
+    );
     return (
       <Stack>
         {sizes.map(size => (
@@ -70,7 +82,11 @@ storiesOf('Components|Spacings', module)
                   </Text.Subheadline>
                 </Inset>
               </Scale>
-              <Inline scale={size.name} alignItems={alignItems}>
+              <Inline
+                scale={size.name}
+                alignItems={alignItems}
+                justifyContent={justifyContent}
+              >
                 <InlineItem alignItems={alignItems} />
                 <InlineItem alignItems={alignItems} />
                 <InlineItem alignItems={alignItems} />
