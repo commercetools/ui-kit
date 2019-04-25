@@ -26,7 +26,6 @@ const toggleBarSizes = {
 export const Button = styled.div`
   position: absolute;
 
-  left: 2px;
   transform: translateY(-50%);
   top: 50%;
 
@@ -34,7 +33,7 @@ export const Button = styled.div`
   box-shadow: ${vars.shadow7};
   border-radius: 50%;
   z-index: 1;
-  transition: transform 0.2s;
+  transition: transform ${vars.transitionStandard};
 
   ${props =>
     props.isChecked &&
@@ -62,10 +61,12 @@ export const Button = styled.div`
   ${props =>
     props.size === 'small'
       ? `
+          left: 2px;
           height: ${toggleButtonSizes.small.height};
           width: ${toggleButtonSizes.small.width};
         `
       : `
+        left: 3px;
         height: ${toggleButtonSizes.big.height};
         width: ${toggleButtonSizes.big.width};
       `}
