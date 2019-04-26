@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import vars from '../../../../materials/custom-properties';
 
+const thumbSmallSize = '13px';
+const thumbBigSize = '26px;';
+
 const Label = styled.label`
   position: relative;
   display: inline-block;
@@ -45,13 +48,14 @@ const Span = styled.span`
     transform: translateY(-50%);
     top: 50%;
     left: ${props => (props.size === 'small' ? '2px' : '3px')};
-    height: ${props => (props.size === 'small' ? '13px' : '26px')};
-    width: ${props => (props.size === 'small' ? '13px' : '26px')};
+    height: ${props =>
+      props.size === 'small' ? thumbSmallSize : thumbBigSize};
+    width: ${props => (props.size === 'small' ? thumbSmallSize : thumbBigSize)};
     background-color: ${vars.colorSurface};
     box-shadow: ${vars.shadow7};
     border-radius: 50%;
     z-index: 1;
-    transition: transform 0.2s ease-in;
+    transition: transform 0.2s ease, background 0.2s ease;
   }
 `;
 
