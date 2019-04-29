@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import Icons from './icons';
-import {
-  getLabelStyles,
-  getCheckboxWrapperStyles,
-} from './checkbox-input.styles';
+import { getCheckboxWrapperStyles } from './checkbox-input.styles';
+import Checkbox from './checkbox';
+import vars from '../../../../materials/custom-properties';
 
 const sequentialId = createSequentialId('checkbox-input-');
+
+const Label = styled.label`
+  display: block;
+  cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
+  position: relative;
+
+  &:hover svg [id$='borderAndContent'] > [id$='border'] {
+    stroke: ${vars.borderColorInputFocus};
+  }
+`;
 
 class CheckboxInput extends React.PureComponent {
   static displayName = 'CheckboxInput';
@@ -52,40 +61,37 @@ class CheckboxInput extends React.PureComponent {
 
   render() {
     return (
-      <div>
-        <label htmlFor={this.state.id} css={getLabelStyles(this.props)}>
-          <Spacings.Inline alignItems="center">
-            <div css={getCheckboxWrapperStyles(this.props)}>
-              {(() => {
-                if (this.props.isIndeterminate) return <Icons.Indeterminate />;
-                if (this.props.isChecked) return <Icons.Checked />;
-                return <Icons.Unchecked />;
-              })()}
-            </div>
-            {this.props.children && (
-              <Text.Body
-                // FIXME: add proper tones when we have disabled/primary in tones
-                tone={this.props.isDisabled ? 'secondary' : undefined}
-              >
-                {this.props.children}
-              </Text.Body>
-            )}
-            <input
-              css={css`
-                display: none;
-              `}
-              type="checkbox"
-              id={this.state.id}
-              name={this.props.name}
-              value={this.props.value}
-              onChange={this.props.onChange}
-              disabled={this.props.isDisabled}
-              checked={this.props.isChecked && !this.props.isIndeterminate}
-              {...filterDataAttributes(this.props)}
-            />
-          </Spacings.Inline>
-        </label>
-      </div>
+      <Label htmlFor={this.state.id}>
+        <Spacings.Inline alignItems="center">
+          <Checkbox
+            type="checkbox"
+            id={this.state.id}
+            name={this.props.name}
+            value={this.props.value}
+            onChange={this.props.onChange}
+            disabled={this.props.isDisabled}
+            checked={this.props.isChecked && !this.props.isIndeterminate}
+            isIndeterminate={this.props.isIndeterminate}
+            {...filterDataAttributes(this.props)}
+          />
+
+          <div css={getCheckboxWrapperStyles(this.props)}>
+            {(() => {
+              if (this.props.isIndeterminate) return <Icons.Indeterminate />;
+              if (this.props.isChecked) return <Icons.Checked />;
+              return <Icons.Unchecked />;
+            })()}
+          </div>
+          {this.props.children && (
+            <Text.Body
+              // FIXME: add proper tones when we have disabled/primary in tones
+              tone={this.props.isDisabled ? 'secondary' : undefined}
+            >
+              {this.props.children}
+            </Text.Body>
+          )}
+        </Spacings.Inline>
+      </Label>
     );
   }
 }

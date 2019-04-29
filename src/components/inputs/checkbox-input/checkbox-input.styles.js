@@ -1,23 +1,6 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const getLabelStyles = props => {
-  if (props.isDisabled) {
-    return css`
-      cursor: not-allowed;
-    `;
-  }
-  if (props.hasError) {
-    return css``;
-  }
-  return css`
-    cursor: pointer;
-    &:hover svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: ${vars.borderColorInputFocus};
-    }
-  `;
-};
-
 const getCheckboxWrapperStyles = props => {
   const baseStyles = css`
     display: flex;
@@ -69,4 +52,5 @@ const getCheckboxWrapperStyles = props => {
   return baseStyles;
 };
 
-export { getLabelStyles, getCheckboxWrapperStyles };
+// eslint-disable-next-line import/prefer-default-export
+export { getCheckboxWrapperStyles };
