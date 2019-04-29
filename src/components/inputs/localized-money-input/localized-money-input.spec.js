@@ -230,8 +230,8 @@ describe('when placeholders are provided', () => {
 
 describe('when every field has an error', () => {
   const errors = {
-    USD: 'A value is required',
-    CAD: 'A value is required',
+    USD: 'A USD value is required',
+    CAD: 'A CAD value is required',
   };
   it('should be open all fields and render errors', () => {
     const { getByText } = renderLocalizedMoneyInput({
