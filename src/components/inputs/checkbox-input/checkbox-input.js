@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import Text from '../../typography/text';
-import Spacings from '../../spacings';
 import Icons from './icons';
 import { getCheckboxWrapperStyles } from './checkbox-input.styles';
 import Checkbox from './checkbox';
@@ -14,7 +14,8 @@ import vars from '../../../../materials/custom-properties';
 const sequentialId = createSequentialId('checkbox-input-');
 
 const Label = styled.label`
-  display: block;
+  display: flex;
+  align-items: center;
   cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
   position: relative;
 
@@ -64,36 +65,39 @@ class CheckboxInput extends React.PureComponent {
   render() {
     return (
       <Label htmlFor={this.state.id} hasError={this.props.hasError}>
-        <Spacings.Inline alignItems="center">
-          <Checkbox
-            type="checkbox"
-            id={this.state.id}
-            name={this.props.name}
-            value={this.props.value}
-            onChange={this.props.onChange}
-            disabled={this.props.isDisabled}
-            checked={this.props.isChecked && !this.props.isIndeterminate}
-            isIndeterminate={this.props.isIndeterminate}
-            hasError={this.props.hasError}
-            {...filterDataAttributes(this.props)}
-          />
-
-          <div css={getCheckboxWrapperStyles(this.props)}>
-            {(() => {
-              if (this.props.isIndeterminate) return <Icons.Indeterminate />;
-              if (this.props.isChecked) return <Icons.Checked />;
-              return <Icons.Unchecked />;
-            })()}
-          </div>
-          {this.props.children && (
+        <Checkbox
+          type="checkbox"
+          id={this.state.id}
+          name={this.props.name}
+          value={this.props.value}
+          onChange={this.props.onChange}
+          disabled={this.props.isDisabled}
+          checked={this.props.isChecked && !this.props.isIndeterminate}
+          isIndeterminate={this.props.isIndeterminate}
+          hasError={this.props.hasError}
+          {...filterDataAttributes(this.props)}
+        />
+        <div css={getCheckboxWrapperStyles(this.props)}>
+          {(() => {
+            if (this.props.isIndeterminate) return <Icons.Indeterminate />;
+            if (this.props.isChecked) return <Icons.Checked />;
+            return <Icons.Unchecked />;
+          })()}
+        </div>
+        {this.props.children && (
+          <div
+            css={css`
+              margin-left: ${vars.spacingS};
+            `}
+          >
             <Text.Body
               // FIXME: add proper tones when we have disabled/primary in tones
               tone={this.props.isDisabled ? 'secondary' : undefined}
             >
               {this.props.children}
             </Text.Body>
-          )}
-        </Spacings.Inline>
+          </div>
+        )}
       </Label>
     );
   }
