@@ -13,9 +13,12 @@ const Input = styled.input`
   top: 0;
   width: 100%;
 
+  ${props =>
+    !props.hasError &&
+    `
   &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
     stroke: ${vars.borderColorInputFocus};
-  }
+  }`}
 `;
 
 class Checkbox extends React.Component {
