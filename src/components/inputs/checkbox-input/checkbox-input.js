@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import Text from '../../typography/text';
@@ -71,11 +72,12 @@ class CheckboxInput extends React.PureComponent {
           name={this.props.name}
           value={this.props.value}
           onChange={this.props.onChange}
-          disabled={this.props.isDisabled}
-          checked={this.props.isChecked && !this.props.isIndeterminate}
+          isDisabled={this.props.isDisabled}
+          isChecked={this.props.isChecked}
           isIndeterminate={this.props.isIndeterminate}
           hasError={this.props.hasError}
           {...filterDataAttributes(this.props)}
+          {...filterAriaAttributes(this.props)}
         />
         <div css={getCheckboxWrapperStyles(this.props)}>
           {(() => {

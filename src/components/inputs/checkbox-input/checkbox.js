@@ -25,7 +25,14 @@ class Checkbox extends React.Component {
   static displayName = 'Checkbox';
 
   static propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    value: PropTypes.string,
+    isChecked: PropTypes.bool,
     isIndeterminate: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    isDisabled: PropTypes.bool,
+    hasError: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -43,7 +50,19 @@ class Checkbox extends React.Component {
   ref = React.createRef();
 
   render() {
-    return <Input ref={this.ref} {...this.props} />;
+    return (
+      <Input
+        id={this.props.id}
+        name={this.props.name}
+        value={this.props.value}
+        disabled={this.props.isDisabled}
+        checked={this.props.isChecked && !this.props.isIndeterminate}
+        onChange={this.props.onChange}
+        hasError={this.props.hasError}
+        ref={this.ref}
+        {...this.props}
+      />
+    );
   }
 }
 
