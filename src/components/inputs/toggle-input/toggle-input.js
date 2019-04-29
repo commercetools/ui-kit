@@ -5,7 +5,7 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import vars from '../../../../materials/custom-properties';
 
 const thumbSmallSize = '13px';
-const thumbBigSize = '26px;';
+const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
 
 const Label = styled.label`
   position: relative;
@@ -15,13 +15,12 @@ const Label = styled.label`
   ${props =>
     props.size === 'small'
       ? `
-        height: 16px;
-        width: 32px;
+        height: calc(${vars.standardInputHeight} / 2);
+        width: calc(${vars.standardInputHeight});
       `
       : `
-
-        height: 32px;
-        width: 64px;
+        height: calc(${vars.standardInputHeight});
+        width: calc(${vars.standardInputHeight} * 2);
       `}
 `;
 
