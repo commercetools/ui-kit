@@ -10674,10 +10674,10 @@ postcss@^7.0.0, postcss@^7.0.14, postcss@^7.0.5, postcss@^7.0.6:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-pptr-testing-library@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/pptr-testing-library/-/pptr-testing-library-0.3.1.tgz#84be4dd8d0eab747411cfaee4630ede32099d55c"
-  integrity sha512-ob41XmpSDyw1oqy1Jmdhpdlvt4hJmcdD5OQiMYgLtg+toL/AXD9myIrbzamLLmKimzcrCXh0B05wtFD/A11DMQ==
+pptr-testing-library@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/pptr-testing-library/-/pptr-testing-library-0.3.2.tgz#ad09c405f4a71d9a3529cbf4fb1cad5b92445cff"
+  integrity sha512-X7WVmcRwuLWFkDT3iDQVOOYzKNYLri1OfxeUHEK5ZpEuKnXlWrJKUf5Dw+2Hjh2WbU4nxIRIkedfIMbhZFqCSg==
   dependencies:
     dom-testing-library "^3.11.0"
     wait-for-expect "^0.4.0"

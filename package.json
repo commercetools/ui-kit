@@ -162,7 +162,7 @@
     "moment-timezone": "0.5.25",
     "mri": "1.1.4",
     "omit-empty": "1.0.0",
-    "pptr-testing-library": "0.3.1",
+    "pptr-testing-library": "0.3.2",
     "prettier": "1.17.0",
     "puppeteer": "1.14.0",
     "rcfile": "1.0.3",
