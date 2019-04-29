@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import vars from '../../../../materials/custom-properties';
 
 const thumbSmallSize = '13px';
@@ -124,6 +125,7 @@ class ToggleInput extends React.PureComponent {
           type="checkbox"
           size={this.props.size}
           {...filterDataAttributes(this.props)}
+          {...filterAriaAttributes(this.props)}
         />
         <Span aria-hidden="true" size={this.props.size} />
       </Label>
