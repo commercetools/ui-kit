@@ -84,8 +84,7 @@ const Input = styled.input`
     + ${Span}:after,
     :not(:disabled)&:focus
     + ${Span}:after {
-    filter: drop-shadow(${vars.shadow15First})
-      drop-shadow(${vars.shadow15Second});
+    box-shadow: ${vars.shadow16};
   }
 `;
 
