@@ -107,7 +107,11 @@ class ToggleInput extends React.PureComponent {
 
   render() {
     return (
-      <Label htmlFor={this.props.id} size={this.props.size}>
+      <Label
+        htmlFor={this.props.id}
+        size={this.props.size}
+        isDisabled={this.props.isDisabled}
+      >
         <Input
           css={accessibleHiddenInputStyles}
           id={this.props.id}
