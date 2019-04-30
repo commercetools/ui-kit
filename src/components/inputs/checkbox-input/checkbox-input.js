@@ -19,10 +19,11 @@ const Label = styled.label`
   align-items: center;
   cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
   position: relative;
-
-  &:hover svg [id$='borderAndContent'] > [id$='border'] {
+  ${props =>
+    !props.hasError &&
+    `  &:hover svg [id$='borderAndContent'] > [id$='border'] {
     stroke: ${vars.borderColorInputFocus};
-  }
+  }`}
 `;
 
 class CheckboxInput extends React.PureComponent {
@@ -63,7 +64,7 @@ class CheckboxInput extends React.PureComponent {
 
   render() {
     return (
-      <Label htmlFor={this.state.id}>
+      <Label htmlFor={this.state.id} hasError={this.props.hasError}>
         <Checkbox
           type="checkbox"
           id={this.state.id}
