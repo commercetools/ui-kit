@@ -6,12 +6,9 @@ import vars from '../../../../materials/custom-properties';
 
 // accessible input :)
 const Input = styled.input`
-  ${props =>
-    !props.hasError &&
-    `
   &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
     stroke: ${vars.borderColorInputFocus};
-  }`}
+  }
 `;
 
 class Checkbox extends React.Component {
@@ -25,7 +22,6 @@ class Checkbox extends React.Component {
     isIndeterminate: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     isDisabled: PropTypes.bool,
-    hasError: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -52,7 +48,6 @@ class Checkbox extends React.Component {
         disabled={this.props.isDisabled}
         checked={this.props.isChecked && !this.props.isIndeterminate}
         onChange={this.props.onChange}
-        hasError={this.props.hasError}
         ref={this.ref}
         {...this.props}
       />

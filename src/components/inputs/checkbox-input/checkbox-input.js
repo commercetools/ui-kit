@@ -20,11 +20,9 @@ const Label = styled.label`
   cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
   position: relative;
 
-  ${props =>
-    !props.hasError &&
-    `  &:hover svg [id$='borderAndContent'] > [id$='border'] {
+  &:hover svg [id$='borderAndContent'] > [id$='border'] {
     stroke: ${vars.borderColorInputFocus};
-  }`}
+  }
 `;
 
 class CheckboxInput extends React.PureComponent {
@@ -65,7 +63,7 @@ class CheckboxInput extends React.PureComponent {
 
   render() {
     return (
-      <Label htmlFor={this.state.id} hasError={this.props.hasError}>
+      <Label htmlFor={this.state.id}>
         <Checkbox
           type="checkbox"
           id={this.state.id}
@@ -75,7 +73,6 @@ class CheckboxInput extends React.PureComponent {
           isDisabled={this.props.isDisabled}
           isChecked={this.props.isChecked}
           isIndeterminate={this.props.isIndeterminate}
-          hasError={this.props.hasError}
           {...filterDataAttributes(this.props)}
           {...filterAriaAttributes(this.props)}
         />
