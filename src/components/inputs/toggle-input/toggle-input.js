@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
+import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import vars from '../../../../materials/custom-properties';
 
 const thumbSmallSize = '13px';
@@ -60,14 +61,6 @@ const Span = styled.span`
 `;
 
 const Input = styled.input`
-  pointer-events: none;
-  height: 100%;
-  left: 0;
-  opacity: 0.0001;
-  position: absolute;
-  top: 0;
-  width: 100%;
-
   &:checked + ${Span}:before {
     background: ${vars.colorPrimary};
   }
@@ -117,6 +110,7 @@ class ToggleInput extends React.PureComponent {
     return (
       <Label htmlFor={this.props.id} size={this.props.size}>
         <Input
+          css={accessibleHiddenInputStyles}
           id={this.props.id}
           name={this.props.name}
           onChange={this.props.onChange}
