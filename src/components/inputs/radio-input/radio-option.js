@@ -9,12 +9,9 @@ import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input
 import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
 const Input = styled.input`
-  ${props =>
-    !props.readOnly &&
-    `
-    &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: ${vars.borderColorInputFocus};
-    }`}
+  &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
+    stroke: ${vars.borderColorInputFocus};
+  }
 `;
 
 const Option = props => (
@@ -32,8 +29,6 @@ const Option = props => (
       name={props.name}
       value={props.value}
       onChange={props.isReadOnly ? undefined : props.onChange}
-      hasError={props.hasError}
-      hasWarning={props.hasWarning}
       disabled={props.isDisabled}
       checked={props.isChecked}
       type="radio"
