@@ -80,6 +80,9 @@ const getContainerStyles = props => {
 const getLabelStyles = props => {
   const baseStyles = css`
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
     &:hover svg [id$='borderAndContent'] > [id$='border'] {
       stroke: ${vars.borderColorInputFocus};
     }

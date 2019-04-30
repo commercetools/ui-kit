@@ -1,11 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Spacings from '../../spacings';
 import Icons from './icons';
+import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import { getLabelStyles, getContainerStyles } from './radio-option.styles';
+
+const Input = styled.input`
+  ${props =>
+    !props.readOnly &&
+    !props.hasError &&
+    !props.hasWarning &&
+    `
+    &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
+      stroke: ${vars.borderColorInputFocus};
+    }`}
+`;
 
 const Option = props => (
   <label
@@ -16,38 +28,37 @@ const Option = props => (
     onBlur={props.onBlur}
     htmlFor={props.id}
   >
-    <Spacings.Inline scale="s" alignItems="center">
-      <div css={getContainerStyles(props)}>
-        {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
-      </div>
-      <div
-        css={css`
-          width: 100%;
-          font-size: 1rem;
-          font-family: ${vars.fontFamilyDefault};
-          color: ${props.isDisabled
-            ? vars.fontColorDisabled
-            : vars.fontColorDefault};
-        `}
-      >
-        {props.children}
-      </div>
-      <input
-        css={css`
-          display: none;
-        `}
-        id={props.id}
-        name={props.name}
-        value={props.value}
-        onChange={props.isReadOnly ? undefined : props.onChange}
-        disabled={props.isDisabled}
-        checked={props.isChecked}
-        type="radio"
-        readOnly={props.isReadOnly}
-        aria-readonly={props.isReadOnly}
-        {...filterDataAttributes(props)}
-      />
-    </Spacings.Inline>
+    <Input
+      css={accessibleHiddenInputStyles}
+      id={props.id}
+      name={props.name}
+      value={props.value}
+      onChange={props.isReadOnly ? undefined : props.onChange}
+      hasError={props.hasError}
+      hasWarning={props.hasWarning}
+      disabled={props.isDisabled}
+      checked={props.isChecked}
+      type="radio"
+      readOnly={props.isReadOnly}
+      aria-readonly={props.isReadOnly}
+      {...filterDataAttributes(props)}
+    />
+    <div css={getContainerStyles(props)}>
+      {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
+    </div>
+    <div
+      css={css`
+        width: 100%;
+        margin-left: ${vars.spacingS};
+        font-size: 1rem;
+        font-family: ${vars.fontFamilyDefault};
+        color: ${props.isDisabled
+          ? vars.fontColorDisabled
+          : vars.fontColorDefault};
+      `}
+    >
+      {props.children}
+    </div>
   </label>
 );
 Option.displayName = 'RadioOption';
@@ -67,6 +78,7 @@ Option.propTypes = {
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
