@@ -35,5 +35,13 @@ export const component = () => (
         hasError={true}
       />
     </Spec>
+    <Spec label="when readonly">
+      <TimeInput
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint="m"
+        isReadOnly={true}
+      />
+    </Spec>
   </Suite>
 );

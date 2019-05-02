@@ -11,13 +11,14 @@ const getClearSectionStyles = props => {
     align-items: center;
     box-sizing: border-box;
     background-color: ${vars.backgroundColorInputPristine};
-    border-bottom: 1px solid ${vars.borderColorInputPristine};
+    border-bottom: 1px solid ${vars.borderColorForInput};
     border-right: 1px solid ${vars.borderColorInputPristine};
     border-top: 1px solid ${vars.borderColorInputPristine};
     border-left: none;
     height: ${vars.sizeHeightInput};
     display: flex;
     padding: ${vars.spacingXs};
+    transition: ${vars.transitionStandard};
     cursor: pointer;
   `;
   if (props.isDisabled) {
@@ -28,6 +29,20 @@ const getClearSectionStyles = props => {
         background-color: ${vars.backgroundColorInputDisabled};
         color: ${vars.fontColorDisabled};
         border-color: ${vars.borderColorInputDisabled};
+      `,
+    ];
+  }
+  if (props.isReadOnly) {
+    return [
+      baseIconStyles,
+      css`
+        cursor: default;
+        color: ${vars.fontColorForInputWhenReadonly};
+        border-color: ${vars.borderColorForInputWhenReadonly};
+
+        svg path {
+          fill: ${vars.fontColorForInputWhenReadonly};
+        }
       `,
     ];
   }
@@ -66,6 +81,20 @@ const getClockIconContainerStyles = props => {
         background-color: ${vars.backgroundColorInputDisabled};
         color: ${vars.fontColorDisabled};
         border-color: ${vars.borderColorInputDisabled};
+      `,
+    ];
+  }
+  if (props.isReadOnly) {
+    return [
+      baseIconStyles,
+      css`
+        cursor: default;
+        color: ${vars.fontColorForInputWhenReadonly};
+        border-color: ${vars.borderColorForInputWhenReadonly};
+
+        svg path {
+          fill: ${vars.fontColorForInputWhenReadonly};
+        }
       `,
     ];
   }
@@ -108,8 +137,7 @@ const getTimeInputStyles = props => [
       cursor: not-allowed;
     }
 
-    &:disabled,
-    &:read-only {
+    &:disabled {
       background-color: ${vars.backgroundColorInputDisabled};
       color: ${vars.fontColorDisabled};
       border-color: ${vars.borderColorInputDisabled};

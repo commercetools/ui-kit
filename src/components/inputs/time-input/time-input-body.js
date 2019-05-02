@@ -78,6 +78,7 @@ export default class TimeInputBody extends React.Component {
             placeholder={this.props.placeholder}
             autoFocus={this.props.isAutofocussed}
             disabled={this.props.isDisabled}
+            readOnly={this.props.isReadOnly}
             value={this.props.value}
             onChange={this.props.onChange}
             onFocus={this.props.onFocus}
@@ -85,10 +86,13 @@ export default class TimeInputBody extends React.Component {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             role="textbox"
+            aria-readonly={this.props.isReadOnly}
+            contentEditable={!this.props.isReadOnly}
           />
           <ClearSectionWithMouseOverState
             isDisabled={this.props.isDisabled}
             hasError={this.props.hasError}
+            isReadOnly={this.props.isReadOnly}
             onClear={this.props.onClear}
           />
           <label
