@@ -78,6 +78,8 @@ export default {
   shadow13: '0 0 1px rgba(0, 0, 0, 0.25)',
   shadow14: '0 0 0.5px rgba(0, 0, 0, 0.1)',
   shadow15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
+  shadow16:
+    '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)',
   constraintScale: '100%',
   constraintXs: '50px',
   constraintS: '132px',

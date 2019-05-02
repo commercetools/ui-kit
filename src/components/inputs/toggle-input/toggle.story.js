@@ -17,7 +17,7 @@ storiesOf('Components|Inputs', module)
         defaultValue={false}
         render={(value, onChange) => (
           <Toggle
-            id={text('id', '')}
+            id={text('id', 'toggle-id')}
             name={text('name', '')}
             size={select('size', ['small', 'big'], 'big')}
             isDisabled={boolean('isDisabled', false)}
