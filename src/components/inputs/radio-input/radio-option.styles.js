@@ -108,6 +108,9 @@ const getLabelStyles = props => {
       baseStyles,
       css`
         color: ${vars.fontColorError};
+        &:hover svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputError};
+        }
       `,
     ];
   }
@@ -116,6 +119,9 @@ const getLabelStyles = props => {
       baseStyles,
       css`
         color: ${vars.fontColorWarning};
+        &:hover svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${vars.borderColorInputWarning};
+        }
       `,
     ];
   }
