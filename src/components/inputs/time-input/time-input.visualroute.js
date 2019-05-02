@@ -46,12 +46,7 @@ export const component = ({ themes }) => (
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with custom (inverted) theme">
-        <TimeInput
-          value={value}
-          onChange={() => {}}
-          horizontalConstraint="m"
-          isReadOnly={true}
-        />
+        <TimeInput value={value} onChange={() => {}} horizontalConstraint="m" />
       </Spec>
     </ThemeProvider>
   </Suite>
