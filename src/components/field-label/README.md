@@ -39,7 +39,7 @@ The `hintIcon` also accepts a custom `theme` while defaulting to `orange` in the
   onInfoButtonClick={() => {}} />}
   hint={<FormattedMessage {...messages.hint} />}
 - hintIcon={<WarningIcon />}
-+ hintIcon={<WarningIcon theme="green" />}
++ hintIcon={<WarningIcon color="green" />}
   description={<FormattedMessage {...messages.description} />}
   badge={<FlatButton tone="primary" label="show" />}
   htmlFor="sampleInput"

@@ -96,7 +96,7 @@ export default class TimeInputBody extends React.Component {
             data-toggle
             css={getClockIconContainerStyles(this.props)}
           >
-            <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
+            <ClockIcon color={this.props.isDisabled ? 'neutral60' : 'solid'} />
           </label>
         </div>
       </Spacings.Inline>
