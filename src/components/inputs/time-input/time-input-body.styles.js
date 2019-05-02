@@ -10,10 +10,10 @@ const getClearSectionStyles = props => {
   const baseIconStyles = css`
     align-items: center;
     box-sizing: border-box;
-    background-color: ${vars.backgroundColorInputPristine};
+    background-color: ${vars.backgroundColorForInput};
     border-bottom: 1px solid ${vars.borderColorForInput};
-    border-right: 1px solid ${vars.borderColorInputPristine};
-    border-top: 1px solid ${vars.borderColorInputPristine};
+    border-right: 1px solid ${vars.borderColorForInput};
+    border-top: 1px solid ${vars.borderColorForInput};
     border-left: none;
     height: ${vars.sizeHeightInput};
     display: flex;
@@ -26,9 +26,9 @@ const getClearSectionStyles = props => {
       baseIconStyles,
       css`
         cursor: not-allowed;
-        background-color: ${vars.backgroundColorInputDisabled};
-        color: ${vars.fontColorDisabled};
-        border-color: ${vars.borderColorInputDisabled};
+        background-color: ${vars.backgroundColorForInputWhenDisabled};
+        color: ${vars.fontColorForInputWhenDisabled};
+        border-color: ${vars.borderColorForInputWhenDisabled};
       `,
     ];
   }
@@ -50,8 +50,8 @@ const getClearSectionStyles = props => {
     return [
       baseIconStyles,
       css`
-        color: ${vars.fontColorError};
-        border-color: ${vars.borderColorInputError};
+        color: ${vars.fontColorForInputWhenError};
+        border-color: ${vars.borderColorForInputWhenError};
       `,
     ];
   }
@@ -62,25 +62,25 @@ const getClockIconContainerStyles = props => {
   const baseIconStyles = css`
     align-items: center;
     box-sizing: border-box;
-    background-color: ${vars.backgroundColorInputPristine};
-    border-bottom: 1px solid ${vars.borderColorInputPristine};
-    border-right: 1px solid ${vars.borderColorInputPristine};
-    border-top: 1px solid ${vars.borderColorInputPristine};
+    background-color: ${vars.backgroundColorForInput};
+    border-bottom: 1px solid ${vars.borderColorForInput};
+    border-right: 1px solid ${vars.borderColorForInput};
+    border-top: 1px solid ${vars.borderColorForInput};
     border-left: none;
     height: ${vars.sizeHeightInput};
     display: flex;
     padding: ${vars.spacingXs};
-    border-top-right-radius: ${vars.borderRadiusInput};
-    border-bottom-right-radius: ${vars.borderRadiusInput};
+    border-top-right-radius: ${vars.borderRadiusForInput};
+    border-bottom-right-radius: ${vars.borderRadiusForInput};
   `;
   if (props.isDisabled) {
     return [
       baseIconStyles,
       css`
         cursor: not-allowed;
-        background-color: ${vars.backgroundColorInputDisabled};
-        color: ${vars.fontColorDisabled};
-        border-color: ${vars.borderColorInputDisabled};
+        background-color: ${vars.backgroundColorForInputWhenDisabled};
+        color: ${vars.fontColorForInputWhenDisabled};
+        border-color: ${vars.borderColorForInputWhenDisabled};
       `,
     ];
   }
@@ -102,8 +102,8 @@ const getClockIconContainerStyles = props => {
     return [
       baseIconStyles,
       css`
-        color: ${vars.fontColorError};
-        border-color: ${vars.borderColorInputError};
+        color: ${vars.fontColorFolorInputWhenError};
+        border-color: ${vars.borderColorForInputWhenError};
       `,
     ];
   }
@@ -114,8 +114,8 @@ const getInputContainerStyles = () => css`
   width: 100%;
   align-items: center;
   display: flex;
-  font-size: ${vars.fontSizeDefault};
-  font-family: ${vars.fontFamilyDefault};
+  font-size: ${vars.fontSizeForInput};
+  font-family: ${vars.fontSizeForInput};
 `;
 
 const getTimeInputStyles = props => [
@@ -128,8 +128,8 @@ const getTimeInputStyles = props => [
     &:active,
     &:focus + *,
     &:active + * {
-      border-color: ${vars.borderColorInputFocus};
-      color: ${vars.fontColorDefault};
+      border-color: ${vars.borderColorForInputWhenFocused};
+      color: ${vars.fontColorForInput};
       transition: ${vars.transitionStandard};
     }
 
@@ -138,9 +138,9 @@ const getTimeInputStyles = props => [
     }
 
     &:disabled {
-      background-color: ${vars.backgroundColorInputDisabled};
-      color: ${vars.fontColorDisabled};
-      border-color: ${vars.borderColorInputDisabled};
+      background-color: ${vars.backgroundColorForInputWhenDisabled};
+      color: ${vars.fontColorForInputWhenDisabled};
+      border-color: ${vars.borderColorForInputWhenDisabled};
       opacity: 1; /* fix for mobile safari */
     }
   `,
