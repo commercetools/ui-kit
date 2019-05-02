@@ -84,7 +84,7 @@ export const IconButton = props => {
           {props.icon &&
             React.cloneElement(props.icon, {
               size: props.size,
-              theme: getIconThemeColor(props),
+              color: getIconThemeColor(props),
             })}
         </div>
       </AccessibleButton>
