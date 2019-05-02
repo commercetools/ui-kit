@@ -88,7 +88,7 @@ export const component = ({ themes }) => (
             {colors.map(color => (
               <Spec
                 key={color}
-                label={`All Icons - Color: ${color}`}
+                label={`Themed Icons - Color: ${color}`}
                 omitPropsList
               >
                 <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>

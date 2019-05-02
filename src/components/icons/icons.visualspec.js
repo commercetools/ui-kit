@@ -24,4 +24,9 @@ describe('Icons', () => {
       await snapshot(page, `Icons - Color: ${color}`);
     })
   );
+  it('Default', async () => {
+    await page.goto(`${HOST}/icons/theme`);
+    await expect(page).toMatch('Themed Icons');
+    await percySnapshot(page, `Icons - Dark theme`);
+  });
 });
