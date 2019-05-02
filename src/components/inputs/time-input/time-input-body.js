@@ -12,9 +12,9 @@ import {
 } from './time-input-body.styles';
 
 const getIconTheme = (isDisabled, isMouseOver) => {
-  if (isDisabled) return 'grey';
-  if (isMouseOver) return 'orange';
-  return 'black';
+  if (isDisabled) return 'neutral60';
+  if (isMouseOver) return 'warning';
+  return 'solid';
 };
 
 export const ClearSection = props => (
