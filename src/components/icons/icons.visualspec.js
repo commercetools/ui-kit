@@ -5,23 +5,23 @@ const snapshot = (page, description) =>
   percySnapshot(page, description, { widths: [1600] });
 
 const capitalize = s => s[0].toUpperCase() + s.slice(1);
-const themes = [
-  'black',
-  'grey',
-  'white',
-  'blue',
-  'green',
-  'green-light',
-  'orange',
-  'red',
+const colors = [
+  'solid',
+  'neutral60',
+  'surface',
+  'info',
+  'primary',
+  'primary40',
+  'warning',
+  'error',
 ];
 
 describe('Icons', () => {
-  themes.map(theme =>
-    it(capitalize(theme), async () => {
-      await page.goto(`${HOST}/icons/${theme}`);
-      await expect(page).toMatch(theme);
-      await snapshot(page, `Icons - Theme: ${theme}`);
+  colors.map(color =>
+    it(capitalize(color), async () => {
+      await page.goto(`${HOST}/icons/${color}`);
+      await expect(page).toMatch(color);
+      await snapshot(page, `Icons - Color: ${color}`);
     })
   );
 });

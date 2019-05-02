@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'emotion-theming';
 import * as UIKit from 'ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
@@ -28,48 +29,49 @@ const IconContainer = styled.div`
 const icons = Object.keys(UIKit).filter(thing => thing.endsWith('Icon'));
 
 const sizes = ['small', 'medium', 'big', 'scale'];
-const themes = [
-  'black',
-  'grey',
-  'white',
-  'blue',
-  'green',
-  'green-light',
-  'orange',
-  'red',
+
+const colors = [
+  'solid',
+  'neutral60',
+  'surface',
+  'info',
+  'primary',
+  'primary40',
+  'warning',
+  'error',
 ];
 
 export const routePath = '/icons';
 
-const renderIcon = (iconName, theme, size) => {
+const renderIcon = (iconName, color, size) => {
   const Icon = UIKit[iconName];
   return (
     <IconItem key={iconName}>
       <IconContainer big={size === 'scale'}>
-        <Icon theme={theme} size={size} />
+        <Icon color={color} size={size} />
       </IconContainer>
       <UIKit.Text.Body>{iconName}</UIKit.Text.Body>
     </IconItem>
   );
 };
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Switch>
-    {themes.map(theme => (
+    {colors.map(color => (
       <Route
-        key={theme}
-        path={`${routePath}/${theme}`}
+        key={color}
+        path={`${routePath}/${color}`}
         exact
         render={() => (
           <Suite>
             {sizes.map(size => (
               <Spec
                 key={size}
-                label={`All Icons - Theme: ${theme} / Size: ${size}`}
+                label={`All Icons - Color: ${color} / Size: ${size}`}
                 omitPropsList
               >
                 <IconList>
-                  {icons.map(iconName => renderIcon(iconName, theme, size))}
+                  {icons.map(iconName => renderIcon(iconName, color, size))}
                 </IconList>
               </Spec>
             ))}
@@ -77,5 +79,24 @@ export const component = () => (
         )}
       />
     ))}
+    <Route
+      exact
+      path={`${routePath}/theme`}
+      render={() => (
+        <Suite>
+          <ThemeProvider theme={themes.darkTheme}>
+            {colors.map(color => (
+              <Spec
+                key={color}
+                label={`All Icons - Color: ${color}`}
+                omitPropsList
+              >
+                <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>
+              </Spec>
+            ))}
+          </ThemeProvider>
+        </Suite>
+      )}
+    />
   </Switch>
 );
