@@ -75,7 +75,7 @@ export default class TimeInputBody extends React.Component {
             id={this.props.id}
             name={this.props.name}
             autoComplete={this.props.autoComplete}
-            css={getTimeInputStyles(this.props)}
+            css={theme => getTimeInputStyles(this.props, theme)}
             placeholder={this.props.placeholder}
             autoFocus={this.props.isAutofocussed}
             disabled={this.props.isDisabled}
@@ -99,7 +99,7 @@ export default class TimeInputBody extends React.Component {
           <label
             htmlFor={this.props.id}
             data-toggle
-            css={getClockIconContainerStyles(this.props)}
+            css={theme => getClockIconContainerStyles(this.props, theme)}
           >
             <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
           </label>
