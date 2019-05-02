@@ -19,7 +19,6 @@ const Label = styled.label`
   align-items: center;
   cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
   position: relative;
-
   ${props =>
     !props.hasError &&
     `  &:hover svg [id$='borderAndContent'] > [id$='border'] {
@@ -75,7 +74,6 @@ class CheckboxInput extends React.PureComponent {
           isDisabled={this.props.isDisabled}
           isChecked={this.props.isChecked}
           isIndeterminate={this.props.isIndeterminate}
-          hasError={this.props.hasError}
           {...filterDataAttributes(this.props)}
           {...filterAriaAttributes(this.props)}
         />
