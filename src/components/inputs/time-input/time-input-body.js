@@ -20,7 +20,7 @@ const getIconTheme = (isDisabled, isMouseOver) => {
 export const ClearSection = props => (
   <div
     onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
-    css={getClearSectionStyles(props)}
+    css={theme => getClearSectionStyles(props, theme)}
     onMouseOver={props.handleMouseOver}
     onMouseOut={props.handleMouseOut}
   >
