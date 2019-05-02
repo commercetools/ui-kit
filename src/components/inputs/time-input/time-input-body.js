@@ -11,7 +11,7 @@ import {
   getInputContainerStyles,
 } from './time-input-body.styles';
 
-const getIconTheme = (isDisabled, isMouseOver) => {
+const getIconColor = (isDisabled, isMouseOver) => {
   if (isDisabled) return 'neutral60';
   if (isMouseOver) return 'warning';
   return 'solid';
@@ -27,7 +27,7 @@ export const ClearSection = props => (
     {!props.isDisabled && (
       <CloseIcon
         size="medium"
-        theme={getIconTheme(props.isDisabled, props.isMouseOver)}
+        color={getIconColor(props.isDisabled, props.isMouseOver)}
       />
     )}
   </div>
