@@ -29,7 +29,7 @@ Logic of arrow indicating sort order is slightly complex:
 
 const SortableHeader = props => {
   const isActive = props.sortBy === props.columnKey;
-  const theme = props.isMouseOver ? 'grey' : 'white';
+  const color = props.isMouseOver ? 'neutral60' : 'surface';
   const isArrowDown =
     (!isActive && props.isMouseOver) ||
     (isActive && !props.isMouseOver && props.sortDirection === 'ASC') ||
@@ -74,9 +74,9 @@ const SortableHeader = props => {
         ]}
       >
         {isArrowDown ? (
-          <AngleDownIcon size="medium" theme={theme} />
+          <AngleDownIcon size="medium" color={color} />
         ) : (
-          <AngleUpIcon size="small" theme={theme} />
+          <AngleUpIcon size="small" color={color} />
         )}
       </span>
     </div>
