@@ -1,10 +1,11 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { CheckboxInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/checkbox-input';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="when default">
       <CheckboxInput onChange={() => {}} value="value">
@@ -96,5 +97,12 @@ export const component = () => (
         I want mezcal with a worm
       </CheckboxInput>
     </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with custom (dark) theme">
+        <CheckboxInput onChange={() => {}} value="value">
+          I want kale
+        </CheckboxInput>
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
