@@ -88,7 +88,7 @@ const menuStyles = (props, theme) => base => {
         return overwrittenVars[designTokens.borderColorForInputWhenError];
       if (props.hasWarning)
         return overwrittenVars[designTokens.borderColorForInputWhenWarning];
-      return overwrittenVars[designTokens.borderColorForInput];
+      return base.borderColorForInput;
     })(),
   };
 };
