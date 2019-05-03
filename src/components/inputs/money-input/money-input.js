@@ -690,7 +690,7 @@ class MoneyInput extends React.Component {
                   }}
                 >
                   <FractionDigitsIcon
-                    theme={this.props.isDisabled ? 'grey' : 'blue'}
+                    color={this.props.isDisabled ? 'neutral60' : 'info'}
                   />
                 </Tooltip>
               </div>

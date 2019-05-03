@@ -19,16 +19,16 @@ import {
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 const getIconThemeColor = props => {
   const isActive = props.isToggleButton && props.isToggled;
-  // if button has a theme, icon should be white when hovering/clicking
+  // if button has a theme, icon should be surface when hovering/clicking
   if (props.theme !== 'default' && (isActive || props.isMouseOver)) {
     if (props.isDisabled) {
-      return 'grey';
+      return 'neutral60';
     }
-    return 'white';
+    return 'surface';
   }
 
-  // if button is disabled, icon should be grey
-  if (props.isDisabled) return 'grey';
+  // if button is disabled, icon should be neutral60
+  if (props.isDisabled) return 'neutral60';
   // if button is not disabled nor has a theme, return icon's default color
   return props.icon.props.theme;
 };
@@ -85,7 +85,7 @@ export const IconButton = props => {
           {props.icon &&
             React.cloneElement(props.icon, {
               size: props.size,
-              theme: getIconThemeColor(props),
+              color: getIconThemeColor(props),
             })}
         </div>
       </AccessibleButton>

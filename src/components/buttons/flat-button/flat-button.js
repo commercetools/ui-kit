@@ -11,8 +11,15 @@ import AccessibleButton from '../accessible-button';
 const getIconElement = props => {
   if (!props.icon) return null;
 
+  let iconColor = 'solid';
+  if (props.isDisabled) iconColor = 'neutral60';
+  else if (props.tone === 'primary') iconColor = 'primary';
+  else if (props.tone === 'secondary' && props.isMouseOver)
+    iconColor = 'warning';
+
   return React.cloneElement(props.icon, {
     size: 'medium',
+    color: iconColor,
   });
 };
 

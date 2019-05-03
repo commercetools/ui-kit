@@ -30,7 +30,7 @@ import { FieldLabel } from '@commercetools-frontend/ui-kit';
 />
 ```
 
-The `hintIcon` also accepts a custom `theme` while defaulting to `orange` in the case above. The `hintIcon` does **not** support the `size` prop, and will always be rendered in the size `medium`.
+The `hintIcon` also accepts a custom `color` while defaulting to `warning` in the case above. The `hintIcon` does **not** support the `size` prop, and will always be rendered in the size `medium`.
 
 ```diff
 <FieldLabel
@@ -39,7 +39,7 @@ The `hintIcon` also accepts a custom `theme` while defaulting to `orange` in the
   onInfoButtonClick={() => {}} />}
   hint={<FormattedMessage {...messages.hint} />}
 - hintIcon={<WarningIcon />}
-+ hintIcon={<WarningIcon theme="green" />}
++ hintIcon={<WarningIcon color="primary" />}
   description={<FormattedMessage {...messages.description} />}
   badge={<FlatButton tone="primary" label="show" />}
   htmlFor="sampleInput"
