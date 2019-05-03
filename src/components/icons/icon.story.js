@@ -52,19 +52,19 @@ storiesOf('Components|Icons', module)
             <IconContainer style={containerWidth}>
               <Icon
                 size={sizeValue}
-                theme={select(
-                  'theme',
+                color={select(
+                  'color',
                   [
-                    'black',
-                    'grey',
-                    'white',
-                    'blue',
-                    'green',
-                    'green-light',
-                    'orange',
-                    'red',
+                    'solid',
+                    'neutral60',
+                    'surface',
+                    'info',
+                    'primary',
+                    'primary40',
+                    'warning',
+                    'error',
                   ],
-                  'black'
+                  'solid'
                 )}
               />
             </IconContainer>
