@@ -24,7 +24,7 @@ export const getIconColor = props => {
     (isActive || (props.isMouseOver && !props.isDisabled))
   )
     return 'info'; // returns the passed in theme without overwriting
-  // if button is disabled, icon should be grey
+  // if button is disabled, icon should be neutral60
   if (props.isDisabled) return 'neutral60';
   // if button is not disabled nor has a theme, return icon's default color
   return props.iconLeft.props.color;
