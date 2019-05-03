@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
+import { withTheme } from 'emotion-theming';
 import {
   components as defaultComponents,
   Creatable as CreatableSelect,
@@ -33,6 +34,8 @@ export class CreatableSelectInput extends React.Component {
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+    // withTheme
+    theme: PropTypes.object,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
 
@@ -129,12 +132,15 @@ export class CreatableSelectInput extends React.Component {
               ...customizedComponents,
               ...this.props.components,
             }}
-            styles={createSelectStyles({
-              hasWarning: this.props.hasWarning,
-              hasError: this.props.hasError,
-              showOptionGroupDivider: this.props.showOptionGroupDivider,
-              menuPortalZIndex: this.props.menuPortalZIndex,
-            })}
+            styles={createSelectStyles(
+              {
+                hasWarning: this.props.hasWarning,
+                hasError: this.props.hasError,
+                showOptionGroupDivider: this.props.showOptionGroupDivider,
+                menuPortalZIndex: this.props.menuPortalZIndex,
+              },
+              this.props.theme
+            )}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),
             // but we use "id" (for the input) and "containerId" (for the container)
@@ -224,9 +230,11 @@ export class CreatableSelectInput extends React.Component {
 }
 
 const Enhanced = injectIntl(CreatableSelectInput);
+const Themed = withTheme(Enhanced);
+
 addStaticFields(Enhanced, {
   ...defaultComponents,
   ...customizedComponents,
   isTouched: CreatableSelectInput.isTouched,
 });
-export default Enhanced;
+export default Themed;

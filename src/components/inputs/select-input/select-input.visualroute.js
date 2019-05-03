@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from 'emotion-theming';
 import { SelectInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -28,7 +29,7 @@ const value = 'one';
 
 export const routePath = '/select-input';
 
-const DefaultRoute = () => (
+const DefaultRoute = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <SelectInput
@@ -103,6 +104,16 @@ const DefaultRoute = () => (
         horizontalConstraint="m"
       />
     </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with custom (dark) theme">
+        <SelectInput
+          value={value}
+          onChange={() => {}}
+          options={options}
+          horizontalConstraint="m"
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
 
@@ -117,6 +128,22 @@ const OpenRoute = () => (
         horizontalConstraint="m"
       />
     </Spec>
+  </Suite>
+);
+
+const OpenRouteDarkTheme = ({ themes }) => (
+  <Suite>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with custom (dark) theme">
+        <SelectInput
+          id="select-input"
+          value={value}
+          onChange={() => {}}
+          options={longOptions}
+          horizontalConstraint="m"
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
 
@@ -149,9 +176,13 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
   </Suite>
 );
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Switch>
     <Route path={`${routePath}/open`} component={OpenRoute} />
+    <Route
+      path={`${routePath}/open-dark`}
+      render={() => <OpenRouteDarkTheme themes={themes} />}
+    />
     <Route
       path={`${routePath}/open-with-option-groups`}
       component={OpenRouteWithOptionGroups}
@@ -160,6 +191,6 @@ export const component = () => (
       path={`${routePath}/open-with-option-groups-and-divider`}
       component={OpenRouteWithOptionGroupsAndDivider}
     />
-    <Route path={routePath} component={DefaultRoute} />
+    <Route path={routePath} render={() => <DefaultRoute themes={themes} />} />
   </Switch>
 );

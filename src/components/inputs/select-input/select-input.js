@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
+import { withTheme } from 'emotion-theming';
 import Select, { components as defaultComponents } from 'react-select';
 import Constraints from '../../constraints';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
@@ -37,6 +38,8 @@ export class SelectInput extends React.Component {
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+    // withTheme
+    theme: PropTypes.object,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
 
@@ -176,12 +179,15 @@ export class SelectInput extends React.Component {
               ...customizedComponents,
               ...this.props.components,
             }}
-            styles={createSelectStyles({
-              hasWarning: this.props.hasWarning,
-              hasError: this.props.hasError,
-              showOptionGroupDivider: this.props.showOptionGroupDivider,
-              menuPortalZIndex: this.props.menuPortalZIndex,
-            })}
+            styles={createSelectStyles(
+              {
+                hasWarning: this.props.hasWarning,
+                hasError: this.props.hasError,
+                showOptionGroupDivider: this.props.showOptionGroupDivider,
+                menuPortalZIndex: this.props.menuPortalZIndex,
+              },
+              this.props.theme
+            )}
             filterOption={this.props.filterOption}
             // react-select uses "id" (for the container) and "inputId" (for the input),
             // but we use "id" (for the input) and "containerId" (for the container)
@@ -262,10 +268,12 @@ export class SelectInput extends React.Component {
   }
 }
 
-const Enhanced = injectIntl(SelectInput);
-addStaticFields(Enhanced, {
+const IntlEnhanced = injectIntl(SelectInput);
+const ThemeEnhanced = withTheme(IntlEnhanced);
+
+addStaticFields(ThemeEnhanced, {
   ...defaultComponents,
   ...customizedComponents,
   isTouched: SelectInput.isTouched,
 });
-export default Enhanced;
+export default ThemeEnhanced;
