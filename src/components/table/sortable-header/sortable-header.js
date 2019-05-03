@@ -70,7 +70,6 @@ const Container = styled.div`
 
 const SortableHeader = props => {
   const isActive = props.sortBy === props.columnKey;
-
   const isArrowDown = isActive && props.sortDirection === 'DESC';
 
   return (
@@ -90,9 +89,9 @@ const SortableHeader = props => {
         ]}
       >
         {isArrowDown ? (
-          <AngleDownIcon size="medium" theme="white" />
+          <AngleDownIcon size="medium" color="surface" />
         ) : (
-          <AngleUpIcon size="medium" theme="white" />
+          <AngleUpIcon size="medium" theme="neutral60" />
         )}
       </Span>
     </Container>

@@ -47,7 +47,7 @@ export const FieldLabel = props => {
                 {React.cloneElement(props.hintIcon, {
                   // FIXME: add proper tone when tones are refactored
                   size: 'medium',
-                  theme: props.hintIcon.props.theme || 'orange',
+                  color: props.hintIcon.props.color || 'warning',
                 })}
               </Spacings.Inline>
             )}

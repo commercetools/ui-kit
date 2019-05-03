@@ -13,15 +13,15 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
-export const getIconThemeColor = props => {
+export const getIconColor = props => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be the same color as the theme on active state
   if (props.theme !== 'default' && (isActive && !props.isDisabled))
-    return props.theme; // returns the passed in theme without overwriting
+    return 'info'; // returns the passed in theme without overwriting
   // if button is disabled, icon should be grey
-  if (props.isDisabled) return 'grey';
+  if (props.isDisabled) return 'neutral60';
   // if button is not disabled nor has a theme, return icon's default color
-  return props.iconLeft.props.theme;
+  return props.iconLeft.props.color;
 };
 
 export const SecondaryButton = props => {
@@ -77,7 +77,7 @@ export const SecondaryButton = props => {
             `}
           >
             {React.cloneElement(props.iconLeft, {
-              theme: getIconThemeColor(props),
+              color: getIconColor(props),
             })}
           </span>
         )}
@@ -123,7 +123,7 @@ SecondaryButton.propTypes = {
         `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Only toggle buttons may have a theme.`
       );
     }
-    return PropTypes.oneOf(['default', 'blue'])(
+    return PropTypes.oneOf(['default', 'info'])(
       props,
       propName,
       componentName,
