@@ -202,6 +202,18 @@ const valueContainerStyles = () => base => ({
   overflow: 'hidden',
 });
 
+const singleValueStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    color: overwrittenVars[designTokens.fontColorForInput],
+  };
+};
+
 const groupStyles = (props, theme) => base => {
   const overwrittenVars = {
     ...vars,
@@ -282,6 +294,7 @@ export default (props, theme) => ({
   option: optionStyles(props, theme),
   placeholder: placeholderStyles(props, theme),
   valueContainer: valueContainerStyles(props, theme),
+  singleValue: singleValueStyles(props, theme),
   group: groupStyles(props, theme),
   groupHeading: groupHeadingStyles(props, theme),
   container: containerStyles(props, theme),
