@@ -16,7 +16,10 @@ export const ClearSection = props => (
     aria-label="clear"
   >
     {!props.isDisabled && (
-      <CloseIcon size="medium" theme={props.isDisabled ? 'grey' : 'black'} />
+      <CloseIcon
+        size="medium"
+        color={props.isDisabled ? 'neutral60' : 'solid'}
+      />
     )}
   </div>
 );
@@ -106,9 +109,13 @@ export default class CalendarBody extends React.PureComponent {
             }}
           >
             {this.props.icon === 'clock' ? (
-              <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
+              <ClockIcon
+                color={this.props.isDisabled ? 'neutral60' : 'solid'}
+              />
             ) : (
-              <CalendarIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
+              <CalendarIcon
+                color={this.props.isDisabled ? 'neutral60' : 'solid'}
+              />
             )}
           </button>
         </div>

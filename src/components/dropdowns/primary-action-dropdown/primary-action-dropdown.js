@@ -79,7 +79,7 @@ class DropdownHead extends React.PureComponent {
           >
             {React.cloneElement(this.props.iconLeft, {
               size: 'big',
-              theme: this.props.isDisabled ? 'grey' : 'black',
+              color: this.props.isDisabled ? 'neutral60' : 'solid',
             })}
           </span>
           <span
@@ -134,7 +134,7 @@ const DropdownChevron = React.forwardRef((props, ref) => (
       {React.cloneElement(
         props.isOpen && !props.isDisabled ? <CaretUpIcon /> : <CaretDownIcon />,
         {
-          theme: props.isDisabled ? 'grey' : 'black',
+          color: props.isDisabled ? 'neutral60' : 'solid',
           size: 'small',
         }
       )}
