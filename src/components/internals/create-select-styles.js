@@ -9,82 +9,119 @@
 */
 
 import vars from '../../../materials/custom-properties';
+import designTokens from '../../../materials/design-tokens';
 
-const controlStyles = props => (base, state) => ({
-  ...base,
-  fontSize: vars.fontSizeForInput,
-  backgroundColor: state.isDisabled
-    ? vars.backgroundColorForInputWhenDisabled
-    : vars.backgroundColorForInput,
-  borderColor: (() => {
-    if (state.isDisabled) return vars.borderColorForInputWhenDisabled;
-    if (props.hasError) return vars.borderColorForInputWhenError;
-    if (props.hasWarning) return vars.borderColorForInputWhenWarning;
-    if (state.isFocused) return vars.borderColorForInputWhenFocused;
-    return vars.borderColorForInput;
-  })(),
-  borderRadius: vars.borderRadiusForInput,
-  minHeight: vars.sizeHeightInput,
-  cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-  padding: `0 ${vars.spacingS}`,
+const controlStyles = (props, theme) => (base, state) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
 
-  boxShadow: state.isFocused ? 'none' : base.boxShadow,
+  return {
+    ...base,
+    fontSize: overwrittenVars[designTokens.fontSizeForInput],
+    backgroundColor: state.isDisabled
+      ? overwrittenVars[designTokens.backgroundColorForInputWhenDisabled]
+      : overwrittenVars[designTokens.backgroundColorForInput],
+    borderColor: (() => {
+      if (state.isDisabled)
+        return overwrittenVars[designTokens.borderColorForInputWhenDisabled];
+      if (props.hasError)
+        return overwrittenVars[designTokens.borderColorForInputWhenError];
+      if (props.hasWarning)
+        return overwrittenVars[designTokens.borderColorForInputWhenWarning];
+      if (state.isFocused)
+        return overwrittenVars[designTokens.borderColorForInputWhenFocused];
+      return overwrittenVars[designTokens.borderColorForInput];
+    })(),
+    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
+    minHeight: overwrittenVars.sizeHeightInput,
+    cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+    padding: `0 ${overwrittenVars.spacingS}`,
 
-  '&:hover': {
-    borderColor: state.isDisabled
-      ? vars.borderColorForInputWhenDisabled
-      : vars.borderColorForInputWhenFocused,
-    boxShadow: 'none',
-  },
-  '&:active': {
-    borderColor: state.isDisabled
-      ? vars.borderColorForInputWhenDisabled
-      : vars.borderColorForInputWhenFocused,
-    boxShadow: 'none',
-  },
-  '&:focus': {
-    borderColor: state.isDisabled
-      ? vars.borderColorForInputWhenDisabled
-      : vars.borderColorForInputWhenFocused,
-    boxShadow: 'none',
-  },
-  pointerEvents: 'all',
-  color: state.isDisabled
-    ? vars.fontColorForInputWhenDisabled
-    : base.fontColorForInput,
-});
+    boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
-const menuStyles = props => base => ({
-  ...base,
-  border: `1px ${vars.borderColorForInputWhenFocused} solid`,
-  borderRadius: vars.borderRadiusForInput,
-  backgroundColor: vars.backgroundColorForInput,
-  boxShadow: vars.shadow7,
-  fontSize: vars.fontSizeForInput,
-  fontFamily: vars.fontFamilyDefault,
-  margin: `${vars.spacingXs} 0 0 0`,
-  borderColor: (() => {
-    if (props.hasError) return vars.borderColorForInputWhenError;
-    if (props.hasWarning) return vars.borderColorForInputWhenWarning;
-    return base.borderColorForInput;
-  })(),
-});
+    '&:hover': {
+      borderColor: state.isDisabled
+        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
+        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
+      boxShadow: 'none',
+    },
+    '&:active': {
+      borderColor: state.isDisabled
+        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
+        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
+      boxShadow: 'none',
+    },
+    '&:focus': {
+      borderColor: state.isDisabled
+        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
+        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
+      boxShadow: 'none',
+    },
+    pointerEvents: 'all',
+    color: state.isDisabled
+      ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+      : base.fontColorForInput,
+  };
+};
 
-const indicatorSeparatorStyles = () => base => ({
-  ...base,
-  display: 'none',
-  margin: '0',
-  padding: '0',
-  marginLeft: vars.spacingXs,
-});
+const menuStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
 
-const dropdownIndicatorStyles = () => base => ({
-  ...base,
-  color: vars.fontColorForInput,
-  margin: '0',
-  padding: '0',
-  marginLeft: vars.spacingXs,
-});
+  return {
+    ...base,
+    border: `1px ${
+      overwrittenVars[designTokens.borderColorForInputWhenFocused]
+    } solid`,
+    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
+    backgroundColor: overwrittenVars[designTokens.backgroundColorForInput],
+    boxShadow: overwrittenVars.shadow7,
+    fontSize: overwrittenVars[designTokens.fontSizeForInput],
+    fontFamily: overwrittenVars.fontFamilyDefault,
+    margin: `${overwrittenVars.spacingXs} 0 0 0`,
+    borderColor: (() => {
+      if (props.hasError)
+        return overwrittenVars[designTokens.borderColorForInputWhenError];
+      if (props.hasWarning)
+        return overwrittenVars[designTokens.borderColorForInputWhenWarning];
+      return overwrittenVars[designTokens.borderColorForInput];
+    })(),
+  };
+};
+
+const indicatorSeparatorStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    display: 'none',
+    margin: '0',
+    padding: '0',
+    marginLeft: overwrittenVars.spacingXs,
+  };
+};
+
+const dropdownIndicatorStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    color: overwrittenVars[designTokens.fontColorForInput],
+    margin: '0',
+    padding: '0',
+    marginLeft: overwrittenVars.spacingXs,
+  };
+};
 
 const clearIndicatorStyles = () => base => ({
   ...base,
@@ -92,42 +129,71 @@ const clearIndicatorStyles = () => base => ({
   padding: 0,
 });
 
-const menuListStyles = () => base => ({
-  ...base,
-  padding: '0',
-  borderRadius: vars.borderRadiusForInput,
-  backgroundColor: vars.backgroundColorForInput,
-});
+const menuListStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
 
-const optionStyles = () => (base, state) => ({
-  ...base,
-  transition: vars.transitionStandard,
-  paddingLeft: vars.spacingS,
-  paddingRight: vars.spacingS,
-  color: (() => {
-    if (!state.isDisabled) return vars.fontColorForInput;
-    if (state.isSelected) return vars.fontColorForInput;
-    return base.color;
-  })(),
-  backgroundColor: (() => {
-    if (state.isSelected) return vars.backgroundColorForInputWhenSelected;
-    if (state.isFocused) return vars.backgroundColorForInputWhenHovered;
-    return base.backgroundColor;
-  })(),
+  return {
+    ...base,
+    padding: '0',
+    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
+    backgroundColor: overwrittenVars[designTokens.backgroundColorForInput],
+  };
+};
 
-  '&:active': {
+const optionStyles = (props, theme) => (base, state) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    transition: overwrittenVars.transitionStandard,
+    paddingLeft: overwrittenVars.spacingS,
+    paddingRight: overwrittenVars.spacingS,
     color: (() => {
-      if (!state.isDisabled) return vars.fontColorForInput;
+      if (!state.isDisabled)
+        return overwrittenVars[designTokens.fontColorForInput];
+      if (state.isSelected)
+        return overwrittenVars[designTokens.fontColorForInput];
       return base.color;
     })(),
-    backgroundColor: vars.backgroundColorForInputWhenSelected,
-  },
-});
+    backgroundColor: (() => {
+      if (state.isSelected)
+        return overwrittenVars[
+          designTokens.backgroundColorForInputWhenSelected
+        ];
+      if (state.isFocused)
+        return overwrittenVars[designTokens.backgroundColorForInputWhenHovered];
+      return base.backgroundColor;
+    })(),
 
-const placeholderStyles = () => base => ({
-  ...base,
-  color: vars.placeholderFontColorForInput,
-});
+    '&:active': {
+      color: (() => {
+        if (!state.isDisabled)
+          return overwrittenVars[designTokens.fontColorForInput];
+        return base.color;
+      })(),
+      backgroundColor:
+        overwrittenVars[designTokens.backgroundColorForInputWhenSelected],
+    },
+  };
+};
+
+const placeholderStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    color: overwrittenVars[designTokens.placeholderFontColorForInput],
+  };
+};
 
 const valueContainerStyles = () => base => ({
   ...base,
@@ -136,41 +202,62 @@ const valueContainerStyles = () => base => ({
   overflow: 'hidden',
 });
 
-const groupStyles = props => base => ({
-  ...base,
-  padding: 0,
-  '&:not(:first-child)': {
-    borderTop: props.showOptionGroupDivider
-      ? `1px solid ${vars.colorNeutral}`
-      : base.borderTop,
-  },
-});
+const groupStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
 
-const groupHeadingStyles = () => base => ({
-  ...base,
-  color: vars.fontColorForInputWhenReadonly,
-  fontSize: vars.fontSizeSmall,
-  textTransform: 'none',
-  fontWeight: 'bold',
-  margin: `0 ${vars.spacingXs}`,
-  padding: `${vars.spacingS} ${vars.spacingXs}`,
-  '&:empty': {
+  return {
+    ...base,
     padding: 0,
-  },
-});
+    '&:not(:first-child)': {
+      borderTop: props.showOptionGroupDivider
+        ? `1px solid ${overwrittenVars.colorNeutral}`
+        : base.borderTop,
+    },
+  };
+};
 
-const containerStyles = () => (base, state) => ({
-  ...base,
-  fontFamily: vars.fontFamilyDefault,
-  minHeight: vars.sizeHeightInput,
-  borderRadius: vars.borderRadiusForInput,
-  cursor: state.isDisabled ? 'not-allowed' : base.cursor,
-  borderColor: state.isFocused
-    ? vars.borderColorForInputWhenFocused
-    : base.borderColor,
+const groupHeadingStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
 
-  boxShadow: state.isFocused ? 'none' : base.boxShadow,
-});
+  return {
+    ...base,
+    color: overwrittenVars[designTokens.fontColorForInputWhenReadonly],
+    fontSize: overwrittenVars.fontSizeSmall,
+    textTransform: 'none',
+    fontWeight: 'bold',
+    margin: `0 ${overwrittenVars.spacingXs}`,
+    padding: `${overwrittenVars.spacingS} ${overwrittenVars.spacingXs}`,
+    '&:empty': {
+      padding: 0,
+    },
+  };
+};
+
+const containerStyles = (props, theme) => (base, state) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    fontFamily: overwrittenVars.fontFamilyDefault,
+    minHeight: overwrittenVars.sizeHeightInput,
+    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
+    cursor: state.isDisabled ? 'not-allowed' : base.cursor,
+    borderColor: state.isFocused
+      ? overwrittenVars[designTokens.borderColorForInputWhenFocused]
+      : base.borderColor,
+
+    boxShadow: state.isFocused ? 'none' : base.boxShadow,
+  };
+};
 
 const indicatorsContainerStyles = () => () => ({
   background: 'none',
@@ -183,19 +270,19 @@ const menuPortalStyles = props => base => ({
   zIndex: props.menuPortalZIndex,
 });
 
-export default props => ({
-  control: controlStyles(props),
-  menu: menuStyles(props),
-  indicatorSeparator: indicatorSeparatorStyles(props),
-  dropdownIndicator: dropdownIndicatorStyles(props),
-  clearIndicator: clearIndicatorStyles(props),
-  menuList: menuListStyles(props),
-  menuPortal: menuPortalStyles(props),
-  indicatorsContainer: indicatorsContainerStyles(props),
-  option: optionStyles(props),
-  placeholder: placeholderStyles(props),
-  valueContainer: valueContainerStyles(props),
-  group: groupStyles(props),
-  groupHeading: groupHeadingStyles(props),
-  container: containerStyles(props),
+export default (props, theme) => ({
+  control: controlStyles(props, theme),
+  menu: menuStyles(props, theme),
+  indicatorSeparator: indicatorSeparatorStyles(props, theme),
+  dropdownIndicator: dropdownIndicatorStyles(props, theme),
+  clearIndicator: clearIndicatorStyles(props, theme),
+  menuList: menuListStyles(props, theme),
+  menuPortal: menuPortalStyles(props, theme),
+  indicatorsContainer: indicatorsContainerStyles(props, theme),
+  option: optionStyles(props, theme),
+  placeholder: placeholderStyles(props, theme),
+  valueContainer: valueContainerStyles(props, theme),
+  group: groupStyles(props, theme),
+  groupHeading: groupHeadingStyles(props, theme),
+  container: containerStyles(props, theme),
 });
