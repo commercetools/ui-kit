@@ -19,8 +19,8 @@ const getIconTheme = (isDisabled, isMouseOver) => {
 
 export const ClearSection = props => (
   <div
-    onClick={props.isDisabled ? undefined : props.onClear}
-    css={getClearSectionStyles(props)}
+    onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
+    css={theme => getClearSectionStyles(props, theme)}
     onMouseOver={props.handleMouseOver}
     onMouseOut={props.handleMouseOut}
   >
@@ -35,6 +35,7 @@ export const ClearSection = props => (
 ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
   isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   isMouseOver: PropTypes.bool.isRequired,
   onClear: PropTypes.func,
@@ -74,10 +75,11 @@ export default class TimeInputBody extends React.Component {
             id={this.props.id}
             name={this.props.name}
             autoComplete={this.props.autoComplete}
-            css={getTimeInputStyles(this.props)}
+            css={theme => getTimeInputStyles(this.props, theme)}
             placeholder={this.props.placeholder}
             autoFocus={this.props.isAutofocussed}
             disabled={this.props.isDisabled}
+            readOnly={this.props.isReadOnly}
             value={this.props.value}
             onChange={this.props.onChange}
             onFocus={this.props.onFocus}
@@ -85,16 +87,19 @@ export default class TimeInputBody extends React.Component {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             role="textbox"
+            aria-readonly={this.props.isReadOnly}
+            contentEditable={!this.props.isReadOnly}
           />
           <ClearSectionWithMouseOverState
             isDisabled={this.props.isDisabled}
             hasError={this.props.hasError}
+            isReadOnly={this.props.isReadOnly}
             onClear={this.props.onClear}
           />
           <label
             htmlFor={this.props.id}
             data-toggle
-            css={getClockIconContainerStyles(this.props)}
+            css={theme => getClockIconContainerStyles(this.props, theme)}
           >
             <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
           </label>

@@ -23,6 +23,7 @@ storiesOf('Components|Inputs', module)
               placeholder={text('placeholder', 'Enter time')}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
+              isReadOnly={boolean('isReadOnly', false)}
               value={text('value', value)}
               onChange={event => {
                 action('onChange')(event);
