@@ -12,9 +12,9 @@ export const SecondaryIconButton = props => {
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
   };
-  let iconTheme = 'black';
-  if (props.isDisabled) iconTheme = 'grey';
-  else if (props.isMouseOver) iconTheme = 'green';
+  let iconColor = 'solid';
+  if (props.isDisabled) iconColor = 'neutral60';
+  else if (props.isMouseOver) iconColor = 'primary';
   return (
     <div
       onMouseOver={props.handleMouseOver}
@@ -43,7 +43,7 @@ export const SecondaryIconButton = props => {
             justify-content: center;
           `}
         >
-          {React.cloneElement(props.icon, { theme: iconTheme })}
+          {React.cloneElement(props.icon, { color: iconColor })}
         </div>
       </AccessibleButton>
     </div>
