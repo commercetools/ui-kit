@@ -77,7 +77,7 @@ class CheckboxInput extends React.PureComponent {
           {...filterDataAttributes(this.props)}
           {...filterAriaAttributes(this.props)}
         />
-        <div css={getCheckboxWrapperStyles(this.props)}>
+        <div css={theme => getCheckboxWrapperStyles(this.props, theme)}>
           {(() => {
             if (this.props.isIndeterminate) return <Icons.Indeterminate />;
             if (this.props.isChecked) return <Icons.Checked />;

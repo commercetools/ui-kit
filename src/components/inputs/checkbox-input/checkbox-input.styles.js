@@ -1,15 +1,21 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
+import designTokens from '../../../../materials/design-tokens';
 
-const getCheckboxWrapperStyles = props => {
+const getCheckboxWrapperStyles = (props, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
   const baseStyles = css`
     display: flex;
     align-items: center;
     svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: 1px ${vars.borderColorInputPristine} solid;
+      stroke: ${overwrittenVars[designTokens.borderColorForInput]};
+      fill: ${overwrittenVars[designTokens.backgroundColorForInput]};
     }
     svg [id$='borderAndContent'] > [id$='content'] {
-      fill: ${vars.borderColorInputFocus};
+      fill: ${overwrittenVars[designTokens.borderColorForInputWhenFocused]};
     }
   `;
   if (props.isDisabled) {
@@ -17,10 +23,12 @@ const getCheckboxWrapperStyles = props => {
       baseStyles,
       css`
         svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${vars.fontColorDisabled};
+          fill: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
         }
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputDisabled};
+          stroke: ${overwrittenVars[
+            designTokens.borderColorForInputWhenDisabled
+          ]};
         }
       `,
     ];
@@ -30,11 +38,11 @@ const getCheckboxWrapperStyles = props => {
       baseStyles,
       css`
         svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${vars.borderColorInputError};
+          fill: ${overwrittenVars[designTokens.borderColorForInputWhenError]};
         }
 
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.fontColorError};
+          stroke: ${overwrittenVars[designTokens.fontColorForInputWhenError]};
         }
       `,
     ];
@@ -44,7 +52,9 @@ const getCheckboxWrapperStyles = props => {
       baseStyles,
       css`
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputFocus};
+          stroke: ${overwrittenVars[
+            designTokens.borderColorForInputWhenFocused
+          ]};
         }
       `,
     ];
