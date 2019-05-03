@@ -103,6 +103,11 @@ export const component = ({ themes }) => (
           I want kale
         </CheckboxInput>
       </Spec>
+      <Spec label="with custom (dark) theme checked">
+        <CheckboxInput onChange={() => {}} value="value" isChecked={true}>
+          I want pizza
+        </CheckboxInput>
+      </Spec>
     </ThemeProvider>
   </Suite>
 );
