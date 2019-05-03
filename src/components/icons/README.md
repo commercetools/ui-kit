@@ -19,10 +19,10 @@ You can find a list of all available icons in the UIKit.
 
 #### Properties
 
-| Props   | Type     | Required | Values                                                        | Default | Description                                                                                            |
-| ------- | -------- | :------: | ------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| `size`  | `string` |          | 'small', 'medium', 'big', 'scale'                             | 'big'   | Specifies the icon size (if `scale` is selected, the dimensions will scale according with the parents) |
-| `color` | `string` |          | 'solid', 'neutral60', 'info', 'primary40', 'warning', 'error' | 'solid' | Specifies the icon color                                                                               |
+| Props   | Type     | Required | Values                                                                   | Default | Description                                                                                            |
+| ------- | -------- | :------: | ------------------------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------ |
+| `size`  | `string` |          | 'small', 'medium', 'big', 'scale'                                        | 'big'   | Specifies the icon size (if `scale` is selected, the dimensions will scale according with the parents) |
+| `color` | `string` |          | 'solid', 'neutral60', 'info', 'primary', 'primary40', 'warning', 'error' | 'solid' | Specifies the icon color                                                                               |
 
 #### Where to use
 

@@ -33,37 +33,26 @@ const getSizeStyle = size => {
   }
 };
 
+const capitalize = s => s[0].toUpperCase() + s.slice(1);
+
 const getColor = (color, theme) => {
   if (!color) return 'inherit';
   const overwrittenVars = {
     ...vars,
     ...theme,
   };
-  switch (color) {
-    case 'solid':
-      return overwrittenVars.colorSolid;
-    case 'neutral60':
-      return overwrittenVars.colorNeutral60;
-    case 'surface':
-      return overwrittenVars.colorSurface;
-    case 'info':
-      return overwrittenVars.colorInfo;
-    case 'primary':
-      return overwrittenVars.colorPrimary;
-    case 'primary40':
-      return overwrittenVars.colorPrimary40;
-    case 'warning':
-      return overwrittenVars.colorWarning;
-    case 'error':
-      return overwrittenVars.colorError;
-    default: {
-      invariant(
-        color,
-        `ui-kit/Icon: the specified color '${color}' is not supported.`
-      );
-      return 'inherit';
-    }
+
+  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+
+  if (!iconColor) {
+    invariant(
+      color,
+      `ui-kit/Icon: the specified color '${color}' is not supported.`
+    );
+    return 'inherit';
   }
+
+  return iconColor;
 };
 
 export default function createStyledIcon(Component, displayName) {
