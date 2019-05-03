@@ -7,10 +7,10 @@ import vars from '../../../../materials/custom-properties';
 const sizeIconContainer = '24px';
 const sizeIconContainerSmall = '16px';
 
-const getArrowTheme = ({ tone, isDisabled }) => {
-  if (isDisabled) return 'grey';
-  if (tone === 'urgent') return 'white';
-  return 'black';
+const getArrowColor = ({ tone, isDisabled }) => {
+  if (isDisabled) return 'neutral60';
+  if (tone === 'urgent') return 'surface';
+  return 'solid';
 };
 
 const HeaderIcon = props => (
@@ -41,7 +41,7 @@ const HeaderIcon = props => (
   >
     {props.isClosed ? (
       <AngleRightIcon
-        theme={getArrowTheme({
+        color={getArrowColor({
           tone: props.tone,
           isDisabled: props.isDisabled,
         })}
@@ -49,7 +49,7 @@ const HeaderIcon = props => (
       />
     ) : (
       <AngleDownIcon
-        theme={getArrowTheme({
+        color={getArrowColor({
           tone: props.tone,
           isDisabled: props.isDisabled,
         })}

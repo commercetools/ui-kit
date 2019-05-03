@@ -56,7 +56,7 @@ class NotificationIcon extends React.PureComponent {
           }
         `}
       >
-        <Icon theme="white" />
+        <Icon color="surface" />
       </div>
     );
   }

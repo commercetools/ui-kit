@@ -11,10 +11,10 @@ import {
   getInputContainerStyles,
 } from './time-input-body.styles';
 
-const getIconTheme = (isDisabled, isMouseOver) => {
-  if (isDisabled) return 'grey';
-  if (isMouseOver) return 'orange';
-  return 'black';
+const getIconColor = (isDisabled, isMouseOver) => {
+  if (isDisabled) return 'neutral60';
+  if (isMouseOver) return 'warning';
+  return 'solid';
 };
 
 export const ClearSection = props => (
@@ -27,7 +27,7 @@ export const ClearSection = props => (
     {!props.isDisabled && (
       <CloseIcon
         size="medium"
-        theme={getIconTheme(props.isDisabled, props.isMouseOver)}
+        color={getIconColor(props.isDisabled, props.isMouseOver)}
       />
     )}
   </div>
@@ -96,7 +96,7 @@ export default class TimeInputBody extends React.Component {
             data-toggle
             css={getClockIconContainerStyles(this.props)}
           >
-            <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
+            <ClockIcon color={this.props.isDisabled ? 'neutral60' : 'solid'} />
           </label>
         </div>
       </Spacings.Inline>

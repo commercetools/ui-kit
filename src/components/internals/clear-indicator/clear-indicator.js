@@ -13,7 +13,7 @@ const ClearIndicator = props => {
       ref={ref}
       style={getStyles('clearIndicator', props)}
     >
-      <CloseIcon theme={props.isDisabled && 'grey'} size="medium" />
+      <CloseIcon color={props.isDisabled && 'neutral60'} size="medium" />
     </div>
   );
 };
