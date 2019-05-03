@@ -202,7 +202,7 @@ const valueContainerStyles = () => base => ({
   overflow: 'hidden',
 });
 
-const singleValueStyles = (props, theme) => base => {
+const singleValueStyles = (props, theme) => (base, state) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -210,7 +210,12 @@ const singleValueStyles = (props, theme) => base => {
 
   return {
     ...base,
-    color: overwrittenVars[designTokens.fontColorForInput],
+    color: (() => {
+      if (state.isDisabled) {
+        return overwrittenVars[designTokens.fontColorForInputWhenDisabled];
+      }
+      return overwrittenVars[designTokens.fontColorForInput];
+    })(),
   };
 };
 
