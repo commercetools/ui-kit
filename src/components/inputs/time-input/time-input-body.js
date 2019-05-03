@@ -88,7 +88,7 @@ export default class TimeInputBody extends React.Component {
             isReadOnly={this.props.isReadOnly}
             hasError={this.props.hasError}
           >
-            <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
+            <ClockIcon color={this.props.isDisabled ? 'neutral60' : 'solid'} />
           </StyledClockIconContainer>
         </StyledInputContainer>
       </Spacings.Inline>
