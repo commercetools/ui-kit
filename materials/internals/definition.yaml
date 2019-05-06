@@ -158,45 +158,8 @@ decisionGroups:
     label: Background Colors
     prefix: background-color
     decisions:
-      background-color-input-pristine:
-        description: ''
-        deprecated: true
-        choice: color-surface
-      background-color-input-disabled:
-        description: ''
-        deprecated: true
-        choice: color-accent-98
-      background-color-input-hover:
-        description: ''
-        deprecated: true
-        choice: color-neutral-90
-      background-color-input-selected:
-        description: ''
-        deprecated: true
-        choice: color-accent-95
-      background-color-tag-pristine:
-        description: ''
-        deprecated: true
-        choice: color-neutral-95
-      background-color-tag-warning:
-        description: ''
-        deprecated: true
-        choice: color-warning-95
-      background-color-tag-disabled:
-        description: ''
-        deprecated: true
-        choice: color-neutral-95
-      background-color-tag-normal-hover:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      background-color-tag-warning-hover:
-        description: ''
-        deprecated: true
-        choice: color-warning
       background-color-for-input:
         description: ''
-        deprecated: false
         choice: color-surface
       background-color-for-input-when-selected:
         description: ''
@@ -218,50 +181,6 @@ decisionGroups:
     label: Border Colors
     prefix: border-color
     decisions:
-      border-color-input-pristine:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      border-color-input-focus:
-        description: ''
-        deprecated: true
-        choice: color-primary
-      border-color-input-disabled:
-        description: ''
-        deprecated: true
-        choice: color-neutral
-      border-color-input-readonly:
-        description: ''
-        deprecated: true
-        choice: color-neutral
-      border-color-input-error:
-        description: ''
-        deprecated: true
-        choice: color-error
-      border-color-input-warning:
-        description: ''
-        deprecated: true
-        choice: color-warning
-      border-color-tag-pristine:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      border-color-tag-warning:
-        description: ''
-        deprecated: true
-        choice: color-warning
-      border-color-tag-focus:
-        description: ''
-        deprecated: true
-        choice: color-primary
-      border-color-tag-warning-hover:
-        description: ''
-        deprecated: true
-        choice: color-warning
-      border-color-separator:
-        description: ''
-        deprecated: true
-        choice: color-neutral
       border-color-for-input:
         description: ''
         choice: color-neutral-60
@@ -294,14 +213,6 @@ decisionGroups:
     label: Border Radius
     prefix: border-radius
     decisions:
-      border-radius-input:
-        description: ''
-        deprecated: true
-        choice: border-radius-6
-      border-radius-tag:
-        description: ''
-        deprecated: true
-        choice: border-radius-2
       border-radius-for-input:
         description: ''
         choice: border-radius-6
