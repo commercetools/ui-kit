@@ -47,11 +47,7 @@ describe('<Headline>', () => {
 
   it('should render given text with react-intl', () => {
     const { container } = render(
-      <Text.Headline
-        elementType="h1"
-        title="tooltip text"
-        intlMessage={intlMessage}
-      />
+      <Text.Headline as="h1" title="tooltip text" intlMessage={intlMessage} />
     );
     expect(container).toHaveTextContent('Hello');
   });
@@ -97,7 +93,7 @@ describe('<Subheadline>', () => {
   it('should render given text with react-intl', () => {
     const { container } = render(
       <Text.Subheadline
-        elementType="h4"
+        as="h4"
         title="tooltip text"
         intlMessage={intlMessage}
       />

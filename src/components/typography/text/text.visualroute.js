@@ -169,19 +169,19 @@ export const component = ({ themes }) => (
       <Text.Detail isInline={true}>A second inline text.</Text.Detail>
     </Spec>
     <Spec label="Headline - h1 (intl message)">
-      <Text.Headline elementType="h1" intlMessage={intlMessage} />
+      <Text.Headline as="h1" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Headline - h2 (intl message)">
-      <Text.Headline elementType="h2" intlMessage={intlMessage} />
+      <Text.Headline as="h2" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Headline - h3 (intl message)">
-      <Text.Headline elementType="h3" intlMessage={intlMessage} />
+      <Text.Headline as="h3" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Subheadline - h4 (intl message)">
-      <Text.Subheadline elementType="h4" intlMessage={intlMessage} />
+      <Text.Subheadline as="h4" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Subheadline - h5 (intl message)">
-      <Text.Subheadline elementType="h5" intlMessage={intlMessage} />
+      <Text.Subheadline as="h5" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Wrap (intl message)">
       <Text.Wrap
@@ -200,10 +200,10 @@ export const component = ({ themes }) => (
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
       <Spec label="Headline (dark theme)">
-        <Text.Headline elementType="h1">Dark theme</Text.Headline>
+        <Text.Headline as="h1">Dark theme</Text.Headline>
       </Spec>
       <Spec label="Subheadline (dark theme)">
-        <Text.Subheadline elementType="h4">Dark theme</Text.Subheadline>
+        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>
       </Spec>
       <Spec label="Body (dark theme)">
         <Text.Body>Dark theme</Text.Body>

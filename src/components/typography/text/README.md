@@ -15,7 +15,7 @@ Wraps the given text in the given HTML header `size`.
 #### Usage
 
 ```js
-<Text.Headline elementType="h1">{'The title'}</Text.Headline>
+<Text.Headline as="h1">{'The title'}</Text.Headline>
 ```
 
 #### Properties
