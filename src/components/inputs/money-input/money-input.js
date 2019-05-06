@@ -679,7 +679,7 @@ class MoneyInput extends React.Component {
                   // so that the tooltip is flush with the component
                   styles={{
                     body: {
-                      margin: `${vars.spacing8} -${vars.spacing4} ${vars.spacing8} 0`,
+                      margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
                     },
                   }}
                   title={this.props.intl.formatMessage(messages.highPrecision)}
