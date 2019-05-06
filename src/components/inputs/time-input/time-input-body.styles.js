@@ -168,8 +168,8 @@ const getTimeInputStyles = (props, theme) => {
   return [
     getInputStyles(props, theme),
     css`
-      border-radius: ${overwrittenVars[designTokens.borderRadiusInput]} 0 0
-        ${overwrittenVars[designTokens.borderRadiusInput]};
+      border-radius: ${overwrittenVars[designTokens.borderRadiusForInput]} 0 0
+        ${overwrittenVars[designTokens.borderRadiusForInput]};
       border-right: none;
 
       &:focus,

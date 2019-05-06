@@ -88,7 +88,7 @@ const createCurrencySelectStyles = ({
         if (isDisabled) return vars.borderColorForInputWhenDisabled;
         if (isReadOnly) return vars.borderColorForInputWhenReadonly;
         if (hasError) return vars.borderColorForInputWhenError;
-        if (hasWarning) return vars.borderColorInputWarning;
+        if (hasWarning) return vars.borderColorForInputWhenWarning;
         if (hasFocus) return vars.borderColorForInputWhenFocused;
         return vars.borderColorForInput;
       })(),

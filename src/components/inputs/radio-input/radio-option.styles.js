@@ -6,10 +6,10 @@ const getContainerStyles = props => {
     display: flex;
     align-items: center;
     svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: 1px ${vars.borderColorInputPristine} solid;
+      stroke: 1px ${vars.borderColorForInput} solid;
     }
     svg [id$='borderAndContent'] > [id$='content'] {
-      fill: ${vars.borderColorInputFocus};
+      fill: ${vars.borderColorForInputWhenFocused};
     }
   `;
   if (props.isDisabled) {
@@ -20,7 +20,7 @@ const getContainerStyles = props => {
           fill: ${vars.fontColorDisabled};
         }
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputDisabled};
+          stroke: ${vars.borderColorForInputWhenDisabled};
         }
       `,
     ];
@@ -33,7 +33,7 @@ const getContainerStyles = props => {
           fill: ${vars.fontColorError};
         }
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputError};
+          stroke: ${vars.borderColorForInputWhenError};
         }
       `,
     ];
@@ -46,7 +46,7 @@ const getContainerStyles = props => {
           fill: ${vars.fontColorWarning};
         }
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputWarning};
+          stroke: ${vars.borderColorForInputWhenWarning};
         }
       `,
     ];
@@ -56,7 +56,7 @@ const getContainerStyles = props => {
       baseStyles,
       css`
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputFocus};
+          stroke: ${vars.borderColorForInputWhenFocused};
         }
       `,
     ];
@@ -69,7 +69,7 @@ const getContainerStyles = props => {
           fill: ${vars.fontColorReadonly};
         }
         svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputReadonly};
+          stroke: ${vars.borderColorForInputWhenReadonly};
         }
       `,
     ];
@@ -84,11 +84,11 @@ const getLabelStyles = props => {
     align-items: center;
     position: relative;
     &:hover svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: ${vars.borderColorInputFocus};
+      stroke: ${vars.borderColorForInputWhenFocused};
     }
     &:active,
     &:focus {
-      border-color: ${vars.borderColorInputFocus};
+      border-color: ${vars.borderColorForInputWhenFocused};
     }
   `;
   if (props.isDisabled) {
@@ -98,7 +98,7 @@ const getLabelStyles = props => {
         cursor: not-allowed;
         color: ${vars.fontColorDisabled};
         &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputDisabled};
+          stroke: ${vars.borderColorForInputWhenDisabled};
         }
       `,
     ];
@@ -109,7 +109,7 @@ const getLabelStyles = props => {
       css`
         color: ${vars.fontColorError};
         &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputError};
+          stroke: ${vars.borderColorForInputWhenError};
         }
       `,
     ];
@@ -120,7 +120,7 @@ const getLabelStyles = props => {
       css`
         color: ${vars.fontColorWarning};
         &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputWarning};
+          stroke: ${vars.borderColorForInputWhenWarning};
         }
       `,
     ];
@@ -132,7 +132,7 @@ const getLabelStyles = props => {
         cursor: default;
         color: ${vars.fontColorReadonly};
         &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorInputReadonly};
+          stroke: ${vars.borderColorForInputWhenReadonly};
         }
       `,
     ];

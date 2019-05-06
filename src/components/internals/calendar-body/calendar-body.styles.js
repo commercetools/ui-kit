@@ -10,9 +10,9 @@ const getClearSectionStyles = props => {
   const baseIconStyles = css`
     align-items: center;
     box-sizing: border-box;
-    background-color: ${vars.backgroundColorInputPristine};
-    border-bottom: 1px solid ${vars.borderColorInputPristine};
-    border-top: 1px solid ${vars.borderColorInputPristine};
+    background-color: ${vars.backgroundColorForInput};
+    border-bottom: 1px solid ${vars.borderColorForInput};
+    border-top: 1px solid ${vars.borderColorForInput};
     height: ${vars.sizeHeightInput};
     display: flex;
     padding: ${vars.spacingXs};
@@ -24,9 +24,9 @@ const getClearSectionStyles = props => {
       baseIconStyles,
       css`
         cursor: not-allowed;
-        background-color: ${vars.backgroundColorInputDisabled};
+        background-color: ${vars.backgroundColorForInputWhenDisabled};
         color: ${vars.fontColorDisabled};
-        border-color: ${vars.borderColorInputDisabled};
+        border-color: ${vars.borderColorForInputWhenDisabled};
       `,
     ];
   }
@@ -35,7 +35,7 @@ const getClearSectionStyles = props => {
       baseIconStyles,
       css`
         color: ${vars.fontColorError};
-        border-color: ${vars.borderColorInputError};
+        border-color: ${vars.borderColorForInputWhenError};
       `,
     ];
   }
@@ -43,7 +43,7 @@ const getClearSectionStyles = props => {
     return [
       baseIconStyles,
       css`
-        border-color: ${vars.borderColorInputFocus};
+        border-color: ${vars.borderColorForInputWhenFocused};
       `,
     ];
   }
@@ -54,8 +54,8 @@ const getCalendarIconContainerStyles = (props, state) => {
   const baseIconStyles = css`
     align-items: center;
     box-sizing: border-box;
-    background-color: ${vars.backgroundColorInputPristine};
-    border: 1px solid ${vars.borderColorInputPristine};
+    background-color: ${vars.backgroundColorForInput};
+    border: 1px solid ${vars.borderColorForInput};
     height: ${vars.sizeHeightInput};
     display: flex;
     padding: ${vars.spacingXs};
@@ -68,9 +68,9 @@ const getCalendarIconContainerStyles = (props, state) => {
       baseIconStyles,
       css`
         cursor: not-allowed;
-        background-color: ${vars.backgroundColorInputDisabled};
-        color: ${vars.fontColorDisabled};
-        border-color: ${vars.borderColorInputDisabled};
+        background-color: ${vars.backgroundColorForInputWhenDisabled};
+        color: ${vars.fontColorForInputWhenDisabled};
+        border-color: ${vars.borderColorForInputWhenDisabled};
       `,
     ];
   }
@@ -79,7 +79,7 @@ const getCalendarIconContainerStyles = (props, state) => {
       baseIconStyles,
       css`
         color: ${vars.fontColorError};
-        border-color: ${vars.borderColorInputError};
+        border-color: ${vars.borderColorForInputWhenError};
       `,
     ];
   }
@@ -88,7 +88,7 @@ const getCalendarIconContainerStyles = (props, state) => {
       baseIconStyles,
       css`
         color: ${vars.fontColorWarning};
-        border-color: ${vars.borderColorInputWarning};
+        border-color: ${vars.borderColorForInputWhenWarning};
       `,
     ];
   }
@@ -96,7 +96,7 @@ const getCalendarIconContainerStyles = (props, state) => {
     return [
       baseIconStyles,
       css`
-        border-color: ${vars.borderColorInputFocus};
+        border-color: ${vars.borderColorForInputWhenFocused};
       `,
     ];
   }
@@ -122,8 +122,8 @@ const getDateTimeInputStyles = (props, state) => {
       &:active,
       &:focus + *,
       &:active + * {
-        border-color: ${vars.borderColorInputFocus};
-        color: ${vars.fontColorDefault};
+        border-color: ${vars.borderColorForInputWhenFocused};
+        color: ${vars.fontColorForInput};
         transition: ${vars.transitionStandard};
       }
 
@@ -133,9 +133,9 @@ const getDateTimeInputStyles = (props, state) => {
 
       &:disabled,
       &:read-only {
-        background-color: ${vars.backgroundColorInputDisabled};
-        color: ${vars.fontColorDisabled};
-        border-color: ${vars.borderColorInputDisabled};
+        background-color: ${vars.backgroundColorForInputWhenDisabled};
+        color: ${vars.fontColorForInputWhenDisabled};
+        border-color: ${vars.borderColorForInputWhenDisabled};
         opacity: 1; /* fix for mobile safari */
       }
     `,
@@ -146,8 +146,8 @@ const getDateTimeInputStyles = (props, state) => {
       css`
         &,
         & + * {
-          border-color: ${vars.borderColorInputFocus};
-          color: ${vars.fontColorDefault};
+          border-color: ${vars.borderColorForInputWhenFocused};
+          color: ${vars.fontColorForInput};
           transition: ${vars.transitionStandard};
         }
       `,
