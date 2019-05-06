@@ -30,31 +30,6 @@ choiceGroups:
     prefix: color
     description: All colors in the system
     choices:
-      color-green: '#00b39e'
-      color-green-25: 'hsl(172.9608938547486, 100%, 25%)'
-      color-green-40: 'hsl(172.9608938547486, 100%, 40%)'
-      color-green-85: 'hsl(172.9608938547486, 100%, 85%)'
-      color-green-95: 'hsl(172.9608938547486, 100%, 95%)'
-      color-navy: '#213c45'
-      color-navy-30: 'hsl(195, 35.2941176471%, 30%)'
-      color-navy-40: 'hsl(195, 35.2941176471%, 40%)'
-      color-navy-95: 'hsl(195, 35.2941176471%, 95%)'
-      color-navy-98: 'hsl(195, 35.2941176471%, 98%)'
-      color-gray: '#ccc'
-      color-gray-60: 'hsl(0, 0%, 60%)'
-      color-gray-90: 'hsl(0, 0%, 90%)'
-      color-gray-95: 'hsl(0, 0%, 95%)'
-      color-blue: '#078cdf'
-      color-blue-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
-      color-blue-95: 'hsl(203.05555555555554, 93.9130434783%, 95%)'
-      color-orange: '#f16d0e'
-      color-orange-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
-      color-red: '#e60050'
-      color-red-95: 'hsl(339.1304347826087, 100%, 95%)'
-      color-purple: '#b866ff'
-      color-black: '#1a1a1a'
-      color-white: '#fff'
-      ## new
       color-primary: '#00b39e'
       color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
       color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
@@ -132,11 +107,6 @@ choiceGroups:
     label: Spacings
     prefix: spacing
     choices:
-      spacing-4: 4px
-      spacing-8: 8px
-      spacing-16: 16px
-      spacing-24: 24px
-      spacing-32: 32px
       spacing-xs: 4px
       spacing-s: 8px
       spacing-m: 16px
