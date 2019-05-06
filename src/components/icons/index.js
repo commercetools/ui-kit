@@ -98,7 +98,7 @@ import OrigSpeedometerIcon from './svg/speedometer.react.svg';
 import OrigSplitIcon from './svg/split.react.svg';
 import OrigStackIcon from './svg/stack.react.svg';
 import OrigStarIcon from './svg/star.react.svg';
-import OrigSuplinkIcon from './svg/suplink.react.svg';
+import OrigSubLinkIcon from './svg/sublink.react.svg';
 import OrigSupportIcon from './svg/support.react.svg';
 import OrigSwitcherIcon from './svg/switcher.react.svg';
 import OrigTableIcon from './svg/table.react.svg';
@@ -330,7 +330,7 @@ export const SpeedometerIcon = createStyledIcon(
 export const SplitIcon = createStyledIcon(OrigSplitIcon, 'SplitIcon');
 export const StackIcon = createStyledIcon(OrigStackIcon, 'StackIcon');
 export const StarIcon = createStyledIcon(OrigStarIcon, 'StarIcon');
-export const SuplinkIcon = createStyledIcon(OrigSuplinkIcon, 'SuplinkIcon');
+export const SubLinkIcon = createStyledIcon(OrigSubLinkIcon, 'SubLinkIcon');
 export const SupportIcon = createStyledIcon(OrigSupportIcon, 'SupportIcon');
 export const SwitcherIcon = createStyledIcon(OrigSwitcherIcon, 'SwitcherIcon');
 export const TableIcon = createStyledIcon(OrigTableIcon, 'TableIcon');
