@@ -46,8 +46,8 @@ const Option = props => (
         font-size: 1rem;
         font-family: ${vars.fontFamilyDefault};
         color: ${props.isDisabled
-          ? vars.fontColorDisabled
-          : vars.fontColorDefault};
+          ? vars.fontColorForInputWhenDisabled
+          : vars.fontColorForInput};
       `}
     >
       {props.children}

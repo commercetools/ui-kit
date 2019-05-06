@@ -25,7 +25,7 @@ const getClearSectionStyles = props => {
       css`
         cursor: not-allowed;
         background-color: ${vars.backgroundColorForInputWhenDisabled};
-        color: ${vars.fontColorDisabled};
+        color: ${vars.fontColorForInputWhenDisabled};
         border-color: ${vars.borderColorForInputWhenDisabled};
       `,
     ];
@@ -34,7 +34,7 @@ const getClearSectionStyles = props => {
     return [
       baseIconStyles,
       css`
-        color: ${vars.fontColorError};
+        color: ${vars.fontColorForInputWhenError};
         border-color: ${vars.borderColorForInputWhenError};
       `,
     ];
@@ -78,7 +78,7 @@ const getCalendarIconContainerStyles = (props, state) => {
     return [
       baseIconStyles,
       css`
-        color: ${vars.fontColorError};
+        color: ${vars.fontColorForInputWhenError};
         border-color: ${vars.borderColorForInputWhenError};
       `,
     ];
@@ -87,7 +87,7 @@ const getCalendarIconContainerStyles = (props, state) => {
     return [
       baseIconStyles,
       css`
-        color: ${vars.fontColorWarning};
+        color: ${vars.fontColorForInputWhenWarning};
         border-color: ${vars.borderColorForInputWhenWarning};
       `,
     ];

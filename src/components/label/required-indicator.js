@@ -5,7 +5,7 @@ import vars from '../../../materials/custom-properties';
 const RequiredIndicator = () => (
   <em
     css={css`
-      color: ${vars.fontColorWarning};
+      color: ${vars.colorWarning};
     `}
   >
     {'*'}

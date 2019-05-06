@@ -48,7 +48,7 @@ const getStyles = props => {
     styles.push(
       css`
         background-color: ${vars.colorNeutral90};
-        color: ${vars.fontColorDefault};
+        color: ${vars.fontColorForInput};
       `
     );
   }
