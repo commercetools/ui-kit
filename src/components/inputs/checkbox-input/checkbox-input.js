@@ -22,7 +22,7 @@ const Label = styled.label`
   ${props =>
     !props.hasError &&
     `  &:hover svg [id$='borderAndContent'] > [id$='border'] {
-    stroke: ${vars.borderColorInputFocus};
+    stroke: ${vars.borderColorForInputWhenFocused};
   }`}
 `;
 

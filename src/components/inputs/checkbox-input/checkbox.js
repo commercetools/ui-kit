@@ -7,7 +7,7 @@ import vars from '../../../../materials/custom-properties';
 // accessible input :)
 const Input = styled.input`
   &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
-    stroke: ${vars.borderColorInputFocus};
+    stroke: ${vars.borderColorForInputWhenFocused};
   }
 `;
 

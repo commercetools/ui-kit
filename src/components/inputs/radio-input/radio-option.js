@@ -10,7 +10,7 @@ import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
 const Input = styled.input`
   &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
-    stroke: ${vars.borderColorInputFocus};
+    stroke: ${vars.borderColorForInputWhenFocused};
   }
 `;
 
