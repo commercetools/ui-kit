@@ -37,6 +37,7 @@ export default class CalendarBody extends React.PureComponent {
       onBlur: PropTypes.func,
       onFocus: PropTypes.func,
     }),
+    isClearable: PropTypes.bool,
     toggleButtonProps: PropTypes.shape({
       onBlur: PropTypes.func,
       onFocus: PropTypes.func,
@@ -76,7 +77,7 @@ export default class CalendarBody extends React.PureComponent {
                 this.props.inputProps.onBlur(event);
             }}
           />
-          {this.props.hasSelection && (
+          {this.props.hasSelection && this.props.isClearable && (
             <ClearSection
               isDisabled={this.props.isDisabled}
               hasError={this.props.hasError}

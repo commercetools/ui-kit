@@ -89,6 +89,7 @@ class DateRangeCalendar extends React.Component {
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
     horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    isClearable: PropTypes.bool,
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
     onFocus: PropTypes.func,
@@ -99,6 +100,9 @@ class DateRangeCalendar extends React.Component {
     isDisabled: PropTypes.bool,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
+  };
+  static defaultProps = {
+    isClearable: true,
   };
   static isEmpty = range => range.length === 0;
   static getDerivedStateFromProps(props, state) {
@@ -347,7 +351,8 @@ class DateRangeCalendar extends React.Component {
                         // do not clear value when user presses Enter to
                         // select the end date (so only clear when there is no
                         // startDate)
-                        !this.state.startDate
+                        !this.state.startDate &&
+                        this.props.isClearable
                       ) {
                         clearSelection();
                         this.emit([]);
@@ -358,6 +363,7 @@ class DateRangeCalendar extends React.Component {
                     ...filterDataAttributes(this.props),
                   })}
                   hasSelection={this.props.value.length === 2}
+                  isClearable={this.props.isClearable}
                   onClear={() => {
                     this.setState({ startDate: null });
                     this.emit([]);
