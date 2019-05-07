@@ -94,6 +94,57 @@ describe('when disabled', () => {
   });
 });
 
+describe('when `isClearable` is true', () => {
+  it('should allow clearing the input with icon button', () => {
+    const onChange = jest.fn();
+    const { queryByLabelText, getByLabelText } = renderDateRangeInput({
+      onChange,
+    });
+    const event = { target: { value: '09/18/2018 - 09/20/2018' } };
+    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.change(getByLabelText('Date'), event);
+    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+
+    expect(getByLabelText('clear')).toBeInTheDocument();
+
+    getByLabelText('clear').click();
+    expect(onChange).toHaveBeenCalledWith({
+      target: {
+        id: 'date-range-input',
+        name: undefined,
+        value: ['2018-09-18', '2018-09-20'],
+      },
+    });
+
+    expect(queryByLabelText('clear')).not.toBeInTheDocument();
+    expect(onChange).toHaveBeenCalledWith({
+      target: {
+        id: 'date-range-input',
+        name: undefined,
+        value: [],
+      },
+    });
+  });
+});
+
+describe('when `isClearable` is false', () => {
+  it('should not allow clearing the input', () => {
+    const onChange = jest.fn();
+    const { queryByLabelText, getByLabelText } = renderDateRangeInput({
+      onChange,
+      isClearable: false,
+    });
+    const event = { target: { value: '09/18/2018 - 09/20/2018' } };
+    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.change(getByLabelText('Date'), event);
+    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+
+    expect(queryByLabelText('clear')).not.toBeInTheDocument();
+  });
+});
+
 describe('when locale is "en"', () => {
   it('should allow changing the value by typing a date in an american format', () => {
     const onChange = jest.fn();

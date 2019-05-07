@@ -13,6 +13,7 @@ export const ClearSection = props => (
   <div
     onClick={props.isDisabled ? undefined : props.onClear}
     css={getClearSectionStyles(props)}
+    aria-label="clear"
   >
     {!props.isDisabled && (
       <CloseIcon size="medium" theme={props.isDisabled ? 'grey' : 'black'} />
