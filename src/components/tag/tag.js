@@ -181,7 +181,7 @@ export const TagNormalBody = props => (
         Boolean(props.onClick) &&
         css`
           &:hover {
-            box-shadow: ${vars.shadowBoxTagHover};
+            box-shadow: ${vars.shadowBoxTagWhenHovered};
             &:after {
               position: absolute;
               right: -1px;
