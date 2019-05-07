@@ -59,8 +59,8 @@ const getCalendarIconContainerStyles = (props, state) => {
     height: ${vars.sizeHeightInput};
     display: flex;
     padding: ${vars.spacingXs};
-    border-top-right-radius: ${vars.borderRadiusInput};
-    border-bottom-right-radius: ${vars.borderRadiusInput};
+    border-top-right-radius: ${vars.borderRadiusForInput};
+    border-bottom-right-radius: ${vars.borderRadiusForInput};
     outline: 0;
   `;
   if (props.isDisabled) {
@@ -115,7 +115,8 @@ const getDateTimeInputStyles = (props, state) => {
   const baseStyles = [
     getInputStyles(props),
     css`
-      border-radius: ${vars.borderRadiusInput} 0 0 ${vars.borderRadiusInput};
+      border-radius: ${vars.borderRadiusForInput} 0 0
+        ${vars.borderRadiusForInput};
       border-right: none;
 
       &:focus,
