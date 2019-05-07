@@ -42,9 +42,9 @@ storiesOf('Components|Inputs', module)
                     action('onChange')(event);
                     onChange(event.target.value);
                   }}
-                  isAutofocussed={boolean('isAutofocussed', false)}
-                  isDisabled={boolean('isDisabled', false)}
-                  isReadOnly={boolean('isReadOnly', false)}
+                  autoFocus={boolean('autoFocus', false)}
+                  disabled={boolean('disabled', false)}
+                  readOnly={boolean('readOnly', false)}
                   hasError={boolean('hasError', false)}
                   hasWarning={boolean('hasWarning', false)}
                   placeholder={text('placeholder', 'Placeholder')}

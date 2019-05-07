@@ -1,51 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
 import { getInputStyles } from '../styles';
 
-const TextInput = props => (
-  <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <input
-      id={props.id}
-      name={props.name}
-      type="text"
-      value={props.value}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      disabled={props.isDisabled}
-      placeholder={props.placeholder}
-      readOnly={props.isReadOnly}
-      autoFocus={props.isAutofocussed}
-      autoComplete={props.autoComplete}
-      css={theme => getInputStyles(props, theme)}
-      {...filterDataAttributes(props)}
-      /* ARIA */
-      aria-readonly={props.isReadOnly}
-      role="textbox"
-      contentEditable={!props.isReadOnly}
-    />
-  </Constraints.Horizontal>
-);
+const TextInput = props => {
+  const { horizontalConstraint, ...inputProps } = props;
+  return (
+    <Constraints.Horizontal constraint={horizontalConstraint}>
+      <input
+        type="text"
+        css={theme => getInputStyles(props, theme)}
+        /* ARIA */
+        role="textbox"
+        aria-readonly={props.readOnly}
+        contentEditable={!props.readOnly}
+        {...inputProps}
+      />
+    </Constraints.Horizontal>
+  );
+};
 
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
-  autoComplete: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  isAutofocussed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
+  autoComplete: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
 };
 

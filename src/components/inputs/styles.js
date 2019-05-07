@@ -40,7 +40,7 @@ const getInputStyles = (props, theme) => {
       ]};
     }
   `;
-  if (props.isDisabled) {
+  if (props.disabled) {
     return [
       baseStyles,
       css`
@@ -79,7 +79,7 @@ const getInputStyles = (props, theme) => {
     `,
     ];
   }
-  if (props.isReadOnly) {
+  if (props.readOnly) {
     return [
       baseStyles,
       css`
