@@ -95,6 +95,32 @@ describe('when disabled', () => {
 });
 
 describe('when `isClearable` is true', () => {
+  it('should allow clearing input with keyboard', () => {
+    const onChange = jest.fn();
+    const { queryByLabelText, getByLabelText } = renderDateRangeInput({
+      onChange,
+    });
+    const event = { target: { value: '09/18/2018 - 09/20/2018' } };
+    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.change(getByLabelText('Date'), event);
+    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+
+    const clearEvent = { target: { value: '' } };
+    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.change(getByLabelText('Date'), clearEvent);
+    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+
+    expect(queryByLabelText('clear')).not.toBeInTheDocument();
+    expect(onChange).toHaveBeenCalledWith({
+      target: {
+        id: 'date-range-input',
+        name: undefined,
+        value: [],
+      },
+    });
+  });
   it('should allow clearing the input with icon button', () => {
     const onChange = jest.fn();
     const { queryByLabelText, getByLabelText } = renderDateRangeInput({
@@ -129,6 +155,34 @@ describe('when `isClearable` is true', () => {
 });
 
 describe('when `isClearable` is false', () => {
+  it('should not allow clearing input with keyboard', () => {
+    const onChange = jest.fn();
+    const { queryByLabelText, getByLabelText } = renderDateRangeInput({
+      onChange,
+      isClearable: false,
+    });
+    const event = { target: { value: '09/18/2018 - 09/20/2018' } };
+    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.change(getByLabelText('Date'), event);
+    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+
+    const clearEvent = { target: { value: '' } };
+    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.change(getByLabelText('Date'), clearEvent);
+    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+
+    expect(queryByLabelText('clear')).not.toBeInTheDocument();
+    expect(onChange).not.toHaveBeenCalledWith({
+      target: {
+        id: 'date-range-input',
+        name: undefined,
+        value: [],
+      },
+    });
+  });
+
   it('should not allow clearing the input', () => {
     const onChange = jest.fn();
     const { queryByLabelText, getByLabelText } = renderDateRangeInput({
