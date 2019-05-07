@@ -4,7 +4,7 @@ import vars from '../../../../materials/custom-properties';
 const getContainerStyles = ({ isCondensed, theme }) => {
   const baseStyles = css`
     font-family: ${vars.fontFamilyDefault};
-    box-shadow: ${vars.shadow1Second};
+    box-shadow: ${vars.shadow1};
     color: ${vars.colorSolid};
     border-radius: ${vars.borderRadius6};
     position: relative;
