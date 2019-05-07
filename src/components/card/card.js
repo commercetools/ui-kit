@@ -14,7 +14,7 @@ const Card = props => (
         font-size: 1rem;
         flex-direction: column;
         width: 100%;
-        box-shadow: ${props.type === 'raised' ? vars.shadow1Second : 'none'};
+        box-shadow: ${props.type === 'raised' ? vars.shadow1 : 'none'};
         border-radius: ${vars.borderRadius6};
         background: ${props.theme === 'dark'
           ? vars.colorNeutral95
