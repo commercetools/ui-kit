@@ -252,7 +252,6 @@ const Detail = props => (
     css={theme => detailStyles(props, theme)}
     title={props.title}
     {...filterDataAttributes(props)}
-    className={props.className}
   >
     {props.intlMessage ? (
       <FormattedMessage {...props.intlMessage} />
@@ -276,7 +275,6 @@ Detail.propTypes = {
     'warning',
     'inverted',
   ]),
-  className: PropTypes.string,
   title: nonEmptyString,
   truncate: PropTypes.bool,
   intlMessage: requiredIf(intlMessageShape, props => !props.children),
