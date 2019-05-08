@@ -1,3 +1,22 @@
+<a name="9.5.0"></a>
+
+# [9.5.0](https://github.com/commercetools/ui-kit/compare/v9.4.0...v9.5.0) (2019-05-08)
+
+### Bug Fixes
+
+- `CheckboxInput`: make component accessible ([#722](https://github.com/commercetools/ui-kit/pull/722))
+- `RadioInput`: make component accessible ([#721](https://github.com/commercetools/ui-kit/pull/721))
+- `SelectInput`: cursor when disabled ([#709](https://github.com/commercetools/ui-kit/issues/709)) ([57a4f6a](https://github.com/commercetools/ui-kit/commit/57a4f6a))
+- `Text`: allow theming ([#720](https://github.com/commercetools/ui-kit/issues/720)) ([b5f8e44](https://github.com/commercetools/ui-kit/commit/b5f8e44))
+- `TimeInput`: fix for readonly state ([#724](https://github.com/commercetools/ui-kit/issues/724)) ([19ac8c6](https://github.com/commercetools/ui-kit/commit/19ac8c6))
+
+### Features
+
+- `CheckboxInput`: use design tokens / add theming ([#728](https://github.com/commercetools/ui-kit/issues/728)) ([c9604ba](https://github.com/commercetools/ui-kit/commit/c9604ba))
+- `DateRangeInput` add `isClearable` prop ([#745](https://github.com/commercetools/ui-kit/issues/745)) ([727ea20](https://github.com/commercetools/ui-kit/commit/727ea20))
+- `* selects` make selects support theming ([#727](https://github.com/commercetools/ui-kit/issues/727)) ([65d953f](https://github.com/commercetools/ui-kit/commit/65d953f))
+- `SubdirectoryArrowIcon`: new component ([#738](https://github.com/commercetools/ui-kit/issues/738)
+
 <a name="9.4.0"></a>
 
 # [9.4.0](https://github.com/commercetools/ui-kit/compare/v9.3.1...v9.4.0) (2019-04-23)
