@@ -71,12 +71,11 @@ const getInputStyles = (props, theme) => {
     return [
       baseStyles,
       css`
-      ${baseStyles}
-      border-color: ${
-        overwrittenVars[designTokens.borderColorForInputWhenWarning]
-      };
-      color: ${overwrittenVars[designTokens.fontColorForInputWhenWarning]};
-    `,
+        border-color: ${overwrittenVars[
+          designTokens.borderColorForInputWhenWarning
+        ]};
+        color: ${overwrittenVars[designTokens.fontColorForInputWhenWarning]};
+      `,
     ];
   }
   if (props.readOnly) {
