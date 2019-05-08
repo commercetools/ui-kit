@@ -26,7 +26,9 @@ const getClearSectionStyles = (props, theme) => {
     height: ${overwrittenVars.sizeHeightInput};
     display: flex;
     padding: ${overwrittenVars.spacingXs};
-    transition: ${overwrittenVars.transitionStandard};
+    transition: border-color ${overwrittenVars.transitionStandard},
+      background-color ${overwrittenVars.transitionStandard},
+      color ${overwrittenVars.transitionStandard};
     cursor: pointer;
   `;
   if (props.isDisabled) {
@@ -171,6 +173,8 @@ const getTimeInputStyles = (props, theme) => {
       border-radius: ${overwrittenVars[designTokens.borderRadiusForInput]} 0 0
         ${overwrittenVars[designTokens.borderRadiusForInput]};
       border-right: none;
+      transition: border-color ${overwrittenVars.transitionStandard},
+        color ${overwrittenVars.transitionStandard};
 
       &:focus,
       &:active,
@@ -180,7 +184,6 @@ const getTimeInputStyles = (props, theme) => {
           designTokens.borderColorForInputWhenFocused
         ]};
         color: ${overwrittenVars[designTokens.fontColorForInput]};
-        transition: ${overwrittenVars.transitionStandard};
       }
 
       &:disabled {
