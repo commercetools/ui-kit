@@ -22,11 +22,17 @@ const LinkButton = props => (
         min-height: initial;
         cursor: pointer;
         text-decoration: none;
+        color: ${vars.colorPrimary};
+        ${props.isDisabled ? `color: ${vars.colorNeutral};` : ''}
+
         span {
           color: ${vars.colorPrimary};
           ${props.isDisabled ? `color: ${vars.colorNeutral};` : ''}
         }
         &:hover {
+          color: ${vars.colorPrimary25};
+          ${props.isDisabled ? `color: ${vars.colorNeutral});` : ''}
+
           span {
             color: ${vars.colorPrimary25};
             ${props.isDisabled ? `color: ${vars.colorNeutral});` : ''}
