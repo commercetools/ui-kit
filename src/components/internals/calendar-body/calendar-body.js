@@ -13,6 +13,7 @@ export const ClearSection = props => (
   <div
     onClick={props.isDisabled ? undefined : props.onClear}
     css={getClearSectionStyles(props)}
+    aria-label="clear"
   >
     {!props.isDisabled && (
       <CloseIcon size="medium" theme={props.isDisabled ? 'grey' : 'black'} />
@@ -37,6 +38,7 @@ export default class CalendarBody extends React.PureComponent {
       onBlur: PropTypes.func,
       onFocus: PropTypes.func,
     }),
+    isClearable: PropTypes.bool,
     toggleButtonProps: PropTypes.shape({
       onBlur: PropTypes.func,
       onFocus: PropTypes.func,
@@ -51,6 +53,10 @@ export default class CalendarBody extends React.PureComponent {
     onClear: PropTypes.func,
     placeholder: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+  };
+
+  static defaultProps = {
+    isClearable: true,
   };
 
   state = {
@@ -76,7 +82,7 @@ export default class CalendarBody extends React.PureComponent {
                 this.props.inputProps.onBlur(event);
             }}
           />
-          {this.props.hasSelection && (
+          {this.props.hasSelection && this.props.isClearable && (
             <ClearSection
               isDisabled={this.props.isDisabled}
               hasError={this.props.hasError}
