@@ -22,6 +22,7 @@ const LinkButton = props => (
         min-height: initial;
         cursor: pointer;
         text-decoration: none;
+
         color: ${vars.colorPrimary};
         ${props.isDisabled ? `color: ${vars.colorNeutral};` : ''}
 
