@@ -55,6 +55,10 @@ export default class CalendarBody extends React.PureComponent {
     horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   };
 
+  static defaultProps = {
+    isClearable: true,
+  };
+
   state = {
     isFocused: false,
   };
