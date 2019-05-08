@@ -23,6 +23,7 @@ storiesOf('Components|Buttons', module)
             icons[select('iconLeft', iconNames, iconNames[0])]
           )}
           isDisabled={boolean('isDisabled', false)}
+          hasUnderline={boolean('hasUnderline', false)}
         />
       </Section>
     </Router>

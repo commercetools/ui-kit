@@ -37,6 +37,10 @@ const LinkButton = props => (
         css`
           cursor: not-allowed;
         `,
+      props.hasUnderline &&
+        css`
+          text-decoration: underline;
+        `,
     ]}
     onClick={props.isDisabled ? event => event.preventDefault() : undefined}
     data-track-component="LinkButton"
@@ -67,11 +71,13 @@ LinkButton.propTypes = {
     }),
   ]).isRequired,
   iconLeft: PropTypes.element,
+  hasUnderline: PropTypes.bool,
   isDisabled: PropTypes.bool,
 };
 
 LinkButton.defaultProps = {
   isDisabled: false,
+  hasUnderline: false,
 };
 
 export default LinkButton;

@@ -32,6 +32,7 @@ Link buttons are similar to Flat buttons, however they are constructed as a
 | `to`         | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                 |
 | `iconLeft`   | `element`                                                         |    -     | -      | -       | The icon of the button                                |
 | `isDisabled` | `boolean`                                                         |    -     | -      | -       | Tells when the button should present a disabled state |
+| `isDisabled` | `boolean`                                                         |    -     | -      | false   | Whether the Link should be rendered with a underline  |
 
 The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
 

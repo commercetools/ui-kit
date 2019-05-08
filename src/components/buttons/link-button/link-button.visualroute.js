@@ -25,5 +25,17 @@ export const component = () => (
         iconLeft={<InformationIcon />}
       />
     </Spec>
+    <Spec label="with underline">
+      <LinkButton label="A label text" to="/" hasUnderline />
+    </Spec>
+
+    <Spec label="with underline and icon left">
+      <LinkButton
+        label="A label text"
+        to="/"
+        iconLeft={<InformationIcon />}
+        hasUnderline
+      />
+    </Spec>
   </Suite>
 );
