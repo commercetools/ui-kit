@@ -69,7 +69,7 @@ export default {
   spacingXl: '32px',
   transitionLinear80Ms: '80ms linear',
   transitionEaseinout150Ms: '150ms ease-in-out',
-  transitionStandard: 'all 0.2s ease',
+  transitionStandard: '200ms ease',
   breakPointMobile: '768px',
   breakPointDesktop: '1024px',
   breakPointBiggerdesktop: '1280px',
