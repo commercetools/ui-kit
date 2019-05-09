@@ -70,7 +70,7 @@
   --spacing-xl: 32px;
   --transition-linear-80ms: 80ms linear;
   --transition-easeinout-150ms: 150ms ease-in-out;
-  --transition-standard: all 0.2s ease;
+  --transition-standard: 200ms ease;
   --break-point-mobile: 768px;
   --break-point-desktop: 1024px;
   --break-point-biggerdesktop: 1280px;
