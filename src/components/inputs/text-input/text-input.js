@@ -1,30 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import omit from 'lodash/omit';
 import { getInputStyles } from '../styles';
 import { getConstraintSyles } from '../../constraints/horizontal';
 
-const TextInput = props => {
-  const { horizontalConstraint, ...inputProps } = props;
+class TextInput extends React.PureComponent {
+  getInputProps = (props = {}) => {
+    const readOnly = props.readOnly || props.isReadOnly;
 
-  return (
-    <input
-      type="text"
-      css={theme => [
-        getInputStyles(props, theme),
-        getConstraintSyles(props.horizontalConstraint),
-      ]}
+    return {
+      type: 'text',
+      readOnly,
+      disabled: props.disabled || props.isDisabled,
+      autoFocus: props.autoFocus || props.isAutofocussed,
       /* ARIA */
-      role="textbox"
-      aria-readonly={props.readOnly}
-      contentEditable={!props.readOnly}
-      {...inputProps}
-    />
-  );
-};
+      role: 'textbox',
+      'aria-readonly': readOnly,
+      contentEditable: readOnly,
+      ...omit(props, [
+        'hasError',
+        'hasWarning',
+        'horizontalConstraint',
+        /* deprecated */
+        'isReadOnly',
+        'isDisabled',
+        'isAutofocussed',
+      ]),
+    };
+  };
+
+  render() {
+    return (
+      <input
+        css={theme => [
+          getInputStyles(this.props, theme),
+          getConstraintSyles(this.props.horizontalConstraint),
+        ]}
+        {...this.getInputProps(this.props)}
+      />
+    );
+  }
+}
 
 TextInput.displayName = 'TextInput';
-
 TextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
