@@ -32,11 +32,11 @@ const LinkButton = props => (
         `,
       !props.isDisabled &&
         css`
-          span {
-            color: ${vars.colorPrimary25};
-          }
-
           &:hover {
+            span {
+              color: ${vars.colorPrimary25};
+            }
+
             * {
               fill: ${vars.colorPrimary25};
             }
