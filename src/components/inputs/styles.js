@@ -25,7 +25,9 @@ const getInputStyles = (props, theme) => {
     outline: none;
     overflow: hidden;
     padding: 0 ${overwrittenVars.spacingS};
-    transition: ${overwrittenVars.transitionStandard};
+    transition: border-color ${overwrittenVars.transitionStandard},
+      background-color ${overwrittenVars.transitionStandard},
+      color ${overwrittenVars.transitionStandard};
     width: 100%;
 
     &::placeholder {
