@@ -158,45 +158,8 @@ decisionGroups:
     label: Background Colors
     prefix: background-color
     decisions:
-      background-color-input-pristine:
-        description: ''
-        deprecated: true
-        choice: color-surface
-      background-color-input-disabled:
-        description: ''
-        deprecated: true
-        choice: color-accent-98
-      background-color-input-hover:
-        description: ''
-        deprecated: true
-        choice: color-neutral-90
-      background-color-input-selected:
-        description: ''
-        deprecated: true
-        choice: color-accent-95
-      background-color-tag-pristine:
-        description: ''
-        deprecated: true
-        choice: color-neutral-95
-      background-color-tag-warning:
-        description: ''
-        deprecated: true
-        choice: color-warning-95
-      background-color-tag-disabled:
-        description: ''
-        deprecated: true
-        choice: color-neutral-95
-      background-color-tag-normal-hover:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      background-color-tag-warning-hover:
-        description: ''
-        deprecated: true
-        choice: color-warning
       background-color-for-input:
         description: ''
-        deprecated: false
         choice: color-surface
       background-color-for-input-when-selected:
         description: ''
@@ -218,50 +181,6 @@ decisionGroups:
     label: Border Colors
     prefix: border-color
     decisions:
-      border-color-input-pristine:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      border-color-input-focus:
-        description: ''
-        deprecated: true
-        choice: color-primary
-      border-color-input-disabled:
-        description: ''
-        deprecated: true
-        choice: color-neutral
-      border-color-input-readonly:
-        description: ''
-        deprecated: true
-        choice: color-neutral
-      border-color-input-error:
-        description: ''
-        deprecated: true
-        choice: color-error
-      border-color-input-warning:
-        description: ''
-        deprecated: true
-        choice: color-warning
-      border-color-tag-pristine:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      border-color-tag-warning:
-        description: ''
-        deprecated: true
-        choice: color-warning
-      border-color-tag-focus:
-        description: ''
-        deprecated: true
-        choice: color-primary
-      border-color-tag-warning-hover:
-        description: ''
-        deprecated: true
-        choice: color-warning
-      border-color-separator:
-        description: ''
-        deprecated: true
-        choice: color-neutral
       border-color-for-input:
         description: ''
         choice: color-neutral-60
@@ -294,14 +213,6 @@ decisionGroups:
     label: Border Radius
     prefix: border-radius
     decisions:
-      border-radius-input:
-        description: ''
-        deprecated: true
-        choice: border-radius-6
-      border-radius-tag:
-        description: ''
-        deprecated: true
-        choice: border-radius-2
       border-radius-for-input:
         description: ''
         choice: border-radius-6
@@ -315,34 +226,6 @@ decisionGroups:
     label: Font Colors
     prefix: font-color
     decisions:
-      font-color-default:
-        description: ''
-        deprecated: true
-        choice: color-solid
-      font-color-disabled:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      font-color-error:
-        description: ''
-        deprecated: true
-        choice: color-error
-      font-color-success:
-        description: ''
-        deprecated: true
-        choice: color-primary
-      font-color-warning:
-        description: ''
-        deprecated: true
-        choice: color-warning
-      font-color-readonly:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
-      font-color-placeholder:
-        description: ''
-        deprecated: true
-        choice: color-neutral-60
       font-color-for-input:
         description: ''
         choice: color-solid
@@ -411,32 +294,6 @@ plainTokens:
   big-button-height: 32px
   small-button-height: 24px
   size-height-input: 32px
-  shadow-1-first: '0 1px 3px rgba(0, 0, 0, 0.12)'
-  shadow-1-second: '0 1px 2px rgba(0, 0, 0, 0.24)'
-  shadow-2-first: '0 3px 6px rgba(0, 0, 0, 0.16)'
-  shadow-2-second: '0 3px 6px rgba(0, 0, 0, 0.23)'
-  shadow-3-first: '0 10px 20px rgba(0, 0, 0, 0.19)'
-  shadow-3-second: '0 6px 6px rgba(0, 0, 0, 0.23)'
-  shadow-4-first: '0 14px 28px rgba(0, 0, 0, 0.25)'
-  shadow-4-second: '0 10px 10px rgba(0, 0, 0, 0.22)'
-  shadow-5-first: '0 19px 38px rgba(0, 0, 0, 0.3)'
-  shadow-5-second: '0 15px 12px rgba(0, 0, 0, 0.22)'
-  shadow-6-first: '0 -1px 2px 0 rgba(0, 0, 0, 0.2)'
-  shadow-7-first: '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12)'
-  shadow-7-second: '0 1px 1px 0 rgba(0, 0, 0, 0.24)'
-  shadow-8-first: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12)'
-  shadow-8-second: '0 2px 4px 0 rgba(0, 0, 0, 0.24)'
-  shadow-9-first: 'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1)'
-  shadow-9-second: 'inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2)'
-  shadow-9-third: 'inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)'
-  shadow-10-first: '0 0 0 1px rgba(224, 230, 237, 0.5)'
-  shadow-11-first: '0 1px 0.5px rgba(0, 0, 0, 0.24)'
-  shadow-11-second: '0 -1px 0.75px rgba(0, 0, 0, 0.12)'
-  shadow-12-first: '0 0 1px rgba(0, 0, 0, 0.25)'
-  shadow-13-first: '0 0 1px rgba(0, 0, 0, 0.25)'
-  shadow-14-first: '0 0 0.5px rgba(0, 0, 0, 0.1)'
-  shadow-15-first: '0 2px 2px rgba(0, 0, 0, 0.24)'
-  shadow-15-second: '0 1px 4.75px rgba(0, 0, 0, 0.12)'
   font-family-default: "'Open Sans', sans-serif"
   font-size-default: 1rem
   font-size-small: 0.9231rem
