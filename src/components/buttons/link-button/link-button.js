@@ -37,6 +37,14 @@ const LinkButton = props => (
         css`
           cursor: not-allowed;
         `,
+      !props.isDisabled &&
+        css`
+          &:hover {
+            * {
+              fill: ${vars.colorPrimary25};
+            }
+          }
+        `,
     ]}
     onClick={props.isDisabled ? event => event.preventDefault() : undefined}
     data-track-component="LinkButton"
