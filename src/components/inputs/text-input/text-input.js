@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import isNil from 'lodash/isNil';
 import omit from 'lodash/omit';
 import { getInputStyles } from '../styles';
 import { getConstraintSyles } from '../../constraints/horizontal';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
 class TextInput extends React.PureComponent {
   getInputProps = (props = {}) => {
@@ -44,18 +46,49 @@ class TextInput extends React.PureComponent {
 }
 
 TextInput.displayName = 'TextInput';
+
 TextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
+  autoFocus: PropTypes.bool,
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
-  placeholder: PropTypes.string,
-  autoComplete: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  /* Deprecated Props */
+  isAutofocussed(props, propName, componentName, ...rest) {
+    if (!isNil(props[propName])) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "autofocus" prop instead.`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
+  },
+  isDisabled(props, propName, componentName, ...rest) {
+    if (!isNil(props[propName])) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "disabled" prop instead.`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
+  },
+  isReadOnly(props, propName, componentName, ...rest) {
+    if (!isNil(props[propName])) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "readOnly" prop instead.`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
+  },
 };
 
 TextInput.isEmpty = value => !value || value.trim().length === 0;
