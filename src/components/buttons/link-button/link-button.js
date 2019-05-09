@@ -23,19 +23,24 @@ const LinkButton = props => (
         cursor: pointer;
         text-decoration: none;
         span {
-          color: ${vars.colorPrimary};
-          ${props.isDisabled ? `color: ${vars.colorNeutral};` : ''}
-        }
-        &:hover {
-          span {
-            color: ${vars.colorPrimary25};
-            ${props.isDisabled ? `color: ${vars.colorNeutral});` : ''}
-          }
+          color: ${props.isDisabled ? vars.colorNeutral : vars.colorPrimary};
         }
       `,
       props.isDisabled &&
         css`
           cursor: not-allowed;
+        `,
+      !props.isDisabled &&
+        css`
+          &:hover {
+            span {
+              color: ${vars.colorPrimary25};
+            }
+
+            * {
+              fill: ${vars.colorPrimary25};
+            }
+          }
         `,
     ]}
     onClick={props.isDisabled ? event => event.preventDefault() : undefined}
