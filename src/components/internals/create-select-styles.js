@@ -151,7 +151,9 @@ const optionStyles = (props, theme) => (base, state) => {
 
   return {
     ...base,
-    transition: overwrittenVars.transitionStandard,
+    transition: `border-color ${overwrittenVars.transitionStandard},
+      background-color ${overwrittenVars.transitionStandard},
+      color ${overwrittenVars.transitionStandard}`,
     paddingLeft: overwrittenVars.spacingS,
     paddingRight: overwrittenVars.spacingS,
     color: (() => {

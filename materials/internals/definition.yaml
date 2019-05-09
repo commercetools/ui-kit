@@ -4,7 +4,7 @@
 # design system. Those are things like which colors are we using,
 # which border radius, spacing, shadows and so on.
 #
-# The file also lists the states and comopnent groups for which we apply design
+# The file also lists the states and component groups for which we apply design
 # tokens. The explicit list of states aims to prevent diversion, e.g. by using
 # both "-hover" and "-hovered".
 #
@@ -118,7 +118,7 @@ choiceGroups:
     choices:
       transition-linear-80ms: '80ms linear'
       transition-easeinout-150ms: '150ms ease-in-out'
-      transition-standard: 'all 0.2s ease'
+      transition-standard: '200ms ease'
   breakpoints:
     label: Breakpoints
     prefix: break-point
