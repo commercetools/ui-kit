@@ -54,7 +54,10 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   autoFocus: PropTypes.bool,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(
+    PropTypes.func,
+    props => !props.isReadOnly && !props.readOnly
+  ),
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
