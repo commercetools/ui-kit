@@ -379,8 +379,8 @@ export default class BaseTable extends React.Component {
                 this.props.onRowClick
                   ? {
                       cursor: 'pointer',
-                      transition: vars.transitionStandard,
                       background: vars.colorNeutral90,
+                      transition: `background-color ${vars.transitionStandard}`,
                     }
                   : {}),
               }),

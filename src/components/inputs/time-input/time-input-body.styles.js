@@ -27,7 +27,9 @@ const getClearSectionStyles = props => {
     height: ${overwrittenVars.sizeHeightInput};
     display: flex;
     padding: ${overwrittenVars.spacingXs};
-    transition: ${overwrittenVars.transitionStandard};
+    transition: border-color ${overwrittenVars.transitionStandard},
+      background-color ${overwrittenVars.transitionStandard},
+      color ${overwrittenVars.transitionStandard};
     cursor: pointer;
   `;
   if (props.isDisabled) {
@@ -98,7 +100,7 @@ const getClockIconContainerStyles = props => {
     border-bottom-right-radius: ${overwrittenVars[
       designTokens.borderRadiusForInput
     ]};
-    transition: ${overwrittenVars.transitionStandard};
+    transition: border-color ${overwrittenVars.transitionStandard};
   `;
   if (props.isDisabled) {
     return [
@@ -179,6 +181,18 @@ const getTimeInputStyles = props => {
       border-radius: ${overwrittenVars[designTokens.borderRadiusForInput]} 0 0
         ${overwrittenVars[designTokens.borderRadiusForInput]};
       border-right: none;
+      transition: border-color ${overwrittenVars.transitionStandard},
+        color ${overwrittenVars.transitionStandard};
+
+      &:focus,
+      &:active,
+      &:focus + *,
+      &:active + * {
+        border-color: ${overwrittenVars[
+          designTokens.borderColorForInputWhenFocused
+        ]};
+        color: ${overwrittenVars[designTokens.fontColorForInput]};
+      }
 
       &:disabled {
         cursor: not-allowed;
@@ -205,7 +219,7 @@ const getBorderColorWhenFocused = props => {
   };
 
   return css`
-    transition: ${overwrittenVars.transitionStandard};
+    transition: border-color ${overwrittenVars.transitionStandard};
     border-color: ${overwrittenVars[
       designTokens.borderColorForInputWhenFocused
     ]};
