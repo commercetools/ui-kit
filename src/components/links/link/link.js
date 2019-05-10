@@ -10,7 +10,7 @@ const createStyledComponent = component => Styled(component)`
   color: ${vars.colorPrimary};
   font-size: ${vars.fontSizeDefault};
 
-  &:hover {
+  &:hover, &:focus, &:active {
     color: ${vars.colorPrimary25};
   }
 `;
