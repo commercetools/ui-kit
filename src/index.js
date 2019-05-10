@@ -16,6 +16,8 @@ export {
   default as SecondaryIconButton,
 } from './components/buttons/secondary-icon-button';
 
+export { default as Link } from './components/links/link';
+
 export { default as Collapsible } from './components/collapsible';
 export { default as CollapsibleMotion } from './components/collapsible-motion';
 
