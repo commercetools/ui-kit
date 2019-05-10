@@ -8,8 +8,7 @@ import { Link } from '@commercetools-frontend/ui-kit';
 
 #### Description
 
-Link buttons are similar to Flat buttons, however they are constructed as a
-`<Link>` and they do not have types.
+Links are used either to link to other ui routes, or to link to external pages. This component is a very thin wrapper over either a React Router Link, or a normal HTML <a> tag.
 
 > Requires `react-router`.
 
