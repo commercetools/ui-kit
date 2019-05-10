@@ -49,7 +49,7 @@ export const Body = styled.div`
 // eslint-disable-next-line import/prefer-default-export
 export const getBodyStyles = ({ constraint, placement, customStyles }) => ({
   fontFamily: vars.fontFamilyDefault,
-  margin: getOffsetMargin({ placement }),
+  margin: `${getOffsetMargin({ placement })} !important`,
   maxWidth: getMaxWidth({ constraint }),
   // so hovering over the tooltip when the tooltip overlaps the component
   pointerEvents: 'none',
