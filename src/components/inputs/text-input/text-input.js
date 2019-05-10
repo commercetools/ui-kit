@@ -7,20 +7,20 @@ import { getInputStyles } from '../styles';
 import { getConstraintSyles } from '../../constraints/horizontal';
 import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
-class TextInput extends React.PureComponent {
-  getInputProps = (props = {}) => {
-    const readOnly = props.readOnly || props.isReadOnly;
+const TextInput = props => {
+  function getInputProps(componentProps = {}) {
+    const readOnly = componentProps.readOnly || componentProps.isReadOnly;
 
     return {
       type: 'text',
       readOnly,
-      disabled: props.disabled || props.isDisabled,
-      autoFocus: props.autoFocus || props.isAutofocussed,
+      disabled: componentProps.disabled || componentProps.isDisabled,
+      autoFocus: componentProps.autoFocus || componentProps.isAutofocussed,
       /* ARIA */
       role: 'textbox',
       'aria-readonly': readOnly,
       contentEditable: readOnly,
-      ...omit(props, [
+      ...omit(componentProps, [
         'hasError',
         'hasWarning',
         'horizontalConstraint',
@@ -30,20 +30,18 @@ class TextInput extends React.PureComponent {
         'isAutofocussed',
       ]),
     };
-  };
-
-  render() {
-    return (
-      <input
-        css={theme => [
-          getInputStyles(this.props, theme),
-          getConstraintSyles(this.props.horizontalConstraint),
-        ]}
-        {...this.getInputProps(this.props)}
-      />
-    );
   }
-}
+
+  return (
+    <input
+      css={theme => [
+        getInputStyles(props, theme),
+        getConstraintSyles(props.horizontalConstraint),
+      ]}
+      {...getInputProps(props)}
+    />
+  );
+};
 
 TextInput.displayName = 'TextInput';
 
