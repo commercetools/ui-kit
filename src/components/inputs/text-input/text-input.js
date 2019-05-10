@@ -7,41 +7,39 @@ import { getInputStyles } from '../styles';
 import { getConstraintSyles } from '../../constraints/horizontal';
 import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
-const TextInput = props => {
-  function getInputProps(componentProps = {}) {
-    const readOnly = componentProps.readOnly || componentProps.isReadOnly;
+const getInputProps = (props = {}) => {
+  const readOnly = props.readOnly || props.isReadOnly;
 
-    return {
-      type: 'text',
-      readOnly,
-      disabled: componentProps.disabled || componentProps.isDisabled,
-      autoFocus: componentProps.autoFocus || componentProps.isAutofocussed,
-      /* ARIA */
-      role: 'textbox',
-      'aria-readonly': readOnly,
-      contentEditable: readOnly,
-      ...omit(componentProps, [
-        'hasError',
-        'hasWarning',
-        'horizontalConstraint',
-        /* deprecated */
-        'isReadOnly',
-        'isDisabled',
-        'isAutofocussed',
-      ]),
-    };
-  }
-
-  return (
-    <input
-      css={theme => [
-        getInputStyles(props, theme),
-        getConstraintSyles(props.horizontalConstraint),
-      ]}
-      {...getInputProps(props)}
-    />
-  );
+  return {
+    type: 'text',
+    readOnly,
+    disabled: props.disabled || props.isDisabled,
+    autoFocus: props.autoFocus || props.isAutofocussed,
+    /* ARIA */
+    role: 'textbox',
+    'aria-readonly': readOnly,
+    contentEditable: readOnly,
+    ...omit(props, [
+      'hasError',
+      'hasWarning',
+      'horizontalConstraint',
+      /* deprecated */
+      'isReadOnly',
+      'isDisabled',
+      'isAutofocussed',
+    ]),
+  };
 };
+
+const TextInput = props => (
+  <input
+    css={theme => [
+      getInputStyles(props, theme),
+      getConstraintSyles(props.horizontalConstraint),
+    ]}
+    {...getInputProps(props)}
+  />
+);
 
 TextInput.displayName = 'TextInput';
 
