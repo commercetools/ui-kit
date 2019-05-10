@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import Styled from '@emotion/styled';
+import getPassThroughProps from '../../../utils/get-pass-through-props';
 import vars from '../../../../materials/custom-properties';
 
 const createStyledComponent = component => Styled(component)`
@@ -21,14 +22,7 @@ const StyledExternalLink = createStyledComponent('a');
 const componentProps = ['isExternal', 'to'];
 
 const Link = props => {
-  // instead of object destructing
-  const remainingProps = Object.keys(props)
-    .filter(key => !componentProps.includes(key))
-    .reduce((obj, key) => {
-      // eslint-disable-next-line no-param-reassign
-      obj[key] = props[key];
-      return obj;
-    }, {});
+  const remainingProps = getPassThroughProps(props, componentProps);
 
   if (props.isExternal) {
     return <StyledExternalLink href={props.to} {...remainingProps} />;
