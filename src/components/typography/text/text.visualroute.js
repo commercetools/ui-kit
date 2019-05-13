@@ -15,68 +15,64 @@ export const routePath = '/text';
 export const component = ({ themes }) => (
   <Suite>
     <Spec label="Headline - h1">
-      <Text.Headline elementType="h1">{'Title H1'}</Text.Headline>
+      <Text.Headline as="h1">{'Title H1'}</Text.Headline>
     </Spec>
     <NarrowBox>
       <Spec label="Headline - h1 - truncated">
-        <Text.Headline elementType="h1" truncate={true}>
+        <Text.Headline as="h1" truncate={true}>
           {'A longer title that should be truncated'}
         </Text.Headline>
       </Spec>
     </NarrowBox>
 
     <Spec label="Headline - h2">
-      <Text.Headline elementType="h2">{'Title H2'}</Text.Headline>
+      <Text.Headline as="h2">{'Title H2'}</Text.Headline>
     </Spec>
     <Spec label="Headline - h3">
-      <Text.Headline elementType="h3">{'Title H3'}</Text.Headline>
+      <Text.Headline as="h3">{'Title H3'}</Text.Headline>
     </Spec>
     <Spec label="Subheadline - h4">
-      <Text.Subheadline elementType="h4">
-        {'Bigger subheadline'}
-      </Text.Subheadline>
+      <Text.Subheadline as="h4">{'Bigger subheadline'}</Text.Subheadline>
     </Spec>
     <NarrowBox>
       <Spec label="Subheadline - h4 - truncated">
-        <Text.Subheadline elementType="h4" truncate={true}>
+        <Text.Subheadline as="h4" truncate={true}>
           {'A longer subheadline that should be truncated'}
         </Text.Subheadline>
       </Spec>
     </NarrowBox>
     <Spec label="Subheadline - h4 - bold">
-      <Text.Subheadline isBold={true} elementType="h4">
+      <Text.Subheadline isBold={true} as="h4">
         {'Bold subheadline'}
       </Text.Subheadline>
     </Spec>
     <Spec label="Subheadline - tone - primary">
-      <Text.Subheadline tone="primary" elementType="h4">
+      <Text.Subheadline tone="primary" as="h4">
         {'Subheadline tone primary'}
       </Text.Subheadline>
     </Spec>
     <Spec label="Subheadline - tone - secondary">
-      <Text.Subheadline tone="secondary" elementType="h4">
+      <Text.Subheadline tone="secondary" as="h4">
         {'Subheadline tone secondary'}
       </Text.Subheadline>
     </Spec>
     <Spec label="Subheadline - tone - information">
-      <Text.Subheadline tone="information" elementType="h4">
+      <Text.Subheadline tone="information" as="h4">
         {'Subheadline tone information'}
       </Text.Subheadline>
     </Spec>
     <Spec label="Subheadline - tone - positive">
-      <Text.Subheadline tone="positive" elementType="h4">
+      <Text.Subheadline tone="positive" as="h4">
         {'Subheadline tone positive'}
       </Text.Subheadline>
     </Spec>
     <Spec label="Subheadline - tone - negative">
-      <Text.Subheadline tone="negative" elementType="h4">
+      <Text.Subheadline tone="negative" as="h4">
         {'Subheadline tone negative'}
       </Text.Subheadline>
     </Spec>
     <Spec label="Subheadline - h5">
-      <Text.Subheadline elementType="h5">
-        {'Smaller subheadline'}
-      </Text.Subheadline>
+      <Text.Subheadline as="h5">{'Smaller subheadline'}</Text.Subheadline>
     </Spec>
     <NarrowBox>
       <Spec label="Wrap">
@@ -127,8 +123,8 @@ export const component = ({ themes }) => (
       </Spec>
     </NarrowBox>
     <Spec label="Body - inline" omitPropsList>
-      <Text.Body isInline={true}>One inline body text{'. '}</Text.Body>
-      <Text.Body isInline={true}>A second inline text.</Text.Body>
+      <Text.Body as="span">One inline body text{'. '}</Text.Body>
+      <Text.Body as="span">A second inline text.</Text.Body>
     </Spec>
     <Spec label="Detail">
       <Text.Detail>Detail text</Text.Detail>
@@ -173,19 +169,19 @@ export const component = ({ themes }) => (
       <Text.Detail isInline={true}>A second inline text.</Text.Detail>
     </Spec>
     <Spec label="Headline - h1 (intl message)">
-      <Text.Headline elementType="h1" intlMessage={intlMessage} />
+      <Text.Headline as="h1" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Headline - h2 (intl message)">
-      <Text.Headline elementType="h2" intlMessage={intlMessage} />
+      <Text.Headline as="h2" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Headline - h3 (intl message)">
-      <Text.Headline elementType="h3" intlMessage={intlMessage} />
+      <Text.Headline as="h3" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Subheadline - h4 (intl message)">
-      <Text.Subheadline elementType="h4" intlMessage={intlMessage} />
+      <Text.Subheadline as="h4" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Subheadline - h5 (intl message)">
-      <Text.Subheadline elementType="h5" intlMessage={intlMessage} />
+      <Text.Subheadline as="h5" intlMessage={intlMessage} />
     </Spec>
     <Spec label="Wrap (intl message)">
       <Text.Wrap
@@ -204,10 +200,10 @@ export const component = ({ themes }) => (
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
       <Spec label="Headline (dark theme)">
-        <Text.Headline elementType="h1">Dark theme</Text.Headline>
+        <Text.Headline as="h1">Dark theme</Text.Headline>
       </Spec>
       <Spec label="Subheadline (dark theme)">
-        <Text.Subheadline elementType="h4">Dark theme</Text.Subheadline>
+        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>
       </Spec>
       <Spec label="Body (dark theme)">
         <Text.Body>Dark theme</Text.Body>

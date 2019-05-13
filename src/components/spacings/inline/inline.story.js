@@ -80,7 +80,7 @@ storiesOf('Components|Spacings', module)
             <InlineColorWrapper>
               <Scale>
                 <Inset scale="s" alignItems="center">
-                  <Text.Subheadline elementType="h4">
+                  <Text.Subheadline as="h4">
                     {size.name.toUpperCase()}
                     <Text.Detail>{size.pixels}</Text.Detail>
                   </Text.Subheadline>
