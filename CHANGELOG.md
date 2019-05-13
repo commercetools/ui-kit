@@ -1,3 +1,20 @@
+<a name="9.6.0"></a>
+
+# [9.6.0](https://github.com/commercetools/ui-kit/compare/v9.5.0...v9.6.0) (2019-05-13)
+
+### Bug Fixes
+
+- `LinkButton`: add hover effect for icon ([#752](https://github.com/commercetools/ui-kit/issues/752)) ([f3fc29b](https://github.com/commercetools/ui-kit/commit/f3fc29b))
+- `Tooltip`: margin specificity fix ([#754](https://github.com/commercetools/ui-kit/issues/754)) ([15aa855](https://github.com/commercetools/ui-kit/commit/15aa855))
+
+### Features
+
+- `Link`: new component. ([#755](https://github.com/commercetools/ui-kit/issues/755)) ([af7e144](https://github.com/commercetools/ui-kit/commit/af7e144))
+
+### Refactoring
+
+- Various dependency updates ([#762](https://github.com/commercetools/ui-kit/pull/762))
+
 <a name="9.5.0"></a>
 
 # [9.5.0](https://github.com/commercetools/ui-kit/compare/v9.4.0...v9.5.0) (2019-05-08)
