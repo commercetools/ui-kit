@@ -89,9 +89,9 @@ class TextField extends React.Component {
             onChange={this.props.onChange}
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
-            isAutofocussed={this.props.isAutofocussed}
-            isDisabled={this.props.isDisabled}
-            isReadOnly={this.props.isReadOnly}
+            autoFocus={this.props.isAutofocussed}
+            disabled={this.props.isDisabled}
+            readOnly={this.props.isReadOnly}
             hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"

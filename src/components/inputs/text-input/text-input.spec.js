@@ -25,7 +25,12 @@ describe('TextInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('data-foo', 'bar');
   });
 
-  it('should render a number input', () => {
+  it('should forward any attributes', () => {
+    const { container } = render(<TextInput {...baseProps} foo="bar" />);
+    expect(container.querySelector('input')).toHaveAttribute('foo', 'bar');
+  });
+
+  it('should render a text input', () => {
     const { container } = render(<TextInput {...baseProps} />);
     expect(container.querySelector('input')).toHaveAttribute('type', 'text');
   });
@@ -56,7 +61,7 @@ describe('TextInput', () => {
   });
 
   it('should have ARIA properties for the readonly state', () => {
-    const { container } = render(<TextInput {...baseProps} isReadOnly />);
+    const { container } = render(<TextInput {...baseProps} readOnly />);
     expect(container.querySelector('input')).toHaveAttribute(
       'aria-readonly',
       'true'
@@ -82,28 +87,8 @@ describe('TextInput', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('should call onFocus when the input is focused', () => {
-    const onFocus = jest.fn();
-    const { container } = render(
-      <TextInput {...baseProps} onFocus={onFocus} />
-    );
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-  });
-
-  it('should call onBlur when input loses focus', () => {
-    const onFocus = jest.fn();
-    const { container } = render(
-      <TextInput {...baseProps} onFocus={onFocus} />
-    );
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
-  });
-
-  it('should have focus automatically when isAutofocussed is passed', () => {
-    const { container } = render(<TextInput {...baseProps} isAutofocussed />);
+  it('should have focus automatically when autoFocus is passed', () => {
+    const { container } = render(<TextInput {...baseProps} autoFocus />);
     expect(container.querySelector('input')).toHaveFocus();
   });
 });

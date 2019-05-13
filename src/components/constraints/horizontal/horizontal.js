@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const getConstraintSyles = constraint => {
+export const getConstraintSyles = constraint => {
   switch (constraint) {
     case 'xs':
       return css`
