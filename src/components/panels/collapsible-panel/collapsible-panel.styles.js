@@ -98,6 +98,13 @@ const getHeaderStyles = ({ isDisabled, isCondensed }) => {
       css`
         cursor: default;
       `,
+      !isCondensed &&
+        css`
+          /**
+           We set a min-height of 32px to anticipate use-cases where SecondaryButton or PrimaryButton
+           are rendered in the headerControl */
+          min-height: ${vars.spacingXl};
+        `,
     ];
   }
   return [
