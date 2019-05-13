@@ -13,7 +13,7 @@
 
 ### Refactoring
 
-- Various dependency updates
+- Various dependency updates ([#762](https://github.com/commercetools/ui-kit/pull/762))
 
 <a name="9.5.0"></a>
 
