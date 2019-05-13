@@ -79,7 +79,7 @@ storiesOf('Components|Grid', module)
                 ' is the most powerful layout system available in CSS. It is a 2-dimensional system, meaning it can handle both columns and rows, unlike flexbox which is largely a 1-dimensional system. You work with Grid Layout by applying CSS rules both to a parent element (which becomes the Grid Container) and to that elements children (which become Grid Items).'
               }
             </Text.Body>
-            <Text.Headline elementType="h3">{'Getting started'}</Text.Headline>
+            <Text.Headline as="h3">{'Getting started'}</Text.Headline>
             <Text.Body>
               {
                 'In the Knobs section on the right panel, you can see all the supported CSS Grid properties, both for the parent container and for the children elements (items).'

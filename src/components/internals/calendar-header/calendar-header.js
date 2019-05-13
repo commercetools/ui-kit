@@ -33,7 +33,7 @@ const CalendarHeader = props => (
         onClick={props.onNextMonthClick}
         icon={<AngleRightIcon size="medium" />}
       />
-      <Text.Body isInline={true} isBold={true}>
+      <Text.Body as="span" isBold={true}>
         {props.monthLabel}
       </Text.Body>
     </Spacings.Inline>

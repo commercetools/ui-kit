@@ -3,7 +3,7 @@ import React from 'react';
 import Text from '../../typography/text';
 
 const CollapsiblePanelHeader = props => (
-  <Text.Subheadline elementType="h4" isBold={true} truncate={true}>
+  <Text.Subheadline as="h4" isBold={true} truncate={true}>
     {props.children}
   </Text.Subheadline>
 );

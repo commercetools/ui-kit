@@ -46,7 +46,7 @@ storiesOf('Components|Spacings', module)
         {sizes.map(size => (
           <StackColorWrapper key={size.name}>
             <Inset scale="m">
-              <Text.Subheadline elementType="h4">
+              <Text.Subheadline as="h4">
                 {size.name.toUpperCase()}
                 <Text.Detail>{size.pixels}</Text.Detail>
               </Text.Subheadline>
