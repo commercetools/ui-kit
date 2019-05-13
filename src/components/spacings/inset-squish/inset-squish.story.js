@@ -54,7 +54,7 @@ storiesOf('Components|Spacings', module)
             <InsetColorWrapper key={size.name}>
               <InsetSquish scale={size.name}>
                 <Button>
-                  <Text.Subheadline elementType="h4">
+                  <Text.Subheadline as="h4">
                     {size.name.toUpperCase()}
                     <Text.Detail>{size.pixels}</Text.Detail>
                   </Text.Subheadline>

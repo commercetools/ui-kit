@@ -56,7 +56,7 @@ const CalendarHeader = props => (
           icon={<AngleRightIcon size="medium" />}
         />
       </Tooltip>
-      <Text.Body isInline={true} isBold={true}>
+      <Text.Body as="span" isBold={true}>
         {props.monthLabel}
       </Text.Body>
     </Spacings.Inline>
