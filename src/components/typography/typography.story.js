@@ -18,7 +18,7 @@ storiesOf('Basics|Typography/Text', module)
   .add('Headline', () => (
     <Section>
       <Text.Headline
-        elementType={select('Element type', ['h1', 'h2', 'h3'], 'h1')}
+        as={select('as', ['h1', 'h2', 'h3'], 'h1')}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
       >
@@ -29,7 +29,7 @@ storiesOf('Basics|Typography/Text', module)
   .add('Subheadline', () => (
     <Section>
       <Text.Subheadline
-        elementType={select('Element type', ['h4', 'h5'], 'h4')}
+        as={select('as', ['h4', 'h5'], 'h4')}
         isBold={boolean('bold', false)}
         tone={select('Text tone', {
           none: null,
@@ -63,8 +63,12 @@ storiesOf('Basics|Typography/Text', module)
   .add('Body', () => (
     <Section>
       <Text.Body
+        as={select('as', {
+          default: null,
+          p: 'p',
+          span: 'span',
+        })}
         isBold={boolean('bold', false)}
-        isInline={boolean('inline', false)}
         isItalic={boolean('italic', false)}
         tone={select('Text tone', {
           none: null,

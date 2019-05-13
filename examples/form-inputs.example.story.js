@@ -576,7 +576,7 @@ const Story = injectIntl(props => {
             }}
             render={formik => (
               <Spacings.Stack scale="l">
-                <Text.Headline elementType="h2">The form</Text.Headline>
+                <Text.Headline as="h2">The form</Text.Headline>
                 <div>
                   <ProductForm
                     formik={formik}

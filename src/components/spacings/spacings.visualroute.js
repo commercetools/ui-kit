@@ -113,7 +113,7 @@ const StackExample = ({ alignItems }) => (
     {sizes.map(size => (
       <StackColorWrapper key={size.name}>
         <Spacings.Inset scale="m">
-          <Text.Subheadline elementType="h4">
+          <Text.Subheadline as="h4">
             {size.name.toUpperCase()}
             <Text.Detail>{size.pixels}</Text.Detail>
           </Text.Subheadline>
@@ -145,7 +145,7 @@ const InlineExample = ({ alignItems }) => (
         <InlineColorWrapper>
           <Scale>
             <Spacings.Inset scale="s" alignItems="center">
-              <Text.Subheadline elementType="h4">
+              <Text.Subheadline as="h4">
                 {size.name.toUpperCase()}
                 <Text.Detail>{size.pixels}</Text.Detail>
               </Text.Subheadline>
@@ -189,7 +189,7 @@ export const component = () => (
             <InsetColorWrapper key={size.name}>
               <Spacings.Inset scale={size.name}>
                 <Square>
-                  <Text.Subheadline elementType="h4">
+                  <Text.Subheadline as="h4">
                     {size.name.toUpperCase()}
                     <Text.Detail>{size.pixels}</Text.Detail>
                   </Text.Subheadline>
@@ -207,7 +207,7 @@ export const component = () => (
             <InsetSquishColorWrapper key={size.name}>
               <Spacings.InsetSquish scale={size.name}>
                 <Button>
-                  <Text.Subheadline elementType="h4">
+                  <Text.Subheadline as="h4">
                     {size.name.toUpperCase()}
                     <Text.Detail>{size.pixels}</Text.Detail>
                   </Text.Subheadline>

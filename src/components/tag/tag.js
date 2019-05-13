@@ -47,6 +47,10 @@ const getContentWrapperStyles = (props, theme) => {
 
     /* fixing things for IE11 ... */
     width: 100%;
+
+    small {
+      color: ${getTextDetailColor(props.isDisabled, theme)};
+    }
   `;
 };
 
@@ -126,22 +130,10 @@ export const TagLinkBody = props => {
             text-decoration: none;
           `}
         >
-          <Text.Detail
-            css={theme => css`
-              color: ${getTextDetailColor(props.isDisabled, theme)};
-            `}
-          >
-            {props.children}
-          </Text.Detail>
+          <Text.Detail>{props.children}</Text.Detail>
         </Link>
       ) : (
-        <Text.Detail
-          css={theme => css`
-            color: ${getTextDetailColor(props.isDisabled, theme)};
-          `}
-        >
-          {props.children}
-        </Text.Detail>
+        <Text.Detail>{props.children}</Text.Detail>
       )}
     </div>
   );
@@ -196,13 +188,7 @@ export const TagNormalBody = props => (
     ]}
     onClick={props.isDisabled ? undefined : props.onClick}
   >
-    <Text.Detail
-      css={theme => css`
-        color: ${getTextDetailColor(props.isDisabled, theme)};
-      `}
-    >
-      {props.children}
-    </Text.Detail>
+    <Text.Detail>{props.children}</Text.Detail>
   </div>
 );
 TagNormalBody.displayName = 'TagNormalBody';

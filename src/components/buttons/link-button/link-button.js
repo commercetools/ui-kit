@@ -51,7 +51,7 @@ const LinkBody = props => (
         size: 'medium',
         color: props.isDisabled ? 'neutral60' : 'primary',
       })}
-    <Text.Body isInline={true}>{props.label}</Text.Body>
+    <Text.Body as="span">{props.label}</Text.Body>
   </Spacings.Inline>
 );
 
