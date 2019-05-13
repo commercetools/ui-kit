@@ -53,5 +53,6 @@ export const getBodyStyles = ({ constraint, placement, customStyles }) => ({
   maxWidth: getMaxWidth({ constraint }),
   // so hovering over the tooltip when the tooltip overlaps the component
   pointerEvents: 'none',
+  zIndex: 1,
   ...customStyles,
 });
