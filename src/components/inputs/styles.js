@@ -40,7 +40,7 @@ const getInputStyles = (props, theme) => {
       ]};
     }
   `;
-  if (props.isDisabled) {
+  if (props.disabled || props.isDisabled) {
     return [
       baseStyles,
       css`
@@ -71,15 +71,14 @@ const getInputStyles = (props, theme) => {
     return [
       baseStyles,
       css`
-      ${baseStyles}
-      border-color: ${
-        overwrittenVars[designTokens.borderColorForInputWhenWarning]
-      };
-      color: ${overwrittenVars[designTokens.fontColorForInputWhenWarning]};
-    `,
+        border-color: ${overwrittenVars[
+          designTokens.borderColorForInputWhenWarning
+        ]};
+        color: ${overwrittenVars[designTokens.fontColorForInputWhenWarning]};
+      `,
     ];
   }
-  if (props.isReadOnly) {
+  if (props.readOnly || props.isReadOnly) {
     return [
       baseStyles,
       css`

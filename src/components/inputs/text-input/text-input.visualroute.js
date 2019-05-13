@@ -19,7 +19,7 @@ export const component = () => (
     </Spec>
     <Spec label="when disabled">
       <TextInput
-        isDisabled={true}
+        disabled={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -27,7 +27,7 @@ export const component = () => (
     </Spec>
     <Spec label="when read-only">
       <TextInput
-        isReadOnly={true}
+        readOnly={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -43,7 +43,7 @@ export const component = () => (
     </Spec>
     <Spec label="when placeholder is visible and input is disabled">
       <TextInput
-        isDisabled={true}
+        disabled={true}
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
@@ -80,7 +80,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        isDisabled={true}
+        disabled={true}
         hasError={true}
       />
     </Spec>
@@ -89,7 +89,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
-        isDisabled={true}
+        disabled={true}
         hasWarning={true}
       />
     </Spec>
