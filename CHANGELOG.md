@@ -9,7 +9,7 @@
 
 ### Features
 
-- `Link`: new component component. ([#755](https://github.com/commercetools/ui-kit/issues/755)) ([af7e144](https://github.com/commercetools/ui-kit/commit/af7e144))
+- `Link`: new component. ([#755](https://github.com/commercetools/ui-kit/issues/755)) ([af7e144](https://github.com/commercetools/ui-kit/commit/af7e144))
 
 ### Refactoring
 
