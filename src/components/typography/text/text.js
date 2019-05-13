@@ -4,8 +4,9 @@ import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
 import isNil from 'lodash/isNil';
 import { oneLine } from 'common-tags';
-import warning from 'warning';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
+
 import {
   bodyStyles,
   detailStyles,
@@ -54,11 +55,11 @@ Headline.propTypes = {
   ),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
-      const message = oneLine`
-            "${propName}" property of "${componentName}" has been deprecated
-            and will be removed in the next major version.\n
-            Please use "as" prop instead.`;
-      warning(false, message);
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "as" prop instead.`
+      );
 
       if (props.as) {
         return new Error(oneLine`
@@ -108,11 +109,11 @@ Subheadline.propTypes = {
   as: requiredIf(PropTypes.oneOf(['h4', 'h5']), props => !props.elementType),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
-      const message = oneLine`
-            "${propName}" property of "${componentName}" has been deprecated
-            and will be removed in the next major version.\n
-            Please use "as" prop instead.`;
-      warning(false, message);
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "as" prop instead.`
+      );
 
       if (props.as) {
         return new Error(oneLine`
@@ -218,11 +219,11 @@ Body.propTypes = {
   isItalic: PropTypes.bool,
   isInline(props, propName, componentName, ...rest) {
     if (!isNil(props[propName])) {
-      const message = oneLine`
-            "${propName}" property of "${componentName}" has been deprecated
-            and will be removed in the next major version.\n
-            Please use "as" prop instead.`;
-      warning(false, message);
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "as" prop instead.`
+      );
 
       if (props.as) {
         return new Error(oneLine`
