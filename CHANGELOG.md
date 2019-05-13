@@ -1,3 +1,11 @@
+<a name="9.6.1"></a>
+
+# [9.6.1](https://github.com/commercetools/ui-kit/compare/v9.6.0...v9.6.1) (2019-05-13)
+
+### Bug Fixes
+
+- `Tooltip`: z-index fix ([#765](https://github.com/commercetools/ui-kit/issues/765)) ([9390f71](https://github.com/commercetools/ui-kit/commit/9390f71))
+
 <a name="9.6.0"></a>
 
 # [9.6.0](https://github.com/commercetools/ui-kit/compare/v9.5.0...v9.6.0) (2019-05-13)
