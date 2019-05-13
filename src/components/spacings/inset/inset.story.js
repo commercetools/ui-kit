@@ -53,7 +53,7 @@ storiesOf('Components|Spacings', module)
             <InsetColorWrapper key={size.name}>
               <Inset scale={size.name}>
                 <Square>
-                  <Text.Subheadline elementType="h4">
+                  <Text.Subheadline as="h4">
                     {size.name.toUpperCase()}
                     <Text.Detail>{size.pixels}</Text.Detail>
                   </Text.Subheadline>
