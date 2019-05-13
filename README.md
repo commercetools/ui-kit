@@ -52,7 +52,7 @@ You will need a [postcss-import](https://github.com/postcss/postcss-import) plug
 @import '@commercetools-frontend/ui-kit/materials/custom-properties.css';
 
 .container {
-  padding: var(--spacing-8);
+  padding: var(--spacing-l);
 }
 ```
 
@@ -68,7 +68,7 @@ The ui-kit css variables can also be injected using [postcss-custom-properties](
 ```css
 /* no import required! */
 .container {
-  padding: var(--spacing-8);
+  padding: var(--spacing-l);
 }
 ```
 
