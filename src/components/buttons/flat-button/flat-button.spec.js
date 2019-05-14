@@ -9,10 +9,6 @@ const createTestProps = props => ({
   onClick: jest.fn(),
   icon: <PlusThinIcon size="medium" data-testid="icon" />,
   isDisabled: false,
-  // HOC
-  isMouseOver: false,
-  handleMouseOver: jest.fn(),
-  handleMouseOut: jest.fn(),
   ...props,
 });
 
