@@ -18,7 +18,7 @@ const getCheckboxWrapperStyles = (props, theme) => {
       fill: ${overwrittenVars[designTokens.borderColorForInputWhenFocused]};
     }
   `;
-  if (props.isDisabled) {
+  if (props.disabled || props.isDisabled) {
     return [
       baseStyles,
       css`
@@ -47,7 +47,11 @@ const getCheckboxWrapperStyles = (props, theme) => {
       `,
     ];
   }
-  if (props.isHovered && !props.isDisabled && !props.hasError) {
+  if (
+    props.isHovered &&
+    (!props.disabled || !props.isDisabled) &&
+    !props.hasError
+  ) {
     return [
       baseStyles,
       css`
