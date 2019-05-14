@@ -23,7 +23,13 @@ export const component = ({ themes }) => (
       />
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme" />
+      <Spec label="with custom (dark) theme">
+        <SecondaryIconButton
+          icon={<InformationIcon />}
+          label="A label text"
+          onClick={() => {}}
+        />
+      </Spec>
     </ThemeProvider>
   </Suite>
 );
