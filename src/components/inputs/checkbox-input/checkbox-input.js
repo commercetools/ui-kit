@@ -98,15 +98,15 @@ class CheckboxInput extends React.PureComponent {
   });
 
   render() {
-    const disabled = this.props.disabled || this.props.isDisabled;
+    const checkboxProps = getCheckboxProps(this.props);
 
     return (
       <Label
         htmlFor={this.state.id}
-        disabled={disabled}
+        disabled={checkboxProps.disabled}
         hasError={this.props.hasError}
       >
-        <Checkbox id={this.state.id} {...getCheckboxProps(this.props)} />
+        <Checkbox id={this.state.id} {...checkboxProps} />
         <Spacings.Inline alignItems="center" scale="s">
           <div css={theme => getCheckboxWrapperStyles(this.props, theme)}>
             {((
@@ -114,7 +114,7 @@ class CheckboxInput extends React.PureComponent {
             ) => {
               if (this.props.isIndeterminate)
                 return <Icons.Indeterminate {...iconAriaAttributes} />;
-              if (this.props.checked || this.props.isChecked)
+              if (checkboxProps.checked)
                 return <Icons.Checked {...iconAriaAttributes} />;
               return <Icons.Unchecked {...iconAriaAttributes} />;
             })()}
@@ -122,7 +122,7 @@ class CheckboxInput extends React.PureComponent {
           {this.props.children && (
             <Text.Body
               // FIXME: add proper tones when we have disabled/primary in tones
-              tone={disabled ? 'secondary' : undefined}
+              tone={checkboxProps.disabled ? 'secondary' : undefined}
             >
               {this.props.children}
             </Text.Body>
