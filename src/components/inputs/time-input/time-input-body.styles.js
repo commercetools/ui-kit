@@ -161,7 +161,7 @@ const getInputContainerStyles = (props, theme) => {
 
 const getTimeInputStyles = (props, theme) => {
   const overwrittenVars = {
-    ...props,
+    ...vars,
     ...theme,
   };
 
