@@ -4,8 +4,8 @@ import { css } from '@emotion/core';
 import { AngleDownIcon, AngleRightIcon } from '../../icons';
 import vars from '../../../../materials/custom-properties';
 
-const sizeIconContainer = '24px';
-const sizeIconContainerSmall = '16px';
+const sizeIconContainer = '22px';
+const sizeIconContainerSmall = '14px';
 
 const getArrowTheme = ({ tone, isDisabled }) => {
   if (isDisabled) return 'grey';
