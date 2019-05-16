@@ -13,52 +13,56 @@ const getArrowTheme = ({ tone, isDisabled }) => {
   return 'black';
 };
 
-const HeaderIcon = props => (
-  <div
-    css={[
-      css`
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: ${props.size === 'small'
-          ? sizeIconContainerSmall
-          : sizeIconContainer};
-        width: ${props.size === 'small'
-          ? sizeIconContainerSmall
-          : sizeIconContainer};
-        border-radius: 50%;
-        flex-shrink: 0;
-        box-shadow: ${vars.shadow7};
-        background-color: ${props.tone === 'urgent'
-          ? vars.colorWarning
-          : vars.colorSurface};
-      `,
-      props.isDisabled &&
+const HeaderIcon = props => {
+  const backgroundColor =
+    props.tone === 'urgent' ? vars.colorWarning : vars.colorSurface;
+  return (
+    <div
+      css={[
         css`
-          box-shadow: none;
-          background-color: ${vars.colorAccent98};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: ${props.size === 'small'
+            ? sizeIconContainerSmall
+            : sizeIconContainer};
+          width: ${props.size === 'small'
+            ? sizeIconContainerSmall
+            : sizeIconContainer};
+          border-radius: 50%;
+          flex-shrink: 0;
+          box-shadow: ${vars.shadow7};
+          background-color: ${backgroundColor};
+          border: 1px solid ${backgroundColor};
         `,
-    ]}
-  >
-    {props.isClosed ? (
-      <AngleRightIcon
-        theme={getArrowTheme({
-          tone: props.tone,
-          isDisabled: props.isDisabled,
-        })}
-        size={props.size}
-      />
-    ) : (
-      <AngleDownIcon
-        theme={getArrowTheme({
-          tone: props.tone,
-          isDisabled: props.isDisabled,
-        })}
-        size={props.size}
-      />
-    )}
-  </div>
-);
+        props.isDisabled &&
+          css`
+            box-shadow: none;
+            border: 1px solid ${vars.colorNeutral};
+            background-color: ${vars.colorAccent98};
+          `,
+      ]}
+    >
+      {props.isClosed ? (
+        <AngleRightIcon
+          theme={getArrowTheme({
+            tone: props.tone,
+            isDisabled: props.isDisabled,
+          })}
+          size={props.size}
+        />
+      ) : (
+        <AngleDownIcon
+          theme={getArrowTheme({
+            tone: props.tone,
+            isDisabled: props.isDisabled,
+          })}
+          size={props.size}
+        />
+      )}
+    </div>
+  );
+};
 
 HeaderIcon.displayName = 'HeaderIcon';
 HeaderIcon.propTypes = {
