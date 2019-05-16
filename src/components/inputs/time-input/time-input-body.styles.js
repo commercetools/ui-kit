@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 import designTokens from '../../../../materials/design-tokens';
 
@@ -8,10 +9,10 @@ import { getInputStyles } from '../styles';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = (props, theme) => {
+const getClearSectionStyles = props => {
   const overwrittenVars = {
     ...vars,
-    ...theme,
+    ...props.theme,
   };
 
   const baseIconStyles = css`
@@ -64,7 +65,6 @@ const getClearSectionStyles = (props, theme) => {
     return [
       baseIconStyles,
       css`
-        color: ${overwrittenVars[designTokens.fontColorForInputWhenError]};
         border-color: ${overwrittenVars[
           designTokens.borderColorForInputWhenError
         ]};
@@ -74,10 +74,10 @@ const getClearSectionStyles = (props, theme) => {
   return baseIconStyles;
 };
 
-const getClockIconContainerStyles = (props, theme) => {
+const getClockIconContainerStyles = props => {
   const overwrittenVars = {
     ...vars,
-    ...theme,
+    ...props.theme,
   };
 
   const baseIconStyles = css`
@@ -98,6 +98,7 @@ const getClockIconContainerStyles = (props, theme) => {
     border-bottom-right-radius: ${overwrittenVars[
       designTokens.borderRadiusForInput
     ]};
+    transition: ${overwrittenVars.transitionStandard};
   `;
   if (props.isDisabled) {
     return [
@@ -134,7 +135,6 @@ const getClockIconContainerStyles = (props, theme) => {
     return [
       baseIconStyles,
       css`
-        color: ${overwrittenVars[designTokens.fontColorFolorInputWhenError]};
         border-color: ${overwrittenVars[
           designTokens.borderColorForInputWhenError
         ]};
@@ -144,10 +144,10 @@ const getClockIconContainerStyles = (props, theme) => {
   return baseIconStyles;
 };
 
-const getInputContainerStyles = (props, theme) => {
+const getInputContainerStyles = props => {
   const overwrittenVars = {
-    ...props,
-    ...theme,
+    ...vars,
+    ...props.theme,
   };
 
   return css`
@@ -159,29 +159,26 @@ const getInputContainerStyles = (props, theme) => {
   `;
 };
 
-const getTimeInputStyles = (props, theme) => {
+const mapProps = props => {
+  return {
+    isDisabled: props.disabled,
+    isReadOnly: props.readOnly,
+    ...props,
+  };
+};
+
+const getTimeInputStyles = props => {
   const overwrittenVars = {
     ...vars,
-    ...theme,
+    ...props.theme,
   };
 
   return [
-    getInputStyles(props, theme),
+    getInputStyles(mapProps(props), props.theme),
     css`
       border-radius: ${overwrittenVars[designTokens.borderRadiusForInput]} 0 0
         ${overwrittenVars[designTokens.borderRadiusForInput]};
       border-right: none;
-
-      &:focus,
-      &:active,
-      &:focus + *,
-      &:active + * {
-        border-color: ${overwrittenVars[
-          designTokens.borderColorForInputWhenFocused
-        ]};
-        color: ${overwrittenVars[designTokens.fontColorForInput]};
-        transition: ${overwrittenVars.transitionStandard};
-      }
 
       &:disabled {
         cursor: not-allowed;
@@ -201,9 +198,65 @@ const getTimeInputStyles = (props, theme) => {
   ];
 };
 
+const getBorderColorWhenFocused = props => {
+  const overwrittenVars = {
+    ...vars,
+    ...props.theme,
+  };
+
+  return css`
+    transition: ${overwrittenVars.transitionStandard};
+    border-color: ${overwrittenVars[
+      designTokens.borderColorForInputWhenFocused
+    ]};
+  `;
+};
+
+const getClearSectionHoverStyles = props => {
+  const overwrittenVars = {
+    ...vars,
+    ...props.theme,
+  };
+
+  return css`
+    &:hover svg * {
+      fill: ${overwrittenVars.colorWarning};
+    }
+  `;
+};
+
+const StyledClearSection = styled.div`
+  ${getClearSectionStyles}
+
+  &:hover {
+    ${props =>
+      !props.isDisabled && !props.isReadOnly && getClearSectionHoverStyles}
+  }
+`;
+
+const StyledClockIconContainer = styled.label`
+  ${getClockIconContainerStyles}
+`;
+
+const StyledInput = styled.input`
+  ${getTimeInputStyles}
+
+  &:focus + ${StyledClearSection}, &:focus + ${StyledClearSection} + ${StyledClockIconContainer} {
+     ${props => !props.disabled && getBorderColorWhenFocused}
+  }
+`;
+
+const StyledInputContainer = styled.div`
+  ${getInputContainerStyles}
+
+  &:hover ${StyledInput}, &:hover ${StyledClearSection}, &:hover ${StyledClockIconContainer} {
+    ${props => !props.isDisabled && getBorderColorWhenFocused}
+  }
+`;
+
 export {
-  getClearSectionStyles,
-  getInputContainerStyles,
-  getTimeInputStyles,
-  getClockIconContainerStyles,
+  StyledClearSection,
+  StyledInput,
+  StyledInputContainer,
+  StyledClockIconContainer,
 };
