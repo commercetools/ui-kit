@@ -80,6 +80,7 @@ import OrigPagesIcon from './svg/pages.react.svg';
 import OrigPaperBillInvertedIcon from './svg/paper-bill-inverted.react.svg';
 import OrigPaperclipIcon from './svg/paperclip.react.svg';
 import OrigPinFilledIcon from './svg/pin-filled.react.svg';
+import OrigPinGearIcon from './svg/pin-gear.react.svg';
 import OrigPinLinearIcon from './svg/pin-linear.react.svg';
 import OrigPluginIcon from './svg/plugin.react.svg';
 import OrigPlusBoldIcon from './svg/plus-bold.react.svg';
@@ -297,6 +298,7 @@ export const PinFilledIcon = createStyledIcon(
   OrigPinFilledIcon,
   'PinFilledIcon'
 );
+export const PinGearIcon = createStyledIcon(OrigPinGearIcon, 'PinGearIcon');
 export const PinLinearIcon = createStyledIcon(
   OrigPinLinearIcon,
   'PinLinearIcon'
