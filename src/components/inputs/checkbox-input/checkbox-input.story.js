@@ -17,19 +17,19 @@ storiesOf('Components|Inputs', module)
       <Spacings.Stack>
         <Value
           defaultValue={false}
-          render={(isChecked, onChange) => (
+          render={(checked, onChange) => (
             <CheckboxInput
               id={text('id', '')}
               name={text('name', '')}
               onChange={event => {
                 action('onChange')(event);
-                onChange(!isChecked);
+                onChange(!checked);
               }}
               value={text('value', '')}
-              isChecked={boolean('isChecked', isChecked)}
+              checked={boolean('checked', checked)}
               isIndeterminate={boolean('isIndeterminate', false)}
               isHovered={boolean('isHovered', false)}
-              isDisabled={boolean('isDisabled', false)}
+              disabled={boolean('disabled', false)}
               hasError={boolean('hasError', false)}
             >
               {text('Label', 'This is a label')}

@@ -6,7 +6,7 @@ jest.mock('tiny-invariant');
 
 it('should render the label', () => {
   const { getByLabelText } = render(
-    <CheckboxInput onChange={() => {}} isChecked={false}>
+    <CheckboxInput onChange={() => {}} checked={false}>
       Accept Terms
     </CheckboxInput>
   );
@@ -16,7 +16,7 @@ it('should render the label', () => {
 it('should call onChange when text is clicked', () => {
   const onChange = jest.fn();
   const { getByLabelText } = render(
-    <CheckboxInput onChange={onChange} isChecked={false}>
+    <CheckboxInput onChange={onChange} checked={false}>
       Accept Terms
     </CheckboxInput>
   );
@@ -27,7 +27,7 @@ it('should call onChange when text is clicked', () => {
 it('should not call onChange when text is clicked while disabled', () => {
   const onChange = jest.fn();
   const { getByLabelText } = render(
-    <CheckboxInput onChange={onChange} isChecked={false} isDisabled={true}>
+    <CheckboxInput onChange={onChange} checked={false} disabled={true}>
       Accept Terms
     </CheckboxInput>
   );
@@ -40,7 +40,7 @@ it('should call onChange when outside label is clicked', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="checkbox">Checkbox</label>
-      <CheckboxInput onChange={onChange} isChecked={false} id="checkbox">
+      <CheckboxInput onChange={onChange} checked={false} id="checkbox">
         Accept Terms
       </CheckboxInput>
     </div>
@@ -55,35 +55,17 @@ it('should call onChange when outside label is clicked', () => {
 it('should forward data attributes', () => {
   const onChange = jest.fn();
   const { container } = render(
-    <CheckboxInput onChange={onChange} isChecked={false} data-foo="bar">
+    <CheckboxInput onChange={onChange} checked={false} data-foo="bar">
       Accept Terms
     </CheckboxInput>
   );
   expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
 });
 
-it('should check the input when isChecked is "true"', () => {
-  const { getByLabelText } = render(
-    <CheckboxInput onChange={() => {}} isChecked={true}>
-      Accept Terms
-    </CheckboxInput>
-  );
-  expect(getByLabelText('Accept Terms')).toHaveAttribute('checked');
-});
-
-it('should not check the input when isChecked is "false"', () => {
-  const { getByLabelText } = render(
-    <CheckboxInput onChange={() => {}} isChecked={false}>
-      Accept Terms
-    </CheckboxInput>
-  );
-  expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
-});
-
 it('should allow changing the checked state', () => {
   const onChange = jest.fn();
   const { getByLabelText, rerender } = render(
-    <CheckboxInput onChange={onChange} isChecked={false}>
+    <CheckboxInput onChange={onChange} checked={false}>
       Accept Terms
     </CheckboxInput>
   );
@@ -95,7 +77,7 @@ it('should allow changing the checked state', () => {
   // simulate onChange function updating the state in the parent and passing
   // a new state down
   rerender(
-    <CheckboxInput onChange={onChange} isChecked={true}>
+    <CheckboxInput onChange={onChange} checked={true}>
       Accept Terms
     </CheckboxInput>
   );
@@ -107,13 +89,9 @@ it('should allow changing the checked state', () => {
 });
 
 describe('when indeterminate', () => {
-  it('should not check the input when isChecked is "false"', () => {
+  it('should not check the input when checked is "false"', () => {
     const { getByLabelText } = render(
-      <CheckboxInput
-        onChange={() => {}}
-        isChecked={false}
-        isIndeterminate={true}
-      >
+      <CheckboxInput onChange={() => {}} checked={false} isIndeterminate={true}>
         Accept Terms
       </CheckboxInput>
     );
@@ -121,16 +99,57 @@ describe('when indeterminate', () => {
   });
 
   // The input is always unchecked when the state is indeterminate!
-  it('should not check the input when isChecked is "true"', () => {
+  it('should not check the input when checked is "true"', () => {
     const { getByLabelText } = render(
-      <CheckboxInput
-        onChange={() => {}}
-        isChecked={true}
-        isIndeterminate={true}
-      >
+      <CheckboxInput onChange={() => {}} checked={true} isIndeterminate={true}>
         Accept Terms
       </CheckboxInput>
     );
     expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
+  });
+});
+
+describe('WAI-ARIA', () => {
+  it('should have attribute "role" set to "checkbox"', () => {
+    const { getByLabelText } = render(
+      <CheckboxInput onChange={() => {}}>Accept Terms</CheckboxInput>
+    );
+    expect(getByLabelText('Accept Terms')).toHaveAttribute('role', 'checkbox');
+  });
+
+  it('should have attribute "aria-checked" set to "checked" when checked is "true"', () => {
+    const { getByLabelText } = render(
+      <CheckboxInput onChange={() => {}} checked={true}>
+        Accept Terms
+      </CheckboxInput>
+    );
+    expect(getByLabelText('Accept Terms')).toHaveAttribute(
+      'aria-checked',
+      'true'
+    );
+  });
+
+  it('should have attribute "aria-checked" set to "false" when checked is "false"', () => {
+    const { getByLabelText } = render(
+      <CheckboxInput onChange={() => {}} checked={false}>
+        Accept Terms
+      </CheckboxInput>
+    );
+    expect(getByLabelText('Accept Terms')).toHaveAttribute(
+      'aria-checked',
+      'false'
+    );
+  });
+
+  it('should have attribute "aria-checked" set to "mixed" when isIndeterminate is "true"', () => {
+    const { getByLabelText } = render(
+      <CheckboxInput onChange={() => {}} isIndeterminate={true}>
+        Accept Terms
+      </CheckboxInput>
+    );
+    expect(getByLabelText('Accept Terms')).toHaveAttribute(
+      'aria-checked',
+      'mixed'
+    );
   });
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import omit from 'lodash/omit';
 import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import vars from '../../../../materials/custom-properties';
 
@@ -11,6 +12,12 @@ const Input = styled.input`
   }
 `;
 
+const getAriaChecked = (checked, isIndeterminate) => {
+  if (isIndeterminate) return 'mixed';
+  if (checked) return 'true';
+  return 'false';
+};
+
 class Checkbox extends React.Component {
   static displayName = 'Checkbox';
 
@@ -18,10 +25,10 @@ class Checkbox extends React.Component {
     id: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string,
-    isChecked: PropTypes.bool,
-    isIndeterminate: PropTypes.bool,
+    checked: PropTypes.bool,
+    disabled: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
-    isDisabled: PropTypes.bool,
+    isIndeterminate: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -41,15 +48,18 @@ class Checkbox extends React.Component {
   render() {
     return (
       <Input
-        css={accessibleHiddenInputStyles}
-        id={this.props.id}
-        name={this.props.name}
-        value={this.props.value}
-        disabled={this.props.isDisabled}
-        checked={this.props.isChecked && !this.props.isIndeterminate}
-        onChange={this.props.onChange}
         ref={this.ref}
-        {...this.props}
+        css={accessibleHiddenInputStyles}
+        type="checkbox"
+        checked={this.props.checked && !this.props.isIndeterminate}
+        // WAI-ARIA
+        role="checkbox"
+        aria-checked={getAriaChecked(
+          this.props.checked,
+          this.props.isIndeterminate
+        )}
+        // The 'checked' prop is omitted because it would override the logic for the same prop above
+        {...omit(this.props, ['isIndeterminate', 'checked'])}
       />
     );
   }
