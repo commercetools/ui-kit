@@ -37,6 +37,11 @@ const HeaderIcon = props => (
         css`
           box-shadow: none;
         `,
+      props.isDisabled &&
+        props.tone !== 'urgent' &&
+        css`
+          background-color: ${vars.colorAccent98};
+        `,
     ]}
   >
     {props.isClosed ? (
