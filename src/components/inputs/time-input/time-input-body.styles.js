@@ -174,7 +174,7 @@ const getTimeInputStyles = props => {
     ...vars,
     ...props.theme,
   };
-  console.log('here', mapProps(props));
+
   return [
     getInputStyles(mapProps(props), props.theme),
     css`
@@ -200,15 +200,6 @@ const getTimeInputStyles = props => {
   ];
 };
 
-/*
-
-const getIconTheme = (isDisabled, isMouseOver) => {
-  if (isDisabled) return 'grey';
-  if (isMouseOver) return 'orange';
-  return 'black';
-};
-*/
-
 const getBorderColorWhenFocused = props => {
   const overwrittenVars = {
     ...vars,
@@ -229,8 +220,6 @@ const getClearSectionHoverStyles = props => {
     ...props.theme,
   };
 
-  if (props.isDisabled || props.isReadOnly) return css``;
-
   return css`
     &:hover svg * {
       fill: ${overwrittenVars.colorWarning};
@@ -240,6 +229,11 @@ const getClearSectionHoverStyles = props => {
 
 const StyledClearSection = styled.div`
   ${getClearSectionStyles}
+
+  &:hover {
+    ${props =>
+      !props.isDisabled && !props.isReadOnly && getClearSectionHoverStyles}
+  }
 `;
 
 const StyledClockIconContainer = styled.label`
@@ -268,17 +262,3 @@ export {
   StyledInputContainer,
   StyledClockIconContainer,
 };
-
-/*  :not(:disabled)&:focus + ${StyledClearSection}, :not(:disabled):&:hover + ${StyledClearSection} {
-    ${getBorderColorWhenFocused};
-  }
-
-  &:focus
-    + ${StyledClearSection}
-    + ${StyledClockIconContainer},
-    &:hover
-    + ${StyledClearSection}
-    + ${StyledClockIconContainer} {
-    ${getBorderColorWhenFocused};
-  }
-*/

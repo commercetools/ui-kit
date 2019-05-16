@@ -149,6 +149,7 @@ export class TimeInput extends React.Component {
           isAutofocussed={this.props.isAutofocussed}
           isDisabled={this.props.isDisabled}
           isReadOnly={this.props.isReadOnly}
+          hasError={this.props.hasError}
           onClear={() => this.emitChange('')}
           placeholder={
             typeof this.props.placeholder === 'string'

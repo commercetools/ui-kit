@@ -9,7 +9,6 @@ import {
   StyledInput,
   StyledInputContainer,
 } from './time-input-body.styles';
-import { getInputStyles } from '../styles';
 
 const getIconTheme = (isDisabled, isMouseOver) => {
   if (isDisabled) return 'grey';
@@ -21,6 +20,7 @@ export const ClearSection = props => (
   <StyledClearSection
     onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
     isReadOnly={props.isReadOnly}
+    hasError={props.hasError}
     isDisabled={props.isDisabled}
   >
     {!props.isDisabled && (
@@ -62,7 +62,6 @@ export default class TimeInputBody extends React.Component {
   };
 
   render() {
-    console.log('here', getInputStyles);
     return (
       <Spacings.Inline alignItems="center">
         <StyledInputContainer
@@ -99,7 +98,7 @@ export default class TimeInputBody extends React.Component {
             data-toggle
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
-            hasError={this.props.isReadOnly}
+            hasError={this.props.hasError}
           >
             <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
           </StyledClockIconContainer>
