@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import { ClockIcon, CloseIcon } from '../../icons';
 import Spacings from '../../spacings';
 import {
-  getClearSectionStyles,
-  getClockIconContainerStyles,
-  getTimeInputStyles,
-  getInputContainerStyles,
+  StyledClearSection,
+  StyledClockIconContainer,
+  StyledInput,
+  StyledInputContainer,
 } from './time-input-body.styles';
+import { getInputStyles } from '../styles';
 
 const getIconTheme = (isDisabled, isMouseOver) => {
   if (isDisabled) return 'grey';
@@ -18,11 +18,10 @@ const getIconTheme = (isDisabled, isMouseOver) => {
 };
 
 export const ClearSection = props => (
-  <div
+  <StyledClearSection
     onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
-    css={theme => getClearSectionStyles(props, theme)}
-    onMouseOver={props.handleMouseOver}
-    onMouseOut={props.handleMouseOut}
+    isReadOnly={props.isReadOnly}
+    isDisabled={props.isDisabled}
   >
     {!props.isDisabled && (
       <CloseIcon
@@ -30,8 +29,9 @@ export const ClearSection = props => (
         theme={getIconTheme(props.isDisabled, props.isMouseOver)}
       />
     )}
-  </div>
+  </StyledClearSection>
 );
+
 ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
   isDisabled: PropTypes.bool,
@@ -39,13 +39,7 @@ ClearSection.propTypes = {
   hasError: PropTypes.bool,
   isMouseOver: PropTypes.bool.isRequired,
   onClear: PropTypes.func,
-
-  // HoC
-  handleMouseOut: PropTypes.func.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
 };
-
-export const ClearSectionWithMouseOverState = withMouseOverState(ClearSection);
 
 export default class TimeInputBody extends React.Component {
   static displayName = 'TimeInputBody';
@@ -68,14 +62,17 @@ export default class TimeInputBody extends React.Component {
   };
 
   render() {
+    console.log('here', getInputStyles);
     return (
       <Spacings.Inline alignItems="center">
-        <div css={getInputContainerStyles()}>
-          <input
+        <StyledInputContainer
+          isDisabled={this.props.isDisabled}
+          isReadOnly={this.props.isReadOnly}
+        >
+          <StyledInput
             id={this.props.id}
             name={this.props.name}
             autoComplete={this.props.autoComplete}
-            css={theme => getTimeInputStyles(this.props, theme)}
             placeholder={this.props.placeholder}
             autoFocus={this.props.isAutofocussed}
             disabled={this.props.isDisabled}
@@ -84,26 +81,29 @@ export default class TimeInputBody extends React.Component {
             onChange={this.props.onChange}
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
+            hasError={this.props.hasError}
             {...filterDataAttributes(this.props)}
             /* ARIA */
             role="textbox"
             aria-readonly={this.props.isReadOnly}
             contentEditable={!this.props.isReadOnly}
           />
-          <ClearSectionWithMouseOverState
+          <ClearSection
             isDisabled={this.props.isDisabled}
             hasError={this.props.hasError}
             isReadOnly={this.props.isReadOnly}
             onClear={this.props.onClear}
           />
-          <label
+          <StyledClockIconContainer
             htmlFor={this.props.id}
             data-toggle
-            css={theme => getClockIconContainerStyles(this.props, theme)}
+            isDisabled={this.props.isDisabled}
+            isReadOnly={this.props.isReadOnly}
+            hasError={this.props.isReadOnly}
           >
             <ClockIcon theme={this.props.isDisabled ? 'grey' : 'black'} />
-          </label>
-        </div>
+          </StyledClockIconContainer>
+        </StyledInputContainer>
       </Spacings.Inline>
     );
   }
