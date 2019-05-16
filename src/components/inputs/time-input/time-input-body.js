@@ -10,12 +10,6 @@ import {
   StyledInputContainer,
 } from './time-input-body.styles';
 
-const getIconTheme = (isDisabled, isMouseOver) => {
-  if (isDisabled) return 'grey';
-  if (isMouseOver) return 'orange';
-  return 'black';
-};
-
 export const ClearSection = props => (
   <StyledClearSection
     onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
@@ -23,12 +17,7 @@ export const ClearSection = props => (
     hasError={props.hasError}
     isDisabled={props.isDisabled}
   >
-    {!props.isDisabled && (
-      <CloseIcon
-        size="medium"
-        theme={getIconTheme(props.isDisabled, props.isMouseOver)}
-      />
-    )}
+    {!props.isDisabled && <CloseIcon size="medium" />}
   </StyledClearSection>
 );
 
@@ -37,7 +26,6 @@ ClearSection.propTypes = {
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
-  isMouseOver: PropTypes.bool.isRequired,
   onClear: PropTypes.func,
 };
 

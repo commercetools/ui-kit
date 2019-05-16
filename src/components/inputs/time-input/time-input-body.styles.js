@@ -65,7 +65,6 @@ const getClearSectionStyles = props => {
     return [
       baseIconStyles,
       css`
-        color: ${overwrittenVars[designTokens.fontColorForInputWhenError]};
         border-color: ${overwrittenVars[
           designTokens.borderColorForInputWhenError
         ]};
@@ -136,7 +135,6 @@ const getClockIconContainerStyles = props => {
     return [
       baseIconStyles,
       css`
-        color: ${overwrittenVars[designTokens.fontColorFolorInputWhenError]};
         border-color: ${overwrittenVars[
           designTokens.borderColorForInputWhenError
         ]};
