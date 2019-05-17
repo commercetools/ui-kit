@@ -4,7 +4,9 @@
 
 - `CheckboxInput`: hovered state when disabled ([#775](https://github.com/commercetools/ui-kit/issues/775)) ([670afe7](https://github.com/commercetools/ui-kit/commit/670afe7))
 - `CollapsiblePanel`: height of panel header while disabled ([#767](https://github.com/commercetools/ui-kit/issues/767)) ([549a0b9](https://github.com/commercetools/ui-kit/commit/549a0b9))
+- `CollapsiblePanel`: disabled state fix ([#777](https://github.com/commercetools/ui-kit/issues/777)) ([944740c](https://github.com/commercetools/ui-kit/commit/944740c))
 - `TimeInput`: border radius bug ([#773](https://github.com/commercetools/ui-kit/issues/773)) ([06e9420](https://github.com/commercetools/ui-kit/commit/06e9420))
+- `IconButton`: add border color ([#782](https://github.com/commercetools/ui-kit/issues/782)) ([57499e5](https://github.com/commercetools/ui-kit/commit/57499e5))
 
 ### Features
 
