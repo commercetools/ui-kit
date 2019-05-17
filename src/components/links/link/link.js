@@ -19,10 +19,11 @@ const createStyledComponent = component => Styled(component)`
 const StyledReactRouterLink = createStyledComponent(ReactRouterLink);
 const StyledExternalLink = createStyledComponent('a');
 
-const componentProps = ['isExternal', 'to'];
-
 const Link = props => {
-  const remainingProps = getPassThroughProps(props, componentProps);
+  const remainingProps = getPassThroughProps(
+    props,
+    Object.keys(Link.propTypes)
+  );
 
   if (props.isExternal) {
     return <StyledExternalLink href={props.to} {...remainingProps} />;

@@ -44,8 +44,6 @@ const createStyledComponent = component => styled(component)`
 const StyledReactRouterLink = createStyledComponent(ReactRouterLink);
 const StyledExternalLink = createStyledComponent('a');
 
-const componentProps = ['isExternal', 'to', 'label', 'isDisabled', 'iconLeft'];
-
 const LinkBody = props => (
   <Spacings.Inline scale="xs" alignItems="center">
     {Boolean(props.iconLeft) &&
@@ -65,7 +63,10 @@ LinkBody.propTypes = {
 };
 
 const LinkButton = props => {
-  const remainingProps = getPassThroughProps(props, componentProps);
+  const remainingProps = getPassThroughProps(
+    props,
+    Object.keys(LinkButton.propTypes)
+  );
 
   if (props.isExternal) {
     return (
