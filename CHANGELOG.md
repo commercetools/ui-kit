@@ -1,4 +1,10 @@
+<a name="9.8.0"></a>
+
+# [9.8.0](https://github.com/commercetools/ui-kit/compare/v9.7.0...v9.8.0) (2019-05-17)
+
 <a name="9.7.0"></a>
+
+# [9.7.0](https://github.com/commercetools/ui-kit/compare/v9.6.1...v9.7.0) (2019-05-17)
 
 ### Bug Fixes
 
