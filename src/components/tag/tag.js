@@ -217,101 +217,97 @@ TagNormalBody.propTypes = {
   }).isRequired,
 };
 
-const Tag = props => {
-  console.log(props);
-  return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <div
-        css={theme => [
-          css`
-            min-width: 0;
-            display: flex;
-            background-color: ${getWrapperBackgroundColor(props.type, theme)};
-          `,
-        ]}
-      >
-        {props.linkTo ? (
-          <TagLinkBody
-            styles={props.styles}
-            type={props.type}
-            onClick={props.onClick}
-            onRemove={props.onRemove}
-            linkTo={props.linkTo}
-            isDisabled={props.isDisabled}
-          >
-            {props.children}
-          </TagLinkBody>
-        ) : (
-          <TagNormalBody
-            styles={props.styles}
-            type={props.type}
-            onClick={props.onClick}
-            onRemove={props.onRemove}
-            isDisabled={props.isDisabled}
-          >
-            {props.children}
-          </TagNormalBody>
-        )}
-        {Boolean(props.onRemove) && (
-          <AccessibleButton
-            label="Remove"
-            isDisabled={props.isDisabled}
-            {...props.removeProps}
-            css={theme => {
-              const overwrittenVars = {
-                ...vars,
-                ...theme,
-              };
+const Tag = props => (
+  <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <div
+      css={theme => [
+        css`
+          min-width: 0;
+          display: flex;
+          background-color: ${getWrapperBackgroundColor(props.type, theme)};
+        `,
+      ]}
+    >
+      {props.linkTo ? (
+        <TagLinkBody
+          styles={props.styles}
+          type={props.type}
+          onClick={props.onClick}
+          onRemove={props.onRemove}
+          linkTo={props.linkTo}
+          isDisabled={props.isDisabled}
+        >
+          {props.children}
+        </TagLinkBody>
+      ) : (
+        <TagNormalBody
+          styles={props.styles}
+          type={props.type}
+          onClick={props.onClick}
+          onRemove={props.onRemove}
+          isDisabled={props.isDisabled}
+        >
+          {props.children}
+        </TagNormalBody>
+      )}
+      {Boolean(props.onRemove) && (
+        <AccessibleButton
+          label="Remove"
+          isDisabled={props.isDisabled}
+          onClick={props.isDisabled ? undefined : props.onRemove}
+          css={theme => {
+            const overwrittenVars = {
+              ...vars,
+              ...theme,
+            };
 
-              return [
-                css`
-                  border-color: ${props.type === 'warning'
-                    ? overwrittenVars[designTokens.borderColorForTagWarning]
-                    : overwrittenVars[designTokens.borderColorForTag]};
-                  padding: 0 ${vars.spacingXs};
-                  border-radius: 0
-                    ${overwrittenVars[designTokens.borderRadiusForTag]}
-                    ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
-                  display: flex;
-                  align-items: center;
-                  background: inherit;
-                  border-style: solid;
-                  border-width: 1px 1px 1px 1px;
-                  &:hover,
-                  &:focus {
-                    border-color: ${overwrittenVars[
+            return [
+              css`
+                border-color: ${props.type === 'warning'
+                  ? overwrittenVars[designTokens.borderColorForTagWarning]
+                  : overwrittenVars[designTokens.borderColorForTag]};
+                padding: 0 ${vars.spacingXs};
+                border-radius: 0
+                  ${overwrittenVars[designTokens.borderRadiusForTag]}
+                  ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
+                display: flex;
+                align-items: center;
+                background: inherit;
+                border-style: solid;
+                border-width: 1px 1px 1px 1px;
+                &:hover,
+                &:focus {
+                  border-color: ${overwrittenVars[
+                    designTokens.borderColorForTagWarning
+                  ]};
+
+                  > svg * {
+                    fill: ${overwrittenVars[
                       designTokens.borderColorForTagWarning
                     ]};
-
-                    > svg * {
-                      fill: ${overwrittenVars[
-                        designTokens.borderColorForTagWarning
-                      ]};
-                    }
                   }
+                }
+                > svg * {
+                  fill: ${overwrittenVars[designTokens.fontColorForTag]};
+                }
+              `,
+              props.isDisabled &&
+                css`
                   > svg * {
-                    fill: ${overwrittenVars[designTokens.fontColorForTag]};
+                    fill: ${overwrittenVars[
+                      designTokens.fontColorForTagWhenDisabled
+                    ]};
                   }
                 `,
-                props.isDisabled &&
-                  css`
-                    > svg * {
-                      fill: ${overwrittenVars[
-                        designTokens.fontColorForTagWhenDisabled
-                      ]};
-                    }
-                  `,
-              ];
-            }}
-          >
-            remove
-            <CloseBoldIcon size="medium" />
-          </AccessibleButton>
-        )}
-      </div>
-    </Constraints.Horizontal>
-  );
-};
+            ];
+          }}
+        >
+          <CloseBoldIcon size="medium" />
+        </AccessibleButton>
+      )}
+    </div>
+  </Constraints.Horizontal>
+);
 
 Tag.propTypes = {
   type: PropTypes.oneOf(['normal', 'warning']),
@@ -321,7 +317,6 @@ Tag.propTypes = {
   linkTo: PropTypes.string,
   isDisabled: PropTypes.bool,
   onRemove: PropTypes.func,
-  removeProps: PropTypes.object,
   onClick: PropTypes.func,
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   children: PropTypes.node.isRequired,
