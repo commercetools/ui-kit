@@ -12,14 +12,12 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
-import MultiValue from '../../internals/multivalue';
 import createSelectStyles from '../../internals/create-select-styles';
 import messages from './messages';
 
 const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
-  MultiValue,
 };
 
 export class CreatableSelectInput extends React.Component {

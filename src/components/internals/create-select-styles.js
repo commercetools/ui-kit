@@ -287,6 +287,70 @@ const menuPortalStyles = props => base => ({
   zIndex: props.menuPortalZIndex,
 });
 
+const multiValueStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    height: vars.sizeHeightTag,
+    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
+    padding: '0',
+  };
+};
+
+const multiValueLabelStyles = (props, theme) => (base, state) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    fontSize: vars.fontSizeSmall,
+    color: (() => {
+      if (state.isDisabled)
+        return overwrittenVars[designTokens.fontColorForInputWhenDisabled];
+      return base.color;
+    })(),
+    padding: `${overwrittenVars.spacingXs} ${overwrittenVars.spacingS}`,
+    borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${
+      overwrittenVars.borderRadiusForTag
+    }`,
+    border: `1px ${overwrittenVars[designTokens.borderColorForTag]} solid`,
+    borderWidth: '1px 0 1px 1px',
+  };
+};
+
+const multiValueRemoveStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    borderColor: overwrittenVars[designTokens.borderColorForTag],
+    padding: `0 ${overwrittenVars.spacingXs}`,
+    borderRadius: `0 ${overwrittenVars[designTokens.borderRadiusForTag]} ${
+      overwrittenVars[designTokens.borderRadiusForTag]
+    } 0`,
+    borderStyle: 'solid',
+    borderWidth: '1px',
+
+    '&:hover': {
+      borderColor: overwrittenVars.borderColorForTagWarning,
+      backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
+
+      'svg *': {
+        fill: overwrittenVars[designTokens.borderColorForTagWarning],
+      },
+    },
+  };
+};
+
 export default (props, theme) => ({
   control: controlStyles(props, theme),
   menu: menuStyles(props, theme),
@@ -295,6 +359,9 @@ export default (props, theme) => ({
   clearIndicator: clearIndicatorStyles(props, theme),
   menuList: menuListStyles(props, theme),
   menuPortal: menuPortalStyles(props, theme),
+  multiValue: multiValueStyles(props, theme),
+  multiValueLabel: multiValueLabelStyles(props, theme),
+  multiValueRemove: multiValueRemoveStyles(props, theme),
   indicatorsContainer: indicatorsContainerStyles(props, theme),
   option: optionStyles(props, theme),
   placeholder: placeholderStyles(props, theme),
