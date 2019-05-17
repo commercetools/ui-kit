@@ -3,15 +3,16 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
 const buttonSizes = {
-  small: '16px',
-  medium: '24px',
-  big: '32px',
+  small: '14px',
+  medium: '22px',
+  big: '30px',
 };
 
 const getStateStyles = (isDisabled, isActive, theme) => {
   if (isDisabled) {
     const disabledStyle = css`
       background-color: ${vars.colorAccent98};
+      border-color: ${vars.colorNeutral};
       color: ${vars.colorNeutral60};
       box-shadow: none;
     `;
@@ -21,6 +22,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
           disabledStyle,
           css`
             &:hover {
+              border-color: ${vars.colorInfo85};
               background-color: ${vars.colorInfo85};
             }
           `,
@@ -30,6 +32,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
           disabledStyle,
           css`
             &:hover {
+              border-color: ${vars.colorPrimary85};
               background-color: ${vars.colorPrimary85};
             }
           `,
@@ -42,9 +45,11 @@ const getStateStyles = (isDisabled, isActive, theme) => {
     const activeStyle = css`
       box-shadow: ${vars.shadow9};
       background-color: ${vars.colorSurface};
+      border-color: ${vars.colorSurface};
       &:hover {
         box-shadow: ${vars.shadow9};
         background-color: ${vars.colorNeutral95};
+        border-color: ${vars.colorNeutral95};
       }
     `;
     switch (theme) {
@@ -58,15 +63,18 @@ const getStateStyles = (isDisabled, isActive, theme) => {
               isDisabled
                 ? `
                   background-color: ${vars.colorInfo85};
+                  border-color: ${vars.colorInfo85};
                   color: ${vars.colorSurface};
                   box-shadow: ${vars.shadow9};
                 `
                 : ''
             }
             background-color: ${vars.colorInfo};
+            border-color: ${vars.colorInfo};
             color: ${vars.colorSurface};
             &:hover {
               background-color: ${vars.colorInfo85};
+              border-color: ${vars.colorInfo85};
             }
           `,
         ];
@@ -80,6 +88,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
               isDisabled
                 ? `
                   background-color: ${vars.colorPrimary85};
+                  border-color: ${vars.colorPrimary85};
                   color: ${vars.colorSurface};
                   box-shadow: ${vars.shadow9};
                 `
@@ -89,6 +98,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
             color: ${vars.colorSurface};
             &:hover {
               background-color: ${vars.colorPrimary85};
+              border-color: ${vars.colorPrimary85};
             }
           `,
         ];
@@ -103,6 +113,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
     &:active {
       box-shadow: ${vars.shadow9};
       background-color: ${vars.colorSurface};
+      border-color: ${vars.colorSurface};
     }
   `;
 };
@@ -165,6 +176,7 @@ const getThemeStyles = theme => {
       return css`
         &:active {
           background-color: ${vars.colorPrimary};
+          border-color: ${vars.colorPrimary};
           color: ${vars.colorSurface};
         }
       `;
@@ -172,6 +184,7 @@ const getThemeStyles = theme => {
       return css`
         &:hover {
           background-color: ${vars.colorInfo};
+          border-color: ${vars.colorInfo};
           color: ${vars.colorSurface};
         }
       `;
