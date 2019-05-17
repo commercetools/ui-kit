@@ -23,6 +23,7 @@ storiesOf('Components|Buttons', module)
             icons[select('iconLeft', iconNames, iconNames[0])]
           )}
           isDisabled={boolean('isDisabled', false)}
+          isExternal={boolean('isExternal', false)}
         />
       </Section>
     </Router>
