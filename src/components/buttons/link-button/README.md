@@ -9,7 +9,8 @@ import { LinkButton } from '@commercetools-frontend/ui-kit';
 #### Description
 
 Link buttons are similar to Flat buttons, however they are constructed as a
-`<Link>` and they do not have types.
+`<Link>` and they do not have types. They also support an `isExternal` prop. When passed,
+the Link button is then constructed with a `<a>` instead of the default `<Link>` tag.
 
 > Requires `react-router`.
 
@@ -24,16 +25,27 @@ Link buttons are similar to Flat buttons, however they are constructed as a
 />
 ```
 
+```js
+<LinkButton
+  to={'https://kanyetothe.com'}
+  iconLeft={<SupportIcon />}
+  label="A label text"
+  isDisabled={false}
+  isExternal={true}
+/>
+```
+
 #### Properties
 
-| Props        | Type                                                              | Required | Values | Default | Description                                           |
-| ------------ | ----------------------------------------------------------------- | :------: | ------ | ------- | ----------------------------------------------------- |
-| `label`      | `string`                                                          |    ✅    | -      | -       | Should describe what the button is for                |
-| `to`         | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                 |
-| `iconLeft`   | `element`                                                         |    -     | -      | -       | The icon of the button                                |
-| `isDisabled` | `boolean`                                                         |    -     | -      | -       | Tells when the button should present a disabled state |
+| Props        | Type                                                              | Required | Values | Default | Description                                                                 |
+| ------------ | ----------------------------------------------------------------- | :------: | ------ | ------- | --------------------------------------------------------------------------- |
+| `label`      | `string`                                                          |    ✅    | -      | -       | Should describe what the button is for                                      |
+| `to`         | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                                       |
+| `iconLeft`   | `element`                                                         |    -     | -      | -       | The icon of the button                                                      |
+| `isDisabled` | `boolean`                                                         |    -     | -      | false   | Tells when the button should present a disabled state                       |
+| `isExternal` | `boolean`                                                         |    -     | -      | false   | If true, a regular <a> is rendered instead of the default React Router Link |
 
-The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
+The component further forwards all remaining props to the underlying component.
 
 Main Functions and use cases are:
 
