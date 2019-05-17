@@ -1,4 +1,18 @@
+<a name="9.8.0"></a>
+
+# [9.8.0](https://github.com/commercetools/ui-kit/compare/v9.7.0...v9.8.0) (2019-05-17)
+
+### Bug Fixes
+
+- `select-inputs`: fix multi value bug ([#784](https://github.com/commercetools/ui-kit/issues/784)) ([1fa3ad3](https://github.com/commercetools/ui-kit/commit/1fa3ad3))
+
+### Features
+
+- `LinkButton` support isExternal prop ([#783](https://github.com/commercetools/ui-kit/issues/783)) ([42bc1a9](https://github.com/commercetools/ui-kit/commit/42bc1a9))
+
 <a name="9.7.0"></a>
+
+# [9.7.0](https://github.com/commercetools/ui-kit/compare/v9.6.1...v9.7.0) (2019-05-17)
 
 ### Bug Fixes
 
