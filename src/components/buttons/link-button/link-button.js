@@ -33,13 +33,12 @@ const createStyledComponent = component => styled(component)`
   text-decoration: none;
 
   span {
-    color: ${props =>
-      props.isDisabled ? vars.colorNeutral : vars.colorPrimary};
+    color: ${props => (props.disabled ? vars.colorNeutral : vars.colorPrimary)};
   }
 
-  cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 
-  ${props => !props.isDisabled && hoverStyles}
+  ${props => !props.disabled && hoverStyles}
 `;
 
 const StyledReactRouterLink = createStyledComponent(ReactRouterLink);
@@ -73,7 +72,7 @@ const LinkButton = props => {
       <StyledExternalLink
         href={props.to}
         onClick={props.isDisabled ? event => event.preventDefault() : undefined}
-        isDisabled={props.isDisabled}
+        disabled={props.isDisabled}
         data-track-component="LinkButton"
         aria-label={props.label}
         {...remainingProps}
@@ -90,7 +89,7 @@ const LinkButton = props => {
   return (
     <StyledReactRouterLink
       to={props.to}
-      isDisabled={props.isDisabled}
+      disabled={props.isDisabled}
       onClick={props.isDisabled ? event => event.preventDefault() : undefined}
       data-track-component="LinkButton"
       aria-label={props.label}
