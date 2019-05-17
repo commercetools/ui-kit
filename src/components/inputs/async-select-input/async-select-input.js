@@ -11,6 +11,7 @@ import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
+import TagRemove from '../../internals/tag-remove';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import LoadingIndicator from '../../internals/loading-indicator';
 import messages from './messages';
@@ -20,6 +21,7 @@ const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
   LoadingIndicator,
+  MultiValueRemove: TagRemove,
 };
 
 export class AsyncSelectInput extends React.Component {
