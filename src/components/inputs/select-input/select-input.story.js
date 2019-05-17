@@ -87,7 +87,7 @@ storiesOf('Components|Inputs', module)
         ],
       },
     ];
-    const isMulti = boolean('isMulti', true);
+    const isMulti = boolean('isMulti', false);
     const showOptionGroupDivider = boolean('Show option group divider', false);
     return (
       <Spacings.Stack scale="xl">
