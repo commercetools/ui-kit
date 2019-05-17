@@ -1,3 +1,21 @@
+<a name="9.7.0"></a>
+
+### Bug Fixes
+
+- `CheckboxInput`: hovered state when disabled ([#775](https://github.com/commercetools/ui-kit/issues/775)) ([670afe7](https://github.com/commercetools/ui-kit/commit/670afe7))
+- `CollapsiblePanel`: height of panel header while disabled ([#767](https://github.com/commercetools/ui-kit/issues/767)) ([549a0b9](https://github.com/commercetools/ui-kit/commit/549a0b9))
+- `TimeInput`: border radius bug ([#773](https://github.com/commercetools/ui-kit/issues/773)) ([06e9420](https://github.com/commercetools/ui-kit/commit/06e9420))
+
+### Features
+
+- `TimeInput`: visual improvements on hover and focus ([#776](https://github.com/commercetools/ui-kit/issues/776))
+- `SecondaryIconButton`: refactor hover and add theming ([#770](https://github.com/commercetools/ui-kit/issues/770)) ([08a6045](https://github.com/commercetools/ui-kit/commit/08a6045))
+- `PinGearIcon`: new component ([#778](https://github.com/commercetools/ui-kit/issues/778)) ([1fbb659](https://github.com/commercetools/ui-kit/commit/1fbb659))
+
+### Refactoring
+
+- Various dependency updates ([#780](https://github.com/commercetools/ui-kit/pull/780))
+
 <a name="9.6.1"></a>
 
 # [9.6.1](https://github.com/commercetools/ui-kit/compare/v9.6.0...v9.6.1) (2019-05-13)
