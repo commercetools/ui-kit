@@ -13,7 +13,6 @@ import addStaticFields from '../../../utils/add-static-fields';
 import LoadingIndicator from '../../internals/loading-indicator';
 import ClearIndicator from '../../internals/clear-indicator';
 import DropdownIndicator from '../../internals/dropdown-indicator';
-import MultiValue from '../../internals/multivalue';
 import messages from './messages';
 import createSelectStyles from '../../internals/create-select-styles';
 
@@ -21,7 +20,6 @@ const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
   LoadingIndicator,
-  MultiValue,
 };
 
 export class AsyncCreatableSelectInput extends React.Component {

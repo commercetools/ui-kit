@@ -11,15 +11,15 @@ import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
+import TagRemove from '../../internals/tag-remove';
 import DropdownIndicator from '../../internals/dropdown-indicator';
-import MultiValue from '../../internals/multivalue';
 import createSelectStyles from '../../internals/create-select-styles';
 import messages from './messages';
 
 const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
-  MultiValue,
+  MultiValueRemove: TagRemove,
 };
 
 export class CreatableSelectInput extends React.Component {
