@@ -48,6 +48,7 @@ export const IconButton = props => {
       onMouseOut={props.handleMouseOut}
       css={[
         css`
+          border: 1px solid ${vars.colorSurface};
           display: inline-block;
           background-color: ${vars.colorSurface};
           box-shadow: ${vars.shadow7};
