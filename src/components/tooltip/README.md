@@ -9,7 +9,7 @@ Tooltips display informative text when users hover over or focus on an element.
 ```js
 <Tooltip
   position="left"
-  label="If you buy a pizza, you will also get a free ice cream :)"
+  title="If you buy a pizza, you will also get a free ice cream :)"
 >
   <button onClick={orderPizza({ freeIceCream: 'yes please' })}>Submit</button>
 </Tooltip>
@@ -24,7 +24,7 @@ The Button components from `ui-kit` already support this functionality.
 ```js
 <Tooltip
   position="left"
-  label="You do not have permission to delete the database"
+  title="You do not have permission to delete the database"
 >
   <button
     disabled
