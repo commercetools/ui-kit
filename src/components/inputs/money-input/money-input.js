@@ -355,7 +355,9 @@ class MoneyInput extends React.Component {
     );
 
     const amount = formatAmount(
-      getAmountAsNumberFromMoneyValue(moneyValue).toLocaleString(locale),
+      getAmountAsNumberFromMoneyValue(moneyValue).toLocaleString(locale, {
+        minimumFractionDigits: moneyValue.fractionDigits,
+      }),
       moneyValue.currencyCode,
       locale
     );

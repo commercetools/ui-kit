@@ -356,12 +356,12 @@ describe('MoneyInput.parseMoneyValue', () => {
             type: 'highPrecision',
             centAmount: 1234,
             currencyCode: 'EUR',
-            fractionDigits: 3,
-            preciseAmount: 12345,
+            fractionDigits: 5,
+            preciseAmount: 1234527,
           },
           'en'
         )
-      ).toEqual({ amount: '12.345', currencyCode: 'EUR' });
+      ).toEqual({ amount: '12.34527', currencyCode: 'EUR' });
     });
   });
 });
