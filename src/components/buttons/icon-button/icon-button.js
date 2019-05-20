@@ -70,17 +70,17 @@ export const IconButton = props => {
         isToggleButton={props.isToggleButton}
         isToggled={props.isToggled}
         isDisabled={props.isDisabled}
-        css={getSizeStyles(props.size)}
+        css={css`
+          width: 100%;
+          height: 100%;
+        `}
       >
         <div
-          css={[
-            css`
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `,
-            getSizeStyles(props.size),
-          ]}
+          css={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          `}
         >
           {props.icon &&
             React.cloneElement(props.icon, {
