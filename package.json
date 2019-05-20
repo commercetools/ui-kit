@@ -173,7 +173,7 @@
     "react-testing-library": "7.0.0",
     "react-value": "0.2.0",
     "rimraf": "2.6.3",
-    "rollup": "1.12.1",
+    "rollup": "1.12.3",
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-cleanup": "3.1.1",
     "rollup-plugin-commonjs": "10.0.0",
