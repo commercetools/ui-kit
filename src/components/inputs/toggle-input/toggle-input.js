@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
+import omit from 'lodash/omit';
+import isNil from 'lodash/isNil';
 import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import vars from '../../../../materials/custom-properties';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
 const thumbSmallSize = '13px';
 const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
@@ -12,7 +13,7 @@ const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
 const Label = styled.label`
   position: relative;
   display: inline-block;
-  cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 
   ${props =>
     props.size === 'small'
@@ -88,42 +89,62 @@ const Input = styled.input`
   }
 `;
 
+const getToggleInputProps = (props = {}) => ({
+  type: 'checkbox',
+  checked: props.checked || props.isChecked,
+  disabled: props.disabled || props.isDisabled,
+  // WAI-ARIA
+  role: 'checkbox',
+  'aria-checked': props.checked || props.isChecked ? 'true' : 'false',
+  ...omit(props, [
+    /* deprecated */
+    'isChecked',
+    'isDisabled',
+  ]),
+});
+
 class ToggleInput extends React.PureComponent {
   static displayName = 'Toggle';
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     size: PropTypes.oneOf(['small', 'big']).isRequired,
-    isDisabled: PropTypes.bool,
-    isChecked: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
+    isChecked(props, propName, componentName, ...rest) {
+      if (!isNil(props[propName])) {
+        throwDeprecationWarning(
+          propName,
+          componentName,
+          `\n Please use "checked" prop instead.`
+        );
+      }
+      return PropTypes.bool(props, propName, componentName, ...rest);
+    },
+    isDisabled(props, propName, componentName, ...rest) {
+      if (!isNil(props[propName])) {
+        throwDeprecationWarning(
+          propName,
+          componentName,
+          `\n Please use "disabled" prop instead.`
+        );
+      }
+      return PropTypes.bool(props, propName, componentName, ...rest);
+    },
   };
 
   static defaultProps = {
-    isDisabled: false,
-    isChecked: false,
     size: 'big',
   };
 
   render() {
+    const toggleInputProps = getToggleInputProps(this.props);
+
     return (
       <Label
         htmlFor={this.props.id}
         size={this.props.size}
-        isDisabled={this.props.isDisabled}
+        disabled={toggleInputProps.disabled}
       >
-        <Input
-          css={accessibleHiddenInputStyles}
-          id={this.props.id}
-          name={this.props.name}
-          onChange={this.props.onChange}
-          disabled={this.props.isDisabled}
-          checked={this.props.isChecked}
-          type="checkbox"
-          size={this.props.size}
-          {...filterDataAttributes(this.props)}
-          {...filterAriaAttributes(this.props)}
-        />
+        <Input css={accessibleHiddenInputStyles} {...toggleInputProps} />
         <Span aria-hidden="true" size={this.props.size} />
       </Label>
     );

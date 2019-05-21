@@ -20,8 +20,8 @@ storiesOf('Components|Inputs', module)
             id={text('id', 'toggle-id')}
             name={text('name', '')}
             size={select('size', ['small', 'big'], 'big')}
-            isDisabled={boolean('isDisabled', false)}
-            isChecked={value}
+            disabled={boolean('disabled', false)}
+            checked={value}
             onChange={event => {
               action('onChange')(event);
               onChange(event.target.checked);

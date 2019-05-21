@@ -10,25 +10,25 @@ export const component = () => (
       <ToggleInput />
     </Spec>
     <Spec label="Default - disabled">
-      <ToggleInput isDisabled={true} />
+      <ToggleInput disabled={true} />
     </Spec>
     <Spec label="Default - checked">
-      <ToggleInput isChecked={true} />
+      <ToggleInput checked={true} />
     </Spec>
     <Spec label="Default - checked - disabled">
-      <ToggleInput isDisabled={true} isChecked={true} />
+      <ToggleInput disabled={true} checked={true} />
     </Spec>
     <Spec label="Small">
       <ToggleInput size="small" />
     </Spec>
     <Spec label="Small - disabled">
-      <ToggleInput size="small" isDisabled={true} />
+      <ToggleInput size="small" disabled={true} />
     </Spec>
     <Spec label="Small - checked">
-      <ToggleInput size="small" isChecked={true} />
+      <ToggleInput size="small" checked={true} />
     </Spec>
     <Spec label="Small - checked - disabled">
-      <ToggleInput size="small" isDisabled={true} isChecked={true} />
+      <ToggleInput size="small" disabled={true} checked={true} />
     </Spec>
   </Suite>
 );
