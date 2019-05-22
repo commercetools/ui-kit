@@ -26,7 +26,6 @@ const getTextareaStyles = (props, theme) => {
     props.isCollapsed &&
       css`
         overflow: hidden;
-        word-break: break-all;
       `,
   ];
   return baseStyles;

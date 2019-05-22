@@ -15,6 +15,7 @@ const getTextareaStyles = (props, theme) => {
     css`
       padding: ${vars.spacingXs} ${vars.spacingS};
       line-height: ${sizeInputLineHeight};
+      flex: auto;
       word-break: break-all;
       white-space: pre-wrap;
       resize: vertical;
