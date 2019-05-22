@@ -120,6 +120,10 @@ export class CreatableSelectInput extends React.Component {
   };
 
   render() {
+    const placeholder =
+      this.props.placeholder ||
+      this.props.intl.formatMessage(messages.placeholder);
+
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <div {...filterDataAttributes(this.props)}>
@@ -205,7 +209,7 @@ export class CreatableSelectInput extends React.Component {
             onFocus={this.props.onFocus}
             onInputChange={this.props.onInputChange}
             options={this.props.options}
-            placeholder={this.props.placeholder}
+            placeholder={placeholder}
             tabIndex={this.props.tabIndex}
             tabSelectsValue={this.props.tabSelectsValue}
             value={this.props.value}

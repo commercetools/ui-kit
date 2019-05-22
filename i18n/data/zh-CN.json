@@ -2,11 +2,14 @@
   "UIKit.AsyncCreatableSelectInput.createLabel": "创建 \"{inputValue}\"",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithInputValue": "无选项",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithoutInputValue": "无选项",
+  "UIKit.AsyncCreatableSelectInput.placeholder": "选择...",
   "UIKit.AsyncSelectInput.noOptionsMessageWithInputValue": "无选项",
   "UIKit.AsyncSelectInput.noOptionsMessageWithoutInputValue": "无选项",
+  "UIKit.AsyncSelectInput.placeholder": "选择...",
   "UIKit.CreatableSelectInput.createLabel": "创建 \"{inputValue}\"",
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "无选项",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "无选项",
+  "UIKit.CreatableSelectInput.placeholder": "选择...",
   "UIKit.DateInput.placeholder": "月/日/年",
   "UIKit.DateRangeInput.placeholder": "月/日/年 - 月/日/年",
   "UIKit.DateTimeInput.placeholder": "月/日/年 - 小时：分钟 上午/下午",
@@ -33,5 +36,6 @@
   "UIKit.PasswordField.show": "显示",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "无选项",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "无选项",
+  "UIKit.SelectInput.placeholder": "选择...",
   "UIKit.TimeInput.placeholder": "小时：分钟 上午/下午"
 }

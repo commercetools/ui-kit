@@ -16,4 +16,9 @@ export default defineMessages({
     description: 'Text of dropdown when no options exist',
     defaultMessage: 'No options',
   },
+  placeholder: {
+    id: 'UIKit.CreatableSelectInput.placeholder',
+    description: 'Default input placeholder text',
+    defaultMessage: 'Select...',
+  },
 });

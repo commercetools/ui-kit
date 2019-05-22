@@ -2,11 +2,14 @@
   "UIKit.AsyncCreatableSelectInput.createLabel": "Crear \"{inputValue}\"",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithInputValue": "Menú vacío",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",
+  "UIKit.AsyncCreatableSelectInput.placeholder": "Seleccionar...",
   "UIKit.AsyncSelectInput.noOptionsMessageWithInputValue": "Menú vacío",
   "UIKit.AsyncSelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",
+  "UIKit.AsyncSelectInput.placeholder": "Seleccionar...",
   "UIKit.CreatableSelectInput.createLabel": "Crear \"{inputValue}\"",
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "Menú vacío",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",
+  "UIKit.CreatableSelectInput.placeholder": "Seleccionar...",
   "UIKit.DateInput.placeholder": "DD/MM/YYYY",
   "UIKit.DateRangeInput.placeholder": "DD/MM/YYYY - DD/MM/YYYY",
   "UIKit.DateTimeInput.placeholder": "DD/MM/YYYY - HH:mm",
@@ -33,5 +36,6 @@
   "UIKit.PasswordField.show": "mostrar",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "Menú vacío",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",
+  "UIKit.SelectInput.placeholder": "Seleccionar...",
   "UIKit.TimeInput.placeholder": "HH:mm"
 }
