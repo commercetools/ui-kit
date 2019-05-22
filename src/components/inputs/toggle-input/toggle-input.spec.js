@@ -5,13 +5,13 @@ import ToggleInput from './toggle-input';
 
 class TestComponent extends React.Component {
   static propTypes = {
-    isChecked: PropTypes.bool,
+    checked: PropTypes.bool,
     onChange: PropTypes.func,
     id: PropTypes.string,
   };
 
   state = {
-    isChecked: this.props.isChecked,
+    checked: this.props.checked,
   };
 
   render() {
@@ -20,10 +20,10 @@ class TestComponent extends React.Component {
         <label htmlFor={this.props.id}>Toggle</label>
         <ToggleInput
           id={this.props.id}
-          isChecked={this.state.isChecked}
+          checked={this.state.checked}
           onChange={evt => {
             this.setState({
-              isChecked: evt.target.checked,
+              checked: evt.target.checked,
             });
             if (this.props.onChange) {
               this.props.onChange(evt);
@@ -40,7 +40,7 @@ it('should render children', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="toggle">Toggle</label>
-      <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
+      <ToggleInput id="toggle" checked={false} onChange={onChange} />
     </div>
   );
 
@@ -53,7 +53,7 @@ it('should call onChange when clicked', () => {
   });
 
   const { getByLabelText } = render(
-    <TestComponent id="toggle" isChecked={false} onChange={onChange} />
+    <TestComponent id="toggle" checked={false} onChange={onChange} />
   );
 
   getByLabelText('Toggle').click();
@@ -69,9 +69,9 @@ it('should not call onChange when clicked while disabled', () => {
       <label htmlFor="toggle">Toggle</label>
       <ToggleInput
         id="toggle"
-        isChecked={false}
+        checked={false}
         onChange={onChange}
-        isDisabled={true}
+        disabled={true}
       />
     </div>
   );
@@ -87,7 +87,7 @@ describe('checked attribute', () => {
     const { getByLabelText } = render(
       <div>
         <label htmlFor="toggle">Toggle</label>
-        <ToggleInput id="toggle" isChecked={true} onChange={onChange} />
+        <ToggleInput id="toggle" checked={true} onChange={onChange} />
       </div>
     );
 
@@ -99,7 +99,7 @@ describe('checked attribute', () => {
     const { getByLabelText } = render(
       <div>
         <label htmlFor="toggle">Toggle</label>
-        <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
+        <ToggleInput id="toggle" checked={false} onChange={onChange} />
       </div>
     );
 
