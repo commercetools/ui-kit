@@ -1,3 +1,12 @@
+<a name="9.8.1"></a>
+
+### Bug Fixes
+
+- `i18n`: build all locales ([#800](https://github.com/commercetools/ui-kit/issues/800)) ([670fc46](https://github.com/commercetools/ui-kit/commit/670fc46))
+- `IconButton`: misaligned icon fix ([#794](https://github.com/commercetools/ui-kit/issues/794)) ([fd232f1](https://github.com/commercetools/ui-kit/commit/fd232f1))
+- `MoneyInput`: add minimumFractionDigits ([#795](https://github.com/commercetools/ui-kit/issues/795)) ([98ee547](https://github.com/commercetools/ui-kit/commit/98ee547))
+- `SelectInput`, `AsyncSelectInput`, `CreatableSelectInput`, `AsyncCreatableSelectInput`: localize placeholder ([#802](https://github.com/commercetools/ui-kit/issues/802)) ([013f617](https://github.com/commercetools/ui-kit/commit/013f617))
+
 <a name="9.8.0"></a>
 
 # [9.8.0](https://github.com/commercetools/ui-kit/compare/v9.7.0...v9.8.0) (2019-05-17)
