@@ -26,7 +26,7 @@
   "UIKit.LocalizedTextInput.expand": "Afficher toutes les langues ({remainingLanguages})",
   "UIKit.LocalizedTextInput.missingRequiredField": "Ce champ est requis. Veuillez indiquer au moins une valeur.",
   "UIKit.MoneyField.highPrecision": "Prix haute précision",
-  "UIKit.MoneyInput.highPrecision": "",
+  "UIKit.MoneyInput.highPrecision": "Prix haute précision",
   "UIKit.MultilineTextInput.collapse": "Réduire",
   "UIKit.MultilineTextInput.expand": "Développer",
   "UIKit.PasswordField.hide": "masquer",
