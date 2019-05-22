@@ -101,7 +101,7 @@ describe('NumberInput', () => {
   });
 
   it('should have ARIA properties for the readonly state', () => {
-    const { container } = render(<NumberInput {...baseProps} isReadOnly />);
+    const { container } = render(<NumberInput {...baseProps} readOnly />);
     expect(container.querySelector('input')).toHaveAttribute(
       'aria-readonly',
       'true'
@@ -127,28 +127,8 @@ describe('NumberInput', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('should call onFocus when the input is focused', () => {
-    const onFocus = jest.fn();
-    const { container } = render(
-      <NumberInput {...baseProps} onFocus={onFocus} />
-    );
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-  });
-
-  it('should call onBlur when input loses focus', () => {
-    const onFocus = jest.fn();
-    const { container } = render(
-      <NumberInput {...baseProps} onFocus={onFocus} />
-    );
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
-  });
-
-  it('should have focus automatically when isAutofocussed is passed', () => {
-    const { container } = render(<NumberInput {...baseProps} isAutofocussed />);
+  it('should have focus automatically when autoFocus is passed', () => {
+    const { container } = render(<NumberInput {...baseProps} autoFocus />);
     expect(container.querySelector('input')).toHaveFocus();
   });
 });

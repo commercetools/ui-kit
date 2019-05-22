@@ -35,12 +35,12 @@ storiesOf('Examples|Forms/Inputs', module)
             <Spacings.Inline>
               <SecondaryButton
                 onClick={formik.handleReset}
-                isDisabled={formik.isSubmitting}
+                disabled={formik.isSubmitting}
                 label="Reset"
               />
               <PrimaryButton
                 onClick={formik.handleSubmit}
-                isDisabled={formik.isSubmitting || !formik.dirty}
+                disabled={formik.isSubmitting || !formik.dirty}
                 label="Submit"
               />
             </Spacings.Inline>

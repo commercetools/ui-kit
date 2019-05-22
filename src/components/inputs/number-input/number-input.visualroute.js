@@ -15,7 +15,7 @@ export const component = ({ themes }) => (
     </Spec>
     <Spec label="when disabled">
       <NumberInput
-        isDisabled={true}
+        disabled={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -23,7 +23,7 @@ export const component = ({ themes }) => (
     </Spec>
     <Spec label="when read-only">
       <NumberInput
-        isReadOnly={true}
+        readOnly={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -39,7 +39,7 @@ export const component = ({ themes }) => (
     </Spec>
     <Spec label="when placeholder is visible and input is disabled">
       <NumberInput
-        isDisabled={true}
+        disabled={true}
         value=""
         placeholder="Enter a text"
         onChange={() => {}}

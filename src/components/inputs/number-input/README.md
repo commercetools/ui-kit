@@ -26,13 +26,15 @@ import { NumberInput } from '@commercetools-frontend/ui-kit';
 | `onChange`             | `func`               |    -     | -                                  | -       | Called with the new value. Required when input is not read only. Parent should pass it back as `value` |
 | `onBlur`               | `func`               |    -     | -                                  | -       | Called when field is blurred                                                                           |
 | `onFocus`              | `func`               |    -     | -                                  | -       | Called when field is focused                                                                           |
-| `isDisabled`           | `bool`               |    -     | -                                  | `false` | Indicates that the field cannot be used (e.g not authorised)                                           |
-| `isReadOnly`           | `bool`               |    -     | -                                  | `false` | Indicates that the field is displaying read-only content                                               |
-| `isAutofocussed`       | `bool`               |    -     | -                                  | -       | Focus the input field on initial render                                                                |
+| `disabled`             | `bool`               |    -     | -                                  | `false` | Indicates that the field cannot be used (e.g not authorised)                                           |
+| `readOnly`             | `bool`               |    -     | -                                  | `false` | Indicates that the field is displaying read-only content                                               |
+| `autoFocus`            | `bool`               |    -     | -                                  | -       | Focus the input field on initial render                                                                |
 | `hasError`             | `bool`               |    -     | -                                  | -       | Indicates the input field has an error                                                                 |
 | `hasWarning`           | `bool`               |    -     | -                                  | -       | Indicates the input field has a warning                                                                |
 | `placeholder`          | `string`             |    -     | -                                  | -       | Placeholder text for the input                                                                         |
 | `horizontalConstraint` | `object`             |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                             |
+
+The component further forwards all other properties to the underlying `input` component.
 
 ##### `onChange`
 

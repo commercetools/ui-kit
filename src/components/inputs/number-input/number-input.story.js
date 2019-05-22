@@ -32,9 +32,9 @@ storiesOf('Components|Inputs', module)
               min={min.trim() === '' ? undefined : parseInt(min, 10)}
               max={max.trim() === '' ? undefined : parseInt(max, 10)}
               step={step.trim() === '' ? undefined : parseFloat(step, 10)}
-              isAutofocussed={boolean('isAutofocussed', false)}
-              isDisabled={boolean('isDisabled', false)}
-              isReadOnly={boolean('isReadOnly', false)}
+              autoFocus={boolean('autoFocus', false)}
+              disabled={boolean('disabled', false)}
+              readOnly={boolean('readOnly', false)}
               hasError={boolean('hasError', false)}
               hasWarning={boolean('hasWarning', false)}
               placeholder={text('placeholder', 'Placeholder')}
