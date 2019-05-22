@@ -22,9 +22,9 @@ import { PasswordInput } from '@commercetools-frontend/ui-kit';
 | `onChange`             | `func`   |    -     |                           -                           | -       | Called with the new value. Required when input is not read only. Parent should pass it back as `value` |
 | `onBlur`               | `func`   |    -     |                           -                           | -       | Called when field is blurred                                                                           |
 | `onFocus`              | `func`   |    -     |                           -                           | -       | Called when field is focused                                                                           |
-| `isAutofocussed`       | `bool`   |    -     |                           -                           | -       | Focus the input field on initial render                                                                |
-| `isDisabled`           | `bool`   |    -     |                           -                           | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                     |
-| `isReadOnly`           | `bool`   |    -     |                           -                           | `false` | Indicates that the field is displaying read-only content                                               |
+| `autoFocus`            | `bool`   |    -     |                           -                           | -       | Focus the input field on initial render                                                                |
+| `disabled`             | `bool`   |    -     |                           -                           | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                     |
+| `readOnly`             | `bool`   |    -     |                           -                           | `false` | Indicates that the field is displaying read-only content                                               |
 | `hasError`             | `bool`   |    -     |                           -                           | -       | Indicates the input field has an error                                                                 |
 | `hasWarning`           | `bool`   |    -     |                           -                           | -       | Indicates the input field has a warning                                                                |
 | `isPasswordVisible`    | `bool`   |    -     |                           -                           | `false` | Indicates whether we show the password or not                                                          |
@@ -32,7 +32,7 @@ import { PasswordInput } from '@commercetools-frontend/ui-kit';
 | `horizontalConstraint` | `string` |    -     |         `s` \| `m` \| `l` \| `xl` \| `scale`          | `scale` | Horizontal size limit of the input fields.                                                             |
 | `autoComplete`         | `string` |    -     | `on` \| `off` \| `current-password` \| `new-password` | -       | Password autocomplete mode                                                                             |
 
-The component further forwards all `data-` attributes to the underlying `input` component.
+The component further forwards all other properties to the underlying `input` component.
 
 ### Static methods
 

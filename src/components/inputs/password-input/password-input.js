@@ -1,63 +1,95 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Constraints from '../../constraints';
+import isNil from 'lodash/isNil';
+import omit from 'lodash/omit';
 import { getInputStyles } from '../styles';
+import { getConstraintSyles } from '../../constraints/horizontal';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
+
+const getPasswordInputProps = (props = {}) => {
+  const readOnly = props.readOnly || props.isReadOnly;
+
+  return {
+    type: props.isPasswordVisible ? 'text' : 'password',
+    readOnly,
+    disabled: props.disabled || props.isDisabled,
+    autoFocus: props.autoFocus || props.isAutofocussed,
+    /* ARIA */
+    role: 'textbox',
+    'aria-readonly': readOnly,
+    contentEditable: !readOnly,
+    ...omit(props, [
+      'hasError',
+      'hasWarning',
+      'isPasswordVisible',
+      'horizontalConstraint',
+      /* deprecated */
+      'isReadOnly',
+      'isDisabled',
+      'isAutofocussed',
+    ]),
+  };
+};
 
 const PasswordInput = props => (
-  <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <input
-      id={props.id}
-      name={props.name}
-      type={props.isPasswordVisible ? 'text' : 'password'}
-      value={props.value}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      disabled={props.isDisabled}
-      placeholder={props.placeholder}
-      autoComplete={props.autoComplete}
-      css={theme => getInputStyles(props, theme)}
-      readOnly={props.isReadOnly}
-      autoFocus={props.isAutofocussed}
-      {...filterDataAttributes(props)}
-      /* ARIA */
-      aria-readonly={props.isReadOnly}
-      contentEditable={!props.isReadOnly}
-    />
-  </Constraints.Horizontal>
+  <input
+    css={theme => [
+      getInputStyles(props, theme),
+      getConstraintSyles(props.horizontalConstraint),
+    ]}
+    {...getPasswordInputProps(props)}
+  />
 );
 
 PasswordInput.displayName = 'PasswordInput';
 
 PasswordInput.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string.isRequired,
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  isAutofocussed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
-  isPasswordVisible: PropTypes.bool,
-  placeholder: PropTypes.string,
-  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   autoComplete: PropTypes.oneOf([
     'on',
     'off',
     'current-password',
     'new-password',
   ]),
+  isPasswordVisible: PropTypes.bool,
+  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  /* Deprecated Props */
+  isAutofocussed(props, propName, componentName, ...rest) {
+    if (!isNil(props[propName])) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "autofocus" prop instead.`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
+  },
+  isDisabled(props, propName, componentName, ...rest) {
+    if (!isNil(props[propName])) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "disabled" prop instead.`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
+  },
+  isReadOnly(props, propName, componentName, ...rest) {
+    if (!isNil(props[propName])) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "readOnly" prop instead.`
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
+  },
 };
 
 PasswordInput.defaultProps = {
-  horizontalConstraint: 'scale',
-  isDisabled: false,
-  isReadOnly: false,
   isPasswordVisible: false,
 };
 

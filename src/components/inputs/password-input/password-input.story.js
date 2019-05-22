@@ -32,9 +32,9 @@ storiesOf('Components|Inputs', module)
               onChange(event.target.value);
             }}
             isPasswordVisible={boolean('isPasswordVisible', false)}
-            isAutofocussed={boolean('isAutofocussed', false)}
-            isDisabled={boolean('isDisabled', false)}
-            isReadOnly={boolean('isReadOnly', false)}
+            autoFocus={boolean('autoFocus', false)}
+            disabled={boolean('disabled', false)}
+            readOnly={boolean('readOnly', false)}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}
             placeholder={text('placeholder', 'Password')}
