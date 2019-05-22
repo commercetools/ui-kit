@@ -2,11 +2,14 @@
   "UIKit.AsyncCreatableSelectInput.createLabel": "Créer \"{inputValue}\"",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithInputValue": "Aucune option",
   "UIKit.AsyncCreatableSelectInput.noOptionsMessageWithoutInputValue": "Aucune option",
+  "UIKit.AsyncCreatableSelectInput.placeholder": "Sélectionner...",
   "UIKit.AsyncSelectInput.noOptionsMessageWithInputValue": "Aucune option",
   "UIKit.AsyncSelectInput.noOptionsMessageWithoutInputValue": "Aucune option",
+  "UIKit.AsyncSelectInput.placeholder": "Sélectionner...",
   "UIKit.CreatableSelectInput.createLabel": "Créer \"{inputValue}\"",
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "Aucune option",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "Aucune option",
+  "UIKit.CreatableSelectInput.placeholder": "Sélectionner...",
   "UIKit.DateInput.placeholder": "MM/JJ/AAAA",
   "UIKit.DateRangeInput.placeholder": "MM/JJ/AAAA - MM/JJ/AAAA",
   "UIKit.DateTimeInput.placeholder": "MM/JJ/AAAA - HH:mm AM/PM",
@@ -33,5 +36,6 @@
   "UIKit.PasswordField.show": "afficher",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "Aucune option",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "Aucune option",
+  "UIKit.SelectInput.placeholder": "Sélectionner...",
   "UIKit.TimeInput.placeholder": "HH:mm AM/PM"
 }
