@@ -91,8 +91,8 @@ it('should call onBlur when input loses focus', () => {
   expect(onBlur).toHaveBeenCalled();
 });
 
-it('should have focus automatically when isAutofocussed is passed', () => {
-  const { getByLabelText } = renderNumberField({ isAutofocussed: true });
+it('should have focus automatically when autoFocus is passed', () => {
+  const { getByLabelText } = renderNumberField({ autoFocus: true });
   expect(getByLabelText('NumberField')).toHaveFocus();
 });
 
@@ -157,21 +157,21 @@ describe('when `badge` is passed', () => {
 
 describe('when disabled', () => {
   it('should disable the input', () => {
-    const { getByLabelText } = renderNumberField({ isDisabled: true });
+    const { getByLabelText } = renderNumberField({ disabled: true });
     expect(getByLabelText('NumberField')).toHaveAttribute('disabled');
   });
 });
 
 describe('when readOnly', () => {
   it('should disable the input', () => {
-    const { getByLabelText } = renderNumberField({ isReadOnly: true });
+    const { getByLabelText } = renderNumberField({ readOnly: true });
     expect(getByLabelText('NumberField')).toHaveAttribute('readonly');
   });
 });
 
 describe('when required', () => {
   it('should add `*` to title`', () => {
-    const { getByText } = renderNumberField({ isRequired: true });
+    const { getByText } = renderNumberField({ required: true });
     expect(getByText('*')).toBeInTheDocument();
   });
 });

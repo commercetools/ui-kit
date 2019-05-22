@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import isNil from 'lodash/isNil';
+import omit from 'lodash/omit';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
@@ -8,7 +10,33 @@ import FieldErrors from '../../field-errors';
 import NumberInput from '../../inputs/number-input';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
+
+const getNumberInputProps = (props = {}) => ({
+  readOnly: props.readOnly || props.isReadOnly,
+  disabled: props.disabled || props.isDisabled,
+  required: props.required || props.isRequired,
+  autoFocus: props.autoFocus || props.isAutofocussed,
+  ...omit(props, [
+    // NumberField
+    'intl',
+    'errors',
+    'touched',
+    'renderError',
+    // LabelField
+    'hint',
+    'title',
+    'badge',
+    'hintIcon',
+    'description',
+    'onInfoButtonClick',
+    /* deprecated */
+    'isReadOnly',
+    'isDisabled',
+    'isRequired',
+    'isAutofocussed',
+  ]),
+});
 
 const sequentialId = createSequentialId('number-field-');
 
@@ -25,23 +53,10 @@ class NumberField extends React.Component {
       missing: PropTypes.bool,
     }),
     renderError: PropTypes.func,
-    isRequired: PropTypes.bool,
     touched: PropTypes.bool,
 
     // NumberInput
-    autoComplete: PropTypes.string,
-    name: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    isAutofocussed: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    isReadOnly: PropTypes.bool,
-    placeholder: PropTypes.string,
-    min: PropTypes.number,
-    max: PropTypes.number,
-    step: PropTypes.number,
 
     // LabelField
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -53,6 +68,18 @@ class NumberField extends React.Component {
     onInfoButtonClick: PropTypes.func,
     hintIcon: PropTypes.node,
     badge: PropTypes.node,
+
+    // deprecated props
+    isRequired(props, propName, componentName, ...rest) {
+      if (!isNil(props[propName])) {
+        throwDeprecationWarning(
+          propName,
+          componentName,
+          `\n Please use "required" prop instead.`
+        );
+      }
+      return PropTypes.bool(props, propName, componentName, ...rest);
+    },
   };
 
   static defaultProps = {
@@ -71,6 +98,8 @@ class NumberField extends React.Component {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const numberInputProps = getNumberInputProps(this.props);
+
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -81,27 +110,13 @@ class NumberField extends React.Component {
             onInfoButtonClick={this.props.onInfoButtonClick}
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
-            hasRequiredIndicator={this.props.isRequired}
+            hasRequiredIndicator={numberInputProps.required}
             htmlFor={this.state.id}
           />
           <NumberInput
             id={this.state.id}
-            name={this.props.name}
-            autoComplete={this.props.autoComplete}
-            value={this.props.value}
-            onChange={this.props.onChange}
-            onBlur={this.props.onBlur}
-            onFocus={this.props.onFocus}
-            isAutofocussed={this.props.isAutofocussed}
-            isDisabled={this.props.isDisabled}
-            isReadOnly={this.props.isReadOnly}
             hasError={hasError}
-            placeholder={this.props.placeholder}
-            horizontalConstraint="scale"
-            min={this.props.min}
-            max={this.props.max}
-            step={this.props.step}
-            {...filterDataAttributes(this.props)}
+            {...numberInputProps}
           />
           <FieldErrors
             errors={this.props.errors}

@@ -19,7 +19,7 @@ export const component = () => (
     <Spec label="when required">
       <NumberField
         title="Age"
-        isRequired={true}
+        required={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -28,7 +28,7 @@ export const component = () => (
     <Spec label="when disabled">
       <NumberField
         title="Age"
-        isDisabled={true}
+        disabled={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -37,7 +37,7 @@ export const component = () => (
     <Spec label="when read-only">
       <NumberField
         title="Age"
-        isReadOnly={true}
+        readOnly={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -55,7 +55,7 @@ export const component = () => (
     <Spec label="when placeholder is shown and input is disabled">
       <NumberField
         title="Age"
-        isDisabled={true}
+        disabled={true}
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
