@@ -128,21 +128,21 @@ describe('when `badge` is passed', () => {
 
 describe('when disabled', () => {
   it('should disable the input', () => {
-    const { getByLabelText } = renderPasswordField({ isDisabled: true });
+    const { getByLabelText } = renderPasswordField({ disabled: true });
     expect(getByLabelText('PasswordField')).toHaveAttribute('disabled');
   });
 });
 
 describe('when readOnly', () => {
   it('should disable the input', () => {
-    const { getByLabelText } = renderPasswordField({ isReadOnly: true });
+    const { getByLabelText } = renderPasswordField({ readOnly: true });
     expect(getByLabelText('PasswordField')).toHaveAttribute('readonly');
   });
 });
 
 describe('when required', () => {
   it('should add `*` to title`', () => {
-    const { getByText } = renderPasswordField({ isRequired: true });
+    const { getByText } = renderPasswordField({ required: true });
     expect(getByText('*')).toBeInTheDocument();
   });
 });

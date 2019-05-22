@@ -28,7 +28,7 @@ export const component = () => (
     <Spec label="when disabled">
       <PasswordField
         title="Welcome Text"
-        isDisabled={true}
+        disabled={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
@@ -46,7 +46,7 @@ export const component = () => (
     <Spec label="when placeholder is shown and disabled">
       <PasswordField
         title="Welcome Text"
-        isDisabled={true}
+        disabled={true}
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
