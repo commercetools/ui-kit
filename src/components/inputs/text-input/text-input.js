@@ -18,7 +18,7 @@ const getInputProps = (props = {}) => {
     /* ARIA */
     role: 'textbox',
     'aria-readonly': readOnly,
-    contentEditable: readOnly,
+    contentEditable: !readOnly,
     ...omit(props, [
       'hasError',
       'hasWarning',

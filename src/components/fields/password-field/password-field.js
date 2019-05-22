@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
+import isNil from 'lodash/isNil';
+import omit from 'lodash/omit';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
@@ -11,12 +13,38 @@ import { EyeIcon, EyeCrossedIcon } from '../../icons';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import messages from './messages';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
 const sequentialId = createSequentialId('password-field-');
 
 const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+
+const getPasswordInputProps = (props = {}) => ({
+  readOnly: props.readOnly || props.isReadOnly,
+  disabled: props.disabled || props.isDisabled,
+  required: props.required || props.isRequired,
+  autoFocus: props.autoFocus || props.isAutofocussed,
+  ...omit(props, [
+    // PasswordField
+    'intl',
+    'errors',
+    'touched',
+    'renderError',
+    // LabelField
+    'hint',
+    'title',
+    'badge',
+    'hintIcon',
+    'description',
+    'onInfoButtonClick',
+    /* deprecated */
+    'isReadOnly',
+    'isDisabled',
+    'isRequired',
+    'isAutofocussed',
+  ]),
+});
 
 class PasswordField extends React.Component {
   static displayName = 'PasswordField';
@@ -29,23 +57,13 @@ class PasswordField extends React.Component {
       missing: PropTypes.bool,
     }),
     renderError: PropTypes.func,
-    isRequired: PropTypes.bool,
     touched: PropTypes.bool,
     intl: PropTypes.shape({
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
 
     // PasswordInput
-    name: PropTypes.string,
     value: PropTypes.string.isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    isAutofocussed: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    isReadOnly: PropTypes.bool,
-    placeholder: PropTypes.string,
-    autoComplete: PropTypes.string,
 
     // LabelField
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -57,6 +75,18 @@ class PasswordField extends React.Component {
     onInfoButtonClick: PropTypes.func,
     hintIcon: PropTypes.node,
     badge: PropTypes.node,
+
+    // deprecated props
+    isRequired(props, propName, componentName, ...rest) {
+      if (!isNil(props[propName])) {
+        throwDeprecationWarning(
+          propName,
+          componentName,
+          `\n Please use "required" prop instead.`
+        );
+      }
+      return PropTypes.bool(props, propName, componentName, ...rest);
+    },
   };
 
   static defaultProps = {
@@ -76,6 +106,7 @@ class PasswordField extends React.Component {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const passwordInputProps = getPasswordInputProps(this.props);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -88,9 +119,9 @@ class PasswordField extends React.Component {
               hintIcon={this.props.hintIcon}
               description={this.props.description}
               onInfoButtonClick={this.props.onInfoButtonClick}
-              hasRequiredIndicator={this.props.isRequired}
+              hasRequiredIndicator={passwordInputProps.required}
             />
-            {!this.props.isDisabled && !this.props.isReadOnly && (
+            {!passwordInputProps.disabled && (
               <FlatButton
                 icon={
                   this.state.isPasswordVisible ? (
@@ -115,20 +146,9 @@ class PasswordField extends React.Component {
           </Spacings.Inline>
           <PasswordInput
             id={this.state.id}
-            name={this.props.name}
-            value={this.props.value}
-            onChange={this.props.onChange}
-            onBlur={this.props.onBlur}
-            onFocus={this.props.onFocus}
-            isAutofocussed={this.props.isAutofocussed}
-            isPasswordVisible={this.state.isPasswordVisible}
-            isDisabled={this.props.isDisabled}
-            isReadOnly={this.props.isReadOnly}
             hasError={hasError}
-            placeholder={this.props.placeholder}
-            autoComplete={this.props.autoComplete}
-            horizontalConstraint="scale"
-            {...filterDataAttributes(this.props)}
+            isPasswordVisible={this.state.isPasswordVisible}
+            {...passwordInputProps}
           />
           <FieldErrors
             errors={this.props.errors}

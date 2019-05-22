@@ -47,7 +47,7 @@ storiesOf('Components|Fields', module)
                     return null;
                 }
               }}
-              isRequired={boolean('isRequired', false)}
+              required={boolean('required', false)}
               touched={boolean('touched', false)}
               name={text('name', '')}
               value={text('value', value)}
@@ -57,9 +57,9 @@ storiesOf('Components|Fields', module)
               }}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              isAutofocussed={boolean('isAutofocussed', false)}
-              isDisabled={boolean('isDisabled', false)}
-              isReadOnly={boolean('isReadOnly', false)}
+              autoFocus={boolean('autoFocus', false)}
+              disabled={boolean('disabled', false)}
+              readOnly={boolean('readOnly', false)}
               placeholder={text('placeholder', 'Placeholder')}
               autoComplete={select(
                 'autoComplete',

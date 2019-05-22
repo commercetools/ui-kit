@@ -8,11 +8,9 @@ const baseProps = {
 };
 
 describe('PasswordInput', () => {
-  it('should forward data-attributes', () => {
-    const { container } = render(
-      <PasswordInput {...baseProps} data-foo="bar" />
-    );
-    expect(container.querySelector('input')).toHaveAttribute('data-foo', 'bar');
+  it('should forward any attributes', () => {
+    const { container } = render(<PasswordInput {...baseProps} foo="bar" />);
+    expect(container.querySelector('input')).toHaveAttribute('foo', 'bar');
   });
 
   it('should render a password input', () => {
@@ -34,7 +32,7 @@ describe('PasswordInput', () => {
   });
 
   it('should have ARIA properties for the readonly state', () => {
-    const { container } = render(<PasswordInput {...baseProps} isReadOnly />);
+    const { container } = render(<PasswordInput {...baseProps} readOnly />);
     expect(container.querySelector('input')).toHaveAttribute(
       'aria-readonly',
       'true'
@@ -58,38 +56,6 @@ describe('PasswordInput', () => {
     const event = { target: { value: 5 } };
     fireEvent.change(container.querySelector('input'), event);
     expect(onChange).toHaveBeenCalled();
-  });
-
-  it('should call onFocus when the input is focused', () => {
-    const onFocus = jest.fn();
-    const { container } = render(
-      <PasswordInput {...baseProps} onFocus={onFocus} />
-    );
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-  });
-
-  it('should call onBlur when input loses focus', () => {
-    const onFocus = jest.fn();
-    const { container } = render(
-      <PasswordInput {...baseProps} onFocus={onFocus} />
-    );
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
-  });
-
-  it('should have focus automatically when isAutofocussed is passed', () => {
-    const { container } = render(
-      <PasswordInput {...baseProps} isAutofocussed />
-    );
-    expect(container.querySelector('input')).toHaveFocus();
-  });
-
-  it('should be disabled when isDisabled is passed', () => {
-    const { container } = render(<PasswordInput {...baseProps} isDisabled />);
-    expect(container.querySelector('input')).toHaveAttribute('disabled');
   });
 
   it('should have autoComplete set to `on`', () => {
