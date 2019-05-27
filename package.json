@@ -144,7 +144,7 @@
     "husky": "2.3.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.8.0",
-    "jest-dom": "3.2.2",
+    "jest-dom": "3.4.0",
     "jest-enzyme": "7.0.2",
     "jest-localstorage-mock": "2.4.0",
     "jest-puppeteer": "4.1.1",
