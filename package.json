@@ -124,7 +124,7 @@
     "conventional-changelog-cli": "2.0.21",
     "cross-env": "5.2.0",
     "enzyme": "3.9.0",
-    "enzyme-adapter-react-16": "1.13.1",
+    "enzyme-adapter-react-16": "1.13.2",
     "enzyme-to-json": "3.3.5",
     "eslint": "5.16.0",
     "eslint-config-airbnb-base": "13.1.0",
