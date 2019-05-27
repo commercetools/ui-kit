@@ -57,7 +57,6 @@
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "release:next": "yarn publish --tag next",
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
-    "test:visual": "jest --config jest.visual.config.js --runInBand",
     "visual-testing-app:build": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
     "visual-testing-app:build:watch": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js --watch",
     "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001"
