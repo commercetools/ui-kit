@@ -2,7 +2,7 @@
   "extends": [
     "stylelint-config-standard"
   ],
-    "plugins": [
+  "plugins": [
     "stylelint-order"
   ],
   "rules": {
