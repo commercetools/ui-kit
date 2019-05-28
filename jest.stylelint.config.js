@@ -1,5 +1,5 @@
 module.exports = {
-  runner: '<rootDir>/test/jest-styles-runner/index.js',
+  runner: 'jest-runner-stylelint',
   displayName: 'stylelint',
   moduleFileExtensions: ['js'],
   modulePathIgnorePatterns: [
