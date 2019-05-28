@@ -94,7 +94,7 @@ export const TagLinkBody = props => {
           css`
             padding-right: ${vars.spacingS};
             &:hover {
-              &:after {
+              &::after {
                 position: absolute;
                 right: -1px;
                 content: '';
@@ -182,7 +182,7 @@ export const TagNormalBody = props => (
         css`
           &:hover {
             box-shadow: ${vars.shadowBoxTagWhenHovered};
-            &:after {
+            &::after {
               position: absolute;
               right: -1px;
               content: '';

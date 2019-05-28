@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
@@ -9,26 +10,30 @@ import vars from '../../../../materials/custom-properties';
 const thumbSmallSize = '13px';
 const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
 
+const sizeStyles = props => {
+  if (props.size === 'small')
+    return css`
+      height: calc(${vars.standardInputHeight} / 2);
+      width: calc(${vars.standardInputHeight});
+    `;
+  return css`
+    height: calc(${vars.standardInputHeight});
+    width: calc(${vars.standardInputHeight} * 2);
+  `;
+};
+
 const Label = styled.label`
   position: relative;
   display: inline-block;
   cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
 
-  ${props =>
-    props.size === 'small'
-      ? `
-        height: calc(${vars.standardInputHeight} / 2);
-        width: calc(${vars.standardInputHeight});
-      `
-      : `
-        height: calc(${vars.standardInputHeight});
-        width: calc(${vars.standardInputHeight} * 2);
-      `}
+  ${sizeStyles}
 `;
 
 const Span = styled.span`
-  // this is the track
-  &:before {
+  /* this is the track */
+
+  &::before {
     border-radius: 16px;
     box-shadow: ${vars.shadow9};
     background-color: ${vars.colorNeutral60};
@@ -42,8 +47,8 @@ const Span = styled.span`
     width: 100%;
   }
 
-  // this is the thumb
-  &:after {
+  /* this is the thumb */
+  &::after {
     content: '';
     position: absolute;
     transform: translateY(-50%);
@@ -61,19 +66,19 @@ const Span = styled.span`
 `;
 
 const Input = styled.input`
-  &:checked + ${Span}:before {
+  &:checked + ${Span}::before {
     background: ${vars.colorPrimary};
   }
 
-  &:disabled + ${Span}:before {
+  &:disabled + ${Span}::before {
     background: ${vars.colorNeutral};
   }
 
-  &:disabled&:checked + ${Span}:before {
+  &:disabled&:checked + ${Span}::before {
     background: ${vars.colorPrimary25};
   }
 
-  &:checked + ${Span}:after {
+  &:checked + ${Span}::after {
     transform: ${props =>
       props.size === 'small'
         ? 'translate(117%, -50%)'
@@ -81,9 +86,9 @@ const Input = styled.input`
   }
 
   :not(:disabled)&:hover
-    + ${Span}:after,
+    + ${Span}::after,
     :not(:disabled)&:focus
-    + ${Span}:after {
+    + ${Span}::after {
     box-shadow: ${vars.shadow16};
   }
 `;

@@ -213,25 +213,25 @@ const getBorderColorWhenFocused = props => {
 };
 
 const getClearSectionHoverStyles = props => {
-  const overwrittenVars = {
-    ...vars,
-    ...props.theme,
-  };
+  if (!props.isDisabled && !props.isReadOnly) {
+    const overwrittenVars = {
+      ...vars,
+      ...props.theme,
+    };
 
-  return css`
-    &:hover svg * {
-      fill: ${overwrittenVars.colorWarning};
-    }
-  `;
+    return css`
+      &:hover svg * {
+        fill: ${overwrittenVars.colorWarning};
+      }
+    `;
+  }
+
+  return css``;
 };
 
 const StyledClearSection = styled.div`
   ${getClearSectionStyles}
-
-  &:hover {
-    ${props =>
-      !props.isDisabled && !props.isReadOnly && getClearSectionHoverStyles}
-  }
+  ${getClearSectionHoverStyles}
 `;
 
 const StyledClockIconContainer = styled.label`

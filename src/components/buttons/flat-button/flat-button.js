@@ -41,48 +41,40 @@ export const FlatButton = props => {
       onClick={props.onClick}
       isDisabled={props.isDisabled}
       css={css`
-          display: flex;
-          align-items: center;
-          font-size: 1rem;
-          border: none;
-          background: none;
-          padding: 0;
-          min-height: initial;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        padding: 0;
+        min-height: initial;
+        p {
+          color: ${props.isDisabled
+            ? vars.colorNeutral
+            : getTextColor(props.tone)};
+        }
+
+        svg * {
+          fill: ${props.isDisabled
+            ? vars.colorNeutral
+            : getTextColor(props.tone, false)};
+        }
+
+        &:hover,
+        &:focus {
           p {
-            color: ${
-              props.isDisabled ? vars.colorNeutral : getTextColor(props.tone)
-            };
+            color: ${props.isDisabled
+              ? vars.colorNeutral
+              : getTextColor(props.tone, true)};
           }
 
           svg * {
-              fill: ${
-                props.isDisabled
-                  ? vars.colorNeutral
-                  : getTextColor(props.tone, false)
-              };
-            }
+            fill: ${props.isDisabled
+              ? vars.colorNeutral
+              : getTextColor(props.tone, true)};
           }
-
-          &:hover,
-          &:focus {
-            p {
-              color: ${
-                props.isDisabled
-                  ? vars.colorNeutral
-                  : getTextColor(props.tone, true)
-              };
-            }
-
-            svg * {
-                fill: ${
-                  props.isDisabled
-                    ? vars.colorNeutral
-                    : getTextColor(props.tone, true)
-                };
-              }
-            }
-          }
-        `}
+        }
+      `}
       buttonAttributes={dataProps}
     >
       <Spacings.Inline scale="xs" alignItems="center">

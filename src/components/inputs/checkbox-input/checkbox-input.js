@@ -14,17 +14,24 @@ import vars from '../../../../materials/custom-properties';
 
 const sequentialId = createSequentialId('checkbox-input-');
 
+const hoverStyles = props => {
+  if (!props.hasError && !props.disabled) {
+    return css`
+      &:hover svg [id$='borderAndContent'] > [id$='border'] {
+        stroke: ${vars.borderColorForInputWhenFocused};
+      }
+    `;
+  }
+  return css``;
+};
+
 const Label = styled.label`
   display: flex;
   align-items: center;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   position: relative;
-  ${props =>
-    !props.hasError &&
-    !props.disabled &&
-    `  &:hover svg [id$='borderAndContent'] > [id$='border'] {
-    stroke: ${vars.borderColorForInputWhenFocused};
-  }`}
+
+  ${hoverStyles}
 `;
 
 class CheckboxInput extends React.PureComponent {
