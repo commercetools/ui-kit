@@ -33,7 +33,7 @@ export default class CalendarMenu extends Component {
             background-color: ${vars.colorSurface};
             z-index: 99999; /* copied from flatpickr */
           `,
-          hasFooter &&
+          !hasFooter &&
             css`
               padding-bottom: 10px;
             `,
