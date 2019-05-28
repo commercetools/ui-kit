@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 const GridItem = styled.div(props => ({
+  gridArea: props.gridArea,
+  gridColumn: props.gridColumn,
   gridColumnStart: props.gridColumnStart,
   gridColumnEnd: props.gridColumnEnd,
+  gridRow: props.gridRow,
   gridRowStart: props.gridRowStart,
   gridRowEnd: props.gridRowEnd,
-  gridColumn: props.gridColumn,
-  gridRow: props.gridRow,
-  gridArea: props.gridArea,
   justifySelf: props.justifySelf,
   alignSelf: props.alignSelf,
   placeSelf: props.placeSelf,
@@ -17,13 +17,13 @@ GridItem.displayName = 'GridItem';
 GridItem.propTypes = {
   children: PropTypes.node,
   // List based on https://css-tricks.com/snippets/css/complete-guide-grid
+  gridArea: PropTypes.string,
+  gridColumn: PropTypes.string,
   gridColumnStart: PropTypes.string,
   gridColumnEnd: PropTypes.string,
+  gridRow: PropTypes.string,
   gridRowStart: PropTypes.string,
   gridRowEnd: PropTypes.string,
-  gridColumn: PropTypes.string,
-  gridRow: PropTypes.string,
-  gridArea: PropTypes.string,
   justifySelf: PropTypes.oneOf(['start', 'end', 'center', 'stretch']),
   alignSelf: PropTypes.oneOf(['start', 'end', 'center', 'stretch']),
   placeSelf: PropTypes.oneOf(['start', 'end', 'center', 'stretch']),
@@ -31,13 +31,14 @@ GridItem.propTypes = {
 
 const Grid = styled.div(props => ({
   display: props.display,
+  grid: props.grid,
+  gridTemplate: props.gridTemplate,
   gridTemplateColumns: props.gridTemplateColumns,
   gridTemplateRows: props.gridTemplateRows,
   gridTemplateAreas: props.gridTemplateAreas,
-  gridTemplate: props.gridTemplate,
+  gridGap: props.gridGap,
   gridColumnGap: props.gridColumnGap,
   gridRowGap: props.gridRowGap,
-  gridGap: props.gridGap,
   justifyItems: props.justifyItems,
   alignItems: props.alignItems,
   placeItems: props.placeItems,
@@ -47,7 +48,6 @@ const Grid = styled.div(props => ({
   gridAutoColumns: props.gridAutoColumns,
   gridAutoRows: props.gridAutoRows,
   gridAutoFlow: props.gridAutoFlow,
-  grid: props.grid,
 }));
 Grid.displayName = 'Grid';
 Grid.propTypes = {

@@ -56,19 +56,16 @@ const getStateStyles = (isDisabled, isActive, theme) => {
       case 'blue':
         return [
           activeStyle,
+          isDisabled &&
+            // When the button is active and somehow is disabled it should have
+            // a different color to indicate that it's active but can't receive any actions
+            css`
+              background-color: ${vars.colorInfo85};
+              border-color: ${vars.colorInfo85};
+              color: ${vars.colorSurface};
+              box-shadow: ${vars.shadow9};
+            `,
           css`
-            ${
-              // When the button is active and somehow is disabled it should have
-              // a different color to indicate that it's active but can't receive any actions
-              isDisabled
-                ? `
-                  background-color: ${vars.colorInfo85};
-                  border-color: ${vars.colorInfo85};
-                  color: ${vars.colorSurface};
-                  box-shadow: ${vars.shadow9};
-                `
-                : ''
-            }
             background-color: ${vars.colorInfo};
             border-color: ${vars.colorInfo};
             color: ${vars.colorSurface};
@@ -81,19 +78,17 @@ const getStateStyles = (isDisabled, isActive, theme) => {
       case 'green':
         return [
           activeStyle,
+          // When the button is active and somehow is disabled it should have
+          // a different color to indicate that it's active but can't receive any actions
+          isDisabled &&
+            css`
+              background-color: ${vars.colorPrimary85};
+              border-color: ${vars.colorPrimary85};
+              color: ${vars.colorSurface};
+              box-shadow: ${vars.shadow9};
+            `,
+
           css`
-            ${
-              // When the button is active and somehow is disabled it should have
-              // a different color to indicate that it's active but can't receive any actions
-              isDisabled
-                ? `
-                  background-color: ${vars.colorPrimary85};
-                  border-color: ${vars.colorPrimary85};
-                  color: ${vars.colorSurface};
-                  box-shadow: ${vars.shadow9};
-                `
-                : ''
-            }
             background-color: ${vars.colorPrimary};
             color: ${vars.colorSurface};
             &:hover {

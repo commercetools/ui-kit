@@ -485,6 +485,7 @@ export default class BaseTable extends React.Component {
           styles={css`
             .ReactVirtualized__Grid {
               background: ${vars.colorSurface};
+
               /* Removes :focus ring from table */
               outline-width: 0;
             }

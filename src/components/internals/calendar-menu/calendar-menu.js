@@ -18,31 +18,34 @@ export default class CalendarMenu extends Component {
     return (
       <div
         {...rest}
-        css={css`
-          overflow-y: scroll;
-          color: ${vars.colorSolid};
-          font-family: ${vars.fontFamilyDefault};
-          border: 1px solid ${vars.borderColorForInputWhenFocused};
-          border-radius: ${vars.borderRadiusForInput};
-          margin-top: ${vars.spacingXs};
-          font-size: ${vars.fontSizeDefault};
-          position: absolute;
-          box-sizing: border-box;
-          width: 100%;
-          background-color: ${vars.colorSurface};
-          z-index: 99999; /* copied from flatpickr */;
-          ${hasFooter ? '' : `padding-bottom: 10px;`}
-          ${
-            hasError
-              ? `border-color: ${vars.borderColorForInputWhenError};`
-              : ''
-          }
-          ${
-            hasWarning
-              ? `border-color: ${vars.borderColorForInputWhenWarning};`
-              : ''
-          }
-        `}
+        css={[
+          css`
+            overflow-y: scroll;
+            color: ${vars.colorSolid};
+            font-family: ${vars.fontFamilyDefault};
+            border: 1px solid ${vars.borderColorForInputWhenFocused};
+            border-radius: ${vars.borderRadiusForInput};
+            margin-top: ${vars.spacingXs};
+            font-size: ${vars.fontSizeDefault};
+            position: absolute;
+            box-sizing: border-box;
+            width: 100%;
+            background-color: ${vars.colorSurface};
+            z-index: 99999; /* copied from flatpickr */
+          `,
+          !hasFooter &&
+            css`
+              padding-bottom: 10px;
+            `,
+          hasError &&
+            css`
+              border-color: ${vars.borderColorForInputWhenError};
+            `,
+          hasWarning &&
+            css`
+              border-color: ${vars.borderColorForInputWhenWarning};
+            `,
+        ]}
       >
         {this.props.children}
         {this.props.footer}

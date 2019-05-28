@@ -11,5 +11,6 @@ module.exports = {
     //
     // For that reason, we move the `--onlyChanged` flag next to it.
     'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
+    'yarn lint:css --reporters=jest-silent-reporter --onlyChanged --passWithNoTests',
   ],
 };
