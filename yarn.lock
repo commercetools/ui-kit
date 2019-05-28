@@ -5001,14 +5001,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-jest-runner@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/create-jest-runner/-/create-jest-runner-0.5.0.tgz#dee44a6172ad96126164c4882eec98e83ad6928a"
-  integrity sha512-QsafAE65AA7UVQl8STpiPBQSE6cInxDLKe4B0rieYiHZjxajZq/uj9o6E4mXNX9UD+Rk7ZKWv1JVgMl30cNckw==
-  dependencies:
-    jest-worker "^24.0.0"
-    throat "^4.1.0"
-
 create-jest-runner@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/create-jest-runner/-/create-jest-runner-0.1.1.tgz#b4d957f61c391305b1f2ad797e905c655b4dc68c"
@@ -8885,7 +8877,7 @@ jest-runner-eslint@0.7.3:
     create-jest-runner "^0.4.1"
     eslint "^5.6.0"
 
-jest-runner-stylelint@^1.0.0:
+jest-runner-stylelint@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/jest-runner-stylelint/-/jest-runner-stylelint-1.0.0.tgz#a27ebe304943c18941f5376aaceffacf8be0247e"
   integrity sha1-on6+MElDwYlB9TdqrO/6z4vgJH4=
@@ -9085,7 +9077,7 @@ jest-worker@^23.2.0:
   dependencies:
     merge-stream "^1.0.1"
 
-jest-worker@^24.0.0, jest-worker@^24.6.0:
+jest-worker@^24.6.0:
   version "24.6.0"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-24.6.0.tgz#7f81ceae34b7cde0c9827a6980c35b7cdc0161b3"
   integrity sha512-jDwgW5W9qGNvpI1tNnvajh0a5IE/PuGLFmHk6aR/BZFz8tSgGw17GsDPXAJ6p91IvYDjOw8GpFbvvZGAK+DPQQ==
