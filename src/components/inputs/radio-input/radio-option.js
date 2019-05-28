@@ -14,46 +14,49 @@ const Input = styled.input`
   }
 `;
 
-const Option = props => (
-  <label
-    css={getLabelStyles(props)}
-    role="radio"
-    aria-checked={props.isChecked}
-    onFocus={props.onFocus}
-    onBlur={props.onBlur}
-    htmlFor={props.id}
-  >
-    <Input
-      css={accessibleHiddenInputStyles}
-      id={props.id}
-      name={props.name}
-      value={props.value}
-      onChange={props.isReadOnly ? undefined : props.onChange}
-      disabled={props.isDisabled}
-      checked={props.isChecked}
-      type="radio"
-      readOnly={props.isReadOnly}
-      aria-readonly={props.isReadOnly}
-      {...filterDataAttributes(props)}
-    />
-    <div css={getContainerStyles(props)}>
-      {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
-    </div>
-    <div
-      css={css`
-        width: 100%;
-        margin-left: ${vars.spacingS};
-        font-size: 1rem;
-        font-family: ${vars.fontFamilyDefault};
-        color: ${props.isDisabled
-          ? vars.fontColorForInputWhenDisabled
-          : vars.fontColorForInput};
-      `}
+const Option = props => {
+  const labelProps = props.id ? { htmlFor: props.id } : {};
+  return (
+    <label
+      css={getLabelStyles(props)}
+      role="radio"
+      aria-checked={props.isChecked}
+      onFocus={props.onFocus}
+      onBlur={props.onBlur}
+      {...labelProps}
     >
-      {props.children}
-    </div>
-  </label>
-);
+      <Input
+        css={accessibleHiddenInputStyles}
+        id={props.id}
+        name={props.name}
+        value={props.value}
+        onChange={props.isReadOnly ? undefined : props.onChange}
+        disabled={props.isDisabled}
+        checked={props.isChecked}
+        type="radio"
+        readOnly={props.isReadOnly}
+        aria-readonly={props.isReadOnly}
+        {...filterDataAttributes(props)}
+      />
+      <div css={getContainerStyles(props)}>
+        {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
+      </div>
+      <div
+        css={css`
+          width: 100%;
+          margin-left: ${vars.spacingS};
+          font-size: 1rem;
+          font-family: ${vars.fontFamilyDefault};
+          color: ${props.isDisabled
+            ? vars.fontColorForInputWhenDisabled
+            : vars.fontColorForInput};
+        `}
+      >
+        {props.children}
+      </div>
+    </label>
+  );
+};
 Option.displayName = 'RadioOption';
 Option.propTypes = {
   // Direct props

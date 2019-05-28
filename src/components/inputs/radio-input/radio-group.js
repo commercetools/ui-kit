@@ -58,7 +58,7 @@ class Group extends React.PureComponent {
         // NOTE: Allowing to intersperse other elements than `Option`.
         if (child && child.type.displayName === Option.displayName) {
           return React.cloneElement(child, {
-            id: `${this.props.id}-${index}`,
+            id: this.props.id && `${this.props.id}-${index}`,
             name: this.props.name,
             isChecked: this.props.value === child.props.value,
             isDisabled: child.props.isDisabled || this.props.isDisabled,
