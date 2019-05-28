@@ -5041,6 +5041,14 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+create-jest-runner@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/create-jest-runner/-/create-jest-runner-0.5.0.tgz#dee44a6172ad96126164c4882eec98e83ad6928a"
+  integrity sha512-QsafAE65AA7UVQl8STpiPBQSE6cInxDLKe4B0rieYiHZjxajZq/uj9o6E4mXNX9UD+Rk7ZKWv1JVgMl30cNckw==
+  dependencies:
+    jest-worker "^24.0.0"
+    throat "^4.1.0"
+
 create-jest-runner@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/create-jest-runner/-/create-jest-runner-0.1.1.tgz#b4d957f61c391305b1f2ad797e905c655b4dc68c"
@@ -5063,14 +5071,6 @@ create-jest-runner@^0.4.1:
   integrity sha512-JOy675JMZ3b05F3VfAAi6Igme3pVBWu7Rt+gbW9ujAiX/Dua7+G47O7IbfiUU/FZjXhtipu/tz930b++UMGQEA==
   dependencies:
     jest-worker "^23.2.0"
-    throat "^4.1.0"
-
-create-jest-runner@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/create-jest-runner/-/create-jest-runner-0.5.0.tgz#dee44a6172ad96126164c4882eec98e83ad6928a"
-  integrity sha512-QsafAE65AA7UVQl8STpiPBQSE6cInxDLKe4B0rieYiHZjxajZq/uj9o6E4mXNX9UD+Rk7ZKWv1JVgMl30cNckw==
-  dependencies:
-    jest-worker "^24.0.0"
     throat "^4.1.0"
 
 create-react-context@<=0.2.2:
@@ -14183,6 +14183,11 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
   integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
+
+stylelint-config-prettier@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-prettier/-/stylelint-config-prettier-5.2.0.tgz#b73d56a380662abd434ed745ca84db15e1a5aac6"
+  integrity sha512-ehrG/mBi9CTKkOBi0wlStX58+g9eGJhJW/jFEcCm/dUVHg9I2+T90k4tlyratvhlz876dyrTlor7gvDEaohVnA==
 
 stylelint-config-recommended@^2.2.0:
   version "2.2.0"
