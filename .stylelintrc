@@ -1,5 +1,4 @@
 {
-  "processors": ["stylelint-processor-styled-components"],
   "extends": [
     "stylelint-config-standard"
   ],
@@ -34,6 +33,8 @@
     "selector-descendant-combinator-no-non-space": null,
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
-    "no-empty-source": null
+    "no-empty-source": null,
+    "declaration-empty-line-before": null,
+    "no-missing-end-of-source-newline": null,
   }
 }
