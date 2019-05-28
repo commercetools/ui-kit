@@ -44,14 +44,10 @@ commands:
     steps:
       - attach_workspace:
           at: *working_directory
-  lint_js:
-    description: 'Running JavaScript linters'
+  lint:
+    description: 'Running linters'
     steps:
-      - run: yarn run jest --projects jest.eslint.config.js --maxWorkers=3 --reporters jest-silent-reporter
-  lint_css:
-    description: 'Running CSS linters'
-    steps:
-      - run: yarn run jest --projects jest.stylelint.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run: yarn run jest --projects jest.eslint.config.js jest.stylelint.config.js --maxWorkers=3 --reporters jest-silent-reporter
   unit_test:
     description: 'Running unit tests'
     steps:
@@ -121,8 +117,7 @@ jobs:
     executor: node_10
     steps:
       - install_dependencies
-      - lint_js
-      - lint_css
+      - lint
       - unit_test
   build:
     executor: node_10
