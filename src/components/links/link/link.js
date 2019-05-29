@@ -2,22 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import Styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import getPassThroughProps from '../../../utils/get-pass-through-props';
 import vars from '../../../../materials/custom-properties';
 
-const createStyledComponent = component => Styled(component)`
-  font-family: ${vars.fontFamily};
-  color: ${vars.colorPrimary};
-  font-size: ${vars.fontSizeDefault};
+const getLinkStyles = (props, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+  return css`
+    font-family: ${overwrittenVars.fontFamilyDefault};
+    color: ${overwrittenVars.colorPrimary};
+    font-size: ${overwrittenVars.fontSizeDefault};
 
-  &:hover, &:focus, &:active {
-    color: ${vars.colorPrimary25};
-  }
-`;
-
-const StyledReactRouterLink = createStyledComponent(ReactRouterLink);
-const StyledExternalLink = createStyledComponent('a');
+    &:hover,
+    &:focus,
+    &:active {
+      color: ${overwrittenVars.colorPrimary25};
+    }
+  `;
+};
 
 const Link = props => {
   const remainingProps = getPassThroughProps(
@@ -26,9 +31,23 @@ const Link = props => {
   );
 
   if (props.isExternal) {
-    return <StyledExternalLink href={props.to} {...remainingProps} />;
+    return (
+      <a
+        css={theme => getLinkStyles(props, theme)}
+        href={props.to}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...remainingProps}
+      />
+    );
   }
-  return <StyledReactRouterLink to={props.to} {...remainingProps} />;
+  return (
+    <ReactRouterLink
+      css={theme => getLinkStyles(props, theme)}
+      to={props.to}
+      {...remainingProps}
+    />
+  );
 };
 
 Link.displayName = 'Link';
