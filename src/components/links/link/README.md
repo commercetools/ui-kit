@@ -31,7 +31,7 @@ Links are used either to link to other ui routes, or to link to external pages. 
 | `to`         | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                                       |
 | `isExternal` | `boolean`                                                         |    -     | -      | false   | If true, a regular <a> is rendered instead of the default React Router Link |
 
-The component further forwards all remaining props to the underlying component.
+The component further forwards all remaining props to the underlying component. The external link includes `target="_blank"` and `rel="noopener noreferrer"` by default.
 
 Main Functions and use cases are:
 
