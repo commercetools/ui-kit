@@ -248,11 +248,15 @@ export class SelectInput extends React.Component {
               // depending on whether we're in multi-mode or not (isMulti)
 
               let value = null;
-              if (selectedOptions && !this.props.isMulti) {
+
+              if (this.props.isMulti) {
+                if (selectedOptions) {
+                  value = selectedOptions.map(option => option.value);
+                } else {
+                  value = [];
+                }
+              } else if (selectedOptions) {
                 value = selectedOptions.value;
-              }
-              if (selectedOptions && this.props.isMulti) {
-                value = selectedOptions.map(option => option.value);
               }
 
               this.props.onChange({
