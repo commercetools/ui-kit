@@ -29,7 +29,7 @@ We split our testing into three parts: functionality testing, visual testing and
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106).
 
 - write tests from a user perspective, not from a dev perspective
-- we test using `react-testing-library`
+- we test using `@testing-library/react`
   - we offer `test-utils` as a thin wrapper which sets up the context of tested components
   - we avoid `beforeEach` as it leads to test coupling
   - an `it` can describe the flow of a user

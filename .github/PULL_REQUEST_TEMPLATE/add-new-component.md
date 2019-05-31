@@ -32,7 +32,7 @@
 - Testing
 
   - [ ] Supports `data` attributes
-  - [ ] Uses [react-testing-library](https://github.com/kentcdodds/react-testing-library) tests
+  - [ ] Uses [@testing-library/react](https://github.com/testing-library/react-testing-library) tests
   - [ ] Has visual regression tests
 
 - Accessibility (optional)

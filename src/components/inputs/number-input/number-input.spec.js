@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render, fireEvent } from '@testing-library/react';
 import NumberInput from './number-input';
 
 const baseProps = { value: '', onChange: () => {} };
