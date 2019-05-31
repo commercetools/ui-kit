@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import { withTheme } from 'emotion-theming';
-import {
-  components as defaultComponents,
-  Creatable as CreatableSelect,
-} from 'react-select';
+import { components as defaultComponents } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import Constraints from '../../constraints';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -195,17 +193,24 @@ export class CreatableSelectInput extends React.Component {
                   }
                 : undefined
             }
-            onChange={(value, info) =>
-              // selectedOptions is either an array, or a single option
+            onChange={(value, info) => {
+              // selectedOptions is either an array, or a single option, or null
               // depending on whether we're in multi-mode or not (isMulti)
+
+              let newValue = value;
+
+              if (this.props.isMulti && !newValue) {
+                newValue = [];
+              }
+
               this.props.onChange(
                 {
-                  target: { name: this.props.name, value },
+                  target: { name: this.props.name, value: newValue },
                   persist: () => {},
                 },
                 info
-              )
-            }
+              );
+            }}
             onFocus={this.props.onFocus}
             onInputChange={this.props.onInputChange}
             options={this.props.options}

@@ -363,6 +363,25 @@ describe('in multi mode', () => {
         },
       });
     });
+    it('should call onChange when value is cleared', () => {
+      const onChange = jest.fn();
+      const { getByLabelText, queryByText } = renderInput({
+        onChange,
+        isMulti: true,
+        value: [{ value: 'mango', label: 'Mango' }],
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'Backspace' });
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: [],
+        },
+      });
+      expect(queryByText('Mango')).not.toBeInTheDocument();
+    });
   });
 });
 

@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import { withTheme } from 'emotion-theming';
-import {
-  components as defaultComponents,
-  Async as AsyncSelect,
-} from 'react-select';
+import { components as defaultComponents } from 'react-select';
+import AsyncSelect from 'react-select/async';
 import Constraints from '../../constraints';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -189,9 +187,14 @@ export class AsyncSelectInput extends React.Component {
                 : undefined
             }
             onChange={(value, info) => {
+              let newValue = value;
+              if (this.props.isMulti && !newValue) {
+                newValue = [];
+              }
+
               this.props.onChange(
                 {
-                  target: { name: this.props.name, value },
+                  target: { name: this.props.name, value: newValue },
                   persist: () => {},
                 },
                 info

@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import { withTheme } from 'emotion-theming';
-import {
-  components as defaultComponents,
-  AsyncCreatable as AsyncCreatableSelect,
-} from 'react-select';
+import { components as defaultComponents } from 'react-select';
+import AsyncCreatableSelect from 'react-select/async-creatable';
 import Constraints from '../../constraints';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -193,9 +191,15 @@ export class AsyncCreatableSelectInput extends React.Component {
                 : undefined
             }
             onChange={(value, info) => {
+              // wrapping breaking changes made in react-select v3
+              let newValue = value;
+
+              if (this.props.isMulti && !newValue) {
+                newValue = [];
+              }
               this.props.onChange(
                 {
-                  target: { name: this.props.name, value },
+                  target: { name: this.props.name, value: newValue },
                   persist: () => {},
                 },
                 info
