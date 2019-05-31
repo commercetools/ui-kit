@@ -191,9 +191,15 @@ export class AsyncCreatableSelectInput extends React.Component {
                 : undefined
             }
             onChange={(value, info) => {
+              // wrapping breaking changes made in react-select v3
+              let newValue = value;
+
+              if (this.props.isMulti && !newValue) {
+                newValue = [];
+              }
               this.props.onChange(
                 {
-                  target: { name: this.props.name, value },
+                  target: { name: this.props.name, value: newValue },
                   persist: () => {},
                 },
                 info

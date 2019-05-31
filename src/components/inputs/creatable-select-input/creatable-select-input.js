@@ -193,17 +193,24 @@ export class CreatableSelectInput extends React.Component {
                   }
                 : undefined
             }
-            onChange={(value, info) =>
-              // selectedOptions is either an array, or a single option
+            onChange={(value, info) => {
+              // selectedOptions is either an array, or a single option, or null
               // depending on whether we're in multi-mode or not (isMulti)
+
+              let newValue = value;
+
+              if (this.props.isMulti && !newValue) {
+                newValue = [];
+              }
+
               this.props.onChange(
                 {
-                  target: { name: this.props.name, value },
+                  target: { name: this.props.name, value: newValue },
                   persist: () => {},
                 },
                 info
-              )
-            }
+              );
+            }}
             onFocus={this.props.onFocus}
             onInputChange={this.props.onInputChange}
             options={this.props.options}

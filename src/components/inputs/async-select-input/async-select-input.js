@@ -187,9 +187,14 @@ export class AsyncSelectInput extends React.Component {
                 : undefined
             }
             onChange={(value, info) => {
+              let newValue = value;
+              if (this.props.isMulti && !newValue) {
+                newValue = [];
+              }
+
               this.props.onChange(
                 {
-                  target: { name: this.props.name, value },
+                  target: { name: this.props.name, value: newValue },
                   persist: () => {},
                 },
                 info
