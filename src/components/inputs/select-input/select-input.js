@@ -152,17 +152,18 @@ export class SelectInput extends React.Component {
      * So we need to pass null instead, so that Select clears the selected value.
      */
     return {
-      selectedOptions: props.isMulti
-        ? props.value
-            // Pass the options in the order selected by the use, so that the
-            // sorting is not lost
-            .map(value =>
-              optionsWithoutGroups.find(option => option.value === value)
-            )
-            .filter(Boolean)
-        : optionsWithoutGroups.find(
-            option => has(option, 'value') && option.value === props.value
-          ) || null,
+      selectedOptions:
+        props.isMulti && props.value
+          ? props.value
+              // Pass the options in the order selected by the use, so that the
+              // sorting is not lost
+              .map(value =>
+                optionsWithoutGroups.find(option => option.value === value)
+              )
+              .filter(Boolean)
+          : optionsWithoutGroups.find(
+              option => has(option, 'value') && option.value === props.value
+            ) || null,
     };
   };
 
@@ -242,22 +243,26 @@ export class SelectInput extends React.Component {
                   }
                 : undefined
             }
-            onChange={selectedOptions =>
-              // selectedOptions is either an array, or a single option
+            onChange={selectedOptions => {
+              // selectedOptions is either an array, or a single option, or null
               // depending on whether we're in multi-mode or not (isMulti)
+
+              let value = null;
+              if (selectedOptions && !this.props.isMulti) {
+                value = selectedOptions.value;
+              }
+              if (selectedOptions && this.props.isMulti) {
+                value = selectedOptions.map(option => option.value);
+              }
+
               this.props.onChange({
                 target: {
                   name: this.props.name,
-                  // eslint-disable-next-line no-nested-ternary
-                  value: selectedOptions
-                    ? this.props.isMulti
-                      ? selectedOptions.map(option => option.value)
-                      : selectedOptions.value
-                    : selectedOptions,
+                  value,
                 },
                 persist: () => {},
-              })
-            }
+              });
+            }}
             onFocus={this.props.onFocus}
             onInputChange={this.props.onInputChange}
             options={this.props.options}
