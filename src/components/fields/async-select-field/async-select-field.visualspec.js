@@ -38,6 +38,7 @@ describe('AsyncSelectField', () => {
       );
       // typing triggers async loadOptions
       await select.type('O');
+      await expect(page).toMatch('One');
       await percySnapshot(
         page,
         'AsyncSelectField - withDefaultOptions disabled - open - after typing'
