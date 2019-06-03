@@ -19,7 +19,7 @@ aliases:
 executors:
   node_10:
     docker:
-      - image: circleci/node:10.15
+      - image: circleci/node:10.16
     working_directory: *working_directory
 
 commands:
