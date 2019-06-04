@@ -73,6 +73,7 @@
     "downshift": "3.2.10",
     "emotion-theming": "10.0.14",
     "immutable": "4.0.0-rc.12",
+    "is-hotkey": "0.1.4",
     "lodash": "4.17.11",
     "lodash-es": "4.17.11",
     "prop-types": "15.7.2",
@@ -83,6 +84,7 @@
     "react-textarea-autosize": "7.1.0",
     "react-virtualized": "9.21.1",
     "slate": "0.47.3",
+    "slate-prop-types": "^0.5.37",
     "slate-react": "0.22.3",
     "tiny-invariant": "1.0.4",
     "warning": "4.0.3"
