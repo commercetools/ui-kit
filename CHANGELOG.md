@@ -1,4 +1,22 @@
+<a name="9.8.2"></a>
+
+# [9.8.2](https://github.com/commercetools/ui-kit/compare/v9.8.1...v9.8.2) (2019-06-04)
+
+### Bug Fixes
+
+- `Table`: onSortChange being called without being passed ([#827](https://github.com/commercetools/ui-kit/issues/827)) ([0c45f89](https://github.com/commercetools/ui-kit/commit/0c45f89))
+- `CollapsiblePanel`: remove z-index ([#805](https://github.com/commercetools/ui-kit/issues/805)) ([a526942](https://github.com/commercetools/ui-kit/commit/a526942))
+- `IconButton`: centre icon ([#828](https://github.com/commercetools/ui-kit/issues/828)) ([482e824](https://github.com/commercetools/ui-kit/commit/482e824))
+- `MultilineInput`: expand behaviour not working ([#804](https://github.com/commercetools/ui-kit/issues/804)) ([f5d4c4d](https://github.com/commercetools/ui-kit/commit/f5d4c4d))
+- `RadioInput`: do not use htmlFor if no id is passed ([#817](https://github.com/commercetools/ui-kit/issues/817)) ([95f2180](https://github.com/commercetools/ui-kit/commit/95f2180))
+
+### Features
+
+- add stylelint for css-in-js ([#815](https://github.com/commercetools/ui-kit/issues/815)) ([a205725](https://github.com/commercetools/ui-kit/commit/a205725))
+
 <a name="9.8.1"></a>
+
+# [9.8.1](https://github.com/commercetools/ui-kit/compare/v9.8.0...v9.8.1) (2019-05-18)
 
 ### Bug Fixes
 
