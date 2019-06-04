@@ -717,44 +717,63 @@ describe('BaseTable', () => {
     let props;
     let wrapper;
     describe('handleChangeSortDirection', () => {
-      beforeEach(() => {
-        props = createTestProps({
-          onSortChange: jest.fn(),
-          sortBy: 'id',
-          sortDirection: 'ASC',
-        });
-        wrapper = shallow(<BaseTable {...props} />);
-      });
-      describe('when previous direction was ASC', () => {
-        beforeEach(() => {
-          wrapper.instance().handleChangeSortDirection('id');
-        });
-        it('should call onSortChange with direction DESC', () => {
-          expect(props.onSortChange).toHaveBeenCalledWith('id', 'DESC');
-        });
-      });
-      describe('when previous direction was DESC', () => {
+      describe('with `onSortChange`', () => {
         beforeEach(() => {
           props = createTestProps({
             onSortChange: jest.fn(),
             sortBy: 'id',
-            sortDirection: 'DESC',
+            sortDirection: 'ASC',
           });
           wrapper = shallow(<BaseTable {...props} />);
         });
-        beforeEach(() => {
-          wrapper.instance().handleChangeSortDirection('id');
+        describe('when previous direction was ASC', () => {
+          beforeEach(() => {
+            wrapper.instance().handleChangeSortDirection('id');
+          });
+          it('should call onSortChange with direction DESC', () => {
+            expect(props.onSortChange).toHaveBeenCalledWith('id', 'DESC');
+          });
         });
-        it('should call onSortChange with direction ASC', () => {
-          expect(props.onSortChange).toHaveBeenCalledWith('id', 'ASC');
+        describe('when previous direction was DESC', () => {
+          beforeEach(() => {
+            props = createTestProps({
+              onSortChange: jest.fn(),
+              sortBy: 'id',
+              sortDirection: 'DESC',
+            });
+            wrapper = shallow(<BaseTable {...props} />);
+          });
+          beforeEach(() => {
+            wrapper.instance().handleChangeSortDirection('id');
+          });
+          it('should call onSortChange with direction ASC', () => {
+            expect(props.onSortChange).toHaveBeenCalledWith('id', 'ASC');
+          });
+        });
+        describe('when the sorted column changes', () => {
+          beforeEach(() => {
+            wrapper.instance().handleChangeSortDirection('foo');
+          });
+          it('should call onSortChange with direction ASC', () => {
+            expect(props.onSortChange).toHaveBeenCalledWith('foo', 'ASC');
+          });
         });
       });
-      describe('when the sorted column changes', () => {
+
+      describe('without `onSortChange`', () => {
         beforeEach(() => {
-          wrapper.instance().handleChangeSortDirection('foo');
+          props = createTestProps({
+            onSortChange: null,
+            sortBy: 'id',
+            sortDirection: 'ASC',
+          });
+          wrapper = shallow(<BaseTable {...props} />);
+
+          wrapper.instance().handleChangeSortDirection('id');
         });
-        it('should call onSortChange with direction ASC', () => {
-          expect(props.onSortChange).toHaveBeenCalledWith('foo', 'ASC');
+
+        it('should not call onSortChange', () => {
+          expect(props.onSortChange).toBe(null);
         });
       });
     });
