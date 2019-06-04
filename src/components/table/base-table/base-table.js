@@ -196,6 +196,8 @@ export default class BaseTable extends React.Component {
   // from the row index before passing it to the parent
   getBodyRowIndex = rowIndex => rowIndex - 1;
   handleChangeSortDirection = columnKey => {
+    if (!this.props.onSortChange) return;
+
     if (columnKey !== this.props.sortBy) {
       this.props.onSortChange(columnKey, 'ASC');
     } else {
