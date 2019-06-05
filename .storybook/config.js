@@ -10,7 +10,7 @@ addParameters({
       brandUrl: 'https://uikit.commercetools.com',
       // To control appearance:
       brandImage:
-        'http://cdn.rawgit.com/commercetools/press-kit/master/PNG/72DPI/CT%20logo%20chrom%20black%20horizontal%20RGB%2072dpi.png',
+        'https://unpkg.com/@commercetools-frontend/assets/logos/commercetools_primary-logo_horizontal_RGB.png',
     }),
     isFullScreen: false,
     panelPosition: 'right',
