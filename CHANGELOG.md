@@ -1,6 +1,14 @@
+<a name="9.8.3></a>
+
+# [9.8.3](https://github.com/commercetools/ui-kit/compare/v9.8.2...v9.8.3) (2019-06-05)
+
+### Bug Fixes
+
+- `ToggleInput`: disabled style fixes ([#832](https://github.com/commercetools/ui-kit/issues/832))
+
 <a name="9.8.2"></a>
 
-# [9.8.2](https://github.com/commercetools/ui-kit/compare/v9.8.1...v9.8.2) (2019-06-04)
+# [9.8.2](https://github.com/commercetools/ui-kit/compare/v9.8.1...v9.8.2) (2019-06-05)
 
 ### Bug Fixes
 
