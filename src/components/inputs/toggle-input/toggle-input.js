@@ -66,39 +66,23 @@ const Span = styled.span`
 `;
 
 const Input = styled.input`
-  /* when checked */
-  &:checked {
-    + ${Span}::before {
-      background: ${vars.colorPrimary};
-    }
-    & + ${Span}::after {
-      transform: ${props =>
-        props.size === 'small'
-          ? 'translate(117%, -50%)'
-          : 'translate(127%, -50%)'};
-    }
+  &:checked + ${Span}::before {
+    background: ${vars.colorPrimary};
   }
 
-  /* when disabled */
-  &:disabled {
-    & + ${Span}::before {
-      background: ${vars.colorNeutral};
-      box-shadow: none;
-    }
-    & + ${Span}::after {
-      background: ${vars.colorNavy95};
-      box-shadow: none;
-    }
+  &:disabled + ${Span}::before {
+    background: ${vars.colorNeutral};
   }
 
-  /* when disabled and checked */
-  &:disabled&:checked {
-    & + ${Span}::before {
-      background: ${vars.colorPrimary25};
-    }
-    & + ${Span}::after {
-      background: ${vars.colorGray};
-    }
+  &:disabled&:checked + ${Span}::before {
+    background: ${vars.colorPrimary25};
+  }
+
+  &:checked + ${Span}::after {
+    transform: ${props =>
+      props.size === 'small'
+        ? 'translate(117%, -50%)'
+        : 'translate(127%, -50%)'};
   }
 
   :not(:disabled)&:hover
