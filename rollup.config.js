@@ -18,6 +18,9 @@ const configureRollupPlugins = (options = {}) =>
   [
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.npm_package_version': JSON.stringify(
+        process.env.npm_package_version
+      ),
     }),
     // To use the nodejs `resolve` algorithm
     resolve(),

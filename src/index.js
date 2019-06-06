@@ -138,6 +138,8 @@ export { default as customProperties } from '../materials/custom-properties';
 
 export { i18n };
 
+export { default as version } from './version';
+
 export {
   default as ContentNotification,
 } from './components/notifications/content-notification';
