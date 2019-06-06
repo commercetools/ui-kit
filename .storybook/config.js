@@ -1,5 +1,7 @@
 import { addParameters, configure, addDecorator } from '@storybook/react';
+import { withContexts } from '@storybook/addon-contexts/react';
 import { create } from '@storybook/theming';
+import { contexts } from './configs/contexts'; // we will define the contextual setups later in API section
 import IntlDecorator from './decorators/intl';
 
 addParameters({
@@ -46,5 +48,7 @@ function loadStories() {
 }
 
 addDecorator(IntlDecorator);
+
+addDecorator(withContexts(contexts));
 
 configure(loadStories, module);

@@ -1624,6 +1624,20 @@
     react-inspector "^3.0.2"
     uuid "^3.3.2"
 
+"@storybook/addon-contexts@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-contexts/-/addon-contexts-5.1.1.tgz#4f5fa58f3955583f61586ebb3d92038f4e6f62b0"
+  integrity sha512-1LGZtxUOEgRPQozUUt/HCQWShHJil3qXdpsMmThuR8J+7u3FVppMyMZQs075S2OgXiNMspPPi9Nt9YYcDicorA==
+  dependencies:
+    "@storybook/addons" "5.1.1"
+    "@storybook/api" "5.1.1"
+    "@storybook/components" "5.1.1"
+    "@storybook/core-events" "5.1.1"
+  optionalDependencies:
+    preact "*"
+    react "*"
+    vue "*"
+
 "@storybook/addon-info@5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.1.1.tgz#17230d82a5f3aaa3a74c35806f63ff1ce24e01fa"
@@ -11372,6 +11386,11 @@ pptr-testing-library@0.4.0:
     dom-testing-library "^4.1.1"
     wait-for-expect "^1.2.0"
 
+preact@*:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-8.4.2.tgz#1263b974a17d1ea80b66590e41ef786ced5d6a23"
+  integrity sha512-TsINETWiisfB6RTk0wh3/mvxbGRvx+ljeBccZ4Z6MPFKgu/KFGyf2Bmw3Z/jlXhL5JlNKY6QAbA9PVyzIy9//A==
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -12136,7 +12155,7 @@ react-virtualized@9.21.1:
     prop-types "^15.6.0"
     react-lifecycles-compat "^3.0.4"
 
-react@16.8.6, react@^16.7.0, react@^16.8.1, react@^16.8.4:
+react@*, react@16.8.6, react@^16.7.0, react@^16.8.1, react@^16.8.4:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==
@@ -14661,6 +14680,11 @@ vm-browserify@0.0.4:
   integrity sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
   dependencies:
     indexof "0.0.1"
+
+vue@*:
+  version "2.6.10"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+  integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
 vuex@^3.1.0:
   version "3.1.1"
