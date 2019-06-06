@@ -1,4 +1,4 @@
-import { i18n, customProperties } from 'ui-kit';
+import { i18n, customProperties, version } from 'ui-kit';
 
 describe('exports', () => {
   it('should export i18n for five languages', () => {
@@ -7,6 +7,12 @@ describe('exports', () => {
 
   it('should export custom-properties', () => {
     expect(customProperties).toBeTruthy();
+  });
+
+  describe('version', () => {
+    it('should match package.json version', () => {
+      expect(version).toMatch(process.env.npm_package_version);
+    });
   });
 
   it('should have the translations', () => {
