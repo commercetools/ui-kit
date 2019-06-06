@@ -1,7 +1,7 @@
 import { addParameters, configure, addDecorator } from '@storybook/react';
 import { withContexts } from '@storybook/addon-contexts/react';
 import { create } from '@storybook/theming';
-import { contexts } from './configs/contexts'; // we will define the contextual setups later in API section
+import { contexts } from './configs/contexts';
 
 addParameters({
   options: {
