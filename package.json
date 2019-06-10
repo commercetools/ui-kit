@@ -166,7 +166,7 @@
     "mri": "1.1.4",
     "omit-empty": "1.0.0",
     "pptr-testing-library": "0.4.0",
-    "prettier": "1.17.1",
+    "prettier": "1.18.2",
     "puppeteer": "1.17.0",
     "rcfile": "1.0.3",
     "react": "16.8.6",
