@@ -37,9 +37,7 @@ Object.values(definitions.choiceGroups).forEach(choiceGroup => {
 
     if (!key.startsWith(choiceGroup.prefix))
       endProgram(
-        `Expected token "${key}" to start with "${
-          choiceGroup.prefix
-        }" as it is an "${choiceGroup.label}" attribute.`
+        `Expected token "${key}" to start with "${choiceGroup.prefix}" as it is an "${choiceGroup.label}" attribute.`
       );
 
     tokens[key] = value;

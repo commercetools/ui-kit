@@ -316,9 +316,7 @@ const multiValueLabelStyles = (props, theme) => (base, state) => {
       return base.color;
     })(),
     padding: `${overwrittenVars.spacingXs} ${overwrittenVars.spacingS}`,
-    borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${
-      overwrittenVars.borderRadiusForTag
-    }`,
+    borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${overwrittenVars.borderRadiusForTag}`,
     border: `1px ${overwrittenVars[designTokens.borderColorForTag]} solid`,
     borderWidth: '1px 0 1px 1px',
   };
