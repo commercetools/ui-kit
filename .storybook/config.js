@@ -1,5 +1,6 @@
 import { addParameters, configure, addDecorator } from '@storybook/react';
 import { withContexts } from '@storybook/addon-contexts/react';
+import { withA11y } from '@storybook/addon-a11y';
 import { create } from '@storybook/theming';
 import { contexts } from './configs/contexts';
 
@@ -47,5 +48,6 @@ function loadStories() {
 }
 
 addDecorator(withContexts(contexts));
+addDecorator(withA11y);
 
 configure(loadStories, module);
