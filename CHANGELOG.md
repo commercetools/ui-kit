@@ -1,3 +1,19 @@
+# [9.9.0](https://github.com/commercetools/ui-kit/compare/v9.8.3...v9.9.0) (2019-06-12)
+
+### Bug Fixes
+
+- `SelectInput`: use first-of-type instead of first-child to remove emotion warning ([#850](https://github.com/commercetools/ui-kit/issues/850))
+
+### Features
+
+- add version export ([#840](https://github.com/commercetools/ui-kit/issues/840)) ([ab98dbc](https://github.com/commercetools/ui-kit/commit/ab98dbc))
+- `Storybook`: use contexts for choosing locale ([#841](https://github.com/commercetools/ui-kit/issues/841)) ([27bbe30](https://github.com/commercetools/ui-kit/commit/27bbe30))
+
+### Refactoring
+
+- Various dependency updates ([#849](https://github.com/commercetools/ui-kit/pull/849))
+- Various dependency updates ([#838](https://github.com/commercetools/ui-kit/pull/838))
+
 <a name="9.8.3></a>
 
 # [9.8.3](https://github.com/commercetools/ui-kit/compare/v9.8.2...v9.8.3) (2019-06-05)
