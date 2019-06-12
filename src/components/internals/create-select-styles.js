@@ -228,7 +228,7 @@ const groupStyles = (props, theme) => base => {
   return {
     ...base,
     padding: 0,
-    '&:not(:first-child)': {
+    '&:not(:first-of-type)': {
       borderTop: props.showOptionGroupDivider
         ? `1px solid ${overwrittenVars.colorNeutral}`
         : base.borderTop,
