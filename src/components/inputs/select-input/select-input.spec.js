@@ -181,6 +181,22 @@ describe('in multi mode', () => {
     });
   });
   describe('interacting', () => {
+    describe('when disabled', () => {
+      it('should call not onChange when value is cleared', () => {
+        const onChange = jest.fn();
+        const { getByLabelText, queryByText } = renderInput({
+          onChange,
+          isMulti: true,
+          value: ['mango'],
+          isDisabled: true,
+        });
+        const input = getByLabelText('Fruit');
+        fireEvent.focus(input);
+        fireEvent.keyDown(input, { key: 'Backspace' });
+        expect(onChange).not.toHaveBeenCalled();
+        expect(queryByText('Mango')).toBeInTheDocument();
+      });
+    });
     it('should open the list and all options should be visible', () => {
       const { getByLabelText, getByText } = renderInput({
         isMulti: true,
@@ -258,6 +274,26 @@ describe('in multi mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'Backspace' });
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          name: 'some-name',
+          value: [],
+        },
+      });
+      expect(queryByText('Mango')).not.toBeInTheDocument();
+    });
+    it('should call onChange when value is cleared by clicking delete button ', () => {
+      const onChange = jest.fn();
+      const { getByLabelText, getByText, queryByText } = renderInput({
+        onChange,
+        isMulti: true,
+        value: ['mango'],
+      });
+      const input = getByLabelText('Fruit');
+      fireEvent.focus(input);
+      const deleteButton = getByText('Mango').nextSibling;
+      deleteButton.click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
