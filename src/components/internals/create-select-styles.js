@@ -338,6 +338,7 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
     borderStyle: 'solid',
     borderWidth: '1px',
     pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
+
     '&:hover': {
       borderColor: overwrittenVars.borderColorForTagWarning,
       backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],

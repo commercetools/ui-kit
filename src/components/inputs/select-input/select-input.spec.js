@@ -182,7 +182,7 @@ describe('in multi mode', () => {
   });
   describe('interacting', () => {
     describe('when disabled', () => {
-      it('should call not onChange when value is cleared', () => {
+      it('should not call onChange when value is cleared', () => {
         const onChange = jest.fn();
         const { getByLabelText, queryByText } = renderInput({
           onChange,
@@ -193,6 +193,21 @@ describe('in multi mode', () => {
         const input = getByLabelText('Fruit');
         fireEvent.focus(input);
         fireEvent.keyDown(input, { key: 'Backspace' });
+        expect(onChange).not.toHaveBeenCalled();
+        expect(queryByText('Mango')).toBeInTheDocument();
+      });
+      it('should call not call onChange when value is cleared by clicking delete button ', () => {
+        const onChange = jest.fn();
+        const { getByLabelText, getByText, queryByText } = renderInput({
+          onChange,
+          isMulti: true,
+          value: ['mango'],
+          isDisabled: true,
+        });
+        const input = getByLabelText('Fruit');
+        fireEvent.focus(input);
+        const deleteButton = getByText('Mango').nextSibling;
+        deleteButton.click();
         expect(onChange).not.toHaveBeenCalled();
         expect(queryByText('Mango')).toBeInTheDocument();
       });
