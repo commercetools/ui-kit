@@ -322,7 +322,7 @@ const multiValueLabelStyles = (props, theme) => (base, state) => {
   };
 };
 
-const multiValueRemoveStyles = (props, theme) => base => {
+const multiValueRemoveStyles = (props, theme) => (base, state) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -337,7 +337,7 @@ const multiValueRemoveStyles = (props, theme) => base => {
     } 0`,
     borderStyle: 'solid',
     borderWidth: '1px',
-
+    pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
     '&:hover': {
       borderColor: overwrittenVars.borderColorForTagWarning,
       backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
