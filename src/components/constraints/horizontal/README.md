@@ -25,5 +25,5 @@ import { Constraints } from '@commercetools-frontend/ui-kit';
 | xs    | `50px`  |
 | s     | `132px` |
 | m     | `355px` |
-| l     | `400px` |
+| l     | `496px` |
 | xl    | `768px` |
