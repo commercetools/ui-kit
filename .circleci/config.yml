@@ -49,6 +49,7 @@ commands:
     description: 'Running linters'
     steps:
       - run: yarn run jest --projects jest.eslint.config.js jest.stylelint.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run: yarn typecheck
   unit_test:
     description: 'Running unit tests'
     steps:

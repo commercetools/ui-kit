@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "es6",
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "moduleResolution": "node",
+    "noEmit": true,
+    "jsx": "react",
+    "pretty": true,
+    "baseUrl": ".",
+    "paths": { "@commercetools-frontend/ui-kit": ["."] }
+  }
+}

@@ -13,4 +13,6 @@ module.exports = {
     'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
     'yarn lint:css --reporters=jest-silent-reporter --onlyChanged --passWithNoTests',
   ],
+  // Run the ts command within its own bash shell, as we don't want to pass any file paths as arguments to the ts command.
+  'typings/**': ['bash -c "yarn typecheck"'],
 };

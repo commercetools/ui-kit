@@ -1,0 +1,9 @@
+{
+  "extends": "dtslint/dtslint.json",
+  "rules": {
+    "no-any": true,
+    "interface-over-type-literal": false,
+    "semicolon": true,
+    "whitespace": false
+  }
+}

@@ -15,6 +15,7 @@
   },
   "main": "dist/ui-kit.cjs.js",
   "module": "dist/ui-kit.esm.js",
+  "typings": "typings/index.d.ts",
   "files": [
     "dist",
     "i18n",
@@ -22,6 +23,7 @@
     "materials/custom-properties.css",
     "materials/custom-properties.json",
     "materials/custom-properties.js",
+    "typings",
     "CHANGELOG.md",
     "README.md",
     "transforms",
@@ -63,7 +65,8 @@
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
     "visual-testing-app:build": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
     "visual-testing-app:build:watch": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js --watch",
-    "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001"
+    "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001",
+    "typecheck": "dtslint typings"
   },
   "dependencies": {
     "@emotion/core": "10.0.14",
@@ -95,6 +98,7 @@
     "@babel/plugin-transform-runtime": "7.5.5",
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
+    "@babel/types": "7.4.4",
     "@commercetools/enzyme-extensions": "5.0.0",
     "@commercetools/jest-enzyme-matchers": "1.1.2",
     "@commitlint/cli": "8.1.0",
@@ -115,6 +119,7 @@
     "@svgr/webpack": "4.3.2",
     "@testing-library/jest-dom": "4.0.0",
     "@testing-library/react": "8.0.7",
+    "@types/react": "16.8.23",
     "babel-eslint": "10.0.2",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.6",
@@ -131,6 +136,7 @@
     "common-tags": "1.8.0",
     "conventional-changelog-cli": "2.0.21",
     "cross-env": "5.2.0",
+    "dtslint": "0.8.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "enzyme-to-json": "3.3.5",
