@@ -82,7 +82,7 @@
     "react-textarea-autosize": "7.1.0",
     "react-virtualized": "9.21.1",
     "slate": "0.47.3",
-    "slate-prop-types": "^0.5.37",
+    "slate-prop-types": "0.5.37",
     "slate-react": "0.22.3",
     "tiny-invariant": "1.0.4",
     "warning": "4.0.3"
