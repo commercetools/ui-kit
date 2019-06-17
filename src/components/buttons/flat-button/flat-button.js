@@ -22,6 +22,8 @@ const getTextColor = (tone, isHover = false) => {
       return isHover ? vars.colorPrimary25 : vars.colorPrimary;
     case 'secondary':
       return vars.colorSolid;
+    case 'inverted':
+      return vars.colorSurface;
     default:
       return 'inherit';
   }
