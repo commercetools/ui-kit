@@ -111,7 +111,7 @@ Having release candidates is not necesssary when using dist tags:
 
 ## Publishing documentation website
 
-The documentation is currently built with [Storybook](https://storybook.js.org) and is hosted on [Netlify][netlify].
+The documentation is currently built with [Storybook](https://storybook.js.org) and is hosted on [Netlify](https://www.netlify.com/).
 
 By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify](https://www.netlify.com). The _Production_ website is deployed from the branch `master`.
 
