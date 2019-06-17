@@ -29,7 +29,12 @@ const getBorderColor = props => {
 };
 
 export const Toolbar = styled.div`
-  display: none;
+  /* display: none; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-family: ${vars.fontFamilyDefault};
   border: 1px solid ${vars.borderColorForInput};
   border-radius: ${vars.borderRadiusForInput};
   border-bottom-left-radius: 0;
@@ -63,7 +68,7 @@ export const Container = styled.div`
       border-radius: ${vars.borderRadiusForInput};
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-      display: inherit;
+      display: flex;
       border-color: ${vars.borderColorForInputWhenFocused};
     }
     ${EditorContainer} {

@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import styled from '@emotion/styled';
 import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
-import Spacings from '../../spacings';
+// import Spacings from '../../spacings';
 import {
   MarkHotkeyPlugin,
   RenderBlockPlugin,
   RenderMarkPlugin,
 } from './plugins';
 import Button from './button';
+import Button2 from './real-button';
+import StyleDropdown from './dropdown';
+import { BoldIcon, ItalicIcon, UnderlineIcon } from './icons';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
 
 const DEFAULT_NODE = 'paragraph';
+
+// const getType = value => value.blocks.first().type;
 
 const plugins = [
   MarkHotkeyPlugin({ key: 'b', type: 'bold' }),
@@ -20,6 +26,28 @@ const plugins = [
   MarkHotkeyPlugin({ key: 'u', type: 'underline' }),
   RenderMarkPlugin(),
   RenderBlockPlugin(),
+];
+
+const alignmentOptions = [
+  { label: 'Left', value: 'left' },
+  { label: 'Center', value: 'center' },
+  { label: 'Right', value: 'right' },
+];
+const markDropdownOptions = [
+  { label: 'Subscript', value: 'subscript' },
+  { label: 'Superscript', value: 'superscript' },
+  { label: 'Strikethrough', value: 'strikethrough' },
+];
+
+const dropdownOptions = [
+  { label: 'Paragraph', value: 'paragraph' },
+  { label: 'Headline H1', value: 'heading-one' },
+  { label: 'Headline H2', value: 'heading-two' },
+  { label: 'Headline H3', value: 'heading-three' },
+  { label: 'Headline H4', value: 'heading-four' },
+  { label: 'Headline H5', value: 'heading-five' },
+  { label: 'Quote', value: 'block-quote' },
+  { label: 'Preformatted', value: 'code' },
 ];
 
 class RichTextInput extends React.Component {
@@ -52,6 +80,19 @@ class RichTextInput extends React.Component {
     return value.activeMarks.some(mark => mark.type === type);
   };
 
+  renderMarkButton2 = (type, icon) => {
+    const fakeEvent = { preventDefault: () => {} };
+    const isActive = this.hasMark(type);
+
+    return (
+      <Button2
+        onClick={() => this.onClickMark(fakeEvent, type)}
+        isActive={isActive}
+        icon={icon}
+      />
+    );
+  };
+
   renderMarkButton = (type, icon) => {
     const isActive = this.hasMark(type);
 
@@ -71,7 +112,7 @@ class RichTextInput extends React.Component {
     if (['numbered-list', 'bulleted-list'].includes(type)) {
       const {
         value: { document, blocks },
-      } = this.state;
+      } = this.props;
 
       if (blocks.size > 0) {
         const parent = document.getParent(blocks.first().key);
@@ -142,6 +183,43 @@ class RichTextInput extends React.Component {
     this.editor = editor;
   };
 
+  onChangeStyleDropdown = selectedValue => {
+    const selectedType = selectedValue.value;
+    const isActive = this.hasBlock(selectedType);
+
+    const { editor } = this;
+    editor.setBlocks(isActive ? DEFAULT_NODE : selectedType);
+  };
+
+  onAlignmentChange = selectedValue => {
+    const align = selectedValue.value;
+
+    const { editor } = this;
+
+    // here
+    // editor.setBlocks({
+    //   type: getType(editor.value),
+    //   data: { alignment: align, currentBlockType: getType(editor.value) },
+    // });
+  };
+
+  onChangeMarkDropdown = selectedValue => {
+    const selectedType = selectedValue.value;
+
+    if (selectedType === 'subscript') {
+      if (!this.hasMark('subscript') && this.hasMark('superscript'))
+        this.editor.toggleMark('superscript');
+    }
+
+    if (selectedType === 'superscript') {
+      if (!this.hasMark('superscript') && this.hasMark('subscript')) {
+        this.editor.toggleMark('subscript');
+      }
+    }
+
+    this.editor.toggleMark(selectedType);
+  };
+
   renderEditor = (props, editor, next) => {
     const children = next();
 
@@ -155,14 +233,60 @@ class RichTextInput extends React.Component {
     return (
       <Container {...passedProps} tabIndex={-1}>
         <Toolbar {...passedProps}>
-          <Spacings.Inline scale="m">
-            {this.renderMarkButton('bold', 'B')}
-            {this.renderMarkButton('italic', 'I')}
-            {this.renderMarkButton('underlined', 'U')}
-            {this.renderBlockButton('heading-one', 'H1')}
-            {this.renderBlockButton('heading-two', 'H2')}
-            {this.renderBlockButton('heading-three', 'H3')}
-          </Spacings.Inline>
+          <StyleDropdown
+            label="Style"
+            options={dropdownOptions}
+            value={(() => {
+              if (this.hasBlock('heading-one')) return 'heading-one';
+              if (this.hasBlock('heading-two')) return 'heading-two';
+              if (this.hasBlock('heading-three')) return 'heading-three';
+              if (this.hasBlock('heading-four')) return 'heading-four';
+              if (this.hasBlock('heading-five')) return 'heading-five';
+              if (this.hasBlock('block-quote')) return 'block-quote';
+              if (this.hasBlock('code')) return 'code';
+              if (this.hasBlock('paragraph')) return 'paragraph';
+              return '';
+            })()}
+            onChange={this.onChangeStyleDropdown}
+          />
+          {this.renderMarkButton2('bold', <BoldIcon />)}
+          {this.renderMarkButton2('italic', <ItalicIcon />)}
+          {this.renderMarkButton('underlined', 'U')}
+          <StyleDropdown
+            label="S"
+            options={markDropdownOptions}
+            value={(() => {
+              // consider making this a multi select :thinking:
+              if (this.hasMark('subscript')) return 'subscript';
+              if (this.hasMark('superscript')) return 'superscript';
+              if (this.hasMark('strikethrough')) return 'strikethrough';
+              return '';
+            })()}
+            onChange={this.onChangeMarkDropdown}
+          />
+          <StyleDropdown
+            label="Alignment"
+            options={alignmentOptions}
+            onChange={this.onAlignmentChange}
+            value={(() => {
+              const first = this.props.value.blocks.first();
+
+              if (first) {
+                console.log('first', first.data);
+              }
+              // console.log('this.editor', this.editor.blocks);
+              // export const getType = value => value.blocks.first().type;
+
+              //                console.log('here');
+              // if (this.hasBlock('align-left')) return 'align-left';
+              // if (this.hasBlock('align-center')) return 'align-center';
+              // if (this.hasBlock('align-right')) return 'align-right';
+              return '';
+            })()}
+          />
+          {this.renderBlockButton('code', '<>')}
+          {this.renderBlockButton('numbered-list', 'Number List')}
+          {this.renderBlockButton('bulleted-list', 'Bulleted list')}
         </Toolbar>
         <EditorContainer {...passedProps}>{children}</EditorContainer>
       </Container>
