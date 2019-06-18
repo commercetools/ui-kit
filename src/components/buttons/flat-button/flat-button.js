@@ -16,14 +16,19 @@ const getIconElement = props => {
   });
 };
 
-const getTextColor = (tone, isHover = false) => {
+const getTextColor = (tone, isHover = false, theme) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
   switch (tone) {
     case 'primary':
-      return isHover ? vars.colorPrimary25 : vars.colorPrimary;
+      return isHover
+        ? overwrittenVars.colorPrimary25
+        : overwrittenVars.colorPrimary;
     case 'secondary':
-      return vars.colorSolid;
-    case 'inverted':
-      return vars.colorSurface;
+      return overwrittenVars.colorSolid;
     default:
       return 'inherit';
   }
@@ -42,7 +47,7 @@ export const FlatButton = props => {
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={css`
+      css={theme => css`
         display: flex;
         align-items: center;
         font-size: 1rem;
@@ -50,16 +55,17 @@ export const FlatButton = props => {
         background: none;
         padding: 0;
         min-height: initial;
+
         p {
           color: ${props.isDisabled
             ? vars.colorNeutral
-            : getTextColor(props.tone)};
+            : getTextColor(props.tone, false, theme)};
         }
 
         svg * {
           fill: ${props.isDisabled
             ? vars.colorNeutral
-            : getTextColor(props.tone, false)};
+            : getTextColor(props.tone, false, theme)};
         }
 
         &:hover,
@@ -67,13 +73,13 @@ export const FlatButton = props => {
           p {
             color: ${props.isDisabled
               ? vars.colorNeutral
-              : getTextColor(props.tone, true)};
+              : getTextColor(props.tone, true, theme)};
           }
 
           svg * {
             fill: ${props.isDisabled
               ? vars.colorNeutral
-              : getTextColor(props.tone, true)};
+              : getTextColor(props.tone, true, theme)};
           }
         }
       `}

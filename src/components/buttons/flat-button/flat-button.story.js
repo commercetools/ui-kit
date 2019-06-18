@@ -17,7 +17,7 @@ storiesOf('Components|Buttons', module)
     <Section>
       <FlatButton
         type={select('type', ['submit', 'reset', 'button'], 'button')}
-        tone={select('tone', ['primary', 'secondary', 'inverted'], 'primary')}
+        tone={select('tone', ['primary', 'secondary'], 'primary')}
         label={text('label', 'Accessibility text')}
         icon={React.createElement(
           icons[select('icon', iconNames, iconNames[0])]
