@@ -1,10 +1,11 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { FlatButton, InformationIcon } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/flat-button';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="regular">
       <FlatButton tone="primary" label="A label text" onClick={() => {}} />
@@ -42,5 +43,15 @@ export const component = () => (
         icon={<InformationIcon />}
       />
     </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="secondary">
+        <FlatButton
+          tone="secondary"
+          label="Inverted"
+          onClick={() => {}}
+          icon={<InformationIcon />}
+        />
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
