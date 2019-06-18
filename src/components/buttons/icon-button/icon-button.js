@@ -73,21 +73,16 @@ export const IconButton = props => {
         css={css`
           width: 100%;
           height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         `}
       >
-        <div
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          `}
-        >
-          {props.icon &&
-            React.cloneElement(props.icon, {
-              size: props.size,
-              theme: getIconThemeColor(props),
-            })}
-        </div>
+        {props.icon &&
+          React.cloneElement(props.icon, {
+            size: props.size,
+            theme: getIconThemeColor(props),
+          })}
       </AccessibleButton>
     </div>
   );
