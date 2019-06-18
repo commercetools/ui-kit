@@ -2,15 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { oneLine } from 'common-tags';
 import { Link } from 'react-router-dom';
-import flowRight from 'lodash/flowRight';
 import isNil from 'lodash/isNil';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
-import withMouseOverState from '../../../hocs/with-mouse-over-state';
-import withMouseDownState from '../../../hocs/with-mouse-down-state';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
@@ -18,11 +15,8 @@ import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 export const getIconThemeColor = props => {
   const isActive = props.isToggleButton && props.isToggled;
-  // if button has a theme, icon should be the same color as the theme on hover/active states
-  if (
-    props.theme !== 'default' &&
-    (isActive || (props.isMouseOver && !props.isDisabled))
-  )
+  // if button has a theme, icon should be the same color as the theme on active state
+  if (props.theme !== 'default' && (isActive && !props.isDisabled))
     return props.theme; // returns the passed in theme without overwriting
   // if button is disabled, icon should be grey
   if (props.isDisabled) return 'grey';
@@ -63,12 +57,14 @@ export const SecondaryButton = props => {
       isToggleButton={props.isToggleButton}
       isToggled={props.isToggled}
       isDisabled={props.isDisabled}
-      css={css`
-        display: flex;
-        align-items: center;
-        padding: 0 ${vars.spacingM};
-        height: ${vars.bigButtonHeight};
-      `}
+      css={[
+        css`
+          display: flex;
+          align-items: center;
+          padding: 0 ${vars.spacingM};
+          height: ${vars.bigButtonHeight};
+        `,
+      ].concat(containerStyles)}
     >
       <Spacings.Inline alignItems="center" scale="xs">
         {Boolean(props.iconLeft) && (
@@ -94,32 +90,17 @@ export const SecondaryButton = props => {
     return (
       <Link
         css={[
-          ...containerStyles,
           css`
             text-decoration: none;
           `,
         ]}
-        onMouseDown={props.handleMouseDown}
-        onMouseUp={props.handleMouseUp}
-        onMouseOver={props.handleMouseOver}
-        onMouseOut={props.handleMouseOut}
         to={props.linkTo}
       >
         {containerElements}
       </Link>
     );
   }
-  return (
-    <div
-      css={containerStyles}
-      onMouseDown={props.handleMouseDown}
-      onMouseUp={props.handleMouseUp}
-      onMouseOver={props.handleMouseOver}
-      onMouseOut={props.handleMouseOut}
-    >
-      {containerElements}
-    </div>
-  );
+  return containerElements;
 };
 
 SecondaryButton.propTypes = {
@@ -181,14 +162,6 @@ SecondaryButton.propTypes = {
       query: PropTypes.object,
     }),
   ]),
-
-  // HoC
-  isMouseDown: PropTypes.bool.isRequired,
-  isMouseOver: PropTypes.bool.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseOut: PropTypes.func.isRequired,
-  handleMouseDown: PropTypes.func.isRequired,
-  handleMouseUp: PropTypes.func.isRequired,
 };
 
 SecondaryButton.defaultProps = {
@@ -199,7 +172,4 @@ SecondaryButton.defaultProps = {
 
 SecondaryButton.displayName = 'SecondaryButton';
 
-export default flowRight(
-  withMouseOverState,
-  withMouseDownState
-)(SecondaryButton);
+export default SecondaryButton;

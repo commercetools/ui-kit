@@ -74,6 +74,10 @@ const getThemeStyles = theme => {
       return css`
         &:hover {
           color: ${vars.colorInfo};
+
+          * {
+            fill: ${vars.colorInfo};
+          }
         }
       `;
     default: {
