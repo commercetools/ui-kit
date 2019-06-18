@@ -60,8 +60,15 @@ NumberInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-NumberInput.toFormValue = numberOrString =>
-  typeof numberOrString === 'undefined' ? '' : numberOrString;
+NumberInput.toFormValue = numberOrString => {
+  if (
+    typeof numberOrString === 'number' ||
+    typeof numberOrString === 'string'
+  ) {
+    return numberOrString;
+  }
+  return '';
+};
 
 NumberInput.isEmpty = value => {
   if (typeof value === 'string') return value.trim().length === 0;
