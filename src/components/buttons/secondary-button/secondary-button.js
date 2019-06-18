@@ -16,7 +16,7 @@ import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 export const getIconThemeColor = props => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be the same color as the theme on active state
-  if (props.theme !== 'default' && (isActive || !props.isDisabled))
+  if (props.theme !== 'default' && (isActive && !props.isDisabled))
     return props.theme; // returns the passed in theme without overwriting
   // if button is disabled, icon should be grey
   if (props.isDisabled) return 'grey';
@@ -90,7 +90,6 @@ export const SecondaryButton = props => {
     return (
       <Link
         css={[
-          ...containerStyles,
           css`
             text-decoration: none;
           `,
