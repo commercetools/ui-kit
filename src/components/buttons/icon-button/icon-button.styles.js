@@ -169,8 +169,7 @@ const getThemeStyles = theme => {
   switch (theme) {
     case 'green':
       return css`
-        &:hover,
-        &:active {
+        &:hover {
           background-color: ${vars.colorPrimary};
           border-color: ${vars.colorPrimary};
           color: ${vars.colorSurface};
@@ -178,7 +177,6 @@ const getThemeStyles = theme => {
       `;
     case 'blue':
       return css`
-        &:active,
         &:hover {
           background-color: ${vars.colorInfo};
           border-color: ${vars.colorInfo};
