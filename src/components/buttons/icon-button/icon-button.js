@@ -39,10 +39,21 @@ export const IconButton = props => {
   };
   const isActive = props.isToggleButton && props.isToggled;
   return (
-    <div
+    <AccessibleButton
+      buttonAttributes={buttonAttributes}
+      type={props.type}
+      label={props.label}
+      onClick={props.onClick}
+      isToggleButton={props.isToggleButton}
+      isToggled={props.isToggled}
+      isDisabled={props.isDisabled}
       css={[
         css`
+          width: 100%;
+          height: 100%;
           display: flex;
+          align-items: center;
+          justify-content: center;
           border: 1px solid ${vars.colorSurface};
           background-color: ${vars.colorSurface};
           box-shadow: ${vars.shadow7};
@@ -57,29 +68,12 @@ export const IconButton = props => {
         getHoverStyles(props.isDisabled, props.theme),
       ]}
     >
-      <AccessibleButton
-        buttonAttributes={buttonAttributes}
-        type={props.type}
-        label={props.label}
-        onClick={props.onClick}
-        isToggleButton={props.isToggleButton}
-        isToggled={props.isToggled}
-        isDisabled={props.isDisabled}
-        css={css`
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        `}
-      >
-        {props.icon &&
-          React.cloneElement(props.icon, {
-            size: props.size,
-            theme: getIconThemeColor(props),
-          })}
-      </AccessibleButton>
-    </div>
+      {props.icon &&
+        React.cloneElement(props.icon, {
+          size: props.size,
+          theme: getIconThemeColor(props),
+        })}
+    </AccessibleButton>
   );
 };
 

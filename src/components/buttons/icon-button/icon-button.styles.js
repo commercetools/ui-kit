@@ -3,9 +3,9 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
 const buttonSizes = {
-  small: '14px',
-  medium: '22px',
-  big: '30px',
+  small: '16px',
+  medium: '24px',
+  big: '32px',
 };
 
 const getStateStyles = (isDisabled, isActive, theme) => {
