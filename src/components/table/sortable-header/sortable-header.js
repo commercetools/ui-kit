@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 import Text from '../../typography/text';
-import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import { AngleDownIcon, AngleUpIcon } from '../../icons';
 
 /*
@@ -27,43 +27,59 @@ Logic of arrow indicating sort order is slightly complex:
 
 */
 
+const Span = styled.span`
+  visibility: hidden; /* use visibility so react-virtualized can account for arrow-width on calcs */
+  pointer-events: none; /* Do not unhover when on the icon */
+  padding: 0 0 0 ${vars.spacingM};
+`;
+
+const containerDynamicStyles = props => {
+  if (props.alignRight) {
+    return css`
+      flex-direction: row-reverse;
+    `;
+  }
+  return css``;
+};
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    cursor: pointer;
+
+    svg {
+      transform: rotate(180deg);
+    }
+
+    * {
+      fill: ${vars.colorNeutral};
+    }
+  }
+
+  ${containerDynamicStyles}
+
+  &:hover {
+    ${Span} {
+      visibility: visible;
+    }
+  }
+`;
+
 const SortableHeader = props => {
   const isActive = props.sortBy === props.columnKey;
-  const theme = props.isMouseOver ? 'grey' : 'white';
-  const isArrowDown =
-    (!isActive && props.isMouseOver) ||
-    (isActive && !props.isMouseOver && props.sortDirection === 'ASC') ||
-    (isActive && props.isMouseOver && props.sortDirection === 'DESC');
+
+  const isArrowDown = isActive && props.sortDirection === 'DESC';
 
   return (
-    <div
-      onMouseOver={props.handleMouseOver}
-      onMouseOut={props.handleMouseOut}
-      css={[
-        css`
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          &:hover {
-            cursor: pointer;
-          }
-        `,
-        props.alignRight &&
-          css`
-            flex-direction: row-reverse;
-          `,
-      ]}
-    >
+    <Container alignRight={props.alignRight}>
       <Text.Body tone="inverted">{props.children}</Text.Body>
-      <span
+      <Span
         id="arrow"
         css={[
-          css`
-            visibility: hidden; /* use visibility so react-virtualized can account for arrow-width on calcs */
-            pointer-events: none; /* Do not unhover when on the icon */
-            padding: 0 0 0 ${vars.spacingM};
-          `,
-          (isActive || props.isMouseOver) &&
+          isActive &&
             css`
               visibility: visible;
             `,
@@ -74,12 +90,12 @@ const SortableHeader = props => {
         ]}
       >
         {isArrowDown ? (
-          <AngleDownIcon size="medium" theme={theme} />
+          <AngleDownIcon size="medium" theme="white" />
         ) : (
-          <AngleUpIcon size="small" theme={theme} />
+          <AngleUpIcon size="medium" theme="white" />
         )}
-      </span>
-    </div>
+      </Span>
+    </Container>
   );
 };
 
@@ -91,11 +107,6 @@ SortableHeader.propTypes = {
   sortDirection: PropTypes.oneOf(['DESC', 'ASC']),
   columnKey: PropTypes.string.isRequired,
   alignRight: PropTypes.bool,
-
-  // withMouseOverState HoC
-  isMouseOver: PropTypes.bool.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseOut: PropTypes.func.isRequired,
 };
 
-export default withMouseOverState(SortableHeader);
+export default SortableHeader;
