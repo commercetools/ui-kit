@@ -16,10 +16,11 @@ describe('NumberInput.toFormValue', () => {
       expect(NumberInput.toFormValue('3,4')).toEqual('3,4');
     });
   });
-  describe('when called with undefined', () => {
+  describe('when called with undefined or null', () => {
     it('should return an empty string', () => {
       expect(NumberInput.toFormValue()).toEqual('');
       expect(NumberInput.toFormValue(undefined)).toEqual('');
+      expect(NumberInput.toFormValue(null)).toEqual('');
     });
   });
 });
