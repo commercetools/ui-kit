@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import flowRight from 'lodash/flowRight';
 import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
-import withMouseDownState from '../../../hocs/with-mouse-down-state';
-import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
@@ -20,7 +18,7 @@ import {
 const getIconThemeColor = props => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be white when hovering/clicking
-  if (props.theme !== 'default' && (isActive || props.isMouseOver)) {
+  if (props.theme !== 'default' && isActive) {
     if (props.isDisabled) {
       return 'grey';
     }
@@ -33,6 +31,22 @@ const getIconThemeColor = props => {
   return props.icon.props.theme;
 };
 
+const getIconContainerHoverStyles = props => {
+  if (props.theme === 'default' || props.isDisabled) return css``;
+
+  return css`
+    &:hover {
+      * {
+        fill: ${vars.colorSurface};
+      }
+    }
+  `;
+};
+
+const IconContainer = styled.div`
+  ${getIconContainerHoverStyles}
+`;
+
 export const IconButton = props => {
   const buttonAttributes = {
     'data-track-component': 'IconButton',
@@ -41,11 +55,9 @@ export const IconButton = props => {
   };
   const isActive = props.isToggleButton && props.isToggled;
   return (
-    <div
-      onMouseDown={props.handleMouseDown}
-      onMouseUp={props.handleMouseUp}
-      onMouseOver={props.handleMouseOver}
-      onMouseOut={props.handleMouseOut}
+    <IconContainer
+      isDisabled={props.isDisabled}
+      theme={props.theme}
       css={[
         css`
           display: flex;
@@ -84,7 +96,7 @@ export const IconButton = props => {
             theme: getIconThemeColor(props),
           })}
       </AccessibleButton>
-    </div>
+    </IconContainer>
   );
 };
 
@@ -124,14 +136,6 @@ IconButton.propTypes = {
       ...rest
     );
   },
-
-  // HoC
-  isMouseDown: PropTypes.bool.isRequired,
-  isMouseOver: PropTypes.bool.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseOut: PropTypes.func.isRequired,
-  handleMouseDown: PropTypes.func.isRequired,
-  handleMouseUp: PropTypes.func.isRequired,
 };
 
 IconButton.defaultProps = {
@@ -144,7 +148,4 @@ IconButton.defaultProps = {
 
 IconButton.displayName = 'IconButton';
 
-export default flowRight(
-  withMouseOverState,
-  withMouseDownState
-)(IconButton);
+export default IconButton;
