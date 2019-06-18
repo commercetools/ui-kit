@@ -40,8 +40,6 @@ export const IconButton = props => {
   const isActive = props.isToggleButton && props.isToggled;
   return (
     <div
-      isDisabled={props.isDisabled}
-      theme={props.theme}
       css={[
         css`
           display: flex;
