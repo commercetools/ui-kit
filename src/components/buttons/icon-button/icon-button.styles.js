@@ -166,7 +166,6 @@ const getThemeStyles = theme => {
 
   if (theme === 'default') return css``;
 
-  console.log('here, getThemeStyles');
   switch (theme) {
     case 'green':
       return css`
@@ -196,4 +195,22 @@ const getThemeStyles = theme => {
   }
 };
 
-export { getStateStyles, getShapeStyles, getSizeStyles, getThemeStyles };
+const getHoverStyles = (isDisabled, theme) => {
+  if (theme === 'default' || isDisabled) return css``;
+
+  return css`
+    &:hover {
+      * {
+        fill: ${vars.colorSurface};
+      }
+    }
+  `;
+};
+
+export {
+  getStateStyles,
+  getHoverStyles,
+  getShapeStyles,
+  getSizeStyles,
+  getThemeStyles,
+};

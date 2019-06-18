@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -12,6 +11,7 @@ import {
   getShapeStyles,
   getSizeStyles,
   getThemeStyles,
+  getHoverStyles,
 } from './icon-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
@@ -31,22 +31,6 @@ const getIconThemeColor = props => {
   return props.icon.props.theme;
 };
 
-const getIconContainerHoverStyles = props => {
-  if (props.theme === 'default' || props.isDisabled) return css``;
-
-  return css`
-    &:hover {
-      * {
-        fill: ${vars.colorSurface};
-      }
-    }
-  `;
-};
-
-const IconContainer = styled.div`
-  ${getIconContainerHoverStyles}
-`;
-
 export const IconButton = props => {
   const buttonAttributes = {
     'data-track-component': 'IconButton',
@@ -55,7 +39,7 @@ export const IconButton = props => {
   };
   const isActive = props.isToggleButton && props.isToggled;
   return (
-    <IconContainer
+    <div
       isDisabled={props.isDisabled}
       theme={props.theme}
       css={[
@@ -72,6 +56,7 @@ export const IconButton = props => {
         getShapeStyles(props.shape, props.size),
         getSizeStyles(props.size),
         getThemeStyles(props.theme),
+        getHoverStyles(props.isDisabled, props.theme),
       ]}
     >
       <AccessibleButton
@@ -96,7 +81,7 @@ export const IconButton = props => {
             theme: getIconThemeColor(props),
           })}
       </AccessibleButton>
-    </IconContainer>
+    </div>
   );
 };
 
