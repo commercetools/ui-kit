@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import flowRight from 'lodash/flowRight';
 import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
-import withMouseDownState from '../../../hocs/with-mouse-down-state';
-import withMouseOverState from '../../../hocs/with-mouse-over-state';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import AccessibleButton from '../accessible-button';
@@ -14,13 +11,14 @@ import {
   getShapeStyles,
   getSizeStyles,
   getThemeStyles,
+  getHoverStyles,
 } from './icon-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 const getIconThemeColor = props => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be white when hovering/clicking
-  if (props.theme !== 'default' && (isActive || props.isMouseOver)) {
+  if (props.theme !== 'default' && isActive) {
     if (props.isDisabled) {
       return 'grey';
     }
@@ -41,14 +39,21 @@ export const IconButton = props => {
   };
   const isActive = props.isToggleButton && props.isToggled;
   return (
-    <div
-      onMouseDown={props.handleMouseDown}
-      onMouseUp={props.handleMouseUp}
-      onMouseOver={props.handleMouseOver}
-      onMouseOut={props.handleMouseOut}
+    <AccessibleButton
+      buttonAttributes={buttonAttributes}
+      type={props.type}
+      label={props.label}
+      onClick={props.onClick}
+      isToggleButton={props.isToggleButton}
+      isToggled={props.isToggled}
+      isDisabled={props.isDisabled}
       css={[
         css`
+          width: 100%;
+          height: 100%;
           display: flex;
+          align-items: center;
+          justify-content: center;
           border: 1px solid ${vars.colorSurface};
           background-color: ${vars.colorSurface};
           box-shadow: ${vars.shadow7};
@@ -60,36 +65,15 @@ export const IconButton = props => {
         getShapeStyles(props.shape, props.size),
         getSizeStyles(props.size),
         getThemeStyles(props.theme),
+        getHoverStyles(props.isDisabled, props.theme),
       ]}
     >
-      <AccessibleButton
-        buttonAttributes={buttonAttributes}
-        type={props.type}
-        label={props.label}
-        onClick={props.onClick}
-        isToggleButton={props.isToggleButton}
-        isToggled={props.isToggled}
-        isDisabled={props.isDisabled}
-        css={css`
-          width: 100%;
-          height: 100%;
-        `}
-      >
-        <div
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          `}
-        >
-          {props.icon &&
-            React.cloneElement(props.icon, {
-              size: props.size,
-              theme: getIconThemeColor(props),
-            })}
-        </div>
-      </AccessibleButton>
-    </div>
+      {props.icon &&
+        React.cloneElement(props.icon, {
+          size: props.size,
+          theme: getIconThemeColor(props),
+        })}
+    </AccessibleButton>
   );
 };
 
@@ -129,14 +113,6 @@ IconButton.propTypes = {
       ...rest
     );
   },
-
-  // HoC
-  isMouseDown: PropTypes.bool.isRequired,
-  isMouseOver: PropTypes.bool.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseOut: PropTypes.func.isRequired,
-  handleMouseDown: PropTypes.func.isRequired,
-  handleMouseUp: PropTypes.func.isRequired,
 };
 
 IconButton.defaultProps = {
@@ -149,7 +125,4 @@ IconButton.defaultProps = {
 
 IconButton.displayName = 'IconButton';
 
-export default flowRight(
-  withMouseOverState,
-  withMouseDownState
-)(IconButton);
+export default IconButton;

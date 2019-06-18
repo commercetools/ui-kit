@@ -3,9 +3,9 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
 const buttonSizes = {
-  small: '14px',
-  medium: '22px',
-  big: '30px',
+  small: '16px',
+  medium: '24px',
+  big: '32px',
 };
 
 const getStateStyles = (isDisabled, isActive, theme) => {
@@ -169,7 +169,7 @@ const getThemeStyles = theme => {
   switch (theme) {
     case 'green':
       return css`
-        &:active {
+        &:hover {
           background-color: ${vars.colorPrimary};
           border-color: ${vars.colorPrimary};
           color: ${vars.colorSurface};
@@ -193,4 +193,22 @@ const getThemeStyles = theme => {
   }
 };
 
-export { getStateStyles, getShapeStyles, getSizeStyles, getThemeStyles };
+const getHoverStyles = (isDisabled, theme) => {
+  if (theme === 'default' || isDisabled) return css``;
+
+  return css`
+    &:hover {
+      * {
+        fill: ${vars.colorSurface};
+      }
+    }
+  `;
+};
+
+export {
+  getStateStyles,
+  getHoverStyles,
+  getShapeStyles,
+  getSizeStyles,
+  getThemeStyles,
+};

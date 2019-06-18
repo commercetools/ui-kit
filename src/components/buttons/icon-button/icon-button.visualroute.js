@@ -123,22 +123,24 @@ export const component = () => (
       />
     </Spec>
 
-    <Spec label="theme - when green">
+    <Spec label="theme - when green - when toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
+        isToggled={true}
         theme="green"
       />
     </Spec>
 
-    <Spec label="theme - when blue">
+    <Spec label="theme - when blue - when toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
+        isToggled={true}
         theme="blue"
       />
     </Spec>

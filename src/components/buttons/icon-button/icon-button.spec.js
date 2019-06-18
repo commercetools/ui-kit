@@ -9,14 +9,6 @@ const createTestProps = custom => ({
   onClick: jest.fn(),
   icon: <PlusBoldIcon data-testid="icon" />,
 
-  // HoC
-  isMouseDown: false,
-  isMouseOver: false,
-  handleMouseUp: jest.fn(),
-  handleMouseDown: jest.fn(),
-  handleMouseOver: jest.fn(),
-  handleMouseOut: jest.fn(),
-
   ...custom,
 });
 
