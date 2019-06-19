@@ -10,9 +10,9 @@ const darkTheme = {
 
 const defaultTheme = vars;
 
-const ThemeWrapper = props => {
-  return <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>;
-};
+const ThemeWrapper = props => (
+  <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
+);
 
 ThemeWrapper.propTypes = {
   theme: PropTypes.any,
