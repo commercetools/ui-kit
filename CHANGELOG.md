@@ -1,3 +1,32 @@
+<a name="9.10.0></a>
+
+# [9.10.0](https://github.com/commercetools/ui-kit/compare/v9.9.0...9.10.0) (2019-06-19)
+
+### Bug Fixes
+
+- `IconButton`: hover state fix, and remove HOC ([#871](https://github.com/commercetools/ui-kit/issues/871)) ([823a31f](https://github.com/commercetools/ui-kit/commit/823a31f))
+- `NumberInput`: toFormValue should handle both undefined and null ([#870](https://github.com/commercetools/ui-kit/issues/870)) ([7db6786](https://github.com/commercetools/ui-kit/commit/7db6786))
+- `SelectInput` multi select disabled bug ([#855](https://github.com/commercetools/ui-kit/issues/855)) ([2b68dad](https://github.com/commercetools/ui-kit/commit/2b68dad))
+
+### Refactoring
+
+- `Table`: remove hoc
+- `SecondaryButton`: remove usage of HOC ([#872](https://github.com/commercetools/ui-kit/pull/872))
+- Various dependency updates ([#856](https://github.com/commercetools/ui-kit/pull/856))
+- Various dependency updates ([#866](https://github.com/commercetools/ui-kit/pull/866))
+- Adds missing peer deps ([#868](https://github.com/commercetools/ui-kit/pull/868))
+
+### Features
+
+- `FlatButton`: support theming ([#869](https://github.com/commercetools/ui-kit/pull/869))
+
+### Documentation
+
+- `HorizontalConstraint`: update README ([#858](https://github.com/commercetools/ui-kit/pull/858))
+- `Contributing`: fix link ([#867](https://github.com/commercetools/ui-kit/pull/867))
+
+* `Storybook`: add addon-a11y ([#842](https://github.com/commercetools/ui-kit/issues/842)) ([c874d94](https://github.com/commercetools/ui-kit/commit/c874d94))
+
 # [9.9.0](https://github.com/commercetools/ui-kit/compare/v9.8.3...v9.9.0) (2019-06-12)
 
 ### Bug Fixes
