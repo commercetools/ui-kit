@@ -50,5 +50,13 @@ export const component = () => (
         horizontalConstraint="l"
       />
     </Spec>
+    <Spec label="with a very long hint">
+      <FieldLabel
+        title="Hello"
+        hint="Sed vel condimentum lacus. Nam sit amet dui et magna tincidunt faucibus. Praesent gravida tempor semper. Donec et faucibus ante. Maecenas consectetur urna mi."
+        hintIcon={<WarningIcon />}
+        horizontalConstraint="m"
+      />
+    </Spec>
   </Suite>
 );
