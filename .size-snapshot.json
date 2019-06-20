@@ -1,0 +1,16 @@
+{
+  "dist/ui-kit.esm.js": {
+    "bundled": 873778,
+    "minified": 599025,
+    "gzipped": 122093,
+    "treeshaked": {
+      "rollup": {
+        "code": 425997,
+        "import_statements": 935
+      },
+      "webpack": {
+        "code": 452619
+      }
+    }
+  }
+}
