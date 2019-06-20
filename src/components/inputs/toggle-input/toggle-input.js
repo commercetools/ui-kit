@@ -86,7 +86,7 @@ const Input = styled.input`
       box-shadow: none;
     }
     & + ${Span}::after {
-      background: ${vars.ColorInfo95};
+      background: ${vars.colorAccent95};
       box-shadow: none;
     }
   }
