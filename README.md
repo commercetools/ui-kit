@@ -92,7 +92,7 @@ You can also access the JavaScript variables like this
 ```js
 import { customProperties } from '@commercetools-frontend/ui-kit';
 
-const green = customProperties.colorGreen;
+const primary = customProperties.colorPrimary;
 ```
 
 > Please look at the [file](materials/custom-properties.js) itself to inspect which variables are available (_documentation will be provided in the future_).
