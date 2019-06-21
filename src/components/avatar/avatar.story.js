@@ -1,14 +1,18 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../.storybook/decorators/section';
 import Avatar from './avatar';
 import Readme from './README.md';
 
 storiesOf('Components|Avatar', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Avatar', () => (
     <Section>
       <Avatar

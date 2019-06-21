@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import CollapsibleMotion from './collapsible-motion';
 import Spacings from '../spacings';
 import Readme from './README.md';
@@ -103,5 +102,10 @@ class CollapsibleMotionStory extends React.Component {
 
 storiesOf('Components|Panels', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('CollapsibleMotion', () => <CollapsibleMotionStory />);

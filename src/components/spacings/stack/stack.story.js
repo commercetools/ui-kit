@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
 import { Text } from '../../../index';
 import Inline from '../inline';
@@ -34,7 +33,12 @@ const sizes = [
 
 storiesOf('Components|Spacings', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Stack', () => {
     const alignItems = select(
       'Align items',

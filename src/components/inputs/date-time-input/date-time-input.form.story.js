@@ -3,7 +3,6 @@ import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import FormikBox from '../../../../.storybook/decorators/formik-box';
 import PrimaryButton from '../../buttons/primary-button';
@@ -14,7 +13,12 @@ import DateTimeInput from './date-time-input';
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('DateTimeInput', () => (
     <Section>
       <Formik

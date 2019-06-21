@@ -10,7 +10,6 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import LinkTo from '@storybook/addon-links/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import Spacings from '../../spacings';
 import Readme from './README.md';
@@ -18,7 +17,12 @@ import SelectInput from './select-input';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('SelectInput', () => {
     const options = [
       {

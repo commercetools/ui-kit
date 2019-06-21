@@ -10,15 +10,19 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import NumberFieldReadme from './README.md';
+import Readme from './README.md';
 import * as icons from '../../icons';
 import NumberField from './number-field';
 
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(NumberFieldReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('NumberField', () => (
     <Section>
       <Value

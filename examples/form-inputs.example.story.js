@@ -5,7 +5,6 @@ import { Formik } from 'formik';
 import { injectIntl } from 'react-intl';
 import { action } from '@storybook/addon-actions';
 import omitEmpty from 'omit-empty';
-import withReadme from 'storybook-readme/with-readme';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
 import { FormikBox, Section } from '../.storybook/decorators';
 import {
@@ -596,5 +595,10 @@ const Story = injectIntl(props => {
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Forms))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Forms,
+    },
+  })
   .add('Basic Formik Example', () => <Story />);

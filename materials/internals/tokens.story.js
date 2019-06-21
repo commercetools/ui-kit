@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
-import withReadme from 'storybook-readme/with-readme';
 import Readme from './TOKENS.md';
 import TextInput from '../../src/components/inputs/text-input';
 import vars from '../custom-properties';
@@ -563,5 +562,10 @@ class Story extends React.Component {
 }
 
 storiesOf('Basics|Tokens', module)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('All Tokens', () => <Story />);

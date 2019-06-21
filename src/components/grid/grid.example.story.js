@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, number } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
 import Section from '../../../.storybook/decorators/section';
 import customProperties from '../../../materials/custom-properties';
@@ -32,7 +31,12 @@ const renderGridElements = () => {
 
 storiesOf('Examples|Components/Grid', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('With fixed columns', () => (
     <Section>
       <Spacings.Stack scale="l">

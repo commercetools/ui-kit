@@ -9,15 +9,19 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import TimeFieldReadme from './README.md';
+import Readme from './README.md';
 import * as icons from '../../icons';
 import TimeField from './time-field';
 
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(TimeFieldReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('TimeField', () => (
     <Section>
       <Value

@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import * as icons from '../icons';
 import FlatButton from '../buttons/flat-button';
 import Section from '../../../.storybook/decorators/section';
@@ -11,7 +10,12 @@ import FieldLabel from './field-label';
 
 storiesOf('Components|FieldLabel', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('FieldLabel', () => {
     const hint = text('hint', 'Enter a number between 0 and 1');
 

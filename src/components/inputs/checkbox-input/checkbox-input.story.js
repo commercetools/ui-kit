@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
-import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
@@ -11,7 +10,12 @@ import CheckboxInput from './checkbox-input';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('CheckboxInput', () => (
     <Section>
       <Spacings.Stack>

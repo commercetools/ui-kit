@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../.storybook/decorators/section';
 import Text from './text';
 import Readme from './text/README.md';
@@ -14,7 +13,12 @@ const InlineColorWrapper = styled.div`
 `;
 storiesOf('Basics|Typography/Text', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Headline', () => (
     <Section>
       <Text.Headline

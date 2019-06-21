@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { injectIntl } from 'react-intl';
 import { withKnobs, number } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import omitEmpty from 'omit-empty';
 import ErrorMessage from '../../messages/error-message';
 import Section from '../../../../.storybook/decorators/section';
@@ -103,5 +102,10 @@ const Story = injectIntl(props => {
 });
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('MoneyInput', () => <Story />);

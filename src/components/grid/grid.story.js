@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import LinkTo from '@storybook/addon-links/react';
 import styled from '@emotion/styled';
 import Section from '../../../.storybook/decorators/section';
@@ -62,7 +61,12 @@ const renderGridElements = () => {
 
 storiesOf('Components|Grid', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Grid', () => (
     <React.Fragment>
       <Section>
