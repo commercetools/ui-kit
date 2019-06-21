@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
 import sortBy from 'lodash/sortBy';
 import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
-import classnames from 'classnames';
 import { Global, ClassNames, css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import Spacings from '../../spacings';
@@ -348,13 +347,13 @@ export default class BaseTable extends React.Component {
     if (renderParams.rowIndex === 0) {
       return (
         <ClassNames>
-          {({ css: makeClassName }) => (
+          {({ css: makeClassName, cx }) => (
             <div
               style={{
                 ...(renderParams.style || {}),
                 ...(columnDefinition.headerStyle || {}),
               }}
-              className={classnames(
+              className={cx(
                 makeClassName({
                   background: vars.colorAccent,
                   color: vars.colorSurface,
@@ -371,9 +370,9 @@ export default class BaseTable extends React.Component {
     }
     return (
       <ClassNames>
-        {({ css: makeClassName }) => (
+        {({ css: makeClassName, cx }) => (
           <div
-            className={classnames(
+            className={cx(
               makeClassName({
                 textAlign: columnDefinition.align || 'left',
                 ...(renderParams.rowIndex === this.state.hoveredRowIndex &&
@@ -494,9 +493,9 @@ export default class BaseTable extends React.Component {
           `}
         />
         <ClassNames>
-          {({ css: makeClassName }) => (
+          {({ css: makeClassName, cx }) => (
             <div
-              className={classnames(
+              className={cx(
                 makeClassName({
                   outline: `1px solid ${vars.colorNeutral90}`,
                 }),

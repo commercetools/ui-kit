@@ -65,7 +65,6 @@
   "dependencies": {
     "@emotion/core": "10.0.10",
     "@emotion/styled": "10.0.12",
-    "classnames": "2.2.6",
     "common-tags": "1.8.0",
     "dom-helpers": "3.4.0",
     "downshift": "3.2.10",
