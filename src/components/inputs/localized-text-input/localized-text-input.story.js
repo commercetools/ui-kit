@@ -9,15 +9,19 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import ErrorMessage from '../../messages/error-message';
-import LocalizedTextInputReadme from './README.md';
+import Readme from './README.md';
 import LocalizedTextInput from './localized-text-input';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(LocalizedTextInputReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('LocalizedTextInput', () => {
     const defaultExpandLanguages = boolean('defaultExpandLanguages', false);
     // We need to force the component to rerender in case a default value

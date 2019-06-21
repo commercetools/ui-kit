@@ -9,9 +9,8 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import { injectIntl } from 'react-intl';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import MoneyFieldReadme from './README.md';
+import Readme from './README.md';
 import * as icons from '../../icons';
 import MoneyField from './money-field';
 import MoneyInput from '../../inputs/money-input';
@@ -125,5 +124,10 @@ class MoneyFieldStory extends React.Component {
 const Story = injectIntl(MoneyFieldStory);
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(MoneyFieldReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('MoneyField', () => <Story />);

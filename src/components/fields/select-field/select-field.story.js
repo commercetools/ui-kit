@@ -10,9 +10,8 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import SelectFieldReadme from './README.md';
+import Readme from './README.md';
 import * as icons from '../../icons';
 import SelectField from './select-field';
 
@@ -71,7 +70,12 @@ const options = [
 
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(SelectFieldReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('SelectField', () => {
     const isMulti = boolean('isMulti', false);
     const hint = text('hint', 'Bonus points if it is a mammal');

@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
 import { Text } from '../../../index';
 import Inline from '../inline';
@@ -44,7 +43,12 @@ const sizes = [
 ];
 
 storiesOf('Components|Spacings', module)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Inset', () => (
     <View>
       <Inset scale="m">

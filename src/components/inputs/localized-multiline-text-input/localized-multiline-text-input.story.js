@@ -9,16 +9,20 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import ErrorMessage from '../../messages/error-message';
 import WarningMessage from '../../messages/warning-message';
-import LocalizedMultilineTextInputReadme from './README.md';
+import Readme from './README.md';
 import LocalizedMultilineTextInput from './localized-multiline-text-input';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(LocalizedMultilineTextInputReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('LocalizedMultilineTextInput', () => {
     const defaultExpandLanguages = boolean('defaultExpandLanguages', false);
     const defaultExpandMultilineText = boolean(

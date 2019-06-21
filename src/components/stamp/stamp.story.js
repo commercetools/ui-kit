@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../.storybook/decorators/section';
 import Text from '../typography/text';
 import Spacings from '../spacings';
@@ -14,7 +13,12 @@ const getRandomIndex = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
 storiesOf('Components|Stamps', module)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Stamp', () => (
     <Section>
       <Spacings.Stack>

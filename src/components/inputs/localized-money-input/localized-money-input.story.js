@@ -9,16 +9,20 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import ErrorMessage from '../../messages/error-message';
 import WarningMessage from '../../messages/warning-message';
-import LocalizedMoneyInputReadme from './README.md';
+import Readme from './README.md';
 import LocalizedMoneyInput from './localized-money-input';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(LocalizedMoneyInputReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('LocalizedMoneyInput', () => {
     const defaultExpandCurrencies = boolean('defaultExpandCurrencies', false);
 

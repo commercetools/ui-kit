@@ -2,15 +2,19 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import Section from '../../../../.storybook/decorators/section';
-import NumberInputReadme from './README.md';
+import Readme from './README.md';
 import NumberInput from './number-input';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(NumberInputReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('NumberInput', () => {
     const min = text('min', '');
     const max = text('max', '');

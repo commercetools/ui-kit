@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import withReadme from 'storybook-readme/with-readme';
 import {
   withKnobs,
   boolean,
@@ -27,7 +26,12 @@ const CustomBody = styled.div`
 
 storiesOf('Components|Tooltips', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Tooltip', () => {
     const label = text('children', 'Tool tip text.');
 

@@ -9,15 +9,19 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import MultilineTextFieldReadme from './README.md';
+import Readme from './README.md';
 import * as icons from '../../icons';
 import MultilineTextField from './multiline-text-field';
 
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(MultilineTextFieldReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('MultilineTextField', () => (
     <Section>
       <Value

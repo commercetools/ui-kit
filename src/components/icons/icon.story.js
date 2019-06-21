@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
 import Text from '../typography/text';
 import Readme from './README.md';
@@ -28,7 +27,12 @@ const iconNames = Object.keys(icons);
 
 storiesOf('Components|Icons', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('All Icons', () => (
     <IconList>
       {Object.values(icons).map((Icon, index) => {

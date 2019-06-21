@@ -2,8 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
-import withReadme from 'storybook-readme/with-readme';
-import DateInputReadme from './README.md';
+import Readme from './README.md';
 import DateInput from './date-input';
 import Section from '../../../../.storybook/decorators/section';
 
@@ -47,5 +46,10 @@ class DateInputStory extends React.Component {
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(DateInputReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('DateInput', () => <DateInputStory />);

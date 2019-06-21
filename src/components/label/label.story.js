@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Constraints from '../constraints';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
@@ -9,7 +8,12 @@ import Label from './label';
 
 storiesOf('Components|Label', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Label', () => (
     <Section>
       <Constraints.Horizontal constraint="m">

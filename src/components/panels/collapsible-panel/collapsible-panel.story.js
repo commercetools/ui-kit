@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import CollapsiblePanel from './collapsible-panel';
 import CollapsiblePanelHeader from './collapsible-panel-header';
@@ -9,7 +8,12 @@ import Readme from './README.md';
 
 storiesOf('Components|Panels', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('CollapsiblePanel', () => {
     const condensed = boolean('condensed', false);
     return (

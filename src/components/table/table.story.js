@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number, text } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import sortBy from 'lodash/sortBy';
 import { css, ClassNames } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
@@ -91,7 +90,12 @@ const baseColumns = ({ onCheckboxClick, checkboxClassName }) => [
 
 storiesOf('Components|Table', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('basic example', () => {
     const showTooltip = boolean('show tooltip', false);
     const usePortal = boolean('use portal for tooltip', true);

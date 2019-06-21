@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
 import Readme from './README.md';
@@ -34,7 +33,12 @@ const sizes = [
 
 storiesOf('Components|Constraints', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('Horizontal', () => {
     const constraint = select(
       'constraint',

@@ -9,9 +9,8 @@ import {
   text,
   select,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
-import MoneyInputReadme from './README.md';
+import Readme from './README.md';
 import MoneyInput from './money-input';
 
 // This uses a dedicated story component to keep track of state instead of
@@ -104,5 +103,10 @@ class MoneyInputStory extends React.Component {
 const Story = injectIntl(MoneyInputStory);
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(MoneyInputReadme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('MoneyInput', () => <Story />);

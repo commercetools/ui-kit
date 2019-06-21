@@ -9,7 +9,6 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
-import withReadme from 'storybook-readme/with-readme';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import AsyncSelectInput from './async-select-input';
@@ -109,5 +108,10 @@ class SelectStory extends React.Component {
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('AsyncSelectInput', () => <SelectStory />);
