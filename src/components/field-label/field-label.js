@@ -42,12 +42,15 @@ export const FieldLabel = props => {
 
         {props.hint && (
           <Spacings.Inline alignItems="center" scale="xs">
-            {props.hintIcon &&
-              // FIXME: add proper tone when tones are refactored
-              React.cloneElement(props.hintIcon, {
-                size: 'medium',
-                theme: props.hintIcon.props.theme || 'orange',
-              })}
+            {props.hintIcon && (
+              <Spacings.Inline>
+                {React.cloneElement(props.hintIcon, {
+                  // FIXME: add proper tone when tones are refactored
+                  size: 'medium',
+                  theme: props.hintIcon.props.theme || 'orange',
+                })}
+              </Spacings.Inline>
+            )}
             {props.hint && <Text.Detail>{props.hint}</Text.Detail>}
           </Spacings.Inline>
         )}
