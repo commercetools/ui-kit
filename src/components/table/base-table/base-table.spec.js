@@ -31,7 +31,10 @@ describe('BaseTable', () => {
       props = createTestProps();
       wrapper = shallow(<BaseTable {...props} />);
       gridWrapper = shallow(
-        wrapper.find(ClassNames).prop('children')({ css: jest.fn() })
+        wrapper.find(ClassNames).prop('children')({
+          css: jest.fn(),
+          cx: jest.fn(),
+        })
       );
     });
     it('should render <MultiGrid>', () => {
@@ -56,7 +59,10 @@ describe('BaseTable', () => {
         });
         wrapper = shallow(<BaseTable {...props} />);
         gridWrapper = shallow(
-          wrapper.find(ClassNames).prop('children')({ css: jest.fn() })
+          wrapper.find(ClassNames).prop('children')({
+            css: jest.fn(),
+            cx: jest.fn(),
+          })
         );
       });
       it('should not pass fixedColumnCount prop to <MultiGrid>', () => {
