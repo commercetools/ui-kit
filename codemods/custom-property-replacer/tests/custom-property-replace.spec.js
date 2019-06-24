@@ -10,9 +10,11 @@ const process = input => processor.process(input).css;
 
 describe('custom-property-replacer', () => {
   describe('with nested selectors', () => {
-    expect(process('a { span { color: var(--color-green) }}')).toEqual(
-      'a { span { color: var(--color-primary) }}'
-    );
+    it('should replace known variables', () => {
+      expect(process('a { span { color: var(--color-green) }}')).toEqual(
+        'a { span { color: var(--color-primary) }}'
+      );
+    });
   });
   it('should replace known variables', () => {
     expect(process('a { color: var(--color-green) }')).toEqual(
