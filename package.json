@@ -200,8 +200,8 @@
   "peerDependencies": {
     "moment": "2.x",
     "moment-timezone": "0.5.x",
-    "react": "16.x",
-    "react-dom": "16.x",
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
     "react-intl": "2.x",
     "react-router-dom": "5.x"
   },
