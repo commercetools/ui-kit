@@ -166,6 +166,8 @@
     "moment-timezone": "0.5.25",
     "mri": "1.1.4",
     "omit-empty": "1.0.0",
+    "postcss": "7.0.17",
+    "postcss-value-parser": "4.0.0",
     "pptr-testing-library": "0.4.0",
     "prettier": "1.18.2",
     "puppeteer": "1.18.0",
