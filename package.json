@@ -18,6 +18,7 @@
   "files": [
     "dist",
     "i18n",
+    "codemods",
     "materials/custom-properties.css",
     "materials/custom-properties.json",
     "materials/custom-properties.js",
