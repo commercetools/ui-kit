@@ -23,7 +23,6 @@ const AccessibleButton = React.forwardRef((props, ref) => (
         color: inherit;
         font: inherit;
         font-size: ${vars.fontSizeDefault};
-        font-family: ${vars.fontFamilyDefault};
       `,
       props.isDisabled &&
         css`

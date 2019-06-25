@@ -22,7 +22,6 @@ export default class CalendarMenu extends Component {
           css`
             overflow-y: scroll;
             color: ${vars.colorSolid};
-            font-family: ${vars.fontFamilyDefault};
             border: 1px solid ${vars.borderColorForInputWhenFocused};
             border-radius: ${vars.borderRadiusForInput};
             margin-top: ${vars.spacingXs};

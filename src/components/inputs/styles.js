@@ -18,7 +18,6 @@ const getInputStyles = (props, theme) => {
     color: ${overwrittenVars[designTokens.fontColorForInput]};
     display: flex;
     flex: 1;
-    font-family: ${overwrittenVars.fontFamilyDefault};
     font-size: ${overwrittenVars[designTokens.fontSizeForInput]};
     height: ${overwrittenVars.sizeHeightInput};
     min-height: ${overwrittenVars.sizeHeightInput};

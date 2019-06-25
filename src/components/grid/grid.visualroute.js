@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Grid, customProperties } from 'ui-kit';
+import { Grid } from 'ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/grid';
@@ -15,7 +15,6 @@ const Placeholder = styled.div`
   background-color: pink;
   padding: 16px;
   font-size: 16px;
-  font-family: ${customProperties.fontFamilyDefault};
 `;
 
 export const component = () => (
