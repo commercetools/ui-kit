@@ -1,6 +1,6 @@
 #### Custom Property Replacer
 
-The purpose of this PostCSS plugin is to replace deprecated custom properties with their replacement custom properties. To use this plugin, follow the following instructions.
+The purpose of this PostCSS plugin is to replace deprecated custom properties with the new custom properties. To use this plugin, follow the following instructions.
 
 First, start by installing `postcss-cli`. You will use this to run the css transformation.
 
