@@ -1,9 +1,9 @@
-import postcss from 'postcss';
 import path from 'path';
-import plugin from '..';
+import postcss from 'postcss';
+import plugin from '.';
 
 const processor = postcss([
-  plugin({ file: path.resolve(__dirname, '../variable-mapping.json') }),
+  plugin({ file: path.resolve(__dirname, './v10/variable-mapping.json') }),
 ]);
 
 const process = input => processor.process(input).css;
@@ -28,11 +28,8 @@ describe('custom-property-replacer', () => {
   });
 
   it('throws an error if the file option is not defined', () => {
-    const badProcessor = postcss(plugin());
-    const badProcess = input => badProcessor.process(input).css;
-
     expect(() => {
-      badProcess('a { color: var(--color-green-40) }');
+      postcss(plugin());
     }).toThrow(
       'postcss-var-replacer must be configured with the JSON file to use'
     );
