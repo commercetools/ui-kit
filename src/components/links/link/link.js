@@ -12,7 +12,7 @@ const getLinkStyles = (props, theme) => {
     ...theme,
   };
   return css`
-    font-family: ${overwrittenVars.fontFamilyDefault};
+    font-family: inherit;
     color: ${overwrittenVars.colorPrimary};
     font-size: ${overwrittenVars.fontSizeDefault};
 
