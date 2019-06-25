@@ -1,6 +1,6 @@
+const fs = require('fs');
 const postcss = require('postcss');
 const parser = require('postcss-value-parser');
-const fs = require('fs');
 
 module.exports = postcss.plugin('postcss-var-replacer', opts => {
   let variables;
