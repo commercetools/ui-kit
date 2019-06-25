@@ -8,6 +8,7 @@ const getBaseStyles = (props, theme) => {
   };
 
   return `
+   font-family: ${overwrittenVars.fontFamilyDefault};
    color: ${overwrittenVars.colorSolid};
 `;
 };

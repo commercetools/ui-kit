@@ -157,6 +157,7 @@ const getInputContainerStyles = props => {
     align-items: center;
     display: flex;
     font-size: ${overwrittenVars[designTokens.fontSizeForInput]};
+    font-family: ${overwrittenVars[designTokens.fontSizeForInput]};
   `;
 };
 

@@ -10,6 +10,7 @@ const Card = props => (
     css={[
       css`
         display: flex;
+        font-family: ${vars.fontFamilyDefault};
         font-size: 1rem;
         flex-direction: column;
         width: 100%;

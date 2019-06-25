@@ -60,6 +60,7 @@ const Label = props => (
   <div
     css={[
       css`
+        font-family: ${vars.fontFamilyDefault};
         color: ${vars.colorSolid};
         font-size: ${vars.fontSizeDefault};
         border-radius: 2px;

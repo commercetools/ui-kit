@@ -24,6 +24,7 @@ const Table = styled.table`
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
+  font-family: ${vars.fontFamilyDefault};
   color: ${vars.colorBlack};
   margin: 10px;
   > * + * {

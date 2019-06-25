@@ -85,6 +85,7 @@ const Avatar = props => (
   <div
     css={css`
       align-items: center;
+      font-family: ${vars.fontFamilyDefault};
       background-color: ${vars.colorNeutral60};
       border-radius: 100%;
       font-size: ${vars.fontSizeDefault};

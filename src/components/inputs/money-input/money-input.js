@@ -558,6 +558,7 @@ class MoneyInput extends React.Component {
         <div
           ref={this.containerRef}
           css={css`
+            font-family: ${vars.fontFamilyDefault};
             width: 100%;
             position: relative;
             display: flex;

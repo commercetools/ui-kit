@@ -33,6 +33,7 @@ const getContentWrapperStyles = (props, theme) => {
     border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
     padding: 5px ${vars.spacingS};
     cursor: default;
+    font-family: inherit;
     white-space: normal;
     text-align: left;
     min-width: 0;

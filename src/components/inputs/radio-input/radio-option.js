@@ -46,6 +46,7 @@ const Option = props => {
           width: 100%;
           margin-left: ${vars.spacingS};
           font-size: 1rem;
+          font-family: ${vars.fontFamilyDefault};
           color: ${props.isDisabled
             ? vars.fontColorForInputWhenDisabled
             : vars.fontColorForInput};
