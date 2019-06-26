@@ -108,7 +108,7 @@ const getInputContainerStyles = () => css`
   align-items: center;
   display: flex;
   font-size: ${vars.fontSizeDefault};
-  font-family: ${vars.fontFamilyDefault};
+  font-family: inherit;
 `;
 
 const getDateTimeInputStyles = (props, state) => {

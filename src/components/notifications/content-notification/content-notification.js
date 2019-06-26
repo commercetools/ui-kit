@@ -97,7 +97,7 @@ export default class ContentNotification extends React.PureComponent {
           hyphens: auto;
           font-size: ${vars.fontSizeDefault};
           color: ${vars.colorSolid};
-          font-family: ${vars.fontFamilyDefault};
+          font-family: inherit;
         `}
       >
         <NotificationIcon type={this.props.type} theme="white" />
