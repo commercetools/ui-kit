@@ -170,7 +170,7 @@ class RichTextInput extends React.Component {
     return (
       <Container {...passedProps} tabIndex={-1}>
         <Toolbar {...passedProps}>
-          <Spacings.Inline scale="m">
+          <Spacings.Inline scale="m" alignItems="center">
             <StyleDropdown
               label="Style"
               options={dropdownOptions}
