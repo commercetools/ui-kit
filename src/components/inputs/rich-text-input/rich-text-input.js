@@ -23,6 +23,12 @@ const plugins = [
   RenderBlockPlugin(),
 ];
 
+const dropdownOptions = [
+  { label: 'Headline H1', value: 'heading-one' },
+  { label: 'Headline H2', value: 'heading-two' },
+  { label: 'Headline H3', value: 'heading-three' },
+];
+
 class RichTextInput extends React.Component {
   static displayName = 'RichTextInput';
 
@@ -143,6 +149,14 @@ class RichTextInput extends React.Component {
     this.editor = editor;
   };
 
+  onChangeStyleDropdown = selectedValue => {
+    const selectedType = selectedValue.value;
+    const isActive = this.hasBlock(selectedType);
+
+    const { editor } = this;
+    editor.setBlocks(isActive ? DEFAULT_NODE : selectedType);
+  };
+
   renderEditor = (props, editor, next) => {
     const children = next();
 
@@ -157,13 +171,21 @@ class RichTextInput extends React.Component {
       <Container {...passedProps} tabIndex={-1}>
         <Toolbar {...passedProps}>
           <Spacings.Inline scale="m">
-            <StyleDropdown onChange={newValue => console.log(newValue)} />
+            <StyleDropdown
+              label="Style"
+              options={dropdownOptions}
+              value={(() => {
+                if (this.hasBlock('heading-one')) return 'heading-one';
+                if (this.hasBlock('heading-two')) return 'heading-two';
+                if (this.hasBlock('heading-three')) return 'heading-three';
+
+                return '';
+              })()}
+              onChange={this.onChangeStyleDropdown}
+            />
             {this.renderMarkButton('bold', 'B')}
             {this.renderMarkButton('italic', 'I')}
             {this.renderMarkButton('underlined', 'U')}
-            {this.renderBlockButton('heading-one', 'H1')}
-            {this.renderBlockButton('heading-two', 'H2')}
-            {this.renderBlockButton('heading-three', 'H3')}
           </Spacings.Inline>
         </Toolbar>
         <EditorContainer {...passedProps}>{children}</EditorContainer>
