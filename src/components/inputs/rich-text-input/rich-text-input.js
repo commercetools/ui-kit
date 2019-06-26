@@ -10,6 +10,7 @@ import {
   RenderMarkPlugin,
 } from './plugins';
 import Button from './button';
+import StyleDropdown from './dropdown';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
 
 const DEFAULT_NODE = 'paragraph';
@@ -156,6 +157,7 @@ class RichTextInput extends React.Component {
       <Container {...passedProps} tabIndex={-1}>
         <Toolbar {...passedProps}>
           <Spacings.Inline scale="m">
+            <StyleDropdown onChange={newValue => console.log(newValue)} />
             {this.renderMarkButton('bold', 'B')}
             {this.renderMarkButton('italic', 'I')}
             {this.renderMarkButton('underlined', 'U')}
