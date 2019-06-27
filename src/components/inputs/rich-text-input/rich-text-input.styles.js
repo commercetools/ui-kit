@@ -29,7 +29,7 @@ const getBorderColor = props => {
 };
 
 export const Toolbar = styled.div`
-  display: none;
+  /* display: none; */
   font-family: ${vars.fontFamilyDefault};
   border: 1px solid ${vars.borderColorForInput};
   border-radius: ${vars.borderRadiusForInput};

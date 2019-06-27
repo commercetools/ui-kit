@@ -72,6 +72,12 @@ export const RenderMarkPlugin = () => {
       const { children, mark, attributes } = props;
 
       switch (mark.type) {
+        case 'superscript':
+          return <sup {...attributes}>{children}</sup>;
+        case 'subscript':
+          return <sub {...attributes}>{children}</sub>;
+        case 'strikethrough':
+          return <del {...attributes}>{children}</del>;
         case 'bold':
           return <strong {...attributes}>{children}</strong>;
         case 'code':

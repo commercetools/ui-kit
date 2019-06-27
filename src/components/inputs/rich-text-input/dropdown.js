@@ -26,6 +26,7 @@ const Dropdown = props => {
                 <span>{props.label}</span> <CaretDownIcon size="small" />
               </Spacings.Inline>
             </Button>
+
             <div style={{ position: 'relative' }}>
               {isOpen ? (
                 <DropdownContainer>

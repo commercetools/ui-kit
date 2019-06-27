@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
+import Tooltip from '../../tooltip';
 import Spacings from '../../spacings';
 import {
   MarkHotkeyPlugin,
@@ -21,6 +22,12 @@ const plugins = [
   MarkHotkeyPlugin({ key: 'u', type: 'underline' }),
   RenderMarkPlugin(),
   RenderBlockPlugin(),
+];
+
+const markDropdownOptions = [
+  { label: 'Subscript', value: 'subscript' },
+  { label: 'Superscript', value: 'superscript' },
+  { label: 'Strikethrough', value: 'strikethrough' },
 ];
 
 const dropdownOptions = [
@@ -162,6 +169,23 @@ class RichTextInput extends React.Component {
     editor.setBlocks(isActive ? DEFAULT_NODE : selectedType);
   };
 
+  onChangeMarkDropdown = selectedValue => {
+    const selectedType = selectedValue.value;
+
+    if (selectedType === 'subscript') {
+      if (!this.hasMark('subscript') && this.hasMark('superscript'))
+        this.editor.toggleMark('superscript');
+    }
+
+    if (selectedType === 'superscript') {
+      if (!this.hasMark('superscript') && this.hasMark('subscript')) {
+        this.editor.toggleMark('subscript');
+      }
+    }
+
+    this.editor.toggleMark(selectedType);
+  };
+
   renderEditor = (props, editor, next) => {
     const children = next();
 
@@ -195,6 +219,19 @@ class RichTextInput extends React.Component {
             {this.renderMarkButton('bold', 'B')}
             {this.renderMarkButton('italic', 'I')}
             {this.renderMarkButton('underlined', 'U')}
+            <StyleDropdown
+              label="S"
+              options={markDropdownOptions}
+              value={(() => {
+                // consider making this a multi select :thinking:
+                if (this.hasMark('subscript')) return 'subscript';
+                if (this.hasMark('superscript')) return 'superscript';
+                if (this.hasMark('strikethrough')) return 'strikethrough';
+                return '';
+              })()}
+              onChange={this.onChangeMarkDropdown}
+            />
+            {this.renderBlockButton('code', '<>')}
             {this.renderBlockButton('numbered-list', 'Number List')}
             {this.renderBlockButton('bulleted-list', 'Bulleted list')}
           </Spacings.Inline>

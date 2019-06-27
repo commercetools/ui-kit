@@ -27,7 +27,7 @@ const Button = styled.button`
   border: 0;
   font-family: ${vars.fontFamilyDefault};
   border-radius: ${vars.borderRadius4};
-  cursor: hover;
+  cursor: pointer;
   padding: 4px 8px;
   color: ${vars.colorSolid};
 
@@ -60,7 +60,6 @@ const DropdownContainer = styled.div`
 
   /* background: teal; */
   z-index: 9999;
-  width: 300px;
   padding: 4px;
 
   border: 1px solid ${vars.colorPrimary};
