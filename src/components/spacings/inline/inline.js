@@ -22,6 +22,13 @@ Inline.propTypes = {
     'flexStart',
     'flexEnd',
   ]),
+  flexWrap: PropTypes.oneOf([
+    'nowrap',
+    'wrap',
+    'wrap-reverse',
+    'initial',
+    'inherit',
+  ]),
   justifyContent: PropTypes.oneOf([
     'flex-start',
     'flex-end',
@@ -36,6 +43,7 @@ Inline.propTypes = {
 Inline.defaultProps = {
   scale: 's',
   alignItems: 'flex-start',
+  flexWrap: 'nowrap',
   justifyContent: 'flex-start',
 };
 

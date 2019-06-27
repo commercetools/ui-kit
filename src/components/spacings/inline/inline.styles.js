@@ -39,6 +39,7 @@ export default props => css`
   display: flex;
   align-items: ${getAlignItem(props.alignItems)};
   justify-content: ${props.justifyContent};
+  flex-wrap: ${props.flexWrap};
 
   > * + * {
     margin: 0 0 0 ${getMargin(props.scale)} !important;
