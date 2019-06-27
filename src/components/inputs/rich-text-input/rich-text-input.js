@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
-import Tooltip from '../../tooltip';
 import Spacings from '../../spacings';
 import {
   MarkHotkeyPlugin,
   RenderBlockPlugin,
   RenderMarkPlugin,
 } from './plugins';
+import AlignmentPlugin from './plugins/alignment-plugin';
 import Button from './button';
 import StyleDropdown from './dropdown';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
@@ -22,8 +22,14 @@ const plugins = [
   MarkHotkeyPlugin({ key: 'u', type: 'underline' }),
   RenderMarkPlugin(),
   RenderBlockPlugin(),
+  AlignmentPlugin(),
 ];
 
+const alignmentOptions = [
+  { label: 'Left', value: 'align-left' },
+  { label: 'Center', value: 'align-center' },
+  { label: 'Right', value: 'align-right' },
+];
 const markDropdownOptions = [
   { label: 'Subscript', value: 'subscript' },
   { label: 'Superscript', value: 'superscript' },
@@ -169,6 +175,14 @@ class RichTextInput extends React.Component {
     editor.setBlocks(isActive ? DEFAULT_NODE : selectedType);
   };
 
+  onAlignmentChange = selectedValue => {
+    const selectedType = selectedValue.value;
+    const isActive = this.hasBlock(selectedType);
+
+    const { editor } = this;
+    editor.setBlocks(isActive ? DEFAULT_NODE : selectedType);
+  };
+
   onChangeMarkDropdown = selectedValue => {
     const selectedType = selectedValue.value;
 
@@ -230,6 +244,18 @@ class RichTextInput extends React.Component {
                 return '';
               })()}
               onChange={this.onChangeMarkDropdown}
+            />
+            <StyleDropdown
+              label="Alignment"
+              options={alignmentOptions}
+              onChange={this.onAlignmentChange}
+              value={(() => {
+                console.log('here');
+                if (this.hasBlock('align-left')) return 'align-left';
+                if (this.hasBlock('align-center')) return 'align-center';
+                if (this.hasBlock('align-right')) return 'align-right';
+                return '';
+              })()}
             />
             {this.renderBlockButton('code', '<>')}
             {this.renderBlockButton('numbered-list', 'Number List')}

@@ -32,7 +32,6 @@ export const RenderBlockPlugin = () => {
   return {
     renderBlock(props, editor, next) {
       const { attributes, children, node } = props;
-
       switch (node.type) {
         case 'code':
           return (
