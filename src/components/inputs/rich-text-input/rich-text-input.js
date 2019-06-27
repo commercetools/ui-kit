@@ -83,7 +83,7 @@ class RichTextInput extends React.Component {
     if (['numbered-list', 'bulleted-list'].includes(type)) {
       const {
         value: { document, blocks },
-      } = this.state;
+      } = this.props;
 
       if (blocks.size > 0) {
         const parent = document.getParent(blocks.first().key);
@@ -180,7 +180,6 @@ class RichTextInput extends React.Component {
               label="Style"
               options={dropdownOptions}
               value={(() => {
-                if (this.hasBlock('paragraph')) return 'paragraph';
                 if (this.hasBlock('heading-one')) return 'heading-one';
                 if (this.hasBlock('heading-two')) return 'heading-two';
                 if (this.hasBlock('heading-three')) return 'heading-three';
@@ -188,7 +187,7 @@ class RichTextInput extends React.Component {
                 if (this.hasBlock('heading-five')) return 'heading-five';
                 if (this.hasBlock('block-quote')) return 'block-quote';
                 if (this.hasBlock('code')) return 'code';
-
+                if (this.hasBlock('paragraph')) return 'paragraph';
                 return '';
               })()}
               onChange={this.onChangeStyleDropdown}
@@ -196,6 +195,8 @@ class RichTextInput extends React.Component {
             {this.renderMarkButton('bold', 'B')}
             {this.renderMarkButton('italic', 'I')}
             {this.renderMarkButton('underlined', 'U')}
+            {this.renderBlockButton('numbered-list', 'Number List')}
+            {this.renderBlockButton('bulleted-list', 'Bulleted list')}
           </Spacings.Inline>
         </Toolbar>
         <EditorContainer {...passedProps}>{children}</EditorContainer>
