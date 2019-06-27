@@ -31,6 +31,8 @@ also pass a label for accessibility reasons.
 | `icon`       | `node`   |    ✅    | -                           | -        | An `Icon` component                                                                    |
 | `isDisabled` | `bool`   |    -     | -                           | `false`  | Tells when the button should present a disabled state                                  |
 | `onClick`    | `func`   |    ✅    | -                           | -        | What the button will trigger when clicked                                              |
+| `size`       | `oneOf`  |    -     | `big`, `medium`, `small`    | `big`    | Sets the size of the icon                                                              |
+| `color`      | `oneOf`  |    -     | `solid`, `primary`          | `solid`  | Sets the color of the icon                                                             |
 
 #### Where to use
 
