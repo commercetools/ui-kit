@@ -24,9 +24,14 @@ const plugins = [
 ];
 
 const dropdownOptions = [
+  { label: 'Paragraph', value: 'paragraph' },
   { label: 'Headline H1', value: 'heading-one' },
   { label: 'Headline H2', value: 'heading-two' },
   { label: 'Headline H3', value: 'heading-three' },
+  { label: 'Headline H4', value: 'heading-four' },
+  { label: 'Headline H5', value: 'heading-five' },
+  { label: 'Quote', value: 'block-quote' },
+  { label: 'Preformatted', value: 'code' },
 ];
 
 class RichTextInput extends React.Component {
@@ -175,9 +180,14 @@ class RichTextInput extends React.Component {
               label="Style"
               options={dropdownOptions}
               value={(() => {
+                if (this.hasBlock('paragraph')) return 'paragraph';
                 if (this.hasBlock('heading-one')) return 'heading-one';
                 if (this.hasBlock('heading-two')) return 'heading-two';
                 if (this.hasBlock('heading-three')) return 'heading-three';
+                if (this.hasBlock('heading-four')) return 'heading-four';
+                if (this.hasBlock('heading-five')) return 'heading-five';
+                if (this.hasBlock('block-quote')) return 'block-quote';
+                if (this.hasBlock('code')) return 'code';
 
                 return '';
               })()}

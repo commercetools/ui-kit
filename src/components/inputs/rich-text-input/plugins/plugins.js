@@ -34,6 +34,12 @@ export const RenderBlockPlugin = () => {
       const { attributes, children, node } = props;
 
       switch (node.type) {
+        case 'code':
+          return (
+            <pre>
+              <code {...attributes}>{children}</code>
+            </pre>
+          );
         case 'block-quote':
           return <blockquote {...attributes}>{children}</blockquote>;
         case 'bulleted-list':
@@ -44,6 +50,10 @@ export const RenderBlockPlugin = () => {
           return <h2 {...attributes}>{children}</h2>;
         case 'heading-three':
           return <h3 {...attributes}>{children}</h3>;
+        case 'heading-four':
+          return <h4 {...attributes}>{children}</h4>;
+        case 'heading-five':
+          return <h5 {...attributes}>{children}</h5>;
         case 'list-item':
           return <li {...attributes}>{children}</li>;
         case 'numbered-list':
