@@ -23,7 +23,6 @@ storiesOf('Components|Buttons', module)
         icon={React.createElement(
           icons[select('icon', iconNames, iconNames[0])]
         )}
-        size={select('size', ['big', 'medium', 'small'], 'big')}
         label={text('label', 'Accessibility text')}
         color={select('color', ['solid', 'primary'], 'solid')}
         onClick={action('onClick')}

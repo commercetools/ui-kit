@@ -20,10 +20,7 @@ export const SecondaryIconButton = props => {
       isDisabled={props.isDisabled}
       css={theme => getBaseStyles(theme, props)}
     >
-      {props.icon &&
-        React.cloneElement(props.icon, {
-          size: props.size,
-        })}
+      {props.icon}
     </AccessibleButton>
   );
 };
@@ -32,7 +29,6 @@ SecondaryIconButton.displayName = 'SecondaryIconButton';
 SecondaryIconButton.propTypes = {
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   icon: PropTypes.element.isRequired,
-  size: PropTypes.oneOf(['small', 'medium', 'big']),
   color: PropTypes.oneOf(['solid', 'primary']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
@@ -40,7 +36,6 @@ SecondaryIconButton.propTypes = {
 };
 
 SecondaryIconButton.defaultProps = {
-  size: 'big',
   color: 'solid',
   type: 'button',
   isDisabled: false,
