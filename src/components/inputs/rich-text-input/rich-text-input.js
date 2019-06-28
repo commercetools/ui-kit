@@ -9,7 +9,6 @@ import {
   RenderBlockPlugin,
   RenderMarkPlugin,
 } from './plugins';
-import AlignmentPlugin from './plugins/alignment-plugin';
 import Button from './button';
 import StyleDropdown from './dropdown';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
@@ -22,13 +21,12 @@ const plugins = [
   MarkHotkeyPlugin({ key: 'u', type: 'underline' }),
   RenderMarkPlugin(),
   RenderBlockPlugin(),
-  AlignmentPlugin(),
 ];
 
 const alignmentOptions = [
-  { label: 'Left', value: 'align-left' },
-  { label: 'Center', value: 'align-center' },
-  { label: 'Right', value: 'align-right' },
+  { label: 'Left', value: 'left' },
+  { label: 'Center', value: 'center' },
+  { label: 'Right', value: 'right' },
 ];
 const markDropdownOptions = [
   { label: 'Subscript', value: 'subscript' },
@@ -176,11 +174,13 @@ class RichTextInput extends React.Component {
   };
 
   onAlignmentChange = selectedValue => {
-    const selectedType = selectedValue.value;
-    const isActive = this.hasBlock(selectedType);
+    const align = selectedValue.value;
 
     const { editor } = this;
-    editor.setBlocks(isActive ? DEFAULT_NODE : selectedType);
+    editor.setBlocks({
+      type: getType(editor.value),
+      data: { alignment: align, currentBlockType: getType(editor.value) },
+    });
   };
 
   onChangeMarkDropdown = selectedValue => {
@@ -213,54 +213,60 @@ class RichTextInput extends React.Component {
     return (
       <Container {...passedProps} tabIndex={-1}>
         <Toolbar {...passedProps}>
-          <Spacings.Inline scale="m" alignItems="center">
-            <StyleDropdown
-              label="Style"
-              options={dropdownOptions}
-              value={(() => {
-                if (this.hasBlock('heading-one')) return 'heading-one';
-                if (this.hasBlock('heading-two')) return 'heading-two';
-                if (this.hasBlock('heading-three')) return 'heading-three';
-                if (this.hasBlock('heading-four')) return 'heading-four';
-                if (this.hasBlock('heading-five')) return 'heading-five';
-                if (this.hasBlock('block-quote')) return 'block-quote';
-                if (this.hasBlock('code')) return 'code';
-                if (this.hasBlock('paragraph')) return 'paragraph';
-                return '';
-              })()}
-              onChange={this.onChangeStyleDropdown}
-            />
-            {this.renderMarkButton('bold', 'B')}
-            {this.renderMarkButton('italic', 'I')}
-            {this.renderMarkButton('underlined', 'U')}
-            <StyleDropdown
-              label="S"
-              options={markDropdownOptions}
-              value={(() => {
-                // consider making this a multi select :thinking:
-                if (this.hasMark('subscript')) return 'subscript';
-                if (this.hasMark('superscript')) return 'superscript';
-                if (this.hasMark('strikethrough')) return 'strikethrough';
-                return '';
-              })()}
-              onChange={this.onChangeMarkDropdown}
-            />
-            <StyleDropdown
-              label="Alignment"
-              options={alignmentOptions}
-              onChange={this.onAlignmentChange}
-              value={(() => {
-                console.log('here');
-                if (this.hasBlock('align-left')) return 'align-left';
-                if (this.hasBlock('align-center')) return 'align-center';
-                if (this.hasBlock('align-right')) return 'align-right';
-                return '';
-              })()}
-            />
-            {this.renderBlockButton('code', '<>')}
-            {this.renderBlockButton('numbered-list', 'Number List')}
-            {this.renderBlockButton('bulleted-list', 'Bulleted list')}
-          </Spacings.Inline>
+          <StyleDropdown
+            label="Style"
+            options={dropdownOptions}
+            value={(() => {
+              if (this.hasBlock('heading-one')) return 'heading-one';
+              if (this.hasBlock('heading-two')) return 'heading-two';
+              if (this.hasBlock('heading-three')) return 'heading-three';
+              if (this.hasBlock('heading-four')) return 'heading-four';
+              if (this.hasBlock('heading-five')) return 'heading-five';
+              if (this.hasBlock('block-quote')) return 'block-quote';
+              if (this.hasBlock('code')) return 'code';
+              if (this.hasBlock('paragraph')) return 'paragraph';
+              return '';
+            })()}
+            onChange={this.onChangeStyleDropdown}
+          />
+          {this.renderMarkButton('bold', 'B')}
+          {this.renderMarkButton('italic', 'I')}
+          {this.renderMarkButton('underlined', 'U')}
+          <StyleDropdown
+            label="S"
+            options={markDropdownOptions}
+            value={(() => {
+              // consider making this a multi select :thinking:
+              if (this.hasMark('subscript')) return 'subscript';
+              if (this.hasMark('superscript')) return 'superscript';
+              if (this.hasMark('strikethrough')) return 'strikethrough';
+              return '';
+            })()}
+            onChange={this.onChangeMarkDropdown}
+          />
+          <StyleDropdown
+            label="Alignment"
+            options={alignmentOptions}
+            onChange={this.onAlignmentChange}
+            value={(() => {
+              const first = this.props.value.blocks.first();
+
+              if (first) {
+                console.log('first', first.data);
+              }
+              // console.log('this.editor', this.editor.blocks);
+              // export const getType = value => value.blocks.first().type;
+
+              //                console.log('here');
+              // if (this.hasBlock('align-left')) return 'align-left';
+              // if (this.hasBlock('align-center')) return 'align-center';
+              // if (this.hasBlock('align-right')) return 'align-right';
+              return '';
+            })()}
+          />
+          {this.renderBlockButton('code', '<>')}
+          {this.renderBlockButton('numbered-list', 'Number List')}
+          {this.renderBlockButton('bulleted-list', 'Bulleted list')}
         </Toolbar>
         <EditorContainer {...passedProps}>{children}</EditorContainer>
       </Container>
