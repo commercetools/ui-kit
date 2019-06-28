@@ -22,6 +22,15 @@ export const component = ({ themes }) => (
         isDisabled={true}
       />
     </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with custom (dark) theme">
+        <SecondaryIconButton
+          icon={<InformationIcon />}
+          label="A label text"
+          onClick={() => {}}
+        />
+      </Spec>
+    </ThemeProvider>
     <Spec label="size - small">
       <SecondaryIconButton
         icon={<InformationIcon />}
@@ -62,14 +71,5 @@ export const component = ({ themes }) => (
         color="primary"
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
-        <SecondaryIconButton
-          icon={<InformationIcon />}
-          label="A label text"
-          onClick={() => {}}
-        />
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );
