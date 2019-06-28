@@ -35,7 +35,15 @@ also pass a label for accessibility reasons.
 
 #### Note
 
-The size of the button should be adjusted directly on the passed `Icon` component.
+The size of the button should be adjusted directly on the passed `Icon` component. Example:
+
+```js
+<SecondaryIconButton
+  icon={<ArrowRightIcon size="small" />}
+  label="Next"
+  onClick={() => alert('Button clicked')}
+/>
+```
 
 #### Where to use
 

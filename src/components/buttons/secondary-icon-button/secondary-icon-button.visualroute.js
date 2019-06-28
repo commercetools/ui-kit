@@ -47,5 +47,12 @@ export const component = ({ themes }) => (
         color="primary"
       />
     </Spec>
+    <Spec label="with small Icon">
+      <SecondaryIconButton
+        icon={<InformationIcon size="small" />}
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
   </Suite>
 );
