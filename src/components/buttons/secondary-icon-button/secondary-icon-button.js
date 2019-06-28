@@ -18,7 +18,7 @@ export const SecondaryIconButton = props => {
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={getBaseStyles(props)}
+      css={theme => getBaseStyles(theme, props)}
     >
       {props.icon &&
         React.cloneElement(props.icon, {

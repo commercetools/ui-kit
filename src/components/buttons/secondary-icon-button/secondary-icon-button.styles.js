@@ -31,14 +31,18 @@ const getColorStyle = (props, overwrittenVars) => {
         }
       `;
     default:
-      return '';
+      return css`
+        svg * {
+          fill: ${overwrittenVars.colorSolid};
+        }
+      `;
   }
 };
 
-const getBaseStyles = props => {
+const getBaseStyles = (theme, props) => {
   const overwrittenVars = {
     ...vars,
-    ...props.theme,
+    ...theme,
   };
 
   return [
