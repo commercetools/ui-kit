@@ -31,5 +31,28 @@ export const component = ({ themes }) => (
         />
       </Spec>
     </ThemeProvider>
+    <Spec label="color - solid">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        label="A label text"
+        onClick={() => {}}
+        color="solid"
+      />
+    </Spec>
+    <Spec label="color - primary">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        label="A label text"
+        onClick={() => {}}
+        color="primary"
+      />
+    </Spec>
+    <Spec label="with small Icon">
+      <SecondaryIconButton
+        icon={<InformationIcon size="small" />}
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
   </Suite>
 );

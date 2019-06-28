@@ -23,8 +23,9 @@ storiesOf('Components|Buttons', module)
         icon={React.createElement(
           icons[select('icon', iconNames, iconNames[0])]
         )}
-        onClick={action('onClick')}
         label={text('label', 'Accessibility text')}
+        color={select('color', ['solid', 'primary'], 'solid')}
+        onClick={action('onClick')}
         isDisabled={boolean('isDisabled', false)}
       />
     </Section>
