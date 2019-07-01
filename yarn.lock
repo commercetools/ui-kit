@@ -4960,7 +4960,7 @@ cors@^2.8.4:
     object-assign "^4"
     vary "^1"
 
-cosmiconfig@^5.0.0, cosmiconfig@^5.2.0, cosmiconfig@^5.2.1:
+cosmiconfig@^5.0.0, cosmiconfig@^5.2.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-5.2.1.tgz#040f726809c591e77a17c0a3626ca45b4f168b1a"
   integrity sha512-H65gsXo1SKjf8zmrJ67eJk8aIRKV5ff2D4uKZIBZShbhGSpEmsQOPW/SKMKYhSTrqR7ufy6RP69rPogdaPh/kA==
@@ -5992,10 +5992,10 @@ eslint-config-airbnb-base@13.1.0:
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
-eslint-config-prettier@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-5.0.0.tgz#f7a94b2b8ae7cbf25842c36fa96c6d32cd0a697c"
-  integrity sha512-c17Aqiz5e8LEqoc/QPmYnaxQFAHTx2KlCZBPxXXjEMmNchOLnV/7j0HoPZuC+rL/tDC9bazUYOKJW9bOhftI/w==
+eslint-config-prettier@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.0.0.tgz#f429a53bde9fc7660e6353910fd996d6284d3c25"
+  integrity sha512-vDrcCFE3+2ixNT5H83g28bO/uYAwibJxerXPj+E7op4qzBCsAV36QfvdAyVOoNxKAH2Os/e01T/2x++V0LPukA==
   dependencies:
     get-stdin "^6.0.0"
 
@@ -6028,10 +6028,10 @@ eslint-module-utils@^2.4.0:
     debug "^2.6.8"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@2.17.3:
-  version "2.17.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.17.3.tgz#00548b4434c18faebaba04b24ae6198f280de189"
-  integrity sha512-qeVf/UwXFJbeyLbxuY8RgqDyEKCkqV7YC+E5S5uOjAp4tOc8zj01JP3ucoBM8JcEqd1qRasJSg6LLlisirfy0Q==
+eslint-plugin-import@2.18.0:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.18.0.tgz#7a5ba8d32622fb35eb9c8db195c2090bd18a3678"
+  integrity sha512-PZpAEC4gj/6DEMMoU2Df01C5c50r7zdGIN52Yfi7CvvWaYssG7Jt5R9nFG5gmqodxNOz9vQS87xk6Izdtpdrig==
   dependencies:
     array-includes "^3.0.3"
     contains-path "^0.1.0"
@@ -6050,11 +6050,12 @@ eslint-plugin-jest@22.7.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.7.1.tgz#5dcdf8f7a285f98040378220d6beca581f0ab2a1"
   integrity sha512-CrT3AzA738neimv8G8iK2HCkrCwHnAJeeo7k5TEHK86VMItKl6zdJT/tHBDImfnVVAYsVs4Y6BUdBZQCCgfiyw==
 
-eslint-plugin-jsx-a11y@6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.2.1.tgz#4ebba9f339b600ff415ae4166e3e2e008831cf0c"
-  integrity sha512-cjN2ObWrRz0TTw7vEcGQrx+YltMvZoOEx4hWU8eEERDnBIU00OTq7Vr+jA7DFKxiwLNv4tTh5Pq2GUNEa8b6+w==
+eslint-plugin-jsx-a11y@6.2.3:
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.2.3.tgz#b872a09d5de51af70a97db1eea7dc933043708aa"
+  integrity sha512-CawzfGt9w83tyuVekn0GDPU9ytYtxyxyFZ3aSWROmnRRFQFT2BiPJd7jvRdzNDi6oLWaS2asMeYSNMjWTV4eNg==
   dependencies:
+    "@babel/runtime" "^7.4.5"
     aria-query "^3.0.0"
     array-includes "^3.0.3"
     ast-types-flow "^0.0.7"
@@ -6062,7 +6063,7 @@ eslint-plugin-jsx-a11y@6.2.1:
     damerau-levenshtein "^1.0.4"
     emoji-regex "^7.0.2"
     has "^1.0.3"
-    jsx-ast-utils "^2.0.1"
+    jsx-ast-utils "^2.2.1"
 
 eslint-plugin-prefer-object-spread@1.2.1:
   version "1.2.1"
@@ -6076,10 +6077,10 @@ eslint-plugin-prettier@3.1.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-react@7.14.0:
-  version "7.14.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.14.0.tgz#14f97c1add4d873fee2b6c52ac38cda96c70d1d1"
-  integrity sha512-MbPYPGsOteqqnFZx4lGLw6izxcWv6onLsil/6iX6+CaZAzMxOwsPja1Xg25cVCJ4jwKBDhJXe+ZAn6HAjGHSCw==
+eslint-plugin-react@7.14.2:
+  version "7.14.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.14.2.tgz#94c193cc77a899ac0ecbb2766fbef88685b7ecc1"
+  integrity sha512-jZdnKe3ip7FQOdjxks9XPN0pjUKZYq48OggNMd16Sk+8VXx6JOvXmlElxROCgp7tiUsTsze3jd78s/9AFJP2mA==
   dependencies:
     array-includes "^3.0.3"
     doctrine "^2.1.0"
@@ -6207,7 +6208,7 @@ estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
   integrity sha1-De4/7TH81GlhjOc0IJn8GvoL2xM=
 
-estree-walker@^0.6.0, estree-walker@^0.6.1:
+estree-walker@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.6.1.tgz#53049143f40c6eb918b23671d1fe3219f3a1b362"
   integrity sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==
@@ -7695,17 +7696,17 @@ https-proxy-agent@^2.2.1:
     agent-base "^4.1.0"
     debug "^3.1.0"
 
-husky@2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-2.6.0.tgz#0f7ad7ad2662909ca89e2978efa86584873bc7bd"
-  integrity sha512-AbBod6i0qmaPv/fb9XjOR+m/cJ6MKToLpJh+pYV8Pl7VKvOWvCXpjQK1MkFC4XLoxGX6mqBFfA/H5ugxUd9nLg==
+husky@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-2.7.0.tgz#c0a9a6a3b51146224e11bba0b46bba546e461d05"
+  integrity sha512-LIi8zzT6PyFpcYKdvWRCn/8X+6SuG2TgYYMrM6ckEYhlp44UcEduVymZGIZNLiwOUjrEud+78w/AsAiqJA/kRg==
   dependencies:
-    cosmiconfig "^5.2.1"
+    cosmiconfig "^5.2.0"
     execa "^1.0.0"
+    find-up "^3.0.0"
     get-stdin "^7.0.0"
     is-ci "^2.0.0"
-    opencollective-postinstall "^2.0.2"
-    pkg-dir "^4.2.0"
+    pkg-dir "^4.1.0"
     please-upgrade-node "^3.1.1"
     read-pkg "^5.1.1"
     run-node "^1.0.0"
@@ -9210,12 +9211,20 @@ jssha@^2.1.0:
   resolved "https://registry.yarnpkg.com/jssha/-/jssha-2.3.1.tgz#147b2125369035ca4b2f7d210dc539f009b3de9a"
   integrity sha1-FHshJTaQNcpLL30hDcU58Amz3po=
 
-jsx-ast-utils@^2.0.1, jsx-ast-utils@^2.1.0:
+jsx-ast-utils@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.1.0.tgz#0ee4e2c971fb9601c67b5641b71be80faecf0b36"
   integrity sha512-yDGDG2DS4JcqhA6blsuYbtsT09xL8AoLuUR2Gb5exrw7UEM19sBcOTq+YBBhrNbl0PUC4R4LnFu+dHg2HKeVvA==
   dependencies:
     array-includes "^3.0.3"
+
+jsx-ast-utils@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.2.1.tgz#4d4973ebf8b9d2837ee91a8208cc66f3a2776cfb"
+  integrity sha512-v3FxCcAf20DayI+uxnCuw795+oOIkVu6EnJ1+kSzhqqTZHNkTZ7B66ZgLp4oLJ/gbA64cI0B7WRoHZMSRdyVRQ==
+  dependencies:
+    array-includes "^3.0.3"
+    object.assign "^4.1.0"
 
 kind-of@^2.0.1:
   version "2.0.1"
@@ -10755,11 +10764,6 @@ open@^6.1.0:
   dependencies:
     is-wsl "^1.1.0"
 
-opencollective-postinstall@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
-  integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
-
 opn@5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
@@ -11211,7 +11215,7 @@ pkg-dir@^3.0.0:
   dependencies:
     find-up "^3.0.0"
 
-pkg-dir@^4.1.0, pkg-dir@^4.2.0:
+pkg-dir@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-4.2.0.tgz#f099133df7ede422e81d1d8448270eeb3e4261f3"
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
@@ -11697,7 +11701,21 @@ punycode@^1.2.4, punycode@^1.3.2, punycode@^1.4.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha1-wNWmOycYgArY4esPpSachN1BhF4=
 
-puppeteer@1.18.0, puppeteer@^1.13.0:
+puppeteer@1.18.1:
+  version "1.18.1"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.18.1.tgz#4a66f3bdab01115ededf70443ec904c99917a815"
+  integrity sha512-luUy0HPSuWPsPZ1wAp6NinE0zgetWtudf5zwZ6dHjMWfYpTQcmKveFRox7VBNhQ98OjNA9PQ9PzQyX8k/KrxTg==
+  dependencies:
+    debug "^4.1.0"
+    extract-zip "^1.6.6"
+    https-proxy-agent "^2.2.1"
+    mime "^2.0.3"
+    progress "^2.0.1"
+    proxy-from-env "^1.0.0"
+    rimraf "^2.6.1"
+    ws "^6.1.0"
+
+puppeteer@^1.13.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.18.0.tgz#227bccc52806db37b3ccf762a7d95c06163f296e"
   integrity sha512-NCwSN4wEIj43k4jO8Asa5nzibrIDFHWykqkZFjkGr0/f6U73k1ysql0gadQmOGLtZewXvvWqlNo+4ZMgX+5vZA==
@@ -12858,16 +12876,16 @@ rollup-plugin-cleanup@3.1.1:
     js-cleanup "^1.0.1"
     rollup-pluginutils "^2.3.3"
 
-rollup-plugin-commonjs@10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-commonjs/-/rollup-plugin-commonjs-10.0.0.tgz#58901ebe7ca44c2a03f0056de9bf9eb4a2dc8990"
-  integrity sha512-B8MoX5GRpj3kW4+YaFO/di2JsZkBxNjVmZ9LWjUoTAjq8N9wc7HObMXPsrvolVV9JXVtYSscflXM14A19dXPNQ==
+rollup-plugin-commonjs@10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-commonjs/-/rollup-plugin-commonjs-10.0.1.tgz#fbfcadf4ce2e826068e056a9f5c19287d9744ddf"
+  integrity sha512-x0PcCVdEc4J8igv1qe2vttz8JKAKcTs3wfIA3L8xEty3VzxgORLrzZrNWaVMc+pBC4U3aDOb9BnWLAQ8J11vkA==
   dependencies:
-    estree-walker "^0.6.0"
+    estree-walker "^0.6.1"
     is-reference "^1.1.2"
     magic-string "^0.25.2"
-    resolve "^1.10.1"
-    rollup-pluginutils "^2.7.0"
+    resolve "^1.11.0"
+    rollup-pluginutils "^2.8.1"
 
 rollup-plugin-json@4.0.0:
   version "4.0.0"
@@ -12876,10 +12894,10 @@ rollup-plugin-json@4.0.0:
   dependencies:
     rollup-pluginutils "^2.5.0"
 
-rollup-plugin-node-resolve@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-node-resolve/-/rollup-plugin-node-resolve-5.1.0.tgz#49608b6ecaf2b776ab83e317d39b282d65d21b76"
-  integrity sha512-2hwwHNj0s8UEtUNT+lJq8rFWEznP7yJm3GCHBicadF6hiNX1aRARRZIjz2doeTlTGg/hOvJr4C/8+3k9Y/J5Hg==
+rollup-plugin-node-resolve@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-node-resolve/-/rollup-plugin-node-resolve-5.2.0.tgz#730f93d10ed202473b1fb54a5997a7db8c6d8523"
+  integrity sha512-jUlyaDXts7TW2CqQ4GaO5VJ4PwwaV8VUGA7+km3n6k6xtOEacf61u0VXwN80phY/evMcaS+9eIeJ9MOyDxt5Zw==
   dependencies:
     "@types/resolve" "0.0.8"
     builtin-modules "^3.1.0"
@@ -12910,17 +12928,17 @@ rollup-plugin-size-snapshot@0.9.0:
     terser "^3.14.1"
     webpack "^4.28.4"
 
-rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.7.0, rollup-pluginutils@^2.8.1:
+rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.1.tgz#8fa6dd0697344938ef26c2c09d2488ce9e33ce97"
   integrity sha512-J5oAoysWar6GuZo0s+3bZ6sVZAC0pfqKz68De7ZgDi5z63jOVZn1uJL/+z1jeKHNbGII8kAyHF5q8LnxSX5lQg==
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@1.16.2:
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.16.2.tgz#959aeae4b06c8e540749bac442d6d37aefb9217d"
-  integrity sha512-UAZxaQvH0klYZdF+90xv9nGb+m4p8jdoaow1VL5/RzDK/gN/4CjvaMmJNcOIv1/+gtzswKhAg/467mzF0sLpAg==
+rollup@1.16.3:
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.16.3.tgz#9b8bcf31523efc83447a9624bd2fe6ca58caa1e7"
+  integrity sha512-iXINUUEk2NTZXE3GcUtLQt2cvfQsAUXBQ8AFsDK8tg7Wp5bwTKdZXPdzB2IJQwHpdUNfsIgYMAfajurh7SVTnA==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "^12.0.8"
