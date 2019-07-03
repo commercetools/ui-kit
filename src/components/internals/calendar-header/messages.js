@@ -9,21 +9,21 @@ export default defineMessages({
   previousMonthTooltip: {
     id: 'UIKit.CalendarHeader.previousMonthTooltip',
     description: 'Tooltip title when user hovers the previous month button',
-    defaultMessage: 'Today',
+    defaultMessage: 'Previous month',
   },
   nextMonthTooltip: {
     id: 'UIKit.CalendarHeader.nextMonthTooltip',
     description: 'Tooltip title when user hovers the next month button',
-    defaultMessage: 'Today',
+    defaultMessage: 'Next month',
   },
   previousYearTooltip: {
     id: 'UIKit.CalendarHeader.previousYearTooltip',
     description: 'Tooltip title when user hovers the previous year button',
-    defaultMessage: 'Today',
+    defaultMessage: 'Previous year',
   },
   nextYearTooltip: {
     id: 'UIKit.CalendarHeader.nextYearTooltip',
     description: 'Tooltip title when user hovers the next year button',
-    defaultMessage: 'Today',
+    defaultMessage: 'Next year',
   },
 });
