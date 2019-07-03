@@ -26,10 +26,11 @@ Links are used either to link to other ui routes, or to link to external pages. 
 
 #### Properties
 
-| Props        | Type                                                              | Required | Values | Default | Description                                                                 |
-| ------------ | ----------------------------------------------------------------- | :------: | ------ | ------- | --------------------------------------------------------------------------- |
-| `to`         | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                                       |
-| `isExternal` | `boolean`                                                         |    -     | -      | false   | If true, a regular <a> is rendered instead of the default React Router Link |
+| Props          | Type                                                              | Required | Values | Default | Description                                                                 |
+| -------------- | ----------------------------------------------------------------- | :------: | ------ | ------- | --------------------------------------------------------------------------- |
+| `to`           | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                                       |
+| `isExternal`   | `boolean`                                                         |    -     | -      | false   | If true, a regular <a> is rendered instead of the default React Router Link |
+| `hasUnderline` | `boolean`                                                         |    -     | -      | true    | Either sets text-decoration to none or to underline                         |
 
 The component further forwards all remaining props to the underlying component. The external link includes `target="_blank"` and `rel="noopener noreferrer"` by default.
 
