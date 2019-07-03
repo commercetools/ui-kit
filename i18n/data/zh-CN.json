@@ -6,6 +6,7 @@
   "UIKit.AsyncSelectInput.noOptionsMessageWithInputValue": "无选项",
   "UIKit.AsyncSelectInput.noOptionsMessageWithoutInputValue": "无选项",
   "UIKit.AsyncSelectInput.placeholder": "选择...",
+  "UIKit.CalendarHeader.todayTooltip": "",
   "UIKit.CreatableSelectInput.createLabel": "创建 \"{inputValue}\"",
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "无选项",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "无选项",
