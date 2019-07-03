@@ -26,14 +26,18 @@ const CalendarHeader = props => (
     `}
   >
     <Spacings.Inline scale="xs" alignItems="center">
-      <SecondaryIconButton
-        label="show prev month"
-        onClick={props.onPrevMonthClick}
-        icon={<AngleLeftIcon size="medium" />}
-      />
+      <Tooltip
+        title={props.intl.formatMessage(messages.previousMonthTooltip)}
+        components={{ WrapperComponent }}
+      >
+        <SecondaryIconButton
+          label="show prev month"
+          onClick={props.onPrevMonthClick}
+          icon={<AngleLeftIcon size="medium" />}
+        />
+      </Tooltip>
       <Tooltip
         title={props.intl.formatMessage(messages.todayTooltip)}
-        placement="top"
         components={{ WrapperComponent }}
       >
         <SecondaryIconButton
@@ -42,27 +46,42 @@ const CalendarHeader = props => (
           icon={<CircleIcon size="medium" />}
         />
       </Tooltip>
-      <SecondaryIconButton
-        label="show next month"
-        onClick={props.onNextMonthClick}
-        icon={<AngleRightIcon size="medium" />}
-      />
+      <Tooltip
+        title={props.intl.formatMessage(messages.nextMonthTooltip)}
+        components={{ WrapperComponent }}
+      >
+        <SecondaryIconButton
+          label="show next month"
+          onClick={props.onNextMonthClick}
+          icon={<AngleRightIcon size="medium" />}
+        />
+      </Tooltip>
       <Text.Body isInline={true} isBold={true}>
         {props.monthLabel}
       </Text.Body>
     </Spacings.Inline>
     <Spacings.Inline scale="xs" alignItems="center">
-      <SecondaryIconButton
-        label="show prev year"
-        onClick={props.onPrevYearClick}
-        icon={<AngleLeftIcon size="medium" />}
-      />
+      <Tooltip
+        title={props.intl.formatMessage(messages.previousYearTooltip)}
+        components={{ WrapperComponent }}
+      >
+        <SecondaryIconButton
+          label="show prev year"
+          onClick={props.onPrevYearClick}
+          icon={<AngleLeftIcon size="medium" />}
+        />
+      </Tooltip>
       <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
-      <SecondaryIconButton
-        label="show next year"
-        onClick={props.onNextYearClick}
-        icon={<AngleRightIcon size="medium" />}
-      />
+      <Tooltip
+        title={props.intl.formatMessage(messages.nextYearTooltip)}
+        components={{ WrapperComponent }}
+      >
+        <SecondaryIconButton
+          label="show next year"
+          onClick={props.onNextYearClick}
+          icon={<AngleRightIcon size="medium" />}
+        />
+      </Tooltip>
     </Spacings.Inline>
   </div>
 );
