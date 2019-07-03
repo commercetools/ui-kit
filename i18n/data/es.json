@@ -6,6 +6,7 @@
   "UIKit.AsyncSelectInput.noOptionsMessageWithInputValue": "Menú vacío",
   "UIKit.AsyncSelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",
   "UIKit.AsyncSelectInput.placeholder": "Seleccionar...",
+  "UIKit.CalendarHeader.todayTooltip": "",
   "UIKit.CreatableSelectInput.createLabel": "Crear \"{inputValue}\"",
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "Menú vacío",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "Menú vacío",

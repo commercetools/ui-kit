@@ -6,6 +6,7 @@
   "UIKit.AsyncSelectInput.noOptionsMessageWithInputValue": "Aucune option",
   "UIKit.AsyncSelectInput.noOptionsMessageWithoutInputValue": "Aucune option",
   "UIKit.AsyncSelectInput.placeholder": "Sélectionner...",
+  "UIKit.CalendarHeader.todayTooltip": "",
   "UIKit.CreatableSelectInput.createLabel": "Créer \"{inputValue}\"",
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "Aucune option",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "Aucune option",
