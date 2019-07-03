@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { injectIntl } from 'react-intl';
 import vars from '../../../../materials/custom-properties';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import { AngleLeftIcon, AngleRightIcon, CircleIcon } from '../../icons';
+import Tooltip from '../../tooltip';
 import SecondaryIconButton from '../../buttons/secondary-icon-button';
+import messages from './messages';
+
+const WrapperComponent = styled.div`
+  display: flex;
+`;
 
 const CalendarHeader = props => (
   <div
@@ -23,11 +31,17 @@ const CalendarHeader = props => (
         onClick={props.onPrevMonthClick}
         icon={<AngleLeftIcon size="medium" />}
       />
-      <SecondaryIconButton
-        label="show today"
-        onClick={props.onTodayClick}
-        icon={<CircleIcon size="medium" />}
-      />
+      <Tooltip
+        title={props.intl.formatMessage(messages.todayTooltip)}
+        placement="top"
+        components={{ WrapperComponent }}
+      >
+        <SecondaryIconButton
+          label="show today"
+          onClick={props.onTodayClick}
+          icon={<CircleIcon size="medium" />}
+        />
+      </Tooltip>
       <SecondaryIconButton
         label="show next month"
         onClick={props.onNextMonthClick}
@@ -63,6 +77,9 @@ CalendarHeader.propTypes = {
   onNextMonthClick: PropTypes.func.isRequired,
   onPrevYearClick: PropTypes.func.isRequired,
   onNextYearClick: PropTypes.func.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default CalendarHeader;
+export default injectIntl(CalendarHeader);
