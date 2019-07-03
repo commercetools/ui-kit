@@ -29,8 +29,10 @@ const getBorderColor = props => {
 };
 
 export const Toolbar = styled.div`
-  display: none;
+  /* display: none; */
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   font-family: ${vars.fontFamilyDefault};
   border: 1px solid ${vars.borderColorForInput};

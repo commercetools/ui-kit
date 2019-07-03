@@ -15,6 +15,8 @@ import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
 
 const DEFAULT_NODE = 'paragraph';
 
+const getType = value => value.blocks.first().type;
+
 const plugins = [
   MarkHotkeyPlugin({ key: 'b', type: 'bold' }),
   MarkHotkeyPlugin({ key: 'i', type: 'italic' }),
@@ -177,10 +179,14 @@ class RichTextInput extends React.Component {
     const align = selectedValue.value;
 
     const { editor } = this;
-    editor.setBlocks({
-      type: getType(editor.value),
-      data: { alignment: align, currentBlockType: getType(editor.value) },
-    });
+
+    console.log('here :)');
+
+    // here
+    // editor.setBlocks({
+    //   type: getType(editor.value),
+    //   data: { alignment: align, currentBlockType: getType(editor.value) },
+    // });
   };
 
   onChangeMarkDropdown = selectedValue => {

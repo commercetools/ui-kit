@@ -57,11 +57,8 @@ const DropdownContainer = styled.div`
   top: ${vars.spacingXs};
   left: 0;
   background: white;
-
-  /* background: teal; */
   z-index: 9999;
   padding: 4px;
-
   border: 1px solid ${vars.colorPrimary};
   border-radius: ${vars.borderRadius6};
 `;
