@@ -1,4 +1,22 @@
-<a name="9.10.0></a>
+<a name="9.11.0"></a>
+
+# [9.11.0](https://github.com/commercetools/ui-kit/compare/v9.10.0...v9.11.0) (2019-07-04)
+
+### Bug Fixes
+
+- `FieldIcon`: do not scale icon when long hint ([#878](https://github.com/commercetools/ui-kit/issues/878)) ([1c06bbc](https://github.com/commercetools/ui-kit/commit/1c06bbc))
+- `DateInputs`: add tooltips ([#911](https://github.com/commercetools/ui-kit/issues/910))
+- `Link`: apply underlined styles ([#911](https://github.com/commercetools/ui-kit/issues/911)) ([20cd7a4](https://github.com/commercetools/ui-kit/commit/20cd7a4))
+- `Storybook`: downgrade storybook-readme ([#896](https://github.com/commercetools/ui-kit/issues/896)) ([32f9374](https://github.com/commercetools/ui-kit/commit/32f9374))
+
+### Features
+
+- setup bundlesize ([#914](https://github.com/commercetools/ui-kit/issues/914)) ([c74581f](https://github.com/commercetools/ui-kit/commit/c74581f))
+- **date-inputs:** add tooltip to "today" button ([#910](https://github.com/commercetools/ui-kit/issues/910)) ([2790042](https://github.com/commercetools/ui-kit/commit/2790042))
+- add postcss codemod ([#893](https://github.com/commercetools/ui-kit/issues/893)) ([82b4381](https://github.com/commercetools/ui-kit/commit/82b4381))
+- `Storybook`: add context add for theme ([#876](https://github.com/commercetools/ui-kit/issues/876)) ([c87d581](https://github.com/commercetools/ui-kit/commit/c87d581))
+
+<a name="9.10.0"></a>
 
 # [9.10.0](https://github.com/commercetools/ui-kit/compare/v9.9.0...9.10.0) (2019-06-19)
 
@@ -43,7 +61,7 @@
 - Various dependency updates ([#849](https://github.com/commercetools/ui-kit/pull/849))
 - Various dependency updates ([#838](https://github.com/commercetools/ui-kit/pull/838))
 
-<a name="9.8.3></a>
+<a name="9.8.3"></a>
 
 # [9.8.3](https://github.com/commercetools/ui-kit/compare/v9.8.2...v9.8.3) (2019-06-05)
 
