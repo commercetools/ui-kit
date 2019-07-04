@@ -5,12 +5,12 @@
 ### Bug Fixes
 
 - `FieldIcon`: do not scale icon when long hint ([#878](https://github.com/commercetools/ui-kit/issues/878)) ([1c06bbc](https://github.com/commercetools/ui-kit/commit/1c06bbc))
-- `DateInputs`: add tooltips ([#911](https://github.com/commercetools/ui-kit/issues/910))
 - `Link`: apply underlined styles ([#911](https://github.com/commercetools/ui-kit/issues/911)) ([20cd7a4](https://github.com/commercetools/ui-kit/commit/20cd7a4))
 - `Storybook`: downgrade storybook-readme ([#896](https://github.com/commercetools/ui-kit/issues/896)) ([32f9374](https://github.com/commercetools/ui-kit/commit/32f9374))
 
 ### Features
 
+- `DateInputs`: add tooltips ([#911](https://github.com/commercetools/ui-kit/issues/910))
 - setup bundlesize ([#914](https://github.com/commercetools/ui-kit/issues/914)) ([c74581f](https://github.com/commercetools/ui-kit/commit/c74581f))
 - **date-inputs:** add tooltip to "today" button ([#910](https://github.com/commercetools/ui-kit/issues/910)) ([2790042](https://github.com/commercetools/ui-kit/commit/2790042))
 - add postcss codemod ([#893](https://github.com/commercetools/ui-kit/issues/893)) ([82b4381](https://github.com/commercetools/ui-kit/commit/82b4381))
