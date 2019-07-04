@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "./dist/ui-kit.esm.js",
-      "maxSize": "175 kB"
+      "maxSize": "160 kB"
     }
   ]
 }
