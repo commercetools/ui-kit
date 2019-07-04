@@ -4,7 +4,7 @@
 
 ### Bug Fixes
 
-- `FieldIcon`: do not scale icon when long hint ([#878](https://github.com/commercetools/ui-kit/issues/878)) ([1c06bbc](https://github.com/commercetools/ui-kit/commit/1c06bbc))
+- `FieldLabel`: do not scale icon when long hint ([#878](https://github.com/commercetools/ui-kit/issues/878)) ([1c06bbc](https://github.com/commercetools/ui-kit/commit/1c06bbc))
 - `Link`: apply underlined styles ([#911](https://github.com/commercetools/ui-kit/issues/911)) ([20cd7a4](https://github.com/commercetools/ui-kit/commit/20cd7a4))
 - `Storybook`: downgrade storybook-readme ([#896](https://github.com/commercetools/ui-kit/issues/896)) ([32f9374](https://github.com/commercetools/ui-kit/commit/32f9374))
 
