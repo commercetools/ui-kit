@@ -56,7 +56,7 @@
     "test": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
-    "test:bundlesize": "bundlesize",
+    "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "release:next": "yarn publish --tag next",
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
