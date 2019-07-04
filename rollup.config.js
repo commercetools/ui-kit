@@ -4,7 +4,6 @@ import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
-import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 
@@ -60,7 +59,6 @@ const configureRollupPlugins = (options = {}) =>
     // To remove comments, trim trailing spaces, compact empty lines,
     // and normalize line endings
     cleanup(),
-    options.sizeSnapshot && sizeSnapshot(),
   ].filter(Boolean);
 
 const deps = Object.keys(pkg.dependencies || {});
