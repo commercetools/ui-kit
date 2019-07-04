@@ -52,11 +52,11 @@ commands:
   unit_test:
     description: 'Running unit tests'
     steps:
-      - run: yarn run jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run: yarn run cross-env NODE_ICU_DATA=node_modules/full-icu jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
   bundle_test:
     description: 'Running bundle tests'
     steps:
-      - run: yarn run jest --projects jest.bundle.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run: yarn run cross-env NODE_ICU_DATA=node_modules/full-icu jest --projects jest.bundle.config.js --maxWorkers=3 --reporters jest-silent-reporter
   vrt_test:
     description: 'Running Visual Regression Tests'
     steps:
