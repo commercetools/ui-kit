@@ -11,10 +11,12 @@
 ### Features
 
 - `DateInputs`: add tooltips ([#911](https://github.com/commercetools/ui-kit/issues/910))
+- `Storybook`: add context for theme ([#876](https://github.com/commercetools/ui-kit/issues/876)) ([c87d581](https://github.com/commercetools/ui-kit/commit/c87d581))
+
+### Chore
+
 - setup bundlesize ([#914](https://github.com/commercetools/ui-kit/issues/914)) ([c74581f](https://github.com/commercetools/ui-kit/commit/c74581f))
-- **date-inputs:** add tooltip to "today" button ([#910](https://github.com/commercetools/ui-kit/issues/910)) ([2790042](https://github.com/commercetools/ui-kit/commit/2790042))
 - add postcss codemod ([#893](https://github.com/commercetools/ui-kit/issues/893)) ([82b4381](https://github.com/commercetools/ui-kit/commit/82b4381))
-- `Storybook`: add context add for theme ([#876](https://github.com/commercetools/ui-kit/issues/876)) ([c87d581](https://github.com/commercetools/ui-kit/commit/c87d581))
 
 <a name="9.10.0"></a>
 
