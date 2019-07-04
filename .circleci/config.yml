@@ -34,6 +34,7 @@ commands:
     description: 'Building artifacts'
     steps:
       - run: yarn build
+      - run: yarn bundlesize
   save_workspace:
     steps:
       - persist_to_workspace:

@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "path": "./dist/ui-kit.esm.js",
+      "maxSize": "160 kB"
+    }
+  ]
+}
