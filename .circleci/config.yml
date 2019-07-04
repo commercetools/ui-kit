@@ -172,6 +172,12 @@ workflows:
           filters:
             tags:
               only: /v[\.0-9]+.*/
+      - bundle_size_test:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /v[\.0-9]+.*/
       - vrt_test:
           requires:
             - build
