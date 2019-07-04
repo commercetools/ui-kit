@@ -11,10 +11,12 @@ const getLinkStyles = (props, theme) => {
     ...vars,
     ...theme,
   };
+
   return css`
     font-family: ${overwrittenVars.fontFamilyDefault};
     color: ${overwrittenVars.colorPrimary};
     font-size: ${overwrittenVars.fontSizeDefault};
+    text-decoration: ${props.hasUnderline ? 'underline' : 'none'};
 
     &:hover,
     &:focus,
@@ -53,6 +55,7 @@ const Link = props => {
 Link.displayName = 'Link';
 
 Link.propTypes = {
+  hasUnderline: PropTypes.bool.isRequired,
   isExternal: PropTypes.bool.isRequired,
   to: requiredIf(
     PropTypes.oneOfType([
@@ -69,6 +72,7 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
+  hasUnderline: true,
   isExternal: false,
 };
 

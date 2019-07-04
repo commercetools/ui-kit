@@ -19,6 +19,7 @@ storiesOf('Components|Links', module)
       <Section>
         <Link
           to={text('to', '/foo/bar')}
+          hasUnderline={boolean('hasUnderline', true)}
           isExternal={boolean('isExternal', false)}
         >
           {text('label', 'Accessibility text')}
