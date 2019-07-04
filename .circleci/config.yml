@@ -56,6 +56,10 @@ commands:
     description: 'Running bundle tests'
     steps:
       - run: yarn run jest --projects jest.bundle.config.js --maxWorkers=3 --reporters jest-silent-reporter
+  bundle_size_test:
+    description: 'Running bundle size'
+    steps:
+      - run: yarn run test:bundlesize
   vrt_test:
     description: 'Running Visual Regression Tests'
     steps:
@@ -131,6 +135,12 @@ jobs:
       - install_dependencies
       - restore_workspace
       - bundle_test
+  bundle_size_test:
+    executor: node_10
+    steps:
+      - install_dependencies
+      - restore_workspace
+      - bundle_size_test
   vrt_test:
     executor: node_10
     steps:
