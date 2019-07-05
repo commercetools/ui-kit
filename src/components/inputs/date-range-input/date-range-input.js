@@ -325,7 +325,8 @@ class DateRangeCalendar extends React.Component {
             const paddingDayCount = getPaddingDayCount(this.state.calendarDate);
             const paddingDays = Array(paddingDayCount).fill();
 
-            const weekdays = getWeekdayNames('en');
+            const weekdays = getWeekdayNames(this.props.intl.locale);
+
             const today = getToday();
 
             return (
