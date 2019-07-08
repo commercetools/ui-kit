@@ -13,7 +13,7 @@ const getLinkStyles = (props, theme) => {
   };
 
   return css`
-    font-family: ${overwrittenVars.fontFamilyDefault};
+    font-family: inherit;
     color: ${overwrittenVars.colorPrimary};
     font-size: ${overwrittenVars.fontSizeDefault};
     text-decoration: ${props.hasUnderline ? 'underline' : 'none'};

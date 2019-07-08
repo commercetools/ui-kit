@@ -18,14 +18,16 @@ const getInputStyles = (props, theme) => {
     color: ${overwrittenVars[designTokens.fontColorForInput]};
     display: flex;
     flex: 1;
-    font-family: ${overwrittenVars.fontFamilyDefault};
+    font-family: inherit;
     font-size: ${overwrittenVars[designTokens.fontSizeForInput]};
     height: ${overwrittenVars.sizeHeightInput};
     min-height: ${overwrittenVars.sizeHeightInput};
     outline: none;
     overflow: hidden;
     padding: 0 ${overwrittenVars.spacingS};
-    transition: ${overwrittenVars.transitionStandard};
+    transition: border-color ${overwrittenVars.transitionStandard},
+      background-color ${overwrittenVars.transitionStandard},
+      color ${overwrittenVars.transitionStandard};
     width: 100%;
 
     &::placeholder {

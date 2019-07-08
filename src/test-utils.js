@@ -1,20 +1,9 @@
 /* eslint-disable global-require */
 import React from 'react';
 import { render } from '@testing-library/react';
-import { IntlProvider, addLocaleData } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import en from 'react-intl/locale-data/en';
-import de from 'react-intl/locale-data/de';
-import es from 'react-intl/locale-data/es';
-import frFR from 'react-intl/locale-data/fr';
-import zhCN from 'react-intl/locale-data/zh';
-
-addLocaleData(en);
-addLocaleData(de);
-addLocaleData(es);
-addLocaleData(frFR);
-addLocaleData(zhCN);
 
 const getMessagesForLocale = locale => {
   switch (locale) {

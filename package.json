@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "9.11.0",
+  "version": "10.0.0",
   "description": "UI component library based on our Design System",
   "homepage": "https://uikit.commercetools.com/",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
@@ -24,6 +24,7 @@
     "materials/custom-properties.js",
     "CHANGELOG.md",
     "README.md",
+    "transforms",
     "LICENSE",
     "package.json"
   ],
@@ -150,6 +151,7 @@
     "html-webpack-plugin": "3.2.0",
     "husky": "3.0.0",
     "identity-obj-proxy": "3.0.0",
+    "intl": "1.2.5",
     "jest": "24.8.0",
     "jest-dom": "3.5.0",
     "jest-enzyme": "7.0.2",
@@ -178,7 +180,7 @@
     "rcfile": "1.0.3",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-intl": "2.9.0",
+    "react-intl": "3.0.0-beta.14",
     "react-router-dom": "5.0.1",
     "react-value": "0.2.0",
     "rimraf": "2.6.3",
@@ -204,9 +206,9 @@
   "peerDependencies": {
     "moment": "2.x",
     "moment-timezone": "0.5.x",
-    "react": "16.x",
-    "react-dom": "16.x",
-    "react-intl": "2.x",
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-intl": "3.x",
     "react-router-dom": "5.x"
   },
   "resolutions": {

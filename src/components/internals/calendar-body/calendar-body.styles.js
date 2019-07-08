@@ -108,7 +108,7 @@ const getInputContainerStyles = () => css`
   align-items: center;
   display: flex;
   font-size: ${vars.fontSizeDefault};
-  font-family: ${vars.fontFamilyDefault};
+  font-family: inherit;
 `;
 
 const getDateTimeInputStyles = (props, state) => {
@@ -118,6 +118,8 @@ const getDateTimeInputStyles = (props, state) => {
       border-radius: ${vars.borderRadiusForInput} 0 0
         ${vars.borderRadiusForInput};
       border-right: none;
+      transition: color ${vars.transitionStandard},
+        border-color ${vars.transitionStandard};
 
       &:focus,
       &:active,
@@ -125,7 +127,6 @@ const getDateTimeInputStyles = (props, state) => {
       &:active + * {
         border-color: ${vars.borderColorForInputWhenFocused};
         color: ${vars.fontColorForInput};
-        transition: ${vars.transitionStandard};
       }
 
       &:disabled {
@@ -149,7 +150,6 @@ const getDateTimeInputStyles = (props, state) => {
         & + * {
           border-color: ${vars.borderColorForInputWhenFocused};
           color: ${vars.fontColorForInput};
-          transition: ${vars.transitionStandard};
         }
       `,
     ];

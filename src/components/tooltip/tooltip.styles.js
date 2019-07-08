@@ -34,7 +34,7 @@ const getMaxWidth = ({ constraint }) => {
 };
 
 export const Body = styled.div`
-  font-family: ${vars.fontFamilyDefault};
+  font-family: inherit;
   border-radius: ${vars.borderRadius6};
   padding: ${vars.spacingXs} ${vars.spacingS};
   border: 'none';

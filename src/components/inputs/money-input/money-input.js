@@ -558,7 +558,7 @@ class MoneyInput extends React.Component {
         <div
           ref={this.containerRef}
           css={css`
-            font-family: ${vars.fontFamilyDefault};
+            font-family: inherit;
             width: 100%;
             position: relative;
             display: flex;
@@ -679,7 +679,7 @@ class MoneyInput extends React.Component {
                   // so that the tooltip is flush with the component
                   styles={{
                     body: {
-                      margin: `${vars.spacing8} -${vars.spacing4} ${vars.spacing8} 0`,
+                      margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
                     },
                   }}
                   title={this.props.intl.formatMessage(messages.highPrecision)}
@@ -688,7 +688,7 @@ class MoneyInput extends React.Component {
                   }}
                 >
                   <FractionDigitsIcon
-                    theme={this.props.isDisabled ? 'grey' : 'blue'}
+                    color={this.props.isDisabled ? 'neutral60' : 'info'}
                   />
                 </Tooltip>
               </div>
