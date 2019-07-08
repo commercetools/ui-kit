@@ -24,6 +24,7 @@
     "materials/custom-properties.js",
     "CHANGELOG.md",
     "README.md",
+    "transforms",
     "LICENSE",
     "package.json"
   ],

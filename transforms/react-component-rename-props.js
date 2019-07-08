@@ -1,17 +1,5 @@
 /* eslint-disable guard-for-in */
 
-// Components whose props shall be renamed
-// const componentNamesToRefactor = [
-//   // 'TextInput'
-// ];
-//
-// // Props to rename
-// const propertyRenameMap = {
-//   // isDisabled: 'disabled',
-//   // isAutofocussed: 'autoFocus',
-//   // isReadOnly: 'readOnly',
-// };
-
 // Renames properties from specified components
 module.exports = function createTransformer(
   componentNamesToRefactor,

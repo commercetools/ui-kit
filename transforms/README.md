@@ -10,7 +10,7 @@ $ npm -g install jscodeshift
 #### Example usage
 
 ```bash
-$ jscodeshift -t transforms/react-component-rename-props.js src/
+$ jscodeshift -t  @commercetools-frontend/transforms/icon-theme-to-color.js src/
 ```
 
 Useful options:
@@ -20,11 +20,10 @@ Useful options:
 
 ## Included scripts
 
-#### `react-rename-component-props`
+#### `icon-theme-to-color`
 
-Renames the props of a list of components acording to a mapping.
-Edit the `propertyRenameMap` and the `componentNamesToRefactor` constants to specify which properties to remap for which component(s).
+Renames the prop `theme` to `color` for all UI-Kit icons.
 
 ```bash
-$ jscodeshift -t transforms/react-component-rename-props.js <path>
+$ jscodeshift -t @commercetools-frontend/transforms/icon-theme-to-color.js <path>
 ```
