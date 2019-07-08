@@ -24,6 +24,10 @@ Useful options:
 
 Renames the prop `theme` to `color` for all UI-Kit icons.
 
+#### `icon-element-type-to-ass`
+
+Renames the prop `elementType` to `as` for all Text components.
+
 ```bash
 $ jscodeshift -t @commercetools-frontend/transforms/icon-theme-to-color.js <path>
 ```
