@@ -191,7 +191,7 @@
     "rollup-plugin-replace": "2.2.0",
     "serve": "11.0.2",
     "shelljs": "0.8.3",
-    "storybook-readme": "5.0.3",
+    "storybook-readme": "5.0.5",
     "stylelint": "10.1.0",
     "stylelint-config-prettier": "5.2.0",
     "stylelint-config-standard": "18.3.0",
