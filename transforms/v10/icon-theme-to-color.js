@@ -5,9 +5,23 @@ const propertyRenameMap = {
   theme: 'color',
 };
 
+const valueRenameMap = {
+  color: {
+    black: 'solid',
+    gray: 'neutral60',
+    white: 'surface',
+    blue: 'info',
+    green: 'primary',
+    'green-light': 'primary40',
+    orange: 'warning',
+    red: 'error',
+  },
+};
+
 const transformer = createTransformer(
   componentNamesToRefactor,
-  propertyRenameMap
+  propertyRenameMap,
+  valueRenameMap
 );
 
 module.exports = transformer;

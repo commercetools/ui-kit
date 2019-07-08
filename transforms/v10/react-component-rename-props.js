@@ -3,7 +3,8 @@
 // Renames properties from specified components
 module.exports = function createTransformer(
   componentNamesToRefactor,
-  propertyRenameMap
+  propertyRenameMap,
+  valueRenameMap
 ) {
   const isAttributeInPropertyRenameMap = path =>
     // eslint-disable-next-line no-prototype-builtins
@@ -21,6 +22,12 @@ module.exports = function createTransformer(
     path.value.name.name =
       propertyRenameMap[path.value.name.name] || path.value.name.name;
 
+    if (valueRenameMap && valueRenameMap[path.value.name.name]) {
+      // eslint-disable-next-line no-param-reassign
+      path.node.value.value =
+        valueRenameMap[path.value.name.name][path.node.value.value];
+    }
+
     return path.node;
   };
 
@@ -37,7 +44,6 @@ module.exports = function createTransformer(
         .renameTo(propertyRenameMap[property])
         .toSource();
     }
-
     // Rename JSX attributes
     source = jscodeshift(source)
       .find(jscodeshift.JSXAttribute)
