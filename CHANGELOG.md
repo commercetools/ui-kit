@@ -1,6 +1,6 @@
 <a name="10.0.0"></a>
 
-# [10.0.0](https://github.com/commercetools/ui-kit/compare/v9.10.0...10.0.0) (2019-06-20)
+# [10.0.0](https://github.com/commercetools/ui-kit/compare/v9.11.0...10.0.0) (2019-06-20)
 
 ### Breaking Changes
 
@@ -8,7 +8,7 @@ This release introduces **breaking changes** which may entail some **migration s
 
 - `hocs`: `withMouseOverState` and `withMouseDownState` have been dropped. Please use CSS properties instead. ([#881](https://github.com/commercetools/ui-kit/pull/881))
 
-- `Icons`: make icons themeable (breaking change) ([#726](https://github.com/commercetools/ui-kit/issues/726)) ([9bea3ad](https://github.com/commercetools/ui-kit/commit/9bea3ad))
+- `Icons`: make icons themeable ([#726](https://github.com/commercetools/ui-kit/issues/726)) ([9bea3ad](https://github.com/commercetools/ui-kit/commit/9bea3ad))
 
 The prop `theme` has been renamed to `color` for Icons. Also, the values of this prop have changed. Please see the table below for the mapping between the old and new values.
 
@@ -25,7 +25,9 @@ The prop `theme` has been renamed to `color` for Icons. Also, the values of this
 
 - `Text`: add `as` prop while deprecating `elementType` ([#631](https://github.com/commercetools/ui-kit/issues/631)) ([4bd6b42](https://github.com/commercetools/ui-kit/commit/4bd6b42))
 
-The prop `elementType` has been renamed to `elementType` for Text components. The `elementType` prop still exists, but is deprecated and will be removed in the next major UI-Kit release. Please migrate your components.
+For Text.Body component, the `isInline` prop is also being deprecated. The same result is achieved by setting the as prop to span.
+
+The prop `elementType` has been renamed to `as` for Text components. The `elementType` prop still exists, but is deprecated and will be removed in the next major UI-Kit release. Please migrate your components.
 
 The following `custom properties` were dropped. Please take a look at the tables below to see the dropped properties, and their replacements.
 
