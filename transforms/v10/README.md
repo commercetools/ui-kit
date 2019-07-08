@@ -10,7 +10,7 @@ $ npm -g install jscodeshift
 #### Example usage
 
 ```bash
-$ jscodeshift -t  @commercetools-frontend/transforms/10.0.0/icon-theme-to-color.js src/
+$ jscodeshift -t  @commercetools-frontend/transforms/v10/icon-theme-to-color.js src/
 ```
 
 Useful options:
@@ -29,5 +29,5 @@ Renames the prop `theme` to `color` for all UI-Kit icons.
 Renames the prop `elementType` to `as` for all Text components.
 
 ```bash
-$ jscodeshift -t @commercetools-frontend/transforms/10.0.0/icon-theme-to-color.js <path>
+$ jscodeshift -t @commercetools-frontend/transforms/v10/icon-theme-to-color.js <path>
 ```
