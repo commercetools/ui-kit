@@ -6,6 +6,10 @@ import { create } from '@storybook/theming';
 import { contexts } from './configs/contexts';
 
 addParameters({
+  readme: {
+    // You can set a code theme globally.
+    codeTheme: 'github',
+  },
   options: {
     theme: create({
       base: 'light',
