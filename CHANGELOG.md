@@ -1,3 +1,101 @@
+<a name="10.0.0"></a>
+
+# [10.0.0](https://github.com/commercetools/ui-kit/compare/v9.11.0...10.0.0) (2019-06-20)
+
+### Breaking Changes
+
+This release introduces **breaking changes** which may entail some **migration steps**. We'll go through them now:
+
+- `hocs`: `withMouseOverState` and `withMouseDownState` have been dropped. Please use CSS properties instead. ([#881](https://github.com/commercetools/ui-kit/pull/881))
+
+- `Icons`: make icons themeable ([#726](https://github.com/commercetools/ui-kit/issues/726)) ([9bea3ad](https://github.com/commercetools/ui-kit/commit/9bea3ad))
+
+The prop `theme` has been renamed to `color` for Icons. Also, the values of this prop have changed. Please see the table below for the mapping between the old and new values.
+
+| old         | new       |
+| ----------- | --------- |
+| black       | solid     |
+| gray        | neutral60 |
+| white       | surface   |
+| blue        | info      |
+| green       | primary   |
+| green-light | primary40 |
+| orange      | warning   |
+| red         | error     |
+
+- `Text`: add `as` prop while deprecating `elementType` ([#631](https://github.com/commercetools/ui-kit/issues/631)) ([4bd6b42](https://github.com/commercetools/ui-kit/commit/4bd6b42))
+
+For Text.Body component, the `isInline` prop is also being deprecated. The same result is achieved by setting the as prop to span.
+
+The prop `elementType` has been renamed to `as` for Text components. The `elementType` prop still exists, but is deprecated and will be removed in the next major UI-Kit release. Please migrate your components.
+
+The following `custom properties` were dropped. Please take a look at the tables below to see the dropped properties, and their replacements.
+
+#### Colors
+
+| old          | new            |
+| ------------ | -------------- |
+| colorGreen   | colorPrimary   |
+| colorGreen25 | colorPrimary25 |
+| colorGreen40 | colorPrimary40 |
+| colorGreen85 | colorPrimary85 |
+| colorGreen95 | colorPrimary95 |
+| colorBlack   | colorSolid     |
+| colorWhite   | colorSurface   |
+| colorGrey    | colorNeutral   |
+| colorNavy    | colorInfo      |
+| colorNavy30  | colorInfo30    |
+| colorNavy40  | colorInfo40    |
+| colorNavy95  | colorInfo95    |
+| colorNavy98  | colorInfo98    |
+| colorGray    | colorNeutral   |
+| colorGray60  | colorNeutral60 |
+| colorGray90  | colorNeutral90 |
+| colorGray95  | colorNeutral95 |
+| colorBlue    | colorInfo      |
+| colorBlue85  | colorInfo85    |
+| colorBlue95  | colorInfo95    |
+| colorOrange  | colorWarning   |
+| colorRed     | colorError     |
+
+#### Spacings
+
+| old        |    new     |
+| ---------- | :--------: |
+| spacing-4  | spacing-xs |
+| spacing-8  | spacing-s  |
+| spacing-16 | spacing-m  |
+| spacing-24 | spacing-l  |
+| spacing-32 | spacing-xl |
+
+#### Design tokens
+
+| old                              |                  new                   |
+| -------------------------------- | :------------------------------------: |
+| --border-color-input-pristine    |        --border-color-for-input        |
+| --border-color-input-focus       | --border-color-for-input-when-focused  |
+| --border-color-input-disabled    | --border-color-for-input-when-disabled |
+| --border-color-input-readonly    | --border-color-for-input-when-readonly |
+| --border-color-input-error       |  --border-color-for-input-when-error   |
+| --border-color-input-warning     | --border-color-for-input-when-warning  |
+| --border-color-tag-pristine      |         --border-color-for-tag         |
+| --border-color-tag-warning       |     --border-color-for-tag-warning     |
+| --border-color-tag-focus         |  --border-color-for-tag-when-focused   |
+| --border-color-tag-warning-hover |     --border-color-for-tag-warning     |
+| --border-color-separator         |            --color-neutral             |
+| --border-radius-input            |       --border-radius-for-input        |
+| --border-radius-tag              |        --border-radius-for-tag         |
+
+#### Other
+
+The custom property `transition-standard` has been changed from having a value of `all 0.2s ease` to `200ms ease`. To continue using this property as below, the following refactor is necessary. However, if possible, you should avoid animating using "all".
+
+```
+transition: all var(--transitionStandard);
+```
+
+The split up shadows (ie, `shadow-one-first`, `shadow-1-second`) have been dropped. Instead, simply use `shadow-1`, etc.
+
 <a name="9.11.0"></a>
 
 # [9.11.0](https://github.com/commercetools/ui-kit/compare/v9.10.0...v9.11.0) (2019-07-04)
