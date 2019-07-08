@@ -88,7 +88,7 @@ The following `custom properties` were dropped. Please take a look at the tables
 
 #### Other
 
-The custom property `transition-standard` has been changed from having a value of `all 0.2s ease` to `200ms ease`. To continue using this property as below, the following refactor is necessary
+The custom property `transition-standard` has been changed from having a value of `all 0.2s ease` to `200ms ease`. To continue using this property as below, the following refactor is necessary. However, if possible, you should avoid animating using "all".
 
 ```
 transition: all var(--transitionStandard);
