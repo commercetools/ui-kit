@@ -16,7 +16,7 @@ const TagRemove = props => {
   return (
     <div {...innerProps}>
       <CloseBoldIcon
-        theme={props.selectProps.isDisabled ? 'grey' : 'black'}
+        color={props.selectProps.isDisabled ? 'neutral60' : 'solid'}
         size="medium"
       />
     </div>
