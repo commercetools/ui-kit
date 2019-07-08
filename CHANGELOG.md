@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<a name="9.11.0"></a>
-
-# [9.11.0](https://github.com/commercetools/ui-kit/compare/v9.10.0...v9.11.0) (2019-07-04)
-
-### Bug Fixes
-
-- `FieldLabel`: do not scale icon when long hint ([#878](https://github.com/commercetools/ui-kit/issues/878)) ([1c06bbc](https://github.com/commercetools/ui-kit/commit/1c06bbc))
-- `Link`: apply underlined styles ([#911](https://github.com/commercetools/ui-kit/issues/911)) ([20cd7a4](https://github.com/commercetools/ui-kit/commit/20cd7a4))
-- `Storybook`: downgrade storybook-readme ([#896](https://github.com/commercetools/ui-kit/issues/896)) ([32f9374](https://github.com/commercetools/ui-kit/commit/32f9374))
-
-### Features
-
-- `DateInputs`: add tooltips ([#911](https://github.com/commercetools/ui-kit/issues/910))
-- `Storybook`: add context for theme ([#876](https://github.com/commercetools/ui-kit/issues/876)) ([c87d581](https://github.com/commercetools/ui-kit/commit/c87d581))
-
-### Chore
-
-- setup bundlesize ([#914](https://github.com/commercetools/ui-kit/issues/914)) ([c74581f](https://github.com/commercetools/ui-kit/commit/c74581f))
-- add postcss codemod ([#893](https://github.com/commercetools/ui-kit/issues/893)) ([82b4381](https://github.com/commercetools/ui-kit/commit/82b4381))
-=======
 <a name="10.0.0"></a>
 
 # [10.0.0](https://github.com/commercetools/ui-kit/compare/v9.10.0...10.0.0) (2019-06-20)
@@ -114,7 +93,26 @@ transition: all var(--transitionStandard);
 ```
 
 The split up shadows (ie, `shadow-one-first`, `shadow-1-second`) have been dropped. Instead, simply use `shadow-1`, etc.
->>>>>>> chore: update cl for 10.0.0
+
+<a name="9.11.0"></a>
+
+# [9.11.0](https://github.com/commercetools/ui-kit/compare/v9.10.0...v9.11.0) (2019-07-04)
+
+### Bug Fixes
+
+- `FieldLabel`: do not scale icon when long hint ([#878](https://github.com/commercetools/ui-kit/issues/878)) ([1c06bbc](https://github.com/commercetools/ui-kit/commit/1c06bbc))
+- `Link`: apply underlined styles ([#911](https://github.com/commercetools/ui-kit/issues/911)) ([20cd7a4](https://github.com/commercetools/ui-kit/commit/20cd7a4))
+- `Storybook`: downgrade storybook-readme ([#896](https://github.com/commercetools/ui-kit/issues/896)) ([32f9374](https://github.com/commercetools/ui-kit/commit/32f9374))
+
+### Features
+
+- `DateInputs`: add tooltips ([#911](https://github.com/commercetools/ui-kit/issues/910))
+- `Storybook`: add context for theme ([#876](https://github.com/commercetools/ui-kit/issues/876)) ([c87d581](https://github.com/commercetools/ui-kit/commit/c87d581))
+
+### Chore
+
+- setup bundlesize ([#914](https://github.com/commercetools/ui-kit/issues/914)) ([c74581f](https://github.com/commercetools/ui-kit/commit/c74581f))
+- add postcss codemod ([#893](https://github.com/commercetools/ui-kit/issues/893)) ([82b4381](https://github.com/commercetools/ui-kit/commit/82b4381))
 
 <a name="9.10.0"></a>
 
