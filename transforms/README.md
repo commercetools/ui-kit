@@ -24,7 +24,7 @@ Useful options:
 
 Renames the prop `theme` to `color` for all UI-Kit icons.
 
-#### `icon-element-type-to-ass`
+#### `icon-element-type-to-as`
 
 Renames the prop `elementType` to `as` for all Text components.
 
