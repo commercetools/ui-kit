@@ -66,7 +66,7 @@ storiesOf('Components|Fields', module)
                 'UTC'
               )}
               name={text('name', '')}
-              value={text('value', value)}
+              value={value}
               onChange={event => {
                 action('onChange')(event);
                 onChange(event.target.value);
