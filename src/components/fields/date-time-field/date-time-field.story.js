@@ -31,7 +31,7 @@ storiesOf('Components|Fields', module)
           const hint = text('hint', 'Select the date of publication');
           const placeholder = text('placeholder', 'Placeholder');
 
-          // hintIcon will only render when hint exists
+          // hintIcon will only render when hint exists`
           const iconNames = Object.keys(icons);
           const icon = select('hintIcon', ['', ...iconNames], '');
           const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
@@ -66,7 +66,7 @@ storiesOf('Components|Fields', module)
                 'UTC'
               )}
               name={text('name', '')}
-              value={text('value', value)}
+              value={value}
               onChange={event => {
                 action('onChange')(event);
                 onChange(event.target.value);
