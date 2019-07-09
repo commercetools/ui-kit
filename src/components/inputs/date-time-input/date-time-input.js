@@ -13,7 +13,6 @@ import Constraints from '../../constraints';
 import messages from './messages';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
-  getDaysInMonth,
   changeTime,
   formatTime,
   getDateInMonth,
@@ -99,7 +98,7 @@ class DateTimeInput extends React.Component {
         calendarDate: today,
         highlightedIndex:
           prevState.suggestedItems.length +
-          getDaysInMonth(today, this.props.timeZone) -
+          getDateInMonth(today, this.props.timeZone) -
           1,
       }),
       () => this.inputRef.current.focus()
