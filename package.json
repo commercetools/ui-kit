@@ -72,7 +72,7 @@
     "dom-helpers": "3.4.0",
     "downshift": "3.2.10",
     "emotion-theming": "10.0.14",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "lodash-es": "4.17.14",
     "prop-types": "15.7.2",
     "react-is": "16.8.6",
