@@ -11,7 +11,7 @@
   "UIKit.CalendarHeader.previousMonthTooltip": "letztes Monat",
   "UIKit.CalendarHeader.previousYearTooltip": "letztes Jahr",
   "UIKit.CalendarHeader.todayTooltip": "Heute",
-  "UIKit.CreatableSelectInput.createLabel": \"{inputValue}\" erstellen",
+  "UIKit.CreatableSelectInput.createLabel": "\"{inputValue}\" erstellen",
   "UIKit.CreatableSelectInput.noOptionsMessageWithInputValue": "Keine Optionen",
   "UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue": "Keine Optionen",
   "UIKit.CreatableSelectInput.placeholder": "Auswählen...",
