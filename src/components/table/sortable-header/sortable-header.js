@@ -91,7 +91,7 @@ const SortableHeader = props => {
         {isArrowDown ? (
           <AngleDownIcon size="medium" color="surface" />
         ) : (
-          <AngleUpIcon size="medium" theme="neutral60" />
+          <AngleUpIcon size="medium" color="neutral60" />
         )}
       </Span>
     </Container>
