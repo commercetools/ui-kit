@@ -1,3 +1,15 @@
+<a name="10.0.1"></a>
+
+# [10.0.1](https://github.com/commercetools/ui-kit/compare/v10.0.0...10.0.1) (2019-07-19)
+
+### Bug Fixes
+
+- **buttons:** leftovers of theme/color renaming ([#942](https://github.com/commercetools/ui-kit/issues/942)) ([1ad3384](https://github.com/commercetools/ui-kit/commit/1ad3384))
+- **date-time-input:** today button not highlighting todays date ([#927](https://github.com/commercetools/ui-kit/issues/927)) ([4e02963](https://github.com/commercetools/ui-kit/commit/4e02963))
+- **deps:** update dependency lodash to v4.17.13 [security](<[#930](https://github.com/commercetools/ui-kit/issues/930)>) ([1a2b156](https://github.com/commercetools/ui-kit/commit/1a2b156))
+- **deps:** update dependency lodash-es to v4.17.14 [security](<[#929](https://github.com/commercetools/ui-kit/issues/929)>) ([89cd753](https://github.com/commercetools/ui-kit/commit/89cd753))
+- **table:** sortable header icon color ([#943](https://github.com/commercetools/ui-kit/issues/943)) ([3c1ba18](https://github.com/commercetools/ui-kit/commit/3c1ba18))
+
 <a name="10.0.0"></a>
 
 # [10.0.0](https://github.com/commercetools/ui-kit/compare/v9.11.0...10.0.0) (2019-06-20)
