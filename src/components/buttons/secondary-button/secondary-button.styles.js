@@ -12,7 +12,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
       cursor: not-allowed;
     `;
     switch (theme) {
-      case 'blue':
+      case 'info':
         return [
           baseDisabledStyles,
           css`
@@ -42,7 +42,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
         `,
     ];
     switch (theme) {
-      case 'blue':
+      case 'info':
         return [
           baseActiveStyles,
           css`
@@ -70,7 +70,7 @@ const getThemeStyles = theme => {
   if (theme === 'default') return css``;
 
   switch (theme) {
-    case 'blue':
+    case 'info':
       return css`
         &:hover {
           color: ${vars.colorInfo};
