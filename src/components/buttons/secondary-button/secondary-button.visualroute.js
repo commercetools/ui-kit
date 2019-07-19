@@ -52,13 +52,13 @@ export const component = () => (
         theme="default"
       />
     </Spec>
-    <Spec label='with theme - when toggled with theme "blue"'>
+    <Spec label='with theme - when toggled with theme "info"'>
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={true}
-        theme="blue"
+        theme="info"
       />
     </Spec>
     <Spec label='with theme - when not toggled with theme "default"'>
@@ -70,13 +70,13 @@ export const component = () => (
         theme="default"
       />
     </Spec>
-    <Spec label='with theme - when not toggled with theme "blue"'>
+    <Spec label='with theme - when not toggled with theme "info"'>
       <SecondaryButton
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={false}
-        theme="blue"
+        theme="info"
       />
     </Spec>
 
