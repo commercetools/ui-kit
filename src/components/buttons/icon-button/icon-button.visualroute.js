@@ -123,25 +123,25 @@ export const component = () => (
       />
     </Spec>
 
-    <Spec label="theme - when green - when toggled">
+    <Spec label="theme - when primary - when toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={true}
-        theme="green"
+        theme="primary"
       />
     </Spec>
 
-    <Spec label="theme - when blue - when toggled">
+    <Spec label="theme - when info - when toggled">
       <IconButton
         icon={<InformationIcon />}
         label="A label text"
         onClick={() => {}}
         isToggleButton={true}
         isToggled={true}
-        theme="blue"
+        theme="info"
       />
     </Spec>
   </Suite>

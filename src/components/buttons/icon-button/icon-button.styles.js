@@ -17,7 +17,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
       box-shadow: none;
     `;
     switch (theme) {
-      case 'blue':
+      case 'info':
         return [
           disabledStyle,
           css`
@@ -27,7 +27,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
             }
           `,
         ];
-      case 'green':
+      case 'primary':
         return [
           disabledStyle,
           css`
@@ -53,7 +53,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
       }
     `;
     switch (theme) {
-      case 'blue':
+      case 'info':
         return [
           activeStyle,
           isDisabled &&
@@ -75,7 +75,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
             }
           `,
         ];
-      case 'green':
+      case 'primary':
         return [
           activeStyle,
           // When the button is active and somehow is disabled it should have
@@ -167,7 +167,7 @@ const getThemeStyles = theme => {
   if (theme === 'default') return css``;
 
   switch (theme) {
-    case 'green':
+    case 'primary':
       return css`
         &:hover {
           background-color: ${vars.colorPrimary};
@@ -175,7 +175,7 @@ const getThemeStyles = theme => {
           color: ${vars.colorSurface};
         }
       `;
-    case 'blue':
+    case 'info':
       return css`
         &:hover {
           background-color: ${vars.colorInfo};

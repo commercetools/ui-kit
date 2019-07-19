@@ -23,7 +23,7 @@ storiesOf('Components|Buttons', module)
         type={select('type', ['submit', 'reset', 'button'], 'button')}
         shape={select('shape', ['round', 'square'], 'round')}
         size={select('size', ['big', 'medium', 'small'], 'big')}
-        theme={select('theme', ['green', 'blue', 'default'], 'default')}
+        theme={select('theme', ['primary', 'info', 'default'], 'default')}
         icon={React.createElement(
           icons[select('icon', iconNames, iconNames[0])]
         )}
