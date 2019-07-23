@@ -20,7 +20,7 @@ import {
   StrikethroughIcon,
   RedoIcon,
 } from './icons';
-import { RevertIcon } from '../../icons';
+import { RevertIcon, CaretDownIcon } from '../../icons';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
 import Divider from './divider';
 
@@ -65,6 +65,19 @@ const StyleDropdownItem = props => {
       css={getDropdownItemStyles(props.value)}
     />
   );
+};
+
+const StyleDropdownLabel = () => {
+  return (
+    <Spacings.Inline scale="xs" alignItems="center">
+      <span>Style</span>
+      <CaretDownIcon size="small" />
+    </Spacings.Inline>
+  );
+};
+
+const MoreStylesLabel = () => {
+  return <MoreStylesIcon size="medium" />;
 };
 
 // eslint-disable-next-line
@@ -197,8 +210,10 @@ class RichTextInput extends React.Component {
     const { value } = this.props;
     const { data } = value;
     const undos = data.get('undos');
-
-    const isDisabled = !undos || undos.size === 0;
+    // we use 1, because the initial focus counts as an undo
+    // and it would be weird to do an undo that just undos the focus
+    // and hides the toolbar
+    const isDisabled = !undos || undos.size <= 1;
 
     return (
       <Button
@@ -320,6 +335,7 @@ class RichTextInput extends React.Component {
             label="Style"
             options={dropdownOptions}
             components={{
+              DropdownLabel: StyleDropdownLabel,
               DropdownItem: StyleDropdownItem,
             }}
             value={(() => {
@@ -340,11 +356,11 @@ class RichTextInput extends React.Component {
           {this.renderMarkButton('underlined', <UnderlineIcon size="medium" />)}
 
           <StyleDropdown
-            label={<MoreStylesIcon size="medium" />}
-            showCaret={false}
+            label="More styles"
             options={markDropdownOptions}
             components={{
               DropdownItem: MoreStylesDropdownItem,
+              DropdownLabel: MoreStylesLabel,
             }}
             value={(() => {
               if (this.hasMark('subscript')) return 'subscript';

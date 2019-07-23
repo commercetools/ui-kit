@@ -2,16 +2,18 @@ import React from 'react';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
 import AccessibleButton from '../../buttons/accessible-button';
-import { CaretDownIcon } from '../../icons';
-import Spacings from '../../spacings';
 import {
   getButtonStyles,
   DropdownItem as StyledDropdownItem,
   DropdownContainer,
 } from './dropdown.styles';
 
+// eslint-disable-next-line
+const Label = props => <span>{props.children}</span>;
+
 const Dropdown = props => {
   const DropdownItem = props.components.DropdownItem || StyledDropdownItem;
+  const DropdownLabel = props.components.DropdownLabel || Label;
   return (
     <Downshift
       onChange={props.onChange}
@@ -32,10 +34,7 @@ const Dropdown = props => {
               css={getButtonStyles()}
               {...getToggleButtonProps()}
             >
-              <Spacings.Inline scale="xs" alignItems="center">
-                {props.label}{' '}
-                {props.showCaret && <CaretDownIcon size="small" />}
-              </Spacings.Inline>
+              <DropdownLabel>{props.label}</DropdownLabel>
             </AccessibleButton>
 
             <div style={{ position: 'relative' }}>
@@ -66,7 +65,8 @@ Dropdown.displayName = 'Dropdown';
 
 Dropdown.propTypes = {
   components: PropTypes.shape({
-    DropdownItem: PropTypes.element,
+    DropdownItem: PropTypes.func,
+    DropdownLabel: PropTypes.func,
   }),
   label: PropTypes.string,
   value: PropTypes.string,
@@ -76,13 +76,11 @@ Dropdown.propTypes = {
       value: PropTypes.string,
     })
   ).isRequired,
-  showCaret: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
 Dropdown.defaultProps = {
   components: {},
-  showCaret: true,
 };
 
 Dropdown.DropdownItem = StyledDropdownItem;
