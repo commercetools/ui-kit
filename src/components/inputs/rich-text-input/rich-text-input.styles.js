@@ -28,6 +28,22 @@ const getBorderColor = props => {
   `;
 };
 
+const getBackgroundColor = props => {
+  if (props.isDisabled) {
+    return css`
+      background-color: ${vars.backgroundColorForInputWhenDisabled};
+    `;
+  }
+  if (props.isReadOnly) {
+    return css`
+      background-color: ${vars.backgroundColorForInputWhenReadonly};
+    `;
+  }
+  return css`
+    background-color: ${vars.backgroundColorForInput};
+  `;
+};
+
 export const Toolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -70,6 +86,9 @@ export const Container = styled.div`
   border-bottom-right-radius: 0;
   transition: ${vars.transitionStandard};
   ${getBorderColor}
+  ${getBackgroundColor}
+  pointer-events: ${props =>
+    props.isDisabled || props.isReadOnly ? 'none' : 'inherit'};
   position: relative;
 
   &:focus {
@@ -96,9 +115,5 @@ export const Container = styled.div`
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
-  }
-
-  ${EditorContainer} {
-    border-color: ${vars.borderColorForInput};
   }
 `;
