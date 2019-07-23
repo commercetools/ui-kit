@@ -80,20 +80,25 @@ export const Container = styled.div`
     border-radius: ${vars.borderRadiusForInput};
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    display: flex;
+    display: none;
     border-color: ${vars.borderColorForInput};
   }
 
   &:focus-within {
-    ${Toolbar}, ${EditorContainer} {
+    ${Toolbar} {
+      display: flex;
       border-color: ${vars.borderColorForInputWhenFocused};
+    }
+
+    ${EditorContainer} {
+      border-color: ${vars.borderColorForInputWhenFocused};
+      border-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
   }
 
   ${EditorContainer} {
-    border-top: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     border-color: ${vars.borderColorForInput};
   }
 `;

@@ -207,10 +207,7 @@ class RichTextInput extends React.Component {
         isDisabled={isDisabled}
         onClick={this.onClickUndo}
         icon={
-          <RevertIcon
-            color={isDisabled ? 'neutral60' : 'solid'}
-            size="medium"
-          />
+          <RevertIcon color={isDisabled ? 'neutral60' : 'solid'} size="small" />
         }
       />
     );
