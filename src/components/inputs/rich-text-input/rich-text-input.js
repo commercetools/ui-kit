@@ -67,6 +67,7 @@ const StyleDropdownItem = props => {
   );
 };
 
+// eslint-disable-next-line
 const StyleDropdownLabel = () => {
   return (
     <Spacings.Inline scale="xs" alignItems="center">
@@ -76,6 +77,7 @@ const StyleDropdownLabel = () => {
   );
 };
 
+// eslint-disable-next-line
 const MoreStylesLabel = () => {
   return <MoreStylesIcon size="medium" />;
 };
