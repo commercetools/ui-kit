@@ -8,6 +8,7 @@ import { RenderBlockPlugin, RenderMarkPlugin } from './plugins';
 import Spacings from '../../spacings';
 import Button from './button';
 import StyleDropdown from './dropdown';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   BoldIcon,
   ItalicIcon,
@@ -328,6 +329,7 @@ class RichTextInput extends React.Component {
       hasError: props.hasError,
       hasWarning: props.hasWarning,
       isReadOnly: props.readOnly,
+      ...filterDataAttributes(props),
     };
 
     return (
@@ -415,6 +417,7 @@ class RichTextInput extends React.Component {
         placeholder={this.props.placeholder}
         plugins={plugins}
         renderEditor={this.renderEditor}
+        {...this.props}
       />
     );
   }
