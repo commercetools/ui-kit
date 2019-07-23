@@ -329,6 +329,8 @@ class RichTextInput extends React.Component {
       hasError: props.hasError,
       hasWarning: props.hasWarning,
       isReadOnly: props.readOnly,
+      id: props.id,
+      name: props.name,
       ...filterDataAttributes(props),
     };
 
