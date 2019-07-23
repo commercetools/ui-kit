@@ -325,12 +325,12 @@ class RichTextInput extends React.Component {
     const children = next();
 
     const passedProps = {
+      name: props.name,
+      id: props.id,
       isDisabled: props.disabled,
       hasError: props.hasError,
       hasWarning: props.hasWarning,
       isReadOnly: props.readOnly,
-      id: props.id,
-      name: props.name,
       ...filterDataAttributes(props),
     };
 
@@ -407,6 +407,7 @@ class RichTextInput extends React.Component {
   render() {
     return (
       <Editor
+        {...this.props}
         id={this.props.id}
         name={this.props.name}
         ref={this.ref}
@@ -419,7 +420,6 @@ class RichTextInput extends React.Component {
         placeholder={this.props.placeholder}
         plugins={plugins}
         renderEditor={this.renderEditor}
-        {...this.props}
       />
     );
   }
