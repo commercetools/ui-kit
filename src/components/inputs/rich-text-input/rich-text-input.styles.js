@@ -78,6 +78,8 @@ export const EditorContainer = styled.div`
   font-family: ${vars.fontFamilyDefault};
   ${getBorderColor}
   overflow-y: scroll;
+
+  height: ${props => (props.isOpen ? '100%' : '32px')};
 `;
 
 export const Container = styled.div`

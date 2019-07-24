@@ -22,6 +22,9 @@ import {
   RedoIcon,
 } from './icons';
 import { RevertIcon, CaretDownIcon } from '../../icons';
+import Constraints from '../../constraints';
+import FlatButton from '../../buttons/flat-button';
+import Collapsible from '../../collapsible';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
 import Divider from './divider';
 
@@ -142,8 +145,13 @@ class RichTextInput extends React.Component {
     placeholder: PropTypes.string,
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
+    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
     onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
     value: Types.value.isRequired,
+  };
+
+  static defaultProps = {
+    horizontalConstraint: 'scale',
   };
 
   onChange = ({ value }) => {
@@ -335,72 +343,114 @@ class RichTextInput extends React.Component {
     };
 
     return (
-      <Container {...passedProps} tabIndex={-1}>
-        <Toolbar {...passedProps}>
-          <StyleDropdown
-            label="Style"
-            options={dropdownOptions}
-            components={{
-              DropdownLabel: StyleDropdownLabel,
-              DropdownItem: StyleDropdownItem,
-            }}
-            value={(() => {
-              if (this.hasBlock('heading-one')) return 'heading-one';
-              if (this.hasBlock('heading-two')) return 'heading-two';
-              if (this.hasBlock('heading-three')) return 'heading-three';
-              if (this.hasBlock('heading-four')) return 'heading-four';
-              if (this.hasBlock('heading-five')) return 'heading-five';
-              if (this.hasBlock('block-quote')) return 'block-quote';
-              if (this.hasBlock('code')) return 'code';
-              if (this.hasBlock('paragraph')) return 'paragraph';
-              return '';
-            })()}
-            onChange={this.onChangeStyleDropdown}
-          />
-          {this.renderMarkButton('bold', <BoldIcon size="medium" />)}
-          {this.renderMarkButton('italic', <ItalicIcon size="medium" />)}
-          {this.renderMarkButton('underlined', <UnderlineIcon size="medium" />)}
+      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+        <Collapsible isDefaultClosed={false}>
+          {({ isOpen, toggle }) => {
+            return (
+              <div>
+                <Container
+                  {...passedProps}
+                  tabIndex={-1}
+                  isOpen={isOpen}
+                  onFocus={() => {
+                    if (!isOpen) {
+                      toggle();
+                    }
+                  }}
+                >
+                  <Toolbar {...passedProps} isOpen={isOpen}>
+                    <StyleDropdown
+                      label="Style"
+                      options={dropdownOptions}
+                      components={{
+                        DropdownLabel: StyleDropdownLabel,
+                        DropdownItem: StyleDropdownItem,
+                      }}
+                      value={(() => {
+                        if (this.hasBlock('heading-one')) return 'heading-one';
+                        if (this.hasBlock('heading-two')) return 'heading-two';
+                        if (this.hasBlock('heading-three'))
+                          return 'heading-three';
+                        if (this.hasBlock('heading-four'))
+                          return 'heading-four';
+                        if (this.hasBlock('heading-five'))
+                          return 'heading-five';
+                        if (this.hasBlock('block-quote')) return 'block-quote';
+                        if (this.hasBlock('code')) return 'code';
+                        if (this.hasBlock('paragraph')) return 'paragraph';
+                        return '';
+                      })()}
+                      onChange={this.onChangeStyleDropdown}
+                    />
+                    {this.renderMarkButton('bold', <BoldIcon size="medium" />)}
+                    {this.renderMarkButton(
+                      'italic',
+                      <ItalicIcon size="medium" />
+                    )}
+                    {this.renderMarkButton(
+                      'underlined',
+                      <UnderlineIcon size="medium" />
+                    )}
 
-          <StyleDropdown
-            label="More styles"
-            options={markDropdownOptions}
-            components={{
-              DropdownItem: MoreStylesDropdownItem,
-              DropdownLabel: MoreStylesLabel,
-            }}
-            value={(() => {
-              if (this.hasMark('subscript')) return 'subscript';
-              if (this.hasMark('superscript')) return 'superscript';
-              if (this.hasMark('strikethrough')) return 'strikethrough';
-              return '';
-            })()}
-            onChange={this.onChangeMarkDropdown}
-          />
+                    <StyleDropdown
+                      label="More styles"
+                      options={markDropdownOptions}
+                      components={{
+                        DropdownItem: MoreStylesDropdownItem,
+                        DropdownLabel: MoreStylesLabel,
+                      }}
+                      value={(() => {
+                        if (this.hasMark('subscript')) return 'subscript';
+                        if (this.hasMark('superscript')) return 'superscript';
+                        if (this.hasMark('strikethrough'))
+                          return 'strikethrough';
+                        return '';
+                      })()}
+                      onChange={this.onChangeMarkDropdown}
+                    />
 
-          <Divider />
+                    <Divider />
 
-          {this.renderBlockButton(
-            'numbered-list',
-            <OrderedListIcon size="medium" />
-          )}
-          {this.renderBlockButton(
-            'bulleted-list',
-            <UnorderedListIcon size="medium" />
-          )}
+                    {this.renderBlockButton(
+                      'numbered-list',
+                      <OrderedListIcon size="medium" />
+                    )}
+                    {this.renderBlockButton(
+                      'bulleted-list',
+                      <UnorderedListIcon size="medium" />
+                    )}
 
-          <div
-            css={css`
-              display: flex;
-              flex: 1;
-              justify-content: flex-end;
-            `}
-          >
-            {this.renderUndoButton()}
-            {this.renderRedoButton()}
-          </div>
-        </Toolbar>
-        <EditorContainer {...passedProps}>{children}</EditorContainer>
-      </Container>
+                    <div
+                      css={css`
+                        display: flex;
+                        flex: 1;
+                        justify-content: flex-end;
+                      `}
+                    >
+                      {this.renderUndoButton()}
+                      {this.renderRedoButton()}
+                    </div>
+                  </Toolbar>
+                  <EditorContainer {...passedProps} isOpen={isOpen}>
+                    {children}
+                  </EditorContainer>
+                </Container>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: flex-end;
+                  `}
+                >
+                  <FlatButton
+                    onClick={toggle}
+                    label={isOpen ? 'Collapse' : 'Expand'}
+                  />
+                </div>
+              </div>
+            );
+          }}
+        </Collapsible>
+      </Constraints.Horizontal>
     );
   };
 
