@@ -8,6 +8,8 @@
 //   13:00:00.000
 //   13:00:60
 //   13:00:59.908
+//   下午1:00
+//   下午11:00
 // Returns an object containing
 //   { hours, minutes, seconds, milliseconds }
 // or null
@@ -18,7 +20,7 @@ export const parseTime = rawTime => {
   const time = rawTime.trim().toLowerCase();
 
   const match = time.match(
-    /^(\d{1,2})(?::(\d{1,2})(?::(\d{1,2})(?:\.(\d{1,3}))?)?)?\s*(am|pm)?$/
+    /^(\d{1,2})(?::(\d{1,2})(?::(\d{1,2})(?:\.(\d{1,3}))?)?)?\s*(am|pm|上午|下午)?$/
   );
   if (!match) return null;
 
