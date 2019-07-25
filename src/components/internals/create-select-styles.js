@@ -194,6 +194,10 @@ const placeholderStyles = (props, theme) => base => {
   return {
     ...base,
     color: overwrittenVars[designTokens.placeholderFontColorForInput],
+    width: '100%',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
   };
 };
 
