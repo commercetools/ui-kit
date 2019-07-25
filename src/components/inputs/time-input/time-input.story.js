@@ -28,7 +28,7 @@ storiesOf('Components|Inputs', module)
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
-              value={text('value', value)}
+              value={value}
               onChange={event => {
                 action('onChange')(event);
                 onChange(event.target.value);
