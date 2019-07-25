@@ -24,6 +24,10 @@ const PasswordField = props => {
   const id = getFieldId(props, {}, sequentialId);
   const hasError = props.touched && hasErrors(props.errors);
 
+  const togglePasswordVisibility = React.useCallback(() => {
+    setIsPasswordVisible(!isPasswordVisible);
+  }, [isPasswordVisible]);
+
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Spacings.Stack scale="xs">
@@ -46,7 +50,7 @@ const PasswordField = props => {
                   ? intl.formatMessage(messages.hide)
                   : intl.formatMessage(messages.show)
               }
-              onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+              onClick={togglePasswordVisibility}
               isDisabled={!props.value}
             />
           )}
