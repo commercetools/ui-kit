@@ -6,7 +6,7 @@ import { WorldIcon } from '../../icons';
 import messages from './messages';
 
 const LanguagesControl = props => {
-  const intl = useIntl;
+  const intl = useIntl();
   return (
     <FlatButton
       icon={<WorldIcon />}
