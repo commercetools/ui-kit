@@ -28,9 +28,6 @@ LanguagesControl.propTypes = {
   isClosed: PropTypes.bool,
   isDisabled: PropTypes.bool,
   remainingLanguages: PropTypes.number.isRequired,
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 export default LanguagesControl;
