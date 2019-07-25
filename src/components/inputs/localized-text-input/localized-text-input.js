@@ -33,6 +33,17 @@ const sequentialId = createSequentialId('localized-text-input-');
 
 const LocalizedInput = props => {
   const handleChange = event => {
+    // We manipulate the event to add the language to the target.
+    // That way the users of LocalizedTextInput's onChange can read
+    // event.target.language and event.target.value to determine the next value.
+    //
+    // We only need this information for the story, the MC application code will
+    // never need to access the information in such an inconvenient way, as
+    // Formik can deal with a name like "foo.en" and sets the value correctly.
+    // We can't use this as we aren't guaranteed a name in the story as the user
+    // might clear it using the knob, and then we can't parse the language from
+    // the input name anymore.
+    //
     // eslint-disable-next-line no-param-reassign
     event.target.language = props.language;
     props.onChange(event);
