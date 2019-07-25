@@ -57,6 +57,15 @@ const DefaultRoute = ({ themes }) => (
         placeholder="Select something"
       />
     </Spec>
+    <Spec label="with a long placeholder">
+      <SelectInput
+        value={null}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      />
+    </Spec>
     <Spec label="with error">
       <SelectInput
         value={null}
