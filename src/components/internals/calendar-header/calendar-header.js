@@ -99,9 +99,6 @@ CalendarHeader.propTypes = {
   onNextMonthClick: PropTypes.func.isRequired,
   onPrevYearClick: PropTypes.func.isRequired,
   onNextYearClick: PropTypes.func.isRequired,
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 export default CalendarHeader;
