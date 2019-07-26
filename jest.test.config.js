@@ -1,9 +1,4 @@
-const vendorsToTranspile = [
-  // https://github.com/formatjs/react-intl/blob/master/docs/Upgrade-Guide.md#jest
-  'intl-messageformat',
-  'intl-messageformat-parser',
-].join('|');
-
+const vendorsToTranspile = require('./vendors-to-transpile');
 // Resolve the absolute path of the caller location.
 const rootPath = process.cwd();
 
