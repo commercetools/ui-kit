@@ -1,3 +1,9 @@
+const vendorsToTranspile = [
+  // https://github.com/formatjs/react-intl/blob/master/docs/Upgrade-Guide.md#jest
+  'intl-messageformat',
+  'intl-messageformat-parser',
+].join('|');
+
 // Resolve the absolute path of the caller location.
 const rootPath = process.cwd();
 
@@ -29,5 +35,6 @@ module.exports = {
   transform: {
     '^.+\\.js$': '<rootDir>/test/transform-babel-jest.js',
   },
+  transformIgnorePatterns: [`node_modules/(?!(${vendorsToTranspile})/)`],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
 };
