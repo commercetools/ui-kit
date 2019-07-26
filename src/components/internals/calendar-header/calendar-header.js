@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import vars from '../../../../materials/custom-properties';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
@@ -15,76 +15,79 @@ const WrapperComponent = styled.div`
   display: flex;
 `;
 
-const CalendarHeader = props => (
-  <div
-    css={css`
-      display: flex;
-      padding: 10px 2% 6px;
-      margin-bottom: ${vars.spacingXs};
-      justify-content: space-between;
-      border-bottom: 1px solid ${vars.colorNeutral90};
-    `}
-  >
-    <Spacings.Inline scale="xs" alignItems="center">
-      <Tooltip
-        title={props.intl.formatMessage(messages.previousMonthTooltip)}
-        components={{ WrapperComponent }}
-      >
-        <SecondaryIconButton
-          label="show prev month"
-          onClick={props.onPrevMonthClick}
-          icon={<AngleLeftIcon size="medium" />}
-        />
-      </Tooltip>
-      <Tooltip
-        title={props.intl.formatMessage(messages.todayTooltip)}
-        components={{ WrapperComponent }}
-      >
-        <SecondaryIconButton
-          label="show today"
-          onClick={props.onTodayClick}
-          icon={<CircleIcon size="medium" />}
-        />
-      </Tooltip>
-      <Tooltip
-        title={props.intl.formatMessage(messages.nextMonthTooltip)}
-        components={{ WrapperComponent }}
-      >
-        <SecondaryIconButton
-          label="show next month"
-          onClick={props.onNextMonthClick}
-          icon={<AngleRightIcon size="medium" />}
-        />
-      </Tooltip>
-      <Text.Body as="span" isBold={true}>
-        {props.monthLabel}
-      </Text.Body>
-    </Spacings.Inline>
-    <Spacings.Inline scale="xs" alignItems="center">
-      <Tooltip
-        title={props.intl.formatMessage(messages.previousYearTooltip)}
-        components={{ WrapperComponent }}
-      >
-        <SecondaryIconButton
-          label="show prev year"
-          onClick={props.onPrevYearClick}
-          icon={<AngleLeftIcon size="medium" />}
-        />
-      </Tooltip>
-      <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
-      <Tooltip
-        title={props.intl.formatMessage(messages.nextYearTooltip)}
-        components={{ WrapperComponent }}
-      >
-        <SecondaryIconButton
-          label="show next year"
-          onClick={props.onNextYearClick}
-          icon={<AngleRightIcon size="medium" />}
-        />
-      </Tooltip>
-    </Spacings.Inline>
-  </div>
-);
+const CalendarHeader = props => {
+  const intl = useIntl();
+  return (
+    <div
+      css={css`
+        display: flex;
+        padding: 10px 2% 6px;
+        margin-bottom: ${vars.spacingXs};
+        justify-content: space-between;
+        border-bottom: 1px solid ${vars.colorNeutral90};
+      `}
+    >
+      <Spacings.Inline scale="xs" alignItems="center">
+        <Tooltip
+          title={intl.formatMessage(messages.previousMonthTooltip)}
+          components={{ WrapperComponent }}
+        >
+          <SecondaryIconButton
+            label="show prev month"
+            onClick={props.onPrevMonthClick}
+            icon={<AngleLeftIcon size="medium" />}
+          />
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage(messages.todayTooltip)}
+          components={{ WrapperComponent }}
+        >
+          <SecondaryIconButton
+            label="show today"
+            onClick={props.onTodayClick}
+            icon={<CircleIcon size="medium" />}
+          />
+        </Tooltip>
+        <Tooltip
+          title={intl.formatMessage(messages.nextMonthTooltip)}
+          components={{ WrapperComponent }}
+        >
+          <SecondaryIconButton
+            label="show next month"
+            onClick={props.onNextMonthClick}
+            icon={<AngleRightIcon size="medium" />}
+          />
+        </Tooltip>
+        <Text.Body as="span" isBold={true}>
+          {props.monthLabel}
+        </Text.Body>
+      </Spacings.Inline>
+      <Spacings.Inline scale="xs" alignItems="center">
+        <Tooltip
+          title={intl.formatMessage(messages.previousYearTooltip)}
+          components={{ WrapperComponent }}
+        >
+          <SecondaryIconButton
+            label="show prev year"
+            onClick={props.onPrevYearClick}
+            icon={<AngleLeftIcon size="medium" />}
+          />
+        </Tooltip>
+        <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
+        <Tooltip
+          title={intl.formatMessage(messages.nextYearTooltip)}
+          components={{ WrapperComponent }}
+        >
+          <SecondaryIconButton
+            label="show next year"
+            onClick={props.onNextYearClick}
+            icon={<AngleRightIcon size="medium" />}
+          />
+        </Tooltip>
+      </Spacings.Inline>
+    </div>
+  );
+};
 
 CalendarHeader.displayName = 'CalendarHeader';
 
@@ -101,4 +104,4 @@ CalendarHeader.propTypes = {
   }).isRequired,
 };
 
-export default injectIntl(CalendarHeader);
+export default CalendarHeader;
