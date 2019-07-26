@@ -241,10 +241,6 @@ DateInput.displayName = 'DateInput';
 DateInput.isEmpty = value => value === '';
 
 DateInput.propTypes = {
-  intl: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
