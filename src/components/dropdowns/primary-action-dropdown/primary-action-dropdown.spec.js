@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { render } from '../../../test-utils';
 import { CloseBoldIcon } from '../../icons';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
@@ -142,8 +143,10 @@ describe('when dropdown is open and body is clicked', () => {
     expect(getByLabelText('Secondary Action')).toBeInTheDocument();
 
     // click on doucment body
-    document.body.click();
 
+    act(() => {
+      document.body.click();
+    });
     // it should close the dropdown
     expect(queryByLabelText('Secondary Action')).not.toBeInTheDocument();
   });
