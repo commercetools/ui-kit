@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
@@ -23,144 +23,133 @@ const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
 
 const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 
-export class TimeInput extends React.Component {
-  static displayName = 'TimeInput';
+const TimeInput = props => {
+  const id = getFieldId(props, {}, sequentialId);
+  const intl = useIntl();
 
-  // Takes any input like 15:10, 3 AM, 3AM, 3:15AM, 3:5AM and turns it
-  // into a 24h format (with seconds and milliseconds if present)
-  static to24h = time => {
-    const parsedTime = parseTime(time);
-    return parsedTime ? format24hr(parsedTime) : '';
-  };
+  const emitChange = React.useCallback(
+    value => {
+      const event = {
+        target: { id, name: props.name, value },
+      };
+      props.onChange(event);
+    },
+    [id, props.name]
+  );
 
-  static propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    autoComplete: PropTypes.string,
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func,
-    hasError: PropTypes.bool,
-    isAutofocussed: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    isReadOnly: PropTypes.bool,
-    placeholder: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  const handleBlur = React.useCallback(
+    event => {
+      // check formatting and reformat when necessary
+      const formattedTime = TimeInput.toLocaleTime(props.value, intl.locale);
 
-    // HoC
-    intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
-      formatTime: PropTypes.func.isRequired,
-      locale: PropTypes.string.isRequired,
-    }).isRequired,
-  };
+      if (formattedTime !== props.value) emitChange(formattedTime);
 
-  state = {
-    // We generate an id in case no id is provided by the parent to attach the
-    // label to the input component.
-    id: this.props.id,
-  };
+      // forward the onBlur call
+      if (props.onBlur) props.onBlur(event);
+    },
+    [intl.locale, props.value]
+  );
 
-  static getDerivedStateFromProps = (props, state) => ({
-    id: getFieldId(props, state, sequentialId),
-  });
-
-  static defaultProps = {
-    horizontalConstraint: 'scale',
-  };
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.intl.locale !== this.props.intl.locale) {
-      this.emitChange(
-        TimeInput.toLocaleTime(this.props.value, this.props.intl.locale)
-      );
+  // so that it doesn't run on initial mount
+  const mounted = React.useRef();
+  React.useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      emitChange(TimeInput.toLocaleTime(props.value, intl.locale));
     }
-  }
+  }, [intl.locale]);
 
-  emitChange = value => {
-    const event = {
-      target: { id: this.state.id, name: this.props.name, value },
-    };
-    this.props.onChange(event);
+  return (
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+      <TimeInputBody
+        id={id}
+        name={props.name}
+        autoComplete={props.autoComplete}
+        value={props.value}
+        onChange={props.onChange}
+        onFocus={props.onFocus}
+        onBlur={handleBlur}
+        isAutofocussed={props.isAutofocussed}
+        isDisabled={props.isDisabled}
+        hasError={props.hasError}
+        isReadOnly={props.isReadOnly}
+        onClear={() => emitChange('')}
+        placeholder={
+          typeof props.placeholder === 'string'
+            ? props.placeholder
+            : intl.formatMessage(messages.placeholder)
+        }
+        {...filterDataAttributes(props)}
+      />
+    </Constraints.Horizontal>
+  );
+};
+
+TimeInput.displayName = 'TimeInput';
+
+// Takes any input like 15:10, 3 AM, 3AM, 3:15AM, 3:5AM and turns it
+// into a 24h format (with seconds and milliseconds if present)
+TimeInput.to24h = time => {
+  const parsedTime = parseTime(time);
+  return parsedTime ? format24hr(parsedTime) : '';
+};
+
+TimeInput.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  autoComplete: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  hasError: PropTypes.bool,
+  isAutofocussed: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  placeholder: PropTypes.string,
+  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+};
+
+TimeInput.defaultProps = {
+  horizontalConstraint: 'scale',
+};
+
+// Converts any value to either a formatted value or an empty string
+// The resulting format might use 12h or 24h, unless the time contains
+// seconds or milliseconds. If seconds or milliseconds are contained, the
+// the 24h format is returned.
+//
+// Returns time in a format suitable for the locale.
+TimeInput.toLocaleTime = (time, locale) => {
+  const parsedTime = parseTime(time);
+  if (!parsedTime) return '';
+
+  const timeIn24hFormat = format24hr(parsedTime);
+
+  // return the 24h format, as the time has high precision
+  if (hasMilliseconds(parsedTime)) return timeIn24hFormat;
+
+  // return the localized time (12h or 24h format)
+  const date = new Date(
+    1970,
+    0,
+    1,
+    parsedTime.hours,
+    parsedTime.minutes,
+    parsedTime.seconds,
+    parsedTime.milliseconds
+  );
+
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    // only show seconds when time contains seconds
+    second: parsedTime.seconds > 0 ? 'numeric' : undefined,
   };
 
-  // Converts any value to either a formatted value or an empty string
-  // The resulting format might use 12h or 24h, unless the time contains
-  // seconds or milliseconds. If seconds or milliseconds are contained, the
-  // the 24h format is returned.
-  //
-  // Returns time in a format suitable for the locale.
-  static toLocaleTime = (time, locale) => {
-    const parsedTime = parseTime(time);
-    if (!parsedTime) return '';
+  const isValidDate = !isNaN(date.getTime());
+  return isValidDate ? date.toLocaleTimeString(locale, options) : '';
+};
 
-    const timeIn24hFormat = format24hr(parsedTime);
-
-    // return the 24h format, as the time has high precision
-    if (hasMilliseconds(parsedTime)) return timeIn24hFormat;
-
-    // return the localized time (12h or 24h format)
-    const date = new Date(
-      1970,
-      0,
-      1,
-      parsedTime.hours,
-      parsedTime.minutes,
-      parsedTime.seconds,
-      parsedTime.milliseconds
-    );
-
-    const options = {
-      hour: 'numeric',
-      minute: 'numeric',
-      // only show seconds when time contains seconds
-      second: parsedTime.seconds > 0 ? 'numeric' : undefined,
-    };
-
-    const isValidDate = !isNaN(date.getTime());
-    return isValidDate ? date.toLocaleTimeString(locale, options) : '';
-  };
-
-  handleBlur = event => {
-    // check formatting and reformat when necessary
-    const formattedTime = TimeInput.toLocaleTime(
-      this.props.value,
-      this.props.intl.locale
-    );
-
-    if (formattedTime !== this.props.value) this.emitChange(formattedTime);
-
-    // forward the onBlur call
-    if (this.props.onBlur) this.props.onBlur(event);
-  };
-
-  render() {
-    return (
-      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <TimeInputBody
-          id={this.state.id}
-          name={this.props.name}
-          autoComplete={this.props.autoComplete}
-          value={this.props.value}
-          onChange={this.props.onChange}
-          onFocus={this.props.onFocus}
-          onBlur={this.handleBlur}
-          isAutofocussed={this.props.isAutofocussed}
-          isDisabled={this.props.isDisabled}
-          hasError={this.props.hasError}
-          isReadOnly={this.props.isReadOnly}
-          onClear={() => this.emitChange('')}
-          placeholder={
-            typeof this.props.placeholder === 'string'
-              ? this.props.placeholder
-              : this.props.intl.formatMessage(messages.placeholder)
-          }
-          {...filterDataAttributes(this.props)}
-        />
-      </Constraints.Horizontal>
-    );
-  }
-}
-
-export default injectIntl(TimeInput);
+export default TimeInput;
