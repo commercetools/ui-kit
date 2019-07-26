@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant';
 import has from 'lodash/has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
-import { injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
@@ -309,190 +309,24 @@ const getAmountInputName = name => (name ? `${name}.amount` : undefined);
 const getCurrencyDropdownName = name =>
   name ? `${name}.currencyCode` : undefined;
 
-class MoneyInput extends React.Component {
-  static displayName = 'MoneyInput';
+const MoneyInput = props => {
+  const intl = useIntl();
+  const [currencyHasFocus, setCurrencyHasFocus] = React.useState(false);
+  const [amountHasFocus, setAmountHasFocus] = React.useState(false);
 
-  static getAmountInputId = getAmountInputName;
+  const containerRef = React.useRef();
+  const amountInputRef = React.useRef();
 
-  static getCurrencyDropdownId = getCurrencyDropdownName;
-
-  static convertToMoneyValue = (value, locale) =>
-    createMoneyValue(
-      value.currencyCode,
-      typeof value.amount === 'string' ? value.amount.trim() : '',
-      locale
-    );
-
-  static parseMoneyValue = (moneyValue, locale) => {
-    if (!moneyValue) return { currencyCode: '', amount: '' };
-
-    invariant(
-      typeof locale === 'string',
-      'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
-    );
-
-    invariant(
-      typeof moneyValue === 'object',
-      'MoneyInput.parseMoneyValue: Value must be passed as an object or be undefined'
-    );
-
-    invariant(
-      typeof moneyValue.currencyCode === 'string',
-      'MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
-    );
-
-    invariant(
-      has(currencies, moneyValue.currencyCode),
-      'MoneyInput.parseMoneyValue: Value must use known currency code'
-    );
-
-    invariant(
-      // highPrecision or centPrecision values must be set
-      typeof moneyValue.centAmount === 'number' ||
-        (typeof moneyValue.preciseAmount === 'number' &&
-          typeof moneyValue.fractionDigits === 'number'),
-      'MoneyInput.parseMoneyValue: Value must contain "amount"'
-    );
-
-    const amount = formatAmount(
-      getAmountAsNumberFromMoneyValue(moneyValue).toLocaleString(locale, {
-        minimumFractionDigits: moneyValue.fractionDigits,
-      }),
-      moneyValue.currencyCode,
-      locale
-    );
-
-    return { amount, currencyCode: moneyValue.currencyCode };
-  };
-
-  static isEmpty = formValue =>
-    !formValue ||
-    formValue.amount.trim() === '' ||
-    formValue.currencyCode.trim() === '';
-
-  static isHighPrecision = (formValue, locale) => {
-    invariant(
-      !MoneyInput.isEmpty(formValue),
-      'MoneyValue.isHighPrecision may not be called with an empty money value.'
-    );
-    const moneyValue = MoneyInput.convertToMoneyValue(formValue, locale);
-    return moneyValue && moneyValue.type === 'highPrecision';
-  };
-
-  static isTouched = touched =>
-    Boolean(touched && touched.currencyCode && touched.amount);
-
-  static propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    autoComplete: PropTypes.string,
-    value: PropTypes.shape({
-      amount: PropTypes.string.isRequired,
-      currencyCode: PropTypes.string.isRequired,
-    }).isRequired,
-    currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-    placeholder: PropTypes.string,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func,
-    isDisabled: PropTypes.bool,
-    isReadOnly: PropTypes.bool,
-    isAutofocussed: PropTypes.bool,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-    menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
-    menuPortalZIndex: PropTypes.number.isRequired,
-    menuShouldBlockScroll: PropTypes.bool,
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
-    intl: PropTypes.shape({
-      locale: PropTypes.string.isRequired,
-      formatMessage: PropTypes.func.isRequired,
-    }).isRequired,
-    hasHighPrecisionBadge: PropTypes.bool,
-    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
-  };
-
-  static defaultProps = {
-    currencies: [],
-    horizontalConstraint: 'scale',
-    menuPortalZIndex: 1,
-  };
-
-  state = {
-    currencyHasFocus: false,
-    amountHasFocus: false,
-  };
-
-  handleCurrencyChange = option => {
-    const currencyCode = option.value;
-    if (this.props.value.currencyCode !== currencyCode) {
-      // When the user changes from a currency with 3 fraction digits to
-      // a currency with 2 fraction digits, and when the input value was
-      // "9.000" (9), then it should change to "9.00" to reflect the new
-      // currency's number of fraction digits.
-      // When the currency was a high-precision price, then no digits should
-      // be lost
-      const formattedAmount = formatAmount(
-        this.props.value.amount.trim(),
-        currencyCode,
-        this.props.intl.locale
-      );
-      // The user could be changing the currency before entering any amount,
-      // or while the amount is invalid. In these cases, we don't attempt to
-      // format the amount.
-      const nextAmount = isNaN(formattedAmount)
-        ? this.props.value.amount
-        : formattedAmount;
-
-      // change currency code
-      const fakeCurrencyEvent = {
-        persist: () => {},
-        target: {
-          id: MoneyInput.getCurrencyDropdownId(this.props.id),
-          name: getCurrencyDropdownName(this.props.name),
-          value: currencyCode || '',
-        },
-      };
-      this.props.onChange(fakeCurrencyEvent);
-
-      // change amount if necessary
-      if (this.props.value.amount !== nextAmount) {
-        this.props.onChange({
-          persist: () => {},
-          target: {
-            id: MoneyInput.getAmountInputId(this.props.id),
-            name: getAmountInputName(this.props.name),
-            value: nextAmount,
-          },
-        });
-      }
-
-      this.amountInputRef.current.focus();
-    }
-  };
-
-  handleAmountChange = event => {
-    if (isNumberish(event.target.value)) {
-      this.props.onChange({
-        persist: () => {},
-        target: {
-          id: MoneyInput.getAmountInputId(this.props.id),
-          name: getAmountInputName(this.props.name),
-          value: event.target.value,
-        },
-      });
-    }
-  };
-
-  handleAmountBlur = () => {
-    const amount = this.props.value.amount.trim();
-    this.setState({ amountHasFocus: false });
+  const handleAmountBlur = React.useCallback(() => {
+    const amount = props.value.amount.trim();
+    setAmountHasFocus(false);
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
-    if (amount.length > 0 && currencies[this.props.value.currencyCode]) {
+    if (amount.length > 0 && currencies[props.value.currencyCode]) {
       const formattedAmount = formatAmount(
         amount,
-        this.props.value.currencyCode,
-        this.props.intl.locale
+        props.value.currencyCode,
+        intl.locale
       );
 
       // When the user entered a value with centPrecision, we can format
@@ -502,202 +336,369 @@ class MoneyInput extends React.Component {
         const fakeEvent = {
           persist: () => {},
           target: {
-            id: MoneyInput.getAmountInputId(this.props.id),
-            name: getAmountInputName(this.props.name),
+            id: MoneyInput.getAmountInputId(props.id),
+            name: getAmountInputName(props.name),
             value: formattedAmount,
           },
         };
-        this.props.onChange(fakeEvent);
+        props.onChange(fakeEvent);
       }
     }
-  };
+  }, [props.id, props.name, props.value.amount]);
 
-  containerRef = React.createRef();
-  amountInputRef = React.createRef();
+  const handleAmountChange = React.useCallback(
+    event => {
+      if (isNumberish(event.target.value)) {
+        props.onChange({
+          persist: () => {},
+          target: {
+            id: MoneyInput.getAmountInputId(props.id),
+            name: getAmountInputName(props.name),
+            value: event.target.value,
+          },
+        });
+      }
+    },
+    [props.id, props.name]
+  );
 
-  render() {
-    const hasNoCurrencies = this.props.currencies.length === 0;
-    const hasFocus = this.state.currencyHasFocus || this.state.amountHasFocus;
+  const handleCurrencyChange = React.useCallback(
+    option => {
+      const currencyCode = option.value;
+      if (props.value.currencyCode !== currencyCode) {
+        // When the user changes from a currency with 3 fraction digits to
+        // a currency with 2 fraction digits, and when the input value was
+        // "9.000" (9), then it should change to "9.00" to reflect the new
+        // currency's number of fraction digits.
+        // When the currency was a high-precision price, then no digits should
+        // be lost
+        const formattedAmount = formatAmount(
+          props.value.amount.trim(),
+          currencyCode,
+          intl.locale
+        );
+        // The user could be changing the currency before entering any amount,
+        // or while the amount is invalid. In these cases, we don't attempt to
+        // format the amount.
+        const nextAmount = isNaN(formattedAmount)
+          ? props.value.amount
+          : formattedAmount;
 
-    const currencySelectStyles = createCurrencySelectStyles({
-      hasWarning: this.props.hasWarning,
-      hasError: this.props.hasError,
-      isDisabled: this.props.isDisabled,
-      isReadOnly: this.props.isReadOnly,
-      hasFocus,
-      menuPortalZIndex: this.props.menuPortalZIndex,
-    });
-    const options = this.props.currencies.map(currencyCode => ({
-      label: currencyCode,
-      value: currencyCode,
-    }));
-
-    const option = (() => {
-      const matchedOption = options.find(
-        optionCandidate =>
-          optionCandidate.value === this.props.value.currencyCode
-      );
-      if (matchedOption) return matchedOption;
-      // ensure an option is found, even when the currencies don't include
-      // the money value's currencyCode
-      if (this.props.value.currencyCode.trim() !== '')
-        return {
-          label: this.props.value.currencyCode,
-          value: this.props.value.currencyCode,
+        // change currency code
+        const fakeCurrencyEvent = {
+          persist: () => {},
+          target: {
+            id: MoneyInput.getCurrencyDropdownId(props.id),
+            name: getCurrencyDropdownName(props.name),
+            value: currencyCode || '',
+          },
         };
-      return null;
-    })();
-    const id = MoneyInput.getCurrencyDropdownId(this.props.id);
+        props.onChange(fakeCurrencyEvent);
 
-    const isHighPrecision =
-      !MoneyInput.isEmpty(this.props.value) &&
-      MoneyInput.isHighPrecision(this.props.value, this.props.intl.locale);
+        // change amount if necessary
+        if (props.value.amount !== nextAmount) {
+          props.onChange({
+            persist: () => {},
+            target: {
+              id: MoneyInput.getAmountInputId(props.id),
+              name: getAmountInputName(props.name),
+              value: nextAmount,
+            },
+          });
+        }
 
-    return (
-      <Contraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <div
-          ref={this.containerRef}
-          css={css`
-            font-family: inherit;
-            width: 100%;
-            position: relative;
-            display: flex;
-          `}
-          data-testid="money-input-container"
-          onBlur={event => {
-            // ensures that both fields are marked as touched when one of them
-            // is blurred
-            if (
-              typeof this.props.onBlur === 'function' &&
-              !this.containerRef.current.contains(event.relatedTarget)
-            ) {
-              this.props.onBlur({
-                target: {
-                  id: MoneyInput.getCurrencyDropdownId(this.props.id),
-                  name: getCurrencyDropdownName(this.props.name),
-                },
-              });
-              this.props.onBlur({
-                target: {
-                  id: MoneyInput.getAmountInputId(this.props.id),
-                  name: getAmountInputName(this.props.name),
-                },
-              });
-            }
-          }}
-        >
-          {hasNoCurrencies ? (
-            <CurrencyLabel
-              id={MoneyInput.getAmountInputId(this.props.id)}
-              isDisabled={this.props.isDisabled}
-            >
-              {option && option.label}
-            </CurrencyLabel>
-          ) : (
-            <Select
-              inputId={id}
-              name={getCurrencyDropdownName(this.props.name)}
-              value={option}
-              isDisabled={this.props.isDisabled || this.props.isReadOnly}
-              isSearchable={false}
-              components={{
-                SingleValue: props => <SingleValue {...props} id={id} />,
-                DropdownIndicator,
-              }}
-              options={options}
-              placeholder=""
-              styles={currencySelectStyles}
-              onFocus={() => {
-                if (this.props.onFocus)
-                  this.props.onFocus({
-                    target: {
-                      id: MoneyInput.getCurrencyDropdownId(this.props.id),
-                      name: getCurrencyDropdownName(this.props.name),
-                    },
-                  });
-                this.setState({ currencyHasFocus: true });
-              }}
-              menuPortalTarget={this.props.menuPortalTarget}
-              menuShouldBlockScroll={this.props.menuShouldBlockScroll}
-              onBlur={() => this.setState({ currencyHasFocus: false })}
-              onChange={this.handleCurrencyChange}
-              data-testid="currency-dropdown"
-            />
-          )}
-          <div
-            css={css`
-              position: relative;
-              width: 100%;
-            `}
-          >
-            <input
-              ref={this.amountInputRef}
-              id={MoneyInput.getAmountInputId(this.props.id)}
-              autoComplete={this.props.autoComplete}
-              name={getAmountInputName(this.props.name)}
-              type="text"
-              onFocus={() => {
-                if (this.props.onFocus)
-                  this.props.onFocus({
-                    target: {
-                      id: MoneyInput.getAmountInputId(this.props.id),
-                      name: getAmountInputName(this.props.name),
-                    },
-                  });
-                this.setState({ amountHasFocus: true });
-              }}
-              value={this.props.value.amount}
-              css={[
-                getAmountInputStyles({ ...this.props, hasFocus }),
-                // accounts for size of icon
-                this.props.hasHighPrecisionBadge &&
-                  isHighPrecision &&
-                  css`
-                    padding-right: ${vars.spacingL};
-                  `,
-              ]}
-              placeholder={this.props.placeholder}
-              onChange={this.handleAmountChange}
-              onBlur={this.handleAmountBlur}
-              disabled={this.props.isDisabled}
-              readOnly={this.props.isReadOnly}
-              autoFocus={this.props.isAutofocussed}
-              {...filterDataAttributes(this.props)}
-            />
-            {this.props.hasHighPrecisionBadge && isHighPrecision && (
-              <div
-                css={() =>
-                  getHighPrecisionWrapperStyles({
-                    isDisabled: this.props.isDisabled,
-                  })
-                }
-              >
-                <Tooltip
-                  off={this.props.isDisabled}
-                  placement="top-end"
-                  // we use negative margin to make up for the padding in the Tooltip Wrapper
-                  // so that the tooltip is flush with the component
-                  styles={{
-                    body: {
-                      margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
-                    },
-                  }}
-                  title={this.props.intl.formatMessage(messages.highPrecision)}
-                  components={{
-                    WrapperComponent: TooltipWrapper,
-                  }}
-                >
-                  <FractionDigitsIcon
-                    color={this.props.isDisabled ? 'neutral60' : 'info'}
-                  />
-                </Tooltip>
-              </div>
-            )}
-          </div>
-        </div>
-      </Contraints.Horizontal>
+        amountInputRef.current.focus();
+      }
+    },
+    [props.id, props.name]
+  );
+
+  const hasNoCurrencies = props.currencies.length === 0;
+  const hasFocus = currencyHasFocus || amountHasFocus;
+
+  const currencySelectStyles = createCurrencySelectStyles({
+    hasWarning: props.hasWarning,
+    hasError: props.hasError,
+    isDisabled: props.isDisabled,
+    isReadOnly: props.isReadOnly,
+    hasFocus,
+    menuPortalZIndex: props.menuPortalZIndex,
+  });
+  const options = props.currencies.map(currencyCode => ({
+    label: currencyCode,
+    value: currencyCode,
+  }));
+
+  const option = (() => {
+    const matchedOption = options.find(
+      optionCandidate => optionCandidate.value === props.value.currencyCode
     );
-  }
-}
+    if (matchedOption) return matchedOption;
+    // ensure an option is found, even when the currencies don't include
+    // the money value's currencyCode
+    if (props.value.currencyCode.trim() !== '')
+      return {
+        label: props.value.currencyCode,
+        value: props.value.currencyCode,
+      };
+    return null;
+  })();
+  const id = MoneyInput.getCurrencyDropdownId(props.id);
 
-export default injectIntl(MoneyInput);
+  const isHighPrecision =
+    !MoneyInput.isEmpty(props.value) &&
+    MoneyInput.isHighPrecision(props.value, intl.locale);
+
+  return (
+    <Contraints.Horizontal constraint={props.horizontalConstraint}>
+      <div
+        ref={containerRef}
+        css={css`
+          font-family: inherit;
+          width: 100%;
+          position: relative;
+          display: flex;
+        `}
+        data-testid="money-input-container"
+        onBlur={event => {
+          // ensures that both fields are marked as touched when one of them
+          // is blurred
+          if (
+            typeof props.onBlur === 'function' &&
+            !containerRef.current.contains(event.relatedTarget)
+          ) {
+            props.onBlur({
+              target: {
+                id: MoneyInput.getCurrencyDropdownId(props.id),
+                name: getCurrencyDropdownName(props.name),
+              },
+            });
+            props.onBlur({
+              target: {
+                id: MoneyInput.getAmountInputId(props.id),
+                name: getAmountInputName(props.name),
+              },
+            });
+          }
+        }}
+      >
+        {hasNoCurrencies ? (
+          <CurrencyLabel
+            id={MoneyInput.getAmountInputId(props.id)}
+            isDisabled={props.isDisabled}
+          >
+            {option && option.label}
+          </CurrencyLabel>
+        ) : (
+          <Select
+            inputId={id}
+            name={getCurrencyDropdownName(props.name)}
+            value={option}
+            isDisabled={props.isDisabled || props.isReadOnly}
+            isSearchable={false}
+            components={{
+              // eslint-disable-next-line react/display-name
+              SingleValue: innerProps => (
+                <SingleValue {...innerProps} id={id} />
+              ),
+              DropdownIndicator,
+            }}
+            options={options}
+            placeholder=""
+            styles={currencySelectStyles}
+            onFocus={() => {
+              if (props.onFocus)
+                props.onFocus({
+                  target: {
+                    id: MoneyInput.getCurrencyDropdownId(props.id),
+                    name: getCurrencyDropdownName(props.name),
+                  },
+                });
+              setCurrencyHasFocus(true);
+            }}
+            menuPortalTarget={props.menuPortalTarget}
+            menuShouldBlockScroll={props.menuShouldBlockScroll}
+            onBlur={() => setCurrencyHasFocus(false)}
+            onChange={handleCurrencyChange}
+            data-testid="currency-dropdown"
+          />
+        )}
+        <div
+          css={css`
+            position: relative;
+            width: 100%;
+          `}
+        >
+          <input
+            ref={amountInputRef}
+            id={MoneyInput.getAmountInputId(props.id)}
+            autoComplete={props.autoComplete}
+            name={getAmountInputName(props.name)}
+            type="text"
+            onFocus={() => {
+              if (props.onFocus)
+                props.onFocus({
+                  target: {
+                    id: MoneyInput.getAmountInputId(props.id),
+                    name: getAmountInputName(props.name),
+                  },
+                });
+              setAmountHasFocus(true);
+            }}
+            value={props.value.amount}
+            css={[
+              getAmountInputStyles({ ...props, hasFocus }),
+              // accounts for size of icon
+              props.hasHighPrecisionBadge &&
+                isHighPrecision &&
+                css`
+                  padding-right: ${vars.spacingL};
+                `,
+            ]}
+            placeholder={props.placeholder}
+            onChange={handleAmountChange}
+            onBlur={handleAmountBlur}
+            disabled={props.isDisabled}
+            readOnly={props.isReadOnly}
+            autoFocus={props.isAutofocussed}
+            {...filterDataAttributes(props)}
+          />
+          {props.hasHighPrecisionBadge && isHighPrecision && (
+            <div
+              css={() =>
+                getHighPrecisionWrapperStyles({
+                  isDisabled: props.isDisabled,
+                })
+              }
+            >
+              <Tooltip
+                off={props.isDisabled}
+                placement="top-end"
+                // we use negative margin to make up for the padding in the Tooltip Wrapper
+                // so that the tooltip is flush with the component
+                styles={{
+                  body: {
+                    margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
+                  },
+                }}
+                title={intl.formatMessage(messages.highPrecision)}
+                components={{
+                  WrapperComponent: TooltipWrapper,
+                }}
+              >
+                <FractionDigitsIcon
+                  color={props.isDisabled ? 'neutral60' : 'info'}
+                />
+              </Tooltip>
+            </div>
+          )}
+        </div>
+      </div>
+    </Contraints.Horizontal>
+  );
+};
+
+MoneyInput.displayName = 'MoneyInput';
+
+MoneyInput.getAmountInputId = getAmountInputName;
+
+MoneyInput.getCurrencyDropdownId = getCurrencyDropdownName;
+
+MoneyInput.convertToMoneyValue = (value, locale) =>
+  createMoneyValue(
+    value.currencyCode,
+    typeof value.amount === 'string' ? value.amount.trim() : '',
+    locale
+  );
+
+MoneyInput.parseMoneyValue = (moneyValue, locale) => {
+  if (!moneyValue) return { currencyCode: '', amount: '' };
+
+  invariant(
+    typeof locale === 'string',
+    'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
+  );
+
+  invariant(
+    typeof moneyValue === 'object',
+    'MoneyInput.parseMoneyValue: Value must be passed as an object or be undefined'
+  );
+
+  invariant(
+    typeof moneyValue.currencyCode === 'string',
+    'MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
+  );
+
+  invariant(
+    has(currencies, moneyValue.currencyCode),
+    'MoneyInput.parseMoneyValue: Value must use known currency code'
+  );
+
+  invariant(
+    // highPrecision or centPrecision values must be set
+    typeof moneyValue.centAmount === 'number' ||
+      (typeof moneyValue.preciseAmount === 'number' &&
+        typeof moneyValue.fractionDigits === 'number'),
+    'MoneyInput.parseMoneyValue: Value must contain "amount"'
+  );
+
+  const amount = formatAmount(
+    getAmountAsNumberFromMoneyValue(moneyValue).toLocaleString(locale, {
+      minimumFractionDigits: moneyValue.fractionDigits,
+    }),
+    moneyValue.currencyCode,
+    locale
+  );
+
+  return { amount, currencyCode: moneyValue.currencyCode };
+};
+
+MoneyInput.isEmpty = formValue =>
+  !formValue ||
+  formValue.amount.trim() === '' ||
+  formValue.currencyCode.trim() === '';
+
+MoneyInput.isHighPrecision = (formValue, locale) => {
+  invariant(
+    !MoneyInput.isEmpty(formValue),
+    'MoneyValue.isHighPrecision may not be called with an empty money value.'
+  );
+  const moneyValue = MoneyInput.convertToMoneyValue(formValue, locale);
+  return moneyValue && moneyValue.type === 'highPrecision';
+};
+
+MoneyInput.isTouched = touched =>
+  Boolean(touched && touched.currencyCode && touched.amount);
+
+MoneyInput.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  autoComplete: PropTypes.string,
+  value: PropTypes.shape({
+    amount: PropTypes.string.isRequired,
+    currencyCode: PropTypes.string.isRequired,
+  }).isRequired,
+  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  placeholder: PropTypes.string,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  isAutofocussed: PropTypes.bool,
+  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
+  menuPortalZIndex: PropTypes.number.isRequired,
+  menuShouldBlockScroll: PropTypes.bool,
+  hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
+  hasHighPrecisionBadge: PropTypes.bool,
+  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+};
+
+MoneyInput.defaultProps = {
+  currencies: [],
+  horizontalConstraint: 'scale',
+  menuPortalZIndex: 1,
+};
+
+export default MoneyInput;
