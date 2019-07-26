@@ -1,61 +1,50 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import isNil from 'lodash/isNil';
+import useCollapsible from '../use-collapsible';
 
-class Collapsible extends React.PureComponent {
-  static displayName = 'Collapsible';
-  static propTypes = {
-    // This is only used to initialize the `isOpen` state once,
-    // when the component mounts. Therefore there should not be
-    // any `componentWillReceiveProps` to update the state from
-    // an external source.
-    isDefaultClosed: PropTypes.bool,
-    children: PropTypes.func.isRequired,
+const Collapsible = props => {
+  const isControlledComponent = !isNil(props.isClosed);
+  const [isOpen, toggle] = useCollapsible(!props.isDefaultClosed);
 
-    // The component can be controlled or uncontrolled.
-    // when uncontrolled (no isClosed passed)
-    //  -> There may not be `onToggle`
-    // when controlled (isClosed passed)
-    //  -> `onToggle` is required
-    isClosed: PropTypes.bool,
-    onToggle(props, propName, componentName, ...rest) {
-      const isControlledComponent = !isNil(props.isClosed);
-      const hasOnToggle = !isNil(props.onToggle);
+  return props.children({
+    isOpen: isControlledComponent ? !props.isClosed : isOpen,
+    toggle: isControlledComponent ? props.onToggle : toggle,
+  });
+};
 
-      // controlled
-      if (isControlledComponent)
-        return PropTypes.func.isRequired(
-          props,
-          propName,
-          componentName,
-          ...rest
-        );
+Collapsible.displayName = 'Collapsible';
+Collapsible.propTypes = {
+  // This is only used to initialize the `isOpen` state once,
+  // when the component mounts. Therefore there should not be
+  // any `componentWillReceiveProps` to update the state from
+  // an external source.
+  isDefaultClosed: PropTypes.bool,
+  children: PropTypes.func.isRequired,
 
-      if (hasOnToggle)
-        return new Error(
-          `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
-        );
+  // The component can be controlled or uncontrolled.
+  // when uncontrolled (no isClosed passed)
+  //  -> There may not be `onToggle`
+  // when controlled (isClosed passed)
+  //  -> `onToggle` is required
+  isClosed: PropTypes.bool,
+  onToggle(props, propName, componentName, ...rest) {
+    const isControlledComponent = !isNil(props.isClosed);
+    const hasOnToggle = !isNil(props.onToggle);
 
-      // uncontrolled component does not have `onToggle` so no validation needed.
-      return null;
-    },
-  };
+    // controlled
+    if (isControlledComponent)
+      return PropTypes.func.isRequired(props, propName, componentName, ...rest);
 
-  static defaultProps = { isDefaultClosed: false };
-  state = { isOpen: !this.props.isDefaultClosed };
+    if (hasOnToggle)
+      return new Error(
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
+      );
 
-  toggle = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-  };
+    // uncontrolled component does not have `onToggle` so no validation needed.
+    return null;
+  },
+};
 
-  render() {
-    const isControlledComponent = !isNil(this.props.isClosed);
-
-    return this.props.children({
-      isOpen: isControlledComponent ? !this.props.isClosed : this.state.isOpen,
-      toggle: isControlledComponent ? this.props.onToggle : this.toggle,
-    });
-  }
-}
+Collapsible.defaultProps = { isDefaultClosed: false };
 
 export default Collapsible;
