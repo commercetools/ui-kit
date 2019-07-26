@@ -15,45 +15,19 @@ const TestComponent = props => {
   );
 };
 
-describe('when component is uncontrolled', () => {
-  it('should be open by default', () => {
-    const { getByTestId } = render(<TestComponent />);
-    expect(getByTestId('openState')).toHaveTextContent('open');
-  });
-
-  it('should be possible to toggle the open state', () => {
-    const { getByTestId } = render(<TestComponent />);
-    expect(getByTestId('openState')).toHaveTextContent('open');
-    getByTestId('toggle').click();
-    expect(getByTestId('openState')).toHaveTextContent('closed');
-  });
-
-  it('should respect the default closed state', () => {
-    const { getByTestId } = render(<TestComponent isDefaultOpen={false} />);
-    expect(getByTestId('openState')).toHaveTextContent('closed');
-  });
+it('should be open by default', () => {
+  const { getByTestId } = render(<TestComponent />);
+  expect(getByTestId('openState')).toHaveTextContent('open');
 });
 
-// describe('when component is controlled', () => {
-//   it('should be open by default', () => {
-//     const onToggle = jest.fn();
-//     const { getByTestId } = render(
-//       <TestComponent isClosed={false} onToggle={onToggle} />
-//     );
-//     expect(getByTestId('openState')).toHaveTextContent('open');
-//   });
-//
-//   it('should be possible to toggle the open state', () => {
-//     const onToggle = jest.fn();
-//     const { getByTestId, rerender } = render(
-//       <TestComponent isClosed={false} onToggle={onToggle} />
-//     );
-//     expect(getByTestId('openState')).toHaveTextContent('open');
-//     getByTestId('toggle').click();
-//     expect(onToggle).toHaveBeenCalledTimes(1);
-//     // simulate the parent react to onToggle by changing the isClosed state
-//     // to true
-//     rerender(<TestComponent isClosed={true} onToggle={onToggle} />);
-//     expect(getByTestId('openState')).toHaveTextContent('closed');
-//   });
-// });
+it('should be possible to toggle the open state', () => {
+  const { getByTestId } = render(<TestComponent />);
+  expect(getByTestId('openState')).toHaveTextContent('open');
+  getByTestId('toggle').click();
+  expect(getByTestId('openState')).toHaveTextContent('closed');
+});
+
+it('should respect the default closed state', () => {
+  const { getByTestId } = render(<TestComponent isDefaultOpen={false} />);
+  expect(getByTestId('openState')).toHaveTextContent('closed');
+});
