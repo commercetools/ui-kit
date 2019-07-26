@@ -11982,10 +11982,10 @@ react-inspector@^3.0.2:
     is-dom "^1.0.9"
     prop-types "^15.6.1"
 
-react-intl@3.0.0-beta.14:
-  version "3.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-3.0.0-beta.14.tgz#20c5470423da7011e770a01d249c1789d0d34ca3"
-  integrity sha512-y4i145qrn0+fbe5rUzLvdIDboXHAVxdaNHPtyhclX8tWL5MuPs9pZS1wEazvArwSph332oDA49XlUZ2AuLPRYQ==
+react-intl@3.0.0-beta.15:
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-3.0.0-beta.15.tgz#5c729a6a00c2672188aa226c06089da5bada62ee"
+  integrity sha512-gphAIwPSelQh11bPe2IsFpS17+DlZoSV/HDuqSAGtPffF/nyVYWIqketgUXLt5a4YyWkDEu8uRNQZq1q8JDlGg==
   dependencies:
     "@formatjs/intl-relativetimeformat" "^2.3.1"
     "@types/hoist-non-react-statics" "^3.3.1"
