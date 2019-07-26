@@ -20,7 +20,7 @@ const MultilineTextInput = props => {
     MultilineTextInput.MIN_ROW_COUNT
   );
 
-  const [isOpen, toggle] = useCollapsible(!!props.defaultExpandMultilineText);
+  const [isOpen, toggle] = useCollapsible(props.defaultExpandMultilineText);
 
   const handleHeightChange = React.useCallback((_, innerComponent) => {
     setContentRowCount(innerComponent.valueRowCount);
@@ -113,6 +113,10 @@ MultilineTextInput.propTypes = {
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+};
+
+MultilineTextInput.defaultProps = {
+  defaultExpandMultilineText: false,
 };
 
 export default MultilineTextInput;
