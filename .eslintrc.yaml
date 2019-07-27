@@ -24,6 +24,7 @@ plugins:
   - 'prettier'
   - 'prefer-object-spread'
   - 'react'
+  - 'react-hooks'
 overrides:
   - files: ['*.spec.js']
     rules:
@@ -98,3 +99,5 @@ rules:
   'prefer-promise-reject-errors': 'warn'
   'react/jsx-no-target-blank': 0
   'lines-between-class-members': 0
+  'react-hooks/rules-of-hooks': 'error'
+  'react-hooks/exhaustive-deps': 'warn'
