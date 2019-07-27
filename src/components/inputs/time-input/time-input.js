@@ -29,9 +29,9 @@ const TimeInput = props => {
   const { name, value, onBlur, onChange } = props;
 
   const emitChange = React.useCallback(
-    newValue => {
+    nextValue => {
       const event = {
-        target: { id, name, value: newValue },
+        target: { id, name, value: nextValue },
       };
       onChange(event);
     },
