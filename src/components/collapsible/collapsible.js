@@ -4,11 +4,19 @@ import useCollapsible from '../../hooks/use-collapsible';
 
 const Collapsible = props => {
   const isControlledComponent = !isNil(props.isClosed);
+
+  if (isControlledComponent) {
+    return props.children({
+      isOpen: props.isClosed,
+      toggle: props.onToggle,
+    });
+  }
+
   const [isOpen, toggle] = useCollapsible(!props.isDefaultClosed);
 
   return props.children({
-    isOpen: isControlledComponent ? !props.isClosed : isOpen,
-    toggle: isControlledComponent ? props.onToggle : toggle,
+    isOpen,
+    toggle,
   });
 };
 
