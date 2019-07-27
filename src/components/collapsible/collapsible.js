@@ -7,7 +7,7 @@ const Collapsible = props => {
 
   if (isControlledComponent) {
     return props.children({
-      isOpen: props.isClosed,
+      isOpen: !props.isClosed,
       toggle: props.onToggle,
     });
   }
