@@ -51,6 +51,8 @@ const TimeInput = props => {
     [intl.locale, value, onBlur, emitChange]
   );
 
+  const onClear = React.useCallback(() => emitChange(''), [emitChange]);
+
   // so that it doesn't run on initial mount
   const mounted = React.useRef();
   React.useEffect(() => {
@@ -75,7 +77,7 @@ const TimeInput = props => {
         isDisabled={props.isDisabled}
         hasError={props.hasError}
         isReadOnly={props.isReadOnly}
-        onClear={() => emitChange('')}
+        onClear={onClear}
         placeholder={
           typeof props.placeholder === 'string'
             ? props.placeholder
