@@ -18,7 +18,7 @@ export {
 
 export { default as Link } from './components/links/link';
 
-export { default as useCollapsible } from './components/use-collapsible';
+export { default as useCollapsible } from './hooks/use-collapsible';
 export { default as Collapsible } from './components/collapsible';
 export { default as CollapsibleMotion } from './components/collapsible-motion';
 

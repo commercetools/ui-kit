@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
-import useCollapsible from '../use-collapsible';
+import useCollapsible from '../../hooks/use-collapsible';
 
 const Collapsible = props => {
   const isControlledComponent = !isNil(props.isClosed);
