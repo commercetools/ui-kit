@@ -22,6 +22,11 @@ const MultilineTextInput = props => {
 
   const [isOpen, toggle] = useCollapsible(props.defaultExpandMultilineText);
 
+  const handleFocus = React.useCallback(() => {
+    if (!isOpen) toggle();
+    if (props.onFocus) props.onFocus();
+  }, [isOpen, props.onFocus]);
+
   const handleHeightChange = React.useCallback((_, innerComponent) => {
     setContentRowCount(innerComponent.valueRowCount);
   });
@@ -42,10 +47,7 @@ const MultilineTextInput = props => {
           onHeightChange={handleHeightChange}
           id={props.id}
           onBlur={props.onBlur}
-          onFocus={() => {
-            if (!isOpen) toggle();
-            if (props.onFocus) props.onFocus();
-          }}
+          onFocus={handleFocus}
           disabled={props.isDisabled}
           placeholder={props.placeholder}
           css={theme => getTextareaStyles(props, theme)}
