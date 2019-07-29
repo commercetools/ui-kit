@@ -4,6 +4,7 @@ import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/core';
+import useToggleState from '../../../hooks/use-toggle-state';
 import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
@@ -122,9 +123,11 @@ RequiredValueErrorMessage.displayName = 'RequiredValueErrorMessage';
 
 const LocalizedTextInput = props => {
   const defaultExpansionState =
-    props.hideLanguageExpansionControls || props.defaultExpandLanguages;
+    props.hideLanguageExpansionControls ||
+    props.defaultExpandLanguages || // default to `false`, because useToggleState defaults to `true`
+    false;
 
-  const [areLanguagesExpanded, setAreLanguagesExpanded] = React.useState(
+  const [areLanguagesExpanded, toggleLanguages] = useToggleState(
     defaultExpansionState
   );
 
@@ -133,10 +136,6 @@ const LocalizedTextInput = props => {
     Object.keys(props.value)
   );
 
-  const toggleLanguages = React.useCallback(() => {
-    setAreLanguagesExpanded(!areLanguagesExpanded);
-  }, [areLanguagesExpanded]);
-
   const id = getFieldId(props, {}, sequentialId);
 
   const hasErrorInRemainingLanguages =
@@ -144,14 +143,10 @@ const LocalizedTextInput = props => {
     getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
 
   if (hasErrorInRemainingLanguages) {
-    const shouldLanguagesExpand =
-      hasErrorInRemainingLanguages ||
-      props.hideLanguageExpansionControls ||
-      areLanguagesExpanded;
     // this update within render replaces the old `getDerivedStateFromProps` functionality
     // https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops
-    if (shouldLanguagesExpand !== areLanguagesExpanded) {
-      setAreLanguagesExpanded(shouldLanguagesExpand);
+    if (hasErrorInRemainingLanguages !== areLanguagesExpanded) {
+      toggleLanguages();
     }
   }
 
