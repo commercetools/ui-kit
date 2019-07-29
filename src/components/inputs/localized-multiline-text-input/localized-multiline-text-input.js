@@ -45,15 +45,28 @@ const LocalizedMultilineTextInput = props => {
     defaultExpandedTranslations
   );
 
-  const toggleLanguage = language => {
-    const newExpandedTranslations = {
-      ...expandedTranslations,
-      [language]: !expandedTranslations[language],
-    };
-    setExpandedTranslations(newExpandedTranslations);
-  };
+  const defaultExpansionState =
+    props.hideLanguageExpansionControls ||
+    props.defaultExpandLanguages ||
+    // useToggleState's default is `true`, but we want `false`
+    false;
 
-  const expandAllTranslations = () => {
+  const [areLanguagesOpened, toggleLanguages] = useToggleState(
+    defaultExpansionState
+  );
+
+  const toggleLanguage = React.useCallback(
+    language => {
+      const newExpandedTranslations = {
+        ...expandedTranslations,
+        [language]: !expandedTranslations[language],
+      };
+      setExpandedTranslations(newExpandedTranslations);
+    },
+    [expandedTranslations]
+  );
+
+  const expandAllTranslations = React.useCallback(() => {
     const newExpandedTranslations = Object.keys(expandedTranslations).reduce(
       (translations, locale) => {
         return {
@@ -64,17 +77,7 @@ const LocalizedMultilineTextInput = props => {
       {}
     );
     setExpandedTranslations(newExpandedTranslations);
-  };
-
-  const defaultExpansionState =
-    props.hideLanguageExpansionControls ||
-    props.defaultExpandLanguages ||
-    // useToggleState's default is `true`, but we want `false`
-    false;
-
-  const [areLanguagesOpened, toggleLanguages] = useToggleState(
-    defaultExpansionState
-  );
+  }, [expandedTranslations]);
 
   const languages = sortLanguages(
     props.selectedLanguage,
