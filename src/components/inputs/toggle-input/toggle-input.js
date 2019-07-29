@@ -109,46 +109,40 @@ const Input = styled.input`
   }
 `;
 
-class ToggleInput extends React.PureComponent {
-  static displayName = 'Toggle';
-  static propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    size: PropTypes.oneOf(['small', 'big']).isRequired,
-    isDisabled: PropTypes.bool,
-    isChecked: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
-  };
+const ToggleInput = props => {
+  return (
+    <Label htmlFor={props.id} size={props.size} isDisabled={props.isDisabled}>
+      <Input
+        css={accessibleHiddenInputStyles}
+        id={props.id}
+        name={props.name}
+        onChange={props.onChange}
+        disabled={props.isDisabled}
+        checked={props.isChecked}
+        type="checkbox"
+        size={props.size}
+        {...filterDataAttributes(props)}
+        {...filterAriaAttributes(props)}
+      />
+      <Span aria-hidden="true" size={props.size} />
+    </Label>
+  );
+};
 
-  static defaultProps = {
-    isDisabled: false,
-    isChecked: false,
-    size: 'big',
-  };
+ToggleInput.displayName = 'Toggle';
+ToggleInput.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'big']).isRequired,
+  isDisabled: PropTypes.bool,
+  isChecked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
-  render() {
-    return (
-      <Label
-        htmlFor={this.props.id}
-        size={this.props.size}
-        isDisabled={this.props.isDisabled}
-      >
-        <Input
-          css={accessibleHiddenInputStyles}
-          id={this.props.id}
-          name={this.props.name}
-          onChange={this.props.onChange}
-          disabled={this.props.isDisabled}
-          checked={this.props.isChecked}
-          type="checkbox"
-          size={this.props.size}
-          {...filterDataAttributes(this.props)}
-          {...filterAriaAttributes(this.props)}
-        />
-        <Span aria-hidden="true" size={this.props.size} />
-      </Label>
-    );
-  }
-}
+ToggleInput.defaultProps = {
+  isDisabled: false,
+  isChecked: false,
+  size: 'big',
+};
 
 export default ToggleInput;
