@@ -13,8 +13,8 @@ const directionWrapper = {
 
 const Group = props => {
   React.useEffect(() => {
-    //   // NOTE: We allow mixed children rendered as (e.g. spacers)
-    //   // as a result we need to filter out children of the correct type.
+    // NOTE: We allow mixed children rendered as (e.g. spacers)
+    // as a result we need to filter out children of the correct type.
     const childrenAsArray = React.Children.toArray(props.children);
     const optionChildrenAsArray = childrenAsArray.filter(
       child => child.type.displayName === Option.displayName
@@ -68,7 +68,6 @@ const Group = props => {
       </Constraints.Horizontal>
     </div>
   );
-  // }
 };
 
 Group.displayName = 'RadioGroup';
