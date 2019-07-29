@@ -1,6 +1,6 @@
 import React from 'react';
-import useToggleState from './use-toggle-state';
 import { render } from '../../test-utils';
+import useToggleState from './use-toggle-state';
 
 const TestComponent = props => {
   // eslint-disable-next-line react/prop-types
