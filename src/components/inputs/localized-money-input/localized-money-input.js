@@ -137,10 +137,14 @@ const LocalizedMoneyInput = props => {
     props.hasError ||
     getHasErrorOnRemainingLanguages(props.errors, props.selectedCurrency);
 
-  if (hasErrorInRemainingCurrencies) {
+  const hasWarningInRemainingCurrencies =
+    props.hasError ||
+    getHasWarningOnRemainingLanguages(props.warnings, props.selectedCurrency);
+
+  if (hasErrorInRemainingCurrencies || hasWarningInRemainingCurrencies) {
     // this update within render replaces the old `getDerivedStateFromProps` functionality
     // https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops
-    if (hasErrorInRemainingCurrencies !== areCurrenciesExpanded) {
+    if (!areCurrenciesExpanded) {
       toggleCurrencies();
     }
   }
