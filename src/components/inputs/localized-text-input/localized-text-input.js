@@ -32,6 +32,7 @@ import {
 const sequentialId = createSequentialId('localized-text-input-');
 
 const LocalizedInput = props => {
+  const { onChange } = props;
   const handleChange = React.useCallback(
     event => {
       // We manipulate the event to add the language to the target.
@@ -47,9 +48,9 @@ const LocalizedInput = props => {
       //
       // eslint-disable-next-line no-param-reassign
       event.target.language = props.language;
-      props.onChange(event);
+      onChange(event);
     },
-    [props.language]
+    [props.language, onChange]
   );
 
   return (
