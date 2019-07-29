@@ -180,7 +180,7 @@
     "rcfile": "1.0.3",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-intl": "3.0.0-beta.15",
+    "react-intl": "3.0.0-beta.20",
     "react-router-dom": "5.0.1",
     "react-value": "0.2.0",
     "rimraf": "2.6.3",
@@ -208,7 +208,7 @@
     "moment-timezone": "0.5.x",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
-    "react-intl": "3.x",
+    "react-intl": ">=3.0.0-beta.19 || 3.x",
     "react-router-dom": "5.x"
   },
   "husky": {
