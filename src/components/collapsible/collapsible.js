@@ -1,27 +1,9 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
 import useToggleState from '../../hooks/use-toggle-state';
 
-const Collapsible = props => {
-  const isControlledComponent = !isNil(props.isClosed);
-
-  if (isControlledComponent) {
-    return props.children({
-      isOpen: !props.isClosed,
-      toggle: props.onToggle,
-    });
-  }
-
-  const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
-
-  return props.children({
-    isOpen,
-    toggle,
-  });
-};
-
-Collapsible.displayName = 'Collapsible';
-Collapsible.propTypes = {
+const collapsiblePropTypes = {
   // This is only used to initialize the `isOpen` state once,
   // when the component mounts. Therefore there should not be
   // any `componentWillReceiveProps` to update the state from
@@ -53,6 +35,42 @@ Collapsible.propTypes = {
   },
 };
 
+const ControlledCollapsible = props => (
+  <>
+    {props.children({
+      isOpen: !props.isClosed,
+      toggle: props.onToggle,
+    })}
+  </>
+);
+ControlledCollapsible.displayName = 'ControlledCollapsible';
+ControlledCollapsible.propTypes = collapsiblePropTypes;
+
+const UncontrolledCollapsible = props => {
+  const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
+  return (
+    <>
+      {props.children({
+        isOpen,
+        toggle,
+      })}
+    </>
+  );
+};
+UncontrolledCollapsible.displayName = 'UncontrolledCollapsible';
+UncontrolledCollapsible.propTypes = collapsiblePropTypes;
+
+const Collapsible = props => {
+  const isControlledComponent = !isNil(props.isClosed);
+
+  if (isControlledComponent) {
+    return <ControlledCollapsible {...props} />;
+  }
+  return <UncontrolledCollapsible {...props} />;
+};
+
+Collapsible.displayName = 'Collapsible';
+Collapsible.propTypes = collapsiblePropTypes;
 Collapsible.defaultProps = { isDefaultClosed: false };
 
 export default Collapsible;

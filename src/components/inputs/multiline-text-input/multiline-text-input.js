@@ -22,14 +22,18 @@ const MultilineTextInput = props => {
 
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
+  const { onFocus } = props;
   const handleFocus = React.useCallback(() => {
     if (!isOpen) toggle();
-    if (props.onFocus) props.onFocus();
-  }, [isOpen, props.onFocus]);
+    if (onFocus) onFocus();
+  }, [isOpen, onFocus, toggle]);
 
-  const handleHeightChange = React.useCallback((_, innerComponent) => {
-    setContentRowCount(innerComponent.valueRowCount);
-  });
+  const handleHeightChange = React.useCallback(
+    (_, innerComponent) => {
+      setContentRowCount(innerComponent.valueRowCount);
+    },
+    [setContentRowCount]
+  );
 
   // This checks if the content in the textarea overflows the minimum
   // amount of lines it should have when collapsed
