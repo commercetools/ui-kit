@@ -230,7 +230,7 @@ const PrimaryActionDropdown = props => {
     return () => {
       window.removeEventListener('click', handleGlobalClick);
     };
-  });
+  }, [handleGlobalClick]);
 
   const childrenAsArray = React.Children.toArray(props.children);
   const primaryOption =
