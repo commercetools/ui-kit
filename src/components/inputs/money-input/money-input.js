@@ -317,6 +317,7 @@ const MoneyInput = props => {
   const containerRef = React.useRef();
   const amountInputRef = React.useRef();
 
+  const { onChange } = props;
   const handleAmountBlur = React.useCallback(() => {
     const amount = props.value.amount.trim();
     setAmountHasFocus(false);
@@ -341,15 +342,22 @@ const MoneyInput = props => {
             value: formattedAmount,
           },
         };
-        props.onChange(fakeEvent);
+        onChange(fakeEvent);
       }
     }
-  }, [props.id, props.name, props.value.amount]);
+  }, [
+    intl.locale,
+    onChange,
+    props.id,
+    props.name,
+    props.value.amount,
+    props.value.currencyCode,
+  ]);
 
   const handleAmountChange = React.useCallback(
     event => {
       if (isNumberish(event.target.value)) {
-        props.onChange({
+        onChange({
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(props.id),
@@ -359,7 +367,7 @@ const MoneyInput = props => {
         });
       }
     },
-    [props.id, props.name]
+    [onChange, props.id, props.name]
   );
 
   const handleCurrencyChange = React.useCallback(
@@ -393,11 +401,11 @@ const MoneyInput = props => {
             value: currencyCode || '',
           },
         };
-        props.onChange(fakeCurrencyEvent);
+        onChange(fakeCurrencyEvent);
 
         // change amount if necessary
         if (props.value.amount !== nextAmount) {
-          props.onChange({
+          onChange({
             persist: () => {},
             target: {
               id: MoneyInput.getAmountInputId(props.id),
@@ -410,7 +418,14 @@ const MoneyInput = props => {
         amountInputRef.current.focus();
       }
     },
-    [props.id, props.name]
+    [
+      intl.locale,
+      onChange,
+      props.id,
+      props.name,
+      props.value.amount,
+      props.value.currencyCode,
+    ]
   );
 
   const hasNoCurrencies = props.currencies.length === 0;
