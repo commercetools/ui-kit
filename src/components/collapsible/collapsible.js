@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
-import useCollapsible from '../../hooks/use-collapsible';
+import useToggleState from '../../hooks/use-toggle-state';
 
 const Collapsible = props => {
   const isControlledComponent = !isNil(props.isClosed);
@@ -12,7 +12,7 @@ const Collapsible = props => {
     });
   }
 
-  const [isOpen, toggle] = useCollapsible(!props.isDefaultClosed);
+  const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
 
   return props.children({
     isOpen,

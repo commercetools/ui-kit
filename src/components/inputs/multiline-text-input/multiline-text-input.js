@@ -7,7 +7,7 @@ import { css } from '@emotion/core';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import useCollapsible from '../../../hooks/use-collapsible';
+import useToggleState from '../../../hooks/use-toggle-state';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import messages from './messages';
@@ -20,7 +20,7 @@ const MultilineTextInput = props => {
     MultilineTextInput.MIN_ROW_COUNT
   );
 
-  const [isOpen, toggle] = useCollapsible(props.defaultExpandMultilineText);
+  const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
   const handleFocus = React.useCallback(() => {
     if (!isOpen) toggle();

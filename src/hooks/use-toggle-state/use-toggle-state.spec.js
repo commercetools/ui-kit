@@ -1,10 +1,10 @@
 import React from 'react';
-import useCollapsible from './use-collapsible';
+import useToggleState from './use-toggle-state';
 import { render } from '../../test-utils';
 
 const TestComponent = props => {
   // eslint-disable-next-line react/prop-types
-  const [isOpen, toggle] = useCollapsible(props.isDefaultOpen);
+  const [isOpen, toggle] = useToggleState(props.isDefaultOpen);
   return (
     <div>
       <div data-testid="openState">{isOpen ? 'open' : 'closed'}</div>
