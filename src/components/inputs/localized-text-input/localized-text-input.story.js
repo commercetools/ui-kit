@@ -38,7 +38,7 @@ storiesOf('Components|Inputs', module)
               key={key}
               id={text('id', undefined)}
               name={text('name', undefined)}
-              value={object('value', value)}
+              value={value}
               onChange={event => {
                 action('onChange')(event);
                 onChange({
