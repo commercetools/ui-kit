@@ -14,157 +14,162 @@ import {
   getLanguageLabelStyles,
 } from './translation-input.styles';
 
-export default class TranslationInput extends React.Component {
-  static displayName = 'TranslationInput';
+const TranslationInput = props => {
+  const [contentRowCount, setContentRowCount] = React.useState(
+    TranslationInput.MIN_ROW_COUNT
+  );
 
-  static propTypes = {
-    id: PropTypes.string,
-    autoComplete: PropTypes.string,
-    name: PropTypes.string,
-    value: PropTypes.string.isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-    language: PropTypes.string.isRequired,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    isCollapsed: PropTypes.bool,
-    onToggle: PropTypes.func,
-    isAutofocussed: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    isReadOnly: PropTypes.bool,
-    languagesControl: PropTypes.node,
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
-    placeholder: PropTypes.string,
-    intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
-    }).isRequired,
-    error: PropTypes.node,
-    warning: PropTypes.node,
-  };
+  const handleHeightChange = React.useCallback(
+    (_, innerComponent) => {
+      setContentRowCount(innerComponent.valueRowCount);
+    },
+    [setContentRowCount]
+  );
 
-  // The minimum ammount of rows the MultilineTextInput will show.
-  // When the input is closed, this is used as the maximum row count as well
-  // so that the input "collapses".
-  static MIN_ROW_COUNT = 1;
+  const { onChange } = props;
 
-  state = {
-    // This is the internal "fake" rendered textarea element's height in rows
-    contentRowCount: TranslationInput.MIN_ROW_COUNT,
-  };
+  const handleChange = React.useCallback(
+    event => {
+      // We manipulate the event to add the language to the target.
+      // That way the users of LocalizedTextInput's onChange can read
+      // event.target.language and event.target.value to determine the next value.
+      //
+      // We only need this information for the story, the MC application code will
+      // never need to access the information in such an inconvenient way, as
+      // Formik can deal with a name like "foo.en" and sets the value correctly.
+      // We can't use this as we aren't guaranteed a name in the story as the user
+      // might clear it using the knob, and then we can't parse the language from
+      // the input name anymore.
+      //
+      // eslint-disable-next-line no-param-reassign
+      event.target.language = props.language;
+      onChange(event);
+    },
+    [onChange, props.language]
+  );
 
-  handleHeightChange = (_, innerComponent) => {
-    this.setState({
-      contentRowCount: innerComponent.valueRowCount,
-    });
-  };
+  const { onFocus, onToggle } = props;
+  const handleFocus = React.useCallback(() => {
+    // Expand the input on focus
+    if (props.isCollapsed) onToggle();
+    if (onFocus) onFocus();
+  }, [props.isCollapsed, onFocus, onToggle]);
 
-  handleChange = event => {
-    // We manipulate the event to add the language to the target.
-    // That way the users of LocalizedTextInput's onChange can read
-    // event.target.language and event.target.value to determine the next value.
-    //
-    // We only need this information for the story, the MC application code will
-    // never need to access the information in such an inconvenient way, as
-    // Formik can deal with a name like "foo.en" and sets the value correctly.
-    // We can't use this as we aren't guaranteed a name in the story as the user
-    // might clear it using the knob, and then we can't parse the language from
-    // the input name anymore.
-    //
-    // eslint-disable-next-line no-param-reassign
-    event.target.language = this.props.language;
-    this.props.onChange(event);
-  };
+  // This checks if the content in the textarea overflows the minimum
+  // amount of lines it should have when collapsed
+  const contentExceedsShownRows =
+    contentRowCount > TranslationInput.MIN_ROW_COUNT;
 
-  render() {
-    // This checks if the content in the textarea overflows the minimum
-    // amount of lines it should have when collapsed
-    const contentExceedsShownRows =
-      this.state.contentRowCount > TranslationInput.MIN_ROW_COUNT;
-
-    return (
-      <Spacings.Stack scale="xs">
+  return (
+    <Spacings.Stack scale="xs">
+      <div
+        key={props.language}
+        css={css`
+          width: 100%;
+          position: relative;
+          display: flex;
+        `}
+      >
+        <label
+          htmlFor={props.id}
+          css={theme => getLanguageLabelStyles(props, theme)}
+        >
+          {/* FIXME: add proper tone for disabled when tones are refactored */}
+          <Text.Detail tone="secondary">
+            {props.language.toUpperCase()}
+          </Text.Detail>
+        </label>
+        <TextareaAutosize
+          id={props.id}
+          name={props.name}
+          autoComplete={props.autoComplete}
+          type="text"
+          value={props.value}
+          onChange={handleChange}
+          onHeightChange={handleHeightChange}
+          onBlur={props.onBlur}
+          onFocus={handleFocus}
+          disabled={props.isDisabled}
+          placeholder={props.placeholder}
+          css={theme => getTextareaStyles(props, theme)}
+          readOnly={props.isReadOnly}
+          autoFocus={props.isAutofocussed}
+          /* ARIA */
+          aria-readonly={props.isReadOnly}
+          role="textbox"
+          minRows={TranslationInput.MIN_ROW_COUNT}
+          maxRows={
+            props.isCollapsed ? TranslationInput.MIN_ROW_COUNT : undefined
+          }
+          {...filterDataAttributes(props)}
+        />
+      </div>
+      <div
+        css={css`
+          display: flex;
+        `}
+      >
         <div
-          key={this.props.language}
           css={css`
-            width: 100%;
-            position: relative;
-            display: flex;
+            flex: 1;
           `}
         >
-          <label
-            htmlFor={this.props.id}
-            css={theme => getLanguageLabelStyles(this.props, theme)}
-          >
-            {/* FIXME: add proper tone for disabled when tones are refactored */}
-            <Text.Detail tone="secondary">
-              {this.props.language.toUpperCase()}
-            </Text.Detail>
-          </label>
-          <TextareaAutosize
-            id={this.props.id}
-            name={this.props.name}
-            autoComplete={this.props.autoComplete}
-            type="text"
-            value={this.props.value}
-            onChange={this.handleChange}
-            onHeightChange={this.handleHeightChange}
-            onBlur={this.props.onBlur}
-            onFocus={() => {
-              // Expand the input on focus
-              if (this.props.isCollapsed) this.props.onToggle();
-              if (this.props.onFocus) this.props.onFocus();
-            }}
-            disabled={this.props.isDisabled}
-            placeholder={this.props.placeholder}
-            css={theme => getTextareaStyles(this.props, theme)}
-            readOnly={this.props.isReadOnly}
-            autoFocus={this.props.isAutofocussed}
-            /* ARIA */
-            aria-readonly={this.props.isReadOnly}
-            role="textbox"
-            minRows={TranslationInput.MIN_ROW_COUNT}
-            maxRows={
-              this.props.isCollapsed
-                ? TranslationInput.MIN_ROW_COUNT
-                : undefined
-            }
-            {...filterDataAttributes(this.props)}
-          />
+          {(() => {
+            if (props.error) return <div>{props.error}</div>;
+            if (props.warning) return <div>{props.warning}</div>;
+            return props.languagesControl;
+          })()}
         </div>
         <div
           css={css`
-            display: flex;
+            flex: 0;
           `}
         >
-          <div
-            css={css`
-              flex: 1;
-            `}
-          >
-            {(() => {
-              if (this.props.error) return <div>{this.props.error}</div>;
-              if (this.props.warning) return <div>{this.props.warning}</div>;
-              return this.props.languagesControl;
-            })()}
-          </div>
-          <div
-            css={css`
-              flex: 0;
-            `}
-          >
-            {!this.props.isCollapsed && contentExceedsShownRows && (
-              <FlatButton
-                onClick={this.props.onToggle}
-                isDisabled={this.props.isDisabled}
-                label={this.props.intl.formatMessage(messages.collapse)}
-                icon={<AngleUpIcon size="small" />}
-              />
-            )}
-          </div>
+          {!props.isCollapsed && contentExceedsShownRows && (
+            <FlatButton
+              onClick={props.onToggle}
+              isDisabled={props.isDisabled}
+              label={props.intl.formatMessage(messages.collapse)}
+              icon={<AngleUpIcon size="small" />}
+            />
+          )}
         </div>
-        {(this.props.error || this.props.warning) &&
-          this.props.languagesControl}
-      </Spacings.Stack>
-    );
-  }
-}
+      </div>
+      {(props.error || props.warning) && props.languagesControl}
+    </Spacings.Stack>
+  );
+};
+
+TranslationInput.displayName = 'TranslationInput';
+
+TranslationInput.propTypes = {
+  id: PropTypes.string,
+  autoComplete: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  language: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  isCollapsed: PropTypes.bool,
+  onToggle: PropTypes.func,
+  isAutofocussed: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  languagesControl: PropTypes.node,
+  hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
+  placeholder: PropTypes.string,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
+  error: PropTypes.node,
+  warning: PropTypes.node,
+};
+
+// The minimum ammount of rows the MultilineTextInput will show.
+// When the input is closed, this is used as the maximum row count as well
+// so that the input "collapses".
+TranslationInput.MIN_ROW_COUNT = 1;
+
+export default TranslationInput;
