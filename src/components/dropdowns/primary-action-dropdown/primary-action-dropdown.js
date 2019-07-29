@@ -39,67 +39,63 @@ const getButtonStyles = isDisabled => {
   ];
 };
 
-class DropdownHead extends React.PureComponent {
-  static displayName = 'DropdownHead';
-  static propTypes = {
-    iconLeft: PropTypes.element.isRequired,
-    onClick: PropTypes.func,
-    children: PropTypes.node.isRequired,
-    isDisabled: PropTypes.bool.isRequired,
-    chevron: PropTypes.element.isRequired,
-  };
-
-  render() {
-    return (
-      <div
+const DropdownHead = props => (
+  <div
+    css={css`
+      display: flex;
+      align-items: center;
+    `}
+  >
+    <AccessibleButton
+      label={props.children}
+      onClick={props.onClick}
+      isDisabled={props.isDisabled}
+      css={[
+        ...getButtonStyles(props.isDisabled),
+        css`
+          padding: 0 ${vars.spacingS};
+          border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+        `,
+      ]}
+    >
+      <span
         css={css`
+          margin: 0 ${vars.spacingXs} 0 0;
           display: flex;
           align-items: center;
+          justify-content: center;
         `}
       >
-        <AccessibleButton
-          label={this.props.children}
-          onClick={this.props.onClick}
-          isDisabled={this.props.isDisabled}
-          css={[
-            ...getButtonStyles(this.props.isDisabled),
-            css`
-              padding: 0 ${vars.spacingS};
-              border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
-            `,
-          ]}
-        >
-          <span
-            css={css`
-              margin: 0 ${vars.spacingXs} 0 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `}
-          >
-            {React.cloneElement(this.props.iconLeft, {
-              size: 'big',
-              color: this.props.isDisabled ? 'neutral60' : 'solid',
-            })}
-          </span>
-          <span
-            css={css`
-              margin: 0 ${vars.spacingXs} 0 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `}
-          >
-            <Text.Detail tone={this.props.isDisabled ? 'secondary' : undefined}>
-              {this.props.children}
-            </Text.Detail>
-          </span>
-        </AccessibleButton>
-        {this.props.chevron}
-      </div>
-    );
-  }
-}
+        {React.cloneElement(props.iconLeft, {
+          size: 'big',
+          color: props.isDisabled ? 'neutral60' : 'solid',
+        })}
+      </span>
+      <span
+        css={css`
+          margin: 0 ${vars.spacingXs} 0 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `}
+      >
+        <Text.Detail tone={props.isDisabled ? 'secondary' : undefined}>
+          {props.children}
+        </Text.Detail>
+      </span>
+    </AccessibleButton>
+    {props.chevron}
+  </div>
+);
+
+DropdownHead.displayName = 'DropdownHead';
+DropdownHead.propTypes = {
+  iconLeft: PropTypes.element.isRequired,
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+  chevron: PropTypes.element.isRequired,
+};
 
 const DropdownChevron = React.forwardRef((props, ref) => (
   <AccessibleButton
@@ -141,6 +137,7 @@ const DropdownChevron = React.forwardRef((props, ref) => (
     </div>
   </AccessibleButton>
 ));
+
 DropdownChevron.displayName = 'DropdownChevron';
 DropdownChevron.propTypes = {
   onClick: PropTypes.func.isRequired,
@@ -211,89 +208,89 @@ Option.defaultProps = {
   when the dropdown trigger itself is clicked. Otherwise it would open and close
   immediately.
  */
-export class PrimaryActionDropdown extends React.PureComponent {
-  static displayName = 'PrimaryActionDropdown';
+const PrimaryActionDropdown = props => {
+  const ref = React.useRef();
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  const handleGlobalClick = React.useCallback(
+    event => {
+      const dropdownButton = ref.current;
+      if (
+        dropdownButton &&
+        event.target !== dropdownButton &&
+        !dropdownButton.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    },
+    [ref]
+  );
+  React.useEffect(() => {
+    window.addEventListener('click', handleGlobalClick);
+    return () => {
+      window.removeEventListener('click', handleGlobalClick);
+    };
+  }, [handleGlobalClick]);
 
-  state = {
-    isOpen: false,
-  };
+  const childrenAsArray = React.Children.toArray(props.children);
+  const primaryOption =
+    childrenAsArray.find(option => !option.props.isDisabled) ||
+    childrenAsArray[0];
 
-  ref = React.createRef();
+  const { onClick } = primaryOption.props;
+  const handleClickOnHead = React.useCallback(
+    event => {
+      if (isOpen) {
+        setIsOpen(false);
+      } else {
+        onClick(event);
+      }
+    },
+    [isOpen, onClick]
+  );
+  const handleClickOnChevron = React.useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
 
-  handleOpen = () => {
-    this.setState({ isOpen: true });
-  };
+  invariant(
+    childrenAsArray.length > 1,
+    '@commercetools-frontend/ui-kit/dropdowns/primary-action-dropdown: must contain at least two options'
+  );
 
-  handleClose = () => {
-    this.setState({ isOpen: false });
-  };
-
-  // close the dropdown when anything but the dropdown trigger is clicked,
-  // including when the dropdown content itself is clicked.
-  handleGlobalClick = event => {
-    const dropdownButton = this.ref.current;
-    if (
-      event.target !== dropdownButton &&
-      !dropdownButton.contains(event.target)
-    ) {
-      this.setState({ isOpen: false });
-    }
-  };
-
-  componentDidMount() {
-    window.addEventListener('click', this.handleGlobalClick);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('click', this.handleGlobalClick);
-  }
-
-  render() {
-    const childrenAsArray = React.Children.toArray(this.props.children);
-    const primaryOption =
-      childrenAsArray.find(option => !option.props.isDisabled) ||
-      childrenAsArray[0];
-
-    invariant(
-      childrenAsArray.length > 1,
-      '@commercetools-frontend/ui-kit/dropdowns/primary-action-dropdown: must contain at least two options'
-    );
-
-    return (
-      <div
-        css={css`
-          position: relative;
-          display: inline-flex;
-          align-items: column;
-        `}
+  return (
+    <div
+      css={css`
+        position: relative;
+        display: inline-flex;
+        align-items: column;
+      `}
+    >
+      <DropdownHead
+        iconLeft={primaryOption.props.iconLeft}
+        isDisabled={primaryOption.props.isDisabled}
+        onClick={handleClickOnHead}
+        chevron={
+          <DropdownChevron
+            ref={ref}
+            onClick={handleClickOnChevron}
+            isDisabled={primaryOption.props.isDisabled}
+            isOpen={isOpen}
+          />
+        }
       >
-        <DropdownHead
-          iconLeft={primaryOption.props.iconLeft}
-          isDisabled={primaryOption.props.isDisabled}
-          onClick={
-            this.state.isOpen ? this.handleClose : primaryOption.props.onClick
-          }
-          chevron={
-            <DropdownChevron
-              ref={this.ref}
-              onClick={this.state.isOpen ? this.handleClose : this.handleOpen}
-              isDisabled={primaryOption.props.isDisabled}
-              isOpen={this.state.isOpen}
-            />
-          }
-        >
-          {primaryOption.props.children}
-        </DropdownHead>
-        {this.state.isOpen && !primaryOption.props.isDisabled && (
-          <Options>{childrenAsArray}</Options>
-        )}
-      </div>
-    );
-  }
-}
+        {primaryOption.props.children}
+      </DropdownHead>
+      {isOpen && !primaryOption.props.isDisabled && (
+        <Options>{childrenAsArray}</Options>
+      )}
+    </div>
+  );
+};
+
+PrimaryActionDropdown.displayName = 'PrimaryActionDropdown';
+
+PrimaryActionDropdown.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default PrimaryActionDropdown;

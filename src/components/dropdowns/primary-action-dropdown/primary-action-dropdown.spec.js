@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../test-utils';
+import { render, fireEvent } from '../../../test-utils';
 import { CloseBoldIcon } from '../../icons';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 
@@ -126,7 +126,7 @@ describe('when only secondary option is disabled', () => {
 
 describe('when dropdown is open and body is clicked', () => {
   it('should close the dropdown', () => {
-    const { getByLabelText, queryByLabelText } = render(
+    const { container, getByLabelText, queryByLabelText } = render(
       <PrimaryActionDropdown>
         <Option iconLeft={<CloseBoldIcon />} onClick={() => {}}>
           Primary Action
@@ -141,8 +141,8 @@ describe('when dropdown is open and body is clicked', () => {
     getByLabelText('Open Dropdown').click();
     expect(getByLabelText('Secondary Action')).toBeInTheDocument();
 
-    // click on doucment body
-    document.body.click();
+    // click on document body
+    fireEvent.click(container);
 
     // it should close the dropdown
     expect(queryByLabelText('Secondary Action')).not.toBeInTheDocument();

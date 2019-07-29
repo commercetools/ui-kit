@@ -1,1 +1,1 @@
-export default from './use-toggle-state';
+export { default } from './use-toggle-state';
