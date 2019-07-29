@@ -1,5 +1,13 @@
 {
   "trailingComma": "es5",
   "singleQuote": true,
-  "parser": "babel"
+  "parser": "babel",
+  "overrides": [
+    {
+      "files": "*.ts",
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
 }
