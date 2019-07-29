@@ -36,9 +36,10 @@ const DateInput = props => {
   );
   const inputRef = React.useRef();
 
+  const { onChange } = props;
   const emit = React.useCallback(
     value =>
-      props.onChange({
+      onChange({
         target: {
           id: props.id,
           name: props.name,
@@ -47,7 +48,7 @@ const DateInput = props => {
           value: value || '',
         },
       }),
-    [props.id, props.name]
+    [onChange, props.id, props.name]
   );
 
   const handleChange = React.useCallback(
@@ -55,18 +56,19 @@ const DateInput = props => {
       inputRef.current.setSelectionRange(0, 100);
       emit(date);
     },
-    [inputRef]
+    [inputRef, emit]
   );
 
+  const { onBlur } = props;
   const handleBlur = React.useCallback(() => {
-    if (props.onBlur)
-      props.onBlur({
+    if (onBlur)
+      onBlur({
         target: {
           id: props.id,
           name: props.name,
         },
       });
-  }, [props.id, props.name]);
+  }, [onBlur, props.id, props.name]);
 
   const showToday = () => {
     const today = getToday();
