@@ -225,7 +225,6 @@ const PrimaryActionDropdown = props => {
     },
     [ref]
   );
-
   React.useEffect(() => {
     window.addEventListener('click', handleGlobalClick);
     return () => {
@@ -237,6 +236,21 @@ const PrimaryActionDropdown = props => {
   const primaryOption =
     childrenAsArray.find(option => !option.props.isDisabled) ||
     childrenAsArray[0];
+
+  const { onClick } = primaryOption.props;
+  const handleClickOnHead = React.useCallback(
+    event => {
+      if (isOpen) {
+        setIsOpen(false);
+      } else {
+        onClick(event);
+      }
+    },
+    [isOpen, onClick]
+  );
+  const handleClickOnChevron = React.useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
 
   invariant(
     childrenAsArray.length > 1,
@@ -254,19 +268,11 @@ const PrimaryActionDropdown = props => {
       <DropdownHead
         iconLeft={primaryOption.props.iconLeft}
         isDisabled={primaryOption.props.isDisabled}
-        onClick={isOpen ? () => setIsOpen(false) : primaryOption.props.onClick}
+        onClick={handleClickOnHead}
         chevron={
           <DropdownChevron
             ref={ref}
-            onClick={
-              isOpen
-                ? () => {
-                    setIsOpen(false);
-                  }
-                : () => {
-                    setIsOpen(true);
-                  }
-            }
+            onClick={handleClickOnChevron}
             isDisabled={primaryOption.props.isDisabled}
             isOpen={isOpen}
           />
