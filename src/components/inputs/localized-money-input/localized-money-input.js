@@ -138,7 +138,7 @@ const LocalizedMoneyInput = props => {
     getHasErrorOnRemainingLanguages(props.errors, props.selectedCurrency);
 
   const hasWarningInRemainingCurrencies =
-    props.hasError ||
+    props.hasWarning ||
     getHasWarningOnRemainingLanguages(props.warnings, props.selectedCurrency);
 
   if (hasErrorInRemainingCurrencies || hasWarningInRemainingCurrencies) {
