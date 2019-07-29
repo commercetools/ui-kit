@@ -26,29 +26,32 @@ const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 const TimeInput = props => {
   const id = getFieldId(props, {}, sequentialId);
   const intl = useIntl();
+  const { name, value, onBlur, onChange } = props;
 
   const emitChange = React.useCallback(
-    value => {
+    nextValue => {
       const event = {
-        target: { id, name: props.name, value },
+        target: { id, name, value: nextValue },
       };
-      props.onChange(event);
+      onChange(event);
     },
-    [id, props.name]
+    [id, name, onChange]
   );
 
   const handleBlur = React.useCallback(
     event => {
       // check formatting and reformat when necessary
-      const formattedTime = TimeInput.toLocaleTime(props.value, intl.locale);
+      const formattedTime = TimeInput.toLocaleTime(value, intl.locale);
 
-      if (formattedTime !== props.value) emitChange(formattedTime);
+      if (formattedTime !== value) emitChange(formattedTime);
 
       // forward the onBlur call
-      if (props.onBlur) props.onBlur(event);
+      if (onBlur) onBlur(event);
     },
-    [intl.locale, props.value]
+    [intl.locale, value, onBlur, emitChange]
   );
+
+  const onClear = React.useCallback(() => emitChange(''), [emitChange]);
 
   // so that it doesn't run on initial mount
   const mounted = React.useRef();
@@ -56,9 +59,9 @@ const TimeInput = props => {
     if (!mounted.current) {
       mounted.current = true;
     } else {
-      emitChange(TimeInput.toLocaleTime(props.value, intl.locale));
+      emitChange(TimeInput.toLocaleTime(value, intl.locale));
     }
-  }, [intl.locale]);
+  }, [intl.locale, emitChange, value]);
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
@@ -74,7 +77,7 @@ const TimeInput = props => {
         isDisabled={props.isDisabled}
         hasError={props.hasError}
         isReadOnly={props.isReadOnly}
-        onClear={() => emitChange('')}
+        onClear={onClear}
         placeholder={
           typeof props.placeholder === 'string'
             ? props.placeholder
