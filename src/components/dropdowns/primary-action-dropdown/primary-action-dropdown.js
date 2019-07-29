@@ -216,6 +216,7 @@ const PrimaryActionDropdown = props => {
     event => {
       const dropdownButton = ref.current;
       if (
+        dropdownButton &&
         event.target !== dropdownButton &&
         !dropdownButton.contains(event.target)
       ) {
