@@ -80,6 +80,7 @@ glob(importPath, (err, files) => {
         | 'warning'
         | 'error';
       size?: 'small' | 'medium' | 'big' | 'scale';
+      children?: never;
     };
     ${typeDeclarationStatements}
   `;

@@ -215,6 +215,7 @@ export type FlatButtonProps = {
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
+  children?: never;
 } & FlatButtonDefaultProps;
 export function FlatButton(props: FlatButtonProps): JSX.Element;
 
@@ -240,15 +241,16 @@ export type IconButtonProps = {
   isToggled?: boolean;
   // NOTE: only valid if `isToggleButton` is defined
   theme?: 'default' | 'primary' | 'info';
+  children?: never;
 } & IconButtonDefaultProps;
 export function IconButton(props: IconButtonProps): JSX.Element;
 
 // <LinkButton>
-export const LinkButtonDefaultProps: {
+export const linkButtonDefaultProps: {
   isDisabled: false;
   isExternal: false;
 };
-export type LinkButtonDefaultProps = typeof LinkButtonDefaultProps;
+export type LinkButtonDefaultProps = typeof linkButtonDefaultProps;
 export type LinkButtonProps = {
   label: string;
   to:
@@ -257,17 +259,18 @@ export type LinkButtonProps = {
   iconLeft?: React.ReactNode;
   isDisabled?: boolean;
   isExternal?: boolean;
+  children?: never;
 } & LinkButtonDefaultProps;
 export function LinkButton(props: LinkButtonProps): JSX.Element;
 
 // <PrimaryButton>
-export const PrimaryButtonDefaultProps: {
+export const primaryButtonDefaultProps: {
   type: 'button';
   size: 'big';
   isToggleButton: false;
   tone: 'primary';
 };
-export type PrimaryButtonDefaultProps = typeof PrimaryButtonDefaultProps;
+export type PrimaryButtonDefaultProps = typeof primaryButtonDefaultProps;
 export type PrimaryButtonProps = {
   type?: 'submit' | 'reset' | 'button';
   label: string;
@@ -281,16 +284,17 @@ export type PrimaryButtonProps = {
   onClick?: (event: React.SyntheticEvent) => void;
   size?: 'big' | 'small';
   tone?: 'urgent' | 'primary';
+  children?: never;
 } & PrimaryButtonDefaultProps;
 export function PrimaryButton(props: PrimaryButtonProps): JSX.Element;
 
 // <SecondaryButton>
-export const SecondaryButtonDefaultProps: {
+export const secondaryButtonDefaultProps: {
   type: 'button';
   theme: 'default';
   isToggleButton: false;
 };
-export type SecondaryButtonDefaultProps = typeof SecondaryButtonDefaultProps;
+export type SecondaryButtonDefaultProps = typeof secondaryButtonDefaultProps;
 export type SecondaryButtonProps = {
   // NOTE: only used when `linkTo` is not defined
   type?: 'submit' | 'reset' | 'button';
@@ -308,16 +312,17 @@ export type SecondaryButtonProps = {
   linkTo?:
     | string
     | { pathname: string; search?: string; query?: Record<string, string> };
+  children?: never;
 } & SecondaryButtonDefaultProps;
 export function SecondaryButton(props: SecondaryButtonProps): JSX.Element;
 
 // <SecondaryIconButton>
-export const SecondaryIconButtonDefaultProps: {
+export const secondaryIconButtonDefaultProps: {
   color: 'solid';
   type: 'button';
   isDisabled: false;
 };
-export type SecondaryIconButtonDefaultProps = typeof SecondaryIconButtonDefaultProps;
+export type SecondaryIconButtonDefaultProps = typeof secondaryIconButtonDefaultProps;
 export type SecondaryIconButtonProps = {
   // NOTE: only used when `linkTo` is not defined
   type?: 'submit' | 'reset' | 'button';
@@ -326,7 +331,75 @@ export type SecondaryIconButtonProps = {
   label: string;
   onClick: (event: React.SyntheticEvent) => void;
   isDisabled?: boolean;
+  children?: never;
 } & SecondaryIconButtonDefaultProps;
 export function SecondaryIconButton(
   props: SecondaryIconButtonProps
 ): JSX.Element;
+
+// <Card>
+export const cardDefaultProps: {
+  type: 'raised';
+  theme: 'light';
+};
+export type CardDefaultProps = typeof cardDefaultProps;
+export type CardProps = {
+  className?: string;
+  type?: 'raised' | 'flat';
+  theme?: 'light' | 'dark';
+  children: React.ReactNode;
+} & CardDefaultProps;
+export function Card(props: CardProps): JSX.Element;
+
+// <Collapsible>
+export const collapsibleDefaultProps: {
+  isDefaultClosed: false;
+};
+export type CollapsibleDefaultProps = typeof collapsibleDefaultProps;
+export type CollapsibleRenderProps = {
+  isOpen: boolean;
+  toggle: () => void;
+};
+export type CollapsibleProps = {
+  isDefaultClosed?: boolean;
+  isClosed?: boolean;
+  // NOTE: required when `isClosed` is defined
+  onToggle?: () => void;
+  children: (renderProps: CollapsibleRenderProps) => React.ReactNode;
+} & CollapsibleDefaultProps;
+export function Collapsible(props: CollapsibleProps): JSX.Element;
+
+// <CollapsibleMotion>
+export const collapsibleMotionDefaultProps: {
+  isDefaultClosed: false;
+};
+export type CollapsibleMotionDefaultProps = typeof collapsibleMotionDefaultProps;
+export type CollapsibleMotionRenderProps = {
+  isOpen: boolean;
+  containerStyles: React.CSSProperties;
+  toggle: () => void;
+  registerContentNode: React.RefObject<HTMLElement>;
+};
+export type CollapsibleMotionProps = {
+  isOpen: boolean;
+  onToggle: () => void;
+  children: (renderProps: CollapsibleMotionRenderProps) => React.ReactNode;
+} & CollapsibleMotionDefaultProps;
+export function CollapsibleMotion(props: CollapsibleMotionProps): JSX.Element;
+
+// <ConstraintsHorizontal>
+export const constraintsHorizontalDefaultProps: {
+  constraint: 'scale';
+};
+export type ConstraintsHorizontalDefaultProps = typeof constraintsHorizontalDefaultProps;
+export type ConstraintsHorizontalProps = {
+  constraint?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
+  children: React.ReactNode;
+} & ConstraintsHorizontalDefaultProps;
+export function ConstraintsHorizontal(
+  props: ConstraintsHorizontalProps
+): JSX.Element;
+
+export type Constraints = {
+  Horizontal: ReturnType<typeof ConstraintsHorizontal>;
+};
