@@ -103,7 +103,7 @@ it('should call onBlur when input loses focus', () => {
 });
 
 describe('when input is collapsed', () => {
-  it('should not show only the `selectedCurrency`', () => {
+  it('should show only the `selectedCurrency`', () => {
     const { getByLabelText, queryByLabelText } = renderLocalizedMoneyInput({
       name: 'foo',
       selectedCurrency: 'CAD',
