@@ -266,7 +266,6 @@ Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,
   isItalic: PropTypes.bool,
-  isInline: PropTypes.bool,
   tone: PropTypes.oneOf([
     'primary',
     'secondary',

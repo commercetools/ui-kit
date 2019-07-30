@@ -4,6 +4,15 @@ import * as React from 'react';
 
 export const version: string;
 
+// TODO: import it from `react-intl`, however it currently fails with an error:
+//   Error: Errors in typescript@3.1 for external dependencies:
+// ../node_modules/@formatjs/intl-relativetimeformat/lib/core.d.ts(47,60): erro
+export type MessageDescriptor = {
+  id: string;
+  description?: string;
+  defaultMessage: string;
+};
+
 // <ContentNotification>
 export type ContentNotificationProps = {
   type: 'error' | 'info' | 'warning' | 'success';
@@ -77,7 +86,109 @@ export type SpacingsInlineProps = {
 } & SpacingsInlineDefaultProps;
 export function SpacingsInline(props: SpacingsInlineProps): JSX.Element;
 
+// <Spacings.Inset>
+export const spacingsInsetDefaultProps: {
+  scale: 'm';
+};
+export type SpacingsInsetDefaultProps = typeof spacingsInsetDefaultProps;
+export type SpacingsInsetProps = {
+  scale?: 'xs' | 's' | 'm' | 'l' | 'xl';
+  children?: React.ReactNode;
+} & SpacingsInsetDefaultProps;
+export function SpacingsInset(props: SpacingsInsetProps): JSX.Element;
+
+// <Spacings.InsetSquish>
+export const spacingsInsetSquishDefaultProps: {
+  scale: 'm';
+};
+export type SpacingsInsetSquishDefaultProps = typeof spacingsInsetSquishDefaultProps;
+export type SpacingsInsetSquishProps = {
+  scale?: 's' | 'm' | 'l';
+  children?: React.ReactNode;
+} & SpacingsInsetSquishDefaultProps;
+export function SpacingsInsetSquish(
+  props: SpacingsInsetSquishProps
+): JSX.Element;
+
 export type Spacings = {
   Stack: ReturnType<typeof SpacingsStack>;
   Inline: ReturnType<typeof SpacingsInline>;
+  Inset: ReturnType<typeof SpacingsInset>;
+  InsetSquish: ReturnType<typeof SpacingsInsetSquish>;
+};
+
+// <Text.Headline>
+export type TextHeadlineProps = {
+  as: 'h1' | 'h2' | 'h3';
+  title?: string;
+  truncate?: boolean;
+  children?: React.ReactNode;
+  intlMessage?: MessageDescriptor;
+};
+export function TextHeadline(props: TextHeadlineProps): JSX.Element;
+
+// <Text.Subeadline>
+export type TextSubeadlineProps = {
+  as: 'h4' | 'h5';
+  title?: string;
+  truncate?: boolean;
+  isBold?: boolean;
+  tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
+  children?: React.ReactNode;
+  intlMessage?: MessageDescriptor;
+};
+export function TextSubheadline(props: TextSubeadlineProps): JSX.Element;
+
+// <Text.Wrap>
+export type TextWrapProps = {
+  title?: string;
+  children?: React.ReactNode;
+  intlMessage?: MessageDescriptor;
+};
+export function TextWrap(props: TextWrapProps): JSX.Element;
+
+// <Text.Body>
+export type TextBodyProps = {
+  as: 'span' | 'p';
+  title?: string;
+  truncate?: boolean;
+  isBold?: boolean;
+  isItalic?: boolean;
+  tone?:
+    | 'primary'
+    | 'secondary'
+    | 'information'
+    | 'positive'
+    | 'negative'
+    | 'inverted';
+  children?: React.ReactNode;
+  intlMessage?: MessageDescriptor;
+};
+export function TextBody(props: TextBodyProps): JSX.Element;
+
+// <Text.Detail>
+export type TextDetailProps = {
+  title?: string;
+  truncate?: boolean;
+  isBold?: boolean;
+  isItalic?: boolean;
+  tone?:
+    | 'primary'
+    | 'secondary'
+    | 'information'
+    | 'positive'
+    | 'negative'
+    | 'warning'
+    | 'inverted';
+  children?: React.ReactNode;
+  intlMessage?: MessageDescriptor;
+};
+export function TextDetail(props: TextDetailProps): JSX.Element;
+
+export type Text = {
+  Headline: ReturnType<typeof TextHeadline>;
+  Subheadline: ReturnType<typeof TextSubheadline>;
+  Wrap: ReturnType<typeof TextWrap>;
+  Body: ReturnType<typeof TextBody>;
+  Detail: ReturnType<typeof TextDetail>;
 };
