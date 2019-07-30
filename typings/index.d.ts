@@ -16,6 +16,9 @@ export type MessageDescriptor = {
 // Design tokens - customProperties
 export { default as customProperties } from '../materials/custom-properties';
 
+// Icons
+export * from './icons';
+
 // <ContentNotification>
 export type ContentNotificationProps = {
   type: 'error' | 'info' | 'warning' | 'success';
@@ -196,5 +199,134 @@ export type Text = {
   Detail: ReturnType<typeof TextDetail>;
 };
 
-// <XXXIcon>
-export * from './icons';
+// <FlatButton>
+export const flatButtonDefaultProps: {
+  tone: 'primary';
+  type: 'button';
+  iconPosition: 'left';
+  isDisabled: false;
+};
+export type FlatButtonDefaultProps = typeof flatButtonDefaultProps;
+export type FlatButtonProps = {
+  tone?: 'primary' | 'secondary';
+  type?: 'submit' | 'reset' | 'button';
+  label: string;
+  onClick: (event: React.SyntheticEvent) => void;
+  icon?: React.ReactNode;
+  iconPosition?: 'left' | 'right';
+  isDisabled?: boolean;
+} & FlatButtonDefaultProps;
+export function FlatButton(props: FlatButtonProps): JSX.Element;
+
+// <IconButton>
+export const iconButtonDefaultProps: {
+  type: 'button';
+  theme: 'default';
+  size: 'big';
+  shape: 'round';
+  isToggleButton: false;
+};
+export type IconButtonDefaultProps = typeof iconButtonDefaultProps;
+export type IconButtonProps = {
+  type?: 'submit' | 'reset' | 'button';
+  label: string;
+  icon?: React.ReactNode;
+  isDisabled?: boolean;
+  onClick?: (event: React.SyntheticEvent) => void;
+  shape?: 'round' | 'square';
+  size?: 'small' | 'medium' | 'big';
+  isToggleButton?: boolean;
+  // NOTE: only required if `isToggleButton` is defined
+  isToggled?: boolean;
+  // NOTE: only valid if `isToggleButton` is defined
+  theme?: 'default' | 'primary' | 'info';
+} & IconButtonDefaultProps;
+export function IconButton(props: IconButtonProps): JSX.Element;
+
+// <LinkButton>
+export const LinkButtonDefaultProps: {
+  isDisabled: false;
+  isExternal: false;
+};
+export type LinkButtonDefaultProps = typeof LinkButtonDefaultProps;
+export type LinkButtonProps = {
+  label: string;
+  to:
+    | string
+    | { pathname: string; search?: string; query?: Record<string, string> };
+  iconLeft?: React.ReactNode;
+  isDisabled?: boolean;
+  isExternal?: boolean;
+} & LinkButtonDefaultProps;
+export function LinkButton(props: LinkButtonProps): JSX.Element;
+
+// <PrimaryButton>
+export const PrimaryButtonDefaultProps: {
+  type: 'button';
+  size: 'big';
+  isToggleButton: false;
+  tone: 'primary';
+};
+export type PrimaryButtonDefaultProps = typeof PrimaryButtonDefaultProps;
+export type PrimaryButtonProps = {
+  type?: 'submit' | 'reset' | 'button';
+  label: string;
+  // Any valid HTML attributes to be passed to the button element
+  buttonAttributes?: { [key: string]: string };
+  iconLeft?: React.ReactNode;
+  isToggleButton?: boolean;
+  // NOTE: only required if `isToggleButton` is defined
+  isToggled?: boolean;
+  isDisabled?: boolean;
+  onClick?: (event: React.SyntheticEvent) => void;
+  size?: 'big' | 'small';
+  tone?: 'urgent' | 'primary';
+} & PrimaryButtonDefaultProps;
+export function PrimaryButton(props: PrimaryButtonProps): JSX.Element;
+
+// <SecondaryButton>
+export const SecondaryButtonDefaultProps: {
+  type: 'button';
+  theme: 'default';
+  isToggleButton: false;
+};
+export type SecondaryButtonDefaultProps = typeof SecondaryButtonDefaultProps;
+export type SecondaryButtonProps = {
+  // NOTE: only used when `linkTo` is not defined
+  type?: 'submit' | 'reset' | 'button';
+  label: string;
+  // Any valid HTML attributes to be passed to the button element
+  buttonAttributes?: { [key: string]: string };
+  iconLeft?: React.ReactNode;
+  isToggleButton?: boolean;
+  // NOTE: only required if `isToggleButton` is defined
+  isToggled?: boolean;
+  // NOTE: only valid if `isToggleButton` is defined
+  theme?: 'default' | 'info';
+  isDisabled?: boolean;
+  onClick?: (event: React.SyntheticEvent) => void;
+  linkTo?:
+    | string
+    | { pathname: string; search?: string; query?: Record<string, string> };
+} & SecondaryButtonDefaultProps;
+export function SecondaryButton(props: SecondaryButtonProps): JSX.Element;
+
+// <SecondaryIconButton>
+export const SecondaryIconButtonDefaultProps: {
+  color: 'solid';
+  type: 'button';
+  isDisabled: false;
+};
+export type SecondaryIconButtonDefaultProps = typeof SecondaryIconButtonDefaultProps;
+export type SecondaryIconButtonProps = {
+  // NOTE: only used when `linkTo` is not defined
+  type?: 'submit' | 'reset' | 'button';
+  icon: React.ReactNode;
+  color?: 'solid' | 'primary';
+  label: string;
+  onClick: (event: React.SyntheticEvent) => void;
+  isDisabled?: boolean;
+} & SecondaryIconButtonDefaultProps;
+export function SecondaryIconButton(
+  props: SecondaryIconButtonProps
+): JSX.Element;
