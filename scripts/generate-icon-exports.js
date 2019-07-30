@@ -60,7 +60,11 @@ glob(importPath, (err, files) => {
       const displayName = `${componentName}Icon`;
       return stripIndents`
         ${typeDeclaration}
-        export type ${displayName} = (props: IconProps) => JSX.Element;
+        export const ${displayName}: {
+          (props: IconProps): JSX.Element;
+          displayName: string;
+          defaultProps: Pick<IconProps, 'size'>;
+        };
       `;
     },
     ''
@@ -69,6 +73,7 @@ glob(importPath, (err, files) => {
     // This file is auto-generated using the 'generate-icon-exports.js' script
     // so any changes made to this file manually will be lost the next time the
     // script is executed
+
     export type IconProps = {
       color?:
         | 'solid'
@@ -79,13 +84,17 @@ glob(importPath, (err, files) => {
         | 'primary40'
         | 'warning'
         | 'error';
-      size?: 'small' | 'medium' | 'big' | 'scale';
+      size: 'small' | 'medium' | 'big' | 'scale';
       children?: never;
     };
+
     ${typeDeclarationStatements}
   `;
   fs.writeFileSync(
     typesExportPath,
-    prettier.format(iconTypeDeclarations, prettierConfig)
+    prettier.format(iconTypeDeclarations, {
+      ...prettierConfig,
+      parser: 'typescript',
+    })
   );
 });

@@ -66,6 +66,7 @@
     "visual-testing-app:build": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
     "visual-testing-app:build:watch": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js --watch",
     "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001",
+    "pretypecheck": "yarn prebuild",
     "typecheck": "dtslint typings"
   },
   "dependencies": {

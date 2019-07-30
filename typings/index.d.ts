@@ -24,103 +24,102 @@ export type ContentNotificationProps = {
   type: 'error' | 'info' | 'warning' | 'success';
   children: React.ReactNode;
 };
-export function ContentNotification(
-  props: ContentNotificationProps
-): JSX.Element;
+export const ContentNotification: {
+  (props: ContentNotificationProps): JSX.Element;
+  displayName: string;
+};
 
 // <Avatar>
-export const avatarDefaultProps: {
+export type AvatarProps = {
   firstName: string;
   lastName: string;
+  gravatarHash: string;
   isHighlighted: boolean;
   size: 's' | 'm' | 'l';
-};
-export type AvatarDefaultProps = typeof avatarDefaultProps;
-export type AvatarProps = {
-  firstName?: string;
-  lastName?: string;
-  gravatarHash: string;
-  isHighlighted?: boolean;
-  size?: 's' | 'm' | 'l';
   children?: never;
-} & AvatarDefaultProps;
-export function Avatar(props: AvatarProps): JSX.Element;
+};
+export const Avatar: {
+  (props: AvatarProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<
+    AvatarProps,
+    'firstName' | 'lastName' | 'isHighlighted' | 'size'
+  >;
+};
 
 // <Spacings.Stack>
-export const spacingsStackDefaultProps: {
-  scale: 's';
-  alignItems: 'stretch';
-};
-export type SpacingsStackDefaultProps = typeof spacingsStackDefaultProps;
 export type SpacingsStackProps = {
-  scale?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  children?: React.ReactNode;
-  alignItems?:
+  scale: 'xs' | 's' | 'm' | 'l' | 'xl';
+  alignItems:
     | 'stretch'
     | 'flex-start'
     | 'flex-end'
     | 'center'
     | 'flexStart'
     | 'flexEnd';
-} & SpacingsStackDefaultProps;
-export function SpacingsStack(props: SpacingsStackProps): JSX.Element;
+  children: React.ReactNode;
+};
+export const SpacingsStack: {
+  (props: SpacingsStackProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<SpacingsStackProps, 'scale' | 'alignItems'>;
+};
 
 // <Spacings.Inline>
-export const spacingsInlineDefaultProps: {
-  scale: 's';
-  alignItems: 'flex-start';
-  justifyContent: 'flex-start';
-};
-export type SpacingsInlineDefaultProps = typeof spacingsInlineDefaultProps;
 export type SpacingsInlineProps = {
-  scale?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  children?: React.ReactNode;
-  alignItems?:
+  scale: 'xs' | 's' | 'm' | 'l' | 'xl';
+  alignItems:
     | 'stretch'
     | 'flex-start'
     | 'flex-end'
     | 'center'
     | 'flexStart'
     | 'flexEnd';
-  justifyContent?:
+  justifyContent:
     | 'flex-start'
     | 'flex-end'
     | 'center'
     | 'space-between'
     | 'space-around'
     | 'space-evenly';
-} & SpacingsInlineDefaultProps;
-export function SpacingsInline(props: SpacingsInlineProps): JSX.Element;
+  children: React.ReactNode;
+};
+export const SpacingsInline: {
+  (props: SpacingsInlineProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<
+    SpacingsInlineProps,
+    'scale' | 'alignItems' | 'justifyContent'
+  >;
+};
 
 // <Spacings.Inset>
-export const spacingsInsetDefaultProps: {
-  scale: 'm';
-};
-export type SpacingsInsetDefaultProps = typeof spacingsInsetDefaultProps;
 export type SpacingsInsetProps = {
-  scale?: 'xs' | 's' | 'm' | 'l' | 'xl';
-  children?: React.ReactNode;
-} & SpacingsInsetDefaultProps;
-export function SpacingsInset(props: SpacingsInsetProps): JSX.Element;
+  scale: 'xs' | 's' | 'm' | 'l' | 'xl';
+  children: React.ReactNode;
+};
+export const SpacingsInset: {
+  (props: SpacingsInsetProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<SpacingsInsetProps, 'scale'>;
+};
 
 // <Spacings.InsetSquish>
-export const spacingsInsetSquishDefaultProps: {
-  scale: 'm';
-};
-export type SpacingsInsetSquishDefaultProps = typeof spacingsInsetSquishDefaultProps;
 export type SpacingsInsetSquishProps = {
-  scale?: 's' | 'm' | 'l';
-  children?: React.ReactNode;
-} & SpacingsInsetSquishDefaultProps;
-export function SpacingsInsetSquish(
-  props: SpacingsInsetSquishProps
-): JSX.Element;
+  scale: 's' | 'm' | 'l';
+  children: React.ReactNode;
+};
+export const SpacingsInsetSquish: {
+  (props: SpacingsInsetSquishProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<SpacingsInsetSquishProps, 'scale'>;
+};
 
-export type Spacings = {
-  Stack: ReturnType<typeof SpacingsStack>;
-  Inline: ReturnType<typeof SpacingsInline>;
-  Inset: ReturnType<typeof SpacingsInset>;
-  InsetSquish: ReturnType<typeof SpacingsInsetSquish>;
+export const Spacings: {
+  Stack: typeof SpacingsStack;
+  Inline: typeof SpacingsInline;
+  Inset: typeof SpacingsInset;
+  InsetSquish: typeof SpacingsInsetSquish;
 };
 
 // <Text.Headline>
@@ -131,7 +130,10 @@ export type TextHeadlineProps = {
   children?: React.ReactNode;
   intlMessage?: MessageDescriptor;
 };
-export function TextHeadline(props: TextHeadlineProps): JSX.Element;
+export const TextHeadline: {
+  (props: TextHeadlineProps): JSX.Element;
+  displayName: string;
+};
 
 // <Text.Subeadline>
 export type TextSubeadlineProps = {
@@ -143,7 +145,10 @@ export type TextSubeadlineProps = {
   children?: React.ReactNode;
   intlMessage?: MessageDescriptor;
 };
-export function TextSubheadline(props: TextSubeadlineProps): JSX.Element;
+export const TextSubheadline: {
+  (props: TextSubeadlineProps): JSX.Element;
+  displayName: string;
+};
 
 // <Text.Wrap>
 export type TextWrapProps = {
@@ -151,7 +156,10 @@ export type TextWrapProps = {
   children?: React.ReactNode;
   intlMessage?: MessageDescriptor;
 };
-export function TextWrap(props: TextWrapProps): JSX.Element;
+export const TextWrap: {
+  (props: TextWrapProps): JSX.Element;
+  displayName: string;
+};
 
 // <Text.Body>
 export type TextBodyProps = {
@@ -170,7 +178,10 @@ export type TextBodyProps = {
   children?: React.ReactNode;
   intlMessage?: MessageDescriptor;
 };
-export function TextBody(props: TextBodyProps): JSX.Element;
+export const TextBody: {
+  (props: TextBodyProps): JSX.Element;
+  displayName: string;
+};
 
 // <Text.Detail>
 export type TextDetailProps = {
@@ -189,191 +200,181 @@ export type TextDetailProps = {
   children?: React.ReactNode;
   intlMessage?: MessageDescriptor;
 };
-export function TextDetail(props: TextDetailProps): JSX.Element;
+export const TextDetail: {
+  (props: TextDetailProps): JSX.Element;
+  displayName: string;
+};
 
-export type Text = {
-  Headline: ReturnType<typeof TextHeadline>;
-  Subheadline: ReturnType<typeof TextSubheadline>;
-  Wrap: ReturnType<typeof TextWrap>;
-  Body: ReturnType<typeof TextBody>;
-  Detail: ReturnType<typeof TextDetail>;
+export const Text: {
+  Headline: typeof TextHeadline;
+  Subheadline: typeof TextSubheadline;
+  Wrap: typeof TextWrap;
+  Body: typeof TextBody;
+  Detail: typeof TextDetail;
 };
 
 // <FlatButton>
-export const flatButtonDefaultProps: {
-  tone: 'primary';
-  type: 'button';
-  iconPosition: 'left';
-  isDisabled: false;
-};
-export type FlatButtonDefaultProps = typeof flatButtonDefaultProps;
 export type FlatButtonProps = {
-  tone?: 'primary' | 'secondary';
-  type?: 'submit' | 'reset' | 'button';
+  tone: 'primary' | 'secondary';
+  type: 'submit' | 'reset' | 'button';
   label: string;
   onClick: (event: React.SyntheticEvent) => void;
   icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-  isDisabled?: boolean;
+  iconPosition: 'left' | 'right';
+  isDisabled: boolean;
   children?: never;
-} & FlatButtonDefaultProps;
-export function FlatButton(props: FlatButtonProps): JSX.Element;
+};
+export const FlatButton: {
+  (props: FlatButtonProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<
+    FlatButtonProps,
+    'tone' | 'type' | 'iconPosition' | 'isDisabled'
+  >;
+};
 
 // <IconButton>
-export const iconButtonDefaultProps: {
-  type: 'button';
-  theme: 'default';
-  size: 'big';
-  shape: 'round';
-  isToggleButton: false;
-};
-export type IconButtonDefaultProps = typeof iconButtonDefaultProps;
 export type IconButtonProps = {
-  type?: 'submit' | 'reset' | 'button';
+  type: 'submit' | 'reset' | 'button';
   label: string;
   icon?: React.ReactNode;
   isDisabled?: boolean;
   onClick?: (event: React.SyntheticEvent) => void;
-  shape?: 'round' | 'square';
-  size?: 'small' | 'medium' | 'big';
-  isToggleButton?: boolean;
+  shape: 'round' | 'square';
+  size: 'small' | 'medium' | 'big';
+  isToggleButton: boolean;
   // NOTE: only required if `isToggleButton` is defined
   isToggled?: boolean;
   // NOTE: only valid if `isToggleButton` is defined
-  theme?: 'default' | 'primary' | 'info';
+  theme: 'default' | 'primary' | 'info';
   children?: never;
-} & IconButtonDefaultProps;
-export function IconButton(props: IconButtonProps): JSX.Element;
+};
+export const IconButton: {
+  (props: IconButtonProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<
+    IconButtonProps,
+    'type' | 'theme' | 'size' | 'shape' | 'isToggleButton'
+  >;
+};
 
 // <LinkButton>
-export const linkButtonDefaultProps: {
-  isDisabled: false;
-  isExternal: false;
-};
-export type LinkButtonDefaultProps = typeof linkButtonDefaultProps;
 export type LinkButtonProps = {
   label: string;
   to:
     | string
     | { pathname: string; search?: string; query?: Record<string, string> };
   iconLeft?: React.ReactNode;
-  isDisabled?: boolean;
-  isExternal?: boolean;
+  isDisabled: boolean;
+  isExternal: boolean;
   children?: never;
-} & LinkButtonDefaultProps;
-export function LinkButton(props: LinkButtonProps): JSX.Element;
+};
+export const LinkButton: {
+  (props: LinkButtonProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<LinkButtonProps, 'isDisabled' | 'isExternal'>;
+};
 
 // <PrimaryButton>
-export const primaryButtonDefaultProps: {
-  type: 'button';
-  size: 'big';
-  isToggleButton: false;
-  tone: 'primary';
-};
-export type PrimaryButtonDefaultProps = typeof primaryButtonDefaultProps;
 export type PrimaryButtonProps = {
-  type?: 'submit' | 'reset' | 'button';
+  type: 'submit' | 'reset' | 'button';
   label: string;
   // Any valid HTML attributes to be passed to the button element
   buttonAttributes?: { [key: string]: string };
   iconLeft?: React.ReactNode;
-  isToggleButton?: boolean;
+  isToggleButton: boolean;
   // NOTE: only required if `isToggleButton` is defined
   isToggled?: boolean;
   isDisabled?: boolean;
   onClick?: (event: React.SyntheticEvent) => void;
-  size?: 'big' | 'small';
-  tone?: 'urgent' | 'primary';
+  size: 'big' | 'small';
+  tone: 'urgent' | 'primary';
   children?: never;
-} & PrimaryButtonDefaultProps;
-export function PrimaryButton(props: PrimaryButtonProps): JSX.Element;
+};
+export const PrimaryButton: {
+  (props: PrimaryButtonProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<
+    PrimaryButtonProps,
+    'type' | 'size' | 'isToggleButton' | 'tone'
+  >;
+};
 
 // <SecondaryButton>
-export const secondaryButtonDefaultProps: {
-  type: 'button';
-  theme: 'default';
-  isToggleButton: false;
-};
-export type SecondaryButtonDefaultProps = typeof secondaryButtonDefaultProps;
 export type SecondaryButtonProps = {
   // NOTE: only used when `linkTo` is not defined
-  type?: 'submit' | 'reset' | 'button';
+  type: 'submit' | 'reset' | 'button';
   label: string;
   // Any valid HTML attributes to be passed to the button element
   buttonAttributes?: { [key: string]: string };
   iconLeft?: React.ReactNode;
-  isToggleButton?: boolean;
+  isToggleButton: boolean;
   // NOTE: only required if `isToggleButton` is defined
   isToggled?: boolean;
   // NOTE: only valid if `isToggleButton` is defined
-  theme?: 'default' | 'info';
+  theme: 'default' | 'info';
   isDisabled?: boolean;
   onClick?: (event: React.SyntheticEvent) => void;
   linkTo?:
     | string
     | { pathname: string; search?: string; query?: Record<string, string> };
   children?: never;
-} & SecondaryButtonDefaultProps;
-export function SecondaryButton(props: SecondaryButtonProps): JSX.Element;
+};
+export const SecondaryButton: {
+  (props: SecondaryButtonProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<SecondaryButtonProps, 'type' | 'theme' | 'isToggleButton'>;
+};
 
 // <SecondaryIconButton>
-export const secondaryIconButtonDefaultProps: {
-  color: 'solid';
-  type: 'button';
-  isDisabled: false;
-};
-export type SecondaryIconButtonDefaultProps = typeof secondaryIconButtonDefaultProps;
 export type SecondaryIconButtonProps = {
   // NOTE: only used when `linkTo` is not defined
-  type?: 'submit' | 'reset' | 'button';
+  type: 'submit' | 'reset' | 'button';
   icon: React.ReactNode;
-  color?: 'solid' | 'primary';
+  color: 'solid' | 'primary';
   label: string;
   onClick: (event: React.SyntheticEvent) => void;
-  isDisabled?: boolean;
+  isDisabled: boolean;
   children?: never;
-} & SecondaryIconButtonDefaultProps;
-export function SecondaryIconButton(
-  props: SecondaryIconButtonProps
-): JSX.Element;
+};
+export const SecondaryIconButton: {
+  (props: SecondaryIconButtonProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<SecondaryIconButtonProps, 'color' | 'type' | 'isDisabled'>;
+};
 
 // <Card>
-export const cardDefaultProps: {
-  type: 'raised';
-  theme: 'light';
-};
-export type CardDefaultProps = typeof cardDefaultProps;
 export type CardProps = {
   className?: string;
-  type?: 'raised' | 'flat';
-  theme?: 'light' | 'dark';
+  type: 'raised' | 'flat';
+  theme: 'light' | 'dark';
   children: React.ReactNode;
-} & CardDefaultProps;
-export function Card(props: CardProps): JSX.Element;
+};
+export const Card: {
+  (props: CardProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<CardProps, 'type' | 'theme'>;
+};
 
 // <Collapsible>
-export const collapsibleDefaultProps: {
-  isDefaultClosed: false;
-};
-export type CollapsibleDefaultProps = typeof collapsibleDefaultProps;
 export type CollapsibleRenderProps = {
   isOpen: boolean;
   toggle: () => void;
 };
 export type CollapsibleProps = {
-  isDefaultClosed?: boolean;
+  isDefaultClosed: boolean;
   isClosed?: boolean;
   // NOTE: required when `isClosed` is defined
   onToggle?: () => void;
   children: (renderProps: CollapsibleRenderProps) => React.ReactNode;
-} & CollapsibleDefaultProps;
-export function Collapsible(props: CollapsibleProps): JSX.Element;
+};
+export const Collapsible: {
+  (props: CollapsibleProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<CollapsibleProps, 'isDefaultClosed'>;
+};
 
 // <CollapsibleMotion>
-export const collapsibleMotionDefaultProps: {
-  isDefaultClosed: false;
-};
-export type CollapsibleMotionDefaultProps = typeof collapsibleMotionDefaultProps;
 export type CollapsibleMotionRenderProps = {
   isOpen: boolean;
   containerStyles: React.CSSProperties;
@@ -381,25 +382,50 @@ export type CollapsibleMotionRenderProps = {
   registerContentNode: React.RefObject<HTMLElement>;
 };
 export type CollapsibleMotionProps = {
+  isDefaultClosed: boolean;
   isOpen: boolean;
   onToggle: () => void;
   children: (renderProps: CollapsibleMotionRenderProps) => React.ReactNode;
-} & CollapsibleMotionDefaultProps;
-export function CollapsibleMotion(props: CollapsibleMotionProps): JSX.Element;
+};
+export const CollapsibleMotion: {
+  (props: CollapsibleMotionProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<CollapsibleMotionProps, 'isDefaultClosed'>;
+};
 
 // <ConstraintsHorizontal>
-export const constraintsHorizontalDefaultProps: {
-  constraint: 'scale';
-};
-export type ConstraintsHorizontalDefaultProps = typeof constraintsHorizontalDefaultProps;
 export type ConstraintsHorizontalProps = {
-  constraint?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
+  constraint: 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
   children: React.ReactNode;
-} & ConstraintsHorizontalDefaultProps;
-export function ConstraintsHorizontal(
-  props: ConstraintsHorizontalProps
-): JSX.Element;
+};
+export const ConstraintsHorizontal: {
+  (props: ConstraintsHorizontalProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<ConstraintsHorizontalProps, 'constraint'>;
+};
 
-export type Constraints = {
-  Horizontal: ReturnType<typeof ConstraintsHorizontal>;
+export const Constraints: {
+  Horizontal: typeof ConstraintsHorizontal;
+};
+
+// <PrimaryActionDropdown>
+export type PrimaryActionDropdownProps = {
+  children: React.ReactNode;
+};
+export const PrimaryActionDropdown: {
+  (props: PrimaryActionDropdownProps): JSX.Element;
+  displayName: string;
+};
+
+// <PrimaryActionDropdownOption>
+export type PrimaryActionDropdownOptionProps = {
+  onClick: (event: React.SyntheticEvent) => void;
+  isDisabled: boolean;
+  iconLeft: React.ReactNode;
+  children: string;
+};
+export const PrimaryActionDropdownOption: {
+  (props: PrimaryActionDropdownOptionProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<PrimaryActionDropdownOptionProps, 'isDisabled'>;
 };
