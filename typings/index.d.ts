@@ -195,3 +195,6 @@ export type Text = {
   Body: ReturnType<typeof TextBody>;
   Detail: ReturnType<typeof TextDetail>;
 };
+
+// <XXXIcon>
+export * from './icons';
