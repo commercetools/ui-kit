@@ -13,6 +13,9 @@ export type MessageDescriptor = {
   defaultMessage: string;
 };
 
+// Design tokens - customProperties
+export { default as customProperties } from '../materials/custom-properties';
+
 // <ContentNotification>
 export type ContentNotificationProps = {
   type: 'error' | 'info' | 'warning' | 'success';
