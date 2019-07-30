@@ -11,36 +11,11 @@ const directionWrapper = {
   inline: Spacings.Inline,
 };
 
-class Group extends React.PureComponent {
-  static displayName = 'RadioGroup';
-  static propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    isDisabled: PropTypes.bool,
-    isReadOnly: PropTypes.bool,
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
-    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
-    direction: PropTypes.oneOf(Object.keys(directionWrapper)),
-    directionProps: PropTypes.object,
-    children: PropTypes.node.isRequired,
-  };
-  static defaultProps = {
-    horizontalConstraint: 'scale',
-    direction: 'stack',
-    directionProps: {
-      scale: 'm',
-    },
-  };
-
-  componentDidMount() {
+const Group = props => {
+  React.useEffect(() => {
     // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
-    const childrenAsArray = React.Children.toArray(this.props.children);
+    const childrenAsArray = React.Children.toArray(props.children);
     const optionChildrenAsArray = childrenAsArray.filter(
       child => child.type.displayName === Option.displayName
     );
@@ -49,55 +24,75 @@ class Group extends React.PureComponent {
       optionChildrenAsArray.length > 0,
       'Radio.Group must contain at least one Radio.Option'
     );
-  }
+  }, [props.children]);
 
-  render() {
-    const optionElements = React.Children.map(
-      this.props.children,
-      (child, index) => {
-        // NOTE: Allowing to intersperse other elements than `Option`.
-        if (child && child.type.displayName === Option.displayName) {
-          return React.cloneElement(child, {
-            id: this.props.id && `${this.props.id}-${index}`,
-            name: this.props.name,
-            isChecked: this.props.value === child.props.value,
-            isDisabled: child.props.isDisabled || this.props.isDisabled,
-            isReadOnly: this.props.isReadOnly,
-            hasError: this.props.hasError,
-            hasWarning: this.props.hasWarning,
-            onChange: this.props.onChange,
-            onFocus: this.props.onFocus,
-            onBlur: this.props.onBlur,
-          });
-        }
-        return child;
-      }
-    );
-    if (this.props.direction === 'inline') {
-      return (
-        <div id={this.props.id}>
-          <Spacings.Inline
-            {...this.props.directionProps}
-            {...filterDataAttributes(this.props)}
-          >
-            {optionElements}
-          </Spacings.Inline>
-        </div>
-      );
+  const optionElements = React.Children.map(props.children, (child, index) => {
+    // NOTE: Allowing to intersperse other elements than `Option`.
+    if (child && child.type.displayName === Option.displayName) {
+      return React.cloneElement(child, {
+        id: props.id && `${props.id}-${index}`,
+        name: props.name,
+        isChecked: props.value === child.props.value,
+        isDisabled: child.props.isDisabled || props.isDisabled,
+        isReadOnly: props.isReadOnly,
+        hasError: props.hasError,
+        hasWarning: props.hasWarning,
+        onChange: props.onChange,
+        onFocus: props.onFocus,
+        onBlur: props.onBlur,
+      });
     }
+    return child;
+  });
+  if (props.direction === 'inline') {
     return (
-      <div id={this.props.id}>
-        <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-          <Spacings.Stack
-            {...this.props.directionProps}
-            {...filterDataAttributes(this.props)}
-          >
-            {optionElements}
-          </Spacings.Stack>
-        </Constraints.Horizontal>
+      <div id={props.id}>
+        <Spacings.Inline
+          {...props.directionProps}
+          {...filterDataAttributes(props)}
+        >
+          {optionElements}
+        </Spacings.Inline>
       </div>
     );
   }
-}
+  return (
+    <div id={props.id}>
+      <Constraints.Horizontal constraint={props.horizontalConstraint}>
+        <Spacings.Stack
+          {...props.directionProps}
+          {...filterDataAttributes(props)}
+        >
+          {optionElements}
+        </Spacings.Stack>
+      </Constraints.Horizontal>
+    </div>
+  );
+};
+
+Group.displayName = 'RadioGroup';
+Group.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
+  horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  direction: PropTypes.oneOf(Object.keys(directionWrapper)),
+  directionProps: PropTypes.object,
+  children: PropTypes.node.isRequired,
+};
+Group.defaultProps = {
+  horizontalConstraint: 'scale',
+  direction: 'stack',
+  directionProps: {
+    scale: 'm',
+  },
+};
 
 export default Group;
