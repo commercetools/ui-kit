@@ -189,6 +189,7 @@ export type TextDetailProps = {
   truncate?: boolean;
   isBold?: boolean;
   isItalic?: boolean;
+  isInline?: boolean;
   tone?:
     | 'primary'
     | 'secondary'
