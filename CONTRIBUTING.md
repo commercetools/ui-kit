@@ -231,3 +231,48 @@ These are informal steps we suggest you to follow when adding a new component.
 - [Kanban Board](https://jira.commercetools.com/secure/RapidBoard.jspa?rapidView=138&view=detail&selectedIssue=MCD-1104)
 - [Component documentation template](https://wiki.commercetools.com/display/DD/2.+UI+Kit+-+Components+Building+Documentation+Guide)
 - [Component documentation list](https://wiki.commercetools.com/display/DD/3.+Components+-+Documentations)
+
+## How to add TypeScript declarations for components
+
+At the moment we provide type declarations in [`./typings`](./typings) using a tool called [dtslint](https://github.com/microsoft/dtslint).
+
+These typings **are maintained manually** as the codebase hasn't been migrated to TypeScript yet.
+
+Adding a type declaration for a component is quite straightforward: you need to define the type for _props_ and the component signature. Let's have a look at an example.
+
+Given a `ControlledCounter` component
+
+```js
+// controlled-counter.js
+const ControlledCounter = props => (
+  <div>
+    <div>{`Count: ${props.count}`}</div>
+    <button onClick={props.onIncrement}>{'Increment'}</button>
+  </div>
+);
+ControlledCounter.displayName = 'ControlledCounter';
+ControlledCounter.propTypes = {
+  count: PropTypes.number,
+  onIncrement: PropTypes.func.isRequired,
+};
+ControlledCounter.defaultProps = {
+  count: 0,
+};
+```
+
+The type declarations for this component would be
+
+```ts
+// index.d.ts
+export type ControlledCounterProps = {
+  count: number;
+  onIncrement: (event: React.SyntheticEvent) => void;
+};
+export const ControlledCounter: {
+  (props: ControlledCounterProps): JSX.Element;
+  displayName: string;
+  defaultProps: Pick<ControlledCounterProps, 'count'>;
+};
+```
+
+That's it!
