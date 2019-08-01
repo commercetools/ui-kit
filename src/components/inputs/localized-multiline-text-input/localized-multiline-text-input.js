@@ -22,6 +22,28 @@ import LanguagesControl from './languages-control';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
+const expandedTranslationsReducer = (state, action) => {
+  switch (action.type) {
+    case 'toggle':
+      return {
+        ...state,
+        [action.language]: !state[action.language],
+      };
+
+    case 'toggleAll': {
+      const newState = Object.keys(state).reduce((translations, locale) => {
+        return {
+          [locale]: true,
+          ...translations,
+        };
+      }, {});
+      return newState;
+    }
+    default:
+      throw new Error();
+  }
+};
+
 // This component supports expanding/collapsing multiline inputs, but it also
 // supports showing/hiding the remaining languages.
 // These two features are both about opening/closing something, and so the code
@@ -31,7 +53,7 @@ import RequiredValueErrorMessage from './required-value-error-message';
 const LocalizedMultilineTextInput = props => {
   const intl = useIntl();
 
-  const defaultExpandedTranslations = Object.keys(props.value).reduce(
+  const initialExpandedTranslationsState = Object.keys(props.value).reduce(
     (translations, locale) => {
       return {
         [locale]: Boolean(props.defaultExpandMultilineText),
@@ -41,8 +63,12 @@ const LocalizedMultilineTextInput = props => {
     {}
   );
 
-  const [expandedTranslations, setExpandedTranslations] = React.useState(
-    defaultExpandedTranslations
+  const [
+    expandedTranslationsState,
+    expandedTranslationsDispatch,
+  ] = React.useReducer(
+    expandedTranslationsReducer,
+    initialExpandedTranslationsState
   );
 
   const defaultExpansionState =
@@ -55,29 +81,13 @@ const LocalizedMultilineTextInput = props => {
     defaultExpansionState
   );
 
-  const toggleLanguage = React.useCallback(
-    language => {
-      const newExpandedTranslations = {
-        ...expandedTranslations,
-        [language]: !expandedTranslations[language],
-      };
-      setExpandedTranslations(newExpandedTranslations);
-    },
-    [expandedTranslations]
-  );
+  const toggleLanguage = language => {
+    expandedTranslationsDispatch({ type: 'toggle', language });
+  };
 
-  const expandAllTranslations = React.useCallback(() => {
-    const newExpandedTranslations = Object.keys(expandedTranslations).reduce(
-      (translations, locale) => {
-        return {
-          [locale]: true,
-          ...translations,
-        };
-      },
-      {}
-    );
-    setExpandedTranslations(newExpandedTranslations);
-  }, [expandedTranslations]);
+  const expandAllTranslations = () => {
+    expandedTranslationsDispatch({ type: 'toggleAll' });
+  };
 
   const languages = sortLanguages(
     props.selectedLanguage,
@@ -128,7 +138,7 @@ const LocalizedMultilineTextInput = props => {
               value={props.value[language]}
               onChange={props.onChange}
               language={language}
-              isCollapsed={!expandedTranslations[language]}
+              isCollapsed={!expandedTranslationsState[language]}
               onToggle={() => toggleLanguage(language)}
               placeholder={
                 props.placeholder ? props.placeholder[language] : undefined
@@ -152,7 +162,8 @@ const LocalizedMultilineTextInput = props => {
                         // expand all multiline language inputs in case the
                         // first one was expanded when all languages
                         // are shown
-                        if (expandedTranslations[props.selectedLanguage]) {
+                        console.log('here', expandedTranslationsState);
+                        if (expandedTranslationsState[props.selectedLanguage]) {
                           expandAllTranslations();
                         }
                         toggleLanguages();
