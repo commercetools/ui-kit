@@ -38,6 +38,7 @@ const AccessibleButton = React.forwardRef((props, ref) => (
     aria-disabled={props.isDisabled}
     {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
     {...props.buttonAttributes}
+    onMouseDown={props.onMouseDown}
   >
     {props.children}
   </button>
@@ -59,6 +60,7 @@ AccessibleButton.propTypes = {
   isToggleButton: PropTypes.bool,
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func,
+  onMouseDown: PropTypes.func,
   className: PropTypes.string,
   // allows setting custom attributes on the underlying button html element
   buttonAttributes: PropTypes.object,

@@ -224,14 +224,14 @@ class RichTextInput extends React.Component {
     // we use 1, because the initial focus counts as an undo
     // and it would be weird to do an undo that just undos the focus
     // and hides the toolbar
-    const isDisabled = !undos || undos.size <= 1;
+    const isDisabled = !undos || undos.size === 0;
 
     return (
       <Button
         active={false}
         label={'undo'}
         isDisabled={isDisabled}
-        onClick={this.onClickUndo}
+        onMouseDown={this.onClickUndo}
         icon={
           <RevertIcon color={isDisabled ? 'neutral60' : 'solid'} size="small" />
         }

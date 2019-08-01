@@ -31,6 +31,7 @@ const Button = props => {
           }
         }
       `}
+      {...props}
     >
       {props.icon}
     </AccessibleButton>
