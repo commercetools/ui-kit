@@ -162,7 +162,6 @@ const LocalizedMultilineTextInput = props => {
                         // expand all multiline language inputs in case the
                         // first one was expanded when all languages
                         // are shown
-                        console.log('here', expandedTranslationsState);
                         if (expandedTranslationsState[props.selectedLanguage]) {
                           expandAllTranslations();
                         }
