@@ -18,13 +18,6 @@ const createClosingAnimation = height =>
   `;
 
 export class ToggleAnimation extends React.Component {
-  static displayName = 'ToggleAnimation';
-  static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    toggle: PropTypes.func.isRequired,
-    children: PropTypes.func.isRequired,
-  };
-
   static getDerivedStateFromProps(props, state) {
     const containerStyles = props.isOpen
       ? { height: 'auto' }
@@ -99,62 +92,67 @@ export class ToggleAnimation extends React.Component {
   }
 }
 
-class CollapsibleMotion extends React.PureComponent {
-  static displayName = 'CollapsibleMotion';
-  static propTypes = {
-    children: PropTypes.func.isRequired,
-    isClosed: PropTypes.bool,
-    onToggle: PropTypes.func,
-    isDefaultClosed: PropTypes.bool,
-  };
+ToggleAnimation.displayName = 'ToggleAnimation';
+ToggleAnimation.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
+};
 
-  render() {
-    return (
-      <Collapsible
-        isClosed={this.props.isClosed}
-        isDefaultClosed={this.props.isDefaultClosed}
-        onToggle={this.props.onToggle}
-      >
-        {({ isOpen, toggle }) => (
-          <ToggleAnimation isOpen={isOpen} toggle={toggle}>
-            {({
-              animation,
-              containerStyles,
-              toggle: animationToggle,
-              registerContentNode,
-            }) => (
-              <ClassNames>
-                {({ css }) => {
-                  let animationStyle = {};
+const CollapsibleMotion = props => {
+  return (
+    <Collapsible
+      isClosed={props.isClosed}
+      isDefaultClosed={props.isDefaultClosed}
+      onToggle={props.onToggle}
+    >
+      {({ isOpen, toggle }) => (
+        <ToggleAnimation isOpen={isOpen} toggle={toggle}>
+          {({
+            animation,
+            containerStyles,
+            toggle: animationToggle,
+            registerContentNode,
+          }) => (
+            <ClassNames>
+              {({ css }) => {
+                let animationStyle = {};
 
-                  if (animation) {
-                    // By calling `css`, emotion injects the required CSS into the document head.
-                    // eslint-disable-next-line no-unused-expressions
-                    css`
-                      animation: ${animation} 200ms forwards;
-                    `;
-                    animationStyle = {
-                      animation: `${animation.name} 200ms forwards`,
-                    };
-                  }
+                if (animation) {
+                  // By calling `css`, emotion injects the required CSS into the document head.
+                  // eslint-disable-next-line no-unused-expressions
+                  css`
+                    animation: ${animation} 200ms forwards;
+                  `;
+                  animationStyle = {
+                    animation: `${animation.name} 200ms forwards`,
+                  };
+                }
 
-                  return this.props.children({
-                    isOpen,
-                    containerStyles: {
-                      ...containerStyles,
-                      ...animationStyle,
-                    },
-                    toggle: animationToggle,
-                    registerContentNode,
-                  });
-                }}
-              </ClassNames>
-            )}
-          </ToggleAnimation>
-        )}
-      </Collapsible>
-    );
-  }
-}
+                return props.children({
+                  isOpen,
+                  containerStyles: {
+                    ...containerStyles,
+                    ...animationStyle,
+                  },
+                  toggle: animationToggle,
+                  registerContentNode,
+                });
+              }}
+            </ClassNames>
+          )}
+        </ToggleAnimation>
+      )}
+    </Collapsible>
+  );
+};
+
+CollapsibleMotion.displayName = 'CollapsibleMotion';
+CollapsibleMotion.propTypes = {
+  children: PropTypes.func.isRequired,
+  isClosed: PropTypes.bool,
+  onToggle: PropTypes.func,
+  isDefaultClosed: PropTypes.bool,
+};
 
 export default CollapsibleMotion;
