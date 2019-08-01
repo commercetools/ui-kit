@@ -27,7 +27,7 @@ const expandedTranslationsReducer = (state, action) => {
     case 'toggle':
       return {
         ...state,
-        [action.language]: !state[action.language],
+        [action.payload]: !state[action.payload],
       };
 
     case 'toggleAll': {
@@ -40,7 +40,7 @@ const expandedTranslationsReducer = (state, action) => {
       return newState;
     }
     default:
-      throw new Error();
+      return state;
   }
 };
 
@@ -81,13 +81,16 @@ const LocalizedMultilineTextInput = props => {
     defaultExpansionState
   );
 
-  const toggleLanguage = language => {
-    expandedTranslationsDispatch({ type: 'toggle', language });
-  };
+  const toggleLanguage = React.useCallback(
+    language => {
+      expandedTranslationsDispatch({ type: 'toggle', payload: language });
+    },
+    [expandedTranslationsDispatch]
+  );
 
-  const expandAllTranslations = () => {
+  const expandAllTranslations = React.useCallback(() => {
     expandedTranslationsDispatch({ type: 'toggleAll' });
-  };
+  }, [expandedTranslationsDispatch]);
 
   const languages = sortLanguages(
     props.selectedLanguage,
