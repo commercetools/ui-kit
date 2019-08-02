@@ -27,6 +27,49 @@ const createClosingAnimation = height =>
     to { height: 0; overflow: hidden; }
   `;
 
+const useToggleAnimation = (isOpen, toggle) => {
+  const nodeRef = React.useRef();
+  const prevIsOpen = usePrevious(isOpen);
+
+  React.useEffect(
+    () => {
+      invariant(
+        nodeRef.current,
+        'You need to call `registerContentNode` in order to use this component'
+      );
+    },
+    // to match the componentDidMount behaviour
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [nodeRef]
+  );
+
+  const handleToggle = React.useCallback(() => {
+    invariant(
+      nodeRef.current,
+      'You need to call `registerContentNode` in order to use this component'
+    );
+
+    // set panel height to the height of the content,
+    // so we can animate between the height and 0
+    toggle();
+  }, [nodeRef, toggle]);
+
+  const containerStyles = isOpen
+    ? { height: 'auto' }
+    : { height: 0, overflow: 'hidden' };
+
+  let animation = null;
+
+  // if state has changed
+  if (typeof prevIsOpen !== 'undefined' && prevIsOpen !== isOpen) {
+    animation = isOpen
+      ? createOpeningAnimation(nodeRef.current.clientHeight)
+      : createClosingAnimation(nodeRef.current.clientHeight);
+  }
+
+  return [animation, containerStyles, handleToggle, nodeRef];
+};
+
 const ToggleAnimation = props => {
   const nodeRef = React.useRef();
   const prevIsOpen = usePrevious(props.isOpen);
@@ -152,42 +195,40 @@ ControlledCollapsibleMotion.propTypes = {
 const UncontrolledCollapsibleMotion = props => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
 
+  const [
+    animation,
+    containerStyles,
+    animationToggle,
+    registerContentNode,
+  ] = useToggleAnimation(isOpen, toggle);
+
   return (
-    <ToggleAnimation isOpen={isOpen} toggle={toggle}>
-      {({
-        animation,
-        containerStyles,
-        toggle: animationToggle,
-        registerContentNode,
-      }) => (
-        <ClassNames>
-          {({ css }) => {
-            let animationStyle = {};
+    <ClassNames>
+      {({ css }) => {
+        let animationStyle = {};
 
-            if (animation) {
-              // By calling `css`, emotion injects the required CSS into the document head.
-              // eslint-disable-next-line no-unused-expressions
-              css`
-                animation: ${animation} 200ms forwards;
-              `;
-              animationStyle = {
-                animation: `${animation.name} 200ms forwards`,
-              };
-            }
+        if (animation) {
+          // By calling `css`, emotion injects the required CSS into the document head.
+          // eslint-disable-next-line no-unused-expressions
+          css`
+            animation: ${animation} 200ms forwards;
+          `;
+          animationStyle = {
+            animation: `${animation.name} 200ms forwards`,
+          };
+        }
 
-            return props.children({
-              isOpen,
-              containerStyles: {
-                ...containerStyles,
-                ...animationStyle,
-              },
-              toggle: animationToggle,
-              registerContentNode,
-            });
-          }}
-        </ClassNames>
-      )}
-    </ToggleAnimation>
+        return props.children({
+          isOpen,
+          containerStyles: {
+            ...containerStyles,
+            ...animationStyle,
+          },
+          toggle: animationToggle,
+          registerContentNode,
+        });
+      }}
+    </ClassNames>
   );
 };
 
