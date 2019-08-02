@@ -9,7 +9,6 @@ const PrevOpenState = props => {
 
   // eslint-disable-next-line react/prop-types
   const { isUndefined, isOpen } = props;
-
   if (isUndefined) {
     text = 'undefined';
   } else if (isOpen) {
@@ -28,7 +27,7 @@ const TestComponent = props => {
   return (
     <div>
       <div data-testid="openState">{isOpen ? 'open' : 'closed'}</div>
-      <PrevOpenState isOpen={isOpen} isUndefined={isUndefined} />
+      <PrevOpenState isOpen={prevIsOpen} isUndefined={isUndefined} />
       <button data-testid="toggle" onClick={toggle}>
         Toggle
       </button>
@@ -46,8 +45,9 @@ it('should maintain the previous state after changing state', () => {
   const { getByTestId } = render(<TestComponent />);
   expect(getByTestId('openState')).toHaveTextContent('open');
   getByTestId('toggle').click();
-  expect(getByTestId('prevOpenState')).toHaveTextContent('closed');
   expect(getByTestId('openState')).toHaveTextContent('closed');
-  getByTestId('toggle').click();
   expect(getByTestId('prevOpenState')).toHaveTextContent('open');
+  getByTestId('toggle').click();
+  expect(getByTestId('prevOpenState')).toHaveTextContent('closed');
+  expect(getByTestId('openState')).toHaveTextContent('open');
 });
