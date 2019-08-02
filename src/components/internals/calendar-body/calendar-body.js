@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
 import Spacings from '../../spacings';
+import useToggleState from '../../../hooks/use-toggle-state';
 import {
   getClearSectionStyles,
   getCalendarIconContainerStyles,
@@ -31,46 +32,52 @@ ClearSection.propTypes = {
 };
 
 export const CalendarBody = props => {
-  const [isFocused, setIsFocused] = React.useState(false);
+  const [
+    isFocused,
+    // eslint-disable-next-line no-unused-vars
+    toggleIsFocused,
+    setIsFocusedOn,
+    setIsFocusedOff,
+  ] = useToggleState(false);
 
   const { onFocus: onInputFocus } = props.inputProps;
 
   const handleInputFocus = React.useCallback(
     event => {
-      setIsFocused(true);
+      setIsFocusedOn();
       if (onInputFocus) onInputFocus(event);
     },
-    [onInputFocus]
+    [onInputFocus, setIsFocusedOn]
   );
 
   const { onBlur: onInputBlur } = props.inputProps;
 
   const handleInputBlur = React.useCallback(
     event => {
-      setIsFocused(false);
+      setIsFocusedOff();
       if (onInputBlur) onInputBlur(event);
     },
-    [onInputBlur]
+    [onInputBlur, setIsFocusedOff]
   );
 
   const { onFocus: onToggleFocus } = props.toggleButtonProps;
 
   const handleToggleFocus = React.useCallback(
     event => {
-      setIsFocused(true);
+      setIsFocusedOn();
       if (onToggleFocus) onToggleFocus(event);
     },
-    [onToggleFocus]
+    [onToggleFocus, setIsFocusedOn]
   );
 
   const { onBlur: onToggleBlur } = props.toggleButtonProps;
 
   const handleToggleBlur = React.useCallback(
     event => {
-      setIsFocused(false);
+      setIsFocusedOff();
       if (onToggleBlur) onToggleBlur(event);
     },
-    [onToggleBlur]
+    [onToggleBlur, setIsFocusedOff]
   );
 
   return (
