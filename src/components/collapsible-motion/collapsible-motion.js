@@ -5,6 +5,13 @@ import { keyframes, ClassNames } from '@emotion/core';
 import isNil from 'lodash/isNil';
 import useToggleState from '../../hooks/use-toggle-state';
 
+const collapsibleMotionPropTypes = {
+  children: PropTypes.func.isRequired,
+  isClosed: PropTypes.bool,
+  onToggle: PropTypes.func,
+  isDefaultClosed: PropTypes.bool,
+};
+
 const usePrevious = value => {
   const ref = React.useRef();
   React.useEffect(() => {
@@ -118,12 +125,7 @@ const ControlledCollapsibleMotion = props => {
 };
 
 ControlledCollapsibleMotion.displayName = 'ControlledCollapsibleMotion';
-ControlledCollapsibleMotion.propTypes = {
-  children: PropTypes.func.isRequired,
-  isClosed: PropTypes.bool,
-  onToggle: PropTypes.func,
-  isDefaultClosed: PropTypes.bool,
-};
+ControlledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
 const UncontrolledCollapsibleMotion = props => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
@@ -166,19 +168,9 @@ const UncontrolledCollapsibleMotion = props => {
 };
 
 UncontrolledCollapsibleMotion.displayName = 'UncontrolledCollapsibleMotion';
-UncontrolledCollapsibleMotion.propTypes = {
-  children: PropTypes.func.isRequired,
-  isClosed: PropTypes.bool,
-  onToggle: PropTypes.func,
-  isDefaultClosed: PropTypes.bool,
-};
+UncontrolledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
 CollapsibleMotion.displayName = 'CollapsibleMotion';
-CollapsibleMotion.propTypes = {
-  children: PropTypes.func.isRequired,
-  isClosed: PropTypes.bool,
-  onToggle: PropTypes.func,
-  isDefaultClosed: PropTypes.bool,
-};
+CollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
 export default CollapsibleMotion;
