@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import invariant from 'tiny-invariant';
 import { keyframes, ClassNames } from '@emotion/core';
+import isNil from 'lodash/isNil';
+import useToggleState from '../../hooks/use-toggle-state';
 import Collapsible from '../collapsible';
 
 const usePrevious = value => {
@@ -82,6 +84,16 @@ ToggleAnimation.propTypes = {
 };
 
 const CollapsibleMotion = props => {
+  const isControlledComponent = !isNil(props.isClosed);
+
+  if (isControlledComponent) {
+    return <ControlledCollapsibleMotion {...props} />;
+  }
+
+  return <UncontrolledCollapsibleMotion {...props} />;
+};
+
+const ControlledCollapsibleMotion = props => {
   return (
     <Collapsible
       isClosed={props.isClosed}
@@ -127,6 +139,64 @@ const CollapsibleMotion = props => {
       )}
     </Collapsible>
   );
+};
+
+ControlledCollapsibleMotion.displayName = 'ControlledCollapsibleMotion';
+ControlledCollapsibleMotion.propTypes = {
+  children: PropTypes.func.isRequired,
+  isClosed: PropTypes.bool,
+  onToggle: PropTypes.func,
+  isDefaultClosed: PropTypes.bool,
+};
+
+const UncontrolledCollapsibleMotion = props => {
+  const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
+
+  return (
+    <ToggleAnimation isOpen={isOpen} toggle={toggle}>
+      {({
+        animation,
+        containerStyles,
+        toggle: animationToggle,
+        registerContentNode,
+      }) => (
+        <ClassNames>
+          {({ css }) => {
+            let animationStyle = {};
+
+            if (animation) {
+              // By calling `css`, emotion injects the required CSS into the document head.
+              // eslint-disable-next-line no-unused-expressions
+              css`
+                animation: ${animation} 200ms forwards;
+              `;
+              animationStyle = {
+                animation: `${animation.name} 200ms forwards`,
+              };
+            }
+
+            return props.children({
+              isOpen,
+              containerStyles: {
+                ...containerStyles,
+                ...animationStyle,
+              },
+              toggle: animationToggle,
+              registerContentNode,
+            });
+          }}
+        </ClassNames>
+      )}
+    </ToggleAnimation>
+  );
+};
+
+UncontrolledCollapsibleMotion.displayName = 'UncontrolledCollapsibleMotion';
+UncontrolledCollapsibleMotion.propTypes = {
+  children: PropTypes.func.isRequired,
+  isClosed: PropTypes.bool,
+  onToggle: PropTypes.func,
+  isDefaultClosed: PropTypes.bool,
 };
 
 CollapsibleMotion.displayName = 'CollapsibleMotion';
