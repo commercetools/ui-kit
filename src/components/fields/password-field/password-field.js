@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
+import useToggleState from '../../../hooks/use-toggle-state';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
@@ -20,13 +21,9 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 
 const PasswordField = props => {
   const intl = useIntl();
-  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+  const [isPasswordVisible, togglePasswordVisibility] = useToggleState(false);
   const id = getFieldId(props, {}, sequentialId);
   const hasError = props.touched && hasErrors(props.errors);
-
-  const togglePasswordVisibility = React.useCallback(() => {
-    setIsPasswordVisible(!isPasswordVisible);
-  }, [isPasswordVisible]);
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
