@@ -30,96 +30,114 @@ ClearSection.propTypes = {
   onClear: PropTypes.func,
 };
 
-export default class CalendarBody extends React.PureComponent {
-  static displayName = 'CalendarBody';
+export const CalendarBody = props => {
+  const [isFocused, setIsFocused] = React.useState(false);
 
-  static propTypes = {
-    inputRef: PropTypes.object.isRequired,
-    icon: PropTypes.string,
-    id: PropTypes.string,
-    inputProps: PropTypes.shape({
-      onBlur: PropTypes.func,
-      onFocus: PropTypes.func,
-    }),
-    isClearable: PropTypes.bool,
-    toggleButtonProps: PropTypes.shape({
-      onBlur: PropTypes.func,
-      onFocus: PropTypes.func,
-    }),
-    value: PropTypes.string,
-    isDisabled: PropTypes.bool,
-    isOpen: PropTypes.bool,
-    hasSelection: PropTypes.bool,
-    hasWarning: PropTypes.bool,
-    hasError: PropTypes.bool,
-    onClearPicker: PropTypes.func,
-    onClear: PropTypes.func,
-    placeholder: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-  };
+  const { onFocus: onInputFocus } = props.inputProps;
 
-  static defaultProps = {
-    isClearable: true,
-  };
+  const handleInputFocus = React.useCallback(
+    event => {
+      setIsFocused(true);
+      if (onInputFocus) onInputFocus(event);
+    },
+    [onInputFocus]
+  );
 
-  state = {
-    isFocused: false,
-  };
+  const { onBlur: onInputBlur } = props.inputProps;
 
-  render() {
-    return (
-      <Spacings.Inline alignItems="center">
-        <div css={getInputContainerStyles()}>
-          <input
-            ref={this.props.inputRef}
-            css={getDateTimeInputStyles(this.props, this.state)}
-            {...this.props.inputProps}
-            onFocus={event => {
-              this.setState({ isFocused: true });
-              if (this.props.inputProps.onFocus)
-                this.props.inputProps.onFocus(event);
-            }}
-            onBlur={event => {
-              this.setState({ isFocused: false });
-              if (this.props.inputProps.onBlur)
-                this.props.inputProps.onBlur(event);
-            }}
+  const handleInputBlur = React.useCallback(
+    event => {
+      setIsFocused(false);
+      if (onInputBlur) onInputBlur(event);
+    },
+    [onInputBlur]
+  );
+
+  const { onFocus: onToggleFocus } = props.toggleButtonProps;
+
+  const handleToggleFocus = React.useCallback(
+    event => {
+      setIsFocused(true);
+      if (onToggleFocus) onToggleFocus(event);
+    },
+    [onToggleFocus]
+  );
+
+  const { onBlur: onToggleBlur } = props.toggleButtonProps;
+
+  const handleToggleBlur = React.useCallback(
+    event => {
+      setIsFocused(false);
+      if (onToggleBlur) onToggleBlur(event);
+    },
+    [onToggleBlur]
+  );
+
+  return (
+    <Spacings.Inline alignItems="center">
+      <div css={getInputContainerStyles()}>
+        <input
+          ref={props.inputRef}
+          css={getDateTimeInputStyles(props, { isFocused })}
+          {...props.inputProps}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+        />
+        {props.hasSelection && props.isClearable && (
+          <ClearSection
+            isDisabled={props.isDisabled}
+            hasError={props.hasError}
+            isFocused={isFocused}
+            onClear={props.onClear}
           />
-          {this.props.hasSelection && this.props.isClearable && (
-            <ClearSection
-              isDisabled={this.props.isDisabled}
-              hasError={this.props.hasError}
-              isFocused={this.state.isFocused}
-              onClear={this.props.onClear}
-            />
+        )}
+        <button
+          type="button"
+          css={getCalendarIconContainerStyles(props, { isFocused })}
+          {...props.toggleButtonProps}
+          onFocus={handleToggleFocus}
+          onBlur={handleToggleBlur}
+        >
+          {props.icon === 'clock' ? (
+            <ClockIcon color={props.isDisabled ? 'neutral60' : 'solid'} />
+          ) : (
+            <CalendarIcon color={props.isDisabled ? 'neutral60' : 'solid'} />
           )}
-          <button
-            type="button"
-            css={getCalendarIconContainerStyles(this.props, this.state)}
-            {...this.props.toggleButtonProps}
-            onFocus={event => {
-              this.setState({ isFocused: true });
-              if (this.props.toggleButtonProps.onFocus)
-                this.props.toggleButtonProps.onFocus(event);
-            }}
-            onBlur={event => {
-              this.setState({ isFocused: false });
-              if (this.props.toggleButtonProps.onBlur)
-                this.props.toggleButtonProps.onBlur(event);
-            }}
-          >
-            {this.props.icon === 'clock' ? (
-              <ClockIcon
-                color={this.props.isDisabled ? 'neutral60' : 'solid'}
-              />
-            ) : (
-              <CalendarIcon
-                color={this.props.isDisabled ? 'neutral60' : 'solid'}
-              />
-            )}
-          </button>
-        </div>
-      </Spacings.Inline>
-    );
-  }
-}
+        </button>
+      </div>
+    </Spacings.Inline>
+  );
+};
+
+CalendarBody.displayName = 'CalendarBody';
+
+CalendarBody.propTypes = {
+  inputRef: PropTypes.object.isRequired,
+  icon: PropTypes.string,
+  id: PropTypes.string,
+  inputProps: PropTypes.shape({
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
+  }),
+  isClearable: PropTypes.bool,
+  toggleButtonProps: PropTypes.shape({
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
+  }),
+  value: PropTypes.string,
+  isDisabled: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  hasSelection: PropTypes.bool,
+  hasWarning: PropTypes.bool,
+  hasError: PropTypes.bool,
+  onClearPicker: PropTypes.func,
+  onClear: PropTypes.func,
+  placeholder: PropTypes.string,
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+};
+
+CalendarBody.defaultProps = {
+  isClearable: true,
+};
+
+export default CalendarBody;
