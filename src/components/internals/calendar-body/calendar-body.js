@@ -33,44 +33,44 @@ ClearSection.propTypes = {
 export const CalendarBody = props => {
   const [isFocused, setIsFocused] = React.useState(false);
 
-  const { onFocus: inputOnFocus } = props.inputProps;
+  const { onFocus: onInputFocus } = props.inputProps;
 
   const handleInputFocus = React.useCallback(
     event => {
       setIsFocused(true);
-      if (inputOnFocus) inputOnFocus(event);
+      if (onInputFocus) onInputFocus(event);
     },
-    [inputOnFocus]
+    [onInputFocus]
   );
 
-  const { onBlur: inputOnBlur } = props.inputProps;
+  const { onBlur: onInputBlur } = props.inputProps;
 
   const handleInputBlur = React.useCallback(
     event => {
       setIsFocused(false);
-      if (inputOnBlur) inputOnBlur(event);
+      if (onInputBlur) onInputBlur(event);
     },
-    [inputOnBlur]
+    [onInputBlur]
   );
 
-  const { onFocus: toggleOnFocus } = props.toggleButtonProps;
+  const { onFocus: onToggleFocus } = props.toggleButtonProps;
 
   const handleToggleFocus = React.useCallback(
     event => {
       setIsFocused(true);
-      if (toggleOnFocus) toggleOnFocus(event);
+      if (onToggleFocus) onToggleFocus(event);
     },
-    [toggleOnFocus]
+    [onToggleFocus]
   );
 
-  const { onBlur: toggleOnBlur } = props.toggleButtonProps;
+  const { onBlur: onToggleBlur } = props.toggleButtonProps;
 
   const handleToggleBlur = React.useCallback(
     event => {
       setIsFocused(false);
-      if (toggleOnBlur) toggleOnBlur(event);
+      if (onToggleBlur) onToggleBlur(event);
     },
-    [toggleOnBlur]
+    [onToggleBlur]
   );
 
   return (
