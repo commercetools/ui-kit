@@ -1,12 +1,21 @@
-import React from 'react';
+import { useCallback, useState } from 'react';
 
 const useToggleState = (defaultValue = true) => {
-  const [isToggled, setIsToggled] = React.useState(defaultValue);
-  const toggle = React.useCallback(() => {
-    setIsToggled(!isToggled);
-  }, [isToggled]);
+  const [isToggled, setIsToggled] = useState(defaultValue);
 
-  return [isToggled, toggle];
+  const setOn = useCallback(() => {
+    setIsToggled(true);
+  }, [setIsToggled]);
+
+  const setOff = useCallback(() => {
+    setIsToggled(false);
+  }, [setIsToggled]);
+
+  const toggle = useCallback(() => {
+    setIsToggled(!isToggled);
+  }, [isToggled, setIsToggled]);
+
+  return [isToggled, toggle, setOn, setOff];
 };
 
 export default useToggleState;
