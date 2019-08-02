@@ -312,20 +312,8 @@ const getCurrencyDropdownName = name =>
 
 const MoneyInput = props => {
   const intl = useIntl();
-  const [
-    currencyHasFocus,
-    // eslint-disable-next-line no-unused-vars
-    toggleCurrencyHasFocus,
-    setCurrencyHasFocusOn,
-    setCurrencyHasFocusOff,
-  ] = useToggleState(false);
-  const [
-    amountHasFocus,
-    // eslint-disable-next-line no-unused-vars
-    toggleAmountHasFocus,
-    setAmountHasFocusOn,
-    setAmountHasFocusOff,
-  ] = useToggleState(false);
+  const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
+  const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
 
   const containerRef = React.useRef();
   const amountInputRef = React.useRef();
@@ -339,13 +327,13 @@ const MoneyInput = props => {
           name: getAmountInputName(props.name),
         },
       });
-    setAmountHasFocusOn();
-  }, [setAmountHasFocusOn, onFocus, props.id, props.name]);
+    toggleAmountHasFocus(true);
+  }, [toggleAmountHasFocus, onFocus, props.id, props.name]);
 
   const { onChange } = props;
   const handleAmountBlur = React.useCallback(() => {
     const amount = props.value.amount.trim();
-    setAmountHasFocusOff();
+    toggleAmountHasFocus(false);
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
     if (amount.length > 0 && currencies[props.value.currencyCode]) {
@@ -377,7 +365,7 @@ const MoneyInput = props => {
     props.name,
     props.value.amount,
     props.value.currencyCode,
-    setAmountHasFocusOff,
+    toggleAmountHasFocus,
   ]);
 
   const handleAmountChange = React.useCallback(
@@ -463,12 +451,12 @@ const MoneyInput = props => {
         },
       });
 
-    setCurrencyHasFocusOn();
-  }, [onFocus, setCurrencyHasFocusOn, props.name, props.id]);
+    toggleCurrencyHasFocus(true);
+  }, [onFocus, toggleCurrencyHasFocus, props.name, props.id]);
 
   const handleCurrencyBlur = React.useCallback(() => {
-    setCurrencyHasFocusOff();
-  }, [setCurrencyHasFocusOff]);
+    toggleCurrencyHasFocus(false);
+  }, [toggleCurrencyHasFocus]);
 
   const hasNoCurrencies = props.currencies.length === 0;
   const hasFocus = currencyHasFocus || amountHasFocus;

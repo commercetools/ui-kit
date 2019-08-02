@@ -11,9 +11,14 @@ const useToggleState = (defaultValue = true) => {
     setIsToggled(false);
   }, [setIsToggled]);
 
-  const toggle = useCallback(() => {
-    setIsToggled(!isToggled);
-  }, [isToggled, setIsToggled]);
+  const toggle = useCallback(
+    forceIsToggled => {
+      setIsToggled(
+        typeof forceIsToggled === 'boolean' ? forceIsToggled : !isToggled
+      );
+    },
+    [isToggled]
+  );
 
   return [isToggled, toggle, setOn, setOff];
 };

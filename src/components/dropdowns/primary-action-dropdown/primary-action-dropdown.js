@@ -211,7 +211,7 @@ Option.defaultProps = {
  */
 const PrimaryActionDropdown = props => {
   const ref = React.useRef();
-  const [isOpen, toggle, setOn, setOff] = useToggleState(false);
+  const [isOpen, toggle] = useToggleState(false);
 
   const handleGlobalClick = React.useCallback(
     event => {
@@ -221,10 +221,10 @@ const PrimaryActionDropdown = props => {
         event.target !== dropdownButton &&
         !dropdownButton.contains(event.target)
       ) {
-        setOff();
+        toggle(false);
       }
     },
-    [ref, setOff]
+    [ref, toggle]
   );
   React.useEffect(() => {
     window.addEventListener('click', handleGlobalClick);
@@ -242,12 +242,12 @@ const PrimaryActionDropdown = props => {
   const handleClickOnHead = React.useCallback(
     event => {
       if (isOpen) {
-        setOn();
+        toggle(true);
       } else {
         onClick(event);
       }
     },
-    [isOpen, onClick, setOn]
+    [isOpen, onClick, toggle]
   );
   const handleClickOnChevron = React.useCallback(() => {
     toggle();
