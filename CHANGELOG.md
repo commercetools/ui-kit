@@ -1,3 +1,13 @@
+<a name="10.0.2"></a>
+
+# [10.0.2](https://github.com/commercetools/ui-kit/compare/v10.0.1...511adad) (2019-08-02)
+
+### Bug Fixes
+
+- **jest/setup:** to show actual error logs on CI when something is logged ([#979](https://github.com/commercetools/ui-kit/issues/979)) ([511adad](https://github.com/commercetools/ui-kit/commit/511adad))
+- **select-inputs** truncate select-input placeholder text is long ([#955](https://github.com/commercetools/ui-kit/issues/955)) ([0ae06f5](https://github.com/commercetools/ui-kit/commit/0ae06f5))
+- **date-inputs:** placeholder i18n fixes ([#954](https://github.com/commercetools/ui-kit/issues/954)) ([12737ed](https://github.com/commercetools/ui-kit/commit/12737ed))
+
 <a name="10.0.1"></a>
 
 # [10.0.1](https://github.com/commercetools/ui-kit/compare/v10.0.0...10.0.1) (2019-07-19)
