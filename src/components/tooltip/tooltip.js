@@ -30,7 +30,6 @@ const Tooltip = props => {
 
   React.useEffect(() => {
     return () => {
-      console.log('here leavetimer', leaveTimer);
       if (leaveTimer.current) {
         clearTimeout(leaveTimer.current);
       }
