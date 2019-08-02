@@ -3,6 +3,7 @@ import React from 'react';
 import invariant from 'tiny-invariant';
 import { keyframes, ClassNames } from '@emotion/core';
 import isNil from 'lodash/isNil';
+import usePrevious from '../../hooks/use-previous';
 import useToggleState from '../../hooks/use-toggle-state';
 
 const collapsibleMotionPropTypes = {
@@ -10,14 +11,6 @@ const collapsibleMotionPropTypes = {
   isClosed: PropTypes.bool,
   onToggle: PropTypes.func,
   isDefaultClosed: PropTypes.bool,
-};
-
-const usePrevious = value => {
-  const ref = React.useRef();
-  React.useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
 };
 
 const createOpeningAnimation = height =>
