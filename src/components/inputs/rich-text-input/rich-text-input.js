@@ -7,6 +7,7 @@ import { Editor } from 'slate-react';
 import { RenderBlockPlugin, RenderMarkPlugin } from './plugins';
 import Spacings from '../../spacings';
 import Button from './button';
+import MarkButton from './buttons/mark-button';
 import StyleDropdown from './dropdown';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
@@ -135,50 +136,15 @@ const dropdownOptions = [
 ];
 
 class RichTextInput extends React.Component {
-  static displayName = 'RichTextInput';
-
-  static propTypes = {
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    placeholder: PropTypes.string,
-    isDisabled: PropTypes.bool,
-    isReadOnly: PropTypes.bool,
-    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-    value: Types.value.isRequired,
-  };
-
-  static defaultProps = {
-    horizontalConstraint: 'scale',
-  };
-
   onChange = ({ value }) => {
     this.props.onChange(value);
   };
 
-  hasBlock = type => {
-    const { value } = this.props;
-    return value.blocks.some(node => node.type === type);
-  };
+  hasBlock = type => this.props.value.blocks.some(node => node.type === type);
 
   hasMark = type => {
     const { value } = this.props;
     return value.activeMarks.some(mark => mark.type === type);
-  };
-
-  renderMarkButton = (type, icon) => {
-    const isActive = this.hasMark(type);
-
-    return (
-      <Button
-        label={type}
-        onClick={() => this.onClickMark(type)}
-        isActive={isActive}
-        icon={icon}
-      />
-    );
   };
 
   renderBlockButton = (type, icon) => {
@@ -342,6 +308,12 @@ class RichTextInput extends React.Component {
       ...filterDataAttributes(props),
     };
 
+    const hasBlock = type =>
+      props.value.blocks.some(node => node.type === type);
+
+    const hasMark = type =>
+      props.value.activeMarks.some(mark => mark.type === type);
+
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Collapsible isDefaultClosed={false}>
@@ -367,30 +339,37 @@ class RichTextInput extends React.Component {
                         DropdownItem: StyleDropdownItem,
                       }}
                       value={(() => {
-                        if (this.hasBlock('heading-one')) return 'heading-one';
-                        if (this.hasBlock('heading-two')) return 'heading-two';
-                        if (this.hasBlock('heading-three'))
-                          return 'heading-three';
-                        if (this.hasBlock('heading-four'))
-                          return 'heading-four';
-                        if (this.hasBlock('heading-five'))
-                          return 'heading-five';
-                        if (this.hasBlock('block-quote')) return 'block-quote';
-                        if (this.hasBlock('code')) return 'code';
-                        if (this.hasBlock('paragraph')) return 'paragraph';
+                        if (hasBlock('heading-one')) return 'heading-one';
+                        if (hasBlock('heading-two')) return 'heading-two';
+                        if (hasBlock('heading-three')) return 'heading-three';
+                        if (hasBlock('heading-four')) return 'heading-four';
+                        if (hasBlock('heading-five')) return 'heading-five';
+                        if (hasBlock('block-quote')) return 'block-quote';
+                        if (hasBlock('code')) return 'code';
+                        if (hasBlock('paragraph')) return 'paragraph';
                         return '';
                       })()}
                       onChange={this.onChangeStyleDropdown}
                     />
-                    {this.renderMarkButton('bold', <BoldIcon size="medium" />)}
-                    {this.renderMarkButton(
-                      'italic',
-                      <ItalicIcon size="medium" />
-                    )}
-                    {this.renderMarkButton(
-                      'underlined',
-                      <UnderlineIcon size="medium" />
-                    )}
+
+                    <MarkButton
+                      isActive={this.hasMark('bold')}
+                      type="bold"
+                      onClickMark={this.onClickMark}
+                      icon={<BoldIcon size="medium" />}
+                    />
+                    <MarkButton
+                      isActive={this.hasMark('italic')}
+                      type="italic"
+                      onClickMark={this.onClickMark}
+                      icon={<ItalicIcon size="medium" />}
+                    />
+                    <MarkButton
+                      isActive={this.hasMark('underlined')}
+                      type="underlined"
+                      onClickMark={this.onClickMark}
+                      icon={<UnderlineIcon size="medium" />}
+                    />
 
                     <StyleDropdown
                       label="More styles"
@@ -400,10 +379,9 @@ class RichTextInput extends React.Component {
                         DropdownLabel: MoreStylesLabel,
                       }}
                       value={(() => {
-                        if (this.hasMark('subscript')) return 'subscript';
-                        if (this.hasMark('superscript')) return 'superscript';
-                        if (this.hasMark('strikethrough'))
-                          return 'strikethrough';
+                        if (hasMark('subscript')) return 'subscript';
+                        if (hasMark('superscript')) return 'superscript';
+                        if (hasMark('strikethrough')) return 'strikethrough';
                         return '';
                       })()}
                       onChange={this.onChangeMarkDropdown}
@@ -474,5 +452,24 @@ class RichTextInput extends React.Component {
     );
   }
 }
+
+RichTextInput.defaultProps = {
+  horizontalConstraint: 'scale',
+};
+
+RichTextInput.displayName = 'RichTextInput';
+
+RichTextInput.propTypes = {
+  hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  value: Types.value.isRequired,
+};
 
 export default RichTextInput;
