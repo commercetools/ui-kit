@@ -116,7 +116,7 @@ describe('when onToggle is provided without isClosed', () => {
     );
     expect(console.error).toHaveBeenCalledWith(
       expect.stringMatching(
-        /Warning: Failed prop type: Invalid prop `onToggle` supplied to `Collapsible`\. `onToggle` does not have any effect when the component is uncontrolled\./
+        /Warning: Failed prop type: Invalid prop `onToggle` supplied to `CollapsiblePanel`\. `onToggle` does not have any effect when the component is uncontrolled\./
       )
     );
   });
