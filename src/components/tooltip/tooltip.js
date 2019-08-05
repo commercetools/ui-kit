@@ -4,11 +4,10 @@ import React from 'react';
 import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
 import isNil from 'lodash/isNil';
-import { Manager, Reference, Popper } from 'react-popper';
+import usePopper from 'use-popper';
 import useToggleState from '../../hooks/use-toggle-state';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
-import RootRef from '../internals/root-ref';
 import { Body, getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
@@ -37,6 +36,7 @@ const Tooltip = props => {
     };
   }, []);
 
+  const { reference, popper } = usePopper({ placement: props.placement });
   const [isOpen, toggle] = useToggleState(false);
   const closeTooltip = React.useCallback(() => {
     toggle(false);
@@ -148,40 +148,31 @@ const Tooltip = props => {
   const BodyComponent = props.components.BodyComponent || Body;
   const TooltipWrapperComponent =
     props.components.TooltipWrapperComponent || TooltipWrapper;
+
   return (
-    <Manager>
-      <Reference innerRef={childrenRef}>
-        {({ ref }) => (
-          <WrapperComponent {...eventListeners}>
-            <RootRef rootRef={ref}>
-              {React.cloneElement(props.children, { ...childrenProps })}
-            </RootRef>
-          </WrapperComponent>
-        )}
-      </Reference>
+    <React.Fragment>
+      <WrapperComponent {...eventListeners} ref={reference.ref}>
+        {React.cloneElement(props.children, { ...childrenProps })}
+      </WrapperComponent>
       {tooltipIsOpen && (
         <TooltipWrapperComponent>
-          <Popper placement={props.placement} positionFixed={true}>
-            {({ ref, style, placement }) => (
-              <div
-                ref={ref}
-                css={{
-                  ...style,
-                  ...getBodyStyles({
-                    constraint: props.horizontalConstraint,
-                    placement,
-                    customStyles: props.styles.body,
-                  }),
-                }}
-                data-placement={placement}
-              >
-                <BodyComponent>{props.title}</BodyComponent>
-              </div>
-            )}
-          </Popper>
+          <div
+            ref={popper.ref}
+            css={{
+              ...popper.styles,
+              ...getBodyStyles({
+                constraint: props.horizontalConstraint,
+                placement: popper.placement,
+                customStyles: props.styles.body,
+              }),
+            }}
+            data-placement={popper.placement}
+          >
+            <BodyComponent>{props.title}</BodyComponent>
+          </div>
         </TooltipWrapperComponent>
       )}
-    </Manager>
+    </React.Fragment>
   );
 };
 
