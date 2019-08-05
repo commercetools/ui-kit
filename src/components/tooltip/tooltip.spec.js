@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { act } from 'react-dom/test-utils';
 import { render, fireEvent } from '../../test-utils';
 import Tooltip from './tooltip';
 
@@ -204,7 +205,9 @@ describe('Tooltip', () => {
       // should not call onClose
       expect(onClose).not.toHaveBeenCalled();
       // after delay
-      jest.advanceTimersByTime(1000);
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
       expect(onClose).toHaveBeenCalled();
       // should hide tooltip again
       expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();

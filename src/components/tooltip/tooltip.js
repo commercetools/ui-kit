@@ -5,6 +5,7 @@ import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
 import isNil from 'lodash/isNil';
 import { Manager, Reference, Popper } from 'react-popper';
+import useToggleState from '../../hooks/use-toggle-state';
 import getFieldId from '../../utils/get-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import RootRef from '../internals/root-ref';
@@ -36,16 +37,16 @@ const Tooltip = props => {
     };
   }, []);
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, toggle] = useToggleState(false);
   const closeTooltip = React.useCallback(() => {
-    setIsOpen(false);
-  }, []);
+    toggle(false);
+  }, [toggle]);
   const openTooltip = React.useCallback(() => {
-    setIsOpen(true);
-  }, []);
+    toggle(true);
+  }, [toggle]);
 
   const isControlled = !isNil(props.isOpen);
-  const open = isControlled ? props.isOpen : isOpen;
+  const tooltipIsOpen = isControlled ? props.isOpen : isOpen;
   const id = getFieldId(props, {}, sequentialId);
 
   const { onClose } = props;
@@ -124,7 +125,8 @@ const Tooltip = props => {
     'aria-describedby': open ? id : null,
     // for seo and accessibility, we add the tooltip's title
     // as a native title when the title is hidden
-    title: !open && typeof props.title === 'string' ? props.title : null,
+    title:
+      !tooltipIsOpen && typeof props.title === 'string' ? props.title : null,
     ...props.children.props,
     // don't pass event listeners to children
     onFocus: null,
@@ -157,7 +159,7 @@ const Tooltip = props => {
           </WrapperComponent>
         )}
       </Reference>
-      {open && (
+      {tooltipIsOpen && (
         <TooltipWrapperComponent>
           <Popper placement={props.placement} positionFixed={true}>
             {({ ref, style, placement }) => (
