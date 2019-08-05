@@ -7,6 +7,7 @@ import Select, { components } from 'react-select';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import useToggleState from '../../../hooks/use-toggle-state';
 import vars from '../../../../materials/custom-properties';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
@@ -311,16 +312,28 @@ const getCurrencyDropdownName = name =>
 
 const MoneyInput = props => {
   const intl = useIntl();
-  const [currencyHasFocus, setCurrencyHasFocus] = React.useState(false);
-  const [amountHasFocus, setAmountHasFocus] = React.useState(false);
+  const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
+  const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
 
   const containerRef = React.useRef();
   const amountInputRef = React.useRef();
 
+  const { onFocus } = props;
+  const handleAmountFocus = React.useCallback(() => {
+    if (onFocus)
+      onFocus({
+        target: {
+          id: MoneyInput.getAmountInputId(props.id),
+          name: getAmountInputName(props.name),
+        },
+      });
+    toggleAmountHasFocus(true);
+  }, [toggleAmountHasFocus, onFocus, props.id, props.name]);
+
   const { onChange } = props;
   const handleAmountBlur = React.useCallback(() => {
     const amount = props.value.amount.trim();
-    setAmountHasFocus(false);
+    toggleAmountHasFocus(false);
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
     if (amount.length > 0 && currencies[props.value.currencyCode]) {
@@ -352,6 +365,7 @@ const MoneyInput = props => {
     props.name,
     props.value.amount,
     props.value.currencyCode,
+    toggleAmountHasFocus,
   ]);
 
   const handleAmountChange = React.useCallback(
@@ -428,6 +442,22 @@ const MoneyInput = props => {
     ]
   );
 
+  const handleCurrencyFocus = React.useCallback(() => {
+    if (onFocus)
+      onFocus({
+        target: {
+          id: MoneyInput.getCurrencyDropdownId(props.id),
+          name: getCurrencyDropdownName(props.name),
+        },
+      });
+
+    toggleCurrencyHasFocus(true);
+  }, [onFocus, toggleCurrencyHasFocus, props.name, props.id]);
+
+  const handleCurrencyBlur = React.useCallback(() => {
+    toggleCurrencyHasFocus(false);
+  }, [toggleCurrencyHasFocus]);
+
   const hasNoCurrencies = props.currencies.length === 0;
   const hasFocus = currencyHasFocus || amountHasFocus;
 
@@ -458,11 +488,38 @@ const MoneyInput = props => {
       };
     return null;
   })();
+
   const id = MoneyInput.getCurrencyDropdownId(props.id);
 
   const isHighPrecision =
     !MoneyInput.isEmpty(props.value) &&
     MoneyInput.isHighPrecision(props.value, intl.locale);
+
+  const { onBlur } = props;
+  const handleContainerBlur = React.useCallback(
+    event => {
+      // ensures that both fields are marked as touched when one of them
+      // is blurred
+      if (
+        typeof onBlur === 'function' &&
+        !containerRef.current.contains(event.relatedTarget)
+      ) {
+        onBlur({
+          target: {
+            id: MoneyInput.getCurrencyDropdownId(props.id),
+            name: getCurrencyDropdownName(props.name),
+          },
+        });
+        onBlur({
+          target: {
+            id: MoneyInput.getAmountInputId(props.id),
+            name: getAmountInputName(props.name),
+          },
+        });
+      }
+    },
+    [onBlur, props.id, props.name]
+  );
 
   return (
     <Contraints.Horizontal constraint={props.horizontalConstraint}>
@@ -475,27 +532,7 @@ const MoneyInput = props => {
           display: flex;
         `}
         data-testid="money-input-container"
-        onBlur={event => {
-          // ensures that both fields are marked as touched when one of them
-          // is blurred
-          if (
-            typeof props.onBlur === 'function' &&
-            !containerRef.current.contains(event.relatedTarget)
-          ) {
-            props.onBlur({
-              target: {
-                id: MoneyInput.getCurrencyDropdownId(props.id),
-                name: getCurrencyDropdownName(props.name),
-              },
-            });
-            props.onBlur({
-              target: {
-                id: MoneyInput.getAmountInputId(props.id),
-                name: getAmountInputName(props.name),
-              },
-            });
-          }
-        }}
+        onBlur={handleContainerBlur}
       >
         {hasNoCurrencies ? (
           <CurrencyLabel
@@ -521,19 +558,10 @@ const MoneyInput = props => {
             options={options}
             placeholder=""
             styles={currencySelectStyles}
-            onFocus={() => {
-              if (props.onFocus)
-                props.onFocus({
-                  target: {
-                    id: MoneyInput.getCurrencyDropdownId(props.id),
-                    name: getCurrencyDropdownName(props.name),
-                  },
-                });
-              setCurrencyHasFocus(true);
-            }}
+            onFocus={handleCurrencyFocus}
             menuPortalTarget={props.menuPortalTarget}
             menuShouldBlockScroll={props.menuShouldBlockScroll}
-            onBlur={() => setCurrencyHasFocus(false)}
+            onBlur={handleCurrencyBlur}
             onChange={handleCurrencyChange}
             data-testid="currency-dropdown"
           />
@@ -550,16 +578,7 @@ const MoneyInput = props => {
             autoComplete={props.autoComplete}
             name={getAmountInputName(props.name)}
             type="text"
-            onFocus={() => {
-              if (props.onFocus)
-                props.onFocus({
-                  target: {
-                    id: MoneyInput.getAmountInputId(props.id),
-                    name: getAmountInputName(props.name),
-                  },
-                });
-              setAmountHasFocus(true);
-            }}
+            onFocus={handleAmountFocus}
             value={props.value.amount}
             css={[
               getAmountInputStyles({ ...props, hasFocus }),

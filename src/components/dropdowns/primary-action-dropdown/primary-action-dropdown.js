@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import useToggleState from '../../../hooks/use-toggle-state';
 import vars from '../../../../materials/custom-properties';
 import Text from '../../typography/text';
 import { CaretDownIcon, CaretUpIcon } from '../../icons';
@@ -210,7 +211,7 @@ Option.defaultProps = {
  */
 const PrimaryActionDropdown = props => {
   const ref = React.useRef();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, toggle] = useToggleState(false);
 
   const handleGlobalClick = React.useCallback(
     event => {
@@ -220,10 +221,10 @@ const PrimaryActionDropdown = props => {
         event.target !== dropdownButton &&
         !dropdownButton.contains(event.target)
       ) {
-        setIsOpen(false);
+        toggle(false);
       }
     },
-    [ref]
+    [ref, toggle]
   );
   React.useEffect(() => {
     window.addEventListener('click', handleGlobalClick);
@@ -241,16 +242,16 @@ const PrimaryActionDropdown = props => {
   const handleClickOnHead = React.useCallback(
     event => {
       if (isOpen) {
-        setIsOpen(false);
+        toggle(true);
       } else {
         onClick(event);
       }
     },
-    [isOpen, onClick]
+    [isOpen, onClick, toggle]
   );
   const handleClickOnChevron = React.useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
+    toggle();
+  }, [toggle]);
 
   invariant(
     childrenAsArray.length > 1,
