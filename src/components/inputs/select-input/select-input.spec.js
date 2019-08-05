@@ -116,6 +116,25 @@ describe('in single mode', () => {
     });
   });
   describe('interacting', () => {
+    describe('when isAutofocussed is `true`', () => {
+      it('should open the list and all options should be visible', () => {
+        const { getByLabelText, getByText } = renderInput({
+          isAutofocussed: true,
+        });
+
+        const input = getByLabelText('Fruit');
+
+        fireEvent.blur(input);
+
+        fireEvent.keyDown(input, {
+          key: 'ArrowDown',
+        });
+
+        expect(getByText('Mango')).toBeInTheDocument();
+        expect(getByText('Lichi')).toBeInTheDocument();
+        expect(getByText('Raspberry')).toBeInTheDocument();
+      });
+    });
     it('should open the list and all options should be visible', () => {
       const { getByLabelText, getByText } = renderInput();
       const input = getByLabelText('Fruit');
