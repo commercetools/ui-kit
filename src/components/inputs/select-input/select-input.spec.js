@@ -128,7 +128,6 @@ describe('in single mode', () => {
 
         fireEvent.keyDown(input, {
           key: 'ArrowDown',
-          keyCode: 40,
         });
 
         expect(getByText('Mango')).toBeInTheDocument();
