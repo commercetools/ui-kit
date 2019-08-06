@@ -2,11 +2,29 @@
 
 # [10.0.2](https://github.com/commercetools/ui-kit/compare/v10.0.1...511adad) (2019-08-02)
 
+### New Features
+
+`custom-properties`: Expose `custom-properties.ts` ([#978](https://github.com/commercetools/ui-kit/pull/978))
+`use-toggle-state`: New hook ([#966](https://github.com/commercetools/ui-kit/pull/966)
+
 ### Bug Fixes
 
 - **jest/setup:** to show actual error logs on CI when something is logged ([#979](https://github.com/commercetools/ui-kit/issues/979)) ([511adad](https://github.com/commercetools/ui-kit/commit/511adad))
 - **select-inputs** truncate select-input placeholder text is long ([#955](https://github.com/commercetools/ui-kit/issues/955)) ([0ae06f5](https://github.com/commercetools/ui-kit/commit/0ae06f5))
-- **date-inputs:** placeholder i18n fixes ([#954](https://github.com/commercetools/ui-kit/issues/954)) ([12737ed](https://github.com/commercetools/ui-kit/commit/12737ed))
+- **`date-inputs`:** placeholder i18n fixes ([#954](https://github.com/commercetools/ui-kit/issues/954)) ([12737ed](https://github.com/commercetools/ui-kit/commit/12737ed))
+
+### Refactoring
+
+- `TimeInput`: use hooks ([#960](https://github.com/commercetools/ui-kit/issues/960))
+- `PasswordField`, **select-inputs**: use hooks ([#957](https://github.com/commercetools/ui-kit/pull/957)
+- `LocalizedTextField`: use hooks ([#958](https://github.com/commercetools/ui-kit/pull/958)
+- `DateInput`: use hooks ([#963](https://github.com/commercetools/ui-kit/pull/963)
+- `MultilineTextInput`: use hooks ([#966](https://github.com/commercetools/ui-kit/pull/966)
+- `PrimaryActionDropdown`: use hooks ([#965](https://github.com/commercetools/ui-kit/pull/965)
+- `MoneyInput`: use hooks ([#964](https://github.com/commercetools/ui-kit/pull/964)
+- `LocalizedMoneyInput`: use hooks ([#974](https://github.com/commercetools/ui-kit/pull/974)
+- `CollapsibleMotion`: use hooks ([#981](https://github.com/commercetools/ui-kit/pull/981)
+- `Tooltip`: use hooks ([#983](https://github.com/commercetools/ui-kit/pull/983), ([#994](https://github.com/commercetools/ui-kit/pull/994)
 
 <a name="10.0.1"></a>
 
