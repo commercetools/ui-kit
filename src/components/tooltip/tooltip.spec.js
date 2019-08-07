@@ -107,7 +107,7 @@ describe('Tooltip', () => {
     ).toBeInTheDocument();
   });
 
-  it('should not set aria-describedby on button when open', () => {
+  it('should not set aria-describedby on button when not open', () => {
     const { container } = render(
       <TestComponent id="my-tooltip" isOpen={false} />
     );
