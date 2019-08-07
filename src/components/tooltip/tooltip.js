@@ -122,7 +122,7 @@ const Tooltip = props => {
   );
 
   const childrenProps = {
-    'aria-describedby': open ? id : null,
+    'aria-describedby': tooltipIsOpen ? id : null,
     // for seo and accessibility, we add the tooltip's title
     // as a native title when the title is hidden
     title:
