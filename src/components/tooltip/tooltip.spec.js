@@ -107,6 +107,15 @@ describe('Tooltip', () => {
     ).toBeInTheDocument();
   });
 
+  it('should not set aria-describedby on button when open', () => {
+    const { container } = render(
+      <TestComponent id="my-tooltip" isOpen={false} />
+    );
+    expect(
+      container.querySelector("[aria-describedby='my-tooltip']")
+    ).not.toBeInTheDocument();
+  });
+
   describe('interacting with mouse', () => {
     it('should show tooltip', () => {
       const onMouseOver = jest.fn();
