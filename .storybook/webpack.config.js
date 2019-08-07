@@ -106,6 +106,12 @@ module.exports = ({ config }) => {
         { loader: require.resolve('yaml-loader') },
       ],
     },
+    // Fix for react-intl
+    // https://github.com/formatjs/formatjs/issues/143#issuecomment-518774786
+    {
+      test: /\.mjs$/,
+      type: 'javascript/auto',
+    },
   ];
 
   return config;
