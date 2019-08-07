@@ -1,3 +1,11 @@
+<a name="10.1.1"></a>
+
+## [10.1.1](https://github.com/commercetools/ui-kit/compare/v10.1.0...v10.1.1) (2019-08-07)
+
+### Bug Fixes
+
+- `Tooltip`: use defined variable ([#997](https://github.com/commercetools/ui-kit/issues/997)) ([c8ea11d](https://github.com/commercetools/ui-kit/commit/c8ea11d))
+
 <a name="10.1.0"></a>
 
 # [10.1.0](https://github.com/commercetools/ui-kit/compare/v10.0.1...511adad) (2019-08-02)
