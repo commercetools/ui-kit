@@ -10,7 +10,7 @@ const TestComponent = props => {
   // eslint-disable-next-line react/prop-types
   const [isToggled, toggle] = useToggleState(false);
   // eslint-disable-next-line react/prop-types
-  const [id] = useFieldId(props.id, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
 
   return (
     <div id={id}>

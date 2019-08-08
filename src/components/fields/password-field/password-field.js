@@ -22,7 +22,7 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 const PasswordField = props => {
   const intl = useIntl();
   const [isPasswordVisible, togglePasswordVisibility] = useToggleState(false);
-  const [id] = useFieldId(props.id, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
   const hasError = props.touched && hasErrors(props.errors);
 
   return (

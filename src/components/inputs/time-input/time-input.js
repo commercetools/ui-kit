@@ -25,7 +25,7 @@ const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
 const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 
 const TimeInput = props => {
-  const [id] = useFieldId(props.id, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
   const prevLocale = usePrevious(intl.locale);
 

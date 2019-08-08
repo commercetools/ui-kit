@@ -47,7 +47,7 @@ const Tooltip = props => {
 
   const isControlled = !isNil(props.isOpen);
   const tooltipIsOpen = isControlled ? props.isOpen : isOpen;
-  const [id] = useFieldId(props.id, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
   const handleClose = React.useCallback(

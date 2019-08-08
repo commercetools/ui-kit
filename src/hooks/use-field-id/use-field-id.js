@@ -8,7 +8,7 @@ const useFieldId = (id, sequentialId) => {
     setId(getFieldId({ id }, { id: internalId }, sequentialId));
   }, [id, internalId, setId, sequentialId]);
 
-  return [internalId];
+  return internalId;
 };
 
 export default useFieldId;

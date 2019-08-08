@@ -131,7 +131,7 @@ const LocalizedMoneyInput = props => {
     defaultExpansionState
   );
 
-  const [id] = useFieldId(props.id, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
 
   const hasErrorInRemainingCurrencies =
     props.hasError ||
