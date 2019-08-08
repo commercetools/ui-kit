@@ -34,8 +34,10 @@ describe('when id not provided', () => {
 });
 
 describe('when id is provided', () => {
-  it('should use provided id and not increment on rerender', () => {
-    const { container } = render(<TestComponent id="foo-bar" />);
+  it('should use provided id and not change on rerender', () => {
+    const { container, getByTestId } = render(<TestComponent id="foo-bar" />);
+    expect(container.querySelector('#foo-bar')).toBeInTheDocument();
+    getByTestId('toggle-btn').click();
     expect(container.querySelector('#foo-bar')).toBeInTheDocument();
   });
 });
