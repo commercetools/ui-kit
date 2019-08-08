@@ -23,29 +23,18 @@ describe('useToggleState', () => {
       expect(isToggled).toBe(false);
     });
   });
+  describe('when toggling with force', () => {
+    it('should toggle to the forced state', () => {
+      const { result } = renderHook(() => useToggleState(false));
+      const [, toggle] = result.current;
+      act(() => {
+        toggle(true);
+      });
+      expect(result.current[0]).toBe(true);
+      act(() => {
+        toggle(false);
+      });
+      expect(result.current[0]).toBe(false);
+    });
+  });
 });
-// it('should be open by default', () => {
-//   const { getByTestId } = render(<TestComponent />);
-//   expect(getByTestId('openState')).toHaveTextContent('open');
-// });
-//
-// it('should be possible to toggle the open state', () => {
-//   const { getByTestId } = render(<TestComponent />);
-//   expect(getByTestId('openState')).toHaveTextContent('open');
-//   getByTestId('toggle').click();
-//   expect(getByTestId('openState')).toHaveTextContent('closed');
-// });
-//
-// it('should be possible to set the state on and off', () => {
-//   const { getByTestId } = render(<TestComponent />);
-//   expect(getByTestId('openState')).toHaveTextContent('open');
-//   getByTestId('setOff').click();
-//   expect(getByTestId('openState')).toHaveTextContent('closed');
-//   getByTestId('setOn').click();
-//   expect(getByTestId('openState')).toHaveTextContent('open');
-// });
-//
-// it('should respect the default closed state', () => {
-//   const { getByTestId } = render(<TestComponent isDefaultOpen={false} />);
-//   expect(getByTestId('openState')).toHaveTextContent('closed');
-// });
