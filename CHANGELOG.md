@@ -1,3 +1,11 @@
+<a name="10.1.2"></a>
+
+## [10.1.2](https://github.com/commercetools/ui-kit/compare/v10.1.1...v10.1.2) (2019-08-08)
+
+### Bug Fixes
+
+- **inputs:** do not generate new field id on each render ([#999](https://github.com/commercetools/ui-kit/issues/999)) ([cb32dde](https://github.com/commercetools/ui-kit/commit/cb32dde))
+
 <a name="10.1.1"></a>
 
 ## [10.1.1](https://github.com/commercetools/ui-kit/compare/v10.1.0...v10.1.1) (2019-08-07)
