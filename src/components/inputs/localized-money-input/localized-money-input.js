@@ -13,7 +13,7 @@ import {
   getId,
   getName,
 } from '../../../utils/localized';
-import getFieldId from '../../../utils/get-field-id';
+import useFieldId from '../../../hooks/use-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import MoneyInput from '../money-input';
@@ -131,7 +131,7 @@ const LocalizedMoneyInput = props => {
     defaultExpansionState
   );
 
-  const id = getFieldId(props, {}, sequentialId);
+  const [id] = useFieldId(props.id, sequentialId);
 
   const hasErrorInRemainingCurrencies =
     props.hasError ||

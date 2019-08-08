@@ -5,6 +5,7 @@ import { oneLine } from 'common-tags';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/core';
 import useToggleState from '../../../hooks/use-toggle-state';
+import useFieldId from '../../../hooks/use-field-id';
 import ErrorMessage from '../../messages/error-message';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
@@ -21,7 +22,6 @@ import {
   getId,
   getName,
 } from '../../../utils/localized';
-import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import LanguagesButton from './languages-button';
 import messages from './messages';
@@ -136,7 +136,7 @@ const LocalizedTextInput = props => {
     Object.keys(props.value)
   );
 
-  const id = getFieldId(props, {}, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
 
   const hasErrorInRemainingLanguages =
     props.hasError ||
