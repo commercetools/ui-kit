@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
 import useToggleState from '../../hooks/use-toggle-state';
-import getFieldId from '../../utils/get-field-id';
+import useFieldId from '../../hooks/use-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
 import { Body, getBodyStyles } from './tooltip.styles';
 
@@ -47,7 +47,7 @@ const Tooltip = props => {
 
   const isControlled = !isNil(props.isOpen);
   const tooltipIsOpen = isControlled ? props.isOpen : isOpen;
-  const id = getFieldId(props, {}, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
   const handleClose = React.useCallback(
@@ -188,6 +188,7 @@ Tooltip.propTypes = {
   }).isRequired,
   off: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool,
+  id: PropTypes.string,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   placement: PropTypes.oneOf([

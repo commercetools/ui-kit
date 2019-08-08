@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
 import useToggleState from '../../../hooks/use-toggle-state';
+import useFieldId from '../../../hooks/use-field-id';
 import Constraints from '../../constraints';
 import Spacings from '../../spacings';
 import FieldLabel from '../../field-label';
 import PasswordInput from '../../inputs/password-input';
 import FlatButton from '../../buttons/flat-button';
 import { EyeIcon, EyeCrossedIcon } from '../../icons';
-import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -22,7 +22,7 @@ const hasErrors = errors => errors && Object.values(errors).some(Boolean);
 const PasswordField = props => {
   const intl = useIntl();
   const [isPasswordVisible, togglePasswordVisibility] = useToggleState(false);
-  const id = getFieldId(props, {}, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
   const hasError = props.touched && hasErrors(props.errors);
 
   return (

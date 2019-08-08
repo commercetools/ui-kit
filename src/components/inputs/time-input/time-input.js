@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import useFieldId from '../../../hooks/use-field-id';
+import usePrevious from '../../../hooks/use-previous';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import Constraints from '../../constraints';
 import { parseTime } from '../../../utils/parse-time';
@@ -24,8 +25,10 @@ const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
 const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
 
 const TimeInput = props => {
-  const id = getFieldId(props, {}, sequentialId);
+  const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
+  const prevLocale = usePrevious(intl.locale);
+
   const { name, value, onBlur, onChange } = props;
 
   const emitChange = React.useCallback(
@@ -53,15 +56,10 @@ const TimeInput = props => {
 
   const onClear = React.useCallback(() => emitChange(''), [emitChange]);
 
-  // so that it doesn't run on initial mount
-  const mounted = React.useRef();
-  React.useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-    } else {
-      emitChange(TimeInput.toLocaleTime(value, intl.locale));
-    }
-  }, [intl.locale, emitChange, value]);
+  // if locale has changed
+  if (typeof prevLocale !== 'undefined' && prevLocale !== intl.locale) {
+    emitChange(TimeInput.toLocaleTime(value, intl.locale));
+  }
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
