@@ -3567,16 +3567,16 @@ babel-plugin-react-docgen@^3.0.0:
     react-docgen "^4.1.0"
     recast "^0.14.7"
 
-babel-plugin-react-intl@4.1.6:
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-4.1.6.tgz#c05ca00bb3828a15190e6c5f880d267c1d2a91a7"
-  integrity sha512-Aw7seMojU2Ai1f09mP2fu18Y8zixMLiSR4QlJLbAPeFgZoVjzAgTw1Weym3YVRI03lOe8FjOechqYK650dksUA==
+babel-plugin-react-intl@4.1.12:
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-4.1.12.tgz#d45d06e247c6428dc453f3927dcf2c6455c8a2d1"
+  integrity sha512-dCw7LjfDCS03ugW0Oz1XG8J/OgAnEDsKqcyfzlDb4JL6aLiYz87XvM9sIdbMAdPZXaHLhj9GyK8CueyMIm66NQ==
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/helper-plugin-utils" "^7.0.0"
     "@types/babel__core" "^7.1.2"
     fs-extra "^8.0.1"
-    intl-messageformat-parser "^3.0.2"
+    intl-messageformat-parser "^3.0.7"
 
 babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
@@ -7971,6 +7971,11 @@ intl-messageformat-parser@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-3.0.2.tgz#87d26e25c5435355174ae2b7de63eaba77a0af38"
   integrity sha512-OTn9VqNEljYIGrFZOsEX94KLSY5ktZXeA7vHurwCmDZ5YypDxyF2SUSQxKHxb+782PP38omZsoLq1JHiZ2BKDQ==
+
+intl-messageformat-parser@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-3.0.7.tgz#d28493501a1bc40a094239b7ef26fe9412558e72"
+  integrity sha512-L16VbbV3NFaiZV65XwOIH9fBe52TS2EkOR0k8Y4ratsgTE7KPEbcUCUrz/iEQwJo7BcWY4ohkZbeYZRgAiPR1Q==
 
 intl-messageformat@^6.0.3:
   version "6.0.3"
