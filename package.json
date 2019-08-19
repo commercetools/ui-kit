@@ -175,7 +175,7 @@
     "pptr-testing-library": "0.4.0",
     "prettier": "1.18.2",
     "puppeteer": "1.19.0",
-    "qs": "6.7.0",
+    "qs": "6.8.0",
     "rcfile": "1.0.3",
     "react": "16.8.6",
     "react-dom": "16.8.6",
