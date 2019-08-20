@@ -5,6 +5,9 @@ import Types from 'slate-prop-types';
 import { css } from '@emotion/core';
 import { Editor } from 'slate-react';
 import { RenderBlockPlugin, RenderMarkPlugin } from './plugins';
+import BoldPlugin from './plugins/bold';
+import ItalicPlugin from './plugins/italic';
+import UnderlinedPlugin from './plugins/underlined';
 import Spacings from '../../spacings';
 import Button from './button';
 import MarkButton from './buttons/mark-button';
@@ -31,7 +34,13 @@ import Divider from './divider';
 
 const DEFAULT_NODE = 'paragraph';
 
-const plugins = [RenderMarkPlugin(), RenderBlockPlugin()];
+const plugins = [
+  BoldPlugin(),
+  ItalicPlugin(),
+  UnderlinedPlugin(),
+  RenderMarkPlugin(),
+  RenderBlockPlugin(),
+];
 
 const getDropdownItemStyles = value => {
   switch (value) {
@@ -190,7 +199,7 @@ class RichTextInput extends React.Component {
     // we use 1, because the initial focus counts as an undo
     // and it would be weird to do an undo that just undos the focus
     // and hides the toolbar
-    const isDisabled = !undos || undos.size === 0;
+    const isDisabled = !undos || undos.size === 1;
 
     return (
       <Button
@@ -353,24 +362,23 @@ class RichTextInput extends React.Component {
                     />
 
                     <MarkButton
-                      isActive={this.hasMark('bold')}
+                      isActive={editor.hasBoldMark()}
                       type="bold"
-                      onClickMark={this.onClickMark}
+                      onClickMark={editor.toggleBoldMark}
                       icon={<BoldIcon size="medium" />}
                     />
                     <MarkButton
-                      isActive={this.hasMark('italic')}
+                      isActive={editor.hasItalicMark()}
                       type="italic"
-                      onClickMark={this.onClickMark}
+                      onClickMark={editor.toggleItalicMark}
                       icon={<ItalicIcon size="medium" />}
                     />
                     <MarkButton
-                      isActive={this.hasMark('underlined')}
+                      isActive={editor.hasUnderlinedMark()}
                       type="underlined"
-                      onClickMark={this.onClickMark}
+                      onClickMark={editor.toggleUnderlinedMark}
                       icon={<UnderlineIcon size="medium" />}
                     />
-
                     <StyleDropdown
                       label="More styles"
                       options={markDropdownOptions}

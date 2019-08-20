@@ -1,32 +1,4 @@
 import React from 'react';
-import { isKeyHotkey } from 'is-hotkey';
-
-const isBoldHotkey = isKeyHotkey('mod+b');
-const isItalicHotkey = isKeyHotkey('mod+i');
-const isUnderlinedHotkey = isKeyHotkey('mod+u');
-
-export const MarkHotkeyPlugin = () => {
-  // Return our "plugin" object, containing the `onKeyDown` handler.
-  return {
-    // eslint-disable-next-line consistent-return
-    onKeyDown(event, editor, next) {
-      let mark;
-
-      if (isBoldHotkey(event)) {
-        mark = 'bold';
-      } else if (isItalicHotkey(event)) {
-        mark = 'italic';
-      } else if (isUnderlinedHotkey(event)) {
-        mark = 'underlined';
-      } else {
-        return next();
-      }
-
-      event.preventDefault();
-      editor.toggleMark(mark);
-    },
-  };
-};
 
 export const RenderBlockPlugin = () => {
   return {
@@ -91,14 +63,8 @@ export const RenderMarkPlugin = () => {
           return <sub {...attributes}>{children}</sub>;
         case 'strikethrough':
           return <del {...attributes}>{children}</del>;
-        case 'bold':
-          return <strong {...attributes}>{children}</strong>;
         case 'code':
           return <code {...attributes}>{children}</code>;
-        case 'italic':
-          return <em {...attributes}>{children}</em>;
-        case 'underlined':
-          return <u {...attributes}>{children}</u>;
         default:
           return next();
       }

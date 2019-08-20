@@ -1,5 +1,1 @@
-export {
-  MarkHotkeyPlugin,
-  RenderBlockPlugin,
-  RenderMarkPlugin,
-} from './plugins';
+export { RenderBlockPlugin, RenderMarkPlugin } from './plugins';
