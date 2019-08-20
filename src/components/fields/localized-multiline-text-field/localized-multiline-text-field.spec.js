@@ -23,16 +23,20 @@ class Story extends React.Component {
     value: { en: '', de: '' },
     selectedLanguage: 'en',
   };
+
   state = {
     value: this.props.value,
   };
+
   handleChange = event => {
+    event.persist();
+    const value = event.target.value;
     if (this.props.onChange) this.props.onChange(event);
 
     this.setState(prevState => ({
       value: {
         ...prevState.value,
-        [event.target.language]: event.target.value,
+        [event.target.language]: value,
       },
     }));
   };
@@ -119,16 +123,18 @@ it('should have focus automatically when isAutofocussed is passed', () => {
 });
 
 it('should call onChange when changing the value', () => {
-  const onChange = jest.fn(event => {
-    event.persist();
-  });
+  const onChange = jest.fn();
+
   const { getByLabelText } = renderLocalizedMultilineTextField({
     name: 'name-of-pet',
     onChange,
   });
-  fireEvent.change(getByLabelText('EN'), {
-    target: { language: 'en', value: 'foo' },
-  });
+
+  const event = { target: { value: 'foo' } };
+
+  const input = getByLabelText('EN');
+  fireEvent.change(input, event);
+
   expect(onChange).toHaveBeenCalledWith(
     expect.objectContaining({
       target: expect.objectContaining({
