@@ -26,6 +26,9 @@ plugins:
   - 'react'
   - 'react-hooks'
 overrides:
+  - files: ['*.story.js']
+    rules:
+      'max-classes-per-file': 0
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
@@ -101,4 +104,3 @@ rules:
   'lines-between-class-members': 0
   'react-hooks/rules-of-hooks': 'error'
   'react-hooks/exhaustive-deps': 'warn'
-  'max-classes-per-file': 0
