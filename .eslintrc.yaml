@@ -26,6 +26,9 @@ plugins:
   - 'react'
   - 'react-hooks'
 overrides:
+  - files: ['*.story.js']
+    rules:
+      'max-classes-per-file': 0
   - files: ['*.spec.js']
     rules:
       'react/display-name': 0
