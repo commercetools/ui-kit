@@ -29,9 +29,9 @@ class Story extends React.Component {
   };
 
   handleChange = event => {
+    event.persist();
     const value = event.target.value;
     if (this.props.onChange) this.props.onChange(event);
-    event.persist();
 
     this.setState(prevState => ({
       value: {
