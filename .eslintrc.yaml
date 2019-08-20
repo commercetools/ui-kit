@@ -101,3 +101,4 @@ rules:
   'lines-between-class-members': 0
   'react-hooks/rules-of-hooks': 'error'
   'react-hooks/exhaustive-deps': 'warn'
+  'max-classes-per-file': 0
