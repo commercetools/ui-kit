@@ -104,8 +104,8 @@ export const Container = styled.div`
     display: none;
     border-color: ${vars.borderColorForInput};
   }
-
-  &:focus-within {
+  /*
+  &:focus-within { */
     ${Toolbar} {
       display: flex;
       border-color: ${vars.borderColorForInputWhenFocused};
@@ -117,5 +117,5 @@ export const Container = styled.div`
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
-  }
+  /* } */
 `;

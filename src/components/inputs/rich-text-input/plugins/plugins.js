@@ -1,56 +1,44 @@
 import React from 'react';
 
+// eslint-disable-next-line import/prefer-default-export
 export const RenderBlockPlugin = () => {
   return {
     renderBlock(props, editor, next) {
       const { attributes, children, node } = props;
-
-      const alignment = node.data.get('alignment');
-
-      const spreadAttributes = alignment
-        ? {
-            ...attributes,
-            style: {
-              textAlign: alignment,
-            },
-          }
-        : attributes;
-
       switch (node.type) {
         case 'code':
           return (
             <pre>
-              <code {...spreadAttributes}>{children}</code>
+              <code {...attributes}>{children}</code>
             </pre>
           );
         case 'paragraph':
-          return <p {...spreadAttributes}>{children}</p>;
+          return <p {...attributes}>{children}</p>;
         case 'block-quote':
-          return <blockquote {...spreadAttributes}>{children}</blockquote>;
+          return <blockquote {...attributes}>{children}</blockquote>;
         case 'bulleted-list':
-          return <ul {...spreadAttributes}>{children}</ul>;
+          return <ul {...attributes}>{children}</ul>;
         case 'heading-one':
-          return <h1 {...spreadAttributes}>{children}</h1>;
+          return <h1 {...attributes}>{children}</h1>;
         case 'heading-two':
-          return <h2 {...spreadAttributes}>{children}</h2>;
+          return <h2 {...attributes}>{children}</h2>;
         case 'heading-three':
-          return <h3 {...spreadAttributes}>{children}</h3>;
+          return <h3 {...attributes}>{children}</h3>;
         case 'heading-four':
-          return <h4 {...spreadAttributes}>{children}</h4>;
+          return <h4 {...attributes}>{children}</h4>;
         case 'heading-five':
-          return <h5 {...spreadAttributes}>{children}</h5>;
-        case 'list-item':
-          return <li {...spreadAttributes}>{children}</li>;
-        case 'numbered-list':
-          return <ol {...spreadAttributes}>{children}</ol>;
+          return <h5 {...attributes}>{children}</h5>;
         default:
           return next();
       }
     },
+    // queries: {
+    //   currentBlock: editor =>
+    //     editor.value.activeMarks.some(mark => mark.type === typeName),
+    // },
   };
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const RenderMarkPlugin = () => {
   return {
     renderMark(props, editor, next) {
@@ -63,8 +51,6 @@ export const RenderMarkPlugin = () => {
           return <sub {...attributes}>{children}</sub>;
         case 'strikethrough':
           return <del {...attributes}>{children}</del>;
-        case 'code':
-          return <code {...attributes}>{children}</code>;
         default:
           return next();
       }
