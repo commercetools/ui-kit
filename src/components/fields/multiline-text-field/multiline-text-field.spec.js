@@ -100,7 +100,7 @@ it('should pass autocomplete', () => {
 it('should call onChange when changing the value', () => {
   const onChange = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onChange });
-  const event = { target: { value: 'foo' } };
+  const event = { target: { language: 'en', value: 'foo' } };
   fireEvent.change(getByLabelText('MultilineTextField'), event);
   expect(onChange).toHaveBeenCalled();
 });
