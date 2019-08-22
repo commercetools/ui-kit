@@ -185,26 +185,23 @@ const createCurrencySelectStyles = ({
 // position of `.` and `,`. Whatever occurs later is used as the decimal
 // separator.
 export const parseRawAmountToNumber = (rawAmount, locale) => {
-  let throwaway;
-  let separator;
+  let fractionsSeparator;
 
   if (locale) {
-    [throwaway, separator] = (9999.999) // we need any number that has more than 3 digits to show the thousand sepirator, and has fractions
-      .toLocaleString(locale) // after this step (localizing it) it'll be either 9,999.999 or 9.999,999 based in the locale
-      .replace(/9/g, '') // then we remove the number `9` to endup with `,.` or `.,`
-      .split('')
-      .map(symbol => (symbol === '.' ? '\\.' : symbol)); // here we escape the '.' to use it as regex
+    fractionsSeparator = (2.5) // we need any number with fractions, so that we know what is the fraction
+      .toLocaleString(locale) // "symbol" for the provided locale
+      .replace(/\d/g, ''); // then we remove the numbers and keep the "symbol"
   } else {
     const lastDot = String(rawAmount).lastIndexOf('.');
     const lastComma = String(rawAmount).lastIndexOf(',');
-
-    separator = lastComma > lastDot ? ',' : '.';
-    throwaway = separator === '.' ? ',' : '\\.';
+    fractionsSeparator = lastComma > lastDot ? ',' : '.';
   }
+
+  fractionsSeparator = fractionsSeparator === '.' ? '\\.' : fractionsSeparator; // here we escape the '.' to use it as regex
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
-    .replace(new RegExp(`${throwaway}`, 'g'), '')
-    .replace(separator, '.');
+    .replace(new RegExp(`[^0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
+    .replace(fractionsSeparator, '.'); // then we change whatever `fractionsSeparator` was to `.` so we can parse it as float
 
   return parseFloat(normalizedAmount, 10);
 };
