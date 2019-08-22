@@ -15,6 +15,7 @@ module.exports = {
       '<rootDir>/test/transform-file.js',
     '\\.css$': 'identity-obj-proxy',
   },
+  clearMocks: true,
   rootDir: rootPath,
   setupFiles: [
     'raf/polyfill',
