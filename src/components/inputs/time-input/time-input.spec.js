@@ -155,7 +155,7 @@ describe('TimeInput', () => {
         // it will be "12:03 PM" in this test.
         // See https://github.com/jsdom/jsdom/issues/1626#issuecomment-253795231
         // and https://github.com/nodejs/node/issues/8818
-        value: expect.stringMatching(/^12:03( PM)?$/),
+        value: '12:03',
       },
     });
   });
