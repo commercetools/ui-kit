@@ -52,7 +52,7 @@
     "format:js": "prettier --write '**/*.js'",
     "format:md": "prettier --write --parser markdown '**/*.md'",
     "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
-    "postinstall": "cd vendors && npm install",
+    "postinstall": "npm --prefix vendors install",
     "test": "cross-env NODE_ICU_DATA=./vendors/node_modules/full-icu jest --config jest.test.config.js",
     "test:watch": "cross-env NODE_ICU_DATA=./vendors/node_modules/full-icu jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
