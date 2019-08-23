@@ -3,3 +3,4 @@ package.json
 .public
 dist
 .percy-debug
+vendors
