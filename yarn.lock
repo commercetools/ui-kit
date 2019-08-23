@@ -7781,7 +7781,7 @@ intl-messageformat@^6.1.6:
     intl-format-cache "^4.1.13"
     intl-messageformat-parser "^3.0.7"
 
-intl-pluralrules@^1.0.3:
+intl-pluralrules@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/intl-pluralrules/-/intl-pluralrules-1.0.3.tgz#25438469f76fd13a4ac54a68a0ae4c0d30248a47"
   integrity sha512-N+q+NmxJD5Pi+h7DoemDcNZN86e1dPSFUsWUtYtnSc/fKRen4vxCTcsmGveWOUgI9O9uSLTaiwJpC9f5xa2X4w==
