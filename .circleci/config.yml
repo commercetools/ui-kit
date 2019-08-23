@@ -52,7 +52,7 @@ commands:
   unit_test:
     description: 'Running unit tests'
     steps:
-      - run: yarn cross-env NODE_ICU_DATA=./vendors/node_modules/full-icu run jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run: yarn run cross-env NODE_ICU_DATA=vendors/node_modules/full-icu jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
   bundle_test:
     description: 'Running bundle tests'
     steps:
