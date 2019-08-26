@@ -7,7 +7,6 @@ import vars from '../../../../materials/custom-properties';
 const Button = props => {
   return (
     <AccessibleButton
-      onClick={props.onClick}
       isDisabled={props.isDisabled}
       label={props.label}
       css={css`
@@ -40,7 +39,7 @@ const Button = props => {
 
 Button.propTypes = {
   isDisabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   label: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
   icon: PropTypes.element,

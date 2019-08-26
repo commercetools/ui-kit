@@ -37,7 +37,17 @@ storiesOf('Components|Inputs', module)
           )}
         />
 
-        <TextInput />
+        <ReactValue
+          defaultValue={''}
+          render={(value, onChange) => {
+            return (
+              <TextInput
+                onChange={evt => onChange(evt.target.value)}
+                value={value}
+              />
+            );
+          }}
+        />
       </Spacings.Stack>
     </Section>
   ));

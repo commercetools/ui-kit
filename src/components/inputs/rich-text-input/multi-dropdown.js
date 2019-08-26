@@ -13,12 +13,6 @@ import {
   StrikethroughIcon,
 } from './icons';
 
-const dropdownOptions = [
-  { label: 'Strikethrough', value: 'strikethrough' },
-  { label: 'Superscript', value: 'superscript' },
-  { label: 'Subscript', value: 'subscript' },
-];
-
 // eslint-disable-next-line
 const DropdownLabel = () => {
   return <MoreStylesIcon size="medium" />;
@@ -78,7 +72,7 @@ const MultiDownshift = props => {
           <div {...getMenuProps()} style={{ position: 'relative' }}>
             {isOpen ? (
               <DropdownContainer>
-                {dropdownOptions.map((item, index) => (
+                {props.dropdownOptions.map((item, index) => (
                   <DropdownItem
                     key={item.value}
                     value={item.value}

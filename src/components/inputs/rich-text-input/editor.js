@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
-import Types from 'slate-prop-types';
 import { css } from '@emotion/core';
 import Button from './button';
 import StyleDropdown from './style-dropdown';
@@ -98,6 +96,8 @@ const InnerEditor = props => {
               icon={<UnderlineIcon size="medium" />}
             />
             <MultiDropdown
+              label="More styles"
+              dropdownOptions={dropdownOptions}
               selectedItems={activeMoreStyleMarks}
               onSelect={onChangeMoreStyles}
             />
@@ -105,13 +105,13 @@ const InnerEditor = props => {
             <Button
               isActive={editor.hasNumberedListBlock()}
               label={'numbered-list'}
-              onClick={editor.toggleNumberedListBlock}
+              onMouseDown={editor.toggleNumberedListBlock}
               icon={<OrderedListIcon size="medium" />}
             ></Button>
             <Button
               isActive={editor.hasBulletedListBlock()}
               label={'ordered-list'}
-              onClick={editor.toggleBulletedListBlock}
+              onMouseDown={editor.toggleBulletedListBlock}
               icon={<UnorderedListIcon size="medium" />}
             ></Button>
             <div
@@ -193,8 +193,6 @@ const sharedProps = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
-  value: Types.value.isRequired,
 };
 
 InnerEditor.displayName = 'InnerEditor';
