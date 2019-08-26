@@ -621,7 +621,6 @@ const MoneyInput = props => {
                 <Tooltip
                   off={props.isDisabled}
                   placement="top-end"
-                  closeAfter={100000}
                   // we use negative margin to make up for the padding in the Tooltip Wrapper
                   // so that the tooltip is flush with the component
                   styles={{
