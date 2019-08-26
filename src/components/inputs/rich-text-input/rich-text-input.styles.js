@@ -104,18 +104,19 @@ export const Container = styled.div`
     display: none;
     border-color: ${vars.borderColorForInput};
   }
-  /*
-  &:focus-within { */
+
+  &:focus-within {
     ${Toolbar} {
-      display: flex;
+      /* display: flex; */
       border-color: ${vars.borderColorForInputWhenFocused};
     }
 
     ${EditorContainer} {
       border-color: ${vars.borderColorForInputWhenFocused};
-      border-top: 0;
+      
+      /* border-top: 0;
       border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      border-top-right-radius: 0; */
     }
-  /* } */
+  }
 `;

@@ -1,7 +1,4 @@
 /* eslint-disable max-classes-per-file, react/display-name, react/prop-types */
-// You'll find that downshift is a primitive component and
-// you'll be most successful wrapping it with another component
-// like the MultiDownshift one you see here:
 
 import React from 'react';
 import Downshift from 'downshift';
@@ -78,7 +75,7 @@ const MultiDownshift = props => {
           >
             <DropdownLabel />
           </AccessibleButton>
-          <div {...getMenuProps({ isOpen })} style={{ position: 'relative' }}>
+          <div {...getMenuProps()} style={{ position: 'relative' }}>
             {isOpen ? (
               <DropdownContainer>
                 {dropdownOptions.map((item, index) => (

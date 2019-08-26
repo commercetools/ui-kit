@@ -8,7 +8,7 @@ import UndoPlugin from './plugins/undo';
 import RedoPlugin from './plugins/redo';
 import ListPlugin from './plugins/list';
 import MarkPlugin from './plugins/mark';
-import Editor from './new-editor';
+import Editor from './editor';
 
 const plugins = [
   MarkPlugin({
