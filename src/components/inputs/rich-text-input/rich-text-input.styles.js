@@ -78,8 +78,10 @@ export const EditorContainer = styled.div`
   font-family: ${vars.fontFamilyDefault};
   ${getBorderColor}
   overflow-y: scroll;
-
   height: ${props => (props.isOpen ? '100%' : '32px')};
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 `;
 
 export const Container = styled.div`
@@ -101,22 +103,17 @@ export const Container = styled.div`
     border-radius: ${vars.borderRadiusForInput};
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    display: none;
     border-color: ${vars.borderColorForInput};
   }
 
   &:focus-within {
     ${Toolbar} {
-      /* display: flex; */
       border-color: ${vars.borderColorForInputWhenFocused};
     }
 
     ${EditorContainer} {
       border-color: ${vars.borderColorForInputWhenFocused};
-      
-      /* border-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0; */
+
     }
   }
 `;
