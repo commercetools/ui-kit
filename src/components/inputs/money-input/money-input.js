@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import has from 'lodash/has';
@@ -28,6 +29,14 @@ import messages from './messages';
 const TooltipWrapper = styled.div`
   display: flex;
 `;
+
+const getPortalId = id => `portal-${id}`;
+const getPortalNode = id => document.querySelector(`#${getPortalId(id)}`);
+
+const Portal = props => {
+  const domNode = getPortalNode(props.id);
+  return ReactDOM.createPortal(props.children, domNode);
+};
 
 const CurrencyLabel = props => (
   <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
@@ -521,6 +530,11 @@ const MoneyInput = props => {
     [onBlur, props.id, props.name]
   );
 
+  const TooltipPortal = React.useCallback(
+    remainingProps => <Portal {...remainingProps} id={props.id} />,
+    [props.id]
+  );
+
   return (
     <Contraints.Horizontal constraint={props.horizontalConstraint}>
       <div
@@ -598,33 +612,37 @@ const MoneyInput = props => {
             {...filterDataAttributes(props)}
           />
           {props.hasHighPrecisionBadge && isHighPrecision && (
-            <div
-              css={() =>
-                getHighPrecisionWrapperStyles({
-                  isDisabled: props.isDisabled,
-                })
-              }
-            >
-              <Tooltip
-                off={props.isDisabled}
-                placement="top-end"
-                // we use negative margin to make up for the padding in the Tooltip Wrapper
-                // so that the tooltip is flush with the component
-                styles={{
-                  body: {
-                    margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
-                  },
-                }}
-                title={intl.formatMessage(messages.highPrecision)}
-                components={{
-                  WrapperComponent: TooltipWrapper,
-                }}
+            <React.Fragment>
+              {!props.isDisabled && <div id={getPortalId(props.id)} />}
+              <div
+                css={() =>
+                  getHighPrecisionWrapperStyles({
+                    isDisabled: props.isDisabled,
+                  })
+                }
               >
-                <FractionDigitsIcon
-                  color={props.isDisabled ? 'neutral60' : 'info'}
-                />
-              </Tooltip>
-            </div>
+                <Tooltip
+                  off={props.isDisabled}
+                  placement="top-end"
+                  // we use negative margin to make up for the padding in the Tooltip Wrapper
+                  // so that the tooltip is flush with the component
+                  styles={{
+                    body: {
+                      margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
+                    },
+                  }}
+                  title={intl.formatMessage(messages.highPrecision)}
+                  components={{
+                    TooltipWrapperComponent: TooltipPortal,
+                    WrapperComponent: TooltipWrapper,
+                  }}
+                >
+                  <FractionDigitsIcon
+                    color={props.isDisabled ? 'neutral60' : 'info'}
+                  />
+                </Tooltip>
+              </div>
+            </React.Fragment>
           )}
         </div>
       </div>
