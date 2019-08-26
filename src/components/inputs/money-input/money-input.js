@@ -30,8 +30,11 @@ const TooltipWrapper = styled.div`
   display: flex;
 `;
 
+const getPortalId = id => `portal-${id}`;
+const getPortalNode = id => document.querySelector(`#${getPortalId(id)}`);
+
 const Portal = props => {
-  const domNode = document.querySelector(`#portal-${props.id}`);
+  const domNode = getPortalNode(props.id);
   return ReactDOM.createPortal(props.children, domNode);
 };
 
@@ -610,7 +613,7 @@ const MoneyInput = props => {
           />
           {props.hasHighPrecisionBadge && isHighPrecision && (
             <React.Fragment>
-              <div id={`portal-${props.id}`} />
+              {!props.isDisabled && <div id={getPortalId(props.id)} />}
               <div
                 css={() =>
                   getHighPrecisionWrapperStyles({
