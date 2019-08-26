@@ -304,6 +304,21 @@ describe('MoneyInput.parseMoneyValue', () => {
       );
     });
   });
+  describe('when called with a locale that uses comma as fraction separator', () => {
+    it('should parse the value according to the passed locale', () => {
+      expect(
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'highPrecision',
+            currencyCode: 'EUR',
+            fractionDigits: 3,
+            preciseAmount: 1234567,
+          },
+          'es'
+        )
+      ).toEqual({ amount: '1.234,567', currencyCode: 'EUR' });
+    });
+  });
 
   describe('when called with a minimal, valid centPrecision price', () => {
     it('should turn it into a value', () => {
