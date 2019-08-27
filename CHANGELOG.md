@@ -1,3 +1,12 @@
+<a name="10.1.3"></a>
+
+## [10.1.3](https://github.com/commercetools/ui-kit/compare/v10.1.2...v10.1.3) (2019-08-27)
+
+### Bug Fixes
+
+- `MoneyInput`: fix parsing ([#1019](https://github.com/commercetools/ui-kit/pull/1019))
+- `MoneyInput`: fix high precision tooltip ([#1029](https://github.com/commercetools/ui-kit/pull/1029))
+
 <a name="10.1.2"></a>
 
 ## [10.1.2](https://github.com/commercetools/ui-kit/compare/v10.1.1...v10.1.2) (2019-08-08)
