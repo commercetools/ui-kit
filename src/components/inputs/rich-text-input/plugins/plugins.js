@@ -32,10 +32,6 @@ export const RenderBlockPlugin = () => {
           return next();
       }
     },
-    // queries: {
-    //   currentBlock: editor =>
-    //     editor.value.activeMarks.some(mark => mark.type === typeName),
-    // },
   };
 };
 
