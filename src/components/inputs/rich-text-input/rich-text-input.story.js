@@ -22,19 +22,24 @@ storiesOf('Components|Inputs', module)
       <Spacings.Stack scale="l">
         <ReactValue
           defaultValue={initialValue}
-          render={(value, onChange) => (
-            <RichTextInput
-              id={text('id', '')}
-              name={text('name', '')}
-              onChange={onChange}
-              value={value}
-              placeholder={text('placeholder', 'Placeholder')}
-              hasError={boolean('hasError', false)}
-              hasWarning={boolean('hasWarning', false)}
-              isDisabled={boolean('isDisabled', false)}
-              isReadOnly={boolean('isReadOnly', false)}
-            />
-          )}
+          render={(value, onChange) => {
+            return (
+              <RichTextInput
+                id={text('id', '')}
+                name={text('name', '')}
+                onChange={newValue => {
+                  console.log(RichTextInput.serializeHtml(newValue));
+                  onChange(newValue);
+                }}
+                value={value}
+                placeholder={text('placeholder', 'Placeholder')}
+                hasError={boolean('hasError', false)}
+                hasWarning={boolean('hasWarning', false)}
+                isDisabled={boolean('isDisabled', false)}
+                isReadOnly={boolean('isReadOnly', false)}
+              />
+            );
+          }}
         />
 
         <ReactValue

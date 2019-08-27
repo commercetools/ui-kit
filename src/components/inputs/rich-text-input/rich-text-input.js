@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import Html from 'slate-html-serializer';
 import Types from 'slate-prop-types';
 import { Editor as SlateEditor } from 'slate-react';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
@@ -9,6 +10,10 @@ import RedoPlugin from './plugins/redo';
 import ListPlugin from './plugins/list';
 import MarkPlugin from './plugins/mark';
 import Editor from './editor';
+import rules from './utils/rules';
+
+// Create a new serializer instance with our `rules` from above.
+const html = new Html({ rules });
 
 const plugins = [
   MarkPlugin({
@@ -85,6 +90,9 @@ RichTextInput.defaultProps = {
 };
 
 RichTextInput.displayName = 'RichTextInput';
+
+RichTextInput.serializeHtml = html.serialize;
+RichTextInput.deserializeHtml = html.deserialize;
 
 RichTextInput.propTypes = {
   hasError: PropTypes.bool,
