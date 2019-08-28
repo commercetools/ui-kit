@@ -40,12 +40,14 @@ The Button components from `ui-kit` already support this functionality.
 
 #### Customizing the wrapper
 
-The tooltip applies event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to a wrapping `div` component around the children element. By default, this wrapper is displayed with style `inline-block`. If you want to customize this behaviour, then you can pass in a custom element.
+The tooltip applies event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to a wrapping `div` component around the children element. By default, this wrapper is displayed with style `inline-block`. If you want to customize this behaviour, then you can pass in a custom element. Be sure to use `React.forwardRef`, as we need the to pass the ref to the wrapper.
 
 ```js
-const Wrapper = styled.div`
-  display: block;
-`;
+const Wrapper = React.forwardRef((props, ref) => (
+  <div ref={ref} style={{ display: 'block' }} {...props}>
+    {props.children}
+  </div>
+));
 
 const FullWidthButton = styled.button`
   display: block;
