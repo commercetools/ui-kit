@@ -4,6 +4,7 @@ import requiredIf from 'react-required-if';
 import Html from 'slate-html-serializer';
 import Types from 'slate-prop-types';
 import { Editor as SlateEditor } from 'slate-react';
+import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import UndoPlugin from './plugins/undo';
 import RedoPlugin from './plugins/redo';
@@ -60,16 +61,16 @@ const plugins = [
 
 const RichTextInput = props => {
   const { onChange } = props;
-  const onValueChange = React.useCallback(
-    ({ value }) => {
-      onChange(value);
-    },
-    [onChange]
-  );
+  const onValueChange = ({ value }) => {
+    const event = {
+      target: { id: props.id, name: props.name, value },
+    };
+    onChange(event);
+  };
 
   return (
     <SlateEditor
-      {...props}
+      {...filterDataAttributes(props)}
       id={props.id}
       name={props.name}
       disabled={props.isDisabled}

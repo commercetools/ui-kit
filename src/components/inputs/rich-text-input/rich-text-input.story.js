@@ -27,9 +27,9 @@ storiesOf('Components|Inputs', module)
               <RichTextInput
                 id={text('id', '')}
                 name={text('name', '')}
-                onChange={newValue => {
-                  console.log(RichTextInput.serializeHtml(newValue));
-                  onChange(newValue);
+                onChange={event => {
+                  // console.log(RichTextInput.serializeHtml(newValue));
+                  onChange(event.target.value);
                 }}
                 value={value}
                 placeholder={text('placeholder', 'Placeholder')}
