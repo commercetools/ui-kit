@@ -45,7 +45,7 @@ const Dropdown = props => {
                     <DropdownItem
                       {...getItemProps({ key: index, index, item })}
                       value={item.value}
-                      isSelectedItem={item.value === selectedItem}
+                      isSelected={item.value === selectedItem}
                       isHovered={highlightedIndex === index}
                     >
                       {item.label}

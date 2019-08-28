@@ -30,13 +30,10 @@ const ListPlugin = (options = {}) => {
       },
       commands: {
         [command]: editor => {
-          const { value } = editor;
-          const { document } = value;
-
           const isList = hasBlock('list-item', editor);
 
           const isType = editor.value.blocks.some(block => {
-            return !!document.getClosest(
+            return !!editor.value.document.getClosest(
               block.key,
               parent => parent.type === typeName
             );

@@ -72,26 +72,26 @@ const MultiDownshift = props => {
           <div {...getMenuProps()} style={{ position: 'relative' }}>
             {isOpen ? (
               <DropdownContainer>
-                {props.dropdownOptions.map((item, index) => (
-                  <DropdownItem
-                    key={item.value}
-                    value={item.value}
-                    isSelectedItem={props.selectedItems.find(
-                      anItem => anItem === item.value
-                    )}
-                    isHovered={highlightedIndex === index}
-                    {...getItemProps({
-                      item,
-                      index,
-                      isActive: highlightedIndex === index,
-                      isSelected: props.selectedItems.find(
-                        anItem => anItem === item.value
-                      ),
-                    })}
-                  >
-                    {item.label}
-                  </DropdownItem>
-                ))}
+                {props.dropdownOptions.map((item, index) => {
+                  const isSelected = props.selectedItems.find(
+                    selectedItem => selectedItem === item.value
+                  );
+                  return (
+                    // eslint-disable-next-line react/jsx-key
+                    <DropdownItem
+                      {...getItemProps({
+                        item,
+                        index,
+                        key: item.value,
+                        value: item.value,
+                        isHovered: highlightedIndex === index,
+                        isSelected,
+                      })}
+                    >
+                      {item.label}
+                    </DropdownItem>
+                  );
+                })}
               </DropdownContainer>
             ) : null}
           </div>

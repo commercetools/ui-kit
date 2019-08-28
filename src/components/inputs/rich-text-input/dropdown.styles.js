@@ -7,7 +7,7 @@ const getItemStyles = props => {
   if (props.isHovered) {
     backgroundColor = vars.colorNeutral90;
   }
-  if (props.isSelectedItem) {
+  if (props.isSelected) {
     backgroundColor = vars.colorAccent95;
   }
 
