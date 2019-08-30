@@ -14,7 +14,7 @@ import {
   UnderlineIcon,
   RedoIcon,
 } from './icons';
-import { RevertIcon } from '../../icons';
+import { AngleUpIcon, AngleDownIcon, RevertIcon } from '../../icons';
 import Constraints from '../../constraints';
 import FlatButton from '../../buttons/flat-button';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
@@ -157,7 +157,17 @@ const InnerEditor = props => {
             justify-content: flex-end;
           `}
         >
-          <FlatButton onClick={toggle} label={isOpen ? 'Collapse' : 'Expand'} />
+          <FlatButton
+            onClick={toggle}
+            label={isOpen ? 'Collapse' : 'Expand'}
+            icon={
+              isOpen ? (
+                <AngleUpIcon size="small" />
+              ) : (
+                <AngleDownIcon size="small" />
+              )
+            }
+          />
         </div>
       </div>
     </Constraints.Horizontal>
