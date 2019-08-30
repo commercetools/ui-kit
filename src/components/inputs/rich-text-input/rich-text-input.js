@@ -47,16 +47,7 @@ const plugins = [
   RenderBlockPlugin(),
   UndoPlugin(),
   RedoPlugin(),
-  ListPlugin({
-    typeName: 'numbered-list',
-    query: 'hasNumberedListBlock',
-    command: 'toggleNumberedListBlock',
-  }),
-  ListPlugin({
-    typeName: 'bulleted-list',
-    query: 'hasBulletedListBlock',
-    command: 'toggleBulletedListBlock',
-  }),
+  ListPlugin(),
 ];
 
 const RichTextInput = props => {
