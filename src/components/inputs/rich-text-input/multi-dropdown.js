@@ -60,43 +60,55 @@ const MultiDownshift = props => {
         isOpen,
         getItemProps,
         highlightedIndex,
-      }) => (
-        <div>
-          <AccessibleButton
-            label={props.label}
-            css={getButtonStyles()}
-            {...getToggleButtonProps()}
-          >
-            <DropdownLabel />
-          </AccessibleButton>
-          <div {...getMenuProps()} style={{ position: 'relative' }}>
-            {isOpen ? (
-              <DropdownContainer>
-                {props.dropdownOptions.map((item, index) => {
-                  const isSelected = props.selectedItems.find(
-                    selectedItem => selectedItem === item.value
-                  );
-                  return (
-                    // eslint-disable-next-line react/jsx-key
-                    <DropdownItem
-                      {...getItemProps({
-                        item,
-                        index,
-                        key: item.value,
-                        value: item.value,
-                        isHovered: highlightedIndex === index,
-                        isSelected,
-                      })}
-                    >
-                      {item.label}
-                    </DropdownItem>
-                  );
-                })}
-              </DropdownContainer>
-            ) : null}
+      }) => {
+        const {
+          onClick: onClickToggle,
+          ...restOfToggleButtonProps
+        } = getToggleButtonProps();
+        return (
+          <div>
+            <AccessibleButton
+              {...restOfToggleButtonProps}
+              label={props.label}
+              css={getButtonStyles()}
+              onMouseDown={onClickToggle}
+            >
+              <DropdownLabel />
+            </AccessibleButton>
+            <div {...getMenuProps()} style={{ position: 'relative' }}>
+              {isOpen ? (
+                <DropdownContainer>
+                  {props.dropdownOptions.map((item, index) => {
+                    const isSelected = props.selectedItems.find(
+                      selectedItem => selectedItem === item.value
+                    );
+                    const {
+                      onClick: onClickItem,
+                      ...restOfItemProps
+                    } = getItemProps({
+                      item,
+                      index,
+                      key: item.value,
+                      value: item.value,
+                      isHovered: highlightedIndex === index,
+                      isSelected,
+                    });
+                    return (
+                      // eslint-disable-next-line react/jsx-key
+                      <DropdownItem
+                        {...restOfItemProps}
+                        onMouseDown={onClickItem}
+                      >
+                        {item.label}
+                      </DropdownItem>
+                    );
+                  })}
+                </DropdownContainer>
+              ) : null}
+            </div>
           </div>
-        </div>
-      )}
+        );
+      }}
     </Downshift>
   );
 };
