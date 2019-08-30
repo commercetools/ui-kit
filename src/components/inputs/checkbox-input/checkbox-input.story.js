@@ -30,7 +30,7 @@ storiesOf('Components|Inputs', module)
                 onChange(!isChecked);
               }}
               value={text('value', '')}
-              isChecked={boolean('isChecked', isChecked)}
+              isChecked={isChecked}
               isIndeterminate={boolean('isIndeterminate', false)}
               isHovered={boolean('isHovered', false)}
               isDisabled={boolean('isDisabled', false)}
