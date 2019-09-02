@@ -10,7 +10,6 @@ const hasBlock = (type, editor) =>
 
 const toggle = (editor, typeName) => {
   // Handle the extra wrapping required for list buttons.
-  console.log('here');
   const isList = hasBlock('list-item', editor);
   const isType = editor.value.blocks.some(block => {
     return !!editor.value.document.getClosest(

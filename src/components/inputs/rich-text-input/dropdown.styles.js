@@ -51,33 +51,39 @@ const Button = styled.button`
   }
 `;
 
-export const getButtonStyles = () => css`
-  border: 0;
-  font-family: ${vars.fontFamilyDefault};
-  border-radius: ${vars.borderRadius4};
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 4px;
-  color: ${vars.colorSolid};
+export const getButtonStyles = (props = {}) => [
+  css`
+    border: 0;
+    font-family: ${vars.fontFamilyDefault};
+    border-radius: ${vars.borderRadius4};
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    color: ${vars.colorSolid};
 
-  &:hover {
-    background-color: ${vars.colorNeutral90};
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:active,
-  &:focus {
-    background-color: ${vars.colorAccent30};
-    color: ${vars.colorSurface};
-
-    * {
-      fill: ${vars.colorSurface};
+    &:hover {
+      background-color: ${vars.colorNeutral90};
     }
-  }
-`;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active,
+    &:focus {
+      background-color: ${vars.colorAccent30};
+      color: ${vars.colorSurface};
+
+      * {
+        fill: ${vars.colorSurface};
+      }
+    }
+  `,
+  props.isIndeterminate &&
+    css`
+      background-color: ${vars.colorAccent95};
+    `,
+];
 
 const DropdownContainer = styled.div`
   position: absolute;

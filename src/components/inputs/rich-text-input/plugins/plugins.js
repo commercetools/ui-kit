@@ -12,8 +12,6 @@ export const RenderBlockPlugin = () => {
               <code {...attributes}>{children}</code>
             </pre>
           );
-        case 'paragraph':
-          return <p {...attributes}>{children}</p>;
         case 'block-quote':
           return <blockquote {...attributes}>{children}</blockquote>;
         case 'bulleted-list':
@@ -28,6 +26,12 @@ export const RenderBlockPlugin = () => {
           return <h4 {...attributes}>{children}</h4>;
         case 'heading-five':
           return <h5 {...attributes}>{children}</h5>;
+        case 'list-item':
+          return <li {...attributes}>{children}</li>;
+        case 'numbered-list':
+          return <ol {...attributes}>{children}</ol>;
+        case 'paragraph':
+          return <p {...attributes}>{children}</p>;
         default:
           return next();
       }

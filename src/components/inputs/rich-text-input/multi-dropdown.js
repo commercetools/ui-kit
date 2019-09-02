@@ -49,9 +49,11 @@ const DropdownItem = props => {
   );
 };
 
-const itemToString = item => item.value;
+const itemToString = item => item && item.value;
 
 const MultiDownshift = props => {
+  const isIndeterminate = props.selectedItems.length > 0;
+  console.log('isIndeterminate', isIndeterminate);
   return (
     <Downshift onSelect={props.onSelect} itemToString={itemToString}>
       {({
@@ -70,7 +72,7 @@ const MultiDownshift = props => {
             <AccessibleButton
               {...restOfToggleButtonProps}
               label={props.label}
-              css={getButtonStyles()}
+              css={getButtonStyles({ isIndeterminate })}
               onMouseDown={onClickToggle}
             >
               <DropdownLabel />
