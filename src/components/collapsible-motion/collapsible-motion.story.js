@@ -73,12 +73,12 @@ class CollapsibleMotionStory extends React.Component {
             <CollapsibleMotion
               isClosed={this.state.isClosed}
               onToggle={this.handleToggle}
-              minHeight={`${number('minHeight (controlled)', 0, {
+              minHeight={number('minHeight (controlled)', 0, {
                 range: true,
                 min: 0,
                 max: 500,
                 step: 5,
-              })}px`}
+              })}
             >
               {({ toggle, containerStyles, registerContentNode }) => (
                 <div>
