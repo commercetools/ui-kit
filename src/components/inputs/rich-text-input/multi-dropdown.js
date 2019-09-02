@@ -53,7 +53,7 @@ const itemToString = item => item && item.value;
 
 const MultiDownshift = props => {
   const isIndeterminate = props.selectedItems.length > 0;
-  console.log('isIndeterminate', isIndeterminate);
+
   return (
     <Downshift onSelect={props.onSelect} itemToString={itemToString}>
       {({
