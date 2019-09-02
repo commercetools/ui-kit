@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
 import sortBy from 'lodash/sortBy';
-import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
+import getScrollbarSize from 'dom-helpers/scrollbarSize';
 import { Global, ClassNames, css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import Spacings from '../../spacings';
