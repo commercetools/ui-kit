@@ -18,9 +18,12 @@ const defaultProps = {
   minHeight: 0,
 };
 
+const getMinHeight = minHeight =>
+  minHeight !== 0 ? `${minHeight}px` : minHeight;
+
 const createOpeningAnimation = (height, minHeight = 0) =>
   keyframes`
-    0% { height: ${minHeight}; overflow: hidden; }
+    0% { height: ${getMinHeight(minHeight)}; overflow: hidden; }
     99% { height: ${height}px; overflow: hidden; }
     100% { height: auto; overflow: visible; }
   `;
@@ -28,7 +31,7 @@ const createOpeningAnimation = (height, minHeight = 0) =>
 const createClosingAnimation = (height, minHeight) =>
   keyframes`
     from { height: ${height}px; }
-    to { height: ${minHeight}; overflow: hidden; }
+    to { height: ${getMinHeight(minHeight)}; overflow: hidden; }
   `;
 
 const useToggleAnimation = (isOpen, toggle, minHeight) => {
@@ -60,7 +63,7 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
 
   const containerStyles = isOpen
     ? { height: 'auto' }
-    : { height: minHeight, overflow: 'hidden' };
+    : { height: getMinHeight(minHeight), overflow: 'hidden' };
 
   let animation = null;
 
