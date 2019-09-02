@@ -7,7 +7,7 @@ import Cell from '../cell';
 import BaseTable from './base-table';
 import cellRangeRenderer from './cell-range-renderer';
 
-jest.mock('dom-helpers/util/scrollbarSize', () => () => 20);
+jest.mock('dom-helpers/scrollbarSize', () => () => 20);
 jest.mock('react-virtualized');
 
 const createTestProps = custom => ({
