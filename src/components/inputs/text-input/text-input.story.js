@@ -24,7 +24,7 @@ storiesOf('Components|Inputs', module)
             <TextInput
               id={text('id', '')}
               name={text('name', '')}
-              value={text('value', value)}
+              value={value}
               onChange={event => {
                 action('onChange')(event);
                 onChange(event.target.value);

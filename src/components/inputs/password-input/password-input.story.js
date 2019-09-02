@@ -23,7 +23,7 @@ storiesOf('Components|Inputs', module)
           <PasswordInput
             id={text('id', '')}
             name={text('name', 'password')}
-            value={text('value', value)}
+            value={value}
             autoComplete={select('autoComplete', [
               '',
               'on',
