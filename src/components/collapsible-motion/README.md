@@ -11,4 +11,6 @@ There are [many existing workaround](https://css-tricks.com/using-css-transition
 
 `CollapsibleMotion` uses a nice workaround which allows the browser to run this animation. `CollapsibleMotion` measures the resulting since and then animates between `height: 0` and the resulting size (at 99% of the animation). At the end of the animation, it sets the `height` back to `auto`.
 
+This component also supports passing in a minimumHeight prop. By default this is 0.
+
 Technically, we need to dynamically create the keyframes for this animation.
