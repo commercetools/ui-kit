@@ -20,7 +20,15 @@ class CollapsibleMotionStory extends React.Component {
           <h2>Uncontrolled example</h2>
           <div key={isDefaultClosed}>
             <div>Some content before</div>
-            <CollapsibleMotion isDefaultClosed={isDefaultClosed}>
+            <CollapsibleMotion
+              isDefaultClosed={isDefaultClosed}
+              minHeight={number('minHeight (unControlled)', 0, {
+                range: true,
+                min: 0,
+                max: 500,
+                step: 5,
+              })}
+            >
               {({ isOpen, toggle, containerStyles, registerContentNode }) => (
                 <div>
                   <div>
@@ -65,6 +73,12 @@ class CollapsibleMotionStory extends React.Component {
             <CollapsibleMotion
               isClosed={this.state.isClosed}
               onToggle={this.handleToggle}
+              minHeight={number('minHeight (controlled)', 0, {
+                range: true,
+                min: 0,
+                max: 500,
+                step: 5,
+              })}
             >
               {({ toggle, containerStyles, registerContentNode }) => (
                 <div>
