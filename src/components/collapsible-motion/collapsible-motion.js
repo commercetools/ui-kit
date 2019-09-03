@@ -36,6 +36,7 @@ const createClosingAnimation = (height, minHeight) =>
 
 const useToggleAnimation = (isOpen, toggle, minHeight) => {
   const nodeRef = React.useRef();
+  const animationRef = React.useRef(null);
   const prevIsOpen = usePrevious(isOpen);
 
   React.useEffect(
@@ -65,16 +66,14 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
     ? { height: 'auto' }
     : { height: getMinHeight(minHeight), overflow: 'hidden' };
 
-  let animation = null;
-
   // if state has changed
   if (typeof prevIsOpen !== 'undefined' && prevIsOpen !== isOpen) {
-    animation = isOpen
+    animationRef.current = isOpen
       ? createOpeningAnimation(nodeRef.current.clientHeight, minHeight)
       : createClosingAnimation(nodeRef.current.clientHeight, minHeight);
   }
 
-  return [animation, containerStyles, handleToggle, nodeRef];
+  return [animationRef.current, containerStyles, handleToggle, nodeRef];
 };
 
 const CollapsibleMotion = props => {
