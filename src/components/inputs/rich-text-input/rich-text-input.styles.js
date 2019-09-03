@@ -48,7 +48,7 @@ export const Toolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-family: ${vars.fontFamilyDefault};
-  border: 1px solid ${vars.borderColorForInput};
+  /* border: 1px solid ${vars.borderColorForInput}; */
   border-radius: ${vars.borderRadiusForInput};
   border-bottom: 0;
   padding: ${vars.spacingXs} calc(${vars.spacingS} - 1px);
@@ -73,21 +73,15 @@ export const Toolbar = styled.div`
 
 export const EditorContainer = styled.div`
   padding: ${vars.spacingXs} ${vars.spacingS};
-  border: 1px solid ${vars.borderColorForInput};
   border-radius: ${vars.borderRadiusForInput};
   font-family: ${vars.fontFamilyDefault};
   ${getBorderColor}
   overflow-y: scroll;
-  height: ${props => (props.isOpen ? '100%' : '32px')};
-  border-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 `;
 
 export const Container = styled.div`
   border-radius: ${vars.borderRadiusForInput};
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border: 1px solid black;
   transition: ${vars.transitionStandard};
   ${getBorderColor}
   ${getBackgroundColor}

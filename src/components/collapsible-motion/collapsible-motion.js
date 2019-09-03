@@ -3,7 +3,6 @@ import React from 'react';
 import invariant from 'tiny-invariant';
 import { keyframes, ClassNames } from '@emotion/core';
 import isNil from 'lodash/isNil';
-import usePrevious from '../../hooks/use-previous';
 import useToggleState from '../../hooks/use-toggle-state';
 
 const collapsibleMotionPropTypes = {
@@ -152,6 +151,8 @@ const UncontrolledCollapsibleMotion = props => {
             animation: `${animation.name} 200ms forwards`,
           };
         }
+
+        console.log('here', animation);
 
         return props.children({
           isOpen,

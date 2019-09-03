@@ -5,7 +5,7 @@ import Button from './button';
 import StyleDropdown from './style-dropdown';
 import MarkButton from './buttons/mark-button';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import useToggleState from '../../../hooks/use-toggle-state';
+import CollapsibleMotion from '../../collapsible-motion';
 import {
   BoldIcon,
   ItalicIcon,
@@ -95,117 +95,122 @@ const InnerEditor = props => {
     [toggleMark]
   );
 
-  const [isOpen, toggle] = useToggleState();
-
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <div>
-        <Container
-          {...props}
-          tabIndex={-1}
-          isOpen={isOpen}
-          onFocus={() => {
-            if (!isOpen) {
-              toggle();
-            }
-          }}
-        >
-          <Toolbar {...props} isOpen={isOpen}>
-            <StyleDropdown value={activeBlock} onChange={onClickBlock} />
-            <MarkButton
-              isActive={editor.hasBoldMark()}
-              type="bold"
-              onClickMark={editor.toggleBoldMark}
-              icon={<BoldIcon size="medium" />}
-            />
-            <MarkButton
-              isActive={editor.hasItalicMark()}
-              type="italic"
-              onClickMark={editor.toggleItalicMark}
-              icon={<ItalicIcon size="medium" />}
-            />
-            <MarkButton
-              isActive={editor.hasUnderlinedMark()}
-              type="underlined"
-              onClickMark={editor.toggleUnderlinedMark}
-              icon={<UnderlineIcon size="medium" />}
-            />
-            <MultiDropdown
-              label="More styles"
-              dropdownOptions={dropdownOptions}
-              selectedItems={activeMoreStyleMarks}
-              onSelect={onChangeMoreStyles}
-            />
-            <Divider />
-            <Button
-              isActive={editor.hasNumberedListBlock()}
-              label={'numbered-list'}
-              onMouseDown={editor.toggleNumberedListBlock}
-              icon={<OrderedListIcon size="medium" />}
-            ></Button>
-            <Button
-              isActive={editor.hasBulletedListBlock()}
-              label={'ordered-list'}
-              onMouseDown={editor.toggleBulletedListBlock}
-              icon={<UnorderedListIcon size="medium" />}
-            ></Button>
-            <div
-              css={css`
-                display: flex;
-                flex: 1;
-                justify-content: flex-end;
-              `}
+    <CollapsibleMotion minHeight={32}>
+      {({ isOpen, toggle, containerStyles, registerContentNode }) => (
+        <div>
+          <Constraints.Horizontal constraint={props.horizontalConstraint}>
+            <Container
+              {...props}
+              tabIndex={-1}
+              onFocus={() => {
+                if (!isOpen) {
+                  toggle();
+                }
+              }}
             >
-              <Button
-                active={false}
-                label={'undo'}
-                isDisabled={!editor.hasUndos()}
-                onMouseDown={editor.toggleUndo}
-                icon={
-                  <RevertIcon
-                    color={!editor.hasUndos() ? 'neutral60' : 'solid'}
-                    size="small"
+              <Toolbar {...props} isOpen={isOpen}>
+                <StyleDropdown value={activeBlock} onChange={onClickBlock} />
+                <MarkButton
+                  isActive={editor.hasBoldMark()}
+                  type="bold"
+                  onClickMark={editor.toggleBoldMark}
+                  icon={<BoldIcon size="medium" />}
+                />
+                <MarkButton
+                  isActive={editor.hasItalicMark()}
+                  type="italic"
+                  onClickMark={editor.toggleItalicMark}
+                  icon={<ItalicIcon size="medium" />}
+                />
+                <MarkButton
+                  isActive={editor.hasUnderlinedMark()}
+                  type="underlined"
+                  onClickMark={editor.toggleUnderlinedMark}
+                  icon={<UnderlineIcon size="medium" />}
+                />
+                <MultiDropdown
+                  label="More styles"
+                  dropdownOptions={dropdownOptions}
+                  selectedItems={activeMoreStyleMarks}
+                  onSelect={onChangeMoreStyles}
+                />
+                <Divider />
+                <Button
+                  isActive={editor.hasNumberedListBlock()}
+                  label={'numbered-list'}
+                  onMouseDown={editor.toggleNumberedListBlock}
+                  icon={<OrderedListIcon size="medium" />}
+                ></Button>
+                <Button
+                  isActive={editor.hasBulletedListBlock()}
+                  label={'ordered-list'}
+                  onMouseDown={editor.toggleBulletedListBlock}
+                  icon={<UnorderedListIcon size="medium" />}
+                ></Button>
+                <div
+                  css={css`
+                    display: flex;
+                    flex: 1;
+                    justify-content: flex-end;
+                  `}
+                >
+                  <Button
+                    active={false}
+                    label={'undo'}
+                    isDisabled={!editor.hasUndos()}
+                    onMouseDown={editor.toggleUndo}
+                    icon={
+                      <RevertIcon
+                        color={!editor.hasUndos() ? 'neutral60' : 'solid'}
+                        size="small"
+                      />
+                    }
                   />
-                }
-              />
-              <Button
-                active={false}
-                label={'redo'}
-                isDisabled={!editor.hasRedos()}
-                onMouseDown={editor.toggleRedo}
-                icon={
-                  <RedoIcon
-                    color={!editor.hasRedos() ? 'neutral60' : 'solid'}
-                    size="medium"
+                  <Button
+                    active={false}
+                    label={'redo'}
+                    isDisabled={!editor.hasRedos()}
+                    onMouseDown={editor.toggleRedo}
+                    icon={
+                      <RedoIcon
+                        color={!editor.hasRedos() ? 'neutral60' : 'solid'}
+                        size="medium"
+                      />
+                    }
                   />
-                }
-              />
-            </div>
-          </Toolbar>
-          <EditorContainer {...props} isOpen={isOpen}>
-            {props.children}
-          </EditorContainer>
-        </Container>
-        <div
-          css={css`
-            display: flex;
-            justify-content: flex-end;
-          `}
-        >
-          <FlatButton
-            onClick={toggle}
-            label={isOpen ? 'Collapse' : 'Expand'}
-            icon={
-              isOpen ? (
-                <AngleUpIcon size="small" />
-              ) : (
-                <AngleDownIcon size="small" />
-              )
-            }
-          />
+                </div>
+              </Toolbar>
+              <div style={containerStyles}>
+                <div ref={registerContentNode}>
+                  <EditorContainer {...props}>{props.children}</EditorContainer>
+                </div>
+              </div>
+            </Container>
+          </Constraints.Horizontal>
+          <div
+            css={css`
+              display: flex;
+              justify-content: flex-end;
+            `}
+          >
+            <FlatButton
+              onClick={() => {
+                toggle();
+              }}
+              label={isOpen ? 'Collapse' : 'Expand'}
+              icon={
+                isOpen ? (
+                  <AngleUpIcon size="small" />
+                ) : (
+                  <AngleDownIcon size="small" />
+                )
+              }
+            />
+          </div>
         </div>
-      </div>
-    </Constraints.Horizontal>
+      )}
+    </CollapsibleMotion>
   );
 };
 
