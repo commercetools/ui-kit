@@ -6,34 +6,36 @@ import vars from '../../../../materials/custom-properties';
 
 const Button = props => {
   return (
-    <AccessibleButton
-      isDisabled={props.isDisabled}
-      label={props.label}
-      css={css`
-        background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 4px;
-        padding: ${vars.spacingXs};
+    <div>
+      <AccessibleButton
+        isDisabled={props.isDisabled}
+        label={props.label}
+        css={css`
+          background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 4px;
+          padding: ${vars.spacingXs};
 
-        * {
-          fill: ${props.isActive ? vars.colorSurface : vars.colorSolid};
-        }
-
-        &:hover {
-          background: ${props.isActive
-            ? vars.colorAccent30
-            : vars.colorNeutral90};
           * {
             fill: ${props.isActive ? vars.colorSurface : vars.colorSolid};
           }
-        }
-      `}
-      {...props}
-    >
-      {props.icon}
-    </AccessibleButton>
+
+          &:hover {
+            background: ${props.isActive
+              ? vars.colorAccent30
+              : vars.colorNeutral90};
+            * {
+              fill: ${props.isActive ? vars.colorSurface : vars.colorSolid};
+            }
+          }
+        `}
+        {...props}
+      >
+        {props.icon}
+      </AccessibleButton>
+    </div>
   );
 };
 
