@@ -48,7 +48,6 @@ export const Toolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-family: ${vars.fontFamilyDefault};
-  /* border: 1px solid ${vars.borderColorForInput}; */
   border-radius: ${vars.borderRadiusForInput};
   border-bottom: 0;
   padding: ${vars.spacingXs} calc(${vars.spacingS} - 1px);
