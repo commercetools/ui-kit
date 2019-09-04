@@ -33,7 +33,7 @@ const RedoPlugin = (options = {}) => {
       commands: {
         toggleRedo: editor => {
           if (hasRedos(editor)) {
-            editor.undo();
+            editor.redo();
           }
         },
       },
