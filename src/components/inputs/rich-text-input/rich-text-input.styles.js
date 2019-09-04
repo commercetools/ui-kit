@@ -80,7 +80,7 @@ export const EditorContainer = styled.div`
 
 export const Container = styled.div`
   border-radius: ${vars.borderRadiusForInput};
-  border: 1px solid black;
+  border: 1px solid ${vars.borderColorForInput};
   transition: ${vars.transitionStandard};
   ${getBorderColor}
   ${getBackgroundColor}
@@ -100,6 +100,7 @@ export const Container = styled.div`
   }
 
   &:focus-within {
+    border-color: ${vars.borderColorForInputWhenFocused};
     ${Toolbar} {
       border-color: ${vars.borderColorForInputWhenFocused};
     }

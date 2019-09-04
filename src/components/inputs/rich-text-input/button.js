@@ -10,7 +10,7 @@ const Button = props => {
       isDisabled={props.isDisabled}
       label={props.label}
       css={css`
-        background: ${props.isActive ? vars.colorAccent30 : vars.colorSurface};
+        background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
         display: flex;
         justify-content: center;
         align-items: center;

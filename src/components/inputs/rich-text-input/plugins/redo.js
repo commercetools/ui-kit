@@ -25,7 +25,7 @@ const RedoPlugin = (options = {}) => {
         }
 
         event.preventDefault();
-        editor.redo();
+        editor.toggleRedo();
       },
       queries: {
         hasRedos: editor => hasRedos(editor),
