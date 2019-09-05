@@ -52,11 +52,9 @@ export const Toolbar = styled.div`
   border-bottom: 0;
   padding: ${vars.spacingXs} calc(${vars.spacingS} - 1px);
   padding-left: 3px;
-  align-items: center;
+  align-items: flex-start;
+  align-content: stretch;
 
-  > * {
-    margin-left: 1px !important;
-  }
   position: relative;
 
   &::after {

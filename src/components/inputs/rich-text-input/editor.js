@@ -115,6 +115,11 @@ const InnerEditor = props => {
                     display: flex;
                     flex-wrap: wrap;
                     flex: 1;
+                    align-items: flex-start;
+
+                    > * {
+                      margin-left: 1px !important;
+                    }
                   `}
                 >
                   <StyleDropdown value={activeBlock} onChange={onClickBlock} />
@@ -160,8 +165,10 @@ const InnerEditor = props => {
                   css={css`
                     display: flex;
                     flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: flex-start;
+
+                    > * {
+                      margin-left: 1px !important;
+                    }
                   `}
                 >
                   <Button
