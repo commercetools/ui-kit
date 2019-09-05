@@ -9,6 +9,7 @@ import OrigStrikethroughIcon from './svg/strikethrough.react.svg';
 import OrigSuperscriptIcon from './svg/superscript.react.svg';
 import OrigSubscriptIcon from './svg/subscript.react.svg';
 import OrigRedoIcon from './svg/redo.react.svg';
+import OrigUndoIcon from './svg/undo.react.svg';
 
 export const BoldIcon = createStyledIcon(OrigBoldIcon, 'BoldIcon');
 export const ItalicIcon = createStyledIcon(OrigItalicIcon, 'ItalicIcon');
@@ -42,4 +43,5 @@ export const SubscriptIcon = createStyledIcon(
   'SubscriptIcon'
 );
 
+export const UndoIcon = createStyledIcon(OrigUndoIcon, 'UndoIcon');
 export const RedoIcon = createStyledIcon(OrigRedoIcon, 'RedoIcon');

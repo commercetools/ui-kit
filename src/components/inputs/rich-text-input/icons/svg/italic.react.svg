@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
-    <title>Component / icon / 16px / Richtext / Italic </title>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Component / icon / 24px / Richtext / Italic </title>
     <desc>Created with Sketch.</desc>
-    <g id="Component-/-icon-/-16px-/-Richtext-/-Italic-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g fill="#1A1A1A" id="I">
-            <polygon points="6 13.9929687 8.55117188 2 9.92929688 2 7.378125 13.9929687"></polygon>
+    <g id="Component-/-icon-/-24px-/-Richtext-/-Italic-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-/-icon-/-16px-/-Richtext-/-Italic-" fill="#1A1A1A">
+            <polygon id="I" points="9 20.9894531 12.8267578 3 14.8939453 3 11.0671875 20.9894531"></polygon>
         </g>
     </g>
 </svg>

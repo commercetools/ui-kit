@@ -12,9 +12,10 @@ import {
   UnorderedListIcon,
   OrderedListIcon,
   UnderlineIcon,
-  // RedoIcon,
+  RedoIcon,
+  UndoIcon,
 } from './icons';
-import { AngleUpIcon, AngleDownIcon, RevertIcon } from '../../icons';
+import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Constraints from '../../constraints';
 import FlatButton from '../../buttons/flat-button';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
@@ -177,7 +178,7 @@ const InnerEditor = props => {
                     isDisabled={!editor.hasUndos()}
                     onMouseDown={editor.toggleUndo}
                     icon={
-                      <RevertIcon
+                      <UndoIcon
                         color={!editor.hasUndos() ? 'neutral60' : 'solid'}
                         size="medium"
                       />
@@ -189,7 +190,7 @@ const InnerEditor = props => {
                     isDisabled={!editor.hasRedos()}
                     onMouseDown={editor.toggleRedo}
                     icon={
-                      <RevertIcon
+                      <RedoIcon
                         color={!editor.hasRedos() ? 'neutral60' : 'solid'}
                         size="medium"
                       />
