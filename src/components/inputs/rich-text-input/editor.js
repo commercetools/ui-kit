@@ -12,7 +12,7 @@ import {
   UnorderedListIcon,
   OrderedListIcon,
   UnderlineIcon,
-  RedoIcon,
+  // RedoIcon,
 } from './icons';
 import { AngleUpIcon, AngleDownIcon, RevertIcon } from '../../icons';
 import Constraints from '../../constraints';
@@ -110,49 +110,58 @@ const InnerEditor = props => {
               }}
             >
               <Toolbar {...props} isOpen={isOpen}>
-                <StyleDropdown value={activeBlock} onChange={onClickBlock} />
-                <MarkButton
-                  isActive={editor.hasBoldMark()}
-                  type="bold"
-                  onClickMark={editor.toggleBoldMark}
-                  icon={<BoldIcon size="medium" />}
-                />
-                <MarkButton
-                  isActive={editor.hasItalicMark()}
-                  type="italic"
-                  onClickMark={editor.toggleItalicMark}
-                  icon={<ItalicIcon size="medium" />}
-                />
-                <MarkButton
-                  isActive={editor.hasUnderlinedMark()}
-                  type="underlined"
-                  onClickMark={editor.toggleUnderlinedMark}
-                  icon={<UnderlineIcon size="medium" />}
-                />
-                <MultiDropdown
-                  label="More styles"
-                  dropdownOptions={dropdownOptions}
-                  selectedItems={activeMoreStyleMarks}
-                  onSelect={onChangeMoreStyles}
-                />
-                <Divider />
-                <Button
-                  isActive={editor.hasNumberedListBlock()}
-                  label={'numbered-list'}
-                  onMouseDown={editor.toggleNumberedListBlock}
-                  icon={<OrderedListIcon size="medium" />}
-                ></Button>
-                <Button
-                  isActive={editor.hasBulletedListBlock()}
-                  label={'ordered-list'}
-                  onMouseDown={editor.toggleBulletedListBlock}
-                  icon={<UnorderedListIcon size="medium" />}
-                ></Button>
                 <div
                   css={css`
                     display: flex;
+                    flex-wrap: wrap;
                     flex: 1;
-                    justify-content: flex-end;
+                  `}
+                >
+                  <StyleDropdown value={activeBlock} onChange={onClickBlock} />
+                  <MarkButton
+                    isActive={editor.hasBoldMark()}
+                    type="bold"
+                    onClickMark={editor.toggleBoldMark}
+                    icon={<BoldIcon size="medium" />}
+                  />
+                  <MarkButton
+                    isActive={editor.hasItalicMark()}
+                    type="italic"
+                    onClickMark={editor.toggleItalicMark}
+                    icon={<ItalicIcon size="medium" />}
+                  />
+                  <MarkButton
+                    isActive={editor.hasUnderlinedMark()}
+                    type="underlined"
+                    onClickMark={editor.toggleUnderlinedMark}
+                    icon={<UnderlineIcon size="medium" />}
+                  />
+                  <MultiDropdown
+                    label="More styles"
+                    dropdownOptions={dropdownOptions}
+                    selectedItems={activeMoreStyleMarks}
+                    onSelect={onChangeMoreStyles}
+                  />
+                  <Divider />
+                  <Button
+                    isActive={editor.hasNumberedListBlock()}
+                    label={'numbered-list'}
+                    onMouseDown={editor.toggleNumberedListBlock}
+                    icon={<OrderedListIcon size="medium" />}
+                  ></Button>
+                  <Button
+                    isActive={editor.hasBulletedListBlock()}
+                    label={'ordered-list'}
+                    onMouseDown={editor.toggleBulletedListBlock}
+                    icon={<UnorderedListIcon size="medium" />}
+                  ></Button>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: flex-start;
                   `}
                 >
                   <Button
@@ -163,7 +172,7 @@ const InnerEditor = props => {
                     icon={
                       <RevertIcon
                         color={!editor.hasUndos() ? 'neutral60' : 'solid'}
-                        size="small"
+                        size="medium"
                       />
                     }
                   />
@@ -173,7 +182,7 @@ const InnerEditor = props => {
                     isDisabled={!editor.hasRedos()}
                     onMouseDown={editor.toggleRedo}
                     icon={
-                      <RedoIcon
+                      <RevertIcon
                         color={!editor.hasRedos() ? 'neutral60' : 'solid'}
                         size="medium"
                       />
