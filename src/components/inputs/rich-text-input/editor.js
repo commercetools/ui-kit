@@ -25,6 +25,11 @@ import Divider from './divider';
 import MultiDropdown from './multi-dropdown';
 import messages from './messages';
 
+const tooltipStyles = {
+  body: {
+    zIndex: 9999,
+  },
+};
 const DEFAULT_NODE = 'paragraph';
 
 const dropdownOptions = [
@@ -131,7 +136,11 @@ const InnerEditor = props => {
                   `}
                 >
                   <StyleDropdown value={activeBlock} onChange={onClickBlock} />
-                  <Tooltip title="Bold" placement="bottom">
+                  <Tooltip
+                    title="Bold"
+                    placement="bottom"
+                    styles={tooltipStyles}
+                  >
                     <MarkButton
                       isActive={editor.hasBoldMark()}
                       type="bold"
@@ -139,7 +148,11 @@ const InnerEditor = props => {
                       icon={<BoldIcon size="medium" />}
                     />
                   </Tooltip>
-                  <Tooltip title="Italic" placement="bottom">
+                  <Tooltip
+                    title="Italic"
+                    placement="bottom"
+                    styles={tooltipStyles}
+                  >
                     <MarkButton
                       isActive={editor.hasItalicMark()}
                       type="italic"
@@ -147,7 +160,11 @@ const InnerEditor = props => {
                       icon={<ItalicIcon size="medium" />}
                     />
                   </Tooltip>
-                  <Tooltip title="Underlined" placement="bottom">
+                  <Tooltip
+                    title="Underlined"
+                    placement="bottom"
+                    styles={tooltipStyles}
+                  >
                     <MarkButton
                       isActive={editor.hasUnderlinedMark()}
                       type="underlined"
@@ -162,7 +179,11 @@ const InnerEditor = props => {
                     onSelect={onChangeMoreStyles}
                   />
                   <Divider />
-                  <Tooltip title="Numbered list" placement="bottom">
+                  <Tooltip
+                    title="Numbered list"
+                    placement="bottom"
+                    styles={tooltipStyles}
+                  >
                     <Button
                       isActive={editor.hasNumberedListBlock()}
                       label={'numbered-list'}
@@ -170,7 +191,11 @@ const InnerEditor = props => {
                       icon={<OrderedListIcon size="medium" />}
                     />
                   </Tooltip>
-                  <Tooltip title="Bulleted list" placement="bottom">
+                  <Tooltip
+                    title="Bulleted list"
+                    placement="bottom"
+                    styles={tooltipStyles}
+                  >
                     <Button
                       isActive={editor.hasBulletedListBlock()}
                       label={'ordered-list'}

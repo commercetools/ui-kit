@@ -32,7 +32,12 @@ const Dropdown = props => {
         const { onClick, ...restOfToggleButtonProps } = getToggleButtonProps();
         return (
           <div>
-            <Tooltip title="Text styles" placement="bottom" off={isOpen}>
+            <Tooltip
+              title="Text styles"
+              placement="bottom"
+              off={isOpen}
+              style={{ body: { zIndex: 9999 } }}
+            >
               <AccessibleButton
                 label={props.label}
                 css={getButtonStyles()}

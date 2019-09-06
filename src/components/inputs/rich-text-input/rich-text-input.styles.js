@@ -65,7 +65,7 @@ export const Toolbar = styled.div`
     background: ${vars.colorNeutral};
     left: 50%;
     transform: translateX(-50%);
-    bottom: 0;
+    bottom: -1px;
   }
 `;
 
