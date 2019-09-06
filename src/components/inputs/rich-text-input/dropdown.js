@@ -1,6 +1,7 @@
 import React from 'react';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
+import Tooltip from '../../tooltip';
 import AccessibleButton from '../../buttons/accessible-button';
 import {
   getButtonStyles,
@@ -31,15 +32,16 @@ const Dropdown = props => {
         const { onClick, ...restOfToggleButtonProps } = getToggleButtonProps();
         return (
           <div>
-            <AccessibleButton
-              label={props.label}
-              css={getButtonStyles()}
-              {...restOfToggleButtonProps}
-              onMouseDown={toggleMenu}
-            >
-              <DropdownLabel>{props.label}</DropdownLabel>
-            </AccessibleButton>
-
+            <Tooltip title="Text styles" placement="bottom" off={isOpen}>
+              <AccessibleButton
+                label={props.label}
+                css={getButtonStyles()}
+                {...restOfToggleButtonProps}
+                onMouseDown={toggleMenu}
+              >
+                <DropdownLabel>{props.label}</DropdownLabel>
+              </AccessibleButton>
+            </Tooltip>
             <div style={{ position: 'relative' }}>
               {isOpen ? (
                 <DropdownContainer>
