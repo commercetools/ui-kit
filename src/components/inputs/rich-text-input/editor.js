@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import Button from './button';
 import StyleDropdown from './style-dropdown';
 import MarkButton from './buttons/mark-button';
+import Tooltip from '../../tooltip';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import CollapsibleMotion from '../../collapsible-motion';
 import {
@@ -124,24 +125,30 @@ const InnerEditor = props => {
                   `}
                 >
                   <StyleDropdown value={activeBlock} onChange={onClickBlock} />
-                  <MarkButton
-                    isActive={editor.hasBoldMark()}
-                    type="bold"
-                    onClickMark={editor.toggleBoldMark}
-                    icon={<BoldIcon size="medium" />}
-                  />
-                  <MarkButton
-                    isActive={editor.hasItalicMark()}
-                    type="italic"
-                    onClickMark={editor.toggleItalicMark}
-                    icon={<ItalicIcon size="medium" />}
-                  />
-                  <MarkButton
-                    isActive={editor.hasUnderlinedMark()}
-                    type="underlined"
-                    onClickMark={editor.toggleUnderlinedMark}
-                    icon={<UnderlineIcon size="medium" />}
-                  />
+                  <Tooltip title="Bold" placement="bottom">
+                    <MarkButton
+                      isActive={editor.hasBoldMark()}
+                      type="bold"
+                      onClickMark={editor.toggleBoldMark}
+                      icon={<BoldIcon size="medium" />}
+                    />
+                  </Tooltip>
+                  <Tooltip title="Italic" placement="bottom">
+                    <MarkButton
+                      isActive={editor.hasItalicMark()}
+                      type="italic"
+                      onClickMark={editor.toggleItalicMark}
+                      icon={<ItalicIcon size="medium" />}
+                    />
+                  </Tooltip>
+                  <Tooltip title="Underlined" placement="bottom">
+                    <MarkButton
+                      isActive={editor.hasUnderlinedMark()}
+                      type="underlined"
+                      onClickMark={editor.toggleUnderlinedMark}
+                      icon={<UnderlineIcon size="medium" />}
+                    />
+                  </Tooltip>
                   <MultiDropdown
                     label="More styles"
                     dropdownOptions={dropdownOptions}

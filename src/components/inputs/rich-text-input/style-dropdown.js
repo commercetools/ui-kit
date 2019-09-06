@@ -56,7 +56,7 @@ const DropdownItem = props => (
 // eslint-disable-next-line
 const DropdownLabel = () => {
   return (
-    <Spacings.Inline scale="xs" alignItems="center">
+    <Spacings.Inline scale="xs" alignItems="center" justifyContent="center">
       <span>Style</span>
       <CaretDownIcon size="small" />
     </Spacings.Inline>

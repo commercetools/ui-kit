@@ -22,17 +22,20 @@ const Dropdown = props => {
     >
       {({
         isOpen,
+        toggleMenu,
         getToggleButtonProps,
         getItemProps,
         highlightedIndex,
         selectedItem,
       }) => {
+        const { onClick, ...restOfToggleButtonProps } = getToggleButtonProps();
         return (
           <div>
             <AccessibleButton
               label={props.label}
               css={getButtonStyles()}
-              {...getToggleButtonProps()}
+              {...restOfToggleButtonProps}
+              onMouseDown={toggleMenu}
             >
               <DropdownLabel>{props.label}</DropdownLabel>
             </AccessibleButton>
@@ -40,17 +43,29 @@ const Dropdown = props => {
             <div style={{ position: 'relative' }}>
               {isOpen ? (
                 <DropdownContainer>
-                  {props.options.map((item, index) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <DropdownItem
-                      {...getItemProps({ key: index, index, item })}
-                      value={item.value}
-                      isSelected={item.value === selectedItem}
-                      isHovered={highlightedIndex === index}
-                    >
-                      {item.label}
-                    </DropdownItem>
-                  ))}
+                  {props.options.map((item, index) => {
+                    const { onClick, ...restOfItemProps } = getItemProps({
+                      key: index,
+                      index,
+                      item,
+                    });
+                    return (
+                      // eslint-disable-next-line react/jsx-key
+                      <DropdownItem
+                        {...restOfItemProps}
+                        onMouseDown={event => {
+                          restOfItemProps.onMouseDown(event);
+                          onClick(event);
+                        }}
+                        value={item.value}
+                        isSelected={item.value === selectedItem}
+                        isHovered={highlightedIndex === index}
+                      >
+                        {item.label}
+                      </DropdownItem>
+                    );
+                  })}
+                  }
                 </DropdownContainer>
               ) : null}
             </div>

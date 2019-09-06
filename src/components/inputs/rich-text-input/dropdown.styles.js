@@ -28,7 +28,7 @@ const Button = styled.button`
   font-family: ${vars.fontFamilyDefault};
   border-radius: ${vars.borderRadius4};
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.87rem;
   padding: 4px;
   color: ${vars.colorSolid};
 
@@ -51,25 +51,31 @@ const Button = styled.button`
   }
 `;
 
-export const getButtonStyles = (props = {}) => [
+export const getButtonStyles = (props = { isStyleButton: true }) => [
   css`
     border: 0;
     font-family: ${vars.fontFamilyDefault};
     border-radius: ${vars.borderRadius4};
     cursor: pointer;
     font-size: 1rem;
-    padding: 4px;
     color: ${vars.colorSolid};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: ${props.isStyleButton ? '3px 8px' : '4px'};
 
     &:hover {
       background-color: ${vars.colorNeutral90};
     }
 
+    &:active:focus {
+      background: pink;
+    }
     &:focus {
       outline: none;
     }
 
-    &:active,
+    &:hover:active,
     &:focus {
       background-color: ${vars.colorAccent30};
       color: ${vars.colorSurface};

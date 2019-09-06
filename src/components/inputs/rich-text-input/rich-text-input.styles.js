@@ -60,7 +60,7 @@ export const Toolbar = styled.div`
   &::after {
     position: absolute;
     content: '';
-    width: calc(100% - 16px);
+    width: calc(100% - 8px);
     height: 1px;
     background: ${vars.colorNeutral};
     left: 50%;

@@ -3,6 +3,7 @@
 import React from 'react';
 import Downshift from 'downshift';
 import Spacings from '../../spacings';
+import Tooltip from '../../tooltip';
 import AccessibleButton from '../../buttons/accessible-button';
 import Dropdown from './dropdown';
 import { getButtonStyles, DropdownContainer } from './dropdown.styles';
@@ -61,22 +62,38 @@ const MultiDownshift = props => {
         getMenuProps,
         isOpen,
         getItemProps,
+        toggleMenu,
         highlightedIndex,
       }) => {
         const {
           onClick: onClickToggle,
           ...restOfToggleButtonProps
         } = getToggleButtonProps();
+        console.log(isOpen);
         return (
           <div>
-            <AccessibleButton
-              {...restOfToggleButtonProps}
-              label={props.label}
-              css={getButtonStyles({ isIndeterminate })}
-              onMouseDown={onClickToggle}
+            <Tooltip
+              off={isOpen}
+              title="More styles"
+              placement="bottom"
+              styles={{ body: { zIndex: 99999 } }}
             >
-              <DropdownLabel />
-            </AccessibleButton>
+              <div>
+                <AccessibleButton
+                  {...restOfToggleButtonProps}
+                  label={props.label}
+                  css={getButtonStyles({
+                    isIndeterminate,
+                    isStyleButton: false,
+                  })}
+                  onMouseDown={() => {
+                    toggleMenu();
+                  }}
+                >
+                  <DropdownLabel />
+                </AccessibleButton>
+              </div>
+            </Tooltip>
             <div {...getMenuProps()} style={{ position: 'relative' }}>
               {isOpen ? (
                 <DropdownContainer>
@@ -95,11 +112,15 @@ const MultiDownshift = props => {
                       isHovered: highlightedIndex === index,
                       isSelected,
                     });
+
                     return (
                       // eslint-disable-next-line react/jsx-key
                       <DropdownItem
                         {...restOfItemProps}
-                        onMouseDown={onClickItem}
+                        onMouseDown={event => {
+                          restOfItemProps.onMouseDown(event);
+                          onClickItem(event);
+                        }}
                       >
                         {item.label}
                       </DropdownItem>
