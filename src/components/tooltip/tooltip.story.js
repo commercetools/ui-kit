@@ -74,6 +74,7 @@ storiesOf('Components|Tooltips', module)
         >
           <p>With ui kit button</p>
           <Tooltip
+            off={boolean('off', false)}
             title={label}
             closeAfter={closeAfter}
             placement={placement}

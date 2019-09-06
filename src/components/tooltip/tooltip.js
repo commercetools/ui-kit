@@ -46,7 +46,7 @@ const Tooltip = props => {
   }, [toggle]);
 
   const isControlled = !isNil(props.isOpen);
-  const tooltipIsOpen = (isControlled ? props.isOpen : isOpen) && !props.off;
+  const tooltipIsOpen = isControlled ? props.isOpen : isOpen;
   const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
@@ -120,6 +120,20 @@ const Tooltip = props => {
     },
     [closeAfter, onBlur, onMouseLeave, handleClose]
   );
+
+  React.useEffect(() => {
+    // if tooltip was open, and then component
+    // updated to be off, we should close the tooltip
+    if (isOpen && props.off) {
+      if (closeAfter) {
+        leaveTimer.current = setTimeout(() => {
+          handleClose();
+        }, closeAfter);
+      } else {
+        handleClose();
+      }
+    }
+  }, [props.off, closeAfter, handleClose, toggle, isOpen]);
 
   const childrenProps = {
     'aria-describedby': tooltipIsOpen ? id : null,
