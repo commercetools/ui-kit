@@ -65,7 +65,7 @@ const Dropdown = props => {
                         {...restOfItemProps}
                         onMouseDown={event => {
                           restOfItemProps.onMouseDown(event);
-                          onClick(event);
+                          dropdownOnClick(event);
                         }}
                         value={item.value}
                         isSelected={item.value === selectedItem}
