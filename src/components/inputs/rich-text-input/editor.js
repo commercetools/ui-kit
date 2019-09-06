@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { useIntl } from 'react-intl';
 import Button from './button';
 import StyleDropdown from './style-dropdown';
 import MarkButton from './buttons/mark-button';
@@ -22,6 +23,7 @@ import FlatButton from '../../buttons/flat-button';
 import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
 import Divider from './divider';
 import MultiDropdown from './multi-dropdown';
+import messages from './messages';
 
 const DEFAULT_NODE = 'paragraph';
 
@@ -32,6 +34,7 @@ const dropdownOptions = [
 ];
 
 const InnerEditor = props => {
+  const intl = useIntl();
   const { editor } = props;
 
   const activeBlock =
@@ -186,7 +189,7 @@ const InnerEditor = props => {
                     }
                   `}
                 >
-                  <Tooltip title="Undo" placement="bottom">
+                  <Tooltip title="Undo" placement="bottom" off={!hasUndos}>
                     <Button
                       active={false}
                       label={'undo'}
@@ -200,7 +203,7 @@ const InnerEditor = props => {
                       }
                     />
                   </Tooltip>
-                  <Tooltip title="Redo" placement="bottom">
+                  <Tooltip title="Redo" placement="bottom" off={!hasRedos}>
                     <Button
                       active={false}
                       label={'redo'}
@@ -231,7 +234,11 @@ const InnerEditor = props => {
           >
             <FlatButton
               onClick={toggle}
-              label={isOpen ? 'Collapse' : 'Expand'}
+              label={
+                isOpen
+                  ? intl.formatMessage(messages.collapse)
+                  : intl.formatMessage(messages.expand)
+              }
               icon={
                 isOpen ? (
                   <AngleUpIcon size="small" />

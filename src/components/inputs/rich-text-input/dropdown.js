@@ -44,7 +44,10 @@ const Dropdown = props => {
               {isOpen ? (
                 <DropdownContainer>
                   {props.options.map((item, index) => {
-                    const { onClick, ...restOfItemProps } = getItemProps({
+                    const {
+                      onClick: dropdownOnClick,
+                      ...restOfItemProps
+                    } = getItemProps({
                       key: index,
                       index,
                       item,
@@ -65,7 +68,6 @@ const Dropdown = props => {
                       </DropdownItem>
                     );
                   })}
-                  }
                 </DropdownContainer>
               ) : null}
             </div>
