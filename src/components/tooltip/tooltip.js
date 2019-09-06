@@ -46,7 +46,7 @@ const Tooltip = props => {
   }, [toggle]);
 
   const isControlled = !isNil(props.isOpen);
-  const tooltipIsOpen = isControlled ? props.isOpen : isOpen;
+  const tooltipIsOpen = (isControlled ? props.isOpen : isOpen) && !props.off;
   const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
