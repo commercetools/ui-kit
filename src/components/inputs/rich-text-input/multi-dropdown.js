@@ -69,13 +69,13 @@ const MultiDownshift = props => {
           onClick: onClickToggle,
           ...restOfToggleButtonProps
         } = getToggleButtonProps();
-        console.log(isOpen);
+
         return (
           <div>
             <Tooltip
-              off={isOpen}
               title="More styles"
               placement="bottom"
+              off={isOpen}
               styles={{ body: { zIndex: 99999 } }}
             >
               <div>
@@ -86,9 +86,7 @@ const MultiDownshift = props => {
                     isIndeterminate,
                     isStyleButton: false,
                   })}
-                  onMouseDown={() => {
-                    toggleMenu();
-                  }}
+                  onMouseDown={toggleMenu}
                 >
                   <DropdownLabel />
                 </AccessibleButton>

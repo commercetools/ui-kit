@@ -97,6 +97,9 @@ const InnerEditor = props => {
     [toggleMark]
   );
 
+  const hasUndos = editor.hasUndos();
+  const hasRedos = editor.hasRedos();
+
   return (
     <CollapsibleMotion minHeight={32}>
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
@@ -156,18 +159,22 @@ const InnerEditor = props => {
                     onSelect={onChangeMoreStyles}
                   />
                   <Divider />
-                  <Button
-                    isActive={editor.hasNumberedListBlock()}
-                    label={'numbered-list'}
-                    onMouseDown={editor.toggleNumberedListBlock}
-                    icon={<OrderedListIcon size="medium" />}
-                  ></Button>
-                  <Button
-                    isActive={editor.hasBulletedListBlock()}
-                    label={'ordered-list'}
-                    onMouseDown={editor.toggleBulletedListBlock}
-                    icon={<UnorderedListIcon size="medium" />}
-                  ></Button>
+                  <Tooltip title="Numbered list" placement="bottom">
+                    <Button
+                      isActive={editor.hasNumberedListBlock()}
+                      label={'numbered-list'}
+                      onMouseDown={editor.toggleNumberedListBlock}
+                      icon={<OrderedListIcon size="medium" />}
+                    />
+                  </Tooltip>
+                  <Tooltip title="Bulleted list" placement="bottom">
+                    <Button
+                      isActive={editor.hasBulletedListBlock()}
+                      label={'ordered-list'}
+                      onMouseDown={editor.toggleBulletedListBlock}
+                      icon={<UnorderedListIcon size="medium" />}
+                    />
+                  </Tooltip>
                 </div>
                 <div
                   css={css`
@@ -179,30 +186,34 @@ const InnerEditor = props => {
                     }
                   `}
                 >
-                  <Button
-                    active={false}
-                    label={'undo'}
-                    isDisabled={!editor.hasUndos()}
-                    onMouseDown={editor.toggleUndo}
-                    icon={
-                      <UndoIcon
-                        color={!editor.hasUndos() ? 'neutral60' : 'solid'}
-                        size="medium"
-                      />
-                    }
-                  />
-                  <Button
-                    active={false}
-                    label={'redo'}
-                    isDisabled={!editor.hasRedos()}
-                    onMouseDown={editor.toggleRedo}
-                    icon={
-                      <RedoIcon
-                        color={!editor.hasRedos() ? 'neutral60' : 'solid'}
-                        size="medium"
-                      />
-                    }
-                  />
+                  <Tooltip title="Undo" placement="bottom">
+                    <Button
+                      active={false}
+                      label={'undo'}
+                      isDisabled={!hasUndos}
+                      onMouseDown={editor.toggleUndo}
+                      icon={
+                        <UndoIcon
+                          color={!hasUndos ? 'neutral60' : 'solid'}
+                          size="medium"
+                        />
+                      }
+                    />
+                  </Tooltip>
+                  <Tooltip title="Redo" placement="bottom">
+                    <Button
+                      active={false}
+                      label={'redo'}
+                      isDisabled={!hasRedos}
+                      onMouseDown={editor.toggleRedo}
+                      icon={
+                        <RedoIcon
+                          color={!hasRedos ? 'neutral60' : 'solid'}
+                          size="medium"
+                        />
+                      }
+                    />
+                  </Tooltip>
                 </div>
               </Toolbar>
               <div style={containerStyles}>
@@ -219,9 +230,7 @@ const InnerEditor = props => {
             `}
           >
             <FlatButton
-              onClick={() => {
-                toggle();
-              }}
+              onClick={toggle}
               label={isOpen ? 'Collapse' : 'Expand'}
               icon={
                 isOpen ? (
