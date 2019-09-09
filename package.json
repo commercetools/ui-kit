@@ -117,7 +117,7 @@
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
     "babel-plugin-module-rewrite": "0.2.0",
-    "babel-plugin-react-intl": "4.1.15",
+    "babel-plugin-react-intl": "4.1.16",
     "babel-plugin-transform-dynamic-import": "2.1.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "babel-plugin-transform-rename-import": "2.3.0",
