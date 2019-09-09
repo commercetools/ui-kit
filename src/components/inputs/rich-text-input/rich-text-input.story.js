@@ -1,5 +1,4 @@
 import React from 'react';
-import { Global, css } from '@emotion/core';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { Value } from 'slate';
@@ -9,7 +8,7 @@ import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
 import Readme from './README.md';
-import jsonValue from './value';
+import jsonValue from './testValue';
 import TextInput from '../text-input';
 // Create our initial value...
 const initialValue = Value.fromJSON(jsonValue);
@@ -19,21 +18,6 @@ storiesOf('Components|Inputs', module)
   .addDecorator(withReadme(Readme))
   .add('RichTextInput', () => (
     <Section>
-      <Global
-        styles={css`
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6 {
-            margin: 0;
-          }
-          p {
-            margin: 0;
-          }
-        `}
-      />
       <Spacings.Stack scale="l">
         <ReactValue
           defaultValue={initialValue}

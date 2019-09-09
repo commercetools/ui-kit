@@ -66,9 +66,8 @@ const RichTextInput = props => {
       name={props.name}
       disabled={props.isDisabled}
       readOnly={props.isReadOnly}
-      hasError={props.hasError}
-      hasWarning={props.hasWarning}
       value={props.value}
+      options={{ hasWarning: props.hasWarning, hasError: props.hasError }}
       onChange={onValueChange}
       placeholder={props.placeholder}
       plugins={plugins}

@@ -69,12 +69,28 @@ export const Toolbar = styled.div`
   }
 `;
 
+const reset = () => css`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  line-height: normal;
+`;
+
 export const EditorContainer = styled.div`
-  padding: ${vars.spacingXs} ${vars.spacingS};
+  padding: 7px ${vars.spacingS};
   border-radius: ${vars.borderRadiusForInput};
   font-family: ${vars.fontFamilyDefault};
   ${getBorderColor}
   overflow-y: scroll;
+  ${reset}
 `;
 
 export const Container = styled.div`

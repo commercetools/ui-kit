@@ -286,8 +286,8 @@ const Editor = (props, editor, next) => {
     name: props.name,
     id: props.id,
     isDisabled: props.disabled,
-    hasError: props.hasError,
-    hasWarning: props.hasWarning,
+    hasError: props.options.hasError,
+    hasWarning: props.options.hasWarning,
     isReadOnly: props.readOnly,
     ...filterDataAttributes(props),
   };
@@ -300,8 +300,6 @@ const Editor = (props, editor, next) => {
 };
 
 const sharedProps = {
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
@@ -314,6 +312,12 @@ InnerEditor.displayName = 'InnerEditor';
 InnerEditor.propTypes = { ...sharedProps, editor: PropTypes.any };
 
 Editor.displayName = 'Editor';
-Editor.propTypes = sharedProps;
+Editor.propTypes = {
+  ...sharedProps,
+  options: PropTypes.shape({
+    hasWarning: PropTypes.bool,
+    hasError: PropTypes.bool,
+  }),
+};
 
 export default Editor;
