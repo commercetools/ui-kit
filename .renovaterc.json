@@ -3,5 +3,20 @@
     "config:base",
     ":pinOnlyDevDependencies",
     "schedule:weekly"
-  ]
+  ],
+  "separateMajorMinor": true,
+  "groupName": "all dependencies",
+  "groupSlug": "all",
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "*"
+      ],
+      "groupName": "all dependencies",
+      "groupSlug": "all"
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  }
 }
