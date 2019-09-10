@@ -8,7 +8,7 @@ import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
 import Readme from './README.md';
-import jsonValue from './testValue';
+import jsonValue from './value';
 import TextInput from '../text-input';
 // Create our initial value...
 const initialValue = Value.fromJSON(jsonValue);

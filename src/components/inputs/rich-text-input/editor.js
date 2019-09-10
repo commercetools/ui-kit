@@ -20,7 +20,13 @@ import {
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Constraints from '../../constraints';
 import FlatButton from '../../buttons/flat-button';
-import { Toolbar, EditorContainer, Container } from './rich-text-input.styles';
+import {
+  Toolbar,
+  ToolbarMainControls,
+  ToolbarRightControls,
+  EditorContainer,
+  Container,
+} from './rich-text-input.styles';
 import Divider from './divider';
 import MultiDropdown from './multi-dropdown';
 import messages from './messages';
@@ -32,6 +38,12 @@ const tooltipStyles = {
 };
 const DEFAULT_NODE = 'paragraph';
 
+const NUMBERED_LIST = 'numbered-list';
+const BULLETED_LIST = 'bulleted-list';
+const LIST_ITEM = 'list-item';
+
+const COLLAPSED_HEIGHT = 64;
+
 const dropdownOptions = [
   { label: 'Strikethrough', value: 'strikethrough' },
   { label: 'Superscript', value: 'superscript' },
@@ -41,6 +53,17 @@ const dropdownOptions = [
 const Editor = props => {
   const intl = useIntl();
   const { editor } = props;
+  const ref = React.useRef();
+  const [renderToggleButton, setRenderToggleButton] = React.useState(false);
+
+  React.useEffect(() => {
+    if (ref.current.clientHeight > COLLAPSED_HEIGHT && !renderToggleButton) {
+      setRenderToggleButton(true);
+    }
+    if (ref.current.clientHeight <= COLLAPSED_HEIGHT && renderToggleButton) {
+      setRenderToggleButton(false);
+    }
+  }, [editor.value, renderToggleButton]);
 
   const activeBlock =
     (editor.value.blocks.first() && editor.value.blocks.first().type) || '';
@@ -49,8 +72,8 @@ const Editor = props => {
     mark => mark.type
   );
 
-  const activeMoreStyleMarks = activeMarks.filter(x =>
-    dropdownOptions.some(y => x === y.value)
+  const activeMoreStyleMarks = activeMarks.filter(activeMark =>
+    dropdownOptions.some(dropdownOption => activeMark === dropdownOption.value)
   );
 
   const hasBlock = type => editor.value.blocks.some(node => node.type === type);
@@ -60,21 +83,21 @@ const Editor = props => {
     const { document } = value;
 
     // Handle everything but list buttons.
-    if (type !== 'bulleted-list' && type !== 'numbered-list') {
+    if (type !== BULLETED_LIST && type !== NUMBERED_LIST) {
       const isActive = hasBlock(type);
-      const isList = hasBlock('list-item');
+      const isList = hasBlock(LIST_ITEM);
 
       if (isList) {
         editor
           .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock('bulleted-list')
-          .unwrapBlock('numbered-list');
+          .unwrapBlock(BULLETED_LIST)
+          .unwrapBlock(NUMBERED_LIST);
       } else {
         editor.setBlocks(isActive ? DEFAULT_NODE : type);
       }
     } else {
       // Handle the extra wrapping required for list buttons.
-      const isList = hasBlock('list-item');
+      const isList = hasBlock(LIST_ITEM);
       const isType = value.blocks.some(block => {
         return !!document.getClosest(block.key, parent => parent.type === type);
       });
@@ -82,16 +105,14 @@ const Editor = props => {
       if (isList && isType) {
         editor
           .setBlocks(DEFAULT_NODE)
-          .unwrapBlock('bulleted-list')
-          .unwrapBlock('numbered-list');
+          .unwrapBlock(BULLETED_LIST)
+          .unwrapBlock(NUMBERED_LIST);
       } else if (isList) {
         editor
-          .unwrapBlock(
-            type === 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
-          )
+          .unwrapBlock(type === BULLETED_LIST ? NUMBERED_LIST : BULLETED_LIST)
           .wrapBlock(type);
       } else {
-        editor.setBlocks('list-item').wrapBlock(type);
+        editor.setBlocks(LIST_ITEM).wrapBlock(type);
       }
     }
   };
@@ -100,9 +121,12 @@ const Editor = props => {
 
   const onChangeMoreStyles = React.useCallback(
     val => {
+      if (!editor.value.selection.isFocused) {
+        editor.focus();
+      }
       toggleMark(val.value);
     },
-    [toggleMark]
+    [toggleMark, editor]
   );
 
   const hasUndos = editor.hasUndos();
@@ -110,171 +134,170 @@ const Editor = props => {
 
   return (
     <CollapsibleMotion minHeight={32}>
-      {({ isOpen, toggle, containerStyles, registerContentNode }) => (
-        <div>
-          <Constraints.Horizontal constraint={props.horizontalConstraint}>
-            <Container
-              {...props}
-              tabIndex={-1}
-              onFocus={() => {
-                if (!isOpen) {
-                  toggle();
-                }
-              }}
-            >
-              <Toolbar {...props} isOpen={isOpen}>
-                <div
-                  css={css`
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex: 1;
-                    align-items: flex-start;
+      {({ isOpen, toggle, containerStyles, registerContentNode }) => {
+        return (
+          <div>
+            <Constraints.Horizontal constraint={props.horizontalConstraint}>
+              <Container
+                {...props}
+                ref={ref}
+                onFocus={() => {
+                  if (!isOpen) {
+                    toggle();
+                    setTimeout(() => setRenderToggleButton(true), 0);
+                  }
+                }}
+              >
+                <Toolbar {...props} isOpen={isOpen}>
+                  <ToolbarMainControls>
+                    <StyleDropdown
+                      value={activeBlock}
+                      onChange={onClickBlock}
+                    />
+                    <Tooltip
+                      title="Bold"
+                      placement="bottom"
+                      styles={tooltipStyles}
+                    >
+                      <MarkButton
+                        isActive={editor.hasBoldMark()}
+                        type="bold"
+                        onClickMark={editor.toggleBoldMark}
+                        icon={<BoldIcon size="medium" />}
+                      />
+                    </Tooltip>
+                    <Tooltip
+                      title="Italic"
+                      placement="bottom"
+                      styles={tooltipStyles}
+                    >
+                      <MarkButton
+                        isActive={editor.hasItalicMark()}
+                        type="italic"
+                        onClickMark={editor.toggleItalicMark}
+                        icon={<ItalicIcon size="medium" />}
+                      />
+                    </Tooltip>
+                    <Tooltip
+                      title="Underlined"
+                      placement="bottom"
+                      styles={tooltipStyles}
+                    >
+                      <MarkButton
+                        isActive={editor.hasUnderlinedMark()}
+                        type="underlined"
+                        onClickMark={editor.toggleUnderlinedMark}
+                        icon={<UnderlineIcon size="medium" />}
+                      />
+                    </Tooltip>
+                    <MultiDropdown
+                      label="More styles"
+                      dropdownOptions={dropdownOptions}
+                      selectedItems={activeMoreStyleMarks}
+                      onSelect={onChangeMoreStyles}
+                    />
+                    <Divider />
+                    <Tooltip
+                      title="Numbered list"
+                      placement="bottom"
+                      styles={tooltipStyles}
+                    >
+                      <Button
+                        isActive={editor.hasNumberedListBlock()}
+                        label={'numbered-list'}
+                        onMouseDown={editor.toggleNumberedListBlock}
+                        icon={<OrderedListIcon size="medium" />}
+                      />
+                    </Tooltip>
+                    <Tooltip
+                      title="Bulleted list"
+                      placement="bottom"
+                      styles={tooltipStyles}
+                    >
+                      <Button
+                        isActive={editor.hasBulletedListBlock()}
+                        label={'ordered-list'}
+                        onMouseDown={editor.toggleBulletedListBlock}
+                        icon={<UnorderedListIcon size="medium" />}
+                      />
+                    </Tooltip>
+                  </ToolbarMainControls>
+                  <ToolbarRightControls
+                    css={css`
+                      display: flex;
+                      flex-wrap: wrap;
 
-                    > * {
-                      margin-left: 1px !important;
-                    }
-                  `}
-                >
-                  <StyleDropdown value={activeBlock} onChange={onClickBlock} />
-                  <Tooltip
-                    title="Bold"
-                    placement="bottom"
-                    styles={tooltipStyles}
-                  >
-                    <MarkButton
-                      isActive={editor.hasBoldMark()}
-                      type="bold"
-                      onClickMark={editor.toggleBoldMark}
-                      icon={<BoldIcon size="medium" />}
-                    />
-                  </Tooltip>
-                  <Tooltip
-                    title="Italic"
-                    placement="bottom"
-                    styles={tooltipStyles}
-                  >
-                    <MarkButton
-                      isActive={editor.hasItalicMark()}
-                      type="italic"
-                      onClickMark={editor.toggleItalicMark}
-                      icon={<ItalicIcon size="medium" />}
-                    />
-                  </Tooltip>
-                  <Tooltip
-                    title="Underlined"
-                    placement="bottom"
-                    styles={tooltipStyles}
-                  >
-                    <MarkButton
-                      isActive={editor.hasUnderlinedMark()}
-                      type="underlined"
-                      onClickMark={editor.toggleUnderlinedMark}
-                      icon={<UnderlineIcon size="medium" />}
-                    />
-                  </Tooltip>
-                  <MultiDropdown
-                    label="More styles"
-                    dropdownOptions={dropdownOptions}
-                    selectedItems={activeMoreStyleMarks}
-                    onSelect={onChangeMoreStyles}
-                  />
-                  <Divider />
-                  <Tooltip
-                    title="Numbered list"
-                    placement="bottom"
-                    styles={tooltipStyles}
-                  >
-                    <Button
-                      isActive={editor.hasNumberedListBlock()}
-                      label={'numbered-list'}
-                      onMouseDown={editor.toggleNumberedListBlock}
-                      icon={<OrderedListIcon size="medium" />}
-                    />
-                  </Tooltip>
-                  <Tooltip
-                    title="Bulleted list"
-                    placement="bottom"
-                    styles={tooltipStyles}
-                  >
-                    <Button
-                      isActive={editor.hasBulletedListBlock()}
-                      label={'ordered-list'}
-                      onMouseDown={editor.toggleBulletedListBlock}
-                      icon={<UnorderedListIcon size="medium" />}
-                    />
-                  </Tooltip>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    flex-wrap: wrap;
-
-                    > * {
-                      margin-left: 1px !important;
-                    }
-                  `}
-                >
-                  <Tooltip title="Undo" placement="bottom" off={!hasUndos}>
-                    <Button
-                      active={false}
-                      label={'undo'}
-                      isDisabled={!hasUndos}
-                      onMouseDown={editor.toggleUndo}
-                      icon={
-                        <UndoIcon
-                          color={!hasUndos ? 'neutral60' : 'solid'}
-                          size="medium"
-                        />
+                      > * {
+                        margin-left: 1px !important;
                       }
-                    />
-                  </Tooltip>
-                  <Tooltip title="Redo" placement="bottom" off={!hasRedos}>
-                    <Button
-                      active={false}
-                      label={'redo'}
-                      isDisabled={!hasRedos}
-                      onMouseDown={editor.toggleRedo}
-                      icon={
-                        <RedoIcon
-                          color={!hasRedos ? 'neutral60' : 'solid'}
-                          size="medium"
-                        />
-                      }
-                    />
-                  </Tooltip>
+                    `}
+                  >
+                    <Tooltip title="Undo" placement="bottom" off={!hasUndos}>
+                      <Button
+                        active={false}
+                        label={'undo'}
+                        isDisabled={!hasUndos}
+                        onMouseDown={editor.toggleUndo}
+                        icon={
+                          <UndoIcon
+                            color={!hasUndos ? 'neutral60' : 'solid'}
+                            size="medium"
+                          />
+                        }
+                      />
+                    </Tooltip>
+                    <Tooltip title="Redo" placement="bottom" off={!hasRedos}>
+                      <Button
+                        active={false}
+                        label={'redo'}
+                        isDisabled={!hasRedos}
+                        onMouseDown={editor.toggleRedo}
+                        icon={
+                          <RedoIcon
+                            color={!hasRedos ? 'neutral60' : 'solid'}
+                            size="medium"
+                          />
+                        }
+                      />
+                    </Tooltip>
+                  </ToolbarRightControls>
+                </Toolbar>
+                <div style={containerStyles}>
+                  <div ref={registerContentNode}>
+                    <EditorContainer {...props}>
+                      {props.children}
+                    </EditorContainer>
+                  </div>
                 </div>
-              </Toolbar>
-              <div style={containerStyles}>
-                <div ref={registerContentNode}>
-                  <EditorContainer {...props}>{props.children}</EditorContainer>
-                </div>
+              </Container>
+            </Constraints.Horizontal>
+            {renderToggleButton && (
+              <div
+                css={css`
+                  display: flex;
+                  justify-content: flex-end;
+                `}
+              >
+                <FlatButton
+                  onClick={toggle}
+                  label={
+                    isOpen
+                      ? intl.formatMessage(messages.collapse)
+                      : intl.formatMessage(messages.expand)
+                  }
+                  icon={
+                    isOpen ? (
+                      <AngleUpIcon size="small" />
+                    ) : (
+                      <AngleDownIcon size="small" />
+                    )
+                  }
+                />
               </div>
-            </Container>
-          </Constraints.Horizontal>
-          <div
-            css={css`
-              display: flex;
-              justify-content: flex-end;
-            `}
-          >
-            <FlatButton
-              onClick={toggle}
-              label={
-                isOpen
-                  ? intl.formatMessage(messages.collapse)
-                  : intl.formatMessage(messages.expand)
-              }
-              icon={
-                isOpen ? (
-                  <AngleUpIcon size="small" />
-                ) : (
-                  <AngleDownIcon size="small" />
-                )
-              }
-            />
+            )}
           </div>
-        </div>
-      )}
+        );
+      }}
     </CollapsibleMotion>
   );
 };

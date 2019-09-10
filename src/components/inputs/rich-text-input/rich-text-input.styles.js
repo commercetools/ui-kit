@@ -44,6 +44,19 @@ const getBackgroundColor = props => {
   `;
 };
 
+export const ToolbarMainControls = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  align-items: flex-start;
+
+  > * {
+    margin-left: 1px !important;
+  }
+`;
+
+export const ToolbarRightControls = styled.div``;
+
 export const Toolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -70,6 +83,12 @@ export const Toolbar = styled.div`
 `;
 
 const reset = () => css`
+  span {
+    /* placeholder fixes */
+    font-weight: normal;
+    font-size: 1rem;
+    vertical-align: inherit !important;
+  }
   h1,
   h2,
   h3,
@@ -80,12 +99,13 @@ const reset = () => css`
   }
   p {
     margin: 0;
+    line-height: 22px;
   }
-  line-height: normal;
 `;
 
 export const EditorContainer = styled.div`
-  padding: 7px ${vars.spacingS};
+  padding: 4px ${vars.spacingS};
+  padding-top: 6px;
   border-radius: ${vars.borderRadiusForInput};
   font-family: ${vars.fontFamilyDefault};
   ${getBorderColor}

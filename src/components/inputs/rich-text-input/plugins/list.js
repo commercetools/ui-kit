@@ -63,12 +63,21 @@ const ListPlugin = () => {
         }
       },
       commands: {
-        toggleBulletedListBlock: editor => toggle(editor, BULLETED_LIST),
-        toggleNumberedListBlock: editor => toggle(editor, NUMBERED_LIST),
+        toggleBulletedListBlock: editor => {
+          if (!editor.value.selection.isFocused) {
+            editor.focus();
+          }
+          toggle(editor, BULLETED_LIST);
+        },
+        toggleNumberedListBlock: editor => {
+          if (!editor.value.selection.isFocused) {
+            editor.focus();
+          }
+          toggle(editor, NUMBERED_LIST);
+        },
       },
       queries: {
         hasBulletedListBlock: editor => query(editor, BULLETED_LIST),
-
         hasNumberedListBlock: editor => query(editor, NUMBERED_LIST),
       },
     },

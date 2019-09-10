@@ -32,6 +32,9 @@ const RedoPlugin = (options = {}) => {
       },
       commands: {
         toggleRedo: editor => {
+          if (!editor.value.selection.isFocused) {
+            editor.focus();
+          }
           if (hasRedos(editor)) {
             editor.redo();
           }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import Html from 'slate-html-serializer';
 import Types from 'slate-prop-types';
-import { Editor as SlateEditor } from 'slate-react';
+import { Editor } from 'slate-react';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import UndoPlugin from './plugins/undo';
@@ -60,7 +60,7 @@ const RichTextInput = props => {
   };
 
   return (
-    <SlateEditor
+    <Editor
       {...filterDataAttributes(props)}
       id={props.id}
       name={props.name}

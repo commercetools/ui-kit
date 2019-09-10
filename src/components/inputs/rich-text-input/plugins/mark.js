@@ -59,7 +59,12 @@ const MarkPlugin = (options = {}) => {
         }
       },
       commands: {
-        [command]: editor => editor.toggleMark(typeName),
+        [command]: editor => {
+          if (!editor.value.selection.isFocused) {
+            editor.focus();
+          }
+          return editor.toggleMark(typeName);
+        },
       },
       queries: {
         [query]: editor =>
