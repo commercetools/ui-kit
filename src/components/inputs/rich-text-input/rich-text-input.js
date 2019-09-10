@@ -10,7 +10,7 @@ import UndoPlugin from './plugins/undo';
 import RedoPlugin from './plugins/redo';
 import ListPlugin from './plugins/list';
 import MarkPlugin from './plugins/mark';
-import Editor from './editor';
+import renderEditor from './editor';
 import rules from './utils/rules';
 
 // Create a new serializer instance with our `rules` from above.
@@ -71,7 +71,7 @@ const RichTextInput = props => {
       onChange={onValueChange}
       placeholder={props.placeholder}
       plugins={plugins}
-      renderEditor={Editor}
+      renderEditor={renderEditor}
     />
   );
 };

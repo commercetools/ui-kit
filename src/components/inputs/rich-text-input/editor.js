@@ -38,7 +38,7 @@ const dropdownOptions = [
   { label: 'Subscript', value: 'subscript' },
 ];
 
-const InnerEditor = props => {
+const Editor = props => {
   const intl = useIntl();
   const { editor } = props;
 
@@ -279,7 +279,7 @@ const InnerEditor = props => {
   );
 };
 
-const Editor = (props, editor, next) => {
+const renderEditor = (props, editor, next) => {
   const children = next();
 
   const passedProps = {
@@ -293,9 +293,9 @@ const Editor = (props, editor, next) => {
   };
 
   return (
-    <InnerEditor editor={editor} {...passedProps}>
+    <Editor editor={editor} {...passedProps}>
       {children}
-    </InnerEditor>
+    </Editor>
   );
 };
 
@@ -308,11 +308,11 @@ const sharedProps = {
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
 };
 
-InnerEditor.displayName = 'InnerEditor';
-InnerEditor.propTypes = { ...sharedProps, editor: PropTypes.any };
-
 Editor.displayName = 'Editor';
-Editor.propTypes = {
+Editor.propTypes = { ...sharedProps, editor: PropTypes.any };
+
+renderEditor.displayName = 'renderEditor';
+renderEditor.propTypes = {
   ...sharedProps,
   options: PropTypes.shape({
     hasWarning: PropTypes.bool,
@@ -320,4 +320,4 @@ Editor.propTypes = {
   }),
 };
 
-export default Editor;
+export default renderEditor;
