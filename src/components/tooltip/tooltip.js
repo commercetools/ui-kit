@@ -36,7 +36,10 @@ const Tooltip = props => {
     };
   }, []);
 
-  const { reference, popper } = usePopper({ placement: props.placement });
+  const { reference, popper } = usePopper({
+    placement: props.placement,
+    modifiers: props.modifiers,
+  });
   const [isOpen, toggle] = useToggleState(false);
   const closeTooltip = React.useCallback(() => {
     toggle(false);
@@ -245,6 +248,82 @@ Tooltip.propTypes = {
       }
       return null;
     },
+  }),
+  modifiers: PropTypes.shape({
+    shift: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+    }),
+    offset: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+      offset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    }),
+    preventOverflow: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+      priority: PropTypes.arrayOf(['left', 'right', 'top', 'bottom']),
+      padding: PropTypes.number,
+      boundariesElement: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(HTMLElement),
+      ]),
+    }),
+    keepTogether: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+    }),
+    arrow: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+      element: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(HTMLElement),
+      ]),
+    }),
+    flip: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+      behavior: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+      ]),
+      padding: PropTypes.number,
+      boundariesElement: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(HTMLElement),
+      ]),
+    }),
+    inner: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+    }),
+    hide: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+    }),
+    computeStyle: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+      gpuAcceleration: PropTypes.bool,
+      x: PropTypes.number,
+      y: PropTypes.number,
+    }),
+    applyStyle: PropTypes.shape({
+      order: PropTypes.number,
+      enabled: PropTypes.bool,
+      fn: PropTypes.func,
+      onLoad: PropTypes.func,
+    }),
   }),
 };
 
