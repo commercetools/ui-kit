@@ -36,7 +36,13 @@ const Tooltip = props => {
     };
   }, []);
 
-  const { reference, popper } = usePopper({ placement: props.placement });
+  const { reference, popper } = usePopper({
+    placement: props.placement,
+    // Uncomment me to do the magic stuff!
+    //    modifiers: {
+    //      preventOverflow: { enabled: false },
+    //    },
+  });
   const [isOpen, toggle] = useToggleState(false);
   const closeTooltip = React.useCallback(() => {
     toggle(false);
