@@ -1,4 +1,4 @@
-<a name="10.1.3"></a>
+<a name="10.2.0"></a>
 
 # [10.2.0](https://github.com/commercetools/ui-kit/compare/v10.1.3...v10.2.0) (2019-09-11)
 
