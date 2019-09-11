@@ -1,5 +1,19 @@
 <a name="10.1.3"></a>
 
+# [10.2.0](https://github.com/commercetools/ui-kit/compare/v10.1.3...v10.2.0) (2019-09-11)
+
+### Bug Fixes
+
+- `CollapsibleMotion`: do not set to null on rerender ([#1043](https://github.com/commercetools/ui-kit/issues/1043)) ([bc91861](https://github.com/commercetools/ui-kit/commit/bc91861))
+- `Tooltip`: fix for off ([#1045](https://github.com/commercetools/ui-kit/issues/1045)) ([0e5183f](https://github.com/commercetools/ui-kit/commit/0e5183f))
+
+### Features
+
+- `CollapsibleMotion`: add minHeight prop ([#1042](https://github.com/commercetools/ui-kit/issues/1042)) ([df0bdf7](https://github.com/commercetools/ui-kit/commit/df0bdf7))
+- `Tooltip`: expose Popper.js modifiers ([#1054](https://github.com/commercetools/ui-kit/issues/1054)) ([9ab8072](https://github.com/commercetools/ui-kit/commit/9ab8072))
+
+<a name="10.1.3"></a>
+
 ## [10.1.3](https://github.com/commercetools/ui-kit/compare/v10.1.2...v10.1.3) (2019-08-27)
 
 ### Bug Fixes
