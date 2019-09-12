@@ -21,18 +21,24 @@ const plugins = [
   {
     queries: {
       // used for the placeholder plugin
-      isEmptyAndHasOneLine: editor => {
+      shouldUsePlaceholder: editor => {
         const isEmpty = editor.value.document.text === '';
-        const hasOneLine =
+
+        const hasOneNode =
           editor.value.document.nodes.map(node => node.text).toArray()
             .length === 1;
 
-        return isEmpty && hasOneLine;
+        const blocks = editor.value.blocks.map(block => block.type).toArray();
+        const hasOneBlock = blocks.length === 1;
+
+        const isParagraph = blocks[0].type === 'paragraph';
+
+        return isEmpty && hasOneNode && hasOneBlock && isParagraph;
       },
     },
   },
   PlaceholderPlugin({
-    when: 'isEmptyAndHasOneLine',
+    when: 'shouldUsePlaceholder',
     style: {
       verticalAlign: 'inherit',
       fontSize: '1rem',
