@@ -4,7 +4,7 @@ import requiredIf from 'react-required-if';
 import Html from 'slate-html-serializer';
 import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
-import PlaceholderPlugin from 'slate-react-placeholder';
+import PlaceholderPlugin from './plugins/placeholder';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import UndoPlugin from './plugins/undo';
@@ -17,23 +17,28 @@ import rules from './utils/rules';
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules });
 
-const createPlaceholderPlugin = placeholder =>
+const plugins = [
+  {
+    queries: {
+      // used for the placeholder plugin
+      isEmptyAndHasOneLine: editor => {
+        const isEmpty = editor.value.document.text === '';
+        const hasOneLine =
+          editor.value.document.nodes.map(node => node.text).toArray()
+            .length === 1;
+
+        return isEmpty && hasOneLine;
+      },
+    },
+  },
   PlaceholderPlugin({
-    placeholder,
-    when: 'isEmpty',
+    when: 'isEmptyAndHasOneLine',
     style: {
       verticalAlign: 'inherit',
       fontSize: '1rem',
       fontWeight: 'normal',
     },
-  });
-
-const plugins = [
-  {
-    queries: {
-      isEmpty: editor => editor.value.document.text === '',
-    },
-  },
+  }),
   MarkPlugin({
     typeName: 'bold',
     hotkey: 'mod+b',
@@ -76,10 +81,6 @@ const RichTextInput = props => {
     onChange(event);
   };
 
-  const pluginsToUse = plugins.concat(
-    createPlaceholderPlugin(props.placeholder)
-  );
-
   return (
     <Editor
       {...filterDataAttributes(props)}
@@ -88,9 +89,13 @@ const RichTextInput = props => {
       disabled={props.isDisabled}
       readOnly={props.isReadOnly}
       value={props.value}
-      options={{ hasWarning: props.hasWarning, hasError: props.hasError }}
+      options={{
+        hasWarning: props.hasWarning,
+        hasError: props.hasError,
+        placeholder: props.placeholder,
+      }}
       onChange={onValueChange}
-      plugins={pluginsToUse}
+      plugins={plugins}
       renderEditor={renderEditor}
     />
   );
@@ -111,7 +116,7 @@ RichTextInput.propTypes = {
   hasWarning: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
