@@ -4,6 +4,7 @@ import requiredIf from 'react-required-if';
 import Html from 'slate-html-serializer';
 import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
+import PlaceholderPlugin from 'slate-react-placeholder';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import UndoPlugin from './plugins/undo';
@@ -16,7 +17,23 @@ import rules from './utils/rules';
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules });
 
+const createPlaceholderPlugin = placeholder =>
+  PlaceholderPlugin({
+    placeholder,
+    when: 'isEmpty',
+    style: {
+      verticalAlign: 'inherit',
+      fontSize: '1rem',
+      fontWeight: 'normal',
+    },
+  });
+
 const plugins = [
+  {
+    queries: {
+      isEmpty: editor => editor.value.document.text === '',
+    },
+  },
   MarkPlugin({
     typeName: 'bold',
     hotkey: 'mod+b',
@@ -59,6 +76,10 @@ const RichTextInput = props => {
     onChange(event);
   };
 
+  const pluginsToUse = plugins.concat(
+    createPlaceholderPlugin(props.placeholder)
+  );
+
   return (
     <Editor
       {...filterDataAttributes(props)}
@@ -69,8 +90,7 @@ const RichTextInput = props => {
       value={props.value}
       options={{ hasWarning: props.hasWarning, hasError: props.hasError }}
       onChange={onValueChange}
-      placeholder={props.placeholder}
-      plugins={plugins}
+      plugins={pluginsToUse}
       renderEditor={renderEditor}
     />
   );

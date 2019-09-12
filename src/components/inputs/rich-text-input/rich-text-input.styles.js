@@ -83,12 +83,6 @@ export const Toolbar = styled.div`
 `;
 
 const reset = () => css`
-  span {
-    /* placeholder fixes */
-    font-weight: normal;
-    font-size: 1rem;
-    vertical-align: inherit !important;
-  }
   h1,
   h2,
   h3,
