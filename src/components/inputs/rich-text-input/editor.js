@@ -8,6 +8,7 @@ import MarkButton from './buttons/mark-button';
 import Tooltip from '../../tooltip';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import CollapsibleMotion from '../../collapsible-motion';
+import Spacings from '../../spacings';
 import {
   BoldIcon,
   ItalicIcon,
@@ -136,8 +137,8 @@ const Editor = props => {
     <CollapsibleMotion minHeight={32}>
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
         return (
-          <div>
-            <Constraints.Horizontal constraint={props.horizontalConstraint}>
+          <Constraints.Horizontal constraint={props.horizontalConstraint}>
+            <Spacings.Stack scale="xs">
               <Container
                 {...props}
                 ref={ref}
@@ -270,32 +271,32 @@ const Editor = props => {
                   </div>
                 </div>
               </Container>
-            </Constraints.Horizontal>
-            {renderToggleButton && (
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: flex-end;
-                `}
-              >
-                <FlatButton
-                  onClick={toggle}
-                  label={
-                    isOpen
-                      ? intl.formatMessage(messages.collapse)
-                      : intl.formatMessage(messages.expand)
-                  }
-                  icon={
-                    isOpen ? (
-                      <AngleUpIcon size="small" />
-                    ) : (
-                      <AngleDownIcon size="small" />
-                    )
-                  }
-                />
-              </div>
-            )}
-          </div>
+              {renderToggleButton && (
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: flex-end;
+                  `}
+                >
+                  <FlatButton
+                    onClick={toggle}
+                    label={
+                      isOpen
+                        ? intl.formatMessage(messages.collapse)
+                        : intl.formatMessage(messages.expand)
+                    }
+                    icon={
+                      isOpen ? (
+                        <AngleUpIcon size="small" />
+                      ) : (
+                        <AngleDownIcon size="small" />
+                      )
+                    }
+                  />
+                </div>
+              )}
+            </Spacings.Stack>
+          </Constraints.Horizontal>
         );
       }}
     </CollapsibleMotion>
