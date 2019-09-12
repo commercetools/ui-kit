@@ -98,6 +98,7 @@ const RichTextInput = props => {
 
 RichTextInput.defaultProps = {
   horizontalConstraint: 'scale',
+  placeholder: '',
 };
 
 RichTextInput.displayName = 'RichTextInput';
