@@ -31,7 +31,7 @@ const plugins = [
         const blocks = editor.value.blocks.map(block => block.type).toArray();
         const hasOneBlock = blocks.length === 1;
 
-        const isParagraph = blocks[0].type === 'paragraph';
+        const isParagraph = blocks[0] && blocks[0].type === 'paragraph';
 
         return isEmpty && hasOneNode && hasOneBlock && isParagraph;
       },
