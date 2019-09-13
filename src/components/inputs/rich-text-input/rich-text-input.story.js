@@ -30,9 +30,14 @@ storiesOf('Components|Inputs', module)
                   // console.log(RichTextInput.serializeHtml(newValue));
                   onChange(event.target.value);
                 }}
+                defaultExpandMultilineText={boolean(
+                  'defaultExpandMultilineText',
+                  false
+                )}
                 value={value}
                 placeholder={text('placeholder', 'Placeholder')}
                 hasError={boolean('hasError', false)}
+                shouldDefau
                 hasWarning={boolean('hasWarning', false)}
                 isDisabled={boolean('isDisabled', false)}
                 isReadOnly={boolean('isReadOnly', false)}

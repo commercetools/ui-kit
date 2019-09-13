@@ -30,7 +30,6 @@ const plugins = [
 
         const blocks = editor.value.blocks.map(block => block.type).toArray();
         const hasOneBlock = blocks.length === 1;
-
         const isParagraph = blocks[0] && blocks[0].type === 'paragraph';
 
         return isEmpty && hasOneNode && hasOneBlock && isParagraph;
@@ -96,6 +95,7 @@ const RichTextInput = props => {
       readOnly={props.isReadOnly}
       value={props.value}
       options={{
+        defaultExpandMultilineText: props.defaultExpandMultilineText,
         hasWarning: props.hasWarning,
         hasError: props.hasError,
         placeholder: props.placeholder,
@@ -108,6 +108,7 @@ const RichTextInput = props => {
 };
 
 RichTextInput.defaultProps = {
+  defaultExpandMultilineText: false,
   horizontalConstraint: 'scale',
   placeholder: '',
 };
@@ -118,6 +119,7 @@ RichTextInput.serializeHtml = html.serialize;
 RichTextInput.deserializeHtml = html.deserialize;
 
 RichTextInput.propTypes = {
+  defaultExpandMultilineText: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   id: PropTypes.string,

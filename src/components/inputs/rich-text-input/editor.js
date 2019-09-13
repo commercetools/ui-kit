@@ -43,7 +43,7 @@ const NUMBERED_LIST = 'numbered-list';
 const BULLETED_LIST = 'bulleted-list';
 const LIST_ITEM = 'list-item';
 
-const COLLAPSED_HEIGHT = 64;
+const COLLAPSED_HEIGHT = 32;
 
 const dropdownOptions = [
   { label: 'Strikethrough', value: 'strikethrough' },
@@ -55,6 +55,7 @@ const Editor = props => {
   const intl = useIntl();
   const { editor } = props;
   const ref = React.useRef();
+
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
 
   React.useEffect(() => {
@@ -134,14 +135,16 @@ const Editor = props => {
   const hasRedos = editor.hasRedos();
 
   return (
-    <CollapsibleMotion minHeight={32}>
+    <CollapsibleMotion
+      minHeight={32}
+      isDefaultClosed={!props.defaultExpandMultilineText}
+    >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
             <Spacings.Stack scale="xs">
               <Container
                 {...props}
-                ref={ref}
                 onFocus={() => {
                   if (!isOpen) {
                     toggle();
@@ -265,7 +268,7 @@ const Editor = props => {
                 </Toolbar>
                 <div style={containerStyles}>
                   <div ref={registerContentNode}>
-                    <EditorContainer {...props}>
+                    <EditorContainer {...props} ref={ref}>
                       {props.children}
                     </EditorContainer>
                   </div>
@@ -310,6 +313,7 @@ const renderEditor = (props, editor, next) => {
     name: props.name,
     id: props.id,
     isDisabled: props.disabled,
+    defaultExpandMultilineText: props.options.defaultExpandMultilineText,
     hasError: props.options.hasError,
     hasWarning: props.options.hasWarning,
     isReadOnly: props.readOnly,
