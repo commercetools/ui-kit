@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../button';
+import RichTextInputButton from './rich-text-input-button';
 
-const MarkButton = props => {
+const RichTextInputMarkButton = props => {
   const { onClickMark } = props;
 
-  const onMouseDown = React.useCallback(() => {
+  const onMouseDown = () => {
     onClickMark(props.type);
-  }, [props.type, onClickMark]);
+  };
 
   return (
-    <Button
+    <RichTextInputButton
       label={props.type}
       onMouseDown={onMouseDown}
       isActive={props.isActive}
@@ -19,13 +19,13 @@ const MarkButton = props => {
   );
 };
 
-MarkButton.displayName = 'MarkButton';
+RichTextInputMarkButton.displayName = 'RichTextInputMarkButton';
 
-MarkButton.propTypes = {
+RichTextInputMarkButton.propTypes = {
   isActive: PropTypes.bool,
   icon: PropTypes.any,
   type: PropTypes.string.isRequired,
   onClickMark: PropTypes.func,
 };
 
-export default MarkButton;
+export default RichTextInputMarkButton;

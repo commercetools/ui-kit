@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
-import Button from './button';
+import Button from './rich-text-input-button';
 import StyleDropdown from './style-dropdown';
-import MarkButton from './buttons/mark-button';
+import RichTextInputMarkButton from './rich-text-input-mark-button';
 import Tooltip from '../../tooltip';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import CollapsibleMotion from '../../collapsible-motion';
@@ -160,7 +160,7 @@ const Editor = props => {
                       placement="bottom"
                       styles={tooltipStyles}
                     >
-                      <MarkButton
+                      <RichTextInputMarkButton
                         isActive={editor.hasBoldMark()}
                         type="bold"
                         onClickMark={editor.toggleBoldMark}
@@ -172,7 +172,7 @@ const Editor = props => {
                       placement="bottom"
                       styles={tooltipStyles}
                     >
-                      <MarkButton
+                      <RichTextInputMarkButton
                         isActive={editor.hasItalicMark()}
                         type="italic"
                         onClickMark={editor.toggleItalicMark}
@@ -184,7 +184,7 @@ const Editor = props => {
                       placement="bottom"
                       styles={tooltipStyles}
                     >
-                      <MarkButton
+                      <RichTextInputMarkButton
                         isActive={editor.hasUnderlinedMark()}
                         type="underlined"
                         onClickMark={editor.toggleUnderlinedMark}

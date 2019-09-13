@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import AccessibleButton from '../../buttons/accessible-button';
 import vars from '../../../../materials/custom-properties';
 
-const Button = props => {
+const RichTextInputButton = props => {
   return (
     <div>
       <AccessibleButton
@@ -39,14 +39,14 @@ const Button = props => {
   );
 };
 
-Button.propTypes = {
+RichTextInputButton.propTypes = {
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func,
   label: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
-  icon: PropTypes.element,
+  icon: PropTypes.element.isRequired,
 };
 
-Button.displayName = 'Button';
+RichTextInputButton.displayName = 'Button';
 
-export default Button;
+export default RichTextInputButton;
