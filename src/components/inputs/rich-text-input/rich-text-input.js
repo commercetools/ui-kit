@@ -84,7 +84,7 @@ const RichTextInput = props => {
     };
     onChange(event);
   };
-  console.log('here', props.placeholder);
+
   return (
     <Editor
       {...filterDataAttributes(props)}
