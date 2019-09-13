@@ -313,6 +313,7 @@ const renderEditor = (props, editor, next) => {
     name: props.name,
     id: props.id,
     isDisabled: props.disabled,
+    horizontalConstraint: props.options.horizontalConstraint,
     defaultExpandMultilineText: props.options.defaultExpandMultilineText,
     hasError: props.options.hasError,
     hasWarning: props.options.hasWarning,

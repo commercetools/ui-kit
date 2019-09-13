@@ -95,6 +95,7 @@ const RichTextInput = props => {
       readOnly={props.isReadOnly}
       value={props.value}
       options={{
+        horizontalConstraint: props.horizontalConstraint,
         defaultExpandMultilineText: props.defaultExpandMultilineText,
         hasWarning: props.hasWarning,
         hasError: props.hasError,
