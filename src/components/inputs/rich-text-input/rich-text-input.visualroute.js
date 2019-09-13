@@ -4,9 +4,11 @@ import { RichTextInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 import jsonMinimalValue from './testValue';
 import jsonLargeValue from './value';
+import jsonEmptyValue from './test/emptyValue';
 
 const minimalValue = Value.fromJSON(jsonMinimalValue);
 const largeValue = Value.fromJSON(jsonLargeValue);
+const emptyValue = Value.fromJSON(jsonEmptyValue);
 
 export const routePath = '/rich-text-input';
 
@@ -39,6 +41,16 @@ export const component = () => (
         defaultValue={largeValue}
         onChange={() => {}}
         value={largeValue}
+        defaultExpandMultilineText={true}
+        horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="when placeholder is visible" omitPropsList>
+      <RichTextInput
+        defaultValue={emptyValue}
+        onChange={() => {}}
+        value={emptyValue}
+        placeholder="Placeholder"
         defaultExpandMultilineText={true}
         horizontalConstraint="m"
       />

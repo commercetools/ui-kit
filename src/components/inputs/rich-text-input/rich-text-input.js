@@ -23,7 +23,6 @@ const plugins = [
       // used for the placeholder plugin
       shouldUsePlaceholder: editor => {
         const isEmpty = editor.value.document.text === '';
-
         const hasOneNode =
           editor.value.document.nodes.map(node => node.text).toArray()
             .length === 1;
@@ -85,7 +84,7 @@ const RichTextInput = props => {
     };
     onChange(event);
   };
-
+  console.log('here', props.placeholder);
   return (
     <Editor
       {...filterDataAttributes(props)}
@@ -94,6 +93,9 @@ const RichTextInput = props => {
       disabled={props.isDisabled}
       readOnly={props.isReadOnly}
       value={props.value}
+      // we can only pass props to the Editor that Slate understands without getting
+      // warning in the console,
+      // so instead we pass our extra props through this `options` prop.
       options={{
         horizontalConstraint: props.horizontalConstraint,
         defaultExpandMultilineText: props.defaultExpandMultilineText,

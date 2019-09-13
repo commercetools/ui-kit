@@ -8,7 +8,7 @@ import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
 import Readme from './README.md';
-import jsonValue from './value';
+import jsonValue from './test/emptyValue';
 import TextInput from '../text-input';
 // Create our initial value...
 const initialValue = Value.fromJSON(jsonValue);
@@ -27,7 +27,6 @@ storiesOf('Components|Inputs', module)
                 id={text('id', '')}
                 name={text('name', '')}
                 onChange={event => {
-                  // console.log(RichTextInput.serializeHtml(newValue));
                   onChange(event.target.value);
                 }}
                 defaultExpandMultilineText={boolean(
