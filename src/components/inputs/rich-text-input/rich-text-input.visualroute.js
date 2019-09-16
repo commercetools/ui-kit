@@ -22,6 +22,7 @@ export const component = () => (
         horizontalConstraint="m"
       />
     </Spec>
+
     <Spec
       label="with a a longer value and defaultExpandMultilineText disabled"
       omitPropsList
@@ -71,6 +72,30 @@ export const component = () => (
         value={minimalValue}
         hasError={true}
         horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label="with horizontalConstraint `l`" omitPropsList>
+      <RichTextInput
+        defaultValue={minimalValue}
+        onChange={() => {}}
+        value={minimalValue}
+        horizontalConstraint="l"
+      />
+    </Spec>
+    <Spec label="with horizontalConstraint `xl`" omitPropsList>
+      <RichTextInput
+        defaultValue={minimalValue}
+        onChange={() => {}}
+        value={minimalValue}
+        horizontalConstraint="xl"
+      />
+    </Spec>
+    <Spec label="with horizontalConstraint `scale`" omitPropsList>
+      <RichTextInput
+        defaultValue={minimalValue}
+        onChange={() => {}}
+        value={minimalValue}
+        horizontalConstraint="scale"
       />
     </Spec>
   </Suite>
