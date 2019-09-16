@@ -48,7 +48,7 @@ export const Body = styled.div`
 // with the styles we get from react-popper :D
 // eslint-disable-next-line import/prefer-default-export
 export const getBodyStyles = ({ constraint, placement, customStyles }) => ({
-  fontFamily: vars.fontFamilyDefault,
+  fontFamily: 'inherit',
   margin: `${getOffsetMargin({ placement })} !important`,
   maxWidth: getMaxWidth({ constraint }),
   // so hovering over the tooltip when the tooltip overlaps the component
