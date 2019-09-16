@@ -1,3 +1,12 @@
+<a name="10.2.1"></a>
+
+## [10.2.1](https://github.com/commercetools/ui-kit/compare/v10.2.0...v10.2.1) (2019-09-16)
+
+### Bug Fixes
+
+- use correct font family ([#1061](https://github.com/commercetools/ui-kit/issues/1061)) ([bdf890b](https://github.com/commercetools/ui-kit/commit/bdf890b))
+- `FlatButton`: fully support theming ([#1056](https://github.com/commercetools/ui-kit/issues/1056)) ([8dabdc7](https://github.com/commercetools/ui-kit/commit/8dabdc7))
+
 <a name="10.2.0"></a>
 
 # [10.2.0](https://github.com/commercetools/ui-kit/compare/v10.1.3...v10.2.0) (2019-09-11)
