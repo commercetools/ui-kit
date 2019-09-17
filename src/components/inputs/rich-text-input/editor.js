@@ -59,10 +59,13 @@ const Editor = props => {
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
 
   React.useEffect(() => {
-    if (ref.current.clientHeight > COLLAPSED_HEIGHT && !renderToggleButton) {
+    const doesExceedCollapsedHeightLimit =
+      ref.current.clientHeight > COLLAPSED_HEIGHT;
+
+    if (doesExceedCollapsedHeightLimit && !renderToggleButton) {
       setRenderToggleButton(true);
     }
-    if (ref.current.clientHeight <= COLLAPSED_HEIGHT && renderToggleButton) {
+    if (!doesExceedCollapsedHeightLimit && renderToggleButton) {
       setRenderToggleButton(false);
     }
   }, [editor.value, renderToggleButton]);
@@ -121,15 +124,12 @@ const Editor = props => {
 
   const { toggleMark } = editor;
 
-  const onChangeMoreStyles = React.useCallback(
-    val => {
-      if (!editor.value.selection.isFocused) {
-        editor.focus();
-      }
-      toggleMark(val.value);
-    },
-    [toggleMark, editor]
-  );
+  const onChangeMoreStyles = val => {
+    if (!editor.value.selection.isFocused) {
+      editor.focus();
+    }
+    toggleMark(val.value);
+  };
 
   const hasUndos = editor.hasUndos();
   const hasRedos = editor.hasRedos();
@@ -144,7 +144,10 @@ const Editor = props => {
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
             <Spacings.Stack scale="xs">
               <Container
-                {...props}
+                hasError={props.hasError}
+                hasWarning={props.hasWarning}
+                isReadOnly={props.isReadOnly}
+                isDisabled={props.isDisabled}
                 onFocus={() => {
                   if (!isOpen) {
                     toggle();
@@ -152,7 +155,7 @@ const Editor = props => {
                   }
                 }}
               >
-                <Toolbar {...props} isOpen={isOpen}>
+                <Toolbar isOpen={isOpen}>
                   <ToolbarMainControls>
                     <StyleDropdown
                       value={activeBlock}
@@ -268,7 +271,13 @@ const Editor = props => {
                 </Toolbar>
                 <div style={containerStyles}>
                   <div ref={registerContentNode}>
-                    <EditorContainer {...props} ref={ref}>
+                    <EditorContainer
+                      hasError={props.hasError}
+                      hasWarning={props.hasWarning}
+                      isReadOnly={props.isReadOnly}
+                      isDisabled={props.isDisabled}
+                      ref={ref}
+                    >
                       {props.children}
                     </EditorContainer>
                   </div>

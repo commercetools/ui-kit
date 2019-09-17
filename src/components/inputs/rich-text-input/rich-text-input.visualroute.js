@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router';
 import { Value } from 'slate';
 import { RichTextInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
@@ -12,11 +13,33 @@ const emptyValue = Value.fromJSON(jsonEmptyValue);
 
 export const routePath = '/rich-text-input';
 
-export const component = () => (
+// this route will be used with puppeteer based testing.
+const InteractiveRoute = () => {
+  const [value, setValue] = React.useState(emptyValue);
+
+  const onChange = event => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <Suite>
+      <Spec label="minimal" omitPropsList>
+        <label htmlFor="rich-text">Rich text</label>
+        <RichTextInput
+          id="rich-text"
+          onChange={onChange}
+          value={value}
+          horizontalConstraint="m"
+        />
+      </Spec>
+    </Suite>
+  );
+};
+
+const DefaultRoute = () => (
   <Suite>
     <Spec label="minimal" omitPropsList>
       <RichTextInput
-        defaultValue={minimalValue}
         onChange={() => {}}
         value={minimalValue}
         horizontalConstraint="m"
@@ -24,22 +47,20 @@ export const component = () => (
     </Spec>
 
     <Spec
-      label="with a a longer value and defaultExpandMultilineText disabled"
+      label="with a longer value and defaultExpandMultilineText disabled"
       omitPropsList
     >
       <RichTextInput
-        defaultValue={largeValue}
         onChange={() => {}}
         value={largeValue}
         horizontalConstraint="m"
       />
     </Spec>
     <Spec
-      label="with a a longer value and defaultExpandMultilineText enabled"
+      label="with a longer value and defaultExpandMultilineText enabled"
       omitPropsList
     >
       <RichTextInput
-        defaultValue={largeValue}
         onChange={() => {}}
         value={largeValue}
         defaultExpandMultilineText={true}
@@ -48,7 +69,6 @@ export const component = () => (
     </Spec>
     <Spec label="when placeholder is visible" omitPropsList>
       <RichTextInput
-        defaultValue={emptyValue}
         onChange={() => {}}
         value={emptyValue}
         placeholder="Placeholder"
@@ -58,7 +78,6 @@ export const component = () => (
     </Spec>
     <Spec label="when hasWarning" omitPropsList>
       <RichTextInput
-        defaultValue={minimalValue}
         onChange={() => {}}
         value={minimalValue}
         hasWarning={true}
@@ -67,7 +86,6 @@ export const component = () => (
     </Spec>
     <Spec label="when hasError" omitPropsList>
       <RichTextInput
-        defaultValue={minimalValue}
         onChange={() => {}}
         value={minimalValue}
         hasError={true}
@@ -76,7 +94,6 @@ export const component = () => (
     </Spec>
     <Spec label="with horizontalConstraint `l`" omitPropsList>
       <RichTextInput
-        defaultValue={minimalValue}
         onChange={() => {}}
         value={minimalValue}
         horizontalConstraint="l"
@@ -84,7 +101,6 @@ export const component = () => (
     </Spec>
     <Spec label="with horizontalConstraint `xl`" omitPropsList>
       <RichTextInput
-        defaultValue={minimalValue}
         onChange={() => {}}
         value={minimalValue}
         horizontalConstraint="xl"
@@ -92,11 +108,17 @@ export const component = () => (
     </Spec>
     <Spec label="with horizontalConstraint `scale`" omitPropsList>
       <RichTextInput
-        defaultValue={minimalValue}
         onChange={() => {}}
         value={minimalValue}
         horizontalConstraint="scale"
       />
     </Spec>
   </Suite>
+);
+
+export const component = () => (
+  <Switch>
+    <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
+    <Route path={routePath} component={DefaultRoute} />
+  </Switch>
 );

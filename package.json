@@ -56,6 +56,7 @@
     "test": "cross-env NODE_ICU_DATA=./vendors/node_modules/full-icu jest --config jest.test.config.js",
     "test:watch": "cross-env NODE_ICU_DATA=./vendors/node_modules/full-icu jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
+    "test:visual": "jest --config jest.visual.config.js",
     "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "release:next": "yarn publish --tag next",
