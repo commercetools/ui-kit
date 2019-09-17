@@ -5,7 +5,8 @@ import RichTextInputButton from './rich-text-input-button';
 const RichTextInputMarkButton = props => {
   const { onClickMark } = props;
 
-  const onMouseDown = () => {
+  const onMouseDown = event => {
+    event.preventDefault();
     onClickMark(props.type);
   };
 
