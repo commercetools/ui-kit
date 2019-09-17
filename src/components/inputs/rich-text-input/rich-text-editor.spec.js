@@ -31,3 +31,20 @@ describe('RichTextInput', () => {
     expect(container.querySelector("[id='foo-bar']")).toBeInTheDocument();
   });
 });
+
+describe('RichTextInput static methods', () => {
+  describe('when called with a simple HTML value', () => {
+    it('should be able to serialize and deserialize back to same value', () => {
+      const html = '<p>hello world</p>';
+      const slateValue = RichTextInput.deserialize(html);
+      expect(RichTextInput.serialize(slateValue)).toEqual(html);
+    });
+  });
+  describe('when called with a more complex HTML value', () => {
+    it('should be able to serialize and deserialize back to same value', () => {
+      const html = `<h1>Hello World</h1><h1></h1><p>This is rich text, <strong>way</strong> better than <u>other</u> kind&#x27;s of text.</p><p></p><ol><li>Numbered list</li><li>Second number</li></ol><ul><li>Bullet list</li></ul>`;
+      const slateValue = RichTextInput.deserialize(html);
+      expect(RichTextInput.serialize(slateValue)).toEqual(html);
+    });
+  });
+});

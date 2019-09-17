@@ -120,8 +120,8 @@ RichTextInput.defaultProps = {
 
 RichTextInput.displayName = 'RichTextInput';
 
-RichTextInput.serializeHtml = html.serialize;
-RichTextInput.deserializeHtml = html.deserialize;
+RichTextInput.serialize = html.serialize;
+RichTextInput.deserialize = html.deserialize;
 
 RichTextInput.propTypes = {
   defaultExpandMultilineText: PropTypes.bool,

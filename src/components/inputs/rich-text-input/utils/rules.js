@@ -11,6 +11,8 @@ const BLOCK_TAGS = {
   h5: 'heading-five',
   pre: 'code',
   li: 'list-item',
+  ol: 'numbered-list',
+  ul: 'bulleted-list',
 };
 
 // Add a dictionary of mark tags.
