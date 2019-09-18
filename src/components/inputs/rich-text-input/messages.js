@@ -51,6 +51,16 @@ export default defineMessages({
     description: 'Title for the ordered list tooltip',
     defaultMessage: 'Ordered list',
   },
+  redoButtonLabel: {
+    id: 'UIKit.RichTextInput.redoButtonLabel',
+    description: 'Label for the redo button',
+    defaultMessage: 'Redo',
+  },
+  redoTooltipTitle: {
+    id: 'UIKit.RichTextInput.redoTooltipTitle',
+    description: 'Title for the redo tooltip',
+    defaultMessage: 'Redo',
+  },
   styleDropdownLabel: {
     id: 'UIKit.RichTextInput.styleDropdownLabel',
     description: 'Label for the style dropdown',
@@ -63,8 +73,18 @@ export default defineMessages({
   },
   underlinedTooltipTitle: {
     id: 'UIKit.RichTextInput.underlinedTooltipTitle',
-    description: 'Title for the underline button',
+    description: 'Title for the underline tooltip',
     defaultMessage: 'Underline',
+  },
+  undoButtonLabel: {
+    id: 'UIKit.RichTextInput.undoButtonLabel',
+    description: 'Label for the undo button',
+    defaultMessage: 'Undo',
+  },
+  undoTooltipTitle: {
+    id: 'UIKit.RichTextInput.undoTooltipTitle',
+    description: 'Title for the undo tooltip',
+    defaultMessage: 'Undo',
   },
   unorderedListButtonLabel: {
     id: 'UIKit.RichTextInput.unorderedListButtonLabel',

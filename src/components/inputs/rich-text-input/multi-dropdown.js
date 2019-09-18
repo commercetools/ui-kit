@@ -159,7 +159,7 @@ MultiDownshift.propTypes = {
   dropdownOptions: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      value: PropTypes.value.isRequired,
+      value: PropTypes.string.isRequired,
     })
   ).isRequired,
   onSelect: PropTypes.func.isRequired,

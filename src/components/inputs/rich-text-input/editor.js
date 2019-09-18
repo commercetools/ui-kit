@@ -280,12 +280,19 @@ const Editor = props => {
                       }
                     `}
                   >
-                    <Tooltip title="Undo" placement="bottom" off={!hasUndos}>
+                    <Tooltip
+                      title={intl.formatMessage(messages.undoTooltipTitle)}
+                      placement="bottom"
+                      off={!hasUndos}
+                    >
                       <Button
-                        active={false}
-                        label={'undo'}
+                        isActive={false}
+                        label={intl.formatMessage(messages.undoButtonLabel)}
                         isDisabled={!hasUndos}
-                        onMouseDown={editor.toggleUndo}
+                        onMouseDown={event => {
+                          event.preventDefault();
+                          editor.toggleUndo();
+                        }}
                         icon={
                           <UndoIcon
                             color={!hasUndos ? 'neutral60' : 'solid'}
@@ -294,12 +301,19 @@ const Editor = props => {
                         }
                       />
                     </Tooltip>
-                    <Tooltip title="Redo" placement="bottom" off={!hasRedos}>
+                    <Tooltip
+                      title={intl.formatMessage(messages.redoTooltipTitle)}
+                      placement="bottom"
+                      off={!hasRedos}
+                    >
                       <Button
-                        active={false}
-                        label={'redo'}
+                        isActive={false}
+                        label={intl.formatMessage(messages.redoButtonLabel)}
                         isDisabled={!hasRedos}
-                        onMouseDown={editor.toggleRedo}
+                        onMouseDown={event => {
+                          event.preventDefault();
+                          editor.toggleRedo();
+                        }}
                         icon={
                           <RedoIcon
                             color={!hasRedos ? 'neutral60' : 'solid'}

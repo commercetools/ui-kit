@@ -209,7 +209,7 @@ describe('RichTextInput', () => {
     numOfTags = await getNumberOfTags('strong');
     expect(numOfTags).toEqual(1);
 
-    const undoButton = await getByLabelText(doc, 'undo');
+    const undoButton = await getByLabelText(doc, 'Undo');
     await undoButton.click();
 
     // bold should be removed
@@ -217,7 +217,7 @@ describe('RichTextInput', () => {
     expect(numOfTags).toEqual(0);
 
     // now we can try redoing it
-    const redoButton = await getByLabelText(doc, 'redo');
+    const redoButton = await getByLabelText(doc, 'Redo');
     await redoButton.click();
 
     // bold should be added again
@@ -300,7 +300,7 @@ describe('RichTextInput', () => {
     await selectAllText(input);
     await input.press('Backspace');
     // get and click unordered list button
-    const unorderedListButton = await getByLabelText(doc, 'unordered-list');
+    const unorderedListButton = await getByLabelText(doc, 'Unordered list');
     await unorderedListButton.click();
 
     await input.type('Item 1');
