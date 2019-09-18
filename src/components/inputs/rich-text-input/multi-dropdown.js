@@ -1,6 +1,5 @@
-/* eslint-disable max-classes-per-file, react/display-name, react/prop-types */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
@@ -20,17 +19,14 @@ import {
 } from './icons';
 import messages from './messages';
 
-// eslint-disable-next-line
 const DropdownLabel = () => {
   return <MoreStylesIcon size="medium" />;
 };
 
-// eslint-disable-next-line
+DropdownLabel.displayName = 'DropdownLabel';
+
 const DropdownItem = props => {
-  // eslint-disable-next-line
-  const { children } = props;
   let Icon;
-  // eslint-disable-next-line
   switch (props.value) {
     case 'subscript':
       Icon = SubscriptIcon;
@@ -50,10 +46,16 @@ const DropdownItem = props => {
         justifyContent="flex-start"
       >
         <Icon size="medium" />
-        <div>{children}</div>
+        <div>{props.children}</div>
       </Spacings.Inline>
     </StyledDropdownItem>
   );
+};
+
+DropdownItem.displayName = 'DropdownItem';
+DropdownItem.propTypes = {
+  value: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 const itemToString = item => item && item.value;
@@ -150,6 +152,18 @@ const MultiDownshift = props => {
       }}
     </Downshift>
   );
+};
+
+MultiDownshift.propTypes = {
+  selectedItems: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dropdownOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.value.isRequired,
+    })
+  ).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 MultiDownshift.displayName = 'MultiDownshift';

@@ -319,7 +319,7 @@ describe('RichTextInput', () => {
     // now switch to an ordered list
 
     await selectAllText(input);
-    const orderedListButton = await getByLabelText(doc, 'ordered-list');
+    const orderedListButton = await getByLabelText(doc, 'Ordered list');
     await orderedListButton.click();
 
     // ul should not be in the document

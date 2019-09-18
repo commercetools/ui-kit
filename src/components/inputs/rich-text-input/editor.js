@@ -232,13 +232,17 @@ const Editor = props => {
                     />
                     <Divider />
                     <Tooltip
-                      title="Numbered list"
+                      title={intl.formatMessage(
+                        messages.orderedListTooltipTitle
+                      )}
                       placement="bottom"
                       styles={tooltipStyles}
                     >
                       <Button
                         isActive={editor.hasNumberedListBlock()}
-                        label={'ordered-list'}
+                        label={intl.formatMessage(
+                          messages.orderedListButtonLabel
+                        )}
                         onMouseDown={event => {
                           event.preventDefault();
                           editor.toggleNumberedListBlock();
@@ -247,13 +251,17 @@ const Editor = props => {
                       />
                     </Tooltip>
                     <Tooltip
-                      title="Bulleted list"
+                      title={intl.formatMessage(
+                        messages.unorderedListTooltipTitle
+                      )}
                       placement="bottom"
                       styles={tooltipStyles}
                     >
                       <Button
                         isActive={editor.hasBulletedListBlock()}
-                        label={'unordered-list'}
+                        label={intl.formatMessage(
+                          messages.unorderedListButtonLabel
+                        )}
                         onMouseDown={event => {
                           event.preventDefault();
                           editor.toggleBulletedListBlock();

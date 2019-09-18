@@ -41,10 +41,15 @@ export default defineMessages({
     description: 'Title for the more styles tooltip',
     defaultMessage: 'More styles',
   },
-  numberedListButtonLabel: {
-    id: 'UIKit.RichTextInput.moreStylesDropdownLabel',
-    description: 'Label for the more styles dropdown',
-    defaultMessage: 'Numbered list',
+  orderedListButtonLabel: {
+    id: 'UIKit.RichTextInput.orderedListButtonLabel',
+    description: 'Label for the ordered list button',
+    defaultMessage: 'Ordered list',
+  },
+  orderedListTooltipTitle: {
+    id: 'UIKit.RichTextInput.orderedListTooltipTitle',
+    description: 'Title for the ordered list tooltip',
+    defaultMessage: 'Ordered list',
   },
   styleDropdownLabel: {
     id: 'UIKit.RichTextInput.styleDropdownLabel',
@@ -60,5 +65,15 @@ export default defineMessages({
     id: 'UIKit.RichTextInput.underlinedTooltipTitle',
     description: 'Title for the underline button',
     defaultMessage: 'Underline',
+  },
+  unorderedListButtonLabel: {
+    id: 'UIKit.RichTextInput.unorderedListButtonLabel',
+    description: 'Label for the unordered list button',
+    defaultMessage: 'Unordered list',
+  },
+  unorderedListTooltipTitle: {
+    id: 'UIKit.RichTextInput.unorderedListTooltipTitle',
+    description: 'Title for the unordered list tooltip',
+    defaultMessage: 'Unordered list',
   },
 });
