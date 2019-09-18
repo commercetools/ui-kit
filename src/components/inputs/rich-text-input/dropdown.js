@@ -1,20 +1,70 @@
 import React from 'react';
 import Downshift from 'downshift';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
+import Spacings from '../../spacings';
+import { CaretDownIcon } from '../../icons';
 import Tooltip from '../../tooltip';
 import AccessibleButton from '../../buttons/accessible-button';
 import {
   getButtonStyles,
-  DropdownItem as StyledDropdownItem,
   DropdownContainer,
+  DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
 
-// eslint-disable-next-line
-const Label = props => <span>{props.children}</span>;
+const propsToRemove = ['onClick'];
+
+const getDropdownItemStyles = value => {
+  switch (value) {
+    case 'heading-one':
+      return css`
+        font-size: 1.75rem;
+      `;
+    case 'heading-two':
+      return css`
+        font-size: 1.5rem;
+      `;
+    case 'heading-three':
+      return css`
+        font-size: 1.3rem;
+      `;
+    case 'heading-four':
+      return css`
+        font-size: 1.2rem;
+      `;
+    case 'heading-five':
+      return css`
+        font-size: 1.1rem;
+      `;
+
+    default:
+      return css``;
+  }
+};
+
+const DropdownLabel = () => {
+  return (
+    <Spacings.Inline scale="xs" alignItems="center" justifyContent="center">
+      <span>Style</span>
+      <CaretDownIcon size="small" />
+    </Spacings.Inline>
+  );
+};
+
+DropdownLabel.displayName = 'DropdownLabel';
+
+const DropdownItem = props => (
+  <StyledDropdownItem
+    {...props}
+    // eslint-disable-next-line react/prop-types
+    css={getDropdownItemStyles(props.value)}
+  />
+);
+
+DropdownItem.displayName = 'DropdownItem';
 
 const Dropdown = props => {
-  const DropdownItem = props.components.DropdownItem || StyledDropdownItem;
-  const DropdownLabel = props.components.DropdownLabel || Label;
   return (
     <Downshift
       onChange={props.onChange}
@@ -29,7 +79,8 @@ const Dropdown = props => {
         highlightedIndex,
         selectedItem,
       }) => {
-        const { onClick, ...restOfToggleButtonProps } = getToggleButtonProps();
+        const toggleButtonProps = omit(getToggleButtonProps(), propsToRemove);
+
         return (
           <div>
             <Tooltip
@@ -41,7 +92,7 @@ const Dropdown = props => {
               <AccessibleButton
                 label={props.label}
                 css={getButtonStyles()}
-                {...restOfToggleButtonProps}
+                {...toggleButtonProps}
                 onMouseDown={event => {
                   event.preventDefault();
                   toggleMenu();
@@ -50,26 +101,29 @@ const Dropdown = props => {
                 <DropdownLabel>{props.label}</DropdownLabel>
               </AccessibleButton>
             </Tooltip>
-            <div style={{ position: 'relative' }}>
+            <div
+              css={css`
+                display: relative;
+              `}
+            >
               {isOpen ? (
                 <DropdownContainer>
                   {props.options.map((item, index) => {
-                    const {
-                      onClick: dropdownOnClick,
-                      ...restOfItemProps
-                    } = getItemProps({
+                    const itemProps = getItemProps({
                       key: index,
                       index,
                       item,
                     });
+                    const dropdownItemProps = omit(itemProps, propsToRemove);
+
                     return (
                       // eslint-disable-next-line react/jsx-key
                       <DropdownItem
-                        {...restOfItemProps}
+                        {...dropdownItemProps}
                         onMouseDown={event => {
                           event.preventDefault();
-                          restOfItemProps.onMouseDown(event);
-                          dropdownOnClick(event);
+                          dropdownItemProps.onMouseDown(event);
+                          itemProps.onClick(event);
                         }}
                         value={item.value}
                         isSelected={item.value === selectedItem}
@@ -92,10 +146,6 @@ const Dropdown = props => {
 Dropdown.displayName = 'Dropdown';
 
 Dropdown.propTypes = {
-  components: PropTypes.shape({
-    DropdownItem: PropTypes.func,
-    DropdownLabel: PropTypes.func,
-  }),
   label: PropTypes.string,
   value: PropTypes.string,
   options: PropTypes.arrayOf(
@@ -106,11 +156,5 @@ Dropdown.propTypes = {
   ).isRequired,
   onChange: PropTypes.func.isRequired,
 };
-
-Dropdown.defaultProps = {
-  components: {},
-};
-
-Dropdown.DropdownItem = StyledDropdownItem;
 
 export default Dropdown;

@@ -5,8 +5,11 @@ import Downshift from 'downshift';
 import Spacings from '../../spacings';
 import Tooltip from '../../tooltip';
 import AccessibleButton from '../../buttons/accessible-button';
-import Dropdown from './dropdown';
-import { getButtonStyles, DropdownContainer } from './dropdown.styles';
+import {
+  getButtonStyles,
+  DropdownContainer,
+  DropdownItem as StyledDropdownItem,
+} from './dropdown.styles';
 import {
   MoreStylesIcon,
   SuperscriptIcon,
@@ -37,7 +40,7 @@ const DropdownItem = props => {
   }
 
   return (
-    <Dropdown.DropdownItem {...props}>
+    <StyledDropdownItem {...props}>
       <Spacings.Inline
         scale="xs"
         alignItems="center"
@@ -46,7 +49,7 @@ const DropdownItem = props => {
         <Icon size="medium" />
         <div>{children}</div>
       </Spacings.Inline>
-    </Dropdown.DropdownItem>
+    </StyledDropdownItem>
   );
 };
 

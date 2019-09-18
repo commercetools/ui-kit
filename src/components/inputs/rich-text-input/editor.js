@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import Button from './rich-text-input-button';
-import StyleDropdown from './style-dropdown';
+import Dropdown from './dropdown';
 import RichTextInputMarkButton from './rich-text-input-mark-button';
 import Tooltip from '../../tooltip';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -44,6 +44,17 @@ const BULLETED_LIST = 'bulleted-list';
 const LIST_ITEM = 'list-item';
 
 const COLLAPSED_HEIGHT = 32;
+
+const styleDropdownOptions = [
+  { label: 'Paragraph', value: 'paragraph' },
+  { label: 'Headline H1', value: 'heading-one' },
+  { label: 'Headline H2', value: 'heading-two' },
+  { label: 'Headline H3', value: 'heading-three' },
+  { label: 'Headline H4', value: 'heading-four' },
+  { label: 'Headline H5', value: 'heading-five' },
+  { label: 'Quote', value: 'block-quote' },
+  { label: 'Preformatted', value: 'code' },
+];
 
 const dropdownOptions = [
   { label: 'Strikethrough', value: 'strikethrough' },
@@ -157,9 +168,11 @@ const Editor = props => {
               >
                 <Toolbar isOpen={isOpen}>
                   <ToolbarMainControls>
-                    <StyleDropdown
+                    <Dropdown
+                      label="Style"
                       value={activeBlock}
                       onChange={onClickBlock}
+                      options={styleDropdownOptions}
                     />
                     <Tooltip
                       title="Bold"
