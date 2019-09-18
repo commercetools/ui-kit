@@ -93,6 +93,8 @@ const RichTextInput = props => {
       disabled={props.isDisabled}
       readOnly={props.isReadOnly}
       value={props.value}
+      onFocus={props.onFocus}
+      onBlur={props.onBlur}
       // we can only pass props to the Editor that Slate understands without getting
       // warning in the console,
       // so instead we pass our extra props through this `options` prop.
@@ -132,6 +134,8 @@ RichTextInput.propTypes = {
   isReadOnly: PropTypes.bool,
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   value: Types.value.isRequired,
 };
 
