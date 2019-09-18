@@ -186,7 +186,7 @@ const Editor = props => {
 
   return (
     <CollapsibleMotion
-      minHeight={32}
+      minHeight={COLLAPSED_HEIGHT}
       isDefaultClosed={!props.defaultExpandMultilineText}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
