@@ -119,6 +119,7 @@ describe('RichTextInput', () => {
     await moreStylesButton.click();
 
     await wait(() => getByText(doc, 'Strikethrough'));
+    await percySnapshot(page, 'RichTextInput - more styles menu open');
 
     let strikethroughButton = await getByText(doc, 'Strikethrough');
     await strikethroughButton.click();
@@ -247,6 +248,7 @@ describe('RichTextInput', () => {
     await styleMenuButton.click();
 
     await wait(() => getByText(doc, 'Headline H1'));
+    await percySnapshot(page, 'RichTextInput - style menu open');
 
     // then click on the H1 button
     const h1Button = await getByText(doc, 'Headline H1');

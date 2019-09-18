@@ -99,13 +99,12 @@ const createMoreStylesDropdownOptions = intl => {
 };
 const Editor = props => {
   const intl = useIntl();
-
-  const dropdownOptions = createMoreStylesDropdownOptions(intl);
-  const styleDropdownOptions = createStyleDropdownOptions(intl);
-
   const ref = React.useRef();
 
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
+
+  const dropdownOptions = createMoreStylesDropdownOptions(intl);
+  const styleDropdownOptions = createStyleDropdownOptions(intl);
 
   React.useEffect(() => {
     const doesExceedCollapsedHeightLimit =
@@ -136,9 +135,6 @@ const Editor = props => {
     props.editor.value.blocks.some(node => node.type === type);
 
   const onClickBlock = ({ value: type }) => {
-    // const { value } = props.editor;
-    // const { document } = value;
-
     // Handle everything but list buttons.
     if (type !== BULLETED_LIST && type !== NUMBERED_LIST) {
       const isActive = hasBlock(type);
