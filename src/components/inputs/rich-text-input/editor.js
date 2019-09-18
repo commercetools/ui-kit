@@ -44,25 +44,65 @@ const LIST_ITEM = 'list-item';
 
 const COLLAPSED_HEIGHT = 32;
 
-const styleDropdownOptions = [
-  { label: 'Paragraph', value: 'paragraph' },
-  { label: 'Headline H1', value: 'heading-one' },
-  { label: 'Headline H2', value: 'heading-two' },
-  { label: 'Headline H3', value: 'heading-three' },
-  { label: 'Headline H4', value: 'heading-four' },
-  { label: 'Headline H5', value: 'heading-five' },
-  { label: 'Quote', value: 'block-quote' },
-  { label: 'Preformatted', value: 'code' },
-];
+const createStyleDropdownOptions = intl => {
+  return [
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionParagraph),
+      value: 'paragraph',
+    },
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionH1),
+      value: 'heading-one',
+    },
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionH2),
+      value: 'heading-two',
+    },
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionH3),
+      value: 'heading-three',
+    },
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionH4),
+      value: 'heading-four',
+    },
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionH5),
+      value: 'heading-five',
+    },
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionQuote),
+      value: 'block-quote',
+    },
+    {
+      label: intl.formatMessage(messages.styleDropdownOptionPreformatted),
+      value: 'code',
+    },
+  ];
+};
 
-const dropdownOptions = [
-  { label: 'Strikethrough', value: 'strikethrough' },
-  { label: 'Superscript', value: 'superscript' },
-  { label: 'Subscript', value: 'subscript' },
-];
-
+const createMoreStylesDropdownOptions = intl => {
+  return [
+    {
+      label: intl.formatMessage(messages.moreStylesDropdownOptionStrikethrough),
+      value: 'strikethrough',
+    },
+    {
+      label: intl.formatMessage(messages.moreStylesDropdownOptionSuperscript),
+      value: 'superscript',
+    },
+    {
+      label: intl.formatMessage(messages.moreStylesDropdownOptionSubscript),
+      value: 'subscript',
+    },
+  ];
+};
 const Editor = props => {
   const intl = useIntl();
+
+  const dropdownOptions = createMoreStylesDropdownOptions(intl);
+  const styleDropdownOptions = createStyleDropdownOptions(intl);
+
   const { editor } = props;
   const ref = React.useRef();
 

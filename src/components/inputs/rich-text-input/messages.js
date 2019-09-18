@@ -41,6 +41,21 @@ export default defineMessages({
     description: 'Title for the more styles tooltip',
     defaultMessage: 'More styles',
   },
+  moreStylesDropdownOptionStrikethrough: {
+    id: 'UIKit.RichTextInput.moreStylesDropdownOptionStrikethrough',
+    description: 'label for the more styles `strikethrough` option',
+    defaultMessage: 'Strikethrough',
+  },
+  moreStylesDropdownOptionSuperscript: {
+    id: 'UIKit.RichTextInput.moreStylesDropdownOptionSuperscript',
+    description: 'label for the more styles `superscript` option',
+    defaultMessage: 'Superscript',
+  },
+  moreStylesDropdownOptionSubscript: {
+    id: 'UIKit.RichTextInput.moreStylesDropdownOptionSubscript',
+    description: 'label for the more styles `subscript` option',
+    defaultMessage: 'Subscript',
+  },
   orderedListButtonLabel: {
     id: 'UIKit.RichTextInput.orderedListButtonLabel',
     description: 'Label for the ordered list button',
@@ -65,6 +80,46 @@ export default defineMessages({
     id: 'UIKit.RichTextInput.styleDropdownLabel',
     description: 'Label for the style dropdown',
     defaultMessage: 'Style',
+  },
+  styleDropdownOptionParagraph: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionParagraph',
+    description: 'Label for the `paragraph` option',
+    defaultMessage: 'Paragraph',
+  },
+  styleDropdownOptionH1: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionH1',
+    description: 'Label for the `headline-one` option',
+    defaultMessage: 'Headline H1',
+  },
+  styleDropdownOptionH2: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionH2',
+    description: 'Label for the `headline-two` option',
+    defaultMessage: 'Headline H2',
+  },
+  styleDropdownOptionH3: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionH3',
+    description: 'Label for the `headline-three` option',
+    defaultMessage: 'Headline H3',
+  },
+  styleDropdownOptionH4: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionH4',
+    description: 'Label for the `headline-four` option',
+    defaultMessage: 'Headline H4',
+  },
+  styleDropdownOptionH5: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionH5',
+    description: 'Label for the `headline-five` option',
+    defaultMessage: 'Headline H5',
+  },
+  styleDropdownOptionQuote: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionQuote',
+    description: 'Label for the `quote` option',
+    defaultMessage: 'Quote',
+  },
+  styleDropdownOptionPreformatted: {
+    id: 'UIKit.RichTextInput.styleDropdownOptionPreformatted',
+    description: 'Label for the `code` option',
+    defaultMessage: 'Preformatted',
   },
   underlinedButtonLabel: {
     id: 'UIKit.RichTextInput.underlinedButtonLabel',
