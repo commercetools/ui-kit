@@ -36,7 +36,7 @@ describe('RichTextInput', () => {
     const input = await getByLabelText(doc, 'Rich text');
 
     // make the text bold
-    const boldButton = await getByLabelText(doc, 'bold');
+    const boldButton = await getByLabelText(doc, 'Bold');
     await boldButton.click();
 
     await input.type('Hello world');
@@ -65,7 +65,7 @@ describe('RichTextInput', () => {
     await selectAllText(input);
 
     // make the selection italic
-    const italicButton = await getByLabelText(doc, 'italic');
+    const italicButton = await getByLabelText(doc, 'Italic');
     await italicButton.click();
 
     // check there are italic tags in the document.
@@ -88,7 +88,7 @@ describe('RichTextInput', () => {
     await selectAllText(input);
 
     // make the selection underlined
-    const underlineButton = await getByLabelText(doc, 'underlined');
+    const underlineButton = await getByLabelText(doc, 'Underline');
     await underlineButton.click();
 
     // check there are italic tags in the document.

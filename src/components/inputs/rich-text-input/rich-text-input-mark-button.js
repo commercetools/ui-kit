@@ -10,7 +10,7 @@ const RichTextInputMarkButton = props => {
 
   return (
     <RichTextInputButton
-      label={props.type}
+      label={props.label || props.type}
       onMouseDown={onMouseDown}
       isActive={props.isActive}
       icon={props.icon}
@@ -23,6 +23,7 @@ RichTextInputMarkButton.displayName = 'RichTextInputMarkButton';
 RichTextInputMarkButton.propTypes = {
   isActive: PropTypes.bool,
   icon: PropTypes.any,
+  label: PropTypes.string,
   type: PropTypes.string.isRequired,
   onClickMark: PropTypes.func,
 };

@@ -169,43 +169,50 @@ const Editor = props => {
                 <Toolbar isOpen={isOpen}>
                   <ToolbarMainControls>
                     <Dropdown
-                      label="Style"
+                      label={intl.formatMessage(messages.styleDropdownLabel)}
                       value={activeBlock}
                       onChange={onClickBlock}
                       options={styleDropdownOptions}
                     />
                     <Tooltip
-                      title="Bold"
+                      title={intl.formatMessage(messages.boldTooltipTitle)}
                       placement="bottom"
                       styles={tooltipStyles}
                     >
                       <RichTextInputMarkButton
                         isActive={editor.hasBoldMark()}
                         type="bold"
+                        label={intl.formatMessage(messages.boldButtonLabel)}
                         onClickMark={editor.toggleBoldMark}
                         icon={<BoldIcon size="medium" />}
                       />
                     </Tooltip>
                     <Tooltip
-                      title="Italic"
+                      title={intl.formatMessage(messages.italicTooltipTitle)}
                       placement="bottom"
                       styles={tooltipStyles}
                     >
                       <RichTextInputMarkButton
                         isActive={editor.hasItalicMark()}
                         type="italic"
+                        label={intl.formatMessage(messages.italicButtonLabel)}
                         onClickMark={editor.toggleItalicMark}
                         icon={<ItalicIcon size="medium" />}
                       />
                     </Tooltip>
                     <Tooltip
-                      title="Underlined"
+                      title={intl.formatMessage(
+                        messages.underlinedTooltipTitle
+                      )}
                       placement="bottom"
                       styles={tooltipStyles}
                     >
                       <RichTextInputMarkButton
                         isActive={editor.hasUnderlinedMark()}
                         type="underlined"
+                        label={intl.formatMessage(
+                          messages.underlinedButtonLabel
+                        )}
                         onClickMark={editor.toggleUnderlinedMark}
                         icon={<UnderlineIcon size="medium" />}
                       />
