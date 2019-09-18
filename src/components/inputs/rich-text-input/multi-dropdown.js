@@ -19,12 +19,6 @@ import {
 } from './icons';
 import messages from './messages';
 
-const DropdownLabel = () => {
-  return <MoreStylesIcon size="medium" />;
-};
-
-DropdownLabel.displayName = 'DropdownLabel';
-
 const DropdownItem = props => {
   let Icon;
   switch (props.value) {
@@ -102,7 +96,7 @@ const MultiDownshift = props => {
                     toggleMenu();
                   }}
                 >
-                  <DropdownLabel />
+                  <MoreStylesIcon size="medium" />
                 </AccessibleButton>
               </div>
             </Tooltip>
