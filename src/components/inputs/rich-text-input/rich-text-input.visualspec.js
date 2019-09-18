@@ -4,6 +4,26 @@ import { getDocument, queries, wait } from 'pptr-testing-library';
 const { getByLabelText, getByText } = queries;
 
 describe('RichTextInput', () => {
+  const selectAllText = async () => {
+    await page.evaluate(() => {
+      const richTextInput = document.querySelector('#rich-text');
+      const range = document.createRange();
+      range.selectNodeContents(richTextInput);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    });
+  };
+
+  const getNumberOfTags = async tagName => {
+    // eslint-disable-next-line no-shadow
+    const numberOfTags = await page.evaluate(tagName => {
+      return document.querySelectorAll(tagName).length;
+    }, tagName);
+
+    return numberOfTags;
+  };
+
   it('Default', async () => {
     await page.goto(`${HOST}/rich-text-input`);
     await expect(page).toMatch('minimal');
@@ -23,29 +43,17 @@ describe('RichTextInput', () => {
     await wait(() => getByText(doc, 'Hello world'));
 
     // check that there is now a strong tag in the document.
-    let numOfStrongTags = await page.evaluate(() => {
-      return document.querySelectorAll('strong').length;
-    });
+    let numOfStrongTags = await getNumberOfTags('strong');
 
     expect(numOfStrongTags).toEqual(1);
 
     // select the text
-    await page.evaluate(() => {
-      const richTextInput = document.querySelector('#rich-text');
-      const range = document.createRange();
-      range.selectNodeContents(richTextInput);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-    });
-
+    selectAllText();
     // click the bold button again
     await boldButton.click();
 
     // check there are no strong tags in the document.
-    numOfStrongTags = await page.evaluate(() => {
-      return document.querySelectorAll('strong').length;
-    });
+    numOfStrongTags = await getNumberOfTags('strong');
     expect(numOfStrongTags).toEqual(0);
   });
 });
