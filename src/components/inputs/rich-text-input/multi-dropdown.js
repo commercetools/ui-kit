@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
+import omit from 'lodash/omit';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import Spacings from '../../spacings';
@@ -18,6 +19,8 @@ import {
   StrikethroughIcon,
 } from './icons';
 import messages from './messages';
+
+const propsToRemove = ['onClick'];
 
 const DropdownItem = props => {
   let Icon;
@@ -68,10 +71,7 @@ const MultiDownshift = props => {
         toggleMenu,
         highlightedIndex,
       }) => {
-        const {
-          onClick: onClickToggle,
-          ...restOfToggleButtonProps
-        } = getToggleButtonProps();
+        const toggleButtonProps = omit(getToggleButtonProps(), propsToRemove);
 
         return (
           <div>
@@ -85,7 +85,7 @@ const MultiDownshift = props => {
             >
               <div>
                 <AccessibleButton
-                  {...restOfToggleButtonProps}
+                  {...toggleButtonProps}
                   label={props.label}
                   css={getButtonStyles({
                     isIndeterminate,
@@ -112,10 +112,8 @@ const MultiDownshift = props => {
                     const isSelected = props.selectedItems.find(
                       selectedItem => selectedItem === item.value
                     );
-                    const {
-                      onClick: onClickItem,
-                      ...restOfItemProps
-                    } = getItemProps({
+
+                    const itemProps = getItemProps({
                       item,
                       index,
                       key: item.value,
@@ -124,14 +122,16 @@ const MultiDownshift = props => {
                       isSelected,
                     });
 
+                    const dropdownItemProps = omit(itemProps, propsToRemove);
+
                     return (
                       // eslint-disable-next-line react/jsx-key
                       <DropdownItem
-                        {...restOfItemProps}
+                        {...dropdownItemProps}
                         onMouseDown={event => {
                           event.preventDefault();
-                          restOfItemProps.onMouseDown(event);
-                          onClickItem(event);
+                          dropdownItemProps.onMouseDown(event);
+                          itemProps.onClick(event);
                         }}
                       >
                         {item.label}
