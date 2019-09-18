@@ -42,7 +42,10 @@ const Dropdown = props => {
                 label={props.label}
                 css={getButtonStyles()}
                 {...restOfToggleButtonProps}
-                onMouseDown={toggleMenu}
+                onMouseDown={event => {
+                  event.preventDefault();
+                  toggleMenu();
+                }}
               >
                 <DropdownLabel>{props.label}</DropdownLabel>
               </AccessibleButton>
@@ -64,6 +67,7 @@ const Dropdown = props => {
                       <DropdownItem
                         {...restOfItemProps}
                         onMouseDown={event => {
+                          event.preventDefault();
                           restOfItemProps.onMouseDown(event);
                           dropdownOnClick(event);
                         }}

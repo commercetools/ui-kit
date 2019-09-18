@@ -30,7 +30,7 @@ describe('RichTextInput', () => {
     await percySnapshot(page, 'RichTextInput');
   });
 
-  it('Interactive - with marks', async () => {
+  it('Interactive', async () => {
     await page.goto(`${HOST}/rich-text-input/interactive`);
     const doc = await getDocument(page);
     const input = await getByLabelText(doc, 'Rich text');
@@ -94,6 +94,8 @@ describe('RichTextInput', () => {
     // check there are italic tags in the document.
     numOfTags = await getNumberOfTags('u');
     expect(numOfTags).toEqual(1);
+
+    await wait(() => getByText(doc, 'Underlined text!'));
 
     // click italic button to remove it
     await underlineButton.click();
@@ -232,5 +234,105 @@ describe('RichTextInput', () => {
 
     await undoButton.click();
     await wait(() => getByText(doc, 'Let us now test undo!'));
+
+    /* Testing Blocks */
+
+    // start by removing all the text
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    // next, open the Style menu
+
+    const styleMenuButton = await getByLabelText(doc, 'Style');
+    await styleMenuButton.click();
+
+    await wait(() => getByText(doc, 'Headline H1'));
+
+    // then click on the H1 button
+    const h1Button = await getByText(doc, 'Headline H1');
+    await h1Button.click();
+
+    // now type into the input
+    const h1Text = 'here is our first h1';
+    await input.type(h1Text);
+
+    // text we typed should be visible on the screen
+    await wait(() => getByText(doc, h1Text));
+
+    // h1 should be in document
+    numOfTags = await getNumberOfTags('h1');
+    expect(numOfTags).toEqual(1);
+
+    // now, let's change back to h3
+    await selectAllText(input);
+
+    // open style menu again
+    await styleMenuButton.click();
+
+    // then click on the H1 button
+    const h3Button = await getByText(doc, 'Headline H3');
+    await h3Button.click();
+
+    // h1 should not be in document
+    numOfTags = await getNumberOfTags('h1');
+    expect(numOfTags).toEqual(0);
+
+    // h3 should be in document
+    numOfTags = await getNumberOfTags('h3');
+    expect(numOfTags).toEqual(1);
+
+    // now change back to paragraph (the default)
+
+    // open style menu again
+    await styleMenuButton.click();
+
+    // then click on the paragraph button
+    const paragraphbutton = await getByText(doc, 'Paragraph');
+    await paragraphbutton.click();
+
+    // h3 should not be in document
+    numOfTags = await getNumberOfTags('h3');
+    expect(numOfTags).toEqual(0);
+
+    // working with lists.
+
+    // start by removing all the text
+    await selectAllText(input);
+    await input.press('Backspace');
+    // get and click unordered list button
+    const unorderedListButton = await getByLabelText(doc, 'unordered-list');
+    await unorderedListButton.click();
+
+    await input.type('Item 1');
+    await input.press('Enter');
+    await input.type('Item 2');
+
+    // ul should be in the document
+    numOfTags = await getNumberOfTags('ul');
+    expect(numOfTags).toEqual(1);
+
+    // two li tags should be in the document
+
+    numOfTags = await getNumberOfTags('li');
+    expect(numOfTags).toEqual(2);
+
+    // now switch to an ordered list
+
+    await selectAllText(input);
+    const orderedListButton = await getByLabelText(doc, 'ordered-list');
+    await orderedListButton.click();
+
+    // ul should not be in the document
+    numOfTags = await getNumberOfTags('ul');
+    expect(numOfTags).toEqual(0);
+
+    // ol should not be in the document
+    numOfTags = await getNumberOfTags('ol');
+    expect(numOfTags).toEqual(1);
+
+    // two li tags should still be in the document
+
+    numOfTags = await getNumberOfTags('li');
+    expect(numOfTags).toEqual(2);
   });
 });

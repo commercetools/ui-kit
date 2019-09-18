@@ -211,8 +211,11 @@ const Editor = props => {
                     >
                       <Button
                         isActive={editor.hasNumberedListBlock()}
-                        label={'numbered-list'}
-                        onMouseDown={editor.toggleNumberedListBlock}
+                        label={'ordered-list'}
+                        onMouseDown={event => {
+                          event.preventDefault();
+                          editor.toggleNumberedListBlock();
+                        }}
                         icon={<OrderedListIcon size="medium" />}
                       />
                     </Tooltip>
@@ -223,8 +226,11 @@ const Editor = props => {
                     >
                       <Button
                         isActive={editor.hasBulletedListBlock()}
-                        label={'ordered-list'}
-                        onMouseDown={editor.toggleBulletedListBlock}
+                        label={'unordered-list'}
+                        onMouseDown={event => {
+                          event.preventDefault();
+                          editor.toggleBulletedListBlock();
+                        }}
                         icon={<UnorderedListIcon size="medium" />}
                       />
                     </Tooltip>
