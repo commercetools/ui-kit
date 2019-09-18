@@ -47,6 +47,6 @@ RichTextInputButton.propTypes = {
   icon: PropTypes.element.isRequired,
 };
 
-RichTextInputButton.displayName = 'Button';
+RichTextInputButton.displayName = 'RichTextInputButton';
 
 export default RichTextInputButton;

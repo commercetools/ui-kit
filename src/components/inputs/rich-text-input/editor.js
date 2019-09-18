@@ -334,6 +334,7 @@ const Editor = props => {
   );
 };
 
+// eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
   const children = next();
 
@@ -368,7 +369,6 @@ const sharedProps = {
 Editor.displayName = 'Editor';
 Editor.propTypes = { ...sharedProps, editor: PropTypes.any };
 
-renderEditor.displayName = 'renderEditor';
 renderEditor.propTypes = {
   ...sharedProps,
   options: PropTypes.shape({

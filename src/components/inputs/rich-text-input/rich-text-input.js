@@ -50,26 +50,24 @@ const plugins = [
     hotkey: 'mod+b',
     command: 'toggleBoldMark',
     query: 'hasBoldMark',
-    // eslint-disable-next-line react/display-name, react/prop-types
-    RenderMark: ({ children, ...attributes }) => (
-      <strong {...attributes}>{children}</strong>
-    ),
+    // eslint-disable-next-line react/display-name
+    RenderMark: props => <strong {...props} />,
   }),
   MarkPlugin({
     typeName: 'italic',
     hotkey: 'mod+i',
     command: 'toggleItalicMark',
     query: 'hasItalicMark',
-    // eslint-disable-next-line react/display-name, react/prop-types
-    RenderMark: props => <em {...props}>{props.children}</em>,
+    // eslint-disable-next-line react/display-name
+    RenderMark: props => <em {...props} />,
   }),
   MarkPlugin({
     typeName: 'underlined',
     hotkey: 'mod+u',
     command: 'toggleUnderlinedMark',
     query: 'hasUnderlinedMark',
-    // eslint-disable-next-line react/display-name, react/prop-types
-    RenderMark: props => <u {...props}>{props.children}</u>,
+    // eslint-disable-next-line react/display-name
+    RenderMark: props => <u {...props} />,
   }),
   RenderMarkPlugin(),
   RenderBlockPlugin(),
