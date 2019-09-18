@@ -86,7 +86,10 @@ const MultiDownshift = props => {
                     isIndeterminate,
                     isStyleButton: false,
                   })}
-                  onMouseDown={toggleMenu}
+                  onMouseDown={event => {
+                    event.preventDefault();
+                    toggleMenu();
+                  }}
                 >
                   <DropdownLabel />
                 </AccessibleButton>
@@ -116,6 +119,7 @@ const MultiDownshift = props => {
                       <DropdownItem
                         {...restOfItemProps}
                         onMouseDown={event => {
+                          event.preventDefault();
                           restOfItemProps.onMouseDown(event);
                           onClickItem(event);
                         }}
