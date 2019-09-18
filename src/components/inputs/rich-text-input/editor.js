@@ -103,7 +103,6 @@ const Editor = props => {
   const dropdownOptions = createMoreStylesDropdownOptions(intl);
   const styleDropdownOptions = createStyleDropdownOptions(intl);
 
-  const { editor } = props;
   const ref = React.useRef();
 
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
@@ -118,12 +117,14 @@ const Editor = props => {
     if (!doesExceedCollapsedHeightLimit && renderToggleButton) {
       setRenderToggleButton(false);
     }
-  }, [editor.value, renderToggleButton]);
+  }, [props.editor.value, renderToggleButton]);
 
   const activeBlock =
-    (editor.value.blocks.first() && editor.value.blocks.first().type) || '';
+    (props.editor.value.blocks.first() &&
+      props.editor.value.blocks.first().type) ||
+    '';
 
-  const activeMarks = Array.from(editor.value.activeMarks).map(
+  const activeMarks = Array.from(props.editor.value.activeMarks).map(
     mark => mark.type
   );
 
@@ -131,11 +132,12 @@ const Editor = props => {
     dropdownOptions.some(dropdownOption => activeMark === dropdownOption.value)
   );
 
-  const hasBlock = type => editor.value.blocks.some(node => node.type === type);
+  const hasBlock = type =>
+    props.editor.value.blocks.some(node => node.type === type);
 
   const onClickBlock = ({ value: type }) => {
-    const { value } = editor;
-    const { document } = value;
+    // const { value } = props.editor;
+    // const { document } = value;
 
     // Handle everything but list buttons.
     if (type !== BULLETED_LIST && type !== NUMBERED_LIST) {
@@ -143,46 +145,47 @@ const Editor = props => {
       const isList = hasBlock(LIST_ITEM);
 
       if (isList) {
-        editor
+        props.editor
           .setBlocks(isActive ? DEFAULT_NODE : type)
           .unwrapBlock(BULLETED_LIST)
           .unwrapBlock(NUMBERED_LIST);
       } else {
-        editor.setBlocks(isActive ? DEFAULT_NODE : type);
+        props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
       }
     } else {
       // Handle the extra wrapping required for list buttons.
       const isList = hasBlock(LIST_ITEM);
-      const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type === type);
+      const isType = props.editor.value.blocks.some(block => {
+        return !!props.editor.value.document.getClosest(
+          block.key,
+          parent => parent.type === type
+        );
       });
 
       if (isList && isType) {
-        editor
+        props.editor
           .setBlocks(DEFAULT_NODE)
           .unwrapBlock(BULLETED_LIST)
           .unwrapBlock(NUMBERED_LIST);
       } else if (isList) {
-        editor
+        props.editor
           .unwrapBlock(type === BULLETED_LIST ? NUMBERED_LIST : BULLETED_LIST)
           .wrapBlock(type);
       } else {
-        editor.setBlocks(LIST_ITEM).wrapBlock(type);
+        props.editor.setBlocks(LIST_ITEM).wrapBlock(type);
       }
     }
   };
 
-  const { toggleMark } = editor;
-
   const onChangeMoreStyles = val => {
-    if (!editor.value.selection.isFocused) {
-      editor.focus();
+    if (!props.editor.value.selection.isFocused) {
+      props.editor.focus();
     }
-    toggleMark(val.value);
+    props.editor.toggleMark(val.value);
   };
 
-  const hasUndos = editor.hasUndos();
-  const hasRedos = editor.hasRedos();
+  const hasUndos = props.editor.hasUndos();
+  const hasRedos = props.editor.hasRedos();
 
   return (
     <CollapsibleMotion
@@ -219,11 +222,11 @@ const Editor = props => {
                       styles={tooltipStyles}
                     >
                       <Button
-                        isActive={editor.hasBoldMark()}
+                        isActive={props.editor.hasBoldMark()}
                         label={intl.formatMessage(messages.boldButtonLabel)}
                         onMouseDown={event => {
                           event.preventDefault();
-                          editor.toggleBoldMark();
+                          props.editor.toggleBoldMark();
                         }}
                         icon={<BoldIcon size="medium" />}
                       />
@@ -234,11 +237,11 @@ const Editor = props => {
                       styles={tooltipStyles}
                     >
                       <Button
-                        isActive={editor.hasItalicMark()}
+                        isActive={props.editor.hasItalicMark()}
                         label={intl.formatMessage(messages.italicButtonLabel)}
                         onMouseDown={event => {
                           event.preventDefault();
-                          editor.toggleItalicMark();
+                          props.editor.toggleItalicMark();
                         }}
                         icon={<ItalicIcon size="medium" />}
                       />
@@ -251,13 +254,13 @@ const Editor = props => {
                       styles={tooltipStyles}
                     >
                       <Button
-                        isActive={editor.hasUnderlinedMark()}
+                        isActive={props.editor.hasUnderlinedMark()}
                         label={intl.formatMessage(
                           messages.underlinedButtonLabel
                         )}
                         onMouseDown={event => {
                           event.preventDefault();
-                          editor.toggleUnderlinedMark();
+                          props.editor.toggleUnderlinedMark();
                         }}
                         icon={<UnderlineIcon size="medium" />}
                       />
@@ -279,13 +282,13 @@ const Editor = props => {
                       styles={tooltipStyles}
                     >
                       <Button
-                        isActive={editor.hasNumberedListBlock()}
+                        isActive={props.editor.hasNumberedListBlock()}
                         label={intl.formatMessage(
                           messages.orderedListButtonLabel
                         )}
                         onMouseDown={event => {
                           event.preventDefault();
-                          editor.toggleNumberedListBlock();
+                          props.editor.toggleNumberedListBlock();
                         }}
                         icon={<OrderedListIcon size="medium" />}
                       />
@@ -298,13 +301,13 @@ const Editor = props => {
                       styles={tooltipStyles}
                     >
                       <Button
-                        isActive={editor.hasBulletedListBlock()}
+                        isActive={props.editor.hasBulletedListBlock()}
                         label={intl.formatMessage(
                           messages.unorderedListButtonLabel
                         )}
                         onMouseDown={event => {
                           event.preventDefault();
-                          editor.toggleBulletedListBlock();
+                          props.editor.toggleBulletedListBlock();
                         }}
                         icon={<UnorderedListIcon size="medium" />}
                       />
@@ -331,7 +334,7 @@ const Editor = props => {
                         isDisabled={!hasUndos}
                         onMouseDown={event => {
                           event.preventDefault();
-                          editor.toggleUndo();
+                          props.editor.toggleUndo();
                         }}
                         icon={
                           <UndoIcon
@@ -352,7 +355,7 @@ const Editor = props => {
                         isDisabled={!hasRedos}
                         onMouseDown={event => {
                           event.preventDefault();
-                          editor.toggleRedo();
+                          props.editor.toggleRedo();
                         }}
                         icon={
                           <RedoIcon

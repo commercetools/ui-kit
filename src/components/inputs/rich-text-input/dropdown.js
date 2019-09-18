@@ -103,7 +103,7 @@ const Dropdown = props => {
             </Tooltip>
             <div
               css={css`
-                display: relative;
+                position: relative;
               `}
             >
               {isOpen ? (

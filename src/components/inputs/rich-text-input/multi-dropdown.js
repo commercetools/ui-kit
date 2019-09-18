@@ -109,7 +109,7 @@ const MultiDownshift = props => {
             <div
               {...getMenuProps()}
               css={css`
-                position: 'relative';
+                position: relative;
               `}
             >
               {isOpen ? (
