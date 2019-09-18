@@ -104,6 +104,7 @@ describe('RichTextInput', () => {
 
     // multi select marks
 
+    // Strike through
     await selectAllText(input);
     await input.press('Backspace');
 
@@ -135,5 +136,101 @@ describe('RichTextInput', () => {
     // check there are del tags in the document.
     numOfTags = await getNumberOfTags('del');
     expect(numOfTags).toEqual(0);
+
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    await input.type('Superscript!');
+    await wait(() => getByText(doc, 'Superscript!'));
+
+    await selectAllText(input);
+
+    await moreStylesButton.click();
+
+    await wait(() => getByText(doc, 'Superscript'));
+
+    let superscriptButton = await getByText(doc, 'Superscript');
+    await superscriptButton.click();
+
+    // check there are sup tags in the document.
+    numOfTags = await getNumberOfTags('sup');
+    expect(numOfTags).toEqual(1);
+
+    // remove the mark
+    await moreStylesButton.click();
+
+    await wait(() => getByText(doc, 'Superscript'));
+    superscriptButton = await getByText(doc, 'Superscript');
+    await superscriptButton.click();
+
+    // check there are no del tags in the document.
+    numOfTags = await getNumberOfTags('sup');
+    expect(numOfTags).toEqual(0);
+
+    // apply subscript to the selection
+
+    await moreStylesButton.click();
+    let subscriptButton = await getByText(doc, 'Subscript');
+
+    await subscriptButton.click();
+
+    // check there are sub tags in the document.
+    numOfTags = await getNumberOfTags('sub');
+    expect(numOfTags).toEqual(1);
+
+    // remove subscript now
+
+    await moreStylesButton.click();
+    subscriptButton = await getByText(doc, 'Subscript');
+    await subscriptButton.click();
+
+    // check there are no sub tags in the document.
+    numOfTags = await getNumberOfTags('sub');
+    expect(numOfTags).toEqual(0);
+
+    /* UNDO & REDO FUNCTIONALITY TESTING */
+
+    /* with marks */
+
+    // start by removing all values
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    await input.type('Let us now test undo!');
+    await wait(() => getByText(doc, 'Let us now test undo!'));
+
+    // apply bold to selection.
+    await selectAllText(input);
+    await boldButton.click();
+
+    // bold should be applied
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(1);
+
+    const undoButton = await getByLabelText(doc, 'undo');
+    await undoButton.click();
+
+    // bold should be removed
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(0);
+
+    // now we can try redoing it
+    const redoButton = await getByLabelText(doc, 'redo');
+    await redoButton.click();
+
+    // bold should be added again
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(1);
+
+    /* with text */
+
+    // start by removing all the text
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    // then click undo, text should be back
+
+    await undoButton.click();
+    await wait(() => getByText(doc, 'Let us now test undo!'));
   });
 });
