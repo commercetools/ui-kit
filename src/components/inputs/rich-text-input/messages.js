@@ -31,6 +31,21 @@ export default defineMessages({
     description: 'Title for the italic tooltip',
     defaultMessage: 'Italic',
   },
+  moreStylesDropdownLabel: {
+    id: 'UIKit.RichTextInput.moreStylesDropdownLabel',
+    description: 'Label for the more styles dropdown',
+    defaultMessage: 'More styles',
+  },
+  moreStylesDropdownTooltipTitle: {
+    id: 'UIKit.RichTextInput.moreStylesDropdownTooltipTitle',
+    description: 'Title for the more styles tooltip',
+    defaultMessage: 'More styles',
+  },
+  numberedListButtonLabel: {
+    id: 'UIKit.RichTextInput.moreStylesDropdownLabel',
+    description: 'Label for the more styles dropdown',
+    defaultMessage: 'Numbered list',
+  },
   styleDropdownLabel: {
     id: 'UIKit.RichTextInput.styleDropdownLabel',
     description: 'Label for the style dropdown',

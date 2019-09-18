@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import Button from './rich-text-input-button';
 import Dropdown from './dropdown';
-import RichTextInputMarkButton from './rich-text-input-mark-button';
 import Tooltip from '../../tooltip';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import CollapsibleMotion from '../../collapsible-motion';
@@ -179,11 +178,13 @@ const Editor = props => {
                       placement="bottom"
                       styles={tooltipStyles}
                     >
-                      <RichTextInputMarkButton
+                      <Button
                         isActive={editor.hasBoldMark()}
-                        type="bold"
                         label={intl.formatMessage(messages.boldButtonLabel)}
-                        onClickMark={editor.toggleBoldMark}
+                        onMouseDown={event => {
+                          event.preventDefault();
+                          editor.toggleBoldMark();
+                        }}
                         icon={<BoldIcon size="medium" />}
                       />
                     </Tooltip>
@@ -192,11 +193,13 @@ const Editor = props => {
                       placement="bottom"
                       styles={tooltipStyles}
                     >
-                      <RichTextInputMarkButton
+                      <Button
                         isActive={editor.hasItalicMark()}
-                        type="italic"
                         label={intl.formatMessage(messages.italicButtonLabel)}
-                        onClickMark={editor.toggleItalicMark}
+                        onMouseDown={event => {
+                          event.preventDefault();
+                          editor.toggleItalicMark();
+                        }}
                         icon={<ItalicIcon size="medium" />}
                       />
                     </Tooltip>
@@ -207,18 +210,22 @@ const Editor = props => {
                       placement="bottom"
                       styles={tooltipStyles}
                     >
-                      <RichTextInputMarkButton
+                      <Button
                         isActive={editor.hasUnderlinedMark()}
-                        type="underlined"
                         label={intl.formatMessage(
                           messages.underlinedButtonLabel
                         )}
-                        onClickMark={editor.toggleUnderlinedMark}
+                        onMouseDown={event => {
+                          event.preventDefault();
+                          editor.toggleUnderlinedMark();
+                        }}
                         icon={<UnderlineIcon size="medium" />}
                       />
                     </Tooltip>
                     <MultiDropdown
-                      label="More styles"
+                      label={intl.formatMessage(
+                        messages.moreStylesDropdownLabel
+                      )}
                       dropdownOptions={dropdownOptions}
                       selectedItems={activeMoreStyleMarks}
                       onSelect={onChangeMoreStyles}

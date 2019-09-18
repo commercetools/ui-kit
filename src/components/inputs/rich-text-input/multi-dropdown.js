@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Downshift from 'downshift';
+import { css } from '@emotion/core';
+import { useIntl } from 'react-intl';
 import Spacings from '../../spacings';
 import Tooltip from '../../tooltip';
 import AccessibleButton from '../../buttons/accessible-button';
@@ -16,6 +18,7 @@ import {
   SubscriptIcon,
   StrikethroughIcon,
 } from './icons';
+import messages from './messages';
 
 // eslint-disable-next-line
 const DropdownLabel = () => {
@@ -57,6 +60,7 @@ const itemToString = item => item && item.value;
 
 const MultiDownshift = props => {
   const isIndeterminate = props.selectedItems.length > 0;
+  const intl = useIntl();
 
   return (
     <Downshift onSelect={props.onSelect} itemToString={itemToString}>
@@ -76,7 +80,9 @@ const MultiDownshift = props => {
         return (
           <div>
             <Tooltip
-              title="More styles"
+              title={intl.formatMessage(
+                messages.moreStylesDropdownTooltipTitle
+              )}
               placement="bottom"
               off={isOpen}
               styles={{ body: { zIndex: 99999 } }}
@@ -98,7 +104,12 @@ const MultiDownshift = props => {
                 </AccessibleButton>
               </div>
             </Tooltip>
-            <div {...getMenuProps()} style={{ position: 'relative' }}>
+            <div
+              {...getMenuProps()}
+              css={css`
+                position: 'relative';
+              `}
+            >
               {isOpen ? (
                 <DropdownContainer>
                   {props.dropdownOptions.map((item, index) => {
