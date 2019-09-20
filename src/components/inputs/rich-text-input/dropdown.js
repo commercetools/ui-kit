@@ -86,12 +86,12 @@ const Dropdown = props => {
                 <DropdownLabel>{props.label}</DropdownLabel>
               </AccessibleButton>
             </Tooltip>
-            <div
-              css={css`
-                position: relative;
-              `}
-            >
-              {isOpen ? (
+            {isOpen ? (
+              <div
+                css={css`
+                  position: relative;
+                `}
+              >
                 <DropdownContainer>
                   {props.options.map((item, index) => {
                     const itemProps = getItemProps({
@@ -118,8 +118,8 @@ const Dropdown = props => {
                     );
                   })}
                 </DropdownContainer>
-              ) : null}
-            </div>
+              </div>
+            ) : null}
           </div>
         );
       }}
