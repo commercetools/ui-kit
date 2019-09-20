@@ -17,10 +17,10 @@ const getItemStyles = props => {
 };
 
 const DropdownItem = styled.div`
-  padding: 4px 8px;
-  font-size: 1rem;
-  ${getItemStyles}
+  padding: ${vars.spacingXs} ${vars.spacingS};
+  font-size: ${vars.fontSizeForInput};
   font-family: ${vars.fontFamilyDefault};
+  ${getItemStyles}
 `;
 
 const Button = styled.button`
@@ -29,7 +29,7 @@ const Button = styled.button`
   border-radius: ${vars.borderRadius4};
   cursor: pointer;
   font-size: 0.87rem;
-  padding: 4px;
+  padding: ${vars.spacingXs};
   color: ${vars.colorSolid};
 
   &:hover {
@@ -57,20 +57,19 @@ export const getButtonStyles = (props = { isStyleButton: true }) => [
     font-family: ${vars.fontFamilyDefault};
     border-radius: ${vars.borderRadius4};
     cursor: pointer;
-    font-size: 1rem;
+    font-size: ${vars.fontSizeForInput};
     color: ${vars.colorSolid};
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: ${props.isStyleButton ? '3px 8px' : '4px'};
+    padding: ${props.isStyleButton
+      ? `calc(${vars.spacingXs} - 1px) ${vars.spacingS}`
+      : vars.spacingXs};
 
     &:hover {
       background-color: ${vars.colorNeutral90};
     }
 
-    &:active:focus {
-      background: pink;
-    }
     &:focus {
       outline: none;
     }
@@ -94,12 +93,12 @@ export const getButtonStyles = (props = { isStyleButton: true }) => [
 const DropdownContainer = styled.div`
   position: absolute;
   cursor: pointer;
-  font-size: 1rem;
-  top: 4px;
-  margin-top: 4px;
+  font-size: ${vars.fontSizeForInput};
+  top: ${vars.spacingXs};
+  margin-top: ${vars.spacingXs};
   left: 0;
   white-space: nowrap;
-  background: white;
+  background: ${vars.colorSurface};
   overflow: hidden;
   z-index: 9999;
   border: 1px solid ${vars.colorPrimary};
