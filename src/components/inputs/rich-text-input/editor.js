@@ -324,7 +324,7 @@ const Editor = props => {
                       flex-wrap: wrap;
 
                       > * {
-                        margin-left: 1px !important;
+                        margin-left: 1px;
                       }
                     `}
                   >

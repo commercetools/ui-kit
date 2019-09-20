@@ -51,7 +51,7 @@ export const ToolbarMainControls = styled.div`
   align-items: flex-start;
 
   > * {
-    margin-left: 1px !important;
+    margin-left: 1px;
   }
 `;
 
