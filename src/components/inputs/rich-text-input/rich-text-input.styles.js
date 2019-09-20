@@ -80,6 +80,10 @@ export const Toolbar = styled.div`
     transform: translateX(-50%);
     bottom: -1px;
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const reset = () => css`

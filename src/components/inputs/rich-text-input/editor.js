@@ -204,7 +204,16 @@ const Editor = props => {
                   }
                 }}
               >
-                <Toolbar isOpen={isOpen}>
+                <Toolbar
+                  isOpen={isOpen}
+                  tabIndex={-1}
+                  onMouseDown={event => {
+                    event.preventDefault();
+                    if (!props.editor.value.selection.isFocused) {
+                      props.editor.focus();
+                    }
+                  }}
+                >
                   <ToolbarMainControls>
                     <Dropdown
                       label={intl.formatMessage(messages.styleDropdownLabel)}
