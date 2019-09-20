@@ -129,7 +129,7 @@ const MultiDownshift = props => {
                         key={item.value}
                         onMouseDown={event => {
                           event.preventDefault();
-                          itemProps.onClick();
+                          itemProps.onClick(event);
                         }}
                       >
                         {item.label}

@@ -121,6 +121,7 @@ const Dropdown = props => {
                         key={index}
                         onMouseDown={event => {
                           event.preventDefault();
+                          // Prevent Downshift's default 'Enter' behavior.
                           dropdownItemProps.onMouseDown(event);
                           itemProps.onClick(event);
                         }}
