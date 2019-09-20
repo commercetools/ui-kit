@@ -64,7 +64,7 @@ export const Toolbar = styled.div`
   border-radius: ${vars.borderRadiusForInput};
   border-bottom: 0;
   padding: ${vars.spacingXs} calc(${vars.spacingS} - 1px);
-  padding-left: 3px;
+  padding-left: calc(${vars.spacingXs} - 1px);
   align-items: flex-start;
   align-content: stretch;
 
@@ -73,7 +73,7 @@ export const Toolbar = styled.div`
   &::after {
     position: absolute;
     content: '';
-    width: calc(100% - 8px);
+    width: calc(100% - ${vars.spacingS});
     height: 1px;
     background: ${vars.colorNeutral};
     left: 50%;

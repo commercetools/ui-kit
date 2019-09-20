@@ -116,7 +116,6 @@ const MultiDownshift = props => {
                     const itemProps = getItemProps({
                       item,
                       index,
-                      key: item.value,
                       value: item.value,
                       isHovered: highlightedIndex === index,
                       isSelected,
@@ -125,13 +124,12 @@ const MultiDownshift = props => {
                     const dropdownItemProps = omit(itemProps, propsToRemove);
 
                     return (
-                      // eslint-disable-next-line react/jsx-key
                       <DropdownItem
                         {...dropdownItemProps}
+                        key={item.value}
                         onMouseDown={event => {
                           event.preventDefault();
-                          dropdownItemProps.onMouseDown(event);
-                          itemProps.onClick(event);
+                          itemProps.onClick();
                         }}
                       >
                         {item.label}

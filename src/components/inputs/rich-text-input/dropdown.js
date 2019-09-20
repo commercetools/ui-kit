@@ -55,12 +55,12 @@ const DropdownLabel = () => {
 DropdownLabel.displayName = 'DropdownLabel';
 
 const DropdownItem = props => (
-  <StyledDropdownItem
-    {...props}
-    // eslint-disable-next-line react/prop-types
-    css={getDropdownItemStyles(props.value)}
-  />
+  <StyledDropdownItem {...props} css={getDropdownItemStyles(props.value)} />
 );
+
+DropdownItem.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
 DropdownItem.displayName = 'DropdownItem';
 
@@ -110,16 +110,15 @@ const Dropdown = props => {
                 <DropdownContainer>
                   {props.options.map((item, index) => {
                     const itemProps = getItemProps({
-                      key: index,
                       index,
                       item,
                     });
                     const dropdownItemProps = omit(itemProps, propsToRemove);
 
                     return (
-                      // eslint-disable-next-line react/jsx-key
                       <DropdownItem
                         {...dropdownItemProps}
+                        key={index}
                         onMouseDown={event => {
                           event.preventDefault();
                           dropdownItemProps.onMouseDown(event);
