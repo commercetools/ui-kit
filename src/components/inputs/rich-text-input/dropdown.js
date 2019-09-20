@@ -12,17 +12,9 @@ import {
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
+import { BLOCK_TAGS } from './utils/rules';
 
 const propsToRemove = ['onClick'];
-
-const optionsMap = {
-  'heading-one': 'h1',
-  'heading-two': 'h2',
-  'heading-three': 'h3',
-  'heading-four': 'h4',
-  'heading-five': 'h5',
-  paragraph: 'p',
-};
 
 const DropdownLabel = () => {
   return (
@@ -36,7 +28,11 @@ const DropdownLabel = () => {
 DropdownLabel.displayName = 'DropdownLabel';
 
 const DropdownItem = props => {
-  const as = optionsMap[props.value] || 'div';
+  // const as = optionsMap[props.value] || 'div';
+  const as =
+    Object.keys(BLOCK_TAGS).find(key => BLOCK_TAGS[key] === props.value) ||
+    'div';
+
   return (
     <StyledDropdownItem
       {...props}

@@ -14,35 +14,7 @@ const DropdownItem = styled.div`
   }
 `;
 
-const Button = styled.button`
-  border: 0;
-  font-family: ${vars.fontFamilyDefault};
-  border-radius: ${vars.borderRadius4};
-  cursor: pointer;
-  font-size: 0.87rem;
-  padding: ${vars.spacingXs};
-  color: ${vars.colorSolid};
-
-  &:hover {
-    background-color: ${vars.colorNeutral90};
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:active,
-  &:focus {
-    background-color: ${vars.colorAccent30};
-    color: ${vars.colorSurface};
-
-    * {
-      fill: ${vars.colorSurface};
-    }
-  }
-`;
-
-export const getButtonStyles = (props = { isStyleButton: true }) => [
+const getButtonStyles = (props = { isStyleButton: true }) => [
   css`
     border: 0;
     font-family: ${vars.fontFamilyDefault};
@@ -96,4 +68,4 @@ const DropdownContainer = styled.div`
   border-radius: ${vars.borderRadius6};
 `;
 
-export { Button, DropdownContainer, DropdownItem };
+export { DropdownContainer, DropdownItem, getButtonStyles };

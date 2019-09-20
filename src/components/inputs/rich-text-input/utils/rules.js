@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 
-const BLOCK_TAGS = {
-  blockquote: 'quote',
+export const BLOCK_TAGS = {
+  blockquote: 'block-quote',
   p: 'paragraph',
   h1: 'heading-one',
   h2: 'heading-two',
