@@ -2,25 +2,16 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 
-const getItemStyles = props => {
-  let backgroundColor = vars.colorSurface;
-  if (props.isHovered) {
-    backgroundColor = vars.colorNeutral90;
-  }
-  if (props.isSelected) {
-    backgroundColor = vars.colorAccent95;
-  }
-
-  return css`
-    background-color: ${backgroundColor};
-  `;
-};
-
 const DropdownItem = styled.div`
   padding: ${vars.spacingXs} ${vars.spacingS};
-  font-size: ${vars.fontSizeForInput};
   font-family: ${vars.fontFamilyDefault};
-  ${getItemStyles}
+
+  background-color: ${props =>
+    props.isSelected ? vars.colorAccent95 : vars.colorSurface};
+
+  &:hover {
+    background-color: ${vars.colorNeutral90};
+  }
 `;
 
 const Button = styled.button`

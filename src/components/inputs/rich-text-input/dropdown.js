@@ -15,32 +15,13 @@ import {
 
 const propsToRemove = ['onClick'];
 
-const getDropdownItemStyles = value => {
-  switch (value) {
-    case 'heading-one':
-      return css`
-        font-size: 1.75rem;
-      `;
-    case 'heading-two':
-      return css`
-        font-size: 1.5rem;
-      `;
-    case 'heading-three':
-      return css`
-        font-size: 1.3rem;
-      `;
-    case 'heading-four':
-      return css`
-        font-size: 1.2rem;
-      `;
-    case 'heading-five':
-      return css`
-        font-size: 1.1rem;
-      `;
-
-    default:
-      return css``;
-  }
+const optionsMap = {
+  'heading-one': 'h1',
+  'heading-two': 'h2',
+  'heading-three': 'h3',
+  'heading-four': 'h4',
+  'heading-five': 'h5',
+  paragraph: 'p',
 };
 
 const DropdownLabel = () => {
@@ -54,9 +35,18 @@ const DropdownLabel = () => {
 
 DropdownLabel.displayName = 'DropdownLabel';
 
-const DropdownItem = props => (
-  <StyledDropdownItem {...props} css={getDropdownItemStyles(props.value)} />
-);
+const DropdownItem = props => {
+  const as = optionsMap[props.value] || 'div';
+  return (
+    <StyledDropdownItem
+      {...props}
+      as={as}
+      css={css`
+        margin: 0;
+      `}
+    />
+  );
+};
 
 DropdownItem.propTypes = {
   value: PropTypes.string.isRequired,
@@ -76,7 +66,6 @@ const Dropdown = props => {
         toggleMenu,
         getToggleButtonProps,
         getItemProps,
-        highlightedIndex,
         selectedItem,
       }) => {
         const toggleButtonProps = omit(getToggleButtonProps(), propsToRemove);
@@ -127,7 +116,6 @@ const Dropdown = props => {
                         }}
                         value={item.value}
                         isSelected={item.value === selectedItem}
-                        isHovered={highlightedIndex === index}
                       >
                         {item.label}
                       </DropdownItem>

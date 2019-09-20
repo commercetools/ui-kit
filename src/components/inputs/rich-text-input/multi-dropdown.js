@@ -69,7 +69,6 @@ const MultiDownshift = props => {
         isOpen,
         getItemProps,
         toggleMenu,
-        highlightedIndex,
       }) => {
         const toggleButtonProps = omit(getToggleButtonProps(), propsToRemove);
 
@@ -117,7 +116,6 @@ const MultiDownshift = props => {
                       item,
                       index,
                       value: item.value,
-                      isHovered: highlightedIndex === index,
                       isSelected,
                     });
 
