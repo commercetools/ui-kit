@@ -24,18 +24,14 @@ const validate = options => {
 const MarkPlugin = (options = {}) => {
   const missingRequiredOptions = validate(options);
 
-  if (missingRequiredOptions.length > 0) {
-    invariant(
-      false,
-      `ui-kit/rich-text-input/Mark: missing required options: ${missingRequiredOptions.join(
-        ','
-      )}`
-    );
-  }
+  invariant(
+    missingRequiredOptions.length >= 0,
+    `ui-kit/rich-text-input/Mark: missing required options: ${missingRequiredOptions.join(
+      ','
+    )}`
+  );
 
-  const { typeName, hotkey, command, query, RenderMark } = options;
-
-  const isHotKey = memoizedIsHotkey(hotkey);
+  const isHotKey = memoizedIsHotkey(options.hotkey);
 
   return [
     {
@@ -46,29 +42,33 @@ const MarkPlugin = (options = {}) => {
         }
 
         event.preventDefault();
-        editor.toggleMark(typeName);
+        editor.toggleMark(options.typeName);
       },
       renderMark(props, editor, next) {
         const { children, mark, attributes } = props;
 
         switch (mark.type) {
-          case typeName:
-            return <RenderMark {...attributes}>{children}</RenderMark>;
+          case options.typeName:
+            return (
+              <options.RenderMark {...attributes}>
+                {children}
+              </options.RenderMark>
+            );
           default:
             return next();
         }
       },
       commands: {
-        [command]: editor => {
+        [options.command]: editor => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }
-          return editor.toggleMark(typeName);
+          return editor.toggleMark(options.typeName);
         },
       },
       queries: {
-        [query]: editor =>
-          editor.value.activeMarks.some(mark => mark.type === typeName),
+        [options.query]: editor =>
+          editor.value.activeMarks.some(mark => mark.type === options.typeName),
       },
     },
   ];
