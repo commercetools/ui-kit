@@ -54,11 +54,11 @@ const ListPlugin = () => {
         const { attributes, children, node } = props;
 
         switch (node.type) {
-          case 'bulleted-list':
+          case BULLETED_LIST:
             return <ul {...attributes}>{children}</ul>;
-          case 'list-item':
+          case LIST_ITEM:
             return <li {...attributes}>{children}</li>;
-          case 'numbered-list':
+          case NUMBERED_LIST:
             return <ol {...attributes}>{children}</ol>;
           default:
             return next();
