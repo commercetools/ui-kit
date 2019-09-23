@@ -19,6 +19,7 @@ import { TextInput } from '@commercetools-frontend/ui-kit';
 | ---------------------- | -------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------ |
 | `id`                   | `string` |    -     | -                            | -       | Used as HTML `id` property                                                                             |
 | `name`                 | `string` |    -     | -                            | -       | Used as HTML `name` property                                                                           |
+| `className`            | `string` |    -     | -                            | -       | Used as HTML `className` property                                                                      |
 | `value`                | `string` |    ✅    | -                            | -       | Value of the input                                                                                     |
 | `autoComplete`         | `string` |    -     | -                            | -       | Used as HTML `autocomplete` property                                                                   |
 | `onChange`             | `func`   |    -     | -                            | -       | Called with the new value. Required when input is not read only. Parent should pass it back as `value` |

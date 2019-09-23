@@ -5,35 +5,39 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Constraints from '../../constraints';
 import { getInputStyles } from '../styles';
 
-const TextInput = props => (
-  <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <input
-      id={props.id}
-      name={props.name}
-      type="text"
-      value={props.value}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      disabled={props.isDisabled}
-      placeholder={props.placeholder}
-      readOnly={props.isReadOnly}
-      autoFocus={props.isAutofocussed}
-      autoComplete={props.autoComplete}
-      css={theme => getInputStyles(props, theme)}
-      {...filterDataAttributes(props)}
-      /* ARIA */
-      aria-readonly={props.isReadOnly}
-      role="textbox"
-      contentEditable={!props.isReadOnly}
-    />
-  </Constraints.Horizontal>
-);
+const TextInput = props => {
+  return (
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+      <input
+        id={props.id}
+        name={props.name}
+        type="text"
+        value={props.value}
+        onChange={props.onChange}
+        className={props.className}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
+        disabled={props.isDisabled}
+        placeholder={props.placeholder}
+        readOnly={props.isReadOnly}
+        autoFocus={props.isAutofocussed}
+        autoComplete={props.autoComplete}
+        css={theme => getInputStyles(props, theme)}
+        {...filterDataAttributes(props)}
+        /* ARIA */
+        aria-readonly={props.isReadOnly}
+        role="textbox"
+        contentEditable={!props.isReadOnly}
+      />
+    </Constraints.Horizontal>
+  );
+};
 
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
   autoComplete: PropTypes.string,
+  className: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,

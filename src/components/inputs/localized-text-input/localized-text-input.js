@@ -24,6 +24,7 @@ import {
 } from '../../../utils/localized';
 import createSequentialId from '../../../utils/create-sequential-id';
 import LanguagesButton from './languages-button';
+import TextInput from '../text-input';
 import messages from './messages';
 import {
   getLocalizedInputStyles,
@@ -72,7 +73,7 @@ const LocalizedInput = props => {
           {props.language.toUpperCase()}
         </Text.Detail>
       </label>
-      <input
+      <TextInput
         id={props.id}
         name={props.name}
         autoComplete={props.autoComplete}
