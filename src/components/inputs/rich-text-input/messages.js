@@ -81,6 +81,11 @@ export default defineMessages({
     description: 'Label for the style dropdown',
     defaultMessage: 'Style',
   },
+  styleDropdownTooltipTitle: {
+    id: 'UIKit.RichTextInput.styleDropdownTooltip',
+    description: 'Tooltip for the style dropdown tooltip',
+    defaultMessage: 'Text styles',
+  },
   styleDropdownOptionParagraph: {
     id: 'UIKit.RichTextInput.styleDropdownOptionParagraph',
     description: 'Label for the `paragraph` option',

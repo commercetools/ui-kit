@@ -1,6 +1,7 @@
 import React from 'react';
 import Downshift from 'downshift';
 import { css } from '@emotion/core';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import Spacings from '../../spacings';
@@ -12,6 +13,7 @@ import {
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
+import messages from './messages';
 import { BLOCK_TAGS } from './utils/rules';
 
 const propsToRemove = ['onClick'];
@@ -54,6 +56,7 @@ DropdownItem.displayName = 'DropdownItem';
 
 const Dropdown = props => {
   const buttonRef = React.useRef();
+  const intl = useIntl();
 
   return (
     <Downshift
@@ -73,7 +76,7 @@ const Dropdown = props => {
         return (
           <div>
             <Tooltip
-              title="Text styles"
+              title={intl.formatMessage(messages.styleDropdownTooltipTitle)}
               placement="bottom"
               off={isOpen}
               style={{ body: { zIndex: 9999 } }}
