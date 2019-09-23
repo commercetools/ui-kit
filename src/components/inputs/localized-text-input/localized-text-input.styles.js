@@ -1,14 +1,12 @@
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import designTokens from '../../../../materials/design-tokens';
-import { getInputStyles } from '../styles';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getLocalizedInputStyles = (props, theme) => [
-  getInputStyles(props, theme),
+const getLocalizedInputStyles = () => [
   css`
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
