@@ -72,7 +72,7 @@
     "dom-helpers": "5.1.0",
     "downshift": "3.3.1",
     "immutable": "4.0.0-rc.12",
-    "is-hotkey": "0.1.5",
+    "is-hotkey": "0.1.6",
     "lodash": "4.17.15",
     "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
