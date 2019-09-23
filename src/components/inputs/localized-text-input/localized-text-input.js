@@ -7,7 +7,6 @@ import { css } from '@emotion/core';
 import useToggleState from '../../../hooks/use-toggle-state';
 import useFieldId from '../../../hooks/use-field-id';
 import ErrorMessage from '../../messages/error-message';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import Text from '../../typography/text';
@@ -74,24 +73,9 @@ const LocalizedInput = props => {
         </Text.Detail>
       </label>
       <TextInput
-        id={props.id}
-        name={props.name}
-        autoComplete={props.autoComplete}
-        type="text"
-        value={props.value}
+        {...props}
         onChange={handleChange}
-        onBlur={props.onBlur}
-        onFocus={props.onFocus}
-        disabled={props.isDisabled}
-        placeholder={props.placeholder}
-        css={theme => getLocalizedInputStyles(props, theme)}
-        readOnly={props.isReadOnly}
-        autoFocus={props.isAutofocussed}
-        /* ARIA */
-        aria-readonly={props.isReadOnly}
-        role="textbox"
-        contentEditable={!props.isReadOnly}
-        {...filterDataAttributes(props)}
+        css={getLocalizedInputStyles}
       />
     </div>
   );
