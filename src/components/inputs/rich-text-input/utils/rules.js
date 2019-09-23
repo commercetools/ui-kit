@@ -16,7 +16,7 @@ export const BLOCK_TAGS = {
 };
 
 // Add a dictionary of mark tags.
-const MARK_TAGS = {
+export const MARK_TAGS = {
   em: 'italic',
   strong: 'bold',
   u: 'underlined',

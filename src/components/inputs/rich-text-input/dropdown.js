@@ -16,19 +16,21 @@ import { BLOCK_TAGS } from './utils/rules';
 
 const propsToRemove = ['onClick'];
 
-const DropdownLabel = () => {
+const DropdownLabel = props => {
   return (
     <Spacings.Inline scale="xs" alignItems="center" justifyContent="center">
-      <span>Style</span>
+      <span>{props.children}</span>
       <CaretDownIcon size="small" />
     </Spacings.Inline>
   );
 };
 
 DropdownLabel.displayName = 'DropdownLabel';
+DropdownLabel.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 const DropdownItem = props => {
-  // const as = optionsMap[props.value] || 'div';
   const as =
     Object.keys(BLOCK_TAGS).find(key => BLOCK_TAGS[key] === props.value) ||
     'div';

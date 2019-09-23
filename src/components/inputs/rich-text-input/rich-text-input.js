@@ -17,12 +17,14 @@ import rules from './utils/rules';
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules });
 
+const isEmpty = value => value.document.text === '';
+
 const plugins = [
   {
     queries: {
       // used for the placeholder plugin
       shouldUsePlaceholder: editor => {
-        const isEmpty = editor.value.document.text === '';
+        const isEditorEmpty = isEmpty(editor.value);
         const hasOneNode =
           editor.value.document.nodes.map(node => node.text).toArray()
             .length === 1;
@@ -31,7 +33,7 @@ const plugins = [
         const isParagraph = blocks[0] && blocks[0] === 'paragraph';
 
         const shouldUsePlaceholder =
-          isEmpty && hasOneNode && hasOneBlock && isParagraph;
+          isEditorEmpty && hasOneNode && hasOneBlock && isParagraph;
 
         return shouldUsePlaceholder;
       },
@@ -122,6 +124,7 @@ RichTextInput.displayName = 'RichTextInput';
 
 RichTextInput.serialize = html.serialize;
 RichTextInput.deserialize = html.deserialize;
+RichTextInput.isEmpty = isEmpty;
 
 RichTextInput.propTypes = {
   defaultExpandMultilineText: PropTypes.bool,

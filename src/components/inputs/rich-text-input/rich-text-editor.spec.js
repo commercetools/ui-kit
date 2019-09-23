@@ -2,7 +2,8 @@ import React from 'react';
 import { Value } from 'slate';
 import { render } from '../../../test-utils';
 import RichTextInput from './rich-text-input';
-import jsonValue from './testValue.json';
+import jsonValue from './testValue';
+import emptyJsonValue from './test/emptyValue';
 
 // mocks
 window.getSelection = () => {};
@@ -161,18 +162,30 @@ describe('RichTextInput', () => {
 });
 
 describe('RichTextInput static methods', () => {
-  describe('when called with a simple HTML value', () => {
-    it('should be able to serialize and deserialize back to same value', () => {
-      const html = '<p>hello world</p>';
-      const slateValue = RichTextInput.deserialize(html);
-      expect(RichTextInput.serialize(slateValue)).toEqual(html);
+  describe('serialize / deserialize', () => {
+    describe('when called with a simple HTML value', () => {
+      it('should be able to serialize and deserialize back to same value', () => {
+        const html = '<p>hello world</p>';
+        const slateValue = RichTextInput.deserialize(html);
+        expect(RichTextInput.serialize(slateValue)).toEqual(html);
+      });
+    });
+    describe('when called with a more complex HTML value', () => {
+      it('should be able to serialize and deserialize back to same value', () => {
+        const html = `<h1>Hello World</h1><h1></h1><p>This is rich text, <strong>way</strong> better than <u>other</u> kind&#x27;s of text.</p><p></p><ol><li>Numbered list</li><li>Second number</li></ol><ul><li>Bullet list</li></ul>`;
+        const slateValue = RichTextInput.deserialize(html);
+        expect(RichTextInput.serialize(slateValue)).toEqual(html);
+      });
     });
   });
-  describe('when called with a more complex HTML value', () => {
-    it('should be able to serialize and deserialize back to same value', () => {
-      const html = `<h1>Hello World</h1><h1></h1><p>This is rich text, <strong>way</strong> better than <u>other</u> kind&#x27;s of text.</p><p></p><ol><li>Numbered list</li><li>Second number</li></ol><ul><li>Bullet list</li></ul>`;
-      const slateValue = RichTextInput.deserialize(html);
-      expect(RichTextInput.serialize(slateValue)).toEqual(html);
+  describe('RichTextInput.isEmpty', () => {
+    it('should return `false` when used with a non empty value', () => {
+      const value = Value.fromJSON(jsonValue);
+      expect(RichTextInput.isEmpty(value)).toBeFalsy();
+    });
+    it('should return `true` when used with an empty value', () => {
+      const value = Value.fromJSON(emptyJsonValue);
+      expect(RichTextInput.isEmpty(value)).toBeTruthy();
     });
   });
 });

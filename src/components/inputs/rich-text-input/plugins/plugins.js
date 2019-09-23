@@ -1,4 +1,5 @@
 import React from 'react';
+import { BLOCK_TAGS, MARK_TAGS } from '../utils/rules';
 
 // eslint-disable-next-line import/prefer-default-export
 export const RenderBlockPlugin = () => {
@@ -6,31 +7,31 @@ export const RenderBlockPlugin = () => {
     renderBlock(props, editor, next) {
       const { attributes, children, node } = props;
       switch (node.type) {
-        case 'code':
+        case BLOCK_TAGS.pre:
           return (
             <pre>
               <code {...attributes}>{children}</code>
             </pre>
           );
-        case 'block-quote':
+        case BLOCK_TAGS.blockquote:
           return <blockquote {...attributes}>{children}</blockquote>;
-        case 'bulleted-list':
-          return <ul {...attributes}>{children}</ul>;
-        case 'heading-one':
+        case BLOCK_TAGS.h1:
           return <h1 {...attributes}>{children}</h1>;
-        case 'heading-two':
+        case BLOCK_TAGS.h2:
           return <h2 {...attributes}>{children}</h2>;
-        case 'heading-three':
+        case BLOCK_TAGS.h3:
           return <h3 {...attributes}>{children}</h3>;
-        case 'heading-four':
+        case BLOCK_TAGS.h4:
           return <h4 {...attributes}>{children}</h4>;
-        case 'heading-five':
+        case BLOCK_TAGS.h5:
           return <h5 {...attributes}>{children}</h5>;
-        case 'list-item':
+        case BLOCK_TAGS.li:
           return <li {...attributes}>{children}</li>;
-        case 'numbered-list':
+        case BLOCK_TAGS.ol:
           return <ol {...attributes}>{children}</ol>;
-        case 'paragraph':
+        case BLOCK_TAGS.ul:
+          return <ul {...attributes}>{children}</ul>;
+        case BLOCK_TAGS.p:
           return <p {...attributes}>{children}</p>;
         default:
           return next();
@@ -45,11 +46,11 @@ export const RenderMarkPlugin = () => {
       const { children, mark, attributes } = props;
 
       switch (mark.type) {
-        case 'superscript':
+        case MARK_TAGS.sup:
           return <sup {...attributes}>{children}</sup>;
-        case 'subscript':
+        case MARK_TAGS.sub:
           return <sub {...attributes}>{children}</sub>;
-        case 'strikethrough':
+        case MARK_TAGS.del:
           return <del {...attributes}>{children}</del>;
         default:
           return next();
