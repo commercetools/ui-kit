@@ -8,7 +8,7 @@ Tooltips display informative text when users hover over or focus on an element.
 
 ```js
 <Tooltip
-  position="left"
+  placement="left"
   title="If you buy a pizza, you will also get a free ice cream :)"
 >
   <button onClick={orderPizza({ freeIceCream: 'yes please' })}>Submit</button>
@@ -23,7 +23,7 @@ The Button components from `ui-kit` already support this functionality.
 
 ```js
 <Tooltip
-  position="left"
+  placement="left"
   title="You do not have permission to delete the database"
 >
   <button
@@ -132,7 +132,7 @@ For instance, forcing tooltip to stay in the original placement and not to try f
 | `closeAfter`           | `number` |    -     | -                                                                                                                                            | 0       | Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip                                                             |
 | `onOpen`               | `func`   |    -     | -                                                                                                                                            | -       | Called when the tooltip is opened                                                                                                                           |
 | `onClose`              | `func`   |    -     | -                                                                                                                                            | -       | Called after the tooltip is closed                                                                                                                          |
-| `position`             | `object` |    -     | `top`, `top-start`, `top-end`, `right`, `right-start`, `right-end`, `bottom`, `bottom-end`, `bottom-start`, `left`, `left-start`, `left-end` | `top`   | How the tooltip is positioned relative to the child element                                                                                                 |
+| `placement`            | `object` |    -     | `top`, `top-start`, `top-end`, `right`, `right-start`, `right-end`, `bottom`, `bottom-end`, `bottom-start`, `left`, `left-start`, `left-end` | `top`   | How the tooltip is positioned relative to the child element                                                                                                 |
 | `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale`                                                                                                           | `scale` | Horizontal size limit of the tooltip                                                                                                                        |
 | `children`             | `node`   |    ✅    | -                                                                                                                                            | -       | Content rendered within the tooltip                                                                                                                         |
 | `components`           | `object` |    -     | `WrapperComponent`, `BodyComponent`                                                                                                          | -       | If passed, the tooltip will wrap your component with this element                                                                                           |
