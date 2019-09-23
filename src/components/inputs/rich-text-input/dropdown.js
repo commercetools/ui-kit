@@ -53,6 +53,8 @@ DropdownItem.propTypes = {
 DropdownItem.displayName = 'DropdownItem';
 
 const Dropdown = props => {
+  const buttonRef = React.useRef();
+
   return (
     <Downshift
       onChange={props.onChange}
@@ -77,12 +79,15 @@ const Dropdown = props => {
               style={{ body: { zIndex: 9999 } }}
             >
               <AccessibleButton
+                ref={buttonRef}
                 label={props.label}
                 css={getButtonStyles()}
                 {...toggleButtonProps}
                 onMouseDown={event => {
                   event.preventDefault();
                   toggleMenu();
+                  // because we can't use onClick, let's fire the focus manually
+                  if (buttonRef.current) buttonRef.current.focus();
                 }}
               >
                 <DropdownLabel>{props.label}</DropdownLabel>

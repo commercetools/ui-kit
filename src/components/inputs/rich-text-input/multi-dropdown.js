@@ -58,6 +58,7 @@ DropdownItem.propTypes = {
 const itemToString = item => item && item.value;
 
 const MultiDownshift = props => {
+  const buttonRef = React.useRef();
   const isIndeterminate = props.selectedItems.length > 0;
   const intl = useIntl();
 
@@ -85,6 +86,7 @@ const MultiDownshift = props => {
               <div>
                 <AccessibleButton
                   {...toggleButtonProps}
+                  ref={buttonRef}
                   label={props.label}
                   css={getButtonStyles({
                     isIndeterminate,
@@ -93,6 +95,7 @@ const MultiDownshift = props => {
                   onMouseDown={event => {
                     event.preventDefault();
                     toggleMenu();
+                    if (buttonRef.current) buttonRef.current.focus();
                   }}
                 >
                   <MoreStylesIcon size="medium" />
