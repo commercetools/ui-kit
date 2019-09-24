@@ -31,7 +31,7 @@ const ToggleContainer = props => {
           flex: 0;
         `}
       >
-        {props.children}
+        {props.isOpen && props.children}
       </div>
     </div>
   );
@@ -42,6 +42,7 @@ ToggleContainer.propTypes = {
   children: PropTypes.node.isRequired,
   error: PropTypes.node,
   warning: PropTypes.node,
+  isOpen: PropTypes.bool,
   languagesControl: PropTypes.node,
 };
 

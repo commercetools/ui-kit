@@ -81,7 +81,10 @@ const MultilineTextInput = props => {
             {...filterDataAttributes(props)}
           />
         </TextAreaContainer>
-        <ToggleContainer {...props.componentProps.ToggleContainer}>
+        <ToggleContainer
+          {...props.componentProps.ToggleContainer}
+          isOpen={isOpen}
+        >
           {shouldRenderToggleButton && (
             <FlatButton
               onClick={toggle}
