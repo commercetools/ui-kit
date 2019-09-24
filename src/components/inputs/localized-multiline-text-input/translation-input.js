@@ -75,7 +75,6 @@ TextAreaContainer.propTypes = {
 
 const TranslationInput = props => {
   const { onChange } = props;
-  console.log(props);
 
   const handleChange = React.useCallback(
     event => {
