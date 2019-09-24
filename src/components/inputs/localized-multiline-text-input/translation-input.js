@@ -75,6 +75,7 @@ TextAreaContainer.propTypes = {
 
 const TranslationInput = props => {
   const { onChange } = props;
+  console.log(props);
 
   const handleChange = React.useCallback(
     event => {
@@ -111,6 +112,7 @@ const TranslationInput = props => {
           languagesControl: props.languagesControl,
         },
       }}
+      defaultExpandMultilineText={!props.isCollapsed}
       onChange={handleChange}
       css={theme => getTextareaStyles(props, theme)}
     />
