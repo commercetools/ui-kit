@@ -1,31 +1,75 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextareaAutosize from 'react-textarea-autosize';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
-import FlatButton from '../../buttons/flat-button';
-import { AngleUpIcon } from '../../icons';
-import Spacings from '../../spacings';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Text from '../../typography/text';
-import messages from './messages';
+import MultilineTextInput from '../multiline-text-input';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,
 } from './translation-input.styles';
 
+const ToggleContainer = props => {
+  return (
+    <div
+      css={css`
+        display: flex;
+      `}
+    >
+      <div
+        css={css`
+          flex: 1;
+        `}
+      >
+        {(() => {
+          if (props.error) return <div>{props.error}</div>;
+          if (props.warning) return <div>{props.warning}</div>;
+          return props.languagesControl;
+        })()}
+      </div>
+      <div
+        css={css`
+          flex: 0;
+        `}
+      >
+        {props.children}
+      </div>
+    </div>
+  );
+};
+
+ToggleContainer.displayName = 'ToggleContainer';
+ToggleContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  error: PropTypes.node,
+  warning: PropTypes.node,
+  languagesControl: PropTypes.node,
+};
+
+const TextAreaContainer = props => {
+  return (
+    <div
+      css={css`
+        width: 100%;
+        position: relative;
+        display: flex;
+      `}
+    >
+      <label css={theme => getLanguageLabelStyles(props, theme)}>
+        {props.language.toUpperCase()}
+      </label>
+      {props.children}
+    </div>
+  );
+};
+
+TextAreaContainer.displayName = 'TextAreaContainer';
+
+TextAreaContainer.propTypes = {
+  language: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 const TranslationInput = props => {
-  const [contentRowCount, setContentRowCount] = React.useState(
-    TranslationInput.MIN_ROW_COUNT
-  );
-
-  const handleHeightChange = React.useCallback(
-    (_, innerComponent) => {
-      setContentRowCount(innerComponent.valueRowCount);
-    },
-    [setContentRowCount]
-  );
-
   const { onChange } = props;
 
   const handleChange = React.useCallback(
@@ -48,95 +92,24 @@ const TranslationInput = props => {
     [onChange, props.language]
   );
 
-  const { onFocus, onToggle } = props;
-  const handleFocus = React.useCallback(() => {
-    // Expand the input on focus
-    if (props.isCollapsed) onToggle();
-    if (onFocus) onFocus();
-  }, [props.isCollapsed, onFocus, onToggle]);
-
-  // This checks if the content in the textarea overflows the minimum
-  // amount of lines it should have when collapsed
-  const contentExceedsShownRows =
-    contentRowCount > TranslationInput.MIN_ROW_COUNT;
-
   return (
-    <Spacings.Stack scale="xs">
-      <div
-        key={props.language}
-        css={css`
-          width: 100%;
-          position: relative;
-          display: flex;
-        `}
-      >
-        <label
-          htmlFor={props.id}
-          css={theme => getLanguageLabelStyles(props, theme)}
-        >
-          {/* FIXME: add proper tone for disabled when tones are refactored */}
-          <Text.Detail tone="secondary">
-            {props.language.toUpperCase()}
-          </Text.Detail>
-        </label>
-        <TextareaAutosize
-          id={props.id}
-          name={props.name}
-          autoComplete={props.autoComplete}
-          type="text"
-          value={props.value}
-          onChange={handleChange}
-          onHeightChange={handleHeightChange}
-          onBlur={props.onBlur}
-          onFocus={handleFocus}
-          disabled={props.isDisabled}
-          placeholder={props.placeholder}
-          css={theme => getTextareaStyles(props, theme)}
-          readOnly={props.isReadOnly}
-          autoFocus={props.isAutofocussed}
-          /* ARIA */
-          aria-readonly={props.isReadOnly}
-          role="textbox"
-          minRows={TranslationInput.MIN_ROW_COUNT}
-          maxRows={
-            props.isCollapsed ? TranslationInput.MIN_ROW_COUNT : undefined
-          }
-          {...filterDataAttributes(props)}
-        />
-      </div>
-      <div
-        css={css`
-          display: flex;
-        `}
-      >
-        <div
-          css={css`
-            flex: 1;
-          `}
-        >
-          {(() => {
-            if (props.error) return <div>{props.error}</div>;
-            if (props.warning) return <div>{props.warning}</div>;
-            return props.languagesControl;
-          })()}
-        </div>
-        <div
-          css={css`
-            flex: 0;
-          `}
-        >
-          {!props.isCollapsed && contentExceedsShownRows && (
-            <FlatButton
-              onClick={props.onToggle}
-              isDisabled={props.isDisabled}
-              label={props.intl.formatMessage(messages.collapse)}
-              icon={<AngleUpIcon size="small" />}
-            />
-          )}
-        </div>
-      </div>
-      {(props.error || props.warning) && props.languagesControl}
-    </Spacings.Stack>
+    <MultilineTextInput
+      {...props}
+      components={{
+        TextAreaContainer,
+        ToggleContainer,
+      }}
+      componentProps={{
+        TextAreaContainer: { language: props.language },
+        ToggleContainer: {
+          error: props.error,
+          warning: props.warning,
+          languagesControl: props.languagesControl,
+        },
+      }}
+      onChange={handleChange}
+      css={theme => getTextareaStyles(props, theme)}
+    />
   );
 };
 
