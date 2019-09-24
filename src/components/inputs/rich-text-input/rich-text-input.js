@@ -105,8 +105,8 @@ class RichTextInput extends React.Component {
     if (remainingPropsHaveChanged) return true;
 
     // since value uses immutableJS, we should use .equals
-    if (nextProps.value.equals(this.props.value)) {
-      return false;
+    if (!nextProps.value.equals(this.props.value)) {
+      return true;
     }
 
     return false;
