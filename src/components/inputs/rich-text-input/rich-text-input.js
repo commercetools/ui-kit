@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import Html from 'slate-html-serializer';
 import Types from 'slate-prop-types';
-import omit from 'lodash/omit';
 import { Editor } from 'slate-react';
 import PlaceholderPlugin from './plugins/placeholder';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -17,8 +16,6 @@ import rules from './utils/rules';
 
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules });
-
-const propsToOmit = ['value'];
 
 const isEmpty = value => value.document.text === '';
 
@@ -81,7 +78,7 @@ const plugins = [
   ListPlugin(),
 ];
 
-class RichTextInput extends React.Component {
+class RichTextInput extends React.PureComponent {
   onValueChange = ({ value }) => {
     const event = {
       target: {
@@ -92,25 +89,6 @@ class RichTextInput extends React.Component {
     };
     this.props.onChange(event);
   };
-
-  shouldComponentUpdate(nextProps) {
-    let remainingPropsHaveChanged = false;
-    const remainingProps = omit(this.props, propsToOmit);
-
-    // check remaining props normally using !==
-    Object.entries(remainingProps).forEach(([key, val]) => {
-      if (nextProps[key] !== val) remainingPropsHaveChanged = true;
-    });
-
-    if (remainingPropsHaveChanged) return true;
-
-    // since value uses immutableJS, we should use .equals
-    if (!nextProps.value.equals(this.props.value)) {
-      return true;
-    }
-
-    return false;
-  }
 
   render() {
     return (
