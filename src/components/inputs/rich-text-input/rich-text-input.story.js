@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { Value } from 'slate';
-import { Value as ReactValue } from 'react-value';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
@@ -12,50 +11,42 @@ import jsonValue from './value';
 import TextInput from '../text-input';
 // Create our initial value...
 const initialValue = Value.fromJSON(jsonValue);
-
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('RichTextInput', () => (
-    <Section>
-      <Spacings.Stack scale="l">
-        <ReactValue
-          defaultValue={initialValue}
-          render={(value, onChange) => {
-            return (
-              <RichTextInput
-                id={text('id', '')}
-                name={text('name', '')}
-                onChange={event => {
-                  onChange(event.target.value);
-                }}
-                defaultExpandMultilineText={boolean(
-                  'defaultExpandMultilineText',
-                  false
-                )}
-                value={value}
-                placeholder={text('placeholder', 'Placeholder')}
-                hasError={boolean('hasError', false)}
-                shouldDefau
-                hasWarning={boolean('hasWarning', false)}
-                isDisabled={boolean('isDisabled', false)}
-                isReadOnly={boolean('isReadOnly', false)}
-              />
-            );
-          }}
-        />
+  .add('RichTextInput', () => {
+    const [value, setValue] = React.useState(initialValue);
 
-        <ReactValue
-          defaultValue={''}
-          render={(value, onChange) => {
-            return (
-              <TextInput
-                onChange={evt => onChange(evt.target.value)}
-                value={value}
-              />
-            );
-          }}
-        />
-      </Spacings.Stack>
-    </Section>
-  ));
+    const onChange = React.useCallback(event => setValue(event.target.value), [
+      setValue,
+    ]);
+
+    const [textValue, setTextValue] = React.useState('');
+    return (
+      <Section>
+        <Spacings.Stack scale="l">
+          <RichTextInput
+            id={text('id', 'test-id')}
+            name={text('name', 'test-name')}
+            onChange={onChange}
+            defaultExpandMultilineText={boolean(
+              'defaultExpandMultilineText',
+              false
+            )}
+            value={value}
+            placeholder={text('placeholder', 'Placeholder')}
+            hasError={boolean('hasError', false)}
+            hasWarning={boolean('hasWarning', false)}
+            isDisabled={boolean('isDisabled', false)}
+            isReadOnly={boolean('isReadOnly', false)}
+          />
+          <TextInput
+            id="text-input"
+            name="text-input"
+            onChange={evt => setTextValue(evt.target.value)}
+            value={textValue}
+          />
+        </Spacings.Stack>
+      </Section>
+    );
+  });

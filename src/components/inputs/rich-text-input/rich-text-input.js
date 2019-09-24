@@ -78,41 +78,46 @@ const plugins = [
   ListPlugin(),
 ];
 
-const RichTextInput = props => {
-  const { onChange } = props;
-  const onValueChange = ({ value }) => {
+class RichTextInput extends React.PureComponent {
+  onValueChange = ({ value }) => {
     const event = {
-      target: { id: props.id, name: props.name, value },
+      target: {
+        id: this.props.id,
+        name: this.props.name,
+        value,
+      },
     };
-    onChange(event);
+    this.props.onChange(event);
   };
 
-  return (
-    <Editor
-      {...filterDataAttributes(props)}
-      id={props.id}
-      name={props.name}
-      disabled={props.isDisabled}
-      readOnly={props.isReadOnly}
-      value={props.value}
-      onFocus={props.onFocus}
-      onBlur={props.onBlur}
-      // we can only pass props to the Editor that Slate understands without getting
-      // warning in the console,
-      // so instead we pass our extra props through this `options` prop.
-      options={{
-        horizontalConstraint: props.horizontalConstraint,
-        defaultExpandMultilineText: props.defaultExpandMultilineText,
-        hasWarning: props.hasWarning,
-        hasError: props.hasError,
-        placeholder: props.placeholder,
-      }}
-      onChange={onValueChange}
-      plugins={plugins}
-      renderEditor={renderEditor}
-    />
-  );
-};
+  render() {
+    return (
+      <Editor
+        {...filterDataAttributes(this.props)}
+        id={this.props.id}
+        name={this.props.name}
+        disabled={this.props.isDisabled}
+        readOnly={this.props.isReadOnly}
+        value={this.props.value}
+        onFocus={this.props.onFocus}
+        onBlur={this.props.onBlur}
+        // we can only pass this.props to the Editor that Slate understands without getting
+        // warning in the console,
+        // so instead we pass our extra this.props through this `options` prop.
+        options={{
+          horizontalConstraint: this.props.horizontalConstraint,
+          defaultExpandMultilineText: this.props.defaultExpandMultilineText,
+          hasWarning: this.props.hasWarning,
+          hasError: this.props.hasError,
+          placeholder: this.props.placeholder,
+        }}
+        onChange={this.onValueChange}
+        plugins={plugins}
+        renderEditor={renderEditor}
+      />
+    );
+  }
+}
 
 RichTextInput.defaultProps = {
   defaultExpandMultilineText: false,
