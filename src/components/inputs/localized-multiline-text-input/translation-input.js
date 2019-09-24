@@ -54,7 +54,10 @@ const TextAreaContainer = props => {
         display: flex;
       `}
     >
-      <label css={theme => getLanguageLabelStyles(props, theme)}>
+      <label
+        css={theme => getLanguageLabelStyles(props, theme)}
+        htmlFor={props.id}
+      >
         {props.language.toUpperCase()}
       </label>
       {props.children}
@@ -65,6 +68,7 @@ const TextAreaContainer = props => {
 TextAreaContainer.displayName = 'TextAreaContainer';
 
 TextAreaContainer.propTypes = {
+  id: PropTypes.string,
   language: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
@@ -100,7 +104,7 @@ const TranslationInput = props => {
         ToggleContainer,
       }}
       componentProps={{
-        TextAreaContainer: { language: props.language },
+        TextAreaContainer: { language: props.language, id: props.id },
         ToggleContainer: {
           error: props.error,
           warning: props.warning,
