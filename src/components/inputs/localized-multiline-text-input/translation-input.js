@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextareaAutosize from 'react-textarea-autosize';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
+import MultilineInput from '../../internals/multiline-input';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon } from '../../icons';
 import Spacings from '../../spacings';
@@ -79,28 +79,23 @@ const TranslationInput = props => {
             {props.language.toUpperCase()}
           </Text.Detail>
         </label>
-        <TextareaAutosize
+        <MultilineInput
           id={props.id}
           name={props.name}
           autoComplete={props.autoComplete}
-          type="text"
           value={props.value}
           onChange={handleChange}
           onHeightChange={handleHeightChange}
           onBlur={props.onBlur}
           onFocus={handleFocus}
-          disabled={props.isDisabled}
+          isDisabled={props.isDisabled}
           placeholder={props.placeholder}
           css={theme => getTextareaStyles(props, theme)}
-          readOnly={props.isReadOnly}
-          autoFocus={props.isAutofocussed}
-          /* ARIA */
-          aria-readonly={props.isReadOnly}
-          role="textbox"
-          minRows={TranslationInput.MIN_ROW_COUNT}
-          maxRows={
-            props.isCollapsed ? TranslationInput.MIN_ROW_COUNT : undefined
-          }
+          hasError={props.hasError}
+          hasWarning={props.hasWarning}
+          isReadOnly={props.isReadOnly}
+          isAutofocussed={props.isAutofocussed}
+          isOpen={!props.isCollapsed}
           {...filterDataAttributes(props)}
         />
       </div>
