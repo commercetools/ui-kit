@@ -58,7 +58,6 @@ DropdownItem.propTypes = {
 const itemToString = item => item && item.value;
 
 const MultiDownshift = props => {
-  console.log('here', props);
   const buttonRef = React.useRef();
   const isIndeterminate = props.selectedItems && props.selectedItems.length > 0;
   const intl = useIntl();

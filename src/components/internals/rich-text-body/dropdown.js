@@ -13,7 +13,7 @@ import {
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
-import messages from '../../inputs/rich-text-input/messages';
+import messages from './messages';
 import { BLOCK_TAGS } from '../../inputs/rich-text-input/utils/rules';
 
 const propsToRemove = ['onClick'];
