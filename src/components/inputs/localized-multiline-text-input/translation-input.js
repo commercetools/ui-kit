@@ -91,6 +91,8 @@ const TranslationInput = props => {
           isDisabled={props.isDisabled}
           placeholder={props.placeholder}
           css={theme => getTextareaStyles(props, theme)}
+          hasError={props.hasError}
+          hasWarning={props.hasWarning}
           isReadOnly={props.isReadOnly}
           isAutofocussed={props.isAutofocussed}
           isOpen={!props.isCollapsed}

@@ -52,6 +52,8 @@ const MultilineTextInput = props => {
           onBlur={props.onBlur}
           onFocus={handleFocus}
           isDisabled={props.isDisabled}
+          hasError={props.hasError}
+          hasWarning={props.hasWarning}
           placeholder={props.placeholder}
           isReadOnly={props.isReadOnly}
           isAutofocussed={props.isAutofocussed}
