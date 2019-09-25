@@ -1,29 +1,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
-
-export const BLOCK_TAGS = {
-  blockquote: 'block-quote',
-  p: 'paragraph',
-  h1: 'heading-one',
-  h2: 'heading-two',
-  h3: 'heading-three',
-  h4: 'heading-four',
-  h5: 'heading-five',
-  pre: 'code',
-  li: 'list-item',
-  ol: 'numbered-list',
-  ul: 'bulleted-list',
-};
-
-// Add a dictionary of mark tags.
-export const MARK_TAGS = {
-  em: 'italic',
-  strong: 'bold',
-  u: 'underlined',
-  sup: 'superscript',
-  sub: 'subscript',
-  del: 'strikethrough',
-};
+import Html from 'slate-html-serializer';
+import { MARK_TAGS, BLOCK_TAGS } from './tags';
 
 const rules = [
   {
@@ -114,4 +92,7 @@ const rules = [
   },
 ];
 
-export default rules;
+// Create a new serializer instance with our `rules` from above.
+const html = new Html({ rules });
+
+export default html;

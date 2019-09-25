@@ -3,9 +3,9 @@ import { Switch, Route } from 'react-router';
 import { Value } from 'slate';
 import { RichTextInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
-import jsonMinimalValue from './testValue';
-import jsonLargeValue from './value';
-import jsonEmptyValue from './test/emptyValue';
+import jsonMinimalValue from './testing/json-values/minimal-value';
+import jsonLargeValue from './testing/json-values/large-value';
+import jsonEmptyValue from './testing/json-values/empty-value';
 
 const minimalValue = Value.fromJSON(jsonMinimalValue);
 const largeValue = Value.fromJSON(jsonLargeValue);

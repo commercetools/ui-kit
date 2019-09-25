@@ -23,7 +23,7 @@ import Button from './rich-text-body-button';
 import Divider from './divider';
 import MultiDropdown from './multi-dropdown';
 import Dropdown from './dropdown';
-import { MARK_TAGS, BLOCK_TAGS } from './utils/rules';
+import { MARK_TAGS, BLOCK_TAGS } from '../rich-text-utils/tags';
 import messages from './messages';
 
 const DEFAULT_NODE = BLOCK_TAGS.p;

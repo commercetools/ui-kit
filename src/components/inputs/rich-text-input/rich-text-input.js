@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import Html from 'slate-html-serializer';
 import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import renderEditor from './editor';
 import plugins from '../../internals/rich-text-plugins';
-import rules from '../../internals/rich-text-body/utils/rules';
-import { isEmpty } from '../../internals/rich-text-utils';
-
-// Create a new serializer instance with our `rules` from above.
-const html = new Html({ rules });
+import html from '../../internals/rich-text-utils/html';
+import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
   onValueChange = ({ value }) => {

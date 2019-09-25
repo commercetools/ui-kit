@@ -2,8 +2,8 @@ import React from 'react';
 import { Value } from 'slate';
 import { render } from '../../../test-utils';
 import RichTextInput from './rich-text-input';
-import jsonValue from './testValue';
-import emptyJsonValue from './test/emptyValue';
+import jsonValue from './testing/json-values/large-value';
+import emptyJsonValue from './testing/json-values/empty-value';
 
 // mocks
 window.getSelection = () => {};
