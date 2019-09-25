@@ -10,14 +10,14 @@ import {
   getButtonStyles,
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
-} from '../../inputs/rich-text-input/dropdown.styles';
+} from './dropdown.styles';
 import {
   MoreStylesIcon,
   SuperscriptIcon,
   SubscriptIcon,
   StrikethroughIcon,
 } from './icons';
-import messages from '../../inputs/rich-text-input/messages';
+import messages from './messages';
 
 const DropdownItem = props => {
   let Icon;
@@ -55,8 +55,8 @@ DropdownItem.propTypes = {
 const itemToString = item => item && item.value;
 
 const MultiDownshift = props => {
-  const intl = useIntl();
   const isIndeterminate = props.selectedItems && props.selectedItems.length > 0;
+  const intl = useIntl();
 
   return (
     <Downshift onSelect={props.onSelect} itemToString={itemToString}>
