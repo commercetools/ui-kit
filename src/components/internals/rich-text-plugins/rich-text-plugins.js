@@ -6,8 +6,7 @@ import MarkPlugin from './plugins/mark';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import PlaceholderPlugin from './plugins/placeholder';
 import { BLOCK_TAGS, MARK_TAGS } from '../rich-text-utils/tags';
-
-const isEmpty = value => value.document.text === '';
+import isEmpty from '../rich-text-utils/is-empty';
 
 const plugins = [
   {
