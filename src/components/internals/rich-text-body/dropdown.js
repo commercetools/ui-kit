@@ -12,7 +12,7 @@ import {
   getButtonStyles,
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
-} from '../../inputs/rich-text-input/dropdown.styles';
+} from './dropdown.styles';
 import messages from '../../inputs/rich-text-input/messages';
 import { BLOCK_TAGS } from '../../inputs/rich-text-input/utils/rules';
 

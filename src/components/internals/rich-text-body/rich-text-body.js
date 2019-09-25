@@ -20,16 +20,13 @@ import {
   UndoIcon,
 } from './icons';
 import Button from './rich-text-body-button';
-import Divider from '../../inputs/rich-text-input/divider';
+import Divider from './divider';
 import MultiDropdown from './multi-dropdown';
 import Dropdown from './dropdown';
-import messages from '../../inputs/rich-text-input/messages';
+import { MARK_TAGS, BLOCK_TAGS } from './utils/rules';
+import messages from './messages';
 
-const DEFAULT_NODE = 'paragraph';
-
-const NUMBERED_LIST = 'numbered-list';
-const BULLETED_LIST = 'bulleted-list';
-const LIST_ITEM = 'list-item';
+const DEFAULT_NODE = BLOCK_TAGS.p;
 
 const tooltipStyles = {
   body: {
@@ -41,35 +38,35 @@ const createStyleDropdownOptions = intl => {
   return [
     {
       label: intl.formatMessage(messages.styleDropdownOptionParagraph),
-      value: 'paragraph',
+      value: BLOCK_TAGS.p,
     },
     {
       label: intl.formatMessage(messages.styleDropdownOptionH1),
-      value: 'heading-one',
+      value: BLOCK_TAGS.h1,
     },
     {
       label: intl.formatMessage(messages.styleDropdownOptionH2),
-      value: 'heading-two',
+      value: BLOCK_TAGS.h2,
     },
     {
       label: intl.formatMessage(messages.styleDropdownOptionH3),
-      value: 'heading-three',
+      value: BLOCK_TAGS.h3,
     },
     {
       label: intl.formatMessage(messages.styleDropdownOptionH4),
-      value: 'heading-four',
+      value: BLOCK_TAGS.h4,
     },
     {
       label: intl.formatMessage(messages.styleDropdownOptionH5),
-      value: 'heading-five',
+      value: BLOCK_TAGS.h5,
     },
     {
       label: intl.formatMessage(messages.styleDropdownOptionQuote),
-      value: 'block-quote',
+      value: BLOCK_TAGS.blockquote,
     },
     {
       label: intl.formatMessage(messages.styleDropdownOptionPreformatted),
-      value: 'code',
+      value: BLOCK_TAGS.pre,
     },
   ];
 };
@@ -78,15 +75,15 @@ const createMoreStylesDropdownOptions = intl => {
   return [
     {
       label: intl.formatMessage(messages.moreStylesDropdownOptionStrikethrough),
-      value: 'strikethrough',
+      value: MARK_TAGS.del,
     },
     {
       label: intl.formatMessage(messages.moreStylesDropdownOptionSuperscript),
-      value: 'superscript',
+      value: MARK_TAGS.sup,
     },
     {
       label: intl.formatMessage(messages.moreStylesDropdownOptionSubscript),
-      value: 'subscript',
+      value: MARK_TAGS.sub,
     },
   ];
 };
@@ -106,21 +103,21 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
 
   const onClickBlock = ({ value: type }) => {
     // Handle everything but list buttons.
-    if (type !== BULLETED_LIST && type !== NUMBERED_LIST) {
+    if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
       const isActive = hasBlock(type);
-      const isList = hasBlock(LIST_ITEM);
+      const isList = hasBlock(BLOCK_TAGS.li);
 
       if (isList) {
         props.editor
           .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock(BULLETED_LIST)
-          .unwrapBlock(NUMBERED_LIST);
+          .unwrapBlock(BLOCK_TAGS.ul)
+          .unwrapBlock(BLOCK_TAGS.ol);
       } else {
         props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
       }
     } else {
       // Handle the extra wrapping required for list buttons.
-      const isList = hasBlock(LIST_ITEM);
+      const isList = hasBlock(BLOCK_TAGS.li);
       const isType = props.editor.value.blocks.some(block => {
         return !!props.editor.value.document.getClosest(
           block.key,
@@ -131,14 +128,14 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       if (isList && isType) {
         props.editor
           .setBlocks(DEFAULT_NODE)
-          .unwrapBlock(BULLETED_LIST)
-          .unwrapBlock(NUMBERED_LIST);
+          .unwrapBlock(BLOCK_TAGS.ul)
+          .unwrapBlock(BLOCK_TAGS.ol);
       } else if (isList) {
         props.editor
-          .unwrapBlock(type === BULLETED_LIST ? NUMBERED_LIST : BULLETED_LIST)
+          .unwrapBlock(type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul)
           .wrapBlock(type);
       } else {
-        props.editor.setBlocks(LIST_ITEM).wrapBlock(type);
+        props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
       }
     }
   };

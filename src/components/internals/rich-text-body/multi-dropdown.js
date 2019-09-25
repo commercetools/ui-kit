@@ -11,14 +11,14 @@ import {
   getButtonStyles,
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
-} from '../../inputs/rich-text-input/dropdown.styles';
+} from './dropdown.styles';
 import {
   MoreStylesIcon,
   SuperscriptIcon,
   SubscriptIcon,
   StrikethroughIcon,
 } from './icons';
-import messages from '../../inputs/rich-text-input/messages';
+import messages from './messages';
 
 const propsToRemove = ['onClick'];
 
