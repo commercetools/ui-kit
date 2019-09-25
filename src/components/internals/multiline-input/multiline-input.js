@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import TextareaAutosize from 'react-textarea-autosize';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import { getTextareaStyles } from './multiline-input.styles';
 
 const MIN_ROW_COUNT = 1;
 
@@ -23,6 +24,7 @@ const MultilineInput = props => {
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
       className={props.className}
+      css={theme => getTextareaStyles(props, theme)}
       /* ARIA */
       aria-readonly={props.isReadOnly}
       aria-multiline="true"

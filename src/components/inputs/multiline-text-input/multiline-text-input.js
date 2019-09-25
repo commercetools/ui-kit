@@ -10,7 +10,6 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import useToggleState from '../../../hooks/use-toggle-state';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
-import { getTextareaStyles } from './multiline-text-input.styles';
 import messages from './messages';
 
 const MultilineTextInput = props => {
@@ -49,7 +48,6 @@ const MultilineTextInput = props => {
           value={props.value}
           onChange={props.onChange}
           onHeightChange={handleHeightChange}
-          css={theme => getTextareaStyles(props, theme)}
           id={props.id}
           onBlur={props.onBlur}
           onFocus={handleFocus}
