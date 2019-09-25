@@ -11,14 +11,14 @@ import {
   getButtonStyles,
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
-} from './dropdown.styles';
+} from '../../inputs/rich-text-input/dropdown.styles';
 import {
   MoreStylesIcon,
   SuperscriptIcon,
   SubscriptIcon,
   StrikethroughIcon,
 } from './icons';
-import messages from './messages';
+import messages from '../../inputs/rich-text-input/messages';
 
 const propsToRemove = ['onClick'];
 
@@ -58,8 +58,9 @@ DropdownItem.propTypes = {
 const itemToString = item => item && item.value;
 
 const MultiDownshift = props => {
+  console.log('here', props);
   const buttonRef = React.useRef();
-  const isIndeterminate = props.selectedItems.length > 0;
+  const isIndeterminate = props.selectedItems && props.selectedItems.length > 0;
   const intl = useIntl();
 
   return (
