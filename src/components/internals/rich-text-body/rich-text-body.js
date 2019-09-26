@@ -141,9 +141,9 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   };
 
   const onChangeMoreStyles = val => {
-    if (!props.editor.value.selection.isFocused) {
-      props.editor.focus();
-    }
+    // if (!props.editor.value.selection.isFocused) {
+    //   props.editor.focus();
+    // }
     props.editor.toggleMark(val.value);
   };
 
@@ -167,15 +167,16 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       isReadOnly={props.isReadOnly}
       isDisabled={props.isDisabled}
       onFocus={props.onFocus}
+      onBlur={props.onBlur}
     >
       <Toolbar
         isOpen={props.isOpen}
         tabIndex={-1}
         onMouseDown={event => {
           event.preventDefault();
-          if (!props.editor.value.selection.isFocused) {
-            props.editor.focus();
-          }
+          // if (!props.editor.value.selection.isFocused) {
+          //   props.editor.focus();
+          // }
         }}
       >
         <ToolbarMainControls>
@@ -325,6 +326,7 @@ RichTextEditorBody.propTypes = {
   isReadOnly: PropTypes.bool,
   isDisabled: PropTypes.bool,
   onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   isOpen: PropTypes.bool,
   editor: PropTypes.any,
   children: PropTypes.node,

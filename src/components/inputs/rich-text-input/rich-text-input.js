@@ -22,16 +22,18 @@ class RichTextInput extends React.PureComponent {
   };
 
   render() {
+    console.log(
+      `Rich Text: ID: ${this.props.id} : hasError: ${this.props.hasError} `
+    );
     return (
       <Editor
         {...filterDataAttributes(this.props)}
+        autoFocus={false}
         id={this.props.id}
         name={this.props.name}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
         value={this.props.value}
-        onFocus={this.props.onFocus}
-        onBlur={this.props.onBlur}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
@@ -41,6 +43,8 @@ class RichTextInput extends React.PureComponent {
           hasWarning: this.props.hasWarning,
           hasError: this.props.hasError,
           placeholder: this.props.placeholder,
+          onBlur: this.props.onBlur,
+          onFocus: this.props.onFocus,
         }}
         onChange={this.onValueChange}
         plugins={plugins}
@@ -61,6 +65,7 @@ RichTextInput.displayName = 'RichTextInput';
 RichTextInput.serialize = html.serialize;
 RichTextInput.deserialize = html.deserialize;
 RichTextInput.isEmpty = isEmpty;
+RichTextInput.isTouched = touched => Boolean(touched);
 
 RichTextInput.propTypes = {
   defaultExpandMultilineText: PropTypes.bool,

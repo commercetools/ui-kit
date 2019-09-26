@@ -19,7 +19,7 @@ const Editor = props => {
 
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
 
-  React.useEffect(() => {
+  const updateRenderToggleButton = React.useCallback(() => {
     const doesExceedCollapsedHeightLimit =
       ref.current.clientHeight > COLLAPSED_HEIGHT;
 
@@ -29,7 +29,11 @@ const Editor = props => {
     if (!doesExceedCollapsedHeightLimit && renderToggleButton) {
       setRenderToggleButton(false);
     }
-  }, [props.editor.value.document, renderToggleButton]);
+  }, [setRenderToggleButton, renderToggleButton]);
+
+  React.useEffect(() => {
+    updateRenderToggleButton();
+  }, [props.editor.value.document, updateRenderToggleButton]);
 
   return (
     <CollapsibleMotion
@@ -51,11 +55,20 @@ const Editor = props => {
                 hasWarning={props.hasWarning}
                 isReadOnly={props.isReadOnly}
                 editor={props.editor}
-                onFocus={() => {
+                onFocus={event => {
+                  console.log('here on focus');
+                  if (props.onFocus) props.onFocus(event);
                   if (!isOpen) {
                     toggle();
-                    setTimeout(() => setRenderToggleButton(true), 0);
+                    setTimeout(updateRenderToggleButton, 0);
                   }
+                }}
+                onBlur={event => {
+                  console.log('event', event);
+                  event.stopPropagation();
+                  event.preventDefault();
+                  setTimeout(props.onBlur(event), 3);
+                  // props.onBlur(event);
                 }}
                 containerStyles={containerStyles}
               >
@@ -101,6 +114,8 @@ const renderEditor = (props, editor, next) => {
     name: props.name,
     id: props.id,
     isDisabled: props.disabled,
+    onBlur: props.options.onBlur,
+    onFocus: props.options.onFocus,
     horizontalConstraint: props.options.horizontalConstraint,
     defaultExpandMultilineText: props.options.defaultExpandMultilineText,
     hasError: props.options.hasError,
