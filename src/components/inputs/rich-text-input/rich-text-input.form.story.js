@@ -14,6 +14,8 @@ import Readme from './README.md';
 import FieldLabel from '../../field-label';
 import jsonValue from './testing/json-values/empty-value';
 import RichTextInput from './rich-text-input';
+import TextInput from '../text-input';
+import TextField from '../../fields/text-field';
 
 const initialValue = Value.fromJSON(jsonValue);
 
@@ -29,17 +31,29 @@ storiesOf('Examples|Forms/Inputs', module)
     <Section>
       <Formik
         initialValues={{
+          firstName: '',
+          lastName: '',
           cv: initialValue,
           coverLetter: initialValue,
           aboutMe: initialValue,
         }}
         validate={values => {
-          const errors = { cv: {}, coverLetter: {}, aboutMe: {} };
+          const errors = {
+            firstName: {},
+            lastName: {},
+            cv: {},
+            coverLetter: {},
+            aboutMe: {},
+          };
           if (RichTextInput.isEmpty(values.cv)) errors.cv.missing = true;
           if (RichTextInput.isEmpty(values.coverLetter))
             errors.coverLetter.missing = true;
-          if (RichTextInput.isEmpty(values.aboutMe)) errors.cv.aboutMe = true;
-
+          if (RichTextInput.isEmpty(values.aboutMe))
+            errors.aboutMe.missing = true;
+          if (TextInput.isEmpty(values.firstName))
+            errors.firstName.missing = true;
+          if (TextInput.isEmpty(values.lastName))
+            errors.lastName.missing = true;
           return omitEmpty(errors);
         }}
         onSubmit={(values, formik, ...rest) => {
@@ -48,6 +62,26 @@ storiesOf('Examples|Forms/Inputs', module)
         }}
         render={formik => (
           <Spacings.Stack scale="l">
+            <TextField
+              title="firstName"
+              name="firstName"
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isDisabled={formik.isSubmitting}
+              touched={formik.touched.firstName}
+              errors={formik.errors.firstName}
+            />
+            <TextField
+              title="lastName"
+              name="lastName"
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isDisabled={formik.isSubmitting}
+              touched={formik.touched.lastName}
+              errors={formik.errors.lastName}
+            />
             <Spacings.Stack scale="s">
               <FieldLabel title="Enter your cv" />
               <RichTextInput
