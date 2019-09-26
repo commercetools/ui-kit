@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { Value } from 'slate';
+import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
@@ -36,6 +37,8 @@ storiesOf('Components|Inputs', module)
               false
             )}
             value={value}
+            onBlur={action('onBlur')}
+            onFocus={action('onFocus')}
             placeholder={text('placeholder', 'Placeholder')}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}
