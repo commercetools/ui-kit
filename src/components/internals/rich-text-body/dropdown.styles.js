@@ -32,24 +32,21 @@ const getButtonStyles = (props = { isStyleButton: true }) => [
     &:hover {
       background-color: ${vars.colorNeutral90};
     }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:hover:active,
-    &:focus {
-      background-color: ${vars.colorAccent30};
-      color: ${vars.colorSurface};
-
-      * {
-        fill: ${vars.colorSurface};
-      }
-    }
   `,
   props.isIndeterminate &&
     css`
       background-color: ${vars.colorAccent95};
+    `,
+  props.isOpen &&
+    css`
+      &:not(:hover) {
+        background-color: ${vars.colorAccent30};
+        color: ${vars.colorSurface};
+
+        * {
+          fill: ${vars.colorSurface};
+        }
+      }
     `,
 ];
 
