@@ -82,7 +82,7 @@ const Dropdown = props => {
             >
               <AccessibleButton
                 label={props.label}
-                css={getButtonStyles({ isOpen })}
+                css={getButtonStyles({ isOpen, isStyleButton: true })}
                 {...toggleButtonProps}
                 onMouseDown={event => {
                   event.preventDefault();
