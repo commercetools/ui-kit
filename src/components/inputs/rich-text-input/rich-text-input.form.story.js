@@ -63,7 +63,7 @@ storiesOf('Examples|Forms/Inputs', module)
         render={formik => (
           <Spacings.Stack scale="l">
             <TextField
-              title="firstName"
+              title="Enter your first name"
               name="firstName"
               value={formik.values.firstName}
               onChange={formik.handleChange}
@@ -73,7 +73,7 @@ storiesOf('Examples|Forms/Inputs', module)
               errors={formik.errors.firstName}
             />
             <TextField
-              title="lastName"
+              title="Enter your last name"
               name="lastName"
               value={formik.values.lastName}
               onChange={formik.handleChange}
