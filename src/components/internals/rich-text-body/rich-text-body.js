@@ -166,8 +166,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       hasWarning={props.hasWarning}
       isReadOnly={props.isReadOnly}
       isDisabled={props.isDisabled}
-      onFocus={props.onFocus}
-      onBlur={props.onBlur}
+      // onFocus={props.onFocus}
+      // onBlur={props.onBlur}
     >
       <Toolbar
         isOpen={props.isOpen}

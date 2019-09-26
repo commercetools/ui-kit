@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import CollapsibleMotion from '../../collapsible-motion';
+import usePrevious from '../../../hooks/use-previous';
 import Spacings from '../../spacings';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Constraints from '../../constraints';
@@ -16,6 +17,8 @@ const COLLAPSED_HEIGHT = 32;
 const Editor = props => {
   const intl = useIntl();
   const ref = React.useRef();
+
+  const prevIsFocused = usePrevious(props.isFocused);
 
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
 
@@ -41,6 +44,11 @@ const Editor = props => {
       isDefaultClosed={!props.defaultExpandMultilineText}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
+        if (prevIsFocused !== props.isFocused && props.isFocused && !isOpen) {
+          console.log('focus change');
+          toggle();
+        }
+
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
             <Spacings.Stack scale="xs">
@@ -55,21 +63,17 @@ const Editor = props => {
                 hasWarning={props.hasWarning}
                 isReadOnly={props.isReadOnly}
                 editor={props.editor}
-                onFocus={event => {
-                  console.log('here on focus');
-                  if (props.onFocus) props.onFocus(event);
-                  if (!isOpen) {
-                    toggle();
-                    setTimeout(updateRenderToggleButton, 0);
-                  }
-                }}
-                onBlur={event => {
-                  console.log('event', event);
-                  event.stopPropagation();
-                  event.preventDefault();
-                  setTimeout(props.onBlur(event), 3);
-                  // props.onBlur(event);
-                }}
+                // onFocus={event => {
+                //   //console.log('here on focus');
+                //
+                //
+                //   // if (props.onFocus) props.onFocus(event);
+                //   // if (!isOpen) {
+                //   //   toggle();
+                //   //   setTimeout(updateRenderToggleButton, 0);
+                //   // }
+                // }}
+                // onBlur={props.onBlur}
                 containerStyles={containerStyles}
               >
                 {props.children}
@@ -116,10 +120,11 @@ const renderEditor = (props, editor, next) => {
     isDisabled: props.disabled,
     onBlur: props.options.onBlur,
     onFocus: props.options.onFocus,
+    isFocused: props.options.isFocused,
     horizontalConstraint: props.options.horizontalConstraint,
     defaultExpandMultilineText: props.options.defaultExpandMultilineText,
     hasError: props.options.hasError,
-    hasWarning: props.options.hasWarning,
+    // hasWarning: props.options.hasWarning,
     isReadOnly: props.readOnly,
     ...filterDataAttributes(props),
   };

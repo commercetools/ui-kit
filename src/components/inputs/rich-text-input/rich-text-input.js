@@ -10,6 +10,10 @@ import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
+  state = {
+    isFocused: false,
+  };
+
   onValueChange = ({ value }) => {
     const event = {
       target: {
@@ -21,16 +25,34 @@ class RichTextInput extends React.PureComponent {
     this.props.onChange(event);
   };
 
+  onBlur = (event, editor, next) => {
+    next();
+    if (this.props.onBlur) {
+      event.persist();
+      setTimeout(() => this.props.onBlur(event), 0);
+    }
+    setTimeout(() => this.setState({ isFocused: false }));
+  };
+
+  onFocus = (event, editor, next) => {
+    next();
+    if (this.props.onFocus) {
+      event.persist();
+      setTimeout(() => this.props.onFocus(event), 0);
+    }
+    setTimeout(() => this.setState({ isFocused: true }));
+  };
+
   render() {
-    console.log(
-      `Rich Text: ID: ${this.props.id} : hasError: ${this.props.hasError} `
-    );
     return (
       <Editor
         {...filterDataAttributes(this.props)}
         autoFocus={false}
         id={this.props.id}
         name={this.props.name}
+        // onFocus={event => this.props.onFocus}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
         value={this.props.value}
@@ -40,11 +62,10 @@ class RichTextInput extends React.PureComponent {
         options={{
           horizontalConstraint: this.props.horizontalConstraint,
           defaultExpandMultilineText: this.props.defaultExpandMultilineText,
-          hasWarning: this.props.hasWarning,
+          // hasWarning: this.props.hasWarning,
           hasError: this.props.hasError,
           placeholder: this.props.placeholder,
-          onBlur: this.props.onBlur,
-          onFocus: this.props.onFocus,
+          isFocused: this.state.isFocused,
         }}
         onChange={this.onValueChange}
         plugins={plugins}
