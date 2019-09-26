@@ -45,7 +45,6 @@ const Editor = props => {
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
         if (prevIsFocused !== props.isFocused && props.isFocused && !isOpen) {
-          console.log('focus change');
           toggle();
         }
 
@@ -63,17 +62,6 @@ const Editor = props => {
                 hasWarning={props.hasWarning}
                 isReadOnly={props.isReadOnly}
                 editor={props.editor}
-                // onFocus={event => {
-                //   //console.log('here on focus');
-                //
-                //
-                //   // if (props.onFocus) props.onFocus(event);
-                //   // if (!isOpen) {
-                //   //   toggle();
-                //   //   setTimeout(updateRenderToggleButton, 0);
-                //   // }
-                // }}
-                // onBlur={props.onBlur}
                 containerStyles={containerStyles}
               >
                 {props.children}
@@ -124,7 +112,7 @@ const renderEditor = (props, editor, next) => {
     horizontalConstraint: props.options.horizontalConstraint,
     defaultExpandMultilineText: props.options.defaultExpandMultilineText,
     hasError: props.options.hasError,
-    // hasWarning: props.options.hasWarning,
+    hasWarning: props.options.hasWarning,
     isReadOnly: props.readOnly,
     ...filterDataAttributes(props),
   };

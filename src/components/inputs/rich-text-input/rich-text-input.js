@@ -50,7 +50,6 @@ class RichTextInput extends React.PureComponent {
         autoFocus={false}
         id={this.props.id}
         name={this.props.name}
-        // onFocus={event => this.props.onFocus}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         disabled={this.props.isDisabled}
@@ -62,7 +61,7 @@ class RichTextInput extends React.PureComponent {
         options={{
           horizontalConstraint: this.props.horizontalConstraint,
           defaultExpandMultilineText: this.props.defaultExpandMultilineText,
-          // hasWarning: this.props.hasWarning,
+          hasWarning: this.props.hasWarning,
           hasError: this.props.hasError,
           placeholder: this.props.placeholder,
           isFocused: this.state.isFocused,
