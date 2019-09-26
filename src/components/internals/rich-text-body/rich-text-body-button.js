@@ -4,7 +4,15 @@ import { css } from '@emotion/core';
 import AccessibleButton from '../../buttons/accessible-button';
 import vars from '../../../../materials/custom-properties';
 
-const RichTextInputButton = props => {
+const RichTextBodyButton = props => {
+  const { onMouseDown } = props;
+  const handleMouseDown = React.useCallback(
+    event => {
+      event.preventDefault();
+      onMouseDown(event);
+    },
+    [onMouseDown]
+  );
   return (
     <div>
       <AccessibleButton
@@ -31,7 +39,7 @@ const RichTextInputButton = props => {
             }
           }
         `}
-        {...props}
+        onMouseDown={handleMouseDown}
       >
         {props.icon}
       </AccessibleButton>
@@ -39,14 +47,15 @@ const RichTextInputButton = props => {
   );
 };
 
-RichTextInputButton.propTypes = {
+RichTextBodyButton.propTypes = {
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func,
+  onMouseDown: PropTypes.func,
   label: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
   icon: PropTypes.element.isRequired,
 };
 
-RichTextInputButton.displayName = 'RichTextInputButton';
+RichTextBodyButton.displayName = 'RichTextInputButton';
 
-export default RichTextInputButton;
+export default RichTextBodyButton;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BLOCK_TAGS, MARK_TAGS } from '../utils/rules';
+import { BLOCK_TAGS, MARK_TAGS } from '../../rich-text-utils/tags';
 
 // eslint-disable-next-line import/prefer-default-export
 export const RenderBlockPlugin = () => {
