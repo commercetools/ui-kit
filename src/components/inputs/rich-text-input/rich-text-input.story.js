@@ -25,6 +25,10 @@ storiesOf('Components|Inputs', module)
     ]);
 
     const [textValue, setTextValue] = React.useState('');
+
+    const onBlur = React.useCallback(action('onBlur'), []);
+    const onFocus = React.useCallback(action('onFocus'), []);
+
     return (
       <Section>
         <Spacings.Stack scale="l">
@@ -37,8 +41,8 @@ storiesOf('Components|Inputs', module)
               false
             )}
             value={value}
-            onBlur={action('onBlur')}
-            onFocus={action('onFocus')}
+            onBlur={onBlur}
+            onFocus={onFocus}
             placeholder={text('placeholder', 'Placeholder')}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}

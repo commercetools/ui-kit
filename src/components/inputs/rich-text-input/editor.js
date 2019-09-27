@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import CollapsibleMotion from '../../collapsible-motion';
+import usePrevious from '../../../hooks/use-previous';
 import Spacings from '../../spacings';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Constraints from '../../constraints';
@@ -17,9 +18,11 @@ const Editor = props => {
   const intl = useIntl();
   const ref = React.useRef();
 
+  const prevIsFocused = usePrevious(props.isFocused);
+
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
 
-  React.useEffect(() => {
+  const updateRenderToggleButton = React.useCallback(() => {
     const doesExceedCollapsedHeightLimit =
       ref.current.clientHeight > COLLAPSED_HEIGHT;
 
@@ -29,7 +32,11 @@ const Editor = props => {
     if (!doesExceedCollapsedHeightLimit && renderToggleButton) {
       setRenderToggleButton(false);
     }
-  }, [props.editor.value.document, renderToggleButton]);
+  }, [setRenderToggleButton, renderToggleButton]);
+
+  React.useEffect(() => {
+    updateRenderToggleButton();
+  }, [props.editor.value.document, updateRenderToggleButton]);
 
   return (
     <CollapsibleMotion
@@ -37,6 +44,11 @@ const Editor = props => {
       isDefaultClosed={!props.defaultExpandMultilineText}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
+        // opens the input if it regains focus and it's closed
+        if (prevIsFocused !== props.isFocused && props.isFocused && !isOpen) {
+          toggle();
+        }
+
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
             <Spacings.Stack scale="xs">
@@ -45,18 +57,13 @@ const Editor = props => {
                   containerRef: ref,
                   registerContentNode,
                 }}
+                isFocused={props.isFocused}
                 isOpen={isOpen}
                 hasError={props.hasError}
                 isDisabled={props.isDisabled}
                 hasWarning={props.hasWarning}
                 isReadOnly={props.isReadOnly}
                 editor={props.editor}
-                onFocus={() => {
-                  if (!isOpen) {
-                    toggle();
-                    setTimeout(() => setRenderToggleButton(true), 0);
-                  }
-                }}
                 containerStyles={containerStyles}
               >
                 {props.children}
@@ -101,6 +108,9 @@ const renderEditor = (props, editor, next) => {
     name: props.name,
     id: props.id,
     isDisabled: props.disabled,
+    onBlur: props.options.onBlur,
+    onFocus: props.options.onFocus,
+    isFocused: props.options.isFocused,
     horizontalConstraint: props.options.horizontalConstraint,
     defaultExpandMultilineText: props.options.defaultExpandMultilineText,
     hasError: props.options.hasError,

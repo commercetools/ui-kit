@@ -24,6 +24,7 @@ import Divider from './divider';
 import MultiDropdown from './multi-dropdown';
 import Dropdown from './dropdown';
 import { MARK_TAGS, BLOCK_TAGS } from '../rich-text-utils/tags';
+import hasBlock from '../rich-text-utils/has-block';
 import messages from './messages';
 
 const DEFAULT_NODE = BLOCK_TAGS.p;
@@ -98,67 +99,75 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   const hasUndos = props.editor.hasUndos();
   const hasRedos = props.editor.hasRedos();
 
-  const hasBlock = type =>
-    props.editor.value.blocks.some(node => node.type === type);
+  const onClickBlock = React.useCallback(
+    ({ value: type }) => {
+      // Handle everything but list buttons.
+      if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
+        const isActive = hasBlock(type, props.editor);
+        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
 
-  const onClickBlock = ({ value: type }) => {
-    // Handle everything but list buttons.
-    if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
-      const isActive = hasBlock(type);
-      const isList = hasBlock(BLOCK_TAGS.li);
-
-      if (isList) {
-        props.editor
-          .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock(BLOCK_TAGS.ul)
-          .unwrapBlock(BLOCK_TAGS.ol);
+        if (isList) {
+          props.editor
+            .setBlocks(isActive ? DEFAULT_NODE : type)
+            .unwrapBlock(BLOCK_TAGS.ul)
+            .unwrapBlock(BLOCK_TAGS.ol);
+        } else {
+          props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
+        }
       } else {
-        props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
-      }
-    } else {
-      // Handle the extra wrapping required for list buttons.
-      const isList = hasBlock(BLOCK_TAGS.li);
-      const isType = props.editor.value.blocks.some(block => {
-        return !!props.editor.value.document.getClosest(
-          block.key,
-          parent => parent.type === type
-        );
-      });
+        // Handle the extra wrapping required for list buttons.
+        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
+        const isType = props.editor.value.blocks.some(block => {
+          return !!props.editor.value.document.getClosest(
+            block.key,
+            parent => parent.type === type
+          );
+        });
 
-      if (isList && isType) {
-        props.editor
-          .setBlocks(DEFAULT_NODE)
-          .unwrapBlock(BLOCK_TAGS.ul)
-          .unwrapBlock(BLOCK_TAGS.ol);
-      } else if (isList) {
-        props.editor
-          .unwrapBlock(type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul)
-          .wrapBlock(type);
-      } else {
-        props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
+        if (isList && isType) {
+          props.editor
+            .setBlocks(DEFAULT_NODE)
+            .unwrapBlock(BLOCK_TAGS.ul)
+            .unwrapBlock(BLOCK_TAGS.ol);
+        } else if (isList) {
+          props.editor
+            .unwrapBlock(type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul)
+            .wrapBlock(type);
+        } else {
+          props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
+        }
       }
-    }
-  };
+    },
+    [props.editor]
+  );
 
-  const onChangeMoreStyles = val => {
-    if (!props.editor.value.selection.isFocused) {
-      props.editor.focus();
-    }
-    props.editor.toggleMark(val.value);
-  };
+  const onChangeMoreStyles = React.useCallback(
+    val => {
+      props.editor.toggleMark(val.value);
+    },
+    [props.editor]
+  );
 
   const activeBlock =
     (props.editor.value.blocks.first() &&
       props.editor.value.blocks.first().type) ||
     '';
 
-  const activeMarks = Array.from(props.editor.value.activeMarks).map(
-    mark => mark.type
-  );
+  // so that we don't show our multi dropdown in an `indeterminate`
+  // while the component is not in focus
+  let activeMoreStyleMarks = [];
 
-  const activeMoreStyleMarks = activeMarks.filter(activeMark =>
-    dropdownOptions.some(dropdownOption => activeMark === dropdownOption.value)
-  );
+  if (props.isFocused) {
+    const activeMarks = Array.from(props.editor.value.activeMarks).map(
+      mark => mark.type
+    );
+
+    activeMoreStyleMarks = activeMarks.filter(activeMark =>
+      dropdownOptions.some(
+        dropdownOption => activeMark === dropdownOption.value
+      )
+    );
+  }
 
   return (
     <Container
@@ -166,14 +175,12 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       hasWarning={props.hasWarning}
       isReadOnly={props.isReadOnly}
       isDisabled={props.isDisabled}
-      onFocus={props.onFocus}
     >
       <Toolbar
         isOpen={props.isOpen}
-        tabIndex={-1}
         onMouseDown={event => {
           event.preventDefault();
-          if (!props.editor.value.selection.isFocused) {
+          if (!props.isFocused) {
             props.editor.focus();
           }
         }}
@@ -191,7 +198,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.editor.hasBoldMark()}
+              isActive={props.isFocused && props.editor.hasBoldMark()}
               label={intl.formatMessage(messages.boldButtonLabel)}
               onMouseDown={props.editor.toggleBoldMark}
               icon={<BoldIcon size="medium" />}
@@ -203,7 +210,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.editor.hasItalicMark()}
+              isActive={props.isFocused && props.editor.hasItalicMark()}
               label={intl.formatMessage(messages.italicButtonLabel)}
               onMouseDown={props.editor.toggleItalicMark}
               icon={<ItalicIcon size="medium" />}
@@ -215,7 +222,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.editor.hasUnderlinedMark()}
+              isActive={props.isFocused && props.editor.hasUnderlinedMark()}
               label={intl.formatMessage(messages.underlinedButtonLabel)}
               onMouseDown={props.editor.toggleUnderlinedMark}
               icon={<UnderlineIcon size="medium" />}
@@ -234,7 +241,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.editor.hasNumberedListBlock()}
+              isActive={props.isFocused && props.editor.hasNumberedListBlock()}
               label={intl.formatMessage(messages.orderedListButtonLabel)}
               onMouseDown={props.editor.toggleNumberedListBlock}
               icon={<OrderedListIcon size="medium" />}
@@ -246,7 +253,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.editor.hasBulletedListBlock()}
+              isActive={props.isFocused && props.editor.hasBulletedListBlock()}
               label={intl.formatMessage(messages.unorderedListButtonLabel)}
               onMouseDown={props.editor.toggleBulletedListBlock}
               icon={<UnorderedListIcon size="medium" />}
@@ -322,9 +329,11 @@ RichTextEditorBody.displayName = 'RichTextEditorBody';
 RichTextEditorBody.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
+  isFocused: PropTypes.bool.isRequired,
   isReadOnly: PropTypes.bool,
   isDisabled: PropTypes.bool,
   onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   isOpen: PropTypes.bool,
   editor: PropTypes.any,
   children: PropTypes.node,

@@ -10,6 +10,10 @@ import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
+  state = {
+    isFocused: false,
+  };
+
   onValueChange = ({ value }) => {
     const event = {
       target: {
@@ -21,17 +25,39 @@ class RichTextInput extends React.PureComponent {
     this.props.onChange(event);
   };
 
+  // this issue explains why we need to use next() + setTimeout
+  // for calling our passed onBlur handler
+  // https://github.com/ianstormtaylor/slate/issues/2434
+  onBlur = (event, editor, next) => {
+    next();
+    if (this.props.onBlur) {
+      event.persist();
+      setTimeout(() => this.props.onBlur(event), 0);
+    }
+    setTimeout(() => this.setState({ isFocused: false }));
+  };
+
+  onFocus = (event, editor, next) => {
+    next();
+    if (this.props.onFocus) {
+      event.persist();
+      setTimeout(() => this.props.onFocus(event), 0);
+    }
+    setTimeout(() => this.setState({ isFocused: true }));
+  };
+
   render() {
     return (
       <Editor
         {...filterDataAttributes(this.props)}
+        autoFocus={this.props.isAutofocussed}
         id={this.props.id}
         name={this.props.name}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
         value={this.props.value}
-        onFocus={this.props.onFocus}
-        onBlur={this.props.onBlur}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
@@ -41,6 +67,7 @@ class RichTextInput extends React.PureComponent {
           hasWarning: this.props.hasWarning,
           hasError: this.props.hasError,
           placeholder: this.props.placeholder,
+          isFocused: this.state.isFocused,
         }}
         onChange={this.onValueChange}
         plugins={plugins}
@@ -61,8 +88,10 @@ RichTextInput.displayName = 'RichTextInput';
 RichTextInput.serialize = html.serialize;
 RichTextInput.deserialize = html.deserialize;
 RichTextInput.isEmpty = isEmpty;
+RichTextInput.isTouched = touched => Boolean(touched);
 
 RichTextInput.propTypes = {
+  isAutofocussed: PropTypes.bool,
   defaultExpandMultilineText: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
