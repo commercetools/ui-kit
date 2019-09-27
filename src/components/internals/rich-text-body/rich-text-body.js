@@ -24,6 +24,7 @@ import Divider from './divider';
 import MultiDropdown from './multi-dropdown';
 import Dropdown from './dropdown';
 import { MARK_TAGS, BLOCK_TAGS } from '../rich-text-utils/tags';
+import hasBlock from '../rich-text-utils/has-block';
 import messages from './messages';
 
 const DEFAULT_NODE = BLOCK_TAGS.p;
@@ -98,47 +99,47 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   const hasUndos = props.editor.hasUndos();
   const hasRedos = props.editor.hasRedos();
 
-  const hasBlock = type =>
-    props.editor.value.blocks.some(node => node.type === type);
+  const onClickBlock = React.useCallback(
+    ({ value: type }) => {
+      // Handle everything but list buttons.
+      if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
+        const isActive = hasBlock(type, props.editor);
+        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
 
-  const onClickBlock = ({ value: type }) => {
-    // Handle everything but list buttons.
-    if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
-      const isActive = hasBlock(type);
-      const isList = hasBlock(BLOCK_TAGS.li);
-
-      if (isList) {
-        props.editor
-          .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock(BLOCK_TAGS.ul)
-          .unwrapBlock(BLOCK_TAGS.ol);
+        if (isList) {
+          props.editor
+            .setBlocks(isActive ? DEFAULT_NODE : type)
+            .unwrapBlock(BLOCK_TAGS.ul)
+            .unwrapBlock(BLOCK_TAGS.ol);
+        } else {
+          props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
+        }
       } else {
-        props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
-      }
-    } else {
-      // Handle the extra wrapping required for list buttons.
-      const isList = hasBlock(BLOCK_TAGS.li);
-      const isType = props.editor.value.blocks.some(block => {
-        return !!props.editor.value.document.getClosest(
-          block.key,
-          parent => parent.type === type
-        );
-      });
+        // Handle the extra wrapping required for list buttons.
+        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
+        const isType = props.editor.value.blocks.some(block => {
+          return !!props.editor.value.document.getClosest(
+            block.key,
+            parent => parent.type === type
+          );
+        });
 
-      if (isList && isType) {
-        props.editor
-          .setBlocks(DEFAULT_NODE)
-          .unwrapBlock(BLOCK_TAGS.ul)
-          .unwrapBlock(BLOCK_TAGS.ol);
-      } else if (isList) {
-        props.editor
-          .unwrapBlock(type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul)
-          .wrapBlock(type);
-      } else {
-        props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
+        if (isList && isType) {
+          props.editor
+            .setBlocks(DEFAULT_NODE)
+            .unwrapBlock(BLOCK_TAGS.ul)
+            .unwrapBlock(BLOCK_TAGS.ol);
+        } else if (isList) {
+          props.editor
+            .unwrapBlock(type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul)
+            .wrapBlock(type);
+        } else {
+          props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
+        }
       }
-    }
-  };
+    },
+    [props.editor]
+  );
 
   const onChangeMoreStyles = React.useCallback(
     val => {

@@ -140,7 +140,6 @@ export const Container = styled.div`
 
     ${EditorContainer} {
       border-color: ${vars.borderColorForInputWhenFocused};
-
     }
   }
 `;
