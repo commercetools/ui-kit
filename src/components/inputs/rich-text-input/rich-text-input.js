@@ -47,7 +47,7 @@ class RichTextInput extends React.PureComponent {
     return (
       <Editor
         {...filterDataAttributes(this.props)}
-        autoFocus={false}
+        autoFocus={this.props.isAutofocussed}
         id={this.props.id}
         name={this.props.name}
         onFocus={this.onFocus}
@@ -88,6 +88,7 @@ RichTextInput.isEmpty = isEmpty;
 RichTextInput.isTouched = touched => Boolean(touched);
 
 RichTextInput.propTypes = {
+  isAutofocussed: PropTypes.bool,
   defaultExpandMultilineText: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,

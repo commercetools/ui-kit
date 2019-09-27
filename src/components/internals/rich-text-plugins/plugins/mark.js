@@ -59,12 +59,7 @@ const MarkPlugin = (options = {}) => {
         }
       },
       commands: {
-        [options.command]: editor => {
-          if (!editor.value.selection.isFocused) {
-            editor.focus();
-          }
-          return editor.toggleMark(options.typeName);
-        },
+        [options.command]: editor => editor.toggleMark(options.typeName),
       },
       queries: {
         [options.query]: editor =>

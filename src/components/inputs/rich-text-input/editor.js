@@ -44,6 +44,7 @@ const Editor = props => {
       isDefaultClosed={!props.defaultExpandMultilineText}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
+        // opens the input if it regains focus and it's closed
         if (prevIsFocused !== props.isFocused && props.isFocused && !isOpen) {
           toggle();
         }
@@ -56,6 +57,7 @@ const Editor = props => {
                   containerRef: ref,
                   registerContentNode,
                 }}
+                isFocused={props.isFocused}
                 isOpen={isOpen}
                 hasError={props.hasError}
                 isDisabled={props.isDisabled}
