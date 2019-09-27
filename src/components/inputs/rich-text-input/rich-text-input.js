@@ -25,6 +25,9 @@ class RichTextInput extends React.PureComponent {
     this.props.onChange(event);
   };
 
+  // this issue explains why we need to use next() + setTimeout
+  // for calling our passed onBlur handler
+  // https://github.com/ianstormtaylor/slate/issues/2434
   onBlur = (event, editor, next) => {
     next();
     if (this.props.onBlur) {
