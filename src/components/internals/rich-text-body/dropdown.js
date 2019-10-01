@@ -1,13 +1,13 @@
 import React from 'react';
 import Downshift from 'downshift';
+import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import omit from 'lodash/omit';
 import Spacings from '../../spacings';
 import { CaretDownIcon } from '../../icons';
 import Tooltip from '../../tooltip';
-import AccessibleButton from '../../buttons/accessible-button';
+import Button from './rich-text-body-button';
 import {
   getButtonStyles,
   DropdownContainer,
@@ -15,8 +15,6 @@ import {
 } from './dropdown.styles';
 import { BLOCK_TAGS } from '../rich-text-utils/tags';
 import messages from './messages';
-
-const propsToRemove = ['onClick'];
 
 const DropdownLabel = props => {
   return (
@@ -32,23 +30,26 @@ DropdownLabel.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const Item = styled.div`
+  margin: 0;
+  text-align: left;
+`;
+
 const DropdownItem = props => {
+  const { children } = props;
   const as =
     Object.keys(BLOCK_TAGS).find(key => BLOCK_TAGS[key] === props.value) ||
     'div';
 
   return (
-    <StyledDropdownItem
-      {...props}
-      as={as}
-      css={css`
-        margin: 0;
-      `}
-    />
+    <StyledDropdownItem {...props}>
+      <Item as={as}>{children}</Item>
+    </StyledDropdownItem>
   );
 };
 
 DropdownItem.propTypes = {
+  children: PropTypes.node.isRequired,
   value: PropTypes.string.isRequired,
 };
 
@@ -63,14 +64,8 @@ const Dropdown = props => {
       selectedItem={props.value}
       itemToString={headings => (headings ? headings.label : '')}
     >
-      {({
-        isOpen,
-        toggleMenu,
-        getToggleButtonProps,
-        getItemProps,
-        selectedItem,
-      }) => {
-        const toggleButtonProps = omit(getToggleButtonProps(), propsToRemove);
+      {({ isOpen, getToggleButtonProps, getItemProps, selectedItem }) => {
+        const toggleButtonProps = getToggleButtonProps();
 
         return (
           <div>
@@ -80,17 +75,13 @@ const Dropdown = props => {
               off={isOpen}
               style={{ body: { zIndex: 9999 } }}
             >
-              <AccessibleButton
+              <Button
+                {...toggleButtonProps}
                 label={props.label}
                 css={getButtonStyles({ isOpen, isStyleButton: true })}
-                {...toggleButtonProps}
-                onMouseDown={event => {
-                  event.preventDefault();
-                  toggleMenu();
-                }}
               >
                 <DropdownLabel>{props.label}</DropdownLabel>
-              </AccessibleButton>
+              </Button>
             </Tooltip>
             {isOpen ? (
               <div
@@ -104,18 +95,12 @@ const Dropdown = props => {
                       index,
                       item,
                     });
-                    const dropdownItemProps = omit(itemProps, propsToRemove);
+                    const dropdownItemProps = itemProps;
 
                     return (
                       <DropdownItem
                         {...dropdownItemProps}
                         key={index}
-                        onMouseDown={event => {
-                          event.preventDefault();
-                          // Prevent Downshift's default 'Enter' behavior.
-                          dropdownItemProps.onMouseDown(event);
-                          itemProps.onClick(event);
-                        }}
                         value={item.value}
                         isSelected={item.value === selectedItem}
                       >

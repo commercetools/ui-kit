@@ -157,7 +157,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   // while the component is not in focus
   let activeMoreStyleMarks = [];
 
-  if (props.isFocused) {
+  if (props.editor.value.selection.isFocused) {
     const activeMarks = Array.from(props.editor.value.activeMarks).map(
       mark => mark.type
     );
@@ -178,12 +178,12 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
     >
       <Toolbar
         isOpen={props.isOpen}
-        onMouseDown={event => {
-          event.preventDefault();
-          if (!props.isFocused) {
-            props.editor.focus();
-          }
-        }}
+        // onMouseDown={event => {
+        //   event.preventDefault();
+        //   if (!props.editor.value.selection.isFocused) {
+        //     props.editor.focus();
+        //   }
+        // }}
       >
         <ToolbarMainControls>
           <Dropdown
@@ -198,11 +198,15 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.isFocused && props.editor.hasBoldMark()}
+              isActive={
+                props.editor.value.selection.isFocused &&
+                props.editor.hasBoldMark()
+              }
               label={intl.formatMessage(messages.boldButtonLabel)}
-              onMouseDown={props.editor.toggleBoldMark}
-              icon={<BoldIcon size="medium" />}
-            />
+              onClick={props.editor.toggleBoldMark}
+            >
+              <BoldIcon size="medium" />
+            </Button>
           </Tooltip>
           <Tooltip
             title={intl.formatMessage(messages.italicTooltipTitle)}
@@ -210,11 +214,15 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.isFocused && props.editor.hasItalicMark()}
+              isActive={
+                props.editor.value.selection.isFocused &&
+                props.editor.hasItalicMark()
+              }
               label={intl.formatMessage(messages.italicButtonLabel)}
-              onMouseDown={props.editor.toggleItalicMark}
-              icon={<ItalicIcon size="medium" />}
-            />
+              onClick={props.editor.toggleItalicMark}
+            >
+              <ItalicIcon size="medium" />
+            </Button>
           </Tooltip>
           <Tooltip
             title={intl.formatMessage(messages.underlinedTooltipTitle)}
@@ -222,11 +230,15 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.isFocused && props.editor.hasUnderlinedMark()}
+              isActive={
+                props.editor.value.selection.isFocused &&
+                props.editor.hasUnderlinedMark()
+              }
               label={intl.formatMessage(messages.underlinedButtonLabel)}
-              onMouseDown={props.editor.toggleUnderlinedMark}
-              icon={<UnderlineIcon size="medium" />}
-            />
+              onClick={props.editor.toggleUnderlinedMark}
+            >
+              <UnderlineIcon size="medium" />
+            </Button>
           </Tooltip>
           <MultiDropdown
             label={intl.formatMessage(messages.moreStylesDropdownLabel)}
@@ -241,11 +253,15 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.isFocused && props.editor.hasNumberedListBlock()}
+              isActive={
+                props.editor.value.selection.isFocused &&
+                props.editor.hasNumberedListBlock()
+              }
               label={intl.formatMessage(messages.orderedListButtonLabel)}
-              onMouseDown={props.editor.toggleNumberedListBlock}
-              icon={<OrderedListIcon size="medium" />}
-            />
+              onClick={props.editor.toggleNumberedListBlock}
+            >
+              <OrderedListIcon size="medium" />
+            </Button>
           </Tooltip>
           <Tooltip
             title={intl.formatMessage(messages.unorderedListTooltipTitle)}
@@ -253,11 +269,15 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             styles={tooltipStyles}
           >
             <Button
-              isActive={props.isFocused && props.editor.hasBulletedListBlock()}
+              isActive={
+                props.editor.value.selection.isFocused &&
+                props.editor.hasBulletedListBlock()
+              }
               label={intl.formatMessage(messages.unorderedListButtonLabel)}
-              onMouseDown={props.editor.toggleBulletedListBlock}
-              icon={<UnorderedListIcon size="medium" />}
-            />
+              onClick={props.editor.toggleBulletedListBlock}
+            >
+              <UnorderedListIcon size="medium" />
+            </Button>
           </Tooltip>
         </ToolbarMainControls>
         <ToolbarRightControls
@@ -279,14 +299,13 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               isActive={false}
               label={intl.formatMessage(messages.undoButtonLabel)}
               isDisabled={!hasUndos}
-              onMouseDown={props.editor.toggleUndo}
-              icon={
-                <UndoIcon
-                  color={!hasUndos ? 'neutral60' : 'solid'}
-                  size="medium"
-                />
-              }
-            />
+              onClick={props.editor.toggleUndo}
+            >
+              <UndoIcon
+                color={!hasUndos ? 'neutral60' : 'solid'}
+                size="medium"
+              />
+            </Button>
           </Tooltip>
           <Tooltip
             title={intl.formatMessage(messages.redoTooltipTitle)}
@@ -297,14 +316,13 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               isActive={false}
               label={intl.formatMessage(messages.redoButtonLabel)}
               isDisabled={!hasRedos}
-              onMouseDown={props.editor.toggleRedo}
-              icon={
-                <RedoIcon
-                  color={!hasRedos ? 'neutral60' : 'solid'}
-                  size="medium"
-                />
-              }
-            />
+              onClick={props.editor.toggleRedo}
+            >
+              <RedoIcon
+                color={!hasRedos ? 'neutral60' : 'solid'}
+                size="medium"
+              />
+            </Button>
           </Tooltip>
         </ToolbarRightControls>
       </Toolbar>
@@ -329,7 +347,6 @@ RichTextEditorBody.displayName = 'RichTextEditorBody';
 RichTextEditorBody.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
-  isFocused: PropTypes.bool.isRequired,
   isReadOnly: PropTypes.bool,
   isDisabled: PropTypes.bool,
   onFocus: PropTypes.func,

@@ -1,36 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import AccessibleButton from '../../buttons/accessible-button';
 import vars from '../../../../materials/custom-properties';
 
+const getFillColor = props => {
+  if (props.isDisabled) return vars.colorNeutral60;
+  if (props.isActive) return vars.colorSurface;
+  return vars.colorSolid;
+};
+
 const RichTextBodyButton = props => {
-  const { onMouseDown } = props;
-  const handleMouseDown = React.useCallback(
-    event => {
-      event.preventDefault();
-      onMouseDown(event);
-    },
-    [onMouseDown]
-  );
   return (
-    <div>
-      <AccessibleButton
-        isDisabled={props.isDisabled}
-        label={props.label}
-        css={css`
+    <button
+      type="button"
+      data-button-type="rich-text-button"
+      aria-disabled={props.isDisabled}
+      aria-label={props.label}
+      css={[
+        css`
+          border: 0;
+          cursor: pointer;
           background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
           display: flex;
           justify-content: center;
           align-items: center;
-          border-radius: 4px;
+          border-radius: ${vars.spacingXs};
           padding: ${vars.spacingXs};
 
           * {
-            fill: ${props.isActive ? vars.colorSurface : vars.colorSolid};
+            fill: ${getFillColor(props)};
           }
 
-          &:hover {
+          &:focus {
+            outline: none;
+          }
+
+          &:hover,
+          &:focus {
             background: ${props.isActive
               ? vars.colorAccent30
               : vars.colorNeutral90};
@@ -38,22 +44,25 @@ const RichTextBodyButton = props => {
               fill: ${props.isActive ? vars.colorSurface : vars.colorSolid};
             }
           }
-        `}
-        onMouseDown={handleMouseDown}
-      >
-        {props.icon}
-      </AccessibleButton>
-    </div>
+        `,
+        props.isDisabled &&
+          css`
+            pointer-events: none;
+          `,
+      ]}
+      {...props}
+    >
+      {props.children}
+    </button>
   );
 };
 
 RichTextBodyButton.propTypes = {
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func,
-  onMouseDown: PropTypes.func,
   label: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
-  icon: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 RichTextBodyButton.displayName = 'RichTextInputButton';
