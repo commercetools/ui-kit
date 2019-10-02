@@ -18,7 +18,7 @@ const Editor = props => {
   const intl = useIntl();
   const ref = React.useRef();
 
-  const prevIsFocused = usePrevious(props.isFocused);
+  const prevIsFocused = usePrevious(props.editor.value.selection.isFocused);
 
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
 
@@ -45,7 +45,11 @@ const Editor = props => {
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
         // opens the input if it regains focus and it's closed
-        if (prevIsFocused !== props.isFocused && props.isFocused && !isOpen) {
+        if (
+          prevIsFocused !== props.editor.value.selection.isFocused &&
+          props.editor.value.selection.isFocused &&
+          !isOpen
+        ) {
           toggle();
         }
 
@@ -57,8 +61,6 @@ const Editor = props => {
                   containerRef: ref,
                   registerContentNode,
                 }}
-                isFocused={props.isFocused}
-                isOpen={isOpen}
                 hasError={props.hasError}
                 isDisabled={props.isDisabled}
                 hasWarning={props.hasWarning}

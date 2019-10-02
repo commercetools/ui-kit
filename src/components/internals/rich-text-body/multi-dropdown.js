@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
-import omit from 'lodash/omit';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import Spacings from '../../spacings';
 import Tooltip from '../../tooltip';
-import AccessibleButton from '../../buttons/accessible-button';
+import Button from './rich-text-body-button';
 import {
   getButtonStyles,
   DropdownContainer,
@@ -19,8 +18,6 @@ import {
   StrikethroughIcon,
 } from './icons';
 import messages from './messages';
-
-const propsToRemove = ['onClick'];
 
 const DropdownItem = props => {
   let Icon;
@@ -63,15 +60,7 @@ const MultiDownshift = props => {
 
   return (
     <Downshift onSelect={props.onSelect} itemToString={itemToString}>
-      {({
-        getToggleButtonProps,
-        getMenuProps,
-        isOpen,
-        getItemProps,
-        toggleMenu,
-      }) => {
-        const toggleButtonProps = omit(getToggleButtonProps(), propsToRemove);
-
+      {({ getToggleButtonProps, getMenuProps, isOpen, getItemProps }) => {
         return (
           <div>
             <Tooltip
@@ -82,23 +71,17 @@ const MultiDownshift = props => {
               off={isOpen}
               styles={{ body: { zIndex: 99999 } }}
             >
-              <div>
-                <AccessibleButton
-                  {...toggleButtonProps}
-                  label={props.label}
-                  css={getButtonStyles({
-                    isIndeterminate,
-                    isStyleButton: false,
-                    isOpen,
-                  })}
-                  onMouseDown={event => {
-                    event.preventDefault();
-                    toggleMenu();
-                  }}
-                >
-                  <MoreStylesIcon size="medium" />
-                </AccessibleButton>
-              </div>
+              <Button
+                {...getToggleButtonProps()}
+                label={props.label}
+                css={getButtonStyles({
+                  isIndeterminate,
+                  isStyleButton: false,
+                  isOpen,
+                })}
+              >
+                <MoreStylesIcon size="medium" />
+              </Button>
             </Tooltip>
             <div
               {...getMenuProps()}
@@ -108,33 +91,32 @@ const MultiDownshift = props => {
             >
               {isOpen ? (
                 <DropdownContainer>
-                  {props.dropdownOptions.map((item, index) => {
-                    const isSelected = props.selectedItems.find(
-                      selectedItem => selectedItem === item.value
-                    );
+                  <div
+                    css={css`
+                      position: relative;
+                    `}
+                  >
+                    {props.dropdownOptions.map((item, index) => {
+                      const isSelected = props.selectedItems.find(
+                        selectedItem => selectedItem === item.value
+                      );
 
-                    const itemProps = getItemProps({
-                      item,
-                      index,
-                      value: item.value,
-                      isSelected,
-                    });
+                      const itemProps = getItemProps({
+                        item,
+                        index,
+                        value: item.value,
+                        isSelected,
+                      });
 
-                    const dropdownItemProps = omit(itemProps, propsToRemove);
+                      const dropdownItemProps = itemProps;
 
-                    return (
-                      <DropdownItem
-                        {...dropdownItemProps}
-                        key={item.value}
-                        onMouseDown={event => {
-                          event.preventDefault();
-                          itemProps.onClick(event);
-                        }}
-                      >
-                        {item.label}
-                      </DropdownItem>
-                    );
-                  })}
+                      return (
+                        <DropdownItem {...dropdownItemProps} key={item.value}>
+                          {item.label}
+                        </DropdownItem>
+                      );
+                    })}
+                  </div>
                 </DropdownContainer>
               ) : null}
             </div>

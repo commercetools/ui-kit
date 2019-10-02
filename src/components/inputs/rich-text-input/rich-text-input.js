@@ -10,31 +10,39 @@ import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
-  state = {
-    isFocused: false,
-  };
-
-  onValueChange = ({ value }) => {
-    const event = {
+  onValueChange = event => {
+    const fakeEvent = {
       target: {
         id: this.props.id,
         name: this.props.name,
-        value,
+        value: event.value,
       },
     };
-    this.props.onChange(event);
+
+    this.props.onChange(fakeEvent);
   };
 
   // this issue explains why we need to use next() + setTimeout
   // for calling our passed onBlur handler
   // https://github.com/ianstormtaylor/slate/issues/2434
   onBlur = (event, editor, next) => {
+    // we don't call next() if it's a button to stop our input from losing
+    // slate focus
+    if (
+      event.relatedTarget &&
+      event.relatedTarget.getAttribute('data-button-type') ===
+        'rich-text-button'
+    ) {
+      event.preventDefault();
+      return;
+    }
+
     next();
+
     if (this.props.onBlur) {
       event.persist();
       setTimeout(() => this.props.onBlur(event), 0);
     }
-    setTimeout(() => this.setState({ isFocused: false }));
   };
 
   onFocus = (event, editor, next) => {
@@ -43,7 +51,6 @@ class RichTextInput extends React.PureComponent {
       event.persist();
       setTimeout(() => this.props.onFocus(event), 0);
     }
-    setTimeout(() => this.setState({ isFocused: true }));
   };
 
   render() {
@@ -67,7 +74,6 @@ class RichTextInput extends React.PureComponent {
           hasWarning: this.props.hasWarning,
           hasError: this.props.hasError,
           placeholder: this.props.placeholder,
-          isFocused: this.state.isFocused,
         }}
         onChange={this.onValueChange}
         plugins={plugins}

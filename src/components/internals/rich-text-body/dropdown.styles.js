@@ -2,14 +2,20 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 
-const DropdownItem = styled.div`
+const DropdownItem = styled.button`
+  width: 100%;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
   padding: ${vars.spacingXs} ${vars.spacingS};
   font-family: ${vars.fontFamilyDefault};
-
+  display: block;
   background-color: ${props =>
     props.isSelected ? vars.colorAccent95 : vars.colorSurface};
 
+  &:focus,
   &:hover {
+    outline: none;
     background-color: ${vars.colorNeutral90};
   }
 `;
