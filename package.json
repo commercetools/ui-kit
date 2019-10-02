@@ -78,7 +78,7 @@
     "prop-types": "15.7.2",
     "react-is": "16.10.1",
     "react-required-if": "1.0.3",
-    "react-select": "3.0.5",
+    "react-select": "3.0.8",
     "react-textarea-autosize": "7.1.0",
     "react-virtualized": "9.21.1",
     "slate": "0.47.8",
