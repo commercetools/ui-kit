@@ -61,7 +61,6 @@ const Editor = props => {
                   containerRef: ref,
                   registerContentNode,
                 }}
-                isOpen={isOpen}
                 hasError={props.hasError}
                 isDisabled={props.isDisabled}
                 hasWarning={props.hasWarning}
