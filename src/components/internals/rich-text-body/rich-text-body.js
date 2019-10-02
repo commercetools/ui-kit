@@ -99,8 +99,6 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   const hasUndos = props.editor.hasUndos();
   const hasRedos = props.editor.hasRedos();
 
-  console.log('here', hasUndos);
-
   const onClickBlock = React.useCallback(
     ({ value: type }) => {
       // Handle everything but list buttons.
