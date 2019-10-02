@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
@@ -9,8 +10,11 @@ const getFillColor = props => {
   return vars.colorSolid;
 };
 
+const propsToOmit = ['isActive', 'label', 'isDisabled'];
+
 const RichTextBodyButton = props => {
-  const { label, isActive, isDisabled, ...restOfProps } = props;
+  const restOfProps = omit(props, propsToOmit);
+
   return (
     <button
       {...restOfProps}
@@ -22,7 +26,7 @@ const RichTextBodyButton = props => {
         css`
           border: 0;
           cursor: pointer;
-          background: ${isActive ? vars.colorAccent30 : 'transparent'};
+          background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
           display: flex;
           justify-content: center;
           align-items: center;
@@ -39,9 +43,11 @@ const RichTextBodyButton = props => {
 
           &:hover,
           &:focus {
-            background: ${isActive ? vars.colorAccent30 : vars.colorNeutral90};
+            background: ${props.isActive
+              ? vars.colorAccent30
+              : vars.colorNeutral90};
             * {
-              fill: ${isActive ? vars.colorSurface : vars.colorSolid};
+              fill: ${props.isActive ? vars.colorSurface : vars.colorSolid};
             }
           }
         `,
