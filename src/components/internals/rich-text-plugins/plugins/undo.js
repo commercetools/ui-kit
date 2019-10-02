@@ -32,9 +32,6 @@ const UndoPlugin = (options = {}) => {
       },
       commands: {
         toggleUndo: editor => {
-          if (!editor.value.selection.isFocused) {
-            editor.focus();
-          }
           if (hasUndos(editor)) {
             editor.undo();
           }

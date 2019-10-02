@@ -99,6 +99,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   const hasUndos = props.editor.hasUndos();
   const hasRedos = props.editor.hasRedos();
 
+  console.log('here', hasUndos);
+
   const onClickBlock = React.useCallback(
     ({ value: type }) => {
       // Handle everything but list buttons.
@@ -175,13 +177,14 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       hasWarning={props.hasWarning}
       isReadOnly={props.isReadOnly}
       isDisabled={props.isDisabled}
-      onClick={() => {
-        if (!props.editor.value.selection.isFocused) {
-          props.editor.focus();
-        }
-      }}
     >
-      <Toolbar>
+      <Toolbar
+        onClick={() => {
+          if (!props.editor.value.selection.isFocused) {
+            props.editor.focus();
+          }
+        }}
+      >
         <ToolbarMainControls>
           <Dropdown
             label={intl.formatMessage(messages.styleDropdownLabel)}
@@ -298,10 +301,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               isDisabled={!hasUndos}
               onClick={props.editor.toggleUndo}
             >
-              <UndoIcon
-                color={!hasUndos ? 'neutral60' : 'solid'}
-                size="medium"
-              />
+              <UndoIcon size="medium" />
             </Button>
           </Tooltip>
           <Tooltip
@@ -315,10 +315,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               isDisabled={!hasRedos}
               onClick={props.editor.toggleRedo}
             >
-              <RedoIcon
-                color={!hasRedos ? 'neutral60' : 'solid'}
-                size="medium"
-              />
+              <RedoIcon size="medium" />
             </Button>
           </Tooltip>
         </ToolbarRightControls>
