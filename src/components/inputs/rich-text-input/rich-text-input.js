@@ -33,7 +33,6 @@ class RichTextInput extends React.PureComponent {
       event.relatedTarget.getAttribute('data-button-type') ===
         'rich-text-button'
     ) {
-      console.count('preventing on blurhere');
       event.preventDefault();
       return;
     }
