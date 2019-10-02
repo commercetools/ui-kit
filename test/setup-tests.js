@@ -2,11 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import colors from 'colors/safe';
 
-const shouldSilenceWarnings = (...messages) =>
-  [/Warning: componentWillReceiveProps has been renamed/].some(msgRegex =>
-    messages.some(msg => msgRegex.test(msg))
-  );
-
 global.window.app = {
   mcApiUrl: 'http://localhost:8080',
 };
@@ -15,10 +10,6 @@ global.window.app = {
 const logOrThrow = (log, method, messages) => {
   const warning = `console.${method} calls not allowed in tests`;
   if (process.env.CI) {
-    if (shouldSilenceWarnings(messages)) {
-      return;
-    }
-
     log(warning, '\n', ...messages);
     throw new Error(warning);
   } else {
