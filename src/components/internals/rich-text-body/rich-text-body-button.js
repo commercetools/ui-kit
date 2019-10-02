@@ -10,8 +10,10 @@ const getFillColor = props => {
 };
 
 const RichTextBodyButton = props => {
+  const { label, ...restOfProps } = props;
   return (
     <button
+      {...restOfProps}
       type="button"
       data-button-type="rich-text-button"
       aria-disabled={props.isDisabled}
@@ -50,7 +52,6 @@ const RichTextBodyButton = props => {
             pointer-events: none;
           `,
       ]}
-      {...props}
     >
       {props.children}
     </button>

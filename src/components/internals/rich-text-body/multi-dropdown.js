@@ -72,9 +72,8 @@ const MultiDownshift = props => {
               styles={{ body: { zIndex: 99999 } }}
             >
               <Button
-                {...getToggleButtonProps({
-                  label: props.label,
-                })}
+                {...getToggleButtonProps()}
+                label={props.label}
                 css={getButtonStyles({
                   isIndeterminate,
                   isStyleButton: false,
