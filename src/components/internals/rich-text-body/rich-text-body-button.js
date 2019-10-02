@@ -10,7 +10,7 @@ const getFillColor = props => {
 };
 
 const RichTextBodyButton = props => {
-  const { label, ...restOfProps } = props;
+  const { label, isActive, isDisabled, ...restOfProps } = props;
   return (
     <button
       {...restOfProps}
@@ -22,7 +22,7 @@ const RichTextBodyButton = props => {
         css`
           border: 0;
           cursor: pointer;
-          background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
+          background: ${isActive ? vars.colorAccent30 : 'transparent'};
           display: flex;
           justify-content: center;
           align-items: center;
@@ -39,11 +39,9 @@ const RichTextBodyButton = props => {
 
           &:hover,
           &:focus {
-            background: ${props.isActive
-              ? vars.colorAccent30
-              : vars.colorNeutral90};
+            background: ${isActive ? vars.colorAccent30 : vars.colorNeutral90};
             * {
-              fill: ${props.isActive ? vars.colorSurface : vars.colorSolid};
+              fill: ${isActive ? vars.colorSurface : vars.colorSolid};
             }
           }
         `,
