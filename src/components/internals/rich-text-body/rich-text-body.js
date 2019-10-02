@@ -175,16 +175,13 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       hasWarning={props.hasWarning}
       isReadOnly={props.isReadOnly}
       isDisabled={props.isDisabled}
+      onClick={() => {
+        if (!props.editor.value.selection.isFocused) {
+          props.editor.focus();
+        }
+      }}
     >
-      <Toolbar
-        isOpen={props.isOpen}
-        // onMouseDown={event => {
-        //   event.preventDefault();
-        //   if (!props.editor.value.selection.isFocused) {
-        //     props.editor.focus();
-        //   }
-        // }}
-      >
+      <Toolbar>
         <ToolbarMainControls>
           <Dropdown
             label={intl.formatMessage(messages.styleDropdownLabel)}
