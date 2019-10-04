@@ -103,15 +103,9 @@ const Editor = props => {
 
 // eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
-  const children = next();
-
-  const transformedChildren = {
-    ...children,
-    props: {
-      ...children.props,
-      tagName: 'output',
-    },
-  };
+  const children = React.cloneElement(next(), {
+    tagName: 'output',
+  });
 
   const passedProps = {
     name: props.name,
@@ -130,7 +124,7 @@ const renderEditor = (props, editor, next) => {
 
   return (
     <Editor editor={editor} {...passedProps}>
-      {transformedChildren}
+      {children}
     </Editor>
   );
 };
