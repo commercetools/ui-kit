@@ -40,8 +40,8 @@ class StoryWrapper extends React.Component {
       'defaultExpandMultilineText',
       false
     );
-    const errors = object('errors', { en: '', de: '', es: '' });
-    const warnings = object('warnings', { en: '', de: '', es: '' });
+    const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
+    const warnings = object('warnings', { en: '', de: '', 'nan-Hant-TW': '' });
     // We need to force the component to rerender in case a default value
     // is changed. Otherwise the knob would have no effect.
     // We do this by changing the key.
@@ -54,7 +54,11 @@ class StoryWrapper extends React.Component {
         name={text('name', 'productName')}
         value={props.value}
         onChange={this.onChange}
-        selectedLanguage={select('selectedLanguage', ['en', 'de', 'es'], 'en')}
+        selectedLanguage={select(
+          'selectedLanguage',
+          ['en', 'de', 'nan-Hant-TW'],
+          'en'
+        )}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         hideLanguageExpansionControls={boolean(
@@ -70,7 +74,11 @@ class StoryWrapper extends React.Component {
         isAutofocussed={boolean('isAutofocussed', false)}
         isDisabled={boolean('isDisabled', false)}
         isReadOnly={boolean('isReadOnly', false)}
-        placeholder={object('placeholder', { en: '', de: '', es: '' })}
+        placeholder={object('placeholder', {
+          en: '',
+          de: '',
+          'nan-Hant-TW': '',
+        })}
         horizontalConstraint={select(
           'horizontalConstraint',
           ['m', 'l', 'xl', 'scale'],
@@ -117,7 +125,7 @@ storiesOf('Components|Inputs', module)
           defaultValue={{
             en: initialValue,
             de: initialValue,
-            es: initialValue,
+            'nan-Hant-TW': initialValue,
           }}
           render={(value, onChange) => (
             <StoryWrapper value={value} onChange={onChange} />

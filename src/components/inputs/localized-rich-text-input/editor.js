@@ -92,6 +92,8 @@ const Editor = props => {
                 }}
                 styles={{
                   container: css`
+                    flex: auto;
+                    width: 100%;
                     border-top-left-radius: 0;
                     border-bottom-left-radius: 0;
                   `,
