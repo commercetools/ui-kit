@@ -98,7 +98,10 @@ storiesOf('Examples|Forms/Inputs', module)
               />
             </Spacings.Stack>
             <Spacings.Stack scale="s">
-              <label htmlFor="coverLetter">cover letter</label>
+              <FieldLabel
+                title="Enter your cover letter"
+                htmlFor="coverLetter"
+              />
               <RichTextInput
                 id="coverLetter"
                 name="coverLetter"
