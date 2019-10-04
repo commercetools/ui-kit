@@ -129,7 +129,7 @@ const renderEditor = (props, editor, next) => {
   };
 
   return (
-    <Editor id={props.id} editor={editor} {...passedProps}>
+    <Editor editor={editor} {...passedProps}>
       {transformedChildren}
     </Editor>
   );
