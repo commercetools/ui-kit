@@ -52,7 +52,6 @@ const Editor = props => {
         ) {
           toggle();
         }
-
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
             <Spacings.Stack scale="xs">
@@ -106,6 +105,14 @@ const Editor = props => {
 const renderEditor = (props, editor, next) => {
   const children = next();
 
+  const transformedChildren = {
+    ...children,
+    props: {
+      ...children.props,
+      tagName: 'output',
+    },
+  };
+
   const passedProps = {
     name: props.name,
     id: props.id,
@@ -122,8 +129,8 @@ const renderEditor = (props, editor, next) => {
   };
 
   return (
-    <Editor editor={editor} {...passedProps}>
-      {children}
+    <Editor id={props.id} editor={editor} {...passedProps}>
+      {transformedChildren}
     </Editor>
   );
 };
