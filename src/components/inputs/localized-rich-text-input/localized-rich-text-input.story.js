@@ -3,7 +3,6 @@ import React from 'react';
 import { Value } from 'slate';
 import { Value as ReactValue } from 'react-value';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import {
   withKnobs,
   boolean,
@@ -29,9 +28,6 @@ class StoryWrapper extends React.Component {
       [event.target.language]: event.target.value,
     });
   };
-
-  onBlur = action('onBlur');
-  onFocus = action('onFocus');
 
   render() {
     const { props } = this;
@@ -59,8 +55,6 @@ class StoryWrapper extends React.Component {
           ['en', 'de', 'nan-Hant-TW'],
           'en'
         )}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
         hideLanguageExpansionControls={boolean(
           'hideLanguageExpansionControls',
           false

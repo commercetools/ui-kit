@@ -138,7 +138,7 @@ const LocalizedMultilineTextInput = props => {
               value={props.value[language]}
               onChange={props.onChange}
               language={language}
-              isCollapsed={!expandedTranslationsState[language]}
+              isOpen={expandedTranslationsState[language]}
               toggleLanguage={toggleLanguage}
               placeholder={
                 props.placeholder ? props.placeholder[language] : undefined

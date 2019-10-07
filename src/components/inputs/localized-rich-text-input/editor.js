@@ -23,6 +23,11 @@ const Editor = props => {
 
   const [renderToggleButton, setRenderToggleButton] = React.useState(false);
 
+  const { toggleLanguage } = props;
+  const onToggle = React.useCallback(() => {
+    toggleLanguage(props.language);
+  }, [toggleLanguage, props.language]);
+
   const updateRenderToggleButton = React.useCallback(() => {
     const doesExceedCollapsedHeightLimit =
       ref.current.clientHeight > COLLAPSED_HEIGHT;
@@ -39,20 +44,11 @@ const Editor = props => {
     updateRenderToggleButton();
   }, [props.editor.value.document, updateRenderToggleButton]);
 
-  const { toggleLanguage } = props;
-
-  const [shouldBeOpen, setIsOpen] = React.useState(props.isOpen);
-
-  const onToggle = React.useCallback(() => {
-    setIsOpen(!shouldBeOpen);
-    toggleLanguage(props.language);
-  }, [toggleLanguage, props.language, shouldBeOpen]);
-
   // opens the input if it regains focus and it's closed
   if (
     prevIsFocused !== props.editor.value.selection.isFocused &&
     props.editor.value.selection.isFocused &&
-    !shouldBeOpen
+    !props.isOpen
   ) {
     onToggle();
   }
@@ -60,7 +56,7 @@ const Editor = props => {
   return (
     <CollapsibleMotion
       minHeight={COLLAPSED_HEIGHT}
-      isClosed={!shouldBeOpen}
+      isClosed={!props.isOpen}
       onToggle={onToggle}
       isDefaultClosed={!props.defaultExpandMultilineText}
     >
@@ -149,7 +145,9 @@ const Editor = props => {
 
 // eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
-  const children = next();
+  const children = React.cloneElement(next(), {
+    tagName: 'output',
+  });
 
   const passedProps = {
     name: props.name,
