@@ -110,7 +110,7 @@ const LocalizedMultilineTextInput = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="s">
+      <Spacings.Stack>
         {languages.map((language, index) => {
           const isFirstLanguage = index === 0;
           if (!isFirstLanguage && !areLanguagesOpened) return null;

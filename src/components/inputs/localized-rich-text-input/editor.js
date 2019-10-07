@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import usePrevious from '../../../hooks/use-previous';
@@ -15,6 +16,10 @@ import messages from './messages';
 import { getLanguageLabelStyles } from './editor.styles';
 
 const COLLAPSED_HEIGHT = 32;
+
+const Wrapper = styled.div`
+  flex: 1;
+`;
 
 const Editor = props => {
   const intl = useIntl();
@@ -52,6 +57,8 @@ const Editor = props => {
   ) {
     onToggle();
   }
+
+  const languagesControl = props.languagesControl();
 
   return (
     <CollapsibleMotion
@@ -108,34 +115,45 @@ const Editor = props => {
             <div
               css={css`
                 display: flex;
+
+                &:empty {
+                  margin: 0 !important;
+                }
               `}
             >
-              <div
-                css={css`
-                  flex: 1;
-                `}
-              >
-                {(() => {
-                  if (props.error) return <div>{props.error}</div>;
-                  if (props.warning) return <div>{props.warning}</div>;
-                  return props.languagesControl();
-                })()}
-              </div>
-              <div
-                css={css`
-                  flex: 0;
-                `}
-              >
-                {renderToggleButton && isOpen && (
+              {(() => {
+                if (props.error)
+                  return (
+                    <Wrapper>
+                      <div>{props.error}</div>
+                    </Wrapper>
+                  );
+                if (props.warning)
+                  return (
+                    <Wrapper>
+                      <div>{props.warning}</div>
+                    </Wrapper>
+                  );
+                return (
+                  languagesControl && <Wrapper>{languagesControl}</Wrapper>
+                );
+              })()}
+              {renderToggleButton && isOpen && (
+                <div
+                  css={css`
+                    flex: 0;
+                  `}
+                >
                   <FlatButton
                     onClick={toggle}
                     label={intl.formatMessage(messages.collapse)}
                     icon={<AngleUpIcon size="small" />}
                   />
-                )}
-              </div>
+                </div>
+              )}
+
+              {(props.error || props.warning) && props.languagesControl()}
             </div>
-            {(props.error || props.warning) && props.languagesControl()}
           </Spacings.Stack>
         );
       }}
