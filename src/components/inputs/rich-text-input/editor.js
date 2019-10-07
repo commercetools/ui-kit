@@ -52,7 +52,6 @@ const Editor = props => {
         ) {
           toggle();
         }
-
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
             <Spacings.Stack scale="xs">
@@ -104,7 +103,9 @@ const Editor = props => {
 
 // eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
-  const children = next();
+  const children = React.cloneElement(next(), {
+    tagName: 'output',
+  });
 
   const passedProps = {
     name: props.name,

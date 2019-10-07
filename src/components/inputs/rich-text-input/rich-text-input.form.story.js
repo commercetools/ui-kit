@@ -83,7 +83,7 @@ storiesOf('Examples|Forms/Inputs', module)
               errors={formik.errors.lastName}
             />
             <Spacings.Stack scale="s">
-              <FieldLabel title="Enter your cv" />
+              <FieldLabel title="Enter your cv" htmlFor="cv" />
               <RichTextInput
                 id="cv"
                 name="cv"
@@ -98,7 +98,10 @@ storiesOf('Examples|Forms/Inputs', module)
               />
             </Spacings.Stack>
             <Spacings.Stack scale="s">
-              <FieldLabel title="Enter your cover letter" />
+              <FieldLabel
+                title="Enter your cover letter"
+                htmlFor="coverLetter"
+              />
               <RichTextInput
                 id="coverLetter"
                 name="coverLetter"
@@ -113,7 +116,7 @@ storiesOf('Examples|Forms/Inputs', module)
               />
             </Spacings.Stack>
             <Spacings.Stack scale="s">
-              <FieldLabel title="Tell us about yourself" />
+              <FieldLabel title="Tell us about yourself" htmlFor="aboutMe" />
               <RichTextInput
                 id="aboutMe"
                 name="aboutMe"
