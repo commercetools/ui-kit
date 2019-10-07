@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import MultilineInput from '../../internals/multiline-input';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon } from '../../icons';
@@ -13,6 +14,21 @@ import {
   getTextareaStyles,
   getLanguageLabelStyles,
 } from './translation-input.styles';
+
+const LeftColumn = styled.div`
+  flex: 1;
+`;
+
+const RightColumn = styled.div`
+  flex: 0;
+`;
+
+const Row = styled.div`
+  display: flex;
+  &:empty {
+    margin: 0 !important;
+  }
+`;
 
 const TranslationInput = props => {
   const [contentRowCount, setContentRowCount] = React.useState(
@@ -99,37 +115,40 @@ const TranslationInput = props => {
           {...filterDataAttributes(props)}
         />
       </div>
-      <div
-        css={css`
-          display: flex;
-        `}
-      >
-        <div
-          css={css`
-            flex: 1;
-          `}
-        >
-          {(() => {
-            if (props.error) return <div>{props.error}</div>;
-            if (props.warning) return <div>{props.warning}</div>;
-            return props.languagesControl;
-          })()}
-        </div>
-        <div
-          css={css`
-            flex: 0;
-          `}
-        >
-          {!props.isCollapsed && contentExceedsShownRows && (
-            <FlatButton
-              onClick={props.onToggle}
-              isDisabled={props.isDisabled}
-              label={props.intl.formatMessage(messages.collapse)}
-              icon={<AngleUpIcon size="small" />}
-            />
-          )}
-        </div>
-      </div>
+      <Row>
+        {(() => {
+          if (props.error)
+            return (
+              <LeftColumn>
+                <div>{props.error}</div>
+              </LeftColumn>
+            );
+          if (props.warning)
+            return (
+              <LeftColumn>
+                <div>{props.warning}</div>
+              </LeftColumn>
+            );
+          return (
+            props.languagesControl && (
+              <LeftColumn>{props.languagesControl}</LeftColumn>
+            )
+          );
+        })()}
+        {!props.isCollapsed && contentExceedsShownRows && (
+          <React.Fragment>
+            <LeftColumn />
+            <RightColumn>
+              <FlatButton
+                onClick={props.onToggle}
+                isDisabled={props.isDisabled}
+                label={props.intl.formatMessage(messages.collapse)}
+                icon={<AngleUpIcon size="small" />}
+              />
+            </RightColumn>
+          </React.Fragment>
+        )}
+      </Row>
       {(props.error || props.warning) && props.languagesControl}
     </Spacings.Stack>
   );
