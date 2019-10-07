@@ -57,7 +57,6 @@ class RichTextInput extends React.PureComponent {
     next();
 
     if (this.props.onBlur) {
-      event.persist();
       setTimeout(() => this.props.onBlur(event), 0);
     }
   };
@@ -65,7 +64,6 @@ class RichTextInput extends React.PureComponent {
   onFocus = (event, editor, next) => {
     next();
     if (this.props.onFocus) {
-      event.persist();
       setTimeout(() => this.props.onFocus(event), 0);
     }
   };
