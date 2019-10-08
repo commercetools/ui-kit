@@ -55,13 +55,6 @@ The component can be used in a controlled or uncontrolled manner. Please refer t
 
 Whenever some content on a given page should be concealed and/or expandible. This often holds true for instance for detailed but hidden information of some entity to save space.
 
-#### Component Best Practices
-
-For visuals head over to the designs. For documentation to the wiki below:
-
-- [Designs](https://projects.invisionapp.com/share/EMKHNWODTZA#/screens/299345214)
-- [Wiki](https://wiki.commercetools.com/display/DD/Collapsible+Panel+-+Documentation)
-
 **Header**
 
 The header of this component should follow our design and UX conventions so it looks the same across the application. It accepts a `node` to accompany the two scenarios:

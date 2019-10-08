@@ -23,12 +23,7 @@ const getIconElement = props => {
   });
 };
 
-const getTextColor = (tone, isHover = false, theme) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const getTextColor = (tone, isHover = false, overwrittenVars) => {
   switch (tone) {
     case 'primary':
       return isHover
@@ -54,42 +49,49 @@ export const FlatButton = props => {
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={theme => css`
-        display: flex;
-        align-items: center;
-        font-size: 1rem;
-        border: none;
-        background: none;
-        padding: 0;
-        min-height: initial;
+      css={theme => {
+        const overwrittenVars = {
+          ...vars,
+          ...theme,
+        };
 
-        p {
-          color: ${props.isDisabled
-            ? vars.colorNeutral
-            : getTextColor(props.tone, false, theme)};
-        }
+        return css`
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+          border: none;
+          background: none;
+          padding: 0;
+          min-height: initial;
 
-        svg * {
-          fill: ${props.isDisabled
-            ? vars.colorNeutral
-            : getTextColor(props.tone, false, theme)};
-        }
-
-        &:hover,
-        &:focus {
           p {
             color: ${props.isDisabled
-              ? vars.colorNeutral
-              : getTextColor(props.tone, true, theme)};
+              ? overwrittenVars.colorNeutral
+              : getTextColor(props.tone, false, overwrittenVars)};
           }
 
           svg * {
             fill: ${props.isDisabled
-              ? vars.colorNeutral
-              : getTextColor(props.tone, true, theme)};
+              ? overwrittenVars.colorNeutral
+              : getTextColor(props.tone, false, overwrittenVars)};
           }
-        }
-      `}
+
+          &:hover,
+          &:focus {
+            p {
+              color: ${props.isDisabled
+                ? overwrittenVars.colorNeutral
+                : getTextColor(props.tone, true, overwrittenVars)};
+            }
+
+            svg * {
+              fill: ${props.isDisabled
+                ? overwrittenVars.colorNeutral
+                : getTextColor(props.tone, true, overwrittenVars)};
+            }
+          }
+        `;
+      }}
       buttonAttributes={dataProps}
     >
       <Spacings.Inline scale="xs" alignItems="center">

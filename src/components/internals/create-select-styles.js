@@ -81,7 +81,7 @@ const menuStyles = (props, theme) => base => {
     backgroundColor: overwrittenVars[designTokens.backgroundColorForInput],
     boxShadow: overwrittenVars.shadow7,
     fontSize: overwrittenVars[designTokens.fontSizeForInput],
-    fontFamily: overwrittenVars.fontFamilyDefault,
+    fontFamily: 'inherit',
     margin: `${overwrittenVars.spacingXs} 0 0 0`,
     borderColor: (() => {
       if (props.hasError)
@@ -270,7 +270,7 @@ const containerStyles = (props, theme) => (base, state) => {
 
   return {
     ...base,
-    fontFamily: overwrittenVars.fontFamilyDefault,
+    fontFamily: 'inherit',
     minHeight: overwrittenVars.sizeHeightInput,
     borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
     cursor: state.isDisabled ? 'not-allowed' : base.cursor,

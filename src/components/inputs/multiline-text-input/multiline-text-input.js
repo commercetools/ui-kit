@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { useIntl } from 'react-intl';
-import TextareaAutosize from 'react-textarea-autosize';
 import { css } from '@emotion/core';
+import MultilineInput from '../../internals/multiline-input';
 import FlatButton from '../../buttons/flat-button';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -11,7 +11,6 @@ import useToggleState from '../../../hooks/use-toggle-state';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import messages from './messages';
-import { getTextareaStyles } from './multiline-text-input.styles';
 
 const MultilineTextInput = props => {
   const intl = useIntl();
@@ -43,7 +42,7 @@ const MultilineTextInput = props => {
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Spacings.Stack scale="xs">
-        <TextareaAutosize
+        <MultilineInput
           name={props.name}
           autoComplete={props.autoComplete}
           value={props.value}
@@ -52,18 +51,13 @@ const MultilineTextInput = props => {
           id={props.id}
           onBlur={props.onBlur}
           onFocus={handleFocus}
-          disabled={props.isDisabled}
+          isDisabled={props.isDisabled}
+          hasError={props.hasError}
+          hasWarning={props.hasWarning}
           placeholder={props.placeholder}
-          css={theme => getTextareaStyles(props, theme)}
-          readOnly={props.isReadOnly}
-          autoFocus={props.isAutofocussed}
-          /* ARIA */
-          aria-readonly={props.isReadOnly}
-          aria-multiline="true"
-          role="textbox"
-          minRows={MultilineTextInput.MIN_ROW_COUNT}
-          maxRows={isOpen ? undefined : MultilineTextInput.MIN_ROW_COUNT}
-          useCacheForDOMMeasurements={true}
+          isReadOnly={props.isReadOnly}
+          isAutofocussed={props.isAutofocussed}
+          isOpen={isOpen}
           {...filterDataAttributes(props)}
         />
         {shouldRenderToggleButton && (

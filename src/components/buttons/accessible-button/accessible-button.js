@@ -10,26 +10,24 @@ const AccessibleButton = React.forwardRef((props, ref) => (
     type={props.type}
     aria-label={props.label}
     onClick={props.onClick}
-    css={[
-      css`
-        border: none;
-        background: none;
-        display: inline-block;
-        outline: 0;
-        padding: 0;
-        margin: 0;
-        white-space: nowrap;
-        cursor: pointer;
-        color: inherit;
-        font: inherit;
-        font-size: ${vars.fontSizeDefault};
-        font-family: inherit;
-      `,
-      props.isDisabled &&
-        css`
-          pointer-events: none;
-        `,
-    ]}
+    css={css`
+      border: none;
+      background: none;
+      display: inline-block;
+      outline: 0;
+      padding: 0;
+      margin: 0;
+      white-space: nowrap;
+      cursor: pointer;
+      color: inherit;
+      font: inherit;
+      font-size: ${vars.fontSizeDefault};
+      font-family: inherit;
+
+      &:disabled {
+        pointer-events: none;
+      }
+    `}
     // Allow to override the styles by passing a `className` prop.
     // Custom styles can also be passed using the `css` prop from emotion.
     // https://emotion.sh/docs/css-prop#style-precedence
