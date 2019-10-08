@@ -43,13 +43,13 @@ const RichTextBodyButton = props => {
             : vars.colorNeutral90};
         }
 
-        * {
+        svg {
           fill: ${getFillColor(props)};
         }
 
         &:disabled {
           pointer-events: none;
-          * {
+          svg {
             fill: ${vars.colorNeutral60};
           }
         }
