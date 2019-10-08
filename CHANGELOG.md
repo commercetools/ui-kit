@@ -1,3 +1,17 @@
+<a name="10.3.0"></a>
+
+## [10.3.0](https://github.com/commercetools/ui-kit/compare/v10.2.1...v10.3.0) (2019-10-08)
+
+### Features
+
+This release represents the first release that contains the new `RichTextInput`. Keep in mind this component is still in beta and may be subject to upcoming breaking changes. We will not consider breaking changes to `RichTextInput` to be breaking changes to UI-Kit until the component is out of beta status.
+
+- `RichTextInput`: new component ([#952](https://github.com/commercetools/ui-kit/issues/952))
+
+### Bug Fixes
+
+- `LocalizedMultilineTextInput`: margin fix ([#1089](https://github.com/commercetools/ui-kit/issues/1089))
+
 <a name="10.2.1"></a>
 
 ## [10.2.1](https://github.com/commercetools/ui-kit/compare/v10.2.0...v10.2.1) (2019-09-16)
