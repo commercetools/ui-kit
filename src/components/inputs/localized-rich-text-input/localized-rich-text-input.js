@@ -96,6 +96,7 @@ const LocalizedMultilineTextInput = props => {
   const hasErrorInRemainingLanguages =
     props.hasError ||
     getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
+
   const hasWarningInRemainingLanguages =
     props.hasWarning ||
     getHasWarningOnRemainingLanguages(props.warnings, props.selectedLanguage);
@@ -148,7 +149,6 @@ const LocalizedMultilineTextInput = props => {
               isAutofocussed={index === 0 && props.isAutofocussed}
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
-              // annoying ones
               hasRemainingLanguages={hasRemainingLanguages}
               hideLanguageExpansionControls={
                 props.hideLanguageExpansionControls
@@ -159,10 +159,8 @@ const LocalizedMultilineTextInput = props => {
               toggleLanguages={toggleLanguages}
               isLastLanguage={isLastLanguage}
               hasErrorOnRemainingLanguages={hasErrorOnRemainingLanguages}
-              hasWarningInRemainingLanguages={hasWarningOnRemainingLanguages}
+              hasWarningOnRemainingLanguages={hasWarningOnRemainingLanguages}
               expandAllTranslations={expandAllTranslations}
-              // left overs
-
               hasError={Boolean(
                 props.hasError || (props.errors && props.errors[language])
               )}

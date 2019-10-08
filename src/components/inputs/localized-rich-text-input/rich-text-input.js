@@ -119,7 +119,10 @@ class RichTextInput extends React.PureComponent {
           isCollapsed: this.props.isCollapsed,
           defaultExpandMultilineText: this.props.defaultExpandMultilineText,
           hasWarning: this.props.hasWarning,
+          hasWarningOnRemainingLanguages: this.props
+            .hasWarningOnRemainingLanguages,
           hasError: this.props.hasError,
+          hasErrorOnRemainingLanguages: this.props.hasErrorOnRemainingLanguages,
           placeholder: this.props.placeholder,
         }}
         onChange={this.onValueChange}

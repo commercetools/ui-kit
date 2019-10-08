@@ -151,9 +151,8 @@ const Editor = props => {
                   />
                 </div>
               )}
-
-              {(props.error || props.warning) && props.languagesControl()}
             </div>
+            {(props.error || props.warning) && props.languagesControl()}
           </Spacings.Stack>
         );
       }}
