@@ -1,13 +1,11 @@
 import React from 'react';
-import { Value } from 'slate';
 import { render } from '../../../test-utils';
 import LocalizedRichTextInput from './localized-rich-text-input';
-import emptyJsonValue from './testing/json-values/empty-value';
 
 // mocks
 window.getSelection = () => {};
 
-const initialValue = Value.fromJSON(emptyJsonValue);
+const initialValue = LocalizedRichTextInput.deserialize('');
 
 const baseProps = {
   value: { en: initialValue, de: initialValue },
