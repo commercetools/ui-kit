@@ -16,8 +16,19 @@ import messages from './messages';
 
 const COLLAPSED_HEIGHT = 32;
 
-const Wrapper = styled.div`
+const LeftColumn = styled.div`
   flex: 1;
+`;
+
+const RightColumn = styled.div`
+  flex: 0;
+`;
+
+const Row = styled.div`
+  display: flex;
+  &:empty {
+    margin: 0 !important;
+  }
 `;
 
 const Editor = props => {
@@ -111,46 +122,39 @@ const Editor = props => {
                 {props.children}
               </RichTextBody>
             </div>
-            <div
-              css={css`
-                display: flex;
-
-                &:empty {
-                  margin: 0 !important;
-                }
-              `}
-            >
+            <Row>
               {(() => {
                 if (props.error)
                   return (
-                    <Wrapper>
+                    <LeftColumn>
                       <div>{props.error}</div>
-                    </Wrapper>
+                    </LeftColumn>
                   );
                 if (props.warning)
                   return (
-                    <Wrapper>
+                    <LeftColumn>
                       <div>{props.warning}</div>
-                    </Wrapper>
+                    </LeftColumn>
                   );
                 return (
-                  languagesControl && <Wrapper>{languagesControl}</Wrapper>
+                  languagesControl && (
+                    <LeftColumn>{languagesControl}</LeftColumn>
+                  )
                 );
               })()}
               {renderToggleButton && isOpen && (
-                <div
-                  css={css`
-                    flex: 0;
-                  `}
-                >
-                  <FlatButton
-                    onClick={toggle}
-                    label={intl.formatMessage(messages.collapse)}
-                    icon={<AngleUpIcon size="small" />}
-                  />
-                </div>
+                <React.Fragment>
+                  <LeftColumn />
+                  <RightColumn>
+                    <FlatButton
+                      onClick={toggle}
+                      label={intl.formatMessage(messages.collapse)}
+                      icon={<AngleUpIcon size="small" />}
+                    />
+                  </RightColumn>
+                </React.Fragment>
               )}
-            </div>
+            </Row>
             {(props.error || props.warning) && props.languagesControl()}
           </Spacings.Stack>
         );
