@@ -64,6 +64,8 @@ const Editor = props => {
                 isDisabled={props.isDisabled}
                 hasWarning={props.hasWarning}
                 isReadOnly={props.isReadOnly}
+                showExpandIcon={props.showExpandIcon}
+                onClickExpand={props.onClickExpand}
                 editor={props.editor}
                 containerStyles={containerStyles}
               >
@@ -116,6 +118,8 @@ const renderEditor = (props, editor, next) => {
     isFocused: props.options.isFocused,
     horizontalConstraint: props.options.horizontalConstraint,
     defaultExpandMultilineText: props.options.defaultExpandMultilineText,
+    showExpandIcon: props.options.showExpandIcon,
+    onClickExpand: props.options.onClickExpand,
     hasError: props.options.hasError,
     hasWarning: props.options.hasWarning,
     isReadOnly: props.readOnly,

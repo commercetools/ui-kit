@@ -111,6 +111,15 @@ const DefaultRoute = () => (
         horizontalConstraint="scale"
       />
     </Spec>
+    <Spec label="with expand button" omitPropsList>
+      <RichTextInput
+        onChange={() => {}}
+        value={minimalValue}
+        showExpandIcon={true}
+        onClickExpand={() => {}}
+        horizontalConstraint="scale"
+      />
+    </Spec>
   </Suite>
 );
 
