@@ -30,24 +30,12 @@ describe('RichTextInput', () => {
   });
 
   describe('when defaultExpandMultilineText is enabled', () => {
-    const originalOffsetHeight = Object.getOwnPropertyDescriptor(
-      HTMLElement.prototype,
-      'clientHeight'
-    );
     describe('when height of text is less than 32', () => {
       beforeAll(() => {
         Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
           configurable: true,
           value: 31,
         });
-      });
-
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
       });
 
       it(`should not show the 'expand' button`, () => {
@@ -66,14 +54,6 @@ describe('RichTextInput', () => {
         });
       });
 
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
-      });
-
       it(`should show the 'expand' button and expand when clicked`, () => {
         const { getByText } = render(
           <RichTextInput {...baseProps} value={initialValue} />
@@ -88,25 +68,12 @@ describe('RichTextInput', () => {
   });
   describe('when defaultExpandMultilineText is disabled', () => {
     describe('when height of text is less than 32', () => {
-      const originalOffsetHeight = Object.getOwnPropertyDescriptor(
-        HTMLElement.prototype,
-        'clientHeight'
-      );
       beforeAll(() => {
         Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
           configurable: true,
           value: 31,
         });
       });
-
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
-      });
-
       it(`should not show the 'collapse' button`, () => {
         const { queryByText } = render(
           <RichTextInput
@@ -121,23 +88,11 @@ describe('RichTextInput', () => {
       });
     });
     describe('when height of text is more than 32', () => {
-      const originalOffsetHeight = Object.getOwnPropertyDescriptor(
-        HTMLElement.prototype,
-        'clientHeight'
-      );
       beforeAll(() => {
         Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
           configurable: true,
           value: 33,
         });
-      });
-
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
       });
 
       it(`should show the 'collapse' button and collapse when clicked`, () => {
