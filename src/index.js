@@ -94,6 +94,9 @@ export { default as PasswordInput } from './components/inputs/password-input';
 export { default as SelectInput } from './components/inputs/select-input';
 export { default as TextInput } from './components/inputs/text-input';
 export { default as RichTextInput } from './components/inputs/rich-text-input';
+export {
+  default as LocalizedRichTextInput,
+} from './components/inputs/localized-rich-text-input';
 export { default as TimeInput } from './components/inputs/time-input';
 export { default as ToggleInput } from './components/inputs/toggle-input';
 export { default as CheckboxInput } from './components/inputs/checkbox-input';
