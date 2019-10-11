@@ -10,8 +10,10 @@ import OrigSuperscriptIcon from './svg/superscript.react.svg';
 import OrigSubscriptIcon from './svg/subscript.react.svg';
 import OrigRedoIcon from './svg/redo.react.svg';
 import OrigUndoIcon from './svg/undo.react.svg';
+import OrigExpandIcon from './svg/expand.react.svg';
 
 export const BoldIcon = createStyledIcon(OrigBoldIcon, 'BoldIcon');
+export const ExpandIcon = createStyledIcon(OrigExpandIcon, 'ExpandIcon');
 export const ItalicIcon = createStyledIcon(OrigItalicIcon, 'ItalicIcon');
 export const MoreStylesIcon = createStyledIcon(
   OrigMoreStylesIcon,

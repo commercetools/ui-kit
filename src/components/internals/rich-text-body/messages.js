@@ -11,6 +11,16 @@ export default defineMessages({
     description: 'Title for the bold tooltip',
     defaultMessage: 'Bold',
   },
+  expandButtonLabel: {
+    id: 'UIKit.RichTextBody.expandButtonLabel',
+    description: 'Label for the italic button',
+    defaultMessage: 'Expand',
+  },
+  expandTooltipTitle: {
+    id: 'UIKit.RichTextBody.expandTooltipTitle',
+    description: 'Title for the italic tooltip',
+    defaultMessage: 'Expand',
+  },
   italicButtonLabel: {
     id: 'UIKit.RichTextBody.italicButtonLabel',
     description: 'Label for the italic button',

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import Tooltip from '../../tooltip';
 import {
@@ -12,6 +13,7 @@ import {
 } from './rich-text-body.styles';
 import {
   BoldIcon,
+  ExpandIcon,
   ItalicIcon,
   UnorderedListIcon,
   OrderedListIcon,
@@ -316,6 +318,23 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               <RedoIcon size="medium" />
             </Button>
           </Tooltip>
+          {props.showExpandIcon && (
+            <React.Fragment>
+              <Divider />
+              <Tooltip
+                title={intl.formatMessage(messages.expandTooltipTitle)}
+                placement="bottom-end"
+              >
+                <Button
+                  isActive={false}
+                  label={intl.formatMessage(messages.expandButtonLabel)}
+                  onClick={props.onClickExpand}
+                >
+                  <ExpandIcon size="medium" />
+                </Button>
+              </Tooltip>
+            </React.Fragment>
+          )}
         </ToolbarRightControls>
       </Toolbar>
       <div style={props.containerStyles}>
@@ -344,6 +363,8 @@ RichTextEditorBody.propTypes = {
   editor: PropTypes.any,
   children: PropTypes.node,
   containerStyles: PropTypes.any,
+  showExpandIcon: PropTypes.bool.isRequired,
+  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
 };
 
 export default RichTextEditorBody;
