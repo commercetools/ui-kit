@@ -9,7 +9,6 @@ import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
 import Readme from './README.md';
-// import TextInput from '../text-input';
 
 // Create our initial value...
 
@@ -47,6 +46,7 @@ storiesOf('Components|Inputs', module)
   .addDecorator(withReadme(Readme))
   .add('RichTextInput', () => {
     const onClickExpand = React.useCallback(() => {
+      // eslint-disable-next-line no-alert
       alert('Expand');
     }, []);
 
