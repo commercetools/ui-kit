@@ -235,6 +235,7 @@ LocalizedRichTextInput.getName = getName;
 
 LocalizedRichTextInput.defaultProps = {
   horizontalConstraint: 'scale',
+  showExpandIcon: false,
 };
 
 LocalizedRichTextInput.createLocalizedString = createLocalizedString;
