@@ -13,12 +13,12 @@ export default defineMessages({
   },
   expandButtonLabel: {
     id: 'UIKit.RichTextBody.expandButtonLabel',
-    description: 'Label for the italic button',
+    description: 'Label for the expand button',
     defaultMessage: 'Expand',
   },
   expandTooltipTitle: {
     id: 'UIKit.RichTextBody.expandTooltipTitle',
-    description: 'Title for the italic tooltip',
+    description: 'Title for the expand tooltip',
     defaultMessage: 'Expand',
   },
   italicButtonLabel: {
