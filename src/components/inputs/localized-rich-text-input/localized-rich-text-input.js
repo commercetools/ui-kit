@@ -42,13 +42,13 @@ const expandedTranslationsReducer = (state, action) => {
   }
 };
 
-// This component supports expanding/collapsing multiline inputs, but it also
+// This component supports expanding/collapsing rich text inputs, but it also
 // supports showing/hiding the remaining languages.
 // These two features are both about opening/closing something, and so the code
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedMultilineTextInput = props => {
+const LocalizedRichTextInput = props => {
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
     (translations, locale) => {
       return {
@@ -134,8 +134,8 @@ const LocalizedMultilineTextInput = props => {
             <RichTextInput
               key={language}
               autoComplete={props.autoComplete}
-              id={LocalizedMultilineTextInput.getId(props.id, language)}
-              name={LocalizedMultilineTextInput.getName(props.name, language)}
+              id={LocalizedRichTextInput.getId(props.id, language)}
+              name={LocalizedRichTextInput.getName(props.name, language)}
               value={props.value[language]}
               onChange={props.onChange}
               language={language}
@@ -178,17 +178,17 @@ const LocalizedMultilineTextInput = props => {
   );
 };
 
-LocalizedMultilineTextInput.displayName = 'LocalizedMultilineTextInput';
+LocalizedRichTextInput.displayName = 'LocalizedRichTextInput';
 
-LocalizedMultilineTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
+LocalizedRichTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
 
-LocalizedMultilineTextInput.propTypes = {
+LocalizedRichTextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   autoComplete: PropTypes.string,
   // then input doesn't accept a "languages" prop, instead all possible
-  // languages have to exist (with empty or filled strings) on the value:
-  //   { en: 'foo', de: '', es: '' }
+  // languages have to exist (with empty or filled slate values) on the value:
+  //   { en: slateValue, de: slateValue, es: slateValue }
   value: PropTypes.objectOf(PropTypes.any).isRequired,
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
   selectedLanguage: PropTypes.string.isRequired,
@@ -221,20 +221,24 @@ LocalizedMultilineTextInput.propTypes = {
   warnings: PropTypes.objectOf(PropTypes.node),
 };
 
-LocalizedMultilineTextInput.getId = getId;
+LocalizedRichTextInput.serialize = RichTextInput.serialize;
 
-LocalizedMultilineTextInput.getName = getName;
+LocalizedRichTextInput.deserialize = RichTextInput.deserialize;
 
-LocalizedMultilineTextInput.defaultProps = {
+LocalizedRichTextInput.getId = getId;
+
+LocalizedRichTextInput.getName = getName;
+
+LocalizedRichTextInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-LocalizedMultilineTextInput.createLocalizedString = createLocalizedString;
+LocalizedRichTextInput.createLocalizedString = createLocalizedString;
 
-LocalizedMultilineTextInput.isEmpty = isEmpty;
+LocalizedRichTextInput.isEmpty = isEmpty;
 
-LocalizedMultilineTextInput.omitEmptyTranslations = omitEmptyTranslations;
+LocalizedRichTextInput.omitEmptyTranslations = omitEmptyTranslations;
 
-LocalizedMultilineTextInput.isTouched = isTouched;
+LocalizedRichTextInput.isTouched = isTouched;
 
-export default LocalizedMultilineTextInput;
+export default LocalizedRichTextInput;

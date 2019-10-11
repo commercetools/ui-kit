@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types, react/display-name */
 import React from 'react';
-import { Value } from 'slate';
-import { Value as ReactValue } from 'react-value';
+import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import {
   withKnobs,
@@ -15,11 +14,10 @@ import ErrorMessage from '../../messages/error-message';
 import WarningMessage from '../../messages/warning-message';
 import Readme from './README.md';
 import LocalizedRichTextInput from './localized-rich-text-input';
-import jsonValue from './testing/json-values/empty-value';
 
 // Create our initial value...
 
-const initialValue = Value.fromJSON(jsonValue);
+const initialValue = LocalizedRichTextInput.deserialize('');
 
 class StoryWrapper extends React.Component {
   onChange = event => {
@@ -115,7 +113,7 @@ storiesOf('Components|Inputs', module)
   .add('LocalizedRichTextInput', () => {
     return (
       <Section>
-        <ReactValue
+        <Value
           defaultValue={{
             en: initialValue,
             de: initialValue,
