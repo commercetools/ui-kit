@@ -1,19 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
-import { Value } from 'slate';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
 import Readme from './README.md';
-import jsonValue from './testing/json-values/large-value';
 import TextInput from '../text-input';
 
 // Create our initial value...
 
-const initialValue = Value.fromJSON(jsonValue);
+const initialValue = RichTextInput.deserialize('');
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))

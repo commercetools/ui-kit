@@ -1,14 +1,11 @@
 import React from 'react';
-import { Value } from 'slate';
 import { render } from '../../../test-utils';
 import RichTextInput from './rich-text-input';
-import jsonValue from './testing/json-values/large-value';
-import emptyJsonValue from './testing/json-values/empty-value';
 
 // mocks
 window.getSelection = () => {};
 
-const initialValue = Value.fromJSON(jsonValue);
+const initialValue = RichTextInput.deserialize('');
 
 const baseProps = { value: initialValue, onChange: () => {} };
 
@@ -33,24 +30,12 @@ describe('RichTextInput', () => {
   });
 
   describe('when defaultExpandMultilineText is enabled', () => {
-    const originalOffsetHeight = Object.getOwnPropertyDescriptor(
-      HTMLElement.prototype,
-      'clientHeight'
-    );
     describe('when height of text is less than 32', () => {
       beforeAll(() => {
         Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
           configurable: true,
           value: 31,
         });
-      });
-
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
       });
 
       it(`should not show the 'expand' button`, () => {
@@ -69,14 +54,6 @@ describe('RichTextInput', () => {
         });
       });
 
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
-      });
-
       it(`should show the 'expand' button and expand when clicked`, () => {
         const { getByText } = render(
           <RichTextInput {...baseProps} value={initialValue} />
@@ -91,25 +68,12 @@ describe('RichTextInput', () => {
   });
   describe('when defaultExpandMultilineText is disabled', () => {
     describe('when height of text is less than 32', () => {
-      const originalOffsetHeight = Object.getOwnPropertyDescriptor(
-        HTMLElement.prototype,
-        'clientHeight'
-      );
       beforeAll(() => {
         Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
           configurable: true,
           value: 31,
         });
       });
-
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
-      });
-
       it(`should not show the 'collapse' button`, () => {
         const { queryByText } = render(
           <RichTextInput
@@ -124,23 +88,11 @@ describe('RichTextInput', () => {
       });
     });
     describe('when height of text is more than 32', () => {
-      const originalOffsetHeight = Object.getOwnPropertyDescriptor(
-        HTMLElement.prototype,
-        'clientHeight'
-      );
       beforeAll(() => {
         Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
           configurable: true,
           value: 33,
         });
-      });
-
-      afterAll(() => {
-        Object.defineProperty(
-          HTMLElement.prototype,
-          'clientHeight',
-          originalOffsetHeight
-        );
       });
 
       it(`should show the 'collapse' button and collapse when clicked`, () => {
@@ -177,14 +129,24 @@ describe('RichTextInput static methods', () => {
         expect(RichTextInput.serialize(slateValue)).toEqual(html);
       });
     });
+    describe('when called with an HTML value that contains tags we do not yet support', () => {
+      it('should be able to serialize and deserialize to the default tag', () => {
+        const html =
+          '<a href="https://google.com">hello world<img src="blah" alt="foobar" /></a>';
+        const slateValue = RichTextInput.deserialize(html);
+        expect(RichTextInput.serialize(slateValue)).toEqual(
+          `<p>hello world</p>`
+        );
+      });
+    });
   });
   describe('RichTextInput.isEmpty', () => {
     it('should return `false` when used with a non empty value', () => {
-      const value = Value.fromJSON(jsonValue);
+      const value = RichTextInput.deserialize('<p>Foo</p>');
       expect(RichTextInput.isEmpty(value)).toBeFalsy();
     });
     it('should return `true` when used with an empty value', () => {
-      const value = Value.fromJSON(emptyJsonValue);
+      const value = RichTextInput.deserialize('');
       expect(RichTextInput.isEmpty(value)).toBeTruthy();
     });
   });
