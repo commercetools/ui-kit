@@ -120,7 +120,7 @@ export const Container = styled.div`
   pointer-events: ${props =>
     props.isDisabled || props.isReadOnly ? 'none' : 'inherit'};
   position: relative;
-  
+
   &:focus {
     outline: none;
   }
