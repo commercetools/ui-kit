@@ -177,6 +177,16 @@ describe('RichTextInput static methods', () => {
         expect(RichTextInput.serialize(slateValue)).toEqual(html);
       });
     });
+    describe('when called with an HTML value that contains tags we do not yet support', () => {
+      it('should be able to serialize and deserialize to the default tag', () => {
+        const html =
+          '<a href="https://google.com">hello world<img src="blah" alt="foobar" /></a>';
+        const slateValue = RichTextInput.deserialize(html);
+        expect(RichTextInput.serialize(slateValue)).toEqual(
+          `<p>hello world</p>`
+        );
+      });
+    });
   });
   describe('RichTextInput.isEmpty', () => {
     it('should return `false` when used with a non empty value', () => {
