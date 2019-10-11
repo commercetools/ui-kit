@@ -169,6 +169,8 @@ const LocalizedRichTextInput = props => {
               )}
               warning={props.warnings && props.warnings[language]}
               error={props.errors && props.errors[language]}
+              showExpandIcon={props.showExpandIcon}
+              onClickExpand={props.onClickExpand}
               {...createLocalizedDataAttributes(props, language)}
             />
           );
@@ -219,6 +221,8 @@ LocalizedRichTextInput.propTypes = {
   hasWarning: PropTypes.bool,
   errors: PropTypes.objectOf(PropTypes.node),
   warnings: PropTypes.objectOf(PropTypes.node),
+  showExpandIcon: PropTypes.bool.isRequired,
+  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
 };
 
 LocalizedRichTextInput.serialize = RichTextInput.serialize;

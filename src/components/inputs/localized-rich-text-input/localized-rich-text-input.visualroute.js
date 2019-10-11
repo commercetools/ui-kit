@@ -211,6 +211,16 @@ const DefaultRoute = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="when showExpandIcon is enabled" omitPropsList>
+      <LocalizedRichTextInput
+        value={initialValue}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint="m"
+        showExpandIcon={true}
+        onClickExpand={() => {}}
+      />
+    </Spec>
   </Suite>
 );
 

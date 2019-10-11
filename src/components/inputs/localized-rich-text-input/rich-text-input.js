@@ -136,6 +136,8 @@ class RichTextInput extends React.PureComponent {
           hasError: this.props.hasError,
           hasErrorOnRemainingLanguages: this.props.hasErrorOnRemainingLanguages,
           placeholder: this.props.placeholder,
+          onClickExpand: this.props.onClickExpand,
+          showExpandIcon: this.props.showExpandIcon,
         }}
         onChange={this.onValueChange}
         plugins={plugins}
@@ -169,6 +171,8 @@ RichTextInput.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   value: Types.value.isRequired,
+  showExpandIcon: PropTypes.bool.isRequired,
+  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
 };
 
 export default RichTextInput;

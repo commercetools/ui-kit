@@ -118,6 +118,8 @@ const Editor = props => {
                 isReadOnly={props.isReadOnly}
                 editor={props.editor}
                 containerStyles={containerStyles}
+                showExpandIcon={props.showExpandIcon}
+                onClickExpand={props.onClickExpand}
               >
                 {props.children}
               </RichTextBody>
@@ -183,6 +185,8 @@ const renderEditor = (props, editor, next) => {
     toggleLanguage: props.options.toggleLanguage,
     languagesControl: props.options.languagesControl,
     isOpen: props.options.isOpen,
+    showExpandIcon: props.options.showExpandIcon,
+    onClickExpand: props.options.onClickExpand,
     ...filterDataAttributes(props),
   };
 

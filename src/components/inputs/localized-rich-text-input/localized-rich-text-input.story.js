@@ -48,6 +48,8 @@ class StoryWrapper extends React.Component {
         name={text('name', 'productName')}
         value={props.value}
         onChange={this.onChange}
+        showExpandIcon={boolean('showExpandIcon', false)}
+        onClickExpand={() => alert('Expand')}
         selectedLanguage={select(
           'selectedLanguage',
           ['en', 'de', 'nan-Hant-TW'],
