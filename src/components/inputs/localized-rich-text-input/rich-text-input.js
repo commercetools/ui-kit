@@ -42,14 +42,26 @@ class RichTextInput extends React.PureComponent {
     next();
 
     if (this.props.onBlur) {
-      setTimeout(() => this.props.onBlur(event), 0);
+      const fakeEvent = {
+        target: {
+          id: this.props.id,
+          name: this.props.name,
+        },
+      };
+      setTimeout(() => this.props.onBlur(fakeEvent), 0);
     }
   };
 
   onFocus = (event, editor, next) => {
     next();
     if (this.props.onFocus) {
-      setTimeout(() => this.props.onFocus(event), 0);
+      const fakeEvent = {
+        target: {
+          id: this.props.id,
+          name: this.props.name,
+        },
+      };
+      setTimeout(() => this.props.onFocus(fakeEvent), 0);
     }
   };
 
