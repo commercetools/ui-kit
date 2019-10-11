@@ -11,9 +11,8 @@ import { AngleUpIcon } from '../../icons';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
-
-import messages from './messages';
 import { getLanguageLabelStyles } from './editor.styles';
+import messages from './messages';
 
 const COLLAPSED_HEIGHT = 32;
 
