@@ -1,4 +1,5 @@
 import React from 'react';
+import { Value } from 'react-value';
 import { Switch, Route } from 'react-router-dom';
 import { LocalizedRichTextInput, ErrorMessage, WarningMessage } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
@@ -7,16 +8,53 @@ const lorem = LocalizedRichTextInput.deserialize(
   '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>'
 );
 
-const value = {
+const initialValue = {
   en: lorem,
   de: lorem,
   es: lorem,
 };
 
+const emptyValue = LocalizedRichTextInput.deserialize('');
+
 export const routePath = '/localized-rich-text-input';
 
+// this route will be used with puppeteer based testing.
+const WrappedComponent = ({ onChange, value }) => {
+  const handleChange = event => {
+    onChange({
+      ...value,
+      [event.target.language]: event.target.value,
+    });
+  };
+
+  return (
+    <LocalizedRichTextInput
+      id="rich-text"
+      onChange={handleChange}
+      value={value}
+      selectedLanguage="en"
+      horizontalConstraint="m"
+    />
+  );
+};
+
 const InteractiveRoute = () => {
-  return <div>ok</div>;
+  return (
+    <Suite>
+      <Spec label="Interactive Rich Text" omitPropsList>
+        <Value
+          defaultValue={{
+            en: emptyValue,
+            de: emptyValue,
+            es: emptyValue,
+          }}
+          render={(value, onChange) => (
+            <WrappedComponent value={value} onChange={onChange} />
+          )}
+        />
+      </Spec>
+    </Suite>
+  );
 };
 
 const DefaultRoute = () => (
@@ -24,14 +62,14 @@ const DefaultRoute = () => (
     <Spec label="minimal" omitPropsList>
       <LocalizedRichTextInput
         onChange={() => {}}
-        value={value}
+        value={initialValue}
         selectedLanguage="en"
         horizontalConstraint="m"
       />
     </Spec>
     <Spec label="when multiline text is expanded by default" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -43,7 +81,7 @@ const DefaultRoute = () => (
       omitPropsList
     >
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -53,7 +91,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when language controls are hidden" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -62,7 +100,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when languages are opened by default" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -71,7 +109,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when read-only and open" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -81,7 +119,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when read-only and closed" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -90,7 +128,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when disabled and open" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -100,7 +138,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when disabled and closed" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -112,7 +150,7 @@ const DefaultRoute = () => (
       omitPropsList
     >
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -124,7 +162,7 @@ const DefaultRoute = () => (
       omitPropsList
     >
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -133,7 +171,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when there is a general error" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -145,7 +183,7 @@ const DefaultRoute = () => (
       omitPropsList
     >
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -157,7 +195,7 @@ const DefaultRoute = () => (
       omitPropsList
     >
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
@@ -166,7 +204,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when there is a general warning" omitPropsList>
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint="m"
