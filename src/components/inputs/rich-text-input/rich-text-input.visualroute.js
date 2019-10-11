@@ -1,15 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
-import { Value } from 'slate';
 import { RichTextInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
-import jsonMinimalValue from './testing/json-values/minimal-value';
-import jsonLargeValue from './testing/json-values/large-value';
-import jsonEmptyValue from './testing/json-values/empty-value';
 
-const minimalValue = Value.fromJSON(jsonMinimalValue);
-const largeValue = Value.fromJSON(jsonLargeValue);
-const emptyValue = Value.fromJSON(jsonEmptyValue);
+const minimalValue = RichTextInput.deserialize('Hello World');
+const largeValue = RichTextInput.deserialize(
+  '<h1>Hello world</h1><p>This is a longer text</p><ul><li>One</li><li>Two</li></ul>'
+);
+const emptyValue = RichTextInput.deserialize('');
 
 export const routePath = '/rich-text-input';
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty';
-import { Value } from 'slate';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import Section from '../../../../.storybook/decorators/section';
@@ -12,12 +11,11 @@ import SecondaryButton from '../../buttons/secondary-button';
 import Spacings from '../../spacings';
 import Readme from './README.md';
 import FieldLabel from '../../field-label';
-import jsonValue from './testing/json-values/empty-value';
 import RichTextInput from './rich-text-input';
 import TextInput from '../text-input';
 import TextField from '../../fields/text-field';
 
-const initialValue = Value.fromJSON(jsonValue);
+const initialValue = RichTextInput.deserialize('');
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)

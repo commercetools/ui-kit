@@ -1,14 +1,11 @@
 import React from 'react';
-import { Value } from 'slate';
 import { render } from '../../../test-utils';
 import RichTextInput from './rich-text-input';
-import jsonValue from './testing/json-values/large-value';
-import emptyJsonValue from './testing/json-values/empty-value';
 
 // mocks
 window.getSelection = () => {};
 
-const initialValue = Value.fromJSON(jsonValue);
+const initialValue = RichTextInput.deserialize('');
 
 const baseProps = { value: initialValue, onChange: () => {} };
 
@@ -190,11 +187,11 @@ describe('RichTextInput static methods', () => {
   });
   describe('RichTextInput.isEmpty', () => {
     it('should return `false` when used with a non empty value', () => {
-      const value = Value.fromJSON(jsonValue);
+      const value = RichTextInput.deserialize('<p>Foo</p>');
       expect(RichTextInput.isEmpty(value)).toBeFalsy();
     });
     it('should return `true` when used with an empty value', () => {
-      const value = Value.fromJSON(emptyJsonValue);
+      const value = RichTextInput.deserialize('');
       expect(RichTextInput.isEmpty(value)).toBeTruthy();
     });
   });
