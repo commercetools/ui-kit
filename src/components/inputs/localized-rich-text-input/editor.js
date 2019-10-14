@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
@@ -172,7 +173,6 @@ const renderEditor = (props, editor, next) => {
   });
 
   const passedProps = {
-    name: props.name,
     id: props.id,
     isDisabled: props.disabled,
     defaultExpandMultilineText: props.options.defaultExpandMultilineText,
@@ -180,8 +180,8 @@ const renderEditor = (props, editor, next) => {
     hasError: props.options.hasError,
     error: props.options.error,
     warning: props.options.warning,
-    hasWarning: props.options.hasWarning,
     isReadOnly: props.readOnly,
+    hasWarning: props.options.hasWarning,
     toggleLanguage: props.options.toggleLanguage,
     languagesControl: props.options.languagesControl,
     isOpen: props.options.isOpen,
@@ -197,23 +197,43 @@ const renderEditor = (props, editor, next) => {
   );
 };
 
-const sharedProps = {
+Editor.displayName = 'Editor';
+Editor.propTypes = {
+  children: PropTypes.node.isRequired,
   id: PropTypes.string,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  isOpen: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  hasWarning: PropTypes.bool,
+  hasError: PropTypes.bool,
+  editor: PropTypes.any,
+  error: PropTypes.node,
+  warning: PropTypes.node,
+  defaultExpandMultilineText: PropTypes.bool.isRequired,
+  toggleLanguage: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
+  languagesControl: PropTypes.func.isRequired,
+  showExpandIcon: PropTypes.bool.isRequired,
+  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
 };
 
-Editor.displayName = 'Editor';
-Editor.propTypes = { ...sharedProps, editor: PropTypes.any };
-
 renderEditor.propTypes = {
-  ...sharedProps,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   options: PropTypes.shape({
+    language: PropTypes.string.isRequired,
+    error: PropTypes.node,
+    warning: PropTypes.node,
     hasWarning: PropTypes.bool,
     hasError: PropTypes.bool,
+    defaultExpandMultilineText: PropTypes.bool.isRequired,
+    toggleLanguage: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    languagesControl: PropTypes.func.isRequired,
+    showExpandIcon: PropTypes.bool.isRequired,
+    onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
   }),
 };
 
