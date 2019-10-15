@@ -16,30 +16,30 @@ import Readme from './README.md';
 const initialValue = '<h1>H1 heading</h1>';
 
 const Input = props => {
+  const [value, setValue] = React.useState(initialValue);
+  const onChange = React.useCallback(
+    event => {
+      setValue(event.target.value);
+    },
+    [setValue]
+  );
   return (
-    <Value
-      defaultValue={initialValue}
-      render={(value, onChange) => (
-        <RichTextInput
-          id={props.id}
-          name={props.name}
-          key={`rich-text-input-${props.defaultExpandMultilineText}`}
-          onChange={event => {
-            onChange(event.target.value);
-          }}
-          value={value}
-          onBlur={props.onBlur}
-          onFocus={props.onFocus}
-          defaultExpandMultilineText={props.defaultExpandMultilineText}
-          placeholder={props.placeholder}
-          onClickExpand={props.onClickExpand}
-          showExpandIcon={props.showExpandIcon}
-          hasError={props.hasError}
-          hasWarning={props.hasWarning}
-          isDisabled={props.isDisabled}
-          isReadOnly={props.isReadOnly}
-        />
-      )}
+    <RichTextInput
+      id={props.id}
+      name={props.name}
+      key={`rich-text-input-${props.defaultExpandMultilineText}`}
+      onChange={onChange}
+      value={value}
+      onBlur={props.onBlur}
+      onFocus={props.onFocus}
+      defaultExpandMultilineText={props.defaultExpandMultilineText}
+      placeholder={props.placeholder}
+      onClickExpand={props.onClickExpand}
+      showExpandIcon={props.showExpandIcon}
+      hasError={props.hasError}
+      hasWarning={props.hasWarning}
+      isDisabled={props.isDisabled}
+      isReadOnly={props.isReadOnly}
     />
   );
 };

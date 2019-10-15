@@ -15,7 +15,7 @@ class RichTextInput extends React.Component {
   state = {
     // we keep track of the serialized (HTML) value
     serializedValue: this.props.value || '',
-    value: html.deserialize(this.props.value || ''),
+    internalSlateValue: html.deserialize(this.props.value || ''),
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -34,7 +34,8 @@ class RichTextInput extends React.Component {
 
     if (this.props.value !== this.state.serializedValue) return true;
 
-    if (this.state.value !== nextState.value) return true;
+    if (this.state.internalSlateValue !== nextState.internalSlateValue)
+      return true;
 
     return false;
   }
@@ -44,7 +45,7 @@ class RichTextInput extends React.Component {
     // then reset our value by deserializing this new value
     if (this.props.value !== this.state.serializedValue) {
       this.setState({
-        value: html.deserialize(this.props.value),
+        internalSlateValue: html.deserialize(this.props.value),
         serializedValue: this.props.value,
       });
     }
@@ -64,7 +65,7 @@ class RichTextInput extends React.Component {
     this.props.onChange(fakeEvent);
 
     this.setState({
-      value: event.value,
+      internalSlateValue: event.value,
       serializedValue,
     });
   };
@@ -112,6 +113,7 @@ class RichTextInput extends React.Component {
   };
 
   render() {
+    console.count('rendering here');
     return (
       <Editor
         {...filterDataAttributes(this.props)}
@@ -122,7 +124,7 @@ class RichTextInput extends React.Component {
         onBlur={this.onBlur}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.state.value}
+        value={this.state.internalSlateValue}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
