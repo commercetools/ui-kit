@@ -5,7 +5,7 @@ import RichTextInput from './rich-text-input';
 // mocks
 window.getSelection = () => {};
 
-const initialValue = RichTextInput.deserialize('');
+const initialValue = '';
 
 const baseProps = { value: initialValue, onChange: () => {} };
 
@@ -114,39 +114,13 @@ describe('RichTextInput', () => {
 });
 
 describe('RichTextInput static methods', () => {
-  describe('serialize / deserialize', () => {
-    describe('when called with a simple HTML value', () => {
-      it('should be able to serialize and deserialize back to same value', () => {
-        const html = '<p>hello world</p>';
-        const slateValue = RichTextInput.deserialize(html);
-        expect(RichTextInput.serialize(slateValue)).toEqual(html);
-      });
-    });
-    describe('when called with a more complex HTML value', () => {
-      it('should be able to serialize and deserialize back to same value', () => {
-        const html = `<h1>Hello World</h1><h1></h1><p>This is rich text, <strong>way</strong> better than <u>other</u> kind&#x27;s of text.</p><p></p><ol><li>Numbered list</li><li>Second number</li></ol><ul><li>Bullet list</li></ul>`;
-        const slateValue = RichTextInput.deserialize(html);
-        expect(RichTextInput.serialize(slateValue)).toEqual(html);
-      });
-    });
-    describe('when called with an HTML value that contains tags we do not yet support', () => {
-      it('should be able to serialize and deserialize to the default tag', () => {
-        const html =
-          '<a href="https://google.com">hello world<img src="blah" alt="foobar" /></a>';
-        const slateValue = RichTextInput.deserialize(html);
-        expect(RichTextInput.serialize(slateValue)).toEqual(
-          `<p>hello world</p>`
-        );
-      });
-    });
-  });
   describe('RichTextInput.isEmpty', () => {
     it('should return `false` when used with a non empty value', () => {
-      const value = RichTextInput.deserialize('<p>Foo</p>');
+      const value = '<p>Foo</p>';
       expect(RichTextInput.isEmpty(value)).toBeFalsy();
     });
     it('should return `true` when used with an empty value', () => {
-      const value = RichTextInput.deserialize('');
+      const value = '';
       expect(RichTextInput.isEmpty(value)).toBeTruthy();
     });
   });

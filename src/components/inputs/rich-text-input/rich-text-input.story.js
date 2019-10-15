@@ -8,11 +8,12 @@ import withReadme from 'storybook-readme/with-readme';
 import Spacings from '../../spacings';
 import Section from '../../../../.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
+import TextInput from '../text-input';
 import Readme from './README.md';
 
 // Create our initial value...
 
-const initialValue = RichTextInput.deserialize('');
+const initialValue = '<h1>H1 heading</h1>';
 
 const Input = props => {
   return (
@@ -23,8 +24,10 @@ const Input = props => {
           id={props.id}
           name={props.name}
           key={`rich-text-input-${props.defaultExpandMultilineText}`}
-          onChange={event => onChange(event.target.value)}
-          value={value}
+          onChange={event => {
+            onChange(event.target.value);
+          }}
+          value={props.showBlah ? initialValue : value}
           onBlur={props.onBlur}
           onFocus={props.onFocus}
           defaultExpandMultilineText={props.defaultExpandMultilineText}
@@ -56,6 +59,17 @@ storiesOf('Components|Inputs', module)
     return (
       <Section>
         <Spacings.Stack scale="l">
+          <Value
+            defaultValue={''}
+            render={(value, onChange) => (
+              <TextInput
+                id="text-input"
+                name="text-input"
+                value={value}
+                onChange={event => onChange(event.target.value)}
+              />
+            )}
+          />
           <Input
             id={text('id', 'test-id')}
             name={text('name', 'test-name')}
@@ -63,8 +77,9 @@ storiesOf('Components|Inputs', module)
             onFocus={onFocus}
             defaultExpandMultilineText={boolean(
               'defaultExpandMultilineText',
-              false
+              true
             )}
+            showBlah={boolean('yes', false)}
             placeholder={text('placeholder', 'Placeholder')}
             showExpandIcon={boolean('showExpandIcon', false)}
             onClickExpand={onClickExpand}

@@ -3,11 +3,12 @@ import { Switch, Route } from 'react-router';
 import { RichTextInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-const minimalValue = RichTextInput.deserialize('Hello World');
-const largeValue = RichTextInput.deserialize(
-  '<h1>Hello world</h1><p>This is a longer text</p><ul><li>One</li><li>Two</li></ul>'
-);
-const emptyValue = RichTextInput.deserialize('');
+const minimalValue = 'Hello World';
+
+const largeValue =
+  '<h1>Hello world</h1><p>This is a longer text</p><ul><li>One</li><li>Two</li></ul>';
+
+const emptyValue = '';
 
 export const routePath = '/rich-text-input';
 
