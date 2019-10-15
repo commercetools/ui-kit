@@ -4,6 +4,12 @@ import { getDocument, queries, wait } from 'pptr-testing-library';
 const { getByLabelText, getByText } = queries;
 
 describe('RichTextInput', () => {
+  const delay = timeout => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  };
+
   const selectAllText = async input => {
     // eslint-disable-next-line no-shadow
     await page.evaluate(input => {
@@ -336,5 +342,36 @@ describe('RichTextInput', () => {
 
     numOfTags = await getNumberOfTags('li');
     expect(numOfTags).toEqual(2);
+
+    // remove all the text
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    const resetButton = await getByLabelText(doc, 'Reset value to Hello World');
+    await resetButton.click();
+
+    // 1 strong tag should be in the document
+
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(1);
+
+    await wait(() => getByText(doc, 'Hello World'));
+
+    await input.click();
+
+    await delay(200);
+
+    await selectAllText(input);
+
+    await boldButton.click();
+    // check there are no strong tags in the document.
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(0);
+
+    await input.press('Backspace');
+
+    await input.type('Goodbye');
+
+    await wait(() => getByText(doc, 'Goodbye'));
   });
 });

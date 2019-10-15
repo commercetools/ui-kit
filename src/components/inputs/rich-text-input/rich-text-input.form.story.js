@@ -15,7 +15,7 @@ import RichTextInput from './rich-text-input';
 import TextInput from '../text-input';
 import TextField from '../../fields/text-field';
 
-const initialValue = RichTextInput.deserialize('');
+const initialValue = '';
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)

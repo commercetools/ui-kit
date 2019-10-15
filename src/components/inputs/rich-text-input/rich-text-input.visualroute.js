@@ -3,17 +3,22 @@ import { Switch, Route } from 'react-router';
 import { RichTextInput } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-const minimalValue = RichTextInput.deserialize('Hello World');
-const largeValue = RichTextInput.deserialize(
-  '<h1>Hello world</h1><p>This is a longer text</p><ul><li>One</li><li>Two</li></ul>'
-);
-const emptyValue = RichTextInput.deserialize('');
+const minimalValue = 'Hello World';
+
+const largeValue =
+  '<h1>Hello world</h1><p>This is a longer text</p><ul><li>One</li><li>Two</li></ul>';
+
+const emptyValue = '';
 
 export const routePath = '/rich-text-input';
 
 // this route will be used with puppeteer based testing.
 const InteractiveRoute = () => {
   const [value, setValue] = React.useState(emptyValue);
+
+  const handleReset = React.useCallback(() => {
+    setValue('<p><strong>Hello World</strong></p>');
+  }, [setValue]);
 
   const onChange = event => {
     setValue(event.target.value);
@@ -22,6 +27,18 @@ const InteractiveRoute = () => {
   return (
     <Suite>
       <Spec label="minimal" omitPropsList>
+        <div>
+          <label htmlFor="reset-button">Reset value to Hello World</label>
+          <button
+            onMouseDown={event => {
+              event.preventDefault();
+              handleReset();
+            }}
+            id="reset-button"
+          >
+            Reset
+          </button>
+        </div>
         <label htmlFor="rich-text">Rich text</label>
         <RichTextInput
           id="rich-text"

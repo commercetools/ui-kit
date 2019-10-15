@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import renderEditor from './editor';
@@ -9,17 +8,36 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
+const propsToState = props => ({
+  serializedValue: props.value || '',
+  internalSlateValue: html.deserialize(props.value || ''),
+});
+
 class RichTextInput extends React.PureComponent {
+  state = propsToState(this.props);
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.value === state.serializedValue) return null;
+    return propsToState(props);
+  }
+
   onValueChange = event => {
+    const serializedValue = html.serialize(event.value);
+
     const fakeEvent = {
       target: {
         id: this.props.id,
         name: this.props.name,
-        value: event.value,
+        value: serializedValue,
       },
     };
 
     this.props.onChange(fakeEvent);
+
+    this.setState({
+      internalSlateValue: event.value,
+      serializedValue,
+    });
   };
 
   // this issue explains why we need to use next() + setTimeout
@@ -28,6 +46,7 @@ class RichTextInput extends React.PureComponent {
   onBlur = (event, editor, next) => {
     // we don't call next() if it's a button to stop our input from losing
     // slate focus
+
     if (
       event.relatedTarget &&
       event.relatedTarget.getAttribute('data-button-type') ===
@@ -74,7 +93,7 @@ class RichTextInput extends React.PureComponent {
         onBlur={this.onBlur}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.props.value}
+        value={this.state.internalSlateValue}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
@@ -104,9 +123,7 @@ RichTextInput.defaultProps = {
 
 RichTextInput.displayName = 'RichTextInput';
 
-RichTextInput.serialize = html.serialize;
-RichTextInput.deserialize = html.deserialize;
-RichTextInput.isEmpty = isEmpty;
+RichTextInput.isEmpty = value => isEmpty(html.deserialize(value));
 RichTextInput.isTouched = touched => Boolean(touched);
 
 RichTextInput.propTypes = {
@@ -123,7 +140,7 @@ RichTextInput.propTypes = {
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  value: Types.value.isRequired,
+  value: PropTypes.string,
   showExpandIcon: PropTypes.bool.isRequired,
   onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
 };
