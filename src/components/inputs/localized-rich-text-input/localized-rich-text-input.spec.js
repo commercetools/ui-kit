@@ -5,7 +5,7 @@ import LocalizedRichTextInput from './localized-rich-text-input';
 // mocks
 window.getSelection = () => {};
 
-const initialValue = LocalizedRichTextInput.deserialize('');
+const initialValue = '';
 
 const baseProps = {
   value: { en: initialValue, de: initialValue },
