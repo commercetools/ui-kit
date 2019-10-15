@@ -29,16 +29,8 @@ const plugins = [
           hasOneBlock &&
           isParagraph;
 
-        if (shouldUsePlaceholder) {
-          // eslint-disable-next-line no-param-reassign
-          editor.hasPlaceholder = true;
-        }
-
-        if (!shouldUsePlaceholder) {
-          // eslint-disable-next-line no-param-reassign
-          editor.hasPlaceholder = false;
         // eslint-disable-next-line no-param-reassign
-        editor.hasPlaceholder = shouldUsePlaceholder
+        editor.hasPlaceholder = shouldUsePlaceholder;
         return shouldUsePlaceholder;
       },
     },
