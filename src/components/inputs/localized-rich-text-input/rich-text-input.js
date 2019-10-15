@@ -11,18 +11,22 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-const removeProps = ['value'];
+const omittedPropsForRender = ['value'];
 
 class RichTextInput extends React.Component {
   state = {
     // we keep track of the serialized (HTML) value
     serializedValue: this.props.value || '',
-    value: html.deserialize(this.props.value || ''),
+    internalSlateValue: html.deserialize(this.props.value || ''),
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    // ignore updates for changes to `props.value`
-    const props = omit(this.props, removeProps);
+    // ignore updates for changes to `props.value` because this is
+    // actually an `HTML` value.
+
+    // instead we want to update when the slate `value` changes, which
+    // is stored in state.
+    const props = omit(this.props, omittedPropsForRender);
 
     const havePropsChanged = Object.entries(props).some(
       ([key, val]) => nextProps[key] !== val
@@ -30,7 +34,10 @@ class RichTextInput extends React.Component {
 
     if (havePropsChanged) return true;
 
-    if (this.state.value !== nextState.value) return true;
+    if (this.props.value !== this.state.serializedValue) return true;
+
+    if (this.state.internalSlateValue !== nextState.internalSlateValue)
+      return true;
 
     return false;
   }
@@ -40,22 +47,10 @@ class RichTextInput extends React.Component {
     // then reset our value by deserializing this new value
     if (this.props.value !== this.state.serializedValue) {
       this.setState({
+        internalSlateValue: html.deserialize(this.props.value),
         serializedValue: this.props.value,
-        value: html.deserialize(this.props.value),
       });
     }
-    // Object.entries(this.props).forEach(
-    //   ([key, val]) =>
-    //     prevProps[key] !== val &&
-    //     console.log(`${this.props.id} Prop '${key}' changed`)
-    // );
-    // if (this.state) {
-    //   Object.entries(this.state).forEach(
-    //     ([key, val]) =>
-    //       prevState[key] !== val &&
-    //       console.log(`${this.props.id} State '${key}' changed`)
-    //   );
-    // }
   }
 
   onValueChange = ({ value }) => {
@@ -71,7 +66,7 @@ class RichTextInput extends React.Component {
     this.props.onChange(event);
 
     this.setState({
-      value,
+      internalSlateValue: value,
       serializedValue,
     });
   };
@@ -159,7 +154,6 @@ class RichTextInput extends React.Component {
   };
 
   render() {
-    console.log('render', this.props.id);
     return (
       <Editor
         {...filterDataAttributes(this.props)}
@@ -167,7 +161,7 @@ class RichTextInput extends React.Component {
         name={this.props.name}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.state.value}
+        value={this.state.internalSlateValue}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         // we can only pass this.props to the Editor that Slate understands without getting
