@@ -37,7 +37,8 @@ const plugins = [
         if (!shouldUsePlaceholder) {
           // eslint-disable-next-line no-param-reassign
           editor.hasPlaceholder = false;
-        }
+        // eslint-disable-next-line no-param-reassign
+        editor.hasPlaceholder = shouldUsePlaceholder
         return shouldUsePlaceholder;
       },
     },
