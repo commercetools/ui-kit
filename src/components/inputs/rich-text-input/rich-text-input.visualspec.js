@@ -351,14 +351,18 @@ describe('RichTextInput', () => {
 
     await wait(() => getByText(doc, 'Hello World'));
 
-    // check we can still type afterwards
+    await input.focus();
 
-    // remove all the text
     await selectAllText(input);
+    // make the text bold
+    await boldButton.click();
+    // check there are no strong tags in the document.
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(0);
     await input.press('Backspace');
 
-    await input.type('Typing still works!');
+    await input.type('Goodbye');
 
-    await wait(() => getByText(doc, 'Typing still works!'));
+    await wait(() => getByText(doc, 'Goodbye'));
   });
 });
