@@ -33,6 +33,11 @@ const plugins = [
           // eslint-disable-next-line no-param-reassign
           editor.hasPlaceholder = true;
         }
+
+        if (!shouldUsePlaceholder) {
+          // eslint-disable-next-line no-param-reassign
+          editor.hasPlaceholder = false;
+        }
         return shouldUsePlaceholder;
       },
     },
