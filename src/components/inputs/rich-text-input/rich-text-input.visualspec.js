@@ -351,14 +351,14 @@ describe('RichTextInput', () => {
 
     await wait(() => getByText(doc, 'Hello World'));
 
-    await input.focus();
-
+    await input.click();
     await selectAllText(input);
-    // make the text bold
+
     await boldButton.click();
     // check there are no strong tags in the document.
     numOfTags = await getNumberOfTags('strong');
     expect(numOfTags).toEqual(0);
+
     await input.press('Backspace');
 
     await input.type('Goodbye');
