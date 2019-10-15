@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import Types from 'slate-prop-types';
 import { Editor } from 'slate-react';
+import omit from 'lodash/omit';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import renderEditor from './editor';
 import LanguagesControlButton from './languages-control';
@@ -11,17 +11,69 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-class RichTextInput extends React.PureComponent {
+const removeProps = ['value'];
+
+class RichTextInput extends React.Component {
+  state = {
+    // we keep track of the serialized (HTML) value
+    serializedValue: this.props.value || '',
+    value: html.deserialize(this.props.value || ''),
+  };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // ignore updates for changes to `props.value`
+    const props = omit(this.props, removeProps);
+
+    const havePropsChanged = Object.entries(props).some(
+      ([key, val]) => nextProps[key] !== val
+    );
+
+    if (havePropsChanged) return true;
+
+    if (this.state.value !== nextState.value) return true;
+
+    return false;
+  }
+
+  componentDidUpdate() {
+    // if the value provided is not in sync with the RichTextInput,
+    // then reset our value by deserializing this new value
+    if (this.props.value !== this.state.serializedValue) {
+      this.setState({
+        serializedValue: this.props.value,
+        value: html.deserialize(this.props.value),
+      });
+    }
+    // Object.entries(this.props).forEach(
+    //   ([key, val]) =>
+    //     prevProps[key] !== val &&
+    //     console.log(`${this.props.id} Prop '${key}' changed`)
+    // );
+    // if (this.state) {
+    //   Object.entries(this.state).forEach(
+    //     ([key, val]) =>
+    //       prevState[key] !== val &&
+    //       console.log(`${this.props.id} State '${key}' changed`)
+    //   );
+    // }
+  }
+
   onValueChange = ({ value }) => {
+    const serializedValue = html.serialize(value);
     const event = {
       target: {
         id: this.props.id,
         name: this.props.name,
         language: this.props.language,
-        value,
+        value: serializedValue,
       },
     };
     this.props.onChange(event);
+
+    this.setState({
+      value,
+      serializedValue,
+    });
   };
 
   // this issue explains why we need to use next() + setTimeout
@@ -107,6 +159,7 @@ class RichTextInput extends React.PureComponent {
   };
 
   render() {
+    console.log('render', this.props.id);
     return (
       <Editor
         {...filterDataAttributes(this.props)}
@@ -114,7 +167,7 @@ class RichTextInput extends React.PureComponent {
         name={this.props.name}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.props.value}
+        value={this.state.value}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         // we can only pass this.props to the Editor that Slate understands without getting
@@ -170,7 +223,7 @@ RichTextInput.propTypes = {
   onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  value: Types.value.isRequired,
+  value: PropTypes.string.isRequired,
   showExpandIcon: PropTypes.bool.isRequired,
   onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
 };

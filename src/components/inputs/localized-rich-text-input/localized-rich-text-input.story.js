@@ -17,7 +17,7 @@ import LocalizedRichTextInput from './localized-rich-text-input';
 
 // Create our initial value...
 
-const initialValue = LocalizedRichTextInput.deserialize('');
+const initialValue = '';
 
 class StoryWrapper extends React.Component {
   onChange = event => {
@@ -25,6 +25,10 @@ class StoryWrapper extends React.Component {
       ...this.props.value,
       [event.target.language]: event.target.value,
     });
+  };
+
+  onClickExpand = () => {
+    alert('expand');
   };
 
   render() {
@@ -49,7 +53,7 @@ class StoryWrapper extends React.Component {
         value={props.value}
         onChange={this.onChange}
         showExpandIcon={boolean('showExpandIcon', false)}
-        onClickExpand={() => alert('Expand')}
+        onClickExpand={this.onClickExpand}
         selectedLanguage={select(
           'selectedLanguage',
           ['en', 'de', 'nan-Hant-TW'],

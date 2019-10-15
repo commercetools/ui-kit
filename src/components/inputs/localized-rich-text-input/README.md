@@ -11,12 +11,6 @@ Please be aware that this component may be subject to upcoming breaking changes 
 A controlled text input component for localized rich text input with validation
 states.
 
-This component uses `slatejs` under the hood. This means that the `value` needs to be kept in slate format.
-The `LocalizedRichTextInput` exposes two static helper functions to helper with transforming HTML values to and from slate format.
-
-`LocalizedRichTextInput.deserialize(html)` can be used to turn HTML into slate format.
-`LocalizedRichTextInput.serialize(value)` can be used to turn slate format into HTML.
-
 ## Usage
 
 ```js
