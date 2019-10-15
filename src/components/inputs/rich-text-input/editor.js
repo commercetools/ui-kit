@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
+import pick from 'lodash/pick';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import CollapsibleMotion from '../../collapsible-motion';
 import usePrevious from '../../../hooks/use-previous';
@@ -112,17 +113,16 @@ const renderEditor = (props, editor, next) => {
   const passedProps = {
     name: props.name,
     id: props.id,
-    isDisabled: props.disabled,
-    onBlur: props.options.onBlur,
-    onFocus: props.options.onFocus,
-    isFocused: props.options.isFocused,
-    horizontalConstraint: props.options.horizontalConstraint,
-    defaultExpandMultilineText: props.options.defaultExpandMultilineText,
-    showExpandIcon: props.options.showExpandIcon,
-    onClickExpand: props.options.onClickExpand,
-    hasError: props.options.hasError,
-    hasWarning: props.options.hasWarning,
     isReadOnly: props.readOnly,
+    isDisabled: props.disabled,
+    ...pick(props.options, [
+      'horizontalConstraint',
+      'defaultExpandMultilineText',
+      'showExpandIcon',
+      'onClickExpand',
+      'hasError',
+      'hasWarning',
+    ]),
     ...filterDataAttributes(props),
   };
 

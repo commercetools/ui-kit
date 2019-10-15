@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
+import pick from 'lodash/pick';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import renderEditor from './editor';
 import plugins from '../../internals/rich-text-plugins';
@@ -97,15 +98,15 @@ class RichTextInput extends React.PureComponent {
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
-        options={{
-          horizontalConstraint: this.props.horizontalConstraint,
-          defaultExpandMultilineText: this.props.defaultExpandMultilineText,
-          hasWarning: this.props.hasWarning,
-          hasError: this.props.hasError,
-          placeholder: this.props.placeholder,
-          showExpandIcon: this.props.showExpandIcon,
-          onClickExpand: this.props.onClickExpand,
-        }}
+        options={pick(this.props, [
+          'horizontalConstraint',
+          'defaultExpandMultilineText',
+          'hasWarning',
+          'hasError',
+          'placeholder',
+          'showExpandIcon',
+          'onClickExpand',
+        ])}
         onChange={this.onValueChange}
         plugins={plugins}
         renderEditor={renderEditor}
