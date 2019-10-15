@@ -37,6 +37,7 @@ storiesOf('Components|Panels', module)
           theme={select('theme', ['dark', 'light'])}
           condensed={condensed}
           secondaryHeader={text('secondaryHeader', 'Subtitle')}
+          headerControlsAlignment={select('size', ['left', 'right'], 'right')}
         >
           {text('Text', 'Sample text')}
         </CollapsiblePanel>

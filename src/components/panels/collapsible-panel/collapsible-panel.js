@@ -25,13 +25,14 @@ export default class CollapsiblePanel extends React.PureComponent {
     description: PropTypes.string,
     className: PropTypes.string,
     isSticky: PropTypes.bool,
-    headerControls: PropTypes.node,
     isDisabled: PropTypes.bool,
     children: PropTypes.node,
     tone: PropTypes.oneOf(['urgent', 'primary']),
     theme: PropTypes.oneOf(['dark', 'light']),
     condensed: PropTypes.bool,
     hideExpansionControls: PropTypes.bool,
+    headerControls: PropTypes.node,
+    headerControlsAlignment: PropTypes.string,
 
     // props when uncontrolled
     isDefaultClosed(props, propName, componentName, ...rest) {
@@ -73,6 +74,7 @@ export default class CollapsiblePanel extends React.PureComponent {
     theme: 'dark',
     condensed: false,
     isDisabled: false,
+    headerControlsAlignment: 'right',
   };
 
   render() {
@@ -109,6 +111,7 @@ export default class CollapsiblePanel extends React.PureComponent {
                   css={getHeaderStyles({
                     isCondensed: this.props.condensed,
                     isDisabled: this.props.isDisabled,
+                    headerControlsAlignment: this.props.headerControlsAlignment,
                   })}
                 >
                   <div
