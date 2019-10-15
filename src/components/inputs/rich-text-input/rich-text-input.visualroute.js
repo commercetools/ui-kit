@@ -29,7 +29,13 @@ const InteractiveRoute = () => {
       <Spec label="minimal" omitPropsList>
         <div>
           <label htmlFor="reset-button">Reset value to Hello World</label>
-          <button onClick={handleReset} id="reset-button">
+          <button
+            onMouseDown={event => {
+              event.preventDefault();
+              handleReset();
+            }}
+            id="reset-button"
+          >
             Reset
           </button>
         </div>
