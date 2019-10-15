@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
+import pick from 'lodash/pick';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -137,25 +138,24 @@ class RichTextInput extends React.PureComponent {
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
-        options={{
-          language: this.props.language,
-          onToggle: this.props.onToggle,
-          toggleLanguage: this.props.toggleLanguage,
-          isOpen: this.props.isOpen,
-          languagesControl: this.renderLanguagesControl,
-          warning: this.props.warning,
-          error: this.props.error,
-          isCollapsed: this.props.isCollapsed,
-          defaultExpandMultilineText: this.props.defaultExpandMultilineText,
-          hasWarning: this.props.hasWarning,
-          hasWarningOnRemainingLanguages: this.props
-            .hasWarningOnRemainingLanguages,
-          hasError: this.props.hasError,
-          hasErrorOnRemainingLanguages: this.props.hasErrorOnRemainingLanguages,
-          placeholder: this.props.placeholder,
-          onClickExpand: this.props.onClickExpand,
-          showExpandIcon: this.props.showExpandIcon,
-        }}
+        options={pick(this.props, [
+          'language',
+          'onToggle',
+          'toggleLanguage',
+          'isOpen',
+          'languagesControl',
+          'warning',
+          'error',
+          'isCollapsed',
+          'defaultExpandMultilineText',
+          'hasWarning',
+          'hasWarningOnRemainingLanguages',
+          'hasError',
+          'hasErrorOnRemainingLanguages',
+          'placeholder',
+          'onClickExpand',
+          'showExpandIcon',
+        ])}
         onChange={this.onValueChange}
         plugins={plugins}
         renderEditor={renderEditor}

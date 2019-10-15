@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import pick from 'lodash/pick';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
@@ -175,18 +176,20 @@ const renderEditor = (props, editor, next) => {
   const passedProps = {
     id: props.id,
     isDisabled: props.disabled,
-    defaultExpandMultilineText: props.options.defaultExpandMultilineText,
-    language: props.options.language,
-    hasError: props.options.hasError,
-    error: props.options.error,
-    warning: props.options.warning,
     isReadOnly: props.readOnly,
-    hasWarning: props.options.hasWarning,
-    toggleLanguage: props.options.toggleLanguage,
-    languagesControl: props.options.languagesControl,
-    isOpen: props.options.isOpen,
-    showExpandIcon: props.options.showExpandIcon,
-    onClickExpand: props.options.onClickExpand,
+    ...pick(props.options, [
+      'defaultExpandMultilineText',
+      'language',
+      'warning',
+      'error',
+      'hasWarning',
+      'hasError',
+      'toggleLanguage',
+      'languagesControl',
+      'isOpen',
+      'showExpandIcon',
+      'onClickExpand',
+    ]),
     ...filterDataAttributes(props),
   };
 
