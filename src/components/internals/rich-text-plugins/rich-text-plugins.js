@@ -18,12 +18,21 @@ const plugins = [
           editor.value.document.nodes.map(node => node.text).toArray()
             .length === 1;
         const blocks = editor.value.blocks.map(block => block.type).toArray();
+
         const hasOneBlock = blocks.length === 1;
         const isParagraph = blocks[0] && blocks[0] === BLOCK_TAGS.p;
 
         const shouldUsePlaceholder =
-          isEditorEmpty && hasOneNode && hasOneBlock && isParagraph;
+          !editor.hasPlaceholder &&
+          isEditorEmpty &&
+          hasOneNode &&
+          hasOneBlock &&
+          isParagraph;
 
+        if (shouldUsePlaceholder) {
+          // eslint-disable-next-line no-param-reassign
+          editor.hasPlaceholder = true;
+        }
         return shouldUsePlaceholder;
       },
     },
