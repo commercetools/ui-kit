@@ -350,5 +350,15 @@ describe('RichTextInput', () => {
     expect(numOfTags).toEqual(1);
 
     await wait(() => getByText(doc, 'Hello World'));
+
+    // check we can still type afterwards
+
+    // remove all the text
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    await input.type('Typing still works!');
+
+    await wait(() => getByText(doc, 'Typing still works!'));
   });
 });
