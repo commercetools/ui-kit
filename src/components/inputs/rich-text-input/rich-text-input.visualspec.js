@@ -336,5 +336,19 @@ describe('RichTextInput', () => {
 
     numOfTags = await getNumberOfTags('li');
     expect(numOfTags).toEqual(2);
+
+    // remove all the text
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    const resetButton = await getByLabelText(doc, 'Reset value to Hello World');
+    await resetButton.click();
+
+    // 1 strong tag should be in the document
+
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(1);
+
+    await wait(() => getByText(doc, 'Hello World'));
   });
 });

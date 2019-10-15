@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
@@ -8,12 +9,29 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-class RichTextInput extends React.PureComponent {
+const removeProps = ['value'];
+
+class RichTextInput extends React.Component {
   state = {
     // we keep track of the serialized (HTML) value
     serializedValue: this.props.value || '',
     value: html.deserialize(this.props.value || ''),
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // ignore updates for changes to `props.value`
+    const props = omit(this.props, removeProps);
+
+    const havePropsChanged = Object.entries(props).some(
+      ([key, val]) => nextProps[key] !== val
+    );
+
+    if (havePropsChanged) return true;
+
+    if (this.state.value !== nextState.value) return true;
+
+    return false;
+  }
 
   componentDidUpdate() {
     // if the value provided is not in sync with the RichTextInput,

@@ -16,6 +16,10 @@ export const routePath = '/rich-text-input';
 const InteractiveRoute = () => {
   const [value, setValue] = React.useState(emptyValue);
 
+  const handleReset = React.useCallback(() => {
+    setValue('<p><strong>Hello World</strong></p>');
+  }, [setValue]);
+
   const onChange = event => {
     setValue(event.target.value);
   };
@@ -23,6 +27,12 @@ const InteractiveRoute = () => {
   return (
     <Suite>
       <Spec label="minimal" omitPropsList>
+        <div>
+          <label htmlFor="reset-button">Reset value to Hello World</label>
+          <button onClick={handleReset} id="reset-button">
+            Reset
+          </button>
+        </div>
         <label htmlFor="rich-text">Rich text</label>
         <RichTextInput
           id="rich-text"
