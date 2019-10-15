@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
-import omit from 'lodash/omit';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import renderEditor from './editor';
 import LanguagesControlButton from './languages-control';
@@ -11,46 +10,17 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-const omittedPropsForRender = ['value'];
+const propsToState = props => ({
+  serializedValue: props.value || '',
+  internalSlateValue: html.deserialize(props.value || ''),
+});
 
 class RichTextInput extends React.Component {
-  state = {
-    // we keep track of the serialized (HTML) value
-    serializedValue: this.props.value || '',
-    internalSlateValue: html.deserialize(this.props.value || ''),
-  };
+  state = propsToState(this.props);
 
-  shouldComponentUpdate(nextProps, nextState) {
-    // ignore updates for changes to `props.value` because this is
-    // actually an `HTML` value.
-
-    // instead we want to update when the slate `value` changes, which
-    // is stored in state.
-    const props = omit(this.props, omittedPropsForRender);
-
-    const havePropsChanged = Object.entries(props).some(
-      ([key, val]) => nextProps[key] !== val
-    );
-
-    if (havePropsChanged) return true;
-
-    if (this.props.value !== this.state.serializedValue) return true;
-
-    if (this.state.internalSlateValue !== nextState.internalSlateValue)
-      return true;
-
-    return false;
-  }
-
-  componentDidUpdate() {
-    // if the value provided is not in sync with the RichTextInput,
-    // then reset our value by deserializing this new value
-    if (this.props.value !== this.state.serializedValue) {
-      this.setState({
-        internalSlateValue: html.deserialize(this.props.value),
-        serializedValue: this.props.value,
-      });
-    }
+  static getDerivedStateFromProps(props, state) {
+    if (props.value === state.serializedValue) return null;
+    return propsToState(props);
   }
 
   onValueChange = ({ value }) => {
