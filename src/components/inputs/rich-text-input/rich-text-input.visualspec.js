@@ -4,6 +4,12 @@ import { getDocument, queries, wait } from 'pptr-testing-library';
 const { getByLabelText, getByText } = queries;
 
 describe('RichTextInput', () => {
+  const delay = timeout => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  };
+
   const selectAllText = async input => {
     // eslint-disable-next-line no-shadow
     await page.evaluate(input => {
@@ -352,6 +358,9 @@ describe('RichTextInput', () => {
     await wait(() => getByText(doc, 'Hello World'));
 
     await input.click();
+
+    await delay(200);
+
     await selectAllText(input);
 
     await boldButton.click();
