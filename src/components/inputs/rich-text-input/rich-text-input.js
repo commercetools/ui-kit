@@ -9,7 +9,7 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-const removeProps = ['value'];
+const omittedPropsForRender = ['value'];
 
 class RichTextInput extends React.Component {
   state = {
@@ -19,14 +19,20 @@ class RichTextInput extends React.Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    // ignore updates for changes to `props.value`
-    const props = omit(this.props, removeProps);
+    // ignore updates for changes to `props.value` because this is
+    // actually an `HTML` value.
+
+    // instead we want to update when the slate `value` changes, which
+    // is stored in state.
+    const props = omit(this.props, omittedPropsForRender);
 
     const havePropsChanged = Object.entries(props).some(
       ([key, val]) => nextProps[key] !== val
     );
 
     if (havePropsChanged) return true;
+
+    if (this.props.value !== this.state.serializedValue) return true;
 
     if (this.state.value !== nextState.value) return true;
 

@@ -27,7 +27,7 @@ const Input = props => {
           onChange={event => {
             onChange(event.target.value);
           }}
-          value={props.showBlah ? initialValue : value}
+          value={value}
           onBlur={props.onBlur}
           onFocus={props.onFocus}
           defaultExpandMultilineText={props.defaultExpandMultilineText}
@@ -79,7 +79,6 @@ storiesOf('Components|Inputs', module)
               'defaultExpandMultilineText',
               true
             )}
-            showBlah={boolean('yes', false)}
             placeholder={text('placeholder', 'Placeholder')}
             showExpandIcon={boolean('showExpandIcon', false)}
             onClickExpand={onClickExpand}
