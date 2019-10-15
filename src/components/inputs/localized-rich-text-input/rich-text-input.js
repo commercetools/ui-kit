@@ -15,7 +15,7 @@ const propsToState = props => ({
   internalSlateValue: html.deserialize(props.value || ''),
 });
 
-class RichTextInput extends React.Component {
+class RichTextInput extends React.PureComponent {
   state = propsToState(this.props);
 
   static getDerivedStateFromProps(props, state) {
