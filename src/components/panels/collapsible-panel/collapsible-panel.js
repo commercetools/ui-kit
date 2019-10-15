@@ -32,7 +32,7 @@ export default class CollapsiblePanel extends React.PureComponent {
     condensed: PropTypes.bool,
     hideExpansionControls: PropTypes.bool,
     headerControls: PropTypes.node,
-    headerControlsAlignment: PropTypes.string,
+    headerControlsAlignment: PropTypes.oneOf(['left', 'right']),
 
     // props when uncontrolled
     isDefaultClosed(props, propName, componentName, ...rest) {
