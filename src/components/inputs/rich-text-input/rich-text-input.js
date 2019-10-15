@@ -113,7 +113,6 @@ class RichTextInput extends React.Component {
   };
 
   render() {
-    console.count('rendering here');
     return (
       <Editor
         {...filterDataAttributes(this.props)}
