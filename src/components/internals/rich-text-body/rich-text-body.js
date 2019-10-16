@@ -173,6 +173,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
 
   return (
     <Container
+      css={props.styles.container}
       hasError={props.hasError}
       hasWarning={props.hasWarning}
       isReadOnly={props.isReadOnly}
@@ -365,6 +366,11 @@ RichTextEditorBody.propTypes = {
   containerStyles: PropTypes.any,
   showExpandIcon: PropTypes.bool.isRequired,
   onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
+  styles: PropTypes.any,
+};
+
+RichTextEditorBody.defaultProps = {
+  styles: {},
 };
 
 export default RichTextEditorBody;
