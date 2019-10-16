@@ -7,7 +7,6 @@
 module.exports = {
   launch: {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    headless: false,
   },
   server: {
     command: 'yarn visual-testing-app:serve',
