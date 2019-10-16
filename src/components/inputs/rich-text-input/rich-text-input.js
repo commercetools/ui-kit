@@ -10,14 +10,8 @@ import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
-  serializedValue;
-  internalSlateValue;
-
-  constructor(props) {
-    super(props);
-    this.serializedValue = props.value || '';
-    this.internalSlateValue = html.deserialize(this.props.value || '');
-  }
+  serializedValue = this.props.value || '';
+  internalSlateValue = html.deserialize(this.props.value || '');
 
   componentDidUpdate() {
     if (this.props.value !== this.serializedValue) {
