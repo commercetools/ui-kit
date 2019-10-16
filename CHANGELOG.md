@@ -1,3 +1,21 @@
+<a name="10.4.0"></a>
+
+## [10.4.0](https://github.com/commercetools/ui-kit/compare/v10.3.0...v10.4.0) (2019-10-16)
+
+### Bug Fixes
+
+- `RichTextInput`: fix onBlur and onFocus ([#1093](https://github.com/commercetools/ui-kit/issues/1093)) ([8d76ba2](https://github.com/commercetools/ui-kit/commit/8d76ba28a9958da481e9ad14714af06f3b898ba1))
+- `RichTextInput`: fix regression ([#1103](https://github.com/commercetools/ui-kit/issues/1103)) ([4f12b55](https://github.com/commercetools/ui-kit/commit/4f12b552d6fee57cfcf46d8a40b58380d81b089b))
+- `RichTextInput`: placeholder bug ([#1099](https://github.com/commercetools/ui-kit/issues/1099)) ([08caef0](https://github.com/commercetools/ui-kit/commit/08caef0f4c87be627a8d0dcc9bb6112613db45bd))
+
+### Features
+
+This release represents the first release that contains the new `LocalizedRichTextInput`. Keep in mind this component is still in beta and may be subject to upcoming breaking changes. We will not consider breaking changes to `LocalizedRichTextInput` to be breaking changes to UI-Kit until the component is out of beta status.
+
+- `LocalizedRichTextInput`: new component ([#1076](https://github.com/commercetools/ui-kit/issues/1076))
+- `CollapsiblePanel`: add prop to set alignment of header controls ([#1101](https://github.com/commercetools/ui-kit/issues/1101)) ([07ad46d](https://github.com/commercetools/ui-kit/commit/07ad46dd6ce361f4ac776edf75dc605ce0eb4af0))
+- `RichTextInput`: add expand icon ([#1095](https://github.com/commercetools/ui-kit/issues/1095)) ([0cb3fac](https://github.com/commercetools/ui-kit/commit/0cb3fac9e6a3e6a8c1c4bfefe5796fbe94d1b1f1))
+
 <a name="10.3.0"></a>
 
 ## [10.3.0](https://github.com/commercetools/ui-kit/compare/v10.2.1...v10.3.0) (2019-10-08)
