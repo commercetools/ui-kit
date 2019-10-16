@@ -9,17 +9,22 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-const propsToState = props => ({
-  serializedValue: props.value || '',
-  internalSlateValue: html.deserialize(props.value || ''),
-});
+class RichTextInput extends React.Component {
+  serializedValue;
+  internalSlateValue;
 
-class RichTextInput extends React.PureComponent {
-  state = propsToState(this.props);
+  constructor(props) {
+    super(props);
+    this.serializedValue = props.value || '';
+    this.internalSlateValue = html.deserialize(this.props.value || '');
+  }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.value === state.serializedValue) return null;
-    return propsToState(props);
+  componentDidUpdate() {
+    if (this.props.value !== this.serializedValue) {
+      this.internalSlateValue = html.deserialize(this.props.value);
+      this.serializedValue = this.props.value;
+      this.forceUpdate();
+    }
   }
 
   onValueChange = event => {
@@ -33,12 +38,10 @@ class RichTextInput extends React.PureComponent {
       },
     };
 
-    this.props.onChange(fakeEvent);
+    this.internalSlateValue = event.value;
+    this.serializedValue = serializedValue;
 
-    this.setState({
-      internalSlateValue: event.value,
-      serializedValue,
-    });
+    this.props.onChange(fakeEvent);
   };
 
   // this issue explains why we need to use next() + setTimeout
@@ -84,6 +87,7 @@ class RichTextInput extends React.PureComponent {
   };
 
   render() {
+    console.count('render');
     return (
       <Editor
         {...filterDataAttributes(this.props)}
@@ -94,7 +98,7 @@ class RichTextInput extends React.PureComponent {
         onBlur={this.onBlur}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.state.internalSlateValue}
+        value={this.internalSlateValue}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
