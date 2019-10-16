@@ -211,5 +211,19 @@ export const component = () => (
         Content
       </CollapsiblePanel>
     </Spec>
+    <Spec label="regular (not condensed) - headerControls aligned to left">
+      <CollapsiblePanel
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
+        description="Some description"
+        isDisabled={true}
+        tone="urgent"
+        headerControls="headerControl"
+        theme="dark"
+        secondaryHeader="Secondary Header"
+        headerControlsAlignment="left"
+      >
+        Content
+      </CollapsiblePanel>
+    </Spec>
   </Suite>
 );
