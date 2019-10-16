@@ -11,17 +11,16 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-const propsToState = props => ({
-  serializedValue: props.value || '',
-  internalSlateValue: html.deserialize(props.value || ''),
-});
-
 class RichTextInput extends React.PureComponent {
-  state = propsToState(this.props);
+  serializedValue = this.props.value || '';
+  internalSlateValue = html.deserialize(this.props.value || '');
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.value === state.serializedValue) return null;
-    return propsToState(props);
+  componentDidUpdate() {
+    if (this.props.value !== this.serializedValue) {
+      this.internalSlateValue = html.deserialize(this.props.value);
+      this.serializedValue = this.props.value;
+      this.forceUpdate();
+    }
   }
 
   onValueChange = ({ value }) => {
@@ -34,12 +33,10 @@ class RichTextInput extends React.PureComponent {
         value: serializedValue,
       },
     };
-    this.props.onChange(event);
+    this.internalSlateValue = value;
+    this.serializedValue = serializedValue;
 
-    this.setState({
-      internalSlateValue: value,
-      serializedValue,
-    });
+    this.props.onChange(event);
   };
 
   // this issue explains why we need to use next() + setTimeout
@@ -132,30 +129,32 @@ class RichTextInput extends React.PureComponent {
         name={this.props.name}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.state.internalSlateValue}
+        value={this.internalSlateValue}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
-        options={pick(this.props, [
-          'language',
-          'onToggle',
-          'toggleLanguage',
-          'isOpen',
-          'languagesControl',
-          'warning',
-          'error',
-          'isCollapsed',
-          'defaultExpandMultilineText',
-          'hasWarning',
-          'hasWarningOnRemainingLanguages',
-          'hasError',
-          'hasErrorOnRemainingLanguages',
-          'placeholder',
-          'onClickExpand',
-          'showExpandIcon',
-        ])}
+        options={{
+          languagesControl: this.renderLanguagesControl,
+          ...pick(this.props, [
+            'language',
+            'onToggle',
+            'toggleLanguage',
+            'isOpen',
+            'warning',
+            'error',
+            'isCollapsed',
+            'defaultExpandMultilineText',
+            'hasWarning',
+            'hasWarningOnRemainingLanguages',
+            'hasError',
+            'hasErrorOnRemainingLanguages',
+            'placeholder',
+            'onClickExpand',
+            'showExpandIcon',
+          ]),
+        }}
         onChange={this.onValueChange}
         plugins={plugins}
         renderEditor={renderEditor}
