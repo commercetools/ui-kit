@@ -64,13 +64,19 @@ const getHeaderContainerStyles = ({ isDisabled, isOpen, isSticky, theme }) => {
   ];
 };
 
-const getHeaderStyles = ({ isDisabled, isCondensed }) => {
+const getHeaderStyles = ({
+  isDisabled,
+  isCondensed,
+  headerControlsAlignment,
+}) => {
   const baseStyles = css`
     display: flex;
     flex: 1;
     align-items: center;
     list-style-type: none;
-    justify-content: space-between;
+    justify-content: ${headerControlsAlignment === 'left'
+      ? 'flex-start'
+      : 'space-between'};
 
     /*
       Two resource that explain why we need the min-width: 0; here
