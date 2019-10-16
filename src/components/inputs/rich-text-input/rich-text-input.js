@@ -9,7 +9,7 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-class RichTextInput extends React.Component {
+class RichTextInput extends React.PureComponent {
   serializedValue;
   internalSlateValue;
 
@@ -87,7 +87,6 @@ class RichTextInput extends React.Component {
   };
 
   render() {
-    console.count('render');
     return (
       <Editor
         {...filterDataAttributes(this.props)}

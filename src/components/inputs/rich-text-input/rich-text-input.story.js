@@ -24,31 +24,24 @@ const Input = props => {
     [setValue]
   );
 
-  const resetValue = () => {
-    setValue('');
-  };
-
   return (
-    <div>
-      <button onClick={resetValue}>reset</button>
-      <RichTextInput
-        id={props.id}
-        name={props.name}
-        key={`rich-text-input-${props.defaultExpandMultilineText}`}
-        onChange={onChange}
-        value={value}
-        onBlur={props.onBlur}
-        onFocus={props.onFocus}
-        defaultExpandMultilineText={props.defaultExpandMultilineText}
-        placeholder={props.placeholder}
-        onClickExpand={props.onClickExpand}
-        showExpandIcon={props.showExpandIcon}
-        hasError={props.hasError}
-        hasWarning={props.hasWarning}
-        isDisabled={props.isDisabled}
-        isReadOnly={props.isReadOnly}
-      />
-    </div>
+    <RichTextInput
+      id={props.id}
+      name={props.name}
+      key={`rich-text-input-${props.defaultExpandMultilineText}`}
+      onChange={onChange}
+      value={value}
+      onBlur={props.onBlur}
+      onFocus={props.onFocus}
+      defaultExpandMultilineText={props.defaultExpandMultilineText}
+      placeholder={props.placeholder}
+      onClickExpand={props.onClickExpand}
+      showExpandIcon={props.showExpandIcon}
+      hasError={props.hasError}
+      hasWarning={props.hasWarning}
+      isDisabled={props.isDisabled}
+      isReadOnly={props.isReadOnly}
+    />
   );
 };
 
