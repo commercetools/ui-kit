@@ -354,10 +354,11 @@ describe('RichTextInput', () => {
     // remove bold from text
     await selectAllText(input);
     await boldButton.click();
-    await input.press('Backspace');
 
     numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(1);
+    expect(numOfTags).toEqual(0);
+
+    await input.press('Backspace');
 
     await input.type('Okay dokey');
     await wait(() => getByText(doc, 'Okay dokey'));
