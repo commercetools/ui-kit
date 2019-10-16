@@ -9,21 +9,41 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-const propsToState = props => ({
-  serializedValue: props.value || '',
-  internalSlateValue: html.deserialize(props.value || ''),
-});
-
 class RichTextInput extends React.PureComponent {
-  state = propsToState(this.props);
+  serializedValue = this.props.value || '';
+  internalSlateValue = html.deserialize(this.props.value || '');
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.value === state.serializedValue) return null;
-    return propsToState(props);
+  componentDidUpdate() {
+    // everytime we call `onChange`, we update `this.serializedValue`
+    // to the new HTML value
+    // this condition only occurs if the parent component takes `control`
+    // and resets the component to a different HTML value that what
+    // we expect
+    // in this case, we need to parse this new value into a value slate
+    // can understand, save this value to our class variable, and forceUpdate
+    // this keeps the component in sync.
+    if (this.props.value !== this.serializedValue) {
+      this.internalSlateValue = html.deserialize(this.props.value);
+      this.serializedValue = this.props.value;
+      this.forceUpdate();
+    }
   }
 
   onValueChange = event => {
     const serializedValue = html.serialize(event.value);
+
+    // because we are not using setState, we need to make sure that
+    // we perform an update when the slate value changes
+    // as this can contain things like cursor location
+    // in this case, the internalSlateValue would change
+    // but the serializedValue would NOT change.
+    const hasInternalSlateValueChanged =
+      this.internalSlateValue !== event.value;
+
+    const hasSerializedValueChanged = serializedValue !== this.serializedValue;
+
+    this.internalSlateValue = event.value;
+    this.serializedValue = serializedValue;
 
     const fakeEvent = {
       target: {
@@ -35,10 +55,10 @@ class RichTextInput extends React.PureComponent {
 
     this.props.onChange(fakeEvent);
 
-    this.setState({
-      internalSlateValue: event.value,
-      serializedValue,
-    });
+    if (hasInternalSlateValueChanged && !hasSerializedValueChanged) {
+      // this way we force update if cursor or selection changes
+      this.forceUpdate();
+    }
   };
 
   // this issue explains why we need to use next() + setTimeout
@@ -71,6 +91,16 @@ class RichTextInput extends React.PureComponent {
   };
 
   onFocus = (event, editor, next) => {
+    // we don't call next() if it's from the toolbar
+    if (
+      event.relatedTarget &&
+      event.relatedTarget.getAttribute('data-button-type') ===
+        'rich-text-button'
+    ) {
+      event.preventDefault();
+      return;
+    }
+
     next();
     if (this.props.onFocus) {
       const fakeEvent = {
@@ -94,7 +124,7 @@ class RichTextInput extends React.PureComponent {
         onBlur={this.onBlur}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.state.internalSlateValue}
+        value={this.internalSlateValue}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.

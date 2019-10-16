@@ -350,5 +350,18 @@ describe('RichTextInput', () => {
     expect(numOfTags).toEqual(1);
 
     await wait(() => getByText(doc, 'Hello World'));
+
+    await input.click();
+    // remove bold from text
+    await selectAllText(input);
+    await boldButton.click();
+
+    numOfTags = await getNumberOfTags('strong');
+    expect(numOfTags).toEqual(0);
+
+    await input.press('Backspace');
+
+    await input.type('Okay dokey');
+    await wait(() => getByText(doc, 'Okay dokey'));
   });
 });
