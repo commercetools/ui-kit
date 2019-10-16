@@ -189,4 +189,7 @@ You should only use one `Suite` per `screenshot` as there is no point in definin
 
 A `Spec` should render your component in a specific state.
 
+You may use the prop `propsToList` to specify which props you want to display within the snapshot. Ideally, these should be the ones which you are testing. If `propsToList` is not defined, every prop will be displayed.
+If don't want to display any props at all, use `omitPropsList`.
+
 You can use multiple specs within a `Suite`.

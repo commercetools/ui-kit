@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import pick from 'lodash/pick';
 import { customProperties } from '../../dist/ui-kit.esm';
 
 const SpecContainer = styled.div`
@@ -81,7 +82,10 @@ Pill.propTypes = {
 
 const Props = props => {
   const node = React.Children.only(props.children);
-  const propEntries = Object.entries(node.props);
+  const propEntries = Object.entries(
+    props.propsToList ? pick(node.props, props.propsToList) : node.props
+  );
+
   return (
     <PropList>
       {propEntries
@@ -96,12 +100,15 @@ const Props = props => {
 Props.displayName = 'Props';
 Props.propTypes = {
   children: PropTypes.node.isRequired,
+  propsToList: PropTypes.arrayOf(PropTypes.string),
 };
 
 const Spec = props => (
   <SpecContainer>
     <Label>{props.label}</Label>
-    {!props.omitPropsList && <Props>{props.children}</Props>}
+    {!props.omitPropsList && (
+      <Props propsToList={props.propsToList}>{props.children}</Props>
+    )}
     <Box>{props.children}</Box>
   </SpecContainer>
 );
@@ -109,6 +116,7 @@ const Spec = props => (
 Spec.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
+  propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
 };
 
