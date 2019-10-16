@@ -351,6 +351,7 @@ describe('RichTextInput', () => {
 
     await wait(() => getByText(doc, 'Hello World'));
 
+    await input.click();
     // remove bold from text
     await selectAllText(input);
     await boldButton.click();
