@@ -23,6 +23,7 @@ const Input = props => {
     },
     [setValue]
   );
+
   return (
     <RichTextInput
       id={props.id}

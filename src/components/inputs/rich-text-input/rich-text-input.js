@@ -9,17 +9,24 @@ import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
-const propsToState = props => ({
-  serializedValue: props.value || '',
-  internalSlateValue: html.deserialize(props.value || ''),
-});
-
 class RichTextInput extends React.PureComponent {
-  state = propsToState(this.props);
+  serializedValue = this.props.value || '';
+  internalSlateValue = html.deserialize(this.props.value || '');
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.value === state.serializedValue) return null;
-    return propsToState(props);
+  componentDidUpdate() {
+    // everytime we call `onChange`, we update `this.serializedValue`
+    // to the new HTML value
+    // this condition only occurs if the parent component takes `control`
+    // and resets the component to a different HTML value that what
+    // we expect
+    // in this case, we need to parse this new value into a value slate
+    // can understand, save this value to our class variable, and forceUpdate
+    // this keeps the component in sync.
+    if (this.props.value !== this.serializedValue) {
+      this.internalSlateValue = html.deserialize(this.props.value);
+      this.serializedValue = this.props.value;
+      this.forceUpdate();
+    }
   }
 
   onValueChange = event => {
@@ -33,12 +40,10 @@ class RichTextInput extends React.PureComponent {
       },
     };
 
-    this.props.onChange(fakeEvent);
+    this.internalSlateValue = event.value;
+    this.serializedValue = serializedValue;
 
-    this.setState({
-      internalSlateValue: event.value,
-      serializedValue,
-    });
+    this.props.onChange(fakeEvent);
   };
 
   // this issue explains why we need to use next() + setTimeout
@@ -94,7 +99,7 @@ class RichTextInput extends React.PureComponent {
         onBlur={this.onBlur}
         disabled={this.props.isDisabled}
         readOnly={this.props.isReadOnly}
-        value={this.state.internalSlateValue}
+        value={this.internalSlateValue}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
