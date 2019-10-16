@@ -32,6 +32,19 @@ class RichTextInput extends React.PureComponent {
   onValueChange = event => {
     const serializedValue = html.serialize(event.value);
 
+    // because we are not using setState, we need to make sure that
+    // we perform an update when the slate value changes
+    // as this can contain things like cursor location
+    // in this case, the internalSlateValue would change
+    // but the serializedValue would NOT change.
+    const hasInternalSlateValueChanged =
+      this.internalSlateValue !== event.value;
+
+    const hasSerializedValueChanged = serializedValue !== this.serializedValue;
+
+    this.internalSlateValue = event.value;
+    this.serializedValue = serializedValue;
+
     const fakeEvent = {
       target: {
         id: this.props.id,
@@ -40,10 +53,12 @@ class RichTextInput extends React.PureComponent {
       },
     };
 
-    this.internalSlateValue = event.value;
-    this.serializedValue = serializedValue;
-
     this.props.onChange(fakeEvent);
+
+    if (hasInternalSlateValueChanged && !hasSerializedValueChanged) {
+      // this way we force update if cursor or selection changes
+      this.forceUpdate();
+    }
   };
 
   // this issue explains why we need to use next() + setTimeout
@@ -76,6 +91,16 @@ class RichTextInput extends React.PureComponent {
   };
 
   onFocus = (event, editor, next) => {
+    // we don't call next() if it's from the toolbar
+    if (
+      event.relatedTarget &&
+      event.relatedTarget.getAttribute('data-button-type') ===
+        'rich-text-button'
+    ) {
+      event.preventDefault();
+      return;
+    }
+
     next();
     if (this.props.onFocus) {
       const fakeEvent = {
