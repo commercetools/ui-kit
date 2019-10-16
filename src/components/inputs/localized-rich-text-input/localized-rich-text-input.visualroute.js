@@ -4,9 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import { LocalizedRichTextInput, ErrorMessage, WarningMessage } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
-const lorem = LocalizedRichTextInput.deserialize(
-  '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>'
-);
+const lorem =
+  '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>';
 
 const initialValue = {
   en: lorem,
@@ -14,7 +13,7 @@ const initialValue = {
   es: lorem,
 };
 
-const emptyValue = LocalizedRichTextInput.deserialize('');
+const emptyValue = '';
 
 export const routePath = '/localized-rich-text-input';
 
