@@ -14,6 +14,14 @@ class RichTextInput extends React.PureComponent {
   internalSlateValue = html.deserialize(this.props.value || '');
 
   componentDidUpdate() {
+    // everytime we call `onChange`, we update `this.serializedValue`
+    // to the new HTML value
+    // this condition only occurs if the parent component takes `control`
+    // and resets the component to a different HTML value that what
+    // we expect
+    // in this case, we need to parse this new value into a value slate
+    // can understand, save this value to our class variable, and forceUpdate
+    // this keeps the component in sync.
     if (this.props.value !== this.serializedValue) {
       this.internalSlateValue = html.deserialize(this.props.value);
       this.serializedValue = this.props.value;
