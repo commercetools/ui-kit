@@ -20,6 +20,7 @@ const Input = props => {
   const onChange = React.useCallback(
     event => {
       setValue(event.target.value);
+      action('onChange')(event);
     },
     [setValue]
   );
