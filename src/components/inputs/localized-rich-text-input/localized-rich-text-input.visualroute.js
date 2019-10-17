@@ -61,7 +61,11 @@ const DefaultRoute = () => (
     <Spec label="minimal" omitPropsList>
       <LocalizedRichTextInput
         onChange={() => {}}
-        value={initialValue}
+        value={{
+          en: emptyValue,
+          de: emptyValue,
+          es: emptyValue,
+        }}
         selectedLanguage="en"
         horizontalConstraint="m"
       />
