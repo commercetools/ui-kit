@@ -39,16 +39,20 @@ class RichTextInput extends React.PureComponent {
     this.internalSlateValue = event.value;
     this.serializedValue = serializedValue;
 
-    const fakeEvent = {
-      target: {
-        id: this.props.id,
-        name: this.props.name,
-        language: this.props.language,
-        value: serializedValue,
-      },
-    };
+    // the consumer only cares about the serializedValue, so it doesn't make sense to call
+    // onChange unless this value changes.
+    if (hasSerializedValueChanged) {
+      const fakeEvent = {
+        target: {
+          id: this.props.id,
+          name: this.props.name,
+          language: this.props.language,
+          value: serializedValue,
+        },
+      };
 
-    this.props.onChange(fakeEvent);
+      this.props.onChange(fakeEvent);
+    }
 
     if (hasInternalSlateValueChanged && !hasSerializedValueChanged) {
       // this way we force update if cursor or selection changes

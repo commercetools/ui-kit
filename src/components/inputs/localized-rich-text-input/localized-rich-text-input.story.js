@@ -2,6 +2,7 @@
 import React from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import {
   withKnobs,
   boolean,
@@ -25,6 +26,7 @@ class StoryWrapper extends React.Component {
       ...this.props.value,
       [event.target.language]: event.target.value,
     });
+    action('onChange')(event);
   };
 
   onClickExpand = () => {
