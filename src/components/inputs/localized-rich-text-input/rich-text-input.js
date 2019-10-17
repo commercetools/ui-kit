@@ -117,7 +117,7 @@ class RichTextInput extends React.PureComponent {
             // expand all multiline language inputs in case the
             // first one was expanded when all languages
             // are shown
-            if (!this.props.isCollapsed) {
+            if (this.props.isOpen) {
               this.props.expandAllTranslations();
             }
             this.props.toggleLanguages();
@@ -165,7 +165,6 @@ class RichTextInput extends React.PureComponent {
             'isOpen',
             'warning',
             'error',
-            'isCollapsed',
             'defaultExpandMultilineText',
             'hasWarning',
             'hasWarningOnRemainingLanguages',
@@ -191,8 +190,6 @@ RichTextInput.defaultProps = {
 
 RichTextInput.displayName = 'RichTextInput';
 
-RichTextInput.serialize = html.serialize;
-RichTextInput.deserialize = html.deserialize;
 RichTextInput.isEmpty = isEmpty;
 
 RichTextInput.propTypes = {
