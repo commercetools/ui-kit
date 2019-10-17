@@ -225,10 +225,6 @@ LocalizedRichTextInput.propTypes = {
   onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
 };
 
-LocalizedRichTextInput.serialize = RichTextInput.serialize;
-
-LocalizedRichTextInput.deserialize = RichTextInput.deserialize;
-
 LocalizedRichTextInput.getId = getId;
 
 LocalizedRichTextInput.getName = getName;
