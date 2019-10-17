@@ -9,7 +9,7 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import usePrevious from '../../../hooks/use-previous';
 import CollapsibleMotion from '../../collapsible-motion';
 import Spacings from '../../spacings';
-import { AngleUpIcon } from '../../icons';
+import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
@@ -146,14 +146,22 @@ const Editor = props => {
                   )
                 );
               })()}
-              {renderToggleButton && isOpen && (
+              {renderToggleButton && (
                 <React.Fragment>
                   <LeftColumn />
                   <RightColumn>
                     <FlatButton
                       onClick={toggle}
-                      label={intl.formatMessage(messages.collapse)}
-                      icon={<AngleUpIcon size="small" />}
+                      label={intl.formatMessage(
+                        isOpen ? messages.collapse : messages.expand
+                      )}
+                      icon={
+                        isOpen ? (
+                          <AngleUpIcon size="small" />
+                        ) : (
+                          <AngleDownIcon size="small" />
+                        )
+                      }
                     />
                   </RightColumn>
                 </React.Fragment>

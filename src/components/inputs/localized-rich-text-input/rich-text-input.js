@@ -113,15 +113,7 @@ class RichTextInput extends React.PureComponent {
       return (
         <LanguagesControlButton
           isClosed={true}
-          onClick={() => {
-            // expand all multiline language inputs in case the
-            // first one was expanded when all languages
-            // are shown
-            if (this.props.isOpen) {
-              this.props.expandAllTranslations();
-            }
-            this.props.toggleLanguages();
-          }}
+          onClick={this.props.toggleLanguages}
           remainingLanguages={this.props.remainingLanguages}
         />
       );
