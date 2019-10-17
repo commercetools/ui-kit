@@ -88,10 +88,6 @@ const LocalizedMultilineTextInput = props => {
     [expandedTranslationsDispatch]
   );
 
-  const expandAllTranslations = React.useCallback(() => {
-    expandedTranslationsDispatch({ type: 'toggleAll' });
-  }, [expandedTranslationsDispatch]);
-
   const languages = sortLanguages(
     props.selectedLanguage,
     Object.keys(props.value)
@@ -161,15 +157,7 @@ const LocalizedMultilineTextInput = props => {
                   return (
                     <LanguagesControl
                       isClosed={true}
-                      onClick={() => {
-                        // expand all multiline language inputs in case the
-                        // first one was expanded when all languages
-                        // are shown
-                        if (expandedTranslationsState[props.selectedLanguage]) {
-                          expandAllTranslations();
-                        }
-                        toggleLanguages();
-                      }}
+                      onClick={toggleLanguages}
                       remainingLanguages={languages.length - 1}
                     />
                   );

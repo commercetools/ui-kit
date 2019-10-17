@@ -84,10 +84,6 @@ const LocalizedRichTextInput = props => {
     [expandedTranslationsDispatch]
   );
 
-  const expandAllTranslations = React.useCallback(() => {
-    expandedTranslationsDispatch({ type: 'toggleAll' });
-  }, [expandedTranslationsDispatch]);
-
   const languages = sortLanguages(
     props.selectedLanguage,
     Object.keys(props.value)
@@ -160,7 +156,6 @@ const LocalizedRichTextInput = props => {
               isLastLanguage={isLastLanguage}
               hasErrorOnRemainingLanguages={hasErrorOnRemainingLanguages}
               hasWarningOnRemainingLanguages={hasWarningOnRemainingLanguages}
-              expandAllTranslations={expandAllTranslations}
               hasError={Boolean(
                 props.hasError || (props.errors && props.errors[language])
               )}

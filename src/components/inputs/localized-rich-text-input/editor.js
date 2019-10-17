@@ -152,11 +152,9 @@ const Editor = props => {
                   <RightColumn>
                     <FlatButton
                       onClick={toggle}
-                      label={
-                        isOpen
-                          ? intl.formatMessage(messages.collapse)
-                          : intl.formatMessage(messages.expand)
-                      }
+                      label={intl.formatMessage(
+                        isOpen ? messages.collapse : messages.expand
+                      )}
                       icon={
                         isOpen ? (
                           <AngleUpIcon size="small" />
