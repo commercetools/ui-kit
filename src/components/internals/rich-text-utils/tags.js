@@ -20,4 +20,5 @@ export const MARK_TAGS = {
   sup: 'superscript',
   sub: 'subscript',
   del: 'strikethrough',
+  span: 'span',
 };
