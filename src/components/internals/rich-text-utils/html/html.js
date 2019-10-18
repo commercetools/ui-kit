@@ -83,9 +83,7 @@ const rules = [
         const childNode = el.childNodes[0];
 
         if (styleAttribute) {
-          const styles = styleAttribute.split(';');
-
-          const marks = flatMap(styles, val => {
+          const marks = flatMap(styleAttribute.split(';'), val => {
             const split = val.trim().split(' ');
 
             const [key, ...values] = split;
