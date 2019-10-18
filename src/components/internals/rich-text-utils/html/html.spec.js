@@ -81,6 +81,15 @@ describe('html', () => {
           );
         });
       });
+      describe('with line breaks', () => {
+        it('should properly serialize', () => {
+          const htmlValue =
+            '<p><span style="text-decoration-line: underline;">Underline</span></p><p><span style="text-decoration-line: line-through;">Strikethrough</span></p>';
+          expect(html.serialize(html.deserialize(htmlValue))).toEqual(
+            '<p><u>Underline</u></p><p><del>Strikethrough</del></p>'
+          );
+        });
+      });
       describe('mixed', () => {
         it('should properly serialize', () => {
           const htmlValue =
