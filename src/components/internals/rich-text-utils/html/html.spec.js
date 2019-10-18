@@ -14,6 +14,15 @@ describe('html', () => {
       });
     });
     describe('with inline span styles', () => {
+      describe('with no styles', () => {
+        it('should properly serialize', () => {
+          const htmlValue = '<span>hello</span>';
+
+          expect(html.serialize(html.deserialize(htmlValue))).toEqual(
+            '<p><span>hello</span></p>'
+          );
+        });
+      });
       describe('with one known value', () => {
         it('should properly serialize', () => {
           const htmlValue = '<span style="font-weight: bold;">hello</span>';
@@ -69,6 +78,16 @@ describe('html', () => {
 
           expect(html.serialize(html.deserialize(htmlValue))).toEqual(
             '<p><strong><em><u><del>hello</del></u></em></strong></p>'
+          );
+        });
+      });
+      describe('mixed', () => {
+        it('should properly serialize', () => {
+          const htmlValue =
+            '<span style="font-weight: bold"><span style="font-style: italic;">hello</span></span>';
+
+          expect(html.serialize(html.deserialize(htmlValue))).toEqual(
+            '<p><strong><em>hello</em></strong></p>'
           );
         });
       });

@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import Html from 'slate-html-serializer';
+import flatMap from 'lodash/flatMap';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 
 const mapper = {
@@ -82,18 +83,18 @@ const rules = [
         const childNode = el.childNodes[0];
 
         if (styleAttribute) {
-          const marks = styleAttribute
-            .split(';')
-            .flatMap(val => {
-              const split = val.trim().split(' ');
+          const styles = styleAttribute.split(';');
 
-              const [key, ...values] = split;
+          const marks = flatMap(styles, val => {
+            const split = val.trim().split(' ');
 
-              return values.map(value => ({
-                // always remove the : from the key
-                [key.slice(0, -1)]: value,
-              }));
-            })
+            const [key, ...values] = split;
+
+            return values.map(value => ({
+              // always remove the : from the key
+              [key.slice(0, -1)]: value,
+            }));
+          })
             .map(val => {
               const [key, value] = Object.entries(val)[0];
               return mapper[key] && mapper[key][value];
