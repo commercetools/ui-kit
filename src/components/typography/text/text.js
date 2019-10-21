@@ -180,7 +180,11 @@ const Body = props => {
         title={props.title}
         {...filterDataAttributes(props)}
       >
-        {props.children}
+        {props.intlMessage ? (
+          <FormattedMessage {...props.intlMessage} />
+        ) : (
+          props.children
+        )}
       </BodyElement>
     );
   }
