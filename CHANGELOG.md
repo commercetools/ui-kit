@@ -1,3 +1,15 @@
+# [10.5.0](https://github.com/commercetools/ui-kit/compare/v10.4.0...v10.5.0) (2019-10-21)
+
+### Bug Fixes
+
+- `Button`s use not-allowed cursor on disabled ([#1114](https://github.com/commercetools/ui-kit/issues/1114)) ([2bd07f3](https://github.com/commercetools/ui-kit/commit/2bd07f32bff97d8f4980d935f00d30f57201ceeb))
+- `CollapsiblePanel` z-index fix when sticky ([#1115](https://github.com/commercetools/ui-kit/issues/1115)) ([f9c60a5](https://github.com/commercetools/ui-kit/commit/f9c60a500e07c1d7ae17c230d1e6f7be7741d261))
+- `LocalizedRichTextInput` make behavior match localized-multiline-text-input ([#1108](https://github.com/commercetools/ui-kit/issues/1108)) ([3de26c5](https://github.com/commercetools/ui-kit/commit/3de26c502ed70e116f2dd7e0eb73c5e22e42965c))
+
+### Features
+
+- `RichTextInput` support admin center rich text ([#1110](https://github.com/commercetools/ui-kit/issues/1110)) ([ec4615a](https://github.com/commercetools/ui-kit/commit/ec4615a3a4603144c1e6ae451191a8e890b53991))
+
 <a name="10.4.0"></a>
 
 ## [10.4.0](https://github.com/commercetools/ui-kit/compare/v10.3.0...v10.4.0) (2019-10-16)
