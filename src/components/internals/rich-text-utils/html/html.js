@@ -1,7 +1,28 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import Html from 'slate-html-serializer';
-import { MARK_TAGS, BLOCK_TAGS } from './tags';
+import flatMap from 'lodash/flatMap';
+import { MARK_TAGS, BLOCK_TAGS } from '../tags';
+
+const mapper = {
+  'font-weight': {
+    bold: 'strong',
+  },
+  'text-decoration-line': {
+    underline: 'u',
+    'line-through': 'del',
+  },
+  'text-decoration': {
+    underline: 'u',
+  },
+  'font-style': {
+    italic: 'em',
+  },
+  'vertical-align': {
+    sub: 'sub',
+    super: 'sup',
+  },
+};
 
 const rules = [
   {
@@ -52,6 +73,56 @@ const rules = [
       }
     },
   },
+
+  {
+    // Special case for code blocks, which need to grab the nested childNodes.
+    deserialize(el, next) {
+      if (el.tagName.toLowerCase() === 'span') {
+        const styleAttribute = el.getAttribute('style');
+        let tagName = 'span';
+        const childNode = el.childNodes[0];
+
+        if (styleAttribute) {
+          const marks = flatMap(styleAttribute.split(';'), val => {
+            const split = val.trim().split(' ');
+
+            const [key, ...values] = split;
+
+            return values.map(value => ({
+              // always remove the : from the key
+              [key.slice(0, -1)]: value,
+            }));
+          })
+            .map(val => {
+              const [key, value] = Object.entries(val)[0];
+              return mapper[key] && mapper[key][value];
+            })
+            .filter(val => Boolean(val));
+
+          let deepestNode = el;
+
+          if (marks && marks.length > 0) {
+            tagName = marks[0];
+
+            marks.forEach(mark => {
+              deepestNode.removeChild(childNode);
+              const newNode = document.createElement(mark);
+              newNode.appendChild(childNode);
+              deepestNode.appendChild(newNode);
+              deepestNode = newNode;
+            });
+          }
+        }
+
+        return {
+          object: 'mark',
+          type: MARK_TAGS[tagName],
+          nodes: next(el.childNodes),
+        };
+      }
+    },
+  },
+
   // Add a new rule that handles marks...
   {
     deserialize(el, next) {
@@ -68,6 +139,8 @@ const rules = [
       if (obj.object === 'mark') {
         // eslint-disable-next-line default-case
         switch (obj.type) {
+          case 'span':
+            return <span>{children}</span>;
           case 'bold':
             return <strong>{children}</strong>;
           case 'italic':
