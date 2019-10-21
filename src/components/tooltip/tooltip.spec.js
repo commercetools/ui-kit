@@ -141,7 +141,7 @@ describe('Tooltip', () => {
       // should show the tooltip
 
       await waitForElement(() => getByText('What kind of bear is best?'));
-      // // should remove the title
+      // should remove the title
       expect(button).toHaveProperty('title', '');
       fireEvent.mouseLeave(button);
       // should call callbacks
@@ -373,7 +373,7 @@ describe('when used with a custom popper wrapper component', () => {
     expect(onFocus).toHaveBeenCalled();
     expect(onOpen).toHaveBeenCalled();
 
-    // // should not render the tooltip inside of the main div
+    // should not render the tooltip inside of the main div
     const mainContainer = await waitForElement(() =>
       container.querySelector('#main')
     );
