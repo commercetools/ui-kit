@@ -73,7 +73,7 @@ describe('rendering', () => {
   describe('when using "linkTo"', () => {
     it('should navigate to link when clicked', async () => {
       const { getByLabelText, history } = render(
-        <SecondaryButton {...props} linkTo="/foo/bar" />
+        <SecondaryButton {...props} onClick={null} linkTo="/foo/bar" />
       );
       fireEvent.click(getByLabelText('Add'));
       await wait(() => {

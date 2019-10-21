@@ -8,7 +8,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
 
   const handleClick = React.useCallback(
     event => {
-      if (!props.isDisabled) return onClick(event);
+      if (!props.isDisabled && onClick) return onClick(event);
       // eslint-disable-next-line no-useless-return, consistent-return
       return;
     },
