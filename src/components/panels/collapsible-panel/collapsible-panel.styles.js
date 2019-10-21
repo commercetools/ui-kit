@@ -51,6 +51,7 @@ const getHeaderContainerStyles = ({ isDisabled, isOpen, isSticky, theme }) => {
     isSticky &&
       isOpen &&
       css`
+        z-index: 1;
         position: sticky;
         top: 0;
         border-top-right-radius: ${vars.borderRadius6};
