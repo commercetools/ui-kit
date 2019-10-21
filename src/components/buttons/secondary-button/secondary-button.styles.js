@@ -8,8 +8,6 @@ const getStateStyles = (isDisabled, isActive, theme) => {
       box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
       background-color: ${vars.colorAccent98};
       color: ${vars.colorNeutral60};
-      pointer-events: none;
-      cursor: not-allowed;
     `;
     switch (theme) {
       case 'info':
@@ -38,7 +36,6 @@ const getStateStyles = (isDisabled, isActive, theme) => {
           box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
           background-color: ${vars.colorAccent98};
           color: ${vars.colorNeutral60};
-          pointer-events: none;
         `,
     ];
     switch (theme) {

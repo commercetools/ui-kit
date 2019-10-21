@@ -31,14 +31,17 @@ describe('rendering', () => {
     expect(container).toContainElement(ref.current);
   });
   it('should be marked as "disabled"', () => {
+    const onClick = jest.fn();
     const { getByLabelText } = render(
-      <AccessibleButton {...props} isDisabled={true} />
+      <AccessibleButton {...props} onClick={onClick} isDisabled={true} />
     );
-    expect(getByLabelText('test-button')).toHaveAttribute('disabled');
-    expect(getByLabelText('test-button')).toHaveAttribute(
-      'aria-disabled',
-      'true'
-    );
+    const button = getByLabelText('test-button');
+
+    expect(button).toHaveAttribute('disabled');
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    button.click();
+    expect(onClick).not.toHaveBeenCalled();
   });
   it('should be marked as "active"', () => {
     const { getByLabelText } = render(

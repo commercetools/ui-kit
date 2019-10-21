@@ -3,43 +3,55 @@ import React from 'react';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const AccessibleButton = React.forwardRef((props, ref) => (
-  <button
-    id={props.id}
-    ref={ref}
-    type={props.type}
-    aria-label={props.label}
-    onClick={props.onClick}
-    css={css`
-      border: none;
-      background: none;
-      display: inline-block;
-      outline: 0;
-      padding: 0;
-      margin: 0;
-      white-space: nowrap;
-      cursor: pointer;
-      color: inherit;
-      font: inherit;
-      font-size: ${vars.fontSizeDefault};
-      font-family: inherit;
+const AccessibleButton = React.forwardRef((props, ref) => {
+  const { onClick } = props;
 
-      &:disabled {
-        pointer-events: none;
-      }
-    `}
-    // Allow to override the styles by passing a `className` prop.
-    // Custom styles can also be passed using the `css` prop from emotion.
-    // https://emotion.sh/docs/css-prop#style-precedence
-    className={props.className}
-    disabled={props.isDisabled}
-    aria-disabled={props.isDisabled}
-    {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
-    {...props.buttonAttributes}
-  >
-    {props.children}
-  </button>
-));
+  const handleClick = React.useCallback(
+    event => {
+      if (!props.isDisabled) return onClick(event);
+      // eslint-disable-next-line no-useless-return, consistent-return
+      return;
+    },
+    [onClick, props.isDisabled]
+  );
+  return (
+    <button
+      id={props.id}
+      ref={ref}
+      type={props.type}
+      aria-label={props.label}
+      onClick={handleClick}
+      css={css`
+        border: none;
+        background: none;
+        display: inline-block;
+        outline: 0;
+        padding: 0;
+        margin: 0;
+        white-space: nowrap;
+        cursor: pointer;
+        color: inherit;
+        font: inherit;
+        font-size: ${vars.fontSizeDefault};
+        font-family: inherit;
+
+        &:disabled {
+          cursor: not-allowed;
+        }
+      `}
+      // Allow to override the styles by passing a `className` prop.
+      // Custom styles can also be passed using the `css` prop from emotion.
+      // https://emotion.sh/docs/css-prop#style-precedence
+      className={props.className}
+      disabled={props.isDisabled}
+      aria-disabled={props.isDisabled}
+      {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
+      {...props.buttonAttributes}
+    >
+      {props.children}
+    </button>
+  );
+});
 AccessibleButton.displayName = 'AccessibleButton';
 AccessibleButton.propTypes = {
   id: PropTypes.string,
