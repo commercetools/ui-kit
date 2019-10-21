@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { act } from 'react-dom/test-utils';
-import { render, fireEvent } from '../../test-utils';
+import { render, fireEvent, waitForElement } from '../../test-utils';
 import Tooltip from './tooltip';
 
-jest.mock('popper.js');
 jest.useFakeTimers();
 
 const Portal = props => {
@@ -98,13 +97,14 @@ describe('Tooltip', () => {
     expect(button).toHaveProperty('title', 'What kind of bear is best?');
   });
 
-  it('should set aria-describedby on button when open', () => {
+  it('should set aria-describedby on button when open', async () => {
     const { container } = render(
       <TestComponent id="my-tooltip" isOpen={true} />
     );
-    expect(
+
+    await waitForElement(() =>
       container.querySelector("[aria-describedby='my-tooltip']")
-    ).toBeInTheDocument();
+    );
   });
 
   it('should not set aria-describedby on button when not open', () => {
@@ -117,7 +117,7 @@ describe('Tooltip', () => {
   });
 
   describe('interacting with mouse', () => {
-    it('should show tooltip', () => {
+    it('should show tooltip', async () => {
       const onMouseOver = jest.fn();
       const onMouseLeave = jest.fn();
       const onClose = jest.fn();
@@ -132,13 +132,15 @@ describe('Tooltip', () => {
         />
       );
 
-      const button = getByText('Submit');
+      const button = await waitForElement(() => getByText('Submit'));
+
       fireEvent.mouseOver(button);
       // should call callbacks
       expect(onMouseOver).toHaveBeenCalled();
       expect(onOpen).toHaveBeenCalled();
       // should show the tooltip
-      expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+
+      await waitForElement(() => getByText('What kind of bear is best?'));
       // should remove the title
       expect(button).toHaveProperty('title', '');
       fireEvent.mouseLeave(button);
@@ -152,7 +154,7 @@ describe('Tooltip', () => {
     });
   });
   describe('interacting with keyboard', () => {
-    it('should show tooltip', () => {
+    it('should show tooltip', async () => {
       const onFocus = jest.fn();
       const onBlur = jest.fn();
       const onClose = jest.fn();
@@ -165,13 +167,13 @@ describe('Tooltip', () => {
           onBlur={onBlur}
         />
       );
-      const button = getByText('Submit');
+      const button = await waitForElement(() => getByText('Submit'));
       fireEvent.focus(button);
       // should call callbacks
       expect(onFocus).toHaveBeenCalled();
       expect(onOpen).toHaveBeenCalled();
       // should show the tooltip
-      expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+      await waitForElement(() => getByText('What kind of bear is best?'));
       // should remove the title
       expect(button).toHaveProperty('title', '');
       fireEvent.blur(button);
@@ -185,7 +187,7 @@ describe('Tooltip', () => {
     });
   });
   describe('with leave delay', () => {
-    it('should show tooltip for duration of delay', () => {
+    it('should show tooltip for duration of delay', async () => {
       const onFocus = jest.fn();
       const onBlur = jest.fn();
       const onOpen = jest.fn();
@@ -201,13 +203,13 @@ describe('Tooltip', () => {
         />
       );
 
-      const button = getByText('Submit');
+      const button = await waitForElement(() => getByText('Submit'));
       fireEvent.focus(button);
       // should call callbacks
       expect(onFocus).toHaveBeenCalled();
       expect(onOpen).toHaveBeenCalled();
       // should show the tooltip
-      expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+      await waitForElement(() => getByText('What kind of bear is best?'));
       fireEvent.blur(button);
       // should call callback
       expect(onBlur).toHaveBeenCalled();
@@ -223,7 +225,7 @@ describe('Tooltip', () => {
     });
   });
   describe('when controlled with open prop', () => {
-    it('should open and close based on open prop', () => {
+    it('should open and close based on open prop', async () => {
       const { queryByText, getByText, getByLabelText } = render(
         <TestComponent isOpen={false} />
       );
@@ -233,7 +235,7 @@ describe('Tooltip', () => {
       expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
       toggleButton.click();
       // should show the tooltip
-      expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+      await waitForElement(() => getByText('What kind of bear is best?'));
       toggleButton.click();
       // tooltip should be hidden
       expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
@@ -265,7 +267,7 @@ BodyComponent.propTypes = {
 };
 
 describe('when used with a custom body component', () => {
-  it('should render custom body and interact with keyboard', () => {
+  it('should render custom body and interact with keyboard', async () => {
     const onFocus = jest.fn();
     const onBlur = jest.fn();
     const onClose = jest.fn();
@@ -286,9 +288,9 @@ describe('when used with a custom body component', () => {
     expect(onFocus).toHaveBeenCalled();
     expect(onOpen).toHaveBeenCalled();
     // should show the tooltip and show the custom body
-    expect(
+    await waitForElement(() =>
       container.querySelector("[data-testid='tooltip-custom-body']")
-    ).toBeInTheDocument();
+    );
 
     expect(getByText('What kind of bear is best?')).toBeInTheDocument();
     // should remove the title
@@ -305,7 +307,7 @@ describe('when used with a custom body component', () => {
 });
 
 describe('when used with a custom wrapper component', () => {
-  it('should render custom wrapper and interact with keyboard', () => {
+  it('should render custom wrapper and interact with keyboard', async () => {
     const onFocus = jest.fn();
     const onBlur = jest.fn();
     const onClose = jest.fn();
@@ -331,7 +333,7 @@ describe('when used with a custom wrapper component', () => {
     expect(onFocus).toHaveBeenCalled();
     expect(onOpen).toHaveBeenCalled();
     // should show the tooltip
-    expect(getByText('What kind of bear is best?')).toBeInTheDocument();
+    await waitForElement(() => getByText('What kind of bear is best?'));
     // should remove the title
     expect(button).toHaveProperty('title', '');
     fireEvent.blur(button);
@@ -346,7 +348,7 @@ describe('when used with a custom wrapper component', () => {
 });
 
 describe('when used with a custom popper wrapper component', () => {
-  it('should render tooltip inside custom popper wrapper and interact with keyboard', () => {
+  it('should render tooltip inside custom popper wrapper and interact with keyboard', async () => {
     const onFocus = jest.fn();
     const onBlur = jest.fn();
     const onClose = jest.fn();
@@ -365,14 +367,16 @@ describe('when used with a custom popper wrapper component', () => {
       />
     );
 
-    const button = getByText('Submit');
+    const button = await waitForElement(() => getByText('Submit'));
     fireEvent.focus(button);
     // should call callbacks
     expect(onFocus).toHaveBeenCalled();
     expect(onOpen).toHaveBeenCalled();
 
-    // should not render the tooltip inside of the main div\
-    const mainContainer = container.querySelector('#main');
+    // should not render the tooltip inside of the main div
+    const mainContainer = await waitForElement(() =>
+      container.querySelector('#main')
+    );
     expect(
       mainContainer.querySelector("[data-testid='tooltip-custom-body']")
     ).not.toBeInTheDocument();

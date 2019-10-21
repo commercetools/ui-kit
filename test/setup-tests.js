@@ -6,6 +6,17 @@ global.window.app = {
   mcApiUrl: 'http://localhost:8080',
 };
 
+if (global.document) {
+  document.createRange = () => ({
+    setStart: () => {},
+    setEnd: () => {},
+    commonAncestorContainer: {
+      nodeName: 'BODY',
+      ownerDocument: document,
+    },
+  });
+}
+
 // setup file
 const logOrThrow = (log, method, messages) => {
   const warning = `console.${method} calls not allowed in tests`;
