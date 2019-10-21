@@ -1,3 +1,9 @@
+## [10.5.1](https://github.com/commercetools/ui-kit/compare/v10.5.0...v10.5.1) (2019-10-21)
+
+### Bug Fixes
+
+- `Button`s: fix onClick bug ([#1118](https://github.com/commercetools/ui-kit/issues/1118)) ([f6b7808](https://github.com/commercetools/ui-kit/commit/f6b7808f29719b1d018209d1d4121423fccffc37))
+
 # [10.5.0](https://github.com/commercetools/ui-kit/compare/v10.4.0...v10.5.0) (2019-10-21)
 
 ### Bug Fixes
