@@ -8,6 +8,7 @@ import usePopper from 'use-popper';
 import useToggleState from '../../hooks/use-toggle-state';
 import useFieldId from '../../hooks/use-field-id';
 import createSequentialId from '../../utils/create-sequential-id';
+import SafeHTMLElement from '../../utils/helpers/safeHTMLElement';
 import { Body, getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
@@ -269,7 +270,7 @@ Tooltip.propTypes = {
       padding: PropTypes.number,
       boundariesElement: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.instanceOf(HTMLElement),
+        PropTypes.instanceOf(SafeHTMLElement),
       ]),
     }),
     keepTogether: PropTypes.shape({
@@ -283,7 +284,7 @@ Tooltip.propTypes = {
       fn: PropTypes.func,
       element: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.instanceOf(HTMLElement),
+        PropTypes.instanceOf(SafeHTMLElement),
       ]),
     }),
     flip: PropTypes.shape({
@@ -297,7 +298,7 @@ Tooltip.propTypes = {
       padding: PropTypes.number,
       boundariesElement: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.instanceOf(HTMLElement),
+        PropTypes.instanceOf(SafeHTMLElement),
       ]),
     }),
     inner: PropTypes.shape({
