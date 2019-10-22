@@ -9,7 +9,7 @@ import renderEditor from './editor';
 import LanguagesControlButton from './languages-control';
 import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
-import createLocalizedString from '../../internals/rich-text-utils/create-localized-string';
+import { createLocalizedString } from '../../internals/rich-text-utils/localized';
 import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
