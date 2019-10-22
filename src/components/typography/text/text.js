@@ -21,6 +21,15 @@ const intlMessageShape = PropTypes.shape({
   defaultMessage: PropTypes.string.isRequired,
 });
 
+const Text = ({ intlMessage, children }) =>
+  intlMessage ? <FormattedMessage {...intlMessage} /> : children;
+
+Text.displayName = 'Text';
+Text.propTypes = {
+  intlMessage: intlMessageShape,
+  children: PropTypes.node,
+};
+
 const nonEmptyString = (props, propName, componentName) => {
   const value = props[propName];
   if (typeof value === 'string' && !value)
@@ -38,11 +47,7 @@ const Headline = props => {
       title={props.title}
       {...filterDataAttributes(props)}
     >
-      {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
-      ) : (
-        props.children
-      )}
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
     </HeadlineElement>
   );
 };
@@ -95,11 +100,7 @@ const Subheadline = props => {
       css={theme => subheadlineStyles(props, theme)}
       {...filterDataAttributes(props)}
     >
-      {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
-      ) : (
-        props.children
-      )}
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
     </SubheadlineElement>
   );
 };
@@ -155,11 +156,7 @@ const Wrap = props => (
     title={props.title}
     {...filterDataAttributes(props)}
   >
-    {props.intlMessage ? (
-      <FormattedMessage {...props.intlMessage} />
-    ) : (
-      props.children
-    )}
+    <Text intlMessage={props.intlMessage}>{props.children}</Text>
   </div>
 );
 
@@ -180,7 +177,7 @@ const Body = props => {
         title={props.title}
         {...filterDataAttributes(props)}
       >
-        {props.children}
+        <Text intlMessage={props.intlMessage}>{props.children}</Text>
       </BodyElement>
     );
   }
@@ -191,11 +188,7 @@ const Body = props => {
       title={props.title}
       {...filterDataAttributes(props)}
     >
-      {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
-      ) : (
-        props.children
-      )}
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
     </span>
   ) : (
     <p
@@ -203,11 +196,7 @@ const Body = props => {
       title={props.title}
       {...filterDataAttributes(props)}
     >
-      {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
-      ) : (
-        props.children
-      )}
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
     </p>
   );
 };
@@ -254,11 +243,7 @@ const Detail = props => (
     title={props.title}
     {...filterDataAttributes(props)}
   >
-    {props.intlMessage ? (
-      <FormattedMessage {...props.intlMessage} />
-    ) : (
-      props.children
-    )}
+    <Text intlMessage={props.intlMessage}>{props.children}</Text>
   </small>
 );
 

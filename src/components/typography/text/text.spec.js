@@ -192,6 +192,13 @@ describe('<Body>', () => {
       );
       expect(container.querySelector('span')).toBeInTheDocument();
     });
+
+    it('should render given text with react-intl', () => {
+      const { container } = render(
+        <Text.Body title="tooltip text" intlMessage={intlMessage} as="span" />
+      );
+      expect(container).toHaveTextContent('Hello');
+    });
   });
 });
 
