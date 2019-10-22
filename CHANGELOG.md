@@ -1,3 +1,13 @@
+## [10.6.0](https://github.com/commercetools/ui-kit/compare/v10.5.1...v10.6.0) (2019-10-22)
+
+### Bug Fixes
+
+- `Typography`: fix Text.Body to use intlMessage when 'as' prop is present ([#1122](https://github.com/commercetools/ui-kit/pull/1122))
+
+### Features
+
+- `SelectInput`s: allow `inputValue` prop ([#1121](https://github.com/commercetools/ui-kit/pull/1121))
+
 ## [10.5.1](https://github.com/commercetools/ui-kit/compare/v10.5.0...v10.5.1) (2019-10-21)
 
 ### Bug Fixes
