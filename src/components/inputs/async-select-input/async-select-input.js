@@ -59,6 +59,7 @@ const AsyncSelectInput = props => {
           // This makes it easier to less confusing to use with <label />s.
           id={props.containerId}
           inputId={props.id}
+          inputValue={props.inputValue}
           isClearable={props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
@@ -166,7 +167,7 @@ AsyncSelectInput.propTypes = {
   filterOption: PropTypes.func,
   // This forwarded as react-select's "inputId"
   id: PropTypes.string,
-  // inputValue: PropTypes.string,
+  inputValue: PropTypes.string,
   // This is forwarded as react-select's "id"
   containerId: PropTypes.string,
   isClearable: PropTypes.bool,
