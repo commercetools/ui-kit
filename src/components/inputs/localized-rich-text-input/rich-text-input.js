@@ -141,7 +141,7 @@ class RichTextInput extends React.PureComponent {
         id={this.props.id}
         name={this.props.name}
         disabled={this.props.isDisabled}
-        readOnly={this.props.isReadOnly}
+        readOnly={this.props.isReadOnly || this.props.isDisabled}
         value={this.internalSlateValue}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
