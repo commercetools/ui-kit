@@ -127,7 +127,7 @@ class RichTextInput extends React.PureComponent {
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         disabled={this.props.isDisabled}
-        readOnly={this.props.isReadOnly}
+        readOnly={this.props.isReadOnly || this.props.isDisabled}
         value={this.internalSlateValue}
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
