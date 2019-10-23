@@ -24,7 +24,7 @@ import {
 import createSequentialId from '../../../utils/create-sequential-id';
 import LanguagesButton from './languages-button';
 import TextInput from '../text-input';
-import messages from './messages';
+import messages from '../../internals/messages/localized-input';
 import {
   getLocalizedInputStyles,
   getLanguageLabelStyles,
