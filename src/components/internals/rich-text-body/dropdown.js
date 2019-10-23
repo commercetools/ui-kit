@@ -70,7 +70,7 @@ const Dropdown = props => {
         return (
           <div>
             <Tooltip
-              title={intl.formatMessage(messages.styleDropdownTooltipTitle)}
+              title={intl.formatMessage(messages.styleDropdownLabel)}
               placement="bottom"
               off={isOpen}
               style={{ body: { zIndex: 9999 } }}

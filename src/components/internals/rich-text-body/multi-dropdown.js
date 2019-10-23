@@ -64,9 +64,7 @@ const MultiDownshift = props => {
         return (
           <div>
             <Tooltip
-              title={intl.formatMessage(
-                messages.moreStylesDropdownTooltipTitle
-              )}
+              title={intl.formatMessage(messages.moreStylesDropdownLabel)}
               placement="bottom"
               off={isOpen}
               styles={{ body: { zIndex: 99999 } }}
