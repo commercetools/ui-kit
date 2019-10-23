@@ -224,6 +224,26 @@ const DefaultRoute = () => (
         onClickExpand={() => {}}
       />
     </Spec>
+    <Spec label="when disabled" omitPropsList>
+      <LocalizedRichTextInput
+        value={initialValue}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint="m"
+        isDisabled={true}
+        onClickExpand={() => {}}
+      />
+    </Spec>
+    <Spec label="when readonly" omitPropsList>
+      <LocalizedRichTextInput
+        value={initialValue}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint="m"
+        isReadOnly={true}
+        onClickExpand={() => {}}
+      />
+    </Spec>
   </Suite>
 );
 
