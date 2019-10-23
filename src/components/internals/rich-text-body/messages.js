@@ -38,8 +38,8 @@ export default defineMessages({
   },
   orderedListButtonLabel: {
     id: 'UIKit.RichTextBody.orderedListButtonLabel',
-    description: 'Label for the ordered list button',
-    defaultMessage: 'Ordered list',
+    description: 'Label for the numbered list button',
+    defaultMessage: 'Numbered list',
   },
   redoButtonLabel: {
     id: 'UIKit.RichTextBody.redoButtonLabel',
@@ -103,7 +103,7 @@ export default defineMessages({
   },
   unorderedListButtonLabel: {
     id: 'UIKit.RichTextBody.unorderedListButtonLabel',
-    description: 'Label for the unordered list button',
-    defaultMessage: 'Unordered list',
+    description: 'Label for the bullet list button',
+    defaultMessage: 'Bullet list',
   },
 });
