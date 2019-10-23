@@ -48,8 +48,6 @@
   "UIKit.RichTextBody.underlinedButtonLabel": "Underline",
   "UIKit.RichTextBody.undoButtonLabel": "Undo",
   "UIKit.RichTextBody.unorderedListButtonLabel": "Unordered list",
-  "UIKit.RichTextInput.collapse": "Collapse",
-  "UIKit.RichTextInput.expand": "Expand",
   "UIKit.SelectInput.noOptionsMessageWithInputValue": "No options",
   "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "No options",
   "UIKit.SelectInput.placeholder": "Select...",
