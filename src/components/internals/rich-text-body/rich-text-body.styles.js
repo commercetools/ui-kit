@@ -86,20 +86,28 @@ export const Toolbar = styled.div`
   }
 `;
 
-const reset = () => css`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-  }
-  p {
-    margin: 0;
-    line-height: 22px;
-  }
-`;
+const reset = props => {
+  const base = props.isDisabled
+    ? css`
+        color: ${vars.fontColorForInputWhenDisabled};
+      `
+    : css``;
+  return css`
+    ${base}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      line-height: 22px;
+    }
+  `;
+};
 
 export const EditorContainer = styled.div`
   padding: 4px ${vars.spacingS};

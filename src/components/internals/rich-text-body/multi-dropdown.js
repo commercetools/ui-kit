@@ -76,6 +76,7 @@ const MultiDownshift = props => {
                   isIndeterminate,
                   isStyleButton: false,
                   isOpen,
+                  isDisabled: props.isDisabled,
                 })}
               >
                 <MoreStylesIcon size="medium" />
@@ -135,6 +136,7 @@ MultiDownshift.propTypes = {
   ).isRequired,
   onSelect: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
+  isDisabled: PropTypes.bool,
 };
 
 MultiDownshift.displayName = 'MultiDownshift';

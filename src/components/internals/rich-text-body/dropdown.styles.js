@@ -54,6 +54,14 @@ const getButtonStyles = (props = { isStyleButton: true }) => [
         }
       }
     `,
+  props.isDisabled &&
+    css`
+      color: ${vars.colorNeutral60};
+
+      * {
+        fill: ${vars.colorNeutral60};
+      }
+    `,
 ];
 
 const DropdownContainer = styled.div`

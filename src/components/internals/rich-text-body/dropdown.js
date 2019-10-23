@@ -78,7 +78,11 @@ const Dropdown = props => {
               <Button
                 {...toggleButtonProps}
                 label={props.label}
-                css={getButtonStyles({ isOpen, isStyleButton: true })}
+                css={getButtonStyles({
+                  isOpen,
+                  isStyleButton: true,
+                  isDisabled: props.isDisabled,
+                })}
               >
                 <DropdownLabel>{props.label}</DropdownLabel>
               </Button>
@@ -123,6 +127,7 @@ Dropdown.displayName = 'Dropdown';
 Dropdown.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
+  isDisabled: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
