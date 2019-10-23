@@ -12,7 +12,7 @@ import addStaticFields from '../../../utils/add-static-fields';
 import ClearIndicator from '../../internals/clear-indicator';
 import TagRemove from '../../internals/tag-remove';
 import DropdownIndicator from '../../internals/dropdown-indicator';
-import messages from './messages';
+import messages from '../../internals/messages/select';
 import createSelectStyles from '../../internals/create-select-styles';
 
 const useTheme = () => useContext(ThemeContext);
