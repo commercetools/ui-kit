@@ -10,7 +10,7 @@ const LanguagesButton = props => {
   return props.isOpen ? (
     <FlatButton
       icon={<WorldIcon />}
-      label={intl.formatMessage(messages.collapse, {
+      label={intl.formatMessage(messages.hide, {
         remainingLanguages: props.remainingLanguages,
       })}
       onClick={props.onClick}
@@ -19,7 +19,7 @@ const LanguagesButton = props => {
   ) : (
     <FlatButton
       icon={<WorldIcon />}
-      label={intl.formatMessage(messages.expand, {
+      label={intl.formatMessage(messages.show, {
         remainingLanguages: props.remainingLanguages,
       })}
       onClick={props.onClick}
