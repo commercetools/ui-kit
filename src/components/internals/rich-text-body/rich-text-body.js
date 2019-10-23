@@ -194,7 +194,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             options={styleDropdownOptions}
           />
           <Tooltip
-            title={intl.formatMessage(messages.boldTooltipTitle)}
+            title={intl.formatMessage(messages.boldButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
@@ -210,7 +210,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             </Button>
           </Tooltip>
           <Tooltip
-            title={intl.formatMessage(messages.italicTooltipTitle)}
+            title={intl.formatMessage(messages.italicButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
@@ -226,7 +226,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             </Button>
           </Tooltip>
           <Tooltip
-            title={intl.formatMessage(messages.underlinedTooltipTitle)}
+            title={intl.formatMessage(messages.underlinedButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
@@ -249,7 +249,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
           />
           <Divider />
           <Tooltip
-            title={intl.formatMessage(messages.orderedListTooltipTitle)}
+            title={intl.formatMessage(messages.orderedListButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
@@ -265,7 +265,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             </Button>
           </Tooltip>
           <Tooltip
-            title={intl.formatMessage(messages.unorderedListTooltipTitle)}
+            title={intl.formatMessage(messages.unorderedListButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
@@ -292,7 +292,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
           `}
         >
           <Tooltip
-            title={intl.formatMessage(messages.undoTooltipTitle)}
+            title={intl.formatMessage(messages.undoButtonLabel)}
             placement="bottom"
             off={!hasUndos}
           >
@@ -306,7 +306,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             </Button>
           </Tooltip>
           <Tooltip
-            title={intl.formatMessage(messages.redoTooltipTitle)}
+            title={intl.formatMessage(messages.redoButtonLabel)}
             placement="bottom"
             off={!hasRedos}
           >
@@ -323,7 +323,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             <React.Fragment>
               <Divider />
               <Tooltip
-                title={intl.formatMessage(messages.expandTooltipTitle)}
+                title={intl.formatMessage(messages.expandButtonLabel)}
                 placement="bottom-end"
               >
                 <Button

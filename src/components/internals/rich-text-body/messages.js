@@ -6,19 +6,9 @@ export default defineMessages({
     description: 'Label for the bold button',
     defaultMessage: 'Bold',
   },
-  boldTooltipTitle: {
-    id: 'UIKit.RichTextBody.boldTooltipTitle',
-    description: 'Title for the bold tooltip',
-    defaultMessage: 'Bold',
-  },
   expandButtonLabel: {
     id: 'UIKit.RichTextBody.expandButtonLabel',
     description: 'Label for the expand button',
-    defaultMessage: 'Expand',
-  },
-  expandTooltipTitle: {
-    id: 'UIKit.RichTextBody.expandTooltipTitle',
-    description: 'Title for the expand tooltip',
     defaultMessage: 'Expand',
   },
   italicButtonLabel: {
@@ -26,19 +16,9 @@ export default defineMessages({
     description: 'Label for the italic button',
     defaultMessage: 'Italic',
   },
-  italicTooltipTitle: {
-    id: 'UIKit.RichTextBody.italicTooltipTitle',
-    description: 'Title for the italic tooltip',
-    defaultMessage: 'Italic',
-  },
   moreStylesDropdownLabel: {
     id: 'UIKit.RichTextBody.moreStylesDropdownLabel',
     description: 'Label for the more styles dropdown',
-    defaultMessage: 'More styles',
-  },
-  moreStylesDropdownTooltipTitle: {
-    id: 'UIKit.RichTextBody.moreStylesDropdownTooltipTitle',
-    description: 'Title for the more styles tooltip',
     defaultMessage: 'More styles',
   },
   moreStylesDropdownOptionStrikethrough: {
@@ -61,29 +41,14 @@ export default defineMessages({
     description: 'Label for the ordered list button',
     defaultMessage: 'Ordered list',
   },
-  orderedListTooltipTitle: {
-    id: 'UIKit.RichTextBody.orderedListTooltipTitle',
-    description: 'Title for the ordered list tooltip',
-    defaultMessage: 'Ordered list',
-  },
   redoButtonLabel: {
     id: 'UIKit.RichTextBody.redoButtonLabel',
     description: 'Label for the redo button',
     defaultMessage: 'Redo',
   },
-  redoTooltipTitle: {
-    id: 'UIKit.RichTextBody.redoTooltipTitle',
-    description: 'Title for the redo tooltip',
-    defaultMessage: 'Redo',
-  },
   styleDropdownLabel: {
     id: 'UIKit.RichTextBody.styleDropdownLabel',
     description: 'Label for the style dropdown',
-    defaultMessage: 'Style',
-  },
-  styleDropdownTooltipTitle: {
-    id: 'UIKit.RichTextBody.styleDropdownTooltip',
-    description: 'Tooltip for the style dropdown tooltip',
     defaultMessage: 'Text styles',
   },
   styleDropdownOptionParagraph: {
@@ -131,29 +96,14 @@ export default defineMessages({
     description: 'Label for the underline button',
     defaultMessage: 'Underline',
   },
-  underlinedTooltipTitle: {
-    id: 'UIKit.RichTextBody.underlinedTooltipTitle',
-    description: 'Title for the underline tooltip',
-    defaultMessage: 'Underline',
-  },
   undoButtonLabel: {
     id: 'UIKit.RichTextBody.undoButtonLabel',
     description: 'Label for the undo button',
     defaultMessage: 'Undo',
   },
-  undoTooltipTitle: {
-    id: 'UIKit.RichTextBody.undoTooltipTitle',
-    description: 'Title for the undo tooltip',
-    defaultMessage: 'Undo',
-  },
   unorderedListButtonLabel: {
     id: 'UIKit.RichTextBody.unorderedListButtonLabel',
     description: 'Label for the unordered list button',
-    defaultMessage: 'Unordered list',
-  },
-  unorderedListTooltipTitle: {
-    id: 'UIKit.RichTextBody.unorderedListTooltipTitle',
-    description: 'Title for the unordered list tooltip',
     defaultMessage: 'Unordered list',
   },
 });
