@@ -1,3 +1,11 @@
+## [10.6.1](https://github.com/commercetools/ui-kit/compare/v10.6.0...v10.6.1) (2019-10-23)
+
+### Bug Fixes
+
+- use SafeHTMLElement ([#1126](https://github.com/commercetools/ui-kit/issues/1126)) ([d13ef9f](https://github.com/commercetools/ui-kit/commit/d13ef9f6a3c4c223dd8c5c41eeafb7233d4e8e38))
+- `LocalizedRichTextInput`, `RichTextInput`: disabled state fix ([#1128](https://github.com/commercetools/ui-kit/pull/1128))
+- `LocalizedRichTextInput`: fixes `LocalizedRichTextInput.createLocalizedString` ([#1125](https://github.com/commercetools/ui-kit/issues/1125)) ([e645e21](https://github.com/commercetools/ui-kit/commit/e645e2161ae2a2c5d0523fffd118837cec8b528d))
+
 ## [10.6.0](https://github.com/commercetools/ui-kit/compare/v10.5.1...v10.6.0) (2019-10-22)
 
 ### Bug Fixes
