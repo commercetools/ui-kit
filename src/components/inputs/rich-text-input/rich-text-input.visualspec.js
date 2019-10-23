@@ -302,7 +302,7 @@ describe('RichTextInput', () => {
     await selectAllText(input);
     await input.press('Backspace');
     // get and click unordered list button
-    const unorderedListButton = await getByLabelText(doc, 'Unordered list');
+    const unorderedListButton = await getByLabelText(doc, 'Bullet list');
     await unorderedListButton.click();
 
     await input.type('Item 1');
@@ -321,7 +321,7 @@ describe('RichTextInput', () => {
     // now switch to an ordered list
 
     await selectAllText(input);
-    const orderedListButton = await getByLabelText(doc, 'Ordered list');
+    const orderedListButton = await getByLabelText(doc, 'Numbered list');
     await orderedListButton.click();
 
     // ul should not be in the document
