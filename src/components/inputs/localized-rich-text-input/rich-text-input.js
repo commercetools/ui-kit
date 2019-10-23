@@ -9,7 +9,6 @@ import renderEditor from './editor';
 import LanguagesControlButton from './languages-control';
 import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
-import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
   serializedValue = this.props.value || '';
@@ -181,8 +180,6 @@ RichTextInput.defaultProps = {
 };
 
 RichTextInput.displayName = 'RichTextInput';
-
-RichTextInput.isEmpty = isEmpty;
 
 RichTextInput.propTypes = {
   defaultExpandMultilineText: PropTypes.bool,

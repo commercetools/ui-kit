@@ -6,14 +6,13 @@ import MarkPlugin from './plugins/mark';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import PlaceholderPlugin from './plugins/placeholder';
 import { BLOCK_TAGS, MARK_TAGS } from '../rich-text-utils/tags';
-import isEmpty from '../rich-text-utils/is-empty';
 
 const plugins = [
   {
     queries: {
       // used for the placeholder plugin
       shouldUsePlaceholder: editor => {
-        const isEditorEmpty = isEmpty(editor.value);
+        const isEditorEmpty = editor.value.document.text === '';
         const hasOneNode =
           editor.value.document.nodes.map(node => node.text).toArray()
             .length === 1;
