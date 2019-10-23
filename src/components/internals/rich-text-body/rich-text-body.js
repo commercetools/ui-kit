@@ -192,6 +192,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             value={activeBlock}
             onChange={onClickBlock}
             options={styleDropdownOptions}
+            isDisabled={props.isDisabled}
+            isReadOnly={props.isReadOnly}
           />
           <Tooltip
             title={intl.formatMessage(messages.boldButtonLabel)}
@@ -203,6 +205,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.value.selection.isFocused &&
                 props.editor.hasBoldMark()
               }
+              isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.boldButtonLabel)}
               onClick={props.editor.toggleBoldMark}
             >
@@ -219,6 +223,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.value.selection.isFocused &&
                 props.editor.hasItalicMark()
               }
+              isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.italicButtonLabel)}
               onClick={props.editor.toggleItalicMark}
             >
@@ -235,6 +241,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.value.selection.isFocused &&
                 props.editor.hasUnderlinedMark()
               }
+              isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.underlinedButtonLabel)}
               onClick={props.editor.toggleUnderlinedMark}
             >
@@ -246,6 +254,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             dropdownOptions={dropdownOptions}
             selectedItems={activeMoreStyleMarks}
             onSelect={onChangeMoreStyles}
+            isDisabled={props.isDisabled}
+            isReadOnly={props.isReadOnly}
           />
           <Divider />
           <Tooltip
@@ -258,6 +268,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.value.selection.isFocused &&
                 props.editor.hasNumberedListBlock()
               }
+              isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.orderedListButtonLabel)}
               onClick={props.editor.toggleNumberedListBlock}
             >
@@ -274,6 +286,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.value.selection.isFocused &&
                 props.editor.hasBulletedListBlock()
               }
+              isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.unorderedListButtonLabel)}
               onClick={props.editor.toggleBulletedListBlock}
             >
@@ -299,7 +313,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             <Button
               isActive={false}
               label={intl.formatMessage(messages.undoButtonLabel)}
-              isDisabled={!hasUndos}
+              isDisabled={!hasUndos || props.isDisabled}
+              isReadOnly={props.isReadOnly}
               onClick={props.editor.toggleUndo}
             >
               <UndoIcon size="medium" />
@@ -313,7 +328,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             <Button
               isActive={false}
               label={intl.formatMessage(messages.redoButtonLabel)}
-              isDisabled={!hasRedos}
+              isDisabled={!hasRedos || props.isDisabled}
+              isReadOnly={props.isReadOnly}
               onClick={props.editor.toggleRedo}
             >
               <RedoIcon size="medium" />
@@ -328,6 +344,8 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               >
                 <Button
                   isActive={false}
+                  isDisabled={props.isDisabled}
+                  isReadOnly={props.isReadOnly}
                   label={intl.formatMessage(messages.expandButtonLabel)}
                   onClick={props.onClickExpand}
                 >

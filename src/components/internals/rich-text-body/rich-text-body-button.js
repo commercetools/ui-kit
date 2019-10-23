@@ -4,7 +4,7 @@ import omit from 'lodash/omit';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const propsToOmit = ['isActive', 'label', 'isDisabled'];
+const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
 
 function getFillColor(props) {
   if (props.isActive) return vars.colorSurface;
@@ -22,38 +22,46 @@ const RichTextBodyButton = props => {
       aria-disabled={props.isDisabled}
       disabled={props.isDisabled}
       aria-label={props.label}
-      css={css`
-        border: 0;
-        cursor: pointer;
-        background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: ${vars.spacingXs};
-        padding: ${vars.spacingXs};
+      css={[
+        css`
+          border: 0;
+          cursor: pointer;
+          background: ${props.isActive ? vars.colorAccent30 : 'transparent'};
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: ${vars.spacingXs};
+          padding: ${vars.spacingXs};
 
-        &:focus {
-          outline: none;
-        }
-
-        &:hover,
-        &:focus {
-          background: ${props.isActive
-            ? vars.colorAccent30
-            : vars.colorNeutral90};
-        }
-
-        svg {
-          fill: ${getFillColor(props)};
-        }
-
-        &:disabled {
-          pointer-events: none;
-          svg {
-            fill: ${vars.colorNeutral60};
+          &:focus {
+            outline: none;
           }
-        }
-      `}
+
+          &:hover,
+          &:focus {
+            background: ${props.isActive
+              ? vars.colorAccent30
+              : vars.colorNeutral90};
+          }
+
+          svg {
+            fill: ${getFillColor(props)};
+          }
+
+          &:disabled {
+            pointer-events: none;
+            svg {
+              fill: ${vars.colorNeutral60};
+            }
+          }
+        `,
+        props.isReadOnly &&
+          css`
+            svg {
+              fill: ${vars.colorNeutral60};
+            }
+          `,
+      ]}
     >
       {props.children}
     </button>
@@ -62,6 +70,7 @@ const RichTextBodyButton = props => {
 
 RichTextBodyButton.propTypes = {
   isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   onClick: PropTypes.func,
   label: PropTypes.string.isRequired,
   isActive: PropTypes.bool,

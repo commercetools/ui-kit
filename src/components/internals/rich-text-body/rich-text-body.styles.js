@@ -86,20 +86,31 @@ export const Toolbar = styled.div`
   }
 `;
 
-const reset = () => css`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-  }
-  p {
-    margin: 0;
-    line-height: 22px;
-  }
-`;
+const reset = props => [
+  css`
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      line-height: 22px;
+    }
+  `,
+  props.isReadOnly &&
+    css`
+      color: ${vars.fontColorForInputWhenReadonly};
+    `,
+
+  props.isDisabled &&
+    css`
+      color: ${vars.fontColorForInputWhenDisabled};
+    `,
+];
 
 export const EditorContainer = styled.div`
   padding: 4px ${vars.spacingS};

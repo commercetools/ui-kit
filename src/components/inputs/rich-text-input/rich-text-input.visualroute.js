@@ -137,6 +137,24 @@ const DefaultRoute = () => (
         horizontalConstraint="scale"
       />
     </Spec>
+    <Spec label="when disabled" omitPropsList>
+      <RichTextInput
+        onChange={() => {}}
+        value={minimalValue}
+        isDisabled={true}
+        onClickExpand={() => {}}
+        horizontalConstraint="scale"
+      />
+    </Spec>
+    <Spec label="when readonly" omitPropsList>
+      <RichTextInput
+        onChange={() => {}}
+        value={minimalValue}
+        isReadOnly={true}
+        onClickExpand={() => {}}
+        horizontalConstraint="scale"
+      />
+    </Spec>
   </Suite>
 );
 
