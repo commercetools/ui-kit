@@ -205,6 +205,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.hasBoldMark()
               }
               isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.boldButtonLabel)}
               onClick={props.editor.toggleBoldMark}
             >
@@ -222,6 +223,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.hasItalicMark()
               }
               isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.italicButtonLabel)}
               onClick={props.editor.toggleItalicMark}
             >
@@ -239,6 +241,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.hasUnderlinedMark()
               }
               isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.underlinedButtonLabel)}
               onClick={props.editor.toggleUnderlinedMark}
             >
@@ -251,6 +254,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             selectedItems={activeMoreStyleMarks}
             onSelect={onChangeMoreStyles}
             isDisabled={props.isDisabled}
+            isReadOnly={props.isReadOnly}
           />
           <Divider />
           <Tooltip
@@ -264,6 +268,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.hasNumberedListBlock()
               }
               isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.orderedListButtonLabel)}
               onClick={props.editor.toggleNumberedListBlock}
             >
@@ -281,6 +286,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 props.editor.hasBulletedListBlock()
               }
               isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.unorderedListButtonLabel)}
               onClick={props.editor.toggleBulletedListBlock}
             >
@@ -307,6 +313,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               isActive={false}
               label={intl.formatMessage(messages.undoButtonLabel)}
               isDisabled={!hasUndos || props.isDisabled}
+              isReadOnly={props.isReadOnly}
               onClick={props.editor.toggleUndo}
             >
               <UndoIcon size="medium" />
@@ -321,6 +328,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               isActive={false}
               label={intl.formatMessage(messages.redoButtonLabel)}
               isDisabled={!hasRedos || props.isDisabled}
+              isReadOnly={props.isReadOnly}
               onClick={props.editor.toggleRedo}
             >
               <RedoIcon size="medium" />
@@ -336,6 +344,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                 <Button
                   isActive={false}
                   isDisabled={props.isDisabled}
+                  isReadOnly={props.isReadOnly}
                   label={intl.formatMessage(messages.expandButtonLabel)}
                   onClick={props.onClickExpand}
                 >

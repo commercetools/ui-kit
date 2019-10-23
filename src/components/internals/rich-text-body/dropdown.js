@@ -82,6 +82,7 @@ const Dropdown = props => {
                   isOpen,
                   isStyleButton: true,
                   isDisabled: props.isDisabled,
+                  isReadOnly: props.isReadOnly,
                 })}
               >
                 <DropdownLabel>{props.label}</DropdownLabel>
@@ -128,6 +129,7 @@ Dropdown.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,

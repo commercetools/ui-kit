@@ -86,14 +86,8 @@ export const Toolbar = styled.div`
   }
 `;
 
-const reset = props => {
-  const base = props.isDisabled
-    ? css`
-        color: ${vars.fontColorForInputWhenDisabled};
-      `
-    : css``;
-  return css`
-    ${base}
+const reset = props => [
+  css`
     h1,
     h2,
     h3,
@@ -106,8 +100,17 @@ const reset = props => {
       margin: 0;
       line-height: 22px;
     }
-  `;
-};
+  `,
+  props.isReadOnly &&
+    css`
+      color: ${vars.fontColorForInputWhenReadonly};
+    `,
+
+  props.isDisabled &&
+    css`
+      color: ${vars.fontColorForInputWhenDisabled};
+    `,
+];
 
 export const EditorContainer = styled.div`
   padding: 4px ${vars.spacingS};
