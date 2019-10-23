@@ -4,7 +4,7 @@ import omit from 'lodash/omit';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const propsToOmit = ['isActive', 'label', 'isDisabled'];
+const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
 
 function getFillColor(props) {
   if (props.isActive) return vars.colorSurface;
