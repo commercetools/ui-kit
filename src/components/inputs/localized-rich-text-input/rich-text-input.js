@@ -9,7 +9,6 @@ import renderEditor from './editor';
 import LanguagesControlButton from './languages-control';
 import plugins from '../../internals/rich-text-plugins';
 import html from '../../internals/rich-text-utils/html';
-import isEmpty from '../../internals/rich-text-utils/is-empty';
 
 class RichTextInput extends React.PureComponent {
   serializedValue = this.props.value || '';
@@ -141,7 +140,7 @@ class RichTextInput extends React.PureComponent {
         id={this.props.id}
         name={this.props.name}
         disabled={this.props.isDisabled}
-        readOnly={this.props.isReadOnly}
+        readOnly={this.props.isReadOnly || this.props.isDisabled}
         value={this.internalSlateValue}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
@@ -181,8 +180,6 @@ RichTextInput.defaultProps = {
 };
 
 RichTextInput.displayName = 'RichTextInput';
-
-RichTextInput.isEmpty = isEmpty;
 
 RichTextInput.propTypes = {
   defaultExpandMultilineText: PropTypes.bool,

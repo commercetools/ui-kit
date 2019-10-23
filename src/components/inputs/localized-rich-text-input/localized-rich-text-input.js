@@ -12,12 +12,14 @@ import {
   getHasWarningOnRemainingLanguages,
   isTouched,
   omitEmptyTranslations,
-  isEmpty,
-  createLocalizedString,
   getId,
   getName,
 } from '../../../utils/localized';
 import RichTextInput from './rich-text-input';
+import {
+  isEmpty,
+  createLocalizedString,
+} from '../../internals/rich-text-utils/localized';
 import RequiredValueErrorMessage from './required-value-error-message';
 
 const expandedTranslationsReducer = (state, action) => {
