@@ -158,7 +158,7 @@ RichTextInput.defaultProps = {
 
 RichTextInput.displayName = 'RichTextInput';
 
-RichTextInput.isEmpty = value => isEmpty(html.deserialize(value));
+RichTextInput.isEmpty = isEmpty;
 RichTextInput.isTouched = touched => Boolean(touched);
 
 RichTextInput.propTypes = {
