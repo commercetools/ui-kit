@@ -2,8 +2,8 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   highPrecision: {
-    id: 'UIKit.MoneyField.highPrecision',
-    description: 'Label of high precision bade in MoneyField',
+    id: 'UIKit.MoneyInput.highPrecision',
+    description: 'Label of high precision badge in MoneyField',
     defaultMessage: 'High Precision Price',
   },
 });

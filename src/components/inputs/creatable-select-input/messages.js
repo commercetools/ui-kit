@@ -7,17 +7,17 @@ export default defineMessages({
     defaultMessage: 'Create "{inputValue}"',
   },
   noOptionsMessageWithInputValue: {
-    id: 'UIKit.CreatableSelectInput.noOptionsMessageWithInputValue',
+    id: 'UIKit.SelectInput.noOptionsMessageWithInputValue',
     description: 'Text of dropdown when no options match search text',
     defaultMessage: 'No options',
   },
   noOptionsMessageWithoutInputValue: {
-    id: 'UIKit.CreatableSelectInput.noOptionsMessageWithoutInputValue',
+    id: 'UIKit.SelectInput.noOptionsMessageWithoutInputValue',
     description: 'Text of dropdown when no options exist',
     defaultMessage: 'No options',
   },
   placeholder: {
-    id: 'UIKit.CreatableSelectInput.placeholder',
+    id: 'UIKit.SelectInput.placeholder',
     description: 'Default input placeholder text',
     defaultMessage: 'Select...',
   },
