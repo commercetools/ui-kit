@@ -193,6 +193,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             onChange={onClickBlock}
             options={styleDropdownOptions}
             isDisabled={props.isDisabled}
+            isReadOnly={props.isReadOnly}
           />
           <Tooltip
             title={intl.formatMessage(messages.boldButtonLabel)}
