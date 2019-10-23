@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import FlatButton from '../../buttons/flat-button';
 import { WorldIcon } from '../../icons';
-import messages from './messages';
+import messages from '../../internals/messages/localized-input';
 
 const LanguagesControl = props => {
   const intl = useIntl();

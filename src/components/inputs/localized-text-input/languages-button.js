@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import FlatButton from '../../buttons/flat-button';
 import { WorldIcon } from '../../icons';
-import messages from './messages';
+import messages from '../../internals/messages/localized-input';
 
 const LanguagesButton = props => {
   const intl = useIntl();
   return props.isOpen ? (
     <FlatButton
       icon={<WorldIcon />}
-      label={intl.formatMessage(messages.collapse, {
+      label={intl.formatMessage(messages.hide, {
         remainingLanguages: props.remainingLanguages,
       })}
       onClick={props.onClick}
@@ -19,7 +19,7 @@ const LanguagesButton = props => {
   ) : (
     <FlatButton
       icon={<WorldIcon />}
-      label={intl.formatMessage(messages.expand, {
+      label={intl.formatMessage(messages.show, {
         remainingLanguages: props.remainingLanguages,
       })}
       onClick={props.onClick}

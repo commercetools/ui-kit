@@ -11,7 +11,7 @@ import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Constraints from '../../constraints';
 import FlatButton from '../../buttons/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
-import messages from './messages';
+import messages from '../../internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
 

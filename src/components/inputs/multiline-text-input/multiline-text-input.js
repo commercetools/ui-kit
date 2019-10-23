@@ -10,7 +10,7 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import useToggleState from '../../../hooks/use-toggle-state';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
-import messages from './messages';
+import messages from '../../internals/messages/multiline-input';
 
 const MultilineTextInput = props => {
   const intl = useIntl();

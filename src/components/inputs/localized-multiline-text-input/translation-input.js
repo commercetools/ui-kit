@@ -9,7 +9,7 @@ import { AngleUpIcon } from '../../icons';
 import Spacings from '../../spacings';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Text from '../../typography/text';
-import messages from './messages';
+import messages from '../../internals/messages/multiline-input';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,

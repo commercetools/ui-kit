@@ -12,7 +12,7 @@ import ClearIndicator from '../../internals/clear-indicator';
 import TagRemove from '../../internals/tag-remove';
 import DropdownIndicator from '../../internals/dropdown-indicator';
 import createSelectStyles from '../../internals/create-select-styles';
-import messages from './messages';
+import messages from '../../internals/messages/select';
 
 const useTheme = () => useContext(ThemeContext);
 
