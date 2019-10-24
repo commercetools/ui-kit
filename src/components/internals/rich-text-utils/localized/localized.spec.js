@@ -1,4 +1,8 @@
-import { createLocalizedString, isEmpty } from './localized';
+import {
+  createLocalizedString,
+  isEmpty,
+  omitEmptyTranslations,
+} from './localized';
 
 const emptyValue = '<p></p>';
 
@@ -57,6 +61,36 @@ describe('isEmpty', () => {
   describe('when calling with one undefined value and one truthy value', () => {
     it('should indicate that the value is not empty', () => {
       expect(isEmpty({ en: emptyValue, de: '<p>Okay</p>' })).toBeFalsy();
+    });
+  });
+});
+
+describe('omitEmptyTranslations', () => {
+  describe('when called with an empty object', () => {
+    it('should indicate that there are no defined translations', () => {
+      expect(omitEmptyTranslations({})).toEqual({});
+    });
+  });
+  describe('when called with all undefined values', () => {
+    it('should indicate that there are no defined translations', () => {
+      expect(omitEmptyTranslations({ en: null, de: null })).toEqual({});
+    });
+  });
+  describe('when called with one defined value', () => {
+    it('should indiciate that there is one defined translations', () => {
+      expect(
+        omitEmptyTranslations({ en: emptyValue, de: '<p>Hallo</p>' })
+      ).toEqual({ de: '<p>Hallo</p>' });
+    });
+  });
+  describe('when called with all defined values', () => {
+    it('should indiciate that there are two defined translations', () => {
+      expect(
+        omitEmptyTranslations({
+          en: '<h1>Poutine</h1>',
+          de: '<p>Hello World</p>',
+        })
+      ).toEqual({ en: '<h1>Poutine</h1>', de: '<p>Hello World</p>' });
     });
   });
 });

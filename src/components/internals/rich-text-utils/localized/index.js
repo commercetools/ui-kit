@@ -1,1 +1,5 @@
-export { createLocalizedString, isEmpty } from './localized';
+export {
+  createLocalizedString,
+  isEmpty,
+  omitEmptyTranslations,
+} from './localized';

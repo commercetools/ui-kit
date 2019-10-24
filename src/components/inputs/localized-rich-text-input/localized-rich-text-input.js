@@ -11,7 +11,6 @@ import {
   getHasErrorOnRemainingLanguages,
   getHasWarningOnRemainingLanguages,
   isTouched,
-  omitEmptyTranslations,
   getId,
   getName,
 } from '../../../utils/localized';
@@ -19,6 +18,7 @@ import RichTextInput from './rich-text-input';
 import {
   isEmpty,
   createLocalizedString,
+  omitEmptyTranslations,
 } from '../../internals/rich-text-utils/localized';
 import RequiredValueErrorMessage from './required-value-error-message';
 

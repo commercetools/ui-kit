@@ -1,13 +1,31 @@
+import invariant from 'tiny-invariant';
 import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';
 
 const initializeValue = value => html.serialize(html.deserialize(value));
 
-export const isEmpty = localizedString => {
-  if (!localizedString) return true;
-  return Object.values(localizedString).every(
-    value => !value || isRichTextEmpty(value)
+const isLocalizedHtmlValueEmpty = value => !value || isRichTextEmpty(value);
+
+export const isEmpty = localizedHtmlValue => {
+  if (!localizedHtmlValue) return true;
+  return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);
+};
+
+export const omitEmptyTranslations = localizedString => {
+  invariant(
+    typeof localizedString === 'object',
+    'omitEmptyTranslations must be called with an object'
+  );
+  return Object.entries(localizedString).reduce(
+    (localizedStringWithoutEmptyTranslations, [language, value]) => {
+      if (!isLocalizedHtmlValueEmpty(value)) {
+        // eslint-disable-next-line no-param-reassign
+        localizedStringWithoutEmptyTranslations[language] = value;
+      }
+      return localizedStringWithoutEmptyTranslations;
+    },
+    {}
   );
 };
 
