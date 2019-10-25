@@ -60,3 +60,8 @@ RichTextInput.isEmpty(''); // -> true
 RichTextInput.isEmpty('<p></p>'); // -> true
 RichTextInput.isEmpty('tree'); // -> false
 ```
+
+##### `isTouched(touched)`
+
+Expects to be called with an array or boolean.
+Returns `true` when truthy.
