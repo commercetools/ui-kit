@@ -53,6 +53,8 @@ const Input = props => {
 | `hasWarning`                    | `bool`           |    -     | -                       | -       | Will apply the warning state to each input without showing any warning message.                                                                                |
 | `errors`                        | `objectOf(node)` |    -     | -                       | -       | Used to show errors underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the error to show for that key.     |
 | `warnings`                      | `objectOf(node)` |    -     | -                       | -       | Used to show warnings underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the warning to show for that key. |
+| `showExpandIcon`                | `bool`           |    -     | -                       | `false` | Shows an `expand` icon in the toolbar                                                                                                                          |
+| `onClickExpand`                 | `func`           |    -     | -                       | -       | Called when the `expand` button is clicked                                                                                                                     |
 
 The component forwards all `data` attribute props. It further adds a `-${language}` suffix to the values of the `data-test` and `data-track-component` attributes, e.g `data-test="foo"` will get added to the input for `en` as `data-test="foo-en"`.
 
