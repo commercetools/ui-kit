@@ -47,17 +47,6 @@ class MoneyInputStory extends React.Component {
   }
 
   render() {
-    const blah = MoneyInput.parseMoneyValue(
-      {
-        type: 'highPrecision',
-        currencyCode: 'EUR',
-        fractionDigits: 3,
-        preciseAmount: 1234567,
-      },
-      'es'
-    );
-
-    console.log('blah', blah);
     const currencies = array('currencies', ['EUR', 'USD', 'AED', 'KWD', 'JPY']);
     const name = text('name', '') || 'default-name';
     const value = {
