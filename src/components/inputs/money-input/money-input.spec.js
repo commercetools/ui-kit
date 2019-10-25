@@ -316,7 +316,7 @@ describe('MoneyInput.parseMoneyValue', () => {
           },
           'es'
         )
-      ).toEqual({ amount: '1.234,567', currencyCode: 'EUR' });
+      ).toEqual({ amount: '1234,567', currencyCode: 'EUR' });
     });
   });
 
