@@ -47,7 +47,9 @@ const Input = props => {
 | `isReadOnly`                 | `bool`   |    -     | -                       | `false` | Indicates that the field is displaying read-only content                                                                  |
 | `hasError`                   | `bool`   |    -     | -                       | `false` | Indicates the input field has an error                                                                                    |
 | `hasWarning`                 | `bool`   |    -     | -                       | `false` | Indicates the input field has a warning                                                                                   |
-| `horizontalConstraint`       | `object` |    -     | `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                |
+| `horizontalConstraint`       | `object` |          | `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                |
+| `showExpandIcon`             | `bool`   |    -     | -                       | `false` | Shows an `expand` icon in the toolbar                                                                                     |
+| `onClickExpand`              | `func`   |    -     | -                       | -       | Called when the `expand` button is clicked                                                                                |
 
 ### Static methods
 
