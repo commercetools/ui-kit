@@ -31,25 +31,25 @@ const Input = props => {
 
 #### Properties
 
-| Props                        | Type     | Required | Values                  | Default | Description                                                                                                               |
-| ---------------------------- | -------- | :------: | ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `name`                       | `string` |    -     | -                       | -       | Used as HTML `name` property                                                                                              |
-| `autoComplete`               | `string` |    -     | -                       | -       | Used as HTML `autoComplete` property                                                                                      |
-| `id`                         | `string` |    -     | -                       | -       | Specifies the id of an element                                                                                            |
-| `value`                      | `string` |    ✅    | -                       | -       | Value of the input                                                                                                        |
-| `onChange`                   | `func`   |    ✅    | -                       | -       | Called with an event containing the new value. Required, unless input is `read-only. Parent should pass it back as`value` |
-| `onBlur`                     | `func`   |    -     | -                       | -       | Called when field is blurred                                                                                              |
-| `onFocus`                    | `func`   |    -     | -                       | -       | Called when field is focused                                                                                              |
-| `isAutofocussed`             | `bool`   |    -     | -                       | -       | Focuses the input field on initial render                                                                                 |
-| `defaultExpandMultilineText` | `bool`   |    -     | -                       | `false` | Expands rich text input initially                                                                                         |
-| `placeholder`                | `string` |    -     | -                       | -       | Placeholder text for the input                                                                                            |
-| `isDisabled`                 | `bool`   |    -     | -                       | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                                        |
-| `isReadOnly`                 | `bool`   |    -     | -                       | `false` | Indicates that the field is displaying read-only content                                                                  |
-| `hasError`                   | `bool`   |    -     | -                       | `false` | Indicates the input field has an error                                                                                    |
-| `hasWarning`                 | `bool`   |    -     | -                       | `false` | Indicates the input field has a warning                                                                                   |
-| `horizontalConstraint`       | `object` |          | `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                |
-| `showExpandIcon`             | `bool`   |    -     | -                       | `false` | Shows an `expand` icon in the toolbar                                                                                     |
-| `onClickExpand`              | `func`   |    -     | -                       | -       | Called when the `expand` button is clicked                                                                                |
+| Props                        | Type     | Required | Values                  | Default | Description                                                                                                                 |
+| ---------------------------- | -------- | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `name`                       | `string` |    -     | -                       | -       | Used as HTML `name` property                                                                                                |
+| `autoComplete`               | `string` |    -     | -                       | -       | Used as HTML `autoComplete` property                                                                                        |
+| `id`                         | `string` |    -     | -                       | -       | Specifies the id of an element                                                                                              |
+| `value`                      | `string` |    ✅    | -                       | -       | Value of the input                                                                                                          |
+| `onChange`                   | `func`   |    ✅    | -                       | -       | Called with an event containing the new value. Required, unless input is `read-only`. Parent should pass it back as `value` |
+| `onBlur`                     | `func`   |    -     | -                       | -       | Called when field is blurred                                                                                                |
+| `onFocus`                    | `func`   |    -     | -                       | -       | Called when field is focused                                                                                                |
+| `isAutofocussed`             | `bool`   |    -     | -                       | -       | Focuses the input field on initial render                                                                                   |
+| `defaultExpandMultilineText` | `bool`   |    -     | -                       | `false` | Expands rich text input initially                                                                                           |
+| `placeholder`                | `string` |    -     | -                       | -       | Placeholder text for the input                                                                                              |
+| `isDisabled`                 | `bool`   |    -     | -                       | `false` | Indicates that the field cannot be used (e.g not authorised, or changes not saved)                                          |
+| `isReadOnly`                 | `bool`   |    -     | -                       | `false` | Indicates that the field is displaying read-only content                                                                    |
+| `hasError`                   | `bool`   |    -     | -                       | `false` | Indicates the input field has an error                                                                                      |
+| `hasWarning`                 | `bool`   |    -     | -                       | `false` | Indicates the input field has a warning                                                                                     |
+| `horizontalConstraint`       | `object` |          | `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                  |
+| `showExpandIcon`             | `bool`   |    -     | -                       | `false` | Shows an `expand` icon in the toolbar                                                                                       |
+| `onClickExpand`              | `func`   |    -     | -                       | -       | Called when the `expand` button is clicked                                                                                  |
 
 ### Static methods
 
