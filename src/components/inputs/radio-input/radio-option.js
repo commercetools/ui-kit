@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
@@ -66,6 +67,16 @@ Option.propTypes = {
     PropTypes.element,
     PropTypes.func,
   ]).isRequired,
+  components: PropTypes.shape({
+    WrapperComponent: (props, propName) => {
+      if (props[propName] && !isValidElementType(props[propName])) {
+        return new Error(
+          `Invalid prop 'components.WrapperComponent' supplied to 'RadioInput.Option': the prop is not a valid React component`
+        );
+      }
+      return null;
+    },
+  }),
 
   // Injected props from the parent Group component
   id: PropTypes.string,
@@ -85,6 +96,10 @@ Option.propTypes = {
   // all you need is a general highlighting on hover of Radio.Option body, which is solved
   // by a corresponding :hover selector in the syles of this component.
   isHovered: PropTypes.bool,
+};
+
+Option.defaultProps = {
+  components: {},
 };
 
 export default Option;

@@ -29,7 +29,7 @@ const Group = props => {
   const optionElements = React.Children.map(props.children, (child, index) => {
     // NOTE: Allowing to intersperse other elements than `Option`.
     if (child && child.type.displayName === Option.displayName) {
-      return React.cloneElement(child, {
+      const option = React.cloneElement(child, {
         id: props.id && `${props.id}-${index}`,
         name: props.name,
         isChecked: props.value === child.props.value,
@@ -41,6 +41,13 @@ const Group = props => {
         onFocus: props.onFocus,
         onBlur: props.onBlur,
       });
+      return child.props.components.WrapperComponent ? (
+        <child.props.components.WrapperComponent>
+          {option}
+        </child.props.components.WrapperComponent>
+      ) : (
+        option
+      );
     }
     return child;
   });

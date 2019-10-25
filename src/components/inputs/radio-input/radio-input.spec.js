@@ -17,6 +17,30 @@ it('should render all options', () => {
   expect(getByLabelText('Second option')).toBeInTheDocument();
 });
 
+it('should render option with a wrapper component', () => {
+  const onChange = jest.fn();
+  /* eslint-disable react/prop-types */
+  const CustomWrapper = ({ children }) => (
+    <div>
+      <div>Custom Element Content</div>
+      <div>{children}</div>
+    </div>
+  );
+  /* eslint-enable */
+  const { getByLabelText, getByText } = render(
+    <Group name="radio-group" onChange={onChange} value="first-value">
+      <Option
+        value="option-with-wrapper"
+        components={{ WrapperComponent: CustomWrapper }}
+      >
+        Option with wrapper
+      </Option>
+    </Group>
+  );
+  expect(getByText('Custom Element Content')).toBeInTheDocument();
+  expect(getByLabelText('Option with wrapper')).toBeInTheDocument();
+});
+
 it('should call onChange when options are clicked', () => {
   const onChange = jest.fn(event => {
     event.persist();
