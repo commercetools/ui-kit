@@ -1,11 +1,9 @@
 import React from 'react';
+import { isValidElementType } from 'react-is';
 import Downshift from 'downshift';
-import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { useIntl } from 'react-intl';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import Spacings from '../../spacings';
-import { CaretDownIcon } from '../../icons';
 import Tooltip from '../../tooltip';
 import Button from './rich-text-body-button';
 import {
@@ -13,50 +11,14 @@ import {
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
-import { BLOCK_TAGS } from '../rich-text-utils/tags';
-import messages from './messages';
 
-const DropdownLabel = props => {
-  return (
-    <Spacings.Inline scale="xs" alignItems="center" justifyContent="center">
-      <span>{props.children}</span>
-      <CaretDownIcon size="small" />
-    </Spacings.Inline>
-  );
-};
-
-DropdownLabel.displayName = 'DropdownLabel';
-DropdownLabel.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-const Item = styled.div`
-  margin: 0;
-  text-align: left;
-`;
-
-const DropdownItem = props => {
-  const { children } = props;
-  const as =
-    Object.keys(BLOCK_TAGS).find(key => BLOCK_TAGS[key] === props.value) ||
-    'div';
-
-  return (
-    <StyledDropdownItem {...props}>
-      <Item as={as}>{children}</Item>
-    </StyledDropdownItem>
-  );
-};
-
-DropdownItem.propTypes = {
-  children: PropTypes.node.isRequired,
-  value: PropTypes.string.isRequired,
-};
-
-DropdownItem.displayName = 'DropdownItem';
+const Label = styled.div;
 
 const Dropdown = props => {
-  const intl = useIntl();
+  const DropdownItem = props.components.Item;
+  const DropdownLabel = props.components.Label;
+  const isIndeterminate =
+    props.isMulti && (props.value && props.value.length > 0);
 
   return (
     <Downshift
@@ -64,13 +26,13 @@ const Dropdown = props => {
       selectedItem={props.value}
       itemToString={headings => (headings ? headings.label : '')}
     >
-      {({ isOpen, getToggleButtonProps, getItemProps, selectedItem }) => {
+      {({ isOpen, getToggleButtonProps, getItemProps }) => {
         const toggleButtonProps = getToggleButtonProps();
 
         return (
           <div>
             <Tooltip
-              title={intl.formatMessage(messages.styleDropdownLabel)}
+              title={props.label}
               placement="bottom"
               off={isOpen}
               style={{ body: { zIndex: 9999 } }}
@@ -80,7 +42,8 @@ const Dropdown = props => {
                 label={props.label}
                 css={getButtonStyles({
                   isOpen,
-                  isStyleButton: true,
+                  isIndeterminate,
+                  isStyleButton: !props.isMulti,
                   isDisabled: props.isDisabled,
                   isReadOnly: props.isReadOnly,
                 })}
@@ -101,13 +64,18 @@ const Dropdown = props => {
                       item,
                     });
                     const dropdownItemProps = itemProps;
+                    const isSelected = !props.isMulti
+                      ? item.value === props.value
+                      : props.value.find(
+                          selectedItem => selectedItem === item.value
+                        );
 
                     return (
                       <DropdownItem
                         {...dropdownItemProps}
                         key={index}
                         value={item.value}
-                        isSelected={item.value === selectedItem}
+                        isSelected={isSelected}
                       >
                         {item.label}
                       </DropdownItem>
@@ -125,8 +93,17 @@ const Dropdown = props => {
 
 Dropdown.displayName = 'Dropdown';
 
+Dropdown.defaultProps = {
+  components: {
+    Item: StyledDropdownItem,
+    Label,
+  },
+  isMulti: false,
+};
+
 Dropdown.propTypes = {
   label: PropTypes.string,
+  isMulti: PropTypes.bool,
   value: PropTypes.string,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
@@ -136,6 +113,24 @@ Dropdown.propTypes = {
       value: PropTypes.string,
     })
   ).isRequired,
+  components: PropTypes.shape({
+    Item: (props, propName) => {
+      if (props[propName] && !isValidElementType(props[propName])) {
+        return new Error(
+          `Invalid prop 'components.Item' supplied to 'Dropdown': the prop is not a valid React component`
+        );
+      }
+      return null;
+    },
+    Label: (props, propName) => {
+      if (props[propName] && !isValidElementType(props[propName])) {
+        return new Error(
+          `Invalid prop 'components.Item' supplied to 'Dropdown': the prop is not a valid React component`
+        );
+      }
+      return null;
+    },
+  }),
   onChange: PropTypes.func.isRequired,
 };
 
