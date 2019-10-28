@@ -37,6 +37,7 @@ import hasBlock from '../rich-text-utils/has-block';
 import messages from './messages';
 
 const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;
+MoreStylesDropdownLabel.displayName = 'MoreStylesDropdownLabel';
 
 const MoreStylesDropdownItem = props => {
   let Icon;
