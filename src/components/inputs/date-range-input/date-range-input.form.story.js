@@ -19,41 +19,45 @@ storiesOf('Examples|Forms/Inputs', module)
       sidebar: Readme,
     },
   })
-  .add('DateRangeInput', () => (
-    <Section>
-      <Formik
-        initialValues={{
-          dateRange: ['2018-09-20', '2018-09-24'],
-        }}
-        onSubmit={(values, formik, ...rest) => {
-          action('onSubmit')(values, formik, ...rest);
-          formik.resetForm(values);
-        }}
-        render={formik => (
-          <Spacings.Stack scale="l">
-            <DateRangeInput
-              name="dateRange"
-              value={formik.values.dateRange}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              horizontalConstraint="m"
-            />
-            <Spacings.Inline>
-              <SecondaryButton
-                onClick={formik.handleReset}
-                isDisabled={formik.isSubmitting}
-                label="Reset"
+  .add('DateRangeInput', () => {
+    const initialValues = {
+      dateRange: ['2018-09-20', '2018-09-24'],
+    };
+
+    return (
+      <Section>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={(values, formik, ...rest) => {
+            action('onSubmit')(values, formik, ...rest);
+            formik.resetForm({ values: initialValues });
+          }}
+          render={formik => (
+            <Spacings.Stack scale="l">
+              <DateRangeInput
+                name="dateRange"
+                value={formik.values.dateRange}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                horizontalConstraint="m"
               />
-              <PrimaryButton
-                onClick={formik.handleSubmit}
-                isDisabled={formik.isSubmitting || !formik.dirty}
-                label="Submit"
-              />
-            </Spacings.Inline>
-            <hr />
-            <FormikBox formik={formik} />
-          </Spacings.Stack>
-        )}
-      />
-    </Section>
-  ));
+              <Spacings.Inline>
+                <SecondaryButton
+                  onClick={formik.handleReset}
+                  isDisabled={formik.isSubmitting}
+                  label="Reset"
+                />
+                <PrimaryButton
+                  onClick={formik.handleSubmit}
+                  isDisabled={formik.isSubmitting || !formik.dirty}
+                  label="Submit"
+                />
+              </Spacings.Inline>
+              <hr />
+              <FormikBox formik={formik} />
+            </Spacings.Stack>
+          )}
+        />
+      </Section>
+    );
+  });

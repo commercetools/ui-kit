@@ -75,6 +75,8 @@ storiesOf('Examples|Forms/Fields', module)
   })
   .add('CreatableSelectField', () => {
     const isMulti = boolean('isMulti', true);
+    const initialValues = { animal: isMulti ? [] : undefined };
+
     return (
       <Section key={isMulti}>
         <Formik
@@ -87,7 +89,7 @@ storiesOf('Examples|Forms/Fields', module)
           }}
           onSubmit={(values, formik) => {
             action('onSubmit')(values, formik);
-            formik.resetForm(values);
+            formik.resetForm({ values: initialValues });
           }}
           render={formik => (
             <Spacings.Stack scale="l">

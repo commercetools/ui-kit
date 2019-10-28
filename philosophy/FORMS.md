@@ -348,7 +348,8 @@ We can then do anything from `onSubmit`. Most likely we'll want to make an async
     return updateProduct(values.id, values.version, { name: values.name }).then(
       // passing values to resetForm reinitializes the form with the
       // updated product
-      updatedProduct => formik.resetForm(docToFormValues(updatedProduct)),
+      updatedProduct =>
+        formik.resetForm({ values: docToFormValues(updatedProduct) }),
       error => {
         alert('Could not save product');
         formik.setSubmitting(false);
@@ -430,7 +431,7 @@ So now we end up with
     ).then(
       // passing values to resetForm reinitializes the form with the
       // updated product
-      updatedProduct => formik.resetForm(docToFormValues(updatedProduct)),
+      updatedProduct => formik.resetForm({values: docToFormValues(updatedProduct)}),
       error => {
         // More on error handling in "Solution Recipies" below
         alert('Could not save product');
@@ -794,7 +795,9 @@ We can now pass an `onSubmit` function to Formik which handles this error:
         // Calling resetForm with the updated product will
         // update the form values and reset the submission state,
         // touched keys and so on.
-        formik.resetForm(docToForm(updatedProduct, props.intl.locale));
+        formik.resetForm({
+          values: docToForm(updatedProduct, props.intl.locale),
+        });
       },
       // When the slug was already used, or when any other error happens
       error => {

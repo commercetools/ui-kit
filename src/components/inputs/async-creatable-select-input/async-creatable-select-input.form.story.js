@@ -70,51 +70,81 @@ class AsyncCreatableSelectInputStory extends React.Component {
       step: 50,
     });
     const showOptionGroupDivider = boolean('Show option group divider', false);
+
     return (
       <Section>
         <FakeConnector key={isMulti} isMulti={isMulti}>
-          {({ product }) => (
-            <Formik
-              initialValues={docToForm(product, isMulti)}
-              validate={
-                // we use this failing validation so that we can see the touched
-                // shape
-                () => (failValidation ? { category: true } : {})
-              }
-              onSubmit={(values, formik, ...rest) => {
-                action('onSubmit')(values, formik, ...rest);
-                formik.resetForm(values);
-              }}
-              render={formik => {
-                const hasError = failValidation;
-                const isTouched = AsyncCreatableSelectInput.isTouched(
-                  formik.touched.category
-                );
-                return (
-                  <Spacings.Stack scale="l">
-                    <Spacings.Stack scale="xs">
-                      <AsyncCreatableSelectInput
-                        name="category"
-                        isMulti={isMulti}
-                        isClearable={true}
-                        cacheOptions={number('cacheOptions', 2)}
-                        value={formik.values.category}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        hasError={hasError && isTouched}
-                        defaultOptions={[
-                          {
-                            label: 'Animals',
-                            options: [
+          {({ product }) => {
+            const initialValues = docToForm(product, isMulti);
+
+            return (
+              <Formik
+                initialValues={initialValues}
+                validate={
+                  // we use this failing validation so that we can see the touched
+                  // shape
+                  () => (failValidation ? { category: true } : {})
+                }
+                onSubmit={(values, formik, ...rest) => {
+                  action('onSubmit')(values, formik, ...rest);
+                  formik.resetForm({ values: initialValues });
+                }}
+                render={formik => {
+                  const hasError = failValidation;
+                  const isTouched = AsyncCreatableSelectInput.isTouched(
+                    formik.touched.category
+                  );
+                  return (
+                    <Spacings.Stack scale="l">
+                      <Spacings.Stack scale="xs">
+                        <AsyncCreatableSelectInput
+                          name="category"
+                          isMulti={isMulti}
+                          isClearable={true}
+                          cacheOptions={number('cacheOptions', 2)}
+                          value={formik.values.category}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          hasError={hasError && isTouched}
+                          defaultOptions={[
+                            {
+                              label: 'Animals',
+                              options: [
+                                { value: 'dogs', label: 'Dogs' },
+                                { value: 'whales', label: 'Whales' },
+                                { value: 'antilopes', label: 'Antilopes' },
+                                { value: 'snakes', label: 'Snakes' },
+                              ],
+                            },
+                            {
+                              label: 'Flavours',
+                              options: [
+                                {
+                                  value: 'vanilla',
+                                  label: 'Vanilla',
+                                },
+                                {
+                                  value: 'chocolate',
+                                  label: 'Chocolate',
+                                },
+                                {
+                                  value: 'strawberry',
+                                  label: 'Strawberry',
+                                },
+                                {
+                                  value: 'salted-caramel',
+                                  label: 'Salted Caramel',
+                                },
+                              ],
+                            },
+                          ]}
+                          showOptionGroupDivider={showOptionGroupDivider}
+                          loadOptions={searchText => {
+                            const items = [
                               { value: 'dogs', label: 'Dogs' },
                               { value: 'whales', label: 'Whales' },
                               { value: 'antilopes', label: 'Antilopes' },
                               { value: 'snakes', label: 'Snakes' },
-                            ],
-                          },
-                          {
-                            label: 'Flavours',
-                            options: [
                               {
                                 value: 'vanilla',
                                 label: 'Vanilla',
@@ -131,84 +161,59 @@ class AsyncCreatableSelectInputStory extends React.Component {
                                 value: 'salted-caramel',
                                 label: 'Salted Caramel',
                               },
-                            ],
-                          },
-                        ]}
-                        showOptionGroupDivider={showOptionGroupDivider}
-                        loadOptions={searchText => {
-                          const items = [
-                            { value: 'dogs', label: 'Dogs' },
-                            { value: 'whales', label: 'Whales' },
-                            { value: 'antilopes', label: 'Antilopes' },
-                            { value: 'snakes', label: 'Snakes' },
-                            {
-                              value: 'vanilla',
-                              label: 'Vanilla',
-                            },
-                            {
-                              value: 'chocolate',
-                              label: 'Chocolate',
-                            },
-                            {
-                              value: 'strawberry',
-                              label: 'Strawberry',
-                            },
-                            {
-                              value: 'salted-caramel',
-                              label: 'Salted Caramel',
-                            },
-                          ];
+                            ];
 
-                          return delay(delayTimeMs).then(() =>
-                            items.filter(item =>
-                              item.label
-                                .toLowerCase()
-                                .startsWith(searchText.toLowerCase())
-                            )
-                          );
-                        }}
-                      />
-                      {hasError && isTouched && (
-                        <ErrorMessage>Category is required</ErrorMessage>
-                      )}
+                            return delay(delayTimeMs).then(() =>
+                              items.filter(item =>
+                                item.label
+                                  .toLowerCase()
+                                  .startsWith(searchText.toLowerCase())
+                              )
+                            );
+                          }}
+                        />
+                        {hasError && isTouched && (
+                          <ErrorMessage>Category is required</ErrorMessage>
+                        )}
+                      </Spacings.Stack>
+                      <div>
+                        <button
+                          onClick={() => {
+                            // additional data could be on cats
+                            const cats = { label: 'Cats', value: 'cats' };
+                            formik.setFieldValue(
+                              'category',
+                              isMulti ? [cats] : cats
+                            );
+                            formik.setFieldTouched(
+                              'category',
+                              isMulti ? [true] : true
+                            );
+                          }}
+                        >
+                          Select Cats
+                        </button>
+                      </div>
+                      <Spacings.Inline>
+                        <SecondaryButton
+                          onClick={formik.handleReset}
+                          isDisabled={formik.isSubmitting}
+                          label="Reset"
+                        />
+                        <PrimaryButton
+                          onClick={formik.handleSubmit}
+                          isDisabled={formik.isSubmitting || !formik.dirty}
+                          label="Submit"
+                        />
+                      </Spacings.Inline>
+                      <hr />
+                      <FormikBox formik={formik} />
                     </Spacings.Stack>
-                    <div>
-                      <button
-                        onClick={() => {
-                          // additional data could be on cats
-                          const cats = { label: 'Cats', value: 'cats' };
-                          formik.setFieldValue(
-                            'category',
-                            isMulti ? [cats] : cats
-                          );
-                          formik.setFieldTouched(
-                            'category',
-                            isMulti ? [true] : true
-                          );
-                        }}
-                      >
-                        Select Cats
-                      </button>
-                    </div>
-                    <Spacings.Inline>
-                      <SecondaryButton
-                        onClick={formik.handleReset}
-                        isDisabled={formik.isSubmitting}
-                        label="Reset"
-                      />
-                      <PrimaryButton
-                        onClick={formik.handleSubmit}
-                        isDisabled={formik.isSubmitting || !formik.dirty}
-                        label="Submit"
-                      />
-                    </Spacings.Inline>
-                    <hr />
-                    <FormikBox formik={formik} />
-                  </Spacings.Stack>
-                );
-              }}
-            />
-          )}
+                  );
+                }}
+              />
+            );
+          }}
         </FakeConnector>
       </Section>
     );

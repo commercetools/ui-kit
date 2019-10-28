@@ -27,70 +27,73 @@ storiesOf('Examples|Forms/Fields', module)
       sidebar: Readme,
     },
   })
-  .add('NumberField', () => (
-    <Section>
-      <Formik
-        initialValues={{ age: '' }}
-        validate={values => {
-          const errors = { age: {} };
-          if (NumberInput.isEmpty(values.age)) errors.age.missing = true;
-          else if (values.age < 0) errors.age.negative = true;
-          return omitEmpty(errors);
-        }}
-        onSubmit={(values, formik, ...rest) => {
-          action('onSubmit')(values, formik, ...rest);
-          formik.resetForm(values);
-        }}
-        render={formik => (
-          <Spacings.Stack scale="l">
-            <NumberField
-              title="Age"
-              description={
-                boolean('Use ridiculously long description', false)
-                  ? 'The name you will have on our platform. Chose it wisely as it can not be changed once it is set. Do not pick something with unicors or a superhero, everybody is doing that :) So once again, chose wisely since this is permantent.'
-                  : 'The name you will have on our platform'
-              }
-              hint="Can not be negative"
-              name="age"
-              isRequired={true}
-              value={formik.values.age}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              touched={formik.touched.age}
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                ['s', 'm', 'l', 'xl', 'scale'],
-                'm'
-              )}
-              errors={formik.errors.age}
-              renderError={key => {
-                switch (key) {
-                  // these could also use <FormattedMessage />
-                  case 'negative':
-                    // we could also supply the "min" property instead
-                    // of creating validation for it.
-                    return 'No negative values allowed';
-                  default:
-                    return null;
+  .add('NumberField', () => {
+    const initialValues = { age: '' };
+    return (
+      <Section>
+        <Formik
+          initialValues={initialValues}
+          validate={values => {
+            const errors = { age: {} };
+            if (NumberInput.isEmpty(values.age)) errors.age.missing = true;
+            else if (values.age < 0) errors.age.negative = true;
+            return omitEmpty(errors);
+          }}
+          onSubmit={(values, formik, ...rest) => {
+            action('onSubmit')(values, formik, ...rest);
+            formik.resetForm({ values: initialValues });
+          }}
+          render={formik => (
+            <Spacings.Stack scale="l">
+              <NumberField
+                title="Age"
+                description={
+                  boolean('Use ridiculously long description', false)
+                    ? 'The name you will have on our platform. Chose it wisely as it can not be changed once it is set. Do not pick something with unicors or a superhero, everybody is doing that :) So once again, chose wisely since this is permantent.'
+                    : 'The name you will have on our platform'
                 }
-              }}
-            />
-            <Spacings.Inline>
-              <SecondaryButton
-                onClick={formik.handleReset}
-                isDisabled={formik.isSubmitting}
-                label="Reset"
+                hint="Can not be negative"
+                name="age"
+                isRequired={true}
+                value={formik.values.age}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                touched={formik.touched.age}
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['s', 'm', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+                errors={formik.errors.age}
+                renderError={key => {
+                  switch (key) {
+                    // these could also use <FormattedMessage />
+                    case 'negative':
+                      // we could also supply the "min" property instead
+                      // of creating validation for it.
+                      return 'No negative values allowed';
+                    default:
+                      return null;
+                  }
+                }}
               />
-              <PrimaryButton
-                onClick={formik.handleSubmit}
-                isDisabled={formik.isSubmitting || !formik.dirty}
-                label="Submit"
-              />
-            </Spacings.Inline>
-            <hr />
-            <FormikBox formik={formik} />
-          </Spacings.Stack>
-        )}
-      />
-    </Section>
-  ));
+              <Spacings.Inline>
+                <SecondaryButton
+                  onClick={formik.handleReset}
+                  isDisabled={formik.isSubmitting}
+                  label="Reset"
+                />
+                <PrimaryButton
+                  onClick={formik.handleSubmit}
+                  isDisabled={formik.isSubmitting || !formik.dirty}
+                  label="Submit"
+                />
+              </Spacings.Inline>
+              <hr />
+              <FormikBox formik={formik} />
+            </Spacings.Stack>
+          )}
+        />
+      </Section>
+    );
+  });
