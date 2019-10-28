@@ -1,5 +1,4 @@
 import React from 'react';
-import { isValidElementType } from 'react-is';
 import Downshift from 'downshift';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -117,22 +116,8 @@ Dropdown.propTypes = {
     })
   ).isRequired,
   components: PropTypes.shape({
-    Item: (props, propName) => {
-      if (props[propName] && !isValidElementType(props[propName])) {
-        return new Error(
-          `Invalid prop 'components.Item' supplied to 'Dropdown': the prop is not a valid React component`
-        );
-      }
-      return null;
-    },
-    Label: (props, propName) => {
-      if (props[propName] && !isValidElementType(props[propName])) {
-        return new Error(
-          `Invalid prop 'components.Item' supplied to 'Dropdown': the prop is not a valid React component`
-        );
-      }
-      return null;
-    },
+    Item: PropTypes.elementType,
+    Label: PropTypes.elementType,
   }),
   onChange: PropTypes.func.isRequired,
 };
