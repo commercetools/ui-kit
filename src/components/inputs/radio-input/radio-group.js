@@ -29,7 +29,7 @@ const Group = props => {
   const optionElements = React.Children.map(props.children, (child, index) => {
     // NOTE: Allowing to intersperse other elements than `Option`.
     if (child && child.type.displayName === Option.displayName) {
-      const option = React.cloneElement(child, {
+      const clonedChild = React.cloneElement(child, {
         id: props.id && `${props.id}-${index}`,
         name: props.name,
         isChecked: props.value === child.props.value,
@@ -43,10 +43,10 @@ const Group = props => {
       });
       return child.props.components.WrapperComponent ? (
         <child.props.components.WrapperComponent>
-          {option}
+          {clonedChild}
         </child.props.components.WrapperComponent>
       ) : (
-        option
+        clonedChild
       );
     }
     return child;
