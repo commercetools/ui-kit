@@ -104,7 +104,10 @@ Dropdown.defaultProps = {
 Dropdown.propTypes = {
   label: PropTypes.string,
   isMulti: PropTypes.bool,
-  value: PropTypes.string,
+  value: (props, ...rest) =>
+    props.isMulti
+      ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
+      : PropTypes.string(props, ...rest),
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   options: PropTypes.arrayOf(
