@@ -49,7 +49,7 @@ const Story = injectIntl(props => {
             MoneyInput.convertToMoneyValue(values.price, props.intl.locale)
           );
           action('onSubmit')(values, formik);
-          formik.resetForm(values);
+          formik.resetForm({ values });
         }}
         render={formik => (
           <Spacings.Stack scale="l">

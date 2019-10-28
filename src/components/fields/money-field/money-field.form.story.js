@@ -69,7 +69,7 @@ const Story = injectIntl(props => {
           action('onSubmit')(values, formik);
           // eslint-disable-next-line no-console
           console.log('doc', formToDoc(values, props.intl.locale));
-          formik.resetForm(values);
+          formik.resetForm({ values });
         }}
         render={formik => (
           <Spacings.Stack scale="l">

@@ -83,7 +83,7 @@ class AsyncSelectInputStory extends React.Component {
               }
               onSubmit={(values, formik, ...rest) => {
                 action('onSubmit')(values, formik, ...rest);
-                formik.resetForm(values);
+                formik.resetForm({ values });
               }}
               render={formik => {
                 const hasError = failValidation;

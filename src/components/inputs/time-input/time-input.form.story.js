@@ -26,7 +26,7 @@ const Story = injectIntl(props => (
           startTime: TimeInput.to24h(values.startTime),
           endTime: TimeInput.to24h(values.endTime),
         });
-        formik.resetForm(values);
+        formik.resetForm({ values });
       }}
       render={formik => (
         <Spacings.Stack scale="l">
