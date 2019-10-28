@@ -27,20 +27,21 @@ const validate = (formValues, locale) => {
 const Story = injectIntl(props => {
   const initialCentAmount = number('initial cent amount', 10099);
   const initialFractionDigits = number('initial fraction digits', 2);
+  const initialValues = {
+    price: MoneyInput.parseMoneyValue(
+      {
+        centAmount: initialCentAmount,
+        currencyCode: 'EUR',
+        fractionDigits: initialFractionDigits,
+        type: 'centPrecision',
+      },
+      props.intl.locale
+    ),
+  };
   return (
     <Section>
       <Formik
-        initialValues={{
-          price: MoneyInput.parseMoneyValue(
-            {
-              centAmount: initialCentAmount,
-              currencyCode: 'EUR',
-              fractionDigits: initialFractionDigits,
-              type: 'centPrecision',
-            },
-            props.intl.locale
-          ),
-        }}
+        initialValues={initialValues}
         validate={formValues => validate(formValues, props.intl.locale)}
         onSubmit={(values, formik) => {
           // eslint-disable-next-line no-console
@@ -49,7 +50,7 @@ const Story = injectIntl(props => {
             MoneyInput.convertToMoneyValue(values.price, props.intl.locale)
           );
           action('onSubmit')(values, formik);
-          formik.resetForm({ values });
+          formik.resetForm({ values: initialValues });
         }}
         render={formik => (
           <Spacings.Stack scale="l">

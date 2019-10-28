@@ -75,10 +75,11 @@ storiesOf('Examples|Forms/Fields', module)
   })
   .add('SelectField', () => {
     const isMulti = boolean('isMulti', true);
+    const initialValues = { animal: isMulti ? [] : undefined };
     return (
       <Section key={isMulti}>
         <Formik
-          initialValues={{ animal: isMulti ? [] : undefined }}
+          initialValues={initialValues}
           validate={values => {
             const errors = { animal: {} };
             if (isMulti ? values.animal.length === 0 : !values.animal)
@@ -87,7 +88,7 @@ storiesOf('Examples|Forms/Fields', module)
           }}
           onSubmit={(values, formik) => {
             action('onSubmit')(values, formik);
-            formik.resetForm({ values });
+            formik.resetForm({ values: initialValues });
           }}
           render={formik => (
             <Spacings.Stack scale="l">

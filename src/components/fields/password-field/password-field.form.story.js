@@ -28,66 +28,69 @@ storiesOf('Examples|Forms/Fields', module)
       sidebar: Readme,
     },
   })
-  .add('PasswordField', () => (
-    <Section>
-      <Formik
-        initialValues={{ password: '' }}
-        validate={values => {
-          const errors = { password: {} };
-          if (PasswordInput.isEmpty(values.password))
-            errors.password.missing = true;
-          if (values.password.trim().indexOf('#') === -1)
-            errors.password.insecure = true;
-          return omitEmpty(errors);
-        }}
-        onSubmit={(values, formik, ...rest) => {
-          action('onSubmit')(values, formik, ...rest);
-          formik.resetForm({ values });
-        }}
-        render={formik => (
-          <Spacings.Stack scale="l">
-            <PasswordField
-              title="Password"
-              description="Please choose a password."
-              hint="Must contain at least one `#`"
-              name="password"
-              isRequired={true}
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              touched={formik.touched.password}
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                ['s', 'm', 'l', 'xl', 'scale'],
-                'm'
-              )}
-              errors={formik.errors.password}
-              renderError={key => {
-                switch (key) {
-                  // these could also use <FormattedMessage />
-                  case 'insecure':
-                    return 'Not secure. Use at least one `#`.';
-                  default:
-                    return null;
-                }
-              }}
-            />
-            <Spacings.Inline>
-              <SecondaryButton
-                onClick={formik.handleReset}
-                isDisabled={formik.isSubmitting}
-                label="Reset"
+  .add('PasswordField', () => {
+    const initialValues = { password: '' };
+    return (
+      <Section>
+        <Formik
+          initialValues={initialValues}
+          validate={values => {
+            const errors = { password: {} };
+            if (PasswordInput.isEmpty(values.password))
+              errors.password.missing = true;
+            if (values.password.trim().indexOf('#') === -1)
+              errors.password.insecure = true;
+            return omitEmpty(errors);
+          }}
+          onSubmit={(values, formik, ...rest) => {
+            action('onSubmit')(values, formik, ...rest);
+            formik.resetForm({ values: initialValues });
+          }}
+          render={formik => (
+            <Spacings.Stack scale="l">
+              <PasswordField
+                title="Password"
+                description="Please choose a password."
+                hint="Must contain at least one `#`"
+                name="password"
+                isRequired={true}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                touched={formik.touched.password}
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['s', 'm', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+                errors={formik.errors.password}
+                renderError={key => {
+                  switch (key) {
+                    // these could also use <FormattedMessage />
+                    case 'insecure':
+                      return 'Not secure. Use at least one `#`.';
+                    default:
+                      return null;
+                  }
+                }}
               />
-              <PrimaryButton
-                onClick={formik.handleSubmit}
-                isDisabled={formik.isSubmitting || !formik.dirty}
-                label="Submit"
-              />
-            </Spacings.Inline>
-            <hr />
-            <FormikBox formik={formik} />
-          </Spacings.Stack>
-        )}
-      />
-    </Section>
-  ));
+              <Spacings.Inline>
+                <SecondaryButton
+                  onClick={formik.handleReset}
+                  isDisabled={formik.isSubmitting}
+                  label="Reset"
+                />
+                <PrimaryButton
+                  onClick={formik.handleSubmit}
+                  isDisabled={formik.isSubmitting || !formik.dirty}
+                  label="Submit"
+                />
+              </Spacings.Inline>
+              <hr />
+              <FormikBox formik={formik} />
+            </Spacings.Stack>
+          )}
+        />
+      </Section>
+    );
+  });

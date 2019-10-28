@@ -30,14 +30,15 @@ const Story = injectIntl(props => {
     ['m', 'l', 'xl', 'scale'],
     'm'
   );
+  const initialValues = {
+    price: MoneyInput.parseMoneyValue(),
+    pricePerTon: MoneyInput.parseMoneyValue(),
+    discountedPrice: MoneyInput.parseMoneyValue(),
+  };
   return (
     <Section>
       <Formik
-        initialValues={{
-          price: MoneyInput.parseMoneyValue(),
-          pricePerTon: MoneyInput.parseMoneyValue(),
-          discountedPrice: MoneyInput.parseMoneyValue(),
-        }}
+        initialValues={initialValues}
         validate={values => {
           const errors = { price: {}, pricePerTon: {}, discountedPrice: {} };
           if (MoneyInput.isEmpty(values.price)) errors.price.missing = true;
@@ -69,7 +70,7 @@ const Story = injectIntl(props => {
           action('onSubmit')(values, formik);
           // eslint-disable-next-line no-console
           console.log('doc', formToDoc(values, props.intl.locale));
-          formik.resetForm({ values });
+          formik.resetForm({ values: initialValues });
         }}
         render={formik => (
           <Spacings.Stack scale="l">

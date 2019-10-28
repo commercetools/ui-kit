@@ -69,11 +69,12 @@ storiesOf('Examples|Forms/Inputs', module)
       { value: 'delivered', label: 'Delivered' },
       { value: 'returned', label: 'Returned' },
     ];
+    const initialValues = { state: initialState, colour: initialColour };
     return (
       <Section>
         <Formik
           key={`${isMulti}-${isPrefilled}`}
-          initialValues={{ state: initialState, colour: initialColour }}
+          initialValues={initialValues}
           validate={
             // we use failing validation so that we can see the touched shape
             // on form submission
@@ -81,7 +82,7 @@ storiesOf('Examples|Forms/Inputs', module)
           }
           onSubmit={(values, formik, ...rest) => {
             action('onSubmit')(values, formik, ...rest);
-            formik.resetForm({ values });
+            formik.resetForm({ values: initialValues });
           }}
           render={formik => {
             const stateInput = {

@@ -12,57 +12,60 @@ import Spacings from '../../spacings';
 import Readme from './README.md';
 import TimeInput from './time-input';
 
-const Story = injectIntl(props => (
-  <Section>
-    <Formik
-      initialValues={{
-        startTime: TimeInput.toLocaleTime('10:00', props.intl.locale),
-        endTime: '',
-      }}
-      onSubmit={(values, formik, ...rest) => {
-        action('onSubmit')(values, formik, ...rest);
-        // eslint-disable-next-line no-console
-        console.log({
-          startTime: TimeInput.to24h(values.startTime),
-          endTime: TimeInput.to24h(values.endTime),
-        });
-        formik.resetForm({ values });
-      }}
-      render={formik => (
-        <Spacings.Stack scale="l">
-          <TimeInput
-            name="startTime"
-            value={formik.values.startTime}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            horizontalConstraint="m"
-          />
-          <TimeInput
-            name="endTime"
-            value={formik.values.endTime}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            horizontalConstraint="m"
-          />
-          <Spacings.Inline>
-            <SecondaryButton
-              onClick={formik.handleReset}
-              isDisabled={formik.isSubmitting}
-              label="Reset"
+const Story = injectIntl(props => {
+  const initialValues = {
+    startTime: TimeInput.toLocaleTime('10:00', props.intl.locale),
+    endTime: '',
+  };
+  return (
+    <Section>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values, formik, ...rest) => {
+          action('onSubmit')(values, formik, ...rest);
+          // eslint-disable-next-line no-console
+          console.log({
+            startTime: TimeInput.to24h(values.startTime),
+            endTime: TimeInput.to24h(values.endTime),
+          });
+          formik.resetForm({ values: initialValues });
+        }}
+        render={formik => (
+          <Spacings.Stack scale="l">
+            <TimeInput
+              name="startTime"
+              value={formik.values.startTime}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              horizontalConstraint="m"
             />
-            <PrimaryButton
-              onClick={formik.handleSubmit}
-              isDisabled={formik.isSubmitting || !formik.dirty}
-              label="Submit"
+            <TimeInput
+              name="endTime"
+              value={formik.values.endTime}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              horizontalConstraint="m"
             />
-          </Spacings.Inline>
-          <hr />
-          <FormikBox formik={formik} />
-        </Spacings.Stack>
-      )}
-    />
-  </Section>
-));
+            <Spacings.Inline>
+              <SecondaryButton
+                onClick={formik.handleReset}
+                isDisabled={formik.isSubmitting}
+                label="Reset"
+              />
+              <PrimaryButton
+                onClick={formik.handleSubmit}
+                isDisabled={formik.isSubmitting || !formik.dirty}
+                label="Submit"
+              />
+            </Spacings.Inline>
+            <hr />
+            <FormikBox formik={formik} />
+          </Spacings.Stack>
+        )}
+      />
+    </Section>
+  );
+});
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)

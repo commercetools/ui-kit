@@ -19,49 +19,52 @@ storiesOf('Examples|Forms/Inputs', module)
       sidebar: Readme,
     },
   })
-  .add('DateInput', () => (
-    <Section>
-      <Formik
-        initialValues={{
-          startDate: '2018-09-20',
-          endDate: '',
-        }}
-        onSubmit={(values, formik, ...rest) => {
-          action('onSubmit')(values, formik, ...rest);
-          formik.resetForm({ values });
-        }}
-        render={formik => (
-          <Spacings.Stack scale="l">
-            <DateInput
-              name="startDate"
-              value={formik.values.startDate}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              horizontalConstraint="m"
-            />
-            <DateInput
-              name="endDate"
-              value={formik.values.endDate}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              horizontalConstraint="m"
-            />
-            <Spacings.Inline>
-              <SecondaryButton
-                onClick={formik.handleReset}
-                isDisabled={formik.isSubmitting}
-                label="Reset"
+  .add('DateInput', () => {
+    const initialValues = {
+      startDate: '2018-09-20',
+      endDate: '',
+    };
+    return (
+      <Section>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={(values, formik, ...rest) => {
+            action('onSubmit')(values, formik, ...rest);
+            formik.resetForm({ values: initialValues });
+          }}
+          render={formik => (
+            <Spacings.Stack scale="l">
+              <DateInput
+                name="startDate"
+                value={formik.values.startDate}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                horizontalConstraint="m"
               />
-              <PrimaryButton
-                onClick={formik.handleSubmit}
-                isDisabled={formik.isSubmitting || !formik.dirty}
-                label="Submit"
+              <DateInput
+                name="endDate"
+                value={formik.values.endDate}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                horizontalConstraint="m"
               />
-            </Spacings.Inline>
-            <hr />
-            <FormikBox formik={formik} />
-          </Spacings.Stack>
-        )}
-      />
-    </Section>
-  ));
+              <Spacings.Inline>
+                <SecondaryButton
+                  onClick={formik.handleReset}
+                  isDisabled={formik.isSubmitting}
+                  label="Reset"
+                />
+                <PrimaryButton
+                  onClick={formik.handleSubmit}
+                  isDisabled={formik.isSubmitting || !formik.dirty}
+                  label="Submit"
+                />
+              </Spacings.Inline>
+              <hr />
+              <FormikBox formik={formik} />
+            </Spacings.Stack>
+          )}
+        />
+      </Section>
+    );
+  });
