@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import Tooltip from '../../tooltip';
+import { CaretDownIcon } from '../../icons';
 import {
   Toolbar,
   ToolbarMainControls,
@@ -20,14 +22,93 @@ import {
   UnderlineIcon,
   RedoIcon,
   UndoIcon,
+  SubscriptIcon,
+  StrikethroughIcon,
+  SuperscriptIcon,
+  MoreStylesIcon,
 } from './icons';
+import Spacings from '../../spacings';
 import Button from './rich-text-body-button';
 import Divider from './divider';
-import MultiDropdown from './multi-dropdown';
 import Dropdown from './dropdown';
+import { DropdownItem } from './dropdown.styles';
 import { MARK_TAGS, BLOCK_TAGS } from '../rich-text-utils/tags';
 import hasBlock from '../rich-text-utils/has-block';
 import messages from './messages';
+
+const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;
+MoreStylesDropdownLabel.displayName = 'MoreStylesDropdownLabel';
+
+const MoreStylesDropdownItem = props => {
+  let Icon;
+  switch (props.value) {
+    case 'subscript':
+      Icon = SubscriptIcon;
+      break;
+    case 'strikethrough':
+      Icon = StrikethroughIcon;
+      break;
+    default:
+      Icon = SuperscriptIcon;
+  }
+
+  return (
+    <DropdownItem {...props}>
+      <Spacings.Inline
+        scale="xs"
+        alignItems="center"
+        justifyContent="flex-start"
+      >
+        <Icon size="medium" />
+        <div>{props.children}</div>
+      </Spacings.Inline>
+    </DropdownItem>
+  );
+};
+
+MoreStylesDropdownItem.displayName = 'MoreStylesDropdownItem';
+MoreStylesDropdownItem.propTypes = {
+  value: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+const DropdownLabel = props => {
+  return (
+    <Spacings.Inline scale="xs" alignItems="center" justifyContent="center">
+      <span>{props.children}</span>
+      <CaretDownIcon size="small" />
+    </Spacings.Inline>
+  );
+};
+
+DropdownLabel.displayName = 'DropdownLabel';
+DropdownLabel.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+const Item = styled.div`
+  margin: 0;
+  text-align: left;
+`;
+
+const StylesDropdownItem = props => {
+  const as =
+    Object.keys(BLOCK_TAGS).find(key => BLOCK_TAGS[key] === props.value) ||
+    'div';
+
+  return (
+    <DropdownItem {...props}>
+      <Item as={as}>{props.children}</Item>
+    </DropdownItem>
+  );
+};
+
+StylesDropdownItem.propTypes = {
+  children: PropTypes.node.isRequired,
+  value: PropTypes.string.isRequired,
+};
+
+StylesDropdownItem.displayName = 'StylesDropdownItem';
 
 const DEFAULT_NODE = BLOCK_TAGS.p;
 
@@ -192,6 +273,10 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             value={activeBlock}
             onChange={onClickBlock}
             options={styleDropdownOptions}
+            components={{
+              Item: StylesDropdownItem,
+              Label: DropdownLabel,
+            }}
             isDisabled={props.isDisabled}
             isReadOnly={props.isReadOnly}
           />
@@ -249,13 +334,18 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
               <UnderlineIcon size="medium" />
             </Button>
           </Tooltip>
-          <MultiDropdown
+          <Dropdown
+            isMulti={true}
             label={intl.formatMessage(messages.moreStylesDropdownLabel)}
-            dropdownOptions={dropdownOptions}
-            selectedItems={activeMoreStyleMarks}
-            onSelect={onChangeMoreStyles}
+            options={dropdownOptions}
+            value={activeMoreStyleMarks}
+            onChange={onChangeMoreStyles}
             isDisabled={props.isDisabled}
             isReadOnly={props.isReadOnly}
+            components={{
+              Item: MoreStylesDropdownItem,
+              Label: MoreStylesDropdownLabel,
+            }}
           />
           <Divider />
           <Tooltip
