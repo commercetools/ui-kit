@@ -68,11 +68,23 @@ Option.propTypes = {
     PropTypes.func,
   ]).isRequired,
   components: PropTypes.shape({
-    WrapperComponent: (props, propName) => {
-      if (props[propName] && !isValidElementType(props[propName])) {
-        return new Error(
-          `Invalid prop 'components.WrapperComponent' supplied to 'RadioInput.Option': the prop is not a valid React component`
-        );
+    wrapper: (props, propName) => {
+      if (props[propName]) {
+        if (typeof props[propName] !== 'function') {
+          return new Error(
+            `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the prop is not a function`
+          );
+        }
+        if (props[propName].length !== 1) {
+          return new Error(
+            `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the supplied function should expect one argument`
+          );
+        }
+        if (isValidElementType(props[propName](React.Fragment))) {
+          return new Error(
+            `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the function supplied should return a valid react element`
+          );
+        }
       }
       return null;
     },

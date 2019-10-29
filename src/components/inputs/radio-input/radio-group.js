@@ -41,13 +41,8 @@ const Group = props => {
         onFocus: props.onFocus,
         onBlur: props.onBlur,
       });
-      return child.props.components.WrapperComponent ? (
-        <child.props.components.WrapperComponent>
-          {clonedChild}
-        </child.props.components.WrapperComponent>
-      ) : (
-        clonedChild
-      );
+      const { wrapper } = child.props.components;
+      return wrapper ? wrapper(clonedChild) : clonedChild;
     }
     return child;
   });

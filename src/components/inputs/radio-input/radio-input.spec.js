@@ -17,28 +17,37 @@ it('should render all options', () => {
   expect(getByLabelText('Second option')).toBeInTheDocument();
 });
 
-it('should render option with a wrapper component', () => {
-  const onChange = jest.fn();
+it('should render option with a controlled wrapper', () => {
   /* eslint-disable react/prop-types */
-  const CustomWrapper = ({ children }) => (
+  const CustomWrapper = ({ children, visible }) => (
     <div>
-      <div>Custom Element Content</div>
+      {visible && <div>Custom Element Content</div>}
       <div>{children}</div>
     </div>
   );
   /* eslint-enable */
-  const { getByLabelText, getByText } = render(
-    <Group name="radio-group" onChange={onChange} value="first-value">
+  let visible = true;
+  const RadioInput = (
+    <Group name="radio-group" onChange={jest.fn()} value="option-with-wrapper">
       <Option
         value="option-with-wrapper"
-        components={{ WrapperComponent: CustomWrapper }}
+        components={{
+          wrapper: children => (
+            <CustomWrapper visible={visible}>{children}</CustomWrapper>
+          ),
+        }}
       >
         Option with wrapper
       </Option>
     </Group>
   );
-  expect(getByText('Custom Element Content')).toBeInTheDocument();
-  expect(getByLabelText('Option with wrapper')).toBeInTheDocument();
+  const { queryByLabelText, queryByText, rerender } = render(RadioInput);
+  expect(queryByText('Custom Element Content')).toBeInTheDocument();
+  expect(queryByLabelText('Option with wrapper')).toBeInTheDocument();
+  visible = false;
+  rerender(RadioInput);
+  expect(queryByText('Custom Element Content')).not.toBeInTheDocument();
+  expect(queryByLabelText('Option with wrapper')).toBeInTheDocument();
 });
 
 it('should call onChange when options are clicked', () => {
