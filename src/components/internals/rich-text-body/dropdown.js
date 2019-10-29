@@ -11,6 +11,11 @@ import {
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
 
+const getIsSelected = (props, item) =>
+  !props.isMulti
+    ? item.value === props.value
+    : props.value.find(selectedItem => selectedItem === item.value);
+
 const Label = styled.div;
 
 const Dropdown = props => {
@@ -63,11 +68,7 @@ const Dropdown = props => {
                       item,
                     });
                     const dropdownItemProps = itemProps;
-                    const isSelected = !props.isMulti
-                      ? item.value === props.value
-                      : props.value.find(
-                          selectedItem => selectedItem === item.value
-                        );
+                    const isSelected = getIsSelected(props, item);
 
                     return (
                       <DropdownItem

@@ -31,7 +31,7 @@ import Spacings from '../../spacings';
 import Button from './rich-text-body-button';
 import Divider from './divider';
 import Dropdown from './dropdown';
-import { DropdownItem as StyledDropdownItem } from './dropdown.styles';
+import { DropdownItem } from './dropdown.styles';
 import { MARK_TAGS, BLOCK_TAGS } from '../rich-text-utils/tags';
 import hasBlock from '../rich-text-utils/has-block';
 import messages from './messages';
@@ -53,7 +53,7 @@ const MoreStylesDropdownItem = props => {
   }
 
   return (
-    <StyledDropdownItem {...props}>
+    <DropdownItem {...props}>
       <Spacings.Inline
         scale="xs"
         alignItems="center"
@@ -62,7 +62,7 @@ const MoreStylesDropdownItem = props => {
         <Icon size="medium" />
         <div>{props.children}</div>
       </Spacings.Inline>
-    </StyledDropdownItem>
+    </DropdownItem>
   );
 };
 
@@ -91,25 +91,24 @@ const Item = styled.div`
   text-align: left;
 `;
 
-const DropdownItem = props => {
-  const { children } = props;
+const StylesDropdownItem = props => {
   const as =
     Object.keys(BLOCK_TAGS).find(key => BLOCK_TAGS[key] === props.value) ||
     'div';
 
   return (
-    <StyledDropdownItem {...props}>
-      <Item as={as}>{children}</Item>
-    </StyledDropdownItem>
+    <DropdownItem {...props}>
+      <Item as={as}>{props.children}</Item>
+    </DropdownItem>
   );
 };
 
-DropdownItem.propTypes = {
+StylesDropdownItem.propTypes = {
   children: PropTypes.node.isRequired,
   value: PropTypes.string.isRequired,
 };
 
-DropdownItem.displayName = 'DropdownItem';
+StylesDropdownItem.displayName = 'StylesDropdownItem';
 
 const DEFAULT_NODE = BLOCK_TAGS.p;
 
@@ -275,7 +274,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             onChange={onClickBlock}
             options={styleDropdownOptions}
             components={{
-              Item: DropdownItem,
+              Item: StylesDropdownItem,
               Label: DropdownLabel,
             }}
             isDisabled={props.isDisabled}
