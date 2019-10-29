@@ -4,6 +4,12 @@ import { getDocument, queries, wait } from 'pptr-testing-library';
 const { getByLabelText, getByText } = queries;
 
 describe('RichTextInput', () => {
+  const blur = async element => {
+    // eslint-disable-next-line no-shadow
+    await page.evaluate(element => {
+      element.blur();
+    }, element);
+  };
   const selectAllText = async input => {
     // eslint-disable-next-line no-shadow
     await page.evaluate(input => {
@@ -244,6 +250,9 @@ describe('RichTextInput', () => {
 
     // next, open the Style menu
 
+    // blur input first to test that editor focus works correctly
+    await blur(input);
+
     const styleMenuButton = await getByLabelText(doc, 'Style');
     await styleMenuButton.click();
 
@@ -284,6 +293,9 @@ describe('RichTextInput', () => {
     expect(numOfTags).toEqual(1);
 
     // now change back to paragraph (the default)
+
+    // blur input first to test that editor focus works correctly
+    await blur(input);
 
     // open style menu again
     await styleMenuButton.click();
