@@ -252,6 +252,20 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
     );
   }
 
+  const { focus } = props.editor;
+
+  const onToolbarClick = React.useCallback(() => {
+    // if clicking on a dropdown, we need to both focus the RichTextInput
+    // and open the dropdown.
+    // if we don't use setTimeout, our dropdown opening will be hijacked by the
+    // editors rerendering. (a so called `race condition`)
+    // the reason we keep this here, is because any onClick from our dropdown or our mark buttons
+    // will propogate to here.
+    if (!props.editor.value.selection.isFocused) {
+      setTimeout(focus, 0);
+    }
+  }, [props.editor.value.selection.isFocused, focus]);
+
   return (
     <Container
       css={props.styles.container}
@@ -260,13 +274,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       isReadOnly={props.isReadOnly}
       isDisabled={props.isDisabled}
     >
-      <Toolbar
-        onClick={() => {
-          if (!props.editor.value.selection.isFocused) {
-            props.editor.focus();
-          }
-        }}
-      >
+      <Toolbar onClick={onToolbarClick}>
         <ToolbarMainControls>
           <Dropdown
             label={intl.formatMessage(messages.styleDropdownLabel)}
