@@ -1,3 +1,14 @@
+# [10.7.0](https://github.com/commercetools/ui-kit/compare/v10.6.1...v10.7.0) (2019-10-30)
+
+### Features
+
+- `RadioInput.Option`: adds `components.wrapper` prop ([#1139](https://github.com/commercetools/ui-kit/pull/1139))
+
+### Bug Fixes
+
+- `LocalizedRichTextInput`: fix omit empty translations, add readme ([#1134](https://github.com/commercetools/ui-kit/issues/1134)) ([0b4b7e9](https://github.com/commercetools/ui-kit/commit/0b4b7e9e2f48fdeb2588c62fa5d2f4baec3bed9e))
+- `RichTextInput`: dropdown focus bug ([#1145](https://github.com/commercetools/ui-kit/issues/1145)) ([0496f29](https://github.com/commercetools/ui-kit/commit/0496f2948b33354322b2289e01a120017cfdf712))
+
 ## [10.6.1](https://github.com/commercetools/ui-kit/compare/v10.6.0...v10.6.1) (2019-10-23)
 
 ### Bug Fixes
