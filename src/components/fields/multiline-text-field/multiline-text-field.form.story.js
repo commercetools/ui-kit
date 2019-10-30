@@ -21,66 +21,69 @@ storiesOf('Examples|Forms/Fields', module)
       sidebar: Readme,
     },
   })
-  .add('MultilineTextField', () => (
-    <Section>
-      <Formik
-        initialValues={{ description: '' }}
-        validate={values => {
-          const errors = { description: {} };
-          if (MultilineTextInput.isEmpty(values.description))
-            errors.description.missing = true;
-          if (values.description.trim().length > 160)
-            errors.description.exceedsMaxLength = true;
-          return omitEmpty(errors);
-        }}
-        onSubmit={(values, formik, ...rest) => {
-          action('onSubmit')(values, formik, ...rest);
-          formik.resetForm(values);
-        }}
-        render={formik => (
-          <Spacings.Stack scale="l">
-            <MultilineTextField
-              title="Description"
-              description="Information about the product."
-              hint="Use 160 spaces at most."
-              name="description"
-              isRequired={true}
-              value={formik.values.description}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              touched={formik.touched.description}
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                ['m', 'l', 'xl', 'scale'],
-                'm'
-              )}
-              errors={formik.errors.description}
-              renderError={key => {
-                switch (key) {
-                  // these could also use <FormattedMessage />
-                  case 'exceedsMaxLength':
-                    return 'No more than 160 characters allowed';
-                  default:
-                    return null;
-                }
-              }}
-            />
-            <Spacings.Inline>
-              <SecondaryButton
-                onClick={formik.handleReset}
-                isDisabled={formik.isSubmitting}
-                label="Reset"
+  .add('MultilineTextField', () => {
+    const initialValues = { description: '' };
+    return (
+      <Section>
+        <Formik
+          initialValues={initialValues}
+          validate={values => {
+            const errors = { description: {} };
+            if (MultilineTextInput.isEmpty(values.description))
+              errors.description.missing = true;
+            if (values.description.trim().length > 160)
+              errors.description.exceedsMaxLength = true;
+            return omitEmpty(errors);
+          }}
+          onSubmit={(values, formik, ...rest) => {
+            action('onSubmit')(values, formik, ...rest);
+            formik.resetForm({ values: initialValues });
+          }}
+          render={formik => (
+            <Spacings.Stack scale="l">
+              <MultilineTextField
+                title="Description"
+                description="Information about the product."
+                hint="Use 160 spaces at most."
+                name="description"
+                isRequired={true}
+                value={formik.values.description}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                touched={formik.touched.description}
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  ['m', 'l', 'xl', 'scale'],
+                  'm'
+                )}
+                errors={formik.errors.description}
+                renderError={key => {
+                  switch (key) {
+                    // these could also use <FormattedMessage />
+                    case 'exceedsMaxLength':
+                      return 'No more than 160 characters allowed';
+                    default:
+                      return null;
+                  }
+                }}
               />
-              <PrimaryButton
-                onClick={formik.handleSubmit}
-                isDisabled={formik.isSubmitting || !formik.dirty}
-                label="Submit"
-              />
-            </Spacings.Inline>
-            <hr />
-            <FormikBox formik={formik} />
-          </Spacings.Stack>
-        )}
-      />
-    </Section>
-  ));
+              <Spacings.Inline>
+                <SecondaryButton
+                  onClick={formik.handleReset}
+                  isDisabled={formik.isSubmitting}
+                  label="Reset"
+                />
+                <PrimaryButton
+                  onClick={formik.handleSubmit}
+                  isDisabled={formik.isSubmitting || !formik.dirty}
+                  label="Submit"
+                />
+              </Spacings.Inline>
+              <hr />
+              <FormikBox formik={formik} />
+            </Spacings.Stack>
+          )}
+        />
+      </Section>
+    );
+  });

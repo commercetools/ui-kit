@@ -19,7 +19,7 @@ aliases:
 executors:
   node_10:
     docker:
-      - image: circleci/node:10.16
+      - image: circleci/node:13.0
     working_directory: *working_directory
 
 commands:
@@ -52,7 +52,7 @@ commands:
   unit_test:
     description: 'Running unit tests'
     steps:
-      - run: yarn run cross-env NODE_ICU_DATA=vendors/node_modules/full-icu jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run: yarn run jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
   bundle_test:
     description: 'Running bundle tests'
     steps:

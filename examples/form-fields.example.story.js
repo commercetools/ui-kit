@@ -375,7 +375,9 @@ const Story = injectIntl(props => (
                 // Calling resetForm with the updated product will
                 // update the form values and reset the submission state,
                 // touched keys and so on.
-                formik.resetForm(docToForm(updatedProduct, props.intl.locale));
+                formik.resetForm({
+                  values: docToForm(updatedProduct, props.intl.locale),
+                });
               },
               error => {
                 // This is an example where we have to rely on the API
