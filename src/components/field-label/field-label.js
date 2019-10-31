@@ -26,6 +26,7 @@ export const FieldLabel = props => {
               isBold={true}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
               htmlFor={props.htmlFor}
+              tone={props.tone}
             >
               {props.title}
             </Label>
@@ -51,13 +52,15 @@ export const FieldLabel = props => {
                 })}
               </Spacings.Inline>
             )}
-            {props.hint && <Text.Detail>{props.hint}</Text.Detail>}
+            {props.hint && (
+              <Text.Detail tone={props.tone}>{props.hint}</Text.Detail>
+            )}
           </Spacings.Inline>
         )}
         {props.description && (
-          <Text.Detail>
-            <Text.Wrap>{props.description}</Text.Wrap>
-          </Text.Detail>
+          <Text.Wrap>
+            <Text.Detail tone={props.tone}>{props.description}</Text.Detail>
+          </Text.Wrap>
         )}
 
         {props.badge && (
@@ -85,6 +88,7 @@ FieldLabel.propTypes = {
   ),
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   onInfoButtonClick: PropTypes.func,
+  tone: PropTypes.oneOf(['primary', 'inverted']),
   hintIcon: PropTypes.node,
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,

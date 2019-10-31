@@ -1,10 +1,11 @@
 import React from 'react';
-import { FieldLabel, WarningIcon, FlatButton } from 'ui-kit';
+import { ThemeProvider } from 'emotion-theming';
+import { FieldLabel, WarningIcon, FlatButton, customProperties } from 'ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/field-label';
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
       <FieldLabel title="Hello" horizontalConstraint="m" />
@@ -58,5 +59,17 @@ export const component = () => (
         horizontalConstraint="m"
       />
     </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="with inverted tone" omitPropsList>
+        <ThemeProvider theme={customProperties}>
+          <FieldLabel
+            title="Hello"
+            description="description"
+            hasRequiredIndicator={true}
+            tone="inverted"
+          />
+        </ThemeProvider>
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
