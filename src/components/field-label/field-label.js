@@ -58,8 +58,8 @@ export const FieldLabel = props => {
           </Spacings.Inline>
         )}
         {props.description && (
-          <Text.Detail tone={props.tone}>
-            <Text.Wrap>{props.description}</Text.Wrap>
+          <Text.Detail>
+            <Text.Wrap tone={props.tone}>{props.description}</Text.Wrap>
           </Text.Detail>
         )}
 

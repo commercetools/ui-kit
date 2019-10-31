@@ -60,7 +60,7 @@ export const component = ({ themes }) => (
       />
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with inverted tone">
+      <Spec label="with inverted tone" omitPropsList>
         <ThemeProvider theme={customProperties}>
           <FieldLabel
             title="Hello"
