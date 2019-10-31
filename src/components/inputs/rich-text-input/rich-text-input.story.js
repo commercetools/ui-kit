@@ -75,7 +75,7 @@ storiesOf('Components|Inputs', module)
           <label htmlFor={id}>Rich Text</label>
           <Input
             id={text('id', 'test-id')}
-            name={id}
+            name={text('name', 'test-name')}
             onBlur={onBlur}
             onFocus={onFocus}
             defaultExpandMultilineText={boolean(
