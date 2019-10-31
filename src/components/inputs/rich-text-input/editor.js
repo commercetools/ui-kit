@@ -110,7 +110,6 @@ const renderEditor = (props, editor, next) => {
   const internalId = `${props.id}__internal__id`;
 
   const children = React.cloneElement(next(), {
-    // tagName: 'output',
     id: internalId,
   });
 
