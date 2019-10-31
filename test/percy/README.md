@@ -191,5 +191,6 @@ A `Spec` should render your component in a specific state.
 
 You may use the prop `propsToList` to specify which props you want to display within the snapshot. Ideally, these should be the ones which you are testing. If `propsToList` is not defined, every prop will be displayed.
 If don't want to display any props at all, use `omitPropsList`.
+If you want to display of the child of the children you pass it, use `listPropsOfChild`. This can be useful if you need to wrap your component in a `ThemeProvider`.
 
 You can use multiple specs within a `Suite`.

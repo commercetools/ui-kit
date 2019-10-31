@@ -81,7 +81,10 @@ Pill.propTypes = {
 };
 
 const Props = props => {
-  const node = React.Children.only(props.children);
+  const node = props.listPropsOfChild
+    ? React.Children.only(props.children.props.children)
+    : React.Children.only(props.children);
+
   const propEntries = Object.entries(
     props.propsToList ? pick(node.props, props.propsToList) : node.props
   );
@@ -100,6 +103,7 @@ const Props = props => {
 Props.displayName = 'Props';
 Props.propTypes = {
   children: PropTypes.node.isRequired,
+  listPropsOfChild: PropTypes.bool.isRequired,
   propsToList: PropTypes.arrayOf(PropTypes.string),
 };
 
@@ -107,7 +111,12 @@ const Spec = props => (
   <SpecContainer>
     <Label>{props.label}</Label>
     {!props.omitPropsList && (
-      <Props propsToList={props.propsToList}>{props.children}</Props>
+      <Props
+        propsToList={props.propsToList}
+        listPropsOfChild={props.listPropsOfChild}
+      >
+        {props.children}
+      </Props>
     )}
     <Box>{props.children}</Box>
   </SpecContainer>
@@ -116,12 +125,14 @@ const Spec = props => (
 Spec.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
+  listPropsOfChild: PropTypes.bool,
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
 };
 
 Spec.defaultProps = {
   omitPropsList: false,
+  listPropsOfChild: false,
 };
 
 Spec.displayName = 'Spec';
