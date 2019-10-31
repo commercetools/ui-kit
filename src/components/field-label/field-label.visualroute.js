@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
-import { FieldLabel, WarningIcon, FlatButton } from 'ui-kit';
+import { FieldLabel, WarningIcon, FlatButton, customProperties } from 'ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/field-label';
@@ -61,12 +61,14 @@ export const component = ({ themes }) => (
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with inverted tone">
-        <FieldLabel
-          title="Hello"
-          description="description"
-          hasRequiredIndicator={true}
-          tone="inverted"
-        />
+        <ThemeProvider theme={customProperties}>
+          <FieldLabel
+            title="Hello"
+            description="description"
+            hasRequiredIndicator={true}
+            tone="inverted"
+          />
+        </ThemeProvider>
       </Spec>
     </ThemeProvider>
   </Suite>
