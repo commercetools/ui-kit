@@ -59,7 +59,7 @@ export const component = () => (
       />
     </Spec>
     <Spec label="with inverted tone">
-      <FieldLabel title="Hello" hasRequiredIndicator={true} tone="invereted" />
+      <FieldLabel title="Hello" hasRequiredIndicator={true} tone="inverted" />
     </Spec>
   </Suite>
 );
