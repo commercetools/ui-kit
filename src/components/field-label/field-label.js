@@ -52,11 +52,13 @@ export const FieldLabel = props => {
                 })}
               </Spacings.Inline>
             )}
-            {props.hint && <Text.Detail>{props.hint}</Text.Detail>}
+            {props.hint && (
+              <Text.Detail tone={props.tone}>{props.hint}</Text.Detail>
+            )}
           </Spacings.Inline>
         )}
         {props.description && (
-          <Text.Detail>
+          <Text.Detail tone={props.tone}>
             <Text.Wrap>{props.description}</Text.Wrap>
           </Text.Detail>
         )}
