@@ -9,11 +9,11 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import usePrevious from '../../../hooks/use-previous';
 import CollapsibleMotion from '../../collapsible-motion';
 import Spacings from '../../spacings';
-import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
+import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import { getLanguageLabelStyles } from './editor.styles';
 import messages from '../../internals/messages/multiline-input';
 
@@ -209,19 +209,10 @@ const renderEditor = (props, editor, next) => {
   return (
     <Editor editor={editor} {...passedProps}>
       {children}
-      <input
-        css={accessibleHiddenInputStyles}
+      <HiddenInput
+        isFocused={isFocused}
+        handleFocus={editor.focus}
         id={props.id}
-        name={props.name}
-        onFocus={event => {
-          event.preventDefault();
-          if (!isFocused) {
-            editor.focus();
-          }
-        }}
-        onBlur={event => {
-          event.preventDefault();
-        }}
       />
     </Editor>
   );

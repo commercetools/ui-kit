@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import pick from 'lodash/pick';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import CollapsibleMotion from '../../collapsible-motion';
 import usePrevious from '../../../hooks/use-previous';
 import Spacings from '../../spacings';
@@ -12,6 +11,7 @@ import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Constraints from '../../constraints';
 import FlatButton from '../../buttons/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
+import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import messages from '../../internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
@@ -135,19 +135,10 @@ const renderEditor = (props, editor, next) => {
   return (
     <Editor editor={editor} {...passedProps}>
       {children}
-      <input
-        css={accessibleHiddenInputStyles}
+      <HiddenInput
+        isFocused={isFocused}
+        handleFocus={editor.focus}
         id={props.id}
-        name={props.name}
-        onFocus={event => {
-          event.preventDefault();
-          if (!isFocused) {
-            editor.focus();
-          }
-        }}
-        onBlur={event => {
-          event.preventDefault();
-        }}
       />
     </Editor>
   );
