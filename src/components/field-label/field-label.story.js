@@ -33,6 +33,7 @@ storiesOf('Components|FieldLabel', module)
           )}
           title={text('title', 'Sort Order')}
           hasRequiredIndicator={boolean('hasRequiredIndicator', false)}
+          tone={select('tone', ['', 'inverted'])}
           onInfoButtonClick={
             boolean('show info button', true)
               ? action('onInfoButtonClick')
