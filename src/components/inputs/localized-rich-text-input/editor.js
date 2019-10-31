@@ -9,6 +9,7 @@ import filterDataAttributes from '../../../utils/filter-data-attributes';
 import usePrevious from '../../../hooks/use-previous';
 import CollapsibleMotion from '../../collapsible-motion';
 import Spacings from '../../spacings';
+import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
@@ -177,12 +178,14 @@ const Editor = props => {
 
 // eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
+  const internalId = `${props.id}__internal__id`;
+
   const children = React.cloneElement(next(), {
-    tagName: 'output',
+    id: internalId,
   });
 
   const passedProps = {
-    id: props.id,
+    id: internalId,
     isDisabled: props.disabled,
     isReadOnly: props.readOnly,
     ...pick(props.options, [
@@ -201,9 +204,25 @@ const renderEditor = (props, editor, next) => {
     ...filterDataAttributes(props),
   };
 
+  const isFocused = props.editor.value.selection.isFocused;
+
   return (
     <Editor editor={editor} {...passedProps}>
       {children}
+      <input
+        css={accessibleHiddenInputStyles}
+        id={props.id}
+        name={props.name}
+        onFocus={event => {
+          event.preventDefault();
+          if (!isFocused) {
+            editor.focus();
+          }
+        }}
+        onBlur={event => {
+          event.preventDefault();
+        }}
+      />
     </Editor>
   );
 };
@@ -233,6 +252,7 @@ renderEditor.propTypes = {
   name: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
+  editor: PropTypes.any,
   options: PropTypes.shape({
     language: PropTypes.string.isRequired,
     error: PropTypes.node,

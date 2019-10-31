@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import pick from 'lodash/pick';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
+import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import CollapsibleMotion from '../../collapsible-motion';
 import usePrevious from '../../../hooks/use-previous';
 import Spacings from '../../spacings';
@@ -106,13 +107,18 @@ const Editor = props => {
 
 // eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
+  const internalId = `${props.id}__internal__id`;
+
   const children = React.cloneElement(next(), {
-    tagName: 'output',
+    // tagName: 'output',
+    id: internalId,
   });
+
+  const isFocused = props.editor.value.selection.isFocused;
 
   const passedProps = {
     name: props.name,
-    id: props.id,
+    id: internalId,
     isReadOnly: props.readOnly,
     isDisabled: props.disabled,
     ...pick(props.options, [
@@ -129,6 +135,20 @@ const renderEditor = (props, editor, next) => {
   return (
     <Editor editor={editor} {...passedProps}>
       {children}
+      <input
+        css={accessibleHiddenInputStyles}
+        id={props.id}
+        name={props.name}
+        onFocus={event => {
+          event.preventDefault();
+          if (!isFocused) {
+            editor.focus();
+          }
+        }}
+        onBlur={event => {
+          event.preventDefault();
+        }}
+      />
     </Editor>
   );
 };
