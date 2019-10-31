@@ -12,12 +12,31 @@ import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import messages from '../../internals/messages/multiline-input';
 
+const COLLAPSED_HEIGHT = 32;
+
 const MultilineTextInput = props => {
   const intl = useIntl();
 
-  const [contentRowCount, setContentRowCount] = React.useState(
-    MultilineTextInput.MIN_ROW_COUNT
-  );
+  const ref = React.useRef();
+  const [renderToggleButton, setRenderToggleButton] = React.useState(false);
+
+  const updateRenderToggleButton = React.useCallback(() => {
+    if (ref.current && ref.current.el) {
+      const doesExceedCollapsedHeightLimit =
+        ref.current.el.offsetHeight > COLLAPSED_HEIGHT;
+
+      if (doesExceedCollapsedHeightLimit && !renderToggleButton) {
+        setRenderToggleButton(true);
+      }
+      if (!doesExceedCollapsedHeightLimit && renderToggleButton) {
+        setRenderToggleButton(false);
+      }
+    }
+  }, [setRenderToggleButton, renderToggleButton]);
+
+  React.useEffect(() => {
+    updateRenderToggleButton();
+  }, [props.value, updateRenderToggleButton]);
 
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
@@ -27,40 +46,31 @@ const MultilineTextInput = props => {
     if (onFocus) onFocus();
   }, [isOpen, onFocus, toggle]);
 
-  const handleHeightChange = React.useCallback(
-    (_, innerComponent) => {
-      setContentRowCount(innerComponent.valueRowCount);
-    },
-    [setContentRowCount]
-  );
-
-  // This checks if the content in the textarea overflows the minimum
-  // amount of lines it should have when collapsed
-  const shouldRenderToggleButton =
-    contentRowCount > MultilineTextInput.MIN_ROW_COUNT;
-
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Spacings.Stack scale="xs">
-        <MultilineInput
-          name={props.name}
-          autoComplete={props.autoComplete}
-          value={props.value}
-          onChange={props.onChange}
-          onHeightChange={handleHeightChange}
-          id={props.id}
-          onBlur={props.onBlur}
-          onFocus={handleFocus}
-          isDisabled={props.isDisabled}
-          hasError={props.hasError}
-          hasWarning={props.hasWarning}
-          placeholder={props.placeholder}
-          isReadOnly={props.isReadOnly}
-          isAutofocussed={props.isAutofocussed}
-          isOpen={isOpen}
-          {...filterDataAttributes(props)}
-        />
-        {shouldRenderToggleButton && (
+        <div>
+          <MultilineInput
+            name={props.name}
+            forwardedRef={ref}
+            autoComplete={props.autoComplete}
+            value={props.value}
+            onChange={props.onChange}
+            // onHeightChange={handleHeightChange}
+            id={props.id}
+            onBlur={props.onBlur}
+            onFocus={handleFocus}
+            isDisabled={props.isDisabled}
+            hasError={props.hasError}
+            hasWarning={props.hasWarning}
+            placeholder={props.placeholder}
+            isReadOnly={props.isReadOnly}
+            isAutofocussed={props.isAutofocussed}
+            isOpen={isOpen}
+            {...filterDataAttributes(props)}
+          />
+        </div>
+        {renderToggleButton && (
           <div
             css={css`
               display: flex;

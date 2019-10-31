@@ -6,6 +6,8 @@ global.window.app = {
   mcApiUrl: 'http://localhost:8080',
 };
 
+window.getSelection = () => {};
+
 if (global.document) {
   document.createRange = () => ({
     setStart: () => {},

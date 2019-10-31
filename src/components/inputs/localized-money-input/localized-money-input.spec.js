@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../test-utils';
 import LocalizedMoneyInput from './localized-money-input';
 
+jest.mock('../../internals/multiline-input');
+
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.
 class TestComponent extends React.Component {

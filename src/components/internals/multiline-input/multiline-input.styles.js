@@ -13,6 +13,9 @@ const getTextareaStyles = (props, theme) => {
   const baseStyles = [
     getInputStyles(props, theme),
     css`
+      display: block;
+      overflow: auto;
+      height: ${props.isOpen ? '100%' : '32px'};
       padding: ${vars.spacingXs} ${vars.spacingS};
       line-height: ${sizeInputLineHeight};
       flex: auto;

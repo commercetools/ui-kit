@@ -2,9 +2,6 @@ import React from 'react';
 import { render } from '../../../test-utils';
 import RichTextInput from './rich-text-input';
 
-// mocks
-window.getSelection = () => {};
-
 const initialValue = '';
 
 const baseProps = { value: initialValue, onChange: () => {} };
