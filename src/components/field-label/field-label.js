@@ -26,6 +26,7 @@ export const FieldLabel = props => {
               isBold={true}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
               htmlFor={props.htmlFor}
+              tone={props.tone}
             >
               {props.title}
             </Label>
@@ -85,6 +86,7 @@ FieldLabel.propTypes = {
   ),
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   onInfoButtonClick: PropTypes.func,
+  tone: PropTypes.oneOf(['primary', 'inverted']),
   hintIcon: PropTypes.node,
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,

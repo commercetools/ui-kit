@@ -58,5 +58,8 @@ export const component = () => (
         horizontalConstraint="m"
       />
     </Spec>
+    <Spec label="with inverted tone">
+      <FieldLabel title="Hello" hasRequiredIndicator={true} tone="invereted" />
+    </Spec>
   </Suite>
 );
