@@ -24,6 +24,7 @@ const HiddenInput = props => {
       id={props.id}
       onFocus={onFocus}
       onBlur={onBlur}
+      tabIndex={-1}
     />
   );
 };
