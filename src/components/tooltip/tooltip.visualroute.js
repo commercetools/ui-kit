@@ -16,12 +16,12 @@ export const routePath = '/tooltip';
 
 export const component = () => (
   <Suite>
-    <Spec label="Closed" listPropsOfChild={true}>
+    <Spec label="Closed" listPropsOfNestedChild={true}>
       <Tooltip title={title}>
         <PrimaryButton onClick={noop} label="Hello" />
       </Tooltip>
     </Spec>
-    <Spec label="Open" listPropsOfChild={true}>
+    <Spec label="Open" listPropsOfNestedChild={true}>
       <div
         css={css`
           margin-top: 50px;
@@ -31,7 +31,7 @@ export const component = () => (
         <PrimaryButton onClick={noop} label="Hello" />
       </Tooltip>
     </Spec>
-    <Spec label="Open with custom body component" listPropsOfChild={true}>
+    <Spec label="Open with custom body component" listPropsOfNestedChild={true}>
       <div
         css={css`
           margin-top: 50px;
