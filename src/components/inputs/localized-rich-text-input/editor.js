@@ -185,7 +185,7 @@ const renderEditor = (props, editor, next) => {
   });
 
   const passedProps = {
-    id: internalId,
+    id: props.id,
     isDisabled: props.disabled,
     isReadOnly: props.readOnly,
     ...pick(props.options, [

@@ -29,6 +29,8 @@ const WrappedComponent = ({ onChange, value }) => {
   return (
     <LocalizedRichTextInput
       id="rich-text"
+      name="rich-text"
+      data-testid="rich-text-data-test"
       onChange={handleChange}
       value={value}
       selectedLanguage="en"

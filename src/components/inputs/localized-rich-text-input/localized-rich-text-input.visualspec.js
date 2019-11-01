@@ -1,7 +1,7 @@
 import { percySnapshot } from '@percy/puppeteer';
 import { getDocument, queries, wait } from 'pptr-testing-library';
 
-const { getByLabelText, getAllByLabelText, getByText } = queries;
+const { getByLabelText, getByTestId, getAllByLabelText, getByText } = queries;
 
 describe('LocalizedRichTextInput', () => {
   const selectAllText = async input => {
@@ -33,7 +33,7 @@ describe('LocalizedRichTextInput', () => {
   it('Interactive', async () => {
     await page.goto(`${HOST}/localized-rich-text-input/interactive`);
     const doc = await getDocument(page);
-    let input = await getByLabelText(doc, 'EN');
+    let input = await getByTestId(doc, 'rich-text-data-test-en');
 
     // make the text bold
     let boldButton = await getByLabelText(doc, 'Bold');
@@ -66,7 +66,7 @@ describe('LocalizedRichTextInput', () => {
     expect(boldButtons.length).toBe(3);
 
     // switch to german input
-    input = await getByLabelText(doc, 'DE');
+    input = await getByTestId(doc, 'rich-text-data-test-de');
 
     boldButton = boldButtons[1];
 
