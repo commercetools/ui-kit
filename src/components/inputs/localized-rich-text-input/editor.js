@@ -13,6 +13,7 @@ import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Text from '../../typography/text';
 import FlatButton from '../../buttons/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
+import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import { getLanguageLabelStyles } from './editor.styles';
 import messages from '../../internals/messages/multiline-input';
 
@@ -177,8 +178,10 @@ const Editor = props => {
 
 // eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
+  const internalId = `${props.id}__internal__id`;
+
   const children = React.cloneElement(next(), {
-    tagName: 'output',
+    id: internalId,
   });
 
   const passedProps = {
@@ -201,9 +204,16 @@ const renderEditor = (props, editor, next) => {
     ...filterDataAttributes(props),
   };
 
+  const isFocused = props.editor.value.selection.isFocused;
+
   return (
     <Editor editor={editor} {...passedProps}>
       {children}
+      <HiddenInput
+        isFocused={isFocused}
+        handleFocus={editor.focus}
+        id={props.id}
+      />
     </Editor>
   );
 };
@@ -233,6 +243,7 @@ renderEditor.propTypes = {
   name: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
+  editor: PropTypes.any,
   options: PropTypes.shape({
     language: PropTypes.string.isRequired,
     error: PropTypes.node,

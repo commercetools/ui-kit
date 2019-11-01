@@ -45,6 +45,7 @@ export const createLocalizedDataAttributes = (props, language) =>
   Object.entries(filterDataAttributes(props)).reduce((acc, [key, value]) => {
     switch (key) {
       case 'data-track-component':
+      case 'data-testid':
       case 'data-test':
         acc[key] = `${value}-${language}`;
         break;

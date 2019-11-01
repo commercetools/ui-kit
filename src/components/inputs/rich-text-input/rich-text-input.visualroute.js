@@ -41,6 +41,7 @@ const InteractiveRoute = () => {
         </div>
         <label htmlFor="rich-text">Rich text</label>
         <RichTextInput
+          data-testid="rich-text"
           id="rich-text"
           onChange={onChange}
           value={value}

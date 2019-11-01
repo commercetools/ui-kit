@@ -1,7 +1,7 @@
 import { percySnapshot } from '@percy/puppeteer';
 import { getDocument, queries, wait } from 'pptr-testing-library';
 
-const { getByLabelText, getByText } = queries;
+const { getByLabelText, getByTestId, getByText } = queries;
 
 describe('RichTextInput', () => {
   const blur = async element => {
@@ -39,7 +39,7 @@ describe('RichTextInput', () => {
   it('Interactive', async () => {
     await page.goto(`${HOST}/rich-text-input/interactive`);
     const doc = await getDocument(page);
-    const input = await getByLabelText(doc, 'Rich text');
+    const input = await getByTestId(doc, 'rich-text');
 
     // make the text bold
     const boldButton = await getByLabelText(doc, 'Bold');

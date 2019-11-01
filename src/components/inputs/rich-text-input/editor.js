@@ -11,6 +11,7 @@ import { AngleUpIcon, AngleDownIcon } from '../../icons';
 import Constraints from '../../constraints';
 import FlatButton from '../../buttons/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
+import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import messages from '../../internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
@@ -106,9 +107,13 @@ const Editor = props => {
 
 // eslint-disable-next-line react/display-name
 const renderEditor = (props, editor, next) => {
+  const internalId = `${props.id}__internal__id`;
+
   const children = React.cloneElement(next(), {
-    tagName: 'output',
+    id: internalId,
   });
+
+  const isFocused = props.editor.value.selection.isFocused;
 
   const passedProps = {
     name: props.name,
@@ -129,6 +134,11 @@ const renderEditor = (props, editor, next) => {
   return (
     <Editor editor={editor} {...passedProps}>
       {children}
+      <HiddenInput
+        isFocused={isFocused}
+        handleFocus={editor.focus}
+        id={props.id}
+      />
     </Editor>
   );
 };

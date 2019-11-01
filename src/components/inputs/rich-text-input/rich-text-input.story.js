@@ -57,7 +57,7 @@ storiesOf('Components|Inputs', module)
 
     const onBlur = React.useCallback(action('onBlur'), []);
     const onFocus = React.useCallback(action('onFocus'), []);
-
+    const id = text('id', 'test-id');
     return (
       <Section>
         <Spacings.Stack scale="l">
@@ -72,6 +72,7 @@ storiesOf('Components|Inputs', module)
               />
             )}
           />
+          <label htmlFor={id}>Rich Text</label>
           <Input
             id={text('id', 'test-id')}
             name={text('name', 'test-name')}
