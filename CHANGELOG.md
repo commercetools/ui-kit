@@ -1,3 +1,13 @@
+# [10.8.0](https://github.com/commercetools/ui-kit/compare/v10.7.0...v10.8.0) (2019-11-01)
+
+### Bug Fixes
+
+- `RichTextInput,` `LocalizedRichTextInput`: fix for safari ([#1150](https://github.com/commercetools/ui-kit/issues/1150)) ([9f99224](https://github.com/commercetools/ui-kit/commit/9f992241ec66864f8a68d85027af371c82a55cb7))
+
+### Features
+
+- `FieldLabel:` add tone ([#1147](https://github.com/commercetools/ui-kit/issues/1147)) ([e6eb44d](https://github.com/commercetools/ui-kit/commit/e6eb44d6f0b4d09d8c717ea98ea132d8b55dfe07))
+
 # [10.7.0](https://github.com/commercetools/ui-kit/compare/v10.6.1...v10.7.0) (2019-10-30)
 
 ### Features
