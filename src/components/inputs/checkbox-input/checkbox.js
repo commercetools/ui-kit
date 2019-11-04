@@ -11,48 +11,50 @@ const Input = styled.input`
   }
 `;
 
-class Checkbox extends React.Component {
-  static displayName = 'Checkbox';
-
-  static propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    value: PropTypes.string,
-    isChecked: PropTypes.bool,
-    isIndeterminate: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-    isDisabled: PropTypes.bool,
-  };
-
-  componentDidMount() {
-    if (this.props.isIndeterminate) {
-      this.ref.current.indeterminate = true;
+const Checkbox = props => {
+  const ref = React.useRef();
+  React.useEffect(() => {
+    if (props.isIndeterminate) {
+      ref.current.indeterminate = true;
     }
-  }
+  }, [props.isIndeterminate]);
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.isIndeterminate !== this.props.isIndeterminate) {
-      this.ref.current.indeterminate = this.props.isIndeterminate;
-    }
-  }
+  const { onChange } = props;
 
-  ref = React.createRef();
+  const handleChange = React.useCallback(
+    event => !props.isReadOnly && onChange && onChange(event),
+    [props.isReadOnly, onChange]
+  );
 
-  render() {
-    return (
-      <Input
-        css={accessibleHiddenInputStyles}
-        id={this.props.id}
-        name={this.props.name}
-        value={this.props.value}
-        disabled={this.props.isDisabled}
-        checked={this.props.isChecked && !this.props.isIndeterminate}
-        onChange={this.props.onChange}
-        ref={this.ref}
-        {...this.props}
-      />
-    );
-  }
-}
+  return (
+    <Input
+      css={accessibleHiddenInputStyles}
+      id={props.id}
+      name={props.name}
+      value={props.value}
+      disabled={props.isDisabled || props.isReadOnly}
+      readOnly={props.isReadOnly}
+      checked={props.isChecked && !props.isIndeterminate}
+      onChange={handleChange}
+      ref={ref}
+      /* ARIA */
+      aria-readonly={props.isReadOnly}
+      {...props}
+    />
+  );
+};
+
+Checkbox.displayName = 'Checkbox';
+
+Checkbox.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  isChecked: PropTypes.bool,
+  isIndeterminate: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+};
 
 export default Checkbox;

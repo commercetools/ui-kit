@@ -35,6 +35,17 @@ it('should not call onChange when text is clicked while disabled', () => {
   expect(onChange).not.toHaveBeenCalled();
 });
 
+it('should not call onChange when text is clicked while readOnly', () => {
+  const onChange = jest.fn();
+  const { getByLabelText } = render(
+    <CheckboxInput onChange={onChange} isChecked={false} isReadOnly={true}>
+      Accept Terms
+    </CheckboxInput>
+  );
+  getByLabelText('Accept Terms').click();
+  expect(onChange).not.toHaveBeenCalled();
+});
+
 it('should call onChange when outside label is clicked', () => {
   const onChange = jest.fn();
   const { getByLabelText } = render(
