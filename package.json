@@ -217,9 +217,6 @@
     "react-intl": ">=3.0.0-beta.19 || 3.x",
     "react-router-dom": "5.x"
   },
-  "resolutions": {
-    "bundlesize/**/iltorb": "2.4.3"
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
