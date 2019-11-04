@@ -68,6 +68,7 @@ const LocalizedInput = props => {
           onChange={handleChange}
           onBlur={props.onBlur}
           isDisabled={props.isDisabled}
+          isReadOnly={props.isReadOnly}
           placeholder={props.placeholder}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
@@ -110,6 +111,7 @@ LocalizedInput.propTypes = {
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   currenciesControl: PropTypes.node,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
@@ -188,6 +190,7 @@ const LocalizedMoneyInput = props => {
               onBlur={props.onBlur}
               onFocus={props.onFocus}
               isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
               currenciesControl={(() => {
                 if (
                   !hasRemainingCurrencies ||
@@ -269,6 +272,7 @@ LocalizedMoneyInput.propTypes = {
     return PropTypes.bool(props, propName, componentName, ...rest);
   },
   isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   placeholder: PropTypes.objectOf(PropTypes.string),
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
   hasError: PropTypes.bool,

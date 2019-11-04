@@ -64,6 +64,25 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+    <Spec label="when readonly and open">
+      <LocalizedMoneyInput
+        value={value}
+        onChange={() => {}}
+        selectedCurrency="CAD"
+        horizontalConstraint="m"
+        isReadOnly={true}
+        defaultExpandCurrencies={true}
+      />
+    </Spec>
+    <Spec label="when readonly and closed">
+      <LocalizedMoneyInput
+        value={value}
+        onChange={() => {}}
+        selectedCurrency="CAD"
+        horizontalConstraint="m"
+        isReadOnly={true}
+      />
+    </Spec>
     <Spec label="when there is an error for a specific currency (first one)">
       <LocalizedMoneyInput
         value={value}

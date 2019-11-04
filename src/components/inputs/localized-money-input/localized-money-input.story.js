@@ -73,6 +73,7 @@ storiesOf('Components|Inputs', module)
                 defaultExpandCurrencies || undefined
               }
               isDisabled={boolean('isDisabled', false)}
+              isReadOnly={boolean('isReadOnly', false)}
               placeholder={object('placeholder', { EUR: '', USD: '' })}
               horizontalConstraint={select(
                 'horizontalConstraint',
