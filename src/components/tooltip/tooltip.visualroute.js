@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { PrimaryButton, Tooltip } from 'ui-kit';
 import { Suite, Spec } from '../../../test/percy';
@@ -12,34 +11,43 @@ const Body = styled.div`
   margin-top: 12px;
 `;
 
+const ContainerWithPadding = styled.div`
+  padding-top: 50px;
+`;
+
 export const routePath = '/tooltip';
 
-export const component = () => (
-  <Suite>
-    <Spec label="Closed" omitPropsList>
-      <Tooltip title={title}>
-        <PrimaryButton onClick={noop} label="Hello" />
-      </Tooltip>
-    </Spec>
-    <Spec label="Open" omitPropsList>
-      <div
-        css={css`
-          margin-top: 50px;
-        `}
-      />
-      <Tooltip title={title} isOpen={true}>
-        <PrimaryButton onClick={noop} label="Hello" />
-      </Tooltip>
-    </Spec>
-    <Spec label="Open with custom body component" omitPropsList>
-      <div
-        css={css`
-          margin-top: 50px;
-        `}
-      />
-      <Tooltip title={title} isOpen={true} components={{ BodyComponent: Body }}>
-        <PrimaryButton onClick={noop} label="Hello" />
-      </Tooltip>
-    </Spec>
-  </Suite>
-);
+export const component = () => {
+  return (
+    <Suite>
+      <Spec label="Closed">
+        <Tooltip title={title}>
+          <PrimaryButton onClick={noop} label="Hello" />
+        </Tooltip>
+      </Spec>
+      <Spec label="Open" listPropsOfNestedChild={true}>
+        <ContainerWithPadding>
+          <Tooltip title={title} isOpen={true}>
+            <PrimaryButton onClick={noop} label="Hello" />
+          </Tooltip>
+        </ContainerWithPadding>
+      </Spec>
+      <Spec
+        label="Open with custom body component"
+        listPropsOfNestedChild={true}
+      >
+        <ContainerWithPadding>
+          <Tooltip
+            title={title}
+            isOpen={true}
+            components={{ BodyComponent: Body }}
+          >
+            <PrimaryButton onClick={noop} label="Hello" />
+          </Tooltip>
+        </ContainerWithPadding>
+      </Spec>
+    </Suite>
+  );
+};
+/*
+ */
