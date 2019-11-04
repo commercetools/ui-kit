@@ -97,6 +97,31 @@ export const component = ({ themes }) => (
         I want mezcal with a worm
       </CheckboxInput>
     </Spec>
+    <Spec label="when readonly">
+      <CheckboxInput onChange={() => {}} value="value" isReadOnly={true}>
+        I want tequila
+      </CheckboxInput>
+    </Spec>
+    <Spec label="when checked and readonly">
+      <CheckboxInput
+        onChange={() => {}}
+        value="value"
+        isReadOnly={true}
+        isChecked={true}
+      >
+        I want mezcal
+      </CheckboxInput>
+    </Spec>
+    <Spec label="when indeterminate and readonly">
+      <CheckboxInput
+        onChange={() => {}}
+        value="value"
+        isReadOnly={true}
+        isIndeterminate={true}
+      >
+        I want mezcal with a worm
+      </CheckboxInput>
+    </Spec>
     <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with custom (dark) theme">
         <CheckboxInput onChange={() => {}} value="value">

@@ -33,6 +33,21 @@ const getCheckboxWrapperStyles = (props, theme) => {
       `,
     ];
   }
+  if (props.isReadOnly) {
+    return [
+      baseStyles,
+      css`
+        svg [id$='borderAndContent'] > [id$='content'] {
+          fill: ${overwrittenVars[designTokens.fontColorForInputWhenReadonly]};
+        }
+        svg [id$='borderAndContent'] > [id$='border'] {
+          stroke: ${overwrittenVars[
+            designTokens.borderColorForInputWhenReadonly
+          ]};
+        }
+      `,
+    ];
+  }
   if (props.hasError) {
     return [
       baseStyles,

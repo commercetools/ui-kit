@@ -34,6 +34,7 @@ storiesOf('Components|Inputs', module)
               isIndeterminate={boolean('isIndeterminate', false)}
               isHovered={boolean('isHovered', false)}
               isDisabled={boolean('isDisabled', false)}
+              isReadOnly={boolean('isReadOnly', false)}
               hasError={boolean('hasError', false)}
             >
               {text('Label', 'This is a label')}

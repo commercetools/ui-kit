@@ -50,6 +50,7 @@ class CheckboxInput extends React.PureComponent {
     // by a corresponding :hover selector in the syles of this component.
     isHovered: PropTypes.bool,
     isDisabled: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
     children: PropTypes.node,
   };
@@ -84,6 +85,7 @@ class CheckboxInput extends React.PureComponent {
           value={this.props.value}
           onChange={this.props.onChange}
           isDisabled={this.props.isDisabled}
+          isReadOnly={this.props.isReadOnly}
           isChecked={this.props.isChecked}
           isIndeterminate={this.props.isIndeterminate}
           {...filterDataAttributes(this.props)}
