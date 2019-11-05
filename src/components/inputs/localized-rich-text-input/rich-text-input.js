@@ -63,17 +63,6 @@ class RichTextInput extends React.PureComponent {
   // for calling our passed onBlur handler
   // https://github.com/ianstormtaylor/slate/issues/2434
   onBlur = (event, editor, next) => {
-    // we don't call next() if it's a button to stop our input from losing
-    // slate focus
-    if (
-      event.relatedTarget &&
-      event.relatedTarget.getAttribute('data-button-type') ===
-        'rich-text-button'
-    ) {
-      event.preventDefault();
-      return;
-    }
-
     next();
 
     if (this.props.onBlur) {
