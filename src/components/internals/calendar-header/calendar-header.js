@@ -35,6 +35,7 @@ const CalendarHeader = props => {
           <SecondaryIconButton
             label="show prev month"
             onClick={props.onPrevMonthClick}
+            data-button-type="calendar-header"
             icon={<AngleLeftIcon size="medium" />}
           />
         </Tooltip>
@@ -45,6 +46,7 @@ const CalendarHeader = props => {
           <SecondaryIconButton
             label="show today"
             onClick={props.onTodayClick}
+            data-button-type="calendar-header"
             icon={<CircleIcon size="medium" />}
           />
         </Tooltip>
@@ -55,6 +57,7 @@ const CalendarHeader = props => {
           <SecondaryIconButton
             label="show next month"
             onClick={props.onNextMonthClick}
+            data-button-type="calendar-header"
             icon={<AngleRightIcon size="medium" />}
           />
         </Tooltip>
@@ -70,6 +73,7 @@ const CalendarHeader = props => {
           <SecondaryIconButton
             label="show prev year"
             onClick={props.onPrevYearClick}
+            data-button-type="calendar-header"
             icon={<AngleLeftIcon size="medium" />}
           />
         </Tooltip>
@@ -81,6 +85,7 @@ const CalendarHeader = props => {
           <SecondaryIconButton
             label="show next year"
             onClick={props.onNextYearClick}
+            data-button-type="calendar-header"
             icon={<AngleRightIcon size="medium" />}
           />
         </Tooltip>

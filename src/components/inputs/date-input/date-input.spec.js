@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../test-utils';
+import userEvent from '@testing-library/user-event';
+import { render, fireEvent, waitForElement } from '../../../test-utils';
 import DateInput from './date-input';
 
 // This component is used to enable easy testing.
@@ -43,6 +44,29 @@ class Story extends React.Component {
 
 const renderDateInput = (props, options) =>
   render(<Story {...props} />, options);
+
+describe('interaction', () => {
+  describe('interacting with header buttons', () => {
+    it('should not blur the input', async () => {
+      const onFocus = jest.fn();
+      const onBlur = jest.fn();
+      const { getByLabelText, getByText, queryByText } = renderDateInput({
+        value: '2018-09-18',
+        onFocus,
+        onBlur,
+      });
+      const dateInput = getByLabelText('Date');
+      userEvent.click(dateInput);
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      expect(getByText('September')).toBeInTheDocument();
+      const previousMonthButton = getByLabelText('show prev month');
+      userEvent.click(previousMonthButton);
+      await waitForElement(() => getByText('August'));
+      expect(onBlur).not.toHaveBeenCalled();
+      expect(queryByText('September')).not.toBeInTheDocument();
+    });
+  });
+});
 
 it('should render an input', () => {
   const { getByLabelText } = renderDateInput();

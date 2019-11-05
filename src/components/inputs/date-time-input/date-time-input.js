@@ -104,7 +104,16 @@ class DateTimeInput extends React.Component {
       () => this.inputRef.current.focus()
     );
   };
-  handleBlur = () => {
+  handleBlur = event => {
+    if (
+      event.relatedTarget &&
+      event.relatedTarget.getAttribute &&
+      event.relatedTarget.getAttribute('data-button-type') === 'calendar-header'
+    ) {
+      event.preventDefault();
+      return;
+    }
+
     if (this.props.onBlur)
       this.props.onBlur({
         target: {

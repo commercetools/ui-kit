@@ -60,15 +60,28 @@ const DateInput = props => {
   );
 
   const { onBlur } = props;
-  const handleBlur = React.useCallback(() => {
-    if (onBlur)
-      onBlur({
-        target: {
-          id: props.id,
-          name: props.name,
-        },
-      });
-  }, [onBlur, props.id, props.name]);
+  const handleBlur = React.useCallback(
+    event => {
+      if (
+        event.relatedTarget &&
+        event.relatedTarget.getAttribute &&
+        event.relatedTarget.getAttribute('data-button-type') ===
+          'calendar-header'
+      ) {
+        event.preventDefault();
+        return;
+      }
+
+      if (onBlur)
+        onBlur({
+          target: {
+            id: props.id,
+            name: props.name,
+          },
+        });
+    },
+    [onBlur, props.id, props.name]
+  );
 
   const showToday = () => {
     const today = getToday();

@@ -18,6 +18,14 @@ class DateInputStory extends React.Component {
     this.setState({ value: event.target.value });
   };
 
+  handleFocus = event => {
+    action('onFocus')(event);
+  };
+
+  handleBlur = event => {
+    action('onBlur')(event);
+  };
+
   render() {
     const placeholder = text('placeholder', '');
     return (
@@ -25,7 +33,9 @@ class DateInputStory extends React.Component {
         <div>
           <DateInput
             value={this.state.value}
+            onBlur={this.handleBlur}
             onChange={this.handleChange}
+            onFocus={this.handleFocus}
             horizontalConstraint={select(
               'horizontalConstraint',
               ['m', 'l', 'xl', 'scale'],
