@@ -152,16 +152,7 @@ class DateRangeCalendar extends React.Component {
       () => this.inputRef.current.focus()
     );
   };
-  handleBlur = event => {
-    if (
-      event.relatedTarget &&
-      event.relatedTarget.getAttribute &&
-      event.relatedTarget.getAttribute('data-button-type') === 'calendar-header'
-    ) {
-      event.preventDefault();
-      return;
-    }
-
+  handleBlur = () => {
     if (this.props.onBlur)
       this.props.onBlur({
         target: {
