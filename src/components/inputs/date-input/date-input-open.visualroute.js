@@ -11,6 +11,7 @@ export const component = () => (
     <Spec label="minimal">
       <DateInput
         id="date-input"
+        data-testid="date-input"
         value={value}
         onChange={() => {}}
         horizontalConstraint="m"
