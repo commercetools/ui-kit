@@ -26,16 +26,17 @@ export const getIconColor = props => {
 };
 
 export const SecondaryButton = props => {
+  const isActive = props.isToggleButton && props.isToggled;
+  const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
+
+  const asProps = shouldUseLinkTag ? { as: Link } : { as: props.as };
+
   const buttonAttributes = {
     'data-track-component': 'SecondaryButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
-    to: props.to,
+    to: props.to || props.linkTo,
   };
-  const isActive = props.isToggleButton && props.isToggled;
-  const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
-
-  const linkProps = shouldUseLinkTag ? { to: props.linkTo, as: Link } : {};
 
   const containerStyles = [
     css`
@@ -54,9 +55,7 @@ export const SecondaryButton = props => {
 
   return (
     <AccessibleButton
-      {...linkProps}
-      to={props.to}
-      as={props.as}
+      {...asProps}
       type={props.type}
       buttonAttributes={buttonAttributes}
       label={props.label}
@@ -141,16 +140,21 @@ SecondaryButton.propTypes = {
     );
   },
 
-  onClick: requiredIf(PropTypes.func, props => !props.linkTo),
+  onClick: requiredIf(PropTypes.func, props => {
+    return !props.linkTo && !props.to;
+  }),
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  to(props, propName, componentName) {
-    if (!props.as) {
-      return new Error(oneLine`
-              Invalid prop "${propName}" supplied to "${componentName}".
-              "${propName}" does not have any effect when "as" is not defined`);
+  to(props, propName, componentName, ...rest) {
+    if (props[propName] != null) {
+      if (!props.as) {
+        return new Error(oneLine`
+                Invalid prop "${propName}" supplied to "${componentName}".
+                "${propName}" does not have any effect when "as" is not defined`);
+      }
+      return PropTypes.string(props, propName, componentName, ...rest);
     }
 
-    return PropTypes.string;
+    return PropTypes.string(props, propName, componentName, ...rest);
   },
   linkTo(props, propName, componentName, ...rest) {
     // here
