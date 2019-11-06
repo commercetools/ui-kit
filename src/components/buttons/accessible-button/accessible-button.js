@@ -35,7 +35,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
     [onClick, props.isDisabled]
   );
 
-  const isButton = !props.as;
+  const isButton = !props.as || props.as === 'button';
 
   const buttonProps = {
     type: props.type,
