@@ -132,6 +132,14 @@ SecondaryButton.propTypes = {
         `
       );
     }
+    if (props.to && props.type !== 'button') {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "to" is set.
+        `
+      );
+    }
     return PropTypes.oneOf(['submit', 'reset', 'button'])(
       props,
       propName,
