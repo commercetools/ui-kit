@@ -7,6 +7,7 @@ const Button = styled.button`
   text-decoration: none;
   border: none;
   background: none;
+  box-sizing: border-box;
   display: inline-flex;
   outline: 0;
   padding: 0;
