@@ -17,8 +17,16 @@ const WrapperComponent = styled.div`
 
 const CalendarHeader = props => {
   const intl = useIntl();
+  // https://codepen.io/mudassir0909/pen/eIHqB
+
+  // we prevent all our defined onClicks inside of the CalendarHeader
+  // from blurring our input.
+  const onMouseDown = React.useCallback(event => {
+    event.preventDefault();
+  }, []);
   return (
     <div
+      onMouseDown={onMouseDown}
       css={css`
         display: flex;
         padding: 10px 2% 6px;

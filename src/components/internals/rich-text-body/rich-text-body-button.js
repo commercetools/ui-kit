@@ -19,7 +19,6 @@ const RichTextBodyButton = props => {
       {...restOfProps}
       type="button"
       tabIndex={-1}
-      data-button-type="rich-text-button"
       aria-disabled={props.isDisabled}
       disabled={props.isDisabled}
       aria-label={props.label}

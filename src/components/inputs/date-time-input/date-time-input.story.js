@@ -18,6 +18,11 @@ class DateTimeInputStory extends React.Component {
     this.setState({ value: event.target.value });
   };
 
+  onBlur = event => {
+    action('onBlur')(event);
+  };
+  onFocus = event => action('onFocus')(event);
+
   render() {
     const placeholder = text('placeholder', '');
     return (
@@ -47,6 +52,8 @@ class DateTimeInputStory extends React.Component {
           isDisabled={boolean('isDisabled', false)}
           hasError={boolean('hasError', false)}
           hasWarning={boolean('hasWarning', false)}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
         />
       </Section>
     );
