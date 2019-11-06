@@ -148,8 +148,8 @@ SecondaryButton.propTypes = {
     if (props[propName] != null) {
       if (!props.as) {
         return new Error(oneLine`
-                Invalid prop "${propName}" supplied to "${componentName}".
-                "${propName}" does not have any effect when "as" is not defined`);
+          Invalid prop "${propName}" supplied to "${componentName}".
+          "${propName}" does not have any effect when "as" is not defined`);
       }
       return PropTypes.string(props, propName, componentName, ...rest);
     }
