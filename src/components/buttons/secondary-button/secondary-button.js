@@ -35,7 +35,7 @@ export const SecondaryButton = props => {
 
   const containerStyles = [
     css`
-      display: inline-block;
+      display: inline-flex;
       background-color: ${vars.colorSurface};
       border-radius: ${vars.borderRadius6};
       box-shadow: ${vars.shadow7};
@@ -46,10 +46,17 @@ export const SecondaryButton = props => {
     `,
     getStateStyles(props.isDisabled, isActive, props.theme),
     getThemeStyles(props.theme),
+    shouldUseLinkTag &&
+      css`
+        text-decoration: none;
+      `,
   ];
 
-  const containerElements = (
+  const linkProps = shouldUseLinkTag ? { to: props.linkTo, as: Link } : {};
+
+  return (
     <AccessibleButton
+      {...linkProps}
       type={props.type}
       buttonAttributes={dataProps}
       label={props.label}
@@ -85,22 +92,6 @@ export const SecondaryButton = props => {
       </Spacings.Inline>
     </AccessibleButton>
   );
-
-  if (shouldUseLinkTag) {
-    return (
-      <Link
-        css={[
-          css`
-            text-decoration: none;
-          `,
-        ]}
-        to={props.linkTo}
-      >
-        {containerElements}
-      </Link>
-    );
-  }
-  return containerElements;
 };
 
 SecondaryButton.propTypes = {

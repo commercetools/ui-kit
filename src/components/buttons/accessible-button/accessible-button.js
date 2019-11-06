@@ -1,7 +1,26 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  display: inline-block;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  font-size: ${vars.fontSizeDefault};
+  font-family: inherit;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+`;
 
 const AccessibleButton = React.forwardRef((props, ref) => {
   const { onClick } = props;
@@ -15,30 +34,14 @@ const AccessibleButton = React.forwardRef((props, ref) => {
     [onClick, props.isDisabled]
   );
   return (
-    <button
+    <Button
+      as={props.as}
+      to={props.to}
       id={props.id}
       ref={ref}
       type={props.type}
       aria-label={props.label}
       onClick={handleClick}
-      css={css`
-        border: none;
-        background: none;
-        display: inline-block;
-        outline: 0;
-        padding: 0;
-        margin: 0;
-        white-space: nowrap;
-        cursor: pointer;
-        color: inherit;
-        font: inherit;
-        font-size: ${vars.fontSizeDefault};
-        font-family: inherit;
-
-        &:disabled {
-          cursor: not-allowed;
-        }
-      `}
       // Allow to override the styles by passing a `className` prop.
       // Custom styles can also be passed using the `css` prop from emotion.
       // https://emotion.sh/docs/css-prop#style-precedence
@@ -49,12 +52,14 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       {...props.buttonAttributes}
     >
       {props.children}
-    </button>
+    </Button>
   );
 });
 AccessibleButton.displayName = 'AccessibleButton';
 AccessibleButton.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   id: PropTypes.string,
+  to: PropTypes.string,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
