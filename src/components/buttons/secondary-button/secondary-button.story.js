@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Link } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
@@ -18,22 +18,31 @@ storiesOf('Components|Buttons', module)
       sidebar: Readme,
     },
   })
-  .add('SecondaryButton', () => (
-    <Section>
-      <MemoryRouter>
-        <SecondaryButton
-          type={select('type', ['button', 'reset', 'submit'], 'button')}
-          theme={select('theme', ['info', 'default'], 'default')}
-          iconLeft={React.createElement(
-            icons[select('iconLeft', iconNames, iconNames[0])]
-          )}
-          onClick={action('onClick')}
-          label={text('label', 'Accessibility text')}
-          isToggleButton={boolean('isToggleButton', false)}
-          isToggled={boolean('isToggled', false)}
-          isDisabled={boolean('isDisabled', false)}
-          linkTo={text('linkTo')}
-        />
-      </MemoryRouter>
-    </Section>
-  ));
+  .add('SecondaryButton', () => {
+    const linkTo = text('linkTo');
+
+    const isToggled = boolean('isToggled', false);
+    const isToggleButton = boolean('isToggleButton', false);
+    const toggleProps = isToggleButton ? { isToggled } : {};
+    const linkProps = linkTo && linkTo !== '' ? { to: linkTo, as: Link } : {};
+
+    return (
+      <Section>
+        <MemoryRouter>
+          <SecondaryButton
+            type={select('type', ['button', 'reset', 'submit'], 'button')}
+            theme={select('theme', ['info', 'default'], 'default')}
+            iconLeft={React.createElement(
+              icons[select('iconLeft', iconNames, iconNames[0])]
+            )}
+            onClick={action('onClick')}
+            label={text('label', 'Accessibility text')}
+            isToggleButton={boolean('isToggleButton', false)}
+            isDisabled={boolean('isDisabled', false)}
+            {...linkProps}
+            {...toggleProps}
+          />
+        </MemoryRouter>
+      </Section>
+    );
+  });

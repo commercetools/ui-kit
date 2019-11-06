@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { render, fireEvent, wait } from '../../../test-utils';
 import { PlusBoldIcon } from '../../icons';
 import SecondaryButton from './secondary-button';
@@ -71,9 +72,61 @@ describe('rendering', () => {
     });
   });
   describe('when using "linkTo"', () => {
+    /* eslint-disable no-console */
+    let log;
+    beforeEach(() => {
+      log = console.error;
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error = log;
+    });
+
+    it('should warn', () => {
+      render(<SecondaryButton {...props} onClick={null} linkTo="/foo/bar" />);
+
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: "linkTo" property of "SecondaryButton" has been deprecated and will be removed in the next major version\./
+        )
+      );
+    });
+
     it('should navigate to link when clicked', async () => {
       const { getByLabelText, history } = render(
         <SecondaryButton {...props} onClick={null} linkTo="/foo/bar" />
+      );
+      fireEvent.click(getByLabelText('Add'));
+      await wait(() => {
+        expect(history.location.pathname).toBe('/foo/bar');
+      });
+    });
+  });
+  describe('when using `to` without using `as`', () => {
+    /* eslint-disable no-console */
+    let log;
+    beforeEach(() => {
+      log = console.error;
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error = log;
+    });
+
+    it('should warn', () => {
+      render(<SecondaryButton {...props} onClick={null} to="/foo/bar" />);
+
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: Invalid prop "to" supplied to "SecondaryButton"\./
+        )
+      );
+    });
+  });
+  describe('when using as', () => {
+    it('should navigate to link when clicked', async () => {
+      const { getByLabelText, history } = render(
+        <SecondaryButton {...props} onClick={null} as={Link} to="/foo/bar" />
       );
       fireEvent.click(getByLabelText('Add'));
       await wait(() => {

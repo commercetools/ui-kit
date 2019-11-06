@@ -11,6 +11,7 @@ import AccessibleButton from '../accessible-button';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 export const getIconColor = props => {
@@ -25,17 +26,21 @@ export const getIconColor = props => {
 };
 
 export const SecondaryButton = props => {
-  const dataProps = {
-    'data-track-component': 'SecondaryButton',
-    ...filterAriaAttributes(props),
-    ...filterDataAttributes(props),
-  };
   const isActive = props.isToggleButton && props.isToggled;
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
 
+  const asProps = shouldUseLinkTag ? { as: Link } : { as: props.as };
+
+  const buttonAttributes = {
+    'data-track-component': 'SecondaryButton',
+    ...filterAriaAttributes(props),
+    ...filterDataAttributes(props),
+    to: props.to || props.linkTo,
+  };
+
   const containerStyles = [
     css`
-      display: inline-block;
+      display: inline-flex;
       background-color: ${vars.colorSurface};
       border-radius: ${vars.borderRadius6};
       box-shadow: ${vars.shadow7};
@@ -48,10 +53,11 @@ export const SecondaryButton = props => {
     getThemeStyles(props.theme),
   ];
 
-  const containerElements = (
+  return (
     <AccessibleButton
+      {...asProps}
       type={props.type}
-      buttonAttributes={dataProps}
+      buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={props.onClick}
       isToggleButton={props.isToggleButton}
@@ -85,22 +91,6 @@ export const SecondaryButton = props => {
       </Spacings.Inline>
     </AccessibleButton>
   );
-
-  if (shouldUseLinkTag) {
-    return (
-      <Link
-        css={[
-          css`
-            text-decoration: none;
-          `,
-        ]}
-        to={props.linkTo}
-      >
-        {containerElements}
-      </Link>
-    );
-  }
-  return containerElements;
 };
 
 SecondaryButton.propTypes = {
@@ -142,6 +132,14 @@ SecondaryButton.propTypes = {
         `
       );
     }
+    if (props.to && props.type !== 'button') {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "to" is set.
+        `
+      );
+    }
     return PropTypes.oneOf(['submit', 'reset', 'button'])(
       props,
       propName,
@@ -150,18 +148,61 @@ SecondaryButton.propTypes = {
     );
   },
 
-  onClick: requiredIf(PropTypes.func, props => !props.linkTo),
-  linkTo: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      search: PropTypes.string,
-      // Would like to use objectOf(PropTypes.string), but there is a bug
-      // preventing us from doing that at the momemnt
-      // https://github.com/facebook/prop-types/issues/183#issuecomment-392545102
-      query: PropTypes.object,
-    }),
-  ]),
+  onClick: requiredIf(PropTypes.func, props => {
+    return !props.linkTo && !props.to;
+  }),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  to(props, propName, componentName, ...rest) {
+    if (props[propName] != null) {
+      if (!props.as) {
+        return new Error(oneLine`
+          Invalid prop "${propName}" supplied to "${componentName}".
+          "${propName}" does not have any effect when "as" is not defined`);
+      }
+      return PropTypes.string(props, propName, componentName, ...rest);
+    }
+
+    return PropTypes.string(props, propName, componentName, ...rest);
+  },
+  linkTo(props, propName, componentName, ...rest) {
+    // here
+    if (props[propName] != null) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "as" prop instead.`
+      );
+
+      if (props.as) {
+        return new Error(oneLine`
+          Invalid prop "${propName}" supplied to "${componentName}".
+          "${propName}" does not have any effect when "as" is defined`);
+      }
+
+      if (props.to) {
+        return new Error(oneLine`
+          Invalid prop "${propName}" supplied to "${componentName}".
+          "${propName}" does not have any effect when "as" is defined`);
+      }
+
+      return PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          pathname: PropTypes.string.isRequired,
+          search: PropTypes.string,
+          query: PropTypes.objectOf(PropTypes.string),
+        }),
+      ])(props, propName, componentName, ...rest);
+    }
+    return PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+        search: PropTypes.string,
+        query: PropTypes.objectOf(PropTypes.string),
+      }),
+    ])(props, propName, componentName, ...rest);
+  },
 };
 
 SecondaryButton.defaultProps = {

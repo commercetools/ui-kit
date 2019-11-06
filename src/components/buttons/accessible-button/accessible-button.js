@@ -1,7 +1,27 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
+
+const Button = styled.button`
+  text-decoration: none;
+  border: none;
+  background: none;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  font-size: ${vars.fontSizeDefault};
+  font-family: inherit;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+`;
 
 const AccessibleButton = React.forwardRef((props, ref) => {
   const { onClick } = props;
@@ -14,31 +34,20 @@ const AccessibleButton = React.forwardRef((props, ref) => {
     },
     [onClick, props.isDisabled]
   );
+
+  const isButton = !props.as || props.as === 'button';
+
+  const buttonProps = {
+    type: props.type,
+  };
+
   return (
-    <button
+    <Button
+      as={props.as}
       id={props.id}
       ref={ref}
-      type={props.type}
       aria-label={props.label}
       onClick={handleClick}
-      css={css`
-        border: none;
-        background: none;
-        display: inline-block;
-        outline: 0;
-        padding: 0;
-        margin: 0;
-        white-space: nowrap;
-        cursor: pointer;
-        color: inherit;
-        font: inherit;
-        font-size: ${vars.fontSizeDefault};
-        font-family: inherit;
-
-        &:disabled {
-          cursor: not-allowed;
-        }
-      `}
       // Allow to override the styles by passing a `className` prop.
       // Custom styles can also be passed using the `css` prop from emotion.
       // https://emotion.sh/docs/css-prop#style-precedence
@@ -47,13 +56,15 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       aria-disabled={props.isDisabled}
       {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
       {...props.buttonAttributes}
+      {...(isButton ? buttonProps : {})}
     >
       {props.children}
-    </button>
+    </Button>
   );
 });
 AccessibleButton.displayName = 'AccessibleButton';
 AccessibleButton.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   id: PropTypes.string,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
