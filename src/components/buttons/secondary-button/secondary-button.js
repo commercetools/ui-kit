@@ -8,8 +8,7 @@ import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
@@ -33,9 +32,8 @@ export const SecondaryButton = props => {
 
   const buttonAttributes = {
     'data-track-component': 'SecondaryButton',
-    ...filterAriaAttributes(props),
-    ...filterDataAttributes(props),
-    to: props.to || props.linkTo,
+    ...filterInvalidAttributes(props),
+    ...(shouldUseLinkTag ? { to: props.linkTo } : {}),
   };
 
   const containerStyles = [
@@ -132,11 +130,11 @@ SecondaryButton.propTypes = {
         `
       );
     }
-    if (props.to && props.type !== 'button') {
+    if (props.as && props.type !== 'button') {
       throw new Error(
         oneLine`
           ${componentName}: "${propName}" does not have any effect when
-          "to" is set.
+          "as" is set.
         `
       );
     }
@@ -149,7 +147,7 @@ SecondaryButton.propTypes = {
   },
 
   onClick: requiredIf(PropTypes.func, props => {
-    return !props.linkTo && !props.to;
+    return !props.linkTo && !props.as;
   }),
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   to(props, propName, componentName, ...rest) {
@@ -174,12 +172,6 @@ SecondaryButton.propTypes = {
       );
 
       if (props.as) {
-        return new Error(oneLine`
-          Invalid prop "${propName}" supplied to "${componentName}".
-          "${propName}" does not have any effect when "as" is defined`);
-      }
-
-      if (props.to) {
         return new Error(oneLine`
           Invalid prop "${propName}" supplied to "${componentName}".
           "${propName}" does not have any effect when "as" is defined`);
