@@ -34,13 +34,18 @@ const AccessibleButton = React.forwardRef((props, ref) => {
     },
     [onClick, props.isDisabled]
   );
+
+  const isButton = !props.as;
+
+  const buttonProps = {
+    type: props.type,
+  };
+
   return (
     <Button
       as={props.as}
-      to={props.to}
       id={props.id}
       ref={ref}
-      type={props.type}
       aria-label={props.label}
       onClick={handleClick}
       // Allow to override the styles by passing a `className` prop.
@@ -51,6 +56,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       aria-disabled={props.isDisabled}
       {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
       {...props.buttonAttributes}
+      {...(isButton ? buttonProps : {})}
     >
       {props.children}
     </Button>
@@ -60,7 +66,6 @@ AccessibleButton.displayName = 'AccessibleButton';
 AccessibleButton.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   id: PropTypes.string,
-  to: PropTypes.string,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,

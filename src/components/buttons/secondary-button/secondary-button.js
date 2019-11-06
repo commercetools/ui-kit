@@ -26,10 +26,11 @@ export const getIconColor = props => {
 };
 
 export const SecondaryButton = props => {
-  const dataProps = {
+  const buttonAttributes = {
     'data-track-component': 'SecondaryButton',
     ...filterAriaAttributes(props),
     ...filterDataAttributes(props),
+    to: props.to,
   };
   const isActive = props.isToggleButton && props.isToggled;
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
@@ -57,7 +58,7 @@ export const SecondaryButton = props => {
       to={props.to}
       as={props.as}
       type={props.type}
-      buttonAttributes={dataProps}
+      buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={props.onClick}
       isToggleButton={props.isToggleButton}
