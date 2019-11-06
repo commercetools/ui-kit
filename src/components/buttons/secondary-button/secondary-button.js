@@ -11,6 +11,7 @@ import AccessibleButton from '../accessible-button';
 import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
+import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 export const getIconColor = props => {
@@ -33,6 +34,8 @@ export const SecondaryButton = props => {
   const isActive = props.isToggleButton && props.isToggled;
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
 
+  const linkProps = shouldUseLinkTag ? { to: props.linkTo, as: Link } : {};
+
   const containerStyles = [
     css`
       display: inline-flex;
@@ -46,17 +49,13 @@ export const SecondaryButton = props => {
     `,
     getStateStyles(props.isDisabled, isActive, props.theme),
     getThemeStyles(props.theme),
-    shouldUseLinkTag &&
-      css`
-        text-decoration: none;
-      `,
   ];
-
-  const linkProps = shouldUseLinkTag ? { to: props.linkTo, as: Link } : {};
 
   return (
     <AccessibleButton
       {...linkProps}
+      to={props.to}
+      as={props.as}
       type={props.type}
       buttonAttributes={dataProps}
       label={props.label}
@@ -142,17 +141,47 @@ SecondaryButton.propTypes = {
   },
 
   onClick: requiredIf(PropTypes.func, props => !props.linkTo),
-  linkTo: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      search: PropTypes.string,
-      // Would like to use objectOf(PropTypes.string), but there is a bug
-      // preventing us from doing that at the momemnt
-      // https://github.com/facebook/prop-types/issues/183#issuecomment-392545102
-      query: PropTypes.object,
-    }),
-  ]),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  to: PropTypes.string,
+  linkTo(props, propName, componentName, ...rest) {
+    // here
+    if (props[propName] != null) {
+      throwDeprecationWarning(
+        propName,
+        componentName,
+        `\n Please use "as" prop instead.`
+      );
+
+      if (props.as) {
+        return new Error(oneLine`
+          Invalid prop "${propName}" supplied to "${componentName}".
+          "${propName}" does not have any effect when "as" is defined`);
+      }
+
+      if (props.to) {
+        return new Error(oneLine`
+          Invalid prop "${propName}" supplied to "${componentName}".
+          "${propName}" does not have any effect when "as" is defined`);
+      }
+
+      return PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          pathname: PropTypes.string.isRequired,
+          search: PropTypes.string,
+          query: PropTypes.objectOf(PropTypes.string),
+        }),
+      ])(props, propName, componentName, ...rest);
+    }
+    return PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+        search: PropTypes.string,
+        query: PropTypes.objectOf(PropTypes.string),
+      }),
+    ])(props, propName, componentName, ...rest);
+  },
 };
 
 SecondaryButton.defaultProps = {

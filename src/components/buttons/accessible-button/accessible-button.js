@@ -4,9 +4,10 @@ import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 
 const Button = styled.button`
+  text-decoration: none;
   border: none;
   background: none;
-  display: inline-block;
+  display: inline-flex;
   outline: 0;
   padding: 0;
   margin: 0;
