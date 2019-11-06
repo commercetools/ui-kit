@@ -57,7 +57,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
 });
 AccessibleButton.displayName = 'AccessibleButton';
 AccessibleButton.propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   id: PropTypes.string,
   to: PropTypes.string,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
