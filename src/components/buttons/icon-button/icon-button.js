@@ -81,18 +81,6 @@ export const IconButton = props => {
 };
 
 IconButton.propTypes = {
-  to(props, propName, componentName, ...rest) {
-    if (props[propName] != null) {
-      if (!props.as) {
-        return new Error(oneLine`
-          Invalid prop "${propName}" supplied to "${componentName}".
-          "${propName}" does not have any effect when "as" is not defined`);
-      }
-      return PropTypes.string(props, propName, componentName, ...rest);
-    }
-
-    return PropTypes.string(props, propName, componentName, ...rest);
-  },
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   type: (props, propName, componentName, ...rest) => {
     // the type defaults to `button`, so we don't need to handle undefined
