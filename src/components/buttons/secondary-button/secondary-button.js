@@ -143,7 +143,15 @@ SecondaryButton.propTypes = {
 
   onClick: requiredIf(PropTypes.func, props => !props.linkTo),
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  to: PropTypes.string,
+  to(props, propName, componentName) {
+    if (!props.as) {
+      return new Error(oneLine`
+              Invalid prop "${propName}" supplied to "${componentName}".
+              "${propName}" does not have any effect when "as" is not defined`);
+    }
+
+    return PropTypes.string;
+  },
   linkTo(props, propName, componentName, ...rest) {
     // here
     if (props[propName] != null) {
