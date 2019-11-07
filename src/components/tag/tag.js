@@ -142,9 +142,7 @@ TagBody.propTypes = {
 
 const Tag = props => {
   const linkProps =
-    props.linkTo && !props.isDisabled
-      ? { as: Link, to: props.linkTo }
-      : { as: 'div' };
+    props.linkTo && !props.isDisabled ? { as: Link, to: props.linkTo } : {};
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
