@@ -10,6 +10,8 @@ import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
 
+const Body = styled.div``;
+
 const getTextDetailColor = (isDisabled, theme) => {
   const overwrittenVars = {
     ...vars,
@@ -82,9 +84,7 @@ const getClickableContentWrapperStyles = ({ type, theme }) => {
       ];
 };
 
-const Body = styled.div``;
-
-export const TagNormalBody = props => (
+const TagBody = props => (
   <Body
     to={props.to}
     as={props.as}
@@ -126,8 +126,8 @@ export const TagNormalBody = props => (
   </Body>
 );
 
-TagNormalBody.displayName = 'TagNormalBody';
-TagNormalBody.propTypes = {
+TagBody.displayName = 'TagBody';
+TagBody.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   to: PropTypes.string,
   type: PropTypes.string.isRequired,
@@ -162,7 +162,7 @@ const Tag = props => {
           `
         }
       >
-        <TagNormalBody
+        <TagBody
           {...linkProps}
           styles={props.styles}
           type={props.type}
@@ -171,7 +171,7 @@ const Tag = props => {
           isDisabled={props.isDisabled}
         >
           {props.children}
-        </TagNormalBody>
+        </TagBody>
 
         {Boolean(props.onRemove) && (
           <AccessibleButton
