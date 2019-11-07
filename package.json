@@ -89,7 +89,7 @@
     "warning": "4.0.3"
   },
   "devDependencies": {
-    "@babel/core": "7.7.0",
+    "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.7.0",
     "@babel/plugin-proposal-export-default-from": "7.5.2",
     "@babel/plugin-proposal-export-namespace-from": "7.5.2",
@@ -151,7 +151,7 @@
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "2.2.0",
     "formik": "2.0.3",
-    "glob": "7.1.5",
+    "glob": "7.1.6",
     "global": "4.4.0",
     "history": "4.10.1",
     "html-loader": "0.5.5",
