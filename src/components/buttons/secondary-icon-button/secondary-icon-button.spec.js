@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { render } from '../../../test-utils';
 import { PlusBoldIcon } from '../../icons';
 import SecondaryIconButton from './secondary-icon-button';
@@ -59,6 +60,44 @@ describe('rendering', () => {
         <SecondaryIconButton {...props} type="reset" />
       );
       expect(getByLabelText('test-button')).toHaveAttribute('type', 'reset');
+    });
+  });
+  describe('when used with `as`', () => {
+    describe('when as is a valid HTML element', () => {
+      it('should render as that HTML element', () => {
+        const { container } = render(
+          <SecondaryIconButton
+            {...props}
+            as="a"
+            href="https://www.kanyetothe.com"
+            target="_BLANK"
+          />
+        );
+        const linkButton = container.querySelector('a');
+        expect(linkButton).toHaveAttribute(
+          'href',
+          'https://www.kanyetothe.com'
+        );
+        expect(linkButton).not.toHaveAttribute('type', 'button');
+        expect(linkButton).toHaveAttribute('target', '_BLANK');
+      });
+    });
+    describe('when as is a React component', () => {
+      it('should render as that component', () => {
+        const { getByLabelText } = render(
+          <SecondaryIconButton
+            {...props}
+            as={Link}
+            to="foo/bar"
+            target="_BLANK"
+          />
+        );
+
+        const linkButton = getByLabelText('test-button');
+        expect(linkButton).toHaveAttribute('href', '/foo/bar');
+        expect(linkButton).toHaveAttribute('target', '_BLANK');
+        expect(linkButton).not.toHaveAttribute('type', 'button');
+      });
     });
   });
 });
