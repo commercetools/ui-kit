@@ -44,6 +44,32 @@ describe('rendering', () => {
       'true'
     );
   });
+  describe('when there is a divergence between `disabled` and `isDisabled`', () => {
+    describe('when `isDisabled` and not `disabled`', () => {
+      it('should favour `isDisabled`', () => {
+        const { getByLabelText } = render(
+          <SecondaryIconButton {...props} isDisabled={true} disabled={false} />
+        );
+        expect(getByLabelText('test-button')).toHaveAttribute('disabled');
+        expect(getByLabelText('test-button')).toHaveAttribute(
+          'aria-disabled',
+          'true'
+        );
+      });
+    });
+    describe('when not `isDisabled` and `disabled`', () => {
+      it('should favour `isDisabled`', () => {
+        const { getByLabelText } = render(
+          <SecondaryIconButton {...props} isDisabled={false} disabled={true} />
+        );
+        expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+        expect(getByLabelText('test-button')).not.toHaveAttribute(
+          'aria-disabled',
+          'true'
+        );
+      });
+    });
+  });
   describe('type variations', () => {
     it('should render a button of type "button"', () => {
       const { getByLabelText } = render(<SecondaryIconButton {...props} />);
