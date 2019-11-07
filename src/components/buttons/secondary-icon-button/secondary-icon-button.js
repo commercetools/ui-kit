@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import omit from 'lodash/omit';
+import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import AccessibleButton from '../accessible-button';
 import { getBaseStyles } from './secondary-icon-button.styles';
 
+const propsToOmit = ['type'];
+
 export const SecondaryIconButton = props => {
   const buttonAttributes = {
+    ...filterInvalidAttributes(omit(props, propsToOmit)),
     'data-track-component': 'SecondaryIconButton',
-    ...filterAriaAttributes(props),
-    ...filterDataAttributes(props),
+    // if there is a divergence between `isDisabled` and `disabled`,
+    // we fall back to `isDisabled`
+    disabled: props.isDisabled,
   };
   return (
     <AccessibleButton
+      as={props.as}
       type={props.type}
       buttonAttributes={buttonAttributes}
       label={props.label}
@@ -26,7 +31,9 @@ export const SecondaryIconButton = props => {
 };
 
 SecondaryIconButton.displayName = 'SecondaryIconButton';
+
 SecondaryIconButton.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   icon: PropTypes.element.isRequired,
   color: PropTypes.oneOf(['solid', 'primary']),

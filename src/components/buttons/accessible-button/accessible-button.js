@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { oneLine } from 'common-tags';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
 
@@ -67,7 +68,23 @@ AccessibleButton.displayName = 'AccessibleButton';
 AccessibleButton.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   id: PropTypes.string,
-  type: PropTypes.oneOf(['submit', 'reset', 'button']),
+  type: (props, propName, componentName, ...rest) => {
+    // the type defaults to `button`, so we don't need to handle undefined
+    if (props.as && props.type !== 'button') {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "as" is set.
+        `
+      );
+    }
+    return PropTypes.oneOf(['submit', 'reset', 'button'])(
+      props,
+      propName,
+      componentName,
+      ...rest
+    );
+  },
   label: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   // set to true or false to indicate a toggle button

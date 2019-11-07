@@ -24,14 +24,17 @@ also pass a label for accessibility reasons.
 
 #### Properties
 
-| Props        | Type     | Required | Values                      | Default  | Description                                                                            |
-| ------------ | -------- | :------: | --------------------------- | -------- | -------------------------------------------------------------------------------------- |
-| `type`       | `string` |    -     | `submit`, `reset`, `button` | `button` | Used as the HTML `type` attribute.                                                     |
-| `label`      | `string` |    ✅    | -                           | -        | Should describe what the button does, for accessibility purposes (screen-reader users) |
-| `icon`       | `node`   |    ✅    | -                           | -        | An `Icon` component                                                                    |
-| `isDisabled` | `bool`   |    -     | -                           | `false`  | Tells when the button should present a disabled state                                  |
-| `onClick`    | `func`   |    ✅    | -                           | -        | What the button will trigger when clicked                                              |
-| `color`      | `oneOf`  |    -     | `solid`, `primary`          | `solid`  | Sets the color of the icon                                                             |
+| Props        | Type                  | Required | Values                      | Default  | Description                                                                                                                                  |
+| ------------ | --------------------- | :------: | --------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`       | `string`              |    -     | `submit`, `reset`, `button` | `button` | Used as the HTML `type` attribute.                                                                                                           |
+| `label`      | `string`              |    ✅    | -                           | -        | Should describe what the button does, for accessibility purposes (screen-reader users)                                                       |
+| `icon`       | `node`                |    ✅    | -                           | -        | An `Icon` component                                                                                                                          |
+| `isDisabled` | `bool`                |    -     | -                           | `false`  | Tells when the button should present a disabled state                                                                                        |
+| `onClick`    | `func`                |    ✅    | -                           | -        | What the button will trigger when clicked                                                                                                    |
+| `color`      | `oneOf`               |    -     | `solid`, `primary`          | `solid`  | Sets the color of the icon                                                                                                                   |
+| `as`         | `string` or `element` |    -     | -                           | -        | You may pass in a string like "a" to have the button render as an anchor tag instead. Or you could pass in a React Component, like a `Link`. |
+
+The component further forwards all valid HTML attributes to the underlying `button` component.
 
 #### Note
 
