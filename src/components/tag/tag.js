@@ -120,7 +120,7 @@ const TagBody = props => (
         `,
       props.styles.body,
     ]}
-    onClick={props.isDisabled ? undefined : props.onClick}
+    onClick={props.onClick}
   >
     <Text.Detail>{props.children}</Text.Detail>
   </Body>
