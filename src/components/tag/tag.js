@@ -175,7 +175,7 @@ const Tag = props => {
           <AccessibleButton
             label="Remove"
             isDisabled={props.isDisabled}
-            onClick={props.isDisabled ? undefined : props.onRemove}
+            onClick={props.onRemove}
             css={theme => {
               const overwrittenVars = {
                 ...vars,
