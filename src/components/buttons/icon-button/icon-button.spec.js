@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { render } from '../../../test-utils';
 import { PlusBoldIcon } from '../../icons';
 import IconButton from './icon-button';
@@ -44,5 +45,35 @@ describe('rendering', () => {
   it('should render icon', () => {
     const { getByTestId } = render(<IconButton {...props} />);
     expect(getByTestId('icon')).toBeInTheDocument();
+  });
+  describe('when used with `as`', () => {
+    describe('when as is a valid HTML element', () => {
+      it('should render as that HTML element', () => {
+        const { container } = render(
+          <IconButton
+            {...props}
+            as="a"
+            href="https://www.kanyetothe.com"
+            target="_BLANK"
+          />
+        );
+        const linkButton = container.querySelector('a');
+        expect(linkButton).toHaveAttribute(
+          'href',
+          'https://www.kanyetothe.com'
+        );
+        expect(linkButton).toHaveAttribute('target', '_BLANK');
+      });
+    });
+    describe('when as is a React component', () => {
+      it('should render as that component', () => {
+        const { getByLabelText } = render(
+          <IconButton {...props} as={Link} to="foo/bar" target="_BLANK" />
+        );
+
+        const linkButton = getByLabelText('test-button');
+        expect(linkButton).toHaveAttribute('href', '/foo/bar');
+      });
+    });
   });
 });

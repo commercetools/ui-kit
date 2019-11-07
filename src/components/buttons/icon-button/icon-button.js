@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { oneLine } from 'common-tags';
 import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import AccessibleButton from '../accessible-button';
 import {
   getStateStyles,
@@ -33,15 +33,17 @@ const getIconThemeColor = props => {
 };
 
 export const IconButton = props => {
-  const buttonAttributes = {
+  const attributes = {
     'data-track-component': 'IconButton',
-    ...filterAriaAttributes(props),
-    ...filterDataAttributes(props),
+    ...filterInvalidAttributes(props),
   };
+
   const isActive = props.isToggleButton && props.isToggled;
+
   return (
     <AccessibleButton
-      buttonAttributes={buttonAttributes}
+      as={props.as}
+      buttonAttributes={attributes}
       type={props.type}
       label={props.label}
       onClick={props.onClick}
@@ -79,7 +81,24 @@ export const IconButton = props => {
 };
 
 IconButton.propTypes = {
-  type: PropTypes.oneOf(['submit', 'reset', 'button']),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  type: (props, propName, componentName, ...rest) => {
+    // the type defaults to `button`, so we don't need to handle undefined
+    if (props.as && props.type !== 'button') {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "as" is set.
+        `
+      );
+    }
+    return PropTypes.oneOf(['submit', 'reset', 'button'])(
+      props,
+      propName,
+      componentName,
+      ...rest
+    );
+  },
   label: PropTypes.string.isRequired,
   icon: PropTypes.node,
   isToggleButton: PropTypes.bool.isRequired,
