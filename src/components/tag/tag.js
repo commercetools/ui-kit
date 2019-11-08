@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 import designTokens from '../../../materials/design-tokens';
@@ -8,6 +9,8 @@ import Constraints from '../constraints';
 import AccessibleButton from '../buttons/accessible-button';
 import Text from '../typography/text';
 import { CloseBoldIcon } from '../icons';
+
+const Body = styled.div``;
 
 const getTextDetailColor = (isDisabled, theme) => {
   const overwrittenVars = {
@@ -32,7 +35,6 @@ const getContentWrapperStyles = (props, theme) => {
     align-items: center;
     border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
     padding: 5px ${vars.spacingS};
-    cursor: default;
     white-space: normal;
     text-align: left;
     min-width: 0;
@@ -82,77 +84,10 @@ const getClickableContentWrapperStyles = ({ type, theme }) => {
       ];
 };
 
-export const TagLinkBody = props => {
-  const isRemoveable = Boolean(props.onRemove);
-  return (
-    <div
-      css={theme => [
-        getContentWrapperStyles(props, theme),
-        !props.isDisabled &&
-          css`
-            cursor: pointer;
-          `,
-        !props.isDisabled &&
-          isRemoveable &&
-          css`
-            padding-right: ${vars.spacingS};
-            &:hover {
-              &::after {
-                position: absolute;
-                right: -1px;
-                content: '';
-                background-color: ${vars.borderColorForTagWhenFocused};
-                width: 1px;
-                height: 100%;
-              }
-            }
-          `,
-        !props.isDisabled &&
-          getClickableContentWrapperStyles({
-            type: props.type,
-            theme,
-          }),
-        isRemoveable &&
-          css`
-            border-right: 0;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-          `,
-        props.styles.body,
-      ]}
-    >
-      {!props.isDisabled ? (
-        <Link
-          onClick={props.onClick}
-          to={props.linkTo}
-          css={css`
-            text-decoration: none;
-          `}
-        >
-          <Text.Detail>{props.children}</Text.Detail>
-        </Link>
-      ) : (
-        <Text.Detail>{props.children}</Text.Detail>
-      )}
-    </div>
-  );
-};
-
-TagLinkBody.displayName = 'TagLinkBody';
-TagLinkBody.propTypes = {
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  onRemove: PropTypes.func,
-  linkTo: PropTypes.string,
-  isDisabled: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
-  styles: PropTypes.shape({
-    body: PropTypes.object,
-  }).isRequired,
-};
-
-export const TagNormalBody = props => (
-  <div
+const TagBody = props => (
+  <Body
+    to={props.to}
+    as={props.as}
     css={theme => [
       getContentWrapperStyles(props, theme),
       Boolean(props.onRemove) &&
@@ -188,10 +123,13 @@ export const TagNormalBody = props => (
     onClick={props.isDisabled ? undefined : props.onClick}
   >
     <Text.Detail>{props.children}</Text.Detail>
-  </div>
+  </Body>
 );
-TagNormalBody.displayName = 'TagNormalBody';
-TagNormalBody.propTypes = {
+
+TagBody.displayName = 'TagBody';
+TagBody.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  to: PropTypes.string,
   type: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   onRemove: PropTypes.func,
@@ -202,97 +140,96 @@ TagNormalBody.propTypes = {
   }).isRequired,
 };
 
-const Tag = props => (
-  <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <div
-      css={theme => [
-        css`
-          min-width: 0;
-          display: flex;
-          background-color: ${getWrapperBackgroundColor(props.type, theme)};
-        `,
-      ]}
-    >
-      {props.linkTo ? (
-        <TagLinkBody
+const Tag = props => {
+  const linkProps =
+    props.linkTo && !props.isDisabled ? { as: Link, to: props.linkTo } : {};
+
+  return (
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+      <div
+        css={theme =>
+          css`
+            a {
+              cursor: pointer;
+              text-decoration: none;
+            }
+            cursor: default;
+            min-width: 0;
+            display: flex;
+            background-color: ${getWrapperBackgroundColor(props.type, theme)};
+          `
+        }
+      >
+        <TagBody
+          {...linkProps}
           styles={props.styles}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
-          linkTo={props.linkTo}
           isDisabled={props.isDisabled}
         >
           {props.children}
-        </TagLinkBody>
-      ) : (
-        <TagNormalBody
-          styles={props.styles}
-          type={props.type}
-          onClick={props.onClick}
-          onRemove={props.onRemove}
-          isDisabled={props.isDisabled}
-        >
-          {props.children}
-        </TagNormalBody>
-      )}
-      {Boolean(props.onRemove) && (
-        <AccessibleButton
-          label="Remove"
-          isDisabled={props.isDisabled}
-          onClick={props.isDisabled ? undefined : props.onRemove}
-          css={theme => {
-            const overwrittenVars = {
-              ...vars,
-              ...theme,
-            };
+        </TagBody>
 
-            return [
-              css`
-                border-color: ${props.type === 'warning'
-                  ? overwrittenVars[designTokens.borderColorForTagWarning]
-                  : overwrittenVars[designTokens.borderColorForTag]};
-                padding: 0 ${vars.spacingXs};
-                border-radius: 0
-                  ${overwrittenVars[designTokens.borderRadiusForTag]}
-                  ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
-                display: flex;
-                align-items: center;
-                background: inherit;
-                border-style: solid;
-                border-width: 1px 1px 1px 1px;
-                &:hover,
-                &:focus {
-                  border-color: ${overwrittenVars[
-                    designTokens.borderColorForTagWarning
-                  ]};
+        {Boolean(props.onRemove) && (
+          <AccessibleButton
+            label="Remove"
+            isDisabled={props.isDisabled}
+            onClick={props.onRemove}
+            css={theme => {
+              const overwrittenVars = {
+                ...vars,
+                ...theme,
+              };
 
-                  > svg * {
-                    fill: ${overwrittenVars[
+              return [
+                css`
+                  border-color: ${props.type === 'warning'
+                    ? overwrittenVars[designTokens.borderColorForTagWarning]
+                    : overwrittenVars[designTokens.borderColorForTag]};
+                  padding: 0 ${vars.spacingXs};
+                  border-radius: 0
+                    ${overwrittenVars[designTokens.borderRadiusForTag]}
+                    ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
+                  display: flex;
+                  align-items: center;
+                  background: inherit;
+                  border-style: solid;
+                  border-width: 1px 1px 1px 1px;
+                  &:hover,
+                  &:focus {
+                    border-color: ${overwrittenVars[
                       designTokens.borderColorForTagWarning
                     ]};
+
+                    > svg * {
+                      fill: ${overwrittenVars[
+                        designTokens.borderColorForTagWarning
+                      ]};
+                    }
                   }
-                }
-                > svg * {
-                  fill: ${overwrittenVars[designTokens.fontColorForTag]};
-                }
-              `,
-              props.isDisabled &&
-                css`
                   > svg * {
-                    fill: ${overwrittenVars[
-                      designTokens.fontColorForTagWhenDisabled
-                    ]};
+                    fill: ${overwrittenVars[designTokens.fontColorForTag]};
                   }
                 `,
-            ];
-          }}
-        >
-          <CloseBoldIcon size="medium" />
-        </AccessibleButton>
-      )}
-    </div>
-  </Constraints.Horizontal>
-);
+                props.isDisabled &&
+                  css`
+                    > svg * {
+                      fill: ${overwrittenVars[
+                        designTokens.fontColorForTagWhenDisabled
+                      ]};
+                    }
+                  `,
+              ];
+            }}
+          >
+            <CloseBoldIcon size="medium" />
+          </AccessibleButton>
+        )}
+      </div>
+    </Constraints.Horizontal>
+  );
+};
 
 Tag.propTypes = {
   type: PropTypes.oneOf(['normal', 'warning']),
