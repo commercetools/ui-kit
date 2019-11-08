@@ -21,6 +21,7 @@ const LeftColumn = styled.div`
 
 const RightColumn = styled.div`
   flex: 0;
+  display: flex;
 `;
 
 const Row = styled.div`
