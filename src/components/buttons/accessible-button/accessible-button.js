@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
 import { oneLine } from 'common-tags';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
+
+const propsToOmit = ['onClick'];
 
 const Button = styled.button`
   text-decoration: none;
@@ -49,9 +52,6 @@ const AccessibleButton = React.forwardRef((props, ref) => {
 
   return (
     <Button
-      {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
-      {...props.buttonAttributes}
-      {...(isButton ? buttonProps : {})}
       as={props.as}
       id={props.id}
       ref={ref}
@@ -63,6 +63,9 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       className={props.className}
       disabled={props.isDisabled}
       aria-disabled={props.isDisabled}
+      {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
+      {...omit(props.buttonAttributes, propsToOmit)}
+      {...(isButton ? buttonProps : {})}
     >
       {props.children}
     </Button>
