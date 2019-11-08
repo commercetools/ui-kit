@@ -4,6 +4,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
+import warnDeprecatedComponent from '../../../utils/warn-deprecated-component';
 import getPassThroughProps from '../../../utils/get-pass-through-props';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
@@ -63,6 +64,9 @@ LinkBody.propTypes = {
 };
 
 const LinkButton = props => {
+  React.useEffect(() => {
+    warnDeprecatedComponent('LinkButton');
+  }, []);
   const remainingProps = getPassThroughProps(
     props,
     Object.keys(LinkButton.propTypes)

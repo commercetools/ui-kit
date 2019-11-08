@@ -26,17 +26,18 @@ iconClass label url onClick
 
 #### Properties
 
-| Props          | Type      | Required | Values                      | Default   | Description                                           |
-| -------------- | --------- | :------: | --------------------------- | --------- | ----------------------------------------------------- |
-| `tone`         | `oneOf`   |    -     | `primary`, `secondary`      | `primary` | -                                                     |
-| `type`         | `string`  |    -     | `submit`, `reset`, `button` | `button`  | Used as the HTML `type` attribute.                    |
-| `label`        | `string`  |    ✅    | -                           | -         | Should describe what the button is for                |
-| `onClick`      | `func`    |    ✅    | -                           | -         | What the button will trigger when clicked             |
-| `icon`         | `element` |    -     | -                           | -         | The icon of the button                                |
-| `iconPosition` | `oneOf`   |    -     | `left`, `right`             | `left`    | The position of the icon                              |
-| `isDisabled`   | `boolean` |    -     | -                           | -         | Tells when the button should present a disabled state |
+| Props          | Type                  | Required | Values                      | Default   | Description                                                                                                                                  |
+| -------------- | --------------------- | :------: | --------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tone`         | `oneOf`               |    -     | `primary`, `secondary`      | `primary` | -                                                                                                                                            |
+| `type`         | `string`              |    -     | `submit`, `reset`, `button` | `button`  | Used as the HTML `type` attribute.                                                                                                           |
+| `label`        | `string`              |    ✅    | -                           | -         | Should describe what the button is for                                                                                                       |
+| `onClick`      | `func`                |    ✅    | -                           | -         | What the button will trigger when clicked                                                                                                    |
+| `icon`         | `element`             |    -     | -                           | -         | The icon of the button                                                                                                                       |
+| `iconPosition` | `oneOf`               |    -     | `left`, `right`             | `left`    | The position of the icon                                                                                                                     |
+| `isDisabled`   | `boolean`             |    -     | -                           | -         | Tells when the button should present a disabled state                                                                                        |
+| `as`           | `string` or `element` |    -     | -                           | -         | You may pass in a string like "a" to have the button render as an anchor tag instead. Or you could pass in a React Component, like a `Link`. |
 
-The component further forwards all `data-` and `aria-` attributes to the underlying `button` component.
+The component further forwards all valid HTML attributes to the underlying `button` component.
 
 #### Where to use
 

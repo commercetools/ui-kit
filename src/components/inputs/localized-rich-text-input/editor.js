@@ -21,10 +21,14 @@ const COLLAPSED_HEIGHT = 32;
 
 const LeftColumn = styled.div`
   flex: 1;
+  display: flex;
+  align-items: flex-start;
 `;
 
 const RightColumn = styled.div`
   flex: 0;
+  display: flex;
+  align-items: flex-start;
 `;
 
 const Row = styled.div`

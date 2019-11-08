@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
 import { oneLine } from 'common-tags';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';
+
+const propsToOmit = ['onClick'];
 
 const Button = styled.button`
   text-decoration: none;
@@ -14,7 +17,7 @@ const Button = styled.button`
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   color: inherit;
   font: inherit;
   font-size: ${vars.fontSizeDefault};
@@ -30,6 +33,10 @@ const AccessibleButton = React.forwardRef((props, ref) => {
 
   const handleClick = React.useCallback(
     event => {
+      if (props.isDisabled) {
+        event.preventDefault();
+        return false;
+      }
       if (!props.isDisabled && onClick) return onClick(event);
       // eslint-disable-next-line no-useless-return, consistent-return
       return;
@@ -57,7 +64,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       disabled={props.isDisabled}
       aria-disabled={props.isDisabled}
       {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
-      {...props.buttonAttributes}
+      {...omit(props.buttonAttributes, propsToOmit)}
       {...(isButton ? buttonProps : {})}
     >
       {props.children}
