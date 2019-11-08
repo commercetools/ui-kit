@@ -14,7 +14,7 @@ const Button = styled.button`
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   color: inherit;
   font: inherit;
   font-size: ${vars.fontSizeDefault};
@@ -30,6 +30,10 @@ const AccessibleButton = React.forwardRef((props, ref) => {
 
   const handleClick = React.useCallback(
     event => {
+      if (props.isDisabled) {
+        event.preventDefault();
+        return false;
+      }
       if (!props.isDisabled && onClick) return onClick(event);
       // eslint-disable-next-line no-useless-return, consistent-return
       return;
@@ -45,6 +49,9 @@ const AccessibleButton = React.forwardRef((props, ref) => {
 
   return (
     <Button
+      {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
+      {...props.buttonAttributes}
+      {...(isButton ? buttonProps : {})}
       as={props.as}
       id={props.id}
       ref={ref}
@@ -56,9 +63,6 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       className={props.className}
       disabled={props.isDisabled}
       aria-disabled={props.isDisabled}
-      {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
-      {...props.buttonAttributes}
-      {...(isButton ? buttonProps : {})}
     >
       {props.children}
     </Button>

@@ -11,10 +11,29 @@ const createTestProps = custom => ({
 });
 
 describe('rendering', () => {
+  /* eslint-disable no-console */
   let props;
+  let log;
   beforeEach(() => {
     props = createTestProps();
+    log = console.error;
+    console.error = jest.fn();
   });
+
+  afterEach(() => {
+    console.error = log;
+  });
+
+  it('should warn', () => {
+    render(<LinkButton {...props} />);
+
+    expect(console.error).toHaveBeenCalledWith(
+      expect.stringMatching(
+        'Warning: "LinkButton" has been deprecated and will be removed in the next major version.'
+      )
+    );
+  });
+
   it('should render', () => {
     const { getByLabelText } = render(<LinkButton {...props} />);
     expect(getByLabelText('test-button')).toBeInTheDocument();

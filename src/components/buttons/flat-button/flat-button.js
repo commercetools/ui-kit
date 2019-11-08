@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import omit from 'lodash/omit';
 import vars from '../../../../materials/custom-properties';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
+
+const propsToOmit = ['type'];
 
 const getIconElement = props => {
   if (!props.icon) return null;
@@ -39,12 +41,15 @@ const getTextColor = (tone, isHover = false, overwrittenVars) => {
 export const FlatButton = props => {
   const dataProps = {
     'data-track-component': 'FlatButton',
-    ...filterAriaAttributes(props),
-    ...filterDataAttributes(props),
+    ...filterInvalidAttributes(omit(props, propsToOmit)),
+    // if there is a divergence between `isDisabled` and `disabled`,
+    // we fall back to `isDisabled`
+    disabled: props.isDisabled,
   };
 
   return (
     <AccessibleButton
+      as={props.as}
       type={props.type}
       label={props.label}
       onClick={props.onClick}
@@ -56,7 +61,6 @@ export const FlatButton = props => {
         };
 
         return css`
-          display: flex;
           align-items: center;
           font-size: 1rem;
           border: none;
@@ -105,6 +109,7 @@ export const FlatButton = props => {
 
 FlatButton.displayName = 'FlatButton';
 FlatButton.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   tone: PropTypes.oneOf(['primary', 'secondary']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
