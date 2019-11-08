@@ -1,61 +1,62 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash/isNil';
+import omit from 'lodash/omit';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import Spacings from '../../spacings';
 import AccessibleButton from '../accessible-button';
-import {
-  getButtonLayoutStyles,
-  getButtonStyles,
-} from './primary-button.styles';
+import { getButtonStyles } from './primary-button.styles';
+
+const propsToOmit = ['type'];
 
 const PrimaryButton = props => {
   const dataProps = {
     'data-track-component': 'PrimaryButton',
-    ...filterAriaAttributes(props),
-    ...filterDataAttributes(props),
+    ...filterInvalidAttributes(omit(props, propsToOmit)),
+    // if there is a divergence between `isDisabled` and `disabled`,
+    // we fall back to `isDisabled`
+    disabled: props.isDisabled,
   };
 
   const isActive = props.isToggleButton && props.isToggled;
   return (
-    <div css={getButtonLayoutStyles(props.size)}>
-      <AccessibleButton
-        type={props.type}
-        buttonAttributes={dataProps}
-        label={props.label}
-        onClick={props.onClick}
-        isToggleButton={props.isToggleButton}
-        isToggled={props.isToggled}
-        isDisabled={props.isDisabled}
-        css={getButtonStyles(props.isDisabled, isActive, props.tone)}
-      >
-        <Spacings.Inline alignItems="center" scale="xs">
-          {Boolean(props.iconLeft) && (
-            <span
-              css={css`
-                margin: 0 ${vars.spacingXs} 0 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              `}
-            >
-              {React.cloneElement(props.iconLeft, {
-                color: props.isDisabled ? 'neutral60' : 'surface',
-                size: props.size === 'small' ? 'medium' : 'big',
-              })}
-            </span>
-          )}
-          <span>{props.label}</span>
-        </Spacings.Inline>
-      </AccessibleButton>
-    </div>
+    <AccessibleButton
+      as={props.as}
+      type={props.type}
+      buttonAttributes={dataProps}
+      label={props.label}
+      onClick={props.onClick}
+      isToggleButton={props.isToggleButton}
+      isToggled={props.isToggled}
+      isDisabled={props.isDisabled}
+      css={getButtonStyles(props.isDisabled, isActive, props.tone, props.size)}
+    >
+      <Spacings.Inline alignItems="center" scale="xs">
+        {Boolean(props.iconLeft) && (
+          <span
+            css={css`
+              margin: 0 ${vars.spacingXs} 0 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            `}
+          >
+            {React.cloneElement(props.iconLeft, {
+              color: props.isDisabled ? 'neutral60' : 'surface',
+              size: props.size === 'small' ? 'medium' : 'big',
+            })}
+          </span>
+        )}
+        <span>{props.label}</span>
+      </Spacings.Inline>
+    </AccessibleButton>
   );
 };
 
 PrimaryButton.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   buttonAttributes: PropTypes.object,

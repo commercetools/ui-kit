@@ -1,47 +1,35 @@
+/* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 
-const getButtonLayoutStyles = size => {
-  const baseLayoutStyles = css`
-    display: inline-flex;
-    align-items: center;
-    color: ${vars.colorSurface};
-    transition: background-color ${vars.transitionLinear80Ms};
-  `;
+const getSizeStyles = size => {
   switch (size) {
     case 'small':
-      return [
-        baseLayoutStyles,
-        css`
-          border-radius: ${vars.borderRadius4};
-          > button {
-            padding: 0 ${vars.spacingS} 0 ${vars.spacingS};
-            height: ${vars.smallButtonHeight};
-            border-radius: ${vars.borderRadius4};
-          }
-        `,
-      ];
+      return css`
+        border-radius: ${vars.borderRadius4};
+        padding: 0 ${vars.spacingS} 0 ${vars.spacingS};
+        height: ${vars.smallButtonHeight};
+      `;
+
     case 'big':
-      return [
-        baseLayoutStyles,
-        css`
-          border-radius: ${vars.borderRadius6};
-          > button {
-            padding: 0 ${vars.spacingM} 0 ${vars.spacingM};
-            height: ${vars.bigButtonHeight};
-            border-radius: ${vars.borderRadius6};
-          }
-        `,
-      ];
+      return css`
+        padding: 0 ${vars.spacingM} 0 ${vars.spacingM};
+        height: ${vars.bigButtonHeight};
+        border-radius: ${vars.borderRadius6};
+      `;
+
     default:
       return css``;
   }
 };
-const getButtonStyles = (isDisabled, isActive, tone) => {
+
+const getButtonStyles = (isDisabled, isActive, tone, size) => {
   const baseStyles = css`
-    display: flex;
     align-items: center;
+    color: ${vars.colorSurface};
+    transition: background-color ${vars.transitionLinear80Ms};
     font-size: ${vars.fontSizeDefault};
+    ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"
   if (isDisabled) {
@@ -145,4 +133,4 @@ const getButtonStyles = (isDisabled, isActive, tone) => {
   }
 };
 
-export { getButtonLayoutStyles, getButtonStyles };
+export { getButtonStyles };
