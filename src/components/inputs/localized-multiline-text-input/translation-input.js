@@ -22,6 +22,7 @@ const LeftColumn = styled.div`
 const RightColumn = styled.div`
   flex: 0;
   display: flex;
+  align-items: flex-start;
 `;
 
 const Row = styled.div`
