@@ -16,8 +16,7 @@ import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 export const getIconColor = props => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be the same color as the theme on active state
-  if (props.theme !== 'default' && (isActive && !props.isDisabled))
-    return 'info'; // returns the passed in theme without overwriting
+  if (props.theme !== 'default' && isActive && !props.isDisabled) return 'info'; // returns the passed in theme without overwriting
   // if button is disabled, icon should be grey
   if (props.isDisabled) return 'neutral60';
   // if button is not disabled nor has a theme, return icon's default color

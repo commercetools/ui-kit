@@ -22,7 +22,7 @@ const Dropdown = props => {
   const DropdownItem = props.components.Item;
   const DropdownLabel = props.components.Label;
   const isIndeterminate =
-    props.isMulti && (props.value && props.value.length > 0);
+    props.isMulti && props.value && props.value.length > 0;
 
   return (
     <Downshift
