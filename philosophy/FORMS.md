@@ -323,8 +323,8 @@ In this case, there is another thing we need to be aware of: When a form is subm
 We can pass an `onSubmit` property to Formik. That function will be called with `values` and `formik`.
 
 ```js
-import omitEmpty from 'omit-empty'
-import validate from './validate'
+import omitEmpty from 'omit-empty';
+import validate from './validate';
 
 <GetProduct id="party-parrot">
   {product => (
@@ -332,12 +332,12 @@ import validate from './validate'
       initialValues={docToFormValues(product)}
       validate={validate}
       onSubmit={(values, formik) => {
-        console.log(values)
+        console.log(values);
       }}
       render={/* same as before */}
     />
   )}
-</GetProduct>
+</GetProduct>;
 ```
 
 We can then do anything from `onSubmit`. Most likely we'll want to make an async call and then reset the form state. We can do that like this:

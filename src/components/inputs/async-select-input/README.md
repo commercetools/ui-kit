@@ -13,7 +13,10 @@ import { AsyncSelectInput } from '@commercetools-frontend/ui-kit';
   name="form-field-name"
   value={value}
   onChange={handleChange}
-  options={[{ value: 'one', label: 'One' }, { value: 'two', label: 'Two' }]}
+  options={[
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+  ]}
 />;
 ```
 
