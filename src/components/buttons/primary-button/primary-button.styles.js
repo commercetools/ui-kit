@@ -50,7 +50,7 @@ const getButtonStyles = (isDisabled, isActive, tone, size) => {
     const baseActiveStyles = [
       baseStyles,
       css`
-        box-shadow: inset ${vars.shadow7First}, inset ${vars.shadow7Second};
+        box-shadow: ${vars.shadow9};
         &:hover,
         &:focus {
           box-shadow: ${vars.shadow8};
@@ -97,7 +97,7 @@ const getButtonStyles = (isDisabled, isActive, tone, size) => {
         box-shadow: ${vars.shadow8};
       }
       &:active {
-        box-shadow: inset ${vars.shadow7First}, inset ${vars.shadow7Second};
+        box-shadow: ${vars.shadow9};
       }
     `,
   ];
