@@ -30,6 +30,7 @@ export default {
   fontColorForInputWhenWarning: 'colorWarning',
   fontColorForTag: 'colorSolid',
   fontColorForTagWhenDisabled: 'colorNeutral60',
+  fontColorForTextWhenInverted: 'colorSurface',
   fontFamily: 'fontFamilyBody',
   placeholderFontColorForInput: 'colorNeutral60',
   fontSizeForInput: 'fontSizeM',

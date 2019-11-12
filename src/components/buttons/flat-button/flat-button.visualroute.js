@@ -43,6 +43,14 @@ export const component = ({ themes }) => (
         icon={<InformationIcon />}
       />
     </Spec>
+    <Spec label="inverted">
+      <FlatButton
+        tone="inverted"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+      />
+    </Spec>
     <ThemeProvider theme={themes.darkTheme}>
       <Spec label="secondary">
         <FlatButton

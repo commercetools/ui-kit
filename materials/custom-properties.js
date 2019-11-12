@@ -99,6 +99,7 @@ export default {
   fontColorForInputWhenWarning: '#f16d0e',
   fontColorForTag: '#1a1a1a',
   fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
+  fontColorForTextWhenInverted: '#fff',
   fontFamily: "'Open Sans', sans-serif",
   placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
   fontSizeForInput: '1rem',
