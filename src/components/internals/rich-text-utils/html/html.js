@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import Html from 'slate-html-serializer';
-import flatMap from 'lodash/flatMap';
+import { flatMap } from 'lodash';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 
 const mapper = {

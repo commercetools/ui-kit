@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash/omit';
+import { omit } from 'lodash';
 import { oneLine } from 'common-tags';
 import styled from '@emotion/styled';
 import vars from '../../../../materials/custom-properties';

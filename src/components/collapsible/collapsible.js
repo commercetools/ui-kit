@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isNil from 'lodash/isNil';
+import { isNil } from 'lodash';
 import useToggleState from '../../hooks/use-toggle-state';
 
 const collapsiblePropTypes = {

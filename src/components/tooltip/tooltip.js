@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
-import isNil from 'lodash/isNil';
+import { isNil } from 'lodash';
 import usePopper from 'use-popper';
 import useToggleState from '../../hooks/use-toggle-state';
 import useFieldId from '../../hooks/use-field-id';

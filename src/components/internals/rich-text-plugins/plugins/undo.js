@@ -1,5 +1,5 @@
 import { isKeyHotkey } from 'is-hotkey';
-import memoize from 'lodash/memoize';
+import { memoize } from 'lodash';
 
 const memoizedIsHotkey = memoize(isKeyHotkey);
 

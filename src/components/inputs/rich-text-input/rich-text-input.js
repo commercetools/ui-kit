@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
-import pick from 'lodash/pick';
+import { pick } from 'lodash';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import renderEditor from './editor';
 import plugins from '../../internals/rich-text-plugins';
