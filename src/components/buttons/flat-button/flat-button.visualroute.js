@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { FlatButton, InformationIcon } from 'ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
+import vars from '../../../../materials/custom-properties';
 
 export const routePath = '/flat-button';
 
@@ -44,10 +45,20 @@ export const component = ({ themes }) => (
       />
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="secondary">
+      <Spec label="inverted" listPropsOfNestedChild>
+        <ThemeProvider theme={vars}>
+          <FlatButton
+            tone="inverted"
+            label="A label text"
+            onClick={() => {}}
+            icon={<InformationIcon />}
+          />
+        </ThemeProvider>
+      </Spec>
+      <Spec label="secondary in dark theme">
         <FlatButton
           tone="secondary"
-          label="Inverted"
+          label="A label text"
           onClick={() => {}}
           icon={<InformationIcon />}
         />

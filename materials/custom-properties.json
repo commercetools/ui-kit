@@ -88,6 +88,7 @@
   "--font-color-for-input-when-warning": "#f16d0e",
   "--font-color-for-tag": "#1a1a1a",
   "--font-color-for-tag-when-disabled": "hsl(0, 0%, 60%)",
+  "--font-color-for-text-when-inverted": "#fff",
   "--font-family": "'Open Sans', sans-serif",
   "--placeholder-font-color-for-input": "hsl(0, 0%, 60%)",
   "--font-size-for-input": "1rem",

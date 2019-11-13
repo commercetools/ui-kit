@@ -18,6 +18,7 @@ const getIconElement = props => {
   else if (props.tone === 'primary') iconColor = 'primary';
   else if (props.tone === 'secondary' && props.isMouseOver)
     iconColor = 'warning';
+  else if (props.tone === 'inverted') iconColor = 'surface';
 
   return React.cloneElement(props.icon, {
     size: 'medium',
@@ -33,6 +34,8 @@ const getTextColor = (tone, isHover = false, overwrittenVars) => {
         : overwrittenVars.colorPrimary;
     case 'secondary':
       return overwrittenVars.colorSolid;
+    case 'inverted':
+      return overwrittenVars.fontColorForTextWhenInverted;
     default:
       return 'inherit';
   }
@@ -110,7 +113,7 @@ export const FlatButton = props => {
 FlatButton.displayName = 'FlatButton';
 FlatButton.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  tone: PropTypes.oneOf(['primary', 'secondary']),
+  tone: PropTypes.oneOf(['primary', 'secondary', 'inverted']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
