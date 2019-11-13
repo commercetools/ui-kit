@@ -1,3 +1,19 @@
+# [10.9.0](https://github.com/commercetools/ui-kit/compare/v10.8.0...v10.9.0) (2019-11-13)
+
+### Bug Fixes
+
+- `PrimaryButton`: active and toggle state ([#1174](https://github.com/commercetools/ui-kit/issues/1174)) ([71fc660](https://github.com/commercetools/ui-kit/commit/71fc660127287d19fc3807134d2c10167c46af1e))
+- `DateInput`: header focus problem fix ([#1160](https://github.com/commercetools/ui-kit/issues/1160)) ([bd18332](https://github.com/commercetools/ui-kit/commit/bd1833299ead076d6c0af12c76d78dfc3c8a0af3))
+
+### Features
+
+- `CheckboxInput`: support `isReadOnly` prop ([#1157](https://github.com/commercetools/ui-kit/issues/1157)) ([798b95e](https://github.com/commercetools/ui-kit/commit/798b95e39588f9d8d64db8f398477d8fc361c127))
+- `FlatButton`: add `inverted` tone ([#1175](https://github.com/commercetools/ui-kit/issues/1175)) ([a763a0b](https://github.com/commercetools/ui-kit/commit/a763a0b3b54d9b00f4570f52e1803052f943ae4d))
+- `IconButton`: support `as` ([#1164](https://github.com/commercetools/ui-kit/issues/1164)) ([032b198](https://github.com/commercetools/ui-kit/commit/032b198f50cc36e024fa010d80bb674644300b46))
+- `LocalizedMoneyInput`: support `isReadOnly` prop ([#1158](https://github.com/commercetools/ui-kit/issues/1158)) ([0e9ca9b](https://github.com/commercetools/ui-kit/commit/0e9ca9b963e98c9604435660cd2bfe80dc76588c))
+- `PrimaryButton`: support `as` ([#1170](https://github.com/commercetools/ui-kit/issues/1170)) ([6e00d84](https://github.com/commercetools/ui-kit/commit/6e00d84c615902781c9c36759250e705e69340ff))
+- `SecondaryIconButton`: add `as` prop ([#1168](https://github.com/commercetools/ui-kit/issues/1168)) ([337b3ef](https://github.com/commercetools/ui-kit/commit/337b3efedc90f33bb4af312bbc074a80551bd424))
+
 # [10.8.0](https://github.com/commercetools/ui-kit/compare/v10.7.0...v10.8.0) (2019-11-01)
 
 ### Bug Fixes
