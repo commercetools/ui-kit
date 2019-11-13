@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number, text } from '@storybook/addon-knobs/react';
-import sortBy from 'lodash/sortBy';
+import { sortBy } from 'lodash';
 import { css, ClassNames } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 import Button from '../buttons/secondary-button';

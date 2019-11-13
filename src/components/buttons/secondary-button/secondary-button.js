@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { oneLine } from 'common-tags';
 import { Link } from 'react-router-dom';
-import isNil from 'lodash/isNil';
+import { isNil } from 'lodash';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';

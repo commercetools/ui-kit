@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import omit from 'lodash/omit';
+import { omit } from 'lodash';
 import vars from '../../../../materials/custom-properties';
 import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import Text from '../../typography/text';
