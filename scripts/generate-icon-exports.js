@@ -41,27 +41,26 @@ glob(importPath, async (err, files) => {
 
   /* eslint-disable no-restricted-syntax, no-await-in-loop */
   for (const fileName of files) {
-    const componentName = upperFirst(
-      camelCase(path.basename(fileName, iconFileExt))
-    );
+    const fileNameWithoutExtension = path.basename(fileName, iconFileExt);
+    const componentName = upperFirst(camelCase(fileNameWithoutExtension));
 
-    const svgCode = await readFile(fileName, 'utf8');
+    const svgCode = await readFile(fileName, 'UTF-8');
     const jsCode = await svgr(
       svgCode,
       {
-        icon: true,
+        icon: false,
         svgoConfig: {
           plugins: [
             { removeViewBox: false },
+            { prefix: 'asdf' },
+            { prefixIds: true },
+            { prefixIds: { prefix: fileNameWithoutExtension } },
+
             // Keeps ID's of svgs so they can be targeted with CSS
             { cleanupIDs: false },
           ],
         },
-        plugins: [
-          '@svgr/plugin-svgo',
-          '@svgr/plugin-jsx',
-          '@svgr/plugin-prettier',
-        ],
+        plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
       },
       { componentName }
     );
