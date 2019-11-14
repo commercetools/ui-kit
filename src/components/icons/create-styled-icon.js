@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 
 const iconSizes = {
@@ -9,7 +10,7 @@ const iconSizes = {
   big: 24,
 };
 
-const getSizeStyle = size => {
+export const getSizeStyle = size => {
   switch (size) {
     case 'scale':
       return `
@@ -35,7 +36,7 @@ const getSizeStyle = size => {
 
 const capitalize = s => s[0].toUpperCase() + s.slice(1);
 
-const getColor = (color, theme) => {
+export const getColor = (color, theme) => {
   if (!color) return 'inherit';
   const overwrittenVars = {
     ...vars,
@@ -55,6 +56,27 @@ const getColor = (color, theme) => {
   return iconColor;
 };
 
+export const getIconStyles = (props, theme) => css`
+  * {
+    fill: ${getColor(props.color, theme)};
+  }
+  ${getSizeStyle(props.size)}
+`;
+
+export const iconPropTypes = {
+  color: PropTypes.oneOf([
+    'solid',
+    'neutral60',
+    'surface',
+    'info',
+    'primary',
+    'primary40',
+    'warning',
+    'error',
+  ]),
+  size: PropTypes.oneOf(['small', 'medium', 'big', 'scale']),
+};
+
 export default function createStyledIcon(Component, displayName) {
   const StyledComponent = styled(Component)(
     props => `
@@ -65,18 +87,6 @@ export default function createStyledIcon(Component, displayName) {
   `
   );
   StyledComponent.displayName = displayName;
-  StyledComponent.propTypes = {
-    color: PropTypes.oneOf([
-      'solid',
-      'neutral60',
-      'surface',
-      'info',
-      'primary',
-      'primary40',
-      'warning',
-      'error',
-    ]),
-    size: PropTypes.oneOf(['small', 'medium', 'big', 'scale']),
-  };
+  StyledComponent.propTypes = iconPropTypes;
   return StyledComponent;
 }

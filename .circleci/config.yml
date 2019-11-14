@@ -48,7 +48,7 @@ commands:
   lint:
     description: 'Running linters'
     steps:
-      - run: yarn run jest --projects jest.eslint.config.js jest.stylelint.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run: yarn run generate-icons && yarn run jest --projects jest.eslint.config.js jest.stylelint.config.js --maxWorkers=3 --reporters jest-silent-reporter
   unit_test:
     description: 'Running unit tests'
     steps:
