@@ -1,15 +1,8 @@
 const fs = require('fs');
-const util = require('util');
 const path = require('path');
 const glob = require('glob');
-const del = require('del');
+const shelljs = require('shelljs');
 const svgr = require('@svgr/core').default;
-
-// Convert fs.readFile / writeFile into Promise version of same
-const readFile = util.promisify(fs.readFile);
-const writeFile = util.promisify(fs.writeFile);
-const mkdir = util.promisify(fs.mkdir);
-
 const camelCase = require('lodash/camelCase');
 const upperFirst = require('lodash/upperFirst');
 const { stripIndents } = require('common-tags');
@@ -28,6 +21,9 @@ const iconComponentsPath = path.join(
   '../src/components/icons/components/'
 );
 
+shelljs.exec(`rm -rf ${rawExportsPath} ${iconComponentsPath}`);
+shelljs.exec(`mkdir ${rawExportsPath} ${iconComponentsPath}`);
+
 const indexPath = path.join(__dirname, '../src/components/icons/index.js');
 
 const iconFileExt = '.react.svg';
@@ -35,38 +31,34 @@ const iconFileExt = '.react.svg';
 const prettierConfig = rcfile('prettier');
 
 glob(importPath, async (err, files) => {
-  await del([rawExportsPath, iconComponentsPath]);
-  mkdir(rawExportsPath);
-  mkdir(iconComponentsPath);
-
-  /* eslint-disable no-restricted-syntax, no-await-in-loop */
-  for (const fileName of files) {
+  files.forEach(fileName => {
     const fileNameWithoutExtension = path.basename(fileName, iconFileExt);
     const componentName = upperFirst(camelCase(fileNameWithoutExtension));
 
-    const svgCode = await readFile(fileName, 'UTF-8');
-    const jsCode = await svgr(
+    const svgCode = fs.readFileSync(fileName, 'UTF-8');
+    const jsCode = svgr.sync(
       svgCode,
       {
         icon: false,
         svgoConfig: {
           plugins: [
             { removeViewBox: false },
-            { prefix: 'asdf' },
             { prefixIds: true },
+            // same result as rollup plugin
             { prefixIds: { prefix: fileNameWithoutExtension } },
 
             // Keeps ID's of svgs so they can be targeted with CSS
             { cleanupIDs: false },
           ],
         },
+        // same as the rollup plugin
         plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
       },
       { componentName }
     );
 
-    await writeFile(
-      path.join(rawExportsPath, `/${componentName}.js`),
+    fs.writeFileSync(
+      path.join(rawExportsPath, `/${fileNameWithoutExtension}.js`),
       prettier.format(jsCode, prettierConfig)
     );
 
@@ -77,11 +69,11 @@ glob(importPath, async (err, files) => {
       import PropTypes from 'prop-types';
       import { css } from '@emotion/core';
       import { getColor, getSizeStyle } from '../create-styled-icon';
-      import ${componentName} from '../raw-components/${componentName}';
+      import ${componentName} from '../raw-components/${fileNameWithoutExtension}';
 
-      const Component = props => <${componentName} {...props} css={css\`
+      const Component = props => <${componentName} {...props} css={theme => css\`
         * {
-         fill: \${getColor(props.color)}
+         fill: \${getColor(props.color, theme)}
        }
 
        \${getSizeStyle(props.size)}
@@ -111,19 +103,19 @@ glob(importPath, async (err, files) => {
       export default Component;
     `;
 
-    await writeFile(
-      path.join(iconComponentsPath, `/${componentName}.js`),
+    fs.writeFileSync(
+      path.join(iconComponentsPath, `/${fileNameWithoutExtension}.js`),
       prettier.format(importStatement, prettierConfig)
     );
-  }
+  });
 
   const importStatements = files.reduce((importsString, fileName) => {
-    const componentName = upperFirst(
-      camelCase(path.basename(fileName, iconFileExt))
-    );
+    const fileNameWithoutExtension = path.basename(fileName, iconFileExt);
+    const componentName = upperFirst(camelCase(fileNameWithoutExtension));
+
     return stripIndents`
       ${importsString}
-      export { default as ${componentName}Icon } from './components/${componentName}';
+      export { default as ${componentName}Icon } from './components/${fileNameWithoutExtension}';
     `;
   }, '');
 
@@ -134,5 +126,5 @@ glob(importPath, async (err, files) => {
     ${importStatements}
   `;
 
-  await writeFile(indexPath, prettier.format(iconsFile, prettierConfig));
+  fs.writeFileSync(indexPath, prettier.format(iconsFile, prettierConfig));
 });
