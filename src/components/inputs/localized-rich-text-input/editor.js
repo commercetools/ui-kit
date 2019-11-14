@@ -114,6 +114,7 @@ const Editor = props => {
                   container: css`
                     flex: auto;
                     width: 100%;
+                    overflow: auto;
                     border-top-left-radius: 0;
                     border-bottom-left-radius: 0;
                   `,
