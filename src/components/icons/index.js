@@ -41,6 +41,7 @@ export { default as CodeViewIcon } from './components/code-view';
 export { default as CoinsIcon } from './components/coins';
 export { default as ColumnsIcon } from './components/columns';
 export { default as ConnectedSquareIcon } from './components/connected-square';
+export { default as ConnectedTriangleIcon } from './components/connected-triangle';
 export { default as CopyIcon } from './components/copy';
 export { default as CubeIcon } from './components/cube';
 export { default as CubesIcon } from './components/cubes';
