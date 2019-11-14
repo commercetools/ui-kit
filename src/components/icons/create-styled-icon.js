@@ -9,7 +9,7 @@ const iconSizes = {
   big: 24,
 };
 
-const getSizeStyle = size => {
+export const getSizeStyle = size => {
   switch (size) {
     case 'scale':
       return `
@@ -35,7 +35,7 @@ const getSizeStyle = size => {
 
 const capitalize = s => s[0].toUpperCase() + s.slice(1);
 
-const getColor = (color, theme) => {
+export const getColor = (color, theme) => {
   if (!color) return 'inherit';
   const overwrittenVars = {
     ...vars,

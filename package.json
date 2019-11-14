@@ -33,6 +33,7 @@
     "design-system",
     "react"
   ],
+  "sideEffects": false,
   "scripts": {
     "changelog": "conventional-changelog -p angular -u",
     "design-tokens:build": "node ./scripts/generate-custom-properties.js",
@@ -115,6 +116,10 @@
     "@storybook/addon-storysource": "5.2.6",
     "@storybook/react": "5.2.6",
     "@storybook/theming": "5.2.6",
+    "@svgr/core": "4.3.3",
+    "@svgr/plugin-jsx": "4.3.3",
+    "@svgr/plugin-prettier": "4.3.2",
+    "@svgr/plugin-svgo": "4.3.1",
     "@svgr/rollup": "4.3.3",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "4.2.3",
@@ -135,6 +140,7 @@
     "common-tags": "1.8.0",
     "conventional-changelog-cli": "2.0.27",
     "cross-env": "6.0.3",
+    "del": "5.1.0",
     "emotion-theming": "10.0.19",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",

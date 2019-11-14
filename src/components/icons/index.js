@@ -1,364 +1,115 @@
 // This file is auto-generated using the 'generate-icon-exports.js' script
 // so any changes made to this file manually will be lost the next time the
 // script is executed
-import createStyledIcon from './create-styled-icon';
-import OrigAngleDownIcon from './svg/angle-down.react.svg';
-import OrigAngleLeftIcon from './svg/angle-left.react.svg';
-import OrigAngleRightIcon from './svg/angle-right.react.svg';
-import OrigAngleThinLeftIcon from './svg/angle-thin-left.react.svg';
-import OrigAngleThinRightIcon from './svg/angle-thin-right.react.svg';
-import OrigAngleUpIcon from './svg/angle-up.react.svg';
-import OrigArrowDownIcon from './svg/arrow-down.react.svg';
-import OrigArrowLeftIcon from './svg/arrow-left.react.svg';
-import OrigArrowLongDownIcon from './svg/arrow-long-down.react.svg';
-import OrigArrowRightIcon from './svg/arrow-right.react.svg';
-import OrigArrowTriangleDownIcon from './svg/arrow-triangle-down.react.svg';
-import OrigArrowTriangleUpIcon from './svg/arrow-triangle-up.react.svg';
-import OrigArrowUpIcon from './svg/arrow-up.react.svg';
-import OrigArrowsIcon from './svg/arrows.react.svg';
-import OrigBackIcon from './svg/back.react.svg';
-import OrigBidirectionalArrowIcon from './svg/bidirectional-arrow.react.svg';
-import OrigBinFilledIcon from './svg/bin-filled.react.svg';
-import OrigBinLinearIcon from './svg/bin-linear.react.svg';
-import OrigBoxIcon from './svg/box.react.svg';
-import OrigBrainIcon from './svg/brain.react.svg';
-import OrigCalendarIcon from './svg/calendar.react.svg';
-import OrigCameraIcon from './svg/camera.react.svg';
-import OrigCaretDownIcon from './svg/caret-down.react.svg';
-import OrigCaretUpIcon from './svg/caret-up.react.svg';
-import OrigCartIcon from './svg/cart.react.svg';
-import OrigChainBrokenIcon from './svg/chain-broken.react.svg';
-import OrigChainIcon from './svg/chain.react.svg';
-import OrigCheckActiveIcon from './svg/check-active.react.svg';
-import OrigCheckBoldIcon from './svg/check-bold.react.svg';
-import OrigCheckInactiveIcon from './svg/check-inactive.react.svg';
-import OrigCheckThinIcon from './svg/check-thin.react.svg';
-import OrigCircleIcon from './svg/circle.react.svg';
-import OrigClipboardIcon from './svg/clipboard.react.svg';
-import OrigClockIcon from './svg/clock.react.svg';
-import OrigCloseBoldIcon from './svg/close-bold.react.svg';
-import OrigCloseIcon from './svg/close.react.svg';
-import OrigCodeViewIcon from './svg/code-view.react.svg';
-import OrigCoinsIcon from './svg/coins.react.svg';
-import OrigColumnsIcon from './svg/columns.react.svg';
-import OrigConnectedSquareIcon from './svg/connected-square.react.svg';
-import OrigConnectedTriangleIcon from './svg/connected-triangle.react.svg';
-import OrigCopyIcon from './svg/copy.react.svg';
-import OrigCubeIcon from './svg/cube.react.svg';
-import OrigCubesIcon from './svg/cubes.react.svg';
-import OrigDotIcon from './svg/dot.react.svg';
-import OrigDownloadIcon from './svg/download.react.svg';
-import OrigDragDropIcon from './svg/drag-drop.react.svg';
-import OrigDragIcon from './svg/drag.react.svg';
-import OrigEditIcon from './svg/edit.react.svg';
-import OrigErrorIcon from './svg/error.react.svg';
-import OrigExpandIcon from './svg/expand.react.svg';
-import OrigExportIcon from './svg/export.react.svg';
-import OrigExternalLinkIcon from './svg/external-link.react.svg';
-import OrigEyeCrossedIcon from './svg/eye-crossed.react.svg';
-import OrigEyeIcon from './svg/eye.react.svg';
-import OrigFilterIcon from './svg/filter.react.svg';
-import OrigFlagFilledIcon from './svg/flag-filled.react.svg';
-import OrigFlagLinearIcon from './svg/flag-linear.react.svg';
-import OrigFlameIcon from './svg/flame.react.svg';
-import OrigFractionDigitsIcon from './svg/fraction-digits.react.svg';
-import OrigGearIcon from './svg/gear.react.svg';
-import OrigGraduationCapIcon from './svg/graduation-cap.react.svg';
-import OrigGraphIcon from './svg/graph.react.svg';
-import OrigGridIcon from './svg/grid.react.svg';
-import OrigHeartIcon from './svg/heart.react.svg';
-import OrigImportIcon from './svg/import.react.svg';
-import OrigInfoIcon from './svg/info.react.svg';
-import OrigInformationIcon from './svg/information.react.svg';
-import OrigListIcon from './svg/list.react.svg';
-import OrigLogoutIcon from './svg/logout.react.svg';
-import OrigMailIcon from './svg/mail.react.svg';
-import OrigMinimizeIcon from './svg/minimize.react.svg';
-import OrigNestedViewIcon from './svg/nested-view.react.svg';
-import OrigPageGearIcon from './svg/page-gear.react.svg';
-import OrigPagesIcon from './svg/pages.react.svg';
-import OrigPaperBillInvertedIcon from './svg/paper-bill-inverted.react.svg';
-import OrigPaperclipIcon from './svg/paperclip.react.svg';
-import OrigPinFilledIcon from './svg/pin-filled.react.svg';
-import OrigPinGearIcon from './svg/pin-gear.react.svg';
-import OrigPinLinearIcon from './svg/pin-linear.react.svg';
-import OrigPluginIcon from './svg/plugin.react.svg';
-import OrigPlusBoldIcon from './svg/plus-bold.react.svg';
-import OrigPlusThinIcon from './svg/plus-thin.react.svg';
-import OrigRefreshIcon from './svg/refresh.react.svg';
-import OrigRestoreIcon from './svg/restore.react.svg';
-import OrigRevertIcon from './svg/revert.react.svg';
-import OrigReviewIcon from './svg/review.react.svg';
-import OrigRocketIcon from './svg/rocket.react.svg';
-import OrigScreenGearIcon from './svg/screen-gear.react.svg';
-import OrigScreenUserIcon from './svg/screen-user.react.svg';
-import OrigSearchIcon from './svg/search.react.svg';
-import OrigSortingIcon from './svg/sorting.react.svg';
-import OrigSpeechBubbleIcon from './svg/speech-bubble.react.svg';
-import OrigSpeedometerIcon from './svg/speedometer.react.svg';
-import OrigSplitIcon from './svg/split.react.svg';
-import OrigStackIcon from './svg/stack.react.svg';
-import OrigStarIcon from './svg/star.react.svg';
-import OrigSubdirectoryArrowIcon from './svg/subdirectory-arrow.react.svg';
-import OrigSupportIcon from './svg/support.react.svg';
-import OrigSwitcherIcon from './svg/switcher.react.svg';
-import OrigTableIcon from './svg/table.react.svg';
-import OrigTagMultiIcon from './svg/tag-multi.react.svg';
-import OrigTagStackedIcon from './svg/tag-stacked.react.svg';
-import OrigTagIcon from './svg/tag.react.svg';
-import OrigTerminalIcon from './svg/terminal.react.svg';
-import OrigTreeStructureIcon from './svg/tree-structure.react.svg';
-import OrigTruckIcon from './svg/truck.react.svg';
-import OrigUserFilledIcon from './svg/user-filled.react.svg';
-import OrigUserLinearIcon from './svg/user-linear.react.svg';
-import OrigVerifiedIcon from './svg/verified.react.svg';
-import OrigWarningIcon from './svg/warning.react.svg';
-import OrigWorldIcon from './svg/world.react.svg';
-
-export const AngleDownIcon = createStyledIcon(
-  OrigAngleDownIcon,
-  'AngleDownIcon'
-);
-export const AngleLeftIcon = createStyledIcon(
-  OrigAngleLeftIcon,
-  'AngleLeftIcon'
-);
-export const AngleRightIcon = createStyledIcon(
-  OrigAngleRightIcon,
-  'AngleRightIcon'
-);
-export const AngleThinLeftIcon = createStyledIcon(
-  OrigAngleThinLeftIcon,
-  'AngleThinLeftIcon'
-);
-export const AngleThinRightIcon = createStyledIcon(
-  OrigAngleThinRightIcon,
-  'AngleThinRightIcon'
-);
-export const AngleUpIcon = createStyledIcon(OrigAngleUpIcon, 'AngleUpIcon');
-export const ArrowDownIcon = createStyledIcon(
-  OrigArrowDownIcon,
-  'ArrowDownIcon'
-);
-export const ArrowLeftIcon = createStyledIcon(
-  OrigArrowLeftIcon,
-  'ArrowLeftIcon'
-);
-export const ArrowLongDownIcon = createStyledIcon(
-  OrigArrowLongDownIcon,
-  'ArrowLongDownIcon'
-);
-export const ArrowRightIcon = createStyledIcon(
-  OrigArrowRightIcon,
-  'ArrowRightIcon'
-);
-export const ArrowTriangleDownIcon = createStyledIcon(
-  OrigArrowTriangleDownIcon,
-  'ArrowTriangleDownIcon'
-);
-export const ArrowTriangleUpIcon = createStyledIcon(
-  OrigArrowTriangleUpIcon,
-  'ArrowTriangleUpIcon'
-);
-export const ArrowUpIcon = createStyledIcon(OrigArrowUpIcon, 'ArrowUpIcon');
-export const ArrowsIcon = createStyledIcon(OrigArrowsIcon, 'ArrowsIcon');
-export const BackIcon = createStyledIcon(OrigBackIcon, 'BackIcon');
-export const BidirectionalArrowIcon = createStyledIcon(
-  OrigBidirectionalArrowIcon,
-  'BidirectionalArrowIcon'
-);
-export const BinFilledIcon = createStyledIcon(
-  OrigBinFilledIcon,
-  'BinFilledIcon'
-);
-export const BinLinearIcon = createStyledIcon(
-  OrigBinLinearIcon,
-  'BinLinearIcon'
-);
-export const BoxIcon = createStyledIcon(OrigBoxIcon, 'BoxIcon');
-export const BrainIcon = createStyledIcon(OrigBrainIcon, 'BrainIcon');
-export const CalendarIcon = createStyledIcon(OrigCalendarIcon, 'CalendarIcon');
-export const CameraIcon = createStyledIcon(OrigCameraIcon, 'CameraIcon');
-export const CaretDownIcon = createStyledIcon(
-  OrigCaretDownIcon,
-  'CaretDownIcon'
-);
-export const CaretUpIcon = createStyledIcon(OrigCaretUpIcon, 'CaretUpIcon');
-export const CartIcon = createStyledIcon(OrigCartIcon, 'CartIcon');
-export const ChainBrokenIcon = createStyledIcon(
-  OrigChainBrokenIcon,
-  'ChainBrokenIcon'
-);
-export const ChainIcon = createStyledIcon(OrigChainIcon, 'ChainIcon');
-export const CheckActiveIcon = createStyledIcon(
-  OrigCheckActiveIcon,
-  'CheckActiveIcon'
-);
-export const CheckBoldIcon = createStyledIcon(
-  OrigCheckBoldIcon,
-  'CheckBoldIcon'
-);
-export const CheckInactiveIcon = createStyledIcon(
-  OrigCheckInactiveIcon,
-  'CheckInactiveIcon'
-);
-export const CheckThinIcon = createStyledIcon(
-  OrigCheckThinIcon,
-  'CheckThinIcon'
-);
-export const CircleIcon = createStyledIcon(OrigCircleIcon, 'CircleIcon');
-export const ClipboardIcon = createStyledIcon(
-  OrigClipboardIcon,
-  'ClipboardIcon'
-);
-export const ClockIcon = createStyledIcon(OrigClockIcon, 'ClockIcon');
-export const CloseBoldIcon = createStyledIcon(
-  OrigCloseBoldIcon,
-  'CloseBoldIcon'
-);
-export const CloseIcon = createStyledIcon(OrigCloseIcon, 'CloseIcon');
-export const CodeViewIcon = createStyledIcon(OrigCodeViewIcon, 'CodeViewIcon');
-export const CoinsIcon = createStyledIcon(OrigCoinsIcon, 'CoinsIcon');
-export const ColumnsIcon = createStyledIcon(OrigColumnsIcon, 'ColumnsIcon');
-export const ConnectedSquareIcon = createStyledIcon(
-  OrigConnectedSquareIcon,
-  'ConnectedSquareIcon'
-);
-export const ConnectedTriangleIcon = createStyledIcon(
-  OrigConnectedTriangleIcon,
-  'ConnectedTriangleIcon'
-);
-export const CopyIcon = createStyledIcon(OrigCopyIcon, 'CopyIcon');
-export const CubeIcon = createStyledIcon(OrigCubeIcon, 'CubeIcon');
-export const CubesIcon = createStyledIcon(OrigCubesIcon, 'CubesIcon');
-export const DotIcon = createStyledIcon(OrigDotIcon, 'DotIcon');
-export const DownloadIcon = createStyledIcon(OrigDownloadIcon, 'DownloadIcon');
-export const DragDropIcon = createStyledIcon(OrigDragDropIcon, 'DragDropIcon');
-export const DragIcon = createStyledIcon(OrigDragIcon, 'DragIcon');
-export const EditIcon = createStyledIcon(OrigEditIcon, 'EditIcon');
-export const ErrorIcon = createStyledIcon(OrigErrorIcon, 'ErrorIcon');
-export const ExpandIcon = createStyledIcon(OrigExpandIcon, 'ExpandIcon');
-export const ExportIcon = createStyledIcon(OrigExportIcon, 'ExportIcon');
-export const ExternalLinkIcon = createStyledIcon(
-  OrigExternalLinkIcon,
-  'ExternalLinkIcon'
-);
-export const EyeCrossedIcon = createStyledIcon(
-  OrigEyeCrossedIcon,
-  'EyeCrossedIcon'
-);
-export const EyeIcon = createStyledIcon(OrigEyeIcon, 'EyeIcon');
-export const FilterIcon = createStyledIcon(OrigFilterIcon, 'FilterIcon');
-export const FlagFilledIcon = createStyledIcon(
-  OrigFlagFilledIcon,
-  'FlagFilledIcon'
-);
-export const FlagLinearIcon = createStyledIcon(
-  OrigFlagLinearIcon,
-  'FlagLinearIcon'
-);
-export const FlameIcon = createStyledIcon(OrigFlameIcon, 'FlameIcon');
-export const FractionDigitsIcon = createStyledIcon(
-  OrigFractionDigitsIcon,
-  'FractionDigitsIcon'
-);
-export const GearIcon = createStyledIcon(OrigGearIcon, 'GearIcon');
-export const GraduationCapIcon = createStyledIcon(
-  OrigGraduationCapIcon,
-  'GraduationCapIcon'
-);
-export const GraphIcon = createStyledIcon(OrigGraphIcon, 'GraphIcon');
-export const GridIcon = createStyledIcon(OrigGridIcon, 'GridIcon');
-export const HeartIcon = createStyledIcon(OrigHeartIcon, 'HeartIcon');
-export const ImportIcon = createStyledIcon(OrigImportIcon, 'ImportIcon');
-export const InfoIcon = createStyledIcon(OrigInfoIcon, 'InfoIcon');
-export const InformationIcon = createStyledIcon(
-  OrigInformationIcon,
-  'InformationIcon'
-);
-export const ListIcon = createStyledIcon(OrigListIcon, 'ListIcon');
-export const LogoutIcon = createStyledIcon(OrigLogoutIcon, 'LogoutIcon');
-export const MailIcon = createStyledIcon(OrigMailIcon, 'MailIcon');
-export const MinimizeIcon = createStyledIcon(OrigMinimizeIcon, 'MinimizeIcon');
-export const NestedViewIcon = createStyledIcon(
-  OrigNestedViewIcon,
-  'NestedViewIcon'
-);
-export const PageGearIcon = createStyledIcon(OrigPageGearIcon, 'PageGearIcon');
-export const PagesIcon = createStyledIcon(OrigPagesIcon, 'PagesIcon');
-export const PaperBillInvertedIcon = createStyledIcon(
-  OrigPaperBillInvertedIcon,
-  'PaperBillInvertedIcon'
-);
-export const PaperclipIcon = createStyledIcon(
-  OrigPaperclipIcon,
-  'PaperclipIcon'
-);
-export const PinFilledIcon = createStyledIcon(
-  OrigPinFilledIcon,
-  'PinFilledIcon'
-);
-export const PinGearIcon = createStyledIcon(OrigPinGearIcon, 'PinGearIcon');
-export const PinLinearIcon = createStyledIcon(
-  OrigPinLinearIcon,
-  'PinLinearIcon'
-);
-export const PluginIcon = createStyledIcon(OrigPluginIcon, 'PluginIcon');
-export const PlusBoldIcon = createStyledIcon(OrigPlusBoldIcon, 'PlusBoldIcon');
-export const PlusThinIcon = createStyledIcon(OrigPlusThinIcon, 'PlusThinIcon');
-export const RefreshIcon = createStyledIcon(OrigRefreshIcon, 'RefreshIcon');
-export const RestoreIcon = createStyledIcon(OrigRestoreIcon, 'RestoreIcon');
-export const RevertIcon = createStyledIcon(OrigRevertIcon, 'RevertIcon');
-export const ReviewIcon = createStyledIcon(OrigReviewIcon, 'ReviewIcon');
-export const RocketIcon = createStyledIcon(OrigRocketIcon, 'RocketIcon');
-export const ScreenGearIcon = createStyledIcon(
-  OrigScreenGearIcon,
-  'ScreenGearIcon'
-);
-export const ScreenUserIcon = createStyledIcon(
-  OrigScreenUserIcon,
-  'ScreenUserIcon'
-);
-export const SearchIcon = createStyledIcon(OrigSearchIcon, 'SearchIcon');
-export const SortingIcon = createStyledIcon(OrigSortingIcon, 'SortingIcon');
-export const SpeechBubbleIcon = createStyledIcon(
-  OrigSpeechBubbleIcon,
-  'SpeechBubbleIcon'
-);
-export const SpeedometerIcon = createStyledIcon(
-  OrigSpeedometerIcon,
-  'SpeedometerIcon'
-);
-export const SplitIcon = createStyledIcon(OrigSplitIcon, 'SplitIcon');
-export const StackIcon = createStyledIcon(OrigStackIcon, 'StackIcon');
-export const StarIcon = createStyledIcon(OrigStarIcon, 'StarIcon');
-export const SubdirectoryArrowIcon = createStyledIcon(
-  OrigSubdirectoryArrowIcon,
-  'SubdirectoryArrowIcon'
-);
-export const SupportIcon = createStyledIcon(OrigSupportIcon, 'SupportIcon');
-export const SwitcherIcon = createStyledIcon(OrigSwitcherIcon, 'SwitcherIcon');
-export const TableIcon = createStyledIcon(OrigTableIcon, 'TableIcon');
-export const TagMultiIcon = createStyledIcon(OrigTagMultiIcon, 'TagMultiIcon');
-export const TagStackedIcon = createStyledIcon(
-  OrigTagStackedIcon,
-  'TagStackedIcon'
-);
-export const TagIcon = createStyledIcon(OrigTagIcon, 'TagIcon');
-export const TerminalIcon = createStyledIcon(OrigTerminalIcon, 'TerminalIcon');
-export const TreeStructureIcon = createStyledIcon(
-  OrigTreeStructureIcon,
-  'TreeStructureIcon'
-);
-export const TruckIcon = createStyledIcon(OrigTruckIcon, 'TruckIcon');
-export const UserFilledIcon = createStyledIcon(
-  OrigUserFilledIcon,
-  'UserFilledIcon'
-);
-export const UserLinearIcon = createStyledIcon(
-  OrigUserLinearIcon,
-  'UserLinearIcon'
-);
-export const VerifiedIcon = createStyledIcon(OrigVerifiedIcon, 'VerifiedIcon');
-export const WarningIcon = createStyledIcon(OrigWarningIcon, 'WarningIcon');
-export const WorldIcon = createStyledIcon(OrigWorldIcon, 'WorldIcon');
+export { default as AngleDownIcon } from './components/AngleDown';
+export { default as AngleLeftIcon } from './components/AngleLeft';
+export { default as AngleRightIcon } from './components/AngleRight';
+export { default as AngleThinLeftIcon } from './components/AngleThinLeft';
+export { default as AngleThinRightIcon } from './components/AngleThinRight';
+export { default as AngleUpIcon } from './components/AngleUp';
+export { default as ArrowDownIcon } from './components/ArrowDown';
+export { default as ArrowLeftIcon } from './components/ArrowLeft';
+export { default as ArrowLongDownIcon } from './components/ArrowLongDown';
+export { default as ArrowRightIcon } from './components/ArrowRight';
+export { default as ArrowTriangleDownIcon } from './components/ArrowTriangleDown';
+export { default as ArrowTriangleUpIcon } from './components/ArrowTriangleUp';
+export { default as ArrowUpIcon } from './components/ArrowUp';
+export { default as ArrowsIcon } from './components/Arrows';
+export { default as BackIcon } from './components/Back';
+export { default as BidirectionalArrowIcon } from './components/BidirectionalArrow';
+export { default as BinFilledIcon } from './components/BinFilled';
+export { default as BinLinearIcon } from './components/BinLinear';
+export { default as BoxIcon } from './components/Box';
+export { default as BrainIcon } from './components/Brain';
+export { default as CalendarIcon } from './components/Calendar';
+export { default as CameraIcon } from './components/Camera';
+export { default as CaretDownIcon } from './components/CaretDown';
+export { default as CaretUpIcon } from './components/CaretUp';
+export { default as CartIcon } from './components/Cart';
+export { default as ChainBrokenIcon } from './components/ChainBroken';
+export { default as ChainIcon } from './components/Chain';
+export { default as CheckActiveIcon } from './components/CheckActive';
+export { default as CheckBoldIcon } from './components/CheckBold';
+export { default as CheckInactiveIcon } from './components/CheckInactive';
+export { default as CheckThinIcon } from './components/CheckThin';
+export { default as CircleIcon } from './components/Circle';
+export { default as ClipboardIcon } from './components/Clipboard';
+export { default as ClockIcon } from './components/Clock';
+export { default as CloseBoldIcon } from './components/CloseBold';
+export { default as CloseIcon } from './components/Close';
+export { default as CodeViewIcon } from './components/CodeView';
+export { default as CoinsIcon } from './components/Coins';
+export { default as ColumnsIcon } from './components/Columns';
+export { default as ConnectedSquareIcon } from './components/ConnectedSquare';
+export { default as ConnectedTriangleIcon } from './components/ConnectedTriangle';
+export { default as CopyIcon } from './components/Copy';
+export { default as CubeIcon } from './components/Cube';
+export { default as CubesIcon } from './components/Cubes';
+export { default as DotIcon } from './components/Dot';
+export { default as DownloadIcon } from './components/Download';
+export { default as DragDropIcon } from './components/DragDrop';
+export { default as DragIcon } from './components/Drag';
+export { default as EditIcon } from './components/Edit';
+export { default as ErrorIcon } from './components/Error';
+export { default as ExpandIcon } from './components/Expand';
+export { default as ExportIcon } from './components/Export';
+export { default as ExternalLinkIcon } from './components/ExternalLink';
+export { default as EyeCrossedIcon } from './components/EyeCrossed';
+export { default as EyeIcon } from './components/Eye';
+export { default as FilterIcon } from './components/Filter';
+export { default as FlagFilledIcon } from './components/FlagFilled';
+export { default as FlagLinearIcon } from './components/FlagLinear';
+export { default as FlameIcon } from './components/Flame';
+export { default as FractionDigitsIcon } from './components/FractionDigits';
+export { default as GearIcon } from './components/Gear';
+export { default as GraduationCapIcon } from './components/GraduationCap';
+export { default as GraphIcon } from './components/Graph';
+export { default as GridIcon } from './components/Grid';
+export { default as HeartIcon } from './components/Heart';
+export { default as ImportIcon } from './components/Import';
+export { default as InfoIcon } from './components/Info';
+export { default as InformationIcon } from './components/Information';
+export { default as ListIcon } from './components/List';
+export { default as LogoutIcon } from './components/Logout';
+export { default as MailIcon } from './components/Mail';
+export { default as MinimizeIcon } from './components/Minimize';
+export { default as NestedViewIcon } from './components/NestedView';
+export { default as PageGearIcon } from './components/PageGear';
+export { default as PagesIcon } from './components/Pages';
+export { default as PaperBillInvertedIcon } from './components/PaperBillInverted';
+export { default as PaperclipIcon } from './components/Paperclip';
+export { default as PinFilledIcon } from './components/PinFilled';
+export { default as PinGearIcon } from './components/PinGear';
+export { default as PinLinearIcon } from './components/PinLinear';
+export { default as PluginIcon } from './components/Plugin';
+export { default as PlusBoldIcon } from './components/PlusBold';
+export { default as PlusThinIcon } from './components/PlusThin';
+export { default as RefreshIcon } from './components/Refresh';
+export { default as RestoreIcon } from './components/Restore';
+export { default as RevertIcon } from './components/Revert';
+export { default as ReviewIcon } from './components/Review';
+export { default as RocketIcon } from './components/Rocket';
+export { default as ScreenGearIcon } from './components/ScreenGear';
+export { default as ScreenUserIcon } from './components/ScreenUser';
+export { default as SearchIcon } from './components/Search';
+export { default as SortingIcon } from './components/Sorting';
+export { default as SpeechBubbleIcon } from './components/SpeechBubble';
+export { default as SpeedometerIcon } from './components/Speedometer';
+export { default as SplitIcon } from './components/Split';
+export { default as StackIcon } from './components/Stack';
+export { default as StarIcon } from './components/Star';
+export { default as SubdirectoryArrowIcon } from './components/SubdirectoryArrow';
+export { default as SupportIcon } from './components/Support';
+export { default as SwitcherIcon } from './components/Switcher';
+export { default as TableIcon } from './components/Table';
+export { default as TagMultiIcon } from './components/TagMulti';
+export { default as TagStackedIcon } from './components/TagStacked';
+export { default as TagIcon } from './components/Tag';
+export { default as TerminalIcon } from './components/Terminal';
+export { default as TreeStructureIcon } from './components/TreeStructure';
+export { default as TruckIcon } from './components/Truck';
+export { default as UserFilledIcon } from './components/UserFilled';
+export { default as UserLinearIcon } from './components/UserLinear';
+export { default as VerifiedIcon } from './components/Verified';
+export { default as WarningIcon } from './components/Warning';
+export { default as WorldIcon } from './components/World';
