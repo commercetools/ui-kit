@@ -55,6 +55,20 @@ export const getColor = (color, theme) => {
   return iconColor;
 };
 
+export const iconPropTypes = {
+  color: PropTypes.oneOf([
+    'solid',
+    'neutral60',
+    'surface',
+    'info',
+    'primary',
+    'primary40',
+    'warning',
+    'error',
+  ]),
+  size: PropTypes.oneOf(['small', 'medium', 'big', 'scale']),
+};
+
 export default function createStyledIcon(Component, displayName) {
   const StyledComponent = styled(Component)(
     props => `
@@ -65,18 +79,6 @@ export default function createStyledIcon(Component, displayName) {
   `
   );
   StyledComponent.displayName = displayName;
-  StyledComponent.propTypes = {
-    color: PropTypes.oneOf([
-      'solid',
-      'neutral60',
-      'surface',
-      'info',
-      'primary',
-      'primary40',
-      'warning',
-      'error',
-    ]),
-    size: PropTypes.oneOf(['small', 'medium', 'big', 'scale']),
-  };
+  StyledComponent.propTypes = iconPropTypes;
   return StyledComponent;
 }

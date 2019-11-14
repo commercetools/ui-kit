@@ -66,9 +66,8 @@ glob(importPath, async (err, files) => {
 
     const importStatement = stripIndents`
       import React from 'react';
-      import PropTypes from 'prop-types';
       import { css } from '@emotion/core';
-      import { getColor, getSizeStyle } from '../create-styled-icon';
+      import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
       import ${componentName} from '../raw-components/${fileNameWithoutExtension}';
 
       const Component = props => <${componentName} {...props} css={theme => css\`
@@ -82,22 +81,8 @@ glob(importPath, async (err, files) => {
 
       Component.displayName = '${displayName}';
 
-      const componentPropTypes = {
-        color: PropTypes.oneOf([
-          'solid',
-          'neutral60',
-          'surface',
-          'info',
-          'primary',
-          'primary40',
-          'warning',
-          'error',
-        ]),
-        size: PropTypes.oneOf(['small', 'medium', 'big', 'scale']),
-      };
-
       if (process.env.NODE_ENV !== "production") {
-        Component.propTypes = componentPropTypes;
+        Component.propTypes = iconPropTypes;
       }
 
       export default Component;
