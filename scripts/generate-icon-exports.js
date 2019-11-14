@@ -81,6 +81,8 @@ glob(importPath, async (err, files) => {
 
       Component.displayName = '${displayName}';
 
+      // we do this to enable treeshaking
+      // please see https://github.com/alex996/react-css-spinners/issues/1
       if (process.env.NODE_ENV !== "production") {
         Component.propTypes = iconPropTypes;
       }
