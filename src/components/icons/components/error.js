@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Error from '../raw-components/error';
 
 const Component = props => (
-  <Error
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <Error {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ErrorIcon';

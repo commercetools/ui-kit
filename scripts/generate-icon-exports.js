@@ -66,18 +66,10 @@ glob(importPath, async (err, files) => {
 
     const importStatement = stripIndents`
       import React from 'react';
-      import { css } from '@emotion/core';
-      import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+      import { getIconStyles, iconPropTypes } from '../create-styled-icon';
       import ${componentName} from '../raw-components/${fileNameWithoutExtension}';
 
-      const Component = props => <${componentName} {...props} css={theme => css\`
-        * {
-         fill: \${getColor(props.color, theme)}
-       }
-
-       \${getSizeStyle(props.size)}
-      \`} />;
-
+      const Component = props => <${componentName} {...props} css={theme => getIconStyles(props, theme)} />;
 
       Component.displayName = '${displayName}';
 

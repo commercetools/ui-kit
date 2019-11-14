@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import AngleThinLeft from '../raw-components/angle-thin-left';
 
 const Component = props => (
-  <AngleThinLeft
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <AngleThinLeft {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'AngleThinLeftIcon';

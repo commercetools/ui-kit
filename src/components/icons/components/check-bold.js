@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import CheckBold from '../raw-components/check-bold';
 
 const Component = props => (
-  <CheckBold
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <CheckBold {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CheckBoldIcon';

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import vars from '../../../materials/custom-properties';
 
 const iconSizes = {
@@ -54,6 +55,13 @@ export const getColor = (color, theme) => {
 
   return iconColor;
 };
+
+export const getIconStyles = (props, theme) => css`
+  * {
+    fill: ${getColor(props.color, theme)};
+  }
+  ${getSizeStyle(props.size)}
+`;
 
 export const iconPropTypes = {
   color: PropTypes.oneOf([

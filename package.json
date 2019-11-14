@@ -141,7 +141,6 @@
     "common-tags": "1.8.0",
     "conventional-changelog-cli": "2.0.27",
     "cross-env": "6.0.3",
-    "del": "5.1.0",
     "emotion-theming": "10.0.19",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",

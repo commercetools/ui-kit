@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import ArrowUp from '../raw-components/arrow-up';
 
 const Component = props => (
-  <ArrowUp
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <ArrowUp {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ArrowUpIcon';

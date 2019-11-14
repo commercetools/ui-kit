@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Refresh from '../raw-components/refresh';
 
 const Component = props => (
-  <Refresh
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <Refresh {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RefreshIcon';

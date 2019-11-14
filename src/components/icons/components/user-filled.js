@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import UserFilled from '../raw-components/user-filled';
 
 const Component = props => (
-  <UserFilled
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <UserFilled {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'UserFilledIcon';

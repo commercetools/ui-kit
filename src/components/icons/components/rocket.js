@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Rocket from '../raw-components/rocket';
 
 const Component = props => (
-  <Rocket
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <Rocket {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RocketIcon';

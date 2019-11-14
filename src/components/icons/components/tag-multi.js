@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import TagMulti from '../raw-components/tag-multi';
 
 const Component = props => (
-  <TagMulti
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <TagMulti {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'TagMultiIcon';

@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import PinGear from '../raw-components/pin-gear';
 
 const Component = props => (
-  <PinGear
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <PinGear {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PinGearIcon';

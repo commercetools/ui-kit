@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import ArrowRight from '../raw-components/arrow-right';
 
 const Component = props => (
-  <ArrowRight
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <ArrowRight {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ArrowRightIcon';

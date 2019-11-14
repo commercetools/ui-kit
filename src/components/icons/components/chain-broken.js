@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import ChainBroken from '../raw-components/chain-broken';
 
 const Component = props => (
-  <ChainBroken
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <ChainBroken {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ChainBrokenIcon';

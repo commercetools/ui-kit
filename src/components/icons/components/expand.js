@@ -1,19 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import { getColor, getSizeStyle, iconPropTypes } from '../create-styled-icon';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Expand from '../raw-components/expand';
 
 const Component = props => (
-  <Expand
-    {...props}
-    css={theme => css`
-      * {
-        fill: ${getColor(props.color, theme)};
-      }
-
-      ${getSizeStyle(props.size)}
-    `}
-  />
+  <Expand {...props} css={theme => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ExpandIcon';
