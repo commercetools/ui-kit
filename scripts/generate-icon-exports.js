@@ -80,7 +80,7 @@ glob(importPath, async (err, files) => {
       import { getColor, getSizeStyle } from '../create-styled-icon';
       import ${componentName} from '../raw-components/${componentName}';
 
-      const Component = props => <${componentName} css={css\`
+      const Component = props => <${componentName} {...props} css={css\`
         * {
          fill: \${getColor(props.color)}
        }
