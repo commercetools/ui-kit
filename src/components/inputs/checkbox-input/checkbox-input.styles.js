@@ -8,6 +8,11 @@ const getCheckboxWrapperStyles = (props, theme) => {
     ...theme,
   };
   const baseStyles = css`
+    /* resets from createStyledIcon styles */
+    * {
+      fill: none;
+    }
+
     display: flex;
     align-items: center;
     svg [id$='borderAndContent'] > [id$='border'] {

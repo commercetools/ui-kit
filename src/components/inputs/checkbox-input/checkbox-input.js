@@ -7,7 +7,11 @@ import filterAriaAttributes from '../../../utils/filter-aria-attributes';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import Text from '../../typography/text';
-import Icons from './icons';
+import {
+  IndeterminateIcon,
+  CheckedIcon,
+  UncheckedIcon,
+} from '../../internals/icons';
 import { getCheckboxWrapperStyles } from './checkbox-input.styles';
 import Checkbox from './checkbox';
 import vars from '../../../../materials/custom-properties';
@@ -93,9 +97,10 @@ class CheckboxInput extends React.PureComponent {
         />
         <div css={theme => getCheckboxWrapperStyles(this.props, theme)}>
           {(() => {
-            if (this.props.isIndeterminate) return <Icons.Indeterminate />;
-            if (this.props.isChecked) return <Icons.Checked />;
-            return <Icons.Unchecked />;
+            if (this.props.isIndeterminate)
+              return <IndeterminateIcon size="medium" />;
+            if (this.props.isChecked) return <CheckedIcon size="medium" />;
+            return <UncheckedIcon size="medium" />;
           })()}
         </div>
         {this.props.children && (

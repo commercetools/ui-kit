@@ -5,6 +5,12 @@ const getContainerStyles = props => {
   const baseStyles = css`
     display: flex;
     align-items: center;
+
+    /* reset from createStyledIcon */
+    * {
+      fill: none;
+    }
+
     svg [id$='borderAndContent'] > [id$='border'] {
       stroke: 1px ${vars.borderColorForInput} solid;
     }
