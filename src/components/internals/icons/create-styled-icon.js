@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import vars from '../../../materials/custom-properties';
+import vars from '../../../../materials/custom-properties';
 
 const iconSizes = {
   small: 12,
