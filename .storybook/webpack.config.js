@@ -56,41 +56,6 @@ module.exports = ({ config }) => {
         },
       ],
     },
-    // For svg icons, we want to get them transformed into React components
-    // when we import them.
-    {
-      test: /\.react\.svg$/,
-      include: sourceFolders,
-      use: [
-        {
-          loader: require.resolve('babel-loader'),
-          options: {
-            babelrc: false,
-            presets: [require.resolve('../scripts/get-babel-preset')],
-            // This is a feature of `babel-loader` for webpack (not Babel itself).
-            // It enables caching results in ./node_modules/.cache/babel-loader/
-            // directory for faster rebuilds.
-            cacheDirectory: true,
-            highlightCode: true,
-          },
-        },
-        {
-          loader: require.resolve('@svgr/webpack'),
-          options: {
-            // NOTE: disable this and manually add `removeViewBox: false` in the SVGO plugins list
-            // See related PR: https://github.com/smooth-code/svgr/pull/137
-            icon: false,
-            svgoConfig: {
-              plugins: [
-                { removeViewBox: false },
-                // Keeps ID's of svgs so they can be targeted with CSS
-                { cleanupIDs: false },
-              ],
-            },
-          },
-        },
-      ],
-    },
     // Storybook uses a plugin to load and render markdown files.
     {
       test: /\.md$/,
