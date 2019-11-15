@@ -1,5 +1,8 @@
 import React from 'react';
-import { getIconStyles, iconPropTypes } from '../create-styled-icon';
+import {
+  getIconStyles,
+  iconPropTypes,
+} from '../../internals/icons/create-styled-icon';
 import AngleLeft from '../raw-components/angle-left';
 
 const Component = props => (

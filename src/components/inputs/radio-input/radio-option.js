@@ -5,7 +5,10 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Icons from './icons';
+import {
+  RadioOptionCheckedIcon,
+  RadioOptionUncheckedIcon,
+} from '../../internals/icons';
 import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
@@ -40,7 +43,11 @@ const Option = props => {
         {...filterDataAttributes(props)}
       />
       <div css={getContainerStyles(props)}>
-        {props.isChecked ? <Icons.Checked /> : <Icons.Default />}
+        {props.isChecked ? (
+          <RadioOptionCheckedIcon size="medium" />
+        ) : (
+          <RadioOptionUncheckedIcon size="medium" />
+        )}
       </div>
       <div
         css={css`

@@ -3,3 +3,4 @@ proxy_exports/**/*.js
 node_modules/*
 **/node_modules/*
 vendors/*
+src/components/icons/raw-components

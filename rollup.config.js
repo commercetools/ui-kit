@@ -4,7 +4,6 @@ import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-replace';
-import svgrPlugin from '@svgr/rollup';
 import pkg from './package.json';
 
 const getBabelPreset = require('./scripts/get-babel-preset');
@@ -42,20 +41,6 @@ const configureRollupPlugins = (options = {}) =>
     }),
     // To convert JSON files to ES6
     json(),
-    // To convert SVG Icons to ES6
-    svgrPlugin({
-      // NOTE: only the files ending with `.react.svg` are supposed to be
-      // converted to React components
-      include: ['**/*.react.svg'],
-      icon: false,
-      svgoConfig: {
-        plugins: [
-          { removeViewBox: false },
-          // Keeps ID's of svgs so they can be targeted with CSS
-          { cleanupIDs: false },
-        ],
-      },
-    }),
     // To remove comments, trim trailing spaces, compact empty lines,
     // and normalize line endings
     cleanup(),
