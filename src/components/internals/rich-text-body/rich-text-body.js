@@ -26,7 +26,7 @@ import {
   StrikethroughIcon,
   SuperscriptIcon,
   MoreStylesIcon,
-} from './icons';
+} from '../icons';
 import Spacings from '../../spacings';
 import Button from './rich-text-body-button';
 import Divider from './divider';

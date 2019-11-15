@@ -1,4 +1,4 @@
-import createStyledIcon from '../../../icons/create-styled-icon';
+import createStyledIcon from '../../icons/create-styled-icon';
 import OrigBoldIcon from './svg/bold.react.svg';
 import OrigItalicIcon from './svg/italic.react.svg';
 import OrigOrderedListIcon from './svg/ordered-list.react.svg';
