@@ -90,7 +90,6 @@ const config = [
           ],
         ],
       },
-      sizeSnapshot: true,
     }),
   },
 ];
