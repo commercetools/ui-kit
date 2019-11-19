@@ -1,5 +1,5 @@
 import React from 'react';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import { render } from '../../test-utils';
 import useToggleState from '../use-toggle-state';
 import usePrevious from './use-previous';

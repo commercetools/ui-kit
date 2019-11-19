@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
-import { has } from 'lodash';
+import has from 'lodash/has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
 import { useIntl } from 'react-intl';

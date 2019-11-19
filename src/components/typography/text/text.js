@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import { oneLine } from 'common-tags';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';

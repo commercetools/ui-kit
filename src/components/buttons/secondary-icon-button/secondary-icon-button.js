@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import AccessibleButton from '../accessible-button';
 import { getBaseStyles } from './secondary-icon-button.styles';

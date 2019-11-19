@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import Spacings from '../../spacings';
