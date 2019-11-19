@@ -7,9 +7,9 @@ import pkg from './package.json';
 
 const getBabelPreset = require('./scripts/get-babel-preset');
 
-// by default, we declare any dependency or peer dependency in package.json
-// to be external. However, if you do somethiing like `import Async from 'react-select/async'`
-// without declaring `react-select/async` to be external, rollup will bundle it.
+// we don't want to bundle any external dependencies.
+// therefore, here we add any "react-in" imports, so that
+// we don't get unresolved depenency errors from rollup
 const reachInImports = [
   'react-select/async-creatable',
   'react-select/async',
