@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import invariant from 'tiny-invariant';
 import { keyframes, ClassNames } from '@emotion/core';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import usePrevious from '../../hooks/use-previous';
 import useToggleState from '../../hooks/use-toggle-state';
 

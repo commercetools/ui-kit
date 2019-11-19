@@ -18,6 +18,25 @@ const ignoredExternals = [
   'react-select/async',
   'react-select/creatable',
   'dom-helpers/scrollbarSize',
+  // lodash reachIns
+  'lodash/omit',
+  'lodash-es/omit',
+  'lodash/isNil',
+  'lodash-es/isNil',
+  'lodash/has',
+  'lodash-es/has',
+  'lodash/has',
+  'lodash-es/has',
+  'lodash/pick',
+  'lodash-es/pick',
+  'lodash/flatMap',
+  'lodash-es/flatMap',
+  'lodash/sortBy',
+  'lodash-es/sortBy',
+  'lodash/uniq',
+  'lodash-es/uniq',
+  'lodash/memoize',
+  'lodash-es/memoize',
   // others
   '@emotion/css',
   '@emotion/styled-base',
@@ -88,7 +107,10 @@ const config = [
           [
             'transform-rename-import',
             {
-              replacements: [{ original: 'lodash', replacement: 'lodash-es' }],
+              replacements: [
+                { original: 'lodash', replacement: 'lodash-es' },
+                { original: 'lodash/*', replacement: 'lodash-es/' },
+              ],
             },
           ],
         ],

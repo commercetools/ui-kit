@@ -1,7 +1,7 @@
 import React from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import invariant from 'tiny-invariant';
-import { memoize } from 'lodash';
+import memoize from 'lodash/memoize';
 
 const memoizedIsHotkey = memoize(isKeyHotkey);
 

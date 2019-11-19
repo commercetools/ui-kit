@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';

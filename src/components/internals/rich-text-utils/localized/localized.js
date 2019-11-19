@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant';
-import { uniq } from 'lodash';
+import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';
 

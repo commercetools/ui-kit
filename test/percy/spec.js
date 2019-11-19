@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { pick } from 'lodash';
+import pick from 'lodash/pick';
 import { customProperties } from '../../dist/ui-kit.esm';
 
 const SpecContainer = styled.div`
