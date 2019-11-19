@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingSpinner from '../../loading-spinner';
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
 LoadingIndicator.displayName = 'LoadingIndicator';

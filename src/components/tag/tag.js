@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import vars from '../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import designTokens from '../../../materials/design-tokens';
 import Constraints from '../constraints';
 import AccessibleButton from '../buttons/accessible-button';

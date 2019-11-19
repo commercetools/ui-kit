@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import vars from '../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const getOffsetMargin = ({ placement }) => {
   const position = (placement && placement.split('-')[0]) || '';

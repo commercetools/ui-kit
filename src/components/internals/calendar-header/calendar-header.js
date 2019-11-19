@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Text from '../../typography/text';
 import Spacings from '../../spacings';
 import { AngleLeftIcon, AngleRightIcon, CircleIcon } from '../../icons';

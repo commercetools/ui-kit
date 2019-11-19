@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CloseIcon } from '../../icons';
+import { CloseIcon } from '@commercetools-uikit/icons';
 
 const ClearIndicator = props => {
   const {

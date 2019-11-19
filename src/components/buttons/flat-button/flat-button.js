@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
-import vars from '../../../../materials/custom-properties';
-import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
-import Text from '../../typography/text';
-import Spacings from '../../spacings';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { filterInvalidAttributes } from '@commercetools-uikit/utils';
+import { Body } from '@commercetools-uikit/text';
+import { Inline } from '@commercetools-uikit/spacings';
 import AccessibleButton from '../accessible-button';
 
 const propsToOmit = ['type'];
@@ -102,11 +102,11 @@ export const FlatButton = props => {
       }}
       buttonAttributes={dataProps}
     >
-      <Spacings.Inline scale="xs" alignItems="center">
+      <Inline scale="xs" alignItems="center">
         {props.iconPosition === 'left' && getIconElement(props)}
-        <Text.Body>{props.label}</Text.Body>
+        <Body>{props.label}</Body>
         {props.iconPosition === 'right' && getIconElement(props)}
-      </Spacings.Inline>
+      </Inline>
     </AccessibleButton>
   );
 };

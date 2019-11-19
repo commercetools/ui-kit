@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import isNil from 'lodash/isNil';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
-import Spacings from '../../spacings';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { Inline } from '@commercetools-uikit/spacings';
+import {
+  filterInvalidAttributes,
+  warnDeprecatedProp,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '../accessible-button';
-import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
-import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 export const getIconColor = props => {
@@ -69,7 +71,7 @@ export const SecondaryButton = props => {
         `,
       ].concat(containerStyles)}
     >
-      <Spacings.Inline alignItems="center" scale="xs">
+      <Inline alignItems="center" scale="xs">
         {Boolean(props.iconLeft) && (
           <span
             css={css`
@@ -85,7 +87,7 @@ export const SecondaryButton = props => {
           </span>
         )}
         <span>{props.label}</span>
-      </Spacings.Inline>
+      </Inline>
     </AccessibleButton>
   );
 };
@@ -164,7 +166,7 @@ SecondaryButton.propTypes = {
   linkTo(props, propName, componentName, ...rest) {
     // here
     if (props[propName] != null) {
-      throwDeprecationWarning(
+      warnDeprecatedProp(
         propName,
         componentName,
         `\n Please use "as" prop instead.`

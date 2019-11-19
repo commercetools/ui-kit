@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../typography/text';
+import { Detail } from '@commercetools-uikit/text';
 
 const WarningMessage = props => (
-  <Text.Detail tone="warning">{props.children}</Text.Detail>
+  <Detail tone="warning">{props.children}</Detail>
 );
+
 WarningMessage.displayName = 'WarningMessage';
 WarningMessage.propTypes = {
   children: PropTypes.node.isRequired,

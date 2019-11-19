@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import filterDataAttributes from '../../../utils/filter-data-attributes';
 import {
   RadioOptionCheckedIcon,

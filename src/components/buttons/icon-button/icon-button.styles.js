@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
 
 const buttonSizes = {
   small: '16px',

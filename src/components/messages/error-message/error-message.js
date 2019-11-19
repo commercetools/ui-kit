@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../typography/text';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import { Detail } from '@commercetools-uikit/text';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 const ErrorMessage = props => (
-  <Text.Detail tone="negative" {...filterDataAttributes(props)}>
+  <Detail tone="negative" {...filterDataAttributes(props)}>
     {props.children}
-  </Text.Detail>
+  </Detail>
 );
 ErrorMessage.displayName = 'ErrorMessage';
 ErrorMessage.propTypes = {

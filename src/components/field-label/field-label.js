@@ -3,12 +3,12 @@ import invariant from 'tiny-invariant';
 import React from 'react';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
-import IconButton from '../buttons/icon-button';
-import { InformationIcon } from '../icons';
-import Text from '../typography/text';
-import Label from '../label';
-import Constraints from '../constraints';
-import Spacings from '../spacings';
+import { IconButton } from '@commercetools-uikit/buttons';
+import { InformationIcon } from '@commercetools-uikit/icons';
+import { Detail, Wrap } from '@commercetools-uikit/text';
+import { Horizontal } from '@commercetools-uikit/constraints';
+import { Stack, Inline } from '@commercetools-uikit/spacings';
+import Label from '@commercetools-uikit/label';
 
 export const FieldLabel = props => {
   if (props.hintIcon && props.hintIcon.props && props.hintIcon.props.size) {
@@ -18,10 +18,10 @@ export const FieldLabel = props => {
     );
   }
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="xs">
-        <Spacings.Inline alignItems="flexStart" scale="xs">
-          <Text.Wrap>
+    <Horizontal constraint={props.horizontalConstraint}>
+      <Stack scale="xs">
+        <Inline alignItems="flexStart" scale="xs">
+          <Wrap>
             <Label
               isBold={true}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
@@ -30,7 +30,7 @@ export const FieldLabel = props => {
             >
               {props.title}
             </Label>
-          </Text.Wrap>
+          </Wrap>
           {props.onInfoButtonClick && (
             <IconButton
               label="More Info"
@@ -39,28 +39,26 @@ export const FieldLabel = props => {
               onClick={props.onInfoButtonClick}
             />
           )}
-        </Spacings.Inline>
+        </Inline>
 
         {props.hint && (
-          <Spacings.Inline alignItems="center" scale="xs">
+          <Inline alignItems="center" scale="xs">
             {props.hintIcon && (
-              <Spacings.Inline>
+              <Inline>
                 {React.cloneElement(props.hintIcon, {
                   // FIXME: add proper tone when tones are refactored
                   size: 'medium',
                   color: props.hintIcon.props.color || 'warning',
                 })}
-              </Spacings.Inline>
+              </Inline>
             )}
-            {props.hint && (
-              <Text.Detail tone={props.tone}>{props.hint}</Text.Detail>
-            )}
-          </Spacings.Inline>
+            {props.hint && <Detail tone={props.tone}>{props.hint}</Detail>}
+          </Inline>
         )}
         {props.description && (
-          <Text.Wrap>
-            <Text.Detail tone={props.tone}>{props.description}</Text.Detail>
-          </Text.Wrap>
+          <Wrap>
+            <Detail tone={props.tone}>{props.description}</Detail>
+          </Wrap>
         )}
 
         {props.badge && (
@@ -73,8 +71,8 @@ export const FieldLabel = props => {
             {props.badge}
           </div>
         )}
-      </Spacings.Stack>
-    </Constraints.Horizontal>
+      </Stack>
+    </Horizontal>
   );
 };
 

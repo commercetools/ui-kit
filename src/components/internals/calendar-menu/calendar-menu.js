@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 export default class CalendarMenu extends Component {
   static displayName = 'CalendarMenu';

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import { Horizontal } from '@commercetools-uikit/constraints';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import useFieldId from '../../../hooks/use-field-id';
 import usePrevious from '../../../hooks/use-previous';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import createSequentialId from '../../../utils/create-sequential-id';
-import Constraints from '../../constraints';
 import { parseTime } from '../../../utils/parse-time';
 import TimeInputBody from './time-input-body';
 import messages from './messages';
@@ -62,7 +62,7 @@ const TimeInput = props => {
   }
 
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Horizontal constraint={props.horizontalConstraint}>
       <TimeInputBody
         id={id}
         name={props.name}
@@ -83,7 +83,7 @@ const TimeInput = props => {
         }
         {...filterDataAttributes(props)}
       />
-    </Constraints.Horizontal>
+    </Horizontal>
   );
 };
 

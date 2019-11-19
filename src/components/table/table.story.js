@@ -7,7 +7,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number, text } from '@storybook/addon-knobs/react';
 import sortBy from 'lodash/sortBy';
 import { css, ClassNames } from '@emotion/core';
-import vars from '../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Button from '../buttons/secondary-button';
 import Readme from './README.md';
 import Table from './table';

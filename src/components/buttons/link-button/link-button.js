@@ -3,11 +3,13 @@ import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import vars from '../../../../materials/custom-properties';
-import warnDeprecatedComponent from '../../../utils/warn-deprecated-component';
-import getPassThroughProps from '../../../utils/get-pass-through-props';
-import Text from '../../typography/text';
-import Spacings from '../../spacings';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import {
+  getPassThroughProps,
+  warnDeprecatedComponent,
+} from '@commercetools-uikit/utils';
+import { Inline } from '@commercetools-uikit/spacings';
+import { Body } from '@commercetools-uikit/text';
 
 const hoverStyles = () => css`
   &:hover,
@@ -46,14 +48,14 @@ const StyledReactRouterLink = createStyledComponent(ReactRouterLink);
 const StyledExternalLink = createStyledComponent('a');
 
 const LinkBody = props => (
-  <Spacings.Inline scale="xs" alignItems="center">
+  <Inline scale="xs" alignItems="center">
     {Boolean(props.iconLeft) &&
       React.cloneElement(props.iconLeft, {
         size: 'medium',
         color: props.isDisabled ? 'neutral60' : 'primary',
       })}
-    <Text.Body as="span">{props.label}</Text.Body>
-  </Spacings.Inline>
+    <Body as="span">{props.label}</Body>
+  </Inline>
 );
 
 LinkBody.displayName = 'LinkBody';

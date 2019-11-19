@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const getStateStyles = (isDisabled, isActive, theme) => {
   if (isDisabled) {

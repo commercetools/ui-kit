@@ -1,9 +1,9 @@
-import React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
 import { oneLineTrim } from 'common-tags';
-import { css } from '@emotion/core';
-import vars from '../../../materials/custom-properties';
-import filterDataAttributes from '../../utils/filter-data-attributes';
+import { css, jsx } from '@emotion/core';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 const avatarSizes = {
   s: { width: '26px', fontSize: '1em' },

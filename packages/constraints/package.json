@@ -1,0 +1,22 @@
+{
+  "name": "@commercetools-uikit/constraints",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/constraints.cjs.js",
+  "module": "dist/constraints.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.22",
+    "@commercetools-uikit/design-system": "*",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

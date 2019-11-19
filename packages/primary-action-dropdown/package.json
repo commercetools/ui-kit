@@ -1,0 +1,28 @@
+{
+  "name": "@commercetools-uikit/primary-action-dropdown",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/primary-action-dropdown.cjs.js",
+  "module": "dist/primary-action-dropdown.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/buttons": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/text": "*",
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "lodash": "4.17.15",
+    "lodash-es": "4.17.15",
+    "prop-types": "15.7.2",
+    "tiny-invariant": "1.0.6"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

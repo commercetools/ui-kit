@@ -1,0 +1,21 @@
+{
+  "name": "@commercetools-uikit/grid",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/grid.cjs.js",
+  "module": "dist/grid.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

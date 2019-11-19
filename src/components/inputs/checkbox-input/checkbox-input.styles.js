@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import designTokens from '../../../../materials/design-tokens';
 
 const getCheckboxWrapperStyles = (props, theme) => {

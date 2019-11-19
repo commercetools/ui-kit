@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
-import sortBy from 'lodash/sortBy';
-import getScrollbarSize from 'dom-helpers/scrollbarSize';
+import { sortBy } from 'lodash-es';
+import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
 import { Global, ClassNames, css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
-import Spacings from '../../spacings';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { Inset, InsetSquish } from '@commercetools-uikit/spacings';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import SortableHeader from '../sortable-header';
 import Cell from '../cell';
 import cellRangeRenderer from './cell-range-renderer';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 export default class BaseTable extends React.Component {
   static displayName = 'BaseTable';
@@ -321,7 +321,7 @@ export default class BaseTable extends React.Component {
       column.getLabel()
     ) : (
       <Cell>
-        <Spacings.InsetSquish scale="m">
+        <InsetSquish scale="m">
           {column.isSortable ? (
             <div onClick={() => this.handleChangeSortDirection(column.key)}>
               <SortableHeader
@@ -336,7 +336,7 @@ export default class BaseTable extends React.Component {
           ) : (
             column.label
           )}
-        </Spacings.InsetSquish>
+        </InsetSquish>
       </Cell>
     );
 
@@ -452,13 +452,13 @@ export default class BaseTable extends React.Component {
               {renderParams.rowIndex === 0 ? (
                 this.headerRenderer(columnDefinition)
               ) : (
-                <Spacings.Inset scale="m">
+                <Inset scale="m">
                   {this.props.itemRenderer({
                     ...renderParams,
                     rowIndex: this.getBodyRowIndex(renderParams.rowIndex),
                     columnKey: columnDefinition.key,
                   })}
-                </Spacings.Inset>
+                </Inset>
               )}
             </Cell>
           </div>

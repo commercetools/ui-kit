@@ -4,14 +4,16 @@ import { useIntl } from 'react-intl';
 import { ThemeContext } from '@emotion/core';
 import { components as defaultComponents } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import Constraints from '../../constraints';
+import { Horizontal } from '@commercetools-uikit/constraints';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  ClearIndicator,
+  TagRemove,
+  DropdownIndicator,
+} from '@commercetools-uikit/select-utils';
+import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
-import ClearIndicator from '../../internals/clear-indicator';
-import TagRemove from '../../internals/tag-remove';
-import DropdownIndicator from '../../internals/dropdown-indicator';
-import createSelectStyles from '../../internals/create-select-styles';
 import messages from '../../internals/messages/select';
 
 const useTheme = () => useContext(ThemeContext);
@@ -30,7 +32,7 @@ const CreatableSelectInput = props => {
     props.placeholder || intl.formatMessage(messages.placeholder);
 
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Horizontal constraint={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
         <CreatableSelect
           aria-label={props['aria-label']}
@@ -138,7 +140,7 @@ const CreatableSelectInput = props => {
           createOptionPosition={props.createOptionPosition}
         />
       </div>
-    </Constraints.Horizontal>
+    </Horizontal>
   );
 };
 

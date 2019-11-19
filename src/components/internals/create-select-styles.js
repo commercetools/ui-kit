@@ -8,8 +8,10 @@
   Always check all affected components when making changes here!
 */
 
-import vars from '../../../materials/custom-properties';
-import designTokens from '../../../materials/design-tokens';
+import {
+  customProperties as vars,
+  designTokens,
+} from '@commercetools-uikit/design-system';
 
 const controlStyles = (props, theme) => (base, state) => {
   const overwrittenVars = {

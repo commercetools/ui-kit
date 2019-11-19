@@ -5,15 +5,17 @@ import { ThemeContext } from '@emotion/core';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
 import Select, { components as defaultComponents } from 'react-select';
-import Constraints from '../../constraints';
+import { Horizontal } from '@commercetools-uikit/constraints';
+import { createSelectStyles } from '@commercetools-uikit/input-utils';
+import {
+  ClearIndicator,
+  TagRemove,
+  DropdownIndicator,
+} from '@commercetools-uikit/select-utils';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
-import ClearIndicator from '../../internals/clear-indicator';
-import TagRemove from '../../internals/tag-remove';
-import DropdownIndicator from '../../internals/dropdown-indicator';
 import messages from '../../internals/messages/select';
-import createSelectStyles from '../../internals/create-select-styles';
 
 const useTheme = () => useContext(ThemeContext);
 
@@ -54,7 +56,7 @@ const SelectInput = props => {
       ) || null;
 
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Horizontal constraint={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
         <Select
           aria-label={props['aria-label']}
@@ -156,7 +158,7 @@ const SelectInput = props => {
           value={selectedOptions}
         />
       </div>
-    </Constraints.Horizontal>
+    </Horizontal>
   );
 };
 

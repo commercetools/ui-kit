@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const getAlignItem = alignment => {
   switch (alignment) {

@@ -1,0 +1,13 @@
+{
+  "name": "@commercetools-uikit/design-system",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/design-system.cjs.js",
+  "module": "dist/design-system.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT"
+}

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import vars from '../../../../materials/custom-properties';
-import Text from '../../typography/text';
-import { AngleDownIcon, AngleUpIcon } from '../../icons';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
+import { Body } from '@commercetools-uikit/text';
 
 /*
 Logic of arrow indicating sort order is slightly complex:
@@ -74,7 +74,7 @@ const SortableHeader = props => {
 
   return (
     <Container alignRight={props.alignRight}>
-      <Text.Body tone="inverted">{props.children}</Text.Body>
+      <Body tone="inverted">{props.children}</Body>
       <Span
         id="arrow"
         css={[

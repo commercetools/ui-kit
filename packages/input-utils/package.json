@@ -1,0 +1,20 @@
+{
+  "name": "@commercetools-uikit/input-utils",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/input-utils.cjs.js",
+  "module": "dist/input-utils.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@commercetools-uikit/design-system": "*"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}
