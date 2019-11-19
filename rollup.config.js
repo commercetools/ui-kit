@@ -8,6 +8,9 @@ import pkg from './package.json';
 
 const getBabelPreset = require('./scripts/get-babel-preset');
 
+// by default, we declare any dependency or peer dependency in package.json
+// to be external. However, if you do somethiing like `import Async from 'react-select/async'`
+// without declaring `react-select/async` to be external, rollup will bundle it.
 const reactSelectExternalInputs = [
   'react-select/async-creatable',
   'react-select/async',
