@@ -119,6 +119,7 @@ const ToggleInput = props => {
         onChange={props.onChange}
         disabled={props.isDisabled}
         checked={props.isChecked}
+        value={props.value}
         type="checkbox"
         size={props.size}
         {...filterDataAttributes(props)}
@@ -136,6 +137,7 @@ ToggleInput.propTypes = {
   size: PropTypes.oneOf(['small', 'big']).isRequired,
   isDisabled: PropTypes.bool,
   isChecked: PropTypes.bool.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 
