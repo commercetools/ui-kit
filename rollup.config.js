@@ -11,10 +11,11 @@ const getBabelPreset = require('./scripts/get-babel-preset');
 // by default, we declare any dependency or peer dependency in package.json
 // to be external. However, if you do somethiing like `import Async from 'react-select/async'`
 // without declaring `react-select/async` to be external, rollup will bundle it.
-const reactSelectExternalInputs = [
+const reachInImports = [
   'react-select/async-creatable',
   'react-select/async',
   'react-select/creatable',
+  'dom-helpers/scrollbarSize',
 ];
 
 const babelOptions = getBabelPreset();
@@ -57,7 +58,7 @@ const configureRollupPlugins = (options = {}) =>
 
 const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
-const defaultExternal = deps.concat(peerDeps).concat(reactSelectExternalInputs);
+const defaultExternal = deps.concat(peerDeps).concat(reachInImports);
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
