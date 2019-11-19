@@ -20,23 +20,14 @@ const ignoredExternals = [
   'dom-helpers/scrollbarSize',
   // lodash reachIns
   'lodash/omit',
-  'lodash-es/omit',
   'lodash/isNil',
-  'lodash-es/isNil',
   'lodash/has',
-  'lodash-es/has',
   'lodash/has',
-  'lodash-es/has',
   'lodash/pick',
-  'lodash-es/pick',
   'lodash/flatMap',
-  'lodash-es/flatMap',
   'lodash/sortBy',
-  'lodash-es/sortBy',
   'lodash/uniq',
-  'lodash-es/uniq',
   'lodash/memoize',
-  'lodash-es/memoize',
   // others
   '@emotion/css',
   '@emotion/styled-base',
@@ -46,7 +37,7 @@ const babelOptions = getBabelPreset();
 
 // This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
-const configureRollupPlugins = (options = {}) =>
+const configureRollupPlugins = () =>
   [
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -60,12 +51,6 @@ const configureRollupPlugins = (options = {}) =>
       exclude: ['node_modules/**'],
       runtimeHelpers: true,
       ...babelOptions,
-      plugins: [
-        ...babelOptions.plugins,
-        ...(options.babel && options.babel.plugins
-          ? options.babel.plugins
-          : []),
-      ],
     }),
     // To convert CJS modules to ES6
     commonjs({
@@ -84,39 +69,20 @@ const defaultExternal = deps.concat(peerDeps).concat(ignoredExternals);
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
-const config = [
-  {
-    input: 'src/index.js',
-    external: defaultExternal,
-    output: {
+const config = {
+  input: 'src/index.js',
+  external: defaultExternal,
+  output: [
+    {
       file: pkg.main,
       format: 'cjs',
     },
-    plugins: configureRollupPlugins(),
-  },
-  {
-    input: 'src/index.js',
-    external: defaultExternal,
-    output: {
+    {
       file: pkg.module,
       format: 'esm',
     },
-    plugins: configureRollupPlugins({
-      babel: {
-        plugins: [
-          [
-            'transform-rename-import',
-            {
-              replacements: [
-                { original: 'lodash', replacement: 'lodash-es' },
-                { original: 'lodash/*', replacement: 'lodash-es/' },
-              ],
-            },
-          ],
-        ],
-      },
-    }),
-  },
-];
+  ],
+  plugins: configureRollupPlugins(),
+};
 
 export default config;
