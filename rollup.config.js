@@ -35,33 +35,31 @@ const ignoredExternals = [
 
 const babelOptions = getBabelPreset();
 
-// This list includes common plugins shared between each output format.
 // NOTE: the order of the plugins is important!
-const configureRollupPlugins = () =>
-  [
-    replace({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.npm_package_version': JSON.stringify(
-        process.env.npm_package_version
-      ),
-    }),
-    // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
-    // Transpile sources using our custom babel preset.
-    babel({
-      exclude: ['node_modules/**'],
-      runtimeHelpers: true,
-      ...babelOptions,
-    }),
-    // To convert CJS modules to ES6
-    commonjs({
-      include: 'node_modules/**',
-    }),
-    // To convert JSON files to ES6
-    json(),
-    // To remove comments, trim trailing spaces, compact empty lines,
-    // and normalize line endings
-    cleanup(),
-  ].filter(Boolean);
+const rollupPlugins = [
+  replace({
+    'process.env.NODE_ENV': JSON.stringify('production'),
+    'process.env.npm_package_version': JSON.stringify(
+      process.env.npm_package_version
+    ),
+  }),
+  // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
+  // Transpile sources using our custom babel preset.
+  babel({
+    exclude: ['node_modules/**'],
+    runtimeHelpers: true,
+    ...babelOptions,
+  }),
+  // To convert CJS modules to ES6
+  commonjs({
+    include: 'node_modules/**',
+  }),
+  // To convert JSON files to ES6
+  json(),
+  // To remove comments, trim trailing spaces, compact empty lines,
+  // and normalize line endings
+  cleanup(),
+].filter(Boolean);
 
 const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
@@ -82,7 +80,7 @@ const config = {
       format: 'esm',
     },
   ],
-  plugins: configureRollupPlugins(),
+  plugins: rollupPlugins,
 };
 
 export default config;
