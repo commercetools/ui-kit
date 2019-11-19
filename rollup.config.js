@@ -1,4 +1,3 @@
-import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
@@ -31,7 +30,7 @@ const configureRollupPlugins = (options = {}) =>
       ),
     }),
     // To use the nodejs `resolve` algorithm
-    resolve(),
+    // resolve(),
     // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
     // Transpile sources using our custom babel preset.
     babel({
