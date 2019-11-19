@@ -8,6 +8,12 @@ import pkg from './package.json';
 
 const getBabelPreset = require('./scripts/get-babel-preset');
 
+const reactSelectExternalInputs = [
+  'react-select/async-creatable',
+  'react-select/async',
+  'react-select/creatable',
+];
+
 const babelOptions = getBabelPreset();
 
 // This list includes common plugins shared between each output format.
@@ -48,7 +54,7 @@ const configureRollupPlugins = (options = {}) =>
 
 const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
-const defaultExternal = deps.concat(peerDeps);
+const defaultExternal = deps.concat(peerDeps).concat(reactSelectExternalInputs);
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
