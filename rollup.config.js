@@ -10,11 +10,17 @@ const getBabelPreset = require('./scripts/get-babel-preset');
 // we don't want to bundle any external dependencies.
 // therefore, here we add any "react-in" imports, so that
 // we don't get unresolved depenency errors from rollup
-const reachInImports = [
+// we also add the @emotion deps as they are already included in
+// @emotion/core and @emotion/styled
+const ignoredExternals = [
+  // reachInImports
   'react-select/async-creatable',
   'react-select/async',
   'react-select/creatable',
   'dom-helpers/scrollbarSize',
+  // others
+  '@emotion/css',
+  '@emotion/styled-base',
 ];
 
 const babelOptions = getBabelPreset();
@@ -55,7 +61,7 @@ const configureRollupPlugins = (options = {}) =>
 
 const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
-const defaultExternal = deps.concat(peerDeps).concat(reachInImports);
+const defaultExternal = deps.concat(peerDeps).concat(ignoredExternals);
 
 // We need to define 2 separate configs (`esm` and `cjs`) so that each can be
 // further customized.
