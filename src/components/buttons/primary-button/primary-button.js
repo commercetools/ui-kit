@@ -74,9 +74,7 @@ PrimaryButton.propTypes = {
     return PropTypes.bool(props, propName, componentName, ...rest);
   },
   isDisabled: PropTypes.bool,
-  onClick: requiredIf(PropTypes.func, props => {
-    return !props.as;
-  }),
+  onClick: requiredIf(PropTypes.func, props => !props.as),
   size: PropTypes.oneOf(['big', 'small']),
   tone: PropTypes.oneOf(['urgent', 'primary']),
 };

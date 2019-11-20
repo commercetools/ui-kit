@@ -39,9 +39,7 @@ SecondaryIconButton.propTypes = {
   icon: PropTypes.element.isRequired,
   color: PropTypes.oneOf(['solid', 'primary']),
   label: PropTypes.string.isRequired,
-  onClick: requiredIf(PropTypes.func, props => {
-    return !props.as;
-  }),
+  onClick: requiredIf(PropTypes.func, props => !props.as),
   isDisabled: PropTypes.bool,
 };
 

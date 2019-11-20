@@ -117,9 +117,7 @@ FlatButton.propTypes = {
   tone: PropTypes.oneOf(['primary', 'secondary', 'inverted']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
-  onClick: requiredIf(PropTypes.func, props => {
-    return !props.as;
-  }),
+  onClick: requiredIf(PropTypes.func, props => !props.as),
   icon: PropTypes.element,
   iconPosition: PropTypes.oneOf(['left', 'right']),
   isDisabled: PropTypes.bool,
