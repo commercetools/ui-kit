@@ -69,6 +69,30 @@ describe('<Headline>', () => {
     );
     expect(getByTitle('headline')).toHaveAttribute('data-foo', 'bar');
   });
+  describe('when no text is provided', () => {
+    let log;
+    /* eslint-disable no-console */
+    beforeEach(() => {
+      log = console.error;
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error = log;
+    });
+    it('should warn but not crash', () => {
+      render(<Text.Headline as="h1" />);
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextHeadline`, but its value is `undefined`/
+        )
+      );
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `children` is marked as required in `TextHeadline`, but its value is `undefined`/
+        )
+      );
+    });
+  });
 });
 
 describe('<Subheadline>', () => {
@@ -118,6 +142,30 @@ describe('<Subheadline>', () => {
     );
     expect(getByTitle('subheadline')).toHaveAttribute('data-foo', 'bar');
   });
+  describe('when no text is provided', () => {
+    let log;
+    /* eslint-disable no-console */
+    beforeEach(() => {
+      log = console.error;
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error = log;
+    });
+    it('should warn but not crash', () => {
+      render(<Text.Subheadline as="h4" />);
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextSubheadline`, but its value is `undefined`/
+        )
+      );
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `children` is marked as required in `TextSubheadline`, but its value is `undefined`/
+        )
+      );
+    });
+  });
 });
 
 describe('<Wrap>', () => {
@@ -149,6 +197,30 @@ describe('<Wrap>', () => {
       </Text.Wrap>
     );
     expect(getByTitle('wrap')).toHaveAttribute('data-foo', 'bar');
+  });
+  describe('when no text is provided', () => {
+    let log;
+    /* eslint-disable no-console */
+    beforeEach(() => {
+      log = console.error;
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error = log;
+    });
+    it('should warn but not crash', () => {
+      render(<Text.Wrap />);
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextWrap`, but its value is `undefined`/
+        )
+      );
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `children` is marked as required in `TextWrap`, but its value is `undefined`/
+        )
+      );
+    });
   });
 });
 
@@ -200,6 +272,30 @@ describe('<Body>', () => {
       expect(container).toHaveTextContent('Hello');
     });
   });
+  describe('when no text is provided', () => {
+    let log;
+    /* eslint-disable no-console */
+    beforeEach(() => {
+      log = console.error;
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error = log;
+    });
+    it('should warn but not crash', () => {
+      render(<Text.Body />);
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextBody`, but its value is `undefined`/
+        )
+      );
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `children` is marked as required in `TextBody`, but its value is `undefined`/
+        )
+      );
+    });
+  });
 });
 
 describe('<Detail>', () => {
@@ -231,5 +327,29 @@ describe('<Detail>', () => {
       </Text.Detail>
     );
     expect(getByTitle('detail')).toHaveAttribute('data-foo', 'bar');
+  });
+  describe('when no text is provided', () => {
+    let log;
+    /* eslint-disable no-console */
+    beforeEach(() => {
+      log = console.error;
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error = log;
+    });
+    it('should warn but not crash', () => {
+      render(<Text.Detail />);
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextDetail`, but its value is `undefined`/
+        )
+      );
+      expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(
+          /Warning: Failed prop type: The prop `children` is marked as required in `TextDetail`, but its value is `undefined`/
+        )
+      );
+    });
   });
 });

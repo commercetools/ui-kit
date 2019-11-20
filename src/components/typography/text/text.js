@@ -21,7 +21,7 @@ const intlMessageShape = PropTypes.shape({
   defaultMessage: PropTypes.string.isRequired,
 });
 
-const Text = ({ intlMessage, children }) =>
+const Text = ({ intlMessage, children = '' }) =>
   intlMessage ? <FormattedMessage {...intlMessage} /> : children;
 
 Text.displayName = 'Text';
