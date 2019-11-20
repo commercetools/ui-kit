@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash/isNil';
 import omit from 'lodash/omit';
+import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import vars from '../../../../materials/custom-properties';
 import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
@@ -73,7 +74,9 @@ PrimaryButton.propTypes = {
     return PropTypes.bool(props, propName, componentName, ...rest);
   },
   isDisabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: requiredIf(PropTypes.func, props => {
+    return !props.as;
+  }),
   size: PropTypes.oneOf(['big', 'small']),
   tone: PropTypes.oneOf(['urgent', 'primary']),
 };

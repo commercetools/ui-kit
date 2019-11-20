@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
+import requiredIf from 'react-required-if';
 import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
 import AccessibleButton from '../accessible-button';
 import { getBaseStyles } from './secondary-icon-button.styles';
@@ -38,7 +39,9 @@ SecondaryIconButton.propTypes = {
   icon: PropTypes.element.isRequired,
   color: PropTypes.oneOf(['solid', 'primary']),
   label: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: requiredIf(PropTypes.func, props => {
+    return !props.as;
+  }),
   isDisabled: PropTypes.bool,
 };
 
