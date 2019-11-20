@@ -1,3 +1,10 @@
+## [10.10.1](https://github.com/commercetools/ui-kit/compare/v10.10.0...v10.10.1) (2019-11-20)
+
+### Bug Fixes
+
+- `Buttons`: make `onClick` not required if `as` is passed ([#1189](https://github.com/commercetools/ui-kit/issues/1189)) ([4ab05dc](https://github.com/commercetools/ui-kit/commit/4ab05dc898748314990cadb022ba70171b1e720e))
+- `Text`: fix for when `children` is not defined ([#1188](https://github.com/commercetools/ui-kit/issues/1188)) ([b86f5b6](https://github.com/commercetools/ui-kit/commit/b86f5b664f09a087813029b85aea37598d4cb522))
+
 ## [10.10.0](https://github.com/commercetools/ui-kit/compare/v10.9.0...v10.10.0) (2019-11-20)
 
 ### Bug Fixes
