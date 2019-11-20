@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
-import useToggleState from '../../../hooks/use-toggle-state';
+import useToggleState from '@commercetools-uikit/hooks';
 import Spacings from '../../spacings';
 import Constraints from '../../constraints';
 import {

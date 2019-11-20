@@ -10,7 +10,7 @@
   },
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/**/*"
   ],
   "license": "MIT",
   "publishConfig": {
@@ -187,6 +187,7 @@
     "stylelint-order": "3.1.1",
     "webpack": "4.41.2",
     "webpack-cli": "3.3.10",
+    "wsrun": "^5.1.0",
     "yaml": "1.7.2",
     "yaml-loader": "0.5.0"
   },

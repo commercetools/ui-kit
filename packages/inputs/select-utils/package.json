@@ -6,7 +6,7 @@
   "module": "dist/select-utils.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
   "author": "",
   "license": "MIT",
@@ -15,10 +15,8 @@
     "@emotion/styled": "10.0.23",
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/select-utils": "*",
-    "@commercetools-uikit/utils": "*",
+"@commercetools-uikit/utils": "*",
     "lodash": "4.17.15",
-    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-select": "3.0.8"
   },

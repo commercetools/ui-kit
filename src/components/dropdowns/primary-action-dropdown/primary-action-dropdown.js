@@ -7,7 +7,7 @@ import { AccessibleButton } from '@commercetools-uikit/buttons';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { Detail } from '@commercetools-uikit/text';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
-import useToggleState from '../../../hooks/use-toggle-state';
+import { useToggleState } from '@commercetools-uikit/hooks';
 
 const getButtonStyles = isDisabled => {
   const baseButtonStyles = css`

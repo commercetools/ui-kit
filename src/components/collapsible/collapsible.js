@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
-import useToggleState from '../../hooks/use-toggle-state';
+import { useToggleState } from '@commercetools-uikit/hooks';
 
 const collapsiblePropTypes = {
   // This is only used to initialize the `isOpen` state once,

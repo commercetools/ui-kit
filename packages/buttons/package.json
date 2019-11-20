@@ -19,9 +19,9 @@
     "@commercetools-uikit/utils": "*",
     "common-tags": "1.8.0",
     "lodash": "4.17.15",
-    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-is": "16.11.0",
+    "react-required-if": "1.0.3",
     "tiny-invariant": "1.0.6"
   },
   "peerDependencies": {

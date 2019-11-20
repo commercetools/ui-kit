@@ -14,7 +14,8 @@
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
     "@commercetools-uikit/design-system": "*",
-    "prop-types": "15.7.2"
+    "prop-types": "15.7.2",
+    "tiny-invariant": "1.0.6"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"

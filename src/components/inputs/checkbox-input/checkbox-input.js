@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
-import getFieldId from '../../../utils/get-field-id';
-import createSequentialId from '../../../utils/create-sequential-id';
-import Text from '../../typography/text';
+import {
+  createSequentialId,
+  filterDataAttributes,
+  filterAriaAttributes,
+  getFieldId,
+} from '@commercetools-uikit/utils';
+import { Body } from '@commercetools-uikit/text';
 import {
   IndeterminateIcon,
   CheckedIcon,
@@ -109,12 +111,12 @@ class CheckboxInput extends React.PureComponent {
               margin-left: ${vars.spacingS};
             `}
           >
-            <Text.Body
+            <Body
               // FIXME: add proper tones when we have disabled/primary in tones
               tone={this.props.isDisabled ? 'secondary' : undefined}
             >
               {this.props.children}
-            </Text.Body>
+            </Body>
           </div>
         )}
       </Label>

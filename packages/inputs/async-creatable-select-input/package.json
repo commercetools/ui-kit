@@ -1,12 +1,12 @@
 {
-  "name": "@commercetools-uikit/time-input",
+  "name": "@commercetools-uikit/async-creatable-select-input",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/time-input.cjs.js",
-  "module": "dist/time-input.esm.js",
+  "main": "dist/async-creatable-select-input.cjs.js",
+  "module": "dist/async-creatable-select-input.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
   "author": "",
   "license": "MIT",
@@ -17,14 +17,20 @@
     "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/loading-spinner": "*",
     "@commercetools-uikit/input-utils": "*",
-    "@commercetools-uikit/utils": "*",
+    "@commercetools-uikit/select-utils": "*",
     "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*",
+    "lodash": "4.17.15",
     "prop-types": "15.7.2",
-    "react-required-if": "1.0.3"
+    "react-input-autosize": "^2.2.2",
+    "react-select": "3.0.8"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
     "react-intl": ">=3.0.0-beta.19 || 3.x"
   }
 }

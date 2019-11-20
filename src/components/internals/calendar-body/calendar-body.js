@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CalendarIcon, ClockIcon, CloseIcon } from '../../icons';
-import Spacings from '../../spacings';
+import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
+import { Inline } from '@commercetools-uikit/spacings';
 import useToggleState from '../../../hooks/use-toggle-state';
 import {
   getClearSectionStyles,
@@ -75,7 +75,7 @@ export const CalendarBody = props => {
   );
 
   return (
-    <Spacings.Inline alignItems="center">
+    <Inline alignItems="center">
       <div css={getInputContainerStyles()}>
         <input
           ref={props.inputRef}
@@ -106,7 +106,7 @@ export const CalendarBody = props => {
           )}
         </button>
       </div>
-    </Spacings.Inline>
+    </Inline>
   );
 };
 

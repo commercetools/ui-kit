@@ -19,7 +19,6 @@
     "immutable": "4.0.0-rc.12",
     "is-hotkey": "0.1.6",
     "lodash": "4.17.15",
-    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-is": "16.11.0",
     "react-required-if": "1.0.3",
@@ -33,8 +32,18 @@
     "tiny-invariant": "1.0.6",
     "use-popper": "1.1.6",
     "warning": "4.0.3",
+    "@commercetools-uikit/buttons": "*",
+    "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/icons": "*"
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/input-utils": "*",
+    "@commercetools-uikit/label": "*",
+    "@commercetools-uikit/loading-spinner": "*",
+    "@commercetools-uikit/messages": "*",
+    "@commercetools-uikit/select-utils": "*",
+    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*"
   },
   "peerDependencies": {
     "moment": "2.x",
