@@ -15,6 +15,8 @@ const getMessagesForLocale = locale => {
       return require('../i18n/data/fr-FR.json');
     case 'zh-CN':
       return require('../i18n/data/zh-CN.json');
+    case 'ja':
+      return require('../i18n/data/ja.json');
     default:
       return require('../i18n/data/en.json');
   }

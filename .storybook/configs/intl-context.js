@@ -28,6 +28,8 @@ const namifyLocale = locale => {
       return 'Français';
     case 'zhCN':
       return '简化字';
+    case 'ja':
+      return '日本人';
     default:
       return locale;
   }
