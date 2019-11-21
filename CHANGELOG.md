@@ -1,3 +1,9 @@
+# [10.11.0](https://github.com/commercetools/ui-kit/compare/v10.10.1...v10.11.0) (2019-11-21)
+
+### Features
+
+- `i18n`: add Japanese (`ja`) support ([#1191](https://github.com/commercetools/ui-kit/issues/1191)) ([9f05960](https://github.com/commercetools/ui-kit/commit/9f059603a3298d6d6329f25c7d305f5dde54b029))
+
 ## [10.10.1](https://github.com/commercetools/ui-kit/compare/v10.10.0...v10.10.1) (2019-11-20)
 
 ### Bug Fixes
