@@ -67,5 +67,14 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="when read-only">
+      <CreatableSelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        isReadOnly={true}
+      />
+    </Spec>
   </Suite>
 );

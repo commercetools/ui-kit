@@ -125,6 +125,7 @@ storiesOf('Components|Fields', module)
               onInputChange={action('onInputChange')}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
+              isReadOnly={boolean('isReadOnly', false)}
               isMulti={isMulti}
               placeholder={text('placeholder', 'Select...')}
               title={text('title', 'Favourite animal')}

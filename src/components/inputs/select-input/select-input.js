@@ -71,6 +71,8 @@ const SelectInput = props => {
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
+              isDisabled: props.isDisabled,
+              isReadOnly: props.isReadOnly,
             },
             theme
           )}
@@ -83,7 +85,8 @@ const SelectInput = props => {
           inputId={props.id}
           inputValue={props.inputValue}
           isClearable={props.isClearable}
-          isDisabled={props.isDisabled}
+          isDisabled={props.isDisabled || props.isReadOnly}
+          isReadOnly={props.isReadOnly}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}
@@ -172,6 +175,7 @@ SelectInput.propTypes = {
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
 
   // react-select base props
   //
