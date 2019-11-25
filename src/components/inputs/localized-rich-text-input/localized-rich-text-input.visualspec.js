@@ -4,6 +4,13 @@ import { getDocument, queries, wait } from 'pptr-testing-library';
 const { getByLabelText, getByTestId, getAllByLabelText, getByText } = queries;
 
 describe('LocalizedRichTextInput', () => {
+  const blur = async element => {
+    // eslint-disable-next-line no-shadow
+    await page.evaluate(element => {
+      element.blur();
+    }, element);
+  };
+
   const selectAllText = async input => {
     // eslint-disable-next-line no-shadow
     await page.evaluate(input => {
@@ -76,5 +83,31 @@ describe('LocalizedRichTextInput', () => {
 
     // check that there is now a strong tag in the document.
     numOfTags = await getNumberOfTags('strong');
+
+    // now back to English
+    input = await getByTestId(doc, 'rich-text-data-test-en');
+    // start by removing all the text
+    await selectAllText(input);
+    await input.press('Backspace');
+
+    // next, open the Style menu
+
+    // blur input first to test that editor focus works correctly
+    await blur(input);
+
+    const styleMenuButtons = await getAllByLabelText(doc, 'Style');
+    const styleMenuButton = styleMenuButtons[0];
+    await styleMenuButton.click();
+
+    await wait(() => getByText(doc, 'Headline H1'));
+    await percySnapshot(page, 'LocalizedRichTextInput - style menu open');
+
+    // then click on the H1 button
+    const h1Button = await getByText(doc, 'Headline H1');
+    await h1Button.click();
+
+    // now type into the input
+    const h1Text = 'Hello World';
+    await input.type(h1Text);
   });
 });

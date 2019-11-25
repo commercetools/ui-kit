@@ -11,7 +11,8 @@ const getLanguageLabelStyles = (props, theme) => {
 
   return css`
     /* avoid wrapping label onto new lines */
-    flex: 1 0 auto;
+    white-space: nowrap;
+    flex: 0;
     color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
     line-height: calc(${vars.sizeHeightInput} - 2 * ${vars.borderRadius1});
     background-color: ${overwrittenVars[
