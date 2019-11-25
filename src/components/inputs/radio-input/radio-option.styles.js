@@ -6,9 +6,8 @@ const getContainerStyles = props => {
     display: flex;
     align-items: center;
 
-    /* reset from createStyledIcon */
-    * {
-      fill: none;
+    svg {
+      fill: ${vars.backgroundColorForInput};
     }
 
     svg [id$='borderAndContent'] > [id$='border'] {
@@ -22,6 +21,9 @@ const getContainerStyles = props => {
     return [
       baseStyles,
       css`
+        svg {
+          fill: ${vars.backgroundColorForInputWhenDisabled};
+        }
         svg [id$='borderAndContent'] > [id$='content'] {
           fill: ${vars.fontColorForInputWhenDisabled};
         }
