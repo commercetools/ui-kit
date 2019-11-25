@@ -430,8 +430,8 @@ describe('when off is true', () => {
 
     // should not be visible
     expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
-    // should not remove title
-    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+    // should not have title
+    expect(button).not.toHaveProperty('title', 'What kind of bear is best?');
 
     fireEvent.blur(button);
 
@@ -447,8 +447,8 @@ describe('when off is true', () => {
 
     // should not be visible
     expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
-    // should not remove title
-    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+    // should not have title
+    expect(button).not.toHaveProperty('title', 'What kind of bear is best?');
 
     fireEvent.mouseLeave(button);
 
