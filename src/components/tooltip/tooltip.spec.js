@@ -448,7 +448,7 @@ describe('when off is true', () => {
     // should not be visible
     expect(queryByText('What kind of bear is best?')).not.toBeInTheDocument();
     // should not have title
-    expect(button).not.toHaveProperty('title', 'What kind of bear is best?');
+    expect(button).not.toHaveAttribute('title');
 
     fireEvent.mouseLeave(button);
 
