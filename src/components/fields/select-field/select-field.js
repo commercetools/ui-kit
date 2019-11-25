@@ -42,6 +42,7 @@ export default class SelectField extends React.Component {
     containerId: PropTypes.string,
     isClearable: PropTypes.bool,
     isDisabled: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
     isOptionDisabled: PropTypes.func,
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
@@ -129,6 +130,7 @@ export default class SelectField extends React.Component {
             containerId={this.props.containerId}
             isClearable={this.props.isClearable}
             isDisabled={this.props.isDisabled}
+            isReadOnly={this.props.isReadOnly}
             isOptionDisabled={this.props.isOptionDisabled}
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}

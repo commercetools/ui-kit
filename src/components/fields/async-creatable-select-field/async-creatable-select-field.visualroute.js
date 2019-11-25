@@ -67,6 +67,17 @@ const DefaultRoute = () => (
         hint="Select a state"
       />
     </Spec>
+    <Spec label="when read-only">
+      <AsyncCreatableSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint="m"
+        isReadOnly={true}
+      />
+    </Spec>
   </Suite>
 );
 

@@ -116,6 +116,7 @@ storiesOf('Components|Inputs', module)
                 containerId={text('containerId', '')}
                 isClearable={boolean('isClearable', false)}
                 isDisabled={boolean('isDisabled', false)}
+                isReadOnly={boolean('isReadOnly', false)}
                 isMulti={isMulti}
                 isSearchable={boolean('isSearchable', false)}
                 maxMenuHeight={number('maxMenuHeight', 220)}

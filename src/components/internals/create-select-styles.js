@@ -20,12 +20,14 @@ const controlStyles = (props, theme) => (base, state) => {
   return {
     ...base,
     fontSize: overwrittenVars[designTokens.fontSizeForInput],
-    backgroundColor: state.isDisabled
+    backgroundColor: props.isDisabled
       ? overwrittenVars[designTokens.backgroundColorForInputWhenDisabled]
       : overwrittenVars[designTokens.backgroundColorForInput],
     borderColor: (() => {
-      if (state.isDisabled)
+      if (props.isDisabled)
         return overwrittenVars[designTokens.borderColorForInputWhenDisabled];
+      if (props.isReadOnly)
+        return overwrittenVars[designTokens.borderColorForInputWhenReadonly];
       if (props.hasError)
         return overwrittenVars[designTokens.borderColorForInputWhenError];
       if (props.hasWarning)
@@ -36,33 +38,40 @@ const controlStyles = (props, theme) => (base, state) => {
     })(),
     borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
     minHeight: overwrittenVars.sizeHeightInput,
-    cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+    cursor: (() => {
+      if (props.isDisabled) return 'not-allowed';
+      if (props.isReadOnly) return 'default';
+      return 'pointer';
+    })(),
     padding: `0 ${overwrittenVars.spacingS}`,
 
     boxShadow: state.isFocused ? 'none' : base.boxShadow,
 
     '&:hover': {
-      borderColor: state.isDisabled
-        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
-        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
+      borderColor: (() => {
+        if (!props.isDisabled && !props.isReadOnly)
+          return overwrittenVars[designTokens.borderColorForInputWhenFocused];
+        return null;
+      })(),
       boxShadow: 'none',
     },
     '&:active': {
-      borderColor: state.isDisabled
+      borderColor: props.isDisabled
         ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
         : overwrittenVars[designTokens.borderColorForInputWhenFocused],
       boxShadow: 'none',
     },
     '&:focus': {
-      borderColor: state.isDisabled
+      borderColor: props.isDisabled
         ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
         : overwrittenVars[designTokens.borderColorForInputWhenFocused],
       boxShadow: 'none',
     },
-    pointerEvents: 'all',
-    color: state.isDisabled
-      ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
-      : base.fontColorForInput,
+    pointerEvents: 'auto',
+    color:
+      props.isDisabled || props.isReadOnly
+        ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+        : base.fontColorForInput,
   };
 };
 
@@ -208,7 +217,7 @@ const valueContainerStyles = () => base => ({
   overflow: 'hidden',
 });
 
-const singleValueStyles = (props, theme) => (base, state) => {
+const singleValueStyles = (props, theme) => base => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -217,8 +226,11 @@ const singleValueStyles = (props, theme) => (base, state) => {
   return {
     ...base,
     color: (() => {
-      if (state.isDisabled) {
+      if (props.isDisabled) {
         return overwrittenVars[designTokens.fontColorForInputWhenDisabled];
+      }
+      if (props.isReadOnly) {
+        return overwrittenVars[designTokens.fontColorForInputWhenReadonly];
       }
       return overwrittenVars[designTokens.fontColorForInput];
     })(),
@@ -273,7 +285,6 @@ const containerStyles = (props, theme) => (base, state) => {
     fontFamily: 'inherit',
     minHeight: overwrittenVars.sizeHeightInput,
     borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
-    cursor: state.isDisabled ? 'not-allowed' : base.cursor,
     borderColor: state.isFocused
       ? overwrittenVars[designTokens.borderColorForInputWhenFocused]
       : base.borderColor,
@@ -307,7 +318,7 @@ const multiValueStyles = (props, theme) => base => {
   };
 };
 
-const multiValueLabelStyles = (props, theme) => (base, state) => {
+const multiValueLabelStyles = (props, theme) => base => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -317,8 +328,10 @@ const multiValueLabelStyles = (props, theme) => (base, state) => {
     ...base,
     fontSize: vars.fontSizeSmall,
     color: (() => {
-      if (state.isDisabled)
+      if (props.isDisabled)
         return overwrittenVars[designTokens.fontColorForInputWhenDisabled];
+      if (props.isReadOnly)
+        return overwrittenVars[designTokens.fontColorForInputWhenReadonly];
       return base.color;
     })(),
     padding: `${overwrittenVars.spacingXs} ${overwrittenVars.spacingS}`,
