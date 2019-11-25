@@ -7,7 +7,7 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import { Body } from '@commercetools-uikit/text';
 import { Inline } from '@commercetools-uikit/spacings';
-import AccessibleButton from '../accessible-button';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 const propsToOmit = ['type'];
 

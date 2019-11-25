@@ -8,6 +8,7 @@
     "prebuild": "rimraf ../../dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
+  "sideEffects": false,
   "author": "",
   "license": "MIT",
   "dependencies": {
@@ -32,9 +33,14 @@
     "tiny-invariant": "1.0.6",
     "use-popper": "1.1.6",
     "warning": "4.0.3",
+    "@commercetools-uikit/avatar": "*",
     "@commercetools-uikit/buttons": "*",
+    "@commercetools-uikit/card": "*",
+    "@commercetools-uikit/collapsible": "*",
+    "@commercetools-uikit/collapsible-motion": "*",
     "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/hooks": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/input-utils": "*",
     "@commercetools-uikit/label": "*",
@@ -43,6 +49,7 @@
     "@commercetools-uikit/select-utils": "*",
     "@commercetools-uikit/spacings": "*",
     "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/text-input": "*",
     "@commercetools-uikit/utils": "*"
   },
   "peerDependencies": {

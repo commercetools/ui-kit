@@ -43,9 +43,10 @@ module.exports = {
           priority: -20,
         },
         'ui-kit': {
-          test: /ui-kit.esm/,
+          test: /[\\/]packages[\\/]/,
           name: 'ui-kit',
           chunks: 'all',
+          minSize: 0,
           priority: -15,
         },
       },

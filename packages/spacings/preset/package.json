@@ -1,0 +1,24 @@
+{
+  "name": "@commercetools-uikit/spacings",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/spacings.cjs.js",
+  "module": "dist/spacings.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "sideEffects": false,
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/spacings-inline": "*",
+    "@commercetools-uikit/spacings-inset": "*",
+    "@commercetools-uikit/spacings-inset-squish": "*",
+    "@commercetools-uikit/spacings-stack": "*"
+
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

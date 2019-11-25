@@ -1,18 +1,20 @@
 {
-  "name": "@commercetools-uikit/buttons",
+  "name": "@commercetools-uikit/primary-button",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/buttons.cjs.js",
-  "module": "dist/buttons.esm.js",
+  "main": "dist/primary-button.cjs.js",
+  "module": "dist/primary-button.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
   "author": "",
   "license": "MIT",
+  "sideEffects": false,
   "dependencies": {
     "@emotion/styled": "10.0.23",
     "@emotion/core": "10.0.22",
+    "@commercetools-uikit/accessible-button": "*",
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/spacings": "*",
     "@commercetools-uikit/text": "*",
@@ -20,13 +22,9 @@
     "common-tags": "1.8.0",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",
-    "react-is": "16.11.0",
-    "react-required-if": "1.0.3",
-    "tiny-invariant": "1.0.6"
+    "react-required-if": "1.0.3"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0",
-    "react-router-dom": "5.x",
-    "react-intl": ">=3.0.0-beta.19 || 3.x"
+    "react": ">= 16.8.0"
   }
 }

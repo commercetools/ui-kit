@@ -1,13 +1,14 @@
 {
-  "name": "@commercetools-uikit/spacings",
+  "name": "@commercetools-uikit/spacings-stack",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/spacings.cjs.js",
-  "module": "dist/spacings.esm.js",
+  "main": "dist/stack.cjs.js",
+  "module": "dist/stack.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
+  "sideEffects": false,
   "author": "",
   "license": "MIT",
   "dependencies": {
@@ -16,7 +17,6 @@
     "prop-types": "15.7.2"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0",
-    "react-intl": ">=3.0.0-beta.19 || 3.x"
+    "react": ">= 16.8.0"
   }
 }
