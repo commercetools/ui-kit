@@ -140,18 +140,24 @@ const Tooltip = props => {
   }, [props.off, closeAfter, handleClose, toggle, isOpen]);
 
   const childrenProps = {
-    'aria-describedby': tooltipIsOpen ? id : null,
-    // for seo and accessibility, we add the tooltip's title
-    // as a native title when the title is hidden
-    title:
-      !tooltipIsOpen && typeof props.title === 'string' ? props.title : null,
-    ...props.children.props,
     // don't pass event listeners to children
     onFocus: null,
     onMouseOver: null,
     onMouseLeave: null,
     onBlur: null,
   };
+
+  const tooltipProps = !props.off
+    ? {
+        'aria-describedby': tooltipIsOpen ? id : null,
+        // for seo and accessibility, we add the tooltip's title
+        // as a native title when the title is hidden
+        title:
+          !tooltipIsOpen && typeof props.title === 'string'
+            ? props.title
+            : null,
+      }
+    : {};
 
   const eventListeners = !props.off
     ? {
@@ -170,7 +176,10 @@ const Tooltip = props => {
   return (
     <React.Fragment>
       <WrapperComponent {...eventListeners} ref={reference.ref}>
-        {React.cloneElement(props.children, { ...childrenProps })}
+        {React.cloneElement(props.children, {
+          ...childrenProps,
+          ...tooltipProps,
+        })}
       </WrapperComponent>
       {tooltipIsOpen && (
         <TooltipWrapperComponent>
