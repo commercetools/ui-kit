@@ -76,6 +76,7 @@ class SelectStory extends React.Component {
                   containerId={text('containerId', '')}
                   isClearable={boolean('isClearable', false)}
                   isDisabled={boolean('isDisabled', false)}
+                  isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
                   isSearchable={boolean('isSearchable', true)}
                   maxMenuHeight={number('maxMenuHeight', 220)}

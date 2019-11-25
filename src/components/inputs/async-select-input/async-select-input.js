@@ -49,6 +49,8 @@ const AsyncSelectInput = props => {
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
+              isDisabled: props.isDisabled,
+              isReadOnly: props.isReadOnly,
             },
             theme
           )}
@@ -61,7 +63,7 @@ const AsyncSelectInput = props => {
           inputId={props.id}
           inputValue={props.inputValue}
           isClearable={props.isClearable}
-          isDisabled={props.isDisabled}
+          isDisabled={props.isDisabled || props.isReadOnly}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}
@@ -149,6 +151,7 @@ AsyncSelectInput.propTypes = {
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
 
   // react-select base props
   //

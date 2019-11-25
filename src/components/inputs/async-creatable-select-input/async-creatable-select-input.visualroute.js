@@ -64,5 +64,14 @@ export const component = () => (
         placeholder="Select a state"
       />
     </Spec>
+    <Spec label="when read-only">
+      <AsyncCreatableSelectInput
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint="m"
+        isReadOnly={true}
+      />
+    </Spec>
   </Suite>
 );
