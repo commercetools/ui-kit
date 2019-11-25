@@ -123,6 +123,25 @@ const DefaultRoute = ({ themes }) => (
         />
       </Spec>
     </ThemeProvider>
+    <Spec label="when read-only">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        isReadOnly={true}
+      />
+    </Spec>
+    <Spec label="with multiple values selected and read-only">
+      <SelectInput
+        value={['one', 'two']}
+        onChange={() => {}}
+        options={options}
+        isMulti={true}
+        isReadOnly={true}
+        horizontalConstraint="m"
+      />
+    </Spec>
   </Suite>
 );
 

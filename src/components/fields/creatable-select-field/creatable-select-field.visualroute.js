@@ -65,5 +65,16 @@ export const component = () => (
         hint="Select a state"
       />
     </Spec>
+    <Spec label="when read-only">
+      <CreatableSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        isReadOnly={true}
+      />
+    </Spec>
   </Suite>
 );
