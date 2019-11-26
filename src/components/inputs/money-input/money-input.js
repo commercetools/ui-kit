@@ -6,19 +6,19 @@ import has from 'lodash/has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
 import { useIntl } from 'react-intl';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Tooltip from '@commercetools-uikit/tooltip';
+import { DropdownIndicator } from '@commercetools-uikit/select-utils';
+import { createSelectStyles } from '@commercetools-uikit/input-utils';
+import { FractionDigitsIcon } from '@commercetools-uikit/icons';
+import { Horizontal } from '@commercetools-uikit/constraints';
 import useToggleState from '../../../hooks/use-toggle-state';
-import DropdownIndicator from '../../internals/dropdown-indicator';
 import isNumberish from '../../../utils/is-numberish';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Contraints from '../../constraints';
-import Tooltip from '../../tooltip';
-import { FractionDigitsIcon } from '../../icons';
 import currencies from './currencies.json';
-import createSelectStyles from '../../internals/create-select-styles';
 import {
   getHighPrecisionWrapperStyles,
   getCurrencyLabelStyles,
@@ -533,7 +533,7 @@ const MoneyInput = props => {
   );
 
   return (
-    <Contraints.Horizontal constraint={props.horizontalConstraint}>
+    <Horizontal constraint={props.horizontalConstraint}>
       <div
         ref={containerRef}
         css={css`
@@ -643,7 +643,7 @@ const MoneyInput = props => {
           )}
         </div>
       </div>
-    </Contraints.Horizontal>
+    </Horizontal>
   );
 };
 

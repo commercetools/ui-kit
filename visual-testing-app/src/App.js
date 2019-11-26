@@ -1,13 +1,15 @@
 import React from 'react';
-import { PrimaryButton, Card } from 'ui-kit';
+import { PrimaryButton, Card, DateInput, i18n } from 'ui-kit';
+import { IntlProvider } from 'react-intl';
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <IntlProvider locale="en" messages={i18n.en}>
         <PrimaryButton label="ok" />
+        <DateInput value="" onChange={() => {}} />
         <Card>Ok</Card>
-      </div>
+      </IntlProvider>
     );
   }
 }

@@ -28,6 +28,7 @@ export { default as SelectInput } from '@commercetools-uikit/select-input';
 export { default as DateInput } from '@commercetools-uikit/date-input';
 export { default as DateRangeInput } from '@commercetools-uikit/date-range-input';
 export { default as DateTimeInput } from '@commercetools-uikit/date-time-input';
+export { default as MoneyInput } from '@commercetools-uikit/money-input';
 
 export { default as TextInput } from '@commercetools-uikit/text-input';
 export { default as TimeInput } from '@commercetools-uikit/time-input';
