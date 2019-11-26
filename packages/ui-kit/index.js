@@ -15,8 +15,17 @@ export {
   Option as PrimaryActionDropdownOption,
 } from '@commercetools-uikit/primary-action-dropdown';
 
+export { default as FieldLabel } from '@commercetools-uikit/field-label';
+export { default as FieldErrors } from '@commercetools-uikit/field-errors';
+
 export * from '@commercetools-uikit/icons';
 
+// inputs
+export { default as AsyncCreatableSelectInput } from '@commercetools-uikit/async-creatable-select-input';
+export { default as AsyncSelectInput } from '@commercetools-uikit/async-select-input';
+export { default as CreatableSelectInput } from '@commercetools-uikit/creatable-select-input';
+export { default as SelectInput } from '@commercetools-uikit/select-input';
+export { default as DateInput } from '@commercetools-uikit/date-input';
 export { default as TextInput } from '@commercetools-uikit/text-input';
 
 export { customProperties } from '@commercetools-uikit/design-system';
