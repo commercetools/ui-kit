@@ -1,9 +1,9 @@
 {
-  "name": "@commercetools-uikit/localized-money-input",
+  "name": "@commercetools-uikit/localized-text-input",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/localized-money-input.cjs.js",
-  "module": "dist/localized-money-input.esm.js",
+  "main": "dist/localized-text-input.cjs.js",
+  "module": "dist/localized-text-input.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
@@ -17,23 +17,20 @@
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/flat-button": "*",
     "@commercetools-uikit/hooks": "*",
-    "@commercetools-uikit/input-utils": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/localized-utils": "*",
-    "@commercetools-uikit/money-input": "*",
-    "@commercetools-uikit/select-utils": "*",
+    "@commercetools-uikit/messages": "*",
+    "@commercetools-uikit/input-utils": "*",
     "@commercetools-uikit/spacings": "*",
-    "@commercetools-uikit/tooltip": "*",
+    "@commercetools-uikit/text-input": "*",
+    "@commercetools-uikit/text": "*",
     "@commercetools-uikit/utils": "*",
     "common-tags": "1.8.0",
     "prop-types": "15.7.2",
-    "react-required-if": "1.0.3",
-    "react-select": "3.0.8",
-    "tiny-invariant": "1.0.6"
+    "react-required-if": "1.0.3"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
-    "react-dom": ">= 16.8.0",
     "react-intl": ">=3.0.0-beta.19 || 3.x"
   }
 }
