@@ -4,7 +4,7 @@ import isNil from 'lodash/isNil';
 import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
-import { Inline } from '@commercetools-uikit/spacings';
+import Inline from '@commercetools-uikit/spacings-inline';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '../accessible-button';

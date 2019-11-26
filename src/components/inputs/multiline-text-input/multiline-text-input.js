@@ -4,12 +4,12 @@ import requiredIf from 'react-required-if';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
-import MultilineInput from '../../internals/multiline-input';
-import FlatButton from '../../buttons/flat-button';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import useToggleState from '../../../hooks/use-toggle-state';
-import Spacings from '../../spacings';
-import Constraints from '../../constraints';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { useToggleState } from '@commercetools-uikit/hooks';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Constraints from '@commercetools-uikit/constraints';
+import MultilineInput from '@commercetools-uikit/multiline-input';
 import messages from '../../internals/messages/multiline-input';
 
 const MultilineTextInput = props => {
@@ -41,7 +41,7 @@ const MultilineTextInput = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="xs">
+      <Stack scale="xs">
         <MultilineInput
           name={props.name}
           autoComplete={props.autoComplete}
@@ -83,7 +83,7 @@ const MultilineTextInput = props => {
             />
           </div>
         )}
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

@@ -6,9 +6,9 @@ import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/core';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
-import { Stack } from '@commercetools-uikit/spacings';
-import { Horizontal } from '@commercetools-uikit/constraints';
-import { Detail } from '@commercetools-uikit/text';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Constraints from '@commercetools-uikit/constraints';
+import Text from '@commercetools-uikit/text';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -21,7 +21,7 @@ import {
   getName,
 } from '@commercetools-uikit/localized-utils';
 import { createSequentialId } from '@commercetools-uikit/utils';
-import { TextInput } from '@commercetools-uikit/text-input';
+import TextInput from '@commercetools-uikit/text-input';
 import LanguagesButton from './languages-button';
 import messages from '../../internals/messages/localized-input';
 import {
@@ -67,7 +67,9 @@ const LocalizedInput = props => {
         css={theme => getLanguageLabelStyles(props, theme)}
       >
         {/* FIXME: add proper tone for disabled when tones are refactored */}
-        <Detail tone="secondary">{props.language.toUpperCase()}</Detail>
+        <Text.Detail tone="secondary">
+          {props.language.toUpperCase()}
+        </Text.Detail>
       </label>
       <TextInput
         {...props}
@@ -133,7 +135,7 @@ const LocalizedTextInput = props => {
   }
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Stack>
         {languages.map((language, index) => {
           const isFirstLanguage = index === 0;
@@ -203,7 +205,7 @@ const LocalizedTextInput = props => {
           );
         })}
       </Stack>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

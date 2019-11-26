@@ -5,7 +5,7 @@ import { ThemeContext } from '@emotion/core';
 import { components as defaultComponents } from 'react-select';
 import AsyncSelect from 'react-select/async';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import {
   ClearIndicator,
@@ -34,7 +34,7 @@ const AsyncSelectInput = props => {
     props.placeholder || intl.formatMessage(messages.placeholder);
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
         <AsyncSelect
           aria-label={props['aria-label']}
@@ -129,7 +129,7 @@ const AsyncSelectInput = props => {
           cacheOptions={props.cacheOptions}
         />
       </div>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Body } from '@commercetools-uikit/text';
+import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
 
 const Label = props => (
   <label htmlFor={props.htmlFor}>
-    <Body tone={props.tone} isBold={props.isBold}>
+    <Text.Body tone={props.tone} isBold={props.isBold}>
       {props.children}
       {props.isRequiredIndicatorVisible && <RequiredIndicator />}
-    </Body>
+    </Text.Body>
   </label>
 );
 

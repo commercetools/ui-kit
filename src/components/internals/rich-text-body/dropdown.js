@@ -3,7 +3,7 @@ import Downshift from 'downshift';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import Tooltip from '../../tooltip';
+import Tooltip from '@commercetools-uikit/tooltip';
 import Button from './rich-text-body-button';
 import {
   getButtonStyles,

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import Constraints from '../../constraints';
-import Spacings from '../../spacings';
-import FieldLabel from '../../field-label';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
+import FieldLabel from '@commercetools-uikit/field-label';
 import SelectInput from '../../inputs/select-input';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import FieldErrors from '../../field-errors';
 
 const sequentialId = createSequentialId('select-field-');

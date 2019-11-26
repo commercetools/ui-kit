@@ -5,12 +5,12 @@ import { action } from '@storybook/addon-actions';
 import { injectIntl } from 'react-intl';
 import { withKnobs, number } from '@storybook/addon-knobs/react';
 import omitEmpty from 'omit-empty';
+import Spacings from '@commercetools-uikit/spacings';
 import ErrorMessage from '../../messages/error-message';
 import Section from '../../../../.storybook/decorators/section';
 import FormikBox from '../../../../.storybook/decorators/formik-box';
 import PrimaryButton from '../../buttons/primary-button';
 import SecondaryButton from '../../buttons/secondary-button';
-import Spacings from '../../spacings';
 import Readme from './README.md';
 import MoneyInput from './money-input';
 

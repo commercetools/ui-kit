@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { InsetSquish } from '@commercetools-uikit/spacings';
+import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
 
 export const availableTones = [
   'critical',

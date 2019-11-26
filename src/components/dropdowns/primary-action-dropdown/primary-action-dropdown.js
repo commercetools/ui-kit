@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { Detail } from '@commercetools-uikit/text';
+import Text from '@commercetools-uikit/text';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
@@ -80,9 +80,9 @@ const DropdownHead = props => (
           justify-content: center;
         `}
       >
-        <Detail tone={props.isDisabled ? 'secondary' : undefined}>
+        <Text.Detail tone={props.isDisabled ? 'secondary' : undefined}>
           {props.children}
-        </Detail>
+        </Text.Detail>
       </span>
     </AccessibleButton>
     {props.chevron}

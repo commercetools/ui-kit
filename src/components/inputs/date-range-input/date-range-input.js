@@ -9,7 +9,7 @@ import {
   CalendarContent,
   CalendarDay,
 } from '@commercetools-uikit/calendar';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   createCalendarItems,
@@ -174,7 +174,7 @@ class DateRangeCalendar extends React.Component {
   };
   render() {
     return (
-      <Horizontal constraint={this.props.horizontalConstraint}>
+      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
           key={this.props.intl.locale}
           inputId={this.props.id}
@@ -452,7 +452,7 @@ class DateRangeCalendar extends React.Component {
             );
           }}
         </Downshift>
-      </Horizontal>
+      </Constraints.Horizontal>
     );
   }
 }

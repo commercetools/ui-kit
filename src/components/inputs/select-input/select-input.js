@@ -5,7 +5,7 @@ import { ThemeContext } from '@emotion/core';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
 import Select, { components as defaultComponents } from 'react-select';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import {
   ClearIndicator,
@@ -56,7 +56,7 @@ const SelectInput = props => {
       ) || null;
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
         <Select
           aria-label={props['aria-label']}
@@ -158,7 +158,7 @@ const SelectInput = props => {
           value={selectedOptions}
         />
       </div>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

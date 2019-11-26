@@ -1,0 +1,30 @@
+{
+  "name": "@commercetools-uikit/radio-input",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/radio-input.cjs.js",
+  "module": "dist/radio-input.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/constraints": "*",
+    "@commercetools-uikit/spacings-stack": "*",
+    "@commercetools-uikit/spacings-inline": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/input-utils": "*",
+    "@commercetools-uikit/utils": "*",
+    "prop-types": "15.7.2",
+    "react-is": "16.11.0",
+    "react-required-if": "1.0.3",
+    "tiny-invariant": "1.0.6"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

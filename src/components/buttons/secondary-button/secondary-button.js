@@ -6,7 +6,7 @@ import isNil from 'lodash/isNil';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { Inline } from '@commercetools-uikit/spacings';
+import Inline from '@commercetools-uikit/spacings-inline';
 import {
   filterInvalidAttributes,
   warnDeprecatedProp,

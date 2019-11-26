@@ -9,7 +9,7 @@ import {
   CalendarContent,
   CalendarDay,
 } from '@commercetools-uikit/calendar';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   getDateInMonth,
@@ -86,7 +86,7 @@ const DateInput = props => {
   };
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Downshift
         key={intl.locale}
         inputId={props.id}
@@ -236,7 +236,7 @@ const DateInput = props => {
           );
         }}
       </Downshift>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

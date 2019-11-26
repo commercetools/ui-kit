@@ -5,9 +5,10 @@ import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import { IconButton } from '@commercetools-uikit/buttons';
 import { InformationIcon } from '@commercetools-uikit/icons';
-import { Detail, Wrap } from '@commercetools-uikit/text';
-import { Horizontal } from '@commercetools-uikit/constraints';
-import { Stack, Inline } from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import Constraints from '@commercetools-uikit/constraints';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
 
 export const FieldLabel = props => {
@@ -18,10 +19,10 @@ export const FieldLabel = props => {
     );
   }
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Stack scale="xs">
         <Inline alignItems="flexStart" scale="xs">
-          <Wrap>
+          <Text.Wrap>
             <Label
               isBold={true}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
@@ -30,7 +31,7 @@ export const FieldLabel = props => {
             >
               {props.title}
             </Label>
-          </Wrap>
+          </Text.Wrap>
           {props.onInfoButtonClick && (
             <IconButton
               label="More Info"
@@ -52,13 +53,15 @@ export const FieldLabel = props => {
                 })}
               </Inline>
             )}
-            {props.hint && <Detail tone={props.tone}>{props.hint}</Detail>}
+            {props.hint && (
+              <Text.Detail tone={props.tone}>{props.hint}</Text.Detail>
+            )}
           </Inline>
         )}
         {props.description && (
-          <Wrap>
-            <Detail tone={props.tone}>{props.description}</Detail>
-          </Wrap>
+          <Text.Wrap>
+            <Text.Detail tone={props.tone}>{props.description}</Text.Detail>
+          </Text.Wrap>
         )}
 
         {props.badge && (
@@ -72,7 +75,7 @@ export const FieldLabel = props => {
           </div>
         )}
       </Stack>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

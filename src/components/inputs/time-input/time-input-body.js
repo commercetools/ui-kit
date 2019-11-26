@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
-import { Inline } from '@commercetools-uikit/spacings';
+import Inline from '@commercetools-uikit/spacings-inline';
 import {
   StyledClearSection,
   StyledClockIconContainer,

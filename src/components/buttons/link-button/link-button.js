@@ -8,8 +8,8 @@ import {
   getPassThroughProps,
   warnDeprecatedComponent,
 } from '@commercetools-uikit/utils';
-import { Inline } from '@commercetools-uikit/spacings';
-import { Body } from '@commercetools-uikit/text';
+import Inline from '@commercetools-uikit/spacings-inline';
+import Text from '@commercetools-uikit/text';
 
 const hoverStyles = () => css`
   &:hover,
@@ -54,7 +54,7 @@ const LinkBody = props => (
         size: 'medium',
         color: props.isDisabled ? 'neutral60' : 'primary',
       })}
-    <Body as="span">{props.label}</Body>
+    <Text.Body as="span">{props.label}</Text.Body>
   </Inline>
 );
 

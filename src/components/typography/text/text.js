@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
 import isNil from 'lodash/isNil';
 import { oneLine } from 'common-tags';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
 
 import {
@@ -267,10 +267,4 @@ Detail.propTypes = {
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
-export default {
-  Headline,
-  Wrap,
-  Subheadline,
-  Body,
-  Detail,
-};
+export default { Headline, Wrap, Subheadline, Detail, Body };

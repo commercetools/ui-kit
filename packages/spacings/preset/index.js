@@ -1,4 +1,6 @@
-export { default as Inline } from '@commercetools-uikit/spacings-inline';
-export { default as Inset } from '@commercetools-uikit/spacings-inset';
-export { default as InsetSquish } from '@commercetools-uikit/spacings-inset-squish';
-export { default as Stack } from '@commercetools-uikit/spacings-stack';
+import Inline from '@commercetools-uikit/spacings-inline';
+import Inset from '@commercetools-uikit/spacings-inset';
+import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
+import Stack from '@commercetools-uikit/spacings-stack';
+
+export default { Inline, Inset, InsetSquish, Stack };

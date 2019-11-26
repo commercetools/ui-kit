@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import { ThemeContext } from '@emotion/core';
 import { components as defaultComponents } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   ClearIndicator,
@@ -32,7 +32,7 @@ const CreatableSelectInput = props => {
     props.placeholder || intl.formatMessage(messages.placeholder);
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
         <CreatableSelect
           aria-label={props['aria-label']}
@@ -140,7 +140,7 @@ const CreatableSelectInput = props => {
           createOptionPosition={props.createOptionPosition}
         />
       </div>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

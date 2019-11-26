@@ -5,8 +5,8 @@ import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
 import MoneyInput from '@commercetools-uikit/money-input';
-import { Stack } from '@commercetools-uikit/spacings';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Constraints from '@commercetools-uikit/constraints';
 import {
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
@@ -158,7 +158,7 @@ const LocalizedMoneyInput = props => {
   );
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Stack scale="s">
         {currencies.map((currency, index) => {
           const isFirstCurrency = index === 0;
@@ -235,7 +235,7 @@ const LocalizedMoneyInput = props => {
           );
         })}
       </Stack>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

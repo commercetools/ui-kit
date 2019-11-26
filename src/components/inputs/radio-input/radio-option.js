@@ -4,7 +4,7 @@ import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   RadioOptionCheckedIcon,
   RadioOptionUncheckedIcon,

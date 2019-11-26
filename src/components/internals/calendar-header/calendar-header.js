@@ -10,8 +10,8 @@ import {
   AngleRightIcon,
   CircleIcon,
 } from '@commercetools-uikit/icons';
-import { Body } from '@commercetools-uikit/text';
-import { Inline } from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import Inline from '@commercetools-uikit/spacings-inline';
 import Tooltip from '@commercetools-uikit/tooltip';
 import messages from './messages';
 
@@ -70,9 +70,9 @@ const CalendarHeader = props => {
             icon={<AngleRightIcon size="medium" />}
           />
         </Tooltip>
-        <Body as="span" isBold={true}>
+        <Text.Body as="span" isBold={true}>
           {props.monthLabel}
-        </Body>
+        </Text.Body>
       </Inline>
       <Inline scale="xs" alignItems="center">
         <Tooltip
@@ -85,7 +85,7 @@ const CalendarHeader = props => {
             icon={<AngleLeftIcon size="medium" />}
           />
         </Tooltip>
-        <Body isBold={true}>{props.yearLabel}</Body>
+        <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
         <Tooltip
           title={intl.formatMessage(messages.nextYearTooltip)}
           components={{ WrapperComponent }}

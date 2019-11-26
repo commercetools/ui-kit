@@ -5,8 +5,8 @@ import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
-import { Body } from '@commercetools-uikit/text';
-import { Inline } from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import Inline from '@commercetools-uikit/spacings-inline';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 const propsToOmit = ['type'];
@@ -104,7 +104,7 @@ export const FlatButton = props => {
     >
       <Inline scale="xs" alignItems="center">
         {props.iconPosition === 'left' && getIconElement(props)}
-        <Body>{props.label}</Body>
+        <Text.Body>{props.label}</Text.Body>
         {props.iconPosition === 'right' && getIconElement(props)}
       </Inline>
     </AccessibleButton>

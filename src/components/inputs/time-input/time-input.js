@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import useFieldId from '../../../hooks/use-field-id';
 import usePrevious from '../../../hooks/use-previous';
@@ -62,7 +62,7 @@ const TimeInput = props => {
   }
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <TimeInputBody
         id={id}
         name={props.name}
@@ -83,7 +83,7 @@ const TimeInput = props => {
         }
         {...filterDataAttributes(props)}
       />
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

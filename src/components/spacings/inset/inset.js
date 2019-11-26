@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 const getPadding = scale => {
   switch (scale) {

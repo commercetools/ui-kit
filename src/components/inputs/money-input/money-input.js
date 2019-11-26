@@ -9,14 +9,13 @@ import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, isNumberish } from '@commercetools-uikit/utils';
 import Tooltip from '@commercetools-uikit/tooltip';
 import { DropdownIndicator } from '@commercetools-uikit/select-utils';
 import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
-import { Horizontal } from '@commercetools-uikit/constraints';
-import useToggleState from '../../../hooks/use-toggle-state';
-import isNumberish from '../../../utils/is-numberish';
+import Constraints from '@commercetools-uikit/constraints';
+import { useToggleState } from '@commercetools-uikit/hooks';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import currencies from './currencies.json';
 import {
@@ -533,7 +532,7 @@ const MoneyInput = props => {
   );
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div
         ref={containerRef}
         css={css`
@@ -643,7 +642,7 @@ const MoneyInput = props => {
           )}
         </div>
       </div>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

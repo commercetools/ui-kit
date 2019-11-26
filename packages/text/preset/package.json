@@ -13,10 +13,12 @@
   "dependencies": {
     "@emotion/core": "10.0.22",
     "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/utils": "*",
     "react-required-if": "1.0.3",
     "prop-types": "15.7.2",
     "common-tags": "1.8.0",
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "warning": "4.0.3"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",

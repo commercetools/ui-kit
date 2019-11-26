@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import Constraints from '../../constraints';
-import Spacings from '../../spacings';
-import FieldLabel from '../../field-label';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
+import FieldLabel from '@commercetools-uikit/field-label';
 import DateTimeInput from '../../inputs/date-time-input';
 import getFieldId from '../../../utils/get-field-id';
 import createSequentialId from '../../../utils/create-sequential-id';
 import FieldErrors from '../../field-errors';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 
 const sequentialId = createSequentialId('date-time-field-');
 

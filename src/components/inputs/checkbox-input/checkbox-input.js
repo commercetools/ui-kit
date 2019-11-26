@@ -9,7 +9,7 @@ import {
   filterAriaAttributes,
   getFieldId,
 } from '@commercetools-uikit/utils';
-import { Body } from '@commercetools-uikit/text';
+import Text from '@commercetools-uikit/text';
 import {
   IndeterminateIcon,
   CheckedIcon,
@@ -111,12 +111,12 @@ class CheckboxInput extends React.PureComponent {
               margin-left: ${vars.spacingS};
             `}
           >
-            <Body
+            <Text.Body
               // FIXME: add proper tones when we have disabled/primary in tones
               tone={this.props.isDisabled ? 'secondary' : undefined}
             >
               {this.props.children}
-            </Body>
+            </Text.Body>
           </div>
         )}
       </Label>

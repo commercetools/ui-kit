@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import { ThemeContext } from '@emotion/core';
 import { components as defaultComponents } from 'react-select';
 import AsyncCreatableSelect from 'react-select/async-creatable';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import {
   ClearIndicator,
@@ -32,7 +32,7 @@ const AsyncCreatableSelectInput = props => {
     props.placeholder || intl.formatMessage(messages.placeholder);
 
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
         <AsyncCreatableSelect
           aria-label={props['aria-label']}
@@ -141,7 +141,7 @@ const AsyncCreatableSelectInput = props => {
           createOptionPosition={props.createOptionPosition}
         />
       </div>
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

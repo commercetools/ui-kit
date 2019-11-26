@@ -1,0 +1,42 @@
+{
+  "name": "@commercetools-uikit/localized-rich-text-input",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/rich-text-input.cjs.js",
+  "module": "dist/rich-text-input.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/collapsible-motion": "*",
+    "@commercetools-uikit/constraints": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/flat-button": "*",
+    "@commercetools-uikit/hooks": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/localized-utils": "*",
+    "@commercetools-uikit/messages": "*",
+    "@commercetools-uikit/rich-text-body": "*",
+    "@commercetools-uikit/rich-text-plugins": "*",
+    "@commercetools-uikit/spacings-stack": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*",
+    "common-tags": "1.8.0",
+    "is-hotkey": "0.1.6",
+    "prop-types": "15.7.2",
+    "react-required-if": "1.0.3",
+    "slate": "0.47.9",
+    "slate-html-serializer": "0.8.11",
+    "slate-react": "0.22.10",
+    "tiny-invariant": "1.0.6"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-intl": ">=3.0.0-beta.19 || 3.x"
+  }
+}

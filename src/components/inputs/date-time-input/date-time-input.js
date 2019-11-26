@@ -9,7 +9,7 @@ import {
   CalendarContent,
   CalendarDay,
 } from '@commercetools-uikit/calendar';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   changeTime,
@@ -141,7 +141,7 @@ class DateTimeInput extends React.Component {
     });
   render() {
     return (
-      <Horizontal constraint={this.props.horizontalConstraint}>
+      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
           // Setting the key to the timeZone conveniently forces a rerender
           // when the time-zone changes. Otherwise we'd need to make
@@ -426,7 +426,7 @@ class DateTimeInput extends React.Component {
             );
           }}
         </Downshift>
-      </Horizontal>
+      </Constraints.Horizontal>
     );
   }
 }

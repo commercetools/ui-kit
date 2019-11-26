@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { Horizontal } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 
 const TextInput = props => {
   return (
-    <Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <input
         id={props.id}
         name={props.name}
@@ -29,7 +29,7 @@ const TextInput = props => {
         role="textbox"
         contentEditable={!props.isReadOnly}
       />
-    </Horizontal>
+    </Constraints.Horizontal>
   );
 };
 
