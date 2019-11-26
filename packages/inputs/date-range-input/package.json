@@ -1,0 +1,37 @@
+{
+  "name": "@commercetools-uikit/date-range-input",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/date-range-input.cjs.js",
+  "module": "dist/date-range-input.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/calendar": "*",
+    "@commercetools-uikit/calendar-utils": "*",
+    "@commercetools-uikit/constraints": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/select-utils": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*",
+    "common-tags": "1.8.0",
+    "downshift": "3.4.1",
+    "prop-types": "15.7.2",
+    "react-is": "16.11.0",
+    "react-required-if": "1.0.3",
+    "tiny-invariant": "1.0.6",
+    "warning": "4.0.3"
+  },
+  "peerDependencies": {
+    "moment": "2.x",
+    "react": ">= 16.8.0",
+    "react-intl": ">=3.0.0-beta.19 || 3.x"
+  }
+}

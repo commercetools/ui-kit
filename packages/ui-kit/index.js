@@ -26,6 +26,11 @@ export { default as AsyncSelectInput } from '@commercetools-uikit/async-select-i
 export { default as CreatableSelectInput } from '@commercetools-uikit/creatable-select-input';
 export { default as SelectInput } from '@commercetools-uikit/select-input';
 export { default as DateInput } from '@commercetools-uikit/date-input';
+export { default as DateRangeInput } from '@commercetools-uikit/date-range-input';
+export { default as DateTimeInput } from '@commercetools-uikit/date-time-input';
+
 export { default as TextInput } from '@commercetools-uikit/text-input';
+export { default as TimeInput } from '@commercetools-uikit/time-input';
+export { default as ToggleInput } from '@commercetools-uikit/toggle-input';
 
 export { customProperties } from '@commercetools-uikit/design-system';

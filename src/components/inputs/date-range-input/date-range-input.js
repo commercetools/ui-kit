@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
-import CalendarBody from '../../internals/calendar-body';
-import CalendarMenu from '../../internals/calendar-menu';
-import CalendarHeader from '../../internals/calendar-header';
-import CalendarContent from '../../internals/calendar-content';
-import CalendarDay from '../../internals/calendar-day';
-import Constraints from '../../constraints';
-import messages from './messages';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import {
+  CalendarBody,
+  CalendarMenu,
+  CalendarHeader,
+  CalendarContent,
+  CalendarDay,
+} from '@commercetools-uikit/calendar';
+import { Horizontal } from '@commercetools-uikit/constraints';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   createCalendarItems,
   getDateInMonth,
@@ -25,7 +26,8 @@ import {
   createItemRangeToString,
   formatRange,
   parseInputToDate,
-} from '../../../utils/calendar';
+} from '@commercetools-uikit/calendar-utils';
+import messages from './messages';
 
 const parseRangeText = (text, locale) => {
   const parts = text
@@ -172,7 +174,7 @@ class DateRangeCalendar extends React.Component {
   };
   render() {
     return (
-      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+      <Horizontal constraint={this.props.horizontalConstraint}>
         <Downshift
           key={this.props.intl.locale}
           inputId={this.props.id}
@@ -450,7 +452,7 @@ class DateRangeCalendar extends React.Component {
             );
           }}
         </Downshift>
-      </Constraints.Horizontal>
+      </Horizontal>
     );
   }
 }

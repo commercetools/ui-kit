@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
+import {
+  filterDataAttributes,
+  filterAriaAttributes,
+} from '@commercetools-uikit/utils';
 import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
 
 const thumbSmallSize = '13px';
