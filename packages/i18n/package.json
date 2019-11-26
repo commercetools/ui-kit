@@ -1,0 +1,14 @@
+{
+  "name": "@commercetools-uikit/i18n",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/i18n.cjs.js",
+  "module": "dist/i18n.esm.js",
+  "sideEffects": false,
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
