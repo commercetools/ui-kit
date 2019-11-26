@@ -3,7 +3,7 @@
 ### Bug Fixes
 
 - `LocalizedRichTextInput`: dropdowns being clipped by the container ([#1197](https://github.com/commercetools/ui-kit/issues/1197)) ([ab54b57](https://github.com/commercetools/ui-kit/commit/ab54b5792f8277050619008df32f55b8c30ea04e))
-- `RadioInputGroup`: radio option background color ([#1193](https://github.com/commercetools/ui-kit/issues/1193)) ([e773f92](https://github.com/commercetools/ui-kit/commit/e773f9266a705b34aadf62f9b9b5d5afe2b9ed74))
+- `RadioInput`: radio option background color ([#1193](https://github.com/commercetools/ui-kit/issues/1193)) ([e773f92](https://github.com/commercetools/ui-kit/commit/e773f9266a705b34aadf62f9b9b5d5afe2b9ed74))
 - `Tooltip`: do not use native title when tooltip is off ([#1196](https://github.com/commercetools/ui-kit/issues/1196)) ([04f35e9](https://github.com/commercetools/ui-kit/commit/04f35e907944436508b558b93489e45a87ff0648))
 
 ### Features
