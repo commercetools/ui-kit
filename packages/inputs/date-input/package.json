@@ -13,6 +13,9 @@
   "dependencies": {
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/calendar": "*",
+    "@commercetools-uikit/calendar-utils": "*",
+    "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/select-utils": "*",

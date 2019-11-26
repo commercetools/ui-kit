@@ -4,11 +4,15 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import Text from '../../typography/text';
-import Spacings from '../../spacings';
-import { AngleLeftIcon, AngleRightIcon, CircleIcon } from '../../icons';
-import Tooltip from '../../tooltip';
-import SecondaryIconButton from '../../buttons/secondary-icon-button';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import {
+  AngleLeftIcon,
+  AngleRightIcon,
+  CircleIcon,
+} from '@commercetools-uikit/icons';
+import { Body } from '@commercetools-uikit/text';
+import { Inline } from '@commercetools-uikit/spacings';
+import Tooltip from '@commercetools-uikit/tooltip';
 import messages from './messages';
 
 const WrapperComponent = styled.div`
@@ -35,7 +39,7 @@ const CalendarHeader = props => {
         border-bottom: 1px solid ${vars.colorNeutral90};
       `}
     >
-      <Spacings.Inline scale="xs" alignItems="center">
+      <Inline scale="xs" alignItems="center">
         <Tooltip
           title={intl.formatMessage(messages.previousMonthTooltip)}
           components={{ WrapperComponent }}
@@ -66,11 +70,11 @@ const CalendarHeader = props => {
             icon={<AngleRightIcon size="medium" />}
           />
         </Tooltip>
-        <Text.Body as="span" isBold={true}>
+        <Body as="span" isBold={true}>
           {props.monthLabel}
-        </Text.Body>
-      </Spacings.Inline>
-      <Spacings.Inline scale="xs" alignItems="center">
+        </Body>
+      </Inline>
+      <Inline scale="xs" alignItems="center">
         <Tooltip
           title={intl.formatMessage(messages.previousYearTooltip)}
           components={{ WrapperComponent }}
@@ -81,7 +85,7 @@ const CalendarHeader = props => {
             icon={<AngleLeftIcon size="medium" />}
           />
         </Tooltip>
-        <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
+        <Body isBold={true}>{props.yearLabel}</Body>
         <Tooltip
           title={intl.formatMessage(messages.nextYearTooltip)}
           components={{ WrapperComponent }}
@@ -92,7 +96,7 @@ const CalendarHeader = props => {
             icon={<AngleRightIcon size="medium" />}
           />
         </Tooltip>
-      </Spacings.Inline>
+      </Inline>
     </div>
   );
 };

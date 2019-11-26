@@ -1,19 +1,8 @@
-import filterDataAttributes from '../../src/utils/filter-data-attributes';
-import filterAriaAttributes from '../../src/utils/filter-aria-attributes';
-import filterInvalidAttributes from '../../src/utils/filter-invalid-attributes';
-import getPassThroughProps from '../../src/utils/get-pass-through-props';
-import warnDeprecatedComponent from '../../src/utils/warn-deprecated-component';
-import warnDeprecatedProp from '../../src/utils/warn-deprecated-prop';
-import createSequentialId from '../../src/utils/create-sequential-id';
-import getFieldId from '../../src/utils/get-field-id';
-
-export {
-  createSequentialId,
-  filterAriaAttributes,
-  filterDataAttributes,
-  filterInvalidAttributes,
-  getFieldId,
-  getPassThroughProps,
-  warnDeprecatedComponent,
-  warnDeprecatedProp,
-};
+export { default as filterDataAttributes } from '../../src/utils/filter-data-attributes';
+export { default as filterAriaAttributes } from '../../src/utils/filter-aria-attributes';
+export { default as filterInvalidAttributes } from '../../src/utils/filter-invalid-attributes';
+export { default as getPassThroughProps } from '../../src/utils/get-pass-through-props';
+export { default as warnDeprecatedComponent } from '../../src/utils/warn-deprecated-component';
+export { default as warnDeprecatedProp } from '../../src/utils/warn-deprecated-prop';
+export { default as createSequentialId } from '../../src/utils/create-sequential-id';
+export { default as getFieldId } from '../../src/utils/get-field-id';

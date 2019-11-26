@@ -1,17 +1,17 @@
 {
-  "name": "@commercetools-uikit/utils",
+  "name": "@commercetools-uikit/calendar-utils",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/utils.cjs.js",
-  "module": "dist/utils.esm.js",
+  "main": "dist/calendar-utils.cjs.js",
+  "module": "dist/calendar-utils.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
   "sideEffects": false,
-  "dependencies": {
-    "@emotion/is-prop-valid": "0.8.5",
-    "warning": "4.0.3"
+  "dependencies": {},
+  "peerDependencies": {
+    "moment": "2.x"
   },
   "author": "",
   "license": "MIT"
