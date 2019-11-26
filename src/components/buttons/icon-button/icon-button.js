@@ -5,7 +5,7 @@ import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
-import AccessibleButton from '../accessible-button';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getStateStyles,
   getShapeStyles,

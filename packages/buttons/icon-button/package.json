@@ -1,0 +1,31 @@
+{
+  "name": "@commercetools-uikit/icon-button",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/icon-button.cjs.js",
+  "module": "dist/icon-button.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@emotion/styled": "10.0.23",
+    "@emotion/core": "10.0.22",
+    "@commercetools-uikit/accessible-button": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*",
+    "common-tags": "1.8.0",
+    "lodash": "4.17.15",
+    "prop-types": "15.7.2",
+    "react-required-if": "1.0.3",
+    "tiny-invariant": "1.0.6"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

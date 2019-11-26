@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
-import AccessibleButton from '../accessible-button';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getBaseStyles } from './secondary-icon-button.styles';
 
 const propsToOmit = ['type'];
