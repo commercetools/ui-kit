@@ -1,19 +1,19 @@
 {
-  "name": "@commercetools-uikit/label",
+  "name": "@commercetools-uikit/messages",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/label.cjs.js",
-  "module": "dist/label.esm.js",
+  "main": "dist/messages.cjs.js",
+  "module": "dist/messages.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/utils": "*",
     "@commercetools-uikit/text": "*",
     "prop-types": "15.7.2"
   },
