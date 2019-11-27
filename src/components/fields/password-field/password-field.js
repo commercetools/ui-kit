@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  filterDataAttributes,
+  createSequentialId,
+} from '@commercetools-uikit/utils';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
-import PasswordInput from '../../inputs/password-input';
-import FlatButton from '../../buttons/flat-button';
-import { EyeIcon, EyeCrossedIcon } from '../../icons';
-import createSequentialId from '../../../utils/create-sequential-id';
-import FieldErrors from '../../field-errors';
+import PasswordInput from '@commercetools-uikit/password-input';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { EyeIcon, EyeCrossedIcon } from '@commercetools-uikit/icons';
+import FieldErrors from '@commercetools-uikit/field-errors';
 import messages from './messages';
 
 const sequentialId = createSequentialId('password-field-');

@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  createSequentialId,
+  filterDataAttributes,
+  getFieldId,
+} from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
-import FieldErrors from '../../field-errors';
-import NumberInput from '../../inputs/number-input';
-import getFieldId from '../../../utils/get-field-id';
-import createSequentialId from '../../../utils/create-sequential-id';
+import FieldErrors from '@commercetools-uikit/field-errors';
+import NumberInput from '@commercetools-uikit/number-input';
 
 const sequentialId = createSequentialId('number-field-');
 

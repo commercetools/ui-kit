@@ -1,0 +1,30 @@
+{
+  "name": "@commercetools-uikit/radio-field",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/radio-field.cjs.js",
+  "module": "dist/radio-field.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/constraints": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/field-label": "*",
+    "@commercetools-uikit/field-errors": "*",
+    "@commercetools-uikit/input-utils": "*",
+    "@commercetools-uikit/spacings-stack": "*",
+    "@commercetools-uikit/radio-input": "*",
+    "@commercetools-uikit/utils": "*",
+    "prop-types": "15.7.2",
+    "react-required-if": "1.0.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}
