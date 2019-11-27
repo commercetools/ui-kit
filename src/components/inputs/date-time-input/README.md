@@ -36,6 +36,7 @@ multiple date selection. It formats the selected date depending on the current l
 | `name`                 | `string` |    -     | -                       | -       | Used as the HTML `name` attribute.                                                                                                      |
 | `placeholder`          | `string` |    -     | -                       | -       | Placeholder value to show in the input field                                                                                            |
 | `isDisabled`           | `bool`   |    -     | -                       | `false` | Disables the date picker                                                                                                                |
+| `isReadOnly`           | `bool`   |    -     | -                       | `false` | Disables the date picker menu and sets the input field as read-only                                                                     |
 | `hasError`             | `bool`   |    -     | -                       | -       | Indicates the input field has an error                                                                                                  |
 | `hasWarning`           | `bool`   |    -     | -                       | -       | Indicates the input field has a warning                                                                                                 |
 
