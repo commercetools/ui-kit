@@ -16,7 +16,7 @@
     "@emotion/core": "10.0.22",
     "@commercetools-uikit/accessible-button": "*",
     "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/text": "*",
     "@commercetools-uikit/utils": "*",
     "common-tags": "1.8.0",

@@ -4,8 +4,8 @@ import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Spacings from '@commercetools-uikit/spacings';
-import Text from '../../typography/text';
-import CollapsibleMotion from '../../collapsible-motion';
+import Text from '@commercetools-uikit/text';
+import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import HeaderIcon from './header-icon';
 import {
   getContainerStyles,

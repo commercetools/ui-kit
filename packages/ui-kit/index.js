@@ -12,7 +12,7 @@ export { default as CollapsibleMotion } from '@commercetools-uikit/collapsible-m
 export { default as CollapsiblePanel } from '@commercetools-uikit/collapsible-panel';
 
 export { default as Constraints } from '@commercetools-uikit/constraints';
-export { default as ContentNotification } from '@commercetools-uikit/notifications';
+export { ContentNotification } from '@commercetools-uikit/notifications';
 
 export {
   default as PrimaryActionDropdown,
@@ -71,6 +71,12 @@ export { default as RadioInput } from '@commercetools-uikit/radio-input';
 export { default as Label } from '@commercetools-uikit/label';
 
 export { default as LoadingSpinner } from '@commercetools-uikit/loading-spinner';
+
+export { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
+
+export { default as Spacings } from '@commercetools-uikit/spacings';
+
+export { default as Stamp } from '@commercetools-uikit/stamp';
 
 export { default as Table } from '@commercetools-uikit/table';
 
