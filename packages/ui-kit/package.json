@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "10.8.0",
+  "version": "10.12.0",
   "description": "",
   "main": "../../dist/ui-kit.cjs.js",
   "module": "../../dist/ui-kit.esm.js",
