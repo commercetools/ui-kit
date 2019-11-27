@@ -1,0 +1,23 @@
+{
+  "name": "@commercetools-uikit/field-errors",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/card.cjs.js",
+  "module": "dist/card.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/messages": "*",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-intl": ">=3.0.0-beta.19 || 3.x"
+  }
+}

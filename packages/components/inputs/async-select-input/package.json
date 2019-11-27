@@ -1,0 +1,33 @@
+{
+  "name": "@commercetools-uikit/async-select-input",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/async-select-input.cjs.js",
+  "module": "dist/async-select-input.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/constraints": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/input-utils": "*",
+    "@commercetools-uikit/select-utils": "*",
+    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*",
+    "lodash": "4.17.15",
+    "prop-types": "15.7.2",
+    "react-select": "3.0.8"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-intl": ">=3.0.0-beta.19 || 3.x"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@commercetools-uikit/avatar",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/avatar.cjs.js",
+  "module": "dist/avatar.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/utils": "*",
+    "common-tags": "1.8.0",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@commercetools-uikit/money-input",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/money-input.cjs.js",
+  "module": "dist/money-input.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/constraints": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/input-utils": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/select-utils": "*",
+    "@commercetools-uikit/tooltip": "*",
+    "@commercetools-uikit/utils": "*",
+    "prop-types": "15.7.2",
+    "react-required-if": "1.0.3",
+    "react-select": "3.0.8",
+    "tiny-invariant": "1.0.6"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-intl": ">=3.0.0-beta.19 || 3.x"
+  }
+}

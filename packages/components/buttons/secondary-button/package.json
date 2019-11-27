@@ -1,0 +1,32 @@
+{
+  "name": "@commercetools-uikit/secondary-button",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/secondary-button.cjs.js",
+  "module": "dist/secondary-button.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@emotion/styled": "10.0.23",
+    "@emotion/core": "10.0.22",
+    "@commercetools-uikit/accessible-button": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*",
+    "common-tags": "1.8.0",
+    "lodash": "4.17.15",
+    "prop-types": "15.7.2",
+    "react-required-if": "1.0.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-intl": ">=3.0.0-beta.19 || 3.x",
+    "react-router-dom": "5.x"
+  }
+}
