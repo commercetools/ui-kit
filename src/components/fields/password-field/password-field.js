@@ -8,7 +8,8 @@ import {
 } from '@commercetools-uikit/utils';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
+import Inline from '@commercetools-uikit/spacings-inline';
+import Stack from '@commercetools-uikit/spacings-stack';
 import FieldLabel from '@commercetools-uikit/field-label';
 import PasswordInput from '@commercetools-uikit/password-input';
 import FlatButton from '@commercetools-uikit/flat-button';
@@ -28,8 +29,8 @@ const PasswordField = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="xs">
-        <Spacings.Inline alignItems="center" justifyContent="space-between">
+      <Stack scale="xs">
+        <Inline alignItems="center" justifyContent="space-between">
           <FieldLabel
             hint={props.hint}
             title={props.title}
@@ -52,7 +53,7 @@ const PasswordField = props => {
               isDisabled={!props.value}
             />
           )}
-        </Spacings.Inline>
+        </Inline>
         <PasswordInput
           id={id}
           name={props.name}
@@ -75,7 +76,7 @@ const PasswordField = props => {
           isVisible={hasError}
           renderError={props.renderError}
         />
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

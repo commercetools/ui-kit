@@ -15,9 +15,11 @@
     "@emotion/styled": "10.0.23",
     "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/flat-button": "*",
     "@commercetools-uikit/field-label": "*",
     "@commercetools-uikit/field-errors": "*",
     "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/password-input": "*",
     "@commercetools-uikit/utils": "*",
@@ -25,6 +27,7 @@
     "react-required-if": "1.0.3"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0"
+    "react": ">= 16.8.0",
+    "react-intl": ">=3.0.0-beta.19 || 3.x"
   }
 }
