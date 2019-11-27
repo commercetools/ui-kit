@@ -67,6 +67,7 @@ class DateTimeInput extends React.Component {
     name: PropTypes.string,
     placeholder: PropTypes.string,
     isDisabled: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
     hasError: PropTypes.bool,
     hasWarning: PropTypes.bool,
   };
@@ -276,7 +277,6 @@ class DateTimeInput extends React.Component {
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
                         : this.props.intl.formatMessage(messages.placeholder),
-                    disabled: this.props.isDisabled,
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
@@ -299,8 +299,8 @@ class DateTimeInput extends React.Component {
                         closeMenu();
                       }
                     },
-                    onFocus: openMenu,
-                    onClick: openMenu,
+                    onFocus: this.props.isReadOnly ? undefined : openMenu,
+                    onClick: this.props.isReadOnly ? undefined : openMenu,
                     onBlur: createBlurHandler(this.timeInputRef),
                     onChange: event => {
                       // keep timeInput and regular input in sync when user
@@ -337,8 +337,8 @@ class DateTimeInput extends React.Component {
                   onClear={clearSelection}
                   isOpen={isOpen}
                   isDisabled={this.props.isDisabled}
+                  isReadOnly={this.props.isReadOnly}
                   toggleButtonProps={getToggleButtonProps({
-                    disabled: this.props.isDisabled,
                     onBlur: createBlurHandler(this.timeInputRef),
                   })}
                   hasError={this.props.hasError}

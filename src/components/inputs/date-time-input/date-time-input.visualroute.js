@@ -84,5 +84,53 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="when readonly" propsToList={['isReadOnly']}>
+      <DateTimeInput
+        value={value}
+        timeZone="UTC"
+        onChange={() => {}}
+        horizontalConstraint="m"
+        isReadOnly
+      />
+    </Spec>
+    <Spec
+      label="when readonly and disabled"
+      propsToList={['isReadOnly', 'isDisabled']}
+    >
+      <DateTimeInput
+        value={value}
+        timeZone="UTC"
+        onChange={() => {}}
+        horizontalConstraint="m"
+        isReadOnly
+        isDisabled
+      />
+    </Spec>
+    <Spec
+      label="when readonly and warning"
+      propsToList={['isReadOnly', 'hasWarning']}
+    >
+      <DateTimeInput
+        value={value}
+        timeZone="UTC"
+        onChange={() => {}}
+        horizontalConstraint="m"
+        isReadOnly
+        hasWarning
+      />
+    </Spec>
+    <Spec
+      label="when readonly and error"
+      propsToList={['isReadOnly', 'hasError']}
+    >
+      <DateTimeInput
+        value={value}
+        timeZone="UTC"
+        onChange={() => {}}
+        horizontalConstraint="m"
+        isReadOnly
+        hasError
+      />
+    </Spec>
   </Suite>
 );

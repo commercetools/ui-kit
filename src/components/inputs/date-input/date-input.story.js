@@ -45,6 +45,7 @@ class DateInputStory extends React.Component {
             name={text('name', '')}
             placeholder={placeholder === '' ? undefined : placeholder}
             isDisabled={boolean('isDisabled', false)}
+            isReadOnly={boolean('isReadOnly', false)}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}
           />

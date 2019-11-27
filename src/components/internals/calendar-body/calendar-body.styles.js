@@ -18,15 +18,14 @@ const getClearSectionStyles = props => {
     padding: ${vars.spacingXs};
     cursor: pointer;
     outline: 0;
+    transition: color ${vars.transitionStandard},
+      border-color ${vars.transitionStandard};
   `;
-  if (props.isDisabled) {
+  if (props.isOpen || props.isFocused) {
     return [
       baseIconStyles,
       css`
-        cursor: not-allowed;
-        background-color: ${vars.backgroundColorForInputWhenDisabled};
-        color: ${vars.fontColorForInputWhenDisabled};
-        border-color: ${vars.borderColorForInputWhenDisabled};
+        border-color: ${vars.borderColorForInputWhenFocused};
       `,
     ];
   }
@@ -34,16 +33,15 @@ const getClearSectionStyles = props => {
     return [
       baseIconStyles,
       css`
-        color: ${vars.fontColorForInputWhenError};
         border-color: ${vars.borderColorForInputWhenError};
       `,
     ];
   }
-  if (props.isOpen || props.isFocused) {
+  if (props.hasWarning) {
     return [
       baseIconStyles,
       css`
-        border-color: ${vars.borderColorForInputWhenFocused};
+        border-color: ${vars.borderColorForInputWhenWarning};
       `,
     ];
   }
@@ -62,6 +60,12 @@ const getCalendarIconContainerStyles = (props, state) => {
     border-top-right-radius: ${vars.borderRadiusForInput};
     border-bottom-right-radius: ${vars.borderRadiusForInput};
     outline: 0;
+    transition: color ${vars.transitionStandard},
+      border-color ${vars.transitionStandard};
+    &:active,
+    &:focus {
+      border-color: ${vars.borderColorForInputWhenFocused};
+    }
   `;
   if (props.isDisabled) {
     return [
@@ -89,6 +93,15 @@ const getCalendarIconContainerStyles = (props, state) => {
       css`
         color: ${vars.fontColorForInputWhenWarning};
         border-color: ${vars.borderColorForInputWhenWarning};
+      `,
+    ];
+  }
+  if (props.isReadOnly) {
+    return [
+      baseIconStyles,
+      css`
+        color: ${vars.fontColorForInputWhenReadonly};
+        border-color: ${vars.borderColorForInputWhenReadonly};
       `,
     ];
   }
@@ -120,37 +133,14 @@ const getDateTimeInputStyles = (props, state) => {
       border-right: none;
       transition: color ${vars.transitionStandard},
         border-color ${vars.transitionStandard};
-
-      &:focus,
-      &:active,
-      &:focus + *,
-      &:active + * {
-        border-color: ${vars.borderColorForInputWhenFocused};
-        color: ${vars.fontColorForInput};
-      }
-
-      &:disabled {
-        cursor: not-allowed;
-      }
-
-      &:disabled,
-      &:read-only {
-        background-color: ${vars.backgroundColorForInputWhenDisabled};
-        color: ${vars.fontColorForInputWhenDisabled};
-        border-color: ${vars.borderColorForInputWhenDisabled};
-        opacity: 1; /* fix for mobile safari */
-      }
     `,
   ];
-  if (props.isOpen || state.isFocused) {
+  if ((props.isOpen || state.isFocused) && !props.isReadOnly) {
     return [
       ...baseStyles,
       css`
-        &,
-        & + * {
-          border-color: ${vars.borderColorForInputWhenFocused};
-          color: ${vars.fontColorForInput};
-        }
+        border-color: ${vars.borderColorForInputWhenFocused};
+        color: ${vars.fontColorForInput};
       `,
     ];
   }

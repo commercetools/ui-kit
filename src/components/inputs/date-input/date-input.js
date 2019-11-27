@@ -158,7 +158,6 @@ const DateInput = props => {
                     typeof props.placeholder === 'string'
                       ? props.placeholder
                       : intl.formatMessage(messages.placeholder),
-                  disabled: props.isDisabled,
                   onMouseEnter: () => {
                     // we remove the highlight so that the user can use the
                     // arrow keys to move the cursor when hovering
@@ -169,21 +168,22 @@ const DateInput = props => {
                       clearSelection();
                     }
                   },
-                  onFocus: openMenu,
-                  onClick: openMenu,
+                  // we only do this for readOnly because the input
+                  // doesn't ignore these events, unlike when its disabled
+                  onFocus: props.isReadOnly ? undefined : openMenu,
+                  onClick: props.isReadOnly ? undefined : openMenu,
                   ...filterDataAttributes(props),
                 })}
                 hasSelection={Boolean(selectedItem)}
                 onClear={clearSelection}
                 isOpen={isOpen}
                 isDisabled={props.isDisabled}
-                toggleButtonProps={getToggleButtonProps({
-                  disabled: props.isDisabled,
-                })}
+                isReadOnly={props.isReadOnly}
+                toggleButtonProps={getToggleButtonProps()}
                 hasError={props.hasError}
                 hasWarning={props.hasWarning}
               />
-              {isOpen && !props.isDisabled && (
+              {isOpen && !props.isDisabled && !props.isReadOnly && (
                 <CalendarMenu
                   {...getMenuProps()}
                   hasError={props.hasError}
@@ -252,6 +252,7 @@ DateInput.propTypes = {
   name: PropTypes.string,
   placeholder: PropTypes.string,
   isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
 };

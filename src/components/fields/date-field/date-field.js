@@ -35,6 +35,7 @@ class DateField extends React.Component {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isDisabled: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
     placeholder: PropTypes.string,
 
     // LabelField
@@ -86,6 +87,7 @@ class DateField extends React.Component {
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
             isDisabled={this.props.isDisabled}
+            isReadOnly={this.props.isReadOnly}
             hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"

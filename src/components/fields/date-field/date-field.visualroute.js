@@ -71,5 +71,14 @@ export const component = () => (
         touched={true}
       />
     </Spec>
+    <Spec label="when read-only" propsToList={['isReadOnly']}>
+      <DateField
+        title="Release Date"
+        horizontalConstraint="m"
+        value={value}
+        onChange={() => {}}
+        isReadOnly
+      />
+    </Spec>
   </Suite>
 );

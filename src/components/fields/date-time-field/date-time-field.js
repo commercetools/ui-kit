@@ -36,6 +36,7 @@ class DateTimeField extends React.Component {
     timeZone: PropTypes.string.isRequired,
     onFocus: PropTypes.func,
     isDisabled: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
     placeholder: PropTypes.string,
 
     // LabelField
@@ -88,6 +89,7 @@ class DateTimeField extends React.Component {
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
             isDisabled={this.props.isDisabled}
+            isReadOnly={this.props.isReadOnly}
             hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
