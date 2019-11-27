@@ -2,7 +2,7 @@ import { i18n, customProperties, version } from 'ui-kit';
 
 describe('exports', () => {
   it('should export i18n for six languages', () => {
-    expect(Object.keys(i18n)).toEqual(['en', 'de', 'es', 'frFR', 'zhCN', 'ja']);
+    expect(Object.keys(i18n)).toEqual(['de', 'en', 'es', 'frFR', 'ja', 'zhCN']);
   });
 
   it('should export custom-properties', () => {
