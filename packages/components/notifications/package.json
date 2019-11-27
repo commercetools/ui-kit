@@ -1,0 +1,24 @@
+{
+  "name": "@commercetools-uikit/notifications",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/notifications.cjs.js",
+  "module": "dist/notifications.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/utils": "*",
+    "common-tags": "1.8.0",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

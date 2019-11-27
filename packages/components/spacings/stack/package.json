@@ -1,0 +1,22 @@
+{
+  "name": "@commercetools-uikit/spacings-stack",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/stack.cjs.js",
+  "module": "dist/stack.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+  },
+  "sideEffects": false,
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@commercetools-uikit/design-system": "*",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}

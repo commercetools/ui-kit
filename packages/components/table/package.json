@@ -1,0 +1,29 @@
+{
+  "name": "@commercetools-uikit/table",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/table.cjs.js",
+  "module": "dist/table.esm.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/utils": "*",
+    "dom-helpers": "5.1.3",
+    "lodash": "4.17.15",
+    "prop-types": "15.7.2",
+    "react-virtualized": "9.21.1"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}
