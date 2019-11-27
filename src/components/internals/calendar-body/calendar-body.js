@@ -83,6 +83,7 @@ export const CalendarBody = props => {
           css={getDateTimeInputStyles(props, { isFocused })}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
+          aria-readonly={props.isReadOnly}
         />
         {!disabledOrReadOnly && props.hasSelection && props.isClearable && (
           <ClearSection
