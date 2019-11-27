@@ -33,6 +33,7 @@ The `DateInput` component allows the user to select a date. It formats the selec
 | `name`                 | `string` |    -     | -                       | -       | Used as the HTML `name` attribute.                                                                                                        |
 | `placeholder`          | `string` |    -     | -                       | -       | Placeholder value to show in the input field                                                                                              |
 | `isDisabled`           | `bool`   |    -     | -                       | `false` | Disables the date picker                                                                                                                  |
+| `isReadOnly`           | `bool`   |    -     | -                       | `false` | Disables the date picker and makes input field read-only                                                                                  |
 | `hasError`             | `bool`   |    -     | -                       | -       | Indicates the input field has an error                                                                                                    |
 | `hasWarning`           | `bool`   |    -     | -                       | -       | Indicates the input field has a warning                                                                                                   |
 

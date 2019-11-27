@@ -12,22 +12,18 @@ import {
 
 export const ClearSection = props => (
   <div
-    onClick={props.isDisabled ? undefined : props.onClear}
+    onClick={props.onClear}
     css={getClearSectionStyles(props)}
     aria-label="clear"
   >
-    {!props.isDisabled && (
-      <CloseIcon
-        size="medium"
-        color={props.isDisabled ? 'neutral60' : 'solid'}
-      />
-    )}
+    <CloseIcon size="medium" color="solid" />
   </div>
 );
 ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
   isDisabled: PropTypes.bool,
   hasError: PropTypes.bool,
+  hasWarning: PropTypes.bool,
   onClear: PropTypes.func,
 };
 
@@ -74,21 +70,26 @@ export const CalendarBody = props => {
     [onToggleBlur, toggleIsFocused]
   );
 
+  const disabledOrReadOnly = props.isDisabled || props.isReadOnly;
+
   return (
     <Spacings.Inline alignItems="center">
       <div css={getInputContainerStyles()}>
         <input
           ref={props.inputRef}
-          css={getDateTimeInputStyles(props, { isFocused })}
           {...props.inputProps}
+          disabled={props.isDisabled}
+          readOnly={props.isReadOnly}
+          css={getDateTimeInputStyles(props, { isFocused })}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
-        {props.hasSelection && props.isClearable && (
+        {!disabledOrReadOnly && props.hasSelection && props.isClearable && (
           <ClearSection
-            isDisabled={props.isDisabled}
             hasError={props.hasError}
+            hasWarning={props.hasWarning}
             isFocused={isFocused}
+            isOpen={props.isOpen}
             onClear={props.onClear}
           />
         )}
@@ -98,11 +99,12 @@ export const CalendarBody = props => {
           {...props.toggleButtonProps}
           onFocus={handleToggleFocus}
           onBlur={handleToggleBlur}
+          disabled={disabledOrReadOnly}
         >
           {props.icon === 'clock' ? (
-            <ClockIcon color={props.isDisabled ? 'neutral60' : 'solid'} />
+            <ClockIcon color={disabledOrReadOnly ? 'neutral60' : 'solid'} />
           ) : (
-            <CalendarIcon color={props.isDisabled ? 'neutral60' : 'solid'} />
+            <CalendarIcon color={disabledOrReadOnly ? 'neutral60' : 'solid'} />
           )}
         </button>
       </div>
@@ -127,11 +129,11 @@ CalendarBody.propTypes = {
   }),
   value: PropTypes.string,
   isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
   isOpen: PropTypes.bool,
   hasSelection: PropTypes.bool,
   hasWarning: PropTypes.bool,
   hasError: PropTypes.bool,
-  onClearPicker: PropTypes.func,
   onClear: PropTypes.func,
   placeholder: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
