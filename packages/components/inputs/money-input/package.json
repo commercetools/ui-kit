@@ -15,6 +15,7 @@
     "@emotion/styled": "10.0.23",
     "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/hooks": "*",
     "@commercetools-uikit/input-utils": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/select-utils": "*",

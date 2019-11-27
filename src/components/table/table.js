@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AutoSizer } from 'react-virtualized';
 import { css } from '@emotion/core';
-import BaseTable from './base-table';
+import BaseTable from '@commercetools-uikit/base-table';
 
 /* The table shouldn't be greater than 768px on smaller screens,
 and should scale according to the height provided by <AutoSizer />

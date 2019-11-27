@@ -8,8 +8,8 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Inset from '@commercetools-uikit/spacings-inset';
 import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Cell from '@commercetools-uikit/table-cell';
 import SortableHeader from '../sortable-header';
-import Cell from '../cell';
 import cellRangeRenderer from './cell-range-renderer';
 
 export default class BaseTable extends React.Component {

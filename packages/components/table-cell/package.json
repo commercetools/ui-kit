@@ -1,20 +1,19 @@
 {
-  "name": "@commercetools-uikit/spacings-inline",
+  "name": "@commercetools-uikit/table-cell",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/inline.cjs.js",
-  "module": "dist/inline.esm.js",
+  "main": "dist/table-cell.cjs.js",
+  "module": "dist/table-cell.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-  "sideEffects": false,
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
     "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

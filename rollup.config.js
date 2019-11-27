@@ -35,6 +35,7 @@ const ignoredExternals = [
   'lodash/uniq',
   'lodash/memoize',
   // others
+  'dom-helpers/util/scrollbarSize',
   '@emotion/css',
   '@emotion/styled-base',
 ];
@@ -75,6 +76,22 @@ const createConfig = cliArgs => {
   return {
     input: cliArgs.input,
     external: defaultExternal,
+    treeshake: { moduleSideEffects: false },
+    onwarn(warning, warn) {
+      // skip certain warnings
+      if (
+        warning.code === 'UNUSED_EXTERNAL_IMPORT' &&
+        (warning.source === 'react' || warning.source === '@emotion/core')
+      )
+        return;
+
+      // // always throw when unresolved import
+      // if (warning.code === 'UNRESOLVED_IMPORT') {
+      //   throw new Error(warning.message);
+      // }
+      // Use default for everything else
+      warn(warning);
+    },
     output: [
       {
         file: pkg.main,

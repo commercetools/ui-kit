@@ -14,6 +14,7 @@
   "dependencies": {
     "@emotion/core": "10.0.22",
     "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

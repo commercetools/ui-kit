@@ -21,7 +21,7 @@
     "@commercetools-uikit/localized-utils": "*",
     "@commercetools-uikit/messages": "*",
     "@commercetools-uikit/input-utils": "*",
-    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/text-input": "*",
     "@commercetools-uikit/text": "*",
     "@commercetools-uikit/utils": "*",

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { AngleDownIcon, AngleRightIcon } from '../../icons';
+import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 
 const sizeIconContainer = '22px';
 const sizeIconContainerSmall = '14px';

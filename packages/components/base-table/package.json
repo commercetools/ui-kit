@@ -1,9 +1,9 @@
 {
-  "name": "@commercetools-uikit/table",
+  "name": "@commercetools-uikit/base-table",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/table.cjs.js",
-  "module": "dist/table.esm.js",
+  "main": "dist/base-table.cjs.js",
+  "module": "dist/base-table.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
@@ -13,10 +13,11 @@
   "dependencies": {
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/base-table": "*",
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/spacings-inset": "*",
+    "@commercetools-uikit/spacings-inset-squish": "*",
+    "@commercetools-uikit/table-cell": "*",
     "@commercetools-uikit/text": "*",
     "@commercetools-uikit/utils": "*",
     "dom-helpers": "5.1.3",

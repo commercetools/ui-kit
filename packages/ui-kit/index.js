@@ -79,6 +79,8 @@ export { default as Spacings } from '@commercetools-uikit/spacings';
 export { default as Stamp } from '@commercetools-uikit/stamp';
 
 export { default as Table } from '@commercetools-uikit/table';
+export { default as BaseTable } from '@commercetools-uikit/base-table';
+export { default as TableCell } from '@commercetools-uikit/table-cell';
 
 export { default as Tag } from '@commercetools-uikit/tag';
 

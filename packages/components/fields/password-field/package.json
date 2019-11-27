@@ -18,6 +18,7 @@
     "@commercetools-uikit/flat-button": "*",
     "@commercetools-uikit/field-label": "*",
     "@commercetools-uikit/field-errors": "*",
+    "@commercetools-uikit/hooks": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/spacings-stack": "*",

@@ -18,7 +18,7 @@
     "@commercetools-uikit/field-label": "*",
     "@commercetools-uikit/field-errors": "*",
     "@commercetools-uikit/input-utils": "*",
-    "@commercetools-uikit/spacings-stack": "*",
+    "@commercetools-uikit/spacings": "*",
     "@commercetools-uikit/localized-multiline-text-input": "*",
     "@commercetools-uikit/utils": "*",
     "common-tags": "1.8.0",

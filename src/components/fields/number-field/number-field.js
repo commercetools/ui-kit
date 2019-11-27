@@ -7,7 +7,7 @@ import {
   getFieldId,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
+import Stack from '@commercetools-uikit/spacings-stack';
 import FieldLabel from '@commercetools-uikit/field-label';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import NumberInput from '@commercetools-uikit/number-input';
@@ -75,7 +75,7 @@ class NumberField extends React.Component {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Spacings.Stack scale="xs">
+        <Stack scale="xs">
           <FieldLabel
             title={this.props.title}
             hint={this.props.hint}
@@ -110,7 +110,7 @@ class NumberField extends React.Component {
             isVisible={hasError}
             renderError={this.props.renderError}
           />
-        </Spacings.Stack>
+        </Stack>
       </Constraints.Horizontal>
     );
   }
