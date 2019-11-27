@@ -5,14 +5,14 @@ import has from 'lodash/has';
 import {
   filterDataAttributes,
   createSequentialId,
+  getFieldId,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
-import MoneyInput from '../../inputs/money-input';
+import MoneyInput from '@commercetools-uikit/money-input';
+import FieldErrors from '@commercetools-uikit/field-errors';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import getFieldId from '../../../utils/get-field-id';
-import FieldErrors from '../../field-errors';
 
 const sequentialId = createSequentialId('money-field-');
 
