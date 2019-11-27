@@ -34,8 +34,10 @@ The `DateRangeInput` component allows the user to select a date range.
 | `placeholder`          | `string` |    -     | -                       | -       | Placeholder value to show in the input field                                                                                                                      |
 | `isClearable`          | `bool`   |    -     | -                       | `true`  | allows the range to be cleared                                                                                                                                    |
 | `isDisabled`           | `bool`   |    -     | -                       | `false` | Disables the date picker                                                                                                                                          |
-| `hasError`             | `bool`   |    -     | -                       | -       | Indicates the input field has an error                                                                                                                            |
-| `hasWarning`           | `bool`   |    -     | -                       | -       | Indicates the input field has a warning                                                                                                                           |
+| `isReadOnly`           | `bool`   |    -     | -                       | `false` | Disables the date picker and makes input field read-only                                                                                                          |
+
+| `hasError` | `bool` | - | - | - | Indicates the input field has an error |
+| `hasWarning` | `bool` | - | - | - | Indicates the input field has a warning |
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 

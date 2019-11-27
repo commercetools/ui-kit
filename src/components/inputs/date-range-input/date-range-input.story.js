@@ -35,6 +35,7 @@ class DateRangeInputStory extends React.Component {
           placeholder={placeholder === '' ? undefined : placeholder}
           isClearable={boolean('isClearable', false)}
           isDisabled={boolean('isDisabled', false)}
+          isReadOnly={boolean('isReadOnly', false)}
           hasError={boolean('hasError', false)}
           hasWarning={boolean('hasWarning', false)}
         />
