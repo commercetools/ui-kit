@@ -4,13 +4,13 @@ import requiredIf from 'react-required-if';
 import {
   filterDataAttributes,
   createSequentialId,
+  getFieldId,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
-import DateRangeInput from '../../inputs/date-range-input';
-import getFieldId from '../../../utils/get-field-id';
-import FieldErrors from '../../field-errors';
+import DateRangeInput from '@commercetools-uikit/date-range-input';
+import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('date-range-field-');
 
