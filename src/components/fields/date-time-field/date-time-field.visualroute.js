@@ -78,5 +78,15 @@ export const component = () => (
         touched={true}
       />
     </Spec>
+    <Spec label="when read-only" propsToList={['isReadOnly']}>
+      <DateTimeField
+        timeZone="UTC"
+        title="Release Date"
+        horizontalConstraint="m"
+        value={value}
+        onChange={() => {}}
+        isReadOnly
+      />
+    </Spec>
   </Suite>
 );
