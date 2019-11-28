@@ -45,7 +45,7 @@
     "prebuild": "yarn generate-icons && yarn design-tokens:build",
     "prestorybook:start": "node ./scripts/generate-icon-exports.js && yarn design-tokens:build",
     "storybook:build": "NODE_ENV=production build-storybook -o .public -s docs/assets",
-    "build": "NODE_ENV=production lerna run build --concurrency 12 --no-private",
+    "build": "NODE_ENV=production lerna run build --concurrency 6 --no-private",
     "build:watch": "rimraf dist && cross-env NODE_ENV=production rollup --config --watch",
     "start": "yarn storybook:start",
     "storybook:start": "start-storybook -p 9002 -s docs/assets",
