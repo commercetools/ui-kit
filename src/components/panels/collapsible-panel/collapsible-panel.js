@@ -4,7 +4,7 @@ import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Spacings from '@commercetools-uikit/spacings';
-import { Detail } from '@commercetools-uikit/text';
+import Text from '@commercetools-uikit/text';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import HeaderIcon from './header-icon';
 import {
@@ -130,16 +130,20 @@ export default class CollapsiblePanel extends React.PureComponent {
                       )}
                       <Spacings.Inline alignItems="center" scale={scale}>
                         {this.props.condensed ? (
-                          <Detail isInline={true} isBold={true} truncate={true}>
+                          <Text.Detail
+                            isInline={true}
+                            isBold={true}
+                            truncate={true}
+                          >
                             {this.props.header}
-                          </Detail>
+                          </Text.Detail>
                         ) : (
                           this.props.header
                         )}
                         {this.props.secondaryHeader && (
-                          <Detail tone="secondary" truncate={true}>
+                          <Text.Detail tone="secondary" truncate={true}>
                             {this.props.secondaryHeader}
-                          </Detail>
+                          </Text.Detail>
                         )}
                       </Spacings.Inline>
                     </Spacings.Inline>
@@ -155,7 +159,7 @@ export default class CollapsiblePanel extends React.PureComponent {
               <div ref={registerContentNode}>
                 {this.props.description && (
                   <Spacings.Inset scale={scale}>
-                    <Detail>{this.props.description}</Detail>
+                    <Text.Detail>{this.props.description}</Text.Detail>
                   </Spacings.Inset>
                 )}
                 <Spacings.Inset scale={scale}>
