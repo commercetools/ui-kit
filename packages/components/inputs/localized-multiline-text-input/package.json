@@ -22,7 +22,7 @@
     "@commercetools-uikit/localized-utils": "*",
     "@commercetools-uikit/messages": "*",
     "@commercetools-uikit/multiline-input": "*",
-    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/text": "*",
     "@commercetools-uikit/utils": "*",
     "common-tags": "1.8.0",

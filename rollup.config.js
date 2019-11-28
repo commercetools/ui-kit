@@ -85,10 +85,10 @@ const createConfig = cliArgs => {
       )
         return;
 
-      // // always throw when unresolved import
-      // if (warning.code === 'UNRESOLVED_IMPORT') {
-      //   throw new Error(warning.message);
-      // }
+      // always throw when unresolved import
+      if (warning.code === 'UNRESOLVED_IMPORT') {
+        throw new Error(warning.message);
+      }
       // Use default for everything else
       warn(warning);
     },

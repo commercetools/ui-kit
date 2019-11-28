@@ -13,7 +13,7 @@
   "dependencies": {
     "@emotion/core": "10.0.22",
     "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/text": "*",
     "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2"

@@ -20,7 +20,7 @@
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/input-utils": "*",
     "@commercetools-uikit/multiline-input": "*",
-    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3"

@@ -18,7 +18,8 @@
     "@commercetools-uikit/select-utils": "*",
     "@commercetools-uikit/text": "*",
     "@commercetools-uikit/utils": "*",
-    "prop-types": "15.7.2"
+    "prop-types": "15.7.2",
+    "tiny-invariant": "1.0.6"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"

@@ -22,7 +22,7 @@
     "@commercetools-uikit/localized-utils": "*",
     "@commercetools-uikit/money-input": "*",
     "@commercetools-uikit/select-utils": "*",
-    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/tooltip": "*",
     "@commercetools-uikit/utils": "*",
     "common-tags": "1.8.0",

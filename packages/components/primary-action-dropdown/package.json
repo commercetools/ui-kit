@@ -11,8 +11,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/accessible-button": "*",
     "@commercetools-uikit/buttons": "*",
     "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/hooks": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/text": "*",
     "@emotion/core": "10.0.22",

@@ -18,6 +18,7 @@
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/input-utils": "*",
+    "@commercetools-uikit/select-utils": "*",
     "@commercetools-uikit/utils": "*",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",
