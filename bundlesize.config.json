@@ -1,8 +1,8 @@
 {
   "files": [
     {
-      "path": "./dist/ui-kit.esm.js",
-      "maxSize": "115 kB"
+      "path": "visual-testing-app/dist/ui-kit.js",
+      "maxSize": "130 kB"
     }
   ]
 }
