@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from 'ui-kit';
+import { TextField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = 'hello world, how are you?';

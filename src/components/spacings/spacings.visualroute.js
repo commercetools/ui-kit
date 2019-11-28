@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Spacings, Text, Constraints } from 'ui-kit';
+import { Spacings, Text, Constraints } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/spacings';

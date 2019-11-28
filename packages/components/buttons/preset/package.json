@@ -1,9 +1,9 @@
 {
-  "name": "@commercetools-uikit/preset-buttons",
+  "name": "@commercetools-uikit/buttons",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/preset-buttons.cjs.js",
-  "module": "dist/preset-buttons.esm.js",
+  "main": "dist/buttons.cjs.js",
+  "module": "dist/buttons.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"

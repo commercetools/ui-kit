@@ -1,4 +1,8 @@
-import { i18n, customProperties, version } from 'ui-kit';
+import {
+  i18n,
+  customProperties,
+  version,
+} from '@commercetools-frontend/ui-kit';
 
 describe('exports', () => {
   it('should export i18n for six languages', () => {

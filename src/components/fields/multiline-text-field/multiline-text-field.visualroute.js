@@ -1,5 +1,5 @@
 import React from 'react';
-import { MultilineTextField } from 'ui-kit';
+import { MultilineTextField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value =

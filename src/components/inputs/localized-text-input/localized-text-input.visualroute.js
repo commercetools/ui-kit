@@ -1,5 +1,8 @@
 import React from 'react';
-import { LocalizedTextInput, ErrorMessage } from 'ui-kit';
+import {
+  LocalizedTextInput,
+  ErrorMessage,
+} from '@commercetools-frontend/ui-kit';
 import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 

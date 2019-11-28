@@ -1,6 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
-import { InformationIcon, SecondaryIconButton } from 'ui-kit';
+import {
+  InformationIcon,
+  SecondaryIconButton,
+} from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/secondary-icon-button';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton, InformationIcon } from 'ui-kit';
+import { IconButton, InformationIcon } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/icon-button';

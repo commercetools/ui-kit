@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'ui-kit';
+import { Link } from '@commercetools-frontend/ui-kit';
 import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 

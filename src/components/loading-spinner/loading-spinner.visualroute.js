@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingSpinner } from 'ui-kit';
+import { LoadingSpinner } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/loading-spinner';

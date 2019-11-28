@@ -1,6 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
-import { FieldLabel, WarningIcon, FlatButton, customProperties } from 'ui-kit';
+import {
+  FieldLabel,
+  WarningIcon,
+  FlatButton,
+  customProperties,
+} from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/field-label';

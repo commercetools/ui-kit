@@ -1,0 +1,26 @@
+{
+  "name": "visual-testing-app",
+  "version": "0.0.0",
+  "description": "An app to facilitate visual testing",
+  "private": true,
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.config.js",
+    "build:watch": "NODE_ENV=production webpack --config webpack.config.js --watch",
+    "start": "serve dist --no-clipboard --single --listen 3001"
+  },
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "prop-types": "15.7.2",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-intl": "3.4.0",
+    "react-router": "5.1.2",
+    "react-router-dom": "5.1.2"
+  },
+  "devDependencies": {
+    "serve": "11.2.0",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10"
+  }
+}

@@ -1,5 +1,8 @@
 import React from 'react';
-import { InformationIcon, SecondaryButton } from 'ui-kit';
+import {
+  InformationIcon,
+  SecondaryButton,
+} from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/secondary-button';

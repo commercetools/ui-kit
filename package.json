@@ -1,6 +1,6 @@
 {
-  "name": "@commercetools-frontend/ui-kit",
-  "version": "10.12.0",
+  "name": "ui-kit",
+  "version": "0.0.0",
   "description": "UI component library based on our Design System",
   "homepage": "https://uikit.commercetools.com/",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
@@ -10,7 +10,8 @@
   },
   "private": true,
   "workspaces": [
-    "packages/**/*"
+    "packages/**/*",
+    "visual-testing-app"
   ],
   "license": "MIT",
   "publishConfig": {
@@ -65,9 +66,9 @@
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "release:next": "yarn publish --tag next",
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
-    "visual-testing-app:build": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js",
-    "visual-testing-app:build:watch": "NODE_ENV=production webpack --config visual-testing-app/webpack.config.js --watch",
-    "visual-testing-app:serve": "serve visual-testing-app/dist --no-clipboard --single --listen 3001"
+    "visual-testing-app:build": "yarn --cwd visual-testing-app build",
+    "visual-testing-app:build:watch": "yarn --cwd visual-testing-app build:watch",
+    "visual-testing-app:serve": "yarn --cwd visual-testing-app start"
   },
   "devDependencies": {
     "@babel/core": "7.7.4",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimeInput } from 'ui-kit';
+import { TimeInput } from '@commercetools-frontend/ui-kit';
 import { ThemeProvider } from 'emotion-theming';
 import { Suite, Spec } from '../../../../test/percy';
 

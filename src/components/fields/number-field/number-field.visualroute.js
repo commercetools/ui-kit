@@ -1,5 +1,5 @@
 import React from 'react';
-import { NumberField } from 'ui-kit';
+import { NumberField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = '12.50';
