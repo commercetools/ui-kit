@@ -26,7 +26,9 @@ const IconContainer = styled.div`
   width: ${props => (props.big ? '50px' : '25px')};
 `;
 
-const icons = Object.keys(UIKit).filter(thing => thing.endsWith('Icon'));
+const icons = Object.keys(UIKit)
+  .filter(thing => thing.endsWith('Icon'))
+  .sort();
 
 const sizes = ['small', 'medium', 'big', 'scale'];
 
