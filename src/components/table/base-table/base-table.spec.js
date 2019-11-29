@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { CellMeasurer, MultiGrid } from 'react-virtualized';
 import { ClassNames } from '@emotion/core';
-import SortableHeader from '../sortable-header';
-import Cell from '../cell';
+import Cell from '@commercetools-uikit/table-cell';
 import BaseTable from './base-table';
+import SortableHeader from '../sortable-header';
 import cellRangeRenderer from './cell-range-renderer';
 
 jest.mock('dom-helpers/util/scrollbarSize', () => () => 20);
@@ -373,7 +373,7 @@ describe('BaseTable', () => {
           );
         });
         it('should render SortableHeader', () => {
-          expect(headerWrapper).toRender(SortableHeader);
+          expect(headerWrapper).toRender('SortableHeader');
         });
         it('should pass columnKey prop to SortableHeader ', () => {
           expect(headerWrapper.find(SortableHeader)).toHaveProp(

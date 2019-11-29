@@ -71,7 +71,6 @@ const Container = styled.div`
 const SortableHeader = props => {
   const isActive = props.sortBy === props.columnKey;
   const isArrowDown = isActive && props.sortDirection === 'DESC';
-
   return (
     <Container alignRight={props.alignRight}>
       <Text.Body tone="inverted">{props.children}</Text.Body>
