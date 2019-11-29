@@ -12,6 +12,17 @@
     "prebuild": "rimraf ../../dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
+  "files": [
+    "dist",
+    "../../i18n",
+    "../../codemods",
+    "../../materials/custom-properties.*",
+    "../../CHANGELOG.md",
+    "../../README.md",
+    "../../transforms",
+    "../../LICENSE",
+    "package.json"
+  ],
   "sideEffects": false,
   "author": "",
   "license": "MIT",
