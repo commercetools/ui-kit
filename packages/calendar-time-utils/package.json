@@ -2,6 +2,10 @@
   "name": "@commercetools-uikit/calendar-time-utils",
   "version": "0.0.0",
   "description": "",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/calendar-time-utils.cjs.js",
   "module": "dist/calendar-time-utils.esm.js",
   "scripts": {

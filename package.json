@@ -58,6 +58,7 @@
     "format:js": "prettier --write '**/*.js'",
     "format:md": "prettier --write --parser markdown '**/*.md'",
     "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
+    "release:alpha": "lerna publish --exact --dist-tag alpha --no-git-tag-version --no-push",
     "test": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:bundle": "jest --config jest.bundle.config.js",

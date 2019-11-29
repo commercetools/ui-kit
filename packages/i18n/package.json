@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/i18n.cjs.js",
   "module": "dist/i18n.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "scripts": {
     "prebuild": "rimraf dist/**",
