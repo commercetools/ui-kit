@@ -35,7 +35,6 @@ const ignoredExternals = [
   'lodash/uniq',
   'lodash/memoize',
   // others
-  'dom-helpers/util/scrollbarSize',
   '@emotion/css',
   '@emotion/styled-base',
 ];

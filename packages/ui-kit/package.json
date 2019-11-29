@@ -14,13 +14,8 @@
   },
   "files": [
     "dist",
-    "../../i18n",
-    "../../codemods",
-    "../../materials/custom-properties.*",
-    "../../CHANGELOG.md",
-    "../../README.md",
-    "../../transforms",
-    "../../LICENSE",
+    "i18n",
+    "materials/custom-properties.*",
     "package.json"
   ],
   "sideEffects": false,

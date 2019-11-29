@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import vars from '../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { ThemeProvider } from 'emotion-theming';
 
 const darkTheme = {
