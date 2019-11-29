@@ -2,6 +2,10 @@
   "name": "@commercetools-uikit/card",
   "version": "0.0.0",
   "description": "",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/card.cjs.js",
   "module": "dist/card.esm.js",
   "scripts": {

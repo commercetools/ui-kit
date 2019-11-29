@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/date-input.cjs.js",
   "module": "dist/date-input.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"

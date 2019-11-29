@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/password-input.cjs.js",
   "module": "dist/password-input.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"

@@ -8,6 +8,10 @@
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "",
   "license": "MIT",
   "sideEffects": false,

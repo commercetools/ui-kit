@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/rich-text-input.cjs.js",
   "module": "dist/rich-text-input.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
