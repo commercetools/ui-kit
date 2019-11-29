@@ -14,9 +14,6 @@
     "visual-testing-app"
   ],
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "dist/ui-kit.cjs.js",
   "module": "dist/ui-kit.esm.js",
   "files": [
