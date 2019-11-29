@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"

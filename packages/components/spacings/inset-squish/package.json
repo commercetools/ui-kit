@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/inset-squish.cjs.js",
   "module": "dist/inset-squish.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
