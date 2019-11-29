@@ -15,8 +15,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@emotion/core": "10.0.22",
-    "@emotion/styled": "10.0.23",
     "@commercetools-uikit/collapsible-motion": "*",
     "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
@@ -27,6 +25,9 @@
     "@commercetools-uikit/rich-text-plugins": "*",
     "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/utils": "*",
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "immutable": "4.0.0-rc.12",
     "is-hotkey": "0.1.6",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
