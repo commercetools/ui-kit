@@ -81,38 +81,10 @@ commands:
             libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
             ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget --fix-missing
       - run: ./scripts/run-percy.sh
-  publish_to_next:
-    parameters:
-      git_branch:
-        type: env_var_name
-        default: CIRCLE_BRANCH
-      git_tag:
-        type: env_var_name
-        default: CIRCLE_TAG
-      working_directory:
-        type: string
-        default: *working_directory
+  publish:
+    description: Publishing to npm registry
     steps:
-      - run:
-          name: Checking if on master branch
-          command: |
-            if [ -z ${<< parameters.git_tag >>}]
-            then
-              echo "Git tag is not set, not publishing."
-              circleci-agent step halt
-            else
-              echo "Git branch is ${<< parameters.git_branch >>} and tag is ${<< parameters.git_tag >>}, publishing."
-            fi
-      - checkout
-      - restore_cache: *restore_yarn_cache
-      - install_dependencies
-      - build_artifacts
-      - run:
-          name: Authenticating with npm registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > << parameters.working_directory >>/.npmrc
-      - run:
-          name: Publishing ${<< parameters.git_tag >>} from ${<< parameters.git_branch >>} to next dist-tag
-          command: yarn release:next
+      - run: ./scripts/release_canary.sh
 
 jobs:
   lint_and_test:
@@ -142,7 +114,9 @@ jobs:
   publish:
     executor: node_10
     steps:
-      - publish_to_next
+      - install_dependencies
+      - restore_workspace
+      - publish
 
 workflows:
   version: 2
@@ -171,9 +145,6 @@ workflows:
           requires:
             - bundle_test
           filters:
-            tags:
-              only: /v[\.0-9]+.*/
             branches:
               only:
                 - master
-                - /release\/.*/
