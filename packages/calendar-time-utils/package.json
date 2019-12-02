@@ -10,13 +10,13 @@
   "module": "dist/calendar-time-utils.esm.js",
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
   "sideEffects": false,
   "dependencies": {},
   "peerDependencies": {
     "moment-timezone": "0.5.x"
   },
-  "author": "",
+
   "license": "MIT"
 }

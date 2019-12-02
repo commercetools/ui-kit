@@ -12,7 +12,7 @@
     "prebuild": "rimraf dist/**",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-  "author": "",
+
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "10.0.22",

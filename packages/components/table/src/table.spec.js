@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BaseTable from '@commercetools-uikit/base-table';
-import Table from '@commercetools-uikit/table';
+import BaseTable from './base-table';
+import Table from './table';
 
 const FooterComponent = () => <div>{'Hello'}</div>;
 const createTestProps = custom => ({

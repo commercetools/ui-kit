@@ -9,8 +9,10 @@
     "start": "serve dist --no-clipboard --single --listen 3001"
   },
   "dependencies": {
+    "@commercetools-uikit/design-system": "*",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
+    "emotion-theming": "10.0.19",
     "moment": "2.24.0",
     "moment-timezone": "0.5.27",
     "prop-types": "15.7.2",

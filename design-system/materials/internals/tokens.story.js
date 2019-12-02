@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
+import TextInput from '@commercetools-uikit/text-input';
 import Readme from './TOKENS.md';
-import TextInput from '../../src/components/inputs/text-input';
 import vars from '../custom-properties';
 import definition from './definition.yaml';
 

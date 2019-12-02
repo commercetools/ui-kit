@@ -8,10 +8,10 @@ import { withKnobs, boolean, number, text } from '@storybook/addon-knobs/react';
 import sortBy from 'lodash/sortBy';
 import { css, ClassNames } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import Button from '../buttons/secondary-button';
-import Readme from './README.md';
+import Button from '@commercetools-uikit/secondary-button';
+import Tooltip from '@commercetools-uikit/tooltip';
+import Readme from '../README.md';
 import Table from './table';
-import Tooltip from '../tooltip';
 
 const Portal = props => {
   const domNode = document.body;

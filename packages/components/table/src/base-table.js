@@ -2,17 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
 import sortBy from 'lodash/sortBy';
-// for some reason eslint is using the main node_modules which has version 3 of dom-helpers
-// instead of the dom helpers that we explicitly ask for in our package.json :thinking:
-/* eslint-disable-next-line import/no-unresolved */
 import getScrollbarSize from 'dom-helpers/scrollbarSize';
 import { Global, ClassNames, css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Inset from '@commercetools-uikit/spacings-inset';
 import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import Cell from '@commercetools-uikit/table-cell';
-import SortableHeader from '../sortable-header';
+import Cell from './cell';
+import SortableHeader from './sortable-header';
 import cellRangeRenderer from './cell-range-renderer';
 
 export default class BaseTable extends React.Component {

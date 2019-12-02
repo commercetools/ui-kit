@@ -12,7 +12,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "",
+
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {

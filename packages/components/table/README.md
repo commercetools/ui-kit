@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { Table } from '@commercetools-frontend/ui-kit';
+import { Table } from '@commercetools-uikit/table';
 ```
 
 ### `<Table />`

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
   "dependencies": {
     "@emotion/core": "10.0.22",
@@ -20,6 +20,6 @@
   "peerDependencies": {
     "react": ">= 16.8.0"
   },
-  "author": "",
+
   "license": "MIT"
 }

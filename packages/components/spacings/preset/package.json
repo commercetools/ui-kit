@@ -13,7 +13,7 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
   "sideEffects": false,
-  "author": "",
+
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/spacings-inline": "*",

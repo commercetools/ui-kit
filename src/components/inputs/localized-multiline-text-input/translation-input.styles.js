@@ -1,6 +1,8 @@
 import { css } from '@emotion/core';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
-import designTokens from '../../../../materials/design-tokens';
+import {
+  customProperties as vars,
+  designTokens,
+} from '@commercetools-uikit/design-system';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import customProperties from '../../materials/custom-properties';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 const darkTheme = {
   colorSurface: 'black',

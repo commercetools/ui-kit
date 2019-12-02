@@ -11,8 +11,8 @@
   "sideEffects": false,
   "scripts": {
     "prebuild": "rimraf dist/**",
-    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
-  "author": "",
+
   "license": "MIT"
 }

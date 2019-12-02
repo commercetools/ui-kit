@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { CellMeasurer, MultiGrid } from 'react-virtualized';
 import { ClassNames } from '@emotion/core';
-import Cell from '@commercetools-uikit/table-cell';
+import Cell from './cell';
 import BaseTable from './base-table';
-import SortableHeader from '../sortable-header';
+import SortableHeader from './sortable-header';
 import cellRangeRenderer from './cell-range-renderer';
 
 jest.mock('dom-helpers/scrollbarSize', () => () => 20);
