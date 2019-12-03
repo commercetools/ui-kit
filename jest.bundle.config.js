@@ -7,7 +7,7 @@ const vendorsToTranspile = require('./vendors-to-transpile');
 // and warn in case it is old.
 const info = (() => {
   try {
-    return fs.statSync('./preset-packages/ui-kit/dist/ui-kit.esm.js');
+    return fs.statSync('./presets/ui-kit/dist/ui-kit.esm.js');
   } catch (e) {
     return null;
   }

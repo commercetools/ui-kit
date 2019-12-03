@@ -9,14 +9,16 @@
   "main": "dist/calendar-utils.cjs.js",
   "module": "dist/calendar-utils.esm.js",
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {},
   "peerDependencies": {
     "moment": "2.x"
   },
-
   "license": "MIT"
 }

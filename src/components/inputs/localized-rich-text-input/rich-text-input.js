@@ -5,10 +5,10 @@ import pick from 'lodash/pick';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import plugins from '@commercetools-uikit/rich-text-plugins';
+import plugins from '../../internals/rich-text-plugins';
+import html from '../../internals/rich-text-utils/html';
 import renderEditor from './editor';
 import LanguagesControlButton from './languages-control';
-import html from '../../internals/rich-text-utils/html';
 
 class RichTextInput extends React.PureComponent {
   serializedValue = this.props.value || '';

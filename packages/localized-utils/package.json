@@ -9,15 +9,17 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
     "@commercetools-uikit/utils": "*",
     "lodash": "4.17.15",
     "tiny-invariant": "1.0.6"
   },
-
   "license": "MIT"
 }

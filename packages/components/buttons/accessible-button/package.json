@@ -9,11 +9,13 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
     "@emotion/styled": "10.0.23",

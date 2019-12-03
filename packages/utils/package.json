@@ -9,14 +9,16 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
     "@emotion/is-prop-valid": "0.8.5",
     "warning": "4.0.3"
   },
-
   "license": "MIT"
 }

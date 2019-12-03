@@ -9,10 +9,13 @@
   "main": "dist/card.cjs.js",
   "module": "dist/card.esm.js",
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "10.0.22",

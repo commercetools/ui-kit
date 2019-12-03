@@ -2,13 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { useIntl } from 'react-intl';
-import {
-  CalendarBody,
-  CalendarMenu,
-  CalendarHeader,
-  CalendarContent,
-  CalendarDay,
-} from '@commercetools-uikit/calendar';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
@@ -25,6 +18,11 @@ import {
   createItemToString,
   parseInputToDate,
 } from '@commercetools-uikit/calendar-utils';
+import CalendarBody from '../../internals/calendar-body';
+import CalendarMenu from '../../internals/calendar-menu';
+import CalendarHeader from '../../internals/calendar-header';
+import CalendarContent from '../../internals/calendar-content';
+import CalendarDay from '../../internals/calendar-day';
 import messages from './messages';
 
 const DateInput = props => {

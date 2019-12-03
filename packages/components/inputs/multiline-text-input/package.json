@@ -9,10 +9,13 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "10.0.22",
@@ -23,11 +26,14 @@
     "@commercetools-uikit/hooks": "*",
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/input-utils": "*",
-    "@commercetools-uikit/multiline-input": "*",
+    "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/spacings-stack": "*",
+    "@commercetools-uikit/tooltip": "*",
     "@commercetools-uikit/utils": "*",
+    "downshift": "3.4.5",
     "prop-types": "15.7.2",
-    "react-required-if": "1.0.3"
+    "react-required-if": "1.0.3",
+    "react-textarea-autosize": "7.1.2"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",

@@ -12,7 +12,7 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
-import RichTextBody from '@commercetools-uikit/rich-text-body';
+import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import { getLanguageLabelStyles } from './editor.styles';
 import messages from '../../internals/messages/multiline-input';

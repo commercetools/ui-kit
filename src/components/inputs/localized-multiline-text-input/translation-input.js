@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import MultilineInput from '@commercetools-uikit/multiline-input';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
+import MultilineInput from '../../internals/multiline-input';
 import messages from '../../internals/messages/multiline-input';
 import {
   getTextareaStyles,

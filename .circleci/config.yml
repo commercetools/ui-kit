@@ -39,9 +39,9 @@ commands:
       - persist_to_workspace:
           root: *working_directory
           paths:
-            - design-system/**/dist/
+            - design-system/dist/
             - packages/**/dist/
-            - preset-packages/**/dist/
+            - presets/**/dist/
   restore_package_bundles:
     steps:
       - attach_workspace:

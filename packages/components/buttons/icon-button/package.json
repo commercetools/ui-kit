@@ -5,15 +5,17 @@
   "main": "dist/icon-button.cjs.js",
   "module": "dist/icon-button.esm.js",
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
     "@emotion/styled": "10.0.23",

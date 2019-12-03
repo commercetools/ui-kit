@@ -1,17 +1,11 @@
 {
-  "extends": [
-    "config:base",
-    ":pinOnlyDevDependencies",
-    "schedule:weekly"
-  ],
+  "extends": ["config:base", ":pinOnlyDevDependencies", "schedule:weekly"],
   "separateMajorMinor": true,
   "groupName": "all dependencies",
   "groupSlug": "all",
   "packageRules": [
     {
-      "packagePatterns": [
-        "*"
-      ],
+      "packagePatterns": ["*"],
       "groupName": "all dependencies",
       "groupSlug": "all"
     }

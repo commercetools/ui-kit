@@ -8,11 +8,14 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
-
   "peerDependencies": {
     "react": ">= 16.8.0"
   },

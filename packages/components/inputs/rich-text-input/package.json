@@ -9,10 +9,13 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist/**",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/collapsible-motion": "*",
@@ -21,12 +24,13 @@
     "@commercetools-uikit/flat-button": "*",
     "@commercetools-uikit/hooks": "*",
     "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/rich-text-body": "*",
-    "@commercetools-uikit/rich-text-plugins": "*",
+    "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/spacings-stack": "*",
+    "@commercetools-uikit/tooltip": "*",
     "@commercetools-uikit/utils": "*",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
+    "downshift": "3.4.5",
     "immutable": "4.0.0-rc.12",
     "is-hotkey": "0.1.6",
     "prop-types": "15.7.2",
