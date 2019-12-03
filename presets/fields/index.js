@@ -14,3 +14,5 @@ export { default as CreatableSelectField } from '@commercetools-uikit/creatable-
 export { default as AsyncCreatableSelectField } from '@commercetools-uikit/async-creatable-select-field';
 export { default as PasswordField } from '@commercetools-uikit/password-field';
 export { default as RadioField } from '@commercetools-uikit/radio-field';
+
+export { default as version } from './version';
