@@ -24,51 +24,12 @@ export {
 export { default as FieldLabel } from '@commercetools-uikit/field-label';
 export { default as FieldErrors } from '@commercetools-uikit/field-errors';
 
-// fields
-
-export { default as TextField } from '@commercetools-uikit/text-field';
-export { default as DateField } from '@commercetools-uikit/date-field';
-export { default as DateTimeField } from '@commercetools-uikit/date-time-field';
-export { default as DateRangeField } from '@commercetools-uikit/date-range-field';
-export { default as TimeField } from '@commercetools-uikit/time-field';
-export { default as MultilineTextField } from '@commercetools-uikit/multiline-text-field';
-export { default as LocalizedTextField } from '@commercetools-uikit/localized-text-field';
-export { default as LocalizedMultilineTextField } from '@commercetools-uikit/localized-multiline-text-field';
-export { default as NumberField } from '@commercetools-uikit/number-field';
-export { default as MoneyField } from '@commercetools-uikit/money-field';
-export { default as SelectField } from '@commercetools-uikit/select-field';
-export { default as AsyncSelectField } from '@commercetools-uikit/async-select-field';
-export { default as CreatableSelectField } from '@commercetools-uikit/creatable-select-field';
-export { default as AsyncCreatableSelectField } from '@commercetools-uikit/async-creatable-select-field';
-export { default as PasswordField } from '@commercetools-uikit/password-field';
-export { default as RadioField } from '@commercetools-uikit/radio-field';
-
 export { default as Grid } from '@commercetools-uikit/grid';
 
 export * from '@commercetools-uikit/icons';
 
-// inputs
-export { default as AsyncCreatableSelectInput } from '@commercetools-uikit/async-creatable-select-input';
-export { default as AsyncSelectInput } from '@commercetools-uikit/async-select-input';
-export { default as CreatableSelectInput } from '@commercetools-uikit/creatable-select-input';
-export { default as DateInput } from '@commercetools-uikit/date-input';
-export { default as DateRangeInput } from '@commercetools-uikit/date-range-input';
-export { default as DateTimeInput } from '@commercetools-uikit/date-time-input';
-export { default as LocalizedMultilineTextInput } from '@commercetools-uikit/localized-multiline-text-input';
-export { default as LocalizedTextInput } from '@commercetools-uikit/localized-text-input';
-export { default as MoneyInput } from '@commercetools-uikit/money-input';
-export { default as LocalizedMoneyInput } from '@commercetools-uikit/localized-money-input';
-export { default as MultilineTextInput } from '@commercetools-uikit/multiline-text-input';
-export { default as NumberInput } from '@commercetools-uikit/number-input';
-export { default as PasswordInput } from '@commercetools-uikit/password-input';
-export { default as SelectInput } from '@commercetools-uikit/select-input';
-export { default as TextInput } from '@commercetools-uikit/text-input';
-export { default as RichTextInput } from '@commercetools-uikit/rich-text-input';
-export { default as LocalizedRichTextInput } from '@commercetools-uikit/localized-rich-text-input';
-export { default as TimeInput } from '@commercetools-uikit/time-input';
-export { default as ToggleInput } from '@commercetools-uikit/toggle-input';
-export { default as CheckboxInput } from '@commercetools-uikit/checkbox-input';
-export { default as RadioInput } from '@commercetools-uikit/radio-input';
+export * from '@commercetools-uikit/fields';
+export * from '@commercetools-uikit/inputs';
 
 export { default as Label } from '@commercetools-uikit/label';
 
