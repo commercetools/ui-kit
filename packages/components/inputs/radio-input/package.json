@@ -21,7 +21,7 @@
     "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/input-utils": "*",
+
     "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2",
     "react-is": "16.11.0",

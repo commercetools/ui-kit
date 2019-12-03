@@ -20,7 +20,7 @@
     "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/input-utils": "*",
+
     "@commercetools-uikit/select-utils": "*",
     "@commercetools-uikit/spacings": "*",
     "@commercetools-uikit/text": "*",

@@ -5,7 +5,6 @@ import { ThemeContext } from '@emotion/core';
 import { components as defaultComponents } from 'react-select';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import Constraints from '@commercetools-uikit/constraints';
-import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import {
   ClearIndicator,
   DropdownIndicator,
@@ -15,6 +14,7 @@ import LoadingIndicator from '../../internals/loading-indicator';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import addStaticFields from '../../../utils/add-static-fields';
 import messages from '../../internals/messages/select';
+import createSelectStyles from '../../internals/create-select-styles';
 
 const useTheme = () => useContext(ThemeContext);
 

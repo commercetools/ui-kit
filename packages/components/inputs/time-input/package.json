@@ -21,7 +21,7 @@
     "@commercetools-uikit/constraints": "*",
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/input-utils": "*",
+
     "@commercetools-uikit/utils": "*",
     "@commercetools-uikit/spacings-inline": "*",
     "prop-types": "15.7.2",

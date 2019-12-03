@@ -11,7 +11,7 @@ import {
   TagRemove,
   DropdownIndicator,
 } from '@commercetools-uikit/select-utils';
-import { createSelectStyles } from '@commercetools-uikit/input-utils';
+import createSelectStyles from '../../internals/create-select-styles';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import addStaticFields from '../../../utils/add-static-fields';
 import messages from '../../internals/messages/select';

@@ -21,7 +21,7 @@
     "@commercetools-uikit/design-system": "*",
     "@commercetools-uikit/flat-button": "*",
     "@commercetools-uikit/hooks": "*",
-    "@commercetools-uikit/input-utils": "*",
+
     "@commercetools-uikit/icons": "*",
     "@commercetools-uikit/localized-utils": "*",
     "@commercetools-uikit/messages": "*",

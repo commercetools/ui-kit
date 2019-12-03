@@ -12,10 +12,10 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes, isNumberish } from '@commercetools-uikit/utils';
 import Tooltip from '@commercetools-uikit/tooltip';
 import { DropdownIndicator } from '@commercetools-uikit/select-utils';
-import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
+import createSelectStyles from '../../internals/create-select-styles';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import currencies from './currencies.json';
 import {

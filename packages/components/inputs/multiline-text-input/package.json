@@ -22,7 +22,7 @@
     "@commercetools-uikit/flat-button": "*",
     "@commercetools-uikit/hooks": "*",
     "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/input-utils": "*",
+
     "@commercetools-uikit/spacings-inline": "*",
     "@commercetools-uikit/spacings-stack": "*",
     "@commercetools-uikit/tooltip": "*",

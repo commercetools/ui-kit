@@ -6,12 +6,12 @@ import { components as defaultComponents } from 'react-select';
 import AsyncSelect from 'react-select/async';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import { createSelectStyles } from '@commercetools-uikit/input-utils';
 import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
 } from '@commercetools-uikit/select-utils';
+import createSelectStyles from '../../internals/create-select-styles';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import addStaticFields from '../../../utils/add-static-fields';
 import LoadingIndicator from '../../internals/loading-indicator';

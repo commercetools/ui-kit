@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import { getInputStyles } from '@commercetools-uikit/input-utils';
+import { getInputStyles } from '../styles';
 
 const TextInput = props => {
   return (
