@@ -19,5 +19,3 @@ export { default as TimeInput } from '@commercetools-uikit/time-input';
 export { default as ToggleInput } from '@commercetools-uikit/toggle-input';
 export { default as CheckboxInput } from '@commercetools-uikit/checkbox-input';
 export { default as RadioInput } from '@commercetools-uikit/radio-input';
-
-export { default as version } from './version';

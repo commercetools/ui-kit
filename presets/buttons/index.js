@@ -5,5 +5,3 @@ export { default as IconButton } from '@commercetools-uikit/icon-button';
 export { default as LinkButton } from '@commercetools-uikit/link-button';
 export { default as SecondaryButton } from '@commercetools-uikit/secondary-button';
 export { default as SecondaryIconButton } from '@commercetools-uikit/secondary-icon-button';
-
-export { default as version } from './version';

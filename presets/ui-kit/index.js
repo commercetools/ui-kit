@@ -1,6 +1,9 @@
 import * as i18n from '@commercetools-uikit/i18n';
 
 export { i18n };
+
+// NOTE: to make sure that the following preset packages to not
+// export a `version` property, as export properties cannot be overridden.
 export * from '@commercetools-uikit/buttons';
 export * from '@commercetools-uikit/fields';
 export * from '@commercetools-uikit/icons';

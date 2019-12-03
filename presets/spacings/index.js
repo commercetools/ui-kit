@@ -4,5 +4,3 @@ import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
 import Stack from '@commercetools-uikit/spacings-stack';
 
 export default { Inline, Inset, InsetSquish, Stack };
-
-export { default as version } from './version';
