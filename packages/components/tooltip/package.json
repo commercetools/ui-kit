@@ -5,16 +5,13 @@
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
   "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "publishConfig": { "access": "public" },
   "scripts": {
+    "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
@@ -28,7 +25,5 @@
     "react-is": "16.11.0",
     "use-popper": "1.1.6"
   },
-  "peerDependencies": {
-    "react": ">= 16.8.0"
-  }
+  "peerDependencies": { "react": ">= 16.8.0" }
 }

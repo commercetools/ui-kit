@@ -5,17 +5,14 @@
   "main": "dist/icon-button.cjs.js",
   "module": "dist/icon-button.esm.js",
   "scripts": {
+    "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
   "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "publishConfig": { "access": "public" },
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "dependencies": {
     "@emotion/styled": "10.0.23",
@@ -31,7 +28,5 @@
     "react-required-if": "1.0.3",
     "tiny-invariant": "1.0.6"
   },
-  "peerDependencies": {
-    "react": ">= 16.8.0"
-  }
+  "peerDependencies": { "react": ">= 16.8.0" }
 }

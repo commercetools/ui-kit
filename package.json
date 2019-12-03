@@ -157,6 +157,7 @@
     "react-router-dom": "5.1.2",
     "react-value": "0.2.0",
     "read-pkg-up": "7.0.0",
+    "replace": "1.1.1",
     "rimraf": "3.0.0",
     "rollup": "1.27.5",
     "rollup-plugin-babel": "4.3.3",

@@ -7,3 +7,5 @@ export { default as warnDeprecatedComponent } from '../../src/utils/warn-depreca
 export { default as warnDeprecatedProp } from '../../src/utils/warn-deprecated-prop';
 export { default as createSequentialId } from '../../src/utils/create-sequential-id';
 export { default as getFieldId } from '../../src/utils/get-field-id';
+
+export { default as version } from './version';

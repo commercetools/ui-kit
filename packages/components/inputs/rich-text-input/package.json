@@ -5,16 +5,13 @@
   "main": "dist/rich-text-input.cjs.js",
   "module": "dist/rich-text-input.esm.js",
   "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "publishConfig": { "access": "public" },
   "scripts": {
+    "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
@@ -40,8 +37,5 @@
     "slate-react": "0.22.10",
     "tiny-invariant": "1.0.6"
   },
-  "peerDependencies": {
-    "react": ">= 16.8.0",
-    "react-intl": "3.x"
-  }
+  "peerDependencies": { "react": ">= 16.8.0", "react-intl": "3.x" }
 }

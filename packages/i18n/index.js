@@ -6,3 +6,5 @@ import zhCN from './data/zh-CN.json';
 import ja from './data/ja.json';
 
 export { en, de, es, frFR, zhCN, ja };
+
+export { default as version } from './version';

@@ -5,15 +5,11 @@
   "main": "dist/i18n.cjs.js",
   "module": "dist/i18n.esm.js",
   "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist",
-    "data"
-  ],
+  "publishConfig": { "access": "public" },
+  "files": ["dist", "data"],
   "sideEffects": false,
   "scripts": {
+    "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },

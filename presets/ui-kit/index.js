@@ -93,4 +93,4 @@ export { useToggleState } from '@commercetools-uikit/hooks';
 
 export { customProperties } from '@commercetools-uikit/design-system';
 
-export { default as version } from '../../src/version';
+export { default as version } from './version';
