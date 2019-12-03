@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
-import { Text } from '../../../index';
+import Text from '@commercetools-uikit/text';
 import Inline from '../inline';
 import Inset from '../inset';
 import Stack from './stack';

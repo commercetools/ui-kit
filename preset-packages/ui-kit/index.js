@@ -1,4 +1,6 @@
-export * as i18n from '@commercetools-uikit/i18n';
+import * as i18n from '@commercetools-uikit/i18n';
+
+export { i18n };
 
 export { default as Avatar } from '@commercetools-uikit/avatar';
 export { default as Card } from '@commercetools-uikit/card';
@@ -78,9 +80,7 @@ export { default as Spacings } from '@commercetools-uikit/spacings';
 
 export { default as Stamp } from '@commercetools-uikit/stamp';
 
-export { default as Table } from '@commercetools-uikit/table';
-export { default as BaseTable } from '@commercetools-uikit/table';
-export { default as TableCell } from '@commercetools-uikit/table';
+export { Table, BaseTable, TableCell } from '@commercetools-uikit/table';
 
 export { default as Tag } from '@commercetools-uikit/tag';
 
