@@ -14,8 +14,8 @@
   "files": ["dist"],
   "sideEffects": false,
   "scripts": {
+    "changelog": "node scripts/changelog.js",
     "generate-icons": "node ./scripts/generate-icon-exports.js",
-    "changelog": "conventional-changelog -p angular -u",
     "design-tokens:build": "yarn --cwd design-system build:tokens",
     "design-tokens:build:watch": "yarn --cwd design-system build:tokens:watch",
     "prebuild": "yarn generate-icons && yarn design-tokens:build",
@@ -139,6 +139,7 @@
     "jest-watch-typeahead": "0.4.2",
     "json-loader": "0.5.7",
     "lerna": "3.19.0",
+    "lerna-changelog": "0.8.3",
     "lint-staged": "9.4.3",
     "markdown-loader": "5.1.0",
     "moment": "2.24.0",
