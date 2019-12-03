@@ -1025,6 +1025,24 @@
     lodash.omit "^4.5.0"
     react-display-name "0.2.4"
 
+"@commercetools/github-labels@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@commercetools/github-labels/-/github-labels-1.1.0.tgz#0be242831fad863cd5bd7b41b7366763ea7dbeea"
+  integrity sha512-MNOUZDUyXKf6jRk67esFdvWjIdjUY9/9pAIdUt++VDPbYA8kbY4HZWs6dPgqxBfD9Krwax4Xqvon9zFvm25aPQ==
+  dependencies:
+    "@commercetools/http-user-agent" "^2.0.0"
+    "@octokit/rest" "^16.25.0"
+    cosmiconfig "^5.2.0"
+    dotenv "^7.0.0"
+    file-system "^2.2.2"
+    mri "^1.1.4"
+    shelljs "^0.8.3"
+
+"@commercetools/http-user-agent@^2.0.0":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@commercetools/http-user-agent/-/http-user-agent-2.1.2.tgz#4fbdbd92962a3f2a76b58732e4ccd9187b14a42c"
+  integrity sha512-d6migEVDtJ/BlKAkpGj4HZvUSBmKwCIX6L8iRRlMNbbBLjpN3oWqOi5nRsO3v21bS8LHBBVYoFWrBtWKbqLeVQ==
+
 "@commercetools/jest-enzyme-matchers@1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@commercetools/jest-enzyme-matchers/-/jest-enzyme-matchers-1.1.2.tgz#42da642e7a5a0e88da702a1a8b67ed952b8ad6e1"
@@ -2419,7 +2437,7 @@
     once "^1.4.0"
     universal-user-agent "^4.0.0"
 
-"@octokit/rest@^16.28.4":
+"@octokit/rest@^16.25.0", "@octokit/rest@^16.28.4":
   version "16.35.0"
   resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.35.0.tgz#7ccc1f802f407d5b8eb21768c6deca44e7b4c0d8"
   integrity sha512-9ShFqYWo0CLoGYhA1FdtdykJuMzS/9H6vSbbQWDX4pWr4p9v+15MsH/wpd/3fIU+tSxylaNO48+PIHqOkBRx3w==
@@ -6807,6 +6825,11 @@ dotenv@^6.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
 
+dotenv@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
+  integrity sha512-M3NhsLbV1i6HuGzBUH8vXrtxOk+tWmzWKDMbAVSUp3Zsjm7ywFeuwrUXhmhQyRK1q5B5GGy7hcXPbj3bnfZg2g==
+
 dotenv@^8.0.0, dotenv@^8.1.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
@@ -7893,6 +7916,13 @@ file-loader@^3.0.1:
     loader-utils "^1.0.2"
     schema-utils "^1.0.0"
 
+file-match@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/file-match/-/file-match-1.0.2.tgz#c9cad265d2c8adf3a81475b0df475859069faef7"
+  integrity sha1-ycrSZdLIrfOoFHWw30dYWQafrvc=
+  dependencies:
+    utils-extend "^1.0.6"
+
 file-system-cache@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/file-system-cache/-/file-system-cache-1.0.5.tgz#84259b36a2bbb8d3d6eb1021d3132ffe64cfff4f"
@@ -7901,6 +7931,14 @@ file-system-cache@^1.0.5:
     bluebird "^3.3.5"
     fs-extra "^0.30.0"
     ramda "^0.21.0"
+
+file-system@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/file-system/-/file-system-2.2.2.tgz#7d65833e3a2347dcd956a813c677153ed3edd987"
+  integrity sha1-fWWDPjojR9zZVqgTxncVPtPt2Yc=
+  dependencies:
+    file-match "^1.0.1"
+    utils-extend "^1.0.4"
 
 filesize@3.6.1:
   version "3.6.1"
@@ -11636,7 +11674,7 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
-mri@1.1.4:
+mri@1.1.4, mri@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/mri/-/mri-1.1.4.tgz#7cb1dd1b9b40905f1fac053abe25b6720f44744a"
   integrity sha512-6y7IjGPm8AzlvoUrwAaw1tLnUBudaS3752vcd8JtrpGGQn+rXIe63LFVHm/YMwtqAuh+LJPCFdlLYPWM1nYn6w==
@@ -16561,6 +16599,11 @@ utila@^0.4.0, utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=
+
+utils-extend@^1.0.4, utils-extend@^1.0.6:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/utils-extend/-/utils-extend-1.0.8.tgz#ccfd7b64540f8e90ee21eec57769d0651cab8a5f"
+  integrity sha1-zP17ZFQPjpDuIe7Fd2nQZRyril8=
 
 utils-merge@1.0.1:
   version "1.0.1"

@@ -45,7 +45,8 @@
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
     "visual-testing-app:build": "yarn --cwd visual-testing-app build",
     "visual-testing-app:build:watch": "yarn --cwd visual-testing-app build:watch",
-    "visual-testing-app:serve": "yarn --cwd visual-testing-app start"
+    "visual-testing-app:serve": "yarn --cwd visual-testing-app start",
+    "labels:sync": "github-labels sync"
   },
   "workspaces": {
     "packages": [
@@ -68,6 +69,7 @@
     "@babel/preset-env": "7.7.4",
     "@babel/preset-react": "7.7.4",
     "@commercetools/enzyme-extensions": "5.0.0",
+    "@commercetools/github-labels": "1.1.0",
     "@commercetools/jest-enzyme-matchers": "1.1.2",
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
