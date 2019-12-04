@@ -22,7 +22,7 @@
     "@commercetools-uikit/utils": "*",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",
-    "react-is": "16.11.0",
+    "react-is": "16.12.0",
     "use-popper": "1.1.6"
   },
   "peerDependencies": { "react": ">= 16.8.0" }
