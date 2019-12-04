@@ -1,0 +1,33 @@
+{
+  "name": "visual-testing-app",
+  "version": "10.12.0",
+  "description": "An app to facilitate visual testing",
+  "private": true,
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.config.js",
+    "build:watch": "NODE_ENV=production webpack --config webpack.config.js --watch",
+    "start": "serve dist --no-clipboard --single --listen 3001"
+  },
+  "dependencies": {
+    "@commercetools-uikit/design-system": "11.0.0-alpha.10",
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "emotion-theming": "10.0.19",
+    "moment": "2.24.0",
+    "moment-timezone": "0.5.27",
+    "prop-types": "15.7.2",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-intl": "3.4.0",
+    "react-router": "5.1.2",
+    "react-router-dom": "5.1.2"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "3.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "moment-locales-webpack-plugin": "1.1.2",
+    "serve": "11.2.0",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10"
+  }
+}

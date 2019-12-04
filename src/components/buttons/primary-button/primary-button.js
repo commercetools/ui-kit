@@ -4,9 +4,9 @@ import isNil from 'lodash/isNil';
 import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
-import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
-import Spacings from '../../spacings';
+import Inline from '@commercetools-uikit/spacings-inline';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '../accessible-button';
 import { getButtonStyles } from './primary-button.styles';
 
@@ -34,7 +34,7 @@ const PrimaryButton = props => {
       isDisabled={props.isDisabled}
       css={getButtonStyles(props.isDisabled, isActive, props.tone, props.size)}
     >
-      <Spacings.Inline alignItems="center" scale="xs">
+      <Inline alignItems="center" scale="xs">
         {Boolean(props.iconLeft) && (
           <span
             css={css`
@@ -51,7 +51,7 @@ const PrimaryButton = props => {
           </span>
         )}
         <span>{props.label}</span>
-      </Spacings.Inline>
+      </Inline>
     </AccessibleButton>
   );
 };

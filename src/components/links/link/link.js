@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/core';
-import getPassThroughProps from '../../../utils/get-pass-through-props';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { getPassThroughProps } from '@commercetools-uikit/utils';
 
 const getLinkStyles = (props, theme) => {
   const overwrittenVars = {

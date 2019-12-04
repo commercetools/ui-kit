@@ -4,7 +4,7 @@ import {
   LocalizedMultilineTextInput,
   ErrorMessage,
   WarningMessage,
-} from 'ui-kit';
+} from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const lorem =

@@ -5,13 +5,13 @@ import pick from 'lodash/pick';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import usePrevious from '../../../hooks/use-previous';
-import CollapsibleMotion from '../../collapsible-motion';
-import Spacings from '../../spacings';
-import { AngleUpIcon, AngleDownIcon } from '../../icons';
-import Text from '../../typography/text';
-import FlatButton from '../../buttons/flat-button';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { usePrevious } from '@commercetools-uikit/hooks';
+import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
+import Stack from '@commercetools-uikit/spacings-stack';
+import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
+import Text from '@commercetools-uikit/text';
+import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import { getLanguageLabelStyles } from './editor.styles';
@@ -86,7 +86,7 @@ const Editor = props => {
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
         return (
-          <Spacings.Stack scale="xs">
+          <Stack scale="xs">
             <div
               key={props.language}
               css={css`
@@ -173,7 +173,7 @@ const Editor = props => {
               )}
             </Row>
             {(props.error || props.warning) && props.languagesControl()}
-          </Spacings.Stack>
+          </Stack>
         );
       }}
     </CollapsibleMotion>

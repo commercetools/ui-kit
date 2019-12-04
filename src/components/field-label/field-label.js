@@ -3,12 +3,13 @@ import invariant from 'tiny-invariant';
 import React from 'react';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
-import IconButton from '../buttons/icon-button';
-import { InformationIcon } from '../icons';
-import Text from '../typography/text';
-import Label from '../label';
-import Constraints from '../constraints';
-import Spacings from '../spacings';
+import { IconButton } from '@commercetools-uikit/buttons';
+import { InformationIcon } from '@commercetools-uikit/icons';
+import Text from '@commercetools-uikit/text';
+import Constraints from '@commercetools-uikit/constraints';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Inline from '@commercetools-uikit/spacings-inline';
+import Label from '@commercetools-uikit/label';
 
 export const FieldLabel = props => {
   if (props.hintIcon && props.hintIcon.props && props.hintIcon.props.size) {
@@ -19,8 +20,8 @@ export const FieldLabel = props => {
   }
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="xs">
-        <Spacings.Inline alignItems="flexStart" scale="xs">
+      <Stack scale="xs">
+        <Inline alignItems="flexStart" scale="xs">
           <Text.Wrap>
             <Label
               isBold={true}
@@ -39,23 +40,23 @@ export const FieldLabel = props => {
               onClick={props.onInfoButtonClick}
             />
           )}
-        </Spacings.Inline>
+        </Inline>
 
         {props.hint && (
-          <Spacings.Inline alignItems="center" scale="xs">
+          <Inline alignItems="center" scale="xs">
             {props.hintIcon && (
-              <Spacings.Inline>
+              <Inline>
                 {React.cloneElement(props.hintIcon, {
                   // FIXME: add proper tone when tones are refactored
                   size: 'medium',
                   color: props.hintIcon.props.color || 'warning',
                 })}
-              </Spacings.Inline>
+              </Inline>
             )}
             {props.hint && (
               <Text.Detail tone={props.tone}>{props.hint}</Text.Detail>
             )}
-          </Spacings.Inline>
+          </Inline>
         )}
         {props.description && (
           <Text.Wrap>
@@ -73,7 +74,7 @@ export const FieldLabel = props => {
             {props.badge}
           </div>
         )}
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

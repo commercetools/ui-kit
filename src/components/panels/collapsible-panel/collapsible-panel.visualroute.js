@@ -1,5 +1,5 @@
 import React from 'react';
-import { CollapsiblePanel } from 'ui-kit';
+import { CollapsiblePanel } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/collapsible-panel';

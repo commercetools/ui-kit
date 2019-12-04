@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '../typography/text';
+import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
 
 const Label = props => (

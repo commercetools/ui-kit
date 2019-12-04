@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
-import { Text } from 'ui-kit';
+import { Text } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const NarrowBox = styled.div`

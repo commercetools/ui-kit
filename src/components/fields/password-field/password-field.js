@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
-import useToggleState from '../../../hooks/use-toggle-state';
-import useFieldId from '../../../hooks/use-field-id';
-import Constraints from '../../constraints';
-import Spacings from '../../spacings';
-import FieldLabel from '../../field-label';
-import PasswordInput from '../../inputs/password-input';
-import FlatButton from '../../buttons/flat-button';
-import { EyeIcon, EyeCrossedIcon } from '../../icons';
-import createSequentialId from '../../../utils/create-sequential-id';
-import FieldErrors from '../../field-errors';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import {
+  filterDataAttributes,
+  createSequentialId,
+} from '@commercetools-uikit/utils';
+import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
+import Constraints from '@commercetools-uikit/constraints';
+import Inline from '@commercetools-uikit/spacings-inline';
+import Stack from '@commercetools-uikit/spacings-stack';
+import FieldLabel from '@commercetools-uikit/field-label';
+import PasswordInput from '@commercetools-uikit/password-input';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { EyeIcon, EyeCrossedIcon } from '@commercetools-uikit/icons';
+import FieldErrors from '@commercetools-uikit/field-errors';
 import messages from './messages';
 
 const sequentialId = createSequentialId('password-field-');
@@ -27,8 +29,8 @@ const PasswordField = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="xs">
-        <Spacings.Inline alignItems="center" justifyContent="space-between">
+      <Stack scale="xs">
+        <Inline alignItems="center" justifyContent="space-between">
           <FieldLabel
             hint={props.hint}
             title={props.title}
@@ -51,7 +53,7 @@ const PasswordField = props => {
               isDisabled={!props.value}
             />
           )}
-        </Spacings.Inline>
+        </Inline>
         <PasswordInput
           id={id}
           name={props.name}
@@ -74,7 +76,7 @@ const PasswordField = props => {
           isVisible={hasError}
           renderError={props.renderError}
         />
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

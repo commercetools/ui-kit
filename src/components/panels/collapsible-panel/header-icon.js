@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { css } from '@emotion/core';
-import { AngleDownIcon, AngleRightIcon } from '../../icons';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 
 const sizeIconContainer = '22px';
 const sizeIconContainerSmall = '14px';

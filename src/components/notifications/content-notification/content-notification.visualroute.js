@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentNotification } from 'ui-kit';
+import { ContentNotification } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/content-notification';

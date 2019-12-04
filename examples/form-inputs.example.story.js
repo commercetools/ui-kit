@@ -6,7 +6,6 @@ import { injectIntl } from 'react-intl';
 import { action } from '@storybook/addon-actions';
 import omitEmpty from 'omit-empty';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
-import { FormikBox, Section } from '../.storybook/decorators';
 import {
   Text,
   ErrorMessage,
@@ -18,7 +17,8 @@ import {
   PrimaryButton,
   SecondaryButton,
   Spacings,
-} from '../src';
+} from '@commercetools-frontend/ui-kit';
+import { FormikBox, Section } from '../.storybook/decorators';
 import Forms from './form-inputs.md';
 
 // utilities for story

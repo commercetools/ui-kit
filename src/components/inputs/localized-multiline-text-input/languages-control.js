@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import FlatButton from '../../buttons/flat-button';
-import { WorldIcon } from '../../icons';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { WorldIcon } from '@commercetools-uikit/icons';
 import messages from '../../internals/messages/localized-input';
 
 const LanguagesControl = props => {

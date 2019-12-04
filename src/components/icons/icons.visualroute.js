@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
-import * as UIKit from 'ui-kit';
+import * as UIKit from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 const IconList = styled.div`
@@ -26,7 +26,9 @@ const IconContainer = styled.div`
   width: ${props => (props.big ? '50px' : '25px')};
 `;
 
-const icons = Object.keys(UIKit).filter(thing => thing.endsWith('Icon'));
+const icons = Object.keys(UIKit)
+  .filter(thing => thing.endsWith('Icon'))
+  .sort();
 
 const sizes = ['small', 'medium', 'big', 'scale'];
 

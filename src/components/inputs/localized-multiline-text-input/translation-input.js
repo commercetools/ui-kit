@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { AngleUpIcon } from '@commercetools-uikit/icons';
+import Stack from '@commercetools-uikit/spacings-stack';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Text from '@commercetools-uikit/text';
 import MultilineInput from '../../internals/multiline-input';
-import FlatButton from '../../buttons/flat-button';
-import { AngleUpIcon } from '../../icons';
-import Spacings from '../../spacings';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Text from '../../typography/text';
 import messages from '../../internals/messages/multiline-input';
 import {
   getTextareaStyles,
@@ -79,7 +79,7 @@ const TranslationInput = props => {
     contentRowCount > TranslationInput.MIN_ROW_COUNT;
 
   return (
-    <Spacings.Stack scale="xs">
+    <Stack scale="xs">
       <div
         key={props.language}
         css={css`
@@ -152,7 +152,7 @@ const TranslationInput = props => {
         )}
       </Row>
       {(props.error || props.warning) && props.languagesControl}
-    </Spacings.Stack>
+    </Stack>
   );
 };
 

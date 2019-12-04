@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import useToggleState from '../../../hooks/use-toggle-state';
-import vars from '../../../../materials/custom-properties';
-import Text from '../../typography/text';
-import { CaretDownIcon, CaretUpIcon } from '../../icons';
-import AccessibleButton from '../../buttons/accessible-button';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import Text from '@commercetools-uikit/text';
+import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
+import { useToggleState } from '@commercetools-uikit/hooks';
 
 const getButtonStyles = isDisabled => {
   const baseButtonStyles = css`

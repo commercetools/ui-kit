@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { components } from 'react-select';
-import { CaretDownIcon } from '../../icons';
+import { CaretDownIcon } from '@commercetools-uikit/icons';
 
 const DropdownIndicator = props => (
   <components.DropdownIndicator {...props}>

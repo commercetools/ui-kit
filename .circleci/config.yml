@@ -4,59 +4,58 @@ aliases:
   - &working_directory ~/ui-kit
 
   - &restore_yarn_cache
-    name: 'Restoring yarn cache'
-    keys:
-      - v1-yarn-cache-{{ checksum "yarn.lock" }}
-      - v1-yarn-cache
+    restore_cache:
+      name: 'Restoring yarn cache'
+      keys:
+        - v1-yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v1-yarn-cache-{{ .Branch }}
+        - v1-yarn-cache
 
   - &save_yarn_cache
-    name: 'Saving yarn cache'
-    key: v1-yarn-cache-{{ checksum "yarn.lock" }}
-    paths:
-      - ~/.cache/yarn
-      - node_modules
+    save_cache:
+      name: 'Saving yarn cache'
+      key: v1-yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      paths:
+        - ~/.cache/yarn
+
+  - &run_yarn
+    run: yarn --frozen-lockfile
 
 executors:
-  node_10:
+  node_13:
     docker:
       - image: circleci/node:13.1
     working_directory: *working_directory
 
 commands:
-  install_dependencies:
-    description: 'Installing dependencies'
+  setup_dependencies:
+    description: Installing dependencies
     steps:
       - checkout
-      - restore_cache: *restore_yarn_cache
-      - run: yarn install --frozen-lockfile
-      - save_cache: *save_yarn_cache
-  build_artifacts:
-    description: 'Building artifacts'
-    steps:
-      - run: yarn build
-      - run: yarn bundlesize
-  save_workspace:
+      - *restore_yarn_cache
+      - *run_yarn
+  save_package_bundles:
     steps:
       - persist_to_workspace:
           root: *working_directory
           paths:
-            - dist
-  restore_workspace:
+            - design-system/dist/
+            - packages/**/dist/
+            - presets/**/dist/
+  restore_package_bundles:
     steps:
       - attach_workspace:
           at: *working_directory
-  lint:
-    description: 'Running linters'
+  build_packages:
+    description: Building packages
     steps:
-      - run: yarn run generate-icons && yarn run jest --projects jest.eslint.config.js jest.stylelint.config.js --maxWorkers=3 --reporters jest-silent-reporter
-  unit_test:
-    description: 'Running unit tests'
+      - run: yarn build
+  lint_and_test:
+    description: 'Running linters and tests'
     steps:
-      - run: yarn run jest --projects jest.test.config.js --maxWorkers=3 --reporters jest-silent-reporter
-  bundle_test:
-    description: 'Running bundle tests'
-    steps:
-      - run: yarn run jest --projects jest.bundle.config.js --maxWorkers=3 --reporters jest-silent-reporter
+      - run:
+          name: Running linters and tests
+          command: yarn run jest --projects jest.{eslint,stylelint,test,bundle}.config.js --maxWorkers=3 --reporters jest-silent-reporter
   vrt_test:
     description: 'Running Visual Regression Tests'
     steps:
@@ -79,100 +78,50 @@ commands:
             libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
             libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
             ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget --fix-missing
-      - run: ./scripts/run-percy.sh
-  publish_to_next:
-    parameters:
-      git_branch:
-        type: env_var_name
-        default: CIRCLE_BRANCH
-      git_tag:
-        type: env_var_name
-        default: CIRCLE_TAG
-      working_directory:
-        type: string
-        default: *working_directory
+      - run:
+          name: Bulding visual testing app
+          command: yarn visual-testing-app:build
+      - run:
+          name: Running Percy against visual testing app
+          command: ./scripts/run-percy.sh
+      - run:
+          name: Checking bundle size of visual testing app
+          command: yarn bundlesize
+  publish:
+    description: Publishing to npm registry
     steps:
-      - run:
-          name: Checking if on master branch
-          command: |
-            if [ -z ${<< parameters.git_tag >>}]
-            then
-              echo "Git tag is not set, not publishing."
-              circleci-agent step halt
-            else
-              echo "Git branch is ${<< parameters.git_branch >>} and tag is ${<< parameters.git_tag >>}, publishing."
-            fi
-      - checkout
-      - restore_cache: *restore_yarn_cache
-      - install_dependencies
-      - build_artifacts
-      - run:
-          name: Authenticating with npm registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > << parameters.working_directory >>/.npmrc
-      - run:
-          name: Publishing ${<< parameters.git_tag >>} from ${<< parameters.git_branch >>} to next dist-tag
-          command: yarn release:next
+      - run: ./scripts/release_canary.sh
 
 jobs:
-  lint_and_test:
-    executor: node_10
+  build_lint_and_test:
+    executor: node_13
     steps:
-      - install_dependencies
-      - lint
-      - unit_test
-  build:
-    executor: node_10
-    steps:
-      - install_dependencies
-      - build_artifacts
-      - save_workspace
-  bundle_test:
-    executor: node_10
-    steps:
-      - install_dependencies
-      - restore_workspace
-      - bundle_test
-  vrt_test:
-    executor: node_10
-    steps:
-      - install_dependencies
-      - restore_workspace
+      - setup_dependencies
+      - *save_yarn_cache
+      - build_packages
+      - lint_and_test
       - vrt_test
+      - save_package_bundles
   publish:
-    executor: node_10
+    executor: node_13
     steps:
-      - publish_to_next
+      - setup_dependencies
+      - restore_package_bundles
+      - publish
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - lint_and_test:
+      - build_lint_and_test:
           filters:
             tags:
               only: /v[\.0-9]+.*/
-      - build:
-          requires:
-            - lint_and_test
-          filters:
-            tags:
-              only: /v[\.0-9]+.*/
-      - bundle_test:
-          requires:
-            - build
-          filters:
-            tags:
-              only: /v[\.0-9]+.*/
-      - vrt_test:
-          requires:
-            - build
       - publish:
           requires:
-            - bundle_test
+            - build_lint_and_test
           filters:
-            tags:
-              only: /v[\.0-9]+.*/
             branches:
               only:
                 - master
-                - /release\/.*/
+                - ml-mono

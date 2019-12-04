@@ -21,7 +21,11 @@ You can build the visual testing app with the command `yarn visual-testing-app:b
 This package (`@commercetools-frontend/ui-kit`) is aliased to `ui-kit` inside the app and files ending in `.visualroute`. So you can do the following to import from UI Kit:
 
 ```js
-import { PrimaryButton, MoneyInput, i18n } from 'ui-kit';
+import {
+  PrimaryButton,
+  MoneyInput,
+  i18n,
+} from '@commercetools-frontend/ui-kit';
 ```
 
 ## Does the visual testing app use the CJS or the ESM build?

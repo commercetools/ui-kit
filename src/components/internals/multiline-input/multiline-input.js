@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import TextareaAutosize from 'react-textarea-autosize';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { getTextareaStyles } from './multiline-input.styles';
 
 const MIN_ROW_COUNT = 1;

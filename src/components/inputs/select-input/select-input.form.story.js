@@ -3,12 +3,12 @@ import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean } from '@storybook/addon-knobs/react';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../.storybook/decorators/section';
 import FormikBox from '../../../../.storybook/decorators/formik-box';
 import PrimaryButton from '../../buttons/primary-button';
 import ErrorMessage from '../../messages/error-message';
 import SecondaryButton from '../../buttons/secondary-button';
-import Spacings from '../../spacings';
 import Readme from './README.md';
 import SelectInput from './select-input';
 

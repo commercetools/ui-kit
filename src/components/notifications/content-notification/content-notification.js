@@ -2,9 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { ErrorIcon, WarningIcon, InfoIcon, CheckBoldIcon } from '../../icons';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import {
+  ErrorIcon,
+  WarningIcon,
+  InfoIcon,
+  CheckBoldIcon,
+} from '@commercetools-uikit/icons';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 const getIconContainerBackgroundColour = props => {
   switch (props.type) {

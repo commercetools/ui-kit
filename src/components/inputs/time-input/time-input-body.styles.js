@@ -1,8 +1,9 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import vars from '../../../../materials/custom-properties';
-import designTokens from '../../../../materials/design-tokens';
-
+import {
+  customProperties as vars,
+  designTokens,
+} from '@commercetools-uikit/design-system';
 import { getInputStyles } from '../styles';
 
 // NOTE: order is important here

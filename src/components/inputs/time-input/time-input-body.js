@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import { ClockIcon, CloseIcon } from '../../icons';
-import Spacings from '../../spacings';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
+import Inline from '@commercetools-uikit/spacings-inline';
 import {
   StyledClearSection,
   StyledClockIconContainer,
@@ -51,7 +51,7 @@ export default class TimeInputBody extends React.Component {
 
   render() {
     return (
-      <Spacings.Inline alignItems="center">
+      <Inline alignItems="center">
         <StyledInputContainer
           isDisabled={this.props.isDisabled}
           isReadOnly={this.props.isReadOnly}
@@ -91,7 +91,7 @@ export default class TimeInputBody extends React.Component {
             <ClockIcon color={this.props.isDisabled ? 'neutral60' : 'solid'} />
           </StyledClockIconContainer>
         </StyledInputContainer>
-      </Spacings.Inline>
+      </Inline>
     );
   }
 }

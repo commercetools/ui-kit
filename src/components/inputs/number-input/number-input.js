@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import requiredIf from 'react-required-if';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Constraints from '../../constraints';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '../styles';
 
 const NumberInput = props => (

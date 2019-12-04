@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import pick from 'lodash/pick';
-import { customProperties } from '../../dist/ui-kit.esm';
+import { customProperties } from '@commercetools-frontend/ui-kit';
 
 const SpecContainer = styled.div`
   display: flex;

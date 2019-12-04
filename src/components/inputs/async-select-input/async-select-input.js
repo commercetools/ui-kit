@@ -4,16 +4,18 @@ import { useIntl } from 'react-intl';
 import { ThemeContext } from '@emotion/core';
 import { components as defaultComponents } from 'react-select';
 import AsyncSelect from 'react-select/async';
-import Constraints from '../../constraints';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Constraints from '@commercetools-uikit/constraints';
+import {
+  ClearIndicator,
+  TagRemove,
+  DropdownIndicator,
+} from '@commercetools-uikit/select-utils';
+import createSelectStyles from '../../internals/create-select-styles';
 import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
 import addStaticFields from '../../../utils/add-static-fields';
-import ClearIndicator from '../../internals/clear-indicator';
-import TagRemove from '../../internals/tag-remove';
-import DropdownIndicator from '../../internals/dropdown-indicator';
 import LoadingIndicator from '../../internals/loading-indicator';
 import messages from '../../internals/messages/select';
-import createSelectStyles from '../../internals/create-select-styles';
 
 const useTheme = () => useContext(ThemeContext);
 

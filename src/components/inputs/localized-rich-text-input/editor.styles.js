@@ -1,7 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
-import designTokens from '../../../../materials/design-tokens';
+import {
+  customProperties as vars,
+  designTokens,
+} from '@commercetools-uikit/design-system';
 
 const getLanguageLabelStyles = (props, theme) => {
   const overwrittenVars = {

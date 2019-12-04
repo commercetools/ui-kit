@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
-import { Text } from '../../../index';
+import Text from '@commercetools-uikit/text';
 import Inline from '../inline';
 import Inset from './inset';
 import Readme from './README.md';
@@ -11,7 +11,6 @@ const View = styled.div`
 `;
 
 const InsetColorWrapper = styled.div`
-  display: inline-block;
   background-color: #ff5b5b;
   height: 100px;
   width: 100px;

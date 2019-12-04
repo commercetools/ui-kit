@@ -2,14 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
-import CalendarBody from '../../internals/calendar-body';
-import CalendarMenu from '../../internals/calendar-menu';
-import CalendarHeader from '../../internals/calendar-header';
-import CalendarContent from '../../internals/calendar-content';
-import CalendarDay from '../../internals/calendar-day';
-import Constraints from '../../constraints';
-import messages from './messages';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import Constraints from '@commercetools-uikit/constraints';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   createCalendarItems,
   getDateInMonth,
@@ -25,7 +19,13 @@ import {
   createItemRangeToString,
   formatRange,
   parseInputToDate,
-} from '../../../utils/calendar';
+} from '@commercetools-uikit/calendar-utils';
+import CalendarBody from '../../internals/calendar-body';
+import CalendarMenu from '../../internals/calendar-menu';
+import CalendarHeader from '../../internals/calendar-header';
+import CalendarContent from '../../internals/calendar-content';
+import CalendarDay from '../../internals/calendar-day';
+import messages from './messages';
 
 const parseRangeText = (text, locale) => {
   const parts = text

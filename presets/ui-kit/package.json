@@ -1,0 +1,62 @@
+{
+  "name": "@commercetools-frontend/ui-kit",
+  "version": "10.12.0",
+  "description": "",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/ui-kit.cjs.js",
+  "module": "dist/ui-kit.esm.js",
+  "scripts": {
+    "prepare": "../../scripts/version.js replace",
+    "prebuild": "rimraf dist && rimraf i18n && rimraf materials",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
+    "postbuild": "mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
+  },
+  "files": [
+    "dist",
+    "materials",
+    "i18n"
+  ],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/avatar": "*",
+    "@commercetools-uikit/buttons": "*",
+    "@commercetools-uikit/card": "*",
+    "@commercetools-uikit/collapsible": "*",
+    "@commercetools-uikit/collapsible-motion": "*",
+    "@commercetools-uikit/collapsible-panel": "*",
+    "@commercetools-uikit/constraints": "*",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/field-label": "*",
+    "@commercetools-uikit/field-errors": "*",
+    "@commercetools-uikit/fields": "*",
+    "@commercetools-uikit/grid": "*",
+    "@commercetools-uikit/hooks": "*",
+    "@commercetools-uikit/i18n": "*",
+    "@commercetools-uikit/icons": "*",
+    "@commercetools-uikit/inputs": "*",
+    "@commercetools-uikit/label": "*",
+    "@commercetools-uikit/link": "*",
+    "@commercetools-uikit/loading-spinner": "*",
+    "@commercetools-uikit/messages": "*",
+    "@commercetools-uikit/notifications": "*",
+    "@commercetools-uikit/primary-action-dropdown": "*",
+    "@commercetools-uikit/spacings": "*",
+    "@commercetools-uikit/stamp": "*",
+    "@commercetools-uikit/tag": "*",
+    "@commercetools-uikit/table": "*",
+    "@commercetools-uikit/text": "*",
+    "@commercetools-uikit/tooltip": "*",
+    "@commercetools-uikit/utils": "*"
+  },
+  "peerDependencies": {
+    "moment": "2.x",
+    "moment-timezone": "0.5.x",
+    "react": ">= 16.8.0",
+    "react-router-dom": "5.x",
+    "react-intl": "3.x"
+  }
+}

@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import {
+  filterDataAttributes,
+  filterAriaAttributes,
+} from '@commercetools-uikit/utils';
 import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
-import vars from '../../../../materials/custom-properties';
 
 const thumbSmallSize = '13px';
 const thumbBigSize = `calc(${thumbSmallSize} * 2)`;

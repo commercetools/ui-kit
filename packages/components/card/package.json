@@ -1,0 +1,25 @@
+{
+  "name": "@commercetools-uikit/card",
+  "version": "0.0.0",
+  "description": "",
+  "private": false,
+  "publishConfig": { "access": "public" },
+  "main": "dist/card.cjs.js",
+  "module": "dist/card.esm.js",
+  "scripts": {
+    "prepare": "../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/utils": "*",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": { "react": ">= 16.8.0" }
+}

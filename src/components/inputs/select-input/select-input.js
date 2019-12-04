@@ -5,15 +5,17 @@ import { ThemeContext } from '@emotion/core';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
 import Select, { components as defaultComponents } from 'react-select';
-import Constraints from '../../constraints';
-import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import addStaticFields from '../../../utils/add-static-fields';
-import ClearIndicator from '../../internals/clear-indicator';
-import TagRemove from '../../internals/tag-remove';
-import DropdownIndicator from '../../internals/dropdown-indicator';
-import messages from '../../internals/messages/select';
+import Constraints from '@commercetools-uikit/constraints';
+import {
+  ClearIndicator,
+  TagRemove,
+  DropdownIndicator,
+} from '@commercetools-uikit/select-utils';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import createSelectStyles from '../../internals/create-select-styles';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
+import addStaticFields from '../../../utils/add-static-fields';
+import messages from '../../internals/messages/select';
 
 const useTheme = () => useContext(ThemeContext);
 

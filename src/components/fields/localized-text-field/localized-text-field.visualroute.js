@@ -1,5 +1,5 @@
 import React from 'react';
-import { LocalizedTextField } from 'ui-kit';
+import { LocalizedTextField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = {

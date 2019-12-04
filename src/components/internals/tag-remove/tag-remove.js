@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import { CloseBoldIcon } from '../../icons';
+import { CloseBoldIcon } from '@commercetools-uikit/icons';
 
 // see https://github.com/JedWatson/react-select/blob/44e9fb29b230e49a754a2f0d6f30c2250aa45009/src/components/MultiValue.js
 const removeProps = ['onClick', 'onTouchEnd', 'onMouseDown'];

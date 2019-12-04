@@ -65,7 +65,7 @@ The header of this component should follow our design and UX conventions so it l
 Whenever the component is configured to be `condensed` all content pased via the `header` will be wrapped in a `<Text.Detail />`. For this use case please ensure that _no combinations of components_ are passed via the `header`.
 
 ```js
-import CollapsiblePanel from '@commercetools-local/ui-kit/panels/collapsible-panel';
+import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 
 <CollapsiblePanel condensed={true} header={'My title'}>
   <YourComponentAsContentOfThePanel />
@@ -77,7 +77,7 @@ import CollapsiblePanel from '@commercetools-local/ui-kit/panels/collapsible-pan
 For this use case you will need to explicitly pass the `header` wrapped by the `<CollapsiblePanel.Header />` component to automatically ensure it follows our designs (enforced by the `<CollapsiblePanel.Header />`).
 
 ```js
-import CollapsiblePanel from '@commercetools-local/ui-kit/panels/collapsible-panel';
+import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 
 <CollapsiblePanel
   header={

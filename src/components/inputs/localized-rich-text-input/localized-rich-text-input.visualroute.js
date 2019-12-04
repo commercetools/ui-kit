@@ -1,7 +1,11 @@
 import React from 'react';
 import { Value } from 'react-value';
 import { Switch, Route } from 'react-router-dom';
-import { LocalizedRichTextInput, ErrorMessage, WarningMessage } from 'ui-kit';
+import {
+  LocalizedRichTextInput,
+  ErrorMessage,
+  WarningMessage,
+} from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const lorem =

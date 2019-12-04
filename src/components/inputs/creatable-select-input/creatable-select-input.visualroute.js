@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreatableSelectInput } from 'ui-kit';
+import { CreatableSelectInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const options = [

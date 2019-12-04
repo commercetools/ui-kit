@@ -3,20 +3,21 @@ import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
-import useToggleState from '../../../hooks/use-toggle-state';
-import Spacings from '../../spacings';
-import Constraints from '../../constraints';
+import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
+import MoneyInput from '@commercetools-uikit/money-input';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Constraints from '@commercetools-uikit/constraints';
 import {
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
   getHasWarningOnRemainingLanguages,
   getId,
   getName,
-} from '../../../utils/localized';
-import useFieldId from '../../../hooks/use-field-id';
-import createSequentialId from '../../../utils/create-sequential-id';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import MoneyInput from '../money-input';
+} from '@commercetools-uikit/localized-utils';
+import {
+  createSequentialId,
+  filterDataAttributes,
+} from '@commercetools-uikit/utils';
 import CurrencyControl from './currency-control';
 
 const sequentialId = createSequentialId('localized-money-input-');
@@ -53,7 +54,7 @@ const LocalizedInput = props => {
     [props.currency, onChange]
   );
   return (
-    <Spacings.Stack scale="xs">
+    <Stack scale="xs">
       <div
         css={css`
           width: 100%;
@@ -93,7 +94,7 @@ const LocalizedInput = props => {
         </div>
       </div>
       {(props.error || props.warning) && props.currenciesControl}
-    </Spacings.Stack>
+    </Stack>
   );
 };
 
@@ -158,7 +159,7 @@ const LocalizedMoneyInput = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="s">
+      <Stack scale="s">
         {currencies.map((currency, index) => {
           const isFirstCurrency = index === 0;
           if (!isFirstCurrency && !areCurrenciesExpanded) return null;
@@ -233,7 +234,7 @@ const LocalizedMoneyInput = props => {
             />
           );
         })}
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

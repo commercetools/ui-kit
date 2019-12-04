@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import filterAriaAttributes from '../../../utils/filter-aria-attributes';
-import getFieldId from '../../../utils/get-field-id';
-import createSequentialId from '../../../utils/create-sequential-id';
-import Text from '../../typography/text';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import {
+  createSequentialId,
+  filterDataAttributes,
+  filterAriaAttributes,
+  getFieldId,
+} from '@commercetools-uikit/utils';
+import Text from '@commercetools-uikit/text';
 import {
   IndeterminateIcon,
   CheckedIcon,
@@ -14,7 +17,6 @@ import {
 } from '../../internals/icons';
 import { getCheckboxWrapperStyles } from './checkbox-input.styles';
 import Checkbox from './checkbox';
-import vars from '../../../../materials/custom-properties';
 
 const sequentialId = createSequentialId('checkbox-input-');
 

@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import vars from '../../../materials/custom-properties';
-import designTokens from '../../../materials/design-tokens';
-import Constraints from '../constraints';
-import AccessibleButton from '../buttons/accessible-button';
-import Text from '../typography/text';
-import { CloseBoldIcon } from '../icons';
+import {
+  customProperties as vars,
+  designTokens,
+} from '@commercetools-uikit/design-system';
+import Constraints from '@commercetools-uikit/constraints';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
+import Text from '@commercetools-uikit/text';
+import { CloseBoldIcon } from '@commercetools-uikit/icons';
 
 const Body = styled.div``;
 

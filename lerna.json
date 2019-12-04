@@ -1,0 +1,29 @@
+{
+  "lerna": "3.19.0",
+  "useWorkspaces": true,
+  "version": "10.12.0",
+  "npmClient": "yarn",
+  "command": {
+    "publish": {
+      "npmClient": "yarn",
+      "message": "chore(release): publish %s"
+    }
+  },
+  "changelog": {
+    "repo": "commercetools/ui-kit",
+    "cacheDir": ".changelog",
+    "labels": {
+      "🐛 Type: Bug": "🐛 Type: Bug",
+      "💥 Type: Breaking Change": "💥 Type: Breaking Change",
+      "🔮 Type: Chore": "🔮 Type: Chore",
+      "✍️ Type: Documentation": "✍️ Type: Documentation",
+      "💅 Type: Enhancement": "💅 Type: Enhancement",
+      "🚀 Type: New Feature": "🚀 Type: New Feature",
+      "⛑ Type: Refactoring": "⛑ Type: Refactoring",
+      "🖥 Type: Website": "🖥 Type: Website",
+      "🚨 Type: Security": "🚨 Type: Security",
+      "🤖 Type: Dependencies": "🤖 Type: Dependencies",
+      "🌏 Type: Translations": "🌏 Type: Translations"
+    }
+  }
+}

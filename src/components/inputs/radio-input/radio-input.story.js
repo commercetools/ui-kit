@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../.storybook/decorators/section';
-import Spacings from '../../spacings';
 import Readme from './README.md';
 import RadioInput from '.';
 

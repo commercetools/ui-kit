@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import pick from 'lodash/pick';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import CollapsibleMotion from '../../collapsible-motion';
-import usePrevious from '../../../hooks/use-previous';
-import Spacings from '../../spacings';
-import { AngleUpIcon, AngleDownIcon } from '../../icons';
-import Constraints from '../../constraints';
-import FlatButton from '../../buttons/flat-button';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
+import { usePrevious } from '@commercetools-uikit/hooks';
+import Stack from '@commercetools-uikit/spacings-stack';
+import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
+import Constraints from '@commercetools-uikit/constraints';
+import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import messages from '../../internals/messages/multiline-input';
@@ -56,7 +56,7 @@ const Editor = props => {
         }
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
-            <Spacings.Stack scale="xs">
+            <Stack scale="xs">
               <RichTextBody
                 ref={{
                   containerRef: ref,
@@ -97,7 +97,7 @@ const Editor = props => {
                   />
                 </div>
               )}
-            </Spacings.Stack>
+            </Stack>
           </Constraints.Horizontal>
         );
       }}

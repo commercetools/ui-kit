@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectField } from 'ui-kit';
+import { SelectField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const options = [

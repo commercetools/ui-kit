@@ -48,14 +48,14 @@ When you are developing your application using UI Kit components, chances you wa
 <details>
 <summary>Show details</summary>
 
-We expose the **CSS variables** from the `@commercetools-frontend/ui-kit/materials/custom-properties.css` file.
+We expose the **CSS variables** from the `@commercetools-uikit/design-system/materials/custom-properties.css` file.
 
 **Importing css variables in css files**
 
 You will need a [postcss-import](https://github.com/postcss/postcss-import) plugin, and a postcss variable plugin: either [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties) or [postcss-css-variables](https://github.com/MadLittleMods/postcss-css-variables) would work.
 
 ```css
-@import '@commercetools-frontend/ui-kit/materials/custom-properties.css';
+@import '@commercetools-uikit/design-system/materials/custom-properties.css';
 
 .container {
   padding: var(--spacing-l);
@@ -84,7 +84,7 @@ postcss([
   postcssCustomProperties({
     preserve: false,
     importFrom: require.resolve(
-      '@commercetools-frontend/ui-kit/materials/custom-properties.css'
+      '@commercetools-uikit/design-system/materials/custom-properties.css'
     ),
   }),
 ]);
@@ -100,7 +100,7 @@ import { customProperties } from '@commercetools-frontend/ui-kit';
 const primary = customProperties.colorPrimary;
 ```
 
-> Please look at the [file](materials/custom-properties.js) itself to inspect which variables are available (_documentation will be provided in the future_).
+> Please look at the [file](design-system/materials/custom-properties.js) itself to inspect which variables are available (_documentation will be provided in the future_).
 
 </details>
 

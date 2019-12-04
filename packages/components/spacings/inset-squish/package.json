@@ -1,0 +1,24 @@
+{
+  "name": "@commercetools-uikit/spacings-inset-squish",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/inset-squish.cjs.js",
+  "module": "dist/inset-squish.esm.js",
+  "private": false,
+  "publishConfig": { "access": "public" },
+  "scripts": {
+    "prepare": "../../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.22",
+    "@commercetools-uikit/design-system": "*",
+    "@commercetools-uikit/utils": "*",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": { "react": ">= 16.8.0" }
+}

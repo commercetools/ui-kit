@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Text from '../../typography/text';
+import Text from '@commercetools-uikit/text';
 
 const CollapsiblePanelHeader = props => (
   <Text.Subheadline as="h4" isBold={true} truncate={true}>

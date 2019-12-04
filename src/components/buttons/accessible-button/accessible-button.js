@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { oneLine } from 'common-tags';
 import styled from '@emotion/styled';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const propsToOmit = ['onClick'];
 
@@ -71,6 +71,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
     </Button>
   );
 });
+
 AccessibleButton.displayName = 'AccessibleButton';
 AccessibleButton.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
-import Spacings from '../../spacings';
-import Constraints from '../../constraints';
-import useToggleState from '../../../hooks/use-toggle-state';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Constraints from '@commercetools-uikit/constraints';
+import { useToggleState } from '@commercetools-uikit/hooks';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -13,7 +13,7 @@ import {
   isTouched,
   getId,
   getName,
-} from '../../../utils/localized';
+} from '@commercetools-uikit/localized-utils';
 import RichTextInput from './rich-text-input';
 import {
   isEmpty,
@@ -109,7 +109,7 @@ const LocalizedRichTextInput = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack>
+      <Stack>
         {languages.map((language, index) => {
           const isFirstLanguage = index === 0;
           if (!isFirstLanguage && !areLanguagesOpened) return null;
@@ -172,7 +172,7 @@ const LocalizedRichTextInput = props => {
             />
           );
         })}
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

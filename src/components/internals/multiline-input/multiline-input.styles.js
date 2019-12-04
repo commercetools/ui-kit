@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '../../inputs/styles';
 
 /* we need this line-height to achieve 32px height when the component has only one row */

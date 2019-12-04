@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateInput } from 'ui-kit';
+import { DateInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 const value = '2018-11-13';

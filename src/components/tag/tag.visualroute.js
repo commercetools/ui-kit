@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
-import { Tag } from 'ui-kit';
+import { Tag } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 const longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et

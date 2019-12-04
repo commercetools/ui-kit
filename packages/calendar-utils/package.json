@@ -1,0 +1,19 @@
+{
+  "name": "@commercetools-uikit/calendar-utils",
+  "version": "0.0.0",
+  "description": "",
+  "private": false,
+  "publishConfig": { "access": "public" },
+  "main": "dist/calendar-utils.cjs.js",
+  "module": "dist/calendar-utils.esm.js",
+  "scripts": {
+    "prepare": "../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "dependencies": {},
+  "peerDependencies": { "moment": "2.x" },
+  "license": "MIT"
+}

@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import Constraints from '../../constraints';
-import Spacings from '../../spacings';
-import FieldLabel from '../../field-label';
-import FieldErrors from '../../field-errors';
-import NumberInput from '../../inputs/number-input';
-import getFieldId from '../../../utils/get-field-id';
-import createSequentialId from '../../../utils/create-sequential-id';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
+import {
+  createSequentialId,
+  filterDataAttributes,
+  getFieldId,
+} from '@commercetools-uikit/utils';
+import Constraints from '@commercetools-uikit/constraints';
+import Stack from '@commercetools-uikit/spacings-stack';
+import FieldLabel from '@commercetools-uikit/field-label';
+import FieldErrors from '@commercetools-uikit/field-errors';
+import NumberInput from '@commercetools-uikit/number-input';
 
 const sequentialId = createSequentialId('number-field-');
 
@@ -73,7 +75,7 @@ class NumberField extends React.Component {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
       <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
-        <Spacings.Stack scale="xs">
+        <Stack scale="xs">
           <FieldLabel
             title={this.props.title}
             hint={this.props.hint}
@@ -108,7 +110,7 @@ class NumberField extends React.Component {
             isVisible={hasError}
             renderError={this.props.renderError}
           />
-        </Spacings.Stack>
+        </Stack>
       </Constraints.Horizontal>
     );
   }

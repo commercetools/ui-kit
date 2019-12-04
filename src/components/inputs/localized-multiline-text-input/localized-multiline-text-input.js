@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
-import Spacings from '../../spacings';
-import Constraints from '../../constraints';
-import useToggleState from '../../../hooks/use-toggle-state';
+import { useToggleState } from '@commercetools-uikit/hooks';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Constraints from '@commercetools-uikit/constraints';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -17,7 +17,7 @@ import {
   createLocalizedString,
   getId,
   getName,
-} from '../../../utils/localized';
+} from '@commercetools-uikit/localized-utils';
 import LanguagesControl from './languages-control';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
@@ -110,7 +110,7 @@ const LocalizedMultilineTextInput = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack scale="s">
+      <Stack scale="s">
         {languages.map((language, index) => {
           const isFirstLanguage = index === 0;
           if (!isFirstLanguage && !areLanguagesOpened) return null;
@@ -189,7 +189,7 @@ const LocalizedMultilineTextInput = props => {
             />
           );
         })}
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

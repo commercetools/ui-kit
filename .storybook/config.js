@@ -30,7 +30,11 @@ addParameters({
 });
 
 const srcStories = require.context('../src', true, /\.story\.js$/);
-const materialsStories = require.context('../materials', true, /\.story\.js$/);
+const materialsStories = require.context(
+  '../design-system/materials',
+  true,
+  /\.story\.js$/
+);
 const exampleStories = require.context('../examples', true, /\.story\.js$/);
 const srcExampleStories = require.context(
   '../src',

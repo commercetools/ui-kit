@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import Spacings from '../spacings';
-import vars from '../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
 
 export const availableTones = [
   'critical',
@@ -67,7 +67,7 @@ const Label = props => (
       getToneStyles(props),
     ]}
   >
-    <Spacings.InsetSquish scale="s">{props.children}</Spacings.InsetSquish>
+    <InsetSquish scale="s">{props.children}</InsetSquish>
   </div>
 );
 

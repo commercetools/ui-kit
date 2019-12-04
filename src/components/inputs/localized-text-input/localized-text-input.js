@@ -4,12 +4,11 @@ import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/core';
-import useToggleState from '../../../hooks/use-toggle-state';
-import useFieldId from '../../../hooks/use-field-id';
-import ErrorMessage from '../../messages/error-message';
-import Spacings from '../../spacings';
-import Constraints from '../../constraints';
-import Text from '../../typography/text';
+import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
+import { ErrorMessage } from '@commercetools-uikit/messages';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Constraints from '@commercetools-uikit/constraints';
+import Text from '@commercetools-uikit/text';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -20,10 +19,10 @@ import {
   createLocalizedString,
   getId,
   getName,
-} from '../../../utils/localized';
-import createSequentialId from '../../../utils/create-sequential-id';
+} from '@commercetools-uikit/localized-utils';
+import { createSequentialId } from '@commercetools-uikit/utils';
+import TextInput from '@commercetools-uikit/text-input';
 import LanguagesButton from './languages-button';
-import TextInput from '../text-input';
 import messages from '../../internals/messages/localized-input';
 import {
   getLocalizedInputStyles,
@@ -137,7 +136,7 @@ const LocalizedTextInput = props => {
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Spacings.Stack>
+      <Stack>
         {languages.map((language, index) => {
           const isFirstLanguage = index === 0;
           const isLastLanguage = index === languages.length - 1;
@@ -152,7 +151,7 @@ const LocalizedTextInput = props => {
 
           return (
             <div key={language}>
-              <Spacings.Stack scale="xs">
+              <Stack scale="xs">
                 <LocalizedInput
                   autoComplete={props.autoComplete}
                   id={LocalizedTextInput.getId(id, language)}
@@ -201,11 +200,11 @@ const LocalizedTextInput = props => {
 
                   return null;
                 })()}
-              </Spacings.Stack>
+              </Stack>
             </div>
           );
         })}
-      </Spacings.Stack>
+      </Stack>
     </Constraints.Horizontal>
   );
 };

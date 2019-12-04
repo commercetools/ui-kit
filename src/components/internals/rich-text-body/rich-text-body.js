@@ -4,8 +4,9 @@ import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import Tooltip from '../../tooltip';
-import { CaretDownIcon } from '../../icons';
+import Tooltip from '@commercetools-uikit/tooltip';
+import { CaretDownIcon } from '@commercetools-uikit/icons';
+import Inline from '@commercetools-uikit/spacings-inline';
 import {
   Toolbar,
   ToolbarMainControls,
@@ -27,7 +28,6 @@ import {
   SuperscriptIcon,
   MoreStylesIcon,
 } from '../icons';
-import Spacings from '../../spacings';
 import Button from './rich-text-body-button';
 import Divider from './divider';
 import Dropdown from './dropdown';
@@ -54,14 +54,10 @@ const MoreStylesDropdownItem = props => {
 
   return (
     <DropdownItem {...props}>
-      <Spacings.Inline
-        scale="xs"
-        alignItems="center"
-        justifyContent="flex-start"
-      >
+      <Inline scale="xs" alignItems="center" justifyContent="flex-start">
         <Icon size="medium" />
         <div>{props.children}</div>
-      </Spacings.Inline>
+      </Inline>
     </DropdownItem>
   );
 };
@@ -74,10 +70,10 @@ MoreStylesDropdownItem.propTypes = {
 
 const DropdownLabel = props => {
   return (
-    <Spacings.Inline scale="xs" alignItems="center" justifyContent="center">
+    <Inline scale="xs" alignItems="center" justifyContent="center">
       <span>{props.children}</span>
       <CaretDownIcon size="small" />
-    </Spacings.Inline>
+    </Inline>
   );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
 

@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Constraints from '../../constraints';
-import Spacings from '../../spacings';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Constraints from '@commercetools-uikit/constraints';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Inline from '@commercetools-uikit/spacings-inline';
 import Option from './radio-option';
 
 const directionWrapper = {
-  stack: Spacings.Stack,
-  inline: Spacings.Inline,
+  stack: Stack,
+  inline: Inline,
 };
 
 const Group = props => {
@@ -49,24 +50,18 @@ const Group = props => {
   if (props.direction === 'inline') {
     return (
       <div id={props.id}>
-        <Spacings.Inline
-          {...props.directionProps}
-          {...filterDataAttributes(props)}
-        >
+        <Inline {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
-        </Spacings.Inline>
+        </Inline>
       </div>
     );
   }
   return (
     <div id={props.id}>
       <Constraints.Horizontal constraint={props.horizontalConstraint}>
-        <Spacings.Stack
-          {...props.directionProps}
-          {...filterDataAttributes(props)}
-        >
+        <Stack {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
-        </Spacings.Stack>
+        </Stack>
       </Constraints.Horizontal>
     </div>
   );

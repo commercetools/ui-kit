@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorMessage, WarningMessage } from 'ui-kit';
+import { ErrorMessage, WarningMessage } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/messages';

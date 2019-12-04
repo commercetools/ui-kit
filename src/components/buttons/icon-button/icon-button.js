@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import isNil from 'lodash/isNil';
 import { css } from '@emotion/core';
-import vars from '../../../../materials/custom-properties';
-import filterInvalidAttributes from '../../../utils/filter-invalid-attributes';
-import AccessibleButton from '../accessible-button';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { filterInvalidAttributes } from '@commercetools-uikit/utils';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getStateStyles,
   getShapeStyles,

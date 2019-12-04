@@ -4,7 +4,7 @@ import {
   PrimaryActionDropdown,
   PrimaryActionDropdownOption,
   PlusBoldIcon,
-} from 'ui-kit';
+} from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/primary-action-dropdown';

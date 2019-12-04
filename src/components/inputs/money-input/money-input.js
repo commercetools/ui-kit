@@ -8,17 +8,16 @@ import Select, { components } from 'react-select';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import useToggleState from '../../../hooks/use-toggle-state';
-import vars from '../../../../materials/custom-properties';
-import DropdownIndicator from '../../internals/dropdown-indicator';
-import isNumberish from '../../../utils/is-numberish';
-import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import filterDataAttributes from '../../../utils/filter-data-attributes';
-import Contraints from '../../constraints';
-import Tooltip from '../../tooltip';
-import { FractionDigitsIcon } from '../../icons';
-import currencies from './currencies.json';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { filterDataAttributes, isNumberish } from '@commercetools-uikit/utils';
+import Tooltip from '@commercetools-uikit/tooltip';
+import { DropdownIndicator } from '@commercetools-uikit/select-utils';
+import { FractionDigitsIcon } from '@commercetools-uikit/icons';
+import Constraints from '@commercetools-uikit/constraints';
+import { useToggleState } from '@commercetools-uikit/hooks';
 import createSelectStyles from '../../internals/create-select-styles';
+import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
+import currencies from './currencies.json';
 import {
   getHighPrecisionWrapperStyles,
   getCurrencyLabelStyles,
@@ -533,7 +532,7 @@ const MoneyInput = props => {
   );
 
   return (
-    <Contraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div
         ref={containerRef}
         css={css`
@@ -643,7 +642,7 @@ const MoneyInput = props => {
           )}
         </div>
       </div>
-    </Contraints.Horizontal>
+    </Constraints.Horizontal>
   );
 };
 

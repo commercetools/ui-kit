@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant';
 import uniq from 'lodash/uniq';
-import filterDataAttributes from './filter-data-attributes';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export const getId = (idPrefix, language) =>
   idPrefix ? `${idPrefix}.${language}` : undefined;

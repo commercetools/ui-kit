@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import ErrorMessage from '../messages/error-message';
+import { ErrorMessage } from '@commercetools-uikit/messages';
 import messages from './messages';
 
 const isObject = obj => typeof obj === 'object';
