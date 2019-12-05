@@ -9,6 +9,6 @@ module.exports = {
     '.visualroute.js',
     '.story.js',
   ],
-  testMatch: ['<rootDir>/src/components/**/*.js', ''],
+  testMatch: ['<rootDir>/**/*.js'],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
 };
