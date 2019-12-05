@@ -98,7 +98,7 @@ By default, all releases go to the `next` distribution channel and should be con
 
 #### Moving the `latest` dist-tag to a release:
 
-After testing the `next` release on a production project, if the version is **stable** it can be finally movede to the `latest` distribution channel.
+After testing the `next` release on a production project, if the version is **stable** it can be finally moved to the `latest` distribution channel.
 
 ```bash
 $ yarn release:from-next-to-latest
