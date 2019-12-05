@@ -1,3 +1,31 @@
+# [10.13.0](https://github.com/commercetools/ui-kit/compare/v10.12.0...v10.13.0) (2019-12-05)
+
+## Split codebase into packages
+
+With this release, we start publishing packages for each single component under the NPM scope `@commercetools-uikit`. The goal with this is for applications using only a bunch of UIKit components to have reduced bundle size by using only packages needed. We also hope that treeshaking works better with this approach.
+We also have some "preset" packages that just group a bunch of single packages together, such as `inputs`, `spacings`, `buttons`, etc. This is useful in case you use many packages within that "preset" to avoid importing each single one of them.
+
+> The main package `@commercetools-frontend/ui-kit` will continue to exist as a full "preset" package and is currently fully backwards compatible.
+
+#### 🐛 Type: Bug
+
+- [#1193](https://github.com/commercetools/ui-kit/pull/1193) fix(radio-input): radio option background color ([@jonnybel](https://github.com/jonnybel))
+- [#1197](https://github.com/commercetools/ui-kit/pull/1197) fix(localized-rich-text-input): dropdown fix ([@montezume](https://github.com/montezume))
+- [#1196](https://github.com/commercetools/ui-kit/pull/1196) fix(tooltip): do not use native title when tooltip is off ([@montezume](https://github.com/montezume))
+
+#### 🚀 Type: New Feature
+
+- `calendar-time-utils`, `calendar-utils`, `components`, `hooks`, `i18n`, `localized-utils`, `utils`
+  - [#1177](https://github.com/commercetools/ui-kit/pull/1177) feat: split codebase into packages and set up monorepository ([@montezume](https://github.com/montezume))
+- Other
+  - [#1200](https://github.com/commercetools/ui-kit/pull/1200) feat(date-input): add isReadOnly prop to date inputs and fields ([@jonnybel](https://github.com/jonnybel))
+  - [#1192](https://github.com/commercetools/ui-kit/pull/1192) feat(select): add isReadOnly prop to select inputs and fields ([@jonnybel](https://github.com/jonnybel))
+
+#### 🤖 Type: Dependencies
+
+- `components`
+  - [#1202](https://github.com/commercetools/ui-kit/pull/1202) fix(deps): update all dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 # [10.12.0](https://github.com/commercetools/ui-kit/compare/v10.11.0...v10.12.0) (2019-11-26)
 
 ### Bug Fixes
