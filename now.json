@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "ui-kit",
+  "routes": [
+    {
+      "handle": "filesystem"
+    }
+  ]
+}

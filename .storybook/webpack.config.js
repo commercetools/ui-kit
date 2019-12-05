@@ -7,6 +7,8 @@ const sourceFolders = [
   path.resolve(__dirname, '../design-system/materials'),
   path.resolve(__dirname, '../philosophy'),
   path.resolve(__dirname, '../src'),
+  path.resolve(__dirname, '../packages'),
+  path.resolve(__dirname, '../presets'),
 ];
 
 module.exports = ({ config }) => {

@@ -30,6 +30,7 @@ addParameters({
 });
 
 const srcStories = require.context('../src', true, /\.story\.js$/);
+const packagesStories = require.context('../packages', true, /\.story\.js$/);
 const materialsStories = require.context(
   '../design-system/materials',
   true,
@@ -38,6 +39,11 @@ const materialsStories = require.context(
 const exampleStories = require.context('../examples', true, /\.story\.js$/);
 const srcExampleStories = require.context(
   '../src',
+  true,
+  /\.example.story\.js$/
+);
+const packagesExampleStories = require.context(
+  '../packages',
   true,
   /\.example.story\.js$/
 );
@@ -52,8 +58,12 @@ function loadStories() {
   philosophyStories.keys().forEach(filename => philosophyStories(filename));
   materialsStories.keys().forEach(filename => materialsStories(filename));
   srcStories.keys().forEach(filename => srcStories(filename));
+  packagesStories.keys().forEach(filename => packagesStories(filename));
   exampleStories.keys().forEach(filename => exampleStories(filename));
   srcExampleStories.keys().forEach(filename => srcExampleStories(filename));
+  packagesExampleStories
+    .keys()
+    .forEach(filename => packagesExampleStories(filename));
 }
 
 addDecorator(addReadme);
