@@ -18,6 +18,11 @@ These are general and loose rules components in UI Kit should strive to fulfill.
 - Documentation of prop-types and usage patterns
 - Sensible defaults for props which are not a hard requirement
 
+## Folder Structure
+
+This repository is managed as a monorepo, meaning it contains multiple packages located in the [`packages`](./packages) directory. Each component or shared utility function is set up as its own package. This should help applications to reduce their bundle size by importing only the needed packages, as well as to help with treeshaking.
+Some of the packages are used as "presets" and live in the [`presets`](./presets) folder. Those simply group other packages together to avoid importing each single one of them, for example `inputs`, `buttons`, etc.
+
 ## Development
 
 ### Testing
@@ -63,51 +68,51 @@ These tests are used to prevent visuals regressions in our components exported f
 
 These tests are used to ensure the bundle produced by rollup. It is necessary to build the bundle before running these tests. We use these tests to further ensure that our bundling process works.
 
-## Releasing
+## Cutting a Release
 
-The release process is _semi-automated_: you only need to **manually** trigger it and [CircleCI](https://circleci.com/gh/commercetools/ui-kit) will take care of the rest. All automated releases go the the `next` distribution channel. This gives us a chance to test releases out before making them offical by moving the `latest` dist-tag along.
+By default, all releases go to the `next` distribution channel and should be considered **prereleases**. This gives us a chance to test out a release before marking it **stable** in the `latest` distribution channel.
 
-<details>
-  <summary>
-  Why we don't use <code>semantic-release</code>
-  </summary>
+#### Draft release notes in the Changelog
 
-> We do not use semantic-release but we follow its conventions closely. Using semantic-release would have the downside that we'd need to educate all contributors about proper commit messages (or take great care while squash-merging).
+1. Make sure that each merged PR that should be mentioned in the release changelog is labelled with one of the [labels](https://github.com/commercetools/ui-kit/labels) named `Type: ...` to indicate what kind of change it is.
+2. Create a changelog entry for the release
 
-</details>
+- Copy `.env.template` and name it `.env`
+- You'll need an [access token for the GitHub API](https://help.github.com/articles/creating-an-access-token-for-command-line-use/). Save it to the environment variable: `GITHUB_AUTH`
+- Run `yarn changelog`. The command will find all the labeled pull requests merged since the last release and group them by the label and affected packages, and create a change log entry with all the changes and links to PRs and their authors. Copy and paste it to `CHANGELOG.md`.
+- The list of committers does not need to be included.
+- Check if some Pull Requests are referenced by different label types and decide if you want to keep only one entry or have it listed multiple times.
+- Add a four-space indented paragraph after each non-trivial list item, explaining what changed and why. For each breaking change also write who it affects and instructions for migrating existing code.
+- Maybe add some newlines here and there. Preview the result on GitHub to get a feel for it. Changelog generator output is a bit too terse for my taste, so try to make it visually pleasing and well grouped.
 
-### The steps to prepare and trigger a release to `next` are as follows:
+3. (_Optional_) Include "_Migrating from ..._" instructions for the previous release in case you deem it necessary.
+4. Commit the changelog (usually by opening a new Pull Request).
 
-- ensure you are on the latest `master` branch
-- update the `CHANGELOG.md`
-  - run `yarn changelog` to get a code snippet of the important commits from the last release
-  - copy that and paste it into `CHANGELOG.md` file
-  - make sure that the git tag references are correctly defined and the top entry represents the _new_ tag that you are about to create
-  - add or modify the generated changelog to provide more context about the new release
-- bump the `version` in the `package.json`
-- make a commit and push it to `master` (e.g. `git commit -am "chore: bump version to 2.0.0, update changelog"`)
-  - if you can't push it directly to `master`, open a Pull Request first
-- at this point you can create the `tag`: `git tag -m "Version v2.0.0" v2.0.0`
-  - the tag name is the `version` string in the `package.json` plus the prefix `v`
-- push the tag: `git push --tags`
+#### Release the packages
 
-From that point on, [CircleCI](https://circleci.com/gh/commercetools/ui-kit) will take over the release: build the bundles, publish to `npm` and update branch for the documentation website (see below).
+1. Make sure the `CHANGELOG.md` has been updated.
+2. Check that your npm account has access to the `@commercetools-frontend` and `@commercetools-uikit` organizations and that you are logged in with the `npm` CLI.
+3. Run `yarn release`: the packages will be bundled with Rollup first, then Lerna will prompt you to select the version that you would like to release (minor, major, pre-release, etc.).
+4. Wait a bit until Lerna bumps the versions, creates a commit and a tag and finally publishes the packages to npm (to the `next` distribution channel).
+5. After publishing, create a GitHub Release with the same text as the `CHANGELOG.md` entry. See previous Releases for inspiration.
 
-### Moving the `latest` dist-tag to a release:
+#### Moving the `latest` dist-tag to a release:
 
-After testing the `next` release on a production project, it's time to move to the `latest` dist-tag to make the release official.
+After testing the `next` release on a production project, if the version is **stable** it can be finally movede to the `latest` distribution channel.
 
 ```bash
-$ npm dist-tag add @commercetools-frontend/ui-kit@<version> latest
+$ yarn release:from-next-to-latest
 ```
 
-### About release-candidates & alpha / beta versions
+The command will promote the version published on `next` to the `latest` npm dist-tag, for each package.
 
-Having release candidates is not necesssary when using dist tags:
+## Canary releases
 
-> "With semantic-release it’s discouraged to put information about stability into the version number (i.e. 1.0.0-beta or 2.0.0-rc1) because it’s mixing things up. The tool you can use to comunicate stability are npm’s dist-tags. The last paragraph of this section should give you some hints: https://github.com/semantic-release/semantic-release#how-does-it-work"
->
-> boennemann, [source](https://gitter.im/semantic-release/semantic-release/archives/2015/08/26)
+On `master` branch, we automatically publish **canary** releases from CI to the `canary` distribution channel, _after_ the build runs successfully.
+
+Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request merged into `master`, unless the commit message contains `[skip publish]`.
+
+Note that canary releases **will not create git tags and version bump commits**.
 
 ## Publishing documentation website
 
