@@ -75,6 +75,7 @@ typings/
 
 # Storybook build output
 .public
+public
 
 # Serverless directories
 .serverless
