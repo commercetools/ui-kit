@@ -83,7 +83,7 @@ By default, all releases go to the `next` distribution channel and should be con
 - The list of committers does not need to be included.
 - Check if some Pull Requests are referenced by different label types and decide if you want to keep only one entry or have it listed multiple times.
 - Add a four-space indented paragraph after each non-trivial list item, explaining what changed and why. For each breaking change also write who it affects and instructions for migrating existing code.
-- Maybe add some newlines here and there. Preview the result on GitHub to get a feel for it. Changelog generator output is a bit too terse for my taste, so try to make it visually pleasing and well grouped.
+- Maybe add some newlines here and there. Preview the result on GitHub to get a feel for it. Changelog generator output is a bit too terse for our taste, so try to make it visually pleasing and well grouped.
 
 3. (_Optional_) Include "_Migrating from ..._" instructions for the previous release in case you deem it necessary.
 4. Commit the changelog (usually by opening a new Pull Request).
@@ -110,7 +110,7 @@ The command will promote the version published on `next` to the `latest` npm dis
 
 On `master` branch, we automatically publish **canary** releases from CI to the `canary` distribution channel, _after_ the build runs successfully.
 
-Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request merged into `master`, unless the commit message contains `[skip publish]`.
+Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request is merged to `master`, unless the commit message contains `[skip publish]`.
 
 Note that canary releases **will not create git tags and version bump commits**.
 
