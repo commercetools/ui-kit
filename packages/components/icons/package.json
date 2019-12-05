@@ -1,24 +1,30 @@
 {
   "name": "@commercetools-uikit/icons",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/icons.cjs.js",
   "module": "dist/icons.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/design-system": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/design-system": "*",
     "prop-types": "15.7.2",
     "tiny-invariant": "1.0.6"
   },
-  "peerDependencies": { "react": ">= 16.8.0" }
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
 }

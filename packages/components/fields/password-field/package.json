@@ -1,35 +1,42 @@
 {
   "name": "@commercetools-uikit/password-field",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/password-field.cjs.js",
   "module": "dist/password-field.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/constraints": "10.13.0",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/field-errors": "10.13.0",
+    "@commercetools-uikit/field-label": "10.13.0",
+    "@commercetools-uikit/flat-button": "10.13.0",
+    "@commercetools-uikit/hooks": "10.13.0",
+    "@commercetools-uikit/icons": "10.13.0",
+    "@commercetools-uikit/password-input": "10.13.0",
+    "@commercetools-uikit/spacings-inline": "10.13.0",
+    "@commercetools-uikit/spacings-stack": "10.13.0",
+    "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/constraints": "*",
-    "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/flat-button": "*",
-    "@commercetools-uikit/field-label": "*",
-    "@commercetools-uikit/field-errors": "*",
-    "@commercetools-uikit/hooks": "*",
-    "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/spacings-inline": "*",
-    "@commercetools-uikit/spacings-stack": "*",
-    "@commercetools-uikit/password-input": "*",
-    "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3"
   },
-  "peerDependencies": { "react": ">= 16.8.0", "react-intl": "3.x" }
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-intl": "3.x"
+  }
 }

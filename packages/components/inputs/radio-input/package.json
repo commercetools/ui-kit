@@ -1,32 +1,37 @@
 {
   "name": "@commercetools-uikit/radio-input",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/radio-input.cjs.js",
   "module": "dist/radio-input.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/constraints": "10.13.0",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/spacings-inline": "10.13.0",
+    "@commercetools-uikit/spacings-stack": "10.13.0",
+    "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/constraints": "*",
-    "@commercetools-uikit/spacings-stack": "*",
-    "@commercetools-uikit/spacings-inline": "*",
-    "@commercetools-uikit/design-system": "*",
-
-    "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2",
     "react-is": "16.12.0",
     "react-required-if": "1.0.3",
     "tiny-invariant": "1.0.6"
   },
-  "peerDependencies": { "react": ">= 16.8.0" }
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
 }

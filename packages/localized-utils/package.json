@@ -1,20 +1,24 @@
 {
   "name": "@commercetools-uikit/localized-utils",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/localized-utils.cjs.js",
   "module": "dist/localized-utils.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/utils": "*",
+    "@commercetools-uikit/utils": "10.13.0",
     "lodash": "4.17.15",
     "tiny-invariant": "1.0.6"
   },

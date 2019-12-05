@@ -1,30 +1,33 @@
 {
   "name": "@commercetools-uikit/money-input",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/money-input.cjs.js",
   "module": "dist/money-input.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/constraints": "10.13.0",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/hooks": "10.13.0",
+    "@commercetools-uikit/icons": "10.13.0",
+    "@commercetools-uikit/select-utils": "10.13.0",
+    "@commercetools-uikit/tooltip": "10.13.0",
+    "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/constraints": "*",
-    "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/hooks": "*",
-
-    "@commercetools-uikit/icons": "*",
-    "@commercetools-uikit/select-utils": "*",
-    "@commercetools-uikit/tooltip": "*",
-    "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "react-select": "3.0.8",

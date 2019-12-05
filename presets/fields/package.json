@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/fields",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/fields.cjs.js",
   "module": "dist/fields.esm.js",
@@ -18,26 +18,26 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/async-creatable-select-field": "*",
-    "@commercetools-uikit/async-select-field": "*",
-    "@commercetools-uikit/creatable-select-field": "*",
-    "@commercetools-uikit/date-field": "*",
-    "@commercetools-uikit/date-time-field": "*",
-    "@commercetools-uikit/date-range-field": "*",
-    "@commercetools-uikit/localized-multiline-text-field": "*",
-    "@commercetools-uikit/localized-text-field": "*",
-    "@commercetools-uikit/money-field": "*",
-    "@commercetools-uikit/multiline-text-field": "*",
-    "@commercetools-uikit/number-field": "*",
-    "@commercetools-uikit/password-field": "*",
-    "@commercetools-uikit/select-field": "*",
-    "@commercetools-uikit/radio-field": "*",
-    "@commercetools-uikit/text-field": "*",
-    "@commercetools-uikit/time-field": "*"
+    "@commercetools-uikit/async-creatable-select-field": "10.13.0",
+    "@commercetools-uikit/async-select-field": "10.13.0",
+    "@commercetools-uikit/creatable-select-field": "10.13.0",
+    "@commercetools-uikit/date-field": "10.13.0",
+    "@commercetools-uikit/date-range-field": "10.13.0",
+    "@commercetools-uikit/date-time-field": "10.13.0",
+    "@commercetools-uikit/localized-multiline-text-field": "10.13.0",
+    "@commercetools-uikit/localized-text-field": "10.13.0",
+    "@commercetools-uikit/money-field": "10.13.0",
+    "@commercetools-uikit/multiline-text-field": "10.13.0",
+    "@commercetools-uikit/number-field": "10.13.0",
+    "@commercetools-uikit/password-field": "10.13.0",
+    "@commercetools-uikit/radio-field": "10.13.0",
+    "@commercetools-uikit/select-field": "10.13.0",
+    "@commercetools-uikit/text-field": "10.13.0",
+    "@commercetools-uikit/time-field": "10.13.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
-    "react-router-dom": "5.x",
-    "react-intl": "3.x"
+    "react-intl": "3.x",
+    "react-router-dom": "5.x"
   }
 }

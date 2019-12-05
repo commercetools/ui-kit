@@ -1,12 +1,17 @@
 {
   "name": "@commercetools-uikit/design-system",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/design-system.cjs.js",
   "module": "dist/design-system.esm.js",
-  "files": ["dist", "materials"],
+  "files": [
+    "dist",
+    "materials"
+  ],
   "sideEffects": false,
   "scripts": {
     "prepare": "../scripts/version.js replace",

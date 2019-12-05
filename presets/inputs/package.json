@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/inputs",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/inputs.cjs.js",
   "module": "dist/inputs.esm.js",
@@ -13,34 +13,36 @@
     "access": "public"
   },
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/async-creatable-select-input": "*",
-    "@commercetools-uikit/async-select-input": "*",
-    "@commercetools-uikit/checkbox-input": "*",
-    "@commercetools-uikit/creatable-select-input": "*",
-    "@commercetools-uikit/date-input": "*",
-    "@commercetools-uikit/date-time-input": "*",
-    "@commercetools-uikit/date-range-input": "*",
-    "@commercetools-uikit/localized-multiline-text-input": "*",
-    "@commercetools-uikit/localized-text-input": "*",
-    "@commercetools-uikit/localized-money-input": "*",
-    "@commercetools-uikit/money-input": "*",
-    "@commercetools-uikit/multiline-text-input": "*",
-    "@commercetools-uikit/number-input": "*",
-    "@commercetools-uikit/password-input": "*",
-    "@commercetools-uikit/select-input": "*",
-    "@commercetools-uikit/rich-text-input": "*",
-    "@commercetools-uikit/localized-rich-text-input": "*",
-    "@commercetools-uikit/radio-input": "*",
-    "@commercetools-uikit/text-input": "*",
-    "@commercetools-uikit/time-input": "*",
-    "@commercetools-uikit/toggle-input": "*"
+    "@commercetools-uikit/async-creatable-select-input": "10.13.0",
+    "@commercetools-uikit/async-select-input": "10.13.0",
+    "@commercetools-uikit/checkbox-input": "10.13.0",
+    "@commercetools-uikit/creatable-select-input": "10.13.0",
+    "@commercetools-uikit/date-input": "10.13.0",
+    "@commercetools-uikit/date-range-input": "10.13.0",
+    "@commercetools-uikit/date-time-input": "10.13.0",
+    "@commercetools-uikit/localized-money-input": "10.13.0",
+    "@commercetools-uikit/localized-multiline-text-input": "10.13.0",
+    "@commercetools-uikit/localized-rich-text-input": "10.13.0",
+    "@commercetools-uikit/localized-text-input": "10.13.0",
+    "@commercetools-uikit/money-input": "10.13.0",
+    "@commercetools-uikit/multiline-text-input": "10.13.0",
+    "@commercetools-uikit/number-input": "10.13.0",
+    "@commercetools-uikit/password-input": "10.13.0",
+    "@commercetools-uikit/radio-input": "10.13.0",
+    "@commercetools-uikit/rich-text-input": "10.13.0",
+    "@commercetools-uikit/select-input": "10.13.0",
+    "@commercetools-uikit/text-input": "10.13.0",
+    "@commercetools-uikit/time-input": "10.13.0",
+    "@commercetools-uikit/toggle-input": "10.13.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
-    "react-router-dom": "5.x",
-    "react-intl": "3.x"
+    "react-intl": "3.x",
+    "react-router-dom": "5.x"
   }
 }

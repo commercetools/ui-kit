@@ -1,32 +1,37 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-field",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/async-creatable-select-field.cjs.js",
   "module": "dist/async-creatable-select-field.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/async-creatable-select-input": "10.13.0",
+    "@commercetools-uikit/constraints": "10.13.0",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/field-errors": "10.13.0",
+    "@commercetools-uikit/field-label": "10.13.0",
+    "@commercetools-uikit/spacings": "10.13.0",
+    "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/constraints": "*",
-    "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/field-label": "*",
-    "@commercetools-uikit/field-errors": "*",
-
-    "@commercetools-uikit/spacings": "*",
-    "@commercetools-uikit/async-creatable-select-input": "*",
-    "@commercetools-uikit/utils": "*",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3"
   },
-  "peerDependencies": { "react": ">= 16.8.0" }
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
 }

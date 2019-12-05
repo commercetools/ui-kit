@@ -1,12 +1,17 @@
 {
   "name": "@commercetools-uikit/i18n",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/i18n.cjs.js",
   "module": "dist/i18n.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
-  "files": ["dist", "data"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
   "sideEffects": false,
   "scripts": {
     "prepare": "../../scripts/version.js replace",

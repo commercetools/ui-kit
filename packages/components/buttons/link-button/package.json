@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/link-button",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/link-button.cjs.js",
   "module": "dist/link-button.esm.js",
@@ -10,18 +10,22 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
-    "@emotion/styled": "10.0.23",
+    "@commercetools-uikit/accessible-button": "10.13.0",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/spacings-inline": "10.13.0",
+    "@commercetools-uikit/text": "10.13.0",
+    "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
-    "@commercetools-uikit/accessible-button": "*",
-    "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/spacings-inline": "*",
-    "@commercetools-uikit/text": "*",
-    "@commercetools-uikit/utils": "*",
+    "@emotion/styled": "10.0.23",
     "common-tags": "1.8.0",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",

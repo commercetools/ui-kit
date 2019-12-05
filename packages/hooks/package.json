@@ -1,18 +1,24 @@
 {
   "name": "@commercetools-uikit/hooks",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
-  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
-  "peerDependencies": { "react": ">= 16.8.0" },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  },
   "license": "MIT"
 }

@@ -1,32 +1,38 @@
 {
   "name": "@commercetools-uikit/select-input",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/select-input.cjs.js",
   "module": "dist/select-input.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/constraints": "10.13.0",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/icons": "10.13.0",
+    "@commercetools-uikit/select-utils": "10.13.0",
+    "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/is-prop-valid": "0.8.5",
     "@emotion/styled": "10.0.23",
-    "@commercetools-uikit/constraints": "*",
-    "@commercetools-uikit/design-system": "*",
-    "@commercetools-uikit/icons": "*",
-
-    "@commercetools-uikit/select-utils": "*",
-    "@commercetools-uikit/utils": "*",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",
     "react-select": "3.0.8"
   },
-  "peerDependencies": { "react": ">= 16.8.0", "react-intl": "3.x" }
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-intl": "3.x"
+  }
 }

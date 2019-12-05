@@ -1,18 +1,25 @@
 {
   "name": "@commercetools-uikit/utils",
-  "version": "0.0.0",
+  "version": "10.13.0",
   "description": "",
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",
   "private": false,
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
-  "dependencies": { "@emotion/is-prop-valid": "0.8.5", "warning": "4.0.3" },
+  "dependencies": {
+    "@emotion/is-prop-valid": "0.8.5",
+    "warning": "4.0.3"
+  },
   "license": "MIT"
 }
