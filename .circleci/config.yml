@@ -40,8 +40,13 @@ commands:
           root: *working_directory
           paths:
             - design-system/dist/
-            - packages/**/dist/
-            - presets/**/dist/
+            - packages/*/dist/
+            - packages/components/*/dist/
+            - packages/components/buttons/*/dist/
+            - packages/components/fields/*/dist/
+            - packages/components/inputs/*/dist/
+            - packages/components/spacings/*/dist/
+            - presets/*/dist/
   restore_package_bundles:
     steps:
       - attach_workspace:
