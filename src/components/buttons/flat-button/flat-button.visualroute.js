@@ -64,5 +64,34 @@ export const component = ({ themes }) => (
         />
       </Spec>
     </ThemeProvider>
+    <Spec
+      label="as anchor, with a multiline text and icon left"
+      listPropsOfNestedChild
+    >
+      <div style={{ width: 150 }}>
+        <FlatButton
+          tone="primary"
+          label="A label for an anchor which is pretty looooong and doesn't fit its container without breaking"
+          onClick={() => {}}
+          icon={<InformationIcon />}
+          as="a"
+        />
+      </div>
+    </Spec>
+    <Spec
+      label="as anchor, with a multiline text and icon right"
+      listPropsOfNestedChild
+    >
+      <div style={{ width: 150 }}>
+        <FlatButton
+          tone="primary"
+          label="A label for an anchor which is pretty looooong and doesn't fit its container without breaking"
+          onClick={() => {}}
+          icon={<InformationIcon />}
+          iconPosition="right"
+          as="a"
+        />
+      </div>
+    </Spec>
   </Suite>
 );
