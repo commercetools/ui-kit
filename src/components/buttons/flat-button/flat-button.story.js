@@ -28,6 +28,7 @@ storiesOf('Components|Buttons', module)
         iconPosition={select('icon position', ['left', 'right'], 'left')}
         onClick={action('onClick')}
         isDisabled={boolean('isDisabled', false)}
+        as={select('as', ['button', 'a', 'span'], 'button')}
       />
     </Section>
   ));
