@@ -19,18 +19,23 @@ const ButtonIcon = props => {
   else if (props.tone === 'secondary') iconColor = 'solid';
   else if (props.tone === 'inverted') iconColor = 'surface';
 
-  return (
-    <span
-      css={css`
-        vertical-align: middle;
-      `}
-    >
-      {React.cloneElement(props.icon, {
-        size: 'medium',
-        color: iconColor,
-      })}
-    </span>
-  );
+  const Icon = React.cloneElement(props.icon, {
+    size: 'medium',
+    color: iconColor,
+  });
+
+  if (props.as && props.as !== 'button') {
+    return (
+      <span
+        css={css`
+          vertical-align: middle;
+        `}
+      >
+        {Icon}
+      </span>
+    );
+  }
+  return Icon;
 };
 ButtonIcon.displayName = 'ButtonIcon';
 ButtonIcon.propTypes = {
@@ -77,9 +82,12 @@ export const FlatButton = props => {
         };
 
         return css`
-          display: inline-block;
           min-height: initial;
-          ${props.as && props.as !== 'button' ? 'white-space: normal' : ''};
+          align-items: center;
+          ${props.as && props.as !== 'button'
+            ? `white-space: normal;
+               display: inline-block;`
+            : ''};
 
           span {
             color: ${props.isDisabled
@@ -93,7 +101,7 @@ export const FlatButton = props => {
               : getTextColor(props.tone, false, overwrittenVars)};
           }
 
-          span + span {
+          * + span {
             margin-left: ${vars.spacingXs};
           }
 
