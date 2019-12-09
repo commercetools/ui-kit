@@ -101,7 +101,8 @@ export const FlatButton = props => {
               : getTextColor(props.tone, false, overwrittenVars)};
           }
 
-          * + span {
+          * + span,
+          * + svg {
             margin-left: ${vars.spacingXs};
           }
 
