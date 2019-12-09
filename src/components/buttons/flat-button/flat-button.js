@@ -77,11 +77,7 @@ export const FlatButton = props => {
         };
 
         return css`
-          align-items: center;
-          font-size: 1rem;
-          border: none;
-          background: none;
-          padding: 0;
+          display: inline-block;
           min-height: initial;
           ${props.as && props.as !== 'button' ? 'white-space: normal' : ''};
 
@@ -97,39 +93,31 @@ export const FlatButton = props => {
               : getTextColor(props.tone, false, overwrittenVars)};
           }
 
-          &:hover,
-          &:focus {
-            span {
-              color: ${props.isDisabled
-                ? overwrittenVars.colorNeutral
-                : getTextColor(props.tone, true, overwrittenVars)};
-            }
-
-            svg * {
-              fill: ${props.isDisabled
-                ? overwrittenVars.colorNeutral
-                : getTextColor(props.tone, true, overwrittenVars)};
-            }
+          span + span {
+            margin-left: ${vars.spacingXs};
           }
+
+          ${!props.isDisabled
+            ? `
+            &:hover,
+            &:focus {
+              span {
+                color: ${getTextColor(props.tone, true, overwrittenVars)};
+              }
+              svg * {
+                fill: ${getTextColor(props.tone, true, overwrittenVars)};
+              }
+            }`
+            : ''}
         `;
       }}
       buttonAttributes={dataProps}
     >
-      <div
-        css={css`
-          span + span {
-            margin-left: ${vars.spacingXs};
-          }
-        `}
-      >
-        {props.icon && props.iconPosition === 'left' && (
-          <ButtonIcon {...props} />
-        )}
-        <Text.Body as="span">{props.label}</Text.Body>
-        {props.icon && props.iconPosition === 'right' && (
-          <ButtonIcon {...props} />
-        )}
-      </div>
+      {props.icon && props.iconPosition === 'left' && <ButtonIcon {...props} />}
+      <Text.Body as="span">{props.label}</Text.Body>
+      {props.icon && props.iconPosition === 'right' && (
+        <ButtonIcon {...props} />
+      )}
     </AccessibleButton>
   );
 };
