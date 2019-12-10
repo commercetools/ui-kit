@@ -9,10 +9,13 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
+import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from './README.md';
 import * as icons from '../../icons';
 import DateField from './date-field';
+
+const exampleDates = getExampleDateStrings();
 
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
@@ -25,7 +28,7 @@ storiesOf('Components|Fields', module)
   .add('DateField', () => (
     <Section>
       <Value
-        defaultValue=""
+        defaultValue={exampleDates.preselectedDate}
         render={(value, onChange) => {
           const name = text('name', '');
           const hint = text('hint', 'Select the date of publication');
@@ -62,6 +65,8 @@ storiesOf('Components|Fields', module)
               }}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
+              minValue={text('minValue', exampleDates.minDate)}
+              maxValue={text('maxValue', exampleDates.maxDate)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={placeholder === '' ? undefined : placeholder}
