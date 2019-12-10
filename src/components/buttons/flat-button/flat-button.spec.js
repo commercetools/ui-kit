@@ -45,7 +45,7 @@ describe('rendering', () => {
   });
   it('should render label', () => {
     const { getByLabelText } = render(<FlatButton {...props} />);
-    expect(getByLabelText('Add').querySelector('p')).toHaveTextContent('Add');
+    expect(getByLabelText('Add')).toHaveTextContent('Add');
   });
   describe('type variations', () => {
     it('should render a button of type "button"', () => {

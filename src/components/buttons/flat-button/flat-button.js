@@ -6,25 +6,42 @@ import requiredIf from 'react-required-if';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
-import Inline from '@commercetools-uikit/spacings-inline';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 const propsToOmit = ['type'];
 
-const getIconElement = props => {
+const ButtonIcon = props => {
   if (!props.icon) return null;
 
   let iconColor = 'solid';
   if (props.isDisabled) iconColor = 'neutral60';
   else if (props.tone === 'primary') iconColor = 'primary';
-  else if (props.tone === 'secondary' && props.isMouseOver)
-    iconColor = 'warning';
+  else if (props.tone === 'secondary') iconColor = 'solid';
   else if (props.tone === 'inverted') iconColor = 'surface';
 
-  return React.cloneElement(props.icon, {
+  const Icon = React.cloneElement(props.icon, {
     size: 'medium',
     color: iconColor,
   });
+
+  if (props.as && props.as !== 'button') {
+    return (
+      <span
+        css={css`
+          vertical-align: middle;
+        `}
+      >
+        {Icon}
+      </span>
+    );
+  }
+  return Icon;
+};
+ButtonIcon.displayName = 'ButtonIcon';
+ButtonIcon.propTypes = {
+  icon: PropTypes.element,
+  tone: PropTypes.oneOf(['primary', 'secondary', 'inverted']),
+  isDisabled: PropTypes.bool,
 };
 
 const getTextColor = (tone, isHover = false, overwrittenVars) => {
@@ -65,14 +82,14 @@ export const FlatButton = props => {
         };
 
         return css`
-          align-items: center;
-          font-size: 1rem;
-          border: none;
-          background: none;
-          padding: 0;
           min-height: initial;
+          align-items: center;
+          ${props.as && props.as !== 'button'
+            ? `white-space: normal;
+               display: inline-block;`
+            : ''};
 
-          p {
+          span {
             color: ${props.isDisabled
               ? overwrittenVars.colorNeutral
               : getTextColor(props.tone, false, overwrittenVars)};
@@ -84,29 +101,32 @@ export const FlatButton = props => {
               : getTextColor(props.tone, false, overwrittenVars)};
           }
 
-          &:hover,
-          &:focus {
-            p {
-              color: ${props.isDisabled
-                ? overwrittenVars.colorNeutral
-                : getTextColor(props.tone, true, overwrittenVars)};
-            }
-
-            svg * {
-              fill: ${props.isDisabled
-                ? overwrittenVars.colorNeutral
-                : getTextColor(props.tone, true, overwrittenVars)};
-            }
+          * + span,
+          * + svg {
+            margin-left: ${vars.spacingXs};
           }
+
+          ${!props.isDisabled
+            ? `
+            &:hover,
+            &:focus {
+              span {
+                color: ${getTextColor(props.tone, true, overwrittenVars)};
+              }
+              svg * {
+                fill: ${getTextColor(props.tone, true, overwrittenVars)};
+              }
+            }`
+            : ''}
         `;
       }}
       buttonAttributes={dataProps}
     >
-      <Inline scale="xs" alignItems="center">
-        {props.iconPosition === 'left' && getIconElement(props)}
-        <Text.Body>{props.label}</Text.Body>
-        {props.iconPosition === 'right' && getIconElement(props)}
-      </Inline>
+      {props.icon && props.iconPosition === 'left' && <ButtonIcon {...props} />}
+      <Text.Body as="span">{props.label}</Text.Body>
+      {props.icon && props.iconPosition === 'right' && (
+        <ButtonIcon {...props} />
+      )}
     </AccessibleButton>
   );
 };
