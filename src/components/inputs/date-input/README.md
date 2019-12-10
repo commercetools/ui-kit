@@ -36,6 +36,8 @@ The `DateInput` component allows the user to select a date. It formats the selec
 | `isReadOnly`           | `bool`   |    -     | -                       | `false` | Disables the date picker menu and makes input field read-only                                                                             |
 | `hasError`             | `bool`   |    -     | -                       | -       | Indicates the input field has an error                                                                                                    |
 | `hasWarning`           | `bool`   |    -     | -                       | -       | Indicates the input field has a warning                                                                                                   |
+| `minValue`             | `string` |    -     | -                       | -       | A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".                                            |
+| `maxValue`             | `string` |    -     | -                       | -       | A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".                                            |
 
 ### Static methods
 

@@ -2,15 +2,18 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
+import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import Readme from './README.md';
 import DateInput from './date-input';
 import Section from '../../../../.storybook/decorators/section';
+
+const exampleDates = getExampleDateStrings();
 
 class DateInputStory extends React.Component {
   static displayName = 'DateInputStory';
 
   state = {
-    value: '2018-11-16',
+    value: exampleDates.preselectedDate,
   };
 
   handleChange = event => {
@@ -48,6 +51,8 @@ class DateInputStory extends React.Component {
             isReadOnly={boolean('isReadOnly', false)}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}
+            minValue={text('minValue', exampleDates.minDate)}
+            maxValue={text('maxValue', exampleDates.maxDate)}
           />
         </div>
       </Section>

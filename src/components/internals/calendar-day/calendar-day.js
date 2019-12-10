@@ -5,6 +5,7 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const getStyles = props => {
   const styles = [];
+
   if (!['heading', 'spacing'].includes(props.type)) {
     styles.push(css`
       text-align: center;
@@ -61,6 +62,13 @@ const getStyles = props => {
     styles.push(css`
       color: ${vars.colorInfo};
       font-weight: bold;
+    `);
+  }
+
+  if (props.disabled) {
+    styles.push(css`
+      color: ${vars.fontColorForInputWhenDisabled};
+      cursor: not-allowed;
     `);
   }
 

@@ -79,3 +79,29 @@ export const parseInputToDate = (text, locale) => {
   if (localeDate.isValid()) return localeDate.format('YYYY-MM-DD');
   return '';
 };
+
+export const isDateInRange = (item, min, max) => {
+  const itemDate = moment(item);
+
+  if (min && max) {
+    return itemDate.isBetween(min, max, null, []);
+  }
+  if (min && !max) {
+    return itemDate.isSameOrAfter(min);
+  }
+  if (!min && max) {
+    return itemDate.isSameOrBefore(max);
+  }
+  return true;
+};
+
+export const getExampleDateStrings = () => ({
+  currentDate: moment().format('YYYY-MM-DD'),
+  preselectedDate: moment()
+    .add(3, 'days')
+    .format('YYYY-MM-DD'),
+  minDate: moment().format('YYYY-MM-DD'),
+  maxDate: moment()
+    .add(1, 'year')
+    .format('YYYY-MM-DD'),
+});
