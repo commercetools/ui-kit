@@ -263,7 +263,10 @@ Detail.propTypes = {
   ]),
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlMessage: requiredIf(
+    intlMessageShape,
+    props => !React.Children.count(props.children)
+  ),
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
