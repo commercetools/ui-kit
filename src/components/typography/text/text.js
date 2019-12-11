@@ -88,7 +88,10 @@ Headline.propTypes = {
   },
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlMessage: requiredIf(
+    intlMessageShape,
+    props => !React.Children.count(props.children)
+  ),
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -146,7 +149,10 @@ Subheadline.propTypes = {
   ]),
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlMessage: requiredIf(
+    intlMessageShape,
+    props => !React.Children.count(props.children)
+  ),
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -163,7 +169,10 @@ const Wrap = props => (
 Wrap.displayName = 'TextWrap';
 Wrap.propTypes = {
   title: nonEmptyString,
-  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlMessage: requiredIf(
+    intlMessageShape,
+    props => !React.Children.count(props.children)
+  ),
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -233,7 +242,10 @@ Body.propTypes = {
   ]),
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlMessage: requiredIf(
+    intlMessageShape,
+    props => !React.Children.count(props.children)
+  ),
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
@@ -263,7 +275,10 @@ Detail.propTypes = {
   ]),
   title: nonEmptyString,
   truncate: PropTypes.bool,
-  intlMessage: requiredIf(intlMessageShape, props => !props.children),
+  intlMessage: requiredIf(
+    intlMessageShape,
+    props => !React.Children.count(props.children)
+  ),
   children: requiredIf(PropTypes.node, props => !props.intlMessage),
 };
 
