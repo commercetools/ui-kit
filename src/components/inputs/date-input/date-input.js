@@ -17,7 +17,7 @@ import {
   createCalendarItems,
   createItemToString,
   parseInputToDate,
-  isDateInRange,
+  getIsDateInRange,
 } from '@commercetools-uikit/calendar-utils';
 import CalendarBody from '../../internals/calendar-body';
 import CalendarMenu from '../../internals/calendar-menu';
@@ -216,7 +216,7 @@ const DateInput = props => {
                         key={item}
                         isToday={isSameDay(today, item)}
                         {...getItemProps({
-                          disabled: !isDateInRange(
+                          disabled: !getIsDateInRange(
                             item,
                             props.minValue,
                             props.maxValue

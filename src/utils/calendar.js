@@ -80,7 +80,7 @@ export const parseInputToDate = (text, locale) => {
   return '';
 };
 
-export const isDateInRange = (item, min, max) => {
+export const getIsDateInRange = (item, min, max) => {
   const itemDate = moment(item);
 
   if (min && max) {
