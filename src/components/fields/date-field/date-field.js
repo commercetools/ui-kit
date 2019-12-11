@@ -39,6 +39,8 @@ class DateField extends React.Component {
     isDisabled: PropTypes.bool,
     isReadOnly: PropTypes.bool,
     placeholder: PropTypes.string,
+    minValue: PropTypes.string,
+    maxValue: PropTypes.string,
 
     // LabelField
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -85,9 +87,11 @@ class DateField extends React.Component {
             id={this.state.id}
             name={this.props.name}
             value={this.props.value}
-            onChange={this.props.onChange}
-            onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
+            onFocus={this.props.onFocus}
+            minValue={this.props.minValue}
+            maxValue={this.props.maxValue}
+            onChange={this.props.onChange}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}

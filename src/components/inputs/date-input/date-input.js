@@ -17,6 +17,7 @@ import {
   createCalendarItems,
   createItemToString,
   parseInputToDate,
+  getIsDateInRange,
 } from '@commercetools-uikit/calendar-utils';
 import CalendarBody from '../../internals/calendar-body';
 import CalendarMenu from '../../internals/calendar-menu';
@@ -215,7 +216,11 @@ const DateInput = props => {
                         key={item}
                         isToday={isSameDay(today, item)}
                         {...getItemProps({
-                          disabled: props.isDisabled,
+                          disabled: !getIsDateInRange(
+                            item,
+                            props.minValue,
+                            props.maxValue
+                          ),
                           item,
                           onMouseOut: () => {
                             setDownshiftHighlightedIndex(null);
@@ -255,6 +260,8 @@ DateInput.propTypes = {
   isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
+  minValue: PropTypes.string,
+  maxValue: PropTypes.string,
 };
 
 export default DateInput;
