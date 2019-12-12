@@ -1,3 +1,24 @@
+# [10.14.0](https://github.com/commercetools/ui-kit/compare/v10.13.0...v10.14.0) (2019-12-12)
+
+#### 🐛 Type: Bug
+
+- [#1214](https://github.com/commercetools/ui-kit/pull/1214) fix(text): proptypes warning when providing an empty string as children to text components ([@ahmehri](https://github.com/ahmehri))
+- [#1211](https://github.com/commercetools/ui-kit/pull/1211) fix(flat-button): icon size and position for multi-line anchors ([@jonnybel](https://github.com/jonnybel))
+
+#### 🔮 Type: Chore
+
+- `i18n`
+  - [#1216](https://github.com/commercetools/ui-kit/pull/1216) chore: fix `build i18n` command ([@jonnybel](https://github.com/jonnybel))
+
+#### 💅 Type: Enhancement
+
+- `components`, `i18n`
+  - [#1215](https://github.com/commercetools/ui-kit/pull/1215) fix(select-input): make the `ClearIndicator` a button ([@jonnybel](https://github.com/jonnybel))
+
+#### 🚀 Type: New Feature
+
+- [#1213](https://github.com/commercetools/ui-kit/pull/1213) feat(date-input): add min and max value props to `date-input` and `date-field` ([@jonnybel](https://github.com/jonnybel))
+
 # [10.13.0](https://github.com/commercetools/ui-kit/compare/v10.12.0...v10.13.0) (2019-12-05)
 
 ## Split codebase into packages
