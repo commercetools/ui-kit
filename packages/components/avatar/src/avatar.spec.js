@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from './avatar';
-import { render } from '../../test-utils';
+import { render } from '../../../../src/test-utils';
 
 const createTestProps = customProps => ({
   firstName: '',
