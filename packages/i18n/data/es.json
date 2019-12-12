@@ -4,6 +4,7 @@
   "UIKit.CalendarHeader.previousMonthTooltip": "Mes anterior",
   "UIKit.CalendarHeader.previousYearTooltip": "Año anterior",
   "UIKit.CalendarHeader.todayTooltip": "Hoy",
+  "UIKit.ClearButton.clearButtonLabel": "",
   "UIKit.CreatableSelectInput.createLabel": "Crear \"{inputValue}\"",
   "UIKit.DateInput.placeholder": "DD/MM/AAAA",
   "UIKit.DateRangeInput.placeholder": "DD/MM/AAAA - DD/MM/AAAA",

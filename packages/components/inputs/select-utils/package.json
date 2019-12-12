@@ -29,6 +29,7 @@
     "react-select": "3.0.8"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0"
+    "react": ">= 16.8.0",
+    "react-intl": "3.x"
   }
 }

@@ -215,20 +215,13 @@ describe('in multi mode', () => {
         expect(onChange).not.toHaveBeenCalled();
         expect(queryByText('Mango')).toBeInTheDocument();
       });
-      it('should call not call onChange when value is cleared by clicking delete button ', () => {
-        const onChange = jest.fn();
-        const { getByLabelText, getByText, queryByText } = renderInput({
-          onChange,
+      it('should not render the clear button', () => {
+        const { queryByTitle } = renderInput({
           isMulti: true,
           value: ['mango'],
           isDisabled: true,
         });
-        const input = getByLabelText('Fruit');
-        fireEvent.focus(input);
-        const deleteButton = getByText('Mango').nextSibling;
-        deleteButton.click();
-        expect(onChange).not.toHaveBeenCalled();
-        expect(queryByText('Mango')).toBeInTheDocument();
+        expect(queryByTitle('Clear')).not.toBeInTheDocument();
       });
     });
     it('should open the list and all options should be visible', () => {
@@ -317,17 +310,17 @@ describe('in multi mode', () => {
       });
       expect(queryByText('Mango')).not.toBeInTheDocument();
     });
-    it('should call onChange when value is cleared by clicking delete button ', () => {
+    it('should call onChange when value is cleared by clicking the clear button ', () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText, queryByText } = renderInput({
+      const { getByLabelText, getByTitle, queryByText } = renderInput({
         onChange,
         isMulti: true,
         value: ['mango'],
       });
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
-      const deleteButton = getByText('Mango').nextSibling;
-      deleteButton.click();
+      const deleteButton = getByTitle('Clear');
+      fireEvent.mouseDown(deleteButton);
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -352,20 +345,13 @@ describe('in multi mode', () => {
         expect(onChange).not.toHaveBeenCalled();
         expect(queryByText('Mango')).toBeInTheDocument();
       });
-      it('should call not call onChange when value is cleared by clicking delete button ', () => {
-        const onChange = jest.fn();
-        const { getByLabelText, getByText, queryByText } = renderInput({
-          onChange,
+      it('should not render the clear button ', () => {
+        const { queryByTitle } = renderInput({
           isMulti: true,
           value: ['mango'],
           isReadOnly: true,
         });
-        const input = getByLabelText('Fruit');
-        fireEvent.focus(input);
-        const deleteButton = getByText('Mango').nextSibling;
-        deleteButton.click();
-        expect(onChange).not.toHaveBeenCalled();
-        expect(queryByText('Mango')).toBeInTheDocument();
+        expect(queryByTitle('Clear')).not.toBeInTheDocument();
       });
     });
   });
