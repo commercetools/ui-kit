@@ -38,7 +38,7 @@
     "test:visual": "jest --config jest.visual.config.js",
     "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
-    "prerelease": "yarn build",
+    "prerelease": "npm_config_registry=https://registry.npmjs.org npm whoami && yarn build",
     "release": "lerna publish --exact --dist-tag next",
     "release:alpha": "lerna publish --exact --dist-tag alpha --no-git-tag-version --no-push",
     "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes",
