@@ -8,7 +8,8 @@ yarn-error.log*
 
 # Build output
 dist
-presets/ui-kit/{i18n,materials}
+presets/ui-kit/materials
+presets/ui-kit/i18n
 
 # Runtime data
 pids
