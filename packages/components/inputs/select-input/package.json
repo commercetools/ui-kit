@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/select-input",
-  "version": "10.13.0",
+  "version": "10.14.0",
   "description": "",
   "main": "dist/select-input.cjs.js",
   "module": "dist/select-input.esm.js",
@@ -22,7 +22,7 @@
     "@commercetools-uikit/constraints": "10.13.0",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.13.0",
-    "@commercetools-uikit/select-utils": "10.13.0",
+    "@commercetools-uikit/select-utils": "10.14.0",
     "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/is-prop-valid": "0.8.5",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-input",
-  "version": "10.13.0",
+  "version": "10.14.0",
   "description": "",
   "main": "dist/async-creatable-select-input.cjs.js",
   "module": "dist/async-creatable-select-input.esm.js",
@@ -23,7 +23,7 @@
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.13.0",
     "@commercetools-uikit/loading-spinner": "10.13.0",
-    "@commercetools-uikit/select-utils": "10.13.0",
+    "@commercetools-uikit/select-utils": "10.14.0",
     "@commercetools-uikit/spacings": "10.13.0",
     "@commercetools-uikit/text": "10.13.0",
     "@commercetools-uikit/utils": "10.13.0",

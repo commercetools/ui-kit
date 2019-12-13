@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/checkbox-input",
-  "version": "10.13.0",
+  "version": "10.14.0",
   "description": "",
   "main": "dist/checkbox-input.cjs.js",
   "module": "dist/checkbox-input.esm.js",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.13.0",
-    "@commercetools-uikit/select-utils": "10.13.0",
+    "@commercetools-uikit/select-utils": "10.14.0",
     "@commercetools-uikit/text": "10.13.0",
     "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
