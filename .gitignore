@@ -5,7 +5,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 **/.DS_Store
+
+# Build output
 dist
+presets/ui-kit/{i18n,materials}
+
 # Runtime data
 pids
 *.pid
@@ -84,7 +88,6 @@ public
 .idea
 .vscode
 !.vscode/settings.json
-
 
 # File used to fail tests on CI
 fail-tests-because-there-was-an-unhandled-rejection.lock
