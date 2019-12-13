@@ -11,7 +11,7 @@ import {
   filterInvalidAttributes,
   warnDeprecatedProp,
 } from '@commercetools-uikit/utils';
-import AccessibleButton from '../accessible-button';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
