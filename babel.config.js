@@ -1,5 +1,8 @@
 /* eslint-disable global-require */
-module.exports = function getBabelPreset() {
+module.exports = function getBabelPreset(api) {
+  // Cache the returned value forever and don't call this function again.
+  api.cache(true);
+
   // This is similar to how `env` works in Babel:
   // https://babeljs.io/docs/usage/babelrc/#env-option
   // We are not using `env` because it’s ignored in versions > babel-core@6.10.4:
@@ -73,7 +76,6 @@ module.exports = function getBabelPreset() {
       // Experimental macros support. Will be documented after it's had some time
       // in the wild.
       require('babel-plugin-macros').default,
-      // https://github.com/emotion-js/emotion/tree/master/packages/babel-plugin-emotion
       // export { default } from './foo'
       require('@babel/plugin-proposal-export-default-from').default,
       // export * from './foo'
