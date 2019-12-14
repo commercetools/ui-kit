@@ -43,6 +43,7 @@ module.exports = {
           loader: 'babel-loader',
           query: {
             compact: true,
+            configFile: '../babel.config.js',
           },
         },
       },
