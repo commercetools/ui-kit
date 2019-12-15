@@ -98,7 +98,6 @@
     "babel-plugin-react-intl": "5.1.10",
     "babel-plugin-transform-dynamic-import": "2.1.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "babel-preset-jest": "24.9.0",
     "browserslist": "4.8.0",
     "bundlesize": "0.18.0",
     "colors": "1.4.0",

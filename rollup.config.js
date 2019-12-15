@@ -11,8 +11,6 @@ const { packageJson: pkg } = readPkgUp.sync({
   cwd: fs.realpathSync(process.cwd()),
 });
 
-const getBabelPreset = require('./scripts/get-babel-preset');
-
 // we don't want to bundle any external dependencies.
 // therefore, here we add any "react-in" imports, so that
 // we don't get unresolved depenency errors from rollup
@@ -39,8 +37,6 @@ const ignoredExternals = [
   '@emotion/styled-base',
 ];
 
-const babelOptions = getBabelPreset();
-
 // NOTE: the order of the plugins is important!
 const rollupPlugins = [
   replace({
@@ -54,7 +50,7 @@ const rollupPlugins = [
   babel({
     exclude: path.join(__dirname, '/node_modules/**'),
     runtimeHelpers: true,
-    ...babelOptions,
+    rootMode: 'upward',
   }),
   // To convert CJS modules to ES6
   commonjs({

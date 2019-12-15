@@ -43,7 +43,7 @@ module.exports = {
           loader: 'babel-loader',
           query: {
             compact: true,
-            presets: [require.resolve('../scripts/get-babel-preset')],
+            configFile: '../babel.config.js',
           },
         },
       },

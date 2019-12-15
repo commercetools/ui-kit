@@ -49,7 +49,7 @@ module.exports = {
   testPathIgnorePatterns: ['node_modules'],
   testRegex: '\\.bundlespec\\.js$',
   transform: {
-    '^.+\\.js$': '<rootDir>/test/transform-babel-jest.js',
+    '^.+\\.[t|j]sx?$': 'babel-jest',
   },
   transformIgnorePatterns: [`node_modules/(?!(${vendorsToTranspile})/)`],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],

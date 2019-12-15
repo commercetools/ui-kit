@@ -17,7 +17,6 @@ const path = require('path');
 const mri = require('mri');
 const nodeGlob = require('glob');
 const { transformAsync } = require('@babel/core');
-const getBabelPreset = require('./get-babel-preset');
 
 const flags = mri(process.argv.slice(2), {
   alias: { help: ['h'] },
@@ -39,9 +38,6 @@ if (commands.length === 0 || (flags.help && commands.length === 0)) {
 if (!flags['output-path']) {
   throw new Error('Missing required option "--output-path"');
 }
-
-const babelConfig = getBabelPreset();
-const { presets, plugins } = babelConfig;
 
 // Resolve the absolute path of the caller location. This is necessary
 // to point to files within that folder.
@@ -113,9 +109,6 @@ locales.forEach(locale => {
   }
 });
 
-// eslint-disable-next-line global-require
-plugins.push([require('babel-plugin-react-intl').default]);
-
 const sortMessages = localeMessages => {
   // Sort the translation JSON file so that git diffing is easier
   // Otherwise the translation messages will jump around every time we extract
@@ -134,9 +127,6 @@ const extractFromFile = async fileName => {
     const src = await readFile(path.join(rootPath, fileName));
     // Use babel plugin to extract instances where react-intl is used
     const { metadata: result } = await transformAsync(src, {
-      babelrc: false,
-      presets,
-      plugins,
       filename: fileName,
     });
     result['react-intl'].messages.forEach(message => {
