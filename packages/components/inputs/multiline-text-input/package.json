@@ -30,7 +30,7 @@
     "@commercetools-uikit/utils": "10.13.0",
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
-    "downshift": "3.4.5",
+    "downshift": "3.4.8",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "react-textarea-autosize": "7.1.2"
