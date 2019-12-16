@@ -35,7 +35,7 @@
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
     "common-tags": "1.8.0",
-    "downshift": "3.4.5",
+    "downshift": "3.4.8",
     "immutable": "4.0.0-rc.12",
     "is-hotkey": "0.1.6",
     "prop-types": "15.7.2",
