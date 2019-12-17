@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs/react';
-import Section from '../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import Card from './card';
-import Constraints from '../constraints';
+import Constraints from '../../../../src/components/constraints';
 
 storiesOf('Components|Cards', module)
   .addDecorator(withKnobs)
