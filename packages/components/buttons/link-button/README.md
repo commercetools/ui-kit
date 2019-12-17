@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { LinkButton } from '@commercetools-frontend/ui-kit';
+import { LinkButton } from '@commercetools-ui-kit/link-button';
 ```
 
 #### Description

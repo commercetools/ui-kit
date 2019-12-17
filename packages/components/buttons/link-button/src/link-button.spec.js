@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent, wait } from '../../../test-utils';
-import { PlusBoldIcon } from '../../icons';
+import { PlusBoldIcon } from '@commercetools-uikit/icons';
+import { render, fireEvent, wait } from '../../../../../src/test-utils';
 import LinkButton from './link-button';
 
 const createTestProps = custom => ({
