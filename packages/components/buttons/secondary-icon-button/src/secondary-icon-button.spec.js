@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { render } from '../../../test-utils';
-import { PlusBoldIcon } from '../../icons';
+import { PlusBoldIcon } from '@commercetools-uikit/icons';
+import { render } from '../../../../../src/test-utils';
 import SecondaryIconButton from './secondary-icon-button';
 
 const createTestProps = custom => ({
