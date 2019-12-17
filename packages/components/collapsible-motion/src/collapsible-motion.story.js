@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs/react';
+import { Spacings } from '@commercetools-frontend/ui-kit';
 import CollapsibleMotion from './collapsible-motion';
-import Spacings from '../spacings';
-import Readme from './README.md';
+import Readme from '../README.md';
 
 class CollapsibleMotionStory extends React.Component {
   static displayName = 'CollapsibleMotionStory';

@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant';
 import { keyframes, ClassNames } from '@emotion/core';
 import isNil from 'lodash/isNil';
 import { useToggleState } from '@commercetools-uikit/hooks';
-import usePrevious from '../../hooks/use-previous';
+import usePrevious from '../../../../src/hooks/use-previous';
 
 const collapsibleMotionPropTypes = {
   children: PropTypes.func.isRequired,

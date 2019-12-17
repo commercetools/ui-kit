@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import React from 'react';
-import { render, fireEvent } from '../../test-utils';
+import { render, fireEvent } from '../../../../src/test-utils';
 import CollapsibleMotion from './collapsible-motion';
 
 describe('uncontrolled mode', () => {

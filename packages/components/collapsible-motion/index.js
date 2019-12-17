@@ -1,3 +1,3 @@
-export { default } from '../../../src/components/collapsible-motion';
+export { default } from './src';
 
 export { default as version } from './version';
