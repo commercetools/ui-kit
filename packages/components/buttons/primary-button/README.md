@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { PrimaryButton } from '@commercetools-frontend/ui-kit';
+import { PrimaryButton } from '@commercetools-ui-kit/primary-button';
 ```
 
 #### Description

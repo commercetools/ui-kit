@@ -9,10 +9,10 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
+import PrimaryButton from '@commercetools-uikit/primary-button';
 import Section from '../../../.storybook/decorators/section';
 import Readme from './README.md';
 import Tooltip from './tooltip';
-import PrimaryButton from '../buttons/primary-button';
 
 const CustomWrapper = styled.div`
   display: block;
