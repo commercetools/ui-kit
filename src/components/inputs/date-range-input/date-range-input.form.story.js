@@ -4,10 +4,9 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import Spacings from '@commercetools-uikit/spacings';
-import PrimaryButton from '@commercetools-uikit/primary-button';
+import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
 import Section from '../../../../.storybook/decorators/section';
 import FormikBox from '../../../../.storybook/decorators/formik-box';
-import SecondaryButton from '../../buttons/secondary-button';
 import Readme from './README.md';
 import DateRangeInput from './date-range-input';
 
