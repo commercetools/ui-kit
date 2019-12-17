@@ -7,7 +7,7 @@ A component for rendering profile images
 ## Usage
 
 ```js
-import { Avatar } from '@commercetools-frontend/ui-kit';
+import { Avatar } from '@commercetools-uikit/avatar';
 
 <Avatar
   gravatarHash="20c9c1b252b46ab49d6f7a4cee9c3e68"

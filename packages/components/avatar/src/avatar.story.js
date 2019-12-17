@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 import Section from '../../../../.storybook/decorators/section';
 import Avatar from './avatar';
-import Readme from './README.md';
+import Readme from '../README.md';
 
 storiesOf('Components|Avatar', module)
   .addDecorator(withKnobs)
