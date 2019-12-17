@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { FlatButton, InformationIcon } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/flat-button';
 
