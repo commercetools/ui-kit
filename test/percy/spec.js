@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 import pick from 'lodash/pick';
 import { customProperties } from '@commercetools-frontend/ui-kit';
 
+const getThemedProperty = name => props =>
+  props.theme[name] || customProperties[name];
+
 const SpecContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,7 +52,7 @@ const PropValue = styled.span`
 `;
 
 const Box = styled.div`
-  background-color: ${props => props.theme.colorSurface};
+  background-color: ${getThemedProperty('colorSurface')};
 `;
 
 const Pill = props => {
