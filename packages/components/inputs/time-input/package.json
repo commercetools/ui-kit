@@ -24,9 +24,9 @@
     "@commercetools-uikit/icons": "10.13.0",
     "@commercetools-uikit/spacings-inline": "10.13.0",
     "@commercetools-uikit/utils": "10.13.0",
-    "@emotion/core": "10.0.22",
-    "@emotion/is-prop-valid": "0.8.5",
-    "@emotion/styled": "10.0.23",
+    "@emotion/core": "10.0.27",
+    "@emotion/is-prop-valid": "0.8.6",
+    "@emotion/styled": "10.0.27",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3"
   },
