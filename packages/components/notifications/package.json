@@ -22,7 +22,7 @@
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.13.0",
     "@commercetools-uikit/utils": "10.13.0",
-    "@emotion/core": "10.0.22",
+    "@emotion/core": "10.0.27",
     "common-tags": "1.8.0",
     "prop-types": "15.7.2"
   },
