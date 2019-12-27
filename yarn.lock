@@ -1014,11 +1014,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@commercetools-uikit/design-system@11.0.0-alpha.10":
-  version "11.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/design-system/-/design-system-11.0.0-alpha.10.tgz#7872a02849ab2e5df004e8fd1572b64b3948baae"
-  integrity sha512-Yo/IwsKPILziSfYdjvk5VtoqN3bR5/InCD558471pMlKwncTTE4dv7jQTHLTmdHFjKYV0bJ+nkarCTCjr8HzSg==
-
 "@commercetools/enzyme-extensions@5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@commercetools/enzyme-extensions/-/enzyme-extensions-5.0.0.tgz#0ba0841b02384069ae60e76165d65ee170874fe9"
@@ -8200,7 +8195,6 @@ fsevents@^1.2.7:
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
-    node-pre-gyp "*"
 
 function-bind@^1.1.1:
   version "1.1.1"
