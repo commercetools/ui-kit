@@ -1,49 +1,51 @@
 import React from 'react';
 
-const Unchecked = props => (
-  <svg width={16} height={16} viewBox="0 0 16 16" {...props}>
-    <g
-      id="unchecked__ATOM---Checkboxes---Radio-buttons"
-      stroke="none"
-      strokeWidth={1}
-      fill="none"
-      fillRule="evenodd"
-    >
+function Unchecked(props) {
+  return (
+    <svg width={16} height={16} viewBox="0 0 16 16" {...props}>
       <g
-        id="unchecked__Checkboxes-Radio-Buttons"
-        transform="translate(-177 -645)"
+        id="unchecked__ATOM---Checkboxes---Radio-buttons"
+        stroke="none"
+        strokeWidth={1}
+        fill="none"
+        fillRule="evenodd"
       >
         <g
-          id="unchecked__checkbox-empty-default"
-          transform="translate(177 644)"
+          id="unchecked__Checkboxes-Radio-Buttons"
+          transform="translate(-177 -645)"
         >
-          <rect
-            id="unchecked__background"
-            fill="#FFF"
-            x={0}
-            y={1}
-            width={16}
-            height={16}
-            rx={4}
-          />
           <g
-            id="unchecked__borderAndContent"
-            transform="translate(0 .5)"
-            stroke="#AFAFAF"
+            id="unchecked__checkbox-empty-default"
+            transform="translate(177 644)"
           >
             <rect
-              id="unchecked__border"
-              x={0.5}
+              id="unchecked__background"
+              fill="#FFF"
+              x={0}
               y={1}
-              width={15}
-              height={15}
+              width={16}
+              height={16}
               rx={4}
             />
+            <g
+              id="unchecked__borderAndContent"
+              transform="translate(0 .5)"
+              stroke="#AFAFAF"
+            >
+              <rect
+                id="unchecked__border"
+                x={0.5}
+                y={1}
+                width={15}
+                height={15}
+                rx={4}
+              />
+            </g>
           </g>
         </g>
       </g>
-    </g>
-  </svg>
-);
+    </svg>
+  );
+}
 
 export default Unchecked;

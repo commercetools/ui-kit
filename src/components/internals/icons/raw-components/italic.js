@@ -1,22 +1,24 @@
 import React from 'react';
 
-const Italic = props => (
-  <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
-    <g
-      id="italic__Component-/-icon-/-24px-/-Richtext-/-Italic-"
-      stroke="none"
-      strokeWidth={1}
-      fill="none"
-      fillRule="evenodd"
-    >
+function Italic(props) {
+  return (
+    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
       <g
-        id="italic__Component-/-icon-/-16px-/-Richtext-/-Italic-"
-        fill="#1A1A1A"
+        id="italic__Component-/-icon-/-24px-/-Richtext-/-Italic-"
+        stroke="none"
+        strokeWidth={1}
+        fill="none"
+        fillRule="evenodd"
       >
-        <path id="italic__I" d="M9 20.99L12.827 3h2.067l-3.827 17.99z" />
+        <g
+          id="italic__Component-/-icon-/-16px-/-Richtext-/-Italic-"
+          fill="#1A1A1A"
+        >
+          <path id="italic__I" d="M9 20.99L12.827 3h2.067l-3.827 17.99z" />
+        </g>
       </g>
-    </g>
-  </svg>
-);
+    </svg>
+  );
+}
 
 export default Italic;
