@@ -1,37 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Cell, Header } from './simple-table.styles';
+import {
+  TableGrid,
+  Header,
+  Body,
+  Row,
+  HeaderCell,
+  DataCell,
+} from './simple-table.styles';
 
 const SimpleTable = props => {
   return (
-    <Grid
+    <TableGrid
       columns={props.columns}
       maxHeight={props.tableMaxHeight}
       maxWidth={props.tableMaxWidth}
     >
-      {props.columns.map(column => (
-        <Header
-          isSticky={props.isHeaderSticky}
-          key={column.key}
-          role="column-header"
-        >
-          <Cell isCondensed={props.isCondensed}>{column.label}</Cell>
-        </Header>
-      ))}
-      {props.items.map(item => (
-        <React.Fragment key={item.key}>
+      <Header isSticky={props.isHeaderSticky}>
+        <Row>
           {props.columns.map(column => (
-            <Cell
+            <HeaderCell
+              key={column.key}
+              role="column-header"
               isCondensed={props.isCondensed}
-              alignment={column.align ? column.align : props.cellAlignment}
-              key={`${item.key}/${column.key}`}
             >
-              {props.renderItem({ item, column })}
-            </Cell>
+              {column.label}
+            </HeaderCell>
           ))}
-        </React.Fragment>
-      ))}
-    </Grid>
+        </Row>
+      </Header>
+      <Body>
+        {props.items.map(item => (
+          <Row key={item.key}>
+            {props.columns.map(column => (
+              <DataCell
+                isCondensed={props.isCondensed}
+                alignment={column.align ? column.align : props.cellAlignment}
+                key={`${item.key}/${column.key}`}
+              >
+                {props.renderItem({ item, column })}
+              </DataCell>
+            ))}
+          </Row>
+        ))}
+      </Body>
+    </TableGrid>
   );
 };
 SimpleTable.propTypes = {

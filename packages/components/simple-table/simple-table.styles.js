@@ -1,33 +1,37 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const Cell = styled.div`
+const getCellAlignment = props => {
+  if (props.alignment === 'center') {
+    return css`
+      justify-content: center;
+      text-align: center;
+    `;
+  }
+  if (props.alignment === 'right') {
+    return css`
+      justify-content: flex-end;
+      text-align: right;
+    `;
+  }
+  return css`
+    justify-content: flex-start;
+    text-align: left;
+  `;
+};
+
+const getCellStyles = props => css`
   display: flex;
   align-items: center;
 
-  ${props => {
-    if (props.alignment === 'center') {
-      return `
-      justify-content: center;
-      text-align: center
-      `;
-    }
-    if (props.alignment === 'right') {
-      return `
-      justify-content: flex-end;
-      text-align: right;
-      `;
-    }
-    return `
-      justify-content: flex-start;
-      text-align: left;
-      `;
-  }};
+  border-right: 1px solid ${vars.colorNeutral90};
+  border-bottom: 1px solid ${vars.colorNeutral90};
 
-  padding: ${props => (props.isCondensed ? '2px 4px' : '8px 16px')};
+  padding: ${props.isCondensed ? '2px 4px' : '8px 16px'};
 `;
 
-const Grid = styled.div`
+const TableGrid = styled.table`
   display: grid;
   /* stylelint-disable function-whitespace-after */
   grid-template-columns: ${props =>
@@ -36,11 +40,6 @@ const Grid = styled.div`
   border-top: 1px solid ${vars.colorNeutral90};
   border-left: 1px solid ${vars.colorNeutral90};
 
-  ${Cell} {
-    border-right: 1px solid ${vars.colorNeutral90};
-    border-bottom: 1px solid ${vars.colorNeutral90};
-  }
-
   ${props => (props.maxHeight ? `max-height: ${props.maxHeight}px;` : '')}
   ${props =>
     props.maxWidth ? `max-width: ${props.maxWidth}px;` : ''}
@@ -48,12 +47,33 @@ const Grid = styled.div`
   overflow: auto;
 `;
 
-const Header = styled.div`
-  color: ${vars.colorSurface};
-  background-color: ${vars.colorAccent};
-
+const Header = styled.thead`
+  display: contents;
   position: ${props => (props.isSticky ? 'sticky' : 'static')};
   top: 0;
 `;
 
-export { Grid, Cell, Header };
+const Body = styled.tbody`
+  display: contents;
+`;
+
+const Row = styled.tr`
+  display: contents;
+`;
+
+const HeaderCell = styled.th`
+  ${getCellStyles};
+  color: ${vars.colorSurface};
+  background-color: ${vars.colorAccent};
+  font-weight: normal;
+
+  ${getCellAlignment}
+`;
+
+const DataCell = styled.td`
+  ${getCellStyles};
+
+  ${getCellAlignment}
+`;
+
+export { TableGrid, Header, Body, Row, HeaderCell, DataCell };
