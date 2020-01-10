@@ -59,20 +59,22 @@ const Body = styled.tbody`
 
 const Row = styled.tr`
   display: contents;
+
+  &:hover td {
+    background: ${vars.backgroundColorForInputWhenHovered};
+  }
 `;
 
 const HeaderCell = styled.th`
   ${getCellStyles};
+  ${getCellAlignment}
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
   font-weight: normal;
-
-  ${getCellAlignment}
 `;
 
 const DataCell = styled.td`
-  ${getCellStyles};
-
+  ${getCellStyles}
   ${getCellAlignment}
 `;
 
