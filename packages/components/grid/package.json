@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/grid",
-  "version": "10.13.0",
+  "version": "10.14.1",
   "description": "",
   "main": "dist/grid.cjs.js",
   "module": "dist/grid.esm.js",

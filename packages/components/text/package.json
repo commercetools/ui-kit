@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/text",
-  "version": "10.13.0",
+  "version": "10.14.1",
   "description": "",
   "main": "dist/text.cjs.js",
   "module": "dist/text.esm.js",
@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.13.0",
-    "@commercetools-uikit/utils": "10.13.0",
+    "@commercetools-uikit/utils": "10.14.1",
     "@emotion/core": "10.0.27",
     "common-tags": "1.8.0",
     "lodash": "4.17.15",

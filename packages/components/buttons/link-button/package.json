@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/link-button",
-  "version": "10.13.0",
+  "version": "10.14.1",
   "description": "",
   "main": "dist/link-button.cjs.js",
   "module": "dist/link-button.esm.js",
@@ -19,11 +19,11 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.13.0",
+    "@commercetools-uikit/accessible-button": "10.14.1",
     "@commercetools-uikit/design-system": "10.13.0",
-    "@commercetools-uikit/spacings-inline": "10.13.0",
-    "@commercetools-uikit/text": "10.13.0",
-    "@commercetools-uikit/utils": "10.13.0",
+    "@commercetools-uikit/spacings-inline": "10.14.1",
+    "@commercetools-uikit/text": "10.14.1",
+    "@commercetools-uikit/utils": "10.14.1",
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",
     "common-tags": "1.8.0",
