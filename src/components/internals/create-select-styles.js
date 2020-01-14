@@ -340,6 +340,11 @@ const multiValueLabelStyles = (props, theme) => base => {
     borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${overwrittenVars.borderRadiusForTag}`,
     border: `1px ${overwrittenVars[designTokens.borderColorForTag]} solid`,
     borderWidth: '1px 0 1px 1px',
+
+    '&:last-child': {
+      borderRadius: overwrittenVars.borderRadiusForTag,
+      borderWidth: '1px',
+    },
   };
 };
 
