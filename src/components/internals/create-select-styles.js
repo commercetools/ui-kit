@@ -306,10 +306,16 @@ const menuPortalStyles = props => base => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = () => base => {
+const multiValueStyles = (props, theme) => base => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
   return {
     ...base,
     height: vars.sizeHeightTag,
+    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
     padding: '0',
   };
 };
@@ -330,11 +336,15 @@ const multiValueLabelStyles = (props, theme) => base => {
         return overwrittenVars[designTokens.fontColorForInputWhenReadonly];
       return base.color;
     })(),
-    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
     padding: `${overwrittenVars.spacingXs} ${overwrittenVars.spacingS}`,
-    borderRadius: overwrittenVars.borderRadiusForTag,
+    borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${overwrittenVars.borderRadiusForTag}`,
     border: `1px ${overwrittenVars[designTokens.borderColorForTag]} solid`,
-    borderWidth: '1px',
+    borderWidth: '1px 0 1px 1px',
+
+    '&:last-child': {
+      borderRadius: overwrittenVars.borderRadiusForTag,
+      borderWidth: '1px',
+    },
   };
 };
 
@@ -346,17 +356,14 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
 
   return {
     ...base,
-    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
-    padding: `0 ${overwrittenVars.spacingXs}`,
     borderColor: overwrittenVars[designTokens.borderColorForTag],
+    padding: `0 ${overwrittenVars.spacingXs}`,
     borderRadius: `0 ${overwrittenVars[designTokens.borderRadiusForTag]} ${
       overwrittenVars[designTokens.borderRadiusForTag]
     } 0`,
     borderStyle: 'solid',
     borderWidth: '1px',
     pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
-    // This negative margin is for the left border to stay on top of the label's right border
-    marginLeft: `-${overwrittenVars[designTokens.borderRadiusForTag]}`,
 
     '&:hover': {
       borderColor: overwrittenVars.borderColorForTagWarning,
