@@ -339,7 +339,7 @@ const multiValueLabelStyles = (props, theme) => base => {
     padding: `${overwrittenVars.spacingXs} ${overwrittenVars.spacingS}`,
     borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${overwrittenVars.borderRadiusForTag}`,
     border: `1px ${overwrittenVars[designTokens.borderColorForTag]} solid`,
-    borderWidth: '1px 0 1px 1px',
+    borderWidth: '1px',
   };
 };
 
@@ -359,6 +359,8 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
     borderStyle: 'solid',
     borderWidth: '1px',
     pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
+    // This negative margin is for the left border to stay on top of the label's right border
+    marginLeft: '-1px',
 
     '&:hover': {
       borderColor: overwrittenVars.borderColorForTagWarning,
