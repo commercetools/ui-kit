@@ -1,3 +1,15 @@
+## [10.14.1](https://github.com/commercetools/ui-kit/compare/v10.14.0...v10.14.1) (2020-01-14)
+
+#### 🐛 Type: Bug
+
+- [#1238](https://github.com/commercetools/ui-kit/pull/1238) fix(select-input): multi select tag missing border when there's no remove button ([@jonnybel](https://github.com/jonnybel))
+
+#### 🔮 Type: Chore
+
+- [#1234](https://github.com/commercetools/ui-kit/pull/1234) chore: regenerate icon exports ([@jonnybel](https://github.com/jonnybel))
+- [#1220](https://github.com/commercetools/ui-kit/pull/1220) chore: use `babel.config.js` file ([@emmenko](https://github.com/emmenko))
+- [#1219](https://github.com/commercetools/ui-kit/pull/1219) chore: check npm authentication on prerelease ([@jonnybel](https://github.com/jonnybel))
+
 # [10.14.0](https://github.com/commercetools/ui-kit/compare/v10.13.0...v10.14.0) (2019-12-12)
 
 #### 🐛 Type: Bug
