@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  TableGrid,
-  Header,
-  Body,
-  Row,
-  HeaderCell,
-  DataCell,
-} from './simple-table.styles';
+import { TableGrid, Header, Body, Row } from './simple-table.styles';
+import { HeaderCell, DataCell } from './cell';
 
 const SimpleTable = props => {
   return (
@@ -32,15 +26,18 @@ const SimpleTable = props => {
       <Body>
         {props.items.map(item => (
           <Row key={item.key}>
-            {props.columns.map(column => (
-              <DataCell
-                isCondensed={props.isCondensed}
-                alignment={column.align ? column.align : props.cellAlignment}
-                key={`${item.key}/${column.key}`}
-              >
-                {props.renderItem({ item, column })}
-              </DataCell>
-            ))}
+            {props.columns.map(column => {
+              return (
+                <DataCell
+                  key={`${item.key}/${column.key}`}
+                  alignment={column.align ? column.align : props.cellAlignment}
+                  isCondensed={props.isCondensed}
+                  isTruncated={column.isTruncated}
+                >
+                  {props.renderItem({ item, column })}
+                </DataCell>
+              );
+            })}
           </Row>
         ))}
       </Body>
@@ -56,6 +53,7 @@ SimpleTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
+      isTruncated: PropTypes.bool,
     })
   ).isRequired,
   renderItem: PropTypes.func.isRequired,

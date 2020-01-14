@@ -143,6 +143,7 @@ const columns = [
   {
     key: 'about',
     label: 'About',
+    isTruncated: true,
   },
 ];
 
