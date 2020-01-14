@@ -306,16 +306,10 @@ const menuPortalStyles = props => base => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = (props, theme) => base => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const multiValueStyles = () => base => {
   return {
     ...base,
     height: vars.sizeHeightTag,
-    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
     padding: '0',
   };
 };
@@ -336,8 +330,9 @@ const multiValueLabelStyles = (props, theme) => base => {
         return overwrittenVars[designTokens.fontColorForInputWhenReadonly];
       return base.color;
     })(),
+    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
     padding: `${overwrittenVars.spacingXs} ${overwrittenVars.spacingS}`,
-    borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${overwrittenVars.borderRadiusForTag}`,
+    borderRadius: overwrittenVars.borderRadiusForTag,
     border: `1px ${overwrittenVars[designTokens.borderColorForTag]} solid`,
     borderWidth: '1px',
   };
@@ -351,8 +346,9 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
 
   return {
     ...base,
-    borderColor: overwrittenVars[designTokens.borderColorForTag],
+    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
     padding: `0 ${overwrittenVars.spacingXs}`,
+    borderColor: overwrittenVars[designTokens.borderColorForTag],
     borderRadius: `0 ${overwrittenVars[designTokens.borderRadiusForTag]} ${
       overwrittenVars[designTokens.borderRadiusForTag]
     } 0`,
@@ -360,7 +356,7 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
     borderWidth: '1px',
     pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
     // This negative margin is for the left border to stay on top of the label's right border
-    marginLeft: '-1px',
+    marginLeft: `-${overwrittenVars[designTokens.borderRadiusForTag]}`,
 
     '&:hover': {
       borderColor: overwrittenVars.borderColorForTagWarning,
