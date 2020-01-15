@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '../../../test-utils';
-import { CloseBoldIcon } from '../../icons';
+import { CloseBoldIcon } from '@commercetools-uikit/icons';
+import { render, fireEvent } from '../../../../src/test-utils';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 
 it('should execute the primary actions callback when primary action is clicked', () => {
