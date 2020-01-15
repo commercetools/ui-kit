@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/inputs",
-  "version": "10.14.1",
+  "version": "10.14.2",
   "description": "",
   "main": "dist/inputs.cjs.js",
   "module": "dist/inputs.esm.js",
@@ -22,8 +22,8 @@
     "@commercetools-uikit/async-select-input": "10.14.1",
     "@commercetools-uikit/checkbox-input": "10.14.1",
     "@commercetools-uikit/creatable-select-input": "10.14.1",
-    "@commercetools-uikit/date-input": "10.14.1",
-    "@commercetools-uikit/date-range-input": "10.14.1",
+    "@commercetools-uikit/date-input": "10.14.2",
+    "@commercetools-uikit/date-range-input": "10.14.2",
     "@commercetools-uikit/date-time-input": "10.14.1",
     "@commercetools-uikit/localized-money-input": "10.14.1",
     "@commercetools-uikit/localized-multiline-text-input": "10.14.1",

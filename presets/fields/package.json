@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/fields",
-  "version": "10.14.1",
+  "version": "10.14.2",
   "description": "",
   "main": "dist/fields.cjs.js",
   "module": "dist/fields.esm.js",
@@ -21,8 +21,8 @@
     "@commercetools-uikit/async-creatable-select-field": "10.14.1",
     "@commercetools-uikit/async-select-field": "10.14.1",
     "@commercetools-uikit/creatable-select-field": "10.14.1",
-    "@commercetools-uikit/date-field": "10.14.1",
-    "@commercetools-uikit/date-range-field": "10.14.1",
+    "@commercetools-uikit/date-field": "10.14.2",
+    "@commercetools-uikit/date-range-field": "10.14.2",
     "@commercetools-uikit/date-time-field": "10.14.1",
     "@commercetools-uikit/localized-multiline-text-field": "10.14.1",
     "@commercetools-uikit/localized-text-field": "10.14.1",
