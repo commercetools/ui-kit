@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../test-utils';
+import { render } from '../../../../../src/test-utils';
 import Horizontal from './horizontal';
 
 // The different constraints are tested in the visual regression tests.

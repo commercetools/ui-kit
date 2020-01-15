@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
-import Readme from './README.md';
+import Readme from '../../README.md';
 
 const Stack = styled.div`
   > * + * {
