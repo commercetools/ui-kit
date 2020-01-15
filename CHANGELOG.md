@@ -1,4 +1,15 @@
+## [10.14.2](https://github.com/commercetools/ui-kit/compare/v10.14.1...v10.14.2) (2020-01-15)
+
+#### 🤖 Type: Dependencies
+
+- `calendar-utils`, `components`
+  - [#1240](https://github.com/commercetools/ui-kit/pull/1240) fix: update calendar-utils ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.14.1](https://github.com/commercetools/ui-kit/compare/v10.14.0...v10.14.1) (2020-01-14)
+
+### Warning:
+
+Please use version `10.14.2` in favour this one, as the `date-input` components are broken in this release version.
 
 #### 🐛 Type: Bug
 
@@ -11,6 +22,10 @@
 - [#1219](https://github.com/commercetools/ui-kit/pull/1219) chore: check npm authentication on prerelease ([@jonnybel](https://github.com/jonnybel))
 
 # [10.14.0](https://github.com/commercetools/ui-kit/compare/v10.13.0...v10.14.0) (2019-12-12)
+
+### Warning:
+
+Please use version `10.14.2` in favour this one, as the `date-input` components are broken in this release version.
 
 #### 🐛 Type: Bug
 
