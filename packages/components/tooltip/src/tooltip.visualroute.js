@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { PrimaryButton, Tooltip } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../test/percy';
+import { Suite, Spec } from '../../../../test/percy';
 
 const title = 'What kind of bear is best';
 const noop = () => {};

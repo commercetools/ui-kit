@@ -10,8 +10,8 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import { PrimaryButton } from '@commercetools-uikit/buttons';
-import Section from '../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import Tooltip from './tooltip';
 
 const CustomWrapper = styled.div`
