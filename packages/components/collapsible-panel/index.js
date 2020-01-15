@@ -1,3 +1,3 @@
-export { default } from '../../../src/components/panels/collapsible-panel';
+export { default } from './src';
 
 export { default as version } from './version';
