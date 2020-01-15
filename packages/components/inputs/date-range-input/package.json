@@ -19,7 +19,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/calendar-utils": "10.13.0",
+    "@commercetools-uikit/calendar-utils": "10.14.0",
     "@commercetools-uikit/constraints": "10.14.1",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.14.1",
