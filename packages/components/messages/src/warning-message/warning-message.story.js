@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
-import ErrorMessage from './error-message';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../../README.md';
+import WarningMessage from './warning-message';
 
 storiesOf('Components|Messages', module)
   .addDecorator(withKnobs)
@@ -13,8 +13,10 @@ storiesOf('Components|Messages', module)
       sidebar: Readme,
     },
   })
-  .add('ErrorMessage', () => (
+  .add('WarningMessage', () => (
     <Section>
-      <ErrorMessage>{text('children', 'Required text missing')}</ErrorMessage>
+      <WarningMessage>
+        {text('children', 'This name is already being used by another variant')}
+      </WarningMessage>
     </Section>
   ));

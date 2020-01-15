@@ -1,0 +1,47 @@
+# Messages: WarningMessage
+
+#### Description
+
+Represents an warning message.
+
+## Usage
+
+```js
+import { WarningMessage } from '@commercetools-frontend/ui-kit';
+
+<WarningMessage>This is a duplicate of {`${duplicate}`}</WarningMessage>;
+```
+
+#### Properties
+
+| Props      | Type   | Required | Values | Default | Description                               |
+| ---------- | ------ | :------: | ------ | ------- | ----------------------------------------- |
+| `children` | `node` |    ✅    | -      | -       | Warning message, either as string or node |
+
+Main functions and use cases are:
+
+- Display validation warnings of input fields
+
+# Messages: ErrorMessage
+
+#### Description
+
+Represents an error message.
+
+## Usage
+
+```js
+import { ErrorMessage } from '@commercetools-frontend/ui-kit';
+
+<ErrorMessage>Something went wrong</ErrorMessage>;
+```
+
+#### Properties
+
+| Props      | Type   | Required | Values | Default | Description                             |
+| ---------- | ------ | :------: | ------ | ------- | --------------------------------------- |
+| `children` | `node` |    ✅    | -      | -       | Error message, either as string or node |
+
+Main functions and use cases are:
+
+- Display validation errors of input fields
