@@ -12,9 +12,9 @@ const SimpleTable = props => {
     >
       <Header isSticky={props.isHeaderSticky}>
         <Row>
-          {props.columns.map(column => (
+          {props.columns.map((column, columnIndex) => (
             <HeaderCell
-              key={column.key}
+              key={`${columnIndex}-${column.key}`}
               role="column-header"
               isCondensed={props.isCondensed}
             >
@@ -24,17 +24,25 @@ const SimpleTable = props => {
         </Row>
       </Header>
       <Body>
-        {props.items.map(item => (
-          <Row key={item.key}>
+        {props.items.map((item, rowIndex) => (
+          <Row
+            key={item.key}
+            onClick={
+              props.onRowClick
+                ? () => props.onRowClick(item, rowIndex)
+                : undefined
+            }
+          >
             {props.columns.map(column => {
               return (
                 <DataCell
-                  key={`${item.key}/${column.key}`}
+                  key={`${rowIndex}-{item.key}/${column.key}`}
+                  onClick={column.onClick}
                   alignment={column.align ? column.align : props.cellAlignment}
-                  isCondensed={props.isCondensed}
                   isTruncated={column.isTruncated}
+                  isCondensed={props.isCondensed}
                 >
-                  {props.renderItem({ item, column })}
+                  {props.renderItem(item, column)}
                 </DataCell>
               );
             })}
@@ -53,10 +61,12 @@ SimpleTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
+      onClick: PropTypes.func,
       isTruncated: PropTypes.bool,
     })
   ).isRequired,
   renderItem: PropTypes.func.isRequired,
+  onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
   cellAlignment: PropTypes.string,
   tableMaxWidth: PropTypes.number,

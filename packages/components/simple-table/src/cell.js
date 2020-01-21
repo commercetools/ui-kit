@@ -34,6 +34,8 @@ const getCellStyles = props => css`
   padding: ${props.isCondensed
     ? `${vars.spacingXs} ${vars.spacingXs}`
     : `${vars.spacingS} ${vars.spacingM}`};
+
+  cursor: ${props.onClick ? `pointer` : 'unset'};
 `;
 
 const HeaderCell = styled.th`

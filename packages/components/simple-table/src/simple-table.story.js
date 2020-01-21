@@ -4,21 +4,6 @@ import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import SimpleTable from './simple-table';
 
-/* generated from https://next.json-generator.com with input:
-[
-  {
-    'repeat(9, 10)': {
-      key: '{{objectId()}}',
-      checked: false,
-      name: '{{firstName()}} {{surname()}}',
-      company: '{{company().toUpperCase()}}',
-      phone: '+1 {{phone()}}',
-      age: '{{integer(20, 40)}}',
-      about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.'
-    }
-  }
-]
-*/
 const items = [
   {
     key: '5e188c29791747d9c54250e2',
@@ -144,67 +129,77 @@ const columns = [
     key: 'about',
     label: 'About',
     isTruncated: true,
+    onClick: () => alert('Cell click!'),
   },
 ];
 
 storiesOf('Components|Table (NEW)', module)
   .addDecorator(withKnobs)
   // .addDecorator(withReadme(Readme))
-  .add('SimpleTable', () => (
-    <SimpleTable
-      items={items}
-      columns={columns}
-      renderItem={({ item, column }) => {
-        switch (column.key) {
-          case 'age':
-            return (
-              <Value
-                defaultValue={item.age}
-                render={(value, onChange) => (
-                  <div>
-                    <input
-                      type="number"
-                      value={value}
-                      onChange={() => onChange(event.target.value)}
-                    />
-                    <div>{value}</div>
-                  </div>
-                )}
-              />
-            );
-          case 'company':
-            return (
-              <Value
-                defaultValue={item.company}
-                render={(value, onChange) => (
-                  <div>
-                    <input
-                      type="text"
-                      value={value}
-                      onChange={() => onChange(event.target.value)}
-                    />
-                    <div>{value}</div>
-                  </div>
-                )}
-              />
-            );
-          default:
-            return item[column.key];
+  .add('SimpleTable', () => {
+    const onRowClick = boolean('onRowClick', false);
+
+    return (
+      <SimpleTable
+        items={items}
+        columns={columns}
+        renderItem={(item, column) => {
+          switch (column.key) {
+            case 'age':
+              return (
+                <Value
+                  defaultValue={item.age}
+                  render={(value, onChange) => (
+                    <div>
+                      <input
+                        type="number"
+                        value={value}
+                        onChange={() => onChange(event.target.value)}
+                      />
+                      <div>{value}</div>
+                    </div>
+                  )}
+                />
+              );
+            case 'company':
+              return (
+                <Value
+                  defaultValue={item.company}
+                  render={(value, onChange) => (
+                    <div>
+                      <input
+                        type="text"
+                        value={value}
+                        onChange={() => onChange(event.target.value)}
+                      />
+                      <div>{value}</div>
+                    </div>
+                  )}
+                />
+              );
+            default:
+              return item[column.key];
+          }
+        }}
+        onRowClick={
+          onRowClick
+            ? (item, index) => alert(`Clicked on item[${index}]: ${item.name}`)
+            : null
         }
-      }}
-      tableMaxHeight={number('tableMaxHeight', 0, {
-        range: true,
-        min: 200,
-        max: 500,
-        step: 10,
-      })}
-      tableMaxWidth={number('tableMaxWidth', 0, {
-        range: true,
-        min: 200,
-        max: 800,
-        step: 10,
-      })}
-      cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
-      isCondensed={boolean('isCondensed', false)}
-    />
-  ));
+        tableMaxHeight={number('tableMaxHeight', 0, {
+          range: true,
+          min: 200,
+          max: 500,
+          step: 10,
+        })}
+        tableMaxWidth={number('tableMaxWidth', 0, {
+          range: true,
+          min: 200,
+          max: 800,
+          step: 10,
+        })}
+        cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
+        isCondensed={boolean('isCondensed', false)}
+      />
+    );
+  });

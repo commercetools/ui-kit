@@ -29,6 +29,7 @@ const Body = styled.tbody`
 
 const Row = styled.tr`
   display: contents;
+  ${props => (props.onClick ? `cursor: pointer;` : '')}
 
   &:hover td {
     background: ${vars.backgroundColorForInputWhenHovered};
