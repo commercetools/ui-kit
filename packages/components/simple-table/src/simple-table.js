@@ -7,8 +7,8 @@ const SimpleTable = props => {
   return (
     <TableGrid
       columns={props.columns}
-      maxHeight={props.tableMaxHeight}
-      maxWidth={props.tableMaxWidth}
+      maxHeight={props.maxHeight}
+      maxWidth={props.maxWidth}
     >
       <Header isSticky={props.isHeaderSticky}>
         <Row>
@@ -65,12 +65,12 @@ SimpleTable.propTypes = {
       isTruncated: PropTypes.bool,
     })
   ).isRequired,
+  maxWidth: PropTypes.number,
+  maxHeight: PropTypes.number,
   renderItem: PropTypes.func.isRequired,
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
   cellAlignment: PropTypes.string,
-  tableMaxWidth: PropTypes.number,
-  tableMaxHeight: PropTypes.number,
   isHeaderSticky: PropTypes.bool,
 };
 SimpleTable.defaultProps = {
