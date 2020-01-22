@@ -3,11 +3,11 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import SimpleTable from './simple-table';
+import useRowSelection from './useRowSelection';
 
 const items = [
   {
     key: '5e188c29791747d9c54250e2',
-    checked: false,
     name: 'Morgan Bean',
     company: 'CYCLONICA',
     phone: '+1 (895) 529-3300',
@@ -17,7 +17,6 @@ const items = [
   },
   {
     key: '5e188c295ae0bb19afbb115f',
-    checked: false,
     name: 'Franklin Cochran',
     company: 'TINGLES',
     phone: '+1 (835) 571-3268',
@@ -27,7 +26,6 @@ const items = [
   },
   {
     key: '5e188c298f0ea901553c517f',
-    checked: false,
     name: 'Salazar Craig',
     company: 'ECRAZE',
     phone: '+1 (944) 445-2594',
@@ -37,7 +35,6 @@ const items = [
   },
   {
     key: '5e188c29b09bb748df833ed0',
-    checked: false,
     name: 'Pamela Noble',
     company: 'FILODYNE',
     phone: '+1 (875) 421-3328',
@@ -47,7 +44,6 @@ const items = [
   },
   {
     key: '5e188c29bc14e3b97ab2ad7d',
-    checked: false,
     name: 'Terra Morrow',
     company: 'DAISU',
     phone: '+1 (807) 436-2026',
@@ -57,7 +53,6 @@ const items = [
   },
   {
     key: '5e188c296c9b7cf486a0479c',
-    checked: false,
     name: 'Cline Hansen',
     company: 'ULTRIMAX',
     phone: '+1 (934) 402-3675',
@@ -67,7 +62,6 @@ const items = [
   },
   {
     key: '5e188c29b45c669d8e60303f',
-    checked: true,
     name: 'Jefferson Rosario',
     company: 'COMTOURS',
     phone: '+1 (874) 437-2581',
@@ -77,7 +71,6 @@ const items = [
   },
   {
     key: '5e188c29ca865647af147b4a',
-    checked: false,
     name: 'Tania Waller',
     company: 'DOGSPA',
     phone: '+1 (964) 585-3040',
@@ -87,7 +80,6 @@ const items = [
   },
   {
     key: '5e188c2910b83f907e9c66ab',
-    checked: false,
     name: 'Butler Shepard',
     company: 'HOUSEDOWN',
     phone: '+1 (888) 434-2153',
@@ -97,7 +89,6 @@ const items = [
   },
   {
     key: '5e188c29a9ece9123d6a87a1',
-    checked: false,
     name: 'Diana Wise',
     company: 'SPEEDBOLT',
     phone: '+1 (992) 535-2912',
@@ -139,43 +130,42 @@ storiesOf('Components|Table (NEW)', module)
   .add('SimpleTable', () => {
     const onRowClick = boolean('onRowClick', false);
 
+    const { rows, toggleRow, getIsRowSelected } = useRowSelection(
+      'checkbox',
+      items
+    );
+    const columnsWithSelect = [
+      {
+        key: 'checkbox',
+        label: 'Select',
+        onClick: row => toggleRow(row.key),
+      },
+      ...columns,
+    ];
+
     return (
       <SimpleTable
-        items={items}
-        columns={columns}
+        items={rows}
+        columns={columnsWithSelect}
         renderItem={(item, column) => {
           switch (column.key) {
-            case 'age':
-              return (
-                <Value
-                  defaultValue={item.age}
-                  render={(value, onChange) => (
-                    <div>
-                      <input
-                        type="number"
-                        value={value}
-                        onChange={() => onChange(event.target.value)}
-                      />
-                      <div>{value}</div>
-                    </div>
-                  )}
-                />
-              );
             case 'company':
               return (
                 <Value
                   defaultValue={item.company}
                   render={(value, onChange) => (
-                    <div>
-                      <input
-                        type="text"
-                        value={value}
-                        onChange={() => onChange(event.target.value)}
-                      />
-                      <div>{value}</div>
-                    </div>
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={() => onChange(event.target.value)}
+                    />
                   )}
                 />
+              );
+            case 'checkbox':
+              return (
+                // todo: make this better
+                <span>{getIsRowSelected(item.key).toString()}</span>
               );
             default:
               return item[column.key];

@@ -24,25 +24,29 @@ const SimpleTable = props => {
         </Row>
       </Header>
       <Body>
-        {props.items.map((item, rowIndex) => (
+        {props.items.map((row, rowIndex) => (
           <Row
-            key={item.key}
+            key={row.key}
             onClick={
               props.onRowClick
-                ? () => props.onRowClick(item, rowIndex)
+                ? () => props.onRowClick(row, rowIndex)
                 : undefined
             }
           >
             {props.columns.map(column => {
               return (
                 <DataCell
-                  key={`${rowIndex}-{item.key}/${column.key}`}
-                  onClick={column.onClick}
+                  key={`${rowIndex}-{row.key}/${column.key}`}
+                  onClick={
+                    column.onClick
+                      ? () => column.onClick(row, column)
+                      : undefined
+                  }
                   alignment={column.align ? column.align : props.cellAlignment}
                   isTruncated={column.isTruncated}
                   isCondensed={props.isCondensed}
                 >
-                  {props.renderItem(item, column)}
+                  {props.renderItem(row, column)}
                 </DataCell>
               );
             })}
@@ -61,6 +65,7 @@ SimpleTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
+      label: PropTypes.node.isRequired,
       onClick: PropTypes.func,
       isTruncated: PropTypes.bool,
     })
