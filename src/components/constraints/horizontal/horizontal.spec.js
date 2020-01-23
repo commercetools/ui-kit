@@ -13,3 +13,12 @@ it('should render children', () => {
   );
   expect(getByTestId('child')).toBeInTheDocument();
 });
+
+it('should pass down `data` prop', () => {
+  const { getByTestId } = render(
+    <Horizontal data-testid="child">
+      <div />
+    </Horizontal>
+  );
+  expect(getByTestId('child')).toBeInTheDocument();
+});
