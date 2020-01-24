@@ -1,3 +1,14 @@
+## [10.15.0](https://github.com/commercetools/ui-kit/compare/v10.14.2...v10.15.0) (2020-01-24)
+
+#### 🔮 Type: Chore
+
+- [#1242](https://github.com/commercetools/ui-kit/pull/1242) chore(tag): fix crashing storybook example ([@jonnybel](https://github.com/jonnybel))
+
+#### 💅 Type: Enhancement
+
+- `components`
+  - [#1246](https://github.com/commercetools/ui-kit/pull/1246) feat(contraints): allow `data-` attributes ([@dogayuksel](https://github.com/dogayuksel))
+
 ## [10.14.2](https://github.com/commercetools/ui-kit/compare/v10.14.1...v10.14.2) (2020-01-15)
 
 #### 🤖 Type: Dependencies
