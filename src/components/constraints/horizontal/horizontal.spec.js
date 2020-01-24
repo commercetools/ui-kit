@@ -6,10 +6,19 @@ import Horizontal from './horizontal';
 // That tests also ensure this component accepts a "constraint" prop.
 
 it('should render children', () => {
-  const { getByTestId } = render(
+  const rendered = render(
     <Horizontal>
       <div data-testid="child" />
     </Horizontal>
   );
-  expect(getByTestId('child')).toBeInTheDocument();
+  expect(rendered.queryByTestId('child')).toBeInTheDocument();
+});
+
+it('should pass down `data` prop', () => {
+  const rendered = render(
+    <Horizontal data-testid="child">
+      <div />
+    </Horizontal>
+  );
+  expect(rendered.queryByTestId('child')).toBeInTheDocument();
 });

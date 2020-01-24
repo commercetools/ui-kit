@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const getConstraintSyles = constraint => {
@@ -43,10 +44,12 @@ const Horizontal = props => (
       `,
       getConstraintSyles(props.constraint),
     ]}
+    {...filterDataAttributes(props)}
   >
     {props.children}
   </div>
 );
+
 Horizontal.displayName = 'Horizontal';
 Horizontal.propTypes = {
   constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
