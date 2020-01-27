@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/money-input",
-  "version": "10.14.1",
+  "version": "10.15.0",
   "description": "",
   "main": "dist/money-input.cjs.js",
   "module": "dist/money-input.esm.js",
@@ -19,7 +19,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/constraints": "10.14.1",
+    "@commercetools-uikit/constraints": "10.15.0",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/hooks": "10.13.0",
     "@commercetools-uikit/icons": "10.14.1",
