@@ -158,10 +158,25 @@ SecondaryButton.propTypes = {
           Invalid prop "${propName}" supplied to "${componentName}".
           "${propName}" does not have any effect when "as" is not defined`);
       }
-      return PropTypes.string(props, propName, componentName, ...rest);
+
+      return PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          pathname: PropTypes.string.isRequired,
+          search: PropTypes.string,
+          query: PropTypes.objectOf(PropTypes.string),
+        }),
+      ])(props, propName, componentName, ...rest);
     }
 
-    return PropTypes.string(props, propName, componentName, ...rest);
+    return PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+        search: PropTypes.string,
+        query: PropTypes.objectOf(PropTypes.string),
+      }),
+    ])(props, propName, componentName, ...rest);
   },
   linkTo(props, propName, componentName, ...rest) {
     // here
