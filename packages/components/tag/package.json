@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/tag",
-  "version": "10.14.1",
+  "version": "10.15.0",
   "description": "",
   "main": "dist/tag.cjs.js",
   "module": "dist/tag.esm.js",
@@ -19,7 +19,7 @@
   "sideEffects": false,
   "dependencies": {
     "@commercetools-uikit/accessible-button": "10.14.1",
-    "@commercetools-uikit/constraints": "10.14.1",
+    "@commercetools-uikit/constraints": "10.15.0",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.14.1",
     "@commercetools-uikit/text": "10.14.1",

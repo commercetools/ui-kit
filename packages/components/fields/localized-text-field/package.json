@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-text-field",
-  "version": "10.14.1",
+  "version": "10.15.0",
   "description": "",
   "main": "dist/localized-text-field.cjs.js",
   "module": "dist/localized-text-field.esm.js",
@@ -19,11 +19,11 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/constraints": "10.14.1",
+    "@commercetools-uikit/constraints": "10.15.0",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/field-errors": "10.14.1",
-    "@commercetools-uikit/field-label": "10.14.1",
-    "@commercetools-uikit/localized-text-input": "10.14.1",
+    "@commercetools-uikit/field-label": "10.15.0",
+    "@commercetools-uikit/localized-text-input": "10.15.0",
     "@commercetools-uikit/spacings": "10.14.1",
     "@commercetools-uikit/utils": "10.14.1",
     "@emotion/core": "10.0.27",

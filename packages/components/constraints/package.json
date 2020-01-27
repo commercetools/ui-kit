@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/constraints",
-  "version": "10.14.1",
+  "version": "10.15.0",
   "description": "",
   "main": "dist/constraints.cjs.js",
   "module": "dist/constraints.esm.js",
