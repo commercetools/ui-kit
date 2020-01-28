@@ -12,24 +12,32 @@ function reducer(state, action) {
         ...state,
         [action.payload]: true,
       };
-    case 'unselect':
+    case 'deselect':
       return {
         ...state,
         [action.payload]: false,
       };
     case 'selectAll': {
-      return state.map(() => true);
+      return Object.keys(state).reduce(
+        (accumulator, currentItem) => ({
+          ...accumulator,
+          [currentItem]: true,
+        }),
+        {}
+      );
     }
     case 'deselectAll': {
-      return state.map(() => false);
+      return Object.keys(state).reduce(
+        (accumulator, currentItem) => ({
+          ...accumulator,
+          [currentItem]: false,
+        }),
+        {}
+      );
     }
     default:
       return state;
   }
-}
-
-function getCountSelectedRows(rows) {
-  return rows.reduce((count, item) => count + item, 0);
 }
 
 const useRowSelection = (keyName, rows) => {
@@ -51,17 +59,19 @@ const useRowSelection = (keyName, rows) => {
   const getIsRowSelected = key => state[key];
   const toggleRow = key => dispatch({ type: 'toggle', payload: key });
   const selectRow = key => dispatch({ type: 'select', payload: key });
-  const unselectRow = key => dispatch({ type: 'unselect', payload: key });
-  const selectAllRows = () => dispatch({ type: 'selectAllRows' });
-  const unselectAllRows = () => dispatch({ type: 'toggle' });
+  const deselectRow = key => dispatch({ type: 'deselect', payload: key });
+  const selectAllRows = () => dispatch({ type: 'selectAll' });
+  const deselectAllRows = () => dispatch({ type: 'deselectAll' });
+  const getCountSelectedRows = () =>
+    selectableRows.reduce((count, item) => count + item[keyName], 0);
 
   return {
     rows: selectableRows,
     toggleRow,
     selectRow,
-    unselectRow,
+    deselectRow,
     selectAllRows,
-    unselectAllRows,
+    deselectAllRows,
     getIsRowSelected,
     getCountSelectedRows,
   };
