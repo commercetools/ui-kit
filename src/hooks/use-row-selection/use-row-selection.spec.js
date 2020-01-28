@@ -17,7 +17,7 @@ const TestComponent = props => {
     selectAllRows,
     deselectAllRows,
     getIsRowSelected,
-    getCountSelectedRows,
+    getNumberOfSelectedRows,
     // eslint-disable-next-line react/prop-types
   } = useRowSelection(props.keyName, props.items);
 
@@ -29,7 +29,7 @@ const TestComponent = props => {
       <button data-testid={'deselectAll'} onClick={deselectAllRows}>
         deselect All
       </button>
-      <span data-testid={'selectedCount'}>{getCountSelectedRows()}</span>
+      <span data-testid={'selectedCount'}>{getNumberOfSelectedRows()}</span>
       <div>
         {rows.map(item => (
           <div key={item.key}>

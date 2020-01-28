@@ -56,14 +56,13 @@ const useRowSelection = (keyName, rows) => {
     ...item,
     [keyName]: state[item.key],
   }));
-
-  const getIsRowSelected = key => state[key];
   const toggleRow = key => dispatch({ type: 'toggle', payload: key });
   const selectRow = key => dispatch({ type: 'select', payload: key });
   const deselectRow = key => dispatch({ type: 'deselect', payload: key });
   const selectAllRows = () => dispatch({ type: 'selectAll' });
   const deselectAllRows = () => dispatch({ type: 'deselectAll' });
-  const getCountSelectedRows = () =>
+  const getIsRowSelected = key => state[key];
+  const getNumberOfSelectedRows = () =>
     selectableRows.reduce((count, item) => count + item[keyName], 0);
 
   return {
@@ -74,7 +73,7 @@ const useRowSelection = (keyName, rows) => {
     selectAllRows,
     deselectAllRows,
     getIsRowSelected,
-    getCountSelectedRows,
+    getNumberOfSelectedRows,
   };
 };
 

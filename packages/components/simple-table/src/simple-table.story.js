@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import SimpleTable from './simple-table';
-import { useRowSelection } from '../../../hooks';
+import { useRowSelection } from '.';
 
 const items = [
   {
