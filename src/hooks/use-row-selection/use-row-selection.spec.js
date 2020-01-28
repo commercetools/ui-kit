@@ -19,7 +19,7 @@ const TestComponent = props => {
     getIsRowSelected,
     getCountSelectedRows,
     // eslint-disable-next-line react/prop-types
-  } = useRowSelection('selection', props.items);
+  } = useRowSelection(props.keyName, props.items);
 
   return (
     <div>
@@ -62,7 +62,7 @@ const TestComponent = props => {
 };
 
 it('should have no selected items by default', () => {
-  const rendered = render(<TestComponent items={testData} />);
+  const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   testData.forEach(item => {
     expect(rendered.queryByTestId(item.key)).toHaveTextContent('false');
@@ -70,7 +70,7 @@ it('should have no selected items by default', () => {
 });
 
 it('should be possible to toggle a row selection state', () => {
-  const rendered = render(<TestComponent items={testData} />);
+  const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
 
@@ -79,7 +79,7 @@ it('should be possible to toggle a row selection state', () => {
 });
 
 it('should be possible to select a row', () => {
-  const rendered = render(<TestComponent items={testData} />);
+  const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
 
@@ -88,7 +88,7 @@ it('should be possible to select a row', () => {
 });
 
 it('should be possible to deselect a row', () => {
-  const rendered = render(<TestComponent items={testData} />);
+  const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   rendered.queryByTestId('select system-crasher').click();
   expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('true');
@@ -98,7 +98,7 @@ it('should be possible to deselect a row', () => {
 });
 
 it('should get the correct count of selected rows', () => {
-  const rendered = render(<TestComponent items={testData} />);
+  const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('0');
 
@@ -116,7 +116,7 @@ it('should get the correct count of selected rows', () => {
 });
 
 it('should be possible to select all rows', () => {
-  const rendered = render(<TestComponent items={testData} />);
+  const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   rendered.queryByTestId('selectAll').click();
 
@@ -128,7 +128,7 @@ it('should be possible to select all rows', () => {
 });
 
 it('should be possible to deselect all rows', () => {
-  const rendered = render(<TestComponent items={testData} />);
+  const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   rendered.queryByTestId('selectAll').click();
 
@@ -141,4 +141,20 @@ it('should be possible to deselect all rows', () => {
   testData.forEach(item => {
     expect(rendered.queryByTestId(item.key)).toHaveTextContent('false');
   });
+});
+
+it('should respect existing selectable key values', () => {
+  const customRows = [
+    { key: 'system-crasher', selected: false },
+    { key: 'birds-of-passage', selected: true },
+    { key: 'woman-at-war' },
+  ];
+
+  const rendered = render(
+    <TestComponent keyName="selected" items={customRows} />
+  );
+
+  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
+  expect(rendered.queryByTestId('birds-of-passage')).toHaveTextContent('true');
+  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
 });

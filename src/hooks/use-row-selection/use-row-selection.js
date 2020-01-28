@@ -44,7 +44,8 @@ const useRowSelection = (keyName, rows) => {
   const initialState = rows.reduce(
     (items, currentItem) => ({
       ...items,
-      [currentItem.key]: false,
+      // if there is an initial value: use it, otherwise default to false
+      [currentItem.key]: currentItem[keyName] || false,
     }),
     {}
   );
