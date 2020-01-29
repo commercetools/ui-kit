@@ -176,18 +176,18 @@ States are not exclusive. An element can be in multiple states at the same time.
 
 We identified the following states:
 
-| State      | Maps to CSS pseudo class | Description                                                                                           |
-| ---------- | ------------------------ | ----------------------------------------------------------------------------------------------------- |
-| `visited`  | `:visited`               | The user has visited this link before                                                                 |
-| `hovered`  | `:hover`                 | The pointer is over this element                                                                      |
-| `active`   | `:active`                | The element is currently being activated by the user                                                  |
-| `focused`  | `:focus`                 | The element is currently selected to receive input                                                    |
-| `disabled` | `:disabled`              | The element can not be interacted with                                                                |
-| `readonly` | `:read-only`             | The element can not be modified                                                                       |
-| `checked`  | `:checked`               | The element is checked by the user (e.g. for checkboxes).                                             |
-| `warning`  | -                        | The element contains a warning. Warnings do not block the further flow but should be resolved.        |
-| `error`    | -                        | The element contains an error. Errors block the further flow and must be resolved.                    |
-| `info`     | -                        | The element contains a hint. Hints do not block the further flow and need do not need to be resolved. |
+| State      | Maps to CSS pseudo class | Description                                                                                      |
+| ---------- | ------------------------ | ------------------------------------------------------------------------------------------------ |
+| `visited`  | `:visited`               | The user has visited this link before                                                            |
+| `hovered`  | `:hover`                 | The pointer is over this element                                                                 |
+| `active`   | `:active`                | The element is currently being activated by the user                                             |
+| `focused`  | `:focus`                 | The element is currently selected to receive input                                               |
+| `disabled` | `:disabled`              | The element can not be interacted with                                                           |
+| `readonly` | `:read-only`             | The element can not be modified                                                                  |
+| `checked`  | `:checked`               | The element is checked by the user (e.g. for checkboxes).                                        |
+| `warning`  | -                        | The element contains a warning. Warnings do not block the further flow but should be resolved.   |
+| `error`    | -                        | The element contains an error. Errors block the further flow and must be resolved.               |
+| `info`     | -                        | The element contains a hint. Hints do not block the further flow and do not need to be resolved. |
 
 For an up-to-date list, check out the Tokens Story.
 
@@ -195,9 +195,11 @@ For an up-to-date list, check out the Tokens Story.
 
 `focused` and `active` are two different states.
 
-`focused` represents the state when the element is currently selected to receive input and `active` represents the state when the element is currently being activated by the user.
+`focused` represents the state when the element is currently selected to receive input and `active` represents the state when the element is being activated by the user.
 
-For example let's say we have a `<button>`. The `<button>` will not have any state to begin with. It just exists. If we use <kbd>Tab</kbd> to give "focus" to the `<button>`, it now enters its `focused` state. If you then click (or press <kbd>Space</kbd>), you then make the button enter its `active` state.
+##### Example
+
+Let's say we have a `<button>`. The `<button>` will not have any state to begin with. It just exists. If we use <kbd>Tab</kbd> to give "focus" to the `<button>`, it now enters its `focused` state. If you then click (or press <kbd>Space</kbd>), you then make the button enter its `active` state.
 
 On that note, when you click on an element, you give it focus, which also cultivates the illusion that `focused` and `active` are the same. They are not the same. When clicked, the button is in `focused` and `active` state.
 
