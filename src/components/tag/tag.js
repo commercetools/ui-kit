@@ -198,8 +198,8 @@ const Tag = props => {
                   background: inherit;
                   border-style: solid;
                   border-width: 1px 1px 1px 1px;
-                  &:hover,
-                  &:focus {
+                  :not(:disabled)&:hover,
+                  :not(:disabled)&:focus {
                     border-color: ${overwrittenVars[
                       designTokens.borderColorForTagWarning
                     ]};
@@ -213,15 +213,12 @@ const Tag = props => {
                   > svg * {
                     fill: ${overwrittenVars[designTokens.fontColorForTag]};
                   }
+                  &:disabled > svg * {
+                    fill: ${overwrittenVars[
+                      designTokens.fontColorForTagWhenDisabled
+                    ]};
+                  }
                 `,
-                props.isDisabled &&
-                  css`
-                    > svg * {
-                      fill: ${overwrittenVars[
-                        designTokens.fontColorForTagWhenDisabled
-                      ]};
-                    }
-                  `,
               ];
             }}
           >
