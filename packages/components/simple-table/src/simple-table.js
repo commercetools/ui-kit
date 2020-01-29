@@ -45,6 +45,7 @@ const SimpleTable = props => {
                   alignment={column.align ? column.align : props.cellAlignment}
                   isTruncated={column.isTruncated}
                   isCondensed={props.isCondensed}
+                  shouldIgnoreRowClick={column.shouldIgnoreRowClick}
                 >
                   {props.renderItem(row, column)}
                 </DataCell>

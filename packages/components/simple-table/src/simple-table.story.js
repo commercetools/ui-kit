@@ -122,6 +122,7 @@ const columns = [
     label: 'About',
     isTruncated: true,
     onClick: () => alert('Cell click!'),
+    shouldIgnoreRowClick: true,
   },
 ];
 
@@ -158,6 +159,7 @@ storiesOf('Components|Table (NEW)', module)
           />
         ),
         onClick: row => toggleRow(row.key),
+        shouldIgnoreRowClick: true,
         align: 'center',
       },
       ...columns,

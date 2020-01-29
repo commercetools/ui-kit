@@ -51,27 +51,41 @@ const BaseCell = styled.td`
   ${getCellAlignment}
 `;
 
-const DataCell = props => (
-  <BaseCell {...props}>
-    {props.isTruncated ? (
-      <div
-        css={css`
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        `}
-      >
-        {props.children}
-      </div>
-    ) : (
-      props.children
-    )}
-  </BaseCell>
-);
+const DataCell = props => {
+  const onClick = props.onClick
+    ? event => {
+        if (props.shouldIgnoreRowClick) event.stopPropagation();
+        return props.onClick(event);
+      }
+    : undefined;
+
+  return (
+    <BaseCell {...props} onClick={onClick}>
+      {props.isTruncated ? (
+        <div
+          css={css`
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          `}
+        >
+          {props.children}
+        </div>
+      ) : (
+        props.children
+      )}
+    </BaseCell>
+  );
+};
 DataCell.displayName = 'DataCell';
 DataCell.propTypes = {
+  onClick: PropTypes.func,
   children: PropTypes.node,
   isTruncated: PropTypes.bool,
+  shouldIgnoreRowClick: PropTypes.bool,
+};
+DataCell.defaultProps = {
+  shouldIgnoreRowClick: false,
 };
 
 export { HeaderCell, DataCell };
