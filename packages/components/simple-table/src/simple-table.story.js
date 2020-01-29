@@ -130,9 +130,10 @@ storiesOf('Components|Table (NEW)', module)
   // .addDecorator(withReadme(Readme))
   .add('SimpleTable', () => {
     const onRowClick = boolean('onRowClick', false);
+    const withRowSelection = boolean('withRowSelection', true);
 
     const {
-      rows,
+      rows: rowsWithSelection,
       toggleRow,
       selectAllRows,
       deselectAllRows,
@@ -142,7 +143,7 @@ storiesOf('Components|Table (NEW)', module)
 
     const countSelectedRows = getNumberOfSelectedRows();
     const isSelectColumnHeaderIndeterminate =
-      countSelectedRows > 0 && countSelectedRows < rows.length;
+      countSelectedRows > 0 && countSelectedRows < rowsWithSelection.length;
     const handleSelectColumnHeaderChange =
       countSelectedRows === 0 ? selectAllRows : deselectAllRows;
 
@@ -164,8 +165,8 @@ storiesOf('Components|Table (NEW)', module)
 
     return (
       <SimpleTable
-        items={rows}
-        columns={columnsWithSelect}
+        items={withRowSelection ? rowsWithSelection : items}
+        columns={withRowSelection ? columnsWithSelect : columns}
         renderItem={(item, column) => {
           switch (column.key) {
             case 'company':
