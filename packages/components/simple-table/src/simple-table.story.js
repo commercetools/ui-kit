@@ -4,6 +4,7 @@ import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
 import SimpleTable from './simple-table';
 import { useRowSelection } from '.';
+import CheckboxInput from '../../inputs/checkbox-input';
 
 const items = [
   {
@@ -130,15 +131,33 @@ storiesOf('Components|Table (NEW)', module)
   .add('SimpleTable', () => {
     const onRowClick = boolean('onRowClick', false);
 
-    const { rows, toggleRow, getIsRowSelected } = useRowSelection(
-      'checkbox',
-      items
-    );
+    const {
+      rows,
+      toggleRow,
+      selectAllRows,
+      deselectAllRows,
+      getIsRowSelected,
+      getNumberOfSelectedRows,
+    } = useRowSelection('checkbox', items);
+
+    const countSelectedRows = getNumberOfSelectedRows();
+    const isSelectColumnHeaderIndeterminate =
+      countSelectedRows > 0 && countSelectedRows < rows.length;
+    const handleSelectColumnHeaderChange =
+      countSelectedRows === 0 ? selectAllRows : deselectAllRows;
+
     const columnsWithSelect = [
       {
         key: 'checkbox',
-        label: 'Select',
+        label: (
+          <CheckboxInput
+            isIndeterminate={isSelectColumnHeaderIndeterminate}
+            isChecked={countSelectedRows !== 0}
+            onChange={handleSelectColumnHeaderChange}
+          />
+        ),
         onClick: row => toggleRow(row.key),
+        align: 'center',
       },
       ...columns,
     ];
@@ -164,8 +183,10 @@ storiesOf('Components|Table (NEW)', module)
               );
             case 'checkbox':
               return (
-                // todo: make this better
-                <span>{getIsRowSelected(item.key).toString()}</span>
+                <CheckboxInput
+                  isChecked={getIsRowSelected(item.key)}
+                  onChange={() => toggleRow(item.key)}
+                />
               );
             default:
               return item[column.key];
