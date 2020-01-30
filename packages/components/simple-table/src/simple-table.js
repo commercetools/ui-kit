@@ -68,7 +68,7 @@ SimpleTable.propTypes = {
       key: PropTypes.string.isRequired,
       width: PropTypes.string,
       label: PropTypes.node.isRequired,
-      align: PropTypes.string,
+      align: PropTypes.oneOf(['left', 'center', 'right']),
       onClick: PropTypes.func,
       isTruncated: PropTypes.bool,
       shouldIgnoreRowClick: PropTypes.bool,

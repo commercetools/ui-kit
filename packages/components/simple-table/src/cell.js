@@ -83,6 +83,7 @@ const DataCell = props => {
 };
 DataCell.displayName = 'DataCell';
 DataCell.propTypes = {
+  align: PropTypes.oneOf(['left', 'center', 'right']),
   onClick: PropTypes.func,
   children: PropTypes.node,
   isTruncated: PropTypes.bool,

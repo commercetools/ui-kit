@@ -138,8 +138,6 @@ const ColumnConfigForm = props => {
       shouldIgnoreRowClick: !!props.column.shouldIgnoreRowClick,
     },
     onSubmit: values => {
-      console.log(values.shouldIgnoreRowClick);
-
       const updatedColumn = {
         ...props.column,
         width: values.width,
@@ -168,42 +166,53 @@ const ColumnConfigForm = props => {
             />
           </label>
         </div>
-        <label>
-          align
-          <input
-            name="align"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.align}
-          />
-        </label>
-        <label>
-          onClick
-          <input
-            name="onClick"
-            type="checkbox"
-            onChange={formik.handleChange}
-            checked={formik.values.onClick}
-          />
-        </label>
-        <label>
-          isTruncated
-          <input
-            name="isTruncated"
-            type="checkbox"
-            onChange={formik.handleChange}
-            checked={formik.values.isTruncated}
-          />
-        </label>
-        <label>
-          shouldIgnoreRowClick
-          <input
-            name="shouldIgnoreRowClick"
-            type="checkbox"
-            onChange={formik.handleChange}
-            checked={formik.values.shouldIgnoreRowClick}
-          />
-        </label>
+        <div>
+          <label>
+            align
+            <select
+              name="align"
+              onChange={formik.handleChange}
+              value={formik.values.align}
+            >
+              <option value="left">left</option>
+              <option value="center">center</option>
+              <option value="right">right</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            onClick
+            <input
+              name="onClick"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.onClick}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            isTruncated
+            <input
+              name="isTruncated"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.isTruncated}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            shouldIgnoreRowClick
+            <input
+              name="shouldIgnoreRowClick"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.shouldIgnoreRowClick}
+            />
+          </label>
+        </div>
         <button type="submit" disabled={!formik.dirty}>
           {'Apply Changes'}
         </button>
@@ -273,8 +282,6 @@ storiesOf('Components|Table (NEW)', module)
       },
       ...tableData.columns,
     ];
-
-    console.log(withRowSelection ? columnsWithSelect : tableData.columns);
 
     return (
       <React.Fragment>
