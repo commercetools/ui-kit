@@ -123,7 +123,7 @@ const initialColumnsState = [
     key: 'about',
     label: 'About',
     isTruncated: true,
-    onClick: () => alert('Cell click!'),
+    onClick: (row, column) => alert(`Cell click: ${row[column.key]}`),
     shouldIgnoreRowClick: true,
   },
 ];
@@ -142,7 +142,9 @@ const ColumnConfigForm = props => {
         ...props.column,
         width: values.width,
         align: values.align,
-        onClick: values.onClick ? () => alert('Cell click!') : undefined,
+        onClick: values.onClick
+          ? (row, column) => alert(`Cell click: ${row[column.key]}`)
+          : undefined,
         isTruncated: values.isTruncated,
         shouldIgnoreRowClick: values.shouldIgnoreRowClick,
       };
@@ -316,8 +318,7 @@ storiesOf('Components|Table (NEW)', module)
           }}
           onRowClick={
             onRowClick
-              ? (item, index) =>
-                  alert(`Clicked on item[${index}]: ${item.name}`)
+              ? (item, index) => alert(`Row click: Row number ${index}`)
               : null
           }
           tableMaxHeight={number('tableMaxHeight', 0, {
