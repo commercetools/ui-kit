@@ -66,9 +66,12 @@ SimpleTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
+      width: PropTypes.string,
       label: PropTypes.node.isRequired,
+      align: PropTypes.string,
       onClick: PropTypes.func,
       isTruncated: PropTypes.bool,
+      shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,
   maxWidth: PropTypes.number,

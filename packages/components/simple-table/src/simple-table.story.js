@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import { Value } from 'react-value';
+import { useFormik } from 'formik';
 import SimpleTable from './simple-table';
 import { useRowSelection } from '.';
 import CheckboxInput from '../../inputs/checkbox-input';
@@ -99,7 +101,7 @@ const items = [
   },
 ];
 
-const columns = [
+const initialColumnsState = [
   {
     key: 'name',
     label: 'Name',
@@ -126,10 +128,115 @@ const columns = [
   },
 ];
 
+const ColumnConfigForm = props => {
+  const formik = useFormik({
+    initialValues: {
+      width: props.column.width,
+      align: props.column.align,
+      onClick: !!props.column.onClick,
+      isTruncated: !!props.column.isTruncated,
+      shouldIgnoreRowClick: !!props.column.shouldIgnoreRowClick,
+    },
+    onSubmit: values => {
+      console.log(values.shouldIgnoreRowClick);
+
+      const updatedColumn = {
+        ...props.column,
+        width: values.width,
+        align: values.align,
+        onClick: values.onClick ? () => alert('Cell click!') : undefined,
+        isTruncated: values.isTruncated,
+        shouldIgnoreRowClick: values.shouldIgnoreRowClick,
+      };
+      props.updateColumn(updatedColumn);
+    },
+    enableReinitialize: true,
+  });
+
+  return (
+    <div>
+      <h4>{props.column.label}</h4>
+      <form onSubmit={formik.handleSubmit}>
+        <label>
+          width
+          <input
+            name="width"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.width}
+          />
+        </label>
+        <label>
+          align
+          <input
+            name="align"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.align}
+          />
+        </label>
+        <label>
+          onClick
+          <input
+            name="onClick"
+            type="checkbox"
+            onChange={formik.handleChange}
+            checked={formik.values.onClick}
+          />
+        </label>
+        <label>
+          isTruncated
+          <input
+            name="isTruncated"
+            type="checkbox"
+            onChange={formik.handleChange}
+            checked={formik.values.isTruncated}
+          />
+        </label>
+        <label>
+          shouldIgnoreRowClick
+          <input
+            name="shouldIgnoreRowClick"
+            type="checkbox"
+            onChange={formik.handleChange}
+            checked={formik.values.shouldIgnoreRowClick}
+          />
+        </label>
+        <button type="submit" disabled={!formik.dirty}>
+          {'Apply Changes'}
+        </button>
+      </form>
+    </div>
+  );
+};
+ColumnConfigForm.displayName = 'ColumnConfigForm';
+ColumnConfigForm.propTypes = {
+  updateColumn: PropTypes.func.isRequired,
+  column: PropTypes.shape({
+    label: PropTypes.string,
+    width: PropTypes.string,
+    align: PropTypes.string,
+    onClick: PropTypes.func,
+    isTruncated: PropTypes.bool,
+    shouldIgnoreRowClick: PropTypes.bool,
+  }),
+};
+
 storiesOf('Components|Table (NEW)', module)
   .addDecorator(withKnobs)
   // .addDecorator(withReadme(Readme))
   .add('SimpleTable', () => {
+    const [tableData, setTableData] = React.useState({
+      rows: items,
+      columns: initialColumnsState,
+    });
+
+    const handleUpdateColumn = (column, colIndex) => {
+      const newColumns = tableData.columns;
+      newColumns[colIndex] = column;
+      setTableData(prevState => ({ ...prevState, columns: newColumns }));
+    };
+
     const onRowClick = boolean('onRowClick', false);
     const withRowSelection = boolean('withRowSelection', true);
 
@@ -140,7 +247,7 @@ storiesOf('Components|Table (NEW)', module)
       deselectAllRows,
       getIsRowSelected,
       getNumberOfSelectedRows,
-    } = useRowSelection('checkbox', items);
+    } = useRowSelection('checkbox', tableData.rows);
 
     const countSelectedRows = getNumberOfSelectedRows();
     const isSelectColumnHeaderIndeterminate =
@@ -162,58 +269,77 @@ storiesOf('Components|Table (NEW)', module)
         shouldIgnoreRowClick: true,
         align: 'center',
       },
-      ...columns,
+      ...tableData.columns,
     ];
 
+    console.log(withRowSelection ? columnsWithSelect : tableData.columns);
+
     return (
-      <SimpleTable
-        items={withRowSelection ? rowsWithSelection : items}
-        columns={withRowSelection ? columnsWithSelect : columns}
-        renderItem={(item, column) => {
-          switch (column.key) {
-            case 'company':
-              return (
-                <Value
-                  defaultValue={item.company}
-                  render={(value, onChange) => (
-                    <input
-                      type="text"
-                      value={value}
-                      onChange={() => onChange(event.target.value)}
-                    />
-                  )}
-                />
-              );
-            case 'checkbox':
-              return (
-                <CheckboxInput
-                  isChecked={getIsRowSelected(item.key)}
-                  onChange={() => toggleRow(item.key)}
-                />
-              );
-            default:
-              return item[column.key];
+      <React.Fragment>
+        <div>
+          <h3>{'Configure Column Settings'}</h3>
+          <div style={{ display: 'flex' }}>
+            {tableData.columns.map((col, colIndex) => (
+              <ColumnConfigForm
+                key={col + colIndex}
+                updateColumn={column => handleUpdateColumn(column, colIndex)}
+                column={col}
+              />
+            ))}
+          </div>
+        </div>
+        <hr />
+        <br />
+        <SimpleTable
+          items={withRowSelection ? rowsWithSelection : tableData.rows}
+          columns={withRowSelection ? columnsWithSelect : tableData.columns}
+          renderItem={(item, column) => {
+            switch (column.key) {
+              case 'company':
+                return (
+                  <Value
+                    defaultValue={item.company}
+                    render={(value, onChange) => (
+                      <input
+                        type="text"
+                        value={value}
+                        onChange={() => onChange(event.target.value)}
+                      />
+                    )}
+                  />
+                );
+              case 'checkbox':
+                return (
+                  <CheckboxInput
+                    isChecked={getIsRowSelected(item.key)}
+                    onChange={() => toggleRow(item.key)}
+                  />
+                );
+              default:
+                return item[column.key];
+            }
+          }}
+          onRowClick={
+            onRowClick
+              ? (item, index) =>
+                  alert(`Clicked on item[${index}]: ${item.name}`)
+              : null
           }
-        }}
-        onRowClick={
-          onRowClick
-            ? (item, index) => alert(`Clicked on item[${index}]: ${item.name}`)
-            : null
-        }
-        tableMaxHeight={number('tableMaxHeight', 0, {
-          range: true,
-          min: 200,
-          max: 500,
-          step: 10,
-        })}
-        tableMaxWidth={number('tableMaxWidth', 0, {
-          range: true,
-          min: 200,
-          max: 800,
-          step: 10,
-        })}
-        cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
-        isCondensed={boolean('isCondensed', false)}
-      />
+          tableMaxHeight={number('tableMaxHeight', 0, {
+            range: true,
+            min: 200,
+            max: 500,
+            step: 10,
+          })}
+          tableMaxWidth={number('tableMaxWidth', 0, {
+            range: true,
+            min: 200,
+            max: 800,
+            step: 10,
+          })}
+          cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
+          isCondensed={boolean('isCondensed', false)}
+        />
+      </React.Fragment>
     );
   });
