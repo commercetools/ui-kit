@@ -157,15 +157,17 @@ const ColumnConfigForm = props => {
     <div>
       <h4>{props.column.label}</h4>
       <form onSubmit={formik.handleSubmit}>
-        <label>
-          width
-          <input
-            name="width"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.width}
-          />
-        </label>
+        <div>
+          <label>
+            width
+            <input
+              name="width"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.width}
+            />
+          </label>
+        </div>
         <label>
           align
           <input
@@ -276,20 +278,6 @@ storiesOf('Components|Table (NEW)', module)
 
     return (
       <React.Fragment>
-        <div>
-          <h3>{'Configure Column Settings'}</h3>
-          <div style={{ display: 'flex' }}>
-            {tableData.columns.map((col, colIndex) => (
-              <ColumnConfigForm
-                key={col + colIndex}
-                updateColumn={column => handleUpdateColumn(column, colIndex)}
-                column={col}
-              />
-            ))}
-          </div>
-        </div>
-        <hr />
-        <br />
         <SimpleTable
           items={withRowSelection ? rowsWithSelection : tableData.rows}
           columns={withRowSelection ? columnsWithSelect : tableData.columns}
@@ -340,6 +328,30 @@ storiesOf('Components|Table (NEW)', module)
           cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
           isCondensed={boolean('isCondensed', false)}
         />
+        <br />
+        <hr />
+        <div>
+          <h3>{'Configure Column Settings'}</h3>
+          <p>
+            Note: the <code>width</code> input accepts the same values as the
+            ones specified for{' '}
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns">
+              grid-template-columns
+            </a>
+            . Try values such as <code>minmax(200px, 400px)</code>, combinations
+            of <code>1fr</code> and <code>2fr</code>, or simply fixed values
+            like <code>100px</code>. The default is <code>auto</code>.
+          </p>
+          <div style={{ display: 'flex' }}>
+            {tableData.columns.map((col, colIndex) => (
+              <ColumnConfigForm
+                key={col + colIndex}
+                updateColumn={column => handleUpdateColumn(column, colIndex)}
+                column={col}
+              />
+            ))}
+          </div>
+        </div>
       </React.Fragment>
     );
   });
