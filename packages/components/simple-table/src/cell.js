@@ -4,6 +4,12 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
+const getCellCursorStyle = (isCellClickable, shouldIgnoreRowClick) => {
+  if (isCellClickable) return 'pointer';
+  if (shouldIgnoreRowClick) return 'auto';
+  return 'unset';
+};
+
 const getCellAlignment = props => {
   if (props.alignment === 'center') {
     return css`
@@ -35,7 +41,7 @@ const getCellStyles = props => css`
     ? `${vars.spacingXs} ${vars.spacingXs}`
     : `${vars.spacingS} ${vars.spacingM}`};
 
-  cursor: ${props.onClick ? `pointer` : 'unset'};
+  cursor: ${getCellCursorStyle(props.isClickable, props.shouldIgnoreRowClick)};
 `;
 
 const HeaderCell = styled.th`
@@ -52,15 +58,13 @@ const BaseCell = styled.td`
 `;
 
 const DataCell = props => {
-  const onClick = props.onClick
-    ? event => {
-        if (props.shouldIgnoreRowClick) event.stopPropagation();
-        return props.onClick(event);
-      }
-    : undefined;
+  const onClick = event => {
+    if (props.shouldIgnoreRowClick) event.stopPropagation();
+    return props.onClick && props.onClick(event);
+  };
 
   return (
-    <BaseCell {...props} onClick={onClick}>
+    <BaseCell {...props} onClick={onClick} isClickable={props.onClick}>
       {props.isTruncated ? (
         <div
           css={css`
