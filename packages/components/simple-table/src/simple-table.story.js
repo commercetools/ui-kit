@@ -109,6 +109,18 @@ const initialColumnsState = [
   {
     key: 'company',
     label: 'Company',
+    renderItem: row => (
+      <Value
+        defaultValue={row.company}
+        render={(value, onChange) => (
+          <input
+            type="text"
+            value={value}
+            onChange={() => onChange(event.target.value)}
+          />
+        )}
+      />
+    ),
   },
   {
     key: 'phone',
@@ -123,7 +135,7 @@ const initialColumnsState = [
     key: 'about',
     label: 'About',
     isTruncated: true,
-    onClick: (row, column) => alert(`Cell click: ${row[column.key]}`),
+    onClick: row => alert(`Cell click: ${row.about}`),
     shouldIgnoreRowClick: true,
   },
 ];
@@ -176,6 +188,7 @@ const ColumnConfigForm = props => {
               onChange={formik.handleChange}
               value={formik.values.align}
             >
+              <option value={undefined}>default</option>
               <option value="left">left</option>
               <option value="center">center</option>
               <option value="right">right</option>
@@ -281,6 +294,12 @@ storiesOf('Components|Table (NEW)', module)
         onClick: row => toggleRow(row.key),
         shouldIgnoreRowClick: true,
         align: 'center',
+        renderItem: row => (
+          <CheckboxInput
+            isChecked={getIsRowSelected(row.key)}
+            onChange={() => toggleRow(row.key)}
+          />
+        ),
       },
       ...tableData.columns,
     ];
@@ -288,34 +307,8 @@ storiesOf('Components|Table (NEW)', module)
     return (
       <React.Fragment>
         <SimpleTable
-          items={withRowSelection ? rowsWithSelection : tableData.rows}
+          rows={withRowSelection ? rowsWithSelection : tableData.rows}
           columns={withRowSelection ? columnsWithSelect : tableData.columns}
-          renderItem={(item, column) => {
-            switch (column.key) {
-              case 'company':
-                return (
-                  <Value
-                    defaultValue={item.company}
-                    render={(value, onChange) => (
-                      <input
-                        type="text"
-                        value={value}
-                        onChange={() => onChange(event.target.value)}
-                      />
-                    )}
-                  />
-                );
-              case 'checkbox':
-                return (
-                  <CheckboxInput
-                    isChecked={getIsRowSelected(item.key)}
-                    onChange={() => toggleRow(item.key)}
-                  />
-                );
-              default:
-                return item[column.key];
-            }
-          }}
           onRowClick={
             onRowClick
               ? (item, index) => alert(`Row click: Row number ${index}`)

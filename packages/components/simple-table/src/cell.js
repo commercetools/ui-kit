@@ -85,7 +85,7 @@ DataCell.displayName = 'DataCell';
 DataCell.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right']),
   onClick: PropTypes.func,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
 };

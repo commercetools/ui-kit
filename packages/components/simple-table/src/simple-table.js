@@ -24,7 +24,7 @@ const SimpleTable = props => {
         </Row>
       </Header>
       <Body>
-        {props.items.map((row, rowIndex) => (
+        {props.rows.map((row, rowIndex) => (
           <Row
             key={row.key}
             onClick={
@@ -38,16 +38,16 @@ const SimpleTable = props => {
                 <DataCell
                   key={`${rowIndex}-{row.key}/${column.key}`}
                   onClick={
-                    column.onClick
-                      ? () => column.onClick(row, column)
-                      : undefined
+                    column.onClick ? () => column.onClick(row) : undefined
                   }
                   alignment={column.align ? column.align : props.cellAlignment}
                   isTruncated={column.isTruncated}
                   isCondensed={props.isCondensed}
                   shouldIgnoreRowClick={column.shouldIgnoreRowClick}
                 >
-                  {props.renderItem(row, column)}
+                  {column.renderItem
+                    ? column.renderItem(row)
+                    : props.itemRenderer(row, column)}
                 </DataCell>
               );
             })}
@@ -58,7 +58,7 @@ const SimpleTable = props => {
   );
 };
 SimpleTable.propTypes = {
-  items: PropTypes.arrayOf(
+  rows: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
     })
@@ -66,24 +66,32 @@ SimpleTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
+      /* defaults to `auto` */
       width: PropTypes.string,
       label: PropTypes.node.isRequired,
       align: PropTypes.oneOf(['left', 'center', 'right']),
       onClick: PropTypes.func,
+      /* custom item renderer, specific for items of this column */
+      renderItem: PropTypes.func,
       isTruncated: PropTypes.bool,
       shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,
   maxWidth: PropTypes.number,
   maxHeight: PropTypes.number,
-  renderItem: PropTypes.func.isRequired,
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
-  cellAlignment: PropTypes.string,
+  /* the default item (cell) renderer.
+  an existing per-column `renderItem` func takes precedence over this */
+  itemRenderer: PropTypes.func.isRequired,
+  /* the default cell alignment
+  an existing per-column `align` property takes precedence over this */
+  cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   isHeaderSticky: PropTypes.bool,
 };
 SimpleTable.defaultProps = {
   isHeaderSticky: true,
+  itemRenderer: (item, column) => item[column.key],
 };
 SimpleTable.displayName = 'SimpleTable';
 
