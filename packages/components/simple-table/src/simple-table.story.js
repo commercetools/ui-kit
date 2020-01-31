@@ -316,13 +316,13 @@ storiesOf('Components|Table (NEW)', module)
               ? (item, index) => alert(`Row click: Row number ${index}`)
               : null
           }
-          tableMaxHeight={number('tableMaxHeight', 0, {
+          maxHeight={number('maxHeight', 0, {
             range: true,
             min: 200,
             max: 500,
             step: 10,
           })}
-          tableMaxWidth={number('tableMaxWidth', 0, {
+          maxWidth={number('maxWidth', 0, {
             range: true,
             min: 200,
             max: 800,
@@ -330,6 +330,7 @@ storiesOf('Components|Table (NEW)', module)
           })}
           cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
           isCondensed={boolean('isCondensed', false)}
+          isHeaderSticky={boolean('isHeaderSticky', true)}
         />
         <br />
         <hr />
