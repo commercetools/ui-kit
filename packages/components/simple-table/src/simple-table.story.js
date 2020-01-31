@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
+import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import { useFormik } from 'formik';
-import SimpleTable from './simple-table';
-import { useRowSelection } from '.';
 import CheckboxInput from '../../inputs/checkbox-input';
+import SimpleTable from './simple-table';
+import Readme from '../README.md';
+import { useRowSelection } from '.';
 
 const items = [
   {
@@ -250,7 +252,7 @@ ColumnConfigForm.propTypes = {
 
 storiesOf('Components|Table (NEW)', module)
   .addDecorator(withKnobs)
-  // .addDecorator(withReadme(Readme))
+  .addDecorator(withReadme(Readme))
   .add('SimpleTable', () => {
     const [tableData, setTableData] = React.useState({
       rows: items,
