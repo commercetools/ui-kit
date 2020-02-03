@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/spacings",
-  "version": "10.14.1",
+  "version": "10.15.1",
   "description": "",
   "main": "dist/spacings.cjs.js",
   "module": "dist/spacings.esm.js",
@@ -18,10 +18,10 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/spacings-inline": "10.14.1",
-    "@commercetools-uikit/spacings-inset": "10.14.1",
-    "@commercetools-uikit/spacings-inset-squish": "10.14.1",
-    "@commercetools-uikit/spacings-stack": "10.14.1"
+    "@commercetools-uikit/spacings-inline": "10.15.1",
+    "@commercetools-uikit/spacings-inset": "10.15.1",
+    "@commercetools-uikit/spacings-inset-squish": "10.15.1",
+    "@commercetools-uikit/spacings-stack": "10.15.1"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"

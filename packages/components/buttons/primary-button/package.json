@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/primary-button",
-  "version": "10.14.1",
+  "version": "10.15.1",
   "description": "",
   "main": "dist/primary-button.cjs.js",
   "module": "dist/primary-button.esm.js",
@@ -19,10 +19,10 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.14.1",
-    "@commercetools-uikit/design-system": "10.13.0",
-    "@commercetools-uikit/spacings-inline": "10.14.1",
-    "@commercetools-uikit/text": "10.14.1",
+    "@commercetools-uikit/accessible-button": "10.15.1",
+    "@commercetools-uikit/design-system": "10.15.1",
+    "@commercetools-uikit/spacings-inline": "10.15.1",
+    "@commercetools-uikit/text": "10.15.1",
     "@commercetools-uikit/utils": "10.14.1",
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",

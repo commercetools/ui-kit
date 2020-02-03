@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-utils",
-  "version": "10.14.1",
+  "version": "10.15.1",
   "description": "",
   "main": "dist/localized-utils.cjs.js",
   "module": "dist/localized-utils.esm.js",

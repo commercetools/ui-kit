@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/checkbox-input",
-  "version": "10.14.1",
+  "version": "10.15.1",
   "description": "",
   "main": "dist/checkbox-input.cjs.js",
   "module": "dist/checkbox-input.esm.js",
@@ -19,10 +19,10 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/design-system": "10.13.0",
-    "@commercetools-uikit/icons": "10.14.1",
-    "@commercetools-uikit/select-utils": "10.14.1",
-    "@commercetools-uikit/text": "10.14.1",
+    "@commercetools-uikit/design-system": "10.15.1",
+    "@commercetools-uikit/icons": "10.15.1",
+    "@commercetools-uikit/select-utils": "10.15.1",
+    "@commercetools-uikit/text": "10.15.1",
     "@commercetools-uikit/utils": "10.14.1",
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",

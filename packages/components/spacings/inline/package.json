@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/spacings-inline",
-  "version": "10.14.1",
+  "version": "10.15.1",
   "description": "",
   "main": "dist/inline.cjs.js",
   "module": "dist/inline.esm.js",
@@ -19,7 +19,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/design-system": "10.15.1",
     "@commercetools-uikit/utils": "10.14.1",
     "@emotion/core": "10.0.27",
     "prop-types": "15.7.2"
