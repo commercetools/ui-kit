@@ -1,3 +1,14 @@
+## [10.15.1](https://github.com/commercetools/ui-kit/compare/v10.15.0...v10.15.1) (2020-02-03)
+
+#### 🐛 Type: Bug
+
+- [#1253](https://github.com/commercetools/ui-kit/pull/1253) fix(tag): remove button style on hover when disabled ([@jonnybel](https://github.com/jonnybel))
+- [#1251](https://github.com/commercetools/ui-kit/pull/1251) fix(secondary-button): to prop-type ([@tdeekens](https://github.com/tdeekens))
+
+#### 🔮 Type: Chore
+
+- [#1256](https://github.com/commercetools/ui-kit/pull/1256) chore: update yarn ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.15.0](https://github.com/commercetools/ui-kit/compare/v10.14.2...v10.15.0) (2020-01-24)
 
 #### 🔮 Type: Chore
