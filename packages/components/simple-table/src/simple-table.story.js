@@ -260,7 +260,7 @@ storiesOf('Components|Table (NEW)', module)
     });
 
     const handleUpdateColumn = (column, colIndex) => {
-      const newColumns = tableData.columns;
+      const newColumns = [...tableData.columns];
       newColumns[colIndex] = column;
       setTableData(prevState => ({ ...prevState, columns: newColumns }));
     };
@@ -330,7 +330,8 @@ storiesOf('Components|Table (NEW)', module)
           })}
           cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
           isCondensed={boolean('isCondensed', false)}
-          isHeaderSticky={boolean('isHeaderSticky', true)}
+          // disabling this while its broken
+          // isHeaderSticky={boolean('isHeaderSticky', true)}
         />
         <br />
         <hr />

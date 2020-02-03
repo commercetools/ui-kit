@@ -156,5 +156,5 @@ it('should respect existing selectable key values', () => {
 
   expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
   expect(rendered.queryByTestId('birds-of-passage')).toHaveTextContent('true');
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
+  expect(rendered.queryByTestId('woman-at-war')).toHaveTextContent('false');
 });
