@@ -82,8 +82,10 @@ SimpleTable.propTypes = {
   isHeaderSticky: PropTypes.bool,
 };
 SimpleTable.defaultProps = {
+  isCondensed: false,
+  cellAlignment: 'left',
   isHeaderSticky: true,
-  itemRenderer: (item, column) => item[column.key],
+  itemRenderer: (row, column) => row[column.key],
 };
 SimpleTable.displayName = 'SimpleTable';
 

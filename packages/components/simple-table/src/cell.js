@@ -90,6 +90,7 @@ DataCell.propTypes = {
   shouldIgnoreRowClick: PropTypes.bool,
 };
 DataCell.defaultProps = {
+  isTruncated: false,
   shouldIgnoreRowClick: false,
 };
 
