@@ -10,8 +10,8 @@ import { SimpleTable } from '@commercetools-uikit/simple-table';
 
 Shows tabular data, defined by a list of items: the `rows`, and another list with their corresponding definitions: the `columns`. Both these lists are arrays of objects.
 
-- The `rows` list defines the items you want to render, where each item only requires a unique `key` which is used for mapping, and the remaining properties to be shown under each column.
-- On the `columns` list, each object requires a unique `key` which should correspond to the property of the items of `rows` that you want to render under this column, and a `label` which defines the name shown on the header of the column.
+- The `rows` list defines the items you want to render, where each item only requires a unique `id` which is used for mapping, and the remaining properties to be shown under each column.
+- On the `columns` list, each object requires a unique `key` which should correspond to property key of the items of `rows` that you want to render under this column, and a `label` which defines the name shown on the header of the column.
 
 These are the only requirements for rendering the most simple table which should suffice for most use cases and is scaled automatically for the available space.
 
@@ -23,9 +23,9 @@ For adding a Row Selection behaviour, check the `useRowSelection` hook which you
 
 ```js
 const rows = [
-  { key: 'parasite', title: 'Parasite', country: 'South Korea' },
-  { key: 'portrait', title: 'Portrait of a Lady on Fire', country: 'France' },
-  { key: 'wat', title: 'Woman at War', country: 'Iceland' },
+  { id: 'parasite', title: 'Parasite', country: 'South Korea' },
+  { id: 'portrait', title: 'Portrait of a Lady on Fire', country: 'France' },
+  { id: 'wat', title: 'Woman at War', country: 'Iceland' },
 ];
 
 const columns = [

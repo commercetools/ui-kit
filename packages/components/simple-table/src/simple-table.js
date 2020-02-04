@@ -25,14 +25,14 @@ const SimpleTable = props => (
     <Body>
       {props.rows.map((row, rowIndex) => (
         <Row
-          key={row.key}
+          key={row.id}
           onClick={
             props.onRowClick ? () => props.onRowClick(row, rowIndex) : undefined
           }
         >
           {props.columns.map(column => (
             <DataCell
-              key={`${rowIndex}-{row.key}/${column.key}`}
+              key={`${rowIndex}-{row.id}/${column.key}`}
               onClick={column.onClick ? () => column.onClick(row) : undefined}
               alignment={column.align ? column.align : props.cellAlignment}
               isTruncated={column.isTruncated}
@@ -52,7 +52,7 @@ const SimpleTable = props => (
 SimpleTable.propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.shape({
-      key: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
     })
   ).isRequired,
   columns: PropTypes.arrayOf(

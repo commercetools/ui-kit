@@ -12,7 +12,7 @@ import { useRowSelection } from '.';
 
 const items = [
   {
-    key: '5e188c29791747d9c54250e2',
+    id: '5e188c29791747d9c54250e2',
     name: 'Morgan Bean',
     company: 'CYCLONICA',
     phone: '+1 (895) 529-3300',
@@ -21,7 +21,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c295ae0bb19afbb115f',
+    id: '5e188c295ae0bb19afbb115f',
     name: 'Franklin Cochran',
     company: 'TINGLES',
     phone: '+1 (835) 571-3268',
@@ -30,7 +30,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c298f0ea901553c517f',
+    id: '5e188c298f0ea901553c517f',
     name: 'Salazar Craig',
     company: 'ECRAZE',
     phone: '+1 (944) 445-2594',
@@ -39,7 +39,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c29b09bb748df833ed0',
+    id: '5e188c29b09bb748df833ed0',
     name: 'Pamela Noble',
     company: 'FILODYNE',
     phone: '+1 (875) 421-3328',
@@ -48,7 +48,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c29bc14e3b97ab2ad7d',
+    id: '5e188c29bc14e3b97ab2ad7d',
     name: 'Terra Morrow',
     company: 'DAISU',
     phone: '+1 (807) 436-2026',
@@ -57,7 +57,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c296c9b7cf486a0479c',
+    id: '5e188c296c9b7cf486a0479c',
     name: 'Cline Hansen',
     company: 'ULTRIMAX',
     phone: '+1 (934) 402-3675',
@@ -66,7 +66,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c29b45c669d8e60303f',
+    id: '5e188c29b45c669d8e60303f',
     name: 'Jefferson Rosario',
     company: 'COMTOURS',
     phone: '+1 (874) 437-2581',
@@ -75,7 +75,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c29ca865647af147b4a',
+    id: '5e188c29ca865647af147b4a',
     name: 'Tania Waller',
     company: 'DOGSPA',
     phone: '+1 (964) 585-3040',
@@ -84,7 +84,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c2910b83f907e9c66ab',
+    id: '5e188c2910b83f907e9c66ab',
     name: 'Butler Shepard',
     company: 'HOUSEDOWN',
     phone: '+1 (888) 434-2153',
@@ -93,7 +93,7 @@ const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
-    key: '5e188c29a9ece9123d6a87a1',
+    id: '5e188c29a9ece9123d6a87a1',
     name: 'Diana Wise',
     company: 'SPEEDBOLT',
     phone: '+1 (992) 535-2912',
@@ -293,13 +293,13 @@ storiesOf('Components|Table (NEW)', module)
             onChange={handleSelectColumnHeaderChange}
           />
         ),
-        onClick: row => toggleRow(row.key),
+        onClick: row => toggleRow(row.id),
         shouldIgnoreRowClick: true,
         align: 'center',
         renderItem: row => (
           <CheckboxInput
-            isChecked={getIsRowSelected(row.key)}
-            onChange={() => toggleRow(row.key)}
+            isChecked={getIsRowSelected(row.id)}
+            onChange={() => toggleRow(row.id)}
           />
         ),
       },

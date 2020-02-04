@@ -45,7 +45,7 @@ const useRowSelection = (keyName, rows) => {
     (items, currentItem) => ({
       ...items,
       // if there is an initial value: use it, otherwise default to false
-      [currentItem.key]: currentItem[keyName] || false,
+      [currentItem.id]: currentItem[keyName] || false,
     }),
     {}
   );
@@ -54,14 +54,14 @@ const useRowSelection = (keyName, rows) => {
 
   const selectableRows = rows.map(item => ({
     ...item,
-    [keyName]: state[item.key],
+    [keyName]: state[item.id],
   }));
-  const toggleRow = key => dispatch({ type: 'toggle', payload: key });
-  const selectRow = key => dispatch({ type: 'select', payload: key });
-  const deselectRow = key => dispatch({ type: 'deselect', payload: key });
+  const toggleRow = id => dispatch({ type: 'toggle', payload: id });
+  const selectRow = id => dispatch({ type: 'select', payload: id });
+  const deselectRow = id => dispatch({ type: 'deselect', payload: id });
   const selectAllRows = () => dispatch({ type: 'selectAll' });
   const deselectAllRows = () => dispatch({ type: 'deselectAll' });
-  const getIsRowSelected = key => state[key];
+  const getIsRowSelected = id => state[id];
   const getNumberOfSelectedRows = () =>
     selectableRows.reduce((count, item) => count + item[keyName], 0);
 
