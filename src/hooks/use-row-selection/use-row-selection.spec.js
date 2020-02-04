@@ -3,9 +3,9 @@ import { render } from '../../test-utils';
 import useRowSelection from './use-row-selection';
 
 const testData = [
-  { key: 'system-crasher' },
-  { key: 'birds-of-passage' },
-  { key: 'woman-at-war' },
+  { id: 'system-crasher' },
+  { id: 'birds-of-passage' },
+  { id: 'woman-at-war' },
 ];
 
 const TestComponent = props => {
@@ -32,25 +32,25 @@ const TestComponent = props => {
       <span data-testid={'selectedCount'}>{getNumberOfSelectedRows()}</span>
       <div>
         {rows.map(item => (
-          <div key={item.key}>
-            <span data-testid={item.key}>
-              {getIsRowSelected(item.key).toString()}
+          <div key={item.id}>
+            <span data-testid={item.id}>
+              {getIsRowSelected(item.id).toString()}
             </span>
             <button
-              data-testid={`toggle ${item.key}`}
-              onClick={() => toggleRow(item.key)}
+              data-testid={`toggle ${item.id}`}
+              onClick={() => toggleRow(item.id)}
             >
               Toggle
             </button>
             <button
-              data-testid={`select ${item.key}`}
-              onClick={() => selectRow(item.key)}
+              data-testid={`select ${item.id}`}
+              onClick={() => selectRow(item.id)}
             >
               Select
             </button>
             <button
-              data-testid={`deselect ${item.key}`}
-              onClick={() => deselectRow(item.key)}
+              data-testid={`deselect ${item.id}`}
+              onClick={() => deselectRow(item.id)}
             >
               Deselect
             </button>
@@ -65,7 +65,7 @@ it('should have no selected items by default', () => {
   const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
   testData.forEach(item => {
-    expect(rendered.queryByTestId(item.key)).toHaveTextContent('false');
+    expect(rendered.queryByTestId(item.id)).toHaveTextContent('false');
   });
 });
 
@@ -123,7 +123,7 @@ it('should be possible to select all rows', () => {
   expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('3');
 
   testData.forEach(item => {
-    expect(rendered.queryByTestId(item.key)).toHaveTextContent('true');
+    expect(rendered.queryByTestId(item.id)).toHaveTextContent('true');
   });
 });
 
@@ -139,15 +139,15 @@ it('should be possible to deselect all rows', () => {
   expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('0');
 
   testData.forEach(item => {
-    expect(rendered.queryByTestId(item.key)).toHaveTextContent('false');
+    expect(rendered.queryByTestId(item.id)).toHaveTextContent('false');
   });
 });
 
 it('should respect existing selectable key values', () => {
   const customRows = [
-    { key: 'system-crasher', selected: false },
-    { key: 'birds-of-passage', selected: true },
-    { key: 'woman-at-war' },
+    { id: 'system-crasher', selected: false },
+    { id: 'birds-of-passage', selected: true },
+    { id: 'woman-at-war' },
   ];
 
   const rendered = render(
