@@ -1,11 +1,5 @@
 # Buttons: Icon Button
 
-## Usage
-
-```js
-import { IconButton } from '@commercetools-ui-kit/icons';
-```
-
 #### Description
 
 Icon Buttons are "icon-only" buttons. They trigger an action when clicked
@@ -14,11 +8,13 @@ Icon Buttons are "icon-only" buttons. They trigger an action when clicked
 #### Usage
 
 ```js
+import IconButton from '@commercetools-uikit/icon-button';
+
 <IconButton
   icon={<InformationIcon />}
   label="Alerts a message"
   onClick={() => alert('Button clicked')}
-/>
+/>;
 ```
 
 #### Properties

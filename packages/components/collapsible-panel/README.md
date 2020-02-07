@@ -1,18 +1,14 @@
 # Panels: CollapsiblePanel
 
-## Usage
-
-```js
-import { CollapsiblePanel } from '@commercetools-frontend/ui-kit';
-```
-
-> Please have a look at the [Component Best Practices](<(#component-best-practices)>) to ensure that you are using the component as intended from a development and UX perspective.
-
-#### Examples
+#### Usage
 
 The component can be used in a controlled or uncontrolled manner. Please refer to the [React documentation](https://reactjs.org/docs/forms.html#controlled-components) if you are unsure what either or entails.
 
+> Please have a look at the [Component Best Practices](<(#component-best-practices)>) to ensure that you are using the component as intended from a development and UX perspective.
+
 ```js
+import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
+
 // 1. Uncontrolled
 //   The `CollapsiblePanel` controls its own state. You do not pass handlers or state related props.
 <CollapsiblePanel header="Lorem">

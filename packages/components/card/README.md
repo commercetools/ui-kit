@@ -1,11 +1,5 @@
 # Card
 
-## Usage
-
-```js
-import { Card } from '@commercetools-frontend/ui-kit';
-```
-
 #### Description
 
 Cards are used to display content and actions on a single topic.
@@ -13,9 +7,11 @@ Cards are used to display content and actions on a single topic.
 #### Usage
 
 ```js
+import Card from '@commercetools-uikit/card';
+
 <Card theme="light" type="raised">
   <p>You'll never guess where I've been!</p>
-</Card>
+</Card>;
 ```
 
 #### Properties

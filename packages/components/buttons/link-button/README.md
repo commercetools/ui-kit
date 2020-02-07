@@ -1,11 +1,5 @@
 # Buttons: Link Button
 
-## Usage
-
-```js
-import { LinkButton } from '@commercetools-ui-kit/link-button';
-```
-
 #### Description
 
 Link buttons are similar to Flat buttons, however they are constructed as a
@@ -17,15 +11,15 @@ the Link button is then constructed with a `<a>` instead of the default `<Link>`
 #### Usage
 
 ```js
+import LinkButton from '@commercetools-uikit/link-button';
+
 <LinkButton
   to={'/foo/bar'}
   iconLeft={<AddIcon />}
   label="A label text"
   isDisabled={false}
 />
-```
 
-```js
 <LinkButton
   to={'https://kanyetothe.com'}
   iconLeft={<SupportIcon />}

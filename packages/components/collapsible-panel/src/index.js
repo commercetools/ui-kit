@@ -4,3 +4,5 @@ import CollapsiblePanelHeader from './collapsible-panel-header';
 CollapsiblePanel.Header = CollapsiblePanelHeader;
 
 export default CollapsiblePanel;
+
+export { default as version } from './version';

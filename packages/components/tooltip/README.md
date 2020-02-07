@@ -7,12 +7,14 @@ Tooltips display informative text when users hover over or focus on an element.
 #### Usage
 
 ```js
+import Tooltip from '@commercetools-uikit/tooltip';
+
 <Tooltip
   placement="left"
   title="If you buy a pizza, you will also get a free ice cream :)"
 >
   <button onClick={orderPizza({ freeIceCream: 'yes please' })}>Submit</button>
-</Tooltip>
+</Tooltip>;
 ```
 
 #### Working with disabled child elements

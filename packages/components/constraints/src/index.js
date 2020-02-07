@@ -2,3 +2,5 @@
 import Horizontal from './horizontal';
 
 export default { Horizontal };
+
+export { default as version } from './version';

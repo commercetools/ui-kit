@@ -1,14 +1,5 @@
 # Dropdowns: PrimaryActionDropdown
 
-## Usage
-
-```js
-import {
-  PrimaryActionDropdown,
-  PrimaryActionDropdownOption,
-} from '@commercetools-frontend/ui-kit';
-```
-
 #### Description
 
 A `PrimaryActionDropdown` is a dropdown with any number of action whereas the
@@ -22,10 +13,9 @@ dropdown will be disabled.
 #### Usage
 
 ```js
-import {
-  PrimaryActionDropdown,
+import PrimaryActionDropdown, {
   PrimaryActionDropdownOption,
-} from '@commercetools-frontend/ui-kit';
+} from '@commercetools-uikit/primary-action-dropdown';
 
 <PrimaryActionDropdown>
   <PrimaryActionDropdownOption icon={<PlusBoldIcon />} onClick={() => {}}>

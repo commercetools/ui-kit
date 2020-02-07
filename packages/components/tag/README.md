@@ -1,11 +1,5 @@
 # Tags
 
-## Usage
-
-```js
-import { Tag } from '@commercetools-frontend/ui-kit';
-```
-
 #### Description
 
 A tag is often used for items that need to be labeled or categorized. This might apply to search terms or categories of a product. Tags can also have a "remove" button.
@@ -13,6 +7,8 @@ A tag is often used for items that need to be labeled or categorized. This might
 #### Usage
 
 ```js
+import Tag from '@commercetools-uikit/tag';
+
 <Tag
   type="normal"
   isDisabled={false}
@@ -20,7 +16,7 @@ A tag is often used for items that need to be labeled or categorized. This might
   onRemove={() => {}}
 >
   Icecream
-</Tag>
+</Tag>;
 ```
 
 #### Properties

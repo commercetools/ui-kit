@@ -1,11 +1,5 @@
 # Buttons: Secondary Button
 
-## Usage
-
-```js
-import { SecondaryButton } from '@commercetools-ui-kit/secondary-button';
-```
-
 #### Description
 
 Secondary buttons are used in combination with a `PrimaryButton` given a
@@ -15,11 +9,13 @@ accessibility reasons.
 #### Usage
 
 ```js
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+
 <SecondaryButton
   iconLeft={<InformationIcon />}
   label="Alerts a message"
   onClick={() => alert('Button clicked')}
-/>
+/>;
 ```
 
 #### Properties

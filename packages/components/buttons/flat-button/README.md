@@ -1,11 +1,5 @@
 # Buttons: Flat Button
 
-## Usage
-
-```js
-import { FlatButton } from '@commercetools-uikit/flat-button';
-```
-
 #### Description
 
 Flat buttons are minimal and a flat variation of primary and secondary buttons.
@@ -13,13 +7,15 @@ Flat buttons are minimal and a flat variation of primary and secondary buttons.
 #### Usage
 
 ```js
+import FlatButton from '@commercetools-uikit/flat-button';
+
 <FlatButton
   tone="primary"
   icon={<InformationIcon />}
   label="A label text"
   onClick={() => alert('Button clicked')}
   isDisabled={false}
-/>
+/>;
 ```
 
 iconClass label url onClick

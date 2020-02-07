@@ -9,6 +9,8 @@ The `AccessibleButton` component is intended to be used as a wrapper for your
 actual button component.
 
 ```jsx
+import AccessibleButton from '@commercetools-uikit/accessible-button';
+
 const Button = props => (
   <AccessibleButton
     label={props.label}

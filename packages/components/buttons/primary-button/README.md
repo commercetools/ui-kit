@@ -1,11 +1,5 @@
 # Buttons: Primary Button
 
-## Usage
-
-```js
-import { PrimaryButton } from '@commercetools-ui-kit/primary-button';
-```
-
 #### Description
 
 Primary buttons are used for a primary action on a page. You must also pass a
@@ -14,11 +8,13 @@ label for accessibility reasons.
 #### Usage
 
 ```js
+import PrimaryButton from '@commercetools-uikit/primary-button';
+
 <PrimaryButton
   iconLeft={<InformationIcon />}
   label="Alerts a message"
   onClick={() => alert('Button clicked')}
-/>
+/>;
 ```
 
 #### Properties

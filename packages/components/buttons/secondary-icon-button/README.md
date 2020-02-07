@@ -1,11 +1,5 @@
 # Buttons: SecondaryIconButton
 
-## Usage
-
-```js
-import { SecondaryIconButton } from '@commercetools-uikit/secondary-icon-button';
-```
-
 #### Description
 
 Secondary Icon Buttons are "icon-only" buttons and a restricted version of the
@@ -15,11 +9,13 @@ also pass a label for accessibility reasons.
 #### Usage
 
 ```js
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+
 <SecondaryIconButton
   icon={<ArrowRightIcon />}
   label="Next"
   onClick={() => alert('Button clicked')}
-/>
+/>;
 ```
 
 #### Properties

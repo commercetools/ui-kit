@@ -1,9 +1,9 @@
 # Constraint
 
-## Example
+## Usage
 
 ```jsx
-import { Constraints } from '@commercetools-frontend/ui-kit';
+import Constraints from '@commercetools-uikit/constraints';
 
 <Constraints.Horizontal constraint="m">
   <DatePicker />
