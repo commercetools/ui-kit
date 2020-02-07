@@ -26,8 +26,13 @@ EOF
   echo "Working tree status"
   git status
 
-  echo "Releasing canary version"
-  yarn release:canary
+    # Release package only if lerna detected some changes in packages
+  if yarn run lerna changed &> /dev/null; then
+    echo "Releasing canary version"
+    yarn release:canary
+  else
+    echo "Skipping release, no changes in packages..."
+  fi
 
 else
   echo "Skipping release due to commit message..."
