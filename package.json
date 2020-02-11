@@ -15,6 +15,7 @@
   "sideEffects": false,
   "scripts": {
     "changelog": "node scripts/changelog.js",
+    "clean": "lerna exec 'rm -rf dist'",
     "generate-icons": "node ./scripts/generate-icon-exports.js",
     "design-tokens:build": "yarn --cwd design-system build:tokens",
     "design-tokens:build:watch": "yarn --cwd design-system build:tokens:watch",

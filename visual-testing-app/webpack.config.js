@@ -38,7 +38,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: [/(node_modules)/, /[\\/]packages[\\/]/],
+        exclude: [/(node_modules)/, /(dist)/],
         use: {
           loader: 'babel-loader',
           query: {

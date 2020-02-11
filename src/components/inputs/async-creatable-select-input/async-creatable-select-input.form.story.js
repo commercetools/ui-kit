@@ -5,11 +5,10 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number } from '@storybook/addon-knobs/react';
 import Spacings from '@commercetools-uikit/spacings';
+import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
+import { ErrorMessage } from '@commercetools-uikit/messages';
 import Section from '../../../../.storybook/decorators/section';
 import FormikBox from '../../../../.storybook/decorators/formik-box';
-import PrimaryButton from '../../buttons/primary-button';
-import SecondaryButton from '../../buttons/secondary-button';
-import ErrorMessage from '../../messages/error-message';
 import Readme from './README.md';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 
