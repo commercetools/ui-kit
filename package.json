@@ -42,7 +42,7 @@
     "prerelease": "npm_config_registry=https://registry.npmjs.org npm whoami && yarn build",
     "release": "lerna publish --exact --dist-tag next",
     "release:alpha": "lerna publish --exact --dist-tag alpha --no-git-tag-version --no-push",
-    "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes",
+    "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes --force-publish \"*\"",
     "release:from-next-to-latest": "lerna exec --no-bail --no-private --no-sort --stream -- '[ -n \"$(npm v . dist-tags.next)\" ] && npm dist-tag add ${LERNA_PACKAGE_NAME}@$(npm v . dist-tags.next) latest'",
     "percy": "percy exec -- jest --config jest.visual.config.js --runInBand",
     "visual-testing-app:build": "yarn --cwd visual-testing-app build",
