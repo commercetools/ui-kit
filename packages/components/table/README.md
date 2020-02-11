@@ -1,11 +1,5 @@
 # Table
 
-## Usage
-
-```js
-import { Table } from '@commercetools-uikit/table';
-```
-
 ### `<Table />`
 
 Shows tabular data
@@ -13,6 +7,8 @@ Shows tabular data
 #### Usage
 
 ```js
+import { Table } from '@commercetools-uikit/table';
+
 <Table
   columns={columns}
   rowCount={this.state.rows.length}
@@ -20,7 +16,7 @@ Shows tabular data
   onRowClick={this.handleRowClick}
   shouldFillRemainingVerticalSpace={true}
   items={this.state.rows}
-/>
+/>;
 ```
 
 #### Props
