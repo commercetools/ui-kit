@@ -14,9 +14,12 @@ import { WarningMessage } from '@commercetools-frontend/ui-kit';
 
 #### Properties
 
-| Props      | Type   | Required | Values | Default | Description                               |
-| ---------- | ------ | :------: | ------ | ------- | ----------------------------------------- |
-| `children` | `node` |    ✅    | -      | -       | Warning message, either as string or node |
+| Props         | Type           | Required | Values | Default | Description                                                          |
+| ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |
+| `children`    | `node`         | ✅ (\*)  | -      | -       | - Warning message, either as string or node                          |
+| `intlMessage` | `intl message` | ✅ (\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage` |
+
+> `*`: `children` is required only if `intlMessage` is not provided
 
 Main functions and use cases are:
 
@@ -38,9 +41,12 @@ import { ErrorMessage } from '@commercetools-frontend/ui-kit';
 
 #### Properties
 
-| Props      | Type   | Required | Values | Default | Description                             |
-| ---------- | ------ | :------: | ------ | ------- | --------------------------------------- |
-| `children` | `node` |    ✅    | -      | -       | Error message, either as string or node |
+| Props         | Type           | Required | Values | Default | Description                                                          |
+| ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |
+| `children`    | `node`         | ✅ (\*)  | -      | -       | - Error message, either as string or node                            |
+| `intlMessage` | `intl message` | ✅ (\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage` |
+
+> `*`: `children` is required only if `intlMessage` is not provided
 
 Main functions and use cases are:
 

@@ -1,11 +1,20 @@
 import React from 'react';
 import { render } from '../../../../../src/test-utils';
-import ErrorMessage from './warning-message';
+import WarningMessage from './warning-message';
 
-it('should render children', () => {
-  const { container } = render(
-    <ErrorMessage>Some warning message</ErrorMessage>
-  );
+const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
-  expect(container).toHaveTextContent('Some warning message');
+describe('WarningMessage', () => {
+  it('should render children', () => {
+    const { container } = render(
+      <WarningMessage>Some warning message</WarningMessage>
+    );
+
+    expect(container).toHaveTextContent('Some warning message');
+  });
+
+  it('should render given text with react-intl', () => {
+    const { container } = render(<WarningMessage intlMessage={intlMessage} />);
+    expect(container).toHaveTextContent('Hello');
+  });
 });
