@@ -89,7 +89,7 @@
     "@storybook/theming": "5.3.12",
     "@svgr/core": "5.0.1",
     "@svgr/plugin-jsx": "5.0.1",
-    "@svgr/plugin-svgo": "5.1.0",
+    "@svgr/plugin-svgo": "5.0.1",
     "@testing-library/jest-dom": "5.1.1",
     "@testing-library/react": "9.4.0",
     "babel-eslint": "10.0.3",
