@@ -21,7 +21,7 @@ For adding a Row Selection behaviour, check the `useRowSelection` hook which you
 
 #### Usage
 
-```js
+```jsx
 const rows = [
   { id: 'parasite', title: 'Parasite', country: 'South Korea' },
   { id: 'portrait', title: 'Portrait of a Lady on Fire', country: 'France' },
@@ -33,7 +33,7 @@ const columns = [
   { key: 'country', label: 'Country' },
 ];
 
-<SimpleTable rows={rows} columns={columns} />;
+return <SimpleTable rows={rows} columns={columns} />;
 ```
 
 #### Props

@@ -5,16 +5,20 @@ import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import { useFormik } from 'formik';
-import CheckboxInput from '../../inputs/checkbox-input';
 import SimpleTable from './simple-table';
+import CheckboxInput from '../../inputs/checkbox-input';
 import Readme from '../README.md';
 import { useRowSelection } from '.';
+// For testing purposes:
+import TextInput from '../../inputs/text-input';
+import SelectInput from '../../inputs/select-input';
+import NumberInput from '../../inputs/number-input';
 
 const items = [
   {
     id: '5e188c29791747d9c54250e2',
     name: 'Morgan Bean',
-    company: 'CYCLONICA',
+    testInput: 'CYCLONICA',
     phone: '+1 (895) 529-3300',
     age: 23,
     about:
@@ -23,7 +27,7 @@ const items = [
   {
     id: '5e188c295ae0bb19afbb115f',
     name: 'Franklin Cochran',
-    company: 'TINGLES',
+    testInput: 'TINGLES',
     phone: '+1 (835) 571-3268',
     age: 36,
     about:
@@ -32,7 +36,7 @@ const items = [
   {
     id: '5e188c298f0ea901553c517f',
     name: 'Salazar Craig',
-    company: 'ECRAZE',
+    testInput: 'ECRAZE',
     phone: '+1 (944) 445-2594',
     age: 21,
     about:
@@ -41,7 +45,7 @@ const items = [
   {
     id: '5e188c29b09bb748df833ed0',
     name: 'Pamela Noble',
-    company: 'FILODYNE',
+    testInput: 'FILODYNE',
     phone: '+1 (875) 421-3328',
     age: 34,
     about:
@@ -50,7 +54,7 @@ const items = [
   {
     id: '5e188c29bc14e3b97ab2ad7d',
     name: 'Terra Morrow',
-    company: 'DAISU',
+    testInput: 'DAISU',
     phone: '+1 (807) 436-2026',
     age: 30,
     about:
@@ -59,7 +63,7 @@ const items = [
   {
     id: '5e188c296c9b7cf486a0479c',
     name: 'Cline Hansen',
-    company: 'ULTRIMAX',
+    testInput: 'ULTRIMAX',
     phone: '+1 (934) 402-3675',
     age: 21,
     about:
@@ -68,7 +72,7 @@ const items = [
   {
     id: '5e188c29b45c669d8e60303f',
     name: 'Jefferson Rosario',
-    company: 'COMTOURS',
+    testInput: 'COMTOURS',
     phone: '+1 (874) 437-2581',
     age: 32,
     about:
@@ -77,7 +81,7 @@ const items = [
   {
     id: '5e188c29ca865647af147b4a',
     name: 'Tania Waller',
-    company: 'DOGSPA',
+    testInput: 'DOGSPA',
     phone: '+1 (964) 585-3040',
     age: 35,
     about:
@@ -86,7 +90,7 @@ const items = [
   {
     id: '5e188c2910b83f907e9c66ab',
     name: 'Butler Shepard',
-    company: 'HOUSEDOWN',
+    testInput: 'HOUSEDOWN',
     phone: '+1 (888) 434-2153',
     age: 21,
     about:
@@ -95,7 +99,7 @@ const items = [
   {
     id: '5e188c29a9ece9123d6a87a1',
     name: 'Diana Wise',
-    company: 'SPEEDBOLT',
+    testInput: 'SPEEDBOLT',
     phone: '+1 (992) 535-2912',
     age: 27,
     about:
@@ -103,19 +107,13 @@ const items = [
   },
 ];
 
-const initialColumnsState = [
-  {
-    key: 'name',
-    label: 'Name',
-  },
-  {
-    key: 'company',
-    label: 'Company',
-    renderItem: row => (
+const exampleInputCellRenderer = type => {
+  const options = {
+    Text: row => (
       <Value
-        defaultValue={row.company}
+        defaultValue={row.testInput}
         render={(value, onChange) => (
-          <input
+          <TextInput
             type="text"
             value={value}
             onChange={() => onChange(event.target.value)}
@@ -123,6 +121,45 @@ const initialColumnsState = [
         )}
       />
     ),
+    Select: () => (
+      <Value
+        render={(value, onChange) => (
+          <SelectInput
+            value={value}
+            menuPortalTarget={document.body}
+            onChange={event => onChange(event.target.value)}
+            options={[
+              { value: 'one', label: 'One' },
+              { value: 'two', label: 'Two' },
+            ]}
+          />
+        )}
+      />
+    ),
+    Number: () => (
+      <Value
+        render={(value, onChange) => (
+          <NumberInput
+            value={value}
+            onChange={event => onChange(event.target.value)}
+          />
+        )}
+      />
+    ),
+  };
+
+  return options[type];
+};
+
+const initialColumnsState = [
+  {
+    key: 'name',
+    label: 'Name',
+  },
+  {
+    key: 'testInput',
+    label: 'Text Input',
+    renderItem: exampleInputCellRenderer('Text'),
   },
   {
     key: 'phone',
@@ -259,9 +296,18 @@ storiesOf('Components|Table (NEW)', module)
       columns: initialColumnsState,
     });
 
+    // column update handler for the ColumnConfigForm
     const handleUpdateColumn = (column, colIndex) => {
       const newColumns = [...tableData.columns];
       newColumns[colIndex] = column;
+      setTableData(prevState => ({ ...prevState, columns: newColumns }));
+    };
+
+    // column update handler for the test input selector
+    const handleUpdateTestInput = type => {
+      const newColumns = [...tableData.columns];
+      newColumns[1].label = `${type} Input`;
+      newColumns[1].renderItem = exampleInputCellRenderer(type);
       setTableData(prevState => ({ ...prevState, columns: newColumns }));
     };
 
@@ -355,6 +401,30 @@ storiesOf('Components|Table (NEW)', module)
                 column={col}
               />
             ))}
+          </div>
+          <hr />
+          <h4>{'Select an input type to test on the second column'}</h4>
+          <div>
+            <label>
+              {'Input Type: '}
+              <Value
+                defaultValue={'Text'}
+                render={(value, onChange) => (
+                  <select
+                    name="input selector"
+                    onChange={event => {
+                      handleUpdateTestInput(event.target.value);
+                      onChange(event.target.value);
+                    }}
+                    value={value}
+                  >
+                    <option value="Text">Text</option>
+                    <option value="Number">Number</option>
+                    <option value="Select">Select</option>
+                  </select>
+                )}
+              />
+            </label>
           </div>
         </div>
       </React.Fragment>
