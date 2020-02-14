@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/messages",
-  "version": "10.15.1",
+  "version": "10.16.0",
   "description": "",
   "main": "dist/messages.cjs.js",
   "module": "dist/messages.esm.js",
