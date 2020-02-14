@@ -1,3 +1,14 @@
+## [10.16.0](https://github.com/commercetools/ui-kit/compare/v10.15.1...v10.16.0) (2020-02-14)
+
+#### 🚀 Type: New Feature
+
+- [#1261](https://github.com/commercetools/ui-kit/pull/1261): add `intlMessage` prop to `ErrorMessage` and `WarningMessage` components ([@YahiaElTai](https://github.com/YahiaElTai))
+
+#### ⛑ Type: Refactoring
+
+- `components`
+  - [#1224](https://github.com/commercetools/ui-kit/pull/1224) refactor: move components src to corresponding packages folders ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.15.1](https://github.com/commercetools/ui-kit/compare/v10.15.0...v10.15.1) (2020-02-03)
 
 #### 🐛 Type: Bug

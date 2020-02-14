@@ -16,7 +16,7 @@ import { WarningMessage } from '@commercetools-frontend/ui-kit';
 
 | Props         | Type           | Required | Values | Default | Description                                                          |
 | ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |
-| `children`    | `node`         | ✅ (\*)  | -      | -       | Warning message, either as string or node                          |
+| `children`    | `node`         | ✅ (\*)  | -      | -       | Warning message, either as string or node                            |
 | `intlMessage` | `intl message` | ✅ (\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage` |
 
 > `*`: `children` is required only if `intlMessage` is not provided
@@ -43,7 +43,7 @@ import { ErrorMessage } from '@commercetools-frontend/ui-kit';
 
 | Props         | Type           | Required | Values | Default | Description                                                          |
 | ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |
-| `children`    | `node`         | ✅ (\*)  | -      | -       | Error message, either as string or node                            |
+| `children`    | `node`         | ✅ (\*)  | -      | -       | Error message, either as string or node                              |
 | `intlMessage` | `intl message` | ✅ (\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage` |
 
 > `*`: `children` is required only if `intlMessage` is not provided
