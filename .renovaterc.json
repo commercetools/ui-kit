@@ -23,6 +23,7 @@
   "ignoreDeps": [
     "slate",
     "slate-html-serializer",
-    "slate-react"
+    "slate-react",
+    "@svgr/plugin-svgo"
   ]
 }
