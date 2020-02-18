@@ -16,6 +16,12 @@ const SimpleTable = props => (
             key={`${columnIndex}-${column.key}`}
             role="column-header"
             isCondensed={props.isCondensed}
+            /* Sorting Props */
+            sortBy={props.sortBy}
+            columnKey={column.key}
+            isSortable={column.isSortable}
+            onSortChange={props.onSortChange}
+            sortDirection={props.sortDirection}
           >
             {column.label}
           </HeaderCell>
@@ -80,6 +86,10 @@ SimpleTable.propTypes = {
   an existing per-column `align` property takes precedence over this */
   cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   isHeaderSticky: PropTypes.bool,
+  /* Sorting props: */
+  sortBy: PropTypes.string,
+  onSortChange: PropTypes.func,
+  sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
 SimpleTable.defaultProps = {
   isCondensed: false,

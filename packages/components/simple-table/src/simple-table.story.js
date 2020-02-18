@@ -155,6 +155,7 @@ const initialColumnsState = [
   {
     key: 'name',
     label: 'Name',
+    isSortable: true,
   },
   {
     key: 'testInput',
