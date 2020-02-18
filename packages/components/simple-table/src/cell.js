@@ -6,60 +6,9 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import omit from 'lodash/omit';
-
-const getCellCursorStyle = (isCellClickable, shouldIgnoreRowClick) => {
-  if (isCellClickable) return 'pointer';
-  if (shouldIgnoreRowClick) return 'auto';
-  return 'unset';
-};
-
-const getCellPadding = (isCondensed, noPadding) => {
-  if (noPadding) return 0;
-  if (isCondensed) return `${vars.spacingXs} ${vars.spacingXs}`;
-  return `${vars.spacingS} ${vars.spacingM}`;
-};
-
-const getCellAlignment = props => {
-  if (props.alignment === 'center') {
-    return css`
-      justify-content: center;
-      text-align: center;
-    `;
-  }
-  if (props.alignment === 'right') {
-    return css`
-      justify-content: flex-end;
-      text-align: right;
-    `;
-  }
-  return css`
-    justify-content: flex-start;
-    text-align: left;
-  `;
-};
-
-const getCellStyles = props => css`
-  display: flex;
-  align-items: center;
-  overflow: ${props.isTruncated ? 'hidden' : 'unset'};
-
-  border-right: 1px solid ${vars.colorNeutral90};
-  border-bottom: 1px solid ${vars.colorNeutral90};
-
-  padding: ${getCellPadding(props.isCondensed, props.noPadding)};
-
-  cursor: ${getCellCursorStyle(props.isClickable, props.shouldIgnoreRowClick)};
-`;
+import { getCellPadding, BaseCell, BaseHeaderCell } from './cell.styles';
 
 // Header Cell Types
-
-const BaseHeaderCell = styled.th`
-  ${getCellStyles}
-  ${getCellAlignment}
-  color: ${vars.colorSurface};
-  background-color: ${vars.colorAccent};
-  font-weight: normal;
-`;
 
 const SortableHeaderCell = props => {
   const isActive = props.sortBy === props.columnKey;
@@ -100,8 +49,8 @@ const SortableHeaderCell = props => {
 
   return (
     <BaseHeaderCell
-      onClick={() => props.onSortChange(props.columnKey, props.sortDirection)}
       {...omit(props, ['onSortChange'])}
+      onClick={() => props.onSortChange(props.columnKey, props.sortDirection)}
       // Remove padding here to make whole Cell clickable
       noPadding
     >
@@ -134,11 +83,6 @@ HeaderCell.propTypes = {
 };
 
 // Row Cell Types
-
-const BaseCell = styled.td`
-  ${getCellStyles}
-  ${getCellAlignment}
-`;
 
 const DataCell = props => {
   const onClick = event => {
