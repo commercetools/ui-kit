@@ -19,6 +19,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/accessible-button": "10.16.0",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.15.1",
     "@emotion/core": "10.0.27",
