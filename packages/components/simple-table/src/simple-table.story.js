@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
+import sortBy from 'lodash/sortBy';
 import { Value } from 'react-value';
 import { useFormik } from 'formik';
 import SimpleTable from './simple-table';
@@ -169,7 +170,8 @@ const initialColumnsState = [
   {
     key: 'age',
     label: 'Age',
-    align: 'right',
+    align: 'center',
+    isSortable: true,
   },
   {
     key: 'about',
@@ -186,6 +188,7 @@ const ColumnConfigForm = props => {
       width: props.column.width,
       align: props.column.align,
       onClick: !!props.column.onClick,
+      isSortable: !!props.column.isSortable,
       isTruncated: !!props.column.isTruncated,
       shouldIgnoreRowClick: !!props.column.shouldIgnoreRowClick,
     },
@@ -197,6 +200,7 @@ const ColumnConfigForm = props => {
         onClick: values.onClick
           ? (row, column) => alert(`Cell click: ${row[column.key]}`)
           : undefined,
+        isSortable: values.isSortable,
         isTruncated: values.isTruncated,
         shouldIgnoreRowClick: values.shouldIgnoreRowClick,
       };
@@ -268,6 +272,17 @@ const ColumnConfigForm = props => {
             />
           </label>
         </div>
+        <div>
+          <label>
+            isSortable
+            <input
+              name="isSortable"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.isSortable}
+            />
+          </label>
+        </div>
         <button type="submit" disabled={!formik.dirty}>
           {'Apply Changes'}
         </button>
@@ -283,9 +298,18 @@ ColumnConfigForm.propTypes = {
     width: PropTypes.string,
     align: PropTypes.string,
     onClick: PropTypes.func,
+    isSortable: PropTypes.bool,
     isTruncated: PropTypes.bool,
     shouldIgnoreRowClick: PropTypes.bool,
   }),
+};
+
+const sortRows = (rows, columnKey, sortDirection) => {
+  const sortedItems = sortBy(rows, columnKey);
+  if (sortDirection === 'desc') {
+    return sortedItems.reverse();
+  }
+  return sortedItems;
 };
 
 storiesOf('Components|Table (NEW)', module)
@@ -295,6 +319,8 @@ storiesOf('Components|Table (NEW)', module)
     const [tableData, setTableData] = React.useState({
       rows: items,
       columns: initialColumnsState,
+      sortedBy: undefined,
+      sortDirection: undefined,
     });
 
     // column update handler for the ColumnConfigForm
@@ -310,6 +336,24 @@ storiesOf('Components|Table (NEW)', module)
       newColumns[1].label = `${type} Input`;
       newColumns[1].renderItem = exampleInputCellRenderer(type);
       setTableData(prevState => ({ ...prevState, columns: newColumns }));
+    };
+
+    const onSortChange = (columnKey, currentSortDirection) => {
+      let newSortDirection;
+
+      // if the clicked column is not already sorted, the initial direction is 'asc'
+      if (tableData.sortedBy !== columnKey) {
+        newSortDirection = 'asc';
+      } else {
+        newSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+      }
+
+      setTableData(prevState => ({
+        ...prevState,
+        rows: sortRows(tableData.rows, columnKey, newSortDirection),
+        sortedBy: columnKey,
+        sortDirection: newSortDirection,
+      }));
     };
 
     const onRowClick = boolean('onRowClick', false);
@@ -377,6 +421,9 @@ storiesOf('Components|Table (NEW)', module)
           })}
           cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
           isCondensed={boolean('isCondensed', false)}
+          sortedBy={tableData.sortedBy}
+          onSortChange={onSortChange}
+          sortDirection={tableData.sortDirection}
           // disabling this while its broken
           // isHeaderSticky={boolean('isHeaderSticky', true)}
         />

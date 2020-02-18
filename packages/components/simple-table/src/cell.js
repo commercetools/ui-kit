@@ -11,10 +11,10 @@ import { getCellPadding, BaseCell, BaseHeaderCell } from './cell.styles';
 // Header Cell Types
 
 const SortableHeaderCell = props => {
-  const isActive = props.sortBy === props.columnKey;
-  // Always reset the sortDirection when clicking a different column
-  const currentSortDirection = isActive ? props.sortDirection : 'asc';
-  const Icon = currentSortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
+  const isActive = props.sortedBy === props.columnKey;
+
+  const Icon =
+    isActive && props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
 
   const IconComponent = styled(Icon)`
     visibility: ${isActive ? 'visible' : 'hidden'};
@@ -38,8 +38,6 @@ const SortableHeaderCell = props => {
 
       ${IconComponent} {
         visibility: visible;
-        transform: rotate(180deg);
-
         * {
           fill: ${vars.colorNeutral};
         }
@@ -54,7 +52,7 @@ const SortableHeaderCell = props => {
       // Remove padding here to make whole Cell clickable
       noPadding
     >
-      <ButtonContainer label={currentSortDirection}>
+      <ButtonContainer label={props.sortDirection || 'desc'}>
         {props.children}
         <IconComponent size="medium" color="surface" />
       </ButtonContainer>
@@ -63,7 +61,7 @@ const SortableHeaderCell = props => {
 };
 SortableHeaderCell.displayName = 'SortableHeaderCell';
 SortableHeaderCell.propTypes = {
-  sortBy: PropTypes.string.isRequired,
+  sortedBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
   isCondensed: PropTypes.bool,

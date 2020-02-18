@@ -17,7 +17,7 @@ const SimpleTable = props => (
             role="column-header"
             isCondensed={props.isCondensed}
             /* Sorting Props */
-            sortBy={props.sortBy}
+            sortedBy={props.sortedBy}
             columnKey={column.key}
             isSortable={column.isSortable}
             onSortChange={props.onSortChange}
@@ -87,7 +87,7 @@ SimpleTable.propTypes = {
   cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   isHeaderSticky: PropTypes.bool,
   /* Sorting props: */
-  sortBy: PropTypes.string,
+  sortedBy: PropTypes.string,
   onSortChange: PropTypes.func,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
