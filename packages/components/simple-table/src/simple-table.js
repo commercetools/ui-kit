@@ -39,7 +39,9 @@ const SimpleTable = props => (
           {props.columns.map(column => (
             <DataCell
               key={`${rowIndex}-{row.id}/${column.key}`}
-              onClick={column.onClick ? () => column.onClick(row) : undefined}
+              onClick={
+                column.onClick ? () => column.onClick(row, column) : undefined
+              }
               alignment={column.align ? column.align : props.cellAlignment}
               isTruncated={column.isTruncated}
               isCondensed={props.isCondensed}
