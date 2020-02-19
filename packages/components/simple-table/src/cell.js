@@ -48,7 +48,10 @@ const SortableHeaderCell = props => {
   return (
     <BaseHeaderCell
       {...omit(props, ['onSortChange'])}
-      onClick={() => props.onSortChange(props.columnKey, props.sortDirection)}
+      onClick={() =>
+        props.onSortChange &&
+        props.onSortChange(props.columnKey, props.sortDirection)
+      }
       // Remove padding here to make whole Cell clickable
       noPadding
     >
