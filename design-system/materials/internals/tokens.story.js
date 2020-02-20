@@ -83,14 +83,16 @@ const filterStatesGroupValues = (states, searchText) =>
   Object.entries(states).filter(
     ([key, state]) =>
       key.toLowerCase().includes(searchText.toLowerCase()) ||
-      state.description.toLowerCase().includes(searchText.toLowerCase())
+      (state.description &&
+        state.description.toLowerCase().includes(searchText.toLowerCase()))
   );
 
 const filterComponentGroupsGroupValues = (componentGroups, searchText) =>
   Object.entries(componentGroups).filter(
     ([key, state]) =>
       key.toLowerCase().includes(searchText.toLowerCase()) ||
-      state.description.toLowerCase().includes(searchText.toLowerCase())
+      (state.description &&
+        state.description.toLowerCase().includes(searchText.toLowerCase()))
   );
 
 const ChoiceGroup = props => {
@@ -222,6 +224,7 @@ StatesGroup.propTypes = {
   searchText: PropTypes.string.isRequired,
   states: PropTypes.shape({
     decisions: PropTypes.objectOf(PropTypes.string),
+    description: PropTypes.string,
   }).isRequired,
 };
 
