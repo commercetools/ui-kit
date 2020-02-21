@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { TableGrid, Header, Body, Row } from './simple-table.styles';
 import { HeaderCell, DataCell } from './cell';
 
 const SimpleTable = props => (
   <TableGrid
+    {...filterDataAttributes(props)}
     columns={props.columns}
     maxHeight={props.maxHeight}
     maxWidth={props.maxWidth}
