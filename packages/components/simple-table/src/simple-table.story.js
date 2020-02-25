@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import sortBy from 'lodash/sortBy';
 import { Value } from 'react-value';
 import { useFormik } from 'formik';
 import SimpleTable from './simple-table';
 import CheckboxInput from '../../inputs/checkbox-input';
 import Readme from '../README.md';
-import { useRowSelection } from '.';
+import { useRowSelection, useSorting } from '.';
 // For testing purposes:
 import TextInput from '../../inputs/text-input';
 import SelectInput from '../../inputs/select-input';
@@ -304,24 +303,17 @@ ColumnConfigForm.propTypes = {
   }),
 };
 
-const sortRows = (rows, columnKey, sortDirection) => {
-  const sortedItems = sortBy(rows, columnKey);
-  if (sortDirection === 'desc') {
-    return sortedItems.reverse();
-  }
-  return sortedItems;
-};
-
 storiesOf('Components|Table (NEW)', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('SimpleTable', () => {
     const [tableData, setTableData] = React.useState({
-      rows: items,
       columns: initialColumnsState,
-      sortedBy: undefined,
-      sortDirection: undefined,
     });
+
+    const { items: rows, sortedBy, sortDirection, onSortChange } = useSorting(
+      items
+    );
 
     // column update handler for the ColumnConfigForm
     const handleUpdateColumn = (column, colIndex) => {
@@ -338,24 +330,6 @@ storiesOf('Components|Table (NEW)', module)
       setTableData(prevState => ({ ...prevState, columns: newColumns }));
     };
 
-    const onSortChange = (columnKey, currentSortDirection) => {
-      let newSortDirection;
-
-      // if the clicked column is not already sorted, the initial direction is 'asc'
-      if (tableData.sortedBy !== columnKey) {
-        newSortDirection = 'asc';
-      } else {
-        newSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-      }
-
-      setTableData(prevState => ({
-        ...prevState,
-        rows: sortRows(tableData.rows, columnKey, newSortDirection),
-        sortedBy: columnKey,
-        sortDirection: newSortDirection,
-      }));
-    };
-
     const onRowClick = boolean('onRowClick', false);
     const withRowSelection = boolean('withRowSelection', true);
 
@@ -366,7 +340,7 @@ storiesOf('Components|Table (NEW)', module)
       deselectAllRows,
       getIsRowSelected,
       getNumberOfSelectedRows,
-    } = useRowSelection('checkbox', tableData.rows);
+    } = useRowSelection('checkbox', rows);
 
     const countSelectedRows = getNumberOfSelectedRows();
     const isSelectColumnHeaderIndeterminate =
@@ -400,7 +374,7 @@ storiesOf('Components|Table (NEW)', module)
     return (
       <React.Fragment>
         <SimpleTable
-          rows={withRowSelection ? rowsWithSelection : tableData.rows}
+          rows={withRowSelection ? rowsWithSelection : rows}
           columns={withRowSelection ? columnsWithSelect : tableData.columns}
           onRowClick={
             onRowClick
@@ -421,9 +395,9 @@ storiesOf('Components|Table (NEW)', module)
           })}
           cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
           isCondensed={boolean('isCondensed', false)}
-          sortedBy={tableData.sortedBy}
+          sortedBy={sortedBy}
           onSortChange={onSortChange}
-          sortDirection={tableData.sortDirection}
+          sortDirection={sortDirection}
           // disabling this while its broken
           // isHeaderSticky={boolean('isHeaderSticky', true)}
         />
