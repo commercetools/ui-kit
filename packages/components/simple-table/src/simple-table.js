@@ -76,6 +76,7 @@ SimpleTable.propTypes = {
       /* custom item renderer, specific for items of this column */
       renderItem: PropTypes.func,
       isTruncated: PropTypes.bool,
+      isSortable: PropTypes.bool,
       shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,

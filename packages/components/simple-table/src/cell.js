@@ -8,8 +8,6 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 import omit from 'lodash/omit';
 import { getCellPadding, BaseCell, BaseHeaderCell } from './cell.styles';
 
-// Header Cell Types
-
 const SortableHeaderCell = props => {
   const isActive = props.sortedBy === props.columnKey;
 
@@ -48,10 +46,7 @@ const SortableHeaderCell = props => {
   return (
     <BaseHeaderCell
       {...omit(props, ['onSortChange'])}
-      onClick={() =>
-        props.onSortChange &&
-        props.onSortChange(props.columnKey, props.sortDirection)
-      }
+      onClick={() => props.onSortChange(props.columnKey)}
       // Remove padding here to make whole Cell clickable
       noPadding
     >
@@ -82,8 +77,6 @@ HeaderCell.displayName = 'HeaderCell';
 HeaderCell.propTypes = {
   isSortable: PropTypes.bool,
 };
-
-// Row Cell Types
 
 const DataCell = props => {
   const onClick = event => {
