@@ -18,7 +18,8 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0"
+    "react": ">= 16.8.0",
+    "lodash": "4.17.15"
   },
   "license": "MIT"
 }
