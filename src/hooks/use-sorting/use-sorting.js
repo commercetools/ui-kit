@@ -1,19 +1,12 @@
 import React from 'react';
 import sortBy from 'lodash/sortBy';
 
-const defaultSortMethod = (items, column) => sortBy(items, column);
-
-const sortItems = (
-  items,
-  column,
-  direction,
-  sortMethod = defaultSortMethod
-) => {
-  if (!column) {
+// we're using lodash sortBy as our default sorting fn
+const sortItems = (items, field, direction, sortingFunction = sortBy) => {
+  if (!field) {
     return items;
   }
-
-  const sortedItems = sortMethod(items, column);
+  const sortedItems = sortingFunction(items, field);
 
   if (direction === 'desc') {
     return sortedItems.reverse();
@@ -22,20 +15,20 @@ const sortItems = (
   return sortedItems;
 };
 
-const useSorting = (items, column, sortDirection, sortMethod) => {
+const useSorting = (items, field, sortDirection, sortingFunction) => {
   const initialState = {
-    items: sortItems(items, column, sortDirection, sortMethod),
-    sortedBy: column,
+    items: sortItems(items, field, sortDirection, sortingFunction),
+    sortedBy: field,
     sortDirection,
   };
 
   const [sortState, setSorting] = React.useState(initialState);
 
-  const onSortChange = columnKey => {
+  function onSortChange(fieldKey) {
     let nextSortDirection;
 
-    // if the intented column is not already sorted, the initial direction is 'asc'
-    if (sortState.sortedBy !== columnKey) {
+    // if the intented field is not already sorted, the initial direction is 'asc'
+    if (sortState.sortedBy !== fieldKey) {
       nextSortDirection = 'asc';
     } else {
       nextSortDirection = sortState.sortDirection === 'asc' ? 'desc' : 'asc';
@@ -43,11 +36,11 @@ const useSorting = (items, column, sortDirection, sortMethod) => {
 
     setSorting(prevState => ({
       ...prevState,
-      items: sortItems(prevState.items, columnKey, nextSortDirection),
-      sortedBy: columnKey,
+      items: sortItems(prevState.items, fieldKey, nextSortDirection),
+      sortedBy: fieldKey,
       sortDirection: nextSortDirection,
     }));
-  };
+  }
 
   return {
     items: sortState.items,
