@@ -22,7 +22,7 @@ const getInitialState = (items, field, sortDirection, sortingFunction) => ({
 });
 
 const useSortingState = (items, field, sortDirection, sortingFunction) => {
-  const [sortState, setSorting] = React.useState(
+  const [sortState, setSorting] = React.useState(() =>
     getInitialState(items, field, sortDirection, sortingFunction)
   );
 
