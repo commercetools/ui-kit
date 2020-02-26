@@ -26,20 +26,22 @@ const useSorting = (items, field, sortDirection, sortingFunction) => {
 
   function onSortChange(fieldKey) {
     let nextSortDirection;
+    let sortedItems;
 
-    // if the intented field is not already sorted, the initial direction is 'asc'
     if (sortState.sortedBy !== fieldKey) {
+      // if the intented field is not already sorted, the initial direction is 'asc'
       nextSortDirection = 'asc';
+      sortedItems = sortItems(sortState.items, fieldKey, nextSortDirection);
     } else {
       nextSortDirection = sortState.sortDirection === 'asc' ? 'desc' : 'asc';
+      sortedItems = sortState.items.reverse();
     }
 
-    setSorting(prevState => ({
-      ...prevState,
-      items: sortItems(prevState.items, fieldKey, nextSortDirection),
+    setSorting({
+      items: sortedItems,
       sortedBy: fieldKey,
       sortDirection: nextSortDirection,
-    }));
+    });
   }
 
   return {

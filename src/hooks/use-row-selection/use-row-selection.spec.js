@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { render } from '../../test-utils';
 import useRowSelection from './use-row-selection';
@@ -18,7 +19,6 @@ const TestComponent = props => {
     deselectAllRows,
     getIsRowSelected,
     getNumberOfSelectedRows,
-    // eslint-disable-next-line react/prop-types
   } = useRowSelection(props.keyName, props.items);
 
   return (

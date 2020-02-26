@@ -23,23 +23,25 @@ const baseProps = { rows: testRows, columns: testColumns };
 
 describe('SimpleTable', () => {
   it('should forward data-attributes', () => {
-    const { container } = render(<SimpleTable {...baseProps} data-foo="bar" />);
-    expect(container.querySelector("[data-foo='bar']")).toBeInTheDocument();
+    const rendered = render(<SimpleTable {...baseProps} data-foo="bar" />);
+    expect(
+      rendered.container.querySelector("[data-foo='bar']")
+    ).toBeInTheDocument();
   });
 
   it('should render the column labels', () => {
-    const { queryByText } = render(<SimpleTable {...baseProps} />);
+    const rendered = render(<SimpleTable {...baseProps} />);
 
-    expect(queryByText('Title')).toBeInTheDocument();
-    expect(queryByText('Year')).toBeInTheDocument();
+    expect(rendered.queryByText('Title')).toBeInTheDocument();
+    expect(rendered.queryByText('Year')).toBeInTheDocument();
   });
 
   it('should render item fields which have corresponding column keys', () => {
-    const { queryByText } = render(<SimpleTable {...baseProps} />);
+    const rendered = render(<SimpleTable {...baseProps} />);
 
-    expect(queryByText('Woman At War')).toBeInTheDocument();
-    expect(queryByText('2018')).toBeInTheDocument();
-    expect(queryByText('2-woman')).not.toBeInTheDocument();
+    expect(rendered.queryByText('Woman At War')).toBeInTheDocument();
+    expect(rendered.queryByText('2018')).toBeInTheDocument();
+    expect(rendered.queryByText('2-woman')).not.toBeInTheDocument();
   });
 
   describe('when using a custom itemRenderer', () => {
@@ -48,14 +50,14 @@ describe('SimpleTable', () => {
         <div data-testid="custom-wrapper">{item[column.key]}</div>
       );
 
-      const { queryAllByTestId } = render(
+      const rendered = render(
         <SimpleTable {...baseProps} itemRenderer={customRenderer} />
       );
       const numberOfRenderedItemCells =
         baseProps.rows.length * baseProps.columns.length;
 
       // assert that we find our custom wrapper for every item cell
-      expect(queryAllByTestId('custom-wrapper')).toHaveLength(
+      expect(rendered.queryAllByTestId('custom-wrapper')).toHaveLength(
         numberOfRenderedItemCells
       );
     });
@@ -67,17 +69,17 @@ describe('when setting an action for onRowClick', () => {
     // we will be expecting this mock function to be called with (row: object, rowIndex: number)
     const rowClickEvent = jest.fn();
 
-    const { getByText } = render(
+    const rendered = render(
       <SimpleTable {...baseProps} onRowClick={rowClickEvent} />
     );
 
-    getByText('Parasite').click();
+    rendered.getByText('Parasite').click();
     expect(rowClickEvent).toHaveBeenLastCalledWith(
       { id: '1-parasite', title: 'Parasite', year: 2019 },
       0 // first row / index 0
     );
 
-    getByText('Woman At War').click();
+    rendered.getByText('Woman At War').click();
     expect(rowClickEvent).toHaveBeenLastCalledWith(
       { id: '2-woman', title: 'Woman At War', year: 2018 },
       1 // second row / index 1

@@ -13,9 +13,9 @@ const SimpleTable = props => (
   >
     <Header isSticky={props.isHeaderSticky}>
       <Row>
-        {props.columns.map((column, columnIndex) => (
+        {props.columns.map(column => (
           <HeaderCell
-            key={`${columnIndex}-${column.key}`}
+            key={column.key}
             role="column-header"
             isCondensed={props.isCondensed}
             /* Sorting Props */
@@ -40,7 +40,7 @@ const SimpleTable = props => (
         >
           {props.columns.map(column => (
             <DataCell
-              key={`${rowIndex}-{row.id}/${column.key}`}
+              key={`${row.id}-${column.key}`}
               onClick={
                 column.onClick ? () => column.onClick(row, column) : undefined
               }
