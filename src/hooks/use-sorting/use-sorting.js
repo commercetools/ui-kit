@@ -15,14 +15,29 @@ const sortItems = (items, field, direction, sortingFunction = sortBy) => {
   return sortedItems;
 };
 
-const useSorting = (items, field, sortDirection, sortingFunction) => {
-  const initialState = {
-    items: sortItems(items, field, sortDirection, sortingFunction),
-    sortedBy: field,
-    sortDirection,
-  };
+const getInitialState = (items, field, sortDirection, sortingFunction) => ({
+  items: sortItems(items, field, sortDirection, sortingFunction),
+  sortedBy: field,
+  sortDirection,
+});
 
-  const [sortState, setSorting] = React.useState(initialState);
+const useSortingState = (items, field, sortDirection, sortingFunction) => {
+  const [sortState, setSorting] = React.useState(
+    getInitialState(items, field, sortDirection, sortingFunction)
+  );
+
+  React.useDebugValue(sortState);
+
+  return [sortState, setSorting];
+};
+
+const useSorting = (items, field, sortDirection, sortingFunction) => {
+  const [sortState, setSorting] = useSortingState(
+    items,
+    field,
+    sortDirection,
+    sortingFunction
+  );
 
   function onSortChange(fieldKey) {
     let nextSortDirection;

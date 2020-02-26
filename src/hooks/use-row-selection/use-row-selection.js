@@ -1,6 +1,16 @@
 import React from 'react';
 
-function reducer(state, action) {
+const getInitialState = (rows, keyName) =>
+  rows.reduce(
+    (items, currentItem) => ({
+      ...items,
+      // if there is an initial value: use it, otherwise default to false
+      [currentItem.id]: currentItem[keyName] || false,
+    }),
+    {}
+  );
+
+function selectionReducer(state, action) {
   switch (action.type) {
     case 'toggle':
       return {
@@ -40,28 +50,30 @@ function reducer(state, action) {
   }
 }
 
-const useRowSelection = (keyName, rows) => {
-  const initialState = rows.reduce(
-    (items, currentItem) => ({
-      ...items,
-      // if there is an initial value: use it, otherwise default to false
-      [currentItem.id]: currentItem[keyName] || false,
-    }),
-    {}
+const useSelectionReducer = (rows, keyName) => {
+  const [selectionState, dispatch] = React.useReducer(
+    selectionReducer,
+    getInitialState(rows, keyName)
   );
 
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  React.useDebugValue(selectionState);
+
+  return [selectionState, dispatch];
+};
+
+const useRowSelection = (keyName, rows) => {
+  const [selectionState, dispatch] = useSelectionReducer(rows, keyName);
 
   const selectableRows = rows.map(item => ({
     ...item,
-    [keyName]: state[item.id],
+    [keyName]: selectionState[item.id],
   }));
   const toggleRow = id => dispatch({ type: 'toggle', payload: id });
   const selectRow = id => dispatch({ type: 'select', payload: id });
   const deselectRow = id => dispatch({ type: 'deselect', payload: id });
   const selectAllRows = () => dispatch({ type: 'selectAll' });
   const deselectAllRows = () => dispatch({ type: 'deselectAll' });
-  const getIsRowSelected = id => state[id];
+  const getIsRowSelected = id => selectionState[id];
   const getNumberOfSelectedRows = () =>
     selectableRows.reduce((count, item) => count + item[keyName], 0);
 
