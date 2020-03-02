@@ -18,7 +18,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@emotion/is-prop-valid": "0.8.6",
+    "@emotion/is-prop-valid": "0.8.7",
     "warning": "4.0.3"
   },
   "license": "MIT"

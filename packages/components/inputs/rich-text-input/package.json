@@ -29,7 +29,7 @@
     "@commercetools-uikit/spacings-stack": "10.15.1",
     "@commercetools-uikit/tooltip": "10.16.0",
     "@commercetools-uikit/utils": "10.14.1",
-    "@emotion/core": "10.0.27",
+    "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "downshift": "5.0.3",
     "immutable": "4.0.0-rc.12",
