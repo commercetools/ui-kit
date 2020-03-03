@@ -51,7 +51,7 @@ const BaseHeaderCell = styled.th`
   font-weight: normal;
 
   /* adds borders between header cells */
-  :not(:last-child) {
+  :not(:last-of-type) {
     border-right: 1px solid ${vars.colorNeutral90};
   }
 `;
@@ -62,10 +62,10 @@ const BaseCell = styled.td`
 
   border-bottom: 1px solid ${vars.colorNeutral90};
 
-  :first-child {
+  :first-of-type {
     border-left: 1px solid ${vars.colorNeutral90};
   }
-  :last-child {
+  :last-of-type {
     border-right: 1px solid ${vars.colorNeutral90};
   }
 `;
