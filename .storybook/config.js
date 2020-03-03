@@ -26,6 +26,14 @@ addParameters({
     sortStoriesByKind: false,
     hierarchySeparator: /\//,
     hierarchyRootSeparator: /\|/,
+    storySort: (a, b) => {
+      // Not sure if this is the correct way to do it, but the "Introduction" story
+      // should be loaded first.
+      if (a[1].kind === 'Introduction') return 0;
+      return a[1].kind === b[1].kind
+        ? 0
+        : a[1].id.localeCompare(b[1].id, { numeric: true });
+    },
   },
 });
 
