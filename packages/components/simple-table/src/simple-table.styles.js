@@ -7,8 +7,6 @@ const TableGrid = styled.table`
   grid-template-columns: ${props =>
     props.columns.map(column => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
-  border-top: 1px solid ${vars.colorNeutral90};
-  border-left: 1px solid ${vars.colorNeutral90};
 
   ${props => (props.maxHeight ? `max-height: ${props.maxHeight}px;` : '')}
   ${props =>

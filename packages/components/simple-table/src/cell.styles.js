@@ -38,9 +38,6 @@ const getCellStyles = props => css`
   align-items: center;
   overflow: ${props.isTruncated ? 'hidden' : 'unset'};
 
-  border-right: 1px solid ${vars.colorNeutral90};
-  border-bottom: 1px solid ${vars.colorNeutral90};
-
   padding: ${getCellPadding(props.isCondensed, props.noPadding)};
 
   cursor: ${getCellCursorStyle(props.isClickable, props.shouldIgnoreRowClick)};
@@ -52,11 +49,25 @@ const BaseHeaderCell = styled.th`
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
   font-weight: normal;
+
+  /* adds borders between header cells */
+  :not(:last-child) {
+    border-right: 1px solid ${vars.colorNeutral90};
+  }
 `;
 
 const BaseCell = styled.td`
   ${getCellStyles}
   ${getCellAlignment}
+
+  border-bottom: 1px solid ${vars.colorNeutral90};
+
+  :first-child {
+    border-left: 1px solid ${vars.colorNeutral90};
+  }
+  :last-child {
+    border-right: 1px solid ${vars.colorNeutral90};
+  }
 `;
 
 export {
