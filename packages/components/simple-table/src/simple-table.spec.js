@@ -62,27 +62,73 @@ describe('SimpleTable', () => {
       );
     });
   });
-});
 
-describe('when setting an action for onRowClick', () => {
-  it('should call the action on clicking a row', () => {
+  describe('when setting an action for onRowClick', () => {
     // we will be expecting this mock function to be called with (row: object, rowIndex: number)
     const rowClickEvent = jest.fn();
+    it('should call the action on clicking a row', () => {
+      const rendered = render(
+        <SimpleTable {...baseProps} onRowClick={rowClickEvent} />
+      );
 
-    const rendered = render(
-      <SimpleTable {...baseProps} onRowClick={rowClickEvent} />
-    );
+      rendered.getByText('Parasite').click();
+      expect(rowClickEvent).toHaveBeenLastCalledWith(
+        { id: '1-parasite', title: 'Parasite', year: 2019 },
+        0 // first row / index 0
+      );
 
-    rendered.getByText('Parasite').click();
-    expect(rowClickEvent).toHaveBeenLastCalledWith(
-      { id: '1-parasite', title: 'Parasite', year: 2019 },
-      0 // first row / index 0
-    );
+      rendered.getByText('Woman At War').click();
+      expect(rowClickEvent).toHaveBeenLastCalledWith(
+        { id: '2-woman', title: 'Woman At War', year: 2018 },
+        1 // second row / index 1
+      );
+    });
 
-    rendered.getByText('Woman At War').click();
-    expect(rowClickEvent).toHaveBeenLastCalledWith(
-      { id: '2-woman', title: 'Woman At War', year: 2018 },
-      1 // second row / index 1
-    );
+    it('should ignore row click for columns with such option enabled', () => {
+      const testColumnsWithIgnoreRowClick = [
+        ...testColumns,
+        { key: 'id', label: 'ID', shouldIgnoreRowClick: true },
+      ];
+      const rendered = render(
+        <SimpleTable
+          rows={testRows}
+          columns={testColumnsWithIgnoreRowClick}
+          onRowClick={rowClickEvent}
+        />
+      );
+
+      // Click the same row twice
+
+      // Click a column that ignores row clicks
+      rendered.getByText('1-parasite').click();
+      expect(rowClickEvent).not.toHaveBeenCalled();
+
+      // Click a column that doesn't ignore row clicks
+      rendered.getByText('Parasite').click();
+
+      expect(rowClickEvent).toHaveBeenCalledTimes(1);
+    });
+
+    describe('when the cells of a column have an onClick handler', () => {
+      const onCellClickEvent = jest.fn();
+      const testColumnsWithOnClick = [
+        ...testColumns,
+        { key: 'id', label: 'ID', onClick: onCellClickEvent },
+      ];
+      it('should call both the cell onClick and the onRowClick', () => {
+        const rendered = render(
+          <SimpleTable
+            rows={testRows}
+            columns={testColumnsWithOnClick}
+            onRowClick={rowClickEvent}
+          />
+        );
+
+        rendered.getByText('3-gems').click();
+        expect(onCellClickEvent).toHaveBeenCalledTimes(1);
+        expect(rowClickEvent).toHaveBeenCalledTimes(1);
+      });
+      describe('when the cells of a column have ', () => {});
+    });
   });
 });
