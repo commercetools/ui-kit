@@ -1,0 +1,28 @@
+{
+  "name": "@commercetools-uikit/accessible-hidden",
+  "version": "10.16.0",
+  "description": "",
+  "main": "dist/accessible-hidden.cjs.js",
+  "module": "dist/accessible-hidden.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.27",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}
