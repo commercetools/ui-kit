@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import omit from 'lodash/omit';
+import requiredIf from 'react-required-if';
+import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import {
   BaseCell,
   BaseHeaderCell,
@@ -43,7 +44,7 @@ HeaderCell.propTypes = {
   columnKey: PropTypes.string.isRequired,
   isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,
-  onSortChange: PropTypes.func.isRequired,
+  onSortChange: requiredIf(PropTypes.func, props => props.isSortable),
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
 HeaderCell.defaultProps = {
@@ -51,22 +52,30 @@ HeaderCell.defaultProps = {
 };
 
 const DataCell = props => {
-  const onClick = event => {
-    if (props.shouldIgnoreRowClick) event.stopPropagation();
-    return props.onClick && props.onClick(event);
-  };
+  const { shouldIgnoreRowClick, onClick } = props;
+  const onClickHandler = React.useCallback(
+    event => {
+      if (shouldIgnoreRowClick) event.stopPropagation();
+      if (onClick) return onClick(event);
+      return null;
+    },
+    [onClick, shouldIgnoreRowClick]
+  );
 
-  if (props.onClick) {
+  if (onClick) {
     return (
       <BaseCell>
-        <ButtonCellInner {...props} onClick={onClick} />
+        <ButtonCellInner {...props} onClick={onClickHandler} />
       </BaseCell>
     );
   }
 
   return (
     <BaseCell>
-      <CellInner {...props} onClick={onClick} />
+      <CellInner
+        {...props}
+        onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
+      />
     </BaseCell>
   );
 };
