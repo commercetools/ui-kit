@@ -18,7 +18,7 @@ const items = [
   {
     id: '5e188c29791747d9c54250e2',
     name: 'Morgan Bean',
-    testInput: 'CYCLONICA',
+    customRenderer: 'CYCLONICA',
     phone: '+1 (895) 529-3300',
     age: 23,
     about:
@@ -27,7 +27,7 @@ const items = [
   {
     id: '5e188c295ae0bb19afbb115f',
     name: 'Franklin Cochran',
-    testInput: 'TINGLES',
+    customRenderer: 'TINGLES',
     phone: '+1 (835) 571-3268',
     age: 36,
     about:
@@ -36,7 +36,7 @@ const items = [
   {
     id: '5e188c298f0ea901553c517f',
     name: 'Salazar Craig',
-    testInput: 'ECRAZE',
+    customRenderer: 'ECRAZE',
     phone: '+1 (944) 445-2594',
     age: 21,
     about:
@@ -45,7 +45,7 @@ const items = [
   {
     id: '5e188c29b09bb748df833ed0',
     name: 'Pamela Noble',
-    testInput: 'FILODYNE',
+    customRenderer: 'FILODYNE',
     phone: '+1 (875) 421-3328',
     age: 34,
     about:
@@ -54,7 +54,7 @@ const items = [
   {
     id: '5e188c29bc14e3b97ab2ad7d',
     name: 'Terra Morrow',
-    testInput: 'DAISU',
+    customRenderer: 'DAISU',
     phone: '+1 (807) 436-2026',
     age: 30,
     about:
@@ -63,7 +63,7 @@ const items = [
   {
     id: '5e188c296c9b7cf486a0479c',
     name: 'Cline Hansen',
-    testInput: 'ULTRIMAX',
+    customRenderer: 'ULTRIMAX',
     phone: '+1 (934) 402-3675',
     age: 21,
     about:
@@ -72,7 +72,7 @@ const items = [
   {
     id: '5e188c29b45c669d8e60303f',
     name: 'Jefferson Rosario',
-    testInput: 'COMTOURS',
+    customRenderer: 'COMTOURS',
     phone: '+1 (874) 437-2581',
     age: 32,
     about:
@@ -81,7 +81,7 @@ const items = [
   {
     id: '5e188c29ca865647af147b4a',
     name: 'Tania Waller',
-    testInput: 'DOGSPA',
+    customRenderer: 'DOGSPA',
     phone: '+1 (964) 585-3040',
     age: 35,
     about:
@@ -90,7 +90,7 @@ const items = [
   {
     id: '5e188c2910b83f907e9c66ab',
     name: 'Butler Shepard',
-    testInput: 'HOUSEDOWN',
+    customRenderer: 'HOUSEDOWN',
     phone: '+1 (888) 434-2153',
     age: 21,
     about:
@@ -99,7 +99,7 @@ const items = [
   {
     id: '5e188c29a9ece9123d6a87a1',
     name: 'Diana Wise',
-    testInput: 'SPEEDBOLT',
+    customRenderer: 'SPEEDBOLT',
     phone: '+1 (992) 535-2912',
     age: 27,
     about:
@@ -107,11 +107,14 @@ const items = [
   },
 ];
 
-const exampleInputCellRenderer = type => {
+const customCellRenderer = type => {
   const options = {
+    Link: row => (
+      <a href="https://uikit.commercetools.com/">{row.customRenderer}</a>
+    ),
     Text: row => (
       <Value
-        defaultValue={row.testInput}
+        defaultValue={row.customRenderer}
         render={(value, onChange) => (
           <TextInput
             type="text"
@@ -158,13 +161,15 @@ const initialColumnsState = [
     isSortable: true,
   },
   {
-    key: 'testInput',
-    label: 'Text Input',
-    renderItem: exampleInputCellRenderer('Text'),
+    key: 'customRenderer',
+    label: 'Custom Column',
+    renderItem: customCellRenderer('Link'),
   },
   {
     key: 'phone',
     label: 'Phone',
+    onClick: row => alert(`Cell click: ${row.phone}`),
+    shouldIgnoreRowClick: true,
   },
   {
     key: 'age',
@@ -176,8 +181,6 @@ const initialColumnsState = [
     key: 'about',
     label: 'About',
     isTruncated: true,
-    onClick: row => alert(`Cell click: ${row.about}`),
-    shouldIgnoreRowClick: true,
   },
 ];
 
@@ -323,10 +326,9 @@ storiesOf('Components|Table (NEW)', module)
     };
 
     // column update handler for the test input selector
-    const handleUpdateTestInput = type => {
+    const handleUpdateCustomRenderer = type => {
       const newColumns = [...tableData.columns];
-      newColumns[1].label = `${type} Input`;
-      newColumns[1].renderItem = exampleInputCellRenderer(type);
+      newColumns[1].renderItem = customCellRenderer(type);
       setTableData(prevState => ({ ...prevState, columns: newColumns }));
     };
 
@@ -358,7 +360,6 @@ storiesOf('Components|Table (NEW)', module)
             onChange={handleSelectColumnHeaderChange}
           />
         ),
-        onClick: row => toggleRow(row.id),
         shouldIgnoreRowClick: true,
         align: 'center',
         renderItem: row => (
@@ -430,16 +431,17 @@ storiesOf('Components|Table (NEW)', module)
             <label>
               {'Input Type: '}
               <Value
-                defaultValue={'Text'}
+                defaultValue={'Link'}
                 render={(value, onChange) => (
                   <select
                     name="input selector"
                     onChange={event => {
-                      handleUpdateTestInput(event.target.value);
+                      handleUpdateCustomRenderer(event.target.value);
                       onChange(event.target.value);
                     }}
                     value={value}
                   >
+                    <option value="Link">Link</option>
                     <option value="Text">Text</option>
                     <option value="Number">Number</option>
                     <option value="Select">Select</option>

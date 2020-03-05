@@ -128,7 +128,6 @@ describe('SimpleTable', () => {
         expect(onCellClickEvent).toHaveBeenCalledTimes(1);
         expect(rowClickEvent).toHaveBeenCalledTimes(1);
       });
-      describe('when the cells of a column have ', () => {});
     });
   });
 });
