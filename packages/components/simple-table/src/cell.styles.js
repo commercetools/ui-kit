@@ -15,18 +15,15 @@ const getPaddingStyle = props => {
 const getAlignmentStyle = props => {
   if (props.alignment === 'center') {
     return css`
-      justify-content: center;
       text-align: center;
     `;
   }
   if (props.alignment === 'right') {
     return css`
-      justify-content: flex-end;
       text-align: right;
     `;
   }
   return css`
-    justify-content: flex-start;
     text-align: left;
   `;
 };
@@ -62,17 +59,11 @@ const getButtonStyle = () => css`
 `;
 
 const getBaseCellStyles = css`
-  display: flex;
-  align-items: stretch;
   overflow: hidden;
 `;
 
 const getCellInnerStyles = props => {
   return [
-    css`
-      flex: 1;
-      display: block;
-    `,
     getPaddingStyle(props),
     getAlignmentStyle(props),
     getTruncatedStyle(props),
@@ -84,6 +75,7 @@ const getCellInnerStyles = props => {
 };
 
 const getSortableHeaderStyles = props => css`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -111,6 +103,10 @@ const BaseHeaderCell = styled.th`
   ${getBaseCellStyles}
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   /* remove user-agent styles */
   padding: 0;

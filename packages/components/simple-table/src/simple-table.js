@@ -8,15 +8,14 @@ const SimpleTable = props => (
   <TableGrid
     {...filterDataAttributes(props)}
     columns={props.columns}
-    maxHeight={props.maxHeight}
     maxWidth={props.maxWidth}
+    maxHeight={props.maxHeight}
   >
-    <Header isSticky={props.isHeaderSticky}>
+    <Header>
       <Row>
         {props.columns.map(column => (
           <HeaderCell
             key={column.key}
-            role="column-header"
             isCondensed={props.isCondensed}
             /* Sorting Props */
             sortedBy={props.sortedBy}

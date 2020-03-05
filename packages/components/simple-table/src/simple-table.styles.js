@@ -8,17 +8,18 @@ const TableGrid = styled.table`
     props.columns.map(column => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
 
-  ${props => (props.maxHeight ? `max-height: ${props.maxHeight}px;` : '')}
   ${props =>
-    props.maxWidth ? `max-width: ${props.maxWidth}px;` : ''}
-
-  overflow: auto;
+    props.maxHeight
+      ? `
+    max-height: ${props.maxHeight}px;
+    overflow: auto;
+  `
+      : ''}
+  ${props => (props.maxWidth ? `max-width: ${props.maxWidth}px;` : '')}
 `;
 
 const Header = styled.thead`
   display: contents;
-  position: ${props => (props.isSticky ? 'sticky' : 'static')};
-  top: 0;
 `;
 
 const Body = styled.tbody`
