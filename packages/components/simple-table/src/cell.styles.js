@@ -2,19 +2,17 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getCellCursorStyle = (isCellClickable, shouldIgnoreRowClick) => {
-  if (isCellClickable) return 'pointer';
-  if (shouldIgnoreRowClick) return 'auto';
-  return 'unset';
+const getPaddingStyle = props => {
+  if (props.isCondensed)
+    return css`
+      padding: ${vars.spacingXs} ${vars.spacingXs};
+    `;
+  return css`
+    padding: ${vars.spacingS} ${vars.spacingM};
+  `;
 };
 
-const getCellPadding = (isCondensed, noPadding) => {
-  if (noPadding) return 0;
-  if (isCondensed) return `${vars.spacingXs} ${vars.spacingXs}`;
-  return `${vars.spacingS} ${vars.spacingM}`;
-};
-
-const getCellAlignment = props => {
+const getAlignmentStyle = props => {
   if (props.alignment === 'center') {
     return css`
       justify-content: center;
@@ -33,21 +31,89 @@ const getCellAlignment = props => {
   `;
 };
 
-const getCellStyles = props => css`
+const getTruncatedStyle = props => {
+  if (props.isTruncated) {
+    return css`
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    `;
+  }
+  return '';
+};
+
+const getButtonStyle = () => css`
+  cursor: pointer;
+
+  /* remove user-agent button styles */
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+  font-size: ${vars.fontSizeDefault};
+  font-family: inherit;
+
+  /* show visual feedback on tab navigation */
+  :focus {
+    outline: 2px solid ${vars.borderColorForInputWhenFocused};
+    outline-offset: -1px;
+  }
+`;
+
+const getBaseCellStyles = css`
   display: flex;
+  align-items: stretch;
+  overflow: hidden;
+`;
+
+const getCellInnerStyles = props => {
+  return [
+    css`
+      flex: 1;
+      display: block;
+    `,
+    getPaddingStyle(props),
+    getAlignmentStyle(props),
+    getTruncatedStyle(props),
+    props.shouldIgnoreRowClick &&
+      css`
+        cursor: auto;
+      `,
+  ];
+};
+
+const getSortableHeaderStyles = props => css`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  overflow: ${props.isTruncated ? 'hidden' : 'unset'};
 
-  padding: ${getCellPadding(props.isCondensed, props.noPadding)};
-
-  cursor: ${getCellCursorStyle(props.isClickable, props.shouldIgnoreRowClick)};
+  /* A sortable header has the arrow svg icon as the last child */
+  svg:last-of-type {
+    visibility: ${props.isActive ? 'visible' : 'hidden'};
+    margin-left: ${vars.spacingS};
+  }
+  :hover,
+  :focus {
+    svg:last-of-type {
+      visibility: visible;
+      * {
+        fill: ${vars.colorNeutral};
+      }
+    }
+  }
+  :focus {
+    outline-offset: -2px;
+  }
 `;
 
 const BaseHeaderCell = styled.th`
-  ${getCellStyles}
-  ${getCellAlignment}
+  ${getBaseCellStyles}
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
+
+  /* remove user-agent styles */
+  padding: 0;
   font-weight: normal;
 
   /* adds borders between header cells */
@@ -57,24 +123,29 @@ const BaseHeaderCell = styled.th`
 `;
 
 const BaseCell = styled.td`
-  ${getCellStyles}
-  ${getCellAlignment}
+  ${getBaseCellStyles}
 
   border-bottom: 1px solid ${vars.colorNeutral90};
+  overflow: hidden;
+`;
 
-  :first-of-type {
-    border-left: 1px solid ${vars.colorNeutral90};
-  }
-  :last-of-type {
-    border-right: 1px solid ${vars.colorNeutral90};
-  }
+const CellInner = styled.div`
+  ${getCellInnerStyles}
+`;
+
+const ButtonCellInner = styled.button`
+  ${getCellInnerStyles}
+  ${getButtonStyle}
+`;
+
+const SortableHeaderInner = styled(ButtonCellInner)`
+  ${getSortableHeaderStyles}
 `;
 
 export {
-  getCellStyles,
-  getCellPadding,
-  getCellAlignment,
-  getCellCursorStyle,
   BaseCell,
   BaseHeaderCell,
+  CellInner,
+  ButtonCellInner,
+  SortableHeaderInner,
 };

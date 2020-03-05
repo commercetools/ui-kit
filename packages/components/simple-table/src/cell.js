@@ -1,81 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
-import AccessibleButton from '@commercetools-uikit/accessible-button';
 import omit from 'lodash/omit';
-import { getCellPadding, BaseCell, BaseHeaderCell } from './cell.styles';
+import {
+  BaseCell,
+  BaseHeaderCell,
+  CellInner,
+  ButtonCellInner,
+  SortableHeaderInner,
+} from './cell.styles';
 
-const SortableHeaderCell = props => {
-  const isActive = props.sortedBy === props.columnKey;
+const HeaderCell = props => {
+  if (props.isSortable) {
+    const isActive = props.sortedBy === props.columnKey;
 
-  const Icon =
-    isActive && props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
-
-  const IconComponent = styled(Icon)`
-    visibility: ${isActive ? 'visible' : 'hidden'};
-  `;
-  const ButtonContainer = styled(AccessibleButton)`
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
-
-    padding: ${getCellPadding(props.isCondensed)};
-
-    & ${IconComponent} {
-      margin-left: ${vars.spacingS};
-    }
-
-    &:hover,
-    &:focus {
-      cursor: pointer;
-
-      ${IconComponent} {
-        visibility: visible;
-        * {
-          fill: ${vars.colorNeutral};
-        }
-      }
-    }
-  `;
-
+    const Icon =
+      isActive && props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
+    return (
+      <BaseHeaderCell>
+        <SortableHeaderInner
+          {...omit(props, 'onSortChange')}
+          onClick={() => props.onSortChange(props.columnKey)}
+          isActive={isActive}
+          label={props.sortDirection}
+        >
+          {props.children}
+          <Icon size="medium" color="surface" />
+        </SortableHeaderInner>
+      </BaseHeaderCell>
+    );
+  }
   return (
-    <BaseHeaderCell
-      {...omit(props, ['onSortChange'])}
-      onClick={() => props.onSortChange(props.columnKey)}
-      // Remove padding here to make whole Cell clickable
-      noPadding
-    >
-      <ButtonContainer label={props.sortDirection || 'desc'}>
-        {props.children}
-        <IconComponent size="medium" color="surface" />
-      </ButtonContainer>
+    <BaseHeaderCell>
+      <CellInner {...omit(props, 'onSortChange')} />
     </BaseHeaderCell>
   );
 };
-SortableHeaderCell.displayName = 'SortableHeaderCell';
-SortableHeaderCell.propTypes = {
+HeaderCell.displayName = 'HeaderCell';
+HeaderCell.propTypes = {
   sortedBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
+  isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,
   onSortChange: PropTypes.func.isRequired,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
-
-const HeaderCell = props => {
-  if (!props.isSortable) {
-    return <BaseHeaderCell {...omit(props, ['onSortChange'])} />;
-  }
-  return <SortableHeaderCell {...props} />;
-};
-HeaderCell.displayName = 'HeaderCell';
-HeaderCell.propTypes = {
-  isSortable: PropTypes.bool,
+HeaderCell.defaultProps = {
+  sortDirection: 'desc',
 };
 
 const DataCell = props => {
@@ -84,21 +56,17 @@ const DataCell = props => {
     return props.onClick && props.onClick(event);
   };
 
+  if (props.onClick) {
+    return (
+      <BaseCell>
+        <ButtonCellInner {...props} onClick={onClick} />
+      </BaseCell>
+    );
+  }
+
   return (
-    <BaseCell {...props} onClick={onClick} isClickable={props.onClick}>
-      {props.isTruncated ? (
-        <div
-          css={css`
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          `}
-        >
-          {props.children}
-        </div>
-      ) : (
-        props.children
-      )}
+    <BaseCell>
+      <CellInner {...props} onClick={onClick} />
     </BaseCell>
   );
 };
