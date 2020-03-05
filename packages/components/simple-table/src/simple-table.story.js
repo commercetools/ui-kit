@@ -399,8 +399,6 @@ storiesOf('Components|Table (NEW)', module)
           sortedBy={sortedBy}
           onSortChange={onSortChange}
           sortDirection={sortDirection}
-          // disabling this while its broken
-          // isHeaderSticky={boolean('isHeaderSticky', true)}
         />
         <br />
         <hr />

@@ -18,10 +18,10 @@ const SimpleTable = props => (
             key={column.key}
             isCondensed={props.isCondensed}
             /* Sorting Props */
+            onClick={props.onSortChange}
             sortedBy={props.sortedBy}
             columnKey={column.key}
             isSortable={column.isSortable}
-            onSortChange={props.onSortChange}
             sortDirection={props.sortDirection}
           >
             {column.label}
@@ -98,7 +98,6 @@ SimpleTable.propTypes = {
 SimpleTable.defaultProps = {
   isCondensed: false,
   cellAlignment: 'left',
-  isHeaderSticky: true,
   itemRenderer: (row, column) => row[column.key],
 };
 SimpleTable.displayName = 'SimpleTable';

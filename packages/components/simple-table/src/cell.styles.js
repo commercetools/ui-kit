@@ -2,13 +2,18 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getPaddingStyle = props => {
+const getPaddingStyle = (props, isHeader) => {
   if (props.isCondensed)
     return css`
-      padding: ${vars.spacingXs} ${vars.spacingXs};
+      padding: ${vars.spacingS};
     `;
+  if (isHeader) {
+    return css`
+      padding: ${vars.spacingS} ${vars.spacingM};
+    `;
+  }
   return css`
-    padding: ${vars.spacingS} ${vars.spacingM};
+    padding: ${vars.spacingM};
   `;
 };
 
@@ -64,7 +69,6 @@ const getBaseCellStyles = css`
 
 const getCellInnerStyles = props => {
   return [
-    getPaddingStyle(props),
     getAlignmentStyle(props),
     getTruncatedStyle(props),
     props.shouldIgnoreRowClick &&
@@ -120,21 +124,30 @@ const BaseHeaderCell = styled.th`
 
 const BaseCell = styled.td`
   ${getBaseCellStyles}
-
   border-bottom: 1px solid ${vars.colorNeutral90};
   overflow: hidden;
 `;
 
+const HeaderCellInner = styled.div`
+  ${props => getPaddingStyle(props, true)}
+  ${getCellInnerStyles}
+`;
+
 const CellInner = styled.div`
+  ${props => getPaddingStyle(props, false)}
   ${getCellInnerStyles}
 `;
 
 const ButtonCellInner = styled.button`
+  ${props => getPaddingStyle(props, false)}
   ${getCellInnerStyles}
   ${getButtonStyle}
 `;
 
-const SortableHeaderInner = styled(ButtonCellInner)`
+const SortableHeaderInner = styled.button`
+  ${props => getPaddingStyle(props, true)}
+  ${getCellInnerStyles}
+  ${getButtonStyle}
   ${getSortableHeaderStyles}
 `;
 
@@ -142,6 +155,7 @@ export {
   BaseCell,
   BaseHeaderCell,
   CellInner,
+  HeaderCellInner,
   ButtonCellInner,
   SortableHeaderInner,
 };

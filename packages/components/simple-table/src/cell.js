@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import {
   BaseCell,
   BaseHeaderCell,
   CellInner,
+  HeaderCellInner,
   ButtonCellInner,
   SortableHeaderInner,
 } from './cell.styles';
@@ -20,10 +20,10 @@ const HeaderCell = props => {
     return (
       <BaseHeaderCell>
         <SortableHeaderInner
-          {...omit(props, 'onSortChange')}
-          onClick={() => props.onSortChange(props.columnKey)}
-          isActive={isActive}
           label={props.sortDirection}
+          onClick={() => props.onClick(props.columnKey)}
+          isActive={isActive}
+          isCondensed={props.isCondensed}
         >
           {props.children}
           <Icon size="medium" color="surface" />
@@ -33,18 +33,20 @@ const HeaderCell = props => {
   }
   return (
     <BaseHeaderCell>
-      <CellInner {...omit(props, 'onSortChange')} />
+      <HeaderCellInner isCondensed={props.isCondensed}>
+        {props.children}
+      </HeaderCellInner>
     </BaseHeaderCell>
   );
 };
 HeaderCell.displayName = 'HeaderCell';
 HeaderCell.propTypes = {
+  onClick: requiredIf(PropTypes.func, props => props.isSortable),
   sortedBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
   isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,
-  onSortChange: requiredIf(PropTypes.func, props => props.isSortable),
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
 HeaderCell.defaultProps = {
