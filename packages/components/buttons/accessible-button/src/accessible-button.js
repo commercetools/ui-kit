@@ -2,27 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { oneLine } from 'common-tags';
-import styled from '@emotion/styled';
+import { filterAriaAttributes } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import styled from '@emotion/styled';
+import getNormalizedButtonStyles from './accessible-button.styles';
 
 const propsToOmit = ['onClick'];
 
 const Button = styled.button`
-  text-decoration: none;
-  border: none;
-  background: none;
-  box-sizing: border-box;
+  ${getNormalizedButtonStyles}
   display: inline-flex;
   outline: 0;
-  padding: 0;
-  margin: 0;
-  white-space: nowrap;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  color: inherit;
-  font: inherit;
   font-size: ${vars.fontSizeDefault};
-  font-family: inherit;
 
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   &:disabled {
     cursor: not-allowed;
   }
@@ -66,6 +59,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
       {...omit(props.buttonAttributes, propsToOmit)}
       {...(isButton ? buttonProps : {})}
+      {...filterAriaAttributes(props)}
     >
       {props.children}
     </Button>
