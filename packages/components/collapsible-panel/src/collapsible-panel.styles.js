@@ -1,8 +1,12 @@
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { getNormalizedButtonStyles } from '@commercetools-uikit/accessible-button';
 
 const getContainerStyles = ({ isCondensed, theme }) => {
   const baseStyles = css`
+    display: flex;
+    flex-direction: column;
     font-family: inherit;
     box-shadow: ${vars.shadow1};
     color: ${vars.colorSolid};
@@ -27,15 +31,31 @@ const getContainerStyles = ({ isCondensed, theme }) => {
   return baseStyles;
 };
 
-const getHeaderContainerStyles = ({ isDisabled, isOpen, isSticky, theme }) => {
+const getHeaderContainerStyles = ({
+  theme,
+  isOpen,
+  isSticky,
+  isDisabled,
+  isCondensed,
+  headerControlsAlignment,
+}) => {
   const baseStyles = css`
     position: relative;
-    cursor: pointer;
     border-top-left-radius: ${vars.borderRadius6};
     border-top-right-radius: ${vars.borderRadius6};
     background-color: ${theme === 'light'
       ? vars.colorSurface
       : vars.colorNeutral95};
+    display: flex;
+    flex: 1;
+    align-items: center;
+    list-style-type: none;
+    justify-content: ${headerControlsAlignment === 'left'
+      ? 'flex-start'
+      : 'space-between'};
+    padding: ${isCondensed
+      ? `${vars.spacingXs} ${vars.spacingS}`
+      : `${vars.spacingS} ${vars.spacingM}`};
   `;
 
   return [
@@ -57,84 +77,38 @@ const getHeaderContainerStyles = ({ isDisabled, isOpen, isSticky, theme }) => {
         border-top-right-radius: ${vars.borderRadius6};
         border-top-left-radius: ${vars.borderRadius6};
       `,
-    !isOpen &&
-      css`
-        border-bottom-left-radius: ${vars.borderRadius6};
-        border-bottom-right-radius: ${vars.borderRadius6};
-      `,
   ];
 };
 
-const getHeaderStyles = ({
-  isDisabled,
-  isCondensed,
-  headerControlsAlignment,
-}) => {
-  const baseStyles = css`
-    display: flex;
-    flex: 1;
-    align-items: center;
-    list-style-type: none;
-    justify-content: ${headerControlsAlignment === 'left'
-      ? 'flex-start'
-      : 'space-between'};
+const Container = styled.div`
+  ${getContainerStyles}
+`;
 
-    /*
-      Two resource that explain why we need the min-width: 0; here
-      By default, min-width is set to 'auto'. That means that this flex-child is not
-      allowed to grow any smaller than the longest text inside. So it will stretch
-      no matter how you set the flex-grow property
-      To fix this you need to set min-width to 0. This tells the flex-child that
-      it is ok to be narrower than the longest word inside
-      https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b
-      https://css-tricks.com/flexbox-truncated-text/
-    */
+const HeaderContainer = styled.button`
+  ${getNormalizedButtonStyles}
+  outline: none;
 
-    min-width: 0;
+  /* to understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616 */
+  min-height: ${vars.bigButtonHeight};
+  box-sizing: content-box; /* makes the padding extend beyound the min-height */
 
-    > * + * {
-      /* would have loved to use Spacings.Inline here but that would require a
-    complete overhaul of this components' structure */
-      margin: 0 0 0 ${vars.spacingM};
-    }
-  `;
-  if (isDisabled) {
-    return [
-      baseStyles,
-      css`
-        cursor: default;
-      `,
-      !isCondensed &&
-        css`
-          /**
-           We set a min-height of 32px to anticipate use-cases where SecondaryButton or PrimaryButton
-           are rendered in the headerControl */
-          min-height: ${vars.spacingXl};
-        `,
-    ];
-  }
-  return [
-    baseStyles,
-    !isCondensed &&
-      css`
-        /**
-         We set a min-height of 32px to anticipate use-cases where SecondaryButton or PrimaryButton
-         are rendered in the headerControl */
-        min-height: ${vars.spacingXl};
-      `,
-  ];
-};
+  ${getHeaderContainerStyles}
+`;
 
-const getContentStyles = () => css`
+const HeaderControlsWrapper = styled.div`
+  margin-left: ${vars.spacingM};
+  display: flex;
+  align-items: center;
+
+  /* reset the cursor because this area the header doesn't trigger its onClick */
+  cursor: auto;
+`;
+
+const SectionContent = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 `;
 
-export {
-  getContainerStyles,
-  getContentStyles,
-  getHeaderContainerStyles,
-  getHeaderStyles,
-};
+export { Container, SectionContent, HeaderContainer, HeaderControlsWrapper };

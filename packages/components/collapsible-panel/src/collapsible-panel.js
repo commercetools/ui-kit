@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash/isNil';
-import { css } from '@emotion/core';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import HeaderIcon from './header-icon';
 import {
-  getContainerStyles,
-  getContentStyles,
-  getHeaderContainerStyles,
-  getHeaderStyles,
+  Container,
+  HeaderContainer,
+  HeaderControlsWrapper,
+  SectionContent,
 } from './collapsible-panel.styles';
 
 // When `isClosed` is provided the component behaves as a controlled component,
@@ -89,72 +88,49 @@ export default class CollapsiblePanel extends React.PureComponent {
         isDefaultClosed={this.props.isDefaultClosed}
       >
         {({ isOpen, toggle, containerStyles, registerContentNode }) => (
-          <div
-            css={getContainerStyles({
-              isCondensed: this.props.condensed,
-              theme: this.props.theme,
-            })}
-            className={this.props.className}
-          >
-            <div
-              css={getHeaderContainerStyles({
-                isOpen,
-                isDisabled: this.props.isDisabled,
-                isSticky: this.props.isSticky,
-                theme: this.props.theme,
-              })}
+          <Container className={this.props.className}>
+            <HeaderContainer
+              {...dataProps}
+              theme={this.props.theme}
+              isOpen={isOpen}
               onClick={this.props.isDisabled ? undefined : toggle}
+              isSticky={this.props.isSticky}
+              isDisabled={this.props.isDisabled}
+              isCondensed={this.props.condensed}
+              headerControlsAlignment={this.props.headerControlsAlignment}
             >
-              <Spacings.InsetSquish scale={scale}>
-                <div
-                  {...dataProps}
-                  css={getHeaderStyles({
-                    isCondensed: this.props.condensed,
-                    isDisabled: this.props.isDisabled,
-                    headerControlsAlignment: this.props.headerControlsAlignment,
-                  })}
+              <Spacings.Inline alignItems="center" scale="s">
+                {!this.props.hideExpansionControls && (
+                  <HeaderIcon
+                    isClosed={!isOpen}
+                    isDisabled={this.props.isDisabled}
+                    tone={this.props.tone}
+                    size={this.props.condensed ? 'small' : 'medium'}
+                  />
+                )}
+                <Spacings.Inline alignItems="center" scale={scale}>
+                  {this.props.condensed ? (
+                    <Text.Detail isInline={true} isBold={true} truncate={true}>
+                      {this.props.header}
+                    </Text.Detail>
+                  ) : (
+                    this.props.header
+                  )}
+                  {this.props.secondaryHeader && (
+                    <Text.Detail tone="secondary" truncate={true}>
+                      {this.props.secondaryHeader}
+                    </Text.Detail>
+                  )}
+                </Spacings.Inline>
+              </Spacings.Inline>
+              {this.props.headerControls && (
+                <HeaderControlsWrapper
+                  onClick={event => event.stopPropagation()}
                 >
-                  <div
-                    css={css`
-                      min-width: 0;
-                    `}
-                  >
-                    <Spacings.Inline alignItems="center" scale="s">
-                      {!this.props.hideExpansionControls && (
-                        <HeaderIcon
-                          isClosed={!isOpen}
-                          isDisabled={this.props.isDisabled}
-                          tone={this.props.tone}
-                          size={this.props.condensed ? 'small' : 'medium'}
-                        />
-                      )}
-                      <Spacings.Inline alignItems="center" scale={scale}>
-                        {this.props.condensed ? (
-                          <Text.Detail
-                            isInline={true}
-                            isBold={true}
-                            truncate={true}
-                          >
-                            {this.props.header}
-                          </Text.Detail>
-                        ) : (
-                          this.props.header
-                        )}
-                        {this.props.secondaryHeader && (
-                          <Text.Detail tone="secondary" truncate={true}>
-                            {this.props.secondaryHeader}
-                          </Text.Detail>
-                        )}
-                      </Spacings.Inline>
-                    </Spacings.Inline>
-                  </div>
-                  <div onClick={event => event.stopPropagation()}>
-                    {this.props.headerControls}
-                  </div>
-                </div>
-              </Spacings.InsetSquish>
-            </div>
-
+                  {this.props.headerControls}
+                </HeaderControlsWrapper>
+              )}
+            </HeaderContainer>
             <div style={containerStyles}>
               <div ref={registerContentNode}>
                 {this.props.description && (
@@ -163,11 +139,11 @@ export default class CollapsiblePanel extends React.PureComponent {
                   </Spacings.Inset>
                 )}
                 <Spacings.Inset scale={scale}>
-                  <div css={getContentStyles()}>{this.props.children}</div>
+                  <SectionContent>{this.props.children}</SectionContent>
                 </Spacings.Inset>
               </div>
             </div>
-          </div>
+          </Container>
         )}
       </CollapsibleMotion>
     );
