@@ -32,6 +32,7 @@ const ignoredExternals = [
   'lodash/sortBy',
   'lodash/uniq',
   'lodash/memoize',
+  'lodash/uniqueId',
   // others
   '@emotion/css',
   '@emotion/styled-base',
