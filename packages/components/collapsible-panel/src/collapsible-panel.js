@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import isNil from 'lodash/isNil';
+import uniqueId from 'lodash/uniqueId';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
@@ -16,6 +17,8 @@ import {
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = props => {
+  const panelId = uniqueId('collapsible-panel_');
+
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
@@ -37,6 +40,8 @@ const CollapsiblePanel = props => {
             isDisabled={props.isDisabled}
             isCondensed={props.condensed}
             headerControlsAlignment={props.headerControlsAlignment}
+            aria-controls={panelId}
+            aria-expanded={isOpen ? 'true' : 'false'}
           >
             <Spacings.Inline alignItems="center" scale="s">
               {!props.hideExpansionControls && (
@@ -76,7 +81,12 @@ const CollapsiblePanel = props => {
                 </Spacings.Inset>
               )}
               <Spacings.Inset scale={scale}>
-                <SectionContent>{props.children}</SectionContent>
+                <SectionContent
+                  id={panelId}
+                  aria-hidden={isOpen ? 'false' : 'true'}
+                >
+                  {props.children}
+                </SectionContent>
               </Spacings.Inset>
             </div>
           </div>
