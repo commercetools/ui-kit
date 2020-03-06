@@ -60,10 +60,6 @@ const getHeaderContainerStyles = ({
 
   return [
     baseStyles,
-    isOpen &&
-      css`
-        border-bottom: 1px ${vars.colorNeutral60} solid;
-      `,
     isDisabled &&
       css`
         cursor: default;
@@ -111,4 +107,14 @@ const SectionContent = styled.div`
   align-items: flex-start;
 `;
 
-export { Container, SectionContent, HeaderContainer, HeaderControlsWrapper };
+const SectionWrapper = styled.div`
+  border-top: 1px solid ${vars.colorNeutral60};
+`;
+
+export {
+  Container,
+  SectionContent,
+  SectionWrapper,
+  HeaderContainer,
+  HeaderControlsWrapper,
+};

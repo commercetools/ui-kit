@@ -11,6 +11,7 @@ import {
   Container,
   HeaderContainer,
   HeaderControlsWrapper,
+  SectionWrapper,
   SectionContent,
 } from './collapsible-panel.styles';
 
@@ -74,7 +75,7 @@ const CollapsiblePanel = props => {
             )}
           </HeaderContainer>
           <div style={containerStyles}>
-            <div ref={registerContentNode}>
+            <SectionWrapper isOpen={isOpen} ref={registerContentNode}>
               {props.description && (
                 <Spacings.Inset scale={scale}>
                   <Text.Detail>{props.description}</Text.Detail>
@@ -88,7 +89,7 @@ const CollapsiblePanel = props => {
                   {props.children}
                 </SectionContent>
               </Spacings.Inset>
-            </div>
+            </SectionWrapper>
           </div>
         </Container>
       )}
