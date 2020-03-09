@@ -29,7 +29,7 @@
     "@commercetools-uikit/spacings-stack": "10.15.1",
     "@commercetools-uikit/text": "10.15.1",
     "@commercetools-uikit/utils": "10.14.1",
-    "@emotion/core": "10.0.27",
+    "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "common-tags": "1.8.0",
     "prop-types": "15.7.2",

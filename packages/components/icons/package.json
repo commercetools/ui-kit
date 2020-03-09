@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.15.1",
-    "@emotion/core": "10.0.27",
+    "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "prop-types": "15.7.2",
     "tiny-invariant": "1.1.0"
