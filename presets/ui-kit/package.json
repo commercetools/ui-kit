@@ -56,7 +56,7 @@
     "moment": "2.x",
     "moment-timezone": "0.5.x",
     "react": ">= 16.8.0",
-    "react-intl": "3.x",
+    "react-intl": "3.x || 4.x",
     "react-router-dom": "5.x"
   }
 }
