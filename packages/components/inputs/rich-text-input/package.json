@@ -43,6 +43,6 @@
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
-    "react-intl": "3.x"
+    "react-intl": "3.x || 4.x"
   }
 }

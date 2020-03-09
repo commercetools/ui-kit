@@ -1269,7 +1269,7 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@formatjs/intl-displaynames@^1.2.0":
+"@formatjs/intl-displaynames@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-1.2.1.tgz#7560fedc9bde5da15dfa13d4bd69f2e468fd08bb"
   integrity sha512-gAkRtcCbRrvNX8AhJ+PACWZyh6Txn7FXdoqgYSmfhEMD/O4qwsd6dYTVbuXOlhBzcNSYU4mCn1ov15nrcp4pxg==
@@ -3313,11 +3313,6 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/estree@*":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.42.tgz#8d0c1f480339efedb3e46070e22dd63e0430dd11"
-  integrity sha512-K1DPVvnBCPxzD+G51/cxVIoc2X8uUVl1zpJeE6iKcgHMj4+tbat5Xu4TjV7v2QSDbIeAfLi2hIk+u2+s0MlpUQ==
-
 "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
@@ -4640,17 +4635,17 @@ babel-plugin-react-docgen@^4.0.0:
     react-docgen "^5.0.0"
     recast "^0.14.7"
 
-babel-plugin-react-intl@5.1.18:
-  version "5.1.18"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-5.1.18.tgz#7713c1fdf0055b606d67e2d1624a2e583a1fcdb7"
-  integrity sha512-tzzZoGDNQOiHmGFh+NPQJDpC10RbKlfw1CBVfALulqRa6UGkAv5eMs9sirxjhD3HryHPbYZ4x5FNdbzOyG2GJw==
+babel-plugin-react-intl@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-6.0.1.tgz#a6b172585eac6bbced6b17ffdd1f213c94205d79"
+  integrity sha512-bCXIrakboHTE4vL817Q+igArQIlutNXUXYkGxYYl+aBc/rfPbAb4zs/fk+6DXhL7LjC6ndt8XFUn1Uv/HucHoA==
   dependencies:
     "@babel/core" "^7.7.2"
     "@babel/helper-plugin-utils" "^7.0.0"
     "@types/babel__core" "^7.1.3"
     "@types/schema-utils" "^1.0.0"
     fs-extra "^8.1.0"
-    intl-messageformat-parser "^3.6.4"
+    intl-messageformat-parser "^4.1.0"
     schema-utils "^2.2.0"
 
 babel-plugin-syntax-jsx@^6.18.0:
@@ -8461,7 +8456,7 @@ fsevents@^1.2.7:
     nan "^2.12.1"
     node-pre-gyp "*"
 
-fsevents@^2.1.2:
+fsevents@^2.1.2, fsevents@~2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.2.tgz#4c0a1fb34bc68e543b4b82a9ec392bfbda840805"
   integrity sha512-R4wDiBwZ0KzpgOWetKDug1FZcYhqYnUYKtfZYt4mD5SBz76q0KR4Q9o7GIPamsVPGmW3EYPPJ0dOOjvx32ldZA==
@@ -9638,20 +9633,20 @@ intl-format-cache@^4.2.21:
   resolved "https://registry.yarnpkg.com/intl-format-cache/-/intl-format-cache-4.2.21.tgz#d8e0bdfc357448f48dc1ab44670dc64a19b24f51"
   integrity sha512-6pZlBdqTRUuuwRWywPItHY1JQwzQxWcpBHv6w4M8T6bGzAsiL/QmI+XsdOhsqJLaL4ZmTATn1kIkNlMk4VzSLQ==
 
-intl-messageformat-parser@^3.6.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-3.6.4.tgz#5199d106d816c3dda26ee0694362a9cf823978fb"
-  integrity sha512-RgPGwue0mJtoX2Ax8EmMzJzttxjnva7gx0Q7mKJ4oALrTZvtmCeAw5Msz2PcjW4dtCh/h7vN/8GJCxZO1uv+OA==
+intl-messageformat-parser@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-4.1.0.tgz#a961385c99318eeaf7721faf9ac8a0f7fea8e391"
+  integrity sha512-FhbRqxBGMifTpsWC0af2w1E0tksU9YzJnYqFJyPYVA5xTLY2pGHHAm/6aWGioDW9MI8p4nDrzJNwlweDq48i1Q==
   dependencies:
     "@formatjs/intl-unified-numberformat" "^3.2.0"
 
-intl-messageformat@^7.8.4:
-  version "7.8.4"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-7.8.4.tgz#c29146a06b9cd26662978a4d95fff2b133e3642f"
-  integrity sha512-yS0cLESCKCYjseCOGXuV4pxJm/buTfyCJ1nzQjryHmSehlptbZbn9fnlk1I9peLopZGGbjj46yHHiTAEZ1qOTA==
+intl-messageformat@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-8.2.1.tgz#11a539ad7ba815c511d8dafdda66e80fb2e5609d"
+  integrity sha512-ErWE/TIefwVn/0dA3u1haLOpBxe8Gxc0fA4spT6e93eZks+KZiYnGJP/wMnjwxoBnKbBxg18P1nxwBMBQ25f1Q==
   dependencies:
     intl-format-cache "^4.2.21"
-    intl-messageformat-parser "^3.6.4"
+    intl-messageformat-parser "^4.1.0"
 
 intl-pluralrules@1.1.2:
   version "1.1.2"
@@ -14273,12 +14268,12 @@ react-inspector@^4.0.0:
     is-dom "^1.0.9"
     prop-types "^15.6.1"
 
-react-intl@3.12.1:
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-3.12.1.tgz#e9a783ea20302e9da25e4eda59e5593a43d2ec80"
-  integrity sha512-cgumW29mwROIqyp8NXStYsoIm27+8FqnxykiLSawWjOxGIBeLuN/+p2srei5SRIumcJefOkOIHP+NDck05RgHg==
+react-intl@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-4.1.1.tgz#f6e409f6fb114740d603db9fe35881252cd78944"
+  integrity sha512-aQ3yzQJaLXALwBX1tV2Wllp2heNjDTfNJPbk2jX1Cc2mMI4O2DwI5A3BzqSvgTtiiaQN3jMYTYGQElWdNAZDwA==
   dependencies:
-    "@formatjs/intl-displaynames" "^1.2.0"
+    "@formatjs/intl-displaynames" "^1.2.1"
     "@formatjs/intl-listformat" "^1.4.1"
     "@formatjs/intl-relativetimeformat" "^4.5.9"
     "@formatjs/intl-unified-numberformat" "^3.2.0"
@@ -14287,8 +14282,8 @@ react-intl@3.12.1:
     "@types/invariant" "^2.2.31"
     hoist-non-react-statics "^3.3.2"
     intl-format-cache "^4.2.21"
-    intl-messageformat "^7.8.4"
-    intl-messageformat-parser "^3.6.4"
+    intl-messageformat "^8.2.1"
+    intl-messageformat-parser "^4.1.0"
     shallow-equal "^1.2.1"
 
 react-is@16.13.0, react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.3, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
@@ -15191,14 +15186,12 @@ rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.6.0,
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@1.32.1:
-  version "1.32.1"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.32.1.tgz#4480e52d9d9e2ae4b46ba0d9ddeaf3163940f9c4"
-  integrity sha512-/2HA0Ec70TvQnXdzynFffkjA6XN+1e2pEv/uKS5Ulca40g2L7KuOE3riasHoNVHOsFD5KKZgDsMk1CP3Tw9s+A==
-  dependencies:
-    "@types/estree" "*"
-    "@types/node" "*"
-    acorn "^7.1.0"
+rollup@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.0.2.tgz#0f63aa02bb106802a387380ee88b90b5c0449eaa"
+  integrity sha512-99VIc2DHm+HEhdla2ASH/LaomWS3v7RDANamD65w24TQTNVs3vtRM+oiFsP4KvUCri5+p5Q5xoXscUnIdE8gJA==
+  optionalDependencies:
+    fsevents "~2.1.2"
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
