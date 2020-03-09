@@ -3,36 +3,18 @@ import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getNormalizedButtonStyles } from '@commercetools-uikit/accessible-button';
 
-const getContainerStyles = ({ isCondensed, theme }) => {
-  const baseStyles = css`
-    display: flex;
-    flex-direction: column;
-    font-family: inherit;
-    box-shadow: ${vars.shadow1};
-    color: ${vars.colorSolid};
-    border-radius: ${vars.borderRadius6};
-    position: relative;
-    min-width: 550px;
-    font-size: ${vars.fontSizeDefault};
-    padding: 0;
-    background-color: ${theme === 'light'
-      ? vars.colorSurface
-      : vars.colorNeutral95};
-  `;
-
-  if (isCondensed) {
-    return [
-      baseStyles,
-      css`
-        min-width: 0;
-      `,
-    ];
+function getThemeStyle({ theme }) {
+  if (theme === 'light') {
+    return css`
+      background-color: ${vars.colorSurface};
+    `;
   }
-  return baseStyles;
-};
+  return css`
+    background-color: ${vars.colorNeutral95};
+  `;
+}
 
 const getHeaderContainerStyles = ({
-  theme,
   isOpen,
   isSticky,
   isDisabled,
@@ -43,9 +25,6 @@ const getHeaderContainerStyles = ({
     position: relative;
     border-top-left-radius: ${vars.borderRadius6};
     border-top-right-radius: ${vars.borderRadius6};
-    background-color: ${theme === 'light'
-      ? vars.colorSurface
-      : vars.colorNeutral95};
     display: flex;
     flex: 1;
     align-items: center;
@@ -73,22 +52,37 @@ const getHeaderContainerStyles = ({
         border-top-right-radius: ${vars.borderRadius6};
         border-top-left-radius: ${vars.borderRadius6};
       `,
+    !isCondensed &&
+      css`
+        /* to understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616 */
+        min-height: ${vars.bigButtonHeight};
+        box-sizing: content-box; /* makes the padding extend beyound the min-height */
+      `,
   ];
 };
 
 const Container = styled.div`
-  ${getContainerStyles}
+  ${getThemeStyle}
+  position: relative;
+  min-width: 550px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: ${vars.shadow1};
+  border-radius: ${vars.borderRadius6};
+  color: ${vars.colorSolid};
+  font-family: inherit;
+  font-size: ${vars.fontSizeDefault};
 `;
 
 const HeaderContainer = styled.button`
   ${getNormalizedButtonStyles}
-  outline: none;
-
-  /* to understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616 */
-  min-height: ${vars.bigButtonHeight};
-  box-sizing: content-box; /* makes the padding extend beyound the min-height */
-
   ${getHeaderContainerStyles}
+  ${getThemeStyle}
+
+  &:focus-visible {
+    outline: initial;
+  }
 `;
 
 const HeaderControlsWrapper = styled.div`
@@ -96,7 +90,7 @@ const HeaderControlsWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  /* reset the cursor because this area the header doesn't trigger its onClick */
+  /* reset the cursor because this area of the header doesn't trigger its onClick */
   cursor: auto;
 `;
 
