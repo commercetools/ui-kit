@@ -15,11 +15,13 @@ import {
   SectionContent,
 } from './collapsible-panel.styles';
 
+const panelContentIdPrefix = 'panel-content-';
+const getPanelContentId = id => panelContentIdPrefix + id;
+
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = props => {
-  const panelId = uniqueId('collapsible-panel_');
-
+  const panelContentId = getPanelContentId(props.id);
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
@@ -33,6 +35,7 @@ const CollapsiblePanel = props => {
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <Container theme={props.theme} className={props.className}>
           <HeaderContainer
+            id={props.id}
             {...dataProps}
             theme={props.theme}
             isOpen={isOpen}
@@ -41,7 +44,7 @@ const CollapsiblePanel = props => {
             isDisabled={props.isDisabled}
             isCondensed={props.condensed}
             headerControlsAlignment={props.headerControlsAlignment}
-            aria-controls={panelId}
+            aria-controls={panelContentId}
             aria-expanded={isOpen ? 'true' : 'false'}
           >
             <Spacings.Inline alignItems="center" scale="s">
@@ -83,7 +86,7 @@ const CollapsiblePanel = props => {
               )}
               <Spacings.Inset scale={scale}>
                 <SectionContent
-                  id={panelId}
+                  id={panelContentId}
                   aria-hidden={isOpen ? 'false' : 'true'}
                 >
                   {props.children}
@@ -97,9 +100,11 @@ const CollapsiblePanel = props => {
   );
 };
 
+CollapsiblePanel.getPanelContentId = getPanelContentId;
 CollapsiblePanel.displayName = 'CollapsiblePanel';
 CollapsiblePanel.propTypes = {
   // common props
+  id: PropTypes.string,
   header: PropTypes.node.isRequired,
   secondaryHeader: PropTypes.node,
   description: PropTypes.string,
@@ -146,6 +151,7 @@ CollapsiblePanel.propTypes = {
 };
 
 CollapsiblePanel.defaultProps = {
+  id: uniqueId(),
   theme: 'dark',
   condensed: false,
   isDisabled: false,

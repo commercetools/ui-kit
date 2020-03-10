@@ -149,3 +149,106 @@ it('should not call "onToggle" when header is clicked while disabled', () => {
   getByText('Header').click();
   expect(onToggle).not.toHaveBeenCalled();
 });
+
+describe('getPanelContentId', () => {
+  it('should return a string containing the given id', () => {
+    const panelContentId = CollapsiblePanel.getPanelContentId('example');
+
+    expect(panelContentId).toEqual(expect.stringContaining('example'));
+  });
+});
+
+describe('aria attributes', () => {
+  it('should have a valid aria-controls correspondence', () => {
+    const rendered = render(
+      <CollapsiblePanel
+        id="example"
+        header="Header"
+        onToggle={jest.fn()}
+        isClosed={false}
+      >
+        Children
+      </CollapsiblePanel>
+    );
+
+    const panelContentId = CollapsiblePanel.getPanelContentId('example');
+
+    // assert that the header button has the aria attribute
+    const headerButton = rendered.container.querySelector('button');
+    expect(headerButton).toHaveAttribute('aria-controls', panelContentId);
+
+    // find the correspondent panel content
+    expect(
+      rendered.container.querySelector(`[id=${panelContentId}]`)
+    ).toBeInTheDocument();
+  });
+  describe('header', () => {
+    it('should have aria-expanded true when panel is open', () => {
+      const rendered = render(
+        <CollapsiblePanel header="Header" onToggle={jest.fn()} isClosed={false}>
+          Children
+        </CollapsiblePanel>
+      );
+
+      const headerButton = rendered.container.querySelector('button');
+
+      expect(headerButton).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('should have aria-expanded false when panel is closed', () => {
+      const rendered = render(
+        <CollapsiblePanel header="Header" onToggle={jest.fn()} isClosed={true}>
+          Children
+        </CollapsiblePanel>
+      );
+
+      const headerButton = rendered.container.querySelector('button');
+
+      expect(headerButton).toHaveAttribute('aria-expanded', 'false');
+    });
+  });
+
+  describe('content', () => {
+    it('should have aria-hidden true when panel is closed', () => {
+      const rendered = render(
+        <CollapsiblePanel
+          id="example"
+          header="Header"
+          onToggle={jest.fn()}
+          isClosed={true}
+        >
+          Children
+        </CollapsiblePanel>
+      );
+
+      const panelContentId = CollapsiblePanel.getPanelContentId('example');
+
+      const panelContent = rendered.container.querySelector(
+        `[id=${panelContentId}]`
+      );
+
+      expect(panelContent).toHaveAttribute('aria-hidden', 'true');
+    });
+
+    it('should have aria-hidden false when panel is open', () => {
+      const rendered = render(
+        <CollapsiblePanel
+          id="example"
+          header="Header"
+          onToggle={jest.fn()}
+          isClosed={false}
+        >
+          Children
+        </CollapsiblePanel>
+      );
+
+      const panelContentId = CollapsiblePanel.getPanelContentId('example');
+
+      const panelContent = rendered.container.querySelector(
+        `[id=${panelContentId}]`
+      );
+
+      expect(panelContent).toHaveAttribute('aria-hidden', 'false');
+    });
+  });
+});
