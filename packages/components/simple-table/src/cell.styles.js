@@ -55,22 +55,32 @@ const getButtonStyle = () => css`
   font: inherit;
   font-size: ${vars.fontSizeDefault};
   font-family: inherit;
-
-  /* show visual feedback on tab navigation */
-  :focus {
-    outline: 2px solid ${vars.borderColorForInputWhenFocused};
-    outline-offset: -1px;
-  }
 `;
 
-const getBaseCellStyles = css`
-  overflow: hidden;
+/* the :focus-within state doesn't enable the outline styles,
+  so we have to set them manually. */
+const getOutlineStyles = () => css`
+  /* to avoid getting cut by overflow:hidden */
+  outline-offset: -3px;
+
+  :not(:focus):focus-within {
+    outline-style: auto;
+
+    /* try using the default user-agent color */
+    /* stylelint-disable declaration-block-no-duplicate-properties */
+    outline-color: Highlight;
+    outline-color: activeborder;
+    outline-color: -moz-mac-focusring;
+    outline-color: -webkit-focus-ring-color;
+    /* stylelint-enable declaration-block-no-duplicate-properties */
+  }
 `;
 
 const getCellInnerStyles = props => {
   return [
     getAlignmentStyle(props),
     getTruncatedStyle(props),
+    getOutlineStyles(),
     props.shouldIgnoreRowClick &&
       css`
         cursor: auto;
@@ -98,13 +108,10 @@ const getSortableHeaderStyles = props => css`
       }
     }
   }
-  :focus {
-    outline-offset: -2px;
-  }
 `;
 
 const BaseHeaderCell = styled.th`
-  ${getBaseCellStyles}
+  overflow: hidden;
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
 
@@ -123,7 +130,6 @@ const BaseHeaderCell = styled.th`
 `;
 
 const BaseCell = styled.td`
-  ${getBaseCellStyles}
   border-bottom: 1px solid ${vars.colorNeutral90};
   overflow: hidden;
 `;
