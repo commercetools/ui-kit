@@ -159,94 +159,72 @@ describe('getPanelContentId', () => {
 });
 
 describe('aria attributes', () => {
-  it('should have a valid aria-controls correspondence', () => {
+  const renderPanel = props => {
     const rendered = render(
       <CollapsiblePanel
         id="example"
         header="Header"
         onToggle={jest.fn()}
-        isClosed={false}
+        {...props}
       >
         Children
       </CollapsiblePanel>
     );
+    const getPanelHeader = () => rendered.container.querySelector('button');
 
-    const panelContentId = CollapsiblePanel.getPanelContentId('example');
+    const panelContentId = CollapsiblePanel.getPanelContentId(
+      props.id || 'example'
+    );
+    const getPanelContent = () =>
+      rendered.container.querySelector(`[id=${panelContentId}]`);
+
+    return {
+      ...rendered,
+      getPanelHeader,
+      getPanelContent,
+    };
+  };
+  it('should have a valid aria-controls correspondence', () => {
+    const rendered = renderPanel({ id: 'test-id' });
+
+    const panelContentId = CollapsiblePanel.getPanelContentId('test-id');
 
     // assert that the header button has the aria attribute
-    const headerButton = rendered.container.querySelector('button');
+    const headerButton = rendered.getPanelHeader();
     expect(headerButton).toHaveAttribute('aria-controls', panelContentId);
 
     // find the correspondent panel content
-    expect(
-      rendered.container.querySelector(`[id=${panelContentId}]`)
-    ).toBeInTheDocument();
+    expect(rendered.getPanelContent()).toBeInTheDocument();
   });
   describe('header', () => {
     it('should have aria-expanded true when panel is open', () => {
-      const rendered = render(
-        <CollapsiblePanel header="Header" onToggle={jest.fn()} isClosed={false}>
-          Children
-        </CollapsiblePanel>
-      );
+      const rendered = renderPanel({ isClosed: false });
 
-      const headerButton = rendered.container.querySelector('button');
-
+      const headerButton = rendered.getPanelHeader();
       expect(headerButton).toHaveAttribute('aria-expanded', 'true');
     });
 
     it('should have aria-expanded false when panel is closed', () => {
-      const rendered = render(
-        <CollapsiblePanel header="Header" onToggle={jest.fn()} isClosed={true}>
-          Children
-        </CollapsiblePanel>
-      );
+      const rendered = renderPanel({ isClosed: true });
 
-      const headerButton = rendered.container.querySelector('button');
-
+      const headerButton = rendered.getPanelHeader();
       expect(headerButton).toHaveAttribute('aria-expanded', 'false');
     });
   });
 
   describe('content', () => {
     it('should have aria-hidden true when panel is closed', () => {
-      const rendered = render(
-        <CollapsiblePanel
-          id="example"
-          header="Header"
-          onToggle={jest.fn()}
-          isClosed={true}
-        >
-          Children
-        </CollapsiblePanel>
-      );
+      const rendered = renderPanel({ isClosed: true });
 
-      const panelContentId = CollapsiblePanel.getPanelContentId('example');
-
-      const panelContent = rendered.container.querySelector(
-        `[id=${panelContentId}]`
-      );
+      const panelContent = rendered.getPanelContent();
 
       expect(panelContent).toHaveAttribute('aria-hidden', 'true');
     });
 
     it('should have aria-hidden false when panel is open', () => {
-      const rendered = render(
-        <CollapsiblePanel
-          id="example"
-          header="Header"
-          onToggle={jest.fn()}
-          isClosed={false}
-        >
-          Children
-        </CollapsiblePanel>
-      );
+      const rendered = renderPanel({ isClosed: false });
 
-      const panelContentId = CollapsiblePanel.getPanelContentId('example');
-
-      const panelContent = rendered.container.querySelector(
-        `[id=${panelContentId}]`
-      );
+      const panelContent = rendered.getPanelContent();
 
       expect(panelContent).toHaveAttribute('aria-hidden', 'false');
     });
