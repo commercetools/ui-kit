@@ -12,18 +12,18 @@ HeaderControls.propTypes = {
 };
 
 it('should smoke', () => {
-  const { getByText } = render(
+  const rendered = render(
     <CollapsiblePanel header="Header">Children</CollapsiblePanel>
   );
-  expect(getByText('Header')).toBeInTheDocument();
-  expect(getByText('Children')).toBeInTheDocument();
+  expect(rendered.getByText('Header')).toBeInTheDocument();
+  expect(rendered.getByText('Children')).toBeInTheDocument();
 });
 
 describe('header controls', () => {
   describe('when passed header controls without an onClick', () => {
     it('should not call onToggle when headerControls is clicked', () => {
       const onToggle = jest.fn();
-      const { getByText } = render(
+      const rendered = render(
         <CollapsiblePanel
           header="Header"
           onToggle={onToggle}
@@ -34,14 +34,14 @@ describe('header controls', () => {
           Children
         </CollapsiblePanel>
       );
-      getByText('Header Controls').click();
+      rendered.getByText('Header Controls').click();
       expect(onToggle).not.toHaveBeenCalled();
     });
   });
   describe('when passed header controls with an onClick', () => {
     it('should not call onToggle when headerControls is clicked', () => {
       const onToggle = jest.fn();
-      const { getByText } = render(
+      const rendered = render(
         <CollapsiblePanel
           header="Header"
           onToggle={onToggle}
@@ -52,7 +52,7 @@ describe('header controls', () => {
           Children
         </CollapsiblePanel>
       );
-      getByText('Header Controls').click();
+      rendered.getByText('Header Controls').click();
       expect(onToggle).not.toHaveBeenCalled();
     });
   });
@@ -125,18 +125,18 @@ describe('when onToggle is provided without isClosed', () => {
 
 it('should call "onToggle" when header is clicked', () => {
   const onToggle = jest.fn();
-  const { getByText } = render(
+  const rendered = render(
     <CollapsiblePanel header="Header" onToggle={onToggle} isClosed={false}>
       Children
     </CollapsiblePanel>
   );
-  getByText('Header').click();
+  rendered.getByText('Header').click();
   expect(onToggle).toHaveBeenCalledTimes(1);
 });
 
 it('should not call "onToggle" when header is clicked while disabled', () => {
   const onToggle = jest.fn();
-  const { getByText } = render(
+  const rendered = render(
     <CollapsiblePanel
       header="Header"
       onToggle={onToggle}
@@ -146,7 +146,7 @@ it('should not call "onToggle" when header is clicked while disabled', () => {
       Children
     </CollapsiblePanel>
   );
-  getByText('Header').click();
+  rendered.getByText('Header').click();
   expect(onToggle).not.toHaveBeenCalled();
 });
 
