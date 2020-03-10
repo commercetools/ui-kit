@@ -1,5 +1,12 @@
 # Table
 
+### THIS COMPONENT IS IN BETA!
+
+This component is ultimately intented to replace the current `Table` component.
+Please be aware that it may be subject to upcoming breaking changes as it's still in active development.
+
+---
+
 ## Usage
 
 ```js
