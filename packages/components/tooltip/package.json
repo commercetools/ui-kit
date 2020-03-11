@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/tooltip",
-  "version": "10.16.0",
+  "version": "10.17.0",
   "description": "",
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
@@ -19,9 +19,9 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/design-system": "10.15.1",
+    "@commercetools-uikit/design-system": "10.17.0",
     "@commercetools-uikit/hooks": "10.13.0",
-    "@commercetools-uikit/utils": "10.14.1",
+    "@commercetools-uikit/utils": "10.17.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "lodash": "4.17.15",
