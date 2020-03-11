@@ -1,3 +1,14 @@
+## [10.17.0](https://github.com/commercetools/ui-kit/compare/v10.16.0...v10.17.0) (2020-03-11)
+
+#### 🚀 Type: New Feature
+
+- `components`
+  - [#1272](https://github.com/commercetools/ui-kit/pull/1272) feat(accessible-button): exports new function `getNormalizedButtonStyles`
+    This new utility function removes user-agent styles for a `button` element, which might be useful for enabling a layout component with the navigational benefits of a `button`, such as Tab navigation and triggering `onClick` with the `Enter` key. ([@jonnybel](https://github.com/jonnybel))
+  - [#1272](https://github.com/commercetools/ui-kit/pull/1272) fix(collapsible-panel): improve accessibility of panel header ([@jonnybel](https://github.com/jonnybel))
+  - [#1271](https://github.com/commercetools/ui-kit/pull/1271) feat(accessible-hidden): new component `AccessibleHidden`
+    This component allows rendering invisible but machine-readable content, for accessibility or testing purposes. ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.16.0](https://github.com/commercetools/ui-kit/compare/v10.15.1...v10.16.0) (2020-02-14)
 
 #### 🚀 Type: New Feature

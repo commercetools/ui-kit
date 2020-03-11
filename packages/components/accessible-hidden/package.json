@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/accessible-hidden",
-  "version": "10.16.0",
+  "version": "10.17.0",
   "description": "",
   "main": "dist/accessible-hidden.cjs.js",
   "module": "dist/accessible-hidden.esm.js",
