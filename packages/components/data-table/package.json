@@ -1,9 +1,9 @@
 {
-  "name": "@commercetools-uikit/simple-table",
+  "name": "@commercetools-uikit/data-table",
   "version": "10.14.0",
   "description": "",
-  "main": "dist/simple-table.cjs.js",
-  "module": "dist/simple-table.esm.js",
+  "main": "dist/data-table.cjs.js",
+  "module": "dist/data-table.esm.js",
   "private": false,
   "publishConfig": {
     "access": "public"

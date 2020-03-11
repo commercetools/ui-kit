@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { TableGrid, Header, Body, Row } from './simple-table.styles';
+import { TableGrid, Header, Body, Row } from './data-table.styles';
 import { HeaderCell, DataCell } from './cell';
 
-const SimpleTable = props => (
+const DataTable = props => (
   <TableGrid
     {...filterDataAttributes(props)}
     columns={props.columns}
@@ -58,7 +58,7 @@ const SimpleTable = props => (
     </Body>
   </TableGrid>
 );
-SimpleTable.propTypes = {
+DataTable.propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -95,11 +95,11 @@ SimpleTable.propTypes = {
   onSortChange: PropTypes.func,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
-SimpleTable.defaultProps = {
+DataTable.defaultProps = {
   isCondensed: false,
   cellAlignment: 'left',
   itemRenderer: (row, column) => row[column.key],
 };
-SimpleTable.displayName = 'SimpleTable';
+DataTable.displayName = 'DataTable';
 
-export default SimpleTable;
+export default DataTable;

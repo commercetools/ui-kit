@@ -10,10 +10,10 @@ Please be aware that it may be subject to upcoming breaking changes as it's stil
 ## Usage
 
 ```js
-import { SimpleTable } from '@commercetools-uikit/simple-table';
+import { DataTable } from '@commercetools-uikit/data-table';
 ```
 
-### `<SimpleTable />`
+### `<DataTable />`
 
 Shows tabular data, defined by a list of items: the `rows`, and another list with their corresponding definitions: the `columns`. Both these lists are arrays of objects.
 
@@ -24,7 +24,7 @@ These are the only requirements for rendering the most simple table which should
 
 For more advanced configuration and layout customization, a plethora of other options are available, including <i>per-column</i> specific options.
 
-For adding a Row Selection behaviour, check the `useRowSelection` hook which you can use to prepare your `rows` and `columns` before passing them to the SimpleTable component.
+For adding a Row Selection behaviour, check the `useRowSelection` hook which you can use to prepare your `rows` and `columns` before passing them to the DataTable component.
 
 #### Usage
 
@@ -40,7 +40,7 @@ const columns = [
   { key: 'country', label: 'Country' },
 ];
 
-return <SimpleTable rows={rows} columns={columns} />;
+return <DataTable rows={rows} columns={columns} />;
 ```
 
 #### Props

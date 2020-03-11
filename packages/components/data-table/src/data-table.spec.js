@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../../../src/test-utils';
-import SimpleTable from '.';
+import DataTable from '.';
 
 const testRows = [
   { id: '1-parasite', title: 'Parasite', year: 2019 },
@@ -21,23 +21,23 @@ const testColumns = [
 
 const baseProps = { rows: testRows, columns: testColumns };
 
-describe('SimpleTable', () => {
+describe('DataTable', () => {
   it('should forward data-attributes', () => {
-    const rendered = render(<SimpleTable {...baseProps} data-foo="bar" />);
+    const rendered = render(<DataTable {...baseProps} data-foo="bar" />);
     expect(
       rendered.container.querySelector("[data-foo='bar']")
     ).toBeInTheDocument();
   });
 
   it('should render the column labels', () => {
-    const rendered = render(<SimpleTable {...baseProps} />);
+    const rendered = render(<DataTable {...baseProps} />);
 
     expect(rendered.queryByText('Title')).toBeInTheDocument();
     expect(rendered.queryByText('Year')).toBeInTheDocument();
   });
 
   it('should render item fields which have corresponding column keys', () => {
-    const rendered = render(<SimpleTable {...baseProps} />);
+    const rendered = render(<DataTable {...baseProps} />);
 
     expect(rendered.queryByText('Woman At War')).toBeInTheDocument();
     expect(rendered.queryByText('2018')).toBeInTheDocument();
@@ -51,7 +51,7 @@ describe('SimpleTable', () => {
       );
 
       const rendered = render(
-        <SimpleTable {...baseProps} itemRenderer={customRenderer} />
+        <DataTable {...baseProps} itemRenderer={customRenderer} />
       );
       const numberOfRenderedItemCells =
         baseProps.rows.length * baseProps.columns.length;
@@ -68,7 +68,7 @@ describe('SimpleTable', () => {
     const rowClickEvent = jest.fn();
     it('should call the action on clicking a row', () => {
       const rendered = render(
-        <SimpleTable {...baseProps} onRowClick={rowClickEvent} />
+        <DataTable {...baseProps} onRowClick={rowClickEvent} />
       );
 
       rendered.getByText('Parasite').click();
@@ -90,7 +90,7 @@ describe('SimpleTable', () => {
         { key: 'id', label: 'ID', shouldIgnoreRowClick: true },
       ];
       const rendered = render(
-        <SimpleTable
+        <DataTable
           rows={testRows}
           columns={testColumnsWithIgnoreRowClick}
           onRowClick={rowClickEvent}
@@ -117,7 +117,7 @@ describe('SimpleTable', () => {
       ];
       it('should call both the cell onClick and the onRowClick', () => {
         const rendered = render(
-          <SimpleTable
+          <DataTable
             rows={testRows}
             columns={testColumnsWithOnClick}
             onRowClick={rowClickEvent}

@@ -5,7 +5,7 @@ import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import { useFormik } from 'formik';
-import SimpleTable from './simple-table';
+import DataTable from './data-table';
 import CheckboxInput from '../../inputs/checkbox-input';
 import Readme from '../README.md';
 import { useRowSelection, useSorting } from '.';
@@ -309,7 +309,7 @@ ColumnConfigForm.propTypes = {
 storiesOf('Components|Table (NEW)', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
-  .add('SimpleTable', () => {
+  .add('DataTable', () => {
     const [tableData, setTableData] = React.useState({
       columns: initialColumnsState,
     });
@@ -374,7 +374,7 @@ storiesOf('Components|Table (NEW)', module)
 
     return (
       <React.Fragment>
-        <SimpleTable
+        <DataTable
           rows={withRowSelection ? rowsWithSelection : rows}
           columns={withRowSelection ? columnsWithSelect : tableData.columns}
           onRowClick={
