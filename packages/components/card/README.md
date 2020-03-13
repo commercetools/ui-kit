@@ -20,5 +20,5 @@ import Card from '@commercetools-uikit/card';
 | ----------- | -------- | :------: | ---------------- | -------- | --------------------------------- |
 | `theme`     | `string` |    -     | `light`, `dark`  | `light`  | background color of the card      |
 | `type`      | `string` |    -     | `raised`, `flat` | `raised` | The type of card                  |
-| `classname` | `string` |    -     | -                | -        | className passed to the container |
+| `className` | `string` |    -     | -                | -        | className passed to the container |
 | `children`  | `node`   |    ✅    | -                | -        | Content rendered within the card  |
