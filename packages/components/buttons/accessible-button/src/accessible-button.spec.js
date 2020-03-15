@@ -70,4 +70,14 @@ describe('rendering', () => {
       expect(getByLabelText('test-button')).toHaveAttribute('type', 'reset');
     });
   });
+
+  describe('rendering as a div', () => {
+    it('should render a div element with accessibility attributes', () => {
+      const { getByLabelText } = render(
+        <AccessibleButton {...props} as="div" />
+      );
+      expect(getByLabelText('test-button')).toHaveAttribute('role', 'button');
+      expect(getByLabelText('test-button')).toHaveAttribute('tabindex', '0');
+    });
+  });
 });

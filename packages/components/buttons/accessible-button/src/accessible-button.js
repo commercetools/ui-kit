@@ -9,11 +9,15 @@ import getNormalizedButtonStyles from './accessible-button.styles';
 
 const propsToOmit = ['onClick'];
 
+const getIsEnterOrSpace = e =>
+  e.key === ' ' || e.key === 'Spacebar' || e.which === 13 || e.which === 32;
+
 const Button = styled.button`
   ${getNormalizedButtonStyles}
   display: inline-flex;
-  outline: 0;
   font-size: ${vars.fontSizeDefault};
+
+  ${props => (!props.as || props.as === 'button' ? 'outline: none' : '')}
 
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   &:disabled {
@@ -30,7 +34,9 @@ const AccessibleButton = React.forwardRef((props, ref) => {
         event.preventDefault();
         return false;
       }
-      if (!props.isDisabled && onClick) return onClick(event);
+      if (!props.isDisabled && onClick) {
+        return onClick(event);
+      }
       // eslint-disable-next-line no-useless-return, consistent-return
       return;
     },
@@ -39,9 +45,18 @@ const AccessibleButton = React.forwardRef((props, ref) => {
 
   const isButton = !props.as || props.as === 'button';
 
-  const buttonProps = {
-    type: props.type,
-  };
+  let buttonProps = {};
+  if (isButton) {
+    buttonProps = {
+      type: props.type,
+    };
+  } else if (!props.isDisabled) {
+    buttonProps = {
+      role: 'button',
+      tabIndex: '0',
+      onKeyPress: event => getIsEnterOrSpace(event) && handleClick(event),
+    };
+  }
 
   return (
     <Button
@@ -58,7 +73,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       aria-disabled={props.isDisabled}
       {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
       {...omit(props.buttonAttributes, propsToOmit)}
-      {...(isButton ? buttonProps : {})}
+      {...buttonProps}
       {...filterAriaAttributes(props)}
     >
       {props.children}
