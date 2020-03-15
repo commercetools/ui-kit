@@ -170,7 +170,8 @@ describe('aria attributes', () => {
         Children
       </CollapsiblePanel>
     );
-    const getPanelHeader = () => rendered.container.querySelector('button');
+    const getPanelHeader = () =>
+      rendered.container.querySelector('[role=button]');
 
     const panelContentId = CollapsiblePanel.getPanelContentId(
       props.id || 'example'
