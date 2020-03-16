@@ -37,7 +37,6 @@ const CollapsiblePanel = props => {
           <HeaderContainer
             as="div"
             id={props.id}
-            {...dataProps}
             theme={props.theme}
             label=""
             isOpen={isOpen}
@@ -45,6 +44,7 @@ const CollapsiblePanel = props => {
             isSticky={props.isSticky}
             isDisabled={props.isDisabled}
             isCondensed={props.condensed}
+            buttonAttributes={dataProps}
             headerControlsAlignment={props.headerControlsAlignment}
             aria-controls={panelContentId}
             aria-expanded={isOpen ? 'true' : 'false'}
