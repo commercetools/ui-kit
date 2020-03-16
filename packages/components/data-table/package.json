@@ -23,7 +23,7 @@
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/icons": "10.15.1",
     "@commercetools-uikit/utils": "10.14.1",
-    "@emotion/core": "10.0.27",
+    "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",
@@ -33,6 +33,6 @@
     "react": ">= 16.8.0"
   },
   "devDependencies": {
-    "formik": "2.1.2"
+    "formik": "2.1.4"
   }
 }
