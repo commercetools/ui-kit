@@ -9,8 +9,7 @@ import getNormalizedButtonStyles from './accessible-button.styles';
 
 const propsToOmit = ['onClick'];
 
-const getIsEnterOrSpace = e =>
-  e.key === ' ' || e.key === 'Spacebar' || e.which === 13 || e.which === 32;
+const getIsEnterOrSpace = e => e.key === ' ' || e.key === 'Enter';
 
 const Button = styled.button`
   ${getNormalizedButtonStyles}
