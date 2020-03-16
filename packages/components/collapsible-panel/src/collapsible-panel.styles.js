@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { getNormalizedButtonStyles } from '@commercetools-uikit/accessible-button';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 function getThemeStyle({ theme }) {
   if (theme === 'light') {
@@ -75,14 +75,9 @@ const Container = styled.div`
   font-size: ${vars.fontSizeDefault};
 `;
 
-const HeaderContainer = styled.button`
-  ${getNormalizedButtonStyles}
+const HeaderContainer = styled(AccessibleButton)`
   ${getHeaderContainerStyles}
   ${getThemeStyle}
-
-  &:focus-visible {
-    outline: initial;
-  }
 `;
 
 const HeaderControlsWrapper = styled.div`

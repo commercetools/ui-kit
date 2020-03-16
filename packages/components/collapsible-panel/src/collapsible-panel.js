@@ -35,9 +35,11 @@ const CollapsiblePanel = props => {
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <Container theme={props.theme} className={props.className}>
           <HeaderContainer
+            as="div"
             id={props.id}
             {...dataProps}
             theme={props.theme}
+            label=""
             isOpen={isOpen}
             onClick={props.isDisabled ? undefined : toggle}
             isSticky={props.isSticky}
