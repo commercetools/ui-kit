@@ -1,3 +1,10 @@
+## [10.18.1](https://github.com/commercetools/ui-kit/compare/v10.18.0...v10.18.1) (2020-03-16)
+
+#### 🐛 Type: Bug
+
+- `components`
+  - [#1285](https://github.com/commercetools/ui-kit/pull/1285) fix(collapsible-panel): to forward data-attributes ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.18.0](https://github.com/commercetools/ui-kit/compare/v10.17.0...v10.18.0) (2020-03-16)
 
 #### 🐛 Type: Bug
