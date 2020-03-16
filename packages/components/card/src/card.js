@@ -8,10 +8,10 @@ const Card = props => (
   <div
     {...filterDataAttributes(props)}
     css={css`
-      display: flex;
-      font-size: 1rem;
-      flex-direction: column;
+      box-sizing: border-box;
       width: 100%;
+      padding: ${vars.spacingM};
+      font-size: 1rem;
       box-shadow: ${props.type === 'raised' ? vars.shadow1 : 'none'};
       border-radius: ${vars.borderRadius6};
       background: ${props.theme === 'dark'
@@ -20,22 +20,16 @@ const Card = props => (
     `}
     className={props.className}
   >
-    <div
-      css={css`
-        padding: ${vars.spacingM};
-      `}
-    >
-      {props.children}
-    </div>
+    {props.children}
   </div>
 );
 
 Card.displayName = 'Card';
 Card.propTypes = {
-  className: PropTypes.string,
   type: PropTypes.oneOf(['raised', 'flat']),
-  children: PropTypes.any,
   theme: PropTypes.oneOf(['light', 'dark']),
+  children: PropTypes.any,
+  className: PropTypes.string,
 };
 
 Card.defaultProps = {
