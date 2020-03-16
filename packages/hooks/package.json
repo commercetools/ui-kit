@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/hooks",
-  "version": "10.13.0",
+  "version": "10.18.0",
   "description": "",
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
@@ -18,8 +18,8 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0",
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "react": ">= 16.8.0"
   },
   "license": "MIT"
 }
