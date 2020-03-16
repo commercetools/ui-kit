@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/collapsible-panel",
-  "version": "10.18.0",
+  "version": "10.18.1",
   "description": "",
   "main": "dist/collapsible-panel.cjs.js",
   "module": "dist/collapsible-panel.esm.js",
