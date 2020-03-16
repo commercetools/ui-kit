@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitForElement } from '../../../test-utils';
+import { render, fireEvent, waitFor } from '../../../test-utils';
 import AsyncCreatableSelectField from './async-creatable-select-field';
 
 // This component is used to enable easy testing.
@@ -104,13 +104,17 @@ it('should have focus automatically when isAutofocussed is passed', () => {
 
 it('should call onChange when changing the value', async () => {
   const onChange = jest.fn();
-  const { getByLabelText, getByText } = renderAsyncCreatableSelectField({
+  const {
+    getByLabelText,
+    getByText,
+    findByText,
+  } = renderAsyncCreatableSelectField({
     onChange,
   });
   const input = getByLabelText('AsyncCreatableSelectField');
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
-  await waitForElement(() => getByText('Shipped'));
+  await waitFor(() => findByText('Shipped'));
   getByText('Shipped').click();
   expect(onChange).toHaveBeenCalled();
 });

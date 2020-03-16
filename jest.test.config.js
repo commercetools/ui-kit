@@ -24,7 +24,7 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['<rootDir>/scripts/setup-test-framework.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom-sixteen',
   testURL: 'https://mc.commercetools.com/',
   testPathIgnorePatterns: ['node_modules'],
   testRegex: '\\.spec\\.js$',
