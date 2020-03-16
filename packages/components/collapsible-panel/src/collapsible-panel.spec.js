@@ -150,6 +150,16 @@ it('should not call "onToggle" when header is clicked while disabled', () => {
   expect(onToggle).not.toHaveBeenCalled();
 });
 
+it('should forward data-attributes ', () => {
+  const { container } = render(
+    <CollapsiblePanel header="Header" data-foo="bar">
+      Children
+    </CollapsiblePanel>
+  );
+
+  expect(container.querySelector("[data-foo='bar']")).toBeInTheDocument();
+});
+
 describe('getPanelContentId', () => {
   it('should return a string containing the given id', () => {
     const panelContentId = CollapsiblePanel.getPanelContentId('example');
