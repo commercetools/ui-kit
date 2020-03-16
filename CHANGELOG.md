@@ -1,3 +1,20 @@
+## [10.18.0](https://github.com/commercetools/ui-kit/compare/v10.17.0...v10.18.0) (2020-03-16)
+
+#### 🐛 Type: Bug
+
+- `components`
+  - [#1283](https://github.com/commercetools/ui-kit/pull/1283) fix(collapsible-panel): accessible panel Header element ([@jonnybel](https://github.com/jonnybel))
+
+#### 🔮 Type: Chore
+
+- `components`
+  - [#1278](https://github.com/commercetools/ui-kit/pull/1278) chore(card): fix documentation ([@jonnybel](https://github.com/jonnybel))
+
+#### 🚀 Type: New Feature
+
+- `components`, `hooks`
+  - [#1233](https://github.com/commercetools/ui-kit/pull/1233) feat(table): add new component `DataTable` ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.17.0](https://github.com/commercetools/ui-kit/compare/v10.16.0...v10.17.0) (2020-03-11)
 
 #### 🚀 Type: New Feature
