@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/collapsible-motion",
-  "version": "10.17.0",
+  "version": "10.18.0",
   "description": "",
   "main": "dist/collapsible-motion.cjs.js",
   "module": "dist/collapsible-motion.js",
@@ -19,7 +19,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/hooks": "10.13.0",
+    "@commercetools-uikit/hooks": "10.18.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "lodash": "4.17.15",

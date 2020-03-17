@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/text-field",
-  "version": "10.17.0",
+  "version": "10.18.0",
   "description": "",
   "main": "dist/text-field.cjs.js",
   "module": "dist/text-field.esm.js",
@@ -22,7 +22,7 @@
     "@commercetools-uikit/constraints": "10.17.0",
     "@commercetools-uikit/design-system": "10.17.0",
     "@commercetools-uikit/field-errors": "10.17.0",
-    "@commercetools-uikit/field-label": "10.17.0",
+    "@commercetools-uikit/field-label": "10.18.0",
     "@commercetools-uikit/spacings-stack": "10.17.0",
     "@commercetools-uikit/text-input": "10.17.0",
     "@commercetools-uikit/utils": "10.17.0",
