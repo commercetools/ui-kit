@@ -1,3 +1,15 @@
+## [10.18.2](https://github.com/commercetools/ui-kit/compare/v10.18.1...v10.18.2) (2020-03-18)
+
+#### 🐛 Type: Bug
+
+- `components`
+  - [#1287](https://github.com/commercetools/ui-kit/pull/1287) fix(accessible-button): fix no-outline rule for button elements ([@jonnybel](https://github.com/jonnybel))
+
+#### 🔮 Type: Chore
+
+- `presets`
+  - [#1288](https://github.com/commercetools/ui-kit/pull/1288) chore(ui-kit): add new components and hooks to ui-kit preset ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.18.1](https://github.com/commercetools/ui-kit/compare/v10.18.0...v10.18.1) (2020-03-16)
 
 #### 🐛 Type: Bug
