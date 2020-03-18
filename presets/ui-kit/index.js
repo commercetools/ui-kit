@@ -9,6 +9,7 @@ export * from '@commercetools-uikit/fields';
 export * from '@commercetools-uikit/icons';
 export * from '@commercetools-uikit/inputs';
 
+export { default as AccessibleHidden } from '@commercetools-uikit/accessible-hidden';
 export { default as Avatar } from '@commercetools-uikit/avatar';
 export { default as Card } from '@commercetools-uikit/card';
 export { default as Link } from '@commercetools-uikit/link';
@@ -30,12 +31,15 @@ export { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 export { default as Spacings } from '@commercetools-uikit/spacings';
 export { default as Stamp } from '@commercetools-uikit/stamp';
 export { Table, BaseTable, TableCell } from '@commercetools-uikit/table';
+export { default as DataTable } from '@commercetools-uikit/table';
 export { default as Tag } from '@commercetools-uikit/tag';
 export { default as Tooltip } from '@commercetools-uikit/tooltip';
 export { default as Text } from '@commercetools-uikit/text';
 
 // Expose certain useful hooks
 export { useToggleState } from '@commercetools-uikit/hooks';
+export { useSorting } from '@commercetools-uikit/hooks';
+export { useRowSelection } from '@commercetools-uikit/hooks';
 
 export { customProperties } from '@commercetools-uikit/design-system';
 

@@ -22,6 +22,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
+    "@commercetools-uikit/accessible-hidden": "10.17.0",
     "@commercetools-uikit/avatar": "10.17.0",
     "@commercetools-uikit/buttons": "10.18.0",
     "@commercetools-uikit/card": "10.18.0",
@@ -47,6 +48,7 @@
     "@commercetools-uikit/spacings": "10.17.0",
     "@commercetools-uikit/stamp": "10.17.0",
     "@commercetools-uikit/table": "10.17.0",
+    "@commercetools-uikit/data-table": "10.18.0",
     "@commercetools-uikit/tag": "10.18.0",
     "@commercetools-uikit/text": "10.17.0",
     "@commercetools-uikit/tooltip": "10.18.0",
