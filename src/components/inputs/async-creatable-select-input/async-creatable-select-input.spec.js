@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitForElement } from '../../../test-utils';
+import { render, fireEvent, waitFor } from '../../../test-utils';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 
 // We use this component to simulate the whole flow of
@@ -129,7 +129,7 @@ describe('in single mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Mango'));
+      await waitFor(() => getByText('Mango'));
       expect(getByText('Mango')).toBeInTheDocument();
       expect(getByText('Lichi')).toBeInTheDocument();
       expect(getByText('Raspberry')).toBeInTheDocument();
@@ -139,7 +139,7 @@ describe('in single mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Mango'));
+      await waitFor(() => getByText('Mango'));
       getByText('Mango').click();
       // new selected value should be Mango
       expect(getByText('Mango')).toBeInTheDocument();
@@ -154,7 +154,7 @@ describe('in single mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Mango'));
+      await waitFor(() => getByText('Mango'));
       getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -184,7 +184,7 @@ describe('in single mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.change(input, { target: { value: 'Orange', label: 'Orange' } });
-      await waitForElement(() => getByText('Create "Orange"'));
+      await waitFor(() => getByText('Create "Orange"'));
       getByText('Create "Orange"').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -233,7 +233,7 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Mango'));
+      await waitFor(() => getByText('Mango'));
       expect(getByText('Mango')).toBeInTheDocument();
       expect(getByText('Lichi')).toBeInTheDocument();
       expect(getByText('Raspberry')).toBeInTheDocument();
@@ -246,7 +246,7 @@ describe('in multi mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Mango'));
+      await waitFor(() => getByText('Mango'));
       getByText('Mango').click();
       // new selected value should be Mango
       expect(getByText('Mango')).toBeInTheDocument();
@@ -255,7 +255,7 @@ describe('in multi mode', () => {
       // open list again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Banana'));
+      await waitFor(() => getByText('Banana'));
       getByText('Banana').click();
       // new values should be Banana and Mango
       expect(getByText('Banana')).toBeInTheDocument();
@@ -273,7 +273,7 @@ describe('in multi mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Mango'));
+      await waitFor(() => getByText('Mango'));
       getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -285,7 +285,7 @@ describe('in multi mode', () => {
       // open list again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitForElement(() => getByText('Raspberry'));
+      await waitFor(() => getByText('Raspberry'));
       getByText('Raspberry').click();
 
       expect(onChange).toHaveBeenCalledWith({
@@ -311,14 +311,14 @@ describe('in multi mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       const event = { target: { value: 'Orange', label: 'Orange' } };
       fireEvent.change(input, event);
-      await waitForElement(() => getByText('Create "Orange"'));
+      await waitFor(() => getByText('Create "Orange"'));
       getByText('Create "Orange"').click();
       // open again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       const appleEvent = { target: { value: 'Apple', label: 'Apple' } };
       fireEvent.change(input, appleEvent);
-      await waitForElement(() => getByText('Create "Apple"'));
+      await waitFor(() => getByText('Create "Apple"'));
       getByText('Create "Apple"').click();
 
       expect(getByText('Orange')).toBeInTheDocument();
@@ -335,7 +335,7 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'Orange', label: 'Orange' } });
-      await waitForElement(() => getByText('Create "Orange"'));
+      await waitFor(() => getByText('Create "Orange"'));
       getByText('Create "Orange"').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -349,7 +349,7 @@ describe('in multi mode', () => {
 
       // open list again
       fireEvent.change(input, { target: { value: 'Apple', label: 'Apple' } });
-      await waitForElement(() => getByText('Create "Apple"'));
+      await waitFor(() => getByText('Create "Apple"'));
       getByText('Create "Apple"').click();
 
       expect(onChange).toHaveBeenCalledWith({

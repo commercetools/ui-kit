@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render, fireEvent, wait } from '../../../../../src/test-utils';
+import { render, fireEvent, waitFor } from '../../../../../src/test-utils';
 import SecondaryButton from './secondary-button';
 
 const createTestProps = custom => ({
@@ -97,7 +97,7 @@ describe('rendering', () => {
         <SecondaryButton {...props} onClick={null} linkTo="/foo/bar" />
       );
       fireEvent.click(getByLabelText('Add'));
-      await wait(() => {
+      await waitFor(() => {
         expect(history.location.pathname).toBe('/foo/bar');
       });
     });
@@ -129,7 +129,7 @@ describe('rendering', () => {
         <SecondaryButton {...props} onClick={null} as={Link} to="/foo/bar" />
       );
       fireEvent.click(getByLabelText('Add'));
-      await wait(() => {
+      await waitFor(() => {
         expect(history.location.pathname).toBe('/foo/bar');
       });
     });

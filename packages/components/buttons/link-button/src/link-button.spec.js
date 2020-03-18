@@ -1,6 +1,6 @@
 import React from 'react';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render, fireEvent, wait } from '../../../../../src/test-utils';
+import { render, fireEvent, waitFor } from '../../../../../src/test-utils';
 import LinkButton from './link-button';
 
 const createTestProps = custom => ({
@@ -42,7 +42,7 @@ describe('rendering', () => {
   it('should navigate to link when clicked', async () => {
     const { getByLabelText, history } = render(<LinkButton {...props} />);
     fireEvent.click(getByLabelText('test-button'));
-    await wait(() => {
+    await waitFor(() => {
       expect(history.location.pathname).toBe('/foo/bar');
     });
   });
@@ -60,7 +60,7 @@ describe('rendering', () => {
       <LinkButton {...props} isDisabled={true} />
     );
     fireEvent.click(getByLabelText('test-button'));
-    await wait(() => {
+    await waitFor(() => {
       expect(history.location.pathname).toBe('/');
     });
   });

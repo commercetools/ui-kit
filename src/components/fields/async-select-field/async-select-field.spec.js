@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitForElement } from '../../../test-utils';
+import { render, fireEvent, waitFor } from '../../../test-utils';
 import AsyncSelectField from './async-select-field';
 
 // This component is used to enable easy testing.
@@ -104,13 +104,13 @@ it('should have focus automatically when isAutofocussed is passed', () => {
 
 it('should call onChange when changing the value', async () => {
   const onChange = jest.fn();
-  const { getByLabelText, getByText } = renderAsyncSelectField({
+  const { getByLabelText, getByText, findByText } = renderAsyncSelectField({
     onChange,
   });
   const input = getByLabelText('AsyncSelectField');
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
-  await waitForElement(() => getByText('Shipped'));
+  await waitFor(() => findByText('Shipped'));
   getByText('Shipped').click();
   expect(onChange).toHaveBeenCalled();
 });
