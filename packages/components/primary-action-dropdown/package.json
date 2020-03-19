@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/primary-action-dropdown",
-  "version": "10.18.0",
+  "version": "10.18.2",
   "description": "",
   "main": "dist/primary-action-dropdown.cjs.js",
   "module": "dist/primary-action-dropdown.esm.js",
@@ -19,8 +19,8 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.18.0",
-    "@commercetools-uikit/buttons": "10.18.0",
+    "@commercetools-uikit/accessible-button": "10.18.2",
+    "@commercetools-uikit/buttons": "10.18.2",
     "@commercetools-uikit/design-system": "10.17.0",
     "@commercetools-uikit/hooks": "10.18.0",
     "@commercetools-uikit/icons": "10.17.0",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-multiline-text-input",
-  "version": "10.18.0",
+  "version": "10.18.2",
   "description": "",
   "main": "dist/localized-multiline-text-input.cjs.js",
   "module": "dist/localized-multiline-text-input.esm.js",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@commercetools-uikit/constraints": "10.17.0",
     "@commercetools-uikit/design-system": "10.17.0",
-    "@commercetools-uikit/flat-button": "10.18.0",
+    "@commercetools-uikit/flat-button": "10.18.2",
     "@commercetools-uikit/hooks": "10.18.0",
     "@commercetools-uikit/icons": "10.17.0",
     "@commercetools-uikit/localized-utils": "10.17.0",

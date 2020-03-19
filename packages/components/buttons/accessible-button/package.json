@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/accessible-button",
-  "version": "10.18.0",
+  "version": "10.18.2",
   "description": "",
   "main": "dist/accessible-button.cjs.js",
   "module": "dist/accessible-button.esm.js",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/field-label",
-  "version": "10.18.0",
+  "version": "10.18.2",
   "description": "",
   "main": "dist/field-label.cjs.js",
   "module": "dist/field-label.esm.js",
@@ -19,7 +19,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/buttons": "10.18.0",
+    "@commercetools-uikit/buttons": "10.18.2",
     "@commercetools-uikit/constraints": "10.17.0",
     "@commercetools-uikit/design-system": "10.17.0",
     "@commercetools-uikit/icons": "10.17.0",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/tooltip",
-  "version": "10.18.0",
+  "version": "10.18.2",
   "description": "",
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
