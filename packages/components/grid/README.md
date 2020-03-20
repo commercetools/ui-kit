@@ -13,7 +13,7 @@ The component accepts all the supported properties of CSS Grid, both for the par
 > We recommend having a look at the [`grid.example.story.js`](./grid.example.story.js) to see some simple usages of the CSS Grid layout.
 
 ```js
-import { Grid } from '@commercetools-frontend/ui-kit';
+import Grid from '@commercetools-uikit/grid';
 ```
 
 #### Examples

@@ -3,10 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs/react';
 import LinkTo from '@storybook/addon-links/react';
 import styled from '@emotion/styled';
-import Section from '../../../.storybook/decorators/section';
-import Spacings from '../spacings';
-import Text from '../typography/text';
-import Readme from './README.md';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import Section from '../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import Grid from './grid';
 
 const createList = (size) =>
