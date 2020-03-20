@@ -11,7 +11,7 @@ Recommended to be used in vertical forms. (E.g input field below the label, and 
 #### Usage
 
 ```js
-import { FieldLabel } from '@commercetools-frontend/ui-kit';
+import FieldLabel from '@commercetools-uikit/field-label';
 ```
 
 #### Examples

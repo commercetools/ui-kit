@@ -11,7 +11,7 @@
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
   },
   "files": [
     "dist"
@@ -21,7 +21,6 @@
   "dependencies": {
     "@commercetools-uikit/buttons": "10.18.2",
     "@commercetools-uikit/constraints": "10.17.0",
-    "@commercetools-uikit/design-system": "10.17.0",
     "@commercetools-uikit/icons": "10.17.0",
     "@commercetools-uikit/label": "10.17.0",
     "@commercetools-uikit/spacings-inline": "10.17.0",

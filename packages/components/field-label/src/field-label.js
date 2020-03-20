@@ -1,6 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
-import React from 'react';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import { IconButton } from '@commercetools-uikit/buttons';
