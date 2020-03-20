@@ -7,7 +7,7 @@ Renders errors based on configuration.
 ## Usage
 
 ```jsx
-import { FieldErrors } from '@commercetools-frontend/ui-kit';
+import FieldErrors from '@commercetools-uikit/field-errors';
 
 // This example shows how to handle custom errors on top of the
 // predefined errors of FieldErrors which this component and other
