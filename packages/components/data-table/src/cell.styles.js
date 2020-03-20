@@ -111,7 +111,6 @@ const getSortableHeaderStyles = props => css`
 `;
 
 const BaseHeaderCell = styled.th`
-  overflow: hidden;
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
 
@@ -131,7 +130,7 @@ const BaseHeaderCell = styled.th`
 
 const BaseCell = styled.td`
   border-bottom: 1px solid ${vars.colorNeutral90};
-  overflow: hidden;
+  ${props => (props.isTruncated ? 'overflow: hidden;' : '')}
 `;
 
 const HeaderCellInner = styled.div`

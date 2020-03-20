@@ -66,14 +66,14 @@ const DataCell = props => {
 
   if (onClick) {
     return (
-      <BaseCell>
+      <BaseCell isTruncated={props.isTruncated}>
         <ButtonCellInner {...props} onClick={onClickHandler} />
       </BaseCell>
     );
   }
 
   return (
-    <BaseCell>
+    <BaseCell isTruncated={props.isTruncated}>
       <CellInner
         {...props}
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
