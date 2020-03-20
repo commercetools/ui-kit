@@ -1,3 +1,13 @@
+## [10.18.3](https://github.com/commercetools/ui-kit/compare/v10.18.2...v10.18.3) (2020-03-20)
+
+#### 🐛 Type: Bug
+
+- `components`
+  - [#1293](https://github.com/commercetools/ui-kit/pull/1293) fix(data-table): only clip cells with isTruncated option ([@jonnybel](https://github.com/jonnybel))
+- `presets`
+  - [#1291](https://github.com/commercetools/ui-kit/pull/1291) fix(presets): hooks export in presets/ui-kit ([@jonnybel](https://github.com/jonnybel))
+  - [#1290](https://github.com/commercetools/ui-kit/pull/1290) fix(presets): data-table export in presets/ui-kit ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.18.2](https://github.com/commercetools/ui-kit/compare/v10.18.1...v10.18.2) (2020-03-18)
 
 #### 🐛 Type: Bug
