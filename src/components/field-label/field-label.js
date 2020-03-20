@@ -43,7 +43,7 @@ export const FieldLabel = props => {
         </Inline>
 
         {props.hint && (
-          <Inline alignItems="center" scale="xs">
+          <Inline alignItems="flexStart" scale="xs">
             {props.hintIcon && (
               <Inline>
                 {React.cloneElement(props.hintIcon, {
