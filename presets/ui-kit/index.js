@@ -37,9 +37,11 @@ export { default as Tooltip } from '@commercetools-uikit/tooltip';
 export { default as Text } from '@commercetools-uikit/text';
 
 // Expose certain useful hooks
-export { useToggleState } from '@commercetools-uikit/hooks';
-export { useSorting } from '@commercetools-uikit/hooks';
-export { useRowSelection } from '@commercetools-uikit/hooks';
+export {
+  useToggleState,
+  useSorting,
+  useRowSelection,
+} from '@commercetools-uikit/hooks';
 
 export { customProperties } from '@commercetools-uikit/design-system';
 
