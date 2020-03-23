@@ -30,7 +30,7 @@ const PasswordField = (props) => {
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Stack scale="xs">
-        <Inline alignItems="center" justifyContent="space-between">
+        <Inline alignItems="flex-end" justifyContent="space-between">
           <FieldLabel
             hint={props.hint}
             title={props.title}
