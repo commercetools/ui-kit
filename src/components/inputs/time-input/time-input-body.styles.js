@@ -10,7 +10,7 @@ import { getInputStyles } from '../styles';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = props => {
+const getClearSectionStyles = (props) => {
   const overwrittenVars = {
     ...vars,
     ...props.theme,
@@ -77,7 +77,7 @@ const getClearSectionStyles = props => {
   return baseIconStyles;
 };
 
-const getClockIconContainerStyles = props => {
+const getClockIconContainerStyles = (props) => {
   const overwrittenVars = {
     ...vars,
     ...props.theme,
@@ -147,7 +147,7 @@ const getClockIconContainerStyles = props => {
   return baseIconStyles;
 };
 
-const getInputContainerStyles = props => {
+const getInputContainerStyles = (props) => {
   const overwrittenVars = {
     ...vars,
     ...props.theme,
@@ -162,7 +162,7 @@ const getInputContainerStyles = props => {
   `;
 };
 
-const mapProps = props => {
+const mapProps = (props) => {
   return {
     isDisabled: props.disabled,
     isReadOnly: props.readOnly,
@@ -170,7 +170,7 @@ const mapProps = props => {
   };
 };
 
-const getTimeInputStyles = props => {
+const getTimeInputStyles = (props) => {
   const overwrittenVars = {
     ...vars,
     ...props.theme,
@@ -213,7 +213,7 @@ const getTimeInputStyles = props => {
   ];
 };
 
-const getBorderColorWhenFocused = props => {
+const getBorderColorWhenFocused = (props) => {
   const overwrittenVars = {
     ...vars,
     ...props.theme,
@@ -227,7 +227,7 @@ const getBorderColorWhenFocused = props => {
   `;
 };
 
-const getClearSectionHoverStyles = props => {
+const getClearSectionHoverStyles = (props) => {
   if (!props.isDisabled && !props.isReadOnly) {
     const overwrittenVars = {
       ...vars,
@@ -257,7 +257,7 @@ const StyledInput = styled.input`
   ${getTimeInputStyles}
 
   &:focus + ${StyledClearSection}, &:focus + ${StyledClearSection} + ${StyledClockIconContainer} {
-     ${props => !props.disabled && getBorderColorWhenFocused}
+     ${(props) => !props.disabled && getBorderColorWhenFocused}
   }
 `;
 
@@ -265,7 +265,7 @@ const StyledInputContainer = styled.div`
   ${getInputContainerStyles}
 
   &:hover ${StyledInput}, &:hover ${StyledClearSection}, &:hover ${StyledClockIconContainer} {
-    ${props => !props.isDisabled && getBorderColorWhenFocused}
+    ${(props) => !props.isDisabled && getBorderColorWhenFocused}
   }
 `;
 

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Chain from '../raw-components/chain';
 
-const Component = props => (
-  <Chain {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Chain {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ChainIcon';

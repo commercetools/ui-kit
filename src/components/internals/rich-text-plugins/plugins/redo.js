@@ -5,7 +5,7 @@ const memoizedIsHotkey = memoize(isKeyHotkey);
 
 const HOT_KEY = 'mod+y';
 
-const hasRedos = editor => {
+const hasRedos = (editor) => {
   const { value } = editor;
   const { data } = value;
   const redos = data.get('redos');
@@ -28,10 +28,10 @@ const RedoPlugin = (options = {}) => {
         editor.toggleRedo();
       },
       queries: {
-        hasRedos: editor => hasRedos(editor),
+        hasRedos: (editor) => hasRedos(editor),
       },
       commands: {
-        toggleRedo: editor => {
+        toggleRedo: (editor) => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }

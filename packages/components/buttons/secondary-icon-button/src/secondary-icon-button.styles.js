@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getDisabledStyle = overwrittenVars => {
+const getDisabledStyle = (overwrittenVars) => {
   /* By using the css 'disabled' selector directly, we don't need additional logic to check the isDisabled prop */
   return css`
     &:disabled svg * {

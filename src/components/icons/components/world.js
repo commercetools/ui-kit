@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import World from '../raw-components/world';
 
-const Component = props => (
-  <World {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <World {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'WorldIcon';

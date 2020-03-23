@@ -12,7 +12,7 @@ import { getButtonStyles } from './primary-button.styles';
 
 const propsToOmit = ['type'];
 
-const PrimaryButton = props => {
+const PrimaryButton = (props) => {
   const dataProps = {
     'data-track-component': 'PrimaryButton',
     ...filterInvalidAttributes(omit(props, propsToOmit)),
@@ -74,7 +74,7 @@ PrimaryButton.propTypes = {
     return PropTypes.bool(props, propName, componentName, ...rest);
   },
   isDisabled: PropTypes.bool,
-  onClick: requiredIf(PropTypes.func, props => !props.as),
+  onClick: requiredIf(PropTypes.func, (props) => !props.as),
   size: PropTypes.oneOf(['big', 'small']),
   tone: PropTypes.oneOf(['urgent', 'primary']),
 };

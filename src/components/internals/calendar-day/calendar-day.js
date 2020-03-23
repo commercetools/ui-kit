@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getStyles = props => {
+const getStyles = (props) => {
   const styles = [];
 
   if (!['heading', 'spacing'].includes(props.type)) {
@@ -75,7 +75,7 @@ const getStyles = props => {
   return styles;
 };
 
-const CalendarDay = props => {
+const CalendarDay = (props) => {
   const {
     isHighlighted,
     isSelected,

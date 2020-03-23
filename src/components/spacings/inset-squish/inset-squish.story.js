@@ -50,7 +50,7 @@ storiesOf('Components|Spacings', module)
     <View>
       <Inset scale="m">
         <Inline scale="s" alignItems="center">
-          {sizes.map(size => (
+          {sizes.map((size) => (
             <InsetColorWrapper key={size.name}>
               <InsetSquish scale={size.name}>
                 <Button>

@@ -8,7 +8,7 @@ import { getBaseStyles } from './secondary-icon-button.styles';
 
 const propsToOmit = ['type'];
 
-export const SecondaryIconButton = props => {
+export const SecondaryIconButton = (props) => {
   const buttonAttributes = {
     ...filterInvalidAttributes(omit(props, propsToOmit)),
     'data-track-component': 'SecondaryIconButton',
@@ -24,7 +24,7 @@ export const SecondaryIconButton = props => {
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={theme => getBaseStyles(theme, props)}
+      css={(theme) => getBaseStyles(theme, props)}
     >
       {props.icon}
     </AccessibleButton>
@@ -39,7 +39,7 @@ SecondaryIconButton.propTypes = {
   icon: PropTypes.element.isRequired,
   color: PropTypes.oneOf(['solid', 'primary']),
   label: PropTypes.string.isRequired,
-  onClick: requiredIf(PropTypes.func, props => !props.as),
+  onClick: requiredIf(PropTypes.func, (props) => !props.as),
   isDisabled: PropTypes.bool,
 };
 

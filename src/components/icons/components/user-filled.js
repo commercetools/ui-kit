@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import UserFilled from '../raw-components/user-filled';
 
-const Component = props => (
-  <UserFilled {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <UserFilled {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'UserFilledIcon';

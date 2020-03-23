@@ -34,7 +34,8 @@ switch (command) {
   }
   case 'replace': {
     const pkgDirectory = fs.realpathSync(process.cwd());
-    const resolvePkg = relativePath => path.resolve(pkgDirectory, relativePath);
+    const resolvePkg = (relativePath) =>
+      path.resolve(pkgDirectory, relativePath);
 
     const paths = [resolvePkg('dist')];
 

@@ -27,15 +27,15 @@ const sequentialId = createSequentialId('localized-money-input-');
 // - All other currencies follow, sorted alphabetically as well
 export const sortCurrencies = (selectedCurrency, allCurrencies) => {
   const remainingCurrencies = allCurrencies.filter(
-    currency => currency !== selectedCurrency
+    (currency) => currency !== selectedCurrency
   );
   return [selectedCurrency, ...remainingCurrencies.sort()];
 };
 
-const LocalizedInput = props => {
+const LocalizedInput = (props) => {
   const { onChange } = props;
   const handleChange = React.useCallback(
-    event => {
+    (event) => {
       // We manipulate the event to add the currency to the target.
       // That way the users  can read
       // event.target.currency and event.target.value to determine the next value.
@@ -121,7 +121,7 @@ LocalizedInput.propTypes = {
   warning: PropTypes.node,
 };
 
-const LocalizedMoneyInput = props => {
+const LocalizedMoneyInput = (props) => {
   const intl = useIntl();
 
   const defaultExpansionState =
@@ -291,13 +291,13 @@ LocalizedMoneyInput.defaultProps = {
 };
 
 LocalizedMoneyInput.convertToMoneyValues = (values, locale) =>
-  Object.values(values).map(value =>
+  Object.values(values).map((value) =>
     MoneyInput.convertToMoneyValue(value, locale)
   );
 
 LocalizedMoneyInput.parseMoneyValues = (moneyValues = [], locale) =>
   moneyValues
-    .map(value => MoneyInput.parseMoneyValue(value, locale))
+    .map((value) => MoneyInput.parseMoneyValue(value, locale))
     .reduce(
       (pairs, value) => ({
         ...pairs,
@@ -307,12 +307,12 @@ LocalizedMoneyInput.parseMoneyValues = (moneyValues = [], locale) =>
     );
 
 LocalizedMoneyInput.getHighPrecisionCurrencies = (values, locale) =>
-  Object.keys(values).filter(currencyCode =>
+  Object.keys(values).filter((currencyCode) =>
     MoneyInput.isHighPrecision(values[currencyCode], locale)
   );
 
-LocalizedMoneyInput.getEmptyCurrencies = values =>
-  Object.keys(values).filter(currencyCode =>
+LocalizedMoneyInput.getEmptyCurrencies = (values) =>
+  Object.keys(values).filter((currencyCode) =>
     MoneyInput.isEmpty(values[currencyCode])
   );
 

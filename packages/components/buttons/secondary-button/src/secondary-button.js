@@ -15,7 +15,7 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
-export const getIconColor = props => {
+export const getIconColor = (props) => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be the same color as the theme on active state
   if (props.theme !== 'default' && isActive && !props.isDisabled) return 'info'; // returns the passed in theme without overwriting
@@ -25,7 +25,7 @@ export const getIconColor = props => {
   return props.iconLeft.props.color;
 };
 
-export const SecondaryButton = props => {
+export const SecondaryButton = (props) => {
   const isActive = props.isToggleButton && props.isToggled;
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
 
@@ -147,7 +147,7 @@ SecondaryButton.propTypes = {
     );
   },
 
-  onClick: requiredIf(PropTypes.func, props => {
+  onClick: requiredIf(PropTypes.func, (props) => {
     return !props.linkTo && !props.as;
   }),
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),

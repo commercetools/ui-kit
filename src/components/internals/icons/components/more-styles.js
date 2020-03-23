@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import MoreStyles from '../raw-components/more-styles';
 
-const Component = props => (
-  <MoreStyles {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <MoreStyles {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'MoreStylesIcon';

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Information from '../raw-components/information';
 
-const Component = props => (
-  <Information {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Information {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'InformationIcon';

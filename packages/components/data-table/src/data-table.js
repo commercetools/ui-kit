@@ -4,7 +4,7 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { TableGrid, Header, Body, Row } from './data-table.styles';
 import { HeaderCell, DataCell } from './cell';
 
-const DataTable = props => (
+const DataTable = (props) => (
   <TableGrid
     {...filterDataAttributes(props)}
     columns={props.columns}
@@ -13,7 +13,7 @@ const DataTable = props => (
   >
     <Header>
       <Row>
-        {props.columns.map(column => (
+        {props.columns.map((column) => (
           <HeaderCell
             key={column.key}
             isCondensed={props.isCondensed}
@@ -37,7 +37,7 @@ const DataTable = props => (
             props.onRowClick ? () => props.onRowClick(row, rowIndex) : undefined
           }
         >
-          {props.columns.map(column => (
+          {props.columns.map((column) => (
             <DataCell
               key={`${row.id}-${column.key}`}
               onClick={

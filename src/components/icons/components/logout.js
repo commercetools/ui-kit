@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Logout from '../raw-components/logout';
 
-const Component = props => (
-  <Logout {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Logout {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'LogoutIcon';

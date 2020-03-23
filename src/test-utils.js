@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-const getMessagesForLocale = locale => {
+const getMessagesForLocale = (locale) => {
   switch (locale) {
     case 'de':
       return require('@commercetools-uikit/i18n/data/de.json');

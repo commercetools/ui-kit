@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Flame from '../raw-components/flame';
 
-const Component = props => (
-  <Flame {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Flame {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'FlameIcon';

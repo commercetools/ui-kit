@@ -11,7 +11,7 @@ const Input = styled.input`
   }
 `;
 
-const Checkbox = props => {
+const Checkbox = (props) => {
   const ref = React.useRef();
   React.useEffect(() => {
     if (props.isIndeterminate) {
@@ -22,7 +22,7 @@ const Checkbox = props => {
   const { onChange } = props;
 
   const handleChange = React.useCallback(
-    event => !props.isReadOnly && onChange && onChange(event),
+    (event) => !props.isReadOnly && onChange && onChange(event),
     [props.isReadOnly, onChange]
   );
 

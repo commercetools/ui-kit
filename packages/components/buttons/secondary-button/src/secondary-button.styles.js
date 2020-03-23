@@ -61,7 +61,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   `;
 };
 
-const getThemeStyles = theme => {
+const getThemeStyles = (theme) => {
   if (!theme) return css``;
 
   if (theme === 'default') return css``;

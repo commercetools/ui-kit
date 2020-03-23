@@ -28,8 +28,9 @@ const InlineColorWrapper = styled.div`
 `;
 
 const Item = styled.div`
-  background-color: ${props => props.backgroundColor};
-  height: ${props => (props.alignItems === 'stretch' ? 'auto' : props.height)};
+  background-color: ${(props) => props.backgroundColor};
+  height: ${(props) =>
+    props.alignItems === 'stretch' ? 'auto' : props.height};
   width: 100px;
 `;
 
@@ -110,7 +111,7 @@ const exampleHeights = ['50px', '60px', '76px', '40px', '66px'];
 
 const StackExample = ({ alignItems }) => (
   <Spacings.Inline scale="s">
-    {sizes.map(size => (
+    {sizes.map((size) => (
       <StackColorWrapper key={size.name}>
         <Spacings.Inset scale="m">
           <Text.Subheadline as="h4">
@@ -119,7 +120,7 @@ const StackExample = ({ alignItems }) => (
           </Text.Subheadline>
         </Spacings.Inset>
         <Spacings.Stack scale={size.name} alignItems={alignItems}>
-          {exampleHeights.map(height => (
+          {exampleHeights.map((height) => (
             <Item
               key={height}
               backgroundColor="#2d68a0"
@@ -140,7 +141,7 @@ StackExample.propTypes = {
 
 const InlineExample = ({ alignItems }) => (
   <Stack>
-    {sizes.map(size => (
+    {sizes.map((size) => (
       <Row key={size.name}>
         <InlineColorWrapper>
           <Scale>
@@ -152,7 +153,7 @@ const InlineExample = ({ alignItems }) => (
             </Spacings.Inset>
           </Scale>
           <Spacings.Inline scale={size.name} alignItems={alignItems}>
-            {exampleHeights.map(height => (
+            {exampleHeights.map((height) => (
               <Item
                 key={height}
                 backgroundColor="#65ff4f"
@@ -174,7 +175,7 @@ InlineExample.propTypes = {
 
 export const component = () => (
   <Suite>
-    {flexProps.map(prop => (
+    {flexProps.map((prop) => (
       <Spec
         key={`inline-${prop}`}
         label={`Inline - when alignItems is ${prop}`}
@@ -185,7 +186,7 @@ export const component = () => (
     <Spec label="Inset">
       <View>
         <Spacings.Inline scale="s">
-          {sizes.map(size => (
+          {sizes.map((size) => (
             <InsetColorWrapper key={size.name}>
               <Spacings.Inset scale={size.name}>
                 <Square>
@@ -203,7 +204,7 @@ export const component = () => (
     <Spec label="InsetSquish">
       <View>
         <Spacings.Inline scale="s" alignItems="center">
-          {insetSquishSizes.map(size => (
+          {insetSquishSizes.map((size) => (
             <InsetSquishColorWrapper key={size.name}>
               <Spacings.InsetSquish scale={size.name}>
                 <Button>
@@ -218,7 +219,7 @@ export const component = () => (
         </Spacings.Inline>
       </View>
     </Spec>
-    {flexProps.map(prop => (
+    {flexProps.map((prop) => (
       <Spec key={`stack-${prop}`} label={`Stack - when alignItems is ${prop}`}>
         <StackExample alignItems={prop} />
       </Spec>
@@ -230,7 +231,7 @@ export const component = () => (
       'space-between',
       'space-around',
       'space-evenly',
-    ].map(prop => (
+    ].map((prop) => (
       <Spec
         key={`inline-justify-${prop}`}
         label={`Inline - when justifyContent is ${prop}`}

@@ -11,7 +11,7 @@ import {
   SortableHeaderInner,
 } from './cell.styles';
 
-const HeaderCell = props => {
+const HeaderCell = (props) => {
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
 
@@ -41,7 +41,7 @@ const HeaderCell = props => {
 };
 HeaderCell.displayName = 'HeaderCell';
 HeaderCell.propTypes = {
-  onClick: requiredIf(PropTypes.func, props => props.isSortable),
+  onClick: requiredIf(PropTypes.func, (props) => props.isSortable),
   sortedBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
@@ -53,10 +53,10 @@ HeaderCell.defaultProps = {
   sortDirection: 'desc',
 };
 
-const DataCell = props => {
+const DataCell = (props) => {
   const { shouldIgnoreRowClick, onClick } = props;
   const onClickHandler = React.useCallback(
-    event => {
+    (event) => {
       if (shouldIgnoreRowClick) event.stopPropagation();
       if (onClick) return onClick(event);
       return null;

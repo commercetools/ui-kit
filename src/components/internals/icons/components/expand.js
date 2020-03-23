@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Expand from '../raw-components/expand';
 
-const Component = props => (
-  <Expand {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Expand {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ExpandIcon';

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import CodeView from '../raw-components/code-view';
 
-const Component = props => (
-  <CodeView {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <CodeView {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CodeViewIcon';

@@ -21,7 +21,7 @@ class TestComponent extends React.Component {
       fr: "Calisse d'ostie de tabarnak",
     },
     selectedLanguage: 'en',
-    intl: { formatMessage: message => message.id },
+    intl: { formatMessage: (message) => message.id },
   };
 
   state = {
@@ -29,7 +29,7 @@ class TestComponent extends React.Component {
     selectedLanguage: this.props.selectedLanguage || '',
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     this.setState({
       value: {

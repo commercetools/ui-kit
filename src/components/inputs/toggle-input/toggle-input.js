@@ -12,7 +12,7 @@ import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input
 const thumbSmallSize = '13px';
 const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
 
-const sizeStyles = props => {
+const sizeStyles = (props) => {
   if (props.size === 'small')
     return css`
       height: calc(${vars.standardInputHeight} / 2);
@@ -27,7 +27,7 @@ const sizeStyles = props => {
 const Label = styled.label`
   position: relative;
   display: inline-block;
-  cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
 
   ${sizeStyles}
 `;
@@ -55,10 +55,11 @@ const Span = styled.span`
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
-    left: ${props => (props.size === 'small' ? '2px' : '3px')};
-    height: ${props =>
+    left: ${(props) => (props.size === 'small' ? '2px' : '3px')};
+    height: ${(props) =>
       props.size === 'small' ? thumbSmallSize : thumbBigSize};
-    width: ${props => (props.size === 'small' ? thumbSmallSize : thumbBigSize)};
+    width: ${(props) =>
+      props.size === 'small' ? thumbSmallSize : thumbBigSize};
     background-color: ${vars.colorSurface};
     box-shadow: ${vars.shadow7};
     border-radius: 50%;
@@ -74,7 +75,7 @@ const Input = styled.input`
       background: ${vars.colorPrimary};
     }
     & + ${Span}::after {
-      transform: ${props =>
+      transform: ${(props) =>
         props.size === 'small'
           ? 'translate(117%, -50%)'
           : 'translate(127%, -50%)'};
@@ -111,7 +112,7 @@ const Input = styled.input`
   }
 `;
 
-const ToggleInput = props => {
+const ToggleInput = (props) => {
   return (
     <Label htmlFor={props.id} size={props.size} isDisabled={props.isDisabled}>
       <Input

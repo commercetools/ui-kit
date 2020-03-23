@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import accessibleHiddenInputStyles from '../accessible-hidden-input.styles';
 
-const HiddenInput = props => {
+const HiddenInput = (props) => {
   const { handleFocus } = props;
   const onFocus = React.useCallback(
-    event => {
+    (event) => {
       event.preventDefault();
       if (!props.isFocused) {
         handleFocus();
@@ -14,7 +14,7 @@ const HiddenInput = props => {
     [props.isFocused, handleFocus]
   );
 
-  const onBlur = React.useCallback(event => {
+  const onBlur = React.useCallback((event) => {
     event.preventDefault();
   }, []);
 

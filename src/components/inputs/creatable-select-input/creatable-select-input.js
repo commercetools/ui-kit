@@ -24,7 +24,7 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-const CreatableSelectInput = props => {
+const CreatableSelectInput = (props) => {
   const intl = useIntl();
   const theme = useTheme();
 
@@ -129,7 +129,7 @@ const CreatableSelectInput = props => {
           allowCreateWhileLoading={props.allowCreateWhileLoading}
           formatCreateLabel={
             props.formatCreateLabel ||
-            (inputValue =>
+            ((inputValue) =>
               intl.formatMessage(messages.createLabel, {
                 inputValue,
               }))
@@ -148,7 +148,7 @@ CreatableSelectInput.displayName = 'CreatableSelectInput';
 
 // Both "true" and an empty array [] represent a touched state. The Boolean
 // conveniently handles both cases
-CreatableSelectInput.isTouched = touched => Boolean(touched);
+CreatableSelectInput.isTouched = (touched) => Boolean(touched);
 
 CreatableSelectInput.propTypes = {
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),

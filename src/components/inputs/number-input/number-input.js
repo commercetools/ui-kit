@@ -6,7 +6,7 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '../styles';
 
-const NumberInput = props => (
+const NumberInput = (props) => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
     <input
       id={props.id}
@@ -22,7 +22,7 @@ const NumberInput = props => (
       onFocus={props.onFocus}
       disabled={props.isDisabled}
       placeholder={props.placeholder}
-      css={theme => getInputStyles(props, theme)}
+      css={(theme) => getInputStyles(props, theme)}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
       {...filterDataAttributes(props)}
@@ -44,7 +44,7 @@ NumberInput.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   isDisabled: PropTypes.bool,
@@ -60,7 +60,7 @@ NumberInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-NumberInput.toFormValue = numberOrString => {
+NumberInput.toFormValue = (numberOrString) => {
   if (
     typeof numberOrString === 'number' ||
     typeof numberOrString === 'string'
@@ -70,13 +70,13 @@ NumberInput.toFormValue = numberOrString => {
   return '';
 };
 
-NumberInput.isEmpty = value => {
+NumberInput.isEmpty = (value) => {
   if (typeof value === 'string') return value.trim().length === 0;
   if (typeof value === 'number') return isNaN(value);
   return true;
 };
 
-NumberInput.hasFractionDigits = number => {
+NumberInput.hasFractionDigits = (number) => {
   const fraction = number % 1;
   invariant(
     !isNaN(fraction),

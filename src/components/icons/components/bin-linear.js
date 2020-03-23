@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import BinLinear from '../raw-components/bin-linear';
 
-const Component = props => (
-  <BinLinear {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <BinLinear {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'BinLinearIcon';

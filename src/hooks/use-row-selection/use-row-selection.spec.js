@@ -9,7 +9,7 @@ const testData = [
   { id: 'woman-at-war' },
 ];
 
-const TestComponent = props => {
+const TestComponent = (props) => {
   const {
     rows,
     toggleRow,
@@ -31,7 +31,7 @@ const TestComponent = props => {
       </button>
       <span data-testid={'selectedCount'}>{getNumberOfSelectedRows()}</span>
       <div>
-        {rows.map(item => (
+        {rows.map((item) => (
           <div key={item.id}>
             <span data-testid={item.id}>
               {getIsRowSelected(item.id).toString()}
@@ -64,7 +64,7 @@ const TestComponent = props => {
 it('should have no selected items by default', () => {
   const rendered = render(<TestComponent keyName="checked" items={testData} />);
 
-  testData.forEach(item => {
+  testData.forEach((item) => {
     expect(rendered.queryByTestId(item.id)).toHaveTextContent('false');
   });
 });
@@ -122,7 +122,7 @@ it('should be possible to select all rows', () => {
 
   expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('3');
 
-  testData.forEach(item => {
+  testData.forEach((item) => {
     expect(rendered.queryByTestId(item.id)).toHaveTextContent('true');
   });
 });
@@ -138,7 +138,7 @@ it('should be possible to deselect all rows', () => {
 
   expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('0');
 
-  testData.forEach(item => {
+  testData.forEach((item) => {
     expect(rendered.queryByTestId(item.id)).toHaveTextContent('false');
   });
 });

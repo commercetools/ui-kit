@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Search from '../raw-components/search';
 
-const Component = props => (
-  <Search {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Search {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SearchIcon';

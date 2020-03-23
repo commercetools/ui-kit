@@ -13,7 +13,7 @@ const getArrowColor = ({ tone, isDisabled }) => {
   return 'solid';
 };
 
-const HeaderIcon = props => {
+const HeaderIcon = (props) => {
   const backgroundColor =
     props.tone === 'urgent' ? vars.colorWarning : vars.colorSurface;
   return (

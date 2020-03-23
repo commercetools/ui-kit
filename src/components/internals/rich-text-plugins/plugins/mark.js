@@ -13,10 +13,10 @@ const requiredOptions = [
   'RenderMark',
 ];
 
-const validate = options => {
+const validate = (options) => {
   // eslint-disable-next-line consistent-return
   const missingRequiredOptions = requiredOptions.filter(
-    option => !options[option]
+    (option) => !options[option]
   );
   return missingRequiredOptions;
 };
@@ -59,11 +59,13 @@ const MarkPlugin = (options = {}) => {
         }
       },
       commands: {
-        [options.command]: editor => editor.toggleMark(options.typeName),
+        [options.command]: (editor) => editor.toggleMark(options.typeName),
       },
       queries: {
-        [options.query]: editor =>
-          editor.value.activeMarks.some(mark => mark.type === options.typeName),
+        [options.query]: (editor) =>
+          editor.value.activeMarks.some(
+            (mark) => mark.type === options.typeName
+          ),
       },
     },
   ];

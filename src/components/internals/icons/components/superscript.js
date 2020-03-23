@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Superscript from '../raw-components/superscript';
 
-const Component = props => (
-  <Superscript {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Superscript {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SuperscriptIcon';

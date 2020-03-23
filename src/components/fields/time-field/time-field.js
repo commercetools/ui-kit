@@ -14,7 +14,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('time-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 class TimeField extends React.Component {
   static displayName = 'TimeField';
@@ -34,7 +34,7 @@ class TimeField extends React.Component {
     autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isAutofocussed: PropTypes.bool,
@@ -45,7 +45,7 @@ class TimeField extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onInfoButtonClick: PropTypes.func,

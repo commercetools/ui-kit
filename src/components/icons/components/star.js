@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Star from '../raw-components/star';
 
-const Component = props => (
-  <Star {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Star {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'StarIcon';

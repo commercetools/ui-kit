@@ -15,7 +15,7 @@ import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 
 const sequentialId = createSequentialId('async-select-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 export default class AsyncSelectField extends React.Component {
   static displayName = 'AsyncSelectField';
@@ -87,7 +87,7 @@ export default class AsyncSelectField extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onInfoButtonClick: PropTypes.func,

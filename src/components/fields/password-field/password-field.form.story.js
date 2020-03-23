@@ -33,7 +33,7 @@ storiesOf('Examples|Forms/Fields', module)
       <Section>
         <Formik
           initialValues={initialValues}
-          validate={values => {
+          validate={(values) => {
             const errors = { password: {} };
             if (PasswordInput.isEmpty(values.password))
               errors.password.missing = true;
@@ -45,7 +45,7 @@ storiesOf('Examples|Forms/Fields', module)
             action('onSubmit')(values, formik, ...rest);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <PasswordField
                 title="Password"
@@ -63,7 +63,7 @@ storiesOf('Examples|Forms/Fields', module)
                   'm'
                 )}
                 errors={formik.errors.password}
-                renderError={key => {
+                renderError={(key) => {
                   switch (key) {
                     // these could also use <FormattedMessage />
                     case 'insecure':

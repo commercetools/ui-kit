@@ -15,7 +15,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('localized-multiline-text-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 class LocalizedMultilineTextField extends React.Component {
   static displayName = 'LocalizedMultilineTextField';
@@ -35,7 +35,7 @@ class LocalizedMultilineTextField extends React.Component {
     autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.objectOf(PropTypes.string).isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
@@ -65,7 +65,7 @@ class LocalizedMultilineTextField extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onInfoButtonClick: PropTypes.func,

@@ -50,7 +50,7 @@ const expandedTranslationsReducer = (state, action) => {
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedRichTextInput = props => {
+const LocalizedRichTextInput = (props) => {
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
     (translations, locale) => {
       return {
@@ -80,7 +80,7 @@ const LocalizedRichTextInput = props => {
   );
 
   const toggleLanguage = React.useCallback(
-    language => {
+    (language) => {
       expandedTranslationsDispatch({ type: 'toggle', payload: language });
     },
     [expandedTranslationsDispatch]
@@ -189,7 +189,7 @@ LocalizedRichTextInput.propTypes = {
   // languages have to exist (with empty or filled slate values) on the value:
   //   { en: slateValue, de: slateValue, es: slateValue }
   value: PropTypes.objectOf(PropTypes.any).isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   selectedLanguage: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
@@ -219,7 +219,7 @@ LocalizedRichTextInput.propTypes = {
   errors: PropTypes.objectOf(PropTypes.node),
   warnings: PropTypes.objectOf(PropTypes.node),
   showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
+  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
 };
 
 LocalizedRichTextInput.getId = getId;

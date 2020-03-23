@@ -7,7 +7,7 @@ import Tooltip from './tooltip';
 
 jest.useFakeTimers();
 
-const Portal = props => {
+const Portal = (props) => {
   const domNode = document.querySelector('#portal-id');
   return ReactDOM.createPortal(props.children, domNode);
 };
@@ -43,7 +43,7 @@ class TestComponent extends React.Component {
   };
 
   toggleTooltip = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       open: !prevState.open,
     }));
   };
@@ -264,7 +264,7 @@ TooltipWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const BodyComponent = props => (
+const BodyComponent = (props) => (
   <div data-testid="tooltip-custom-body">{props.children}</div>
 );
 

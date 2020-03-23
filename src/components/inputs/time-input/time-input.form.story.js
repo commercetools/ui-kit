@@ -11,7 +11,7 @@ import FormikBox from '../../../../.storybook/decorators/formik-box';
 import Readme from './README.md';
 import TimeInput from './time-input';
 
-const Story = injectIntl(props => {
+const Story = injectIntl((props) => {
   const initialValues = {
     startTime: TimeInput.toLocaleTime('10:00', props.intl.locale),
     endTime: '',
@@ -29,7 +29,7 @@ const Story = injectIntl(props => {
           });
           formik.resetForm({ values: initialValues });
         }}
-        render={formik => (
+        render={(formik) => (
           <Spacings.Stack scale="l">
             <TimeInput
               name="startTime"

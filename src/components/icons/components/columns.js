@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Columns from '../raw-components/columns';
 
-const Component = props => (
-  <Columns {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Columns {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ColumnsIcon';

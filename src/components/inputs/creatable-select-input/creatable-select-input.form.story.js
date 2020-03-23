@@ -90,7 +90,7 @@ storiesOf('Examples|Forms/Inputs', module)
             action('onSubmit')(values, formik, ...rest);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => {
+          render={(formik) => {
             const stateInput = {
               hasError: failValidation,
               isTouched: CreatableSelectInput.isTouched(formik.touched.state),

@@ -39,7 +39,7 @@ storiesOf('Components|Inputs', module)
               id={text('id', undefined)}
               name={text('name', undefined)}
               value={value}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange({
                   ...value,
@@ -69,7 +69,7 @@ storiesOf('Components|Inputs', module)
               )}
               hasError={boolean('hasError', false)}
               errors={
-                Object.values(errors).some(error => error.length > 0)
+                Object.values(errors).some((error) => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [language, error]) => {
                       if (error.length === 0) return acc;
                       acc[language] = <ErrorMessage>{error}</ErrorMessage>;

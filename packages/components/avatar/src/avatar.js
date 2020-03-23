@@ -11,13 +11,8 @@ const avatarSizes = {
   l: { width: '100px', fontSize: '3em' },
 };
 
-const getFirstChar = str =>
-  typeof str === 'string'
-    ? str
-        .trim()
-        .slice(0, 1)
-        .toUpperCase()
-    : '';
+const getFirstChar = (str) =>
+  typeof str === 'string' ? str.trim().slice(0, 1).toUpperCase() : '';
 
 const getInitialsFromName = ({ firstName = '', lastName = '' }) =>
   `${getFirstChar(firstName)}${getFirstChar(lastName)}`;
@@ -35,7 +30,7 @@ const createGravatarImgUrl = (md5Hash, size, multiplyBy = 1) => {
   return `https://www.gravatar.com/avatar/${md5Hash}?s=${gravatarSize}&d=blank`;
 };
 
-const GravatarImg = props => (
+const GravatarImg = (props) => (
   <img
     css={css`
       background-position: center center;
@@ -60,7 +55,7 @@ GravatarImg.propTypes = {
   isHighlighted: PropTypes.bool,
 };
 
-const Initials = props => (
+const Initials = (props) => (
   <div
     css={css`
       position: absolute;
@@ -81,7 +76,7 @@ Initials.propTypes = {
   size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
 };
 
-const Avatar = props => (
+const Avatar = (props) => (
   <div
     css={css`
       align-items: center;

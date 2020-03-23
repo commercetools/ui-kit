@@ -18,7 +18,7 @@ const defaultProps = {
   minHeight: 0,
 };
 
-const getMinHeight = minHeight =>
+const getMinHeight = (minHeight) =>
   minHeight !== 0 ? `${minHeight}px` : minHeight;
 
 const createOpeningAnimation = (height, minHeight = 0) =>
@@ -76,7 +76,7 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
   return [animationRef.current, containerStyles, handleToggle, nodeRef];
 };
 
-const CollapsibleMotion = props => {
+const CollapsibleMotion = (props) => {
   const isControlledComponent = !isNil(props.isClosed);
 
   if (isControlledComponent) {
@@ -86,7 +86,7 @@ const CollapsibleMotion = props => {
   return <UncontrolledCollapsibleMotion {...props} />;
 };
 
-const ControlledCollapsibleMotion = props => {
+const ControlledCollapsibleMotion = (props) => {
   const [
     animation,
     containerStyles,
@@ -127,7 +127,7 @@ const ControlledCollapsibleMotion = props => {
 ControlledCollapsibleMotion.displayName = 'ControlledCollapsibleMotion';
 ControlledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
-const UncontrolledCollapsibleMotion = props => {
+const UncontrolledCollapsibleMotion = (props) => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
 
   const [

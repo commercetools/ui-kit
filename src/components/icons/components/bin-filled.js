@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import BinFilled from '../raw-components/bin-filled';
 
-const Component = props => (
-  <BinFilled {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <BinFilled {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'BinFilledIcon';

@@ -26,7 +26,7 @@ import CalendarContent from '../../internals/calendar-content';
 import CalendarDay from '../../internals/calendar-day';
 import messages from './messages';
 
-const DateInput = props => {
+const DateInput = (props) => {
   const intl = useIntl();
   const [calendarDate, setCalendarDate] = React.useState(
     props.value || getToday()
@@ -39,7 +39,7 @@ const DateInput = props => {
 
   const { onChange } = props;
   const emit = React.useCallback(
-    value =>
+    (value) =>
       onChange({
         target: {
           id: props.id,
@@ -53,7 +53,7 @@ const DateInput = props => {
   );
 
   const handleChange = React.useCallback(
-    date => {
+    (date) => {
       inputRef.current.setSelectionRange(0, 100);
       emit(date);
     },
@@ -78,7 +78,7 @@ const DateInput = props => {
     inputRef.current.focus();
   };
 
-  const jumpMonth = amount => {
+  const jumpMonth = (amount) => {
     const nextDate = changeMonth(calendarDate, amount);
     setCalendarDate(nextDate);
     setHighlightedIndex(0);
@@ -93,7 +93,7 @@ const DateInput = props => {
         selectedItem={props.value === '' ? null : props.value}
         highlightedIndex={highlightedIndex}
         onChange={handleChange}
-        onStateChange={changes => {
+        onStateChange={(changes) => {
           /* eslint-disable no-prototype-builtins */
           if (changes.hasOwnProperty('inputValue')) {
             // input changed because user typed
@@ -164,7 +164,7 @@ const DateInput = props => {
                     // arrow keys to move the cursor when hovering
                     if (isOpen) setDownshiftHighlightedIndex(null);
                   },
-                  onKeyDown: event => {
+                  onKeyDown: (event) => {
                     if (event.key === 'Enter' && inputValue.trim() === '') {
                       clearSelection();
                     }
@@ -203,7 +203,7 @@ const DateInput = props => {
                     onNextYearClick={() => jumpMonth(12)}
                   />
                   <CalendarContent>
-                    {weekdays.map(weekday => (
+                    {weekdays.map((weekday) => (
                       <CalendarDay key={weekday} type="heading">
                         {weekday}
                       </CalendarDay>
@@ -245,7 +245,7 @@ const DateInput = props => {
 
 DateInput.displayName = 'DateInput';
 
-DateInput.isEmpty = value => value === '';
+DateInput.isEmpty = (value) => value === '';
 
 DateInput.propTypes = {
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),

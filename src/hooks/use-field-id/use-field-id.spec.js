@@ -6,7 +6,7 @@ import useFieldId from './use-field-id';
 
 const sequentialId = createSequentialId('test-id-');
 
-const TestComponent = props => {
+const TestComponent = (props) => {
   // eslint-disable-next-line react/prop-types
   const [isToggled, toggle] = useToggleState(false);
   // eslint-disable-next-line react/prop-types

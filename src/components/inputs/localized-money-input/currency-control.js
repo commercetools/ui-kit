@@ -5,7 +5,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { CoinsIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 
-const CurrencyControl = props => {
+const CurrencyControl = (props) => {
   const intl = useIntl();
 
   return (

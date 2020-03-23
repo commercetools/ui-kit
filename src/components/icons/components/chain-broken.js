@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ChainBroken from '../raw-components/chain-broken';
 
-const Component = props => (
-  <ChainBroken {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ChainBroken {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ChainBrokenIcon';

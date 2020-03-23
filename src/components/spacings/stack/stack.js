@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import getStyles from './stack.styles';
 
-const Stack = props => (
+const Stack = (props) => (
   <div css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </div>

@@ -64,16 +64,16 @@ const useSelectionReducer = (rows, keyName) => {
 const useRowSelection = (keyName, rows) => {
   const [selectionState, dispatch] = useSelectionReducer(rows, keyName);
 
-  const selectableRows = rows.map(item => ({
+  const selectableRows = rows.map((item) => ({
     ...item,
     [keyName]: selectionState[item.id],
   }));
-  const toggleRow = id => dispatch({ type: 'toggle', payload: id });
-  const selectRow = id => dispatch({ type: 'select', payload: id });
-  const deselectRow = id => dispatch({ type: 'deselect', payload: id });
+  const toggleRow = (id) => dispatch({ type: 'toggle', payload: id });
+  const selectRow = (id) => dispatch({ type: 'select', payload: id });
+  const deselectRow = (id) => dispatch({ type: 'deselect', payload: id });
   const selectAllRows = () => dispatch({ type: 'selectAll' });
   const deselectAllRows = () => dispatch({ type: 'deselectAll' });
-  const getIsRowSelected = id => selectionState[id];
+  const getIsRowSelected = (id) => selectionState[id];
   const getNumberOfSelectedRows = () =>
     selectableRows.reduce((count, item) => count + item[keyName], 0);
 

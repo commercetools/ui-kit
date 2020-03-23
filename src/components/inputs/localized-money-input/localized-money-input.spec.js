@@ -36,7 +36,7 @@ class TestComponent extends React.Component {
       },
     },
     selectedCurrency: 'CAD',
-    intl: { formatMessage: message => message.id },
+    intl: { formatMessage: (message) => message.id },
   };
 
   state = {
@@ -44,7 +44,7 @@ class TestComponent extends React.Component {
     selectedCurrency: this.props.selectedCurrency || '',
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     this.setState({
       value: {

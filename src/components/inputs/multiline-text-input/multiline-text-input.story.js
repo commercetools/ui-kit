@@ -46,7 +46,7 @@ storiesOf('Components|Inputs', module)
               hasError={boolean('hasError', false)}
               hasWarning={boolean('hasWarning', false)}
               value={value}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange(event.target.value);
               }}

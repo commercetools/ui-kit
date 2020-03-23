@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import List from '../raw-components/list';
 
-const Component = props => (
-  <List {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <List {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ListIcon';

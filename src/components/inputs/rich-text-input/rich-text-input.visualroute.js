@@ -20,7 +20,7 @@ const InteractiveRoute = () => {
     setValue('<p><strong>Hello World</strong></p>');
   }, [setValue]);
 
-  const onChange = event => {
+  const onChange = (event) => {
     setValue(event.target.value);
   };
 
@@ -30,7 +30,7 @@ const InteractiveRoute = () => {
         <div>
           <label htmlFor="reset-button">Reset value to Hello World</label>
           <button
-            onMouseDown={event => {
+            onMouseDown={(event) => {
               event.preventDefault();
               handleReset();
             }}

@@ -22,7 +22,7 @@ import { FormikBox, Section } from '../.storybook/decorators';
 import Forms from './form-inputs.md';
 
 // utilities for story
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // This data would usually be loaded from the project itself.
 // It is defined statically here to keep the example focused on the forms.
@@ -179,7 +179,7 @@ const validate = (formValues, locale) => {
   if (LocalizedTextInput.isEmpty(formValues.slug)) {
     errors.slug.missing = true;
   } else {
-    const isValidSlug = value => /^[a-zA-Z0-9_-]{2,256}$/.test(value);
+    const isValidSlug = (value) => /^[a-zA-Z0-9_-]{2,256}$/.test(value);
     const translationErrors = Object.keys(
       LocalizedTextInput.omitEmptyTranslations(formValues.slug)
     ).reduce((acc, language) => {
@@ -366,9 +366,7 @@ class ProductForm extends React.Component {
                   (acc, [key, error]) => {
                     const value = error.hasForbiddenChars ? (
                       <ErrorMessage>This slug is not valid.</ErrorMessage>
-                    ) : (
-                      undefined
-                    );
+                    ) : undefined;
 
                     return {
                       [key]: value,
@@ -520,7 +518,7 @@ class ProductForm extends React.Component {
   }
 }
 
-const Story = injectIntl(props => {
+const Story = injectIntl((props) => {
   const selectedLanguage = select(
     'selectedLanguage',
     resourceLanguages,
@@ -532,7 +530,7 @@ const Story = injectIntl(props => {
         {({ product, updateProduct }) => (
           <Formik
             initialValues={docToForm(product, props.intl.locale)}
-            validate={formValues => validate(formValues, props.intl.locale)}
+            validate={(formValues) => validate(formValues, props.intl.locale)}
             onSubmit={(formValues, formik) => {
               action('values of form submission')(formValues);
               const nextProduct = formToDoc(formValues, props.intl.locale);
@@ -550,7 +548,7 @@ const Story = injectIntl(props => {
                 version: formValues.version,
                 product: nextProduct,
               }).then(
-                updatedProduct => {
+                (updatedProduct) => {
                   // Calling resetForm with the updated product will
                   // update the form values and reset the submission state,
                   // touched keys and so on.
@@ -558,7 +556,7 @@ const Story = injectIntl(props => {
                     values: docToForm(updatedProduct, props.intl.locale),
                   });
                 },
-                error => {
+                (error) => {
                   // This is an example where we have to rely on the API
                   // on submission time to ensure correct form values.
                   // The example shows how to map API errors back onto
@@ -573,7 +571,7 @@ const Story = injectIntl(props => {
                 }
               );
             }}
-            render={formik => (
+            render={(formik) => (
               <Spacings.Stack scale="l">
                 <Text.Headline as="h2">The form</Text.Headline>
                 <div>

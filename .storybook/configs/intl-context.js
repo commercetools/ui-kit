@@ -5,7 +5,7 @@ import * as messages from '@commercetools-uikit/i18n';
 
 const locales = Object.keys(messages);
 
-const slugifyLocale = locale => {
+const slugifyLocale = (locale) => {
   switch (locale) {
     case 'frFR':
       return 'fr-FR';
@@ -16,7 +16,7 @@ const slugifyLocale = locale => {
   }
 };
 
-const namifyLocale = locale => {
+const namifyLocale = (locale) => {
   switch (locale) {
     case 'en':
       return 'English';
@@ -35,7 +35,7 @@ const namifyLocale = locale => {
   }
 };
 
-const IntlWrapper = props => {
+const IntlWrapper = (props) => {
   const locale = props.locale;
   return (
     <IntlProvider locale={slugifyLocale(locale)} messages={messages[locale]}>
@@ -48,7 +48,7 @@ IntlWrapper.propTypes = {
   locale: PropTypes.string.isRequired,
 };
 
-const intlParams = locales.map(locale => ({
+const intlParams = locales.map((locale) => ({
   name: namifyLocale(locale),
   props: { locale },
 }));

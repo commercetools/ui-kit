@@ -3,16 +3,16 @@ import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';
 
-const initializeValue = value => html.serialize(html.deserialize(value));
+const initializeValue = (value) => html.serialize(html.deserialize(value));
 
-const isLocalizedHtmlValueEmpty = value => !value || isRichTextEmpty(value);
+const isLocalizedHtmlValueEmpty = (value) => !value || isRichTextEmpty(value);
 
-export const isEmpty = localizedHtmlValue => {
+export const isEmpty = (localizedHtmlValue) => {
   if (!localizedHtmlValue) return true;
   return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);
 };
 
-export const omitEmptyTranslations = localizedString => {
+export const omitEmptyTranslations = (localizedString) => {
   invariant(
     typeof localizedString === 'object',
     'omitEmptyTranslations must be called with an object'

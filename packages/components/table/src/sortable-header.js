@@ -33,7 +33,7 @@ const Span = styled.span`
   padding: 0 0 0 ${vars.spacingM};
 `;
 
-const containerDynamicStyles = props => {
+const containerDynamicStyles = (props) => {
   if (props.alignRight) {
     return css`
       flex-direction: row-reverse;
@@ -68,7 +68,7 @@ const Container = styled.div`
   }
 `;
 
-const SortableHeader = props => {
+const SortableHeader = (props) => {
   const isActive = props.sortBy === props.columnKey;
   const isArrowDown = isActive && props.sortDirection === 'DESC';
   return (

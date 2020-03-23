@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import AngleRight from '../raw-components/angle-right';
 
-const Component = props => (
-  <AngleRight {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <AngleRight {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'AngleRightIcon';

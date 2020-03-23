@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import CloseBold from '../raw-components/close-bold';
 
-const Component = props => (
-  <CloseBold {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <CloseBold {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CloseBoldIcon';

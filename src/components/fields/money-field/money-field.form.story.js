@@ -22,7 +22,7 @@ const formToDoc = (values, locale) => ({
   ),
 });
 
-const Story = injectIntl(props => {
+const Story = injectIntl((props) => {
   const currencies = ['EUR', 'USD', 'AED', 'KWD'];
   const horizontalConstraint = select(
     'horizontalConstraint',
@@ -38,7 +38,7 @@ const Story = injectIntl(props => {
     <Section>
       <Formik
         initialValues={initialValues}
-        validate={values => {
+        validate={(values) => {
           const errors = { price: {}, pricePerTon: {}, discountedPrice: {} };
           if (MoneyInput.isEmpty(values.price)) errors.price.missing = true;
           else if (MoneyInput.isHighPrecision(values.price, props.intl.locale))
@@ -71,7 +71,7 @@ const Story = injectIntl(props => {
           console.log('doc', formToDoc(values, props.intl.locale));
           formik.resetForm({ values: initialValues });
         }}
-        render={formik => (
+        render={(formik) => (
           <Spacings.Stack scale="l">
             <MoneyField
               title="Regular Price"
@@ -86,7 +86,7 @@ const Story = injectIntl(props => {
               touched={formik.touched.price}
               horizontalConstraint={horizontalConstraint}
               errors={formik.errors.price}
-              renderError={key => {
+              renderError={(key) => {
                 switch (key) {
                   // these could also use <FormattedMessage />
                   case 'unsupportedHighPrecision':

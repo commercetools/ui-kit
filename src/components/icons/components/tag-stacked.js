@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import TagStacked from '../raw-components/tag-stacked';
 
-const Component = props => (
-  <TagStacked {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <TagStacked {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'TagStackedIcon';

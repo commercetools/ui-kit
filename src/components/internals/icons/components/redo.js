@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Redo from '../raw-components/redo';
 
-const Component = props => (
-  <Redo {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Redo {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RedoIcon';

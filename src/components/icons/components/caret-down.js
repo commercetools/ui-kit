@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import CaretDown from '../raw-components/caret-down';
 
-const Component = props => (
-  <CaretDown {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <CaretDown {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CaretDownIcon';

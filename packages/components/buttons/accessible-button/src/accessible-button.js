@@ -9,16 +9,16 @@ import getNormalizedButtonStyles from './accessible-button.styles';
 
 const propsToOmit = ['onClick'];
 
-const getIsEnterOrSpace = e => e.key === ' ' || e.key === 'Enter';
+const getIsEnterOrSpace = (e) => e.key === ' ' || e.key === 'Enter';
 
 const Button = styled.button`
   ${getNormalizedButtonStyles}
   display: inline-flex;
   font-size: ${vars.fontSizeDefault};
 
-  ${props => (!props.as || props.as === 'button' ? 'outline: none;' : '')}
+  ${(props) => (!props.as || props.as === 'button' ? 'outline: none;' : '')}
 
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   &:disabled {
     cursor: not-allowed;
   }
@@ -28,7 +28,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
   const { onClick } = props;
 
   const handleClick = React.useCallback(
-    event => {
+    (event) => {
       if (props.isDisabled) {
         event.preventDefault();
         return false;
@@ -53,7 +53,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
     buttonProps = {
       role: 'button',
       tabIndex: '0',
-      onKeyPress: event => getIsEnterOrSpace(event) && handleClick(event),
+      onKeyPress: (event) => getIsEnterOrSpace(event) && handleClick(event),
     };
   }
 

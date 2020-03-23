@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getContainerStyles = props => {
+const getContainerStyles = (props) => {
   const baseStyles = css`
     display: flex;
     align-items: center;
@@ -85,7 +85,7 @@ const getContainerStyles = props => {
   return baseStyles;
 };
 
-const getLabelStyles = props => {
+const getLabelStyles = (props) => {
   const baseStyles = css`
     cursor: pointer;
     display: flex;

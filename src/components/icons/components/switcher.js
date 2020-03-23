@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Switcher from '../raw-components/switcher';
 
-const Component = props => (
-  <Switcher {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Switcher {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SwitcherIcon';

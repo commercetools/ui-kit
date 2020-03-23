@@ -28,12 +28,12 @@ class Story extends React.Component {
     value: this.props.value,
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     const value = event.target.value;
     if (this.props.onChange) this.props.onChange(event);
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       value: {
         ...prevState.value,
         [event.target.language]: value,

@@ -4,7 +4,7 @@
 // Use it as
 //  const sequentialId = createSequentialId('text-field-');
 //  const element = <div id={sequentialId()}>foo</div>
-const createSequentialId = prefix => {
+const createSequentialId = (prefix) => {
   let id = 0;
   return () => {
     id += 1;

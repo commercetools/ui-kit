@@ -68,7 +68,7 @@ class MoneyFieldStory extends React.Component {
             'm'
           )}
           errors={object('errors', { missing: true, customError: true })}
-          renderError={key => {
+          renderError={(key) => {
             switch (key) {
               case 'customError':
                 return 'A custom error.';
@@ -94,7 +94,7 @@ class MoneyFieldStory extends React.Component {
           isDisabled={boolean('isDisabled', false)}
           isReadOnly={boolean('isReadOnly', false)}
           isAutofocussed={boolean('isAutofocussed', false)}
-          onChange={event => {
+          onChange={(event) => {
             action('onChange')(event);
 
             if (event.target.name.endsWith('.amount')) {

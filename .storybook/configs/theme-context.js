@@ -10,7 +10,7 @@ const darkTheme = {
 
 const defaultTheme = vars;
 
-const ThemeWrapper = props => (
+const ThemeWrapper = (props) => (
   <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
 );
 

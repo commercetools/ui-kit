@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../../test-utils';
 import useToggleState from './use-toggle-state';
 
-const TestComponent = props => {
+const TestComponent = (props) => {
   // eslint-disable-next-line react/prop-types
   const [isOpen, toggle] = useToggleState(props.isDefaultOpen);
   const setOff = React.useCallback(() => {

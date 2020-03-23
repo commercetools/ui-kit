@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import OrderedList from '../raw-components/ordered-list';
 
-const Component = props => (
-  <OrderedList {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <OrderedList {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'OrderedListIcon';

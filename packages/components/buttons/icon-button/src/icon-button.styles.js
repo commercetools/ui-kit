@@ -140,7 +140,7 @@ const getShapeStyles = (shape, size) => {
       return css``;
   }
 };
-const getSizeStyles = size => {
+const getSizeStyles = (size) => {
   switch (size) {
     case 'small':
       return css`
@@ -161,7 +161,7 @@ const getSizeStyles = size => {
       return css``;
   }
 };
-const getThemeStyles = theme => {
+const getThemeStyles = (theme) => {
   if (!theme) return css``;
 
   if (theme === 'default') return css``;

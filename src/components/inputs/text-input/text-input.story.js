@@ -25,7 +25,7 @@ storiesOf('Components|Inputs', module)
               id={text('id', '')}
               name={text('name', '')}
               value={value}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange(event.target.value);
               }}

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import CheckBold from '../raw-components/check-bold';
 
-const Component = props => (
-  <CheckBold {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <CheckBold {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CheckBoldIcon';

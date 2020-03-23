@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Review from '../raw-components/review';
 
-const Component = props => (
-  <Review {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Review {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ReviewIcon';

@@ -13,7 +13,7 @@ export const availableTones = [
   'secondary',
 ];
 
-const getToneStyles = props => {
+const getToneStyles = (props) => {
   switch (props.tone) {
     case 'critical': {
       return css`
@@ -56,7 +56,7 @@ const getToneStyles = props => {
   }
 };
 
-const Label = props => (
+const Label = (props) => (
   <div
     css={[
       css`

@@ -11,7 +11,7 @@ class CollapsibleMotionStory extends React.Component {
     isClosed: false,
   };
   handleToggle = () =>
-    this.setState(prevState => ({ isClosed: !prevState.isClosed }));
+    this.setState((prevState) => ({ isClosed: !prevState.isClosed }));
   render() {
     const isDefaultClosed = boolean('isDefaultClosed', false);
     return (

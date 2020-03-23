@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Graph from '../raw-components/graph';
 
-const Component = props => (
-  <Graph {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Graph {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'GraphIcon';

@@ -34,14 +34,14 @@ const colourOptions = [
   },
 ];
 
-const filterColors = inputValue =>
-  colourOptions.filter(colourOption =>
+const filterColors = (inputValue) =>
+  colourOptions.filter((colourOption) =>
     colourOption.label.toLowerCase().includes(inputValue.toLowerCase())
   );
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const loadOptions = inputValue =>
+const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
 
 class SelectStory extends React.Component {

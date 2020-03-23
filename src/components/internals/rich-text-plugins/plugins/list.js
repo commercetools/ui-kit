@@ -4,16 +4,16 @@ import { BLOCK_TAGS } from '../../rich-text-utils/tags';
 const DEFAULT_NODE = BLOCK_TAGS.p;
 
 const hasBlock = (type, editor) =>
-  editor.value.blocks.some(node => node.type === type);
+  editor.value.blocks.some((node) => node.type === type);
 
 const toggle = (editor, typeName) => {
   // Handle the extra wrapping required for list buttons.
   const isList = hasBlock(BLOCK_TAGS.li, editor);
-  const isType = editor.value.blocks.some(block => {
+  const isType = editor.value.blocks.some((block) => {
     return Boolean(
       editor.value.document.getClosest(
         block.key,
-        parent => parent.type === typeName
+        (parent) => parent.type === typeName
       )
     );
   });
@@ -63,13 +63,13 @@ const ListPlugin = () => {
         }
       },
       commands: {
-        toggleBulletedListBlock: editor => {
+        toggleBulletedListBlock: (editor) => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }
           toggle(editor, BLOCK_TAGS.ul);
         },
-        toggleNumberedListBlock: editor => {
+        toggleNumberedListBlock: (editor) => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }
@@ -77,8 +77,8 @@ const ListPlugin = () => {
         },
       },
       queries: {
-        hasBulletedListBlock: editor => query(editor, BLOCK_TAGS.ul),
-        hasNumberedListBlock: editor => query(editor, BLOCK_TAGS.ol),
+        hasBulletedListBlock: (editor) => query(editor, BLOCK_TAGS.ul),
+        hasNumberedListBlock: (editor) => query(editor, BLOCK_TAGS.ol),
       },
     },
   ];

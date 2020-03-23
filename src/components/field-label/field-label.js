@@ -11,7 +11,7 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
 
-export const FieldLabel = props => {
+export const FieldLabel = (props) => {
   if (props.hintIcon && props.hintIcon.props && props.hintIcon.props.size) {
     invariant(
       false,
@@ -85,7 +85,7 @@ FieldLabel.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   hint: requiredIf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    props => props.hintIcon
+    (props) => props.hintIcon
   ),
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   onInfoButtonClick: PropTypes.func,

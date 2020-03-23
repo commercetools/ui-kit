@@ -42,7 +42,7 @@ class TestComponent extends React.Component {
     value: this.props.value,
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     this.setState({
       value: event.target.value,

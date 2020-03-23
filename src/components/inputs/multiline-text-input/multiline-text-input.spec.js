@@ -15,7 +15,7 @@ class TestComponent extends React.Component {
     name: 'some-name',
     value: '',
     intl: {
-      formatMessage: jest.fn(message => message.id),
+      formatMessage: jest.fn((message) => message.id),
     },
   };
 
@@ -23,7 +23,7 @@ class TestComponent extends React.Component {
     value: this.props.value || '',
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     this.setState({
       value: event.target.value,

@@ -29,7 +29,7 @@ storiesOf('Components|Inputs', module)
               value={value}
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange(event.target.value);
               }}

@@ -19,7 +19,7 @@ const getInputStyles = () => css`
     background-color: ${vars.colorSurface};
   }
 `;
-const DateCalendarTimeInput = props => (
+const DateCalendarTimeInput = (props) => (
   <input
     disabled={props.isDisabled}
     ref={props.timeInputRef}

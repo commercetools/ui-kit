@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Calendar from '../raw-components/calendar';
 
-const Component = props => (
-  <Calendar {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Calendar {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CalendarIcon';

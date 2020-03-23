@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Speedometer from '../raw-components/speedometer';
 
-const Component = props => (
-  <Speedometer {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Speedometer {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SpeedometerIcon';

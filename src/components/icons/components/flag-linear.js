@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import FlagLinear from '../raw-components/flag-linear';
 
-const Component = props => (
-  <FlagLinear {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <FlagLinear {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'FlagLinearIcon';

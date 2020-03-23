@@ -39,11 +39,11 @@ const nonEmptyString = (props, propName, componentName) => {
   return null;
 };
 
-const Headline = props => {
+const Headline = (props) => {
   const HeadlineElement = props.as || props.elementType;
   return (
     <HeadlineElement
-      css={theme => headlineStyles(props, theme)}
+      css={(theme) => headlineStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -56,7 +56,7 @@ Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   as: requiredIf(
     PropTypes.oneOf(['h1', 'h2', 'h3']),
-    props => !props.elementType
+    (props) => !props.elementType
   ),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
@@ -90,17 +90,17 @@ Headline.propTypes = {
   truncate: PropTypes.bool,
   intlMessage: requiredIf(
     intlMessageShape,
-    props => !React.Children.count(props.children)
+    (props) => !React.Children.count(props.children)
   ),
-  children: requiredIf(PropTypes.node, props => !props.intlMessage),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-const Subheadline = props => {
+const Subheadline = (props) => {
   const SubheadlineElement = props.as || props.elementType;
   return (
     <SubheadlineElement
       title={props.title}
-      css={theme => subheadlineStyles(props, theme)}
+      css={(theme) => subheadlineStyles(props, theme)}
       {...filterDataAttributes(props)}
     >
       <Text intlMessage={props.intlMessage}>{props.children}</Text>
@@ -110,7 +110,7 @@ const Subheadline = props => {
 
 Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
-  as: requiredIf(PropTypes.oneOf(['h4', 'h5']), props => !props.elementType),
+  as: requiredIf(PropTypes.oneOf(['h4', 'h5']), (props) => !props.elementType),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
       throwDeprecationWarning(
@@ -151,14 +151,14 @@ Subheadline.propTypes = {
   truncate: PropTypes.bool,
   intlMessage: requiredIf(
     intlMessageShape,
-    props => !React.Children.count(props.children)
+    (props) => !React.Children.count(props.children)
   ),
-  children: requiredIf(PropTypes.node, props => !props.intlMessage),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-const Wrap = props => (
+const Wrap = (props) => (
   <div
-    css={theme => wrapStyles(props, theme)}
+    css={(theme) => wrapStyles(props, theme)}
     title={props.title}
     {...filterDataAttributes(props)}
   >
@@ -171,12 +171,12 @@ Wrap.propTypes = {
   title: nonEmptyString,
   intlMessage: requiredIf(
     intlMessageShape,
-    props => !React.Children.count(props.children)
+    (props) => !React.Children.count(props.children)
   ),
-  children: requiredIf(PropTypes.node, props => !props.intlMessage),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-const Body = props => {
+const Body = (props) => {
   if (props.as) {
     const BodyElement = props.as;
 
@@ -193,7 +193,7 @@ const Body = props => {
 
   return props.isInline ? (
     <span
-      css={theme => bodyStyles(props, theme)}
+      css={(theme) => bodyStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -201,7 +201,7 @@ const Body = props => {
     </span>
   ) : (
     <p
-      css={theme => bodyStyles(props, theme)}
+      css={(theme) => bodyStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -244,14 +244,14 @@ Body.propTypes = {
   truncate: PropTypes.bool,
   intlMessage: requiredIf(
     intlMessageShape,
-    props => !React.Children.count(props.children)
+    (props) => !React.Children.count(props.children)
   ),
-  children: requiredIf(PropTypes.node, props => !props.intlMessage),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-const Detail = props => (
+const Detail = (props) => (
   <small
-    css={theme => detailStyles(props, theme)}
+    css={(theme) => detailStyles(props, theme)}
     title={props.title}
     {...filterDataAttributes(props)}
   >
@@ -277,9 +277,9 @@ Detail.propTypes = {
   truncate: PropTypes.bool,
   intlMessage: requiredIf(
     intlMessageShape,
-    props => !React.Children.count(props.children)
+    (props) => !React.Children.count(props.children)
   ),
-  children: requiredIf(PropTypes.node, props => !props.intlMessage),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
 export default { Headline, Wrap, Subheadline, Detail, Body };

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import PlusBold from '../raw-components/plus-bold';
 
-const Component = props => (
-  <PlusBold {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <PlusBold {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PlusBoldIcon';

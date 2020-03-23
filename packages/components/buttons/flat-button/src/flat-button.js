@@ -10,7 +10,7 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 const propsToOmit = ['type'];
 
-const ButtonIcon = props => {
+const ButtonIcon = (props) => {
   if (!props.icon) return null;
 
   let iconColor = 'solid';
@@ -59,7 +59,7 @@ const getTextColor = (tone, isHover = false, overwrittenVars) => {
   }
 };
 
-export const FlatButton = props => {
+export const FlatButton = (props) => {
   const dataProps = {
     'data-track-component': 'FlatButton',
     ...filterInvalidAttributes(omit(props, propsToOmit)),
@@ -75,7 +75,7 @@ export const FlatButton = props => {
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={theme => {
+      css={(theme) => {
         const overwrittenVars = {
           ...vars,
           ...theme,
@@ -137,7 +137,7 @@ FlatButton.propTypes = {
   tone: PropTypes.oneOf(['primary', 'secondary', 'inverted']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
-  onClick: requiredIf(PropTypes.func, props => !props.as),
+  onClick: requiredIf(PropTypes.func, (props) => !props.as),
   icon: PropTypes.element,
   iconPosition: PropTypes.oneOf(['left', 'right']),
   isDisabled: PropTypes.bool,

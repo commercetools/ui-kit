@@ -3,7 +3,7 @@ import { PlusBoldIcon } from '@commercetools-uikit/icons';
 import { render, fireEvent, waitFor } from '../../../../../src/test-utils';
 import LinkButton from './link-button';
 
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   label: 'test-button',
   to: '/foo/bar',
   iconLeft: <PlusBoldIcon data-testid="icon" />,

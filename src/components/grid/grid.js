@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-const GridItem = styled.div(props => ({
+const GridItem = styled.div((props) => ({
   gridArea: props.gridArea,
   gridColumn: props.gridColumn,
   gridColumnStart: props.gridColumnStart,
@@ -29,7 +29,7 @@ GridItem.propTypes = {
   placeSelf: PropTypes.oneOf(['start', 'end', 'center', 'stretch']),
 };
 
-const Grid = styled.div(props => ({
+const Grid = styled.div((props) => ({
   display: props.display,
   grid: props.grid,
   gridTemplate: props.gridTemplate,

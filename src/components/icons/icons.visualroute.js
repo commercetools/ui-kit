@@ -23,11 +23,11 @@ const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${props => (props.big ? '50px' : '25px')};
+  width: ${(props) => (props.big ? '50px' : '25px')};
 `;
 
 const icons = Object.keys(UIKit)
-  .filter(thing => thing.endsWith('Icon'))
+  .filter((thing) => thing.endsWith('Icon'))
   .sort();
 
 const sizes = ['small', 'medium', 'big', 'scale'];
@@ -59,21 +59,21 @@ const renderIcon = (iconName, color, size) => {
 
 export const component = ({ themes }) => (
   <Switch>
-    {colors.map(color => (
+    {colors.map((color) => (
       <Route
         key={color}
         path={`${routePath}/${color}`}
         exact
         render={() => (
           <Suite>
-            {sizes.map(size => (
+            {sizes.map((size) => (
               <Spec
                 key={size}
                 label={`All Icons - Color: ${color} / Size: ${size}`}
                 omitPropsList
               >
                 <IconList>
-                  {icons.map(iconName => renderIcon(iconName, color, size))}
+                  {icons.map((iconName) => renderIcon(iconName, color, size))}
                 </IconList>
               </Spec>
             ))}
@@ -87,7 +87,7 @@ export const component = ({ themes }) => (
       render={() => (
         <Suite>
           <ThemeProvider theme={themes.darkTheme}>
-            {colors.map(color => (
+            {colors.map((color) => (
               <Spec
                 key={color}
                 label={`Themed Icons - Color: ${color}`}

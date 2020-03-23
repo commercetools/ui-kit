@@ -4,7 +4,7 @@ import { PlusThinIcon } from '@commercetools-uikit/icons';
 import { render } from '../../../../../src/test-utils';
 import FlatButton from './flat-button';
 
-const createTestProps = props => ({
+const createTestProps = (props) => ({
   tone: 'primary',
   label: 'Add',
   onClick: jest.fn(),

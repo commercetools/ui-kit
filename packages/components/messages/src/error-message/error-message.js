@@ -10,7 +10,7 @@ const intlMessageShape = PropTypes.shape({
   defaultMessage: PropTypes.string.isRequired,
 });
 
-const ErrorMessage = props => (
+const ErrorMessage = (props) => (
   <Text.Detail
     intlMessage={props.intlMessage}
     tone="negative"
@@ -21,10 +21,10 @@ const ErrorMessage = props => (
 );
 ErrorMessage.displayName = 'ErrorMessage';
 ErrorMessage.propTypes = {
-  children: requiredIf(PropTypes.node, props => !props.intlMessage),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
   intlMessage: requiredIf(
     intlMessageShape,
-    props => !React.Children.count(props.children)
+    (props) => !React.Children.count(props.children)
   ),
 };
 

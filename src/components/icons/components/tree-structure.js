@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import TreeStructure from '../raw-components/tree-structure';
 
-const Component = props => (
-  <TreeStructure {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <TreeStructure {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'TreeStructureIcon';

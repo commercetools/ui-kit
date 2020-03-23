@@ -10,7 +10,7 @@ import {
   StyledInputContainer,
 } from './time-input-body.styles';
 
-export const ClearSection = props => (
+export const ClearSection = (props) => (
   <StyledClearSection
     onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
     isReadOnly={props.isReadOnly}

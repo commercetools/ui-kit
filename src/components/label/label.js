@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
 
-const Label = props => (
+const Label = (props) => (
   <label htmlFor={props.htmlFor}>
     <Text.Body tone={props.tone} isBold={props.isBold}>
       {props.children}

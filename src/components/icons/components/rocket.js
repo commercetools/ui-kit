@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Rocket from '../raw-components/rocket';
 
-const Component = props => (
-  <Rocket {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Rocket {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RocketIcon';

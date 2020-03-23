@@ -28,7 +28,7 @@ storiesOf('Examples|Forms/Inputs', module)
             action('onSubmit')(values, formik, ...rest);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <NumberInput
                 name="age"

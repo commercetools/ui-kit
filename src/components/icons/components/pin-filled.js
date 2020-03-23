@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import PinFilled from '../raw-components/pin-filled';
 
-const Component = props => (
-  <PinFilled {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <PinFilled {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PinFilledIcon';

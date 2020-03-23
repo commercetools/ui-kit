@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Box from '../raw-components/box';
 
-const Component = props => (
-  <Box {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Box {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'BoxIcon';

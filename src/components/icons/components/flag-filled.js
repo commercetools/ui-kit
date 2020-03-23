@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import FlagFilled from '../raw-components/flag-filled';
 
-const Component = props => (
-  <FlagFilled {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <FlagFilled {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'FlagFilledIcon';

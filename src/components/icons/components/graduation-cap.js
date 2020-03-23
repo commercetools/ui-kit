@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import GraduationCap from '../raw-components/graduation-cap';
 
-const Component = props => (
-  <GraduationCap {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <GraduationCap {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'GraduationCapIcon';

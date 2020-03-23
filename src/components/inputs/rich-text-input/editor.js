@@ -16,7 +16,7 @@ import messages from '../../internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
 
-const Editor = props => {
+const Editor = (props) => {
   const intl = useIntl();
   const ref = React.useRef();
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../../../test-utils';
 import Link from './link';
 
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   to: 'https://facebook.com',
   ...custom,
 });

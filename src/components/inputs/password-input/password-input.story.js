@@ -31,7 +31,7 @@ storiesOf('Components|Inputs', module)
               'current-password',
               'new-password',
             ])}
-            onChange={event => {
+            onChange={(event) => {
               action('onChange')(event);
               onChange(event.target.value);
             }}

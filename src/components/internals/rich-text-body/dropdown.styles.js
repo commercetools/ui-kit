@@ -10,7 +10,7 @@ const DropdownItem = styled.button`
   padding: ${vars.spacingXs} ${vars.spacingS};
   font-family: ${vars.fontFamilyDefault};
   display: block;
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.isSelected ? vars.colorAccent95 : vars.colorSurface};
 
   &:focus,

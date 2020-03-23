@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import NestedView from '../raw-components/nested-view';
 
-const Component = props => (
-  <NestedView {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <NestedView {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'NestedViewIcon';

@@ -45,7 +45,7 @@ storiesOf('Components|Inputs', module)
               id={text('id', undefined)}
               name={text('name', 'productName')}
               value={value}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange({
                   ...value,
@@ -82,7 +82,7 @@ storiesOf('Components|Inputs', module)
               hasError={boolean('hasError', false)}
               hasWarning={boolean('hasWarning', false)}
               errors={
-                Object.values(errors).some(error => error.length > 0)
+                Object.values(errors).some((error) => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [currency, error]) => {
                       if (error.length === 0) return acc;
                       acc[currency] = <ErrorMessage>{error}</ErrorMessage>;
@@ -91,7 +91,7 @@ storiesOf('Components|Inputs', module)
                   : undefined
               }
               warnings={
-                Object.values(warnings).some(warning => warning.length > 0)
+                Object.values(warnings).some((warning) => warning.length > 0)
                   ? Object.entries(warnings).reduce(
                       (acc, [currency, warning]) => {
                         if (warning.length === 0) return acc;

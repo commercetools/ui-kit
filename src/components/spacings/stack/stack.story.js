@@ -17,7 +17,7 @@ const StackColorWrapper = styled.div`
 const StackItem = styled.div`
   background-color: #2d68a0;
   height: 100px;
-  width: ${props =>
+  width: ${(props) =>
     props.alignItems === 'stretch'
       ? 'auto'
       : `${Math.round(Math.random() * 50) + 50}px`};
@@ -47,7 +47,7 @@ storiesOf('Components|Spacings', module)
     );
     return (
       <Inline scale="s">
-        {sizes.map(size => (
+        {sizes.map((size) => (
           <StackColorWrapper key={size.name}>
             <Inset scale="m">
               <Text.Subheadline as="h4">

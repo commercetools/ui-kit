@@ -23,7 +23,7 @@ export const routePath = '/localized-rich-text-input';
 
 // this route will be used with puppeteer based testing.
 const WrappedComponent = ({ onChange, value }) => {
-  const handleChange = event => {
+  const handleChange = (event) => {
     onChange({
       ...value,
       [event.target.language]: event.target.value,

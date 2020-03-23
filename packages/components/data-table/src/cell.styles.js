@@ -17,7 +17,7 @@ const getPaddingStyle = (props, isHeader) => {
   `;
 };
 
-const getAlignmentStyle = props => {
+const getAlignmentStyle = (props) => {
   if (props.alignment === 'center') {
     return css`
       text-align: center;
@@ -33,7 +33,7 @@ const getAlignmentStyle = props => {
   `;
 };
 
-const getTruncatedStyle = props => {
+const getTruncatedStyle = (props) => {
   if (props.isTruncated) {
     return css`
       overflow: hidden;
@@ -76,7 +76,7 @@ const getOutlineStyles = () => css`
   }
 `;
 
-const getCellInnerStyles = props => {
+const getCellInnerStyles = (props) => {
   return [
     getAlignmentStyle(props),
     getTruncatedStyle(props),
@@ -88,7 +88,7 @@ const getCellInnerStyles = props => {
   ];
 };
 
-const getSortableHeaderStyles = props => css`
+const getSortableHeaderStyles = (props) => css`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -130,27 +130,27 @@ const BaseHeaderCell = styled.th`
 
 const BaseCell = styled.td`
   border-bottom: 1px solid ${vars.colorNeutral90};
-  ${props => (props.isTruncated ? 'overflow: hidden;' : '')}
+  ${(props) => (props.isTruncated ? 'overflow: hidden;' : '')}
 `;
 
 const HeaderCellInner = styled.div`
-  ${props => getPaddingStyle(props, true)}
+  ${(props) => getPaddingStyle(props, true)}
   ${getCellInnerStyles}
 `;
 
 const CellInner = styled.div`
-  ${props => getPaddingStyle(props, false)}
+  ${(props) => getPaddingStyle(props, false)}
   ${getCellInnerStyles}
 `;
 
 const ButtonCellInner = styled.button`
-  ${props => getPaddingStyle(props, false)}
+  ${(props) => getPaddingStyle(props, false)}
   ${getCellInnerStyles}
   ${getButtonStyle}
 `;
 
 const SortableHeaderInner = styled.button`
-  ${props => getPaddingStyle(props, true)}
+  ${(props) => getPaddingStyle(props, true)}
   ${getCellInnerStyles}
   ${getButtonStyle}
   ${getSortableHeaderStyles}

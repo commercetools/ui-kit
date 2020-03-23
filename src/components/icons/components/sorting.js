@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Sorting from '../raw-components/sorting';
 
-const Component = props => (
-  <Sorting {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Sorting {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SortingIcon';

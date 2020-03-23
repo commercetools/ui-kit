@@ -11,7 +11,7 @@ import {
 } from '@commercetools-uikit/icons';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-const getIconContainerBackgroundColour = props => {
+const getIconContainerBackgroundColour = (props) => {
   switch (props.type) {
     case 'error':
       return vars.colorError;
@@ -26,7 +26,7 @@ const getIconContainerBackgroundColour = props => {
   }
 };
 
-const getIconByType = type => {
+const getIconByType = (type) => {
   switch (type) {
     case 'error':
       return ErrorIcon;
@@ -68,7 +68,7 @@ class NotificationIcon extends React.PureComponent {
   }
 }
 
-const getContentBorderColor = props => {
+const getContentBorderColor = (props) => {
   switch (props.type) {
     case 'error':
       return vars.colorError;

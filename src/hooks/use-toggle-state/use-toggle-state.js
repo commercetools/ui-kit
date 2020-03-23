@@ -4,7 +4,7 @@ const useToggleState = (defaultValue = true) => {
   const [isToggled, setIsToggled] = useState(defaultValue);
 
   const toggle = useCallback(
-    forceIsToggled => {
+    (forceIsToggled) => {
       setIsToggled(
         typeof forceIsToggled === 'boolean' ? forceIsToggled : !isToggled
       );

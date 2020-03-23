@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Italic from '../raw-components/italic';
 
-const Component = props => (
-  <Italic {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Italic {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ItalicIcon';

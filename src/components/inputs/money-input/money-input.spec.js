@@ -26,15 +26,15 @@ class TestComponent extends React.Component {
     },
     currencies: ['EUR', 'USD'],
   };
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     if (event.target.name === 'some-name.amount') {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         value: { ...prevState.value, amount: event.target.value },
       }));
     }
     if (event.target.name === 'some-name.currencyCode') {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         value: { ...prevState.value, currencyCode: event.target.value },
       }));
     }
@@ -562,7 +562,7 @@ describe('MoneyInput', () => {
   it('should allow changing the amount with numbers', () => {
     let event;
 
-    const onChange = e => {
+    const onChange = (e) => {
       event = {
         persist: e.persist,
         target: {

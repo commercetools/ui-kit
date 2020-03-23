@@ -11,12 +11,12 @@ const plugins = [
   {
     queries: {
       // used for the placeholder plugin
-      shouldUsePlaceholder: editor => {
+      shouldUsePlaceholder: (editor) => {
         const isEditorEmpty = editor.value.document.text === '';
         const hasOneNode =
-          editor.value.document.nodes.map(node => node.text).toArray()
+          editor.value.document.nodes.map((node) => node.text).toArray()
             .length === 1;
-        const blocks = editor.value.blocks.map(block => block.type).toArray();
+        const blocks = editor.value.blocks.map((block) => block.type).toArray();
 
         const hasOneBlock = blocks.length === 1;
         const isParagraph = blocks[0] && blocks[0] === BLOCK_TAGS.p;
@@ -48,7 +48,7 @@ const plugins = [
     command: 'toggleBoldMark',
     query: 'hasBoldMark',
     // eslint-disable-next-line react/display-name
-    RenderMark: props => <strong {...props} />,
+    RenderMark: (props) => <strong {...props} />,
   }),
   MarkPlugin({
     typeName: MARK_TAGS.em,
@@ -56,7 +56,7 @@ const plugins = [
     command: 'toggleItalicMark',
     query: 'hasItalicMark',
     // eslint-disable-next-line react/display-name
-    RenderMark: props => <em {...props} />,
+    RenderMark: (props) => <em {...props} />,
   }),
   MarkPlugin({
     typeName: MARK_TAGS.u,
@@ -64,7 +64,7 @@ const plugins = [
     command: 'toggleUnderlinedMark',
     query: 'hasUnderlinedMark',
     // eslint-disable-next-line react/display-name
-    RenderMark: props => <u {...props} />,
+    RenderMark: (props) => <u {...props} />,
   }),
   RenderMarkPlugin(),
   RenderBlockPlugin(),

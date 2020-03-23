@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../../../../../src/test-utils';
 import AccessibleButton from './accessible-button';
 
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   label: 'test-button',
   onClick: jest.fn(),
   children: <div />,

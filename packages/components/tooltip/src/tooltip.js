@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 
-const TooltipWrapper = props => (
+const TooltipWrapper = (props) => (
   <React.Fragment>{props.children}</React.Fragment>
 );
 TooltipWrapper.displayName = 'TooltipWrapperComponent';
@@ -24,7 +24,7 @@ TooltipWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const Tooltip = props => {
+const Tooltip = (props) => {
   const leaveTimer = React.useRef();
   const childrenRef = React.useRef();
 
@@ -54,7 +54,7 @@ const Tooltip = props => {
 
   const { onClose } = props;
   const handleClose = React.useCallback(
-    event => {
+    (event) => {
       if (!isControlled) {
         closeTooltip();
       }
@@ -68,7 +68,7 @@ const Tooltip = props => {
   const { onFocus, onMouseOver } = props.children.props;
   const { onOpen } = props;
   const handleEnter = React.useCallback(
-    event => {
+    (event) => {
       // Remove the title ahead of time.
       // We don't want to wait for the next render commit.
       // We would risk displaying two tooltips at the same time (native + this one).
@@ -102,7 +102,7 @@ const Tooltip = props => {
   const { closeAfter } = props;
 
   const handleLeave = React.useCallback(
-    event => {
+    (event) => {
       clearTimeout(leaveTimer);
 
       if (event.type === 'mouseleave' && onMouseLeave) {

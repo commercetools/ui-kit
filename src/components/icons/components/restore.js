@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Restore from '../raw-components/restore';
 
-const Component = props => (
-  <Restore {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Restore {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RestoreIcon';

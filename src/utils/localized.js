@@ -7,7 +7,7 @@ export const getId = (idPrefix, language) =>
 export const getName = (namePrefix, language) =>
   namePrefix ? `${namePrefix}.${language}` : undefined;
 
-export const getPrimaryLanguage = language => language.split('-')[0];
+export const getPrimaryLanguage = (language) => language.split('-')[0];
 
 // splits the languages into two groups:
 //  - the first group starts with the same tag as the selected language
@@ -35,7 +35,7 @@ export const splitLanguages = (selectedLanguage, languages) => {
 export const sortLanguages = (selectedLanguage, allLanguages) => {
   const { related, unrelated } = splitLanguages(
     selectedLanguage,
-    allLanguages.filter(language => language !== selectedLanguage)
+    allLanguages.filter((language) => language !== selectedLanguage)
   );
 
   return [selectedLanguage, ...related.sort(), ...unrelated.sort()];
@@ -58,14 +58,14 @@ export const createLocalizedDataAttributes = (props, language) =>
 export const getHasErrorOnRemainingLanguages = (errors, selectedLanguage) => {
   return (
     Boolean(errors) &&
-    Object.keys(errors).filter(language => language !== selectedLanguage)
+    Object.keys(errors).filter((language) => language !== selectedLanguage)
       .length > 0
   );
 };
 
 export const getHasWarningOnRemainingLanguages = (warnings, selectedLanguage) =>
   Boolean(warnings) &&
-  Object.keys(warnings).filter(language => language !== selectedLanguage)
+  Object.keys(warnings).filter((language) => language !== selectedLanguage)
     .length > 0;
 
 export const createLocalizedString = (languages, existingTranslations = {}) => {
@@ -81,14 +81,14 @@ export const createLocalizedString = (languages, existingTranslations = {}) => {
   }, {});
 };
 
-export const isEmpty = localizedString => {
+export const isEmpty = (localizedString) => {
   if (!localizedString) return true;
   return Object.values(localizedString).every(
-    value => !value || value.trim().length === 0
+    (value) => !value || value.trim().length === 0
   );
 };
 
-export const omitEmptyTranslations = localizedString => {
+export const omitEmptyTranslations = (localizedString) => {
   invariant(
     typeof localizedString === 'object',
     'omitEmptyTranslations must be called with an object'
@@ -105,5 +105,5 @@ export const omitEmptyTranslations = localizedString => {
   );
 };
 
-export const isTouched = touched =>
+export const isTouched = (touched) =>
   Boolean(touched) && Object.values(touched).some(Boolean);

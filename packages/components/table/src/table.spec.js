@@ -4,7 +4,7 @@ import BaseTable from './base-table';
 import Table from './table';
 
 const FooterComponent = () => <div>{'Hello'}</div>;
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   columns: Array.from({ length: 10 }).map((_, index) => ({
     key: `ID-${index}`,
   })),

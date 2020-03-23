@@ -58,10 +58,10 @@ describe('error renderers', () => {
       <FieldErrors
         errors={{ [FieldErrors.errorTypes.MISSING]: true }}
         isVisible={true}
-        renderError={key =>
+        renderError={(key) =>
           key === FieldErrors.errorTypes.MISSING ? 'RENDER_ERROR' : null
         }
-        renderDefaultError={key =>
+        renderDefaultError={(key) =>
           key === FieldErrors.errorTypes.MISSING ? 'RENDER_DEFAULT_ERROR' : null
         }
       />
@@ -75,7 +75,7 @@ describe('error renderers', () => {
         errors={{ [FieldErrors.errorTypes.MISSING]: true }}
         isVisible={true}
         renderError={() => null}
-        renderDefaultError={key =>
+        renderDefaultError={(key) =>
           key === FieldErrors.errorTypes.MISSING ? 'RENDER_DEFAULT_ERROR' : null
         }
       />

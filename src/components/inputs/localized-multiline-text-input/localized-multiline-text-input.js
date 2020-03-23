@@ -50,7 +50,7 @@ const expandedTranslationsReducer = (state, action) => {
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedMultilineTextInput = props => {
+const LocalizedMultilineTextInput = (props) => {
   const intl = useIntl();
 
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
@@ -82,7 +82,7 @@ const LocalizedMultilineTextInput = props => {
   );
 
   const toggleLanguage = React.useCallback(
-    language => {
+    (language) => {
       expandedTranslationsDispatch({ type: 'toggle', payload: language });
     },
     [expandedTranslationsDispatch]
@@ -206,7 +206,7 @@ LocalizedMultilineTextInput.propTypes = {
   // languages have to exist (with empty or filled strings) on the value:
   //   { en: 'foo', de: '', es: '' }
   value: PropTypes.objectOf(PropTypes.string).isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   selectedLanguage: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,

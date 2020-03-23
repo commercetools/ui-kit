@@ -29,7 +29,7 @@ class RichTextInput extends React.PureComponent {
     }
   }
 
-  onValueChange = event => {
+  onValueChange = (event) => {
     const serializedValue = html.serialize(event.value);
 
     // because we are not using setState, we need to make sure that
@@ -137,7 +137,7 @@ RichTextInput.defaultProps = {
 RichTextInput.displayName = 'RichTextInput';
 
 RichTextInput.isEmpty = isEmpty;
-RichTextInput.isTouched = touched => Boolean(touched);
+RichTextInput.isTouched = (touched) => Boolean(touched);
 
 RichTextInput.propTypes = {
   isAutofocussed: PropTypes.bool,
@@ -150,12 +150,12 @@ RichTextInput.propTypes = {
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   value: PropTypes.string,
   showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
+  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
 };
 
 export default RichTextInput;

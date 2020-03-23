@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import DragDrop from '../raw-components/drag-drop';
 
-const Component = props => (
-  <DragDrop {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <DragDrop {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'DragDropIcon';

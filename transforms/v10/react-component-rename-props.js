@@ -6,18 +6,18 @@ module.exports = function createTransformer(
   propertyRenameMap,
   valueRenameMap
 ) {
-  const isAttributeInPropertyRenameMap = path =>
+  const isAttributeInPropertyRenameMap = (path) =>
     // eslint-disable-next-line no-prototype-builtins
     propertyRenameMap.hasOwnProperty(path.value.name.name);
 
-  const attributeBelongsToTargetComponent = path =>
+  const attributeBelongsToTargetComponent = (path) =>
     componentNamesToRefactor.includes(path.parent.value.name.name);
 
-  const shouldAttributeBeRenamed = path =>
+  const shouldAttributeBeRenamed = (path) =>
     attributeBelongsToTargetComponent(path) &&
     isAttributeInPropertyRenameMap(path);
 
-  const renameComponentAttribute = path => {
+  const renameComponentAttribute = (path) => {
     // eslint-disable-next-line no-param-reassign
     path.value.name.name =
       propertyRenameMap[path.value.name.name] || path.value.name.name;

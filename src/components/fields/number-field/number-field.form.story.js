@@ -32,7 +32,7 @@ storiesOf('Examples|Forms/Fields', module)
       <Section>
         <Formik
           initialValues={initialValues}
-          validate={values => {
+          validate={(values) => {
             const errors = { age: {} };
             if (NumberInput.isEmpty(values.age)) errors.age.missing = true;
             else if (values.age < 0) errors.age.negative = true;
@@ -42,7 +42,7 @@ storiesOf('Examples|Forms/Fields', module)
             action('onSubmit')(values, formik, ...rest);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <NumberField
                 title="Age"
@@ -64,7 +64,7 @@ storiesOf('Examples|Forms/Fields', module)
                   'm'
                 )}
                 errors={formik.errors.age}
-                renderError={key => {
+                renderError={(key) => {
                   switch (key) {
                     // these could also use <FormattedMessage />
                     case 'negative':

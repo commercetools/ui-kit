@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ArrowLongDown from '../raw-components/arrow-long-down';
 
-const Component = props => (
-  <ArrowLongDown {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ArrowLongDown {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ArrowLongDownIcon';

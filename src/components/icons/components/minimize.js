@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Minimize from '../raw-components/minimize';
 
-const Component = props => (
-  <Minimize {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Minimize {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'MinimizeIcon';

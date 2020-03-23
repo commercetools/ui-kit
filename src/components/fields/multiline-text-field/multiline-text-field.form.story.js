@@ -26,7 +26,7 @@ storiesOf('Examples|Forms/Fields', module)
       <Section>
         <Formik
           initialValues={initialValues}
-          validate={values => {
+          validate={(values) => {
             const errors = { description: {} };
             if (MultilineTextInput.isEmpty(values.description))
               errors.description.missing = true;
@@ -38,7 +38,7 @@ storiesOf('Examples|Forms/Fields', module)
             action('onSubmit')(values, formik, ...rest);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <MultilineTextField
                 title="Description"
@@ -56,7 +56,7 @@ storiesOf('Examples|Forms/Fields', module)
                   'm'
                 )}
                 errors={formik.errors.description}
-                renderError={key => {
+                renderError={(key) => {
                   switch (key) {
                     // these could also use <FormattedMessage />
                     case 'exceedsMaxLength':

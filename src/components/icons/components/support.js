@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Support from '../raw-components/support';
 
-const Component = props => (
-  <Support {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Support {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SupportIcon';

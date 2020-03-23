@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Import from '../raw-components/import';
 
-const Component = props => (
-  <Import {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Import {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ImportIcon';

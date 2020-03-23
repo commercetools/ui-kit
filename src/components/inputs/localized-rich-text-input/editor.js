@@ -38,7 +38,7 @@ const Row = styled.div`
   }
 `;
 
-const Editor = props => {
+const Editor = (props) => {
   const intl = useIntl();
   const ref = React.useRef();
   const prevIsFocused = usePrevious(props.editor.value.selection.isFocused);
@@ -97,7 +97,7 @@ const Editor = props => {
             >
               <label
                 htmlFor={props.id}
-                css={theme => getLanguageLabelStyles(props, theme)}
+                css={(theme) => getLanguageLabelStyles(props, theme)}
               >
                 {/* FIXME: add proper tone for disabled when tones are refactored */}
                 <Text.Detail tone="secondary">
@@ -239,7 +239,7 @@ Editor.propTypes = {
   language: PropTypes.string.isRequired,
   languagesControl: PropTypes.func.isRequired,
   showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
+  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
 };
 
 renderEditor.propTypes = {
@@ -259,7 +259,7 @@ renderEditor.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     languagesControl: PropTypes.func.isRequired,
     showExpandIcon: PropTypes.bool.isRequired,
-    onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
+    onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
   }),
 };
 

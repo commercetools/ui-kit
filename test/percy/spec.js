@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import pick from 'lodash/pick';
 import { customProperties } from '@commercetools-frontend/ui-kit';
 
-const getThemedProperty = name => props =>
+const getThemedProperty = (name) => (props) =>
   props.theme[name] || customProperties[name];
 
 const SpecContainer = styled.div`
@@ -55,12 +55,12 @@ const Box = styled.div`
   background-color: ${getThemedProperty('colorSurface')};
 `;
 
-const Pill = props => {
+const Pill = (props) => {
   const value = (() => {
     if (React.isValidElement(props.value)) return 'React Element';
     if (
       Array.isArray(props.value) &&
-      props.value.every(element => React.isValidElement(element))
+      props.value.every((element) => React.isValidElement(element))
     )
       return '[React Element]';
     try {
@@ -83,7 +83,7 @@ Pill.propTypes = {
   value: PropTypes.any,
 };
 
-const Props = props => {
+const Props = (props) => {
   const node = props.listPropsOfNestedChild
     ? React.Children.only(props.children.props.children)
     : React.Children.only(props.children);
@@ -110,7 +110,7 @@ Props.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
 };
 
-const Spec = props => (
+const Spec = (props) => (
   <SpecContainer>
     <Label>{props.label}</Label>
     {!props.omitPropsList && (

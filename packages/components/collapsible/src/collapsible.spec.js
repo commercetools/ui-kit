@@ -2,9 +2,9 @@ import React from 'react';
 import Collapsible from './collapsible';
 import { render } from '../../../../src/test-utils';
 
-const TestComponent = props => (
+const TestComponent = (props) => (
   <Collapsible {...props}>
-    {options => (
+    {(options) => (
       <div>
         <div data-testid="openState">{options.isOpen ? 'open' : 'closed'}</div>
         <button data-testid="toggle" onClick={options.toggle}>

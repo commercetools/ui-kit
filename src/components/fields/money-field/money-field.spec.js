@@ -30,10 +30,10 @@ class Story extends React.Component {
   state = {
     value: this.props.value,
   };
-  handleChange = event => {
+  handleChange = (event) => {
     if (this.props.onChange) this.props.onChange(event);
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       value: {
         ...prevState.value,
         [event.target.name]: event.target.value,
