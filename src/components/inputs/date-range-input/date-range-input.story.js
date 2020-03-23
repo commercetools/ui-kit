@@ -13,7 +13,7 @@ class DateRangeInputStory extends React.Component {
     value: ['2018-11-13', '2018-11-16'],
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     action('onChange')(event);
     this.setState({ value: event.target.value });
   };

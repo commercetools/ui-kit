@@ -12,7 +12,7 @@ import FormikBox from '../../../../.storybook/decorators/formik-box';
 import Readme from './README.md';
 import AsyncSelectInput from './async-select-input';
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 class FakeConnector extends React.Component {
   static displayName = 'FakeConnector';
@@ -53,7 +53,7 @@ class FakeConnector extends React.Component {
 
 const docToForm = (product, isMulti) => ({
   category: isMulti
-    ? product.category.map(category => category.key)
+    ? product.category.map((category) => category.key)
     : product.category.key,
 });
 
@@ -86,7 +86,7 @@ class AsyncSelectInputStory extends React.Component {
                   action('onSubmit')(values, formik, ...rest);
                   formik.resetForm({ values: initialValues });
                 }}
-                render={formik => {
+                render={(formik) => {
                   const hasError = failValidation;
                   const isTouched = AsyncSelectInput.isTouched(
                     formik.touched.category
@@ -136,7 +136,7 @@ class AsyncSelectInputStory extends React.Component {
                             },
                           ]}
                           showOptionGroupDivider={showOptionGroupDivider}
-                          loadOptions={searchText => {
+                          loadOptions={(searchText) => {
                             const items = [
                               { value: 'dogs', label: 'Dogs' },
                               { value: 'whales', label: 'Whales' },
@@ -162,7 +162,7 @@ class AsyncSelectInputStory extends React.Component {
                             ];
 
                             return delay(delayTimeMs).then(() =>
-                              items.filter(item =>
+                              items.filter((item) =>
                                 item.label
                                   .toLowerCase()
                                   .startsWith(searchText.toLowerCase())

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Revert from '../raw-components/revert';
 
-const Component = props => (
-  <Revert {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Revert {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RevertIcon';

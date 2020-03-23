@@ -30,14 +30,14 @@ storiesOf('Components|Inputs', module)
             id={text('id', 'fruits', radioGroup)}
             name={text('name', 'fruits', radioGroup)}
             value={value}
-            onChange={event => {
+            onChange={(event) => {
               action('onChange')(event);
               onChange(event.target.value);
             }}
-            onBlur={event => {
+            onBlur={(event) => {
               action('onBlur')(event);
             }}
-            onFocus={event => {
+            onFocus={(event) => {
               action('onFocus')(event);
             }}
             isDisabled={boolean('disabled', false, radioGroup)}

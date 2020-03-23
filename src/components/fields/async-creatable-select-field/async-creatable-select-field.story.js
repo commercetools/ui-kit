@@ -68,14 +68,14 @@ const animalOptions = [
   { value: 'deer', label: 'Deer' },
 ];
 
-const filterColors = inputValue =>
-  animalOptions.filter(animalOption =>
+const filterColors = (inputValue) =>
+  animalOptions.filter((animalOption) =>
     animalOption.label.toLowerCase().includes(inputValue.toLowerCase())
   );
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const loadOptions = inputValue =>
+const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
 
 storiesOf('Components|Fields', module)
@@ -113,7 +113,7 @@ storiesOf('Components|Fields', module)
                 'm'
               )}
               errors={object('errors', { missing: true, customError: true })}
-              renderError={key => {
+              renderError={(key) => {
                 switch (key) {
                   case 'customError':
                     return 'A custom error.';
@@ -130,7 +130,7 @@ storiesOf('Components|Fields', module)
               id={id || undefined}
               name={name}
               value={value}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange(event.target.value);
               }}

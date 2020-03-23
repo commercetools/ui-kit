@@ -20,7 +20,7 @@ import LocalizedRichTextInput from './localized-rich-text-input';
 const initialValue = '';
 
 class StoryWrapper extends React.Component {
-  onChange = event => {
+  onChange = (event) => {
     this.props.onChange({
       ...this.props.value,
       [event.target.language]: event.target.value,
@@ -86,7 +86,7 @@ class StoryWrapper extends React.Component {
         hasError={boolean('hasError', false)}
         hasWarning={boolean('hasWarning', false)}
         errors={
-          Object.values(errors).some(error => error.length > 0)
+          Object.values(errors).some((error) => error.length > 0)
             ? Object.entries(errors).reduce((acc, [language, error]) => {
                 if (error.length === 0) return acc;
                 acc[language] = <ErrorMessage>{error}</ErrorMessage>;
@@ -95,7 +95,7 @@ class StoryWrapper extends React.Component {
             : undefined
         }
         warnings={
-          Object.values(warnings).some(warning => warning.length > 0)
+          Object.values(warnings).some((warning) => warning.length > 0)
             ? Object.entries(warnings).reduce((acc, [language, warning]) => {
                 if (warning.length === 0) return acc;
                 acc[language] = <WarningMessage>{warning}</WarningMessage>;

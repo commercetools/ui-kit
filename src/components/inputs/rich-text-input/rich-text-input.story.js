@@ -15,10 +15,10 @@ import Readme from './README.md';
 
 const initialValue = '<h1>H1 heading</h1>';
 
-const Input = props => {
+const Input = (props) => {
   const [value, setValue] = React.useState(initialValue);
   const onChange = React.useCallback(
-    event => {
+    (event) => {
       setValue(event.target.value);
       action('onChange')(event);
     },
@@ -68,7 +68,7 @@ storiesOf('Components|Inputs', module)
                 id="text-input"
                 name="text-input"
                 value={value}
-                onChange={event => onChange(event.target.value)}
+                onChange={(event) => onChange(event.target.value)}
               />
             )}
           />

@@ -37,7 +37,7 @@ storiesOf('Examples|Forms/Inputs', module)
       <Section>
         <Formik
           initialValues={initialValues}
-          validate={values => {
+          validate={(values) => {
             const errors = {
               firstName: {},
               lastName: {},
@@ -60,7 +60,7 @@ storiesOf('Examples|Forms/Inputs', module)
             action('onSubmit')(values, formik, ...rest);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <TextField
                 title="Enter your first name"

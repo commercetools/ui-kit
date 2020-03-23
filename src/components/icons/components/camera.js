@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Camera from '../raw-components/camera';
 
-const Component = props => (
-  <Camera {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Camera {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CameraIcon';

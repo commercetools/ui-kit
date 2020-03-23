@@ -25,7 +25,7 @@ class Story extends React.Component {
   state = {
     value: this.props.value || '',
   };
-  handleChange = event => {
+  handleChange = (event) => {
     this.props.onChange(event);
     this.setState({ value: event.target.value });
   };

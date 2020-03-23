@@ -5,7 +5,7 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '../styles';
 
-const TextInput = props => {
+const TextInput = (props) => {
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <input
@@ -22,7 +22,7 @@ const TextInput = props => {
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         autoComplete={props.autoComplete}
-        css={theme => getInputStyles(props, theme)}
+        css={(theme) => getInputStyles(props, theme)}
         {...filterDataAttributes(props)}
         /* ARIA */
         aria-readonly={props.isReadOnly}
@@ -41,7 +41,7 @@ TextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   isAutofocussed: PropTypes.bool,
@@ -57,6 +57,6 @@ TextInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-TextInput.isEmpty = value => !value || value.trim().length === 0;
+TextInput.isEmpty = (value) => !value || value.trim().length === 0;
 
 export default TextInput;

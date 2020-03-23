@@ -23,7 +23,7 @@ module.exports = ({ config }) => {
     // progress plugin outputs a lot of console logs, which makes
     // netlify build realllllllllllllllly slow.
     config.plugins = config.plugins.filter(
-      plugin => plugin.constructor.name !== 'ProgressPlugin'
+      (plugin) => plugin.constructor.name !== 'ProgressPlugin'
     );
     config.devtool = 'none'; // TODO: should we use something differen?
   } else {

@@ -5,7 +5,7 @@ const memoizedIsHotkey = memoize(isKeyHotkey);
 
 const HOT_KEY = 'mod+z';
 
-const hasUndos = editor => {
+const hasUndos = (editor) => {
   const { value } = editor;
   const { data } = value;
   const undos = data.get('undos');
@@ -28,10 +28,10 @@ const UndoPlugin = (options = {}) => {
         editor.undo();
       },
       queries: {
-        hasUndos: editor => hasUndos(editor),
+        hasUndos: (editor) => hasUndos(editor),
       },
       commands: {
-        toggleUndo: editor => {
+        toggleUndo: (editor) => {
           if (hasUndos(editor)) {
             editor.undo();
           }

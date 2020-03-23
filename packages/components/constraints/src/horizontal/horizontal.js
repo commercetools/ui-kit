@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getConstraintSyles = constraint => {
+const getConstraintSyles = (constraint) => {
   switch (constraint) {
     case 'xs':
       return css`
@@ -35,7 +35,7 @@ const getConstraintSyles = constraint => {
   }
 };
 
-const Horizontal = props => (
+const Horizontal = (props) => (
   <div
     css={[
       css`

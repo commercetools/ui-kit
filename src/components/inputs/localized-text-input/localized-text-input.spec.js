@@ -28,7 +28,7 @@ class TestComponent extends React.Component {
     selectedLanguage: this.props.selectedLanguage || '',
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     this.setState({
       value: {

@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Strikethrough from '../raw-components/strikethrough';
 
-const Component = props => (
-  <Strikethrough {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Strikethrough {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'StrikethroughIcon';

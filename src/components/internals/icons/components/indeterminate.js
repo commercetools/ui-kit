@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Indeterminate from '../raw-components/indeterminate';
 
-const Component = props => (
-  <Indeterminate {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Indeterminate {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'IndeterminateIcon';

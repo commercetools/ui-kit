@@ -20,7 +20,7 @@ const InlineColorWrapper = styled.div`
   display: inline-flex;
   align-items: stretch;
   height: 100px;
-  width: ${props => props.width};
+  width: ${(props) => props.width};
 `;
 
 const sizes = [
@@ -48,7 +48,7 @@ storiesOf('Components|Constraints', module)
     return (
       <Horizontal constraint={constraint}>
         <Stack>
-          {sizes.map(size => (
+          {sizes.map((size) => (
             <Row key={size.name}>
               <InlineColorWrapper width={size.width} />
             </Row>

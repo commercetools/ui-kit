@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import UserLinear from '../raw-components/user-linear';
 
-const Component = props => (
-  <UserLinear {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <UserLinear {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'UserLinearIcon';

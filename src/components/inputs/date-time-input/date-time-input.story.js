@@ -13,15 +13,15 @@ class DateTimeInputStory extends React.Component {
     value: '',
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     action('onChange')(event);
     this.setState({ value: event.target.value });
   };
 
-  onBlur = event => {
+  onBlur = (event) => {
     action('onBlur')(event);
   };
-  onFocus = event => action('onFocus')(event);
+  onFocus = (event) => action('onFocus')(event);
 
   render() {
     const placeholder = text('placeholder', '');

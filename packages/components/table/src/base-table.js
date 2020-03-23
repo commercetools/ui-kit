@@ -128,7 +128,7 @@ export default class BaseTable extends React.Component {
   });
 
   // fixed columns are rendered at the beginning of the table by convention
-  columns = sortBy(this.props.columns, col => !col.isFixed);
+  columns = sortBy(this.props.columns, (col) => !col.isFixed);
 
   componentDidMount() {
     if (this.props.registerMeasurementCache) {
@@ -141,7 +141,7 @@ export default class BaseTable extends React.Component {
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.columns !== this.props.columns) {
-      this.columns = sortBy(nextProps.columns, col => !col.isFixed);
+      this.columns = sortBy(nextProps.columns, (col) => !col.isFixed);
     }
     if (
       nextProps.maxWidth !== this.props.maxWidth ||
@@ -181,7 +181,7 @@ export default class BaseTable extends React.Component {
       });
     }
   }
-  registerMultiGrid = node => {
+  registerMultiGrid = (node) => {
     this.multiGrid = node;
   };
   updateMeasurements = ({ maxWidth, maxHeight }) => {
@@ -194,8 +194,8 @@ export default class BaseTable extends React.Component {
   };
   // since this table also considers the header a row we need to subtract it
   // from the row index before passing it to the parent
-  getBodyRowIndex = rowIndex => rowIndex - 1;
-  handleChangeSortDirection = columnKey => {
+  getBodyRowIndex = (rowIndex) => rowIndex - 1;
+  handleChangeSortDirection = (columnKey) => {
     if (!this.props.onSortChange) return;
 
     if (columnKey !== this.props.sortBy) {
@@ -278,7 +278,7 @@ export default class BaseTable extends React.Component {
       // specified flexGrow.
       // if there are none, the table shouldn't take up the full width
       const shouldFillHorizontalSpace = this.props.columns.some(
-        col => col.flexGrow
+        (col) => col.flexGrow
       );
       if (shouldFillHorizontalSpace) {
         this.setState({
@@ -306,8 +306,9 @@ export default class BaseTable extends React.Component {
       });
     }
   };
-  getColumnWidth = getColumnWidthFromCache => ({ index }) => {
-    const numberOfFlexColumns = this.columns.filter(col => col.flexGrow).length;
+  getColumnWidth = (getColumnWidthFromCache) => ({ index }) => {
+    const numberOfFlexColumns = this.columns.filter((col) => col.flexGrow)
+      .length;
     const shouldFillHorizontalSpace =
       this.state.remainingWidth && this.columns[index].flexGrow;
     if (shouldFillHorizontalSpace) {
@@ -317,7 +318,7 @@ export default class BaseTable extends React.Component {
     }
     return getColumnWidthFromCache({ index });
   };
-  headerRenderer = column =>
+  headerRenderer = (column) =>
     column.getLabel ? (
       column.getLabel()
     ) : (
@@ -341,7 +342,7 @@ export default class BaseTable extends React.Component {
       </Cell>
     );
 
-  renderItemCell = renderParams => {
+  renderItemCell = (renderParams) => {
     // `columnDefinition` is the original column-definition from where you defined the table
     // `renderParams` holds similar looking-information but is the data provided by "react-virtualized"
     const columnDefinition = this.columns[renderParams.columnIndex];
@@ -417,7 +418,7 @@ export default class BaseTable extends React.Component {
                 : {}),
             }}
             data-test={`cell-${renderParams.rowIndex}-${columnDefinition.key}`}
-            onClick={event => {
+            onClick={(event) => {
               if (columnDefinition.onClick) {
                 columnDefinition.onClick({
                   event,
@@ -468,7 +469,7 @@ export default class BaseTable extends React.Component {
     );
   };
 
-  itemRenderer = renderParams => (
+  itemRenderer = (renderParams) => (
     <CellMeasurer
       cache={this.cellMeasurerCache}
       columnIndex={renderParams.columnIndex}

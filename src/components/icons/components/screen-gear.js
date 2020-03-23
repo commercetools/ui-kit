@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ScreenGear from '../raw-components/screen-gear';
 
-const Component = props => (
-  <ScreenGear {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ScreenGear {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ScreenGearIcon';

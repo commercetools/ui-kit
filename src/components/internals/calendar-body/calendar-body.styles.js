@@ -6,7 +6,7 @@ import { getInputStyles } from '../../inputs/styles';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = props => {
+const getClearSectionStyles = (props) => {
   const baseIconStyles = css`
     align-items: center;
     box-sizing: border-box;

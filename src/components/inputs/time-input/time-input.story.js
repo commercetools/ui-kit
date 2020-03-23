@@ -29,7 +29,7 @@ storiesOf('Components|Inputs', module)
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               value={value}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange(event.target.value);
               }}

@@ -16,11 +16,11 @@ import {
 } from './collapsible-panel.styles';
 
 const panelContentIdPrefix = 'panel-content-';
-const getPanelContentId = id => panelContentIdPrefix + id;
+const getPanelContentId = (id) => panelContentIdPrefix + id;
 
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
-const CollapsiblePanel = props => {
+const CollapsiblePanel = (props) => {
   const panelContentId = getPanelContentId(props.id);
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
@@ -74,7 +74,9 @@ const CollapsiblePanel = props => {
               </Spacings.Inline>
             </Spacings.Inline>
             {props.headerControls && (
-              <HeaderControlsWrapper onClick={event => event.stopPropagation()}>
+              <HeaderControlsWrapper
+                onClick={(event) => event.stopPropagation()}
+              >
                 {props.headerControls}
               </HeaderControlsWrapper>
             )}

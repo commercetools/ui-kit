@@ -23,10 +23,10 @@ const pkgComponentsContext = require.context(
 );
 const srcRouteComponent = srcComponentsContext
   .keys()
-  .map(id => srcComponentsContext(id));
+  .map((id) => srcComponentsContext(id));
 const pkgRouteComponent = pkgComponentsContext
   .keys()
-  .map(id => pkgComponentsContext(id));
+  .map((id) => pkgComponentsContext(id));
 const allRouteComponents = srcRouteComponent.concat(pkgRouteComponent);
 const allUniqueRouteComponents = allRouteComponents.reduce(
   (allComponents, RouteComponent) => {
@@ -44,7 +44,7 @@ const allUniqueRouteComponents = allRouteComponents.reduce(
 );
 const allSortedComponents = Object.keys(allUniqueRouteComponents)
   .sort()
-  .map(key => allUniqueRouteComponents[key]);
+  .map((key) => allUniqueRouteComponents[key]);
 
 class App extends React.Component {
   render() {
@@ -59,7 +59,7 @@ class App extends React.Component {
                 <div>
                   <h1>Visual Testing App</h1>
                   <ul>
-                    {allSortedComponents.map(Component => (
+                    {allSortedComponents.map((Component) => (
                       <li key={Component.routePath}>
                         <a href={Component.routePath}>{Component.routePath}</a>
                       </li>
@@ -68,7 +68,7 @@ class App extends React.Component {
                 </div>
               )}
             />
-            {allSortedComponents.map(Component => (
+            {allSortedComponents.map((Component) => (
               <Route
                 key={Component.routePath}
                 path={Component.routePath}

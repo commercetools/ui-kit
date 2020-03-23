@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Circle from '../raw-components/circle';
 
-const Component = props => (
-  <Circle {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Circle {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CircleIcon';

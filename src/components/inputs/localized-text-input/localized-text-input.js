@@ -31,10 +31,10 @@ import {
 
 const sequentialId = createSequentialId('localized-text-input-');
 
-const LocalizedInput = props => {
+const LocalizedInput = (props) => {
   const { onChange } = props;
   const handleChange = React.useCallback(
-    event => {
+    (event) => {
       // We manipulate the event to add the language to the target.
       // That way the users of LocalizedTextInput's onChange can read
       // event.target.language and event.target.value to determine the next value.
@@ -64,7 +64,7 @@ const LocalizedInput = props => {
     >
       <label
         htmlFor={props.id}
-        css={theme => getLanguageLabelStyles(props, theme)}
+        css={(theme) => getLanguageLabelStyles(props, theme)}
       >
         {/* FIXME: add proper tone for disabled when tones are refactored */}
         <Text.Detail tone="secondary">
@@ -86,7 +86,7 @@ LocalizedInput.propTypes = {
   name: PropTypes.string,
   autoComplete: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   language: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
@@ -105,7 +105,7 @@ const RequiredValueErrorMessage = () => (
 
 RequiredValueErrorMessage.displayName = 'RequiredValueErrorMessage';
 
-const LocalizedTextInput = props => {
+const LocalizedTextInput = (props) => {
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
     props.defaultExpandLanguages || // default to `false`, because useToggleState defaults to `true`
@@ -221,7 +221,7 @@ LocalizedTextInput.propTypes = {
   // languages have to exist (with empty or filled strings) on the value:
   //   { en: 'foo', de: '', es: '' }
   value: PropTypes.objectOf(PropTypes.string).isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   selectedLanguage: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,

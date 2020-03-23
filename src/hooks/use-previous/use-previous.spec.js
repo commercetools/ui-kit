@@ -4,7 +4,7 @@ import { render } from '../../test-utils';
 import useToggleState from '../use-toggle-state';
 import usePrevious from './use-previous';
 
-const PrevOpenState = props => {
+const PrevOpenState = (props) => {
   let text = '';
 
   // eslint-disable-next-line react/prop-types
@@ -18,7 +18,7 @@ const PrevOpenState = props => {
   return <div data-testid="prevOpenState">{text}</div>;
 };
 
-const TestComponent = props => {
+const TestComponent = (props) => {
   // eslint-disable-next-line react/prop-types
   const [isOpen, toggle] = useToggleState(props.isDefaultOpen);
   const prevIsOpen = usePrevious(isOpen);

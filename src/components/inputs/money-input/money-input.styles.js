@@ -16,7 +16,7 @@ const getCurrencyLabelStyles = () => css`
   box-sizing: border-box;
 `;
 
-const getAmountInputStyles = props => [
+const getAmountInputStyles = (props) => [
   getInputStyles(props),
   css`
     border-top-left-radius: 0;

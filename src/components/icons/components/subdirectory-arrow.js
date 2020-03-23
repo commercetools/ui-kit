@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import SubdirectoryArrow from '../raw-components/subdirectory-arrow';
 
-const Component = props => (
-  <SubdirectoryArrow {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <SubdirectoryArrow {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SubdirectoryArrowIcon';

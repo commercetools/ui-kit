@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import PinLinear from '../raw-components/pin-linear';
 
-const Component = props => (
-  <PinLinear {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <PinLinear {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PinLinearIcon';

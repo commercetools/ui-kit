@@ -9,7 +9,7 @@ import Readme from './text/README.md';
 const InlineColorWrapper = styled.div`
   background-color: #e1ffdd;
   display: inline-block;
-  width: ${props => props.width};
+  width: ${(props) => props.width};
 `;
 storiesOf('Basics|Typography/Text', module)
   .addDecorator(withKnobs)

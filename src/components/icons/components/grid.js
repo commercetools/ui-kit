@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Grid from '../raw-components/grid';
 
-const Component = props => (
-  <Grid {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Grid {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'GridIcon';

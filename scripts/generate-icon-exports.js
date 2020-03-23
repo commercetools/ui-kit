@@ -80,14 +80,14 @@ const iconsToProcess = [
   },
 ];
 
-iconsToProcess.forEach(data => {
+iconsToProcess.forEach((data) => {
   glob(data.svgPath, async (err, files) => {
     const relativeStyledIconPath = path.relative(
       data.iconComponentsPath,
       createStyledIconPath
     );
 
-    files.forEach(fileName => {
+    files.forEach((fileName) => {
       const fileNameWithoutExtension = path.basename(fileName, iconFileExt);
       const componentName = upperFirst(camelCase(fileNameWithoutExtension));
 

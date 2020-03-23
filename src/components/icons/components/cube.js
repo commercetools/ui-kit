@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Cube from '../raw-components/cube';
 
-const Component = props => (
-  <Cube {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Cube {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CubeIcon';

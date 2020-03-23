@@ -44,7 +44,7 @@ storiesOf('Components|Fields', module)
                 'm'
               )}
               errors={object('errors', { missing: true, customError: true })}
-              renderError={key => {
+              renderError={(key) => {
                 switch (key) {
                   case 'customError':
                     return 'A custom error.';
@@ -67,7 +67,7 @@ storiesOf('Components|Fields', module)
               )}
               name={text('name', '')}
               value={value}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange(event.target.value);
               }}

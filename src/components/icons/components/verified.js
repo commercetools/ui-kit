@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Verified from '../raw-components/verified';
 
-const Component = props => (
-  <Verified {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Verified {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'VerifiedIcon';

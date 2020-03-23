@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import RadioOptionChecked from '../raw-components/radio-option-checked';
 
-const Component = props => (
-  <RadioOptionChecked {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <RadioOptionChecked {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RadioOptionCheckedIcon';

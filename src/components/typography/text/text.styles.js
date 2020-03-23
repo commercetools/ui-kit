@@ -55,7 +55,7 @@ const getTone = (tone, theme) => {
   }
 };
 
-const getElementFontSize = elementType => {
+const getElementFontSize = (elementType) => {
   switch (elementType) {
     case 'h1':
       return '2.4615rem';

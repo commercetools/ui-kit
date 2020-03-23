@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Error from '../raw-components/error';
 
-const Component = props => (
-  <Error {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Error {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ErrorIcon';

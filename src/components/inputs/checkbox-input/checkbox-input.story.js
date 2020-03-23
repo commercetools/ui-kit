@@ -25,7 +25,7 @@ storiesOf('Components|Inputs', module)
             <CheckboxInput
               id={text('id', '')}
               name={text('name', '')}
-              onChange={event => {
+              onChange={(event) => {
                 action('onChange')(event);
                 onChange(!isChecked);
               }}

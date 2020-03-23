@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Split from '../raw-components/split';
 
-const Component = props => (
-  <Split {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Split {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SplitIcon';

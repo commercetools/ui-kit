@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getBorderColor = props => {
+const getBorderColor = (props) => {
   if (props.isDisabled) {
     return css`
       border-color: ${vars.borderColorForInputWhenDisabled};
@@ -28,7 +28,7 @@ const getBorderColor = props => {
   `;
 };
 
-const getBackgroundColor = props => {
+const getBackgroundColor = (props) => {
   if (props.isDisabled) {
     return css`
       background-color: ${vars.backgroundColorForInputWhenDisabled};
@@ -86,7 +86,7 @@ export const Toolbar = styled.div`
   }
 `;
 
-const reset = props => [
+const reset = (props) => [
   css`
     h1,
     h2,
@@ -128,7 +128,7 @@ export const Container = styled.div`
   transition: ${vars.transitionStandard};
   ${getBorderColor}
   ${getBackgroundColor}
-  pointer-events: ${props =>
+  pointer-events: ${(props) =>
     props.isDisabled || props.isReadOnly ? 'none' : 'inherit'};
   position: relative;
 

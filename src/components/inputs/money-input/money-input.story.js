@@ -67,7 +67,7 @@ class MoneyInputStory extends React.Component {
             isDisabled={boolean('isDisabled', false)}
             isReadOnly={boolean('isReadOnly', false)}
             isAutofocussed={boolean('isAutofocussed', false)}
-            onChange={event => {
+            onChange={(event) => {
               action('onChange')(event);
 
               if (event.target.name.endsWith('.amount')) {

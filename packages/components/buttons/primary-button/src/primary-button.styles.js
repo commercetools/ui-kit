@@ -2,7 +2,7 @@
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getSizeStyles = size => {
+const getSizeStyles = (size) => {
   switch (size) {
     case 'small':
       return css`

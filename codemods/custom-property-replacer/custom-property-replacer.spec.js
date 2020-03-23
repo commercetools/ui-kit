@@ -6,7 +6,7 @@ const processor = postcss([
   plugin({ file: path.resolve(__dirname, './v10/variable-mapping.json') }),
 ]);
 
-const process = input => processor.process(input).css;
+const process = (input) => processor.process(input).css;
 
 describe('custom-property-replacer', () => {
   describe('with nested selectors', () => {

@@ -22,7 +22,7 @@ class RichTextInput extends React.PureComponent {
     }
   }
 
-  onValueChange = event => {
+  onValueChange = (event) => {
     const serializedValue = html.serialize(event.value);
 
     // because we are not using setState, we need to make sure that
@@ -179,12 +179,12 @@ RichTextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   value: PropTypes.string.isRequired,
   showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
+  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
 };
 
 export default RichTextInput;

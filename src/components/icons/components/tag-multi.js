@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import TagMulti from '../raw-components/tag-multi';
 
-const Component = props => (
-  <TagMulti {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <TagMulti {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'TagMultiIcon';

@@ -9,7 +9,7 @@ import Text from '@commercetools-uikit/text';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
-const getButtonStyles = isDisabled => {
+const getButtonStyles = (isDisabled) => {
   const baseButtonStyles = css`
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@ const getButtonStyles = isDisabled => {
   ];
 };
 
-const DropdownHead = props => (
+const DropdownHead = (props) => (
   <div
     css={css`
       display: flex;
@@ -157,7 +157,7 @@ const Options = styled.div`
   box-shadow: ${vars.shadow1};
 `;
 
-export const Option = props => (
+export const Option = (props) => (
   <AccessibleButton
     label={props.children}
     onClick={props.onClick}
@@ -209,12 +209,12 @@ Option.defaultProps = {
   when the dropdown trigger itself is clicked. Otherwise it would open and close
   immediately.
  */
-const PrimaryActionDropdown = props => {
+const PrimaryActionDropdown = (props) => {
   const ref = React.useRef();
   const [isOpen, toggle] = useToggleState(false);
 
   const handleGlobalClick = React.useCallback(
-    event => {
+    (event) => {
       const dropdownButton = ref.current;
       if (
         dropdownButton &&
@@ -235,12 +235,12 @@ const PrimaryActionDropdown = props => {
 
   const childrenAsArray = React.Children.toArray(props.children);
   const primaryOption =
-    childrenAsArray.find(option => !option.props.isDisabled) ||
+    childrenAsArray.find((option) => !option.props.isDisabled) ||
     childrenAsArray[0];
 
   const { onClick } = primaryOption.props;
   const handleClickOnHead = React.useCallback(
-    event => {
+    (event) => {
       if (isOpen) {
         toggle(true);
       } else {

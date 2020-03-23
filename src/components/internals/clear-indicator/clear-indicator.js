@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 
-const ClearIndicator = props => {
+const ClearIndicator = (props) => {
   const intl = useIntl();
   const {
     getStyles,

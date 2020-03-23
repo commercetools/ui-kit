@@ -18,7 +18,7 @@ const Input = styled.input`
   }
 `;
 
-const Option = props => {
+const Option = (props) => {
   const labelProps = props.id ? { htmlFor: props.id } : {};
   return (
     <label

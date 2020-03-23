@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Stack from '../raw-components/stack';
 
-const Component = props => (
-  <Stack {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Stack {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'StackIcon';

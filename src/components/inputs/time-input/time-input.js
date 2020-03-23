@@ -22,9 +22,9 @@ const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
   return `${base}:${leftPad(seconds)}.${leftPad(milliseconds, 3)}`;
 };
 
-const hasMilliseconds = parsedTime => parsedTime.milliseconds !== 0;
+const hasMilliseconds = (parsedTime) => parsedTime.milliseconds !== 0;
 
-const TimeInput = props => {
+const TimeInput = (props) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
   const prevLocale = usePrevious(intl.locale);
@@ -32,7 +32,7 @@ const TimeInput = props => {
   const { name, value, onBlur, onChange } = props;
 
   const emitChange = React.useCallback(
-    nextValue => {
+    (nextValue) => {
       const event = {
         target: { id, name, value: nextValue },
       };
@@ -42,7 +42,7 @@ const TimeInput = props => {
   );
 
   const handleBlur = React.useCallback(
-    event => {
+    (event) => {
       // check formatting and reformat when necessary
       const formattedTime = TimeInput.toLocaleTime(value, intl.locale);
 
@@ -91,7 +91,7 @@ TimeInput.displayName = 'TimeInput';
 
 // Takes any input like 15:10, 3 AM, 3AM, 3:15AM, 3:5AM and turns it
 // into a 24h format (with seconds and milliseconds if present)
-TimeInput.to24h = time => {
+TimeInput.to24h = (time) => {
   const parsedTime = parseTime(time);
   return parsedTime ? format24hr(parsedTime) : '';
 };

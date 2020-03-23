@@ -7,7 +7,7 @@ import { getTextareaStyles } from './multiline-input.styles';
 
 const MIN_ROW_COUNT = 1;
 
-const MultilineInput = props => {
+const MultilineInput = (props) => {
   return (
     <TextareaAutosize
       name={props.name}
@@ -24,7 +24,7 @@ const MultilineInput = props => {
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
       className={props.className}
-      css={theme => getTextareaStyles(props, theme)}
+      css={(theme) => getTextareaStyles(props, theme)}
       /* ARIA */
       aria-readonly={props.isReadOnly}
       aria-multiline="true"
@@ -45,7 +45,7 @@ MultilineInput.propTypes = {
   autoComplete: PropTypes.string,
   id: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   isAutofocussed: PropTypes.bool,

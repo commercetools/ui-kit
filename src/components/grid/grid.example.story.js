@@ -9,7 +9,7 @@ import Text from '../typography/text';
 import Readme from './README.md';
 import Grid from './grid';
 
-const createList = size =>
+const createList = (size) =>
   Array.from({ length: size }).map((_, index) => index + 1);
 
 const Placeholder = styled.div`

@@ -32,7 +32,7 @@ const Row = styled.div`
   }
 `;
 
-const TranslationInput = props => {
+const TranslationInput = (props) => {
   const [contentRowCount, setContentRowCount] = React.useState(
     TranslationInput.MIN_ROW_COUNT
   );
@@ -47,7 +47,7 @@ const TranslationInput = props => {
   const { onChange } = props;
 
   const handleChange = React.useCallback(
-    event => {
+    (event) => {
       // We manipulate the event to add the language to the target.
       // That way the users of LocalizedTextInput's onChange can read
       // event.target.language and event.target.value to determine the next value.
@@ -90,7 +90,7 @@ const TranslationInput = props => {
       >
         <label
           htmlFor={props.id}
-          css={theme => getLanguageLabelStyles(props, theme)}
+          css={(theme) => getLanguageLabelStyles(props, theme)}
         >
           {/* FIXME: add proper tone for disabled when tones are refactored */}
           <Text.Detail tone="secondary">
@@ -108,7 +108,7 @@ const TranslationInput = props => {
           onFocus={handleFocus}
           isDisabled={props.isDisabled}
           placeholder={props.placeholder}
-          css={theme => getTextareaStyles(props, theme)}
+          css={(theme) => getTextareaStyles(props, theme)}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
           isReadOnly={props.isReadOnly}
@@ -163,7 +163,7 @@ TranslationInput.propTypes = {
   autoComplete: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   language: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,

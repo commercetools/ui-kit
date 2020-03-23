@@ -4,7 +4,7 @@ import { percySnapshot } from '@percy/puppeteer';
 const snapshot = (page, description) =>
   percySnapshot(page, description, { widths: [1600] });
 
-const capitalize = s => s[0].toUpperCase() + s.slice(1);
+const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 const colors = [
   'solid',
   'neutral60',
@@ -17,7 +17,7 @@ const colors = [
 ];
 
 describe('Icons', () => {
-  colors.map(color =>
+  colors.map((color) =>
     it(capitalize(color), async () => {
       await page.goto(`${HOST}/icons/${color}`);
       await expect(page).toMatch(color);

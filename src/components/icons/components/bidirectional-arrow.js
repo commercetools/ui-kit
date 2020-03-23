@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import BidirectionalArrow from '../raw-components/bidirectional-arrow';
 
-const Component = props => (
-  <BidirectionalArrow {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <BidirectionalArrow {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'BidirectionalArrowIcon';

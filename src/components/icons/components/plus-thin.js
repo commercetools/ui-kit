@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import PlusThin from '../raw-components/plus-thin';
 
-const Component = props => (
-  <PlusThin {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <PlusThin {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PlusThinIcon';

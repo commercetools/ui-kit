@@ -63,15 +63,15 @@ const philosophyStories = require.context(
 
 function loadStories() {
   require('./welcome.story');
-  philosophyStories.keys().forEach(filename => philosophyStories(filename));
-  materialsStories.keys().forEach(filename => materialsStories(filename));
-  srcStories.keys().forEach(filename => srcStories(filename));
-  packagesStories.keys().forEach(filename => packagesStories(filename));
-  exampleStories.keys().forEach(filename => exampleStories(filename));
-  srcExampleStories.keys().forEach(filename => srcExampleStories(filename));
+  philosophyStories.keys().forEach((filename) => philosophyStories(filename));
+  materialsStories.keys().forEach((filename) => materialsStories(filename));
+  srcStories.keys().forEach((filename) => srcStories(filename));
+  packagesStories.keys().forEach((filename) => packagesStories(filename));
+  exampleStories.keys().forEach((filename) => exampleStories(filename));
+  srcExampleStories.keys().forEach((filename) => srcExampleStories(filename));
   packagesExampleStories
     .keys()
-    .forEach(filename => packagesExampleStories(filename));
+    .forEach((filename) => packagesExampleStories(filename));
 }
 
 addDecorator(addReadme);

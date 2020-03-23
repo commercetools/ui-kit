@@ -32,7 +32,7 @@ it('should render option with a controlled wrapper', () => {
       <Option
         value="option-with-wrapper"
         components={{
-          wrapper: children => (
+          wrapper: (children) => (
             <CustomWrapper visible={visible}>{children}</CustomWrapper>
           ),
         }}
@@ -51,7 +51,7 @@ it('should render option with a controlled wrapper', () => {
 });
 
 it('should call onChange when options are clicked', () => {
-  const onChange = jest.fn(event => {
+  const onChange = jest.fn((event) => {
     event.persist();
   });
   const { getByLabelText, rerender } = render(

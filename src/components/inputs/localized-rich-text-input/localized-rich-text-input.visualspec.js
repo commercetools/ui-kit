@@ -4,16 +4,16 @@ import { getDocument, queries, wait } from 'pptr-testing-library';
 const { getByLabelText, getByTestId, getAllByLabelText, getByText } = queries;
 
 describe('LocalizedRichTextInput', () => {
-  const blur = async element => {
+  const blur = async (element) => {
     // eslint-disable-next-line no-shadow
-    await page.evaluate(element => {
+    await page.evaluate((element) => {
       element.blur();
     }, element);
   };
 
-  const selectAllText = async input => {
+  const selectAllText = async (input) => {
     // eslint-disable-next-line no-shadow
-    await page.evaluate(input => {
+    await page.evaluate((input) => {
       const range = document.createRange();
       range.selectNodeContents(input);
       const sel = window.getSelection();
@@ -22,9 +22,9 @@ describe('LocalizedRichTextInput', () => {
     }, input);
   };
 
-  const getNumberOfTags = async tagName => {
+  const getNumberOfTags = async (tagName) => {
     // eslint-disable-next-line no-shadow
-    const numberOfTags = await page.evaluate(tagName => {
+    const numberOfTags = await page.evaluate((tagName) => {
       return document.querySelectorAll(tagName).length;
     }, tagName);
 

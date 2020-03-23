@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ScreenUser from '../raw-components/screen-user';
 
-const Component = props => (
-  <ScreenUser {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ScreenUser {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ScreenUserIcon';

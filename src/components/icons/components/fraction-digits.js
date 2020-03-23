@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import FractionDigits from '../raw-components/fraction-digits';
 
-const Component = props => (
-  <FractionDigits {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <FractionDigits {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'FractionDigitsIcon';

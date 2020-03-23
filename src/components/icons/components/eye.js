@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Eye from '../raw-components/eye';
 
-const Component = props => (
-  <Eye {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Eye {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'EyeIcon';

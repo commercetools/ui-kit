@@ -14,7 +14,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('date-range-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 class DateRangeField extends React.Component {
   static displayName = 'DateRangeField';
@@ -33,7 +33,7 @@ class DateRangeField extends React.Component {
     // DateRangeInput
     name: PropTypes.string,
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -44,7 +44,7 @@ class DateRangeField extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onInfoButtonClick: PropTypes.func,

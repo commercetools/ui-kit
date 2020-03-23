@@ -83,28 +83,28 @@ const rules = [
         const childNode = el.childNodes[0];
 
         if (styleAttribute) {
-          const marks = flatMap(styleAttribute.split(';'), val => {
+          const marks = flatMap(styleAttribute.split(';'), (val) => {
             const split = val.trim().split(' ');
 
             const [key, ...values] = split;
 
-            return values.map(value => ({
+            return values.map((value) => ({
               // always remove the : from the key
               [key.slice(0, -1)]: value,
             }));
           })
-            .map(val => {
+            .map((val) => {
               const [key, value] = Object.entries(val)[0];
               return mapper[key] && mapper[key][value];
             })
-            .filter(val => Boolean(val));
+            .filter((val) => Boolean(val));
 
           let deepestNode = el;
 
           if (marks && marks.length > 0) {
             tagName = marks[0];
 
-            marks.forEach(mark => {
+            marks.forEach((mark) => {
               deepestNode.removeChild(childNode);
               const newNode = document.createElement(mark);
               newNode.appendChild(childNode);

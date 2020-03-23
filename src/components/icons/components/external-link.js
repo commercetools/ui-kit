@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ExternalLink from '../raw-components/external-link';
 
-const Component = props => (
-  <ExternalLink {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ExternalLink {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ExternalLinkIcon';

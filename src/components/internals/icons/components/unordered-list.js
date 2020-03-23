@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import UnorderedList from '../raw-components/unordered-list';
 
-const Component = props => (
-  <UnorderedList {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <UnorderedList {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'UnorderedListIcon';

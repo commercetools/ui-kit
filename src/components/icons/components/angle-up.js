@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import AngleUp from '../raw-components/angle-up';
 
-const Component = props => (
-  <AngleUp {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <AngleUp {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'AngleUpIcon';

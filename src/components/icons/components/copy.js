@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Copy from '../raw-components/copy';
 
-const Component = props => (
-  <Copy {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Copy {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CopyIcon';

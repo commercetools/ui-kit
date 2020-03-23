@@ -24,7 +24,7 @@ const customizedComponents = {
   LoadingIndicator,
 };
 
-const AsyncCreatableSelectInput = props => {
+const AsyncCreatableSelectInput = (props) => {
   const intl = useIntl();
   const theme = useTheme();
 
@@ -130,7 +130,7 @@ const AsyncCreatableSelectInput = props => {
           allowCreateWhileLoading={props.allowCreateWhileLoading}
           formatCreateLabel={
             props.formatCreateLabel ||
-            (inputValue =>
+            ((inputValue) =>
               intl.formatMessage(messages.createLabel, {
                 inputValue,
               }))
@@ -149,7 +149,7 @@ const AsyncCreatableSelectInput = props => {
 // deal with an array. The touched state ends up being an empty array in case
 // values were removed only. So we have to treat any array we receive as
 // a signal of the field having been touched.
-AsyncCreatableSelectInput.isTouched = touched => Boolean(touched);
+AsyncCreatableSelectInput.isTouched = (touched) => Boolean(touched);
 
 AsyncCreatableSelectInput.displayName = 'AsyncCreatableSelectInput';
 

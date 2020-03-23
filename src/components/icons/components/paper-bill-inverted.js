@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import PaperBillInverted from '../raw-components/paper-bill-inverted';
 
-const Component = props => (
-  <PaperBillInverted {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <PaperBillInverted {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PaperBillInvertedIcon';

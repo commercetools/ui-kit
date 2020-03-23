@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Paperclip from '../raw-components/paperclip';
 
-const Component = props => (
-  <Paperclip {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Paperclip {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PaperclipIcon';

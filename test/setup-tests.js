@@ -56,7 +56,7 @@ global.console.error = (...messages) => {
 // https://github.com/facebook/jest/issues/3251#issuecomment-299183885
 // In Node v7 unhandled promise rejections will terminate the process
 if (!process.env.LISTENING_TO_UNHANDLED_REJECTION) {
-  process.on('unhandledRejection', reason => {
+  process.on('unhandledRejection', (reason) => {
     logMessage('UNHANDLED REJECTION', reason);
 
     // We create a file in case there is an unhandled rejection

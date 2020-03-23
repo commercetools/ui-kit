@@ -53,9 +53,7 @@ storiesOf('Components|FieldLabel', module)
                 label="show"
                 onClick={() => {}}
               />
-            ) : (
-              undefined
-            )
+            ) : undefined
           }
         />
       </Section>

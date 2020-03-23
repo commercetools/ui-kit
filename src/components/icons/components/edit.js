@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Edit from '../raw-components/edit';
 
-const Component = props => (
-  <Edit {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Edit {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'EditIcon';

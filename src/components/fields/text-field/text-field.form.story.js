@@ -33,7 +33,7 @@ storiesOf('Examples|Forms/Fields', module)
       <Section>
         <Formik
           initialValues={initialValues}
-          validate={values => {
+          validate={(values) => {
             const errors = { userName: {} };
             if (TextInput.isEmpty(values.userName))
               errors.userName.missing = true;
@@ -47,7 +47,7 @@ storiesOf('Examples|Forms/Fields', module)
             action('onSubmit')(values, formik, ...rest);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <TextField
                 title="Username"
@@ -69,7 +69,7 @@ storiesOf('Examples|Forms/Fields', module)
                   'm'
                 )}
                 errors={formik.errors.userName}
-                renderError={key => {
+                renderError={(key) => {
                   switch (key) {
                     // these could also use <FormattedMessage />
                     case 'usesSpaces':

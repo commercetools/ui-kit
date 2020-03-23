@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Table from '../raw-components/table';
 
-const Component = props => (
-  <Table {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Table {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'TableIcon';

@@ -9,7 +9,7 @@ const intlMessageShape = PropTypes.shape({
   defaultMessage: PropTypes.string.isRequired,
 });
 
-const WarningMessage = props => (
+const WarningMessage = (props) => (
   <Text.Detail intlMessage={props.intlMessage} tone="warning">
     {props.children}
   </Text.Detail>
@@ -17,10 +17,10 @@ const WarningMessage = props => (
 
 WarningMessage.displayName = 'WarningMessage';
 WarningMessage.propTypes = {
-  children: requiredIf(PropTypes.node, props => !props.intlMessage),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
   intlMessage: requiredIf(
     intlMessageShape,
-    props => !React.Children.count(props.children)
+    (props) => !React.Children.count(props.children)
   ),
 };
 

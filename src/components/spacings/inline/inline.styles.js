@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getAlignItem = alignment => {
+const getAlignItem = (alignment) => {
   switch (alignment) {
     case 'flexStart':
       return `flex-start`;
@@ -12,7 +12,7 @@ const getAlignItem = alignment => {
   }
 };
 
-const getMargin = scale => {
+const getMargin = (scale) => {
   switch (scale) {
     case 'xs':
       return vars.spacingXs;
@@ -35,7 +35,7 @@ const getMargin = scale => {
  * causing the margings of the spacing components to be ignored.
  * See https://github.com/commercetools/ui-kit/issues/542
  */
-export default props => css`
+export default (props) => css`
   display: flex;
   align-items: ${getAlignItem(props.alignItems)};
   justify-content: ${props.justifyContent};

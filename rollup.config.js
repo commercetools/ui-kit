@@ -68,7 +68,7 @@ const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
 const defaultExternal = deps.concat(peerDeps).concat(ignoredExternals);
 
-const createConfig = cliArgs => {
+const createConfig = (cliArgs) => {
   return {
     input: cliArgs.input,
     external: defaultExternal,

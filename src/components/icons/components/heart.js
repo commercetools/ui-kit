@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Heart from '../raw-components/heart';
 
-const Component = props => (
-  <Heart {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Heart {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'HeartIcon';

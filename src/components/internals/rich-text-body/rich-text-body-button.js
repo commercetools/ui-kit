@@ -11,7 +11,7 @@ function getFillColor(props) {
   return vars.colorSolid;
 }
 
-const RichTextBodyButton = props => {
+const RichTextBodyButton = (props) => {
   const restOfProps = omit(props, propsToOmit);
 
   return (

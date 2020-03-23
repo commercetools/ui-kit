@@ -25,7 +25,7 @@ const hoverStyles = () => css`
   }
 `;
 
-const createStyledComponent = component => styled(component)`
+const createStyledComponent = (component) => styled(component)`
   display: inline-flex;
   align-items: center;
   font-size: 1rem;
@@ -36,18 +36,19 @@ const createStyledComponent = component => styled(component)`
   text-decoration: none;
 
   span {
-    color: ${props => (props.disabled ? vars.colorNeutral : vars.colorPrimary)};
+    color: ${(props) =>
+      props.disabled ? vars.colorNeutral : vars.colorPrimary};
   }
 
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 
-  ${props => !props.disabled && hoverStyles}
+  ${(props) => !props.disabled && hoverStyles}
 `;
 
 const StyledReactRouterLink = createStyledComponent(ReactRouterLink);
 const StyledExternalLink = createStyledComponent('a');
 
-const LinkBody = props => (
+const LinkBody = (props) => (
   <Inline scale="xs" alignItems="center">
     {Boolean(props.iconLeft) &&
       React.cloneElement(props.iconLeft, {
@@ -65,7 +66,7 @@ LinkBody.propTypes = {
   isDisabled: PropTypes.bool,
 };
 
-const LinkButton = props => {
+const LinkButton = (props) => {
   React.useEffect(() => {
     warnDeprecatedComponent('LinkButton');
   }, []);
@@ -78,7 +79,9 @@ const LinkButton = props => {
     return (
       <StyledExternalLink
         href={props.to}
-        onClick={props.isDisabled ? event => event.preventDefault() : undefined}
+        onClick={
+          props.isDisabled ? (event) => event.preventDefault() : undefined
+        }
         disabled={props.isDisabled}
         data-track-component="LinkButton"
         aria-label={props.label}
@@ -97,7 +100,7 @@ const LinkButton = props => {
     <StyledReactRouterLink
       to={props.to}
       disabled={props.isDisabled}
-      onClick={props.isDisabled ? event => event.preventDefault() : undefined}
+      onClick={props.isDisabled ? (event) => event.preventDefault() : undefined}
       data-track-component="LinkButton"
       aria-label={props.label}
       {...remainingProps}

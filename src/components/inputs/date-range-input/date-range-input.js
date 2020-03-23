@@ -30,7 +30,7 @@ import messages from './messages';
 const parseRangeText = (text, locale) => {
   const parts = text
     .split(' - ')
-    .map(part => {
+    .map((part) => {
       const parsedDate = parseInputToDate(part.trim(), locale);
       return parsedDate === '' ? null : parsedDate;
     })
@@ -105,7 +105,7 @@ class DateRangeCalendar extends React.Component {
   static defaultProps = {
     isClearable: true,
   };
-  static isEmpty = range => range.length === 0;
+  static isEmpty = (range) => range.length === 0;
   static getDerivedStateFromProps(props, state) {
     // We need to update the input value string in case so that is is formatted
     // according to the locale and holds the current value in case the value
@@ -136,8 +136,8 @@ class DateRangeCalendar extends React.Component {
     prevValue: this.props.value,
     prevLocale: this.props.intl.locale,
   };
-  jumpMonth = amount => {
-    this.setState(prevState => {
+  jumpMonth = (amount) => {
+    this.setState((prevState) => {
       const nextDate = changeMonth(prevState.calendarDate, amount);
       return { calendarDate: nextDate, highlightedIndex: 0 };
     });
@@ -145,7 +145,7 @@ class DateRangeCalendar extends React.Component {
   showToday = () => {
     const today = getToday();
     this.setState(
-      prevState => ({
+      (prevState) => ({
         calendarDate: today,
         highlightedIndex:
           prevState.suggestedItems.length + getDateInMonth(today) - 1,
@@ -162,7 +162,7 @@ class DateRangeCalendar extends React.Component {
         },
       });
   };
-  emit = unsortedRange => {
+  emit = (unsortedRange) => {
     this.props.onChange({
       target: {
         id: this.props.id,
@@ -221,9 +221,9 @@ class DateRangeCalendar extends React.Component {
               return null;
             });
           }}
-          onStateChange={changes => {
+          onStateChange={(changes) => {
             /* eslint-disable no-prototype-builtins */
-            this.setState(prevState => {
+            this.setState((prevState) => {
               // ensure input value matches prop value when menu is closed
               if (
                 changes.type === Downshift.stateChangeTypes.mouseUp ||
@@ -294,7 +294,7 @@ class DateRangeCalendar extends React.Component {
             });
             /* eslint-enable no-prototype-builtins */
           }}
-          onChange={selectedItem => {
+          onChange={(selectedItem) => {
             if (this.state.startDate && selectedItem) {
               this.emit([this.state.startDate, selectedItem]);
             } else {
@@ -345,7 +345,7 @@ class DateRangeCalendar extends React.Component {
                       // arrow keys to move the cursor when hovering
                       if (isOpen) setHighlightedIndex(null);
                     },
-                    onKeyDown: event => {
+                    onKeyDown: (event) => {
                       if (
                         event.key === 'Enter' &&
                         inputValue.trim() === '' &&
@@ -401,7 +401,7 @@ class DateRangeCalendar extends React.Component {
                       onNextYearClick={() => this.jumpMonth(12)}
                     />
                     <CalendarContent>
-                      {weekdays.map(weekday => (
+                      {weekdays.map((weekday) => (
                         <CalendarDay key={weekday} type="heading">
                           {weekday}
                         </CalendarDay>

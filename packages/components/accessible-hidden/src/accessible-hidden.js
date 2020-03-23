@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-const AccessibleHidden = props => {
+const AccessibleHidden = (props) => {
   return (
     <div
       css={css`

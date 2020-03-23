@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { render } from '../../../../src/test-utils';
 import CollapsiblePanel from './collapsible-panel';
 
-const HeaderControls = props => (
+const HeaderControls = (props) => (
   <div onClick={props.onClick}>Header Controls</div>
 );
 
@@ -169,7 +169,7 @@ describe('getPanelContentId', () => {
 });
 
 describe('aria attributes', () => {
-  const renderPanel = props => {
+  const renderPanel = (props) => {
     const rendered = render(
       <CollapsiblePanel
         id="example"

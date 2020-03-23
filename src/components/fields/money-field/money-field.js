@@ -16,7 +16,7 @@ import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 
 const sequentialId = createSequentialId('money-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 class MoneyField extends React.Component {
   static displayName = 'MoneyField';
@@ -72,7 +72,7 @@ class MoneyField extends React.Component {
     onInfoButtonClick: PropTypes.func,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     hintIcon: PropTypes.node,
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),

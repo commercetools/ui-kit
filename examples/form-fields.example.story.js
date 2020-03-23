@@ -25,7 +25,7 @@ import { FormikBox, Section } from '../.storybook/decorators';
 import Forms from './form-fields.md';
 
 // utilities for story
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // This data would usually be loaded from the project itself.
 // It is defined statically here to keep the example focused on the forms.
@@ -248,7 +248,7 @@ class ProductForm extends React.Component {
           isDisabled={this.props.formik.isSubmitting}
           touched={this.props.formik.touched.key}
           errors={this.props.formik.errors.key}
-          renderError={key => {
+          renderError={(key) => {
             // This example shows how to handle custom errors on top of the
             // predefined errors of FieldErrors which this component and other
             // Field components use under the hood.
@@ -281,7 +281,7 @@ class ProductForm extends React.Component {
           isDisabled={this.props.formik.isSubmitting}
           touched={this.props.formik.touched.inventory}
           errors={this.props.formik.errors.inventory}
-          renderError={key => {
+          renderError={(key) => {
             switch (key) {
               // Shows how to overwrite a default message of FieldErrors
               case 'fractions':
@@ -302,7 +302,7 @@ class ProductForm extends React.Component {
           currencies={currencies}
           touched={this.props.formik.touched.price}
           errors={this.props.formik.errors.price}
-          renderError={key => {
+          renderError={(key) => {
             switch (key) {
               // Shows how to overwrite a default message of FieldErrors
               case 'unsupportedHighPrecision':
@@ -347,13 +347,13 @@ class ProductForm extends React.Component {
   }
 }
 
-const Story = injectIntl(props => (
+const Story = injectIntl((props) => (
   <Section>
     <FakeConnector>
       {({ product, updateProduct }) => (
         <Formik
           initialValues={docToForm(product, props.intl.locale)}
-          validate={formValues => validate(formValues, props.intl.locale)}
+          validate={(formValues) => validate(formValues, props.intl.locale)}
           onSubmit={(formValues, formik) => {
             action('values of form submission')(formValues);
             const nextProduct = formToDoc(formValues, props.intl.locale);
@@ -371,7 +371,7 @@ const Story = injectIntl(props => (
               version: formValues.version,
               product: nextProduct,
             }).then(
-              updatedProduct => {
+              (updatedProduct) => {
                 // Calling resetForm with the updated product will
                 // update the form values and reset the submission state,
                 // touched keys and so on.
@@ -379,7 +379,7 @@ const Story = injectIntl(props => (
                   values: docToForm(updatedProduct, props.intl.locale),
                 });
               },
-              error => {
+              (error) => {
                 // This is an example where we have to rely on the API
                 // on submission time to ensure correct form values.
                 // The example shows how to map API errors back onto
@@ -394,7 +394,7 @@ const Story = injectIntl(props => (
               }
             );
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <Text.Headline as="h2">The form</Text.Headline>
               <div>

@@ -11,7 +11,7 @@ const text = `
   illud soluta utamur ne vim. Nihil ornatus ad duo, ius cu nibh neglegentur.
 `;
 
-const WrappedCard = props => (
+const WrappedCard = (props) => (
   <Card
     css={css`
       margin: 16px;

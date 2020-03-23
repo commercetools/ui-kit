@@ -14,7 +14,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('date-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 class DateField extends React.Component {
   static displayName = 'DateField';
@@ -46,7 +46,7 @@ class DateField extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onInfoButtonClick: PropTypes.func,

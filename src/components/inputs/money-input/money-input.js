@@ -29,15 +29,15 @@ const TooltipWrapper = styled.div`
   display: flex;
 `;
 
-const getPortalId = id => `portal-${id}`;
-const getPortalNode = id => document.querySelector(`#${getPortalId(id)}`);
+const getPortalId = (id) => `portal-${id}`;
+const getPortalNode = (id) => document.querySelector(`#${getPortalId(id)}`);
 
-const Portal = props => {
+const Portal = (props) => {
   const domNode = getPortalNode(props.id);
   return ReactDOM.createPortal(props.children, domNode);
 };
 
-const CurrencyLabel = props => (
+const CurrencyLabel = (props) => (
   <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
     {props.children}
   </label>
@@ -106,7 +106,7 @@ const createCurrencySelectStyles = ({
         return base.backgroundColor;
       })(),
     }),
-    singleValue: base => ({
+    singleValue: (base) => ({
       ...base,
       marginLeft: 0,
       maxWidth: 'initial',
@@ -286,7 +286,7 @@ export const createMoneyValue = (currencyCode, rawAmount, locale) => {
   };
 };
 
-const getAmountAsNumberFromMoneyValue = moneyValue =>
+const getAmountAsNumberFromMoneyValue = (moneyValue) =>
   moneyValue.type === 'highPrecision'
     ? moneyValue.preciseAmount / 10 ** moneyValue.fractionDigits
     : moneyValue.centAmount /
@@ -311,11 +311,11 @@ const formatAmount = (rawAmount, currencyCode, locale) => {
     : amount.toLocaleString(locale, { minimumFractionDigits: fractionDigits });
 };
 
-const getAmountInputName = name => (name ? `${name}.amount` : undefined);
-const getCurrencyDropdownName = name =>
+const getAmountInputName = (name) => (name ? `${name}.amount` : undefined);
+const getCurrencyDropdownName = (name) =>
   name ? `${name}.currencyCode` : undefined;
 
-const MoneyInput = props => {
+const MoneyInput = (props) => {
   const intl = useIntl();
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
@@ -374,7 +374,7 @@ const MoneyInput = props => {
   ]);
 
   const handleAmountChange = React.useCallback(
-    event => {
+    (event) => {
       if (isNumberish(event.target.value)) {
         onChange({
           persist: () => {},
@@ -390,7 +390,7 @@ const MoneyInput = props => {
   );
 
   const handleCurrencyChange = React.useCallback(
-    option => {
+    (option) => {
       const currencyCode = option.value;
       if (props.value.currencyCode !== currencyCode) {
         // When the user changes from a currency with 3 fraction digits to
@@ -474,14 +474,14 @@ const MoneyInput = props => {
     hasFocus,
     menuPortalZIndex: props.menuPortalZIndex,
   });
-  const options = props.currencies.map(currencyCode => ({
+  const options = props.currencies.map((currencyCode) => ({
     label: currencyCode,
     value: currencyCode,
   }));
 
   const option = (() => {
     const matchedOption = options.find(
-      optionCandidate => optionCandidate.value === props.value.currencyCode
+      (optionCandidate) => optionCandidate.value === props.value.currencyCode
     );
     if (matchedOption) return matchedOption;
     // ensure an option is found, even when the currencies don't include
@@ -502,7 +502,7 @@ const MoneyInput = props => {
 
   const { onBlur } = props;
   const handleContainerBlur = React.useCallback(
-    event => {
+    (event) => {
       // ensures that both fields are marked as touched when one of them
       // is blurred
       if (
@@ -527,7 +527,7 @@ const MoneyInput = props => {
   );
 
   const TooltipPortal = React.useCallback(
-    remainingProps => <Portal {...remainingProps} id={props.id} />,
+    (remainingProps) => <Portal {...remainingProps} id={props.id} />,
     [props.id]
   );
 
@@ -560,7 +560,7 @@ const MoneyInput = props => {
             isSearchable={false}
             components={{
               // eslint-disable-next-line react/display-name
-              SingleValue: innerProps => (
+              SingleValue: (innerProps) => (
                 <SingleValue {...innerProps} id={id} />
               ),
               DropdownIndicator,
@@ -701,7 +701,7 @@ MoneyInput.parseMoneyValue = (moneyValue, locale) => {
   return { amount, currencyCode: moneyValue.currencyCode };
 };
 
-MoneyInput.isEmpty = formValue =>
+MoneyInput.isEmpty = (formValue) =>
   !formValue ||
   formValue.amount.trim() === '' ||
   formValue.currencyCode.trim() === '';
@@ -715,7 +715,7 @@ MoneyInput.isHighPrecision = (formValue, locale) => {
   return moneyValue && moneyValue.type === 'highPrecision';
 };
 
-MoneyInput.isTouched = touched =>
+MoneyInput.isTouched = (touched) =>
   Boolean(touched && touched.currencyCode && touched.amount);
 
 MoneyInput.propTypes = {
@@ -733,7 +733,7 @@ MoneyInput.propTypes = {
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   isAutofocussed: PropTypes.bool,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
   menuPortalZIndex: PropTypes.number.isRequired,
   menuShouldBlockScroll: PropTypes.bool,

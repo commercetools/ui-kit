@@ -86,11 +86,11 @@ const getClickableContentWrapperStyles = ({ type, theme }) => {
       ];
 };
 
-const TagBody = props => (
+const TagBody = (props) => (
   <Body
     to={props.to}
     as={props.as}
-    css={theme => [
+    css={(theme) => [
       getContentWrapperStyles(props, theme),
       Boolean(props.onRemove) &&
         css`
@@ -142,14 +142,14 @@ TagBody.propTypes = {
   }).isRequired,
 };
 
-const Tag = props => {
+const Tag = (props) => {
   const linkProps =
     props.linkTo && !props.isDisabled ? { as: Link, to: props.linkTo } : {};
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div
-        css={theme =>
+        css={(theme) =>
           css`
             a {
               cursor: pointer;
@@ -178,7 +178,7 @@ const Tag = props => {
             label="Remove"
             isDisabled={props.isDisabled}
             onClick={props.onRemove}
-            css={theme => {
+            css={(theme) => {
               const overwrittenVars = {
                 ...vars,
                 ...theme,

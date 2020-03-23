@@ -77,7 +77,7 @@ const controlStyles = (props, theme) => (base, state) => {
   };
 };
 
-const menuStyles = (props, theme) => base => {
+const menuStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -104,7 +104,7 @@ const menuStyles = (props, theme) => base => {
   };
 };
 
-const indicatorSeparatorStyles = (props, theme) => base => {
+const indicatorSeparatorStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -119,7 +119,7 @@ const indicatorSeparatorStyles = (props, theme) => base => {
   };
 };
 
-const dropdownIndicatorStyles = (props, theme) => base => {
+const dropdownIndicatorStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -134,13 +134,13 @@ const dropdownIndicatorStyles = (props, theme) => base => {
   };
 };
 
-const clearIndicatorStyles = () => base => ({
+const clearIndicatorStyles = () => (base) => ({
   ...base,
   display: 'flex',
   padding: 0,
 });
 
-const menuListStyles = (props, theme) => base => {
+const menuListStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -196,7 +196,7 @@ const optionStyles = (props, theme) => (base, state) => {
   };
 };
 
-const placeholderStyles = (props, theme) => base => {
+const placeholderStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -212,14 +212,14 @@ const placeholderStyles = (props, theme) => base => {
   };
 };
 
-const valueContainerStyles = () => base => ({
+const valueContainerStyles = () => (base) => ({
   ...base,
   padding: '0',
   backgroundColor: 'none',
   overflow: 'hidden',
 });
 
-const singleValueStyles = (props, theme) => base => {
+const singleValueStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -239,7 +239,7 @@ const singleValueStyles = (props, theme) => base => {
   };
 };
 
-const groupStyles = (props, theme) => base => {
+const groupStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -256,7 +256,7 @@ const groupStyles = (props, theme) => base => {
   };
 };
 
-const groupHeadingStyles = (props, theme) => base => {
+const groupHeadingStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -301,12 +301,12 @@ const indicatorsContainerStyles = () => () => ({
   alignItems: 'center',
 });
 
-const menuPortalStyles = props => base => ({
+const menuPortalStyles = (props) => (base) => ({
   ...base,
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = (props, theme) => base => {
+const multiValueStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -320,7 +320,7 @@ const multiValueStyles = (props, theme) => base => {
   };
 };
 
-const multiValueLabelStyles = (props, theme) => base => {
+const multiValueLabelStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ConnectedTriangle from '../raw-components/connected-triangle';
 
-const Component = props => (
-  <ConnectedTriangle {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ConnectedTriangle {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ConnectedTriangleIcon';

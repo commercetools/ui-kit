@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import SpeechBubble from '../raw-components/speech-bubble';
 
-const Component = props => (
-  <SpeechBubble {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <SpeechBubble {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'SpeechBubbleIcon';

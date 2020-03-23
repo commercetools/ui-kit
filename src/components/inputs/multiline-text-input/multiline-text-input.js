@@ -12,7 +12,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import MultilineInput from '../../internals/multiline-input';
 import messages from '../../internals/messages/multiline-input';
 
-const MultilineTextInput = props => {
+const MultilineTextInput = (props) => {
   const intl = useIntl();
 
   const [contentRowCount, setContentRowCount] = React.useState(
@@ -95,14 +95,14 @@ MultilineTextInput.displayName = 'MultilineTextInput';
 // so that the input "collapses".
 MultilineTextInput.MIN_ROW_COUNT = 1;
 
-MultilineTextInput.isEmpty = value => !value || value.trim().length === 0;
+MultilineTextInput.isEmpty = (value) => !value || value.trim().length === 0;
 
 MultilineTextInput.propTypes = {
   name: PropTypes.string,
   autoComplete: PropTypes.string,
   id: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   isAutofocussed: PropTypes.bool,

@@ -14,11 +14,11 @@ import {
 const getIsSelected = (props, item) =>
   !props.isMulti
     ? item.value === props.value
-    : props.value.find(selectedItem => selectedItem === item.value);
+    : props.value.find((selectedItem) => selectedItem === item.value);
 
 const Label = styled.div;
 
-const Dropdown = props => {
+const Dropdown = (props) => {
   const DropdownItem = props.components.Item;
   const DropdownLabel = props.components.Label;
   const isIndeterminate =
@@ -28,7 +28,7 @@ const Dropdown = props => {
     <Downshift
       onChange={props.onChange}
       selectedItem={props.value}
-      itemToString={headings => (headings ? headings.label : '')}
+      itemToString={(headings) => (headings ? headings.label : '')}
     >
       {({ isOpen, getToggleButtonProps, getItemProps }) => {
         const toggleButtonProps = getToggleButtonProps();

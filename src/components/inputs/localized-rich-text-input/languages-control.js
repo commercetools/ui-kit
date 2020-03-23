@@ -5,7 +5,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { WorldIcon } from '@commercetools-uikit/icons';
 import messages from '../../internals/messages/localized-input';
 
-const LanguagesControl = props => {
+const LanguagesControl = (props) => {
   const intl = useIntl();
   return (
     <FlatButton

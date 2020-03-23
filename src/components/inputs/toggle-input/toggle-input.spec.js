@@ -21,7 +21,7 @@ class TestComponent extends React.Component {
         <ToggleInput
           id={this.props.id}
           isChecked={this.state.isChecked}
-          onChange={evt => {
+          onChange={(evt) => {
             this.setState({
               isChecked: evt.target.checked,
             });
@@ -48,7 +48,7 @@ it('should render children', () => {
 });
 
 it('should call onChange when clicked', () => {
-  const onChange = jest.fn(event => {
+  const onChange = jest.fn((event) => {
     event.persist();
   });
 

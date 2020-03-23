@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Clock from '../raw-components/clock';
 
-const Component = props => (
-  <Clock {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Clock {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ClockIcon';

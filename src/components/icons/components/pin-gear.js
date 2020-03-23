@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import PinGear from '../raw-components/pin-gear';
 
-const Component = props => (
-  <PinGear {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <PinGear {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'PinGearIcon';

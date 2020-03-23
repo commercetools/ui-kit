@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import CheckThin from '../raw-components/check-thin';
 
-const Component = props => (
-  <CheckThin {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <CheckThin {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CheckThinIcon';

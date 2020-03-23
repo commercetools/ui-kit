@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Tag from '../raw-components/tag';
 
-const Component = props => (
-  <Tag {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Tag {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'TagIcon';

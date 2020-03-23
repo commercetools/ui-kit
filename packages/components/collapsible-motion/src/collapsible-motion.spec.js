@@ -152,7 +152,9 @@ describe('controlled mode', () => {
             <button
               data-testid="button"
               onClick={() =>
-                this.setState(prevState => ({ isClosed: !prevState.isClosed }))
+                this.setState((prevState) => ({
+                  isClosed: !prevState.isClosed,
+                }))
               }
             >
               Toggle

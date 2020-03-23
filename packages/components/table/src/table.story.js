@@ -13,7 +13,7 @@ import Tooltip from '@commercetools-uikit/tooltip';
 import Readme from '../README.md';
 import Table from './table';
 
-const Portal = props => {
+const Portal = (props) => {
   const domNode = document.body;
   return ReactDOM.createPortal(props.children, domNode);
 };
@@ -110,7 +110,7 @@ storiesOf('Components|Table', module)
   })
   .add('full example', () => (
     <Wrapper>
-      {props => {
+      {(props) => {
         const {
           shouldFillRemainingVerticalSpace,
           numberOfRows,
@@ -280,7 +280,7 @@ class BaseTable extends React.PureComponent {
   };
 
   onCheckboxClick = ({ rowIndex /* , columnKey */ }) => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       rows: [
         ...prevState.rows.slice(0, rowIndex),
         {
@@ -379,7 +379,7 @@ class Wrapper extends React.PureComponent {
     this.handleApplyCols(this.state.cols);
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const items = this.state.items;
     if (e.target.name === 'onRowClick') {
       return this.setState({
@@ -406,7 +406,7 @@ class Wrapper extends React.PureComponent {
     this.handleApplyCols(cols);
   };
 
-  handleApplyCols = cols => {
+  handleApplyCols = (cols) => {
     const items = generateItems(cols, number('numberOfRows', 50));
     this.setState({
       sortedItems: items,
@@ -432,7 +432,7 @@ class Wrapper extends React.PureComponent {
     ]);
   };
 
-  handleRemoveColumn = index => {
+  handleRemoveColumn = (index) => {
     this.setState({
       cols: [
         ...this.state.cols.slice(0, index),
@@ -481,7 +481,7 @@ class Wrapper extends React.PureComponent {
                   type="text"
                   name="key"
                   value={col.key}
-                  onChange={e => this.handleColChange(e, colIndex)}
+                  onChange={(e) => this.handleColChange(e, colIndex)}
                 />
               </div>
               <div>
@@ -490,7 +490,7 @@ class Wrapper extends React.PureComponent {
                   type="text"
                   name="label"
                   value={col.label}
-                  onChange={e => this.handleColChange(e, colIndex)}
+                  onChange={(e) => this.handleColChange(e, colIndex)}
                 />
               </div>
               <div>
@@ -500,7 +500,7 @@ class Wrapper extends React.PureComponent {
                   name="isFixed"
                   checked={col.isFixed}
                   label="Fixed"
-                  onChange={e => this.handleColChange(e, colIndex)}
+                  onChange={(e) => this.handleColChange(e, colIndex)}
                 />
               </div>
               <div>
@@ -510,7 +510,7 @@ class Wrapper extends React.PureComponent {
                   name="flexGrow"
                   checked={col.flexGrow === 1}
                   label="Flex Grow"
-                  onChange={e => this.handleColChange(e, colIndex)}
+                  onChange={(e) => this.handleColChange(e, colIndex)}
                 />
               </div>
               <div>
@@ -520,7 +520,7 @@ class Wrapper extends React.PureComponent {
                   name="dynamicWidth"
                   checked={col.dynamicWidth}
                   label="Dynamic Width"
-                  onChange={e => this.handleColChange(e, colIndex)}
+                  onChange={(e) => this.handleColChange(e, colIndex)}
                 />
               </div>
               <div>
@@ -530,7 +530,7 @@ class Wrapper extends React.PureComponent {
                   name="dynamicHeight"
                   checked={col.dynamicHeight}
                   label="Dynamic Height"
-                  onChange={e => this.handleColChange(e, colIndex)}
+                  onChange={(e) => this.handleColChange(e, colIndex)}
                 />
               </div>
               <div>
@@ -540,7 +540,7 @@ class Wrapper extends React.PureComponent {
                   name="isSortable"
                   checked={col.isSortable}
                   label="Sortable"
-                  onChange={e => this.handleColChange(e, colIndex)}
+                  onChange={(e) => this.handleColChange(e, colIndex)}
                 />
               </div>
             </div>

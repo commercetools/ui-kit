@@ -8,10 +8,7 @@ import { parseTime } from './parse-time';
 export const getDaysInMonth = (day, timeZone) =>
   moment.tz(day, timeZone).daysInMonth();
 export const changeDateInMonth = (day, timeZone, dayOfMonth) =>
-  moment
-    .tz(day, timeZone)
-    .date(dayOfMonth)
-    .toISOString();
+  moment.tz(day, timeZone).date(dayOfMonth).toISOString();
 
 export const changeTime = (dateString, timeZone, parsedTime) => {
   const date = moment.tz(dateString, timeZone);
@@ -31,9 +28,7 @@ export const formatTime = (day, locale, timeZone) => {
 };
 
 export const formatDate = (day, locale, timeZone) => {
-  const date = moment(day, moment.ISO_8601, locale)
-    .tz(timeZone)
-    .format('L');
+  const date = moment(day, moment.ISO_8601, locale).tz(timeZone).format('L');
   const time = formatTime(day, locale, timeZone);
   return `${date} ${time}`;
 };
@@ -41,17 +36,11 @@ export const formatDate = (day, locale, timeZone) => {
 export const getDateInMonth = (day, timeZone) =>
   moment.tz(day, timeZone).date();
 
-export const getToday = timeZone =>
-  moment
-    .tz(timeZone)
-    .startOf('day')
-    .toISOString();
+export const getToday = (timeZone) =>
+  moment.tz(timeZone).startOf('day').toISOString();
 
 export const changeMonth = (day, timeZone, delta) =>
-  moment
-    .tz(day, timeZone)
-    .add(delta, 'month')
-    .toISOString();
+  moment.tz(day, timeZone).add(delta, 'month').toISOString();
 
 export const getPaddingDayCount = (day, locale, timeZone) => {
   const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
@@ -65,17 +54,14 @@ export const getPaddingDayCount = (day, locale, timeZone) => {
   return (firstDayOfMonth - firstDayOfWeek + 7) % 7;
 };
 
-export const getWeekdayNames = locale => {
+export const getWeekdayNames = (locale) => {
   const weekDays = moment.localeData(locale).weekdaysMin();
   const firstDay = moment.localeData(locale).firstDayOfWeek();
   return [...weekDays.slice(firstDay), ...weekDays.slice(0, firstDay)];
 };
 
 export const getStartOf = (day, timeZone) =>
-  moment
-    .tz(day, timeZone)
-    .startOf('day')
-    .toISOString();
+  moment.tz(day, timeZone).startOf('day').toISOString();
 
 export const getMonthCalendarLabel = (day, locale) =>
   moment(day, moment.ISO_8601, locale).format('MMMM');
@@ -85,7 +71,7 @@ export const isSameDay = (a, b) => moment(a).isSame(b, 'day');
 export const getCalendarDayLabel = (day, timeZone) =>
   moment.tz(day, timeZone).format('D');
 
-export const createItemDateTimeToString = (locale, timeZone) => item =>
+export const createItemDateTimeToString = (locale, timeZone) => (item) =>
   item ? formatDate(item, locale, timeZone) : '';
 
 export const createCalendarItems = (day, timeString, intl, timeZone) => {

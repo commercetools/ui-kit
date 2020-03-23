@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Clipboard from '../raw-components/clipboard';
 
-const Component = props => (
-  <Clipboard {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Clipboard {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ClipboardIcon';

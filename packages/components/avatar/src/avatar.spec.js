@@ -2,7 +2,7 @@ import React from 'react';
 import Avatar from './avatar';
 import { render } from '../../../../src/test-utils';
 
-const createTestProps = customProps => ({
+const createTestProps = (customProps) => ({
   firstName: '',
   lastName: '',
   gravatarHash: '20c9c1b252b46ab49d6f7a4cee9c3e68',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import getStyles from './inline.styles';
 
-const Inline = props => (
+const Inline = (props) => (
   <span css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </span>

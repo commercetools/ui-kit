@@ -10,7 +10,7 @@ import {
   getInputContainerStyles,
 } from './calendar-body.styles';
 
-export const ClearSection = props => (
+export const ClearSection = (props) => (
   <div
     onClick={props.onClear}
     css={getClearSectionStyles(props)}
@@ -27,13 +27,13 @@ ClearSection.propTypes = {
   onClear: PropTypes.func,
 };
 
-export const CalendarBody = props => {
+export const CalendarBody = (props) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
 
   const { onFocus: onInputFocus } = props.inputProps;
 
   const handleInputFocus = React.useCallback(
-    event => {
+    (event) => {
       toggleIsFocused(true);
       if (onInputFocus) onInputFocus(event);
     },
@@ -43,7 +43,7 @@ export const CalendarBody = props => {
   const { onBlur: onInputBlur } = props.inputProps;
 
   const handleInputBlur = React.useCallback(
-    event => {
+    (event) => {
       toggleIsFocused(false);
       if (onInputBlur) onInputBlur(event);
     },
@@ -53,7 +53,7 @@ export const CalendarBody = props => {
   const { onFocus: onToggleFocus } = props.toggleButtonProps;
 
   const handleToggleFocus = React.useCallback(
-    event => {
+    (event) => {
       toggleIsFocused(true);
       if (onToggleFocus) onToggleFocus(event);
     },
@@ -63,7 +63,7 @@ export const CalendarBody = props => {
   const { onBlur: onToggleBlur } = props.toggleButtonProps;
 
   const handleToggleBlur = React.useCallback(
-    event => {
+    (event) => {
       toggleIsFocused(false);
       if (onToggleBlur) onToggleBlur(event);
     },

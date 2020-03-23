@@ -4,7 +4,7 @@ import { PlusBoldIcon } from '@commercetools-uikit/icons';
 import { render, fireEvent, waitFor } from '../../../../../src/test-utils';
 import SecondaryButton from './secondary-button';
 
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   label: 'Add',
   iconLeft: <PlusBoldIcon data-testid="icon" />,
   onClick: jest.fn(),

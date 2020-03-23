@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ArrowUp from '../raw-components/arrow-up';
 
-const Component = props => (
-  <ArrowUp {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ArrowUp {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ArrowUpIcon';

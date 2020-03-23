@@ -78,7 +78,7 @@ describe('TimeInput', () => {
   });
 
   it('should call onChange when changing the value', () => {
-    const onChange = jest.fn(event => {
+    const onChange = jest.fn((event) => {
       expect(event.target.id).toEqual('some-id');
       expect(event.target.name).toEqual('some-name');
       expect(event.target.value).toEqual('foo');

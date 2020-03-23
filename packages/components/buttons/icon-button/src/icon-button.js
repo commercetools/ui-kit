@@ -15,7 +15,7 @@ import {
 } from './icon-button.styles';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
-const getIconThemeColor = props => {
+const getIconThemeColor = (props) => {
   const isActive = props.isToggleButton && props.isToggled;
 
   // if button has a theme, icon should be white when hovering/clicking
@@ -32,7 +32,7 @@ const getIconThemeColor = props => {
   return props.icon.props.theme;
 };
 
-export const IconButton = props => {
+export const IconButton = (props) => {
   const attributes = {
     'data-track-component': 'IconButton',
     ...filterInvalidAttributes(props),

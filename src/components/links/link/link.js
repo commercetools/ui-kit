@@ -26,7 +26,7 @@ const getLinkStyles = (props, theme) => {
   `;
 };
 
-const Link = props => {
+const Link = (props) => {
   const remainingProps = getPassThroughProps(
     props,
     Object.keys(Link.propTypes)
@@ -35,7 +35,7 @@ const Link = props => {
   if (props.isExternal) {
     return (
       <a
-        css={theme => getLinkStyles(props, theme)}
+        css={(theme) => getLinkStyles(props, theme)}
         href={props.to}
         target="_blank"
         rel="noopener noreferrer"
@@ -45,7 +45,7 @@ const Link = props => {
   }
   return (
     <ReactRouterLink
-      css={theme => getLinkStyles(props, theme)}
+      css={(theme) => getLinkStyles(props, theme)}
       to={props.to}
       {...remainingProps}
     />
@@ -67,7 +67,7 @@ Link.propTypes = {
         state: PropTypes.object,
       }),
     ]),
-    props => !props.isExternal
+    (props) => !props.isExternal
   ),
 };
 

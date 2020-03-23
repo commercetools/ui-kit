@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ArrowLeft from '../raw-components/arrow-left';
 
-const Component = props => (
-  <ArrowLeft {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ArrowLeft {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ArrowLeftIcon';

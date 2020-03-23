@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import CheckInactive from '../raw-components/check-inactive';
 
-const Component = props => (
-  <CheckInactive {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <CheckInactive {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CheckInactiveIcon';

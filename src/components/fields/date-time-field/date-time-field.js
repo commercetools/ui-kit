@@ -14,7 +14,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('date-time-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 class DateTimeField extends React.Component {
   static displayName = 'DateTimeField';
@@ -33,7 +33,7 @@ class DateTimeField extends React.Component {
     // DateTimeInput
     name: PropTypes.string,
     value: PropTypes.string.isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
     onBlur: PropTypes.func,
     timeZone: PropTypes.string.isRequired,
     onFocus: PropTypes.func,
@@ -45,7 +45,7 @@ class DateTimeField extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onInfoButtonClick: PropTypes.func,

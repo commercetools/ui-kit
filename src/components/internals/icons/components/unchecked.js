@@ -2,8 +2,8 @@ import React from 'react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Unchecked from '../raw-components/unchecked';
 
-const Component = props => (
-  <Unchecked {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Unchecked {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'UncheckedIcon';

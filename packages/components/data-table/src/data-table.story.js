@@ -107,12 +107,12 @@ const items = [
   },
 ];
 
-const customCellRenderer = type => {
+const customCellRenderer = (type) => {
   const options = {
-    Link: row => (
+    Link: (row) => (
       <a href="https://uikit.commercetools.com/">{row.customRenderer}</a>
     ),
-    Text: row => (
+    Text: (row) => (
       <Value
         defaultValue={row.customRenderer}
         render={(value, onChange) => (
@@ -130,7 +130,7 @@ const customCellRenderer = type => {
           <SelectInput
             value={value}
             menuPortalTarget={document.body}
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
             options={[
               { value: 'one', label: 'One' },
               { value: 'two', label: 'Two' },
@@ -144,7 +144,7 @@ const customCellRenderer = type => {
         render={(value, onChange) => (
           <NumberInput
             value={value}
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
           />
         )}
       />
@@ -168,7 +168,7 @@ const initialColumnsState = [
   {
     key: 'phone',
     label: 'Phone',
-    onClick: row => alert(`Cell click: ${row.phone}`),
+    onClick: (row) => alert(`Cell click: ${row.phone}`),
     shouldIgnoreRowClick: true,
   },
   {
@@ -184,7 +184,7 @@ const initialColumnsState = [
   },
 ];
 
-const ColumnConfigForm = props => {
+const ColumnConfigForm = (props) => {
   const formik = useFormik({
     initialValues: {
       width: props.column.width,
@@ -194,7 +194,7 @@ const ColumnConfigForm = props => {
       isTruncated: !!props.column.isTruncated,
       shouldIgnoreRowClick: !!props.column.shouldIgnoreRowClick,
     },
-    onSubmit: values => {
+    onSubmit: (values) => {
       const updatedColumn = {
         ...props.column,
         width: values.width,
@@ -322,14 +322,14 @@ storiesOf('Components|Table (NEW)', module)
     const handleUpdateColumn = (column, colIndex) => {
       const newColumns = [...tableData.columns];
       newColumns[colIndex] = column;
-      setTableData(prevState => ({ ...prevState, columns: newColumns }));
+      setTableData((prevState) => ({ ...prevState, columns: newColumns }));
     };
 
     // column update handler for the test input selector
-    const handleUpdateCustomRenderer = type => {
+    const handleUpdateCustomRenderer = (type) => {
       const newColumns = [...tableData.columns];
       newColumns[1].renderItem = customCellRenderer(type);
-      setTableData(prevState => ({ ...prevState, columns: newColumns }));
+      setTableData((prevState) => ({ ...prevState, columns: newColumns }));
     };
 
     const onRowClick = boolean('onRowClick', false);
@@ -362,7 +362,7 @@ storiesOf('Components|Table (NEW)', module)
         ),
         shouldIgnoreRowClick: true,
         align: 'center',
-        renderItem: row => (
+        renderItem: (row) => (
           <CheckboxInput
             isChecked={getIsRowSelected(row.id)}
             onChange={() => toggleRow(row.id)}
@@ -418,7 +418,7 @@ storiesOf('Components|Table (NEW)', module)
             {tableData.columns.map((col, colIndex) => (
               <ColumnConfigForm
                 key={col + colIndex}
-                updateColumn={column => handleUpdateColumn(column, colIndex)}
+                updateColumn={(column) => handleUpdateColumn(column, colIndex)}
                 column={col}
               />
             ))}
@@ -433,7 +433,7 @@ storiesOf('Components|Table (NEW)', module)
                 render={(value, onChange) => (
                   <select
                     name="input selector"
-                    onChange={event => {
+                    onChange={(event) => {
                       handleUpdateCustomRenderer(event.target.value);
                       onChange(event.target.value);
                     }}

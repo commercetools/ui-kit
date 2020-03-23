@@ -34,7 +34,7 @@ const Background = styled.div`
 
 const GroupStyle = styled.div`
   padding: 10px;
-  display: ${props => (props.isVisible ? 'block' : 'none')};
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
 `;
 
 const Token = styled.p`
@@ -53,10 +53,10 @@ const Description = styled.p`
 const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
 DeprecationBadge.displayName = 'DeprecationBadge';
 
-const getChoiceValue = choiceName => {
+const getChoiceValue = (choiceName) => {
   const choice = Object.values(definition.choiceGroups)
-    .map(choiceGroup => choiceGroup.choices)
-    .find(choices => choices[choiceName]);
+    .map((choiceGroup) => choiceGroup.choices)
+    .find((choices) => choices[choiceName]);
   if (!choice)
     throw new Error(`Tried to get value of non-existant choice ${choiceName}`);
   return choice ? choice[choiceName] : undefined;
@@ -95,7 +95,7 @@ const filterComponentGroupsGroupValues = (componentGroups, searchText) =>
         state.description.toLowerCase().includes(searchText.toLowerCase()))
   );
 
-const ChoiceGroup = props => {
+const ChoiceGroup = (props) => {
   const choices = filterChoiceGroupValues(
     props.choiceGroup.choices,
     props.searchText
@@ -138,10 +138,10 @@ ChoiceGroup.propTypes = {
   renderSample: PropTypes.func.isRequired,
 };
 ChoiceGroup.defaultProps = {
-  renderSample: value => value,
+  renderSample: (value) => value,
 };
 
-const DecisionGroup = props => {
+const DecisionGroup = (props) => {
   const decisions = filterDecisionGroupValues(
     props.decisionGroup.decisions,
     props.searchText
@@ -190,10 +190,10 @@ DecisionGroup.propTypes = {
   renderSample: PropTypes.func.isRequired,
 };
 DecisionGroup.defaultProps = {
-  renderSample: value => value,
+  renderSample: (value) => value,
 };
 
-const StatesGroup = props => {
+const StatesGroup = (props) => {
   const states = filterStatesGroupValues(props.states, props.searchText);
   return (
     <GroupStyle isVisible={states.length > 0}>
@@ -228,7 +228,7 @@ StatesGroup.propTypes = {
   }).isRequired,
 };
 
-const ComponentGroupsGroup = props => {
+const ComponentGroupsGroup = (props) => {
   const componentGroups = filterComponentGroupsGroupValues(
     props.states,
     props.searchText
@@ -268,34 +268,34 @@ ComponentGroupsGroup.propTypes = {
 const ColorSample = styled.div`
   width: 30px;
   height: 30px;
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.1);
   display: inline-block;
 `;
 
 const FontColorSampleStyle = styled.div`
-  color: ${props => props.color};
+  color: ${(props) => props.color};
   font-size: 24pt;
   font-weight: bolder;
   display: inline-block;
 `;
 
-const FontColorSample = props => (
+const FontColorSample = (props) => (
   <FontColorSampleStyle {...props}>Aa</FontColorSampleStyle>
 );
 FontColorSample.displayName = 'FontColorSample';
 
 const BorderRadiusSample = styled.div`
   width: calc(
-    ${props => props.borderRadius} + 2 * ${props => props.borderRadius}
+    ${(props) => props.borderRadius} + 2 * ${(props) => props.borderRadius}
   );
   min-width: 20px;
   height: calc(
-    ${props => props.borderRadius} + 2 * ${props => props.borderRadius}
+    ${(props) => props.borderRadius} + 2 * ${(props) => props.borderRadius}
   );
   min-height: 20px;
   background-color: pink;
-  border-radius: ${props => props.borderRadius};
+  border-radius: ${(props) => props.borderRadius};
   display: inline-block;
   margin: 0 10px;
 `;
@@ -303,14 +303,14 @@ const BorderRadiusSample = styled.div`
 const ShadowSample = styled.div`
   width: 50px;
   height: 50px;
-  box-shadow: ${props => props.shadow};
+  box-shadow: ${(props) => props.shadow};
   display: inline-block;
   margin: 0 10px;
 `;
 
 const SpacingSample = styled.div`
-  width: ${props => props.spacing};
-  height: ${props => props.spacing};
+  width: ${(props) => props.spacing};
+  height: ${(props) => props.spacing};
   background-color: lightblue;
   display: inline-block;
   margin: 0 10px;
@@ -328,7 +328,7 @@ class Story extends React.Component {
       <Background>
         <TextInput
           value={this.state.searchText}
-          onChange={event => {
+          onChange={(event) => {
             this.setState({ searchText: event.target.value });
           }}
           horizontalConstraint="m"
@@ -338,7 +338,7 @@ class Story extends React.Component {
           <li>
             <a
               href="#choices"
-              onClick={event => {
+              onClick={(event) => {
                 event.preventDefault();
                 window.scrollTo(
                   0,
@@ -358,7 +358,7 @@ class Story extends React.Component {
                     <li key={key}>
                       <a
                         href={`#${choiceGroup.prefix}`}
-                        onClick={event => {
+                        onClick={(event) => {
                           event.preventDefault();
                           window.scrollTo(
                             0,
@@ -378,7 +378,7 @@ class Story extends React.Component {
           <li>
             <a
               href="#states"
-              onClick={event => {
+              onClick={(event) => {
                 event.preventDefault();
                 window.scrollTo(0, document.getElementById('states').offsetTop);
               }}
@@ -389,7 +389,7 @@ class Story extends React.Component {
           <li>
             <a
               href="#component-groups"
-              onClick={event => {
+              onClick={(event) => {
                 event.preventDefault();
                 window.scrollTo(
                   0,
@@ -404,7 +404,7 @@ class Story extends React.Component {
             {' '}
             <a
               href="#decisions"
-              onClick={event => {
+              onClick={(event) => {
                 event.preventDefault();
                 window.scrollTo(
                   0,
@@ -424,7 +424,7 @@ class Story extends React.Component {
                     <li key={key}>
                       <a
                         href={`#${decisionGroup.prefix}`}
-                        onClick={event => {
+                        onClick={(event) => {
                           event.preventDefault();
                           window.scrollTo(
                             0,
@@ -451,7 +451,7 @@ class Story extends React.Component {
         <ChoiceGroup
           choiceGroup={definition.choiceGroups.colors}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <ColorSample color={value} /> {value}
             </React.Fragment>
@@ -460,7 +460,7 @@ class Story extends React.Component {
         <ChoiceGroup
           choiceGroup={definition.choiceGroups.borderRadiuses}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <BorderRadiusSample borderRadius={value} /> {value}
             </React.Fragment>
@@ -469,7 +469,7 @@ class Story extends React.Component {
         <ChoiceGroup
           choiceGroup={definition.choiceGroups.shadows}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <ShadowSample shadow={value} /> {value}
             </React.Fragment>
@@ -482,7 +482,7 @@ class Story extends React.Component {
         <ChoiceGroup
           choiceGroup={definition.choiceGroups.spacings}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <SpacingSample spacing={value} /> {value}
             </React.Fragment>
@@ -517,7 +517,7 @@ class Story extends React.Component {
         <DecisionGroup
           decisionGroup={definition.decisionGroups.backgroundColors}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <ColorSample color={value} /> {value}
             </React.Fragment>
@@ -526,7 +526,7 @@ class Story extends React.Component {
         <DecisionGroup
           decisionGroup={definition.decisionGroups.borderColors}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <ColorSample color={value} /> {value}
             </React.Fragment>
@@ -535,7 +535,7 @@ class Story extends React.Component {
         <DecisionGroup
           decisionGroup={definition.decisionGroups.borderRadiuses}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <BorderRadiusSample borderRadius={value} /> {value}
             </React.Fragment>
@@ -544,7 +544,7 @@ class Story extends React.Component {
         <DecisionGroup
           decisionGroup={definition.decisionGroups.fontColors}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <FontColorSample color={value} /> {value}
             </React.Fragment>
@@ -553,7 +553,7 @@ class Story extends React.Component {
         <DecisionGroup
           decisionGroup={definition.decisionGroups.shadows}
           searchText={this.state.searchText}
-          renderSample={value => (
+          renderSample={(value) => (
             <React.Fragment>
               <ShadowSample shadow={value} /> {value}
             </React.Fragment>

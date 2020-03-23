@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Brain from '../raw-components/brain';
 
-const Component = props => (
-  <Brain {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Brain {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'BrainIcon';

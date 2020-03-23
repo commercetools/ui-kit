@@ -15,7 +15,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('localized-text-field-');
 
-const hasErrors = errors => errors && Object.values(errors).some(Boolean);
+const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
 class LocalizedTextField extends React.Component {
   static displayName = 'LocalizedTextField';
@@ -35,7 +35,7 @@ class LocalizedTextField extends React.Component {
     autoComplete: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.objectOf(PropTypes.string).isRequired,
-    onChange: requiredIf(PropTypes.func, props => !props.isReadOnly),
+    onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
     selectedLanguage: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
@@ -64,7 +64,7 @@ class LocalizedTextField extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props => props.hintIcon
+      (props) => props.hintIcon
     ),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onInfoButtonClick: PropTypes.func,

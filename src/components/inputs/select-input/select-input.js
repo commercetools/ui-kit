@@ -25,7 +25,7 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-const SelectInput = props => {
+const SelectInput = (props) => {
   const intl = useIntl();
   const theme = useTheme();
 
@@ -39,7 +39,7 @@ const SelectInput = props => {
   //     { label: 'Flavours', options: flavourOptions },
   //   ];
   // So we "ungroup" the options by merging them all into one list first.
-  const optionsWithoutGroups = flatMap(props.options, option =>
+  const optionsWithoutGroups = flatMap(props.options, (option) =>
     has(option, 'value') ? option : option.options
   );
 
@@ -47,12 +47,12 @@ const SelectInput = props => {
     ? props.value
         // Pass the options in the order selected by the use, so that the
         // sorting is not lost
-        .map(value =>
-          optionsWithoutGroups.find(option => option.value === value)
+        .map((value) =>
+          optionsWithoutGroups.find((option) => option.value === value)
         )
         .filter(Boolean)
     : optionsWithoutGroups.find(
-        option => has(option, 'value') && option.value === props.value
+        (option) => has(option, 'value') && option.value === props.value
       ) || null;
 
   return (
@@ -125,7 +125,7 @@ const SelectInput = props => {
                 }
               : undefined
           }
-          onChange={nextSelectedOptions => {
+          onChange={(nextSelectedOptions) => {
             // nextSelectedOptions is either an array, or a single option, or null
             // depending on whether we're in multi-mode or not (isMulti)
 
@@ -133,7 +133,7 @@ const SelectInput = props => {
 
             if (props.isMulti) {
               if (nextSelectedOptions) {
-                value = nextSelectedOptions.map(option => option.value);
+                value = nextSelectedOptions.map((option) => option.value);
               } else {
                 value = [];
               }
@@ -166,7 +166,7 @@ SelectInput.displayName = 'SelectInput';
 
 // Both "true" and an empty array [] represent a touched state. The Boolean
 // conveniently handles both cases
-SelectInput.isTouched = touched => Boolean(touched);
+SelectInput.isTouched = (touched) => Boolean(touched);
 
 SelectInput.defaultProps = {
   maxMenuHeight: 220,

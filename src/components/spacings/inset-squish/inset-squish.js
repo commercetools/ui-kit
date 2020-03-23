@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-const getPadding = scale => {
+const getPadding = (scale) => {
   switch (scale) {
     case 's':
       return `${vars.spacingXs} ${vars.spacingS}`;
@@ -17,7 +17,7 @@ const getPadding = scale => {
   }
 };
 
-const InsetSquish = props => (
+const InsetSquish = (props) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};

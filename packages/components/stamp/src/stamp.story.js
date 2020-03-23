@@ -22,7 +22,7 @@ storiesOf('Components|Stamps', module)
   .add('Stamp', () => (
     <Section>
       <Spacings.Stack>
-        {availableTones.map(tone => {
+        {availableTones.map((tone) => {
           const iconIndex = getRandomIndex(0, numberOfIcons);
           const Icon = icons[iconNames[iconIndex]];
           return (

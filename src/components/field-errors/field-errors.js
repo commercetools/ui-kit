@@ -4,9 +4,9 @@ import { FormattedMessage } from 'react-intl';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import messages from './messages';
 
-const isObject = obj => typeof obj === 'object';
+const isObject = (obj) => typeof obj === 'object';
 
-const FieldErrors = props => {
+const FieldErrors = (props) => {
   if (!props.isVisible) return null;
   if (!isObject(props.errors)) return null;
 

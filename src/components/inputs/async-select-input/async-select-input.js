@@ -26,7 +26,7 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-const AsyncSelectInput = props => {
+const AsyncSelectInput = (props) => {
   const theme = useTheme();
   const intl = useIntl();
 
@@ -137,7 +137,7 @@ const AsyncSelectInput = props => {
 // deal with an array. The touched state ends up being an empty array in case
 // values were removed only. So we have to treat any array we receive as
 // a signal of the field having been touched.
-AsyncSelectInput.isTouched = touched => Boolean(touched);
+AsyncSelectInput.isTouched = (touched) => Boolean(touched);
 
 AsyncSelectInput.displayName = 'AsyncSelectInput';
 

@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Gear from '../raw-components/gear';
 
-const Component = props => (
-  <Gear {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Gear {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'GearIcon';

@@ -26,7 +26,7 @@ const InlineColorWrapper = styled.div`
 
 const InlineItem = styled.div`
   background-color: #65ff4f;
-  height: ${props =>
+  height: ${(props) =>
     props.alignItems === 'stretch'
       ? 'auto'
       : `${Math.round(Math.random() * 50) + 50}px`};
@@ -75,7 +75,7 @@ storiesOf('Components|Spacings', module)
     );
     return (
       <Stack>
-        {sizes.map(size => (
+        {sizes.map((size) => (
           <Row key={size.name}>
             <InlineColorWrapper>
               <Scale>

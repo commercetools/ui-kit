@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Refresh from '../raw-components/refresh';
 
-const Component = props => (
-  <Refresh {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Refresh {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'RefreshIcon';

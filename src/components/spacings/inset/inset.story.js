@@ -52,7 +52,7 @@ storiesOf('Components|Spacings', module)
     <View>
       <Inset scale="m">
         <Inline scale="s">
-          {sizes.map(size => (
+          {sizes.map((size) => (
             <InsetColorWrapper key={size.name}>
               <Inset scale={size.name}>
                 <Square>

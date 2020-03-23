@@ -5,7 +5,7 @@ import { Suite, Spec } from '../../../test/percy';
 
 export const routePath = '/grid';
 
-const createList = size =>
+const createList = (size) =>
   Array.from({ length: size }).map((_, index) => index + 1);
 
 const Placeholder = styled.div`

@@ -26,7 +26,7 @@ storiesOf('Components|Inputs', module)
             size={select('size', ['small', 'big'], 'big')}
             isDisabled={boolean('isDisabled', false)}
             isChecked={value}
-            onChange={event => {
+            onChange={(event) => {
               action('onChange')(event);
               onChange(event.target.checked);
             }}

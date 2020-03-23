@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Back from '../raw-components/back';
 
-const Component = props => (
-  <Back {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Back {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'BackIcon';

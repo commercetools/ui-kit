@@ -39,7 +39,7 @@ import messages from './messages';
 const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;
 MoreStylesDropdownLabel.displayName = 'MoreStylesDropdownLabel';
 
-const MoreStylesDropdownItem = props => {
+const MoreStylesDropdownItem = (props) => {
   let Icon;
   switch (props.value) {
     case 'subscript':
@@ -68,7 +68,7 @@ MoreStylesDropdownItem.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const DropdownLabel = props => {
+const DropdownLabel = (props) => {
   return (
     <Inline scale="xs" alignItems="center" justifyContent="center">
       <span>{props.children}</span>
@@ -87,9 +87,9 @@ const Item = styled.div`
   text-align: left;
 `;
 
-const StylesDropdownItem = props => {
+const StylesDropdownItem = (props) => {
   const as =
-    Object.keys(BLOCK_TAGS).find(key => BLOCK_TAGS[key] === props.value) ||
+    Object.keys(BLOCK_TAGS).find((key) => BLOCK_TAGS[key] === props.value) ||
     'div';
 
   return (
@@ -114,7 +114,7 @@ const tooltipStyles = {
   },
 };
 
-const createStyleDropdownOptions = intl => {
+const createStyleDropdownOptions = (intl) => {
   return [
     {
       label: intl.formatMessage(messages.styleDropdownOptionParagraph),
@@ -151,7 +151,7 @@ const createStyleDropdownOptions = intl => {
   ];
 };
 
-const createMoreStylesDropdownOptions = intl => {
+const createMoreStylesDropdownOptions = (intl) => {
   return [
     {
       label: intl.formatMessage(messages.moreStylesDropdownOptionStrikethrough),
@@ -196,10 +196,10 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
       } else {
         // Handle the extra wrapping required for list buttons.
         const isList = hasBlock(BLOCK_TAGS.li, props.editor);
-        const isType = props.editor.value.blocks.some(block => {
+        const isType = props.editor.value.blocks.some((block) => {
           return !!props.editor.value.document.getClosest(
             block.key,
-            parent => parent.type === type
+            (parent) => parent.type === type
           );
         });
 
@@ -221,7 +221,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   );
 
   const onChangeMoreStyles = React.useCallback(
-    val => {
+    (val) => {
       props.editor.toggleMark(val.value);
     },
     [props.editor]
@@ -238,12 +238,12 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
 
   if (props.editor.value.selection.isFocused) {
     const activeMarks = Array.from(props.editor.value.activeMarks).map(
-      mark => mark.type
+      (mark) => mark.type
     );
 
-    activeMoreStyleMarks = activeMarks.filter(activeMark =>
+    activeMoreStyleMarks = activeMarks.filter((activeMark) =>
       dropdownOptions.some(
-        dropdownOption => activeMark === dropdownOption.value
+        (dropdownOption) => activeMark === dropdownOption.value
       )
     );
   }
@@ -252,7 +252,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
 
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
-  const onToolbarMouseDown = React.useCallback(event => {
+  const onToolbarMouseDown = React.useCallback((event) => {
     event.preventDefault();
   }, []);
 
@@ -471,7 +471,7 @@ RichTextEditorBody.propTypes = {
   children: PropTypes.node,
   containerStyles: PropTypes.any,
   showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, props => props.showExpandIcon),
+  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
   styles: PropTypes.any,
 };
 

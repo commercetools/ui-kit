@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Cart from '../raw-components/cart';
 
-const Component = props => (
-  <Cart {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Cart {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CartIcon';

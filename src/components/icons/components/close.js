@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import Close from '../raw-components/close';
 
-const Component = props => (
-  <Close {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <Close {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'CloseIcon';

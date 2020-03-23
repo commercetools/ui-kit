@@ -79,7 +79,7 @@ storiesOf('Examples|Forms/Fields', module)
       <Section key={isMulti}>
         <Formik
           initialValues={initialValues}
-          validate={values => {
+          validate={(values) => {
             const errors = { animal: {} };
             if (isMulti ? values.animal.length === 0 : !values.animal)
               errors.animal.missing = true;
@@ -89,7 +89,7 @@ storiesOf('Examples|Forms/Fields', module)
             action('onSubmit')(values, formik);
             formik.resetForm({ values: initialValues });
           }}
-          render={formik => (
+          render={(formik) => (
             <Spacings.Stack scale="l">
               <SelectField
                 horizontalConstraint={select(

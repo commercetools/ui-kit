@@ -35,7 +35,7 @@ const collapsiblePropTypes = {
   },
 };
 
-const ControlledCollapsible = props => (
+const ControlledCollapsible = (props) => (
   <>
     {props.children({
       isOpen: !props.isClosed,
@@ -46,7 +46,7 @@ const ControlledCollapsible = props => (
 ControlledCollapsible.displayName = 'ControlledCollapsible';
 ControlledCollapsible.propTypes = collapsiblePropTypes;
 
-const UncontrolledCollapsible = props => {
+const UncontrolledCollapsible = (props) => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
   return (
     <>
@@ -60,7 +60,7 @@ const UncontrolledCollapsible = props => {
 UncontrolledCollapsible.displayName = 'UncontrolledCollapsible';
 UncontrolledCollapsible.propTypes = collapsiblePropTypes;
 
-const Collapsible = props => {
+const Collapsible = (props) => {
   const isControlledComponent = !isNil(props.isClosed);
 
   if (isControlledComponent) {

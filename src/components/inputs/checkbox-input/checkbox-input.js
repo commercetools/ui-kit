@@ -20,7 +20,7 @@ import Checkbox from './checkbox';
 
 const sequentialId = createSequentialId('checkbox-input-');
 
-const hoverStyles = props => {
+const hoverStyles = (props) => {
   if (!props.hasError && !props.disabled) {
     return css`
       &:hover svg [id$='borderAndContent'] > [id$='border'] {
@@ -34,7 +34,7 @@ const hoverStyles = props => {
 const Label = styled.label`
   display: flex;
   align-items: center;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   position: relative;
 
   ${hoverStyles}
@@ -97,7 +97,7 @@ class CheckboxInput extends React.PureComponent {
           {...filterDataAttributes(this.props)}
           {...filterAriaAttributes(this.props)}
         />
-        <div css={theme => getCheckboxWrapperStyles(this.props, theme)}>
+        <div css={(theme) => getCheckboxWrapperStyles(this.props, theme)}>
           {(() => {
             if (this.props.isIndeterminate)
               return <IndeterminateIcon size="medium" />;

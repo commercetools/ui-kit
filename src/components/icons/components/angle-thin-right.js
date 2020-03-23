@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import AngleThinRight from '../raw-components/angle-thin-right';
 
-const Component = props => (
-  <AngleThinRight {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <AngleThinRight {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'AngleThinRightIcon';

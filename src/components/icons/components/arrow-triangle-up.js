@@ -5,8 +5,8 @@ import {
 } from '../../internals/icons/create-styled-icon';
 import ArrowTriangleUp from '../raw-components/arrow-triangle-up';
 
-const Component = props => (
-  <ArrowTriangleUp {...props} css={theme => getIconStyles(props, theme)} />
+const Component = (props) => (
+  <ArrowTriangleUp {...props} css={(theme) => getIconStyles(props, theme)} />
 );
 
 Component.displayName = 'ArrowTriangleUpIcon';

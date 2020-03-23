@@ -36,14 +36,14 @@ const activationTypes = [
   Downshift.stateChangeTypes.clickItem,
 ];
 
-const preventDownshiftDefault = event => {
+const preventDownshiftDefault = (event) => {
   // eslint-disable-next-line no-param-reassign
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
 // This keeps the menu open when the user focuses the time input (thereby
 // blurring the regular input/toggle button)
-const createBlurHandler = timeInputRef => event => {
+const createBlurHandler = (timeInputRef) => (event) => {
   event.persist();
   if (event.relatedTarget === timeInputRef.current) {
     preventDownshiftDefault(event);
@@ -82,8 +82,8 @@ class DateTimeInput extends React.Component {
         : getDateInMonth(this.props.value, this.props.timeZone) - 1,
     timeString: '',
   };
-  jumpMonths = amount => {
-    this.setState(prevState => {
+  jumpMonths = (amount) => {
+    this.setState((prevState) => {
       const nextDate = changeMonth(
         prevState.calendarDate,
         this.props.timeZone,
@@ -95,7 +95,7 @@ class DateTimeInput extends React.Component {
   showToday = () => {
     const today = getToday(this.props.timeZone);
     this.setState(
-      prevState => ({
+      (prevState) => ({
         calendarDate: today,
         highlightedIndex:
           prevState.suggestedItems.length +
@@ -114,7 +114,7 @@ class DateTimeInput extends React.Component {
         },
       });
   };
-  handleTimeChange = event => {
+  handleTimeChange = (event) => {
     const parsedTime = parseTime(event.target.value);
 
     this.setState({ timeString: event.target.value });
@@ -128,7 +128,7 @@ class DateTimeInput extends React.Component {
     }
     this.emit(date);
   };
-  emit = value =>
+  emit = (value) =>
     this.props.onChange({
       target: {
         id: this.props.id,
@@ -163,10 +163,10 @@ class DateTimeInput extends React.Component {
 
             return changes;
           }}
-          onStateChange={changes => {
+          onStateChange={(changes) => {
             /* eslint-disable no-prototype-builtins */
             this.setState(
-              prevState => {
+              (prevState) => {
                 if (activationTypes.includes(changes.type)) {
                   return {
                     startDate: changes.isOpen ? prevState.startDate : null,
@@ -282,7 +282,7 @@ class DateTimeInput extends React.Component {
                       // arrow keys to move the cursor when hovering
                       if (isOpen) setHighlightedIndex(null);
                     },
-                    onKeyDown: event => {
+                    onKeyDown: (event) => {
                       // parse input when user presses enter on regular input,
                       // close menu and notify parent
                       if (event.key === 'Enter' && highlightedIndex === null) {
@@ -302,7 +302,7 @@ class DateTimeInput extends React.Component {
                     onFocus: this.props.isReadOnly ? undefined : openMenu,
                     onClick: this.props.isReadOnly ? undefined : openMenu,
                     onBlur: createBlurHandler(this.timeInputRef),
-                    onChange: event => {
+                    onChange: (event) => {
                       // keep timeInput and regular input in sync when user
                       // types into regular input
                       if (!isOpen) return;
@@ -367,7 +367,7 @@ class DateTimeInput extends React.Component {
                       onNextYearClick={() => this.jumpMonths(12)}
                     />
                     <CalendarContent>
-                      {weekdays.map(weekday => (
+                      {weekdays.map((weekday) => (
                         <CalendarDay key={weekday} type="heading">
                           {weekday}
                         </CalendarDay>
@@ -403,7 +403,7 @@ class DateTimeInput extends React.Component {
                       )}
                       value={this.state.timeString}
                       onChange={this.handleTimeChange}
-                      onKeyDown={event => {
+                      onKeyDown={(event) => {
                         if (event.key === 'ArrowUp') {
                           setHighlightedIndex(null);
                           this.inputRef.current.focus();

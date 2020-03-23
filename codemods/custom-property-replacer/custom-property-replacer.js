@@ -2,7 +2,7 @@ const fs = require('fs');
 const postcss = require('postcss');
 const parser = require('postcss-value-parser');
 
-module.exports = postcss.plugin('postcss-var-replacer', opts => {
+module.exports = postcss.plugin('postcss-var-replacer', (opts) => {
   let variables;
 
   if (opts && opts.file) {
@@ -15,12 +15,12 @@ module.exports = postcss.plugin('postcss-var-replacer', opts => {
     );
   }
 
-  return css => {
-    css.walkDecls(decl => {
+  return (css) => {
+    css.walkDecls((decl) => {
       let variableFound = false;
 
       const parsedValue = parser(decl.value);
-      parsedValue.walk(node => {
+      parsedValue.walk((node) => {
         if (node.type === 'word' && variables[node.value]) {
           variableFound = true;
           // eslint-disable-next-line no-param-reassign

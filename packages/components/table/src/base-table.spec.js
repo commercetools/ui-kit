@@ -10,7 +10,7 @@ import cellRangeRenderer from './cell-range-renderer';
 jest.mock('dom-helpers/scrollbarSize', () => () => 20);
 jest.mock('react-virtualized');
 
-const createTestProps = custom => ({
+const createTestProps = (custom) => ({
   columns: Array.from({ length: 10 }).map(() => ({
     key: 'ID',
   })),
