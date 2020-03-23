@@ -1,7 +1,7 @@
 import React from 'react';
 import { Label } from '@commercetools-frontend/ui-kit';
 import { ThemeProvider } from 'emotion-theming';
-import { Suite, Spec } from '../../../test/percy';
+import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/label';
 

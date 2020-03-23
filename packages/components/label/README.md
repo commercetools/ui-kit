@@ -1,22 +1,18 @@
 # Forms: Label
 
-#### Description
+## Description
 
 The Label component represents the primitive label for a field. It's made to be used with form fields. This component can also indicate if the field is required or not, and give emphasis by being bold.
 
-#### Do's and don'ts
+## Do's and don'ts
 
 In order to improve readability, using `inverted` tone is recommended on dark backgrounds (E.g in a table header)
 
-#### Usage
+## Usage
 
 ```js
-import { Label } from '@commercetools-frontend/ui-kit';
-```
+import Label from '@commercetools-uikit/label';
 
-#### Examples
-
-```js
 <Label
   isRequiredIndicatorVisible={true}
   isBold={false}
@@ -26,7 +22,7 @@ import { Label } from '@commercetools-frontend/ui-kit';
 </Label>
 ```
 
-#### Properties
+## Properties
 
 | Props                        | Type     | Required | Values                    | Default | Description                                          |
 | ---------------------------- | -------- | :------: | ------------------------- | ------- | ---------------------------------------------------- |

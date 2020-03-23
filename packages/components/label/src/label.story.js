@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import Section from '../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import Label from './label';
 
 storiesOf('Components|Label', module)
