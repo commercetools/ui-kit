@@ -1,6 +1,6 @@
 # FieldErrors
 
-#### Description
+## Description
 
 Renders errors based on configuration.
 
@@ -19,7 +19,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
     minLength: true,
   }}
   isVisible={isTouched}
-  renderError={key => {
+  renderError={(key) => {
     switch (key) {
       case 'duplicate':
         return 'This thing is already in use. It must be unique.';
@@ -29,7 +29,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
         return null;
     }
   }}
-  renderDefaultError={key => {
+  renderDefaultError={(key) => {
     switch (key) {
       case 'minLength':
         return 'This thing is too short.';
@@ -42,7 +42,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                | Type     | Required | Values | Default | Description                                                                                                                                                                                                                               |
 | -------------------- | -------- | :------: | ------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -51,8 +51,8 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 | `renderError`        | `func`   |    -     | -      | -       | Function which gets called with each error key (from the `errors` prop) and may render an error message or return `null` to hand the error handling off to `renderDefaultError`.                                                          |
 | `renderDefaultError` | `func`   |    -     | -      | -       | Function which gets called with each error key (from the `errors` prop) for which `renderError` returned `null`. It may render an error message or return `null` to hand the error handling off to `FieldError`s built-in error handling. |
 
-### Static properties
+## Static properties
 
-#### `FieldErrors.errorTypes`
+### `FieldErrors.errorTypes`
 
 An enum of known errors which `FieldErrors` can handle itself. You might want to use this while constructing the error object you're passing as the `errors` prop.

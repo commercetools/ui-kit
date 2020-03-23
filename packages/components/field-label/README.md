@@ -1,22 +1,18 @@
 # Fields: FieldLabel
 
-#### Description
+## Description
 
 The FieldLabel component represents the label for a field in a form. This component can also be used to better explain an input field and to guide the user to fill a form.
 
-#### Dos and don'ts
+## Dos and don'ts
 
 Recommended to be used in vertical forms. (E.g input field below the label, and not besides)
 
-#### Usage
+## Usage
 
 ```js
 import FieldLabel from '@commercetools-uikit/field-label';
-```
 
-#### Examples
-
-```js
 <FieldLabel
   title={<FormattedMessage {...messages.title} />}
   hasRequiredIndicator={true}
@@ -47,7 +43,7 @@ The `hintIcon` also accepts a custom `color` while defaulting to `warning` in th
 />
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type               | Required | Values                       | Default | Description                                                                                                                                                                                                                                                           |
 | ---------------------- | ------------------ | :------: | ---------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,7 +58,7 @@ The `hintIcon` also accepts a custom `color` while defaulting to `warning` in th
 | `htmlFor`              | `string`           |    -     | -                            | -       | ID of the labeled input                                                                                                                                                                                                                                               |
 | `horizontalConstraint` | `string`           |          | `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the label.                                                                                                                                                                                                                                   |
 
-#### `hint` vs `description`
+## `hint` vs `description`
 
 Most fields will only use the `description` which provides more information about what the entered value will be used for.
 

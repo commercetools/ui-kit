@@ -13,7 +13,7 @@ import { TextField } from '@commercetools-frontend/ui-kit';
 <TextField
   title="Username"
   value="foo"
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

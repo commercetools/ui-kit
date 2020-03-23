@@ -1,12 +1,12 @@
 # Buttons: Secondary Button
 
-#### Description
+## Description
 
 Secondary buttons are used in combination with a `PrimaryButton` given a
 converse secondary action on a page. You must also pass a label for
 accessibility reasons.
 
-#### Usage
+## Usage
 
 ```js
 import SecondaryButton from '@commercetools-uikit/secondary-button';
@@ -18,7 +18,7 @@ import SecondaryButton from '@commercetools-uikit/secondary-button';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props              | Type                  | Required | Values                      | Default   | Description                                                                                                                                      |
 | ------------------ | --------------------- | :------: | --------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |

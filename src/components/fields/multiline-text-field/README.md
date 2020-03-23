@@ -13,7 +13,7 @@ import { MultilineTextField } from '@commercetools-frontend/ui-kit';
 <MultilineTextField
   title="Description"
   value=""
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

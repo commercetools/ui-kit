@@ -16,7 +16,7 @@ import { SelectField } from '@commercetools-frontend/ui-kit';
     { value: 'ready', label: 'Ready' },
     { value: 'shipped', label: 'Shipped' },
   ]}
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

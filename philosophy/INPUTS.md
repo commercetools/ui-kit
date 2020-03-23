@@ -116,7 +116,7 @@ instead of the more elaborate
 <TextInput
   name="firstName"
   value={formik.values.firstName}
-  onChange={value => formik.setFieldValue('firstName', value)}
+  onChange={(value) => formik.setFieldValue('firstName', value)}
   onBlur={() => formik.setFieldTouched('firstName')}
 />
 ```
@@ -126,7 +126,7 @@ As you can see, passing up events from `onChange` simplifies the caller side.
 In most cases we are able to simply forward the generated event:
 
 ```jsx
-const TextInput = props => (
+const TextInput = (props) => (
   <input
     type="text"
     name={props.name}
@@ -143,14 +143,14 @@ There are case where we can't simply forward the event from the change handler.
 We then need to fake the generated event, for example because building the input on an underlying library which only passes the value:
 
 ```jsx
-const MultilineTextInput = props => (
+const MultilineTextInput = (props) => (
   <AutosizeInput
     id={props.id}
     name={props.name}
     value={props.value}
     // AutosizeInput only tells us about the value, but we want to emit
     // an event which formik can read the id and name from.
-    onChange={value => {
+    onChange={(value) => {
       const fakeEvent = { target: { id: props.id, name: props.name, value } };
       props.onChange(fakeEvent);
     }}

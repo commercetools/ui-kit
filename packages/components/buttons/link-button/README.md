@@ -1,6 +1,6 @@
 # Buttons: Link Button
 
-#### Description
+## Description
 
 Link buttons are similar to Flat buttons, however they are constructed as a
 `<Link>` and they do not have types. They also support an `isExternal` prop. When passed,
@@ -8,7 +8,7 @@ the Link button is then constructed with a `<a>` instead of the default `<Link>`
 
 > Requires `react-router`.
 
-#### Usage
+## Usage
 
 ```js
 import LinkButton from '@commercetools-uikit/link-button';
@@ -29,7 +29,7 @@ import LinkButton from '@commercetools-uikit/link-button';
 />
 ```
 
-#### Properties
+## Properties
 
 | Props        | Type                                                              | Required | Values | Default | Description                                                                 |
 | ------------ | ----------------------------------------------------------------- | :------: | ------ | ------- | --------------------------------------------------------------------------- |

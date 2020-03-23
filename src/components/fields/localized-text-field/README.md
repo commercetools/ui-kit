@@ -17,7 +17,7 @@ import { LocalizedTextField } from '@commercetools-frontend/ui-kit';
     de: 'Papagei der ordentlich abfeiert',
   }}
   selectedLanguage="en"
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

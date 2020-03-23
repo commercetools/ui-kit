@@ -12,8 +12,8 @@ import { AsyncSelectField } from '@commercetools-frontend/ui-kit';
 <AsyncSelectField
   title="State"
   value={{ value: 'ready', label: 'Ready' }}
-  loadOptions={inputValue => delay(500).then(() => filterState(inputValue))}
-  onChange={event => alert(event.target.value)}
+  loadOptions={(inputValue) => delay(500).then(() => filterState(inputValue))}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

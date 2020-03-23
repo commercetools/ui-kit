@@ -1,10 +1,10 @@
 # Buttons: Flat Button
 
-#### Description
+## Description
 
 Flat buttons are minimal and a flat variation of primary and secondary buttons.
 
-#### Usage
+## Usage
 
 ```js
 import FlatButton from '@commercetools-uikit/flat-button';
@@ -20,7 +20,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 
 iconClass label url onClick
 
-#### Properties
+## Properties
 
 | Props          | Type                  | Required | Values                            | Default   | Description                                                                                                                                  |
 | -------------- | --------------------- | :------: | --------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -35,7 +35,7 @@ iconClass label url onClick
 
 The component further forwards all valid HTML attributes to the underlying `button` component.
 
-#### Where to use
+## Where to use
 
 Main Functions and use cases are:
 

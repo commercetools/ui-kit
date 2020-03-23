@@ -1,9 +1,8 @@
 # Table
 
-### THIS COMPONENT IS IN BETA!
-
-This component is ultimately intented to replace the current `Table` component.
-Please be aware that it may be subject to upcoming breaking changes as it's still in active development.
+> THIS COMPONENT IS IN BETA!
+> This component is ultimately intented to replace the current `Table` component.
+> Please be aware that it may be subject to upcoming breaking changes as it's still in active development.
 
 ---
 
@@ -26,7 +25,7 @@ For more advanced configuration and layout customization, a plethora of other op
 
 For adding a Row Selection behaviour, check the `useRowSelection` hook which you can use to prepare your `rows` and `columns` before passing them to the DataTable component.
 
-#### Usage
+## Usage
 
 ```jsx
 const rows = [
@@ -43,7 +42,7 @@ const columns = [
 return <DataTable rows={rows} columns={columns} />;
 ```
 
-#### Props
+## Properties
 
 | Props           | Type              | Required | Default                              | Description                                                                                                                                                                                                                                                                             |
 | --------------- | ----------------- | -------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,7 +58,7 @@ return <DataTable rows={rows} columns={columns} />;
 | `sortDirection` | [`desc`, `asc`]   | -        | -                                    | The direction towards which the sorting is applied.                                                                                                                                                                                                                                     |
 | `onSortChange`  | `func`            | -        | -                                    | Function called when a sortable column's header is clicked. Required if you set `isSortable` on at least on column. Accepts an argument (columnKey).                                                                                                                                    |
 
-##### Columns
+### Columns
 
 > An array of objects describing the table's column definitions and options for each of them.
 

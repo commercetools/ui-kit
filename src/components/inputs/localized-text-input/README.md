@@ -12,7 +12,7 @@ import { LocalizedTextInput } from '@commercetools-frontend/ui-kit';
 
 <LocalizedTextInput
   value={{ en: 'House', de: 'House' }}
-  onChange={event => alert(event.target.name, event.target.value)}
+  onChange={(event) => alert(event.target.name, event.target.value)}
 />;
 ```
 

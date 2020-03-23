@@ -12,7 +12,7 @@ import { TimeField } from '@commercetools-frontend/ui-kit';
 <TimeField
   title="Release Date"
   value="15:30"
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

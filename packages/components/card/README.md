@@ -1,10 +1,10 @@
 # Card
 
-#### Description
+## Description
 
 Cards are used to display content and actions on a single topic.
 
-#### Usage
+## Usage
 
 ```js
 import Card from '@commercetools-uikit/card';
@@ -14,7 +14,7 @@ import Card from '@commercetools-uikit/card';
 </Card>;
 ```
 
-#### Properties
+## Properties
 
 | Props       | Type     | Required | Values           | Default  | Description                       |
 | ----------- | -------- | :------: | ---------------- | -------- | --------------------------------- |

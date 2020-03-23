@@ -1,6 +1,6 @@
 # Grid
 
-#### Description
+## Description
 
 The Grid component can be used to implement layouts using CSS-Grid.
 
@@ -8,27 +8,23 @@ The Grid component can be used to implement layouts using CSS-Grid.
 
 The component accepts all the supported properties of CSS Grid, both for the parent container and the children elements (`<Grid.Item>`).
 
-#### Usage
+## Usage
 
 > We recommend having a look at the [`grid.example.story.js`](./grid.example.story.js) to see some simple usages of the CSS Grid layout.
 
 ```js
 import Grid from '@commercetools-uikit/grid';
-```
 
-#### Examples
-
-```js
 <Grid gridGap="16px" gridAutoColumns="1fr" gridTemplateColumns="repeat(3, 1fr)">
   <Grid.Item>{'1'}</Grid.Item>
   <Grid.Item>{'2'}</Grid.Item>
   <Grid.Item>{'3'}</Grid.Item>
   <Grid.Item>{'4'}</Grid.Item>
   <Grid.Item>{'5'}</Grid.Item>
-</Grid>
+</Grid>;
 ```
 
-#### Properties
+## Properties
 
 | Props      | Type     | Required | Values | Default | Description                                 |
 | ---------- | -------- | :------: | ------ | ------- | ------------------------------------------- |
