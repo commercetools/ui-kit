@@ -1,30 +1,24 @@
 # Links: Link
 
-## Usage
-
-```js
-import { Link } from '@commercetools-frontend/ui-kit';
-```
-
-#### Description
+## Description
 
 Links are used either to link to other ui routes, or to link to external pages. This component is a very thin wrapper over either a React Router Link, or a normal HTML <a> tag.
 
 > Requires `react-router`.
 
-#### Usage
+## Usage
 
 ```js
+import { Link } from '@commercetools-frontend/ui-kit';
+
 <Link to={'/foo/bar'}>Go to foo bar</Link>
-```
 
-```js
 <Link isExternal={true} to={'https://kanyetothe.com'}>
   Go to external link
 </Link>
 ```
 
-#### Properties
+## Properties
 
 | Props          | Type                                                              | Required | Values | Default | Description                                                                 |
 | -------------- | ----------------------------------------------------------------- | :------: | ------ | ------- | --------------------------------------------------------------------------- |
