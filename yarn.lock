@@ -10506,7 +10506,7 @@ jest-environment-enzyme@^7.1.2:
   dependencies:
     jest-environment-jsdom "^24.0.0"
 
-jest-environment-jsdom-sixteen@^1.0.3:
+jest-environment-jsdom-sixteen@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/jest-environment-jsdom-sixteen/-/jest-environment-jsdom-sixteen-1.0.3.tgz#e222228fac537ef15cca5ad470b19b47d9690165"
   integrity sha512-CwMqDUUfSl808uGPWXlNA1UFkWFgRmhHvyAjhCmCry6mYq4b/nn80MMN7tglqo5XgrANIs/w+mzINPzbZ4ZZrQ==
