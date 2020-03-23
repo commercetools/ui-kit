@@ -1,6 +1,6 @@
 # LoadingSpinner
 
-#### Description
+## Description
 
 A spinner animation to show the user some information is loading
 
@@ -12,7 +12,7 @@ import { LoadingSpinner } from '@commercetools-frontend/ui-kit';
 <LoadingSpinner size="s">{'Loading'}</LoadingSpinner>;
 ```
 
-#### Properties
+## Properties
 
 | Props      | Type     | Required | Values   | Default | Description                                         |
 | ---------- | -------- | :------: | -------- | ------- | --------------------------------------------------- |
