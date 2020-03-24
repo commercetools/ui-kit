@@ -72,5 +72,15 @@ export const component = () => (
         touched={true}
       />
     </Spec>
+    <Spec label="with description and hint">
+      <PasswordField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint="m"
+        hint="Make sure the Caps Lock is disabled"
+        description="Your secret password"
+      />
+    </Spec>
   </Suite>
 );
