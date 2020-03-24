@@ -14,14 +14,16 @@ import {
 const HeaderCell = (props) => {
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
-
+    const nextSortDirection =
+      !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
     const Icon =
       isActive && props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
+
     return (
       <BaseHeaderCell>
         <SortableHeaderInner
           label={props.sortDirection}
-          onClick={() => props.onClick(props.columnKey)}
+          onClick={() => props.onClick(props.columnKey, nextSortDirection)}
           isActive={isActive}
           isCondensed={props.isCondensed}
         >
