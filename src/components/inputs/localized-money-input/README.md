@@ -15,7 +15,7 @@ import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
     USD: { currencyCode: 'USD', amount: '12.22' },
     EUR: { currencyCode: 'EUR', amount: '41.44' },
   }}
-  onChange={event => alert(event.target.name, event.target.value)}
+  onChange={(event) => alert(event.target.name, event.target.value)}
 />;
 ```
 
@@ -221,14 +221,14 @@ const doc = {
 };
 
 // A function to convert a document to form values.
-const docToFormValues = doc => ({
+const docToFormValues = (doc) => ({
   // The parseMoneyValue function will turn a MoneyValue into a
   // value the LocalizedMoneyInput component can handle ({currency: amount})
   prices: LocalizedMoneyInput.parseMoneyValues(doc.prices),
 });
 
 // a function to convert form values back to a document
-const formValuesToDoc = formValues => ({
+const formValuesToDoc = (formValues) => ({
   // The convertToMoneyValue function will convert a LocalizedMoneyInput
   // value into a value the API can handle
   // It automatically converts to centPrecision or highPrecision
@@ -240,9 +240,9 @@ const formValuesToDoc = formValues => ({
   prices: LocalizedMoneyInput.convertToMoneyValues(formValues.prices),
 });
 
-const validate = formValues => {
+const validate = (formValues) => {
   const errors = { prices: {} };
-  Object.keys(formValues.prices).forEach(currency => {
+  Object.keys(formValues.prices).forEach((currency) => {
     errors.prices[currency] = {};
   });
   const emptyCurrencies = LocalizedMoneyInput.getEmptyCurrencies(
@@ -255,18 +255,18 @@ const validate = formValues => {
   );
 
   // ['CAD', 'USD']
-  emptyCurrencies.forEach(emptyCurrency => {
+  emptyCurrencies.forEach((emptyCurrency) => {
     errors.prices[emptyCurrency].missing = true;
   });
-  highPrecisionCurrencies.forEach(highPrecisionCurrency => {
+  highPrecisionCurrencies.forEach((highPrecisionCurrency) => {
     errors.prices[highPrecisionCurrency].highPrecision = true;
   });
 
   return omitEmpty(errors);
 };
 const initialValues = docToFormValues(doc);
-const renderErrors = errors => {
-  Object.keys(errors.prices).reduce(currency => {
+const renderErrors = (errors) => {
+  Object.keys(errors.prices).reduce((currency) => {
     const error =
       (errors.prices[currency] && errors.prices[currency].missing && (
         <ErrorMessage>This field is required!</ErrorMessage>
@@ -284,7 +284,7 @@ return (
   <Formik
     initialValues={initialValues}
     validate={validate}
-    onSubmit={formValues => {
+    onSubmit={(formValues) => {
       // doc will contain "prices" holding a MoneyValue,
       // ready to be consumed by the API
       const nextDoc = formValuesToDoc(formValues);

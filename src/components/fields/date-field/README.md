@@ -12,7 +12,7 @@ import { DateField } from '@commercetools-frontend/ui-kit';
 <DateField
   title="Release Date"
   value="2018-10-30"
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

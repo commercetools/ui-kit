@@ -10,7 +10,7 @@ states.
 ```js
 import { TextInput } from '@commercetools-frontend/ui-kit';
 
-<TextInput value="foo" onChange={event => alert(event.target.value)} />;
+<TextInput value="foo" onChange={(event) => alert(event.target.value)} />;
 ```
 
 #### Properties

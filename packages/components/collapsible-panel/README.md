@@ -1,6 +1,6 @@
 # Panels: CollapsiblePanel
 
-#### Usage
+## Usage
 
 The component can be used in a controlled or uncontrolled manner. Please refer to the [React documentation](https://reactjs.org/docs/forms.html#controlled-components) if you are unsure what either or entails.
 
@@ -27,7 +27,7 @@ import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 </CollapsiblePanel>;
 ```
 
-#### Properties
+## Properties
 
 | Props                     | Type     |                         Required                         | Values                | Default             | Description                                                                                                                                                                       |
 | ------------------------- | -------- | :------------------------------------------------------: | --------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,7 +49,7 @@ import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 | `onToggle`                | `func`   | (required only if controlled as in `isClosed` is passed) | -                     | -                   | function to be triggered whenever the user clicks the top area to collapse the panel's content                                                                                    |
 | `headerControlsAlignment` | `oneOf`  |                                                          | ['left', 'right']     | -                   | Controls the position of the headerControls element, relative to the header                                                                                                       |
 
-#### Where to use
+## Where to use
 
 Whenever some content on a given page should be concealed and/or expandible. This often holds true for instance for detailed but hidden information of some entity to save space.
 
@@ -132,7 +132,7 @@ The `headerControls` allows rendering a component which should only contain butt
 
 ### Static methods
 
-#### `CollapsiblePanel.getPanelContentId`
+## `CollapsiblePanel.getPanelContentId`
 
 Returns the generated `id` used for the wrapper of the panel content section. It is used for setting the `aria-controls` attribute on the header and can also be useful for finding the child element when testing.
 

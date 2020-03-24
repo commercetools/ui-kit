@@ -1,6 +1,6 @@
 # Avatar
 
-#### Description
+## Description
 
 A component for rendering profile images
 
@@ -17,7 +17,7 @@ import Avatar from '@commercetools-uikit/avatar';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props           | Type     | Required | Values                | Default | Description                                      |
 | --------------- | -------- | :------: | --------------------- | ------- | ------------------------------------------------ |

@@ -12,7 +12,7 @@ import { NumberField } from '@commercetools-frontend/ui-kit';
 <NumberField
   title="Age"
   value={5}
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

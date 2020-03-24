@@ -3,7 +3,7 @@
 A React component that you can use to wrap your buttons in an accessibile
 `<button/>` element.
 
-## How to use it?
+## Usage
 
 The `AccessibleButton` component is intended to be used as a wrapper for your
 actual button component.
@@ -11,7 +11,7 @@ actual button component.
 ```jsx
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 
-const Button = props => (
+const Button = (props) => (
   <AccessibleButton
     label={props.label}
     onClick={props.onClick}
@@ -39,7 +39,7 @@ Button.displayName = 'Button';
 export default Button;
 ```
 
-### Prop Types
+## Properties
 
 | Property         | Type      | Required? | Description                                                                                                   |
 | :--------------- | :-------- | :-------: | :------------------------------------------------------------------------------------------------------------ |

@@ -75,7 +75,7 @@ As our form solution must be able to work with data from any source, we'll not m
 // product-details.js
 
 <GetProduct id="party-parrot">
-  {product => <ProductDetailsForm initialValues={product} />}
+  {(product) => <ProductDetailsForm initialValues={product} />}
 </GetProduct>
 ```
 
@@ -126,7 +126,7 @@ Being able to adapt to a changing data format is one upside of using such functi
 
 // Converts document into form values
 // This is used to transform the original data into form values.
-export const docToFormValues = doc => ({
+export const docToFormValues = (doc) => ({
   id: doc.id,
   version: doc.version,
   name: doc.name,
@@ -149,10 +149,10 @@ We use [Formik](https://github.com/jaredpalmer/formik) to handle our form state.
 
 ```js
 <GetProduct id="party-parrot">
-  {product => (
+  {(product) => (
     <Formik
       initialValues={docToFormValues(product)}
-      render={formik => (
+      render={(formik) => (
         <form onSubmit={formik.handleSubmit}>
           <input
             name="name"
@@ -217,7 +217,7 @@ Formik accepts a `validate` function out of the box. We can add it to our exampl
 ```js
 import omitEmpty from 'omit-empty';
 
-const validate = values => {
+const validate = (values) => {
   const errors = { name: {} };
 
   // We use boolean flags to indicate errors
@@ -229,11 +229,11 @@ const validate = values => {
 };
 
 <GetProduct id="party-parrot">
-  {product => (
+  {(product) => (
     <Formik
       initialValues={docToFormValues(product)}
       validate={validate}
-      render={formik => (
+      render={(formik) => (
         <form onSubmit={formik.handleSubmit}>
           <input
             name="name"
@@ -283,11 +283,11 @@ import omitEmpty from 'omit-empty';
 import validate from './validate';
 
 <GetProduct id="party-parrot">
-  {product => (
+  {(product) => (
     <Formik
       initialValues={docToFormValues(product)}
       validate={validate}
-      render={formik => (
+      render={(formik) => (
         <form onSubmit={formik.handleSubmit}>
           <input
             name="name"
@@ -327,7 +327,7 @@ import omitEmpty from 'omit-empty';
 import validate from './validate';
 
 <GetProduct id="party-parrot">
-  {product => (
+  {(product) => (
     <Formik
       initialValues={docToFormValues(product)}
       validate={validate}
@@ -348,9 +348,9 @@ We can then do anything from `onSubmit`. Most likely we'll want to make an async
     return updateProduct(values.id, values.version, { name: values.name }).then(
       // passing values to resetForm reinitializes the form with the
       // updated product
-      updatedProduct =>
+      (updatedProduct) =>
         formik.resetForm({ values: docToFormValues(updatedProduct) }),
-      error => {
+      (error) => {
         alert('Could not save product');
         formik.setSubmitting(false);
       }
@@ -530,7 +530,7 @@ and you just want a list of all variants, then you could use `docToFormValues` t
 create a single variant list instead:
 
 ```js
-export const docToFormValues = doc => ({
+export const docToFormValues = (doc) => ({
   id: doc.id,
   variants: [...doc.masterVariant, ...doc.variants],
 });
@@ -539,7 +539,7 @@ export const docToFormValues = doc => ({
 When your user submits the form, you can use `formValuesToDoc` to split the variants again:
 
 ```js
-export const formValuesToDoc = formValues => ({
+export const formValuesToDoc = (formValues) => ({
   id: formValues.id,
   masterVariant: formValues.variants[0],
   variants: formValues.variants.slice(1),
@@ -683,7 +683,7 @@ For example, we can do
 
 ```js
 <Formik
-  render={formik => (
+  render={(formik) => (
     <div>
       <input
         type="text"
@@ -705,7 +705,7 @@ For example, we can do
 >
 > ```js
 > <Formik
->   render={formik => (
+>   render={(formik) => (
 >     <div>
 >       <input
 >         type="text"
@@ -725,7 +725,7 @@ We can now use any translation approach without having to intertwine it with val
 
 ```js
 <Formik
-  render={formik => (
+  render={(formik) => (
     <div>
       <input
         type="text"
@@ -791,7 +791,7 @@ We can now pass an `onSubmit` function to Formik which handles this error:
       product: nextProduct,
     }).then(
       // When things go smoothly and the slug was not used yet
-      updatedProduct => {
+      (updatedProduct) => {
         // Calling resetForm with the updated product will
         // update the form values and reset the submission state,
         // touched keys and so on.
@@ -800,7 +800,7 @@ We can now pass an `onSubmit` function to Formik which handles this error:
         });
       },
       // When the slug was already used, or when any other error happens
-      error => {
+      (error) => {
         // This is an example where we have to rely on the API
         // on submission time to ensure correct form values.
         // The example shows how to map API errors back onto
@@ -924,7 +924,7 @@ When we call `updateProduct`, we provide the `id` and the `version` we modified.
 As the data of the product might change at any time (as something could fetch a newer version), we don't want our Form to reinitialize when that data changes. So we generally avoid setting `enableReinitialize` on Formik. This is also useful to ensure that we send the `version` back to the server which we started editing, by making the `id` and `version` part of our form values:
 
 ```js
-const docToFormValues = doc => ({
+const docToFormValues = (doc) => ({
   id: doc.id,
   version: doc.version,
   // ...other fields

@@ -1,10 +1,10 @@
 # CollapsibleMotion
 
-#### Description
+## Description
 
 A component which allows building collapsible elements with an arbitrary height. The component can be controlled or uncontrolled, depending if the `isClosed` props is defined or not. A controlled component requires the `onToggle` prop additionally.
 
-#### Details
+## Details
 
 Animating a div from `height: 0` to `height: auto` is something the browser will refuse to do out of the box, because calculations of this animation would be expensive.
 There are [many existing workaround](https://css-tricks.com/using-css-transitions-auto-dimensions/) which all have their different tradeoffs.
@@ -15,7 +15,7 @@ This component also supports passing in a `minHeight` prop. By default this is 0
 
 Technically, we need to dynamically create the keyframes for this animation.
 
-#### Usage
+## Usage
 
 ```js
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -36,7 +36,7 @@ import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 </CollapsibleMotion>;
 ```
 
-#### Properties
+## Properties
 
 | Props             | Type       | Required | Values | Default | Description                                                                                                                                                                                                                |
 | ----------------- | ---------- | :------: | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

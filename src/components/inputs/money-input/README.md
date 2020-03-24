@@ -11,7 +11,7 @@ import { MoneyInput } from '@commercetools-frontend/ui-kit';
 
 <MoneyInput
   value={{ amount: '1.00', currencyCode: 'EUR' }}
-  onChange={event => alert(event.target.name, event.target.value)}
+  onChange={(event) => alert(event.target.name, event.target.value)}
   currencies={['EUR', 'USD']}
 />;
 ```
@@ -171,7 +171,7 @@ const doc = {
 };
 
 // A function to convert a document to form values.
-const docToFormValues = aDoc => ({
+const docToFormValues = (aDoc) => ({
   // The parseMoneyValue function will turn a MoneyValue into a
   // value the MoneyInput component can handle ({ amount, currencyCode })
   somePrice: MoneyInput.parseMoneyValue(aDoc.somePrice),
@@ -211,7 +211,7 @@ return (
   <Formik
     initialValues={initialValues}
     validate={validate}
-    onSubmit={formValues => {
+    onSubmit={(formValues) => {
       // doc will contain "somePrice" holding a MoneyValue,
       // ready to be consumed by the API
       const nextDoc = formValuesToDoc(formValues);
@@ -232,7 +232,7 @@ return (
           currencies={currencies}
           onBlur={() => setFieldTouched('somePrice')}
           isDisabled={isSubmitting}
-          onChange={value => setFieldValue('somePrice', value)}
+          onChange={(value) => setFieldValue('somePrice', value)}
           hasError={
             MoneyInput.isTouched(touched.somePrice) && Boolean(errors.somePrice)
           }

@@ -12,7 +12,7 @@ import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
 
 <MultilineTextInput
   value="foo"
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

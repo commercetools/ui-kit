@@ -1,11 +1,11 @@
 # Buttons: Primary Button
 
-#### Description
+## Description
 
 Primary buttons are used for a primary action on a page. You must also pass a
 label for accessibility reasons.
 
-#### Usage
+## Usage
 
 ```js
 import PrimaryButton from '@commercetools-uikit/primary-button';
@@ -17,7 +17,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props              | Type                  | Required | Values                      | Default   | Description                                                                                                                                      |
 | ------------------ | --------------------- | :------: | --------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |

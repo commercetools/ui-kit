@@ -13,7 +13,7 @@ import { PasswordField } from '@commercetools-frontend/ui-kit';
 <PasswordField
   title="myPassword"
   value="s3cr3t"
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 />;
 ```
 

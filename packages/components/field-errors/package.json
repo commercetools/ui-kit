@@ -2,8 +2,8 @@
   "name": "@commercetools-uikit/field-errors",
   "version": "10.17.0",
   "description": "",
-  "main": "dist/card.cjs.js",
-  "module": "dist/card.esm.js",
+  "main": "dist/field-errors.cjs.js",
+  "module": "dist/field-errors.esm.js",
   "private": false,
   "publishConfig": {
     "access": "public"

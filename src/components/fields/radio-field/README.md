@@ -13,7 +13,7 @@ import { RadioField } from '@commercetools-frontend/ui-kit';
   title="Fruits"
   name="fruits"
   value="apple"
-  onChange={event => alert(event.target.value)}
+  onChange={(event) => alert(event.target.value)}
 >
   <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
   <RadioInput.Option value="banana">{'Banana'}</RadioInput.Option>

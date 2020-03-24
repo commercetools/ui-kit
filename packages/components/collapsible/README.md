@@ -1,16 +1,16 @@
 # Collapsible
 
-#### Description
+## Description
 
 A render-prop component that holds a toggle state. The component can be controlled or uncontrolled, depending if the `isClosed` props is defined or not. A controlled component requires the `onToggle` prop additionally.
 
-#### Usage
+## Usage
 
 ```js
 import Collapsible from '@commercetools-uikit/collapsible';
 
 <Collapsible>
-  {options => (
+  {(options) => (
     <div>
       <div data-testid="openState">{options.isOpen ? 'open' : 'closed'}</div>
       <button data-testid="toggle" onClick={options.toggle}>
@@ -21,7 +21,7 @@ import Collapsible from '@commercetools-uikit/collapsible';
 </Collapsible>;
 ```
 
-#### Properties
+## Properties
 
 | Props             | Type       | Required | Values | Default | Description                                                                                                                  |
 | ----------------- | ---------- | :------: | ------ | ------- | ---------------------------------------------------------------------------------------------------------------------------- |

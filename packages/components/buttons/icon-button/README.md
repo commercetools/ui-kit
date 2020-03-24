@@ -1,11 +1,11 @@
 # Buttons: Icon Button
 
-#### Description
+## Description
 
 Icon Buttons are "icon-only" buttons. They trigger an action when clicked
 (`onClick` prop). You must also pass a label for accessibility reasons.
 
-#### Usage
+## Usage
 
 ```js
 import IconButton from '@commercetools-uikit/icon-button';
@@ -17,7 +17,7 @@ import IconButton from '@commercetools-uikit/icon-button';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props            | Type                  | Required | Values                      | Default           | Description                                                                                                                                      |
 | ---------------- | --------------------- | :------: | --------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -35,7 +35,7 @@ import IconButton from '@commercetools-uikit/icon-button';
 
 The component further forwards all valid HTML attributes to the underlying `button` component.
 
-#### Where to use
+## Where to use
 
 Main Functions and use cases are:
 
