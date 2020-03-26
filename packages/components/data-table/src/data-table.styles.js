@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const TableGrid = styled.table`
+  position: relative;
+  z-index: 0;
   display: grid;
   /* stylelint-disable function-whitespace-after */
   grid-template-columns: ${(props) =>
