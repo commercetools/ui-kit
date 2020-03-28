@@ -22,6 +22,7 @@ const DataTable = (props) => (
             sortedBy={props.sortedBy}
             columnKey={column.key}
             isSortable={column.isSortable}
+            shouldWrap={column.wrapHeaderLabel}
             sortDirection={props.sortDirection}
           >
             {column.label}
@@ -76,6 +77,7 @@ DataTable.propTypes = {
       renderItem: PropTypes.func,
       isTruncated: PropTypes.bool,
       isSortable: PropTypes.bool,
+      wrapHeaderLabel: PropTypes.bool,
       shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,

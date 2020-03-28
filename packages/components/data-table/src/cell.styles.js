@@ -81,6 +81,10 @@ const getCellInnerStyles = (props) => {
     getAlignmentStyle(props),
     getTruncatedStyle(props),
     getOutlineStyles(),
+    !props.shouldWrap &&
+      css`
+        white-space: nowrap;
+      `,
     props.shouldIgnoreRowClick &&
       css`
         cursor: auto;
