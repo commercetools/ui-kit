@@ -130,7 +130,7 @@
     "eslint-plugin-prefer-object-spread": "1.2.1",
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react": "7.19.0",
-    "eslint-plugin-react-hooks": "2.5.1",
+    "eslint-plugin-react-hooks": "3.0.0",
     "formik": "2.1.4",
     "glob": "7.1.6",
     "global": "4.4.0",
