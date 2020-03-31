@@ -25,6 +25,7 @@ const HeaderCell = (props) => {
           label={props.sortDirection}
           onClick={() => props.onClick(props.columnKey, nextSortDirection)}
           isActive={isActive}
+          shouldWrap={props.shouldWrap}
           isCondensed={props.isCondensed}
         >
           {props.children}
@@ -35,7 +36,10 @@ const HeaderCell = (props) => {
   }
   return (
     <BaseHeaderCell>
-      <HeaderCellInner isCondensed={props.isCondensed}>
+      <HeaderCellInner
+        shouldWrap={props.shouldWrap}
+        isCondensed={props.isCondensed}
+      >
         {props.children}
       </HeaderCellInner>
     </BaseHeaderCell>
@@ -47,11 +51,13 @@ HeaderCell.propTypes = {
   sortedBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
+  shouldWrap: PropTypes.bool,
   isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
 HeaderCell.defaultProps = {
+  shouldWrap: true,
   sortDirection: 'desc',
 };
 
