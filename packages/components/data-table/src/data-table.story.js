@@ -333,7 +333,7 @@ storiesOf('Components|Table (NEW)', module)
       setTableData((prevState) => ({ ...prevState, columns: newColumns }));
     };
 
-    const onRowClick = boolean('onRowClick', false);
+    const onRowClick = boolean('onRowClick', true);
     const withRowSelection = boolean('withRowSelection', true);
 
     const {
