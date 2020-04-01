@@ -1,5 +1,18 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+
+const getClickableRowStyle = (props) => {
+  if (props.onClick) {
+    return css`
+      cursor: pointer;
+      &:hover td {
+        background: ${vars.backgroundColorForInputWhenHovered};
+      }
+    `;
+  }
+  return '';
+};
 
 const TableGrid = styled.table`
   position: relative;
@@ -30,11 +43,7 @@ const Body = styled.tbody`
 
 const Row = styled.tr`
   display: contents;
-  ${(props) => (props.onClick ? `cursor: pointer;` : '')}
-
-  &:hover td {
-    background: ${vars.backgroundColorForInputWhenHovered};
-  }
+  ${getClickableRowStyle}
 `;
 
 export { TableGrid, Header, Body, Row };
