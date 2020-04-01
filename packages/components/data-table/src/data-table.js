@@ -100,7 +100,7 @@ DataTable.propTypes = {
 DataTable.defaultProps = {
   isCondensed: false,
   cellAlignment: 'left',
-  wrapHeaderLabels: 'true',
+  wrapHeaderLabels: true,
   itemRenderer: (row, column) => row[column.key],
 };
 DataTable.displayName = 'DataTable';
