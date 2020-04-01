@@ -1,3 +1,26 @@
+## [10.18.4](https://github.com/commercetools/ui-kit/compare/v10.18.3...v10.18.4) (2020-04-01)
+
+#### 🐛 Type: Bug
+
+- `components`
+  - [#1304](https://github.com/commercetools/ui-kit/pull/1304) fix(data-table): normalize z-index of table element ([@jonnybel](https://github.com/jonnybel))
+  - [#1301](https://github.com/commercetools/ui-kit/pull/1301) fix(data-table): return `sortDirection` for `onSortChange` function ([@jonnybel](https://github.com/jonnybel))
+  - [#1299](https://github.com/commercetools/ui-kit/pull/1299) fix(password-field): adjust alignment of 'show password' button ([@jonnybel](https://github.com/jonnybel))
+
+#### 💅 Type: Enhancement
+
+- `components`
+  - [#1310](https://github.com/commercetools/ui-kit/pull/1310) fix(data-table): background on hover changing color now only for clickable rows ([@jonnybel](https://github.com/jonnybel))
+  - [#1305](https://github.com/commercetools/ui-kit/pull/1305) fix(data-table): allow disabling text wrap for column header label ([@jonnybel](https://github.com/jonnybel))
+  - [#1309](https://github.com/commercetools/ui-kit/pull/1309) fix(data-table): move `wrapHeaderLabel` to become a table prop ([@jonnybel](https://github.com/jonnybel))
+
+#### 🔮 Type: Chore
+
+- Other
+  - [#1302](https://github.com/commercetools/ui-kit/pull/1302) chore: update yarn to 1.22.4 ([@jonnybel](https://github.com/jonnybel))
+- `components`
+  - [#1300](https://github.com/commercetools/ui-kit/pull/1300) chore: migrate more src packages ([@emmenko](https://github.com/emmenko))
+
 ## [10.18.3](https://github.com/commercetools/ui-kit/compare/v10.18.2...v10.18.3) (2020-03-20)
 
 #### 🐛 Type: Bug
