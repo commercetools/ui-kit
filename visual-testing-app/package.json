@@ -1,6 +1,6 @@
 {
   "name": "visual-testing-app",
-  "version": "10.17.0",
+  "version": "10.18.4",
   "description": "An app to facilitate visual testing",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "start": "serve dist --no-clipboard --single --listen 3001"
   },
   "dependencies": {
-    "@commercetools-uikit/design-system": "10.17.0",
+    "@commercetools-uikit/design-system": "10.18.4",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "emotion-theming": "10.0.27",

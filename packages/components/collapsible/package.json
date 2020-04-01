@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/collapsible",
-  "version": "10.18.0",
+  "version": "10.18.4",
   "description": "",
   "main": "dist/collapsible.cjs.js",
   "module": "dist/collapsible.esm.js",

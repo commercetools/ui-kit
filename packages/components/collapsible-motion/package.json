@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/collapsible-motion",
-  "version": "10.18.0",
+  "version": "10.18.4",
   "description": "",
   "main": "dist/collapsible-motion.cjs.js",
   "module": "dist/collapsible-motion.js",

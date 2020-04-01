@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/utils",
-  "version": "10.17.0",
+  "version": "10.18.4",
   "description": "",
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",

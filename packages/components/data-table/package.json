@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/data-table",
-  "version": "10.18.3",
+  "version": "10.18.4",
   "description": "",
   "main": "dist/data-table.cjs.js",
   "module": "dist/data-table.esm.js",
