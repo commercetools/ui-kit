@@ -22,7 +22,7 @@ const DataTable = (props) => (
             sortedBy={props.sortedBy}
             columnKey={column.key}
             isSortable={column.isSortable}
-            shouldWrap={column.wrapHeaderLabel}
+            shouldWrap={props.wrapHeaderLabels}
             sortDirection={props.sortDirection}
           >
             {column.label}
@@ -77,7 +77,6 @@ DataTable.propTypes = {
       renderItem: PropTypes.func,
       isTruncated: PropTypes.bool,
       isSortable: PropTypes.bool,
-      wrapHeaderLabel: PropTypes.bool,
       shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,
@@ -92,6 +91,7 @@ DataTable.propTypes = {
   an existing per-column `align` property takes precedence over this */
   cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   isHeaderSticky: PropTypes.bool,
+  wrapHeaderLabels: PropTypes.bool,
   /* Sorting props: */
   sortedBy: PropTypes.string,
   onSortChange: PropTypes.func,
@@ -100,6 +100,7 @@ DataTable.propTypes = {
 DataTable.defaultProps = {
   isCondensed: false,
   cellAlignment: 'left',
+  wrapHeaderLabels: 'true',
   itemRenderer: (row, column) => row[column.key],
 };
 DataTable.displayName = 'DataTable';
