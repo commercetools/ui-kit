@@ -181,6 +181,7 @@ const initialColumnsState = [
     key: 'about',
     label: 'About',
     isTruncated: true,
+    width: 'minmax(150px, auto)',
   },
 ];
 
@@ -396,6 +397,7 @@ storiesOf('Components|Table (NEW)', module)
           })}
           cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
           isCondensed={boolean('isCondensed', false)}
+          wrapHeaderLabels={boolean('wrapHeaderLabels', true)}
           sortedBy={sortedBy}
           onSortChange={onSortChange}
           sortDirection={sortDirection}

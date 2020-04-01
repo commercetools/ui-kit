@@ -57,7 +57,6 @@ HeaderCell.propTypes = {
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
 };
 HeaderCell.defaultProps = {
-  shouldWrap: true,
   sortDirection: 'desc',
 };
 
