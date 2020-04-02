@@ -46,4 +46,8 @@ const Row = styled.tr`
   ${getClickableRowStyle}
 `;
 
-export { TableGrid, Header, Body, Row };
+const Footer = styled.tfoot`
+  display: contents;
+`;
+
+export { TableGrid, Header, Body, Row, Footer };

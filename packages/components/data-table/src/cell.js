@@ -4,6 +4,7 @@ import requiredIf from 'react-required-if';
 import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
 import {
   BaseCell,
+  BaseFooterCell,
   BaseHeaderCell,
   CellInner,
   HeaderCellInner,
@@ -90,9 +91,10 @@ const DataCell = (props) => {
 };
 DataCell.displayName = 'DataCell';
 DataCell.propTypes = {
-  align: PropTypes.oneOf(['left', 'center', 'right']),
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
+  alignment: PropTypes.oneOf(['left', 'center', 'right']),
+  isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
 };
@@ -101,4 +103,19 @@ DataCell.defaultProps = {
   shouldIgnoreRowClick: false,
 };
 
-export { HeaderCell, DataCell };
+const FooterCell = (props) => (
+  <BaseFooterCell numberOfColumns={props.numberOfColumns}>
+    <CellInner alignment={props.alignment} isCondensed={props.isCondensed}>
+      {props.children}
+    </CellInner>
+  </BaseFooterCell>
+);
+FooterCell.displayName = 'FooterCell';
+FooterCell.propTypes = {
+  children: PropTypes.node.isRequired,
+  alignment: PropTypes.oneOf(['left', 'center', 'right']),
+  isCondensed: PropTypes.bool,
+  numberOfColumns: PropTypes.number.isRequired,
+};
+
+export { HeaderCell, DataCell, FooterCell };

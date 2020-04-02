@@ -58,6 +58,7 @@ return <DataTable rows={rows} columns={columns} />;
 | `sortedBy`         | `string`          | -        | -                                    | The key of the column for which the data is currently sorted by.                                                                                                                                                                                                                        |
 | `sortDirection`    | [`desc`, `asc`]   | -        | -                                    | The direction towards which the sorting is applied.                                                                                                                                                                                                                                     |
 | `onSortChange`     | `func`            | -        | -                                    | Function called when a sortable column's header is clicked. Required if you set `isSortable` on at least on column. Should implement the following interface: (columnKey: string, sortDirection: string).                                                                               |
+| `footer`           | `node`            | -        | -                                    | Element to render within the `tfoot` (footer) element of the table.                                                                                                                                                                                                                     |
 
 ### Columns
 

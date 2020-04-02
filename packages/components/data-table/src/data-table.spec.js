@@ -63,6 +63,16 @@ describe('DataTable', () => {
     });
   });
 
+  it('should allow rendering a footer', () => {
+    const rendered = render(
+      <DataTable {...baseProps} footer="This is in the footer" />
+    );
+
+    const footerElement = rendered.container.querySelector('tfoot');
+
+    expect(footerElement.textContent).toBe('This is in the footer');
+  });
+
   describe('when setting an action for onRowClick', () => {
     // we will be expecting this mock function to be called with (row: object, rowIndex: number)
     const rowClickEvent = jest.fn();

@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, number, boolean, select } from '@storybook/addon-knobs';
+import {
+  text,
+  select,
+  number,
+  boolean,
+  withKnobs,
+} from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import { useFormik } from 'formik';
@@ -335,6 +341,7 @@ storiesOf('Components|Table (NEW)', module)
 
     const onRowClick = boolean('onRowClick', true);
     const withRowSelection = boolean('withRowSelection', true);
+    const footer = text('footer', 'This is a Footer');
 
     const {
       rows: rowsWithSelection,
@@ -401,6 +408,7 @@ storiesOf('Components|Table (NEW)', module)
           sortedBy={sortedBy}
           onSortChange={onSortChange}
           sortDirection={sortDirection}
+          footer={footer}
         />
         <br />
         <hr />
