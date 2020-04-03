@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { TableGrid, Header, Body, Row } from './data-table.styles';
-import { HeaderCell, DataCell } from './cell';
+import { TableGrid, Header, Body, Row, Footer } from './data-table.styles';
+import { HeaderCell, DataCell, FooterCell } from './cell';
 
 const DataTable = (props) => (
   <TableGrid
@@ -57,6 +57,19 @@ const DataTable = (props) => (
         </Row>
       ))}
     </Body>
+    {props.footer && (
+      <Footer>
+        <Row>
+          <FooterCell
+            isCondensed={props.isCondensed}
+            cellAlignment={props.cellAlignment}
+            numberOfColumns={props.columns.length + 1}
+          >
+            {props.footer}
+          </FooterCell>
+        </Row>
+      </Footer>
+    )}
   </TableGrid>
 );
 DataTable.propTypes = {
@@ -80,6 +93,7 @@ DataTable.propTypes = {
       shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,
+  footer: PropTypes.node,
   maxWidth: PropTypes.number,
   maxHeight: PropTypes.number,
   onRowClick: PropTypes.func,

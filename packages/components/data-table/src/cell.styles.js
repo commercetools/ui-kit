@@ -137,6 +137,11 @@ const BaseCell = styled.td`
   ${(props) => (props.isTruncated ? 'overflow: hidden;' : '')}
 `;
 
+const BaseFooterCell = styled.td`
+  grid-column: 1 / ${(props) => props.numberOfColumns};
+  border-bottom: 1px solid ${vars.colorNeutral90};
+`;
+
 const HeaderCellInner = styled.div`
   ${(props) => getPaddingStyle(props, true)}
   ${getCellInnerStyles}
@@ -162,6 +167,7 @@ const SortableHeaderInner = styled.button`
 
 export {
   BaseCell,
+  BaseFooterCell,
   BaseHeaderCell,
   CellInner,
   HeaderCellInner,
