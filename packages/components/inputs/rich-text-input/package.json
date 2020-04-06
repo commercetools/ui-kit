@@ -31,7 +31,7 @@
     "@commercetools-uikit/utils": "10.18.4",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
-    "downshift": "5.0.5",
+    "downshift": "5.0.6",
     "immutable": "4.0.0-rc.12",
     "is-hotkey": "0.1.6",
     "prop-types": "15.7.2",
