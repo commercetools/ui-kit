@@ -162,7 +162,7 @@
     "omit-empty": "1.0.0",
     "postcss": "7.0.27",
     "postcss-value-parser": "4.0.3",
-    "pptr-testing-library": "0.5.0",
+    "pptr-testing-library": "0.4.0",
     "prettier": "2.0.3",
     "puppeteer": "2.1.1",
     "qs": "6.9.3",

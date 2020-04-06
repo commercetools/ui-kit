@@ -8669,7 +8669,6 @@ fsevents@^1.2.7:
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
-    node-pre-gyp "*"
 
 fsevents@^2.1.2, fsevents@~2.1.2:
   version "2.1.2"
@@ -13873,10 +13872,10 @@ postcss@7.0.27, postcss@^7.0.0, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.1
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-pptr-testing-library@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/pptr-testing-library/-/pptr-testing-library-0.5.0.tgz#c1a08d5f34afb0f731c46293efc8c50b51b0e2ef"
-  integrity sha512-nAYk21/+x2H2TajCIMWq+dPlVziSSkoBBK0PADvHn84OMvH5ta/KRJJ0I5wZFfxO9LCR47TZv6QlzGXZbfrBOA==
+pptr-testing-library@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/pptr-testing-library/-/pptr-testing-library-0.4.0.tgz#b1efdf502341390ef1798cdc3f56bbb3814003f6"
+  integrity sha512-QXvQ4C4jPl9YLabnEFewnPbEDRrzSz2jauvCxB8cw92HG86vS+cUU02OiVieTU+a7PiN9wDVK+LAw0wszuPFaQ==
   dependencies:
     dom-testing-library "^4.1.1"
     wait-for-expect "^1.2.0"
