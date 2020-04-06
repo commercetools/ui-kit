@@ -24,6 +24,7 @@
     "slate",
     "slate-html-serializer",
     "slate-react",
-    "@svgr/plugin-svgo"
+    "@svgr/plugin-svgo",
+    "pptr-testing-library"
   ]
 }
