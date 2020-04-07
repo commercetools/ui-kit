@@ -174,7 +174,6 @@ const initialColumnsState = [
   {
     key: 'phone',
     label: 'Phone',
-    onClick: (row) => alert(`Cell click: ${row.phone}`),
     shouldIgnoreRowClick: true,
   },
   {
@@ -196,7 +195,6 @@ const ColumnConfigForm = (props) => {
     initialValues: {
       width: props.column.width,
       align: props.column.align,
-      onClick: !!props.column.onClick,
       isSortable: !!props.column.isSortable,
       isTruncated: !!props.column.isTruncated,
       shouldIgnoreRowClick: !!props.column.shouldIgnoreRowClick,
@@ -206,9 +204,6 @@ const ColumnConfigForm = (props) => {
         ...props.column,
         width: values.width,
         align: values.align,
-        onClick: values.onClick
-          ? (row, column) => alert(`Cell click: ${row[column.key]}`)
-          : undefined,
         isSortable: values.isSortable,
         isTruncated: values.isTruncated,
         shouldIgnoreRowClick: values.shouldIgnoreRowClick,
@@ -246,17 +241,6 @@ const ColumnConfigForm = (props) => {
               <option value="center">center</option>
               <option value="right">right</option>
             </select>
-          </label>
-        </div>
-        <div>
-          <label>
-            onClick
-            <input
-              name="onClick"
-              type="checkbox"
-              onChange={formik.handleChange}
-              checked={formik.values.onClick}
-            />
           </label>
         </div>
         <div>
@@ -306,7 +290,6 @@ ColumnConfigForm.propTypes = {
     label: PropTypes.string,
     width: PropTypes.string,
     align: PropTypes.string,
-    onClick: PropTypes.func,
     isSortable: PropTypes.bool,
     isTruncated: PropTypes.bool,
     shouldIgnoreRowClick: PropTypes.bool,

@@ -41,9 +41,6 @@ const DataTable = (props) => (
           {props.columns.map((column) => (
             <DataCell
               key={`${row.id}-${column.key}`}
-              onClick={
-                column.onClick ? () => column.onClick(row, column) : undefined
-              }
               alignment={column.align ? column.align : props.cellAlignment}
               isTruncated={column.isTruncated}
               isCondensed={props.isCondensed}

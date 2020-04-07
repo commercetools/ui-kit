@@ -152,12 +152,6 @@ const CellInner = styled.div`
   ${getCellInnerStyles}
 `;
 
-const ButtonCellInner = styled.button`
-  ${(props) => getPaddingStyle(props, false)}
-  ${getCellInnerStyles}
-  ${getButtonStyle}
-`;
-
 const SortableHeaderInner = styled.button`
   ${(props) => getPaddingStyle(props, true)}
   ${getCellInnerStyles}
@@ -171,6 +165,5 @@ export {
   BaseHeaderCell,
   CellInner,
   HeaderCellInner,
-  ButtonCellInner,
   SortableHeaderInner,
 };
