@@ -118,26 +118,5 @@ describe('DataTable', () => {
 
       expect(rowClickEvent).toHaveBeenCalledTimes(1);
     });
-
-    describe('when the cells of a column have an onClick handler', () => {
-      const onCellClickEvent = jest.fn();
-      const testColumnsWithOnClick = [
-        ...testColumns,
-        { key: 'id', label: 'ID', onClick: onCellClickEvent },
-      ];
-      it('should call both the cell onClick and the onRowClick', () => {
-        const rendered = render(
-          <DataTable
-            rows={testRows}
-            columns={testColumnsWithOnClick}
-            onRowClick={rowClickEvent}
-          />
-        );
-
-        rendered.getByText('3-gems').click();
-        expect(onCellClickEvent).toHaveBeenCalledTimes(1);
-        expect(rowClickEvent).toHaveBeenCalledTimes(1);
-      });
-    });
   });
 });

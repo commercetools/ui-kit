@@ -8,7 +8,6 @@ import {
   BaseHeaderCell,
   CellInner,
   HeaderCellInner,
-  ButtonCellInner,
   SortableHeaderInner,
 } from './cell.styles';
 
@@ -62,23 +61,14 @@ HeaderCell.defaultProps = {
 };
 
 const DataCell = (props) => {
-  const { shouldIgnoreRowClick, onClick } = props;
+  const { shouldIgnoreRowClick } = props;
   const onClickHandler = React.useCallback(
     (event) => {
       if (shouldIgnoreRowClick) event.stopPropagation();
-      if (onClick) return onClick(event);
       return null;
     },
-    [onClick, shouldIgnoreRowClick]
+    [shouldIgnoreRowClick]
   );
-
-  if (onClick) {
-    return (
-      <BaseCell isTruncated={props.isTruncated}>
-        <ButtonCellInner {...props} onClick={onClickHandler} />
-      </BaseCell>
-    );
-  }
 
   return (
     <BaseCell isTruncated={props.isTruncated}>
@@ -91,7 +81,6 @@ const DataCell = (props) => {
 };
 DataCell.displayName = 'DataCell';
 DataCell.propTypes = {
-  onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
   alignment: PropTypes.oneOf(['left', 'center', 'right']),
   isCondensed: PropTypes.bool,
