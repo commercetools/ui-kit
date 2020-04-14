@@ -13,42 +13,44 @@ export const availableTones = [
   'secondary',
 ];
 
-const getToneStyles = (props) => {
+const getToneStyles = (props, theme) => {
+  const overwrittenVars = { ...vars, ...theme };
+
   switch (props.tone) {
     case 'critical': {
       return css`
-        background-color: ${vars.colorError95};
-        border: 1px solid ${vars.colorError};
+        background-color: ${overwrittenVars.colorError95};
+        border: 1px solid ${overwrittenVars.colorError};
       `;
     }
     case 'warning': {
       return css`
-        background-color: ${vars.colorWarning95};
-        border: 1px solid ${vars.colorWarning};
+        background-color: ${overwrittenVars.colorWarning95};
+        border: 1px solid ${overwrittenVars.colorWarning};
       `;
     }
     case 'positive': {
       return css`
-        background-color: ${vars.colorPrimary85};
-        border: 1px solid ${vars.colorPrimary40};
+        background-color: ${overwrittenVars.colorPrimary85};
+        border: 1px solid ${overwrittenVars.colorPrimary40};
       `;
     }
     case 'information': {
       return css`
-        background-color: ${vars.colorInfo95};
-        border: 1px solid ${vars.colorInfo};
+        background-color: ${overwrittenVars.colorInfo95};
+        border: 1px solid ${overwrittenVars.colorInfo};
       `;
     }
     case 'primary': {
       return css`
-        background-color: ${vars.colorPrimary95};
-        border: 1px solid ${vars.colorPrimary25};
+        background-color: ${overwrittenVars.colorPrimary95};
+        border: 1px solid ${overwrittenVars.colorPrimary25};
       `;
     }
     case 'secondary': {
       return css`
-        background-color: ${vars.colorNeutral90};
-        border: 1px solid ${vars.colorNeutral60};
+        background-color: ${overwrittenVars.colorNeutral90};
+        border: 1px solid ${overwrittenVars.colorNeutral60};
       `;
     }
     default:
@@ -56,25 +58,28 @@ const getToneStyles = (props) => {
   }
 };
 
-const Label = (props) => (
+const getStampStyles = (props, theme) => {
+  const overwrittenVars = { ...vars, ...theme };
+
+  return css`
+    color: ${overwrittenVars.colorSolid};
+    font-size: ${overwrittenVars.fontSizeDefault};
+    border-radius: ${overwrittenVars.borderRadius2};
+  `;
+};
+
+const Stamp = (props) => (
   <div
-    css={[
-      css`
-        color: ${vars.colorSolid};
-        font-size: ${vars.fontSizeDefault};
-        border-radius: 2px;
-      `,
-      getToneStyles(props),
-    ]}
+    css={(theme) => [getStampStyles(props, theme), getToneStyles(props, theme)]}
   >
     <InsetSquish scale="s">{props.children}</InsetSquish>
   </div>
 );
 
-Label.displayName = 'Label';
-Label.propTypes = {
+Stamp.displayName = 'Stamp';
+Stamp.propTypes = {
   tone: PropTypes.oneOf(availableTones).isRequired,
   children: PropTypes.node.isRequired,
 };
 
-export default Label;
+export default Stamp;
