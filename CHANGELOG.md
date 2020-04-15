@@ -1,3 +1,22 @@
+## [10.18.5](https://github.com/commercetools/ui-kit/compare/v10.18.4...v10.18.5) (2020-04-15)
+
+#### 💅 Type: Enhancement
+
+- `data-table`
+  - [#1312](https://github.com/commercetools/ui-kit/pull/1312) fix(data-table): add footer prop ([@jonnybel](https://github.com/jonnybel))
+
+#### 🐛 Type: Bug
+
+- `data-table`
+  - [#1319](https://github.com/commercetools/ui-kit/pull/1319) fix(data-table): column cells not wrapping ([@jonnybel](https://github.com/jonnybel))
+
+#### ⛑ Type: Refactoring
+
+- `stamp`
+  - [#1318](https://github.com/commercetools/ui-kit/pull/1318) refactor(stamp): to support theme styles ([@emmenko](https://github.com/emmenko))
+- `data-table`
+  - [#1314](https://github.com/commercetools/ui-kit/pull/1314) fix(data-table): remove `onClick` from column options ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.18.4](https://github.com/commercetools/ui-kit/compare/v10.18.3...v10.18.4) (2020-04-01)
 
 #### 🐛 Type: Bug
