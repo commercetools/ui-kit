@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/stamp",
-  "version": "10.18.4",
+  "version": "10.18.5",
   "description": "",
   "main": "dist/stamp.cjs.js",
   "module": "dist/stamp.esm.js",

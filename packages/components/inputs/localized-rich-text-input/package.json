@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-rich-text-input",
-  "version": "10.18.4",
+  "version": "10.18.5",
   "description": "",
   "main": "dist/rich-text-input.cjs.js",
   "module": "dist/rich-text-input.esm.js",

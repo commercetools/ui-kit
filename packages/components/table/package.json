@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/table",
-  "version": "10.18.4",
+  "version": "10.18.5",
   "description": "",
   "main": "dist/table.cjs.js",
   "module": "dist/table.esm.js",
