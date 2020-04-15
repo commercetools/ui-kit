@@ -81,10 +81,6 @@ const getCellInnerStyles = (props) => {
     getAlignmentStyle(props),
     getTruncatedStyle(props),
     getOutlineStyles(),
-    !props.shouldWrap &&
-      css`
-        white-space: nowrap;
-      `,
     props.shouldIgnoreRowClick &&
       css`
         cursor: auto;
@@ -145,6 +141,7 @@ const BaseFooterCell = styled.td`
 const HeaderCellInner = styled.div`
   ${(props) => getPaddingStyle(props, true)}
   ${getCellInnerStyles}
+  ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
 `;
 
 const CellInner = styled.div`
