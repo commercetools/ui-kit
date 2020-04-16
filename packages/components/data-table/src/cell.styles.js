@@ -114,7 +114,7 @@ const BaseHeaderCell = styled.th`
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
 
-  position: sticky;
+  position: ${(props) => (props.disableHeaderStickiness ? 'static' : 'sticky')};
   top: 0;
   z-index: 1;
 
