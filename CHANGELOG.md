@@ -1,3 +1,15 @@
+## [10.18.6](https://github.com/commercetools/ui-kit/compare/v10.18.5...v10.18.6) (2020-04-16)
+
+#### 🐛 Type: Bug
+
+- `data-table`
+  - [#1321](https://github.com/commercetools/ui-kit/pull/1321) fix(data-table): add missing background color ([@jonnybel](https://github.com/jonnybel))
+
+#### 💅 Type: Enhancement
+
+- `data-table`
+  - [#1322](https://github.com/commercetools/ui-kit/pull/1322) fix(data-table): add prop to disable header stickiness ([@jonnybel](https://github.com/jonnybel))
+
 ## [10.18.5](https://github.com/commercetools/ui-kit/compare/v10.18.4...v10.18.5) (2020-04-15)
 
 #### 💅 Type: Enhancement
