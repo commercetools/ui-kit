@@ -388,6 +388,7 @@ storiesOf('Components|Table (NEW)', module)
           cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
           isCondensed={boolean('isCondensed', false)}
           wrapHeaderLabels={boolean('wrapHeaderLabels', true)}
+          disableHeaderStickiness={boolean('disableHeaderStickiness', false)}
           sortedBy={sortedBy}
           onSortChange={onSortChange}
           sortDirection={sortDirection}

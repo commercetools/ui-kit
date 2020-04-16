@@ -24,6 +24,7 @@ const DataTable = (props) => (
             isSortable={column.isSortable}
             shouldWrap={props.wrapHeaderLabels}
             sortDirection={props.sortDirection}
+            disableHeaderStickiness={props.disableHeaderStickiness}
           >
             {column.label}
           </HeaderCell>
@@ -95,6 +96,7 @@ DataTable.propTypes = {
   maxHeight: PropTypes.number,
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
+  disableHeaderStickiness: PropTypes.bool,
   /* the default item (cell) renderer.
   an existing per-column `renderItem` func takes precedence over this */
   itemRenderer: PropTypes.func.isRequired,
