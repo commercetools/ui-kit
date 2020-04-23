@@ -49,10 +49,10 @@ const testColumns = [
 ];
 
 const countryFlagRenderer = (country) => {
-  if (country === 'South Korea') return '🇰🇷';
-  if (country === 'Iceland') return '🇮🇸';
-  if (country === 'USA') return '🇺🇸';
-  return '🏳️‍🌈';
+  if (country === 'South Korea') return 'KR';
+  if (country === 'Iceland') return 'IS';
+  if (country === 'USA') return 'US';
+  return 'idk lol';
 };
 
 const customItemRenderer = (item, column) => {
@@ -68,12 +68,12 @@ export const component = () => (
       <DataTable rows={testRows} columns={testColumns} />
     </Spec>
     <Spec label="default - in a narrow container">
-      <div style={{ width: 300 }}>
+      <div style={{ width: 300, overflow: 'scroll' }}>
         <DataTable rows={testRows} columns={testColumns} />
       </div>
     </Spec>
     <Spec label="default - in a short container">
-      <div style={{ height: 150 }}>
+      <div style={{ height: 150, overflow: 'scroll' }}>
         <DataTable rows={testRows} columns={testColumns} />
       </div>
     </Spec>
@@ -96,7 +96,7 @@ export const component = () => (
         rows={testRows}
         columns={testColumns}
         maxWidth={300}
-        maxHeight={300}
+        maxHeight={150}
       />
     </Spec>
     <Spec label="condensed mode with max-width">
