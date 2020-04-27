@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
-import { filterDataAttributes, parseTime } from '@commercetools-uikit/utils';
 import {
-  useFieldId,
-  usePrevious,
+  parseTime,
+  filterDataAttributes,
   createSequentialId,
-} from '@commercetools-uikit/hooks';
+} from '@commercetools-uikit/utils';
+import { useFieldId, usePrevious } from '@commercetools-uikit/hooks';
 import TimeInputBody from './time-input-body';
 import messages from './messages';
 
