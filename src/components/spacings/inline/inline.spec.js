@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../test-utils';
+import { render } from '../../../../test/test-utils';
 import Inline from './inline';
 
 it('should render children', () => {

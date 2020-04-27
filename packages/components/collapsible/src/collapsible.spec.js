@@ -1,6 +1,6 @@
 import React from 'react';
 import Collapsible from './collapsible';
-import { render } from '../../../../src/test-utils';
+import { render } from '../../../../test/test-utils';
 
 const TestComponent = (props) => (
   <Collapsible {...props}>

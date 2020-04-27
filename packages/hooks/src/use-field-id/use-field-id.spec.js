@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from '../../test-utils';
-import createSequentialId from '../../utils/create-sequential-id';
+import { createSequentialId } from '@commercetools-uikit/utils';
 import useToggleState from '../use-toggle-state';
 import useFieldId from './use-field-id';
+import { render } from '../../../../test/test-utils';
 
 const sequentialId = createSequentialId('test-id-');
 

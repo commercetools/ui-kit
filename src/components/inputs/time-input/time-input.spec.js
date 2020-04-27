@@ -1,6 +1,6 @@
 import React from 'react';
 import TimeInput from './time-input';
-import { render, fireEvent } from '../../../test-utils';
+import { render, fireEvent } from '../../../../test/test-utils';
 
 const baseProps = { value: '', onChange: () => {} };
 

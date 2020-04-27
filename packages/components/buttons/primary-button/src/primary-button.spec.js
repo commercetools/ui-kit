@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render } from '../../../../../src/test-utils';
+import { render } from '../../../../../test/test-utils';
 import PrimaryButton from './primary-button';
 
 const createTestProps = (custom) => ({

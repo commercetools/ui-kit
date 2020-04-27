@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../../src/test-utils';
+import { render } from '../../../../../test/test-utils';
 import WarningMessage from './warning-message';
 
 const intlMessage = { id: 'Title', defaultMessage: 'Hello' };

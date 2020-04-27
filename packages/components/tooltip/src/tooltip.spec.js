@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { act } from 'react-dom/test-utils';
-import { render, fireEvent, waitFor } from '../../../../src/test-utils';
+import { render, fireEvent, waitFor } from '../../../../test/test-utils';
 import Tooltip from './tooltip';
 
 jest.useFakeTimers();

@@ -1,5 +1,5 @@
 import React from 'react';
-import getFieldId from '../../utils/get-field-id';
+import { getFieldId } from '@commercetools-uikit/utils';
 
 const useFieldId = (id, sequentialId) => {
   const [internalId, setId] = React.useState(id);
