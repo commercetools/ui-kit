@@ -9,5 +9,6 @@ export { default as createSequentialId } from './src/create-sequential-id';
 export { default as getFieldId } from './src/get-field-id';
 export { default as parseTime } from './src/parse-time';
 export { default as SafeHTMLElement } from './src/helpers/safeHTMLElement';
+export { default as addStaticFields } from './src/add-static-fields';
 
 export { default as version } from './version';
