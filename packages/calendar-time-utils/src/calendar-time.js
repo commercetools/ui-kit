@@ -3,7 +3,7 @@
 // just YYYY-MM-DD.
 
 import moment from 'moment-timezone';
-import { parseTime } from './parse-time';
+import { parseTime } from '@commercetools-uikit/utils';
 
 export const getDaysInMonth = (day, timeZone) =>
   moment.tz(day, timeZone).daysInMonth();

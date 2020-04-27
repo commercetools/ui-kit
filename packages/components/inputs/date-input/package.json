@@ -22,6 +22,7 @@
     "@commercetools-uikit/calendar-utils": "10.14.2",
     "@commercetools-uikit/constraints": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
+    "@commercetools-uikit/hooks": "10.18.0",
     "@commercetools-uikit/icons": "10.18.4",
     "@commercetools-uikit/secondary-icon-button": "10.18.4",
     "@commercetools-uikit/select-utils": "10.18.4",

@@ -1,4 +1,4 @@
-import { parseTime } from './parse-time';
+import parseTime from './parse-time';
 
 describe('parseTime', () => {
   it('should work with am/pm times', () => {

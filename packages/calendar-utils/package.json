@@ -17,6 +17,9 @@
     "dist"
   ],
   "sideEffects": false,
+  "dependencies": {
+    "@commercetools-uikit/utils": "10.18.4"
+  },
   "peerDependencies": {
     "moment": "2.x"
   },

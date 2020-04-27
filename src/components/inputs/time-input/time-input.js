@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
-import useFieldId from '../../../hooks/use-field-id';
-import usePrevious from '../../../hooks/use-previous';
-import createSequentialId from '../../../utils/create-sequential-id';
-import { parseTime } from '../../../utils/parse-time';
+import { filterDataAttributes, parseTime } from '@commercetools-uikit/utils';
+import {
+  useFieldId,
+  usePrevious,
+  createSequentialId,
+} from '@commercetools-uikit/hooks';
 import TimeInputBody from './time-input-body';
 import messages from './messages';
 

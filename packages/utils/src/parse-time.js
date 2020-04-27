@@ -12,7 +12,7 @@
 //   { hours, minutes, seconds, milliseconds }
 // or null
 // eslint-disable-next-line import/prefer-default-export
-export const parseTime = (rawTime) => {
+const parseTime = (rawTime) => {
   if (!rawTime || typeof rawTime !== 'string') return null;
 
   const time = rawTime.trim().toLowerCase();
@@ -73,3 +73,5 @@ export const parseTime = (rawTime) => {
     milliseconds,
   };
 };
+
+export default parseTime;

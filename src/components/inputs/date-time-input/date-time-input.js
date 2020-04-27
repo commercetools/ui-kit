@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, parseTime } from '@commercetools-uikit/utils';
 import {
   changeTime,
   formatTime,
@@ -22,7 +22,6 @@ import {
   createSuggestedItems,
   parseInputText,
 } from '@commercetools-uikit/calendar-time-utils';
-import { parseTime } from '../../../utils/parse-time';
 import CalendarBody from '../../internals/calendar-body';
 import CalendarMenu from '../../internals/calendar-menu';
 import CalendarHeader from '../../internals/calendar-header';

@@ -1,3 +1,3 @@
-export * from '../../src/utils/calendar';
+export * from './src/calendar';
 
 export { default as version } from './version';

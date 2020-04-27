@@ -7,5 +7,6 @@ export { default as warnDeprecatedComponent } from './src/warn-deprecated-compon
 export { default as warnDeprecatedProp } from './src/warn-deprecated-prop';
 export { default as createSequentialId } from './src/create-sequential-id';
 export { default as getFieldId } from './src/get-field-id';
+export { default as parseTime } from './src/parse-time';
 
 export { default as version } from './version';

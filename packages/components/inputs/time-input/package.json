@@ -21,6 +21,7 @@
   "dependencies": {
     "@commercetools-uikit/constraints": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
+    "@commercetools-uikit/hooks": "10.18.0",
     "@commercetools-uikit/icons": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/utils": "10.18.4",
