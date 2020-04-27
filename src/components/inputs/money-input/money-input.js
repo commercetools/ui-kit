@@ -9,14 +9,17 @@ import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { filterDataAttributes, isNumberish } from '@commercetools-uikit/utils';
+import {
+  isNumberish,
+  SafeHTMLElement,
+  filterDataAttributes,
+} from '@commercetools-uikit/utils';
 import Tooltip from '@commercetools-uikit/tooltip';
 import { DropdownIndicator } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import createSelectStyles from '../../internals/create-select-styles';
-import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 import currencies from './currencies.json';
 import {
   getHighPrecisionWrapperStyles,

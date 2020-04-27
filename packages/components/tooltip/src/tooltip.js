@@ -6,8 +6,10 @@ import styled from '@emotion/styled';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import createSequentialId from '../../../../src/utils/create-sequential-id';
-import SafeHTMLElement from '../../../../src/utils/helpers/safeHTMLElement';
+import {
+  createSequentialId,
+  SafeHTMLElement,
+} from '@commercetools-uikit/utils';
 import { Body, getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
