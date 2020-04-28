@@ -1,14 +1,5 @@
-export { default as filterDataAttributes } from './src/filter-data-attributes';
-export { default as filterAriaAttributes } from './src/filter-aria-attributes';
-export { default as filterInvalidAttributes } from './src/filter-invalid-attributes';
-export { default as getPassThroughProps } from './src/get-pass-through-props';
-export { default as isNumberish } from './src/is-numberish';
-export { default as warnDeprecatedComponent } from './src/warn-deprecated-component';
-export { default as warnDeprecatedProp } from './src/warn-deprecated-prop';
-export { default as createSequentialId } from './src/create-sequential-id';
-export { default as getFieldId } from './src/get-field-id';
-export { default as parseTime } from './src/parse-time';
-export { default as SafeHTMLElement } from './src/helpers/safeHTMLElement';
-export { default as addStaticFields } from './src/add-static-fields';
-
-export { default as version } from './version';
+// This file exists  because we want jest to use our non-compiled code to run tests
+// if this file is missing, and you have a `module` or `main` that points to a non-existing file
+// (ie, a bundle that hasn't been built yet) then jest will fail if the bundle is not yet built.
+// all apps should export all their named exports from their root index.js
+export * from './src';
