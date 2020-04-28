@@ -4,8 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
 import isNil from 'lodash/isNil';
 import { oneLine } from 'common-tags';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
-import throwDeprecationWarning from '../../../utils/warn-deprecated-prop';
+import {
+  filterDataAttributes,
+  throwDeprecationWarning,
+} from '@commercetools-uikit/utils';
 
 import {
   bodyStyles,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../test-utils';
+import { render, fireEvent } from '../../../../test/test-utils';
 import LocalizedMultilineTextInput from './localized-multiline-text-input';
 
 // We use this component to simulate the whole flow of

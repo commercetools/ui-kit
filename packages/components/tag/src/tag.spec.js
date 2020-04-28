@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../src/test-utils';
+import { render } from '../../../../test/test-utils';
 import Tag from './tag';
 
 it('should render children', () => {

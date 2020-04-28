@@ -1,3 +1,3 @@
 export { default } from './data-table';
-export { useRowSelection, useSorting } from '../../../hooks';
+export { useRowSelection, useSorting } from '@commercetools-uikit/hooks';
 export { default as version } from './version';

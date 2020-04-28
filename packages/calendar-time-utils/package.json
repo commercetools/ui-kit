@@ -11,12 +11,15 @@
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
   },
   "files": [
     "dist"
   ],
   "sideEffects": false,
+  "dependencies": {
+    "@commercetools-uikit/utils": "10.18.4"
+  },
   "peerDependencies": {
     "moment-timezone": "0.5.x"
   },

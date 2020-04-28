@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../test-utils';
+import { render, fireEvent } from '../../../../test/test-utils';
 import MultilineTextInput from './multiline-text-input';
 
 class TestComponent extends React.Component {

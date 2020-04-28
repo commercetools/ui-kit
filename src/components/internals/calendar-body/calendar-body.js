@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
-import useToggleState from '../../../hooks/use-toggle-state';
+import { useToggleState } from '@commercetools-uikit/hooks';
 import {
   getClearSectionStyles,
   getCalendarIconContainerStyles,

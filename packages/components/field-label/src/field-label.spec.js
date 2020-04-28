@@ -1,6 +1,6 @@
 import React from 'react';
 import { WarningIcon } from '@commercetools-uikit/icons';
-import { render } from '../../../../src/test-utils';
+import { render } from '../../../../test/test-utils';
 import FieldLabel from './field-label';
 
 jest.mock('tiny-invariant');

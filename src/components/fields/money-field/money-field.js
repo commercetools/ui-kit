@@ -6,13 +6,13 @@ import {
   filterDataAttributes,
   createSequentialId,
   getFieldId,
+  SafeHTMLElement,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import MoneyInput from '@commercetools-uikit/money-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
-import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 
 const sequentialId = createSequentialId('money-field-');
 

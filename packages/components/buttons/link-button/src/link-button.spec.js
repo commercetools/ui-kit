@@ -1,6 +1,6 @@
 import React from 'react';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render, fireEvent, waitFor } from '../../../../../src/test-utils';
+import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
 import LinkButton from './link-button';
 
 const createTestProps = (custom) => ({

@@ -1,6 +1,6 @@
 import React from 'react';
 import FieldErrors from './field-errors';
-import { render } from '../../../../src/test-utils';
+import { render } from '../../../../test/test-utils';
 
 describe('errorTypes', () => {
   it('should export errorTypes', () => {

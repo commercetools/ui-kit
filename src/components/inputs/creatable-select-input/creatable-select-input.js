@@ -5,15 +5,17 @@ import { ThemeContext } from '@emotion/core';
 import { components as defaultComponents } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  addStaticFields,
+  SafeHTMLElement,
+  filterDataAttributes,
+} from '@commercetools-uikit/utils';
 import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
 } from '@commercetools-uikit/select-utils';
 import createSelectStyles from '../../internals/create-select-styles';
-import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
-import addStaticFields from '../../../utils/add-static-fields';
 import messages from '../../internals/messages/select';
 
 const useTheme = () => useContext(ThemeContext);

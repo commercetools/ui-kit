@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitFor } from '../../../test-utils';
+import { render, fireEvent, waitFor } from '../../../../test/test-utils';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 
 // We use this component to simulate the whole flow of

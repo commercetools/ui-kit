@@ -5,13 +5,13 @@ import {
   createSequentialId,
   filterDataAttributes,
   getFieldId,
+  SafeHTMLElement,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import CreatableSelectInput from '@commercetools-uikit/creatable-select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
-import SafeHTMLElement from '../../../utils/helpers/safeHTMLElement';
 
 const sequentialId = createSequentialId('creatable-select-field-');
 

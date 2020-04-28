@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../src/test-utils';
+import { render } from '../../../../test/test-utils';
 import Label from './label';
 
 it('should be usable as the label for an element', () => {

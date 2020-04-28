@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusThinIcon } from '@commercetools-uikit/icons';
-import { render } from '../../../../../src/test-utils';
+import { render } from '../../../../../test/test-utils';
 import FlatButton from './flat-button';
 
 const createTestProps = (props) => ({

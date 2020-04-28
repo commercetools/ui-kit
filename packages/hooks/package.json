@@ -17,6 +17,9 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
+  "dependencies": {
+    "@commercetools-uikit/utils": "10.18.4"
+  },
   "peerDependencies": {
     "lodash": "4.17.15",
     "react": ">= 16.8.0"
