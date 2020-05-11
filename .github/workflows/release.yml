@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        if: github.ref == 'refs/heads/master'
+        uses: actions/checkout@v2
+        with:
+          # TL;DR: On master branch we check out the code using a depth of 50 commits.
+          # This is necessary to allow Changesets to properly detect the latest tag in order
+          # to determine the new versions.
+          # See also related issue from Lerna (https://github.com/lerna/lerna/issues/1769).
+          # To amend to that, we force a checkout with a bigger depth (like 50).
+          # Note: this means that if we have merged >50 PRs since the last release,
+          # the canary will fail again for the reasons above.
+          # We could set `fetch-depth: 0`, but that would cause the entire history
+          # to be cloned. Using 50 seems like a good balance to start with.
+          fetch-depth: 50
+
+      # https://github.com/actions/checkout#fetch-all-tags
+      - name: Fetch all tags (for canary releases)
+        if: github.ref == 'refs/heads/master'
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+
+      - name: Setup Node (uses version in .nvmrc)
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        env:
+          # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L14-L18
+          # https://github.com/marketplace/actions/cypress-io#custom-install
+          CYPRESS_INSTALL_BINARY: 0
+
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            email=npmjs@commercetools.com
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@master
+        with:
+          publish: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Publish canary releases only if the packages weren't published already
+      - name: Publishing canary releases to npm registry
+        if: steps.changesets.outputs.published != 'true'
+        run: yarn release:canary
