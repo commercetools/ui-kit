@@ -56,6 +56,8 @@ jobs:
         uses: ianwalter/puppeteer@v2.0.0
         with:
           args: "yarn vrt:components"
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
       - name: Checking bundle size of visual testing app
         run: yarn bundlesize
