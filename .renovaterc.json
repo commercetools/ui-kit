@@ -5,13 +5,12 @@
     "schedule:weekly"
   ],
   "separateMajorMinor": true,
-  "groupName": "all dependencies",
-  "groupSlug": "all",
   "packageRules": [
     {
       "packagePatterns": [
         "*"
       ],
+      "updateTypes": ["minor", "patch"],
       "groupName": "all dependencies",
       "groupSlug": "all"
     }
