@@ -51,6 +51,8 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "prerelease": "yarn auth && yarn build",
+    "prerelease:alpha": "yarn prerelease",
+    "prerelease:canary": "yarn prerelease",
     "release": "changeset publish",
     "release:alpha": "lerna publish --exact --dist-tag alpha --no-git-tag-version --no-push",
     "release:canary": "lerna publish --exact --dist-tag canary --canary --preid canary --yes --force-publish \"*\"",
