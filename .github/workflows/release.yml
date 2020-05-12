@@ -46,11 +46,14 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Building packages
+        run: yarn build
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@master
         with:
-          publish: yarn release
+          publish: yarn changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -58,4 +61,4 @@ jobs:
       - name: Publishing canary releases to npm registry
         if: steps.changesets.outputs.published != 'true'
         # TODO: this command will be replaced by the changesets snapshots feature
-        run: yarn prerelease && yarn lerna publish 0.0.0-canary-${{ github.sha }} --exact --dist-tag canary --yes --no-push --force-publish "*"
+        run: yarn lerna publish 0.0.0-canary-${{ github.sha }} --exact --dist-tag canary --yes --no-push --force-publish "*"
