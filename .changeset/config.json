@@ -9,6 +9,7 @@
   "commit": false,
   "linked": [
     [
+      "@commercetools-frontend/ui-kit",
       "@commercetools-uikit/accessible-button",
       "@commercetools-uikit/accessible-hidden",
       "@commercetools-uikit/async-creatable-select-field",
@@ -44,10 +45,7 @@
       "@commercetools-uikit/i18n",
       "@commercetools-uikit/icon-button",
       "@commercetools-uikit/icons",
-      "@commercetools-uikit/inline",
       "@commercetools-uikit/inputs",
-      "@commercetools-uikit/inset",
-      "@commercetools-uikit/inset-squish",
       "@commercetools-uikit/label",
       "@commercetools-uikit/link",
       "@commercetools-uikit/link-button",
@@ -79,8 +77,10 @@
       "@commercetools-uikit/select-field",
       "@commercetools-uikit/select-input",
       "@commercetools-uikit/select-utils",
-      "@commercetools-uikit/spacings",
-      "@commercetools-uikit/stack",
+      "@commercetools-uikit/spacings-inline",
+      "@commercetools-uikit/spacings-inset",
+      "@commercetools-uikit/spacings-inset-squish",
+      "@commercetools-uikit/spacings-stack",
       "@commercetools-uikit/stamp",
       "@commercetools-uikit/table",
       "@commercetools-uikit/tag",
@@ -91,7 +91,6 @@
       "@commercetools-uikit/time-input",
       "@commercetools-uikit/toggle-input",
       "@commercetools-uikit/tooltip",
-      "@commercetools-uikit/ui-kit",
       "@commercetools-uikit/utils"
     ]
   ],
