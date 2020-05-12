@@ -68,33 +68,24 @@ These tests are used to prevent visuals regressions in our components exported f
 
 These tests are used to ensure the bundle produced by rollup. It is necessary to build the bundle before running these tests. We use these tests to further ensure that our bundling process works.
 
-## Cutting a Release
+## Adding changesets
 
-By default, all releases go to the `next` distribution channel and should be considered **prereleases**. This gives us a chance to test out a release before marking it **stable** in the `latest` distribution channel.
+commercetools ui-kit uses [changesets](https://github.com/atlassian/changesets) to do versioning and creating changelogs.
 
-#### Draft release notes in the Changelog
+As a contributor you need to add a changeset by running `yarn changeset`.
+The command will prompt to select the packages that should be bumped, their associated semver bump types and some markdown which will be inserted into the changelogs.
 
-1. Make sure that each merged PR that should be mentioned in the release changelog is labelled with one of the [labels](https://github.com/commercetools/ui-kit/labels) named `Type: ...` to indicate what kind of change it is.
-2. Create a changelog entry for the release
+When opening a Pull Request, a `changeset-bot` checks that the Pull Request contains a changeset. A changeset is **NOT required**, as things like documentation or other changes in the repository itself generally don't need a changeset.
 
-- Copy `.env.template` and name it `.env`
-- You'll need an [access token for the GitHub API](https://help.github.com/articles/creating-an-access-token-for-command-line-use/). Save it to the environment variable: `GITHUB_AUTH`
-- Run `yarn changelog`. The command will find all the labeled pull requests merged since the last release and group them by the label and affected packages, and create a change log entry with all the changes and links to PRs and their authors. Copy and paste it to `CHANGELOG.md`.
-- The list of committers does not need to be included.
-- Check if some Pull Requests are referenced by different label types and decide if you want to keep only one entry or have it listed multiple times.
-- Add a four-space indented paragraph after each non-trivial list item, explaining what changed and why. For each breaking change also write who it affects and instructions for migrating existing code.
-- Maybe add some newlines here and there. Preview the result on GitHub to get a feel for it. Changelog generator output is a bit too terse for our taste, so try to make it visually pleasing and well grouped.
+## Releasing packages
 
-3. (_Optional_) Include "_Migrating from ..._" instructions for the previous release in case you deem it necessary.
-4. Commit the changelog (usually by opening a new Pull Request).
+> ~~By default, all releases go to the `next` distribution channel and should be considered **prereleases**. This gives us a chance to test out a release before marking it **stable** in the `latest` distribution channel.~~
 
-#### Release the packages
+commercetools ui-kit uses [changesets](https://github.com/atlassian/changesets) to do versioning and publishing a release.
 
-1. Make sure the `CHANGELOG.md` has been updated.
-2. Check that your npm account has access to the `@commercetools-frontend` and `@commercetools-uikit` organizations and that you are logged in with the `npm` CLI.
-3. Run `yarn release`: the packages will be bundled with Rollup first, then Lerna will prompt you to select the version that you would like to release (minor, major, pre-release, etc.).
-4. Wait a bit until Lerna bumps the versions, creates a commit and a tag and finally publishes the packages to npm (to the `next` distribution channel).
-5. After publishing, create a GitHub Release with the same text as the `CHANGELOG.md` entry. See previous Releases for inspiration.
+A [Changesets release GitHub Action](https://github.com/changesets/action) opens a `Version Packages` Pull Request whenever there are some changesets that have not been released yet.
+
+When the `Version Packages` Pull Request gets merged, the Changesets release GitHub Action will automatically trigger the release.
 
 #### Moving the `latest` dist-tag to a release:
 
