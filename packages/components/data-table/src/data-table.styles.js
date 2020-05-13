@@ -28,10 +28,14 @@ const TableGrid = styled.table`
     props.maxHeight
       ? `
     max-height: ${props.maxHeight}px;
-    overflow: auto;
-  `
+    overflow-y: auto;`
       : ''}
-  ${(props) => (props.maxWidth ? `max-width: ${props.maxWidth}px;` : '')}
+  ${(props) =>
+    props.maxWidth
+      ? `
+    max-width: ${props.maxWidth}px;
+    overflow-x: auto;`
+      : ''}
 `;
 
 const Header = styled.thead`
