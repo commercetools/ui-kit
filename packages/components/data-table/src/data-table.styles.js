@@ -24,18 +24,11 @@ const TableGrid = styled.table`
     props.columns.map((column) => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
 
+  ${(props) => (props.maxHeight ? `max-height: ${props.maxHeight}px;` : '')}
   ${(props) =>
-    props.maxHeight
-      ? `
-    max-height: ${props.maxHeight}px;
-    overflow-y: auto;`
-      : ''}
-  ${(props) =>
-    props.maxWidth
-      ? `
-    max-width: ${props.maxWidth}px;
-    overflow-x: auto;`
-      : ''}
+    props.maxWidth ? `max-width: ${props.maxWidth}px;` : ''}
+
+  overflow: auto;
 `;
 
 const Header = styled.thead`
