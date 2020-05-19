@@ -6,7 +6,7 @@ import isNil from 'lodash/isNil';
 import { oneLine } from 'common-tags';
 import {
   filterDataAttributes,
-  throwDeprecationWarning,
+  warnDeprecatedProp,
 } from '@commercetools-uikit/utils';
 
 import {
@@ -62,7 +62,7 @@ Headline.propTypes = {
   ),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
-      throwDeprecationWarning(
+      warnDeprecatedProp(
         propName,
         componentName,
         `\n Please use "as" prop instead.`
@@ -115,7 +115,7 @@ Subheadline.propTypes = {
   as: requiredIf(PropTypes.oneOf(['h4', 'h5']), (props) => !props.elementType),
   elementType(props, propName, componentName, ...rest) {
     if (props[propName] != null) {
-      throwDeprecationWarning(
+      warnDeprecatedProp(
         propName,
         componentName,
         `\n Please use "as" prop instead.`
@@ -219,7 +219,7 @@ Body.propTypes = {
   isItalic: PropTypes.bool,
   isInline(props, propName, componentName, ...rest) {
     if (!isNil(props[propName])) {
-      throwDeprecationWarning(
+      warnDeprecatedProp(
         propName,
         componentName,
         `\n Please use "as" prop instead.`
