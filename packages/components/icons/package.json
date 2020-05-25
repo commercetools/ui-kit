@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/icons",
-  "version": "10.18.4",
+  "version": "10.19.0",
   "description": "",
   "main": "dist/icons.cjs.js",
   "module": "dist/icons.esm.js",
@@ -12,9 +12,7 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {

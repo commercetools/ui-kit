@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/select-utils",
-  "version": "10.18.4",
+  "version": "10.19.0",
   "description": "",
   "main": "dist/select-utils.cjs.js",
   "module": "dist/select-utils.esm.js",
@@ -13,14 +13,12 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.18.4",
+    "@commercetools-uikit/icons": "10.19.0",
     "@commercetools-uikit/utils": "10.18.4",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",

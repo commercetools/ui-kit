@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/multiline-text-input",
-  "version": "10.18.5",
+  "version": "10.19.0",
   "description": "",
   "main": "dist/multiline-text-input.cjs.js",
   "module": "dist/multiline-text-input.esm.js",
@@ -13,9 +13,7 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
@@ -23,7 +21,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/flat-button": "10.18.4",
     "@commercetools-uikit/hooks": "10.18.0",
-    "@commercetools-uikit/icons": "10.18.4",
+    "@commercetools-uikit/icons": "10.19.0",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/spacings-stack": "10.18.4",
     "@commercetools-uikit/tooltip": "10.18.4",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/field-label",
-  "version": "10.18.4",
+  "version": "10.19.0",
   "description": "",
   "main": "dist/field-label.cjs.js",
   "module": "dist/field-label.esm.js",
@@ -13,15 +13,13 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/buttons": "10.18.4",
     "@commercetools-uikit/constraints": "10.18.4",
-    "@commercetools-uikit/icons": "10.18.4",
+    "@commercetools-uikit/icons": "10.19.0",
     "@commercetools-uikit/label": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/spacings-stack": "10.18.4",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/table",
-  "version": "10.18.5",
+  "version": "10.19.0",
   "description": "",
   "main": "dist/table.cjs.js",
   "module": "dist/table.esm.js",
@@ -13,14 +13,12 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.18.4",
+    "@commercetools-uikit/icons": "10.19.0",
     "@commercetools-uikit/spacings-inset": "10.18.4",
     "@commercetools-uikit/spacings-inset-squish": "10.18.4",
     "@commercetools-uikit/text": "10.18.4",
