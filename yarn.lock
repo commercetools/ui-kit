@@ -1193,17 +1193,6 @@
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/design-system/-/design-system-10.15.1.tgz#87f1c1d4acfd3d6da1cf59db5c951402b204a00f"
   integrity sha512-RuwNY3SvT2YkSgAWnv1XxFw7BHsnahaM61070MjPE2Lg8lHZm8+tevkd4QSxFBZWBAc8gWfMA48/ujgcg9Rtug==
 
-"@commercetools-uikit/icons@10.15.1":
-  version "10.15.1"
-  resolved "https://registry.yarnpkg.com/@commercetools-uikit/icons/-/icons-10.15.1.tgz#853dcd9f101c277b849abff2c74fa6aeef630cfc"
-  integrity sha512-wquQwny4EEaceWLKFrkrDFT14CoDjhhjUynR4wBGOGOfu6EmrlhcwLcTE+dfBuHzVI77g4QGKqPnzUzhjjKMrQ==
-  dependencies:
-    "@commercetools-uikit/design-system" "10.15.1"
-    "@emotion/core" "10.0.27"
-    "@emotion/styled" "10.0.27"
-    prop-types "15.7.2"
-    tiny-invariant "1.1.0"
-
 "@commercetools-uikit/utils@10.14.1":
   version "10.14.1"
   resolved "https://registry.yarnpkg.com/@commercetools-uikit/utils/-/utils-10.14.1.tgz#a24420e7c68fccdf12f56081fbf252694724c360"
