@@ -6,6 +6,7 @@ export { default as AngleLeftIcon } from './components/angle-left';
 export { default as AngleRightIcon } from './components/angle-right';
 export { default as AngleThinLeftIcon } from './components/angle-thin-left';
 export { default as AngleThinRightIcon } from './components/angle-thin-right';
+export { default as AngleUpDownIcon } from './components/angle-up-down';
 export { default as AngleUpIcon } from './components/angle-up';
 export { default as ArrowDownIcon } from './components/arrow-down';
 export { default as ArrowLeftIcon } from './components/arrow-left';
