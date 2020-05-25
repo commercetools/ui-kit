@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import { AngleDownIcon, AngleUpIcon } from '@commercetools-uikit/icons';
+import {
+  AngleUpIcon,
+  AngleDownIcon,
+  AngleUpDownIcon,
+} from '@commercetools-uikit/icons';
+
 import {
   BaseCell,
   BaseFooterCell,
@@ -16,8 +21,7 @@ const HeaderCell = (props) => {
     const isActive = props.sortedBy === props.columnKey;
     const nextSortDirection =
       !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
-    const Icon =
-      isActive && props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
+    const Icon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
 
     return (
       <BaseHeaderCell disableHeaderStickiness={props.disableHeaderStickiness}>
@@ -29,6 +33,8 @@ const HeaderCell = (props) => {
           isCondensed={props.isCondensed}
         >
           {props.children}
+          {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
+          <AngleUpDownIcon size="medium" color="surface" />
           <Icon size="medium" color="surface" />
         </SortableHeaderInner>
       </BaseHeaderCell>

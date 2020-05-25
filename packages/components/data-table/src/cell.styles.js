@@ -94,15 +94,31 @@ const getSortableHeaderStyles = (props) => css`
   justify-content: space-between;
   align-items: center;
 
-  /* A sortable header has the arrow svg icon as the last child */
-  svg:last-of-type {
-    visibility: ${props.isActive ? 'visible' : 'hidden'};
+  /* A sortable header has the two arrow svg icons
+  * GIVEN column is sortable and is not focused
+  * THEN AngleUpDown icon is shown (default behaviour)
+  * AND AngleUp or AngleDown icon is not shown
+  * 
+  * GIVEN column is sortable and foucsed
+  * THEN AngleUpDown icon is hidden
+  * AND AngleUp or AngleDown icon is shown
+  */
+  svg:nth-last-of-type(2) {
+    display: ${props.isActive ? 'none' : 'inline-block'};
     margin-left: ${vars.spacingS};
   }
+  svg:last-of-type {
+    display: ${props.isActive ? 'inline-block' : 'none'};
+    margin-left: ${vars.spacingS};
+  }
+
   :hover,
   :focus {
+    svg:first-of-type {
+      display: none;
+    }
     svg:last-of-type {
-      visibility: visible;
+      display: inline-block;
       * {
         fill: ${vars.colorNeutral};
       }
