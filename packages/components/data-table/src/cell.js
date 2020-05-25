@@ -34,8 +34,12 @@ const HeaderCell = (props) => {
         >
           {props.children}
           {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
-          <AngleUpDownIcon size="medium" color="surface" />
-          <Icon size="medium" color="surface" />
+          <AngleUpDownIcon
+            size="medium"
+            color="surface"
+            id="nonActiveSortingIcon"
+          />
+          <Icon size="medium" color="surface" id="activeSortingIcon" />
         </SortableHeaderInner>
       </BaseHeaderCell>
     );

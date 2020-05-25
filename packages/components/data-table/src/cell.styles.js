@@ -103,21 +103,21 @@ const getSortableHeaderStyles = (props) => css`
   * THEN AngleUpDown icon is hidden
   * AND AngleUp or AngleDown icon is shown
   */
-  svg:nth-last-of-type(2) {
+  svg[id='nonActiveSortingIcon'] {
     display: ${props.isActive ? 'none' : 'inline-block'};
     margin-left: ${vars.spacingS};
   }
-  svg:last-of-type {
+  svg[id='activeSortingIcon'] {
     display: ${props.isActive ? 'inline-block' : 'none'};
     margin-left: ${vars.spacingS};
   }
 
   :hover,
   :focus {
-    svg:first-of-type {
+    svg[id='nonActiveSortingIcon'] {
       display: none;
     }
-    svg:last-of-type {
+    svg[id='activeSortingIcon'] {
       display: inline-block;
       * {
         fill: ${vars.colorNeutral};
