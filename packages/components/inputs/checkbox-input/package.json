@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/checkbox-input",
-  "version": "10.18.4",
+  "version": "10.19.0",
   "description": "",
   "main": "dist/checkbox-input.cjs.js",
   "module": "dist/checkbox-input.esm.js",
@@ -13,15 +13,13 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.18.4",
-    "@commercetools-uikit/select-utils": "10.18.4",
+    "@commercetools-uikit/icons": "10.19.0",
+    "@commercetools-uikit/select-utils": "10.19.0",
     "@commercetools-uikit/text": "10.18.4",
     "@commercetools-uikit/utils": "10.18.4",
     "@emotion/core": "10.0.28",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/date-field",
-  "version": "10.18.5",
+  "version": "10.19.0",
   "description": "",
   "main": "dist/date-field.cjs.js",
   "module": "dist/date-field.esm.js",
@@ -13,17 +13,15 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/constraints": "10.18.4",
-    "@commercetools-uikit/date-input": "10.18.5",
+    "@commercetools-uikit/date-input": "10.19.0",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/field-errors": "10.18.4",
-    "@commercetools-uikit/field-label": "10.18.4",
+    "@commercetools-uikit/field-label": "10.19.0",
     "@commercetools-uikit/spacings": "10.18.4",
     "@commercetools-uikit/utils": "10.18.4",
     "@emotion/core": "10.0.28",
