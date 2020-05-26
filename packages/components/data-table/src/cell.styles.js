@@ -103,14 +103,16 @@ const getSortableHeaderStyles = (props) => css`
   * THEN AngleUpDown icon is hidden
   * AND AngleUp or AngleDown icon is shown
   */
-
+  svg[id='nonActiveSortingIcon'],
+  svg[id='activeSortingIcon'] {
+    margin-left: ${vars.spacingS};
+    flex-shrink: 0;
+  }
   svg[id='nonActiveSortingIcon'] {
     display: ${props.isActive ? 'none' : 'inline-block'};
-    margin-left: ${vars.spacingS};
   }
   svg[id='activeSortingIcon'] {
     display: ${props.isActive ? 'inline-block' : 'none'};
-    margin-left: ${vars.spacingS};
   }
 
   :hover,
@@ -130,7 +132,8 @@ const BaseHeaderCell = styled.th`
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
 
-  position: ${(props) => (props.disableHeaderStickiness ? 'static' : 'sticky')};
+  position: ${(props) =>
+    props.disableHeaderStickiness ? 'relative' : 'sticky'};
   top: 0;
   z-index: 1;
 
@@ -138,21 +141,38 @@ const BaseHeaderCell = styled.th`
   padding: 0;
   font-weight: normal;
 
-  /* adds borders between header cells */
-  :not(:last-of-type) {
-    border-right: 1px solid ${vars.colorNeutral90};
-  }
+  /* right border that doesn't count towards the column width */
+  box-shadow: inset -1px 0 ${vars.colorNeutral90};
 `;
 
 const BaseCell = styled.td`
   border-bottom: 1px solid ${vars.colorNeutral90};
   position: relative;
-  ${(props) => (props.isTruncated ? 'overflow: hidden;' : '')}
+  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
 
 const BaseFooterCell = styled.td`
   grid-column: 1 / ${(props) => props.numberOfColumns};
   border-bottom: 1px solid ${vars.colorNeutral90};
+`;
+
+const Resizer = styled.span`
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 3px;
+  cursor: col-resize;
+  user-select: none;
+
+  &:hover {
+    background: ${vars.colorInfo};
+  }
+
+  &:active {
+    background: ${vars.colorInfo};
+    height: 100vh;
+  }
 `;
 
 const HeaderCellInner = styled.div`
@@ -171,6 +191,7 @@ const SortableHeaderInner = styled.button`
   ${getCellInnerStyles}
   ${getButtonStyle}
   ${getSortableHeaderStyles}
+  ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
 `;
 
 const RowExpandCollapseButton = styled(SecondaryIconButton)`
@@ -195,4 +216,5 @@ export {
   SortableHeaderInner,
   RowExpandCollapseButton,
   HeaderCellInnerWrapper,
+  Resizer,
 };

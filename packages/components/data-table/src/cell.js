@@ -9,6 +9,11 @@ import {
   RightTriangleLinearIcon,
 } from '@commercetools-uikit/icons';
 import {
+  calculateResize,
+  setColumnWidth,
+  getGridTemplateColumnsStyle,
+} from './column-size-utils';
+import {
   BaseCell,
   BaseFooterCell,
   BaseHeaderCell,
@@ -17,9 +22,67 @@ import {
   SortableHeaderInner,
   RowExpandCollapseButton,
   HeaderCellInnerWrapper,
+  Resizer,
 } from './cell.styles';
 
 const HeaderCell = (props) => {
+  const [colResizingState, setColResizingState] = React.useState({
+    isResizing: false,
+    initialColWidth: undefined,
+    initialMousePosition: undefined,
+  });
+  const headerRef = React.useRef(null);
+
+  const onStartResizing = (e) => {
+    setColResizingState({
+      isResizing: true,
+      initialColWidth: headerRef.current.clientWidth,
+      initialMousePosition: e.clientX,
+    });
+    props.onColumnResizeStart();
+  };
+
+  const onDrag = (e) =>
+    // sync resizing update rate with screen refresh rate
+    requestAnimationFrame(() => {
+      const tableRef = props.tableRef;
+
+      // calculate the new width
+      const width = calculateResize(
+        colResizingState.initialColWidth,
+        colResizingState.initialMousePosition,
+        e.clientX
+      );
+
+      const newColumnsSizes = setColumnWidth(
+        props.columnSizes,
+        /* the table always renders the column headers in the same order of the columns array
+        and since we already had a ref to the header element, we can read its cellIndex :) */
+        headerRef.current.cellIndex,
+        width
+      );
+
+      tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
+        newColumnsSizes
+      );
+    });
+
+  const onDragEnd = () => {
+    setColResizingState({
+      isResizing: false,
+      initialColWidth: undefined,
+      initialMousePosition: undefined,
+    });
+
+    window.removeEventListener('mousemove', onDrag);
+    window.removeEventListener('mouseup', onDragEnd);
+  };
+
+  if (colResizingState.isResizing) {
+    window.addEventListener('mousemove', onDrag);
+    window.addEventListener('mouseup', onDragEnd);
+  }
+
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
     const nextSortDirection =
@@ -28,6 +91,7 @@ const HeaderCell = (props) => {
 
     return (
       <BaseHeaderCell
+        ref={headerRef}
         data-testid={`header-${props.columnKey}`}
         disableHeaderStickiness={props.disableHeaderStickiness}
       >
@@ -48,11 +112,17 @@ const HeaderCell = (props) => {
           />
           <Icon size="medium" color="surface" id="activeSortingIcon" />
         </SortableHeaderInner>
+        <Resizer
+          onMouseDown={(e) => {
+            return onStartResizing(e);
+          }}
+        />
       </BaseHeaderCell>
     );
   }
   return (
     <BaseHeaderCell
+      ref={headerRef}
       data-testid={`header-${props.columnKey}`}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
@@ -63,6 +133,11 @@ const HeaderCell = (props) => {
       >
         {props.children}
       </HeaderCellInner>
+      <Resizer
+        onMouseDown={(e) => {
+          return onStartResizing(e);
+        }}
+      />
     </BaseHeaderCell>
   );
 };
@@ -78,6 +153,11 @@ HeaderCell.propTypes = {
   isCondensed: PropTypes.bool,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
   disableHeaderStickiness: PropTypes.bool,
+  // column resizing props
+  tableRef: PropTypes.object,
+  onColumnResizeStart: PropTypes.func,
+  // onColumnResizeEnd: PropTypes.func,
+  columnSizes: PropTypes.array,
 };
 HeaderCell.defaultProps = {
   sortDirection: 'desc',
@@ -97,7 +177,7 @@ const DataCell = (props) => {
     ? RightTriangleFilledIcon
     : RightTriangleLinearIcon;
   return (
-    <BaseCell isTruncated={props.isTruncated}>
+    <BaseCell shouldClipContent={props.isTruncated || props.shouldClipContent}>
       <CellInner
         {...props}
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
@@ -122,6 +202,7 @@ DataCell.propTypes = {
   alignment: PropTypes.oneOf(['left', 'center', 'right']),
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
+  shouldClipContent: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
   shouldRenderCollapseButton: PropTypes.bool.isRequired,
   handleRowCollapseClick: requiredIf(

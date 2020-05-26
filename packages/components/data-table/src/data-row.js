@@ -32,6 +32,7 @@ const DataRow = (props) => {
           isTruncated={column.isTruncated && isRowCollapsed}
           isRowCollapsed={isRowCollapsed}
           isCondensed={props.isCondensed}
+          shouldClipContent={props.shouldClipContent}
           shouldIgnoreRowClick={column.shouldIgnoreRowClick}
           handleRowCollapseClick={handleRowCollapseClick}
           shouldRenderCollapseButton={shouldRenderCollapseButton(
@@ -71,6 +72,7 @@ DataRow.propTypes = {
   /* the default cell alignment
     an existing per-column `align` property takes precedence over this */
   cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+  shouldClipContent: PropTypes.bool,
 };
 DataRow.defaultProps = {
   isCondensed: false,

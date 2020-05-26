@@ -1,58 +1,108 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  getColumnWidthsArray,
+  getGridTemplateColumnsStyle,
+} from './column-size-utils';
 import { TableGrid, Header, Body, Row, Footer } from './data-table.styles';
 import { HeaderCell, FooterCell } from './cell';
 import DataRow from './data-row';
 
-const DataTable = (props) => (
-  <TableGrid
-    {...filterDataAttributes(props)}
-    columns={props.columns}
-    maxWidth={props.maxWidth}
-    maxHeight={props.maxHeight}
-  >
-    <Header>
-      <Row>
-        {props.columns.map((column) => (
-          <HeaderCell
-            key={column.key}
-            isCondensed={props.isCondensed}
-            /* Sorting Props */
-            onClick={props.onSortChange}
-            sortedBy={props.sortedBy}
-            columnKey={column.key}
-            isSortable={column.isSortable}
-            shouldWrap={props.wrapHeaderLabels}
-            sortDirection={props.sortDirection}
-            disableHeaderStickiness={props.disableHeaderStickiness}
-            alignment={column.align ? column.align : props.cellAlignment}
-          >
-            {column.label}
-          </HeaderCell>
-        ))}
-      </Row>
-    </Header>
-    <Body>
-      {props.rows.map((row, rowIndex) => (
-        <DataRow {...props} row={row} key={rowIndex} rowIndex={rowIndex} />
-      ))}
-    </Body>
-    {props.footer && (
-      <Footer>
+const DataTable = (props) => {
+  const [columnSizing, setcolumnSizing] = React.useState({
+    isManualControlled: false,
+    // TODO 🤔
+    // is it actually worth it to write the sizes to the state?
+    // the sizes array is being mutated directly by the cell, because it only affects layout style and doesn't need to trigger re-renders
+    // but we should provide the consumer a streamlined way to read the column sizes (i.e to save them as a user setting)
+    sizes: getColumnWidthsArray(props.columns),
+  });
+  const tableRef = React.useRef();
+
+  const gridTemplateColumnsStyle = getGridTemplateColumnsStyle(
+    columnSizing.sizes
+  );
+
+  const onColumnResizeStart = () => {
+    // when a user starts resizing a column, all columns sizes stop being responsive and become manually controlled
+    if (!columnSizing.isManualControlled) {
+      const renderedLayoutSizes = [];
+      tableRef.current.querySelectorAll('th').forEach((header, index) => {
+        renderedLayoutSizes[index] = header.clientWidth;
+      });
+      setcolumnSizing({
+        isManualControlled: true,
+        sizes: renderedLayoutSizes,
+      });
+    }
+  };
+
+  return (
+    <TableGrid
+      ref={tableRef}
+      {...filterDataAttributes(props)}
+      columns={props.columns}
+      maxWidth={props.maxWidth}
+      maxHeight={props.maxHeight}
+      style={{
+        gridTemplateColumns: gridTemplateColumnsStyle,
+      }}
+    >
+      <Header>
         <Row>
-          <FooterCell
-            isCondensed={props.isCondensed}
-            cellAlignment={props.cellAlignment}
-            numberOfColumns={props.columns.length + 1}
-          >
-            {props.footer}
-          </FooterCell>
+          {props.columns.map((column) => (
+            <HeaderCell
+              id={column.key}
+              key={column.key}
+              isCondensed={props.isCondensed}
+              /* Sorting Props */
+              onClick={props.onSortChange}
+              sortedBy={props.sortedBy}
+              columnKey={column.key}
+              isSortable={column.isSortable}
+              shouldWrap={props.wrapHeaderLabels}
+              sortDirection={props.sortDirection}
+              disableHeaderStickiness={props.disableHeaderStickiness}
+              alignment={column.align ? column.align : props.cellAlignment}
+              //
+              onColumnResizeStart={onColumnResizeStart}
+              columnSizes={columnSizing.sizes}
+              //
+              tableRef={tableRef}
+            >
+              {column.label}
+            </HeaderCell>
+          ))}
         </Row>
-      </Footer>
-    )}
-  </TableGrid>
-);
+      </Header>
+      <Body>
+        {props.rows.map((row, rowIndex) => (
+          <DataRow
+            {...props}
+            row={row}
+            key={row.id}
+            rowIndex={rowIndex}
+            shouldClipContent={columnSizing.isManualControlled}
+          />
+        ))}
+      </Body>
+      {props.footer && (
+        <Footer>
+          <Row>
+            <FooterCell
+              isCondensed={props.isCondensed}
+              cellAlignment={props.cellAlignment}
+              numberOfColumns={props.columns.length + 1}
+            >
+              {props.footer}
+            </FooterCell>
+          </Row>
+        </Footer>
+      )}
+    </TableGrid>
+  );
+};
 DataTable.propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.shape({
