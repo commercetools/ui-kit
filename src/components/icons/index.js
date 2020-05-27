@@ -89,6 +89,8 @@ export { default as RefreshIcon } from './components/refresh';
 export { default as RestoreIcon } from './components/restore';
 export { default as RevertIcon } from './components/revert';
 export { default as ReviewIcon } from './components/review';
+export { default as RightTriangleFilledIcon } from './components/right-triangle-filled';
+export { default as RightTriangleLinearIcon } from './components/right-triangle-linear';
 export { default as RocketIcon } from './components/rocket';
 export { default as ScreenGearIcon } from './components/screen-gear';
 export { default as ScreenUserIcon } from './components/screen-user';
