@@ -1,5 +1,21 @@
 # @commercetools-frontend/ui-kit
 
+## 10.20.0
+
+### Patch Changes
+
+- Updated dependencies [[`7c02900`](https://github.com/commercetools/ui-kit/commit/7c029007f4d5f49fe2db3a648ccba0d65176d770)]:
+  - @commercetools-uikit/icons@10.20.0
+  - @commercetools-uikit/collapsible-panel@10.20.0
+  - @commercetools-uikit/data-table@10.20.0
+  - @commercetools-uikit/field-label@10.20.0
+  - @commercetools-uikit/notifications@10.20.0
+  - @commercetools-uikit/primary-action-dropdown@10.20.0
+  - @commercetools-uikit/table@10.20.0
+  - @commercetools-uikit/tag@10.20.0
+  - @commercetools-uikit/fields@10.20.0
+  - @commercetools-uikit/inputs@10.20.0
+
 ## 10.19.1
 
 ### Patch Changes

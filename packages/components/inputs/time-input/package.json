@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/time-input",
-  "version": "10.19.0",
+  "version": "10.20.0",
   "description": "",
   "main": "dist/time-input.cjs.js",
   "module": "dist/time-input.esm.js",
@@ -20,7 +20,7 @@
     "@commercetools-uikit/constraints": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/hooks": "10.18.0",
-    "@commercetools-uikit/icons": "10.19.0",
+    "@commercetools-uikit/icons": "10.20.0",
     "@commercetools-uikit/spacings-inline": "10.18.4",
     "@commercetools-uikit/utils": "10.18.4",
     "@emotion/core": "10.0.28",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/number-field",
-  "version": "10.19.0",
+  "version": "10.20.0",
   "description": "",
   "main": "dist/number-field.cjs.js",
   "module": "dist/number-field.esm.js",
@@ -20,7 +20,7 @@
     "@commercetools-uikit/constraints": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/field-errors": "10.18.4",
-    "@commercetools-uikit/field-label": "10.19.0",
+    "@commercetools-uikit/field-label": "10.20.0",
     "@commercetools-uikit/number-input": "10.18.4",
     "@commercetools-uikit/spacings-stack": "10.18.4",
     "@commercetools-uikit/utils": "10.18.4",
