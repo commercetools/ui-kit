@@ -146,6 +146,7 @@ const BaseHeaderCell = styled.th`
 
 const BaseCell = styled.td`
   border-bottom: 1px solid ${vars.colorNeutral90};
+  position: relative;
   ${(props) => (props.isTruncated ? 'overflow: hidden;' : '')}
 `;
 
@@ -172,6 +173,12 @@ const SortableHeaderInner = styled.button`
   ${getSortableHeaderStyles}
 `;
 
+const CellCollapseButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+`;
+
 export {
   BaseCell,
   BaseFooterCell,
@@ -179,4 +186,5 @@ export {
   CellInner,
   HeaderCellInner,
   SortableHeaderInner,
+  CellCollapseButtonWrapper,
 };

@@ -6,7 +6,6 @@ import {
   AngleDownIcon,
   AngleUpDownIcon,
 } from '@commercetools-uikit/icons';
-
 import {
   BaseCell,
   BaseFooterCell,
@@ -14,6 +13,7 @@ import {
   CellInner,
   HeaderCellInner,
   SortableHeaderInner,
+  CellCollapseButtonWrapper,
 } from './cell.styles';
 
 const HeaderCell = (props) => {
@@ -81,12 +81,25 @@ const DataCell = (props) => {
     [shouldIgnoreRowClick]
   );
 
+  const Icon = props.isRowCollapsed ? AngleDownIcon : AngleUpIcon;
   return (
     <BaseCell isTruncated={props.isTruncated}>
       <CellInner
         {...props}
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
       />
+      {props.shouldRenderCollapseButton && (
+        <CellCollapseButtonWrapper>
+          <Icon
+            id="rowExpandCollapseButton"
+            size="medium"
+            onClick={(event) => {
+              props.handleRowCollapseClick();
+              event.stopPropagation();
+            }}
+          />
+        </CellCollapseButtonWrapper>
+      )}
     </BaseCell>
   );
 };
@@ -97,6 +110,15 @@ DataCell.propTypes = {
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
+  handleRowCollapseClick: requiredIf(
+    PropTypes.func,
+    (props) => props.isTruncated
+  ),
+  shouldRenderCollapseButton: requiredIf(
+    PropTypes.bool,
+    (props) => props.isTruncated
+  ),
+  isRowCollapsed: requiredIf(PropTypes.bool, (props) => props.isTruncated),
 };
 DataCell.defaultProps = {
   isTruncated: false,
