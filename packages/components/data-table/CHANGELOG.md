@@ -1,5 +1,12 @@
 # @commercetools-uikit/data-table
 
+## 10.20.0
+
+### Patch Changes
+
+- Updated dependencies [[`7c02900`](https://github.com/commercetools/ui-kit/commit/7c029007f4d5f49fe2db3a648ccba0d65176d770)]:
+  - @commercetools-uikit/icons@10.20.0
+
 ## 10.19.1
 
 ### Patch Changes

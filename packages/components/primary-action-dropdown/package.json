@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/primary-action-dropdown",
-  "version": "10.19.0",
+  "version": "10.20.0",
   "description": "",
   "main": "dist/primary-action-dropdown.cjs.js",
   "module": "dist/primary-action-dropdown.esm.js",
@@ -21,7 +21,7 @@
     "@commercetools-uikit/buttons": "10.18.4",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/hooks": "10.18.0",
-    "@commercetools-uikit/icons": "10.19.0",
+    "@commercetools-uikit/icons": "10.20.0",
     "@commercetools-uikit/text": "10.18.4",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
