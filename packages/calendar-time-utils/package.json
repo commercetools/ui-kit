@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/calendar-time-utils",
-  "version": "10.13.0",
+  "version": "10.21.0",
   "description": "",
   "private": false,
   "publishConfig": {
@@ -13,12 +13,10 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/utils": "10.18.4"
+    "@commercetools-uikit/utils": "10.21.0"
   },
   "peerDependencies": {
     "moment-timezone": "0.5.x"

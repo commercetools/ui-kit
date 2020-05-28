@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/hooks",
-  "version": "10.18.0",
+  "version": "10.21.0",
   "description": "",
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
@@ -8,9 +8,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "prepare": "../../scripts/version.js replace",
@@ -18,7 +16,7 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
   "dependencies": {
-    "@commercetools-uikit/utils": "10.18.4"
+    "@commercetools-uikit/utils": "10.21.0"
   },
   "peerDependencies": {
     "lodash": "4.17.15",

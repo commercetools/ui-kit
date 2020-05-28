@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/text",
-  "version": "10.18.4",
+  "version": "10.21.0",
   "description": "",
   "main": "dist/text.cjs.js",
   "module": "dist/text.esm.js",
@@ -13,14 +13,12 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/utils": "10.18.4",
+    "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "common-tags": "1.8.0",
     "lodash": "4.17.15",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/notifications",
-  "version": "10.20.0",
+  "version": "10.21.0",
   "description": "",
   "main": "dist/notifications.cjs.js",
   "module": "dist/notifications.esm.js",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/icons": "10.20.0",
-    "@commercetools-uikit/utils": "10.18.4",
+    "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "common-tags": "1.8.0",
     "prop-types": "15.7.2"
