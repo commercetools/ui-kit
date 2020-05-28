@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/text-input",
-  "version": "10.18.4",
+  "version": "10.21.0",
   "description": "",
   "main": "dist/text-input.cjs.js",
   "module": "dist/text-input.esm.js",
@@ -13,15 +13,13 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/constraints": "10.18.4",
+    "@commercetools-uikit/constraints": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/utils": "10.18.4",
+    "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "prop-types": "15.7.2",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/secondary-icon-button",
-  "version": "10.18.4",
+  "version": "10.21.0",
   "description": "",
   "main": "dist/secondary-icon-button.cjs.js",
   "module": "dist/secondary-icon-button.esm.js",
@@ -14,16 +14,14 @@
     "access": "public"
   },
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.18.4",
+    "@commercetools-uikit/accessible-button": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/spacings": "10.18.4",
-    "@commercetools-uikit/text": "10.18.4",
-    "@commercetools-uikit/utils": "10.18.4",
+    "@commercetools-uikit/spacings": "10.18.5",
+    "@commercetools-uikit/text": "10.21.0",
+    "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "common-tags": "1.8.0",

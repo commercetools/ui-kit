@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/tooltip",
-  "version": "10.18.4",
+  "version": "10.21.0",
   "description": "",
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
@@ -13,15 +13,13 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/hooks": "10.18.0",
-    "@commercetools-uikit/utils": "10.18.4",
+    "@commercetools-uikit/hooks": "10.21.0",
+    "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "lodash": "4.17.15",
