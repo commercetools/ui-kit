@@ -5,6 +5,8 @@ import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/label';
 
+const intlMessage = { id: 'input-label', defaultMessage: 'Hello' };
+
 export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
@@ -25,5 +27,8 @@ export const component = ({ themes }) => (
         </ThemeProvider>
       </Spec>
     </ThemeProvider>
+    <Spec label="intlMessage">
+      <Label intlMessage={intlMessage} />
+    </Spec>
   </Suite>
 );

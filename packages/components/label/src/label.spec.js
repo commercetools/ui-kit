@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '../../../../test/test-utils';
 import Label from './label';
 
+const intlMessage = { id: 'input-label', defaultMessage: 'translated-label' };
+
 it('should be usable as the label for an element', () => {
   const { getByLabelText } = render(
     <div>
@@ -22,4 +24,9 @@ it('should render a required indicator', () => {
     <Label isRequiredIndicatorVisible={true}>input-label</Label>
   );
   expect(container).toHaveTextContent('*');
+});
+
+it('should render given text with react-intl', () => {
+  const { container } = render(<Label intlMessage={intlMessage} />);
+  expect(container).toHaveTextContent('translated-label');
 });
