@@ -11,8 +11,15 @@ jobs:
 
     steps:
       - name: Checkout
-        if: github.ref == 'refs/heads/master'
         uses: actions/checkout@v2
+        with:
+          # Fetch git history with a depth of 50 commits so that Changesets can generate
+          # changelogs with the correct commits information.
+          # Note: this means that if we have merged >50 PRs since the last release,
+          # the changelogs might not contain all correct information.
+          # We could set `fetch-depth: 0`, but that would cause the entire history
+          # to be cloned. Using 50 seems like a good balance to start with.
+          fetch-depth: 50
 
       - name: Read .nvmrc
         run: echo ::set-output name=NVMRC::$(cat .nvmrc)
