@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/utils",
   "version": "10.18.4",
-  "description": "",
+  "description": "A collection of utilities shared across the other packages.",
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",
   "private": false,
