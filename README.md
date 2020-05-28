@@ -1,7 +1,7 @@
 <h2 align="center">🎹 commercetools UI Kit 💅</h2>
 
 <p align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/commercetools/ui-kit/master/logo.png" /><br /><br />
+  <a href="https://github.com/commercetools/ui-kit"><img alt="Logo" src="https://raw.githubusercontent.com/commercetools/ui-kit/master/logo.png" /></a><br /><br />
 </p>
 
 <p align="center">

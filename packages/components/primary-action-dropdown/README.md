@@ -18,7 +18,7 @@ import PrimaryActionDropdown, {
 } from '@commercetools-uikit/primary-action-dropdown';
 
 <PrimaryActionDropdown>
-  <PrimaryActionDropdownOption icon={<PlusBoldIcon />} onClick={() => {}}>
+  <PrimaryActionDropdownOption iconLeft={<PlusBoldIcon />} onClick={() => {}}>
     Primary option
   </PrimaryActionDropdownOption>
   <PrimaryActionDropdownOption onClick={() => {}}>
