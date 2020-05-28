@@ -23,7 +23,7 @@ import NumberInput from '../../inputs/number-input';
 const items = [
   {
     id: '5e188c29791747d9c54250e2',
-    name: 'Barry Allen - aka Flash - aka Fastest Man Alive',
+    name: 'Morgan Bean',
     customRenderer: 'CYCLONICA',
     phone: '+1 (895) 529-3300',
     age: 23,

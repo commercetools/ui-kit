@@ -5,6 +5,8 @@ import {
   AngleUpIcon,
   AngleDownIcon,
   AngleUpDownIcon,
+  RightTriangleFilledIcon,
+  RightTriangleLinearIcon,
 } from '@commercetools-uikit/icons';
 import {
   BaseCell,
@@ -13,7 +15,7 @@ import {
   CellInner,
   HeaderCellInner,
   SortableHeaderInner,
-  CellCollapseButtonWrapper,
+  RowExpandCollapseButton,
 } from './cell.styles';
 
 const HeaderCell = (props) => {
@@ -81,7 +83,9 @@ const DataCell = (props) => {
     [shouldIgnoreRowClick]
   );
 
-  const Icon = props.isRowCollapsed ? AngleDownIcon : AngleUpIcon;
+  const Icon = props.isRowCollapsed
+    ? RightTriangleFilledIcon
+    : RightTriangleLinearIcon;
   return (
     <BaseCell isTruncated={props.isTruncated}>
       <CellInner
@@ -89,16 +93,15 @@ const DataCell = (props) => {
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
       />
       {props.shouldRenderCollapseButton && (
-        <CellCollapseButtonWrapper>
-          <Icon
-            id="rowExpandCollapseButton"
-            size="medium"
-            onClick={(event) => {
-              props.handleRowCollapseClick();
-              event.stopPropagation();
-            }}
-          />
-        </CellCollapseButtonWrapper>
+        <RowExpandCollapseButton
+          icon={<Icon size="small" />}
+          id="rowExpandCollapseButton"
+          label="Expand/Collapse"
+          onClick={(event) => {
+            props.handleRowCollapseClick();
+            event.stopPropagation();
+          }}
+        />
       )}
     </BaseCell>
   );

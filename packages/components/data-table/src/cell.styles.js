@@ -1,6 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 
 const getPaddingStyle = (props, isHeader) => {
   if (props.isCondensed)
@@ -173,10 +174,11 @@ const SortableHeaderInner = styled.button`
   ${getSortableHeaderStyles}
 `;
 
-const CellCollapseButtonWrapper = styled.div`
+const RowExpandCollapseButton = styled(SecondaryIconButton)`
   position: absolute;
   bottom: 0;
   right: 0;
+  visibility: hidden;
 `;
 
 export {
@@ -186,5 +188,5 @@ export {
   CellInner,
   HeaderCellInner,
   SortableHeaderInner,
-  CellCollapseButtonWrapper,
+  RowExpandCollapseButton,
 };

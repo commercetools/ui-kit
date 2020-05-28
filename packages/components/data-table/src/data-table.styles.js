@@ -42,6 +42,11 @@ const Body = styled.tbody`
 const Row = styled.tr`
   display: contents;
   ${getClickableRowStyle}
+  :hover {
+    button[id='rowExpandCollapseButton'] {
+      visibility: visible;
+    }
+  }
 `;
 
 const Footer = styled.tfoot`
