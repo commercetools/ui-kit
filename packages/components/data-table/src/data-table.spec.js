@@ -54,7 +54,7 @@ describe('DataTable', () => {
      * Since we have only three rows, it should render only three row expand-collapse buttons
      */
     const rowExpandCollapseButtons = rendered.container.querySelectorAll(
-      "svg[id='rowExpandCollapseButton']"
+      "button[id='rowExpandCollapseButton']"
     );
     expect(rowExpandCollapseButtons).toHaveLength(3);
   });
