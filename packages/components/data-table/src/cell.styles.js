@@ -175,6 +175,7 @@ const SortableHeaderInner = styled.button`
 `;
 
 const RowExpandCollapseButton = styled(SecondaryIconButton)`
+  cursor: ${(props) => (props.isRowCollapsed ? 's-resize' : 'n-resize')};
   position: absolute;
   bottom: 0;
   right: 0;

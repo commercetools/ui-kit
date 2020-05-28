@@ -96,7 +96,8 @@ const DataCell = (props) => {
         <RowExpandCollapseButton
           icon={<Icon size="small" />}
           id="rowExpandCollapseButton"
-          label="Expand/Collapse"
+          isRowCollapsed={props.isRowCollapsed}
+          label="Expand/Collapse Row"
           onClick={(event) => {
             props.handleRowCollapseClick();
             event.stopPropagation();
