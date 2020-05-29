@@ -21,7 +21,7 @@ import { Spacings } from '@commercetools-frontend/ui-kit';
 | Props        | Type             | Required | Values                                            | Default      |
 | ------------ | ---------------- | :------: | ------------------------------------------------- | ------------ |
 | `scale`      | `String`         |    -     | `['xs', 's', 'm', 'l', 'xl']`                     | `s`          |
-| `alignItems` | `oneOf`          |    -     | `['stretch', 'flex-start', 'flex-end', 'center']` | `flex-start` |
+| `alignItems` | `oneOf`          |    -     | `['stretch', 'flex-start', 'flex-end', 'center']` | `stretch` |
 | `children`   | `PropTypes.node` |    -     | -                                                 | -            |
 
 ## Scales
