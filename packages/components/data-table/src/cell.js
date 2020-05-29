@@ -113,15 +113,15 @@ DataCell.propTypes = {
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
-  shouldRenderCollapseButton: requiredIf(
-    PropTypes.bool,
-    (props) => props.isTruncated
-  ),
+  shouldRenderCollapseButton: PropTypes.bool.isRequired,
   handleRowCollapseClick: requiredIf(
     PropTypes.func,
     (props) => props.shouldRenderCollapseButton
   ),
-  isRowCollapsed: requiredIf(PropTypes.bool, (props) => props.isTruncated),
+  isRowCollapsed: requiredIf(
+    PropTypes.bool,
+    (props) => props.shouldRenderCollapseButton
+  ),
 };
 DataCell.defaultProps = {
   isTruncated: false,
