@@ -1,6 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { RowExpandCollapseButton } from './cell.styles';
 
 const getClickableRowStyle = (props) => {
   if (props.onClick) {
@@ -43,7 +44,7 @@ const Row = styled.tr`
   display: contents;
   ${getClickableRowStyle}
   :hover {
-    button[id='rowExpandCollapseButton'] {
+    ${RowExpandCollapseButton} {
       visibility: visible;
     }
   }

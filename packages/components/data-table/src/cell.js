@@ -95,7 +95,6 @@ const DataCell = (props) => {
       {props.shouldRenderCollapseButton && (
         <RowExpandCollapseButton
           icon={<Icon size="small" />}
-          id="rowExpandCollapseButton"
           isRowCollapsed={props.isRowCollapsed}
           label="Expand/Collapse Row"
           onClick={(event) => {
@@ -114,13 +113,13 @@ DataCell.propTypes = {
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
-  handleRowCollapseClick: requiredIf(
-    PropTypes.func,
-    (props) => props.isTruncated
-  ),
   shouldRenderCollapseButton: requiredIf(
     PropTypes.bool,
     (props) => props.isTruncated
+  ),
+  handleRowCollapseClick: requiredIf(
+    PropTypes.func,
+    (props) => props.shouldRenderCollapseButton
   ),
   isRowCollapsed: requiredIf(PropTypes.bool, (props) => props.isTruncated),
 };

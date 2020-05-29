@@ -49,12 +49,12 @@ describe('DataTable', () => {
   it('should render only one expand-collapse button per row', () => {
     const rendered = render(<DataTable {...baseProps} />);
     /**
-     * Even though two columns are marked as truncatable in each row, but only button should be shown
-     * in each row that will control the expand and collapse of the whole row.
+     * Even though two columns are marked as truncatable in each row, only one button should be shown
+     * per row, which controls the expand and collapse of its whole row.
      * Since we have only three rows, it should render only three row expand-collapse buttons
      */
-    const rowExpandCollapseButtons = rendered.container.querySelectorAll(
-      "button[id='rowExpandCollapseButton']"
+    const rowExpandCollapseButtons = rendered.queryAllByLabelText(
+      /Expand\/Collapse Row/i
     );
     expect(rowExpandCollapseButtons).toHaveLength(3);
   });
