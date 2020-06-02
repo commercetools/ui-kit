@@ -197,6 +197,7 @@ const ColumnConfigForm = (props) => {
       align: props.column.align,
       isSortable: !!props.column.isSortable,
       isTruncated: !!props.column.isTruncated,
+      disableResizing: !!props.column.disableResizing,
       shouldIgnoreRowClick: !!props.column.shouldIgnoreRowClick,
     },
     onSubmit: (values) => {
@@ -206,6 +207,7 @@ const ColumnConfigForm = (props) => {
         align: values.align,
         isSortable: values.isSortable,
         isTruncated: values.isTruncated,
+        disableResizing: values.disableResizing,
         shouldIgnoreRowClick: values.shouldIgnoreRowClick,
       };
       props.updateColumn(updatedColumn);
@@ -276,6 +278,17 @@ const ColumnConfigForm = (props) => {
             />
           </label>
         </div>
+        <div>
+          <label>
+            disableResizing
+            <input
+              name="disableResizing"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.disableResizing}
+            />
+          </label>
+        </div>
         <button type="submit" disabled={!formik.dirty}>
           {'Apply Changes'}
         </button>
@@ -292,6 +305,7 @@ ColumnConfigForm.propTypes = {
     align: PropTypes.string,
     isSortable: PropTypes.bool,
     isTruncated: PropTypes.bool,
+    disableResizing: PropTypes.bool,
     shouldIgnoreRowClick: PropTypes.bool,
   }),
 };
