@@ -57,6 +57,7 @@ export { default as ExportIcon } from './components/export';
 export { default as ExternalLinkIcon } from './components/external-link';
 export { default as EyeCrossedIcon } from './components/eye-crossed';
 export { default as EyeIcon } from './components/eye';
+export { default as FilterAndListIcon } from './components/filter-and-list';
 export { default as FilterIcon } from './components/filter';
 export { default as FlagFilledIcon } from './components/flag-filled';
 export { default as FlagLinearIcon } from './components/flag-linear';
