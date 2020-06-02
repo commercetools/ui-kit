@@ -25,7 +25,7 @@ import {
   Resizer,
 } from './cell.styles';
 
-const HeaderCell = (props) => {
+const HeaderCellWrapper = (props) => {
   const [colResizingState, setColResizingState] = React.useState({
     isResizing: false,
     initialColWidth: undefined,
@@ -83,62 +83,84 @@ const HeaderCell = (props) => {
     window.addEventListener('mouseup', onDragEnd);
   }
 
-  if (props.isSortable) {
-    const isActive = props.sortedBy === props.columnKey;
-    const nextSortDirection =
-      !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
-    const Icon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
-
-    return (
-      <BaseHeaderCell
-        ref={headerRef}
-        data-testid={`header-${props.columnKey}`}
-        disableHeaderStickiness={props.disableHeaderStickiness}
-      >
-        <SortableHeaderInner
-          label={props.sortDirection}
-          onClick={() => props.onClick(props.columnKey, nextSortDirection)}
-          isActive={isActive}
-          shouldWrap={props.shouldWrap}
-          isCondensed={props.isCondensed}
-          alignment={props.alignment}
-        >
-          <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
-          {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
-          <AngleUpDownIcon
-            size="medium"
-            color="surface"
-            id="nonActiveSortingIcon"
-          />
-          <Icon size="medium" color="surface" id="activeSortingIcon" />
-        </SortableHeaderInner>
-        <Resizer
-          onMouseDown={(e) => {
-            return onStartResizing(e);
-          }}
-        />
-      </BaseHeaderCell>
-    );
-  }
   return (
     <BaseHeaderCell
       ref={headerRef}
       data-testid={`header-${props.columnKey}`}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
-      <HeaderCellInner
+      {props.children}
+      {!props.disableResizing && (
+        <Resizer
+          onMouseDown={(e) => {
+            return onStartResizing(e);
+          }}
+        />
+      )}
+    </BaseHeaderCell>
+  );
+};
+HeaderCellWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  tableRef: PropTypes.object.isRequired,
+  columnKey: PropTypes.string.isRequired,
+  columnSizes: PropTypes.array.isRequired,
+  disableResizing: PropTypes.bool,
+  onColumnResizeStart: PropTypes.func.isRequired,
+  disableHeaderStickiness: PropTypes.bool,
+};
+HeaderCellWrapper.displayName = 'HeaderCellWrapper';
+
+const HeaderCell = (props) => {
+  // inner cell component for non-sortable columns
+  let HeaderCellInnerComponent = (
+    <HeaderCellInner
+      shouldWrap={props.shouldWrap}
+      isCondensed={props.isCondensed}
+      alignment={props.alignment}
+    >
+      {props.children}
+    </HeaderCellInner>
+  );
+
+  if (props.isSortable) {
+    const isActive = props.sortedBy === props.columnKey;
+    const nextSortDirection =
+      !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
+    const Icon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
+
+    // inner cell component for sortable columns
+    HeaderCellInnerComponent = (
+      <SortableHeaderInner
+        label={props.sortDirection}
+        onClick={() => props.onClick(props.columnKey, nextSortDirection)}
+        isActive={isActive}
         shouldWrap={props.shouldWrap}
         isCondensed={props.isCondensed}
         alignment={props.alignment}
       >
-        {props.children}
-      </HeaderCellInner>
-      <Resizer
-        onMouseDown={(e) => {
-          return onStartResizing(e);
-        }}
-      />
-    </BaseHeaderCell>
+        <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
+        {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
+        <AngleUpDownIcon
+          size="medium"
+          color="surface"
+          id="nonActiveSortingIcon"
+        />
+        <Icon size="medium" color="surface" id="activeSortingIcon" />
+      </SortableHeaderInner>
+    );
+  }
+  return (
+    <HeaderCellWrapper
+      tableRef={props.tableRef}
+      columnKey={props.columnKey}
+      columnSizes={props.columnSizes}
+      disableResizing={props.disableResizing}
+      onColumnResizeStart={props.onColumnResizeStart}
+      disableHeaderStickiness={props.disableHeaderStickiness}
+    >
+      {HeaderCellInnerComponent}
+    </HeaderCellWrapper>
   );
 };
 HeaderCell.displayName = 'HeaderCell';
@@ -154,10 +176,10 @@ HeaderCell.propTypes = {
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
   disableHeaderStickiness: PropTypes.bool,
   // column resizing props
-  tableRef: PropTypes.object,
-  onColumnResizeStart: PropTypes.func,
-  // onColumnResizeEnd: PropTypes.func,
-  columnSizes: PropTypes.array,
+  disableResizing: PropTypes.bool,
+  tableRef: PropTypes.object.isRequired,
+  onColumnResizeStart: PropTypes.func.isRequired,
+  columnSizes: PropTypes.array.isRequired,
 };
 HeaderCell.defaultProps = {
   sortDirection: 'desc',

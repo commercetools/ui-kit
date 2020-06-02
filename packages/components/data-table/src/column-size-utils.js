@@ -23,7 +23,6 @@ const setColumnWidth = (columns, position, value) => {
   return columns;
 };
 
-// returns the
 const getGridTemplateColumnsStyle = (columns) =>
   `${columns.map((width) => `${width}px`).join(' ')}`;
 

@@ -65,10 +65,9 @@ const DataTable = (props) => {
               sortDirection={props.sortDirection}
               disableHeaderStickiness={props.disableHeaderStickiness}
               alignment={column.align ? column.align : props.cellAlignment}
-              //
+              disableResizing={column.disableResizing}
               onColumnResizeStart={onColumnResizeStart}
               columnSizes={columnSizing.sizes}
-              //
               tableRef={tableRef}
             >
               {column.label}
@@ -121,6 +120,7 @@ DataTable.propTypes = {
       renderItem: PropTypes.func,
       isTruncated: PropTypes.bool,
       isSortable: PropTypes.bool,
+      disableResizing: PropTypes.bool,
       shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,

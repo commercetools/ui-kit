@@ -359,6 +359,7 @@ storiesOf('Components|Table (NEW)', module)
             onChange={() => toggleRow(row.id)}
           />
         ),
+        disableResizing: true,
       },
       ...tableData.columns,
     ];
