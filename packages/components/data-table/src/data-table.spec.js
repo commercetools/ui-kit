@@ -12,10 +12,12 @@ const testColumns = [
   {
     key: 'title',
     label: 'Title',
+    isTruncated: true,
   },
   {
     key: 'year',
     label: 'Year',
+    isTruncated: true,
   },
 ];
 
@@ -42,6 +44,19 @@ describe('DataTable', () => {
     expect(rendered.queryByText('Woman At War')).toBeInTheDocument();
     expect(rendered.queryByText('2018')).toBeInTheDocument();
     expect(rendered.queryByText('2-woman')).not.toBeInTheDocument();
+  });
+
+  it('should render only one expand-collapse button per row', () => {
+    const rendered = render(<DataTable {...baseProps} />);
+    /**
+     * Even though two columns are marked as truncatable in each row, only one button should be shown
+     * per row, which controls the expand and collapse of its whole row.
+     * Since we have only three rows, it should render only three row expand-collapse buttons
+     */
+    const rowExpandCollapseButtons = rendered.queryAllByLabelText(
+      /Expand\/Collapse Row/i
+    );
+    expect(rowExpandCollapseButtons).toHaveLength(3);
   });
 
   describe('when using a custom itemRenderer', () => {

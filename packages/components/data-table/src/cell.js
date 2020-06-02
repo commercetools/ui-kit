@@ -5,8 +5,9 @@ import {
   AngleUpIcon,
   AngleDownIcon,
   AngleUpDownIcon,
+  RightTriangleFilledIcon,
+  RightTriangleLinearIcon,
 } from '@commercetools-uikit/icons';
-
 import {
   BaseCell,
   BaseFooterCell,
@@ -14,6 +15,7 @@ import {
   CellInner,
   HeaderCellInner,
   SortableHeaderInner,
+  RowExpandCollapseButton,
 } from './cell.styles';
 
 const HeaderCell = (props) => {
@@ -81,12 +83,26 @@ const DataCell = (props) => {
     [shouldIgnoreRowClick]
   );
 
+  const Icon = props.isRowCollapsed
+    ? RightTriangleFilledIcon
+    : RightTriangleLinearIcon;
   return (
     <BaseCell isTruncated={props.isTruncated}>
       <CellInner
         {...props}
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
       />
+      {props.shouldRenderCollapseButton && (
+        <RowExpandCollapseButton
+          icon={<Icon size="small" />}
+          isRowCollapsed={props.isRowCollapsed}
+          label="Expand/Collapse Row"
+          onClick={(event) => {
+            props.handleRowCollapseClick();
+            event.stopPropagation();
+          }}
+        />
+      )}
     </BaseCell>
   );
 };
@@ -97,6 +113,15 @@ DataCell.propTypes = {
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
+  shouldRenderCollapseButton: PropTypes.bool.isRequired,
+  handleRowCollapseClick: requiredIf(
+    PropTypes.func,
+    (props) => props.shouldRenderCollapseButton
+  ),
+  isRowCollapsed: requiredIf(
+    PropTypes.bool,
+    (props) => props.shouldRenderCollapseButton
+  ),
 };
 DataCell.defaultProps = {
   isTruncated: false,

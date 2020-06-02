@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { TableGrid, Header, Body, Row, Footer } from './data-table.styles';
-import { HeaderCell, DataCell, FooterCell } from './cell';
+import { HeaderCell, FooterCell } from './cell';
+import DataRow from './data-row';
 
 const DataTable = (props) => (
   <TableGrid
@@ -33,26 +34,7 @@ const DataTable = (props) => (
     </Header>
     <Body>
       {props.rows.map((row, rowIndex) => (
-        <Row
-          key={row.id}
-          onClick={
-            props.onRowClick ? () => props.onRowClick(row, rowIndex) : undefined
-          }
-        >
-          {props.columns.map((column) => (
-            <DataCell
-              key={`${row.id}-${column.key}`}
-              alignment={column.align ? column.align : props.cellAlignment}
-              isTruncated={column.isTruncated}
-              isCondensed={props.isCondensed}
-              shouldIgnoreRowClick={column.shouldIgnoreRowClick}
-            >
-              {column.renderItem
-                ? column.renderItem(row)
-                : props.itemRenderer(row, column)}
-            </DataCell>
-          ))}
-        </Row>
+        <DataRow {...props} row={row} key={rowIndex} rowIndex={rowIndex} />
       ))}
     </Body>
     {props.footer && (
