@@ -1,5 +1,13 @@
 # @commercetools-uikit/time-field
 
+## 10.22.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.22.0
+  - @commercetools-uikit/time-input@10.22.0
+
 ## 10.21.0
 
 ### Patch Changes

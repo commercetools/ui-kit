@@ -1,5 +1,13 @@
 # @commercetools-uikit/money-input
 
+## 10.22.0
+
+### Patch Changes
+
+- Updated dependencies [[`86a85e6`](https://github.com/commercetools/ui-kit/commit/86a85e642d0d47089c3ddd7094974c58badbed56), [`3d0b4fb`](https://github.com/commercetools/ui-kit/commit/3d0b4fb455af11bc144422793320ea44ddbfce81)]:
+  - @commercetools-uikit/icons@10.22.0
+  - @commercetools-uikit/select-utils@10.22.0
+
 ## 10.21.0
 
 ### Patch Changes
