@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/table",
-  "version": "10.21.0",
+  "version": "10.22.0",
   "description": "",
   "main": "dist/table.cjs.js",
   "module": "dist/table.esm.js",
@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.20.0",
+    "@commercetools-uikit/icons": "10.22.0",
     "@commercetools-uikit/spacings-inset": "10.21.0",
     "@commercetools-uikit/spacings-inset-squish": "10.21.0",
     "@commercetools-uikit/text": "10.21.0",

@@ -1,5 +1,13 @@
 # @commercetools-uikit/icons
 
+## 10.22.0
+
+### Patch Changes
+
+- [`86a85e6`](https://github.com/commercetools/ui-kit/commit/86a85e642d0d47089c3ddd7094974c58badbed56) [#1368](https://github.com/commercetools/ui-kit/pull/1368) Thanks [@mohib0306](https://github.com/mohib0306)! - Update Grid icon
+
+* [`3d0b4fb`](https://github.com/commercetools/ui-kit/commit/3d0b4fb455af11bc144422793320ea44ddbfce81) [#1367](https://github.com/commercetools/ui-kit/pull/1367) Thanks [@NickDevG](https://github.com/NickDevG)! - Add FilterAndListIcon to the available icons set
+
 ## 10.20.0
 
 ### Minor Changes

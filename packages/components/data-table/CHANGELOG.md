@@ -1,5 +1,16 @@
 # @commercetools-uikit/data-table
 
+## 10.22.0
+
+### Minor Changes
+
+- [`f592e68`](https://github.com/commercetools/ui-kit/commit/f592e685bb1af2ae3cc09fae010abe25e130b5e6) [#1353](https://github.com/commercetools/ui-kit/pull/1353) Thanks [@mohib0306](https://github.com/mohib0306)! - Enable rows to expand and collapse in case they have truncated columns
+
+### Patch Changes
+
+- Updated dependencies [[`86a85e6`](https://github.com/commercetools/ui-kit/commit/86a85e642d0d47089c3ddd7094974c58badbed56), [`3d0b4fb`](https://github.com/commercetools/ui-kit/commit/3d0b4fb455af11bc144422793320ea44ddbfce81)]:
+  - @commercetools-uikit/icons@10.22.0
+
 ## 10.21.0
 
 ### Patch Changes
