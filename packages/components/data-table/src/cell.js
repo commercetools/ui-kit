@@ -22,8 +22,8 @@ import {
   SortableHeaderInner,
   RowExpandCollapseButton,
   HeaderCellInnerWrapper,
-  Resizer,
 } from './cell.styles';
+import Resizer from './column-resizer';
 
 const HeaderCellWrapper = (props) => {
   const [colResizingState, setColResizingState] = React.useState({
@@ -31,6 +31,7 @@ const HeaderCellWrapper = (props) => {
     initialColWidth: undefined,
     initialMousePosition: undefined,
   });
+  const tableRef = props.tableRef;
   const headerRef = React.useRef(null);
 
   const onStartResizing = (e) => {
@@ -45,8 +46,6 @@ const HeaderCellWrapper = (props) => {
   const onDrag = (e) =>
     // sync resizing update rate with screen refresh rate
     requestAnimationFrame(() => {
-      const tableRef = props.tableRef;
-
       // calculate the new width
       const width = calculateResize(
         colResizingState.initialColWidth,

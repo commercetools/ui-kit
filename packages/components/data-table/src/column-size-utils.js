@@ -1,4 +1,4 @@
-const MINIMUM_COLUMN_SIZE = 24;
+const MINIMUM_COLUMN_SIZE = 32;
 
 // calculates size on mouse-drag and enforces a minimum size
 const calculateResize = (

@@ -143,6 +143,16 @@ const BaseHeaderCell = styled.th`
 
   /* right border that doesn't count towards the column width */
   box-shadow: inset -1px 0 ${vars.colorNeutral90};
+
+  /* this ensures that, when dragging this header's column resizer
+     it remains above the rest of the headers, preventing accidental hovers/flickering */
+  :active {
+    z-index: 2;
+
+    & > * {
+      overflow: hidden;
+    }
+  }
 `;
 
 const BaseCell = styled.td`
@@ -154,25 +164,6 @@ const BaseCell = styled.td`
 const BaseFooterCell = styled.td`
   grid-column: 1 / ${(props) => props.numberOfColumns};
   border-bottom: 1px solid ${vars.colorNeutral90};
-`;
-
-const Resizer = styled.span`
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: -1px;
-  width: 3px;
-  cursor: col-resize;
-  user-select: none;
-
-  &:hover {
-    background: ${vars.colorInfo};
-  }
-
-  &:active {
-    background: ${vars.colorInfo};
-    height: 100vh;
-  }
 `;
 
 const HeaderCellInner = styled.div`
@@ -216,5 +207,4 @@ export {
   SortableHeaderInner,
   RowExpandCollapseButton,
   HeaderCellInnerWrapper,
-  Resizer,
 };
