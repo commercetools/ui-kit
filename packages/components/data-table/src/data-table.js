@@ -12,10 +12,6 @@ import DataRow from './data-row';
 const DataTable = (props) => {
   const [columnSizing, setcolumnSizing] = React.useState({
     isManualControlled: false,
-    // TODO 🤔
-    // is it actually worth it to write the sizes to the state?
-    // the sizes array is being mutated directly by the cell, because it only affects layout style and doesn't need to trigger re-renders
-    // but we should provide the consumer a streamlined way to read the column sizes (i.e to save them as a user setting)
     sizes: getColumnWidthsArray(props.columns),
   });
   const tableRef = React.useRef();
