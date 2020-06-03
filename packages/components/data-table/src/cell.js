@@ -34,23 +34,23 @@ const HeaderCellWrapper = (props) => {
   const tableRef = props.tableRef;
   const headerRef = React.useRef(null);
 
-  const onStartResizing = (e) => {
+  const onStartResizing = (event) => {
     setColResizingState({
       isResizing: true,
       initialColWidth: headerRef.current.clientWidth,
-      initialMousePosition: e.clientX,
+      initialMousePosition: event.clientX,
     });
     props.onColumnResizeStart();
   };
 
-  const onDrag = (e) =>
-    // sync resizing update rate with screen refresh rate
+  const onDrag = (event) =>
+    // throttle and sync resizing update rate with screen refresh rate
     requestAnimationFrame(() => {
       // calculate the new width
       const width = calculateResize(
         colResizingState.initialColWidth,
         colResizingState.initialMousePosition,
-        e.clientX
+        event.clientX
       );
 
       const newColumnsSizes = setColumnWidth(
@@ -89,13 +89,7 @@ const HeaderCellWrapper = (props) => {
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
       {props.children}
-      {!props.disableResizing && (
-        <Resizer
-          onMouseDown={(e) => {
-            return onStartResizing(e);
-          }}
-        />
-      )}
+      {!props.disableResizing && <Resizer onMouseDown={onStartResizing} />}
     </BaseHeaderCell>
   );
 };
