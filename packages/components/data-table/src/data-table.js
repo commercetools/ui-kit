@@ -10,7 +10,7 @@ import { HeaderCell, FooterCell } from './cell';
 import DataRow from './data-row';
 
 const DataTable = (props) => {
-  const [columnSizing, setcolumnSizing] = React.useState({
+  const [columnSizing, setColumnSizing] = React.useState({
     isManualControlled: false,
     sizes: getColumnWidthsArray(props.columns),
   });
@@ -27,7 +27,7 @@ const DataTable = (props) => {
       tableRef.current.querySelectorAll('th').forEach((header, index) => {
         renderedLayoutSizes[index] = header.clientWidth;
       });
-      setcolumnSizing({
+      setColumnSizing({
         isManualControlled: true,
         sizes: renderedLayoutSizes,
       });
