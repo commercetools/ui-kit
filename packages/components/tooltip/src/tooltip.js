@@ -9,7 +9,7 @@ import {
   createSequentialId,
   SafeHTMLElement,
 } from '@commercetools-uikit/utils';
-import { Body, getBodyStyles, Wrapper } from './tooltip.styles';
+import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
 
