@@ -56,3 +56,11 @@ export const getBodyStyles = ({ constraint, placement, customStyles }) => ({
   zIndex: 1,
   ...customStyles,
 });
+
+export const Wrapper = styled.div`
+  display: inline-block;
+  :disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+`;

@@ -17,6 +17,10 @@ import Tooltip from './tooltip';
 const CustomWrapper = styled.div`
   display: block;
   background-color: pink;
+  :disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 `;
 
 const CustomBody = styled.div`
