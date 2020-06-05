@@ -17,8 +17,12 @@ import Tooltip from './tooltip';
 const CustomWrapper = styled.div`
   display: block;
   background-color: pink;
-  :disabled {
-    cursor: not-allowed;
+`;
+
+const CustomButtonWrapper = styled.div`
+  width: min-content;
+  cursor: not-allowed;
+  > :disabled {
     pointer-events: none;
   }
 `;
@@ -88,11 +92,13 @@ storiesOf('Components|Tooltips', module)
               BodyComponent: customBodyWrapper ? CustomBody : null,
             }}
           >
-            <PrimaryButton
-              onClick={() => {}}
-              label="Submit"
-              isDisabled={boolean('button disabled', false)}
-            />
+            <CustomButtonWrapper>
+              <PrimaryButton
+                onClick={() => {}}
+                label="Submit"
+                isDisabled={boolean('button disabled', false)}
+              />
+            </CustomButtonWrapper>
           </Tooltip>
         </div>
       </Section>

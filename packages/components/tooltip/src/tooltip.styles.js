@@ -59,8 +59,8 @@ export const getBodyStyles = ({ constraint, placement, customStyles }) => ({
 
 export const Wrapper = styled.div`
   display: inline-block;
-  :disabled {
-    cursor: not-allowed;
+  cursor: not-allowed;
+  > :disabled {
     pointer-events: none;
   }
 `;
