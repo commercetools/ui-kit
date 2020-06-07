@@ -67,5 +67,9 @@ jobs:
       # Publish canary releases only if the packages weren't published already
       - name: Publishing canary releases to npm registry
         if: steps.changesets.outputs.published != 'true'
-        # TODO: this command will be replaced by the changesets snapshots feature
-        run: yarn lerna publish 0.0.0-canary-${{ github.sha }} --exact --dist-tag canary --yes --no-push --force-publish "*"
+        run: |
+          git checkout master
+          yarn changeset version --snapshot canary
+          yarn changeset publish --tag canary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
