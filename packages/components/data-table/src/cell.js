@@ -147,7 +147,11 @@ const DataCell = (props) => {
     ? RightTriangleFilledIcon
     : RightTriangleLinearIcon;
   return (
-    <BaseCell>
+    <BaseCell
+      shouldClipContent={
+        props.isTruncated && !props.shouldRenderResizingIndicator
+      }
+    >
       <CellInner
         {...props}
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}

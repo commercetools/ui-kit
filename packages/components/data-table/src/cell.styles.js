@@ -157,9 +157,10 @@ const BaseHeaderCell = styled.th`
 `;
 
 const BaseCell = styled.td`
+  position: relative;
   background-color: ${vars.colorSurface};
   border-bottom: 1px solid ${vars.colorNeutral90};
-  position: relative;
+  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
 
 const BaseFooterCell = styled.td`

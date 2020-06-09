@@ -117,6 +117,7 @@ const useManualColumnResizing = (tableRef) => {
     });
 
   const finishResizing = () => dispatch({ type: 'finishResizing' });
+  const getHasTableBeenResized = () => !state.sizes;
 
   React.useDebugValue(state);
 
@@ -127,6 +128,7 @@ const useManualColumnResizing = (tableRef) => {
     startResizing,
     onDragResizing,
     finishResizing,
+    getHasTableBeenResized,
   };
 };
 
