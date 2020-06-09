@@ -146,6 +146,7 @@ const BaseHeaderCell = styled.th`
 
   /* this ensures that, when dragging this header's column resizer
      it remains above the rest of the headers, preventing accidental hovers/flickering */
+  :hover,
   :active {
     z-index: 2;
 
@@ -156,9 +157,9 @@ const BaseHeaderCell = styled.th`
 `;
 
 const BaseCell = styled.td`
+  background-color: ${vars.colorSurface};
   border-bottom: 1px solid ${vars.colorNeutral90};
   position: relative;
-  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
 
 const BaseFooterCell = styled.td`

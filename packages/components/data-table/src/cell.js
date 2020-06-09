@@ -9,7 +9,6 @@ import {
   RightTriangleLinearIcon,
 } from '@commercetools-uikit/icons';
 import {
-  calculateResize,
   setColumnWidth,
   getGridTemplateColumnsStyle,
 } from './column-size-utils';
@@ -25,59 +24,46 @@ import {
 } from './cell.styles';
 import Resizer from './column-resizer';
 
+import ColumnResizingContext from './column-resizing-context';
+
 const HeaderCellWrapper = (props) => {
-  const [colResizingState, setColResizingState] = React.useState({
-    isResizing: false,
-    initialColWidth: undefined,
-    initialMousePosition: undefined,
-  });
-  const tableRef = props.tableRef;
+  const columnResizingReducer = React.useContext(ColumnResizingContext);
   const headerRef = React.useRef(null);
 
   const onStartResizing = (event) => {
-    setColResizingState({
-      isResizing: true,
-      initialColWidth: headerRef.current.clientWidth,
-      initialMousePosition: event.clientX,
-    });
-    props.onColumnResizeStart();
+    columnResizingReducer.startResizing(headerRef, event);
   };
 
   const onDrag = (event) =>
     // throttle and sync resizing update rate with screen refresh rate
     requestAnimationFrame(() => {
       // calculate the new width
-      const width = calculateResize(
-        colResizingState.initialColWidth,
-        colResizingState.initialMousePosition,
-        event.clientX
-      );
+      const width = columnResizingReducer.getCurrentWidth(event.clientX);
 
       const newColumnsSizes = setColumnWidth(
-        props.columnSizes,
+        columnResizingReducer.sizes,
         /* the table always renders the column headers in the same order of the columns array
         and since we already had a ref to the header element, we can read its cellIndex :) */
         headerRef.current.cellIndex,
         width
       );
 
-      tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
+      columnResizingReducer.tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
         newColumnsSizes
       );
     });
 
   const onDragEnd = () => {
-    setColResizingState({
-      isResizing: false,
-      initialColWidth: undefined,
-      initialMousePosition: undefined,
-    });
+    columnResizingReducer.finishResizing();
 
     window.removeEventListener('mousemove', onDrag);
     window.removeEventListener('mouseup', onDragEnd);
   };
 
-  if (colResizingState.isResizing) {
+  if (
+    columnResizingReducer.isResizing &&
+    columnResizingReducer.columnBeingResized === headerRef.current.cellIndex
+  ) {
     window.addEventListener('mousemove', onDrag);
     window.addEventListener('mouseup', onDragEnd);
   }
@@ -95,11 +81,8 @@ const HeaderCellWrapper = (props) => {
 };
 HeaderCellWrapper.propTypes = {
   children: PropTypes.node.isRequired,
-  tableRef: PropTypes.object.isRequired,
   columnKey: PropTypes.string.isRequired,
-  columnSizes: PropTypes.array.isRequired,
   disableResizing: PropTypes.bool,
-  onColumnResizeStart: PropTypes.func.isRequired,
   disableHeaderStickiness: PropTypes.bool,
 };
 HeaderCellWrapper.displayName = 'HeaderCellWrapper';
@@ -145,11 +128,8 @@ const HeaderCell = (props) => {
   }
   return (
     <HeaderCellWrapper
-      tableRef={props.tableRef}
       columnKey={props.columnKey}
-      columnSizes={props.columnSizes}
       disableResizing={props.disableResizing}
-      onColumnResizeStart={props.onColumnResizeStart}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
       {HeaderCellInnerComponent}
@@ -167,12 +147,8 @@ HeaderCell.propTypes = {
   isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
-  disableHeaderStickiness: PropTypes.bool,
-  // column resizing props
   disableResizing: PropTypes.bool,
-  tableRef: PropTypes.object.isRequired,
-  onColumnResizeStart: PropTypes.func.isRequired,
-  columnSizes: PropTypes.array.isRequired,
+  disableHeaderStickiness: PropTypes.bool,
 };
 HeaderCell.defaultProps = {
   sortDirection: 'desc',
@@ -192,7 +168,7 @@ const DataCell = (props) => {
     ? RightTriangleFilledIcon
     : RightTriangleLinearIcon;
   return (
-    <BaseCell shouldClipContent={props.isTruncated || props.shouldClipContent}>
+    <BaseCell>
       <CellInner
         {...props}
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
@@ -208,6 +184,7 @@ const DataCell = (props) => {
           }}
         />
       )}
+      {props.shouldRenderResizingIndicator && <Resizer isOnDataCell />}
     </BaseCell>
   );
 };
@@ -217,9 +194,9 @@ DataCell.propTypes = {
   alignment: PropTypes.oneOf(['left', 'center', 'right']),
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
-  shouldClipContent: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
   shouldRenderCollapseButton: PropTypes.bool.isRequired,
+  shouldRenderResizingIndicator: PropTypes.bool.isRequired,
   handleRowCollapseClick: requiredIf(
     PropTypes.func,
     (props) => props.shouldRenderCollapseButton

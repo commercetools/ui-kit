@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { Row } from './data-table.styles';
 import { DataCell } from './cell';
 
+import ColumnResizingContext from './column-resizing-context';
+
 const DataRow = (props) => {
+  const { columnBeingResized } = React.useContext(ColumnResizingContext);
+
   const rowHasTruncatedColumn = props.columns.some(
     (column) => column.isTruncated
   );
@@ -15,6 +19,12 @@ const DataRow = (props) => {
     totalColumnsLength - 1 === currentColumnIndex &&
     ((isRowCollapsed && rowHasTruncatedColumn) ||
       (rowHasTruncatedColumn && !isRowCollapsed));
+
+  const shouldRenderResizingIndicator = (
+    columnIndex,
+    columnIndexBeingResized
+  ) => columnIndex === columnIndexBeingResized;
+
   return (
     <Row
       key={props.row.id}
@@ -32,12 +42,15 @@ const DataRow = (props) => {
           isTruncated={column.isTruncated && isRowCollapsed}
           isRowCollapsed={isRowCollapsed}
           isCondensed={props.isCondensed}
-          shouldClipContent={props.shouldClipContent}
           shouldIgnoreRowClick={column.shouldIgnoreRowClick}
           handleRowCollapseClick={handleRowCollapseClick}
           shouldRenderCollapseButton={shouldRenderCollapseButton(
             props.columns.length,
             columnIndex
+          )}
+          shouldRenderResizingIndicator={shouldRenderResizingIndicator(
+            columnIndex,
+            columnBeingResized
           )}
         >
           {column.renderItem
@@ -72,7 +85,6 @@ DataRow.propTypes = {
   /* the default cell alignment
     an existing per-column `align` property takes precedence over this */
   cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
-  shouldClipContent: PropTypes.bool,
 };
 DataRow.defaultProps = {
   isCondensed: false,

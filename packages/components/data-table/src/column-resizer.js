@@ -7,11 +7,16 @@ const resizerWidth = 3;
 const resizerHoverArea = 6;
 
 const ResizerIndicator = styled.div`
-  height: 50%;
+  height: 100%;
   width: ${resizerWidth}px;
   background: ${vars.colorInfo};
   visibility: hidden;
   cursor: col-resize;
+
+  ${(
+    props // extra 1px of height to appear above the bottom horizontal row border
+  ) =>
+    props.isOnDataCell ? 'visibility: visible; height: calc(100% + 1px);' : ''}
 `;
 
 const DraggableArea = styled.div`
@@ -36,23 +41,22 @@ const DraggableArea = styled.div`
     justify-content: center;
     width: 50px;
     right: -23px;
-    height: 100vh;
 
     ${ResizerIndicator} {
       visibility: visible;
-      height: 100vh;
     }
   }
 `;
 
 const ColumnResizer = (props) => (
   <DraggableArea role="presentation" onMouseDown={props.onMouseDown}>
-    <ResizerIndicator />
+    <ResizerIndicator isOnDataCell={props.isOnDataCell} />
   </DraggableArea>
 );
 ColumnResizer.displayName = 'ColumnResizer';
 ColumnResizer.propTypes = {
-  onMouseDown: PropTypes.func.isRequired,
+  onMouseDown: PropTypes.func,
+  isOnDataCell: PropTypes.bool,
 };
 
 export default ColumnResizer;
