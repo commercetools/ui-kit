@@ -25,19 +25,18 @@ const DataTable = (props) => {
           <Row>
             {props.columns.map((column) => (
               <HeaderCell
-                id={column.key}
                 key={column.key}
+                shouldWrap={props.wrapHeaderLabels}
                 isCondensed={props.isCondensed}
+                disableResizing={column.disableResizing}
+                disableHeaderStickiness={props.disableHeaderStickiness}
                 /* Sorting Props */
                 onClick={props.onSortChange}
                 sortedBy={props.sortedBy}
                 columnKey={column.key}
                 alignment={column.align ? column.align : props.cellAlignment}
                 isSortable={column.isSortable}
-                shouldWrap={props.wrapHeaderLabels}
                 sortDirection={props.sortDirection}
-                disableHeaderStickiness={props.disableHeaderStickiness}
-                disableResizing={column.disableResizing}
               >
                 {column.label}
               </HeaderCell>

@@ -14,8 +14,17 @@ const calculateNewSize = (
   return minSize > newSize ? minSize : newSize;
 };
 
+const setColumnWidth = (columns, position, value) => {
+  // eslint-disable-next-line no-param-reassign
+  columns[position] = value;
+
+  return columns;
+};
+
+const getGridTemplateColumnsStyle = (columns) =>
+  `${columns.map((width) => `${width || 0}px`).join(' ')}`;
+
 const initialState = (tableRef) => ({
-  isResizing: false,
   initialColWidth: undefined,
   initialMousePosition: undefined,
   columnBeingResized: undefined,
@@ -34,7 +43,6 @@ function reducer(state, action) {
     case 'startResizing':
       return {
         ...state,
-        isResizing: true,
         initialColWidth: action.payload.initialColWidth,
         initialMousePosition: action.payload.initialMousePosition,
         columnBeingResized: action.payload.columnBeingResized,
@@ -42,7 +50,6 @@ function reducer(state, action) {
     case 'finishResizing':
       return {
         ...state,
-        isResizing: false,
         initialColWidth: null,
         initialMousePosition: null,
         columnBeingResized: null,
@@ -93,12 +100,21 @@ const useManualColumnResizing = (tableRef) => {
     });
   };
 
-  const getCurrentWidth = (mouseEvent) =>
-    calculateNewSize(
-      state.initialColWidth,
-      state.initialMousePosition,
-      mouseEvent
-    );
+  const onDragResizing = (event, columnIndex) =>
+    // throttle and sync resizing update rate with screen refresh rate
+    requestAnimationFrame(() => {
+      const width = calculateNewSize(
+        state.initialColWidth,
+        state.initialMousePosition,
+        event.clientX
+      );
+
+      const newColumnsSizes = setColumnWidth(state.sizes, columnIndex, width);
+
+      state.tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
+        newColumnsSizes
+      );
+    });
 
   const finishResizing = () => dispatch({ type: 'finishResizing' });
 
@@ -107,11 +123,10 @@ const useManualColumnResizing = (tableRef) => {
   return {
     sizes: state.sizes,
     tableRef: state.tableRef,
-    isResizing: state.isResizing,
     columnBeingResized: state.columnBeingResized,
     startResizing,
+    onDragResizing,
     finishResizing,
-    getCurrentWidth,
   };
 };
 

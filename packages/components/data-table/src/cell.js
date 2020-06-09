@@ -9,10 +9,6 @@ import {
   RightTriangleLinearIcon,
 } from '@commercetools-uikit/icons';
 import {
-  setColumnWidth,
-  getGridTemplateColumnsStyle,
-} from './column-size-utils';
-import {
   BaseCell,
   BaseFooterCell,
   BaseHeaderCell,
@@ -35,23 +31,7 @@ const HeaderCellWrapper = (props) => {
   };
 
   const onDrag = (event) =>
-    // throttle and sync resizing update rate with screen refresh rate
-    requestAnimationFrame(() => {
-      // calculate the new width
-      const width = columnResizingReducer.getCurrentWidth(event.clientX);
-
-      const newColumnsSizes = setColumnWidth(
-        columnResizingReducer.sizes,
-        /* the table always renders the column headers in the same order of the columns array
-        and since we already had a ref to the header element, we can read its cellIndex :) */
-        headerRef.current.cellIndex,
-        width
-      );
-
-      columnResizingReducer.tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
-        newColumnsSizes
-      );
-    });
+    columnResizingReducer.onDragResizing(event, headerRef.current.cellIndex);
 
   const onDragEnd = () => {
     columnResizingReducer.finishResizing();
@@ -61,8 +41,7 @@ const HeaderCellWrapper = (props) => {
   };
 
   if (
-    columnResizingReducer.isResizing &&
-    columnResizingReducer.columnBeingResized === headerRef.current.cellIndex
+    columnResizingReducer.columnBeingResized === headerRef.current?.cellIndex
   ) {
     window.addEventListener('mousemove', onDrag);
     window.addEventListener('mouseup', onDragEnd);
