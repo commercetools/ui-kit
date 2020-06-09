@@ -16,6 +16,7 @@ import {
   HeaderCellInner,
   SortableHeaderInner,
   RowExpandCollapseButton,
+  HeaderCellInnerWrapper,
 } from './cell.styles';
 
 const HeaderCell = (props) => {
@@ -35,7 +36,7 @@ const HeaderCell = (props) => {
           isCondensed={props.isCondensed}
           alignment={props.alignment}
         >
-          {props.children}
+          <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
           {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
           <AngleUpDownIcon
             size="medium"
