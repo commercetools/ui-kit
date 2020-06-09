@@ -26,6 +26,7 @@ const DataTable = (props) => (
             shouldWrap={props.wrapHeaderLabels}
             sortDirection={props.sortDirection}
             disableHeaderStickiness={props.disableHeaderStickiness}
+            alignment={column.align ? column.align : props.cellAlignment}
           >
             {column.label}
           </HeaderCell>
