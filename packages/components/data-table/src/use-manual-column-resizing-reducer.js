@@ -34,6 +34,11 @@ const initialState = (tableRef) => ({
 
 function reducer(state, action) {
   switch (action.type) {
+    case 'reset': {
+      return {
+        ...initialState(state.tableRef),
+      };
+    }
     case 'registerColumnMeasurements': {
       return {
         ...state,
@@ -50,9 +55,9 @@ function reducer(state, action) {
     case 'finishResizing':
       return {
         ...state,
-        initialColWidth: null,
-        initialMousePosition: null,
-        columnBeingResized: null,
+        initialColWidth: undefined,
+        initialMousePosition: undefined,
+        columnBeingResized: undefined,
       };
     default:
       throw new Error(
@@ -117,18 +122,30 @@ const useManualColumnResizing = (tableRef) => {
     });
 
   const finishResizing = () => dispatch({ type: 'finishResizing' });
-  const getHasTableBeenResized = () => !state.sizes;
+
+  const getIsColumnBeingResized = (columnIndex) =>
+    state.columnBeingResized !== undefined
+      ? state.columnBeingResized === columnIndex
+      : false;
+  const getHasTableBeenResized = () => state.sizes;
+
+  const reset = () => {
+    state.tableRef.current.style.gridTemplateColumns = '';
+
+    return dispatch({
+      type: 'reset',
+    });
+  };
 
   React.useDebugValue(state);
 
   return {
-    sizes: state.sizes,
-    tableRef: state.tableRef,
-    columnBeingResized: state.columnBeingResized,
+    reset,
     startResizing,
     onDragResizing,
     finishResizing,
     getHasTableBeenResized,
+    getIsColumnBeingResized,
   };
 };
 

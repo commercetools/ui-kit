@@ -6,7 +6,7 @@ import { DataCell } from './cell';
 import ColumnResizingContext from './column-resizing-context';
 
 const DataRow = (props) => {
-  const { columnBeingResized } = React.useContext(ColumnResizingContext);
+  const { getIsColumnBeingResized } = React.useContext(ColumnResizingContext);
 
   const rowHasTruncatedColumn = props.columns.some(
     (column) => column.isTruncated
@@ -19,11 +19,6 @@ const DataRow = (props) => {
     totalColumnsLength - 1 === currentColumnIndex &&
     ((isRowCollapsed && rowHasTruncatedColumn) ||
       (rowHasTruncatedColumn && !isRowCollapsed));
-
-  const shouldRenderResizingIndicator = (
-    columnIndex,
-    columnIndexBeingResized
-  ) => columnIndex === columnIndexBeingResized;
 
   return (
     <Row
@@ -48,10 +43,7 @@ const DataRow = (props) => {
             props.columns.length,
             columnIndex
           )}
-          shouldRenderResizingIndicator={shouldRenderResizingIndicator(
-            columnIndex,
-            columnBeingResized
-          )}
+          shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}
         >
           {column.renderItem
             ? column.renderItem(props.row)
