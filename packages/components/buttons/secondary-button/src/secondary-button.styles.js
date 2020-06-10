@@ -27,6 +27,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
       css`
         box-shadow: ${vars.shadow9};
         background-color: ${vars.colorSurface};
+        &:focus,
         &:hover {
           background-color: ${vars.colorNeutral95};
         }
@@ -51,6 +52,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
     }
   }
   return css`
+    &:focus,
     &:hover {
       box-shadow: ${vars.shadow8};
     }
@@ -69,6 +71,7 @@ const getThemeStyles = (theme) => {
   switch (theme) {
     case 'info':
       return css`
+        &:focus,
         &:hover {
           color: ${vars.colorInfo};
 
@@ -83,6 +86,7 @@ const getThemeStyles = (theme) => {
         `ui-kit/SecondaryButton: the specified theme '${theme}' is not supported.`
       );
       return css`
+        &:focus,
         &:hover {
           box-shadow: ${vars.shadow8};
         }
