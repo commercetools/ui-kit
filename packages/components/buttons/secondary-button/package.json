@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/secondary-button",
-  "version": "10.21.0",
+  "version": "10.22.1",
   "description": "",
   "main": "dist/secondary-button.cjs.js",
   "module": "dist/secondary-button.esm.js",
@@ -17,7 +17,7 @@
   "files": ["dist"],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.21.0",
+    "@commercetools-uikit/accessible-button": "10.22.1",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.21.0",
     "@commercetools-uikit/text": "10.21.0",

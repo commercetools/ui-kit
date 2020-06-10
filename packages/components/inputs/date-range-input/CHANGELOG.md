@@ -1,5 +1,14 @@
 # @commercetools-uikit/date-range-input
 
+## 10.22.1
+
+### Patch Changes
+
+- [`7a602f6`](https://github.com/commercetools/ui-kit/commit/7a602f6005d7dc3e83bdd0b4bbab64d18e1f7bd8) [#1346](https://github.com/commercetools/ui-kit/pull/1346) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`17c79cb`](https://github.com/commercetools/ui-kit/commit/17c79cb8e065ea880996e3267873233d6823438e)]:
+  - @commercetools-uikit/secondary-icon-button@10.22.1
+
 ## 10.22.0
 
 ### Patch Changes
