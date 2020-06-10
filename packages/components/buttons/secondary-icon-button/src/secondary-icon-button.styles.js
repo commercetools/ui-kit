@@ -17,6 +17,7 @@ const getColorStyle = (props, overwrittenVars) => {
         & svg * {
           fill: ${overwrittenVars.colorSolid};
         }
+        &:focus,
         &:hover svg * {
           fill: ${overwrittenVars.colorPrimary};
         }
@@ -26,6 +27,7 @@ const getColorStyle = (props, overwrittenVars) => {
         & svg * {
           fill: ${overwrittenVars.colorPrimary};
         }
+        &:focus,
         &:hover svg * {
           fill: ${overwrittenVars.colorPrimary25};
         }

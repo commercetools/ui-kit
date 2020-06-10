@@ -63,6 +63,7 @@ const getButtonStyles = (isDisabled, isActive, tone, size) => {
           baseActiveStyles,
           css`
             background-color: ${vars.colorPrimary};
+            &:focus,
             &:hover {
               background-color: ${vars.colorPrimary25};
             }
@@ -76,6 +77,7 @@ const getButtonStyles = (isDisabled, isActive, tone, size) => {
           baseActiveStyles,
           css`
             background-color: ${vars.colorWarning};
+            &:focus,
             &:hover {
               background-color: ${vars.colorWarning};
             }
@@ -107,6 +109,7 @@ const getButtonStyles = (isDisabled, isActive, tone, size) => {
         baseDefaultStyles,
         css`
           background-color: ${vars.colorPrimary};
+          &:focus,
           &:hover {
             background-color: ${vars.colorPrimary25};
           }
@@ -120,6 +123,7 @@ const getButtonStyles = (isDisabled, isActive, tone, size) => {
         baseDefaultStyles,
         css`
           background-color: ${vars.colorWarning};
+          &:focus,
           &:hover {
             background-color: ${vars.colorPrimary25};
           }
