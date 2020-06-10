@@ -1,5 +1,15 @@
 # @commercetools-uikit/data-table
 
+## 10.22.1
+
+### Patch Changes
+
+- [`30b1b95`](https://github.com/commercetools/ui-kit/commit/30b1b95321f15726921c8a2733c3ae94b898de38) [#1373](https://github.com/commercetools/ui-kit/pull/1373) Thanks [@mohib0306](https://github.com/mohib0306)! - Apply cell alignment prop to the header cells as well
+
+- Updated dependencies [[`17c79cb`](https://github.com/commercetools/ui-kit/commit/17c79cb8e065ea880996e3267873233d6823438e)]:
+  - @commercetools-uikit/accessible-button@10.22.1
+  - @commercetools-uikit/secondary-icon-button@10.22.1
+
 ## 10.22.0
 
 ### Minor Changes

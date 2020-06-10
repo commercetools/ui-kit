@@ -1,5 +1,11 @@
 # @commercetools-uikit/accessible-button
 
+## 10.22.1
+
+### Patch Changes
+
+- [`17c79cb`](https://github.com/commercetools/ui-kit/commit/17c79cb8e065ea880996e3267873233d6823438e) [#1375](https://github.com/commercetools/ui-kit/pull/1375) Thanks [@jonnybel](https://github.com/jonnybel)! - enable outline for all buttons when focused
+
 ## 10.21.0
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/field-errors",
-  "version": "10.21.0",
+  "version": "10.22.1",
   "description": "",
   "main": "dist/field-errors.cjs.js",
   "module": "dist/field-errors.esm.js",
