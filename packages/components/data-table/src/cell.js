@@ -41,6 +41,7 @@ const HeaderCellWrapper = (props) => {
   };
 
   if (
+    columnResizingReducer.columnBeingResized &&
     columnResizingReducer.columnBeingResized === headerRef.current?.cellIndex
   ) {
     window.addEventListener('mousemove', onDrag);
