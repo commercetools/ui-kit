@@ -30,6 +30,7 @@ const ignoredExternals = [
   'lodash/pick',
   'lodash/flatMap',
   'lodash/sortBy',
+  'lodash/isEqual',
   'lodash/uniq',
   'lodash/memoize',
   'lodash/uniqueId',
