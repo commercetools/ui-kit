@@ -8,10 +8,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "dist",
-    "data"
-  ],
+  "files": ["dist", "data"],
   "sideEffects": false,
   "scripts": {
     "prepare": "../../scripts/version.js replace",

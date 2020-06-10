@@ -10,16 +10,8 @@
   },
   "private": true,
   "license": "MIT",
-  "keywords": [
-    "javascript",
-    "frontend",
-    "ui-kit",
-    "design-system",
-    "react"
-  ],
-  "files": [
-    "dist"
-  ],
+  "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
@@ -62,9 +54,7 @@
       "presets/*",
       "visual-testing-app"
     ],
-    "nohoist": [
-      "react-virtualized/dom-helpers"
-    ]
+    "nohoist": ["react-virtualized/dom-helpers"]
   },
   "devDependencies": {
     "@babel/core": "7.10.1",
@@ -181,10 +171,10 @@
     "rollup-plugin-replace": "2.2.0",
     "shelljs": "0.8.4",
     "storybook-readme": "5.0.8",
-    "stylelint": "13.5.0",
+    "stylelint": "13.6.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-config-standard": "20.0.0",
-    "stylelint-order": "4.0.0",
+    "stylelint-order": "4.1.0",
     "yaml": "1.10.0",
     "yaml-loader": "0.6.0"
   },
