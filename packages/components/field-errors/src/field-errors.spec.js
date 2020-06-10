@@ -48,7 +48,7 @@ describe('when not visible', () => {
         isVisible={false}
       />
     );
-    expect(container).toBeEmpty();
+    expect(container).toBeEmptyDOMElement();
   });
 });
 
