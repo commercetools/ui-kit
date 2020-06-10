@@ -92,18 +92,18 @@ const getCellInnerStyles = (props) => {
 const getSortableHeaderStyles = (props) => css`
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   /* A sortable header has the two arrow svg icons
   * GIVEN column is sortable and is not focused
   * THEN AngleUpDown icon is shown (default behaviour)
   * AND AngleUp or AngleDown icon is not shown
-  * 
+  *
   * GIVEN column is sortable and foucsed
   * THEN AngleUpDown icon is hidden
   * AND AngleUp or AngleDown icon is shown
   */
+
   svg[id='nonActiveSortingIcon'] {
     display: ${props.isActive ? 'none' : 'inline-block'};
     margin-left: ${vars.spacingS};
@@ -126,7 +126,6 @@ const getSortableHeaderStyles = (props) => css`
     }
   }
 `;
-
 const BaseHeaderCell = styled.th`
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
@@ -182,6 +181,11 @@ const RowExpandCollapseButton = styled(SecondaryIconButton)`
   visibility: hidden;
 `;
 
+const HeaderCellInnerWrapper = styled.div`
+  display: inline-block;
+  flex: 1;
+`;
+
 export {
   BaseCell,
   BaseFooterCell,
@@ -190,4 +194,5 @@ export {
   HeaderCellInner,
   SortableHeaderInner,
   RowExpandCollapseButton,
+  HeaderCellInnerWrapper,
 };
