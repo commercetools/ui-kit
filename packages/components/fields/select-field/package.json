@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/select-field",
-  "version": "10.22.1",
+  "version": "10.22.2",
   "description": "",
   "main": "dist/select-field.cjs.js",
   "module": "dist/select-field.esm.js",

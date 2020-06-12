@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-field",
-  "version": "10.22.1",
+  "version": "10.22.2",
   "description": "",
   "main": "dist/async-creatable-select-field.cjs.js",
   "module": "dist/async-creatable-select-field.esm.js",

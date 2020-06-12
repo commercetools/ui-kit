@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.22.2
+
+### Patch Changes
+
+- [`ae085cf`](https://github.com/commercetools/ui-kit/commit/ae085cf22c8551a29a177c03fe3ebf45febde3b9) [#1379](https://github.com/commercetools/ui-kit/pull/1379) Thanks [@jonnybel](https://github.com/jonnybel)! - add data-testid attributes to headers and cells
+
 ## 10.22.1
 
 ### Patch Changes
