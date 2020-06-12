@@ -28,6 +28,7 @@ const DataRow = (props) => {
         <DataCell
           key={`${props.row.id}-${column.key}`}
           alignment={column.align ? column.align : props.cellAlignment}
+          data-testid={`cell-${props.rowIndex}-${column.key}`}
           isTruncated={column.isTruncated && isRowCollapsed}
           isRowCollapsed={isRowCollapsed}
           isCondensed={props.isCondensed}

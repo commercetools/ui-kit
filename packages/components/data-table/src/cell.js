@@ -27,7 +27,10 @@ const HeaderCell = (props) => {
     const Icon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
 
     return (
-      <BaseHeaderCell disableHeaderStickiness={props.disableHeaderStickiness}>
+      <BaseHeaderCell
+        data-testid={`header-${props.columnKey}`}
+        disableHeaderStickiness={props.disableHeaderStickiness}
+      >
         <SortableHeaderInner
           label={props.sortDirection}
           onClick={() => props.onClick(props.columnKey, nextSortDirection)}
@@ -49,7 +52,10 @@ const HeaderCell = (props) => {
     );
   }
   return (
-    <BaseHeaderCell disableHeaderStickiness={props.disableHeaderStickiness}>
+    <BaseHeaderCell
+      data-testid={`header-${props.columnKey}`}
+      disableHeaderStickiness={props.disableHeaderStickiness}
+    >
       <HeaderCellInner
         shouldWrap={props.shouldWrap}
         isCondensed={props.isCondensed}

@@ -38,6 +38,22 @@ describe('DataTable', () => {
     expect(rendered.queryByText('Year')).toBeInTheDocument();
   });
 
+  it('should be able to find headers by the data-testid', () => {
+    const rendered = render(<DataTable {...baseProps} />);
+
+    expect(rendered.queryByTestId('header-title')).toBeInTheDocument();
+    expect(rendered.queryByTestId('header-year')).toBeInTheDocument();
+  });
+
+  it('should be able to find cells by the data-testid', () => {
+    const rendered = render(<DataTable {...baseProps} />);
+
+    expect(rendered.queryByTestId('cell-0-title')).toBeInTheDocument();
+    expect(rendered.queryByTestId('cell-1-title')).toBeInTheDocument();
+    expect(rendered.queryByTestId('cell-2-title')).toBeInTheDocument();
+    expect(rendered.queryByTestId('cell-0-year')).toBeInTheDocument();
+  });
+
   it('should render item fields which have corresponding column keys', () => {
     const rendered = render(<DataTable {...baseProps} />);
 
