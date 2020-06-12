@@ -178,7 +178,10 @@ const RowExpandCollapseButton = styled(SecondaryIconButton)`
   position: absolute;
   bottom: 0;
   right: 0;
-  visibility: hidden;
+  /* stylelint-disable declaration-block-no-duplicate-properties */
+  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(1px 1px 1px 1px); /* pattern supported by IE6, IE7 */
+  /* stylelint-enable declaration-block-no-duplicate-properties */
 `;
 
 const HeaderCellInnerWrapper = styled.div`

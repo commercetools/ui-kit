@@ -43,9 +43,9 @@ const Body = styled.tbody`
 const Row = styled.tr`
   display: contents;
   ${getClickableRowStyle}
-  :hover {
+  :hover, :focus-within {
     ${RowExpandCollapseButton} {
-      visibility: visible;
+      clip: auto;
     }
   }
 `;
