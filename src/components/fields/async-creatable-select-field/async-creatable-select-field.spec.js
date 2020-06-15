@@ -14,14 +14,15 @@ class Story extends React.Component {
   static displayName = 'Story';
   static propTypes = {
     onChange: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
     value: PropTypes.object,
     id: PropTypes.string,
     loadOptions: PropTypes.func,
     defaultOptions: PropTypes.bool,
   };
   static defaultProps = {
-    id: 'text-field',
-    title: 'foo',
+    id: 'async-creatable-select-field',
+    title: 'AsyncCreatableSelectField',
     onChange: () => {},
     loadOptions: () =>
       Promise.resolve([
@@ -43,7 +44,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>AsyncCreatableSelectField</label>
         <AsyncCreatableSelectField
           {...this.props}
           value={this.state.value}

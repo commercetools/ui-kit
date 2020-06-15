@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/data-table",
-  "version": "10.22.0",
+  "version": "10.22.2",
   "description": "",
   "main": "dist/data-table.cjs.js",
   "module": "dist/data-table.esm.js",
@@ -17,12 +17,12 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.21.0",
+    "@commercetools-uikit/accessible-button": "10.22.1",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/hooks": "10.21.0",
     "@commercetools-uikit/icons": "10.22.0",
     "@commercetools-uikit/utils": "10.21.0",
-    "@commercetools-uikit/secondary-icon-button": "10.18.4",
+    "@commercetools-uikit/secondary-icon-button": "10.22.1",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "lodash": "4.17.15",

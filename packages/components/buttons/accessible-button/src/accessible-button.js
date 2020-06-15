@@ -16,8 +16,6 @@ const Button = styled.button`
   display: inline-flex;
   font-size: ${vars.fontSizeDefault};
 
-  ${(props) => (!props.as || props.as === 'button' ? 'outline: none;' : '')}
-
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   &:disabled {
     cursor: not-allowed;

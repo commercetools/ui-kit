@@ -16,6 +16,7 @@ import {
   HeaderCellInner,
   SortableHeaderInner,
   RowExpandCollapseButton,
+  HeaderCellInnerWrapper,
 } from './cell.styles';
 
 const HeaderCell = (props) => {
@@ -26,15 +27,19 @@ const HeaderCell = (props) => {
     const Icon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
 
     return (
-      <BaseHeaderCell disableHeaderStickiness={props.disableHeaderStickiness}>
+      <BaseHeaderCell
+        data-testid={`header-${props.columnKey}`}
+        disableHeaderStickiness={props.disableHeaderStickiness}
+      >
         <SortableHeaderInner
           label={props.sortDirection}
           onClick={() => props.onClick(props.columnKey, nextSortDirection)}
           isActive={isActive}
           shouldWrap={props.shouldWrap}
           isCondensed={props.isCondensed}
+          alignment={props.alignment}
         >
-          {props.children}
+          <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
           {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
           <AngleUpDownIcon
             size="medium"
@@ -47,10 +52,14 @@ const HeaderCell = (props) => {
     );
   }
   return (
-    <BaseHeaderCell disableHeaderStickiness={props.disableHeaderStickiness}>
+    <BaseHeaderCell
+      data-testid={`header-${props.columnKey}`}
+      disableHeaderStickiness={props.disableHeaderStickiness}
+    >
       <HeaderCellInner
         shouldWrap={props.shouldWrap}
         isCondensed={props.isCondensed}
+        alignment={props.alignment}
       >
         {props.children}
       </HeaderCellInner>
@@ -61,6 +70,7 @@ HeaderCell.displayName = 'HeaderCell';
 HeaderCell.propTypes = {
   onClick: requiredIf(PropTypes.func, (props) => props.isSortable),
   sortedBy: PropTypes.string,
+  alignment: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
   shouldWrap: PropTypes.bool,

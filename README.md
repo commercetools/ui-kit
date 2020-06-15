@@ -114,3 +114,7 @@ const primary = customProperties.colorPrimary;
 ## Documentation and Storybook
 
 Available at https://uikit.commercetools.com.
+
+You may also fork this CodeSandbox example to test the components or to help illustrating a bug report:
+
+- https://codesandbox.io/s/commercetools-ui-kit-codesandbox-1vz7c

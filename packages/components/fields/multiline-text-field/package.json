@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/multiline-text-field",
-  "version": "10.22.0",
+  "version": "10.22.1",
   "description": "",
   "main": "dist/multiline-text-field.cjs.js",
   "module": "dist/multiline-text-field.esm.js",
@@ -19,9 +19,9 @@
   "dependencies": {
     "@commercetools-uikit/constraints": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/field-errors": "10.21.0",
-    "@commercetools-uikit/field-label": "10.22.0",
-    "@commercetools-uikit/multiline-text-input": "10.22.0",
+    "@commercetools-uikit/field-errors": "10.22.1",
+    "@commercetools-uikit/field-label": "10.22.1",
+    "@commercetools-uikit/multiline-text-input": "10.22.1",
     "@commercetools-uikit/spacings": "10.18.5",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",

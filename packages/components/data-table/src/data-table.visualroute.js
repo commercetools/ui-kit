@@ -243,6 +243,62 @@ export const component = () => (
         onSortChange={() => null}
       />
     </Spec>
+    <Spec label="with sortable columns (title and year) aligned to right">
+      <DataTable
+        rows={testRows}
+        columns={[
+          {
+            key: 'title',
+            label: 'Title',
+            isSortable: true,
+            align: 'right',
+          },
+          {
+            key: 'year',
+            label: 'Year',
+            isSortable: true,
+            align: 'right',
+          },
+          {
+            key: 'director',
+            label: 'Directed By',
+          },
+          {
+            key: 'country',
+            label: 'Country',
+          },
+        ]}
+        onSortChange={() => null}
+      />
+    </Spec>
+    <Spec label="with sortable columns (title and year) aligned center">
+      <DataTable
+        rows={testRows}
+        columns={[
+          {
+            key: 'title',
+            label: 'Title',
+            isSortable: true,
+            align: 'center',
+          },
+          {
+            key: 'year',
+            label: 'Year',
+            isSortable: true,
+            align: 'center',
+          },
+          {
+            key: 'director',
+            label: 'Directed By',
+          },
+          {
+            key: 'country',
+            label: 'Country',
+          },
+        ]}
+        onSortChange={() => null}
+      />
+    </Spec>
     <Spec label="with a column of truncated cells">
       <DataTable
         rows={testRows}

@@ -14,13 +14,14 @@ class Story extends React.Component {
   static displayName = 'Story';
   static propTypes = {
     onChange: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
     value: PropTypes.object,
     id: PropTypes.string,
     options: PropTypes.array.isRequired,
   };
   static defaultProps = {
-    id: 'text-field',
-    title: 'foo',
+    id: 'creatable-select-field',
+    title: 'CreatableSelectField',
     onChange: () => {},
     options: [
       { value: 'ready', label: 'Ready' },
@@ -40,7 +41,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>CreatableSelectField</label>
         <CreatableSelectField
           {...this.props}
           value={this.state.value}
