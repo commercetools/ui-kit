@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "10.22.1",
+  "version": "10.22.2",
   "description": "",
   "private": false,
   "publishConfig": {
@@ -30,11 +30,11 @@
     "@commercetools-uikit/collapsible-motion": "10.21.0",
     "@commercetools-uikit/collapsible-panel": "10.22.1",
     "@commercetools-uikit/constraints": "10.21.0",
-    "@commercetools-uikit/data-table": "10.22.1",
+    "@commercetools-uikit/data-table": "10.22.2",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/field-errors": "10.22.1",
     "@commercetools-uikit/field-label": "10.22.1",
-    "@commercetools-uikit/fields": "10.22.1",
+    "@commercetools-uikit/fields": "10.22.2",
     "@commercetools-uikit/grid": "10.18.4",
     "@commercetools-uikit/hooks": "10.21.0",
     "@commercetools-uikit/i18n": "10.14.0",

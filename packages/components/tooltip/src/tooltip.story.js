@@ -19,6 +19,14 @@ const CustomWrapper = styled.div`
   background-color: pink;
 `;
 
+const CustomButtonWrapper = styled.div`
+  width: min-content;
+  cursor: not-allowed;
+  > :disabled {
+    pointer-events: none;
+  }
+`;
+
 const CustomBody = styled.div`
   font-size: 0.875rem;
   color: red;
@@ -84,11 +92,13 @@ storiesOf('Components|Tooltips', module)
               BodyComponent: customBodyWrapper ? CustomBody : null,
             }}
           >
-            <PrimaryButton
-              onClick={() => {}}
-              label="Submit"
-              isDisabled={boolean('button disabled', false)}
-            />
+            <CustomButtonWrapper>
+              <PrimaryButton
+                onClick={() => {}}
+                label="Submit"
+                isDisabled={boolean('button disabled', false)}
+              />
+            </CustomButtonWrapper>
           </Tooltip>
         </div>
       </Section>

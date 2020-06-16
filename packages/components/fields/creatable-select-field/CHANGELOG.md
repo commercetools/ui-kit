@@ -1,5 +1,11 @@
 # @commercetools-uikit/creatable-select-field
 
+## 10.22.2
+
+### Patch Changes
+
+- [`99f4924`](https://github.com/commercetools/ui-kit/commit/99f492499b4be23adca99fb75a4b267a7abc32ad) [#1376](https://github.com/commercetools/ui-kit/pull/1376) Thanks [@mohib0306](https://github.com/mohib0306)! - Fix RTL tests
+
 ## 10.22.1
 
 ### Patch Changes
