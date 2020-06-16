@@ -192,7 +192,7 @@ const RowExpandCollapseButton = styled(SecondaryIconButton)`
   position: absolute;
   bottom: 0;
   right: 0;
-  visibility: hidden;
+  opacity: 0;
 `;
 
 const HeaderCellInnerWrapper = styled.div`
