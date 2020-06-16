@@ -164,7 +164,8 @@ const BaseCell = styled.td`
 `;
 
 const BaseFooterCell = styled.td`
-  position: sticky;
+  position: ${(props) =>
+    props.disableFooterStickiness ? 'relative' : 'sticky'};
   left: 0;
   bottom: 0;
   grid-column: 1 / ${(props) => props.numberOfColumns};
