@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const resizerWidth = 3;
-const resizerHoverArea = 6;
-
 const ResizerIndicator = styled.div`
   height: 100%;
-  width: ${resizerWidth}px;
+  width: 3px;
   background: ${vars.colorInfo};
   visibility: hidden;
   cursor: col-resize;
@@ -20,11 +17,13 @@ const ResizerIndicator = styled.div`
 `;
 
 const DraggableArea = styled.div`
+  display: flex;
+  justify-content: flex-end;
   height: 100%;
   position: absolute;
   top: 0;
-  width: ${resizerHoverArea}px;
-  right: -${resizerHoverArea - resizerWidth}px;
+  right: 0;
+  width: 6px;
 
   cursor: col-resize;
   user-select: none;
@@ -35,14 +34,13 @@ const DraggableArea = styled.div`
   }
 
   /* when dragging, we increase the area of the invisible draggable zone
-  to prevent accidentally hovering other elements which may cause flickers */
+  to prevent accidentally hovering other elements which causes flickering */
   &:active {
-    display: flex;
-    justify-content: center;
-    width: 50px;
-    right: -23px;
+    width: 20px;
+    right: -10px;
 
     ${ResizerIndicator} {
+      margin-right: 10px;
       visibility: visible;
     }
   }
