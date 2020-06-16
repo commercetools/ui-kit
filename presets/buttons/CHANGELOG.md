@@ -16,7 +16,6 @@
   - @commercetools-uikit/link-button@10.22.1
 
 ## 10.21.0
-
 ### Patch Changes
 
 - Updated dependencies []:

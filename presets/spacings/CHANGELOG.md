@@ -1,7 +1,6 @@
 # @commercetools-uikit/spacings
 
 ## 10.18.5
-
 ### Patch Changes
 
 - Updated dependencies []:

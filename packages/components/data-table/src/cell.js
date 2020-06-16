@@ -18,52 +18,101 @@ import {
   RowExpandCollapseButton,
   HeaderCellInnerWrapper,
 } from './cell.styles';
+import Resizer from './column-resizer';
+
+import ColumnResizingContext from './column-resizing-context';
+
+const HeaderCellWrapper = (props) => {
+  const columnResizingReducer = React.useContext(ColumnResizingContext);
+  const headerRef = React.useRef(null);
+
+  const onStartResizing = (event) => {
+    columnResizingReducer.startResizing(headerRef, event);
+  };
+
+  const onDrag = (event) =>
+    columnResizingReducer.onDragResizing(event, headerRef.current.cellIndex);
+
+  const onDragEnd = () => {
+    columnResizingReducer.finishResizing();
+
+    window.removeEventListener('mousemove', onDrag);
+    window.removeEventListener('mouseup', onDragEnd);
+  };
+
+  if (
+    columnResizingReducer.getIsColumnBeingResized(headerRef.current?.cellIndex)
+  ) {
+    window.addEventListener('mousemove', onDrag);
+    window.addEventListener('mouseup', onDragEnd);
+  }
+
+  return (
+    <BaseHeaderCell
+      ref={headerRef}
+      data-testid={`header-${props.columnKey}`}
+      disableHeaderStickiness={props.disableHeaderStickiness}
+    >
+      {props.children}
+      {!props.disableResizing && <Resizer onMouseDown={onStartResizing} />}
+    </BaseHeaderCell>
+  );
+};
+HeaderCellWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  columnKey: PropTypes.string.isRequired,
+  disableResizing: PropTypes.bool,
+  disableHeaderStickiness: PropTypes.bool,
+};
+HeaderCellWrapper.displayName = 'HeaderCellWrapper';
 
 const HeaderCell = (props) => {
+  // inner cell component for non-sortable columns
+  let HeaderCellInnerComponent = (
+    <HeaderCellInner
+      shouldWrap={props.shouldWrap}
+      isCondensed={props.isCondensed}
+      alignment={props.alignment}
+    >
+      {props.children}
+    </HeaderCellInner>
+  );
+
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
     const nextSortDirection =
       !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
     const Icon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
 
-    return (
-      <BaseHeaderCell
-        data-testid={`header-${props.columnKey}`}
-        disableHeaderStickiness={props.disableHeaderStickiness}
-      >
-        <SortableHeaderInner
-          label={props.sortDirection}
-          onClick={() => props.onClick(props.columnKey, nextSortDirection)}
-          isActive={isActive}
-          shouldWrap={props.shouldWrap}
-          isCondensed={props.isCondensed}
-          alignment={props.alignment}
-        >
-          <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
-          {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
-          <AngleUpDownIcon
-            size="medium"
-            color="surface"
-            id="nonActiveSortingIcon"
-          />
-          <Icon size="medium" color="surface" id="activeSortingIcon" />
-        </SortableHeaderInner>
-      </BaseHeaderCell>
-    );
-  }
-  return (
-    <BaseHeaderCell
-      data-testid={`header-${props.columnKey}`}
-      disableHeaderStickiness={props.disableHeaderStickiness}
-    >
-      <HeaderCellInner
+    // inner cell component for sortable columns
+    HeaderCellInnerComponent = (
+      <SortableHeaderInner
+        label={props.sortDirection}
+        onClick={() => props.onClick(props.columnKey, nextSortDirection)}
+        isActive={isActive}
         shouldWrap={props.shouldWrap}
         isCondensed={props.isCondensed}
         alignment={props.alignment}
       >
-        {props.children}
-      </HeaderCellInner>
-    </BaseHeaderCell>
+        <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
+        {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
+        <AngleUpDownIcon
+          size="medium"
+          color="surface"
+          id="nonActiveSortingIcon"
+        />
+        <Icon size="medium" color="surface" id="activeSortingIcon" />
+      </SortableHeaderInner>
+    );
+  }
+  return (
+    <HeaderCellWrapper
+      columnKey={props.columnKey}
+      disableResizing={props.disableResizing}
+      disableHeaderStickiness={props.disableHeaderStickiness}
+    >
+      {HeaderCellInnerComponent}
+    </HeaderCellWrapper>
   );
 };
 HeaderCell.displayName = 'HeaderCell';
@@ -77,6 +126,7 @@ HeaderCell.propTypes = {
   isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
+  disableResizing: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool,
 };
 HeaderCell.defaultProps = {
@@ -97,7 +147,11 @@ const DataCell = (props) => {
     ? RightTriangleFilledIcon
     : RightTriangleLinearIcon;
   return (
-    <BaseCell isTruncated={props.isTruncated}>
+    <BaseCell
+      shouldClipContent={
+        props.isTruncated && !props.shouldRenderResizingIndicator
+      }
+    >
       <CellInner
         {...props}
         onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
@@ -113,6 +167,7 @@ const DataCell = (props) => {
           }}
         />
       )}
+      {props.shouldRenderResizingIndicator && <Resizer isOnDataCell />}
     </BaseCell>
   );
 };
@@ -124,6 +179,7 @@ DataCell.propTypes = {
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
   shouldRenderCollapseButton: PropTypes.bool.isRequired,
+  shouldRenderResizingIndicator: PropTypes.bool.isRequired,
   handleRowCollapseClick: requiredIf(
     PropTypes.func,
     (props) => props.shouldRenderCollapseButton
