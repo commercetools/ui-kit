@@ -400,7 +400,16 @@ storiesOf('Components|Table (NEW)', module)
             max: 800,
             step: 10,
           })}
-          cellAlignment={select('cellAlignment', ['left', 'center', 'right'])}
+          horizontalCellAlignment={select('horizontalCellAlignment', [
+            'left',
+            'center',
+            'right',
+          ])}
+          verticalCellAlignment={select('verticalCellAlignment', [
+            'top',
+            'center',
+            'bottom',
+          ])}
           isCondensed={boolean('isCondensed', false)}
           wrapHeaderLabels={boolean('wrapHeaderLabels', true)}
           disableHeaderStickiness={boolean('disableHeaderStickiness', false)}

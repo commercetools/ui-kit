@@ -18,19 +18,38 @@ const getPaddingStyle = (props, isHeader) => {
   `;
 };
 
-const getAlignmentStyle = (props) => {
-  if (props.alignment === 'center') {
+const getHorizontalAlignmentStyle = (props) => {
+  if (props.horizontalCellAlignment === 'center') {
     return css`
       text-align: center;
+      justify-content: center;
     `;
   }
-  if (props.alignment === 'right') {
+  if (props.horizontalCellAlignment === 'right') {
     return css`
       text-align: right;
+      justify-content: flex-end;
     `;
   }
   return css`
     text-align: left;
+    justify-content: flex-start;
+  `;
+};
+
+const getVerticalAlignmentStyle = (props) => {
+  if (props.verticalCellAlignment === 'center') {
+    return css`
+      align-items: center;
+    `;
+  }
+  if (props.verticalCellAlignment === 'bottom') {
+    return css`
+      align-items: flex-end;
+    `;
+  }
+  return css`
+    align-items: flex-start;
   `;
 };
 
@@ -79,7 +98,8 @@ const getOutlineStyles = () => css`
 
 const getCellInnerStyles = (props) => {
   return [
-    getAlignmentStyle(props),
+    getVerticalAlignmentStyle(props),
+    getHorizontalAlignmentStyle(props),
     getTruncatedStyle(props),
     getOutlineStyles(),
     props.shouldIgnoreRowClick &&
@@ -184,6 +204,9 @@ const HeaderCellInner = styled.div`
 `;
 
 const CellInner = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
   ${(props) => getPaddingStyle(props, false)}
   ${getCellInnerStyles}
 `;

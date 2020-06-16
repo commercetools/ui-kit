@@ -32,11 +32,14 @@ const DataRow = (props) => {
       {props.columns.map((column, columnIndex) => (
         <DataCell
           key={`${props.row.id}-${column.key}`}
-          alignment={column.align ? column.align : props.cellAlignment}
           data-testid={`cell-${props.rowIndex}-${column.key}`}
           isTruncated={column.isTruncated && isRowCollapsed}
-          isRowCollapsed={isRowCollapsed}
           isCondensed={props.isCondensed}
+          isRowCollapsed={isRowCollapsed}
+          verticalCellAlignment={props.verticalCellAlignment}
+          horizontalCellAlignment={
+            column.align ? column.align : props.horizontalCellAlignment
+          }
           shouldIgnoreRowClick={column.shouldIgnoreRowClick}
           handleRowCollapseClick={handleRowCollapseClick}
           shouldRenderCollapseButton={shouldRenderCollapseButton(
@@ -71,16 +74,18 @@ DataRow.propTypes = {
   ).isRequired,
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
+  verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
   /* the default item (cell) renderer.
     an existing per-column `renderItem` func takes precedence over this */
   itemRenderer: PropTypes.func.isRequired,
   /* the default cell alignment
     an existing per-column `align` property takes precedence over this */
-  cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 DataRow.defaultProps = {
   isCondensed: false,
-  cellAlignment: 'left',
+  verticalCellAlignment: 'top',
+  horizontalCellAlignment: 'left',
   itemRenderer: (row, column) => row[column.key],
 };
 DataRow.displayName = 'DataRow';

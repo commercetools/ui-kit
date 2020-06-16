@@ -107,11 +107,33 @@ export const component = () => (
         maxWidth={300}
       />
     </Spec>
-    <Spec label="cellAlignment - center">
-      <DataTable rows={testRows} columns={testColumns} cellAlignment="center" />
+    <Spec label="horizontalCellAlignment - center">
+      <DataTable
+        rows={testRows}
+        columns={testColumns}
+        horizontalCellAlignment="center"
+      />
     </Spec>
-    <Spec label="cellAlignment - right">
-      <DataTable rows={testRows} columns={testColumns} cellAlignment="right" />
+    <Spec label="horizontalCellAlignment - right">
+      <DataTable
+        rows={testRows}
+        columns={testColumns}
+        horizontalCellAlignment="right"
+      />
+    </Spec>
+    <Spec label="verticalCellAlignment - center">
+      <DataTable
+        rows={testRows}
+        columns={testColumns}
+        verticalCellAlignment="center"
+      />
+    </Spec>
+    <Spec label="verticalCellAlignment - bottom">
+      <DataTable
+        rows={testRows}
+        columns={testColumns}
+        verticalCellAlignment="bottom"
+      />
     </Spec>
     <Spec label="not wrapping header labels">
       <DataTable
