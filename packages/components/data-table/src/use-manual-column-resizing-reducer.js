@@ -84,7 +84,7 @@ const useManualColumnResizing = (tableRef) => {
   if (state.tableRef.current && !state.sizes) {
     const renderedColumnMeasurements = [];
     state.tableRef.current.querySelectorAll('th').forEach((header, index) => {
-      renderedColumnMeasurements[index] = header.clientWidth;
+      renderedColumnMeasurements[index] = header.getBoundingClientRect().width;
     });
     dispatch({
       type: 'registerColumnMeasurements',
