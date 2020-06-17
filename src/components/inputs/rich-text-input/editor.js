@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import pick from 'lodash/pick';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -13,7 +12,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import messages from '../../internals/messages/multiline-input';
-import { EditorWrapper } from './editor.styles';
+import { EditorWrapper, CollapseExpandButtonWrapper } from './editor.styles';
 
 const COLLAPSED_HEIGHT = 32;
 
@@ -80,12 +79,7 @@ const Editor = (props) => {
                 </RichTextBody>
               </EditorWrapper>
               {renderToggleButton && (
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: flex-end;
-                  `}
-                >
+                <CollapseExpandButtonWrapper>
                   <FlatButton
                     onClick={toggle}
                     label={
@@ -101,7 +95,7 @@ const Editor = (props) => {
                       )
                     }
                   />
-                </div>
+                </CollapseExpandButtonWrapper>
               )}
             </Stack>
           </Constraints.Horizontal>
