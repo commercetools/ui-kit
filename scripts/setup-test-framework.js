@@ -18,15 +18,6 @@ import * as commerceToolsEnzymeMatchers from '@commercetools/jest-enzyme-matcher
 
 Enzyme.configure({ adapter: new Adapter(), disableLifecycleMethods: true });
 
-expect.extend({
-  toBeComponentWithName(received, actual) {
-    const pass = received && received.displayName === actual;
-    const message = () =>
-      `expected ${received} ${pass ? 'not ' : ''} to be ${actual}`;
-    return { message, pass };
-  },
-});
-
 expect.extend(commerceToolsEnzymeMatchers);
 
 configureEnzymeExtensions(ShallowWrapper);
