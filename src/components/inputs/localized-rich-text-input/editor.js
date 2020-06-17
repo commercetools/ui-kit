@@ -94,7 +94,9 @@ const Editor = (props) => {
             >
               <EditorLanguageLabel htmlFor={props.id}>
                 {/* FIXME: add proper tone for disabled when tones are refactored */}
-                <Text.Detail>{props.language.toUpperCase()}</Text.Detail>
+                <Text.Detail tone="secondary">
+                  {props.language.toUpperCase()}
+                </Text.Detail>
               </EditorLanguageLabel>
 
               <RichTextBody
