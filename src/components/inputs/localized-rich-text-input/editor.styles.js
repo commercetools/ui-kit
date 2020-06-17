@@ -6,10 +6,10 @@ import {
   designTokens,
 } from '@commercetools-uikit/design-system';
 
-const getLanguageLabelStyles = (props, theme) => {
+const EditorLanguageLabel = styled.label((props) => {
   const overwrittenVars = {
     ...vars,
-    ...theme,
+    ...props.theme,
   };
 
   return css`
@@ -43,7 +43,7 @@ const getLanguageLabelStyles = (props, theme) => {
     */
     cursor: inherit;
   `;
-};
+});
 
 const EditorWrapper = styled.div`
   width: 100%;
@@ -53,4 +53,4 @@ const EditorWrapper = styled.div`
     props.isDisabled || props.isReadOnly ? 'not-allowed' : 'inherit'};
 `;
 
-export { getLanguageLabelStyles, EditorWrapper };
+export { EditorLanguageLabel, EditorWrapper };

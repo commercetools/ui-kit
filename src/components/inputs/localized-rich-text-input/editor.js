@@ -14,7 +14,7 @@ import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
-import { getLanguageLabelStyles, EditorWrapper } from './editor.styles';
+import { EditorWrapper, EditorLanguageLabel } from './editor.styles';
 import messages from '../../internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
@@ -92,15 +92,10 @@ const Editor = (props) => {
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
             >
-              <label
-                htmlFor={props.id}
-                css={(theme) => getLanguageLabelStyles(props, theme)}
-              >
+              <EditorLanguageLabel htmlFor={props.id}>
                 {/* FIXME: add proper tone for disabled when tones are refactored */}
-                <Text.Detail tone="secondary">
-                  {props.language.toUpperCase()}
-                </Text.Detail>
-              </label>
+                <Text.Detail>{props.language.toUpperCase()}</Text.Detail>
+              </EditorLanguageLabel>
 
               <RichTextBody
                 ref={{
