@@ -13,6 +13,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import messages from '../../internals/messages/multiline-input';
+import { EditorWrapper } from './editor.styles';
 
 const COLLAPSED_HEIGHT = 32;
 
@@ -57,22 +58,27 @@ const Editor = (props) => {
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
             <Stack scale="xs">
-              <RichTextBody
-                ref={{
-                  containerRef: ref,
-                  registerContentNode,
-                }}
-                hasError={props.hasError}
+              <EditorWrapper
                 isDisabled={props.isDisabled}
-                hasWarning={props.hasWarning}
                 isReadOnly={props.isReadOnly}
-                showExpandIcon={props.showExpandIcon}
-                onClickExpand={props.onClickExpand}
-                editor={props.editor}
-                containerStyles={containerStyles}
               >
-                {props.children}
-              </RichTextBody>
+                <RichTextBody
+                  ref={{
+                    containerRef: ref,
+                    registerContentNode,
+                  }}
+                  hasError={props.hasError}
+                  isDisabled={props.isDisabled}
+                  hasWarning={props.hasWarning}
+                  isReadOnly={props.isReadOnly}
+                  showExpandIcon={props.showExpandIcon}
+                  onClickExpand={props.onClickExpand}
+                  editor={props.editor}
+                  containerStyles={containerStyles}
+                >
+                  {props.children}
+                </RichTextBody>
+              </EditorWrapper>
               {renderToggleButton && (
                 <div
                   css={css`
