@@ -17,7 +17,7 @@ describe('rendering', () => {
   it('should render', () => {
     const { getByLabelText } = render(<AccessibleButton {...props} />);
     expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+    expect(getByLabelText('test-button')).toBeEnabled();
   });
   it('should apply the className "foo" to the button', () => {
     const { getByLabelText } = render(
@@ -37,7 +37,7 @@ describe('rendering', () => {
     );
     const button = getByLabelText('test-button');
 
-    expect(button).toHaveAttribute('disabled');
+    expect(button).toBeDisabled();
     expect(button).toHaveAttribute('aria-disabled', 'true');
 
     button.click();

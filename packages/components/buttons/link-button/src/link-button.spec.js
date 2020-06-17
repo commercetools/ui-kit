@@ -37,7 +37,7 @@ describe('rendering', () => {
   it('should render', () => {
     const { getByLabelText } = render(<LinkButton {...props} />);
     expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+    expect(getByLabelText('test-button')).toBeEnabled();
   });
   it('should navigate to link when clicked', async () => {
     const { getByLabelText, history } = render(<LinkButton {...props} />);

@@ -89,7 +89,7 @@ describe('PasswordInput', () => {
 
   it('should be disabled when isDisabled is passed', () => {
     const { container } = render(<PasswordInput {...baseProps} isDisabled />);
-    expect(container.querySelector('input')).toHaveAttribute('disabled');
+    expect(container.querySelector('input')).toBeDisabled();
   });
 
   it('should have autoComplete set to `on`', () => {

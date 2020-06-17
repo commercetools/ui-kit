@@ -123,7 +123,7 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderDateRangeField({ isDisabled: true });
-    expect(getByLabelText('DateRangeField')).toHaveAttribute('disabled');
+    expect(getByLabelText('DateRangeField')).toBeDisabled();
   });
 });
 

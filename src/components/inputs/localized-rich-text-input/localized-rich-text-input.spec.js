@@ -75,9 +75,11 @@ describe('LocalizedRichTextInput', () => {
           />
         );
         getByLabelText(/show all languages/i).click();
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
         expect(getByTestId('rich-text-data-test-en')).toHaveAttribute(
           'disabled'
         );
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
         expect(getByTestId('rich-text-data-test-de')).toHaveAttribute(
           'disabled'
         );
@@ -92,6 +94,7 @@ describe('LocalizedRichTextInput', () => {
             isDisabled={true}
           />
         );
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
         expect(getByTestId('rich-text-data-test-en')).toHaveAttribute(
           'disabled'
         );

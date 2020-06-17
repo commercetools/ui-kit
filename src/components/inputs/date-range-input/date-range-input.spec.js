@@ -90,7 +90,7 @@ it('should call onBlur when input loses focus', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderDateRangeInput({ isDisabled: true });
-    expect(getByLabelText('Date')).toHaveAttribute('disabled');
+    expect(getByLabelText('Date')).toBeDisabled();
   });
 });
 

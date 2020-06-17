@@ -21,7 +21,7 @@ describe('rendering', () => {
   it('should render', () => {
     const { getByLabelText } = render(<IconButton {...props} />);
     expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+    expect(getByLabelText('test-button')).toBeEnabled();
   });
   it('should be pass aria attributes', () => {
     const { getByLabelText } = render(
@@ -36,7 +36,7 @@ describe('rendering', () => {
     const { getByLabelText } = render(
       <IconButton {...props} isDisabled={true} />
     );
-    expect(getByLabelText('test-button')).toHaveAttribute('disabled');
+    expect(getByLabelText('test-button')).toBeDisabled();
     expect(getByLabelText('test-button')).toHaveAttribute(
       'aria-disabled',
       'true'

@@ -19,7 +19,7 @@ describe('rendering', () => {
   it('should render', () => {
     const { getByLabelText } = render(<SecondaryIconButton {...props} />);
     expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+    expect(getByLabelText('test-button')).toBeEnabled();
   });
   it('should render icon', () => {
     const { getByTestId } = render(<SecondaryIconButton {...props} />);
@@ -38,7 +38,7 @@ describe('rendering', () => {
     const { getByLabelText } = render(
       <SecondaryIconButton {...props} isDisabled={true} />
     );
-    expect(getByLabelText('test-button')).toHaveAttribute('disabled');
+    expect(getByLabelText('test-button')).toBeDisabled();
     expect(getByLabelText('test-button')).toHaveAttribute(
       'aria-disabled',
       'true'
@@ -50,7 +50,7 @@ describe('rendering', () => {
         const { getByLabelText } = render(
           <SecondaryIconButton {...props} isDisabled={true} disabled={false} />
         );
-        expect(getByLabelText('test-button')).toHaveAttribute('disabled');
+        expect(getByLabelText('test-button')).toBeDisabled();
         expect(getByLabelText('test-button')).toHaveAttribute(
           'aria-disabled',
           'true'
@@ -62,7 +62,7 @@ describe('rendering', () => {
         const { getByLabelText } = render(
           <SecondaryIconButton {...props} isDisabled={false} disabled={true} />
         );
-        expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+        expect(getByLabelText('test-button')).toBeEnabled();
         expect(getByLabelText('test-button')).not.toHaveAttribute(
           'aria-disabled',
           'true'

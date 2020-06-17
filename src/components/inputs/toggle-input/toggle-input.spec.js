@@ -59,7 +59,7 @@ it('should call onChange when clicked', () => {
   getByLabelText('Toggle').click();
 
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(getByLabelText('Toggle')).toHaveProperty('checked', true);
+  expect(getByLabelText('Toggle')).toBeChecked();
 });
 
 it('should not call onChange when clicked while disabled', () => {
@@ -91,7 +91,7 @@ describe('checked attribute', () => {
       </div>
     );
 
-    expect(getByLabelText('Toggle')).toHaveAttribute('checked');
+    expect(getByLabelText('Toggle')).toBeChecked();
   });
 
   it('should not have checked state when not checked', () => {
@@ -103,6 +103,6 @@ describe('checked attribute', () => {
       </div>
     );
 
-    expect(getByLabelText('Toggle')).not.toHaveAttribute('checked');
+    expect(getByLabelText('Toggle')).not.toBeChecked();
   });
 });
