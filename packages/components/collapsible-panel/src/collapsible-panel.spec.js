@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import CollapsiblePanel from './collapsible-panel';
 
 const HeaderControls = (props) => (
@@ -12,18 +12,16 @@ HeaderControls.propTypes = {
 };
 
 it('should smoke', () => {
-  const rendered = render(
-    <CollapsiblePanel header="Header">Children</CollapsiblePanel>
-  );
-  expect(rendered.getByText('Header')).toBeInTheDocument();
-  expect(rendered.getByText('Children')).toBeInTheDocument();
+  render(<CollapsiblePanel header="Header">Children</CollapsiblePanel>);
+  expect(screen.getByText('Header')).toBeInTheDocument();
+  expect(screen.getByText('Children')).toBeInTheDocument();
 });
 
 describe('header controls', () => {
   describe('when passed header controls without an onClick', () => {
     it('should not call onToggle when headerControls is clicked', () => {
       const onToggle = jest.fn();
-      const rendered = render(
+      render(
         <CollapsiblePanel
           header="Header"
           onToggle={onToggle}
@@ -34,14 +32,14 @@ describe('header controls', () => {
           Children
         </CollapsiblePanel>
       );
-      rendered.getByText('Header Controls').click();
+      screen.getByText('Header Controls').click();
       expect(onToggle).not.toHaveBeenCalled();
     });
   });
   describe('when passed header controls with an onClick', () => {
     it('should not call onToggle when headerControls is clicked', () => {
       const onToggle = jest.fn();
-      const rendered = render(
+      render(
         <CollapsiblePanel
           header="Header"
           onToggle={onToggle}
@@ -52,7 +50,7 @@ describe('header controls', () => {
           Children
         </CollapsiblePanel>
       );
-      rendered.getByText('Header Controls').click();
+      screen.getByText('Header Controls').click();
       expect(onToggle).not.toHaveBeenCalled();
     });
   });
@@ -125,18 +123,18 @@ describe('when onToggle is provided without isClosed', () => {
 
 it('should call "onToggle" when header is clicked', () => {
   const onToggle = jest.fn();
-  const rendered = render(
+  render(
     <CollapsiblePanel header="Header" onToggle={onToggle} isClosed={false}>
       Children
     </CollapsiblePanel>
   );
-  rendered.getByText('Header').click();
+  screen.getByText('Header').click();
   expect(onToggle).toHaveBeenCalledTimes(1);
 });
 
 it('should not call "onToggle" when header is clicked while disabled', () => {
   const onToggle = jest.fn();
-  const rendered = render(
+  render(
     <CollapsiblePanel
       header="Header"
       onToggle={onToggle}
@@ -146,7 +144,7 @@ it('should not call "onToggle" when header is clicked while disabled', () => {
       Children
     </CollapsiblePanel>
   );
-  rendered.getByText('Header').click();
+  screen.getByText('Header').click();
   expect(onToggle).not.toHaveBeenCalled();
 });
 
@@ -180,8 +178,7 @@ describe('aria attributes', () => {
         Children
       </CollapsiblePanel>
     );
-    const getPanelHeader = () =>
-      rendered.container.querySelector('[role=button]');
+    const getPanelHeader = () => screen.getByRole('button');
 
     const panelContentId = CollapsiblePanel.getPanelContentId(
       props.id || 'example'
@@ -196,46 +193,46 @@ describe('aria attributes', () => {
     };
   };
   it('should have a valid aria-controls correspondence', () => {
-    const rendered = renderPanel({ id: 'test-id' });
+    const { getPanelHeader, getPanelContent } = renderPanel({ id: 'test-id' });
 
     const panelContentId = CollapsiblePanel.getPanelContentId('test-id');
 
     // assert that the header button has the aria attribute
-    const headerButton = rendered.getPanelHeader();
+    const headerButton = getPanelHeader();
     expect(headerButton).toHaveAttribute('aria-controls', panelContentId);
 
     // find the correspondent panel content
-    expect(rendered.getPanelContent()).toBeInTheDocument();
+    expect(getPanelContent()).toBeInTheDocument();
   });
   describe('header', () => {
     it('should have aria-expanded true when panel is open', () => {
-      const rendered = renderPanel({ isClosed: false });
+      const { getPanelHeader } = renderPanel({ isClosed: false });
 
-      const headerButton = rendered.getPanelHeader();
+      const headerButton = getPanelHeader();
       expect(headerButton).toHaveAttribute('aria-expanded', 'true');
     });
 
     it('should have aria-expanded false when panel is closed', () => {
-      const rendered = renderPanel({ isClosed: true });
+      const { getPanelHeader } = renderPanel({ isClosed: true });
 
-      const headerButton = rendered.getPanelHeader();
+      const headerButton = getPanelHeader();
       expect(headerButton).toHaveAttribute('aria-expanded', 'false');
     });
   });
 
   describe('content', () => {
     it('should have aria-hidden true when panel is closed', () => {
-      const rendered = renderPanel({ isClosed: true });
+      const { getPanelContent } = renderPanel({ isClosed: true });
 
-      const panelContent = rendered.getPanelContent();
+      const panelContent = getPanelContent();
 
       expect(panelContent).toHaveAttribute('aria-hidden', 'true');
     });
 
     it('should have aria-hidden false when panel is open', () => {
-      const rendered = renderPanel({ isClosed: false });
+      const { getPanelContent } = renderPanel({ isClosed: false });
 
-      const panelContent = rendered.getPanelContent();
+      const panelContent = getPanelContent();
 
       expect(panelContent).toHaveAttribute('aria-hidden', 'false');
     });

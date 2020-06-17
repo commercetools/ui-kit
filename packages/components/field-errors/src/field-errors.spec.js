@@ -1,6 +1,6 @@
 import React from 'react';
 import FieldErrors from './field-errors';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 
 describe('errorTypes', () => {
   it('should export errorTypes', () => {
@@ -10,33 +10,33 @@ describe('errorTypes', () => {
   });
 
   it('should render the "missing" error', () => {
-    const { container } = render(
+    render(
       <FieldErrors
         errors={{ [FieldErrors.errorTypes.MISSING]: true }}
         isVisible={true}
       />
     );
-    expect(container).toHaveTextContent(/field is required/i);
+    expect(screen.getByText(/field is required/i)).toBeInTheDocument();
   });
 
   it('should render the "negative" error', () => {
-    const { container } = render(
+    render(
       <FieldErrors
         errors={{ [FieldErrors.errorTypes.NEGATIVE]: true }}
         isVisible={true}
       />
     );
-    expect(container).toHaveTextContent(/negative/i);
+    expect(screen.getByText(/negative/i)).toBeInTheDocument();
   });
 
   it('should render the "fractions" error', () => {
-    const { container } = render(
+    render(
       <FieldErrors
         errors={{ [FieldErrors.errorTypes.FRACTIONS]: true }}
         isVisible={true}
       />
     );
-    expect(container).toHaveTextContent(/whole number/i);
+    expect(screen.getByText(/whole number/i)).toBeInTheDocument();
   });
 });
 
@@ -54,7 +54,7 @@ describe('when not visible', () => {
 
 describe('error renderers', () => {
   it('should give highest importance to renderError', () => {
-    const { container } = render(
+    render(
       <FieldErrors
         errors={{ [FieldErrors.errorTypes.MISSING]: true }}
         isVisible={true}
@@ -66,11 +66,11 @@ describe('error renderers', () => {
         }
       />
     );
-    expect(container).toHaveTextContent('RENDER_ERROR');
+    expect(screen.getByText('RENDER_ERROR')).toBeInTheDocument();
   });
 
   it('should give second highest importance to renderDefaultError', () => {
-    const { container } = render(
+    render(
       <FieldErrors
         errors={{ [FieldErrors.errorTypes.MISSING]: true }}
         isVisible={true}
@@ -80,11 +80,11 @@ describe('error renderers', () => {
         }
       />
     );
-    expect(container).toHaveTextContent('RENDER_DEFAULT_ERROR');
+    expect(screen.getByText('RENDER_DEFAULT_ERROR')).toBeInTheDocument();
   });
 
   it('should fall back to internal error handling', () => {
-    const { container } = render(
+    render(
       <FieldErrors
         errors={{ [FieldErrors.errorTypes.MISSING]: true }}
         isVisible={true}
@@ -92,6 +92,6 @@ describe('error renderers', () => {
         renderDefaultError={() => null}
       />
     );
-    expect(container).toHaveTextContent(/required/i);
+    expect(screen.getByText(/required/i)).toBeInTheDocument();
   });
 });

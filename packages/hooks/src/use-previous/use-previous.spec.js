@@ -1,6 +1,6 @@
 import React from 'react';
 import isNil from 'lodash/isNil';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import useToggleState from '../use-toggle-state';
 import usePrevious from './use-previous';
 
@@ -36,18 +36,18 @@ const TestComponent = (props) => {
 };
 
 it('should be `undefined` when no previous state', () => {
-  const { getByTestId } = render(<TestComponent />);
-  expect(getByTestId('openState')).toHaveTextContent('open');
-  expect(getByTestId('prevOpenState')).toHaveTextContent('undefined');
+  render(<TestComponent />);
+  expect(screen.getByTestId('openState')).toHaveTextContent('open');
+  expect(screen.getByTestId('prevOpenState')).toHaveTextContent('undefined');
 });
 
 it('should maintain the previous state after changing state', () => {
-  const { getByTestId } = render(<TestComponent />);
-  expect(getByTestId('openState')).toHaveTextContent('open');
-  getByTestId('toggle').click();
-  expect(getByTestId('openState')).toHaveTextContent('closed');
-  expect(getByTestId('prevOpenState')).toHaveTextContent('open');
-  getByTestId('toggle').click();
-  expect(getByTestId('prevOpenState')).toHaveTextContent('closed');
-  expect(getByTestId('openState')).toHaveTextContent('open');
+  render(<TestComponent />);
+  expect(screen.getByTestId('openState')).toHaveTextContent('open');
+  screen.getByTestId('toggle').click();
+  expect(screen.getByTestId('openState')).toHaveTextContent('closed');
+  expect(screen.getByTestId('prevOpenState')).toHaveTextContent('open');
+  screen.getByTestId('toggle').click();
+  expect(screen.getByTestId('prevOpenState')).toHaveTextContent('closed');
+  expect(screen.getByTestId('openState')).toHaveTextContent('open');
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import MultilineTextInput from './multiline-text-input';
 
 class TestComponent extends React.Component {
@@ -62,80 +62,87 @@ describe('MultilineTextInput.isEmpty', () => {
 
 describe('MultilineTextInput', () => {
   it('should forward data-attributes', () => {
-    const { getByLabelText } = render(<TestComponent data-foo="bar" />);
-    expect(getByLabelText('Description')).toHaveAttribute('data-foo', 'bar');
+    render(<TestComponent data-foo="bar" />);
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
+      'data-foo',
+      'bar'
+    );
   });
 
   it('should have role `textbox`', () => {
-    const { getByLabelText } = render(<TestComponent />);
-    expect(getByLabelText('Description')).toHaveAttribute('role', 'textbox');
+    render(<TestComponent />);
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
+      'role',
+      'textbox'
+    );
   });
 
   it('should have role aria-multiline set to `true`', () => {
-    const { getByLabelText } = render(<TestComponent />);
-    expect(getByLabelText('Description')).toHaveAttribute(
+    render(<TestComponent />);
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
       'aria-multiline',
       'true'
     );
   });
 
   it('should pass autoComplete', () => {
-    const { getByLabelText } = render(<TestComponent autoComplete="off" />);
-    expect(getByLabelText('Description')).toHaveAttribute(
+    render(<TestComponent autoComplete="off" />);
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
       'autoComplete',
       'off'
     );
   });
 
   it('should forward html name', () => {
-    const { getByLabelText } = render(<TestComponent name="field1" />);
-    expect(getByLabelText('Description')).toHaveAttribute('name', 'field1');
+    render(<TestComponent name="field1" />);
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
+      'name',
+      'field1'
+    );
   });
 
   it('should render a textarea', () => {
-    const { getByLabelText } = render(<TestComponent />);
-    expect(getByLabelText('Description').tagName.toLowerCase()).toEqual(
+    render(<TestComponent />);
+    expect(screen.getByLabelText('Description').tagName.toLowerCase()).toEqual(
       'textarea'
     );
   });
 
   it('should forward the passed value', () => {
-    const { getByLabelText } = render(<TestComponent value="foo" />);
-    expect(getByLabelText('Description').value).toEqual('foo');
+    render(<TestComponent value="foo" />);
+    expect(screen.getByLabelText('Description').value).toEqual('foo');
   });
 
   it('should forward the placeholder', () => {
-    const { getByLabelText } = render(
-      <TestComponent placeholder="Enter a description" />
-    );
-    expect(getByLabelText('Description')).toHaveAttribute(
+    render(<TestComponent placeholder="Enter a description" />);
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
       'placeholder',
       'Enter a description'
     );
   });
 
   it('should have focus automatically when isAutofocussed is passed', () => {
-    const { getByLabelText } = render(<TestComponent isAutofocussed={true} />);
-    expect(getByLabelText('Description')).toHaveFocus();
+    render(<TestComponent isAutofocussed={true} />);
+    expect(screen.getByLabelText('Description')).toHaveFocus();
   });
 
   it('should have ARIA properties for the readonly state', () => {
-    const { getByLabelText } = render(<TestComponent isReadOnly={true} />);
-    expect(getByLabelText('Description')).toHaveAttribute(
+    render(<TestComponent isReadOnly={true} />);
+    expect(screen.getByLabelText('Description')).toHaveAttribute(
       'aria-readonly',
       'true'
     );
   });
 
   it('should forward disabled attribute when disabled', () => {
-    const { getByLabelText } = render(<TestComponent isDisabled={true} />);
-    expect(getByLabelText('Description')).toBeDisabled();
+    render(<TestComponent isDisabled={true} />);
+    expect(screen.getByLabelText('Description')).toBeDisabled();
   });
 
   it('should call onFocus when the input is focused', () => {
     const onFocus = jest.fn();
-    const { getByLabelText } = render(<TestComponent onFocus={onFocus} />);
-    const textArea = getByLabelText('Description');
+    render(<TestComponent onFocus={onFocus} />);
+    const textArea = screen.getByLabelText('Description');
     textArea.focus();
     expect(textArea).toHaveFocus();
     expect(onFocus).toHaveBeenCalled();
@@ -143,8 +150,8 @@ describe('MultilineTextInput', () => {
 
   it('should call onBlur when the input is loses focus', () => {
     const onBlur = jest.fn();
-    const { getByLabelText } = render(<TestComponent onBlur={onBlur} />);
-    const textArea = getByLabelText('Description');
+    render(<TestComponent onBlur={onBlur} />);
+    const textArea = screen.getByLabelText('Description');
     textArea.focus();
     expect(textArea).toHaveFocus();
     textArea.blur();
@@ -152,9 +159,9 @@ describe('MultilineTextInput', () => {
   });
 
   it('should allow changing value of the textarea', () => {
-    const { getByLabelText } = render(<TestComponent />);
+    render(<TestComponent />);
     const event = { target: { value: 'I want chicken' } };
-    const textArea = getByLabelText('Description');
+    const textArea = screen.getByLabelText('Description');
     fireEvent.focus(textArea);
     fireEvent.change(textArea, event);
     fireEvent.keyDown(textArea, { key: 'Enter' });

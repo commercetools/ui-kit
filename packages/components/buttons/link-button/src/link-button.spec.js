@@ -1,6 +1,11 @@
 import React from 'react';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
+import {
+  screen,
+  render,
+  fireEvent,
+  waitFor,
+} from '../../../../../test/test-utils';
 import LinkButton from './link-button';
 
 const createTestProps = (custom) => ({
@@ -35,37 +40,33 @@ describe('rendering', () => {
   });
 
   it('should render', () => {
-    const { getByLabelText } = render(<LinkButton {...props} />);
-    expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).toBeEnabled();
+    render(<LinkButton {...props} />);
+    expect(screen.getByLabelText('test-button')).toBeInTheDocument();
+    expect(screen.getByLabelText('test-button')).toBeEnabled();
   });
   it('should navigate to link when clicked', async () => {
-    const { getByLabelText, history } = render(<LinkButton {...props} />);
-    fireEvent.click(getByLabelText('test-button'));
+    const { history } = render(<LinkButton {...props} />);
+    fireEvent.click(screen.getByLabelText('test-button'));
     await waitFor(() => {
       expect(history.location.pathname).toBe('/foo/bar');
     });
   });
   it('should pass aria attributes"', () => {
-    const { getByLabelText } = render(
-      <LinkButton {...props} aria-describedby="tooltip-1" />
-    );
-    expect(getByLabelText('test-button')).toHaveAttribute(
+    render(<LinkButton {...props} aria-describedby="tooltip-1" />);
+    expect(screen.getByLabelText('test-button')).toHaveAttribute(
       'aria-describedby',
       'tooltip-1'
     );
   });
   it('should prevent the navigation when "disabled"', async () => {
-    const { getByLabelText, history } = render(
-      <LinkButton {...props} isDisabled={true} />
-    );
-    fireEvent.click(getByLabelText('test-button'));
+    const { history } = render(<LinkButton {...props} isDisabled={true} />);
+    fireEvent.click(screen.getByLabelText('test-button'));
     await waitFor(() => {
       expect(history.location.pathname).toBe('/');
     });
   });
   it('should render icon', () => {
-    const { getByTestId } = render(<LinkButton {...props} />);
-    expect(getByTestId('icon')).toBeInTheDocument();
+    render(<LinkButton {...props} />);
+    expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
 });
