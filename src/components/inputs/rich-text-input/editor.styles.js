@@ -2,12 +2,9 @@
 import styled from '@emotion/styled';
 
 const EditorWrapper = styled.div`
+  align-self: stretch;
   cursor: ${(props) =>
     props.isDisabled || props.isReadOnly ? 'not-allowed' : 'inherit'};
 `;
-const CollapseExpandButtonWrapper = styled.label`
-  display: flex;
-  justify-content: flex-end;
-`;
 
-export { EditorWrapper, CollapseExpandButtonWrapper };
+export { EditorWrapper };

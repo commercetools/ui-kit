@@ -12,7 +12,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import messages from '../../internals/messages/multiline-input';
-import { EditorWrapper, CollapseExpandButtonWrapper } from './editor.styles';
+import { EditorWrapper } from './editor.styles';
 
 const COLLAPSED_HEIGHT = 32;
 
@@ -56,7 +56,7 @@ const Editor = (props) => {
         }
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
-            <Stack scale="xs">
+            <Stack scale="xs" alignItems="flex-end">
               <EditorWrapper
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
@@ -79,23 +79,23 @@ const Editor = (props) => {
                 </RichTextBody>
               </EditorWrapper>
               {renderToggleButton && (
-                <CollapseExpandButtonWrapper>
-                  <FlatButton
-                    onClick={toggle}
-                    label={
-                      isOpen
-                        ? intl.formatMessage(messages.collapse)
-                        : intl.formatMessage(messages.expand)
-                    }
-                    icon={
-                      isOpen ? (
-                        <AngleUpIcon size="small" />
-                      ) : (
-                        <AngleDownIcon size="small" />
-                      )
-                    }
-                  />
-                </CollapseExpandButtonWrapper>
+                // <div>
+                <FlatButton
+                  onClick={toggle}
+                  label={
+                    isOpen
+                      ? intl.formatMessage(messages.collapse)
+                      : intl.formatMessage(messages.expand)
+                  }
+                  icon={
+                    isOpen ? (
+                      <AngleUpIcon size="small" />
+                    ) : (
+                      <AngleDownIcon size="small" />
+                    )
+                  }
+                />
+                // </div>
               )}
             </Stack>
           </Constraints.Horizontal>
