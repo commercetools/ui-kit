@@ -178,15 +178,15 @@ describe('when disabled', () => {
     const { getByLabelText } = renderLocalizedMultilineTextField({
       isDisabled: true,
     });
-    expect(getByLabelText('EN')).toHaveAttribute('disabled');
+    expect(getByLabelText('EN')).toBeDisabled();
   });
   it('should disable all inputs when all languages  are visible', () => {
     const { getByLabelText } = renderLocalizedMultilineTextField({
       isDisabled: true,
       defaultExpandLanguages: true,
     });
-    expect(getByLabelText('EN')).toHaveAttribute('disabled');
-    expect(getByLabelText('DE')).toHaveAttribute('disabled');
+    expect(getByLabelText('EN')).toBeDisabled();
+    expect(getByLabelText('DE')).toBeDisabled();
   });
 });
 

@@ -172,7 +172,7 @@ describe('when disabled', () => {
       const { getByLabelText } = renderLocalizedMultilineTextInput({
         isDisabled: true,
       });
-      expect(getByLabelText('EN')).toHaveAttribute('disabled');
+      expect(getByLabelText('EN')).toBeDisabled();
     });
   });
   describe('when expanded', () => {
@@ -181,8 +181,8 @@ describe('when disabled', () => {
         isDisabled: true,
       });
       getByLabelText(/show all languages/i).click();
-      expect(getByLabelText('EN')).toHaveAttribute('disabled');
-      expect(getByLabelText('FR')).toHaveAttribute('disabled');
+      expect(getByLabelText('EN')).toBeDisabled();
+      expect(getByLabelText('FR')).toBeDisabled();
     });
   });
 });

@@ -79,7 +79,7 @@ it('should check the input when isChecked is "true"', () => {
       Accept Terms
     </CheckboxInput>
   );
-  expect(getByLabelText('Accept Terms')).toHaveAttribute('checked');
+  expect(getByLabelText('Accept Terms')).toBeChecked();
 });
 
 it('should not check the input when isChecked is "false"', () => {
@@ -88,7 +88,7 @@ it('should not check the input when isChecked is "false"', () => {
       Accept Terms
     </CheckboxInput>
   );
-  expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
+  expect(getByLabelText('Accept Terms')).not.toBeChecked();
 });
 
 it('should allow changing the checked state', () => {
@@ -98,7 +98,7 @@ it('should allow changing the checked state', () => {
       Accept Terms
     </CheckboxInput>
   );
-  expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
+  expect(getByLabelText('Accept Terms')).not.toBeChecked();
 
   getByLabelText('Accept Terms').click();
   expect(onChange).toHaveBeenCalledTimes(1);
@@ -111,7 +111,7 @@ it('should allow changing the checked state', () => {
     </CheckboxInput>
   );
 
-  expect(getByLabelText('Accept Terms')).toHaveAttribute('checked');
+  expect(getByLabelText('Accept Terms')).toBeChecked();
 
   getByLabelText('Accept Terms').click();
   expect(onChange).toHaveBeenCalledTimes(2);
@@ -128,7 +128,7 @@ describe('when indeterminate', () => {
         Accept Terms
       </CheckboxInput>
     );
-    expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
+    expect(getByLabelText('Accept Terms')).not.toBeChecked();
   });
 
   // The input is always unchecked when the state is indeterminate!
@@ -142,6 +142,6 @@ describe('when indeterminate', () => {
         Accept Terms
       </CheckboxInput>
     );
-    expect(getByLabelText('Accept Terms')).not.toHaveAttribute('checked');
+    expect(getByLabelText('Accept Terms')).not.toBeChecked();
   });
 });

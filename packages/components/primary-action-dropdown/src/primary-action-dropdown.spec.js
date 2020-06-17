@@ -42,14 +42,14 @@ describe('when all options are disabled', () => {
     );
 
     // it should not allow opening the dropdown
-    expect(getByLabelText('Primary Action')).toHaveAttribute('disabled');
+    expect(getByLabelText('Primary Action')).toBeDisabled();
 
     // it should not invoke callback when primary action is clicked
     getByLabelText('Primary Action').click();
     expect(primaryAction).not.toHaveBeenCalled();
 
     // it should not allow opening remaining actions
-    expect(getByLabelText('Open Dropdown')).toHaveAttribute('disabled');
+    expect(getByLabelText('Open Dropdown')).toBeDisabled();
     getByLabelText('Open Dropdown').click();
     expect(queryByLabelText('Secondary Action')).not.toBeInTheDocument();
   });
@@ -84,7 +84,7 @@ describe('when only primary option is disabled', () => {
     expect(getByLabelText('Primary Action')).toBeInTheDocument();
 
     // it should not invoke callback when disabled primary action is clicked
-    expect(getByLabelText('Primary Action')).toHaveAttribute('disabled');
+    expect(getByLabelText('Primary Action')).toBeDisabled();
     getByLabelText('Primary Action').click();
     expect(primaryAction).not.toHaveBeenCalled();
   });
@@ -118,7 +118,7 @@ describe('when only secondary option is disabled', () => {
     expect(getByLabelText('Secondary Action')).toBeInTheDocument();
 
     // it should not invoke callback when disabled secondary action is clicked
-    expect(getByLabelText('Secondary Action')).toHaveAttribute('disabled');
+    expect(getByLabelText('Secondary Action')).toBeDisabled();
     getByLabelText('Secondary Action').click();
     expect(secondaryAction).not.toHaveBeenCalled();
   });

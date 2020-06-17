@@ -101,7 +101,7 @@ describe('DataTable', () => {
 
     const footerElement = rendered.container.querySelector('tfoot');
 
-    expect(footerElement.textContent).toBe('This is in the footer');
+    expect(footerElement).toHaveTextContent('This is in the footer');
   });
 
   describe('when setting an action for onRowClick', () => {

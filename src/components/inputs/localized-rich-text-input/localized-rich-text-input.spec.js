@@ -75,12 +75,8 @@ describe('LocalizedRichTextInput', () => {
           />
         );
         getByLabelText(/show all languages/i).click();
-        expect(getByTestId('rich-text-data-test-en')).toHaveAttribute(
-          'disabled'
-        );
-        expect(getByTestId('rich-text-data-test-de')).toHaveAttribute(
-          'disabled'
-        );
+        expect(getByTestId('rich-text-data-test-en')).toBeDisabled();
+        expect(getByTestId('rich-text-data-test-de')).toBeDisabled();
       });
     });
     describe('when not expanded', () => {
@@ -92,9 +88,7 @@ describe('LocalizedRichTextInput', () => {
             isDisabled={true}
           />
         );
-        expect(getByTestId('rich-text-data-test-en')).toHaveAttribute(
-          'disabled'
-        );
+        expect(getByTestId('rich-text-data-test-en')).toBeDisabled();
       });
     });
   });

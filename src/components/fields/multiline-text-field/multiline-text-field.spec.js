@@ -131,7 +131,7 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderMultilineTextField({ isDisabled: true });
-    expect(getByLabelText('MultilineTextField')).toHaveAttribute('disabled');
+    expect(getByLabelText('MultilineTextField')).toBeDisabled();
   });
 });
 
