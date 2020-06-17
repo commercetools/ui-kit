@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import {
   customProperties as vars,
   designTokens,
@@ -35,7 +36,21 @@ const getLanguageLabelStyles = (props, theme) => {
     border-right: 0;
     box-shadow: none;
     appearance: none;
+
+    /* cursor should be inherited from parent,
+    * GIVEN parent has 'not-allowed' cursor
+    * THEN the language label should also have that (instead of label's default cursor)
+    */
+    cursor: inherit;
   `;
 };
 
-export { getLanguageLabelStyles };
+const EditorWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  cursor: ${(props) =>
+    props.isDisabled || props.isReadOnly ? 'not-allowed' : 'inherit'};
+`;
+
+export { getLanguageLabelStyles, EditorWrapper };

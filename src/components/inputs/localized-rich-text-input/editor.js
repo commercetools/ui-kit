@@ -14,7 +14,7 @@ import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
-import { getLanguageLabelStyles } from './editor.styles';
+import { getLanguageLabelStyles, EditorWrapper } from './editor.styles';
 import messages from '../../internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
@@ -87,13 +87,10 @@ const Editor = (props) => {
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
         return (
           <Stack scale="xs">
-            <div
+            <EditorWrapper
               key={props.language}
-              css={css`
-                width: 100%;
-                position: relative;
-                display: flex;
-              `}
+              isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
             >
               <label
                 htmlFor={props.id}
@@ -130,7 +127,7 @@ const Editor = (props) => {
               >
                 {props.children}
               </RichTextBody>
-            </div>
+            </EditorWrapper>
             <Row>
               {(() => {
                 if (props.error)
