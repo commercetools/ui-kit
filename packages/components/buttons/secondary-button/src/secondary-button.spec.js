@@ -124,13 +124,36 @@ describe('rendering', () => {
     });
   });
   describe('when using as', () => {
-    it('should navigate to link when clicked', async () => {
-      const { getByLabelText, history } = render(
-        <SecondaryButton {...props} onClick={null} as={Link} to="/foo/bar" />
-      );
-      fireEvent.click(getByLabelText('Add'));
-      await waitFor(() => {
-        expect(history.location.pathname).toBe('/foo/bar');
+    describe('when not disabled', () => {
+      it('should navigate to link when clicked', async () => {
+        const { getByLabelText, history } = render(
+          <SecondaryButton {...props} onClick={null} as={Link} to="/foo/bar" />
+        );
+
+        fireEvent.click(getByLabelText('Add'));
+
+        await waitFor(() => {
+          expect(history.location.pathname).toBe('/foo/bar');
+        });
+      });
+    });
+
+    describe('when disabled', () => {
+      it('should navigate to link when clicked', async () => {
+        const { getByLabelText } = render(
+          <SecondaryButton
+            {...props}
+            isDisabled={true}
+            onClick={null}
+            as={Link}
+            to="/foo/bar"
+          />
+        );
+
+        const button = getByLabelText('Add');
+
+        expect(button).toHaveAttribute('aria-disabled');
+        expect(button).toHaveAttribute('href', '/');
       });
     });
   });

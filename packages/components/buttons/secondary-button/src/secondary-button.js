@@ -34,7 +34,8 @@ export const SecondaryButton = (props) => {
   const buttonAttributes = {
     'data-track-component': 'SecondaryButton',
     ...filterInvalidAttributes(props),
-    ...(shouldUseLinkTag ? { to: props.linkTo } : {}),
+    ...(shouldUseLinkTag && { to: props.linkTo }),
+    ...(props.isDisabled && { to: '#' }),
   };
 
   const containerStyles = [
