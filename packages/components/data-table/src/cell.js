@@ -127,11 +127,12 @@ HeaderCell.propTypes = {
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
   disableResizing: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool.isRequired,
-  horizontalCellAlignment: PropTypes.string,
+  horizontalCellAlignment: PropTypes.string.isRequired,
 };
 HeaderCell.defaultProps = {
   sortDirection: 'desc',
   disableHeaderStickiness: false,
+  horizontalCellAlignment: 'left',
 };
 
 const DataCell = (props) => {
@@ -219,6 +220,9 @@ FooterCell.propTypes = {
 };
 FooterCell.defaultProps = {
   disableFooterStickiness: false,
+};
+FooterCell.propTypes = {
+  horizontalCellAlignment: 'left',
 };
 
 export { HeaderCell, DataCell, FooterCell };
