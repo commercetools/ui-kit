@@ -21,7 +21,7 @@ describe('rendering', () => {
   it('should render', () => {
     const { getByLabelText } = render(<FlatButton {...props} />);
     expect(getByLabelText('Add')).toBeInTheDocument();
-    expect(getByLabelText('Add')).not.toHaveAttribute('disabled');
+    expect(getByLabelText('Add')).toBeEnabled();
   });
   it('should pass aria attributes"', () => {
     const { getByLabelText } = render(
@@ -36,7 +36,7 @@ describe('rendering', () => {
     const { getByLabelText } = render(
       <FlatButton {...props} isDisabled={true} />
     );
-    expect(getByLabelText('Add')).toHaveAttribute('disabled');
+    expect(getByLabelText('Add')).toBeDisabled();
     expect(getByLabelText('Add')).toHaveAttribute('aria-disabled', 'true');
   });
   it('should render icon', () => {

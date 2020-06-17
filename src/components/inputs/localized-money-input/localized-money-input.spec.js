@@ -190,7 +190,7 @@ describe('when disabled', () => {
         isDisabled: true,
         selectedCurrency: 'CAD',
       });
-      expect(queryByLabelText('CAD')).toHaveAttribute('disabled');
+      expect(queryByLabelText('CAD')).toBeDisabled();
     });
   });
   describe('when expanded', () => {
@@ -204,8 +204,8 @@ describe('when disabled', () => {
       const usdInput = getByLabelText('USD');
       const CADInput = getByLabelText('CAD');
 
-      expect(usdInput).toHaveAttribute('disabled');
-      expect(CADInput).toHaveAttribute('disabled');
+      expect(usdInput).toBeDisabled();
+      expect(CADInput).toBeDisabled();
     });
   });
 });

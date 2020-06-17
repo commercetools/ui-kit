@@ -1,3 +1,4 @@
+import 'jest-enzyme';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { CellMeasurer, MultiGrid } from 'react-virtualized';

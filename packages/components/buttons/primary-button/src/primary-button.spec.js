@@ -19,7 +19,7 @@ describe('rendering', () => {
   it('should render', () => {
     const { getByLabelText } = render(<PrimaryButton {...props} />);
     expect(getByLabelText('Add')).toBeInTheDocument();
-    expect(getByLabelText('Add')).not.toHaveAttribute('disabled');
+    expect(getByLabelText('Add')).toBeEnabled();
   });
   it('should render icon', () => {
     const { getByTestId } = render(<PrimaryButton {...props} />);
@@ -44,7 +44,7 @@ describe('rendering', () => {
     const { getByLabelText } = render(
       <PrimaryButton {...props} isDisabled={true} />
     );
-    expect(getByLabelText('Add')).toHaveAttribute('disabled');
+    expect(getByLabelText('Add')).toBeDisabled();
     expect(getByLabelText('Add')).toHaveAttribute('aria-disabled', 'true');
   });
   it('should be marked as "active"', () => {

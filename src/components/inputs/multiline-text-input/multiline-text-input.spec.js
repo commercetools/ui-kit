@@ -129,7 +129,7 @@ describe('MultilineTextInput', () => {
 
   it('should forward disabled attribute when disabled', () => {
     const { getByLabelText } = render(<TestComponent isDisabled={true} />);
-    expect(getByLabelText('Description')).toHaveAttribute('disabled');
+    expect(getByLabelText('Description')).toBeDisabled();
   });
 
   it('should call onFocus when the input is focused', () => {

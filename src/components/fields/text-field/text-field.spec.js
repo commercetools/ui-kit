@@ -129,7 +129,7 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderTextField({ isDisabled: true });
-    expect(getByLabelText('TextField')).toHaveAttribute('disabled');
+    expect(getByLabelText('TextField')).toBeDisabled();
   });
 });
 
