@@ -89,6 +89,7 @@ const DataTable = (props) => {
                 isCondensed={props.isCondensed}
                 cellAlignment={props.cellAlignment}
                 numberOfColumns={props.columns.length + 1}
+                disableFooterStickiness={props.disableFooterStickiness}
               >
                 {props.footer}
               </FooterCell>
@@ -127,6 +128,7 @@ DataTable.propTypes = {
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool,
+  disableFooterStickiness: PropTypes.bool,
   /* the default item (cell) renderer.
   an existing per-column `renderItem` func takes precedence over this */
   itemRenderer: PropTypes.func.isRequired,

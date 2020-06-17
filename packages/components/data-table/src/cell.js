@@ -127,10 +127,11 @@ HeaderCell.propTypes = {
   isCondensed: PropTypes.bool,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
   disableResizing: PropTypes.bool,
-  disableHeaderStickiness: PropTypes.bool,
+  disableHeaderStickiness: PropTypes.bool.isRequired,
 };
 HeaderCell.defaultProps = {
   sortDirection: 'desc',
+  disableHeaderStickiness: false,
 };
 
 const DataCell = (props) => {
@@ -195,7 +196,10 @@ DataCell.defaultProps = {
 };
 
 const FooterCell = (props) => (
-  <BaseFooterCell numberOfColumns={props.numberOfColumns}>
+  <BaseFooterCell
+    numberOfColumns={props.numberOfColumns}
+    disableFooterStickiness={props.disableFooterStickiness}
+  >
     <CellInner alignment={props.alignment} isCondensed={props.isCondensed}>
       {props.children}
     </CellInner>
@@ -207,6 +211,10 @@ FooterCell.propTypes = {
   alignment: PropTypes.oneOf(['left', 'center', 'right']),
   isCondensed: PropTypes.bool,
   numberOfColumns: PropTypes.number.isRequired,
+  disableFooterStickiness: PropTypes.bool.isRequired,
+};
+FooterCell.defaultProps = {
+  disableFooterStickiness: false,
 };
 
 export { HeaderCell, DataCell, FooterCell };
