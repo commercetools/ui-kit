@@ -22,34 +22,34 @@ const getHorizontalAlignmentStyle = (props) => {
   if (props.horizontalCellAlignment === 'center') {
     return css`
       text-align: center;
-      justify-content: center;
+      justify-self: center;
     `;
   }
   if (props.horizontalCellAlignment === 'right') {
     return css`
       text-align: right;
-      justify-content: flex-end;
+      justify-self: flex-end;
     `;
   }
   return css`
     text-align: left;
-    justify-content: flex-start;
+    justify-self: flex-start;
   `;
 };
 
 const getVerticalAlignmentStyle = (props) => {
   if (props.verticalCellAlignment === 'center') {
     return css`
-      align-items: center;
+      align-self: center;
     `;
   }
   if (props.verticalCellAlignment === 'bottom') {
     return css`
-      align-items: flex-end;
+      align-self: flex-end;
     `;
   }
   return css`
-    align-items: flex-start;
+    align-self: flex-start;
   `;
 };
 
@@ -178,6 +178,7 @@ const BaseHeaderCell = styled.th`
 
 const BaseCell = styled.td`
   position: relative;
+  display: flex;
   background-color: ${vars.colorSurface};
   border-bottom: 1px solid ${vars.colorNeutral90};
   ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
@@ -204,9 +205,6 @@ const HeaderCellInner = styled.div`
 `;
 
 const CellInner = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  height: 100%;
   ${(props) => getPaddingStyle(props, false)}
   ${getCellInnerStyles}
 `;
