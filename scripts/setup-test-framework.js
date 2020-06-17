@@ -10,7 +10,6 @@ import 'intl-pluralrules';
 import '@formatjs/intl-relativetimeformat/polyfill-locales';
 
 // enzyme setup
-import 'jest-enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ShallowWrapper from 'enzyme/ShallowWrapper';
