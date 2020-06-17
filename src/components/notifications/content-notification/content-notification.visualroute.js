@@ -4,6 +4,8 @@ import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/content-notification';
 
+const intlMessage = { id: 'intl-message', defaultMessage: 'Hello' };
+
 export const component = () => (
   <Suite>
     <Spec label="when type is error">
@@ -17,6 +19,9 @@ export const component = () => (
     </Spec>
     <Spec label="when type is success">
       <ContentNotification type="success">A Notification</ContentNotification>
+    </Spec>
+    <Spec label="intlMessage">
+      <ContentNotification type="success" intlMessage={intlMessage} />
     </Spec>
   </Suite>
 );
