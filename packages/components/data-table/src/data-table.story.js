@@ -204,7 +204,7 @@ const ColumnConfigForm = (props) => {
       const updatedColumn = {
         ...props.column,
         width: values.width,
-        align: values.align,
+        align: values.align === 'default' ? undefined : values.align,
         isSortable: values.isSortable,
         isTruncated: values.isTruncated,
         disableResizing: values.disableResizing,
@@ -238,7 +238,7 @@ const ColumnConfigForm = (props) => {
               onChange={formik.handleChange}
               value={formik.values.align}
             >
-              <option value={undefined}>default</option>
+              <option value="default">default</option>
               <option value="left">left</option>
               <option value="center">center</option>
               <option value="right">right</option>
