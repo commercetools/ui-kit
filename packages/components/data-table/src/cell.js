@@ -213,15 +213,13 @@ const FooterCell = (props) => (
 FooterCell.displayName = 'FooterCell';
 FooterCell.propTypes = {
   children: PropTypes.node.isRequired,
-  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   isCondensed: PropTypes.bool,
   numberOfColumns: PropTypes.number.isRequired,
   disableFooterStickiness: PropTypes.bool.isRequired,
+  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 FooterCell.defaultProps = {
   disableFooterStickiness: false,
-};
-FooterCell.propTypes = {
   horizontalCellAlignment: 'left',
 };
 
