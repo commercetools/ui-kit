@@ -1,11 +1,11 @@
 import React from 'react';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 
 it('should execute the primary actions callback when primary action is clicked', () => {
   const primaryAction = jest.fn();
-  const { getByLabelText } = render(
+  render(
     <PrimaryActionDropdown>
       <Option iconLeft={<CloseBoldIcon />} onClick={primaryAction}>
         Primary Action
@@ -15,14 +15,14 @@ it('should execute the primary actions callback when primary action is clicked',
       </Option>
     </PrimaryActionDropdown>
   );
-  getByLabelText('Primary Action').click();
+  screen.getByLabelText('Primary Action').click();
   expect(primaryAction).toHaveBeenCalledTimes(1);
 });
 
 describe('when all options are disabled', () => {
   it('should prevent interaction', () => {
     const primaryAction = jest.fn();
-    const { getByLabelText, queryByLabelText } = render(
+    render(
       <PrimaryActionDropdown>
         <Option
           iconLeft={<CloseBoldIcon />}
@@ -42,16 +42,16 @@ describe('when all options are disabled', () => {
     );
 
     // it should not allow opening the dropdown
-    expect(getByLabelText('Primary Action')).toBeDisabled();
+    expect(screen.getByLabelText('Primary Action')).toBeDisabled();
 
     // it should not invoke callback when primary action is clicked
-    getByLabelText('Primary Action').click();
+    screen.getByLabelText('Primary Action').click();
     expect(primaryAction).not.toHaveBeenCalled();
 
     // it should not allow opening remaining actions
-    expect(getByLabelText('Open Dropdown')).toBeDisabled();
-    getByLabelText('Open Dropdown').click();
-    expect(queryByLabelText('Secondary Action')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Open Dropdown')).toBeDisabled();
+    screen.getByLabelText('Open Dropdown').click();
+    expect(screen.queryByLabelText('Secondary Action')).not.toBeInTheDocument();
   });
 });
 
@@ -59,7 +59,7 @@ describe('when only primary option is disabled', () => {
   it('should prevent interaction with primary option', () => {
     const primaryAction = jest.fn();
     const secondaryAction = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <PrimaryActionDropdown>
         <Option
           isDisabled={true}
@@ -76,16 +76,16 @@ describe('when only primary option is disabled', () => {
 
     // it should invoke callback when secondary action is clicked,
     // as secondary option gets hoisted to the top
-    getByLabelText('Secondary Action').click();
+    screen.getByLabelText('Secondary Action').click();
     expect(secondaryAction).toHaveBeenCalled();
 
     // it should allow opening remaining actions
-    getByLabelText('Open Dropdown').click();
-    expect(getByLabelText('Primary Action')).toBeInTheDocument();
+    screen.getByLabelText('Open Dropdown').click();
+    expect(screen.getByLabelText('Primary Action')).toBeInTheDocument();
 
     // it should not invoke callback when disabled primary action is clicked
-    expect(getByLabelText('Primary Action')).toBeDisabled();
-    getByLabelText('Primary Action').click();
+    expect(screen.getByLabelText('Primary Action')).toBeDisabled();
+    screen.getByLabelText('Primary Action').click();
     expect(primaryAction).not.toHaveBeenCalled();
   });
 });
@@ -94,7 +94,7 @@ describe('when only secondary option is disabled', () => {
   it('should prevent interaction with secondary option', () => {
     const primaryAction = jest.fn();
     const secondaryAction = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <PrimaryActionDropdown>
         <Option iconLeft={<CloseBoldIcon />} onClick={primaryAction}>
           Primary Action
@@ -110,23 +110,23 @@ describe('when only secondary option is disabled', () => {
     );
 
     // it should invoke callback when primary action is clicked
-    getByLabelText('Primary Action').click();
+    screen.getByLabelText('Primary Action').click();
     expect(primaryAction).toHaveBeenCalled();
 
     // it should allow opening remaining actions
-    getByLabelText('Open Dropdown').click();
-    expect(getByLabelText('Secondary Action')).toBeInTheDocument();
+    screen.getByLabelText('Open Dropdown').click();
+    expect(screen.getByLabelText('Secondary Action')).toBeInTheDocument();
 
     // it should not invoke callback when disabled secondary action is clicked
-    expect(getByLabelText('Secondary Action')).toBeDisabled();
-    getByLabelText('Secondary Action').click();
+    expect(screen.getByLabelText('Secondary Action')).toBeDisabled();
+    screen.getByLabelText('Secondary Action').click();
     expect(secondaryAction).not.toHaveBeenCalled();
   });
 });
 
 describe('when dropdown is open and body is clicked', () => {
   it('should close the dropdown', () => {
-    const { container, getByLabelText, queryByLabelText } = render(
+    const { container } = render(
       <PrimaryActionDropdown>
         <Option iconLeft={<CloseBoldIcon />} onClick={() => {}}>
           Primary Action
@@ -138,13 +138,13 @@ describe('when dropdown is open and body is clicked', () => {
     );
 
     // it should allow opening remaining actions
-    getByLabelText('Open Dropdown').click();
-    expect(getByLabelText('Secondary Action')).toBeInTheDocument();
+    screen.getByLabelText('Open Dropdown').click();
+    expect(screen.getByLabelText('Secondary Action')).toBeInTheDocument();
 
     // click on document body
     fireEvent.click(container);
 
     // it should close the dropdown
-    expect(queryByLabelText('Secondary Action')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Secondary Action')).not.toBeInTheDocument();
   });
 });

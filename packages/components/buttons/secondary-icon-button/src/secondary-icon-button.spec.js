@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render } from '../../../../../test/test-utils';
+import { screen, render } from '../../../../../test/test-utils';
 import SecondaryIconButton from './secondary-icon-button';
 
 const createTestProps = (custom) => ({
@@ -17,29 +17,25 @@ describe('rendering', () => {
     props = createTestProps();
   });
   it('should render', () => {
-    const { getByLabelText } = render(<SecondaryIconButton {...props} />);
-    expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).toBeEnabled();
+    render(<SecondaryIconButton {...props} />);
+    expect(screen.getByLabelText('test-button')).toBeInTheDocument();
+    expect(screen.getByLabelText('test-button')).toBeEnabled();
   });
   it('should render icon', () => {
-    const { getByTestId } = render(<SecondaryIconButton {...props} />);
-    expect(getByTestId('icon')).toBeInTheDocument();
+    render(<SecondaryIconButton {...props} />);
+    expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
   it('should pass aria attributes', () => {
-    const { getByLabelText } = render(
-      <SecondaryIconButton {...props} aria-describedby="tooltip-1" />
-    );
-    expect(getByLabelText('test-button')).toHaveAttribute(
+    render(<SecondaryIconButton {...props} aria-describedby="tooltip-1" />);
+    expect(screen.getByLabelText('test-button')).toHaveAttribute(
       'aria-describedby',
       'tooltip-1'
     );
   });
   it('should be marked as "disabled"', () => {
-    const { getByLabelText } = render(
-      <SecondaryIconButton {...props} isDisabled={true} />
-    );
-    expect(getByLabelText('test-button')).toBeDisabled();
-    expect(getByLabelText('test-button')).toHaveAttribute(
+    render(<SecondaryIconButton {...props} isDisabled={true} />);
+    expect(screen.getByLabelText('test-button')).toBeDisabled();
+    expect(screen.getByLabelText('test-button')).toHaveAttribute(
       'aria-disabled',
       'true'
     );
@@ -47,11 +43,11 @@ describe('rendering', () => {
   describe('when there is a divergence between `disabled` and `isDisabled`', () => {
     describe('when `isDisabled` and not `disabled`', () => {
       it('should favour `isDisabled`', () => {
-        const { getByLabelText } = render(
+        render(
           <SecondaryIconButton {...props} isDisabled={true} disabled={false} />
         );
-        expect(getByLabelText('test-button')).toBeDisabled();
-        expect(getByLabelText('test-button')).toHaveAttribute(
+        expect(screen.getByLabelText('test-button')).toBeDisabled();
+        expect(screen.getByLabelText('test-button')).toHaveAttribute(
           'aria-disabled',
           'true'
         );
@@ -59,11 +55,11 @@ describe('rendering', () => {
     });
     describe('when not `isDisabled` and `disabled`', () => {
       it('should favour `isDisabled`', () => {
-        const { getByLabelText } = render(
+        render(
           <SecondaryIconButton {...props} isDisabled={false} disabled={true} />
         );
-        expect(getByLabelText('test-button')).toBeEnabled();
-        expect(getByLabelText('test-button')).not.toHaveAttribute(
+        expect(screen.getByLabelText('test-button')).toBeEnabled();
+        expect(screen.getByLabelText('test-button')).not.toHaveAttribute(
           'aria-disabled',
           'true'
         );
@@ -72,26 +68,31 @@ describe('rendering', () => {
   });
   describe('type variations', () => {
     it('should render a button of type "button"', () => {
-      const { getByLabelText } = render(<SecondaryIconButton {...props} />);
-      expect(getByLabelText('test-button')).toHaveAttribute('type', 'button');
+      render(<SecondaryIconButton {...props} />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'type',
+        'button'
+      );
     });
     it('should render a button of type "submit"', () => {
-      const { getByLabelText } = render(
-        <SecondaryIconButton {...props} type="submit" />
+      render(<SecondaryIconButton {...props} type="submit" />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'type',
+        'submit'
       );
-      expect(getByLabelText('test-button')).toHaveAttribute('type', 'submit');
     });
     it('should render a button of type "reset"', () => {
-      const { getByLabelText } = render(
-        <SecondaryIconButton {...props} type="reset" />
+      render(<SecondaryIconButton {...props} type="reset" />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'type',
+        'reset'
       );
-      expect(getByLabelText('test-button')).toHaveAttribute('type', 'reset');
     });
   });
   describe('when used with `as`', () => {
     describe('when as is a valid HTML element', () => {
       it('should render as that HTML element', () => {
-        const { container } = render(
+        render(
           <SecondaryIconButton
             {...props}
             as="a"
@@ -99,7 +100,7 @@ describe('rendering', () => {
             target="_BLANK"
           />
         );
-        const linkButton = container.querySelector('a');
+        const linkButton = screen.getByRole('button');
         expect(linkButton).toHaveAttribute(
           'href',
           'https://www.kanyetothe.com'
@@ -110,7 +111,7 @@ describe('rendering', () => {
     });
     describe('when as is a React component', () => {
       it('should render as that component', () => {
-        const { getByLabelText } = render(
+        render(
           <SecondaryIconButton
             {...props}
             as={Link}
@@ -119,7 +120,7 @@ describe('rendering', () => {
           />
         );
 
-        const linkButton = getByLabelText('test-button');
+        const linkButton = screen.getByLabelText('test-button');
         expect(linkButton).toHaveAttribute('href', '/foo/bar');
         expect(linkButton).toHaveAttribute('target', '_BLANK');
         expect(linkButton).not.toHaveAttribute('type', 'button');

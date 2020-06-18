@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import Text from './text';
 
 const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
@@ -27,47 +27,47 @@ describe('exports', () => {
 
 describe('<Headline>', () => {
   it('should render element tag h1', () => {
-    const { container } = render(
+    render(
       <Text.Headline as="h1" title="tooltip text">
-        {'Title'}
+        Title
       </Text.Headline>
     );
 
-    expect(container.querySelector('h1')).toBeInTheDocument();
+    expect(screen.getByRole('heading')).toBeInTheDocument();
   });
 
   it('should render given text', () => {
-    const { container } = render(
+    render(
       <Text.Headline as="h1" title="tooltip text">
-        {'Title'}
+        Title
       </Text.Headline>
     );
-    expect(container).toHaveTextContent('Title');
+    expect(screen.getByText('Title')).toBeInTheDocument();
   });
 
   it('should render given text with react-intl', () => {
-    const { container } = render(
+    render(
       <Text.Headline as="h1" title="tooltip text" intlMessage={intlMessage} />
     );
-    expect(container).toHaveTextContent('Hello');
+    expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
   it('should set `title` attribute', () => {
-    const { queryByTitle } = render(
+    render(
       <Text.Headline as="h1" title="tooltip text">
-        {'Title'}
+        Title
       </Text.Headline>
     );
-    expect(queryByTitle('tooltip text')).toBeInTheDocument();
+    expect(screen.queryByTitle('tooltip text')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {
-    const { getByTitle } = render(
+    render(
       <Text.Headline as="h1" data-foo="bar" title="headline">
-        {'Title'}
+        Title
       </Text.Headline>
     );
-    expect(getByTitle('headline')).toHaveAttribute('data-foo', 'bar');
+    expect(screen.getByTitle('headline')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
     let log;
@@ -97,50 +97,50 @@ describe('<Headline>', () => {
 
 describe('<Subheadline>', () => {
   it('should render element tag h4', () => {
-    const { container } = render(
+    render(
       <Text.Subheadline as="h4" title="tooltip text">
-        {'Title'}
+        Title
       </Text.Subheadline>
     );
-    expect(container.querySelector('h4')).toBeInTheDocument();
+    expect(screen.getByRole('heading')).toBeInTheDocument();
   });
 
   it('should render given text', () => {
-    const { container } = render(
+    render(
       <Text.Subheadline as="h4" title="tooltip text">
-        {'Subtitle'}
+        Subtitle
       </Text.Subheadline>
     );
-    expect(container).toHaveTextContent('Subtitle');
+    expect(screen.getByText('Subtitle')).toBeInTheDocument();
   });
 
   it('should render given text with react-intl', () => {
-    const { container } = render(
+    render(
       <Text.Subheadline
         as="h4"
         title="tooltip text"
         intlMessage={intlMessage}
       />
     );
-    expect(container).toHaveTextContent('Hello');
+    expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
   it('should set `title` attribute', () => {
-    const { queryByTitle } = render(
+    render(
       <Text.Subheadline as="h4" title="tooltip text">
-        {'Title'}
+        Title
       </Text.Subheadline>
     );
-    expect(queryByTitle('tooltip text')).toBeInTheDocument();
+    expect(screen.queryByTitle('tooltip text')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {
-    const { getByTitle } = render(
+    render(
       <Text.Subheadline as="h4" data-foo="bar" title="subheadline">
-        {'Title'}
+        Title
       </Text.Subheadline>
     );
-    expect(getByTitle('subheadline')).toHaveAttribute('data-foo', 'bar');
+    expect(screen.getByTitle('subheadline')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
     let log;
@@ -170,33 +170,27 @@ describe('<Subheadline>', () => {
 
 describe('<Wrap>', () => {
   it('should render given text', () => {
-    const { container } = render(
-      <Text.Wrap title="tooltip text">{'Text'}</Text.Wrap>
-    );
-    expect(container).toHaveTextContent('Text');
+    render(<Text.Wrap title="tooltip text">Text</Text.Wrap>);
+    expect(screen.getByText('Text')).toBeInTheDocument();
   });
 
   it('should render given text with react-intl', () => {
-    const { container } = render(
-      <Text.Wrap title="tooltip text" intlMessage={intlMessage} />
-    );
-    expect(container).toHaveTextContent('Hello');
+    render(<Text.Wrap title="tooltip text" intlMessage={intlMessage} />);
+    expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
   it('should set `title` attribute', () => {
-    const { queryByTitle } = render(
-      <Text.Wrap title="tooltip text">{'Title'}</Text.Wrap>
-    );
-    expect(queryByTitle('tooltip text')).toBeInTheDocument();
+    render(<Text.Wrap title="tooltip text">Title</Text.Wrap>);
+    expect(screen.queryByTitle('tooltip text')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {
-    const { getByTitle } = render(
+    render(
       <Text.Wrap data-foo="bar" title="wrap">
-        {'Title'}
+        Title
       </Text.Wrap>
     );
-    expect(getByTitle('wrap')).toHaveAttribute('data-foo', 'bar');
+    expect(screen.getByTitle('wrap')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
     let log;
@@ -227,49 +221,45 @@ describe('<Wrap>', () => {
 describe('<Body>', () => {
   it('should render element tag p', () => {
     const { container } = render(
-      <Text.Body title="tooltip text">{'Body'}</Text.Body>
+      <Text.Body title="tooltip text">Body</Text.Body>
     );
     expect(container.querySelector('p')).toBeInTheDocument();
   });
 
   it('should render given text', () => {
-    const { container } = render(
-      <Text.Body title="tooltip text">{'Text'}</Text.Body>
-    );
-    expect(container).toHaveTextContent('Text');
+    render(<Text.Body title="tooltip text">Text</Text.Body>);
+    expect(screen.getByText('Text')).toBeInTheDocument();
   });
 
   it('should render given text with react-intl', () => {
-    const { container } = render(
-      <Text.Body title="tooltip text" intlMessage={intlMessage} />
-    );
-    expect(container).toHaveTextContent('Hello');
+    render(<Text.Body title="tooltip text" intlMessage={intlMessage} />);
+    expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {
-    const { getByTitle } = render(
+    render(
       <Text.Body data-foo="bar" title="body">
-        {'Title'}
+        Title
       </Text.Body>
     );
-    expect(getByTitle('body')).toHaveAttribute('data-foo', 'bar');
+    expect(screen.getByTitle('body')).toHaveAttribute('data-foo', 'bar');
   });
 
   describe('when `as` prop is set to `span`', () => {
     it('should render as a span', () => {
       const { container } = render(
         <Text.Body title="tooltip text" as="span">
-          {'Body'}
+          Body
         </Text.Body>
       );
       expect(container.querySelector('span')).toBeInTheDocument();
     });
 
     it('should render given text with react-intl', () => {
-      const { container } = render(
+      render(
         <Text.Body title="tooltip text" intlMessage={intlMessage} as="span" />
       );
-      expect(container).toHaveTextContent('Hello');
+      expect(screen.getByText('Hello')).toBeInTheDocument();
     });
   });
   describe('when no text is provided', () => {
@@ -307,26 +297,22 @@ describe('<Detail>', () => {
   });
 
   it('should render given text', () => {
-    const { container } = render(
-      <Text.Detail title="tooltip text">{'Text'}</Text.Detail>
-    );
-    expect(container).toHaveTextContent('Text');
+    render(<Text.Detail title="tooltip text">Text</Text.Detail>);
+    expect(screen.getByText('Text')).toBeInTheDocument();
   });
 
   it('should render given text with react-intl', () => {
-    const { container } = render(
-      <Text.Detail title="tooltip text" intlMessage={intlMessage} />
-    );
-    expect(container).toHaveTextContent('Hello');
+    render(<Text.Detail title="tooltip text" intlMessage={intlMessage} />);
+    expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {
-    const { getByTitle } = render(
+    render(
       <Text.Detail data-foo="bar" title="detail">
-        {'Title'}
+        Title
       </Text.Detail>
     );
-    expect(getByTitle('detail')).toHaveAttribute('data-foo', 'bar');
+    expect(screen.getByTitle('detail')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
     let log;

@@ -2,7 +2,7 @@ import React from 'react';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import useToggleState from '../use-toggle-state';
 import useFieldId from './use-field-id';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 
 const sequentialId = createSequentialId('test-id-');
 
@@ -24,20 +24,20 @@ const TestComponent = (props) => {
 
 describe('when id not provided', () => {
   it('should use sequential-id and not increment on rerender', () => {
-    const { container, getByTestId } = render(<TestComponent />);
+    const { container } = render(<TestComponent />);
     expect(container.querySelector('#test-id-1')).toBeInTheDocument();
-    getByTestId('toggle-btn').click();
+    screen.getByTestId('toggle-btn').click();
     expect(container.querySelector('#test-id-1')).toBeInTheDocument();
-    getByTestId('toggle-btn').click();
+    screen.getByTestId('toggle-btn').click();
     expect(container.querySelector('#test-id-1')).toBeInTheDocument();
   });
 });
 
 describe('when id is provided', () => {
   it('should use provided id and not change on rerender', () => {
-    const { container, getByTestId } = render(<TestComponent id="foo-bar" />);
+    const { container } = render(<TestComponent id="foo-bar" />);
     expect(container.querySelector('#foo-bar')).toBeInTheDocument();
-    getByTestId('toggle-btn').click();
+    screen.getByTestId('toggle-btn').click();
     expect(container.querySelector('#foo-bar')).toBeInTheDocument();
   });
 });

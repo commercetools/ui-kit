@@ -1,13 +1,13 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import LoadingSpinner from './loading-spinner';
 
 it('should render children', () => {
-  const { getByTestId } = render(
+  render(
     <LoadingSpinner>
       <div data-testid="child" />
     </LoadingSpinner>
   );
 
-  expect(getByTestId('child')).toBeInTheDocument();
+  expect(screen.getByTestId('child')).toBeInTheDocument();
 });

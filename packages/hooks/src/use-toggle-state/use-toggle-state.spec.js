@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import useToggleState from './use-toggle-state';
 
 const TestComponent = (props) => {
@@ -30,27 +30,27 @@ const TestComponent = (props) => {
 };
 
 it('should be open by default', () => {
-  const { getByTestId } = render(<TestComponent />);
-  expect(getByTestId('openState')).toHaveTextContent('open');
+  render(<TestComponent />);
+  expect(screen.getByTestId('openState')).toHaveTextContent('open');
 });
 
 it('should be possible to toggle the open state', () => {
-  const { getByTestId } = render(<TestComponent />);
-  expect(getByTestId('openState')).toHaveTextContent('open');
-  getByTestId('toggle').click();
-  expect(getByTestId('openState')).toHaveTextContent('closed');
+  render(<TestComponent />);
+  expect(screen.getByTestId('openState')).toHaveTextContent('open');
+  screen.getByTestId('toggle').click();
+  expect(screen.getByTestId('openState')).toHaveTextContent('closed');
 });
 
 it('should be possible to set the state on and off', () => {
-  const { getByTestId } = render(<TestComponent />);
-  expect(getByTestId('openState')).toHaveTextContent('open');
-  getByTestId('setOff').click();
-  expect(getByTestId('openState')).toHaveTextContent('closed');
-  getByTestId('setOn').click();
-  expect(getByTestId('openState')).toHaveTextContent('open');
+  render(<TestComponent />);
+  expect(screen.getByTestId('openState')).toHaveTextContent('open');
+  screen.getByTestId('setOff').click();
+  expect(screen.getByTestId('openState')).toHaveTextContent('closed');
+  screen.getByTestId('setOn').click();
+  expect(screen.getByTestId('openState')).toHaveTextContent('open');
 });
 
 it('should respect the default closed state', () => {
-  const { getByTestId } = render(<TestComponent isDefaultOpen={false} />);
-  expect(getByTestId('openState')).toHaveTextContent('closed');
+  render(<TestComponent isDefaultOpen={false} />);
+  expect(screen.getByTestId('openState')).toHaveTextContent('closed');
 });

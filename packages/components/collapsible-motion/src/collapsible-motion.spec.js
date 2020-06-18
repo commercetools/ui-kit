@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import React from 'react';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import CollapsibleMotion from './collapsible-motion';
 
 describe('uncontrolled mode', () => {
@@ -20,11 +20,9 @@ describe('uncontrolled mode', () => {
       )
     );
 
-    const { getByTestId } = render(
-      <CollapsibleMotion>{renderProp}</CollapsibleMotion>
-    );
+    render(<CollapsibleMotion>{renderProp}</CollapsibleMotion>);
 
-    expect(getByTestId('content-node')).toBeVisible();
+    expect(screen.getByTestId('content-node')).toBeVisible();
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
@@ -34,7 +32,7 @@ describe('uncontrolled mode', () => {
     );
 
     // hide the content
-    fireEvent.click(getByTestId('button'));
+    fireEvent.click(screen.getByTestId('button'));
 
     // ensure the container gets hidden
     expect(renderProp).toHaveBeenLastCalledWith(
@@ -51,7 +49,7 @@ describe('uncontrolled mode', () => {
     );
 
     // show the content
-    fireEvent.click(getByTestId('button'));
+    fireEvent.click(screen.getByTestId('button'));
 
     // ensure the container gets shown again
     expect(renderProp).toHaveBeenLastCalledWith(
@@ -83,11 +81,11 @@ describe('uncontrolled mode', () => {
         )
       );
 
-      const { getByTestId } = render(
+      render(
         <CollapsibleMotion minHeight={50}>{renderProp}</CollapsibleMotion>
       );
 
-      expect(getByTestId('content-node')).toBeVisible();
+      expect(screen.getByTestId('content-node')).toBeVisible();
       expect(renderProp).toHaveBeenLastCalledWith(
         expect.objectContaining({
           isOpen: true,
@@ -97,7 +95,7 @@ describe('uncontrolled mode', () => {
       );
 
       // hide the content
-      fireEvent.click(getByTestId('button'));
+      fireEvent.click(screen.getByTestId('button'));
 
       // ensure the container gets hidden
       expect(renderProp).toHaveBeenLastCalledWith(
@@ -114,7 +112,7 @@ describe('uncontrolled mode', () => {
       );
 
       // show the content
-      fireEvent.click(getByTestId('button'));
+      fireEvent.click(screen.getByTestId('button'));
 
       // ensure the container gets shown again
       expect(renderProp).toHaveBeenLastCalledWith(
@@ -170,9 +168,9 @@ describe('controlled mode', () => {
       }
     }
 
-    const { getByTestId } = render(<TestComponent />);
+    render(<TestComponent />);
 
-    expect(getByTestId('content-node')).toBeVisible();
+    expect(screen.getByTestId('content-node')).toBeVisible();
     expect(renderProp).toHaveBeenLastCalledWith(
       expect.objectContaining({
         isOpen: true,
@@ -182,7 +180,7 @@ describe('controlled mode', () => {
     );
 
     // hide the content
-    fireEvent.click(getByTestId('button'));
+    fireEvent.click(screen.getByTestId('button'));
 
     // ensure the container gets hidden
     expect(renderProp).toHaveBeenLastCalledWith(
@@ -199,7 +197,7 @@ describe('controlled mode', () => {
     );
 
     // show the content
-    fireEvent.click(getByTestId('button'));
+    fireEvent.click(screen.getByTestId('button'));
 
     // ensure the container gets shown again
     expect(renderProp).toHaveBeenLastCalledWith(
@@ -231,11 +229,11 @@ describe('controlled mode', () => {
         )
       );
 
-      const { getByTestId } = render(
+      render(
         <CollapsibleMotion minHeight={50}>{renderProp}</CollapsibleMotion>
       );
 
-      expect(getByTestId('content-node')).toBeVisible();
+      expect(screen.getByTestId('content-node')).toBeVisible();
       expect(renderProp).toHaveBeenLastCalledWith(
         expect.objectContaining({
           isOpen: true,
@@ -245,7 +243,7 @@ describe('controlled mode', () => {
       );
 
       // hide the content
-      fireEvent.click(getByTestId('button'));
+      fireEvent.click(screen.getByTestId('button'));
 
       // ensure the container gets hidden
       expect(renderProp).toHaveBeenLastCalledWith(
@@ -262,7 +260,7 @@ describe('controlled mode', () => {
       );
 
       // show the content
-      fireEvent.click(getByTestId('button'));
+      fireEvent.click(screen.getByTestId('button'));
 
       // ensure the container gets shown again
       expect(renderProp).toHaveBeenLastCalledWith(

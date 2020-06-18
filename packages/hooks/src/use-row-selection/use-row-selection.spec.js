@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import useRowSelection from './use-row-selection';
 
 const testData = [
@@ -62,84 +62,84 @@ const TestComponent = (props) => {
 };
 
 it('should have no selected items by default', () => {
-  const rendered = render(<TestComponent keyName="checked" items={testData} />);
+  render(<TestComponent keyName="checked" items={testData} />);
 
   testData.forEach((item) => {
-    expect(rendered.queryByTestId(item.id)).toHaveTextContent('false');
+    expect(screen.queryByTestId(item.id)).toHaveTextContent('false');
   });
 });
 
 it('should be possible to toggle a row selection state', () => {
-  const rendered = render(<TestComponent keyName="checked" items={testData} />);
+  render(<TestComponent keyName="checked" items={testData} />);
 
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
+  expect(screen.queryByTestId('system-crasher')).toHaveTextContent('false');
 
-  rendered.queryByTestId('toggle system-crasher').click();
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('true');
+  screen.queryByTestId('toggle system-crasher').click();
+  expect(screen.queryByTestId('system-crasher')).toHaveTextContent('true');
 });
 
 it('should be possible to select a row', () => {
-  const rendered = render(<TestComponent keyName="checked" items={testData} />);
+  render(<TestComponent keyName="checked" items={testData} />);
 
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
+  expect(screen.queryByTestId('system-crasher')).toHaveTextContent('false');
 
-  rendered.queryByTestId('select system-crasher').click();
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('true');
+  screen.queryByTestId('select system-crasher').click();
+  expect(screen.queryByTestId('system-crasher')).toHaveTextContent('true');
 });
 
 it('should be possible to deselect a row', () => {
-  const rendered = render(<TestComponent keyName="checked" items={testData} />);
+  render(<TestComponent keyName="checked" items={testData} />);
 
-  rendered.queryByTestId('select system-crasher').click();
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('true');
+  screen.queryByTestId('select system-crasher').click();
+  expect(screen.queryByTestId('system-crasher')).toHaveTextContent('true');
 
-  rendered.queryByTestId('deselect system-crasher').click();
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
+  screen.queryByTestId('deselect system-crasher').click();
+  expect(screen.queryByTestId('system-crasher')).toHaveTextContent('false');
 });
 
 it('should get the correct count of selected rows', () => {
-  const rendered = render(<TestComponent keyName="checked" items={testData} />);
+  render(<TestComponent keyName="checked" items={testData} />);
 
-  expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('0');
+  expect(screen.queryByTestId('selectedCount')).toHaveTextContent('0');
 
-  rendered.queryByTestId('select system-crasher').click();
+  screen.queryByTestId('select system-crasher').click();
 
-  expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('1');
+  expect(screen.queryByTestId('selectedCount')).toHaveTextContent('1');
 
-  rendered.queryByTestId('select birds-of-passage').click();
+  screen.queryByTestId('select birds-of-passage').click();
 
-  expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('2');
+  expect(screen.queryByTestId('selectedCount')).toHaveTextContent('2');
 
-  rendered.queryByTestId('deselect system-crasher').click();
+  screen.queryByTestId('deselect system-crasher').click();
 
-  expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('1');
+  expect(screen.queryByTestId('selectedCount')).toHaveTextContent('1');
 });
 
 it('should be possible to select all rows', () => {
-  const rendered = render(<TestComponent keyName="checked" items={testData} />);
+  render(<TestComponent keyName="checked" items={testData} />);
 
-  rendered.queryByTestId('selectAll').click();
+  screen.queryByTestId('selectAll').click();
 
-  expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('3');
+  expect(screen.queryByTestId('selectedCount')).toHaveTextContent('3');
 
   testData.forEach((item) => {
-    expect(rendered.queryByTestId(item.id)).toHaveTextContent('true');
+    expect(screen.queryByTestId(item.id)).toHaveTextContent('true');
   });
 });
 
 it('should be possible to deselect all rows', () => {
-  const rendered = render(<TestComponent keyName="checked" items={testData} />);
+  render(<TestComponent keyName="checked" items={testData} />);
 
-  rendered.queryByTestId('selectAll').click();
+  screen.queryByTestId('selectAll').click();
 
-  expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('3');
+  expect(screen.queryByTestId('selectedCount')).toHaveTextContent('3');
 
-  rendered.queryByTestId('deselectAll').click();
+  screen.queryByTestId('deselectAll').click();
 
-  expect(rendered.queryByTestId('selectedCount')).toHaveTextContent('0');
+  expect(screen.queryByTestId('selectedCount')).toHaveTextContent('0');
 
   testData.forEach((item) => {
-    expect(rendered.queryByTestId(item.id)).toHaveTextContent('false');
+    expect(screen.queryByTestId(item.id)).toHaveTextContent('false');
   });
 });
 
@@ -150,11 +150,9 @@ it('should respect existing selectable key values', () => {
     { id: 'woman-at-war' },
   ];
 
-  const rendered = render(
-    <TestComponent keyName="selected" items={customRows} />
-  );
+  render(<TestComponent keyName="selected" items={customRows} />);
 
-  expect(rendered.queryByTestId('system-crasher')).toHaveTextContent('false');
-  expect(rendered.queryByTestId('birds-of-passage')).toHaveTextContent('true');
-  expect(rendered.queryByTestId('woman-at-war')).toHaveTextContent('false');
+  expect(screen.queryByTestId('system-crasher')).toHaveTextContent('false');
+  expect(screen.queryByTestId('birds-of-passage')).toHaveTextContent('true');
+  expect(screen.queryByTestId('woman-at-war')).toHaveTextContent('false');
 });

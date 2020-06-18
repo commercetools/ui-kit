@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import ToggleInput from './toggle-input';
 
 class TestComponent extends React.Component {
@@ -37,14 +37,14 @@ class TestComponent extends React.Component {
 
 it('should render children', () => {
   const onChange = jest.fn();
-  const { getByLabelText } = render(
+  render(
     <div>
       <label htmlFor="toggle">Toggle</label>
       <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
     </div>
   );
 
-  expect(getByLabelText('Toggle')).toBeInTheDocument();
+  expect(screen.getByLabelText('Toggle')).toBeInTheDocument();
 });
 
 it('should call onChange when clicked', () => {
@@ -52,19 +52,17 @@ it('should call onChange when clicked', () => {
     event.persist();
   });
 
-  const { getByLabelText } = render(
-    <TestComponent id="toggle" isChecked={false} onChange={onChange} />
-  );
+  render(<TestComponent id="toggle" isChecked={false} onChange={onChange} />);
 
-  getByLabelText('Toggle').click();
+  screen.getByLabelText('Toggle').click();
 
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(getByLabelText('Toggle')).toBeChecked();
+  expect(screen.getByLabelText('Toggle')).toBeChecked();
 });
 
 it('should not call onChange when clicked while disabled', () => {
   const onChange = jest.fn();
-  const { getByLabelText } = render(
+  render(
     <div>
       <label htmlFor="toggle">Toggle</label>
       <ToggleInput
@@ -76,7 +74,7 @@ it('should not call onChange when clicked while disabled', () => {
     </div>
   );
 
-  getByLabelText('Toggle').click();
+  screen.getByLabelText('Toggle').click();
 
   expect(onChange).not.toHaveBeenCalled();
 });
@@ -84,25 +82,25 @@ it('should not call onChange when clicked while disabled', () => {
 describe('checked attribute', () => {
   it('should have checked state when checked', () => {
     const onChange = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <div>
         <label htmlFor="toggle">Toggle</label>
         <ToggleInput id="toggle" isChecked={true} onChange={onChange} />
       </div>
     );
 
-    expect(getByLabelText('Toggle')).toBeChecked();
+    expect(screen.getByLabelText('Toggle')).toBeChecked();
   });
 
   it('should not have checked state when not checked', () => {
     const onChange = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <div>
         <label htmlFor="toggle">Toggle</label>
         <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
       </div>
     );
 
-    expect(getByLabelText('Toggle')).not.toBeChecked();
+    expect(screen.getByLabelText('Toggle')).not.toBeChecked();
   });
 });
