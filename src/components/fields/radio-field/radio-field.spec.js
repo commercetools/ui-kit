@@ -129,8 +129,8 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderRadioField({ isDisabled: true });
-    expect(getByLabelText(/RadioField Option 1/)).toHaveAttribute('disabled');
-    expect(getByLabelText(/RadioField Option 2/)).toHaveAttribute('disabled');
+    expect(getByLabelText(/RadioField Option 1/)).toBeDisabled();
+    expect(getByLabelText(/RadioField Option 2/)).toBeDisabled();
   });
 });
 

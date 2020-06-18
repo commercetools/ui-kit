@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MoneyInput from './money-input';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.
@@ -437,38 +437,44 @@ describe('MoneyInput.isHighPrecision', () => {
 
 describe('MoneyInput', () => {
   it('should forward data-attributes', () => {
-    const { getByLabelText } = render(<TestComponent data-foo="bar" />);
-    expect(getByLabelText('Amount')).toHaveAttribute('data-foo', 'bar');
+    render(<TestComponent data-foo="bar" />);
+    expect(screen.getByLabelText('Amount')).toHaveAttribute('data-foo', 'bar');
   });
 
   it('should have an HTML name based on the passed name', () => {
-    const { getByLabelText } = render(<TestComponent name="foo" />);
-    expect(getByLabelText('Amount')).toHaveAttribute('name', 'foo.amount');
+    render(<TestComponent name="foo" />);
+    expect(screen.getByLabelText('Amount')).toHaveAttribute(
+      'name',
+      'foo.amount'
+    );
   });
 
   it('should pass autoComplete', () => {
-    const { getByLabelText } = render(<TestComponent autoComplete="off" />);
-    expect(getByLabelText('Amount')).toHaveAttribute('autocomplete', 'off');
+    render(<TestComponent autoComplete="off" />);
+    expect(screen.getByLabelText('Amount')).toHaveAttribute(
+      'autocomplete',
+      'off'
+    );
   });
 
   it('should show the passed value', () => {
-    const { getByLabelText, getByTestId } = render(
-      <TestComponent value={{ amount: '20', currencyCode: 'EUR' }} />
+    render(<TestComponent value={{ amount: '20', currencyCode: 'EUR' }} />);
+    expect(screen.getByLabelText('Amount')).toHaveAttribute('value', '20');
+    expect(screen.getByTestId('money-input-container')).toHaveTextContent(
+      'EUR'
     );
-    expect(getByLabelText('Amount')).toHaveAttribute('value', '20');
-    expect(getByTestId('money-input-container')).toHaveTextContent('EUR');
   });
 
   it('should call onFocus when the currency select is focused', () => {
     const onFocus = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <TestComponent
         value={{ amount: '20', currencyCode: 'EUR' }}
         onFocus={onFocus}
       />
     );
-    getByLabelText('EUR').focus();
-    expect(getByLabelText('EUR')).toHaveFocus();
+    screen.getByLabelText('EUR').focus();
+    expect(screen.getByLabelText('EUR')).toHaveFocus();
     expect(onFocus).toHaveBeenCalledWith({
       target: { id: 'some-id.currencyCode', name: 'some-name.currencyCode' },
     });
@@ -476,16 +482,16 @@ describe('MoneyInput', () => {
 
   it('should call onBlur twice when amount input loses focus for outside element', () => {
     const onBlur = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <TestComponent
         value={{ amount: '20', currencyCode: 'EUR' }}
         onBlur={onBlur}
       />
     );
-    getByLabelText('Amount').focus();
-    expect(getByLabelText('Amount')).toHaveFocus();
-    getByLabelText('Amount').blur();
-    expect(getByLabelText('Amount')).not.toHaveFocus();
+    screen.getByLabelText('Amount').focus();
+    expect(screen.getByLabelText('Amount')).toHaveFocus();
+    screen.getByLabelText('Amount').blur();
+    expect(screen.getByLabelText('Amount')).not.toHaveFocus();
 
     // onBlur should be called twice as we want to mark both,
     // currency dropdown and amount input as touched when the element
@@ -500,16 +506,16 @@ describe('MoneyInput', () => {
 
   it('should call onBlur twice when currency select loses focus', () => {
     const onBlur = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <TestComponent
         value={{ amount: '20', currencyCode: 'EUR' }}
         onBlur={onBlur}
       />
     );
-    getByLabelText('EUR').focus();
-    expect(getByLabelText('EUR')).toHaveFocus();
-    getByLabelText('EUR').blur();
-    expect(getByLabelText('EUR')).not.toHaveFocus();
+    screen.getByLabelText('EUR').focus();
+    expect(screen.getByLabelText('EUR')).toHaveFocus();
+    screen.getByLabelText('EUR').blur();
+    expect(screen.getByLabelText('EUR')).not.toHaveFocus();
 
     // onBlur should be called twice as we want to mark both,
     // currency dropdown and amount input as touched when the element
@@ -524,37 +530,37 @@ describe('MoneyInput', () => {
 
   it('should not call onBlur when focus switches from currency to amount', () => {
     const onBlur = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <TestComponent
         value={{ amount: '20', currencyCode: 'EUR' }}
         onBlur={onBlur}
       />
     );
-    getByLabelText('EUR').focus();
-    expect(getByLabelText('EUR')).toHaveFocus();
+    screen.getByLabelText('EUR').focus();
+    expect(screen.getByLabelText('EUR')).toHaveFocus();
 
-    getByLabelText('Amount').focus();
-    expect(getByLabelText('EUR')).not.toHaveFocus();
-    expect(getByLabelText('Amount')).toHaveFocus();
+    screen.getByLabelText('Amount').focus();
+    expect(screen.getByLabelText('EUR')).not.toHaveFocus();
+    expect(screen.getByLabelText('Amount')).toHaveFocus();
 
     expect(onBlur).not.toHaveBeenCalled();
   });
 
   it('should not call onBlur when focus switches from amount to currency', () => {
     const onBlur = jest.fn();
-    const { getByLabelText } = render(
+    render(
       <TestComponent
         value={{ amount: '20', currencyCode: 'EUR' }}
         onBlur={onBlur}
       />
     );
 
-    getByLabelText('Amount').focus();
-    expect(getByLabelText('Amount')).toHaveFocus();
+    screen.getByLabelText('Amount').focus();
+    expect(screen.getByLabelText('Amount')).toHaveFocus();
 
-    getByLabelText('EUR').focus();
-    expect(getByLabelText('EUR')).toHaveFocus();
-    expect(getByLabelText('Amount')).not.toHaveFocus();
+    screen.getByLabelText('EUR').focus();
+    expect(screen.getByLabelText('EUR')).toHaveFocus();
+    expect(screen.getByLabelText('Amount')).not.toHaveFocus();
 
     expect(onBlur).not.toHaveBeenCalled();
   });
@@ -571,9 +577,11 @@ describe('MoneyInput', () => {
         },
       };
     };
-    const { getByLabelText } = render(<TestComponent onChange={onChange} />);
+    render(<TestComponent onChange={onChange} />);
 
-    fireEvent.change(getByLabelText('Amount'), { target: { value: '12' } });
+    fireEvent.change(screen.getByLabelText('Amount'), {
+      target: { value: '12' },
+    });
 
     // event should be the updated amount
     expect(event).toEqual({
@@ -587,9 +595,9 @@ describe('MoneyInput', () => {
 
   it('should not allow changing the amount with invalid numbers', () => {
     const onChange = jest.fn();
-    const { getByLabelText } = render(<TestComponent onChange={onChange} />);
+    render(<TestComponent onChange={onChange} />);
 
-    fireEvent.change(getByLabelText('Amount'), {
+    fireEvent.change(screen.getByLabelText('Amount'), {
       target: { value: 'non number' },
     });
 
@@ -601,15 +609,15 @@ describe('MoneyInput', () => {
 
     // We add labels here to be able to find the elements by their id and to
     // ensure the MoneyInput is usable in forms which use labels
-    const { getByLabelText } = render(<TestComponent onChange={onChange} />);
+    render(<TestComponent onChange={onChange} />);
 
     // open using keyboard
-    fireEvent.focus(getByLabelText('EUR'));
-    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
+    fireEvent.focus(screen.getByLabelText('EUR'));
+    fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'ArrowDown' });
 
     // change currency to USD using keyboard
-    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
-    fireEvent.keyDown(getByLabelText('EUR'), { key: 'Enter' });
+    fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'ArrowDown' });
+    fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'Enter' });
 
     // onChange should be called when changing the currency
     expect(onChange).toHaveBeenCalledWith({
@@ -622,29 +630,29 @@ describe('MoneyInput', () => {
     });
 
     // the amount input should have focus after changing the currency
-    expect(getByLabelText('Amount')).toHaveFocus();
+    expect(screen.getByLabelText('Amount')).toHaveFocus();
   });
 
   it('should format the amount on blur', () => {
-    const { getByLabelText } = render(<TestComponent />);
+    render(<TestComponent />);
 
     // change amount
-    fireEvent.change(getByLabelText('Amount'), {
+    fireEvent.change(screen.getByLabelText('Amount'), {
       target: { value: '12' },
     });
 
     // blur amount
-    fireEvent.blur(getByLabelText('Amount'));
+    fireEvent.blur(screen.getByLabelText('Amount'));
 
     // input should have the formatted value after blurring
-    expect(getByLabelText('Amount')).toHaveAttribute('value', '12.00');
+    expect(screen.getByLabelText('Amount')).toHaveAttribute('value', '12.00');
   });
 
   // The original currency (EUR) uses 2 fraction digits, whereas the
   // next currency (KWD) uses 3 fraction digits.
   // We expect the last fraction to get added when changing the value
   it('should format the amount when the currency changes', async () => {
-    const { getByLabelText } = render(
+    render(
       <TestComponent
         currencies={['EUR', 'KWD']}
         value={{ currencyCode: 'EUR', amount: '12.50' }}
@@ -652,21 +660,21 @@ describe('MoneyInput', () => {
     );
 
     // open currency dropdown using keyboard
-    fireEvent.focus(getByLabelText('EUR'));
-    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
+    fireEvent.focus(screen.getByLabelText('EUR'));
+    fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'ArrowDown' });
 
     // change currency to KWD using keyboard
-    fireEvent.keyDown(getByLabelText('EUR'), { key: 'ArrowDown' });
-    fireEvent.keyDown(getByLabelText('EUR'), { key: 'Enter' });
+    fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'ArrowDown' });
+    fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'Enter' });
 
     // We can't use .toHaveAttribute('value', ' 12.500') as the attribute
     // itself does not change in the DOM tree. Only the actual value changes.
-    expect(getByLabelText('Amount').value).toEqual('12.500');
+    expect(screen.getByLabelText('Amount').value).toEqual('12.500');
   });
 
   describe('when the locale is custom', () => {
     it('should format the amount on blur to US format when locale is en', () => {
-      const { getByLabelText } = render(
+      render(
         <TestComponent
           currencies={['EUR']}
           value={{ currencyCode: 'EUR', amount: '12.5' }}
@@ -675,40 +683,40 @@ describe('MoneyInput', () => {
       );
 
       //
-      getByLabelText('Amount').focus();
-      fireEvent.blur(getByLabelText('Amount'));
+      screen.getByLabelText('Amount').focus();
+      fireEvent.blur(screen.getByLabelText('Amount'));
 
       // We can't use .toHaveAttribute() as the attribute
       // itself does not change in the DOM tree. Only the actual value changes.
-      expect(getByLabelText('Amount').value).toEqual('12.50');
+      expect(screen.getByLabelText('Amount').value).toEqual('12.50');
     });
   });
 
   it('should focus the amount input automatically when isAutofocussed is passed', () => {
-    const { getByLabelText } = render(<TestComponent isAutofocussed={true} />);
-    expect(getByLabelText('Amount')).toHaveFocus();
+    render(<TestComponent isAutofocussed={true} />);
+    expect(screen.getByLabelText('Amount')).toHaveFocus();
   });
 
   it('should render a readonly input when readonly', () => {
-    const { getByLabelText } = render(<TestComponent isReadOnly={true} />);
-    expect(getByLabelText('Amount')).toHaveAttribute('readonly');
+    render(<TestComponent isReadOnly={true} />);
+    expect(screen.getByLabelText('Amount')).toHaveAttribute('readonly');
   });
   it('should render a disabled currency select when readonly', () => {
-    const { getByLabelText } = render(<TestComponent isReadOnly={true} />);
-    expect(getByLabelText('EUR')).toHaveAttribute('disabled');
+    render(<TestComponent isReadOnly={true} />);
+    expect(screen.getByLabelText('EUR')).toBeDisabled();
   });
 
   describe('when there are no currencies', () => {
     it('should call onFocus when the input is focused', () => {
       const onFocus = jest.fn();
-      const { getByLabelText } = render(
+      render(
         <TestComponent
           currencies={[]}
           onFocus={onFocus}
           value={{ currencyCode: 'EUR', amount: '12.33' }}
         />
       );
-      const input = getByLabelText('EUR');
+      const input = screen.getByLabelText('EUR');
       input.focus();
       expect(input).toHaveFocus();
       expect(onFocus).toHaveBeenCalledWith({

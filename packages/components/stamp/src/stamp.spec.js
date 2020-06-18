@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import Stamp from './stamp';
 
 it('should render the children', () => {
-  const { container } = render(<Stamp tone="positive">Hello</Stamp>);
-  expect(container).toHaveTextContent('Hello');
+  render(<Stamp tone="positive">Hello</Stamp>);
+  expect(screen.getByText('Hello')).toBeInTheDocument();
 });

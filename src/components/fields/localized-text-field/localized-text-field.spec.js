@@ -136,15 +136,15 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the inputs', () => {
     const { getByLabelText } = renderLocalizedTextField({ isDisabled: true });
-    expect(getByLabelText('EN')).toHaveAttribute('disabled');
+    expect(getByLabelText('EN')).toBeDisabled();
   });
   it('should disable all inputs when all languages  are visible', () => {
     const { getByLabelText } = renderLocalizedTextField({
       isDisabled: true,
       defaultExpandLanguages: true,
     });
-    expect(getByLabelText('EN')).toHaveAttribute('disabled');
-    expect(getByLabelText('DE')).toHaveAttribute('disabled');
+    expect(getByLabelText('EN')).toBeDisabled();
+    expect(getByLabelText('DE')).toBeDisabled();
   });
 });
 

@@ -149,9 +149,7 @@ describe('when disabled', () => {
     const { getByLabelText } = renderAsyncCreatableSelectField({
       isDisabled: true,
     });
-    expect(getByLabelText('AsyncCreatableSelectField')).toHaveAttribute(
-      'disabled'
-    );
+    expect(getByLabelText('AsyncCreatableSelectField')).toBeDisabled();
   });
 });
 

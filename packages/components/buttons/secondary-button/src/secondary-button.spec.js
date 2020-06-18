@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
+import {
+  screen,
+  render,
+  fireEvent,
+  waitFor,
+} from '../../../../../test/test-utils';
 import SecondaryButton from './secondary-button';
 
 const createTestProps = (custom) => ({
@@ -17,58 +22,54 @@ describe('rendering', () => {
     props = createTestProps();
   });
   it('should render', () => {
-    const { getByLabelText } = render(<SecondaryButton {...props} />);
-    expect(getByLabelText('Add')).toBeInTheDocument();
-    expect(getByLabelText('Add')).not.toHaveAttribute('disabled');
+    render(<SecondaryButton {...props} />);
+    expect(screen.getByLabelText('Add')).toBeInTheDocument();
+    expect(screen.getByLabelText('Add')).toBeEnabled();
   });
   it('should render icon', () => {
-    const { getByTestId } = render(<SecondaryButton {...props} />);
-    expect(getByTestId('icon')).toBeInTheDocument();
+    render(<SecondaryButton {...props} />);
+    expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
   it('should not render icon', () => {
-    const { queryByTestId } = render(
-      <SecondaryButton {...props} iconLeft={undefined} />
-    );
-    expect(queryByTestId('icon')).not.toBeInTheDocument();
+    render(<SecondaryButton {...props} iconLeft={undefined} />);
+    expect(screen.queryByTestId('icon')).not.toBeInTheDocument();
   });
   it('should pass aria attributes', () => {
-    const { getByLabelText } = render(
-      <SecondaryButton {...props} aria-describedby="tooltip-1" />
-    );
-    expect(getByLabelText('Add')).toHaveAttribute(
+    render(<SecondaryButton {...props} aria-describedby="tooltip-1" />);
+    expect(screen.getByLabelText('Add')).toHaveAttribute(
       'aria-describedby',
       'tooltip-1'
     );
   });
   it('should be marked as "disabled"', () => {
-    const { getByLabelText } = render(
-      <SecondaryButton {...props} isDisabled={true} />
+    render(<SecondaryButton {...props} isDisabled={true} />);
+    expect(screen.getByLabelText('Add')).toBeDisabled();
+    expect(screen.getByLabelText('Add')).toHaveAttribute(
+      'aria-disabled',
+      'true'
     );
-    expect(getByLabelText('Add')).toHaveAttribute('disabled');
-    expect(getByLabelText('Add')).toHaveAttribute('aria-disabled', 'true');
   });
   it('should be marked as "active"', () => {
-    const { getByLabelText } = render(
+    render(
       <SecondaryButton {...props} isToggleButton={true} isToggled={true} />
     );
-    expect(getByLabelText('Add')).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByLabelText('Add')).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    );
   });
   describe('type variations', () => {
     it('should render a button of type "button"', () => {
-      const { getByLabelText } = render(<SecondaryButton {...props} />);
-      expect(getByLabelText('Add')).toHaveAttribute('type', 'button');
+      render(<SecondaryButton {...props} />);
+      expect(screen.getByLabelText('Add')).toHaveAttribute('type', 'button');
     });
-    it('should render a button of type "submit"', () => {
-      const { getByLabelText } = render(
-        <SecondaryButton {...props} type="submit" />
-      );
-      expect(getByLabelText('Add')).toHaveAttribute('type', 'submit');
+    it('sscreen.hould render a button of type "submit"', () => {
+      render(<SecondaryButton {...props} type="submit" />);
+      expect(screen.getByLabelText('Add')).toHaveAttribute('type', 'submit');
     });
     it('should render a button of type "reset"', () => {
-      const { getByLabelText } = render(
-        <SecondaryButton {...props} type="reset" />
-      );
-      expect(getByLabelText('Add')).toHaveAttribute('type', 'reset');
+      render(<SecondaryButton {...props} type="reset" />);
+      expect(screen.getByLabelText('Add')).toHaveAttribute('type', 'reset');
     });
   });
   describe('when using "linkTo"', () => {
@@ -93,10 +94,10 @@ describe('rendering', () => {
     });
 
     it('should navigate to link when clicked', async () => {
-      const { getByLabelText, history } = render(
+      const { history } = render(
         <SecondaryButton {...props} onClick={null} linkTo="/foo/bar" />
       );
-      fireEvent.click(getByLabelText('Add'));
+      fireEvent.click(screen.getByLabelText('Add'));
       await waitFor(() => {
         expect(history.location.pathname).toBe('/foo/bar');
       });
@@ -125,10 +126,10 @@ describe('rendering', () => {
   });
   describe('when using as', () => {
     it('should navigate to link when clicked', async () => {
-      const { getByLabelText, history } = render(
+      const { history } = render(
         <SecondaryButton {...props} onClick={null} as={Link} to="/foo/bar" />
       );
-      fireEvent.click(getByLabelText('Add'));
+      fireEvent.click(screen.getByLabelText('Add'));
       await waitFor(() => {
         expect(history.location.pathname).toBe('/foo/bar');
       });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../../test/test-utils';
+import { screen, render } from '../../../../../test/test-utils';
 import AccessibleButton from './accessible-button';
 
 const createTestProps = (custom) => ({
@@ -15,15 +15,13 @@ describe('rendering', () => {
     props = createTestProps();
   });
   it('should render', () => {
-    const { getByLabelText } = render(<AccessibleButton {...props} />);
-    expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+    render(<AccessibleButton {...props} />);
+    expect(screen.getByLabelText('test-button')).toBeInTheDocument();
+    expect(screen.getByLabelText('test-button')).toBeEnabled();
   });
   it('should apply the className "foo" to the button', () => {
-    const { getByLabelText } = render(
-      <AccessibleButton {...props} className="foo" />
-    );
-    expect(getByLabelText('test-button')).toHaveClass('foo');
+    render(<AccessibleButton {...props} className="foo" />);
+    expect(screen.getByLabelText('test-button')).toHaveClass('foo');
   });
   it('should pass a ref', () => {
     const ref = React.createRef();
@@ -32,52 +30,59 @@ describe('rendering', () => {
   });
   it('should be marked as "disabled"', () => {
     const onClick = jest.fn();
-    const { getByLabelText } = render(
-      <AccessibleButton {...props} onClick={onClick} isDisabled={true} />
-    );
-    const button = getByLabelText('test-button');
+    render(<AccessibleButton {...props} onClick={onClick} isDisabled={true} />);
+    const button = screen.getByLabelText('test-button');
 
-    expect(button).toHaveAttribute('disabled');
+    expect(button).toBeDisabled();
     expect(button).toHaveAttribute('aria-disabled', 'true');
 
     button.click();
     expect(onClick).not.toHaveBeenCalled();
   });
   it('should be marked as "active"', () => {
-    const { getByLabelText } = render(
+    render(
       <AccessibleButton {...props} isToggleButton={true} isToggled={true} />
     );
-    expect(getByLabelText('test-button')).toHaveAttribute(
+    expect(screen.getByLabelText('test-button')).toHaveAttribute(
       'aria-pressed',
       'true'
     );
   });
   describe('type variations', () => {
     it('should render a button of type "button"', () => {
-      const { getByLabelText } = render(<AccessibleButton {...props} />);
-      expect(getByLabelText('test-button')).toHaveAttribute('type', 'button');
+      render(<AccessibleButton {...props} />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'type',
+        'button'
+      );
     });
     it('should render a button of type "submit"', () => {
-      const { getByLabelText } = render(
-        <AccessibleButton {...props} type="submit" />
+      render(<AccessibleButton {...props} type="submit" />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'type',
+        'submit'
       );
-      expect(getByLabelText('test-button')).toHaveAttribute('type', 'submit');
     });
     it('should render a button of type "reset"', () => {
-      const { getByLabelText } = render(
-        <AccessibleButton {...props} type="reset" />
+      render(<AccessibleButton {...props} type="reset" />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'type',
+        'reset'
       );
-      expect(getByLabelText('test-button')).toHaveAttribute('type', 'reset');
     });
   });
 
   describe('rendering as a div', () => {
     it('should render a div element with accessibility attributes', () => {
-      const { getByLabelText } = render(
-        <AccessibleButton {...props} as="div" />
+      render(<AccessibleButton {...props} as="div" />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'role',
+        'button'
       );
-      expect(getByLabelText('test-button')).toHaveAttribute('role', 'button');
-      expect(getByLabelText('test-button')).toHaveAttribute('tabindex', '0');
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'tabindex',
+        '0'
+      );
     });
   });
 });

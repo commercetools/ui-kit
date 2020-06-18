@@ -135,7 +135,7 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderTimeField({ isDisabled: true });
-    expect(getByLabelText('TimeField')).toHaveAttribute('disabled');
+    expect(getByLabelText('TimeField')).toBeDisabled();
   });
 });
 

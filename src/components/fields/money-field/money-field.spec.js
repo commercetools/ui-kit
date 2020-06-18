@@ -193,8 +193,8 @@ describe('when `hint` is passed', () => {
 describe('when disabled', () => {
   it('should disable the inputs', () => {
     const { getByLabelText } = renderMoneyField({ isDisabled: true });
-    expect(getByLabelText('Amount')).toHaveAttribute('disabled');
-    expect(getByLabelText('EUR')).toHaveAttribute('disabled');
+    expect(getByLabelText('Amount')).toBeDisabled();
+    expect(getByLabelText('EUR')).toBeDisabled();
   });
 });
 
@@ -203,7 +203,7 @@ describe('when readOnly', () => {
     const { getByLabelText } = renderMoneyField({ isReadOnly: true });
     expect(getByLabelText('Amount')).toHaveAttribute('readonly');
     // currency select should be disabled
-    expect(getByLabelText('EUR')).toHaveAttribute('disabled');
+    expect(getByLabelText('EUR')).toBeDisabled();
   });
 });
 
