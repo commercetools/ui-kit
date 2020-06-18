@@ -75,12 +75,12 @@ DataRow.propTypes = {
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
   verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
+  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   /* the default item (cell) renderer.
     an existing per-column `renderItem` func takes precedence over this */
   itemRenderer: PropTypes.func.isRequired,
   /* the default cell alignment
     an existing per-column `align` property takes precedence over this */
-  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 DataRow.defaultProps = {
   isCondensed: false,
