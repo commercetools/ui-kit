@@ -75,8 +75,15 @@ describe('LocalizedRichTextInput', () => {
           />
         );
         screen.getByLabelText(/show all languages/i).click();
-        expect(screen.getByTestId('rich-text-data-test-en')).toBeDisabled();
-        expect(screen.getByTestId('rich-text-data-test-de')).toBeDisabled();
+
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
+          'disabled'
+        );
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
+        expect(screen.getByTestId('rich-text-data-test-de')).toHaveAttribute(
+          'disabled'
+        );
       });
     });
     describe('when not expanded', () => {
@@ -88,7 +95,10 @@ describe('LocalizedRichTextInput', () => {
             isDisabled={true}
           />
         );
-        expect(screen.getByTestId('rich-text-data-test-en')).toBeDisabled();
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
+          'disabled'
+        );
       });
     });
   });

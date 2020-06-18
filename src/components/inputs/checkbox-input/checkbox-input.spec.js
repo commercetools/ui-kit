@@ -128,7 +128,7 @@ describe('when indeterminate', () => {
         Accept Terms
       </CheckboxInput>
     );
-    expect(screen.getByLabelText('Accept Terms')).toBeChecked();
+    expect(screen.getByLabelText('Accept Terms')).not.toBeChecked();
   });
 
   // The input is always unchecked when the state is indeterminate!
