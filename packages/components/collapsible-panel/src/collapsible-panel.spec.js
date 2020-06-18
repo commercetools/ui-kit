@@ -168,7 +168,7 @@ describe('getPanelContentId', () => {
 
 describe('aria attributes', () => {
   const renderPanel = (props) => {
-    const rendered = render(
+    const { container } = render(
       <CollapsiblePanel
         id="example"
         header="Header"
@@ -184,10 +184,9 @@ describe('aria attributes', () => {
       props.id || 'example'
     );
     const getPanelContent = () =>
-      rendered.container.querySelector(`[id=${panelContentId}]`);
+      container.querySelector(`[id=${panelContentId}]`);
 
     return {
-      ...rendered,
       getPanelHeader,
       getPanelContent,
     };

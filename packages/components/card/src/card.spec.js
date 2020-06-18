@@ -9,6 +9,5 @@ it('should render children', () => {
 
 it('should pass data attributes', () => {
   const { container } = render(<Card data-testid="hefe">Bread</Card>);
-
   expect(container.querySelector("[data-testid='hefe']")).toBeInTheDocument();
 });
