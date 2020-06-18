@@ -10,6 +10,8 @@ import {
   CheckBoldIcon,
 } from '@commercetools-uikit/icons';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { FormattedMessage } from 'react-intl';
+import requiredIf from 'react-required-if';
 
 const getIconContainerBackgroundColour = (props) => {
   switch (props.type) {
@@ -88,7 +90,15 @@ export default class ContentNotification extends React.PureComponent {
 
   static propTypes = {
     type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
-    children: PropTypes.node,
+    children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
+    intlMessage: requiredIf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        defaultMessage: PropTypes.string.isRequired,
+      }),
+      (props) => !React.Children.count(props.children)
+    ),
   };
 
   render() {
@@ -120,7 +130,11 @@ export default class ContentNotification extends React.PureComponent {
             border-color: ${getContentBorderColor(this.props)};
           `}
         >
-          {this.props.children}
+          {this.props.intlMessage ? (
+            <FormattedMessage {...this.props.intlMessage} />
+          ) : (
+            this.props.children
+          )}
         </div>
       </div>
     );
