@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
 import pick from 'lodash/pick';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -13,6 +12,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../internals/rich-text-body';
 import HiddenInput from '../../internals/rich-text-body/hidden-input';
 import messages from '../../internals/messages/multiline-input';
+import { EditorWrapper } from './editor.styles';
 
 const COLLAPSED_HEIGHT = 32;
 
@@ -56,46 +56,46 @@ const Editor = (props) => {
         }
         return (
           <Constraints.Horizontal constraint={props.horizontalConstraint}>
-            <Stack scale="xs">
-              <RichTextBody
-                ref={{
-                  containerRef: ref,
-                  registerContentNode,
-                }}
-                hasError={props.hasError}
+            <Stack scale="xs" alignItems="flex-end">
+              <EditorWrapper
                 isDisabled={props.isDisabled}
-                hasWarning={props.hasWarning}
                 isReadOnly={props.isReadOnly}
-                showExpandIcon={props.showExpandIcon}
-                onClickExpand={props.onClickExpand}
-                editor={props.editor}
-                containerStyles={containerStyles}
               >
-                {props.children}
-              </RichTextBody>
-              {renderToggleButton && (
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: flex-end;
-                  `}
+                <RichTextBody
+                  ref={{
+                    containerRef: ref,
+                    registerContentNode,
+                  }}
+                  hasError={props.hasError}
+                  isDisabled={props.isDisabled}
+                  hasWarning={props.hasWarning}
+                  isReadOnly={props.isReadOnly}
+                  showExpandIcon={props.showExpandIcon}
+                  onClickExpand={props.onClickExpand}
+                  editor={props.editor}
+                  containerStyles={containerStyles}
                 >
-                  <FlatButton
-                    onClick={toggle}
-                    label={
-                      isOpen
-                        ? intl.formatMessage(messages.collapse)
-                        : intl.formatMessage(messages.expand)
-                    }
-                    icon={
-                      isOpen ? (
-                        <AngleUpIcon size="small" />
-                      ) : (
-                        <AngleDownIcon size="small" />
-                      )
-                    }
-                  />
-                </div>
+                  {props.children}
+                </RichTextBody>
+              </EditorWrapper>
+              {renderToggleButton && (
+                // <div>
+                <FlatButton
+                  onClick={toggle}
+                  label={
+                    isOpen
+                      ? intl.formatMessage(messages.collapse)
+                      : intl.formatMessage(messages.expand)
+                  }
+                  icon={
+                    isOpen ? (
+                      <AngleUpIcon size="small" />
+                    ) : (
+                      <AngleDownIcon size="small" />
+                    )
+                  }
+                />
+                // </div>
               )}
             </Stack>
           </Constraints.Horizontal>
