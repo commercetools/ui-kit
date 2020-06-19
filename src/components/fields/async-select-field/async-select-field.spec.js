@@ -141,7 +141,7 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderAsyncSelectField({ isDisabled: true });
-    expect(getByLabelText('AsyncSelectField')).toHaveAttribute('disabled');
+    expect(getByLabelText('AsyncSelectField')).toBeDisabled();
   });
 });
 

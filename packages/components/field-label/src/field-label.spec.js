@@ -1,13 +1,13 @@
 import React from 'react';
 import { WarningIcon } from '@commercetools-uikit/icons';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import FieldLabel from './field-label';
 
 jest.mock('tiny-invariant');
 
 it('should accept a title', () => {
-  const { container } = render(<FieldLabel title="Title" />);
-  expect(container).toHaveTextContent('Title');
+  render(<FieldLabel title="Title" />);
+  expect(screen.getByText('Title')).toBeInTheDocument();
 });
 
 it('should accept a hint', () => {
@@ -16,39 +16,33 @@ it('should accept a hint', () => {
 });
 
 it('should accept a hint icon', () => {
-  const { container, getByTestId } = render(
+  render(
     <FieldLabel
       title="Title"
       hint="Hint"
       hintIcon={<WarningIcon data-testid="warning-icon" />}
     />
   );
-  expect(container).toHaveTextContent('Hint');
-  expect(getByTestId('warning-icon')).toBeInTheDocument();
+  expect(screen.getByText('Hint')).toBeInTheDocument();
+  expect(screen.getByTestId('warning-icon')).toBeInTheDocument();
 });
 
 it('should accept display a required indicator', () => {
-  const { container } = render(
-    <FieldLabel title="Title" hasRequiredIndicator={true} />
-  );
-  expect(container).toHaveTextContent('*');
+  render(<FieldLabel title="Title" hasRequiredIndicator={true} />);
+  expect(screen.getByText('*')).toBeInTheDocument();
 });
 
 describe('when onInfoButtonClick is given', () => {
   it('should show an info button', () => {
     const onInfoButtonClick = jest.fn();
-    const { getByLabelText } = render(
-      <FieldLabel title="Title" onInfoButtonClick={onInfoButtonClick} />
-    );
-    expect(getByLabelText('More Info')).toBeInTheDocument();
-    getByLabelText('More Info').click();
+    render(<FieldLabel title="Title" onInfoButtonClick={onInfoButtonClick} />);
+    expect(screen.getByLabelText('More Info')).toBeInTheDocument();
+    screen.getByLabelText('More Info').click();
     expect(onInfoButtonClick).toHaveBeenCalledTimes(1);
   });
 });
 
 it('should accept a badge', () => {
-  const { getByTestId } = render(
-    <FieldLabel title="Title" badge={<div data-testid="badge" />} />
-  );
-  expect(getByTestId('badge')).toBeInTheDocument();
+  render(<FieldLabel title="Title" badge={<div data-testid="badge" />} />);
+  expect(screen.getByTestId('badge')).toBeInTheDocument();
 });

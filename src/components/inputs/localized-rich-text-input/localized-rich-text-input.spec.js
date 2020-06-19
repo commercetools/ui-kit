@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import LocalizedRichTextInput from './localized-rich-text-input';
 
 // mocks
@@ -16,83 +16,87 @@ const baseProps = {
 
 describe('LocalizedRichTextInput', () => {
   it('should have an HTML name', () => {
-    const { getByTestId } = render(
+    render(
       <LocalizedRichTextInput {...baseProps} name="foo" selectedLanguage="en" />
     );
-    expect(getByTestId('rich-text-data-test-en')).toHaveAttribute(
+    expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
       'name',
       'foo.en'
     );
   });
   describe('when collapsed', () => {
     it('should render input the selected languages (en)', () => {
-      const { getByTestId, queryByLabelText } = render(
-        <LocalizedRichTextInput {...baseProps} selectedLanguage="en" />
-      );
-      expect(getByTestId('rich-text-data-test-en')).toBeInTheDocument();
+      render(<LocalizedRichTextInput {...baseProps} selectedLanguage="en" />);
+      expect(screen.getByTestId('rich-text-data-test-en')).toBeInTheDocument();
       expect(
-        queryByLabelText('rich-text-data-test-de')
+        screen.queryByLabelText('rich-text-data-test-de')
       ).not.toBeInTheDocument();
     });
   });
 
   describe('when expanded', () => {
     it('should render inputs for all the languages (en, de)', () => {
-      const { getByTestId } = render(
+      render(
         <LocalizedRichTextInput
           {...baseProps}
           selectedLanguage="en"
           defaultExpandLanguages={true}
         />
       );
-      expect(getByTestId('rich-text-data-test-en')).toBeInTheDocument();
-      expect(getByTestId('rich-text-data-test-de')).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-en')).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-de')).toBeInTheDocument();
     });
   });
   describe('when expansion controls are hidden', () => {
     it('should render one input per language and no hide button', () => {
-      const { getByTestId, queryByLabelText } = render(
+      render(
         <LocalizedRichTextInput
           {...baseProps}
           selectedLanguage="en"
           hideLanguageExpansionControls={true}
         />
       );
-      expect(getByTestId('rich-text-data-test-en')).toBeInTheDocument();
-      expect(getByTestId('rich-text-data-test-de')).toBeInTheDocument();
-      expect(queryByLabelText(/hide languages/i)).not.toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-en')).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-de')).toBeInTheDocument();
+      expect(
+        screen.queryByLabelText(/hide languages/i)
+      ).not.toBeInTheDocument();
     });
   });
 
   describe('when disabled', () => {
     describe('when expanded', () => {
       it('should render a disabled input for each language (en, de)', () => {
-        const { getByLabelText, getByTestId } = render(
+        render(
           <LocalizedRichTextInput
             {...baseProps}
             selectedLanguage="en"
             isDisabled={true}
           />
         );
-        getByLabelText(/show all languages/i).click();
-        expect(getByTestId('rich-text-data-test-en')).toHaveAttribute(
+        screen.getByLabelText(/show all languages/i).click();
+
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
           'disabled'
         );
-        expect(getByTestId('rich-text-data-test-de')).toHaveAttribute(
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
+        expect(screen.getByTestId('rich-text-data-test-de')).toHaveAttribute(
           'disabled'
         );
       });
     });
     describe('when not expanded', () => {
       it('should render a disabled input', () => {
-        const { getByTestId } = render(
+        render(
           <LocalizedRichTextInput
             {...baseProps}
             selectedLanguage="en"
             isDisabled={true}
           />
         );
-        expect(getByTestId('rich-text-data-test-en')).toHaveAttribute(
+        // eslint-disable-next-line jest-dom/prefer-enabled-disabled
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
           'disabled'
         );
       });
@@ -101,34 +105,34 @@ describe('LocalizedRichTextInput', () => {
   describe('when readonly', () => {
     describe('when expanded', () => {
       it('should render a readonly input for each language (en, de)', () => {
-        const { getByLabelText, getByTestId } = render(
+        render(
           <LocalizedRichTextInput
             {...baseProps}
             selectedLanguage="en"
             isReadOnly={true}
           />
         );
-        getByLabelText(/show all languages/i).click();
-        expect(getByTestId('rich-text-data-test-en')).not.toHaveAttribute(
-          'contenteditable'
-        );
-        expect(getByTestId('rich-text-data-test-de')).not.toHaveAttribute(
-          'contenteditable'
-        );
+        screen.getByLabelText(/show all languages/i).click();
+        expect(
+          screen.getByTestId('rich-text-data-test-en')
+        ).not.toHaveAttribute('contenteditable');
+        expect(
+          screen.getByTestId('rich-text-data-test-de')
+        ).not.toHaveAttribute('contenteditable');
       });
     });
     describe('when not expanded', () => {
       it('should render a disabled input', () => {
-        const { getByTestId } = render(
+        render(
           <LocalizedRichTextInput
             {...baseProps}
             selectedLanguage="en"
             isReadOnly={true}
           />
         );
-        expect(getByTestId('rich-text-data-test-en')).not.toHaveAttribute(
-          'contenteditable'
-        );
+        expect(
+          screen.getByTestId('rich-text-data-test-en')
+        ).not.toHaveAttribute('contenteditable');
       });
     });
   });
@@ -138,17 +142,17 @@ describe('LocalizedRichTextInput', () => {
       de: 'Another error',
     };
     it('should be open all fields and render errors', () => {
-      const { getByText, getByTestId } = render(
+      render(
         <LocalizedRichTextInput
           {...baseProps}
           selectedLanguage="en"
           errors={errors}
         />
       );
-      expect(getByTestId('rich-text-data-test-en')).toBeInTheDocument();
-      expect(getByTestId('rich-text-data-test-de')).toBeInTheDocument();
-      expect(getByText(errors.en)).toBeInTheDocument();
-      expect(getByText(errors.de)).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-en')).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-de')).toBeInTheDocument();
+      expect(screen.getByText(errors.en)).toBeInTheDocument();
+      expect(screen.getByText(errors.de)).toBeInTheDocument();
     });
   });
   describe('when the error is not on the selected language', () => {
@@ -157,16 +161,16 @@ describe('LocalizedRichTextInput', () => {
       de: 'An error',
     };
     it('should be open all fields and render errors', () => {
-      const { getByText, getByTestId } = render(
+      render(
         <LocalizedRichTextInput
           {...baseProps}
           selectedLanguage="en"
           errors={errors}
         />
       );
-      expect(getByTestId('rich-text-data-test-en')).toBeInTheDocument();
-      expect(getByTestId('rich-text-data-test-de')).toBeInTheDocument();
-      expect(getByText(errors.de)).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-en')).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-de')).toBeInTheDocument();
+      expect(screen.getByText(errors.de)).toBeInTheDocument();
     });
   });
   describe('when the error is on the selected language', () => {
@@ -174,17 +178,17 @@ describe('LocalizedRichTextInput', () => {
       const errors = {
         en: 'A value required',
       };
-      const { getByText, getByTestId, queryByLabelText } = render(
+      render(
         <LocalizedRichTextInput
           {...baseProps}
           selectedLanguage="en"
           errors={errors}
         />
       );
-      expect(getByTestId('rich-text-data-test-en')).toBeInTheDocument();
-      expect(getByText(errors.en)).toBeInTheDocument();
+      expect(screen.getByTestId('rich-text-data-test-en')).toBeInTheDocument();
+      expect(screen.getByText(errors.en)).toBeInTheDocument();
       expect(
-        queryByLabelText('rich-text-data-test-de')
+        screen.queryByLabelText('rich-text-data-test-de')
       ).not.toBeInTheDocument();
     });
   });

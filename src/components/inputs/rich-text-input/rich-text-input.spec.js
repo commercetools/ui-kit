@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import RichTextInput from './rich-text-input';
 
 // mocks
@@ -39,11 +39,11 @@ describe('RichTextInput', () => {
       });
 
       it(`should not show the 'expand' button`, () => {
-        const { queryByText } = render(
+        render(
           <RichTextInput {...baseProps} value={initialValue} data-foo="bar" />
         );
 
-        expect(queryByText('Expand')).not.toBeInTheDocument();
+        expect(screen.queryByText('Expand')).not.toBeInTheDocument();
       });
     });
     describe('when height of text is more than 32', () => {
@@ -55,14 +55,12 @@ describe('RichTextInput', () => {
       });
 
       it(`should show the 'expand' button and expand when clicked`, () => {
-        const { getByText } = render(
-          <RichTextInput {...baseProps} value={initialValue} />
-        );
+        render(<RichTextInput {...baseProps} value={initialValue} />);
 
-        const button = getByText('Expand');
+        const button = screen.getByText('Expand');
         expect(button).toBeInTheDocument(); // is this line necessary since getByText will fail if it's not found :thinking:
         button.click();
-        expect(getByText('Collapse')).toBeInTheDocument();
+        expect(screen.getByText('Collapse')).toBeInTheDocument();
       });
     });
   });
@@ -75,7 +73,7 @@ describe('RichTextInput', () => {
         });
       });
       it(`should not show the 'collapse' button`, () => {
-        const { queryByText } = render(
+        render(
           <RichTextInput
             {...baseProps}
             value={initialValue}
@@ -84,7 +82,7 @@ describe('RichTextInput', () => {
           />
         );
 
-        expect(queryByText('Collapse')).not.toBeInTheDocument();
+        expect(screen.queryByText('Collapse')).not.toBeInTheDocument();
       });
     });
     describe('when height of text is more than 32', () => {
@@ -96,7 +94,7 @@ describe('RichTextInput', () => {
       });
 
       it(`should show the 'collapse' button and collapse when clicked`, () => {
-        const { getByText } = render(
+        render(
           <RichTextInput
             {...baseProps}
             value={initialValue}
@@ -104,10 +102,10 @@ describe('RichTextInput', () => {
           />
         );
 
-        const button = getByText('Collapse');
+        const button = screen.getByText('Collapse');
         expect(button).toBeInTheDocument();
         button.click();
-        expect(getByText('Expand')).toBeInTheDocument();
+        expect(screen.getByText('Expand')).toBeInTheDocument();
       });
     });
   });

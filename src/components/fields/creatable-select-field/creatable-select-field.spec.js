@@ -137,7 +137,7 @@ describe('when `badge` is passed', () => {
 describe('when disabled', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderCreatableSelectField({ isDisabled: true });
-    expect(getByLabelText('CreatableSelectField')).toHaveAttribute('disabled');
+    expect(getByLabelText('CreatableSelectField')).toBeDisabled();
   });
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Collapsible from './collapsible';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 
 const TestComponent = (props) => (
   <Collapsible {...props}>
@@ -17,43 +17,41 @@ const TestComponent = (props) => (
 
 describe('when component is uncontrolled', () => {
   it('should be open by default', () => {
-    const { getByTestId } = render(<TestComponent />);
-    expect(getByTestId('openState')).toHaveTextContent('open');
+    render(<TestComponent />);
+    expect(screen.getByTestId('openState')).toHaveTextContent('open');
   });
 
   it('should be possible to toggle the open state', () => {
-    const { getByTestId } = render(<TestComponent />);
-    expect(getByTestId('openState')).toHaveTextContent('open');
-    getByTestId('toggle').click();
-    expect(getByTestId('openState')).toHaveTextContent('closed');
+    render(<TestComponent />);
+    expect(screen.getByTestId('openState')).toHaveTextContent('open');
+    screen.getByTestId('toggle').click();
+    expect(screen.getByTestId('openState')).toHaveTextContent('closed');
   });
 
   it('should respect the default closed state', () => {
-    const { getByTestId } = render(<TestComponent isDefaultClosed={true} />);
-    expect(getByTestId('openState')).toHaveTextContent('closed');
+    render(<TestComponent isDefaultClosed={true} />);
+    expect(screen.getByTestId('openState')).toHaveTextContent('closed');
   });
 });
 
 describe('when component is controlled', () => {
   it('should be open by default', () => {
     const onToggle = jest.fn();
-    const { getByTestId } = render(
-      <TestComponent isClosed={false} onToggle={onToggle} />
-    );
-    expect(getByTestId('openState')).toHaveTextContent('open');
+    render(<TestComponent isClosed={false} onToggle={onToggle} />);
+    expect(screen.getByTestId('openState')).toHaveTextContent('open');
   });
 
   it('should be possible to toggle the open state', () => {
     const onToggle = jest.fn();
-    const { getByTestId, rerender } = render(
+    const { rerender } = render(
       <TestComponent isClosed={false} onToggle={onToggle} />
     );
-    expect(getByTestId('openState')).toHaveTextContent('open');
-    getByTestId('toggle').click();
+    expect(screen.getByTestId('openState')).toHaveTextContent('open');
+    screen.getByTestId('toggle').click();
     expect(onToggle).toHaveBeenCalledTimes(1);
     // simulate the parent react to onToggle by changing the isClosed state
     // to true
     rerender(<TestComponent isClosed={true} onToggle={onToggle} />);
-    expect(getByTestId('openState')).toHaveTextContent('closed');
+    expect(screen.getByTestId('openState')).toHaveTextContent('closed');
   });
 });

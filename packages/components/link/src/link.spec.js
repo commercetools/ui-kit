@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import Link from './link';
 
 const createTestProps = (custom) => ({
@@ -14,8 +14,8 @@ describe('rendering', () => {
       props = createTestProps();
     });
     it('should render a react router link', () => {
-      const { getByText } = render(<Link {...props}>Link</Link>);
-      const link = getByText('Link');
+      render(<Link {...props}>Link</Link>);
+      const link = screen.getByText('Link');
       expect(link).toBeInTheDocument();
     });
   });
@@ -27,8 +27,8 @@ describe('rendering', () => {
       });
     });
     it('should render a react router link', () => {
-      const { getByText } = render(<Link {...props}>Link</Link>);
-      const link = getByText('Link');
+      render(<Link {...props}>Link</Link>);
+      const link = screen.getByText('Link');
       expect(link).toBeInTheDocument();
       expect(link).toHaveProperty('href', props.to);
     });

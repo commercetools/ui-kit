@@ -1,14 +1,14 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../test/test-utils';
 import Stack from './stack';
 
 it('should render children', () => {
-  const { getByTestId } = render(
+  render(
     <Stack>
       <div data-testid="first-child" />
       <div data-testid="second-child" />
     </Stack>
   );
-  expect(getByTestId('first-child')).toBeInTheDocument();
-  expect(getByTestId('second-child')).toBeInTheDocument();
+  expect(screen.getByTestId('first-child')).toBeInTheDocument();
+  expect(screen.getByTestId('second-child')).toBeInTheDocument();
 });

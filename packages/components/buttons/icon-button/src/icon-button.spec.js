@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { render } from '../../../../../test/test-utils';
+import { screen, render } from '../../../../../test/test-utils';
 import IconButton from './icon-button';
 
 const createTestProps = (custom) => ({
@@ -19,32 +19,28 @@ describe('rendering', () => {
     props = createTestProps();
   });
   it('should render', () => {
-    const { getByLabelText } = render(<IconButton {...props} />);
-    expect(getByLabelText('test-button')).toBeInTheDocument();
-    expect(getByLabelText('test-button')).not.toHaveAttribute('disabled');
+    render(<IconButton {...props} />);
+    expect(screen.getByLabelText('test-button')).toBeInTheDocument();
+    expect(screen.getByLabelText('test-button')).toBeEnabled();
   });
   it('should be pass aria attributes', () => {
-    const { getByLabelText } = render(
-      <IconButton {...props} aria-describedby="tooltip-1" />
-    );
-    expect(getByLabelText('test-button')).toHaveAttribute(
+    render(<IconButton {...props} aria-describedby="tooltip-1" />);
+    expect(screen.getByLabelText('test-button')).toHaveAttribute(
       'aria-describedby',
       'tooltip-1'
     );
   });
   it('should be marked as "disabled"', () => {
-    const { getByLabelText } = render(
-      <IconButton {...props} isDisabled={true} />
-    );
-    expect(getByLabelText('test-button')).toHaveAttribute('disabled');
-    expect(getByLabelText('test-button')).toHaveAttribute(
+    render(<IconButton {...props} isDisabled={true} />);
+    expect(screen.getByLabelText('test-button')).toBeDisabled();
+    expect(screen.getByLabelText('test-button')).toHaveAttribute(
       'aria-disabled',
       'true'
     );
   });
   it('should render icon', () => {
-    const { getByTestId } = render(<IconButton {...props} />);
-    expect(getByTestId('icon')).toBeInTheDocument();
+    render(<IconButton {...props} />);
+    expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
   describe('when used with `as`', () => {
     describe('when as is a valid HTML element', () => {
@@ -67,11 +63,11 @@ describe('rendering', () => {
     });
     describe('when as is a React component', () => {
       it('should render as that component', () => {
-        const { getByLabelText } = render(
+        render(
           <IconButton {...props} as={Link} to="foo/bar" target="_BLANK" />
         );
 
-        const linkButton = getByLabelText('test-button');
+        const linkButton = screen.getByLabelText('test-button');
         expect(linkButton).toHaveAttribute('href', '/foo/bar');
       });
     });
