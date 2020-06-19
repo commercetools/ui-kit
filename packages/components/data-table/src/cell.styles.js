@@ -18,19 +18,38 @@ const getPaddingStyle = (props, isHeader) => {
   `;
 };
 
-const getAlignmentStyle = (props) => {
-  if (props.alignment === 'center') {
+const getHorizontalAlignmentStyle = (props) => {
+  if (props.horizontalCellAlignment === 'center') {
     return css`
       text-align: center;
+      justify-self: center;
     `;
   }
-  if (props.alignment === 'right') {
+  if (props.horizontalCellAlignment === 'right') {
     return css`
       text-align: right;
+      justify-self: flex-end;
     `;
   }
   return css`
     text-align: left;
+    justify-self: flex-start;
+  `;
+};
+
+const getVerticalAlignmentStyle = (props) => {
+  if (props.verticalCellAlignment === 'center') {
+    return css`
+      align-self: center;
+    `;
+  }
+  if (props.verticalCellAlignment === 'bottom') {
+    return css`
+      align-self: flex-end;
+    `;
+  }
+  return css`
+    align-self: flex-start;
   `;
 };
 
@@ -79,7 +98,8 @@ const getOutlineStyles = () => css`
 
 const getCellInnerStyles = (props) => {
   return [
-    getAlignmentStyle(props),
+    getVerticalAlignmentStyle(props),
+    getHorizontalAlignmentStyle(props),
     getTruncatedStyle(props),
     getOutlineStyles(),
     props.shouldIgnoreRowClick &&
@@ -158,6 +178,7 @@ const BaseHeaderCell = styled.th`
 
 const BaseCell = styled.td`
   position: relative;
+  display: flex;
   background-color: ${vars.colorSurface};
   border-bottom: 1px solid ${vars.colorNeutral90};
   ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
@@ -184,6 +205,9 @@ const HeaderCellInner = styled.div`
 `;
 
 const CellInner = styled.div`
+  box-sizing: border-box;
+  flex: 1;
+
   ${(props) => getPaddingStyle(props, false)}
   ${getCellInnerStyles}
 `;
