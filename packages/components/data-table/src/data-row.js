@@ -22,7 +22,6 @@ const DataRow = (props) => {
 
   return (
     <Row
-      key={props.row.id}
       onClick={
         props.onRowClick
           ? () => props.onRowClick(props.row, props.rowIndex)
