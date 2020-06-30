@@ -82,7 +82,13 @@ const DataTable = (props) => {
         </Header>
         <Body>
           {props.rows.map((row, rowIndex) => (
-            <DataRow {...props} row={row} key={row.id} rowIndex={rowIndex} />
+            <DataRow
+              {...props}
+              row={row}
+              key={row.id}
+              rowIndex={rowIndex}
+              shouldClipContent={hasTableBeenResized}
+            />
           ))}
         </Body>
         {props.footer && (

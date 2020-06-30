@@ -19,7 +19,6 @@ const TableGrid = styled.table`
   position: relative;
   z-index: 0;
   display: grid;
-  background-color: ${vars.colorSurface};
   /* stylelint-disable function-whitespace-after */
   grid-template-columns: ${(props) =>
     props.columns.map((column) => column.width || 'auto').join(' ')};
