@@ -190,9 +190,6 @@ const initialColumnsState = [
   },
 ];
 
-const renderItem = (cell, isRowCollapsed) =>
-  isRowCollapsed ? <b>{cell}</b> : cell;
-
 const ColumnConfigForm = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -212,10 +209,6 @@ const ColumnConfigForm = (props) => {
         isTruncated: values.isTruncated,
         disableResizing: values.disableResizing,
         shouldIgnoreRowClick: values.shouldIgnoreRowClick,
-        renderItem: values.useCustomTruncation
-          ? (row, isRowCollapsed) =>
-              renderItem(row[props.column.key], isRowCollapsed)
-          : null,
       };
       props.updateColumn(updatedColumn);
     },
@@ -326,7 +319,6 @@ ColumnConfigForm.propTypes = {
     isTruncated: PropTypes.bool,
     disableResizing: PropTypes.bool,
     shouldIgnoreRowClick: PropTypes.bool,
-    itemRenderer: PropTypes.func,
   }),
 };
 
