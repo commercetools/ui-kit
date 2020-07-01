@@ -190,6 +190,9 @@ const initialColumnsState = [
   },
 ];
 
+const renderItem = (cell, isRowCollapsed) =>
+  isRowCollapsed ? <b>{cell}</b> : cell;
+
 const ColumnConfigForm = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -209,6 +212,10 @@ const ColumnConfigForm = (props) => {
         isTruncated: values.isTruncated,
         disableResizing: values.disableResizing,
         shouldIgnoreRowClick: values.shouldIgnoreRowClick,
+        renderItem: values.useCustomTruncation
+          ? (row, isRowCollapsed) =>
+              renderItem(row[props.column.key], isRowCollapsed)
+          : null,
       };
       props.updateColumn(updatedColumn);
     },
@@ -247,17 +254,6 @@ const ColumnConfigForm = (props) => {
         </div>
         <div>
           <label>
-            isTruncated
-            <input
-              name="isTruncated"
-              type="checkbox"
-              onChange={formik.handleChange}
-              checked={formik.values.isTruncated}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
             shouldIgnoreRowClick
             <input
               name="shouldIgnoreRowClick"
@@ -289,6 +285,28 @@ const ColumnConfigForm = (props) => {
             />
           </label>
         </div>
+        <div>
+          <label>
+            isTruncated
+            <input
+              name="isTruncated"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.isTruncated}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            useCustomTruncation
+            <input
+              name="useCustomTruncation"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.useCustomTruncation}
+            />
+          </label>
+        </div>
         <button type="submit" disabled={!formik.dirty}>
           {'Apply Changes'}
         </button>
@@ -300,6 +318,7 @@ ColumnConfigForm.displayName = 'ColumnConfigForm';
 ColumnConfigForm.propTypes = {
   updateColumn: PropTypes.func.isRequired,
   column: PropTypes.shape({
+    key: PropTypes.string,
     label: PropTypes.string,
     width: PropTypes.string,
     align: PropTypes.string,
@@ -307,6 +326,7 @@ ColumnConfigForm.propTypes = {
     isTruncated: PropTypes.bool,
     disableResizing: PropTypes.bool,
     shouldIgnoreRowClick: PropTypes.bool,
+    itemRenderer: PropTypes.func,
   }),
 };
 
