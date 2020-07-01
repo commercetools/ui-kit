@@ -311,7 +311,6 @@ ColumnConfigForm.displayName = 'ColumnConfigForm';
 ColumnConfigForm.propTypes = {
   updateColumn: PropTypes.func.isRequired,
   column: PropTypes.shape({
-    key: PropTypes.string,
     label: PropTypes.string,
     width: PropTypes.string,
     align: PropTypes.string,
