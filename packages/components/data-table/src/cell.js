@@ -51,6 +51,7 @@ const HeaderCellWrapper = (props) => {
     <BaseHeaderCell
       ref={headerRef}
       data-testid={`header-${props.columnKey}`}
+      shouldClipContent={columnResizingReducer.getHasTableBeenResized()}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
       {props.children}

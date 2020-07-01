@@ -45,6 +45,7 @@ const DataRow = (props) => {
             props.columns.length,
             columnIndex
           )}
+          shouldClipContent={props.shouldClipContent}
           shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}
         >
           {column.renderItem
@@ -73,6 +74,7 @@ DataRow.propTypes = {
   ).isRequired,
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
+  shouldClipContent: PropTypes.bool.isRequired,
   verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
   horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   /* the default item (cell) renderer.
@@ -83,6 +85,7 @@ DataRow.propTypes = {
 };
 DataRow.defaultProps = {
   isCondensed: false,
+  shouldClipContent: false,
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
   itemRenderer: (row, column) => row[column.key],
