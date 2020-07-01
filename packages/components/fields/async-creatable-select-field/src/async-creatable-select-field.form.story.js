@@ -11,9 +11,9 @@ import {
 } from '@storybook/addon-knobs/react';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
-import Section from '../../../../.storybook/decorators/section';
-import FormikBox from '../../../../.storybook/decorators/formik-box';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import FormikBox from '../../../../../.storybook/decorators/formik-box';
+import Readme from '../README.md';
 import AsyncCreatableSelectField from './async-creatable-select-field';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

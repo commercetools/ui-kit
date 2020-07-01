@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Value } from 'react-value';
+import * as icons from '@commercetools-uikit/icons';
 import {
   withKnobs,
   boolean,
@@ -10,9 +11,8 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs/react';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
-import * as icons from '../../icons';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import AsyncCreatableSelectField from './async-creatable-select-field';
 
 const animalOptions = [
