@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/money-input",
-  "version": "10.22.0",
+  "version": "10.23.0",
   "description": "",
   "main": "dist/money-input.cjs.js",
   "module": "dist/money-input.esm.js",
@@ -22,7 +22,7 @@
     "@commercetools-uikit/hooks": "10.21.0",
     "@commercetools-uikit/icons": "10.22.0",
     "@commercetools-uikit/select-utils": "10.22.0",
-    "@commercetools-uikit/tooltip": "10.21.0",
+    "@commercetools-uikit/tooltip": "10.23.0",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",

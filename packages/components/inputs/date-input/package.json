@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/date-input",
-  "version": "10.22.1",
+  "version": "10.23.0",
   "description": "",
   "main": "dist/date-input.cjs.js",
   "module": "dist/date-input.esm.js",
@@ -26,7 +26,7 @@
     "@commercetools-uikit/select-utils": "10.22.0",
     "@commercetools-uikit/spacings-inline": "10.21.0",
     "@commercetools-uikit/text": "10.21.0",
-    "@commercetools-uikit/tooltip": "10.21.0",
+    "@commercetools-uikit/tooltip": "10.23.0",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",

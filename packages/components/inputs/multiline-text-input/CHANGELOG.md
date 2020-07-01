@@ -1,5 +1,12 @@
 # @commercetools-uikit/multiline-text-input
 
+## 10.23.0
+
+### Patch Changes
+
+- Updated dependencies [[`5f83cc7`](https://github.com/commercetools/ui-kit/commit/5f83cc7945882c21e3cd14a515cb9c8dea7d6a2a)]:
+  - @commercetools-uikit/tooltip@10.23.0
+
 ## 10.22.1
 
 ### Patch Changes
