@@ -1,5 +1,16 @@
 # @commercetools-uikit/fields
 
+## 10.23.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/date-field@10.23.0
+  - @commercetools-uikit/date-range-field@10.23.0
+  - @commercetools-uikit/date-time-field@10.23.0
+  - @commercetools-uikit/money-field@10.23.0
+  - @commercetools-uikit/multiline-text-field@10.23.0
+
 ## 10.22.2
 
 ### Patch Changes
