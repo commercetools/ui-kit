@@ -289,17 +289,6 @@ const ColumnConfigForm = (props) => {
             />
           </label>
         </div>
-        <div>
-          <label>
-            useCustomTruncation
-            <input
-              name="useCustomTruncation"
-              type="checkbox"
-              onChange={formik.handleChange}
-              checked={formik.values.useCustomTruncation}
-            />
-          </label>
-        </div>
         <button type="submit" disabled={!formik.dirty}>
           {'Apply Changes'}
         </button>
