@@ -1,6 +1,6 @@
 import React from 'react';
 import { DateTimeField } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = '2018-11-30T13:25:59.500Z';
 
