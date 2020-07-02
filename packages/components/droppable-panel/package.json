@@ -18,6 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/accessible-button": "10.22.1",
+    "@commercetools-uikit/tag": "10.22.1",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/hooks": "10.21.0",
     "@commercetools-uikit/utils": "10.21.0",
