@@ -49,8 +49,8 @@ const DataRow = (props) => {
           shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}
         >
           {column.renderItem
-            ? column.renderItem(props.row)
-            : props.itemRenderer(props.row, column)}
+            ? column.renderItem(props.row, isRowCollapsed)
+            : props.itemRenderer(props.row, column, isRowCollapsed)}
         </DataCell>
       ))}
     </Row>
