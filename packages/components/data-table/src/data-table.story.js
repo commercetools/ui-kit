@@ -247,6 +247,17 @@ const ColumnConfigForm = (props) => {
         </div>
         <div>
           <label>
+            isTruncated
+            <input
+              name="isTruncated"
+              type="checkbox"
+              onChange={formik.handleChange}
+              checked={formik.values.isTruncated}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
             shouldIgnoreRowClick
             <input
               name="shouldIgnoreRowClick"
@@ -275,17 +286,6 @@ const ColumnConfigForm = (props) => {
               type="checkbox"
               onChange={formik.handleChange}
               checked={formik.values.disableResizing}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            isTruncated
-            <input
-              name="isTruncated"
-              type="checkbox"
-              onChange={formik.handleChange}
-              checked={formik.values.isTruncated}
             />
           </label>
         </div>
