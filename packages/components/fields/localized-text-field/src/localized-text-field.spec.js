@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render } from '../../../../test/test-utils';
+import { render } from '../../../../../test/test-utils';
 import LocalizedTextField from './localized-text-field';
 
 // This component is used to enable easy testing.
