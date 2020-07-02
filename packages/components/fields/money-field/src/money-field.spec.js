@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { render, fireEvent } from '../../../../../test/test-utils';
 import MoneyField from './money-field';
-import MoneyInput from '../../inputs/money-input';
+import MoneyInput from '../../../inputs/money-input';
 
 // This component is used to enable easy testing.
 // It overwrites the onChange function and places a label for the

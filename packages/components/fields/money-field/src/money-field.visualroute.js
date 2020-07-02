@@ -1,6 +1,6 @@
 import React from 'react';
 import { MoneyField } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = {
   amount: '13.50',

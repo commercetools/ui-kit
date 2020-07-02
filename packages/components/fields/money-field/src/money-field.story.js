@@ -9,11 +9,11 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import { injectIntl } from 'react-intl';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
-import * as icons from '../../icons';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
+import * as icons from '../../../icons';
 import MoneyField from './money-field';
-import MoneyInput from '../../inputs/money-input';
+import MoneyInput from '../../../inputs/money-input';
 
 // This uses a dedicated story component to keep track of state instead of
 // react-value. The reason is that MoneyInput can call twice onChange before

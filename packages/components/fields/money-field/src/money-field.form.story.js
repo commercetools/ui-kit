@@ -7,11 +7,11 @@ import { withKnobs, select } from '@storybook/addon-knobs/react';
 import { injectIntl } from 'react-intl';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
-import Section from '../../../../.storybook/decorators/section';
-import FormikBox from '../../../../.storybook/decorators/formik-box';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import FormikBox from '../../../../../.storybook/decorators/formik-box';
+import Readme from '../README.md';
 import MoneyField from './money-field';
-import MoneyInput from '../../inputs/money-input';
+import MoneyInput from '../../../../../src/components/inputs/money-input';
 
 const formToDoc = (values, locale) => ({
   price: MoneyInput.convertToMoneyValue(values.price, locale),
