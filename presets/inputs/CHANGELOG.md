@@ -1,5 +1,19 @@
 # @commercetools-uikit/inputs
 
+## 10.23.0
+
+### Patch Changes
+
+- Updated dependencies [[`445263a`](https://github.com/commercetools/ui-kit/commit/445263a777938deb798453d2975e87b9a5e4077a)]:
+  - @commercetools-uikit/localized-rich-text-input@10.23.0
+  - @commercetools-uikit/rich-text-input@10.23.0
+  - @commercetools-uikit/date-input@10.23.0
+  - @commercetools-uikit/date-range-input@10.23.0
+  - @commercetools-uikit/date-time-input@10.23.0
+  - @commercetools-uikit/localized-money-input@10.23.0
+  - @commercetools-uikit/money-input@10.23.0
+  - @commercetools-uikit/multiline-text-input@10.23.0
+
 ## 10.22.1
 
 ### Patch Changes
