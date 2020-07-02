@@ -1,0 +1,41 @@
+{
+  "name": "@commercetools-uikit/droppable-panel",
+  "version": "10.22.2",
+  "description": "",
+  "main": "dist/droppable-panel.cjs.js",
+  "module": "dist/droppable-panel.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/accessible-button": "10.22.1",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/hooks": "10.21.0",
+    "@commercetools-uikit/utils": "10.21.0",
+    "@commercetools-uikit/text": "10.22.1",
+    "@commercetools-uikit/spacings": "10.22.1",
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
+    "lodash": "4.17.15",
+    "prop-types": "15.7.2",
+    "react-beautiful-dnd": "13.0.0",
+    "react-required-if": "1.0.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-intl": "3.x || 4.x"
+  },
+  "devDependencies": {
+    "formik": "2.1.4"
+  }
+}
