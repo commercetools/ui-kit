@@ -13,12 +13,12 @@
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "emotion-theming": "10.0.27",
-    "moment": "2.26.0",
+    "moment": "2.27.0",
     "moment-timezone": "0.5.31",
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-intl": "4.6.9",
+    "react-intl": "4.7.5",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0"
   },
@@ -28,6 +28,6 @@
     "moment-locales-webpack-plugin": "1.2.0",
     "serve": "11.3.2",
     "webpack": "4.43.0",
-    "webpack-cli": "3.3.11"
+    "webpack-cli": "3.3.12"
   }
 }

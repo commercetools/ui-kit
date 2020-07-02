@@ -1,5 +1,16 @@
 # @commercetools-uikit/rich-text-input
 
+## 10.23.0
+
+### Minor Changes
+
+- [`445263a`](https://github.com/commercetools/ui-kit/commit/445263a777938deb798453d2975e87b9a5e4077a) [#1391](https://github.com/commercetools/ui-kit/pull/1391) Thanks [@mohib0306](https://github.com/mohib0306)! - Show `not-allowed` cursor while hovering disabled rich text inputs
+
+### Patch Changes
+
+- Updated dependencies [[`5f83cc7`](https://github.com/commercetools/ui-kit/commit/5f83cc7945882c21e3cd14a515cb9c8dea7d6a2a)]:
+  - @commercetools-uikit/tooltip@10.23.0
+
 ## 10.22.1
 
 ### Patch Changes

@@ -18,19 +18,38 @@ const getPaddingStyle = (props, isHeader) => {
   `;
 };
 
-const getAlignmentStyle = (props) => {
-  if (props.alignment === 'center') {
+const getHorizontalAlignmentStyle = (props) => {
+  if (props.horizontalCellAlignment === 'center') {
     return css`
       text-align: center;
+      justify-self: center;
     `;
   }
-  if (props.alignment === 'right') {
+  if (props.horizontalCellAlignment === 'right') {
     return css`
       text-align: right;
+      justify-self: flex-end;
     `;
   }
   return css`
     text-align: left;
+    justify-self: flex-start;
+  `;
+};
+
+const getVerticalAlignmentStyle = (props) => {
+  if (props.verticalCellAlignment === 'center') {
+    return css`
+      align-self: center;
+    `;
+  }
+  if (props.verticalCellAlignment === 'bottom') {
+    return css`
+      align-self: flex-end;
+    `;
+  }
+  return css`
+    align-self: flex-start;
   `;
 };
 
@@ -79,7 +98,8 @@ const getOutlineStyles = () => css`
 
 const getCellInnerStyles = (props) => {
   return [
-    getAlignmentStyle(props),
+    getVerticalAlignmentStyle(props),
+    getHorizontalAlignmentStyle(props),
     getTruncatedStyle(props),
     getOutlineStyles(),
     props.shouldIgnoreRowClick &&
@@ -128,6 +148,30 @@ const getSortableHeaderStyles = (props) => css`
     }
   }
 `;
+
+const CellInner = styled.div`
+  box-sizing: border-box;
+  flex: 1;
+
+  ${(props) => getPaddingStyle(props, false)}
+  ${getCellInnerStyles}
+  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
+`;
+
+const HeaderCellInner = styled.div`
+  ${(props) => getPaddingStyle(props, true)}
+  ${getCellInnerStyles}
+  ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
+`;
+
+const SortableHeaderInner = styled.button`
+  ${(props) => getPaddingStyle(props, true)}
+  ${getCellInnerStyles}
+  ${getButtonStyle}
+  ${getSortableHeaderStyles}
+  ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
+`;
+
 const BaseHeaderCell = styled.th`
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
@@ -149,15 +193,17 @@ const BaseHeaderCell = styled.th`
   :hover,
   :active {
     z-index: 2;
+  }
 
-    & > * {
-      overflow: hidden;
-    }
+  ${HeaderCellInner},
+  ${SortableHeaderInner} {
+    ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
   }
 `;
 
 const BaseCell = styled.td`
   position: relative;
+  display: flex;
   background-color: ${vars.colorSurface};
   border-bottom: 1px solid ${vars.colorNeutral90};
   ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
@@ -175,25 +221,6 @@ const BaseFooterCell = styled.td`
 
   /* makes the footer top border overlap the border of the last data row: */
   margin-top: -1px;
-`;
-
-const HeaderCellInner = styled.div`
-  ${(props) => getPaddingStyle(props, true)}
-  ${getCellInnerStyles}
-  ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
-`;
-
-const CellInner = styled.div`
-  ${(props) => getPaddingStyle(props, false)}
-  ${getCellInnerStyles}
-`;
-
-const SortableHeaderInner = styled.button`
-  ${(props) => getPaddingStyle(props, true)}
-  ${getCellInnerStyles}
-  ${getButtonStyle}
-  ${getSortableHeaderStyles}
-  ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
 `;
 
 const RowExpandCollapseButton = styled(SecondaryIconButton)`

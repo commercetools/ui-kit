@@ -127,7 +127,7 @@ const useManualColumnResizing = (tableRef) => {
     state.columnBeingResized !== undefined
       ? state.columnBeingResized === columnIndex
       : false;
-  const getHasTableBeenResized = () => state.sizes;
+  const getHasTableBeenResized = () => !!state.sizes;
 
   const reset = () => {
     state.tableRef.current.style.gridTemplateColumns = '';

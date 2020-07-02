@@ -22,7 +22,6 @@ const DataRow = (props) => {
 
   return (
     <Row
-      key={props.row.id}
       onClick={
         props.onRowClick
           ? () => props.onRowClick(props.row, props.rowIndex)
@@ -32,17 +31,21 @@ const DataRow = (props) => {
       {props.columns.map((column, columnIndex) => (
         <DataCell
           key={`${props.row.id}-${column.key}`}
-          alignment={column.align ? column.align : props.cellAlignment}
           data-testid={`cell-${props.rowIndex}-${column.key}`}
           isTruncated={column.isTruncated && isRowCollapsed}
-          isRowCollapsed={isRowCollapsed}
           isCondensed={props.isCondensed}
+          isRowCollapsed={isRowCollapsed}
+          verticalCellAlignment={props.verticalCellAlignment}
+          horizontalCellAlignment={
+            column.align ? column.align : props.horizontalCellAlignment
+          }
           shouldIgnoreRowClick={column.shouldIgnoreRowClick}
           handleRowCollapseClick={handleRowCollapseClick}
           shouldRenderCollapseButton={shouldRenderCollapseButton(
             props.columns.length,
             columnIndex
           )}
+          shouldClipContent={props.shouldClipContent}
           shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}
         >
           {column.renderItem
@@ -71,16 +74,20 @@ DataRow.propTypes = {
   ).isRequired,
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
+  shouldClipContent: PropTypes.bool.isRequired,
+  verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
+  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   /* the default item (cell) renderer.
     an existing per-column `renderItem` func takes precedence over this */
   itemRenderer: PropTypes.func.isRequired,
   /* the default cell alignment
     an existing per-column `align` property takes precedence over this */
-  cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 DataRow.defaultProps = {
   isCondensed: false,
-  cellAlignment: 'left',
+  shouldClipContent: false,
+  verticalCellAlignment: 'top',
+  horizontalCellAlignment: 'left',
   itemRenderer: (row, column) => row[column.key],
 };
 DataRow.displayName = 'DataRow';

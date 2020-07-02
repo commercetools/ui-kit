@@ -51,6 +51,7 @@ const HeaderCellWrapper = (props) => {
     <BaseHeaderCell
       ref={headerRef}
       data-testid={`header-${props.columnKey}`}
+      shouldClipContent={columnResizingReducer.getHasTableBeenResized()}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
       {props.children}
@@ -72,7 +73,7 @@ const HeaderCell = (props) => {
     <HeaderCellInner
       shouldWrap={props.shouldWrap}
       isCondensed={props.isCondensed}
-      alignment={props.alignment}
+      horizontalCellAlignment={props.horizontalCellAlignment}
     >
       {props.children}
     </HeaderCellInner>
@@ -92,7 +93,7 @@ const HeaderCell = (props) => {
         isActive={isActive}
         shouldWrap={props.shouldWrap}
         isCondensed={props.isCondensed}
-        alignment={props.alignment}
+        horizontalCellAlignment={props.horizontalCellAlignment}
       >
         <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
         {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
@@ -119,7 +120,6 @@ HeaderCell.displayName = 'HeaderCell';
 HeaderCell.propTypes = {
   onClick: requiredIf(PropTypes.func, (props) => props.isSortable),
   sortedBy: PropTypes.string,
-  alignment: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
   shouldWrap: PropTypes.bool,
@@ -128,10 +128,12 @@ HeaderCell.propTypes = {
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
   disableResizing: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool.isRequired,
+  horizontalCellAlignment: PropTypes.string.isRequired,
 };
 HeaderCell.defaultProps = {
   sortDirection: 'desc',
   disableHeaderStickiness: false,
+  horizontalCellAlignment: 'left',
 };
 
 const DataCell = (props) => {
@@ -175,10 +177,11 @@ const DataCell = (props) => {
 DataCell.displayName = 'DataCell';
 DataCell.propTypes = {
   children: PropTypes.node.isRequired,
-  alignment: PropTypes.oneOf(['left', 'center', 'right']),
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
   shouldIgnoreRowClick: PropTypes.bool,
+  verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
+  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   shouldRenderCollapseButton: PropTypes.bool.isRequired,
   shouldRenderResizingIndicator: PropTypes.bool.isRequired,
   handleRowCollapseClick: requiredIf(
@@ -200,7 +203,10 @@ const FooterCell = (props) => (
     numberOfColumns={props.numberOfColumns}
     disableFooterStickiness={props.disableFooterStickiness}
   >
-    <CellInner alignment={props.alignment} isCondensed={props.isCondensed}>
+    <CellInner
+      isCondensed={props.isCondensed}
+      horizontalCellAlignment={props.horizontalCellAlignment}
+    >
       {props.children}
     </CellInner>
   </BaseFooterCell>
@@ -208,13 +214,14 @@ const FooterCell = (props) => (
 FooterCell.displayName = 'FooterCell';
 FooterCell.propTypes = {
   children: PropTypes.node.isRequired,
-  alignment: PropTypes.oneOf(['left', 'center', 'right']),
   isCondensed: PropTypes.bool,
   numberOfColumns: PropTypes.number.isRequired,
   disableFooterStickiness: PropTypes.bool.isRequired,
+  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 FooterCell.defaultProps = {
   disableFooterStickiness: false,
+  horizontalCellAlignment: 'left',
 };
 
 export { HeaderCell, DataCell, FooterCell };
