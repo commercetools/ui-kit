@@ -10,9 +10,9 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import { ErrorMessage } from '@commercetools-uikit/messages';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
-import * as icons from '../../icons';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
+import * as icons from '../../../icons';
 import LocalizedMultilineTextField from './localized-multiline-text-field';
 
 storiesOf('Components|Fields', module)
