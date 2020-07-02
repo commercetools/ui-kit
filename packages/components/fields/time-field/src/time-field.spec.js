@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { render, fireEvent } from '../../../../../test/test-utils';
 import TimeField from './time-field';
 
 // This component is used to enable easy testing.
