@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitFor } from '../../../../test/test-utils';
+import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
 import AsyncSelectField from './async-select-field';
 
 // This component is used to enable easy testing.
