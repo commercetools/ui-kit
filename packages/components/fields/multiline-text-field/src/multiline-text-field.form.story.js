@@ -6,11 +6,11 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
-import Section from '../../../../.storybook/decorators/section';
-import FormikBox from '../../../../.storybook/decorators/formik-box';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import FormikBox from '../../../../../.storybook/decorators/formik-box';
+import Readme from '../README.md';
 import MultilineTextField from './multiline-text-field';
-import MultilineTextInput from '../../inputs/multiline-text-input';
+import MultilineTextInput from '../../../inputs/multiline-text-input';
 
 storiesOf('Examples|Forms/Fields', module)
   .addDecorator(withKnobs)

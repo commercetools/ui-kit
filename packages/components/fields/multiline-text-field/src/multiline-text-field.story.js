@@ -9,9 +9,9 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
-import * as icons from '../../icons';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
+import * as icons from '../../../../../src/components/icons';
 import MultilineTextField from './multiline-text-field';
 
 storiesOf('Components|Fields', module)
