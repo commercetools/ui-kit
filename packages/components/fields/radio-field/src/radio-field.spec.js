@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../test/test-utils';
-import RadioInput from '../../inputs/radio-input';
+import { render, fireEvent } from '../../../../../test/test-utils';
+import RadioInput from '../../../../../src/components/inputs/radio-input';
 import RadioField from './radio-field';
 
 // This component is used to enable easy testing.
