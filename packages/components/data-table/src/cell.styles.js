@@ -159,16 +159,14 @@ const CellInner = styled.div`
 `;
 
 const HeaderCellInner = styled.div`
-  ${(props) => getPaddingStyle(props, true)}
-  ${getCellInnerStyles}
-  ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
-`;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 
-const SortableHeaderInner = styled.button`
   ${(props) => getPaddingStyle(props, true)}
   ${getCellInnerStyles}
-  ${getButtonStyle}
-  ${getSortableHeaderStyles}
+  ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
+  ${(props) => (props.as === 'button' ? getButtonStyle(props) : '')};
   ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
 `;
 
@@ -195,8 +193,7 @@ const BaseHeaderCell = styled.th`
     z-index: 2;
   }
 
-  ${HeaderCellInner},
-  ${SortableHeaderInner} {
+  ${HeaderCellInner} {
     ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
   }
 `;
@@ -231,8 +228,7 @@ const RowExpandCollapseButton = styled(SecondaryIconButton)`
   opacity: 0;
 `;
 
-const HeaderCellInnerWrapper = styled.div`
-  display: inline-block;
+const HeaderLabelWrapper = styled.div`
   flex: 1;
 `;
 
@@ -242,7 +238,6 @@ export {
   BaseHeaderCell,
   CellInner,
   HeaderCellInner,
-  SortableHeaderInner,
   RowExpandCollapseButton,
-  HeaderCellInnerWrapper,
+  HeaderLabelWrapper,
 };

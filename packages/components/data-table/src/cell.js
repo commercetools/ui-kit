@@ -14,9 +14,8 @@ import {
   BaseHeaderCell,
   CellInner,
   HeaderCellInner,
-  SortableHeaderInner,
   RowExpandCollapseButton,
-  HeaderCellInnerWrapper,
+  HeaderLabelWrapper,
 } from './cell.styles';
 import Resizer from './column-resizer';
 
@@ -68,51 +67,49 @@ HeaderCellWrapper.propTypes = {
 HeaderCellWrapper.displayName = 'HeaderCellWrapper';
 
 const HeaderCell = (props) => {
-  // inner cell component for non-sortable columns
-  let HeaderCellInnerComponent = (
-    <HeaderCellInner
-      shouldWrap={props.shouldWrap}
-      isCondensed={props.isCondensed}
-      horizontalCellAlignment={props.horizontalCellAlignment}
-    >
-      {props.children}
-    </HeaderCellInner>
-  );
+  let sortableHeaderProps = {};
+  let SortingIcon;
 
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
     const nextSortDirection =
       !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
-    const Icon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
+    SortingIcon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
 
-    // inner cell component for sortable columns
-    HeaderCellInnerComponent = (
-      <SortableHeaderInner
-        label={props.sortDirection}
-        onClick={() => props.onClick(props.columnKey, nextSortDirection)}
-        isActive={isActive}
-        shouldWrap={props.shouldWrap}
-        isCondensed={props.isCondensed}
-        horizontalCellAlignment={props.horizontalCellAlignment}
-      >
-        <HeaderCellInnerWrapper>{props.children}</HeaderCellInnerWrapper>
-        {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
-        <AngleUpDownIcon
-          size="medium"
-          color="surface"
-          id="nonActiveSortingIcon"
-        />
-        <Icon size="medium" color="surface" id="activeSortingIcon" />
-      </SortableHeaderInner>
-    );
+    sortableHeaderProps = {
+      as: 'button',
+      label: props.sortDirection,
+      onClick: () => props.onClick(props.columnKey, nextSortDirection),
+      isActive,
+      isSortable: true,
+    };
   }
+
   return (
     <HeaderCellWrapper
       columnKey={props.columnKey}
       disableResizing={props.disableResizing}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
-      {HeaderCellInnerComponent}
+      <HeaderCellInner
+        shouldWrap={props.shouldWrap}
+        isCondensed={props.isCondensed}
+        horizontalCellAlignment={props.horizontalCellAlignment}
+        {...sortableHeaderProps}
+      >
+        <HeaderLabelWrapper>{props.children}</HeaderLabelWrapper>
+        {props.isSortable && (
+          <>
+            {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
+            <AngleUpDownIcon
+              size="medium"
+              color="surface"
+              id="nonActiveSortingIcon"
+            />
+            <SortingIcon size="medium" color="surface" id="activeSortingIcon" />
+          </>
+        )}
+      </HeaderCellInner>
     </HeaderCellWrapper>
   );
 };
