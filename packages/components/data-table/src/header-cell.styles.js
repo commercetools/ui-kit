@@ -22,14 +22,14 @@ const getSortableHeaderStyles = (props) => css`
   align-items: center;
 
   /* A sortable header has the two arrow svg icons
-* GIVEN column is sortable and is not focused
-* THEN AngleUpDown icon is shown (default behaviour)
-* AND AngleUp or AngleDown icon is not shown
-*
-* GIVEN column is sortable and foucsed
-* THEN AngleUpDown icon is hidden
-* AND AngleUp or AngleDown icon is shown
-*/
+  * GIVEN column is sortable and is not focused
+  * THEN AngleUpDown icon is shown (default behaviour)
+  * AND AngleUp or AngleDown icon is not shown
+  *
+  * GIVEN column is sortable and foucsed
+  * THEN AngleUpDown icon is hidden
+  * AND AngleUp or AngleDown icon is shown
+  */
   svg[id='nonActiveSortingIcon'],
   svg[id='activeSortingIcon'] {
     margin-left: ${vars.spacingS};
