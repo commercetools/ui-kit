@@ -1,5 +1,11 @@
 # @commercetools-uikit/notifications
 
+## 10.23.0
+
+### Minor Changes
+
+- [`445886a`](https://github.com/commercetools/ui-kit/commit/445886aaa8e3cfb5d37d8c9e9762c4723745a0fd) [#1393](https://github.com/commercetools/ui-kit/pull/1393) Thanks [@Rombelirk](https://github.com/Rombelirk)! - Added `intlMessage` prop to ContentNotification component, which can replace the `children` prop for translated text.
+
 ## 10.22.0
 
 ### Patch Changes
