@@ -6,7 +6,6 @@ import { DragIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
 import Tag from '@commercetools-uikit/tag';
 import DraggingContainer from './draggable-tag.styles';
-// import styles from './draggable-tag.mod.css';
 
 const portal = document.createElement('div');
 portal.classList.add('dnd-portal');
