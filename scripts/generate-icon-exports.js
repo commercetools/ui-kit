@@ -34,22 +34,22 @@ const internalIndexPath = path.join(
 
 const publicIconsPath = path.join(
   __dirname,
-  '../src/components/icons/svg/*.svg'
+  '../packages/components/icons/src/svg/*.svg'
 );
 
 const publicRawExportsPath = path.join(
   __dirname,
-  '../src/components/icons/raw-components/'
+  '../packages/components/icons/src/raw-components/'
 );
 
 const publicIconComponentsPath = path.join(
   __dirname,
-  '../src/components/icons/components/'
+  '../packages/components/icons/src/components/'
 );
 
 const publicIndexPath = path.join(
   __dirname,
-  '../src/components/icons/index.js'
+  '../packages/components/icons/src/index.js'
 );
 
 const createStyledIconPath = path.join(
