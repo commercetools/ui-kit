@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row } from './data-table.styles';
-import { DataCell } from './cell';
+import DataCell from './cell';
 
 import ColumnResizingContext from './column-resizing-context';
 
