@@ -1,5 +1,16 @@
 # @commercetools-frontend/ui-kit
 
+## 10.23.0
+
+### Patch Changes
+
+- Updated dependencies [[`50d4dfc`](https://github.com/commercetools/ui-kit/commit/50d4dfc0a198de64ad6d8e9ef70af8970409eb7f), [`12d0c3f`](https://github.com/commercetools/ui-kit/commit/12d0c3f0391d819147f0c9e915d8fe94711f9421), [`7429c62`](https://github.com/commercetools/ui-kit/commit/7429c62978cdea1bf0b8340c9240870027c4563c), [`5f83cc7`](https://github.com/commercetools/ui-kit/commit/5f83cc7945882c21e3cd14a515cb9c8dea7d6a2a), [`445886a`](https://github.com/commercetools/ui-kit/commit/445886aaa8e3cfb5d37d8c9e9762c4723745a0fd), [`4ae6e0d`](https://github.com/commercetools/ui-kit/commit/4ae6e0d7c98c18ae4e9c49d541335fcac3f87e43), [`e1db5d6`](https://github.com/commercetools/ui-kit/commit/e1db5d627fd521c59c2408a2c19bf3c6206896e2), [`b3ba23f`](https://github.com/commercetools/ui-kit/commit/b3ba23fb2a350d7850453d61abace2639bae7a4f), [`e906fb7`](https://github.com/commercetools/ui-kit/commit/e906fb7d0e0d7fea0f1d014038333584d6aaa97a)]:
+  - @commercetools-uikit/data-table@10.23.0
+  - @commercetools-uikit/tooltip@10.23.0
+  - @commercetools-uikit/notifications@10.23.0
+  - @commercetools-uikit/inputs@10.23.0
+  - @commercetools-uikit/fields@10.23.0
+
 ## 10.22.2
 
 ### Patch Changes

@@ -4,7 +4,8 @@ import isEqual from 'lodash/isEqual';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import { TableGrid, Header, Body, Row, Footer } from './data-table.styles';
-import { HeaderCell, FooterCell } from './cell';
+import FooterCell from './footer';
+import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
@@ -63,12 +64,15 @@ const DataTable = (props) => {
                 shouldWrap={props.wrapHeaderLabels}
                 isCondensed={props.isCondensed}
                 disableResizing={column.disableResizing}
+                verticalCellAlignment={props.verticalCellAlignment}
+                horizontalCellAlignment={
+                  column.align ? column.align : props.horizontalCellAlignment
+                }
                 disableHeaderStickiness={props.disableHeaderStickiness}
                 /* Sorting Props */
                 onClick={props.onSortChange}
                 sortedBy={props.sortedBy}
                 columnKey={column.key}
-                alignment={column.align ? column.align : props.cellAlignment}
                 isSortable={column.isSortable}
                 sortDirection={props.sortDirection}
               >
@@ -79,7 +83,13 @@ const DataTable = (props) => {
         </Header>
         <Body>
           {props.rows.map((row, rowIndex) => (
-            <DataRow {...props} row={row} key={row.id} rowIndex={rowIndex} />
+            <DataRow
+              {...props}
+              row={row}
+              key={row.id}
+              rowIndex={rowIndex}
+              shouldClipContent={hasTableBeenResized}
+            />
           ))}
         </Body>
         {props.footer && (
@@ -87,9 +97,9 @@ const DataTable = (props) => {
             <Row>
               <FooterCell
                 isCondensed={props.isCondensed}
-                cellAlignment={props.cellAlignment}
                 numberOfColumns={props.columns.length + 1}
                 disableFooterStickiness={props.disableFooterStickiness}
+                horizontalCellAlignment={props.horizontalCellAlignment}
               >
                 {props.footer}
               </FooterCell>
@@ -134,9 +144,10 @@ DataTable.propTypes = {
   itemRenderer: PropTypes.func.isRequired,
   /* the default cell alignment
   an existing per-column `align` property takes precedence over this */
-  cellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   isHeaderSticky: PropTypes.bool,
   wrapHeaderLabels: PropTypes.bool,
+  verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
+  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   /* Sorting props: */
   sortedBy: PropTypes.string,
   onSortChange: PropTypes.func,
@@ -144,8 +155,9 @@ DataTable.propTypes = {
 };
 DataTable.defaultProps = {
   isCondensed: false,
-  cellAlignment: 'left',
   wrapHeaderLabels: true,
+  verticalCellAlignment: 'top',
+  horizontalCellAlignment: 'left',
   itemRenderer: (row, column) => row[column.key],
 };
 DataTable.displayName = 'DataTable';

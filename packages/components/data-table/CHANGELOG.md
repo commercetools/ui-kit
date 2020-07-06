@@ -1,5 +1,25 @@
 # @commercetools-uikit/data-table
 
+## 10.23.0
+
+### Minor Changes
+
+- [`50d4dfc`](https://github.com/commercetools/ui-kit/commit/50d4dfc0a198de64ad6d8e9ef70af8970409eb7f) [#1386](https://github.com/commercetools/ui-kit/pull/1386) Thanks [@jonnybel](https://github.com/jonnybel)! - make the footer become sticky when scrolling inside the table
+
+* [`12d0c3f`](https://github.com/commercetools/ui-kit/commit/12d0c3f0391d819147f0c9e915d8fe94711f9421) [#1363](https://github.com/commercetools/ui-kit/pull/1363) Thanks [@jonnybel](https://github.com/jonnybel)! - Allow users to adjust column size by dragging the header edge with a mouse.
+
+- [`b3ba23f`](https://github.com/commercetools/ui-kit/commit/b3ba23fb2a350d7850453d61abace2639bae7a4f) [#1388](https://github.com/commercetools/ui-kit/pull/1388) Thanks [@jonnybel](https://github.com/jonnybel)! - replaces prop `cellAlignment` with `horizontalCellAlignment` and adds new prop `verticalCellAlignment`
+
+### Patch Changes
+
+- [`7429c62`](https://github.com/commercetools/ui-kit/commit/7429c62978cdea1bf0b8340c9240870027c4563c) [#1405](https://github.com/commercetools/ui-kit/pull/1405) Thanks [@jonnybel](https://github.com/jonnybel)! - fixes getHasTableBeenResized to ensure it returns a boolean
+
+* [`4ae6e0d`](https://github.com/commercetools/ui-kit/commit/4ae6e0d7c98c18ae4e9c49d541335fcac3f87e43) [#1387](https://github.com/commercetools/ui-kit/pull/1387) Thanks [@jonnybel](https://github.com/jonnybel)! - fix column resizer taking extra space
+
+- [`e1db5d6`](https://github.com/commercetools/ui-kit/commit/e1db5d627fd521c59c2408a2c19bf3c6206896e2) [#1380](https://github.com/commercetools/ui-kit/pull/1380) Thanks [@mohib0306](https://github.com/mohib0306)! - Improve table row expand/collapse functionlity's accessibility
+
+* [`e906fb7`](https://github.com/commercetools/ui-kit/commit/e906fb7d0e0d7fea0f1d014038333584d6aaa97a) [#1403](https://github.com/commercetools/ui-kit/pull/1403) Thanks [@jonnybel](https://github.com/jonnybel)! - fix clipping of cells when table is resized
+
 ## 10.22.2
 
 ### Patch Changes

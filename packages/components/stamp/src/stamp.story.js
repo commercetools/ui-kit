@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Section from '../../../../.storybook/decorators/section';
 import Text from '../../../../src/components/typography/text';
 import Spacings from '../../../../src/components/spacings';
-import * as icons from '../../../../src/components/icons';
+import * as icons from '../../icons';
 import Stamp, { availableTones } from './stamp';
 import Readme from '../README.md';
 

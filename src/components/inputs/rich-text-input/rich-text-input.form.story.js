@@ -12,7 +12,7 @@ import FormikBox from '../../../../.storybook/decorators/formik-box';
 import Readme from './README.md';
 import RichTextInput from './rich-text-input';
 import TextInput from '../text-input';
-import TextField from '../../fields/text-field';
+import TextField from '../../../../packages/components/fields/text-field';
 
 const initialValue = '';
 

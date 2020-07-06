@@ -3,11 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import Section from '../../../../.storybook/decorators/section';
-import {
-  BoxIcon,
-  BrainIcon,
-  FlameIcon,
-} from '../../../../src/components/icons';
+import { BoxIcon, BrainIcon, FlameIcon } from '../../icons';
 import Readme from '../README.md';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
 
