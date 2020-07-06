@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
-import Section from '../../../.storybook/decorators/section';
-import Text from './src/text';
-import Readme from './README.md';
+import Section from '../../../../.storybook/decorators/section';
+import Text from './text';
+import Readme from '../README.md';
 
 const InlineColorWrapper = styled.div`
   background-color: #e1ffdd;
