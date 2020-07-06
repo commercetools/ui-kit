@@ -542,7 +542,7 @@ export const component = () => (
         ]}
       />
     </Spec>
-    <Spec label="column with custom renderItem">
+    <Spec label="column with headerIcon">
       <DataTable
         rows={testRows}
         columns={[
