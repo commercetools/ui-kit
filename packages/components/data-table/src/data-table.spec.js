@@ -1,6 +1,8 @@
 import React from 'react';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, within } from '../../../../test/test-utils';
 import DataTable from '.';
+import IconButton from '../../buttons/icon-button';
+import { InformationIcon } from '../../icons';
 
 const testRows = [
   { id: '1-parasite', title: 'Parasite', year: 2019 },
@@ -142,6 +144,31 @@ describe('DataTable', () => {
       screen.getByText('Parasite').click();
 
       expect(rowClickEvent).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('when passing a headerIcon on a column', () => {
+    const testColumnsWithHeaderIcon = [
+      ...testColumns,
+      {
+        key: 'id',
+        label: 'ID',
+        headerIcon: (
+          <IconButton
+            icon={<InformationIcon />}
+            label="ID Info"
+            size="medium"
+            onClick={() => jest.fn()}
+          />
+        ),
+      },
+    ];
+    it('should render the IconButton on the column header', () => {
+      render(<DataTable {...baseProps} columns={testColumnsWithHeaderIcon} />);
+
+      const idHeader = screen.getByTestId('header-id');
+
+      expect(within(idHeader).getByLabelText('ID Info')).toBeInTheDocument();
     });
   });
 });

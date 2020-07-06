@@ -63,6 +63,7 @@ const DataTable = (props) => {
                 key={column.key}
                 shouldWrap={props.wrapHeaderLabels}
                 isCondensed={props.isCondensed}
+                iconComponent={column.headerIcon}
                 disableResizing={column.disableResizing}
                 verticalCellAlignment={props.verticalCellAlignment}
                 horizontalCellAlignment={
@@ -126,6 +127,7 @@ DataTable.propTypes = {
       onClick: PropTypes.func,
       /* custom item renderer, specific for items of this column */
       renderItem: PropTypes.func,
+      headerIcon: PropTypes.node,
       isTruncated: PropTypes.bool,
       isSortable: PropTypes.bool,
       disableResizing: PropTypes.bool,

@@ -9,6 +9,7 @@ import {
 import {
   BaseHeaderCell,
   HeaderCellInner,
+  HeaderIconWrapper,
   HeaderLabelWrapper,
 } from './header-cell.styles';
 import Resizer from './column-resizer';
@@ -90,6 +91,9 @@ const HeaderCell = (props) => {
         horizontalCellAlignment={props.horizontalCellAlignment}
         {...sortableHeaderProps}
       >
+        {props.iconComponent && (
+          <HeaderIconWrapper>{props.iconComponent}</HeaderIconWrapper>
+        )}
         <HeaderLabelWrapper>{props.children}</HeaderLabelWrapper>
         {props.isSortable && (
           <>
@@ -119,6 +123,7 @@ HeaderCell.propTypes = {
   disableResizing: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool.isRequired,
   horizontalCellAlignment: PropTypes.string.isRequired,
+  iconComponent: PropTypes.node,
 };
 HeaderCell.defaultProps = {
   sortDirection: 'desc',
