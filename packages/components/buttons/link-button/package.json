@@ -31,7 +31,7 @@
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
-    "react-intl": "3.x || 4.x",
+    "react-intl": "3.x || 4.x || 5.x",
     "react-router-dom": "5.x"
   }
 }

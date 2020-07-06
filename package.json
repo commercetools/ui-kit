@@ -158,7 +158,7 @@
     "rcfile": "1.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-intl": "4.7.6",
+    "react-intl": "5.0.2",
     "react-router-dom": "5.2.0",
     "react-value": "0.2.0",
     "read-pkg-up": "7.0.1",
