@@ -28,8 +28,8 @@ const MultilineTextInput = (props) => {
   }, [isOpen, onFocus, toggle]);
 
   const handleHeightChange = React.useCallback(
-    (_, innerComponent) => {
-      setContentRowCount(innerComponent.valueRowCount);
+    (_, rowCount) => {
+      setContentRowCount(rowCount);
     },
     [setContentRowCount]
   );

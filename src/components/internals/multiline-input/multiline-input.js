@@ -8,14 +8,24 @@ import { getTextareaStyles } from './multiline-input.styles';
 const MIN_ROW_COUNT = 1;
 
 const MultilineInput = (props) => {
+  const { onHeightChange } = props;
+  const ref = React.useRef();
+  const handleHeightChange = React.useCallback(
+    (height, meta) => {
+      const rowCount = Math.floor(ref.current.scrollHeight / meta.rowHeight);
+      onHeightChange(height, rowCount);
+    },
+    [ref, onHeightChange]
+  );
   return (
     <TextareaAutosize
+      ref={ref}
       name={props.name}
       type="text"
       autoComplete={props.autoComplete}
       value={props.value}
       onChange={props.onChange}
-      onHeightChange={props.onHeightChange}
+      onHeightChange={handleHeightChange}
       id={props.id}
       onBlur={props.onBlur}
       onFocus={props.onFocus}
@@ -31,7 +41,7 @@ const MultilineInput = (props) => {
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? undefined : MIN_ROW_COUNT}
-      useCacheForDOMMeasurements={true}
+      cacheMeasurements={true}
       {...filterDataAttributes(props)}
     />
   );
