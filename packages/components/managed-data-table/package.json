@@ -1,0 +1,43 @@
+{
+  "name": "@commercetools-uikit/managed-data-table",
+  "version": "10.22.2",
+  "description": "",
+  "main": "dist/data-table.cjs.js",
+  "module": "dist/data-table.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/hooks": "10.21.0",
+    "@commercetools-uikit/icons": "10.22.0",
+    "@commercetools-uikit/constraints": "10.21.0",
+    "@commercetools-uikit/spacings-inline": "10.21.0",
+    "@commercetools-uikit/spacings-stack": "10.21.0",
+    "@commercetools-uikit/utils": "10.21.0",
+    "@commercetools-uikit/secondary-icon-button": "10.22.1",
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
+    "debounce-promise": "^3.1.2",
+    "lodash": "4.17.15",
+    "lodash.differencewith": "4.5.0",
+    "prop-types": "15.7.2",
+    "react-beautiful-dnd": "13.0.0",
+    "react-required-if": "1.0.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  },
+  "devDependencies": {
+    "formik": "2.1.4"
+  }
+}
