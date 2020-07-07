@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { render, fireEvent } from '../../../../../test/test-utils';
 import TextInput from './text-input';
 
 const baseProps = { value: '', onChange: () => {} };
