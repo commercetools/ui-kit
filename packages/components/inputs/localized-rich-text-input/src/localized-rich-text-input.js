@@ -19,7 +19,7 @@ import {
   isEmpty,
   createLocalizedString,
   omitEmptyTranslations,
-} from '../../internals/rich-text-utils/localized';
+} from '../../../../../src/components/internals/rich-text-utils/localized';
 import RequiredValueErrorMessage from './required-value-error-message';
 
 const expandedTranslationsReducer = (state, action) => {

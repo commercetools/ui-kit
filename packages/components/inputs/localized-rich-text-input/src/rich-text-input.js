@@ -5,8 +5,8 @@ import pick from 'lodash/pick';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import plugins from '../../internals/rich-text-plugins';
-import html from '../../internals/rich-text-utils/html';
+import plugins from '../../../../../src/components/internals/rich-text-plugins';
+import html from '../../../../../src/components/internals/rich-text-utils/html';
 import renderEditor from './editor';
 import LanguagesControlButton from './languages-control';
 

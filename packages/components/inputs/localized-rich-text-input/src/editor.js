@@ -12,10 +12,10 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
-import RichTextBody from '../../internals/rich-text-body';
-import HiddenInput from '../../internals/rich-text-body/hidden-input';
+import RichTextBody from '../../../../../src/components/internals/rich-text-body';
+import HiddenInput from '../../../../../src/components/internals/rich-text-body/hidden-input';
 import { EditorWrapper, EditorLanguageLabel } from './editor.styles';
-import messages from '../../internals/messages/multiline-input';
+import messages from '../../../../../src/components/internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
 
