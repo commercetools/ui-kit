@@ -14,7 +14,7 @@ import {
   IndeterminateIcon,
   CheckedIcon,
   UncheckedIcon,
-} from '../../internals/icons';
+} from '../../../../../src/components/internals/icons';
 import { getCheckboxWrapperStyles } from './checkbox-input.styles';
 import Checkbox from './checkbox';
 
