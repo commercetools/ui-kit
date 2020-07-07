@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ErrorMessage } from '@commercetools-uikit/messages';
-import messages from '../../internals/messages/localized-input';
+import messages from '../../../../../src/components/internals/messages/localized-input';
 
 const RequiredValueErrorMessage = () => (
   <ErrorMessage>
