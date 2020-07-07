@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../test/test-utils';
+import { render, fireEvent } from '../../../../../test/test-utils';
 import CreatableSelectInput from './creatable-select-input';
 
 // We use this component to simulate the whole flow of

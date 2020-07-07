@@ -11,8 +11,8 @@ import {
 } from '@storybook/addon-knobs/react';
 import Spacings from '@commercetools-uikit/spacings';
 import LinkTo from '@storybook/addon-links/react';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import CreatableSelectInput from './creatable-select-input';
 
 storiesOf('Components|Inputs', module)
