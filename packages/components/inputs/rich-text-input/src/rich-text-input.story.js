@@ -6,10 +6,10 @@ import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '@commercetools-uikit/spacings';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../../.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
-import TextInput from '../text-input';
-import Readme from './README.md';
+import TextInput from '../../text-input';
+import Readme from '../README.md';
 
 // Create our initial value...
 

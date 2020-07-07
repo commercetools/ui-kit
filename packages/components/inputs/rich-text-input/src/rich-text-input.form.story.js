@@ -7,12 +7,12 @@ import { withKnobs } from '@storybook/addon-knobs/react';
 import FieldLabel from '@commercetools-uikit/field-label';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
-import Section from '../../../../.storybook/decorators/section';
-import FormikBox from '../../../../.storybook/decorators/formik-box';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import FormikBox from '../../../../../.storybook/decorators/formik-box';
+import Readme from '../README.md';
 import RichTextInput from './rich-text-input';
-import TextInput from '../text-input';
-import TextField from '../../../../packages/components/fields/text-field';
+import TextInput from '../../text-input';
+import TextField from '../../../fields/text-field';
 
 const initialValue = '';
 

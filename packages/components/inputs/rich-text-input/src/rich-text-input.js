@@ -4,9 +4,9 @@ import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import pick from 'lodash/pick';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import plugins from '../../internals/rich-text-plugins';
-import html from '../../internals/rich-text-utils/html';
-import isEmpty from '../../internals/rich-text-utils/is-empty';
+import plugins from '../../../../../src/components/internals/rich-text-plugins';
+import html from '../../../../../src/components/internals/rich-text-utils/html';
+import isEmpty from '../../../../../src/components/internals/rich-text-utils/is-empty';
 import renderEditor from './editor';
 
 class RichTextInput extends React.PureComponent {
