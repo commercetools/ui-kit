@@ -9,8 +9,8 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import AsyncSelectInput from './async-select-input';
 
 const colourOptions = [

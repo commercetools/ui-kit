@@ -15,9 +15,9 @@ import {
   TagRemove,
   DropdownIndicator,
 } from '@commercetools-uikit/select-utils';
-import createSelectStyles from '../../internals/create-select-styles';
-import LoadingIndicator from '../../internals/loading-indicator';
-import messages from '../../internals/messages/select';
+import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
+import LoadingIndicator from '../../../../../src/components/internals/loading-indicator';
+import messages from '../../../../../src/components/internals/messages/select';
 
 const useTheme = () => useContext(ThemeContext);
 
