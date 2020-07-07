@@ -4,7 +4,7 @@ import {
   ErrorMessage,
   WarningMessage,
 } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = {
   EUR: {

@@ -10,8 +10,8 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import LocalizedMoneyInput from './localized-money-input';
 
 storiesOf('Components|Inputs', module)
