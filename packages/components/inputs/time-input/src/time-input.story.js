@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import TimeInput from './time-input';
 
 storiesOf('Components|Inputs', module)

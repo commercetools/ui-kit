@@ -1,7 +1,7 @@
 import React from 'react';
 import { TimeInput } from '@commercetools-frontend/ui-kit';
 import { ThemeProvider } from 'emotion-theming';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = '3:00 PM';
 
