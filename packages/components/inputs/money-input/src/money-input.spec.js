@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MoneyInput from './money-input';
-import { screen, render, fireEvent } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.

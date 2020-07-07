@@ -9,8 +9,8 @@ import {
   text,
   select,
 } from '@storybook/addon-knobs/react';
-import Section from '../../../../.storybook/decorators/section';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import Readme from '../README.md';
 import MoneyInput from './money-input';
 
 // This uses a dedicated story component to keep track of state instead of
