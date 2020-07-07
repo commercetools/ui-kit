@@ -14,9 +14,9 @@ import {
   SafeHTMLElement,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
-import LoadingIndicator from '../../internals/loading-indicator';
-import messages from '../../internals/messages/select';
-import createSelectStyles from '../../internals/create-select-styles';
+import LoadingIndicator from '../../../../../src/components/internals/loading-indicator';
+import messages from '../../../../../src/components/internals/messages/select';
+import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
 
 const useTheme = () => useContext(ThemeContext);
 
