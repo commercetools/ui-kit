@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { RadioInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const GreenBox = styled.div`
   width: 100%;

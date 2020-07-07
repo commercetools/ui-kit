@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../../test/test-utils';
 import Group from './radio-group';
 import Option from './radio-option';
 

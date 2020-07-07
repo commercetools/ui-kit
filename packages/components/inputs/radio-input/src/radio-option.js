@@ -8,8 +8,8 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   RadioOptionCheckedIcon,
   RadioOptionUncheckedIcon,
-} from '../../internals/icons';
-import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
+} from '../../../../../src/components/internals/icons';
+import accessibleHiddenInputStyles from '../../../../../src/components/internals/accessible-hidden-input.styles';
 import { getLabelStyles, getContainerStyles } from './radio-option.styles';
 
 const Input = styled.input`
