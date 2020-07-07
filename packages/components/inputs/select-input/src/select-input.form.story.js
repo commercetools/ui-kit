@@ -6,9 +6,9 @@ import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
 import { ErrorMessage } from '@commercetools-uikit/messages';
-import Section from '../../../../.storybook/decorators/section';
-import FormikBox from '../../../../.storybook/decorators/formik-box';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import FormikBox from '../../../../../.storybook/decorators/formik-box';
+import Readme from '../README.md';
 import SelectInput from './select-input';
 
 export const colourOptions = [

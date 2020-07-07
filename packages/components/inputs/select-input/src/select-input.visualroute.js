@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const defaultOptions = [
   { value: 'one', label: 'One' },
