@@ -11,7 +11,7 @@ import Section from '../../../../../.storybook/decorators/section';
 import FormikBox from '../../../../../.storybook/decorators/formik-box';
 import Readme from '../README.md';
 import MoneyField from './money-field';
-import MoneyInput from '../../../../../src/components/inputs/money-input';
+import MoneyInput from '../../../inputs/money-input';
 
 const formToDoc = (values, locale) => ({
   price: MoneyInput.convertToMoneyValue(values.price, locale),
