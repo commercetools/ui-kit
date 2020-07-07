@@ -23,7 +23,7 @@ import {
 import { createSequentialId } from '@commercetools-uikit/utils';
 import TextInput from '@commercetools-uikit/text-input';
 import LanguagesButton from './languages-button';
-import messages from '../../internals/messages/localized-input';
+import messages from '../../../../../src/components/internals/messages/localized-input';
 import {
   getLocalizedInputStyles,
   getLanguageLabelStyles,

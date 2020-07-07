@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { WorldIcon } from '@commercetools-uikit/icons';
-import messages from '../../internals/messages/localized-input';
+import messages from '../../../../../src/components/internals/messages/localized-input';
 
 const LanguagesButton = (props) => {
   const intl = useIntl();

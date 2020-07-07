@@ -4,7 +4,7 @@ import {
   ErrorMessage,
 } from '@commercetools-frontend/ui-kit';
 import { ThemeProvider } from 'emotion-theming';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = {
   en: 'hello world',
