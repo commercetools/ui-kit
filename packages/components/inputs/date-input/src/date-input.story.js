@@ -4,9 +4,9 @@ import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import { Value } from 'react-value';
-import Readme from './README.md';
+import Readme from '../README.md';
 import DateInput from './date-input';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../../.storybook/decorators/section';
 
 const exampleDates = getExampleDateStrings();
 

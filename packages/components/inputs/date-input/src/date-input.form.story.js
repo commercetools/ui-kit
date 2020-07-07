@@ -5,9 +5,9 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
-import Section from '../../../../.storybook/decorators/section';
-import FormikBox from '../../../../.storybook/decorators/formik-box';
-import Readme from './README.md';
+import Section from '../../../../../.storybook/decorators/section';
+import FormikBox from '../../../../../.storybook/decorators/formik-box';
+import Readme from '../README.md';
 import DateInput from './date-input';
 
 storiesOf('Examples|Forms/Inputs', module)
