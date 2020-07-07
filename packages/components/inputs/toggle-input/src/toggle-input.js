@@ -7,7 +7,7 @@ import {
   filterDataAttributes,
   filterAriaAttributes,
 } from '@commercetools-uikit/utils';
-import accessibleHiddenInputStyles from '../../internals/accessible-hidden-input.styles';
+import accessibleHiddenInputStyles from '../../../../../src/components/internals/accessible-hidden-input.styles';
 
 const thumbSmallSize = '13px';
 const thumbBigSize = `calc(${thumbSmallSize} * 2)`;

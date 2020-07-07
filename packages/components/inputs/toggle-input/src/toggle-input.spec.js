@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render } from '../../../../../test/test-utils';
 import ToggleInput from './toggle-input';
 
 class TestComponent extends React.Component {
