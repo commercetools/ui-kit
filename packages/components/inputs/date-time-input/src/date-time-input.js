@@ -22,11 +22,11 @@ import {
   createSuggestedItems,
   parseInputText,
 } from '@commercetools-uikit/calendar-time-utils';
-import CalendarBody from '../../internals/calendar-body';
-import CalendarMenu from '../../internals/calendar-menu';
-import CalendarHeader from '../../internals/calendar-header';
-import CalendarContent from '../../internals/calendar-content';
-import CalendarDay from '../../internals/calendar-day';
+import CalendarBody from '../../../../../src/components/internals/calendar-body';
+import CalendarMenu from '../../../../../src/components/internals/calendar-menu';
+import CalendarHeader from '../../../../../src/components/internals/calendar-header';
+import CalendarContent from '../../../../../src/components/internals/calendar-content';
+import CalendarDay from '../../../../../src/components/internals/calendar-day';
 import TimeInput from './time-input';
 import messages from './messages';
 
