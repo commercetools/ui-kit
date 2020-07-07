@@ -2,9 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
-import Readme from './README.md';
+import Readme from '../README.md';
 import DateRangeInput from './date-range-input';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../../.storybook/decorators/section';
 
 class DateRangeInputStory extends React.Component {
   static displayName = 'DateRangeInputStory';
