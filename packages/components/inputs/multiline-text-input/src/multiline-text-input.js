@@ -9,8 +9,8 @@ import { useToggleState } from '@commercetools-uikit/hooks';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
-import MultilineInput from '../../internals/multiline-input';
-import messages from '../../internals/messages/multiline-input';
+import MultilineInput from '../../../../../src/components/internals/multiline-input';
+import messages from '../../../../../src/components/internals/messages/multiline-input';
 
 const MultilineTextInput = (props) => {
   const intl = useIntl();
