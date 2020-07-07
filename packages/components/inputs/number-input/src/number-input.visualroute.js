@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { NumberInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = '18';
 

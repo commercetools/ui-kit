@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import { getInputStyles } from '../styles';
+import { getInputStyles } from '../../../../../src/components/inputs/styles';
 
 const NumberInput = (props) => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
