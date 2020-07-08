@@ -19,6 +19,8 @@ import { useRowSelection, useSorting } from '.';
 import TextInput from '../../inputs/text-input';
 import SelectInput from '../../inputs/select-input';
 import NumberInput from '../../inputs/number-input';
+import IconButton from '../../buttons/icon-button';
+import { InformationIcon } from '../../icons';
 
 const items = [
   {
@@ -170,6 +172,18 @@ const initialColumnsState = [
     key: 'customRenderer',
     label: 'Custom Column',
     renderItem: customCellRenderer('Link'),
+    headerIcon: (
+      <IconButton
+        icon={<InformationIcon />}
+        label="Custom Column Information"
+        size="medium"
+        onClick={() =>
+          alert(
+            'This Column can be customized using the controls at the bottom of this page!'
+          )
+        }
+      />
+    ),
   },
   {
     key: 'phone',
