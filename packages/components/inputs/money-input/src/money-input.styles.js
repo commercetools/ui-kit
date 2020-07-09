@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { getInputStyles } from '../../../../../src/components/inputs/styles';
+import { getInputStyles } from '../../styles';
 
 const getCurrencyLabelStyles = () => css`
   display: flex;

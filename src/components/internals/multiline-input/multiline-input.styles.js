@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { getInputStyles } from '../../inputs/styles';
+import { getInputStyles } from '../../../../packages/components/inputs/styles';
 
 /* we need this line-height to achieve 32px height when the component has only one row */
 const sizeInputLineHeight = '22px';

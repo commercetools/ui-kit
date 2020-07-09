@@ -4,7 +4,7 @@ import {
   customProperties as vars,
   designTokens,
 } from '@commercetools-uikit/design-system';
-import { getInputStyles } from '../../../../../src/components/inputs/styles';
+import { getInputStyles } from '../../styles';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence

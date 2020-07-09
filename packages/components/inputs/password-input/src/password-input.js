@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import { getInputStyles } from '../../../../../src/components/inputs/styles';
+import { getInputStyles } from '../../styles';
 
 const PasswordInput = (props) => (
   <Constraints.Horizontal constraint={props.horizontalConstraint}>
