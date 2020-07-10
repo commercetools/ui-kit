@@ -26,9 +26,7 @@ const DataRow = (props) => {
   }, [rowHasTruncatedColumn]);
 
   const shouldRenderCollapseButton = (totalColumnsLength, currentColumnIndex) =>
-    totalColumnsLength - 1 === currentColumnIndex &&
-    ((isRowCollapsed && rowHasTruncatedColumn) ||
-      (rowHasTruncatedColumn && !isRowCollapsed));
+    totalColumnsLength - 1 === currentColumnIndex && isRowCollapsed;
 
   return (
     <Row
