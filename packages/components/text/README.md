@@ -5,7 +5,7 @@
 ```js
 // NOTE: the main import is not a React component, instead you need to use one
 // of the types defined in the component.
-import { Text } from '@commercetools-frontend/ui-kit/typography/text';
+import Text from '@commercetools-uikit/text';
 ```
 
 ### `<Text.Headline>`
