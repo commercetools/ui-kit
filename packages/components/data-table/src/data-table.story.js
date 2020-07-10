@@ -324,7 +324,7 @@ ColumnConfigForm.propTypes = {
   }),
 };
 
-storiesOf('Components|Table (NEW)', module)
+storiesOf('Components|Table', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('DataTable', () => {

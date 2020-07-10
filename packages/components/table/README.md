@@ -1,5 +1,7 @@
 # Table
 
+> Note: This component will soon be deprecated in favour of `DataTable`, and it is encouraged to use it instead of this one.
+
 ### `<Table />`
 
 Shows tabular data

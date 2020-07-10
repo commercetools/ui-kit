@@ -1,22 +1,13 @@
 import crypto from 'crypto';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, number, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, number } from '@storybook/addon-knobs/react';
 import sortBy from 'lodash/sortBy';
-import { css, ClassNames } from '@emotion/core';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { css } from '@emotion/core';
 import Button from '@commercetools-uikit/secondary-button';
-import Tooltip from '@commercetools-uikit/tooltip';
 import Readme from '../README.md';
 import Table from './table';
-
-const Portal = (props) => {
-  const domNode = document.body;
-  return ReactDOM.createPortal(props.children, domNode);
-};
 
 // Data generator for story
 
@@ -55,39 +46,6 @@ const generateItems = (cols, numberOfRows) =>
     ),
   }));
 
-const baseColumns = ({ onCheckboxClick, checkboxClassName }) => [
-  {
-    key: 'checkbox',
-    label: 'Checkbox',
-    onClick: onCheckboxClick,
-    cellClassName: checkboxClassName,
-    cellStyleGetter: ({ rowIndex }) =>
-      rowIndex === 0 ? { borderLeft: `2px solid red` } : {},
-  },
-  {
-    key: 'name',
-    label: 'Name',
-  },
-  {
-    key: 'role',
-    label: 'Role',
-  },
-  {
-    key: 'nationality',
-    label: 'Nationality',
-  },
-  {
-    key: 'age',
-    label: 'Age',
-    align: 'right',
-  },
-  {
-    key: ':-)',
-    label: ':-)',
-    align: 'center',
-  },
-];
-
 storiesOf('Components|Table', module)
   .addDecorator(withKnobs)
   .addParameters({
@@ -96,19 +54,7 @@ storiesOf('Components|Table', module)
       sidebar: Readme,
     },
   })
-  .add('basic example', () => {
-    const showTooltip = boolean('show tooltip', false);
-    const usePortal = boolean('use portal for tooltip', true);
-    const tooltipText = text('tooltip text', 'Tooltip example');
-    return (
-      <BaseTable
-        showTooltip={showTooltip}
-        tooltipText={tooltipText}
-        usePortal={usePortal}
-      />
-    );
-  })
-  .add('full example', () => (
+  .add('Table (Deprecating Soon)', () => (
     <Wrapper>
       {(props) => {
         const {
@@ -153,193 +99,6 @@ storiesOf('Components|Table', module)
       }}
     </Wrapper>
   ));
-
-// Basic example
-class BaseTable extends React.PureComponent {
-  static displayName = 'BaseTable';
-
-  static propTypes = {
-    usePortal: PropTypes.bool.isRequired,
-    showTooltip: PropTypes.bool.isRequired,
-    tooltipText: PropTypes.string.isRequired,
-  };
-  state = {
-    rows: [
-      {
-        checked: false,
-        name: 'Camilo Jimenez',
-        role: 'Team lead',
-        nationality: 'Australian',
-        age: 12,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Jennifer Wong',
-        role: 'UX Designer',
-        nationality: 'American',
-        age: 11,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Adnan Asani',
-        role: 'Developer',
-        nationality: 'Swedish',
-        age: 14,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Josh Bones',
-        role: 'Developer',
-        nationality: 'Australian',
-        age: 12,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Sven Heckler',
-        role: 'UI Designer',
-        nationality: 'German',
-        age: 10,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Luis Gomes',
-        role: 'Developer',
-        nationality: 'Brazilian',
-        age: 9,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Nicola Molinari',
-        role: 'Developer',
-        nationality: 'Italian',
-        age: 11,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Dominik Ferber',
-        role: 'Developer',
-        nationality: 'German',
-        age: 4,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-      {
-        checked: false,
-        name: 'Philipp Sporrer',
-        role: 'Developer',
-        nationality: 'German',
-        age: 7,
-        ':-)':
-          'asdsadsadsa dsa dsa dsa \n dsad asd sa \n dsa dsa \n d sadsadsadasdsa dsads',
-      },
-    ],
-    sortDirection: undefined,
-  };
-
-  renderItem = ({
-    rowIndex,
-    columnIndex,
-    showTooltip,
-    usePortal,
-    tooltipText,
-  }) => {
-    const col = this.columns[columnIndex];
-    const item = this.state.rows[rowIndex];
-
-    if (columnIndex === 0)
-      return (
-        <input
-          type="checkbox"
-          checked={item.checked}
-          name={`${item.id}-select`}
-        />
-      );
-    if (!showTooltip) {
-      return <div>{item[col.key]}</div>;
-    }
-    const components = usePortal ? { TooltipWrapperComponent: Portal } : {};
-    return (
-      <Tooltip components={components} title={tooltipText} placement="left">
-        <div>{item[col.key]}</div>
-      </Tooltip>
-    );
-  };
-
-  onCheckboxClick = ({ rowIndex /* , columnKey */ }) => {
-    this.setState((prevState) => ({
-      rows: [
-        ...prevState.rows.slice(0, rowIndex),
-        {
-          ...prevState.rows[rowIndex],
-          checked: !prevState.rows[rowIndex].checked,
-        },
-        ...prevState.rows.slice(rowIndex + 1),
-      ],
-    }));
-  };
-
-  render() {
-    return (
-      <div
-        css={css`
-          padding: 20px;
-        `}
-      >
-        <ClassNames>
-          {({ css: makeClassName }) => {
-            this.columns = baseColumns({
-              onCheckboxClick: this.onCheckboxClick,
-              checkboxClassName: makeClassName({
-                backgroundColor: '#f2f2f2',
-                borderLeft: `2px solid ${vars.colorInfo}`,
-                ':hover': {
-                  backgroundColor: '#e0e0e0',
-                  cursor: 'pointer',
-                },
-              }),
-            });
-            return (
-              <Table
-                columns={this.columns}
-                rowCount={this.state.rows.length}
-                itemRenderer={({ rowIndex, columnIndex }) =>
-                  this.renderItem({
-                    rowIndex,
-                    columnIndex,
-                    showTooltip: this.props.showTooltip,
-                    tooltipText: this.props.tooltipText,
-                    usePortal: this.props.usePortal,
-                  })
-                }
-                onRowClick={action('row click')}
-                shouldFillRemainingVerticalSpace={true}
-                items={this.state.rows}
-                // Just to test that we can pass a classname here
-                tableClassName={makeClassName({
-                  fontFamily: 'cursive',
-                })}
-              />
-            );
-          }}
-        </ClassNames>
-      </div>
-    );
-  }
-}
 
 // Full example
 const defaultColProps = {
