@@ -1,5 +1,12 @@
 # @commercetools-uikit/secondary-button
 
+## 10.24.0
+
+### Patch Changes
+
+- Updated dependencies [[`7d3349e`](https://github.com/commercetools/ui-kit/commit/7d3349efd2915c76d41f01ff8783887f510f9cf7)]:
+  - @commercetools-uikit/text@10.24.0
+
 ## 10.22.1
 
 ### Patch Changes
