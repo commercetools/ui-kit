@@ -427,7 +427,6 @@ storiesOf('Components|Table (NEW)', module)
           isCondensed={boolean('isCondensed', false)}
           wrapHeaderLabels={boolean('wrapHeaderLabels', true)}
           disableHeaderStickiness={boolean('disableHeaderStickiness', false)}
-          disableFooterStickiness={boolean('disableFooterStickiness', false)}
           sortedBy={sortedBy}
           onSortChange={onSortChange}
           sortDirection={sortDirection}
