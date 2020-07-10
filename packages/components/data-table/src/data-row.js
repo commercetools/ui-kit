@@ -25,11 +25,8 @@ const DataRow = (props) => {
     }
   }, [rowHasTruncatedColumn]);
 
-  const shouldRenderCollapseButton = (
-    isTruncated,
-    totalColumnsLength,
-    currentColumnIndex
-  ) => isTruncated && totalColumnsLength - 1 === currentColumnIndex;
+  const shouldRenderCollapseButton = (totalColumnsLength, currentColumnIndex) =>
+    rowHasTruncatedColumn && totalColumnsLength - 1 === currentColumnIndex;
 
   return (
     <Row
@@ -53,7 +50,6 @@ const DataRow = (props) => {
           shouldIgnoreRowClick={column.shouldIgnoreRowClick}
           handleRowCollapseClick={handleRowCollapseClick}
           shouldRenderCollapseButton={shouldRenderCollapseButton(
-            column.isTruncated,
             props.columns.length,
             columnIndex
           )}
