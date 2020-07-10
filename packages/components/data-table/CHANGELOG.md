@@ -1,5 +1,21 @@
 # @commercetools-uikit/data-table
 
+## 10.24.0
+
+### Minor Changes
+
+- [`b85140d`](https://github.com/commercetools/ui-kit/commit/b85140de203fcd66ea428ac671e3a856b4dba8f8) [#1406](https://github.com/commercetools/ui-kit/pull/1406) Thanks [@NickDevG](https://github.com/NickDevG)! - adding collapse state to column renderItem and table itemRenderer functions
+
+* [`8ff2d83`](https://github.com/commercetools/ui-kit/commit/8ff2d83ef383cd4a39ff5530f76bebb89355ab3a) [#1420](https://github.com/commercetools/ui-kit/pull/1420) Thanks [@jonnybel](https://github.com/jonnybel)! - Adds the `headerIcon` prop to columns, which allows adding an Icon or IconButton to the left of the column header label
+
+### Patch Changes
+
+- [`895769b`](https://github.com/commercetools/ui-kit/commit/895769bddccbb652d84df4e0ff0fc3e0341ecef9) [#1425](https://github.com/commercetools/ui-kit/pull/1425) Thanks [@jonnybel](https://github.com/jonnybel)! - Properly update row collapsed state when `isTruncated` options are adjusted for whole row
+
+- Updated dependencies [[`f845d56`](https://github.com/commercetools/ui-kit/commit/f845d567ebe26642cff4f2a89d157fb8ba8f3e8e), [`7d3349e`](https://github.com/commercetools/ui-kit/commit/7d3349efd2915c76d41f01ff8783887f510f9cf7)]:
+  - @commercetools-uikit/icons@10.24.0
+  - @commercetools-uikit/secondary-icon-button@10.24.0
+
 ## 10.23.0
 
 ### Minor Changes

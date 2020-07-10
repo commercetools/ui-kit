@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/radio-input",
-  "version": "10.21.0",
+  "version": "10.24.0",
   "description": "",
   "main": "dist/radio-input.cjs.js",
   "module": "dist/radio-input.esm.js",

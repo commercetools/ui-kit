@@ -1,5 +1,12 @@
 # @commercetools-uikit/select-utils
 
+## 10.24.0
+
+### Patch Changes
+
+- Updated dependencies [[`f845d56`](https://github.com/commercetools/ui-kit/commit/f845d567ebe26642cff4f2a89d157fb8ba8f3e8e), [`7d3349e`](https://github.com/commercetools/ui-kit/commit/7d3349efd2915c76d41f01ff8783887f510f9cf7)]:
+  - @commercetools-uikit/icons@10.24.0
+
 ## 10.22.0
 
 ### Patch Changes
