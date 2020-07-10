@@ -15,10 +15,18 @@ const DataRow = (props) => {
   const handleRowCollapseClick = () => {
     collapseRow(!isRowCollapsed);
   };
+
+  // update the collapsed state if isTruncated options are changed for the whole row
+  React.useEffect(() => {
+    if (rowHasTruncatedColumn) {
+      collapseRow(true);
+    } else {
+      collapseRow(false);
+    }
+  }, [rowHasTruncatedColumn]);
+
   const shouldRenderCollapseButton = (totalColumnsLength, currentColumnIndex) =>
-    totalColumnsLength - 1 === currentColumnIndex &&
-    ((isRowCollapsed && rowHasTruncatedColumn) ||
-      (rowHasTruncatedColumn && !isRowCollapsed));
+    rowHasTruncatedColumn && totalColumnsLength - 1 === currentColumnIndex;
 
   return (
     <Row

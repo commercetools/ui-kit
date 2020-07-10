@@ -3,16 +3,11 @@ import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 
-const getPaddingStyle = (props, isHeader) => {
+const getPaddingStyle = (props) => {
   if (props.isCondensed)
     return css`
       padding: ${vars.spacingS};
     `;
-  if (isHeader) {
-    return css`
-      padding: ${vars.spacingS} ${vars.spacingM};
-    `;
-  }
   return css`
     padding: ${vars.spacingM};
   `;
@@ -136,7 +131,6 @@ const RowExpandCollapseButton = styled(SecondaryIconButton)`
 `;
 
 export {
-  getPaddingStyle,
   getCellInnerStyles,
   BaseCell,
   CellInner,

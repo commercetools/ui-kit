@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { getPaddingStyle, getCellInnerStyles } from './cell.styles';
+import { getCellInnerStyles } from './cell.styles';
 
 const getButtonStyle = () => css`
   cursor: pointer;
@@ -60,8 +60,8 @@ const HeaderCellInner = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  padding: 0 ${(props) => (props.isCondensed ? vars.spacingS : vars.spacingM)};
 
-  ${(props) => getPaddingStyle(props, true)}
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
   ${(props) => (props.as === 'button' ? getButtonStyle(props) : '')};
@@ -97,7 +97,20 @@ const BaseHeaderCell = styled.th`
 `;
 
 const HeaderLabelWrapper = styled.div`
+  margin: ${vars.spacingS} 0;
   flex: 1;
 `;
 
-export { HeaderCellInner, BaseHeaderCell, HeaderLabelWrapper };
+const HeaderIconWrapper = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: ${vars.spacingS};
+`;
+
+export {
+  HeaderCellInner,
+  BaseHeaderCell,
+  HeaderLabelWrapper,
+  HeaderIconWrapper,
+};

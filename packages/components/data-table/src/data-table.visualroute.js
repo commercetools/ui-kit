@@ -2,6 +2,8 @@ import React from 'react';
 import sortBy from 'lodash/sortBy';
 import { DataTable } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
+import IconButton from '../../buttons/icon-button';
+import { InformationIcon } from '../../icons';
 
 export const routePath = '/data-table';
 
@@ -536,6 +538,37 @@ export const component = () => (
             key: 'country',
             label: 'Country',
             renderItem: (row) => countryFlagRenderer(row.country),
+          },
+        ]}
+      />
+    </Spec>
+    <Spec label="column with headerIcon">
+      <DataTable
+        rows={testRows}
+        columns={[
+          {
+            key: 'title',
+            label: 'Title',
+          },
+          {
+            key: 'year',
+            label: 'Year',
+          },
+          {
+            key: 'director',
+            label: 'Directed By',
+          },
+          {
+            key: 'country',
+            label: 'Country',
+            headerIcon: (
+              <IconButton
+                icon={<InformationIcon />}
+                label="Country Info"
+                size="medium"
+                onClick={() => null}
+              />
+            ),
           },
         ]}
       />
