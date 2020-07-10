@@ -20,7 +20,7 @@ const DataRow = (props) => {
   React.useEffect(() => {
     if (rowHasTruncatedColumn) {
       collapseRow(true);
-    } else if (!rowHasTruncatedColumn) {
+    } else {
       collapseRow(false);
     }
   }, [rowHasTruncatedColumn]);
