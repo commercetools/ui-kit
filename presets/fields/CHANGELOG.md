@@ -1,5 +1,12 @@
 # @commercetools-uikit/fields
 
+## 10.25.0
+
+### Patch Changes
+
+- Updated dependencies [[`96eb45e`](https://github.com/commercetools/ui-kit/commit/96eb45eaec9bc15ca27b9c5d7de04955855ef3a1)]:
+  - @commercetools-uikit/select-field@10.25.0
+
 ## 10.24.0
 
 ### Patch Changes

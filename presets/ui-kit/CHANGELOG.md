@@ -1,5 +1,12 @@
 # @commercetools-frontend/ui-kit
 
+## 10.25.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/fields@10.25.0
+
 ## 10.24.0
 
 ### Patch Changes

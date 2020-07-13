@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/fields",
-  "version": "10.24.0",
+  "version": "10.25.0",
   "description": "",
   "main": "dist/fields.cjs.js",
   "module": "dist/fields.esm.js",
@@ -29,7 +29,7 @@
     "@commercetools-uikit/number-field": "10.24.0",
     "@commercetools-uikit/password-field": "10.24.0",
     "@commercetools-uikit/radio-field": "10.24.0",
-    "@commercetools-uikit/select-field": "10.24.0",
+    "@commercetools-uikit/select-field": "10.25.0",
     "@commercetools-uikit/text-field": "10.24.0",
     "@commercetools-uikit/time-field": "10.24.0"
   },

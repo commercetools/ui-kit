@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "10.24.0",
+  "version": "10.25.0",
   "description": "",
   "private": false,
   "publishConfig": {
@@ -34,7 +34,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/field-errors": "10.24.0",
     "@commercetools-uikit/field-label": "10.24.0",
-    "@commercetools-uikit/fields": "10.24.0",
+    "@commercetools-uikit/fields": "10.25.0",
     "@commercetools-uikit/grid": "10.18.4",
     "@commercetools-uikit/hooks": "10.21.0",
     "@commercetools-uikit/i18n": "10.14.0",
