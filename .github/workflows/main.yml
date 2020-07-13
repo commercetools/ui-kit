@@ -61,5 +61,12 @@ jobs:
 
       - name: Checking bundle size of visual testing app
         run: yarn bundlesize
-        env:
-          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+        # env:
+        # NOTE: it seems that currently bundlesize server is having problems
+        # resulting in status code 500. Because of that, the bundlesize script
+        # is not able to handle the response, resulting in the exit code command
+        # to be 0, which makes the test pass.
+        # To keep the bundlesize check, we avoid passing the token to the command.
+        # This results in the script to run and fail in case of error, but no status
+        # code is reported to the github PR.
+        #   BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
