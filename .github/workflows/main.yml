@@ -61,3 +61,5 @@ jobs:
 
       - name: Checking bundle size of visual testing app
         run: yarn bundlesize
+        env:
+          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
