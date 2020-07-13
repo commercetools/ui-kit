@@ -87,6 +87,7 @@ export default class SelectField extends React.Component {
     onInfoButtonClick: PropTypes.func,
     hintIcon: PropTypes.node,
     badge: PropTypes.node,
+    hasWarning: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -122,6 +123,7 @@ export default class SelectField extends React.Component {
           <SelectInput
             horizontalConstraint="scale"
             hasError={hasError}
+            hasWarning={this.props.hasWarning}
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
             isAutofocussed={this.props.isAutofocussed}
