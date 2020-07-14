@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "10.25.0",
+  "version": "10.26.0",
   "description": "",
   "private": false,
   "publishConfig": {
@@ -41,7 +41,7 @@
     "@commercetools-uikit/icons": "10.24.0",
     "@commercetools-uikit/inputs": "10.24.0",
     "@commercetools-uikit/label": "10.24.0",
-    "@commercetools-uikit/link": "10.21.0",
+    "@commercetools-uikit/link": "10.26.0",
     "@commercetools-uikit/loading-spinner": "10.24.0",
     "@commercetools-uikit/messages": "10.24.0",
     "@commercetools-uikit/notifications": "10.24.0",
