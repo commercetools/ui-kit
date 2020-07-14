@@ -23,8 +23,8 @@ import { Link } from '@commercetools-frontend/ui-kit';
 | Props          | Type                                                              | Required | Values | Default | Description                                                                 |
 | -------------- | ----------------------------------------------------------------- | :------: | ------ | ------- | --------------------------------------------------------------------------- |
 | `to`           | `string` or `{ pathname: String, search: String, query: Object }` |    ✅    | -      | -       | The URL that the Link should point to                                       |
-| `children`     | `node`                                                            |  ✅(\*)  | -      | -       | Value of the link                                                           |
-| `intlMessage`  | `intl message`                                                    |  ✅(\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage`        |
+| `children`     | `node`                                                            | ✅ (\*)  | -      | -       | Value of the link                                                           |
+| `intlMessage`  | `intl message`                                                    | ✅ (\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage`        |
 | `isExternal`   | `boolean`                                                         |    -     | -      | false   | If true, a regular <a> is rendered instead of the default React Router Link |
 | `hasUnderline` | `boolean`                                                         |    -     | -      | true    | Either sets text-decoration to none or to underline                         |
 
