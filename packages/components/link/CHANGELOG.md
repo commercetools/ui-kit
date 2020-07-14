@@ -1,5 +1,11 @@
 # @commercetools-uikit/link
 
+## 10.26.0
+
+### Minor Changes
+
+- [`534a612`](https://github.com/commercetools/ui-kit/commit/534a6122cae90fda44fd4c9517ed6ce572595763) [#1434](https://github.com/commercetools/ui-kit/pull/1434) Thanks [@fuchodeveloper](https://github.com/fuchodeveloper)! - Added `intlMessage` prop to Link component, which can replace the `children` prop for translated text.
+
 ## 10.21.0
 
 ### Patch Changes
