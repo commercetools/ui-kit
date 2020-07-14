@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/core';
+import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getPassThroughProps } from '@commercetools-uikit/utils';
 
@@ -40,15 +41,28 @@ const Link = (props) => {
         target="_blank"
         rel="noopener noreferrer"
         {...remainingProps}
-      />
+      >
+        {props.intlMessage ? (
+          <FormattedMessage {...props.intlMessage} />
+        ) : (
+          props.children
+        )}
+      </a>
     );
   }
+
   return (
     <ReactRouterLink
       css={(theme) => getLinkStyles(props, theme)}
       to={props.to}
       {...remainingProps}
-    />
+    >
+      {props.intlMessage ? (
+        <FormattedMessage {...props.intlMessage} />
+      ) : (
+        props.children
+      )}
+    </ReactRouterLink>
   );
 };
 
@@ -69,6 +83,15 @@ Link.propTypes = {
     ]),
     (props) => !props.isExternal
   ),
+  intlMessage: requiredIf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      defaultMessage: PropTypes.string.isRequired,
+    }),
+    (props) => !React.Children.count(props.children)
+  ),
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
 Link.defaultProps = {
