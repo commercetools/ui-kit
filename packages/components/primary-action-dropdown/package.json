@@ -25,7 +25,7 @@
     "@commercetools-uikit/text": "10.24.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "prop-types": "15.7.2",
     "tiny-invariant": "1.1.0"
   },
