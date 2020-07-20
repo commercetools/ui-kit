@@ -33,6 +33,6 @@
     "react": ">= 16.8.0"
   },
   "devDependencies": {
-    "formik": "2.1.4"
+    "formik": "2.1.5"
   }
 }
