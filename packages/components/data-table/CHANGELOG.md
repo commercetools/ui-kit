@@ -1,5 +1,22 @@
 # @commercetools-uikit/data-table
 
+## 10.27.0
+
+### Minor Changes
+
+- [`c205a95`](https://github.com/commercetools/ui-kit/commit/c205a954198c006c39a6257b7a56941ff249f84b) [#1426](https://github.com/commercetools/ui-kit/pull/1426) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed footer growing inside a horizontal scroll along with the table body. It now remains fixed in place, as a block below the table with the same width.
+
+### Patch Changes
+
+- [`018096d`](https://github.com/commercetools/ui-kit/commit/018096d3e5f4f33d1a5929e0b3f408baf5ce65b7) [#1436](https://github.com/commercetools/ui-kit/pull/1436) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency lodash to v4.17.19 [security]
+
+* [`f74c8c3`](https://github.com/commercetools/ui-kit/commit/f74c8c3ea248bff2ad832d11fd8b9b8cbfed194d) [#1428](https://github.com/commercetools/ui-kit/pull/1428) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update all dependencies
+
+* Updated dependencies [[`018096d`](https://github.com/commercetools/ui-kit/commit/018096d3e5f4f33d1a5929e0b3f408baf5ce65b7)]:
+  - @commercetools-uikit/accessible-button@10.27.0
+  - @commercetools-uikit/secondary-icon-button@10.27.0
+  - @commercetools-uikit/hooks@10.27.0
+
 ## 10.24.0
 
 ### Minor Changes
