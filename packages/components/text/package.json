@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/text",
-  "version": "10.21.0",
+  "version": "10.24.0",
   "description": "",
   "main": "dist/text.cjs.js",
   "module": "dist/text.esm.js",
@@ -21,7 +21,7 @@
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "common-tags": "1.8.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "warning": "4.0.3"

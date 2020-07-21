@@ -1,5 +1,17 @@
 # @commercetools-uikit/date-time-input
 
+## 10.24.0
+
+### Patch Changes
+
+- [`bf63fd7`](https://github.com/commercetools/ui-kit/commit/bf63fd7b13b9d1a2386b85f123fcda93823d4bcf) [#1421](https://github.com/commercetools/ui-kit/pull/1421) Thanks [@mohib0306](https://github.com/mohib0306)! - Move `src/components/inputs` to `packages/components/inputs`
+
+- Updated dependencies [[`f845d56`](https://github.com/commercetools/ui-kit/commit/f845d567ebe26642cff4f2a89d157fb8ba8f3e8e), [`7d3349e`](https://github.com/commercetools/ui-kit/commit/7d3349efd2915c76d41f01ff8783887f510f9cf7)]:
+  - @commercetools-uikit/icons@10.24.0
+  - @commercetools-uikit/text@10.24.0
+  - @commercetools-uikit/select-utils@10.24.0
+  - @commercetools-uikit/secondary-icon-button@10.24.0
+
 ## 10.23.0
 
 ### Patch Changes

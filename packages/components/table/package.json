@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/table",
-  "version": "10.22.0",
+  "version": "10.24.0",
   "description": "",
   "main": "dist/table.cjs.js",
   "module": "dist/table.esm.js",
@@ -18,15 +18,15 @@
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.22.0",
+    "@commercetools-uikit/icons": "10.24.0",
     "@commercetools-uikit/spacings-inset": "10.21.0",
     "@commercetools-uikit/spacings-inset-squish": "10.21.0",
-    "@commercetools-uikit/text": "10.21.0",
+    "@commercetools-uikit/text": "10.24.0",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "dom-helpers": "5.1.4",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "prop-types": "15.7.2",
     "react-virtualized": "9.21.2"
   },

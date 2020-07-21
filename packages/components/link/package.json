@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/link",
-  "version": "10.21.0",
+  "version": "10.26.0",
   "description": "",
   "main": "dist/link.cjs.js",
   "module": "dist/link.esm.js",
@@ -26,6 +26,7 @@
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
-    "react-router-dom": "5.x"
+    "react-router-dom": "5.x",
+    "react-intl": "3.x || 4.x || 5.x"
   }
 }

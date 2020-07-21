@@ -142,6 +142,7 @@ storiesOf('Components|Fields', module)
                   ? action('onInfoButtonClick')
                   : undefined
               }
+              hasWarning={boolean('hasWarning', false)}
               hintIcon={hintIcon}
               badge={text('badge', '')}
             />

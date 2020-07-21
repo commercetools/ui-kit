@@ -5,6 +5,8 @@ import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/link';
 
+const intlMessage = { id: 'link', defaultMessage: 'Link' };
+
 const purpleTheme = {
   colorPrimary: 'purple',
   colorPrimary25: 'deeppurple',
@@ -30,5 +32,8 @@ export const component = () => (
         <Link to="/">A label text</Link>
       </Spec>
     </ThemeProvider>
+    <Spec label="intlMessage">
+      <Link to="/" intlMessage={intlMessage} />
+    </Spec>
   </Suite>
 );

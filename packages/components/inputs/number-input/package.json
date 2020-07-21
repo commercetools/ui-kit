@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/number-input",
-  "version": "10.21.0",
+  "version": "10.24.0",
   "description": "",
   "main": "dist/number-input.cjs.js",
   "module": "dist/number-input.esm.js",
