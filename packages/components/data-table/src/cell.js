@@ -27,6 +27,7 @@ const DataCell = (props) => {
       shouldClipContent={
         props.isTruncated && !props.shouldRenderResizingIndicator
       }
+      shouldRenderBottomBorder={props.shouldRenderBottomBorder}
     >
       <CellInner
         {...props}
@@ -55,6 +56,7 @@ DataCell.propTypes = {
   shouldIgnoreRowClick: PropTypes.bool,
   verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
   horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+  shouldRenderBottomBorder: PropTypes.bool.isRequired,
   shouldRenderCollapseButton: PropTypes.bool.isRequired,
   shouldRenderResizingIndicator: PropTypes.bool.isRequired,
   handleRowCollapseClick: requiredIf(
@@ -69,6 +71,7 @@ DataCell.propTypes = {
 DataCell.defaultProps = {
   isTruncated: false,
   shouldIgnoreRowClick: false,
+  shouldRenderBottomBorder: true,
 };
 
 export default DataCell;

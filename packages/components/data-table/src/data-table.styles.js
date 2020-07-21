@@ -15,6 +15,10 @@ const getClickableRowStyle = (props) => {
   return '';
 };
 
+const TableContainer = styled.div`
+  ${(props) => (props.maxWidth ? `max-width: ${props.maxWidth}px;` : '')}
+`;
+
 const TableGrid = styled.table`
   position: relative;
   z-index: 0;
@@ -25,8 +29,6 @@ const TableGrid = styled.table`
   /* stylelint-enable function-whitespace-after */
 
   ${(props) => (props.maxHeight ? `max-height: ${props.maxHeight}px;` : '')}
-  ${(props) =>
-    props.maxWidth ? `max-width: ${props.maxWidth}px;` : ''}
 
   overflow: auto;
 `;
@@ -49,8 +51,4 @@ const Row = styled.tr`
   }
 `;
 
-const Footer = styled.tfoot`
-  display: contents;
-`;
-
-export { TableGrid, Header, Body, Row, Footer };
+export { TableContainer, TableGrid, Header, Body, Row };
