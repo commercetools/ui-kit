@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/async-select-field",
-  "version": "10.24.0",
+  "version": "10.27.0",
   "description": "",
   "main": "dist/async-select-field.cjs.js",
   "module": "dist/async-select-field.esm.js",
@@ -17,11 +17,11 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/async-select-input": "10.24.0",
+    "@commercetools-uikit/async-select-input": "10.27.0",
     "@commercetools-uikit/constraints": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/field-errors": "10.24.0",
-    "@commercetools-uikit/field-label": "10.24.0",
+    "@commercetools-uikit/field-errors": "10.27.0",
+    "@commercetools-uikit/field-label": "10.27.0",
     "@commercetools-uikit/spacings": "10.18.5",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",

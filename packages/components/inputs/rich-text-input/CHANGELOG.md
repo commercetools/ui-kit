@@ -1,5 +1,17 @@
 # @commercetools-uikit/rich-text-input
 
+## 10.27.0
+
+### Patch Changes
+
+- [`f74c8c3`](https://github.com/commercetools/ui-kit/commit/f74c8c3ea248bff2ad832d11fd8b9b8cbfed194d) [#1428](https://github.com/commercetools/ui-kit/pull/1428) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update all dependencies
+
+- Updated dependencies [[`018096d`](https://github.com/commercetools/ui-kit/commit/018096d3e5f4f33d1a5929e0b3f408baf5ce65b7)]:
+  - @commercetools-uikit/flat-button@10.27.0
+  - @commercetools-uikit/collapsible-motion@10.27.0
+  - @commercetools-uikit/tooltip@10.27.0
+  - @commercetools-uikit/hooks@10.27.0
+
 ## 10.24.0
 
 ### Patch Changes
