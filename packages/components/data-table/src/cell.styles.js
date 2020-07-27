@@ -94,6 +94,7 @@ const getCellInnerStyles = (props) => {
 const CellInner = styled.div`
   box-sizing: border-box;
   flex: 1;
+  height: 50px;
 
   ${getPaddingStyle}
   ${getCellInnerStyles}
