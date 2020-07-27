@@ -1,32 +1,24 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { CellInner } from './cell.styles';
-import BaseFooterCell from './footer.styles';
+import styled from '@emotion/styled';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { getPaddingStyle, getHorizontalAlignmentStyle } from './cell.styles';
 
-const FooterCell = (props) => (
-  <BaseFooterCell
-    numberOfColumns={props.numberOfColumns}
-    disableFooterStickiness={props.disableFooterStickiness}
-  >
-    <CellInner
-      isCondensed={props.isCondensed}
-      horizontalCellAlignment={props.horizontalCellAlignment}
-    >
-      {props.children}
-    </CellInner>
-  </BaseFooterCell>
-);
-FooterCell.displayName = 'FooterCell';
-FooterCell.propTypes = {
+const Footer = styled.div`
+  display: block;
+  ${getPaddingStyle}
+  ${getHorizontalAlignmentStyle}
+  background-color: ${vars.colorSurface};
+  border-top: 1px solid ${vars.colorNeutral90};
+  border-bottom: 1px solid ${vars.colorNeutral90};
+`;
+Footer.displayName = 'Footer';
+Footer.propTypes = {
   children: PropTypes.node.isRequired,
   isCondensed: PropTypes.bool,
-  numberOfColumns: PropTypes.number.isRequired,
-  disableFooterStickiness: PropTypes.bool.isRequired,
   horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
-FooterCell.defaultProps = {
-  disableFooterStickiness: false,
+Footer.defaultProps = {
   horizontalCellAlignment: 'left',
 };
 
-export default FooterCell;
+export default Footer;

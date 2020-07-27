@@ -93,11 +93,9 @@ describe('DataTable', () => {
   });
 
   it('should allow rendering a footer', () => {
-    const { container } = render(
-      <DataTable {...baseProps} footer="This is in the footer" />
-    );
+    render(<DataTable {...baseProps} footer="This is in the footer" />);
 
-    const footerElement = container.querySelector('tfoot');
+    const footerElement = screen.getByTestId('footer');
 
     expect(footerElement).toHaveTextContent('This is in the footer');
   });

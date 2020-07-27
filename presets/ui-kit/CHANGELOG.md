@@ -1,5 +1,43 @@
 # @commercetools-frontend/ui-kit
 
+## 10.27.0
+
+### Patch Changes
+
+- Updated dependencies [[`018096d`](https://github.com/commercetools/ui-kit/commit/018096d3e5f4f33d1a5929e0b3f408baf5ce65b7), [`f74c8c3`](https://github.com/commercetools/ui-kit/commit/f74c8c3ea248bff2ad832d11fd8b9b8cbfed194d), [`c205a95`](https://github.com/commercetools/ui-kit/commit/c205a954198c006c39a6257b7a56941ff249f84b)]:
+  - @commercetools-uikit/collapsible-motion@10.27.0
+  - @commercetools-uikit/collapsible-panel@10.27.0
+  - @commercetools-uikit/collapsible@10.27.0
+  - @commercetools-uikit/data-table@10.27.0
+  - @commercetools-uikit/primary-action-dropdown@10.27.0
+  - @commercetools-uikit/table@10.27.0
+  - @commercetools-uikit/text@10.27.0
+  - @commercetools-uikit/tooltip@10.27.0
+  - @commercetools-uikit/hooks@10.27.0
+  - @commercetools-uikit/tag@10.27.0
+  - @commercetools-uikit/buttons@10.27.0
+  - @commercetools-uikit/inputs@10.27.0
+  - @commercetools-uikit/field-label@10.27.0
+  - @commercetools-uikit/label@10.27.0
+  - @commercetools-uikit/loading-spinner@10.27.0
+  - @commercetools-uikit/messages@10.27.0
+  - @commercetools-uikit/fields@10.27.0
+  - @commercetools-uikit/field-errors@10.27.0
+
+## 10.26.0
+
+### Patch Changes
+
+- Updated dependencies [[`534a612`](https://github.com/commercetools/ui-kit/commit/534a6122cae90fda44fd4c9517ed6ce572595763)]:
+  - @commercetools-uikit/link@10.26.0
+
+## 10.25.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/fields@10.25.0
+
 ## 10.24.0
 
 ### Patch Changes

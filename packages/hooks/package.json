@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/hooks",
-  "version": "10.21.0",
+  "version": "10.27.0",
   "description": "",
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
@@ -19,7 +19,7 @@
     "@commercetools-uikit/utils": "10.21.0"
   },
   "peerDependencies": {
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "react": ">= 16.8.0"
   },
   "license": "MIT"

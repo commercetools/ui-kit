@@ -1,5 +1,14 @@
 # @commercetools-uikit/localized-text-field
 
+## 10.27.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/localized-text-input@10.27.0
+  - @commercetools-uikit/field-label@10.27.0
+  - @commercetools-uikit/field-errors@10.27.0
+
 ## 10.24.0
 
 ### Patch Changes

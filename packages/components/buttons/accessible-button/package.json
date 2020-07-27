@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/accessible-button",
-  "version": "10.22.1",
+  "version": "10.27.0",
   "description": "",
   "main": "dist/accessible-button.cjs.js",
   "module": "dist/accessible-button.esm.js",
@@ -22,7 +22,7 @@
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "common-tags": "1.8.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

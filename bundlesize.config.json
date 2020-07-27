@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "visual-testing-app/dist/ui-kit.js",
-      "maxSize": "150 kB"
+      "maxSize": "160 kB"
     }
   ]
 }
