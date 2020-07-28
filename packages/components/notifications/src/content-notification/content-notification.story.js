@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs/react';
 import Section from '../../../../../.storybook/decorators/section';
-import Readme from '../README.md';
+import Readme from './README.md';
 import ContentNotification from './content-notification';
 
 storiesOf('Components|Notifications', module)
