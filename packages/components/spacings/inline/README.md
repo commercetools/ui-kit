@@ -1,10 +1,12 @@
 # Inline
 
+#### Description
+
 If you want to learn more about the spacing components take a look at
 [this](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
 article.
 
-## Example
+#### Usage
 
 ```jsx
 import { Spacings } from '@commercetools-frontend/ui-kit';
@@ -16,7 +18,7 @@ import { Spacings } from '@commercetools-frontend/ui-kit';
 </Spacings.Inline>;
 ```
 
-## Properties
+#### Properties
 
 | Props            | Type             | Required | Values                                                                                  | Default      |
 | ---------------- | ---------------- | :------: | --------------------------------------------------------------------------------------- | ------------ |
@@ -25,7 +27,7 @@ import { Spacings } from '@commercetools-frontend/ui-kit';
 | `justifyContent` | `oneOf`          |    -     | `['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly']` | `flex-start` |
 | `children`       | `PropTypes.node` |    -     | -                                                                                       | -            |
 
-## Scales
+#### Scales
 
 | Scale | Pixel |
 | :---- | :---- |
