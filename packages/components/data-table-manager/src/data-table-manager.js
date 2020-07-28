@@ -53,7 +53,7 @@ DataTableManager.propTypes = {
       shouldIgnoreRowClick: PropTypes.bool,
     })
   ).isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
   /* Table settings props */
   displaySettings: PropTypes.shape({
     disableDisplaySettings: PropTypes.bool,
