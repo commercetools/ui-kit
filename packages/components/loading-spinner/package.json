@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/loading-spinner",
-  "version": "10.21.0",
+  "version": "10.27.0",
   "description": "",
   "main": "dist/loading-spinner.cjs.js",
   "module": "dist/loading-spinner.esm.js",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.21.0",
-    "@commercetools-uikit/text": "10.21.0",
+    "@commercetools-uikit/text": "10.27.0",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "prop-types": "15.7.2"

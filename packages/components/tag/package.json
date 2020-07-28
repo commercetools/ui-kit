@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/tag",
-  "version": "10.22.1",
+  "version": "10.27.0",
   "description": "",
   "main": "dist/tag.cjs.js",
   "module": "dist/tag.esm.js",
@@ -16,11 +16,11 @@
   "files": ["dist"],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.22.1",
+    "@commercetools-uikit/accessible-button": "10.27.0",
     "@commercetools-uikit/constraints": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.22.0",
-    "@commercetools-uikit/text": "10.21.0",
+    "@commercetools-uikit/icons": "10.24.0",
+    "@commercetools-uikit/text": "10.27.0",
     "@emotion/core": "10.0.28",
     "prop-types": "15.7.2"
   },

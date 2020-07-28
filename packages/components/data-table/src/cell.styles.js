@@ -95,7 +95,7 @@ const CellInner = styled.div`
   box-sizing: border-box;
   flex: 1;
 
-  ${(props) => getPaddingStyle(props, false)}
+  ${getPaddingStyle}
   ${getCellInnerStyles}
   ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
@@ -104,7 +104,10 @@ const BaseCell = styled.td`
   position: relative;
   display: flex;
   background-color: ${vars.colorSurface};
-  border-bottom: 1px solid ${vars.colorNeutral90};
+  border-bottom: ${(props) =>
+    props.shouldRenderBottomBorder
+      ? `1px solid ${vars.colorNeutral90};`
+      : 'none'};
   ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
 
@@ -131,6 +134,9 @@ const RowExpandCollapseButton = styled(SecondaryIconButton)`
 `;
 
 export {
+  getPaddingStyle,
+  getVerticalAlignmentStyle,
+  getHorizontalAlignmentStyle,
   getCellInnerStyles,
   BaseCell,
   CellInner,

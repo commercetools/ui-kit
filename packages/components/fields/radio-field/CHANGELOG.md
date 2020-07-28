@@ -1,5 +1,26 @@
 # @commercetools-uikit/radio-field
 
+## 10.27.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.27.0
+  - @commercetools-uikit/field-errors@10.27.0
+
+## 10.24.0
+
+### Patch Changes
+
+- [`bf63fd7`](https://github.com/commercetools/ui-kit/commit/bf63fd7b13b9d1a2386b85f123fcda93823d4bcf) [#1421](https://github.com/commercetools/ui-kit/pull/1421) Thanks [@mohib0306](https://github.com/mohib0306)! - Move `src/components/inputs` to `packages/components/inputs`
+
+* [`c16eeca`](https://github.com/commercetools/ui-kit/commit/c16eeca83593634f0d989582526534bd0bbf120d) [#1404](https://github.com/commercetools/ui-kit/pull/1404) Thanks [@mohib0306](https://github.com/mohib0306)! - Move fields' source code from `src/components/fields` to `packages/components/fields`
+
+* Updated dependencies [[`bf63fd7`](https://github.com/commercetools/ui-kit/commit/bf63fd7b13b9d1a2386b85f123fcda93823d4bcf)]:
+  - @commercetools-uikit/radio-input@10.24.0
+  - @commercetools-uikit/field-label@10.24.0
+  - @commercetools-uikit/field-errors@10.24.0
+
 ## 10.22.1
 
 ### Patch Changes

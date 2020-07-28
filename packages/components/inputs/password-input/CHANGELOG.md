@@ -1,5 +1,11 @@
 # @commercetools-uikit/password-input
 
+## 10.24.0
+
+### Patch Changes
+
+- [`bf63fd7`](https://github.com/commercetools/ui-kit/commit/bf63fd7b13b9d1a2386b85f123fcda93823d4bcf) [#1421](https://github.com/commercetools/ui-kit/pull/1421) Thanks [@mohib0306](https://github.com/mohib0306)! - Move `src/components/inputs` to `packages/components/inputs`
+
 ## 10.21.0
 
 ### Patch Changes

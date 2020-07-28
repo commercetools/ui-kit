@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
-import { TableGrid, Header, Body, Row, Footer } from './data-table.styles';
-import FooterCell from './footer';
+import {
+  TableContainer,
+  TableGrid,
+  Header,
+  Body,
+  Row,
+} from './data-table.styles';
+import Footer from './footer';
 import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
@@ -18,6 +24,12 @@ const getColumnsLayoutInfo = (columns) =>
     ],
     []
   );
+
+const shouldRenderRowBottomBorder = (rowIndex, rowCount, footer) => {
+  if (!footer) return true;
+  if (rowIndex + 1 < rowCount) return true;
+  return false;
+};
 
 const DataTable = (props) => {
   const tableRef = React.useRef();
@@ -48,67 +60,68 @@ const DataTable = (props) => {
   }, [hasTableBeenResized, prevLayout, currentLayout, columnResizingReducer]);
 
   return (
-    <TableGrid
-      ref={tableRef}
-      {...filterDataAttributes(props)}
-      columns={props.columns}
-      maxWidth={props.maxWidth}
-      maxHeight={props.maxHeight}
-    >
-      <ColumnResizingContext.Provider value={columnResizingReducer}>
-        <Header>
-          <Row>
-            {props.columns.map((column) => (
-              <HeaderCell
-                key={column.key}
-                shouldWrap={props.wrapHeaderLabels}
-                isCondensed={props.isCondensed}
-                iconComponent={column.headerIcon}
-                disableResizing={column.disableResizing}
-                verticalCellAlignment={props.verticalCellAlignment}
-                horizontalCellAlignment={
-                  column.align ? column.align : props.horizontalCellAlignment
-                }
-                disableHeaderStickiness={props.disableHeaderStickiness}
-                /* Sorting Props */
-                onClick={props.onSortChange}
-                sortedBy={props.sortedBy}
-                columnKey={column.key}
-                isSortable={column.isSortable}
-                sortDirection={props.sortDirection}
-              >
-                {column.label}
-              </HeaderCell>
-            ))}
-          </Row>
-        </Header>
-        <Body>
-          {props.rows.map((row, rowIndex) => (
-            <DataRow
-              {...props}
-              row={row}
-              key={row.id}
-              rowIndex={rowIndex}
-              shouldClipContent={hasTableBeenResized}
-            />
-          ))}
-        </Body>
-        {props.footer && (
-          <Footer>
+    <TableContainer maxWidth={props.maxWidth}>
+      <TableGrid
+        ref={tableRef}
+        {...filterDataAttributes(props)}
+        columns={props.columns}
+        maxHeight={props.maxHeight}
+      >
+        <ColumnResizingContext.Provider value={columnResizingReducer}>
+          <Header>
             <Row>
-              <FooterCell
-                isCondensed={props.isCondensed}
-                numberOfColumns={props.columns.length + 1}
-                disableFooterStickiness={props.disableFooterStickiness}
-                horizontalCellAlignment={props.horizontalCellAlignment}
-              >
-                {props.footer}
-              </FooterCell>
+              {props.columns.map((column) => (
+                <HeaderCell
+                  key={column.key}
+                  shouldWrap={props.wrapHeaderLabels}
+                  isCondensed={props.isCondensed}
+                  iconComponent={column.headerIcon}
+                  disableResizing={column.disableResizing}
+                  verticalCellAlignment={props.verticalCellAlignment}
+                  horizontalCellAlignment={
+                    column.align ? column.align : props.horizontalCellAlignment
+                  }
+                  disableHeaderStickiness={props.disableHeaderStickiness}
+                  /* Sorting Props */
+                  onClick={props.onSortChange}
+                  sortedBy={props.sortedBy}
+                  columnKey={column.key}
+                  isSortable={column.isSortable}
+                  sortDirection={props.sortDirection}
+                >
+                  {column.label}
+                </HeaderCell>
+              ))}
             </Row>
-          </Footer>
-        )}
-      </ColumnResizingContext.Provider>
-    </TableGrid>
+          </Header>
+          <Body>
+            {props.rows.map((row, rowIndex) => (
+              <DataRow
+                {...props}
+                row={row}
+                key={row.id}
+                rowIndex={rowIndex}
+                shouldClipContent={hasTableBeenResized}
+                shouldRenderBottomBorder={shouldRenderRowBottomBorder(
+                  rowIndex,
+                  props.rows.length,
+                  props.footer
+                )}
+              />
+            ))}
+          </Body>
+        </ColumnResizingContext.Provider>
+      </TableGrid>
+      {props.footer && (
+        <Footer
+          data-testid="footer"
+          isCondensed={props.isCondensed}
+          horizontalCellAlignment={props.horizontalCellAlignment}
+        >
+          {props.footer}
+        </Footer>
+      )}
+    </TableContainer>
   );
 };
 DataTable.propTypes = {
@@ -140,14 +153,12 @@ DataTable.propTypes = {
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool,
-  disableFooterStickiness: PropTypes.bool,
   /* the default item (cell) renderer.
   an existing per-column `renderItem` func takes precedence over this */
   itemRenderer: PropTypes.func.isRequired,
+  wrapHeaderLabels: PropTypes.bool,
   /* the default cell alignment
   an existing per-column `align` property takes precedence over this */
-  isHeaderSticky: PropTypes.bool,
-  wrapHeaderLabels: PropTypes.bool,
   verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
   horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
   /* Sorting props: */

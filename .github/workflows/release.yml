@@ -20,6 +20,11 @@ jobs:
           # We could set `fetch-depth: 0`, but that would cause the entire history
           # to be cloned. Using 50 seems like a good balance to start with.
           fetch-depth: 50
+          # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
+          # other workflows
+          # https://help.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
+          # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
+          token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
 
       - name: Read .nvmrc
         run: echo ::set-output name=NVMRC::$(cat .nvmrc)
@@ -62,7 +67,7 @@ jobs:
         with:
           publish: yarn changeset publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
 
       # Publish canary releases only if the packages weren't published already
       - name: Publishing canary releases to npm registry
@@ -72,4 +77,4 @@ jobs:
           yarn changeset version --snapshot canary
           yarn changeset publish --tag canary
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}

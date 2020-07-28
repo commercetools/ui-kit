@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-utils",
-  "version": "10.21.0",
+  "version": "10.27.0",
   "description": "",
   "main": "dist/localized-utils.cjs.js",
   "module": "dist/localized-utils.esm.js",
@@ -17,7 +17,7 @@
   "sideEffects": false,
   "dependencies": {
     "@commercetools-uikit/utils": "10.21.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "tiny-invariant": "1.1.0"
   },
   "license": "MIT"

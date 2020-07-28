@@ -7,6 +7,8 @@ const createTestProps = (custom) => ({
   ...custom,
 });
 
+const intlMessage = { id: 'link', defaultMessage: 'Link' };
+
 describe('rendering', () => {
   let props;
   describe('when rendering a default (react-router) link', () => {
@@ -31,6 +33,20 @@ describe('rendering', () => {
       const link = screen.getByText('Link');
       expect(link).toBeInTheDocument();
       expect(link).toHaveProperty('href', props.to);
+    });
+  });
+  describe('when rendering a translated link', () => {
+    beforeEach(() => {
+      props = createTestProps({
+        isExternal: true,
+        to: 'https://www.omg.com/',
+        intlMessage,
+      });
+    });
+    it('should render link with react-intl', () => {
+      render(<Link {...props} />);
+      const link = screen.getByText('Link');
+      expect(link).toBeInTheDocument();
     });
   });
 });

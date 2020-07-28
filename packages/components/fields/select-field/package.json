@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/select-field",
-  "version": "10.22.2",
+  "version": "10.27.0",
   "description": "",
   "main": "dist/select-field.cjs.js",
   "module": "dist/select-field.esm.js",
@@ -19,9 +19,9 @@
   "dependencies": {
     "@commercetools-uikit/constraints": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/field-errors": "10.22.1",
-    "@commercetools-uikit/field-label": "10.22.1",
-    "@commercetools-uikit/select-input": "10.22.0",
+    "@commercetools-uikit/field-errors": "10.27.0",
+    "@commercetools-uikit/field-label": "10.27.0",
+    "@commercetools-uikit/select-input": "10.27.0",
     "@commercetools-uikit/spacings": "10.18.5",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
