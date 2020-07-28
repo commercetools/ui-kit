@@ -2,7 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Section from '../../../../.storybook/decorators/section';
 import Text from '../../text';
-import Spacings from '../../spacings';
+import SpacingsStack from '../../spacings/stack';
+import SpacingsInline from '../../spacings/inline';
 import * as icons from '../../icons';
 import Stamp, { availableTones } from './stamp';
 import Readme from '../README.md';
@@ -21,24 +22,24 @@ storiesOf('Components|Stamps', module)
   })
   .add('Stamp', () => (
     <Section>
-      <Spacings.Stack>
+      <SpacingsStack>
         {availableTones.map((tone) => {
           const iconIndex = getRandomIndex(0, numberOfIcons);
           const Icon = icons[iconNames[iconIndex]];
           return (
-            <Spacings.Inline key={tone} alignItems="center">
+            <SpacingsInline key={tone} alignItems="center">
               <Stamp tone={tone}>
-                <Spacings.Inline alignItems="center">
+                <SpacingsInline alignItems="center">
                   <Icon size="medium" />
                   <Text.Detail>{'Hello'}</Text.Detail>
-                </Spacings.Inline>
+                </SpacingsInline>
               </Stamp>
               <Stamp tone={tone}>
                 <Text.Detail>{`tone="${tone}"`}</Text.Detail>
               </Stamp>
-            </Spacings.Inline>
+            </SpacingsInline>
           );
         })}
-      </Spacings.Stack>
+      </SpacingsStack>
     </Section>
   ));
