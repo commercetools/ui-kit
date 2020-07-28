@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Section from '../../../../.storybook/decorators/section';
 import Text from '../../text';
-import Spacings from '../../../../src/components/spacings';
+import Spacings from '../../spacings';
 import * as icons from '../../icons';
 import Stamp, { availableTones } from './stamp';
 import Readme from '../README.md';

@@ -1,13 +1,13 @@
 import React from 'react';
-import { screen, render } from '../../../../test/test-utils';
-import Inset from './inset';
+import { screen, render } from '../../../../../test/test-utils';
+import Stack from './stack';
 
 it('should render children', () => {
   render(
-    <Inset>
+    <Stack>
       <div data-testid="first-child" />
       <div data-testid="second-child" />
-    </Inset>
+    </Stack>
   );
   expect(screen.getByTestId('first-child')).toBeInTheDocument();
   expect(screen.getByTestId('second-child')).toBeInTheDocument();

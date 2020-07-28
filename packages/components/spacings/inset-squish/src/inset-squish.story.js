@@ -2,21 +2,21 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import Text from '@commercetools-uikit/text';
-import Inline from '../inline';
-import Inset from './inset';
-import Readme from './README.md';
+import Inline from '../../inline';
+import Inset from '../../inset';
+import InsetSquish from './inset-squish';
+import Readme from '../README.md';
 
 const View = styled.div`
   display: flex;
 `;
 
 const InsetColorWrapper = styled.div`
-  background-color: #ff5b5b;
-  height: 100px;
-  width: 100px;
+  background-color: #ffb15c;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  border-radius: 4px;
   > * {
     flex-grow: 1;
     display: flex;
@@ -24,7 +24,7 @@ const InsetColorWrapper = styled.div`
   }
 `;
 
-const Square = styled.div`
+const Button = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
@@ -34,11 +34,9 @@ const Square = styled.div`
 `;
 
 const sizes = [
-  { name: 'xs', pixels: '4px' },
-  { name: 's', pixels: '8px' },
-  { name: 'm', pixels: '16px' },
-  { name: 'l', pixels: '24px' },
-  { name: 'xl', pixels: '32px' },
+  { name: 's', pixels: '4px x 8px' },
+  { name: 'm', pixels: '8px x 16px' },
+  { name: 'l', pixels: '16px x 32px' },
 ];
 
 storiesOf('Components|Spacings', module)
@@ -48,20 +46,20 @@ storiesOf('Components|Spacings', module)
       sidebar: Readme,
     },
   })
-  .add('Inset', () => (
+  .add('Inset Squish', () => (
     <View>
       <Inset scale="m">
-        <Inline scale="s">
+        <Inline scale="s" alignItems="center">
           {sizes.map((size) => (
             <InsetColorWrapper key={size.name}>
-              <Inset scale={size.name}>
-                <Square>
+              <InsetSquish scale={size.name}>
+                <Button>
                   <Text.Subheadline as="h4">
                     {size.name.toUpperCase()}
                     <Text.Detail>{size.pixels}</Text.Detail>
                   </Text.Subheadline>
-                </Square>
-              </Inset>
+                </Button>
+              </InsetSquish>
             </InsetColorWrapper>
           ))}
         </Inline>
