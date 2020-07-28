@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import requiredIf from 'react-required-if';
 import { useIntl } from 'react-intl';
-import Constraints from '@commercetools-uikit/constraints';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import DensityManager from './density-manager';
 import ColumnManager from './column-manager';
+import { SelectContainer } from './data-table-settings-panel.styles';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import messages from './messages';
 
@@ -71,7 +71,7 @@ const DataTableSettings = (props) => {
       <Spacings.Inline justifyContent="space-between" alignItems="center">
         <div>{props.topBar}</div>
         {dropdownOptions.length > 0 && (
-          <Constraints.Horizontal constraint="s">
+          <SelectContainer>
             <SelectInput
               name="table-settings-dropdown"
               // the dropdown always shows the placeholder as selecting an option
@@ -81,7 +81,7 @@ const DataTableSettings = (props) => {
               onChange={handleDropdownChange}
               options={dropdownOptions}
             />
-          </Constraints.Horizontal>
+          </SelectContainer>
         )}
       </Spacings.Inline>
       {openedPanelId === DISPLAY_SETTINGS && (

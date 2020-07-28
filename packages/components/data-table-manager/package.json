@@ -19,8 +19,7 @@
   "dependencies": {
     "@commercetools-uikit/accessible-button": "10.22.1",
     "@commercetools-uikit/async-select-input": "10.22.0",
-    "@commercetools-uikit/collapsible-motion": "10.21.0",
-    "@commercetools-uikit/constraints": "10.21.0",
+    "@commercetools-uikit/collapsible-motion": "10.21.0",    
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/field-label": "10.22.1",
     "@commercetools-uikit/grid": "10.18.4",
@@ -37,7 +36,7 @@
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
-    "debounce-promise": "^3.1.2",    
+    "debounce-promise": "^3.1.2",
     "lodash.differencewith": "4.5.0",
     "prop-types": "15.7.2",
     "react-beautiful-dnd": "13.0.0",

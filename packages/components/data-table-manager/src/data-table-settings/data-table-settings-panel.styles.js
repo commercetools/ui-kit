@@ -21,4 +21,8 @@ const DroppableContainer = styled.div`
   cursor: ${(props) => (props.isDragging ? 'grabbing' : 'auto')};
 `;
 
-export { Container, HeaderContainer, DroppableContainer };
+const SelectContainer = styled.div`
+  width: 200px;
+`;
+
+export { Container, HeaderContainer, DroppableContainer, SelectContainer };
