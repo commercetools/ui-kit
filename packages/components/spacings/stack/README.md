@@ -1,15 +1,29 @@
 # Stack
 
-#### Description
+## Description
 
 If you want to learn more about the spacing components take a look at
 [this](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
 article.
 
-#### Usage
+## Usage
 
 ```jsx
-import { Spacings } from '@commercetools-frontend/ui-kit';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+
+<SpacingsStack scale="m">
+  <Card />
+  <Card />
+  <Card />
+</SpacingsStack>;
+```
+
+### Using Spacings preset
+
+Stack spacing can be imported and used via `spacings` preset as well.
+
+```jsx
+import Spacings from '@commercetools-frontend/spacings';
 
 <Spacings.Stack scale="m">
   <Card />
@@ -18,7 +32,7 @@ import { Spacings } from '@commercetools-frontend/ui-kit';
 </Spacings.Stack>;
 ```
 
-#### Properties
+## Properties
 
 | Props        | Type             | Required | Values                                            | Default   |
 | ------------ | ---------------- | :------: | ------------------------------------------------- | --------- |
@@ -26,7 +40,7 @@ import { Spacings } from '@commercetools-frontend/ui-kit';
 | `alignItems` | `oneOf`          |    -     | `['stretch', 'flex-start', 'flex-end', 'center']` | `stretch` |
 | `children`   | `PropTypes.node` |    -     | -                                                 | -         |
 
-#### Scales
+## Scales
 
 | Scale | Pixel |
 | :---- | :---- |

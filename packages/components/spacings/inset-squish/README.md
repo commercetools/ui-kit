@@ -1,17 +1,32 @@
 # Inset Squish
 
-#### Description
+## Description
 
 If you want to learn more about the spacing components take a look at
 [this](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
 article.
 
-#### Usage
+## Usage
 
 ```jsx
-import { Spacings } from '@commercetools-frontend/ui-kit';
+import SpacingsInsetSquish from '@commercetools-uikit/spacings-inset-squish';
 
-// button component that uses InsetSquish
+// button component that uses SpacingsInsetSquish
+<div className={styles.background}>
+  <SpacingsInsetSquish scale="m">
+    <Text.Detail>{/* SUBMIT */}</Text.Detail>
+  </SpacingsInsetSquish>
+</div>;
+```
+
+### Using Spacings preset
+
+InsetSquish spacing can be imported and used via `spacings` preset as well.
+
+```jsx
+import Spacings from '@commercetools-uikit/spacings';
+
+// button component that uses SpacingsInsetSquish
 <div className={styles.background}>
   <Spacings.InsetSquish scale="m">
     <Text.Detail>{/* SUBMIT */}</Text.Detail>
@@ -19,14 +34,14 @@ import { Spacings } from '@commercetools-frontend/ui-kit';
 </div>;
 ```
 
-#### Properties
+## Properties
 
 | Props      | Type             | Required | Values            | Default |
 | ---------- | ---------------- | :------: | ----------------- | ------- |
 | `scale`    | `String`         |    -     | `['s', 'm', 'l']` | `m`     |
 | `children` | `PropTypes.node` |    -     | -                 | -       |
 
-#### Scales
+## Scales
 
 | Scale | Pixel       |
 | :---- | :---------- |
