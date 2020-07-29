@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/spacings-stack",
-  "version": "10.21.0",
+  "version": "10.27.1",
   "description": "",
   "main": "dist/stack.cjs.js",
   "module": "dist/stack.esm.js",

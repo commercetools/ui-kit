@@ -1,5 +1,12 @@
 # @commercetools-uikit/creatable-select-input
 
+## 10.27.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@10.18.6
+
 ## 10.27.0
 
 ### Patch Changes

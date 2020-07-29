@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/notifications",
-  "version": "10.24.0",
+  "version": "10.27.1",
   "description": "",
   "main": "dist/notifications.cjs.js",
   "module": "dist/notifications.esm.js",
