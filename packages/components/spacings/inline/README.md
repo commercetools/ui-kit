@@ -1,13 +1,29 @@
 # Inline
 
+## Description
+
 If you want to learn more about the spacing components take a look at
 [this](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
 article.
 
-## Example
+## Usage
 
 ```jsx
-import { Spacings } from '@commercetools-frontend/ui-kit';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+
+<SpacingsInline scale="m">
+  <FlatButton />
+  <FlatButton />
+  <FlatButton />
+</SpacingsInline>;
+```
+
+### Using Spacings preset
+
+Inline spacing can be imported and used via `spacings` preset as well.
+
+```jsx
+import Spacings from '@commercetools-uikit/spacings';
 
 <Spacings.Inline scale="m">
   <FlatButton />

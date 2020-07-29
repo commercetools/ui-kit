@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../../../test/test-utils';
+import { render } from '../../../../../test/test-utils';
 import ContentNotification from './content-notification';
 
 const intlMessage = {
