@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/creatable-select-input",
-  "version": "10.27.0",
+  "version": "10.27.1",
   "description": "",
   "main": "dist/creatable-select-input.cjs.js",
   "module": "dist/creatable-select-input.esm.js",
@@ -21,7 +21,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/icons": "10.24.0",
     "@commercetools-uikit/select-utils": "10.27.0",
-    "@commercetools-uikit/spacings": "10.18.5",
+    "@commercetools-uikit/spacings": "10.18.6",
     "@commercetools-uikit/text": "10.27.0",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
