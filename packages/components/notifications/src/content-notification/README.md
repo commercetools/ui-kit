@@ -1,20 +1,20 @@
 # ContentNotification
 
-#### Description
+## Description
 
 An in-place notification panel.
 
 ## Usage
 
 ```js
-import { ContentNotification } from '@commercetools-frontend/ui-kit';
+import { ContentNotification } from '@commercetools-uikit/notifications';
 
 <ContentNotification type="error">
   Something went wrong here!
 </ContentNotification>;
 ```
 
-#### Properties
+## Properties
 
 | Props         | Type           | Required | Values                                | Default | Description                                                          |
 | ------------- | -------------- | :------: | ------------------------------------- | ------- | -------------------------------------------------------------------- |
