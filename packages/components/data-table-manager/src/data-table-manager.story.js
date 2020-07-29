@@ -269,17 +269,13 @@ storiesOf('Components|Table (NEW)', module)
     return (
       <React.Fragment>
         <DataTableManager
+          topBar={topBar}
           columns={withRowSelection ? columnsWithSelect : visibleColumns}
-          sortedBy={sortedBy}
-          onSortChange={onSortChange}
-          sortDirection={sortDirection}
-          footer={footer}
           onSettingsChange={(action, nextValue) => {
             tableSettingsChangeHandler[action](nextValue);
           }}
           columnManager={columnManager}
           displaySettings={displaySettings}
-          topBar={topBar}
         >
           <DataTable
             rows={withRowSelection ? rowsWithSelection : rows}
