@@ -1,13 +1,13 @@
 import React from 'react';
-import { screen, render } from '../../../../test/test-utils';
-import InsetSquish from './inset-squish';
+import { screen, render } from '../../../../../test/test-utils';
+import Inline from './inline';
 
 it('should render children', () => {
   render(
-    <InsetSquish>
+    <Inline>
       <div data-testid="first-child" />
       <div data-testid="second-child" />
-    </InsetSquish>
+    </Inline>
   );
   expect(screen.getByTestId('first-child')).toBeInTheDocument();
   expect(screen.getByTestId('second-child')).toBeInTheDocument();
