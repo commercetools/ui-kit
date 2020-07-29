@@ -1,5 +1,11 @@
 # @commercetools-uikit/notifications
 
+## 10.27.1
+
+### Patch Changes
+
+- [`1d8455c`](https://github.com/commercetools/ui-kit/commit/1d8455c1747b75060f5b039dc56da9b061ee139a) [#1451](https://github.com/commercetools/ui-kit/pull/1451) Thanks [@mohib0306](https://github.com/mohib0306)! - Move `src/components/notifications` to `packages/components/notifications`
+
 ## 10.24.0
 
 ### Patch Changes

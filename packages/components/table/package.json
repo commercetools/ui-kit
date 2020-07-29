@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/table",
-  "version": "10.27.0",
+  "version": "10.27.1",
   "description": "",
   "main": "dist/table.cjs.js",
   "module": "dist/table.esm.js",
@@ -19,8 +19,8 @@
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/icons": "10.24.0",
-    "@commercetools-uikit/spacings-inset": "10.21.0",
-    "@commercetools-uikit/spacings-inset-squish": "10.21.0",
+    "@commercetools-uikit/spacings-inset": "10.27.1",
+    "@commercetools-uikit/spacings-inset-squish": "10.27.1",
     "@commercetools-uikit/text": "10.27.0",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",

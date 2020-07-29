@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/radio-input",
-  "version": "10.24.0",
+  "version": "10.27.1",
   "description": "",
   "main": "dist/radio-input.cjs.js",
   "module": "dist/radio-input.esm.js",
@@ -19,8 +19,8 @@
   "dependencies": {
     "@commercetools-uikit/constraints": "10.21.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/spacings-inline": "10.21.0",
-    "@commercetools-uikit/spacings-stack": "10.21.0",
+    "@commercetools-uikit/spacings-inline": "10.27.1",
+    "@commercetools-uikit/spacings-stack": "10.27.1",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
