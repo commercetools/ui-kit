@@ -35,47 +35,43 @@ return (
   <DataTableManager columns={columns}>
     <DataTable rows={rows} />
   </DataTableManager>
-  );
+);
 ```
 
 ## Properties
 
 > Check the `DataTable` properties [here](https://github.com/commercetools/ui-kit/blob/master/packages/components/data-table/README.md)
 
-| Props                     | Type              | Required | Default                              | Description                                                                                                                                                                                                                                                                             |
-| ------------------------- | ----------------- | -------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `topBar` | `node`           | -        | -                              | Node element to place on the left corner of the table settings dropdown option row. |
-| `displaySettings` | `object`           | -        | -                              | Object containing the properties for the display settings management. |
-| `columnManager` | `object`           | -        | -                              | Object containing the properties for the column manager. |
-| `onTableSettingsChange` | `func`           | -        | -                              | Function triggered when any of the properties within `displaySettings` or `columnManager` is modified. Should implement the following interface: `(action: string, nextValue: object): void`  |
-
-
+| Props              | Type     | Required | Default | Description                                                                                                                                                                                  |
+| ------------------ | -------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `topBar`           | `node`   | -        | -       | Node element to place on the left corner of the table settings dropdown option row.                                                                                                          |
+| `displaySettings`  | `object` | -        | -       | Object containing the properties for the display settings management.                                                                                                                        |
+| `columnManager`    | `object` | -        | -       | Object containing the properties for the column manager.                                                                                                                                     |
+| `onSettingsChange` | `func`   | -        | -       | Function triggered when any of the properties within `displaySettings` or `columnManager` is modified. Should implement the following interface: `(action: string, nextValue: object): void` |
 
 ### Display Settings
 
 > An object containing the properties to handle text-wrapping and density-display options over the table
 
-| Props                  | Type      | Required | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ---------------------- | --------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `disableDisplaySettings` | `bool`            | -        | `true`                              | Enable this flag to enable display settings panel option.                                                                                                                                                |
-| `isCondensed`             | `boolean`         | -        | `false`                              | Set this to `true` to reduce the paddings of all cells, allowing the Table to display more data in less space. Required if `disableDisplaySettings` is set to `true`.                                                                                                                                                                         |
-| `isWrappingText`             | `boolean`         | -        | `false`                              | Set this to `true` to set truncation on all cells. Required if `disableDisplaySettings` is set to `true`.                                                                                                                                                                             |      
-| `primaryButton` | `PrimaryButton`           | -        | -                              | UIKit Primary Button element to set at the bottom right to be used as primary action in case the display settings is working as a form. |
-| `secondaryButton` | `SecondaryButton`           | -        | -                              | UIKit Secondary Button element to set at the bottom right to be used as secondary action in case the display settings is working as a form. |
-
+| Props                    | Type              | Required | Default | Description                                                                                                                                                           |
+| ------------------------ | ----------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `disableDisplaySettings` | `bool`            | -        | `true`  | Enable this flag to enable display settings panel option.                                                                                                             |
+| `isCondensed`            | `boolean`         | -        | `false` | Set this to `true` to reduce the paddings of all cells, allowing the Table to display more data in less space. Required if `disableDisplaySettings` is set to `true`. |
+| `isWrappingText`         | `boolean`         | -        | `false` | Set this to `true` to set truncation on all cells. Required if `disableDisplaySettings` is set to `true`.                                                             |
+| `primaryButton`          | `PrimaryButton`   | -        | -       | UIKit Primary Button element to set at the bottom right to be used as primary action in case the display settings is working as a form.                               |
+| `secondaryButton`        | `SecondaryButton` | -        | -       | UIKit Secondary Button element to set at the bottom right to be used as secondary action in case the display settings is working as a form.                           |
 
 ### Column Manager
 
 > An object containing the properties to handle the visibility of the columns and the order in which are shown over the table
 
-| Props                  | Type      | Required | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ---------------------- | --------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |                           
-| `disableColumnManager` | `bool`            | -        | `true`                              | Enable this flag to enable column manager panel option.                                                                                                                                                |
-| `visibleColumnKeys` | array of `string`           | -        | -                              | Visible columns keys. Required if `disableColumnManager` is `true`.  |
-| `hideableColumns` | array of `object`           | -        | -                              | Columns to be managed by the column manager. Required if `disableColumnManager` is `true`.  |
-| `onUpdateColumns` | `func`           | -        | -                              | Function called when the visible columns change on the column manager. Required if `disableColumnManager` is `true`.  |
-| `areHiddenColumnsSearchable` | `bool`           | -        | -                              | Enable this flag to set a search input for the hidden columns panel.  |
-| `searchHiddenColumns` | `func`           | -        | -                              | Function called when the search input for the hidden columns change.  |
-| `searchHiddenColumnsPlaceholder` | `string`           | -        | -                              | Placeholder for the search input for the hidden columns.  |
-| `primaryButton` | `PrimaryButton`           | -        | -                              | UIKit Primary Button element to set at the bottom right to be used as primary action in case the display settings is working as a form. |
-| `secondaryButton` | `SecondaryButton`           | -        | -                              | UIKit Secondary Button element to set at the bottom right to be used as secondary action in case the display settings is working as a form. |
+| Props                            | Type              | Required | Default | Description                                                                                                                                 |
+| -------------------------------- | ----------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `disableColumnManager`           | `bool`            | -        | `true`  | Enable this flag to enable column manager panel option.                                                                                     |
+| `visibleColumnKeys`              | array of `string` | -        | -       | Visible columns keys. Required if `disableColumnManager` is `true`.                                                                         |
+| `hideableColumns`                | array of `object` | -        | -       | Columns to be managed by the column manager. Required if `disableColumnManager` is `true`.                                                  |
+| `areHiddenColumnsSearchable`     | `bool`            | -        | -       | Enable this flag to set a search input for the hidden columns panel.                                                                        |
+| `searchHiddenColumns`            | `func`            | -        | -       | Function called when the search input for the hidden columns change.                                                                        |
+| `searchHiddenColumnsPlaceholder` | `string`          | -        | -       | Placeholder for the search input for the hidden columns.                                                                                    |
+| `primaryButton`                  | `PrimaryButton`   | -        | -       | UIKit Primary Button element to set at the bottom right to be used as primary action in case the display settings is working as a form.     |
+| `secondaryButton`                | `SecondaryButton` | -        | -       | UIKit Secondary Button element to set at the bottom right to be used as secondary action in case the display settings is working as a form. |

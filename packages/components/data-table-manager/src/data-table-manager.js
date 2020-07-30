@@ -60,7 +60,8 @@ DataTableManager.propTypes = {
     isCondensed: PropTypes.bool,
     isWrappingText: requiredIf(
       PropTypes.bool,
-      (props) => props.displaySettings.disableDisplaySettings
+      (props) =>
+        props.displaySettings && !props.displaySettings.disableDisplaySettings
     ),
     primaryButton: PropTypes.element,
     secondaryButton: PropTypes.element,
@@ -69,16 +70,19 @@ DataTableManager.propTypes = {
     disableColumnManager: PropTypes.bool,
     visibleColumnKeys: requiredIf(
       PropTypes.array,
-      (props) => !props.columnManager.disableColumnManager
+      (props) =>
+        props.columnManager && !props.columnManager.disableColumnManager
     ),
     hideableColumns: requiredIf(
       PropTypes.array,
-      (props) => !props.columnManager.disableColumnManager
+      (props) =>
+        props.columnManager && !props.columnManager.disableColumnManager
     ),
     areHiddenColumnsSearchable: PropTypes.bool,
     searchHiddenColumns: requiredIf(
       PropTypes.func,
       (props) =>
+        props.columnManager &&
         !props.columnManager.disableColumnManager &&
         props.columnManager.areHiddenColumnsSearchable
     ),
