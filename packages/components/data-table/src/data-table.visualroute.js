@@ -87,11 +87,25 @@ export const component = () => (
     <Spec label="condensed mode">
       <DataTable rows={testRows} columns={testColumns} isCondensed />
     </Spec>
-    <Spec label="with a max-width">
+    <Spec label="with a numeric max-width">
       <DataTable rows={testRows} columns={testColumns} maxWidth={300} />
     </Spec>
-    <Spec label="with a max-height">
+    <Spec label="with a numeric max-height">
       <DataTable rows={testRows} columns={testColumns} maxHeight={150} />
+    </Spec>
+    <Spec label="with a css string max-width">
+      <DataTable
+        rows={testRows}
+        columns={testColumns}
+        maxWidth="calc(200px + 10%)"
+      />
+    </Spec>
+    <Spec label="with a css string max-height">
+      <DataTable
+        rows={testRows}
+        columns={testColumns}
+        maxHeight="calc(70px + 10%)"
+      />
     </Spec>
     <Spec label="with max-width and max-height">
       <DataTable
