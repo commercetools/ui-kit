@@ -401,7 +401,9 @@ storiesOf('Components|Table (NEW)', module)
               ? (item, index) => alert(`Row click: Row number ${index}`)
               : null
           }
-          maxHeight={castToNumberIfPossible(text('maxHeight', undefined))}
+          maxHeight={castToNumberIfPossible(
+            text('maxHeight', 'calc(100vh - 200px)')
+          )}
           maxWidth={castToNumberIfPossible(text('maxWidth', undefined))}
           horizontalCellAlignment={select('horizontalCellAlignment', [
             'left',
