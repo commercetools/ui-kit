@@ -1,5 +1,14 @@
 # @commercetools-uikit/multiline-text-field
 
+## 10.27.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.27.1
+  - @commercetools-uikit/multiline-text-input@10.27.1
+  - @commercetools-uikit/spacings@10.18.6
+
 ## 10.27.0
 
 ### Patch Changes
