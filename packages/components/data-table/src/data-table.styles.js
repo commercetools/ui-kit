@@ -2,9 +2,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
-
-const convertNumericDimensionToPixelValue = (dimensionValue) =>
-  typeof dimensionValue === 'number' ? `${dimensionValue}px` : dimensionValue;
+import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
 
 const getClickableRowStyle = (props) => {
   if (props.onClick) {
