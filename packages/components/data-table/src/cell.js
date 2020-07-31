@@ -35,14 +35,15 @@ const DataCell = (props) => {
       />
       {props.shouldRenderCollapseButton && (
         <RowExpandCollapseButton
-          icon={<Icon size="small" />}
-          isRowCollapsed={props.isRowCollapsed}
           label="Expand/Collapse Row"
           onClick={(event) => {
             props.handleRowCollapseClick();
             event.stopPropagation();
           }}
-        />
+          isRowCollapsed={props.isRowCollapsed}
+        >
+          <Icon size="small" />
+        </RowExpandCollapseButton>
       )}
       {props.shouldRenderResizingIndicator && <Resizer isOnDataCell />}
     </BaseCell>
