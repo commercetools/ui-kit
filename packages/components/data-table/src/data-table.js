@@ -148,8 +148,8 @@ DataTable.propTypes = {
     })
   ).isRequired,
   footer: PropTypes.node,
-  maxWidth: PropTypes.number,
-  maxHeight: PropTypes.number,
+  maxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool,
