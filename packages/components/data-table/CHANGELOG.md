@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.28.0
+
+### Minor Changes
+
+- [`9d53d51`](https://github.com/commercetools/ui-kit/commit/9d53d510a04803216639f925ec2202bb4bec66bf) [#1455](https://github.com/commercetools/ui-kit/pull/1455) Thanks [@jonnybel](https://github.com/jonnybel)! - maxHeight and maxWidth now allow css value strings (such as '100%' and calc() functions) in addition to numeric values
+
 ## 10.27.1
 
 ### Patch Changes
