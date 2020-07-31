@@ -1,5 +1,14 @@
 # @commercetools-frontend/ui-kit
 
+## 10.28.1
+
+### Patch Changes
+
+- [`0619f3f`](https://github.com/commercetools/ui-kit/commit/0619f3f97b96c6a89bf92abcd4c10fbe0a265c0a) [#1457](https://github.com/commercetools/ui-kit/pull/1457) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed missing export of DataTableManager
+
+- Updated dependencies [[`0619f3f`](https://github.com/commercetools/ui-kit/commit/0619f3f97b96c6a89bf92abcd4c10fbe0a265c0a)]:
+  - @commercetools-uikit/data-table-manager@10.23.1
+
 ## 10.28.0
 
 ### Patch Changes
