@@ -1,5 +1,5 @@
 import debounce from 'debounce-promise';
-import differenceWith from 'lodash.differencewith';
+import differenceWith from 'lodash/differenceWith';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';

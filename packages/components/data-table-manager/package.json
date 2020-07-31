@@ -37,7 +37,7 @@
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "debounce-promise": "^3.1.2",
-    "lodash.differencewith": "4.5.0",
+    "lodash": "4.17.19",
     "prop-types": "15.7.2",
     "react-beautiful-dnd": "13.0.0",
     "react-required-if": "1.0.3"
