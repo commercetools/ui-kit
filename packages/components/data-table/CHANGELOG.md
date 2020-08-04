@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.29.0
+
+### Patch Changes
+
+- [`857dd6b`](https://github.com/commercetools/ui-kit/commit/857dd6be96f8f04ee0df217241925e3bec3ea91f) [#1459](https://github.com/commercetools/ui-kit/pull/1459) Thanks [@jonnybel](https://github.com/jonnybel)! - Increased click area of Expand/Collapse Row button to 16px
+
 ## 10.28.0
 
 ### Minor Changes

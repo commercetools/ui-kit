@@ -1,5 +1,11 @@
 # @commercetools-uikit/table
 
+## 10.29.0
+
+### Patch Changes
+
+- [`9219c54`](https://github.com/commercetools/ui-kit/commit/9219c54789674078a3175ffd6506db520fab9ba8) [#1462](https://github.com/commercetools/ui-kit/pull/1462) Thanks [@jonnybel](https://github.com/jonnybel)! - Updated dependencies ([#1460](https://github.com/commercetools/ui-kit/pull/1460))
+
 ## 10.27.1
 
 ### Patch Changes

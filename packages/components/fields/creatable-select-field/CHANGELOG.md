@@ -1,5 +1,11 @@
 # @commercetools-uikit/creatable-select-field
 
+## 10.29.0
+
+### Minor Changes
+
+- [`86924f7`](https://github.com/commercetools/ui-kit/commit/86924f7f3d6095b79211e7b383eff7e7cd53c6b3) [#1464](https://github.com/commercetools/ui-kit/pull/1464) Thanks [@mohib0306](https://github.com/mohib0306)! - Expose `hasWarning` prop on `CreatableSelectField`, `AsyncSelectField` and `AsyncCreatableSelectField` components
+
 ## 10.27.1
 
 ### Patch Changes
