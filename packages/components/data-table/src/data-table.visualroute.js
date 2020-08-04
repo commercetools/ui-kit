@@ -587,5 +587,13 @@ export const component = () => (
         ]}
       />
     </Spec>
+    <Spec label="with disabledSelfContainment">
+      <DataTable
+        rows={testRows}
+        columns={testColumns}
+        maxWidth={300}
+        maxHeight={300}
+      />
+    </Spec>
   </Suite>
 );

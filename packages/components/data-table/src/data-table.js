@@ -66,6 +66,7 @@ const DataTable = (props) => {
         {...filterDataAttributes(props)}
         columns={props.columns}
         maxHeight={props.maxHeight}
+        disableSelfContainment={props.disableSelfContainment}
       >
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <Header>
@@ -154,6 +155,7 @@ DataTable.propTypes = {
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
   onColumnResized: PropTypes.func,
+  disableSelfContainment: PropTypes.bool,
   disableHeaderStickiness: PropTypes.bool,
   /* the default item (cell) renderer.
   an existing per-column `renderItem` func takes precedence over this */
@@ -173,6 +175,7 @@ DataTable.defaultProps = {
   wrapHeaderLabels: true,
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
+  disableSelfContainment: false,
   itemRenderer: (row, column) => row[column.key],
 };
 DataTable.displayName = 'DataTable';
