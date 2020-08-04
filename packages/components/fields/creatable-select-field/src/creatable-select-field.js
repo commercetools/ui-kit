@@ -17,11 +17,11 @@ const sequentialId = createSequentialId('creatable-select-field-');
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
-export default class SelectField extends React.Component {
-  static displayName = 'SelectField';
+export default class CreatableSelectField extends React.Component {
+  static displayName = 'CreatableSelectField';
 
   static propTypes = {
-    // SelectField
+    // CreatableSelectField
     id: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
@@ -48,6 +48,7 @@ export default class SelectField extends React.Component {
     isOptionDisabled: PropTypes.func,
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
+    hasWarning: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
     menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number,
@@ -149,6 +150,7 @@ export default class SelectField extends React.Component {
             isOptionDisabled={this.props.isOptionDisabled}
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
+            hasWarning={this.props.hasWarning}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
             menuPortalZIndex={this.props.menuPortalZIndex}

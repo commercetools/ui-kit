@@ -76,5 +76,16 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="when has warning">
+      <CreatableSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        hasWarning={true}
+      />
+    </Spec>
   </Suite>
 );
