@@ -74,6 +74,7 @@ storiesOf('Examples|Forms/Fields', module)
   })
   .add('CreatableSelectField', () => {
     const isMulti = boolean('isMulti', true);
+    const hasWarning = boolean('hasWarning', false);
     const initialValues = { animal: isMulti ? [] : undefined };
 
     return (
@@ -107,6 +108,7 @@ storiesOf('Examples|Forms/Fields', module)
                 onBlur={formik.handleBlur}
                 isDisabled={formik.isSubmitting}
                 isMulti={isMulti}
+                hasWarning={hasWarning}
                 options={options}
                 title="Favourite animal"
                 description="Bonus points if it is a mammal"

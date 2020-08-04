@@ -1,5 +1,39 @@
 # @commercetools-frontend/ui-kit
 
+## 10.28.1
+
+### Patch Changes
+
+- [`0619f3f`](https://github.com/commercetools/ui-kit/commit/0619f3f97b96c6a89bf92abcd4c10fbe0a265c0a) [#1457](https://github.com/commercetools/ui-kit/pull/1457) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed missing export of DataTableManager
+
+- Updated dependencies [[`0619f3f`](https://github.com/commercetools/ui-kit/commit/0619f3f97b96c6a89bf92abcd4c10fbe0a265c0a)]:
+  - @commercetools-uikit/data-table-manager@10.23.1
+
+## 10.28.0
+
+### Patch Changes
+
+- Updated dependencies [[`9d53d51`](https://github.com/commercetools/ui-kit/commit/9d53d510a04803216639f925ec2202bb4bec66bf)]:
+  - @commercetools-uikit/data-table@10.28.0
+
+## 10.27.1
+
+### Patch Changes
+
+- Updated dependencies [[`0c09ae4`](https://github.com/commercetools/ui-kit/commit/0c09ae4c3ceaeb65af57bdfcb7ed07c64eff8cb4), [`1d8455c`](https://github.com/commercetools/ui-kit/commit/1d8455c1747b75060f5b039dc56da9b061ee139a)]:
+  - @commercetools-uikit/stamp@10.27.1
+  - @commercetools-uikit/notifications@10.27.1
+  - @commercetools-uikit/field-label@10.27.1
+  - @commercetools-uikit/loading-spinner@10.27.1
+  - @commercetools-uikit/spacings@10.18.6
+  - @commercetools-uikit/table@10.27.1
+  - @commercetools-uikit/buttons@10.27.1
+  - @commercetools-uikit/fields@10.27.1
+  - @commercetools-uikit/inputs@10.27.1
+  - @commercetools-uikit/collapsible-panel@10.27.1
+  - @commercetools-uikit/primary-action-dropdown@10.27.1
+  - @commercetools-uikit/data-table@10.27.1
+
 ## 10.27.0
 
 ### Patch Changes

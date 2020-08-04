@@ -81,6 +81,7 @@ storiesOf('Examples|Forms/Fields', module)
   })
   .add('AsyncCreatableSelectField', () => {
     const isMulti = boolean('isMulti', true);
+    const hasWarning = boolean('hasWarning', false);
     const initialValues = { animal: isMulti ? [] : undefined };
     const delayTimeMs = number('Load delay in ms', 250, {
       range: true,
@@ -119,6 +120,7 @@ storiesOf('Examples|Forms/Fields', module)
                 onBlur={formik.handleBlur}
                 isDisabled={formik.isSubmitting}
                 isMulti={isMulti}
+                hasWarning={hasWarning}
                 title="Favourite animal"
                 description="Bonus points if it is a mammal"
                 isClearable={true}

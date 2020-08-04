@@ -2,6 +2,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
+import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
 
 const getClickableRowStyle = (props) => {
   if (props.onClick) {
@@ -16,7 +17,10 @@ const getClickableRowStyle = (props) => {
 };
 
 const TableContainer = styled.div`
-  ${(props) => (props.maxWidth ? `max-width: ${props.maxWidth}px;` : '')}
+  ${(props) =>
+    props.maxWidth
+      ? `max-width: ${convertNumericDimensionToPixelValue(props.maxWidth)};`
+      : ''}
 `;
 
 const TableGrid = styled.table`
@@ -28,7 +32,10 @@ const TableGrid = styled.table`
     props.columns.map((column) => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
 
-  ${(props) => (props.maxHeight ? `max-height: ${props.maxHeight}px;` : '')}
+  ${(props) =>
+    props.maxHeight
+      ? `max-height: ${convertNumericDimensionToPixelValue(props.maxHeight)};`
+      : ''}
 
   overflow: auto;
 `;

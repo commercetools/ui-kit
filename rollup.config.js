@@ -34,6 +34,7 @@ const ignoredExternals = [
   'lodash/uniq',
   'lodash/memoize',
   'lodash/uniqueId',
+  'lodash/differenceWith',
   // others
   '@emotion/css',
   '@emotion/styled-base',

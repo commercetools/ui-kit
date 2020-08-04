@@ -1,0 +1,53 @@
+{
+  "name": "@commercetools-uikit/data-table-manager",
+  "version": "10.23.1",
+  "description": "",
+  "main": "dist/data-table-manager.cjs.js",
+  "module": "dist/data-table-manager.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/accessible-button": "10.22.1",
+    "@commercetools-uikit/async-select-input": "10.27.1",
+    "@commercetools-uikit/collapsible-motion": "10.21.0",
+    "@commercetools-uikit/design-system": "10.13.0",
+    "@commercetools-uikit/field-label": "10.27.1",
+    "@commercetools-uikit/grid": "10.18.4",
+    "@commercetools-uikit/hooks": "10.21.0",
+    "@commercetools-uikit/icons": "10.22.0",
+    "@commercetools-uikit/primary-button": "10.27.1",
+    "@commercetools-uikit/radio-input": "10.27.1",
+    "@commercetools-uikit/secondary-button": "10.27.1",
+    "@commercetools-uikit/secondary-icon-button": "10.27.1",
+    "@commercetools-uikit/select-input": "10.22.0",
+    "@commercetools-uikit/spacings": "10.18.6",
+    "@commercetools-uikit/text": "10.21.0",
+    "@commercetools-uikit/tag": "10.22.1",
+    "@commercetools-uikit/utils": "10.21.0",
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
+    "debounce-promise": "^3.1.2",
+    "lodash": "4.17.19",
+    "prop-types": "15.7.2",
+    "react-beautiful-dnd": "13.0.0",
+    "react-required-if": "1.0.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-intl": "3.x || 4.x || 5.x"
+  },
+  "devDependencies": {
+    "formik": "2.1.5"
+  }
+}

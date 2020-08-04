@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import {
-  text,
-  select,
-  number,
-  boolean,
-  withKnobs,
-} from '@storybook/addon-knobs';
+import { text, select, boolean, withKnobs } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import { Value } from 'react-value';
 import { useFormik } from 'formik';
@@ -21,6 +15,11 @@ import SelectInput from '../../inputs/select-input';
 import NumberInput from '../../inputs/number-input';
 import IconButton from '../../buttons/icon-button';
 import { InformationIcon } from '../../icons';
+
+// aux function for the maxHeight and maxWidth prop knobs
+// which can accept Number values but the text knob always returns String
+const castToNumberIfPossible = (value) =>
+  isNaN(Number(value)) ? value : Number(value);
 
 const items = [
   {
@@ -402,18 +401,10 @@ storiesOf('Components|DataTable', module)
               ? (item, index) => alert(`Row click: Row number ${index}`)
               : null
           }
-          maxHeight={number('maxHeight', 0, {
-            range: true,
-            min: 200,
-            max: 500,
-            step: 10,
-          })}
-          maxWidth={number('maxWidth', 0, {
-            range: true,
-            min: 200,
-            max: 800,
-            step: 10,
-          })}
+          maxHeight={castToNumberIfPossible(
+            text('maxHeight', 'calc(100vh - 200px)')
+          )}
+          maxWidth={castToNumberIfPossible(text('maxWidth', undefined))}
           horizontalCellAlignment={select('horizontalCellAlignment', [
             'left',
             'center',

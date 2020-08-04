@@ -141,6 +141,7 @@ storiesOf('Components|Fields', module)
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               isMulti={isMulti}
+              hasWarning={boolean('hasWarning', false)}
               placeholder={text('placeholder', 'Select...')}
               title={text('title', 'Favourite animal')}
               maxMenuHeight={number('maxMenuHeight', 220)}
