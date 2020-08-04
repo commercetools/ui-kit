@@ -48,6 +48,7 @@ export default class CreatableSelectField extends React.Component {
     isOptionDisabled: PropTypes.func,
     isMulti: PropTypes.bool,
     isSearchable: PropTypes.bool,
+    hasWarning: PropTypes.bool,
     maxMenuHeight: PropTypes.number,
     menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
     menuPortalZIndex: PropTypes.number,
@@ -149,6 +150,7 @@ export default class CreatableSelectField extends React.Component {
             isOptionDisabled={this.props.isOptionDisabled}
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
+            hasWarning={this.props.hasWarning}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
             menuPortalZIndex={this.props.menuPortalZIndex}
