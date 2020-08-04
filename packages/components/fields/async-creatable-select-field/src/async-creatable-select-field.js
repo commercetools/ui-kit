@@ -17,11 +17,11 @@ const sequentialId = createSequentialId('async-creatable-select-field-');
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
-export default class SelectField extends React.Component {
-  static displayName = 'SelectField';
+export default class AsyncCreatableSelectField extends React.Component {
+  static displayName = 'AsyncCreatableSelectField';
 
   static propTypes = {
-    // SelectField
+    // AsyncCreatableSelectField
     id: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
     errors: PropTypes.shape({
