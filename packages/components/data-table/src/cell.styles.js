@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 const getPaddingStyle = (props) => {
   if (props.isCondensed)
@@ -125,12 +125,17 @@ const BaseFooterCell = styled.td`
   margin-top: -1px;
 `;
 
-const RowExpandCollapseButton = styled(SecondaryIconButton)`
+const RowExpandCollapseButton = styled(AccessibleButton)`
   cursor: ${(props) => (props.isRowCollapsed ? 's-resize' : 'n-resize')};
   position: absolute;
+  height: 16px;
+  width: 16px;
   bottom: 0;
   right: 0;
   opacity: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 `;
 
 export {
