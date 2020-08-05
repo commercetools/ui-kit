@@ -60,7 +60,10 @@ const DataTable = (props) => {
   }, [hasTableBeenResized, prevLayout, currentLayout, columnResizingReducer]);
 
   return (
-    <TableContainer maxWidth={props.maxWidth}>
+    <TableContainer
+      maxWidth={props.maxWidth}
+      disableSelfContainment={props.disableSelfContainment}
+    >
       <TableGrid
         ref={tableRef}
         {...filterDataAttributes(props)}
