@@ -1,5 +1,11 @@
 # visual-testing-app
 
+## 10.18.8
+
+### Patch Changes
+
+- [`9219c54`](https://github.com/commercetools/ui-kit/commit/9219c54789674078a3175ffd6506db520fab9ba8) [#1462](https://github.com/commercetools/ui-kit/pull/1462) Thanks [@jonnybel](https://github.com/jonnybel)! - Updated dependencies ([#1460](https://github.com/commercetools/ui-kit/pull/1460))
+
 ## 10.18.7
 
 ### Patch Changes

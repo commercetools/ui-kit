@@ -1,5 +1,14 @@
 # @commercetools-uikit/fields
 
+## 10.29.0
+
+### Patch Changes
+
+- Updated dependencies [[`86924f7`](https://github.com/commercetools/ui-kit/commit/86924f7f3d6095b79211e7b383eff7e7cd53c6b3)]:
+  - @commercetools-uikit/async-creatable-select-field@10.29.0
+  - @commercetools-uikit/async-select-field@10.29.0
+  - @commercetools-uikit/creatable-select-field@10.29.0
+
 ## 10.27.1
 
 ### Patch Changes
