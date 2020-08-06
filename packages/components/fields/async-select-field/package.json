@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/async-select-field",
-  "version": "10.27.1",
+  "version": "10.29.0",
   "description": "",
   "main": "dist/async-select-field.cjs.js",
   "module": "dist/async-select-field.esm.js",
