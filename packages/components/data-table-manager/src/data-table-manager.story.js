@@ -151,7 +151,7 @@ const initialColumnsState = [
   },
 ];
 
-storiesOf('Components|Table (NEW)', module)
+storiesOf('Components|DataTable', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('DataTableManager', () => {

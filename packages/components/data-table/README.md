@@ -1,17 +1,5 @@
 # Table
 
-> THIS COMPONENT IS IN BETA!
-> This component is ultimately intented to replace the current `Table` component.
-> Please be aware that it may be subject to upcoming breaking changes as it's still in active development.
-
----
-
-## Usage
-
-```js
-import { DataTable } from '@commercetools-uikit/data-table';
-```
-
 ### `<DataTable />`
 
 Shows tabular data, defined by a list of items: the `rows`, and another list with their corresponding definitions: the `columns`. Both these lists are arrays of objects.
@@ -28,6 +16,8 @@ For adding a Row Selection behaviour, check the `useRowSelection` hook which you
 ## Usage
 
 ```jsx
+import { DataTable } from '@commercetools-uikit/data-table';
+
 const rows = [
   { id: 'parasite', title: 'Parasite', country: 'South Korea' },
   { id: 'portrait', title: 'Portrait of a Lady on Fire', country: 'France' },
