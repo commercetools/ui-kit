@@ -17,6 +17,8 @@ const getClickableRowStyle = (props) => {
 };
 
 const TableContainer = styled.div`
+  overflow-x: auto;
+
   ${(props) =>
     props.maxWidth
       ? `max-width: ${convertNumericDimensionToPixelValue(props.maxWidth)};`
@@ -32,12 +34,12 @@ const TableGrid = styled.table`
     props.columns.map((column) => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
 
+  overflow-y: auto;
+
   ${(props) =>
     props.maxHeight
       ? `max-height: ${convertNumericDimensionToPixelValue(props.maxHeight)};`
       : ''}
-
-  overflow: auto;
 `;
 
 const Header = styled.thead`
