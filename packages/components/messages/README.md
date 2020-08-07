@@ -1,18 +1,18 @@
 # Messages: WarningMessage
 
-#### Description
+## Description
 
 Represents an warning message.
 
 ## Usage
 
 ```js
-import { WarningMessage } from '@commercetools-frontend/ui-kit';
+import { WarningMessage } from '@commercetools-uikit/messages';
 
 <WarningMessage>This is a duplicate of {`${duplicate}`}</WarningMessage>;
 ```
 
-#### Properties
+## Properties
 
 | Props         | Type           | Required | Values | Default | Description                                                          |
 | ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |
@@ -27,19 +27,19 @@ Main functions and use cases are:
 
 # Messages: ErrorMessage
 
-#### Description
+## Description
 
 Represents an error message.
 
 ## Usage
 
 ```js
-import { ErrorMessage } from '@commercetools-frontend/ui-kit';
+import { ErrorMessage } from '@commercetools-uikit/messages';
 
 <ErrorMessage>Something went wrong</ErrorMessage>;
 ```
 
-#### Properties
+## Properties
 
 | Props         | Type           | Required | Values | Default | Description                                                          |
 | ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |

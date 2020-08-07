@@ -1,30 +1,25 @@
 # Icons
 
+## Description
+
+All SVG icons are rendered as React components.
+
 ## Usage
 
 ```js
-import { ExportIcon } from '@commercetools-frontend/ui-kit';
+import { ExportIcon } from '@commercetools-uikit/icons';
 
 <ExportIcon />;
 ```
 
-#### Description
-
-You can find a list of all available icons in the UIKit.
-
-#### How to add new icons
-
-1.  add the SVG file you got from the designer to `@commercetools-frontend/ui-kit/icons/svg`
-2.  restart webpack (`npm start` in development)
-
-#### Properties
+## Properties
 
 | Props   | Type     | Required | Values                                                                   | Default | Description                                                                                            |
 | ------- | -------- | :------: | ------------------------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------ |
 | `size`  | `string` |          | 'small', 'medium', 'big', 'scale'                                        | 'big'   | Specifies the icon size (if `scale` is selected, the dimensions will scale according with the parents) |
 | `color` | `string` |          | 'solid', 'neutral60', 'info', 'primary', 'primary40', 'warning', 'error' | 'solid' | Specifies the icon color                                                                               |
 
-#### Where to use
+### Where to use
 
 Main use cases are:
 
@@ -39,6 +34,7 @@ Main use cases are:
   ```
 
 - Icon Buttons
+
   ```jsx
   <IconButton
     onClick={() => {}}

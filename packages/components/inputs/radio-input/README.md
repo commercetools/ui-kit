@@ -1,12 +1,6 @@
 # RadioInput
 
-## Usage
-
-```js
-import { RadioInput } from '@commercetools-frontend/ui-kit';
-```
-
-#### Description
+## Description
 
 A `RadioInput` represents a group of options where only one option can be selected at a time.
 The exported component contains a `RadioInput.Group` and `RadioInput.Option` components, with the `RadioInput.Group` component
@@ -15,10 +9,10 @@ being the wrapped around the list of `RadioInput.Option`s.
 Most of the props should be assigned to the `RadioInput.Group` component, which internally forwards them
 to each `RadioInput.Option` component. This is mostly to avoid passing a lot of props to each `RadioInput.Option` component.
 
-#### Usage
+## Usage
 
 ```js
-import { RadioInput } from '@commercetools-frontend/ui-kit/switches';
+import RadioInput from '@commercetools-uikit/radio-input';
 
 <RadioInput.Group onChange={...} name="fruits" value="apples">
   <RadioInput.Option value="apple">
@@ -36,9 +30,9 @@ import { RadioInput } from '@commercetools-frontend/ui-kit/switches';
 </RadioInput.Group>
 ```
 
-#### Properties
+## Properties
 
-##### RadioInput.Group
+### RadioInput.Group
 
 | Props                  | Type                  | Required | Values                        | Default          | Description                                                                                                                                                   |
 | ---------------------- | --------------------- | :------: | ----------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -58,7 +52,7 @@ import { RadioInput } from '@commercetools-frontend/ui-kit/switches';
 | `children`             | `node`                |    ✅    | -                             | -                | At least one `RadioInput.Option` component or another node (mixed children are allowed)                                                                       |
 | `value`                | `string` \| `boolean` |    -     | -                             | -                | The selected value of one of the `RadioInput.Option`s                                                                                                         |
 
-##### RadioInput.Option
+### RadioInput.Option
 
 | Props                | Type                  | Required | Values | Default | Description                                                                                                                                                                                                                                                                                                                                              |
 | -------------------- | --------------------- | :------: | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -68,6 +62,6 @@ import { RadioInput } from '@commercetools-frontend/ui-kit/switches';
 | `isHovered`          | `bool`                |    -     | -      | `false` | Forces `RadioInput.Option` to be rendered in a hovered state. That's needed for cases when hovered appearance should be triggered by the parent component and not the `RadioInput.Option` itself. An `RadioInput.Option` is capable of handling it's own hovering without the need to pass this prop.                                                    |
 | `components.wrapper` | `function`            |    -     | -      | -       | Pass a function that receives one argument and returns a react element. The function will be called by passing the `RadioInput.Option` as an argument and the resulting react element will be rendered. This can be used to add a controlled `ToolTip` around individual `RadioInput.Option`s.                                                           |
 
-#### Invariants
+## Invariants
 
 1.  The `RadioInput.Group` must have at least one `RadioInput.Option` element as `children`

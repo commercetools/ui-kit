@@ -1,10 +1,10 @@
 # Tooltip
 
-#### Description
+## Description
 
 Tooltips display informative text when users hover over or focus on an element.
 
-#### Usage
+## Usage
 
 ```js
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -17,7 +17,7 @@ import Tooltip from '@commercetools-uikit/tooltip';
 </Tooltip>;
 ```
 
-#### Working with disabled child elements
+### Working with disabled child elements
 
 When you use a tooltip with a disabled element, you should define the style `pointer-events: none` to the disabled element to stop it from capturing events.
 
@@ -40,7 +40,7 @@ The Button components from `ui-kit` already support this functionality.
 </Tooltip>
 ```
 
-#### Customizing the wrapper
+### Customizing the wrapper
 
 The tooltip applies event listeners (`onMouseOver`, `onMouseLeave`, `onFocus`, and `onBlur`) to a wrapping `div` component around the children element. By default, this wrapper is displayed with style `inline-block`. If you want to customize this behaviour, then you can pass in a custom element. Be sure to use `React.forwardRef`, as we need the to pass the ref to the wrapper.
 
@@ -125,7 +125,7 @@ For instance, forcing tooltip to stay in the original placement and not to try f
 </Tooltip>
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type     | Required | Values                                                                                                                                       | Default | Description                                                                                                                                                 |
 | ---------------------- | -------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |

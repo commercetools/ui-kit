@@ -1,13 +1,13 @@
 # NumberField
 
-#### Description
+## Description
 
 A controlled input component for numbers with validation states and a label.
 
 ## Usage
 
 ```js
-import { NumberField } from '@commercetools-frontend/ui-kit';
+import NumberField from '@commercetools-uikit/number-field';
 
 <NumberField
   title="Age"
@@ -16,7 +16,7 @@ import { NumberField } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type                 | Required | Values                       | Default | Description                                                                                                                                                                                                                                                           |
 | ---------------------- | -------------------- | :------: | ---------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,11 +48,11 @@ import { NumberField } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-##### `onChange`
+## `onChange`
 
 The `onChange` function is forwarded to `NumberInput` as-is. See its README for documentation of the cases that can happen there, and for documentation on how to use it with Formik.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 

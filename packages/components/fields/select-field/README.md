@@ -1,13 +1,13 @@
 # SelectField
 
-#### Description
+## Description
 
 A controlled input component with validation states and a label getting a selection from the user.
 
 ## Usage
 
 ```js
-import { SelectField } from '@commercetools-frontend/ui-kit';
+import SelectField from '@commercetools-uikit/select-field';
 
 <SelectField
   title="State"
@@ -20,7 +20,7 @@ import { SelectField } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                   | Type               | Required | Values                  | Default | Description                                                                                                                                                                                                                                                                                 |
 | ----------------------- | ------------------ | :------: | ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -72,7 +72,7 @@ It supports mostly same properties as `react-select`. Behaviour for some props w
 
 In case you need one of the currently excluded props, feel free to open a PR adding them.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 

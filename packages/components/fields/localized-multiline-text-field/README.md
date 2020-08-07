@@ -1,13 +1,13 @@
 # LocalizedMultilineTextField
 
-#### Description
+## Description
 
 A controlled text input component for localized multi-line strings with validation states.
 
 ## Usage
 
 ```js
-import { LocalizedMultilineTextField } from '@commercetools-frontend/ui-kit';
+import LocalizedMultilineTextField from '@commercetools-uikit/localized-multiline-text-field';
 
 <LocalizedMultilineTextField
   title="Description"
@@ -20,7 +20,7 @@ import { LocalizedMultilineTextField } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                           | Type               | Required | Values                  | Default | Description                                                                                                                                                                                                                                                           |
 | ------------------------------- | ------------------ | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +54,7 @@ import { LocalizedMultilineTextField } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 

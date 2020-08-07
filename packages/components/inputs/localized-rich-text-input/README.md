@@ -6,7 +6,7 @@ Please be aware that this component may be subject to upcoming breaking changes 
 
 ---
 
-#### Description
+## Description
 
 A controlled text input component for localized rich text input with validation
 states.
@@ -14,22 +14,20 @@ states.
 ## Usage
 
 ```js
-import { LocalizedRichTextInput } from '@commercetools-frontend/ui-kit';
+import LocalizedRichTextInput from '@commercetools-uikit/localized-rich-text-input';
 
-const Input = props => {
-    return (
-      <LocalizedRichTextInput
-        value={{
-          en: '',
-          de: ''
-        }}
-        onChange={event => console.log('event.target.value', event.target.value)}
-      />;
-  )
-}
+const Input = (props) => (
+  <LocalizedRichTextInput
+    value={{
+      en: '',
+      de: '',
+    }}
+    onChange={(event) => console.log('event.target.value', event.target.value)}
+  />
+);
 ```
 
-#### Properties
+## Properties
 
 | Props                           | Type             | Required | Values                  | Default | Description                                                                                                                                                    |
 | ------------------------------- | ---------------- | :------: | ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,9 +60,9 @@ Main Functions and use cases are:
 
 - Receiving localized HTML input from user
 
-#### Static Properties
+### Static Properties
 
-##### `createLocalizedString(languages, existingTranslations)`
+### `createLocalizedString(languages, existingTranslations)`
 
 This function creates a [localized string](https://docs.commercetools.com/http-api-types.html#localizedstring). It merges the `languages` and the language keys of existing translations to form a localized string holding all languages.
 The `existingTranslations` argument is optional. If it is not passed, an empty localized field will be created.
@@ -84,7 +82,7 @@ LocalizedRichTextInput.createLocalizedString(languages, existingTranslations);
 // -> { en: 'Tree', de: '', ar: '<p>شجرة</p>' }
 ```
 
-##### `isEmpty(localizedField)`
+### `isEmpty(localizedField)`
 
 Returns `true` when all values in a localized field are empty.
 
@@ -103,7 +101,7 @@ LocalizedRichTextInput.isEmpty({ en: '<p>Tree</p>', de: '<p></p>' });
 // -> false
 ```
 
-##### `omitEmptyTranslations(localizedField)`
+### `omitEmptyTranslations(localizedField)`
 
 Omits translations with empty values.
 
@@ -117,12 +115,12 @@ LocalizedRichTextInput.omitEmptyTranslations({ en: '<p>Tree</p>', de: '' });
 // -> { en: '<p>Tree</p>' }
 ```
 
-##### `isTouched(touched)`
+### `isTouched(touched)`
 
 Expects to be called with an object or `undefined`.
 Returns `true` when at least one value is truthy.
 
-##### `RequiredValueErrorMessage`
+### `RequiredValueErrorMessage`
 
 This field exports a default error message which can be used when the field is
 required, but the user provided no value. You can use it as

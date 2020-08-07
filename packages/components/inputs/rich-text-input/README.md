@@ -6,7 +6,7 @@ Please be aware that this component may be subject to upcoming breaking changes 
 
 ---
 
-#### Description
+## Description
 
 A controlled rich text input component for rich text with validation
 states.
@@ -14,14 +14,14 @@ states.
 ## Usage
 
 ```js
-import { RichTextInput } from '@commercetools-frontend/ui-kit';
+import RichTextInput from '@commercetools-uikit/rich-text-input';
 
 const html = '<p>hello world</p>';
 
 const Input = props => {
   const [value, setValue] = React.useState(html);
-    return (
-      <RichTextInput
+  return (
+    <RichTextInput
       value={value}
       onChange={event => { setValue(event.target.value)}
     />;
@@ -29,7 +29,7 @@ const Input = props => {
 }
 ```
 
-#### Properties
+## Properties
 
 | Props                        | Type     | Required | Values                  | Default | Description                                                                                                                 |
 | ---------------------------- | -------- | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -51,9 +51,9 @@ const Input = props => {
 | `showExpandIcon`             | `bool`   |    -     | -                       | `false` | Shows an `expand` icon in the toolbar                                                                                       |
 | `onClickExpand`              | `func`   |    -     | -                       | -       | Called when the `expand` button is clicked                                                                                  |
 
-### Static methods
+## Static methods
 
-#### `RichTextInput.isEmpty`
+### `RichTextInput.isEmpty`
 
 Returns `true` when the value is considered empty, which is when the value is empty.
 
@@ -63,7 +63,7 @@ RichTextInput.isEmpty('<p></p>'); // -> true
 RichTextInput.isEmpty('tree'); // -> false
 ```
 
-##### `isTouched(touched)`
+### `isTouched(touched)`
 
 Expects to be called with an array or boolean.
 Returns `true` when truthy.
