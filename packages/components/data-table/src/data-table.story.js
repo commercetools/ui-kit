@@ -330,6 +330,7 @@ storiesOf('Components|DataTable', module)
     const [tableData, setTableData] = React.useState({
       columns: initialColumnsState,
     });
+    const [columnSizes, setColumnSizes] = React.useState();
 
     const { items: rows, sortedBy, sortDirection, onSortChange } = useSorting(
       items
@@ -422,6 +423,7 @@ storiesOf('Components|DataTable', module)
           onSortChange={onSortChange}
           sortDirection={sortDirection}
           footer={footer}
+          onColumnResized={(sizes) => setColumnSizes([...sizes])}
         />
         <br />
         <hr />
@@ -471,6 +473,15 @@ storiesOf('Components|DataTable', module)
               />
             </label>
           </div>
+        </div>
+        <hr />
+        <div>
+          <h4>Column Sizes (after manual resizing):</h4>
+          {columnSizes ? (
+            <code>{JSON.stringify(columnSizes)}</code>
+          ) : (
+            'The columns are still untouched.'
+          )}
         </div>
       </React.Fragment>
     );

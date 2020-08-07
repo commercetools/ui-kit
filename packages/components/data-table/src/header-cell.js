@@ -27,7 +27,11 @@ const HeaderCellWrapper = (props) => {
     columnResizingReducer.onDragResizing(event, headerRef.current.cellIndex);
 
   const onDragEnd = () => {
-    columnResizingReducer.finishResizing();
+    const finalSizes = columnResizingReducer.finishResizing();
+
+    if (props.onColumnResized) {
+      props.onColumnResized(finalSizes);
+    }
 
     window.removeEventListener('mousemove', onDrag);
     window.removeEventListener('mouseup', onDragEnd);
@@ -56,6 +60,7 @@ HeaderCellWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
   disableResizing: PropTypes.bool,
+  onColumnResized: PropTypes.func,
   disableHeaderStickiness: PropTypes.bool,
 };
 HeaderCellWrapper.displayName = 'HeaderCellWrapper';
@@ -82,6 +87,7 @@ const HeaderCell = (props) => {
   return (
     <HeaderCellWrapper
       columnKey={props.columnKey}
+      onColumnResized={props.onColumnResized}
       disableResizing={props.disableResizing}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
@@ -121,6 +127,7 @@ HeaderCell.propTypes = {
   isCondensed: PropTypes.bool,
   sortDirection: PropTypes.oneOf(['desc', 'asc']),
   disableResizing: PropTypes.bool,
+  onColumnResized: PropTypes.func,
   disableHeaderStickiness: PropTypes.bool.isRequired,
   horizontalCellAlignment: PropTypes.string.isRequired,
   iconComponent: PropTypes.node,

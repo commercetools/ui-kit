@@ -76,6 +76,7 @@ const DataTable = (props) => {
                   shouldWrap={props.wrapHeaderLabels}
                   isCondensed={props.isCondensed}
                   iconComponent={column.headerIcon}
+                  onColumnResized={props.onColumnResized}
                   disableResizing={column.disableResizing}
                   verticalCellAlignment={props.verticalCellAlignment}
                   horizontalCellAlignment={
@@ -152,6 +153,7 @@ DataTable.propTypes = {
   maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onRowClick: PropTypes.func,
   isCondensed: PropTypes.bool,
+  onColumnResized: PropTypes.func,
   disableHeaderStickiness: PropTypes.bool,
   /* the default item (cell) renderer.
   an existing per-column `renderItem` func takes precedence over this */
