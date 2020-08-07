@@ -1,13 +1,13 @@
 # SelectInput
 
-#### Description
+## Description
 
 An input component getting a selection from the user.
 
 ## Usage
 
 ```js
-import { SelectInput } from '@commercetools-frontend/ui-kit';
+import SelectInput from '@commercetools-uikit/select-input';
 
 <SelectInput
   name="form-field-name"
@@ -20,7 +20,7 @@ import { SelectInput } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                    | Type               | Required | Values                       | Default | Description                                                                                                                                                                                                                                                                                 |
 | ------------------------ | ------------------ | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,18 +63,18 @@ It supports mostly same properties as `react-select`. Behaviour for some props w
 
 In case you need one of the currently excluded props, feel free to open a PR adding them.
 
-##### `options`
+## `options`
 
 The options support a `isDisabled` property which will render the option with a disabled style and will prevent users from selecting it.
 
-#### Static Properties
+## Static Properties
 
-##### `isTouched(touched)`
+### `isTouched(touched)`
 
 Expects to be called with an array or boolean.
 Returns `true` when truthy.
 
-##### Components
+## Components
 
 It is possible to customize `SelectInput` by passing the `components` property.
 `SelectInput` exports the default underlying components as static exports.

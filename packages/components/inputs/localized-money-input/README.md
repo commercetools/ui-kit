@@ -1,6 +1,6 @@
 # LocalizedMoneyInput
 
-#### Description
+## Description
 
 A controlled input component for localized money values with validation
 states.
@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
+import LocalizedMoneyInput from '@commercetools-uikit/localized-money-input';
 
 <LocalizedMoneyInput
   value={{
@@ -19,7 +19,7 @@ import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                           | Type             | Required | Values                  | Default | Description                                                                                                                                                            |
 | ------------------------------- | ---------------- | :------: | ----------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,9 +47,9 @@ Main Functions and use cases are:
 
 - Receiving localized input from user
 
-#### Static Properties
+## Static Properties
 
-#### `LocalizedMoneyInput.convertToMoneyValue`
+### `LocalizedMoneyInput.convertToMoneyValue`
 
 The `convertToMoneyValue` function will turn a LocalizedMoneyInput value into a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
 If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
@@ -77,11 +77,11 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 }
 ```
 
-#### `LocalizedMoneyInput.parseMoneyValue`
+### `LocalizedMoneyInput.parseMoneyValue`
 
 The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ amount, currencyCode })`.
 
-#### `LocalizedMoneyInput.getEmptyCurrencies`
+### `LocalizedMoneyInput.getEmptyCurrencies`
 
 Returns array of the empty currencies
 
@@ -106,7 +106,7 @@ LocalizedMoneyInput.getEmptyCurrencies({
 // -> ['EUR']
 ```
 
-#### `LocalizedMoneyInput.getHighPrecisionCurrencies`
+### `LocalizedMoneyInput.getHighPrecisionCurrencies`
 
 Returns array of the currencies that have high precision amount
 
@@ -143,7 +143,7 @@ LocalizedMoneyInput.getHighPrecisionCurrencies({
 // -> ['EUR']
 ```
 
-##### `LocalizedMoneyInput.convertToMoneyValues`
+### `LocalizedMoneyInput.convertToMoneyValues`
 
 The `convertToMoneyValues` function will turn a LocalizedMoneyInput value into array of [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
 If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
@@ -175,11 +175,11 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 ];
 ```
 
-##### `LocalizedMoneyInput.parseMoneyValues`
+### `LocalizedMoneyInput.parseMoneyValues`
 
 The `parseMoneyValues` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the LocalizedMoneyInput component can handle `({ [currencyCode]: {currencyCode, amount} })`.
 
-##### `LocalizedMoneyInput.getEmptyCurrencies`
+### `LocalizedMoneyInput.getEmptyCurrencies`
 
 The `getEmptyCurrencies` function will return array of currencies that don't have amount .
 
@@ -194,7 +194,7 @@ LocalizedMoneyInput.getEmptyCurrencies({
 }); // -> []
 ```
 
-### Example
+## Example
 
 Here's an example of how `LocalizedMoneyInput` would be used inside a form.
 
@@ -203,8 +203,8 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
 import omitEmpty from 'omit-empty';
-import ErrorMessage from '@commercetools-frontend/ui-kit/messages/error-message';
-import { LocalizedMoneyInput } from '@commercetools-frontend/ui-kit';
+import { ErrorMessage } from '@commercetools-uikit/messages';
+import LocalizedMoneyInput from '@commercetools-uikit/localized-money-input';
 
 // the existing document, e.g. from the database
 const doc = {

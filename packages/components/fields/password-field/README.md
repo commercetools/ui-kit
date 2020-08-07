@@ -1,6 +1,6 @@
 # PasswordField
 
-#### Description
+## Description
 
 A controlled text input component for passwords with validation
 states.
@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import { PasswordField } from '@commercetools-frontend/ui-kit';
+import PasswordField from '@commercetools-uikit/password-field';
 
 <PasswordField
   title="myPassword"
@@ -17,7 +17,7 @@ import { PasswordField } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type               | Required | Values                                                | Default | Description                                                                                                                                                                                                                                                           |
 | ---------------------- | ------------------ | :------: | ----------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,7 +46,7 @@ import { PasswordField } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 
@@ -58,6 +58,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Password field in login forms

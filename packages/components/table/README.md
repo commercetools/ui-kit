@@ -2,14 +2,12 @@
 
 > Note: This component will soon be deprecated in favour of `DataTable`, and it is encouraged to use it instead of this one.
 
-### `<Table />`
-
 Shows tabular data
 
-#### Usage
+## Usage
 
 ```js
-import { Table } from '@commercetools-uikit/table';
+import Table from '@commercetools-uikit/table';
 
 <Table
   columns={columns}
@@ -21,7 +19,7 @@ import { Table } from '@commercetools-uikit/table';
 />;
 ```
 
-#### Props
+## Properties
 
 | Props                              | Type              | Required | Values          | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------------------------------- | ----------------- | :------: | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -41,7 +39,7 @@ import { Table } from '@commercetools-uikit/table';
 | `columns`                          | array of `object` |    ✅    | -               | -       | To see what object should be provided, look at the table below                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `registerMultiGrid`                | `func`            |    -     | -               | -       | Function that will be called when the component is mounted. As the first param it gets a reference to the inner `MultiGrid`. From this reference the function `recomputeGridSize()` can be called from the parent. Use this function to recalculate the size of the cells on the fly. ⚠️IMPORTANT: The use is not recommended for scrollable tables and/or where the items load is huge, as it would cause performance issues.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
-##### Columns
+### Columns
 
 > Should be an array of objects describing the table's columns
 
@@ -59,7 +57,7 @@ import { Table } from '@commercetools-uikit/table';
 | `classNameGetter` | `func`   |    -     | -                           | -       | Just like `className` but allows you to add a custom cell class per row. Signature: `({ rowIndex: number, columnKey: string, height: number, width: number }) => string`                                                                                                                                                                                |
 | `onClick`         | `func`   |    -     | -                           | -       | Function that is called when the user clicks a cell in this column. Only use this if you want to have a column specific behaviour. Most of the times you will probably use onRowClick instead. For styling the cell on :hover or :active use the className prop. Should implement the following interface: ({ args.: number, columnKey: number }): void |
 
-#### Ideas for improvements
+## Ideas for improvements
 
 - don't render padding inside cells in the table to enable places like the
   master variant cell to have a custom cell rendering without needing to pass

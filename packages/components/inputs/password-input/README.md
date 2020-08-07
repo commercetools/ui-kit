@@ -1,18 +1,18 @@
 # PasswordInput
 
-#### Description
+## Description
 
 A controlled password input component.
 
 ## Usage
 
 ```js
-import { PasswordInput } from '@commercetools-frontend/ui-kit';
+import PasswordInput from '@commercetools-uikit/password-input';
 
 <PasswordInput value="foo" onChange={(event) => alert(event.target.value)} />;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type     | Required |                        Values                         | Default | Description                                                                                            |
 | ---------------------- | -------- | :------: | :---------------------------------------------------: | ------- | ------------------------------------------------------------------------------------------------------ |
@@ -34,9 +34,9 @@ import { PasswordInput } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-### Static methods
+## Static methods
 
-#### `PasswordInput.isEmpty`
+### `PasswordInput.isEmpty`
 
 Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces only.
 
@@ -46,6 +46,6 @@ PasswordInput.isEmpty(' '); // -> true
 PasswordInput.isEmpty('tree'); // -> false
 ```
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Password field

@@ -1,13 +1,13 @@
 # ToggleInput
 
-#### Description
+## Description
 
 The `ToggleInput` component allows a single settings option to be turned on or off.
 
-#### Usage
+## Usage
 
 ```js
-import { ToggleInput } from '@commercetools-frontend/ui-kit';
+import ToggleInput from '@commercetools-uikit/toggle-input';
 
 <ToggleInput
   isDisabled={false}
@@ -17,8 +17,6 @@ import { ToggleInput } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Use case
-
 The table below describes the use of the `ToggleInput` vs `Checkbox` and `Radio`.
 
 | Switch type   | Number of options | Selection |
@@ -27,7 +25,7 @@ The table below describes the use of the `ToggleInput` vs `Checkbox` and `Radio`
 | `Radio`       | Multiple          | Single    |
 | `ToggleInput` | Two               | Single    |
 
-#### Properties
+## Properties
 
 | Props        | Type     | Required | Values                  | Default | Description                            |
 | ------------ | -------- | :------: | ----------------------- | ------- | -------------------------------------- |

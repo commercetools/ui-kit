@@ -1,6 +1,6 @@
 # MultilineTextInput
 
-#### Description
+## Description
 
 A controlled text input component for multi-line strings with validation
 states.
@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
+import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
 
 <MultilineTextInput
   value="foo"
@@ -16,7 +16,7 @@ import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                        | Type     | Required | Values                  | Default | Description                                                                                                                 |
 | ---------------------------- | -------- | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -36,9 +36,9 @@ import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
 | `hasWarning`                 | `bool`   |    -     | -                       | `false` | Indicates the input field has a warning                                                                                     |
 | `horizontalConstraint`       | `object` |    -     | `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.                                                                                  |
 
-### Static methods
+## Static methods
 
-#### `MultilineTextInput.isEmpty`
+### `MultilineTextInput.isEmpty`
 
 Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces and linebreaks only.
 

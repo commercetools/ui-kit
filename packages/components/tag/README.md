@@ -1,10 +1,10 @@
 # Tags
 
-#### Description
+## Description
 
 A tag is often used for items that need to be labeled or categorized. This might apply to search terms or categories of a product. Tags can also have a "remove" button.
 
-#### Usage
+## Usage
 
 ```js
 import Tag from '@commercetools-uikit/tag';
@@ -19,7 +19,7 @@ import Tag from '@commercetools-uikit/tag';
 </Tag>;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type     | Required | Values                             | Default  | Description                                                        |
 | ---------------------- | -------- | :------: | ---------------------------------- | -------- | ------------------------------------------------------------------ |
@@ -32,7 +32,7 @@ import Tag from '@commercetools-uikit/tag';
 | `horizontalConstraint` | `object` |    -     | `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale`  | Horizontal size limit of the input field.                          |
 | `children`             | `node`   |    ✅    | -                                  | -        | Content rendered within the tag                                    |
 
-#### Where to use
+## Where to use
 
 Main Functions and use cases are:
 

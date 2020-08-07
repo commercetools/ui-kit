@@ -1,13 +1,13 @@
 # RadioField
 
-#### Description
+## Description
 
 A controlled radio input component with validation states and a label.
 
 ## Usage
 
 ```js
-import { RadioField } from '@commercetools-frontend/ui-kit';
+import RadioField from '@commercetools-uikit/radio-field';
 
 <RadioField
   title="Fruits"
@@ -20,9 +20,9 @@ import { RadioField } from '@commercetools-frontend/ui-kit';
 </RadioField>;
 ```
 
-#### Properties
+## Properties
 
-##### RadioField
+### RadioField
 
 | Props                  | Type               | Required | Values                  | Default          | Description                                                                                                                                                                                                                                                           |
 | ---------------------- | ------------------ | :------: | ----------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -51,11 +51,11 @@ import { RadioField } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `RadioInput` component.
 
-##### RadioInput.Option
+### RadioInput.Option
 
 See `RadioInput` README for the list of props.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 
@@ -67,6 +67,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Single option selection field in login forms

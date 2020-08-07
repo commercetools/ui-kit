@@ -130,9 +130,9 @@ The `headerControls` allows rendering a component which should only contain butt
 
 1.  You can only render a _maximum amount of 3 button_ inside the `headerControls`
 
-### Static methods
+## Static methods
 
-## `CollapsiblePanel.getPanelContentId`
+### `CollapsiblePanel.getPanelContentId`
 
 Returns the generated `id` used for the wrapper of the panel content section. It is used for setting the `aria-controls` attribute on the header and can also be useful for finding the child element when testing.
 

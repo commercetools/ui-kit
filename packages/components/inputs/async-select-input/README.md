@@ -1,13 +1,13 @@
 # AsyncSelectInput
 
-#### Description
+## Description
 
 An input component getting a selection from an asynchronously loaded list from the user.
 
 ## Usage
 
 ```js
-import { AsyncSelectInput } from '@commercetools-frontend/ui-kit';
+import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 
 <AsyncSelectInput
   name="form-field-name"
@@ -39,15 +39,15 @@ There are two types of values:
 - the `value` of an `option`
 - the `value` of the `AsyncSelectInput`
 
-#### `value` (of `option`)
+### `value` (of `option`)
 
 Each `option` has a `value`. This is a plain-text string. The `onChange` method is passed the value of the selected option (or the selected options when in `isMulti` mode).
 
-#### `value` (of `AsyncSelectInput`)
+### `value` (of `AsyncSelectInput`)
 
 Any parent component using `AsyncSelectInput` has to pass in a value, which is is the selected option (or an array of selected options when in `isMulti` mode).
 
-#### Properties
+## Properties
 
 | Props                    | Type                | Required | Values                       | Default | Description                                                                                                                                                                                                                                                                                 |
 | ------------------------ | ------------------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -92,14 +92,14 @@ It supports mostly same properties as `react-select`. Behaviour for some props w
 
 In case you need one of the currently excluded props, feel free to open a PR adding them.
 
-#### Static Properties
+### Static Properties
 
-##### `isTouched(touched)`
+#### `isTouched(touched)`
 
 Expects to be called with an array or boolean.
 Returns `true` when truthy.
 
-##### Components
+#### Components
 
 It is possible to customize `SelectInput` by passing the `components` property.
 `SelectInput` exports the default underlying components as static exports.

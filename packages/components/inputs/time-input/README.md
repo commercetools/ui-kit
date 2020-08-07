@@ -1,6 +1,6 @@
 # TimeInput
 
-#### Description
+## Description
 
 The `TimeInput` component allows the user to select a time.
 It formats the selected date depending on the locale.
@@ -8,12 +8,12 @@ It formats the selected date depending on the locale.
 ## Usage
 
 ```js
-import { TimeInput } from '@commercetools-frontend/ui-kit';
+import TimeInput from '@commercetools-uikit/time-input';
 
 <TimeInput value="14:00" onChange={() => {}} />;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type     | Required | Values                       | Default | Description                                                                                                              |
 | ---------------------- | -------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -33,13 +33,13 @@ import { TimeInput } from '@commercetools-frontend/ui-kit';
 
 The value after the field has been blurred is always either valid or an empty string. The input automatically formats the value on blur by calling `onChange` with the formatted value - or with an empty value in case the input was not a valid time.
 
-#### Usage in forms
+## Usage in forms
 
 It's likely that you want to use this input to get [`Time`](https://docs.commercetools.com/http-api-types#time) values from the user. Make sure to convert all times to the 24h format using `TimeInput.to24h` when converting the form values to a document for the API.
 
-### Static methods
+## Static methods
 
-#### `TimeInput.to24h`
+### `TimeInput.to24h`
 
 Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces only.
 
@@ -73,6 +73,6 @@ TimeInput.to24h('15:09.300'); // -> ''
 TimeInput.to24h('10:3.5'); // -> ''
 ```
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Input field for time

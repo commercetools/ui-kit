@@ -9,7 +9,7 @@ Links are used either to link to other ui routes, or to link to external pages. 
 ## Usage
 
 ```js
-import { Link } from '@commercetools-frontend/ui-kit';
+import Link from '@commercetools-uikit/link';
 
 <Link to={'/foo/bar'}>Go to foo bar</Link>
 

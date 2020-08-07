@@ -1,6 +1,6 @@
 # LocalizedMultilineTextInput
 
-#### Description
+## Description
 
 A controlled text input component for localized multi-line strings with validation
 states.
@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import { LocalizedMultilineTextInput } from '@commercetools-frontend/ui-kit';
+import LocalizedMultilineTextInput from '@commercetools-uikit/localized-multiline-text-input';
 
 <LocalizedMultilineTextInput
   value={{ en: 'House\nFoo', de: 'House' }}
@@ -16,7 +16,7 @@ import { LocalizedMultilineTextInput } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                           | Type             | Required | Values                  | Default | Description                                                                                                                                                     |
 | ------------------------------- | ---------------- | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,9 +47,9 @@ Main Functions and use cases are:
 
 - Receiving localized input from user
 
-#### Static Properties
+## Static Properties
 
-##### `createLocalizedString(languages, existingTranslations)`
+### `createLocalizedString(languages, existingTranslations)`
 
 This function creates a [localized string](https://docs.commercetools.com/http-api-types.html#localizedstring). It merges the `languages` and the language keys of existing translations to form a localized string holding all languages.
 The `existingTranslations` argument is optional. If it is not passed, an empty localized field will be created.
@@ -72,7 +72,7 @@ LocalizedMultilineTextInput.createLocalizedString(
 // -> { en: 'Tree', de: '', ar: 'شجرة' }
 ```
 
-##### `isEmpty(localizedField)`
+### `isEmpty(localizedField)`
 
 Returns `true` when all values in a localized field are empty.
 
@@ -91,7 +91,7 @@ LocalizedMultilineTextInput.isEmpty({ en: 'Tree', de: '' });
 // -> false
 ```
 
-##### `omitEmptyTranslations(localizedField)`
+### `omitEmptyTranslations(localizedField)`
 
 Omits translations with empty values.
 
@@ -105,12 +105,12 @@ LocalizedMultilineTextInput.omitEmptyTranslations({ en: 'Tree', de: '' });
 // -> { en: 'Tree' }
 ```
 
-##### `isTouched(touched)`
+### `isTouched(touched)`
 
 Expects to be called with an object or `undefined`.
 Returns `true` when at least one value is truthy.
 
-##### `RequiredValueErrorMessage`
+### `RequiredValueErrorMessage`
 
 This field exports a default error message which can be used when the field is
 required, but the user provided no value. You can use it as

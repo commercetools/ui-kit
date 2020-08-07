@@ -1,6 +1,6 @@
 # TextInput
 
-#### Description
+## Description
 
 A controlled text input component for single-line strings with validation
 states.
@@ -8,12 +8,12 @@ states.
 ## Usage
 
 ```js
-import { TextInput } from '@commercetools-frontend/ui-kit';
+import TextInput from '@commercetools-uikit/text-input';
 
 <TextInput value="foo" onChange={(event) => alert(event.target.value)} />;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type     | Required | Values                       | Default | Description                                                                                            |
 | ---------------------- | -------- | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------ |
@@ -34,9 +34,9 @@ import { TextInput } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-### Static methods
+## Static methods
 
-#### `TextInput.isEmpty`
+### `TextInput.isEmpty`
 
 Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces only.
 
@@ -46,6 +46,6 @@ TextInput.isEmpty(' '); // -> true
 TextInput.isEmpty('tree'); // -> false
 ```
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Input field for single-line strings

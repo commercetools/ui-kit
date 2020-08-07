@@ -1,26 +1,22 @@
 # Dates: DateRangeInput
 
-## Usage
-
-```js
-import { DateRangeInput } from '@commercetools-frontend/ui-kit';
-```
-
-#### Description
+## Description
 
 The `DateRangeInput` component allows the user to select a date range.
 
-#### Usage
+## Usage
 
 ```js
+import DateRangeInput from '@commercetools-uikit/date-range-input';
+
 <DateRangeInput
   placeholder="Select a date..."
   value={['2017-01-11', '2017-01-14']}
   onChange={() => {}}
-/>
+/>;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type     | Required | Values                  | Default | Description                                                                                                                                                       |
 | ---------------------- | -------- | :------: | ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -41,9 +37,9 @@ The `DateRangeInput` component allows the user to select a date range.
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-### Static methods
+## Static methods
 
-#### `DateRangeInput.isEmpty`
+### `DateRangeInput.isEmpty`
 
 Returns `true` when the value is considered empty, which is when the value is an empty array.
 

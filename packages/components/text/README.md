@@ -1,24 +1,22 @@
 # Typography: Text
 
-## Usage
+## Description
 
-```js
-// NOTE: the main import is not a React component, instead you need to use one
-// of the types defined in the component.
-import Text from '@commercetools-uikit/text';
-```
+The `Text` component implements the typography elements such as headings, paragraphs, etc.
 
-### `<Text.Headline>`
+## `<Text.Headline>`
 
 Wraps the given text in the given HTML header `size`.
 
-#### Usage
+### Usage
 
 ```js
-<Text.Headline as="h1">{'The title'}</Text.Headline>
+import Text from '@commercetools-uikit/text';
+
+<Text.Headline as="h1">{'The title'}</Text.Headline>;
 ```
 
-#### Properties
+### Properties
 
 | Props         | Type             | Required | Values               | Default | Description                                                          |
 | ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------------- |
@@ -33,21 +31,23 @@ Wraps the given text in the given HTML header `size`.
 
 The component further forwards all `data-` attributes to the underlying component.
 
-#### Where to use
+### Where to use
 
 Title of pages.
 
-### `<Text.Subheadline>`
+## `<Text.Subheadline>`
 
 Wraps the given text in the given HTML header `size`.
 
-#### Usage
+### Usage
 
 ```js
-<Text.Subheadline elementType="h4">{'The subtitle'}</Text.Subheadline>
+import Text from '@commercetools-uikit/text';
+
+<Text.Subheadline elementType="h4">{'The subtitle'}</Text.Subheadline>;
 ```
 
-#### Properties
+### Properties
 
 | Props         | Type             | Required | Values                                                            | Default |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------- | ------- |
@@ -64,35 +64,39 @@ Wraps the given text in the given HTML header `size`.
 
 The component further forwards all `data-` attributes to the underlying component.
 
-#### Where to use
+### Where to use
 
 Subtitle of pages.
 
-### `<Text.Wrap>`
+## `<Text.Wrap>`
 
 Wraps the given text in its container. And for long text, text will be wrapped to new line.
 
-#### Usage
+### Usage
 
 ```js
-<Text.Wrap>{'Sooo long text'}</Text.Wrap>
+import Text from '@commercetools-uikit/text';
+
+<Text.Wrap>{'Sooo long text'}</Text.Wrap>;
 ```
 
-#### Where to use
+### Where to use
 
 When we render value that may be vey long, and we prefer to wrap text to new line after it exceeds its wrapper's width.
 
-### `<Text.Body>`
+## `<Text.Body>`
 
 Wraps the given text in a `<p>` element, for normal content.
 
-#### Usage
+### Usage
 
 ```js
-<Text.Body>{'This is a content'}</Text.Body>
+import Text from '@commercetools-uikit/text';
+
+<Text.Body>{'This is a content'}</Text.Body>;
 ```
 
-#### Properties
+### Properties
 
 | Props         | Type             | Required | Values                                                                        | Default |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
@@ -110,23 +114,25 @@ Wraps the given text in a `<p>` element, for normal content.
 
 The component further forwards all `data-` attributes to the underlying component.
 
-#### Where to use
+### Where to use
 
 Content text in general.
 
-### `<Text.Detail>`
+## `<Text.Detail>`
 
 Wraps the given text in a `<small>` semantic tag. It accepts a `tone` prop to
 properly style the text.
 
-#### Usage
+### Usage
 
 ```js
+import Text from '@commercetools-uikit/text';
+
 <Text.Detail>{'This would be something small'}</Text.Detail>
 <Text.Detail tone="secondary">{'This would be something small with the secondary tone applied'}</Text.Detail>
 ```
 
-#### Properties
+### Properties
 
 | Props         | Type             | Required | Values                                                                        | Default |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
@@ -143,6 +149,6 @@ properly style the text.
 
 The component further forwards all `data-` attributes to the underlying component.
 
-#### Where to use
+### Where to use
 
 Details text of form boxes.

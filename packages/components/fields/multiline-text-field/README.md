@@ -1,6 +1,6 @@
 # MultilineTextField
 
-#### Description
+## Description
 
 A controlled text input component for multi-line strings with validation states
 and a label.
@@ -8,7 +8,7 @@ and a label.
 ## Usage
 
 ```js
-import { MultilineTextField } from '@commercetools-frontend/ui-kit';
+import MultilineTextField from '@commercetools-uikit/multiline-text-field';
 
 <MultilineTextField
   title="Description"
@@ -17,7 +17,7 @@ import { MultilineTextField } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                        | Type               | Required | Values                  | Default | Description                                                                                                                                                                                                                                                           |
 | ---------------------------- | ------------------ | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ import { MultilineTextField } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 
@@ -59,6 +59,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Input field for multi-line strings
