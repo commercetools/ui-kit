@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.29.1
+
+### Patch Changes
+
+- [`6bc3954`](https://github.com/commercetools/ui-kit/commit/6bc39546191c0154287b70845d826797be6f4362) [#1466](https://github.com/commercetools/ui-kit/pull/1466) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed bug of not being able to scroll horizontally
+
 ## 10.29.0
 
 ### Patch Changes
