@@ -1,6 +1,6 @@
-# Table
+# DataTable
 
-### `<DataTable />`
+## Description
 
 Shows tabular data, defined by a list of items: the `rows`, and another list with their corresponding definitions: the `columns`. Both these lists are arrays of objects.
 

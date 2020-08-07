@@ -1,13 +1,13 @@
 # MoneyInput
 
-#### Description
+## Description
 
 A controlled input component for money values with validation states.
 
 ## Usage
 
 ```js
-import { MoneyInput } from '@commercetools-frontend/ui-kit';
+import MoneyInput from '@commercetools-uikit/money-input';
 
 <MoneyInput
   value={{ amount: '1.00', currencyCode: 'EUR' }}
@@ -28,7 +28,7 @@ The amount can have an arbitrary precision. When the precision of the amount exc
 
 > ⚠️ The `MoneyInput` will allow high precision money values by default. If you want to discourage them, you need to add validation as shown in the example below, or the Examples/Forms story.
 
-#### Properties
+## Properties
 
 | Props                   | Type                                       | Required | Values                       | Default | Description                                                                                                                                                   |
 | ----------------------- | ------------------------------------------ | :------: | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -53,9 +53,9 @@ The amount can have an arbitrary precision. When the precision of the amount exc
 | `menuPortalZIndex`      | `number`                                   |    -     | -                            | -       | z-index value for the currency select menu portal                                                                                                             |
 | `menuShouldBlockScroll` | `bool`                                     |    -     | -                            | `false` | whether the menu should block scroll while open                                                                                                               |
 
-### Static methods
+## Static methods
 
-#### `MoneyInput.convertToMoneyValue`
+### `MoneyInput.convertToMoneyValue`
 
 The `convertToMoneyValue` function will turn a MoneyInput value into a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
 If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
@@ -83,11 +83,11 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 }
 ```
 
-#### `MoneyInput.parseMoneyValue`
+### `MoneyInput.parseMoneyValue`
 
 The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the MoneyInput component can handle `({ amount, currencyCode })`.
 
-#### `MoneyInput.isEmpty`
+### `MoneyInput.isEmpty`
 
 The `isEmpty` function will return `true` when the passed `MoneyInput` value is empty (either has no currency or no amount, or does not exist at all).
 
@@ -99,7 +99,7 @@ MoneyInput.isEmpty(); // -> true
 MoneyInput.isEmpty({ amount: '5', currencyCode: 'EUR' }); // -> false
 ```
 
-#### `MoneyInput.isTouched`
+### `MoneyInput.isTouched`
 
 The `isTouched` function will return `true` when all input elements were touched (currency dropdown and amount input).
 
@@ -112,9 +112,9 @@ MoneyInput.isTouched({ amount: false, currencyCode: false }); // -> false
 MoneyInput.isTouched({}); // -> false
 ```
 
-#### `MoneyInput.getCurrencyDropdownId`
+### `MoneyInput.getCurrencyDropdownId`
 
-##### `getCurrencyDropdownId(idPrefix)`
+**`getCurrencyDropdownId(idPrefix)`**
 
 Returns the `id` of the currency dropdown. This is useful in case you want to create a label for the input field. You can use it as
 
@@ -123,7 +123,7 @@ MoneyInput.getCurrencyDropdownId('price');
 // -> "price.currencyCode"
 ```
 
-##### `getAmountInputId(idPrefix)`
+### `MoneyInput.getAmountInputId(idPrefix)`
 
 Returns the `id` of the amount input. This is useful in case you want to create a label for the input field. You can use it as
 
@@ -132,7 +132,7 @@ MoneyInput.getAmountInputId('price');
 // -> "price.amount"
 ```
 
-#### `MoneyInput.isHighPrecision`
+### `MoneyInput.isHighPrecision`
 
 The `isHighPrecision` function will return `true` when a `MoneyInput` value is passed for which the number of fraction digits of the amount exceeds the number of fraction digits the supplied currency usually uses.
 
@@ -146,7 +146,7 @@ MoneyInput.isHighPrecision({ amount: '2,001', currencyCode: 'EUR' }, 'de'); // -
 MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }, 'en'); // -> throws
 ```
 
-### Example
+## Examples
 
 Here's an example of how `MoneyInput` would be used inside a form.
 
@@ -155,8 +155,8 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
 import omitEmpty from 'omit-empty';
-import ErrorMessage from '@commercetools-frontend/ui-kit/messages/error-message';
-import MoneyInput from '@commercetools-frontend/ui-kit/inputs/money-input';
+import { ErrorMessage } from '@commercetools-uikit/messages';
+import MoneyInput from '@commercetools-uikit/money-input';
 
 const currencies = ['EUR', 'USD', 'AED', 'KWD'];
 

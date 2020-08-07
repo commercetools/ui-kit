@@ -1,13 +1,13 @@
 # DateRangeField
 
-#### Description
+## Description
 
 A controlled date input component for a date range.
 
 ## Usage
 
 ```js
-import { DateRangeField } from '@commercetools-frontend/ui-kit';
+import DateRangeField from '@commercetools-uikit/date-range-field';
 
 <DateRangeField
   title="Release Date"
@@ -16,7 +16,7 @@ import { DateRangeField } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type               | Required | Values                  | Default | Description                                                                                                                                                                                                                                                           |
 | ---------------------- | ------------------ | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,7 +43,7 @@ import { DateRangeField } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 
@@ -55,6 +55,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Input field for a single date

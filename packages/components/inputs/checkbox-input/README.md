@@ -1,20 +1,14 @@
 # CheckboxInput
 
-## Usage
-
-```js
-import { CheckboxInput } from '@commercetools-frontend/ui-kit';
-```
-
-#### Description
+## Description
 
 A `CheckboxInput` is an element which indicates an checked or non checked status and
 notifies with a value accordingly.
 
-#### Usage
+## Usage
 
 ```js
-import { CheckboxInput } from '@commercetools-frontend/ui-kit/switches';
+import CheckboxInput from '@commercetools-uikit/checkbox-input';
 
 <CheckboxInput value="foo-radio-value" onChange={..}>
   What ever option
@@ -24,7 +18,7 @@ import { CheckboxInput } from '@commercetools-frontend/ui-kit/switches';
 </CheckboxInput>
 ```
 
-#### Properties
+## Properties
 
 | Props             | Type     | Required | Values | Default | Description                                                                                                                                                                                                                                                                                                         |
 | ----------------- | -------- | :------: | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

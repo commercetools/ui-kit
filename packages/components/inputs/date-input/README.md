@@ -1,26 +1,22 @@
 # Dates: DateInput
 
-## Usage
-
-```js
-import { DateInput } from '@commercetools-frontend/ui-kit';
-```
-
-#### Description
+## Description
 
 The `DateInput` component allows the user to select a date. It formats the selected date depending on the users' locale.
 
-#### Usage
+## Usage
 
 ```js
+import DateInput from '@commercetools-uikit/date-input';
+
 <DateInput
   placeholder="Select a date..."
   value="2017-12-31"
   onChange={() => {}}
-/>
+/>;
 ```
 
-#### Properties
+## Properties
 
 | Props                  | Type     | Required | Values                  | Default | Description                                                                                                                               |
 | ---------------------- | -------- | :------: | ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -39,9 +35,9 @@ The `DateInput` component allows the user to select a date. It formats the selec
 | `minValue`             | `string` |    -     | -                       | -       | A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".                                            |
 | `maxValue`             | `string` |    -     | -                       | -       | A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".                                            |
 
-### Static methods
+## Static methods
 
-#### `DateInput.isEmpty`
+### `DateInput.isEmpty`
 
 Returns `true` when the value is considered empty, which is when the value is an empty string.
 

@@ -1,13 +1,13 @@
 # MoneyField
 
-#### Description
+## Description
 
 A controlled input component for money values with validation states and a label.
 
 ## Usage
 
 ```js
-import MoneyField from '@commercetools-frontend/ui-kit/fields/text-field';
+import MoneyField from '@commercetools-uikit/money-field';
 
 <MoneyField
   title="Price"
@@ -29,7 +29,7 @@ The amount can have an arbitrary precision. When the precision of the amount exc
 
 > ⚠️ The `MoneyField` will allow high precision money values by default. If you want to discourage them, you need to add validation as shown in the example below, or the Examples/Forms story.
 
-#### Properties
+## Properties
 
 | Props                   | Type                                       | Required | Values                  | Default | Description                                                                                                                                                                                                                                                           |
 | ----------------------- | ------------------------------------------ | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,7 +62,7 @@ The amount can have an arbitrary precision. When the precision of the amount exc
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 
@@ -74,6 +74,6 @@ Known error keys are:
 
 - `missing`: tells the user that this field is required but no value was provided
 
-### Main Functions and use cases are:
+## Main Functions and use cases are:
 
 - Getting monetary value input with a currency from users (with cent precision or high precision)

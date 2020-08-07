@@ -1,6 +1,6 @@
 # LocalizedTextField
 
-#### Description
+## Description
 
 A controlled text input component for localized single-line strings with validation
 states.
@@ -8,7 +8,7 @@ states.
 ## Usage
 
 ```js
-import { LocalizedTextField } from '@commercetools-frontend/ui-kit';
+import LocalizedTextField from '@commercetools-uikit/localized-text-field';
 
 <LocalizedTextField
   title="Description"
@@ -21,7 +21,7 @@ import { LocalizedTextField } from '@commercetools-frontend/ui-kit';
 />;
 ```
 
-#### Properties
+## Properties
 
 | Props                           | Type               | Required | Values                  | Default | Description                                                                                                                                                                                                                                                           |
 | ------------------------------- | ------------------ | :------: | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +54,7 @@ import { LocalizedTextField } from '@commercetools-frontend/ui-kit';
 
 The component further forwards all `data-` attributes to the underlying `input` component.
 
-##### `errors`
+## `errors`
 
 This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
 

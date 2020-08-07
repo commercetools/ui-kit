@@ -1,6 +1,6 @@
-# Dropdowns: PrimaryActionDropdown
+# PrimaryActionDropdown
 
-#### Description
+## Description
 
 A `PrimaryActionDropdown` is a dropdown with any number of action whereas the
 first action of the dropdown can be triggered without opening the dropdown
@@ -10,7 +10,7 @@ The primary action, rendered as the head of the dropdown, is always the first
 non-disabled `<Option />`. If all `<Option />`s are disabled, the head of the
 dropdown will be disabled.
 
-#### Usage
+## Usage
 
 ```js
 import PrimaryActionDropdown, {
@@ -30,15 +30,15 @@ import PrimaryActionDropdown, {
 </PrimaryActionDropdown>;
 ```
 
-#### Properties
+## Properties
 
-##### PrimaryActionDropdown
+### PrimaryActionDropdown
 
 | Props      | Type   | Required | Values | Default | Description                                                              |
 | ---------- | ------ | :------: | ------ | ------- | ------------------------------------------------------------------------ |
 | `children` | `node` |    ✅    | -      | -       | The options of the dropdown (use the `Option` export from the component) |
 
-##### Option
+### Option
 
 | Props        | Type     | Required | Values | Default | Description                                                                                        |
 | ------------ | -------- | :------: | ------ | ------- | -------------------------------------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ import PrimaryActionDropdown, {
 | `children`   | `string` |    ✅    | -      | -       | The label of the option                                                                            |
 | `iconLeft`   | `node`   |    ✅    | -      | -       | The icon left to the option (only for the primary option)                                          |
 
-#### Invariants
+## Invariants
 
 1.  The `PrimaryActionDropdown` must have at least two `Option` elements as
     `children`
