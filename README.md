@@ -12,45 +12,68 @@
   <i>✨ Component library based on our design system 🛠</i>
 </p>
 
-> If you are building **Merchant Center Applications**, be sure to check out our [application-kit](https://github.com/commercetools/merchant-center-application-kit)
+> If you are building **Custom Applications** for the Merchant Center, be sure to check out our [documentation](https://docs.commercetools.com/custom-applications)
 
-## Installation
+# Getting started
 
-```bash
-$ yarn add @commercetools-frontend/ui-kit
+The UI Kit is a set of React components that follows commercetools [Design System](#design-system).
 
-# or
+# Using individual packages
 
-$ npm install --save @commercetools-frontend/ui-kit
+Each UI Kit component is published as a single NPM package under the scope `@commercetools-uikit`. This is useful if you only need a bunch of React components and do not want to have bigger bundle.
+
+For example:
+
+```js
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { AngleDownIcon } from '@commercetools-uikit/icons';
 ```
 
-### Required peer dependencies
+# Using presets
 
-UI Kit comes with some [peer dependencies](https://docs.npmjs.com/files/package.json#peerdependencies) which are required to be available in any project consuming it. These include but may not be limited to: `moment`, `moment-timezone`, `react`, `react-dom`, `react-intl` and `react-router-dom`. An up-to-date list with their respective version ranges can be found in the [package.json](https://github.com/commercetools/ui-kit/blob/master/package.json). Please make sure all packages are installed within your application for UI Kit to be able to work as expected.
+If you plan to use more components, you can also use some of the [preset packages](https://github.com/commercetools/ui-kit/tree/master/presets) that group multiple packages together. This is useful to reduce the number of dependencies and imports.
 
-### Importing
+For example:
 
-The package's main export contains all UI components.
+```js
+import { PrimaryButton } from '@commercetools-uikit/buttons';
+import Spacings from '@commercetools-uikit/spacings';
+```
+
+## All-in-one
+
+There is also a preset package that re-exports ALL UI Kit components: `@commercetools-frontend/ui-kit`.
+
+> This package is also used for backwards compatibility after we started splitting up the components into single packages.
 
 ```js
 import {
-  Text,
-  TextInput,
   PrimaryButton,
-  // etc.
+  Spacings,
+  AngleDownIcon,
 } from '@commercetools-frontend/ui-kit';
 ```
 
-#### Importing CSS variables
+# Required peer dependencies
 
-When you are developing your application using UI Kit components, chances you want to use the same design tokens as our design system. We provide them through both **CSS variables** and **JavaScript variables**.
+Each UI Kit package comes with some required [peer dependencies](https://docs.npmjs.com/files/package.json#peerdependencies) to be installed by the consumer.
 
-<details>
-<summary>Show details</summary>
+Depending on which UI Kit packages you use, make sure to have the related peer dependencies installed.
 
-We expose the **CSS variables** from the `@commercetools-uikit/design-system/materials/custom-properties.css` file.
+Most of the time the required peer dependencies include `react`, `react-dom`, `react-intl`.
 
-**Importing css variables in css files**
+# Design System
+
+> A design system is a collection of reusable components, guided by clear standards, that can be assembled together to build any number of applications.
+
+Design Systems are becoming more and more useful nowadays, as design and technology strive to find a perfect balance between them.
+
+The UI Kit project is the home of commercetools Design System and its implementation in the form of React components.
+
+The package `@commercetools-uikit/design-system` exposes the design variables and tokens used to define design rules and constraints for commercetools products.
+
+## Importing css variables in css files
 
 You will need a [postcss-import](https://github.com/postcss/postcss-import) plugin, and a postcss variable plugin: either [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties) or [postcss-css-variables](https://github.com/MadLittleMods/postcss-css-variables) would work.
 
@@ -67,9 +90,9 @@ You will need a [postcss-import](https://github.com/postcss/postcss-import) plug
 postcss([postcssImportPlugin(), postcssCustomProperties()]);
 ```
 
-**Using postcss-custom-properties and importFrom**
+### Using `postcss-custom-properties` and `importFrom`
 
-The ui-kit css variables can also be injected using [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties), removing the need to import them directly inside your css files.
+The css variables can also be injected using [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties), removing the need to import them directly inside your css files.
 
 ```css
 /* no import required! */
@@ -90,31 +113,14 @@ postcss([
 ]);
 ```
 
-**Accessing JavaScript variables and design tokens**
+## Accessing JavaScript variables and design tokens
 
 You can also access the JavaScript variables like this
 
 ```js
-import { customProperties } from '@commercetools-frontend/ui-kit';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 const primary = customProperties.colorPrimary;
 ```
 
-> Please look at the [file](design-system/materials/custom-properties.js) itself to inspect which variables are available (_documentation will be provided in the future_).
-
-</details>
-
-## Motivation
-
-- Declarative components serving as a design guide
-- Shared independently from the application's code base
-- Used across different apps consumed by different teams
-- Shared language between developers and designers
-
-## Documentation and Storybook
-
-Available at https://uikit.commercetools.com.
-
-You may also fork this CodeSandbox example to test the components or to help illustrating a bug report:
-
-- https://codesandbox.io/s/commercetools-ui-kit-codesandbox-1vz7c
+> Please look at the [`custom-properties.js`](https://github.com/commercetools/ui-kit/blob/master/design-system/materials/custom-properties.js) itself to inspect which variables are available.
