@@ -28,7 +28,7 @@
     "dom-helpers": "5.2.0",
     "lodash": "4.17.19",
     "prop-types": "15.7.2",
-    "react-virtualized": "9.21.2"
+    "react-virtualized": "9.22.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"
