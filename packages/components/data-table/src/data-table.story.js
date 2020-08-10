@@ -478,7 +478,7 @@ storiesOf('Components|DataTable', module)
         <div>
           <h4>Column Sizes (after manual resizing):</h4>
           {columnSizes ? (
-            <code>{JSON.stringify(columnSizes)}</code>
+            <code>{JSON.stringify(columnSizes, null, 2)}</code>
           ) : (
             'The columns are still untouched.'
           )}
