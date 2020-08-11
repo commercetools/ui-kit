@@ -121,7 +121,11 @@ const useManualColumnResizing = (tableRef) => {
       );
     });
 
-  const finishResizing = () => dispatch({ type: 'finishResizing' });
+  const finishResizing = () => {
+    dispatch({ type: 'finishResizing' });
+
+    return state.sizes;
+  };
 
   const getIsColumnBeingResized = (columnIndex) =>
     state.columnBeingResized !== undefined
