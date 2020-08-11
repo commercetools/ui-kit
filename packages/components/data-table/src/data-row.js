@@ -29,13 +29,7 @@ const DataRow = (props) => {
     rowHasTruncatedColumn && totalColumnsLength - 1 === currentColumnIndex;
 
   return (
-    <Row
-      onClick={
-        props.onRowClick
-          ? () => props.onRowClick(props.row, props.rowIndex)
-          : undefined
-      }
-    >
+    <Row isRowClickable={props.onRowClick}>
       {props.columns.map((column, columnIndex) => (
         <DataCell
           key={`${props.row.id}-${column.key}`}
@@ -53,6 +47,13 @@ const DataRow = (props) => {
             props.columns.length,
             columnIndex
           )}
+          onCellClick={
+            props.onRowClick && !column.shouldIgnoreRowClick
+              ? () =>
+                  props.onRowClick &&
+                  props.onRowClick(props.row, props.rowIndex, column.key)
+              : undefined
+          }
           shouldClipContent={props.shouldClipContent}
           shouldRenderBottomBorder={props.shouldRenderBottomBorder}
           shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}

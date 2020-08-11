@@ -5,7 +5,7 @@ import { RowExpandCollapseButton } from './cell.styles';
 import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
 
 const getClickableRowStyle = (props) => {
-  if (props.onClick) {
+  if (props.isRowClickable) {
     return css`
       cursor: pointer;
       &:hover td {
