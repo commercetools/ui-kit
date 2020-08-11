@@ -424,6 +424,7 @@ storiesOf('Components|DataTable', module)
           sortDirection={sortDirection}
           footer={footer}
           onColumnResized={(sizes) => setColumnSizes([...sizes])}
+          disableSelfContainment={boolean('disableSelfContainment', false)}
         />
         <br />
         <hr />

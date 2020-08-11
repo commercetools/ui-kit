@@ -16,13 +16,26 @@ const getClickableRowStyle = (props) => {
   return '';
 };
 
+const getDisabledSelfContainmentStyles = (props) => {
+  if (props.disableSelfContainment) {
+    return css`
+      position: unset;
+      overflow-x: unset;
+      overflow-y: unset;
+    `;
+  }
+  return '';
+};
+
 const TableContainer = styled.div`
   overflow-x: auto;
 
   ${(props) =>
-    props.maxWidth
+    props.maxWidth && !props.disableSelfContainment
       ? `max-width: ${convertNumericDimensionToPixelValue(props.maxWidth)};`
       : ''}
+
+  ${getDisabledSelfContainmentStyles}
 `;
 
 const TableGrid = styled.table`
@@ -37,9 +50,11 @@ const TableGrid = styled.table`
   overflow-y: auto;
 
   ${(props) =>
-    props.maxHeight
+    props.maxHeight && !props.disableSelfContainment
       ? `max-height: ${convertNumericDimensionToPixelValue(props.maxHeight)};`
       : ''}
+
+  ${getDisabledSelfContainmentStyles}
 `;
 
 const Header = styled.thead`
