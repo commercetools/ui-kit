@@ -50,8 +50,7 @@ const DataRow = (props) => {
           onCellClick={
             props.onRowClick && !column.shouldIgnoreRowClick
               ? () =>
-                  props.onRowClick &&
-                  props.onRowClick(props.row, props.rowIndex, column.key)
+                  props.onRowClick?.(props.row, props.rowIndex, column.key)
               : undefined
           }
           shouldClipContent={props.shouldClipContent}
