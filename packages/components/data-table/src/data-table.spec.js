@@ -109,13 +109,15 @@ describe('DataTable', () => {
       screen.getByText('Parasite').click();
       expect(rowClickEvent).toHaveBeenLastCalledWith(
         { id: '1-parasite', title: 'Parasite', year: 2019 },
-        0 // first row / index 0
+        0, // first row / index 0
+        'title'
       );
 
       screen.getByText('Woman At War').click();
       expect(rowClickEvent).toHaveBeenLastCalledWith(
         { id: '2-woman', title: 'Woman At War', year: 2018 },
-        1 // second row / index 1
+        1, // second row / index 1
+        'title'
       );
     });
 

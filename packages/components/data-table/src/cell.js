@@ -5,20 +5,12 @@ import {
   RightTriangleFilledIcon,
   RightTriangleLinearIcon,
 } from '@commercetools-uikit/icons';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { BaseCell, CellInner, RowExpandCollapseButton } from './cell.styles';
 
 import Resizer from './column-resizer';
 
 const DataCell = (props) => {
-  const { shouldIgnoreRowClick } = props;
-  const onClickHandler = React.useCallback(
-    (event) => {
-      if (shouldIgnoreRowClick) event.stopPropagation();
-      return null;
-    },
-    [shouldIgnoreRowClick]
-  );
-
   const Icon = props.isRowCollapsed
     ? RightTriangleFilledIcon
     : RightTriangleLinearIcon;
@@ -30,9 +22,16 @@ const DataCell = (props) => {
       shouldRenderBottomBorder={props.shouldRenderBottomBorder}
     >
       <CellInner
-        {...props}
-        onClick={props.shouldIgnoreRowClick ? onClickHandler : undefined}
-      />
+        onClick={props.onCellClick}
+        isCondensed={props.isCondensed}
+        isTruncated={props.isTruncated}
+        shouldIgnoreRowClick={props.shouldIgnoreRowClick}
+        verticalCellAlignment={props.verticalCellAlignment}
+        horizontalCellAlignment={props.horizontalCellAlignment}
+        {...filterDataAttributes(props)}
+      >
+        {props.children}
+      </CellInner>
       {props.shouldRenderCollapseButton && (
         <RowExpandCollapseButton
           label="Expand/Collapse Row"
@@ -54,6 +53,7 @@ DataCell.propTypes = {
   children: PropTypes.node.isRequired,
   isCondensed: PropTypes.bool,
   isTruncated: PropTypes.bool,
+  onCellClick: PropTypes.func,
   shouldIgnoreRowClick: PropTypes.bool,
   verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
   horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
@@ -71,7 +71,6 @@ DataCell.propTypes = {
 };
 DataCell.defaultProps = {
   isTruncated: false,
-  shouldIgnoreRowClick: false,
   shouldRenderBottomBorder: true,
 };
 
