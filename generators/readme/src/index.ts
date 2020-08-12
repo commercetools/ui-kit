@@ -72,6 +72,13 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
     peerDependencies: parsedPackageJson.peerDependencies,
   };
 
+  const paths = {
+    description: path.join(options.packagePath, 'docs/description.md'),
+    usageExample: path.join(options.packagePath, 'docs/usage-example.js'),
+    properties: path.join(options.packagePath, 'docs/properties.md'),
+    additionalInfo: path.join(options.packagePath, 'docs/additional-info.md'),
+  };
+
   return transformer;
 
   function transformer(tree: Node, _file: VFile) {
@@ -86,7 +93,11 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
       heading(1, capitalize(camelcase(path.basename(options.packagePath)))),
       // The description is what's defined in the package.json
       heading(2, 'Description'),
-      paragraph(packageJsonInfo.description),
+      ...(fs.existsSync(paths.description)
+        ? parseMarkdownFragmentToAST(paths.description)
+        : // Fall back to the package.json description field.
+          [paragraph(packageJsonInfo.description)]),
+
       // Describe the installation steps
       heading(2, 'Installation'),
       code('', `yarn add ${packageJsonInfo.name}`),
@@ -108,21 +119,14 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
       ),
       // Usage example
       heading(2, 'Usage'),
-      code(
-        'jsx',
-        fs.readFileSync(
-          path.join(options.packagePath, 'docs/usage-example.js'),
-          { encoding: 'utf8' }
-        )
-      ),
+      code('jsx', fs.readFileSync(paths.usageExample, { encoding: 'utf8' })),
       // Describe the component's properties
       heading(2, 'Properties'),
-      ...parseMarkdownFragmentToAST(
-        path.join(options.packagePath, 'docs/properties.md')
-      ),
-      ...parseMarkdownFragmentToAST(
-        path.join(options.packagePath, 'docs/additional-info.md')
-      ),
+      ...parseMarkdownFragmentToAST(paths.properties),
+      // Additional information (can be anything, there is no pre-defined structure here)
+      ...(fs.existsSync(paths.additionalInfo)
+        ? parseMarkdownFragmentToAST(paths.additionalInfo)
+        : []),
     ];
   }
 }

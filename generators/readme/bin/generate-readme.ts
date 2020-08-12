@@ -19,7 +19,7 @@ if (flags.help || !pathToPackage) {
   Displays help information.
 
   [path-to-package]
-    The path to the package where the README.md file should be generated.
+    The path to the package for which the README.md file should be generated.
     This assumes that the path is the package folder containing a "package.json".
 
   Options:
