@@ -70,7 +70,10 @@ describe('generate README', () => {
 
       | Props | Type | Required | Values | Default | Description |
       | - | - | :-: | - | - | - |
-      | \`name\` | \`string\` | | - | '' | The name of an Avenger |
+      | \`name\` | \`string\` | ✅ | | | The name of an Avenger |
+      | \`onClick\` | \`func\` | | | | |
+      | \`abilities\` | \`{ name: string }[] { description: string }[]\` | ✅ | | | List the abilities of this Avenger |
+      | \`power\` | \`enum\` | | \`1, 2, 3, 4, 5, 6, 7, 8, 9, 10\` | \`1\` | Define the power for this Avenger, from a scale of 1-10. |
 
       ## More information
 

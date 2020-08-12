@@ -14,7 +14,47 @@ export type PackgeJsonInfo = {
   name: string;
   description: string;
   version: string;
+  readme: {
+    componentPath: string;
+  };
   peerDependencies: { [packageName: string]: string };
+};
+
+export type ReactComponentPropType = {
+  name:
+    | 'arrayOf'
+    | 'custom'
+    | 'enum'
+    | 'array'
+    | 'bool'
+    | 'func'
+    | 'number'
+    | 'object'
+    | 'string'
+    | 'any'
+    | 'element'
+    | 'node'
+    | 'symbol'
+    | 'objectOf'
+    | 'shape'
+    | 'exact'
+    | 'union'
+    | 'elementType';
+  value?: unknown;
+  required?: boolean;
+};
+export type ReactComponentProps = {
+  type: ReactComponentPropType;
+  required: boolean;
+  description: string;
+  defaultValue?: { value: string };
+};
+export type ReactAPI = {
+  description: string;
+  displayName: string;
+  props: {
+    [name: string]: ReactComponentProps;
+  };
 };
 
 function isNodeType<T extends Node>(node: Node, type: string): node is T {

@@ -1,15 +1,31 @@
 import type { VFile, VFileCompatible } from 'vfile';
 import type { Node } from 'unist';
-import type { Parent, Heading, Text, Paragraph, Code, Root, HTML } from 'mdast';
+import type {
+  Parent,
+  Heading,
+  Text,
+  Paragraph,
+  Code,
+  Root,
+  HTML,
+  Table,
+  TableRow,
+  TableCell,
+  AlignType,
+  InlineCode,
+  StaticPhrasingContent,
+} from 'mdast';
 import type { Options as PrettierOptions } from 'prettier';
 import type {
   CommandFlags,
   GeneratorReadmeOptions,
   PackgeJsonInfo,
+  ReactAPI,
 } from './types';
 
 import fs from 'fs';
 import path from 'path';
+import shelljs from 'shelljs';
 import toVfile from 'to-vfile';
 import vfile from 'vfile';
 import unified from 'unified';
@@ -46,6 +62,27 @@ const code = (lang: string, value: string): Code => ({
   lang,
   value,
 });
+const inlineCode = (value: string): InlineCode => ({
+  type: 'inlineCode',
+  value,
+});
+const table = (
+  tableHeader: TableRow,
+  tableBody: TableRow[],
+  align: AlignType[]
+): Table => ({
+  type: 'table',
+  align,
+  children: [tableHeader, ...tableBody],
+});
+const tableRow = (tableCells: TableCell[]): TableRow => ({
+  type: 'tableRow',
+  children: tableCells,
+});
+const tableCell = (value: string | StaticPhrasingContent): TableCell => ({
+  type: 'tableCell',
+  children: [typeof value === 'string' ? text(value) : value],
+});
 const parseMarkdownFragmentToAST = (filePath: string) => {
   const fragmentFile = toVfile.readSync(filePath);
   const fragmentAST = unified()
@@ -55,6 +92,74 @@ const parseMarkdownFragmentToAST = (filePath: string) => {
     .parse(fragmentFile) as Root;
 
   return fragmentAST.children;
+};
+const parsePropTypesToMarkdown = (componentPath: string) => {
+  const result = shelljs.exec(`react-docgen ${componentPath}`, {
+    silent: true,
+  });
+  const reactAPI: ReactAPI = JSON.parse(result.stdout);
+  const tableHeaders = tableRow([
+    tableCell('Props'),
+    tableCell('Type'),
+    tableCell('Required'),
+    tableCell('Values'),
+    tableCell('Default'),
+    tableCell('Description'),
+  ]);
+
+  const tableBody = Object.entries(reactAPI.props).map(
+    ([propName, propInfo]) => {
+      let propType: string;
+      let propDefaultValue: string = '';
+      switch (propInfo.type.name) {
+        case 'arrayOf':
+          const arrayValue = propInfo.type.value as {
+            name: string;
+            value?: unknown;
+          };
+          switch (arrayValue.name) {
+            case 'shape':
+              const arrayShapeValue = arrayValue.value as {
+                [name: string]: { name: string };
+              };
+              propType = Object.entries(arrayShapeValue)
+                .map(
+                  ([arrayShapePropName, arrayShapePropValue]) =>
+                    `{ ${arrayShapePropName}: ${arrayShapePropValue.name} }[]`
+                )
+                .join('\n');
+              break;
+            default:
+              propType = `${arrayValue.name}[]`;
+              break;
+          }
+          break;
+        case 'enum':
+          propType = propInfo.type.name;
+          propDefaultValue = (propInfo.type.value as { value: string }[])
+            .map((enumValue) => enumValue.value)
+            .join(', ');
+          break;
+        default:
+          propType = propInfo.type.value
+            ? String(propInfo.type.value)
+            : propInfo.type.name;
+      }
+
+      return tableRow([
+        tableCell(inlineCode(propName)),
+        tableCell(inlineCode(propType)),
+        tableCell(propInfo.required ? '✅' : ''),
+        tableCell(propDefaultValue ? inlineCode(propDefaultValue) : ''),
+        tableCell(
+          propInfo.defaultValue ? inlineCode(propInfo.defaultValue.value) : ''
+        ),
+        tableCell(propInfo.description),
+      ]);
+    }
+  );
+
+  return table(tableHeaders, tableBody, [null, null, 'center', null, null]);
 };
 
 function readmeTransformer(options: GeneratorReadmeOptions) {
@@ -69,10 +174,15 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
     name: parsedPackageJson.name,
     description: parsedPackageJson.description,
     version: parsedPackageJson.version,
+    readme: parsedPackageJson.readme,
     peerDependencies: parsedPackageJson.peerDependencies,
   };
 
   const paths = {
+    componentPath: path.join(
+      options.packagePath,
+      packageJsonInfo.readme.componentPath
+    ),
     description: path.join(options.packagePath, 'docs/description.md'),
     usageExample: path.join(options.packagePath, 'docs/usage-example.js'),
     properties: path.join(options.packagePath, 'docs/properties.md'),
@@ -122,7 +232,7 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
       code('jsx', fs.readFileSync(paths.usageExample, { encoding: 'utf8' })),
       // Describe the component's properties
       heading(2, 'Properties'),
-      ...parseMarkdownFragmentToAST(paths.properties),
+      parsePropTypesToMarkdown(paths.componentPath),
       // Additional information (can be anything, there is no pre-defined structure here)
       ...(fs.existsSync(paths.additionalInfo)
         ? parseMarkdownFragmentToAST(paths.additionalInfo)
