@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/multiline-text-input",
-  "version": "10.27.1",
+  "version": "10.30.0",
   "description": "",
   "main": "dist/multiline-text-input.cjs.js",
   "module": "dist/multiline-text-input.esm.js",

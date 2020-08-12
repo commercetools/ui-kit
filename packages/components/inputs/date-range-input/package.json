@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/date-range-input",
-  "version": "10.27.1",
+  "version": "10.30.0",
   "description": "",
   "main": "dist/date-range-input.cjs.js",
   "module": "dist/date-range-input.esm.js",

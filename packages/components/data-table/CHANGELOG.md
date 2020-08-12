@@ -1,5 +1,17 @@
 # @commercetools-uikit/data-table
 
+## 10.30.0
+
+### Minor Changes
+
+- [`3a84ab9`](https://github.com/commercetools/ui-kit/commit/3a84ab978d535d452af998f63675ba4eb56b9d81) [#1465](https://github.com/commercetools/ui-kit/pull/1465) Thanks [@jonnybel](https://github.com/jonnybel)! - Added prop `disableSelfContainment`
+
+* [`6012942`](https://github.com/commercetools/ui-kit/commit/6012942b6b8377977091623b18ee16d78b3d65ae) [#1469](https://github.com/commercetools/ui-kit/pull/1469) Thanks [@jonnybel](https://github.com/jonnybel)! - Added prop `onColumnResized` which allows getting information about the column widths after a column has been manually resized with the mouse.
+
+### Patch Changes
+
+- [`0900a16`](https://github.com/commercetools/ui-kit/commit/0900a168077835bace46a3c2b65630675eecf2ea) [#1475](https://github.com/commercetools/ui-kit/pull/1475) Thanks [@jonnybel](https://github.com/jonnybel)! - Added `column.key` to the arguments of the `onRowClick` callback
+
 ## 10.29.1
 
 ### Patch Changes
