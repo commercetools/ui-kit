@@ -96,7 +96,7 @@
     "babel-jest": "26.3.0",
     "babel-loader": "8.1.0",
     "babel-plugin-module-rewrite": "0.2.0",
-    "babel-plugin-react-intl": "7.9.4",
+    "babel-plugin-react-intl": "8.0.1",
     "babel-plugin-transform-dynamic-import": "2.1.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "browserslist": "4.14.0",
