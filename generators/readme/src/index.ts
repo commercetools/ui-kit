@@ -145,13 +145,13 @@ const normalizeReactProps = (
           };
         }
         case 'union': {
-          const arrayUnionValue = arrayValue.value as ReactComponentPropType[];
-          const normalizedArrayShapeProps = arrayUnionValue.reduce(
+          const arrayUnionValues = arrayValue.value as ReactComponentPropType[];
+          const normalizedArrayShapeProps = arrayUnionValues.reduce(
             (normalizedShapeValues, shapePropInfo) => ({
               ...normalizedShapeValues,
               ...normalizeReactProps(
                 // The name of the prop has the "array + union" notation (`[]<>`),
-                // meaning that it's a possible shape of the array.
+                // meaning that it's one of the supported shapes of the array.
                 `${normalizedPropName}[]<${shapePropInfo.name}>`,
                 {
                   // Here use the nested prop type definition.
@@ -182,7 +182,7 @@ const normalizeReactProps = (
       const shapeValue = componentPropsInfo.type.value as {
         [name: string]: ReactComponentPropType;
       };
-      const normalizedArrayShapeProps = Object.entries(shapeValue).reduce(
+      const normalizedShapeProps = Object.entries(shapeValue).reduce(
         (normalizedShapeValues, [shapePropName, shapePropInfo]) => ({
           ...normalizedShapeValues,
           ...normalizeReactProps(
@@ -207,7 +207,40 @@ const normalizeReactProps = (
             name: 'object',
           },
         },
-        ...normalizedArrayShapeProps,
+        ...normalizedShapeProps,
+      };
+    }
+    case 'union': {
+      const unionValues = componentPropsInfo.type
+        .value as ReactComponentPropType[];
+      const normalizedUnionProps = unionValues.reduce(
+        (normalizedUnionValues, shapePropInfo) => {
+          switch (shapePropInfo.name) {
+            case 'arrayOf':
+            case 'shape':
+              return {
+                ...normalizedUnionValues,
+                ...normalizeReactProps(
+                  // The name of the prop has the "union" notation (`<>`),
+                  // meaning that it's one of the supported shapes.
+                  `${normalizedPropName}<${shapePropInfo.name}>`,
+                  {
+                    // Here use the nested prop type definition.
+                    type: shapePropInfo,
+                    required: shapePropInfo.required ?? false,
+                    description: shapePropInfo.description ?? '',
+                  }
+                ),
+              };
+          }
+          return normalizedUnionValues;
+        },
+        {}
+      );
+      return {
+        // Include the main prop as well.
+        [normalizedPropName]: componentPropsInfo,
+        ...normalizedUnionProps,
       };
     }
   }
@@ -244,6 +277,15 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
         case 'arrayOf': {
           const arrayValue = propInfo.type.value as ReactComponentPropType;
           propTypeNode = [text('Array of '), inlineCode(arrayValue.name)];
+          break;
+        }
+        // This case is for unions of scalar values, so we can render it as `Array of <scalar>`.
+        case 'union': {
+          const unionValues = propInfo.type.value as ReactComponentPropType[];
+          const combinedUnionValues = unionValues
+            .map((union) => union.name)
+            .join('|');
+          propTypeNode = [inlineCode(`<${combinedUnionValues}>`)];
           break;
         }
         case 'enum': {
