@@ -130,8 +130,6 @@ module.exports = function getBabelPreset(api) {
       isEnvTest &&
         // Transform dynamic import to require
         require('babel-plugin-transform-dynamic-import').default,
-      // Extract intl messages
-      require('babel-plugin-react-intl').default,
     ].filter(Boolean),
   };
 };
