@@ -70,9 +70,20 @@ describe('generate README', () => {
 
       | Props | Type | Required | Default | Description |
       | - | - | :-: | - | - |
-      | \`name\` | \`string\` | ✅ | | The name of an Avenger |
-      | \`onClick\` | \`func\` | | | |
-      | \`abilities\` | Array of<br>\`{\\"name\\":\\"string\\",\\"description\\":\\"string\\"}\` | ✅ | | List the abilities of this Avenger |
+      | \`name\` | \`string\` | ✅ | | The name of an Avenger. |
+      | \`identity\` | \`object\` | | | The real identity of this Avenger, if known. |
+      | \`identity.firstName\` | \`string\` | | | |
+      | \`identity.lastName\` | \`string\` | | | |
+      | \`identity.age\` | \`number\` | | | |
+      | \`onClick\` | \`func\` | | | A callback function when the component is clicked. Signature: \`(event) => void\` |
+      | \`abilities\` | \`array\` | ✅ | | List the abilities of this Avenger. |
+      | \`abilities[].name\` | \`string\` | ✅ | | The name of the ability. |
+      | \`abilities[].description\` | \`string\` | | | |
+      | \`movies\` | \`array\` | ✅ | | The list of movies where this Avenger appears in. It can either be just the name of the movie or a more detailed information about the movie. |
+      | \`movies[]<string>\` | \`string\` | | | The name of the movie. |
+      | \`movies[]<shape>\` | \`object\` | | | Detailed information about the movie. |
+      | \`movies[]<shape>.title\` | \`string\` | ✅ | | The title of the movie. |
+      | \`movies[]<shape>.releaseDate\` | \`string\` | ✅ | | The release date of the movie (ISO). |
       | \`power\` | \`enum\`<br>Possible values:<br>\`1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10\` | | \`1\` | Define the power for this Avenger, from a scale of 1-10. |
       | \`isAlive\` | \`bool\` | ✅ | | |
 

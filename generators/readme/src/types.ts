@@ -41,6 +41,7 @@ export type ReactComponentPropType = {
     | 'union'
     | 'elementType';
   value?: unknown;
+  description?: string;
   required?: boolean;
 };
 export type ReactComponentProps = {

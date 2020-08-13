@@ -14,6 +14,7 @@ import type {
   AlignType,
   InlineCode,
   StaticPhrasingContent,
+  PhrasingContent,
 } from 'mdast';
 import type { Options as PrettierOptions } from 'prettier';
 import type {
@@ -21,6 +22,8 @@ import type {
   GeneratorReadmeOptions,
   PackgeJsonInfo,
   ReactAPI,
+  ReactComponentProps,
+  ReactComponentPropType,
 } from './types';
 
 import fs from 'fs';
@@ -79,23 +82,138 @@ const tableRow = (tableCells: TableCell[]): TableRow => ({
   type: 'tableRow',
   children: tableCells,
 });
-const tableCell = (value: string | StaticPhrasingContent): TableCell => ({
+const tableCell = (value: string | PhrasingContent): TableCell => ({
   type: 'tableCell',
   children: [typeof value === 'string' ? text(value) : value],
 });
-const tableCellMultiline = (children: StaticPhrasingContent[]): TableCell => ({
+const tableCellMultiline = (children: PhrasingContent[]): TableCell => ({
   type: 'tableCell',
   children,
 });
-const parseMarkdownFragmentToAST = (filePath: string) => {
-  const fragmentFile = toVfile.readSync(filePath);
+const parseMarkdownFragmentToAST = (fragmentContent: VFileCompatible) => {
   const fragmentAST = unified()
     .use(markdown)
     .use(stringify, stringfyOptions)
     .use(mdx)
-    .parse(fragmentFile) as Root;
-
+    .parse(fragmentContent) as Root;
   return fragmentAST.children;
+};
+// Recursive function to normalize the nested prop types in a flat object shape.
+// This is important to then render in the table each nested array/object element
+// in a separate row.
+const normalizeReactProps = (
+  normalizedPropName: string,
+  componentPropsInfo: ReactComponentProps
+): ReactAPI['props'] => {
+  switch (componentPropsInfo.type.name) {
+    case 'arrayOf': {
+      const arrayValue = componentPropsInfo.type
+        .value as ReactComponentPropType;
+      switch (arrayValue.name) {
+        case 'shape': {
+          const arrayShapeValue = arrayValue.value as {
+            [name: string]: ReactComponentPropType;
+          };
+          const normalizedArrayShapeProps = Object.entries(
+            arrayShapeValue
+          ).reduce(
+            (normalizedShapeValues, [shapePropName, shapePropInfo]) => ({
+              ...normalizedShapeValues,
+              ...normalizeReactProps(
+                // The name of the prop has the "array + dot" notation (`[].`),
+                // meaning that it's the property of an object of the array.
+                `${normalizedPropName}[].${shapePropName}`,
+                {
+                  // Here use the nested prop type definition.
+                  type: shapePropInfo,
+                  required: shapePropInfo.required ?? false,
+                  description: shapePropInfo.description ?? '',
+                }
+              ),
+            }),
+            {}
+          );
+          return {
+            // Include the main prop as well.
+            [normalizedPropName]: {
+              ...componentPropsInfo,
+              type: {
+                name: 'array',
+              },
+            },
+            ...normalizedArrayShapeProps,
+          };
+        }
+        case 'union': {
+          const arrayUnionValue = arrayValue.value as ReactComponentPropType[];
+          const normalizedArrayShapeProps = arrayUnionValue.reduce(
+            (normalizedShapeValues, shapePropInfo) => ({
+              ...normalizedShapeValues,
+              ...normalizeReactProps(
+                // The name of the prop has the "array + union" notation (`[]<>`),
+                // meaning that it's a possible shape of the array.
+                `${normalizedPropName}[]<${shapePropInfo.name}>`,
+                {
+                  // Here use the nested prop type definition.
+                  type: shapePropInfo,
+                  required: shapePropInfo.required ?? false,
+                  description: shapePropInfo.description ?? '',
+                }
+              ),
+            }),
+            {}
+          );
+          return {
+            // Include the main prop as well.
+            [normalizedPropName]: {
+              ...componentPropsInfo,
+              type: {
+                name: 'array',
+              },
+            },
+            ...normalizedArrayShapeProps,
+          };
+        }
+        default:
+          return { [normalizedPropName]: componentPropsInfo };
+      }
+    }
+    case 'shape': {
+      const shapeValue = componentPropsInfo.type.value as {
+        [name: string]: ReactComponentPropType;
+      };
+      const normalizedArrayShapeProps = Object.entries(shapeValue).reduce(
+        (normalizedShapeValues, [shapePropName, shapePropInfo]) => ({
+          ...normalizedShapeValues,
+          ...normalizeReactProps(
+            // The name of the prop has the "dot" notation (`.`),
+            // meaning that it's the property of an object.
+            `${normalizedPropName}.${shapePropName}`,
+            {
+              // Here use the nested prop type definition.
+              type: shapePropInfo,
+              required: shapePropInfo.required ?? false,
+              description: shapePropInfo.description ?? '',
+            }
+          ),
+        }),
+        {}
+      );
+      return {
+        // Include the main prop as well.
+        [normalizedPropName]: {
+          ...componentPropsInfo,
+          type: {
+            name: 'object',
+          },
+        },
+        ...normalizedArrayShapeProps,
+      };
+    }
+  }
+  return {
+    [normalizedPropName]: componentPropsInfo,
+  };
 };
 const parsePropTypesToMarkdown = (componentPath: string) => {
   const result = shelljs.exec(`react-docgen ${componentPath}`, {
@@ -110,45 +228,25 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
     tableCell('Description'),
   ]);
 
-  const tableBody = Object.entries(reactAPI.props).map(
+  const normalizedReactProps = Object.entries(reactAPI.props).reduce(
+    (normalizedProps, [propName, propInfo]) => ({
+      ...normalizedProps,
+      ...normalizeReactProps(propName, propInfo),
+    }),
+    {} as ReactAPI['props']
+  );
+
+  const tableBody = Object.entries(normalizedReactProps).map(
     ([propName, propInfo]) => {
       let propTypeNode: StaticPhrasingContent[];
       switch (propInfo.type.name) {
-        case 'arrayOf':
-          const arrayValue = propInfo.type.value as {
-            name: string;
-            value?: unknown;
-          };
-          switch (arrayValue.name) {
-            case 'shape':
-              const arrayShapeValue = arrayValue.value as {
-                [name: string]: { name: string };
-              };
-              propTypeNode = [
-                text('Array of'),
-                html('<br>'),
-                inlineCode(
-                  JSON.stringify(
-                    Object.entries(arrayShapeValue).reduce(
-                      (
-                        arrayShapeProps,
-                        [arrayShapePropName, arrayShapePropValue]
-                      ) => ({
-                        ...arrayShapeProps,
-                        [arrayShapePropName]: arrayShapePropValue.name,
-                      }),
-                      {}
-                    )
-                  )
-                ),
-              ];
-              break;
-            default:
-              propTypeNode = [text('Array of'), inlineCode(arrayValue.name)];
-              break;
-          }
+        // This case is only for arrays of scalar values, so we can render it as `Array of <scalar>`.
+        case 'arrayOf': {
+          const arrayValue = propInfo.type.value as ReactComponentPropType;
+          propTypeNode = [text('Array of '), inlineCode(arrayValue.name)];
           break;
-        case 'enum':
+        }
+        case 'enum': {
           propTypeNode = [
             inlineCode(propInfo.type.name),
             html('<br>'),
@@ -161,7 +259,8 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
             ),
           ];
           break;
-        default:
+        }
+        default: {
           propTypeNode = [
             inlineCode(
               propInfo.type.value
@@ -169,6 +268,7 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
                 : propInfo.type.name
             ),
           ];
+        }
       }
 
       return tableRow([
@@ -178,7 +278,9 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
         tableCell(
           propInfo.defaultValue ? inlineCode(propInfo.defaultValue.value) : ''
         ),
-        tableCell(propInfo.description),
+        tableCellMultiline(
+          parseMarkdownFragmentToAST(propInfo.description) as PhrasingContent[]
+        ),
       ]);
     }
   );
@@ -209,7 +311,6 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
     ),
     description: path.join(options.packagePath, 'docs/description.md'),
     usageExample: path.join(options.packagePath, 'docs/usage-example.js'),
-    properties: path.join(options.packagePath, 'docs/properties.md'),
     additionalInfo: path.join(options.packagePath, 'docs/additional-info.md'),
   };
 
@@ -228,7 +329,7 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
       // The description is what's defined in the package.json
       heading(2, 'Description'),
       ...(fs.existsSync(paths.description)
-        ? parseMarkdownFragmentToAST(paths.description)
+        ? parseMarkdownFragmentToAST(toVfile.readSync(paths.description))
         : // Fall back to the package.json description field.
           [paragraph(packageJsonInfo.description)]),
 
@@ -259,7 +360,7 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
       parsePropTypesToMarkdown(paths.componentPath),
       // Additional information (can be anything, there is no pre-defined structure here)
       ...(fs.existsSync(paths.additionalInfo)
-        ? parseMarkdownFragmentToAST(paths.additionalInfo)
+        ? parseMarkdownFragmentToAST(toVfile.readSync(paths.additionalInfo))
         : []),
     ];
   }
