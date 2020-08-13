@@ -35,6 +35,13 @@ const TableContainer = styled.div`
       ? `max-width: ${convertNumericDimensionToPixelValue(props.maxWidth)};`
       : ''}
 
+  ${(props) =>
+    props.isBeingResized &&
+    `
+    * {
+      user-select: none;
+    }`}
+
   ${getDisabledSelfContainmentStyles}
 `;
 
