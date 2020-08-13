@@ -27,6 +27,8 @@ Avenger.propTypes = {
    * Define the power for this Avenger, from a scale of 1-10.
    */
   power: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).isRequired,
+
+  isAlive: PropTypes.bool.isRequired
 };
 
 export default Avenger;

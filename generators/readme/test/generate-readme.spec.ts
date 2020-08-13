@@ -68,12 +68,13 @@ describe('generate README', () => {
 
       ## Properties
 
-      | Props | Type | Required | Values | Default | Description |
-      | - | - | :-: | - | - | - |
-      | \`name\` | \`string\` | ✅ | | | The name of an Avenger |
-      | \`onClick\` | \`func\` | | | | |
-      | \`abilities\` | \`{ name: string }[] { description: string }[]\` | ✅ | | | List the abilities of this Avenger |
-      | \`power\` | \`enum\` | | \`1, 2, 3, 4, 5, 6, 7, 8, 9, 10\` | \`1\` | Define the power for this Avenger, from a scale of 1-10. |
+      | Props | Type | Required | Default | Description |
+      | - | - | :-: | - | - |
+      | \`name\` | \`string\` | ✅ | | The name of an Avenger |
+      | \`onClick\` | \`func\` | | | |
+      | \`abilities\` | Array of<br>\`{\\"name\\":\\"string\\",\\"description\\":\\"string\\"}\` | ✅ | | List the abilities of this Avenger |
+      | \`power\` | \`enum\`<br>Possible values:<br>\`1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10\` | | \`1\` | Define the power for this Avenger, from a scale of 1-10. |
+      | \`isAlive\` | \`bool\` | ✅ | | |
 
       ## More information
 

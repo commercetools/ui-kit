@@ -47,10 +47,10 @@ export default Example;
 
 ## Properties
 
-| Props           | Type     | Required | Values          | Default | Description |
-| --------------- | -------- | :------: | --------------- | ------- | ----------- |
-| `firstName`     | `string` |          |                 | `''`    |             |
-| `lastName`      | `string` |          |                 | `''`    |             |
-| `gravatarHash`  | `string` |    ✅    |                 |         |             |
-| `isHighlighted` | `bool`   |          |                 | `false` |             |
-| `size`          | `enum`   |          | `'s', 'm', 'l'` | `'s'`   |             |
+| Props           | Type                                            | Required | Default | Description |
+| --------------- | ----------------------------------------------- | :------: | ------- | ----------- |
+| `firstName`     | `string`                                        |          | `''`    |             |
+| `lastName`      | `string`                                        |          | `''`    |             |
+| `gravatarHash`  | `string`                                        |    ✅    |         |             |
+| `isHighlighted` | `bool`                                          |          | `false` |             |
+| `size`          | `enum`<br>Possible values:<br>`'s' | 'm' | 'l'` |          | `'s'`   |             |

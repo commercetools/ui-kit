@@ -83,6 +83,10 @@ const tableCell = (value: string | StaticPhrasingContent): TableCell => ({
   type: 'tableCell',
   children: [typeof value === 'string' ? text(value) : value],
 });
+const tableCellMultiline = (children: StaticPhrasingContent[]): TableCell => ({
+  type: 'tableCell',
+  children,
+});
 const parseMarkdownFragmentToAST = (filePath: string) => {
   const fragmentFile = toVfile.readSync(filePath);
   const fragmentAST = unified()
@@ -102,15 +106,13 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
     tableCell('Props'),
     tableCell('Type'),
     tableCell('Required'),
-    tableCell('Values'),
     tableCell('Default'),
     tableCell('Description'),
   ]);
 
   const tableBody = Object.entries(reactAPI.props).map(
     ([propName, propInfo]) => {
-      let propType: string;
-      let propDefaultValue: string = '';
+      let propTypeNode: StaticPhrasingContent[];
       switch (propInfo.type.name) {
         case 'arrayOf':
           const arrayValue = propInfo.type.value as {
@@ -122,35 +124,57 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
               const arrayShapeValue = arrayValue.value as {
                 [name: string]: { name: string };
               };
-              propType = Object.entries(arrayShapeValue)
-                .map(
-                  ([arrayShapePropName, arrayShapePropValue]) =>
-                    `{ ${arrayShapePropName}: ${arrayShapePropValue.name} }[]`
-                )
-                .join('\n');
+              propTypeNode = [
+                text('Array of'),
+                html('<br>'),
+                inlineCode(
+                  JSON.stringify(
+                    Object.entries(arrayShapeValue).reduce(
+                      (
+                        arrayShapeProps,
+                        [arrayShapePropName, arrayShapePropValue]
+                      ) => ({
+                        ...arrayShapeProps,
+                        [arrayShapePropName]: arrayShapePropValue.name,
+                      }),
+                      {}
+                    )
+                  )
+                ),
+              ];
               break;
             default:
-              propType = `${arrayValue.name}[]`;
+              propTypeNode = [text('Array of'), inlineCode(arrayValue.name)];
               break;
           }
           break;
         case 'enum':
-          propType = propInfo.type.name;
-          propDefaultValue = (propInfo.type.value as { value: string }[])
-            .map((enumValue) => enumValue.value)
-            .join(', ');
+          propTypeNode = [
+            inlineCode(propInfo.type.name),
+            html('<br>'),
+            html('Possible values:'),
+            html('<br>'),
+            inlineCode(
+              (propInfo.type.value as { value: string }[])
+                .map((enumValue) => enumValue.value)
+                .join(' | ')
+            ),
+          ];
           break;
         default:
-          propType = propInfo.type.value
-            ? String(propInfo.type.value)
-            : propInfo.type.name;
+          propTypeNode = [
+            inlineCode(
+              propInfo.type.value
+                ? String(propInfo.type.value)
+                : propInfo.type.name
+            ),
+          ];
       }
 
       return tableRow([
         tableCell(inlineCode(propName)),
-        tableCell(inlineCode(propType)),
+        tableCellMultiline(propTypeNode),
         tableCell(propInfo.required ? '✅' : ''),
-        tableCell(propDefaultValue ? inlineCode(propDefaultValue) : ''),
         tableCell(
           propInfo.defaultValue ? inlineCode(propInfo.defaultValue.value) : ''
         ),
