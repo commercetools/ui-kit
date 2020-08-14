@@ -38,7 +38,7 @@ import stringify from 'remark-stringify';
 import rcfile from 'rcfile';
 import prettier from 'prettier';
 import camelcase from 'lodash/camelCase';
-import capitalize from 'lodash/capitalize';
+import upperFirst from 'lodash/upperFirst';
 import stringfyOptions from './utils/stringify-options';
 
 const prettierConfig = rcfile<PrettierOptions>('prettier');
@@ -342,7 +342,10 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
     name: parsedPackageJson.name,
     description: parsedPackageJson.description,
     version: parsedPackageJson.version,
-    readme: parsedPackageJson.readme,
+    readme: {
+      componentPath: `src/${path.basename(options.packagePath)}.js`,
+      ...(parsedPackageJson.readme ?? {}),
+    },
     peerDependencies: parsedPackageJson.peerDependencies,
   };
 
@@ -367,7 +370,7 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
         ].join('\n')
       ),
       // The main heading is derived by the name of the folder
-      heading(1, capitalize(camelcase(path.basename(options.packagePath)))),
+      heading(1, upperFirst(camelcase(path.basename(options.packagePath)))),
       // The description is what's defined in the package.json
       heading(2, 'Description'),
       ...(fs.existsSync(paths.description)

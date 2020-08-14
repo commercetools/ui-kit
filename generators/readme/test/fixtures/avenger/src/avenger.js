@@ -22,7 +22,8 @@ Avenger.propTypes = {
   }),
 
   /**
-   * A callback function when the component is clicked.
+   * A callback function, called when the component is clicked.
+   * <br>
    * Signature: `(event) => void`
    */
   onClick: PropTypes.func,

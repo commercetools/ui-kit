@@ -1,38 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
+import invariant from 'tiny-invariant';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
 const collapsiblePropTypes = {
-  // This is only used to initialize the `isOpen` state once,
-  // when the component mounts. Therefore there should not be
-  // any `componentWillReceiveProps` to update the state from
-  // an external source.
+  /**
+   * This is only used to initialize the `isOpen` state once, when the component mounts.
+   * Therefore there should not be any `componentWillReceiveProps` to update the state
+   * from an external source.
+   */
   isDefaultClosed: PropTypes.bool,
+
+  /**
+   * A render-prop function.
+   * <br>
+   * Signature: `({ isOpen: boolean, toggle: (event) => void }) => void`
+   */
   children: PropTypes.func.isRequired,
 
-  // The component can be controlled or uncontrolled.
-  // when uncontrolled (no isClosed passed)
-  //  -> There may not be `onToggle`
-  // when controlled (isClosed passed)
-  //  -> `onToggle` is required
+  /**
+   * Passing this prop makes the component a controlled component.
+   * Controlled components also require to pass a `onToggle` callback function.
+   */
   isClosed: PropTypes.bool,
-  onToggle(props, propName, componentName, ...rest) {
-    const isControlledComponent = !isNil(props.isClosed);
-    const hasOnToggle = !isNil(props.onToggle);
 
-    // controlled
-    if (isControlledComponent)
-      return PropTypes.func.isRequired(props, propName, componentName, ...rest);
-
-    if (hasOnToggle)
-      return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
-      );
-
-    // uncontrolled component does not have `onToggle` so no validation needed.
-    return null;
-  },
+  /**
+   * A callback function, called when the consumer calls the `toggle` function.
+   * This function is only required when the component is controlled.
+   * <br>
+   * Signature: `(event) => void`
+   */
+  onToggle: PropTypes.func,
 };
 
 const ControlledCollapsible = (props) => (
@@ -62,10 +61,20 @@ UncontrolledCollapsible.propTypes = collapsiblePropTypes;
 
 const Collapsible = (props) => {
   const isControlledComponent = !isNil(props.isClosed);
+  const hasOnToggle = !isNil(props.onToggle);
 
   if (isControlledComponent) {
+    invariant(
+      hasOnToggle,
+      `ui-kit/Collapsible: missing required prop "onToggle" when using the "isClosed" prop (controlled component).`
+    );
     return <ControlledCollapsible {...props} />;
   }
+
+  invariant(
+    !hasOnToggle,
+    `ui-kit/Collapsible: the prop "onToggle" does not have any effect (uncontrolled component). Please remove it.`
+  );
   return <UncontrolledCollapsible {...props} />;
 };
 

@@ -31,7 +31,7 @@ overrides:
   - files: ['*.story.js']
     rules:
       'max-classes-per-file': 0
-  - files: ['*.spec.js']
+  - files: ['*.spec.js', '**/docs/*.js']
     rules:
       'react/display-name': 0
   - files: ['*.visualroute.js']

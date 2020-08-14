@@ -1,0 +1,1 @@
+A render-prop component to manage a toggle state. The component can be controlled or uncontrolled, depending if the `isClosed` props is defined or not. A controlled component additionally requires the `onToggle` prop.

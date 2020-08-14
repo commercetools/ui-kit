@@ -26,9 +26,21 @@ const Card = (props) => (
 
 Card.displayName = 'Card';
 Card.propTypes = {
+  /**
+   * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
+   */
   type: PropTypes.oneOf(['raised', 'flat']),
+  /**
+   * Determines the background color of the card.
+   */
   theme: PropTypes.oneOf(['light', 'dark']),
-  children: PropTypes.any,
+  children: PropTypes.node,
+  /**
+   * Pass a custom CSS class, useful to override the styles.
+   * <br>
+   * NOTE: This is not recommended and should only be used for building new components
+   * that require special style adjustments.
+   */
   className: PropTypes.string,
 };
 
