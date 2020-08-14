@@ -13,12 +13,8 @@ const Label = (props) => {
       `ui-kit/Label: provide only the "id" or the "htmlFor" properties, not both.`
     );
   }
-  const a11yLabelProps = {
-    ...(props.id ? { id: props.id } : {}),
-    ...(props.htmlFor ? { htmlFor: props.htmlFor } : {}),
-  };
   return (
-    <label {...a11yLabelProps}>
+    <label id={props.id} htmlFor={props.htmlFor}>
       <Text.Body tone={props.tone} isBold={props.isBold}>
         {props.intlMessage ? (
           <FormattedMessage {...props.intlMessage} />

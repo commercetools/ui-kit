@@ -18,10 +18,6 @@ export const FieldLabel = (props) => {
       `ui-kit/FieldLabel: setting an hintIcon size is not supported.`
     );
   }
-  const a11yLabelProps = {
-    ...(props.id ? { id: props.id } : {}),
-    ...(props.htmlFor ? { htmlFor: props.htmlFor } : {}),
-  };
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Stack scale="xs">
@@ -31,7 +27,8 @@ export const FieldLabel = (props) => {
               isBold={true}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
               tone={props.tone}
-              {...a11yLabelProps}
+              id={props.id}
+              htmlFor={props.htmlFor}
             >
               {props.title}
             </Label>
