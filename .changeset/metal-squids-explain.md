@@ -4,4 +4,4 @@
 'visual-testing-app': patch
 ---
 
-Use formatjs built-in transifex formatter
+Update react-intl and formatjs deps

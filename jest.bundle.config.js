@@ -1,7 +1,6 @@
 // Resolve the absolute path of the caller location.
 const rootPath = process.cwd();
 const fs = require('fs');
-const vendorsToTranspile = require('./vendors-to-transpile');
 
 // Ensure UI Kit build (ui-kit.esm.js) exists
 // and warn in case it is old.
@@ -47,6 +46,5 @@ module.exports = {
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
   },
-  transformIgnorePatterns: [`node_modules/(?!(${vendorsToTranspile})/)`],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
 };
