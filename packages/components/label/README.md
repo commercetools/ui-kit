@@ -31,6 +31,7 @@ import Label from '@commercetools-uikit/label';
 | `intlMessage`                | `intl message` | ✅ (\*)  | -                         | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `isBold`                     | `bool`         |    -     | -                         | `false` | Indicates if the label title should be in bold text                  |
 | `isRequiredIndicatorVisible` | `bool`         |    -     | -                         | `false` | Indicates if the labeled field is required in a form                 |  |
-| `htmlFor`                    | `string`       |    -     | -                         | -       | ID of the labeled input                                              |
+| `htmlFor`                    | `string`       |    -     | -                         | -       | ID of the labeled input, used for the `for` attribute                |
+| `id`                         | `string`       |    -     | -                         | -       | ID of the labeled input                                              |
 
 > `*`: `children` is required only if `intlMessage` is not provided, and vice-versa
