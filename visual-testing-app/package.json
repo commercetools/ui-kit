@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@emotion/core": "10.0.28",
-    "@emotion/styled": "10.0.27",
+    "@emotion/core": "^10.0.34",
+    "@emotion/styled": "^10.0.27",
     "emotion-theming": "10.0.27",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",
