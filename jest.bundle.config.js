@@ -39,11 +39,7 @@ module.exports = {
     '\\.css$': 'identity-obj-proxy',
   },
   rootDir: rootPath,
-  setupFiles: [
-    'raf/polyfill',
-    '<rootDir>/test/setup-tests.js',
-    'jest-localstorage-mock',
-  ],
+  setupFiles: ['<rootDir>/test/setup-tests.js', 'jest-localstorage-mock'],
   testEnvironment: 'jsdom',
   testURL: 'https://mc.commercetools.com/',
   testPathIgnorePatterns: ['node_modules'],

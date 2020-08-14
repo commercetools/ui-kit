@@ -17,11 +17,7 @@ module.exports = {
   },
   clearMocks: true,
   rootDir: rootPath,
-  setupFiles: [
-    'raf/polyfill',
-    '<rootDir>/test/setup-tests.js',
-    'jest-localstorage-mock',
-  ],
+  setupFiles: ['<rootDir>/test/setup-tests.js', 'jest-localstorage-mock'],
   setupFilesAfterEnv: ['<rootDir>/scripts/setup-test-framework.js'],
   testEnvironment: 'jest-environment-jsdom-sixteen',
   testURL: 'https://mc.commercetools.com/',
