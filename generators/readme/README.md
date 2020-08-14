@@ -7,7 +7,8 @@ A package to generate README files for the React component packages.
 Each package should have the following fragment files in a `docs` folder:
 
 - `docs/usage-example.js`: a JS example for using the component.
-- `docs/additional-info.md`: any additional information to be rendered AFTER the generated sections.
+- `docs/additional-info.md`: (_optional_) any additional information to be rendered AFTER the generated sections.
+- `docs/description.md`: (_optional_) the description of the package, useful if you need to use Markdown syntax. If not provided, it falls back to the `package.json` description field.
 
 ## Usage
 

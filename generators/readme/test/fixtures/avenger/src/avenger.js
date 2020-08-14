@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const Avenger = (props) => <div>{`Avenger: ${props.name}`}</div>;
 Avenger.defaultProps = {
   power: 1,
+  isAlive: true,
 };
 Avenger.propTypes = {
   /**
@@ -71,7 +72,7 @@ Avenger.propTypes = {
    */
   power: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).isRequired,
 
-  isAlive: PropTypes.bool.isRequired,
+  isAlive: PropTypes.bool,
 };
 
 export default Avenger;

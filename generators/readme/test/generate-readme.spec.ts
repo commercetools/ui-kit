@@ -85,7 +85,7 @@ describe('generate README', () => {
       | \`movies[]<shape>.title\` | \`string\` | ✅ | | The title of the movie. |
       | \`movies[]<shape>.releaseDate\` | \`string\` | ✅ | | The release date of the movie (ISO). |
       | \`power\` | \`enum\`<br>Possible values:<br>\`1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10\` | | \`1\` | Define the power for this Avenger, from a scale of 1-10. |
-      | \`isAlive\` | \`bool\` | ✅ | | |
+      | \`isAlive\` | \`bool\` | | \`true\` | |
 
       ## More information
 
