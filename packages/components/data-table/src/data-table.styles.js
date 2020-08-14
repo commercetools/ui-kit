@@ -28,7 +28,7 @@ const getDisabledSelfContainmentStyles = (props) => {
 };
 
 const TableContainer = styled.div`
-  width: min-content;
+  width: fit-content;
   overflow-x: auto;
 
   ${(props) =>
