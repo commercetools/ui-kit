@@ -44,8 +44,11 @@ jobs:
       - name: Building packages
         run: yarn build
 
+      - name: Running static type checking
+        run: yarn typecheck
+
       - name: Running linters and tests
-        run: yarn run jest --projects jest.{eslint,stylelint,test,bundle}.config.js --reporters jest-silent-reporter
+        run: yarn run jest --projects jest.{eslint,stylelint,test,ts-test,bundle}.config.js --reporters jest-silent-reporter
         env:
           CI: true
 

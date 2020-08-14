@@ -1,0 +1,11 @@
+{
+  "name": "@commercetools-test/avenger",
+  "description": "Render an Avenger",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "react": "16.8.x"
+  },
+  "readme": {
+    "componentPath": "./src/avenger.js"
+  }
+}
