@@ -31,7 +31,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>RadioField</label>
         <label htmlFor={`${this.props.id}-0`}>RadioField Option 1</label>
         <label htmlFor={`${this.props.id}-1`}>RadioField Option 2</label>
         <RadioField
@@ -49,7 +48,7 @@ class Story extends React.Component {
 
 const renderRadioField = (customProps, options) => {
   const props = {
-    title: 'foo',
+    title: 'Radio Field',
     onChange: jest.fn(),
     ...customProps,
   };
@@ -61,7 +60,7 @@ const renderRadioField = (customProps, options) => {
 
 it('should render a radio field', () => {
   const { getByLabelText } = renderRadioField();
-  expect(getByLabelText('RadioField')).toBeInTheDocument();
+  expect(getByLabelText('Radio Field')).toBeInTheDocument();
 });
 
 it('should render a title', () => {
