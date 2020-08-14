@@ -19,7 +19,7 @@ class Story extends React.Component {
   };
   static defaultProps = {
     id: 'text-field',
-    title: 'foo',
+    title: 'TextField',
     onChange: () => {},
   };
   state = {
@@ -32,7 +32,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>TextField</label>
         <TextField
           {...this.props}
           value={this.state.value}

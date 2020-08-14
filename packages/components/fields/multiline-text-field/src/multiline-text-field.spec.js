@@ -19,7 +19,7 @@ class Story extends React.Component {
   };
   static defaultProps = {
     id: 'text-field',
-    title: 'foo',
+    title: 'MultilineTextField',
     onChange: () => {},
   };
   state = {
@@ -32,7 +32,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>MultilineTextField</label>
         <MultilineTextField
           {...this.props}
           value={this.state.value}
