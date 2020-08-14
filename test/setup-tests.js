@@ -17,12 +17,34 @@ if (global.document) {
   });
 }
 
+const silenceConsoleWarnings = [
+  /.*\[React Intl\] "defaultRichTextElements" was specified but "message" was not pre-compiled.*/,
+];
+const notThrowWarnings = [];
+
+const shouldSilenceWarnings = (...messages) =>
+  silenceConsoleWarnings.some((msgRegex) =>
+    messages.some((msg) => msgRegex.test(msg))
+  );
+
+const shouldNotThrowWarnings = (...messages) =>
+  notThrowWarnings.some((msgRegex) =>
+    messages.some((msg) => msgRegex.test(msg))
+  );
+
 // setup file
 const logOrThrow = (log, method, messages) => {
   const warning = `console.${method} calls not allowed in tests`;
   if (process.env.CI) {
+    if (shouldSilenceWarnings(messages)) return;
+
     log(warning, '\n', ...messages);
-    throw new Error(warning);
+
+    // NOTE: That some warnings should be logged allowing us to refactor graceully
+    // without having to introduce a breaking change.
+    if (shouldNotThrowWarnings(messages)) return;
+
+    throw new Error(...messages);
   } else {
     log(colors.bgYellow.black(' WARN '), warning, '\n', ...messages);
   }
