@@ -131,6 +131,10 @@ const useManualColumnResizing = (tableRef) => {
     state.columnBeingResized !== undefined
       ? state.columnBeingResized === columnIndex
       : false;
+
+  const getIsAnyColumnBeingResized = () =>
+    state.columnBeingResized !== undefined;
+
   const getHasTableBeenResized = () => !!state.sizes;
 
   const reset = () => {
@@ -150,6 +154,7 @@ const useManualColumnResizing = (tableRef) => {
     finishResizing,
     getHasTableBeenResized,
     getIsColumnBeingResized,
+    getIsAnyColumnBeingResized,
   };
 };
 
