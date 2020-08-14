@@ -75,7 +75,7 @@ describe('generate README', () => {
       | \`identity.firstName\` | \`string\` | | | |
       | \`identity.lastName\` | \`string\` | | | |
       | \`identity.age\` | \`number\` | | | |
-      | \`onClick\` | \`func\` | | | A callback function when the component is clicked. Signature: \`(event) => void\` |
+      | \`onClick\` | \`func\` | | | A callback function, called when the component is clicked.<br> Signature: \`(event) => void\` |
       | \`abilities\` | \`array\` | ✅ | | List the abilities of this Avenger. |
       | \`abilities[].name\` | \`string\` | ✅ | | The name of the ability. |
       | \`abilities[].description\` | \`string\` | | | |
