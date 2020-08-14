@@ -23,7 +23,6 @@ module.exports = {
     'jest-localstorage-mock',
   ],
   setupFilesAfterEnv: ['<rootDir>/scripts/setup-test-framework.js'],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
   testEnvironment: 'jest-environment-jsdom-sixteen',
   testURL: 'https://mc.commercetools.com/',
   testPathIgnorePatterns: ['node_modules'],
