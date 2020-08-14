@@ -11,6 +11,8 @@ const sortMessages = (localeMessages) => {
   return sortedMessages;
 };
 
+// TODO: use the built-in transformer if we decide to change the transifex format to STRUCTURED_JSON
+// https://docs.transifex.com/formats/json/structured-json
 exports.format = function format(msgs) {
   const normalizedMessages = Object.entries(msgs).reduce(
     (messages, [id, msg]) => ({

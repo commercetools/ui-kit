@@ -1,4 +1,3 @@
-const vendorsToTranspile = require('./vendors-to-transpile');
 // Resolve the absolute path of the caller location.
 const rootPath = process.cwd();
 
@@ -26,6 +25,5 @@ module.exports = {
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
   },
-  transformIgnorePatterns: [`node_modules/(?!(${vendorsToTranspile})/)`],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
 };
