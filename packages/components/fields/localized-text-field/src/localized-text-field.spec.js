@@ -18,7 +18,7 @@ class Story extends React.Component {
     id: PropTypes.string,
   };
   static defaultProps = {
-    title: 'foo',
+    title: 'LocalizedTextField',
     id: 'text-field',
     value: { en: '', de: '' },
     selectedLanguage: 'en',
@@ -39,7 +39,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>LocalizedTextField</label>
         <LocalizedTextField
           {...this.props}
           value={this.state.value}

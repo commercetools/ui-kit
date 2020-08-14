@@ -30,7 +30,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>PasswordField</label>
         <PasswordField
           {...this.props}
           value={this.state.value}
@@ -43,7 +42,7 @@ class Story extends React.Component {
 
 const renderPasswordField = (customProps, options) => {
   const props = {
-    title: 'foo',
+    title: 'PasswordField',
     onChange: jest.fn(),
     ...customProps,
   };

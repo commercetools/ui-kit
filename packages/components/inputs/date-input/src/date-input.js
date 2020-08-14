@@ -154,6 +154,9 @@ const DateInput = (props) => {
               <CalendarBody
                 inputRef={inputRef}
                 inputProps={getInputProps({
+                  // Unset the aria-labelledby as it interfers with the link
+                  // between the <label for> and the <input id>.
+                  'aria-labelledby': undefined,
                   name: props.name,
                   placeholder:
                     typeof props.placeholder === 'string'

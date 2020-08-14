@@ -81,7 +81,7 @@ class RadioField extends React.Component {
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            id={this.state.id}
           />
           <RadioInput.Group
             id={this.state.id}

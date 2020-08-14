@@ -18,7 +18,7 @@ class Story extends React.Component {
     id: PropTypes.string,
   };
   static defaultProps = {
-    title: 'foo',
+    title: 'LocalizedMultilineTextField',
     id: 'text-field',
     value: { en: '', de: '' },
     selectedLanguage: 'en',
@@ -43,7 +43,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>LocalizedMultilineTextField</label>
         <LocalizedMultilineTextField
           {...this.props}
           value={this.state.value}

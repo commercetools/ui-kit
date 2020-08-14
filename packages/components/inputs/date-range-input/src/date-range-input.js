@@ -335,6 +335,9 @@ class DateRangeCalendar extends React.Component {
                 <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    // Unset the aria-labelledby as it interfers with the link
+                    // between the <label for> and the <input id>.
+                    'aria-labelledby': undefined,
                     name: this.props.name,
                     placeholder:
                       typeof this.props.placeholder === 'string'

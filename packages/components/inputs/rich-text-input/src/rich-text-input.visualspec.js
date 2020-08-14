@@ -375,5 +375,5 @@ describe('RichTextInput', () => {
 
     await input.type('Okay dokey');
     await wait(() => getByText(doc, 'Okay dokey'));
-  });
+  }, 20000);
 });

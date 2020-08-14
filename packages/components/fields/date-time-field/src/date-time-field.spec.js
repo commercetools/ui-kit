@@ -19,7 +19,7 @@ class Story extends React.Component {
   };
   static defaultProps = {
     id: 'date-field',
-    title: 'foo',
+    title: 'DateTimeField',
     timeZone: 'UTC',
     onChange: () => {},
     value: '',
@@ -34,7 +34,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>DateTimeField</label>
         <DateTimeField
           {...this.props}
           value={this.state.value}
