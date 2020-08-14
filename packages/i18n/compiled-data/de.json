@@ -1,0 +1,434 @@
+{
+  "UIKit.CalendarHeader.nextMonthTooltip": [
+    {
+      "type": 0,
+      "value": "nächstes Monat"
+    }
+  ],
+  "UIKit.CalendarHeader.nextYearTooltip": [
+    {
+      "type": 0,
+      "value": "nächstes Jahr"
+    }
+  ],
+  "UIKit.CalendarHeader.previousMonthTooltip": [
+    {
+      "type": 0,
+      "value": "letztes Monat"
+    }
+  ],
+  "UIKit.CalendarHeader.previousYearTooltip": [
+    {
+      "type": 0,
+      "value": "letztes Jahr"
+    }
+  ],
+  "UIKit.CalendarHeader.todayTooltip": [
+    {
+      "type": 0,
+      "value": "Heute"
+    }
+  ],
+  "UIKit.ClearButton.clearButtonLabel": [
+    {
+      "type": 0,
+      "value": "Zurücksetzen"
+    }
+  ],
+  "UIKit.CreatableSelectInput.createLabel": [
+    {
+      "type": 0,
+      "value": "\""
+    },
+    {
+      "type": 1,
+      "value": "inputValue"
+    },
+    {
+      "type": 0,
+      "value": "\" erstellen"
+    }
+  ],
+  "UIKit.DataTableManager.ColumnManager.DroppablePanel.loadMoreAttributesHint": [
+    {
+      "type": 0,
+      "value": "Eine Sucheingabe oben lädt mehr Attribute"
+    }
+  ],
+  "UIKit.DataTableManager.ColumnManager.closeButtonLabel": [
+    {
+      "type": 0,
+      "value": "Schließen"
+    }
+  ],
+  "UIKit.DataTableManager.ColumnManager.hiddenColumns": [
+    {
+      "type": 0,
+      "value": "Ausgeblendete Spalten"
+    }
+  ],
+  "UIKit.DataTableManager.ColumnManager.noHiddenColumnsToShow": [
+    {
+      "type": 0,
+      "value": "Es gibt keine ausgeblendeten Spalten."
+    }
+  ],
+  "UIKit.DataTableManager.ColumnManager.noSelectedColumnsToShow": [
+    {
+      "type": 0,
+      "value": "Es gibt keine anzuzeigenden Spalten."
+    }
+  ],
+  "UIKit.DataTableManager.ColumnManager.title": [
+    {
+      "type": 0,
+      "value": "Spaltenmanager"
+    }
+  ],
+  "UIKit.DataTableManager.ColumnSelectorGroups.visible": [
+    {
+      "type": 0,
+      "value": "Angezeigte Spalten"
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.closeButtonLabel": [
+    {
+      "type": 0,
+      "value": "Schließen"
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.densityDisplayCompactOption": [
+    {
+      "type": 0,
+      "value": "Kompakt"
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.densityDisplayDefaultOption": [
+    {
+      "type": 0,
+      "value": "Standard"
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.densityDisplaySubtitle": [
+    {
+      "type": 0,
+      "value": "Zeilenabstand"
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.textWrappingAllWrapVisibleOption": [
+    {
+      "type": 0,
+      "value": "Gesamten Text anzeigen."
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.textWrappingShowHideOnDemandOption": [
+    {
+      "type": 0,
+      "value": "Textvorschau anzeigen. Bei Bedarf erweitern."
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.textWrappingSubtitle": [
+    {
+      "type": 0,
+      "value": "Textsichtbarkeit"
+    }
+  ],
+  "UIKit.DataTableManager.DensityManager.title": [
+    {
+      "type": 0,
+      "value": "Tabellenansicht"
+    }
+  ],
+  "UIKit.DataTableManager.TableSettings.columnManagerOption": [
+    {
+      "type": 0,
+      "value": "Spaltenmanager"
+    }
+  ],
+  "UIKit.DataTableManager.TableSettings.displaySettingsOption": [
+    {
+      "type": 0,
+      "value": "Anzeigeeinstellungen"
+    }
+  ],
+  "UIKit.DataTableManager.TableSettings.placeholder": [
+    {
+      "type": 0,
+      "value": "Tabelleneinstellungen"
+    }
+  ],
+  "UIKit.DateInput.placeholder": [
+    {
+      "type": 0,
+      "value": "TT.MM.JJJJ"
+    }
+  ],
+  "UIKit.DateRangeInput.placeholder": [
+    {
+      "type": 0,
+      "value": "TT.MM.JJJJ - TT.MM.JJJJ"
+    }
+  ],
+  "UIKit.DateTimeInput.placeholder": [
+    {
+      "type": 0,
+      "value": "TT.MM.JJJJ - SS:mm"
+    }
+  ],
+  "UIKit.DateTimeInput.timePlaceholder": [
+    {
+      "type": 0,
+      "value": "SS:mm"
+    }
+  ],
+  "UIKit.FieldErrors.invalidFractionalNumber": [
+    {
+      "type": 0,
+      "value": "Eine ganze Zahl ist erforderlich."
+    }
+  ],
+  "UIKit.FieldErrors.invalidNegativeNumber": [
+    {
+      "type": 0,
+      "value": "Negative Zahlen werden nicht unterstützt."
+    }
+  ],
+  "UIKit.FieldErrors.missingRequiredField": [
+    {
+      "type": 0,
+      "value": "Pflichtfeld*, Geben Sie mindestens einen Wert an"
+    }
+  ],
+  "UIKit.LocalizedMoneyInput.hide": [
+    {
+      "type": 0,
+      "value": "Währungen verbergen ("
+    },
+    {
+      "type": 1,
+      "value": "remainingCurrencies"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "UIKit.LocalizedMoneyInput.missingRequiredField": [
+    {
+      "type": 0,
+      "value": "Pflichtfeld*, Geben Sie mindestens einen Wert an"
+    }
+  ],
+  "UIKit.LocalizedMoneyInput.show": [
+    {
+      "type": 0,
+      "value": "Alle Währungen anzeigen ("
+    },
+    {
+      "type": 1,
+      "value": "remainingCurrencies"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "UIKit.LocalizedTextInput.hide": [
+    {
+      "type": 0,
+      "value": "Sprachen verbergen"
+    }
+  ],
+  "UIKit.LocalizedTextInput.missingRequiredField": [
+    {
+      "type": 0,
+      "value": "Pflichtfeld*, Geben Sie mindestens einen Wert an"
+    }
+  ],
+  "UIKit.LocalizedTextInput.show": [
+    {
+      "type": 0,
+      "value": "Alle Sprachen anzeigen"
+    }
+  ],
+  "UIKit.MoneyInput.highPrecision": [
+    {
+      "type": 0,
+      "value": "Hochpräzisionspreis"
+    }
+  ],
+  "UIKit.MultilineTextInput.collapse": [
+    {
+      "type": 0,
+      "value": "Ausblenden"
+    }
+  ],
+  "UIKit.MultilineTextInput.expand": [
+    {
+      "type": 0,
+      "value": "Einblenden"
+    }
+  ],
+  "UIKit.PasswordField.hide": [
+    {
+      "type": 0,
+      "value": "verbergen"
+    }
+  ],
+  "UIKit.PasswordField.show": [
+    {
+      "type": 0,
+      "value": "anzeigen"
+    }
+  ],
+  "UIKit.RichTextBody.boldButtonLabel": [
+    {
+      "type": 0,
+      "value": "Fett"
+    }
+  ],
+  "UIKit.RichTextBody.expandButtonLabel": [
+    {
+      "type": 0,
+      "value": "Einblenden"
+    }
+  ],
+  "UIKit.RichTextBody.italicButtonLabel": [
+    {
+      "type": 0,
+      "value": "Kursiv"
+    }
+  ],
+  "UIKit.RichTextBody.moreStylesDropdownLabel": [
+    {
+      "type": 0,
+      "value": "Weitere Stile"
+    }
+  ],
+  "UIKit.RichTextBody.moreStylesDropdownOptionStrikethrough": [
+    {
+      "type": 0,
+      "value": "Durchgestrichen"
+    }
+  ],
+  "UIKit.RichTextBody.moreStylesDropdownOptionSubscript": [
+    {
+      "type": 0,
+      "value": "Tiefstellen"
+    }
+  ],
+  "UIKit.RichTextBody.moreStylesDropdownOptionSuperscript": [
+    {
+      "type": 0,
+      "value": "Hochstellen"
+    }
+  ],
+  "UIKit.RichTextBody.orderedListButtonLabel": [
+    {
+      "type": 0,
+      "value": "Nummerierte Liste"
+    }
+  ],
+  "UIKit.RichTextBody.redoButtonLabel": [
+    {
+      "type": 0,
+      "value": "Wiederholen"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownLabel": [
+    {
+      "type": 0,
+      "value": "Textstil"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionH1": [
+    {
+      "type": 0,
+      "value": "Überschrift H1"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionH2": [
+    {
+      "type": 0,
+      "value": "Überschrift H2"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionH3": [
+    {
+      "type": 0,
+      "value": "Überschrift H3"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionH4": [
+    {
+      "type": 0,
+      "value": "Überschrift H4"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionH5": [
+    {
+      "type": 0,
+      "value": "Überschrift H5"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionParagraph": [
+    {
+      "type": 0,
+      "value": "Paragraf"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionPreformatted": [
+    {
+      "type": 0,
+      "value": "Vorformatiert"
+    }
+  ],
+  "UIKit.RichTextBody.styleDropdownOptionQuote": [
+    {
+      "type": 0,
+      "value": "Zitat"
+    }
+  ],
+  "UIKit.RichTextBody.underlinedButtonLabel": [
+    {
+      "type": 0,
+      "value": "Unterstrichen"
+    }
+  ],
+  "UIKit.RichTextBody.undoButtonLabel": [
+    {
+      "type": 0,
+      "value": "Rückgängig"
+    }
+  ],
+  "UIKit.RichTextBody.unorderedListButtonLabel": [
+    {
+      "type": 0,
+      "value": "Aufzählungsliste"
+    }
+  ],
+  "UIKit.SelectInput.noOptionsMessageWithInputValue": [
+    {
+      "type": 0,
+      "value": "Keine Optionen"
+    }
+  ],
+  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": [
+    {
+      "type": 0,
+      "value": "Keine Optionen"
+    }
+  ],
+  "UIKit.SelectInput.placeholder": [
+    {
+      "type": 0,
+      "value": "Auswählen..."
+    }
+  ],
+  "UIKit.TimeInput.placeholder": [
+    {
+      "type": 0,
+      "value": "HH:mm"
+    }
+  ]
+}
