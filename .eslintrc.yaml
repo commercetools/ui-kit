@@ -19,6 +19,7 @@ env:
   node: true
   mocha: false
 plugins:
+  - 'formatjs'
   - 'import'
   - 'jest'
   - 'jsx-a11y'
