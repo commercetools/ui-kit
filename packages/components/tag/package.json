@@ -21,7 +21,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/icons": "10.24.0",
     "@commercetools-uikit/text": "10.27.0",
-    "@emotion/core": "10.0.28",
+    "@emotion/core": "^10.0.34",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

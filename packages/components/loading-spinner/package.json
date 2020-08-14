@@ -21,7 +21,7 @@
     "@commercetools-uikit/spacings-inline": "10.27.1",
     "@commercetools-uikit/text": "10.27.0",
     "@commercetools-uikit/utils": "10.21.0",
-    "@emotion/core": "10.0.28",
+    "@emotion/core": "^10.0.34",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {
