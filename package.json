@@ -34,6 +34,7 @@
     "format:js": "prettier --write '**/*.js'",
     "format:md": "prettier --write --parser markdown '**/*.md'",
     "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
+    "pretest": "yarn i18n:compile",
     "test": "jest --projects jest.{ts-test,test}.config.js",
     "test:watch": "yarn test --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
