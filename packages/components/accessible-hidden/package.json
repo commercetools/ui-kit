@@ -17,7 +17,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@emotion/core": "10.0.28",
+    "@emotion/core": "^10.0.34",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

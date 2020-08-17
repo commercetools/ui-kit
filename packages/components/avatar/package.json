@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/avatar",
   "version": "10.21.0",
-  "description": "",
+  "description": "A component for rendering profile images",
   "main": "dist/avatar.cjs.js",
   "module": "dist/avatar.esm.js",
   "private": false,
@@ -19,12 +19,15 @@
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/utils": "10.21.0",
-    "@emotion/core": "10.0.28",
-    "@emotion/styled": "10.0.27",
+    "@emotion/core": "^10.0.34",
+    "@emotion/styled": "^10.0.27",
     "common-tags": "1.8.0",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"
+  },
+  "readme": {
+    "componentPath": "./src/avatar.js"
   }
 }

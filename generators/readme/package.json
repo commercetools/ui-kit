@@ -1,0 +1,37 @@
+{
+  "name": "@commercetools-local/generator-readme",
+  "description": "CLI to generate README files for each package",
+  "version": "1.0.0",
+  "private": true,
+  "bin": {
+    "generate-readme": "./bin/generate_readme.sh"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "start": "tsc --noEmit --watch",
+    "test": "jest --config jest.test.config.js"
+  },
+  "dependencies": {
+    "@types/lodash": "4.14.159",
+    "@types/mdast": "3.0.3",
+    "@types/mri": "1.1.0",
+    "@types/node": "12.12.48",
+    "@types/shelljs": "0.8.8",
+    "@types/unist": "2.0.3",
+    "@types/vfile": "4.0.0",
+    "mri": "1.1.5",
+    "rcfile": "1.0.3",
+    "react-docgen": "5.3.0",
+    "remark-mdx": "1.6.6",
+    "remark-parse": "8.0.2",
+    "remark-stringify": "8.1.0",
+    "shelljs": "0.8.4",
+    "to-vfile": "6.1.0",
+    "unified": "9.0.0",
+    "vfile-reporter": "6.0.1"
+  },
+  "devDependencies": {
+    "ts-node": "8.10.2",
+    "typescript": "3.9.6"
+  }
+}

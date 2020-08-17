@@ -19,7 +19,7 @@ class Story extends React.Component {
   };
   static defaultProps = {
     id: 'date-field',
-    title: 'foo',
+    title: 'DateRangeField',
     onChange: () => {},
     value: [],
   };
@@ -33,7 +33,6 @@ class Story extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>DateRangeField</label>
         <DateRangeField
           {...this.props}
           value={this.state.value}

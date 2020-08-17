@@ -40,6 +40,7 @@ module.exports = function getBabelPreset(api) {
         {
           targets: {
             browsers: ['last 1 versions'],
+            node: 'current',
           },
           corejs: 2,
           // `entry` transforms `@babel/polyfill` into individual requires for
@@ -71,6 +72,7 @@ module.exports = function getBabelPreset(api) {
           autoLabel: !isEnvProduction,
         },
       ],
+      [require('@babel/preset-typescript').default],
     ].filter(Boolean),
     plugins: [
       // Experimental macros support. Will be documented after it's had some time

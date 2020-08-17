@@ -26,8 +26,9 @@ export const FieldLabel = (props) => {
             <Label
               isBold={true}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
-              htmlFor={props.htmlFor}
               tone={props.tone}
+              id={props.id}
+              htmlFor={props.htmlFor}
             >
               {props.title}
             </Label>
@@ -94,6 +95,7 @@ FieldLabel.propTypes = {
   badge: PropTypes.node,
   hasRequiredIndicator: PropTypes.bool,
   htmlFor: PropTypes.string,
+  id: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
 };
 

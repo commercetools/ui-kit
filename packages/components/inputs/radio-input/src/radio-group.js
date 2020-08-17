@@ -49,7 +49,7 @@ const Group = (props) => {
   });
   if (props.direction === 'inline') {
     return (
-      <div id={props.id}>
+      <div aria-labelledby={props.id}>
         <Inline {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
         </Inline>
@@ -57,7 +57,7 @@ const Group = (props) => {
     );
   }
   return (
-    <div id={props.id}>
+    <div aria-labelledby={props.id}>
       <Constraints.Horizontal constraint={props.horizontalConstraint}>
         <Stack {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
