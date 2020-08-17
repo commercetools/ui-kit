@@ -90,7 +90,6 @@ export default class ContentNotification extends React.PureComponent {
 
   static propTypes = {
     type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
-    containerType: PropTypes.oneOf(['flex', 'block']),
     children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
     intlMessage: requiredIf(
       PropTypes.shape({
@@ -100,10 +99,6 @@ export default class ContentNotification extends React.PureComponent {
       }),
       (props) => !React.Children.count(props.children)
     ),
-  };
-
-  static defaultProps = {
-    containerType: 'flex',
   };
 
   render() {
@@ -125,7 +120,7 @@ export default class ContentNotification extends React.PureComponent {
         <div
           css={css`
             flex-grow: 1;
-            display: ${this.props.containerType};
+            display: flex;
             align-items: center;
             padding: ${vars.spacingS};
             background: ${vars.colorSurface};
@@ -136,7 +131,9 @@ export default class ContentNotification extends React.PureComponent {
           `}
         >
           {this.props.intlMessage ? (
-            <FormattedMessage {...this.props.intlMessage} />
+            <div>
+              <FormattedMessage {...this.props.intlMessage} />
+            </div>
           ) : (
             this.props.children
           )}

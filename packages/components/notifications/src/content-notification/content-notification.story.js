@@ -26,14 +26,6 @@ storiesOf('Components|Notifications', module)
           },
           'warning'
         )}
-        containerType={select(
-          'containerType',
-          {
-            flex: 'flex',
-            block: 'block',
-          },
-          'flex'
-        )}
       >
         {text('children', 'Text of a notification')}
       </ContentNotification>
