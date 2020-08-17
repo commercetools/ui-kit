@@ -131,7 +131,9 @@ export default class ContentNotification extends React.PureComponent {
           `}
         >
           {this.props.intlMessage ? (
-            <FormattedMessage {...this.props.intlMessage} />
+            <div>
+              <FormattedMessage {...this.props.intlMessage} />
+            </div>
           ) : (
             this.props.children
           )}
