@@ -1,5 +1,11 @@
 # @commercetools-uikit/localized-utils
 
+## 10.30.1
+
+### Patch Changes
+
+- [`cc40d76`](https://github.com/commercetools/ui-kit/commit/cc40d765fdeff8626a9886e080eab35dad97b805) [#1502](https://github.com/commercetools/ui-kit/pull/1502) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies
+
 ## 10.27.0
 
 ### Patch Changes

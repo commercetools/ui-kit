@@ -1,5 +1,22 @@
 # @commercetools-uikit/password-field
 
+## 10.30.1
+
+### Patch Changes
+
+- [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e) [#1492](https://github.com/commercetools/ui-kit/pull/1492) Thanks [@emmenko](https://github.com/emmenko)! - Use ranged versions for emotion dependencies
+
+- Updated dependencies [[`cc40d76`](https://github.com/commercetools/ui-kit/commit/cc40d765fdeff8626a9886e080eab35dad97b805), [`2ab294a`](https://github.com/commercetools/ui-kit/commit/2ab294a36e98dc3483507127a0b5d35862cf5429), [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e), [`5734a25`](https://github.com/commercetools/ui-kit/commit/5734a2507bb7d5bc1a1eb32aab166aff43e8fc32)]:
+  - @commercetools-uikit/flat-button@10.30.1
+  - @commercetools-uikit/hooks@10.30.1
+  - @commercetools-uikit/field-label@10.30.1
+  - @commercetools-uikit/constraints@10.30.1
+  - @commercetools-uikit/field-errors@10.30.1
+  - @commercetools-uikit/icons@10.30.1
+  - @commercetools-uikit/password-input@10.30.1
+  - @commercetools-uikit/spacings-inline@10.30.1
+  - @commercetools-uikit/spacings-stack@10.30.1
+
 ## 10.27.1
 
 ### Patch Changes

@@ -1,5 +1,25 @@
 # @commercetools-uikit/date-input
 
+## 10.30.1
+
+### Patch Changes
+
+- [`cc40d76`](https://github.com/commercetools/ui-kit/commit/cc40d765fdeff8626a9886e080eab35dad97b805) [#1502](https://github.com/commercetools/ui-kit/pull/1502) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies
+
+* [`2ab294a`](https://github.com/commercetools/ui-kit/commit/2ab294a36e98dc3483507127a0b5d35862cf5429) [#1497](https://github.com/commercetools/ui-kit/pull/1497) Thanks [@emmenko](https://github.com/emmenko)! - Fix a11y issue with relationshipts between label and form/non-form elements
+
+- [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e) [#1492](https://github.com/commercetools/ui-kit/pull/1492) Thanks [@emmenko](https://github.com/emmenko)! - Use ranged versions for emotion dependencies
+
+- Updated dependencies [[`cc40d76`](https://github.com/commercetools/ui-kit/commit/cc40d765fdeff8626a9886e080eab35dad97b805), [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e), [`5734a25`](https://github.com/commercetools/ui-kit/commit/5734a2507bb7d5bc1a1eb32aab166aff43e8fc32)]:
+  - @commercetools-uikit/secondary-icon-button@10.30.1
+  - @commercetools-uikit/select-utils@10.30.1
+  - @commercetools-uikit/text@10.30.1
+  - @commercetools-uikit/tooltip@10.30.1
+  - @commercetools-uikit/hooks@10.30.1
+  - @commercetools-uikit/constraints@10.30.1
+  - @commercetools-uikit/icons@10.30.1
+  - @commercetools-uikit/spacings-inline@10.30.1
+
 ## 10.30.0
 
 ### Patch Changes

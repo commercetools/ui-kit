@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/spacings-inline",
-  "version": "10.27.1",
+  "version": "10.30.1",
   "description": "",
   "main": "dist/inline.cjs.js",
   "module": "dist/inline.esm.js",
