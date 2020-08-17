@@ -27,7 +27,7 @@
     "start": "yarn storybook:start",
     "storybook:start": "start-storybook -p 9002 -s docs/assets",
     "i18n:build": "formatjs extract --format=$(pwd)/packages/i18n/transifex-transformer.js --out-file=$(pwd)/packages/i18n/data/core.json '{packages,src/components}/**/messages.js'",
-    "i18n:compile": "yarn formatjs compile-folder --format=$(pwd)/packages/i18n/transifex-transformer.js --ast $(pwd)/packages/i18n/data $(pwd)/packages/i18n/compiled-data",
+    "i18n:compile": "yarn --cwd packages/i18n compile-data",
     "lint": "jest --projects jest.eslint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
