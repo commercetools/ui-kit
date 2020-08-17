@@ -98,6 +98,7 @@ const parseMarkdownFragmentToAST = (fragmentContent: VFileCompatible) => {
     .parse(fragmentContent) as Root;
   return fragmentAST.children;
 };
+const embeddedDefaultValueRegex = /@@defaultValue@@:\s(.*)$/;
 // Recursive function to normalize the nested prop types in a flat object shape.
 // This is important to then render in the table each nested array/object element
 // in a separate row.
@@ -116,23 +117,38 @@ const normalizeReactProps = (
           };
           const normalizedArrayShapeProps = Object.entries(
             arrayShapeValue
-          ).reduce(
-            (normalizedShapeValues, [shapePropName, shapePropInfo]) => ({
+          ).reduce((normalizedShapeValues, [shapePropName, shapePropInfo]) => {
+            const originalDescription = shapePropInfo.description ?? '';
+            const nextPropInfo: ReactComponentProps = {
+              // Here use the nested prop type definition.
+              type: shapePropInfo,
+              required: shapePropInfo.required ?? false,
+              description: originalDescription,
+            };
+            const hasEmbeddedDefaultValue = originalDescription.match(
+              embeddedDefaultValueRegex
+            );
+            if (hasEmbeddedDefaultValue) {
+              const [, value] = hasEmbeddedDefaultValue;
+              nextPropInfo.description = originalDescription.replace(
+                embeddedDefaultValueRegex,
+                ''
+              );
+              nextPropInfo.defaultValue = {
+                value,
+                computed: false,
+              };
+            }
+            return {
               ...normalizedShapeValues,
               ...normalizeReactProps(
                 // The name of the prop has the "array + dot" notation (`[].`),
                 // meaning that it's the property of an object of the array.
                 `${normalizedPropName}[].${shapePropName}`,
-                {
-                  // Here use the nested prop type definition.
-                  type: shapePropInfo,
-                  required: shapePropInfo.required ?? false,
-                  description: shapePropInfo.description ?? '',
-                }
+                nextPropInfo
               ),
-            }),
-            {}
-          );
+            };
+          }, {});
           return {
             // Include the main prop as well.
             [normalizedPropName]: {
@@ -194,6 +210,7 @@ const normalizeReactProps = (
               type: shapePropInfo,
               required: shapePropInfo.required ?? false,
               description: shapePropInfo.description ?? '',
+              defaultValue: componentPropsInfo.defaultValue,
             }
           ),
         }),

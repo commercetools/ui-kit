@@ -48,7 +48,7 @@ export type ReactComponentProps = {
   type: ReactComponentPropType;
   required: boolean;
   description: string;
-  defaultValue?: { value: string };
+  defaultValue?: { value: string; computed: boolean };
 };
 export type ReactAPI = {
   description: string;

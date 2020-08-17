@@ -38,6 +38,12 @@ Avenger.propTypes = {
        */
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
+      /**
+       * Set this to `true` to mark this ability as new.
+       *
+       * @@defaultValue@@: false
+       */
+      isNew: PropTypes.bool
     })
   ).isRequired,
 
