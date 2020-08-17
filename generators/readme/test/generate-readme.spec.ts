@@ -75,10 +75,11 @@ describe('generate README', () => {
       | \`identity.firstName\` | \`string\` | | | |
       | \`identity.lastName\` | \`string\` | | | |
       | \`identity.age\` | \`number\` | | | |
-      | \`onClick\` | \`func\` | | | A callback function when the component is clicked. Signature: \`(event) => void\` |
+      | \`onClick\` | \`func\` | | | A callback function, called when the component is clicked.<br> Signature: \`(event) => void\` |
       | \`abilities\` | \`array\` | ✅ | | List the abilities of this Avenger. |
       | \`abilities[].name\` | \`string\` | ✅ | | The name of the ability. |
       | \`abilities[].description\` | \`string\` | | | |
+      | \`abilities[].isNew\` | \`bool\` | | \`false\` | Set this to \`true\` to mark this ability as new. |
       | \`movies\` | \`array\` | ✅ | | The list of movies where this Avenger appears in. It can either be just the name of the movie or a more detailed information about the movie. |
       | \`movies[]<string>\` | \`string\` | | | The name of the movie. |
       | \`movies[]<shape>\` | \`object\` | | | Detailed information about the movie. |

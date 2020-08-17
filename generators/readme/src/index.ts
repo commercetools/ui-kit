@@ -38,7 +38,7 @@ import stringify from 'remark-stringify';
 import rcfile from 'rcfile';
 import prettier from 'prettier';
 import camelcase from 'lodash/camelCase';
-import capitalize from 'lodash/capitalize';
+import upperFirst from 'lodash/upperFirst';
 import stringfyOptions from './utils/stringify-options';
 
 const prettierConfig = rcfile<PrettierOptions>('prettier');
@@ -98,6 +98,7 @@ const parseMarkdownFragmentToAST = (fragmentContent: VFileCompatible) => {
     .parse(fragmentContent) as Root;
   return fragmentAST.children;
 };
+const embeddedDefaultValueRegex = /@@defaultValue@@:\s(.*)$/;
 // Recursive function to normalize the nested prop types in a flat object shape.
 // This is important to then render in the table each nested array/object element
 // in a separate row.
@@ -116,23 +117,38 @@ const normalizeReactProps = (
           };
           const normalizedArrayShapeProps = Object.entries(
             arrayShapeValue
-          ).reduce(
-            (normalizedShapeValues, [shapePropName, shapePropInfo]) => ({
+          ).reduce((normalizedShapeValues, [shapePropName, shapePropInfo]) => {
+            const originalDescription = shapePropInfo.description ?? '';
+            const nextPropInfo: ReactComponentProps = {
+              // Here use the nested prop type definition.
+              type: shapePropInfo,
+              required: shapePropInfo.required ?? false,
+              description: originalDescription,
+            };
+            const hasEmbeddedDefaultValue = originalDescription.match(
+              embeddedDefaultValueRegex
+            );
+            if (hasEmbeddedDefaultValue) {
+              const [, value] = hasEmbeddedDefaultValue;
+              nextPropInfo.description = originalDescription.replace(
+                embeddedDefaultValueRegex,
+                ''
+              );
+              nextPropInfo.defaultValue = {
+                value,
+                computed: false,
+              };
+            }
+            return {
               ...normalizedShapeValues,
               ...normalizeReactProps(
                 // The name of the prop has the "array + dot" notation (`[].`),
                 // meaning that it's the property of an object of the array.
                 `${normalizedPropName}[].${shapePropName}`,
-                {
-                  // Here use the nested prop type definition.
-                  type: shapePropInfo,
-                  required: shapePropInfo.required ?? false,
-                  description: shapePropInfo.description ?? '',
-                }
+                nextPropInfo
               ),
-            }),
-            {}
-          );
+            };
+          }, {});
           return {
             // Include the main prop as well.
             [normalizedPropName]: {
@@ -194,6 +210,7 @@ const normalizeReactProps = (
               type: shapePropInfo,
               required: shapePropInfo.required ?? false,
               description: shapePropInfo.description ?? '',
+              defaultValue: componentPropsInfo.defaultValue,
             }
           ),
         }),
@@ -342,7 +359,10 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
     name: parsedPackageJson.name,
     description: parsedPackageJson.description,
     version: parsedPackageJson.version,
-    readme: parsedPackageJson.readme,
+    readme: {
+      componentPath: `src/${path.basename(options.packagePath)}.js`,
+      ...(parsedPackageJson.readme ?? {}),
+    },
     peerDependencies: parsedPackageJson.peerDependencies,
   };
 
@@ -367,7 +387,7 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
         ].join('\n')
       ),
       // The main heading is derived by the name of the folder
-      heading(1, capitalize(camelcase(path.basename(options.packagePath)))),
+      heading(1, upperFirst(camelcase(path.basename(options.packagePath)))),
       // The description is what's defined in the package.json
       heading(2, 'Description'),
       ...(fs.existsSync(paths.description)

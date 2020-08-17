@@ -26,8 +26,5 @@
   },
   "peerDependencies": {
     "react": ">= 16.8.0"
-  },
-  "readme": {
-    "componentPath": "./src/avatar.js"
   }
 }

@@ -19,6 +19,7 @@
     "@types/shelljs": "0.8.8",
     "@types/unist": "2.0.3",
     "@types/vfile": "4.0.0",
+    "lodash": "4.17.20",
     "mri": "1.1.6",
     "rcfile": "1.0.3",
     "react-docgen": "5.3.0",
@@ -28,10 +29,15 @@
     "shelljs": "0.8.4",
     "to-vfile": "6.1.0",
     "unified": "9.1.0",
+    "vfile": "4.2.0",
     "vfile-reporter": "6.0.1"
   },
   "devDependencies": {
     "ts-node": "8.10.2",
     "typescript": "3.9.7"
+  },
+  "peerDependencies": {
+    "prettier": "2.x",
+    "typescript": "3.x"
   }
 }
