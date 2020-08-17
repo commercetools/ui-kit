@@ -115,5 +115,6 @@ export { default as TruckIcon } from './components/truck';
 export { default as UserFilledIcon } from './components/user-filled';
 export { default as UserLinearIcon } from './components/user-linear';
 export { default as VerifiedIcon } from './components/verified';
+export { default as ViewGridPlusIcon } from './components/view-grid-plus';
 export { default as WarningIcon } from './components/warning';
 export { default as WorldIcon } from './components/world';

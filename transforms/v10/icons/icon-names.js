@@ -109,6 +109,7 @@ const iconNames = [
   'UserFilledIcon',
   'UserLinearIcon',
   'VerifiedIcon',
+  'ViewGridPlusIcon',
   'WarningIcon',
   'WorldIcon',
 ];
