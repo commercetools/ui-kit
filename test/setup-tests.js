@@ -17,9 +17,7 @@ if (global.document) {
   });
 }
 
-const silenceConsoleWarnings = [
-  /.*\[React Intl\] "defaultRichTextElements" was specified but "message" was not pre-compiled.*/,
-];
+const silenceConsoleWarnings = [];
 const notThrowWarnings = [];
 
 const shouldSilenceWarnings = (...messages) =>
