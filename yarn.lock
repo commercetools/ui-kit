@@ -14082,10 +14082,10 @@ postcss@7.0.32, postcss@^7.0.0, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-pptr-testing-library@0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/pptr-testing-library/-/pptr-testing-library-0.6.1.tgz#3c144ea1a1bc16bc3c99fabe4ffd7b899230bc7a"
-  integrity sha512-vlh9Mi9u+6ZvzdnYaltAgdZuu4f5H2It0ZVTLlovRQvW41pGN24twPhfKQg0nZcb+UYcVc2HwEUfcV17t0QyAg==
+pptr-testing-library@0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/pptr-testing-library/-/pptr-testing-library-0.6.3.tgz#3371fbd8e4d3860069da45a43f57ae305dd8ef1d"
+  integrity sha512-GGX5A6p1HUYox24fBp/GiC59OmT2i/SnSs9XJHgpaUeGQJ/nuvyTRxrbP08XneMyK+S8qdZ+2z6nmIotgc8yjQ==
   dependencies:
     "@testing-library/dom" "^7.0.4"
     wait-for-expect "^3.0.2"
