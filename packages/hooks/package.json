@@ -19,7 +19,7 @@
     "@commercetools-uikit/utils": "10.21.0"
   },
   "peerDependencies": {
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "react": ">= 16.8.0"
   },
   "license": "MIT"
