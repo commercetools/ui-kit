@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/icon-button",
-  "version": "10.27.1",
+  "version": "10.30.1",
   "description": "",
   "main": "dist/icon-button.cjs.js",
   "module": "dist/icon-button.esm.js",
@@ -17,10 +17,10 @@
   "files": ["dist"],
   "sideEffects": false,
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.27.0",
+    "@commercetools-uikit/accessible-button": "10.30.1",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/spacings": "10.18.6",
-    "@commercetools-uikit/text": "10.27.0",
+    "@commercetools-uikit/spacings": "10.18.7",
+    "@commercetools-uikit/text": "10.30.1",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/number-input",
-  "version": "10.24.0",
+  "version": "10.30.1",
   "description": "",
   "main": "dist/number-input.cjs.js",
   "module": "dist/number-input.esm.js",
@@ -17,7 +17,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/constraints": "10.21.0",
+    "@commercetools-uikit/constraints": "10.30.1",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "^10.0.34",

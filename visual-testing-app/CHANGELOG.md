@@ -1,5 +1,15 @@
 # visual-testing-app
 
+## 10.18.10
+
+### Patch Changes
+
+- [`cc40d76`](https://github.com/commercetools/ui-kit/commit/cc40d765fdeff8626a9886e080eab35dad97b805) [#1502](https://github.com/commercetools/ui-kit/pull/1502) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies
+
+* [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e) [#1492](https://github.com/commercetools/ui-kit/pull/1492) Thanks [@emmenko](https://github.com/emmenko)! - Use ranged versions for emotion dependencies
+
+- [`4d7df91`](https://github.com/commercetools/ui-kit/commit/4d7df91f9ce9123a20a3e289cdb4ba3af9ba684f) [#1494](https://github.com/commercetools/ui-kit/pull/1494) Thanks [@emmenko](https://github.com/emmenko)! - Update react-intl and formatjs deps
+
 ## 10.18.9
 
 ### Patch Changes

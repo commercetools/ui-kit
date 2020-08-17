@@ -1,5 +1,13 @@
 # @commercetools-uikit/icons
 
+## 10.30.1
+
+### Patch Changes
+
+- [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e) [#1492](https://github.com/commercetools/ui-kit/pull/1492) Thanks [@emmenko](https://github.com/emmenko)! - Use ranged versions for emotion dependencies
+
+* [`5734a25`](https://github.com/commercetools/ui-kit/commit/5734a2507bb7d5bc1a1eb32aab166aff43e8fc32) [#1499](https://github.com/commercetools/ui-kit/pull/1499) Thanks [@torihedden](https://github.com/torihedden)! - feat: add new `ViewGridPlus` icon
+
 ## 10.24.0
 
 ### Patch Changes

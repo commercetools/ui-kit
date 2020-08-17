@@ -1,5 +1,20 @@
 # @commercetools-uikit/money-field
 
+## 10.30.1
+
+### Patch Changes
+
+- [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e) [#1492](https://github.com/commercetools/ui-kit/pull/1492) Thanks [@emmenko](https://github.com/emmenko)! - Use ranged versions for emotion dependencies
+
+* [`4d7df91`](https://github.com/commercetools/ui-kit/commit/4d7df91f9ce9123a20a3e289cdb4ba3af9ba684f) [#1494](https://github.com/commercetools/ui-kit/pull/1494) Thanks [@emmenko](https://github.com/emmenko)! - Update react-intl and formatjs deps
+
+* Updated dependencies [[`2ab294a`](https://github.com/commercetools/ui-kit/commit/2ab294a36e98dc3483507127a0b5d35862cf5429), [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e)]:
+  - @commercetools-uikit/field-label@10.30.1
+  - @commercetools-uikit/constraints@10.30.1
+  - @commercetools-uikit/field-errors@10.30.1
+  - @commercetools-uikit/money-input@10.30.1
+  - @commercetools-uikit/spacings@10.18.7
+
 ## 10.27.1
 
 ### Patch Changes

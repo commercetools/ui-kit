@@ -1,5 +1,15 @@
 # @commercetools-uikit/loading-spinner
 
+## 10.30.1
+
+### Patch Changes
+
+- [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e) [#1492](https://github.com/commercetools/ui-kit/pull/1492) Thanks [@emmenko](https://github.com/emmenko)! - Use ranged versions for emotion dependencies
+
+- Updated dependencies [[`cc40d76`](https://github.com/commercetools/ui-kit/commit/cc40d765fdeff8626a9886e080eab35dad97b805), [`db6b77c`](https://github.com/commercetools/ui-kit/commit/db6b77c3baf110136440dfc7c6d42cace74eb85e)]:
+  - @commercetools-uikit/text@10.30.1
+  - @commercetools-uikit/spacings-inline@10.30.1
+
 ## 10.27.1
 
 ### Patch Changes
