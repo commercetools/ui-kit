@@ -28,7 +28,7 @@
     "@emotion/core": "^10.0.34",
     "@emotion/is-prop-valid": "0.8.8",
     "@emotion/styled": "^10.0.27",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "prop-types": "15.7.2",
     "react-input-autosize": "^2.2.2",
     "react-select": "3.1.0"
