@@ -8,17 +8,17 @@ import { createMemoryHistory } from 'history';
 const getMessagesForLocale = (locale) => {
   switch (locale) {
     case 'de':
-      return require('@commercetools-uikit/i18n/data/de.json');
+      return require('@commercetools-uikit/i18n/compiled-data/de.json');
     case 'es':
-      return require('@commercetools-uikit/i18n/data/es.json');
+      return require('@commercetools-uikit/i18n/compiled-data/es.json');
     case 'fr-FR':
-      return require('@commercetools-uikit/i18n/data/fr-FR.json');
+      return require('@commercetools-uikit/i18n/compiled-data/fr-FR.json');
     case 'zh-CN':
-      return require('@commercetools-uikit/i18n/data/zh-CN.json');
+      return require('@commercetools-uikit/i18n/compiled-data/zh-CN.json');
     case 'ja':
-      return require('@commercetools-uikit/i18n/data/ja.json');
+      return require('@commercetools-uikit/i18n/compiled-data/ja.json');
     default:
-      return require('@commercetools-uikit/i18n/data/en.json');
+      return require('@commercetools-uikit/i18n/compiled-data/en.json');
   }
 };
 

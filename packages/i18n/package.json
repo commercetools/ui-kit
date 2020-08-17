@@ -8,12 +8,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist", "data"],
+  "files": [
+    "dist",
+    "data",
+    "compiled-data"
+  ],
   "sideEffects": false,
   "scripts": {
     "prepare": "../../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "prebuild": "rimraf dist && yarn compile-data",
+    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
+    "compile-data": "formatjs compile-folder --format=$(pwd)/transifex-transformer.js --ast data compiled-data"
   },
   "license": "MIT"
 }
