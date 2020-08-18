@@ -45,6 +45,16 @@ describe('DataTable', () => {
     expect(screen.queryByTestId('header-year')).toBeInTheDocument();
   });
 
+  it('should be able to find headers by the data-id', () => {
+    const rendered = render(<DataTable {...baseProps} />);
+    expect(
+      rendered.container.querySelector('[data-id="title"]')
+    ).toBeInTheDocument();
+    expect(
+      rendered.container.querySelector('[data-id="year"]')
+    ).toBeInTheDocument();
+  });
+
   it('should be able to find cells by the data-testid', () => {
     render(<DataTable {...baseProps} />);
 
