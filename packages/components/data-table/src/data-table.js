@@ -65,7 +65,9 @@ const DataTable = (props) => {
   }, [hasTableBeenResized, prevLayout, currentLayout, columnResizingReducer]);
 
   const resizedTotalWidth = hasTableBeenResized
-    ? columnResizingReducer.getTotalResizedTableWidth()
+    ? columnResizingReducer.getTotalResizedTableWidth() +
+      // if the table has a maxHeight, it might add a scrollbar which takes space inside the container
+      (tableRef.current.offsetWidth - tableRef.current.clientWidth)
     : undefined;
 
   return (
