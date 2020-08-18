@@ -123,14 +123,18 @@ const DensityManager = (props) => {
 };
 
 DensityManager.displayName = 'DensityManager';
+DensityManager.defaultProps = {
+  isCondensed: false,
+  isWrappingText: false,
+};
 DensityManager.propTypes = {
-  isCondensed: PropTypes.bool.isRequired,
-  isWrappingText: PropTypes.bool.isRequired,
+  isCondensed: PropTypes.bool,
+  isWrappingText: PropTypes.bool,
+  primaryButton: PropTypes.element,
+  secondaryButton: PropTypes.element,
   onDensityDisplayChange: PropTypes.func.isRequired,
   onTextWrappingChange: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  primaryButton: PropTypes.element,
-  secondaryButton: PropTypes.element,
 };
 
 export default DensityManager;

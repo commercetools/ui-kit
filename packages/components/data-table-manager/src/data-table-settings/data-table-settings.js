@@ -4,10 +4,14 @@ import invariant from 'tiny-invariant';
 import { useIntl } from 'react-intl';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
+import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import DensityManager from './density-manager';
+import {
+  DENSITY_COMPACT,
+  SHOW_HIDE_ON_DEMAND,
+} from './density-manager/constants';
 import ColumnManager from './column-manager';
 import { SelectContainer } from './data-table-settings-panel.styles';
-import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import messages from './messages';
 
 export const getDropdownOptions = ({
@@ -51,27 +55,6 @@ const DataTableSettings = (props) => {
   );
   const areColumnSettingsEnabled = Boolean(
     props.columnManager && !props.columnManager.disableColumnManager
-  );
-  invariant(
-    areDisplaySettingsEnabled &&
-      typeof props.displaySettings.isWrappingText === 'boolean',
-    `ui-kit/DataTableManager: the prop "displaySettings.isWrappingText" is required when the display settings are enabled.`
-  );
-  invariant(
-    areColumnSettingsEnabled &&
-      Array.isArray(props.columnManager.visibleColumnKeys),
-    `ui-kit/DataTableManager: the prop "columnManager.visibleColumnKeys" is required when the column settings are enabled.`
-  );
-  invariant(
-    areColumnSettingsEnabled &&
-      Array.isArray(props.columnManager.hideableColumns),
-    `ui-kit/DataTableManager: the prop "columnManager.hideableColumns" is required when the column settings are enabled.`
-  );
-  invariant(
-    areColumnSettingsEnabled &&
-      props.columnManager.areHiddenColumnsSearchable &&
-      typeof props.columnManager.searchHiddenColumns === 'function',
-    `ui-kit/DataTableManager: the prop "columnManager.searchHiddenColumns" is required when the column settings are enabled.`
   );
   invariant(
     (areDisplaySettingsEnabled || areColumnSettingsEnabled) &&
@@ -120,19 +103,18 @@ const DataTableSettings = (props) => {
       {openedPanelId === DISPLAY_SETTINGS && (
         <DensityManager
           data-testid={DISPLAY_SETTINGS}
-          {...props.displaySettings}
-          isDensityManagerOpenDefault={true}
+          {...(props.displaySettings || {})}
           onClose={handleSettingsPanelChange}
-          onDensityDisplayChange={() => {
+          onDensityDisplayChange={(event) => {
             props.onSettingsChange(
               UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE,
-              !props.displaySettings.isCondensed
+              event.target.value === DENSITY_COMPACT
             );
           }}
-          onTextWrappingChange={() => {
+          onTextWrappingChange={(event) => {
             props.onSettingsChange(
               UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE,
-              !props.displaySettings.isWrappingText
+              event.target.value === SHOW_HIDE_ON_DEMAND
             );
           }}
         />
@@ -141,7 +123,7 @@ const DataTableSettings = (props) => {
       {openedPanelId === COLUMN_MANAGER && (
         <ColumnManager
           data-testid={COLUMN_MANAGER}
-          {...props.columnManager}
+          {...(props.columnManager || {})}
           availableColumns={props.columnManager.hideableColumns}
           selectedColumns={selectedColumns}
           onClose={handleSettingsPanelChange}
@@ -165,14 +147,14 @@ DataTableSettings.propTypes = {
   topBar: PropTypes.node,
   onSettingsChange: PropTypes.func,
   displaySettings: PropTypes.shape({
-    disableDisplaySettings: PropTypes.bool.isRequired,
+    disableDisplaySettings: PropTypes,
     isCondensed: PropTypes.bool,
     isWrappingText: PropTypes.bool,
     primaryButton: PropTypes.element,
     secondaryButton: PropTypes.element,
-  }).isRequired,
+  }),
   columnManager: PropTypes.shape({
-    disableColumnManager: PropTypes.bool.isRequired,
+    disableColumnManager: PropTypes,
     visibleColumnKeys: PropTypes.arrayOf(PropTypes.string.isRequired),
     hideableColumns: PropTypes.arrayOf(
       PropTypes.shape({
@@ -186,7 +168,7 @@ DataTableSettings.propTypes = {
     searchHiddenColumnsPlaceholder: PropTypes.string,
     primaryButton: PropTypes.element,
     secondaryButton: PropTypes.element,
-  }).isRequired,
+  }),
 };
 
 export default DataTableSettings;
