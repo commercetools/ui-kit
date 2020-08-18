@@ -137,6 +137,13 @@ const useManualColumnResizing = (tableRef) => {
 
   const getHasTableBeenResized = () => !!state.sizes;
 
+  const getTotalResizedTableWidth = () => {
+    if (!state.sizes) {
+      return -1;
+    }
+    return state.sizes.reduce((a, b) => a + b, 0);
+  };
+
   const reset = () => {
     state.tableRef.current.style.gridTemplateColumns = '';
 
@@ -155,6 +162,7 @@ const useManualColumnResizing = (tableRef) => {
     getHasTableBeenResized,
     getIsColumnBeingResized,
     getIsAnyColumnBeingResized,
+    getTotalResizedTableWidth,
   };
 };
 

@@ -28,7 +28,6 @@ const getDisabledSelfContainmentStyles = (props) => {
 };
 
 const TableContainer = styled.div`
-  width: fit-content;
   overflow-x: auto;
 
   ${(props) =>
@@ -42,6 +41,9 @@ const TableContainer = styled.div`
     * {
       user-select: none;
     }`}
+
+    ${(props) =>
+      props.resizedTotalWidth ? `width: ${props.resizedTotalWidth}px;` : ''}
 
   ${getDisabledSelfContainmentStyles}
 `;

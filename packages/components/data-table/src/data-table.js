@@ -64,10 +64,15 @@ const DataTable = (props) => {
     }
   }, [hasTableBeenResized, prevLayout, currentLayout, columnResizingReducer]);
 
+  const resizedTotalWidth = hasTableBeenResized
+    ? columnResizingReducer.getTotalResizedTableWidth()
+    : undefined;
+
   return (
     <TableContainer
       maxWidth={props.maxWidth}
       isBeingResized={columnResizingReducer.getIsAnyColumnBeingResized()}
+      resizedTotalWidth={resizedTotalWidth}
       disableSelfContainment={props.disableSelfContainment}
     >
       <TableGrid
