@@ -85,9 +85,13 @@ const useManualColumnResizing = (tableRef) => {
   // if the table element has been rendered and we haven't yet measured the columns
   if (state.tableRef.current && !state.sizes) {
     const renderedColumnMeasurements = [];
-    state.tableRef.current.querySelectorAll('th').forEach((header, index) => {
-      renderedColumnMeasurements[index] = header.getBoundingClientRect().width;
+    state.tableRef.current.querySelectorAll('th').forEach((header) => {
+      renderedColumnMeasurements.push({
+        key: header.getAttribute('data-testid').split(/-(.+)/)[1],
+        width: header.getBoundingClientRect().width,
+      });
     });
+
     dispatch({
       type: 'registerColumnMeasurements',
       payload: {
@@ -115,8 +119,11 @@ const useManualColumnResizing = (tableRef) => {
         state.initialMousePosition,
         event.clientX
       );
-
-      const newColumnsSizes = setColumnWidth(state.sizes, columnIndex, width);
+      const newColumnsSizes = setColumnWidth(
+        state.sizes.map((size) => size.width),
+        columnIndex,
+        width
+      );
 
       state.tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
         newColumnsSizes
