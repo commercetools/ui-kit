@@ -20,7 +20,7 @@
     "generate-icons": "node ./scripts/generate-icon-exports.js",
     "design-tokens:build": "yarn --cwd design-system build:tokens",
     "design-tokens:build:watch": "yarn --cwd design-system build:tokens:watch",
-    "prebuild": "yarn generate-icons && yarn design-tokens:build && yarn i18n:compile && generate-readmes",
+    "prebuild": "yarn generate-icons && yarn design-tokens:build && yarn i18n:compile && yarn generate-readmes",
     "prestorybook:start": "yarn prebuild",
     "storybook:build": "NODE_ENV=production build-storybook -o public -s docs/assets",
     "build": "NODE_ENV=production lerna run build --concurrency 6 --no-private",

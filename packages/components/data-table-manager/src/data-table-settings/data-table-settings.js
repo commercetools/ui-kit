@@ -57,9 +57,10 @@ const DataTableSettings = (props) => {
     props.columnManager && !props.columnManager.disableColumnManager
   );
   invariant(
-    (areDisplaySettingsEnabled || areColumnSettingsEnabled) &&
-      typeof props.onSettingsChange === 'function',
-    `ui-kit/DataTableManager: the prop "onSettingsChange" is required when the either the display settings or the column settings are enabled.`
+    areDisplaySettingsEnabled || areColumnSettingsEnabled
+      ? typeof props.onSettingsChange === 'function'
+      : true,
+    `ui-kit/DataTableManager: the prop "onSettingsChange" is required when either the display settings or the column settings are enabled.`
   );
 
   const intl = useIntl();
@@ -147,14 +148,14 @@ DataTableSettings.propTypes = {
   topBar: PropTypes.node,
   onSettingsChange: PropTypes.func,
   displaySettings: PropTypes.shape({
-    disableDisplaySettings: PropTypes,
+    disableDisplaySettings: PropTypes.bool,
     isCondensed: PropTypes.bool,
     isWrappingText: PropTypes.bool,
     primaryButton: PropTypes.element,
     secondaryButton: PropTypes.element,
   }),
   columnManager: PropTypes.shape({
-    disableColumnManager: PropTypes,
+    disableColumnManager: PropTypes.bool,
     visibleColumnKeys: PropTypes.arrayOf(PropTypes.string.isRequired),
     hideableColumns: PropTypes.arrayOf(
       PropTypes.shape({
