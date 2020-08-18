@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import invariant from 'tiny-invariant';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import {
@@ -32,6 +33,11 @@ const shouldRenderRowBottomBorder = (rowIndex, rowCount, footer) => {
 };
 
 const DataTable = (props) => {
+  invariant(
+    props.columns === undefined,
+    'ui-kit/DataTable: missing required prop "columns".'
+  );
+
   const tableRef = React.useRef();
   const columnResizingReducer = useManualColumnResizing(tableRef);
 
@@ -241,7 +247,7 @@ DataTable.propTypes = {
        */
       shouldIgnoreRowClick: PropTypes.bool,
     })
-  ).isRequired,
+  ),
   /**
    * Element to render within the `tfoot` (footer) element of the table.
    */
