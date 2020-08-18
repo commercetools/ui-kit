@@ -11,7 +11,8 @@
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
+    "generate-readme": "generate-readme ."
   },
   "files": ["dist"],
   "sideEffects": false,

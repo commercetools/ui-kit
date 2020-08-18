@@ -11,7 +11,8 @@
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
+    "generate-readme": "generate-readme ."
   },
   "files": ["dist"],
   "sideEffects": false,
@@ -40,7 +41,8 @@
     "lodash": "4.17.20",
     "prop-types": "15.7.2",
     "react-beautiful-dnd": "13.0.0",
-    "react-required-if": "1.0.3"
+    "react-required-if": "1.0.3",
+    "tiny-invariant": "1.1.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
