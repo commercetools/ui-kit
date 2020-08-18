@@ -87,7 +87,7 @@ const useManualColumnResizing = (tableRef) => {
     const renderedColumnMeasurements = [];
     state.tableRef.current.querySelectorAll('th').forEach((header) => {
       renderedColumnMeasurements.push({
-        key: header.getAttribute('data-testid').split(/-(.+)/)[1],
+        key: header.getAttribute('data-id'),
         width: header.getBoundingClientRect().width,
       });
     });
