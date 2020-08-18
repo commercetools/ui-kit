@@ -301,7 +301,7 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
           const unionValues = propInfo.type.value as ReactComponentPropType[];
           const combinedUnionValues = unionValues
             .map((union) => union.name)
-            .join('|');
+            .join('\\|');
           propTypeNode = [inlineCode(`<${combinedUnionValues}>`)];
           break;
         }

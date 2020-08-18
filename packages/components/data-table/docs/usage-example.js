@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataTable } from '@commercetools-uikit/data-table';
+import DataTable from '@commercetools-uikit/data-table';
 
 const rows = [
   { id: 'parasite', title: 'Parasite', country: 'South Korea' },
