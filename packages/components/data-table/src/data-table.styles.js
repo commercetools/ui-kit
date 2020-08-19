@@ -28,6 +28,8 @@ const getDisabledSelfContainmentStyles = (props) => {
 };
 
 const TableContainer = styled.div`
+  position: relative;
+  z-index: 0;
   overflow-x: auto;
 
   ${(props) =>
@@ -42,12 +44,13 @@ const TableContainer = styled.div`
       user-select: none;
     }`}
 
+    ${(props) =>
+      props.resizedTotalWidth ? `width: ${props.resizedTotalWidth}px;` : ''}
+
   ${getDisabledSelfContainmentStyles}
 `;
 
 const TableGrid = styled.table`
-  position: relative;
-  z-index: 0;
   display: grid;
   /* stylelint-disable function-whitespace-after */
   grid-template-columns: ${(props) =>

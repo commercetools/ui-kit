@@ -28,6 +28,7 @@ const initialState = (tableRef) => ({
   initialColWidth: undefined,
   initialMousePosition: undefined,
   columnBeingResized: undefined,
+  hasBeenResized: false,
   sizes: undefined,
   tableRef,
 });
@@ -58,6 +59,7 @@ function reducer(state, action) {
         initialColWidth: undefined,
         initialMousePosition: undefined,
         columnBeingResized: undefined,
+        hasBeenResized: true,
       };
     default:
       throw new Error(
@@ -135,7 +137,14 @@ const useManualColumnResizing = (tableRef) => {
   const getIsAnyColumnBeingResized = () =>
     state.columnBeingResized !== undefined;
 
-  const getHasTableBeenResized = () => !!state.sizes;
+  const getHasTableBeenResized = () => state.hasBeenResized;
+
+  const getTotalResizedTableWidth = () => {
+    if (!state.hasBeenResized || !state.sizes) {
+      return -1;
+    }
+    return state.sizes.reduce((a, b) => a + b, 0);
+  };
 
   const reset = () => {
     state.tableRef.current.style.gridTemplateColumns = '';
@@ -145,16 +154,20 @@ const useManualColumnResizing = (tableRef) => {
     });
   };
 
+  const getSizes = () => state.sizes;
+
   React.useDebugValue(state);
 
   return {
     reset,
+    getSizes,
     startResizing,
     onDragResizing,
     finishResizing,
     getHasTableBeenResized,
     getIsColumnBeingResized,
     getIsAnyColumnBeingResized,
+    getTotalResizedTableWidth,
   };
 };
 
