@@ -1698,12 +1698,12 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@formatjs/cli@2.7.3":
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/@formatjs/cli/-/cli-2.7.3.tgz#7c57edee5335617c332a8c81012ca3657ed5e994"
-  integrity sha512-lSzm6E+Q/zwI7h4K1R8ZFZcr+iNkqKyeD5xFoUDBODotJ1oheBsb6dYDMZlK6k8OufkxH1ArPtu9/0pfmW40oQ==
+"@formatjs/cli@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@formatjs/cli/-/cli-2.7.5.tgz#af9566085880d1ce05f3363a15d97d0d6e55866c"
+  integrity sha512-u8CdXRMAyYgl9OCgC79O9h1RCLr334Ept4+UPpnWF9RT6bKZ6tl0RIfeGYMWM2nrzcAmmVRj2+v0wRc0YjfBuQ==
   dependencies:
-    "@formatjs/ts-transformer" "^2.7.1"
+    "@formatjs/ts-transformer" "^2.7.3"
     "@types/json-stable-stringify" "^1.0.32"
     "@types/lodash" "^4.14.150"
     "@types/loud-rejection" "^2.0.0"
@@ -1712,7 +1712,7 @@
     commander "5.1.0"
     fast-glob "^3.2.4"
     fs-extra "^9.0.0"
-    intl-messageformat-parser "^5.4.0"
+    intl-messageformat-parser "^5.4.2"
     json-stable-stringify "^1.0.1"
     lodash "^4.17.15"
     loud-rejection "^2.2.0"
@@ -1754,6 +1754,13 @@
   dependencies:
     "@formatjs/intl-utils" "^3.8.3"
 
+"@formatjs/intl-numberformat@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-5.5.0.tgz#d4a7b138f8a5c385ff1eb2b676334a4006fbdd69"
+  integrity sha512-cI4NM94XFpanT/8pjrHa9jwk84kIeJfOreaMuYkSzDVdsO/6ErII2DL1Fawn2ZtHY3eSwv5A/l/CatuUuEykKQ==
+  dependencies:
+    "@formatjs/intl-utils" "^3.8.4"
+
 "@formatjs/intl-relativetimeformat@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-relativetimeformat/-/intl-relativetimeformat-7.1.1.tgz#03a6ea5a75ab9c3074eef9976a7add1c851d6ffc"
@@ -1768,12 +1775,27 @@
   dependencies:
     emojis-list "^3.0.0"
 
+"@formatjs/intl-utils@^3.8.4":
+  version "3.8.4"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-utils/-/intl-utils-3.8.4.tgz#291baac91001db428fc3275c515a3e40fbe95945"
+  integrity sha512-j5C6NyfKevIxsfLK8KwO1C0vvP7k1+h4A9cFpc+cr6mEwCc1sPkr17dzh0Ke6k9U5pQccAQoXdcNBl3IYa4+ZQ==
+  dependencies:
+    emojis-list "^3.0.0"
+
 "@formatjs/ts-transformer@^2.7.1":
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/@formatjs/ts-transformer/-/ts-transformer-2.7.1.tgz#a3d5ddef92b85701ffb4fd416e81a604a807df7c"
   integrity sha512-Z5HGtKJ+rxTxpQ5niCogmTSbltdYJXHfpX99VnDJqt9g9W89eUsfRf7AJ3U1ItvBI+6+lGLzYIHoUuVkURPrBA==
   dependencies:
     intl-messageformat-parser "^5.4.0"
+    typescript "^3.8"
+
+"@formatjs/ts-transformer@^2.7.3":
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/ts-transformer/-/ts-transformer-2.7.3.tgz#0c2f2dd315d53b24701b9af550c78545c25f6f4f"
+  integrity sha512-wRFCWrL8ToaxUnm9rpPDDJ/I99VCCa1Ycj3bS7Uu86LObHs4kDgmc8CPiw7bBDEiPb/ZVwbpI2POXx+XCOU8rw==
+  dependencies:
+    intl-messageformat-parser "^5.4.2"
     typescript "^3.8"
 
 "@hapi/address@2.x.x":
@@ -10308,6 +10330,13 @@ intl-messageformat-parser@^5.4.0:
   integrity sha512-nZjAcoCfJ4ru7Lop7DWmR4Gl1nZEcDly3G43wOZkMEHVJP1kpGtyfJvi3+moUH0V9CIspRf6Fv1sP1Z2S0SbsA==
   dependencies:
     "@formatjs/intl-numberformat" "^5.4.1"
+
+intl-messageformat-parser@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-5.4.2.tgz#d8b106458798ccd81e79d8d52c6f97f3a4124356"
+  integrity sha512-VHu6UWgWLJykaSeI1M2DpZMVRLuGCOV91i5I81xnJuAI0MKHP7ZJ3my5naOQkzG10ris3hBr+o5RElF1wQ5IXA==
+  dependencies:
+    "@formatjs/intl-numberformat" "^5.5.0"
 
 intl-messageformat@^9.2.3:
   version "9.2.3"
