@@ -92,7 +92,7 @@
     "@storybook/theming": "5.3.19",
     "@svgr/core": "5.4.0",
     "@svgr/plugin-jsx": "5.4.0",
-    "@svgr/plugin-svgo": "5.0.1",
+    "@svgr/plugin-svgo": "5.4.0",
     "@testing-library/jest-dom": "5.11.3",
     "@testing-library/react": "10.4.8",
     "@testing-library/react-hooks": "3.4.1",
