@@ -330,7 +330,7 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
             inlineCode(
               (propInfo.type.value as { value: string }[])
                 .map((enumValue) => enumValue.value)
-                .join(' | ')
+                .join(' \\| ')
             ),
           ];
           break;
