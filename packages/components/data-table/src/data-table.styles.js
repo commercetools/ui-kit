@@ -28,6 +28,8 @@ const getDisabledSelfContainmentStyles = (props) => {
 };
 
 const TableContainer = styled.div`
+  position: relative;
+  z-index: 0;
   overflow-x: auto;
 
   ${(props) =>
@@ -49,8 +51,6 @@ const TableContainer = styled.div`
 `;
 
 const TableGrid = styled.table`
-  position: relative;
-  z-index: 0;
   display: grid;
   /* stylelint-disable function-whitespace-after */
   grid-template-columns: ${(props) =>
