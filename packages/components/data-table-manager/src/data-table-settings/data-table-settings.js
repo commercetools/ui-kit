@@ -1,21 +1,25 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import requiredIf from 'react-required-if';
+import invariant from 'tiny-invariant';
 import { useIntl } from 'react-intl';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
+import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import DensityManager from './density-manager';
+import {
+  DENSITY_COMPACT,
+  SHOW_HIDE_ON_DEMAND,
+} from './density-manager/constants';
 import ColumnManager from './column-manager';
 import { SelectContainer } from './data-table-settings-panel.styles';
-import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import messages from './messages';
 
 export const getDropdownOptions = ({
-  isColumnManagerEnabled,
-  isDisplaySettingsEnabled,
+  areColumnSettingsEnabled,
+  areDisplaySettingsEnabled,
   formatMessage,
 }) => [
-  ...(isColumnManagerEnabled
+  ...(areColumnSettingsEnabled
     ? [
         {
           value: COLUMN_MANAGER,
@@ -23,7 +27,7 @@ export const getDropdownOptions = ({
         },
       ]
     : []),
-  ...(isDisplaySettingsEnabled
+  ...(areDisplaySettingsEnabled
     ? [
         {
           value: DISPLAY_SETTINGS,
@@ -46,12 +50,25 @@ export const getSelectedColumns = (visibleColumnsKeys = [], mappedColumns) =>
   visibleColumnsKeys.map((columnKey) => mappedColumns[columnKey]);
 
 const DataTableSettings = (props) => {
+  const areDisplaySettingsEnabled = Boolean(
+    props.displaySettings && !props.displaySettings.disableDisplaySettings
+  );
+  const areColumnSettingsEnabled = Boolean(
+    props.columnManager && !props.columnManager.disableColumnManager
+  );
+  invariant(
+    areDisplaySettingsEnabled || areColumnSettingsEnabled
+      ? typeof props.onSettingsChange === 'function'
+      : true,
+    `ui-kit/DataTableManager: the prop "onSettingsChange" is required when either the display settings or the column settings are enabled.`
+  );
+
   const intl = useIntl();
   const [openedPanelId, setOpenedPanelId] = useState(null);
 
   const dropdownOptions = getDropdownOptions({
-    isColumnManagerEnabled: !props.columnManager.disableColumnManager,
-    isDisplaySettingsEnabled: !props.displaySettings.disableDisplaySettings,
+    areDisplaySettingsEnabled,
+    areColumnSettingsEnabled,
     formatMessage: intl.formatMessage,
   });
 
@@ -87,19 +104,18 @@ const DataTableSettings = (props) => {
       {openedPanelId === DISPLAY_SETTINGS && (
         <DensityManager
           data-testid={DISPLAY_SETTINGS}
-          {...props.displaySettings}
-          isDensityManagerOpenDefault={true}
+          {...(props.displaySettings || {})}
           onClose={handleSettingsPanelChange}
-          onDensityDisplayChange={() => {
+          onDensityDisplayChange={(event) => {
             props.onSettingsChange(
               UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE,
-              !props.displaySettings.isCondensed
+              event.target.value === DENSITY_COMPACT
             );
           }}
-          onTextWrappingChange={() => {
+          onTextWrappingChange={(event) => {
             props.onSettingsChange(
               UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE,
-              !props.displaySettings.isWrappingText
+              event.target.value === SHOW_HIDE_ON_DEMAND
             );
           }}
         />
@@ -108,7 +124,7 @@ const DataTableSettings = (props) => {
       {openedPanelId === COLUMN_MANAGER && (
         <ColumnManager
           data-testid={COLUMN_MANAGER}
-          {...props.columnManager}
+          {...(props.columnManager || {})}
           availableColumns={props.columnManager.hideableColumns}
           selectedColumns={selectedColumns}
           onClose={handleSettingsPanelChange}
@@ -130,57 +146,30 @@ const DataTableSettings = (props) => {
 DataTableSettings.displayName = 'DataTableSettings';
 DataTableSettings.propTypes = {
   topBar: PropTypes.node,
-  onSettingsChange: requiredIf(
-    PropTypes.func,
-    (props) =>
-      !props.columnManager.disableColumnManager ||
-      !props.displaySettings.disableDisplaySettings
-  ),
+  onSettingsChange: PropTypes.func,
   displaySettings: PropTypes.shape({
-    disableDisplaySettings: PropTypes.bool.isRequired,
+    disableDisplaySettings: PropTypes.bool,
     isCondensed: PropTypes.bool,
-    isWrappingText: requiredIf(
-      PropTypes.bool,
-      (props) =>
-        props.displaySettings && !props.displaySettings.disableDisplaySettings
-    ),
+    isWrappingText: PropTypes.bool,
     primaryButton: PropTypes.element,
     secondaryButton: PropTypes.element,
-  }).isRequired,
+  }),
   columnManager: PropTypes.shape({
-    disableColumnManager: PropTypes.bool.isRequired,
-    visibleColumnKeys: requiredIf(
-      PropTypes.arrayOf(PropTypes.string),
-      (props) =>
-        props.columnManager && !props.columnManager.disableColumnManager
+    disableColumnManager: PropTypes.bool,
+    visibleColumnKeys: PropTypes.arrayOf(PropTypes.string.isRequired),
+    hideableColumns: PropTypes.arrayOf(
+      PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        label: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+          .isRequired,
+      })
     ),
-    hideableColumns: requiredIf(
-      PropTypes.arrayOf(
-        PropTypes.shape({
-          key: PropTypes.string.isRequired,
-          label: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
-            .isRequired,
-        })
-      ),
-      (props) =>
-        props.columnManager && !props.columnManager.disableColumnManager
-    ),
-    areHiddenColumnsSearchable: requiredIf(
-      PropTypes.bool,
-      (props) =>
-        props.columnManager && !props.columnManager.disableColumnManager
-    ),
-    searchHiddenColumns: requiredIf(
-      PropTypes.func,
-      (props) =>
-        props.columnManager &&
-        !props.columnManager.disableColumnManager &&
-        props.columnManager.areHiddenColumnsSearchable
-    ),
+    areHiddenColumnsSearchable: PropTypes.bool,
+    searchHiddenColumns: PropTypes.func,
     searchHiddenColumnsPlaceholder: PropTypes.string,
     primaryButton: PropTypes.element,
     secondaryButton: PropTypes.element,
-  }).isRequired,
+  }),
 };
 
 export default DataTableSettings;

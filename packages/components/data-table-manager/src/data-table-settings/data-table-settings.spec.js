@@ -43,8 +43,8 @@ describe('DataTableSettings', () => {
 
     it('display settings enabled', () => {
       const options = getDropdownOptions({
-        isColumnManagerEnabled: true,
-        isDisplaySettingsEnabled: true,
+        areColumnSettingsEnabled: true,
+        areDisplaySettingsEnabled: true,
         formatMessage,
       });
 
@@ -59,8 +59,8 @@ describe('DataTableSettings', () => {
 
     it('display settings disabled', () => {
       const options = getDropdownOptions({
-        isColumnManagerEnabled: true,
-        isDisplaySettingsEnabled: false,
+        areColumnSettingsEnabled: true,
+        areDisplaySettingsEnabled: false,
         formatMessage,
       });
 
@@ -75,8 +75,8 @@ describe('DataTableSettings', () => {
 
     it('column manager enabled', () => {
       const options = getDropdownOptions({
-        isColumnManagerEnabled: true,
-        isDisplaySettingsEnabled: true,
+        areColumnSettingsEnabled: true,
+        areDisplaySettingsEnabled: true,
         formatMessage,
       });
 
@@ -91,8 +91,8 @@ describe('DataTableSettings', () => {
 
     it('column manager disabled', () => {
       const options = getDropdownOptions({
-        isColumnManagerEnabled: false,
-        isDisplaySettingsEnabled: true,
+        areColumnSettingsEnabled: false,
+        areDisplaySettingsEnabled: true,
         formatMessage,
       });
 

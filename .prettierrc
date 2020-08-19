@@ -1,14 +1,15 @@
 {
   "trailingComma": "es5",
   "singleQuote": true,
+  "parser": "babel",
   "overrides": [
     {
       "files": "*.mdx",
       "options": { "parser": "markdown" }
     },
     {
-      "files": "*.js",
-      "options": { "parser": "babel" }
+      "files": "*.ts",
+      "options": { "parser": "typescript" }
     }
   ]
 }

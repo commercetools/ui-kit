@@ -99,6 +99,26 @@ const parseMarkdownFragmentToAST = (fragmentContent: VFileCompatible) => {
   return fragmentAST.children;
 };
 const embeddedDefaultValueRegex = /@@defaultValue@@:\s(.*)$/;
+const parseEmbeddedDefaultValue = (
+  originalDescription: string,
+  nextPropInfo: ReactComponentProps
+): ReactComponentProps => {
+  const hasEmbeddedDefaultValue = originalDescription.match(
+    embeddedDefaultValueRegex
+  );
+  if (hasEmbeddedDefaultValue) {
+    const [, value] = hasEmbeddedDefaultValue;
+    nextPropInfo.description = originalDescription.replace(
+      embeddedDefaultValueRegex,
+      ''
+    );
+    nextPropInfo.defaultValue = {
+      value,
+      computed: false,
+    };
+  }
+  return nextPropInfo;
+};
 // Recursive function to normalize the nested prop types in a flat object shape.
 // This is important to then render in the table each nested array/object element
 // in a separate row.
@@ -119,26 +139,15 @@ const normalizeReactProps = (
             arrayShapeValue
           ).reduce((normalizedShapeValues, [shapePropName, shapePropInfo]) => {
             const originalDescription = shapePropInfo.description ?? '';
-            const nextPropInfo: ReactComponentProps = {
-              // Here use the nested prop type definition.
-              type: shapePropInfo,
-              required: shapePropInfo.required ?? false,
-              description: originalDescription,
-            };
-            const hasEmbeddedDefaultValue = originalDescription.match(
-              embeddedDefaultValueRegex
+            const nextPropInfo: ReactComponentProps = parseEmbeddedDefaultValue(
+              originalDescription,
+              {
+                // Here use the nested prop type definition.
+                type: shapePropInfo,
+                required: shapePropInfo.required ?? false,
+                description: originalDescription,
+              }
             );
-            if (hasEmbeddedDefaultValue) {
-              const [, value] = hasEmbeddedDefaultValue;
-              nextPropInfo.description = originalDescription.replace(
-                embeddedDefaultValueRegex,
-                ''
-              );
-              nextPropInfo.defaultValue = {
-                value,
-                computed: false,
-              };
-            }
             return {
               ...normalizedShapeValues,
               ...normalizeReactProps(
@@ -199,21 +208,28 @@ const normalizeReactProps = (
         [name: string]: ReactComponentPropType;
       };
       const normalizedShapeProps = Object.entries(shapeValue).reduce(
-        (normalizedShapeValues, [shapePropName, shapePropInfo]) => ({
-          ...normalizedShapeValues,
-          ...normalizeReactProps(
-            // The name of the prop has the "dot" notation (`.`),
-            // meaning that it's the property of an object.
-            `${normalizedPropName}.${shapePropName}`,
+        (normalizedShapeValues, [shapePropName, shapePropInfo]) => {
+          const originalDescription = shapePropInfo.description ?? '';
+          const nextPropInfo: ReactComponentProps = parseEmbeddedDefaultValue(
+            originalDescription,
             {
               // Here use the nested prop type definition.
               type: shapePropInfo,
               required: shapePropInfo.required ?? false,
-              description: shapePropInfo.description ?? '',
+              description: originalDescription,
               defaultValue: componentPropsInfo.defaultValue,
             }
-          ),
-        }),
+          );
+          return {
+            ...normalizedShapeValues,
+            ...normalizeReactProps(
+              // The name of the prop has the "dot" notation (`.`),
+              // meaning that it's the property of an object.
+              `${normalizedPropName}.${shapePropName}`,
+              nextPropInfo
+            ),
+          };
+        },
         {}
       );
       return {
@@ -445,9 +461,12 @@ export async function transformDocument(
   });
 }
 
-export async function generate(packagePath: string, flags: CommandFlags) {
+export async function generate(
+  relativePackagePath: string,
+  flags: CommandFlags
+) {
   const options: GeneratorReadmeOptions = {
-    packagePath,
+    packagePath: path.resolve(process.cwd(), relativePackagePath),
     dryRun: flags.dryRun,
   };
 
