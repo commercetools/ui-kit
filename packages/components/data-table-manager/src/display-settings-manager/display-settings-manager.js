@@ -41,10 +41,10 @@ const DensityManager = (props) => {
             />
             <AccessibleHiden>
               <label htmlFor="text-wrapping-0">
-                {'Select radio option: display full text'}
+                Select radio option: display full text
               </label>
               <label htmlFor="text-wrapping-1">
-                {'Select radio option: display full previews'}
+                Select radio option: display full previews
               </label>
             </AccessibleHiden>
             <RadioInput.Group
@@ -71,10 +71,10 @@ const DensityManager = (props) => {
             />
             <AccessibleHiden>
               <label htmlFor="density-display-0">
-                {'Select radio option: density default'}
+                Select radio option: density default
               </label>
               <label htmlFor="density-display-1">
-                {'Select radio option: density compact'}
+                Select radio option: density compact
               </label>
             </AccessibleHiden>
             <RadioInput.Group

@@ -97,7 +97,7 @@ const DataTableSettings = (props) => {
           <SelectContainer>
             <AccessibleHiden>
               <label htmlFor="table-settings-dropdown">
-                {'Open table manager dropdown'}
+                Open table manager dropdown
               </label>
             </AccessibleHiden>
             <SelectInput
