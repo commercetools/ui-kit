@@ -15,8 +15,11 @@ const calculateNewSize = (
 };
 
 const setColumnWidth = (columns, position, value) => {
+  // columns => comes from state.sizes which reflects component's state
+  // any update to the columns results in updating the state
+
   // eslint-disable-next-line no-param-reassign
-  columns[position] = value;
+  columns[position] = { ...columns[position], width: value };
 
   return columns;
 };
@@ -85,9 +88,13 @@ const useManualColumnResizing = (tableRef) => {
   // if the table element has been rendered and we haven't yet measured the columns
   if (state.tableRef.current && !state.sizes) {
     const renderedColumnMeasurements = [];
-    state.tableRef.current.querySelectorAll('th').forEach((header, index) => {
-      renderedColumnMeasurements[index] = header.getBoundingClientRect().width;
+    state.tableRef.current.querySelectorAll('th').forEach((header) => {
+      renderedColumnMeasurements.push({
+        key: header.getAttribute('data-id'),
+        width: header.getBoundingClientRect().width,
+      });
     });
+
     dispatch({
       type: 'registerColumnMeasurements',
       payload: {
@@ -115,11 +122,10 @@ const useManualColumnResizing = (tableRef) => {
         state.initialMousePosition,
         event.clientX
       );
-
       const newColumnsSizes = setColumnWidth(state.sizes, columnIndex, width);
 
       state.tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
-        newColumnsSizes
+        newColumnsSizes.map((newColumnsSize) => newColumnsSize.width)
       );
     });
 
@@ -143,7 +149,7 @@ const useManualColumnResizing = (tableRef) => {
     if (!state.hasBeenResized || !state.sizes) {
       return -1;
     }
-    return state.sizes.reduce((a, b) => a + b, 0);
+    return state.sizes.reduce((a, b) => a + b.width, 0);
   };
 
   const reset = () => {

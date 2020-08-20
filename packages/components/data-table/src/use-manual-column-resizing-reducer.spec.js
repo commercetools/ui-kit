@@ -5,7 +5,8 @@ const createMockedTableRef = (headersWidths) => {
   return {
     current: {
       querySelectorAll: () => {
-        return headersWidths.map((item) => ({
+        return headersWidths.map((item, index) => ({
+          getAttribute: () => index,
           getBoundingClientRect: () => ({
             width: item,
           }),
@@ -59,7 +60,11 @@ describe('useManualColumnResizing', () => {
 
     expect(result.current.getHasTableBeenResized()).toBe(false);
     expect(result.current.getIsAnyColumnBeingResized()).toBe(false);
-    expect(result.current.getSizes()).toStrictEqual([50, 100, 200]);
+    expect(result.current.getSizes().map((size) => size.width)).toStrictEqual([
+      50,
+      100,
+      200,
+    ]);
   });
 
   it('should correctly register the start of a resize', () => {
@@ -114,7 +119,11 @@ describe('useManualColumnResizing', () => {
     expect(result.current.getIsColumnBeingResized(1)).toBe(true);
 
     // assert the second column is now 50px larger
-    expect(result.current.getSizes()).toStrictEqual([50, 100 + 50, 200]);
+    expect(result.current.getSizes().map((size) => size.width)).toStrictEqual([
+      50,
+      100 + 50,
+      200,
+    ]);
   });
 
   it('should correctly register finish of dragging', () => {
@@ -139,14 +148,16 @@ describe('useManualColumnResizing', () => {
 
     let sizes;
     act(() => {
-      sizes = result.current.finishResizing();
+      sizes = result.current.finishResizing().map((size) => size.width);
     });
 
     // assert the second column is now 50px larger
     expect(sizes).toStrictEqual([50, 100 + 50, 200]);
 
     // assert the outputs are consistent
-    expect(result.current.getSizes()).toStrictEqual(sizes);
+    expect(result.current.getSizes().map((size) => size.width)).toStrictEqual(
+      sizes
+    );
 
     // assert no columns are being resized anymore
     expect(result.current.getIsAnyColumnBeingResized()).toBe(false);
@@ -192,7 +203,11 @@ describe('useManualColumnResizing', () => {
 
     expect(result.current.getHasTableBeenResized()).toBe(false);
     expect(result.current.getIsAnyColumnBeingResized()).toBe(false);
-    expect(result.current.getSizes()).toStrictEqual([50, 100, 200]);
+    expect(result.current.getSizes().map((size) => size.width)).toStrictEqual([
+      50,
+      100,
+      200,
+    ]);
   });
 
   afterAll(() => {

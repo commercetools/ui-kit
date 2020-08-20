@@ -283,6 +283,8 @@ DataTable.propTypes = {
    * A callback function, called when a column has been resized.
    * Use this callback to get the resized column widths and save them, to be able to restore the
    * value once the user comes back to the page.
+   * <br>
+   * Signature: `([{key: string, width: number} ...]) => func()`
    */
   onColumnResized: PropTypes.func,
   /**
