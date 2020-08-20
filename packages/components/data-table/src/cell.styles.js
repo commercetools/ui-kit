@@ -98,7 +98,7 @@ const CellInner = styled.div`
   ${getPaddingStyle}
   ${getCellInnerStyles}
 
-  /* The following overflow rule should only enabled upon manual column resizing
+  /* The following overflow rule should only be enabled upon manual column resizing
   // otherwise it will change the way css-grid automatically allocates space for the cells of the table
   // preferring to clip the cells instead and adding horizontal scrollbar to the table container
   */
