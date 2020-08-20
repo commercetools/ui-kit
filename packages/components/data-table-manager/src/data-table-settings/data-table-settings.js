@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import invariant from 'tiny-invariant';
 import { useIntl } from 'react-intl';
 import styled from '@emotion/styled';
-import AccessibleHiden from '@commercetools-uikit/accessible-hidden';
+import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
@@ -95,11 +95,11 @@ const DataTableSettings = (props) => {
         <div>{props.topBar}</div>
         {dropdownOptions.length > 0 && (
           <SelectContainer>
-            <AccessibleHiden>
+            <AccessibleHidden>
               <label htmlFor="table-settings-dropdown">
                 Open table manager dropdown
               </label>
-            </AccessibleHiden>
+            </AccessibleHidden>
             <SelectInput
               id="table-settings-dropdown"
               // the dropdown always shows the placeholder as selecting an option
