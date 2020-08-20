@@ -12,6 +12,7 @@ const createTestProps = (props) => ({
   availableColumns: [],
   selectedColumns: [],
   onUpdateColumns: jest.fn(),
+  onClose: jest.fn(),
   ...props,
 });
 
