@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "10.30.3",
+  "version": "10.30.4",
   "description": "",
   "private": false,
   "publishConfig": {
@@ -30,8 +30,8 @@
     "@commercetools-uikit/collapsible-motion": "10.30.1",
     "@commercetools-uikit/collapsible-panel": "10.30.1",
     "@commercetools-uikit/constraints": "10.30.1",
-    "@commercetools-uikit/data-table": "10.30.3",
-    "@commercetools-uikit/data-table-manager": "10.23.3",
+    "@commercetools-uikit/data-table": "10.30.4",
+    "@commercetools-uikit/data-table-manager": "10.23.4",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/field-errors": "10.30.1",
     "@commercetools-uikit/field-label": "10.30.1",
