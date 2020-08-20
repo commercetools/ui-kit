@@ -15,12 +15,7 @@ const DataCell = (props) => {
     ? RightTriangleFilledIcon
     : RightTriangleLinearIcon;
   return (
-    <BaseCell
-      shouldClipContent={
-        props.isTruncated && !props.shouldRenderResizingIndicator
-      }
-      shouldRenderBottomBorder={props.shouldRenderBottomBorder}
-    >
+    <BaseCell shouldRenderBottomBorder={props.shouldRenderBottomBorder}>
       <CellInner
         onClick={props.onCellClick}
         isCondensed={props.isCondensed}
