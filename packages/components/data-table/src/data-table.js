@@ -119,7 +119,10 @@ const DataTable = (props) => {
                 row={row}
                 key={row.id}
                 rowIndex={rowIndex}
-                shouldClipContent={hasTableBeenResized}
+                shouldClipContent={
+                  columnResizingReducer.getIsAnyColumnBeingResized() ||
+                  hasTableBeenResized
+                }
                 shouldRenderBottomBorder={shouldRenderRowBottomBorder(
                   rowIndex,
                   props.rows.length,
