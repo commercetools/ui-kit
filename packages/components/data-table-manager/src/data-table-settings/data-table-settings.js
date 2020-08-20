@@ -2,17 +2,20 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import invariant from 'tiny-invariant';
 import { useIntl } from 'react-intl';
+import styled from '@emotion/styled';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
-import DensityManager from './density-manager';
-import {
+import DisplaySettingsManager, {
   DENSITY_COMPACT,
   SHOW_HIDE_ON_DEMAND,
-} from './density-manager/constants';
-import ColumnManager from './column-manager';
-import { SelectContainer } from './data-table-settings-panel.styles';
+} from '../display-settings-manager';
+import ColumnSettingsManager from '../column-settings-manager';
 import messages from './messages';
+
+const SelectContainer = styled.div`
+  width: 200px;
+`;
 
 export const getDropdownOptions = ({
   areColumnSettingsEnabled,
@@ -102,7 +105,7 @@ const DataTableSettings = (props) => {
         )}
       </Spacings.Inline>
       {openedPanelId === DISPLAY_SETTINGS && (
-        <DensityManager
+        <DisplaySettingsManager
           data-testid={DISPLAY_SETTINGS}
           {...(props.displaySettings || {})}
           onClose={handleSettingsPanelChange}
@@ -122,7 +125,7 @@ const DataTableSettings = (props) => {
       )}
 
       {openedPanelId === COLUMN_MANAGER && (
-        <ColumnManager
+        <ColumnSettingsManager
           data-testid={COLUMN_MANAGER}
           {...(props.columnManager || {})}
           availableColumns={props.columnManager.hideableColumns}

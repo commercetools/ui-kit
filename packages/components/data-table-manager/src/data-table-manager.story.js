@@ -2,15 +2,14 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, withKnobs } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
-import DataTableManager from './data-table-manager';
-import { UPDATE_ACTIONS } from './constants';
-import DataTable from '../../data-table';
-import CheckboxInput from '../../inputs/checkbox-input';
+import DataTable from '@commercetools-uikit/data-table';
+import CheckboxInput from '@commercetools-uikit/checkbox-input';
+import { useRowSelection, useSorting } from '@commercetools-uikit/hooks';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Readme from '../README.md';
-import { useRowSelection, useSorting } from '.';
-// for testing only
-import PrimaryButton from '../../buttons/primary-button';
-import SecondaryButton from '../../buttons/secondary-button';
+import { UPDATE_ACTIONS } from './constants';
+import DataTableManager from './data-table-manager';
 
 const items = [
   {

@@ -1,8 +1,11 @@
 import React from 'react';
-import { screen, render } from '../../../../../../test/test-utils';
-import PrimaryButton from '../../../../buttons/primary-button';
-import SecondaryButton from '../../../../buttons/secondary-button';
-import { ColumnManager, handleColumnsUpdate } from './column-manager';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import { screen, render } from '../../../../../test/test-utils';
+import {
+  ColumnSettingsManager,
+  handleColumnsUpdate,
+} from './column-settings-manager';
 import { HIDDEN_COLUMNS_PANEL, SELECTED_COLUMNS_PANEL } from './constants';
 
 const createTestProps = (props) => ({
@@ -12,7 +15,7 @@ const createTestProps = (props) => ({
   ...props,
 });
 
-describe('ColumnManager', () => {
+describe('ColumnSettingsManager', () => {
   it('should render visible columns', () => {
     const props = createTestProps({
       selectedColumns: [
@@ -29,7 +32,7 @@ describe('ColumnManager', () => {
       ],
     });
 
-    render(<ColumnManager {...props} />);
+    render(<ColumnSettingsManager {...props} />);
 
     expect(screen.getByText(/Column 1/i)).toBeInTheDocument();
   });
@@ -54,7 +57,7 @@ describe('ColumnManager', () => {
         searchHiddenColumns: jest.fn(),
       });
 
-      render(<ColumnManager {...props} />);
+      render(<ColumnSettingsManager {...props} />);
 
       expect(screen.getByText(/search/i)).toBeInTheDocument();
     });
@@ -68,7 +71,7 @@ describe('ColumnManager', () => {
           <PrimaryButton label={primaryButtonLabel} onClick={jest.fn()} />
         ),
       });
-      render(<ColumnManager {...props} />);
+      render(<ColumnSettingsManager {...props} />);
       expect(screen.getByText(primaryButtonLabel)).toBeInTheDocument();
     });
 
@@ -79,7 +82,7 @@ describe('ColumnManager', () => {
           <SecondaryButton label={secondaryButtonLabel} onClick={jest.fn()} />
         ),
       });
-      render(<ColumnManager {...props} />);
+      render(<ColumnSettingsManager {...props} />);
       expect(screen.getByText(secondaryButtonLabel)).toBeInTheDocument();
     });
   });

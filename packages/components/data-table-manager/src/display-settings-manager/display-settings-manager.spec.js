@@ -1,14 +1,14 @@
 import React from 'react';
-import { screen, render } from '../../../../../../test/test-utils';
-import DensityManager from '.';
-import PrimaryButton from '../../../../buttons/primary-button';
-import SecondaryButton from '../../../../buttons/secondary-button';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import { screen, render } from '../../../../../test/test-utils';
 import {
   WRAPPED_TEXT_VISIBLE,
   SHOW_HIDE_ON_DEMAND,
   DENSITY_DEFAULT,
   DENSITY_COMPACT,
 } from './constants';
+import DisplaySettingsManager from './display-settings-manager';
 
 const createTestProps = (customProps) => ({
   isCondensed: false,
@@ -19,10 +19,10 @@ const createTestProps = (customProps) => ({
   ...customProps,
 });
 
-describe('DensityManager', () => {
+describe('DisplaySettingsManager', () => {
   it('not wrapping text', () => {
     const props = createTestProps();
-    const { container } = render(<DensityManager {...props} />);
+    const { container } = render(<DisplaySettingsManager {...props} />);
     expect(
       container.querySelector(`[value='${WRAPPED_TEXT_VISIBLE}']`)
     ).toBeChecked();
@@ -30,7 +30,7 @@ describe('DensityManager', () => {
 
   it('wrapping text', () => {
     const props = createTestProps({ isWrappingText: true });
-    const { container } = render(<DensityManager {...props} />);
+    const { container } = render(<DisplaySettingsManager {...props} />);
     expect(
       container.querySelector(`[value='${SHOW_HIDE_ON_DEMAND}']`)
     ).toBeChecked();
@@ -38,7 +38,7 @@ describe('DensityManager', () => {
 
   it('not condensed', () => {
     const props = createTestProps();
-    const { container } = render(<DensityManager {...props} />);
+    const { container } = render(<DisplaySettingsManager {...props} />);
     expect(
       container.querySelector(`[value='${DENSITY_DEFAULT}']`)
     ).toBeChecked();
@@ -46,7 +46,7 @@ describe('DensityManager', () => {
 
   it('condensed', () => {
     const props = createTestProps({ isCondensed: true });
-    const { container } = render(<DensityManager {...props} />);
+    const { container } = render(<DisplaySettingsManager {...props} />);
     expect(
       container.querySelector(`[value='${DENSITY_COMPACT}']`)
     ).toBeChecked();
@@ -60,7 +60,7 @@ describe('DensityManager', () => {
           <PrimaryButton label={primaryButtonLabel} onClick={jest.fn()} />
         ),
       });
-      render(<DensityManager {...props} />);
+      render(<DisplaySettingsManager {...props} />);
       expect(screen.getByText(primaryButtonLabel)).toBeInTheDocument();
     });
 
@@ -71,7 +71,7 @@ describe('DensityManager', () => {
           <SecondaryButton label={secondaryButtonLabel} onClick={jest.fn()} />
         ),
       });
-      render(<DensityManager {...props} />);
+      render(<DisplaySettingsManager {...props} />);
       expect(screen.getByText(secondaryButtonLabel)).toBeInTheDocument();
     });
   });

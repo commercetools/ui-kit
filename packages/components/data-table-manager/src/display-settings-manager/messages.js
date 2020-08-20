@@ -38,9 +38,4 @@ export default defineMessages({
     description: 'Density display compact option.',
     defaultMessage: 'Compact',
   },
-  closeButtonLabel: {
-    id: 'UIKit.DataTableManager.DensityManager.closeButtonLabel',
-    description: 'Label for density manager close button.',
-    defaultMessage: 'Close',
-  },
 });
