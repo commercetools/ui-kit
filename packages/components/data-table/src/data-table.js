@@ -74,7 +74,6 @@ const DataTable = (props) => {
     <TableContainer
       maxWidth={props.maxWidth}
       isBeingResized={columnResizingReducer.getIsAnyColumnBeingResized()}
-      resizedTotalWidth={resizedTotalWidth}
       disableSelfContainment={props.disableSelfContainment}
     >
       <TableGrid
@@ -83,6 +82,7 @@ const DataTable = (props) => {
         columns={props.columns}
         maxHeight={props.maxHeight}
         disableSelfContainment={props.disableSelfContainment}
+        resizedTotalWidth={resizedTotalWidth}
       >
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <Header>
@@ -119,7 +119,10 @@ const DataTable = (props) => {
                 row={row}
                 key={row.id}
                 rowIndex={rowIndex}
-                shouldClipContent={hasTableBeenResized}
+                shouldClipContent={
+                  columnResizingReducer.getIsAnyColumnBeingResized() ||
+                  hasTableBeenResized
+                }
                 shouldRenderBottomBorder={shouldRenderRowBottomBorder(
                   rowIndex,
                   props.rows.length,
@@ -135,6 +138,7 @@ const DataTable = (props) => {
           data-testid="footer"
           isCondensed={props.isCondensed}
           horizontalCellAlignment={props.horizontalCellAlignment}
+          resizedTotalWidth={resizedTotalWidth}
         >
           {props.footer}
         </Footer>
