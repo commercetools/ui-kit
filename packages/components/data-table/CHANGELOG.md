@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.30.4
+
+### Patch Changes
+
+- [`4295bd1`](https://github.com/commercetools/ui-kit/commit/4295bd18d97b7a121de3897f15b19cd06e89903d) [#1517](https://github.com/commercetools/ui-kit/pull/1517) Thanks [@jonnybel](https://github.com/jonnybel)! - Fix last column items not getting clipped during resizing
+
 ## 10.30.3
 
 ### Patch Changes

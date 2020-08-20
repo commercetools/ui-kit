@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.23.4
+
+### Patch Changes
+
+- [`950eb3a`](https://github.com/commercetools/ui-kit/commit/950eb3a553277ac897fcb6b0ed6dbd17c17d97f1) [#1516](https://github.com/commercetools/ui-kit/pull/1516) Thanks [@emmenko](https://github.com/emmenko)! - Rewrite tests and simplify implementation
+
 ## 10.23.3
 
 ### Patch Changes
