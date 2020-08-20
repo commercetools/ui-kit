@@ -2,17 +2,21 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import invariant from 'tiny-invariant';
 import { useIntl } from 'react-intl';
+import styled from '@emotion/styled';
+import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
-import DensityManager from './density-manager';
-import {
+import DisplaySettingsManager, {
   DENSITY_COMPACT,
   SHOW_HIDE_ON_DEMAND,
-} from './density-manager/constants';
-import ColumnManager from './column-manager';
-import { SelectContainer } from './data-table-settings-panel.styles';
+} from '../display-settings-manager';
+import ColumnSettingsManager from '../column-settings-manager';
 import messages from './messages';
+
+const SelectContainer = styled.div`
+  width: 200px;
+`;
 
 export const getDropdownOptions = ({
   areColumnSettingsEnabled,
@@ -46,7 +50,7 @@ export const getMappedColumns = (columns = []) =>
     {}
   );
 
-export const getSelectedColumns = (visibleColumnsKeys = [], mappedColumns) =>
+export const getSelectedColumns = (mappedColumns, visibleColumnsKeys = []) =>
   visibleColumnsKeys.map((columnKey) => mappedColumns[columnKey]);
 
 const DataTableSettings = (props) => {
@@ -74,11 +78,13 @@ const DataTableSettings = (props) => {
 
   const handleDropdownChange = (event) => setOpenedPanelId(event.target.value);
 
-  const mappedColumns = getMappedColumns(props.columnManager.hideableColumns);
+  const mappedColumns = getMappedColumns(
+    areColumnSettingsEnabled ? props.columnManager.hideableColumns : undefined
+  );
 
   const selectedColumns = getSelectedColumns(
-    props.columnManager.visibleColumnKeys,
-    mappedColumns
+    mappedColumns,
+    areColumnSettingsEnabled ? props.columnManager.visibleColumnKeys : undefined
   );
 
   const handleSettingsPanelChange = () => setOpenedPanelId(null);
@@ -89,8 +95,13 @@ const DataTableSettings = (props) => {
         <div>{props.topBar}</div>
         {dropdownOptions.length > 0 && (
           <SelectContainer>
+            <AccessibleHidden>
+              <label htmlFor="table-settings-dropdown">
+                Open table manager dropdown
+              </label>
+            </AccessibleHidden>
             <SelectInput
-              name="table-settings-dropdown"
+              id="table-settings-dropdown"
               // the dropdown always shows the placeholder as selecting an option
               // will open the corresponding panel (column manager or display settings)
               value=""
@@ -102,8 +113,7 @@ const DataTableSettings = (props) => {
         )}
       </Spacings.Inline>
       {openedPanelId === DISPLAY_SETTINGS && (
-        <DensityManager
-          data-testid={DISPLAY_SETTINGS}
+        <DisplaySettingsManager
           {...(props.displaySettings || {})}
           onClose={handleSettingsPanelChange}
           onDensityDisplayChange={(event) => {
@@ -122,8 +132,7 @@ const DataTableSettings = (props) => {
       )}
 
       {openedPanelId === COLUMN_MANAGER && (
-        <ColumnManager
-          data-testid={COLUMN_MANAGER}
+        <ColumnSettingsManager
           {...(props.columnManager || {})}
           availableColumns={props.columnManager.hideableColumns}
           selectedColumns={selectedColumns}
