@@ -44,9 +44,6 @@ const TableContainer = styled.div`
       user-select: none;
     }`}
 
-    ${(props) =>
-      props.resizedTotalWidth ? `width: ${props.resizedTotalWidth}px;` : ''}
-
   ${getDisabledSelfContainmentStyles}
 `;
 
@@ -63,6 +60,9 @@ const TableGrid = styled.table`
     props.maxHeight && !props.disableSelfContainment
       ? `max-height: ${convertNumericDimensionToPixelValue(props.maxHeight)};`
       : ''}
+
+  ${(props) =>
+    props.resizedTotalWidth ? `max-width: ${props.resizedTotalWidth}px;` : ''}
 
   ${getDisabledSelfContainmentStyles}
 `;
