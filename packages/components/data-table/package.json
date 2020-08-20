@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/data-table",
-  "version": "10.30.2",
+  "version": "10.30.3",
   "description": "A component for rendering tabular data.",
   "main": "dist/data-table.cjs.js",
   "module": "dist/data-table.esm.js",

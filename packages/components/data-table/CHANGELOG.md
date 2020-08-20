@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.30.3
+
+### Patch Changes
+
+- [`97461e8`](https://github.com/commercetools/ui-kit/commit/97461e8abca99feebea67c84d93d56b6ab47250c) [#1506](https://github.com/commercetools/ui-kit/pull/1506) Thanks [@mohib0306](https://github.com/mohib0306)! - Update argument's type passed down to the onColumnResized callback
+
 ## 10.30.2
 
 ### Patch Changes
