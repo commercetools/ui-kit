@@ -1,5 +1,17 @@
 # @commercetools-frontend/ui-kit
 
+## 10.30.2
+
+### Patch Changes
+
+- Updated dependencies [[`2e22b63`](https://github.com/commercetools/ui-kit/commit/2e22b638848adad9d9722f6a997fd02777023c27), [`49419ac`](https://github.com/commercetools/ui-kit/commit/49419ac8b604b9c3a2d51df6f4e25af912c5f80a), [`be19296`](https://github.com/commercetools/ui-kit/commit/be19296475aff238f4ebb1c5aa8a1e3f0c8c734f), [`898fef0`](https://github.com/commercetools/ui-kit/commit/898fef027bdf29621c99d613f90d83148ad969f7)]:
+  - @commercetools-uikit/accessible-hidden@10.30.2
+  - @commercetools-uikit/avatar@10.30.2
+  - @commercetools-uikit/card@10.30.2
+  - @commercetools-uikit/collapsible@10.30.2
+  - @commercetools-uikit/data-table@10.30.2
+  - @commercetools-uikit/data-table-manager@10.23.3
+
 ## 10.30.1
 
 ### Patch Changes

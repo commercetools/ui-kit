@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.23.3
+
+### Patch Changes
+
+- [`49419ac`](https://github.com/commercetools/ui-kit/commit/49419ac8b604b9c3a2d51df6f4e25af912c5f80a) [#1509](https://github.com/commercetools/ui-kit/pull/1509) Thanks [@emmenko](https://github.com/emmenko)! - Generate README for `<DataTableManager>`. Some of the conditional prop types have been refactored to be validated on runtime using the invariant package. Furthermore, the generate-readme package has been refined to support more edge cases.
+
 ## 10.23.2
 
 ### Patch Changes
