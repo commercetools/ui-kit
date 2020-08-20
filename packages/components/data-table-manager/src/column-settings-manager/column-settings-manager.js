@@ -229,6 +229,7 @@ ColumnSettingsManager.propTypes = {
 };
 
 ColumnSettingsManager.defaultProps = {
+  availableColumns: [],
   disableHiddenColumnSearch: true,
 };
 

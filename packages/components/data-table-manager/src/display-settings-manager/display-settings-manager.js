@@ -5,6 +5,7 @@ import FieldLabel from '@commercetools-uikit/field-label';
 import Grid from '@commercetools-uikit/grid';
 import RadioInput from '@commercetools-uikit/radio-input';
 import Spacings from '@commercetools-uikit/spacings';
+import AccessibleHiden from '@commercetools-uikit/accessible-hidden';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import SettingsContainer from '../settings-container';
 import messages from './messages';
@@ -38,10 +39,19 @@ const DensityManager = (props) => {
             <FieldLabel
               title={intl.formatMessage(messages.textWrappingSubtitle)}
             />
+            <AccessibleHiden>
+              <label htmlFor="text-wrapping-0">
+                {'Select radio option: display full text'}
+              </label>
+              <label htmlFor="text-wrapping-1">
+                {'Select radio option: display full previews'}
+              </label>
+            </AccessibleHiden>
             <RadioInput.Group
-              onChange={props.onTextWrappingChange}
+              id="text-wrapping"
               name="text-wrapping"
               value={textWrappingOption}
+              onChange={props.onTextWrappingChange}
             >
               <RadioInput.Option value={WRAPPED_TEXT_VISIBLE}>
                 {intl.formatMessage(messages.textWrappingAllWrapVisibleOption)}
@@ -59,10 +69,19 @@ const DensityManager = (props) => {
             <FieldLabel
               title={intl.formatMessage(messages.densityDisplaySubtitle)}
             />
+            <AccessibleHiden>
+              <label htmlFor="density-display-0">
+                {'Select radio option: density default'}
+              </label>
+              <label htmlFor="density-display-1">
+                {'Select radio option: density compact'}
+              </label>
+            </AccessibleHiden>
             <RadioInput.Group
-              onChange={props.onDensityDisplayChange}
+              id="density-display"
               name="density-display"
               value={densityDisplayOption}
+              onChange={props.onDensityDisplayChange}
             >
               <RadioInput.Option value={DENSITY_DEFAULT}>
                 {intl.formatMessage(messages.densityDisplayDefaultOption)}

@@ -8,7 +8,6 @@ import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 const Container = styled.div`
   background-color: ${vars.colorNeutral95};
@@ -29,7 +28,7 @@ const SettingsContainer = (props) => {
   return (
     <CollapsibleMotion isDefaultClosed={false}>
       {({ registerContentNode, containerStyles }) => (
-        <Container {...filterDataAttributes(props)}>
+        <Container>
           <Spacings.Stack scale="xs">
             <HeaderContainer>
               <Text.Headline as="h3" intlMessage={props.title} />

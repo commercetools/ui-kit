@@ -7,20 +7,18 @@ const DataTableManager = (props) => {
   const areDisplaySettingsEnabled = Boolean(
     props.displaySettings && !props.displaySettings.disableDisplaySettings
   );
+  const isWrappingText =
+    areDisplaySettingsEnabled && props.displaySettings.isWrappingText;
 
   const columns = React.useMemo(
     () =>
       props.columns.map((column) => ({
         ...column,
         isTruncated: areDisplaySettingsEnabled
-          ? props.displaySettings.isWrappingText
+          ? isWrappingText
           : column.isTruncated,
       })),
-    [
-      areDisplaySettingsEnabled,
-      props.columns,
-      props.displaySettings.isWrappingText,
-    ]
+    [areDisplaySettingsEnabled, props.columns, isWrappingText]
   );
 
   return (
@@ -33,7 +31,8 @@ const DataTableManager = (props) => {
       />
       {React.cloneElement(props.children, {
         columns,
-        isCondensed: props.displaySettings.isCondensed,
+        isCondensed:
+          areDisplaySettingsEnabled && props.displaySettings.isCondensed,
       })}
     </Spacings.Stack>
   );
