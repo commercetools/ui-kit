@@ -97,6 +97,7 @@ const CellInner = styled.div`
 
   ${getPaddingStyle}
   ${getCellInnerStyles}
+  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
 
 const BaseCell = styled.td`
@@ -107,7 +108,7 @@ const BaseCell = styled.td`
     props.shouldRenderBottomBorder
       ? `1px solid ${vars.colorNeutral90};`
       : 'none'};
-  overflow: hidden;
+  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
 
 const BaseFooterCell = styled.td`
