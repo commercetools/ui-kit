@@ -1,5 +1,15 @@
 # @commercetools-uikit/data-table
 
+## 10.30.2
+
+### Patch Changes
+
+- [`2e22b63`](https://github.com/commercetools/ui-kit/commit/2e22b638848adad9d9722f6a997fd02777023c27) [#1500](https://github.com/commercetools/ui-kit/pull/1500) Thanks [@emmenko](https://github.com/emmenko)! - Generate READMEs for more components
+
+* [`be19296`](https://github.com/commercetools/ui-kit/commit/be19296475aff238f4ebb1c5aa8a1e3f0c8c734f) [#1508](https://github.com/commercetools/ui-kit/pull/1508) Thanks [@emmenko](https://github.com/emmenko)! - Check for required `columns` prop for `DataTable` on runtime. This is important to allow compound components such as `DataTableManager` to inject the `columns` prop, as otherwise the prop types validation would fail.
+
+- [`898fef0`](https://github.com/commercetools/ui-kit/commit/898fef027bdf29621c99d613f90d83148ad969f7) [#1496](https://github.com/commercetools/ui-kit/pull/1496) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed table container not adjusting to table size when columns are shrinked
+
 ## 10.30.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/card",
-  "version": "10.30.1",
+  "version": "10.30.2",
   "description": "Cards are used to display content and actions on a single topic.",
   "private": false,
   "publishConfig": {
