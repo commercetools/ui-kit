@@ -221,6 +221,11 @@ These are informal steps we suggest you to follow when adding a new component.
 - Update Storybook, all documentation and usage examples
 - Migrate all code that will immediately be affected by your changes
 
+### How to Add New Icons to UI-Kit
+
+1. Add the raw SVG of the new icon to `packages/components/icons/src/svg`.
+2. Run `yarn generate-icons` to generate icon files and changes to `packages/components/icons/src/index.js`. This file should never be edited manually.
+
 ### Resources
 
 - [Process Diagram](https://wiki.commercetools.com/display/DD/MC+UI+KIT+Component+Process)
