@@ -42,11 +42,3 @@ Main use cases are:
     label={this.props.intl.formatMessage(messages.exportList)}
   />
   ```
-
-## Adding New Icons to UI-Kit
-
-1. Add the icon's SVG to `packages/components/icons/src/raw-components` directory. Please follow the style conventions of existing icon files. File names should be the icon's name in kebab-case (e.g., view-grid-plus.js).
-2. Utilize the component in a new file in the `packages/components/icons/src/components` directory. Please follow style and naming conventions of existing icons.
-3. Add the raw SVG to `packages/components/icons/src/svg`.
-4. Add the icon name, in PascalCase, to `transforms/v10/icons/icon-names.js`. Icon names are listed in alphabetical order.
-5. Run `yarn generate-icons` to have the icon added to `packages/components/icons/src/index.js`. This file should never be edited manually.
