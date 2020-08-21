@@ -14,7 +14,7 @@ import {
 } from './header-cell.styles';
 import Resizer from './column-resizer';
 import ColumnResizingContext from './column-resizing-context';
-import isPixeledValue from './utils/is-pixeled-value';
+import isFixedWidthValue from './utils/is-fixed-width-value';
 
 const HeaderCellWrapper = (props) => {
   const columnResizingReducer = React.useContext(ColumnResizingContext);
@@ -44,21 +44,22 @@ const HeaderCellWrapper = (props) => {
     window.addEventListener('mousemove', onDrag);
     window.addEventListener('mouseup', onDragEnd);
   }
+  /**
+   * GIVEN that any table column is being OR has been resized
+   * OR the width of the current column is a fixed value
+   * THEN the header content should be clipped
+   */
+  const shouldClipContent =
+    isFixedWidthValue(props.columnWidth) ||
+    columnResizingReducer.getHasTableBeenResized() ||
+    columnResizingReducer.getIsAnyColumnBeingResized();
 
   return (
     <BaseHeaderCell
       ref={headerRef}
       data-testid={`header-${props.columnKey}`}
       data-id={props.columnKey}
-      /**
-       * GIVEN that any of the table column has been resized
-       *   OR if the width of current column is a pixeled value, i.e. 20px
-       * THEN the content should be clipped
-       */
-      shouldClipContent={
-        columnResizingReducer.getIsAnyColumnBeingResized() ||
-        isPixeledValue(props.columnWidth)
-      }
+      shouldClipContent={shouldClipContent}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
       {props.children}
