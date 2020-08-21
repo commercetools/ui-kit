@@ -14,6 +14,7 @@ import {
 } from './header-cell.styles';
 import Resizer from './column-resizer';
 import ColumnResizingContext from './column-resizing-context';
+import isPixeledValue from './utils/is-pixeled-value';
 
 const HeaderCellWrapper = (props) => {
   const columnResizingReducer = React.useContext(ColumnResizingContext);
@@ -49,7 +50,15 @@ const HeaderCellWrapper = (props) => {
       ref={headerRef}
       data-testid={`header-${props.columnKey}`}
       data-id={props.columnKey}
-      shouldClipContent={columnResizingReducer.getHasTableBeenResized()}
+      /**
+       * GIVEN that any of the table column has been resized
+       *   OR if the width of current column is a pixeled value, i.e. 20px
+       * THEN the content should be clipped
+       */
+      shouldClipContent={
+        columnResizingReducer.getIsAnyColumnBeingResized() ||
+        isPixeledValue(props.columnWidth)
+      }
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
       {props.children}
@@ -60,6 +69,7 @@ const HeaderCellWrapper = (props) => {
 HeaderCellWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
+  columnWidth: PropTypes.string,
   disableResizing: PropTypes.bool,
   onColumnResized: PropTypes.func,
   disableHeaderStickiness: PropTypes.bool,
@@ -87,6 +97,7 @@ const HeaderCell = (props) => {
 
   return (
     <HeaderCellWrapper
+      columnWidth={props.columnWidth}
       columnKey={props.columnKey}
       onColumnResized={props.onColumnResized}
       disableResizing={props.disableResizing}
@@ -123,6 +134,7 @@ HeaderCell.propTypes = {
   sortedBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
+  columnWidth: PropTypes.string,
   shouldWrap: PropTypes.bool,
   isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,

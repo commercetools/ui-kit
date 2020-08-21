@@ -100,6 +100,7 @@ const DataTable = (props) => {
                     column.align ? column.align : props.horizontalCellAlignment
                   }
                   disableHeaderStickiness={props.disableHeaderStickiness}
+                  columnWidth={column.width}
                   /* Sorting Props */
                   onClick={props.onSortChange}
                   sortedBy={props.sortedBy}
