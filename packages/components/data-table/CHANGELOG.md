@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.30.5
+
+### Patch Changes
+
+- [`8ba6533`](https://github.com/commercetools/ui-kit/commit/8ba65336234b1e69871d3125bfb86b6dcc39e17d) [#1520](https://github.com/commercetools/ui-kit/pull/1520) Thanks [@mohib0306](https://github.com/mohib0306)! - Improve content cliping in the DataTable's header cells
+
 ## 10.30.4
 
 ### Patch Changes
