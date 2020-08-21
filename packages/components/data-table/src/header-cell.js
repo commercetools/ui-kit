@@ -14,6 +14,7 @@ import {
 } from './header-cell.styles';
 import Resizer from './column-resizer';
 import ColumnResizingContext from './column-resizing-context';
+import isFixedWidthValue from './utils/is-fixed-width-value';
 
 const HeaderCellWrapper = (props) => {
   const columnResizingReducer = React.useContext(ColumnResizingContext);
@@ -43,13 +44,22 @@ const HeaderCellWrapper = (props) => {
     window.addEventListener('mousemove', onDrag);
     window.addEventListener('mouseup', onDragEnd);
   }
+  /**
+   * GIVEN that any table column is being OR has been resized
+   * OR the width of the current column is a fixed value
+   * THEN the header content should be clipped
+   */
+  const shouldClipContent =
+    isFixedWidthValue(props.columnWidth) ||
+    columnResizingReducer.getHasTableBeenResized() ||
+    columnResizingReducer.getIsAnyColumnBeingResized();
 
   return (
     <BaseHeaderCell
       ref={headerRef}
       data-testid={`header-${props.columnKey}`}
       data-id={props.columnKey}
-      shouldClipContent={columnResizingReducer.getHasTableBeenResized()}
+      shouldClipContent={shouldClipContent}
       disableHeaderStickiness={props.disableHeaderStickiness}
     >
       {props.children}
@@ -60,6 +70,7 @@ const HeaderCellWrapper = (props) => {
 HeaderCellWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
+  columnWidth: PropTypes.string,
   disableResizing: PropTypes.bool,
   onColumnResized: PropTypes.func,
   disableHeaderStickiness: PropTypes.bool,
@@ -87,6 +98,7 @@ const HeaderCell = (props) => {
 
   return (
     <HeaderCellWrapper
+      columnWidth={props.columnWidth}
       columnKey={props.columnKey}
       onColumnResized={props.onColumnResized}
       disableResizing={props.disableResizing}
@@ -123,6 +135,7 @@ HeaderCell.propTypes = {
   sortedBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   columnKey: PropTypes.string.isRequired,
+  columnWidth: PropTypes.string,
   shouldWrap: PropTypes.bool,
   isSortable: PropTypes.bool,
   isCondensed: PropTypes.bool,
