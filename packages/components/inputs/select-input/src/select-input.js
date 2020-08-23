@@ -10,6 +10,7 @@ import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
+  customComponentsWithIcons,
 } from '@commercetools-uikit/select-utils';
 import {
   addStaticFields,
@@ -67,6 +68,9 @@ const SelectInput = (props) => {
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={{
             ...customizedComponents,
+            ...(props.iconLeft || props.iconRight
+              ? customComponentsWithIcons
+              : {}),
             ...props.components,
           }}
           styles={createSelectStyles(
@@ -158,6 +162,8 @@ const SelectInput = (props) => {
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
+          iconLeft={props.iconLeft}
+          iconRight={props.iconRight}
         />
       </div>
     </Constraints.Horizontal>
@@ -180,6 +186,8 @@ SelectInput.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   isReadOnly: PropTypes.bool,
+  iconLeft: PropTypes.node,
+  iconRight: PropTypes.node,
 
   // react-select base props
   //

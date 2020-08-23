@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
+import { WorldIcon, DotIcon } from '../../../icons';
 
 const defaultOptions = [
   { value: 'one', label: 'One' },
@@ -140,6 +141,23 @@ const DefaultRoute = ({ themes }) => (
         isMulti={true}
         isReadOnly={true}
         horizontalConstraint="m"
+      />
+    </Spec>
+    <Spec label={'with iconLeft'}>
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        iconLeft={<WorldIcon />}
+      />
+    </Spec>
+    <Spec label={'with iconRight'}>
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        iconRight={<DotIcon />}
       />
     </Spec>
   </Suite>

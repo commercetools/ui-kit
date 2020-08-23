@@ -14,6 +14,9 @@ import LinkTo from '@storybook/addon-links/react';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import SelectInput from './select-input';
+import * as icons from '../../../icons';
+
+const iconNames = Object.keys(icons);
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
@@ -93,6 +96,9 @@ storiesOf('Components|Inputs', module)
     ];
     const isMulti = boolean('isMulti', false);
     const showOptionGroupDivider = boolean('Show option group divider', false);
+    const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
+    const iconRight = icons[select('iconRight', ['', ...iconNames])];
+
     return (
       <Spacings.Stack scale="xl">
         <Section>
@@ -134,6 +140,10 @@ storiesOf('Components|Inputs', module)
                 tabSelectsValue={boolean('tabSelectsValue', true)}
                 value={value}
                 showOptionGroupDivider={showOptionGroupDivider}
+                iconLeft={iconLeft ? React.createElement(iconLeft) : undefined}
+                iconRight={
+                  iconRight ? React.createElement(iconRight) : undefined
+                }
               />
             )}
           />
