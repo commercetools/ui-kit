@@ -33,7 +33,7 @@
     "vfile-reporter": "6.0.1"
   },
   "devDependencies": {
-    "ts-node": "8.10.2",
+    "ts-node": "9.0.0",
     "typescript": "3.9.7"
   },
   "peerDependencies": {
