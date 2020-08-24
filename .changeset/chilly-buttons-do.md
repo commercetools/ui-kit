@@ -3,4 +3,4 @@
 '@commercetools-uikit/select-utils': minor
 ---
 
-Allow adding a medium icon to the left and a small icon to the right of the value of the SelectInput, when an option is selected
+Allow adding a big icon to the left of the placeholder and value of the SelectInput
