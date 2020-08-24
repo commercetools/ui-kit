@@ -28,7 +28,7 @@
     "remark-stringify": "8.1.1",
     "shelljs": "0.8.4",
     "to-vfile": "6.1.0",
-    "unified": "9.1.0",
+    "unified": "9.2.0",
     "vfile": "4.2.0",
     "vfile-reporter": "6.0.1"
   },
