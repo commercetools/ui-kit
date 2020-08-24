@@ -97,7 +97,6 @@ storiesOf('Components|Inputs', module)
     const isMulti = boolean('isMulti', false);
     const showOptionGroupDivider = boolean('Show option group divider', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
-    const iconRight = icons[select('iconRight', ['', ...iconNames])];
 
     return (
       <Spacings.Stack scale="xl">
@@ -141,9 +140,6 @@ storiesOf('Components|Inputs', module)
                 value={value}
                 showOptionGroupDivider={showOptionGroupDivider}
                 iconLeft={iconLeft ? React.createElement(iconLeft) : undefined}
-                iconRight={
-                  iconRight ? React.createElement(iconRight) : undefined
-                }
               />
             )}
           />

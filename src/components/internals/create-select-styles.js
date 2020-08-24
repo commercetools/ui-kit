@@ -217,9 +217,6 @@ const valueContainerStyles = () => (base) => ({
   padding: '0',
   backgroundColor: 'none',
   overflow: 'hidden',
-  '& svg': {
-    flexShrink: 0,
-  },
 });
 
 const singleValueStyles = (props, theme) => (base) => {

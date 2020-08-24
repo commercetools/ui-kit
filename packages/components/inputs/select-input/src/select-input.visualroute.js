@@ -152,23 +152,13 @@ const DefaultRoute = ({ themes }) => (
         iconLeft={<WorldIcon />}
       />
     </Spec>
-    <Spec label={'with iconRight'}>
+    <Spec label={'with iconLeft and no selected valu'}>
       <SelectInput
-        value={value}
-        onChange={() => {}}
-        options={options}
-        horizontalConstraint="m"
-        iconRight={<WorldIcon />}
-      />
-    </Spec>
-    <Spec label={'with iconLeft and iconRight'}>
-      <SelectInput
-        value={value}
+        value={null}
         onChange={() => {}}
         options={options}
         horizontalConstraint="m"
         iconLeft={<WorldIcon />}
-        iconRight={<WorldIcon />}
       />
     </Spec>
   </Suite>

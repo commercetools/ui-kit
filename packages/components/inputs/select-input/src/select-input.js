@@ -68,7 +68,7 @@ const SelectInput = (props) => {
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={{
             ...customizedComponents,
-            ...(props.iconLeft || props.iconRight
+            ...(props.iconLeft && !props.isMulti
               ? customComponentsWithIcons
               : {}),
             ...props.components,
@@ -81,6 +81,7 @@ const SelectInput = (props) => {
               menuPortalZIndex: props.menuPortalZIndex,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
+              hasIcon: props.iconLeft && !props.isMulti,
             },
             theme
           )}
@@ -163,7 +164,6 @@ const SelectInput = (props) => {
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
           iconLeft={props.iconLeft}
-          iconRight={props.iconRight}
         />
       </div>
     </Constraints.Horizontal>
@@ -187,7 +187,6 @@ SelectInput.propTypes = {
   hasWarning: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   iconLeft: PropTypes.node,
-  iconRight: PropTypes.node,
 
   // react-select base props
   //
