@@ -81,7 +81,6 @@ const SelectInput = (props) => {
               menuPortalZIndex: props.menuPortalZIndex,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
-              hasIcon: props.iconLeft && !props.isMulti,
             },
             theme
           )}
