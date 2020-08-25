@@ -1,5 +1,13 @@
 # @commercetools-uikit/data-table
 
+## 10.30.6
+
+### Patch Changes
+
+- [`46eb3a9`](https://github.com/commercetools/ui-kit/commit/46eb3a96f095ac67823395b9a2aa3a299d6b5fe9) [#1529](https://github.com/commercetools/ui-kit/pull/1529) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed bug where clicking near the edge of a cell wouldn't trigger onRowClick if the cell was substantially taller than its own content
+
+* [`678eea3`](https://github.com/commercetools/ui-kit/commit/678eea3c8dbd56f3ec9ed8e1761e0dde7cb642ee) [#1528](https://github.com/commercetools/ui-kit/pull/1528) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed bug where column resizing could break after changing number of columns
+
 ## 10.30.5
 
 ### Patch Changes
