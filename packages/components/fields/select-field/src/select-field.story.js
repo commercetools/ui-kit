@@ -86,6 +86,8 @@ storiesOf('Components|Fields', module)
     const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
     const name = text('name', 'favAnimal');
     const id = text('id', '');
+    const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
+
     return (
       <Section>
         <Value
@@ -145,6 +147,7 @@ storiesOf('Components|Fields', module)
               hasWarning={boolean('hasWarning', false)}
               hintIcon={hintIcon}
               badge={text('badge', '')}
+              iconLeft={iconLeft ? React.createElement(iconLeft) : undefined}
             />
           )}
         />

@@ -113,6 +113,7 @@ export default class AsyncCreatableSelectField extends React.Component {
     onInfoButtonClick: PropTypes.func,
     hintIcon: PropTypes.node,
     badge: PropTypes.node,
+    iconLeft: PropTypes.node,
   };
 
   static defaultProps = {
@@ -191,6 +192,7 @@ export default class AsyncCreatableSelectField extends React.Component {
             onCreateOption={this.props.onCreateOption}
             createOptionPosition={this.props.createOptionPosition}
             showOptionGroupDivider={this.props.showOptionGroupDivider}
+            iconLeft={this.props.iconLeft}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
