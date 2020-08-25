@@ -45,7 +45,7 @@ export default Example;
 
 ## Properties
 
-| Props      | Type                                                                                                               | Required | Default | Description                |
-| ---------- | ------------------------------------------------------------------------------------------------------------------ | :------: | ------- | -------------------------- |
-| `tone`     | `enum`<br>Possible values:<br>`'critical' \| 'warning' \| 'positive' \| 'information' \| 'primary' \| 'secondary'` |    ✅    |         | Set the tone of the stamp. |
-| `children` | `node`                                                                                                             |    ✅    |         | -                          |
+| Props      | Type                                                                                                               | Required | Default | Description                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ | :------: | ------- | ------------------------------- |
+| `tone`     | `enum`<br>Possible values:<br>`'critical' \| 'warning' \| 'positive' \| 'information' \| 'primary' \| 'secondary'` |    ✅    |         | Indicates color scheme of stamp |
+| `children` | `node`                                                                                                             |    ✅    |         |                                 |

@@ -240,7 +240,7 @@ Tag.propTypes = {
    */
   styles: PropTypes.shape({
     body: PropTypes.object,
-  }).isRequired,
+  }),
   /**
    * Link of the tag when not disabled
    */
