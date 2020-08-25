@@ -251,6 +251,8 @@ Tag.propTypes = {
   isDisabled: PropTypes.bool,
   /**
    * Called when remove button is clicked.
+   * <br />
+   * Signature: `(event) => void`
    */
   onRemove: PropTypes.func,
   /**
