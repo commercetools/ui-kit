@@ -1,6 +1,7 @@
 import React from 'react';
 import { AsyncSelectInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
+import { WorldIcon } from '../../../icons';
 
 const loadOptions = () =>
   Promise.resolve([
@@ -84,6 +85,24 @@ export const component = () => (
         loadOptions={loadOptions}
         horizontalConstraint="m"
         isReadOnly={true}
+      />
+    </Spec>
+    <Spec label={'with iconLeft'}>
+      <AsyncSelectInput
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint="m"
+        iconLeft={<WorldIcon />}
+      />
+    </Spec>
+    <Spec label={'with iconLeft and no selected value'}>
+      <AsyncSelectInput
+        value={null}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint="m"
+        iconLeft={<WorldIcon />}
       />
     </Spec>
   </Suite>

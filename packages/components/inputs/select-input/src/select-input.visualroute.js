@@ -152,7 +152,7 @@ const DefaultRoute = ({ themes }) => (
         iconLeft={<WorldIcon />}
       />
     </Spec>
-    <Spec label={'with iconLeft and no selected valu'}>
+    <Spec label={'with iconLeft and no selected value'}>
       <SelectInput
         value={null}
         onChange={() => {}}

@@ -14,6 +14,7 @@ import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
+  customComponentsWithIcons,
 } from '@commercetools-uikit/select-utils';
 import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
 import messages from '../../../../../src/components/internals/messages/select';
@@ -43,6 +44,10 @@ const CreatableSelectInput = (props) => {
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={{
             ...customizedComponents,
+            ...props.components,
+            ...(props.iconLeft && !props.isMulti
+              ? customComponentsWithIcons
+              : {}),
             ...props.components,
           }}
           styles={createSelectStyles(
@@ -157,6 +162,7 @@ CreatableSelectInput.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   isReadOnly: PropTypes.bool,
+  iconLeft: PropTypes.node,
 
   // react-select base props
   //

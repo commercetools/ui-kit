@@ -1,4 +1,7 @@
 ---
+'@commercetools-uikit/async-creatable-select-input': minor
+'@commercetools-uikit/async-select-input': minor
+'@commercetools-uikit/creatable-select-input': minor
 '@commercetools-uikit/select-input': minor
 '@commercetools-uikit/select-utils': minor
 ---
