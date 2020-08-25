@@ -236,13 +236,13 @@ Tag.propTypes = {
    */
   type: PropTypes.oneOf(['normal', 'warning']),
   /**
-   * Styles object spread onto the tag body..
+   * Styles object that is spread into the tag body.
    */
   styles: PropTypes.shape({
     body: PropTypes.object,
   }).isRequired,
   /**
-   * Location the tag links to when enabled.
+   * Link of the tag when not disabled
    */
   linkTo: PropTypes.string,
   /**
@@ -254,7 +254,9 @@ Tag.propTypes = {
    */
   onRemove: PropTypes.func,
   /**
-   * Called when tag element is clicked. This is not called with remove button is clicked.
+   * Called when tag element is clicked. This is not called when remove button is clicked.
+   * <br />
+   * Signature: `(event) => void`
    */
   onClick: PropTypes.func,
   /**
