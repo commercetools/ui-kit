@@ -270,7 +270,6 @@ Tag.propTypes = {
 };
 Tag.defaultProps = {
   type: 'normal',
-  styles: {},
   isDisabled: false,
   horizontalConstraint: 'scale',
 };

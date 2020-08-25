@@ -5,7 +5,7 @@
 
 ## Description
 
-A spinner animation to indicating pending requests for the user.
+A spinner animation to indicate loading state (e.g pending requests) for the user.
 
 ## Installation
 
