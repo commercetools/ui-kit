@@ -403,7 +403,9 @@ storiesOf('Components|DataTable', module)
               : null
           }
           maxHeight={castToNumberIfPossible(
-            text('maxHeight', 'calc(100vh - 200px)')
+            // in this example, the table has a dynamic height equal to the viewport height minus 200px
+            // floored to a minimum value of 400px
+            text('maxHeight', 'max(400px, calc(100vh - 200px))')
           )}
           maxWidth={castToNumberIfPossible(text('maxWidth', undefined))}
           horizontalCellAlignment={select('horizontalCellAlignment', [
