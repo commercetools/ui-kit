@@ -231,15 +231,39 @@ const Tag = (props) => {
 };
 
 Tag.propTypes = {
+  /**
+   * Indicates color scheme of the tag.
+   */
   type: PropTypes.oneOf(['normal', 'warning']),
+  /**
+   * Styles object spread onto the tag body..
+   */
   styles: PropTypes.shape({
     body: PropTypes.object,
   }).isRequired,
+  /**
+   * Location the tag links to when enabled.
+   */
   linkTo: PropTypes.string,
+  /**
+   * Disable the tag element along with the option to remove it.
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * Called when remove button is clicked.
+   */
   onRemove: PropTypes.func,
+  /**
+   * Called when tag element is clicked. This is not called with remove button is clicked.
+   */
   onClick: PropTypes.func,
+  /**
+   * Horizontal size limit of the input field.
+   */
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+  /**
+   * Content rendered within the tag
+   */
   children: PropTypes.node.isRequired,
 };
 Tag.defaultProps = {
