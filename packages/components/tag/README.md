@@ -5,6 +5,15 @@
 
 ## Description
 
+A tag is often used for items that need to be labeled or categorized. This might apply to search terms or categories of a product. Tags can also have a "remove" button.
+
+## Where to use
+
+Main Functions and use cases are:
+
+- Remove from a set _example: Removing products from categories_
+- Showing a set _example: List of categories a product is in_
+
 ## Installation
 
 ```
@@ -50,8 +59,8 @@ export default Example;
 | Props                  | Type                                                                         | Required | Default    | Description                                                                                                              |
 | ---------------------- | ---------------------------------------------------------------------------- | :------: | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `type`                 | `enum`<br>Possible values:<br>`'normal' \| 'warning'`                        |          | `'normal'` | Indicates color scheme of the tag.                                                                                       |
-| `styles`               | `object`                                                                     |          | `{}`       | Styles object that is spread into the tag body.                                                                          |
-| `styles.body`          | `object`                                                                     |          | `{}`       |                                                                                                                          |
+| `styles`               | `object`                                                                     |          |            | Styles object that is spread into the tag body.                                                                          |
+| `styles.body`          | `object`                                                                     |          |            |                                                                                                                          |
 | `linkTo`               | `string`                                                                     |          |            | Link of the tag when not disabled                                                                                        |
 | `isDisabled`           | `bool`                                                                       |          | `false`    | Disable the tag element along with the option to remove it.                                                              |
 | `onRemove`             | `func`                                                                       |          |            | Called when remove button is clicked.                                                                                    |
