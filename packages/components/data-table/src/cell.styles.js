@@ -84,10 +84,6 @@ const getCellInnerStyles = (props) => {
     getHorizontalAlignmentStyle(props),
     getTruncatedStyle(props),
     getOutlineStyles(),
-    props.shouldIgnoreRowClick &&
-      css`
-        cursor: auto;
-      `,
   ];
 };
 
@@ -114,6 +110,7 @@ const BaseCell = styled.td`
       ? `1px solid ${vars.colorNeutral90};`
       : 'none'};
   ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
+  ${(props) => (props.shouldIgnoreRowClick ? 'cursor: auto;' : '')}
 `;
 
 const BaseFooterCell = styled.td`

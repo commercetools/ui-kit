@@ -16,16 +16,16 @@ const DataCell = (props) => {
     : RightTriangleLinearIcon;
   return (
     <BaseCell
+      onClick={props.onCellClick}
+      shouldIgnoreRowClick={props.shouldIgnoreRowClick}
       shouldClipContent={
         props.isTruncated && !props.shouldRenderResizingIndicator
       }
       shouldRenderBottomBorder={props.shouldRenderBottomBorder}
     >
       <CellInner
-        onClick={props.onCellClick}
         isCondensed={props.isCondensed}
         isTruncated={props.isTruncated}
-        shouldIgnoreRowClick={props.shouldIgnoreRowClick}
         verticalCellAlignment={props.verticalCellAlignment}
         horizontalCellAlignment={props.horizontalCellAlignment}
         {...filterDataAttributes(props)}
