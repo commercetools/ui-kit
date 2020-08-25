@@ -40,30 +40,25 @@ const DataTable = (props) => {
   const tableRef = React.useRef();
   const columnResizingReducer = useManualColumnResizing(tableRef);
 
-  // if the table has been manually resized
+  // if the table columns have been measured
   // and if the list of columns, their width field, or the isCondensed prop has changed
   // then we need to reset the resized column widths
-  const hasTableBeenResized = columnResizingReducer.getHasTableBeenResized();
   const columnsInfo = getColumnsLayoutInfo(props.columns);
   const prevLayout = usePrevious({
     columns: columnsInfo,
     isCondensed: props.isCondensed,
   });
-  let currentLayout;
-  if (hasTableBeenResized) {
-    currentLayout = {
-      columns: columnsInfo,
-      isCondensed: props.isCondensed,
-    };
-  }
+  const currentLayout = {
+    columns: columnsInfo,
+    isCondensed: props.isCondensed,
+  };
   React.useLayoutEffect(() => {
-    if (hasTableBeenResized) {
-      if (!isEqual(prevLayout, currentLayout)) {
-        columnResizingReducer.reset();
-      }
+    if (!isEqual(prevLayout, currentLayout)) {
+      columnResizingReducer.reset();
     }
-  }, [hasTableBeenResized, prevLayout, currentLayout, columnResizingReducer]);
+  }, [prevLayout, currentLayout, columnResizingReducer]);
 
+  const hasTableBeenResized = columnResizingReducer.getHasTableBeenResized();
   const resizedTotalWidth = hasTableBeenResized
     ? columnResizingReducer.getTotalResizedTableWidth() +
       // if the table has a maxHeight, it might add a scrollbar which takes space inside the container
