@@ -20,8 +20,12 @@ const WrapperWithIcon = ({ children, ...props }) => {
           size: 'big',
         })}
       <span
+        // react-select uses absolute positioning for the SingleValue/Placeholder
+        // the icon has a fixed size of 24px (== SpacingsXl), therefore we can use a fixed margin
+        // spacingsXs is the margin between the icon and value
         css={css`
-          margin: ${customProperties.spacingXl + customProperties.spacingXs};
+          margin-left: ${customProperties.spacingXl +
+          customProperties.spacingXs};
         `}
       >
         <Component {...props}>{children}</Component>
