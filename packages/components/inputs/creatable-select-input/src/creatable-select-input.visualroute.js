@@ -1,6 +1,7 @@
 import React from 'react';
 import { CreatableSelectInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
+import { WorldIcon } from '../../../icons';
 
 const options = [
   { value: 'one', label: 'One' },
@@ -74,6 +75,24 @@ export const component = () => (
         options={options}
         horizontalConstraint="m"
         isReadOnly={true}
+      />
+    </Spec>
+    <Spec label={'with iconLeft'}>
+      <CreatableSelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        iconLeft={<WorldIcon />}
+      />
+    </Spec>
+    <Spec label={'with iconLeft and no selected value'}>
+      <CreatableSelectInput
+        value={null}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint="m"
+        iconLeft={<WorldIcon />}
       />
     </Spec>
   </Suite>

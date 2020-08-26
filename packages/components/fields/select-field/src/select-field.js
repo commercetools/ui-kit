@@ -88,6 +88,7 @@ export default class SelectField extends React.Component {
     hintIcon: PropTypes.node,
     badge: PropTypes.node,
     hasWarning: PropTypes.bool,
+    iconLeft: PropTypes.node,
   };
 
   static defaultProps = {
@@ -154,6 +155,7 @@ export default class SelectField extends React.Component {
             tabSelectsValue={this.props.tabSelectsValue}
             value={this.props.value}
             showOptionGroupDivider={this.props.showOptionGroupDivider}
+            iconLeft={this.props.iconLeft}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors

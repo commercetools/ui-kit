@@ -94,6 +94,7 @@ export default class AsyncSelectField extends React.Component {
     onInfoButtonClick: PropTypes.func,
     hintIcon: PropTypes.node,
     badge: PropTypes.node,
+    iconLeft: PropTypes.node,
   };
 
   static defaultProps = {
@@ -164,6 +165,7 @@ export default class AsyncSelectField extends React.Component {
             loadOptions={this.props.loadOptions}
             cacheOptions={this.props.cacheOptions}
             showOptionGroupDivider={this.props.showOptionGroupDivider}
+            iconLeft={this.props.iconLeft}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors

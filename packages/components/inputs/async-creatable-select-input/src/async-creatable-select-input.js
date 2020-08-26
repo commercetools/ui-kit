@@ -8,6 +8,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import {
   ClearIndicator,
   DropdownIndicator,
+  customComponentsWithIcons,
 } from '@commercetools-uikit/select-utils';
 import {
   addStaticFields,
@@ -43,6 +44,9 @@ const AsyncCreatableSelectInput = (props) => {
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={{
             ...customizedComponents,
+            ...(props.iconLeft && !props.isMulti
+              ? customComponentsWithIcons
+              : {}),
             ...props.components,
           }}
           styles={createSelectStyles(
@@ -141,6 +145,7 @@ const AsyncCreatableSelectInput = (props) => {
           getNewOptionData={props.getNewOptionData}
           onCreateOption={props.onCreateOption}
           createOptionPosition={props.createOptionPosition}
+          iconLeft={props.iconLeft}
         />
       </div>
     </Constraints.Horizontal>
@@ -168,6 +173,7 @@ AsyncCreatableSelectInput.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   isReadOnly: PropTypes.bool,
+  iconLeft: PropTypes.node,
 
   // react-select base props
   //

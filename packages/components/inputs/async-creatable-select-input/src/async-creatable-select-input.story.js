@@ -12,6 +12,9 @@ import {
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
+import * as icons from '../../../icons';
+
+const iconNames = Object.keys(icons);
 
 const colourOptions = [
   {
@@ -52,6 +55,8 @@ class SelectStory extends React.Component {
     const defaultOptions = boolean('defaultOptions', true)
       ? colourOptions
       : false;
+    const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
+
     return (
       <React.Fragment>
         <Section>
@@ -107,6 +112,9 @@ class SelectStory extends React.Component {
                     'last'
                   )}
                   showOptionGroupDivider={showOptionGroupDivider}
+                  iconLeft={
+                    iconLeft ? React.createElement(iconLeft) : undefined
+                  }
                 />
               </div>
             )}

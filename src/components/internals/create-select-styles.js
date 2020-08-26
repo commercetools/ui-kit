@@ -209,15 +209,30 @@ const placeholderStyles = (props, theme) => (base) => {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
+    fill:
+      props.isDisabled || props.isReadOnly
+        ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+        : base.fontColorForInput,
   };
 };
 
-const valueContainerStyles = () => (base) => ({
-  ...base,
-  padding: '0',
-  backgroundColor: 'none',
-  overflow: 'hidden',
-});
+const valueContainerStyles = (props, theme) => (base) => {
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
+
+  return {
+    ...base,
+    padding: '0',
+    backgroundColor: 'none',
+    overflow: 'hidden',
+    fill:
+      props.isDisabled || props.isReadOnly
+        ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+        : base.fontColorForInput,
+  };
+};
 
 const singleValueStyles = (props, theme) => (base) => {
   const overwrittenVars = {
