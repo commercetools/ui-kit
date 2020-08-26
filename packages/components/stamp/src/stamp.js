@@ -78,6 +78,9 @@ const Stamp = (props) => (
 
 Stamp.displayName = 'Stamp';
 Stamp.propTypes = {
+  /**
+   * Indicates color scheme of stamp
+   */
   tone: PropTypes.oneOf(availableTones).isRequired,
   children: PropTypes.node.isRequired,
 };
