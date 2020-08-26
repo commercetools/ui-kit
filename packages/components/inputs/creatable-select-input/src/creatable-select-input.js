@@ -145,6 +145,7 @@ const CreatableSelectInput = (props) => {
           getNewOptionData={props.getNewOptionData}
           onCreateOption={props.onCreateOption}
           createOptionPosition={props.createOptionPosition}
+          iconLeft={props.iconLeft}
         />
       </div>
     </Constraints.Horizontal>
