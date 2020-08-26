@@ -56,7 +56,7 @@ jobs:
         run: yarn visual-testing-app:build
 
       - name: Running Visual Regression Tests for UI components
-        uses: ianwalter/puppeteer@3.0.0
+        uses: ianwalter/puppeteer-container@v4.0.0
         with:
           args: "yarn vrt:components"
         env:
