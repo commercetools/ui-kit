@@ -596,5 +596,36 @@ export const component = () => (
         disableSelfContainment={true}
       />
     </Spec>
+    <Spec label="column with headerIcon and no label">
+      <DataTable
+        rows={testRows}
+        columns={[
+          {
+            key: 'title',
+            label: 'Title',
+          },
+          {
+            key: 'year',
+            label: 'Year',
+          },
+          {
+            key: 'director',
+            label: 'Directed By',
+          },
+          {
+            key: 'country',
+            label: '',
+            headerIcon: (
+              <IconButton
+                icon={<InformationIcon />}
+                label="Country Info"
+                size="medium"
+                onClick={() => null}
+              />
+            ),
+          },
+        ]}
+      />
+    </Spec>
   </Suite>
 );

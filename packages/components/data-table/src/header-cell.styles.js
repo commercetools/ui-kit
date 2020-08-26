@@ -97,6 +97,9 @@ const BaseHeaderCell = styled.th`
 `;
 
 const HeaderLabelWrapper = styled.div`
+  /* ensure height stays the same even if label is empty
+     1.4em = default line-height */
+  min-height: 1.4em;
   margin: ${vars.spacingS} 0;
   flex: 1;
 `;
@@ -106,6 +109,7 @@ const HeaderIconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: ${vars.spacingS};
+  padding: ${vars.spacingXs} 0;
 `;
 
 export {

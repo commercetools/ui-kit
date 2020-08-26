@@ -24,11 +24,11 @@ const sizePerScale = {
   s: '18px',
   l: '32px',
 };
-
+const scale = Object.keys(sizePerScale);
 const positionOrigin = '20px';
 
 const LoadingSpinner = (props) => {
-  const size = sizePerScale[props.scale] || '32px';
+  const size = sizePerScale[props.scale];
   return (
     <Inline alignItems="center">
       <div
@@ -72,7 +72,13 @@ LoadingSpinner.defaultProps = {
   scale: 'l',
 };
 LoadingSpinner.propTypes = {
-  scale: PropTypes.oneOf(['s', 'l']).isRequired,
+  /**
+   * Set the size of the loading spinner.
+   */
+  scale: PropTypes.oneOf(scale).isRequired,
+  /**
+   * -
+   */
   children: PropTypes.node,
 };
 
