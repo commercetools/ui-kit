@@ -120,7 +120,7 @@ const TagBody = (props) => (
             }
           }
         `,
-      props.styles.body,
+      props.styles?.body,
     ]}
     onClick={props.isDisabled ? undefined : props.onClick}
   >
@@ -139,7 +139,7 @@ TagBody.propTypes = {
   children: PropTypes.node.isRequired,
   styles: PropTypes.shape({
     body: PropTypes.object,
-  }).isRequired,
+  }),
 };
 
 const Tag = (props) => {
