@@ -1,5 +1,11 @@
 # @commercetools-uikit/stamp
 
+## 10.31.0
+
+### Minor Changes
+
+- [`9280034`](https://github.com/commercetools/ui-kit/commit/928003415b7e2f865b3a423d95644b26cad25387) [#1527](https://github.com/commercetools/ui-kit/pull/1527) Thanks [@adnasa](https://github.com/adnasa)! - add `generate-readme` for stamp, loading-spinner and tag
+
 ## 10.30.1
 
 ### Patch Changes

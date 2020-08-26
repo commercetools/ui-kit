@@ -1,5 +1,17 @@
 # @commercetools-uikit/async-select-input
 
+## 10.31.0
+
+### Minor Changes
+
+- [`52e0f74`](https://github.com/commercetools/ui-kit/commit/52e0f74153b09381ab010cbe4e328fa03e4fc8f1) [#1526](https://github.com/commercetools/ui-kit/pull/1526) Thanks [@jonnybel](https://github.com/jonnybel)! - Allow adding a big icon to the left of the placeholder and value of the SelectInput
+
+### Patch Changes
+
+- Updated dependencies [[`9280034`](https://github.com/commercetools/ui-kit/commit/928003415b7e2f865b3a423d95644b26cad25387), [`52e0f74`](https://github.com/commercetools/ui-kit/commit/52e0f74153b09381ab010cbe4e328fa03e4fc8f1)]:
+  - @commercetools-uikit/loading-spinner@10.31.0
+  - @commercetools-uikit/select-utils@10.31.0
+
 ## 10.30.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/stamp",
-  "version": "10.30.1",
+  "version": "10.31.0",
   "description": "Stamps are visual labels which hold small amounts of information regarding an item. (E.g Indicating if a product is published in a list).",
   "main": "dist/stamp.cjs.js",
   "module": "dist/stamp.esm.js",

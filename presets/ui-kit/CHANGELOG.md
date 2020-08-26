@@ -1,5 +1,18 @@
 # @commercetools-frontend/ui-kit
 
+## 10.31.0
+
+### Patch Changes
+
+- Updated dependencies [[`9280034`](https://github.com/commercetools/ui-kit/commit/928003415b7e2f865b3a423d95644b26cad25387), [`484fa6e`](https://github.com/commercetools/ui-kit/commit/484fa6e545a21272603c83304fead47cce90eee5)]:
+  - @commercetools-uikit/loading-spinner@10.31.0
+  - @commercetools-uikit/stamp@10.31.0
+  - @commercetools-uikit/tag@10.31.0
+  - @commercetools-uikit/data-table@10.31.0
+  - @commercetools-uikit/data-table-manager@10.23.5
+  - @commercetools-uikit/fields@10.31.0
+  - @commercetools-uikit/inputs@10.31.0
+
 ## 10.30.6
 
 ### Patch Changes
