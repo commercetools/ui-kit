@@ -14,6 +14,7 @@ import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
+  customComponentsWithIcons,
 } from '@commercetools-uikit/select-utils';
 import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
 import LoadingIndicator from '../../../../../src/components/internals/loading-indicator';
@@ -45,6 +46,9 @@ const AsyncSelectInput = (props) => {
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={{
             ...customizedComponents,
+            ...(props.iconLeft && !props.isMulti
+              ? customComponentsWithIcons
+              : {}),
             ...props.components,
           }}
           styles={createSelectStyles(
@@ -129,6 +133,7 @@ const AsyncSelectInput = (props) => {
           defaultOptions={props.defaultOptions}
           loadOptions={props.loadOptions}
           cacheOptions={props.cacheOptions}
+          iconLeft={props.iconLeft}
         />
       </div>
     </Constraints.Horizontal>
@@ -214,6 +219,7 @@ AsyncSelectInput.propTypes = {
   loadOptions: PropTypes.func.isRequired,
   cacheOptions: PropTypes.any,
   showOptionGroupDivider: PropTypes.bool,
+  iconLeft: PropTypes.node,
 };
 
 addStaticFields(AsyncSelectInput, {
