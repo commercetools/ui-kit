@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/loading-spinner",
-  "version": "10.30.1",
+  "version": "10.31.0",
   "description": "A spinner animation to indicate loading state (e.g pending requests) for the user.",
   "main": "dist/loading-spinner.cjs.js",
   "module": "dist/loading-spinner.esm.js",

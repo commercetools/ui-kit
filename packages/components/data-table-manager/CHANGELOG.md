@@ -1,5 +1,14 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.23.5
+
+### Patch Changes
+
+- Updated dependencies [[`9280034`](https://github.com/commercetools/ui-kit/commit/928003415b7e2f865b3a423d95644b26cad25387), [`52e0f74`](https://github.com/commercetools/ui-kit/commit/52e0f74153b09381ab010cbe4e328fa03e4fc8f1)]:
+  - @commercetools-uikit/tag@10.31.0
+  - @commercetools-uikit/async-select-input@10.31.0
+  - @commercetools-uikit/select-input@10.31.0
+
 ## 10.23.4
 
 ### Patch Changes

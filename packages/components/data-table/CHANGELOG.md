@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.31.0
+
+### Patch Changes
+
+- [`484fa6e`](https://github.com/commercetools/ui-kit/commit/484fa6e545a21272603c83304fead47cce90eee5) [#1531](https://github.com/commercetools/ui-kit/pull/1531) Thanks [@jonnybel](https://github.com/jonnybel)! - Fix header icon vertical placement when label is empty
+
 ## 10.30.6
 
 ### Patch Changes
