@@ -6,10 +6,28 @@ import isNil from 'lodash/isNil';
 import { useToggleState, usePrevious } from '@commercetools-uikit/hooks';
 
 const collapsibleMotionPropTypes = {
+  /**
+   * A render function, called with the following named arguments: `isOpen` (boolean), `toggle` (function),
+   * `containerStyles` (css-in-js object), `registerContentNode` (React reference to be used on the animated container).
+   * <br/>
+   * Siganture: `({ isOpen, containerStyles, toggle, registerContentNode }) => React.node`
+   */
   children: PropTypes.func.isRequired,
+  /**
+   * Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**
+   */
   isClosed: PropTypes.bool,
+  /**
+   * A callback function called when the `toggle` function is called. This prop is required when the component is **controlled**.
+   */
   onToggle: PropTypes.func,
+  /**
+   * The minimal height of the container being animated.
+   */
   minHeight: PropTypes.number,
+  /**
+   *The initial value to the internal toggle state `isOpen`.
+   */
   isDefaultClosed: PropTypes.bool,
 };
 
