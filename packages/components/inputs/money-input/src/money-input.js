@@ -96,14 +96,6 @@ const createCurrencySelectStyles = ({
         if (hasFocus) return vars.borderColorForInputWhenFocused;
         return vars.borderColorForInput;
       })(),
-      '&:hover': (() => {
-        if (isDisabled) return vars.borderColorForInputWhenDisabled;
-        if (isReadOnly) return vars.borderColorForInputWhenReadonly;
-        if (hasError) return vars.borderColorForInputWhenError;
-        if (hasWarning) return vars.borderColorForInputWhenWarning;
-        if (hasFocus) return vars.borderColorForInputWhenFocused;
-        return vars.borderColorForInput;
-      })(),
       backgroundColor: (() => {
         if (isReadOnly) return vars.backgroundColorForInput;
         return base.backgroundColor;

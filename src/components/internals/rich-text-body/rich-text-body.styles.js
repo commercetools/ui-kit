@@ -132,8 +132,12 @@ export const Container = styled.div`
     props.isDisabled || props.isReadOnly ? 'none' : 'inherit'};
   position: relative;
 
+  &:hover {
+    border-color: ${vars.borderColorForInputWhenFocused};
+  }
   &:focus {
     outline: none;
+    box-shadow: inset 0 0 0 2px ${vars.borderColorForInputWhenFocused};
   }
 
   ${Toolbar} {
@@ -145,6 +149,7 @@ export const Container = styled.div`
 
   &:focus-within {
     border-color: ${vars.borderColorForInputWhenFocused};
+    box-shadow: inset 0 0 0 2px ${vars.borderColorForInputWhenFocused};
     ${Toolbar} {
       border-color: ${vars.borderColorForInputWhenFocused};
     }

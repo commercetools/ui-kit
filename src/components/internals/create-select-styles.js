@@ -47,7 +47,11 @@ const controlStyles = (props, theme) => (base, state) => {
     })(),
     padding: `0 ${overwrittenVars.spacingS}`,
 
-    boxShadow: state.isFocused ? 'none' : base.boxShadow,
+    boxShadow: state.isFocused
+      ? `inset 0 0 0 2px ${
+          overwrittenVars[designTokens.borderColorForInputWhenFocused]
+        }`
+      : base.boxShadow,
 
     '&:hover': {
       borderColor: (() => {
@@ -55,19 +59,6 @@ const controlStyles = (props, theme) => (base, state) => {
           return overwrittenVars[designTokens.borderColorForInputWhenFocused];
         return null;
       })(),
-      boxShadow: 'none',
-    },
-    '&:active': {
-      borderColor: props.isDisabled
-        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
-        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
-      boxShadow: 'none',
-    },
-    '&:focus': {
-      borderColor: props.isDisabled
-        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
-        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
-      boxShadow: 'none',
     },
     pointerEvents: 'auto',
     color:
