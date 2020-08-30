@@ -30,6 +30,11 @@ const Label = styled.label`
   cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
 
   ${sizeStyles}
+
+  &:focus-within {
+    outline: auto 2px ${vars.borderColorForInputWhenFocused};
+    outline-offset: 1px;
+  }
 `;
 
 const Span = styled.span`
