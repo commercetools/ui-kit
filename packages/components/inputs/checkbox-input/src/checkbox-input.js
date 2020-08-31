@@ -31,6 +31,10 @@ const hoverStyles = (props) => {
   return css``;
 };
 
+const LabelTextWrapper = styled.div`
+  margin-left: ${vars.spacingS};
+`;
+
 const Label = styled.label`
   display: flex;
   align-items: center;
@@ -38,6 +42,11 @@ const Label = styled.label`
   position: relative;
 
   ${hoverStyles}
+
+  &:focus-within ${LabelTextWrapper} {
+    outline: auto 2px ${vars.borderColorForInputWhenFocused};
+    outline-offset: 3px;
+  }
 `;
 
 class CheckboxInput extends React.PureComponent {
@@ -106,18 +115,14 @@ class CheckboxInput extends React.PureComponent {
           })()}
         </div>
         {this.props.children && (
-          <div
-            css={css`
-              margin-left: ${vars.spacingS};
-            `}
-          >
+          <LabelTextWrapper>
             <Text.Body
               // FIXME: add proper tones when we have disabled/primary in tones
               tone={this.props.isDisabled ? 'secondary' : undefined}
             >
               {this.props.children}
             </Text.Body>
-          </div>
+          </LabelTextWrapper>
         )}
       </Label>
     );

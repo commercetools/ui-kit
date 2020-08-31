@@ -1,5 +1,16 @@
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+
+const LabelTextWrapper = styled.div`
+  margin-left: ${vars.spacingS};
+  font-size: 1rem;
+  font-family: inherit;
+  color: ${(props) =>
+    props.isDisabled
+      ? vars.fontColorForInputWhenDisabled
+      : vars.fontColorForInput};
+`;
 
 const getContainerStyles = (props) => {
   const baseStyles = css`
@@ -94,10 +105,6 @@ const getLabelStyles = (props) => {
     &:hover svg [id$='borderAndContent'] > [id$='border'] {
       stroke: ${vars.borderColorForInputWhenFocused};
     }
-    &:active,
-    &:focus {
-      border-color: ${vars.borderColorForInputWhenFocused};
-    }
   `;
   if (props.isDisabled) {
     return [
@@ -145,7 +152,15 @@ const getLabelStyles = (props) => {
       `,
     ];
   }
-  return baseStyles;
+  return [
+    baseStyles,
+    css`
+      :focus-within ${LabelTextWrapper} {
+        outline: auto 2px ${vars.borderColorForInputWhenFocused};
+        outline-offset: 3px;
+      }
+    `,
+  ];
 };
 
-export { getContainerStyles, getLabelStyles };
+export { getContainerStyles, getLabelStyles, LabelTextWrapper };

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
@@ -10,7 +9,11 @@ import {
   RadioOptionUncheckedIcon,
 } from '../../../../../src/components/internals/icons';
 import accessibleHiddenInputStyles from '../../../../../src/components/internals/accessible-hidden-input.styles';
-import { getLabelStyles, getContainerStyles } from './radio-option.styles';
+import {
+  getLabelStyles,
+  getContainerStyles,
+  LabelTextWrapper,
+} from './radio-option.styles';
 
 const Input = styled.input`
   &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
@@ -49,19 +52,7 @@ const Option = (props) => {
           <RadioOptionUncheckedIcon size="medium" />
         )}
       </div>
-      <div
-        css={css`
-          width: 100%;
-          margin-left: ${vars.spacingS};
-          font-size: 1rem;
-          font-family: inherit;
-          color: ${props.isDisabled
-            ? vars.fontColorForInputWhenDisabled
-            : vars.fontColorForInput};
-        `}
-      >
-        {props.children}
-      </div>
+      <LabelTextWrapper>{props.children}</LabelTextWrapper>
     </label>
   );
 };
