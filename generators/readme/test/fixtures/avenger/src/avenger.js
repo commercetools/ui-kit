@@ -43,7 +43,7 @@ Avenger.propTypes = {
        *
        * @@defaultValue@@: false
        */
-      isNew: PropTypes.bool
+      isNew: PropTypes.bool,
     })
   ).isRequired,
 

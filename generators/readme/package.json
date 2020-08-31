@@ -12,7 +12,7 @@
     "test": "jest --config jest.test.config.js"
   },
   "dependencies": {
-    "@types/lodash": "4.14.159",
+    "@types/lodash": "4.14.161",
     "@types/mdast": "3.0.3",
     "@types/mri": "1.1.0",
     "@types/node": "12.12.54",

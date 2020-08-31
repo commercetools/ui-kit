@@ -257,7 +257,7 @@ const StyledInput = styled.input`
   ${getTimeInputStyles}
 
   &:focus + ${StyledClearSection}, &:focus + ${StyledClearSection} + ${StyledClockIconContainer} {
-     ${(props) => !props.disabled && getBorderColorWhenFocused}
+    ${(props) => !props.disabled && getBorderColorWhenFocused}
   }
 `;
 

@@ -78,7 +78,8 @@ export const bodyStyles = (props, theme) => css`
   font-size: 1rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone && getTone(props.tone, theme)}
+  ${props.tone &&
+  getTone(props.tone, theme)}
   ${props.truncate && truncate}
 `;
 
@@ -91,7 +92,7 @@ export const headlineStyles = (props, theme) => css`
 `;
 
 export const subheadlineStyles = (props, theme) => css`
-${getBaseStyles(props, theme)}
+  ${getBaseStyles(props, theme)}
   margin: 0;
   font-size: ${getElementFontSize(props.as || props.elementType)};
   font-weight: normal;
@@ -113,6 +114,7 @@ export const detailStyles = (props, theme) => css`
   ${props.isInline && inline}
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone && getTone(props.tone, theme)}
+  ${props.tone &&
+  getTone(props.tone, theme)}
   ${props.truncate && truncate}
 `;
