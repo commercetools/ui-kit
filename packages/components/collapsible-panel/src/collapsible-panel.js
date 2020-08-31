@@ -107,23 +107,62 @@ const CollapsiblePanel = (props) => {
 CollapsiblePanel.getPanelContentId = getPanelContentId;
 CollapsiblePanel.displayName = 'CollapsiblePanel';
 CollapsiblePanel.propTypes = {
-  // common props
+  /**
+   * An unique id for the panel header, which will also be used to generate a prefixed id for the panel content section.
+   * <br/>
+   * Read about `getPanelContentId` below for more about this.
+   */
   id: PropTypes.string,
+  /**
+   * The title being rendered at top left of the panel
+   */
   header: PropTypes.node.isRequired,
+  /**
+   * A secondary header for the panel (only pass if needed)
+   */
   secondaryHeader: PropTypes.node,
+  /**
+   * If passed will be shown below the title as more information regarding the panel
+   */
   description: PropTypes.string,
   className: PropTypes.string,
+  /**
+   * Makes the panel's header sticky in regards to the page's scroll
+   */
   isSticky: PropTypes.bool,
+  /**
+   * Controls at the top right part of the panel
+   */
+  headerControls: PropTypes.node,
+  /**
+   * Disables the panel and all interactions with it
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * The actual content rendered inside the panel
+   */
   children: PropTypes.node,
   tone: PropTypes.oneOf(['urgent', 'primary']),
+  /**
+   * The main color combination of the for the panel header and container
+   */
   theme: PropTypes.oneOf(['dark', 'light']),
+  /**
+   * Whenever `true` the headers and content itself
+   * will consume less space in that to the borders are smaller and everything has less padding
+   */
   condensed: PropTypes.bool,
+  /**
+   * Controls the visibility of the expansion controls on the left
+   */
   hideExpansionControls: PropTypes.bool,
-  headerControls: PropTypes.node,
   headerControlsAlignment: PropTypes.oneOf(['left', 'right']),
 
-  // props when uncontrolled
+  /**
+   * Indicates if the panel's content should be collapsed or shown by default.
+   * <br />
+   * Updates to this value are not respected. Only used for **uncontrolled** mode (when no`onToggle` is passed.)
+   */
   isDefaultClosed(props, propName, componentName, ...rest) {
     if (!isNil(props.isClosed) && !isNil(props.isDefaultClosed)) {
       return new Error(
@@ -134,8 +173,19 @@ CollapsiblePanel.propTypes = {
     return PropTypes.bool(props, propName, componentName, ...rest);
   },
 
-  // props when controlled
+  /**
+   * Indicates if the panel's content should be collapsed or shown.
+   * <br />
+   * Component becomes **controlled* when this is passed.
+   */
   isClosed: PropTypes.bool,
+  /**
+   * function to be triggered whenever the user clicks the top area to collapse the panel's content
+   * <br />
+   * Becomes required when `isClosed` is passed.
+   * <br />
+   * Signature: `() => void`
+   */
   onToggle(props, propName, componentName, ...rest) {
     const isControlledComponent = !isNil(props.isClosed);
     const hasOnToggle = !isNil(props.onToggle);
@@ -148,7 +198,6 @@ CollapsiblePanel.propTypes = {
       return new Error(
         `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
       );
-
     // uncontrolled component does not have `onToggle` so no validation needed.
     return null;
   },
