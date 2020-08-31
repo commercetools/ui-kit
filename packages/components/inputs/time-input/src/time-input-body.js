@@ -53,6 +53,7 @@ export default class TimeInputBody extends React.Component {
         <StyledInputContainer
           isDisabled={this.props.isDisabled}
           isReadOnly={this.props.isReadOnly}
+          hasError={this.props.hasError}
         >
           <StyledInput
             id={this.props.id}
@@ -89,7 +90,13 @@ export default class TimeInputBody extends React.Component {
             isReadOnly={this.props.isReadOnly}
             hasError={this.props.hasError}
           >
-            <ClockIcon color={this.props.isDisabled ? 'neutral60' : 'solid'} />
+            <ClockIcon
+              color={
+                this.props.isDisabled || this.props.isReadOnly
+                  ? 'neutral60'
+                  : 'solid'
+              }
+            />
           </StyledClockIconContainer>
         </StyledInputContainer>
       </Inline>

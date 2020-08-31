@@ -51,7 +51,7 @@ const getClockIconContainerStyles = (props) => {
     border-left: 1px solid ${overwrittenVars.borderColorForInput};
     border-top-right-radius: ${overwrittenVars.borderRadiusForInput};
     border-bottom-right-radius: ${overwrittenVars.borderRadiusForInput};
-    height: ${overwrittenVars.sizeHeightInput};
+    height: 100%;
     display: flex;
     padding: ${overwrittenVars.spacingXs};
     outline: 0;
@@ -83,6 +83,16 @@ const getClockIconContainerStyles = (props) => {
       `,
     ];
   }
+  if (props.isReadOnly) {
+    return [
+      baseIconStyles,
+      css`
+        color: ${overwrittenVars.fontColorForInputWhenReadonly};
+        border-color: ${overwrittenVars.borderColorForInputWhenReadonly};
+      `,
+    ];
+  }
+
   return baseIconStyles;
 };
 
@@ -113,6 +123,11 @@ const getInputContainerStyles = (props) => {
       box-shadow: inset 0 0 0 2px
         ${overwrittenVars.borderColorForInputWhenFocused};
     }
+
+    &:focus,
+    &:hover {
+      border-color: ${overwrittenVars.borderColorForInputWhenFocused};
+    }
   `;
 
   if (props.isDisabled) {
@@ -141,19 +156,15 @@ const getInputContainerStyles = (props) => {
       css`
         color: ${overwrittenVars.fontColorForInputWhenReadonly};
         border-color: ${overwrittenVars.borderColorForInputWhenReadonly};
+
+        svg {
+          fill: ${overwrittenVars.fontColorForInputWhenReadonly};
+        }
       `,
     ];
   }
 
-  return [
-    baseStyles,
-    css`
-      &:focus,
-      &:hover {
-        border-color: ${overwrittenVars.borderColorForInputWhenFocused};
-      }
-    `,
-  ];
+  return baseStyles;
 };
 const getTimeInputStyles = (props) => {
   const baseStyles = [
@@ -184,7 +195,7 @@ const StyledInput = styled.input`
 const StyledInputContainer = styled.div`
   ${getInputContainerStyles}
 
-  &:hover, &:focus-within ${StyledClockIconContainer} {
+  &:hover ${StyledClockIconContainer}, &:focus-within ${StyledClockIconContainer} {
     border-color: ${vars.borderColorForInputWhenFocused};
   }
 `;

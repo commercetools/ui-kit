@@ -47,7 +47,7 @@ const getInputStyles = (props, theme) => {
         ${overwrittenVars[designTokens.borderColorForInputWhenFocused]};
     }
   `;
-  if (props.isDisabled) {
+  if (props.isDisabled || props.disabled) {
     return [
       baseStyles,
       css`
@@ -86,7 +86,7 @@ const getInputStyles = (props, theme) => {
       `,
     ];
   }
-  if (props.isReadOnly) {
+  if (props.isReadOnly || props.readOnly) {
     return [
       baseStyles,
       css`
