@@ -12,6 +12,8 @@ import {
 
 export const ClearSection = (props) => (
   <StyledClearSection
+    label="clear"
+    aria-label="clear"
     onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
     isReadOnly={props.isReadOnly}
     hasError={props.hasError}

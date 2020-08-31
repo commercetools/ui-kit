@@ -14,7 +14,7 @@ import {
 export const ClearSection = (props) => (
   <AccessibleButton
     css={getClearSectionStyles(props)}
-    label="Expand/Collapse Row"
+    label="clear"
     onClick={props.onClear}
     aria-label="clear"
   >
