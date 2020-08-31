@@ -1,32 +1,44 @@
 import { css } from '@emotion/core';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '../../../../packages/components/inputs/styles';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = () => css`
-  align-items: center;
-  box-sizing: border-box;
-  height: ${vars.sizeHeightInput};
-  display: flex;
-  padding: ${vars.spacingXs};
-  cursor: pointer;
-  transition: color ${vars.transitionStandard},
-    border-color ${vars.transitionStandard};
+const getClearSectionStyles = (props) => {
+  const vars = {
+    ...customProperties,
+    ...props.theme,
+  };
 
-  &:focus {
-    outline: auto 2px ${vars.borderColorForInputWhenFocused};
-    svg * {
+  return css`
+    align-items: center;
+    box-sizing: border-box;
+    height: ${vars.sizeHeightInput};
+    display: flex;
+    padding: ${vars.spacingXs};
+    cursor: pointer;
+    transition: color ${vars.transitionStandard},
+      border-color ${vars.transitionStandard};
+
+    &:focus {
+      outline: auto 2px ${vars.borderColorForInputWhenFocused};
+      svg * {
+        fill: ${vars.colorWarning};
+      }
+    }
+    &:hover svg * {
       fill: ${vars.colorWarning};
     }
-  }
-  &:hover svg * {
-    fill: ${vars.colorWarning};
-  }
-`;
+  `;
+};
 const getCalendarIconContainerStyles = (props, state) => {
+  const vars = {
+    ...customProperties,
+    ...props.theme,
+  };
+
   const baseIconStyles = css`
     align-items: center;
     box-sizing: border-box;
@@ -97,6 +109,11 @@ const getCalendarIconContainerStyles = (props, state) => {
 };
 
 const getInputContainerStyles = (props, state) => {
+  const vars = {
+    ...customProperties,
+    ...props.theme,
+  };
+
   const baseStyles = css`
     appearance: none;
     background-color: ${vars.backgroundColorForInput};
@@ -105,10 +122,13 @@ const getInputContainerStyles = (props, state) => {
     box-sizing: border-box;
     color: ${vars.fontColorForInput};
     width: 100%;
+    height: ${vars.sizeHeightInput};
     align-items: center;
     display: flex;
     font-size: ${vars.fontSizeDefault};
     font-family: inherit;
+    transition: border-color ${vars.transitionStandard},
+      box-shadow ${vars.transitionStandard};
 
     &:focus-within {
       border-color: ${vars.borderColorForInputWhenFocused};

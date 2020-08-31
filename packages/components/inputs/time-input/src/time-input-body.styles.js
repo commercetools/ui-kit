@@ -83,24 +83,6 @@ const getClockIconContainerStyles = (props) => {
       `,
     ];
   }
-  if (props.hasWarning) {
-    return [
-      baseIconStyles,
-      css`
-        color: ${overwrittenVars.fontColorForInputWhenWarning};
-        border-color: ${overwrittenVars.borderColorForInputWhenWarning};
-      `,
-    ];
-  }
-  if (props.isReadOnly) {
-    return [
-      baseIconStyles,
-      css`
-        color: ${overwrittenVars.fontColorForInputWhenReadonly};
-        border-color: ${overwrittenVars.borderColorForInputWhenReadonly};
-      `,
-    ];
-  }
   return baseIconStyles;
 };
 
@@ -118,10 +100,13 @@ const getInputContainerStyles = (props) => {
     box-sizing: border-box;
     color: ${overwrittenVars.fontColorForInput};
     width: 100%;
+    height: ${vars.sizeHeightInput};
     align-items: center;
     display: flex;
     font-size: ${overwrittenVars.fontSizeDefault};
     font-family: inherit;
+    transition: border-color ${overwrittenVars.transitionStandard},
+      box-shadow ${overwrittenVars.transitionStandard};
 
     &:focus-within {
       border-color: ${overwrittenVars.borderColorForInputWhenFocused};
@@ -147,15 +132,6 @@ const getInputContainerStyles = (props) => {
       css`
         color: ${overwrittenVars.fontColorForInputWhenError};
         border-color: ${overwrittenVars.borderColorForInputWhenError};
-      `,
-    ];
-  }
-  if (props.hasWarning) {
-    return [
-      baseStyles,
-      css`
-        color: ${overwrittenVars.fontColorForInputWhenWarning};
-        border-color: ${overwrittenVars.borderColorForInputWhenWarning};
       `,
     ];
   }

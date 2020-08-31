@@ -14,19 +14,15 @@ export const ClearSection = (props) => (
   <StyledClearSection
     label="clear"
     aria-label="clear"
-    onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
-    isReadOnly={props.isReadOnly}
+    onClick={props.onClear}
     hasError={props.hasError}
-    isDisabled={props.isDisabled}
   >
-    {!props.isDisabled && <CloseIcon size="medium" />}
+    <CloseIcon size="medium" />
   </StyledClearSection>
 );
 
 ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   onClear: PropTypes.func,
 };
@@ -77,12 +73,15 @@ export default class TimeInputBody extends React.Component {
             aria-readonly={this.props.isReadOnly}
             contentEditable={!this.props.isReadOnly}
           />
-          <ClearSection
-            isDisabled={this.props.isDisabled}
-            hasError={this.props.hasError}
-            isReadOnly={this.props.isReadOnly}
-            onClear={this.props.onClear}
-          />
+
+          {!this.props.isDisabled && !this.props.isReadOnly && (
+            <ClearSection
+              isDisabled={this.props.isDisabled}
+              hasError={this.props.hasError}
+              isReadOnly={this.props.isReadOnly}
+              onClear={this.props.onClear}
+            />
+          )}
           <StyledClockIconContainer
             htmlFor={this.props.id}
             data-toggle
