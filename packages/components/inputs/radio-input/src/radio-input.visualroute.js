@@ -95,7 +95,11 @@ export const component = () => (
         horizontalConstraint="m"
       >
         <RadioInput.Option value="apples">
-          <GreenBox />
+          <GreenBox>
+            {
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            }
+          </GreenBox>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -108,7 +112,11 @@ export const component = () => (
         horizontalConstraint="l"
       >
         <RadioInput.Option value="apples">
-          <GreenBox />
+          <GreenBox>
+            {
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            }
+          </GreenBox>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -121,7 +129,11 @@ export const component = () => (
         horizontalConstraint="xl"
       >
         <RadioInput.Option value="apples">
-          <GreenBox />
+          <GreenBox>
+            {
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            }
+          </GreenBox>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>
@@ -134,7 +146,11 @@ export const component = () => (
         horizontalConstraint="scale"
       >
         <RadioInput.Option value="apples">
-          <GreenBox />
+          <GreenBox>
+            {
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            }
+          </GreenBox>
         </RadioInput.Option>
       </RadioInput.Group>
     </Spec>

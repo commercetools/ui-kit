@@ -52,7 +52,9 @@ const Option = (props) => {
           <RadioOptionUncheckedIcon size="medium" />
         )}
       </div>
-      <LabelTextWrapper>{props.children}</LabelTextWrapper>
+      <LabelTextWrapper isDisabled={props.isDisabled}>
+        {props.children}
+      </LabelTextWrapper>
     </label>
   );
 };

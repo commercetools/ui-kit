@@ -47,7 +47,7 @@ const getCalendarIconContainerStyles = (props, state) => {
     border-left: 1px solid ${vars.borderColorForInput};
     border-top-right-radius: ${vars.borderRadiusForInput};
     border-bottom-right-radius: ${vars.borderRadiusForInput};
-    height: ${vars.sizeHeightInput};
+    height: 100%;
     display: flex;
     padding: ${vars.spacingXs};
     outline: 0;
