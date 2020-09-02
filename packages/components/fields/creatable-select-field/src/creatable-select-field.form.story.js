@@ -64,7 +64,7 @@ const options = [
   { value: 'deer', label: 'Deer' },
 ];
 
-storiesOf('Examples|Forms/Fields', module)
+storiesOf('Examples|Forms/Fields/SelectFields', module)
   .addDecorator(withKnobs)
   .addParameters({
     readme: {

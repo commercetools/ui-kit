@@ -18,7 +18,7 @@ import * as icons from '../../../icons';
 
 const iconNames = Object.keys(icons);
 
-storiesOf('Components|Inputs', module)
+storiesOf('Components|Inputs/SelectInputs', module)
   .addDecorator(withKnobs)
   .addParameters({
     readme: {

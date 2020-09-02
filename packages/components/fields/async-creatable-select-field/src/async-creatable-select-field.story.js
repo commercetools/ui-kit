@@ -68,7 +68,7 @@ const animalOptions = [
   { value: 'deer', label: 'Deer' },
 ];
 
-const filterColors = (inputValue) =>
+const filterAnimals = (inputValue) =>
   animalOptions.filter((animalOption) =>
     animalOption.label.toLowerCase().includes(inputValue.toLowerCase())
   );
@@ -76,9 +76,9 @@ const filterColors = (inputValue) =>
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue) =>
-  delay(500).then(() => filterColors(inputValue));
+  delay(500).then(() => filterAnimals(inputValue));
 
-storiesOf('Components|Fields', module)
+storiesOf('Components|Fields/SelectFields', module)
   .addDecorator(withKnobs)
   .addParameters({
     readme: {

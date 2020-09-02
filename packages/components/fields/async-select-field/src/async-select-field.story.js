@@ -78,7 +78,7 @@ const filterAnimals = (inputValue) =>
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterAnimals(inputValue));
 
-storiesOf('Components|Fields', module)
+storiesOf('Components|Fields/SelectFields', module)
   .addDecorator(withKnobs)
   .addParameters({
     readme: {
