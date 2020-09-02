@@ -38,9 +38,14 @@ const colourOptions = [
 ];
 
 const filterColors = (inputValue) =>
-  colourOptions.filter((colourOption) =>
-    colourOption.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  colourOptions.map((groupedOptionsList) => {
+    const filteredOptions = groupedOptionsList.options.filter((option) =>
+      option.label.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    return {
+      options: filteredOptions,
+    };
+  });
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
