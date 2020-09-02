@@ -50,7 +50,7 @@ const stateOptions = [
   { value: 'returned', label: 'Returned' },
 ];
 
-storiesOf('Examples|Forms/Inputs', module)
+storiesOf('Examples|Forms/Inputs/SelectInputs', module)
   .addDecorator(withKnobs)
   .addParameters({
     readme: {

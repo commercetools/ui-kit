@@ -115,7 +115,7 @@ class SelectStory extends React.Component {
   }
 }
 
-storiesOf('Components|Inputs', module)
+storiesOf('Components|Inputs/SelectInputs', module)
   .addDecorator(withKnobs)
   .addParameters({
     readme: {

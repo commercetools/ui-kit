@@ -78,7 +78,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
 
-storiesOf('Components|Fields', module)
+storiesOf('Components|Fields/SelectFields', module)
   .addDecorator(withKnobs)
   .addParameters({
     readme: {
