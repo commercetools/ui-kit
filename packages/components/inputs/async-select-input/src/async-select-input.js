@@ -134,6 +134,7 @@ const AsyncSelectInput = (props) => {
           loadOptions={props.loadOptions}
           cacheOptions={props.cacheOptions}
           iconLeft={props.iconLeft}
+          onSearchIconClick={props.onSearchIconClick}
         />
       </div>
     </Constraints.Horizontal>
@@ -328,6 +329,7 @@ AsyncSelectInput.propTypes = {
    * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
    */
   iconLeft: PropTypes.node,
+  onSearchIconClick: PropTypes.func,
 };
 
 addStaticFields(AsyncSelectInput, {
