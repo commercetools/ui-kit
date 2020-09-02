@@ -35,6 +35,10 @@ const AsyncSelectInput = (props) => {
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
+  const loadingMessage = () =>
+    props.loadingMessage
+      ? props.loadingMessage()
+      : intl.formatMessage(messages.loadingOptions);
 
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
@@ -79,6 +83,7 @@ const AsyncSelectInput = (props) => {
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
           name={props.name}
+          loadingMessage={loadingMessage}
           noOptionsMessage={
             props.noOptionsMessage ||
             (({ inputValue }) =>
@@ -134,7 +139,6 @@ const AsyncSelectInput = (props) => {
           loadOptions={props.loadOptions}
           cacheOptions={props.cacheOptions}
           iconLeft={props.iconLeft}
-          onSearchIconClick={props.onSearchIconClick}
         />
       </div>
     </Constraints.Horizontal>
@@ -284,6 +288,10 @@ AsyncSelectInput.propTypes = {
    */
   placeholder: PropTypes.string,
   /**
+   * loading message shown while the options are being loaded
+   */
+  loadingMessage: PropTypes.func,
+  /**
    * Sets the tabIndex attribute on the input
    */
   tabIndex: PropTypes.string,
@@ -329,7 +337,6 @@ AsyncSelectInput.propTypes = {
    * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
    */
   iconLeft: PropTypes.node,
-  onSearchIconClick: PropTypes.func,
 };
 
 addStaticFields(AsyncSelectInput, {

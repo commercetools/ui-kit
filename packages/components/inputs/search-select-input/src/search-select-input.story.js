@@ -10,27 +10,23 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import Section from '../../../../../.storybook/decorators/section';
-// import Readme from '../README.md';
 import SearchSelectInput from './search-select-input';
 import * as icons from '../../../icons';
-import {
-  FullDetailedSearchSelectInputOption,
-  BriefDetailedSearchSelectInputOption,
-} from './search-select-input-option';
+import { SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 
 const iconNames = Object.keys(icons);
 
 const colourOptions = [
-  { label: 'Ocean', value: 'ocean', key: 'ocean' },
-  { label: 'Blue', value: 'blue', key: 'blue' },
-  { label: 'Purple', value: 'purple', key: 'purple' },
-  { label: 'Red', value: 'red', key: 'red' },
-  { label: 'Orange', value: 'orange', key: 'orange' },
-  { label: 'Yellow', value: 'yellow', key: 'yellow' },
-  { label: 'Green', value: 'green', key: 'green' },
-  { label: 'Forest', value: 'forest', key: 'forest' },
-  { label: 'Slate', value: 'slate', key: 'slate' },
-  { label: 'Silver', value: 'silver', key: 'silver' },
+  { label: 'Ocean', value: 'ocean', key: 'ocean', id: '1' },
+  { label: 'Blue', value: 'blue', key: 'blue', id: '2' },
+  { label: 'Purple', value: 'purple', key: 'purple', id: '3' },
+  { label: 'Red', value: 'red', key: 'red', id: '4' },
+  { label: 'Orange', value: 'orange', key: 'orange', id: '5' },
+  { label: 'Yellow', value: 'yellow', key: 'yellow', id: '6' },
+  { label: 'Green', value: 'green', key: 'green', id: '7' },
+  { label: 'Forest', value: 'forest', key: 'forest', id: '8' },
+  { label: 'Slate', value: 'slate', key: 'slate', id: '9' },
+  { label: 'Silver', value: 'silver', key: 'silver', id: '10' },
 ];
 
 const filterColors = (inputValue) =>
@@ -48,21 +44,13 @@ class SelectStory extends React.Component {
   render() {
     const isMulti = boolean('isMulti', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
-    const optionComponent = select(
+    const noOptionsMessage = text('No Option Message', 'No options');
+    const loadingMessage = text('Loading options message', 'Loading...');
+    const optionType = select(
       'Dropdown option style',
-      ['single-option', 'brief-detailed-option', 'full-detailed-option'],
-      'single-option'
+      Object.values(SELECT_DROPDOWN_OPTION_TYPES),
+      SELECT_DROPDOWN_OPTION_TYPES.SINGLE_LINED_OPTION
     );
-    const dropdownOptionComponent = () => {
-      switch (optionComponent) {
-        case 'full-detailed-option':
-          return FullDetailedSearchSelectInputOption;
-        case 'brief-detailed-option':
-          return BriefDetailedSearchSelectInputOption;
-        default:
-          return null;
-      }
-    };
     return (
       <React.Fragment>
         <Section>
@@ -77,11 +65,7 @@ class SelectStory extends React.Component {
                     ['s', 'm', 'l', 'xl', 'scale'],
                     'scale'
                   )}
-                  components={{
-                    ...(dropdownOptionComponent() && {
-                      Option: dropdownOptionComponent(),
-                    }),
-                  }}
+                  optionType={optionType}
                   hasError={boolean('hasError', false)}
                   hasWarning={boolean('hasWarning', false)}
                   aria-label={text('aria-label', '')}
@@ -94,15 +78,8 @@ class SelectStory extends React.Component {
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
-                  noOptionsMessage={() =>
-                    text('No Option Message (non-empty input)', 'No options')
-                  }
-                  initialSuggestionMessage={() =>
-                    text(
-                      'Initial suggestion message (empty input)',
-                      'Please something to load options'
-                    )
-                  }
+                  noOptionsMessage={() => noOptionsMessage}
+                  loadingMessage={() => loadingMessage}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   name={text('name', 'form-field-name')}
                   onBlur={action('onBlur')}

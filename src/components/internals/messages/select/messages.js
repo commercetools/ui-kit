@@ -21,4 +21,9 @@ export default defineMessages({
     description: 'Default input placeholder text',
     defaultMessage: 'Select...',
   },
+  loadingOptions: {
+    id: 'UIKit.SelectInput.loadingOptions',
+    description: 'Default input loading text',
+    defaultMessage: 'Loading...',
+  },
 });

@@ -1,80 +1,33 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
-import { ThemeContext } from '@emotion/core';
-import { SafeHTMLElement } from '@commercetools-uikit/utils';
-import { SearchIconDropdownIndicator } from '@commercetools-uikit/select-utils';
-import AsyncSelectInput from '@commercetools-uikit/async-select-input';
-import messages from '../../../../../src/components/internals/messages/select';
-import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
-
-const useTheme = () => useContext(ThemeContext);
+import {
+  SafeHTMLElement,
+  filterAriaAttributes,
+} from '@commercetools-uikit/utils';
+import SearchIconDropdownIndicator from '../../../../../src/components/internals/search-icon-dropdown-indicator';
+import AsyncSelectInput from '../../async-select-input';
+import { SearchSelectInputOption } from './search-select-input-option';
+import { SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 
 const SearchSelectInput = (props) => {
-  const intl = useIntl();
-  const theme = useTheme();
-  const noOptionsMessageWithOutInputValue = props.initialSuggestionMessage
-    ? props.initialSuggestionMessage()
-    : intl.formatMessage(messages.noOptionsMessageWithoutInputValue);
-  const noOptionsMessageWithInputValue = props.noOptionsMessage
-    ? props.noOptionsMessage()
-    : intl.formatMessage(messages.noOptionsMessageWithInputValue);
-
   return (
     <AsyncSelectInput
-      horizontalConstraint={props.horizontalConstraint}
-      // react-select uses "id" (for the container) and "inputId" (for the input),
-      // but we use "id" (for the input) and "containerId" (for the container)
-      // instead.
-      // This makes it easier to less confusing to use with <label />s.
-      id={props.containerId}
-      inputId={props.id}
-      aria-label={props['aria-label']}
-      aria-labelledby={props['aria-labelledby']}
-      name={props.name}
-      placeholder={props.placeholder}
-      tabIndex={props.tabIndex}
-      iconLeft={props.iconLeft}
-      inputValue={props.inputValue}
-      value={props.value}
-      backspaceRemovesValue={props.backspaceRemovesValue}
-      hasWarning={props.hasWarning}
-      hasError={props.hasError}
-      isDisabled={props.isDisabled || props.isReadOnly}
-      isClearable={props.isClearable}
-      isOptionDisabled={props.isOptionDisabled}
-      isMulti={props.isMulti}
-      isSearchable={true}
-      autoFocus={props.isAutofocussed}
+      {...props}
+      {...filterAriaAttributes(props)}
       components={{
+        // eslint-disable-next-line react/display-name
+        Option: (optionInnerProps) => (
+          <SearchSelectInputOption
+            optionType={props.optionType}
+            optionInnerProps={optionInnerProps}
+          />
+        ),
         ...props.components,
         DropdownIndicator: SearchIconDropdownIndicator,
       }}
-      noOptionsMessage={({ inputValue }) =>
-        inputValue === ''
-          ? noOptionsMessageWithOutInputValue
-          : noOptionsMessageWithInputValue
-      }
-      styles={createSelectStyles(
-        {
-          menuPortalZIndex: props.menuPortalZIndex,
-        },
-        theme
-      )}
+      noOptionsMessage={props.noOptionsMessage}
+      isSearchable={true}
       showOptionGroupDivider={false}
-      maxMenuHeight={props.maxMenuHeight}
-      menuPortalTarget={props.menuPortalTarget}
-      menuShouldBlockScroll={props.menuShouldBlockScroll}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      onChange={props.onChange}
-      onInputChange={props.onInputChange}
-      tabSelectsValue={props.tabSelectsValue}
-      cacheOptions={props.cacheOptions}
-      loadOptions={props.loadOptions}
-      defaultOptions={false}
-      filterOption={props.filterOption}
-      onSearchIconClick={async (value) => props.loadOptions(value)}
     />
   );
 };
@@ -139,13 +92,12 @@ SearchSelectInput.propTypes = {
 
   // Async props
   loadOptions: PropTypes.func.isRequired,
+  loadingMessage: PropTypes.func,
   cacheOptions: PropTypes.any,
   filterOption: PropTypes.func,
 
-  // props that cant be changed by the user
-  // showOptionGroupDivider: PropTypes.bool,
-  // isSearchable: PropTypes.bool,
-  // defaultOptions: PropTypes.bool,
+  // options porps
+  optionType: PropTypes.oneOf(Object.values(SELECT_DROPDOWN_OPTION_TYPES)),
 };
 
 export default SearchSelectInput;
