@@ -46,6 +46,8 @@ const controlStyles = (props, theme) => (base, state) => {
       return 'pointer';
     })(),
     padding: `0 ${overwrittenVars.spacingS}`,
+    transition: `border-color ${overwrittenVars.transitionStandard},
+    box-shadow ${overwrittenVars.transitionStandard}`,
 
     boxShadow: state.isFocused
       ? `inset 0 0 0 2px ${
