@@ -23,18 +23,36 @@ class MoneyField extends React.Component {
 
   static propTypes = {
     // MoneyField
+    /**
+     * Used as HTML id property. An id is auto-generated when it is not specified.
+     */
     id: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    /**
+     * Horizontal size limit of the input fields.
+     */
+    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+    /**
+     * A map of errors. Error messages for known errors are rendered automatically.
+     * <br />
+     * Unknown errors will be forwarded to `renderError`
+     */
     errors: PropTypes.shape({
       missing: PropTypes.bool,
     }),
+    /**
+     * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
+     * <br />
+     * Signature: `(key, error) => React.node`
+     */
     renderError: PropTypes.func,
+    /**
+     * Indicates if the value is required. Shows an the "required asterisk" if so.
+     */
     isRequired: PropTypes.bool,
-    touched: PropTypes.shape({
-      amount: PropTypes.bool,
-      currencyCode: PropTypes.bool,
-    }),
-    hasHighPrecisionBadge: PropTypes.bool,
+    /**
+     * Indicates whether the field was touched. Errors will only be shown when the field was touched.
+     */
+    touched: PropTypes.bool,
 
     // Some other fields use isTouched, but the check isn't as simple here.
     // isTouched accepts a boolean, whereas touched takes an object.
@@ -49,33 +67,102 @@ class MoneyField extends React.Component {
     },
 
     // MoneyInput
+    /**
+     * Used as HTML `autocomplete` property
+     */
     autoComplete: PropTypes.string,
+    /**
+     * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).
+     */
     name: PropTypes.string,
+    /**
+     * Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator.
+     */
     value: PropTypes.shape({
       amount: PropTypes.string.isRequired,
       currencyCode: PropTypes.string.isRequired,
     }).isRequired,
+    /**
+     * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
+     */
     currencies: PropTypes.arrayOf(PropTypes.string),
+    /**
+     * Placeholder text for the amount input
+     */
     placeholder: PropTypes.string,
+    /**
+     * Called when input is blurred
+     */
     onBlur: PropTypes.func,
+    /**
+     * Called when input is focused
+     */
     onFocus: PropTypes.func,
+    /**
+     * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+     */
     isDisabled: PropTypes.bool,
+    /**
+     * Indicates that the field is displaying read-only content
+     */
     isReadOnly: PropTypes.bool,
+    /**
+     * Focus the input on initial render
+     */
     isAutofocussed: PropTypes.bool,
+    /**
+     * Called with the event of the input or dropdown when either the currency or the amount have changed.
+     * <br />
+     * Signature: `(event) => void`
+     */
     onChange: PropTypes.func.isRequired,
+    /**
+     * Dom element to portal the currency select menu to
+     */
     menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
+    /**
+     * z-index value for the currency select menu portal
+     */
     menuPortalZIndex: PropTypes.number,
+    /**
+     * whether the menu should block scroll while open
+     */
     menuShouldBlockScroll: PropTypes.bool,
 
     // LabelField
+    /**
+     * Title of the label
+     */
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    onInfoButtonClick: PropTypes.func,
+    /**
+     * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
+     */
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
       (props) => props.hintIcon
     ),
-    hintIcon: PropTypes.node,
+    /**
+     * Provides a description for the title.
+     */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /**
+     * Function called when info button is pressed.
+     * <br />
+     * Info button will only be visible when this prop is passed.
+     * <br />
+     * Signature: `(event) => void`
+     */
+    onInfoButtonClick: PropTypes.func,
+    /**
+     * Icon to be displayed beside the hint text.
+     * <br />
+     * Will only get rendered when `hint` is passed as well.
+     */
+    hintIcon: PropTypes.node,
+    /**
+     * Shows high precision badge in case current value uses high precision.
+     */
+    hasHighPrecisionBadge: PropTypes.bool,
   };
 
   static defaultProps = {
