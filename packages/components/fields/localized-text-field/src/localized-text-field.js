@@ -22,24 +22,75 @@ class LocalizedTextField extends React.Component {
 
   static propTypes = {
     // LocalizedTextField
+    /**
+     * Used as HTML id property. An id is auto-generated when it is not specified.
+     */
     id: PropTypes.string,
-    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    /**
+     * Horizontal size limit of the input fields.
+     */
+    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+    /**
+     * A map of errors. Error messages for known errors are rendered automatically.
+     * <br />
+     * Unknown errors will be forwarded to `renderError`
+     */
     errors: PropTypes.shape({
       missing: PropTypes.bool,
     }),
+    /**
+     * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
+     * <br />
+     * Signature: `(key, error) => React.node`
+     */
     renderError: PropTypes.func,
+    /**
+     * Indicates if the value is required. Shows an the "required asterisk" if so.
+     */
     isRequired: PropTypes.bool,
+    /**
+     * Indicates whether the field was touched. Errors will only be shown when the field was touched.
+     */
     touched: PropTypes.bool,
 
     // LocalizedTextInput
+    /**
+     * Used as HTML `autocomplete` of the input component. property
+     */
     autoComplete: PropTypes.string,
+    /**
+     * Used as HTML name of the input component. property
+     */
     name: PropTypes.string,
-    value: PropTypes.objectOf(PropTypes.string).isRequired,
+    /**
+     * Value of the input component.
+     */
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    /**
+     * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
+     * <br />
+     * Signature: `(event) => void`
+     */
     onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+    /**
+     * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
+     */
     selectedLanguage: PropTypes.string.isRequired,
+    /**
+     * Called when input is blurred
+     */
     onBlur: PropTypes.func,
+    /**
+     * Called when input is focused
+     */
     onFocus: PropTypes.func,
+    /**
+     * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
+     */
     hideLanguageExpansionControls: PropTypes.bool,
+    /**
+     * Controls whether one or all languages are visible by default
+     */
     defaultExpandLanguages: (props, propName, componentName, ...rest) => {
       if (
         props.hideLanguageExpansionControls &&
@@ -54,21 +105,62 @@ class LocalizedTextField extends React.Component {
       }
       return PropTypes.bool(props, propName, componentName, ...rest);
     },
+    /**
+     * Focus the input on initial render
+     */
     isAutofocussed: PropTypes.bool,
+    /**
+     * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+     */
     isDisabled: PropTypes.bool,
+    /**
+     * Indicates that the field is displaying read-only content
+     */
     isReadOnly: PropTypes.bool,
+    /**
+     * Placeholders for each language. Object of the same shape as `value`.
+     */
     placeholder: PropTypes.objectOf(PropTypes.string),
+    /**
+     * Errors for each translation. These are forwarded to the `errors` prop of `LocalizedTextInput`.
+     */
     errorsByLanguage: PropTypes.objectOf(PropTypes.node),
 
     // LabelField
+    /**
+     * Title of the label
+     */
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    /**
+     * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
+     */
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
       (props) => props.hintIcon
     ),
+    /**
+     * Provides a description for the title.
+     */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /**
+     * Function called when info button is pressed.
+     * <br />
+     * Info button will only be visible when this prop is passed.
+     * <br />
+     * Signature: `(event) => void`
+     */
     onInfoButtonClick: PropTypes.func,
+    /**
+     * Icon to be displayed beside the hint text.
+     * <br />
+     * Will only get rendered when `hint` is passed as well.
+     */
     hintIcon: PropTypes.node,
+    /**
+     * Badge to be displayed beside the label.
+     * <br />
+     * Might be used to display additional information about the content of the field (E.g verified email)
+     */
     badge: PropTypes.node,
   };
 
