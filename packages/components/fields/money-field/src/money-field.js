@@ -50,9 +50,14 @@ class MoneyField extends React.Component {
      */
     isRequired: PropTypes.bool,
     /**
-     * Indicates whether the field was touched. Errors will only be shown when the field was touched.
+     * Indicates whether the `currencyCode` or `amount` fields were touched.
+     * <br />
+     * Errors will only be shown when the field was touched.
      */
-    touched: PropTypes.bool,
+    touched: PropTypes.shape({
+      amount: PropTypes.bool,
+      currencyCode: PropTypes.bool,
+    }),
 
     // Some other fields use isTouched, but the check isn't as simple here.
     // isTouched accepts a boolean, whereas touched takes an object.

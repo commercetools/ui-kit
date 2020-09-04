@@ -63,9 +63,11 @@ class LocalizedMultilineTextField extends React.Component {
      */
     name: PropTypes.string,
     /**
-     * Value of the input component.
+     * Values to use.
+     * <br />
+     * Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`
      */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    value: PropTypes.objectOf(PropTypes.string).isRequired,
     /**
      * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
      * <br />

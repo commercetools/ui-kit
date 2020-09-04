@@ -58,13 +58,13 @@ class DateRangeField extends React.Component {
      */
     name: PropTypes.string,
     /**
-     * Value of the input
+     * The selected date range. Must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".
      */
-    value: PropTypes.string.isRequired,
+    value: PropTypes.arrayOf(PropTypes.string).isRequired,
     /**
-     * Called with an event holding the new value.
+     * Called when the date range changes, with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".
      * <br/>
-     * Required when input is not read only. Parent should pass it back as `value`-
+     * Required when input is not read only.
      * <br />
      * Signature: `(event) => void`
      */
