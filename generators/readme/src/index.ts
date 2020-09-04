@@ -335,6 +335,16 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
           ];
           break;
         }
+        case 'objectOf': {
+          propTypeNode = [
+            inlineCode(
+              `${propInfo.type.name}(${
+                (propInfo.type.value as ReactComponentPropType).name
+              })`
+            ),
+          ];
+          break;
+        }
         default: {
           propTypeNode = [
             inlineCode(
