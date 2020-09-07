@@ -310,7 +310,7 @@ describe('in multi mode', () => {
       });
       expect(queryByText('Mango')).not.toBeInTheDocument();
     });
-    it('should call onChange when value is cleared by clicking the clear button ', () => {
+    it('should call onChange when value is cleared by clicking the clear button', () => {
       const onChange = jest.fn();
       const { getByLabelText, getByTitle, queryByText } = renderInput({
         onChange,
@@ -345,7 +345,7 @@ describe('in multi mode', () => {
         expect(onChange).not.toHaveBeenCalled();
         expect(queryByText('Mango')).toBeInTheDocument();
       });
-      it('should not render the clear button ', () => {
+      it('should not render the clear button', () => {
         const { queryByTitle } = renderInput({
           isMulti: true,
           value: ['mango'],

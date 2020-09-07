@@ -38,7 +38,7 @@ describe('getIsDateInRange', () => {
       expect(getIsDateInRange('2020-01-01', undefined, max)).toBeFalsy();
     });
   });
-  describe('when passing no min or max ', () => {
+  describe('when passing no min or max', () => {
     it('should be true', () => {
       expect(getIsDateInRange('2019-06-01')).toBeTruthy();
     });

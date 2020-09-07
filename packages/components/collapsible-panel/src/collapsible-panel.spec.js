@@ -148,7 +148,7 @@ it('should not call "onToggle" when header is clicked while disabled', () => {
   expect(onToggle).not.toHaveBeenCalled();
 });
 
-it('should forward data-attributes ', () => {
+it('should forward data-attributes', () => {
   const { container } = render(
     <CollapsiblePanel header="Header" data-foo="bar">
       Children

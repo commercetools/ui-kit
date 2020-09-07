@@ -18,6 +18,7 @@ const colors = [
 
 describe('Icons', () => {
   colors.map((color) =>
+    // eslint-disable-next-line jest/valid-title
     it(capitalize(color), async () => {
       await page.goto(`${HOST}/icons/${color}`);
       await expect(page).toMatch(color);
