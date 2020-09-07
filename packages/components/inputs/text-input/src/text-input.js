@@ -36,20 +36,63 @@ const TextInput = (props) => {
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
+  id: PropTypes.string,
+  /**
+   * Used as HTML autocomplete property
+   */
   autoComplete: PropTypes.string,
   className: PropTypes.string,
-  id: PropTypes.string,
+  /**
+   * Used as HTML name of the input component. property
+   */
   name: PropTypes.string,
+  /**
+   * Value of the input component.
+   */
   value: PropTypes.string.isRequired,
+  /**
+   * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
+   * <br />
+   * Signature: `(event) => void`
+   */
   onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+  /**
+   * Called when input is blurred
+   * Signature: `(event) => void`
+   */
   onBlur: PropTypes.func,
+  /**
+   * Called when input is focused
+   * Signature: `(event) => void`
+   */
   onFocus: PropTypes.func,
+  /**
+   * Focus the input on initial render
+   */
   isAutofocussed: PropTypes.bool,
+  /**
+   * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * Indicates that the field is displaying read-only content
+   */
   isReadOnly: PropTypes.bool,
+  /**
+   * Indicates if the input has invalid values
+   */
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
+  /**
+   * Placeholder text for the input
+   */
   placeholder: PropTypes.string,
+  /**
+   * Horizontal size limit of the input fields.
+   */
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
 };
 
