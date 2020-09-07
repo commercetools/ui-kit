@@ -5,7 +5,7 @@
 
 ## Description
 
-A controlled date input component for single date.
+A controlled date input component for single date, with validation states and a label
 
 ## Installation
 
