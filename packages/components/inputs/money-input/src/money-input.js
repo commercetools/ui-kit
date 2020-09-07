@@ -722,27 +722,86 @@ MoneyInput.isTouched = (touched) =>
   Boolean(touched && touched.currencyCode && touched.amount);
 
 MoneyInput.propTypes = {
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
   id: PropTypes.string,
-  name: PropTypes.string,
+  /**
+   * Used as HTML `autocomplete` property
+   */
   autoComplete: PropTypes.string,
+  /**
+   * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).
+   */
+  name: PropTypes.string,
+  /**
+   * Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator.
+   */
   value: PropTypes.shape({
     amount: PropTypes.string.isRequired,
     currencyCode: PropTypes.string.isRequired,
   }).isRequired,
+  /**
+   * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
+   */
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  /**
+   * Placeholder text for the input
+   */
   placeholder: PropTypes.string,
-  onFocus: PropTypes.func,
+  /**
+   * Called when input is blurred
+   */
   onBlur: PropTypes.func,
+  /**
+   * Called when input is focused
+   */
+  onFocus: PropTypes.func,
+  /**
+   * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * Indicates that the field is displaying read-only content
+   */
   isReadOnly: PropTypes.bool,
+  /**
+   * Focus the input on initial render
+   */
   isAutofocussed: PropTypes.bool,
+  /**
+   * Called with the event of the input or dropdown when either the currency or the amount have changed.
+   * <br />
+   * Signature: `(event) => void`
+   */
   onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+  /**
+   * Dom element to portal the currency select menu to
+   */
   menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
-  menuPortalZIndex: PropTypes.number.isRequired,
+  /**
+   * z-index value for the currency select menu portal
+   */
+  menuPortalZIndex: PropTypes.number,
+  /**
+   * whether the menu should block scroll while open
+   */
   menuShouldBlockScroll: PropTypes.bool,
+  /**
+   * Indicates that input has errors
+   */
   hasError: PropTypes.bool,
+  /**
+   * Control to indicate on the input if there are selected values that are potentially invalid
+   */
   hasWarning: PropTypes.bool,
+  /**
+   * Shows high precision badge in case current value uses high precision.
+   */
   hasHighPrecisionBadge: PropTypes.bool,
+  /**
+   * Horizontal size limit of the input fields.
+   */
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
 };
 
