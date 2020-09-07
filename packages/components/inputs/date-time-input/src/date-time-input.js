@@ -56,18 +56,60 @@ class DateTimeInput extends React.Component {
       locale: PropTypes.string.isRequired,
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+
+    /**
+     * Horizontal size limit of the input field.
+     */
     horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    /**
+     * The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").
+     */
     value: PropTypes.string.isRequired,
+    /**
+     * Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".
+     * <br />
+     * Signature: `(event) => void`
+     */
     onChange: PropTypes.func.isRequired,
+    /**
+     * Called when the date input gains focus.
+     */
     onFocus: PropTypes.func,
+    /**
+     * Called when the date input loses focus.
+     */
     onBlur: PropTypes.func,
+    /**
+     * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
+     */
     timeZone: PropTypes.string.isRequired,
+    /**
+     * Used as the HTML `id` attribute.
+     */
     id: PropTypes.string,
+    /**
+     * Used as the HTML `name` attribute.
+     */
     name: PropTypes.string,
+    /**
+     * Placeholder value to show in the input field
+     */
     placeholder: PropTypes.string,
+    /**
+     * Disables the date picker
+     */
     isDisabled: PropTypes.bool,
+    /**
+     * Disables the date picker menu and sets the input field as read-only
+     */
     isReadOnly: PropTypes.bool,
+    /**
+     * Indicates the input field has an error
+     */
     hasError: PropTypes.bool,
+    /**
+     * Indicates the input field has a warning
+     */
     hasWarning: PropTypes.bool,
   };
   inputRef = React.createRef();
