@@ -199,19 +199,55 @@ LocalizedMultilineTextInput.displayName = 'LocalizedMultilineTextInput';
 LocalizedMultilineTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
 
 LocalizedMultilineTextInput.propTypes = {
+  /**
+   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`
+   */
   id: PropTypes.string,
+  /**
+   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
+   */
   name: PropTypes.string,
+  /**
+   * Used as HTML `autocomplete` property
+   */
   autoComplete: PropTypes.string,
-  // then input doesn't accept a "languages" prop, instead all possible
-  // languages have to exist (with empty or filled strings) on the value:
-  //   { en: 'foo', de: '', es: '' }
+  /**
+   * Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`
+   * <br />
+   * The input doesn't accept a "languages" prop, instead all possible
+   * languages have to exist (with empty or filled strings) on the value:
+   * <br />   { en: 'foo', de: '', es: '' }
+   */
   value: PropTypes.objectOf(PropTypes.string).isRequired,
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   * <br />
+   * Signature: `(event) => void`
+   */
   onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+  /**
+   * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
+   */
   selectedLanguage: PropTypes.string.isRequired,
+  /**
+   * Called when input is blurred
+   */
   onBlur: PropTypes.func,
+  /**
+   * Called when input is focused
+   */
   onFocus: PropTypes.func,
+  /**
+   * Expands input components holding multiline values instead of collpasing them by default.
+   */
   defaultExpandMultilineText: PropTypes.bool,
+  /**
+   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
+   */
   hideLanguageExpansionControls: PropTypes.bool,
+  /**
+   * Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.
+   */
   defaultExpandLanguages: (props, propName, componentName, ...rest) => {
     if (
       props.hideLanguageExpansionControls &&
@@ -226,14 +262,41 @@ LocalizedMultilineTextInput.propTypes = {
     }
     return PropTypes.bool(props, propName, componentName, ...rest);
   },
+  /**
+   * Sets the focus on the first input when `true` is passed.
+   */
   isAutofocussed: PropTypes.bool,
+  /**
+   * Disables all input fields.
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * Disables all input fields and shows them in read-only mode.
+   */
   isReadOnly: PropTypes.bool,
+  /**
+   * Placeholders for each language. Object of the same shape as `value`.
+   */
   placeholder: PropTypes.objectOf(PropTypes.string),
+  /**
+   * Horizontal size limit of the input fields.
+   */
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  /**
+   * Will apply the error state to each input without showing any error message.
+   */
   hasError: PropTypes.bool,
+  /**
+   * Will apply the warning state to each input without showing any error message.
+   */
   hasWarning: PropTypes.bool,
+  /**
+   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   */
   errors: PropTypes.objectOf(PropTypes.node),
+  /**
+   * Used to show warnings underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the warning to show for that key.
+   */
   warnings: PropTypes.objectOf(PropTypes.node),
 };
 
