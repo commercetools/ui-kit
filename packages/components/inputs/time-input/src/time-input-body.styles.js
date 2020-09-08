@@ -57,8 +57,7 @@ const getClockIconContainerStyles = (props) => {
     outline: 0;
     transition: color ${overwrittenVars.transitionStandard},
       border-color ${overwrittenVars.transitionStandard};
-    &:active,
-    &:hover,
+    &:hover:not(:disabled):not(:read-only),
     &:focus {
       border-color: ${overwrittenVars.borderColorForInputWhenFocused};
     }
@@ -124,8 +123,8 @@ const getInputContainerStyles = (props) => {
         ${overwrittenVars.borderColorForInputWhenFocused};
     }
 
-    &:focus,
-    &:hover {
+    :hover:not(:disabled):not(:read-only),
+    :focus {
       border-color: ${overwrittenVars.borderColorForInputWhenFocused};
     }
   `;

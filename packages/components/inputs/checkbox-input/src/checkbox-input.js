@@ -21,7 +21,7 @@ import Checkbox from './checkbox';
 const sequentialId = createSequentialId('checkbox-input-');
 
 const hoverStyles = (props) => {
-  if (!props.hasError && !props.disabled) {
+  if (!props.hasError && !props.readOnly && !props.disabled) {
     return css`
       &:hover svg [id$='borderAndContent'] > [id$='border'] {
         stroke: ${vars.borderColorForInputWhenFocused};
@@ -38,7 +38,11 @@ const LabelTextWrapper = styled.div`
 const Label = styled.label`
   display: flex;
   align-items: center;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => {
+    if (props.disabled) return 'not-allowed';
+    if (props.readOnly) return 'default';
+    return 'pointer';
+  }};
   position: relative;
 
   ${hoverStyles}
@@ -92,6 +96,7 @@ class CheckboxInput extends React.PureComponent {
         htmlFor={this.state.id}
         hasError={this.props.hasError}
         disabled={this.props.isDisabled}
+        readOnly={this.props.isReadOnly}
       >
         <Checkbox
           type="checkbox"

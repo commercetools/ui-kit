@@ -69,7 +69,12 @@ const getCheckboxWrapperStyles = (props, theme) => {
       `,
     ];
   }
-  if (props.isHovered && !props.isDisabled && !props.hasError) {
+  if (
+    props.isHovered &&
+    !props.isReadOnly &&
+    !props.isDisabled &&
+    !props.hasError
+  ) {
     return [
       baseStyles,
       css`

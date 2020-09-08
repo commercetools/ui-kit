@@ -33,7 +33,7 @@ const Label = styled.label`
 
   &:focus-within {
     outline: auto 2px ${vars.borderColorForInputWhenFocused};
-    outline-offset: 1px;
+    outline-offset: 3px;
   }
 `;
 

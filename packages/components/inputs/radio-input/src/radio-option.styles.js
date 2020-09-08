@@ -105,6 +105,10 @@ const getLabelStyles = (props) => {
     &:hover svg [id$='borderAndContent'] > [id$='border'] {
       stroke: ${vars.borderColorForInputWhenFocused};
     }
+    :focus-within ${LabelTextWrapper} {
+      outline: auto 2px ${vars.borderColorForInputWhenFocused};
+      outline-offset: 3px;
+    }
   `;
   if (props.isDisabled) {
     return [
@@ -152,15 +156,7 @@ const getLabelStyles = (props) => {
       `,
     ];
   }
-  return [
-    baseStyles,
-    css`
-      :focus-within ${LabelTextWrapper} {
-        outline: auto 2px ${vars.borderColorForInputWhenFocused};
-        outline-offset: 3px;
-      }
-    `,
-  ];
+  return baseStyles;
 };
 
 export { getContainerStyles, getLabelStyles, LabelTextWrapper };

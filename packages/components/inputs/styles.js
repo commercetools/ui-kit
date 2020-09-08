@@ -35,14 +35,14 @@ const getInputStyles = (props, theme) => {
     &::placeholder {
       color: ${overwrittenVars[designTokens.placeholderFontColorForInput]};
     }
-    &:active,
-    &:focus,
-    &:hover {
+    :active,
+    :focus,
+    :hover:not(:disabled):not(:read-only) {
       border-color: ${overwrittenVars[
         designTokens.borderColorForInputWhenFocused
       ]};
     }
-    &:focus {
+    :focus {
       box-shadow: inset 0 0 0 2px
         ${overwrittenVars[designTokens.borderColorForInputWhenFocused]};
     }

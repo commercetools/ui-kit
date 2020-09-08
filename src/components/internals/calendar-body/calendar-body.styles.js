@@ -54,7 +54,7 @@ const getCalendarIconContainerStyles = (props, state) => {
     transition: color ${vars.transitionStandard},
       border-color ${vars.transitionStandard};
     &:active,
-    &:hover,
+    &:hover:not(:disabled)&:not(:read-only),
     &:focus {
       border-color: ${vars.borderColorForInputWhenFocused};
     }
