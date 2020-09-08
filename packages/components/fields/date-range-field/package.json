@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/date-range-field",
   "version": "10.31.0",
-  "description": "",
+  "description": "A controlled date input component for a date range, with validation states and a label.",
   "main": "dist/date-range-field.cjs.js",
   "module": "dist/date-range-field.esm.js",
   "private": false,

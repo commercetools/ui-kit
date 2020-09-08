@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-select-field",
   "version": "10.31.0",
-  "description": "",
+  "description": "A controlled input component with validation states and a label getting a selection from an asynchronously loaded list from the user.",
   "main": "dist/async-select-field.cjs.js",
   "module": "dist/async-select-field.esm.js",
   "private": false,

@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/text-field",
   "version": "10.30.1",
-  "description": "",
+  "description": "A controlled text input component for single-line strings with validation states.",
   "main": "dist/text-field.cjs.js",
   "module": "dist/text-field.esm.js",
   "private": false,

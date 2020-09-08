@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/money-field",
   "version": "10.31.0",
-  "description": "",
+  "description": "A controlled input component for money values with validation states and a label.",
   "main": "dist/money-field.cjs.js",
   "module": "dist/money-field.esm.js",
   "private": false,

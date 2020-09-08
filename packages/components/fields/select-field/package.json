@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/select-field",
   "version": "10.31.0",
-  "description": "",
+  "description": "A controlled input component with validation states and a label getting a selection from the user.",
   "main": "dist/select-field.cjs.js",
   "module": "dist/select-field.esm.js",
   "private": false,

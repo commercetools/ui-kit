@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/select-input",
   "version": "10.31.0",
-  "description": "",
+  "description": "An input component getting a selection from the user.",
   "main": "dist/select-input.cjs.js",
   "module": "dist/select-input.esm.js",
   "private": false,
