@@ -35,6 +35,7 @@ const SearchSelectInput = (props) => {
       loadingMessage={loadingMessage}
       noOptionsMessage={noOptionsMessage}
       isSearchable={true}
+      defaultOptions={false}
       showOptionGroupDivider={false}
     />
   );
