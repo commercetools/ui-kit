@@ -66,7 +66,7 @@ export default class AsyncCreatableSelectField extends React.Component {
      */
     'aria-labelledby': PropTypes.string,
     /**
-     * 	Focus the control when it is mounted
+     * Focus the control when it is mounted
      */
     isAutofocussed: PropTypes.bool,
     /**
@@ -113,7 +113,7 @@ export default class AsyncCreatableSelectField extends React.Component {
     isSearchable: PropTypes.bool,
     hasWarning: PropTypes.bool,
     /**
-     * 	Maximum height of the menu before scrolling
+     * Maximum height of the menu before scrolling
      */
     maxMenuHeight: PropTypes.number,
     /**

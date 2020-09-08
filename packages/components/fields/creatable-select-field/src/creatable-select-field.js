@@ -111,7 +111,7 @@ export default class CreatableSelectField extends React.Component {
     isSearchable: PropTypes.bool,
     hasWarning: PropTypes.bool,
     /**
-     * 	Maximum height of the menu before scrolling
+     * Maximum height of the menu before scrolling
      */
     maxMenuHeight: PropTypes.number,
     /**
