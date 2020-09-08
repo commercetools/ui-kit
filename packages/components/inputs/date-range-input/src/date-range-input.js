@@ -88,18 +88,59 @@ class DateRangeCalendar extends React.Component {
       locale: PropTypes.string.isRequired,
       formatMessage: PropTypes.func.isRequired,
     }).isRequired,
+    /**
+     * Horizontal size limit of the input field.
+     */
     horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
-    isClearable: PropTypes.bool,
+    /**
+     * The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".
+     */
     value: PropTypes.arrayOf(PropTypes.string).isRequired,
+    /**
+     * Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".
+     * <br />
+     * Signature: `(event) => void`
+     */
     onChange: PropTypes.func.isRequired,
+    /**
+     * Allows the range to be cleared
+     */
+    isClearable: PropTypes.bool,
+    /**
+     * Called when the date input gains focus.
+     */
     onFocus: PropTypes.func,
+    /**
+     * Called when the date input loses focus.
+     */
     onBlur: PropTypes.func,
+    /**
+     * Used as the HTML `id` attribute.
+     */
     id: PropTypes.string,
+    /**
+     * Used as the HTML `name` attribute.
+     */
     name: PropTypes.string,
+    /**
+     * Placeholder value to show in the input field
+     */
     placeholder: PropTypes.string,
+    /**
+     * Disables the date picker
+     */
     isDisabled: PropTypes.bool,
+    /**
+     * Disables the date picker menu and makes input field read-only
+     */
     isReadOnly: PropTypes.bool,
+    /**
+     * Indicates the input field has an error
+     */
     hasError: PropTypes.bool,
+    /**
+     * Indicates the input field has warning
+     */
     hasWarning: PropTypes.bool,
   };
   static defaultProps = {

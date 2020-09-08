@@ -65,9 +65,26 @@ const FieldErrors = (props) => {
 FieldErrors.displayName = 'FieldErrors';
 
 FieldErrors.propTypes = {
+  /**
+   * List of errors. Only entries with truthy values will count as active errors.
+   */
   errors: PropTypes.object,
+  /**
+   * `true` when the error messages should be rendered. Usually you'd pass in a `touched` state of fields.
+   */
   isVisible: PropTypes.bool,
+  /**
+   * Function which gets called with each error key (from the `errors` prop) and may render an error message or return `null` to hand the error handling off to `renderDefaultError`.
+   * <br />
+   * Signature: `(key, error) => React.node`
+   */
   renderError: PropTypes.func,
+  /**
+   * Function which gets called with each error key (from the `errors` prop) for which `renderError` returned `null`.
+   * It may render an error message or return `null` to hand the error handling off to `FieldError`s built-in error handling.
+   * <br />
+   * Signature: `(key, error) => React.node`
+   */
   renderDefaultError: PropTypes.func,
 };
 

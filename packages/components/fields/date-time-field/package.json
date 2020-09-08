@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/date-time-field",
   "version": "10.31.0",
-  "description": "",
+  "description": "A controlled date time input component for single date, with validation states and a label.",
   "main": "dist/date-time-field.cjs.js",
   "module": "dist/date-time-field.esm.js",
   "private": false,
@@ -11,7 +11,8 @@
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
+    "generate-readme": "generate-readme ."
   },
   "files": ["dist"],
   "sideEffects": false,

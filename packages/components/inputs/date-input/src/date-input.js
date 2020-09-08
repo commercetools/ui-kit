@@ -251,19 +251,63 @@ DateInput.displayName = 'DateInput';
 DateInput.isEmpty = (value) => value === '';
 
 DateInput.propTypes = {
+  /**
+   * Horizontal size limit of the input field.
+   */
   horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  /**
+   * The selected date, must either be an empty string or a date formatted as "YYYY-MM-DD".
+   */
   value: PropTypes.string.isRequired,
+  /**
+   * Called when the date changes. Called with an event containing either an empty string (no value) or a string in this format: "YYYY-MM-DD".
+   * <br />
+   * Signature: `(event) => void`
+   */
   onChange: PropTypes.func.isRequired,
+  /**
+   * Called when the date input gains focus.
+   */
   onFocus: PropTypes.func,
+  /**
+   * Called when the date input loses focus.
+   */
   onBlur: PropTypes.func,
+  /**
+   * Used as the HTML `id` attribute.
+   */
   id: PropTypes.string,
+  /**
+   * Used as the HTML `name` attribute.
+   */
   name: PropTypes.string,
+  /**
+   * Placeholder value to show in the input field
+   */
   placeholder: PropTypes.string,
+  /**
+   * Disables the date picker
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * Disables the date picker menu and makes input field read-only
+   */
   isReadOnly: PropTypes.bool,
+  /**
+   * Indicates the input field has an error
+   */
   hasError: PropTypes.bool,
+  /**
+   * Indicates the input field has a warning
+   */
   hasWarning: PropTypes.bool,
+  /**
+   * A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
+   */
   minValue: PropTypes.string,
+  /**
+   * A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
+   */
   maxValue: PropTypes.string,
 };
 

@@ -21,36 +21,122 @@ class RadioField extends React.Component {
 
   static propTypes = {
     // RadioField
+    /**
+     * Used as HTML id property. An id is auto-generated when it is not specified.
+     */
     id: PropTypes.string,
+    /**
+     * Horizontal size limit of the input fields.
+     */
     horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    /**
+     * A map of errors. Error messages for known errors are rendered automatically. Unknown errors will be forwarded to `renderError`.
+     */
     errors: PropTypes.shape({
       missing: PropTypes.bool,
     }),
+    /**
+     * Called with custom errors.
+     * <br/>
+     * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
+     * <br/>
+     * Signature: `(key, error) => React.node`
+     */
     renderError: PropTypes.func,
+    /**
+     * Indicates if the value is required. Shows an the "required asterisk" if so.
+     */
     isRequired: PropTypes.bool,
+    /**
+     * Indicates whether the field was touched. Errors will only be shown when the field was touched.
+     */
     touched: PropTypes.bool,
 
     // RadioInput
+    /**
+     * Used as HTML name of the input component.
+     */
     name: PropTypes.string,
+    /**
+     * Value of the input component.
+     */
     value: PropTypes.string.isRequired,
+    /**
+     * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
+     * <br />
+     * Signature: `(event) => void`
+     */
     onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+    /**
+     * Called when input is blurred
+     * <br />
+     * Signature: `(event) => void`
+     */
     onBlur: PropTypes.func,
+    /**
+     * Called when input is focused
+     * <br />
+     * Signature: `(event) => void`
+     */
     onFocus: PropTypes.func,
+    /**
+     * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+     */
     isDisabled: PropTypes.bool,
+    /**
+     * Indicates that the field is displaying read-only content
+     */
     isReadOnly: PropTypes.bool,
+    /**
+     * Rendering direction of the radio `RadioInput.Option`s
+     */
     direction: PropTypes.oneOf(['stack', 'inline']),
+    /**
+     * Passes props of the `Spacings.Stack` or `Spacings.Inline`, dependeing on the chosen direction
+     */
     directionProps: PropTypes.object,
+    /**
+     * At least one `RadioInput.Option` component or another node (mixed children are allowed)
+     */
     children: PropTypes.node.isRequired,
 
     // LabelField
+    /**
+     * Title of the label
+     */
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    /**
+     * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas description can describe it in more depth.
+     * <br />
+     * Can also receive a `hintIcon`.
+     */
     hint: requiredIf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
       (props) => props.hintIcon
     ),
+    /**
+     * Provides a description for the title.
+     */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /**
+     * Function called when info button is pressed.
+     * <br />
+     * Info button will only be visible when this prop is passed.
+     * <br />
+     * Signature: `(event) => void`
+     */
     onInfoButtonClick: PropTypes.func,
+    /**
+     * Icon to be displayed beside the hint text.
+     * <br />
+     * Will only get rendered when `hint` is passed as well.
+     */
     hintIcon: PropTypes.node,
+    /**
+     * Badge to be displayed beside the label.
+     * <br />
+     * Might be used to display additional information about the content of the field (E.g verified email)
+     */
     badge: PropTypes.node,
   };
 

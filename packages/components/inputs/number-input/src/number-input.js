@@ -37,23 +37,80 @@ const NumberInput = (props) => (
 NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
   id: PropTypes.string,
+  /**
+   * Used as HTML name of the input component. property
+   */
   name: PropTypes.string,
+  /**
+   * Used as HTML `autocomplete` of the input component. property
+   */
   autoComplete: PropTypes.string,
+  /**
+   * Value of the input component.
+   */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  /**
+   * Value is used as `min` property on input field
+   */
   min: PropTypes.number,
+  /**
+   * Value is used as `max` property on input field
+   */
   max: PropTypes.number,
+  /**
+   * Value is used as `step` property on input field
+   */
   step: PropTypes.number,
+  /**
+   * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
+   * <br />
+   * Signature: `(event) => void`
+   */
   onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+  /**
+   * Called when input is blurred
+   * <br />
+   * Signature: `(event) => void`
+   */
   onBlur: PropTypes.func,
+  /**
+   * Called when input is focused
+   * <br />
+   * Signature: `(event) => void`
+   */
   onFocus: PropTypes.func,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
+  /**
+   * Focus the input on initial render
+   */
   isAutofocussed: PropTypes.bool,
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
+  /**
+   * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+   */
+  isDisabled: PropTypes.bool,
+  /**
+   * Indicates that the field is displaying read-only content
+   */
+  isReadOnly: PropTypes.bool,
+  /**
+   * Placeholder text for the input
+   */
   placeholder: PropTypes.string,
-  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+  /**
+   * Indicates that input has errors
+   */
+  hasError: PropTypes.bool,
+  /**
+   * Control to indicate on the input if there are selected values that are potentially invalid
+   */
+  hasWarning: PropTypes.bool,
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
 };
 
 NumberInput.defaultProps = {

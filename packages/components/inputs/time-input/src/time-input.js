@@ -98,19 +98,66 @@ TimeInput.to24h = (time) => {
 };
 
 TimeInput.propTypes = {
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
   id: PropTypes.string,
-  name: PropTypes.string,
-  autoComplete: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  hasError: PropTypes.bool,
-  isAutofocussed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  placeholder: PropTypes.string,
+  /**
+   * Horizontal size limit of the input fields.
+   */
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  /**
+   * Used as HTML name of the input component.
+   */
+  name: PropTypes.string,
+  /**
+   * Used as HTML autocomplete of the input component.
+   */
+  autoComplete: PropTypes.string,
+  /**
+   * Value of the input
+   */
+  value: PropTypes.string,
+  /**
+   * Called with an event holding the new value.
+   * <br/>
+   * Required when input is not read only. Parent should pass it back as `value`-
+   * <br />
+   * Signature: `(event) => void`
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * Called when input is blurred
+   * <br/>
+   * Signature: `(event) => void`
+   */
+  onBlur: PropTypes.func,
+  /**
+   * Called when input is focused
+   * <br/>
+   * Signature: `(event) => void`
+   */
+  onFocus: PropTypes.func,
+  /**
+   * Focus the input on initial render
+   */
+  isAutofocussed: PropTypes.bool,
+  /**
+   * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+   */
+  isDisabled: PropTypes.bool,
+  /**
+   * Placeholder text for the input
+   */
+  placeholder: PropTypes.string,
+  /**
+   * Indicates if the input has invalid values
+   */
+  hasError: PropTypes.bool,
+  /**
+   * Indicates that the field is displaying read-only content
+   */
+  isReadOnly: PropTypes.bool,
 };
 
 TimeInput.defaultProps = {

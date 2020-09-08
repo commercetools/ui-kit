@@ -182,9 +182,22 @@ SelectInput.defaultProps = {
 
 SelectInput.propTypes = {
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  /**
+   * Indicates that input has errors
+   */
   hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
+  /**
+   * Is the select read-only
+   */
   isReadOnly: PropTypes.bool,
+
+  /**
+   * Control to indicate on the input if there are selected values that are potentially invalid
+   */
+  hasWarning: PropTypes.bool,
+  /**
+   * 	Icon to display on the left of the placeholder text and selected value. Has no effect when isMulti is enabled.
+   */
   iconLeft: PropTypes.node,
 
   // react-select base props
@@ -195,9 +208,21 @@ SelectInput.propTypes = {
   // components as well!
   //
   // See https://react-select.com/props#select-props
+  /**
+   * Aria label (for assistive tech)
+   */
   'aria-label': PropTypes.string,
+  /**
+   * HTML ID of an element that should be used as the label (for assistive tech)
+   */
   'aria-labelledby': PropTypes.string,
-  isAutofocussed: PropTypes.bool, // original: autoFocus
+  /**
+   * Focus the control when it is mounted
+   */
+  isAutofocussed: PropTypes.bool,
+  /**
+   * Remove the currently focused option when the user presses backspace
+   */
   backspaceRemovesValue: PropTypes.bool,
   // blurInputOnSelect: PropTypes.bool,
   // captureMenuScroll: PropTypes.bool,
@@ -205,45 +230,118 @@ SelectInput.propTypes = {
   // classNamePrefix: PropTypes.string,
   // closeMenuOnSelect: PropTypes.bool,
   // closeMenuOnScroll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  /**
+   * Map of components to overwrite the default ones, see what components you can override
+   */
   components: PropTypes.objectOf(PropTypes.func),
   // controlShouldRenderValue: PropTypes.bool,
   // delimiter: PropTypes.string,
   // escapeClearsValue: PropTypes.bool,
+  /**
+   * Custom method to filter whether an option should be displayed in the menu
+   * <br />
+   * Signature: `(option, rawInput) => boolean`
+   */
   filterOption: PropTypes.func,
   // formatGroupLabel: PropTypes.func,
   // formatOptionLabel: PropTypes.func,
   // getOptionLabel: PropTypes.func,
   // getOptionValue: PropTypes.func,
   // hideSelectedOptions: PropTypes.bool,
-  // This forwarded as react-select's "inputId"
+  /**
+   * Used as HTML id property. An id is generated automatically when not provided.
+   *This forwarded as react-select's "inputId"
+   */
   id: PropTypes.string,
   inputValue: PropTypes.string,
-  // This is forwarded as react-select's "id"
+  /**
+   * The id to set on the SelectContainer component
+   * This is forwarded as react-select's "id"
+   */
   containerId: PropTypes.string,
   // instanceId: PropTypes.string,
+  /**
+   * Is the select value clearable
+   */
   isClearable: PropTypes.bool,
+  /**
+   * Is the select disabled
+   */
   isDisabled: PropTypes.bool,
   // isLoading: PropTypes.bool,
+  /**
+   * Override the built-in logic to detect whether an option is disabled
+   */
   isOptionDisabled: PropTypes.func,
   // isOptionSelected: PropTypes.func,
+  /**
+   * Support multiple selected options
+   */
   isMulti: PropTypes.bool,
   // isRtl: PropTypes.bool,
+  /**
+   * Whether to enable search functionality
+   */
   isSearchable: PropTypes.bool,
   // loadingMessage: PropTypes.func,
   // minMenuHeight: PropTypes.number,
+  /**
+   * Maximum height of the menu before scrolling
+   */
   maxMenuHeight: PropTypes.number,
   // menuIsOpen: PropTypes.bool,
   // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
   // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
+  /**
+   * Dom element to portal the select menu to
+   */
   menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
-  menuPortalZIndex: PropTypes.number.isRequired,
+  /**
+   * z-index value for the menu portal
+   */
+  menuPortalZIndex: PropTypes.number,
+  /**
+   * whether the menu should block scroll while open
+   */
   menuShouldBlockScroll: PropTypes.bool,
   // menuShouldScrollIntoView: PropTypes.bool,
+  /**
+   * Name of the HTML Input (optional - without this, no input will be rendered)
+   */
   name: PropTypes.string,
+  /**
+   * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with { inputValue: String }.
+   * <br />
+   * `inputValue` will be an empty string when no search text is present.
+   * <br />
+   * Signature: `({ inputValue}) => string`
+   */
   noOptionsMessage: PropTypes.func,
+  /**
+   * Handle blur events on the control
+   * <br />
+   * Signature: `(event) => void`
+   */
   onBlur: PropTypes.func,
+  /**
+   * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
+   * <br/>
+   * The value will be the selected option, or an array of options in case isMulti is true.
+   * <br />
+   * Signature: `(event) => void`
+   */
   onChange: PropTypes.func,
+  /**
+   * Handle focus events on the control
+   * <br />
+   * Signature: `(event) => void`
+   */
   onFocus: PropTypes.func,
+  /**
+   * Handle change events on the input
+   * <br />
+   * Signature: `(newValue, actionMeta) => void`
+   */
   onInputChange: PropTypes.func,
   // onKeyDown: PropTypes.func,
   // onMenuOpen: PropTypes.func,
@@ -252,6 +350,9 @@ SelectInput.propTypes = {
   // onMenuScrollToBottom: PropTypes.func,
   // openMenuOnFocus: PropTypes.bool,
   // openMenuOnClick: PropTypes.bool,
+  /**
+   * Array of options that populate the select menu
+   */
   options: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({ value: PropTypes.string.isRequired }),
@@ -264,12 +365,24 @@ SelectInput.propTypes = {
   ),
   showOptionGroupDivider: PropTypes.bool,
   // pageSize: PropTypes.number,
+  /**
+   * Placeholder text for the select value
+   */
   placeholder: PropTypes.string,
   // screenReaderStatus: PropTypes.func,
   // styles: PropTypes.objectOf(PropTypes.func),
   // theme: PropTypes.object,
+  /**
+   * Sets the tabIndex attribute on the input
+   */
   tabIndex: PropTypes.string,
+  /**
+   * Select the currently focused option when the user presses tab
+   */
   tabSelectsValue: PropTypes.bool,
+  /**
+   * The value of the select; reflected by the selected option
+   */
   value: (props, ...rest) =>
     props.isMulti
       ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)

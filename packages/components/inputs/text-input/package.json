@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/text-input",
   "version": "10.30.1",
-  "description": "",
+  "description": "A controlled text input component for single-line strings with validation states.",
   "main": "dist/text-input.cjs.js",
   "module": "dist/text-input.esm.js",
   "private": false,
@@ -11,7 +11,8 @@
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
+    "generate-readme": "generate-readme ."
   },
   "files": ["dist"],
   "sideEffects": false,

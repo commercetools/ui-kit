@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/multiline-text-field",
   "version": "10.30.1",
-  "description": "",
+  "description": "A controlled text input component for multi-line strings with validation states and a label.",
   "main": "dist/multiline-text-field.cjs.js",
   "module": "dist/multiline-text-field.esm.js",
   "private": false,
@@ -11,7 +11,8 @@
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
+    "generate-readme": "generate-readme ."
   },
   "files": ["dist"],
   "sideEffects": false,
