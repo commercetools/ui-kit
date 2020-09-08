@@ -13,6 +13,7 @@ import Section from '../../../../../.storybook/decorators/section';
 import SearchSelectInput from './search-select-input';
 import * as icons from '../../../icons';
 import { SELECT_DROPDOWN_OPTION_TYPES } from './constants';
+import Readme from '../README.md';
 
 const iconNames = Object.keys(icons);
 
@@ -140,4 +141,10 @@ class SearchSelectInputStory extends React.Component {
 
 storiesOf('Components|Inputs/SelectInputs', module)
   .addDecorator(withKnobs)
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('SearchSelectInput', () => <SearchSelectInputStory />);
