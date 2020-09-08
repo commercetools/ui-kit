@@ -14,10 +14,10 @@ export const FullDetailedSearchSelectInputOption = (props) => {
           {data.label || NO_VALUE_FALLBACK}
         </Text.Detail>
         <Text.Detail>
-          {(data.id && ` ID: ${data.id}`) || NO_VALUE_FALLBACK}
+          {(data.key && ` Key: ${data.key}`) || NO_VALUE_FALLBACK}
         </Text.Detail>
         <Text.Detail>
-          {(data.key && ` Key: ${data.key}`) || NO_VALUE_FALLBACK}
+          {(data.id && ` ID: ${data.id}`) || NO_VALUE_FALLBACK}
         </Text.Detail>
       </Spacings.Stack>
     </components.Option>

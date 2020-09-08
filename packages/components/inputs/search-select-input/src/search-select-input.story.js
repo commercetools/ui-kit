@@ -17,7 +17,12 @@ import { SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 const iconNames = Object.keys(icons);
 
 const colourOptions = [
-  { label: 'Ocean', value: 'ocean', key: 'ocean', id: '1' },
+  {
+    label:
+      'This is label is very long and the reason that it is very long is to test how it is displayed in the dropdown or when it is select.',
+    value: 'ocean',
+    id: '1',
+  },
   { label: 'Blue', value: 'blue', key: 'blue', id: '2' },
   { label: 'Purple', value: 'purple', key: 'purple', id: '3' },
   { label: 'Red', value: 'red', key: 'red', id: '4' },
@@ -30,22 +35,29 @@ const colourOptions = [
 ];
 
 const filterColors = (inputValue) =>
-  colourOptions.filter((colourOption) =>
-    colourOption.label.toLowerCase().includes(inputValue.toLowerCase())
+  colourOptions.filter(
+    (colourOption) =>
+      colourOption.label === inputValue || colourOption.id === inputValue
   );
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue) =>
-  delay(500).then(() => filterColors(inputValue));
+  delay(2000).then(() => filterColors(inputValue));
 
-class SelectStory extends React.Component {
-  static displayName = 'SelectStory';
+class SearchSelectInputStory extends React.Component {
+  static displayName = 'SearchSelectInputStory';
   render() {
     const isMulti = boolean('isMulti', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
-    const noOptionsMessage = text('No Option Message', 'No options');
-    const loadingMessage = text('Loading options message', 'Loading...');
+    const noOptionsMessage = text(
+      'No options message',
+      'No exact matches found'
+    );
+    const loadingMessage = text(
+      'Loading options message',
+      'Loading extact matches'
+    );
     const optionType = select(
       'Dropdown option style',
       Object.values(SELECT_DROPDOWN_OPTION_TYPES),
@@ -78,8 +90,8 @@ class SelectStory extends React.Component {
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
-                  noOptionsMessage={() => noOptionsMessage}
-                  loadingMessage={() => loadingMessage}
+                  noOptionsMessage={noOptionsMessage}
+                  loadingMessage={loadingMessage}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   name={text('name', 'form-field-name')}
                   onBlur={action('onBlur')}
@@ -100,6 +112,23 @@ class SelectStory extends React.Component {
                     iconLeft ? React.createElement(iconLeft) : undefined
                   }
                 />
+                <div>
+                  <p>
+                    The options fetching uses the data (given below) to perform
+                    an exact match. It is case sensitive and it perfrom search
+                    based on{' '}
+                    <b>
+                      <i>id</i>
+                    </b>{' '}
+                    and{' '}
+                    <b>
+                      <i>label</i>
+                    </b>{' '}
+                    fields with 2 seconds of delay
+                  </p>
+                  <b>Data used:</b>
+                  <pre>{JSON.stringify(colourOptions, undefined, 2)}</pre>
+                </div>
               </div>
             )}
           />
@@ -111,4 +140,4 @@ class SelectStory extends React.Component {
 
 storiesOf('Components|Inputs/SelectInputs', module)
   .addDecorator(withKnobs)
-  .add('SearchSelectInput', () => <SelectStory />);
+  .add('SearchSelectInput', () => <SearchSelectInputStory />);
