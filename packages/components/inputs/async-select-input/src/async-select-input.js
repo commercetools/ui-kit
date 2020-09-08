@@ -157,9 +157,21 @@ AsyncSelectInput.defaultProps = {
 };
 
 AsyncSelectInput.propTypes = {
+  /**
+   * Horizontal size limit of the input fields.
+   */
   horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  /**
+   * Indicates the input field has an error
+   */
   hasError: PropTypes.bool,
+  /**
+   * Indicates the input field has a warning
+   */
   hasWarning: PropTypes.bool,
+  /**
+   * Indicates that the field is displaying read-only content
+   */
   isReadOnly: PropTypes.bool,
 
   // react-select base props
@@ -170,36 +182,117 @@ AsyncSelectInput.propTypes = {
   // components as well!
   //
   // See https://react-select.com/props#select-props
+  /**
+   * Aria label (for assistive tech)
+   */
   'aria-label': PropTypes.string,
+  /**
+   * HTML ID of an element that should be used as the label (for assistive tech)
+   */
   'aria-labelledby': PropTypes.string,
   // renamed autoFocus of react-select
+  /**
+   * Focus the control when it is mounted
+   */
   isAutofocussed: PropTypes.bool,
+  /**
+   * Remove the currently focused option when the user presses backspace
+   */
   backspaceRemovesValue: PropTypes.bool,
+  /**
+   * Map of components to overwrite the default ones, see [what components you can override](https://react-select.com/components)
+   */
   components: PropTypes.objectOf(PropTypes.func),
+  /**
+   * Custom method to filter whether an option should be displayed in the menu
+   */
   filterOption: PropTypes.func,
   // This forwarded as react-select's "inputId"
+  /**
+   * The id of the search input
+   */
   id: PropTypes.string,
   inputValue: PropTypes.string,
   // This is forwarded as react-select's "id"
+  /**
+   * The id to set on the SelectContainer component
+   */
   containerId: PropTypes.string,
+  /**
+   * Is the select value clearable
+   */
   isClearable: PropTypes.bool,
+  /**
+   * Is the select disabled
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * Override the built-in logic to detect whether an option is disabled
+   */
   isOptionDisabled: PropTypes.func,
+  /**
+   * Support multiple selected options
+   */
   isMulti: PropTypes.bool,
+  /**
+   * Whether to enable search functionality
+   */
   isSearchable: PropTypes.bool,
+  /**
+   * Maximum height of the menu before scrolling
+   */
   maxMenuHeight: PropTypes.number,
+  /**
+   * Dom element to portal the select menu to
+   */
   menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
+  /**
+   * z-index value for the menu portal
+   */
   menuPortalZIndex: PropTypes.number.isRequired,
+  /**
+   * whether the menu should block scroll while open
+   */
   menuShouldBlockScroll: PropTypes.bool,
+  /**
+   * Name of the HTML Input (optional - without this, no input will be rendered)
+   */
   name: PropTypes.string,
+  /**
+   * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with `{ inputValue: String }`. `inputValue` will be an empty string when no search text is present.
+   */
   noOptionsMessage: PropTypes.func,
+  /**
+   * Handle blur events on the control
+   */
   onBlur: PropTypes.func,
+  /**
+   * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
+   */
   onChange: PropTypes.func.isRequired,
+  /**
+   * Handle focus events on the control
+   */
   onFocus: PropTypes.func,
+  /**
+   * Handle change events on the input
+   */
   onInputChange: PropTypes.func,
+  /**
+   * Placeholder text for the select value
+   */
   placeholder: PropTypes.string,
+  /**
+   * Sets the tabIndex attribute on the input
+   */
   tabIndex: PropTypes.string,
+  /**
+   * Select the currently focused option when the user presses tab
+   */
   tabSelectsValue: PropTypes.bool,
+  /**
+   * The value of the select; reflected by the selected option
+   */
   value: (props, ...rest) =>
     props.isMulti
       ? PropTypes.arrayOf(
@@ -208,6 +301,9 @@ AsyncSelectInput.propTypes = {
       : PropTypes.shape({ value: PropTypes.string.isRequired })(props, ...rest),
 
   // Async props
+  /**
+   * The default set of options to show before the user starts searching. When set to true, the results for loadOptions('') will be autoloaded.
+   */
   defaultOptions: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.arrayOf(
@@ -216,9 +312,21 @@ AsyncSelectInput.propTypes = {
       })
     ),
   ]),
+  /**
+   * Function that returns a promise, which is the set of options to be used once the promise resolves.
+   */
   loadOptions: PropTypes.func.isRequired,
+  /**
+   * If cacheOptions is truthy, then the loaded data will be cached. The cache will remain until cacheOptions changes value.
+   */
   cacheOptions: PropTypes.any,
+  /**
+   * Determines if option groups will be separated by a divider
+   */
   showOptionGroupDivider: PropTypes.bool,
+  /**
+   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
+   */
   iconLeft: PropTypes.node,
 };
 
