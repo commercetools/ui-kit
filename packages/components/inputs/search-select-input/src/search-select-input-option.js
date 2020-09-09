@@ -85,8 +85,9 @@ SearchSelectInputOption.propTypes = {
   optionType: PropTypes.oneOf(Object.values(SELECT_DROPDOWN_OPTION_TYPES)),
   optionInnerProps: PropTypes.shape({
     data: PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      key: PropTypes.string.isRequired,
+      label: PropTypes.string,
+      key: PropTypes.string,
+      id: PropTypes.string,
     }),
   }).isRequired,
 };
