@@ -15,18 +15,14 @@ const getClearSectionStyles = (props) => {
   return css`
     align-items: center;
     box-sizing: border-box;
-    height: ${vars.sizeHeightInput};
     display: flex;
-    padding: ${vars.spacingXs};
+    margin-right: ${vars.spacingXs};
     cursor: pointer;
     transition: color ${vars.transitionStandard},
       border-color ${vars.transitionStandard};
 
     &:focus {
       outline: auto 2px ${vars.borderColorForInputWhenFocused};
-      svg * {
-        fill: ${vars.colorWarning};
-      }
     }
     &:hover svg * {
       fill: ${vars.colorWarning};

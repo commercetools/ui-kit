@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { useIntl } from 'react-intl';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 
@@ -21,6 +22,12 @@ const ClearIndicator = (props) => {
         background: none;
         box-sizing: border-box;
         text-decoration: none;
+        :focus {
+          outline: auto 2px ${vars.borderColorForInputWhenFocused};
+        }
+        :hover svg * {
+          fill: ${vars.colorWarning};
+        }
       `}
       style={getStyles('clearIndicator', props)}
       title={intl.formatMessage(messages.clearButtonLabel)}
