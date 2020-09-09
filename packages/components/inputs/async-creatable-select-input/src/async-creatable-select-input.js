@@ -47,8 +47,18 @@ const AsyncCreatableSelectInput = (props) => {
             ...(props.iconLeft && !props.isMulti
               ? customComponentsWithIcons
               : {}),
+            // react-select doesn't support readOnly mode; this is a workaround:
+            ...(props.isReadOnly
+              ? {
+                  // eslint-disable-next-line react/display-name
+                  Input: (ownProps) => (
+                    <defaultComponents.Input {...ownProps} readOnly />
+                  ),
+                }
+              : {}),
             ...props.components,
           }}
+          menuIsOpen={props.isReadOnly ? false : undefined}
           styles={createSelectStyles(
             {
               hasWarning: props.hasWarning,
@@ -69,7 +79,7 @@ const AsyncCreatableSelectInput = (props) => {
           inputId={props.id}
           inputValue={props.inputValue}
           isClearable={props.isClearable}
-          isDisabled={props.isDisabled || props.isReadOnly}
+          isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}

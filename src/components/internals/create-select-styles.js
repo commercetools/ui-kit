@@ -28,14 +28,14 @@ const controlStyles = (props, theme) => (base, state) => {
     borderColor: (() => {
       if (props.isDisabled)
         return overwrittenVars[designTokens.borderColorForInputWhenDisabled];
-      if (props.isReadOnly)
-        return overwrittenVars[designTokens.borderColorForInputWhenReadonly];
+      if (state.isFocused)
+        return overwrittenVars[designTokens.borderColorForInputWhenFocused];
       if (props.hasError)
         return overwrittenVars[designTokens.borderColorForInputWhenError];
       if (props.hasWarning)
         return overwrittenVars[designTokens.borderColorForInputWhenWarning];
-      if (state.isFocused)
-        return overwrittenVars[designTokens.borderColorForInputWhenFocused];
+      if (props.isReadOnly)
+        return overwrittenVars[designTokens.borderColorForInputWhenReadonly];
       return overwrittenVars[designTokens.borderColorForInput];
     })(),
     borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
@@ -48,12 +48,22 @@ const controlStyles = (props, theme) => (base, state) => {
     padding: `0 ${overwrittenVars.spacingS}`,
     transition: `border-color ${overwrittenVars.transitionStandard},
     box-shadow ${overwrittenVars.transitionStandard}`,
+    outline: 0,
 
-    boxShadow: state.isFocused
-      ? `inset 0 0 0 2px ${
-          overwrittenVars[designTokens.borderColorForInputWhenFocused]
-        }`
-      : base.boxShadow,
+    '&:focus-within': {
+      boxShadow: (() => {
+        if (!props.isDisabled)
+          return `inset 0 0 0 2px ${
+            overwrittenVars[designTokens.borderColorForInputWhenFocused]
+          }`;
+        return null;
+      })(),
+      borderColor: (() => {
+        if (!props.isDisabled)
+          return overwrittenVars[designTokens.borderColorForInputWhenFocused];
+        return null;
+      })(),
+    },
 
     '&:hover': {
       borderColor: (() => {
@@ -124,6 +134,10 @@ const dropdownIndicatorStyles = (props, theme) => (base) => {
     margin: '0',
     padding: '0',
     marginLeft: overwrittenVars.spacingXs,
+    fill:
+      props.isDisabled || props.isReadOnly
+        ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+        : base.fontColorForInput,
   };
 };
 
@@ -284,7 +298,7 @@ const groupHeadingStyles = (props, theme) => (base) => {
   };
 };
 
-const containerStyles = (props, theme) => (base, state) => {
+const containerStyles = (props, theme) => (base) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -294,12 +308,7 @@ const containerStyles = (props, theme) => (base, state) => {
     ...base,
     fontFamily: 'inherit',
     minHeight: overwrittenVars.sizeHeightInput,
-    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
-    borderColor: state.isFocused
-      ? overwrittenVars[designTokens.borderColorForInputWhenFocused]
-      : base.borderColor,
-
-    boxShadow: state.isFocused ? 'none' : base.boxShadow,
+    boxShadow: 'none',
   };
 };
 

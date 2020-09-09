@@ -51,6 +51,7 @@ const AsyncSelectInput = (props) => {
               : {}),
             ...props.components,
           }}
+          menuIsOpen={props.isReadOnly ? false : undefined}
           styles={createSelectStyles(
             {
               hasWarning: props.hasWarning,
@@ -71,7 +72,7 @@ const AsyncSelectInput = (props) => {
           inputId={props.id}
           inputValue={props.inputValue}
           isClearable={props.isClearable}
-          isDisabled={props.isDisabled || props.isReadOnly}
+          isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}

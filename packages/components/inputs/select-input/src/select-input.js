@@ -73,6 +73,7 @@ const SelectInput = (props) => {
               : {}),
             ...props.components,
           }}
+          menuIsOpen={props.isReadOnly ? false : undefined}
           styles={createSelectStyles(
             {
               hasWarning: props.hasWarning,
@@ -93,7 +94,7 @@ const SelectInput = (props) => {
           inputId={props.id}
           inputValue={props.inputValue}
           isClearable={props.isClearable}
-          isDisabled={props.isDisabled || props.isReadOnly}
+          isDisabled={props.isDisabled}
           isReadOnly={props.isReadOnly}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
