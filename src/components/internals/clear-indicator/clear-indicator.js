@@ -22,9 +22,6 @@ const ClearIndicator = (props) => {
         background: none;
         box-sizing: border-box;
         text-decoration: none;
-        :focus {
-          outline: auto 2px ${vars.borderColorForInputWhenFocused};
-        }
         :hover svg * {
           fill: ${vars.colorWarning};
         }

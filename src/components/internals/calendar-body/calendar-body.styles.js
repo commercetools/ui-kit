@@ -21,9 +21,6 @@ const getClearSectionStyles = (props) => {
     transition: color ${vars.transitionStandard},
       border-color ${vars.transitionStandard};
 
-    &:focus {
-      outline: auto 2px ${vars.borderColorForInputWhenFocused};
-    }
     &:hover svg * {
       fill: ${vars.colorWarning};
     }
