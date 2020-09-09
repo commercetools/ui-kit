@@ -12,9 +12,9 @@ import messages from './messages';
 
 const SearchSelectInput = (props) => {
   const intl = useIntl();
-  const noOptionsMessage = () =>
+  const noOptionsMessage =
     props.noOptionsMessage || intl.formatMessage(messages.noOptionsMessage);
-  const loadingMessage = () =>
+  const loadingMessage =
     props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
 
   return (
@@ -152,7 +152,11 @@ SearchSelectInput.propTypes = {
    */
   onBlur: PropTypes.func,
   /**
-   * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
+   * Called with a fake event when value changes.
+   * <br />
+   * The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
+   * <br />
+   * Signature: `(event, action) => void`
    */
   onChange: PropTypes.func.isRequired,
   /**
@@ -161,6 +165,8 @@ SearchSelectInput.propTypes = {
   onFocus: PropTypes.func,
   /**
    * Handle change events on the input
+   * <br />
+   * Signature: `(inputValue, action) => void`
    */
   onInputChange: PropTypes.func,
   /**

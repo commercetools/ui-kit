@@ -91,8 +91,8 @@ class SearchSelectInputStory extends React.Component {
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
-                  noOptionsMessage={noOptionsMessage}
-                  loadingMessage={loadingMessage}
+                  noOptionsMessage={() => noOptionsMessage}
+                  loadingMessage={() => loadingMessage}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   name={text('name', 'form-field-name')}
                   onBlur={action('onBlur')}
