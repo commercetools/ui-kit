@@ -65,11 +65,22 @@ const SelectInput = (props) => {
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
           autoFocus={props.isAutofocussed}
-          backspaceRemovesValue={props.backspaceRemovesValue}
+          backspaceRemovesValue={
+            props.isReadOnly ? false : props.backspaceRemovesValue
+          }
           components={{
             ...customizedComponents,
             ...(props.iconLeft && !props.isMulti
               ? customComponentsWithIcons
+              : {}),
+            // react-select doesn't support readOnly mode; this is a workaround:
+            ...(props.isReadOnly
+              ? {
+                  // eslint-disable-next-line react/display-name
+                  Input: (ownProps) => (
+                    <defaultComponents.Input {...ownProps} readOnly />
+                  ),
+                }
               : {}),
             ...props.components,
           }}
@@ -93,7 +104,7 @@ const SelectInput = (props) => {
           id={props.containerId}
           inputId={props.id}
           inputValue={props.inputValue}
-          isClearable={props.isClearable}
+          isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isReadOnly={props.isReadOnly}
           isOptionDisabled={props.isOptionDisabled}

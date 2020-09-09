@@ -41,7 +41,9 @@ const CreatableSelectInput = (props) => {
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
           autoFocus={props.isAutofocussed}
-          backspaceRemovesValue={props.backspaceRemovesValue}
+          backspaceRemovesValue={
+            props.isReadOnly ? false : props.backspaceRemovesValue
+          }
           components={{
             ...customizedComponents,
             ...props.components,
@@ -79,7 +81,7 @@ const CreatableSelectInput = (props) => {
           id={props.containerId}
           inputId={props.id}
           inputValue={props.inputValue}
-          isClearable={props.isClearable}
+          isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
