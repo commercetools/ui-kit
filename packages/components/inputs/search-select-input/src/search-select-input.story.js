@@ -51,14 +51,10 @@ class SearchSelectInputStory extends React.Component {
   render() {
     const isMulti = boolean('isMulti', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
-    const noOptionsMessage = text(
-      'No options message',
-      'No exact matches found'
-    );
-    const loadingMessage = text(
-      'Loading options message',
-      'Loading extact matches'
-    );
+    const noOptionsMessage = () =>
+      text('No options message', 'No exact matches found');
+    const loadingMessage = () =>
+      text('Loading options message', 'Loading extact matches');
     const optionType = select(
       'Dropdown option style',
       Object.values(SELECT_DROPDOWN_OPTION_TYPES),
@@ -91,8 +87,8 @@ class SearchSelectInputStory extends React.Component {
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
-                  noOptionsMessage={() => noOptionsMessage}
-                  loadingMessage={() => loadingMessage}
+                  noOptionsMessage={noOptionsMessage}
+                  loadingMessage={loadingMessage}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   name={text('name', 'form-field-name')}
                   onBlur={action('onBlur')}

@@ -13,9 +13,11 @@ import messages from './messages';
 const SearchSelectInput = (props) => {
   const intl = useIntl();
   const noOptionsMessage =
-    props.noOptionsMessage || intl.formatMessage(messages.noOptionsMessage);
+    props.noOptionsMessage ||
+    (() => intl.formatMessage(messages.noOptionsMessage));
   const loadingMessage =
-    props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
+    props.loadingMessage ||
+    (() => intl.formatMessage(messages.loadingOptionsMessage));
 
   return (
     <AsyncSelectInput
@@ -36,7 +38,6 @@ const SearchSelectInput = (props) => {
       noOptionsMessage={noOptionsMessage}
       isSearchable={true}
       defaultOptions={false}
-      showOptionGroupDivider={false}
     />
   );
 };
@@ -148,6 +149,10 @@ SearchSelectInput.propTypes = {
    */
   menuShouldBlockScroll: PropTypes.bool,
   /**
+   * Determines if option groups will be separated by a divider
+   */
+  showOptionGroupDivider: PropTypes.bool,
+  /**
    * Handle blur events on the control
    */
   onBlur: PropTypes.func,
@@ -201,7 +206,7 @@ SearchSelectInput.propTypes = {
 SearchSelectInput.defaultProps = {
   value: null,
   menuPortalZIndex: 1,
-  maxMenuHeight: '220',
+  maxMenuHeight: 220,
 };
 SearchSelectInput.displayName = 'SearchSelectInput';
 
