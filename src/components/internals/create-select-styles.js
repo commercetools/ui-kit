@@ -49,6 +49,7 @@ const controlStyles = (props, theme) => (base, state) => {
     transition: `border-color ${overwrittenVars.transitionStandard},
     box-shadow ${overwrittenVars.transitionStandard}`,
     outline: 0,
+    boxShadow: 'none',
 
     '&:focus-within': {
       boxShadow: (() => {
@@ -298,7 +299,7 @@ const groupHeadingStyles = (props, theme) => (base) => {
   };
 };
 
-const containerStyles = (props, theme) => (base) => {
+const containerStyles = (props, theme) => (base, state) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -308,7 +309,12 @@ const containerStyles = (props, theme) => (base) => {
     ...base,
     fontFamily: 'inherit',
     minHeight: overwrittenVars.sizeHeightInput,
-    boxShadow: 'none',
+    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
+    borderColor: state.isFocused
+      ? overwrittenVars[designTokens.borderColorForInputWhenFocused]
+      : base.borderColor,
+
+    boxShadow: state.isFocused ? 'none' : base.boxShadow,
   };
 };
 
@@ -380,7 +386,14 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
     } 0`,
     borderStyle: 'solid',
     borderWidth: '1px',
-    pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
+    pointerEvents:
+      state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
+
+    'svg *': {
+      fill: props.isReadOnly
+        ? overwrittenVars[designTokens.fontColorForInputWhenReadonly]
+        : '',
+    },
 
     '&:hover': {
       borderColor: overwrittenVars.borderColorForTagWarning,
