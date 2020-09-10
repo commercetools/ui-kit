@@ -138,6 +138,8 @@ const renderEditor = (props, editor, next) => {
         isFocused={isFocused}
         handleFocus={editor.focus}
         id={props.id}
+        disabled={props.disabled}
+        readOnly={props.readOnly}
       />
     </Editor>
   );

@@ -210,6 +210,8 @@ const renderEditor = (props, editor, next) => {
       <HiddenInput
         isFocused={isFocused}
         handleFocus={editor.focus}
+        disabled={props.disabled}
+        readOnly={props.readOnly}
         id={props.id}
       />
     </Editor>

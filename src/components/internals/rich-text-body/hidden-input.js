@@ -24,7 +24,8 @@ const HiddenInput = (props) => {
       id={props.id}
       onFocus={onFocus}
       onBlur={onBlur}
-      tabIndex={-1}
+      disabled={props.disabled}
+      tabIndex={props.readOnly ? 0 : -1}
     />
   );
 };
@@ -32,9 +33,11 @@ const HiddenInput = (props) => {
 HiddenInput.displayName = 'HiddenInput';
 
 HiddenInput.propTypes = {
-  handleFocus: PropTypes.func,
   id: PropTypes.string,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   isFocused: PropTypes.bool.isRequired,
+  handleFocus: PropTypes.func,
 };
 
 export default HiddenInput;
