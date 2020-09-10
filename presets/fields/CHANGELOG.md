@@ -1,5 +1,19 @@
 # @commercetools-uikit/fields
 
+## 10.32.1
+
+### Patch Changes
+
+- Updated dependencies [[`63d0219`](https://github.com/commercetools/ui-kit/commit/63d0219ced9dcf32e8a98930c88558a12435bfdc)]:
+  - @commercetools-uikit/date-field@10.32.1
+  - @commercetools-uikit/date-range-field@10.32.1
+  - @commercetools-uikit/date-time-field@10.32.1
+  - @commercetools-uikit/localized-multiline-text-field@10.32.1
+  - @commercetools-uikit/localized-text-field@10.32.1
+  - @commercetools-uikit/multiline-text-field@10.32.1
+  - @commercetools-uikit/number-field@10.32.1
+  - @commercetools-uikit/select-field@10.32.1
+
 ## 10.32.0
 
 ### Patch Changes

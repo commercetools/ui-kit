@@ -287,7 +287,7 @@ LocalizedTextInput.propTypes = {
    */
   placeholder: PropTypes.objectOf(PropTypes.string),
   /**
-   * `xs`, `s`, `m`, `l`, `xl`, `scale` | `scale` | Horizontal size limit of the input fields.
+   * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   /**

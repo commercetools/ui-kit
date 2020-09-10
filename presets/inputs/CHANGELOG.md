@@ -1,5 +1,14 @@
 # @commercetools-uikit/inputs
 
+## 10.32.1
+
+### Patch Changes
+
+- Updated dependencies [[`2f2fd72`](https://github.com/commercetools/ui-kit/commit/2f2fd72343e1455ddf643808c097d44cdb906ed0), [`63d0219`](https://github.com/commercetools/ui-kit/commit/63d0219ced9dcf32e8a98930c88558a12435bfdc)]:
+  - @commercetools-uikit/number-input@10.32.1
+  - @commercetools-uikit/localized-text-input@10.32.1
+  - @commercetools-uikit/select-input@10.32.1
+
 ## 10.32.0
 
 ### Patch Changes

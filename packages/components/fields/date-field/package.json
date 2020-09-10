@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/date-field",
-  "version": "10.32.0",
+  "version": "10.32.1",
   "description": "A controlled date input component for single date, with validation states and a label.",
   "main": "dist/date-field.cjs.js",
   "module": "dist/date-field.esm.js",

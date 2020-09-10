@@ -28,7 +28,7 @@ class DateField extends React.Component {
     /**
      * Horizontal size limit of the input fields.
      */
-    horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
     /**
      * A map of errors. Error messages for known errors are rendered automatically.
      * <br />
