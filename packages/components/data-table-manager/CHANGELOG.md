@@ -1,5 +1,12 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.24.1
+
+### Patch Changes
+
+- Updated dependencies [[`63d0219`](https://github.com/commercetools/ui-kit/commit/63d0219ced9dcf32e8a98930c88558a12435bfdc)]:
+  - @commercetools-uikit/select-input@10.32.1
+
 ## 10.24.0
 
 ### Minor Changes

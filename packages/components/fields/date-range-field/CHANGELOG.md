@@ -1,5 +1,11 @@
 # @commercetools-uikit/date-range-field
 
+## 10.32.1
+
+### Patch Changes
+
+- [`63d0219`](https://github.com/commercetools/ui-kit/commit/63d0219ced9dcf32e8a98930c88558a12435bfdc) [#1553](https://github.com/commercetools/ui-kit/pull/1553) Thanks [@adnasa](https://github.com/adnasa)! - restore horizontalConstraint, allowed values
+
 ## 10.32.0
 
 ### Minor Changes

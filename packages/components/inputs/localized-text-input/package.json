@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-text-input",
-  "version": "10.32.0",
+  "version": "10.32.1",
   "description": "A controlled text input component for localized single-line strings with validation states.",
   "main": "dist/localized-text-input.cjs.js",
   "module": "dist/localized-text-input.esm.js",

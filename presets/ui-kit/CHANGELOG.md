@@ -1,5 +1,14 @@
 # @commercetools-frontend/ui-kit
 
+## 10.32.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/inputs@10.32.1
+  - @commercetools-uikit/fields@10.32.1
+  - @commercetools-uikit/data-table-manager@10.24.1
+
 ## 10.32.0
 
 ### Patch Changes
