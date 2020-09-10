@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/async-select-input",
-  "version": "10.31.0",
+  "version": "10.32.0",
   "description": "",
   "main": "dist/async-select-input.cjs.js",
   "module": "dist/async-select-input.esm.js",
@@ -22,7 +22,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/icons": "10.30.1",
     "@commercetools-uikit/loading-spinner": "10.31.0",
-    "@commercetools-uikit/select-utils": "10.31.0",
+    "@commercetools-uikit/select-utils": "10.32.0",
     "@commercetools-uikit/spacings": "10.18.7",
     "@commercetools-uikit/text": "10.30.1",
     "@commercetools-uikit/utils": "10.21.0",

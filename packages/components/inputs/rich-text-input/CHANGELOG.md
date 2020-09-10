@@ -1,5 +1,12 @@
 # @commercetools-uikit/rich-text-input
 
+## 10.32.0
+
+### Patch Changes
+
+- Updated dependencies [[`fc06d03`](https://github.com/commercetools/ui-kit/commit/fc06d03824b791b8a28c1c305c9376359fcbc4b3)]:
+  - @commercetools-uikit/collapsible-motion@10.32.0
+
 ## 10.30.1
 
 ### Patch Changes

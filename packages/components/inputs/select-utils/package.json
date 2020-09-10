@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/select-utils",
-  "version": "10.31.0",
+  "version": "10.32.0",
   "description": "",
   "main": "dist/select-utils.cjs.js",
   "module": "dist/select-utils.esm.js",

@@ -1,5 +1,19 @@
 # @commercetools-uikit/localized-text-field
 
+## 10.32.0
+
+### Minor Changes
+
+- [`8aee3b0`](https://github.com/commercetools/ui-kit/commit/8aee3b005eb428522cc8341498bc9191a93be99b) [#1540](https://github.com/commercetools/ui-kit/pull/1540) Thanks [@adnasa](https://github.com/adnasa)! - migrate docs to use `generate-readme`
+
+### Patch Changes
+
+- [`c8d7295`](https://github.com/commercetools/ui-kit/commit/c8d72957b70640d8011c6ae6d679b9a9ed7e4795) [#1550](https://github.com/commercetools/ui-kit/pull/1550) Thanks [@adnasa](https://github.com/adnasa)! - fix typo on `authorized`
+
+- Updated dependencies [[`8aee3b0`](https://github.com/commercetools/ui-kit/commit/8aee3b005eb428522cc8341498bc9191a93be99b)]:
+  - @commercetools-uikit/field-errors@10.32.0
+  - @commercetools-uikit/localized-text-input@10.32.0
+
 ## 10.30.1
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @commercetools-uikit/async-creatable-select-field
 
+## 10.32.0
+
+### Minor Changes
+
+- [`8aee3b0`](https://github.com/commercetools/ui-kit/commit/8aee3b005eb428522cc8341498bc9191a93be99b) [#1540](https://github.com/commercetools/ui-kit/pull/1540) Thanks [@adnasa](https://github.com/adnasa)! - migrate docs to use `generate-readme`
+
+### Patch Changes
+
+- [`84ea9da`](https://github.com/commercetools/ui-kit/commit/84ea9da9dcb93486747ceadfd2a27d652df8981d) [#1541](https://github.com/commercetools/ui-kit/pull/1541) Thanks [@mohib0306](https://github.com/mohib0306)! - Group select inputs and fields in the storybook
+
+- Updated dependencies [[`84ea9da`](https://github.com/commercetools/ui-kit/commit/84ea9da9dcb93486747ceadfd2a27d652df8981d), [`8aee3b0`](https://github.com/commercetools/ui-kit/commit/8aee3b005eb428522cc8341498bc9191a93be99b)]:
+  - @commercetools-uikit/async-creatable-select-input@10.32.0
+  - @commercetools-uikit/field-errors@10.32.0
+
 ## 10.31.0
 
 ### Minor Changes

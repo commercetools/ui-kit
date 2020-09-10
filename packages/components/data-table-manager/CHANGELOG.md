@@ -1,5 +1,18 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.24.0
+
+### Minor Changes
+
+- [`f2cd169`](https://github.com/commercetools/ui-kit/commit/f2cd16928b0ee001fa544a78cc196d177273581c) [#1549](https://github.com/commercetools/ui-kit/pull/1549) Thanks [@Rombelirk](https://github.com/Rombelirk)! - Added table icon to data-table-manager dropdown
+
+### Patch Changes
+
+- Updated dependencies [[`84ea9da`](https://github.com/commercetools/ui-kit/commit/84ea9da9dcb93486747ceadfd2a27d652df8981d), [`8aee3b0`](https://github.com/commercetools/ui-kit/commit/8aee3b005eb428522cc8341498bc9191a93be99b), [`fc06d03`](https://github.com/commercetools/ui-kit/commit/fc06d03824b791b8a28c1c305c9376359fcbc4b3)]:
+  - @commercetools-uikit/async-select-input@10.32.0
+  - @commercetools-uikit/select-input@10.32.0
+  - @commercetools-uikit/collapsible-motion@10.32.0
+
 ## 10.23.5
 
 ### Patch Changes
