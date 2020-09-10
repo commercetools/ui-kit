@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 import styled from '@emotion/styled';
 import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 import SelectInput from '@commercetools-uikit/select-input';
+import { TableIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import DisplaySettingsManager, {
@@ -108,6 +109,7 @@ const DataTableSettings = (props) => {
               placeholder={intl.formatMessage(messages.placeholder)}
               onChange={handleDropdownChange}
               options={dropdownOptions}
+              iconLeft={<TableIcon />}
             />
           </SelectContainer>
         )}
