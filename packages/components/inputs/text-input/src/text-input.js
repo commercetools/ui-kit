@@ -74,7 +74,7 @@ TextInput.propTypes = {
    */
   isAutofocussed: PropTypes.bool,
   /**
-   * Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).
+   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled: PropTypes.bool,
   /**
