@@ -5,7 +5,7 @@
 
 ## Description
 
-A controlled date input component for single date, with validation states and a label
+A controlled date input component for single date, with validation states and a label.
 
 ## Installation
 
@@ -60,7 +60,7 @@ export default Example;
 | `onChange`             | `custom`                                                             |          |           | Called with an event containing the new value. This is always called with either an empty string or a valid date in the format of `YYYY-MM-DD`.<br/> Parent should pass it back as `value`. <br/> Signature: `(event) => void`                                        |
 | `onBlur`               | `func`                                                               |          |           | Called when input is blurred<br/> Signature: `(event) => void`                                                                                                                                                                                                        |
 | `onFocus`              | `func`                                                               |          |           | Called when input is focused<br/> Signature: `(event) => void`                                                                                                                                                                                                        |
-| `isDisabled`           | `bool`                                                               |          |           | Indicates that the input cannot be modified (e.g not authorised, or changes currently saving).                                                                                                                                                                        |
+| `isDisabled`           | `bool`                                                               |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                                                                                                                        |
 | `isReadOnly`           | `bool`                                                               |          |           | Indicates that the field is displaying read-only content                                                                                                                                                                                                              |
 | `placeholder`          | `string`                                                             |          |           | Placeholder text for the input                                                                                                                                                                                                                                        |
 | `minValue`             | `string`                                                             |          |           | A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".                                                                                                                                                                        |
