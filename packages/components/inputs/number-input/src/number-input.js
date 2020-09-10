@@ -110,7 +110,7 @@ NumberInput.propTypes = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
 };
 
 NumberInput.defaultProps = {
