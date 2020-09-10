@@ -1,5 +1,11 @@
 # @commercetools-uikit/data-table
 
+## 10.32.0
+
+### Minor Changes
+
+- [`f2cd169`](https://github.com/commercetools/ui-kit/commit/f2cd16928b0ee001fa544a78cc196d177273581c) [#1549](https://github.com/commercetools/ui-kit/pull/1549) Thanks [@Rombelirk](https://github.com/Rombelirk)! - Added table icon to data-table-manager dropdown
+
 ## 10.31.0
 
 ### Patch Changes

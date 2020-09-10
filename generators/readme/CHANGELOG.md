@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 1.1.0
+
+### Minor Changes
+
+- [`8aee3b0`](https://github.com/commercetools/ui-kit/commit/8aee3b005eb428522cc8341498bc9191a93be99b) [#1540](https://github.com/commercetools/ui-kit/pull/1540) Thanks [@adnasa](https://github.com/adnasa)! - migrate docs to use `generate-readme`
+
 ## 1.0.2
 
 ### Patch Changes

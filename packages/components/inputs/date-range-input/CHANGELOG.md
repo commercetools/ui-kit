@@ -1,5 +1,16 @@
 # @commercetools-uikit/date-range-input
 
+## 10.32.0
+
+### Minor Changes
+
+- [`8aee3b0`](https://github.com/commercetools/ui-kit/commit/8aee3b005eb428522cc8341498bc9191a93be99b) [#1540](https://github.com/commercetools/ui-kit/pull/1540) Thanks [@adnasa](https://github.com/adnasa)! - migrate docs to use `generate-readme`
+
+### Patch Changes
+
+- Updated dependencies [[`84ea9da`](https://github.com/commercetools/ui-kit/commit/84ea9da9dcb93486747ceadfd2a27d652df8981d)]:
+  - @commercetools-uikit/select-utils@10.32.0
+
 ## 10.31.0
 
 ### Patch Changes
