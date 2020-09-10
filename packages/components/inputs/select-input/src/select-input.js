@@ -181,7 +181,7 @@ SelectInput.defaultProps = {
 };
 
 SelectInput.propTypes = {
-  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   /**
    * Indicates that input has errors
    */
