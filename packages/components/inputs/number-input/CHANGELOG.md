@@ -1,5 +1,11 @@
 # @commercetools-uikit/number-input
 
+## 10.32.1
+
+### Patch Changes
+
+- [`2f2fd72`](https://github.com/commercetools/ui-kit/commit/2f2fd72343e1455ddf643808c097d44cdb906ed0) [#1551](https://github.com/commercetools/ui-kit/pull/1551) Thanks [@jonnybel](https://github.com/jonnybel)! - Restore 'xs' as an accepted value for the horizontalConstraint prop
+
 ## 10.32.0
 
 ### Minor Changes

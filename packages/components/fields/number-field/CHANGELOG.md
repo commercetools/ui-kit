@@ -1,5 +1,12 @@
 # @commercetools-uikit/number-field
 
+## 10.32.1
+
+### Patch Changes
+
+- Updated dependencies [[`2f2fd72`](https://github.com/commercetools/ui-kit/commit/2f2fd72343e1455ddf643808c097d44cdb906ed0)]:
+  - @commercetools-uikit/number-input@10.32.1
+
 ## 10.32.0
 
 ### Minor Changes
