@@ -60,7 +60,8 @@ export const getIconStyles = (props, theme) => css`
   * {
     fill: ${getColor(props.color, theme)};
   }
-  ${getSizeStyle(props.size)}
+  ${getSizeStyle(props.size)};
+  flex-shrink: 0;
 `;
 
 export const iconPropTypes = {
@@ -83,7 +84,8 @@ export default function createStyledIcon(Component, displayName) {
     * {
       fill: ${getColor(props.color, props.theme)};
     }
-    ${getSizeStyle(props.size)}
+    ${getSizeStyle(props.size)};
+    flex-shrink: 0;
   `
   );
   StyledComponent.displayName = displayName;
