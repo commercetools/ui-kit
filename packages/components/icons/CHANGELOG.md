@@ -1,5 +1,11 @@
 # @commercetools-uikit/icons
 
+## 10.33.0
+
+### Minor Changes
+
+- [`4645854`](https://github.com/commercetools/ui-kit/commit/46458547d2603c412e9e6a90d1a04526784c8a9e) [#1558](https://github.com/commercetools/ui-kit/pull/1558) Thanks [@Rombelirk](https://github.com/Rombelirk)! - Fixed icon shrinking inside of flex container
+
 ## 10.30.1
 
 ### Patch Changes

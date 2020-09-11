@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-rich-text-input",
-  "version": "10.32.0",
+  "version": "10.33.0",
   "description": "",
   "main": "dist/rich-text-input.cjs.js",
   "module": "dist/rich-text-input.esm.js",
@@ -22,7 +22,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/flat-button": "10.30.1",
     "@commercetools-uikit/hooks": "10.30.1",
-    "@commercetools-uikit/icons": "10.30.1",
+    "@commercetools-uikit/icons": "10.33.0",
     "@commercetools-uikit/localized-utils": "10.30.1",
     "@commercetools-uikit/messages": "10.30.1",
     "@commercetools-uikit/spacings-inline": "10.30.1",

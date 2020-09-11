@@ -1,5 +1,17 @@
 # @commercetools-uikit/async-select-field
 
+## 10.33.0
+
+### Minor Changes
+
+- [`ac780b1`](https://github.com/commercetools/ui-kit/commit/ac780b1aba8c817ec1029bbe37c238edac329014) [#1554](https://github.com/commercetools/ui-kit/pull/1554) Thanks [@mohib0306](https://github.com/mohib0306)! - Add loadMessage prop to `async-select-field` and `async-select-input` components for custom loading message while the options are being loaded
+
+### Patch Changes
+
+- Updated dependencies [[`ac780b1`](https://github.com/commercetools/ui-kit/commit/ac780b1aba8c817ec1029bbe37c238edac329014)]:
+  - @commercetools-uikit/async-select-input@10.33.0
+  - @commercetools-uikit/field-label@10.33.0
+
 ## 10.32.0
 
 ### Minor Changes

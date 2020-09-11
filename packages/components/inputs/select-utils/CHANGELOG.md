@@ -1,5 +1,16 @@
 # @commercetools-uikit/select-utils
 
+## 10.33.0
+
+### Minor Changes
+
+- [`f50c6cf`](https://github.com/commercetools/ui-kit/commit/f50c6cf9961820c1938b32ee185cf8d3c67fa626) [#1555](https://github.com/commercetools/ui-kit/pull/1555) Thanks [@mohib0306](https://github.com/mohib0306)! - Add SearchIconDropdownIndicator and custom styled select option types
+
+### Patch Changes
+
+- Updated dependencies [[`4645854`](https://github.com/commercetools/ui-kit/commit/46458547d2603c412e9e6a90d1a04526784c8a9e)]:
+  - @commercetools-uikit/icons@10.33.0
+
 ## 10.32.0
 
 ### Patch Changes
