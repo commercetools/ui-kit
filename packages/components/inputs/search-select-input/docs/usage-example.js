@@ -15,7 +15,7 @@ const Example = () => {
       isReadOnly={false}
       isMulti={true}
       noOptionsMessage="No exact match found"
-      loadingMessage="loading extact matches"
+      loadingMessage="loading exact matches"
       placeholder="Select customers"
       // eslint-disable-next-line no-undef
       loadOptions={customLoadOptionsFunction}
