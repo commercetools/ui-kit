@@ -48,7 +48,10 @@ export default class SelectField extends React.Component {
     /**
      * Indicates whether the field was touched. Errors will only be shown when the field was touched.
      */
-    touched: PropTypes.bool,
+    touched: (props, ...rest) =>
+      props.isMulti
+        ? PropTypes.arrayOf(PropTypes.bool, ...rest)(props, ...rest)
+        : PropTypes.bool(props, ...rest),
 
     // SelectInput
     /**
