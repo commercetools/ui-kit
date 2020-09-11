@@ -164,6 +164,10 @@ export default class AsyncSelectField extends React.Component {
      */
     placeholder: PropTypes.string,
     /**
+     * loading message shown while the options are being loaded
+     */
+    loadingMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    /**
      * Sets the tabIndex attribute on the input
      */
     tabIndex: PropTypes.string,
@@ -305,6 +309,7 @@ export default class AsyncSelectField extends React.Component {
             menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             name={this.props.name}
             noOptionsMessage={this.props.noOptionsMessage}
+            loadingMessage={this.props.loadingMessage}
             onBlur={this.props.onBlur}
             onChange={this.props.onChange}
             onFocus={this.props.onFocus}

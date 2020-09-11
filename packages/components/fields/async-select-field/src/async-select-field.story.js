@@ -89,6 +89,7 @@ storiesOf('Components|Fields/SelectFields', module)
   .add('AsyncSelectField', () => {
     const isMulti = boolean('isMulti', false);
     const hint = text('hint', 'Bonus points if it is a mammal');
+    const loadingMessage = text('loadingMessage', 'Loading results');
 
     const defaultOptions = boolean('defaultOptions', true)
       ? animalOptions
@@ -145,6 +146,7 @@ storiesOf('Components|Fields/SelectFields', module)
               isMulti={isMulti}
               hasWarning={boolean('hasWarning', false)}
               placeholder={text('placeholder', 'Select...')}
+              loadingMessage={loadingMessage}
               title={text('title', 'Favourite animal')}
               maxMenuHeight={number('maxMenuHeight', 220)}
               isSearchable={boolean('isSearchable', true)}
