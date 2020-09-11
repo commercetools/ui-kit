@@ -111,8 +111,8 @@ class SearchSelectInputStory extends React.Component {
                 />
                 <div>
                   <p>
-                    The options fetching uses the data (given below) to perform
-                    an exact match. It is case sensitive and it perfrom search
+                    In this example, our `loadOptions` function uses the data (given below) to perform
+                    an exact match. It is case sensitive and it performs a search
                     based on{' '}
                     <b>
                       <i>id</i>
