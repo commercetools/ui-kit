@@ -60,6 +60,7 @@ class SelectStory extends React.Component {
       ? colourOptions
       : false;
     const showOptionGroupDivider = boolean('Show option group divider', false);
+    const loadingMessage = text('loadingMessage', 'Loading results');
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
 
     return (
@@ -96,6 +97,7 @@ class SelectStory extends React.Component {
                     action('onChange')(event, info);
                     onChange(event.target.value);
                   }}
+                  loadingMessage={loadingMessage}
                   onFocus={action('onFocus')}
                   onInputChange={action('onInputChange')}
                   placeholder={text('placeholder', 'Select..')}
