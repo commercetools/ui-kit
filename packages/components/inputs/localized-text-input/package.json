@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-text-input",
-  "version": "10.32.1",
+  "version": "10.33.0",
   "description": "A controlled text input component for localized single-line strings with validation states.",
   "main": "dist/localized-text-input.cjs.js",
   "module": "dist/localized-text-input.esm.js",
@@ -22,7 +22,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/flat-button": "10.30.1",
     "@commercetools-uikit/hooks": "10.30.1",
-    "@commercetools-uikit/icons": "10.30.1",
+    "@commercetools-uikit/icons": "10.33.0",
     "@commercetools-uikit/localized-utils": "10.30.1",
     "@commercetools-uikit/messages": "10.30.1",
     "@commercetools-uikit/spacings-stack": "10.30.1",

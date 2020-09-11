@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 10.33.0
+
+### Patch Changes
+
+- Updated dependencies [[`4645854`](https://github.com/commercetools/ui-kit/commit/46458547d2603c412e9e6a90d1a04526784c8a9e)]:
+  - @commercetools-uikit/icons@10.33.0
+
 ## 10.32.0
 
 ### Minor Changes
