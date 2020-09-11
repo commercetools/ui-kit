@@ -120,7 +120,10 @@ class CheckboxInput extends React.PureComponent {
           })()}
         </div>
         {this.props.children && (
-          <LabelTextWrapper>
+          <LabelTextWrapper
+            // To allow focusing the Label in readOnly mode, because the checkbox gets disabled and therefore unfocusable
+            tabIndex={this.props.isReadOnly ? 0 : -1}
+          >
             <Text.Body
               // FIXME: add proper tones when we have disabled/primary in tones
               tone={this.props.isDisabled ? 'secondary' : undefined}
