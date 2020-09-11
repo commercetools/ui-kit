@@ -33,6 +33,8 @@ const hoverStyles = (props) => {
 
 const LabelTextWrapper = styled.div`
   margin-left: ${vars.spacingS};
+  outline: none;
+  border-radius: ${vars.borderRadiusForTag};
 `;
 
 const Label = styled.label`
@@ -48,8 +50,7 @@ const Label = styled.label`
   ${hoverStyles}
 
   &:focus-within ${LabelTextWrapper} {
-    outline: auto 2px ${vars.borderColorForInputWhenFocused};
-    outline-offset: 3px;
+    box-shadow: 0 0 0 2px ${vars.borderColorForInputWhenFocused};
   }
 `;
 
