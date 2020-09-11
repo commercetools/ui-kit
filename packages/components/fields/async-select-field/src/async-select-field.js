@@ -166,7 +166,7 @@ export default class AsyncSelectField extends React.Component {
     /**
      * loading message shown while the options are being loaded
      */
-    loadingMessage: PropTypes.func,
+    loadingMessage: PropTypes.string,
     /**
      * Sets the tabIndex attribute on the input
      */

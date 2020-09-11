@@ -36,9 +36,7 @@ const AsyncSelectInput = (props) => {
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
   const loadingMessage = () =>
-    props.loadingMessage
-      ? props.loadingMessage()
-      : intl.formatMessage(messages.loadingOptions);
+    props.loadingMessage || intl.formatMessage(messages.loadingOptions);
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
@@ -289,7 +287,7 @@ AsyncSelectInput.propTypes = {
   /**
    * loading message shown while the options are being loaded
    */
-  loadingMessage: PropTypes.func,
+  loadingMessage: PropTypes.string,
   /**
    * Sets the tabIndex attribute on the input
    */
