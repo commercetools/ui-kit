@@ -1,5 +1,12 @@
 # @commercetools-uikit/text-field
 
+## 10.33.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.33.0
+
 ## 10.32.0
 
 ### Minor Changes

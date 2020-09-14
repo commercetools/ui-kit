@@ -1,5 +1,13 @@
 # @commercetools-uikit/date-range-field
 
+## 10.33.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.33.0
+  - @commercetools-uikit/date-range-input@10.33.0
+
 ## 10.32.1
 
 ### Patch Changes

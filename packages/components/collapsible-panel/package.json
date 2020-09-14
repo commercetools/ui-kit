@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/collapsible-panel",
-  "version": "10.32.0",
+  "version": "10.33.0",
   "description": "",
   "main": "dist/collapsible-panel.cjs.js",
   "module": "dist/collapsible-panel.esm.js",
@@ -21,7 +21,7 @@
     "@commercetools-uikit/accessible-button": "10.30.1",
     "@commercetools-uikit/collapsible-motion": "10.32.0",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.30.1",
+    "@commercetools-uikit/icons": "10.33.0",
     "@commercetools-uikit/spacings": "10.18.7",
     "@commercetools-uikit/text": "10.30.1",
     "@commercetools-uikit/utils": "10.21.0",

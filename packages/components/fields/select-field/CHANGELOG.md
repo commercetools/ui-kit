@@ -1,5 +1,15 @@
 # @commercetools-uikit/select-field
 
+## 10.33.0
+
+### Patch Changes
+
+- [`c052109`](https://github.com/commercetools/ui-kit/commit/c05210982bd8323c2920dadd9987ca80cbdc87c2) [#1556](https://github.com/commercetools/ui-kit/pull/1556) Thanks [@jonnybel](https://github.com/jonnybel)! - Restores the propType validation of `touched` prop to properly work with `isMulti`
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.33.0
+  - @commercetools-uikit/select-input@10.33.0
+
 ## 10.32.1
 
 ### Patch Changes
