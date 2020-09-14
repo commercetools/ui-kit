@@ -9,7 +9,7 @@ export default defineMessages({
   },
   loadingOptionsMessage: {
     id: 'UIKit.SearchSelectInput.loadingOptionsMessage',
-    description: 'Text showing while the options are being loaded',
+    description: 'Text showed while the options are being loaded',
     defaultMessage: 'Loading exact matches',
   },
 });
