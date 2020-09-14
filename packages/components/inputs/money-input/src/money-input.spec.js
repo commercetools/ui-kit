@@ -701,9 +701,9 @@ describe('MoneyInput', () => {
     render(<TestComponent isReadOnly={true} />);
     expect(screen.getByLabelText('Amount')).toHaveAttribute('readonly');
   });
-  it('should render a disabled currency select when readonly', () => {
+  it('should render a readonly currency select when readonly', () => {
     render(<TestComponent isReadOnly={true} />);
-    expect(screen.getByLabelText('EUR')).toBeDisabled();
+    expect(screen.getByLabelText('EUR')).toHaveAttribute('readonly');
   });
 
   describe('when there are no currencies', () => {

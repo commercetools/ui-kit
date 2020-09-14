@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getClearSectionStyles,
   getCalendarIconContainerStyles,
@@ -11,13 +12,14 @@ import {
 } from './calendar-body.styles';
 
 export const ClearSection = (props) => (
-  <div
-    onClick={props.onClear}
+  <AccessibleButton
     css={getClearSectionStyles(props)}
+    label="clear"
+    onClick={props.onClear}
     aria-label="clear"
   >
     <CloseIcon size="medium" color="solid" />
-  </div>
+  </AccessibleButton>
 );
 ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
@@ -74,13 +76,13 @@ export const CalendarBody = (props) => {
 
   return (
     <Inline alignItems="center">
-      <div css={getInputContainerStyles()}>
+      <div css={getInputContainerStyles(props, { isFocused })}>
         <input
           ref={props.inputRef}
           {...props.inputProps}
           disabled={props.isDisabled}
           readOnly={props.isReadOnly}
-          css={getDateTimeInputStyles(props, { isFocused })}
+          css={getDateTimeInputStyles(props)}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
           aria-readonly={props.isReadOnly}

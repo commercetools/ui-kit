@@ -21,7 +21,7 @@ import Checkbox from './checkbox';
 const sequentialId = createSequentialId('checkbox-input-');
 
 const hoverStyles = (props) => {
-  if (!props.hasError && !props.disabled) {
+  if (!props.hasError && !props.readOnly && !props.disabled) {
     return css`
       &:hover svg [id$='borderAndContent'] > [id$='border'] {
         stroke: ${vars.borderColorForInputWhenFocused};
@@ -31,13 +31,27 @@ const hoverStyles = (props) => {
   return css``;
 };
 
+const LabelTextWrapper = styled.div`
+  margin-left: ${vars.spacingS};
+  outline: none;
+  border-radius: ${vars.borderRadiusForTag};
+`;
+
 const Label = styled.label`
   display: flex;
   align-items: center;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => {
+    if (props.disabled) return 'not-allowed';
+    if (props.readOnly) return 'default';
+    return 'pointer';
+  }};
   position: relative;
 
   ${hoverStyles}
+
+  &:focus-within ${LabelTextWrapper} {
+    box-shadow: 0 0 0 2px ${vars.borderColorForInputWhenFocused};
+  }
 `;
 
 class CheckboxInput extends React.PureComponent {
@@ -83,6 +97,7 @@ class CheckboxInput extends React.PureComponent {
         htmlFor={this.state.id}
         hasError={this.props.hasError}
         disabled={this.props.isDisabled}
+        readOnly={this.props.isReadOnly}
       >
         <Checkbox
           type="checkbox"
@@ -106,10 +121,9 @@ class CheckboxInput extends React.PureComponent {
           })()}
         </div>
         {this.props.children && (
-          <div
-            css={css`
-              margin-left: ${vars.spacingS};
-            `}
+          <LabelTextWrapper
+            // To allow focusing the Label in readOnly mode, because the checkbox gets disabled and therefore unfocusable
+            tabIndex={this.props.isReadOnly ? 0 : -1}
           >
             <Text.Body
               // FIXME: add proper tones when we have disabled/primary in tones
@@ -117,7 +131,7 @@ class CheckboxInput extends React.PureComponent {
             >
               {this.props.children}
             </Text.Body>
-          </div>
+          </LabelTextWrapper>
         )}
       </Label>
     );

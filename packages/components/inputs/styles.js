@@ -15,7 +15,6 @@ const getInputStyles = (props, theme) => {
     background-color: ${overwrittenVars[designTokens.backgroundColorForInput]};
     border: 1px solid ${overwrittenVars[designTokens.borderColorForInput]};
     border-radius: ${overwrittenVars[designTokens.borderRadiusForInput]};
-    box-shadow: none;
     box-sizing: border-box;
     color: ${overwrittenVars[designTokens.fontColorForInput]};
     display: flex;
@@ -29,20 +28,26 @@ const getInputStyles = (props, theme) => {
     padding: 0 ${overwrittenVars.spacingS};
     transition: border-color ${overwrittenVars.transitionStandard},
       background-color ${overwrittenVars.transitionStandard},
-      color ${overwrittenVars.transitionStandard};
+      color ${overwrittenVars.transitionStandard},
+      box-shadow ${overwrittenVars.transitionStandard};
     width: 100%;
 
     &::placeholder {
       color: ${overwrittenVars[designTokens.placeholderFontColorForInput]};
     }
-    &:active,
-    &:focus {
+    :active,
+    :focus,
+    :hover:not(:disabled):not(:read-only) {
       border-color: ${overwrittenVars[
         designTokens.borderColorForInputWhenFocused
       ]};
     }
+    :focus {
+      box-shadow: inset 0 0 0 2px
+        ${overwrittenVars[designTokens.borderColorForInputWhenFocused]};
+    }
   `;
-  if (props.isDisabled) {
+  if (props.isDisabled || props.disabled) {
     return [
       baseStyles,
       css`
@@ -81,7 +86,7 @@ const getInputStyles = (props, theme) => {
       `,
     ];
   }
-  if (props.isReadOnly) {
+  if (props.isReadOnly || props.readOnly) {
     return [
       baseStyles,
       css`

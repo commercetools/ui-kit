@@ -89,20 +89,19 @@ const createCurrencySelectStyles = ({
       borderRight: '0',
       minWidth: '72px',
       borderColor: (() => {
-        if (isDisabled) return vars.borderColorForInputWhenDisabled;
-        if (isReadOnly) return vars.borderColorForInputWhenReadonly;
+        if (isDisabled)
+          return `${vars.borderColorForInputWhenDisabled} !important`;
         if (hasError) return vars.borderColorForInputWhenError;
         if (hasWarning) return vars.borderColorForInputWhenWarning;
         if (hasFocus) return vars.borderColorForInputWhenFocused;
+        if (isReadOnly)
+          return `${vars.borderColorForInputWhenReadonly} !important`;
         return vars.borderColorForInput;
       })(),
-      '&:hover': (() => {
-        if (isDisabled) return vars.borderColorForInputWhenDisabled;
-        if (isReadOnly) return vars.borderColorForInputWhenReadonly;
-        if (hasError) return vars.borderColorForInputWhenError;
-        if (hasWarning) return vars.borderColorForInputWhenWarning;
-        if (hasFocus) return vars.borderColorForInputWhenFocused;
-        return vars.borderColorForInput;
+      cursor: (() => {
+        if (isDisabled) return 'not-allowed';
+        if (isReadOnly) return `default`;
+        return 'pointer';
       })(),
       backgroundColor: (() => {
         if (isReadOnly) return vars.backgroundColorForInput;
@@ -114,10 +113,15 @@ const createCurrencySelectStyles = ({
       marginLeft: 0,
       maxWidth: 'initial',
       color: (() => {
+        if (isDisabled) return vars.fontColorForInputWhenDisabled;
         if (hasError) return vars.fontColorForInputWhenError;
         if (hasWarning) return vars.fontColorForInputWhenWarning;
+        if (isReadOnly) return vars.fontColorForInputWhenReadonly;
         return base.color;
       })(),
+    }),
+    dropdownIndicator: () => ({
+      fill: isReadOnly ? vars.fontColorForInputWhenReadonly : '',
     }),
   };
 };
@@ -559,16 +563,21 @@ const MoneyInput = (props) => {
             inputId={id}
             name={getCurrencyDropdownName(props.name)}
             value={option}
-            isDisabled={props.isDisabled || props.isReadOnly}
+            isDisabled={props.isDisabled}
             isSearchable={false}
             components={{
               // eslint-disable-next-line react/display-name
               SingleValue: (innerProps) => (
                 <SingleValue {...innerProps} id={id} />
               ),
+              // eslint-disable-next-line react/display-name
+              Input: (ownProps) => (
+                <components.Input {...ownProps} readOnly={props.isReadOnly} />
+              ),
               DropdownIndicator,
             }}
             options={options}
+            menuIsOpen={props.isReadOnly ? false : undefined}
             placeholder=""
             styles={currencySelectStyles}
             onFocus={handleCurrencyFocus}

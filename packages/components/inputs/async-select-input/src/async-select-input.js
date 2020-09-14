@@ -48,14 +48,26 @@ const AsyncSelectInput = (props) => {
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
           autoFocus={props.isAutofocussed}
-          backspaceRemovesValue={props.backspaceRemovesValue}
+          backspaceRemovesValue={
+            props.isReadOnly ? false : props.backspaceRemovesValue
+          }
           components={{
             ...customizedComponents,
             ...(props.iconLeft && !props.isMulti
               ? customComponentsWithIcons
               : {}),
+            // react-select doesn't support readOnly mode; this is a workaround:
+            ...(props.isReadOnly
+              ? {
+                  // eslint-disable-next-line react/display-name
+                  Input: (ownProps) => (
+                    <defaultComponents.Input {...ownProps} readOnly />
+                  ),
+                }
+              : {}),
             ...props.components,
           }}
+          menuIsOpen={props.isReadOnly ? false : undefined}
           styles={createSelectStyles(
             {
               hasWarning: props.hasWarning,
@@ -75,8 +87,8 @@ const AsyncSelectInput = (props) => {
           id={props.containerId}
           inputId={props.id}
           inputValue={props.inputValue}
-          isClearable={props.isClearable}
-          isDisabled={props.isDisabled || props.isReadOnly}
+          isClearable={props.isReadOnly ? false : props.isClearable}
+          isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}

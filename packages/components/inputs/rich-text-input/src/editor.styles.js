@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 
 const EditorWrapper = styled.div`
   align-self: stretch;
-  cursor: ${(props) =>
-    props.isDisabled || props.isReadOnly ? 'not-allowed' : 'inherit'};
+  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'inherit')};
 `;
 
 export { EditorWrapper };

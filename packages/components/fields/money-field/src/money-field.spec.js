@@ -202,8 +202,7 @@ describe('when readOnly', () => {
   it('should make the inputs readonly', () => {
     const { getByLabelText } = renderMoneyField({ isReadOnly: true });
     expect(getByLabelText('Amount')).toHaveAttribute('readonly');
-    // currency select should be disabled
-    expect(getByLabelText('EUR')).toBeDisabled();
+    expect(getByLabelText('EUR')).toHaveAttribute('readonly');
   });
 });
 

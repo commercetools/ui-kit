@@ -28,14 +28,14 @@ const controlStyles = (props, theme) => (base, state) => {
     borderColor: (() => {
       if (props.isDisabled)
         return overwrittenVars[designTokens.borderColorForInputWhenDisabled];
-      if (props.isReadOnly)
-        return overwrittenVars[designTokens.borderColorForInputWhenReadonly];
+      if (state.isFocused)
+        return overwrittenVars[designTokens.borderColorForInputWhenFocused];
       if (props.hasError)
         return overwrittenVars[designTokens.borderColorForInputWhenError];
       if (props.hasWarning)
         return overwrittenVars[designTokens.borderColorForInputWhenWarning];
-      if (state.isFocused)
-        return overwrittenVars[designTokens.borderColorForInputWhenFocused];
+      if (props.isReadOnly)
+        return overwrittenVars[designTokens.borderColorForInputWhenReadonly];
       return overwrittenVars[designTokens.borderColorForInput];
     })(),
     borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
@@ -46,8 +46,25 @@ const controlStyles = (props, theme) => (base, state) => {
       return 'pointer';
     })(),
     padding: `0 ${overwrittenVars.spacingS}`,
+    transition: `border-color ${overwrittenVars.transitionStandard},
+    box-shadow ${overwrittenVars.transitionStandard}`,
+    outline: 0,
+    boxShadow: 'none',
 
-    boxShadow: state.isFocused ? 'none' : base.boxShadow,
+    '&:focus-within': {
+      boxShadow: (() => {
+        if (!props.isDisabled)
+          return `inset 0 0 0 2px ${
+            overwrittenVars[designTokens.borderColorForInputWhenFocused]
+          }`;
+        return null;
+      })(),
+      borderColor: (() => {
+        if (!props.isDisabled)
+          return overwrittenVars[designTokens.borderColorForInputWhenFocused];
+        return null;
+      })(),
+    },
 
     '&:hover': {
       borderColor: (() => {
@@ -55,19 +72,6 @@ const controlStyles = (props, theme) => (base, state) => {
           return overwrittenVars[designTokens.borderColorForInputWhenFocused];
         return null;
       })(),
-      boxShadow: 'none',
-    },
-    '&:active': {
-      borderColor: props.isDisabled
-        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
-        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
-      boxShadow: 'none',
-    },
-    '&:focus': {
-      borderColor: props.isDisabled
-        ? overwrittenVars[designTokens.borderColorForInputWhenDisabled]
-        : overwrittenVars[designTokens.borderColorForInputWhenFocused],
-      boxShadow: 'none',
     },
     pointerEvents: 'auto',
     color:
@@ -131,6 +135,10 @@ const dropdownIndicatorStyles = (props, theme) => (base) => {
     margin: '0',
     padding: '0',
     marginLeft: overwrittenVars.spacingXs,
+    fill:
+      props.isDisabled || props.isReadOnly
+        ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+        : base.fontColorForInput,
   };
 };
 
@@ -378,7 +386,14 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
     } 0`,
     borderStyle: 'solid',
     borderWidth: '1px',
-    pointerEvents: state.isDisabled ? 'none' : base.pointerEvents,
+    pointerEvents:
+      state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
+
+    'svg *': {
+      fill: props.isReadOnly
+        ? overwrittenVars[designTokens.fontColorForInputWhenReadonly]
+        : '',
+    },
 
     '&:hover': {
       borderColor: overwrittenVars.borderColorForTagWarning,

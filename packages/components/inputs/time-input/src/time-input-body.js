@@ -12,19 +12,17 @@ import {
 
 export const ClearSection = (props) => (
   <StyledClearSection
-    onClick={props.isDisabled || props.isReadOnly ? undefined : props.onClear}
-    isReadOnly={props.isReadOnly}
+    label="clear"
+    aria-label="clear"
+    onClick={props.onClear}
     hasError={props.hasError}
-    isDisabled={props.isDisabled}
   >
-    {!props.isDisabled && <CloseIcon size="medium" />}
+    <CloseIcon size="medium" />
   </StyledClearSection>
 );
 
 ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   onClear: PropTypes.func,
 };
@@ -55,6 +53,7 @@ export default class TimeInputBody extends React.Component {
         <StyledInputContainer
           isDisabled={this.props.isDisabled}
           isReadOnly={this.props.isReadOnly}
+          hasError={this.props.hasError}
         >
           <StyledInput
             id={this.props.id}
@@ -75,12 +74,15 @@ export default class TimeInputBody extends React.Component {
             aria-readonly={this.props.isReadOnly}
             contentEditable={!this.props.isReadOnly}
           />
-          <ClearSection
-            isDisabled={this.props.isDisabled}
-            hasError={this.props.hasError}
-            isReadOnly={this.props.isReadOnly}
-            onClear={this.props.onClear}
-          />
+
+          {!this.props.isDisabled && !this.props.isReadOnly && (
+            <ClearSection
+              isDisabled={this.props.isDisabled}
+              hasError={this.props.hasError}
+              isReadOnly={this.props.isReadOnly}
+              onClear={this.props.onClear}
+            />
+          )}
           <StyledClockIconContainer
             htmlFor={this.props.id}
             data-toggle
@@ -88,7 +90,13 @@ export default class TimeInputBody extends React.Component {
             isReadOnly={this.props.isReadOnly}
             hasError={this.props.hasError}
           >
-            <ClockIcon color={this.props.isDisabled ? 'neutral60' : 'solid'} />
+            <ClockIcon
+              color={
+                this.props.isDisabled || this.props.isReadOnly
+                  ? 'neutral60'
+                  : 'solid'
+              }
+            />
           </StyledClockIconContainer>
         </StyledInputContainer>
       </Inline>
