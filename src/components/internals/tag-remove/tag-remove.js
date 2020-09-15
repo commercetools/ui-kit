@@ -15,7 +15,7 @@ const TagRemove = (props) => {
     : props.innerProps;
 
   return (
-    <AccessibleButton {...innerProps}>
+    <AccessibleButton label="Remove" {...innerProps}>
       <CloseBoldIcon
         color={props.selectProps.isDisabled ? 'neutral60' : 'solid'}
         size="medium"
