@@ -17,17 +17,19 @@ const SearchSelectInput = (props) => {
   const loadingMessage =
     props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
 
+  // eslint-disable-next-line react/display-name
+  const OptionComponent = (optionInnerProps) => (
+    <CustomSelectInputOption
+      optionType={props.optionType}
+      optionInnerProps={optionInnerProps}
+    />
+  );
+
   return (
     <AsyncSelectInput
       {...props}
       components={{
-        // eslint-disable-next-line react/display-name
-        Option: (optionInnerProps) => (
-          <CustomSelectInputOption
-            optionType={props.optionType}
-            optionInnerProps={optionInnerProps}
-          />
-        ),
+        Option: OptionComponent,
         ...props.components,
         DropdownIndicator: SearchIconDropdownIndicator,
       }}
