@@ -130,6 +130,7 @@ const DataTableSettings = (props) => {
               event.target.value === SHOW_HIDE_ON_DEMAND
             );
           }}
+          settingsContainerTheme={props.settingsContainerTheme}
         />
       )}
 
@@ -148,6 +149,7 @@ const DataTableSettings = (props) => {
               keysOfVisibleColumns
             );
           }}
+          settingsContainerTheme={props.settingsContainerTheme}
         />
       )}
     </Spacings.Stack>
@@ -181,6 +183,7 @@ DataTableSettings.propTypes = {
     primaryButton: PropTypes.element,
     secondaryButton: PropTypes.element,
   }),
+  settingsContainerTheme: PropTypes.oneOf(['light', 'dark']),
 };
 
 export default DataTableSettings;
