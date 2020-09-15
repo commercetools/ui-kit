@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 
 // see https://github.com/JedWatson/react-select/blob/44e9fb29b230e49a754a2f0d6f30c2250aa45009/src/components/MultiValue.js
@@ -14,12 +15,12 @@ const TagRemove = (props) => {
     : props.innerProps;
 
   return (
-    <div {...innerProps}>
+    <AccessibleButton {...innerProps}>
       <CloseBoldIcon
         color={props.selectProps.isDisabled ? 'neutral60' : 'solid'}
         size="medium"
       />
-    </div>
+    </AccessibleButton>
   );
 };
 

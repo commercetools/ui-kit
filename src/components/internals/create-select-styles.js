@@ -395,7 +395,7 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
         : '',
     },
 
-    '&:hover': {
+    '&:hover, &:focus': {
       borderColor: overwrittenVars.borderColorForTagWarning,
       backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
 
