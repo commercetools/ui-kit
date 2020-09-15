@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
+import {
+  render,
+  fireEvent,
+  waitFor,
+  screen,
+} from '../../../../../test/test-utils';
 import SearchSelectInput from './search-select-input';
 
 const fruits = [
@@ -74,14 +79,14 @@ it('should forward data-attributes', () => {
 });
 
 it('should have focus automatically when isAutofocussed is passed', () => {
-  const { getByLabelText } = renderInput({ isAutofocussed: true });
-  expect(getByLabelText('Fruit')).toHaveFocus();
+  renderInput({ isAutofocussed: true });
+  expect(screen.getByLabelText('Fruit')).toHaveFocus();
 });
 
 it('should call onFocus when the input is focused', () => {
   const onFocus = jest.fn();
-  const { getByLabelText } = renderInput({ onFocus });
-  const input = getByLabelText('Fruit');
+  renderInput({ onFocus });
+  const input = screen.getByLabelText('Fruit');
   input.focus();
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
@@ -89,8 +94,8 @@ it('should call onFocus when the input is focused', () => {
 
 it('should call onBlur when input loses focus', () => {
   const onBlur = jest.fn();
-  const { getByLabelText } = renderInput({ onBlur });
-  const input = getByLabelText('Fruit');
+  renderInput({ onBlur });
+  const input = screen.getByLabelText('Fruit');
   input.focus();
   expect(input).toHaveFocus();
   input.blur();
@@ -101,19 +106,19 @@ it('should call onBlur when input loses focus', () => {
 describe('in single mode', () => {
   describe('when no value is specified', () => {
     it('should render a select input', () => {
-      const { getByLabelText } = renderInput();
-      const input = getByLabelText('Fruit');
+      renderInput();
+      const input = screen.getByLabelText('Fruit');
       expect(input).toBeInTheDocument();
     });
   });
   describe('when a value is specified', () => {
     it('should render a select input with preselected value', () => {
-      const { getByLabelText, getByText } = renderInput({
+      renderInput({
         value: { value: 'banana', label: 'Banana' },
       });
-      const input = getByLabelText('Fruit');
+      const input = screen.getByLabelText('Fruit');
       expect(input).toBeInTheDocument();
-      expect(getByText('Banana')).toBeInTheDocument();
+      expect(screen.getByText('Banana')).toBeInTheDocument();
     });
   });
   describe('interacting', () => {
@@ -121,54 +126,54 @@ describe('in single mode', () => {
      * due to disabling defaultOptions, the list should not rendered any options when the input is empty
      */
     it('should open the empty list by default', async () => {
-      const { getByLabelText, queryByText, getByText } = renderInput();
-      const input = getByLabelText('Fruit');
+      renderInput();
+      const input = screen.getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
       // default message shown when no match is found
-      expect(getByText(/no exact matches found/i)).toBeInTheDocument();
-      expect(queryByText('Mango')).not.toBeInTheDocument();
-      expect(queryByText('Lichi')).not.toBeInTheDocument();
-      expect(queryByText('Raspberry')).not.toBeInTheDocument();
+      expect(screen.getByText(/no exact matches found/i)).toBeInTheDocument();
+      expect(screen.queryByText('Mango')).not.toBeInTheDocument();
+      expect(screen.queryByText('Lichi')).not.toBeInTheDocument();
+      expect(screen.queryByText('Raspberry')).not.toBeInTheDocument();
     });
     it('should open the list and all matching options should be visible', async () => {
-      const { getByLabelText, getByText, queryByText } = renderInput();
-      const input = getByLabelText('Fruit');
+      renderInput();
+      const input = screen.getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => getByText('Mango'));
-      expect(getByText('Mango')).toBeInTheDocument();
-      expect(queryByText('Lichi')).not.toBeInTheDocument();
-      expect(queryByText('Raspberry')).not.toBeInTheDocument();
+      await waitFor(() => screen.getByText('Mango'));
+      expect(screen.getByText('Mango')).toBeInTheDocument();
+      expect(screen.queryByText('Lichi')).not.toBeInTheDocument();
+      expect(screen.queryByText('Raspberry')).not.toBeInTheDocument();
     });
 
     it('should be able to select an option', async () => {
-      const { getByLabelText, getByText, queryByText } = renderInput();
-      const input = getByLabelText('Fruit');
+      renderInput();
+      const input = screen.getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => getByText('Mango'));
-      getByText('Mango').click();
+      await waitFor(() => screen.getByText('Mango'));
+      screen.getByText('Mango').click();
       // new selected value should be Mango
-      expect(getByText('Mango')).toBeInTheDocument();
+      expect(screen.getByText('Mango')).toBeInTheDocument();
       // list should closed and not visible
-      expect(queryByText('Banana')).not.toBeInTheDocument();
+      expect(screen.queryByText('Banana')).not.toBeInTheDocument();
     });
     it('should call onChange when value selected', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      renderInput({
         onChange,
       });
-      const input = getByLabelText('Fruit');
+      const input = screen.getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => getByText('Mango'));
-      getByText('Mango').click();
+      await waitFor(() => screen.getByText('Mango'));
+      screen.getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -183,66 +188,66 @@ describe('in single mode', () => {
 describe('in multi mode', () => {
   describe('when no value is specified', () => {
     it('should render a select input', () => {
-      const { getByLabelText } = renderInput({
+      renderInput({
         isMulti: true,
         value: [],
       });
-      const input = getByLabelText('Fruit');
+      const input = screen.getByLabelText('Fruit');
       expect(input).toBeInTheDocument();
     });
     describe('when values are specified', () => {
       it('should render a select input with preselected values', () => {
-        const { getByLabelText, getByText } = renderInput({
+        renderInput({
           isMulti: true,
           value: [
             { value: 'mango', label: 'Mango' },
             { value: 'raspberry', label: 'Raspberry' },
           ],
         });
-        const input = getByLabelText('Fruit');
+        const input = screen.getByLabelText('Fruit');
         expect(input).toBeInTheDocument();
-        expect(getByText('Mango')).toBeInTheDocument();
-        expect(getByText('Raspberry')).toBeInTheDocument();
+        expect(screen.getByText('Mango')).toBeInTheDocument();
+        expect(screen.getByText('Raspberry')).toBeInTheDocument();
       });
     });
   });
   describe('interacting', () => {
     it('should be able to select two option', async () => {
-      const { getByLabelText, getByText } = renderInput({
+      renderInput({
         isMulti: true,
         value: [],
       });
-      const input = getByLabelText('Fruit');
+      const input = screen.getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => getByText('Mango'));
-      getByText('Mango').click();
+      await waitFor(() => screen.getByText('Mango'));
+      screen.getByText('Mango').click();
       // new selected value should be Mango
-      expect(getByText('Mango')).toBeInTheDocument();
+      expect(screen.getByText('Mango')).toBeInTheDocument();
       // open list again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'banana' } });
-      await waitFor(() => getByText('Banana'));
-      getByText('Banana').click();
+      await waitFor(() => screen.getByText('Banana'));
+      screen.getByText('Banana').click();
       // new values should be Banana and Mango
-      expect(getByText('Banana')).toBeInTheDocument();
-      expect(getByText('Mango')).toBeInTheDocument();
+      expect(screen.getByText('Banana')).toBeInTheDocument();
+      expect(screen.getByText('Mango')).toBeInTheDocument();
     });
     it('should call onChange when two values selected', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      renderInput({
         onChange,
         isMulti: true,
         value: [],
       });
-      const input = getByLabelText('Fruit');
+      const input = screen.getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => getByText('Mango'));
-      getByText('Mango').click();
+      await waitFor(() => screen.getByText('Mango'));
+      screen.getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -255,8 +260,8 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'raspberry' } });
-      await waitFor(() => getByText('Raspberry'));
-      getByText('Raspberry').click();
+      await waitFor(() => screen.getByText('Raspberry'));
+      screen.getByText('Raspberry').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -270,12 +275,12 @@ describe('in multi mode', () => {
     });
     it('should call onChange when value is cleared', () => {
       const onChange = jest.fn();
-      const { getByLabelText, queryByText } = renderInput({
+      renderInput({
         onChange,
         isMulti: true,
         value: [{ value: 'mango', label: 'Mango' }],
       });
-      const input = getByLabelText('Fruit');
+      const input = screen.getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'Backspace' });
       expect(onChange).toHaveBeenCalledWith({
@@ -285,7 +290,7 @@ describe('in multi mode', () => {
           value: [],
         },
       });
-      expect(queryByText('Mango')).not.toBeInTheDocument();
+      expect(screen.queryByText('Mango')).not.toBeInTheDocument();
     });
   });
 });
@@ -309,12 +314,12 @@ describe('when used with option groups', () => {
   const yellowOption = colourOptions[2];
 
   it('should render a select input with preselected values', () => {
-    const { getByLabelText, getByText } = renderInput({
+    renderInput({
       value: yellowOption,
       loadOptions: () => Promise.resolve(groupedOptions),
     });
-    const input = getByLabelText('Fruit');
+    const input = screen.getByLabelText('Fruit');
     expect(input).toBeInTheDocument();
-    expect(getByText(yellowOption.label)).toBeInTheDocument();
+    expect(screen.getByText(yellowOption.label)).toBeInTheDocument();
   });
 });
