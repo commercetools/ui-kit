@@ -29,6 +29,7 @@
       "@commercetools-uikit/creatable-select-field",
       "@commercetools-uikit/creatable-select-input",
       "@commercetools-uikit/data-table",
+      "@commercetools-uikit/data-table-manager",
       "@commercetools-uikit/date-field",
       "@commercetools-uikit/date-input",
       "@commercetools-uikit/date-range-field",
