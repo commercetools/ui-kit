@@ -8,6 +8,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import {
   ClearIndicator,
   DropdownIndicator,
+  TagRemove,
   customComponentsWithIcons,
 } from '@commercetools-uikit/select-utils';
 import {
@@ -25,6 +26,7 @@ const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
   LoadingIndicator,
+  MultiValueRemove: TagRemove,
 };
 
 const AsyncCreatableSelectInput = (props) => {
