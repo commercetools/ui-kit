@@ -1,5 +1,11 @@
 # @commercetools-uikit/radio-input
 
+## 10.34.0
+
+### Minor Changes
+
+- [`4cb094a`](https://github.com/commercetools/ui-kit/commit/4cb094a5db4ec3fd27455ad9d7028b43111b3667) [#1539](https://github.com/commercetools/ui-kit/pull/1539) Thanks [@jonnybel](https://github.com/jonnybel)! - Improved keyboard navigation support by adding/enhancing visual indicators for hover and focus states, including for readOnly mode.
+
 ## 10.30.1
 
 ### Patch Changes
