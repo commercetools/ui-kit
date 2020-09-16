@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/creatable-select-field",
-  "version": "10.34.0",
+  "version": "10.34.1",
   "description": "A controlled input component with validation states and a label getting a selection from the user, and where options can also be created by the user.",
   "main": "dist/creatable-select-field.cjs.js",
   "module": "dist/creatable-select-field.esm.js",

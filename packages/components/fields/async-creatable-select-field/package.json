@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-field",
-  "version": "10.34.0",
+  "version": "10.34.1",
   "description": "An input component with validation states and a label getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.",
   "main": "dist/async-creatable-select-field.cjs.js",
   "module": "dist/async-creatable-select-field.esm.js",

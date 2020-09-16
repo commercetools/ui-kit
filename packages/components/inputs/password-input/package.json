@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/password-input",
-  "version": "10.32.0",
+  "version": "10.34.1",
   "description": "A controlled password input component.",
   "main": "dist/password-input.cjs.js",
   "module": "dist/password-input.esm.js",
