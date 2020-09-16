@@ -69,7 +69,7 @@ SettingsContainer.propTypes = {
   primaryButton: PropTypes.element,
   secondaryButton: PropTypes.element,
   children: PropTypes.node.isRequired,
-  containerTheme: PropTypes.oneOf(['light', 'dark']).isRequired,
+  containerTheme: PropTypes.oneOf(['light', 'dark']),
 };
 SettingsContainer.defaultProps = {
   containerTheme: 'dark',

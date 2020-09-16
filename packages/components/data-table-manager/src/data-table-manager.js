@@ -238,10 +238,7 @@ DataTableManager.propTypes = {
   /**
    * Sets the background theme of the Card that contains the settings
    */
-  settingsContainerTheme: PropTypes.oneOf(['light', 'dark']).isRequired,
-};
-DataTableManager.defaultProps = {
-  settingsContainerTheme: 'dark',
+  settingsContainerTheme: PropTypes.oneOf(['light', 'dark']),
 };
 DataTableManager.displayName = 'DataTableManager';
 
