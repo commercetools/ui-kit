@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/money-input",
-  "version": "10.33.0",
+  "version": "10.34.0",
   "description": "A controlled input component for money values with validation states.",
   "main": "dist/money-input.cjs.js",
   "module": "dist/money-input.esm.js",

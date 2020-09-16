@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/async-select-input",
-  "version": "10.33.0",
+  "version": "10.34.0",
   "description": "",
   "main": "dist/async-select-input.cjs.js",
   "module": "dist/async-select-input.esm.js",
