@@ -1,5 +1,11 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 10.34.1
+
+### Patch Changes
+
+- [`bdcc9a9`](https://github.com/commercetools/ui-kit/commit/bdcc9a979ab2dd03e43ba8d52d83ffbac38217e4) [#1570](https://github.com/commercetools/ui-kit/pull/1570) Thanks [@jonnybel](https://github.com/jonnybel)! - Improved keyboard navigation support by adding/enhancing visual indicators for hover and focus states, including for readOnly mode.
+
 ## 10.33.0
 
 ### Patch Changes

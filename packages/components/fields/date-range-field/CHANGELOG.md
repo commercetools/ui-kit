@@ -1,5 +1,12 @@
 # @commercetools-uikit/date-range-field
 
+## 10.34.0
+
+### Patch Changes
+
+- Updated dependencies [[`cfd3953`](https://github.com/commercetools/ui-kit/commit/cfd3953af3c40f841613b32cef6a0b320e428d2f), [`4cb094a`](https://github.com/commercetools/ui-kit/commit/4cb094a5db4ec3fd27455ad9d7028b43111b3667)]:
+  - @commercetools-uikit/date-range-input@10.34.0
+
 ## 10.33.0
 
 ### Patch Changes

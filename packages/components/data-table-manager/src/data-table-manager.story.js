@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean, withKnobs } from '@storybook/addon-knobs';
+import { text, boolean, select, withKnobs } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import DataTable from '@commercetools-uikit/data-table';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
@@ -275,6 +275,14 @@ storiesOf('Components|DataTable', module)
           }}
           columnManager={columnManager}
           displaySettings={displaySettings}
+          managerTheme={select(
+            'managerTheme',
+            {
+              dark: 'dark',
+              light: 'light',
+            },
+            'dark'
+          )}
         >
           <DataTable
             rows={withRowSelection ? rowsWithSelection : rows}

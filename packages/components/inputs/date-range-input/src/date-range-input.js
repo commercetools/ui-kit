@@ -364,7 +364,10 @@ class DateRangeCalendar extends React.Component {
             );
             const allItems = [...this.state.suggestedItems, ...calendarItems];
 
-            const paddingDayCount = getPaddingDayCount(this.state.calendarDate);
+            const paddingDayCount = getPaddingDayCount(
+              this.state.calendarDate,
+              this.props.intl.locale
+            );
             const paddingDays = Array(paddingDayCount).fill();
 
             const weekdays = getWeekdayNames(this.props.intl.locale);
