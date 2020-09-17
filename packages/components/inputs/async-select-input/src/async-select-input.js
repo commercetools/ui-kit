@@ -141,6 +141,7 @@ const AsyncSelectInput = (props) => {
               info
             );
           }}
+          className={props.className}
           onFocus={props.onFocus}
           onInputChange={props.onInputChange}
           placeholder={placeholder}
@@ -191,6 +192,10 @@ AsyncSelectInput.propTypes = {
    * Indicates that the field is displaying read-only content
    */
   isReadOnly: PropTypes.bool,
+  /**
+   * Pass a custom CSS class, useful to override the styles.<br> NOTE: This is not recommended and should only be used for building new components that require special style adjustments.
+   */
+  className: PropTypes.string,
 
   // react-select base props
   //
