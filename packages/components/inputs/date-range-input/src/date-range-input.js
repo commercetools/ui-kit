@@ -29,6 +29,11 @@ import CalendarContent from '../../../../../src/components/internals/calendar-co
 import CalendarDay from '../../../../../src/components/internals/calendar-day';
 import messages from './messages';
 
+const preventDownshiftDefault = (event) => {
+  // eslint-disable-next-line no-param-reassign
+  event.nativeEvent.preventDownshiftDefault = true;
+};
+
 const parseRangeText = (text, locale) => {
   const parts = text
     .split(' - ')
@@ -412,7 +417,7 @@ class DateRangeCalendar extends React.Component {
                         if (highlightedIndex + 1 >= calendarItems.length) {
                           // if it's the end of the month
                           // then bypass normal arrow navigation
-                          event.nativeEvent.preventDownshiftDefault = true; // eslint-disable-line no-param-reassign
+                          preventDownshiftDefault(event);
                           // then jump to start of next month
                           this.jumpMonth(1, 0);
                         }
@@ -426,7 +431,7 @@ class DateRangeCalendar extends React.Component {
                         if (highlightedIndex <= 0) {
                           // if it's the start of the month
                           // then bypass normal arrow navigation
-                          event.nativeEvent.preventDownshiftDefault = true; // eslint-disable-line no-param-reassign
+                          preventDownshiftDefault(event);
 
                           const numberOfDaysOfPrevMonth = getDaysInMonth(
                             previousDay
