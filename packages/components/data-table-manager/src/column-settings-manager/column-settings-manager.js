@@ -131,7 +131,7 @@ export const ColumnSettingsManager = (props) => {
       onClose={props.onClose}
       primaryButton={props.primaryButton}
       secondaryButton={props.secondaryButton}
-      containerTheme={props.settingsContainerTheme}
+      containerTheme={props.managerTheme}
     >
       <DragDropContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
         <Spacings.Inline scale="m">
@@ -227,7 +227,7 @@ ColumnSettingsManager.propTypes = {
   onClose: PropTypes.func,
   primaryButton: PropTypes.element,
   secondaryButton: PropTypes.element,
-  settingsContainerTheme: PropTypes.oneOf(['light', 'dark']),
+  managerTheme: PropTypes.oneOf(['light', 'dark']),
 };
 
 ColumnSettingsManager.defaultProps = {

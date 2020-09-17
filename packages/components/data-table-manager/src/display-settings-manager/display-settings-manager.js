@@ -32,7 +32,7 @@ const DensityManager = (props) => {
       onClose={props.onClose}
       primaryButton={props.primaryButton}
       secondaryButton={props.secondaryButton}
-      containerTheme={props.settingsContainerTheme}
+      containerTheme={props.managerTheme}
     >
       <Grid gridGap={vars.spacingM} gridTemplateColumns="repeat(2, 1fr)">
         <Grid.Item>
@@ -111,7 +111,7 @@ DensityManager.propTypes = {
   onDensityDisplayChange: PropTypes.func.isRequired,
   onTextWrappingChange: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  settingsContainerTheme: PropTypes.oneOf(['light', 'dark']),
+  managerTheme: PropTypes.oneOf(['light', 'dark']),
 };
 
 export default DensityManager;

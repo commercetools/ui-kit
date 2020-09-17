@@ -28,7 +28,7 @@ const DataTableManager = (props) => {
         onSettingsChange={props.onSettingsChange}
         columnManager={props.columnManager}
         displaySettings={props.displaySettings}
-        settingsContainerTheme={props.settingsContainerTheme}
+        managerTheme={props.managerTheme}
       />
       {React.cloneElement(props.children, {
         columns,
@@ -238,7 +238,7 @@ DataTableManager.propTypes = {
   /**
    * Sets the background theme of the Card that contains the settings
    */
-  settingsContainerTheme: PropTypes.oneOf(['light', 'dark']),
+  managerTheme: PropTypes.oneOf(['light', 'dark']),
 };
 DataTableManager.displayName = 'DataTableManager';
 

@@ -275,8 +275,8 @@ storiesOf('Components|DataTable', module)
           }}
           columnManager={columnManager}
           displaySettings={displaySettings}
-          settingsContainerTheme={select(
-            'settingsContainerTheme',
+          managerTheme={select(
+            'managerTheme',
             {
               dark: 'dark',
               light: 'light',
