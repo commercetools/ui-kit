@@ -10,7 +10,10 @@
       "packagePatterns": [
         "*"
       ],
-      "updateTypes": ["minor", "patch"],
+      "updateTypes": [
+        "minor",
+        "patch"
+      ],
       "groupName": "all dependencies",
       "groupSlug": "all"
     }
@@ -18,11 +21,20 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "labels": ["🤖 Type: Dependencies"],
+  "labels": [
+    "🤖 Type: Dependencies"
+  ],
   "ignoreDeps": [
+    "@svgr/plugin-svgo",
+    "@storybook/addon-a11y",
+    "@storybook/addon-actions",
+    "@storybook/addon-knobs",
+    "@storybook/addon-links",
+    "@storybook/addon-storysource",
+    "@storybook/react",
+    "@storybook/theming",
     "slate",
     "slate-html-serializer",
-    "slate-react",
-    "@svgr/plugin-svgo"
+    "slate-react"
   ]
 }

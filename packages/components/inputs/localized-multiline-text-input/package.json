@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-multiline-text-input",
-  "version": "10.33.0",
+  "version": "10.34.1",
   "description": "A controlled text input component for localized multi-line strings with validation states.",
   "main": "dist/localized-multiline-text-input.cjs.js",
   "module": "dist/localized-multiline-text-input.esm.js",

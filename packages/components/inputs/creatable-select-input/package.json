@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/creatable-select-input",
-  "version": "10.33.0",
+  "version": "10.34.0",
   "description": "An input component getting a selection from the user, and where options can also be created by the user.",
   "main": "dist/creatable-select-input.cjs.js",
   "module": "dist/creatable-select-input.esm.js",

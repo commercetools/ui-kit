@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/multiline-text-input",
-  "version": "10.33.0",
+  "version": "10.34.1",
   "description": "A controlled text input component for multi-line strings with validation states.",
   "main": "dist/multiline-text-input.cjs.js",
   "module": "dist/multiline-text-input.esm.js",

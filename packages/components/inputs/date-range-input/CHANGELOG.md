@@ -1,5 +1,18 @@
 # @commercetools-uikit/date-range-input
 
+## 10.34.0
+
+### Minor Changes
+
+- [`4cb094a`](https://github.com/commercetools/ui-kit/commit/4cb094a5db4ec3fd27455ad9d7028b43111b3667) [#1539](https://github.com/commercetools/ui-kit/pull/1539) Thanks [@jonnybel](https://github.com/jonnybel)! - Improved keyboard navigation support by adding/enhancing visual indicators for hover and focus states, including for readOnly mode.
+
+### Patch Changes
+
+- [`cfd3953`](https://github.com/commercetools/ui-kit/commit/cfd3953af3c40f841613b32cef6a0b320e428d2f) [#1568](https://github.com/commercetools/ui-kit/pull/1568) Thanks [@emmenko](https://github.com/emmenko)! - Fix rendering of weekdays and dates in `<DateRangeInput>` calendar dropdown
+
+- Updated dependencies [[`4cb094a`](https://github.com/commercetools/ui-kit/commit/4cb094a5db4ec3fd27455ad9d7028b43111b3667)]:
+  - @commercetools-uikit/calendar-utils@10.34.0
+
 ## 10.33.0
 
 ### Patch Changes

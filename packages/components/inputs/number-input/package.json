@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/number-input",
-  "version": "10.32.1",
+  "version": "10.34.1",
   "description": "A controlled input component for numbers with validation states.",
   "main": "dist/number-input.cjs.js",
   "module": "dist/number-input.esm.js",
