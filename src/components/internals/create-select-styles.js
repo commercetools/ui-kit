@@ -388,6 +388,7 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
     borderWidth: '1px',
     pointerEvents:
       state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
+    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
 
     'svg *': {
       fill: props.isReadOnly
@@ -395,7 +396,7 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
         : '',
     },
 
-    '&:hover': {
+    '&:hover, &:focus': {
       borderColor: overwrittenVars.borderColorForTagWarning,
       backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
 
