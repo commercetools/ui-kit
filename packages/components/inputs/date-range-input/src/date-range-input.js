@@ -412,7 +412,7 @@ class DateRangeCalendar extends React.Component {
                         clearSelection();
                         this.emit([]);
                       }
-                      // ArrowUp
+                      // ArrowDown
                       if (event.keyCode === 40) {
                         if (highlightedIndex + 1 >= calendarItems.length) {
                           // if it's the end of the month
@@ -422,7 +422,7 @@ class DateRangeCalendar extends React.Component {
                           this.jumpMonth(1, 0);
                         }
                       }
-                      // ArrowDown
+                      // ArrowUp
                       if (event.keyCode === 38) {
                         const previousDay = getPreviousDay(
                           calendarItems[highlightedIndex]

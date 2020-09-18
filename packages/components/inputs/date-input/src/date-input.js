@@ -177,7 +177,7 @@ const DateInput = (props) => {
                     if (event.key === 'Enter' && inputValue.trim() === '') {
                       clearSelection();
                     }
-                    // ArrowUp
+                    // ArrowDown
                     if (event.keyCode === 40) {
                       const nextDayToHighlight = getNextDay(
                         calendarItems[highlightedIndex]
@@ -202,7 +202,7 @@ const DateInput = (props) => {
                         jumpMonth(1, 0);
                       }
                     }
-                    // ArrowDown
+                    // ArrowUp
                     if (event.keyCode === 38) {
                       const previousDay = getPreviousDay(
                         calendarItems[highlightedIndex]

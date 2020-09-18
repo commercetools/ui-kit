@@ -344,7 +344,7 @@ class DateTimeInput extends React.Component {
 
                         closeMenu();
                       }
-                      // ArrowUp
+                      // ArrowDown
                       if (event.keyCode === 40) {
                         if (highlightedIndex + 1 >= calendarItems.length) {
                           // if it's the end of the month
@@ -354,7 +354,7 @@ class DateTimeInput extends React.Component {
                           this.jumpMonths(1, 0);
                         }
                       }
-                      // ArrowDown
+                      // ArrowUp
                       if (event.keyCode === 38) {
                         const previousDay = getPreviousDay(
                           calendarItems[highlightedIndex]
