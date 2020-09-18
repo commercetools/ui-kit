@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import DateTimeInput from './date-time-input';
 
 // This component is used to enable easy testing.
@@ -123,5 +123,40 @@ describe('when locale is "de"', () => {
         value: '2018-09-18T15:00:00.000Z',
       },
     });
+  });
+});
+
+describe('date picker keyboard navigation', () => {
+  it('should move to next month when pressing ArrowDown with last day of month highlighted', () => {
+    renderDateTimeInput({ value: '2020-09-30' });
+
+    const dateInput = screen.getByLabelText('Date');
+
+    // Focusing opens the Date Picker
+    fireEvent.focus(dateInput);
+
+    expect(screen.queryByText('September')).toBeInTheDocument();
+
+    // ArrowDown
+    fireEvent.keyDown(dateInput, { keyCode: 40 });
+
+    expect(screen.queryByText('September')).not.toBeInTheDocument();
+    expect(screen.queryByText('October')).toBeInTheDocument();
+  });
+  it('should move to previous month when pressing ArrowUp with first day of month highlighted', () => {
+    renderDateTimeInput({ value: '2020-09-01' });
+
+    const dateInput = screen.getByLabelText('Date');
+
+    // Focusing opens the Date Picker
+    fireEvent.focus(dateInput);
+
+    expect(screen.queryByText('September')).toBeInTheDocument();
+
+    // ArrowUp
+    fireEvent.keyDown(dateInput, { keyCode: 38 });
+
+    expect(screen.queryByText('September')).not.toBeInTheDocument();
+    expect(screen.queryByText('August')).toBeInTheDocument();
   });
 });
