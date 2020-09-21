@@ -5,7 +5,7 @@ import Text from '@commercetools-uikit/text';
 import { components } from 'react-select';
 import { NO_VALUE_FALLBACK, SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 
-export const FullDetailedSelectInputOption = (props) => {
+export const MultiplePropertiesSelectInputOption = (props) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
 
@@ -20,8 +20,9 @@ export const FullDetailedSelectInputOption = (props) => {
   );
 };
 
-FullDetailedSelectInputOption.displayName = 'FullDetailedSelectInputOption';
-FullDetailedSelectInputOption.propTypes = {
+MultiplePropertiesSelectInputOption.displayName =
+  'MultiplePropertiesSelectInputOption';
+MultiplePropertiesSelectInputOption.propTypes = {
   data: PropTypes.shape({
     label: PropTypes.string,
     key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -30,7 +31,7 @@ FullDetailedSelectInputOption.propTypes = {
   noValueFallback: PropTypes.string,
 };
 
-export const BriefDetailedSelectInputOption = (props) => {
+export const DoublePropertySelectInputOption = (props) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
   return (
@@ -43,8 +44,8 @@ export const BriefDetailedSelectInputOption = (props) => {
   );
 };
 
-BriefDetailedSelectInputOption.displayName = 'BriefDetailedSelectInputOption';
-BriefDetailedSelectInputOption.propTypes = {
+DoublePropertySelectInputOption.displayName = 'DoublePropertySelectInputOption';
+DoublePropertySelectInputOption.propTypes = {
   data: PropTypes.shape({
     label: PropTypes.string,
     key: PropTypes.string,
@@ -56,16 +57,16 @@ export const CustomSelectInputOption = (props) => {
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
 
   switch (props.optionType) {
-    case SELECT_DROPDOWN_OPTION_TYPES.EXTENDED_DETAILED_OPTION:
+    case SELECT_DROPDOWN_OPTION_TYPES.MULTIPLE_PROPERTIES:
       return (
-        <FullDetailedSelectInputOption
+        <MultiplePropertiesSelectInputOption
           {...props.optionInnerProps}
           noValueFallback={noValueFallback}
         />
       );
-    case SELECT_DROPDOWN_OPTION_TYPES.BRIEF_DETAILED_OPTION:
+    case SELECT_DROPDOWN_OPTION_TYPES.DOUBLE_PROPERTY:
       return (
-        <BriefDetailedSelectInputOption
+        <DoublePropertySelectInputOption
           {...props.optionInnerProps}
           noValueFallback={noValueFallback}
         />
