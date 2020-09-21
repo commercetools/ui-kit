@@ -1,5 +1,21 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.35.1
+
+### Patch Changes
+
+- [`84c09b2`](https://github.com/commercetools/ui-kit/commit/84c09b29984f90008f62a844ae0c4f82414d5bb4) [#1580](https://github.com/commercetools/ui-kit/pull/1580) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Updated copy of DataTableManager display settings for all supported locales.
+
+- Updated dependencies [[`5d15865`](https://github.com/commercetools/ui-kit/commit/5d158656703b2f5a99aacd7debf319aad3ce6ee4)]:
+  - @commercetools-uikit/text@10.35.1
+  - @commercetools-uikit/primary-button@10.35.1
+  - @commercetools-uikit/secondary-button@10.35.1
+  - @commercetools-uikit/secondary-icon-button@10.35.1
+  - @commercetools-uikit/field-label@10.35.1
+  - @commercetools-uikit/async-select-input@10.35.1
+  - @commercetools-uikit/tag@10.35.1
+  - @commercetools-uikit/select-input@10.35.1
+
 ## 10.35.0
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @commercetools-uikit/password-field
 
+## 10.35.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/flat-button@10.35.1
+  - @commercetools-uikit/field-label@10.35.1
+  - @commercetools-uikit/field-errors@10.35.1
+
 ## 10.34.1
 
 ### Patch Changes

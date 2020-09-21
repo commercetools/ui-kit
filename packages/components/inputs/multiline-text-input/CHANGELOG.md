@@ -1,5 +1,12 @@
 # @commercetools-uikit/multiline-text-input
 
+## 10.35.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/flat-button@10.35.1
+
 ## 10.34.1
 
 ### Patch Changes

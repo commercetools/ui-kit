@@ -1,5 +1,12 @@
 # @commercetools-uikit/select-input
 
+## 10.35.1
+
+### Patch Changes
+
+- Updated dependencies [[`931f7f7`](https://github.com/commercetools/ui-kit/commit/931f7f7bb071e1baf6ba79c1ca76afbc4a389b29)]:
+  - @commercetools-uikit/select-utils@10.35.1
+
 ## 10.35.0
 
 ### Patch Changes
