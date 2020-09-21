@@ -1,5 +1,12 @@
 # @commercetools-uikit/date-range-input
 
+## 10.35.0
+
+### Patch Changes
+
+- Updated dependencies [[`9c5b5b6`](https://github.com/commercetools/ui-kit/commit/9c5b5b68d64c2ba9b9a12c73d2b278b814eff4b0)]:
+  - @commercetools-uikit/select-utils@10.35.0
+
 ## 10.34.0
 
 ### Minor Changes

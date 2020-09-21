@@ -1,5 +1,11 @@
 # @commercetools-uikit/select-utils
 
+## 10.35.0
+
+### Patch Changes
+
+- [`9c5b5b6`](https://github.com/commercetools/ui-kit/commit/9c5b5b68d64c2ba9b9a12c73d2b278b814eff4b0) [#1565](https://github.com/commercetools/ui-kit/pull/1565) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed selected options when `isMulti` to make them focusable with keyboard
+
 ## 10.33.0
 
 ### Minor Changes
