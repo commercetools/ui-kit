@@ -1,5 +1,14 @@
 # @commercetools-uikit/creatable-select-field
 
+## 10.35.0
+
+### Patch Changes
+
+- [`9c5b5b6`](https://github.com/commercetools/ui-kit/commit/9c5b5b68d64c2ba9b9a12c73d2b278b814eff4b0) [#1565](https://github.com/commercetools/ui-kit/pull/1565) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed selected options when `isMulti` to make them focusable with keyboard
+
+- Updated dependencies [[`9c5b5b6`](https://github.com/commercetools/ui-kit/commit/9c5b5b68d64c2ba9b9a12c73d2b278b814eff4b0)]:
+  - @commercetools-uikit/creatable-select-input@10.35.0
+
 ## 10.34.1
 
 ### Patch Changes
