@@ -151,7 +151,7 @@
     "moment-timezone": "0.5.31",
     "mri": "1.1.6",
     "omit-empty": "1.0.0",
-    "postcss": "7.0.34",
+    "postcss": "8.0.6",
     "postcss-value-parser": "4.1.0",
     "pptr-testing-library": "0.6.4",
     "prettier": "2.1.2",
