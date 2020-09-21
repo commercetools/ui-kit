@@ -132,7 +132,9 @@ describe('in single mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
       // default message shown when no match is found
-      expect(screen.getByText(/no exact matches found/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/No matches found for your search term/i)
+      ).toBeInTheDocument();
       expect(screen.queryByText('Mango')).not.toBeInTheDocument();
       expect(screen.queryByText('Lichi')).not.toBeInTheDocument();
       expect(screen.queryByText('Raspberry')).not.toBeInTheDocument();
