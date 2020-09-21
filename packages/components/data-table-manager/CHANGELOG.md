@@ -1,5 +1,17 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.35.0
+
+### Minor Changes
+
+- [`4a3f1f0`](https://github.com/commercetools/ui-kit/commit/4a3f1f0ec7fb33f3beb0caaab9be30ca6b86ac9f) [#1566](https://github.com/commercetools/ui-kit/pull/1566) Thanks [@jonnybel](https://github.com/jonnybel)! - Allow changing background color (theme) of the Card which contains the manager settings though a new prop: `managerTheme`.
+
+### Patch Changes
+
+- Updated dependencies [[`9c5b5b6`](https://github.com/commercetools/ui-kit/commit/9c5b5b68d64c2ba9b9a12c73d2b278b814eff4b0)]:
+  - @commercetools-uikit/async-select-input@10.35.0
+  - @commercetools-uikit/select-input@10.35.0
+
 ## 10.34.2
 
 ### Patch Changes
