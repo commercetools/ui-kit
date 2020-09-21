@@ -78,8 +78,7 @@ export const bodyStyles = (props, theme) => css`
   font-size: 1rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone &&
-  getTone(props.tone, theme)}
+  ${props.tone && getTone(props.tone, theme)}
   ${props.truncate && truncate}
 `;
 
@@ -114,7 +113,6 @@ export const detailStyles = (props, theme) => css`
   ${props.isInline && inline}
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone &&
-  getTone(props.tone, theme)}
+  ${props.tone && getTone(props.tone, theme)}
   ${props.truncate && truncate}
 `;
