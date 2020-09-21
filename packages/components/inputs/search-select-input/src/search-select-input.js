@@ -8,6 +8,7 @@ import {
   SearchIconDropdownIndicator,
 } from '@commercetools-uikit/select-utils';
 import messages from './messages';
+import { SearchSelectInputWrapper } from './search-select-input.styles';
 
 const SearchSelectInput = (props) => {
   const intl = useIntl();
@@ -16,6 +17,8 @@ const SearchSelectInput = (props) => {
     (() => intl.formatMessage(messages.noOptionsMessage));
   const loadingMessage =
     props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
+  const placeholder =
+    props.placeholder || intl.formatMessage(messages.placeholderMessage);
 
   // eslint-disable-next-line react/display-name
   const OptionComponent = (optionInnerProps) => (
@@ -26,18 +29,22 @@ const SearchSelectInput = (props) => {
   );
 
   return (
-    <AsyncSelectInput
-      {...props}
-      components={{
-        Option: OptionComponent,
-        ...props.components,
-        DropdownIndicator: SearchIconDropdownIndicator,
-      }}
-      loadingMessage={loadingMessage}
-      noOptionsMessage={noOptionsMessage}
-      isSearchable={true}
-      defaultOptions={false}
-    />
+    <SearchSelectInputWrapper>
+      <AsyncSelectInput
+        {...props}
+        components={{
+          Option: OptionComponent,
+          ...props.components,
+          DropdownIndicator: SearchIconDropdownIndicator,
+        }}
+        placeholder={placeholder}
+        iconLeft={undefined}
+        loadingMessage={loadingMessage}
+        noOptionsMessage={noOptionsMessage}
+        isSearchable={true}
+        defaultOptions={false}
+      />
+    </SearchSelectInputWrapper>
   );
 };
 
@@ -78,10 +85,6 @@ SearchSelectInput.propTypes = {
    * Sets the tabIndex attribute on the input
    */
   tabIndex: PropTypes.string,
-  /**
-   * Icon to display on the left of the placeholder text and selected value. Has no effect when isMulti is enabled.
-   */
-  iconLeft: PropTypes.node,
   /**
    * The value of the select; reflected by the selected option
    */

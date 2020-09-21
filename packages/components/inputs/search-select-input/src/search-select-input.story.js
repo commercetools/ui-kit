@@ -12,10 +12,7 @@ import {
 import { SELECT_DROPDOWN_OPTION_TYPES } from '@commercetools-uikit/select-utils';
 import Section from '../../../../../.storybook/decorators/section';
 import SearchSelectInput from './search-select-input';
-import * as icons from '../../../icons';
 import Readme from '../README.md';
-
-const iconNames = Object.keys(icons);
 
 const colourOptions = [
   {
@@ -44,16 +41,15 @@ const filterColors = (inputValue) =>
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue) =>
-  delay(2000).then(() => filterColors(inputValue));
+  delay(1000).then(() => filterColors(inputValue));
 
 class SearchSelectInputStory extends React.Component {
   static displayName = 'SearchSelectInputStory';
   render() {
     const isMulti = boolean('isMulti', false);
-    const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
     const noOptionsMessage = text(
       'No options message',
-      'No exact matches found'
+      'No matches found for your search term'
     );
     const loadingMessage = text(
       'Loading options message',
@@ -102,16 +98,13 @@ class SearchSelectInputStory extends React.Component {
                   }}
                   onFocus={action('onFocus')}
                   onInputChange={action('onInputChange')}
-                  placeholder={text('placeholder', 'Select..')}
+                  placeholder={text('placeholder', 'Search by...')}
                   tabIndex={text('tabIndex', '0')}
                   tabSelectsValue={boolean('tabSelectsValue', true)}
                   value={value}
                   // Async props
                   loadOptions={loadOptions}
                   cacheOptions={boolean('cacheOptions', false)}
-                  iconLeft={
-                    iconLeft ? React.createElement(iconLeft) : undefined
-                  }
                 />
                 <div>
                   <p>
