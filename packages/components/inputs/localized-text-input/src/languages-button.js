@@ -7,22 +7,17 @@ import messages from '../../../../../src/components/internals/messages/localized
 
 const LanguagesButton = (props) => {
   const intl = useIntl();
-  return props.isOpen ? (
+
+  const labelMessage = props.isOpen ? messages.hide : messages.show;
+
+  return (
     <FlatButton
       icon={<WorldIcon />}
-      label={intl.formatMessage(messages.hide, {
+      label={intl.formatMessage(labelMessage, {
         remainingLanguages: props.remainingLanguages,
       })}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-    />
-  ) : (
-    <FlatButton
-      icon={<WorldIcon />}
-      label={intl.formatMessage(messages.show, {
-        remainingLanguages: props.remainingLanguages,
-      })}
-      onClick={props.onClick}
     />
   );
 };
