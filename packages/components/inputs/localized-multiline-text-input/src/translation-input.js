@@ -131,11 +131,7 @@ const TranslationInput = (props) => {
                 <div>{props.warning}</div>
               </LeftColumn>
             );
-          return (
-            props.languagesControl && (
-              <LeftColumn>{props.languagesControl}</LeftColumn>
-            )
-          );
+          return null;
         })()}
         {!props.isCollapsed && contentExceedsShownRows && (
           <React.Fragment>
@@ -151,7 +147,6 @@ const TranslationInput = (props) => {
           </React.Fragment>
         )}
       </Row>
-      {(props.error || props.warning) && props.languagesControl}
     </Stack>
   );
 };
@@ -172,7 +167,6 @@ TranslationInput.propTypes = {
   isAutofocussed: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
-  languagesControl: PropTypes.node,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
