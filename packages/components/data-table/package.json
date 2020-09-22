@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/data-table",
-  "version": "10.33.0",
+  "version": "10.35.1",
   "description": "A component for rendering tabular data.",
   "main": "dist/data-table.cjs.js",
   "module": "dist/data-table.esm.js",
@@ -23,7 +23,7 @@
     "@commercetools-uikit/hooks": "10.30.1",
     "@commercetools-uikit/icons": "10.33.0",
     "@commercetools-uikit/utils": "10.21.0",
-    "@commercetools-uikit/secondary-icon-button": "10.30.1",
+    "@commercetools-uikit/secondary-icon-button": "10.35.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "lodash": "4.17.20",

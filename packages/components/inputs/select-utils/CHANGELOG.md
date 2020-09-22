@@ -1,5 +1,14 @@
 # @commercetools-uikit/select-utils
 
+## 10.35.1
+
+### Patch Changes
+
+- [`931f7f7`](https://github.com/commercetools/ui-kit/commit/931f7f7bb071e1baf6ba79c1ca76afbc4a389b29) [#1586](https://github.com/commercetools/ui-kit/pull/1586) Thanks [@mohib0306](https://github.com/mohib0306)! - Rename select input option types
+
+- Updated dependencies [[`5d15865`](https://github.com/commercetools/ui-kit/commit/5d158656703b2f5a99aacd7debf319aad3ce6ee4)]:
+  - @commercetools-uikit/text@10.35.1
+
 ## 10.35.0
 
 ### Patch Changes
