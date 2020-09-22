@@ -135,11 +135,15 @@ export const ColumnSettingsManager = (props) => {
     >
       <DragDropContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
         <Spacings.Inline scale="m">
-          <DroppableContainer isDragging={isDragging}>
+          <DroppableContainer
+            isDragging={isDragging}
+            aria-labelledby="hidden-columns"
+          >
             <Spacings.Stack>
               <Spacings.Inline scale="xs" alignItems="center">
                 <EyeCrossedIcon size="medium" />
                 <FieldLabel
+                  id="hidden-columns"
                   title={intl.formatMessage(messages.hiddenColumns)}
                 />
               </Spacings.Inline>
@@ -175,11 +179,15 @@ export const ColumnSettingsManager = (props) => {
               />
             </Spacings.Stack>
           </DroppableContainer>
-          <DroppableContainer isDragging={isDragging}>
+          <DroppableContainer
+            isDragging={isDragging}
+            aria-labelledby="visible-columns"
+          >
             <Spacings.Stack>
               <Spacings.Inline scale="xs" alignItems="center">
                 <EyeIcon size="medium" />
                 <FieldLabel
+                  id="visible-columns"
                   title={intl.formatMessage(messages.visibleColumns)}
                 />
               </Spacings.Inline>
