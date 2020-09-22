@@ -8,7 +8,6 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import plugins from '../../../../../src/components/internals/rich-text-plugins';
 import html from '../../../../../src/components/internals/rich-text-utils/html';
 import renderEditor from './editor';
-import LanguagesControlButton from './languages-control';
 
 class RichTextInput extends React.PureComponent {
   serializedValue = this.props.value || '';
@@ -89,39 +88,6 @@ class RichTextInput extends React.PureComponent {
     }
   };
 
-  renderLanguagesControl = () => {
-    if (
-      !this.props.hasRemainingLanguages ||
-      this.props.hideLanguageExpansionControls
-    ) {
-      return null;
-    }
-
-    if (this.props.isFirstLanguage && !this.props.areLanguagesOpened)
-      return (
-        <LanguagesControlButton
-          isClosed={true}
-          onClick={this.props.toggleLanguages}
-          remainingLanguages={this.props.remainingLanguages}
-        />
-      );
-    if (this.props.isLastLanguage)
-      return (
-        <LanguagesControlButton
-          onClick={this.props.toggleLanguages}
-          remainingLanguages={this.props.remainingLanguages}
-          isDisabled={Boolean(
-            this.props.hasError ||
-              this.props.hasErrorOnRemainingLanguages ||
-              this.props.hasWarning ||
-              this.props.hasWarningOnRemainingLanguages
-          )}
-        />
-      );
-
-    return null;
-  };
-
   render() {
     return (
       <Editor
@@ -137,7 +103,7 @@ class RichTextInput extends React.PureComponent {
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
         options={{
-          languagesControl: this.renderLanguagesControl,
+          hasLanguagesControl: this.props.hasLanguagesControl,
           ...pick(this.props, [
             'language',
             'onToggle',
@@ -147,9 +113,7 @@ class RichTextInput extends React.PureComponent {
             'error',
             'defaultExpandMultilineText',
             'hasWarning',
-            'hasWarningOnRemainingLanguages',
             'hasError',
-            'hasErrorOnRemainingLanguages',
             'placeholder',
             'onClickExpand',
             'showExpandIcon',
@@ -185,6 +149,7 @@ RichTextInput.propTypes = {
   value: PropTypes.string.isRequired,
   showExpandIcon: PropTypes.bool.isRequired,
   onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
+  hasLanguagesControl: PropTypes.bool,
 };
 
 export default RichTextInput;
