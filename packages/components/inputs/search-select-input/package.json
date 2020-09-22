@@ -20,11 +20,11 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/async-select-input": "10.34.0",
+    "@commercetools-uikit/async-select-input": "10.35.1",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/select-utils": "10.33.0",
+    "@commercetools-uikit/select-utils": "10.35.1",
     "@commercetools-uikit/spacings": "10.18.7",
-    "@commercetools-uikit/text": "10.30.1",
+    "@commercetools-uikit/text": "10.35.1",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "^10.0.34",
     "prop-types": "15.7.2"

@@ -58,7 +58,7 @@ class SearchSelectInputStory extends React.Component {
     const optionType = select(
       'Dropdown option style',
       Object.values(SELECT_DROPDOWN_OPTION_TYPES),
-      SELECT_DROPDOWN_OPTION_TYPES.SINGLE_LINED_OPTION
+      SELECT_DROPDOWN_OPTION_TYPES.SINGLE_PROPERTY
     );
     return (
       <React.Fragment>
