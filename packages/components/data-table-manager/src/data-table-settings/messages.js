@@ -9,7 +9,7 @@ export default defineMessages({
   displaySettingsOption: {
     id: 'UIKit.DataTableManager.TableSettings.displaySettingsOption',
     description: 'Display settings dropdown option label.',
-    defaultMessage: 'Display settings',
+    defaultMessage: 'Layout settings',
   },
   columnManagerOption: {
     id: 'UIKit.DataTableManager.TableSettings.columnManagerOption',

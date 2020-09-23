@@ -4,7 +4,7 @@ export default defineMessages({
   title: {
     id: 'UIKit.DataTableManager.DensityManager.title',
     description: 'Title for the density manager component.',
-    defaultMessage: 'Display settings',
+    defaultMessage: 'Layout settings',
   },
   textWrappingSubtitle: {
     id: 'UIKit.DataTableManager.DensityManager.textWrappingSubtitle',
