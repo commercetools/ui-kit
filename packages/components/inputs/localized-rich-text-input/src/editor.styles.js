@@ -54,8 +54,7 @@ const EditorWrapper = styled.div`
 `;
 
 const getToggleButtonWrapperPosition = (props) =>
-  // if there
-  props.shouldToggleButtonTakeSpace
+  !props.shouldToggleButtonTakeSpace
     ? css`
         position: absolute;
         top: 0;

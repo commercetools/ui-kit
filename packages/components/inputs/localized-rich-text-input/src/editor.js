@@ -155,7 +155,7 @@ const Editor = (props) => {
               {renderToggleButton && (
                 <RightColumn>
                   <ToggleButtonWrapper
-                    shouldToggleButtonTakeSpace={!shouldToggleButtonTakeSpace}
+                    shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}
                   >
                     <FlatButton
                       onClick={toggle}
