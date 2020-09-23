@@ -18,9 +18,9 @@ import {
   getId,
   getName,
 } from '@commercetools-uikit/localized-utils';
-import LanguagesControl from './languages-control';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
+import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const expandedTranslationsReducer = (state, action) => {
   switch (action.type) {
@@ -154,8 +154,8 @@ const LocalizedMultilineTextInput = (props) => {
           })}
         </Stack>
         {shouldRenderLanguagesButton && (
-          <LanguagesControl
-            isClosed={!areLanguagesOpened}
+          <LocalizedInputToggle
+            isOpen={areLanguagesOpened}
             onClick={toggleLanguages}
             isDisabled={
               areLanguagesOpened &&
@@ -163,7 +163,7 @@ const LocalizedMultilineTextInput = (props) => {
                 hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
               )
             }
-            remainingLanguages={languages.length - 1}
+            remainingLocalizations={languages.length - 1}
           />
         )}
       </Stack>

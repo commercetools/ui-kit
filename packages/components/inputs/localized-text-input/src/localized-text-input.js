@@ -22,12 +22,12 @@ import {
 } from '@commercetools-uikit/localized-utils';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import TextInput from '@commercetools-uikit/text-input';
-import LanguagesButton from './languages-button';
-import messages from '../../../../../src/components/internals/messages/localized-input';
 import {
   getLocalizedInputStyles,
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
+import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
+import messages from '../../../../../src/components/internals/messages/localized-input';
 
 const sequentialId = createSequentialId('localized-text-input-');
 
@@ -189,11 +189,11 @@ const LocalizedTextInput = (props) => {
           })}
         </Stack>
         {shouldRenderLanguagesButton && (
-          <LanguagesButton
+          <LocalizedInputToggle
             isOpen={areLanguagesExpanded}
             onClick={toggleLanguages}
             isDisabled={areLanguagesExpanded && hasErrorInRemainingLanguages}
-            remainingLanguages={languages.length - 1}
+            remainingLocalizations={languages.length - 1}
           />
         )}
       </Stack>

@@ -22,7 +22,7 @@ import {
   omitEmptyTranslations,
 } from '../../../../../src/components/internals/rich-text-utils/localized';
 import RequiredValueErrorMessage from './required-value-error-message';
-import LanguagesControlButton from './languages-control';
+import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const expandedTranslationsReducer = (state, action) => {
   switch (action.type) {
@@ -167,8 +167,8 @@ const LocalizedRichTextInput = (props) => {
               align-self: flex-start;
             `}
           >
-            <LanguagesControlButton
-              isClosed={!areLanguagesOpened}
+            <LocalizedInputToggle
+              isOpen={areLanguagesOpened}
               onClick={toggleLanguages}
               isDisabled={
                 areLanguagesOpened &&
@@ -176,7 +176,7 @@ const LocalizedRichTextInput = (props) => {
                   hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
                 )
               }
-              remainingLanguages={languages.length - 1}
+              remainingLocalizations={languages.length - 1}
             />
           </div>
         )}

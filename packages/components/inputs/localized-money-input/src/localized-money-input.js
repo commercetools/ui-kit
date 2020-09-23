@@ -7,6 +7,7 @@ import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
 import MoneyInput from '@commercetools-uikit/money-input';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
+import { CoinsIcon } from '@commercetools-uikit/icons';
 import {
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
@@ -18,7 +19,8 @@ import {
   createSequentialId,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
-import CurrencyControl from './currency-control';
+import messages from './messages';
+import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const sequentialId = createSequentialId('localized-money-input-');
 
@@ -183,16 +185,22 @@ const LocalizedMoneyInput = (props) => {
           })}
         </Stack>
         {shouldRenderCurrencyControl && (
-          <CurrencyControl
+          <LocalizedInputToggle
+            icon={<CoinsIcon />}
             onClick={toggleCurrencies}
-            isClosed={!areCurrenciesExpanded}
+            isOpen={areCurrenciesExpanded}
             isDisabled={
               areCurrenciesExpanded &&
               Boolean(
                 hasErrorInRemainingCurrencies || hasWarningInRemainingCurrencies
               )
             }
-            remainingCurrencies={currencies.length - 1}
+            showMessage={intl.formatMessage(messages.show, {
+              remainingCurrencies: currencies.leqngth - 1,
+            })}
+            hideMessage={intl.formatMessage(messages.hide, {
+              remainingCurrencies: currencies.length - 1,
+            })}
           />
         )}
       </Stack>
