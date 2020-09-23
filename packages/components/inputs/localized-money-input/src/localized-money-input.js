@@ -196,7 +196,7 @@ const LocalizedMoneyInput = (props) => {
               )
             }
             showMessage={intl.formatMessage(messages.show, {
-              remainingCurrencies: currencies.leqngth - 1,
+              remainingCurrencies: currencies.length - 1,
             })}
             hideMessage={intl.formatMessage(messages.hide, {
               remainingCurrencies: currencies.length - 1,
