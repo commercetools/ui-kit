@@ -42,6 +42,24 @@ TimeInput.to24h('15:09.300'); // -> ''
 TimeInput.to24h('10:3.5'); // -> ''
 ```
 
+### `TimeInput.toLocaleTime`
+
+Converts any value to either a formatted value suitable for the locale, or an empty string. The resulting format might use 12h or 24h depending on the locale. If milliseconds are included, the 24h format is returned.
+
+```
+Signature: (time: String, locale: String) => String
+```
+
+```js
+TimeInput.toLocaleTime('10:00', 'en'); // -> '10:00 AM'
+TimeInput.toLocaleTime('10:00', 'de'); // -> '10:00'
+TimeInput.toLocaleTime('13:00', 'en'); // -> '1:00 PM'
+TimeInput.toLocaleTime('13:00', 'de'); // -> '13:00'
+TimeInput.toLocaleTime('1:00:00.111 PM', 'en'); // -> '13:00:00.111'
+TimeInput.toLocaleTime('13:00:00.111', 'en'); // -> '13:00:00.111'
+TimeInput.toLocaleTime('banter', 'en'); // -> ''
+```
+
 ## Main Functions and use cases are:
 
 - Input field for time
