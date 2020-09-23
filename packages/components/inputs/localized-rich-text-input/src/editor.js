@@ -41,7 +41,7 @@ const Row = styled.div`
   justify-content: flex-end;
 
   ${(props) =>
-    !props.shouldToggleButtonTakeSpace ? 'margin: 0 !important;' : null}
+    !props.shouldToggleButtonTakeSpace ? 'margin-top: 0 !important;' : null}
 `;
 
 const Editor = (props) => {

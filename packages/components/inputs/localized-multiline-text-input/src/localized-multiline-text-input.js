@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
+import { css } from '@emotion/core';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -118,6 +119,10 @@ const LocalizedMultilineTextInput = (props) => {
           {languages.map((language, index) => {
             const isFirstLanguage = index === 0;
             if (!isFirstLanguage && !areLanguagesOpened) return null;
+            const isLastLanguage = index === languages.length - 1;
+
+            const hasLanguagesControl =
+              (isFirstLanguage && !areLanguagesOpened) || isLastLanguage;
 
             return (
               <TranslationInput
@@ -148,23 +153,30 @@ const LocalizedMultilineTextInput = (props) => {
                 intl={intl}
                 warning={props.warnings && props.warnings[language]}
                 error={props.errors && props.errors[language]}
+                hasLanguagesControl={hasLanguagesControl}
                 {...createLocalizedDataAttributes(props, language)}
               />
             );
           })}
         </Stack>
         {shouldRenderLanguagesButton && (
-          <LocalizedInputToggle
-            isOpen={areLanguagesOpened}
-            onClick={toggleLanguages}
-            isDisabled={
-              areLanguagesOpened &&
-              Boolean(
-                hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
-              )
-            }
-            remainingLocalizations={languages.length - 1}
-          />
+          <div
+            css={css`
+              align-self: flex-start;
+            `}
+          >
+            <LocalizedInputToggle
+              isOpen={areLanguagesOpened}
+              onClick={toggleLanguages}
+              isDisabled={
+                areLanguagesOpened &&
+                Boolean(
+                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
+                )
+              }
+              remainingLocalizations={languages.length - 1}
+            />
+          </div>
         )}
       </Stack>
     </Constraints.Horizontal>

@@ -13,6 +13,7 @@ import messages from '../../../../../src/components/internals/messages/multiline
 import {
   getTextareaStyles,
   getLanguageLabelStyles,
+  ToggleButtonWrapper,
 } from './translation-input.styles';
 
 const LeftColumn = styled.div`
@@ -20,6 +21,7 @@ const LeftColumn = styled.div`
 `;
 
 const RightColumn = styled.div`
+  position: relative;
   flex: 0;
   display: flex;
   align-items: flex-start;
@@ -27,9 +29,10 @@ const RightColumn = styled.div`
 
 const Row = styled.div`
   display: flex;
-  &:empty {
-    margin: 0 !important;
-  }
+  justify-content: flex-end;
+
+  ${(props) =>
+    !props.shouldToggleButtonTakeSpace ? 'margin-top: 0 !important;' : null}
 `;
 
 const TranslationInput = (props) => {
@@ -78,6 +81,15 @@ const TranslationInput = (props) => {
   const contentExceedsShownRows =
     contentRowCount > TranslationInput.MIN_ROW_COUNT;
 
+  const shouldToggleButtonTakeSpace =
+    // if hasLanguagesControl and there are no errors/warnings to display
+    // then the toggleButton is absolutely positioned
+    (!props.isCollapsed &&
+      contentExceedsShownRows &&
+      !props.hasLanguagesControl) ||
+    props.error ||
+    props.warning;
+
   return (
     <Stack scale="xs">
       <div
@@ -117,7 +129,7 @@ const TranslationInput = (props) => {
           {...filterDataAttributes(props)}
         />
       </div>
-      <Row>
+      <Row shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}>
         {(() => {
           if (props.error)
             return (
@@ -137,12 +149,16 @@ const TranslationInput = (props) => {
           <React.Fragment>
             <LeftColumn />
             <RightColumn>
-              <FlatButton
-                onClick={props.onToggle}
-                isDisabled={props.isDisabled}
-                label={props.intl.formatMessage(messages.collapse)}
-                icon={<AngleUpIcon size="small" />}
-              />
+              <ToggleButtonWrapper
+                shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}
+              >
+                <FlatButton
+                  onClick={props.onToggle}
+                  isDisabled={props.isDisabled}
+                  label={props.intl.formatMessage(messages.collapse)}
+                  icon={<AngleUpIcon size="small" />}
+                />
+              </ToggleButtonWrapper>
             </RightColumn>
           </React.Fragment>
         )}
@@ -175,6 +191,7 @@ TranslationInput.propTypes = {
   }).isRequired,
   error: PropTypes.node,
   warning: PropTypes.node,
+  hasLanguagesControl: PropTypes.bool,
 };
 
 // The minimum ammount of rows the MultilineTextInput will show.
