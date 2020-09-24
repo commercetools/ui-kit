@@ -166,7 +166,7 @@ TimeInput.defaultProps = {
 
 // Converts any value to either a formatted value or an empty string
 // The resulting format might use 12h or 24h, unless the time contains
-// seconds or milliseconds. If seconds or milliseconds are contained, the
+// milliseconds. If milliseconds are contained, the
 // the 24h format is returned.
 //
 // Returns time in a format suitable for the locale.
