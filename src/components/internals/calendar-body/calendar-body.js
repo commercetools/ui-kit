@@ -103,6 +103,9 @@ export const CalendarBody = (props) => {
           onFocus={handleToggleFocus}
           onBlur={handleToggleBlur}
           disabled={disabledOrReadOnly}
+          onKeyDown={props.inputProps.onKeyDown}
+          /* keyboard users don't need this button */
+          tabIndex={-1}
         >
           {props.icon === 'clock' ? (
             <ClockIcon color={disabledOrReadOnly ? 'neutral60' : 'solid'} />
@@ -124,6 +127,7 @@ CalendarBody.propTypes = {
   inputProps: PropTypes.shape({
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
+    onKeyDown: PropTypes.func,
   }),
   isClearable: PropTypes.bool,
   toggleButtonProps: PropTypes.shape({
