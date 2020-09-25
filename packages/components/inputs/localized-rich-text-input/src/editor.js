@@ -82,8 +82,14 @@ const Editor = (props) => {
   }
 
   const shouldToggleButtonTakeSpace =
-    /* if hasLanguagesControl is true and there are no errors/warnings to display
-       then the toggleButton is absolutely positioned */
+    /*
+      - if hasLanguagesControl and there are no errors/warnings to display
+      - then the toggleButton is absolutely positioned
+      This is because the toggle button is placed next to the LocalizedInputToggle without being siblings in the DOM.
+      If there is a error or warning showing,
+      then it can be placed statically because it will then be a sibling to the error/warning message
+      and LocalizedInputToggle is placed below the errors/warnings.
+    */
     (renderToggleButton && !props.hasLanguagesControl) ||
     props.error ||
     props.warning;
