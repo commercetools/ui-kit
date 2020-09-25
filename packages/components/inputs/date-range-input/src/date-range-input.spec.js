@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import DateRangeInput from './date-range-input';
 
 // This component is used to enable easy testing.
@@ -237,5 +237,46 @@ describe('when locale is "de"', () => {
         value: ['2018-09-18', '2018-09-20'],
       },
     });
+  });
+});
+
+describe('date picker keyboard navigation', () => {
+  it('should move to next month when pressing ArrowDown through current month', () => {
+    renderDateRangeInput({ value: ['2020-09-10', '2020-09-20'] });
+
+    const dateRangeInput = screen.getByLabelText('Date');
+
+    // Focusing opens the Date Picker
+    fireEvent.focus(dateRangeInput);
+
+    expect(screen.queryByText('September')).toBeInTheDocument();
+
+    // DateRangePicker highlights the first day of the month of the start of the range
+    // Therefore, we only need to press ArrowDown at least 30 times in September
+    let idx = 0;
+    while (idx <= 30) {
+      fireEvent.keyDown(dateRangeInput, { keyCode: 40 });
+      idx += 1;
+    }
+
+    expect(screen.queryByText('September')).not.toBeInTheDocument();
+    expect(screen.queryByText('October')).toBeInTheDocument();
+  });
+  it('should move to previous month when pressing ArrowUp through the current month', () => {
+    renderDateRangeInput({ value: ['2020-09-10', '2020-09-20'] });
+
+    const dateRangeInput = screen.getByLabelText('Date');
+
+    // Focusing opens the Date Picker
+    fireEvent.focus(dateRangeInput);
+
+    expect(screen.queryByText('September')).toBeInTheDocument();
+
+    // DateRangePicker highlights the first day of the month of the start of the range
+    // therefore, we only need to press ArrowUp once
+    fireEvent.keyDown(dateRangeInput, { keyCode: 38 });
+
+    expect(screen.queryByText('September')).not.toBeInTheDocument();
+    expect(screen.queryByText('August')).toBeInTheDocument();
   });
 });
