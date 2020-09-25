@@ -82,8 +82,8 @@ const Editor = (props) => {
   }
 
   const shouldToggleButtonTakeSpace =
-    // if hasLanguagesControl and there are no errors/warnings to display
-    // then the toggleButton is absolutely positioned
+    /* if hasLanguagesControl is true and there are no errors/warnings to display
+       then the toggleButton is absolutely positioned */
     (renderToggleButton && !props.hasLanguagesControl) ||
     props.error ||
     props.warning;
