@@ -41,7 +41,7 @@ const filterColors = (inputValue) =>
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue) =>
-  delay(1000).then(() => filterColors(inputValue));
+  delay(500).then(() => filterColors(inputValue));
 
 class SearchSelectInputStory extends React.Component {
   static displayName = 'SearchSelectInputStory';

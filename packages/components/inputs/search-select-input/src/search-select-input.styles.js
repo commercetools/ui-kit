@@ -3,14 +3,15 @@ import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const SearchSelectInputWrapper = styled.div`
-  div[class$='ValueContainer'] {
+  div[class$='control'] {
     &:hover {
       cursor: text;
     }
-  }
-  div[class$='IndicatorsContainer'] {
-    svg * {
-      fill: ${vars.colorSolid};
+    div[class$='indicatorContainer' i] {
+      cursor: pointer;
+      svg * {
+        fill: ${vars.colorSolid};
+      }
     }
   }
 `;
