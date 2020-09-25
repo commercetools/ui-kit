@@ -98,9 +98,7 @@ const CellInner = styled.div`
   // otherwise it will change the way css-grid automatically allocates space for the cells of the table
   // preferring to clip the cells instead and adding horizontal scrollbar to the table container
   */
-  ${(
-    props
-  ) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
+  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
 `;
 
 const BaseCell = styled.td`

@@ -1,5 +1,14 @@
 # @commercetools-uikit/data-table
 
+## 10.35.1
+
+### Patch Changes
+
+- [`5d15865`](https://github.com/commercetools/ui-kit/commit/5d158656703b2f5a99aacd7debf319aad3ce6ee4) [#1579](https://github.com/commercetools/ui-kit/pull/1579) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies
+
+- Updated dependencies []:
+  - @commercetools-uikit/secondary-icon-button@10.35.1
+
 ## 10.33.0
 
 ### Patch Changes

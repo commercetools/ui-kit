@@ -62,9 +62,7 @@ const TableGrid = styled.table`
       : ''}
 
   ${(props) =>
-    props.resizedTotalWidth
-      ? `max-width: ${props.resizedTotalWidth}px;`
-      : ''}
+    props.resizedTotalWidth ? `max-width: ${props.resizedTotalWidth}px;` : ''}
 
   ${getDisabledSelfContainmentStyles}
 `;

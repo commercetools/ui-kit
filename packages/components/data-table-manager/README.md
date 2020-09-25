@@ -10,7 +10,7 @@
 
 This component enhances the `<DataTable>` component and additionally provides a UI and state management to handle configuration of the table such as column manager.
 
-- The `disableDisplaySettings` enables / disables the display settings panel, allowing the user to select wrapping text and density display options.
+- The `disableDisplaySettings` enables / disables the layout settings panel, allowing the user to select wrapping text and density display options.
 - The `disableColumnManager` enables / disables the column manager panel, allowing the user to select which columns are visible.
 
 Both panels delegate the handling of the settings change on the parent through function properties, allowing the settings to be persisted or just used as state props.

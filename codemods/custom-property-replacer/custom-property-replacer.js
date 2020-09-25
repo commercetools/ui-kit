@@ -1,8 +1,7 @@
 const fs = require('fs');
-const postcss = require('postcss');
 const parser = require('postcss-value-parser');
 
-module.exports = postcss.plugin('postcss-var-replacer', (opts) => {
+module.exports = (opts = {}) => {
   let variables;
 
   if (opts && opts.file) {
@@ -15,21 +14,25 @@ module.exports = postcss.plugin('postcss-var-replacer', (opts) => {
     );
   }
 
-  return (css) => {
-    css.walkDecls((decl) => {
-      let variableFound = false;
+  return {
+    postcssPlugin: 'postcss-var-replacer',
+    Root(css) {
+      css.walkDecls((decl) => {
+        let variableFound = false;
 
-      const parsedValue = parser(decl.value);
-      parsedValue.walk((node) => {
-        if (node.type === 'word' && variables[node.value]) {
-          variableFound = true;
-          // eslint-disable-next-line no-param-reassign
-          node.value = variables[node.value];
+        const parsedValue = parser(decl.value);
+        parsedValue.walk((node) => {
+          if (node.type === 'word' && variables[node.value]) {
+            variableFound = true;
+            // eslint-disable-next-line no-param-reassign
+            node.value = variables[node.value];
+          }
+        });
+        if (variableFound) {
+          decl.replaceWith(decl.clone({ value: parsedValue.toString() }));
         }
       });
-      if (variableFound) {
-        decl.replaceWith(decl.clone({ value: parsedValue.toString() }));
-      }
-    });
+    },
   };
-});
+};
+module.exports.postcss = true;

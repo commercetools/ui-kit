@@ -1,5 +1,14 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 10.35.1
+
+### Patch Changes
+
+- Updated dependencies [[`5d15865`](https://github.com/commercetools/ui-kit/commit/5d158656703b2f5a99aacd7debf319aad3ce6ee4)]:
+  - @commercetools-uikit/text@10.35.1
+  - @commercetools-uikit/flat-button@10.35.1
+  - @commercetools-uikit/messages@10.35.1
+
 ## 10.34.1
 
 ### Patch Changes
