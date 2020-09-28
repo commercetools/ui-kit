@@ -1,5 +1,13 @@
 # @commercetools-frontend/ui-kit
 
+## 10.35.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/inputs@10.35.2
+  - @commercetools-uikit/fields@10.35.2
+
 ## 10.35.1
 
 ### Patch Changes

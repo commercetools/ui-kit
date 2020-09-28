@@ -1,5 +1,12 @@
 # @commercetools-uikit/time-field
 
+## 10.35.2
+
+### Patch Changes
+
+- Updated dependencies [[`0d1ea02`](https://github.com/commercetools/ui-kit/commit/0d1ea02ba95005137014bb778826fb1946cbfef1)]:
+  - @commercetools-uikit/time-input@10.35.2
+
 ## 10.35.1
 
 ### Patch Changes

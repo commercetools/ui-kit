@@ -1,5 +1,11 @@
 # @commercetools-uikit/money-input
 
+## 10.35.2
+
+### Patch Changes
+
+- [`cbabded`](https://github.com/commercetools/ui-kit/commit/cbabded7349889fae3ebbc87f121a39255a26d1a) [#1595](https://github.com/commercetools/ui-kit/pull/1595) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies
+
 ## 10.35.1
 
 ### Patch Changes
