@@ -1,5 +1,14 @@
 # @commercetools-uikit/date-time-input
 
+## 10.35.2
+
+### Patch Changes
+
+- [`ca6498f`](https://github.com/commercetools/ui-kit/commit/ca6498f88017a056df29773a0a14cb51bca06cf1) [#1576](https://github.com/commercetools/ui-kit/pull/1576) Thanks [@jonnybel](https://github.com/jonnybel)! - Allow using the arrow keys to move between months on the date picker menu.
+
+- Updated dependencies [[`ca6498f`](https://github.com/commercetools/ui-kit/commit/ca6498f88017a056df29773a0a14cb51bca06cf1)]:
+  - @commercetools-uikit/calendar-time-utils@10.35.2
+
 ## 10.35.1
 
 ### Patch Changes
