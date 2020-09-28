@@ -20,6 +20,9 @@ export const changeTime = (dateString, timeZone, parsedTime) => {
   return date.toISOString();
 };
 
+export const getPreviousDay = (day) =>
+  moment(day).subtract(1, 'day').format('YYYY-MM-DD');
+
 export const formatTime = (day, locale, timeZone) => {
   const date = moment.tz(day, timeZone).locale(locale);
   if (date.milliseconds()) return date.format('HH:mm:ss.SSS');

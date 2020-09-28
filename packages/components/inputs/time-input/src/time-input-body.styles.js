@@ -18,19 +18,10 @@ const getClearSectionStyles = (props) => {
   return css`
     align-items: center;
     box-sizing: border-box;
-    height: ${overwrittenVars.sizeHeightInput};
     display: flex;
-    padding: ${overwrittenVars.spacingXs};
+    margin: ${overwrittenVars.spacingXs};
     cursor: pointer;
-    transition: color ${overwrittenVars.transitionStandard},
-      border-color ${overwrittenVars.transitionStandard};
 
-    &:focus {
-      outline: auto 2px ${overwrittenVars.borderColorForInputWhenFocused};
-      svg * {
-        fill: ${overwrittenVars.colorWarning};
-      }
-    }
     &:hover svg * {
       fill: ${overwrittenVars.colorWarning};
     }
@@ -194,7 +185,7 @@ const StyledInput = styled.input`
 const StyledInputContainer = styled.div`
   ${getInputContainerStyles}
 
-  &:hover ${StyledClockIconContainer}, &:focus-within ${StyledClockIconContainer} {
+  &:hover, &:hover ${StyledClockIconContainer}, &:focus-within ${StyledClockIconContainer} {
     border-color: ${vars.borderColorForInputWhenFocused};
   }
 `;
