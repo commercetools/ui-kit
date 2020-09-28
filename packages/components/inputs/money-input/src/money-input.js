@@ -572,6 +572,7 @@ const MoneyInput = (props) => {
               ),
               // eslint-disable-next-line react/display-name
               Input: (ownProps) => (
+                // eslint-disable-next-line react/prop-types
                 <components.Input {...ownProps} readOnly={props.isReadOnly} />
               ),
               DropdownIndicator,
