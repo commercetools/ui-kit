@@ -19,24 +19,27 @@ const SearchSelectInput = (props) => {
     props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholderMessage);
+  const optionType = props.optionType;
 
-  // eslint-disable-next-line react/display-name
-  const OptionComponent = (optionInnerProps) => (
-    <CustomSelectInputOption
-      optionType={props.optionType}
-      optionInnerProps={optionInnerProps}
-    />
-  );
+  const components = React.useMemo(() => {
+    return {
+      // eslint-disable-next-line react/display-name
+      Option: (optionInnerProps) => (
+        <CustomSelectInputOption
+          optionType={optionType}
+          optionInnerProps={optionInnerProps}
+        />
+      ),
+      ...props.components,
+      DropdownIndicator: SearchIconDropdownIndicator,
+    };
+  }, [props.components, optionType]);
 
   return (
     <SearchSelectInputWrapper>
       <AsyncSelectInput
         {...props}
-        components={{
-          Option: OptionComponent,
-          ...props.components,
-          DropdownIndicator: SearchIconDropdownIndicator,
-        }}
+        components={components}
         placeholder={placeholder}
         iconLeft={undefined}
         loadingMessage={loadingMessage}
