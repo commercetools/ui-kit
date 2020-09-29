@@ -126,6 +126,7 @@ class CheckboxInput extends React.PureComponent {
             tabIndex={this.props.isReadOnly ? 0 : -1}
           >
             <Text.Body
+              as={'span'}
               // FIXME: add proper tones when we have disabled/primary in tones
               tone={this.props.isDisabled ? 'secondary' : undefined}
             >
