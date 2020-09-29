@@ -208,6 +208,9 @@ export const component = ({ themes }) => (
       <Spec label="Body (dark theme)">
         <Text.Body>Dark theme</Text.Body>
       </Spec>
+      <Spec label="Body as span element (dark theme)">
+        <Text.Body as="span">Dark theme</Text.Body>
+      </Spec>
       <Spec label="Detail (dark theme)">
         <Text.Detail>Dark theme</Text.Detail>
       </Spec>
