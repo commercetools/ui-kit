@@ -1,5 +1,14 @@
 # @commercetools-uikit/localized-money-input
 
+## 10.36.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/flat-button@10.36.0
+  - @commercetools-uikit/select-utils@10.36.0
+  - @commercetools-uikit/money-input@10.36.0
+
 ## 10.35.2
 
 ### Patch Changes

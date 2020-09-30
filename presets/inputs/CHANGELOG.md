@@ -1,5 +1,31 @@
 # @commercetools-uikit/inputs
 
+## 10.36.0
+
+### Minor Changes
+
+- [`d1c5e3d`](https://github.com/commercetools/ui-kit/commit/d1c5e3d114bf55a7fcae0ba8d4c2c4fa6d189ea1) [#1600](https://github.com/commercetools/ui-kit/pull/1600) Thanks [@mohib0306](https://github.com/mohib0306)! - Add SearchSelectInput to the input presets list
+
+### Patch Changes
+
+- Updated dependencies [[`be07bb6`](https://github.com/commercetools/ui-kit/commit/be07bb6945ab7f9dbc56919a248697414191e961), [`b427c44`](https://github.com/commercetools/ui-kit/commit/b427c446d46e416077e6b26f0d3caa63458d2e48)]:
+  - @commercetools-uikit/search-select-input@10.36.0
+  - @commercetools-uikit/checkbox-input@10.36.0
+  - @commercetools-uikit/async-creatable-select-input@10.36.0
+  - @commercetools-uikit/async-select-input@10.36.0
+  - @commercetools-uikit/creatable-select-input@10.36.0
+  - @commercetools-uikit/date-input@10.36.0
+  - @commercetools-uikit/date-range-input@10.36.0
+  - @commercetools-uikit/date-time-input@10.36.0
+  - @commercetools-uikit/localized-multiline-text-input@10.36.0
+  - @commercetools-uikit/localized-rich-text-input@10.36.0
+  - @commercetools-uikit/localized-text-input@10.36.0
+  - @commercetools-uikit/localized-money-input@10.36.0
+  - @commercetools-uikit/multiline-text-input@10.36.0
+  - @commercetools-uikit/rich-text-input@10.36.0
+  - @commercetools-uikit/money-input@10.36.0
+  - @commercetools-uikit/select-input@10.36.0
+
 ## 10.35.2
 
 ### Patch Changes
