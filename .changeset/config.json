@@ -92,7 +92,8 @@
       "@commercetools-uikit/time-input",
       "@commercetools-uikit/toggle-input",
       "@commercetools-uikit/tooltip",
-      "@commercetools-uikit/utils"
+      "@commercetools-uikit/utils",
+      "@commercetools-uikit/search-select-input"
     ]
   ],
   "access": "restricted",
