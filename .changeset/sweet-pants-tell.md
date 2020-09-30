@@ -1,5 +1,5 @@
 ---
-'@commercetools-uikit/inputs': major
+'@commercetools-uikit/inputs': minor
 ---
 
-Add SearchSelectInput to the input preset list
+Add SearchSelectInput to the input presets list
