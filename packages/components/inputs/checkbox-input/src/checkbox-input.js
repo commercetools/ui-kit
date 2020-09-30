@@ -57,21 +57,53 @@ const Label = styled.label`
 class CheckboxInput extends React.PureComponent {
   static displayName = 'CheckboxInput';
   static propTypes = {
+    /**
+     * Used as HTML id attribute. An id is auto-generated when it is not specified.
+     */
     id: PropTypes.string,
+    /**
+     * Used as HTML name attribute of the input component
+     */
     name: PropTypes.string,
+    /**
+     * Value of the input component.
+     */
     value: PropTypes.string,
+    /**
+     * The checked property sets the checked state of the checkbox.
+     */
     isChecked: PropTypes.bool,
+    /**
+     * If `true`, this state is shown as a dash in the checkbox, and indicates that its state is neither checked nor unchecked.
+     * This is most often used when the checkbox is tied to a collection of items in mixed states (E.g nested checkboxes).
+     * This takes precedence visually in case `isChecked` is marked as `true`
+     */
     isIndeterminate: PropTypes.bool,
+    /**
+     *  Will be triggered whenever an `CheckboxInput` is clicked. Called with `event`
+     */
     onChange: PropTypes.func.isRequired,
-    // This prop forces Checkbox to be rendered in a hovered state (thought isDisabled takes
-    // precedence over that). We need that to address a use-case when hovering is comming
-    // from somewhere up the hierarchy. There is no need to touch this prop in case
-    // all you need is a general highlighting on hover of Checkbox body, which is solved
-    // by a corresponding :hover selector in the syles of this component.
+    /**
+     * Forces CheckboxInput to be rendered in a hovered state.
+     * Needed for cases when hovered appearance should be triggered by the parent component and not the CheckboxInput itself.
+     * CheckboxInput is capable of handling it's own hovering without the need to pass this prop.
+     */
     isHovered: PropTypes.bool,
+    /**
+     * Disables the CheckboxInput
+     */
     isDisabled: PropTypes.bool,
+    /**
+     * Makes the CheckboxInput readonly
+     */
     isReadOnly: PropTypes.bool,
+    /**
+     * Indicates that the checkbox has an error
+     */
     hasError: PropTypes.bool,
+    /**
+     * The descriptive text of the CheckboxInput, used as its label.
+     */
     children: PropTypes.node,
   };
 
@@ -126,6 +158,7 @@ class CheckboxInput extends React.PureComponent {
             tabIndex={this.props.isReadOnly ? 0 : -1}
           >
             <Text.Body
+              as="span"
               // FIXME: add proper tones when we have disabled/primary in tones
               tone={this.props.isDisabled ? 'secondary' : undefined}
             >
