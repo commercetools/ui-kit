@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/search-select-input",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A search select input component built on top of `@commercetools-uikit/async-select-input` to asynchronously load results (options) using the keyword that the user has entered.",
   "main": "dist/search-select-input.cjs.js",
   "module": "dist/search-select-input.esm.js",
@@ -14,9 +14,7 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
