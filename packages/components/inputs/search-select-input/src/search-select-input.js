@@ -203,9 +203,9 @@ SearchSelectInput.propTypes = {
    * The style of the an option in the dropdown menu. It could be single lined option or an option with more and custom info
    */
   optionType: PropTypes.oneOf([
-    'single-lined',
-    'brief-detailed',
-    'extended-detailed',
+    'single-property',
+    'double-property',
+    'multiple-properties',
   ]),
 };
 SearchSelectInput.defaultProps = {
