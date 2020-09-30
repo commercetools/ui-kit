@@ -1,5 +1,14 @@
 # @commercetools-uikit/async-select-field
 
+## 10.36.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.36.0
+  - @commercetools-uikit/async-select-input@10.36.0
+  - @commercetools-uikit/field-errors@10.36.0
+
 ## 10.35.1
 
 ### Patch Changes

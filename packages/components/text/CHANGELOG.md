@@ -1,5 +1,11 @@
 # @commercetools-uikit/text
 
+## 10.36.0
+
+### Patch Changes
+
+- [`4b51614`](https://github.com/commercetools/ui-kit/commit/4b51614f1472be22ddba6f33edacd895efcda6ca) [#1598](https://github.com/commercetools/ui-kit/pull/1598) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed Text.Body not correctly applying theme when rendered as `span`
+
 ## 10.35.1
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.36.0
+
+### Patch Changes
+
+- [`ca2bd3a`](https://github.com/commercetools/ui-kit/commit/ca2bd3af0a1c285c1d0a5f62de501657a3cfad37) [#1603](https://github.com/commercetools/ui-kit/pull/1603) Thanks [@jonnybel](https://github.com/jonnybel)! - Removed the width constraint on the settings container
+
+- Updated dependencies [[`4b51614`](https://github.com/commercetools/ui-kit/commit/4b51614f1472be22ddba6f33edacd895efcda6ca)]:
+  - @commercetools-uikit/text@10.36.0
+  - @commercetools-uikit/primary-button@10.36.0
+  - @commercetools-uikit/secondary-button@10.36.0
+  - @commercetools-uikit/secondary-icon-button@10.36.0
+  - @commercetools-uikit/field-label@10.36.0
+  - @commercetools-uikit/async-select-input@10.36.0
+  - @commercetools-uikit/tag@10.36.0
+  - @commercetools-uikit/select-input@10.36.0
+
 ## 10.35.1
 
 ### Patch Changes

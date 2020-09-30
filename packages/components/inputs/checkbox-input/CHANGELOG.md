@@ -1,5 +1,15 @@
 # @commercetools-uikit/checkbox-input
 
+## 10.36.0
+
+### Patch Changes
+
+- [`b427c44`](https://github.com/commercetools/ui-kit/commit/b427c446d46e416077e6b26f0d3caa63458d2e48) [#1597](https://github.com/commercetools/ui-kit/pull/1597) Thanks [@jonnybel](https://github.com/jonnybel)! - Changed the label of the input to render as a `span` instead of `p`, allowing to render more complex labels without causing DOM Warnings due to nesting unallowed elements inside a `p`.
+
+- Updated dependencies [[`4b51614`](https://github.com/commercetools/ui-kit/commit/4b51614f1472be22ddba6f33edacd895efcda6ca)]:
+  - @commercetools-uikit/text@10.36.0
+  - @commercetools-uikit/select-utils@10.36.0
+
 ## 10.35.1
 
 ### Patch Changes
