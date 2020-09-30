@@ -1,5 +1,12 @@
 # @commercetools-frontend/ui-kit
 
+## 10.35.3
+
+### Patch Changes
+
+- Updated dependencies [[`1a15f26`](https://github.com/commercetools/ui-kit/commit/1a15f261171766e432e2d3a85a56e5d851cf9cd0)]:
+  - @commercetools-uikit/i18n@10.35.3
+
 ## 10.35.2
 
 ### Patch Changes
