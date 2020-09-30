@@ -18,7 +18,7 @@ const LocalizedInputToggle = (props) => {
 
   return (
     <FlatButton
-      icon={props.icon}
+      icon={props.icon ? props.icon : <WorldIcon />}
       label={label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
@@ -34,7 +34,7 @@ const intlMessageShape = PropTypes.shape({
 
 LocalizedInputToggle.displayName = 'LocalizedInputToggle';
 LocalizedInputToggle.propTypes = {
-  icon: PropTypes.node.isRequired,
+  icon: PropTypes.node,
   isOpen: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
@@ -45,7 +45,6 @@ LocalizedInputToggle.propTypes = {
   remainingLocalizations: PropTypes.number,
 };
 LocalizedInputToggle.defaultProps = {
-  icon: <WorldIcon />,
   hideMessage: messages.hide,
   showMessage: messages.show,
 };
