@@ -1,6 +1,6 @@
 {
   "name": "visual-testing-app",
-  "version": "10.18.11",
+  "version": "10.18.12",
   "description": "An app to facilitate visual testing",
   "private": true,
   "scripts": {
@@ -13,18 +13,18 @@
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "emotion-theming": "10.0.27",
-    "moment": "2.28.0",
+    "moment": "2.29.0",
     "moment-timezone": "0.5.31",
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-intl": "5.8.2",
+    "react-intl": "5.8.3",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0"
   },
   "devDependencies": {
     "clean-webpack-plugin": "3.0.0",
-    "html-webpack-plugin": "4.4.1",
+    "html-webpack-plugin": "4.5.0",
     "moment-locales-webpack-plugin": "1.2.0",
     "serve": "11.3.2",
     "webpack": "4.44.2",

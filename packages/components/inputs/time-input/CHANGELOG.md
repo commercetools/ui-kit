@@ -1,5 +1,11 @@
 # @commercetools-uikit/time-input
 
+## 10.35.2
+
+### Patch Changes
+
+- [`0d1ea02`](https://github.com/commercetools/ui-kit/commit/0d1ea02ba95005137014bb778826fb1946cbfef1) [#1594](https://github.com/commercetools/ui-kit/pull/1594) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed hover style and focus for Clear button
+
 ## 10.34.0
 
 ### Minor Changes

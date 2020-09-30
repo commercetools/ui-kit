@@ -8,6 +8,11 @@ export const formatDate = (day, locale) =>
 export const changeMonth = (day, delta) =>
   moment(day).add(delta, 'month').format('YYYY-MM-DD');
 
+export const getNextDay = (day) =>
+  moment(day).add(1, 'day').format('YYYY-MM-DD');
+export const getPreviousDay = (day) =>
+  moment(day).subtract(1, 'day').format('YYYY-MM-DD');
+
 export const getPaddingDayCount = (day, locale) => {
   const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
   const firstDayOfMonth = moment(day).startOf('month').day();

@@ -21,6 +21,8 @@ import {
   createCalendarItems,
   createSuggestedItems,
   parseInputText,
+  getPreviousDay,
+  getDaysInMonth,
 } from '@commercetools-uikit/calendar-time-utils';
 import CalendarBody from '../../../../../src/components/internals/calendar-body';
 import CalendarMenu from '../../../../../src/components/internals/calendar-menu';
@@ -123,14 +125,14 @@ class DateTimeInput extends React.Component {
         : getDateInMonth(this.props.value, this.props.timeZone) - 1,
     timeString: '',
   };
-  jumpMonths = (amount) => {
+  jumpMonths = (amount, dayToHighlight = 0) => {
     this.setState((prevState) => {
       const nextDate = changeMonth(
         prevState.calendarDate,
         this.props.timeZone,
         amount
       );
-      return { calendarDate: nextDate, highlightedIndex: 0 };
+      return { calendarDate: nextDate, highlightedIndex: dayToHighlight };
     });
   };
   showToday = () => {
@@ -341,6 +343,34 @@ class DateTimeInput extends React.Component {
                         this.emit(parsedDate);
 
                         closeMenu();
+                      }
+                      // ArrowDown
+                      if (event.keyCode === 40) {
+                        if (highlightedIndex + 1 >= calendarItems.length) {
+                          // if it's the end of the month
+                          // then bypass normal arrow navigation
+                          preventDownshiftDefault(event); // eslint-disable-line no-param-reassign
+                          // then jump to start of next month
+                          this.jumpMonths(1, 0);
+                        }
+                      }
+                      // ArrowUp
+                      if (event.keyCode === 38) {
+                        const previousDay = getPreviousDay(
+                          calendarItems[highlightedIndex]
+                        );
+
+                        if (highlightedIndex <= 0) {
+                          // if it's the start of the month
+                          // then bypass normal arrow navigation
+                          preventDownshiftDefault(event); // eslint-disable-line no-param-reassign
+
+                          const numberOfDaysOfPrevMonth = getDaysInMonth(
+                            previousDay
+                          );
+                          // then jump to the last day of the previous month
+                          this.jumpMonths(-1, numberOfDaysOfPrevMonth - 1);
+                        }
                       }
                     },
                     onFocus: this.props.isReadOnly ? undefined : openMenu,
