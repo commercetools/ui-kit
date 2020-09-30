@@ -5,4 +5,4 @@
 '@commercetools-uikit/localized-text-input': patch
 ---
 
-Fixed languages/currencies toggle button losing focus when trggered.
+Fixed languages/currencies toggle button losing focus when triggered.
