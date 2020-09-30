@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import Card from '@commercetools-uikit/card';
-import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
@@ -23,32 +22,30 @@ const SettingsContainer = (props) => {
     <CollapsibleMotion isDefaultClosed={false}>
       {({ registerContentNode, containerStyles }) => (
         <Card type="flat" theme={props.containerTheme}>
-          <Constraints.Horizontal constraint="xl">
+          <Spacings.Stack scale="xs">
+            <HeaderContainer>
+              <Text.Headline as="h3" intlMessage={props.title} />
+              <AccessibleButton
+                onClick={props.onClose}
+                label={intl.formatMessage(props.closeButtonLabel)}
+              >
+                <CloseIcon size="medium" />
+              </AccessibleButton>
+            </HeaderContainer>
             <Spacings.Stack scale="xs">
-              <HeaderContainer>
-                <Text.Headline as="h3" intlMessage={props.title} />
-                <AccessibleButton
-                  onClick={props.onClose}
-                  label={intl.formatMessage(props.closeButtonLabel)}
-                >
-                  <CloseIcon size="medium" />
-                </AccessibleButton>
-              </HeaderContainer>
-              <Spacings.Stack scale="xs">
-                <Spacings.Inset scale="s">
-                  <div style={containerStyles}>
-                    <div ref={registerContentNode}>{props.children}</div>
-                  </div>
-                </Spacings.Inset>
-                {(props.secondaryButton || props.primaryButton) && (
-                  <Spacings.Inline justifyContent="flex-end">
-                    {props.secondaryButton}
-                    {props.primaryButton}
-                  </Spacings.Inline>
-                )}
-              </Spacings.Stack>
+              <Spacings.Inset scale="s">
+                <div style={containerStyles}>
+                  <div ref={registerContentNode}>{props.children}</div>
+                </div>
+              </Spacings.Inset>
+              {(props.secondaryButton || props.primaryButton) && (
+                <Spacings.Inline justifyContent="flex-end">
+                  {props.secondaryButton}
+                  {props.primaryButton}
+                </Spacings.Inline>
+              )}
             </Spacings.Stack>
-          </Constraints.Horizontal>
+          </Spacings.Stack>
         </Card>
       )}
     </CollapsibleMotion>
