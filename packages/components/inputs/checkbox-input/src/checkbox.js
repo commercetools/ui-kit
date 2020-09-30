@@ -39,6 +39,7 @@ const Checkbox = (props) => {
       ref={ref}
       /* ARIA */
       aria-readonly={props.isReadOnly}
+      aria-checked={props.isChecked}
       {...props}
     />
   );
