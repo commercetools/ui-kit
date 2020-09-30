@@ -13,7 +13,9 @@
     "access": "public"
   },
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "dependencies": {
     "@commercetools-uikit/async-creatable-select-input": "10.35.1",
@@ -33,6 +35,7 @@
     "@commercetools-uikit/password-input": "10.34.1",
     "@commercetools-uikit/radio-input": "10.34.0",
     "@commercetools-uikit/rich-text-input": "10.35.1",
+    "@commercetools-uikit/search-select-input": "1.0.0",
     "@commercetools-uikit/select-input": "10.35.1",
     "@commercetools-uikit/text-input": "10.34.1",
     "@commercetools-uikit/time-input": "10.35.2",
