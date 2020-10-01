@@ -93,7 +93,8 @@
       "@commercetools-uikit/toggle-input",
       "@commercetools-uikit/tooltip",
       "@commercetools-uikit/utils",
-      "@commercetools-uikit/search-select-input"
+      "@commercetools-uikit/search-select-input",
+      "@commercetools-uikit/search-select-field"
     ]
   ],
   "access": "restricted",
