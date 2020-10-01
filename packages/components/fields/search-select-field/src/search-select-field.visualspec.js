@@ -13,7 +13,7 @@ describe('SearchSelectField', () => {
   });
 
   it('Open', async () => {
-    await page.goto(`${HOST}/search-select-field-open`);
+    await page.goto(`${HOST}/search-select-field`);
     const doc = await getDocument(page);
     const selects = await getAllByLabelText(doc, 'State');
     const select = selects[0];

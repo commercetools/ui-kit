@@ -114,7 +114,7 @@ it('should call onChange when changing the value', async () => {
   const input = screen.getByLabelText('SearchSelectField');
   fireEvent.focus(input);
   fireEvent.change(input, { target: { value: 'mango' } });
-  await waitFor(() => screen.getByText('Mango'));
+  await waitFor(() => screen.findByText('Mango'));
   screen.getByText('Mango').click();
   expect(onChange).toHaveBeenCalled();
 });
