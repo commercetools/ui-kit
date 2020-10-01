@@ -101,13 +101,13 @@ describe('when `isClearable` is true', () => {
       onChange,
     });
     const event = { target: { value: '09/18/2018 - 09/20/2018' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
 
     const clearEvent = { target: { value: '' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), clearEvent);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -127,7 +127,7 @@ describe('when `isClearable` is true', () => {
       onChange,
     });
     const event = { target: { value: '09/18/2018 - 09/20/2018' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -162,13 +162,13 @@ describe('when `isClearable` is false', () => {
       isClearable: false,
     });
     const event = { target: { value: '09/18/2018 - 09/20/2018' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
 
     const clearEvent = { target: { value: '' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), clearEvent);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -190,7 +190,7 @@ describe('when `isClearable` is false', () => {
       isClearable: false,
     });
     const event = { target: { value: '09/18/2018 - 09/20/2018' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -204,7 +204,7 @@ describe('when locale is "en"', () => {
     const onChange = jest.fn();
     const { getByLabelText } = renderDateRangeInput({ onChange });
     const event = { target: { value: '09/18/2018 - 09/20/18' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -226,7 +226,7 @@ describe('when locale is "de"', () => {
       { locale: 'de' }
     );
     const event = { target: { value: '18.9.2018 - 20.9.18' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -240,14 +240,33 @@ describe('when locale is "de"', () => {
   });
 });
 
+it('should open the date picker on clicking', () => {
+  renderDateRangeInput({ value: ['2020-09-10', '2020-09-20'] });
+
+  const dateInput = screen.getByLabelText('Date');
+
+  fireEvent.click(dateInput);
+
+  expect(screen.queryByText('September')).toBeInTheDocument();
+});
+
+it('should not open the date picker just by gaining focus', () => {
+  renderDateRangeInput({ value: ['2020-09-10', '2020-09-20'] });
+
+  const dateInput = screen.getByLabelText('Date');
+
+  // just focusing won't open the date picker
+  fireEvent.focus(dateInput);
+  expect(screen.queryByText('September')).not.toBeInTheDocument();
+});
+
 describe('date picker keyboard navigation', () => {
   it('should move to next month when pressing ArrowDown through current month', () => {
     renderDateRangeInput({ value: ['2020-09-10', '2020-09-20'] });
 
     const dateRangeInput = screen.getByLabelText('Date');
 
-    // Focusing opens the Date Picker
-    fireEvent.focus(dateRangeInput);
+    fireEvent.click(dateRangeInput);
 
     expect(screen.queryByText('September')).toBeInTheDocument();
 
@@ -267,8 +286,7 @@ describe('date picker keyboard navigation', () => {
 
     const dateRangeInput = screen.getByLabelText('Date');
 
-    // Focusing opens the Date Picker
-    fireEvent.focus(dateRangeInput);
+    fireEvent.click(dateRangeInput);
 
     expect(screen.queryByText('September')).toBeInTheDocument();
 

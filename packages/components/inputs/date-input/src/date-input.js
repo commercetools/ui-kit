@@ -234,7 +234,6 @@ const DateInput = (props) => {
                   },
                   // we only do this for readOnly because the input
                   // doesn't ignore these events, unlike when its disabled
-                  onFocus: props.isReadOnly ? undefined : openMenu,
                   onClick: props.isReadOnly ? undefined : openMenu,
                   ...filterDataAttributes(props),
                 })}

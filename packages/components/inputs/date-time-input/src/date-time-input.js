@@ -373,7 +373,6 @@ class DateTimeInput extends React.Component {
                         }
                       }
                     },
-                    onFocus: this.props.isReadOnly ? undefined : openMenu,
                     onClick: this.props.isReadOnly ? undefined : openMenu,
                     onBlur: createBlurHandler(this.timeInputRef),
                     onChange: (event) => {
