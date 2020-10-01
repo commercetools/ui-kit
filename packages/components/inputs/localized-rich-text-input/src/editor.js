@@ -14,7 +14,11 @@ import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
 import RichTextBody from '../../../../../src/components/internals/rich-text-body';
 import HiddenInput from '../../../../../src/components/internals/rich-text-body/hidden-input';
-import { EditorWrapper, EditorLanguageLabel } from './editor.styles';
+import {
+  EditorWrapper,
+  EditorLanguageLabel,
+  ToggleButtonWrapper,
+} from './editor.styles';
 import messages from '../../../../../src/components/internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
@@ -26,6 +30,7 @@ const LeftColumn = styled.div`
 `;
 
 const RightColumn = styled.div`
+  position: relative;
   flex: 0;
   display: flex;
   align-items: flex-start;
@@ -33,9 +38,10 @@ const RightColumn = styled.div`
 
 const Row = styled.div`
   display: flex;
-  &:empty {
-    margin: 0 !important;
-  }
+  justify-content: flex-end;
+
+  ${(props) =>
+    !props.shouldToggleButtonTakeSpace ? 'margin-top: 0 !important;' : null}
 `;
 
 const Editor = (props) => {
@@ -75,7 +81,18 @@ const Editor = (props) => {
     onToggle();
   }
 
-  const languagesControl = props.languagesControl();
+  const shouldToggleButtonTakeSpace =
+    /*
+      - if hasLanguagesControl and there are no errors/warnings to display
+      - then the toggleButton is absolutely positioned
+      This is because the toggle button is placed next to the LocalizedInputToggle without being siblings in the DOM.
+      If there is a error or warning showing,
+      then it can be placed statically because it will then be a sibling to the error/warning message
+      and LocalizedInputToggle is placed below the errors/warnings.
+    */
+    (renderToggleButton && !props.hasLanguagesControl) ||
+    props.error ||
+    props.warning;
 
   return (
     <CollapsibleMotion
@@ -125,7 +142,7 @@ const Editor = (props) => {
                 {props.children}
               </RichTextBody>
             </EditorWrapper>
-            <Row>
+            <Row shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}>
               {(() => {
                 if (props.error)
                   return (
@@ -139,16 +156,13 @@ const Editor = (props) => {
                       <div>{props.warning}</div>
                     </LeftColumn>
                   );
-                return (
-                  languagesControl && (
-                    <LeftColumn>{languagesControl}</LeftColumn>
-                  )
-                );
+                return null;
               })()}
               {renderToggleButton && (
-                <React.Fragment>
-                  <LeftColumn />
-                  <RightColumn>
+                <RightColumn>
+                  <ToggleButtonWrapper
+                    shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}
+                  >
                     <FlatButton
                       onClick={toggle}
                       label={intl.formatMessage(
@@ -162,11 +176,10 @@ const Editor = (props) => {
                         )
                       }
                     />
-                  </RightColumn>
-                </React.Fragment>
+                  </ToggleButtonWrapper>
+                </RightColumn>
               )}
             </Row>
-            {(props.error || props.warning) && props.languagesControl()}
           </Stack>
         );
       }}
@@ -194,10 +207,10 @@ const renderEditor = (props, editor, next) => {
       'hasWarning',
       'hasError',
       'toggleLanguage',
-      'languagesControl',
       'isOpen',
       'showExpandIcon',
       'onClickExpand',
+      'hasLanguagesControl',
     ]),
     ...filterDataAttributes(props),
   };
@@ -233,9 +246,9 @@ Editor.propTypes = {
   defaultExpandMultilineText: PropTypes.bool.isRequired,
   toggleLanguage: PropTypes.func.isRequired,
   language: PropTypes.string.isRequired,
-  languagesControl: PropTypes.func.isRequired,
   showExpandIcon: PropTypes.bool.isRequired,
   onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
+  hasLanguagesControl: PropTypes.bool,
 };
 
 renderEditor.propTypes = {
@@ -253,9 +266,9 @@ renderEditor.propTypes = {
     defaultExpandMultilineText: PropTypes.bool.isRequired,
     toggleLanguage: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
-    languagesControl: PropTypes.func.isRequired,
     showExpandIcon: PropTypes.bool.isRequired,
     onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
+    hasLanguagesControl: PropTypes.bool,
   }),
 };
 

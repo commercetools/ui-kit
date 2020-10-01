@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import {
   customProperties as vars,
   designTokens,
@@ -54,4 +55,20 @@ const getLanguageLabelStyles = (props, theme) => {
   `;
 };
 
-export { getTextareaStyles, getLanguageLabelStyles };
+const getToggleButtonWrapperPosition = (props) =>
+  !props.shouldToggleButtonTakeSpace
+    ? css`
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: ${vars.spacingXs};
+      `
+    : '';
+
+const ToggleButtonWrapper = styled.div`
+  flex: 0;
+  display: flex;
+  ${getToggleButtonWrapperPosition}
+`;
+
+export { getTextareaStyles, getLanguageLabelStyles, ToggleButtonWrapper };

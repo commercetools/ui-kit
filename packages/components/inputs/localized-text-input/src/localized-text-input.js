@@ -22,12 +22,12 @@ import {
 } from '@commercetools-uikit/localized-utils';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import TextInput from '@commercetools-uikit/text-input';
-import LanguagesButton from './languages-button';
-import messages from '../../../../../src/components/internals/messages/localized-input';
 import {
   getLocalizedInputStyles,
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
+import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
+import messages from '../../../../../src/components/internals/messages/localized-input';
 
 const sequentialId = createSequentialId('localized-text-input-');
 
@@ -146,76 +146,56 @@ const LocalizedTextInput = (props) => {
     }
   }
 
+  const shouldRenderLanguagesButton =
+    languages.length > 1 && !props.hideLanguageExpansionControls;
+
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Stack>
-        {languages.map((language, index) => {
-          const isFirstLanguage = index === 0;
-          const isLastLanguage = index === languages.length - 1;
-          const hasRemainingLanguages = languages.length > 1;
-          const hasErrorOnRemainingLanguages =
-            props.hasError ||
-            getHasErrorOnRemainingLanguages(
-              props.errors,
-              props.selectedLanguage
+      <Stack scale="xs">
+        <Stack>
+          {languages.map((language, index) => {
+            const isFirstLanguage = index === 0;
+            if (!isFirstLanguage && !areLanguagesExpanded) return null;
+
+            return (
+              <div key={language}>
+                <Stack scale="xs">
+                  <LocalizedInput
+                    autoComplete={props.autoComplete}
+                    id={LocalizedTextInput.getId(id, language)}
+                    name={LocalizedTextInput.getName(props.name, language)}
+                    value={props.value[language]}
+                    onChange={props.onChange}
+                    language={language}
+                    placeholder={
+                      props.placeholder
+                        ? props.placeholder[language]
+                        : undefined
+                    }
+                    onBlur={props.onBlur}
+                    onFocus={props.onFocus}
+                    isAutofocussed={index === 0 && props.isAutofocussed}
+                    isDisabled={props.isDisabled}
+                    isReadOnly={props.isReadOnly}
+                    hasError={Boolean(
+                      props.hasError || (props.errors && props.errors[language])
+                    )}
+                    {...createLocalizedDataAttributes(props, language)}
+                  />
+                  {props.errors && props.errors[language]}
+                </Stack>
+              </div>
             );
-          if (!isFirstLanguage && !areLanguagesExpanded) return null;
-
-          return (
-            <div key={language}>
-              <Stack scale="xs">
-                <LocalizedInput
-                  autoComplete={props.autoComplete}
-                  id={LocalizedTextInput.getId(id, language)}
-                  name={LocalizedTextInput.getName(props.name, language)}
-                  value={props.value[language]}
-                  onChange={props.onChange}
-                  language={language}
-                  placeholder={
-                    props.placeholder ? props.placeholder[language] : undefined
-                  }
-                  onBlur={props.onBlur}
-                  onFocus={props.onFocus}
-                  isAutofocussed={index === 0 && props.isAutofocussed}
-                  isDisabled={props.isDisabled}
-                  isReadOnly={props.isReadOnly}
-                  hasError={Boolean(
-                    props.hasError || (props.errors && props.errors[language])
-                  )}
-                  {...createLocalizedDataAttributes(props, language)}
-                />
-                {props.errors && props.errors[language]}
-                {(() => {
-                  if (
-                    !hasRemainingLanguages ||
-                    props.hideLanguageExpansionControls
-                  )
-                    return null;
-
-                  if (isFirstLanguage && !areLanguagesExpanded)
-                    return (
-                      <LanguagesButton
-                        onClick={toggleLanguages}
-                        remainingLanguages={languages.length - 1}
-                      />
-                    );
-
-                  if (isLastLanguage)
-                    return (
-                      <LanguagesButton
-                        onClick={toggleLanguages}
-                        isOpen={true}
-                        remainingLanguages={languages.length - 1}
-                        isDisabled={hasErrorOnRemainingLanguages}
-                      />
-                    );
-
-                  return null;
-                })()}
-              </Stack>
-            </div>
-          );
-        })}
+          })}
+        </Stack>
+        {shouldRenderLanguagesButton && (
+          <LocalizedInputToggle
+            isOpen={areLanguagesExpanded}
+            onClick={toggleLanguages}
+            isDisabled={areLanguagesExpanded && hasErrorInRemainingLanguages}
+            remainingLocalizations={languages.length - 1}
+          />
+        )}
       </Stack>
     </Constraints.Horizontal>
   );
