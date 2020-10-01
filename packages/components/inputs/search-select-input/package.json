@@ -1,0 +1,35 @@
+{
+  "name": "@commercetools-uikit/search-select-input",
+  "version": "10.36.0",
+  "description": "A search select input component built on top of `@commercetools-uikit/async-select-input` to asynchronously load results (options) using the keyword that the user has entered.",
+  "main": "dist/search-select-input.cjs.js",
+  "module": "dist/search-select-input.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "../../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
+    "generate-readme": "generate-readme ."
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/async-select-input": "10.36.0",
+    "@commercetools-uikit/design-system": "10.18.4",
+    "@commercetools-uikit/select-utils": "10.36.0",
+    "@commercetools-uikit/spacings": "10.18.7",
+    "@commercetools-uikit/text": "10.36.0",
+    "@commercetools-uikit/utils": "10.21.0",
+    "@emotion/core": "^10.0.34",
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-intl": "3.x || 4.x || 5.x"
+  }
+}

@@ -184,7 +184,7 @@ const Body = (props) => {
 
     return (
       <BodyElement
-        css={bodyStyles(props)}
+        css={(theme) => bodyStyles(props, theme)}
         title={props.title}
         {...filterDataAttributes(props)}
       >
