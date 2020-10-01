@@ -1,0 +1,38 @@
+{
+  "name": "@commercetools-uikit/search-select-field",
+  "version": "10.35.1",
+  "description": "A search select field built on top of search select input, allowing users to asynchronously search for options",
+  "main": "dist/search-select-field.cjs.js",
+  "module": "dist/search-select-field.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "../../../../scripts/version.js replace",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
+    "generate-readme": "generate-readme ."
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-uikit/search-select-input": "10.36.0",
+    "@commercetools-uikit/constraints": "10.30.1",
+    "@commercetools-uikit/design-system": "10.18.4",
+    "@commercetools-uikit/field-errors": "10.36.0",
+    "@commercetools-uikit/field-label": "10.36.0",
+    "@commercetools-uikit/spacings": "10.18.7",
+    "@commercetools-uikit/utils": "10.21.0",
+    "@emotion/core": "^10.0.34",
+    "@emotion/styled": "^10.0.27",
+    "prop-types": "15.7.2",
+    "react-required-if": "1.0.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}
