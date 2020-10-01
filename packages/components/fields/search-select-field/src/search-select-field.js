@@ -4,6 +4,7 @@ import requiredIf from 'react-required-if';
 import {
   SafeHTMLElement,
   filterDataAttributes,
+  createSequentialId,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -12,8 +13,16 @@ import SearchSelectInput from '@commercetools-uikit/search-select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
+const sequentialId = createSequentialId('async-select-field-');
 const searchSelectInputProps = Object.keys(SearchSelectInput.propTypes);
-const filterSerachSelectFieldProps = (props) => {
+
+/**
+ * GIVEN props
+ * IF a porp from props set if supported by SearchSelectInput
+ * THEN forwards it
+ * ELSE filter out a prop that is not supported by SearchSelectInput component
+ */
+const filterSearchSelectFieldProps = (props) => {
   return Object.keys(props)
     .filter((prop) => searchSelectInputProps.includes(prop))
     .reduce((filteredProps, prop) => {
@@ -25,7 +34,7 @@ const filterSerachSelectFieldProps = (props) => {
 
 const SearchSelectField = (props) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
-
+  const id = props.id || sequentialId();
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <Spacings.Stack scale="xs">
@@ -37,11 +46,12 @@ const SearchSelectField = (props) => {
           hintIcon={props.hintIcon}
           badge={props.badge}
           hasRequiredIndicator={props.isRequired}
-          htmlFor={props.id}
+          htmlFor={id}
         />
         <SearchSelectInput
-          {...filterSerachSelectFieldProps(props)}
+          {...filterSearchSelectFieldProps(props)}
           {...filterDataAttributes(props)}
+          id={id}
           hasError={hasError}
         />
         <FieldErrors
