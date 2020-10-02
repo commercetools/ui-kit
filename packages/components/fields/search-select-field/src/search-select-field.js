@@ -14,23 +14,6 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 const sequentialId = createSequentialId('async-select-field-');
-const searchSelectInputProps = Object.keys(SearchSelectInput.propTypes);
-
-/**
- * GIVEN props
- * IF a porp from props set if supported by SearchSelectInput
- * THEN forwards it
- * ELSE filter out a prop that is not supported by SearchSelectInput component
- */
-const filterSearchSelectFieldProps = (props) => {
-  return Object.keys(props)
-    .filter((prop) => searchSelectInputProps.includes(prop))
-    .reduce((filteredProps, prop) => {
-      // eslint-disable-next-line no-param-reassign
-      filteredProps[prop] = props[prop];
-      return filteredProps;
-    }, {});
-};
 
 const SearchSelectField = (props) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
@@ -49,10 +32,42 @@ const SearchSelectField = (props) => {
           htmlFor={id}
         />
         <SearchSelectInput
-          {...filterSearchSelectFieldProps(props)}
           {...filterDataAttributes(props)}
-          id={id}
+          horizontalConstraint="scale"
           hasError={hasError}
+          aria-label={props['aria-label']}
+          aria-labelledby={props['aria-labelledby']}
+          isAutofocussed={props.isAutofocussed}
+          backspaceRemovesValue={props.backspaceRemovesValue}
+          components={props.components}
+          filterOption={props.filterOption}
+          id={id}
+          containerId={props.containerId}
+          isClearable={props.isClearable}
+          isDisabled={props.isDisabled}
+          isReadOnly={props.isReadOnly}
+          isOptionDisabled={props.isOptionDisabled}
+          isMulti={props.isMulti}
+          hasWarning={props.hasWarning}
+          maxMenuHeight={props.maxMenuHeight}
+          menuPortalTarget={props.menuPortalTarget}
+          menuPortalZIndex={props.menuPortalZIndex}
+          menuShouldBlockScroll={props.menuShouldBlockScroll}
+          name={props.name}
+          noOptionsMessage={props.noOptionsMessage}
+          loadingMessage={props.loadingMessage}
+          onBlur={props.onBlur}
+          onChange={props.onChange}
+          onFocus={props.onFocus}
+          onInputChange={props.onInputChange}
+          placeholder={props.placeholder}
+          tabIndex={props.tabIndex}
+          tabSelectsValue={props.tabSelectsValue}
+          value={props.value}
+          // Async react-select props
+          loadOptions={props.loadOptions}
+          cacheOptions={props.cacheOptions}
+          showOptionGroupDivider={props.showOptionGroupDivider}
         />
         <FieldErrors
           errors={props.errors}
