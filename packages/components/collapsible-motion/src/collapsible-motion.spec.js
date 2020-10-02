@@ -44,6 +44,7 @@ describe('uncontrolled mode', () => {
           ),
           height: 0,
           overflow: 'hidden',
+          visibility: 'hidden',
         },
       })
     );
@@ -97,7 +98,7 @@ describe('uncontrolled mode', () => {
       // hide the content
       fireEvent.click(screen.getByTestId('button'));
 
-      // ensure the container gets hidden
+      // ensure the container gets shrunk to 50px
       expect(renderProp).toHaveBeenLastCalledWith(
         expect.objectContaining({
           isOpen: false,
@@ -107,6 +108,7 @@ describe('uncontrolled mode', () => {
             ),
             height: '50px',
             overflow: 'hidden',
+            visibility: 'visible',
           },
         })
       );
@@ -192,6 +194,7 @@ describe('controlled mode', () => {
           ),
           height: 0,
           overflow: 'hidden',
+          visibility: 'hidden',
         },
       })
     );
@@ -245,7 +248,7 @@ describe('controlled mode', () => {
       // hide the content
       fireEvent.click(screen.getByTestId('button'));
 
-      // ensure the container gets hidden
+      // ensure the container gets shrunk to 50px
       expect(renderProp).toHaveBeenLastCalledWith(
         expect.objectContaining({
           isOpen: false,
@@ -255,6 +258,7 @@ describe('controlled mode', () => {
             ),
             height: '50px',
             overflow: 'hidden',
+            visibility: 'visible',
           },
         })
       );
