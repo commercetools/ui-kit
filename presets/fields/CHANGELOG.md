@@ -1,5 +1,13 @@
 # @commercetools-uikit/fields
 
+## 10.36.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/localized-multiline-text-field@10.36.1
+  - @commercetools-uikit/localized-text-field@10.36.1
+
 ## 10.36.0
 
 ### Patch Changes
