@@ -145,7 +145,7 @@
     "json-loader": "0.5.7",
     "lerna": "3.22.1",
     "lint-staged": "10.4.0",
-    "markdown-loader": "5.1.0",
+    "markdown-loader": "6.0.0",
     "moment": "2.29.0",
     "moment-locales-webpack-plugin": "1.2.0",
     "moment-timezone": "0.5.31",
