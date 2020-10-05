@@ -52,6 +52,6 @@
     "react-intl": "3.x || 4.x || 5.x"
   },
   "devDependencies": {
-    "formik": "2.1.5"
+    "formik": "2.1.7"
   }
 }

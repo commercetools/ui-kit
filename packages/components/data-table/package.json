@@ -35,7 +35,7 @@
     "react": ">= 16.8.0"
   },
   "devDependencies": {
-    "formik": "2.1.5",
-    "@testing-library/react-hooks": "3.4.1"
+    "formik": "2.1.7",
+    "@testing-library/react-hooks": "3.4.2"
   }
 }
