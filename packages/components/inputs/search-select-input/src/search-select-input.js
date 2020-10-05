@@ -36,7 +36,10 @@ const SearchSelectInput = (props) => {
   }, [props.components, optionType]);
 
   return (
-    <SearchSelectInputWrapper>
+    <SearchSelectInputWrapper
+      isDisabled={props.isDisabled}
+      isReadOnly={props.isReadOnly}
+    >
       <AsyncSelectInput
         {...props}
         components={components}
