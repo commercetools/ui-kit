@@ -1,5 +1,12 @@
 # @commercetools-uikit/inputs
 
+## 10.36.3
+
+### Patch Changes
+
+- Updated dependencies [[`210d169`](https://github.com/commercetools/ui-kit/commit/210d16957117faf8c53a4e12ea1b2cf9c197f421)]:
+  - @commercetools-uikit/search-select-input@10.36.3
+
 ## 10.36.2
 
 ### Patch Changes
