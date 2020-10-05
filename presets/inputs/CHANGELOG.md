@@ -1,5 +1,13 @@
 # @commercetools-uikit/inputs
 
+## 10.36.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/localized-rich-text-input@10.36.2
+  - @commercetools-uikit/rich-text-input@10.36.2
+
 ## 10.36.1
 
 ### Patch Changes
