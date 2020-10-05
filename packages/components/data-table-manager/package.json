@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/data-table-manager",
-  "version": "10.36.0",
+  "version": "10.36.2",
   "description": "",
   "main": "dist/data-table-manager.cjs.js",
   "module": "dist/data-table-manager.esm.js",
@@ -21,7 +21,7 @@
     "@commercetools-uikit/accessible-button": "10.30.1",
     "@commercetools-uikit/accessible-hidden": "10.30.2",
     "@commercetools-uikit/async-select-input": "10.36.0",
-    "@commercetools-uikit/collapsible-motion": "10.32.0",
+    "@commercetools-uikit/collapsible-motion": "10.36.2",
     "@commercetools-uikit/card": "10.30.2",
     "@commercetools-uikit/design-system": "10.13.0",
     "@commercetools-uikit/field-label": "10.36.0",

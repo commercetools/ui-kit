@@ -1,5 +1,15 @@
 # @commercetools-frontend/ui-kit
 
+## 10.36.2
+
+### Patch Changes
+
+- Updated dependencies [[`452f93f`](https://github.com/commercetools/ui-kit/commit/452f93f15962a375c2f776bbef7f65c200520929)]:
+  - @commercetools-uikit/collapsible-motion@10.36.2
+  - @commercetools-uikit/collapsible-panel@10.36.2
+  - @commercetools-uikit/data-table-manager@10.36.2
+  - @commercetools-uikit/inputs@10.36.2
+
 ## 10.36.1
 
 ### Patch Changes
