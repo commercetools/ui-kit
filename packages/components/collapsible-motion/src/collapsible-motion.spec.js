@@ -44,6 +44,7 @@ describe('uncontrolled mode', () => {
           ),
           height: 0,
           overflow: 'hidden',
+          visibility: 'hidden',
         },
       })
     );
@@ -97,7 +98,7 @@ describe('uncontrolled mode', () => {
       // hide the content
       fireEvent.click(screen.getByTestId('button'));
 
-      // ensure the container gets hidden
+      // ensure the container gets shrunk to 50px
       expect(renderProp).toHaveBeenLastCalledWith(
         expect.objectContaining({
           isOpen: false,
@@ -107,6 +108,7 @@ describe('uncontrolled mode', () => {
             ),
             height: '50px',
             overflow: 'hidden',
+            visibility: 'visible',
           },
         })
       );
@@ -192,6 +194,7 @@ describe('controlled mode', () => {
           ),
           height: 0,
           overflow: 'hidden',
+          visibility: 'hidden',
         },
       })
     );
@@ -245,7 +248,7 @@ describe('controlled mode', () => {
       // hide the content
       fireEvent.click(screen.getByTestId('button'));
 
-      // ensure the container gets hidden
+      // ensure the container gets shrunk to 50px
       expect(renderProp).toHaveBeenLastCalledWith(
         expect.objectContaining({
           isOpen: false,
@@ -255,6 +258,7 @@ describe('controlled mode', () => {
             ),
             height: '50px',
             overflow: 'hidden',
+            visibility: 'visible',
           },
         })
       );
@@ -275,5 +279,74 @@ describe('controlled mode', () => {
         })
       );
     });
+  });
+});
+
+describe('content visibility', () => {
+  it('should make content invisible when isDefaultClosed', async () => {
+    const renderProp = jest.fn(({ containerStyles, registerContentNode }) => (
+      <div style={containerStyles}>
+        <div data-testid="content-node" ref={registerContentNode}>
+          <button aria-label="I am invisible!" />
+        </div>
+      </div>
+    ));
+
+    render(<CollapsibleMotion isDefaultClosed>{renderProp}</CollapsibleMotion>);
+
+    expect(screen.queryByLabelText('I am invisible!')).not.toBeVisible();
+    expect(screen.queryByLabelText('I am invisible!')).toBeInTheDocument();
+  });
+
+  it('should make content invisible when it is collapsed', async () => {
+    const renderProp = jest.fn(
+      ({ isOpen, toggle, containerStyles, registerContentNode }) => (
+        <div>
+          <button data-testid="button" onClick={toggle}>
+            {isOpen ? 'Close' : 'Open'}
+          </button>
+          <div style={containerStyles}>
+            <div data-testid="content-node" ref={registerContentNode}>
+              <button aria-label="I am invisible!" />
+            </div>
+          </div>
+        </div>
+      )
+    );
+
+    render(<CollapsibleMotion>{renderProp}</CollapsibleMotion>);
+
+    expect(screen.queryByLabelText('I am invisible!')).toBeVisible();
+
+    fireEvent.click(screen.getByTestId('button'));
+
+    expect(screen.queryByLabelText('I am invisible!')).not.toBeVisible();
+    expect(screen.queryByLabelText('I am invisible!')).toBeInTheDocument();
+  });
+
+  it('should make content visible when it is opened', async () => {
+    const renderProp = jest.fn(
+      ({ isOpen, toggle, containerStyles, registerContentNode }) => (
+        <div>
+          <button data-testid="button" onClick={toggle}>
+            {isOpen ? 'Close' : 'Open'}
+          </button>
+          <div style={containerStyles}>
+            <div data-testid="content-node" ref={registerContentNode}>
+              <button aria-label="I am invisible!" />
+            </div>
+          </div>
+        </div>
+      )
+    );
+
+    render(<CollapsibleMotion isDefaultClosed>{renderProp}</CollapsibleMotion>);
+
+    expect(screen.queryByLabelText('I am invisible!')).not.toBeVisible();
+    expect(screen.queryByLabelText('I am invisible!')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId('button'));
+
+    expect(screen.queryByLabelText('I am invisible!')).toBeVisible();
   });
 });
