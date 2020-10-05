@@ -38,9 +38,13 @@ const defaultProps = {
 const getMinHeight = (minHeight) =>
   minHeight !== 0 ? `${minHeight}px` : minHeight;
 
+const getVisibility = (height) => (height === 0 ? 'hidden' : 'visible');
+
 const createOpeningAnimation = (height, minHeight = 0) =>
   keyframes`
-    0% { height: ${getMinHeight(minHeight)}; overflow: hidden; }
+    0% { height: ${getMinHeight(
+      minHeight
+    )}; overflow: hidden; visibility: ${getVisibility(minHeight)}; }
     99% { height: ${height}px; overflow: hidden; }
     100% { height: auto; overflow: visible; }
   `;
@@ -48,7 +52,9 @@ const createOpeningAnimation = (height, minHeight = 0) =>
 const createClosingAnimation = (height, minHeight) =>
   keyframes`
     from { height: ${height}px; }
-    to { height: ${getMinHeight(minHeight)}; overflow: hidden; }
+    to { height: ${getMinHeight(
+      minHeight
+    )}; overflow: hidden; visibility: ${getVisibility(minHeight)}; }
   `;
 
 const useToggleAnimation = (isOpen, toggle, minHeight) => {
@@ -81,7 +87,11 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
 
   const containerStyles = isOpen
     ? { height: 'auto' }
-    : { height: getMinHeight(minHeight), overflow: 'hidden' };
+    : {
+        height: getMinHeight(minHeight),
+        overflow: 'hidden',
+        visibility: getVisibility(minHeight),
+      };
 
   // if state has changed
   if (typeof prevIsOpen !== 'undefined' && prevIsOpen !== isOpen) {
