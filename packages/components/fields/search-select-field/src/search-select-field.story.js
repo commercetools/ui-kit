@@ -120,7 +120,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 isReadOnly={boolean('isReadOnly', false)}
                 isMulti={isMulti}
                 hasWarning={boolean('hasWarning', false)}
-                placeholder={text('placeholder', 'Select...')}
+                placeholder={text('placeholder', 'Search by...')}
                 loadingMessage={loadingMessage}
                 noOptionsMessage={() => noOptionsMessage}
                 title={text('title', 'Select a color')}
