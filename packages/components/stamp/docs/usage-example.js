@@ -1,9 +1,9 @@
 import React from 'react';
-import Stamp from '@commercetools-uikit/card';
+import Stamp from '@commercetools-uikit/stamp';
 import Text from '@commercetools-uikit/text';
 
 const Example = () => (
-  <Stamp>
+  <Stamp tone="primary">
     <Text.Detail>Hello</Text.Detail>
   </Stamp>
 );
