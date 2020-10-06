@@ -174,7 +174,7 @@ const DateInput = (props) => {
                     if (isOpen) setDownshiftHighlightedIndex(null);
                   },
                   onKeyDown: (event) => {
-                    if (this.props.isReadOnly) {
+                    if (props.isReadOnly) {
                       preventDownshiftDefault(event);
                       return;
                     }
