@@ -174,6 +174,10 @@ const DateInput = (props) => {
                     if (isOpen) setDownshiftHighlightedIndex(null);
                   },
                   onKeyDown: (event) => {
+                    if (this.props.isReadOnly) {
+                      preventDownshiftDefault(event);
+                      return;
+                    }
                     if (event.key === 'Enter' && inputValue.trim() === '') {
                       clearSelection();
                     }

@@ -329,6 +329,10 @@ class DateTimeInput extends React.Component {
                       if (isOpen) setHighlightedIndex(null);
                     },
                     onKeyDown: (event) => {
+                      if (this.props.isReadOnly) {
+                        preventDownshiftDefault(event);
+                        return;
+                      }
                       // parse input when user presses enter on regular input,
                       // close menu and notify parent
                       if (event.key === 'Enter' && highlightedIndex === null) {

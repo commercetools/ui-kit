@@ -400,6 +400,10 @@ class DateRangeCalendar extends React.Component {
                       if (isOpen) setHighlightedIndex(null);
                     },
                     onKeyDown: (event) => {
+                      if (this.props.isReadOnly) {
+                        preventDownshiftDefault(event);
+                        return;
+                      }
                       if (
                         event.key === 'Enter' &&
                         inputValue.trim() === '' &&
