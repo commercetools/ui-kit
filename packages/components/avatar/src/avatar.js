@@ -117,10 +117,25 @@ Avatar.defaultProps = {
 };
 
 Avatar.propTypes = {
+  /**
+   * The first name of the user.
+   */
   firstName: PropTypes.string,
+  /**
+   * The last name of the user.
+   */
   lastName: PropTypes.string,
+  /**
+   * The hashed string of the user gravatar.
+   */
   gravatarHash: PropTypes.string.isRequired,
+  /**
+   * Enhances the appearance of the avatar.
+   */
   isHighlighted: PropTypes.bool,
+  /**
+   * The size of the rendered avatar.
+   */
   size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
 };
 
