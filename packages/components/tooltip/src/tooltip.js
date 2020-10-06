@@ -27,18 +27,21 @@ const Tooltip = (props) => {
   const childrenRef = React.useRef();
 
   invariant(
-    props.components.BodyComponent &&
-      isValidElementType(props.components.BodyComponent),
+    props.components.BodyComponent
+      ? isValidElementType(props.components.BodyComponent)
+      : true,
     `ui-kit/Tooltip: the prop 'components.BodyComponent' is not a valid React element.`
   );
   invariant(
-    props.components.TooltipWrapperComponent &&
-      isValidElementType(props.components.TooltipWrapperComponent),
+    props.components.TooltipWrapperComponent
+      ? isValidElementType(props.components.TooltipWrapperComponent)
+      : true,
     `ui-kit/Tooltip: the prop 'components.TooltipWrapperComponent' is not a valid React element.`
   );
   invariant(
-    props.components.WrapperComponent &&
-      isValidElementType(props.components.WrapperComponent),
+    props.components.WrapperComponent
+      ? isValidElementType(props.components.WrapperComponent)
+      : true,
     `ui-kit/Tooltip: the prop 'components.WrapperComponent' is not a valid React element.`
   );
 
@@ -284,15 +287,15 @@ Tooltip.propTypes = {
     /**
      * The component rendered as the tooltip body.
      */
-    BodyComponent: PropTypes.element,
+    BodyComponent: PropTypes.elementType,
     /**
      * Where the tooltip should be rendered. This can be useful to render the tooltip into another part of the document, using React portal.
      */
-    TooltipWrapperComponent: PropTypes.element,
+    TooltipWrapperComponent: PropTypes.elementType,
     /**
      * A custom component wrapper for the tooltip.
      */
-    WrapperComponent: PropTypes.element,
+    WrapperComponent: PropTypes.elementType,
   }),
   /**
    * Provides a way to fine-tune an appearance of underlying Popper tooltip element. For more information, please check [Popper.js documentation](https://popper.js.org/popper-documentation.html#modifiers).
