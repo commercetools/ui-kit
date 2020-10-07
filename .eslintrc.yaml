@@ -34,6 +34,7 @@ overrides:
   - files: ['*.spec.js', '**/docs/*.js']
     rules:
       'react/display-name': 0
+      'react/prop-types': 0
   - files: ['*.visualroute.js']
     rules:
       'react/prop-types': 0

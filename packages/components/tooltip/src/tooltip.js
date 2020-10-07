@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { isValidElementType } from 'react-is';
+import invariant from 'tiny-invariant';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
@@ -24,6 +25,25 @@ TooltipWrapper.propTypes = {
 const Tooltip = (props) => {
   const leaveTimer = React.useRef();
   const childrenRef = React.useRef();
+
+  invariant(
+    props.components.BodyComponent
+      ? isValidElementType(props.components.BodyComponent)
+      : true,
+    `ui-kit/Tooltip: the prop 'components.BodyComponent' is not a valid React element.`
+  );
+  invariant(
+    props.components.TooltipWrapperComponent
+      ? isValidElementType(props.components.TooltipWrapperComponent)
+      : true,
+    `ui-kit/Tooltip: the prop 'components.TooltipWrapperComponent' is not a valid React element.`
+  );
+  invariant(
+    props.components.WrapperComponent
+      ? isValidElementType(props.components.WrapperComponent)
+      : true,
+    `ui-kit/Tooltip: the prop 'components.WrapperComponent' is not a valid React element.`
+  );
 
   React.useEffect(() => {
     return () => {
@@ -203,17 +223,45 @@ Tooltip.displayName = 'ToolTip';
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
+  /**
+   * Horizontal size limit of the tooltip.
+   */
   horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
     .isRequired,
+  /**
+   * Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.
+   */
   closeAfter: PropTypes.number.isRequired,
+  /**
+   * Custom css-in-js object styles for the tooltip body.
+   */
   styles: PropTypes.shape({
     body: PropTypes.object.isRequired,
   }).isRequired,
+  /**
+   * Determines if the tooltip should not appear.
+   */
   off: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool,
+  /**
+   * An identifier for the tooltip, used for `aria-describedby`.
+   */
   id: PropTypes.string,
+  /**
+   * A callback function, called when the tooltip is closing.
+   * <br>
+   * Signature `(event) => void`
+   */
   onClose: PropTypes.func,
+  /**
+   * A callback function, called when the tooltip is opening.
+   * <br>
+   * Signature `(event) => void`
+   */
   onOpen: PropTypes.func,
+  /**
+   * How the tooltip is positioned relative to the child element.
+   */
   placement: PropTypes.oneOf([
     'top',
     'top-start',
@@ -228,33 +276,30 @@ Tooltip.propTypes = {
     'left-start',
     'left-end',
   ]),
+  /**
+   * The message to show in the tooltip.
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Customize the appearance of certain elements of the tooltip.
+   */
   components: PropTypes.shape({
-    BodyComponent: (props, propName) => {
-      if (props[propName] && !isValidElementType(props[propName])) {
-        return new Error(
-          `Invalid prop 'components.BodyComponent' supplied to 'Tooltip': the prop is not a valid React component`
-        );
-      }
-      return null;
-    },
-    TooltipWrapperComponent: (props, propName) => {
-      if (props[propName] && !isValidElementType(props[propName])) {
-        return new Error(
-          `Invalid prop 'components.TooltipWrapperComponent' supplied to 'Tooltip': the prop is not a valid React component`
-        );
-      }
-      return null;
-    },
-    WrapperComponent: (props, propName) => {
-      if (props[propName] && !isValidElementType(props[propName])) {
-        return new Error(
-          `Invalid prop 'components.WrapperComponent' supplied to 'Tooltip': the prop is not a valid React component`
-        );
-      }
-      return null;
-    },
+    /**
+     * The component rendered as the tooltip body.
+     */
+    BodyComponent: PropTypes.elementType,
+    /**
+     * Where the tooltip should be rendered. This can be useful to render the tooltip into another part of the document, using React portal.
+     */
+    TooltipWrapperComponent: PropTypes.elementType,
+    /**
+     * A custom component wrapper for the tooltip.
+     */
+    WrapperComponent: PropTypes.elementType,
   }),
+  /**
+   * Provides a way to fine-tune an appearance of underlying Popper tooltip element. For more information, please check [Popper.js documentation](https://popper.js.org/popper-documentation.html#modifiers).
+   */
   modifiers: PropTypes.shape({
     shift: PropTypes.shape({
       order: PropTypes.number,
@@ -340,7 +385,6 @@ Tooltip.defaultProps = {
   horizontalConstraint: 'scale',
   off: false,
   placement: 'top',
-  type: 'info',
 };
 
 export default Tooltip;

@@ -31,11 +31,11 @@ npm --save install react
 
 ```jsx
 import React from 'react';
-import Stamp from '@commercetools-uikit/card';
+import Stamp from '@commercetools-uikit/stamp';
 import Text from '@commercetools-uikit/text';
 
 const Example = () => (
-  <Stamp>
+  <Stamp tone="primary">
     <Text.Detail>Hello</Text.Detail>
   </Stamp>
 );
@@ -45,7 +45,7 @@ export default Example;
 
 ## Properties
 
-| Props      | Type                                                                                                               | Required | Default | Description                     |
-| ---------- | ------------------------------------------------------------------------------------------------------------------ | :------: | ------- | ------------------------------- |
-| `tone`     | `enum`<br>Possible values:<br>`'critical' \| 'warning' \| 'positive' \| 'information' \| 'primary' \| 'secondary'` |    ✅    |         | Indicates color scheme of stamp |
-| `children` | `node`                                                                                                             |    ✅    |         |                                 |
+| Props      | Type                                                                                                               | Required | Default | Description                         |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ | :------: | ------- | ----------------------------------- |
+| `tone`     | `enum`<br>Possible values:<br>`'critical' \| 'warning' \| 'positive' \| 'information' \| 'primary' \| 'secondary'` |    ✅    |         | Indicates the color scheme of stamp |
+| `children` | `node`                                                                                                             |    ✅    |         |                                     |
