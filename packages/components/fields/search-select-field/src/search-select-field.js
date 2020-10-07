@@ -68,6 +68,7 @@ const SearchSelectField = (props) => {
           loadOptions={props.loadOptions}
           cacheOptions={props.cacheOptions}
           showOptionGroupDivider={props.showOptionGroupDivider}
+          optionType={props.optionType}
         />
         <FieldErrors
           errors={props.errors}
