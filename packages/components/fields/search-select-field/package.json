@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/search-select-field",
-  "version": "1.0.0",
+  "version": "10.37.0",
   "description": "A search select field built on top of search select input, allowing users to asynchronously search for options",
   "main": "dist/search-select-field.cjs.js",
   "module": "dist/search-select-field.esm.js",
@@ -14,9 +14,7 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
