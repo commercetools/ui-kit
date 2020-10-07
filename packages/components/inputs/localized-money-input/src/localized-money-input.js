@@ -7,6 +7,7 @@ import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
 import MoneyInput from '@commercetools-uikit/money-input';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
+import { CoinsIcon } from '@commercetools-uikit/icons';
 import {
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
@@ -18,7 +19,8 @@ import {
   createSequentialId,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
-import CurrencyControl from './currency-control';
+import messages from './messages';
+import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const sequentialId = createSequentialId('localized-money-input-');
 
@@ -76,24 +78,9 @@ const LocalizedInput = (props) => {
           {...filterDataAttributes(props)}
         />
       </div>
-      <div
-        css={css`
-          display: flex;
-        `}
-      >
-        <div
-          css={css`
-            flex: 1;
-          `}
-        >
-          {(() => {
-            if (props.error) return <div>{props.error}</div>;
-            if (props.warning) return <div>{props.warning}</div>;
-            return props.currenciesControl;
-          })()}
-        </div>
-      </div>
-      {(props.error || props.warning) && props.currenciesControl}
+      {(props.error || props.warning) && (
+        <div>{props.error ? props.error : props.warning}</div>
+      )}
     </Stack>
   );
 };
@@ -113,7 +100,6 @@ LocalizedInput.propTypes = {
   onFocus: PropTypes.func,
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
-  currenciesControl: PropTypes.node,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   placeholder: PropTypes.string,
@@ -157,83 +143,66 @@ const LocalizedMoneyInput = (props) => {
     Object.keys(props.value)
   );
 
+  const shouldRenderCurrencyControl =
+    currencies.length > 1 && !props.hideCurrencyExpansionControls;
+
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Stack scale="s">
-        {currencies.map((currency, index) => {
-          const isFirstCurrency = index === 0;
-          if (!isFirstCurrency && !areCurrenciesExpanded) return null;
-          const isLastCurrency = index === currencies.length - 1;
-          const hasRemainingCurrencies = currencies.length > 1;
-          const hasErrorOnRemainingCurrencies =
-            props.hasError ||
-            getHasErrorOnRemainingLanguages(
-              props.errors,
-              props.selectedCurrency
+      <Stack scale="xs">
+        <Stack scale="s">
+          {currencies.map((currency, index) => {
+            const isFirstCurrency = index === 0;
+            if (!isFirstCurrency && !areCurrenciesExpanded) return null;
+
+            return (
+              <LocalizedInput
+                key={currency}
+                id={LocalizedMoneyInput.getId(id, currency)}
+                name={LocalizedMoneyInput.getName(props.name, currency)}
+                value={props.value[currency]}
+                onChange={props.onChange}
+                currency={currency}
+                placeholder={
+                  props.placeholder ? props.placeholder[currency] : undefined
+                }
+                onBlur={props.onBlur}
+                onFocus={props.onFocus}
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                hasError={Boolean(
+                  props.hasError || (props.errors && props.errors[currency])
+                )}
+                hasWarning={Boolean(
+                  props.hasWarning ||
+                    (props.warnings && props.warnings[currency])
+                )}
+                intl={intl}
+                warning={props.warnings && props.warnings[currency]}
+                error={props.errors && props.errors[currency]}
+                {...createLocalizedDataAttributes(props, currency)}
+              />
             );
-          const hasWarningOnRemainingCurrencies =
-            props.hasWarning ||
-            getHasWarningOnRemainingLanguages(
-              props.warnings,
-              props.selectedCurrency
-            );
-          return (
-            <LocalizedInput
-              key={currency}
-              id={LocalizedMoneyInput.getId(id, currency)}
-              name={LocalizedMoneyInput.getName(props.name, currency)}
-              value={props.value[currency]}
-              onChange={props.onChange}
-              currency={currency}
-              placeholder={
-                props.placeholder ? props.placeholder[currency] : undefined
-              }
-              onBlur={props.onBlur}
-              onFocus={props.onFocus}
-              isDisabled={props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              currenciesControl={(() => {
-                if (
-                  !hasRemainingCurrencies ||
-                  props.hideCurrencyExpansionControls
-                )
-                  return null;
-                if (isFirstCurrency && !areCurrenciesExpanded)
-                  return (
-                    <CurrencyControl
-                      isClosed={true}
-                      onClick={toggleCurrencies}
-                      remainingCurrencies={currencies.length - 1}
-                    />
-                  );
-                if (isLastCurrency)
-                  return (
-                    <CurrencyControl
-                      onClick={toggleCurrencies}
-                      remainingCurrencies={currencies.length - 1}
-                      isDisabled={Boolean(
-                        props.hasError ||
-                          hasErrorOnRemainingCurrencies ||
-                          props.hasWarning ||
-                          hasWarningOnRemainingCurrencies
-                      )}
-                    />
-                  );
-                return null;
-              })()}
-              hasError={Boolean(
-                props.hasError || (props.errors && props.errors[currency])
-              )}
-              hasWarning={Boolean(
-                props.hasWarning || (props.warnings && props.warnings[currency])
-              )}
-              intl={intl}
-              warning={props.warnings && props.warnings[currency]}
-              error={props.errors && props.errors[currency]}
-              {...createLocalizedDataAttributes(props, currency)}
-            />
-          );
-        })}
+          })}
+        </Stack>
+        {shouldRenderCurrencyControl && (
+          <LocalizedInputToggle
+            icon={<CoinsIcon />}
+            onClick={toggleCurrencies}
+            isOpen={areCurrenciesExpanded}
+            isDisabled={
+              areCurrenciesExpanded &&
+              Boolean(
+                hasErrorInRemainingCurrencies || hasWarningInRemainingCurrencies
+              )
+            }
+            showMessage={intl.formatMessage(messages.show, {
+              remainingCurrencies: currencies.length - 1,
+            })}
+            hideMessage={intl.formatMessage(messages.hide, {
+              remainingCurrencies: currencies.length - 1,
+            })}
+          />
+        )}
       </Stack>
     </Constraints.Horizontal>
   );

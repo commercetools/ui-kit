@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
+import { css } from '@emotion/core';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -18,9 +19,9 @@ import {
   getId,
   getName,
 } from '@commercetools-uikit/localized-utils';
-import LanguagesControl from './languages-control';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
+import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const expandedTranslationsReducer = (state, action) => {
   switch (action.type) {
@@ -108,87 +109,75 @@ const LocalizedMultilineTextInput = (props) => {
     }
   }
 
+  const shouldRenderLanguagesButton =
+    languages.length > 1 && !props.hideLanguageExpansionControls;
+
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
-      <Stack scale="s">
-        {languages.map((language, index) => {
-          const isFirstLanguage = index === 0;
-          if (!isFirstLanguage && !areLanguagesOpened) return null;
-          const isLastLanguage = index === languages.length - 1;
-          const hasRemainingLanguages = languages.length > 1;
-          const hasErrorOnRemainingLanguages =
-            props.hasError ||
-            getHasErrorOnRemainingLanguages(
-              props.errors,
-              props.selectedLanguage
+      <Stack scale="xs">
+        <Stack scale="s">
+          {languages.map((language, index) => {
+            const isFirstLanguage = index === 0;
+            if (!isFirstLanguage && !areLanguagesOpened) return null;
+            const isLastLanguage = index === languages.length - 1;
+
+            const hasLanguagesControl =
+              (isFirstLanguage && !areLanguagesOpened) || isLastLanguage;
+
+            return (
+              <TranslationInput
+                key={language}
+                autoComplete={props.autoComplete}
+                id={LocalizedMultilineTextInput.getId(props.id, language)}
+                name={LocalizedMultilineTextInput.getName(props.name, language)}
+                value={props.value[language]}
+                onChange={props.onChange}
+                language={language}
+                isCollapsed={!expandedTranslationsState[language]}
+                onToggle={() => toggleLanguage(language)}
+                placeholder={
+                  props.placeholder ? props.placeholder[language] : undefined
+                }
+                onBlur={props.onBlur}
+                onFocus={props.onFocus}
+                isAutofocussed={index === 0 && props.isAutofocussed}
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                hasError={Boolean(
+                  props.hasError || (props.errors && props.errors[language])
+                )}
+                hasWarning={Boolean(
+                  props.hasWarning ||
+                    (props.warnings && props.warnings[language])
+                )}
+                intl={intl}
+                warning={props.warnings && props.warnings[language]}
+                error={props.errors && props.errors[language]}
+                hasLanguagesControl={hasLanguagesControl}
+                {...createLocalizedDataAttributes(props, language)}
+              />
             );
-          const hasWarningOnRemainingLanguages =
-            props.hasWarning ||
-            getHasWarningOnRemainingLanguages(
-              props.warnings,
-              props.selectedLanguage
-            );
-          return (
-            <TranslationInput
-              key={language}
-              autoComplete={props.autoComplete}
-              id={LocalizedMultilineTextInput.getId(props.id, language)}
-              name={LocalizedMultilineTextInput.getName(props.name, language)}
-              value={props.value[language]}
-              onChange={props.onChange}
-              language={language}
-              isCollapsed={!expandedTranslationsState[language]}
-              onToggle={() => toggleLanguage(language)}
-              placeholder={
-                props.placeholder ? props.placeholder[language] : undefined
-              }
-              onBlur={props.onBlur}
-              onFocus={props.onFocus}
-              isAutofocussed={index === 0 && props.isAutofocussed}
-              isDisabled={props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              languagesControl={(() => {
-                if (
-                  !hasRemainingLanguages ||
-                  props.hideLanguageExpansionControls
+          })}
+        </Stack>
+        {shouldRenderLanguagesButton && (
+          <div
+            css={css`
+              align-self: flex-start;
+            `}
+          >
+            <LocalizedInputToggle
+              isOpen={areLanguagesOpened}
+              onClick={toggleLanguages}
+              isDisabled={
+                areLanguagesOpened &&
+                Boolean(
+                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
                 )
-                  return null;
-                if (isFirstLanguage && !areLanguagesOpened)
-                  return (
-                    <LanguagesControl
-                      isClosed={true}
-                      onClick={toggleLanguages}
-                      remainingLanguages={languages.length - 1}
-                    />
-                  );
-                if (isLastLanguage)
-                  return (
-                    <LanguagesControl
-                      onClick={toggleLanguages}
-                      remainingLanguages={languages.length - 1}
-                      isDisabled={Boolean(
-                        props.hasError ||
-                          hasErrorOnRemainingLanguages ||
-                          props.hasWarning ||
-                          hasWarningOnRemainingLanguages
-                      )}
-                    />
-                  );
-                return null;
-              })()}
-              hasError={Boolean(
-                props.hasError || (props.errors && props.errors[language])
-              )}
-              hasWarning={Boolean(
-                props.hasWarning || (props.warnings && props.warnings[language])
-              )}
-              intl={intl}
-              warning={props.warnings && props.warnings[language]}
-              error={props.errors && props.errors[language]}
-              {...createLocalizedDataAttributes(props, language)}
+              }
+              remainingLocalizations={languages.length - 1}
             />
-          );
-        })}
+          </div>
+        )}
       </Stack>
     </Constraints.Horizontal>
   );

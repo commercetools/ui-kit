@@ -1,5 +1,11 @@
 # @commercetools-uikit/search-select-input
 
+## 10.36.3
+
+### Patch Changes
+
+- [`210d169`](https://github.com/commercetools/ui-kit/commit/210d16957117faf8c53a4e12ea1b2cf9c197f421) [#1612](https://github.com/commercetools/ui-kit/pull/1612) Thanks [@mohib0306](https://github.com/mohib0306)! - Fix isDisabled and isReadOnly states of SearchSelectInput component
+
 ## 10.36.0
 
 ### Patch Changes

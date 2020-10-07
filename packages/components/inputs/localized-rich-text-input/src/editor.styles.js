@@ -53,4 +53,20 @@ const EditorWrapper = styled.div`
     props.isDisabled || props.isReadOnly ? 'not-allowed' : 'inherit'};
 `;
 
-export { EditorLanguageLabel, EditorWrapper };
+const getToggleButtonWrapperPosition = (props) =>
+  !props.shouldToggleButtonTakeSpace
+    ? css`
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: ${vars.spacingXs};
+      `
+    : '';
+
+const ToggleButtonWrapper = styled.div`
+  flex: 0;
+  display: flex;
+  ${getToggleButtonWrapperPosition}
+`;
+
+export { EditorLanguageLabel, EditorWrapper, ToggleButtonWrapper };

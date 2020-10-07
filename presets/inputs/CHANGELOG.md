@@ -1,5 +1,30 @@
 # @commercetools-uikit/inputs
 
+## 10.36.3
+
+### Patch Changes
+
+- Updated dependencies [[`210d169`](https://github.com/commercetools/ui-kit/commit/210d16957117faf8c53a4e12ea1b2cf9c197f421)]:
+  - @commercetools-uikit/search-select-input@10.36.3
+
+## 10.36.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/localized-rich-text-input@10.36.2
+  - @commercetools-uikit/rich-text-input@10.36.2
+
+## 10.36.1
+
+### Patch Changes
+
+- Updated dependencies [[`c89a528`](https://github.com/commercetools/ui-kit/commit/c89a5285b77a72bc893c53063f697ad81ba9f7a1), [`c89a528`](https://github.com/commercetools/ui-kit/commit/c89a5285b77a72bc893c53063f697ad81ba9f7a1)]:
+  - @commercetools-uikit/localized-money-input@10.36.1
+  - @commercetools-uikit/localized-multiline-text-input@10.36.1
+  - @commercetools-uikit/localized-rich-text-input@10.36.1
+  - @commercetools-uikit/localized-text-input@10.36.1
+
 ## 10.36.0
 
 ### Minor Changes

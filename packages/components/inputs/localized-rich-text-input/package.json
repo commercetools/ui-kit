@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/localized-rich-text-input",
-  "version": "10.36.0",
+  "version": "10.36.2",
   "description": "",
   "main": "dist/rich-text-input.cjs.js",
   "module": "dist/rich-text-input.esm.js",
@@ -17,7 +17,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@commercetools-uikit/collapsible-motion": "10.32.0",
+    "@commercetools-uikit/collapsible-motion": "10.36.2",
     "@commercetools-uikit/constraints": "10.30.1",
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/flat-button": "10.36.0",

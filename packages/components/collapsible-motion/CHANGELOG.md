@@ -1,5 +1,11 @@
 # @commercetools-uikit/collapsible-motion
 
+## 10.36.2
+
+### Patch Changes
+
+- [`452f93f`](https://github.com/commercetools/ui-kit/commit/452f93f15962a375c2f776bbef7f65c200520929) [#1608](https://github.com/commercetools/ui-kit/pull/1608) Thanks [@jonnybel](https://github.com/jonnybel)! - When closed, the content of the component now gains `visibility: hidden`, which means it's visually hidden from the DOM and removed from the accessibility tree and cannot receive focus, even though it remains present in the layout.
+
 ## 10.32.0
 
 ### Minor Changes

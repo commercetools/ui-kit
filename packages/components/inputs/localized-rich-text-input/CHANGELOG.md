@@ -1,5 +1,18 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 10.36.2
+
+### Patch Changes
+
+- Updated dependencies [[`452f93f`](https://github.com/commercetools/ui-kit/commit/452f93f15962a375c2f776bbef7f65c200520929)]:
+  - @commercetools-uikit/collapsible-motion@10.36.2
+
+## 10.36.1
+
+### Patch Changes
+
+- [`c89a528`](https://github.com/commercetools/ui-kit/commit/c89a5285b77a72bc893c53063f697ad81ba9f7a1) [#1590](https://github.com/commercetools/ui-kit/pull/1590) Thanks [@jonnybel](https://github.com/jonnybel)! - Fixed languages/currencies toggle button losing focus when triggered.
+
 ## 10.36.0
 
 ### Patch Changes
