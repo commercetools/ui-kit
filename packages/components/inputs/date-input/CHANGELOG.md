@@ -1,5 +1,12 @@
 # @commercetools-uikit/date-input
 
+## 10.37.1
+
+### Patch Changes
+
+- Updated dependencies [[`ecc94d5`](https://github.com/commercetools/ui-kit/commit/ecc94d5fe9dcf30a04c8d3f137ccda9761b7495c)]:
+  - @commercetools-uikit/tooltip@10.37.1
+
 ## 10.36.0
 
 ### Patch Changes

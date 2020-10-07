@@ -1,5 +1,12 @@
 # @commercetools-uikit/date-field
 
+## 10.37.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/date-input@10.37.1
+
 ## 10.36.0
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-uikit/tooltip
 
+## 10.37.1
+
+### Patch Changes
+
+- [`ecc94d5`](https://github.com/commercetools/ui-kit/commit/ecc94d5fe9dcf30a04c8d3f137ccda9761b7495c) [#1615](https://github.com/commercetools/ui-kit/pull/1615) Thanks [@emmenko](https://github.com/emmenko)! - Generate readme for `Tooltip`
+
 ## 10.30.1
 
 ### Patch Changes
