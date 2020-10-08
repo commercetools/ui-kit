@@ -112,7 +112,9 @@ const DateInput = (props) => {
                 setHighlightedIndex(null);
               } else {
                 setSuggestedItems([date]);
-                setHighlightedIndex(getDateInMonth(date) - 1);
+                if (getIsDateInRange(date, props.minValue, props.maxValue)) {
+                  setHighlightedIndex(getDateInMonth(date) - 1);
+                }
                 setCalendarDate(date);
               }
             } else {
