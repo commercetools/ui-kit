@@ -125,12 +125,6 @@ const DateInput = (props) => {
           if (changes.hasOwnProperty('highlightedIndex')) {
             setHighlightedIndex(changes.highlightedIndex);
           }
-
-          // ensure calendar always opens on selected item, or on current
-          // month when there is no selected item
-          if (changes.hasOwnProperty('isOpen') && changes.isOpen) {
-            setCalendarDate(props.value === '' ? getToday() : props.value);
-          }
           /* eslint-enable no-prototype-builtins */
         }}
       >
