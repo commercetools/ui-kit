@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/search-select-field",
-  "version": "10.37.0",
+  "version": "10.37.1",
   "description": "A search select field built on top of search select input, allowing users to asynchronously search for options",
   "main": "dist/search-select-field.cjs.js",
   "module": "dist/search-select-field.esm.js",

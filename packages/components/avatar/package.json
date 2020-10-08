@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/avatar",
-  "version": "10.30.2",
+  "version": "10.37.1",
   "description": "A component for rendering profile images",
   "main": "dist/avatar.cjs.js",
   "module": "dist/avatar.esm.js",

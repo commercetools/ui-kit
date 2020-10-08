@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/multiline-text-field",
-  "version": "10.36.0",
+  "version": "10.37.1",
   "description": "A controlled text input component for multi-line strings with validation states and a label.",
   "main": "dist/multiline-text-field.cjs.js",
   "module": "dist/multiline-text-field.esm.js",
@@ -22,7 +22,7 @@
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/field-errors": "10.36.0",
     "@commercetools-uikit/field-label": "10.36.0",
-    "@commercetools-uikit/multiline-text-input": "10.36.0",
+    "@commercetools-uikit/multiline-text-input": "10.37.1",
     "@commercetools-uikit/spacings": "10.18.7",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "^10.0.34",
