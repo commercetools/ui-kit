@@ -23,7 +23,7 @@ storiesOf('Components|Inputs', module)
       <Value
         defaultValue={exampleDates.preselectedDate}
         render={(value, onChange) => {
-          const placeholder = text('placeholder', 'Placeholder');
+          const placeholder = text('placeholder', '');
           return (
             <DateInput
               value={value}

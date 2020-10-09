@@ -400,6 +400,10 @@ class DateRangeCalendar extends React.Component {
                       if (isOpen) setHighlightedIndex(null);
                     },
                     onKeyDown: (event) => {
+                      if (this.props.isReadOnly) {
+                        preventDownshiftDefault(event);
+                        return;
+                      }
                       if (
                         event.key === 'Enter' &&
                         inputValue.trim() === '' &&
@@ -443,7 +447,6 @@ class DateRangeCalendar extends React.Component {
                     },
                     // we only do this for readOnly because the input
                     // doesn't ignore these events, unlike when its disabled
-                    onFocus: this.props.isReadOnly ? undefined : openMenu,
                     onClick: this.props.isReadOnly ? undefined : openMenu,
                     ...filterDataAttributes(this.props),
                   })}
