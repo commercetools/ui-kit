@@ -112,7 +112,9 @@ const DateInput = (props) => {
                 setHighlightedIndex(null);
               } else {
                 setSuggestedItems([date]);
-                setHighlightedIndex(getDateInMonth(date) - 1);
+                if (getIsDateInRange(date, props.minValue, props.maxValue)) {
+                  setHighlightedIndex(getDateInMonth(date) - 1);
+                }
                 setCalendarDate(date);
               }
             } else {
@@ -124,12 +126,6 @@ const DateInput = (props) => {
 
           if (changes.hasOwnProperty('highlightedIndex')) {
             setHighlightedIndex(changes.highlightedIndex);
-          }
-
-          // ensure calendar always opens on selected item, or on current
-          // month when there is no selected item
-          if (changes.hasOwnProperty('isOpen') && changes.isOpen) {
-            setCalendarDate(props.value === '' ? getToday() : props.value);
           }
           /* eslint-enable no-prototype-builtins */
         }}
@@ -174,6 +170,10 @@ const DateInput = (props) => {
                     if (isOpen) setDownshiftHighlightedIndex(null);
                   },
                   onKeyDown: (event) => {
+                    if (props.isReadOnly) {
+                      preventDownshiftDefault(event);
+                      return;
+                    }
                     if (event.key === 'Enter' && inputValue.trim() === '') {
                       clearSelection();
                     }
@@ -234,7 +234,6 @@ const DateInput = (props) => {
                   },
                   // we only do this for readOnly because the input
                   // doesn't ignore these events, unlike when its disabled
-                  onFocus: props.isReadOnly ? undefined : openMenu,
                   onClick: props.isReadOnly ? undefined : openMenu,
                   ...filterDataAttributes(props),
                 })}

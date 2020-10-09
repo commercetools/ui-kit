@@ -89,7 +89,7 @@ it('should call onChange when changing the value', () => {
   const onChange = jest.fn();
   const { getByLabelText } = renderDateTimeField({ onChange });
   const event = { target: { value: '12/30/2018 12:00 AM' } };
-  fireEvent.focus(getByLabelText('DateTimeField'));
+  fireEvent.click(getByLabelText('DateTimeField'));
   fireEvent.change(getByLabelText('DateTimeField'), event);
   fireEvent.keyDown(getByLabelText('DateTimeField'), { key: 'Enter' });
   fireEvent.keyUp(getByLabelText('DateTimeField'), { key: 'Enter' });

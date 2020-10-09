@@ -89,7 +89,7 @@ describe('when locale is "en"', () => {
     const onChange = jest.fn();
     const { getByLabelText } = renderDateInput({ onChange });
     const event = { target: { value: '09/18/2018' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -104,7 +104,7 @@ describe('when locale is "de"', () => {
     const onChange = jest.fn();
     const { getByLabelText } = renderDateInput({ onChange }, { locale: 'de' });
     const event = { target: { value: '18.9.2018' } };
-    fireEvent.focus(getByLabelText('Date'));
+    fireEvent.click(getByLabelText('Date'));
     fireEvent.change(getByLabelText('Date'), event);
     fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
     fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
@@ -114,14 +114,33 @@ describe('when locale is "de"', () => {
   });
 });
 
+it('should open the date picker on clicking', () => {
+  renderDateInput({ value: '2020-09-15' });
+
+  const dateInput = screen.getByLabelText('Date');
+
+  fireEvent.click(dateInput);
+
+  expect(screen.queryByText('September')).toBeInTheDocument();
+});
+
+it('should not open the date picker just by gaining focus', () => {
+  renderDateInput({ value: '2020-09-15' });
+
+  const dateInput = screen.getByLabelText('Date');
+
+  // just focusing won't open the date picker
+  fireEvent.focus(dateInput);
+  expect(screen.queryByText('September')).not.toBeInTheDocument();
+});
+
 describe('date picker keyboard navigation', () => {
   it('should move to next month when pressing ArrowDown with last day of month highlighted', () => {
     renderDateInput({ value: '2020-09-30' });
 
     const dateInput = screen.getByLabelText('Date');
 
-    // Focusing opens the Date Picker
-    fireEvent.focus(dateInput);
+    fireEvent.click(dateInput);
 
     expect(screen.queryByText('September')).toBeInTheDocument();
 
@@ -136,8 +155,7 @@ describe('date picker keyboard navigation', () => {
 
     const dateInput = screen.getByLabelText('Date');
 
-    // Focusing opens the Date Picker
-    fireEvent.focus(dateInput);
+    fireEvent.click(dateInput);
 
     expect(screen.queryByText('September')).toBeInTheDocument();
 
@@ -153,8 +171,7 @@ describe('date picker keyboard navigation', () => {
 
       const dateInput = screen.getByLabelText('Date');
 
-      // Focusing opens the Date Picker
-      fireEvent.focus(dateInput);
+      fireEvent.click(dateInput);
 
       expect(screen.queryByText('September')).toBeInTheDocument();
 
@@ -169,8 +186,7 @@ describe('date picker keyboard navigation', () => {
 
       const dateInput = screen.getByLabelText('Date');
 
-      // Focusing opens the Date Picker
-      fireEvent.focus(dateInput);
+      fireEvent.click(dateInput);
 
       expect(screen.queryByText('September')).toBeInTheDocument();
 
