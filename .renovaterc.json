@@ -28,6 +28,7 @@
     "@svgr/plugin-svgo",
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
+    "@storybook/addon-google-analytics",
     "@storybook/addon-knobs",
     "@storybook/addon-links",
     "@storybook/addon-storysource",
