@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/date-input",
-  "version": "10.37.1",
+  "version": "10.37.2",
   "description": "The `DateInput` component allows the user to select a date. It formats the selected date depending on the users' locale.",
   "main": "dist/date-input.cjs.js",
   "module": "dist/date-input.esm.js",

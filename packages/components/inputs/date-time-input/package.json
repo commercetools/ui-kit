@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/date-time-input",
-  "version": "10.37.1",
+  "version": "10.37.2",
   "description": "The `DateTimeInput` component allows the user to select a date. This component also supports multiple date selection.",
   "main": "dist/date-input.cjs.js",
   "module": "dist/date-input.esm.js",
