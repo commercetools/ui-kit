@@ -1,5 +1,11 @@
 # @commercetools-uikit/date-input
 
+## 10.37.2
+
+### Patch Changes
+
+- [`74cb29f`](https://github.com/commercetools/ui-kit/commit/74cb29f753b3d65e7a037b1be948df66e704dad5) [#1605](https://github.com/commercetools/ui-kit/pull/1605) Thanks [@jonnybel](https://github.com/jonnybel)! - The date picker (Calendar View) won't open automatically when the input is focused, but only when the user starts typing on it or presses the ArrowDown key.
+
 ## 10.37.1
 
 ### Patch Changes
