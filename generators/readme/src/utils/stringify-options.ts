@@ -6,7 +6,7 @@ const stringifyOptions: Partial<RemarkStringifyOptions> = {
   gfm: true,
   commonmark: true,
   tablePipeAlign: false,
-  listItemIndent: '1',
+  listItemIndent: 'one',
   incrementListMarker: false,
   rule: '-',
   fences: true,
