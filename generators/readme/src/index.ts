@@ -35,12 +35,14 @@ import vfile from 'vfile';
 import unified from 'unified';
 import parse from 'remark-parse';
 import mdx from 'remark-mdx';
+import gfm from 'remark-gfm';
 import stringify from 'remark-stringify';
 import rcfile from 'rcfile';
 import prettier from 'prettier';
 import camelcase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
-import stringfyOptions from './utils/stringify-options';
+import stringifyOptions from './utils/stringify-options';
+import gfmOptions from './utils/gfm-options';
 
 const prettierConfig = rcfile<PrettierOptions>('prettier');
 
@@ -93,8 +95,9 @@ const tableCellMultiline = (children: PhrasingContent[]): TableCell => ({
 });
 const parseMarkdownFragmentToAST = (fragmentContent: VFileCompatible) => {
   const fragmentAST = unified()
-    .use(markdown)
-    .use(stringify, stringfyOptions)
+    .use(parse)
+    .use(gfm, gfmOptions)
+    .use(stringify, stringifyOptions)
     .use(mdx)
     .parse(fragmentContent) as Root;
   return fragmentAST.children;
@@ -462,7 +465,8 @@ export async function transformDocument(
   return new Promise<VFile>((resolve, reject) => {
     unified()
       .use(parse)
-      .use(stringify, stringfyOptions)
+      .use(gfm, gfmOptions)
+      .use(stringify, stringifyOptions)
       .use(mdx)
       .use(readmeTransformer, packageFolderPath)
       .process(doc, (err, file) => {
