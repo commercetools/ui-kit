@@ -33,7 +33,7 @@ import { getPackagesSync } from '@manypkg/get-packages';
 import toVfile from 'to-vfile';
 import vfile from 'vfile';
 import unified from 'unified';
-import markdown from 'remark-parse';
+import parse from 'remark-parse';
 import mdx from 'remark-mdx';
 import stringify from 'remark-stringify';
 import rcfile from 'rcfile';
@@ -461,7 +461,7 @@ export async function transformDocument(
 ) {
   return new Promise<VFile>((resolve, reject) => {
     unified()
-      .use(markdown)
+      .use(parse)
       .use(stringify, stringfyOptions)
       .use(mdx)
       .use(readmeTransformer, packageFolderPath)
