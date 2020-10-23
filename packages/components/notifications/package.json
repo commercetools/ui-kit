@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/notifications",
-  "version": "10.33.0",
+  "version": "10.38.0",
   "description": "",
   "main": "dist/notifications.cjs.js",
   "module": "dist/notifications.esm.js",
@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.33.0",
+    "@commercetools-uikit/icons": "10.38.0",
     "@commercetools-uikit/utils": "10.21.0",
     "@emotion/core": "^10.0.34",
     "common-tags": "1.8.0",
