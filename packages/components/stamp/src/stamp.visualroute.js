@@ -24,5 +24,10 @@ export const component = () => (
     <Spec label="when secondary">
       <Stamp tone="secondary">Secondary</Stamp>
     </Spec>
+    <Spec label="when condensed">
+      <Stamp tone="information" isCondensed={true}>
+        Secondary
+      </Stamp>
+    </Spec>
   </Suite>
 );

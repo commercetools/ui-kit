@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
 
 export const availableTones = [
   'critical',
@@ -12,6 +11,15 @@ export const availableTones = [
   'primary',
   'secondary',
 ];
+const getPaddingStyle = (props) => {
+  if (props.isCondensed)
+    return css`
+      padding: 1px ${vars.spacingXs};
+    `;
+  return css`
+    padding: ${vars.spacingXs} ${vars.spacingS};
+  `;
+};
 
 const getToneStyles = (props, theme) => {
   const overwrittenVars = { ...vars, ...theme };
@@ -70,9 +78,13 @@ const getStampStyles = (props, theme) => {
 
 const Stamp = (props) => (
   <div
-    css={(theme) => [getStampStyles(props, theme), getToneStyles(props, theme)]}
+    css={(theme) => [
+      getStampStyles(props, theme),
+      getToneStyles(props, theme),
+      getPaddingStyle(props),
+    ]}
   >
-    <InsetSquish scale="s">{props.children}</InsetSquish>
+    {props.children}
   </div>
 );
 
@@ -82,6 +94,7 @@ Stamp.propTypes = {
    * Indicates the color scheme of stamp
    */
   tone: PropTypes.oneOf(availableTones).isRequired,
+  isCondensed: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
