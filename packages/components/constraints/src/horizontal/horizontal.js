@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import invariant from 'tiny-invariant';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
@@ -31,10 +30,13 @@ function getConstraintSyles({ max, constraint }) {
 }
 
 const Horizontal = (props) => {
-  invariant(
-    !(props.constraint && props.max),
-    '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
-  );
+  // TODO: uncomment this when we effectively deprecate the constraint prop
+  // if (props.constraint != null) {
+  //   warnDeprecatedProp(
+  //     'constraint',
+  //     'Constraints.Horizontal',
+  //     `\n Please use "max" prop instead.`
+  //   );
 
   return (
     <div
