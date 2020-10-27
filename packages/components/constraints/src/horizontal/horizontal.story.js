@@ -1,35 +1,20 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
 import Readme from '../../README.md';
 
-const Stack = styled.div`
-  > * + * {
-    margin: 8px 0 0;
-  }
-`;
-
-const Row = styled.div`
-  display: block;
-`;
-
-const InlineColorWrapper = styled.div`
-  background-color: #e1ffdd;
-  display: inline-flex;
-  align-items: stretch;
+const ColouredRow = styled.div`
   height: 100px;
-  width: ${(props) => props.width};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: ${vars.borderRadius6};
+  color: ${vars.colorSurface};
+  background-color: ${vars.colorPrimary};
 `;
-
-const sizes = [
-  { name: 'xs', width: '10%' },
-  { name: 's', width: '20%' },
-  { name: 'm', width: '30%' },
-  { name: 'l', width: '70%' },
-  { name: 'xl', width: '100%' },
-];
 
 storiesOf('Components|Constraints', module)
   .addDecorator(withKnobs)
@@ -40,20 +25,15 @@ storiesOf('Components|Constraints', module)
     },
   })
   .add('Horizontal', () => {
-    const constraint = select(
-      'constraint',
-      ['xs', 's', 'm', 'l', 'xl', 'scale'],
+    const max = select(
+      'max',
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'],
       'scale'
     );
+
     return (
-      <Horizontal constraint={constraint}>
-        <Stack>
-          {sizes.map((size) => (
-            <Row key={size.name}>
-              <InlineColorWrapper width={size.width} />
-            </Row>
-          ))}
-        </Stack>
+      <Horizontal max={max}>
+        <ColouredRow>{max.toString()}</ColouredRow>
       </Horizontal>
     );
   });
