@@ -1,5 +1,11 @@
 # @commercetools-uikit/stamp
 
+## 10.39.0
+
+### Minor Changes
+
+- [`82d39a7`](https://github.com/commercetools/ui-kit/commit/82d39a7aedcc821caece41efa302ad2a9c37c92f) [#1638](https://github.com/commercetools/ui-kit/pull/1638) Thanks [@islam3zzat](https://github.com/islam3zzat)! - Add a new prop (isCondensed) for the Stamp component to allow for stamps with small paddings
+
 ## 10.37.1
 
 ### Patch Changes
