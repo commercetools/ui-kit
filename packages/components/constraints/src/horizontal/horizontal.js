@@ -32,7 +32,7 @@ function getConstraintSyles({ max, constraint }) {
 
 const Horizontal = (props) => {
   invariant(
-    props.constraint && props.max,
+    !(props.constraint && props.max),
     '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
   );
 
