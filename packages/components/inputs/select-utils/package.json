@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/select-utils",
-  "version": "10.36.0",
+  "version": "10.38.0",
   "description": "",
   "main": "dist/select-utils.cjs.js",
   "module": "dist/select-utils.esm.js",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@commercetools-uikit/accessible-button": "10.30.1",
     "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/icons": "10.33.0",
+    "@commercetools-uikit/icons": "10.38.0",
     "@commercetools-uikit/spacings": "10.18.7",
     "@commercetools-uikit/text": "10.36.0",
     "@commercetools-uikit/utils": "10.21.0",

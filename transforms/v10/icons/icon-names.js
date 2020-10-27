@@ -33,6 +33,7 @@ const iconNames = [
   'CircleIcon',
   'ClipboardIcon',
   'ClockIcon',
+  'ClockWithArrowIcon',
   'CloseBoldIcon',
   'CloseIcon',
   'CodeViewIcon',

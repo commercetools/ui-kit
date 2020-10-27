@@ -35,6 +35,7 @@ export { default as CheckInactiveIcon } from './components/check-inactive';
 export { default as CheckThinIcon } from './components/check-thin';
 export { default as CircleIcon } from './components/circle';
 export { default as ClipboardIcon } from './components/clipboard';
+export { default as ClockWithArrowIcon } from './components/clock-with-arrow';
 export { default as ClockIcon } from './components/clock';
 export { default as CloseBoldIcon } from './components/close-bold';
 export { default as CloseIcon } from './components/close';

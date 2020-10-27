@@ -1,5 +1,11 @@
 # @commercetools-uikit/icons
 
+## 10.38.0
+
+### Minor Changes
+
+- [`d1591be`](https://github.com/commercetools/ui-kit/commit/d1591be95db3aa63d02d2a45ab728cddb678a585) [#1633](https://github.com/commercetools/ui-kit/pull/1633) Thanks [@nbryant-commercetools](https://github.com/nbryant-commercetools)! - Addition of a new clock with arrow icon
+
 ## 10.33.0
 
 ### Minor Changes

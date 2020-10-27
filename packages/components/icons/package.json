@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/icons",
-  "version": "10.33.0",
+  "version": "10.38.0",
   "description": "",
   "main": "dist/icons.cjs.js",
   "module": "dist/icons.esm.js",

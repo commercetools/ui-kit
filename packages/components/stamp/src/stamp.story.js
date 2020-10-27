@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import Section from '../../../../.storybook/decorators/section';
 import Text from '../../text';
 import SpacingsStack from '../../spacings/stack';
@@ -20,6 +21,7 @@ storiesOf('Components|Stamps', module)
       sidebar: Readme,
     },
   })
+  .addDecorator(withKnobs)
   .add('Stamp', () => (
     <Section>
       <SpacingsStack>
@@ -28,13 +30,13 @@ storiesOf('Components|Stamps', module)
           const Icon = icons[iconNames[iconIndex]];
           return (
             <SpacingsInline key={tone} alignItems="center">
-              <Stamp tone={tone}>
+              <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
                 <SpacingsInline alignItems="center">
                   <Icon size="medium" />
                   <Text.Detail>{'Hello'}</Text.Detail>
                 </SpacingsInline>
               </Stamp>
-              <Stamp tone={tone}>
+              <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
                 <Text.Detail>{`tone="${tone}"`}</Text.Detail>
               </Stamp>
             </SpacingsInline>

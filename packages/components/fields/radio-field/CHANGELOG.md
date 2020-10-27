@@ -1,5 +1,12 @@
 # @commercetools-uikit/radio-field
 
+## 10.38.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.38.0
+
 ## 10.36.0
 
 ### Patch Changes
