@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/stamp",
-  "version": "10.37.1",
+  "version": "10.39.0",
   "description": "Stamps are visual labels which hold small amounts of information regarding an item. (E.g Indicating if a product is published in a list).",
   "main": "dist/stamp.cjs.js",
   "module": "dist/stamp.esm.js",
@@ -14,9 +14,7 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-frontend/ui-kit",
-  "version": "10.38.0",
+  "version": "10.39.0",
   "description": "",
   "private": false,
   "publishConfig": {
@@ -48,7 +48,7 @@
     "@commercetools-uikit/notifications": "10.38.0",
     "@commercetools-uikit/primary-action-dropdown": "10.38.0",
     "@commercetools-uikit/spacings": "10.18.7",
-    "@commercetools-uikit/stamp": "10.37.1",
+    "@commercetools-uikit/stamp": "10.39.0",
     "@commercetools-uikit/table": "10.38.0",
     "@commercetools-uikit/tag": "10.38.0",
     "@commercetools-uikit/text": "10.36.0",
