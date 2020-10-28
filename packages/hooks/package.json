@@ -1,15 +1,23 @@
 {
   "name": "@commercetools-uikit/hooks",
   "version": "10.30.1",
-  "description": "",
-  "main": "dist/hooks.cjs.js",
-  "module": "dist/hooks.esm.js",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/hooks"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist"],
   "sideEffects": false,
+  "main": "dist/hooks.cjs.js",
+  "module": "dist/hooks.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
@@ -21,6 +29,5 @@
   "peerDependencies": {
     "lodash": "4.17.20",
     "react": ">= 16.8.0"
-  },
-  "license": "MIT"
+  }
 }

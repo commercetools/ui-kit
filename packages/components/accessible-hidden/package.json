@@ -1,22 +1,30 @@
 {
   "name": "@commercetools-uikit/accessible-hidden",
-  "version": "10.30.2",
   "description": "Component to hide content offscreen while keeping it accessible. This is also helpful for testing purposes.",
-  "main": "dist/accessible-hidden.cjs.js",
-  "module": "dist/accessible-hidden.esm.js",
+  "version": "10.30.2",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/accessible-hidden"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/accessible-hidden.cjs.js",
+  "module": "dist/accessible-hidden.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.34",
     "prop-types": "15.7.2"

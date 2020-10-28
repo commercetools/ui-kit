@@ -1,22 +1,30 @@
 {
   "name": "@commercetools-uikit/loading-spinner",
-  "version": "10.36.0",
   "description": "A spinner animation to indicate loading state (e.g pending requests) for the user.",
-  "main": "dist/loading-spinner.cjs.js",
-  "module": "dist/loading-spinner.esm.js",
+  "version": "10.36.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/loading-spinner"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/loading-spinner.cjs.js",
+  "module": "dist/loading-spinner.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/spacings-inline": "10.30.1",

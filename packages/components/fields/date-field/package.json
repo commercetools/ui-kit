@@ -1,22 +1,30 @@
 {
   "name": "@commercetools-uikit/date-field",
-  "version": "10.38.0",
   "description": "A controlled date input component for single date, with validation states and a label.",
-  "main": "dist/date-field.cjs.js",
-  "module": "dist/date-field.esm.js",
+  "version": "10.38.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/fields/date-field"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/date-field.cjs.js",
+  "module": "dist/date-field.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/constraints": "10.30.1",
     "@commercetools-uikit/date-input": "10.38.0",

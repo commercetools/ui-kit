@@ -1,24 +1,31 @@
 {
   "name": "@commercetools-uikit/localized-utils",
   "version": "10.30.1",
-  "description": "",
-  "main": "dist/localized-utils.cjs.js",
-  "module": "dist/localized-utils.esm.js",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/localized-utils"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/localized-utils.cjs.js",
+  "module": "dist/localized-utils.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
-  "sideEffects": false,
   "dependencies": {
     "@commercetools-uikit/utils": "10.21.0",
     "lodash": "4.17.20",
     "tiny-invariant": "1.1.0"
-  },
-  "license": "MIT"
+  }
 }

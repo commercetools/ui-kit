@@ -1,24 +1,27 @@
 {
   "name": "@commercetools-uikit/i18n",
   "version": "10.35.3",
-  "description": "",
-  "main": "dist/i18n.cjs.js",
-  "module": "dist/i18n.esm.js",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/i18n"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "dist",
-    "data",
-    "compiled-data"
-  ],
   "sideEffects": false,
+  "main": "dist/i18n.cjs.js",
+  "module": "dist/i18n.esm.js",
+  "files": ["dist", "data", "compiled-data"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist && yarn compile-data",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
     "compile-data": "formatjs compile-folder --format=$(pwd)/transifex-transformer.js --ast data compiled-data"
-  },
-  "license": "MIT"
+  }
 }

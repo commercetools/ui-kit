@@ -1,20 +1,27 @@
 {
   "name": "@commercetools-uikit/icons",
   "version": "10.38.0",
-  "description": "",
-  "main": "dist/icons.cjs.js",
-  "module": "dist/icons.esm.js",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/icons"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/icons.cjs.js",
+  "module": "dist/icons.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@emotion/core": "^10.0.34",
