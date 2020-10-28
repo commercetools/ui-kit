@@ -51,6 +51,12 @@ export const transformDocument = (
       ? '@commercetools-frontend'
       : '@commercetools-uikit';
 
+  if (!originalPackageJson.description) {
+    throw new Error(
+      `Package ${relativePackageFolderPath} is missing the description field`
+    );
+  }
+
   return omitEmpty({
     name: `${npmScope}/${packageFolderName}`,
     description: originalPackageJson.description,
@@ -91,13 +97,25 @@ export async function generate(
 
   if (flags.allWorkspacePackages) {
     const workspacePackages = getPackagesSync(process.cwd());
+    const aggregatedErrors: string[] = [];
     workspacePackages.packages.forEach((packageInfo) => {
       const packageJsonPath = path.join(packageInfo.dir, 'package.json');
-      const doc = transformDocument(packageInfo.dir, options);
-      if (doc) {
-        writeFile(packageJsonPath, doc, options);
+      try {
+        const doc = transformDocument(packageInfo.dir, options);
+        if (doc) {
+          writeFile(packageJsonPath, doc, options);
+        }
+      } catch (error) {
+        aggregatedErrors.push(error.message);
       }
     });
+    if (aggregatedErrors.length > 0) {
+      throw new Error(
+        `Found errors in ${
+          aggregatedErrors.length
+        } packages:\n\n${aggregatedErrors.join('\n')}\n`
+      );
+    }
   } else {
     const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
     transformDocument(packageFolderPath, options);
