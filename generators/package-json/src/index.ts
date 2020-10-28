@@ -1,4 +1,5 @@
 import type { Options as PrettierOptions } from 'prettier';
+import type { OmitObject } from 'omit-empty-es';
 import type { CommandFlags, GeneratorPackageJsonOptions } from './types';
 
 import fs from 'fs';
@@ -11,10 +12,28 @@ import omitEmpty from 'omit-empty-es';
 
 const prettierConfig = rcfile<PrettierOptions>('prettier');
 
-const transformDocument = (
-  packageFolderPath: string,
+const writeFile = (
+  filePath: string,
+  content: OmitObject,
   options: GeneratorPackageJsonOptions
 ) => {
+  const formatted = prettier.format(JSON.stringify(content, null, 2), {
+    ...prettierConfig,
+    parser: 'json',
+  });
+
+  if (options.dryRun) {
+    console.log(formatted);
+  } else {
+    // Write the file to disk.
+    fs.writeFileSync(filePath, formatted, { encoding: 'utf8' });
+  }
+};
+
+export const transformDocument = (
+  packageFolderPath: string,
+  options: GeneratorPackageJsonOptions
+): OmitObject | undefined => {
   const packageFolderName = path.basename(packageFolderPath);
   const packageJsonPath = path.join(packageFolderPath, 'package.json');
   const relativePackageFolderPath = path.relative(
@@ -32,7 +51,7 @@ const transformDocument = (
       ? '@commercetools-frontend'
       : '@commercetools-uikit';
 
-  const generatedPackageJson = {
+  return omitEmpty({
     name: `${npmScope}/${packageFolderName}`,
     description: originalPackageJson.description,
     version: originalPackageJson.version,
@@ -57,22 +76,8 @@ const transformDocument = (
     dependencies: originalPackageJson.dependencies,
     devDependencies: originalPackageJson.devDependencies,
     peerDependencies: originalPackageJson.peerDependencies,
-  };
-
-  const formatted = prettier.format(
-    JSON.stringify(omitEmpty(generatedPackageJson), null, 2),
-    {
-      ...prettierConfig,
-      parser: 'json',
-    }
-  );
-
-  if (options.dryRun) {
-    console.log(formatted);
-  } else {
-    // Write the file to disk.
-    fs.writeFileSync(packageJsonPath, formatted, { encoding: 'utf8' });
-  }
+    readme: originalPackageJson.readme,
+  });
 };
 
 export async function generate(
@@ -87,7 +92,11 @@ export async function generate(
   if (flags.allWorkspacePackages) {
     const workspacePackages = getPackagesSync(process.cwd());
     workspacePackages.packages.forEach((packageInfo) => {
-      transformDocument(packageInfo.dir, options);
+      const packageJsonPath = path.join(packageInfo.dir, 'package.json');
+      const doc = transformDocument(packageInfo.dir, options);
+      if (doc) {
+        writeFile(packageJsonPath, doc, options);
+      }
     });
   } else {
     const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
