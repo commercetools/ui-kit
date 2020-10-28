@@ -1,5 +1,6 @@
 {
   "name": "@commercetools-uikit/stack",
+  "description": "A stack spacing component renders its children vertically with a consistent spacing between them.",
   "version": "10.30.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {

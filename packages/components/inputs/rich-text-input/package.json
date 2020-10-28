@@ -1,5 +1,6 @@
 {
   "name": "@commercetools-uikit/rich-text-input",
+  "description": "A controlled rich text input component for rich text with validation states.",
   "version": "10.38.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {

@@ -1,5 +1,6 @@
 {
   "name": "@commercetools-uikit/primary-button",
+  "description": "Primary buttons are used for a primary action on a page.",
   "version": "10.36.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {

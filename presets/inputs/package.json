@@ -1,5 +1,6 @@
 {
   "name": "@commercetools-uikit/inputs",
+  "description": "A preset of all the UI-Kit inputs components.",
   "version": "10.38.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {

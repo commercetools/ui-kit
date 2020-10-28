@@ -1,5 +1,6 @@
 {
   "name": "@commercetools-uikit/icon-button",
+  "description": "Icon buttons are icon-only buttons.",
   "version": "10.36.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
