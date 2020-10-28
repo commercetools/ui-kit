@@ -4,10 +4,11 @@
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
+import type { CommandFlags } from '../src/types';
+
 import mri from 'mri';
 import report from 'vfile-reporter';
 import { generate } from '../src/index';
-import { CommandFlags } from '../src/types';
 
 const flags = mri(process.argv.slice(2), {
   alias: { help: ['h'], boolean: ['dry-run'] },

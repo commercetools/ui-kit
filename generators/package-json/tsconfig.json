@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.json",
+  "files": ["./bin/generate-package-json.ts", "./src/index.ts"]
+}
